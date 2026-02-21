@@ -1,0 +1,10 @@
+services:
+  bot:
+    build:
+      context: .
+      target: development
+    volumes:
+      - ./src:/app/src
+    env_file:
+      - .env
+    restart: unless-stopped

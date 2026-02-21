@@ -1,0 +1,12 @@
+services:
+  bot:
+    build:
+      context: .
+      target: production
+    env_file:
+      - .env
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 256M
