@@ -6,6 +6,8 @@ WORKDIR /app
 # ---- Dependencies ----
 FROM base AS deps
 COPY package.json pnpm-lock.yaml ./
+COPY prisma ./prisma/
+COPY prisma.config.ts ./
 RUN pnpm install --frozen-lockfile
 
 # ---- Development ----
@@ -27,7 +29,10 @@ CMD ["pnpm", "test"]
 FROM base AS production
 ENV NODE_ENV=production
 COPY package.json pnpm-lock.yaml ./
+COPY prisma ./prisma/
+COPY prisma.config.ts ./
 RUN pnpm install --frozen-lockfile --prod
 COPY --from=build /app/dist ./dist
+COPY --from=build /app/src/generated ./src/generated
 USER node
-CMD ["node", "dist/index.js"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/index.js"]

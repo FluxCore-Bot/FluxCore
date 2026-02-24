@@ -4,9 +4,34 @@ services:
       context: .
       target: production
     env_file:
-      - .env
+      - .env.prod
+    depends_on:
+      postgres:
+        condition: service_healthy
     restart: always
     deploy:
       resources:
         limits:
           memory: 256M
+
+  postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: fluxcore
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: fluxcore
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fluxcore"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+
+volumes:
+  pgdata:
