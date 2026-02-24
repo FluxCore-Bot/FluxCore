@@ -12,6 +12,9 @@ const REQUIRED_PERMISSIONS = [
   { flag: PermissionFlagsBits.ModerateMembers, name: "ModerateMembers", usedBy: "/timeout" },
   { flag: PermissionFlagsBits.ManageMessages, name: "ManageMessages", usedBy: "/clear, /embed" },
   { flag: PermissionFlagsBits.ReadMessageHistory, name: "ReadMessageHistory", usedBy: "/clear" },
+  { flag: PermissionFlagsBits.ManageChannels, name: "ManageChannels", usedBy: "/tempvoice" },
+  { flag: PermissionFlagsBits.MoveMembers, name: "MoveMembers", usedBy: "/tempvoice" },
+  { flag: PermissionFlagsBits.Connect, name: "Connect", usedBy: "/tempvoice" },
 ];
 
 export function auditPermissions(client: Client<true>): void {

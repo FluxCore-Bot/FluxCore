@@ -9,6 +9,7 @@ export class ExtendedClient extends Client {
       intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMembers, // Privileged: required for moderation commands
+        GatewayIntentBits.GuildVoiceStates, // Required for temp voice channels
       ],
     });
   }

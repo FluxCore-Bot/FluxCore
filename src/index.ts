@@ -1,10 +1,13 @@
 import { ExtendedClient } from "./client/ExtendedClient.js";
 import { config } from "./config/index.js";
+import { connectDatabase, disconnectDatabase } from "./database/index.js";
 import { loadCommands, loadEvents } from "./handlers/index.js";
 import { logger } from "./utils/logger.js";
 
 async function main(): Promise<void> {
   const client = new ExtendedClient();
+
+  await connectDatabase();
 
   await loadCommands(client);
   await loadEvents(client);
@@ -20,14 +23,15 @@ async function main(): Promise<void> {
     process.exit(1);
   });
 
-  const shutdown = () => {
+  const shutdown = async () => {
     logger.info("Shutting down...");
     client.destroy();
+    await disconnectDatabase();
     process.exit(0);
   };
 
-  process.on("SIGINT", shutdown);
-  process.on("SIGTERM", shutdown);
+  process.on("SIGINT", () => void shutdown());
+  process.on("SIGTERM", () => void shutdown());
 
   await client.login(config.token);
 }

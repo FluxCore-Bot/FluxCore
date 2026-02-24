@@ -2,12 +2,38 @@ import type { Interaction } from "discord.js";
 import type { ExtendedClient } from "../client/ExtendedClient.js";
 import type { Event } from "../types/index.js";
 import { isOnCooldown, setCooldown } from "../systems/cooldown.js";
+import {
+  handleTempVoiceButton,
+  handleTempVoiceModal,
+  handleTempVoiceUserSelect,
+  handleTempVoiceStringSelect,
+} from "../systems/tempVoice/interactions.js";
 import { errorEmbed, warnEmbed } from "../utils/embeds.js";
 import { logger } from "../utils/logger.js";
 
 const event: Event<"interactionCreate"> = {
   name: "interactionCreate",
   async execute(interaction: Interaction) {
+    if (interaction.isButton()) {
+      await handleTempVoiceButton(interaction);
+      return;
+    }
+
+    if (interaction.isModalSubmit()) {
+      await handleTempVoiceModal(interaction);
+      return;
+    }
+
+    if (interaction.isUserSelectMenu()) {
+      await handleTempVoiceUserSelect(interaction);
+      return;
+    }
+
+    if (interaction.isStringSelectMenu()) {
+      await handleTempVoiceStringSelect(interaction);
+      return;
+    }
+
     if (!interaction.isChatInputCommand()) return;
 
     const client = interaction.client as ExtendedClient;
