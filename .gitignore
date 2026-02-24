@@ -1,7 +1,11 @@
 node_modules/
 dist/
 .env
+.env.dev
+.env.prod
 *.js.map
 *.d.ts
 !src/**/*.d.ts
 coverage/
+data/
+src/generated/
