@@ -146,7 +146,7 @@ FluxCore/
 **1. Clone and configure**
 
 ```bash
-git clone https://github.com/yourusername/FluxCore.git
+git clone https://github.com/Abdulkhalek-1/FluxCore.git
 cd FluxCore
 cp .env.example .env.dev
 ```
@@ -500,7 +500,7 @@ Contributions are welcome. Here's how to get started:
 **1. Fork and branch**
 
 ```bash
-git clone https://github.com/yourusername/FluxCore.git
+git clone https://github.com/Abdulkhalek-1/FluxCore.git
 cd FluxCore
 git checkout -b feat/your-feature-name
 ```
@@ -551,7 +551,8 @@ Released under the [MIT License](LICENSE).
 
 Built with TypeScript, discord.js, and a relentless drive to make server management effortless.
 
-**[Report a Bug](https://github.com/yourusername/FluxCore/issues/new?template=bug_report.md)** · **[Request a Feature](https://github.com/yourusername/FluxCore/issues/new?template=feature_request.md)** · **[Join the Support Server](https://discord.gg/your-invite)**
+**[Report a Bug](https://github.com/Abdulkhalek-1/FluxCore/issues/new?template=bug_report.md)** · **[Request a Feature](https://github.com/Abdulkhalek-1/FluxCore/issues/new?template=feature_request.md)** 
+<!-- · **[Join the Support Server](https://discord.gg/your-invite)** -->
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=5865F2&height=100&section=footer" width="100%"/>
 
