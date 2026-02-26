@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #1a1a2e;
+  --color-surface: #16213e;
+  --color-surface-hover: #1a2847;
+  --color-border: #0f3460;
+  --color-text: #e0e0e0;
+  --color-text-muted: #8a8a9a;
+  --color-accent: #5865f2;
+  --color-accent-hover: #4752c4;
+  --color-danger: #ed4245;
+  --color-danger-hover: #c93b3e;
+  --color-success: #57f287;
+  --color-warning: #fee75c;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Form element base styling */
+input,
+select,
+textarea {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 0.25rem;
+  color: var(--color-text);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  width: 100%;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 3.75rem;
+}
+
+input[type="color"] {
+  height: 2.375rem;
+  padding: 0.25rem;
+  cursor: pointer;
+}
