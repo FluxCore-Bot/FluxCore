@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model TempVoiceGuildConfig {
+  guildId      String   @id
+  hubChannelId String
+  categoryId   String?
+  nameTemplate String   @default("{user}'s Channel")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model TempVoiceUserSettings {
+  id                Int      @id @default(autoincrement())
+  guildId           String
+  userId            String
+  channelName       String?
+  userLimit         Int      @default(0)
+  isLocked          Boolean  @default(false)
+  isHidden          Boolean  @default(false)
+  isTextClosed      Boolean  @default(false)
+  bannedUserIds     String   @default("[]")
+  hiddenFromUserIds String   @default("[]")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@unique([guildId, userId])
+}
+
+model ActionRule {
+  id         Int      @id @default(autoincrement())
+  guildId    String
+  name       String
+  enabled    Boolean  @default(true)
+  eventType  String
+  actions    String   @default("[]")
+  conditions String   @default("{}")
+  priority   Int      @default(0)
+  createdBy  String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([guildId, name])
+  @@index([guildId, eventType])
+  @@index([guildId, enabled])
+}
+
+model ActionLog {
+  id         Int      @id @default(autoincrement())
+  guildId    String
+  ruleId     Int
+  ruleName   String
+  eventType  String
+  actionType String
+  success    Boolean
+  error      String?
+  metadata   String   @default("{}")
+  executedAt DateTime @default(now())
+
+  @@index([guildId, executedAt])
+  @@index([ruleId])
+}
+
+model ActionGuildSettings {
+  guildId       String   @id
+  maxRules      Int      @default(25)
+  globalEnabled Boolean  @default(true)
+  logChannelId  String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Reminder {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  channelId String?
+  guildId   String?
+  message   String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([expiresAt])
+}

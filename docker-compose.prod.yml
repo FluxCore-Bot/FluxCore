@@ -3,6 +3,8 @@ services:
     build:
       context: .
       target: production
+    ports:
+      - "3000:3000"
     env_file:
       - .env.prod
     depends_on:
@@ -12,7 +14,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256M
+          memory: 512M
 
   postgres:
     image: postgres:18-alpine
@@ -31,7 +33,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256M
+          memory: 512M
 
 volumes:
   pgdata:
