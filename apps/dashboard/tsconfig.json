@@ -7,6 +7,7 @@
   "include": ["src/**/*"],
   "references": [
     { "path": "../../packages/config" },
+    { "path": "../../packages/database" },
     { "path": "../../packages/utils" },
     { "path": "../../packages/systems" }
   ]

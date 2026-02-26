@@ -23,6 +23,7 @@ import {
   MAX_ACTIONS_PER_RULE,
 } from "@fluxcore/systems/actions/constants";
 import type { ActionEventType, ActionType } from "@fluxcore/systems/actions/types";
+import { channelExistsInGuild } from "../discordApi.js";
 
 const validEventTypes = new Set(Object.keys(EVENT_TYPES));
 const validActionTypes = new Set(Object.keys(ACTION_TYPES));
@@ -230,8 +231,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
       }
 
       if (body.logChannelId) {
-        const guild = request.discordClient!.guilds.cache.get(guildId);
-        if (!guild?.channels.cache.has(body.logChannelId)) {
+        if (!(await channelExistsInGuild(guildId, body.logChannelId))) {
           reply.code(400).send({ error: "Invalid log channel" });
           return;
         }

@@ -1,30 +1,29 @@
-import Fastify, { type FastifyInstance } from "fastify";
+import Fastify from "fastify";
 import fastifyCookie from "@fastify/cookie";
 import fastifyStatic from "@fastify/static";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import type { Client } from "discord.js";
 import { config } from "@fluxcore/config";
 import { logger } from "@fluxcore/utils";
+import { connectDatabase, disconnectDatabase } from "@fluxcore/database";
 import { registerAuthRoutes } from "./routes/auth.js";
 import { registerGuildRoutes } from "./routes/guilds.js";
 import { registerTempVoiceRoutes } from "./routes/tempvoice.js";
 import { registerActionRoutes } from "./routes/actions.js";
 import { registerDiscordRoutes } from "./routes/discord.js";
 
-declare module "fastify" {
-  interface FastifyRequest {
-    discordClient?: Client;
-  }
-}
-
-let server: FastifyInstance | null = null;
-
-export async function startDashboard(client: Client): Promise<void> {
+async function main(): Promise<void> {
   if (!config.dashboardClientSecret) {
-    logger.info("Dashboard disabled (DASHBOARD_CLIENT_SECRET not set)");
-    return;
+    logger.error("DASHBOARD_CLIENT_SECRET is required");
+    process.exit(1);
   }
+
+  if (process.env.NODE_ENV === "production" && !process.env.DASHBOARD_SESSION_SECRET) {
+    logger.error("DASHBOARD_SESSION_SECRET is required in production");
+    process.exit(1);
+  }
+
+  await connectDatabase();
 
   const app = Fastify({ logger: false });
 
@@ -38,10 +37,6 @@ export async function startDashboard(client: Client): Promise<void> {
     prefix: "/",
   });
 
-  app.addHook("onRequest", async (request) => {
-    request.discordClient = client;
-  });
-
   registerAuthRoutes(app);
   registerGuildRoutes(app);
   registerTempVoiceRoutes(app);
@@ -50,14 +45,21 @@ export async function startDashboard(client: Client): Promise<void> {
 
   const port = config.dashboardPort;
   await app.listen({ port, host: "0.0.0.0" });
-  server = app;
   logger.info(`Dashboard running on port ${port}`);
+
+  const shutdown = async () => {
+    logger.info("Dashboard shutting down...");
+    await app.close();
+    await disconnectDatabase();
+    process.exit(0);
+  };
+
+  process.on("SIGINT", () => void shutdown());
+  process.on("SIGTERM", () => void shutdown());
 }
 
-export async function stopDashboard(): Promise<void> {
-  if (server) {
-    await server.close();
-    server = null;
-    logger.info("Dashboard stopped");
-  }
-}
+main().catch((error: unknown) => {
+  const err = error instanceof Error ? error : new Error(String(error));
+  logger.error("Failed to start dashboard", err);
+  process.exit(1);
+});

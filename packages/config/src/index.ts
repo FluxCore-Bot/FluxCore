@@ -41,11 +41,6 @@ function loadConfig(): Config {
   const dashboardCallbackUrl =
     process.env.DASHBOARD_CALLBACK_URL || `http://localhost:${dashboardPort}/auth/callback`;
   const dashboardSessionSecret = process.env.DASHBOARD_SESSION_SECRET;
-  if (!dashboardSessionSecret && process.env.NODE_ENV === "production") {
-    throw new Error(
-      "Missing required environment variable: DASHBOARD_SESSION_SECRET (required in production)",
-    );
-  }
   const resolvedSessionSecret =
     dashboardSessionSecret || randomBytes(32).toString("hex");
 

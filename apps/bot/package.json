@@ -21,7 +21,6 @@
     "@fluxcore/types": "workspace:*",
     "@fluxcore/utils": "workspace:*",
     "@fluxcore/systems": "workspace:*",
-    "@fluxcore/dashboard": "workspace:*",
     "discord.js": "catalog:"
   },
   "devDependencies": {

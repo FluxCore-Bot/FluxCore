@@ -1,6 +1,5 @@
 import { ExtendedClient } from "./client/ExtendedClient.js";
 import { config } from "@fluxcore/config";
-import { startDashboard, stopDashboard } from "@fluxcore/dashboard";
 import { connectDatabase, disconnectDatabase } from "@fluxcore/database";
 import { loadCommands, loadEvents } from "./handlers/index.js";
 import { stopReminderPolling } from "./systems/reminders.js";
@@ -28,7 +27,6 @@ async function main(): Promise<void> {
   const shutdown = async () => {
     logger.info("Shutting down...");
     stopReminderPolling();
-    await stopDashboard();
     client.destroy();
     await disconnectDatabase();
     process.exit(0);
@@ -38,7 +36,6 @@ async function main(): Promise<void> {
   process.on("SIGTERM", () => void shutdown());
 
   await client.login(config.token);
-  await startDashboard(client);
 }
 
 main().catch((error: unknown) => {
