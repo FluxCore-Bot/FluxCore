@@ -8,6 +8,27 @@ services:
       - ./packages:/app/packages
       - ./apps:/app/apps
       - ./turbo.json:/app/turbo.json
+    env_file:
+      - .env.dev
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - fluxcore
+    restart: unless-stopped
+    profiles:
+      - bot
+      - full
+
+  dashboard:
+    build:
+      context: .
+      target: development
+    command: sh -c "pnpm turbo run dev --filter=@fluxcore/dashboard"
+    volumes:
+      - ./packages:/app/packages
+      - ./apps:/app/apps
+      - ./turbo.json:/app/turbo.json
     ports:
       - "3000:3000"
     env_file:
@@ -18,6 +39,9 @@ services:
     networks:
       - fluxcore
     restart: unless-stopped
+    profiles:
+      - dashboard
+      - full
 
   postgres:
     image: postgres:18-alpine

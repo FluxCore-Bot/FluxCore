@@ -1,6 +1,11 @@
-import { ChannelType } from "discord.js";
 import type { FastifyInstance } from "fastify";
 import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { getGuildChannels, getGuildRoles } from "../discordApi.js";
+
+// Discord channel type constants
+const GuildText = 0;
+const GuildVoice = 2;
+const GuildCategory = 4;
 
 export function registerDiscordRoutes(app: FastifyInstance): void {
   app.get(
@@ -8,18 +13,14 @@ export function registerDiscordRoutes(app: FastifyInstance): void {
     { preHandler: [requireAuth, requireGuildAdmin] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
-      const guild = request.discordClient!.guilds.cache.get(guildId);
-      if (!guild) {
-        reply.code(404).send({ error: "Guild not found" });
-        return;
-      }
+      const allChannels = await getGuildChannels(guildId);
 
-      const channels = guild.channels.cache
+      const channels = allChannels
         .filter(
           (ch) =>
-            ch.type === ChannelType.GuildText ||
-            ch.type === ChannelType.GuildVoice ||
-            ch.type === ChannelType.GuildCategory,
+            ch.type === GuildText ||
+            ch.type === GuildVoice ||
+            ch.type === GuildCategory,
         )
         .map((ch) => ({
           id: ch.id,
@@ -37,18 +38,14 @@ export function registerDiscordRoutes(app: FastifyInstance): void {
     { preHandler: [requireAuth, requireGuildAdmin] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
-      const guild = request.discordClient!.guilds.cache.get(guildId);
-      if (!guild) {
-        reply.code(404).send({ error: "Guild not found" });
-        return;
-      }
+      const allRoles = await getGuildRoles(guildId);
 
-      const roles = guild.roles.cache
+      const roles = allRoles
         .filter((r) => r.id !== guildId) // exclude @everyone
         .map((r) => ({
           id: r.id,
           name: r.name,
-          color: r.hexColor,
+          color: `#${r.color.toString(16).padStart(6, "0")}`,
         }))
         .sort((a, b) => a.name.localeCompare(b.name));
 

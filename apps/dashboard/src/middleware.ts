@@ -1,5 +1,6 @@
 import type { FastifyRequest, FastifyReply } from "fastify";
 import { getSession, type Session } from "./session.js";
+import { isBotInGuild } from "./discordApi.js";
 
 const MANAGE_GUILD = BigInt(0x20);
 
@@ -34,7 +35,6 @@ export async function requireGuildAdmin(
 ): Promise<void> {
   const { guildId } = request.params as { guildId: string };
   const session = request.session!;
-  const client = request.discordClient!;
 
   const userGuild = session.guilds.find((g) => g.id === guildId);
   if (!userGuild || !(BigInt(userGuild.permissions) & MANAGE_GUILD)) {
@@ -42,7 +42,7 @@ export async function requireGuildAdmin(
     return;
   }
 
-  if (!client.guilds.cache.has(guildId)) {
+  if (!(await isBotInGuild(guildId))) {
     reply.code(403).send({ error: "Bot is not in this guild" });
     return;
   }

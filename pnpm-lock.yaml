@@ -32,9 +32,6 @@ importers:
       '@fluxcore/config':
         specifier: workspace:*
         version: link:../../packages/config
-      '@fluxcore/dashboard':
-        specifier: workspace:*
-        version: link:../dashboard
       '@fluxcore/database':
         specifier: workspace:*
         version: link:../../packages/database
@@ -78,19 +75,22 @@ importers:
       '@fluxcore/config':
         specifier: workspace:*
         version: link:../../packages/config
+      '@fluxcore/database':
+        specifier: workspace:*
+        version: link:../../packages/database
       '@fluxcore/systems':
         specifier: workspace:*
         version: link:../../packages/systems
       '@fluxcore/utils':
         specifier: workspace:*
         version: link:../../packages/utils
-      discord.js:
-        specifier: 'catalog:'
-        version: 14.25.1
       fastify:
         specifier: ^5.7.4
         version: 5.7.4
     devDependencies:
+      tsx:
+        specifier: ^4.21.0
+        version: 4.21.0
       typescript:
         specifier: 'catalog:'
         version: 5.9.3

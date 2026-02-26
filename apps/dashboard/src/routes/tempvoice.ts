@@ -5,6 +5,7 @@ import {
   setGuildConfig,
   removeGuildConfig,
 } from "@fluxcore/systems/tempVoice/config";
+import { channelExistsInGuild } from "../discordApi.js";
 
 export function registerTempVoiceRoutes(app: FastifyInstance): void {
   app.get(
@@ -33,15 +34,14 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
         return;
       }
 
-      const guild = request.discordClient!.guilds.cache.get(guildId);
-      if (!guild?.channels.cache.has(body.hubChannelId)) {
+      if (!(await channelExistsInGuild(guildId, body.hubChannelId))) {
         reply.code(400).send({ error: "Invalid hub channel" });
         return;
       }
 
       if (
         body.categoryId &&
-        !guild.channels.cache.has(body.categoryId)
+        !(await channelExistsInGuild(guildId, body.categoryId))
       ) {
         reply.code(400).send({ error: "Invalid category channel" });
         return;

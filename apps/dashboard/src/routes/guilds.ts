@@ -1,5 +1,6 @@
 import type { FastifyInstance } from "fastify";
 import { requireAuth } from "../middleware.js";
+import { isBotInGuild } from "../discordApi.js";
 
 const MANAGE_GUILD = BigInt(0x20);
 
@@ -9,18 +10,24 @@ export function registerGuildRoutes(app: FastifyInstance): void {
     { preHandler: [requireAuth] },
     async (request, reply) => {
       const session = request.session!;
-      const client = request.discordClient!;
 
-      const guilds = session.guilds
-        .filter((g) => {
-          const hasPermission = !!(BigInt(g.permissions) & MANAGE_GUILD);
-          const botPresent = client.guilds.cache.has(g.id);
-          return hasPermission && botPresent;
-        })
-        .map((g) => ({
-          id: g.id,
-          name: g.name,
-          icon: g.icon,
+      const manageable = session.guilds.filter(
+        (g) => !!(BigInt(g.permissions) & MANAGE_GUILD),
+      );
+
+      const checks = await Promise.all(
+        manageable.map(async (g) => ({
+          guild: g,
+          botPresent: await isBotInGuild(g.id),
+        })),
+      );
+
+      const guilds = checks
+        .filter((c) => c.botPresent)
+        .map((c) => ({
+          id: c.guild.id,
+          name: c.guild.name,
+          icon: c.guild.icon,
         }));
 
       reply.send(guilds);

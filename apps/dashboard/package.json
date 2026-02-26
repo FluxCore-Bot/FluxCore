@@ -4,15 +4,10 @@
   "private": true,
   "type": "module",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
-  },
   "scripts": {
     "build": "tsc && cp -r src/public dist/public",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist"
   },
@@ -20,12 +15,13 @@
     "@fastify/cookie": "^11.0.2",
     "@fastify/static": "^9.0.0",
     "@fluxcore/config": "workspace:*",
+    "@fluxcore/database": "workspace:*",
     "@fluxcore/utils": "workspace:*",
     "@fluxcore/systems": "workspace:*",
-    "discord.js": "catalog:",
     "fastify": "^5.7.4"
   },
   "devDependencies": {
+    "tsx": "^4.21.0",
     "typescript": "catalog:"
   }
 }
