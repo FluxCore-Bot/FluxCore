@@ -31,6 +31,7 @@ services:
       - ./turbo.json:/app/turbo.json
     ports:
       - "3000:3000"
+      - "5173:5173"
     env_file:
       - .env.dev
     depends_on:

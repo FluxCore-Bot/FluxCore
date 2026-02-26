@@ -74,4 +74,4 @@ COPY --from=build /app/packages/database/dist ./packages/database/dist
 COPY --from=build /app/packages/systems/dist ./packages/systems/dist
 COPY --from=build /app/apps/dashboard/dist ./apps/dashboard/dist
 USER node
-CMD ["sh", "-c", "cd packages/database && npx prisma migrate deploy && cd /app && node apps/dashboard/dist/index.js"]
+CMD ["sh", "-c", "cd packages/database && npx prisma migrate deploy && cd /app && node apps/dashboard/dist/server/index.js"]

@@ -36,16 +36,32 @@ async function main(): Promise<void> {
   });
 
   const __dirname = dirname(fileURLToPath(import.meta.url));
-  await app.register(fastifyStatic, {
-    root: join(__dirname, "public"),
-    prefix: "/",
-  });
+
+  // In production, serve the built React SPA
+  if (process.env.NODE_ENV === "production") {
+    await app.register(fastifyStatic, {
+      root: join(__dirname, "../client"),
+      prefix: "/",
+      wildcard: false,
+    });
+  }
 
   registerAuthRoutes(app);
   registerGuildRoutes(app);
   registerTempVoiceRoutes(app);
   registerActionRoutes(app);
   registerDiscordRoutes(app);
+
+  // SPA fallback: serve index.html for non-API/auth routes in production
+  if (process.env.NODE_ENV === "production") {
+    app.setNotFoundHandler(async (request, reply) => {
+      if (request.url.startsWith("/api/") || request.url.startsWith("/auth/")) {
+        reply.code(404).send({ error: "Not found" });
+        return;
+      }
+      return reply.sendFile("index.html");
+    });
+  }
 
   // Clean up expired sessions every hour
   const SESSION_CLEANUP_INTERVAL = 60 * 60 * 1000;

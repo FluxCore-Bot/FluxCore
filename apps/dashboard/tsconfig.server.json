@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist/server",
+    "rootDir": "src/server"
+  },
+  "include": ["src/server/**/*"],
+  "references": [
+    { "path": "../../packages/config" },
+    { "path": "../../packages/database" },
+    { "path": "../../packages/utils" },
+    { "path": "../../packages/systems" }
+  ]
+}
