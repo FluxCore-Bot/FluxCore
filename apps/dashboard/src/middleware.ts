@@ -20,7 +20,7 @@ export async function requireAuth(
     return;
   }
 
-  const session = getSession(sessionId);
+  const session = await getSession(sessionId);
   if (!session) {
     reply.code(401).send({ error: "Session expired" });
     return;
