@@ -1,7 +1,9 @@
 import { randomBytes } from "node:crypto";
 import dotenv from "dotenv";
 
-dotenv.config();
+// In a monorepo, turbo runs each package from its own directory (e.g. apps/bot/).
+// Search for .env at both the local dir and the workspace root (2 levels up).
+dotenv.config({ path: [".env", "../../.env", "../../.env.dev"] });
 
 export interface Config {
   token: string;
