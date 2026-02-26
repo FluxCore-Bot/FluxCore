@@ -1,0 +1,114 @@
+import type { Interaction } from "discord.js";
+import type { ExtendedClient } from "../client/ExtendedClient.js";
+import type { Event } from "@fluxcore/types";
+import { isOnCooldown, setCooldown } from "@fluxcore/systems/cooldown";
+import {
+  handleTempVoiceButton,
+  handleTempVoiceModal,
+  handleTempVoiceUserSelect,
+  handleTempVoiceStringSelect,
+} from "../systems/tempVoice/interactions.js";
+import { handleActionsAutocomplete } from "../commands/admin/actions.js";
+import { errorEmbed, warnEmbed, logger } from "@fluxcore/utils";
+
+const event: Event<"interactionCreate"> = {
+  name: "interactionCreate",
+  async execute(interaction: Interaction) {
+    if (interaction.isAutocomplete()) {
+      if (interaction.commandName === "actions") {
+        await handleActionsAutocomplete(interaction);
+      }
+      return;
+    }
+
+    if (interaction.isButton()) {
+      await handleTempVoiceButton(interaction);
+      return;
+    }
+
+    if (interaction.isModalSubmit()) {
+      await handleTempVoiceModal(interaction);
+      return;
+    }
+
+    if (interaction.isUserSelectMenu()) {
+      await handleTempVoiceUserSelect(interaction);
+      return;
+    }
+
+    if (interaction.isStringSelectMenu()) {
+      await handleTempVoiceStringSelect(interaction);
+      return;
+    }
+
+    if (!interaction.isChatInputCommand()) return;
+
+    const client = interaction.client as ExtendedClient;
+    const command = client.commands.get(interaction.commandName);
+
+    if (!command) {
+      logger.warn(`No command found: ${interaction.commandName}`);
+      return;
+    }
+
+    if (command.cooldown) {
+      const { onCooldown, remainingMs } = isOnCooldown(
+        interaction.commandName,
+        interaction.user.id,
+      );
+      if (onCooldown) {
+        const seconds = Math.ceil(remainingMs / 1000);
+        await interaction.reply({
+          embeds: [
+            warnEmbed(
+              "Cooldown",
+              `Please wait **${seconds}s** before using \`/${interaction.commandName}\` again.`,
+            ),
+          ],
+          ephemeral: true,
+        });
+        return;
+      }
+    }
+
+    try {
+      await command.execute(interaction);
+
+      if (command.cooldown) {
+        setCooldown(
+          interaction.commandName,
+          interaction.user.id,
+          command.cooldown,
+        );
+      }
+    } catch (error) {
+      const err =
+        error instanceof Error ? error : new Error(String(error));
+      logger.error(
+        `Error executing command "${interaction.commandName}"`,
+        err,
+      );
+
+      const reply = {
+        embeds: [
+          errorEmbed("Error", "There was an error executing this command."),
+        ],
+        ephemeral: true,
+      };
+
+      try {
+        if (interaction.replied || interaction.deferred) {
+          await interaction.followUp(reply);
+        } else {
+          await interaction.reply(reply);
+        }
+      } catch {
+        logger.error(
+          `Failed to send error reply for command "${interaction.commandName}"`,
+        );
+      }
+    }
+  },
+};
+
+export default event;

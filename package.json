@@ -1,25 +1,24 @@
 {
   "name": "fluxcore",
   "version": "1.0.0",
+  "private": true,
   "description": "A scalable Discord bot boilerplate",
-  "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "build": "prisma generate && tsc",
-    "start": "node dist/index.js",
-    "postinstall": "prisma generate",
-    "deploy:commands": "tsx src/scripts/deploy.ts",
-    "db:migrate": "prisma migrate dev",
-    "db:deploy": "prisma migrate deploy",
-    "db:studio": "prisma studio",
-    "migrate:json": "tsx src/scripts/migrate-tempvoice-json.ts",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
-    "docker:dev": "docker compose up --build",
-    "docker:prod": "docker compose -f docker-compose.prod.yml up --build -d",
-    "docker:test": "docker build --target test -t fluxcore-test . && docker run --rm --env-file .env.example fluxcore-test"
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "dev:docker": "docker compose up --build",
+    "start": "docker compose -f docker-compose.prod.yml up --build -d",
+    "deploy:commands": "turbo run deploy:commands --filter=@fluxcore/bot",
+    "db:generate": "turbo run db:generate --filter=@fluxcore/database",
+    "db:migrate": "pnpm --filter @fluxcore/database db:migrate",
+    "db:deploy": "pnpm --filter @fluxcore/database db:deploy",
+    "db:studio": "pnpm --filter @fluxcore/database db:studio",
+    "test": "turbo run test",
+    "test:watch": "pnpm --filter @fluxcore/bot test:watch",
+    "test:coverage": "pnpm --filter @fluxcore/bot test:coverage",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean"
   },
   "keywords": [
     "discord",
@@ -31,20 +30,16 @@
     "node": ">=18.0.0"
   },
   "packageManager": "pnpm@10.28.0",
-  "dependencies": {
-    "@prisma/adapter-pg": "^7.4.1",
-    "@prisma/client": "^7.4.1",
-    "discord.js": "^14.25.1",
-    "dotenv": "^17.3.1",
-    "pg": "^8.18.0"
-  },
   "devDependencies": {
-    "@types/node": "^25.3.0",
-    "@types/pg": "^8.16.0",
-    "@vitest/coverage-v8": "^4.0.18",
-    "prisma": "^7.4.1",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3",
-    "vitest": "^4.0.18"
+    "turbo": "^2.5.0",
+    "typescript": "catalog:"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@prisma/engines",
+      "better-sqlite3",
+      "esbuild",
+      "prisma"
+    ]
   }
 }

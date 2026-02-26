@@ -1,6 +1,8 @@
 node_modules
 dist
 .env
+.env.dev
+.env.prod
 .git
 .gitignore
 *.md
@@ -9,3 +11,5 @@ LICENSE
 .idea
 *.log
 coverage
+.turbo
+.pnpm-store

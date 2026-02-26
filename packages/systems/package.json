@@ -1,0 +1,71 @@
+{
+  "name": "@fluxcore/systems",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tempVoice/config": {
+      "types": "./dist/tempVoice/config.d.ts",
+      "import": "./dist/tempVoice/config.js"
+    },
+    "./tempVoice/types": {
+      "types": "./dist/tempVoice/types.d.ts",
+      "import": "./dist/tempVoice/types.js"
+    },
+    "./tempVoice/persistence": {
+      "types": "./dist/tempVoice/persistence.d.ts",
+      "import": "./dist/tempVoice/persistence.js"
+    },
+    "./tempVoice/constants": {
+      "types": "./dist/tempVoice/constants.d.ts",
+      "import": "./dist/tempVoice/constants.js"
+    },
+    "./actions/config": {
+      "types": "./dist/actions/config.d.ts",
+      "import": "./dist/actions/config.js"
+    },
+    "./actions/cache": {
+      "types": "./dist/actions/cache.d.ts",
+      "import": "./dist/actions/cache.js"
+    },
+    "./actions/persistence": {
+      "types": "./dist/actions/persistence.d.ts",
+      "import": "./dist/actions/persistence.js"
+    },
+    "./actions/types": {
+      "types": "./dist/actions/types.d.ts",
+      "import": "./dist/actions/types.js"
+    },
+    "./actions/constants": {
+      "types": "./dist/actions/constants.d.ts",
+      "import": "./dist/actions/constants.js"
+    },
+    "./actions/templateEngine": {
+      "types": "./dist/actions/templateEngine.d.ts",
+      "import": "./dist/actions/templateEngine.js"
+    },
+    "./cooldown": {
+      "types": "./dist/cooldown.d.ts",
+      "import": "./dist/cooldown.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@fluxcore/database": "workspace:*",
+    "@fluxcore/utils": "workspace:*",
+    "discord.js": "catalog:"
+  },
+  "devDependencies": {
+    "typescript": "catalog:"
+  }
+}

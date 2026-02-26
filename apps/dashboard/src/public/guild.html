@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FluxCore Dashboard</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="/" style="color:inherit">FluxCore</a> &rsaquo; <span id="guild-name">Loading...</span></h1>
+    <nav>
+      <span class="user-info" id="user-info"></span>
+      <a href="/auth/logout">Logout</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div id="msg" style="display:none"></div>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="tempvoice">TempVoice</div>
+      <div class="tab" data-tab="rules">Action Rules</div>
+      <div class="tab" data-tab="settings">Action Settings</div>
+      <div class="tab" data-tab="logs">Action Logs</div>
+    </div>
+
+    <!-- TempVoice Tab -->
+    <div class="tab-content active" id="tab-tempvoice">
+      <h3 class="section-title">TempVoice Configuration</h3>
+      <form id="tempvoice-form">
+        <div class="form-group">
+          <label>Hub Channel (Voice)</label>
+          <select id="tv-hub" required><option value="">Select a voice channel...</option></select>
+        </div>
+        <div class="form-group">
+          <label>Category (optional)</label>
+          <select id="tv-category"><option value="">None</option></select>
+        </div>
+        <div class="form-group">
+          <label>Name Template (use {user} for username)</label>
+          <input type="text" id="tv-template" placeholder="{user}'s Channel" maxlength="100">
+        </div>
+        <div style="display:flex;gap:8px">
+          <button type="submit" class="btn">Save</button>
+          <button type="button" class="btn btn-danger" id="tv-remove">Remove Config</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Action Rules Tab -->
+    <div class="tab-content" id="tab-rules">
+      <div class="actions-bar">
+        <button class="btn" id="create-rule-btn">Create Rule</button>
+      </div>
+      <div id="rules-list"></div>
+
+      <!-- Create/Edit Rule Form (hidden by default) -->
+      <div id="rule-form-container" style="display:none">
+        <h3 class="section-title" id="rule-form-title">Create Rule</h3>
+        <form id="rule-form">
+          <input type="hidden" id="rule-edit-id">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="rule-name" required maxlength="50">
+          </div>
+          <div class="form-group">
+            <label>Event Type</label>
+            <select id="rule-event" required></select>
+          </div>
+          <div class="form-group">
+            <label>Priority (0-100, higher runs first)</label>
+            <input type="number" id="rule-priority" min="0" max="100" value="0">
+          </div>
+          <div class="form-group">
+            <label>Enabled</label>
+            <label class="toggle">
+              <input type="checkbox" id="rule-enabled" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <h4 style="margin:16px 0 8px">Actions</h4>
+          <div id="rule-actions-list"></div>
+          <button type="button" class="btn btn-small" id="add-action-btn" style="margin-bottom:16px">+ Add Action</button>
+
+          <div style="display:flex;gap:8px">
+            <button type="submit" class="btn">Save Rule</button>
+            <button type="button" class="btn btn-danger" id="cancel-rule-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Action Settings Tab -->
+    <div class="tab-content" id="tab-settings">
+      <h3 class="section-title">Action System Settings</h3>
+      <form id="settings-form">
+        <div class="form-group">
+          <label>Global Enabled</label>
+          <label class="toggle">
+            <input type="checkbox" id="settings-enabled">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="form-group">
+          <label>Max Rules per Guild</label>
+          <input type="number" id="settings-max-rules" min="1" max="100">
+        </div>
+        <div class="form-group">
+          <label>Log Channel</label>
+          <select id="settings-log-channel"><option value="">None</option></select>
+        </div>
+        <button type="submit" class="btn">Save Settings</button>
+      </form>
+    </div>
+
+    <!-- Action Logs Tab -->
+    <div class="tab-content" id="tab-logs">
+      <h3 class="section-title">Recent Action Logs</h3>
+      <div class="form-group" style="max-width:300px">
+        <label>Filter by Rule Name</label>
+        <input type="text" id="log-filter" placeholder="All rules">
+      </div>
+      <div id="logs-list"></div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

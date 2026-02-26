@@ -8,4 +8,12 @@ dist/
 !src/**/*.d.ts
 coverage/
 data/
-src/generated/
+*.tsbuildinfo
+# Prisma generated output
+packages/database/src/generated/
+# Turbo cache
+.turbo/
+# pnpm store
+.pnpm-store/
+# Serena config
+.serena/

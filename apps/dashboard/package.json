@@ -1,0 +1,31 @@
+{
+  "name": "@fluxcore/dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc && cp -r src/public dist/public",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^11.0.2",
+    "@fastify/static": "^9.0.0",
+    "@fluxcore/config": "workspace:*",
+    "@fluxcore/utils": "workspace:*",
+    "@fluxcore/systems": "workspace:*",
+    "discord.js": "catalog:",
+    "fastify": "^5.7.4"
+  },
+  "devDependencies": {
+    "typescript": "catalog:"
+  }
+}

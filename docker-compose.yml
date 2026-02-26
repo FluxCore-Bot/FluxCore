@@ -3,10 +3,13 @@ services:
     build:
       context: .
       target: development
-    command: sh -c "pnpm db:deploy && pnpm dev"
+    command: sh -c "cd packages/database && pnpm prisma migrate deploy && cd /app && pnpm turbo run dev --filter=@fluxcore/bot"
     volumes:
-      - ./src:/app/src
-      - ./prisma:/app/prisma
+      - ./packages:/app/packages
+      - ./apps:/app/apps
+      - ./turbo.json:/app/turbo.json
+    ports:
+      - "3000:3000"
     env_file:
       - .env.dev
     depends_on:
