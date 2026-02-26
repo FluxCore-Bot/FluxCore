@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import { getPrisma } from "@fluxcore/database";
 
 export interface OAuthGuild {
   id: string;
@@ -16,25 +17,56 @@ export interface Session {
   createdAt: number;
 }
 
-const sessions = new Map<string, Session>();
 const SESSION_TTL = 60 * 60 * 1000; // 1 hour
 
-export function createSession(data: Omit<Session, "createdAt">): string {
+export async function createSession(
+  data: Omit<Session, "createdAt">,
+): Promise<string> {
   const id = randomUUID();
-  sessions.set(id, { ...data, createdAt: Date.now() });
+  const now = new Date();
+  const expiresAt = new Date(now.getTime() + SESSION_TTL);
+
+  const prisma = getPrisma();
+  await prisma.dashboardSession.create({
+    data: {
+      id,
+      userId: data.userId,
+      username: data.username,
+      avatar: data.avatar,
+      accessToken: data.accessToken,
+      guilds: JSON.stringify(data.guilds),
+      createdAt: now,
+      expiresAt,
+    },
+  });
+
   return id;
 }
 
-export function getSession(id: string): Session | null {
-  const session = sessions.get(id);
-  if (!session) return null;
-  if (Date.now() - session.createdAt > SESSION_TTL) {
-    sessions.delete(id);
+export async function getSession(id: string): Promise<Session | null> {
+  const prisma = getPrisma();
+  const row = await prisma.dashboardSession.findUnique({
+    where: { id },
+  });
+
+  if (!row) return null;
+
+  if (row.expiresAt < new Date()) {
+    await prisma.dashboardSession.deleteMany({ where: { id } });
     return null;
   }
-  return session;
+
+  return {
+    userId: row.userId,
+    username: row.username,
+    avatar: row.avatar,
+    accessToken: row.accessToken,
+    guilds: JSON.parse(row.guilds) as OAuthGuild[],
+    createdAt: row.createdAt.getTime(),
+  };
 }
 
-export function deleteSession(id: string): void {
-  sessions.delete(id);
+export async function deleteSession(id: string): Promise<void> {
+  const prisma = getPrisma();
+  await prisma.dashboardSession.deleteMany({ where: { id } });
 }

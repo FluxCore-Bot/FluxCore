@@ -96,3 +96,16 @@ model Reminder {
 
   @@index([expiresAt])
 }
+
+model DashboardSession {
+  id          String   @id
+  userId      String
+  username    String
+  avatar      String?
+  accessToken String
+  guilds      String   @default("[]")
+  createdAt   DateTime @default(now())
+  expiresAt   DateTime
+
+  @@index([expiresAt])
+}

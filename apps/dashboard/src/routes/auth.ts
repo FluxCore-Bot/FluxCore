@@ -27,7 +27,7 @@ export function registerAuthRoutes(app: FastifyInstance): void {
         fetchGuilds(token.access_token),
       ]);
 
-      const sessionId = createSession({
+      const sessionId = await createSession({
         userId: user.id,
         username: user.username,
         avatar: user.avatar,
@@ -55,7 +55,7 @@ export function registerAuthRoutes(app: FastifyInstance): void {
   app.get("/auth/logout", async (request, reply) => {
     const sessionId = request.cookies?.session;
     if (sessionId) {
-      deleteSession(sessionId);
+      await deleteSession(sessionId);
     }
     reply.clearCookie("session", { path: "/" }).redirect("/");
   });
@@ -67,7 +67,7 @@ export function registerAuthRoutes(app: FastifyInstance): void {
       return;
     }
 
-    const session = getSession(sessionId);
+    const session = await getSession(sessionId);
     if (!session) {
       reply.code(401).send({ error: "Session expired" });
       return;

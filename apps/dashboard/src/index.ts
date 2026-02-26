@@ -5,7 +5,11 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { config } from "@fluxcore/config";
 import { logger } from "@fluxcore/utils";
-import { connectDatabase, disconnectDatabase } from "@fluxcore/database";
+import {
+  connectDatabase,
+  disconnectDatabase,
+  getPrisma,
+} from "@fluxcore/database";
 import { registerAuthRoutes } from "./routes/auth.js";
 import { registerGuildRoutes } from "./routes/guilds.js";
 import { registerTempVoiceRoutes } from "./routes/tempvoice.js";
@@ -43,12 +47,31 @@ async function main(): Promise<void> {
   registerActionRoutes(app);
   registerDiscordRoutes(app);
 
+  // Clean up expired sessions every hour
+  const SESSION_CLEANUP_INTERVAL = 60 * 60 * 1000;
+  const cleanupTimer = setInterval(async () => {
+    try {
+      const result = await getPrisma().dashboardSession.deleteMany({
+        where: { expiresAt: { lt: new Date() } },
+      });
+      if (result.count > 0) {
+        logger.info(`Cleaned up ${result.count} expired sessions`);
+      }
+    } catch (error) {
+      logger.error(
+        "Session cleanup failed",
+        error instanceof Error ? error : new Error(String(error)),
+      );
+    }
+  }, SESSION_CLEANUP_INTERVAL);
+
   const port = config.dashboardPort;
   await app.listen({ port, host: "0.0.0.0" });
   logger.info(`Dashboard running on port ${port}`);
 
   const shutdown = async () => {
     logger.info("Dashboard shutting down...");
+    clearInterval(cleanupTimer);
     await app.close();
     await disconnectDatabase();
     process.exit(0);
