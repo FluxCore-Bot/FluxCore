@@ -22,7 +22,16 @@
     "dev": {
       "dependsOn": ["^build"],
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "passThroughEnv": [
+        "DISCORD_TOKEN",
+        "CLIENT_ID",
+        "GUILD_ID",
+        "DASHBOARD_PORT",
+        "DASHBOARD_CLIENT_SECRET",
+        "DASHBOARD_CALLBACK_URL",
+        "DASHBOARD_SESSION_SECRET"
+      ]
     },
     "typecheck": {
       "dependsOn": ["^build"]
