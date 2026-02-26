@@ -1,5 +1,17 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalPassThroughEnv": [
+    "DISCORD_TOKEN",
+    "CLIENT_ID",
+    "GUILD_ID",
+    "LOG_LEVEL",
+    "DATABASE_URL",
+    "NODE_ENV",
+    "DASHBOARD_PORT",
+    "DASHBOARD_CLIENT_SECRET",
+    "DASHBOARD_CALLBACK_URL",
+    "DASHBOARD_SESSION_SECRET"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
