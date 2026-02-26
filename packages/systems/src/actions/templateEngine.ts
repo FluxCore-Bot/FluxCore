@@ -29,6 +29,17 @@ export function resolveTemplate(
       result = result.replaceAll(variable, resolver(context));
     }
   }
+
+  // Resolve event-specific variables from ctx.extra
+  if (context.extra) {
+    for (const [key, value] of Object.entries(context.extra)) {
+      const variable = `{${key}}`;
+      if (result.includes(variable)) {
+        result = result.replaceAll(variable, value);
+      }
+    }
+  }
+
   if (result.length > MAX_TEMPLATE_LENGTH) {
     result = result.slice(0, MAX_TEMPLATE_LENGTH);
   }

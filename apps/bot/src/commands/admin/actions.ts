@@ -32,6 +32,7 @@ import {
   getRuleByName,
   countRules,
   getRecentLogs,
+  notifyCacheInvalidation,
 } from "@fluxcore/systems/actions/persistence";
 import {
   addRuleToCache,
@@ -101,6 +102,30 @@ const command: Command = {
             .setName("message")
             .setDescription("Message template (supports {user}, {channel}, {guild}, etc.)")
             .setMaxLength(2000),
+        )
+        .addStringOption((opt) =>
+          opt
+            .setName("webhook-url")
+            .setDescription("Webhook URL for sendWebhook (HTTPS only)")
+            .setMaxLength(500),
+        )
+        .addStringOption((opt) =>
+          opt
+            .setName("nickname")
+            .setDescription("Nickname template for setNickname")
+            .setMaxLength(32),
+        )
+        .addStringOption((opt) =>
+          opt
+            .setName("thread-name")
+            .setDescription("Thread name template for createThread")
+            .setMaxLength(100),
+        )
+        .addStringOption((opt) =>
+          opt
+            .setName("emoji")
+            .setDescription("Emoji for addReaction")
+            .setMaxLength(50),
         ),
     )
     .addSubcommand((sub) =>
@@ -276,6 +301,30 @@ const command: Command = {
             .setName("message")
             .setDescription("Message template")
             .setMaxLength(2000),
+        )
+        .addStringOption((opt) =>
+          opt
+            .setName("webhook-url")
+            .setDescription("Webhook URL for sendWebhook (HTTPS only)")
+            .setMaxLength(500),
+        )
+        .addStringOption((opt) =>
+          opt
+            .setName("nickname")
+            .setDescription("Nickname template for setNickname")
+            .setMaxLength(32),
+        )
+        .addStringOption((opt) =>
+          opt
+            .setName("thread-name")
+            .setDescription("Thread name template for createThread")
+            .setMaxLength(100),
+        )
+        .addStringOption((opt) =>
+          opt
+            .setName("emoji")
+            .setDescription("Emoji for addReaction")
+            .setMaxLength(50),
         ),
     )
     .addSubcommand((sub) =>
@@ -402,11 +451,19 @@ function buildActionConfig(
   channelId: string | undefined,
   roleId: string | undefined,
   message: string | undefined,
+  webhookUrl?: string | undefined,
+  nickname?: string | undefined,
+  threadName?: string | undefined,
+  emoji?: string | undefined,
 ): ActionConfig {
   const config: ActionConfig = { type: actionType };
   if (channelId) config.channelId = channelId;
   if (roleId) config.roleId = roleId;
   if (message) config.message = message;
+  if (webhookUrl) config.webhook = { url: webhookUrl };
+  if (nickname) config.nickname = nickname;
+  if (threadName) config.threadName = threadName;
+  if (emoji) config.emoji = emoji;
   return config;
 }
 
@@ -420,6 +477,10 @@ async function handleCreate(
   const channel = interaction.options.getChannel("channel");
   const role = interaction.options.getRole("role");
   const message = interaction.options.getString("message");
+  const webhookUrl = interaction.options.getString("webhook-url");
+  const nickname = interaction.options.getString("nickname");
+  const threadName = interaction.options.getString("thread-name");
+  const emoji = interaction.options.getString("emoji");
 
   const settings = getGuildSettingsOrDefault(guildId);
   const count = await countRules(guildId);
@@ -452,6 +513,10 @@ async function handleCreate(
     channel?.id,
     role?.id,
     message ?? undefined,
+    webhookUrl ?? undefined,
+    nickname ?? undefined,
+    threadName ?? undefined,
+    emoji ?? undefined,
   );
 
   const rule = await createRule({
@@ -466,6 +531,7 @@ async function handleCreate(
   });
 
   addRuleToCache(rule);
+  await notifyCacheInvalidation(guildId);
 
   const eventInfo = EVENT_TYPES[eventType];
   const actionInfo = ACTION_TYPES[actionType];
@@ -496,6 +562,7 @@ async function handleDelete(
 
   await deleteRule(rule.id, guildId);
   removeRuleFromCache(guildId, rule.id);
+  await notifyCacheInvalidation(guildId);
 
   await interaction.reply({
     embeds: [successEmbed("Rule Deleted", `Rule **${name}** has been deleted.`)],
@@ -520,6 +587,7 @@ async function handleToggle(
 
   const updated = await updateRule(rule.id, guildId, { enabled });
   updateRuleInCache(updated);
+  await notifyCacheInvalidation(guildId);
 
   await interaction.reply({
     embeds: [
@@ -599,6 +667,11 @@ async function handleView(
     if (a.roleId) detail += ` → <@&${a.roleId}>`;
     if (a.message)
       detail += ` → \`${a.message.length > 50 ? a.message.slice(0, 50) + "..." : a.message}\``;
+    if (a.webhook?.url)
+      detail += ` → \`${a.webhook.url.length > 50 ? a.webhook.url.slice(0, 50) + "..." : a.webhook.url}\``;
+    if (a.nickname) detail += ` → nickname: \`${a.nickname}\``;
+    if (a.threadName) detail += ` → thread: \`${a.threadName}\``;
+    if (a.emoji) detail += ` → emoji: ${a.emoji}`;
     return `${i + 1}. ${detail}`;
   });
   embed.addFields({ name: "Actions", value: actionLines.join("\n") || "None" });
@@ -683,6 +756,7 @@ async function handleEdit(
 
   const updated = await updateRule(rule.id, guildId, updates);
   updateRuleInCache(updated);
+  await notifyCacheInvalidation(guildId);
 
   await interaction.reply({
     embeds: [successEmbed("Rule Updated", `Rule **${name}** has been updated.`)],
@@ -733,6 +807,7 @@ async function handleAddCondition(
   (conditions[key] as string[]) = [...arr, value];
   const updated = await updateRule(rule.id, guildId, { conditions });
   updateRuleInCache(updated);
+  await notifyCacheInvalidation(guildId);
 
   await interaction.reply({
     embeds: [
@@ -784,6 +859,7 @@ async function handleRemoveCondition(
 
   const updated = await updateRule(rule.id, guildId, { conditions });
   updateRuleInCache(updated);
+  await notifyCacheInvalidation(guildId);
 
   await interaction.reply({
     embeds: [
@@ -805,6 +881,10 @@ async function handleAddAction(
   const channel = interaction.options.getChannel("channel");
   const role = interaction.options.getRole("role");
   const message = interaction.options.getString("message");
+  const webhookUrl = interaction.options.getString("webhook-url");
+  const nickname = interaction.options.getString("nickname");
+  const threadName = interaction.options.getString("thread-name");
+  const emoji = interaction.options.getString("emoji");
 
   const rule = await getRuleByName(guildId, name);
   if (!rule) {
@@ -833,10 +913,15 @@ async function handleAddAction(
     channel?.id,
     role?.id,
     message ?? undefined,
+    webhookUrl ?? undefined,
+    nickname ?? undefined,
+    threadName ?? undefined,
+    emoji ?? undefined,
   );
   const actions = [...rule.actions, actionConfig];
   const updated = await updateRule(rule.id, guildId, { actions });
   updateRuleInCache(updated);
+  await notifyCacheInvalidation(guildId);
 
   const actionInfo = ACTION_TYPES[actionType];
   await interaction.reply({
@@ -896,6 +981,7 @@ async function handleRemoveAction(
   actions.splice(index - 1, 1);
   const updated = await updateRule(rule.id, guildId, { actions });
   updateRuleInCache(updated);
+  await notifyCacheInvalidation(guildId);
 
   await interaction.reply({
     embeds: [
@@ -938,6 +1024,7 @@ async function handleSettings(
   if (enabled !== null) updated.globalEnabled = enabled;
 
   await setGuildSettings(guildId, updated);
+  await notifyCacheInvalidation(guildId, "reloadSettings");
 
   await interaction.reply({
     embeds: [

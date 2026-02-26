@@ -52,6 +52,29 @@ function populateSelect(selectEl, items, selectedValue) {
   }
 }
 
+function getNestedValue(obj, dotKey) {
+  if (!obj) return undefined;
+  const parts = dotKey.split(".");
+  let current = obj;
+  for (const part of parts) {
+    if (current == null) return undefined;
+    current = current[part];
+  }
+  return current;
+}
+
+function setNestedValue(obj, dotKey, value) {
+  const parts = dotKey.split(".");
+  let current = obj;
+  for (let i = 0; i < parts.length - 1; i++) {
+    if (!current[parts[i]] || typeof current[parts[i]] !== "object") {
+      current[parts[i]] = {};
+    }
+    current = current[parts[i]];
+  }
+  current[parts[parts.length - 1]] = value;
+}
+
 // --- Tabs ---
 
 document.querySelectorAll(".tab").forEach((tab) => {
@@ -191,9 +214,7 @@ async function loadRules() {
 let rulesData = [];
 
 async function editRule(ruleId) {
-  if (!rulesData.length) {
-    rulesData = await api("GET", `/api/guilds/${guildId}/actions/rules`);
-  }
+  rulesData = await api("GET", `/api/guilds/${guildId}/actions/rules`);
   const rule = rulesData.find((r) => r.id === ruleId);
   if (!rule) return;
 
@@ -203,6 +224,9 @@ async function editRule(ruleId) {
   document.getElementById("rule-event").value = rule.eventType;
   document.getElementById("rule-priority").value = rule.priority;
   document.getElementById("rule-enabled").checked = rule.enabled;
+
+  // Trigger variable helper update
+  document.getElementById("rule-event").dispatchEvent(new Event("change"));
 
   // Populate actions
   const actionsList = document.getElementById("rule-actions-list");
@@ -236,6 +260,15 @@ function removeActionRow(btn) {
 }
 window.removeActionRow = removeActionRow;
 
+function copyVariable(chip) {
+  const text = chip.textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    chip.classList.add("copied");
+    setTimeout(() => chip.classList.remove("copied"), 1000);
+  });
+}
+window.copyVariable = copyVariable;
+
 function initRuleForm() {
   // Populate event type select
   const eventSelect = document.getElementById("rule-event");
@@ -247,6 +280,26 @@ function initRuleForm() {
       eventSelect.appendChild(opt);
     }
   }
+
+  // Template variable helper
+  eventSelect.addEventListener("change", () => {
+    const helper = document.getElementById("variable-helper");
+    const eventType = eventSelect.value;
+    const variables = constants.eventTypeVariables?.[eventType];
+    if (!variables || variables.length === 0) {
+      helper.style.display = "none";
+      return;
+    }
+    const descriptions = constants.templateVariables || {};
+    let html = '<div class="variable-helper-title">Available Template Variables</div><div class="variable-chips">';
+    for (const v of variables) {
+      const desc = descriptions[v] || v;
+      html += `<span class="variable-chip" title="${escapeHtml(desc)}" onclick="copyVariable(this)">${escapeHtml(v)}</span>`;
+    }
+    html += "</div>";
+    helper.innerHTML = html;
+    helper.style.display = "";
+  });
 
   document.getElementById("create-rule-btn").addEventListener("click", () => {
     document.getElementById("rule-form-title").textContent = "Create Rule";
@@ -282,13 +335,21 @@ function initRuleForm() {
       const type = row.querySelector(".action-type").value;
       const action = { type };
 
-      const channelSel = row.querySelector(".action-channel");
-      const roleSel = row.querySelector(".action-role");
-      const msgInput = row.querySelector(".action-message");
+      row.querySelectorAll(".action-field").forEach((input) => {
+        const key = input.dataset.fieldKey;
+        let value = input.value;
+        if (!value && value !== 0) return;
 
-      if (channelSel && channelSel.value) action.channelId = channelSel.value;
-      if (roleSel && roleSel.value) action.roleId = roleSel.value;
-      if (msgInput && msgInput.value) action.message = msgInput.value;
+        if (input.type === "color") {
+          value = parseInt(value.replace("#", ""), 16);
+        }
+
+        if (key === "webhook.headers" && value) {
+          try { value = JSON.parse(value); } catch { return; }
+        }
+
+        setNestedValue(action, key, value);
+      });
 
       actions.push(action);
     });
@@ -326,8 +387,6 @@ function addActionRow(existing) {
   row.className = "action-row";
   row.style.cssText = "background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px;margin-bottom:8px;";
 
-  const textChannels = channels.filter((c) => c.type === 0);
-
   let typeOptions = "";
   if (constants.actionTypes) {
     for (const [key, info] of Object.entries(constants.actionTypes)) {
@@ -336,43 +395,128 @@ function addActionRow(existing) {
     }
   }
 
-  let channelOptions = '<option value="">Select channel...</option>';
-  for (const ch of textChannels) {
-    const sel = existing && existing.channelId === ch.id ? "selected" : "";
-    channelOptions += `<option value="${ch.id}" ${sel}>${escapeHtml(ch.name)}</option>`;
-  }
-
-  let roleOptions = '<option value="">Select role...</option>';
-  for (const r of roles) {
-    const sel = existing && existing.roleId === r.id ? "selected" : "";
-    roleOptions += `<option value="${r.id}" ${sel}>${escapeHtml(r.name)}</option>`;
-  }
-
   row.innerHTML = `
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-      <div class="form-group" style="margin:0">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+      <div class="form-group" style="margin:0;flex:1;max-width:300px">
         <label>Type</label>
         <select class="action-type">${typeOptions}</select>
       </div>
-      <div class="form-group" style="margin:0">
-        <label>Channel</label>
-        <select class="action-channel">${channelOptions}</select>
-      </div>
+      <button type="button" class="btn btn-small btn-danger" onclick="removeActionRow(this)" style="margin-top:20px">Remove</button>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-      <div class="form-group" style="margin:0">
-        <label>Role</label>
-        <select class="action-role">${roleOptions}</select>
-      </div>
-      <div class="form-group" style="margin:0">
-        <label>Message</label>
-        <input type="text" class="action-message" placeholder="Use {user}, {channel}, etc." value="${existing?.message ? escapeHtml(existing.message) : ""}">
-      </div>
-    </div>
-    <button type="button" class="btn btn-small btn-danger" onclick="removeActionRow(this)">Remove</button>
+    <div class="action-fields"></div>
   `;
 
   container.appendChild(row);
+
+  const typeSelect = row.querySelector(".action-type");
+  const fieldsContainer = row.querySelector(".action-fields");
+  const initialType = existing?.type || typeSelect.value;
+  renderActionFields(fieldsContainer, initialType, existing);
+
+  typeSelect.addEventListener("change", () => {
+    renderActionFields(fieldsContainer, typeSelect.value, null);
+  });
+}
+
+function renderActionFields(container, actionType, existing) {
+  container.innerHTML = "";
+  const fields = constants.actionTypeFields?.[actionType];
+  if (!fields || fields.length === 0) return;
+
+  const grid = document.createElement("div");
+  grid.style.cssText = "display:grid;grid-template-columns:1fr 1fr;gap:8px;";
+
+  for (const field of fields) {
+    const group = document.createElement("div");
+    group.className = "form-group";
+    group.style.margin = "0";
+
+    if (field.type === "textarea") {
+      group.style.gridColumn = "1 / -1";
+    }
+
+    const label = document.createElement("label");
+    label.textContent = field.label + (field.required ? " *" : "");
+    group.appendChild(label);
+
+    const existingValue = getNestedValue(existing, field.key);
+    let input;
+
+    switch (field.type) {
+      case "channel": {
+        input = document.createElement("select");
+        input.className = "action-field";
+        input.dataset.fieldKey = field.key;
+        const textChannels = channels.filter((c) => c.type === 0);
+        let html = '<option value="">Select channel...</option>';
+        for (const ch of textChannels) {
+          const sel = existingValue === ch.id ? "selected" : "";
+          html += `<option value="${ch.id}" ${sel}>${escapeHtml(ch.name)}</option>`;
+        }
+        input.innerHTML = html;
+        break;
+      }
+      case "role": {
+        input = document.createElement("select");
+        input.className = "action-field";
+        input.dataset.fieldKey = field.key;
+        let html = '<option value="">Select role...</option>';
+        for (const r of roles) {
+          const sel = existingValue === r.id ? "selected" : "";
+          html += `<option value="${r.id}" ${sel}>${escapeHtml(r.name)}</option>`;
+        }
+        input.innerHTML = html;
+        break;
+      }
+      case "textarea": {
+        input = document.createElement("textarea");
+        input.className = "action-field";
+        input.dataset.fieldKey = field.key;
+        input.placeholder = field.placeholder || "";
+        if (field.maxLength) input.maxLength = field.maxLength;
+        input.rows = 3;
+        if (field.key === "webhook.headers" && existingValue && typeof existingValue === "object") {
+          input.value = JSON.stringify(existingValue, null, 2);
+        } else {
+          input.value = existingValue || "";
+        }
+        break;
+      }
+      case "color": {
+        input = document.createElement("input");
+        input.type = "color";
+        input.className = "action-field";
+        input.dataset.fieldKey = field.key;
+        input.value = existingValue != null ? "#" + existingValue.toString(16).padStart(6, "0") : "#5865f2";
+        break;
+      }
+      case "select": {
+        input = document.createElement("select");
+        input.className = "action-field";
+        input.dataset.fieldKey = field.key;
+        for (const opt of (field.options || [])) {
+          const sel = existingValue === opt.value ? "selected" : "";
+          input.innerHTML += `<option value="${opt.value}" ${sel}>${opt.label}</option>`;
+        }
+        break;
+      }
+      default: {
+        input = document.createElement("input");
+        input.type = "text";
+        input.className = "action-field";
+        input.dataset.fieldKey = field.key;
+        input.placeholder = field.placeholder || "";
+        if (field.maxLength) input.maxLength = field.maxLength;
+        input.value = existingValue || "";
+        break;
+      }
+    }
+
+    group.appendChild(input);
+    grid.appendChild(group);
+  }
+
+  container.appendChild(grid);
 }
 
 // --- Action Settings ---

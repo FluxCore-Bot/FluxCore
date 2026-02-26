@@ -16,7 +16,10 @@
         "DASHBOARD_PORT",
         "DASHBOARD_CLIENT_SECRET",
         "DASHBOARD_CALLBACK_URL",
-        "DASHBOARD_SESSION_SECRET"
+        "DASHBOARD_SESSION_SECRET",
+        "BOT_SYNC_PORT",
+        "BOT_SYNC_SECRET",
+        "BOT_SYNC_URL"
       ]
     },
     "dev": {
@@ -30,7 +33,10 @@
         "DASHBOARD_PORT",
         "DASHBOARD_CLIENT_SECRET",
         "DASHBOARD_CALLBACK_URL",
-        "DASHBOARD_SESSION_SECRET"
+        "DASHBOARD_SESSION_SECRET",
+        "BOT_SYNC_PORT",
+        "BOT_SYNC_SECRET",
+        "BOT_SYNC_URL"
       ]
     },
     "typecheck": {

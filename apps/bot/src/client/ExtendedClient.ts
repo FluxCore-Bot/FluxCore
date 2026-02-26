@@ -11,7 +11,9 @@ export class ExtendedClient extends Client {
         GatewayIntentBits.GuildMembers, // Privileged: required for moderation commands
         GatewayIntentBits.GuildVoiceStates, // Required for temp voice channels
         GatewayIntentBits.GuildModeration, // Required for ban/unban action events
-        GatewayIntentBits.GuildMessages, // Required for message delete action events
+        GatewayIntentBits.GuildMessages, // Required for message events
+        GatewayIntentBits.MessageContent, // Privileged: required for message content access
+        GatewayIntentBits.GuildMessageReactions, // Required for reaction events
       ],
     });
   }

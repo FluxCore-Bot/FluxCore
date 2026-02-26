@@ -12,7 +12,15 @@ export type ActionEventType =
   | "channelCreated"
   | "channelDeleted"
   | "voiceJoin"
-  | "voiceLeave";
+  | "voiceLeave"
+  | "messageCreated"
+  | "reactionAdded"
+  | "reactionRemoved"
+  | "nicknameChanged"
+  | "memberTimeout"
+  | "threadCreated"
+  | "boostStart"
+  | "boostEnd";
 
 /** Supported action types that can be triggered */
 export type ActionType =
@@ -21,7 +29,11 @@ export type ActionType =
   | "sendDM"
   | "addRole"
   | "removeRole"
-  | "logToChannel";
+  | "logToChannel"
+  | "sendWebhook"
+  | "setNickname"
+  | "createThread"
+  | "addReaction";
 
 /** Embed configuration for sendEmbed actions */
 export interface ActionEmbedConfig {
@@ -31,6 +43,14 @@ export interface ActionEmbedConfig {
   footer?: string;
 }
 
+/** Webhook configuration for sendWebhook actions */
+export interface ActionWebhookConfig {
+  url: string;
+  method?: "POST" | "PUT";
+  headers?: Record<string, string>;
+  bodyTemplate?: string;
+}
+
 /** A single action configuration within a rule */
 export interface ActionConfig {
   type: ActionType;
@@ -38,6 +58,10 @@ export interface ActionConfig {
   roleId?: string;
   message?: string;
   embed?: ActionEmbedConfig;
+  webhook?: ActionWebhookConfig;
+  nickname?: string;
+  threadName?: string;
+  emoji?: string;
 }
 
 /** Filter conditions for when the rule should fire */
@@ -81,6 +105,8 @@ export interface EventContext {
   memberCount?: number;
   timestamp: string;
   member?: GuildMember;
+  /** Event-specific key-value data resolved by the template engine */
+  extra?: Record<string, string>;
 }
 
 /** Guild-level action system settings */

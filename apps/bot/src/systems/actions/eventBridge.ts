@@ -4,9 +4,13 @@ import type {
   GuildChannel,
   GuildMember,
   Message,
+  MessageReaction,
   PartialGuildMember,
   PartialMessage,
+  PartialMessageReaction,
+  PartialUser,
   Role,
+  User,
   VoiceState,
 } from "discord.js";
 import { logger } from "@fluxcore/utils";
@@ -52,6 +56,9 @@ function buildBanContext(
     userMention: `<@${ban.user.id}>`,
     memberCount: ban.guild.memberCount,
     timestamp: new Date().toISOString(),
+    extra: {
+      "ban.reason": ban.reason ?? "No reason provided",
+    },
   };
 }
 
@@ -73,6 +80,11 @@ function buildMessageContext(
     channelMention: `<#${message.channelId}>`,
     memberCount: message.guild?.memberCount,
     timestamp: new Date().toISOString(),
+    extra: {
+      "message.content": message.content ?? "",
+      "message.id": message.id,
+      "message.url": message.url ?? "",
+    },
   };
 }
 
@@ -134,6 +146,39 @@ function buildVoiceContext(
     memberCount: state.guild.memberCount,
     timestamp: new Date().toISOString(),
     member: state.member ?? undefined,
+    extra: {
+      "voice.channel": state.channelId ? `<#${state.channelId}>` : "None",
+      "voice.channel.name": state.channel?.name ?? "Unknown",
+    },
+  };
+}
+
+function buildReactionContext(
+  eventType: ActionEventType,
+  reaction: MessageReaction | PartialMessageReaction,
+  user: User | PartialUser,
+): EventContext {
+  const message = reaction.message;
+  return {
+    eventType,
+    guildId: message.guildId!,
+    guildName: message.guild?.name,
+    userId: user.id,
+    userName: ("username" in user ? user.username : null) ?? "Unknown",
+    userTag: "tag" in user ? (user as User).tag : "Unknown",
+    userMention: `<@${user.id}>`,
+    channelId: message.channelId,
+    channelName:
+      "name" in message.channel ? (message.channel.name ?? undefined) : undefined,
+    channelMention: `<#${message.channelId}>`,
+    memberCount: message.guild?.memberCount,
+    timestamp: new Date().toISOString(),
+    extra: {
+      "emoji": reaction.emoji.toString(),
+      "emoji.name": reaction.emoji.name ?? "unknown",
+      "message.id": message.id,
+      "message.url": message.url ?? "",
+    },
   };
 }
 
@@ -162,6 +207,15 @@ export function registerActionEventListeners(client: Client): void {
     );
   });
 
+  // Message created
+  client.on("messageCreate", (message) => {
+    if (!message.guildId || message.author.bot) return;
+    const ctx = buildMessageContext("messageCreated", message);
+    processEvent(client, ctx).catch((e) =>
+      handleError("messageCreated", e),
+    );
+  });
+
   // Message deleted
   client.on("messageDelete", (message) => {
     if (!message.guildId || message.author?.bot) return;
@@ -171,8 +225,29 @@ export function registerActionEventListeners(client: Client): void {
     );
   });
 
-  // Role added/removed (diff via guildMemberUpdate)
+  // Reaction added/removed
+  client.on("messageReactionAdd", (reaction, user) => {
+    if (!reaction.message.guildId || user.bot) return;
+    const ctx = buildReactionContext("reactionAdded", reaction, user);
+    processEvent(client, ctx).catch((e) =>
+      handleError("reactionAdded", e),
+    );
+  });
+
+  client.on("messageReactionRemove", (reaction, user) => {
+    if (!reaction.message.guildId || user.bot) return;
+    const ctx = buildReactionContext("reactionRemoved", reaction, user);
+    processEvent(client, ctx).catch((e) =>
+      handleError("reactionRemoved", e),
+    );
+  });
+
+  // Role added/removed + nickname/timeout/boost (all via guildMemberUpdate)
   client.on("guildMemberUpdate", (oldMember, newMember) => {
+    // Skip partial old members — we can't reliably diff
+    if (oldMember.partial) return;
+
+    // Role changes
     const oldRoles = oldMember.roles.cache;
     const newRoles = newMember.roles.cache;
 
@@ -192,6 +267,63 @@ export function registerActionEventListeners(client: Client): void {
           handleError("roleRemoved", e),
         );
       }
+    }
+
+    // Nickname changed
+    if (oldMember.nickname !== newMember.nickname) {
+      const ctx: EventContext = {
+        ...buildMemberContext("nicknameChanged", newMember),
+        extra: {
+          "old.nickname":
+            oldMember.nickname ?? oldMember.user?.username ?? "None",
+          "new.nickname":
+            newMember.nickname ?? newMember.user.username ?? "None",
+        },
+      };
+      processEvent(client, ctx).catch((e) =>
+        handleError("nicknameChanged", e),
+      );
+    }
+
+    // Member timeout
+    const oldTimeout =
+      oldMember.communicationDisabledUntil?.getTime() ?? 0;
+    const newTimeout =
+      newMember.communicationDisabledUntil?.getTime() ?? 0;
+    if (newTimeout !== oldTimeout && newTimeout > Date.now()) {
+      const ctx: EventContext = {
+        ...buildMemberContext("memberTimeout", newMember),
+        extra: {
+          "timeout.until":
+            newMember.communicationDisabledUntil!.toISOString(),
+        },
+      };
+      processEvent(client, ctx).catch((e) =>
+        handleError("memberTimeout", e),
+      );
+    }
+
+    // Boost start/end
+    const wasBoosting = oldMember.premiumSince !== null;
+    const isBoosting = newMember.premiumSince !== null;
+    if (!wasBoosting && isBoosting) {
+      const ctx: EventContext = {
+        ...buildMemberContext("boostStart", newMember),
+        extra: {
+          "boost.since": newMember.premiumSince!.toISOString(),
+        },
+      };
+      processEvent(client, ctx).catch((e) =>
+        handleError("boostStart", e),
+      );
+    } else if (wasBoosting && !isBoosting) {
+      const ctx: EventContext = {
+        ...buildMemberContext("boostEnd", newMember),
+        extra: {},
+      };
+      processEvent(client, ctx).catch((e) =>
+        handleError("boostEnd", e),
+      );
     }
   });
 
@@ -215,6 +347,30 @@ export function registerActionEventListeners(client: Client): void {
     );
     processEvent(client, ctx).catch((e) =>
       handleError("channelDeleted", e),
+    );
+  });
+
+  // Thread created
+  client.on("threadCreate", (thread) => {
+    if (!thread.guildId) return;
+    const ctx: EventContext = {
+      eventType: "threadCreated",
+      guildId: thread.guildId,
+      guildName: thread.guild.name,
+      userId: thread.ownerId ?? undefined,
+      userMention: thread.ownerId ? `<@${thread.ownerId}>` : undefined,
+      channelId: thread.id,
+      channelName: thread.name,
+      channelMention: `<#${thread.id}>`,
+      memberCount: thread.guild.memberCount,
+      timestamp: new Date().toISOString(),
+      extra: {
+        "thread.name": thread.name,
+        "thread.id": thread.id,
+      },
+    };
+    processEvent(client, ctx).catch((e) =>
+      handleError("threadCreated", e),
     );
   });
 

@@ -162,6 +162,43 @@ export async function getRecentLogs(
   });
 }
 
+export async function notifyCacheInvalidation(
+  guildId: string,
+  action: "reload" | "reloadSettings" = "reload",
+): Promise<void> {
+  try {
+    const prisma = getPrisma();
+    await prisma.actionCacheInvalidation.create({
+      data: { guildId, action },
+    });
+  } catch (err) {
+    logger.error(
+      "Failed to write cache invalidation",
+      err instanceof Error ? err : new Error(String(err)),
+    );
+  }
+
+  // Attempt instant HTTP notification (fire-and-forget)
+  try {
+    const { config } = await import("@fluxcore/config");
+    if (config.botSyncUrl) {
+      fetch(`${config.botSyncUrl}/cache/invalidate`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Sync-Secret": config.botSyncSecret,
+        },
+        body: JSON.stringify({ guildId, action }),
+        signal: AbortSignal.timeout(3000),
+      }).catch(() => {
+        // Silently ignore — DB polling is the fallback
+      });
+    }
+  } catch {
+    // Config may not have botSyncUrl set
+  }
+}
+
 export async function cleanOldLogs(
   retentionDays: number = ACTION_LOG_RETENTION_DAYS,
 ): Promise<number> {

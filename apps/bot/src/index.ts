@@ -3,6 +3,8 @@ import { config } from "@fluxcore/config";
 import { connectDatabase, disconnectDatabase } from "@fluxcore/database";
 import { loadCommands, loadEvents } from "./handlers/index.js";
 import { stopReminderPolling } from "./systems/reminders.js";
+import { stopCacheSyncPolling } from "@fluxcore/systems/actions/cacheSync";
+import { stopSyncServer } from "./systems/actions/syncServer.js";
 import { logger } from "@fluxcore/utils";
 
 async function main(): Promise<void> {
@@ -27,6 +29,8 @@ async function main(): Promise<void> {
   const shutdown = async () => {
     logger.info("Shutting down...");
     stopReminderPolling();
+    stopCacheSyncPolling();
+    stopSyncServer();
     client.destroy();
     await disconnectDatabase();
     process.exit(0);
