@@ -8,7 +8,9 @@ import {
 import { reconcileOnStartup } from "../systems/tempVoice/manager.js";
 import { loadActionGuildSettings } from "@fluxcore/systems/actions/config";
 import { loadAllRules } from "@fluxcore/systems/actions/cache";
+import { startCacheSyncPolling } from "@fluxcore/systems/actions/cacheSync";
 import { registerActionEventListeners } from "../systems/actions/eventBridge.js";
+import { startSyncServer } from "../systems/actions/syncServer.js";
 import { startReminderPolling } from "../systems/reminders.js";
 import { logger } from "@fluxcore/utils";
 
@@ -38,6 +40,8 @@ const event: Event<"ready"> = {
       await loadActionGuildSettings();
       await loadAllRules();
       registerActionEventListeners(client);
+      await startCacheSyncPolling();
+      startSyncServer();
     } catch (error) {
       logger.error(
         "Failed to initialize action system",

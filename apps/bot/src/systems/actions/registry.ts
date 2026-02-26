@@ -1,7 +1,8 @@
-import { EmbedBuilder, type Client } from "discord.js";
+import { EmbedBuilder, type Client, type TextChannel } from "discord.js";
 import { resolveTemplate } from "@fluxcore/systems/actions/templateEngine";
 import type { ActionConfig, ActionType, EventContext } from "@fluxcore/systems/actions/types";
-import { EVENT_TYPES } from "@fluxcore/systems/actions/constants";
+import { EVENT_TYPES, MAX_TEMPLATE_LENGTH } from "@fluxcore/systems/actions/constants";
+import { logger } from "@fluxcore/utils";
 
 type ActionExecutor = (
   client: Client,
@@ -92,6 +93,115 @@ executors.set("logToChannel", async (client, ctx, config) => {
   }
 
   await channel.send({ embeds: [embed] });
+});
+
+// --- Webhook ---
+
+const PRIVATE_IP_PATTERNS = [
+  /^127\./,
+  /^10\./,
+  /^172\.(1[6-9]|2\d|3[01])\./,
+  /^192\.168\./,
+  /^0\./,
+  /^169\.254\./,
+  /^::1$/,
+  /^fc00:/,
+  /^fe80:/,
+];
+
+function isPrivateHost(hostname: string): boolean {
+  if (hostname === "localhost") return true;
+  return PRIVATE_IP_PATTERNS.some((pattern) => pattern.test(hostname));
+}
+
+executors.set("sendWebhook", async (_client, ctx, config) => {
+  if (!config.webhook?.url) return;
+
+  let url: URL;
+  try {
+    url = new URL(config.webhook.url);
+  } catch {
+    logger.warn(`Invalid webhook URL in action config: ${config.webhook.url}`);
+    return;
+  }
+
+  if (url.protocol !== "https:") {
+    logger.warn(`Webhook URL must use HTTPS: ${config.webhook.url}`);
+    return;
+  }
+
+  if (isPrivateHost(url.hostname)) {
+    logger.warn(`Webhook URL points to private/internal host: ${url.hostname}`);
+    return;
+  }
+
+  let body = config.webhook.bodyTemplate ?? JSON.stringify({
+    event: ctx.eventType,
+    guild: ctx.guildName,
+    user: ctx.userName,
+    channel: ctx.channelName,
+    timestamp: ctx.timestamp,
+  });
+  body = resolveTemplate(body, ctx);
+
+  if (body.length > MAX_TEMPLATE_LENGTH) {
+    body = body.slice(0, MAX_TEMPLATE_LENGTH);
+  }
+
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+    ...(config.webhook.headers ?? {}),
+  };
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
+
+  try {
+    await fetch(config.webhook.url, {
+      method: config.webhook.method ?? "POST",
+      headers,
+      body,
+      signal: controller.signal,
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
+});
+
+// --- Set Nickname ---
+
+executors.set("setNickname", async (_client, ctx, config) => {
+  if (!ctx.member || !config.nickname) return;
+  const resolved = resolveTemplate(config.nickname, ctx);
+  await ctx.member.setNickname(resolved.slice(0, 32));
+});
+
+// --- Create Thread ---
+
+executors.set("createThread", async (client, ctx, config) => {
+  if (!config.channelId || !config.threadName) return;
+  const channel = await client.channels.fetch(config.channelId);
+  if (!channel?.isTextBased() || !("threads" in channel)) return;
+  const resolved = resolveTemplate(config.threadName, ctx);
+  await (channel as TextChannel).threads.create({
+    name: resolved.slice(0, 100),
+  });
+});
+
+// --- Add Reaction ---
+
+executors.set("addReaction", async (client, ctx, config) => {
+  if (!config.emoji || !ctx.extra?.["message.id"] || !ctx.channelId) return;
+  const channel = await client.channels.fetch(ctx.channelId);
+  if (!channel?.isTextBased() || !("messages" in channel)) return;
+  try {
+    const message = await (channel as TextChannel).messages.fetch(
+      ctx.extra["message.id"],
+    );
+    await message.react(config.emoji);
+  } catch {
+    // Message may have been deleted or emoji may be invalid
+  }
 });
 
 export function getExecutor(actionType: ActionType): ActionExecutor | undefined {

@@ -14,6 +14,9 @@ export interface Config {
   dashboardClientSecret: string | undefined;
   dashboardCallbackUrl: string;
   dashboardSessionSecret: string;
+  botSyncPort: number;
+  botSyncSecret: string;
+  botSyncUrl: string | undefined;
 }
 
 function loadConfig(): Config {
@@ -44,6 +47,11 @@ function loadConfig(): Config {
   const resolvedSessionSecret =
     dashboardSessionSecret || randomBytes(32).toString("hex");
 
+  const botSyncPort = Number(process.env.BOT_SYNC_PORT) || 3001;
+  const botSyncSecret =
+    process.env.BOT_SYNC_SECRET || randomBytes(32).toString("hex");
+  const botSyncUrl = process.env.BOT_SYNC_URL || undefined;
+
   return {
     token,
     clientId,
@@ -53,6 +61,9 @@ function loadConfig(): Config {
     dashboardClientSecret,
     dashboardCallbackUrl,
     dashboardSessionSecret: resolvedSessionSecret,
+    botSyncPort,
+    botSyncSecret,
+    botSyncUrl,
   };
 }
 

@@ -50,6 +50,10 @@
       "types": "./dist/actions/templateEngine.d.ts",
       "import": "./dist/actions/templateEngine.js"
     },
+    "./actions/cacheSync": {
+      "types": "./dist/actions/cacheSync.d.ts",
+      "import": "./dist/actions/cacheSync.js"
+    },
     "./cooldown": {
       "types": "./dist/cooldown.d.ts",
       "import": "./dist/cooldown.js"
@@ -61,6 +65,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "@fluxcore/config": "workspace:*",
     "@fluxcore/database": "workspace:*",
     "@fluxcore/utils": "workspace:*",
     "discord.js": "catalog:"

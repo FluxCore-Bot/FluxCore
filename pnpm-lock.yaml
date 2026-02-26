@@ -138,6 +138,9 @@ importers:
 
   packages/systems:
     dependencies:
+      '@fluxcore/config':
+        specifier: workspace:*
+        version: link:../config
       '@fluxcore/database':
         specifier: workspace:*
         version: link:../database

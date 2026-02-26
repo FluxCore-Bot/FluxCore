@@ -161,3 +161,64 @@ td { font-size: 0.9rem; }
 .empty { text-align: center; color: var(--text-muted); padding: 40px 0; }
 
 .section-title { font-size: 1.1rem; margin-bottom: 16px; }
+
+/* Variable helper panel */
+.variable-helper {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.variable-helper-title {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.variable-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.variable-chip {
+  display: inline-block;
+  padding: 3px 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  user-select: none;
+}
+
+.variable-chip:hover {
+  background: rgba(88, 101, 242, 0.15);
+  border-color: var(--accent);
+}
+
+.variable-chip.copied {
+  background: rgba(87, 242, 135, 0.15);
+  border-color: var(--success);
+  color: var(--success);
+}
+
+/* Color input in action rows */
+input[type="color"] {
+  height: 38px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+/* Textarea in action rows */
+.action-row textarea {
+  min-height: 60px;
+  resize: vertical;
+}

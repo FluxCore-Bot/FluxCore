@@ -76,6 +76,15 @@ model ActionGuildSettings {
   updatedAt     DateTime @updatedAt
 }
 
+model ActionCacheInvalidation {
+  id        Int      @id @default(autoincrement())
+  guildId   String
+  action    String // "reload" | "reloadSettings"
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
+
 model Reminder {
   id        Int      @id @default(autoincrement())
   userId    String

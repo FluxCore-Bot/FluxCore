@@ -7,12 +7,8 @@ import {
   getRulesByGuild,
   countRules,
   getRecentLogs,
+  notifyCacheInvalidation,
 } from "@fluxcore/systems/actions/persistence";
-import {
-  addRuleToCache,
-  updateRuleInCache,
-  removeRuleFromCache,
-} from "@fluxcore/systems/actions/cache";
 import {
   getGuildSettingsOrDefault,
   setGuildSettings,
@@ -21,6 +17,9 @@ import {
   EVENT_TYPES,
   ACTION_TYPES,
   MAX_ACTIONS_PER_RULE,
+  ACTION_TYPE_FIELDS,
+  EVENT_TYPE_VARIABLES,
+  TEMPLATE_VARIABLES,
 } from "@fluxcore/systems/actions/constants";
 import type { ActionEventType, ActionType } from "@fluxcore/systems/actions/types";
 import { channelExistsInGuild } from "../discordApi.js";
@@ -38,6 +37,9 @@ export function registerActionRoutes(app: FastifyInstance): void {
         eventTypes: EVENT_TYPES,
         actionTypes: ACTION_TYPES,
         maxActionsPerRule: MAX_ACTIONS_PER_RULE,
+        actionTypeFields: ACTION_TYPE_FIELDS,
+        eventTypeVariables: EVENT_TYPE_VARIABLES,
+        templateVariables: TEMPLATE_VARIABLES,
       });
     },
   );
@@ -94,6 +96,23 @@ export function registerActionRoutes(app: FastifyInstance): void {
           reply.code(400).send({ error: `Invalid action type: ${action.type}` });
           return;
         }
+        if (action.type === "sendWebhook") {
+          const webhook = action.webhook as { url?: string } | undefined;
+          if (!webhook?.url) {
+            reply.code(400).send({ error: "sendWebhook requires a webhook URL" });
+            return;
+          }
+          try {
+            const url = new URL(webhook.url);
+            if (url.protocol !== "https:") {
+              reply.code(400).send({ error: "Webhook URL must use HTTPS" });
+              return;
+            }
+          } catch {
+            reply.code(400).send({ error: "Invalid webhook URL" });
+            return;
+          }
+        }
       }
 
       const settings = getGuildSettingsOrDefault(guildId);
@@ -117,7 +136,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
         createdBy: request.session!.userId,
       });
 
-      addRuleToCache(rule);
+      await notifyCacheInvalidation(guildId);
       reply.code(201).send(rule);
     },
   );
@@ -158,6 +177,23 @@ export function registerActionRoutes(app: FastifyInstance): void {
               .send({ error: `Invalid action type: ${action.type}` });
             return;
           }
+          if (action.type === "sendWebhook") {
+            const webhook = action.webhook as { url?: string } | undefined;
+            if (!webhook?.url) {
+              reply.code(400).send({ error: "sendWebhook requires a webhook URL" });
+              return;
+            }
+            try {
+              const url = new URL(webhook.url);
+              if (url.protocol !== "https:") {
+                reply.code(400).send({ error: "Webhook URL must use HTTPS" });
+                return;
+              }
+            } catch {
+              reply.code(400).send({ error: "Invalid webhook URL" });
+              return;
+            }
+          }
         }
       }
 
@@ -177,7 +213,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
           ...(body.priority !== undefined && { priority: body.priority }),
           ...(body.enabled !== undefined && { enabled: body.enabled }),
         });
-        updateRuleInCache(updated);
+        await notifyCacheInvalidation(guildId);
         reply.send(updated);
       } catch {
         reply.code(404).send({ error: "Rule not found" });
@@ -195,7 +231,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
       };
       const deleted = await deleteRule(Number(ruleId), guildId);
       if (deleted) {
-        removeRuleFromCache(guildId, Number(ruleId));
+        await notifyCacheInvalidation(guildId);
       }
       reply.send({ success: deleted });
     },
@@ -246,6 +282,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
             : current.logChannelId,
       });
 
+      await notifyCacheInvalidation(guildId, "reloadSettings");
       reply.send({ success: true });
     },
   );
