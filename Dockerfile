@@ -51,7 +51,6 @@ COPY --from=build /app/packages/config/dist ./packages/config/dist
 COPY --from=build /app/packages/types/dist ./packages/types/dist
 COPY --from=build /app/packages/utils/dist ./packages/utils/dist
 COPY --from=build /app/packages/database/dist ./packages/database/dist
-COPY --from=build /app/packages/database/generated ./packages/database/generated
 COPY --from=build /app/packages/systems/dist ./packages/systems/dist
 COPY --from=build /app/apps/bot/dist ./apps/bot/dist
 COPY --from=build /app/apps/dashboard/dist ./apps/dashboard/dist

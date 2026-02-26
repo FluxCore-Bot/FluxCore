@@ -1,0 +1,3 @@
+{$DASHBOARD_DOMAIN:localhost} {
+	reverse_proxy bot:3000
+}
