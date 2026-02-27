@@ -1,5 +1,6 @@
 import Fastify from "fastify";
 import fastifyCookie from "@fastify/cookie";
+import fastifyHelmet from "@fastify/helmet";
 import fastifyRateLimit from "@fastify/rate-limit";
 import fastifyStatic from "@fastify/static";
 import { join, dirname } from "node:path";
@@ -34,6 +35,17 @@ async function main(): Promise<void> {
 
   await app.register(fastifyCookie, {
     secret: config.dashboardSessionSecret,
+  });
+
+  await app.register(fastifyHelmet, {
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        imgSrc: ["'self'", "data:", "https://cdn.discordapp.com"],
+      },
+    },
   });
 
   await app.register(fastifyRateLimit, {

@@ -42,6 +42,8 @@ export async function requireGuildAdmin(
   const { guildId } = request.params as { guildId: string };
   const session = request.session!;
 
+  // TODO: Guild permissions are cached at login time and may become stale.
+  // Consider periodically refreshing from Discord API for long-lived sessions.
   const userGuild = session.guilds.find((g) => g.id === guildId);
   if (!userGuild || !(BigInt(userGuild.permissions) & MANAGE_GUILD)) {
     reply.code(403).send({ error: "No permission for this guild" });
