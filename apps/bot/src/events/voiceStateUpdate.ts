@@ -1,6 +1,9 @@
-import type { VoiceState, VoiceChannel } from "discord.js";
+import type { VoiceState, VoiceChannel, Client } from "discord.js";
 import type { Event } from "@fluxcore/types";
 import { getConfigByHubChannel } from "@fluxcore/systems/tempVoice/config";
+import { getRulesForEvent } from "@fluxcore/systems/actions/cache";
+import { processEvent } from "../systems/actions/executor.js";
+import { buildVoiceContext } from "../systems/actions/eventBridge.js";
 import {
   createTempChannel,
   isTrackedChannel,
@@ -12,6 +15,7 @@ const event: Event<"voiceStateUpdate"> = {
   name: "voiceStateUpdate",
   async execute(oldState: VoiceState, newState: VoiceState) {
     const guild = newState.guild;
+    const client = guild.client as Client;
 
     // User joined a channel
     if (newState.channelId && newState.channelId !== oldState.channelId) {
@@ -20,6 +24,14 @@ const event: Event<"voiceStateUpdate"> = {
         const member = newState.member;
         if (!member) return;
         await createTempChannel(member, guild, config);
+      }
+
+      // Action system: voiceJoin
+      if (getRulesForEvent(guild.id, "voiceJoin").length > 0) {
+        const ctx = buildVoiceContext("voiceJoin", newState);
+        processEvent(client, ctx).catch((e) =>
+          logger.error("Action event processing failed for voiceJoin", e instanceof Error ? e : new Error(String(e))),
+        );
       }
     }
 
@@ -40,6 +52,14 @@ const event: Event<"voiceStateUpdate"> = {
             );
           }
         }
+      }
+
+      // Action system: voiceLeave
+      if (getRulesForEvent(guild.id, "voiceLeave").length > 0) {
+        const ctx = buildVoiceContext("voiceLeave", oldState);
+        processEvent(client, ctx).catch((e) =>
+          logger.error("Action event processing failed for voiceLeave", e instanceof Error ? e : new Error(String(e))),
+        );
       }
     }
   },

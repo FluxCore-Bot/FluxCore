@@ -22,17 +22,18 @@ const event: Event<"ready"> = {
     auditPermissions(client);
 
     await loadTempVoiceConfig();
-    for (const guildId of getAllConfiguredGuildIds()) {
-      const guild = client.guilds.cache.get(guildId);
-      if (guild) {
-        try {
-          await reconcileOnStartup(guild);
-        } catch (error) {
-          logger.error(
-            `Failed to reconcile TempVoice for guild ${guildId}`,
-            error instanceof Error ? error : new Error(String(error)),
-          );
-        }
+    const guildsToReconcile = getAllConfiguredGuildIds()
+      .map((id) => client.guilds.cache.get(id))
+      .filter((g): g is NonNullable<typeof g> => g != null);
+    const results = await Promise.allSettled(
+      guildsToReconcile.map((guild) => reconcileOnStartup(guild)),
+    );
+    for (const result of results) {
+      if (result.status === "rejected") {
+        logger.error(
+          "Failed to reconcile TempVoice for guild",
+          result.reason instanceof Error ? result.reason : new Error(String(result.reason)),
+        );
       }
     }
 

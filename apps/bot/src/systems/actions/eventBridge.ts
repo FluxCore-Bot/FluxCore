@@ -15,6 +15,7 @@ import type {
 } from "discord.js";
 import { logger } from "@fluxcore/utils";
 import { processEvent } from "./executor.js";
+import { getRulesForEvent } from "@fluxcore/systems/actions/cache";
 import type { ActionEventType, EventContext } from "@fluxcore/systems/actions/types";
 
 function handleError(eventType: string, error: unknown): void {
@@ -126,7 +127,7 @@ function buildChannelContext(
   };
 }
 
-function buildVoiceContext(
+export function buildVoiceContext(
   eventType: ActionEventType,
   state: VoiceState,
 ): EventContext {
@@ -210,6 +211,7 @@ export function registerActionEventListeners(client: Client): void {
   // Message created
   client.on("messageCreate", (message) => {
     if (!message.guildId || message.author.bot) return;
+    if (getRulesForEvent(message.guildId, "messageCreated").length === 0) return;
     const ctx = buildMessageContext("messageCreated", message);
     processEvent(client, ctx).catch((e) =>
       handleError("messageCreated", e),
@@ -219,6 +221,7 @@ export function registerActionEventListeners(client: Client): void {
   // Message deleted
   client.on("messageDelete", (message) => {
     if (!message.guildId || message.author?.bot) return;
+    if (getRulesForEvent(message.guildId, "messageDeleted").length === 0) return;
     const ctx = buildMessageContext("messageDeleted", message);
     processEvent(client, ctx).catch((e) =>
       handleError("messageDeleted", e),
@@ -228,6 +231,7 @@ export function registerActionEventListeners(client: Client): void {
   // Reaction added/removed
   client.on("messageReactionAdd", (reaction, user) => {
     if (!reaction.message.guildId || user.bot) return;
+    if (getRulesForEvent(reaction.message.guildId, "reactionAdded").length === 0) return;
     const ctx = buildReactionContext("reactionAdded", reaction, user);
     processEvent(client, ctx).catch((e) =>
       handleError("reactionAdded", e),
@@ -236,6 +240,7 @@ export function registerActionEventListeners(client: Client): void {
 
   client.on("messageReactionRemove", (reaction, user) => {
     if (!reaction.message.guildId || user.bot) return;
+    if (getRulesForEvent(reaction.message.guildId, "reactionRemoved").length === 0) return;
     const ctx = buildReactionContext("reactionRemoved", reaction, user);
     processEvent(client, ctx).catch((e) =>
       handleError("reactionRemoved", e),
@@ -246,6 +251,17 @@ export function registerActionEventListeners(client: Client): void {
   client.on("guildMemberUpdate", (oldMember, newMember) => {
     // Skip partial old members — we can't reliably diff
     if (oldMember.partial) return;
+
+    const guildId = newMember.guild.id;
+    // Early exit if no guildMemberUpdate-related rules exist for this guild
+    const hasRules =
+      getRulesForEvent(guildId, "roleAdded").length > 0 ||
+      getRulesForEvent(guildId, "roleRemoved").length > 0 ||
+      getRulesForEvent(guildId, "nicknameChanged").length > 0 ||
+      getRulesForEvent(guildId, "memberTimeout").length > 0 ||
+      getRulesForEvent(guildId, "boostStart").length > 0 ||
+      getRulesForEvent(guildId, "boostEnd").length > 0;
+    if (!hasRules) return;
 
     // Role changes
     const oldRoles = oldMember.roles.cache;
@@ -374,21 +390,8 @@ export function registerActionEventListeners(client: Client): void {
     );
   });
 
-  // Voice join/leave
-  client.on("voiceStateUpdate", (oldState, newState) => {
-    if (newState.channelId && newState.channelId !== oldState.channelId) {
-      const ctx = buildVoiceContext("voiceJoin", newState);
-      processEvent(client, ctx).catch((e) =>
-        handleError("voiceJoin", e),
-      );
-    }
-    if (oldState.channelId && oldState.channelId !== newState.channelId) {
-      const ctx = buildVoiceContext("voiceLeave", oldState);
-      processEvent(client, ctx).catch((e) =>
-        handleError("voiceLeave", e),
-      );
-    }
-  });
+  // Note: voiceStateUpdate is handled in the dedicated event handler
+  // (events/voiceStateUpdate.ts) to avoid duplicate listeners.
 
   logger.info("Registered action event listeners");
 }
