@@ -91,11 +91,17 @@ export async function createTempChannel(
     }
   }
 
+  // If no explicit category, inherit the hub channel's parent category
+  const parent =
+    config.categoryId ??
+    guild.channels.cache.get(config.hubChannelId)?.parentId ??
+    null;
+
   try {
     const channel = await guild.channels.create({
       name,
       type: ChannelType.GuildVoice,
-      parent: config.categoryId,
+      parent,
       userLimit: saved?.userLimit ?? 0,
       permissionOverwrites,
     });
