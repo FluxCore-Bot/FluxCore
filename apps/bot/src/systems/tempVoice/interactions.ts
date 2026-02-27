@@ -55,7 +55,11 @@ function validateOwner(
         ],
         ephemeral: true,
       })
-      .catch(() => {});
+      .catch((err: unknown) =>
+        logger.debug(
+          `Interaction reply failed: ${err instanceof Error ? err.message : String(err)}`,
+        ),
+      );
     return null;
   }
 
