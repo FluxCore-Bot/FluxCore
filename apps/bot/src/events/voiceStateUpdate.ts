@@ -1,6 +1,6 @@
 import type { VoiceState, VoiceChannel } from "discord.js";
 import type { Event } from "@fluxcore/types";
-import { getGuildConfig } from "@fluxcore/systems/tempVoice/config";
+import { getConfigByHubChannel } from "@fluxcore/systems/tempVoice/config";
 import {
   createTempChannel,
   isTrackedChannel,
@@ -15,11 +15,11 @@ const event: Event<"voiceStateUpdate"> = {
 
     // User joined a channel
     if (newState.channelId && newState.channelId !== oldState.channelId) {
-      const config = getGuildConfig(guild.id);
-      if (config && newState.channelId === config.hubChannelId) {
+      const config = getConfigByHubChannel(newState.channelId);
+      if (config) {
         const member = newState.member;
         if (!member) return;
-        await createTempChannel(member, guild);
+        await createTempChannel(member, guild, config);
       }
     }
 

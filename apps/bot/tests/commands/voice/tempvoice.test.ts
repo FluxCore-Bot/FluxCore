@@ -21,17 +21,26 @@ vi.mock("@fluxcore/utils", async (importOriginal) => {
   };
 });
 
-const mockSetGuildConfig = vi.fn().mockResolvedValue(undefined);
+const mockAddGuildConfig = vi.fn().mockResolvedValue({
+  id: 1,
+  hubChannelId: "channel-123",
+  categoryId: "category-456",
+  nameTemplate: "{user}'s Channel",
+});
 const mockRemoveGuildConfig = vi.fn().mockResolvedValue(true);
-const mockGetGuildConfig = vi.fn().mockReturnValue(null);
+const mockGetGuildConfigs = vi.fn().mockReturnValue([]);
+const mockGetConfigByHubChannel = vi.fn().mockReturnValue(undefined);
 vi.mock("@fluxcore/systems/tempVoice/config", () => ({
-  setGuildConfig: (...args: unknown[]) => mockSetGuildConfig(...args),
+  addGuildConfig: (...args: unknown[]) => mockAddGuildConfig(...args),
   removeGuildConfig: (...args: unknown[]) => mockRemoveGuildConfig(...args),
-  getGuildConfig: (...args: unknown[]) => mockGetGuildConfig(...args),
+  getGuildConfigs: (...args: unknown[]) => mockGetGuildConfigs(...args),
+  getConfigByHubChannel: (...args: unknown[]) =>
+    mockGetConfigByHubChannel(...args),
 }));
 
 vi.mock("@fluxcore/systems/tempVoice/constants", () => ({
   DEFAULT_NAME_TEMPLATE: "{user}'s Channel",
+  MAX_TEMPVOICE_CONFIGS_PER_GUILD: 10,
 }));
 
 const tempvoiceModule = await import(
@@ -60,7 +69,8 @@ describe("tempvoice command", () => {
     vi.clearAllMocks();
     mockCheckPermissions.mockResolvedValue(true);
     mockCheckBotPermissions.mockResolvedValue(true);
-    mockGetGuildConfig.mockReturnValue(null);
+    mockGetGuildConfigs.mockReturnValue([]);
+    mockGetConfigByHubChannel.mockReturnValue(undefined);
     mockRemoveGuildConfig.mockResolvedValue(true);
   });
 
@@ -76,7 +86,7 @@ describe("tempvoice command", () => {
 
     await command.execute(interaction as never);
 
-    expect(mockSetGuildConfig).toHaveBeenCalledWith("guild-789", {
+    expect(mockAddGuildConfig).toHaveBeenCalledWith("guild-789", {
       hubChannelId: "channel-123",
       categoryId: "category-456",
       nameTemplate: "{user}'s Channel",
@@ -100,7 +110,7 @@ describe("tempvoice command", () => {
 
     await command.execute(interaction as never);
 
-    expect(mockSetGuildConfig).toHaveBeenCalledWith("guild-789", {
+    expect(mockAddGuildConfig).toHaveBeenCalledWith("guild-789", {
       hubChannelId: "channel-123",
       categoryId: "category-456",
       nameTemplate: "{user}'s Room",
@@ -113,7 +123,7 @@ describe("tempvoice command", () => {
 
     await command.execute(interaction as never);
 
-    expect(mockSetGuildConfig).not.toHaveBeenCalled();
+    expect(mockAddGuildConfig).not.toHaveBeenCalled();
   });
 
   it("returns early on setup when bot lacks permissions", async () => {
@@ -122,16 +132,76 @@ describe("tempvoice command", () => {
 
     await command.execute(interaction as never);
 
-    expect(mockSetGuildConfig).not.toHaveBeenCalled();
+    expect(mockAddGuildConfig).not.toHaveBeenCalled();
+  });
+
+  it("rejects setup when hub channel is already configured", async () => {
+    mockGetConfigByHubChannel.mockReturnValueOnce({
+      id: 1,
+      hubChannelId: "channel-123",
+      categoryId: "category-456",
+      nameTemplate: "{user}'s Channel",
+    });
+    const interaction = createMockInteraction();
+
+    await command.execute(interaction as never);
+
+    expect(mockAddGuildConfig).not.toHaveBeenCalled();
+    expect(interaction.reply).toHaveBeenCalledWith(
+      expect.objectContaining({
+        ephemeral: true,
+        embeds: expect.arrayContaining([
+          expect.objectContaining({
+            data: expect.objectContaining({
+              title: "Already Configured",
+            }),
+          }),
+        ]),
+      }),
+    );
+  });
+
+  it("rejects setup when config limit reached", async () => {
+    mockGetGuildConfigs.mockReturnValueOnce(
+      Array.from({ length: 10 }, (_, i) => ({
+        id: i + 1,
+        hubChannelId: `hub-${i}`,
+        categoryId: null,
+        nameTemplate: "{user}'s Channel",
+      })),
+    );
+    const interaction = createMockInteraction();
+
+    await command.execute(interaction as never);
+
+    expect(mockAddGuildConfig).not.toHaveBeenCalled();
+    expect(interaction.reply).toHaveBeenCalledWith(
+      expect.objectContaining({
+        ephemeral: true,
+        embeds: expect.arrayContaining([
+          expect.objectContaining({
+            data: expect.objectContaining({
+              title: "Limit Reached",
+            }),
+          }),
+        ]),
+      }),
+    );
   });
 
   // Remove subcommand
   it("removes temp voice config successfully", async () => {
+    mockGetConfigByHubChannel.mockReturnValueOnce({
+      id: 1,
+      hubChannelId: "channel-123",
+      categoryId: "category-456",
+      nameTemplate: "{user}'s Channel",
+    });
     const interaction = createMockInteraction({ subcommand: "remove" });
 
     await command.execute(interaction as never);
 
-    expect(mockRemoveGuildConfig).toHaveBeenCalledWith("guild-789");
+    expect(mockRemoveGuildConfig).toHaveBeenCalledWith("guild-789", 1);
     expect(interaction.reply).toHaveBeenCalledWith(
       expect.objectContaining({
         embeds: expect.arrayContaining([
@@ -145,12 +215,13 @@ describe("tempvoice command", () => {
     );
   });
 
-  it("handles remove when no config exists", async () => {
-    mockRemoveGuildConfig.mockResolvedValueOnce(false);
+  it("handles remove when channel is not a hub", async () => {
+    mockGetConfigByHubChannel.mockReturnValueOnce(undefined);
     const interaction = createMockInteraction({ subcommand: "remove" });
 
     await command.execute(interaction as never);
 
+    expect(mockRemoveGuildConfig).not.toHaveBeenCalled();
     expect(interaction.reply).toHaveBeenCalledWith(
       expect.objectContaining({
         ephemeral: true,
@@ -165,14 +236,23 @@ describe("tempvoice command", () => {
     );
   });
 
-  // Status subcommand
-  it("shows status when configured", async () => {
-    mockGetGuildConfig.mockReturnValueOnce({
-      hubChannelId: "channel-123",
-      nameTemplate: "{user}'s Channel",
-      categoryId: "category-456",
-    });
-    const interaction = createMockInteraction({ subcommand: "status" });
+  // List subcommand
+  it("shows config list when configs exist", async () => {
+    mockGetGuildConfigs.mockReturnValueOnce([
+      {
+        id: 1,
+        hubChannelId: "channel-123",
+        nameTemplate: "{user}'s Channel",
+        categoryId: "category-456",
+      },
+      {
+        id: 2,
+        hubChannelId: "channel-456",
+        nameTemplate: "{user}'s Room",
+        categoryId: null,
+      },
+    ]);
+    const interaction = createMockInteraction({ subcommand: "list" });
 
     await command.execute(interaction as never);
 
@@ -182,7 +262,7 @@ describe("tempvoice command", () => {
         embeds: expect.arrayContaining([
           expect.objectContaining({
             data: expect.objectContaining({
-              title: "Temp Voice Status",
+              title: "Temp Voice Configurations (2)",
             }),
           }),
         ]),
@@ -190,8 +270,9 @@ describe("tempvoice command", () => {
     );
   });
 
-  it("shows not configured status when no config", async () => {
-    const interaction = createMockInteraction({ subcommand: "status" });
+  it("shows no configurations message when empty", async () => {
+    mockGetGuildConfigs.mockReturnValueOnce([]);
+    const interaction = createMockInteraction({ subcommand: "list" });
 
     await command.execute(interaction as never);
 
@@ -201,7 +282,7 @@ describe("tempvoice command", () => {
         embeds: expect.arrayContaining([
           expect.objectContaining({
             data: expect.objectContaining({
-              title: "Not Configured",
+              title: "No Configurations",
             }),
           }),
         ]),

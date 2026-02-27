@@ -42,3 +42,5 @@ export const InputIds = {
 } as const;
 
 export const DEFAULT_NAME_TEMPLATE = "{user}'s Channel";
+
+export const MAX_TEMPVOICE_CONFIGS_PER_GUILD = 10;

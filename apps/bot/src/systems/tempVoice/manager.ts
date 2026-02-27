@@ -12,8 +12,11 @@ import {
   type GuildMember,
   type VoiceBasedChannel,
 } from "discord.js";
-import type { ActiveTempChannel } from "@fluxcore/systems/tempVoice/types";
-import { getGuildConfig } from "@fluxcore/systems/tempVoice/config";
+import type {
+  ActiveTempChannel,
+  TempVoiceGuildConfig,
+} from "@fluxcore/systems/tempVoice/types";
+import { getGuildConfigs } from "@fluxcore/systems/tempVoice/config";
 import { loadUserSettings } from "@fluxcore/systems/tempVoice/persistence";
 import { ButtonIds, DEFAULT_NAME_TEMPLATE } from "@fluxcore/systems/tempVoice/constants";
 import { logger } from "@fluxcore/utils";
@@ -39,11 +42,9 @@ export function isChannelOwner(channelId: string, userId: string): boolean {
 export async function createTempChannel(
   member: GuildMember,
   guild: Guild,
+  config: TempVoiceGuildConfig,
 ): Promise<VoiceChannel | null> {
-  const config = getGuildConfig(guild.id);
-  if (!config) return null;
-
-  const saved = await loadUserSettings(guild.id, member.id);
+  const saved = await loadUserSettings(guild.id, member.id, config.id);
 
   const template = config.nameTemplate || DEFAULT_NAME_TEMPLATE;
   const defaultName = template.replace("{user}", member.displayName);
@@ -105,6 +106,7 @@ export async function createTempChannel(
       channelId: channel.id,
       guildId: guild.id,
       ownerId: member.id,
+      configId: config.id,
       panelMessageId: null,
       isLocked: saved?.isLocked ?? false,
       isHidden: saved?.isHidden ?? false,
@@ -117,7 +119,7 @@ export async function createTempChannel(
     await sendManagementPanel(channel, member);
 
     logger.info(
-      `Created temp channel "${channel.name}" for ${member.user.tag} in ${guild.name}${saved ? " (restored settings)" : ""}`,
+      `Created temp channel "${channel.name}" for ${member.user.tag} in ${guild.name} (config #${config.id})${saved ? " (restored settings)" : ""}`,
     );
     return channel;
   } catch (error) {
@@ -331,92 +333,100 @@ export async function updatePanel(
 // ── Startup Reconciliation ──
 
 export async function reconcileOnStartup(guild: Guild): Promise<void> {
-  const config = getGuildConfig(guild.id);
-  if (!config) return;
+  const configs = getGuildConfigs(guild.id);
+  if (configs.length === 0) return;
 
-  const hubChannel = guild.channels.cache.get(config.hubChannelId);
-  if (!hubChannel) {
-    logger.warn(
-      `[${guild.name}] Hub channel ${config.hubChannelId} no longer exists`,
+  const reconciledChannelIds = new Set<string>();
+
+  for (const config of configs) {
+    const hubChannel = guild.channels.cache.get(config.hubChannelId);
+    if (!hubChannel) {
+      logger.warn(
+        `[${guild.name}] Hub channel ${config.hubChannelId} (config #${config.id}) no longer exists`,
+      );
+      continue;
+    }
+
+    const categoryId = config.categoryId;
+    if (!categoryId) continue;
+
+    const category = guild.channels.cache.get(categoryId);
+    if (!category || category.type !== ChannelType.GuildCategory) continue;
+
+    const voiceChannels = guild.channels.cache.filter(
+      (ch) =>
+        ch.parentId === categoryId &&
+        ch.type === ChannelType.GuildVoice &&
+        ch.id !== config.hubChannelId &&
+        !reconciledChannelIds.has(ch.id),
     );
-    return;
-  }
 
-  const categoryId = config.categoryId;
-  if (!categoryId) return;
+    for (const [, channel] of voiceChannels) {
+      const vc = channel as VoiceChannel;
+      reconciledChannelIds.add(vc.id);
 
-  const category = guild.channels.cache.get(categoryId);
-  if (!category || category.type !== ChannelType.GuildCategory) return;
-
-  const voiceChannels = guild.channels.cache.filter(
-    (ch) =>
-      ch.parentId === categoryId &&
-      ch.type === ChannelType.GuildVoice &&
-      ch.id !== config.hubChannelId,
-  );
-
-  for (const [, channel] of voiceChannels) {
-    const vc = channel as VoiceChannel;
-    if (vc.members.size === 0) {
-      try {
-        await vc.delete("Temp voice cleanup after restart");
-        logger.info(`[${guild.name}] Cleaned up orphan temp channel: ${vc.name}`);
-      } catch (error) {
-        logger.warn(
-          `[${guild.name}] Failed to clean up orphan channel ${vc.name}: ${
-            error instanceof Error ? error.message : String(error)
-          }`,
-        );
-      }
-    } else {
-      const overwrites = vc.permissionOverwrites.cache;
-      const bannedUserIds: string[] = [];
-      const hiddenFromUserIds: string[] = [];
-      let detectedOwnerId: string | null = null;
-      let isLocked = false;
-      let isHidden = false;
-      let isTextClosed = false;
-
-      for (const [id, overwrite] of overwrites) {
-        if (overwrite.type === OverwriteType.Role) {
-          if (id === vc.guild.roles.everyone.id) {
-            isLocked = overwrite.deny.has(PermissionFlagsBits.Connect);
-            isHidden = overwrite.deny.has(PermissionFlagsBits.ViewChannel);
-            isTextClosed = overwrite.deny.has(PermissionFlagsBits.SendMessages);
-          }
-          continue;
+      if (vc.members.size === 0) {
+        try {
+          await vc.delete("Temp voice cleanup after restart");
+          logger.info(`[${guild.name}] Cleaned up orphan temp channel: ${vc.name}`);
+        } catch (error) {
+          logger.warn(
+            `[${guild.name}] Failed to clean up orphan channel ${vc.name}: ${
+              error instanceof Error ? error.message : String(error)
+            }`,
+          );
         }
+      } else {
+        const overwrites = vc.permissionOverwrites.cache;
+        const bannedUserIds: string[] = [];
+        const hiddenFromUserIds: string[] = [];
+        let detectedOwnerId: string | null = null;
+        let isLocked = false;
+        let isHidden = false;
+        let isTextClosed = false;
 
-        if (overwrite.type === OverwriteType.Member) {
-          if (overwrite.allow.has(PermissionFlagsBits.ManageChannels)) {
-            detectedOwnerId = id;
+        for (const [id, overwrite] of overwrites) {
+          if (overwrite.type === OverwriteType.Role) {
+            if (id === vc.guild.roles.everyone.id) {
+              isLocked = overwrite.deny.has(PermissionFlagsBits.Connect);
+              isHidden = overwrite.deny.has(PermissionFlagsBits.ViewChannel);
+              isTextClosed = overwrite.deny.has(PermissionFlagsBits.SendMessages);
+            }
             continue;
           }
-          if (overwrite.deny.has(PermissionFlagsBits.Connect)) {
-            bannedUserIds.push(id);
-          }
-          if (overwrite.deny.has(PermissionFlagsBits.ViewChannel)) {
-            hiddenFromUserIds.push(id);
+
+          if (overwrite.type === OverwriteType.Member) {
+            if (overwrite.allow.has(PermissionFlagsBits.ManageChannels)) {
+              detectedOwnerId = id;
+              continue;
+            }
+            if (overwrite.deny.has(PermissionFlagsBits.Connect)) {
+              bannedUserIds.push(id);
+            }
+            if (overwrite.deny.has(PermissionFlagsBits.ViewChannel)) {
+              hiddenFromUserIds.push(id);
+            }
           }
         }
+
+        const ownerId = detectedOwnerId ?? vc.members.first()!.id;
+
+        activeChannels.set(vc.id, {
+          channelId: vc.id,
+          guildId: guild.id,
+          ownerId,
+          configId: config.id,
+          panelMessageId: null,
+          isLocked,
+          isHidden,
+          isTextClosed,
+          bannedUserIds,
+          hiddenFromUserIds,
+        });
+        logger.info(
+          `[${guild.name}] Re-tracked temp channel: ${vc.name} (config #${config.id}, owner: ${ownerId}, banned: ${bannedUserIds.length}, hiddenFrom: ${hiddenFromUserIds.length})`,
+        );
       }
-
-      const ownerId = detectedOwnerId ?? vc.members.first()!.id;
-
-      activeChannels.set(vc.id, {
-        channelId: vc.id,
-        guildId: guild.id,
-        ownerId,
-        panelMessageId: null,
-        isLocked,
-        isHidden,
-        isTextClosed,
-        bannedUserIds,
-        hiddenFromUserIds,
-      });
-      logger.info(
-        `[${guild.name}] Re-tracked temp channel: ${vc.name} (owner: ${ownerId}, banned: ${bannedUserIds.length}, hiddenFrom: ${hiddenFromUserIds.length})`,
-      );
     }
   }
 }
