@@ -2,6 +2,14 @@ import { randomUUID } from "node:crypto";
 import { getPrisma } from "@fluxcore/database";
 import { encrypt, decrypt } from "./crypto.js";
 
+function safeJsonParse<T>(json: string, fallback: T): T {
+  try {
+    return JSON.parse(json) as T;
+  } catch {
+    return fallback;
+  }
+}
+
 export interface OAuthGuild {
   id: string;
   name: string;
@@ -71,7 +79,7 @@ export async function getSession(id: string): Promise<Session | null> {
     username: row.username,
     avatar: row.avatar,
     accessToken: decrypt(row.accessToken),
-    guilds: JSON.parse(row.guilds) as OAuthGuild[],
+    guilds: safeJsonParse<OAuthGuild[]>(row.guilds, []),
     createdAt: row.createdAt.getTime(),
   };
 

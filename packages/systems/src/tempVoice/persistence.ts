@@ -3,6 +3,14 @@ import { getPrisma } from "@fluxcore/database";
 import type { ActiveTempChannel, SavedTempVoiceSettings } from "./types.js";
 import { logger } from "@fluxcore/utils";
 
+function safeJsonParse<T>(json: string, fallback: T): T {
+  try {
+    return JSON.parse(json) as T;
+  } catch {
+    return fallback;
+  }
+}
+
 const SETTINGS_CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 const settingsCache = new Map<
   string,
@@ -41,8 +49,8 @@ export async function loadUserSettings(
       isLocked: row.isLocked,
       isHidden: row.isHidden,
       isTextClosed: row.isTextClosed,
-      bannedUserIds: JSON.parse(row.bannedUserIds) as string[],
-      hiddenFromUserIds: JSON.parse(row.hiddenFromUserIds) as string[],
+      bannedUserIds: safeJsonParse<string[]>(row.bannedUserIds, []),
+      hiddenFromUserIds: safeJsonParse<string[]>(row.hiddenFromUserIds, []),
     };
     settingsCache.set(key, { settings, expiresAt: Date.now() + SETTINGS_CACHE_TTL });
     return settings;

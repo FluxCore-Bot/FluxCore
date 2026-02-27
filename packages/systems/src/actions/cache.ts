@@ -3,6 +3,14 @@ import { logger } from "@fluxcore/utils";
 import { getRulesByGuild } from "./persistence.js";
 import type { ActionRule } from "./types.js";
 
+function safeJsonParse<T>(json: string, fallback: T): T {
+  try {
+    return JSON.parse(json) as T;
+  } catch {
+    return fallback;
+  }
+}
+
 // guildId -> eventType -> ActionRule[] (sorted by priority desc)
 const ruleCache = new Map<string, Map<string, ActionRule[]>>();
 
@@ -36,8 +44,8 @@ export async function loadAllRules(): Promise<void> {
         name: row.name,
         enabled: row.enabled,
         eventType: row.eventType as ActionRule["eventType"],
-        actions: JSON.parse(row.actions),
-        conditions: JSON.parse(row.conditions),
+        actions: safeJsonParse(row.actions, []),
+        conditions: safeJsonParse(row.conditions, {}),
         priority: row.priority,
         createdBy: row.createdBy,
       };
