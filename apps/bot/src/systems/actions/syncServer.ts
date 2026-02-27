@@ -3,6 +3,7 @@ import { config } from "@fluxcore/config";
 import { logger } from "@fluxcore/utils";
 import { reloadGuild } from "@fluxcore/systems/actions/cache";
 import { loadActionGuildSettings } from "@fluxcore/systems/actions/config";
+import { reloadGuildTempVoiceConfig } from "@fluxcore/systems/tempVoice/config";
 
 let server: Server | null = null;
 
@@ -49,7 +50,12 @@ export function startSyncServer(): void {
         if (action === "reloadSettings") {
           await loadActionGuildSettings();
         }
-        await reloadGuild(guildId);
+
+        if (action === "reloadTempVoice") {
+          await reloadGuildTempVoiceConfig(guildId);
+        } else {
+          await reloadGuild(guildId);
+        }
 
         logger.debug(`Cache sync (HTTP): reloaded guild ${guildId}`);
         res.writeHead(200, { "Content-Type": "application/json" });

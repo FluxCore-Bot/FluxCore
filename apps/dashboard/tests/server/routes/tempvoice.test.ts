@@ -55,6 +55,12 @@ vi.mock("@fluxcore/systems/tempVoice/constants", () => ({
   MAX_TEMPVOICE_CONFIGS_PER_GUILD: 10,
 }));
 
+const mockNotifyCacheInvalidation = vi.fn().mockResolvedValue(undefined);
+vi.mock("@fluxcore/systems/actions/persistence", () => ({
+  notifyCacheInvalidation: (...args: unknown[]) =>
+    mockNotifyCacheInvalidation(...args),
+}));
+
 vi.mock("@fluxcore/utils", () => ({
   logger: { debug: vi.fn(), info: vi.fn(), warn: vi.fn(), error: vi.fn() },
 }));
@@ -123,6 +129,10 @@ describe("tempvoice routes", () => {
       expect(res.statusCode).toBe(201);
       expect(res.json().id).toBe(1);
       expect(mockAddGuildConfig).toHaveBeenCalled();
+      expect(mockNotifyCacheInvalidation).toHaveBeenCalledWith(
+        "guild-1",
+        "reloadTempVoice",
+      );
     });
 
     it("returns 400 when hubChannelId missing", async () => {
@@ -207,6 +217,10 @@ describe("tempvoice routes", () => {
       expect(mockUpdateGuildConfig).toHaveBeenCalledWith("guild-1", 1, {
         nameTemplate: "{user}'s Room",
       });
+      expect(mockNotifyCacheInvalidation).toHaveBeenCalledWith(
+        "guild-1",
+        "reloadTempVoice",
+      );
     });
 
     it("returns 400 when changing hub to already-used channel", async () => {
@@ -248,6 +262,10 @@ describe("tempvoice routes", () => {
       expect(res.statusCode).toBe(200);
       expect(res.json().success).toBe(true);
       expect(mockRemoveGuildConfig).toHaveBeenCalledWith("guild-1", 1);
+      expect(mockNotifyCacheInvalidation).toHaveBeenCalledWith(
+        "guild-1",
+        "reloadTempVoice",
+      );
     });
 
     it("returns success false when config not found", async () => {
@@ -259,6 +277,7 @@ describe("tempvoice routes", () => {
       });
       expect(res.statusCode).toBe(200);
       expect(res.json().success).toBe(false);
+      expect(mockNotifyCacheInvalidation).not.toHaveBeenCalled();
     });
   });
 });

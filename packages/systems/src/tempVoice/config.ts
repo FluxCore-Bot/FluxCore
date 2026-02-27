@@ -136,6 +136,51 @@ export async function removeGuildConfig(
   return true;
 }
 
+/** Reload a single guild's temp voice configs from the database. */
+export async function reloadGuildTempVoiceConfig(
+  guildId: string,
+): Promise<void> {
+  try {
+    const prisma = getPrisma();
+    const rows = await prisma.tempVoiceGuildConfig.findMany({
+      where: { guildId },
+    });
+
+    // Remove old hub channel index entries for this guild
+    const oldConfigs = guildConfigsCache.get(guildId) ?? [];
+    for (const old of oldConfigs) {
+      hubChannelIndex.delete(old.hubChannelId);
+    }
+
+    // Rebuild this guild's cache entries
+    if (rows.length === 0) {
+      guildConfigsCache.delete(guildId);
+    } else {
+      const configs: TempVoiceGuildConfig[] = [];
+      for (const row of rows) {
+        const config: TempVoiceGuildConfig = {
+          id: row.id,
+          hubChannelId: row.hubChannelId,
+          categoryId: row.categoryId,
+          nameTemplate: row.nameTemplate,
+        };
+        configs.push(config);
+        hubChannelIndex.set(row.hubChannelId, config);
+      }
+      guildConfigsCache.set(guildId, configs);
+    }
+
+    logger.debug(
+      `Reloaded ${rows.length} temp voice config(s) for guild ${guildId}`,
+    );
+  } catch (error) {
+    logger.error(
+      `Failed to reload temp voice config for guild ${guildId}`,
+      error instanceof Error ? error : new Error(String(error)),
+    );
+  }
+}
+
 /** Get all guild IDs that have at least one config */
 export function getAllConfiguredGuildIds(): string[] {
   return [...guildConfigsCache.keys()];
