@@ -68,7 +68,7 @@ describe("discord routes", () => {
       const res = await app.inject({
         method: "GET",
         url: "/api/guilds/guild-1/channels",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
       });
 
       expect(res.statusCode).toBe(200);
@@ -85,7 +85,7 @@ describe("discord routes", () => {
       const res = await app.inject({
         method: "GET",
         url: "/api/guilds/guild-1/channels",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
       });
       expect(res.statusCode).toBe(200);
       expect(res.json()).toEqual([]);
@@ -103,7 +103,7 @@ describe("discord routes", () => {
       const res = await app.inject({
         method: "GET",
         url: "/api/guilds/guild-1/roles",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
       });
 
       expect(res.statusCode).toBe(200);
@@ -122,7 +122,7 @@ describe("discord routes", () => {
       const res = await app.inject({
         method: "GET",
         url: "/api/guilds/guild-1/roles",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
       });
 
       expect(res.statusCode).toBe(200);

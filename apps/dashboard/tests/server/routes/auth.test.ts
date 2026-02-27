@@ -11,7 +11,10 @@ vi.mock("@fluxcore/config", () => ({
   },
 }));
 
-const mockGetAuthorizationUrl = vi.fn().mockReturnValue("https://discord.com/oauth2/authorize?...");
+const mockState = "mock-state-token";
+const mockGetAuthorizationUrl = vi
+  .fn()
+  .mockReturnValue({ url: "https://discord.com/oauth2/authorize?...", state: mockState });
 const mockExchangeCode = vi.fn().mockResolvedValue({ access_token: "test-access-token" });
 const mockFetchUser = vi.fn().mockResolvedValue({ id: "user-1", username: "testuser", avatar: "abc" });
 const mockFetchGuilds = vi.fn().mockResolvedValue([{ id: "g1", name: "Guild", icon: null, permissions: "8" }]);
@@ -35,16 +38,32 @@ vi.mock("@fluxcore/utils", () => ({
   logger: { debug: vi.fn(), info: vi.fn(), warn: vi.fn(), error: vi.fn() },
 }));
 
-import Fastify from "fastify";
+import Fastify, { type FastifyInstance } from "fastify";
 import fastifyCookie from "@fastify/cookie";
 import { registerAuthRoutes } from "../../src/server/routes/auth.js";
 
+const COOKIE_SECRET = "test-secret";
+
 async function buildApp() {
   const app = Fastify();
-  await app.register(fastifyCookie, { secret: "test-secret" });
+  await app.register(fastifyCookie, { secret: COOKIE_SECRET });
   registerAuthRoutes(app);
   await app.ready();
   return app;
+}
+
+function getSignedCookies(app: FastifyInstance, res: { cookies: Array<{ name: string; value: string }> }) {
+  const cookies: Record<string, string> = {};
+  for (const c of res.cookies) {
+    cookies[c.name] = c.value;
+  }
+  return cookies;
+}
+
+async function getStateCookie(app: FastifyInstance): Promise<string> {
+  const loginRes = await app.inject({ method: "GET", url: "/auth/login" });
+  const stateCookie = loginRes.cookies.find((c) => c.name === "oauth_state");
+  return stateCookie!.value;
 }
 
 describe("auth routes", () => {
@@ -56,9 +75,11 @@ describe("auth routes", () => {
   });
 
   describe("GET /auth/login", () => {
-    it("redirects to Discord OAuth2 URL", async () => {
+    it("redirects to Discord OAuth2 URL and sets state cookie", async () => {
       const res = await app.inject({ method: "GET", url: "/auth/login" });
       expect(res.statusCode).toBe(302);
+      const stateCookie = res.cookies.find((c) => c.name === "oauth_state");
+      expect(stateCookie).toBeDefined();
     });
   });
 
@@ -69,21 +90,47 @@ describe("auth routes", () => {
       expect(res.json().error).toBe("Missing code parameter");
     });
 
-    it("creates session and redirects on success", async () => {
+    it("returns 403 when state is missing", async () => {
       const res = await app.inject({
         method: "GET",
         url: "/auth/callback?code=test-code",
       });
+      expect(res.statusCode).toBe(403);
+    });
+
+    it("returns 403 when state does not match", async () => {
+      const signedStateCookie = await getStateCookie(app);
+      const res = await app.inject({
+        method: "GET",
+        url: "/auth/callback?code=test-code&state=wrong-state",
+        cookies: { oauth_state: signedStateCookie },
+      });
+      expect(res.statusCode).toBe(403);
+      expect(res.json().error).toBe("Invalid state parameter");
+    });
+
+    it("creates session and redirects on success with valid state", async () => {
+      const signedStateCookie = await getStateCookie(app);
+      const res = await app.inject({
+        method: "GET",
+        url: `/auth/callback?code=test-code&state=${mockState}`,
+        cookies: { oauth_state: signedStateCookie },
+      });
       expect(res.statusCode).toBe(302);
       expect(mockExchangeCode).toHaveBeenCalledWith("test-code");
       expect(mockCreateSession).toHaveBeenCalled();
+
+      const sessionCookie = res.cookies.find((c) => c.name === "session");
+      expect(sessionCookie).toBeDefined();
     });
 
     it("returns 500 on OAuth failure", async () => {
       mockExchangeCode.mockRejectedValueOnce(new Error("OAuth failed"));
+      const signedStateCookie = await getStateCookie(app);
       const res = await app.inject({
         method: "GET",
-        url: "/auth/callback?code=bad-code",
+        url: `/auth/callback?code=bad-code&state=${mockState}`,
+        cookies: { oauth_state: signedStateCookie },
       });
       expect(res.statusCode).toBe(500);
       expect(res.json().error).toBe("Authentication failed");
@@ -95,7 +142,7 @@ describe("auth routes", () => {
       const res = await app.inject({
         method: "GET",
         url: "/auth/logout",
-        cookies: { session: "session-id-123" },
+        cookies: { session: app.signCookie("session-id-123") },
       });
       expect(res.statusCode).toBe(302);
       expect(mockDeleteSession).toHaveBeenCalledWith("session-id-123");
@@ -119,7 +166,7 @@ describe("auth routes", () => {
       const res = await app.inject({
         method: "GET",
         url: "/auth/me",
-        cookies: { session: "expired-id" },
+        cookies: { session: app.signCookie("expired-id") },
       });
       expect(res.statusCode).toBe(401);
     });
@@ -134,7 +181,7 @@ describe("auth routes", () => {
       const res = await app.inject({
         method: "GET",
         url: "/auth/me",
-        cookies: { session: "valid-id" },
+        cookies: { session: app.signCookie("valid-id") },
       });
       expect(res.statusCode).toBe(200);
       expect(res.json().username).toBe("testuser");

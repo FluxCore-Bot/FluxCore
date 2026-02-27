@@ -14,13 +14,19 @@ export async function requireAuth(
   request: FastifyRequest,
   reply: FastifyReply,
 ): Promise<void> {
-  const sessionId = request.cookies?.session;
-  if (!sessionId) {
+  const sessionCookie = request.cookies?.session;
+  if (!sessionCookie) {
     reply.code(401).send({ error: "Not authenticated" });
     return;
   }
 
-  const session = await getSession(sessionId);
+  const unsigned = request.unsignCookie(sessionCookie);
+  if (!unsigned.valid || !unsigned.value) {
+    reply.code(401).send({ error: "Not authenticated" });
+    return;
+  }
+
+  const session = await getSession(unsigned.value);
   if (!session) {
     reply.code(401).send({ error: "Session expired" });
     return;

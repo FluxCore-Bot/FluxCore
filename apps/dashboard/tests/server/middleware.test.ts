@@ -29,6 +29,7 @@ function createMockRequest({
 } = {}) {
   return {
     cookies: sessionCookie ? { session: sessionCookie } : {},
+    unsignCookie: (value: string) => ({ valid: true, value, renew: false }),
     session,
     params,
   };

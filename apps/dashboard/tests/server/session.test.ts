@@ -4,6 +4,7 @@ vi.mock("@fluxcore/config", () => ({
   config: {
     token: "test-token",
     clientId: "test-client-id",
+    dashboardSessionSecret: "test-session-secret-for-encryption",
     logLevel: "info",
   },
 }));
@@ -20,6 +21,7 @@ vi.mock("@fluxcore/database", () => ({
   getPrisma: () => mockPrisma,
 }));
 
+const { encrypt } = await import("../../src/server/crypto.js");
 const { createSession, getSession, deleteSession } = await import(
   "../../src/server/session.js"
 );
@@ -45,14 +47,11 @@ describe("session module", () => {
 
       expect(id).toBeDefined();
       expect(typeof id).toBe("string");
-      expect(mockPrisma.dashboardSession.create).toHaveBeenCalledWith(
-        expect.objectContaining({
-          data: expect.objectContaining({
-            userId: "user-123",
-            username: "testuser",
-          }),
-        }),
-      );
+      const createCall = mockPrisma.dashboardSession.create.mock.calls[0][0];
+      expect(createCall.data.userId).toBe("user-123");
+      expect(createCall.data.username).toBe("testuser");
+      // accessToken should be encrypted (not stored as plaintext)
+      expect(createCall.data.accessToken).not.toBe("token-xyz");
     });
 
     it("stores guilds as JSON string", async () => {
@@ -93,7 +92,7 @@ describe("session module", () => {
         userId: "user-123",
         username: "testuser",
         avatar: "abc",
-        accessToken: "token-xyz",
+        accessToken: encrypt("token-xyz"),
         guilds: JSON.stringify(testSessionData.guilds),
         createdAt: new Date(),
         expiresAt: new Date(Date.now() + 3600_000), // Not expired
@@ -102,6 +101,7 @@ describe("session module", () => {
       const result = await getSession("session-1");
       expect(result).not.toBeNull();
       expect(result!.userId).toBe("user-123");
+      expect(result!.accessToken).toBe("token-xyz");
       expect(result!.guilds).toEqual(testSessionData.guilds);
     });
 

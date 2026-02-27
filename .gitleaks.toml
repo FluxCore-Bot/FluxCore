@@ -1,0 +1,11 @@
+title = "FluxCore Gitleaks Configuration"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Allow common false positives"
+paths = [
+  '''\.env\.example''',
+  '''pnpm-lock\.yaml''',
+]

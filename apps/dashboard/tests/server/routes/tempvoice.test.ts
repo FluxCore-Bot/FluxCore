@@ -94,7 +94,7 @@ describe("tempvoice routes", () => {
       const res = await app.inject({
         method: "GET",
         url: "/api/guilds/guild-1/tempvoice",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
       });
       expect(res.statusCode).toBe(200);
       expect(res.json()).toEqual([]);
@@ -108,7 +108,7 @@ describe("tempvoice routes", () => {
       const res = await app.inject({
         method: "GET",
         url: "/api/guilds/guild-1/tempvoice",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
       });
       expect(res.statusCode).toBe(200);
       const json = res.json();
@@ -123,7 +123,7 @@ describe("tempvoice routes", () => {
       const res = await app.inject({
         method: "POST",
         url: "/api/guilds/guild-1/tempvoice",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: { hubChannelId: "ch-1", nameTemplate: "{user}'s Room" },
       });
       expect(res.statusCode).toBe(201);
@@ -139,7 +139,7 @@ describe("tempvoice routes", () => {
       const res = await app.inject({
         method: "POST",
         url: "/api/guilds/guild-1/tempvoice",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: {},
       });
       expect(res.statusCode).toBe(400);
@@ -150,7 +150,7 @@ describe("tempvoice routes", () => {
       const res = await app.inject({
         method: "POST",
         url: "/api/guilds/guild-1/tempvoice",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: { hubChannelId: "bad-channel" },
       });
       expect(res.statusCode).toBe(400);
@@ -167,7 +167,7 @@ describe("tempvoice routes", () => {
       const res = await app.inject({
         method: "POST",
         url: "/api/guilds/guild-1/tempvoice",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: { hubChannelId: "ch-1" },
       });
       expect(res.statusCode).toBe(400);
@@ -186,7 +186,7 @@ describe("tempvoice routes", () => {
       const res = await app.inject({
         method: "POST",
         url: "/api/guilds/guild-1/tempvoice",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: { hubChannelId: "ch-new" },
       });
       expect(res.statusCode).toBe(400);
@@ -197,7 +197,7 @@ describe("tempvoice routes", () => {
       const res = await app.inject({
         method: "POST",
         url: "/api/guilds/guild-1/tempvoice",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: { hubChannelId: "ch-1", nameTemplate: "x".repeat(101) },
       });
       expect(res.statusCode).toBe(400);
@@ -210,7 +210,7 @@ describe("tempvoice routes", () => {
       const res = await app.inject({
         method: "PUT",
         url: "/api/guilds/guild-1/tempvoice/1",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: { nameTemplate: "{user}'s Room" },
       });
       expect(res.statusCode).toBe(200);
@@ -233,7 +233,7 @@ describe("tempvoice routes", () => {
       const res = await app.inject({
         method: "PUT",
         url: "/api/guilds/guild-1/tempvoice/1",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: { hubChannelId: "ch-other" },
       });
       expect(res.statusCode).toBe(400);
@@ -245,7 +245,7 @@ describe("tempvoice routes", () => {
       const res = await app.inject({
         method: "PUT",
         url: "/api/guilds/guild-1/tempvoice/999",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: { nameTemplate: "test" },
       });
       expect(res.statusCode).toBe(404);
@@ -257,7 +257,7 @@ describe("tempvoice routes", () => {
       const res = await app.inject({
         method: "DELETE",
         url: "/api/guilds/guild-1/tempvoice/1",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
       });
       expect(res.statusCode).toBe(200);
       expect(res.json().success).toBe(true);
@@ -273,7 +273,7 @@ describe("tempvoice routes", () => {
       const res = await app.inject({
         method: "DELETE",
         url: "/api/guilds/guild-1/tempvoice/999",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
       });
       expect(res.statusCode).toBe(200);
       expect(res.json().success).toBe(false);

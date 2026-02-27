@@ -1,5 +1,6 @@
 import Fastify from "fastify";
 import fastifyCookie from "@fastify/cookie";
+import fastifyRateLimit from "@fastify/rate-limit";
 import fastifyStatic from "@fastify/static";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -33,6 +34,11 @@ async function main(): Promise<void> {
 
   await app.register(fastifyCookie, {
     secret: config.dashboardSessionSecret,
+  });
+
+  await app.register(fastifyRateLimit, {
+    max: 100,
+    timeWindow: "1 minute",
   });
 
   const __dirname = dirname(fileURLToPath(import.meta.url));

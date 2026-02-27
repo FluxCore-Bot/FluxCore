@@ -66,7 +66,7 @@ describe("guild routes", () => {
       const res = await app.inject({
         method: "GET",
         url: "/api/guilds",
-        cookies: { session: "valid-id" },
+        cookies: { session: app.signCookie("valid-id") },
       });
 
       expect(res.statusCode).toBe(200);
@@ -85,7 +85,7 @@ describe("guild routes", () => {
       const res = await app.inject({
         method: "GET",
         url: "/api/guilds",
-        cookies: { session: "valid-id" },
+        cookies: { session: app.signCookie("valid-id") },
       });
 
       expect(res.statusCode).toBe(200);

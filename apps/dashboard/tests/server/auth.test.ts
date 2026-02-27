@@ -21,15 +21,17 @@ describe("auth module", () => {
 
   describe("getAuthorizationUrl", () => {
     it("returns a valid Discord OAuth2 URL", () => {
-      const url = getAuthorizationUrl();
+      const { url, state } = getAuthorizationUrl();
       expect(url).toContain("discord.com/api/v10/oauth2/authorize");
       expect(url).toContain("client_id=test-client-id");
       expect(url).toContain("response_type=code");
       expect(url).toContain("scope=identify+guilds");
+      expect(state).toBeDefined();
+      expect(typeof state).toBe("string");
     });
 
     it("includes the callback URL", () => {
-      const url = getAuthorizationUrl();
+      const { url } = getAuthorizationUrl();
       expect(url).toContain(
         encodeURIComponent("http://localhost:3000/auth/callback"),
       );
