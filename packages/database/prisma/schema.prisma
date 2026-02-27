@@ -8,18 +8,22 @@ datasource db {
 }
 
 model TempVoiceGuildConfig {
-  guildId      String   @id
-  hubChannelId String
+  id           Int      @id @default(autoincrement())
+  guildId      String
+  hubChannelId String   @unique
   categoryId   String?
   nameTemplate String   @default("{user}'s Channel")
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+
+  @@index([guildId])
 }
 
 model TempVoiceUserSettings {
   id                Int      @id @default(autoincrement())
   guildId           String
   userId            String
+  configId          Int
   channelName       String?
   userLimit         Int      @default(0)
   isLocked          Boolean  @default(false)
@@ -30,7 +34,7 @@ model TempVoiceUserSettings {
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
 
-  @@unique([guildId, userId])
+  @@unique([guildId, userId, configId])
 }
 
 model ActionRule {

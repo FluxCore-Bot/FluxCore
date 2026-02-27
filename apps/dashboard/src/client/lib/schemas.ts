@@ -176,14 +176,15 @@ export type ActionLog = z.infer<typeof ActionLogSchema>;
 export const ActionLogListSchema = z.array(ActionLogSchema);
 
 // --- TempVoice ---
-export const TempVoiceConfigSchema = z
-  .object({
-    hubChannelId: z.string(),
-    categoryId: z.string().nullable(),
-    nameTemplate: z.string(),
-  })
-  .nullable();
+export const TempVoiceConfigSchema = z.object({
+  id: z.number(),
+  hubChannelId: z.string(),
+  categoryId: z.string().nullable(),
+  nameTemplate: z.string(),
+});
 export type TempVoiceConfig = z.infer<typeof TempVoiceConfigSchema>;
+
+export const TempVoiceConfigListSchema = z.array(TempVoiceConfigSchema);
 
 export const TempVoiceFormSchema = z.object({
   hubChannelId: z.string().min(1, "Hub channel is required"),

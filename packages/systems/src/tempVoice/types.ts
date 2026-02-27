@@ -1,5 +1,7 @@
 /** Persisted per-guild configuration */
 export interface TempVoiceGuildConfig {
+  /** Auto-incremented database ID */
+  id: number;
   /** The hub voice channel ID that triggers temp channel creation */
   hubChannelId: string;
   /** The category ID under which temp channels are created (same parent as hub) */
@@ -18,6 +20,8 @@ export interface ActiveTempChannel {
   channelId: string;
   guildId: string;
   ownerId: string;
+  /** The config ID that spawned this temp channel */
+  configId: number;
   panelMessageId: string | null;
   isLocked: boolean;
   isHidden: boolean;

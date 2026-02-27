@@ -6,11 +6,12 @@ import { logger } from "@fluxcore/utils";
 export async function loadUserSettings(
   guildId: string,
   userId: string,
+  configId: number,
 ): Promise<SavedTempVoiceSettings | null> {
   try {
     const prisma = getPrisma();
     const row = await prisma.tempVoiceUserSettings.findUnique({
-      where: { guildId_userId: { guildId, userId } },
+      where: { guildId_userId_configId: { guildId, userId, configId } },
     });
     if (!row) return null;
 
@@ -25,7 +26,7 @@ export async function loadUserSettings(
     };
   } catch (error) {
     logger.error(
-      `Failed to load user settings for ${userId} in ${guildId}`,
+      `Failed to load user settings for ${userId} in ${guildId} (config ${configId})`,
       error instanceof Error ? error : new Error(String(error)),
     );
     return null;
@@ -35,12 +36,13 @@ export async function loadUserSettings(
 export async function saveUserSettings(
   guildId: string,
   userId: string,
+  configId: number,
   settings: SavedTempVoiceSettings,
 ): Promise<void> {
   try {
     const prisma = getPrisma();
     await prisma.tempVoiceUserSettings.upsert({
-      where: { guildId_userId: { guildId, userId } },
+      where: { guildId_userId_configId: { guildId, userId, configId } },
       update: {
         channelName: settings.channelName,
         userLimit: settings.userLimit,
@@ -53,6 +55,7 @@ export async function saveUserSettings(
       create: {
         guildId,
         userId,
+        configId,
         channelName: settings.channelName,
         userLimit: settings.userLimit,
         isLocked: settings.isLocked,
@@ -64,7 +67,7 @@ export async function saveUserSettings(
     });
   } catch (error) {
     logger.error(
-      `Failed to save user settings for ${userId} in ${guildId}`,
+      `Failed to save user settings for ${userId} in ${guildId} (config ${configId})`,
       error instanceof Error ? error : new Error(String(error)),
     );
   }
@@ -83,5 +86,5 @@ export async function persistChannelState(
     bannedUserIds: [...tracked.bannedUserIds],
     hiddenFromUserIds: [...tracked.hiddenFromUserIds],
   };
-  await saveUserSettings(tracked.guildId, tracked.ownerId, settings);
+  await saveUserSettings(tracked.guildId, tracked.ownerId, tracked.configId, settings);
 }

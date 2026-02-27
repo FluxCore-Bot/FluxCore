@@ -28,8 +28,8 @@ async function migrate(): Promise<void> {
     let count = 0;
     for (const [guildId, config] of Object.entries(data.guilds)) {
       await prisma.tempVoiceGuildConfig.upsert({
-        where: { guildId },
-        update: config,
+        where: { hubChannelId: config.hubChannelId },
+        update: { categoryId: config.categoryId, nameTemplate: config.nameTemplate },
         create: { guildId, ...config },
       });
       count++;

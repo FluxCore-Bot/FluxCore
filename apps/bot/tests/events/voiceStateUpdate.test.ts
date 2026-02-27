@@ -9,9 +9,10 @@ vi.mock("@fluxcore/config", () => ({
   },
 }));
 
-const mockGetGuildConfig = vi.fn().mockReturnValue(null);
+const mockGetConfigByHubChannel = vi.fn().mockReturnValue(undefined);
 vi.mock("@fluxcore/systems/tempVoice/config", () => ({
-  getGuildConfig: (...args: unknown[]) => mockGetGuildConfig(...args),
+  getConfigByHubChannel: (...args: unknown[]) =>
+    mockGetConfigByHubChannel(...args),
 }));
 
 const mockCreateTempChannel = vi.fn().mockResolvedValue(undefined);
@@ -51,10 +52,13 @@ describe("voiceStateUpdate event", () => {
   });
 
   it("creates temp channel when user joins hub channel", async () => {
-    mockGetGuildConfig.mockReturnValueOnce({
+    const hubConfig = {
+      id: 1,
       hubChannelId: "hub-channel",
       nameTemplate: "{user}'s Channel",
-    });
+      categoryId: null,
+    };
+    mockGetConfigByHubChannel.mockReturnValueOnce(hubConfig);
 
     const oldState = createMockVoiceState({ channelId: null });
     const newState = createMockVoiceState({
@@ -64,17 +68,16 @@ describe("voiceStateUpdate event", () => {
 
     await event.execute(oldState as never, newState as never);
 
+    expect(mockGetConfigByHubChannel).toHaveBeenCalledWith("hub-channel");
     expect(mockCreateTempChannel).toHaveBeenCalledWith(
       newState.member,
       newState.guild,
+      hubConfig,
     );
   });
 
   it("does not create channel when joining non-hub channel", async () => {
-    mockGetGuildConfig.mockReturnValueOnce({
-      hubChannelId: "hub-channel",
-      nameTemplate: "{user}'s Channel",
-    });
+    mockGetConfigByHubChannel.mockReturnValueOnce(undefined);
 
     const oldState = createMockVoiceState({ channelId: null });
     const newState = createMockVoiceState({ channelId: "other-channel" });
