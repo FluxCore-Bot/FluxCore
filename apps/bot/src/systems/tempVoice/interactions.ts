@@ -22,6 +22,8 @@ import {
   ModalIds,
   InputIds,
   TV_PREFIX,
+  MAX_BANNED_USERS,
+  MAX_HIDDEN_USERS,
 } from "@fluxcore/systems/tempVoice/constants";
 import { getActiveChannel, updatePanel, untrackChannel } from "./manager.js";
 import { persistChannelState } from "@fluxcore/systems/tempVoice/persistence";
@@ -97,25 +99,21 @@ async function buildUserSelectOptions(
   userIds: string[],
 ): Promise<StringSelectMenuOptionBuilder[]> {
   const ids = userIds.slice(0, 25);
-  const options: StringSelectMenuOptionBuilder[] = [];
 
-  for (const userId of ids) {
-    let label: string;
-    try {
-      const member = await guild.members.fetch(userId);
-      label = member.displayName;
-    } catch {
-      label = "Unknown User";
-    }
-    options.push(
-      new StringSelectMenuOptionBuilder()
-        .setLabel(label)
-        .setValue(userId)
-        .setDescription(`ID: ${userId}`),
-    );
+  let members: Map<string, { displayName: string }>;
+  try {
+    members = await guild.members.fetch({ user: ids });
+  } catch {
+    members = new Map();
   }
 
-  return options;
+  return ids.map((userId) => {
+    const member = members.get(userId);
+    return new StringSelectMenuOptionBuilder()
+      .setLabel(member?.displayName ?? "Unknown User")
+      .setValue(userId)
+      .setDescription(`ID: ${userId}`);
+  });
 }
 
 // ── Button Handler ──
@@ -796,6 +794,19 @@ export async function handleTempVoiceUserSelect(
         return;
       }
 
+      if (tracked.bannedUserIds.length >= MAX_BANNED_USERS) {
+        await interaction.reply({
+          embeds: [
+            errorEmbed(
+              "Limit Reached",
+              `You can only ban up to ${MAX_BANNED_USERS} users per channel.`,
+            ),
+          ],
+          ephemeral: true,
+        });
+        return;
+      }
+
       try {
         await vc.permissionOverwrites.edit(selectedUserId, {
           Connect: false,
@@ -873,6 +884,19 @@ export async function handleTempVoiceUserSelect(
             errorEmbed(
               "Already Hidden",
               "This channel is already hidden from that user.",
+            ),
+          ],
+          ephemeral: true,
+        });
+        return;
+      }
+
+      if (tracked.hiddenFromUserIds.length >= MAX_HIDDEN_USERS) {
+        await interaction.reply({
+          embeds: [
+            errorEmbed(
+              "Limit Reached",
+              `You can only hide from up to ${MAX_HIDDEN_USERS} users per channel.`,
             ),
           ],
           ephemeral: true,

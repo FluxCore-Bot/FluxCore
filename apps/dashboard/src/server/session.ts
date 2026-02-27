@@ -19,6 +19,9 @@ export interface Session {
 }
 
 const SESSION_TTL = 60 * 60 * 1000; // 1 hour
+const CACHE_TTL = 30_000; // 30 seconds
+
+const sessionCache = new Map<string, { session: Session; expiresAt: number }>();
 
 export async function createSession(
   data: Omit<Session, "createdAt">,
@@ -45,6 +48,12 @@ export async function createSession(
 }
 
 export async function getSession(id: string): Promise<Session | null> {
+  const cached = sessionCache.get(id);
+  if (cached && cached.expiresAt > Date.now()) {
+    return cached.session;
+  }
+  sessionCache.delete(id);
+
   const prisma = getPrisma();
   const row = await prisma.dashboardSession.findUnique({
     where: { id },
@@ -57,7 +66,7 @@ export async function getSession(id: string): Promise<Session | null> {
     return null;
   }
 
-  return {
+  const session: Session = {
     userId: row.userId,
     username: row.username,
     avatar: row.avatar,
@@ -65,9 +74,13 @@ export async function getSession(id: string): Promise<Session | null> {
     guilds: JSON.parse(row.guilds) as OAuthGuild[],
     createdAt: row.createdAt.getTime(),
   };
+
+  sessionCache.set(id, { session, expiresAt: Date.now() + CACHE_TTL });
+  return session;
 }
 
 export async function deleteSession(id: string): Promise<void> {
+  sessionCache.delete(id);
   const prisma = getPrisma();
   await prisma.dashboardSession.deleteMany({ where: { id } });
 }

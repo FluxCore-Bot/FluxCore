@@ -1,3 +1,4 @@
+import { getPrisma } from "@fluxcore/database";
 import { logger } from "@fluxcore/utils";
 import { reloadGuild } from "./cache.js";
 import { loadActionGuildSettings } from "./config.js";
@@ -9,7 +10,6 @@ let lastCheckedId = 0;
 
 async function pollInvalidations(): Promise<void> {
   try {
-    const { getPrisma } = await import("@fluxcore/database");
     const prisma = getPrisma();
     const records = await prisma.actionCacheInvalidation.findMany({
       where: { id: { gt: lastCheckedId } },
@@ -38,13 +38,10 @@ async function pollInvalidations(): Promise<void> {
       await loadActionGuildSettings();
     }
 
-    for (const guildId of guildsToReload) {
-      await reloadGuild(guildId);
-    }
-
-    for (const guildId of guildsToReloadTempVoice) {
-      await reloadGuildTempVoiceConfig(guildId);
-    }
+    await Promise.allSettled([
+      ...Array.from(guildsToReload, (guildId) => reloadGuild(guildId)),
+      ...Array.from(guildsToReloadTempVoice, (guildId) => reloadGuildTempVoiceConfig(guildId)),
+    ]);
 
     const totalReloads = guildsToReload.size + guildsToReloadTempVoice.size;
     if (totalReloads > 0) {
@@ -69,7 +66,6 @@ async function pollInvalidations(): Promise<void> {
 export async function startCacheSyncPolling(): Promise<void> {
   if (pollTimer) return;
   try {
-    const { getPrisma } = await import("@fluxcore/database");
     const prisma = getPrisma();
     const result = await prisma.actionCacheInvalidation.aggregate({
       _max: { id: true },

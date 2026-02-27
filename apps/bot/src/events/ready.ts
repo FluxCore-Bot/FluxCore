@@ -9,10 +9,13 @@ import { reconcileOnStartup } from "../systems/tempVoice/manager.js";
 import { loadActionGuildSettings } from "@fluxcore/systems/actions/config";
 import { loadAllRules } from "@fluxcore/systems/actions/cache";
 import { startCacheSyncPolling } from "@fluxcore/systems/actions/cacheSync";
+import { cleanOldLogs } from "@fluxcore/systems/actions/persistence";
 import { registerActionEventListeners } from "../systems/actions/eventBridge.js";
 import { startSyncServer } from "../systems/actions/syncServer.js";
 import { startReminderPolling } from "../systems/reminders.js";
 import { logger } from "@fluxcore/utils";
+
+const ONE_DAY_MS = 24 * 60 * 60 * 1000;
 
 const event: Event<"ready"> = {
   name: "ready",
@@ -38,8 +41,7 @@ const event: Event<"ready"> = {
     }
 
     try {
-      await loadActionGuildSettings();
-      await loadAllRules();
+      await Promise.all([loadActionGuildSettings(), loadAllRules()]);
       registerActionEventListeners(client);
       await startCacheSyncPolling();
       startSyncServer();
@@ -51,6 +53,17 @@ const event: Event<"ready"> = {
     }
 
     startReminderPolling(client);
+
+    // Schedule daily ActionLog retention cleanup
+    const cleanupTimer = setInterval(() => {
+      cleanOldLogs().catch((err: unknown) =>
+        logger.error(
+          "ActionLog cleanup failed",
+          err instanceof Error ? err : new Error(String(err)),
+        ),
+      );
+    }, ONE_DAY_MS);
+    (cleanupTimer as unknown as { unref: () => void }).unref();
   },
 };
 

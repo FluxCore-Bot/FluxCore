@@ -1,3 +1,4 @@
+import { getPrisma } from "@fluxcore/database";
 import { logger } from "@fluxcore/utils";
 import { getRulesByGuild } from "./persistence.js";
 import type { ActionRule } from "./types.js";
@@ -22,7 +23,6 @@ function addToInternalCache(rule: ActionRule): void {
 
 export async function loadAllRules(): Promise<void> {
   try {
-    const { getPrisma } = await import("@fluxcore/database");
     const prisma = getPrisma();
     const rows = await prisma.actionRule.findMany({
       orderBy: { priority: "desc" },
@@ -74,8 +74,9 @@ export function invalidateGuild(guildId: string): void {
 }
 
 export async function reloadGuild(guildId: string): Promise<void> {
-  invalidateGuild(guildId);
+  // Load new rules first, then swap to minimize the window where cache is empty
   const rules = await getRulesByGuild(guildId);
+  invalidateGuild(guildId);
   for (const rule of rules) {
     addToInternalCache(rule);
   }
