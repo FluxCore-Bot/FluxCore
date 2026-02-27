@@ -8,6 +8,14 @@ import type {
   ActionRule,
 } from "./types.js";
 
+function safeJsonParse<T>(json: string, fallback: T): T {
+  try {
+    return JSON.parse(json) as T;
+  } catch {
+    return fallback;
+  }
+}
+
 function rowToRule(row: {
   id: number;
   guildId: string;
@@ -25,8 +33,8 @@ function rowToRule(row: {
     name: row.name,
     enabled: row.enabled,
     eventType: row.eventType as ActionEventType,
-    actions: JSON.parse(row.actions) as ActionConfig[],
-    conditions: JSON.parse(row.conditions) as ActionConditions,
+    actions: safeJsonParse<ActionConfig[]>(row.actions, []),
+    conditions: safeJsonParse<ActionConditions>(row.conditions, {}),
     priority: row.priority,
     createdBy: row.createdBy,
   };

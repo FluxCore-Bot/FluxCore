@@ -148,10 +148,20 @@ executors.set("sendWebhook", async (_client, ctx, config) => {
     body = body.slice(0, MAX_TEMPLATE_LENGTH);
   }
 
+  const BLOCKED_HEADERS = new Set([
+    "host", "cookie", "set-cookie", "transfer-encoding",
+    "connection", "proxy-authorization", "te", "trailer",
+    "upgrade",
+  ]);
+  const userHeaders = config.webhook.headers ?? {};
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
-    ...(config.webhook.headers ?? {}),
   };
+  for (const [key, value] of Object.entries(userHeaders)) {
+    if (!BLOCKED_HEADERS.has(key.toLowerCase())) {
+      headers[key] = value;
+    }
+  }
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 5000);

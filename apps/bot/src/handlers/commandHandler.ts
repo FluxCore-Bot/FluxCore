@@ -10,9 +10,15 @@ export async function loadCommands(client: ExtendedClient): Promise<void> {
 
   const files = await getFiles(commandsDir);
 
-  for (const file of files) {
-    const fileUrl = pathToFileURL(file).href;
-    const module = await import(fileUrl);
+  const modules = await Promise.all(
+    files.map(async (file) => {
+      const fileUrl = pathToFileURL(file).href;
+      const module = await import(fileUrl);
+      return { file, module };
+    }),
+  );
+
+  for (const { file, module } of modules) {
     const command: Command = module.default;
 
     if (!command?.data || !command?.execute) {

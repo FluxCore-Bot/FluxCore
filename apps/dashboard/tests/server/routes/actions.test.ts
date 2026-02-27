@@ -97,7 +97,7 @@ describe("action routes", () => {
       const res = await app.inject({
         method: "GET",
         url: "/api/actions/constants",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
       });
       expect(res.statusCode).toBe(200);
       const body = res.json();
@@ -116,7 +116,7 @@ describe("action routes", () => {
       const res = await app.inject({
         method: "GET",
         url: "/api/guilds/guild-1/actions/rules",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
       });
 
       expect(res.statusCode).toBe(200);
@@ -129,7 +129,7 @@ describe("action routes", () => {
       const res = await app.inject({
         method: "POST",
         url: "/api/guilds/guild-1/actions/rules",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: {
           name: "test-rule",
           eventType: "memberJoin",
@@ -146,7 +146,7 @@ describe("action routes", () => {
       const res = await app.inject({
         method: "POST",
         url: "/api/guilds/guild-1/actions/rules",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: { eventType: "memberJoin", actions: [{ type: "sendMessage" }] },
       });
       expect(res.statusCode).toBe(400);
@@ -156,7 +156,7 @@ describe("action routes", () => {
       const res = await app.inject({
         method: "POST",
         url: "/api/guilds/guild-1/actions/rules",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: {
           name: "test",
           eventType: "invalidEvent",
@@ -170,7 +170,7 @@ describe("action routes", () => {
       const res = await app.inject({
         method: "POST",
         url: "/api/guilds/guild-1/actions/rules",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: { name: "test", eventType: "memberJoin", actions: [] },
       });
       expect(res.statusCode).toBe(400);
@@ -180,7 +180,7 @@ describe("action routes", () => {
       const res = await app.inject({
         method: "POST",
         url: "/api/guilds/guild-1/actions/rules",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: {
           name: "test",
           eventType: "memberJoin",
@@ -195,7 +195,7 @@ describe("action routes", () => {
       const res = await app.inject({
         method: "POST",
         url: "/api/guilds/guild-1/actions/rules",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: {
           name: "test",
           eventType: "memberJoin",
@@ -210,7 +210,7 @@ describe("action routes", () => {
       const res = await app.inject({
         method: "POST",
         url: "/api/guilds/guild-1/actions/rules",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: {
           name: "test",
           eventType: "memberJoin",
@@ -227,7 +227,7 @@ describe("action routes", () => {
       const res = await app.inject({
         method: "DELETE",
         url: "/api/guilds/guild-1/actions/rules/1",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
       });
       expect(res.statusCode).toBe(200);
       expect(res.json().success).toBe(true);
@@ -239,7 +239,7 @@ describe("action routes", () => {
       const res = await app.inject({
         method: "GET",
         url: "/api/guilds/guild-1/actions/settings",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
       });
       expect(res.statusCode).toBe(200);
       expect(res.json().maxRules).toBe(25);
@@ -251,7 +251,7 @@ describe("action routes", () => {
       const res = await app.inject({
         method: "PUT",
         url: "/api/guilds/guild-1/actions/settings",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: { maxRules: 50, globalEnabled: false },
       });
       expect(res.statusCode).toBe(200);
@@ -262,7 +262,7 @@ describe("action routes", () => {
       const res = await app.inject({
         method: "PUT",
         url: "/api/guilds/guild-1/actions/settings",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
         payload: { maxRules: 200 },
       });
       expect(res.statusCode).toBe(400);
@@ -279,7 +279,7 @@ describe("action routes", () => {
       const res = await app.inject({
         method: "GET",
         url: "/api/guilds/guild-1/actions/logs",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
       });
 
       expect(res.statusCode).toBe(200);
@@ -290,7 +290,7 @@ describe("action routes", () => {
       await app.inject({
         method: "GET",
         url: "/api/guilds/guild-1/actions/logs?limit=100",
-        cookies: { session: "valid" },
+        cookies: { session: app.signCookie("valid") },
       });
 
       expect(mockGetRecentLogs).toHaveBeenCalledWith("guild-1", {

@@ -853,9 +853,11 @@ async function handleRemoveCondition(
 
   const newArr = [...arr];
   newArr.splice(idx, 1);
-  (conditions[key] as string[]) = newArr.length > 0 ? newArr : (undefined as unknown as string[]);
-  // Clean up empty arrays
-  if (!conditions[key]?.length) delete conditions[key];
+  if (newArr.length > 0) {
+    (conditions as Record<string, string[]>)[key] = newArr;
+  } else {
+    delete (conditions as Record<string, string[]>)[key];
+  }
 
   const updated = await updateRule(rule.id, guildId, { conditions });
   updateRuleInCache(updated);

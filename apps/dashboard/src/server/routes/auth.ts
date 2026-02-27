@@ -8,15 +8,49 @@ import {
 import { createSession, deleteSession, getSession } from "../session.js";
 import { logger } from "@fluxcore/utils";
 
+const isProduction = process.env.NODE_ENV === "production";
+
+const authRateLimit = {
+  config: {
+    rateLimit: { max: 10, timeWindow: "1 minute" },
+  },
+};
+
 export function registerAuthRoutes(app: FastifyInstance): void {
-  app.get("/auth/login", async (_request, reply) => {
-    reply.redirect(getAuthorizationUrl());
+  app.get("/auth/login", { ...authRateLimit }, async (_request, reply) => {
+    const { url, state } = getAuthorizationUrl();
+    reply
+      .setCookie("oauth_state", state, {
+        path: "/",
+        httpOnly: true,
+        sameSite: "lax",
+        secure: isProduction,
+        signed: true,
+        maxAge: 300, // 5 minutes
+      })
+      .redirect(url);
   });
 
-  app.get("/auth/callback", async (request, reply) => {
-    const { code } = request.query as { code?: string };
+  app.get("/auth/callback", { ...authRateLimit }, async (request, reply) => {
+    const { code, state } = request.query as {
+      code?: string;
+      state?: string;
+    };
     if (!code) {
       reply.code(400).send({ error: "Missing code parameter" });
+      return;
+    }
+
+    // Validate CSRF state parameter
+    const stateCookie = request.cookies?.oauth_state;
+    if (!stateCookie || !state) {
+      reply.code(403).send({ error: "Missing state parameter" });
+      return;
+    }
+
+    const unsignedState = request.unsignCookie(stateCookie);
+    if (!unsignedState.valid || unsignedState.value !== state) {
+      reply.code(403).send({ error: "Invalid state parameter" });
       return;
     }
 
@@ -36,10 +70,13 @@ export function registerAuthRoutes(app: FastifyInstance): void {
       });
 
       reply
+        .clearCookie("oauth_state", { path: "/" })
         .setCookie("session", sessionId, {
           path: "/",
           httpOnly: true,
           sameSite: "lax",
+          secure: isProduction,
+          signed: true,
           maxAge: 3600,
         })
         .redirect("/");
@@ -53,21 +90,30 @@ export function registerAuthRoutes(app: FastifyInstance): void {
   });
 
   app.get("/auth/logout", async (request, reply) => {
-    const sessionId = request.cookies?.session;
-    if (sessionId) {
-      await deleteSession(sessionId);
+    const sessionCookie = request.cookies?.session;
+    if (sessionCookie) {
+      const unsigned = request.unsignCookie(sessionCookie);
+      if (unsigned.valid && unsigned.value) {
+        await deleteSession(unsigned.value);
+      }
     }
     reply.clearCookie("session", { path: "/" }).redirect("/");
   });
 
   app.get("/auth/me", async (request, reply) => {
-    const sessionId = request.cookies?.session;
-    if (!sessionId) {
+    const sessionCookie = request.cookies?.session;
+    if (!sessionCookie) {
       reply.code(401).send({ error: "Not authenticated" });
       return;
     }
 
-    const session = await getSession(sessionId);
+    const unsigned = request.unsignCookie(sessionCookie);
+    if (!unsigned.valid || !unsigned.value) {
+      reply.code(401).send({ error: "Not authenticated" });
+      return;
+    }
+
+    const session = await getSession(unsigned.value);
     if (!session) {
       reply.code(401).send({ error: "Session expired" });
       return;

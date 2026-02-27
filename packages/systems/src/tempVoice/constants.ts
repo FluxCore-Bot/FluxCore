@@ -44,3 +44,5 @@ export const InputIds = {
 export const DEFAULT_NAME_TEMPLATE = "{user}'s Channel";
 
 export const MAX_TEMPVOICE_CONFIGS_PER_GUILD = 10;
+export const MAX_BANNED_USERS = 50;
+export const MAX_HIDDEN_USERS = 50;

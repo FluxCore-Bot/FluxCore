@@ -63,24 +63,35 @@ const command: Command = {
 
     await interaction.deferReply({ ephemeral: true });
 
-    let messages = await channel.messages.fetch({ limit: amount });
+    try {
+      let messages = await channel.messages.fetch({ limit: amount });
 
-    if (targetUser) {
-      messages = messages.filter((m) => m.author.id === targetUser.id);
+      if (targetUser) {
+        messages = messages.filter((m) => m.author.id === targetUser.id);
+      }
+
+      const deleted = await channel.bulkDelete(messages, true);
+
+      await interaction.editReply({
+        embeds: [
+          successEmbed(
+            "Messages Cleared",
+            `Deleted **${deleted.size}** message(s).${
+              targetUser ? ` (from ${targetUser.displayName})` : ""
+            }`,
+          ),
+        ],
+      });
+    } catch {
+      await interaction.editReply({
+        embeds: [
+          errorEmbed(
+            "Error",
+            "Failed to delete messages. Make sure I have the required permissions and messages are not older than 14 days.",
+          ),
+        ],
+      });
     }
-
-    const deleted = await channel.bulkDelete(messages, true);
-
-    await interaction.editReply({
-      embeds: [
-        successEmbed(
-          "Messages Cleared",
-          `Deleted **${deleted.size}** message(s).${
-            targetUser ? ` (from ${targetUser.displayName})` : ""
-          }`,
-        ),
-      ],
-    });
   },
 };
 

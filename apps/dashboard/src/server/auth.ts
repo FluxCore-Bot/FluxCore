@@ -1,3 +1,4 @@
+import { randomBytes } from "node:crypto";
 import { config } from "@fluxcore/config";
 import type { OAuthGuild } from "./session.js";
 
@@ -16,14 +17,16 @@ interface DiscordUser {
   avatar: string | null;
 }
 
-export function getAuthorizationUrl(): string {
+export function getAuthorizationUrl(): { url: string; state: string } {
+  const state = randomBytes(32).toString("hex");
   const params = new URLSearchParams({
     client_id: config.clientId,
     redirect_uri: config.dashboardCallbackUrl,
     response_type: "code",
     scope: "identify guilds",
+    state,
   });
-  return `${DISCORD_API}/oauth2/authorize?${params}`;
+  return { url: `${DISCORD_API}/oauth2/authorize?${params}`, state };
 }
 
 export async function exchangeCode(code: string): Promise<TokenResponse> {

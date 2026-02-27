@@ -415,7 +415,7 @@ export async function reconcileOnStartup(guild: Guild): Promise<void> {
           }
         }
 
-        const ownerId = detectedOwnerId ?? vc.members.first()!.id;
+        const ownerId = detectedOwnerId ?? vc.members.first()?.id ?? "unknown";
 
         activeChannels.set(vc.id, {
           channelId: vc.id,

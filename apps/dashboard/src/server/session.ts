@@ -1,5 +1,14 @@
 import { randomUUID } from "node:crypto";
 import { getPrisma } from "@fluxcore/database";
+import { encrypt, decrypt } from "./crypto.js";
+
+function safeJsonParse<T>(json: string, fallback: T): T {
+  try {
+    return JSON.parse(json) as T;
+  } catch {
+    return fallback;
+  }
+}
 
 export interface OAuthGuild {
   id: string;
@@ -18,6 +27,9 @@ export interface Session {
 }
 
 const SESSION_TTL = 60 * 60 * 1000; // 1 hour
+const CACHE_TTL = 30_000; // 30 seconds
+
+const sessionCache = new Map<string, { session: Session; expiresAt: number }>();
 
 export async function createSession(
   data: Omit<Session, "createdAt">,
@@ -33,7 +45,7 @@ export async function createSession(
       userId: data.userId,
       username: data.username,
       avatar: data.avatar,
-      accessToken: data.accessToken,
+      accessToken: encrypt(data.accessToken),
       guilds: JSON.stringify(data.guilds),
       createdAt: now,
       expiresAt,
@@ -44,6 +56,12 @@ export async function createSession(
 }
 
 export async function getSession(id: string): Promise<Session | null> {
+  const cached = sessionCache.get(id);
+  if (cached && cached.expiresAt > Date.now()) {
+    return cached.session;
+  }
+  sessionCache.delete(id);
+
   const prisma = getPrisma();
   const row = await prisma.dashboardSession.findUnique({
     where: { id },
@@ -56,17 +74,21 @@ export async function getSession(id: string): Promise<Session | null> {
     return null;
   }
 
-  return {
+  const session: Session = {
     userId: row.userId,
     username: row.username,
     avatar: row.avatar,
-    accessToken: row.accessToken,
-    guilds: JSON.parse(row.guilds) as OAuthGuild[],
+    accessToken: decrypt(row.accessToken),
+    guilds: safeJsonParse<OAuthGuild[]>(row.guilds, []),
     createdAt: row.createdAt.getTime(),
   };
+
+  sessionCache.set(id, { session, expiresAt: Date.now() + CACHE_TTL });
+  return session;
 }
 
 export async function deleteSession(id: string): Promise<void> {
+  sessionCache.delete(id);
   const prisma = getPrisma();
   await prisma.dashboardSession.deleteMany({ where: { id } });
 }

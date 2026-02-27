@@ -29,9 +29,23 @@ export async function loadEvents(client: ExtendedClient): Promise<void> {
     }
 
     if (event.once) {
-      client.once(event.name, (...args) => event.execute(...args));
+      client.once(event.name, (...args) => {
+        Promise.resolve(event.execute(...args)).catch((err: unknown) =>
+          logger.error(
+            `Event ${event.name} error`,
+            err instanceof Error ? err : new Error(String(err)),
+          ),
+        );
+      });
     } else {
-      client.on(event.name, (...args) => event.execute(...args));
+      client.on(event.name, (...args) => {
+        Promise.resolve(event.execute(...args)).catch((err: unknown) =>
+          logger.error(
+            `Event ${event.name} error`,
+            err instanceof Error ? err : new Error(String(err)),
+          ),
+        );
+      });
     }
 
     count++;

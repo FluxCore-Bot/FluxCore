@@ -3,27 +3,57 @@ import { getPrisma } from "@fluxcore/database";
 import type { ActiveTempChannel, SavedTempVoiceSettings } from "./types.js";
 import { logger } from "@fluxcore/utils";
 
+function safeJsonParse<T>(json: string, fallback: T): T {
+  try {
+    return JSON.parse(json) as T;
+  } catch {
+    return fallback;
+  }
+}
+
+const SETTINGS_CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+const settingsCache = new Map<
+  string,
+  { settings: SavedTempVoiceSettings | null; expiresAt: number }
+>();
+
+function settingsCacheKey(guildId: string, userId: string, configId: number): string {
+  return `${guildId}:${userId}:${configId}`;
+}
+
 export async function loadUserSettings(
   guildId: string,
   userId: string,
   configId: number,
 ): Promise<SavedTempVoiceSettings | null> {
+  const key = settingsCacheKey(guildId, userId, configId);
+  const cached = settingsCache.get(key);
+  if (cached && cached.expiresAt > Date.now()) {
+    return cached.settings;
+  }
+  settingsCache.delete(key);
+
   try {
     const prisma = getPrisma();
     const row = await prisma.tempVoiceUserSettings.findUnique({
       where: { guildId_userId_configId: { guildId, userId, configId } },
     });
-    if (!row) return null;
+    if (!row) {
+      settingsCache.set(key, { settings: null, expiresAt: Date.now() + SETTINGS_CACHE_TTL });
+      return null;
+    }
 
-    return {
+    const settings: SavedTempVoiceSettings = {
       channelName: row.channelName,
       userLimit: row.userLimit,
       isLocked: row.isLocked,
       isHidden: row.isHidden,
       isTextClosed: row.isTextClosed,
-      bannedUserIds: JSON.parse(row.bannedUserIds) as string[],
-      hiddenFromUserIds: JSON.parse(row.hiddenFromUserIds) as string[],
+      bannedUserIds: safeJsonParse<string[]>(row.bannedUserIds, []),
+      hiddenFromUserIds: safeJsonParse<string[]>(row.hiddenFromUserIds, []),
     };
+    settingsCache.set(key, { settings, expiresAt: Date.now() + SETTINGS_CACHE_TTL });
+    return settings;
   } catch (error) {
     logger.error(
       `Failed to load user settings for ${userId} in ${guildId} (config ${configId})`,
@@ -77,6 +107,10 @@ export async function persistChannelState(
   tracked: ActiveTempChannel,
   channel: VoiceChannel,
 ): Promise<void> {
+  // Invalidate cache before saving
+  const key = settingsCacheKey(tracked.guildId, tracked.ownerId, tracked.configId);
+  settingsCache.delete(key);
+
   const settings: SavedTempVoiceSettings = {
     channelName: channel.name,
     userLimit: channel.userLimit,

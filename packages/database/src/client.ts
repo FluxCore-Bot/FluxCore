@@ -14,7 +14,12 @@ export function getPrisma(): PrismaClient {
         "Missing required environment variable: DATABASE_URL",
       );
     }
-    pool = new pg.Pool({ connectionString });
+    pool = new pg.Pool({
+      connectionString,
+      max: 20,
+      idleTimeoutMillis: 30_000,
+      connectionTimeoutMillis: 5_000,
+    });
     const adapter = new PrismaPg(pool);
     prismaInstance = new PrismaClient({ adapter });
   }

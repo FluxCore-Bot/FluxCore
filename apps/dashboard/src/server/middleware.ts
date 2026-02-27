@@ -14,13 +14,19 @@ export async function requireAuth(
   request: FastifyRequest,
   reply: FastifyReply,
 ): Promise<void> {
-  const sessionId = request.cookies?.session;
-  if (!sessionId) {
+  const sessionCookie = request.cookies?.session;
+  if (!sessionCookie) {
     reply.code(401).send({ error: "Not authenticated" });
     return;
   }
 
-  const session = await getSession(sessionId);
+  const unsigned = request.unsignCookie(sessionCookie);
+  if (!unsigned.valid || !unsigned.value) {
+    reply.code(401).send({ error: "Not authenticated" });
+    return;
+  }
+
+  const session = await getSession(unsigned.value);
   if (!session) {
     reply.code(401).send({ error: "Session expired" });
     return;
@@ -36,6 +42,8 @@ export async function requireGuildAdmin(
   const { guildId } = request.params as { guildId: string };
   const session = request.session!;
 
+  // TODO: Guild permissions are cached at login time and may become stale.
+  // Consider periodically refreshing from Discord API for long-lived sessions.
   const userGuild = session.guilds.find((g) => g.id === guildId);
   if (!userGuild || !(BigInt(userGuild.permissions) & MANAGE_GUILD)) {
     reply.code(403).send({ error: "No permission for this guild" });
