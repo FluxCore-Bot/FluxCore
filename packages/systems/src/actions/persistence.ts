@@ -164,7 +164,7 @@ export async function getRecentLogs(
 
 export async function notifyCacheInvalidation(
   guildId: string,
-  action: "reload" | "reloadSettings" = "reload",
+  action: "reload" | "reloadSettings" | "reloadTempVoice" = "reload",
 ): Promise<void> {
   try {
     const prisma = getPrisma();

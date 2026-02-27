@@ -9,6 +9,7 @@ import {
 } from "@fluxcore/systems/tempVoice/config";
 import { MAX_TEMPVOICE_CONFIGS_PER_GUILD } from "@fluxcore/systems/tempVoice/constants";
 import { channelExistsInGuild } from "../discordApi.js";
+import { notifyCacheInvalidation } from "@fluxcore/systems/actions/persistence";
 
 export function registerTempVoiceRoutes(app: FastifyInstance): void {
   // GET all configs for a guild
@@ -77,6 +78,7 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
         nameTemplate,
       });
 
+      await notifyCacheInvalidation(guildId, "reloadTempVoice");
       reply.code(201).send(config);
     },
   );
@@ -135,6 +137,7 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
             nameTemplate: body.nameTemplate,
           }),
         });
+        await notifyCacheInvalidation(guildId, "reloadTempVoice");
         reply.send(updated);
       } catch {
         reply.code(404).send({ error: "Config not found" });
@@ -152,6 +155,9 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
         configId: string;
       };
       const removed = await removeGuildConfig(guildId, Number(configId));
+      if (removed) {
+        await notifyCacheInvalidation(guildId, "reloadTempVoice");
+      }
       reply.send({ success: removed });
     },
   );

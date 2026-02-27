@@ -1,6 +1,7 @@
 import { logger } from "@fluxcore/utils";
 import { reloadGuild } from "./cache.js";
 import { loadActionGuildSettings } from "./config.js";
+import { reloadGuildTempVoiceConfig } from "../tempVoice/config.js";
 
 const POLL_INTERVAL_MS = 10_000;
 let pollTimer: ReturnType<typeof setInterval> | null = null;
@@ -18,13 +19,18 @@ async function pollInvalidations(): Promise<void> {
     if (records.length === 0) return;
 
     const guildsToReload = new Set<string>();
+    const guildsToReloadTempVoice = new Set<string>();
     let needSettingsReload = false;
 
     for (const record of records) {
       if (record.action === "reloadSettings") {
         needSettingsReload = true;
       }
-      guildsToReload.add(record.guildId);
+      if (record.action === "reloadTempVoice") {
+        guildsToReloadTempVoice.add(record.guildId);
+      } else {
+        guildsToReload.add(record.guildId);
+      }
       lastCheckedId = record.id;
     }
 
@@ -36,9 +42,14 @@ async function pollInvalidations(): Promise<void> {
       await reloadGuild(guildId);
     }
 
-    if (guildsToReload.size > 0) {
+    for (const guildId of guildsToReloadTempVoice) {
+      await reloadGuildTempVoiceConfig(guildId);
+    }
+
+    const totalReloads = guildsToReload.size + guildsToReloadTempVoice.size;
+    if (totalReloads > 0) {
       logger.debug(
-        `Cache sync: reloaded ${guildsToReload.size} guild(s) from ${records.length} invalidation(s)`,
+        `Cache sync: reloaded ${guildsToReload.size} action guild(s) + ${guildsToReloadTempVoice.size} temp-voice guild(s) from ${records.length} invalidation(s)`,
       );
     }
 
