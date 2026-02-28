@@ -13,4 +13,5 @@ LICENSE
 coverage
 .turbo
 .pnpm-store
+out
 docker

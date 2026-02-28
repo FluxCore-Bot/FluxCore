@@ -89,50 +89,41 @@ The project is structured as a framework-first bot — shipping core infrastruct
 
 ## Architecture
 
-FluxCore is organized into four top-level layers:
+FluxCore is a **pnpm monorepo** powered by **Turborepo** for task orchestration and **Docker** for containerized development and production.
 
 ```
 FluxCore/
-├── src/
-│   ├── client/            # Extended Discord client
-│   ├── config/            # Environment & bot configuration
-│   ├── database/          # Prisma client singleton
-│   ├── handlers/          # Dynamic command & event loaders
-│   ├── types/             # Shared TypeScript interfaces
-│   │
-│   ├── commands/          # Slash commands (per-module directories)
-│   │   ├── general/       #   ping, help, server-info, user-info
-│   │   ├── moderation/    #   ban, kick, timeout, clear
-│   │   ├── utility/       #   avatar, remind, embed-builder
-│   │   └── voice/         #   tempvoice configuration
-│   │
-│   ├── events/            # Discord gateway event handlers
-│   │   ├── ready.ts
-│   │   ├── interactionCreate.ts
-│   │   └── voiceStateUpdate.ts
-│   │
-│   ├── systems/           # Stateful feature systems
-│   │   ├── cooldown.ts
-│   │   ├── permissionAudit.ts
-│   │   └── tempVoice/     # Channel manager, persistence, interactions
-│   │
-│   └── utils/             # Shared utilities (logger, embeds, time, files)
+├── apps/
+│   ├── bot/                 # Discord bot application
+│   │   └── src/
+│   │       ├── client/      #   Extended Discord client
+│   │       ├── commands/    #   Slash commands (per-module)
+│   │       ├── events/      #   Gateway event handlers
+│   │       └── scripts/     #   CLI scripts (command deploy)
+│   └── dashboard/           # Web dashboard (Fastify + React)
+│       └── src/
+│           ├── server/      #   Fastify API server
+│           └── client/      #   React SPA (Vite + TanStack Router)
 │
-├── prisma/
-│   ├── schema.prisma      # Database schema
-│   └── migrations/        # SQL migration history
+├── packages/
+│   ├── config/              # Shared environment configuration
+│   ├── types/               # Shared TypeScript interfaces
+│   ├── utils/               # Logger, embeds, permissions, time helpers
+│   ├── database/            # Prisma schema, migrations, client
+│   └── systems/             # Shared stateful systems (TempVoice, Actions, etc.)
 │
-├── tests/                 # Vitest test suites (mirrors src/)
-│
-├── Dockerfile             # Multi-stage build (dev → build → test → prod)
-├── docker-compose.yml     # Development stack
-└── docker-compose.prod.yml # Production stack
+├── docker/                  # Docker support (Caddyfile, backup script)
+├── Dockerfile               # Multi-stage build (dev, test, production)
+├── docker-compose.yml       # Development stack
+├── docker-compose.prod.yml  # Production stack
+└── turbo.json               # Turborepo task pipeline
 ```
 
 ### Design Principles
 
+- **Monorepo architecture** — shared packages (`config`, `types`, `utils`, `database`, `systems`) are consumed by both `bot` and `dashboard`
 - **Modular by default** — every feature lives in its own directory under `commands/` or `systems/`; adding a module never touches core files
-- **Feature toggles per guild** — all major features will support per-server enable/disable via database config
+- **Feature toggles per guild** — all major features support per-server enable/disable via database config
 - **Infrastructure separation** — the `systems/` layer handles stateful logic; `commands/` only orchestrate
 - **Single source of truth** — PostgreSQL is canonical; in-memory caches exist for performance but always sync back
 - **Type safety end-to-end** — strict TypeScript throughout, including Prisma-generated types
@@ -141,9 +132,9 @@ FluxCore/
 
 ## Quick Start
 
-> Requires Docker and Docker Compose. No local Node.js or PostgreSQL installation needed.
+> Requires **Docker** and **Docker Compose**. No local Node.js or PostgreSQL installation needed.
 
-**1. Clone and configure**
+### 1. Clone and configure
 
 ```bash
 git clone https://github.com/Abdulkhalek-1/FluxCore.git
@@ -151,107 +142,183 @@ cd FluxCore
 cp .env.example .env.dev
 ```
 
-**2. Fill in your credentials** — edit `.env.dev`:
+### 2. Fill in your credentials
+
+Edit `.env.dev` with your Discord application credentials:
 
 ```env
 DISCORD_TOKEN=your_bot_token_here
 CLIENT_ID=your_application_id_here
-GUILD_ID=your_dev_guild_id_here   # optional, speeds up command registration in dev
-DATABASE_URL=postgresql://postgres:postgres@db:5432/fluxcore
+GUILD_ID=your_dev_guild_id_here   # optional, speeds up command registration
+DATABASE_URL=postgresql://fluxcore:fluxcore@postgres:5432/fluxcore
 LOG_LEVEL=debug
 ```
 
-**3. Start the bot**
+> The `DATABASE_URL` above points to the Docker-managed PostgreSQL container. No changes needed if using Docker.
+
+### 3. Start the development stack
 
 ```bash
-pnpm docker:dev
+# Start everything (bot + dashboard + PostgreSQL)
+pnpm dev
+
+# Or start only what you need
+pnpm dev:bot         # bot + PostgreSQL
+pnpm dev:dashboard   # dashboard + PostgreSQL
 ```
 
-This spins up PostgreSQL, runs Prisma migrations, and starts the bot with live-reload enabled. That's it.
+This spins up PostgreSQL, runs Prisma migrations automatically, and starts services with hot-reload via Turborepo. The dashboard is available at `http://localhost:5173` (Vite dev server) and `http://localhost:3000` (API).
 
----
-
-## Manual Setup
-
-If you prefer running without Docker:
-
-### Prerequisites
-
-- Node.js ≥ 18.0.0
-- PostgreSQL (running locally or remote)
-- pnpm (`npm install -g pnpm`)
-
-### Steps
-
-**1. Install dependencies**
-
-```bash
-pnpm install
-```
-
-**2. Configure environment**
-
-```bash
-cp .env.example .env.dev
-# Edit .env.dev with your Discord token, client ID, and database URL
-```
-
-**3. Run database migrations**
-
-```bash
-pnpm db:migrate
-```
-
-**4. Register slash commands**
+### 4. Register slash commands
 
 ```bash
 pnpm deploy:commands
 ```
 
-> Use `GUILD_ID` in your env for instant per-server registration during development. Leave it empty to deploy globally (takes up to 1 hour to propagate).
+> Set `GUILD_ID` in your env for instant per-guild registration during development. Leave it empty to deploy globally (takes up to 1 hour to propagate).
 
-**5. Start in development mode**
+---
+
+## Running in Production
+
+### Prerequisites
+
+- Docker and Docker Compose
+- A `.env.prod` file (copy from `.env.example` and fill in production values)
+- A strong `POSTGRES_PASSWORD`
+
+### Start production services
 
 ```bash
-pnpm dev
-```
-
-**6. Build for production**
-
-```bash
-pnpm build
+# Start everything (bot + dashboard + Caddy + PostgreSQL + backup)
 pnpm start
+
+# Or start only what you need
+pnpm start:bot         # bot + PostgreSQL
+pnpm start:dashboard   # dashboard + Caddy + PostgreSQL
 ```
 
-### Useful Scripts
+### Stop production services
+
+```bash
+pnpm stop:prod
+```
+
+### Production architecture
+
+- **Bot** and **Dashboard** are built using `turbo prune --docker` for optimized, minimal images
+- **Caddy** reverse proxy handles automatic TLS via `DASHBOARD_DOMAIN`
+- **PostgreSQL** runs on an internal network, not exposed externally
+- **Backup service** runs automated daily database backups with configurable retention
+- Memory limits are enforced per service (bot: 512M, dashboard: 256M, postgres: 512M, caddy: 128M)
+
+---
+
+## Development Scripts
+
+All scripts run inside Docker containers — no local Node.js required.
+
+### Services
 
 | Script | Description |
 |--------|-------------|
-| `pnpm dev` | Start with hot-reload via tsx watch |
-| `pnpm build` | Compile TypeScript to `dist/` |
-| `pnpm start` | Run compiled production build |
-| `pnpm deploy:commands` | Register slash commands with Discord |
+| `pnpm dev` | Start full dev stack (bot + dashboard + postgres) |
+| `pnpm dev:bot` | Start bot + postgres only |
+| `pnpm dev:dashboard` | Start dashboard + postgres only |
+| `pnpm stop` | Stop all dev services |
+
+### Build and Quality
+
+| Script | Description |
+|--------|-------------|
+| `pnpm build` | Compile all packages via Turborepo |
+| `pnpm typecheck` | Run TypeScript type checking across the monorepo |
+| `pnpm clean` | Remove all `dist/` directories |
+
+### Testing
+
+| Script | Description |
+|--------|-------------|
 | `pnpm test` | Run all tests once |
-| `pnpm test:watch` | Watch mode for tests |
-| `pnpm test:coverage` | Coverage report |
-| `pnpm db:migrate` | Create and apply new migrations |
-| `pnpm db:deploy` | Apply migrations in production |
-| `pnpm db:studio` | Open Prisma Studio (visual DB editor) |
-| `pnpm docker:dev` | Start full dev stack in Docker |
-| `pnpm docker:prod` | Start production stack in Docker |
+| `pnpm test:watch` | Watch mode (bot tests) |
+| `pnpm test:coverage` | Coverage report (bot tests) |
+
+### Database
+
+| Script | Description |
+|--------|-------------|
+| `pnpm db:migrate` | Create and apply new migrations (development) |
+| `pnpm db:deploy` | Apply pending migrations (production) |
+| `pnpm db:generate` | Regenerate Prisma client |
+| `pnpm db:studio` | Open Prisma Studio at `localhost:5555` |
+
+### Discord
+
+| Script | Description |
+|--------|-------------|
+| `pnpm deploy:commands` | Register slash commands with Discord API |
+
+### Docker Profiles
+
+The dev compose supports profiles to selectively start services:
+
+| Profile | Services |
+|---------|----------|
+| `bot` | bot + postgres |
+| `dashboard` | dashboard + postgres |
+| `full` | bot + dashboard + postgres |
+| `tools` | pgAdmin (database GUI at `localhost:5050`) |
+
+Start pgAdmin alongside dev services:
+
+```bash
+docker compose --profile bot --profile tools up --build
+```
 
 ---
 
 ## Environment Variables
 
+### Shared (required by both bot and dashboard)
+
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
-| `DISCORD_TOKEN` | ✅ | — | Bot token from Discord Developer Portal |
-| `CLIENT_ID` | ✅ | — | Your bot's application ID |
-| `GUILD_ID` | ❌ | — | Dev guild for instant command registration |
-| `DATABASE_URL` | ✅ | — | PostgreSQL connection string |
-| `LOG_LEVEL` | ❌ | `info` | `debug` \| `info` \| `warn` \| `error` |
-| `POSTGRES_PASSWORD` | ✅ (prod) | — | Password for Docker-managed PostgreSQL |
+| `DISCORD_TOKEN` | Yes | — | Bot token from Discord Developer Portal |
+| `CLIENT_ID` | Yes | — | Application (client) ID |
+| `DATABASE_URL` | Yes | — | PostgreSQL connection string |
+| `LOG_LEVEL` | No | `info` | `debug`, `info`, `warn`, or `error` |
+
+### Bot only
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `GUILD_ID` | No | — | Dev guild for instant command registration |
+
+### Cache Sync (bot-dashboard communication)
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `BOT_SYNC_PORT` | No | `3001` | Port for the bot's internal cache sync server |
+| `BOT_SYNC_SECRET` | If dashboard | — | Shared secret for sync authentication |
+| `BOT_SYNC_URL` | If dashboard | `http://bot:3001` | URL the dashboard uses to reach the bot |
+
+### Dashboard only
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `DASHBOARD_PORT` | No | `3000` | Fastify server port |
+| `DASHBOARD_CLIENT_SECRET` | If dashboard | — | Discord OAuth2 client secret |
+| `DASHBOARD_CALLBACK_URL` | If dashboard | — | OAuth2 callback URL |
+| `DASHBOARD_SESSION_SECRET` | If dashboard | — | Session encryption secret |
+
+### Infrastructure (production only)
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `POSTGRES_PASSWORD` | Yes (prod) | — | PostgreSQL password |
+| `DASHBOARD_DOMAIN` | No | `localhost` | Domain for Caddy reverse proxy (enables auto TLS) |
+| `BACKUP_SCHEDULE` | No | `0 2 * * *` | Cron expression for database backups |
+| `BACKUP_RETENTION_DAYS` | No | `7` | Days to retain backup files |
 
 ---
 
@@ -466,30 +533,30 @@ TempVoiceUserSettings {
 
 ## Admin Dashboard
 
-> Status: Planned — designed for Django developers managing large communities.
-
-The FluxCore web dashboard will provide a full guild management interface accessible via Discord OAuth2.
+The FluxCore web dashboard provides a guild management interface accessible via Discord OAuth2.
 
 ### Stack
 
 | Component | Technology |
 |-----------|-----------|
-| Backend API | Django + Django REST Framework |
+| Backend API | Fastify 5 |
+| Frontend | React 19 + TanStack Router + Zustand |
+| Build | Vite + Tailwind CSS 4 |
 | Authentication | Discord OAuth2 (per-guild access control) |
-| Database | Shared PostgreSQL with the bot |
-| Real-time logs | Django Channels + WebSocket |
-| Frontend | React or HTMX (TBD) |
+| Database | Shared PostgreSQL with the bot (via `@fluxcore/database`) |
+| Cache Sync | Internal HTTP sync between bot and dashboard |
 
-### Planned Dashboard Features
+### Running the dashboard
 
-- **Guild Overview** — member stats, recent activity, health score
-- **Module Toggles** — enable/disable any feature per server
-- **Moderation History** — searchable, filterable warn/ban/kick log
-- **TempVoice Config** — hub channel setup, name templates, category assignment
-- **Logging Config** — toggle which events log and to which channel
-- **Ticket Config** — panel setup, staff roles, category config
-- **Economy Settings** — currency name, daily amount, shop management
-- **Live Log Stream** — WebSocket-powered real-time event viewer
+The dashboard requires `DASHBOARD_CLIENT_SECRET`, `DASHBOARD_CALLBACK_URL`, and `DASHBOARD_SESSION_SECRET` to be set. It communicates with the bot via the cache sync server (`BOT_SYNC_URL`).
+
+```bash
+# Development (Vite dev server on :5173, API on :3000)
+pnpm dev:dashboard
+
+# Production (built and served by Fastify, Caddy handles TLS)
+pnpm start:dashboard
+```
 
 ---
 
@@ -497,7 +564,7 @@ The FluxCore web dashboard will provide a full guild management interface access
 
 Contributions are welcome. Here's how to get started:
 
-**1. Fork and branch**
+### 1. Fork and branch
 
 ```bash
 git clone https://github.com/Abdulkhalek-1/FluxCore.git
@@ -505,29 +572,32 @@ cd FluxCore
 git checkout -b feat/your-feature-name
 ```
 
-**2. Start the dev environment**
+### 2. Start the dev environment
 
 ```bash
 cp .env.example .env.dev
-# Fill in your bot token and database URL
-pnpm docker:dev
+# Fill in your bot token and client ID
+pnpm dev
 ```
 
-**3. Write your code**
+### 3. Write your code
 
-- Commands go in `src/commands/<module>/`
-- Event handlers go in `src/events/`
-- Stateful systems go in `src/systems/<module>/`
-- Add tests in `tests/` mirroring the `src/` structure
+- Bot commands go in `apps/bot/src/commands/<module>/`
+- Bot event handlers go in `apps/bot/src/events/`
+- Shared systems go in `packages/systems/`
+- Shared utilities go in `packages/utils/`
+- Database schema and migrations go in `packages/database/prisma/`
+- Dashboard server routes go in `apps/dashboard/src/server/`
+- Dashboard UI components go in `apps/dashboard/src/client/`
 
-**4. Test your changes**
+### 4. Test your changes
 
 ```bash
 pnpm test
 pnpm test:coverage
 ```
 
-**5. Open a pull request**
+### 5. Open a pull request
 
 Describe what you've built, reference any related issues, and make sure tests pass.
 
@@ -537,7 +607,7 @@ Describe what you've built, reference any related issues, and make sure tests pa
 - All commands must include `description`, `category`, and appropriate `defaultMemberPermissions`
 - Errors must be handled — never let an unhandled rejection propagate
 - New systems with database requirements must include a Prisma migration
-- Keep command files thin — business logic belongs in `systems/`
+- Keep command files thin — business logic belongs in `packages/systems/`
 
 ---
 
