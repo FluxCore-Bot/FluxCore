@@ -53,7 +53,12 @@
     },
     "deploy:commands": {
       "dependsOn": ["build"],
-      "cache": false
+      "cache": false,
+      "passThroughEnv": [
+        "DISCORD_TOKEN",
+        "CLIENT_ID",
+        "GUILD_ID"
+      ]
     },
     "clean": {
       "cache": false
