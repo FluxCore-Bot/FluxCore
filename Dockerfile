@@ -1,9 +1,13 @@
 # ---- Base ----
 FROM node:22-alpine AS base
+RUN apk add --no-cache libc6-compat
 RUN corepack enable && corepack prepare pnpm@10.28.0 --activate
 WORKDIR /app
 
-# ---- Dependencies ----
+# ============================================
+# Development (full workspace for volume mounts)
+# ============================================
+
 FROM base AS deps
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json ./
 COPY packages/config/package.json ./packages/config/
@@ -17,61 +21,75 @@ COPY packages/database/prisma ./packages/database/prisma/
 COPY packages/database/prisma.config.ts ./packages/database/
 RUN pnpm install --frozen-lockfile
 
-# ---- Development ----
 FROM deps AS development
 COPY . .
 CMD ["pnpm", "dev"]
 
-# ---- Build ----
-FROM deps AS build
-COPY . .
-RUN pnpm turbo run build
-
-# ---- Test ----
 FROM deps AS test
 COPY . .
 CMD ["pnpm", "test"]
 
-# ---- Production (bot) ----
+# ============================================
+# Production (turbo prune for optimized builds)
+# ============================================
+
+FROM base AS pruner
+RUN npm install -g turbo@2
+COPY . .
+
+# ---- Bot Pipeline ----
+
+FROM pruner AS prune-bot
+RUN turbo prune @fluxcore/bot --docker
+
+FROM base AS bot-installer
+COPY --from=prune-bot /app/out/json/ .
+RUN pnpm install --frozen-lockfile
+
+FROM bot-installer AS bot-builder
+COPY --from=prune-bot /app/out/full/ .
+RUN pnpm turbo run build --filter=@fluxcore/bot...
+
 FROM base AS production-bot
 ENV NODE_ENV=production
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY packages/config/package.json ./packages/config/
-COPY packages/types/package.json ./packages/types/
-COPY packages/utils/package.json ./packages/utils/
-COPY packages/database/package.json ./packages/database/
-COPY packages/systems/package.json ./packages/systems/
-COPY apps/bot/package.json ./apps/bot/
-COPY packages/database/prisma ./packages/database/prisma/
-COPY packages/database/prisma.config.ts ./packages/database/
-RUN pnpm install --frozen-lockfile --prod
-COPY --from=build /app/packages/config/dist ./packages/config/dist
-COPY --from=build /app/packages/types/dist ./packages/types/dist
-COPY --from=build /app/packages/utils/dist ./packages/utils/dist
-COPY --from=build /app/packages/database/dist ./packages/database/dist
-COPY --from=build /app/packages/systems/dist ./packages/systems/dist
-COPY --from=build /app/apps/bot/dist ./apps/bot/dist
+COPY --from=prune-bot /app/out/json/ .
+COPY --from=bot-builder /app/packages/database/prisma ./packages/database/prisma/
+COPY --from=bot-builder /app/packages/database/prisma.config.ts ./packages/database/
+RUN pnpm install --frozen-lockfile --prod && \
+    npm install -g prisma@7
+COPY --from=bot-builder /app/packages/config/dist ./packages/config/dist
+COPY --from=bot-builder /app/packages/types/dist ./packages/types/dist
+COPY --from=bot-builder /app/packages/utils/dist ./packages/utils/dist
+COPY --from=bot-builder /app/packages/database/dist ./packages/database/dist
+COPY --from=bot-builder /app/packages/systems/dist ./packages/systems/dist
+COPY --from=bot-builder /app/apps/bot/dist ./apps/bot/dist
 USER node
-CMD ["sh", "-c", "cd packages/database && npx prisma migrate deploy && cd /app && node apps/bot/dist/index.js"]
+CMD ["sh", "-c", "cd packages/database && prisma migrate deploy && cd /app && node apps/bot/dist/index.js"]
 
-# ---- Production (dashboard) ----
+# ---- Dashboard Pipeline ----
+
+FROM pruner AS prune-dashboard
+RUN turbo prune @fluxcore/dashboard --docker
+
+FROM base AS dashboard-installer
+COPY --from=prune-dashboard /app/out/json/ .
+RUN pnpm install --frozen-lockfile
+
+FROM dashboard-installer AS dashboard-builder
+COPY --from=prune-dashboard /app/out/full/ .
+RUN pnpm turbo run build --filter=@fluxcore/dashboard...
+
 FROM base AS production-dashboard
 ENV NODE_ENV=production
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY packages/config/package.json ./packages/config/
-COPY packages/types/package.json ./packages/types/
-COPY packages/utils/package.json ./packages/utils/
-COPY packages/database/package.json ./packages/database/
-COPY packages/systems/package.json ./packages/systems/
-COPY apps/dashboard/package.json ./apps/dashboard/
-COPY packages/database/prisma ./packages/database/prisma/
-COPY packages/database/prisma.config.ts ./packages/database/
-RUN pnpm install --frozen-lockfile --prod
-COPY --from=build /app/packages/config/dist ./packages/config/dist
-COPY --from=build /app/packages/types/dist ./packages/types/dist
-COPY --from=build /app/packages/utils/dist ./packages/utils/dist
-COPY --from=build /app/packages/database/dist ./packages/database/dist
-COPY --from=build /app/packages/systems/dist ./packages/systems/dist
-COPY --from=build /app/apps/dashboard/dist ./apps/dashboard/dist
+COPY --from=prune-dashboard /app/out/json/ .
+COPY --from=dashboard-builder /app/packages/database/prisma ./packages/database/prisma/
+COPY --from=dashboard-builder /app/packages/database/prisma.config.ts ./packages/database/
+RUN pnpm install --frozen-lockfile --prod && \
+    npm install -g prisma@7
+COPY --from=dashboard-builder /app/packages/config/dist ./packages/config/dist
+COPY --from=dashboard-builder /app/packages/utils/dist ./packages/utils/dist
+COPY --from=dashboard-builder /app/packages/database/dist ./packages/database/dist
+COPY --from=dashboard-builder /app/packages/systems/dist ./packages/systems/dist
+COPY --from=dashboard-builder /app/apps/dashboard/dist ./apps/dashboard/dist
 USER node
-CMD ["sh", "-c", "cd packages/database && npx prisma migrate deploy && cd /app && node apps/dashboard/dist/server/index.js"]
+CMD ["sh", "-c", "cd packages/database && prisma migrate deploy && cd /app && node apps/dashboard/dist/server/index.js"]

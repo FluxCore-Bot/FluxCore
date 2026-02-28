@@ -11,8 +11,9 @@ data/
 *.tsbuildinfo
 # Prisma generated output
 packages/database/src/generated/
-# Turbo cache
+# Turbo cache and prune output
 .turbo/
+out/
 # pnpm store
 .pnpm-store/
 # Serena config
