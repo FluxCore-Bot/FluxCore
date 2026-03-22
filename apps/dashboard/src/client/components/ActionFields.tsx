@@ -1,3 +1,5 @@
+import { Label } from "./ui/label";
+import { Input } from "./ui/input";
 import type { ActionFieldDescriptor, Channel, Role } from "../lib/schemas";
 
 interface ActionFieldsProps {
@@ -32,10 +34,10 @@ export function ActionFields({
 
         return (
           <div key={field.key}>
-            <label className="mb-1 block text-xs text-text-muted">
+            <Label>
               {field.label}
               {field.required && <span className="text-danger"> *</span>}
-            </label>
+            </Label>
 
             {field.type === "channel" && (
               <select
@@ -68,7 +70,7 @@ export function ActionFields({
             )}
 
             {field.type === "text" && (
-              <input
+              <Input
                 type="text"
                 value={String(value)}
                 onChange={(e) => onChange(field.key, e.target.value)}

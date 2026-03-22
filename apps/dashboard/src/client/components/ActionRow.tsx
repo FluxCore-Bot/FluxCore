@@ -1,4 +1,7 @@
 import { ActionFields } from "./ActionFields";
+import { Button } from "./ui/button";
+import { Label } from "./ui/label";
+import { Card } from "./ui/card";
 import type {
   ActionConfig,
   ActionFieldDescriptor,
@@ -80,26 +83,28 @@ export function ActionRow({
   };
 
   return (
-    <div className="rounded-md border border-border bg-surface p-4">
+    <Card className="bg-surface-high p-4">
       <div className="mb-3 flex items-center justify-between">
         <span className="text-xs font-medium text-text-muted">
           Action {index + 1}
         </span>
         {canRemove && (
-          <button
+          <Button
             type="button"
+            variant="link"
+            size="sm"
+            className="text-danger"
             onClick={() => onRemove(index)}
-            className="text-xs text-danger hover:underline"
           >
             Remove
-          </button>
+          </Button>
         )}
       </div>
 
       <div className="mb-3">
-        <label className="mb-1 block text-xs text-text-muted">
+        <Label>
           Action Type <span className="text-danger">*</span>
-        </label>
+        </Label>
         <select value={action.type} onChange={(e) => handleTypeChange(e.target.value)}>
           <option value="">Select action...</option>
           {Object.entries(constants.actionTypes).map(([key, info]) => (
@@ -119,6 +124,6 @@ export function ActionRow({
           roles={roles}
         />
       )}
-    </div>
+    </Card>
   );
 }

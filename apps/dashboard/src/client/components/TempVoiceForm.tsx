@@ -1,5 +1,10 @@
 import { useState } from "react";
 import { useParams } from "@tanstack/react-router";
+import { Icon } from "./Icon";
+import { Button } from "./ui/button";
+import { Label } from "./ui/label";
+import { Alert } from "./ui/alert";
+import { Card } from "./ui/card";
 import { useChannels } from "../lib/hooks/useChannels";
 import {
   useTempVoiceConfigs,
@@ -7,7 +12,7 @@ import {
   useUpdateTempVoice,
   useDeleteTempVoice,
 } from "../lib/hooks/useTempVoice";
-import { useUiStore } from "../stores/uiStore";
+import { toast } from "sonner";
 import { TempVoiceFormSchema, type TempVoiceConfig } from "../lib/schemas";
 import { ApiError } from "../lib/client";
 
@@ -20,7 +25,6 @@ export function TempVoiceForm() {
   const createConfig = useCreateTempVoice(guildId);
   const updateConfig = useUpdateTempVoice(guildId);
   const deleteConfig = useDeleteTempVoice(guildId);
-  const addToast = useUiStore((s) => s.addToast);
 
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -89,10 +93,10 @@ export function TempVoiceForm() {
           configId: editingId,
           data: result.data,
         });
-        addToast("Configuration updated", "success");
+        toast.success("Configuration updated");
       } else {
         await createConfig.mutateAsync(result.data);
-        addToast("Configuration created", "success");
+        toast.success("Configuration created");
       }
       closeForm();
     } catch (err) {
@@ -103,7 +107,7 @@ export function TempVoiceForm() {
   const handleDelete = async (configId: number) => {
     try {
       await deleteConfig.mutateAsync(configId);
-      addToast("Configuration removed", "success");
+      toast.success("Configuration removed");
       if (editingId === configId) closeForm();
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "An error occurred");
@@ -117,29 +121,18 @@ export function TempVoiceForm() {
     createConfig.isPending || updateConfig.isPending || deleteConfig.isPending;
 
   return (
-    <div className="rounded-lg border border-border bg-surface p-6">
+    <Card className="p-6">
       <div className="mb-4 flex items-center justify-between">
-        <div>
-          <h3 className="text-lg font-semibold">Temporary Voice Channels</h3>
-          <p className="text-sm text-text-muted">
-            Configure hub voice channels that create temporary voice rooms when
-            users join.
-          </p>
-        </div>
+        <h3 className="text-lg font-semibold">Configured Hubs</h3>
         {!showForm && configs.length < MAX_CONFIGS && (
-          <button
-            onClick={openCreateForm}
-            className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-white transition hover:bg-accent-hover"
-          >
-            Add Configuration
-          </button>
+          <Button onClick={openCreateForm}>
+            <Icon name="add" /> Add Hub
+          </Button>
         )}
       </div>
 
       {error && !showForm && (
-        <div className="mb-4 rounded-md border border-danger/30 bg-danger/10 px-4 py-2 text-sm text-danger">
-          {error}
-        </div>
+        <Alert variant="destructive" className="mb-4">{error}</Alert>
       )}
 
       {/* Config list */}
@@ -148,7 +141,7 @@ export function TempVoiceForm() {
           {configs.map((cfg) => (
             <div
               key={cfg.id}
-              className="flex items-center justify-between rounded-md border border-border bg-background px-4 py-3"
+              className="flex items-center justify-between rounded-md bg-surface-high px-4 py-3"
             >
               <div className="space-y-1">
                 <p className="text-sm font-medium">
@@ -161,20 +154,12 @@ export function TempVoiceForm() {
                 </p>
               </div>
               <div className="flex gap-2">
-                <button
-                  onClick={() => openEditForm(cfg)}
-                  disabled={isPending}
-                  className="rounded-md bg-accent/10 px-3 py-1.5 text-xs font-medium text-accent transition hover:bg-accent/20 disabled:opacity-50"
-                >
+                <Button variant="secondary" size="sm" onClick={() => openEditForm(cfg)} disabled={isPending}>
                   Edit
-                </button>
-                <button
-                  onClick={() => handleDelete(cfg.id)}
-                  disabled={isPending}
-                  className="rounded-md bg-danger/10 px-3 py-1.5 text-xs font-medium text-danger transition hover:bg-danger/20 disabled:opacity-50"
-                >
+                </Button>
+                <Button variant="ghost" size="sm" className="text-danger hover:text-danger" onClick={() => handleDelete(cfg.id)} disabled={isPending}>
                   Delete
-                </button>
+                </Button>
               </div>
             </div>
           ))}
@@ -191,22 +176,18 @@ export function TempVoiceForm() {
       {showForm && (
         <form
           onSubmit={handleSubmit}
-          className="rounded-md border border-border bg-background p-4"
+          className="rounded-md bg-surface-high p-4"
         >
           <h4 className="mb-3 text-sm font-semibold">
             {editingId !== null ? "Edit Configuration" : "New Configuration"}
           </h4>
 
           {error && (
-            <div className="mb-3 rounded-md border border-danger/30 bg-danger/10 px-4 py-2 text-sm text-danger">
-              {error}
-            </div>
+            <Alert variant="destructive" className="mb-3">{error}</Alert>
           )}
 
           <div className="mb-3">
-            <label className="mb-1 block text-xs text-text-muted">
-              Hub Channel <span className="text-danger">*</span>
-            </label>
+            <Label>Hub Channel <span className="text-danger">*</span></Label>
             <select
               value={hubChannelId}
               onChange={(e) => setHubChannelId(e.target.value)}
@@ -221,9 +202,7 @@ export function TempVoiceForm() {
           </div>
 
           <div className="mb-3">
-            <label className="mb-1 block text-xs text-text-muted">
-              Category (optional)
-            </label>
+            <Label>Category (optional)</Label>
             <select
               value={categoryId ?? ""}
               onChange={(e) => setCategoryId(e.target.value || null)}
@@ -238,9 +217,7 @@ export function TempVoiceForm() {
           </div>
 
           <div className="mb-4">
-            <label className="mb-1 block text-xs text-text-muted">
-              Name Template
-            </label>
+            <Label>Name Template</Label>
             <input
               type="text"
               value={nameTemplate}
@@ -254,27 +231,19 @@ export function TempVoiceForm() {
           </div>
 
           <div className="flex items-center gap-3">
-            <button
-              type="submit"
-              disabled={isPending}
-              className="rounded-md bg-accent px-5 py-2 text-sm font-medium text-white transition hover:bg-accent-hover disabled:opacity-50"
-            >
+            <Button type="submit" disabled={isPending}>
               {isPending
                 ? "Saving..."
                 : editingId !== null
                   ? "Update"
                   : "Create"}
-            </button>
-            <button
-              type="button"
-              onClick={closeForm}
-              className="rounded-md bg-surface px-5 py-2 text-sm font-medium text-text-muted transition hover:bg-border"
-            >
+            </Button>
+            <Button type="button" variant="ghost" onClick={closeForm}>
               Cancel
-            </button>
+            </Button>
           </div>
         </form>
       )}
-    </div>
+    </Card>
   );
 }

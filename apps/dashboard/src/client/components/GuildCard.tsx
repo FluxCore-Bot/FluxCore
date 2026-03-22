@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { Card } from "./ui/card";
 import type { Guild } from "../lib/schemas";
 
 function guildIconUrl(guild: Guild): string | null {
@@ -11,20 +12,26 @@ export function GuildCard({ guild }: { guild: Guild }) {
     <Link
       to="/guild/$guildId/rules"
       params={{ guildId: guild.id }}
-      className="flex flex-col items-center rounded-lg border border-border bg-surface p-5 text-center transition hover:border-accent hover:no-underline"
+      className="hover:no-underline"
     >
-      {guild.icon ? (
-        <img
-          src={guildIconUrl(guild)!}
-          alt={guild.name}
-          className="mb-2 h-16 w-16 rounded-full"
-        />
-      ) : (
-        <div className="mb-2 flex h-16 w-16 items-center justify-center rounded-full bg-border text-2xl">
-          {guild.name.charAt(0)}
+      <Card className="group relative border border-transparent p-5 transition-all duration-300 hover:border-outline-variant/20">
+        <div className="mb-4">
+          {guild.icon ? (
+            <img
+              src={guildIconUrl(guild)!}
+              alt={guild.name}
+              className="h-16 w-16 rounded-xl border border-outline-variant/10 object-cover shadow-lg"
+            />
+          ) : (
+            <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-outline-variant/10 bg-surface-hover text-2xl font-bold text-secondary">
+              {guild.name.charAt(0)}
+            </div>
+          )}
         </div>
-      )}
-      <span className="text-sm font-medium text-text">{guild.name}</span>
+        <h3 className="text-lg font-bold tracking-tight text-text transition-colors group-hover:text-accent">
+          {guild.name}
+        </h3>
+      </Card>
     </Link>
   );
 }

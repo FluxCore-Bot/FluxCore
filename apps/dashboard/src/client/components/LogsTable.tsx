@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useLogs } from "../lib/hooks/useLogs";
 import { useConstants } from "../lib/hooks/useConstants";
+import { Input } from "./ui/input";
+import { Badge } from "./ui/badge";
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "./ui/table";
 
 export function LogsTable() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
@@ -15,75 +18,55 @@ export function LogsTable() {
     <div>
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-lg font-semibold">Action Logs</h3>
-        <input
+        <Input
           type="text"
           value={ruleFilter}
           onChange={(e) => setRuleFilter(e.target.value)}
-          placeholder="Filter by rule name..."
-          className="w-64"
+          placeholder="Search logs..."
+          className="w-64 font-mono"
         />
       </div>
 
       {!logs || logs.length === 0 ? (
         <p className="py-10 text-center text-text-muted">No logs found.</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-border">
-                <th className="px-3 py-2 text-left text-xs font-medium uppercase text-text-muted">
-                  Time
-                </th>
-                <th className="px-3 py-2 text-left text-xs font-medium uppercase text-text-muted">
-                  Rule
-                </th>
-                <th className="px-3 py-2 text-left text-xs font-medium uppercase text-text-muted">
-                  Event
-                </th>
-                <th className="px-3 py-2 text-left text-xs font-medium uppercase text-text-muted">
-                  Action
-                </th>
-                <th className="px-3 py-2 text-center text-xs font-medium uppercase text-text-muted">
-                  Status
-                </th>
-                <th className="px-3 py-2 text-left text-xs font-medium uppercase text-text-muted">
-                  Error
-                </th>
-              </tr>
-            </thead>
-            <tbody>
+        <div className="rounded-xl bg-surface-low shadow-2xl">
+          <Table>
+            <TableHeader>
+              <TableRow className="hover:bg-transparent">
+                <TableHead>Time</TableHead>
+                <TableHead>Rule</TableHead>
+                <TableHead>Event</TableHead>
+                <TableHead>Action</TableHead>
+                <TableHead className="text-center">Status</TableHead>
+                <TableHead>Error</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {logs.map((log) => (
-                <tr key={log.id} className="border-b border-border/50">
-                  <td className="px-3 py-2 text-xs text-text-muted">
+                <TableRow key={log.id}>
+                  <TableCell className="text-xs font-mono text-text-muted">
                     {new Date(log.executedAt).toLocaleString()}
-                  </td>
-                  <td className="px-3 py-2 text-sm">{log.ruleName}</td>
-                  <td className="px-3 py-2 text-sm text-text-muted">
-                    {constants?.eventTypes[log.eventType]?.label ??
-                      log.eventType}
-                  </td>
-                  <td className="px-3 py-2 text-sm text-text-muted">
-                    {constants?.actionTypes[log.actionType]?.label ??
-                      log.actionType}
-                  </td>
-                  <td className="px-3 py-2 text-center">
-                    <span
-                      className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                        log.success
-                          ? "bg-success/20 text-success"
-                          : "bg-danger/20 text-danger"
-                      }`}
-                    >
+                  </TableCell>
+                  <TableCell className="text-sm font-semibold">{log.ruleName}</TableCell>
+                  <TableCell className="text-sm text-text-muted">
+                    {constants?.eventTypes[log.eventType]?.label ?? log.eventType}
+                  </TableCell>
+                  <TableCell className="text-sm text-text-muted">
+                    {constants?.actionTypes[log.actionType]?.label ?? log.actionType}
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <Badge variant={log.success ? "success" : "destructive"}>
                       {log.success ? "OK" : "Error"}
-                    </span>
-                  </td>
-                  <td className="px-3 py-2 text-xs text-danger">
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="text-xs text-danger">
                     {log.error ?? ""}
-                  </td>
-                </tr>
+                  </TableCell>
+                </TableRow>
               ))}
-            </tbody>
-          </table>
+            </TableBody>
+          </Table>
         </div>
       )}
     </div>

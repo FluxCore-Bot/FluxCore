@@ -6,6 +6,11 @@ import { resolve } from "path";
 export default defineConfig({
   root: resolve(__dirname, "src/client"),
   plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "src/client"),
+    },
+  },
   build: {
     outDir: resolve(__dirname, "dist/client"),
     emptyOutDir: true,

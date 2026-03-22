@@ -8,8 +8,13 @@ import {
   useAddTrack,
   useDeleteTrack,
 } from "../lib/hooks/useMusic";
-import { useUiStore } from "../stores/uiStore";
+import { toast } from "sonner";
 import { ApiError } from "../lib/client";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
+import { Alert } from "./ui/alert";
+import { Card } from "./ui/card";
 
 const MAX_ALBUMS = 50;
 const MAX_TRACKS = 100;
@@ -18,7 +23,7 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
   const { data: tracks = [], isLoading } = useAlbumTracks(guildId, albumId);
   const addTrack = useAddTrack(guildId, albumId);
   const deleteTrack = useDeleteTrack(guildId, albumId);
-  const addToast = useUiStore((s) => s.addToast);
+
 
   const [showForm, setShowForm] = useState(false);
   const [title, setTitle] = useState("");
@@ -38,7 +43,7 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
 
     try {
       await addTrack.mutateAsync({ title: title.trim(), sourceUrl: sourceUrl.trim() });
-      addToast("Track added", "success");
+      toast.success("Track added");
       setTitle("");
       setSourceUrl("");
       setShowForm(false);
@@ -50,7 +55,7 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
   const handleDeleteTrack = async (trackId: number) => {
     try {
       await deleteTrack.mutateAsync(trackId);
-      addToast("Track removed", "success");
+      toast.success("Track removed");
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "An error occurred");
     }
@@ -59,23 +64,25 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
   const isPending = addTrack.isPending || deleteTrack.isPending;
 
   return (
-    <div className="mt-2 space-y-2 border-l-2 border-border pl-4">
+    <div className="mt-2 space-y-2 border-l-2 border-outline-variant/30 pl-4">
       {tracks.map((track) => (
         <div
           key={track.id}
-          className="flex items-center justify-between rounded-md bg-background px-3 py-2"
+          className="flex items-center justify-between rounded-md bg-surface-lowest px-3 py-2"
         >
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm">{track.title}</p>
             <p className="truncate text-xs text-text-muted">{track.sourceUrl}</p>
           </div>
-          <button
+          <Button
+            variant="ghost"
+            size="sm"
+            className="ml-2 shrink-0 text-danger hover:text-danger"
             onClick={() => handleDeleteTrack(track.id)}
             disabled={isPending}
-            className="ml-2 shrink-0 rounded-md bg-danger/10 px-2 py-1 text-xs font-medium text-danger transition hover:bg-danger/20 disabled:opacity-50"
           >
             Remove
-          </button>
+          </Button>
         </div>
       ))}
 
@@ -84,52 +91,35 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
       )}
 
       {error && (
-        <div className="rounded-md border border-danger/30 bg-danger/10 px-3 py-1.5 text-xs text-danger">
-          {error}
-        </div>
+        <Alert variant="destructive" className="text-xs">{error}</Alert>
       )}
 
       {showForm ? (
-        <form onSubmit={handleAddTrack} className="space-y-2 rounded-md border border-border bg-background p-3">
-          <input
-            type="text"
+        <form onSubmit={handleAddTrack} className="space-y-2 rounded-md bg-surface-high p-3">
+          <Input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Track title"
-            className="w-full"
           />
-          <input
-            type="text"
+          <Input
             value={sourceUrl}
             onChange={(e) => setSourceUrl(e.target.value)}
             placeholder="Source URL (YouTube, etc.)"
-            className="w-full"
           />
           <div className="flex gap-2">
-            <button
-              type="submit"
-              disabled={isPending}
-              className="rounded-md bg-accent px-3 py-1.5 text-xs font-medium text-white transition hover:bg-accent-hover disabled:opacity-50"
-            >
+            <Button type="submit" size="sm" disabled={isPending}>
               {addTrack.isPending ? "Adding..." : "Add Track"}
-            </button>
-            <button
-              type="button"
-              onClick={() => { setShowForm(false); setError(""); }}
-              className="rounded-md bg-surface px-3 py-1.5 text-xs font-medium text-text-muted transition hover:bg-border"
-            >
+            </Button>
+            <Button type="button" variant="ghost" size="sm" onClick={() => { setShowForm(false); setError(""); }}>
               Cancel
-            </button>
+            </Button>
           </div>
         </form>
       ) : (
         tracks.length < MAX_TRACKS && (
-          <button
-            onClick={() => setShowForm(true)}
-            className="text-xs font-medium text-accent transition hover:text-accent-hover"
-          >
+          <Button variant="link" size="sm" onClick={() => setShowForm(true)}>
             + Add Track
-          </button>
+          </Button>
         )
       )}
     </div>
@@ -141,7 +131,7 @@ export function MusicLibraryManager() {
   const { data: albums = [], isLoading } = useMusicLibrary(guildId);
   const createAlbum = useCreateAlbum(guildId);
   const deleteAlbum = useDeleteAlbum(guildId);
-  const addToast = useUiStore((s) => s.addToast);
+
 
   const [expandedAlbum, setExpandedAlbum] = useState<number | null>(null);
   const [showCreateForm, setShowCreateForm] = useState(false);
@@ -161,7 +151,7 @@ export function MusicLibraryManager() {
 
     try {
       await createAlbum.mutateAsync(newAlbumName.trim());
-      addToast("Album created", "success");
+      toast.success("Album created");
       setNewAlbumName("");
       setShowCreateForm(false);
     } catch (err) {
@@ -172,7 +162,7 @@ export function MusicLibraryManager() {
   const handleDeleteAlbum = async (albumId: number) => {
     try {
       await deleteAlbum.mutateAsync(albumId);
-      addToast("Album deleted", "success");
+      toast.success("Album deleted");
       if (expandedAlbum === albumId) setExpandedAlbum(null);
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "An error occurred");
@@ -182,7 +172,7 @@ export function MusicLibraryManager() {
   const isPending = createAlbum.isPending || deleteAlbum.isPending;
 
   return (
-    <div className="rounded-lg border border-border bg-surface p-6">
+    <Card className="p-6">
       <div className="mb-4 flex items-center justify-between">
         <div>
           <h3 className="text-lg font-semibold">Music Library</h3>
@@ -191,46 +181,32 @@ export function MusicLibraryManager() {
           </p>
         </div>
         {!showCreateForm && albums.length < MAX_ALBUMS && (
-          <button
-            onClick={() => setShowCreateForm(true)}
-            className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-white transition hover:bg-accent-hover"
-          >
+          <Button onClick={() => setShowCreateForm(true)}>
             Add Album
-          </button>
+          </Button>
         )}
       </div>
 
       {error && (
-        <div className="mb-4 rounded-md border border-danger/30 bg-danger/10 px-4 py-2 text-sm text-danger">
-          {error}
-        </div>
+        <Alert variant="destructive" className="mb-4">{error}</Alert>
       )}
 
       {showCreateForm && (
-        <form onSubmit={handleCreateAlbum} className="mb-4 rounded-md border border-border bg-background p-4">
-          <label className="mb-1 block text-xs text-text-muted">Album Name</label>
-          <input
-            type="text"
+        <form onSubmit={handleCreateAlbum} className="mb-4 rounded-md bg-surface-high p-4">
+          <Label>Album Name</Label>
+          <Input
             value={newAlbumName}
             onChange={(e) => setNewAlbumName(e.target.value)}
             placeholder="My Playlist"
-            className="mb-3 w-full"
+            className="mb-3"
           />
           <div className="flex gap-2">
-            <button
-              type="submit"
-              disabled={isPending}
-              className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-white transition hover:bg-accent-hover disabled:opacity-50"
-            >
+            <Button type="submit" disabled={isPending}>
               {createAlbum.isPending ? "Creating..." : "Create"}
-            </button>
-            <button
-              type="button"
-              onClick={() => { setShowCreateForm(false); setError(""); }}
-              className="rounded-md bg-surface px-4 py-2 text-sm font-medium text-text-muted transition hover:bg-border"
-            >
+            </Button>
+            <Button type="button" variant="ghost" onClick={() => { setShowCreateForm(false); setError(""); }}>
               Cancel
-            </button>
+            </Button>
           </div>
         </form>
       )}
@@ -238,29 +214,33 @@ export function MusicLibraryManager() {
       {albums.length > 0 ? (
         <div className="space-y-3">
           {albums.map((album) => (
-            <div key={album.id} className="rounded-md border border-border bg-background p-4">
+            <Card key={album.id} className="bg-surface-high p-4">
               <div className="flex items-center justify-between">
-                <button
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  aria-label={`${expandedAlbum === album.id ? "Collapse" : "Expand"} ${album.name}`}
                   onClick={() =>
                     setExpandedAlbum(expandedAlbum === album.id ? null : album.id)
                   }
-                  className="text-sm font-medium transition hover:text-accent"
                 >
                   {expandedAlbum === album.id ? "▼" : "▶"} {album.name}
-                </button>
-                <button
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-danger hover:text-danger"
                   onClick={() => handleDeleteAlbum(album.id)}
                   disabled={isPending}
-                  className="rounded-md bg-danger/10 px-3 py-1.5 text-xs font-medium text-danger transition hover:bg-danger/20 disabled:opacity-50"
                 >
                   Delete
-                </button>
+                </Button>
               </div>
 
               {expandedAlbum === album.id && (
                 <AlbumTracks guildId={guildId} albumId={album.id} />
               )}
-            </div>
+            </Card>
           ))}
         </div>
       ) : (
@@ -270,6 +250,6 @@ export function MusicLibraryManager() {
           </p>
         )
       )}
-    </div>
+    </Card>
   );
 }

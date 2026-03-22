@@ -4,11 +4,17 @@ import { useConstants } from "../lib/hooks/useConstants";
 import { useChannels } from "../lib/hooks/useChannels";
 import { useRoles } from "../lib/hooks/useRoles";
 import { useCreateRule, useUpdateRule } from "../lib/hooks/useRules";
-import { useUiStore } from "../stores/uiStore";
+import { toast } from "sonner";
 import { ActionRow } from "./ActionRow";
 import { VariableHelper } from "./VariableHelper";
 import { RuleFormSchema, type ActionConfig, type ActionRule } from "../lib/schemas";
 import { ApiError } from "../lib/client";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
+import { Switch } from "./ui/switch";
+import { Alert } from "./ui/alert";
+import { Card } from "./ui/card";
 
 interface RuleFormProps {
   rule?: ActionRule;
@@ -24,7 +30,6 @@ export function RuleForm({ rule, onClose }: RuleFormProps) {
   const { data: roles = [] } = useRoles(guildId);
   const createRule = useCreateRule(guildId);
   const updateRule = useUpdateRule(guildId);
-  const addToast = useUiStore((s) => s.addToast);
 
   const [name, setName] = useState(rule?.name ?? "");
   const [eventType, setEventType] = useState(rule?.eventType ?? "");
@@ -73,10 +78,10 @@ export function RuleForm({ rule, onClose }: RuleFormProps) {
     try {
       if (rule) {
         await updateRule.mutateAsync({ ruleId: rule.id, data: result.data });
-        addToast("Rule updated", "success");
+        toast.success("Rule updated");
       } else {
         await createRule.mutateAsync(result.data);
-        addToast("Rule created", "success");
+        toast.success("Rule created");
       }
       onClose();
     } catch (err) {
@@ -89,125 +94,101 @@ export function RuleForm({ rule, onClose }: RuleFormProps) {
   const isPending = createRule.isPending || updateRule.isPending;
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="rounded-lg border border-border bg-surface p-6"
-    >
+    <Card className="p-6">
       <h3 className="mb-4 text-lg font-semibold">
         {rule ? "Edit Rule" : "Create Rule"}
       </h3>
 
       {error && (
-        <div className="mb-4 rounded-md border border-danger/30 bg-danger/10 px-4 py-2 text-sm text-danger">
-          {error}
-        </div>
+        <Alert variant="destructive" className="mb-4">{error}</Alert>
       )}
 
-      <div className="mb-4">
-        <label className="mb-1 block text-xs text-text-muted">
-          Rule Name <span className="text-danger">*</span>
-        </label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="My rule..."
-          maxLength={50}
-        />
-      </div>
-
-      <div className="mb-4 grid grid-cols-2 gap-4">
-        <div>
-          <label className="mb-1 block text-xs text-text-muted">
-            Event Type <span className="text-danger">*</span>
-          </label>
-          <select value={eventType} onChange={(e) => setEventType(e.target.value)}>
-            <option value="">Select event...</option>
-            {Object.entries(constants.eventTypes).map(([key, info]) => (
-              <option key={key} value={key}>
-                {info.label}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label className="mb-1 block text-xs text-text-muted">Priority</label>
-          <input
-            type="number"
-            value={priority}
-            onChange={(e) => setPriority(Number(e.target.value))}
-            min={0}
-            max={100}
-          />
-        </div>
-      </div>
-
-      {eventType && (
+      <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <VariableHelper eventType={eventType} constants={constants} />
-        </div>
-      )}
-
-      <div className="mb-4">
-        <div className="mb-2 flex items-center justify-between">
-          <label className="text-xs font-medium text-text-muted">Actions</label>
-          {actions.length < constants.maxActionsPerRule && (
-            <button
-              type="button"
-              onClick={addAction}
-              className="text-xs text-accent hover:underline"
-            >
-              + Add Action
-            </button>
-          )}
-        </div>
-        <div className="flex flex-col gap-3">
-          {actions.map((action, i) => (
-            <ActionRow
-              key={i}
-              index={i}
-              action={action}
-              constants={constants}
-              channels={channels}
-              roles={roles}
-              onChange={handleActionChange}
-              onRemove={handleActionRemove}
-              canRemove={actions.length > 1}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div className="mb-6 flex items-center gap-3">
-        <label className="relative inline-block h-5.5 w-10">
-          <input
-            type="checkbox"
-            checked={enabled}
-            onChange={(e) => setEnabled(e.target.checked)}
-            className="peer sr-only"
+          <Label>
+            Rule Name <span className="text-danger">*</span>
+          </Label>
+          <Input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="My rule..."
+            maxLength={50}
           />
-          <span className="absolute inset-0 cursor-pointer rounded-full bg-border transition peer-checked:bg-accent" />
-          <span className="absolute bottom-0.75 left-0.75 h-4 w-4 rounded-full bg-text transition peer-checked:translate-x-[18px]" />
-        </label>
-        <span className="text-sm text-text-muted">Enabled</span>
-      </div>
+        </div>
 
-      <div className="flex items-center gap-3">
-        <button
-          type="submit"
-          disabled={isPending}
-          className="rounded-md bg-accent px-5 py-2 text-sm font-medium text-white transition hover:bg-accent-hover disabled:opacity-50"
-        >
-          {isPending ? "Saving..." : rule ? "Update Rule" : "Create Rule"}
-        </button>
-        <button
-          type="button"
-          onClick={onClose}
-          className="rounded-md px-5 py-2 text-sm text-text-muted transition hover:text-text"
-        >
-          Cancel
-        </button>
-      </div>
-    </form>
+        <div className="mb-4 grid grid-cols-2 gap-4">
+          <div>
+            <Label>
+              Event Type <span className="text-danger">*</span>
+            </Label>
+            <select value={eventType} onChange={(e) => setEventType(e.target.value)}>
+              <option value="">Select event...</option>
+              {Object.entries(constants.eventTypes).map(([key, info]) => (
+                <option key={key} value={key}>
+                  {info.label}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <Label>Priority</Label>
+            <Input
+              type="number"
+              value={priority}
+              onChange={(e) => setPriority(Number(e.target.value))}
+              min={0}
+              max={100}
+            />
+          </div>
+        </div>
+
+        {eventType && (
+          <div className="mb-4">
+            <VariableHelper eventType={eventType} constants={constants} />
+          </div>
+        )}
+
+        <div className="mb-4">
+          <div className="mb-2 flex items-center justify-between">
+            <Label className="mb-0">Actions</Label>
+            {actions.length < constants.maxActionsPerRule && (
+              <Button type="button" variant="link" size="sm" onClick={addAction}>
+                + Add Action
+              </Button>
+            )}
+          </div>
+          <div className="flex flex-col gap-3">
+            {actions.map((action, i) => (
+              <ActionRow
+                key={i}
+                index={i}
+                action={action}
+                constants={constants}
+                channels={channels}
+                roles={roles}
+                onChange={handleActionChange}
+                onRemove={handleActionRemove}
+                canRemove={actions.length > 1}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-6 flex items-center gap-3">
+          <Switch checked={enabled} onCheckedChange={setEnabled} />
+          <Label className="mb-0 text-sm">Enabled</Label>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <Button type="submit" disabled={isPending}>
+            {isPending ? "Saving..." : rule ? "Update Rule" : "Create Rule"}
+          </Button>
+          <Button type="button" variant="ghost" onClick={onClose}>
+            Cancel
+          </Button>
+        </div>
+      </form>
+    </Card>
   );
 }

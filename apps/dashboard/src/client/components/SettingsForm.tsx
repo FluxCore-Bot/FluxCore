@@ -2,15 +2,20 @@ import { useState, useEffect } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useChannels } from "../lib/hooks/useChannels";
 import { useSettings, useUpdateSettings } from "../lib/hooks/useSettings";
-import { useUiStore } from "../stores/uiStore";
+import { toast } from "sonner";
 import { ApiError } from "../lib/client";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
+import { Switch } from "./ui/switch";
+import { Alert } from "./ui/alert";
+import { Card } from "./ui/card";
 
 export function SettingsForm() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: settings, isLoading } = useSettings(guildId);
   const { data: channels = [] } = useChannels(guildId);
   const updateSettings = useUpdateSettings(guildId);
-  const addToast = useUiStore((s) => s.addToast);
 
   const [maxRules, setMaxRules] = useState(25);
   const [globalEnabled, setGlobalEnabled] = useState(true);
@@ -40,78 +45,63 @@ export function SettingsForm() {
 
     try {
       await updateSettings.mutateAsync({ maxRules, globalEnabled, logChannelId });
-      addToast("Settings saved", "success");
+      toast.success("Settings saved");
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "An error occurred");
     }
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="rounded-lg border border-border bg-surface p-6"
-    >
+    <Card className="p-6">
       <h3 className="mb-4 text-lg font-semibold">Action System Settings</h3>
 
       {error && (
-        <div className="mb-4 rounded-md border border-danger/30 bg-danger/10 px-4 py-2 text-sm text-danger">
-          {error}
-        </div>
+        <Alert variant="destructive" className="mb-4">{error}</Alert>
       )}
 
-      <div className="mb-4">
-        <label className="mb-1 block text-xs text-text-muted">
-          Max Rules Per Guild
-        </label>
-        <input
-          type="number"
-          value={maxRules}
-          onChange={(e) => setMaxRules(Number(e.target.value))}
-          min={1}
-          max={100}
-        />
-      </div>
-
-      <div className="mb-4">
-        <label className="mb-1 block text-xs text-text-muted">
-          Log Channel (optional)
-        </label>
-        <select
-          value={logChannelId ?? ""}
-          onChange={(e) => setLogChannelId(e.target.value || null)}
-        >
-          <option value="">No log channel</option>
-          {textChannels.map((c) => (
-            <option key={c.id} value={c.id}>
-              # {c.name}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className="mb-6 flex items-center gap-3">
-        <label className="relative inline-block h-5.5 w-10">
-          <input
-            type="checkbox"
-            checked={globalEnabled}
-            onChange={(e) => setGlobalEnabled(e.target.checked)}
-            className="peer sr-only"
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <Label htmlFor="maxRules">Max Rules Per Guild</Label>
+          <Input
+            id="maxRules"
+            type="number"
+            value={maxRules}
+            onChange={(e) => setMaxRules(Number(e.target.value))}
+            min={1}
+            max={100}
           />
-          <span className="absolute inset-0 cursor-pointer rounded-full bg-border transition peer-checked:bg-accent" />
-          <span className="absolute bottom-0.75 left-0.75 h-4 w-4 rounded-full bg-text transition peer-checked:translate-x-[18px]" />
-        </label>
-        <span className="text-sm text-text-muted">
-          Global Enable (disable to pause all rules)
-        </span>
-      </div>
+        </div>
 
-      <button
-        type="submit"
-        disabled={updateSettings.isPending}
-        className="rounded-md bg-accent px-5 py-2 text-sm font-medium text-white transition hover:bg-accent-hover disabled:opacity-50"
-      >
-        {updateSettings.isPending ? "Saving..." : "Save Settings"}
-      </button>
-    </form>
+        <div className="mb-4">
+          <Label htmlFor="logChannel">Log Channel (optional)</Label>
+          <select
+            id="logChannel"
+            value={logChannelId ?? ""}
+            onChange={(e) => setLogChannelId(e.target.value || null)}
+          >
+            <option value="">No log channel</option>
+            {textChannels.map((c) => (
+              <option key={c.id} value={c.id}>
+                # {c.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="mb-6 flex items-center gap-3">
+          <Switch
+            checked={globalEnabled}
+            onCheckedChange={setGlobalEnabled}
+          />
+          <Label className="mb-0 text-sm">
+            Global Enable (disable to pause all rules)
+          </Label>
+        </div>
+
+        <Button type="submit" disabled={updateSettings.isPending}>
+          {updateSettings.isPending ? "Saving..." : "Save Settings"}
+        </Button>
+      </form>
+    </Card>
   );
 }

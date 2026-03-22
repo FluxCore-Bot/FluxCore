@@ -1,11 +1,12 @@
 import { Outlet, Link, useParams, useMatchRoute } from "@tanstack/react-router";
+import { Icon } from "../../components/Icon";
 
-const tabs = [
-  { path: "/guild/$guildId/rules" as const, label: "Rules" },
-  { path: "/guild/$guildId/tempvoice" as const, label: "TempVoice" },
-  { path: "/guild/$guildId/music" as const, label: "Music" },
-  { path: "/guild/$guildId/settings" as const, label: "Settings" },
-  { path: "/guild/$guildId/logs" as const, label: "Logs" },
+const navItems = [
+  { path: "/guild/$guildId/rules" as const, label: "Automation", icon: "bolt" },
+  { path: "/guild/$guildId/music" as const, label: "Music", icon: "library_music" },
+  { path: "/guild/$guildId/tempvoice" as const, label: "TempVoice", icon: "settings_voice" },
+  { path: "/guild/$guildId/logs" as const, label: "Logs", icon: "description" },
+  { path: "/guild/$guildId/settings" as const, label: "Settings", icon: "tune" },
 ];
 
 export function GuildLayout() {
@@ -13,40 +14,76 @@ export function GuildLayout() {
   const matchRoute = useMatchRoute();
 
   return (
-    <div className="mx-auto max-w-4xl px-4 pt-6">
-      <div className="mb-6 flex items-center gap-3">
-        <Link
-          to="/"
-          className="text-text-muted transition hover:text-text"
-        >
-          &larr; Back
-        </Link>
-      </div>
+    <div className="flex min-h-[calc(100vh-56px)]">
+      {/* Sidebar */}
+      <aside className="fixed left-0 top-14 flex h-[calc(100vh-56px)] w-60 flex-col border-r border-border p-4 text-sm tracking-tight">
+        <div className="mb-8 flex items-center gap-3 px-2">
+          <div className="flex h-8 w-8 items-center justify-center rounded bg-accent text-accent-hover">
+            <Icon name="bolt" filled />
+          </div>
+          <div>
+            <h1 className="font-label font-bold text-accent leading-none">FluxCore Engine</h1>
+            <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-text-muted">Active Instance</p>
+          </div>
+        </div>
 
-      <nav className="mb-6 flex gap-0 border-b-2 border-border">
-        {tabs.map((tab) => {
-          const isActive = !!matchRoute({
-            to: tab.path,
-            params: { guildId },
-          });
-          return (
-            <Link
-              key={tab.path}
-              to={tab.path}
-              params={{ guildId }}
-              className={`-mb-[2px] border-b-2 px-5 py-2.5 text-sm transition hover:no-underline ${
-                isActive
-                  ? "border-accent text-accent"
-                  : "border-transparent text-text-muted hover:text-text"
-              }`}
+        <nav className="flex-1 space-y-1">
+          {navItems.map((item) => {
+            const isActive = !!matchRoute({
+              to: item.path,
+              params: { guildId },
+            });
+            return (
+              <Link
+                key={item.path}
+                to={item.path}
+                params={{ guildId }}
+                className={`flex items-center gap-3 rounded-md px-3 py-2 transition-all duration-200 hover:no-underline ${
+                  isActive
+                    ? "bg-surface-high text-accent font-semibold shadow-[0px_0px_12px_0px_rgba(163,166,255,0.1)]"
+                    : "text-text/50 hover:bg-surface-high/50 hover:text-text"
+                }`}
+              >
+                <Icon name={item.icon} filled={isActive} />
+                <span>{item.label}</span>
+              </Link>
+            );
+          })}
+        </nav>
+
+        <div className="mt-auto space-y-4 pt-4">
+          <div className="space-y-1">
+            <a
+              href="#"
+              className="flex items-center gap-3 px-3 py-1.5 text-xs text-text/40 transition-colors hover:text-text"
             >
-              {tab.label}
-            </Link>
-          );
-        })}
-      </nav>
+              <Icon name="menu_book" size={16} />
+              Docs
+            </a>
+            <a
+              href="#"
+              className="flex items-center gap-3 px-3 py-1.5 text-xs text-text/40 transition-colors hover:text-text"
+            >
+              <Icon name="help" size={16} />
+              Support
+            </a>
+          </div>
+          <Link
+            to="/"
+            className="flex items-center gap-3 px-3 py-1.5 text-xs text-text/40 transition-colors hover:text-text hover:no-underline"
+          >
+            <Icon name="arrow_back" size={16} />
+            Back to Servers
+          </Link>
+        </div>
+      </aside>
 
-      <Outlet />
+      {/* Main Content */}
+      <main className="ml-60 w-full min-h-full">
+        <div className="mx-auto max-w-5xl p-8">
+          <Outlet />
+        </div>
+      </main>
     </div>
   );
 }
