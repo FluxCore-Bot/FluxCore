@@ -15,6 +15,7 @@ import { RulesPage } from "./routes/guild/$guildId/rules";
 import { TempVoicePage } from "./routes/guild/$guildId/tempvoice";
 import { SettingsPage } from "./routes/guild/$guildId/settings";
 import { LogsPage } from "./routes/guild/$guildId/logs";
+import { MusicPage } from "./routes/guild/$guildId/music";
 import "./styles.css";
 
 const queryClient = new QueryClient({
@@ -72,12 +73,19 @@ const logsRoute = createRoute({
   component: LogsPage,
 });
 
+const musicRoute = createRoute({
+  getParentRoute: () => guildRoute,
+  path: "/music",
+  component: MusicPage,
+});
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   guildRoute.addChildren([
     guildIndexRoute,
     rulesRoute,
     tempvoiceRoute,
+    musicRoute,
     settingsRoute,
     logsRoute,
   ]),

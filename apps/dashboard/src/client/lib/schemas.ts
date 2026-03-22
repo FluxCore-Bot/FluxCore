@@ -192,3 +192,48 @@ export const TempVoiceFormSchema = z.object({
   nameTemplate: z.string().max(100),
 });
 export type TempVoiceFormData = z.infer<typeof TempVoiceFormSchema>;
+
+// --- Music ---
+export const MusicSettingsSchema = z.object({
+  guildId: z.string(),
+  mode: z.enum(["open", "library"]),
+  djRoleId: z.string().nullable(),
+  defaultVolume: z.number(),
+  maxQueueSize: z.number(),
+  autoDisconnectSecs: z.number(),
+  twentyFourSeven: z.boolean(),
+  lastChannelId: z.string().nullable(),
+});
+export type MusicSettings = z.infer<typeof MusicSettingsSchema>;
+
+export const MusicSettingsFormSchema = z.object({
+  mode: z.enum(["open", "library"]),
+  djRoleId: z.string().nullable(),
+  defaultVolume: z.number().min(0).max(100),
+  maxQueueSize: z.number().min(1).max(500),
+  autoDisconnectSecs: z.number().min(0).max(3600),
+  twentyFourSeven: z.boolean(),
+});
+export type MusicSettingsFormData = z.infer<typeof MusicSettingsFormSchema>;
+
+export const MusicAlbumSchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  name: z.string(),
+  addedBy: z.string(),
+});
+export type MusicAlbum = z.infer<typeof MusicAlbumSchema>;
+
+export const MusicAlbumListSchema = z.array(MusicAlbumSchema);
+
+export const MusicTrackSchema = z.object({
+  id: z.number(),
+  albumId: z.number(),
+  title: z.string(),
+  sourceUrl: z.string(),
+  duration: z.number().nullable(),
+  addedBy: z.string(),
+});
+export type MusicTrack = z.infer<typeof MusicTrackSchema>;
+
+export const MusicTrackListSchema = z.array(MusicTrackSchema);

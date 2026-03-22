@@ -57,6 +57,22 @@
     "./cooldown": {
       "types": "./dist/cooldown.d.ts",
       "import": "./dist/cooldown.js"
+    },
+    "./music/types": {
+      "types": "./dist/music/types.d.ts",
+      "import": "./dist/music/types.js"
+    },
+    "./music/config": {
+      "types": "./dist/music/config.d.ts",
+      "import": "./dist/music/config.js"
+    },
+    "./music/library": {
+      "types": "./dist/music/library.d.ts",
+      "import": "./dist/music/library.js"
+    },
+    "./music/constants": {
+      "types": "./dist/music/constants.d.ts",
+      "import": "./dist/music/constants.js"
     }
   },
   "scripts": {

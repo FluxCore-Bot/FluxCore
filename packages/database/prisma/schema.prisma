@@ -113,3 +113,42 @@ model DashboardSession {
 
   @@index([expiresAt])
 }
+
+model MusicGuildSettings {
+  guildId            String   @id
+  mode               String   @default("open") // "open" | "library"
+  djRoleId           String?
+  defaultVolume      Int      @default(50)
+  maxQueueSize       Int      @default(100)
+  autoDisconnectSecs Int      @default(300)
+  twentyFourSeven    Boolean  @default(false)
+  lastChannelId      String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model MusicLibraryAlbum {
+  id        Int                 @id @default(autoincrement())
+  guildId   String
+  name      String
+  addedBy   String
+  createdAt DateTime            @default(now())
+  updatedAt DateTime            @updatedAt
+  tracks    MusicLibraryTrack[]
+
+  @@unique([guildId, name])
+  @@index([guildId])
+}
+
+model MusicLibraryTrack {
+  id        Int               @id @default(autoincrement())
+  albumId   Int
+  title     String
+  sourceUrl String
+  duration  Int?
+  addedBy   String
+  createdAt DateTime          @default(now())
+  album     MusicLibraryAlbum @relation(fields: [albumId], references: [id], onDelete: Cascade)
+
+  @@index([albumId])
+}

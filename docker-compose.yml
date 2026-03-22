@@ -13,6 +13,26 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+      lavalink:
+        condition: service_healthy
+    networks:
+      - fluxcore
+    restart: unless-stopped
+    profiles:
+      - bot
+      - full
+
+  lavalink:
+    image: ghcr.io/lavalink-devs/lavalink:4
+    volumes:
+      - ./lavalink/application.yml:/opt/Lavalink/application.yml:ro
+    environment:
+      - _JAVA_OPTIONS=-Xmx128m
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- --header='Authorization: youshallnotpass' http://localhost:2333/version || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     networks:
       - fluxcore
     restart: unless-stopped

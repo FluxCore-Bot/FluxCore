@@ -8,7 +8,10 @@ import {
   handleTempVoiceUserSelect,
   handleTempVoiceStringSelect,
 } from "../systems/tempVoice/interactions.js";
+import { handleMusicButton } from "../systems/music/interactions.js";
 import { handleActionsAutocomplete } from "../commands/admin/actions.js";
+import { handlePlayAutocomplete } from "../commands/music/play.js";
+import { MU_PREFIX } from "@fluxcore/systems/music/constants";
 import { errorEmbed, warnEmbed, logger } from "@fluxcore/utils";
 
 const event: Event<"interactionCreate"> = {
@@ -17,12 +20,18 @@ const event: Event<"interactionCreate"> = {
     if (interaction.isAutocomplete()) {
       if (interaction.commandName === "actions") {
         await handleActionsAutocomplete(interaction);
+      } else if (interaction.commandName === "play") {
+        await handlePlayAutocomplete(interaction);
       }
       return;
     }
 
     if (interaction.isButton()) {
-      await handleTempVoiceButton(interaction);
+      if (interaction.customId.startsWith(MU_PREFIX)) {
+        await handleMusicButton(interaction);
+      } else {
+        await handleTempVoiceButton(interaction);
+      }
       return;
     }
 

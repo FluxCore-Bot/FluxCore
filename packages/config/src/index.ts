@@ -17,6 +17,9 @@ export interface Config {
   botSyncPort: number;
   botSyncSecret: string;
   botSyncUrl: string | undefined;
+  lavalinkHost: string;
+  lavalinkPort: number;
+  lavalinkPassword: string;
 }
 
 function loadConfig(): Config {
@@ -52,6 +55,10 @@ function loadConfig(): Config {
     process.env.BOT_SYNC_SECRET || randomBytes(32).toString("hex");
   const botSyncUrl = process.env.BOT_SYNC_URL || undefined;
 
+  const lavalinkHost = process.env.LAVALINK_HOST || "lavalink";
+  const lavalinkPort = Number(process.env.LAVALINK_PORT) || 2333;
+  const lavalinkPassword = process.env.LAVALINK_PASSWORD || "youshallnotpass";
+
   return {
     token,
     clientId,
@@ -64,6 +71,9 @@ function loadConfig(): Config {
     botSyncPort,
     botSyncSecret,
     botSyncUrl,
+    lavalinkHost,
+    lavalinkPort,
+    lavalinkPassword,
   };
 }
 

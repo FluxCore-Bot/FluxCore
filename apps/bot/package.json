@@ -18,10 +18,11 @@
   "dependencies": {
     "@fluxcore/config": "workspace:*",
     "@fluxcore/database": "workspace:*",
+    "@fluxcore/systems": "workspace:*",
     "@fluxcore/types": "workspace:*",
     "@fluxcore/utils": "workspace:*",
-    "@fluxcore/systems": "workspace:*",
-    "discord.js": "catalog:"
+    "discord.js": "catalog:",
+    "shoukaku": "^4.3.0"
   },
   "devDependencies": {
     "@types/node": "^25.3.0",

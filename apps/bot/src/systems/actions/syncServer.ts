@@ -4,6 +4,7 @@ import { logger } from "@fluxcore/utils";
 import { reloadGuild } from "@fluxcore/systems/actions/cache";
 import { loadActionGuildSettings } from "@fluxcore/systems/actions/config";
 import { reloadGuildTempVoiceConfig } from "@fluxcore/systems/tempVoice/config";
+import { loadMusicSettings } from "@fluxcore/systems/music/config";
 
 let server: Server | null = null;
 
@@ -53,6 +54,8 @@ export function startSyncServer(): void {
 
         if (action === "reloadTempVoice") {
           await reloadGuildTempVoiceConfig(guildId);
+        } else if (action === "reloadMusic") {
+          await loadMusicSettings();
         } else {
           await reloadGuild(guildId);
         }

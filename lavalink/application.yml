@@ -1,0 +1,61 @@
+server:
+  port: 2333
+  address: 0.0.0.0
+
+plugins:
+  youtube:
+    enabled: true
+    allowSearch: true
+    allowDirectVideoIds: true
+    allowDirectPlaylistIds: true
+    clients:
+      - TV
+      - MUSIC
+      - TVHTML5_SIMPLY
+    oauth:
+      enabled: true
+      refreshToken: "1//03ZBRjPYrOJjyCgYIARAAGAMSNwF-L9IrxhQ0spy4xQa5oYz9QgV4MIAqjwHjE4-XvYKYckrwBkze-mryRjwwPVQmlOftQWVlGGA"
+
+lavalink:
+  plugins:
+    - dependency: "dev.lavalink.youtube:youtube-plugin:ab5062530eca741d13fd8d1c414ff53cde7c4448"
+      snapshot: true
+      repository: "https://maven.lavalink.dev/snapshots"
+  server:
+    password: "youshallnotpass"
+    sources:
+      youtube: false
+      bandcamp: true
+      soundcloud: true
+      twitch: true
+      vimeo: true
+      http: true
+      local: false
+    filters:
+      volume: true
+      equalizer: true
+      karaoke: true
+      timescale: true
+      tremolo: true
+      vibrato: true
+      distortion: true
+      rotation: true
+      channelMix: true
+      lowPass: true
+    bufferDurationMs: 400
+    frameBufferDurationMs: 5000
+    youtubePlaylistLoadLimit: 6
+    playerUpdateInterval: 5
+    youtubeSearchEnabled: true
+    soundcloudSearchEnabled: true
+    gc-warnings: true
+
+logging:
+  file:
+    max-history: 30
+    max-size: 1GB
+  path: ./logs/
+
+  level:
+    root: INFO
+    lavalink: INFO

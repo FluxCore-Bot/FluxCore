@@ -5,6 +5,8 @@ import { loadCommands, loadEvents } from "./handlers/index.js";
 import { stopReminderPolling } from "./systems/reminders.js";
 import { stopCacheSyncPolling } from "@fluxcore/systems/actions/cacheSync";
 import { stopSyncServer } from "./systems/actions/syncServer.js";
+import { initShoukaku, getShoukaku } from "./systems/music/shoukaku.js";
+import { getAllQueues } from "./systems/music/queue.js";
 import { logger } from "@fluxcore/utils";
 
 async function main(): Promise<void> {
@@ -14,6 +16,9 @@ async function main(): Promise<void> {
 
   await loadCommands(client);
   await loadEvents(client);
+
+  // Init Shoukaku before login so the connector can listen for the ready event
+  initShoukaku(client);
 
   process.on("unhandledRejection", (error: unknown) => {
     const err =
@@ -31,6 +36,19 @@ async function main(): Promise<void> {
     stopReminderPolling();
     stopCacheSyncPolling();
     stopSyncServer();
+
+    // Cleanup music players
+    const queues = getAllQueues();
+    for (const [, queue] of queues) {
+      await queue.destroy().catch(() => {});
+    }
+    const shoukaku = getShoukaku();
+    if (shoukaku) {
+      for (const [name] of shoukaku.nodes) {
+        shoukaku.removeNode(name);
+      }
+    }
+
     client.destroy();
     await disconnectDatabase();
     process.exit(0);

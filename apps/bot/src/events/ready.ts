@@ -13,6 +13,11 @@ import { cleanOldLogs } from "@fluxcore/systems/actions/persistence";
 import { registerActionEventListeners } from "../systems/actions/eventBridge.js";
 import { startSyncServer } from "../systems/actions/syncServer.js";
 import { startReminderPolling } from "../systems/reminders.js";
+import { loadMusicSettings, get247Guilds } from "@fluxcore/systems/music/config";
+import { getShoukaku } from "../systems/music/shoukaku.js";
+import { registerMusicEvents } from "../systems/music/events.js";
+import { createQueue } from "../systems/music/queue.js";
+import { setupPlayerEvents } from "../systems/music/events.js";
 import { logger } from "@fluxcore/utils";
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
@@ -53,6 +58,43 @@ const event: Event<"ready"> = {
     }
 
     startReminderPolling(client);
+
+    // Music system initialization
+    try {
+      await loadMusicSettings();
+      const shoukaku = getShoukaku();
+      registerMusicEvents(shoukaku, client);
+
+      // Rejoin 24/7 channels
+      const guilds247 = get247Guilds();
+      for (const settings of guilds247) {
+        try {
+          const guild = client.guilds.cache.get(settings.guildId);
+          if (!guild || !settings.lastChannelId) continue;
+          const channel = guild.channels.cache.get(settings.lastChannelId);
+          if (!channel?.isVoiceBased()) continue;
+
+          await createQueue(
+            settings.guildId,
+            settings.lastChannelId,
+            settings.lastChannelId,
+            client,
+          );
+          setupPlayerEvents(settings.guildId, client);
+          logger.debug(`Rejoined 24/7 channel in guild ${settings.guildId}`);
+        } catch (err) {
+          logger.error(
+            `Failed to rejoin 24/7 channel in guild ${settings.guildId}`,
+            err instanceof Error ? err : new Error(String(err)),
+          );
+        }
+      }
+    } catch (error) {
+      logger.error(
+        "Failed to initialize music system",
+        error instanceof Error ? error : new Error(String(error)),
+      );
+    }
 
     // Schedule daily ActionLog retention cleanup
     const cleanupTimer = setInterval(() => {

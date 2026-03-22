@@ -3,6 +3,7 @@ import { Outlet, Link, useParams, useMatchRoute } from "@tanstack/react-router";
 const tabs = [
   { path: "/guild/$guildId/rules" as const, label: "Rules" },
   { path: "/guild/$guildId/tempvoice" as const, label: "TempVoice" },
+  { path: "/guild/$guildId/music" as const, label: "Music" },
   { path: "/guild/$guildId/settings" as const, label: "Settings" },
   { path: "/guild/$guildId/logs" as const, label: "Logs" },
 ];
