@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  /* ── Surface & Background Colors ── */
   --color-bg: #0e0e10;
   --color-surface: #0e0e10;
   --color-surface-low: #131315;
@@ -9,29 +10,43 @@
   --color-surface-high: #1f1f22;
   --color-surface-hover: #262528;
   --color-surface-bright: #2c2c2f;
+
+  /* ── Border & Outline ── */
   --color-border: #1f1f22;
   --color-outline: #767577;
   --color-outline-variant: #48474a;
+  --color-ring: #a3a6ff;
+
+  /* ── Text ── */
   --color-text: #f9f5f8;
   --color-text-muted: #adaaad;
+
+  /* ── Accent & Brand ── */
   --color-accent: #a3a6ff;
   --color-accent-hover: #0f00a4;
   --color-accent-dim: #6063ee;
   --color-secondary: #ac8aff;
+
+  /* ── Semantic ── */
   --color-danger: #ff6e84;
   --color-danger-hover: #d73357;
   --color-success: #57f287;
   --color-warning: #fee75c;
+  --color-info: #60a5fa;
   --color-discord: #5865F2;
+
+  /* ── Typography ── */
   --font-body: "Inter", sans-serif;
   --font-label: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", "Geist Mono", monospace;
-  --radius-sm: 0.125rem;
-  --radius-DEFAULT: 0.125rem;
-  --radius-md: 0.25rem;
-  --radius-lg: 0.25rem;
-  --radius-xl: 0.5rem;
-  --radius-full: 0.75rem;
+
+  /* ── Border Radius (aligned to design brief) ── */
+  --radius-sm: 0.25rem;
+  --radius-DEFAULT: 0.5rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
 }
 
 body {
@@ -40,13 +55,13 @@ body {
   font-family: var(--font-body);
 }
 
-/* Form element base styling - matches Stitch: border-none + focus:ring */
+/* Form element base styling */
 input,
 select,
 textarea {
   background-color: var(--color-surface-lowest);
   border: none;
-  border-radius: 0.125rem;
+  border-radius: var(--radius-sm);
   color: var(--color-text);
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
@@ -57,7 +72,7 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  box-shadow: 0 0 0 1px var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-ring);
 }
 
 textarea {
@@ -71,38 +86,12 @@ input[type="color"] {
   cursor: pointer;
 }
 
-/* shadcn CSS variables mapped to Stitch "Obsidian Engine" tokens */
-@layer base {
-  :root {
-    --background: #0e0e10;
-    --foreground: #f9f5f8;
-    --card: #131315;
-    --card-foreground: #f9f5f8;
-    --popover: #131315;
-    --popover-foreground: #f9f5f8;
-    --primary: #a3a6ff;
-    --primary-foreground: #0f00a4;
-    --secondary: #1f1f22;
-    --secondary-foreground: #f9f5f8;
-    --muted: #1f1f22;
-    --muted-foreground: #adaaad;
-    --accent: #1f1f22;
-    --accent-foreground: #f9f5f8;
-    --destructive: #ff6e84;
-    --destructive-foreground: #f9f5f8;
-    --border: #1f1f22;
-    --input: #000000;
-    --ring: #a3a6ff;
-    --radius: 2px;
-  }
-}
-
-/* Glass edge effect from Stitch */
+/* Glass edge effect */
 .glass-edge {
   outline: 1px solid rgba(72, 71, 74, 0.15);
 }
 
-/* Material Symbols from Stitch */
+/* Material Symbols */
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   font-size: 20px;

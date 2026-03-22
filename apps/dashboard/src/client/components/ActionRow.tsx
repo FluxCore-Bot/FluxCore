@@ -2,6 +2,13 @@ import { ActionFields } from "./ActionFields";
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Card } from "./ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 import type {
   ActionConfig,
   ActionFieldDescriptor,
@@ -33,24 +40,26 @@ function setNestedValue(
     return result;
   }
   const [first, ...rest] = parts;
-  const nested =
-    typeof result[first] === "object" && result[first] !== null
-      ? { ...(result[first] as Record<string, unknown>) }
-      : {};
-  nested[rest.join(".")] =
-    rest.length === 1
-      ? value
-      : setNestedValue(
-          typeof nested[rest[0]] === "object" && nested[rest[0]] !== null
-            ? { ...(nested[rest[0]] as Record<string, unknown>) }
-            : {},
-          rest.slice(1).join("."),
-          value,
-        );
   // For nested keys like "embed.title", set the nested object properly
   if (rest.length === 1) {
-    result[first] = { ...(typeof result[first] === "object" && result[first] !== null ? result[first] as Record<string, unknown> : {}), [rest[0]]: value };
+    result[first] = {
+      ...(typeof result[first] === "object" && result[first] !== null
+        ? (result[first] as Record<string, unknown>)
+        : {}),
+      [rest[0]]: value,
+    };
   } else {
+    const nested =
+      typeof result[first] === "object" && result[first] !== null
+        ? { ...(result[first] as Record<string, unknown>) }
+        : {};
+    nested[rest.join(".")] = setNestedValue(
+      typeof nested[rest[0]] === "object" && nested[rest[0]] !== null
+        ? { ...(nested[rest[0]] as Record<string, unknown>) }
+        : {},
+      rest.slice(1).join("."),
+      value,
+    );
     result[first] = nested;
   }
   return result;
@@ -105,14 +114,18 @@ export function ActionRow({
         <Label>
           Action Type <span className="text-danger">*</span>
         </Label>
-        <select value={action.type} onChange={(e) => handleTypeChange(e.target.value)}>
-          <option value="">Select action...</option>
-          {Object.entries(constants.actionTypes).map(([key, info]) => (
-            <option key={key} value={key}>
-              {info.label}
-            </option>
-          ))}
-        </select>
+        <Select value={action.type || undefined} onValueChange={handleTypeChange}>
+          <SelectTrigger>
+            <SelectValue placeholder="Select action..." />
+          </SelectTrigger>
+          <SelectContent>
+            {Object.entries(constants.actionTypes).map(([key, info]) => (
+              <SelectItem key={key} value={key}>
+                {info.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
 
       {action.type && fields.length > 0 && (

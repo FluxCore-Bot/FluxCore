@@ -1,5 +1,13 @@
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 import type { ActionFieldDescriptor, Channel, Role } from "../lib/schemas";
 
 interface ActionFieldsProps {
@@ -40,33 +48,41 @@ export function ActionFields({
             </Label>
 
             {field.type === "channel" && (
-              <select
-                value={String(value)}
-                onChange={(e) => onChange(field.key, e.target.value)}
+              <Select
+                value={String(value) || undefined}
+                onValueChange={(v) => onChange(field.key, v)}
               >
-                <option value="">Select channel...</option>
-                {channels
-                  .filter((c) => c.type === 0 || c.type === 2)
-                  .map((c) => (
-                    <option key={c.id} value={c.id}>
-                      {c.type === 2 ? `🔊 ${c.name}` : `# ${c.name}`}
-                    </option>
-                  ))}
-              </select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select channel..." />
+                </SelectTrigger>
+                <SelectContent>
+                  {channels
+                    .filter((c) => c.type === 0 || c.type === 2)
+                    .map((c) => (
+                      <SelectItem key={c.id} value={c.id}>
+                        {c.type === 2 ? `🔊 ${c.name}` : `# ${c.name}`}
+                      </SelectItem>
+                    ))}
+                </SelectContent>
+              </Select>
             )}
 
             {field.type === "role" && (
-              <select
-                value={String(value)}
-                onChange={(e) => onChange(field.key, e.target.value)}
+              <Select
+                value={String(value) || undefined}
+                onValueChange={(v) => onChange(field.key, v)}
               >
-                <option value="">Select role...</option>
-                {roles.map((r) => (
-                  <option key={r.id} value={r.id}>
-                    {r.name}
-                  </option>
-                ))}
-              </select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select role..." />
+                </SelectTrigger>
+                <SelectContent>
+                  {roles.map((r) => (
+                    <SelectItem key={r.id} value={r.id}>
+                      {r.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             )}
 
             {field.type === "text" && (
@@ -80,7 +96,7 @@ export function ActionFields({
             )}
 
             {field.type === "textarea" && (
-              <textarea
+              <Textarea
                 value={String(value)}
                 onChange={(e) => onChange(field.key, e.target.value)}
                 placeholder={field.placeholder}
@@ -91,6 +107,7 @@ export function ActionFields({
             {field.type === "color" && (
               <input
                 type="color"
+                className="h-9 w-full cursor-pointer rounded-sm bg-surface-lowest p-1"
                 value={
                   typeof value === "number"
                     ? `#${value.toString(16).padStart(6, "0")}`
@@ -103,17 +120,21 @@ export function ActionFields({
             )}
 
             {field.type === "select" && field.options && (
-              <select
-                value={String(value)}
-                onChange={(e) => onChange(field.key, e.target.value)}
+              <Select
+                value={String(value) || undefined}
+                onValueChange={(v) => onChange(field.key, v)}
               >
-                <option value="">Select...</option>
-                {field.options.map((opt) => (
-                  <option key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </option>
-                ))}
-              </select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select..." />
+                </SelectTrigger>
+                <SelectContent>
+                  {field.options.map((opt) => (
+                    <SelectItem key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             )}
           </div>
         );

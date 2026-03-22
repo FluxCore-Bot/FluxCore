@@ -10,6 +10,14 @@ import { Label } from "./ui/label";
 import { Switch } from "./ui/switch";
 import { Alert } from "./ui/alert";
 import { Card } from "./ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
+import { PageSkeleton } from "./PageSkeleton";
 
 export function SettingsForm() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
@@ -30,7 +38,7 @@ export function SettingsForm() {
     }
   }, [settings]);
 
-  if (isLoading) return <p className="text-text-muted">Loading...</p>;
+  if (isLoading) return <PageSkeleton />;
 
   const textChannels = channels.filter((c) => c.type === 0);
 
@@ -73,19 +81,23 @@ export function SettingsForm() {
         </div>
 
         <div className="mb-4">
-          <Label htmlFor="logChannel">Log Channel (optional)</Label>
-          <select
-            id="logChannel"
-            value={logChannelId ?? ""}
-            onChange={(e) => setLogChannelId(e.target.value || null)}
+          <Label>Log Channel (optional)</Label>
+          <Select
+            value={logChannelId ?? "none"}
+            onValueChange={(v) => setLogChannelId(v === "none" ? null : v)}
           >
-            <option value="">No log channel</option>
-            {textChannels.map((c) => (
-              <option key={c.id} value={c.id}>
-                # {c.name}
-              </option>
-            ))}
-          </select>
+            <SelectTrigger>
+              <SelectValue placeholder="No log channel" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="none">No log channel</SelectItem>
+              {textChannels.map((c) => (
+                <SelectItem key={c.id} value={c.id}>
+                  # {c.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         <div className="mb-6 flex items-center gap-3">

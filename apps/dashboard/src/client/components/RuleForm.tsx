@@ -15,6 +15,14 @@ import { Label } from "./ui/label";
 import { Switch } from "./ui/switch";
 import { Alert } from "./ui/alert";
 import { Card } from "./ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
+import { PageSkeleton } from "./PageSkeleton";
 
 interface RuleFormProps {
   rule?: ActionRule;
@@ -40,7 +48,7 @@ export function RuleForm({ rule, onClose }: RuleFormProps) {
   const [enabled, setEnabled] = useState(rule?.enabled ?? true);
   const [error, setError] = useState("");
 
-  if (!constants) return <p className="text-text-muted">Loading...</p>;
+  if (!constants) return <PageSkeleton />;
 
   const handleActionChange = (index: number, action: ActionConfig) => {
     setActions((prev) => prev.map((a, i) => (i === index ? action : a)));
@@ -122,14 +130,18 @@ export function RuleForm({ rule, onClose }: RuleFormProps) {
             <Label>
               Event Type <span className="text-danger">*</span>
             </Label>
-            <select value={eventType} onChange={(e) => setEventType(e.target.value)}>
-              <option value="">Select event...</option>
-              {Object.entries(constants.eventTypes).map(([key, info]) => (
-                <option key={key} value={key}>
-                  {info.label}
-                </option>
-              ))}
-            </select>
+            <Select value={eventType || undefined} onValueChange={setEventType}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select event..." />
+              </SelectTrigger>
+              <SelectContent>
+                {Object.entries(constants.eventTypes).map(([key, info]) => (
+                  <SelectItem key={key} value={key}>
+                    {info.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
           <div>
             <Label>Priority</Label>

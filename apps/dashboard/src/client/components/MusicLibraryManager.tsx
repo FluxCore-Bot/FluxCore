@@ -10,11 +10,16 @@ import {
 } from "../lib/hooks/useMusic";
 import { toast } from "sonner";
 import { ApiError } from "../lib/client";
+import { Icon } from "./Icon";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Alert } from "./ui/alert";
 import { Card } from "./ui/card";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible";
+import { Skeleton } from "./ui/skeleton";
+import { EmptyState } from "./EmptyState";
+import { PageSkeleton } from "./PageSkeleton";
 
 const MAX_ALBUMS = 50;
 const MAX_TRACKS = 100;
@@ -24,13 +29,19 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
   const addTrack = useAddTrack(guildId, albumId);
   const deleteTrack = useDeleteTrack(guildId, albumId);
 
-
   const [showForm, setShowForm] = useState(false);
   const [title, setTitle] = useState("");
   const [sourceUrl, setSourceUrl] = useState("");
   const [error, setError] = useState("");
 
-  if (isLoading) return <p className="py-2 text-xs text-text-muted">Loading tracks...</p>;
+  if (isLoading) {
+    return (
+      <div className="mt-2 space-y-2 border-l-2 border-outline-variant/30 pl-4">
+        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-10 w-full" />
+      </div>
+    );
+  }
 
   const handleAddTrack = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -132,13 +143,11 @@ export function MusicLibraryManager() {
   const createAlbum = useCreateAlbum(guildId);
   const deleteAlbum = useDeleteAlbum(guildId);
 
-
-  const [expandedAlbum, setExpandedAlbum] = useState<number | null>(null);
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [newAlbumName, setNewAlbumName] = useState("");
   const [error, setError] = useState("");
 
-  if (isLoading) return <p className="text-text-muted">Loading...</p>;
+  if (isLoading) return <PageSkeleton />;
 
   const handleCreateAlbum = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -163,7 +172,6 @@ export function MusicLibraryManager() {
     try {
       await deleteAlbum.mutateAsync(albumId);
       toast.success("Album deleted");
-      if (expandedAlbum === albumId) setExpandedAlbum(null);
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "An error occurred");
     }
@@ -182,7 +190,7 @@ export function MusicLibraryManager() {
         </div>
         {!showCreateForm && albums.length < MAX_ALBUMS && (
           <Button onClick={() => setShowCreateForm(true)}>
-            Add Album
+            <Icon name="add" /> Add Album
           </Button>
         )}
       </div>
@@ -214,40 +222,50 @@ export function MusicLibraryManager() {
       {albums.length > 0 ? (
         <div className="space-y-3">
           {albums.map((album) => (
-            <Card key={album.id} className="bg-surface-high p-4">
-              <div className="flex items-center justify-between">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  aria-label={`${expandedAlbum === album.id ? "Collapse" : "Expand"} ${album.name}`}
-                  onClick={() =>
-                    setExpandedAlbum(expandedAlbum === album.id ? null : album.id)
-                  }
-                >
-                  {expandedAlbum === album.id ? "▼" : "▶"} {album.name}
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-danger hover:text-danger"
-                  onClick={() => handleDeleteAlbum(album.id)}
-                  disabled={isPending}
-                >
-                  Delete
-                </Button>
-              </div>
+            <Collapsible key={album.id}>
+              <Card className="bg-surface-high p-4">
+                <div className="flex items-center justify-between">
+                  <CollapsibleTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      aria-label={`Toggle ${album.name}`}
+                      className="gap-2"
+                    >
+                      <Icon name="expand_more" size={16} />
+                      {album.name}
+                    </Button>
+                  </CollapsibleTrigger>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-danger hover:text-danger"
+                    onClick={() => handleDeleteAlbum(album.id)}
+                    disabled={isPending}
+                  >
+                    Delete
+                  </Button>
+                </div>
 
-              {expandedAlbum === album.id && (
-                <AlbumTracks guildId={guildId} albumId={album.id} />
-              )}
-            </Card>
+                <CollapsibleContent>
+                  <AlbumTracks guildId={guildId} albumId={album.id} />
+                </CollapsibleContent>
+              </Card>
+            </Collapsible>
           ))}
         </div>
       ) : (
         !showCreateForm && (
-          <p className="text-sm text-text-muted">
-            No albums yet. Click "Add Album" to get started.
-          </p>
+          <EmptyState
+            icon="library_music"
+            title="No albums yet"
+            description="Create your first album to start building your music library."
+            action={
+              <Button onClick={() => setShowCreateForm(true)}>
+                <Icon name="add" /> Add Album
+              </Button>
+            }
+          />
         )
       )}
     </Card>

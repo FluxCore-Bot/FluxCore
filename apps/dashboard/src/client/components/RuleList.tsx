@@ -2,6 +2,7 @@ import { Icon } from "./Icon";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "./ui/table";
+import { EmptyState } from "./EmptyState";
 import type { ActionRule, Constants } from "../lib/schemas";
 
 interface RuleListProps {
@@ -21,14 +22,16 @@ export function RuleList({
 }: RuleListProps) {
   if (rules.length === 0) {
     return (
-      <p className="py-10 text-center text-text-muted">
-        No rules yet. Create one to get started.
-      </p>
+      <EmptyState
+        icon="bolt"
+        title="No rules yet"
+        description="Create your first automation rule to get started with event-driven actions."
+      />
     );
   }
 
   return (
-    <div className="rounded-xl bg-surface-low shadow-2xl">
+    <div className="rounded-xl bg-surface-low shadow-2xl glass-edge">
       <Table>
         <TableHeader>
           <TableRow className="hover:bg-transparent">
@@ -63,10 +66,10 @@ export function RuleList({
               </TableCell>
               <TableCell className="text-right">
                 <div className="flex justify-end gap-1">
-                  <Button variant="ghost" size="icon" onClick={() => onEdit(rule)}>
+                  <Button variant="ghost" size="icon" onClick={() => onEdit(rule)} aria-label="Edit rule">
                     <Icon name="edit" className="text-text/40 hover:text-accent" />
                   </Button>
-                  <Button variant="ghost" size="icon" onClick={() => onDelete(rule)}>
+                  <Button variant="ghost" size="icon" onClick={() => onDelete(rule)} aria-label="Delete rule">
                     <Icon name="delete" className="text-text/40 hover:text-danger" />
                   </Button>
                 </div>

@@ -6,6 +6,9 @@ import { toast } from "sonner";
 import { RuleList } from "../../../components/RuleList";
 import { RuleForm } from "../../../components/RuleForm";
 import { ConfirmDialog } from "../../../components/ConfirmDialog";
+import { PageHeader } from "../../../components/PageHeader";
+import { StatsCard } from "../../../components/StatsCard";
+import { PageSkeleton } from "../../../components/PageSkeleton";
 import { Icon } from "../../../components/Icon";
 import { Button } from "../../../components/ui/button";
 import type { ActionRule } from "../../../lib/schemas";
@@ -21,7 +24,7 @@ export function RulesPage() {
   const [editingRule, setEditingRule] = useState<ActionRule | undefined>();
   const [deleteTarget, setDeleteTarget] = useState<ActionRule | null>(null);
 
-  if (isLoading) return <p className="text-text-muted">Loading...</p>;
+  if (isLoading) return <PageSkeleton />;
 
   const handleEdit = (rule: ActionRule) => {
     setEditingRule(rule);
@@ -64,34 +67,32 @@ export function RulesPage() {
 
   return (
     <div className="space-y-8">
-      {/* Page Header */}
-      <div className="flex items-end justify-between">
-        <div>
-          <h2 className="text-3xl font-bold tracking-tight">Automation Rules</h2>
-          <p className="mt-1 text-sm text-text-muted">Configure event-driven triggers and automated responses for your guild.</p>
-        </div>
-        {!showForm && (
-          <Button onClick={() => setShowForm(true)}>
-            <Icon name="add" /> Create Rule
-          </Button>
-        )}
-      </div>
+      <PageHeader
+        title="Automation Rules"
+        subtitle="Configure event-driven triggers and automated responses for your guild."
+        actions={
+          !showForm ? (
+            <Button onClick={() => setShowForm(true)}>
+              <Icon name="add" /> Create Rule
+            </Button>
+          ) : undefined
+        }
+      />
 
-      {/* Stats */}
       {!showForm && (
         <div className="grid grid-cols-3 gap-4">
-          <div className="border-l-2 border-accent bg-surface-low p-4">
-            <p className="font-label text-[10px] uppercase tracking-wider text-text-muted">Total Rules</p>
-            <p className="font-mono text-2xl font-bold">{rules.length}</p>
-          </div>
-          <div className="border-l-2 border-secondary bg-surface-low p-4">
-            <p className="font-label text-[10px] uppercase tracking-wider text-text-muted">Active Now</p>
-            <p className="font-mono text-2xl font-bold">{String(activeRules).padStart(2, '0')}</p>
-          </div>
-          <div className="border-l-2 border-danger bg-surface-low p-4">
-            <p className="font-label text-[10px] uppercase tracking-wider text-text-muted">Disabled</p>
-            <p className="font-mono text-2xl font-bold text-danger">{String(rules.length - activeRules).padStart(2, '0')}</p>
-          </div>
+          <StatsCard label="Total Rules" value={rules.length} />
+          <StatsCard
+            label="Active Now"
+            value={String(activeRules).padStart(2, "0")}
+            accentColor="border-secondary"
+          />
+          <StatsCard
+            label="Disabled"
+            value={String(rules.length - activeRules).padStart(2, "0")}
+            accentColor="border-danger"
+            valueClassName="text-danger"
+          />
         </div>
       )}
 

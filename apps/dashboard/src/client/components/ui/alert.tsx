@@ -9,6 +9,9 @@ const alertVariants = cva(
       variant: {
         default: "bg-surface-high text-text",
         destructive: "bg-danger/10 text-danger",
+        success: "bg-success/10 text-success",
+        warning: "bg-warning/10 text-warning",
+        info: "bg-info/10 text-info",
       },
     },
     defaultVariants: {

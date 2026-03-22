@@ -2,9 +2,19 @@ import { useState } from "react";
 import { useParams } from "@tanstack/react-router";
 import { Icon } from "./Icon";
 import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Alert } from "./ui/alert";
 import { Card } from "./ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
+import { EmptyState } from "./EmptyState";
+import { PageSkeleton } from "./PageSkeleton";
 import { useChannels } from "../lib/hooks/useChannels";
 import {
   useTempVoiceConfigs,
@@ -33,7 +43,7 @@ export function TempVoiceForm() {
   const [nameTemplate, setNameTemplate] = useState("{user}'s Channel");
   const [error, setError] = useState("");
 
-  if (isLoading) return <p className="text-text-muted">Loading...</p>;
+  if (isLoading) return <PageSkeleton />;
 
   const voiceChannels = channels.filter((c) => c.type === 2);
   const categories = channels.filter((c) => c.type === 4);
@@ -167,9 +177,16 @@ export function TempVoiceForm() {
       )}
 
       {configs.length === 0 && !showForm && (
-        <p className="mb-4 text-sm text-text-muted">
-          No configurations yet. Click "Add Configuration" to get started.
-        </p>
+        <EmptyState
+          icon="settings_voice"
+          title="No configurations yet"
+          description="Click 'Add Hub' to create your first temporary voice channel configuration."
+          action={
+            <Button onClick={openCreateForm}>
+              <Icon name="add" /> Add Hub
+            </Button>
+          }
+        />
       )}
 
       {/* Add/Edit form */}
@@ -188,37 +205,46 @@ export function TempVoiceForm() {
 
           <div className="mb-3">
             <Label>Hub Channel <span className="text-danger">*</span></Label>
-            <select
-              value={hubChannelId}
-              onChange={(e) => setHubChannelId(e.target.value)}
+            <Select
+              value={hubChannelId || undefined}
+              onValueChange={setHubChannelId}
             >
-              <option value="">Select voice channel...</option>
-              {availableVoiceChannels.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
+              <SelectTrigger>
+                <SelectValue placeholder="Select voice channel..." />
+              </SelectTrigger>
+              <SelectContent>
+                {availableVoiceChannels.map((c) => (
+                  <SelectItem key={c.id} value={c.id}>
+                    {c.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="mb-3">
             <Label>Category (optional)</Label>
-            <select
-              value={categoryId ?? ""}
-              onChange={(e) => setCategoryId(e.target.value || null)}
+            <Select
+              value={categoryId ?? "none"}
+              onValueChange={(v) => setCategoryId(v === "none" ? null : v)}
             >
-              <option value="">Same as hub channel</option>
-              {categories.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
+              <SelectTrigger>
+                <SelectValue placeholder="Same as hub channel" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="none">Same as hub channel</SelectItem>
+                {categories.map((c) => (
+                  <SelectItem key={c.id} value={c.id}>
+                    {c.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="mb-4">
             <Label>Name Template</Label>
-            <input
+            <Input
               type="text"
               value={nameTemplate}
               onChange={(e) => setNameTemplate(e.target.value)}

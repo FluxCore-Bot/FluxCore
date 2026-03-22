@@ -10,6 +10,15 @@ import { Label } from "./ui/label";
 import { Switch } from "./ui/switch";
 import { Alert } from "./ui/alert";
 import { Card } from "./ui/card";
+import { Slider } from "./ui/slider";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
+import { PageSkeleton } from "./PageSkeleton";
 
 export function MusicSettingsForm() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
@@ -36,7 +45,7 @@ export function MusicSettingsForm() {
     }
   }, [settings]);
 
-  if (isLoading) return <p className="text-text-muted">Loading...</p>;
+  if (isLoading) return <PageSkeleton />;
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -68,33 +77,45 @@ export function MusicSettingsForm() {
       <form onSubmit={handleSave} className="space-y-4">
         <div>
           <Label>Music Mode</Label>
-          <select value={mode} onChange={(e) => setMode(e.target.value as "open" | "library")}>
-            <option value="open">Open — Anyone can play anything</option>
-            <option value="library">Library — Only curated tracks</option>
-          </select>
+          <Select value={mode} onValueChange={(v) => setMode(v as "open" | "library")}>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="open">Open — Anyone can play anything</SelectItem>
+              <SelectItem value="library">Library — Only curated tracks</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         <div>
           <Label>DJ Role</Label>
-          <select value={djRoleId ?? ""} onChange={(e) => setDjRoleId(e.target.value || null)}>
-            <option value="">None — All users can control playback</option>
-            {roles.map((r) => (
-              <option key={r.id} value={r.id}>
-                {r.name}
-              </option>
-            ))}
-          </select>
+          <Select
+            value={djRoleId ?? "none"}
+            onValueChange={(v) => setDjRoleId(v === "none" ? null : v)}
+          >
+            <SelectTrigger>
+              <SelectValue placeholder="None — All users can control playback" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="none">None — All users can control playback</SelectItem>
+              {roles.map((r) => (
+                <SelectItem key={r.id} value={r.id}>
+                  {r.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         <div>
           <Label>Default Volume: {defaultVolume}%</Label>
-          <input
-            type="range"
+          <Slider
+            value={[defaultVolume]}
+            onValueChange={([v]) => setDefaultVolume(v)}
             min={0}
             max={100}
-            value={defaultVolume}
-            onChange={(e) => setDefaultVolume(Number(e.target.value))}
-            className="w-full"
+            step={1}
           />
         </div>
 
