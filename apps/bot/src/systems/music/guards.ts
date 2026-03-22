@@ -4,6 +4,8 @@ import type { MusicGuildSettings } from "@fluxcore/systems/music/types";
 import { errorEmbed } from "@fluxcore/utils";
 import { getQueue } from "./queue.js";
 
+type RepliableInteraction = ChatInputCommandInteraction | ButtonInteraction;
+
 export async function requireVoiceChannel(
   interaction: ChatInputCommandInteraction,
 ): Promise<string | null> {
@@ -36,8 +38,8 @@ export async function requireSameVoiceChannel(
   return true;
 }
 
-export async function requireDjOrPermission(
-  interaction: ChatInputCommandInteraction,
+async function requireDjOrPermissionImpl(
+  interaction: RepliableInteraction,
   settings: MusicGuildSettings,
 ): Promise<boolean> {
   const member = interaction.member as GuildMember;
@@ -49,11 +51,14 @@ export async function requireDjOrPermission(
   if (member.roles.cache.has(settings.djRoleId)) return true;
 
   await interaction.reply({
-    embeds: [errorEmbed("DJ Only", "This command requires the DJ role or Manage Server permission.")],
+    embeds: [errorEmbed("DJ Only", "This action requires the DJ role or Manage Server permission.")],
     ephemeral: true,
   });
   return false;
 }
+
+export const requireDjOrPermission = requireDjOrPermissionImpl;
+export const requireDjOrPermissionButton = requireDjOrPermissionImpl;
 
 export async function requireQueue(
   interaction: ChatInputCommandInteraction,
@@ -90,23 +95,4 @@ export async function requireSameVoiceChannelButton(
     return false;
   }
   return true;
-}
-
-export async function requireDjOrPermissionButton(
-  interaction: ButtonInteraction,
-  settings: MusicGuildSettings,
-): Promise<boolean> {
-  const member = interaction.member as GuildMember;
-
-  if (member.permissions.has(PermissionFlagsBits.ManageGuild)) return true;
-
-  if (!settings.djRoleId) return true;
-
-  if (member.roles.cache.has(settings.djRoleId)) return true;
-
-  await interaction.reply({
-    embeds: [errorEmbed("DJ Only", "This action requires the DJ role or Manage Server permission.")],
-    ephemeral: true,
-  });
-  return false;
 }

@@ -35,4 +35,5 @@ export interface QueueTrack {
   duration: number;
   requester: string;
   thumbnail: string | null;
+  encoded?: string;
 }

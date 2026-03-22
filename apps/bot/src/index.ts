@@ -7,6 +7,7 @@ import { stopCacheSyncPolling } from "@fluxcore/systems/actions/cacheSync";
 import { stopSyncServer } from "./systems/actions/syncServer.js";
 import { initShoukaku, getShoukaku } from "./systems/music/shoukaku.js";
 import { getAllQueues } from "./systems/music/queue.js";
+import { stopAllProgressRefresh } from "./systems/music/panel.js";
 import { logger } from "@fluxcore/utils";
 
 async function main(): Promise<void> {
@@ -38,6 +39,7 @@ async function main(): Promise<void> {
     stopSyncServer();
 
     // Cleanup music players
+    stopAllProgressRefresh();
     const queues = getAllQueues();
     for (const [, queue] of queues) {
       await queue.destroy().catch(() => {});

@@ -3,7 +3,7 @@ import { MusicButtonIds } from "@fluxcore/systems/music/constants";
 import { getMusicSettings } from "@fluxcore/systems/music/config";
 import { getQueue, destroyQueue } from "./queue.js";
 import { queueEmbed } from "./embeds.js";
-import { buildNowPlayingPanel } from "./panel.js";
+import { buildNowPlayingPanel, startProgressRefresh, stopProgressRefresh } from "./panel.js";
 import { requireSameVoiceChannelButton, requireDjOrPermissionButton } from "./guards.js";
 import { successEmbed, errorEmbed, logger } from "@fluxcore/utils";
 import type { LoopMode } from "@fluxcore/systems/music/types";
@@ -32,6 +32,11 @@ export async function handleMusicButton(interaction: ButtonInteraction): Promise
         if (!queue.player) return;
         const paused = !queue.player.paused;
         await queue.player.setPaused(paused);
+        if (paused) {
+          stopProgressRefresh(guildId);
+        } else if (queue.client) {
+          startProgressRefresh(queue, queue.client);
+        }
         const panel = buildNowPlayingPanel(queue);
         await interaction.update({ ...panel });
         break;
@@ -47,8 +52,15 @@ export async function handleMusicButton(interaction: ButtonInteraction): Promise
 
       case MusicButtonIds.STOP: {
         if (!(await requireDjOrPermissionButton(interaction, settings))) return;
-        await interaction.deferUpdate();
-        await destroyQueue(guildId);
+        if (settings.twentyFourSeven) {
+          // 24/7 mode: stop playback but stay in voice channel
+          await queue.stop();
+          const panel = buildNowPlayingPanel(queue);
+          await interaction.update({ ...panel });
+        } else {
+          await interaction.deferUpdate();
+          await destroyQueue(guildId);
+        }
         break;
       }
 

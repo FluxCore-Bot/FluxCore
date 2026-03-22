@@ -14,6 +14,7 @@ import {
   getAlbumTracks,
   getAlbumCount,
   getTrackCount,
+  getTrackById,
 } from "@fluxcore/systems/music/library";
 import {
   MAX_QUEUE_SIZE_LIMIT,
@@ -21,6 +22,11 @@ import {
   MAX_TRACKS_PER_ALBUM,
 } from "@fluxcore/systems/music/constants";
 import { notifyCacheInvalidation } from "@fluxcore/systems/actions/persistence";
+
+function parseIntParam(value: string): number | null {
+  const n = parseInt(value, 10);
+  return Number.isFinite(n) && n > 0 ? n : null;
+}
 
 export function registerMusicRoutes(app: FastifyInstance): void {
   // GET music settings for a guild
@@ -37,7 +43,23 @@ export function registerMusicRoutes(app: FastifyInstance): void {
   // PUT update music settings
   app.put(
     "/api/guilds/:guildId/music/settings",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin],
+      schema: {
+        body: {
+          type: "object",
+          properties: {
+            mode: { type: "string", enum: ["open", "library"] },
+            djRoleId: { type: ["string", "null"] },
+            defaultVolume: { type: "integer", minimum: 0, maximum: 100 },
+            maxQueueSize: { type: "integer", minimum: 1, maximum: MAX_QUEUE_SIZE_LIMIT },
+            autoDisconnectSecs: { type: "integer", minimum: 0, maximum: 3600 },
+            twentyFourSeven: { type: "boolean" },
+          },
+          additionalProperties: false,
+        },
+      },
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const body = request.body as {
@@ -51,45 +73,12 @@ export function registerMusicRoutes(app: FastifyInstance): void {
 
       const update: Record<string, unknown> = {};
 
-      if (body.mode !== undefined) {
-        if (body.mode !== "open" && body.mode !== "library") {
-          reply.code(400).send({ error: "mode must be 'open' or 'library'" });
-          return;
-        }
-        update.mode = body.mode;
-      }
-
-      if (body.djRoleId !== undefined) {
-        update.djRoleId = body.djRoleId;
-      }
-
-      if (body.defaultVolume !== undefined) {
-        if (body.defaultVolume < 0 || body.defaultVolume > 100) {
-          reply.code(400).send({ error: "defaultVolume must be between 0 and 100" });
-          return;
-        }
-        update.defaultVolume = body.defaultVolume;
-      }
-
-      if (body.maxQueueSize !== undefined) {
-        if (body.maxQueueSize < 1 || body.maxQueueSize > MAX_QUEUE_SIZE_LIMIT) {
-          reply.code(400).send({ error: `maxQueueSize must be between 1 and ${MAX_QUEUE_SIZE_LIMIT}` });
-          return;
-        }
-        update.maxQueueSize = body.maxQueueSize;
-      }
-
-      if (body.autoDisconnectSecs !== undefined) {
-        if (body.autoDisconnectSecs < 0 || body.autoDisconnectSecs > 3600) {
-          reply.code(400).send({ error: "autoDisconnectSecs must be between 0 and 3600" });
-          return;
-        }
-        update.autoDisconnectSecs = body.autoDisconnectSecs;
-      }
-
-      if (body.twentyFourSeven !== undefined) {
-        update.twentyFourSeven = body.twentyFourSeven;
-      }
+      if (body.mode !== undefined) update.mode = body.mode;
+      if (body.djRoleId !== undefined) update.djRoleId = body.djRoleId;
+      if (body.defaultVolume !== undefined) update.defaultVolume = body.defaultVolume;
+      if (body.maxQueueSize !== undefined) update.maxQueueSize = body.maxQueueSize;
+      if (body.autoDisconnectSecs !== undefined) update.autoDisconnectSecs = body.autoDisconnectSecs;
+      if (body.twentyFourSeven !== undefined) update.twentyFourSeven = body.twentyFourSeven;
 
       const settings = await upsertMusicSettings(guildId, update);
       await notifyCacheInvalidation(guildId, "reloadMusic");
@@ -111,15 +100,22 @@ export function registerMusicRoutes(app: FastifyInstance): void {
   // POST create an album
   app.post(
     "/api/guilds/:guildId/music/library",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin],
+      schema: {
+        body: {
+          type: "object",
+          required: ["name"],
+          properties: {
+            name: { type: "string", minLength: 1 },
+          },
+          additionalProperties: false,
+        },
+      },
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
-      const body = request.body as { name?: string };
-
-      if (!body.name || typeof body.name !== "string" || !body.name.trim()) {
-        reply.code(400).send({ error: "Album name is required" });
-        return;
-      }
+      const body = request.body as { name: string };
 
       const count = await getAlbumCount(guildId);
       if (count >= MAX_LIBRARY_ALBUMS_PER_GUILD) {
@@ -128,8 +124,7 @@ export function registerMusicRoutes(app: FastifyInstance): void {
       }
 
       try {
-        const session = (request as unknown as { session: { userId: string } }).session;
-        const album = await addAlbum(guildId, body.name.trim(), session.userId);
+        const album = await addAlbum(guildId, body.name.trim(), request.session!.userId);
         reply.code(201).send(album);
       } catch {
         reply.code(400).send({ error: "An album with this name already exists" });
@@ -143,12 +138,17 @@ export function registerMusicRoutes(app: FastifyInstance): void {
     { preHandler: [requireAuth, requireGuildAdmin] },
     async (request, reply) => {
       const { guildId, albumId } = request.params as { guildId: string; albumId: string };
-      const album = await getAlbumById(Number(albumId));
+      const albumIdNum = parseIntParam(albumId);
+      if (albumIdNum === null) {
+        reply.code(400).send({ error: "Invalid album ID" });
+        return;
+      }
+      const album = await getAlbumById(albumIdNum);
       if (!album || album.guildId !== guildId) {
         reply.code(404).send({ error: "Album not found" });
         return;
       }
-      await removeAlbum(Number(albumId));
+      await removeAlbum(albumIdNum);
       reply.send({ success: true });
     },
   );
@@ -159,12 +159,17 @@ export function registerMusicRoutes(app: FastifyInstance): void {
     { preHandler: [requireAuth, requireGuildAdmin] },
     async (request, reply) => {
       const { guildId, albumId } = request.params as { guildId: string; albumId: string };
-      const album = await getAlbumById(Number(albumId));
+      const albumIdNum = parseIntParam(albumId);
+      if (albumIdNum === null) {
+        reply.code(400).send({ error: "Invalid album ID" });
+        return;
+      }
+      const album = await getAlbumById(albumIdNum);
       if (!album || album.guildId !== guildId) {
         reply.code(404).send({ error: "Album not found" });
         return;
       }
-      const tracks = await getAlbumTracks(Number(albumId));
+      const tracks = await getAlbumTracks(albumIdNum);
       reply.send(tracks);
     },
   );
@@ -172,40 +177,60 @@ export function registerMusicRoutes(app: FastifyInstance): void {
   // POST add a track to an album
   app.post(
     "/api/guilds/:guildId/music/library/:albumId/tracks",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin],
+      schema: {
+        body: {
+          type: "object",
+          required: ["title", "sourceUrl"],
+          properties: {
+            title: { type: "string", minLength: 1 },
+            sourceUrl: { type: "string", minLength: 1 },
+            duration: { type: ["integer", "null"] },
+          },
+          additionalProperties: false,
+        },
+      },
+    },
     async (request, reply) => {
       const { guildId, albumId } = request.params as { guildId: string; albumId: string };
-      const body = request.body as { title?: string; sourceUrl?: string; duration?: number | null };
+      const body = request.body as { title: string; sourceUrl: string; duration?: number | null };
 
-      const album = await getAlbumById(Number(albumId));
+      const albumIdNum = parseIntParam(albumId);
+      if (albumIdNum === null) {
+        reply.code(400).send({ error: "Invalid album ID" });
+        return;
+      }
+
+      const album = await getAlbumById(albumIdNum);
       if (!album || album.guildId !== guildId) {
         reply.code(404).send({ error: "Album not found" });
         return;
       }
 
-      if (!body.title || typeof body.title !== "string" || !body.title.trim()) {
-        reply.code(400).send({ error: "Track title is required" });
+      try {
+        const parsedUrl = new URL(body.sourceUrl.trim());
+        if (!["http:", "https:"].includes(parsedUrl.protocol)) {
+          reply.code(400).send({ error: "sourceUrl must be an HTTP or HTTPS URL" });
+          return;
+        }
+      } catch {
+        reply.code(400).send({ error: "Invalid sourceUrl" });
         return;
       }
 
-      if (!body.sourceUrl || typeof body.sourceUrl !== "string" || !body.sourceUrl.trim()) {
-        reply.code(400).send({ error: "Track source URL is required" });
-        return;
-      }
-
-      const trackCount = await getTrackCount(Number(albumId));
+      const trackCount = await getTrackCount(albumIdNum);
       if (trackCount >= MAX_TRACKS_PER_ALBUM) {
         reply.code(400).send({ error: `Track limit reached (max ${MAX_TRACKS_PER_ALBUM} per album)` });
         return;
       }
 
-      const session = (request as unknown as { session: { userId: string } }).session;
       const track = await addTrack(
-        Number(albumId),
+        albumIdNum,
         body.title.trim(),
         body.sourceUrl.trim(),
         body.duration ?? null,
-        session.userId,
+        request.session!.userId,
       );
       reply.code(201).send(track);
     },
@@ -216,19 +241,33 @@ export function registerMusicRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/music/library/:albumId/tracks/:trackId",
     { preHandler: [requireAuth, requireGuildAdmin] },
     async (request, reply) => {
-      const { albumId, guildId } = request.params as { guildId: string; albumId: string; trackId: string };
-      const album = await getAlbumById(Number(albumId));
+      const { guildId, albumId, trackId } = request.params as {
+        guildId: string;
+        albumId: string;
+        trackId: string;
+      };
+
+      const albumIdNum = parseIntParam(albumId);
+      const trackIdNum = parseIntParam(trackId);
+      if (albumIdNum === null || trackIdNum === null) {
+        reply.code(400).send({ error: "Invalid album or track ID" });
+        return;
+      }
+
+      const album = await getAlbumById(albumIdNum);
       if (!album || album.guildId !== guildId) {
         reply.code(404).send({ error: "Album not found" });
         return;
       }
-      const { trackId } = request.params as { trackId: string };
-      try {
-        await removeTrack(Number(trackId));
-        reply.send({ success: true });
-      } catch {
+
+      const track = await getTrackById(trackIdNum);
+      if (!track || track.albumId !== albumIdNum) {
         reply.code(404).send({ error: "Track not found" });
+        return;
       }
+
+      await removeTrack(trackIdNum);
+      reply.send({ success: true });
     },
   );
 }

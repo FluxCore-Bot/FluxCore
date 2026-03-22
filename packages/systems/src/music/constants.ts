@@ -4,6 +4,7 @@ export const DEFAULT_AUTO_DISCONNECT_SECS = 300;
 export const MAX_LIBRARY_ALBUMS_PER_GUILD = 50;
 export const MAX_TRACKS_PER_ALBUM = 100;
 
+export const DEFAULT_SEARCH_PREFIX = "ytsearch:";
 export const MU_PREFIX = "mu_";
 
 export const MusicButtonIds = {

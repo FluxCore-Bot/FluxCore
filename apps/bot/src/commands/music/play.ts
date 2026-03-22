@@ -7,6 +7,7 @@ import type { Command } from "@fluxcore/types";
 import { getMusicSettings } from "@fluxcore/systems/music/config";
 import { searchAlbums, getAlbumWithTracks, findTrackByUrl } from "@fluxcore/systems/music/library";
 import type { QueueTrack, MusicLibraryAlbum, MusicLibraryTrack } from "@fluxcore/systems/music/types";
+import { DEFAULT_SEARCH_PREFIX } from "@fluxcore/systems/music/constants";
 import { errorEmbed, successEmbed, logger } from "@fluxcore/utils";
 import { requireVoiceChannel, requireSameVoiceChannel } from "../../systems/music/guards.js";
 import { getQueue, createQueue } from "../../systems/music/queue.js";
@@ -39,8 +40,55 @@ const command: Command = {
     await interaction.deferReply();
 
     try {
-      // In library mode, validate the query is a library track URL
+      // In library mode, validate the query is a library track or album
       if (settings.mode === "library") {
+        // If query ends with ":", treat it as an album selection — queue all tracks
+        if (query.endsWith(":")) {
+          const albumName = query.slice(0, -1).trim();
+          const album = await getAlbumWithTracks(guildId, albumName);
+          if (!album || album.tracks.length === 0) {
+            await interaction.editReply({
+              embeds: [errorEmbed("Album Not Found", `No album named **${albumName}** found, or it has no tracks.`)],
+            });
+            return;
+          }
+
+          let queue = getQueue(guildId);
+          const isNew = !queue;
+          if (!queue) {
+            queue = await createQueue(guildId, interaction.channelId, voiceChannelId, interaction.client);
+            setupPlayerEvents(guildId, interaction.client);
+          }
+
+          const remaining = settings.maxQueueSize - queue.tracks.length;
+          const tracksToAdd = album.tracks.slice(0, remaining);
+
+          for (const t of tracksToAdd) {
+            const track: QueueTrack = {
+              title: t.title,
+              url: t.sourceUrl,
+              duration: t.duration ?? 0,
+              requester: interaction.user.id,
+              thumbnail: null,
+            };
+            queue.add(track);
+          }
+
+          if (isNew || !queue.current) {
+            await queue.playNext();
+          }
+
+          await interaction.editReply({
+            embeds: [
+              successEmbed(
+                "Album Queued",
+                `Added **${tracksToAdd.length}** track(s) from **${album.name}**`,
+              ),
+            ],
+          });
+          return;
+        }
+
         const libraryTrack = await findTrackByUrl(guildId, query);
         if (!libraryTrack) {
           await interaction.editReply({
@@ -66,7 +114,7 @@ const command: Command = {
       }
 
       const isUrl = /^https?:\/\//.test(query);
-      const searchQuery = isUrl ? query : `ytsearch:${query}`;
+      const searchQuery = isUrl ? query : `${DEFAULT_SEARCH_PREFIX}${query}`;
       const result = await node.rest.resolve(searchQuery);
 
       if (!result?.data || result.loadType === "empty" || result.loadType === "error") {
@@ -105,6 +153,7 @@ const command: Command = {
             duration: Math.floor(t.info.length / 1000),
             requester: interaction.user.id,
             thumbnail: t.info.artworkUrl ?? null,
+            encoded: t.encoded,
           };
           queue.add(track);
         }
@@ -145,6 +194,7 @@ const command: Command = {
         duration: Math.floor(lavalinkTrack.info.length / 1000),
         requester: interaction.user.id,
         thumbnail: lavalinkTrack.info.artworkUrl ?? null,
+        encoded: lavalinkTrack.encoded,
       };
 
       if (isNew || !queue.current) {

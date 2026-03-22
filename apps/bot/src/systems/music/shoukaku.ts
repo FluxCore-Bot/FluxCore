@@ -1,7 +1,7 @@
 import { Shoukaku, Connectors } from "shoukaku";
-import type { Client } from "discord.js";
+import type { Client, TextChannel } from "discord.js";
 import { config } from "@fluxcore/config";
-import { logger } from "@fluxcore/utils";
+import { errorEmbed, logger } from "@fluxcore/utils";
 
 let shoukaku: Shoukaku;
 
@@ -41,6 +41,18 @@ export function initShoukaku(client: Client): Shoukaku {
 
   shoukaku.on("disconnect", (name: string, count: number) => {
     logger.warn(`Lavalink node "${name}" disconnected, ${count} player(s) affected`);
+    // Notify active guild channels about the disconnection
+    import("./queue.js").then(({ getAllQueues }) => {
+      for (const [, queue] of getAllQueues()) {
+        if (!queue.client) continue;
+        const channel = queue.client.channels.cache.get(queue.textChannelId) as TextChannel | undefined;
+        channel
+          ?.send({
+            embeds: [errorEmbed("Connection Lost", "Lost connection to the audio server. Playback may be interrupted.")],
+          })
+          .catch(() => {});
+      }
+    }).catch(() => {});
   });
 
   shoukaku.on("reconnecting", (name: string, left: number, interval: number) => {
@@ -55,5 +67,6 @@ export function initShoukaku(client: Client): Shoukaku {
 }
 
 export function getShoukaku(): Shoukaku {
+  if (!shoukaku) throw new Error("Shoukaku is not initialized. Call initShoukaku() first.");
   return shoukaku;
 }

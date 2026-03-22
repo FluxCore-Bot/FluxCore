@@ -56,6 +56,11 @@ export async function addTrack(
   });
 }
 
+export async function getTrackById(trackId: number): Promise<MusicLibraryTrack | null> {
+  const prisma = getPrisma();
+  return prisma.musicLibraryTrack.findUnique({ where: { id: trackId } });
+}
+
 export async function removeTrack(trackId: number): Promise<void> {
   const prisma = getPrisma();
   await prisma.musicLibraryTrack.delete({ where: { id: trackId } });

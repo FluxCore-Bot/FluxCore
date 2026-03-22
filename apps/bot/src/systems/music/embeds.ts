@@ -2,6 +2,7 @@ import { EmbedBuilder } from "discord.js";
 import type { QueueTrack } from "@fluxcore/systems/music/types";
 import type { GuildMusicQueue } from "./queue.js";
 
+
 export function formatDuration(seconds: number): string {
   const h = Math.floor(seconds / 3600);
   const m = Math.floor((seconds % 3600) / 60);
@@ -14,27 +15,6 @@ export function progressBar(current: number, total: number, length = 15): string
   if (total <= 0) return "▬".repeat(length);
   const filled = Math.round((current / total) * length);
   return "▓".repeat(filled) + "▬".repeat(length - filled);
-}
-
-export function nowPlayingEmbed(track: QueueTrack, positionMs: number): EmbedBuilder {
-  const positionSec = Math.floor(positionMs / 1000);
-  const bar = progressBar(positionSec, track.duration);
-
-  const embed = new EmbedBuilder()
-    .setColor(0x5865f2)
-    .setTitle("Now Playing")
-    .setDescription(
-      `**[${track.title}](${track.url})**\n\n` +
-        `${bar}\n` +
-        `\`${formatDuration(positionSec)} / ${formatDuration(track.duration)}\``,
-    )
-    .setFooter({ text: `Requested by ${track.requester}` });
-
-  if (track.thumbnail) {
-    embed.setThumbnail(track.thumbnail);
-  }
-
-  return embed;
 }
 
 export function trackAddedEmbed(track: QueueTrack, position: number): EmbedBuilder {

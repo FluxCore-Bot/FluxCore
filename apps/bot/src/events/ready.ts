@@ -14,8 +14,6 @@ import { registerActionEventListeners } from "../systems/actions/eventBridge.js"
 import { startSyncServer } from "../systems/actions/syncServer.js";
 import { startReminderPolling } from "../systems/reminders.js";
 import { loadMusicSettings, get247Guilds } from "@fluxcore/systems/music/config";
-import { getShoukaku } from "../systems/music/shoukaku.js";
-import { registerMusicEvents } from "../systems/music/events.js";
 import { createQueue } from "../systems/music/queue.js";
 import { setupPlayerEvents } from "../systems/music/events.js";
 import { logger } from "@fluxcore/utils";
@@ -62,8 +60,6 @@ const event: Event<"ready"> = {
     // Music system initialization
     try {
       await loadMusicSettings();
-      const shoukaku = getShoukaku();
-      registerMusicEvents(shoukaku, client);
 
       // Rejoin 24/7 channels
       const guilds247 = get247Guilds();

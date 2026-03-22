@@ -46,6 +46,11 @@ export async function loadMusicSettings(): Promise<void> {
       settingsCache.set(row.guildId, rowToSettings(row));
     }
     logger.info(`Loaded music settings for ${settingsCache.size} guild(s)`);
+    if (settingsCache.size > 1000) {
+      logger.warn(
+        `Music settings cache contains ${settingsCache.size} guilds. Consider implementing lazy loading for better startup performance.`,
+      );
+    }
   } catch (error) {
     logger.error(
       "Failed to load music settings from database",

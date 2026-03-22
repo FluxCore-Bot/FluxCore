@@ -1,19 +1,18 @@
 import type { Client, TextChannel } from "discord.js";
-import type { Shoukaku, TrackEndEvent, TrackExceptionEvent, WebSocketClosedEvent } from "shoukaku";
+import type { PlayerUpdate, TrackEndEvent, TrackExceptionEvent, WebSocketClosedEvent } from "shoukaku";
 import { getQueue, destroyQueue } from "./queue.js";
-import { updateNowPlayingPanel, buildNowPlayingPanel, deleteNowPlayingPanel } from "./panel.js";
+import { updateNowPlayingPanel, buildNowPlayingPanel, deleteNowPlayingPanel, stopProgressRefresh } from "./panel.js";
 import { errorEmbed, logger } from "@fluxcore/utils";
-
-export function registerMusicEvents(_shoukaku: Shoukaku, _client: Client): void {
-  // Shoukaku-level events are handled in shoukaku.ts
-  // Player-level events are set up per-guild via setupPlayerEvents
-}
 
 export function setupPlayerEvents(guildId: string, client: Client): void {
   const queue = getQueue(guildId);
   if (!queue?.player) return;
 
   const player = queue.player;
+
+  player.on("update", (data: PlayerUpdate) => {
+    queue.syncPosition(data.state.position);
+  });
 
   player.on("start", () => {
     if (!queue.current) return;
@@ -30,6 +29,7 @@ export function setupPlayerEvents(guildId: string, client: Client): void {
     try {
       const next = await queue.playNext();
       if (!next) {
+        stopProgressRefresh(guildId);
         // Queue empty — update panel to idle state with disabled buttons
         if (queue.panelMessageId) {
           try {

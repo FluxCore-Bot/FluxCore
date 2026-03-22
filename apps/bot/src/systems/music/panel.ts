@@ -104,7 +104,7 @@ export function buildNowPlayingPanel(queue: GuildMusicQueue): {
   embeds: EmbedBuilder[];
   components: ActionRowBuilder<MessageActionRowComponentBuilder>[];
 } {
-  const positionMs = queue.player?.position ?? 0;
+  const positionMs = queue.getPositionMs();
   return {
     embeds: [buildPanelEmbed(queue, positionMs)],
     components: buildPanelButtons(queue),
@@ -149,4 +149,53 @@ export async function updateNowPlayingPanel(
   // Delete old panel and send fresh one to keep it at the bottom
   await deleteNowPlayingPanel(queue, client);
   await sendNowPlayingPanel(queue, channel);
+
+  // Start periodic progress refresh
+  startProgressRefresh(queue, client);
+}
+
+const PROGRESS_REFRESH_INTERVAL_MS = 5_000;
+const progressTimers: Map<string, ReturnType<typeof setInterval>> = new Map();
+
+export function startProgressRefresh(queue: GuildMusicQueue, client: Client): void {
+  stopProgressRefresh(queue.guildId);
+
+  const timer = setInterval(async () => {
+    if (!queue.current || !queue.player || queue.player.paused) return;
+    if (!queue.panelMessageId) {
+      stopProgressRefresh(queue.guildId);
+      return;
+    }
+
+    try {
+      const channel = client.channels.cache.get(queue.textChannelId) as TextChannel | undefined;
+      if (!channel) return;
+      const msg = await channel.messages.fetch(queue.panelMessageId).catch(() => null);
+      if (!msg) {
+        queue.panelMessageId = null;
+        stopProgressRefresh(queue.guildId);
+        return;
+      }
+      const panel = buildNowPlayingPanel(queue);
+      await msg.edit({ ...panel });
+    } catch {
+      // ignore edit failures
+    }
+  }, PROGRESS_REFRESH_INTERVAL_MS);
+
+  progressTimers.set(queue.guildId, timer);
+}
+
+export function stopProgressRefresh(guildId: string): void {
+  const timer = progressTimers.get(guildId);
+  if (timer) {
+    clearInterval(timer);
+    progressTimers.delete(guildId);
+  }
+}
+
+export function stopAllProgressRefresh(): void {
+  for (const [guildId] of progressTimers) {
+    stopProgressRefresh(guildId);
+  }
 }
