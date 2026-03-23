@@ -7,6 +7,11 @@ import {
   getRulesByGuild,
   countRules,
   getRecentLogs,
+  getAnalytics,
+  getLastFiredByGuild,
+  bulkUpdateRules,
+  bulkDeleteRules,
+  getRuleAnalytics,
   notifyCacheInvalidation,
 } from "@fluxcore/systems/actions/persistence";
 import {
@@ -50,8 +55,15 @@ export function registerActionRoutes(app: FastifyInstance): void {
     { preHandler: [requireAuth, requireGuildAdmin] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
-      const rules = await getRulesByGuild(guildId);
-      reply.send(rules);
+      const [rules, lastFiredMap] = await Promise.all([
+        getRulesByGuild(guildId),
+        getLastFiredByGuild(guildId),
+      ]);
+      const enriched = rules.map((rule) => ({
+        ...rule,
+        lastFired: lastFiredMap.get(rule.id)?.toISOString() ?? null,
+      }));
+      reply.send(enriched);
     },
   );
 
@@ -64,6 +76,8 @@ export function registerActionRoutes(app: FastifyInstance): void {
         name?: string;
         eventType?: string;
         actions?: Array<{ type: string; [key: string]: unknown }>;
+        steps?: Array<{ id: string; type: string; [key: string]: unknown }>;
+        entryStepId?: string;
         conditions?: Record<string, string[]>;
         priority?: number;
         enabled?: boolean;
@@ -115,6 +129,19 @@ export function registerActionRoutes(app: FastifyInstance): void {
         }
       }
 
+      // Validate steps if present
+      if (body.steps?.length) {
+        if (body.steps.length > 10) {
+          reply.code(400).send({ error: "Max 10 steps per rule" });
+          return;
+        }
+        const conditionCount = body.steps.filter((s) => s.type === "condition").length;
+        if (conditionCount > 3) {
+          reply.code(400).send({ error: "Max 3 condition steps per rule" });
+          return;
+        }
+      }
+
       const settings = getGuildSettingsOrDefault(guildId);
       const count = await countRules(guildId);
       if (count >= settings.maxRules) {
@@ -130,6 +157,9 @@ export function registerActionRoutes(app: FastifyInstance): void {
           ...a,
           type: a.type as ActionType,
         })),
+        ...(body.steps && body.entryStepId
+          ? { steps: body.steps as any, entryStepId: body.entryStepId }
+          : {}),
         conditions: body.conditions ?? {},
         priority: body.priority ?? 0,
         enabled: body.enabled ?? true,
@@ -153,6 +183,8 @@ export function registerActionRoutes(app: FastifyInstance): void {
         name?: string;
         eventType?: string;
         actions?: Array<{ type: string; [key: string]: unknown }>;
+        steps?: Array<{ id: string; type: string; [key: string]: unknown }>;
+        entryStepId?: string;
         conditions?: Record<string, string[]>;
         priority?: number;
         enabled?: boolean;
@@ -197,6 +229,18 @@ export function registerActionRoutes(app: FastifyInstance): void {
         }
       }
 
+      if (body.steps?.length) {
+        if (body.steps.length > 10) {
+          reply.code(400).send({ error: "Max 10 steps per rule" });
+          return;
+        }
+        const conditionCount = body.steps.filter((s) => s.type === "condition").length;
+        if (conditionCount > 3) {
+          reply.code(400).send({ error: "Max 3 condition steps per rule" });
+          return;
+        }
+      }
+
       try {
         const updated = await updateRule(Number(ruleId), guildId, {
           ...(body.name !== undefined && { name: body.name }),
@@ -209,6 +253,9 @@ export function registerActionRoutes(app: FastifyInstance): void {
               type: a.type as ActionType,
             })),
           }),
+          ...(body.steps && body.entryStepId
+            ? { steps: body.steps as any, entryStepId: body.entryStepId }
+            : {}),
           ...(body.conditions !== undefined && { conditions: body.conditions }),
           ...(body.priority !== undefined && { priority: body.priority }),
           ...(body.enabled !== undefined && { enabled: body.enabled }),
@@ -234,6 +281,61 @@ export function registerActionRoutes(app: FastifyInstance): void {
         await notifyCacheInvalidation(guildId);
       }
       reply.send({ success: deleted });
+    },
+  );
+
+  // --- Bulk Operations ---
+  app.patch(
+    "/api/guilds/:guildId/actions/rules/bulk",
+    { preHandler: [requireAuth, requireGuildAdmin] },
+    async (request, reply) => {
+      const { guildId } = request.params as { guildId: string };
+      const body = request.body as {
+        ruleIds?: number[];
+        action?: "enable" | "disable" | "delete";
+      };
+
+      if (
+        !Array.isArray(body.ruleIds) ||
+        body.ruleIds.length === 0 ||
+        !body.action
+      ) {
+        reply.code(400).send({ error: "ruleIds and action are required" });
+        return;
+      }
+
+      if (!["enable", "disable", "delete"].includes(body.action)) {
+        reply.code(400).send({ error: "Invalid action" });
+        return;
+      }
+
+      let count: number;
+      if (body.action === "delete") {
+        count = await bulkDeleteRules(guildId, body.ruleIds);
+      } else {
+        count = await bulkUpdateRules(guildId, body.ruleIds, {
+          enabled: body.action === "enable",
+        });
+      }
+
+      await notifyCacheInvalidation(guildId);
+      reply.send({ success: true, count });
+    },
+  );
+
+  // --- Per-Rule Analytics ---
+  app.get(
+    "/api/guilds/:guildId/actions/rules/:ruleId/analytics",
+    { preHandler: [requireAuth, requireGuildAdmin] },
+    async (request, reply) => {
+      const { guildId, ruleId } = request.params as {
+        guildId: string;
+        ruleId: string;
+      };
+      const query = request.query as { days?: string };
+      const days = Math.min(Math.max(Number(query.days) || 7, 1), 30);
+      const analytics = await getRuleAnalytics(guildId, Number(ruleId), days);
+      reply.send(analytics);
     },
   );
 
@@ -284,6 +386,19 @@ export function registerActionRoutes(app: FastifyInstance): void {
 
       await notifyCacheInvalidation(guildId, "reloadSettings");
       reply.send({ success: true });
+    },
+  );
+
+  // --- Analytics ---
+  app.get(
+    "/api/guilds/:guildId/actions/analytics",
+    { preHandler: [requireAuth, requireGuildAdmin] },
+    async (request, reply) => {
+      const { guildId } = request.params as { guildId: string };
+      const query = request.query as { days?: string };
+      const days = Math.min(Math.max(Number(query.days) || 7, 1), 30);
+      const analytics = await getAnalytics(guildId, days);
+      reply.send(analytics);
     },
   );
 

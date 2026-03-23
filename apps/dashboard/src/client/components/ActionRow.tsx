@@ -1,4 +1,5 @@
 import { ActionFields } from "./ActionFields";
+import { Icon } from "./Icon";
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Card } from "./ui/card";
@@ -25,7 +26,10 @@ interface ActionRowProps {
   roles: Role[];
   onChange: (index: number, action: ActionConfig) => void;
   onRemove: (index: number) => void;
+  onMove: (index: number, direction: "up" | "down") => void;
   canRemove: boolean;
+  isFirst: boolean;
+  isLast: boolean;
 }
 
 function setNestedValue(
@@ -73,7 +77,10 @@ export function ActionRow({
   roles,
   onChange,
   onRemove,
+  onMove,
   canRemove,
+  isFirst,
+  isLast,
 }: ActionRowProps) {
   const fields: ActionFieldDescriptor[] =
     constants.actionTypeFields[action.type] ?? [];
@@ -94,9 +101,33 @@ export function ActionRow({
   return (
     <Card className="bg-surface-high p-4">
       <div className="mb-3 flex items-center justify-between">
-        <span className="text-xs font-medium text-text-muted">
-          Action {index + 1}
-        </span>
+        <div className="flex items-center gap-1.5">
+          <span className="text-xs font-medium text-text-muted">
+            Action {index + 1}
+          </span>
+          <div className="flex items-center gap-0.5">
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              className="h-6 w-6"
+              disabled={isFirst}
+              onClick={() => onMove(index, "up")}
+            >
+              <Icon name="arrow_upward" size={14} className="text-text-muted" />
+            </Button>
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              className="h-6 w-6"
+              disabled={isLast}
+              onClick={() => onMove(index, "down")}
+            >
+              <Icon name="arrow_downward" size={14} className="text-text-muted" />
+            </Button>
+          </div>
+        </div>
         {canRemove && (
           <Button
             type="button"

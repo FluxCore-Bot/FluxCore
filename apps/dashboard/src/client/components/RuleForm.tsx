@@ -6,8 +6,10 @@ import { useRoles } from "../lib/hooks/useRoles";
 import { useCreateRule, useUpdateRule } from "../lib/hooks/useRules";
 import { toast } from "sonner";
 import { ActionRow } from "./ActionRow";
+import { ConditionsEditor } from "./ConditionsEditor";
+import { Icon } from "./Icon";
 import { VariableHelper } from "./VariableHelper";
-import { RuleFormSchema, type ActionConfig, type ActionRule } from "../lib/schemas";
+import { RuleFormSchema, type ActionConditions, type ActionConfig, type ActionRule, type RuleStep } from "../lib/schemas";
 import { ApiError } from "../lib/client";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -24,14 +26,27 @@ import {
 } from "./ui/select";
 import { PageSkeleton } from "./PageSkeleton";
 
+export interface RuleDraft {
+  name: string;
+  eventType: string;
+  actions: ActionConfig[];
+  steps?: RuleStep[];
+  entryStepId?: string;
+  conditions: ActionConditions;
+  priority: number;
+  enabled: boolean;
+}
+
 interface RuleFormProps {
   rule?: ActionRule;
+  draft?: RuleDraft;
   onClose: () => void;
+  onSwitchView?: (draft: RuleDraft) => void;
 }
 
 const emptyAction: ActionConfig = { type: "" };
 
-export function RuleForm({ rule, onClose }: RuleFormProps) {
+export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) {
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: constants } = useConstants();
   const { data: channels = [] } = useChannels(guildId);
@@ -39,13 +54,16 @@ export function RuleForm({ rule, onClose }: RuleFormProps) {
   const createRule = useCreateRule(guildId);
   const updateRule = useUpdateRule(guildId);
 
-  const [name, setName] = useState(rule?.name ?? "");
-  const [eventType, setEventType] = useState(rule?.eventType ?? "");
+  const [name, setName] = useState(draft?.name ?? rule?.name ?? "");
+  const [eventType, setEventType] = useState(draft?.eventType ?? rule?.eventType ?? "");
   const [actions, setActions] = useState<ActionConfig[]>(
-    rule?.actions.length ? rule.actions : [{ ...emptyAction }],
+    draft?.actions ?? (rule?.actions.length ? rule.actions : [{ ...emptyAction }]),
   );
-  const [priority, setPriority] = useState(rule?.priority ?? 0);
-  const [enabled, setEnabled] = useState(rule?.enabled ?? true);
+  const [conditions, setConditions] = useState<ActionConditions>(
+    draft?.conditions ?? rule?.conditions ?? {},
+  );
+  const [priority, setPriority] = useState(draft?.priority ?? rule?.priority ?? 0);
+  const [enabled, setEnabled] = useState(draft?.enabled ?? rule?.enabled ?? true);
   const [error, setError] = useState("");
 
   if (!constants) return <PageSkeleton />;
@@ -56,6 +74,16 @@ export function RuleForm({ rule, onClose }: RuleFormProps) {
 
   const handleActionRemove = (index: number) => {
     setActions((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const handleActionMove = (index: number, direction: "up" | "down") => {
+    setActions((prev) => {
+      const next = [...prev];
+      const target = direction === "up" ? index - 1 : index + 1;
+      if (target < 0 || target >= next.length) return prev;
+      [next[index], next[target]] = [next[target], next[index]];
+      return next;
+    });
   };
 
   const addAction = () => {
@@ -72,7 +100,7 @@ export function RuleForm({ rule, onClose }: RuleFormProps) {
       name: name.trim(),
       eventType,
       actions,
-      conditions: {},
+      conditions,
       priority,
       enabled,
     };
@@ -103,9 +131,24 @@ export function RuleForm({ rule, onClose }: RuleFormProps) {
 
   return (
     <Card className="p-6">
-      <h3 className="mb-4 text-lg font-semibold">
-        {rule ? "Edit Rule" : "Create Rule"}
-      </h3>
+      <div className="mb-4 flex items-center justify-between">
+        <h3 className="text-lg font-semibold">
+          {rule ? "Edit Rule" : "Create Rule"}
+        </h3>
+        {onSwitchView && (
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={() =>
+              onSwitchView({ name, eventType, actions, conditions, priority, enabled })
+            }
+          >
+            <Icon name="account_tree" size={16} />
+            Workflow View
+          </Button>
+        )}
+      </div>
 
       {error && (
         <Alert variant="destructive" className="mb-4">{error}</Alert>
@@ -181,10 +224,22 @@ export function RuleForm({ rule, onClose }: RuleFormProps) {
                 roles={roles}
                 onChange={handleActionChange}
                 onRemove={handleActionRemove}
+                onMove={handleActionMove}
                 canRemove={actions.length > 1}
+                isFirst={i === 0}
+                isLast={i === actions.length - 1}
               />
             ))}
           </div>
+        </div>
+
+        <div className="mb-4">
+          <ConditionsEditor
+            conditions={conditions}
+            onChange={setConditions}
+            channels={channels}
+            roles={roles}
+          />
         </div>
 
         <div className="mb-6 flex items-center gap-3">

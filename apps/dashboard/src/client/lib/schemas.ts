@@ -103,6 +103,50 @@ export const ActionConfigSchema = z.object({
 });
 export type ActionConfig = z.infer<typeof ActionConfigSchema>;
 
+// --- Step-based execution model (v2) ---
+export const StepConditionConfigSchema = z.object({
+  field: z.enum([
+    "channelId", "channelName", "userId", "userName",
+    "roleId", "roleName", "messageContent", "memberCount",
+  ]),
+  operator: z.enum([
+    "equals", "notEquals", "contains", "notContains",
+    "startsWith", "endsWith", "greaterThan", "lessThan",
+    "hasRole", "notHasRole", "inList", "notInList",
+  ]),
+  value: z.string(),
+});
+export type StepConditionConfig = z.infer<typeof StepConditionConfigSchema>;
+
+export const ActionStepSchema = z.object({
+  id: z.string(),
+  type: z.literal("action"),
+  action: ActionConfigSchema,
+  next: z.string().nullable(),
+});
+
+export const ConditionStepSchema = z.object({
+  id: z.string(),
+  type: z.literal("condition"),
+  condition: StepConditionConfigSchema,
+  thenNext: z.string().nullable(),
+  elseNext: z.string().nullable(),
+});
+
+export const DelayStepSchema = z.object({
+  id: z.string(),
+  type: z.literal("delay"),
+  delayMs: z.number().min(1000).max(300000),
+  next: z.string().nullable(),
+});
+
+export const RuleStepSchema = z.discriminatedUnion("type", [
+  ActionStepSchema,
+  ConditionStepSchema,
+  DelayStepSchema,
+]);
+export type RuleStep = z.infer<typeof RuleStepSchema>;
+
 // --- Action Conditions ---
 export const ActionConditionsSchema = z.object({
   channelIds: z.array(z.string()).optional(),
@@ -122,9 +166,12 @@ export const ActionRuleSchema = z.object({
   enabled: z.boolean(),
   eventType: z.string(),
   actions: z.array(ActionConfigSchema),
+  steps: z.array(RuleStepSchema).optional(),
+  entryStepId: z.string().optional(),
   conditions: ActionConditionsSchema,
   priority: z.number(),
   createdBy: z.string(),
+  lastFired: z.string().nullable().optional(),
 });
 export type ActionRule = z.infer<typeof ActionRuleSchema>;
 
@@ -138,6 +185,8 @@ export const RuleFormSchema = z.object({
     .array(ActionConfigSchema)
     .min(1, "At least one action required")
     .max(5, "Max 5 actions"),
+  steps: z.array(RuleStepSchema).optional(),
+  entryStepId: z.string().optional(),
   conditions: ActionConditionsSchema,
   priority: z.number().min(0).max(100),
   enabled: z.boolean(),
@@ -174,6 +223,61 @@ export const ActionLogSchema = z.object({
 export type ActionLog = z.infer<typeof ActionLogSchema>;
 
 export const ActionLogListSchema = z.array(ActionLogSchema);
+
+// --- Analytics ---
+export const AnalyticsSummarySchema = z.object({
+  totalRules: z.number(),
+  activeRules: z.number(),
+  totalExecutions: z.number(),
+  successRate: z.number(),
+  recentErrors: z.number(),
+});
+
+export const ExecutionTrendItemSchema = z.object({
+  date: z.string(),
+  total: z.number(),
+  success: z.number(),
+  error: z.number(),
+});
+
+export const EventDistributionItemSchema = z.object({
+  eventType: z.string(),
+  count: z.number(),
+});
+
+export const AnalyticsActivityItemSchema = z.object({
+  id: z.number(),
+  ruleName: z.string(),
+  eventType: z.string(),
+  actionType: z.string(),
+  success: z.boolean(),
+  error: z.string().nullable(),
+  executedAt: z.string(),
+});
+
+export const AnalyticsResponseSchema = z.object({
+  summary: AnalyticsSummarySchema,
+  executionTrend: z.array(ExecutionTrendItemSchema),
+  eventDistribution: z.array(EventDistributionItemSchema),
+  recentActivity: z.array(AnalyticsActivityItemSchema),
+});
+export type AnalyticsResponse = z.infer<typeof AnalyticsResponseSchema>;
+
+// --- Per-Rule Analytics ---
+export const RuleAnalyticsLogSchema = z.object({
+  id: z.number(),
+  actionType: z.string(),
+  success: z.boolean(),
+  error: z.string().nullable(),
+  executedAt: z.string(),
+});
+
+export const RuleAnalyticsSchema = z.object({
+  totalExecutions: z.number(),
+  successRate: z.number(),
+  recentLogs: z.array(RuleAnalyticsLogSchema),
+});
+export type RuleAnalytics = z.infer<typeof RuleAnalyticsSchema>;
 
 // --- TempVoice ---
 export const TempVoiceConfigSchema = z.object({
