@@ -66,6 +66,14 @@ async function main(): Promise<void> {
     });
   }
 
+  // Public endpoint — no auth required
+  app.get("/api/bot-info", async (_request, reply) => {
+    reply.send({
+      clientId: config.clientId,
+      inviteUrl: `https://discord.com/oauth2/authorize?client_id=${config.clientId}&permissions=8&scope=bot%20applications.commands`,
+    });
+  });
+
   registerAuthRoutes(app);
   registerGuildRoutes(app);
   registerTempVoiceRoutes(app);

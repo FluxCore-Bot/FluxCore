@@ -10,7 +10,7 @@ function guildIconUrl(guild: Guild): string | null {
 export function GuildCard({ guild }: { guild: Guild }) {
   return (
     <Link
-      to="/guild/$guildId/rules"
+      to="/guild/$guildId/overview"
       params={{ guildId: guild.id }}
       className="hover:no-underline"
     >
