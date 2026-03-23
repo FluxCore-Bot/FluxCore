@@ -16,6 +16,7 @@ import { TempVoicePage } from "./routes/guild/$guildId/tempvoice";
 import { SettingsPage } from "./routes/guild/$guildId/settings";
 import { LogsPage } from "./routes/guild/$guildId/logs";
 import { MusicPage } from "./routes/guild/$guildId/music";
+import { OverviewPage } from "./routes/guild/$guildId/overview";
 import "./styles.css";
 
 const queryClient = new QueryClient({
@@ -45,8 +46,14 @@ const guildIndexRoute = createRoute({
   getParentRoute: () => guildRoute,
   path: "/",
   beforeLoad: ({ params }) => {
-    throw redirect({ to: "/guild/$guildId/rules", params });
+    throw redirect({ to: "/guild/$guildId/overview", params });
   },
+});
+
+const overviewRoute = createRoute({
+  getParentRoute: () => guildRoute,
+  path: "/overview",
+  component: OverviewPage,
 });
 
 const rulesRoute = createRoute({
@@ -83,6 +90,7 @@ const routeTree = rootRoute.addChildren([
   indexRoute,
   guildRoute.addChildren([
     guildIndexRoute,
+    overviewRoute,
     rulesRoute,
     tempvoiceRoute,
     musicRoute,

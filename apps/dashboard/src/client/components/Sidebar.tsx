@@ -2,6 +2,7 @@ import { Link, useMatchRoute } from "@tanstack/react-router";
 import { Icon } from "./Icon";
 import { ScrollArea } from "./ui/scroll-area";
 import { Separator } from "./ui/separator";
+import { useBotInfo } from "../lib/hooks/useBotInfo";
 
 interface NavItem {
   path: string;
@@ -10,6 +11,7 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
+  { path: "/guild/$guildId/overview", label: "Overview", icon: "dashboard" },
   { path: "/guild/$guildId/rules", label: "Automation", icon: "bolt" },
   { path: "/guild/$guildId/music", label: "Music", icon: "library_music" },
   { path: "/guild/$guildId/tempvoice", label: "TempVoice", icon: "settings_voice" },
@@ -23,6 +25,7 @@ interface SidebarProps {
 
 export function Sidebar({ guildId }: SidebarProps) {
   const matchRoute = useMatchRoute();
+  const { data: botInfo } = useBotInfo();
 
   return (
     <aside className="fixed left-0 top-14 flex h-[calc(100vh-56px)] w-60 flex-col border-r border-border p-4 text-sm tracking-tight">
@@ -69,6 +72,19 @@ export function Sidebar({ guildId }: SidebarProps) {
       {/* Footer */}
       <div className="mt-auto space-y-4 pt-4">
         <Separator />
+
+        {botInfo?.inviteUrl && (
+          <a
+            href={botInfo.inviteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 rounded-md bg-accent/10 px-3 py-2 text-xs font-medium text-accent transition-colors hover:bg-accent/15"
+          >
+            <Icon name="add_circle" size={16} />
+            Add to Server
+          </a>
+        )}
+
         <div className="space-y-1">
           <a
             href="#"
