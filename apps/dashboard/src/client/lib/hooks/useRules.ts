@@ -3,8 +3,10 @@ import { apiFetch } from "../client";
 import {
   ActionRuleListSchema,
   ActionRuleSchema,
+  RuleAnalyticsSchema,
   type ActionRule,
   type RuleFormData,
+  type RuleAnalytics,
 } from "../schemas";
 
 export function useRules(guildId: string) {
@@ -74,5 +76,45 @@ export function useDeleteRule(guildId: string) {
         queryKey: ["guilds", guildId, "actions", "rules"],
       });
     },
+  });
+}
+
+export function useBulkRuleAction(guildId: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async ({
+      ruleIds,
+      action,
+    }: {
+      ruleIds: number[];
+      action: "enable" | "disable" | "delete";
+    }) => {
+      await apiFetch(`/api/guilds/${guildId}/actions/rules/bulk`, {
+        method: "PATCH",
+        body: JSON.stringify({ ruleIds, action }),
+      });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["guilds", guildId, "actions", "rules"],
+      });
+    },
+  });
+}
+
+export function useRuleAnalytics(
+  guildId: string,
+  ruleId: number | null,
+  days: number = 7,
+) {
+  return useQuery<RuleAnalytics>({
+    queryKey: ["guilds", guildId, "actions", "rules", ruleId, "analytics", { days }],
+    queryFn: async () => {
+      const data = await apiFetch<unknown>(
+        `/api/guilds/${guildId}/actions/rules/${ruleId}/analytics?days=${days}`,
+      );
+      return RuleAnalyticsSchema.parse(data);
+    },
+    enabled: ruleId !== null,
   });
 }
