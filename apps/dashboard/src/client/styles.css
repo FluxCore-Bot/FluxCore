@@ -26,10 +26,18 @@
   --color-accent-hover: #0f00a4;
   --color-accent-dim: #6063ee;
   --color-secondary: #ac8aff;
+  --color-secondary-container: #5516be;
+  --color-secondary-fixed: #dac9ff;
+  --color-secondary-dim: #8455ef;
+  --color-tertiary: #ffa5d9;
+  --color-tertiary-container: #ff8ed2;
+  --color-primary-container: #9396ff;
 
   /* ── Semantic ── */
   --color-danger: #ff6e84;
   --color-danger-hover: #d73357;
+  --color-danger-container: #a70138;
+  --color-danger-container-text: #ffb2b9;
   --color-success: #57f287;
   --color-warning: #fee75c;
   --color-info: #60a5fa;
@@ -40,19 +48,28 @@
   --font-label: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", "Geist Mono", monospace;
 
-  /* ── Border Radius (aligned to design brief) ── */
-  --radius-sm: 0.25rem;
-  --radius-DEFAULT: 0.5rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-full: 9999px;
+  /* ── Border Radius (aligned to Stitch component library) ── */
+  --radius-sm: 0.0625rem;
+  --radius-DEFAULT: 0.125rem;
+  --radius-md: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
+}
+
+/* Reusable section label — replaces all text-[10px] uppercase patterns (12px WCAG minimum) */
+.section-label {
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 /* Form element base styling */
@@ -72,7 +89,8 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  box-shadow: 0 0 0 1px var(--color-ring);
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 0 12px rgba(163, 166, 255, 0.25);
 }
 
 textarea {
@@ -91,9 +109,32 @@ input[type="color"] {
   outline: 1px solid rgba(72, 71, 74, 0.15);
 }
 
+/* Glass panel effect (Stitch: frosted glass containers) */
+.glass-panel {
+  background: rgba(31, 31, 34, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  outline: 1px solid rgba(72, 71, 74, 0.15);
+}
+
+/* Scrollbar (Stitch: 4px, #262528 thumb) */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #262528;
+  border-radius: 0.25rem;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2c2c2f;
+}
+
 /* Material Symbols */
 .material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
   font-size: 20px;
   vertical-align: middle;
 }

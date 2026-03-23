@@ -44,7 +44,7 @@ export function FeaturesSection() {
     <section id="features" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="mb-16 text-center">
-          <p className="mb-3 font-label text-[10px] font-bold uppercase tracking-[0.2em] text-accent">
+          <p className="mb-3 section-label text-accent">
             Capabilities
           </p>
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-text md:text-4xl">

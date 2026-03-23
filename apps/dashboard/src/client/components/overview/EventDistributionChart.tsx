@@ -48,7 +48,7 @@ export function EventDistributionChart({ data, constants }: EventDistributionCha
 
   return (
     <div className="rounded-lg bg-surface-low p-6 glass-edge">
-      <h3 className="mb-4 font-label text-[10px] font-bold uppercase tracking-widest text-text-muted">
+      <h3 className="mb-5 section-label text-text-muted">
         Top Events
       </h3>
       <div className="h-64">

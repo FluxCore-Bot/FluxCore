@@ -103,11 +103,11 @@ Elevation = surface shift, not shadow.
 ## Border Radius
 | Token | Value |
 |-------|-------|
-| `sm` | 0.25rem (4px) |
-| `DEFAULT` / `md` | 0.5rem (8px) |
-| `lg` | 0.75rem (12px) |
-| `xl` | 1rem (16px) |
-| `full` | 9999px |
+| `sm` | 0.0625rem (1px) |
+| `DEFAULT` / `md` | 0.125rem (2px) |
+| `lg` | 0.25rem (4px) |
+| `xl` | 0.5rem (8px) |
+| `full` | 0.75rem (12px) |
 
 ---
 

@@ -50,7 +50,7 @@ function DelayNodeComponent({ data, selected }: NodeProps) {
           <div className="flex h-6 w-6 items-center justify-center rounded bg-text-muted/15">
             <Icon name="schedule" size={14} className="text-text-muted" />
           </div>
-          <span className="font-label text-[10px] font-bold uppercase tracking-widest text-text-muted">
+          <span className="section-label text-text-muted">
             Delay
           </span>
         </div>

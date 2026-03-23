@@ -18,7 +18,7 @@ export function HeroSection() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
           </span>
-          <span className="font-label text-[10px] font-bold uppercase tracking-[0.15em] text-accent">
+          <span className="section-label text-accent">
             Now in Public Beta
           </span>
         </div>
@@ -77,7 +77,7 @@ export function HeroSection() {
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="font-mono text-2xl font-bold text-text/70">{stat.value}</p>
-              <p className="font-label text-[10px] font-bold uppercase tracking-widest">
+              <p className="section-label">
                 {stat.label}
               </p>
             </div>

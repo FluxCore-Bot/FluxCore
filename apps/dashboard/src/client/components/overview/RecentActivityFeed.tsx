@@ -32,8 +32,8 @@ function timeAgo(dateStr: string): string {
 export function RecentActivityFeed({ data, guildId, constants }: RecentActivityFeedProps) {
   return (
     <div className="rounded-lg bg-surface-low p-6 glass-edge">
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="font-label text-[10px] font-bold uppercase tracking-widest text-text-muted">
+      <div className="mb-5 flex items-center justify-between">
+        <h3 className="section-label text-text-muted">
           Recent Activity
         </h3>
         <Link

@@ -41,7 +41,7 @@ function ActionNodeComponent({ data, selected }: NodeProps) {
           <div className="flex h-6 w-6 items-center justify-center rounded bg-secondary/15">
             <Icon name={icon} size={14} className="text-secondary" />
           </div>
-          <span className="font-label text-[10px] font-bold uppercase tracking-widest text-text-muted">
+          <span className="section-label text-text-muted">
             Action {index + 1}
           </span>
           {validationState === "error" && (

@@ -1,13 +1,15 @@
-import { Outlet, Link } from "@tanstack/react-router";
+import { Outlet, Link, useParams } from "@tanstack/react-router";
 import { useAuth } from "../lib/hooks/useAuth";
 import { Toaster } from "../components/ui/sonner";
 import { Icon } from "../components/Icon";
 import { Button } from "../components/ui/button";
 import { Separator } from "../components/ui/separator";
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "../components/ui/tooltip";
+import { RefreshDataWidget } from "../components/RefreshDataWidget";
 
 export function RootLayout() {
   const { data: user } = useAuth();
+  const params = useParams({ strict: false }) as { guildId?: string };
 
   return (
     <TooltipProvider>
@@ -37,6 +39,7 @@ export function RootLayout() {
                 </TooltipTrigger>
                 <TooltipContent>Settings</TooltipContent>
               </Tooltip>
+              {params.guildId && <RefreshDataWidget guildId={params.guildId} />}
               <Separator orientation="vertical" className="mx-2 h-8" />
               <span className="text-text/60">{user.username}</span>
               <a

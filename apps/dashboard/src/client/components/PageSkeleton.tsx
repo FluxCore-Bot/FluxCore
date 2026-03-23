@@ -17,7 +17,7 @@ export function PageSkeleton() {
 
 export function TableSkeleton({ rows = 5 }: { rows?: number }) {
   return (
-    <div className="rounded-xl bg-surface-low p-1 shadow-2xl glass-edge">
+    <div className="rounded-lg bg-surface-low p-1 shadow-2xl glass-edge">
       <div className="p-4">
         <Skeleton className="h-8 w-full" />
       </div>

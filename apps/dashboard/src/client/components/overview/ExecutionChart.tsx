@@ -33,7 +33,7 @@ function CustomTooltip({ active, payload, label }: { active?: boolean; payload?:
 export function ExecutionChart({ data }: ExecutionChartProps) {
   return (
     <div className="rounded-lg bg-surface-low p-6 glass-edge">
-      <h3 className="mb-4 font-label text-[10px] font-bold uppercase tracking-widest text-text-muted">
+      <h3 className="mb-5 section-label text-text-muted">
         Execution Trend
       </h3>
       <div className="h-64">

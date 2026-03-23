@@ -200,7 +200,7 @@ export function ConditionsEditor({
         <Icon name="filter_alt" size={14} />
         Add conditions to filter when this rule fires
         {hasAnyConditions && (
-          <Badge variant="secondary" className="ml-auto text-[10px]">
+          <Badge variant="secondary" className="ml-auto text-xs">
             {(conditions.channelIds?.length ?? 0) +
               (conditions.roleIds?.length ?? 0) +
               (conditions.userIds?.length ?? 0) +
@@ -241,7 +241,7 @@ export function ConditionsEditor({
 
       {/* Include filters */}
       <div className="space-y-3">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-secondary">
+        <span className="section-label text-secondary">
           Include (whitelist)
         </span>
         <IdSelector
@@ -270,7 +270,7 @@ export function ConditionsEditor({
 
       {/* Exclude filters */}
       <div className="space-y-3 border-t border-border pt-3">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-danger">
+        <span className="section-label text-danger">
           Exclude (blacklist)
         </span>
         <IdSelector

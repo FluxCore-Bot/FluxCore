@@ -36,9 +36,12 @@ export function Sidebar({ guildId }: SidebarProps) {
         </div>
         <div>
           <h1 className="font-label font-bold leading-none text-accent">FluxCore Engine</h1>
-          <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-text-muted">
-            Active Instance
-          </p>
+          <div className="mt-1 flex items-center gap-2">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-success" />
+            <span className="section-label text-text-muted">Online</span>
+            <span className="section-label text-text-muted/50">|</span>
+            <span className="font-mono text-[0.625rem] text-text-muted">{botInfo?.latency ?? "—"}ms</span>
+          </div>
         </div>
       </div>
 

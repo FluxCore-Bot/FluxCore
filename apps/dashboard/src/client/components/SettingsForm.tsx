@@ -29,6 +29,9 @@ export function SettingsForm() {
   const [globalEnabled, setGlobalEnabled] = useState(true);
   const [logChannelId, setLogChannelId] = useState<string | null>(null);
   const [error, setError] = useState("");
+  const [notifyRuleTriggered, setNotifyRuleTriggered] = useState(true);
+  const [notifyErrors, setNotifyErrors] = useState(true);
+  const [notifySuccess, setNotifySuccess] = useState(false);
 
   useEffect(() => {
     if (settings) {
@@ -60,15 +63,16 @@ export function SettingsForm() {
   };
 
   return (
+    <>
     <Card className="p-6">
-      <h3 className="mb-4 text-lg font-semibold">Action System Settings</h3>
+      <h3 className="mb-6 text-lg font-semibold">Action System Settings</h3>
 
       {error && (
         <Alert variant="destructive" className="mb-4">{error}</Alert>
       )}
 
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
+      <form onSubmit={handleSubmit} className="space-y-5">
+        <div>
           <Label htmlFor="maxRules">Max Rules Per Guild</Label>
           <Input
             id="maxRules"
@@ -80,7 +84,7 @@ export function SettingsForm() {
           />
         </div>
 
-        <div className="mb-4">
+        <div>
           <Label>Log Channel (optional)</Label>
           <Select
             value={logChannelId ?? "none"}
@@ -100,7 +104,7 @@ export function SettingsForm() {
           </Select>
         </div>
 
-        <div className="mb-6 flex items-center gap-3">
+        <div className="flex items-center gap-3">
           <Switch
             checked={globalEnabled}
             onCheckedChange={setGlobalEnabled}
@@ -115,5 +119,52 @@ export function SettingsForm() {
         </Button>
       </form>
     </Card>
+
+    {/* Notification Preferences */}
+    <Card className="mt-6 p-6 glass-panel">
+      <h3 className="mb-6 text-lg font-semibold">Notification Preferences</h3>
+      <div className="space-y-4">
+        <div className="flex items-center gap-3">
+          <Switch
+            checked={notifyRuleTriggered}
+            onCheckedChange={setNotifyRuleTriggered}
+          />
+          <Label className="mb-0 text-sm">Rule Triggered</Label>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            checked={notifyErrors}
+            onCheckedChange={setNotifyErrors}
+          />
+          <Label className="mb-0 text-sm">Error Alerts</Label>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            checked={notifySuccess}
+            onCheckedChange={setNotifySuccess}
+          />
+          <Label className="mb-0 text-sm">Success Reports</Label>
+        </div>
+      </div>
+    </Card>
+
+    {/* Danger Zone */}
+    <Card className="mt-6 border border-danger/20 p-6">
+      <h3 className="mb-2 text-lg font-semibold text-danger">Danger Zone</h3>
+      <p className="mb-4 text-sm text-text-muted">
+        Destructive actions that cannot be undone.
+      </p>
+      <Button
+        variant="destructive"
+        onClick={() => {
+          if (window.confirm("Are you sure you want to delete ALL rules? This cannot be undone.")) {
+            toast.info("Delete all rules is not yet implemented");
+          }
+        }}
+      >
+        Delete All Rules
+      </Button>
+    </Card>
+  </>
   );
 }

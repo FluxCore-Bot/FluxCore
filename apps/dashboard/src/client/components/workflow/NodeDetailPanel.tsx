@@ -503,7 +503,7 @@ function StepPanel({
             className="flex h-9 w-full rounded-md border border-border bg-surface-lowest px-3 py-1 text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-1 focus:ring-accent"
           />
           {step.condition.operator === "inList" || step.condition.operator === "notInList" ? (
-            <p className="mt-1 text-[10px] text-text-muted">Comma-separated values</p>
+            <p className="mt-1 text-xs text-text-muted">Comma-separated values</p>
           ) : null}
         </div>
 
@@ -549,7 +549,7 @@ function StepPanel({
             }}
             className="flex h-9 w-full rounded-md border border-border bg-surface-lowest px-3 py-1 text-sm text-text focus:outline-none focus:ring-1 focus:ring-accent"
           />
-          <p className="mt-1 text-[10px] text-text-muted">1–300 seconds (5 minutes max)</p>
+          <p className="mt-1 text-xs text-text-muted">1–300 seconds (5 minutes max)</p>
         </div>
 
         <div className="pt-2">

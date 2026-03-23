@@ -59,7 +59,7 @@ export function RuleList({
           return (
             <div
               key={rule.id}
-              className={`group cursor-pointer rounded-xl border bg-surface-low p-5 shadow-lg transition-all hover:bg-surface-high/50 ${
+              className={`group cursor-pointer rounded-lg border bg-surface-low p-5 shadow-lg transition-all hover:bg-surface-high/50 ${
                 rule.enabled
                   ? "border-border hover:border-accent/30"
                   : "border-border/50 opacity-60 hover:opacity-80"
@@ -80,10 +80,10 @@ export function RuleList({
                   >
                     {rule.enabled ? "On" : "Off"}
                   </Badge>
-                  <span className="font-mono text-[10px] text-text-muted">
+                  <span className="font-mono text-xs text-text-muted">
                     P{rule.priority}
                   </span>
-                  <span className="text-[10px] text-text-muted/60">
+                  <span className="text-xs text-text-muted/60">
                     {formatLastFired(rule.lastFired)}
                   </span>
                 </div>
@@ -116,7 +116,7 @@ export function RuleList({
                     <div className="flex h-6 w-6 items-center justify-center rounded bg-accent/20">
                       <Icon name={eventIcon} size={14} className="text-accent" />
                     </div>
-                    <span className="font-label text-[10px] font-bold uppercase tracking-widest text-accent">
+                    <span className="section-label text-accent">
                       Trigger
                     </span>
                   </div>
@@ -149,7 +149,7 @@ export function RuleList({
                               <div className="flex h-6 w-6 items-center justify-center rounded bg-secondary/15">
                                 <Icon name={actionIcon} size={14} className="text-secondary" />
                               </div>
-                              <span className="font-label text-[10px] font-bold uppercase tracking-widest text-text-muted">
+                              <span className="section-label text-text-muted">
                                 Action {i + 1}
                               </span>
                               {!isConfigured && (
@@ -160,7 +160,7 @@ export function RuleList({
                               {actionLabel}
                             </span>
                             {preview && (
-                              <span className="mt-1 max-w-45 truncate text-[11px] text-text-muted">
+                              <span className="mt-1 max-w-45 truncate text-xs text-text-muted">
                                 {preview}
                               </span>
                             )}

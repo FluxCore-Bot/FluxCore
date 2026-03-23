@@ -145,6 +145,15 @@ export function RulesPage() {
 
   return (
     <div className="space-y-8">
+      {/* Breadcrumb */}
+      <nav className="flex items-center gap-1.5 text-xs text-text-muted">
+        <span className="text-accent">FluxCore</span>
+        <Icon name="chevron_right" size={14} />
+        <span>Guild</span>
+        <Icon name="chevron_right" size={14} />
+        <span className="text-text">Rules</span>
+      </nav>
+
       <PageHeader
         title="Automation Rules"
         subtitle="Configure event-driven triggers and automated responses for your guild."
@@ -160,7 +169,7 @@ export function RulesPage() {
       />
 
       {!showEditor && (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           <StatsCard label="Total Rules" value={rules.length} />
           <StatsCard
             label="Active Now"

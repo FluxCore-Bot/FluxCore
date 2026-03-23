@@ -132,7 +132,7 @@ export function TempVoiceForm() {
 
   return (
     <Card className="p-6">
-      <div className="mb-4 flex items-center justify-between">
+      <div className="mb-6 flex items-center justify-between">
         <h3 className="text-lg font-semibold">Configured Hubs</h3>
         {!showForm && configs.length < MAX_CONFIGS && (
           <Button onClick={openCreateForm}>
@@ -147,7 +147,7 @@ export function TempVoiceForm() {
 
       {/* Config list */}
       {configs.length > 0 && (
-        <div className="mb-4 space-y-3">
+        <div className="mb-6 space-y-3">
           {configs.map((cfg) => (
             <div
               key={cfg.id}
@@ -193,17 +193,17 @@ export function TempVoiceForm() {
       {showForm && (
         <form
           onSubmit={handleSubmit}
-          className="rounded-md bg-surface-high p-4"
+          className="rounded-lg bg-surface-high p-5 space-y-5"
         >
-          <h4 className="mb-3 text-sm font-semibold">
+          <h4 className="text-sm font-semibold">
             {editingId !== null ? "Edit Configuration" : "New Configuration"}
           </h4>
 
           {error && (
-            <Alert variant="destructive" className="mb-3">{error}</Alert>
+            <Alert variant="destructive">{error}</Alert>
           )}
 
-          <div className="mb-3">
+          <div>
             <Label>Hub Channel <span className="text-danger">*</span></Label>
             <Select
               value={hubChannelId || undefined}
@@ -222,7 +222,7 @@ export function TempVoiceForm() {
             </Select>
           </div>
 
-          <div className="mb-3">
+          <div>
             <Label>Category (optional)</Label>
             <Select
               value={categoryId ?? "none"}
@@ -242,7 +242,7 @@ export function TempVoiceForm() {
             </Select>
           </div>
 
-          <div className="mb-4">
+          <div>
             <Label>Name Template</Label>
             <Input
               type="text"

@@ -31,7 +31,7 @@ function TriggerNodeComponent({ data, selected }: NodeProps) {
           <div className="flex h-6 w-6 items-center justify-center rounded bg-accent/20">
             <Icon name="bolt" size={14} className="text-accent" />
           </div>
-          <span className="font-label text-[10px] font-bold uppercase tracking-widest text-accent">
+          <span className="section-label text-accent">
             Trigger
           </span>
           {validationState === "error" && (

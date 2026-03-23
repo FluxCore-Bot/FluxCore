@@ -27,18 +27,23 @@ export function OverviewPage() {
         subtitle="Monitor your automation performance and activity at a glance."
       />
 
-      {/* Summary Stats */}
+      {/* Summary Stats (Stitch: module-oriented cards) */}
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <StatsCard label="Total Rules" value={summary.totalRules} />
         <StatsCard
-          label="Active Rules"
+          label="Action Rules"
+          value={summary.totalRules}
+          accentColor="border-accent"
+        />
+        <StatsCard
+          label="Active Now"
           value={summary.activeRules}
-          accentColor="border-secondary"
+          accentColor="border-success"
+          valueClassName="text-success"
         />
         <StatsCard
           label="Executions"
           value={summary.totalExecutions.toLocaleString()}
-          accentColor="border-accent"
+          accentColor="border-secondary"
         />
         <StatsCard
           label="Success Rate"

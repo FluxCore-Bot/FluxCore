@@ -61,7 +61,7 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
           <div className="flex h-6 w-6 items-center justify-center rounded bg-warning/20">
             <Icon name="call_split" size={14} className="text-warning" />
           </div>
-          <span className="font-label text-[10px] font-bold uppercase tracking-widest text-warning">
+          <span className="section-label text-warning">
             Condition
           </span>
           {!isConfigured && (

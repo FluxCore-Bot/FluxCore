@@ -75,13 +75,13 @@ export function MusicSettingsForm() {
 
   return (
     <Card className="p-6">
-      <h3 className="mb-4 text-lg font-semibold">Playback Settings</h3>
+      <h3 className="mb-6 text-lg font-semibold">Playback Settings</h3>
 
       {error && (
         <Alert variant="destructive" className="mb-4">{error}</Alert>
       )}
 
-      <form onSubmit={handleSave} className="space-y-4">
+      <form onSubmit={handleSave} className="space-y-5">
         <div>
           <Label>Music Mode</Label>
           <Select value={mode} onValueChange={(v) => setMode(v as "open" | "library")}>
