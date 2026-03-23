@@ -4,6 +4,7 @@ import { config } from "@fluxcore/config";
 import { errorEmbed, logger } from "@fluxcore/utils";
 
 let shoukaku: Shoukaku;
+let nodeReady = false;
 
 export function initShoukaku(client: Client): Shoukaku {
   const nodeUrl = `${config.lavalinkHost}:${config.lavalinkPort}`;
@@ -28,6 +29,7 @@ export function initShoukaku(client: Client): Shoukaku {
   );
 
   shoukaku.on("ready", (name: string) => {
+    nodeReady = true;
     logger.info(`Lavalink node "${name}" connected`);
   });
 
@@ -69,4 +71,26 @@ export function initShoukaku(client: Client): Shoukaku {
 export function getShoukaku(): Shoukaku {
   if (!shoukaku) throw new Error("Shoukaku is not initialized. Call initShoukaku() first.");
   return shoukaku;
+}
+
+/**
+ * Wait until at least one Lavalink node is connected and ready.
+ * Resolves immediately if a node is already available.
+ */
+export function waitForNode(timeoutMs = 30_000): Promise<void> {
+  if (nodeReady) return Promise.resolve();
+
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => {
+      shoukaku.off("ready", onReady);
+      reject(new Error("Timed out waiting for Lavalink node"));
+    }, timeoutMs);
+
+    const onReady = () => {
+      clearTimeout(timer);
+      resolve();
+    };
+
+    shoukaku.once("ready", onReady);
+  });
 }

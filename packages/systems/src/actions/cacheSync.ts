@@ -3,7 +3,7 @@ import { logger } from "@fluxcore/utils";
 import { reloadGuild } from "./cache.js";
 import { loadActionGuildSettings } from "./config.js";
 import { reloadGuildTempVoiceConfig } from "../tempVoice/config.js";
-import { loadMusicSettings } from "../music/config.js";
+import { loadMusicSettingsForGuild } from "../music/config.js";
 
 const POLL_INTERVAL_MS = 10_000;
 let pollTimer: ReturnType<typeof setInterval> | null = null;
@@ -22,7 +22,7 @@ async function pollInvalidations(): Promise<void> {
     const guildsToReload = new Set<string>();
     const guildsToReloadTempVoice = new Set<string>();
     let needSettingsReload = false;
-    let needMusicReload = false;
+    const guildsToReloadMusic = new Set<string>();
 
     for (const record of records) {
       if (record.action === "reloadSettings") {
@@ -31,7 +31,7 @@ async function pollInvalidations(): Promise<void> {
       if (record.action === "reloadTempVoice") {
         guildsToReloadTempVoice.add(record.guildId);
       } else if (record.action === "reloadMusic") {
-        needMusicReload = true;
+        guildsToReloadMusic.add(record.guildId);
       } else {
         guildsToReload.add(record.guildId);
       }
@@ -42,13 +42,10 @@ async function pollInvalidations(): Promise<void> {
       await loadActionGuildSettings();
     }
 
-    if (needMusicReload) {
-      await loadMusicSettings();
-    }
-
     await Promise.allSettled([
       ...Array.from(guildsToReload, (guildId) => reloadGuild(guildId)),
       ...Array.from(guildsToReloadTempVoice, (guildId) => reloadGuildTempVoiceConfig(guildId)),
+      ...Array.from(guildsToReloadMusic, (guildId) => loadMusicSettingsForGuild(guildId)),
     ]);
 
     const totalReloads = guildsToReload.size + guildsToReloadTempVoice.size;

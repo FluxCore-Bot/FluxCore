@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#131315"/>
+      <stop offset="100%" stop-color="#0e0e10"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a3a6ff"/>
+      <stop offset="100%" stop-color="#6063ee"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded square background -->
+  <rect width="512" height="512" rx="96" ry="96" fill="url(#bg)"/>
+  <!-- Ghost border -->
+  <rect width="510" height="510" x="1" y="1" rx="95" ry="95" fill="none" stroke="#48474a" stroke-opacity="0.15" stroke-width="2"/>
+  <!-- FC Monogram -->
+  <g transform="translate(256, 256)">
+    <!-- F letterform - geometric, sharp -->
+    <path d="M-128,-120 L-128,120 L-88,120 L-88,-8 L16,-8 L16,-48 L-88,-48 L-88,-80 L32,-80 L32,-120 Z" fill="url(#mark)"/>
+    <!-- C letterform - geometric arc -->
+    <path d="M72,-120 L160,-120 L160,-80 L72,-80 Q48,-80 48,-56 L48,56 Q48,80 72,80 L160,80 L160,120 L72,120 Q8,120 8,56 L8,-56 Q8,-120 72,-120 Z" fill="url(#mark)"/>
+  </g>
+</svg>

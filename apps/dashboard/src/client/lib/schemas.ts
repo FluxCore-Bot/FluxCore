@@ -213,6 +213,7 @@ export const MusicSettingsFormSchema = z.object({
   maxQueueSize: z.number().min(1).max(500),
   autoDisconnectSecs: z.number().min(0).max(3600),
   twentyFourSeven: z.boolean(),
+  lastChannelId: z.string().nullable(),
 });
 export type MusicSettingsFormData = z.infer<typeof MusicSettingsFormSchema>;
 

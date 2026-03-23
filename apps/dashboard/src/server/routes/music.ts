@@ -1,7 +1,7 @@
 import type { FastifyInstance } from "fastify";
 import { requireAuth, requireGuildAdmin } from "../middleware.js";
 import {
-  getMusicSettings,
+  fetchMusicSettings,
   upsertMusicSettings,
 } from "@fluxcore/systems/music/config";
 import {
@@ -35,7 +35,7 @@ export function registerMusicRoutes(app: FastifyInstance): void {
     { preHandler: [requireAuth, requireGuildAdmin] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
-      const settings = getMusicSettings(guildId);
+      const settings = await fetchMusicSettings(guildId);
       reply.send(settings);
     },
   );
@@ -55,6 +55,7 @@ export function registerMusicRoutes(app: FastifyInstance): void {
             maxQueueSize: { type: "integer", minimum: 1, maximum: MAX_QUEUE_SIZE_LIMIT },
             autoDisconnectSecs: { type: "integer", minimum: 0, maximum: 3600 },
             twentyFourSeven: { type: "boolean" },
+            lastChannelId: { type: ["string", "null"] },
           },
           additionalProperties: false,
         },
@@ -69,6 +70,7 @@ export function registerMusicRoutes(app: FastifyInstance): void {
         maxQueueSize?: number;
         autoDisconnectSecs?: number;
         twentyFourSeven?: boolean;
+        lastChannelId?: string | null;
       };
 
       const update: Record<string, unknown> = {};
@@ -79,6 +81,7 @@ export function registerMusicRoutes(app: FastifyInstance): void {
       if (body.maxQueueSize !== undefined) update.maxQueueSize = body.maxQueueSize;
       if (body.autoDisconnectSecs !== undefined) update.autoDisconnectSecs = body.autoDisconnectSecs;
       if (body.twentyFourSeven !== undefined) update.twentyFourSeven = body.twentyFourSeven;
+      if (body.lastChannelId !== undefined) update.lastChannelId = body.lastChannelId;
 
       const settings = await upsertMusicSettings(guildId, update);
       await notifyCacheInvalidation(guildId, "reloadMusic");

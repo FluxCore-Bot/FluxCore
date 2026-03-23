@@ -5,6 +5,7 @@ import { resolve } from "path";
 
 export default defineConfig({
   root: resolve(__dirname, "src/client"),
+  publicDir: resolve(__dirname, "public"),
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

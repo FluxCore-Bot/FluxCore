@@ -16,6 +16,8 @@ import { startReminderPolling } from "../systems/reminders.js";
 import { loadMusicSettings, get247Guilds } from "@fluxcore/systems/music/config";
 import { createQueue } from "../systems/music/queue.js";
 import { setupPlayerEvents } from "../systems/music/events.js";
+import { registerMusicSettingsReactor } from "../systems/music/settingsReactor.js";
+import { waitForNode } from "../systems/music/shoukaku.js";
 import { logger } from "@fluxcore/utils";
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
@@ -60,9 +62,16 @@ const event: Event<"ready"> = {
     // Music system initialization
     try {
       await loadMusicSettings();
+      registerMusicSettingsReactor(client);
+
+      // Wait for Lavalink node before attempting to rejoin voice channels
+      const guilds247 = get247Guilds();
+      if (guilds247.length > 0) {
+        await waitForNode();
+        logger.info(`Rejoining ${guilds247.length} 24/7 channel(s)`);
+      }
 
       // Rejoin 24/7 channels
-      const guilds247 = get247Guilds();
       for (const settings of guilds247) {
         try {
           const guild = client.guilds.cache.get(settings.guildId);

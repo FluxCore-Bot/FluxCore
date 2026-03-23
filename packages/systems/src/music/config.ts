@@ -5,6 +5,31 @@ import { logger } from "@fluxcore/utils";
 
 const settingsCache: Map<string, MusicGuildSettings> = new Map();
 
+type SettingsChangeCallback = (
+  guildId: string,
+  oldSettings: MusicGuildSettings,
+  newSettings: MusicGuildSettings,
+) => void | Promise<void>;
+
+let onChangeCallback: SettingsChangeCallback | null = null;
+
+/** Register a callback invoked whenever a guild's music settings change. */
+export function onMusicSettingsChanged(cb: SettingsChangeCallback): void {
+  onChangeCallback = cb;
+}
+
+function settingsEqual(a: MusicGuildSettings, b: MusicGuildSettings): boolean {
+  return (
+    a.mode === b.mode &&
+    a.djRoleId === b.djRoleId &&
+    a.defaultVolume === b.defaultVolume &&
+    a.maxQueueSize === b.maxQueueSize &&
+    a.autoDisconnectSecs === b.autoDisconnectSecs &&
+    a.twentyFourSeven === b.twentyFourSeven &&
+    a.lastChannelId === b.lastChannelId
+  );
+}
+
 const DEFAULT_SETTINGS: Omit<MusicGuildSettings, "guildId"> = {
   mode: "open",
   djRoleId: null,
@@ -60,8 +85,48 @@ export async function loadMusicSettings(): Promise<void> {
   }
 }
 
+/** Reload settings for a single guild, triggering the change callback if they differ. */
+export async function loadMusicSettingsForGuild(guildId: string): Promise<void> {
+  try {
+    const prisma = getPrisma();
+    const row = await prisma.musicGuildSettings.findUnique({ where: { guildId } });
+    const oldSettings = settingsCache.get(guildId) ?? { guildId, ...DEFAULT_SETTINGS };
+    const newSettings = row ? rowToSettings(row) : { guildId, ...DEFAULT_SETTINGS };
+
+    if (row) {
+      settingsCache.set(guildId, newSettings);
+    } else {
+      settingsCache.delete(guildId);
+    }
+
+    if (onChangeCallback && !settingsEqual(oldSettings, newSettings)) {
+      try {
+        await onChangeCallback(guildId, oldSettings, newSettings);
+      } catch (err) {
+        logger.error(
+          `Music settings change callback failed for guild ${guildId}`,
+          err instanceof Error ? err : new Error(String(err)),
+        );
+      }
+    }
+  } catch (error) {
+    logger.error(
+      `Failed to reload music settings for guild ${guildId}`,
+      error instanceof Error ? error : new Error(String(error)),
+    );
+  }
+}
+
 export function getMusicSettings(guildId: string): MusicGuildSettings {
   return settingsCache.get(guildId) ?? { guildId, ...DEFAULT_SETTINGS };
+}
+
+/** Read settings directly from the database, bypassing the in-memory cache. */
+export async function fetchMusicSettings(guildId: string): Promise<MusicGuildSettings> {
+  const prisma = getPrisma();
+  const row = await prisma.musicGuildSettings.findUnique({ where: { guildId } });
+  if (!row) return { guildId, ...DEFAULT_SETTINGS };
+  return rowToSettings(row);
 }
 
 export async function upsertMusicSettings(

@@ -1,0 +1,23 @@
+{
+  "name": "FluxCore Dashboard",
+  "short_name": "FluxCore",
+  "description": "Modular Discord Bot Framework - Admin Dashboard",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-circle.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#0e0e10",
+  "background_color": "#0e0e10",
+  "display": "standalone",
+  "start_url": "/"
+}

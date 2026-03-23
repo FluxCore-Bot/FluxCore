@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useRoles } from "../lib/hooks/useRoles";
+import { useChannels } from "../lib/hooks/useChannels";
 import { useMusicSettings, useUpdateMusicSettings } from "../lib/hooks/useMusic";
 import { toast } from "sonner";
 import { ApiError } from "../lib/client";
@@ -24,6 +25,7 @@ export function MusicSettingsForm() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: settings, isLoading } = useMusicSettings(guildId);
   const { data: roles = [] } = useRoles(guildId);
+  const { data: channels = [] } = useChannels(guildId);
   const updateSettings = useUpdateMusicSettings(guildId);
 
   const [mode, setMode] = useState<"open" | "library">("open");
@@ -32,7 +34,10 @@ export function MusicSettingsForm() {
   const [maxQueueSize, setMaxQueueSize] = useState(100);
   const [autoDisconnectSecs, setAutoDisconnectSecs] = useState(300);
   const [twentyFourSeven, setTwentyFourSeven] = useState(false);
+  const [lastChannelId, setLastChannelId] = useState<string | null>(null);
   const [error, setError] = useState("");
+
+  const voiceChannels = channels.filter((c) => c.type === 2);
 
   useEffect(() => {
     if (settings) {
@@ -42,6 +47,7 @@ export function MusicSettingsForm() {
       setMaxQueueSize(settings.maxQueueSize);
       setAutoDisconnectSecs(settings.autoDisconnectSecs);
       setTwentyFourSeven(settings.twentyFourSeven);
+      setLastChannelId(settings.lastChannelId);
     }
   }, [settings]);
 
@@ -59,6 +65,7 @@ export function MusicSettingsForm() {
         maxQueueSize,
         autoDisconnectSecs,
         twentyFourSeven,
+        lastChannelId: twentyFourSeven ? lastChannelId : null,
       });
       toast.success("Music settings updated");
     } catch (err) {
@@ -150,6 +157,31 @@ export function MusicSettingsForm() {
             24/7 Mode — Bot stays in voice channel when idle
           </Label>
         </div>
+
+        {twentyFourSeven && (
+          <div>
+            <Label>Music Voice Channel</Label>
+            <Select
+              value={lastChannelId ?? "none"}
+              onValueChange={(v) => setLastChannelId(v === "none" ? null : v)}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select a voice channel..." />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="none">None — Select a channel</SelectItem>
+                {voiceChannels.map((c) => (
+                  <SelectItem key={c.id} value={c.id}>
+                    {c.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <p className="mt-1 text-xs text-muted-foreground">
+              The bot will automatically join this channel on startup.
+            </p>
+          </div>
+        )}
 
         <Button type="submit" disabled={updateSettings.isPending}>
           {updateSettings.isPending ? "Saving..." : "Save Settings"}
