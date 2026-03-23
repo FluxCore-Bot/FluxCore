@@ -80,9 +80,7 @@ textarea {
   border: none;
   border-radius: var(--radius-sm);
   color: var(--color-text);
-  padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
-  width: 100%;
 }
 
 input:focus,
@@ -136,5 +134,6 @@ input[type="color"] {
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
   font-size: 20px;
+  line-height: 1;
   vertical-align: middle;
 }
