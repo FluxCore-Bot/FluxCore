@@ -32,7 +32,7 @@ export const ChannelListSchema = z.array(ChannelSchema);
 export const RoleSchema = z.object({
   id: z.string(),
   name: z.string(),
-  color: z.number(),
+  color: z.string(),
 });
 export type Role = z.infer<typeof RoleSchema>;
 
