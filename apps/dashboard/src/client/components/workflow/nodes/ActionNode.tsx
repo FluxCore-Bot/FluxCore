@@ -29,6 +29,7 @@ function ActionNodeComponent({ data, selected }: NodeProps) {
   return (
     <>
       <Handle
+        id="target"
         type="target"
         position={Position.Left}
         className="!h-3 !w-3 !border-2 !border-secondary !bg-surface-high"
@@ -61,6 +62,7 @@ function ActionNodeComponent({ data, selected }: NodeProps) {
         )}
       </div>
       <Handle
+        id="source"
         type="source"
         position={Position.Right}
         className="!h-3 !w-3 !border-2 !border-secondary/50 !bg-surface-high"

@@ -12,6 +12,32 @@ import type {
   StepConditionConfig,
 } from "@fluxcore/systems/actions/types";
 
+// --- Per-guild rate limiting ---
+
+const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
+const RATE_LIMIT_MAX_EXECUTIONS = 60; // max 60 action executions per guild per minute
+
+const guildExecutionCounts = new Map<string, { count: number; resetAt: number }>();
+
+function checkRateLimit(guildId: string): boolean {
+  const now = Date.now();
+  let entry = guildExecutionCounts.get(guildId);
+
+  if (!entry || now >= entry.resetAt) {
+    entry = { count: 0, resetAt: now + RATE_LIMIT_WINDOW_MS };
+    guildExecutionCounts.set(guildId, entry);
+  }
+
+  if (entry.count >= RATE_LIMIT_MAX_EXECUTIONS) {
+    return false;
+  }
+
+  entry.count++;
+  return true;
+}
+
+// --- Condition matching ---
+
 function matchesConditions(
   conditions: ActionConditions,
   context: EventContext,
@@ -67,7 +93,7 @@ function getContextValue(
     case "memberCount":
       return context.memberCount;
     case "messageContent":
-      return context.extra?.messageContent;
+      return context.extra?.["message.content"];
     default:
       return context.extra?.[field];
   }
@@ -83,20 +109,22 @@ function evaluateCondition(
   if (actual === undefined || actual === null) return false;
 
   const actualStr = String(actual);
+  const actualLower = actualStr.toLowerCase();
+  const expectedLower = expected.toLowerCase();
 
   switch (condition.operator) {
     case "equals":
-      return actualStr === expected;
+      return actualLower === expectedLower;
     case "notEquals":
-      return actualStr !== expected;
+      return actualLower !== expectedLower;
     case "contains":
-      return actualStr.toLowerCase().includes(expected.toLowerCase());
+      return actualLower.includes(expectedLower);
     case "notContains":
-      return !actualStr.toLowerCase().includes(expected.toLowerCase());
+      return !actualLower.includes(expectedLower);
     case "startsWith":
-      return actualStr.toLowerCase().startsWith(expected.toLowerCase());
+      return actualLower.startsWith(expectedLower);
     case "endsWith":
-      return actualStr.toLowerCase().endsWith(expected.toLowerCase());
+      return actualLower.endsWith(expectedLower);
     case "greaterThan":
       return Number(actual) > Number(expected);
     case "lessThan":
@@ -108,13 +136,13 @@ function evaluateCondition(
     case "inList":
       return expected
         .split(",")
-        .map((s) => s.trim())
-        .includes(actualStr);
+        .map((s) => s.trim().toLowerCase())
+        .includes(actualLower);
     case "notInList":
       return !expected
         .split(",")
-        .map((s) => s.trim())
-        .includes(actualStr);
+        .map((s) => s.trim().toLowerCase())
+        .includes(actualLower);
     default:
       return false;
   }
@@ -122,6 +150,8 @@ function evaluateCondition(
 
 const MAX_STEP_ITERATIONS = 20;
 const MAX_DELAY_MS = 300_000; // 5 minutes
+const MAX_CONCURRENT_DELAYS = 50; // global cap on in-flight delay steps
+let activeDelayCount = 0;
 
 async function executeSteps(
   client: Client,
@@ -143,6 +173,10 @@ async function executeSteps(
 
     switch (step.type) {
       case "action": {
+        if (!checkRateLimit(context.guildId)) {
+          logger.warn(`Rate limit hit for guild ${context.guildId} during rule "${rule.name}"`);
+          return;
+        }
         try {
           const executor = getExecutor(step.action.type as ActionType);
           if (!executor) {
@@ -183,7 +217,17 @@ async function executeSteps(
       case "delay": {
         const ms = Math.min(Math.max(step.delayMs, 0), MAX_DELAY_MS);
         if (ms > 0) {
-          await new Promise((resolve) => setTimeout(resolve, ms));
+          if (activeDelayCount >= MAX_CONCURRENT_DELAYS) {
+            logger.warn(`Skipping delay step in rule "${rule.name}": concurrent delay limit reached (${MAX_CONCURRENT_DELAYS})`);
+            currentId = step.next;
+            break;
+          }
+          activeDelayCount++;
+          try {
+            await new Promise((resolve) => setTimeout(resolve, ms));
+          } finally {
+            activeDelayCount--;
+          }
         }
         currentId = step.next;
         break;
@@ -211,6 +255,9 @@ export async function processEvent(
   const rules = getRulesForEvent(context.guildId, context.eventType);
   if (rules.length === 0) return;
 
+  // Rules execute sequentially in priority order (highest first).
+  // This is intentional: parallel execution could cause race conditions
+  // (e.g., addRole before removeRole) and break user-expected ordering.
   for (const rule of rules) {
     if (!rule.enabled) continue;
     if (!matchesConditions(rule.conditions, context)) continue;
@@ -222,7 +269,12 @@ export async function processEvent(
     }
 
     // V1: linear actions
+    if (!rule.actions?.length) continue;
     for (const actionConfig of rule.actions) {
+      if (!checkRateLimit(context.guildId)) {
+        logger.warn(`Rate limit hit for guild ${context.guildId} during rule "${rule.name}"`);
+        return;
+      }
       try {
         const executor = getExecutor(actionConfig.type as ActionType);
         if (!executor) {

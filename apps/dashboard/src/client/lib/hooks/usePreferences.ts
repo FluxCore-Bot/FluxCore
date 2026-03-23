@@ -1,16 +1,13 @@
 import { useSyncExternalStore, useCallback } from "react";
 
 interface Preferences {
-  rulesListView: "form" | "workflow";
-  rulesEditorMode: "form" | "workflow";
+  // Extensible — add future preferences here
+  [key: string]: unknown;
 }
 
 const STORAGE_KEY = "fluxcore:preferences";
 
-const defaults: Preferences = {
-  rulesListView: "form",
-  rulesEditorMode: "form",
-};
+const defaults: Preferences = {};
 
 let listeners: Array<() => void> = [];
 

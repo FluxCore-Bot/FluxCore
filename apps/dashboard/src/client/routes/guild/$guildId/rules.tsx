@@ -10,15 +10,13 @@ import {
 import { useConstants } from "../../../lib/hooks/useConstants";
 import { toast } from "sonner";
 import { RuleList } from "../../../components/RuleList";
-import { RuleForm, type RuleDraft } from "../../../components/RuleForm";
-import { WorkflowEditor } from "../../../components/workflow/WorkflowEditor";
+import { WorkflowEditor, type RuleDraft } from "../../../components/workflow/WorkflowEditor";
 import { ConfirmDialog } from "../../../components/ConfirmDialog";
 import { PageHeader } from "../../../components/PageHeader";
 import { StatsCard } from "../../../components/StatsCard";
 import { PageSkeleton } from "../../../components/PageSkeleton";
 import { Icon } from "../../../components/Icon";
 import { Button } from "../../../components/ui/button";
-import { usePreferences } from "../../../lib/hooks/usePreferences";
 import type { ActionRule } from "../../../lib/schemas";
 
 export function RulesPage() {
@@ -30,15 +28,8 @@ export function RulesPage() {
   const deleteRule = useDeleteRule(guildId);
   const bulkAction = useBulkRuleAction(guildId);
 
-  const [prefs, setPrefs] = usePreferences();
-
-  const [showForm, setShowForm] = useState(false);
-  const listView = prefs.rulesListView;
-  const editorMode = prefs.rulesEditorMode;
-  const setListView = (v: "form" | "workflow") => setPrefs({ rulesListView: v });
-  const setEditorMode = (v: "form" | "workflow") => setPrefs({ rulesEditorMode: v });
+  const [showEditor, setShowEditor] = useState(false);
   const [editingRule, setEditingRule] = useState<ActionRule | undefined>();
-  const [editingDraft, setEditingDraft] = useState<RuleDraft | undefined>();
   const [deleteTarget, setDeleteTarget] = useState<ActionRule | null>(null);
   const [selectedRuleIds, setSelectedRuleIds] = useState<Set<number>>(new Set());
   const [bulkDeleteConfirm, setBulkDeleteConfirm] = useState(false);
@@ -47,7 +38,7 @@ export function RulesPage() {
 
   const handleEdit = (rule: ActionRule) => {
     setEditingRule(rule);
-    setShowForm(true);
+    setShowEditor(true);
   };
 
   const handleDelete = (rule: ActionRule) => {
@@ -92,6 +83,9 @@ export function RulesPage() {
         name: newName,
         eventType: rule.eventType,
         actions: rule.actions,
+        ...(rule.steps?.length && rule.entryStepId
+          ? { steps: rule.steps, entryStepId: rule.entryStepId }
+          : {}),
         conditions: rule.conditions,
         priority: rule.priority,
         enabled: rule.enabled,
@@ -142,15 +136,9 @@ export function RulesPage() {
     setBulkDeleteConfirm(false);
   };
 
-  const handleCloseForm = () => {
-    setShowForm(false);
+  const handleCloseEditor = () => {
+    setShowEditor(false);
     setEditingRule(undefined);
-    setEditingDraft(undefined);
-  };
-
-  const handleSwitchEditor = (draft: RuleDraft) => {
-    setEditingDraft(draft);
-    setEditorMode(editorMode === "form" ? "workflow" : "form");
   };
 
   const activeRules = rules.filter((r) => r.enabled).length;
@@ -162,36 +150,16 @@ export function RulesPage() {
         subtitle="Configure event-driven triggers and automated responses for your guild."
         actions={
           <div className="flex items-center gap-3">
-            {!showForm && (
-              <>
-                <div className="flex gap-1 rounded-lg bg-surface-lowest p-1">
-                  <Button
-                    variant={listView === "form" ? "default" : "ghost"}
-                    size="sm"
-                    onClick={() => setListView("form")}
-                  >
-                    <Icon name="view_list" size={16} />
-                    Form
-                  </Button>
-                  <Button
-                    variant={listView === "workflow" ? "default" : "ghost"}
-                    size="sm"
-                    onClick={() => setListView("workflow")}
-                  >
-                    <Icon name="account_tree" size={16} />
-                    Workflow
-                  </Button>
-                </div>
-                <Button onClick={() => setShowForm(true)}>
-                  <Icon name="add" /> Create Rule
-                </Button>
-              </>
+            {!showEditor && (
+              <Button onClick={() => setShowEditor(true)}>
+                <Icon name="add" /> Create Rule
+              </Button>
             )}
           </div>
         }
       />
 
-      {!showForm && (
+      {!showEditor && (
         <div className="grid grid-cols-3 gap-4">
           <StatsCard label="Total Rules" value={rules.length} />
           <StatsCard
@@ -209,7 +177,7 @@ export function RulesPage() {
       )}
 
       {/* Bulk action bar */}
-      {!showForm && selectedRuleIds.size > 0 && (
+      {!showEditor && selectedRuleIds.size > 0 && (
         <div className="flex items-center gap-3 rounded-lg border border-accent/30 bg-accent/5 px-4 py-2.5">
           <span className="text-sm font-medium">
             {selectedRuleIds.size} rule{selectedRuleIds.size > 1 ? "s" : ""} selected
@@ -243,23 +211,16 @@ export function RulesPage() {
         </div>
       )}
 
-      {showForm ? (
-        editorMode === "form" ? (
-          <RuleForm rule={editingRule} draft={editingDraft} onClose={handleCloseForm} onSwitchView={handleSwitchEditor} />
-        ) : (
-          <WorkflowEditor rule={editingRule} draft={editingDraft} onClose={handleCloseForm} onSwitchView={handleSwitchEditor} />
-        )
+      {showEditor ? (
+        <WorkflowEditor rule={editingRule} onClose={handleCloseEditor} />
       ) : (
         <RuleList
           rules={rules}
           constants={constants}
-          viewMode={listView}
           onEdit={handleEdit}
           onDelete={handleDelete}
           onToggle={handleToggle}
           onDuplicate={handleDuplicate}
-          selectedRuleIds={selectedRuleIds}
-          onSelectionChange={setSelectedRuleIds}
         />
       )}
 

@@ -57,7 +57,7 @@ function serializeActions(rule: {
   return JSON.stringify(rule.actions);
 }
 
-function rowToRule(row: {
+export function rowToRule(row: {
   id: number;
   guildId: string;
   name: string;

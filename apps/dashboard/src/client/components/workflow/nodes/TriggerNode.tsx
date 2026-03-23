@@ -49,6 +49,7 @@ function TriggerNodeComponent({ data, selected }: NodeProps) {
         )}
       </div>
       <Handle
+        id="source"
         type="source"
         position={Position.Right}
         className="!h-3 !w-3 !border-2 !border-accent !bg-surface-high"

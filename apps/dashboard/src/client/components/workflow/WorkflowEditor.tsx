@@ -8,20 +8,23 @@ import {
   Background,
   BackgroundVariant,
   Panel,
-  useReactFlow,
   ReactFlowProvider,
+  ConnectionMode,
   useNodesState,
   useEdgesState,
   type NodeMouseHandler,
   type ReactFlowInstance,
-  type OnNodesChange,
   type OnEdgesChange,
+  type OnNodesChange,
+  type Edge,
+  type Connection,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { useConstants } from "../../lib/hooks/useConstants";
 import { useChannels } from "../../lib/hooks/useChannels";
 import { useRoles } from "../../lib/hooks/useRoles";
 import { useCreateRule, useUpdateRule } from "../../lib/hooks/useRules";
+import { useRuleDraft } from "../../lib/hooks/useRuleDraft";
 import {
   RuleFormSchema,
   type ActionConditions,
@@ -34,11 +37,12 @@ import { ApiError } from "../../lib/client";
 import { toast } from "sonner";
 import { TriggerNode } from "./nodes/TriggerNode";
 import { ActionNode } from "./nodes/ActionNode";
-import { AddActionNode } from "./nodes/AddActionNode";
 import { ConditionNode } from "./nodes/ConditionNode";
 import { DelayNode } from "./nodes/DelayNode";
 import { NodeDetailPanel } from "./NodeDetailPanel";
 import { useWorkflowNodes } from "./useWorkflowNodes";
+import { useWorkflowSteps } from "./useWorkflowSteps";
+import { useWorkflowKeyboard } from "./useWorkflowKeyboard";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Switch } from "../ui/switch";
@@ -52,7 +56,7 @@ import {
 } from "../ui/tooltip";
 import { PageSkeleton } from "../PageSkeleton";
 
-interface RuleDraft {
+export interface RuleDraft {
   name: string;
   eventType: string;
   actions: ActionConfig[];
@@ -67,15 +71,11 @@ interface WorkflowEditorProps {
   rule?: ActionRule;
   draft?: RuleDraft;
   onClose: () => void;
-  onSwitchView?: (draft: RuleDraft) => void;
 }
-
-const emptyAction: ActionConfig = { type: "" };
 
 const nodeTypes = {
   triggerNode: TriggerNode,
   actionNode: ActionNode,
-  addActionNode: AddActionNode,
   conditionNode: ConditionNode,
   delayNode: DelayNode,
 };
@@ -85,214 +85,83 @@ type SelectedNode =
   | { type: "action"; index: number }
   | { type: "step"; stepId: string };
 
-function WorkflowEditorInner({ rule, draft, onClose, onSwitchView }: WorkflowEditorProps) {
+function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: constants } = useConstants();
   const { data: channels = [] } = useChannels(guildId);
   const { data: roles = [] } = useRoles(guildId);
   const createRule = useCreateRule(guildId);
   const updateRule = useUpdateRule(guildId);
+  const { saveDraft: saveDraftToStorage, loadDraft, clearDraft } = useRuleDraft(guildId, rule?.id);
   const reactFlowInstance = useRef<ReactFlowInstance | null>(null);
 
-  const [name, setName] = useState(draft?.name ?? rule?.name ?? "");
-  const [eventType, setEventType] = useState(draft?.eventType ?? rule?.eventType ?? "");
-  const [actions, setActions] = useState<ActionConfig[]>(
-    draft?.actions ?? (rule?.actions.length ? rule.actions : [{ ...emptyAction }]),
-  );
-  const [steps, setSteps] = useState<RuleStep[] | undefined>(
-    draft?.steps ?? rule?.steps,
-  );
-  const [entryStepId, setEntryStepId] = useState<string | undefined>(
-    draft?.entryStepId ?? rule?.entryStepId,
-  );
+  // Load saved draft on mount (only for new rules without an explicit draft)
+  const savedDraft = !draft && !rule ? loadDraft() : null;
+  const initialDraft = draft ?? savedDraft;
+
+  const [name, setName] = useState(initialDraft?.name ?? rule?.name ?? "");
+  const [eventType, setEventType] = useState(initialDraft?.eventType ?? rule?.eventType ?? "");
   const [conditions, setConditions] = useState<ActionConditions>(
-    draft?.conditions ?? rule?.conditions ?? {},
+    initialDraft?.conditions ?? rule?.conditions ?? {},
   );
-  const [priority, setPriority] = useState(draft?.priority ?? rule?.priority ?? 0);
-  const [enabled, setEnabled] = useState(draft?.enabled ?? rule?.enabled ?? true);
+  const [priority, setPriority] = useState(initialDraft?.priority ?? rule?.priority ?? 0);
+  const [enabled, setEnabled] = useState(initialDraft?.enabled ?? rule?.enabled ?? true);
   const [error, setError] = useState("");
   const [selectedNode, setSelectedNode] = useState<SelectedNode | null>(null);
 
-  const isStepMode = !!(steps?.length && entryStepId);
+  const emptyAction: ActionConfig = { type: "" };
 
-  const nextStepId = useCallback(() => {
-    const existing = steps ?? [];
-    let idx = existing.length;
-    while (existing.some((s) => s.id === `step_${idx}`)) idx++;
-    return `step_${idx}`;
-  }, [steps]);
+  const {
+    actions,
+    steps,
+    entryStepId,
+    isStepMode,
+    addAction,
+    addConditionStep,
+    addDelayStep,
+    handleStepChange,
+    handleStepRemove: rawStepRemove,
+    handleConnect,
+    handleEdgeRemoval,
+    handleActionChange: rawActionChange,
+    handleActionRemove: rawActionRemove,
+    handleActionMove: rawActionMove,
+    convertAndSeverEdges,
+  } = useWorkflowSteps({
+    initialSteps: initialDraft?.steps ?? rule?.steps,
+    initialEntryStepId: initialDraft?.entryStepId ?? rule?.entryStepId,
+    initialActions: initialDraft?.actions ?? (rule?.actions.length ? rule.actions : [{ ...emptyAction }]),
+    constants,
+  });
 
-  const addAction = useCallback(() => {
-    if (!constants) return;
-    if (isStepMode) {
-      // Add action step at end of chain
-      const newId = nextStepId();
-      setSteps((prev) => {
-        const current = prev ?? [];
-        // Find the last step in the chain that has next=null
-        const lastStep = current.find((s) => {
-          if (s.type === "condition") return false;
-          return (s.type === "action" || s.type === "delay") && s.next === null;
-        });
-        if (lastStep && (lastStep.type === "action" || lastStep.type === "delay")) {
-          return [
-            ...current.map((s) =>
-              s.id === lastStep.id ? { ...s, next: newId } : s,
-            ),
-            { id: newId, type: "action" as const, action: { ...emptyAction }, next: null },
-          ];
-        }
-        return [...current, { id: newId, type: "action" as const, action: { ...emptyAction }, next: null }];
-      });
-      if (!entryStepId) setEntryStepId(newId);
-    } else if (actions.length < constants.maxActionsPerRule) {
-      setActions((prev) => [...prev, { ...emptyAction }]);
-    }
-  }, [constants, actions.length, isStepMode, nextStepId, entryStepId]);
-
-  const convertToStepMode = useCallback((): { converted: RuleStep[]; entry: string; nextIdx: number } => {
-    const actionSteps: RuleStep[] = actions
-      .filter((a) => a.type) // skip unconfigured
-      .map((a, i, arr) => ({
-        id: `step_${i}`,
-        type: "action" as const,
-        action: a,
-        next: i < arr.length - 1 ? `step_${i + 1}` : null,
-      }));
-    return {
-      converted: actionSteps,
-      entry: actionSteps.length > 0 ? "step_0" : "",
-      nextIdx: actionSteps.length,
-    };
-  }, [actions]);
-
-  const addConditionStep = useCallback(() => {
-    if (!isStepMode) {
-      const { converted, entry, nextIdx } = convertToStepMode();
-      const condId = `step_${nextIdx}`;
-      const condStep: RuleStep = {
-        id: condId,
-        type: "condition",
-        condition: { field: "channelId", operator: "equals", value: "" },
-        thenNext: null,
-        elseNext: null,
-      };
-      // Wire last action to condition
-      const wired = converted.map((s, i) =>
-        i === converted.length - 1 ? { ...s, next: condId } : s,
-      );
-      setSteps([...wired, condStep]);
-      setEntryStepId(entry || condId);
-    } else {
-      const newId = nextStepId();
-      const condStep: RuleStep = {
-        id: newId,
-        type: "condition",
-        condition: { field: "channelId", operator: "equals", value: "" },
-        thenNext: null,
-        elseNext: null,
-      };
-      setSteps((prev) => {
-        const current = prev ?? [];
-        const lastLinear = [...current].reverse().find(
-          (s) => (s.type === "action" || s.type === "delay") && s.next === null,
-        );
-        if (lastLinear) {
-          return [
-            ...current.map((s) =>
-              s.id === lastLinear.id ? { ...s, next: newId } : s,
-            ),
-            condStep,
-          ];
-        }
-        return [...current, condStep];
-      });
-      if (!entryStepId) setEntryStepId(newId);
-    }
-  }, [isStepMode, convertToStepMode, nextStepId, entryStepId]);
-
-  const addDelayStep = useCallback(() => {
-    if (!isStepMode) {
-      const { converted, entry, nextIdx } = convertToStepMode();
-      const delayId = `step_${nextIdx}`;
-      const delayStep: RuleStep = {
-        id: delayId,
-        type: "delay",
-        delayMs: 5000,
-        next: null,
-      };
-      const wired = converted.map((s, i) =>
-        i === converted.length - 1 ? { ...s, next: delayId } : s,
-      );
-      const allSteps = [...wired, delayStep];
-      setSteps(allSteps);
-      setEntryStepId(entry || delayId);
-    } else {
-      const newId = nextStepId();
-      const newStep: RuleStep = {
-        id: newId,
-        type: "delay",
-        delayMs: 5000,
-        next: null,
-      };
-      setSteps((prev) => {
-        const current = prev ?? [];
-        const lastStep = [...current].reverse().find(
-          (s) => (s.type === "action" || s.type === "delay") && s.next === null,
-        );
-        if (lastStep) {
-          return [
-            ...current.map((s) =>
-              s.id === lastStep.id ? { ...s, next: newId } : s,
-            ),
-            newStep,
-          ];
-        }
-        return [...current, newStep];
-      });
-      if (!entryStepId) setEntryStepId(newId);
-    }
-  }, [isStepMode, convertToStepMode, nextStepId, entryStepId]);
-
-  const handleStepChange = useCallback((stepId: string, updatedStep: RuleStep) => {
-    setSteps((prev) => (prev ?? []).map((s) => (s.id === stepId ? updatedStep : s)));
-  }, []);
-
+  // Wrap step/action handlers to also manage selectedNode
   const handleStepRemove = useCallback((stepId: string) => {
-    setSteps((prev) => {
-      if (!prev) return prev;
-      const step = prev.find((s) => s.id === stepId);
-      if (!step) return prev;
-      // Rewire: anything pointing to this step should point to this step's next
-      const nextId =
-        step.type === "condition" ? step.thenNext : step.next;
-      return prev
-        .filter((s) => s.id !== stepId)
-        .map((s) => {
-          if (s.type === "action" || s.type === "delay") {
-            return s.next === stepId ? { ...s, next: nextId } : s;
-          }
-          if (s.type === "condition") {
-            return {
-              ...s,
-              thenNext: s.thenNext === stepId ? nextId : s.thenNext,
-              elseNext: s.elseNext === stepId ? nextId : s.elseNext,
-            };
-          }
-          return s;
-        });
-    });
-    if (entryStepId === stepId) {
-      const step = steps?.find((s) => s.id === stepId);
-      const nextId = step?.type === "condition" ? step.thenNext : (step as any)?.next;
-      setEntryStepId(nextId ?? undefined);
-    }
+    rawStepRemove(stepId);
     setSelectedNode(null);
-  }, [steps, entryStepId]);
+  }, [rawStepRemove]);
+
+  const handleActionRemove = useCallback((index: number) => {
+    rawActionRemove(index);
+    setSelectedNode(null);
+  }, [rawActionRemove]);
+
+  const handleActionMove = useCallback((index: number, direction: "up" | "down") => {
+    rawActionMove(index, direction);
+    setSelectedNode((prev) => {
+      if (prev?.type !== "action") return prev;
+      const target = direction === "up" ? index - 1 : index + 1;
+      return { type: "action", index: target };
+    });
+  }, [rawActionMove]);
+
+  // Auto-save draft on changes
+  useEffect(() => {
+    saveDraftToStorage({ name, eventType, actions, steps, entryStepId, conditions, priority, enabled });
+  }, [name, eventType, actions, steps, entryStepId, conditions, priority, enabled, saveDraftToStorage]);
 
   const validation = useMemo(
-    () => validateWorkflow(eventType, actions, name, constants ?? undefined),
-    [eventType, actions, name, constants],
+    () => validateWorkflow(eventType, actions, name, constants ?? undefined, steps, entryStepId),
+    [eventType, actions, name, constants, steps, entryStepId],
   );
 
   const selectedNodeId = selectedNode
@@ -315,8 +184,70 @@ function WorkflowEditorInner({ rule, draft, onClose, onSwitchView }: WorkflowEdi
     validationIssues: validation.issues,
   });
 
-  const [nodes, setNodes, onNodesChange] = useNodesState(computedNodes);
-  const [rfEdges, setEdges, onEdgesChange] = useEdgesState(computedEdges);
+  const [nodes, setNodes, onNodesChangeBase] = useNodesState(computedNodes);
+  const [rfEdges, setEdges, onEdgesChangeBase] = useEdgesState(computedEdges);
+
+  // Custom node change handler: intercept node removals from React Flow's
+  // built-in delete key so they sync back to our actions/steps state.
+  // Without this, React Flow removes the node visually but our data model
+  // still has the action, causing it to reappear on the next sync.
+  const onNodesChange: OnNodesChange = useCallback((changes) => {
+    const removals = changes.filter((c) => c.type === "remove");
+    if (removals.length > 0) {
+      for (const change of removals) {
+        if (change.type !== "remove") continue;
+        const nodeId = change.id;
+        if (nodeId.startsWith("action-") && !isStepMode) {
+          const index = parseInt(nodeId.split("-")[1], 10);
+          if (!isNaN(index)) {
+            if (actions.length > 1) {
+              handleActionRemove(index);
+            } else {
+              // Last action — reset to empty instead of removing
+              rawActionChange(index, { type: "" });
+              setSelectedNode(null);
+            }
+          }
+        } else if (nodeId.startsWith("step-")) {
+          const stepId = nodeId.slice(5);
+          handleStepRemove(stepId);
+        }
+        // Ignore trigger/add-action node removals
+      }
+      // Don't pass removals to React Flow — our sync effect handles the visual update
+      const nonRemovals = changes.filter((c) => c.type !== "remove");
+      if (nonRemovals.length > 0) {
+        onNodesChangeBase(nonRemovals);
+      }
+      return;
+    }
+    onNodesChangeBase(changes);
+  }, [isStepMode, actions.length, handleActionRemove, rawActionChange, handleStepRemove, onNodesChangeBase]);
+
+  // Custom edge change handler: intercept edge removals and update step data
+  const onEdgesChange: OnEdgesChange = useCallback((changes) => {
+    const removals = changes.filter((c) => c.type === "remove");
+    if (removals.length > 0) {
+      if (isStepMode) {
+        for (const change of removals) {
+          if (change.type !== "remove") continue;
+          const edge = rfEdges.find((e) => e.id === change.id);
+          if (!edge) continue;
+          handleEdgeRemoval(edge.source, edge.sourceHandle);
+        }
+      } else {
+        // V1 mode: convert to step mode with deleted connections severed
+        const removedIds = new Set(
+          removals.filter((c) => c.type === "remove").map((c) => c.id),
+        );
+        convertAndSeverEdges(removedIds);
+      }
+    }
+    const nonRemovals = changes.filter((c) => c.type !== "remove");
+    if (nonRemovals.length > 0) {
+      onEdgesChangeBase(nonRemovals);
+    }
+  }, [isStepMode, rfEdges, handleEdgeRemoval, convertAndSeverEdges, onEdgesChangeBase]);
 
   // Sync computed nodes/edges when data changes, preserving user-dragged positions
   useEffect(() => {
@@ -349,44 +280,41 @@ function WorkflowEditorInner({ rule, draft, onClose, onSwitchView }: WorkflowEdi
     setSelectedNode(null);
   }, []);
 
-  const handleActionChange = useCallback((index: number, action: ActionConfig) => {
-    setActions((prev) => prev.map((a, i) => (i === index ? action : a)));
-  }, []);
-
-  const handleActionRemove = useCallback((index: number) => {
-    setActions((prev) => prev.filter((_, i) => i !== index));
-    setSelectedNode(null);
-  }, []);
-
-  const handleActionMove = useCallback((index: number, direction: "up" | "down") => {
-    setActions((prev) => {
-      const next = [...prev];
-      const target = direction === "up" ? index - 1 : index + 1;
-      if (target < 0 || target >= next.length) return prev;
-      [next[index], next[target]] = [next[target], next[index]];
-      return next;
-    });
-    setSelectedNode((prev) => {
-      if (prev?.type !== "action") return prev;
-      const target = direction === "up" ? index - 1 : index + 1;
-      return { type: "action", index: target };
-    });
+  /** Validate whether a proposed connection is allowed */
+  const isValidConnection = useCallback((connection: Edge | Connection): boolean => {
+    let { source, target, sourceHandle, targetHandle } = connection;
+    if (!source || !target) return false;
+    // Normalise reversed connections (dragging from a target handle)
+    if (sourceHandle === "target" || targetHandle === "source") {
+      [source, target] = [target, source];
+    }
+    if (source === target) return false;
+    if (source === "trigger") return target.startsWith("step-");
+    if (target === "trigger") return source.startsWith("step-");
+    if (target === "add-action") return false;
+    if (!source.startsWith("step-") || !target.startsWith("step-")) return false;
+    return true;
   }, []);
 
   const handleSubmit = useCallback(async () => {
     setError("");
 
-    // Derive flat actions from steps if in step mode for validation
     const effectiveActions = isStepMode
       ? (steps ?? [])
           .filter((s): s is Extract<RuleStep, { type: "action" }> => s.type === "action")
           .map((s) => s.action)
       : actions;
 
+    const configuredActions = effectiveActions.filter((a) => a.type);
+    if (configuredActions.length === 0) {
+      setError("At least one action must be configured with a type.");
+      return;
+    }
+
     const formData = {
       name: name.trim(),
       eventType,
-      actions: effectiveActions.length > 0 ? effectiveActions : [{ type: "" }],
+      actions: configuredActions,
       ...(isStepMode ? { steps, entryStepId } : {}),
       conditions,
       priority,
@@ -407,54 +335,58 @@ function WorkflowEditorInner({ rule, draft, onClose, onSwitchView }: WorkflowEdi
         await createRule.mutateAsync(result.data);
         toast.success("Rule created");
       }
+      clearDraft();
       onClose();
     } catch (err) {
       const message = err instanceof ApiError ? err.message : "An error occurred";
       setError(message);
     }
-  }, [name, eventType, actions, priority, enabled, rule, createRule, updateRule, onClose]);
+  }, [name, eventType, actions, steps, entryStepId, isStepMode, conditions, priority, enabled, rule, createRule, updateRule, onClose, clearDraft]);
 
   const handleFitView = useCallback(() => {
     reactFlowInstance.current?.fitView({ padding: 0.3, duration: 300 });
   }, []);
 
   // Keyboard shortcuts
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      // Escape — close panel or editor
-      if (e.key === "Escape") {
-        if (selectedNode) {
-          setSelectedNode(null);
-        } else {
-          onClose();
-        }
-        return;
-      }
-      // Ctrl/Cmd+S — save
-      if (e.key === "s" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        handleSubmit();
-        return;
-      }
-      // Ctrl/Cmd+Shift+F — fit view
-      if (e.key === "F" && (e.metaKey || e.ctrlKey) && e.shiftKey) {
-        e.preventDefault();
-        handleFitView();
-        return;
-      }
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [selectedNode, onClose, handleSubmit, handleFitView]);
+  const handleActionReset = useCallback((index: number) => {
+    rawActionChange(index, { type: "" });
+    setSelectedNode(null);
+  }, [rawActionChange]);
+
+  useWorkflowKeyboard({
+    selectedNode,
+    isStepMode,
+    actionsLength: actions.length,
+    onClose,
+    onDeselectNode: () => setSelectedNode(null),
+    onSubmit: handleSubmit,
+    onFitView: handleFitView,
+    onAddAction: addAction,
+    onActionRemove: handleActionRemove,
+    onActionReset: handleActionReset,
+    onActionMove: handleActionMove,
+    onStepRemove: handleStepRemove,
+  });
 
   const isPending = createRule.isPending || updateRule.isPending;
-
   const defaultViewport = useMemo(() => ({ x: 50, y: 20, zoom: 1 }), []);
 
   if (!constants) return <PageSkeleton />;
 
   const content = (
     <div className="fixed inset-0 z-50 flex flex-col bg-surface-lowest">
+      <style>{`
+        .react-flow__edge.selected .react-flow__edge-path,
+        .react-flow__edge:focus .react-flow__edge-path,
+        .react-flow__edge:focus-visible .react-flow__edge-path {
+          stroke: rgba(163, 166, 255, 0.9) !important;
+          stroke-width: 3px !important;
+          filter: drop-shadow(0 0 6px rgba(163, 166, 255, 0.5));
+        }
+        .react-flow__edge.selected .react-flow__edge-interaction {
+          stroke-width: 20px;
+        }
+      `}</style>
       {/* Floating toolbar */}
       <div className="flex items-center gap-3 border-b border-border bg-surface-low/90 px-4 py-2.5 backdrop-blur-sm">
         <Button variant="ghost" size="sm" onClick={onClose} className="gap-1.5">
@@ -463,22 +395,6 @@ function WorkflowEditorInner({ rule, draft, onClose, onSwitchView }: WorkflowEdi
         </Button>
 
         <div className="h-5 w-px bg-border" />
-
-        {onSwitchView && (
-          <>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() =>
-                onSwitchView({ name, eventType, actions, steps, entryStepId, conditions, priority, enabled })
-              }
-            >
-              <Icon name="edit_note" size={16} />
-              Form View
-            </Button>
-            <div className="h-5 w-px bg-border" />
-          </>
-        )}
 
         <Input
           type="text"
@@ -601,6 +517,13 @@ function WorkflowEditorInner({ rule, draft, onClose, onSwitchView }: WorkflowEdi
           nodeTypes={nodeTypes}
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
+          onConnect={handleConnect}
+
+          isValidConnection={isValidConnection}
+          connectionMode={ConnectionMode.Loose}
+          edgesFocusable={true}
+          edgesReconnectable={true}
+          elementsSelectable={true}
           onNodeClick={onNodeClick}
           onPaneClick={handlePaneClick}
           onInit={(instance) => {
@@ -608,8 +531,10 @@ function WorkflowEditorInner({ rule, draft, onClose, onSwitchView }: WorkflowEdi
           }}
           defaultViewport={defaultViewport}
           fitView={false}
+          deleteKeyCode={["Backspace", "Delete"]}
           proOptions={{ hideAttribution: true }}
           className="!bg-surface-lowest"
+          connectionLineStyle={{ stroke: "rgba(163, 166, 255, 0.4)", strokeWidth: 2 }}
         >
           <Background
             variant={BackgroundVariant.Dots}
@@ -670,10 +595,10 @@ function WorkflowEditorInner({ rule, draft, onClose, onSwitchView }: WorkflowEdi
             channels={channels}
             roles={roles}
             totalActions={actions.length}
-            onActionChange={handleActionChange}
-            onActionRemove={handleActionRemove}
+            onActionChange={rawActionChange}
+            onActionRemove={actions.length > 1 ? handleActionRemove : handleActionReset}
             onActionMove={handleActionMove}
-            canRemove={actions.length > 1}
+            canRemove={true}
             onClose={() => setSelectedNode(null)}
           />
         )}
@@ -701,10 +626,16 @@ function WorkflowEditorInner({ rule, draft, onClose, onSwitchView }: WorkflowEdi
           <kbd className="rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">Ctrl+S</kbd> Save
         </span>
         <span>
+          <kbd className="rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">Del</kbd> Remove node
+        </span>
+        <span>
+          <kbd className="rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">A</kbd> Add action
+        </span>
+        <span>
           <kbd className="rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">Ctrl+Shift+F</kbd> Fit view
         </span>
         <span className="ml-auto text-text-muted/50">
-          Click a node to configure it
+          Drag handles to connect — click an edge + Del to disconnect
         </span>
       </div>
     </div>

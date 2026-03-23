@@ -49,6 +49,7 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
   return (
     <>
       <Handle
+        id="target"
         type="target"
         position={Position.Left}
         className="!h-3 !w-3 !border-2 !border-warning !bg-surface-high"

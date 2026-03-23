@@ -1,4 +1,5 @@
 import { EmbedBuilder, type Client, type TextChannel } from "discord.js";
+import { lookup } from "node:dns/promises";
 import { resolveTemplate } from "@fluxcore/systems/actions/templateEngine";
 import type { ActionConfig, ActionType, EventContext } from "@fluxcore/systems/actions/types";
 import { EVENT_TYPES, MAX_TEMPLATE_LENGTH } from "@fluxcore/systems/actions/constants";
@@ -44,13 +45,19 @@ executors.set("sendEmbed", async (client, ctx, config) => {
   await channel.send({ embeds: [embed] });
 });
 
-executors.set("sendDM", async (_client, ctx, config) => {
-  if (!ctx.member || !config.message) return;
+executors.set("sendDM", async (client, ctx, config) => {
+  if (!config.message) return;
   const resolved = resolveTemplate(config.message, ctx);
   try {
-    await ctx.member.user.send(resolved);
-  } catch {
-    // User may have DMs disabled — silently skip
+    // Prefer ctx.member.user if available, otherwise fetch the user directly
+    if (ctx.member) {
+      await ctx.member.user.send(resolved);
+    } else if (ctx.userId) {
+      const user = await client.users.fetch(ctx.userId);
+      await user.send(resolved);
+    }
+  } catch (err) {
+    logger.warn(`sendDM failed for user ${ctx.userId ?? "unknown"}: ${err instanceof Error ? err.message : String(err)}`);
   }
 });
 
@@ -109,9 +116,22 @@ const PRIVATE_IP_PATTERNS = [
   /^fe80:/,
 ];
 
-function isPrivateHost(hostname: string): boolean {
+function isPrivateIP(address: string): boolean {
+  return PRIVATE_IP_PATTERNS.some((pattern) => pattern.test(address));
+}
+
+async function isPrivateHost(hostname: string): Promise<boolean> {
   if (hostname === "localhost") return true;
-  return PRIVATE_IP_PATTERNS.some((pattern) => pattern.test(hostname));
+  // Check hostname string first (catches IP literals)
+  if (isPrivateIP(hostname)) return true;
+  // Resolve DNS and check the actual IP to prevent DNS rebinding
+  try {
+    const { address } = await lookup(hostname);
+    return isPrivateIP(address);
+  } catch {
+    // DNS resolution failed — block to be safe
+    return true;
+  }
 }
 
 executors.set("sendWebhook", async (_client, ctx, config) => {
@@ -130,7 +150,7 @@ executors.set("sendWebhook", async (_client, ctx, config) => {
     return;
   }
 
-  if (isPrivateHost(url.hostname)) {
+  if (await isPrivateHost(url.hostname)) {
     logger.warn(`Webhook URL points to private/internal host: ${url.hostname}`);
     return;
   }
@@ -167,12 +187,14 @@ executors.set("sendWebhook", async (_client, ctx, config) => {
   const timeout = setTimeout(() => controller.abort(), 5000);
 
   try {
-    await fetch(config.webhook.url, {
+    const response = await fetch(config.webhook.url, {
       method: config.webhook.method ?? "POST",
       headers,
       body,
       signal: controller.signal,
     });
+    // Consume response body to release the connection
+    await response.text();
   } finally {
     clearTimeout(timeout);
   }
@@ -180,10 +202,21 @@ executors.set("sendWebhook", async (_client, ctx, config) => {
 
 // --- Set Nickname ---
 
-executors.set("setNickname", async (_client, ctx, config) => {
-  if (!ctx.member || !config.nickname) return;
-  const resolved = resolveTemplate(config.nickname, ctx);
-  await ctx.member.setNickname(resolved.slice(0, 32));
+executors.set("setNickname", async (client, ctx, config) => {
+  if (!config.nickname) return;
+  try {
+    // Fetch member from guild if not in context
+    let member = ctx.member;
+    if (!member && ctx.userId && ctx.guildId) {
+      const guild = await client.guilds.fetch(ctx.guildId);
+      member = await guild.members.fetch(ctx.userId);
+    }
+    if (!member) return;
+    const resolved = resolveTemplate(config.nickname, ctx);
+    await member.setNickname(resolved.slice(0, 32));
+  } catch (err) {
+    logger.warn(`setNickname failed for user ${ctx.userId ?? "unknown"}: ${err instanceof Error ? err.message : String(err)}`);
+  }
 });
 
 // --- Create Thread ---
@@ -209,8 +242,8 @@ executors.set("addReaction", async (client, ctx, config) => {
       ctx.extra["message.id"],
     );
     await message.react(config.emoji);
-  } catch {
-    // Message may have been deleted or emoji may be invalid
+  } catch (err) {
+    logger.warn(`addReaction failed (emoji: ${config.emoji}, message: ${ctx.extra?.["message.id"] ?? "unknown"}): ${err instanceof Error ? err.message : String(err)}`);
   }
 });
 

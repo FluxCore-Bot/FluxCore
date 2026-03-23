@@ -71,22 +71,19 @@ function setNestedValue(
   path: string,
   value: unknown,
 ): Record<string, unknown> {
-  const result = { ...obj };
   const parts = path.split(".");
   if (parts.length === 1) {
-    result[parts[0]] = value;
-    return result;
+    return { ...obj, [parts[0]]: value };
   }
   const [first, ...rest] = parts;
-  if (rest.length === 1) {
-    result[first] = {
-      ...(typeof result[first] === "object" && result[first] !== null
-        ? (result[first] as Record<string, unknown>)
-        : {}),
-      [rest[0]]: value,
-    };
-  }
-  return result;
+  const child =
+    typeof obj[first] === "object" && obj[first] !== null
+      ? (obj[first] as Record<string, unknown>)
+      : {};
+  return {
+    ...obj,
+    [first]: setNestedValue(child, rest.join("."), value),
+  };
 }
 
 function getHeaderInfo(props: NodeDetailPanelProps) {

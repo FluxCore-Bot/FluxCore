@@ -44,6 +44,7 @@ const ACTION_X = 420;
 const BRANCH_X = 700;
 const NODE_Y_START = 60;
 const NODE_Y_GAP = 130;
+const EDGE_INTERACTION_WIDTH = 20; // wider click area for selecting edges
 
 /**
  * Build nodes/edges from a flat linear actions array (v1 legacy).
@@ -83,6 +84,9 @@ function buildLinearNodes(
       target: "action-0",
       type: "smoothstep",
       animated: true,
+      deletable: true,
+      focusable: true,
+      interactionWidth: EDGE_INTERACTION_WIDTH,
       style: { stroke: "rgba(163, 166, 255, 0.5)", strokeWidth: 2 },
     });
   }
@@ -94,35 +98,10 @@ function buildLinearNodes(
       target: `action-${i + 1}`,
       type: "smoothstep",
       animated: true,
+      deletable: true,
+      focusable: true,
+      interactionWidth: EDGE_INTERACTION_WIDTH,
       style: { stroke: "rgba(163, 166, 255, 0.3)", strokeWidth: 2 },
-    });
-  }
-
-  if (actions.length < maxActions) {
-    const addNode: Node<AddActionNodeData> = {
-      id: "add-action",
-      type: "addActionNode",
-      position: {
-        x: ACTION_X,
-        y: NODE_Y_START + actions.length * NODE_Y_GAP,
-      },
-      data: { onAdd: onAddAction },
-      draggable: false,
-    };
-    allNodes.push(addNode);
-
-    const lastSource =
-      actions.length > 0 ? `action-${actions.length - 1}` : "trigger";
-    allEdges.push({
-      id: `${lastSource}-to-add`,
-      source: lastSource,
-      target: "add-action",
-      type: "smoothstep",
-      style: {
-        stroke: "rgba(163, 166, 255, 0.15)",
-        strokeWidth: 2,
-        strokeDasharray: "6 4",
-      },
     });
   }
 
@@ -232,6 +211,72 @@ function buildStepNodes(
     }
   }
 
+  // Place disconnected (unvisited) steps below the main graph
+  const maxCol = Math.max(0, ...Array.from(colRowCounters.keys()));
+  let floatingRow = Math.max(0, ...Array.from(colRowCounters.values())) + 1;
+  for (const step of steps) {
+    if (visited.has(step.id)) continue;
+    visited.add(step.id);
+
+    const x = ACTION_X + (maxCol + 1) * 280;
+    const y = NODE_Y_START + floatingRow * NODE_Y_GAP;
+    floatingRow++;
+
+    const nodeId = `step-${step.id}`;
+
+    if (step.type === "action") {
+      const label = constants?.actionTypes[step.action.type]?.label ?? (step.action.type || "Select Action");
+      allNodes.push({
+        id: nodeId,
+        type: "actionNode",
+        position: { x, y },
+        data: {
+          index: actionIndex++,
+          action: step.action,
+          label,
+          stepId: step.id,
+          validationState: getNodeValidationState(nodeId, validationIssues),
+        },
+        draggable: true,
+        selected: selectedNodeId === nodeId,
+      });
+    } else if (step.type === "condition") {
+      const condData: ConditionNodeData = {
+        index: actionIndex++,
+        field: step.condition.field,
+        operator: step.condition.operator,
+        value: step.condition.value,
+        label: step.condition.field
+          ? `If ${step.condition.field}`
+          : "Configure condition",
+        validationState: getNodeValidationState(nodeId, validationIssues),
+      };
+      allNodes.push({
+        id: nodeId,
+        type: "conditionNode",
+        position: { x, y },
+        data: condData,
+        draggable: true,
+        selected: selectedNodeId === nodeId,
+      });
+    } else if (step.type === "delay") {
+      const delayData: DelayNodeData = {
+        index: actionIndex++,
+        delayMs: step.delayMs,
+        label: "Delay",
+        validationState: getNodeValidationState(nodeId, validationIssues),
+      };
+      allNodes.push({
+        id: nodeId,
+        type: "delayNode",
+        position: { x, y },
+        data: delayData,
+        draggable: true,
+        selected: selectedNodeId === nodeId,
+      });
+    }
+  }
+
   // Edge from trigger to first step
   if (entryStepId && stepMap.has(entryStepId)) {
     allEdges.push({
@@ -240,6 +285,9 @@ function buildStepNodes(
       target: `step-${entryStepId}`,
       type: "smoothstep",
       animated: true,
+      deletable: true,
+      focusable: true,
+      interactionWidth: EDGE_INTERACTION_WIDTH,
       style: { stroke: "rgba(163, 166, 255, 0.5)", strokeWidth: 2 },
     });
   }
@@ -257,6 +305,9 @@ function buildStepNodes(
           target: `step-${step.next}`,
           type: "smoothstep",
           animated: true,
+          deletable: true,
+          focusable: true,
+          interactionWidth: EDGE_INTERACTION_WIDTH,
           style: { stroke: "rgba(163, 166, 255, 0.3)", strokeWidth: 2 },
         });
       }
@@ -269,6 +320,9 @@ function buildStepNodes(
           target: `step-${step.thenNext}`,
           type: "smoothstep",
           animated: true,
+          deletable: true,
+          focusable: true,
+          interactionWidth: EDGE_INTERACTION_WIDTH,
           label: "Yes",
           labelStyle: { fontSize: 10, fontWeight: 600, fill: "rgba(172,138,255,0.8)" },
           style: { stroke: "rgba(172, 138, 255, 0.4)", strokeWidth: 2 },
@@ -282,6 +336,9 @@ function buildStepNodes(
           target: `step-${step.elseNext}`,
           type: "smoothstep",
           animated: true,
+          deletable: true,
+          focusable: true,
+          interactionWidth: EDGE_INTERACTION_WIDTH,
           label: "No",
           labelStyle: { fontSize: 10, fontWeight: 600, fill: "rgba(255,100,100,0.8)" },
           style: { stroke: "rgba(255, 100, 100, 0.3)", strokeWidth: 2 },

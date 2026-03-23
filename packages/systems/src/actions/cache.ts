@@ -1,15 +1,7 @@
 import { getPrisma } from "@fluxcore/database";
 import { logger } from "@fluxcore/utils";
-import { getRulesByGuild } from "./persistence.js";
+import { getRulesByGuild, rowToRule } from "./persistence.js";
 import type { ActionRule } from "./types.js";
-
-function safeJsonParse<T>(json: string, fallback: T): T {
-  try {
-    return JSON.parse(json) as T;
-  } catch {
-    return fallback;
-  }
-}
 
 // guildId -> eventType -> ActionRule[] (sorted by priority desc)
 const ruleCache = new Map<string, Map<string, ActionRule[]>>();
@@ -38,18 +30,7 @@ export async function loadAllRules(): Promise<void> {
 
     ruleCache.clear();
     for (const row of rows) {
-      const rule: ActionRule = {
-        id: row.id,
-        guildId: row.guildId,
-        name: row.name,
-        enabled: row.enabled,
-        eventType: row.eventType as ActionRule["eventType"],
-        actions: safeJsonParse(row.actions, []),
-        conditions: safeJsonParse(row.conditions, {}),
-        priority: row.priority,
-        createdBy: row.createdBy,
-      };
-      addToInternalCache(rule);
+      addToInternalCache(rowToRule(row));
     }
     logger.info(`Loaded ${rows.length} action rule(s) into cache`);
   } catch (error) {

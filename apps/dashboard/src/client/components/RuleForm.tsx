@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useConstants } from "../lib/hooks/useConstants";
 import { useChannels } from "../lib/hooks/useChannels";
 import { useRoles } from "../lib/hooks/useRoles";
 import { useCreateRule, useUpdateRule } from "../lib/hooks/useRules";
+import { useRuleDraft } from "../lib/hooks/useRuleDraft";
 import { toast } from "sonner";
 import { ActionRow } from "./ActionRow";
 import { ConditionsEditor } from "./ConditionsEditor";
@@ -53,18 +54,34 @@ export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) 
   const { data: roles = [] } = useRoles(guildId);
   const createRule = useCreateRule(guildId);
   const updateRule = useUpdateRule(guildId);
+  const { saveDraft, loadDraft, clearDraft } = useRuleDraft(guildId, rule?.id);
 
-  const [name, setName] = useState(draft?.name ?? rule?.name ?? "");
-  const [eventType, setEventType] = useState(draft?.eventType ?? rule?.eventType ?? "");
+  // Load saved draft on mount (only for new rules without an explicit draft)
+  const savedDraft = !draft && !rule ? loadDraft() : null;
+  const initialDraft = draft ?? savedDraft;
+
+  const [name, setName] = useState(initialDraft?.name ?? rule?.name ?? "");
+  const [eventType, setEventType] = useState(initialDraft?.eventType ?? rule?.eventType ?? "");
   const [actions, setActions] = useState<ActionConfig[]>(
-    draft?.actions ?? (rule?.actions.length ? rule.actions : [{ ...emptyAction }]),
+    initialDraft?.actions ?? (rule?.actions.length ? rule.actions : [{ ...emptyAction }]),
   );
   const [conditions, setConditions] = useState<ActionConditions>(
-    draft?.conditions ?? rule?.conditions ?? {},
+    initialDraft?.conditions ?? rule?.conditions ?? {},
   );
-  const [priority, setPriority] = useState(draft?.priority ?? rule?.priority ?? 0);
-  const [enabled, setEnabled] = useState(draft?.enabled ?? rule?.enabled ?? true);
+  const [priority, setPriority] = useState(initialDraft?.priority ?? rule?.priority ?? 0);
+  const [enabled, setEnabled] = useState(initialDraft?.enabled ?? rule?.enabled ?? true);
   const [error, setError] = useState("");
+  const [hasDraft, setHasDraft] = useState(!!savedDraft);
+
+  // Auto-save draft on changes
+  useEffect(() => {
+    saveDraft({ name, eventType, actions, conditions, priority, enabled });
+  }, [name, eventType, actions, conditions, priority, enabled, saveDraft]);
+
+  const dismissDraft = useCallback(() => {
+    clearDraft();
+    setHasDraft(false);
+  }, [clearDraft]);
 
   if (!constants) return <PageSkeleton />;
 
@@ -96,10 +113,17 @@ export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) 
     e.preventDefault();
     setError("");
 
+    // Filter out unconfigured (empty type) actions before submitting
+    const configuredActions = actions.filter((a) => a.type);
+    if (configuredActions.length === 0) {
+      setError("At least one action must be configured with a type.");
+      return;
+    }
+
     const formData = {
       name: name.trim(),
       eventType,
-      actions,
+      actions: configuredActions,
       conditions,
       priority,
       enabled,
@@ -119,6 +143,7 @@ export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) 
         await createRule.mutateAsync(result.data);
         toast.success("Rule created");
       }
+      clearDraft();
       onClose();
     } catch (err) {
       const message =
@@ -149,6 +174,16 @@ export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) 
           </Button>
         )}
       </div>
+
+      {hasDraft && (
+        <div className="mb-4 flex items-center gap-3 rounded-lg border border-accent/30 bg-accent/5 px-4 py-2.5 text-sm">
+          <Icon name="history" size={16} className="text-accent" />
+          <span className="text-text-muted">Draft restored from previous session.</span>
+          <Button type="button" variant="link" size="sm" onClick={dismissDraft}>
+            Dismiss
+          </Button>
+        </div>
+      )}
 
       {error && (
         <Alert variant="destructive" className="mb-4">{error}</Alert>

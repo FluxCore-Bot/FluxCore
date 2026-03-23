@@ -75,6 +75,7 @@ function buildMessageContext(
     userName: message.author?.username,
     userTag: message.author?.tag,
     userMention: message.author ? `<@${message.author.id}>` : undefined,
+    member: message.member ?? undefined,
     channelId: message.channelId,
     channelName:
       "name" in message.channel ? (message.channel.name ?? undefined) : undefined,

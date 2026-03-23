@@ -38,6 +38,7 @@ function DelayNodeComponent({ data, selected }: NodeProps) {
   return (
     <>
       <Handle
+        id="target"
         type="target"
         position={Position.Left}
         className="!h-3 !w-3 !border-2 !border-text-muted !bg-surface-high"
@@ -59,6 +60,7 @@ function DelayNodeComponent({ data, selected }: NodeProps) {
         </p>
       </div>
       <Handle
+        id="source"
         type="source"
         position={Position.Right}
         className="!h-3 !w-3 !border-2 !border-text-muted/50 !bg-surface-high"

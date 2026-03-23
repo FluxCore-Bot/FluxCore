@@ -51,6 +51,19 @@ export function IndexPage() {
             icon="dns"
             title="No servers found"
             description="Make sure the bot is added to a server where you have the Manage Server permission."
+            action={
+              botInfo?.inviteUrl && (
+                <a
+                  href={botInfo.inviteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-10 items-center gap-2 rounded-lg bg-accent px-5 text-sm font-semibold text-bg shadow-lg shadow-accent/20 transition-all hover:brightness-110 active:scale-[0.98]"
+                >
+                  <Icon name="add_circle" size={16} />
+                  Add to Server
+                </a>
+              )
+            }
           />
         </div>
       </div>

@@ -1,4 +1,4 @@
-import type { FastifyInstance } from "fastify";
+import type { FastifyInstance, FastifyReply } from "fastify";
 import { requireAuth, requireGuildAdmin } from "../middleware.js";
 import {
   createRule,
@@ -26,11 +26,93 @@ import {
   EVENT_TYPE_VARIABLES,
   TEMPLATE_VARIABLES,
 } from "@fluxcore/systems/actions/constants";
-import type { ActionEventType, ActionType } from "@fluxcore/systems/actions/types";
+import type { ActionEventType, ActionType, RuleStep } from "@fluxcore/systems/actions/types";
 import { channelExistsInGuild } from "../discordApi.js";
 
 const validEventTypes = new Set(Object.keys(EVENT_TYPES));
 const validActionTypes = new Set(Object.keys(ACTION_TYPES));
+
+const MAX_BULK_RULE_IDS = 50;
+
+interface RuleRequestBody {
+  name?: string;
+  eventType?: string;
+  actions?: Array<{ type: string; [key: string]: unknown }>;
+  steps?: Array<{ id: string; type: string; [key: string]: unknown }>;
+  entryStepId?: string;
+  conditions?: Record<string, string[]>;
+  priority?: number;
+  enabled?: boolean;
+}
+
+/**
+ * Validates rule request body fields shared between create and update.
+ * Returns an error string if validation fails, or null if valid.
+ */
+function validateRuleBody(
+  body: RuleRequestBody,
+  options: { requireName: boolean; requireActions: boolean },
+): string | null {
+  if (options.requireName) {
+    if (!body.name || typeof body.name !== "string" || body.name.length > 50) {
+      return "Name is required (max 50 chars)";
+    }
+  } else if (body.name !== undefined) {
+    if (typeof body.name !== "string" || body.name.length > 50) {
+      return "Name must be a string (max 50 chars)";
+    }
+  }
+
+  if (options.requireActions) {
+    if (!body.eventType || !validEventTypes.has(body.eventType)) {
+      return "Invalid event type";
+    }
+    if (!Array.isArray(body.actions) || body.actions.length === 0) {
+      return "At least one action is required";
+    }
+  } else {
+    if (body.eventType && !validEventTypes.has(body.eventType)) {
+      return "Invalid event type";
+    }
+  }
+
+  if (body.actions) {
+    if (body.actions.length > MAX_ACTIONS_PER_RULE) {
+      return `Max ${MAX_ACTIONS_PER_RULE} actions per rule`;
+    }
+    for (const action of body.actions) {
+      if (!validActionTypes.has(action.type)) {
+        return `Invalid action type: ${action.type}`;
+      }
+      if (action.type === "sendWebhook") {
+        const webhook = action.webhook as { url?: string } | undefined;
+        if (!webhook?.url) {
+          return "sendWebhook requires a webhook URL";
+        }
+        try {
+          const url = new URL(webhook.url);
+          if (url.protocol !== "https:") {
+            return "Webhook URL must use HTTPS";
+          }
+        } catch {
+          return "Invalid webhook URL";
+        }
+      }
+    }
+  }
+
+  if (body.steps?.length) {
+    if (body.steps.length > 10) {
+      return "Max 10 steps per rule";
+    }
+    const conditionCount = body.steps.filter((s) => s.type === "condition").length;
+    if (conditionCount > 3) {
+      return "Max 3 condition steps per rule";
+    }
+  }
+
+  return null;
+}
 
 export function registerActionRoutes(app: FastifyInstance): void {
   // --- Constants (for frontend dropdowns) ---
@@ -72,74 +154,12 @@ export function registerActionRoutes(app: FastifyInstance): void {
     { preHandler: [requireAuth, requireGuildAdmin] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
-      const body = request.body as {
-        name?: string;
-        eventType?: string;
-        actions?: Array<{ type: string; [key: string]: unknown }>;
-        steps?: Array<{ id: string; type: string; [key: string]: unknown }>;
-        entryStepId?: string;
-        conditions?: Record<string, string[]>;
-        priority?: number;
-        enabled?: boolean;
-      };
+      const body = request.body as RuleRequestBody;
 
-      if (!body.name || typeof body.name !== "string" || body.name.length > 50) {
-        reply.code(400).send({ error: "Name is required (max 50 chars)" });
+      const error = validateRuleBody(body, { requireName: true, requireActions: true });
+      if (error) {
+        reply.code(400).send({ error });
         return;
-      }
-
-      if (!body.eventType || !validEventTypes.has(body.eventType)) {
-        reply.code(400).send({ error: "Invalid event type" });
-        return;
-      }
-
-      if (!Array.isArray(body.actions) || body.actions.length === 0) {
-        reply.code(400).send({ error: "At least one action is required" });
-        return;
-      }
-
-      if (body.actions.length > MAX_ACTIONS_PER_RULE) {
-        reply
-          .code(400)
-          .send({ error: `Max ${MAX_ACTIONS_PER_RULE} actions per rule` });
-        return;
-      }
-
-      for (const action of body.actions) {
-        if (!validActionTypes.has(action.type)) {
-          reply.code(400).send({ error: `Invalid action type: ${action.type}` });
-          return;
-        }
-        if (action.type === "sendWebhook") {
-          const webhook = action.webhook as { url?: string } | undefined;
-          if (!webhook?.url) {
-            reply.code(400).send({ error: "sendWebhook requires a webhook URL" });
-            return;
-          }
-          try {
-            const url = new URL(webhook.url);
-            if (url.protocol !== "https:") {
-              reply.code(400).send({ error: "Webhook URL must use HTTPS" });
-              return;
-            }
-          } catch {
-            reply.code(400).send({ error: "Invalid webhook URL" });
-            return;
-          }
-        }
-      }
-
-      // Validate steps if present
-      if (body.steps?.length) {
-        if (body.steps.length > 10) {
-          reply.code(400).send({ error: "Max 10 steps per rule" });
-          return;
-        }
-        const conditionCount = body.steps.filter((s) => s.type === "condition").length;
-        if (conditionCount > 3) {
-          reply.code(400).send({ error: "Max 3 condition steps per rule" });
-          return;
-        }
       }
 
       const settings = getGuildSettingsOrDefault(guildId);
@@ -151,14 +171,14 @@ export function registerActionRoutes(app: FastifyInstance): void {
 
       const rule = await createRule({
         guildId,
-        name: body.name,
+        name: body.name!,
         eventType: body.eventType as ActionEventType,
-        actions: body.actions.map((a) => ({
+        actions: body.actions!.map((a) => ({
           ...a,
           type: a.type as ActionType,
         })),
         ...(body.steps && body.entryStepId
-          ? { steps: body.steps as any, entryStepId: body.entryStepId }
+          ? { steps: body.steps as RuleStep[], entryStepId: body.entryStepId }
           : {}),
         conditions: body.conditions ?? {},
         priority: body.priority ?? 0,
@@ -179,66 +199,12 @@ export function registerActionRoutes(app: FastifyInstance): void {
         guildId: string;
         ruleId: string;
       };
-      const body = request.body as {
-        name?: string;
-        eventType?: string;
-        actions?: Array<{ type: string; [key: string]: unknown }>;
-        steps?: Array<{ id: string; type: string; [key: string]: unknown }>;
-        entryStepId?: string;
-        conditions?: Record<string, string[]>;
-        priority?: number;
-        enabled?: boolean;
-      };
+      const body = request.body as RuleRequestBody;
 
-      if (body.eventType && !validEventTypes.has(body.eventType)) {
-        reply.code(400).send({ error: "Invalid event type" });
+      const error = validateRuleBody(body, { requireName: false, requireActions: false });
+      if (error) {
+        reply.code(400).send({ error });
         return;
-      }
-
-      if (body.actions) {
-        if (body.actions.length > MAX_ACTIONS_PER_RULE) {
-          reply
-            .code(400)
-            .send({ error: `Max ${MAX_ACTIONS_PER_RULE} actions per rule` });
-          return;
-        }
-        for (const action of body.actions) {
-          if (!validActionTypes.has(action.type)) {
-            reply
-              .code(400)
-              .send({ error: `Invalid action type: ${action.type}` });
-            return;
-          }
-          if (action.type === "sendWebhook") {
-            const webhook = action.webhook as { url?: string } | undefined;
-            if (!webhook?.url) {
-              reply.code(400).send({ error: "sendWebhook requires a webhook URL" });
-              return;
-            }
-            try {
-              const url = new URL(webhook.url);
-              if (url.protocol !== "https:") {
-                reply.code(400).send({ error: "Webhook URL must use HTTPS" });
-                return;
-              }
-            } catch {
-              reply.code(400).send({ error: "Invalid webhook URL" });
-              return;
-            }
-          }
-        }
-      }
-
-      if (body.steps?.length) {
-        if (body.steps.length > 10) {
-          reply.code(400).send({ error: "Max 10 steps per rule" });
-          return;
-        }
-        const conditionCount = body.steps.filter((s) => s.type === "condition").length;
-        if (conditionCount > 3) {
-          reply.code(400).send({ error: "Max 3 condition steps per rule" });
-          return;
-        }
       }
 
       try {
@@ -254,7 +220,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
             })),
           }),
           ...(body.steps && body.entryStepId
-            ? { steps: body.steps as any, entryStepId: body.entryStepId }
+            ? { steps: body.steps as RuleStep[], entryStepId: body.entryStepId }
             : {}),
           ...(body.conditions !== undefined && { conditions: body.conditions }),
           ...(body.priority !== undefined && { priority: body.priority }),
@@ -301,6 +267,11 @@ export function registerActionRoutes(app: FastifyInstance): void {
         !body.action
       ) {
         reply.code(400).send({ error: "ruleIds and action are required" });
+        return;
+      }
+
+      if (body.ruleIds.length > MAX_BULK_RULE_IDS) {
+        reply.code(400).send({ error: `Max ${MAX_BULK_RULE_IDS} rules per bulk operation` });
         return;
       }
 

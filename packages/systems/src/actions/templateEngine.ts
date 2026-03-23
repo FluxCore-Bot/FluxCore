@@ -19,24 +19,36 @@ const VARIABLE_MAP: Record<string, VariableResolver> = {
   "{timestamp}": (ctx) => ctx.timestamp,
 };
 
+/**
+ * Escapes template variable syntax in a string to prevent injection.
+ * Replaces `{` with a zero-width space prefix so patterns like `{user.id}`
+ * in user-generated content won't be resolved as template variables.
+ */
+function escapeTemplateVars(value: string): string {
+  return value.replace(/\{/g, "\u200B{");
+}
+
 export function resolveTemplate(
   template: string,
   context: EventContext,
 ): string {
   let result = template;
-  for (const [variable, resolver] of Object.entries(VARIABLE_MAP)) {
-    if (result.includes(variable)) {
-      result = result.replaceAll(variable, resolver(context));
-    }
-  }
 
-  // Resolve event-specific variables from ctx.extra
+  // Resolve event-specific variables first, escaping user-controlled values
+  // to prevent template injection (e.g. message.content containing "{user.id}")
   if (context.extra) {
     for (const [key, value] of Object.entries(context.extra)) {
       const variable = `{${key}}`;
       if (result.includes(variable)) {
-        result = result.replaceAll(variable, value);
+        result = result.replaceAll(variable, escapeTemplateVars(value));
       }
+    }
+  }
+
+  // Then resolve core template variables
+  for (const [variable, resolver] of Object.entries(VARIABLE_MAP)) {
+    if (result.includes(variable)) {
+      result = result.replaceAll(variable, resolver(context));
     }
   }
 
