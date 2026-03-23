@@ -96,7 +96,6 @@ services:
     command: sh -c "cd packages/database && pnpm prisma migrate deploy && cd /app && node apps/dashboard/dist/server/index.js"
     environment:
       - NODE_ENV=production
-      - DASHBOARD_CALLBACK_URL=http://localhost:3000/auth/callback
     volumes:
       - ./packages:/app/packages
       - ./apps:/app/apps

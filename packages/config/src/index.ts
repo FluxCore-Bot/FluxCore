@@ -44,8 +44,7 @@ function loadConfig(): Config {
 
   const dashboardPort = Number(process.env.DASHBOARD_PORT) || 3000;
   const dashboardClientSecret = process.env.DASHBOARD_CLIENT_SECRET || undefined;
-  const dashboardCallbackUrl =
-    process.env.DASHBOARD_CALLBACK_URL || `http://localhost:${dashboardPort}/auth/callback`;
+  const dashboardCallbackUrl = process.env.DASHBOARD_CALLBACK_URL || "";
   const dashboardSessionSecret = process.env.DASHBOARD_SESSION_SECRET;
   const resolvedSessionSecret =
     dashboardSessionSecret || randomBytes(32).toString("hex");

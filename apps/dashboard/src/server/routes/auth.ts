@@ -1,5 +1,6 @@
 import type { FastifyInstance } from "fastify";
 import {
+  buildCallbackUrl,
   getAuthorizationUrl,
   exchangeCode,
   fetchUser,
@@ -17,8 +18,12 @@ const authRateLimit = {
 };
 
 export function registerAuthRoutes(app: FastifyInstance): void {
-  app.get("/auth/login", { ...authRateLimit }, async (_request, reply) => {
-    const { url, state } = getAuthorizationUrl();
+  app.get("/auth/login", { ...authRateLimit }, async (request, reply) => {
+    const proto = (request.headers["x-forwarded-proto"] as string) || request.protocol;
+    const host = request.headers["x-forwarded-host"] as string || request.hostname;
+    const origin = `${proto}://${host}`;
+    const callbackUrl = buildCallbackUrl(origin);
+    const { url, state } = getAuthorizationUrl(callbackUrl);
     reply
       .setCookie("oauth_state", state, {
         path: "/",
@@ -55,7 +60,11 @@ export function registerAuthRoutes(app: FastifyInstance): void {
     }
 
     try {
-      const token = await exchangeCode(code);
+      const proto = (request.headers["x-forwarded-proto"] as string) || request.protocol;
+      const host = request.headers["x-forwarded-host"] as string || request.hostname;
+      const origin = `${proto}://${host}`;
+      const callbackUrl = buildCallbackUrl(origin);
+      const token = await exchangeCode(code, callbackUrl);
       const [user, guilds] = await Promise.all([
         fetchUser(token.access_token),
         fetchGuilds(token.access_token),

@@ -17,11 +17,16 @@ interface DiscordUser {
   avatar: string | null;
 }
 
-export function getAuthorizationUrl(): { url: string; state: string } {
+export function buildCallbackUrl(origin: string): string {
+  if (config.dashboardCallbackUrl) return config.dashboardCallbackUrl;
+  return `${origin}/auth/callback`;
+}
+
+export function getAuthorizationUrl(callbackUrl: string): { url: string; state: string } {
   const state = randomBytes(32).toString("hex");
   const params = new URLSearchParams({
     client_id: config.clientId,
-    redirect_uri: config.dashboardCallbackUrl,
+    redirect_uri: callbackUrl,
     response_type: "code",
     scope: "identify guilds",
     state,
@@ -29,7 +34,7 @@ export function getAuthorizationUrl(): { url: string; state: string } {
   return { url: `${DISCORD_API}/oauth2/authorize?${params}`, state };
 }
 
-export async function exchangeCode(code: string): Promise<TokenResponse> {
+export async function exchangeCode(code: string, callbackUrl: string): Promise<TokenResponse> {
   const res = await fetch(`${DISCORD_API}/oauth2/token`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -38,7 +43,7 @@ export async function exchangeCode(code: string): Promise<TokenResponse> {
       client_secret: config.dashboardClientSecret!,
       grant_type: "authorization_code",
       code,
-      redirect_uri: config.dashboardCallbackUrl,
+      redirect_uri: callbackUrl,
     }),
   });
   if (!res.ok) {
