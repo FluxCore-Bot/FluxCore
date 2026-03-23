@@ -12,12 +12,14 @@ export async function apiFetch<T>(
   path: string,
   options: RequestInit = {},
 ): Promise<T> {
+  const headers: Record<string, string> = { ...options.headers as Record<string, string> };
+  if (options.body) {
+    headers["Content-Type"] ??= "application/json";
+  }
+
   const res = await fetch(path, {
     ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
+    headers,
   });
 
   if (res.status === 401) {

@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "DashboardSession" ADD COLUMN "guildsRefreshedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;

@@ -77,7 +77,7 @@ export function registerAuthRoutes(app: FastifyInstance): void {
           sameSite: "lax",
           secure: isProduction,
           signed: true,
-          maxAge: 3600,
+          maxAge: 604800, // 7 days
         })
         .redirect("/");
     } catch (error) {

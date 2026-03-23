@@ -9,5 +9,6 @@ export function useRoles(guildId: string) {
       const data = await apiFetch<unknown>(`/api/guilds/${guildId}/roles`);
       return RoleListSchema.parse(data);
     },
+    staleTime: 2 * 60 * 1000, // 2 minutes (server caches for 60s)
   });
 }

@@ -1,6 +1,11 @@
 import { randomUUID } from "node:crypto";
+import type { FastifyReply } from "fastify";
 import { getPrisma } from "@fluxcore/database";
 import { encrypt, decrypt } from "./crypto.js";
+import { fetchGuilds } from "./auth.js";
+import { logger } from "@fluxcore/utils";
+
+const isProduction = process.env.NODE_ENV === "production";
 
 function safeJsonParse<T>(json: string, fallback: T): T {
   try {
@@ -26,10 +31,18 @@ export interface Session {
   createdAt: number;
 }
 
-const SESSION_TTL = 60 * 60 * 1000; // 1 hour
+const SESSION_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
 const CACHE_TTL = 30_000; // 30 seconds
+const GUILD_REFRESH_INTERVAL = 30 * 60 * 1000; // 30 minutes
 
-const sessionCache = new Map<string, { session: Session; expiresAt: number }>();
+interface CachedSession {
+  session: Session;
+  cacheExpiresAt: number;
+  sessionExpiresAt: number;
+  guildsRefreshedAt: number;
+}
+
+const sessionCache = new Map<string, CachedSession>();
 
 export async function createSession(
   data: Omit<Session, "createdAt">,
@@ -47,6 +60,7 @@ export async function createSession(
       avatar: data.avatar,
       accessToken: encrypt(data.accessToken),
       guilds: JSON.stringify(data.guilds),
+      guildsRefreshedAt: now,
       createdAt: now,
       expiresAt,
     },
@@ -57,7 +71,7 @@ export async function createSession(
 
 export async function getSession(id: string): Promise<Session | null> {
   const cached = sessionCache.get(id);
-  if (cached && cached.expiresAt > Date.now()) {
+  if (cached && cached.cacheExpiresAt > Date.now()) {
     return cached.session;
   }
   sessionCache.delete(id);
@@ -83,8 +97,104 @@ export async function getSession(id: string): Promise<Session | null> {
     createdAt: row.createdAt.getTime(),
   };
 
-  sessionCache.set(id, { session, expiresAt: Date.now() + CACHE_TTL });
+  const cachedEntry: CachedSession = {
+    session,
+    cacheExpiresAt: Date.now() + CACHE_TTL,
+    sessionExpiresAt: row.expiresAt.getTime(),
+    guildsRefreshedAt: row.guildsRefreshedAt.getTime(),
+  };
+  sessionCache.set(id, cachedEntry);
+
+  // Auto-refresh stale guild data in the background
+  if (Date.now() - cachedEntry.guildsRefreshedAt > GUILD_REFRESH_INTERVAL) {
+    refreshSessionGuilds(id, session.accessToken, cachedEntry).catch(() => {});
+  }
+
   return session;
+}
+
+/**
+ * Extend session expiry if past 50% of TTL (sliding window).
+ * Also refreshes the cookie maxAge on the reply.
+ */
+export async function touchSession(
+  id: string,
+  reply: FastifyReply,
+): Promise<void> {
+  const cached = sessionCache.get(id);
+  if (!cached) return;
+
+  const remaining = cached.sessionExpiresAt - Date.now();
+  // Only touch if past 50% of TTL to avoid writes on every request
+  if (remaining > SESSION_TTL * 0.5) return;
+
+  const newExpiresAt = new Date(Date.now() + SESSION_TTL);
+  const prisma = getPrisma();
+  await prisma.dashboardSession.update({
+    where: { id },
+    data: { expiresAt: newExpiresAt },
+  });
+
+  // Update cache
+  cached.sessionExpiresAt = newExpiresAt.getTime();
+  cached.cacheExpiresAt = Date.now() + CACHE_TTL;
+
+  // Refresh browser cookie
+  reply.setCookie("session", id, {
+    path: "/",
+    httpOnly: true,
+    sameSite: "lax",
+    secure: isProduction,
+    signed: true,
+    maxAge: 604800, // 7 days
+  });
+}
+
+/**
+ * Re-fetch guilds from Discord and update the session in DB + cache.
+ */
+async function refreshSessionGuilds(
+  id: string,
+  accessToken: string,
+  cached: CachedSession,
+): Promise<OAuthGuild[]> {
+  const guilds = await fetchGuilds(accessToken);
+  const now = new Date();
+
+  const prisma = getPrisma();
+  await prisma.dashboardSession.update({
+    where: { id },
+    data: {
+      guilds: JSON.stringify(guilds),
+      guildsRefreshedAt: now,
+    },
+  });
+
+  // Update cache
+  cached.session.guilds = guilds;
+  cached.guildsRefreshedAt = now.getTime();
+  cached.cacheExpiresAt = Date.now() + CACHE_TTL;
+
+  logger.debug(`Refreshed guild data for session ${id}`);
+  return guilds;
+}
+
+/**
+ * Force-refresh guilds for a session. Used by the manual refresh endpoint.
+ */
+export async function forceRefreshSessionGuilds(
+  id: string,
+): Promise<OAuthGuild[]> {
+  const cached = sessionCache.get(id);
+  if (!cached) {
+    // Load session into cache first
+    const session = await getSession(id);
+    if (!session) throw new Error("Session not found");
+    const entry = sessionCache.get(id);
+    if (!entry) throw new Error("Session not cached");
+    return refreshSessionGuilds(id, session.accessToken, entry);
+  }
+  return refreshSessionGuilds(id, cached.session.accessToken, cached);
 }
 
 export async function deleteSession(id: string): Promise<void> {

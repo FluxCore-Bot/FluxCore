@@ -44,7 +44,7 @@ services:
     build:
       context: .
       target: development
-    command: sh -c "pnpm turbo run dev --filter=@fluxcore/dashboard"
+    command: sh -c "pnpm install --frozen-lockfile && pnpm turbo run dev --filter=@fluxcore/dashboard"
     volumes:
       - ./packages:/app/packages
       - ./apps:/app/apps

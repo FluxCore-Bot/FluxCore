@@ -67,6 +67,15 @@ export interface DiscordRole {
 }
 
 /**
+ * Clear all cached data for a guild (channels, roles, bot presence).
+ */
+export function invalidateGuildCache(guildId: string): void {
+  cache.delete(`guild:${guildId}`);
+  cache.delete(`channels:${guildId}`);
+  cache.delete(`roles:${guildId}`);
+}
+
+/**
  * Check if the bot is a member of the given guild.
  */
 export async function isBotInGuild(guildId: string): Promise<boolean> {

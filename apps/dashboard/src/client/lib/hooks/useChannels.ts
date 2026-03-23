@@ -11,5 +11,6 @@ export function useChannels(guildId: string) {
       );
       return ChannelListSchema.parse(data);
     },
+    staleTime: 2 * 60 * 1000, // 2 minutes (server caches for 60s)
   });
 }
