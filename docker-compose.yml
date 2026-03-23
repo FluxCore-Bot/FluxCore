@@ -64,6 +64,72 @@ services:
       - dashboard
       - full
 
+  # === Preview: run prebuilt dist/ files (pnpm build first) ===
+
+  preview-bot:
+    build:
+      context: .
+      target: development
+    command: sh -c "cd packages/database && pnpm prisma migrate deploy && cd /app && node apps/bot/dist/index.js"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./packages:/app/packages
+      - ./apps:/app/apps
+    env_file:
+      - .env.dev
+    depends_on:
+      postgres:
+        condition: service_healthy
+      preview-lavalink:
+        condition: service_healthy
+    networks:
+      - fluxcore
+    restart: unless-stopped
+    profiles:
+      - preview
+
+  preview-dashboard:
+    build:
+      context: .
+      target: development
+    command: sh -c "cd packages/database && pnpm prisma migrate deploy && cd /app && node apps/dashboard/dist/server/index.js"
+    environment:
+      - NODE_ENV=production
+      - DASHBOARD_CALLBACK_URL=http://localhost:3000/auth/callback
+    volumes:
+      - ./packages:/app/packages
+      - ./apps:/app/apps
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.dev
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - fluxcore
+    restart: unless-stopped
+    profiles:
+      - preview
+
+  preview-lavalink:
+    image: ghcr.io/lavalink-devs/lavalink:4
+    volumes:
+      - ./lavalink/application.yml:/opt/Lavalink/application.yml:ro
+    environment:
+      - _JAVA_OPTIONS=-Xmx128m
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- --header='Authorization: youshallnotpass' http://localhost:2333/version || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - fluxcore
+    restart: unless-stopped
+    profiles:
+      - preview
+
   postgres:
     image: postgres:18-alpine
     environment:
