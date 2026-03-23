@@ -76,14 +76,14 @@ export function LogsTable() {
 
       {/* Filters Row */}
       <div className="flex flex-wrap items-center gap-3">
-        <div className="relative w-64">
+        <div className="relative w-full sm:w-64">
           <Icon name="search" size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted" />
           <Input
             type="text"
             value={ruleFilter}
             onChange={(e) => { setRuleFilter(e.target.value); setPage(1); }}
             placeholder="Search logs..."
-            className="pl-9 font-mono"
+            className="pl-10 font-mono"
           />
         </div>
         <Select value={dateRange} onValueChange={(v) => { setDateRange(v); setPage(1); }}>
@@ -106,8 +106,8 @@ export function LogsTable() {
         />
       ) : (
         <>
-          <div className="rounded-lg bg-surface-low shadow-2xl glass-edge">
-            <Table>
+          <div className="overflow-x-auto rounded-lg bg-surface-low shadow-2xl glass-edge">
+            <Table className="min-w-160">
               <TableHeader>
                 <TableRow className="hover:bg-transparent">
                   <TableHead>Timestamp</TableHead>
@@ -146,8 +146,8 @@ export function LogsTable() {
           </div>
 
           {/* Pagination */}
-          <div className="flex items-center justify-between text-sm text-text-muted">
-            <span>
+          <div className="flex flex-col gap-2 text-sm text-text-muted sm:flex-row sm:items-center sm:justify-between">
+            <span className="text-xs sm:text-sm">
               Showing {(page - 1) * PAGE_SIZE + 1} to{" "}
               {Math.min(page * PAGE_SIZE, filteredLogs.length)} of{" "}
               {filteredLogs.length.toLocaleString()} results

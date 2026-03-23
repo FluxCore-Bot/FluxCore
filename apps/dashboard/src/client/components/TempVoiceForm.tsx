@@ -151,7 +151,7 @@ export function TempVoiceForm() {
           {configs.map((cfg) => (
             <div
               key={cfg.id}
-              className="flex items-center justify-between rounded-md bg-surface-high px-4 py-3"
+              className="flex flex-col gap-3 rounded-md bg-surface-high px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
             >
               <div className="space-y-1">
                 <p className="text-sm font-medium">

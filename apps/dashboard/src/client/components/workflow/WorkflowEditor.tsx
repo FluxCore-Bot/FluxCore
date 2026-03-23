@@ -388,10 +388,10 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
         }
       `}</style>
       {/* Floating toolbar */}
-      <div className="flex items-center gap-3 border-b border-border bg-surface-low/90 px-4 py-2.5 backdrop-blur-sm">
+      <div className="flex flex-wrap items-center gap-2 border-b border-border bg-surface-low/90 px-3 py-2 backdrop-blur-sm sm:gap-3 sm:px-4 sm:py-2.5">
         <Button variant="ghost" size="sm" onClick={onClose} className="gap-1.5">
           <Icon name="arrow_back" size={16} />
-          <span className="text-text-muted">Rules</span>
+          <span className="hidden text-text-muted sm:inline">Rules</span>
         </Button>
 
         <div className="h-5 w-px bg-border" />
@@ -402,7 +402,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
           onChange={(e) => setName(e.target.value)}
           placeholder="Rule name..."
           maxLength={50}
-          className="w-52"
+          className="w-32 sm:w-52"
         />
 
         <TooltipProvider>

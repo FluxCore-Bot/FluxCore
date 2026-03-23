@@ -181,7 +181,7 @@ export function MusicLibraryManager() {
 
   return (
     <Card className="p-6">
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h3 className="text-lg font-semibold">Music Library</h3>
           <p className="text-sm text-text-muted">

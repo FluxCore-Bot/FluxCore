@@ -4,8 +4,8 @@ import { useBotInfo } from "../../lib/hooks/useBotInfo";
 export function CTASection() {
   const { data: botInfo } = useBotInfo();
   return (
-    <section className="px-6 py-24">
-      <div className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl bg-surface-low p-12 text-center md:p-16 glass-edge">
+    <section className="px-4 py-16 sm:px-6 sm:py-24">
+      <div className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl bg-surface-low p-8 text-center sm:p-12 md:p-16 glass-edge">
         {/* Background glow */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/2 top-1/2 h-[300px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/5 blur-[80px]" />

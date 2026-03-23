@@ -10,7 +10,7 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-outline-variant/10 bg-bg px-6 py-12">
+    <footer className="border-t border-outline-variant/10 bg-bg px-4 py-8 sm:px-6 sm:py-12">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 md:flex-row">
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
@@ -21,7 +21,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} FluxCore Technologies. All rights reserved.
           </p>
         </div>
-        <nav className="flex flex-wrap justify-center gap-8">
+        <nav className="flex flex-wrap justify-center gap-4 sm:gap-8">
           {footerLinks.map((link) => (
             <a
               key={link.label}

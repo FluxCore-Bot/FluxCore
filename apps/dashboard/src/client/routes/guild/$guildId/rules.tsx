@@ -375,7 +375,7 @@ export function RulesPage() {
 
           {/* Search / Filter bar */}
           <div className="flex flex-wrap items-center gap-3">
-            <div className="relative flex-1 min-w-50">
+            <div className="relative w-full sm:flex-1 sm:min-w-50">
               <Icon
                 name="search"
                 size={16}
@@ -391,7 +391,7 @@ export function RulesPage() {
             </div>
 
             <Select value={eventFilter} onValueChange={setEventFilter}>
-              <SelectTrigger className="w-44">
+              <SelectTrigger className="w-full sm:w-44">
                 <SelectValue placeholder="Event type" />
               </SelectTrigger>
               <SelectContent>
@@ -405,7 +405,7 @@ export function RulesPage() {
             </Select>
 
             <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-36">
+              <SelectTrigger className="w-[calc(50%-6px)] sm:w-36">
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
               <SelectContent>
@@ -416,7 +416,7 @@ export function RulesPage() {
             </Select>
 
             <Select value={sortBy} onValueChange={(v) => setSortBy(v as SortOption)}>
-              <SelectTrigger className="w-40">
+              <SelectTrigger className="w-[calc(50%-6px)] sm:w-40">
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
               <SelectContent>
@@ -455,11 +455,11 @@ export function RulesPage() {
 
       {/* Bulk action bar */}
       {!showEditor && selectedRuleIds.size > 0 && (
-        <div className="flex items-center gap-3 rounded-lg border border-accent/30 bg-accent/5 px-4 py-2.5">
+        <div className="flex flex-col gap-2 rounded-lg border border-accent/30 bg-accent/5 px-4 py-2.5 sm:flex-row sm:items-center sm:gap-3">
           <span className="text-sm font-medium">
             {selectedRuleIds.size} rule{selectedRuleIds.size > 1 ? "s" : ""} selected
           </span>
-          <div className="ml-auto flex gap-2">
+          <div className="flex flex-wrap gap-2 sm:ml-auto">
             <Button variant="ghost" size="sm" onClick={handleBulkEnable}>
               <Icon name="check_circle" size={16} />
               Enable

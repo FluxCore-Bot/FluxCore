@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 interface BotInfo {
   clientId: string;
   inviteUrl: string;
+  latency: number | null;
 }
 
 export function useBotInfo() {
@@ -12,6 +13,7 @@ export function useBotInfo() {
       const res = await fetch("/api/bot-info");
       return res.json();
     },
-    staleTime: Infinity,
+    staleTime: 60_000,
+    refetchInterval: 60_000,
   });
 }

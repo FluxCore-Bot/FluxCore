@@ -4,7 +4,7 @@ import { useBotInfo } from "../../lib/hooks/useBotInfo";
 export function HeroSection() {
   const { data: botInfo } = useBotInfo();
   return (
-    <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden px-6 py-32">
+    <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden px-4 py-20 sm:min-h-[90vh] sm:px-6 sm:py-32">
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/5 blur-[120px]" />
@@ -68,7 +68,7 @@ export function HeroSection() {
         </div>
 
         {/* Stats strip */}
-        <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-text/40 md:gap-12">
+        <div className="mt-12 grid grid-cols-2 gap-6 text-text/40 sm:mt-16 sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-8 md:gap-12">
           {[
             { value: "1,000+", label: "Servers" },
             { value: "<50ms", label: "Latency" },
@@ -76,7 +76,7 @@ export function HeroSection() {
             { value: "10+", label: "Modules" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <p className="font-mono text-2xl font-bold text-text/70">{stat.value}</p>
+              <p className="font-mono text-xl font-bold text-text/70 sm:text-2xl">{stat.value}</p>
               <p className="section-label">
                 {stat.label}
               </p>

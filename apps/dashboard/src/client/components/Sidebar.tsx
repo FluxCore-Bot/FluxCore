@@ -21,14 +21,29 @@ const navItems: NavItem[] = [
 
 interface SidebarProps {
   guildId: string;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
-export function Sidebar({ guildId }: SidebarProps) {
+export function Sidebar({ guildId, isOpen, onClose }: SidebarProps) {
   const matchRoute = useMatchRoute();
   const { data: botInfo } = useBotInfo();
 
   return (
-    <aside className="fixed left-0 top-14 flex h-[calc(100vh-56px)] w-60 flex-col border-r border-border p-4 text-sm tracking-tight">
+    <aside
+      className={`fixed left-0 top-14 z-50 flex h-[calc(100vh-56px)] w-60 flex-col border-r border-border bg-bg p-4 text-sm tracking-tight transition-transform duration-300 lg:z-auto lg:translate-x-0 ${
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      }`}
+    >
+      {/* Close button — mobile only */}
+      <button
+        onClick={onClose}
+        className="mb-2 flex items-center justify-end lg:hidden"
+        aria-label="Close sidebar"
+      >
+        <Icon name="close" size={20} className="text-text/50" />
+      </button>
+
       {/* Brand */}
       <div className="mb-8 flex items-center gap-3 px-2">
         <div className="flex h-8 w-8 items-center justify-center rounded bg-accent text-accent-hover">
