@@ -48,7 +48,7 @@ executors.set("sendDM", async (_client, ctx, config) => {
   if (!ctx.member || !config.message) return;
   const resolved = resolveTemplate(config.message, ctx);
   try {
-    await ctx.member.send(resolved);
+    await ctx.member.user.send(resolved);
   } catch {
     // User may have DMs disabled — silently skip
   }
