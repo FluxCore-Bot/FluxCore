@@ -111,6 +111,109 @@ Moderation (basic), Utility, TempVoice, Music, Actions/Automation
 
 Polls, AutoMod keyword/spam, Timeout, Onboarding, Server Guide, Welcome Screen, Verification Levels, Forum Channels, Threads, Slowmode, Server Insights, Permissions, Pause Invites, Invite Tracking
 
+## Testing
+
+### MANDATORY: Every Feature Must Include Tests
+
+**This is non-negotiable.** When implementing any feature, you MUST write tests that cover it. No PR or feature is complete without corresponding test files. Do not skip tests under any circumstance.
+
+### Test Infrastructure
+
+```bash
+pnpm test                # Unit tests (mocked DB, fast)
+pnpm test:integration    # Integration tests (real test DB via Docker)
+pnpm test:all            # Both unit + integration
+```
+
+### Test Categories
+
+| Category | Location | DB | When to use |
+|----------|----------|-----|-------------|
+| **Unit** | `apps/bot/tests/`, `apps/dashboard/tests/` | Mocked | Logic in isolation — commands, routes, utils |
+| **Integration** | `packages/systems/tests/integration/` | Real PostgreSQL | Cross-boundary: dashboard writes → bot reads |
+| **Sync** | `packages/systems/tests/integration/cache-sync.test.ts` | Real PostgreSQL | Cache invalidation pipeline |
+
+### File Naming Convention
+
+Test files mirror the source structure:
+
+```
+src/commands/moderation/warn.ts    → tests/commands/moderation/warn.test.ts
+src/server/routes/logging.ts       → tests/server/routes/logging.test.ts
+packages/systems/src/music/config.ts → packages/systems/tests/integration/music-sync.test.ts
+```
+
+### What to Test Per Feature Type
+
+**Bot command** — test for each command:
+- Permission checks (user lacks permission → error reply)
+- Happy path (valid args → correct action + reply)
+- Edge cases (missing member, invalid args, bot can't act on target)
+- Use `createMockInteraction()` and `createMockMember()` from factories
+
+**Dashboard API route** — test for each route:
+- Auth: unauthenticated request → 401
+- Auth: user without guild permission → 403
+- Happy path: valid request → correct DB write + response
+- Validation: bad input → 400
+- Use `buildApp()` pattern with real Fastify + mocked session/DB
+
+**System with cache sync** (actions, music, tempVoice) — integration tests:
+- Dashboard writes to DB → bot cache reload → cache has correct data
+- Updates propagate correctly
+- Deletes remove from cache
+- Cache invalidation records are created
+- Use real test DB, `createActionRule()` / `createMusicSettings()` factories
+
+**Shared package functions** (utils, types) — unit tests:
+- Pure function: input → expected output
+- Error cases: bad input → correct error
+
+### Mocking Rules
+
+1. **NEVER mock the database in integration tests** — use the real test PostgreSQL
+2. **ALWAYS mock Discord.js objects** — use `createMockInteraction()`, `createMockMember()`
+3. **ALWAYS mock external HTTP** — Discord API calls, webhook sends
+4. **Use `vi.mock()` at the top** of test files, before any imports
+5. **Use factories** from `packages/systems/tests/helpers/factories.ts` — do NOT create ad-hoc mocks
+6. **Mock the logger** in all tests: `vi.mock("@fluxcore/utils", ...)` with silent stubs
+
+### Test Factories (shared helpers)
+
+Located at `packages/systems/tests/helpers/`:
+
+```typescript
+// DB factories (for integration tests — write to real DB)
+createActionRule({ guildId, eventType, actions, ... })
+createActionGuildSettings({ guildId, maxRules, ... })
+createMusicSettings({ guildId, defaultVolume, twentyFourSeven, ... })
+createCacheInvalidation(guildId, action)
+
+// Mock factories (for unit tests — no DB)
+createMockInteraction({ ... })
+createMockMember({ id, bannable, displayName, ... })
+createMockSession({ userId, guilds, ... })
+```
+
+### Coverage Requirements
+
+Every public function must have at minimum:
+- **Happy path test** — normal usage works correctly
+- **Error/edge case test** — bad input, missing data, permission denied
+- **For sync flows:** test that cache reflects DB changes after reload
+
+### Integration Test Setup
+
+Integration tests use a dedicated Docker PostgreSQL (`docker-compose.test.yml`).
+The test database uses `tmpfs` for speed and is destroyed after each run.
+
+```typescript
+// Standard integration test structure
+beforeAll(() => setupTestDatabase())
+beforeEach(() => cleanTestData())
+afterAll(() => teardownTestDatabase())
+```
+
 ---
 
 ## Agent Workflow
@@ -158,6 +261,10 @@ When implementing a new module from the planned list:
 5. **Dashboard UI:** Add page in `apps/dashboard/src/client/pages/<Module>/`
 6. **Guild config:** Add feature toggle to guild settings schema
 7. **Types:** Export shared interfaces from `packages/types/`
+8. **Tests (MANDATORY):**
+   - Unit tests for bot commands in `apps/bot/tests/commands/<module>/`
+   - Unit tests for dashboard routes in `apps/dashboard/tests/server/routes/`
+   - Integration tests for sync flows in `packages/systems/tests/integration/`
 
 ### Git Workflow
 
@@ -178,6 +285,7 @@ Active hooks (configured in `.claude/settings.json`):
 | `env-guard.sh` | PreToolUse (Read/Edit/Write) | Blocks access to .env files |
 | `schema-change-detector.sh` | PostToolUse (Edit/Write) | Reminds about migrations after schema changes |
 | `memory-reminder.sh` | Stop | Prompts to save significant learnings to memory |
+| `test-reminder.sh` | Stop | Warns if new source files lack corresponding test files |
 
 ## Documentation
 

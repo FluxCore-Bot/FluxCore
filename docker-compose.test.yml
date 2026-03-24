@@ -1,0 +1,43 @@
+# Test-specific compose overlay
+# Usage: pnpm test:integration
+services:
+  test-postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: fluxcore_test
+      POSTGRES_PASSWORD: fluxcore_test
+      POSTGRES_DB: fluxcore_test
+    ports:
+      - "127.0.0.1:5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fluxcore_test"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+    tmpfs:
+      - /var/lib/postgresql/data  # RAM-backed for speed
+    networks:
+      - fluxcore-test
+
+  test-runner:
+    build:
+      context: .
+      target: test
+    command: >
+      sh -c "
+        cd packages/database && pnpm prisma migrate deploy && cd /app &&
+        pnpm turbo run test:integration
+      "
+    environment:
+      DATABASE_URL: "postgresql://fluxcore_test:fluxcore_test@test-postgres:5432/fluxcore_test"
+      NODE_ENV: test
+      LOG_LEVEL: silent
+      BOT_SYNC_SECRET: test-secret
+    depends_on:
+      test-postgres:
+        condition: service_healthy
+    networks:
+      - fluxcore-test
+
+networks:
+  fluxcore-test:

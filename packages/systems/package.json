@@ -78,7 +78,8 @@
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "test:integration": "vitest run --config vitest.integration.config.ts"
   },
   "dependencies": {
     "@fluxcore/config": "workspace:*",
@@ -87,6 +88,8 @@
     "discord.js": "catalog:"
   },
   "devDependencies": {
-    "typescript": "catalog:"
+    "@vitest/coverage-v8": "^4.0.18",
+    "typescript": "catalog:",
+    "vitest": "^4.0.18"
   }
 }

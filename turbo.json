@@ -45,6 +45,15 @@
     "test": {
       "dependsOn": ["^build"]
     },
+    "test:integration": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "passThroughEnv": [
+        "DATABASE_URL",
+        "BOT_SYNC_SECRET",
+        "BOT_SYNC_URL"
+      ]
+    },
     "db:generate": {
       "cache": false
     },

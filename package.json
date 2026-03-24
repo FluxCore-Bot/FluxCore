@@ -17,6 +17,8 @@
     "typecheck": "docker compose --profile bot run --rm --no-deps bot pnpm turbo run typecheck",
     "clean": "docker compose --profile bot run --rm --no-deps bot pnpm turbo run clean",
     "test": "docker compose --profile bot run --rm bot pnpm turbo run test",
+    "test:integration": "docker compose -f docker-compose.test.yml up --build --abort-on-container-exit --exit-code-from test-runner && docker compose -f docker-compose.test.yml down -v",
+    "test:all": "pnpm test && pnpm test:integration",
     "test:watch": "docker compose --profile bot run --rm bot pnpm --filter @fluxcore/bot test:watch",
     "test:coverage": "docker compose --profile bot run --rm bot pnpm --filter @fluxcore/bot test:coverage",
     "deploy:commands": "docker compose --profile bot run --rm --no-deps bot pnpm turbo run deploy:commands --filter=@fluxcore/bot",
