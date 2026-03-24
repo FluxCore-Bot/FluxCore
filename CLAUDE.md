@@ -75,9 +75,9 @@ Moderation (basic), Utility, TempVoice, Music, Actions/Automation
 
 | Module | Spec | Status |
 |--------|------|--------|
-| Warn System + Escalation | `docs/features/warn-system.md` | Not Started |
-| Enhanced Moderation | `docs/features/moderation.md` | Not Started |
-| Logging System | `docs/features/logging.md` | Not Started |
+| Warn System + Escalation | `docs/features/warn-system.md` | ✅ Done |
+| Enhanced Moderation | `docs/features/moderation.md` | ✅ Done |
+| Logging System | `docs/features/logging.md` | ✅ Done |
 
 ### Phase 2 — Community Engagement
 

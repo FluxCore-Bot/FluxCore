@@ -61,9 +61,9 @@ These features are handled well enough by Discord's built-in tools. No bot imple
 
 | Module | Spec | Status | Priority |
 |--------|------|--------|----------|
-| Warn System + Escalation | [warn-system.md](features/warn-system.md) | Not Started | P0 |
-| Enhanced Moderation Commands | [moderation.md](features/moderation.md) | Not Started | P0 |
-| Logging System | [logging.md](features/logging.md) | Not Started | P0 |
+| Warn System + Escalation | [warn-system.md](features/warn-system.md) | ✅ Done | P0 |
+| Enhanced Moderation Commands | [moderation.md](features/moderation.md) | ✅ Done | P0 |
+| Logging System | [logging.md](features/logging.md) | ✅ Done | P0 |
 
 **Why first:** Moderation is the foundation everything else builds on. Warns feed into logging, logging supports all other features, and enhanced mod commands are expected by every server admin.
 
