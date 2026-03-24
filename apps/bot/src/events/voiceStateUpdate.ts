@@ -9,6 +9,10 @@ import {
   isTrackedChannel,
   untrackChannel,
 } from "../systems/tempVoice/manager.js";
+import { getLogConfig, isIgnored } from "@fluxcore/systems/logging/config";
+import { createLogEntry } from "@fluxcore/systems/logging/persistence";
+import { sendLogEmbed } from "@fluxcore/systems/logging/sender";
+import { formatVoiceEvent } from "@fluxcore/systems/logging/formatter";
 import { logger } from "@fluxcore/utils";
 
 const event: Event<"voiceStateUpdate"> = {
@@ -60,6 +64,48 @@ const event: Event<"voiceStateUpdate"> = {
         processEvent(client, ctx).catch((e) =>
           logger.error("Action event processing failed for voiceLeave", e instanceof Error ? e : new Error(String(e))),
         );
+      }
+    }
+
+    // Logging system — voice state changes
+    if (!newState.member?.user.bot) {
+      const voiceLogConfig = await getLogConfig(guild.id, "voice");
+      if (voiceLogConfig?.enabled && !isIgnored(voiceLogConfig, newState.channelId ?? oldState.channelId ?? undefined)) {
+        const joined = newState.channelId && newState.channelId !== oldState.channelId;
+        const left = oldState.channelId && oldState.channelId !== newState.channelId;
+
+        if (joined && left) {
+          // Channel switch
+          const embed = formatVoiceEvent("switch", newState, oldState.channelId);
+          await sendLogEmbed(guild, voiceLogConfig.channelId, embed);
+          await createLogEntry({
+            guildId: guild.id,
+            category: "voice",
+            eventType: "voiceSwitch",
+            targetId: newState.member?.id,
+            content: { fromChannel: oldState.channelId, toChannel: newState.channelId },
+          });
+        } else if (joined) {
+          const embed = formatVoiceEvent("join", newState);
+          await sendLogEmbed(guild, voiceLogConfig.channelId, embed);
+          await createLogEntry({
+            guildId: guild.id,
+            category: "voice",
+            eventType: "voiceJoin",
+            targetId: newState.member?.id,
+            content: { channelId: newState.channelId },
+          });
+        } else if (left) {
+          const embed = formatVoiceEvent("leave", oldState, oldState.channelId);
+          await sendLogEmbed(guild, voiceLogConfig.channelId, embed);
+          await createLogEntry({
+            guildId: guild.id,
+            category: "voice",
+            eventType: "voiceLeave",
+            targetId: newState.member?.id ?? oldState.member?.id,
+            content: { channelId: oldState.channelId },
+          });
+        }
       }
     }
   },

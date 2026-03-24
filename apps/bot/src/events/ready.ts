@@ -14,6 +14,7 @@ import { registerActionEventListeners } from "../systems/actions/eventBridge.js"
 import { startSyncServer } from "../systems/actions/syncServer.js";
 import { startReminderPolling } from "../systems/reminders.js";
 import { loadMusicSettings, get247Guilds } from "@fluxcore/systems/music/config";
+import { cleanOldLogEntries } from "@fluxcore/systems/logging/persistence";
 import { createQueue } from "../systems/music/queue.js";
 import { setupPlayerEvents } from "../systems/music/events.js";
 import { registerMusicSettingsReactor } from "../systems/music/settingsReactor.js";
@@ -99,6 +100,18 @@ const event: Event<"ready"> = {
         "Failed to initialize music system",
         error instanceof Error ? error : new Error(String(error)),
       );
+    }
+
+    // Logging system — load guild configs on-demand, schedule retention cleanup
+    try {
+      const logCleanupTimer = setInterval(() => {
+        cleanOldLogEntries().catch((err: unknown) =>
+          logger.error("LogEntry cleanup failed", err instanceof Error ? err : new Error(String(err))),
+        );
+      }, ONE_DAY_MS);
+      (logCleanupTimer as unknown as { unref: () => void }).unref();
+    } catch (error) {
+      logger.error("Failed to initialize logging system", error instanceof Error ? error : new Error(String(error)));
     }
 
     // Schedule daily ActionLog retention cleanup
