@@ -4,6 +4,32 @@ import { PageHeader } from "../../../components/PageHeader";
 import { StatsCard } from "../../../components/StatsCard";
 import { PageSkeleton } from "../../../components/PageSkeleton";
 import { Icon } from "../../../components/Icon";
+import { Button } from "../../../components/ui/button";
+import { Input } from "../../../components/ui/input";
+import { Textarea } from "../../../components/ui/textarea";
+import { Switch } from "../../../components/ui/switch";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../../components/ui/select";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "../../../components/ui/table";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "../../../components/ui/dialog";
 import {
   useModCases,
   useDeleteModCase,
@@ -121,7 +147,7 @@ export function ModerationPage() {
 
         {/* Filters */}
         <div className="flex flex-wrap gap-3">
-          <input
+          <Input
             type="text"
             placeholder="Filter by User ID..."
             value={userFilter}
@@ -129,145 +155,152 @@ export function ModerationPage() {
               setUserFilter(e.target.value);
               setPage(1);
             }}
-            className="rounded-md border border-border bg-surface-low px-3 py-1.5 text-sm text-text placeholder:text-text-muted/50 focus:border-accent focus:outline-none"
+            className="w-auto sm:w-64"
           />
-          <select
+          <Select
             value={actionFilter}
-            onChange={(e) => {
-              setActionFilter(e.target.value);
+            onValueChange={(value) => {
+              setActionFilter(value === "all" ? "" : value);
               setPage(1);
             }}
-            className="rounded-md border border-border bg-surface-low px-3 py-1.5 text-sm text-text focus:border-accent focus:outline-none"
           >
-            <option value="">All Actions</option>
-            {Object.entries(ACTION_LABELS).map(([value, label]) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
+            <SelectTrigger className="w-40">
+              <SelectValue placeholder="All Actions" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Actions</SelectItem>
+              {Object.entries(ACTION_LABELS).map(([value, label]) => (
+                <SelectItem key={value} value={value}>
+                  {label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Table */}
-        <div className="overflow-x-auto rounded-lg border border-border">
-          <table className="w-full text-left text-sm">
-            <thead className="border-b border-border bg-surface-low text-text-muted">
-              <tr>
-                <th className="px-4 py-3 font-medium">ID</th>
-                <th className="px-4 py-3 font-medium">Action</th>
-                <th className="px-4 py-3 font-medium">Target</th>
-                <th className="px-4 py-3 font-medium">Moderator</th>
-                <th className="px-4 py-3 font-medium">Reason</th>
-                <th className="px-4 py-3 font-medium">Date</th>
-                <th className="px-4 py-3 font-medium">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border">
+        <div className="rounded-lg border border-border">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>ID</TableHead>
+                <TableHead>Action</TableHead>
+                <TableHead>Target</TableHead>
+                <TableHead>Moderator</TableHead>
+                <TableHead>Reason</TableHead>
+                <TableHead>Date</TableHead>
+                <TableHead>Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {cases.length === 0 ? (
-                <tr>
-                  <td colSpan={7} className="px-4 py-8 text-center text-text-muted">
+                <TableRow>
+                  <TableCell colSpan={7} className="text-center text-text-muted">
                     No cases found.
-                  </td>
-                </tr>
+                  </TableCell>
+                </TableRow>
               ) : (
                 cases.map((modCase) => (
-                  <tr key={modCase.id} className="hover:bg-surface-low/50">
-                    <td className="px-4 py-3 font-mono text-text-muted">#{modCase.id}</td>
-                    <td className="px-4 py-3">
+                  <TableRow key={modCase.id}>
+                    <TableCell className="font-mono text-text-muted">#{modCase.id}</TableCell>
+                    <TableCell>
                       <span className={`font-medium ${ACTION_COLORS[modCase.action] ?? "text-text"}`}>
                         {ACTION_LABELS[modCase.action] ?? modCase.action}
                       </span>
-                    </td>
-                    <td className="px-4 py-3 font-mono text-xs">{modCase.targetId}</td>
-                    <td className="px-4 py-3 font-mono text-xs">{modCase.moderatorId}</td>
-                    <td className="max-w-48 truncate px-4 py-3 text-text-muted">
+                    </TableCell>
+                    <TableCell className="font-mono text-xs">{modCase.targetId}</TableCell>
+                    <TableCell className="font-mono text-xs">{modCase.moderatorId}</TableCell>
+                    <TableCell className="max-w-48 truncate text-text-muted">
                       {modCase.reason ?? "No reason"}
-                    </td>
-                    <td className="px-4 py-3 text-text-muted">
+                    </TableCell>
+                    <TableCell className="text-text-muted">
                       {new Date(modCase.createdAt).toLocaleDateString()}
-                    </td>
-                    <td className="px-4 py-3">
+                    </TableCell>
+                    <TableCell>
                       <div className="flex gap-2">
-                        <button
+                        <Button
+                          variant="ghost"
+                          size="icon"
                           onClick={() => handleEditStart(modCase)}
-                          className="rounded p-1 text-text-muted hover:bg-surface-high hover:text-accent"
                           title="Edit reason"
                         >
                           <Icon name="edit" size={16} />
-                        </button>
-                        <button
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
                           onClick={() => handleDelete(modCase.id)}
-                          className="rounded p-1 text-text-muted hover:bg-surface-high hover:text-red-400"
+                          className="hover:text-red-400"
                           title="Delete case"
                         >
                           <Icon name="delete" size={16} />
-                        </button>
+                        </Button>
                       </div>
-                    </td>
-                  </tr>
+                    </TableCell>
+                  </TableRow>
                 ))
               )}
-            </tbody>
-          </table>
+            </TableBody>
+          </Table>
         </div>
 
         {/* Pagination */}
         {totalPages > 1 && (
           <div className="flex items-center justify-center gap-4">
-            <button
+            <Button
+              variant="outline"
+              size="sm"
               onClick={() => setPage((p) => Math.max(1, p - 1))}
               disabled={page <= 1}
-              className="rounded-md border border-border px-3 py-1.5 text-sm text-text disabled:opacity-40"
             >
               Previous
-            </button>
+            </Button>
             <span className="text-sm text-text-muted">
               Page {page} of {totalPages}
             </span>
-            <button
+            <Button
+              variant="outline"
+              size="sm"
               onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
               disabled={page >= totalPages}
-              className="rounded-md border border-border px-3 py-1.5 text-sm text-text disabled:opacity-40"
             >
               Next
-            </button>
+            </Button>
           </div>
         )}
       </div>
 
-      {/* Edit Reason Modal */}
-      {editingCase && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
-          <div className="w-full max-w-md rounded-lg border border-border bg-bg p-6 shadow-xl">
-            <h3 className="mb-4 font-label text-lg font-semibold">
-              Edit Case #{editingCase.id} Reason
-            </h3>
-            <textarea
-              value={editReason}
-              onChange={(e) => setEditReason(e.target.value)}
-              maxLength={500}
-              rows={3}
-              className="w-full rounded-md border border-border bg-surface-low px-3 py-2 text-sm text-text placeholder:text-text-muted/50 focus:border-accent focus:outline-none"
-              placeholder="Enter new reason..."
-            />
-            <div className="mt-4 flex justify-end gap-3">
-              <button
-                onClick={() => setEditingCase(null)}
-                className="rounded-md border border-border px-4 py-2 text-sm text-text hover:bg-surface-high"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleEditSave}
-                disabled={updateMutation.isPending}
-                className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-bg hover:bg-accent-hover disabled:opacity-50"
-              >
-                {updateMutation.isPending ? "Saving..." : "Save"}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Edit Reason Dialog */}
+      <Dialog open={!!editingCase} onOpenChange={(open) => !open && setEditingCase(null)}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>
+              Edit Case #{editingCase?.id} Reason
+            </DialogTitle>
+          </DialogHeader>
+          <Textarea
+            value={editReason}
+            onChange={(e) => setEditReason(e.target.value)}
+            maxLength={500}
+            rows={3}
+            placeholder="Enter new reason..."
+          />
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => setEditingCase(null)}
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={handleEditSave}
+              disabled={updateMutation.isPending}
+            >
+              {updateMutation.isPending ? "Saving..." : "Save"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       {/* Settings */}
       <div className="space-y-4">
@@ -282,22 +315,12 @@ export function ModerationPage() {
                   Send a DM to users when they are punished (ban, kick, timeout).
                 </p>
               </div>
-              <button
-                onClick={() =>
-                  settingsMutation.mutate({
-                    dmOnPunishment: !settings?.dmOnPunishment,
-                  })
+              <Switch
+                checked={settings?.dmOnPunishment ?? false}
+                onCheckedChange={(checked) =>
+                  settingsMutation.mutate({ dmOnPunishment: checked })
                 }
-                className={`relative h-6 w-11 rounded-full transition-colors ${
-                  settings?.dmOnPunishment ? "bg-accent" : "bg-border"
-                }`}
-              >
-                <span
-                  className={`absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white transition-transform ${
-                    settings?.dmOnPunishment ? "translate-x-5" : ""
-                  }`}
-                />
-              </button>
+              />
             </div>
 
             {/* Mod Log Channel */}
@@ -306,22 +329,26 @@ export function ModerationPage() {
               <p className="mb-3 text-sm text-text-muted">
                 Channel where moderation actions are logged.
               </p>
-              <select
-                value={settings?.modLogChannelId ?? ""}
-                onChange={(e) =>
+              <Select
+                value={settings?.modLogChannelId ?? "none"}
+                onValueChange={(value) =>
                   settingsMutation.mutate({
-                    modLogChannelId: e.target.value || null,
+                    modLogChannelId: value === "none" ? null : value,
                   })
                 }
-                className="w-full rounded-md border border-border bg-surface-low px-3 py-2 text-sm text-text focus:border-accent focus:outline-none sm:w-64"
               >
-                <option value="">None</option>
-                {textChannels.map((ch) => (
-                  <option key={ch.id} value={ch.id}>
-                    #{ch.name}
-                  </option>
-                ))}
-              </select>
+                <SelectTrigger className="w-full sm:w-64">
+                  <SelectValue placeholder="None" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="none">None</SelectItem>
+                  {textChannels.map((ch) => (
+                    <SelectItem key={ch.id} value={ch.id}>
+                      #{ch.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           </div>
         </div>

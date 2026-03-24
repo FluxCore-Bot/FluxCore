@@ -58,6 +58,7 @@ pnpm deploy:commands  # Register Discord slash commands
 - Lucide icons at 1.5px stroke
 - Colors: background `#0e0e10`, primary `#a3a6ff`, surfaces are tonal shifts
 - Typography: Inter (body), Space Grotesk (labels), JetBrains Mono (code)
+- **ALWAYS use shadcn/ui components** from `apps/dashboard/src/client/components/ui/` when a matching component exists (button, input, select, dialog, card, table, tabs, badge, checkbox, label, textarea, switch, slider, popover, dropdown-menu, tooltip, alert, separator, skeleton, scroll-area, progress, collapsible, sonner). Never reimplement or use raw HTML/Radix directly when a shadcn wrapper is available.
 
 ## Active Modules
 
