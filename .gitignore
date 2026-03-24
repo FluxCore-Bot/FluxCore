@@ -18,3 +18,7 @@ out/
 .pnpm-store/
 # Serena config
 .serena/
+# Claude Code local settings (personal permissions)
+.claude/settings.local.json
+# Playwright MCP generated data
+.playwright-mcp/
