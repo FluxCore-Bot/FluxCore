@@ -16,21 +16,38 @@ import {
 import { createModCase } from "@fluxcore/systems/moderation/persistence";
 import { getModSettings } from "@fluxcore/systems/moderation/persistence";
 import { dmOnPunishment } from "@fluxcore/systems/moderation/dm";
+import { DURATION_PRESETS } from "@fluxcore/systems/moderation/constants";
 
 const SECONDS_PER_DAY = 86_400;
 
 const command: Command = {
   data: new SlashCommandBuilder()
-    .setName("ban")
-    .setDescription("Ban a member from the server")
+    .setName("tempban")
+    .setDescription("Temporarily ban a member from the server")
     .addUserOption((option) =>
       option
         .setName("user")
-        .setDescription("The member to ban")
+        .setDescription("The member to tempban")
         .setRequired(true),
     )
     .addStringOption((option) =>
-      option.setName("reason").setDescription("Reason for the ban"),
+      option
+        .setName("duration")
+        .setDescription("Duration (1h, 6h, 12h, 1d, 3d, 7d, 14d, 30d)")
+        .setRequired(true)
+        .addChoices(
+          { name: "1 hour", value: "1h" },
+          { name: "6 hours", value: "6h" },
+          { name: "12 hours", value: "12h" },
+          { name: "1 day", value: "1d" },
+          { name: "3 days", value: "3d" },
+          { name: "7 days", value: "7d" },
+          { name: "14 days", value: "14d" },
+          { name: "30 days", value: "30d" },
+        ),
+    )
+    .addStringOption((option) =>
+      option.setName("reason").setDescription("Reason for the tempban"),
     )
     .addIntegerOption((option) =>
       option
@@ -55,6 +72,7 @@ const command: Command = {
     }
 
     const target = interaction.options.getMember("user") as GuildMember | null;
+    const durationStr = interaction.options.getString("duration", true);
     const reason =
       interaction.options.getString("reason") ?? "No reason provided";
     const deleteDays = interaction.options.getInteger("delete-days") ?? 0;
@@ -69,7 +87,7 @@ const command: Command = {
 
     if (target.id === interaction.user.id) {
       await interaction.reply({
-        embeds: [errorEmbed("Error", "You cannot ban yourself.")],
+        embeds: [errorEmbed("Error", "You cannot tempban yourself.")],
         ephemeral: true,
       });
       return;
@@ -77,7 +95,7 @@ const command: Command = {
 
     if (target.id === interaction.client.user.id) {
       await interaction.reply({
-        embeds: [errorEmbed("Error", "I cannot ban myself.")],
+        embeds: [errorEmbed("Error", "I cannot tempban myself.")],
         ephemeral: true,
       });
       return;
@@ -91,13 +109,27 @@ const command: Command = {
       return;
     }
 
+    const durationSecs = DURATION_PRESETS[durationStr];
+    if (!durationSecs) {
+      await interaction.reply({
+        embeds: [
+          errorEmbed(
+            "Invalid Duration",
+            "Use one of: 1h, 6h, 12h, 1d, 3d, 7d, 14d, 30d.",
+          ),
+        ],
+        ephemeral: true,
+      });
+      return;
+    }
+
     const actor = interaction.member as GuildMember;
     if (!isAboveTarget(actor, target)) {
       await interaction.reply({
         embeds: [
           errorEmbed(
             "Error",
-            "You cannot ban a member with an equal or higher role.",
+            "You cannot tempban a member with an equal or higher role.",
           ),
         ],
         ephemeral: true,
@@ -107,25 +139,27 @@ const command: Command = {
 
     await interaction.deferReply();
 
+    const expiresAt = new Date(Date.now() + durationSecs * 1000);
+
     const modSettings = await getModSettings(interaction.guildId!);
     if (modSettings.dmOnPunishment) {
-      await dmOnPunishment(target, interaction.guild!.name, "banned", reason);
+      await dmOnPunishment(target, interaction.guild!.name, "temporarily banned", reason, durationStr);
     }
 
     try {
       await target.ban({
-        reason,
+        reason: `Tempban (${durationStr}): ${reason}`,
         deleteMessageSeconds: deleteDays * SECONDS_PER_DAY,
       });
     } catch (error) {
       logger.error(
-        `Failed to ban ${target.user.id} in guild ${interaction.guildId}`,
+        `Failed to tempban ${target.user.id} in guild ${interaction.guildId}`,
         error instanceof Error ? error : new Error(String(error)),
       );
       await interaction.editReply({
         embeds: [
           errorEmbed(
-            "Ban Failed",
+            "Tempban Failed",
             "Failed to ban the member. They may have left the server.",
           ),
         ],
@@ -137,15 +171,17 @@ const command: Command = {
       guildId: interaction.guildId!,
       targetId: target.id,
       moderatorId: interaction.user.id,
-      action: "ban",
+      action: "tempban",
       reason,
+      duration: durationSecs,
+      expiresAt,
     });
 
     await interaction.editReply({
       embeds: [
         successEmbed(
-          "Member Banned",
-          `**${target.user.displayName}** was banned.\n**Reason:** ${reason}`,
+          "Member Temporarily Banned",
+          `**${target.user.displayName}** was temporarily banned for **${durationStr}**.\n**Reason:** ${reason}\n**Expires:** <t:${Math.floor(expiresAt.getTime() / 1000)}:R>`,
         ),
       ],
     });

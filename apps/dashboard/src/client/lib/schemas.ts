@@ -437,3 +437,29 @@ export const WarnSettingsSchema = z.object({
   maxWarnings: z.number(),
 });
 export type WarnSettings = z.infer<typeof WarnSettingsSchema>;
+
+// --- Moderation ---
+export const ModCaseSchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  targetId: z.string(),
+  moderatorId: z.string(),
+  action: z.string(),
+  reason: z.string().nullable(),
+  duration: z.number().nullable(),
+  expiresAt: z.string().nullable(),
+  active: z.boolean(),
+  createdAt: z.string(),
+});
+export type ModCase = z.infer<typeof ModCaseSchema>;
+export const ModCaseListSchema = z.object({
+  cases: z.array(ModCaseSchema),
+  total: z.number(),
+});
+
+export const ModSettingsSchema = z.object({
+  guildId: z.string(),
+  dmOnPunishment: z.boolean(),
+  modLogChannelId: z.string().nullable(),
+});
+export type ModSettings = z.infer<typeof ModSettingsSchema>;
