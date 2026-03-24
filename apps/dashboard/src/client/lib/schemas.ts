@@ -357,3 +357,50 @@ export const MusicTrackSchema = z.object({
 export type MusicTrack = z.infer<typeof MusicTrackSchema>;
 
 export const MusicTrackListSchema = z.array(MusicTrackSchema);
+
+// --- Logging ---
+export const LogGuildConfigSchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  category: z.string(),
+  channelId: z.string(),
+  enabled: z.boolean(),
+  ignoredChannels: z.array(z.string()),
+  ignoredRoles: z.array(z.string()),
+  enabledEvents: z.array(z.string()),
+});
+export type LogGuildConfig = z.infer<typeof LogGuildConfigSchema>;
+
+export const LogGuildConfigDataSchema = z.object({
+  channelId: z.string().min(1, "Channel is required"),
+  enabled: z.boolean().optional(),
+  ignoredChannels: z.array(z.string()).optional(),
+  ignoredRoles: z.array(z.string()).optional(),
+  enabledEvents: z.array(z.string()).optional(),
+});
+export type LogGuildConfigData = z.infer<typeof LogGuildConfigDataSchema>;
+
+export const LogEntrySchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  category: z.string(),
+  eventType: z.string(),
+  targetId: z.string().nullable(),
+  executorId: z.string().nullable(),
+  content: z.record(z.string(), z.unknown()),
+  createdAt: z.string(),
+});
+export type LogEntryItem = z.infer<typeof LogEntrySchema>;
+
+export const LogEntryListResponseSchema = z.object({
+  entries: z.array(LogEntrySchema),
+  total: z.number(),
+});
+export type LogEntryListResponse = z.infer<typeof LogEntryListResponseSchema>;
+
+export const LogConfigResponseSchema = z.object({
+  configs: z.array(LogGuildConfigSchema),
+  categories: z.array(z.string()),
+  eventTypes: z.record(z.string(), z.array(z.string())),
+});
+export type LogConfigResponse = z.infer<typeof LogConfigResponseSchema>;

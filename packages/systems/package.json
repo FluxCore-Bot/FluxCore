@@ -73,6 +73,30 @@
     "./music/constants": {
       "types": "./dist/music/constants.d.ts",
       "import": "./dist/music/constants.js"
+    },
+    "./logging/types": {
+      "types": "./dist/logging/types.d.ts",
+      "import": "./dist/logging/types.js"
+    },
+    "./logging/constants": {
+      "types": "./dist/logging/constants.d.ts",
+      "import": "./dist/logging/constants.js"
+    },
+    "./logging/config": {
+      "types": "./dist/logging/config.d.ts",
+      "import": "./dist/logging/config.js"
+    },
+    "./logging/persistence": {
+      "types": "./dist/logging/persistence.d.ts",
+      "import": "./dist/logging/persistence.js"
+    },
+    "./logging/sender": {
+      "types": "./dist/logging/sender.d.ts",
+      "import": "./dist/logging/sender.js"
+    },
+    "./logging/formatter": {
+      "types": "./dist/logging/formatter.d.ts",
+      "import": "./dist/logging/formatter.js"
     }
   },
   "scripts": {

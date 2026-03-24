@@ -153,3 +153,35 @@ model MusicLibraryTrack {
 
   @@index([albumId])
 }
+
+// === Logging System ===
+
+model LogGuildConfig {
+  id              Int      @id @default(autoincrement())
+  guildId         String
+  category        String   // "message" | "member" | "voice" | "channel" | "role" | "server" | "moderation"
+  channelId       String
+  enabled         Boolean  @default(true)
+  ignoredChannels String   @default("[]")
+  ignoredRoles    String   @default("[]")
+  enabledEvents   String   @default("[]")
+
+  @@unique([guildId, category])
+  @@index([guildId])
+}
+
+model LogEntry {
+  id          Int      @id @default(autoincrement())
+  guildId     String
+  category    String
+  eventType   String
+  targetId    String?
+  executorId  String?
+  content     String   @default("{}")
+  createdAt   DateTime @default(now())
+
+  @@index([guildId, category, createdAt])
+  @@index([guildId, eventType])
+  @@index([guildId, targetId])
+  @@index([createdAt])
+}
