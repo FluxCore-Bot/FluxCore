@@ -11,6 +11,8 @@ A formal warning system where moderators issue tracked warnings to users. Warnin
 
 Discord has no native warn tracking — timeouts are one-level only.
 
+**Design principle:** Fast actions (warn, view, clear) are slash commands. All configuration (escalation thresholds, DM toggle, reason requirements) is dashboard-only. This conserves Discord's limited slash command slots and keeps the bot's command surface minimal.
+
 ## Features
 
 | Feature | Description |
@@ -18,8 +20,7 @@ Discord has no native warn tracking — timeouts are one-level only.
 | `/warn` | Issue a warning to a user with reason |
 | `/warnings` | View warning history for a user |
 | `/clearwarnings` | Clear all or specific warnings for a user |
-| `/warnconfig` | Configure warn punishments (X warns → action) |
-| DM on Warn | Optionally DM the user when warned |
+| DM on Warn | Optionally DM the user when warned (dashboard config) |
 | Punishment Escalation | Auto-execute actions at warn thresholds |
 | Mod Log Integration | All warns logged to logging system (Phase 1) |
 | Dashboard Page | View/manage warnings and configure escalation |
@@ -107,17 +108,6 @@ Permission: ManageMessages
 2. If no `id`: delete all warnings for user in guild
 3. Reply with count of cleared warnings
 
-### `/warnconfig`
-
-```
-Subcommands:
-  /warnconfig punishment add <threshold> <action> [duration]
-  /warnconfig punishment remove <threshold>
-  /warnconfig punishment list
-  /warnconfig settings dm <on|off>
-Permission: ManageGuild
-```
-
 ## API Endpoints
 
 ```
@@ -154,8 +144,8 @@ warnings/
 **Sections:**
 1. **Stats bar** — Total warnings, active warnings, most warned users
 2. **Warnings table** — Filterable by user, moderator, date range. Actions: delete
-3. **Escalation config** — Table of threshold → action mappings. Add/remove rows
-4. **Settings panel** — DM toggle, reason requirement toggle
+3. **Escalation config** — Table of threshold → action mappings. Add/remove rows (dashboard-only, no bot command equivalent)
+4. **Settings panel** — DM toggle, reason requirement toggle, max warnings limit (dashboard-only, no bot command equivalent)
 
 ## Implementation Notes
 

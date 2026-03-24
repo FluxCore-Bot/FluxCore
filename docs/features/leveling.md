@@ -159,6 +159,8 @@ const voiceSessions = new Map<string, { guildId: string; joinedAt: number }>();
 
 ## Bot Commands
 
+> **Design principle:** Fast actions (checking rank, viewing leaderboard, managing XP) are slash commands. All leveling configuration (XP rates, rewards, multipliers, exclusions, announcements) is **dashboard-only** to conserve Discord's slash command slot limit.
+
 ### `/rank [user]`
 
 ```
@@ -195,15 +197,17 @@ Permission: ManageGuild
 
 Admin XP management.
 
-### `/levelconfig rewards add <level> <role>`
+### Command Reference
 
-```
-Permission: ManageGuild
-```
+| Command | Description | Permission |
+| ------- | ----------- | ---------- |
+| `/rank [user]` | View rank card for self or another user | Everyone |
+| `/leaderboard [page]` | View server XP leaderboard | Everyone |
+| `/xp set <user> <amount>` | Set a user's XP to an exact amount | ManageGuild |
+| `/xp add <user> <amount>` | Add XP to a user | ManageGuild |
+| `/xp remove <user> <amount>` | Remove XP from a user | ManageGuild |
 
-### `/levelconfig rewards remove <level>`
-
-### `/levelconfig rewards list`
+> **Not available as commands:** Level reward management, XP rate configuration, multipliers, exclusions, and announcement settings are configured exclusively through the dashboard.
 
 ## API Endpoints
 
@@ -224,10 +228,12 @@ DELETE /api/guilds/:guildId/level-rewards/:id               → Remove reward
 
 **Route:** `/guild/:guildId/leveling`
 
+> The dashboard is the **sole interface** for all leveling configuration. There are no `/levelconfig` slash commands — admins manage everything here.
+
 **Sections:**
 1. **Leaderboard** — Top members with rank, level, XP
 2. **Settings** — XP rate, cooldown, voice XP toggle, announcement config
-3. **Role rewards** — Level → role mapping table
+3. **Role rewards** — Level → role mapping table (add/remove/reorder)
 4. **Exclusions** — No-XP channels and roles multi-select
 5. **Multipliers** — Per-channel and per-role XP multiplier config
 

@@ -114,15 +114,12 @@ const nukeTracker = new Map<string, Map<string, number[]>>(); // guildId → exe
 
 ## Bot Commands
 
+> **Design principle:** Anti-raid *configuration* (enable/disable, thresholds, account age, anti-nuke settings) is **dashboard-only** to conserve slash command slots. Only emergency lockdown commands are exposed as slash commands for instant access from Discord.
+
 | Command | Description | Permission |
 |---------|-------------|------------|
-| `/antiraid enable` | Enable anti-raid | Administrator |
-| `/antiraid disable` | Disable | Administrator |
-| `/antiraid config` | View current config | ManageGuild |
-| `/antiraid threshold <joins> <seconds>` | Set join rate | Administrator |
-| `/antiraid accountage <days>` | Set min account age | Administrator |
-| `/lockdown` | Manual lockdown toggle | ManageGuild |
-| `/lockdown lift` | Lift lockdown | ManageGuild |
+| `/lockdown` | Activate server lockdown (locks all channels for @everyone) | ManageGuild |
+| `/lockdown lift` | Lift an active server lockdown | ManageGuild |
 
 ### Lockdown Implementation
 
@@ -159,7 +156,9 @@ POST /api/guilds/:guildId/lockdown                → Toggle lockdown
 
 **Route:** `/guild/:guildId/security`
 
-Sections: raid config panel, recent raid events timeline, lockdown toggle, anti-nuke settings.
+> The dashboard is the **sole configuration interface** for anti-raid settings. All threshold tuning, enable/disable toggles, account age filters, anti-nuke settings, and whitelisted roles are managed here.
+
+Sections: enable/disable toggle, join rate thresholds, account age filter, anti-nuke config, whitelisted roles, lockdown toggle, recent raid events timeline.
 
 ## System Package
 

@@ -63,11 +63,9 @@ Jump to message: [link]
 
 ## Bot Commands
 
-| Command | Description | Permission |
-|---------|-------------|------------|
-| `/starboard setup <channel>` | Set starboard channel | ManageGuild |
-| `/starboard threshold <number>` | Set star threshold | ManageGuild |
-| `/starboard emoji <emoji>` | Set custom emoji | ManageGuild |
+None — starboard is fully configured via the dashboard.
+
+> **Design rationale:** Starboard has no "fast actions" that benefit from slash commands. All operations (channel selection, threshold, emoji, self-star toggle, ignored channels, NSFW handling) are configuration, which is managed exclusively through the dashboard to conserve Discord slash command slots.
 
 ## API Endpoints
 
@@ -81,4 +79,7 @@ PUT  /api/guilds/:guildId/starboard-settings      → Update
 
 **Route:** `/guild/:guildId/starboard`
 
-Sections: starred messages gallery, settings panel (channel, threshold, emoji, exclusions).
+Sections:
+
+- **Settings panel** — channel selection, threshold, emoji, self-star toggle, ignored channels, NSFW handling (this is the sole configuration surface for starboard)
+- **Starred messages gallery** — browse and manage starred messages

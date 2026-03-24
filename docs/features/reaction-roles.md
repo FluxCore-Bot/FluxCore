@@ -74,46 +74,18 @@ interface RolePanelEntry {
 
 ## Bot Commands
 
-### `/rolepanel create <name> <type> <channel> [mode]`
+> **Design principle:** Panel creation and configuration is **dashboard-only**. Role panels involve complex multi-step configuration (embed design, role entries with emojis/labels/descriptions, type/mode selection) that is far better served by the dashboard's visual builder. This also conserves Discord slash command slots, which are limited per bot.
+
+### `/rolepanel send <panel_name> [channel]`
 
 ```
 Options:
-  name: String (required, max 50)
-  type: String (required) — "button" | "dropdown" | "reaction"
-  channel: Channel (required)
-  mode: String (optional) — "toggle" | "unique" | "verify" (default: "toggle")
+  panel_name: String (required) — Name of a panel configured via the dashboard
+  channel: Channel (optional) — Override the panel's default channel
 Permission: ManageRoles
 ```
 
-Creates a panel definition. Roles are added via `/rolepanel addrole`.
-
-### `/rolepanel addrole <panel_name> <role> [label] [emoji] [description]`
-
-```
-Permission: ManageRoles
-```
-
-Adds a role entry to a panel. Max 25 roles per panel (Discord component limit).
-
-### `/rolepanel removerole <panel_name> <role>`
-
-Removes a role entry from a panel.
-
-### `/rolepanel send <panel_name>`
-
-Sends the panel message to its configured channel and stores the `messageId`.
-
-### `/rolepanel edit <panel_name>`
-
-Re-sends/updates the panel message with current config.
-
-### `/rolepanel delete <panel_name>`
-
-Deletes the panel (and optionally the Discord message).
-
-### `/rolepanel list`
-
-Lists all panels in the guild.
+Sends (or re-sends) a pre-configured panel message to its target channel and stores the `messageId`. This is the only slash command — all panel creation, editing, role management, and deletion is done through the dashboard's visual panel builder.
 
 ## Interaction Handlers
 
@@ -240,15 +212,19 @@ DELETE /api/guilds/:guildId/role-panels/:panelId         → Delete panel
 POST   /api/guilds/:guildId/role-panels/:panelId/send    → Send/resend panel message
 ```
 
-## Dashboard Page
+## Dashboard Page (Primary Configuration Interface)
 
 **Route:** `/guild/:guildId/roles`
 
+All panel creation, editing, and management happens here. The dashboard's visual builder provides a far superior UX compared to slash commands for this kind of complex, multi-field configuration.
+
 **Sections:**
-1. **Panel list** — All role panels with status (sent/draft)
+
+1. **Panel list** — All role panels with status (sent/draft), quick actions (send, duplicate, delete)
 2. **Panel builder** — Create/edit with: name, type, mode, channel, embed editor, role entries
-3. **Role entry editor** — Add roles with label, emoji, description, style
-4. **Live preview** — Shows how the panel will look in Discord
+3. **Role entry editor** — Add roles with label, emoji picker, description, button style
+4. **Live preview** — Real-time preview of how the panel will look in Discord
+5. **Bulk actions** — Delete multiple panels, export/import panel configs
 
 ## System Package
 

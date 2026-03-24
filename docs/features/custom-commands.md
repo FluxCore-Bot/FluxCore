@@ -83,12 +83,16 @@ function matchesTrigger(cmd: CustomCommand, content: string): boolean {
 
 ## Bot Commands
 
-| Command | Description | Permission |
-|---------|-------------|------------|
-| `/customcmd create <name> <trigger_type> <response>` | Create command | ManageGuild |
-| `/customcmd delete <name>` | Delete command | ManageGuild |
-| `/customcmd list` | List all commands | ManageGuild |
-| `/customcmd toggle <name>` | Enable/disable | ManageGuild |
+> **Dashboard-only management.** Custom command CRUD (create, edit, delete, list, toggle) is managed exclusively through the dashboard. No slash commands are registered for this feature.
+>
+> **Rationale:**
+> - **Conserves slash command slots** — Discord limits applications to 100 global commands. Configuration/CRUD features that don't need fast in-chat access should not consume slots.
+> - **Superior UX** — The dashboard visual builder provides a far better experience for creating complex responses (embeds, multi-action sequences, regex triggers, permission scoping) than a slash command modal ever could.
+> - **Design principle** — Fast actions use slash commands; configuration and CRUD use the dashboard.
+>
+> The bot still **executes** custom commands at runtime (via `messageCreate`), but all management happens in the dashboard.
+
+_No slash commands for this module._
 
 ## API Endpoints
 
