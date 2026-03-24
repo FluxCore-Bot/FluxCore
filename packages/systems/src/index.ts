@@ -37,3 +37,8 @@ export { LOG_COLORS, LOG_CATEGORIES, EVENT_TYPES_BY_CATEGORY } from "./logging/c
 export { createWarning, getWarnings, deleteWarning, deleteAllWarnings, getWarningCount } from "./warnings/persistence.js";
 export { checkAndExecutePunishment } from "./warnings/escalation.js";
 export { getWarnSettings, upsertWarnSettings, getPunishments, addPunishment, removePunishment } from "./warnings/config.js";
+
+// Moderation
+export { createModCase, getModCases, getModCaseById, updateModCase, deleteModCase, getModSettings, upsertModSettings } from "./moderation/persistence.js";
+export { startTempbanScheduler, stopTempbanScheduler, checkExpiredTempbans } from "./moderation/scheduler.js";
+export { dmOnPunishment } from "./moderation/dm.js";

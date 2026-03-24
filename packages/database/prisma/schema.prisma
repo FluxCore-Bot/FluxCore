@@ -217,3 +217,29 @@ model WarnGuildSettings {
   reasonRequired Boolean @default(false)
   maxWarnings    Int     @default(0) // 0 = unlimited
 }
+
+// === Enhanced Moderation ===
+
+model ModCase {
+  id          Int       @id @default(autoincrement())
+  guildId     String
+  targetId    String
+  moderatorId String
+  action      String    // "ban" | "tempban" | "kick" | "timeout" | "softban" | "warn" | "note"
+  reason      String?
+  duration    Int?      // Seconds (for tempban, timeout)
+  expiresAt   DateTime?
+  active      Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+
+  @@index([guildId, targetId])
+  @@index([guildId, createdAt])
+  @@index([guildId, action])
+  @@index([expiresAt, active])
+}
+
+model ModGuildSettings {
+  guildId         String  @id
+  dmOnPunishment  Boolean @default(true)
+  modLogChannelId String?
+}

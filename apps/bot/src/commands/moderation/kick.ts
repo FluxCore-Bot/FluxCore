@@ -13,6 +13,9 @@ import {
   isAboveTarget,
   logger,
 } from "@fluxcore/utils";
+import { createModCase } from "@fluxcore/systems/moderation/persistence";
+import { getModSettings } from "@fluxcore/systems/moderation/persistence";
+import { dmOnPunishment } from "@fluxcore/systems/moderation/dm";
 
 const command: Command = {
   data: new SlashCommandBuilder()
@@ -94,6 +97,11 @@ const command: Command = {
 
     await interaction.deferReply();
 
+    const modSettings = await getModSettings(interaction.guildId!);
+    if (modSettings.dmOnPunishment) {
+      await dmOnPunishment(target, interaction.guild!.name, "kicked", reason);
+    }
+
     try {
       await target.kick(reason);
     } catch (error) {
@@ -111,6 +119,14 @@ const command: Command = {
       });
       return;
     }
+
+    await createModCase({
+      guildId: interaction.guildId!,
+      targetId: target.id,
+      moderatorId: interaction.user.id,
+      action: "kick",
+      reason,
+    });
 
     await interaction.editReply({
       embeds: [

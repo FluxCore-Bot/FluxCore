@@ -24,7 +24,21 @@ vi.mock("@fluxcore/systems/moderation/dm", () => ({
   dmOnPunishment: (...args: unknown[]) => mockDmOnPunishment(...args),
 }));
 
-// Mock permissions (keep real embed/logger exports)
+// Mock constants
+vi.mock("@fluxcore/systems/moderation/constants", () => ({
+  DURATION_PRESETS: {
+    "1h": 3600,
+    "6h": 21600,
+    "12h": 43200,
+    "1d": 86400,
+    "3d": 259200,
+    "7d": 604800,
+    "14d": 1209600,
+    "30d": 2592000,
+  },
+}));
+
+// Mock permissions
 const mockCheckPermissions = vi.fn().mockResolvedValue(true);
 const mockCheckBotPermissions = vi.fn().mockResolvedValue(true);
 const mockIsAboveTarget = vi.fn().mockReturnValue(true);
@@ -38,22 +52,25 @@ vi.mock("@fluxcore/utils", async (importOriginal) => {
   };
 });
 
-const banModule = await import("../../../src/commands/moderation/ban.js");
-const command = banModule.default;
+const tempbanModule = await import("../../../src/commands/moderation/tempban.js");
+const command = tempbanModule.default;
 
 function createMockInteraction({
   targetMember = createMockMember(),
+  duration = "7d",
   reason = null,
   deleteDays = null,
 }: {
   targetMember?: ReturnType<typeof createMockMember> | null;
+  duration?: string;
   reason?: string | null;
   deleteDays?: number | null;
 } = {}) {
   return {
     options: {
       getMember: vi.fn().mockReturnValue(targetMember),
-      getString: vi.fn((name: string) => {
+      getString: vi.fn((name: string, _required?: boolean) => {
+        if (name === "duration") return duration;
         if (name === "reason") return reason;
         return null;
       }),
@@ -84,14 +101,14 @@ function createMockMember({
   };
 }
 
-describe("ban command", () => {
+describe("tempban command", () => {
   it("has correct command metadata", () => {
-    expect(command.data.name).toBe("ban");
+    expect(command.data.name).toBe("tempban");
     expect(command.category).toBe("Moderation");
     expect(command.cooldown).toBe(5);
   });
 
-  it("bans a member successfully and creates mod case", async () => {
+  it("tempbans a member successfully and creates mod case", async () => {
     const target = createMockMember();
     const interaction = createMockInteraction({ targetMember: target });
 
@@ -99,43 +116,21 @@ describe("ban command", () => {
 
     expect(interaction.deferReply).toHaveBeenCalled();
     expect(target.ban).toHaveBeenCalled();
-    expect(interaction.editReply).toHaveBeenCalled();
     expect(mockCreateModCase).toHaveBeenCalledWith(
       expect.objectContaining({
         guildId: "guild-789",
         targetId: "target-789",
         moderatorId: "actor-123",
-        action: "ban",
+        action: "tempban",
+        duration: 604800,
+        expiresAt: expect.any(Date),
       }),
     );
-  });
-
-  it("DMs user when dmOnPunishment is enabled", async () => {
-    mockGetModSettings.mockResolvedValueOnce({ dmOnPunishment: true, modLogChannelId: null });
-    const target = createMockMember();
-    const interaction = createMockInteraction({ targetMember: target });
-
-    await command.execute(interaction as never);
-
-    expect(mockDmOnPunishment).toHaveBeenCalledWith(
-      target,
-      "Test Guild",
-      "banned",
-      "No reason provided",
-    );
+    expect(interaction.editReply).toHaveBeenCalled();
   });
 
   it("returns early when user lacks permissions", async () => {
     mockCheckPermissions.mockResolvedValueOnce(false);
-    const interaction = createMockInteraction();
-
-    await command.execute(interaction as never);
-
-    expect(interaction.deferReply).not.toHaveBeenCalled();
-  });
-
-  it("returns early when bot lacks permissions", async () => {
-    mockCheckBotPermissions.mockResolvedValueOnce(false);
     const interaction = createMockInteraction();
 
     await command.execute(interaction as never);
@@ -153,7 +148,7 @@ describe("ban command", () => {
     );
   });
 
-  it("rejects when user tries to ban themselves", async () => {
+  it("rejects when user tries to tempban themselves", async () => {
     const target = createMockMember({ id: "actor-123" });
     const interaction = createMockInteraction({ targetMember: target });
 
@@ -165,16 +160,14 @@ describe("ban command", () => {
     expect(target.ban).not.toHaveBeenCalled();
   });
 
-  it("rejects when user tries to ban the bot", async () => {
-    const target = createMockMember({ id: "bot-456" });
-    const interaction = createMockInteraction({ targetMember: target });
+  it("rejects invalid duration", async () => {
+    const interaction = createMockInteraction({ duration: "99y" });
 
     await command.execute(interaction as never);
 
     expect(interaction.reply).toHaveBeenCalledWith(
       expect.objectContaining({ ephemeral: true }),
     );
-    expect(target.ban).not.toHaveBeenCalled();
   });
 
   it("rejects when target is not bannable", async () => {
@@ -211,7 +204,7 @@ describe("ban command", () => {
         embeds: expect.arrayContaining([
           expect.objectContaining({
             data: expect.objectContaining({
-              title: "Ban Failed",
+              title: "Tempban Failed",
             }),
           }),
         ]),

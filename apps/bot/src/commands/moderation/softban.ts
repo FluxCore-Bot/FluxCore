@@ -17,27 +17,20 @@ import { createModCase } from "@fluxcore/systems/moderation/persistence";
 import { getModSettings } from "@fluxcore/systems/moderation/persistence";
 import { dmOnPunishment } from "@fluxcore/systems/moderation/dm";
 
-const SECONDS_PER_DAY = 86_400;
+const SEVEN_DAYS_SECS = 7 * 86_400;
 
 const command: Command = {
   data: new SlashCommandBuilder()
-    .setName("ban")
-    .setDescription("Ban a member from the server")
+    .setName("softban")
+    .setDescription("Softban a member (ban + unban to purge messages)")
     .addUserOption((option) =>
       option
         .setName("user")
-        .setDescription("The member to ban")
+        .setDescription("The member to softban")
         .setRequired(true),
     )
     .addStringOption((option) =>
-      option.setName("reason").setDescription("Reason for the ban"),
-    )
-    .addIntegerOption((option) =>
-      option
-        .setName("delete-days")
-        .setDescription("Days of messages to delete (0-7)")
-        .setMinValue(0)
-        .setMaxValue(7),
+      option.setName("reason").setDescription("Reason for the softban"),
     )
     .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
   category: "Moderation",
@@ -57,7 +50,6 @@ const command: Command = {
     const target = interaction.options.getMember("user") as GuildMember | null;
     const reason =
       interaction.options.getString("reason") ?? "No reason provided";
-    const deleteDays = interaction.options.getInteger("delete-days") ?? 0;
 
     if (!target) {
       await interaction.reply({
@@ -69,7 +61,7 @@ const command: Command = {
 
     if (target.id === interaction.user.id) {
       await interaction.reply({
-        embeds: [errorEmbed("Error", "You cannot ban yourself.")],
+        embeds: [errorEmbed("Error", "You cannot softban yourself.")],
         ephemeral: true,
       });
       return;
@@ -77,7 +69,7 @@ const command: Command = {
 
     if (target.id === interaction.client.user.id) {
       await interaction.reply({
-        embeds: [errorEmbed("Error", "I cannot ban myself.")],
+        embeds: [errorEmbed("Error", "I cannot softban myself.")],
         ephemeral: true,
       });
       return;
@@ -97,7 +89,7 @@ const command: Command = {
         embeds: [
           errorEmbed(
             "Error",
-            "You cannot ban a member with an equal or higher role.",
+            "You cannot softban a member with an equal or higher role.",
           ),
         ],
         ephemeral: true,
@@ -109,24 +101,25 @@ const command: Command = {
 
     const modSettings = await getModSettings(interaction.guildId!);
     if (modSettings.dmOnPunishment) {
-      await dmOnPunishment(target, interaction.guild!.name, "banned", reason);
+      await dmOnPunishment(target, interaction.guild!.name, "softbanned", reason);
     }
 
     try {
       await target.ban({
-        reason,
-        deleteMessageSeconds: deleteDays * SECONDS_PER_DAY,
+        reason: `Softban: ${reason}`,
+        deleteMessageSeconds: SEVEN_DAYS_SECS,
       });
+      await interaction.guild!.members.unban(target.id, "Softban");
     } catch (error) {
       logger.error(
-        `Failed to ban ${target.user.id} in guild ${interaction.guildId}`,
+        `Failed to softban ${target.user.id} in guild ${interaction.guildId}`,
         error instanceof Error ? error : new Error(String(error)),
       );
       await interaction.editReply({
         embeds: [
           errorEmbed(
-            "Ban Failed",
-            "Failed to ban the member. They may have left the server.",
+            "Softban Failed",
+            "Failed to softban the member. They may have left the server.",
           ),
         ],
       });
@@ -137,15 +130,15 @@ const command: Command = {
       guildId: interaction.guildId!,
       targetId: target.id,
       moderatorId: interaction.user.id,
-      action: "ban",
+      action: "softban",
       reason,
     });
 
     await interaction.editReply({
       embeds: [
         successEmbed(
-          "Member Banned",
-          `**${target.user.displayName}** was banned.\n**Reason:** ${reason}`,
+          "Member Softbanned",
+          `**${target.user.displayName}** was softbanned (messages purged).\n**Reason:** ${reason}`,
         ),
       ],
     });
