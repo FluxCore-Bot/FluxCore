@@ -1,5 +1,4 @@
 import type { GuildMember, User } from "discord.js";
-import { logger } from "@fluxcore/utils";
 
 export async function dmOnPunishment(
   target: GuildMember | User,
