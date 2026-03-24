@@ -19,6 +19,7 @@ import { registerActionRoutes } from "./routes/actions.js";
 import { registerDiscordRoutes } from "./routes/discord.js";
 import { registerMusicRoutes } from "./routes/music.js";
 import { registerLoggingRoutes } from "./routes/logging.js";
+import { registerWarningRoutes } from "./routes/warnings.js";
 
 async function main(): Promise<void> {
   if (!config.dashboardClientSecret) {
@@ -93,6 +94,7 @@ async function main(): Promise<void> {
   registerDiscordRoutes(app);
   registerMusicRoutes(app);
   registerLoggingRoutes(app);
+  registerWarningRoutes(app);
 
   // SPA fallback: serve index.html for non-API/auth routes in production
   if (process.env.NODE_ENV === "production") {

@@ -185,3 +185,35 @@ model LogEntry {
   @@index([guildId, targetId])
   @@index([createdAt])
 }
+
+// === Warn System ===
+
+model Warning {
+  id          Int      @id @default(autoincrement())
+  guildId     String
+  userId      String
+  moderatorId String
+  reason      String
+  createdAt   DateTime @default(now())
+
+  @@index([guildId, userId])
+  @@index([guildId, createdAt])
+}
+
+model WarnPunishment {
+  id        Int    @id @default(autoincrement())
+  guildId   String
+  threshold Int
+  action    String // "timeout" | "kick" | "ban"
+  duration  Int?   // Duration in seconds (for timeout)
+
+  @@unique([guildId, threshold])
+  @@index([guildId])
+}
+
+model WarnGuildSettings {
+  guildId        String  @id
+  dmOnWarn       Boolean @default(true)
+  reasonRequired Boolean @default(false)
+  maxWarnings    Int     @default(0) // 0 = unlimited
+}
