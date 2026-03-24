@@ -15,6 +15,9 @@ import {
   formatDuration,
   logger,
 } from "@fluxcore/utils";
+import { createModCase } from "@fluxcore/systems/moderation/persistence";
+import { getModSettings } from "@fluxcore/systems/moderation/persistence";
+import { dmOnPunishment } from "@fluxcore/systems/moderation/dm";
 
 const MAX_TIMEOUT = 28 * 24 * 60 * 60 * 1000;
 
@@ -121,6 +124,11 @@ const command: Command = {
 
     await interaction.deferReply();
 
+    const modSettings = await getModSettings(interaction.guildId!);
+    if (modSettings.dmOnPunishment) {
+      await dmOnPunishment(target, interaction.guild!.name, "timed out", reason, formatDuration(durationMs));
+    }
+
     try {
       await target.timeout(durationMs, reason);
     } catch (error) {
@@ -138,6 +146,17 @@ const command: Command = {
       });
       return;
     }
+
+    const durationSecs = Math.floor(durationMs / 1000);
+    await createModCase({
+      guildId: interaction.guildId!,
+      targetId: target.id,
+      moderatorId: interaction.user.id,
+      action: "timeout",
+      reason,
+      duration: durationSecs,
+      expiresAt: new Date(Date.now() + durationMs),
+    });
 
     await interaction.editReply({
       embeds: [

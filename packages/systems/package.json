@@ -73,6 +73,26 @@
     "./music/constants": {
       "types": "./dist/music/constants.d.ts",
       "import": "./dist/music/constants.js"
+    },
+    "./moderation/types": {
+      "types": "./dist/moderation/types.d.ts",
+      "import": "./dist/moderation/types.js"
+    },
+    "./moderation/constants": {
+      "types": "./dist/moderation/constants.d.ts",
+      "import": "./dist/moderation/constants.js"
+    },
+    "./moderation/persistence": {
+      "types": "./dist/moderation/persistence.d.ts",
+      "import": "./dist/moderation/persistence.js"
+    },
+    "./moderation/scheduler": {
+      "types": "./dist/moderation/scheduler.d.ts",
+      "import": "./dist/moderation/scheduler.js"
+    },
+    "./moderation/dm": {
+      "types": "./dist/moderation/dm.d.ts",
+      "import": "./dist/moderation/dm.js"
     }
   },
   "scripts": {

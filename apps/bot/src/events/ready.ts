@@ -101,6 +101,15 @@ const event: Event<"ready"> = {
       );
     }
 
+    // Tempban scheduler
+    try {
+      const { startTempbanScheduler } = await import("@fluxcore/systems/moderation/scheduler");
+      startTempbanScheduler(client);
+      logger.info("Tempban scheduler started");
+    } catch (error) {
+      logger.error("Failed to start tempban scheduler", error instanceof Error ? error : new Error(String(error)));
+    }
+
     // Schedule daily ActionLog retention cleanup
     const cleanupTimer = setInterval(() => {
       cleanOldLogs().catch((err: unknown) =>
