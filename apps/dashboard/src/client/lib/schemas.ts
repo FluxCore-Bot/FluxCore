@@ -357,3 +357,36 @@ export const MusicTrackSchema = z.object({
 export type MusicTrack = z.infer<typeof MusicTrackSchema>;
 
 export const MusicTrackListSchema = z.array(MusicTrackSchema);
+
+// --- Warnings ---
+export const WarningSchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  userId: z.string(),
+  moderatorId: z.string(),
+  reason: z.string(),
+  createdAt: z.string(),
+});
+export type Warning = z.infer<typeof WarningSchema>;
+export const WarningListSchema = z.object({
+  warnings: z.array(WarningSchema),
+  total: z.number(),
+});
+
+export const WarnPunishmentSchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  threshold: z.number(),
+  action: z.enum(["timeout", "kick", "ban"]),
+  duration: z.number().nullable(),
+});
+export type WarnPunishment = z.infer<typeof WarnPunishmentSchema>;
+export const WarnPunishmentListSchema = z.array(WarnPunishmentSchema);
+
+export const WarnSettingsSchema = z.object({
+  guildId: z.string(),
+  dmOnWarn: z.boolean(),
+  reasonRequired: z.boolean(),
+  maxWarnings: z.number(),
+});
+export type WarnSettings = z.infer<typeof WarnSettingsSchema>;
