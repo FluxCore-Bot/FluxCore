@@ -97,21 +97,15 @@ Shared with logging system — fires farewell message if enabled.
 
 ## Bot Commands
 
-### `/welcome setup <channel>`
+> **Design principle:** Configuration (enable/disable, channel selection, message editing) is **dashboard-only** to conserve slash command slots. Only fast actions get slash commands.
+
+### `/welcome test`
 
 ```
 Permission: ManageGuild
 ```
 
-Quick setup: enables welcome, sets channel, applies default template.
-
-### `/welcome test`
-
-Sends a test welcome message using current config with the command user as target.
-
-### `/welcome disable`
-
-Disables welcome messages.
+Sends a test welcome message using current config with the command user as target. Useful for quickly previewing the configured message without visiting the dashboard. Returns an error if welcome messages are not yet configured.
 
 ## API Endpoints
 
@@ -151,4 +145,4 @@ welcome/
 - **Variable replacement:** Apply variables to ALL text fields in the embed (title, description, footer, field values)
 - **Auto-role:** Skip if bot role is below the target role in hierarchy
 - **DM failures:** Never block or error if DM fails — many users have DMs disabled
-- **Default template:** On first setup, populate with a sensible default: "Welcome to {server}, {user}! You are member #{membercount}."
+- **Default template:** When a guild first opens the dashboard welcome page, populate with a sensible default: "Welcome to {server}, {user}! You are member #{membercount}."

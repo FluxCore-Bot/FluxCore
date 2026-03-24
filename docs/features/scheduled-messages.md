@@ -83,13 +83,11 @@ const CRON_PRESETS = {
 
 ## Bot Commands
 
-| Command | Description | Permission |
-|---------|-------------|------------|
-| `/schedule create <name> <channel> <cron> <message>` | Create | ManageGuild |
-| `/schedule delete <name>` | Delete | ManageGuild |
-| `/schedule list` | List all | ManageGuild |
-| `/schedule toggle <name>` | Enable/disable | ManageGuild |
-| `/schedule test <name>` | Send now (doesn't affect schedule) | ManageGuild |
+> **Dashboard-only feature.** Scheduled message management (create, edit, delete, toggle, test) is handled entirely through the dashboard. No slash commands are provided for this module.
+>
+> **Rationale:** Cron configuration and message editing (text/embed) benefit significantly from a visual interface with cron presets, a rich message editor, and next-run previews. Additionally, this conserves slash command slots for fast, in-context actions that users need during active moderation or conversation.
+
+The bot's role is limited to the **scheduler runtime** — polling for due messages and posting them to the configured channels. All CRUD and configuration is performed via the dashboard UI and API.
 
 ## API Endpoints
 
@@ -105,7 +103,15 @@ POST   /api/guilds/:guildId/scheduled-messages/:id/test → Test send
 
 **Route:** `/guild/:guildId/scheduled`
 
-Sections: message list with next-run times, create/edit form with cron picker (presets + custom), message editor (text/embed).
+This is the **sole management interface** for scheduled messages. No slash commands exist for this feature.
+
+Sections:
+
+- **Message list** — shows all scheduled messages with name, channel, cron schedule, next-run time, and enabled/disabled status
+- **Create/edit form** — name, target channel selector, cron picker (presets + custom expression), timezone selector
+- **Message editor** — text or embed mode with live preview
+- **Enable/disable toggle** — per-message, inline in the list
+- **Test send button** — sends the message immediately without affecting the schedule
 
 ## Dependencies
 

@@ -13,7 +13,7 @@ Private support channel system. Users click a button on a panel to open a ticket
 
 | Feature | Description |
 |---------|-------------|
-| Panel creation | Button-based ticket creation panels |
+| Panel creation | Button-based ticket creation panels (dashboard-only configuration) |
 | Ticket categories | Multiple categories (Support, Reports, Applications) |
 | Custom forms | Discord modal popups with questions before ticket opens |
 | Private channels | Each ticket = private channel for user + staff |
@@ -136,17 +136,7 @@ Delete channel (or archive by restricting permissions)
 
 ## Bot Commands
 
-### `/ticket panel create <name> <channel>`
-
-```
-Permission: ManageGuild
-```
-
-Creates ticket panel. Categories added via dashboard or subcommands.
-
-### `/ticket panel send <name>`
-
-Sends the panel message with buttons.
+> **Design principle:** Fast, in-context actions are slash commands. Configuration and setup (panel creation, category editing, form building) is dashboard-only — this conserves slash command slots and provides a better UX through the dashboard's visual panel builder.
 
 ### `/ticket close [reason]`
 
@@ -167,6 +157,19 @@ Staff claims the ticket.
 ### `/ticket transcript`
 
 Generate and post transcript link.
+
+### Panel Creation & Management (Dashboard Only)
+
+Ticket panels are created, configured, and sent entirely through the dashboard's visual panel builder. This includes:
+
+- Creating and naming panels
+- Choosing the target channel
+- Adding/editing categories with button labels, emojis, and descriptions
+- Building custom form fields (Discord modal questions)
+- Configuring the panel embed appearance
+- Sending (or re-sending) panel messages to channels
+
+See the **Dashboard Page** section below for details.
 
 ## Transcript Generation
 
@@ -219,7 +222,7 @@ PUT    /api/guilds/:guildId/ticket-settings                        → Update se
 **Sections:**
 1. **Stats** — Open tickets, avg response time, total closed
 2. **Active tickets** — Table with status, user, category, created, claimed by
-3. **Panel builder** — Create/edit panels with category editor, form builder
+3. **Panel builder** — Create/edit/send panels with visual category editor, form builder, embed customizer (this is the only way to manage panels — no bot commands)
 4. **Settings** — Staff roles, transcript channel, max per user, auto-close, naming format
 5. **Transcript browser** — Search and view past ticket transcripts
 

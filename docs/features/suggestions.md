@@ -43,13 +43,14 @@ model SuggestionGuildSettings {
 
 ## Bot Commands
 
+Fast in-context actions only. All configuration is managed through the dashboard.
+
 | Command | Description | Permission |
 |---------|-------------|------------|
 | `/suggest <text>` | Submit a suggestion | Everyone |
 | `/suggestion approve <id> [reason]` | Approve | ManageGuild |
 | `/suggestion deny <id> [reason]` | Deny | ManageGuild |
 | `/suggestion implement <id>` | Mark implemented | ManageGuild |
-| `/suggestion config channel <channel>` | Set suggestions channel | ManageGuild |
 
 ## Flow
 
@@ -74,4 +75,4 @@ PUT    /api/guilds/:guildId/suggestion-settings          → Update
 
 **Route:** `/guild/:guildId/suggestions`
 
-Sections: suggestion list with filters, settings panel, status management.
+Sections: suggestion list with filters, status management, and full configuration panel (channel selection, review channel, DM notifications, auto-thread, anonymous mode). All suggestion settings are configured exclusively through the dashboard.

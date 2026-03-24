@@ -8,6 +8,20 @@
 
 ## Decision Log
 
+### Command vs Dashboard Split (Design Principle)
+
+Discord limits bots to 100 global slash commands. To conserve slots for future features:
+
+- **Slash commands = fast actions only** — things a moderator does in-context (warn, kick, lock, close ticket, approve suggestion)
+- **Dashboard = all configuration** — settings, thresholds, builders, CRUD management
+- **3+ command rule** — if a task needs more than 3 commands to complete, it belongs in the dashboard
+
+**Dashboard-only configured features (zero slash commands):**
+Logging, Starboard, Custom Commands, Scheduled Messages
+
+**Dashboard config + action commands only:**
+Warn System, Moderation, Welcome/Farewell, Role Panels, Leveling, Tickets, Suggestions, Giveaways, Anti-Raid
+
 ### Skipped Features (Discord Native Covers These)
 
 These features are handled well enough by Discord's built-in tools. No bot implementation needed.
