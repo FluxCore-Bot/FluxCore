@@ -97,6 +97,26 @@
     "./logging/formatter": {
       "types": "./dist/logging/formatter.d.ts",
       "import": "./dist/logging/formatter.js"
+    },
+    "./warnings/types": {
+      "types": "./dist/warnings/types.d.ts",
+      "import": "./dist/warnings/types.js"
+    },
+    "./warnings/constants": {
+      "types": "./dist/warnings/constants.d.ts",
+      "import": "./dist/warnings/constants.js"
+    },
+    "./warnings/persistence": {
+      "types": "./dist/warnings/persistence.d.ts",
+      "import": "./dist/warnings/persistence.js"
+    },
+    "./warnings/escalation": {
+      "types": "./dist/warnings/escalation.d.ts",
+      "import": "./dist/warnings/escalation.js"
+    },
+    "./warnings/config": {
+      "types": "./dist/warnings/config.d.ts",
+      "import": "./dist/warnings/config.js"
     }
   },
   "scripts": {
