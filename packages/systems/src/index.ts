@@ -49,6 +49,13 @@ export { buildButtonComponents, buildDropdownComponent, buildPanelEmbed } from "
 export { handleRolePanelButton, handleRolePanelDropdown, handleRolePanelReaction } from "./rolePanel/handler.js";
 export { MAX_ROLES_PER_PANEL, VALID_PANEL_TYPES, VALID_PANEL_MODES, BUTTON_STYLES } from "./rolePanel/constants.js";
 
+// Giveaways
+export { createGiveaway, getGiveaway, getActiveGiveaways, listGiveaways, setGiveawayMessageId, addEntrant, removeEntrant, endGiveaway, getDueGiveaways, getActiveGiveawayCount } from "./giveaways/persistence.js";
+export { selectWinners, rerollWinners } from "./giveaways/winner.js";
+export { buildGiveawayEmbed, buildEndedGiveawayEmbed, buildGiveawayButton } from "./giveaways/embed.js";
+export { startGiveawayScheduler, stopGiveawayScheduler, processEndedGiveaways } from "./giveaways/scheduler.js";
+export { GIVEAWAY_BUTTON_PREFIX, GIVEAWAY_CHECK_INTERVAL_MS, MAX_WINNERS, MAX_PRIZE_LENGTH, MAX_ACTIVE_GIVEAWAYS, GIVEAWAY_PAGE_SIZE } from "./giveaways/constants.js";
+
 // Leveling
 export { getLevelSettings, upsertLevelSettings, getLevelRewards, addLevelReward, removeLevelReward } from "./leveling/config.js";
 export { getUserLevel, addXp, addVoiceXp, setXp, getLeaderboard, getUserRank } from "./leveling/persistence.js";

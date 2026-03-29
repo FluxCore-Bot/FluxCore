@@ -323,3 +323,33 @@ model LevelGuildSettings {
   noXpRoles           String  @default("[]")
   xpMultipliers       String  @default("{}")
 }
+
+// === Giveaways ===
+
+model Giveaway {
+  id              Int      @id @default(autoincrement())
+  guildId         String
+  channelId       String
+  messageId       String?  // Giveaway embed message
+  hostId          String   // Who created it
+  prize           String   // Prize description
+  winners         Int      @default(1) // Number of winners
+  endsAt          DateTime
+  ended           Boolean  @default(false)
+  winnerIds       String   @default("[]") // JSON array of winner user IDs
+  entrantIds      String   @default("[]") // JSON array of entrant user IDs
+  requiredRoleIds String   @default("[]") // JSON array — must have one of these roles
+  createdAt       DateTime @default(now())
+
+  @@index([guildId])
+  @@index([endsAt, ended]) // For scheduler
+}
+
+model GiveawayCacheInvalidation {
+  id        Int      @id @default(autoincrement())
+  guildId   String
+  action    String // "reload"
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
