@@ -530,6 +530,30 @@ export const XpMultipliersSchema = z.object({
   roles: z.record(z.string(), z.number()).optional(),
 });
 
+// --- Giveaways ---
+export const GiveawaySchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  channelId: z.string(),
+  messageId: z.string().nullable(),
+  hostId: z.string(),
+  prize: z.string(),
+  winners: z.number(),
+  endsAt: z.string(),
+  ended: z.boolean(),
+  winnerIds: z.array(z.string()),
+  entrantIds: z.array(z.string()),
+  requiredRoleIds: z.array(z.string()),
+  createdAt: z.string(),
+});
+export type GiveawayItem = z.infer<typeof GiveawaySchema>;
+
+export const GiveawayListResponseSchema = z.object({
+  giveaways: z.array(GiveawaySchema),
+  total: z.number(),
+});
+export type GiveawayListResponse = z.infer<typeof GiveawayListResponseSchema>;
+
 export const LevelSettingsSchema = z.object({
   guildId: z.string(),
   enabled: z.boolean(),

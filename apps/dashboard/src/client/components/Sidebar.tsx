@@ -20,6 +20,7 @@ const navItems: NavItem[] = [
   { path: "/guild/$guildId/warnings", label: "Warnings", icon: "warning" },
   { path: "/guild/$guildId/roles", label: "Role Panels", icon: "badge" },
   { path: "/guild/$guildId/leveling", label: "Leveling", icon: "trending_up" },
+  { path: "/guild/$guildId/giveaways", label: "Giveaways", icon: "celebration" },
   { path: "/guild/$guildId/suggestions", label: "Suggestions", icon: "lightbulb" },
   { path: "/guild/$guildId/starboard", label: "Starboard", icon: "star" },
   { path: "/guild/$guildId/logs", label: "Logs", icon: "description" },

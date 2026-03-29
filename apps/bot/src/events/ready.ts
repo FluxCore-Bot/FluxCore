@@ -123,6 +123,14 @@ const event: Event<"ready"> = {
       logger.error("Failed to start tempban scheduler", error instanceof Error ? error : new Error(String(error)));
     }
 
+    // Giveaway scheduler
+    try {
+      const { startGiveawayScheduler } = await import("@fluxcore/systems/giveaways/scheduler");
+      startGiveawayScheduler(client);
+    } catch (error) {
+      logger.error("Failed to start giveaway scheduler", error instanceof Error ? error : new Error(String(error)));
+    }
+
     // Schedule daily ActionLog retention cleanup
     const cleanupTimer = setInterval(() => {
       cleanOldLogs().catch((err: unknown) =>

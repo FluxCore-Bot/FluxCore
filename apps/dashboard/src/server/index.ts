@@ -24,6 +24,7 @@ import { registerModerationRoutes } from "./routes/moderation.js";
 import { registerWelcomeRoutes } from "./routes/welcome.js";
 import { registerRolePanelRoutes } from "./routes/rolePanel.js";
 import { registerLevelingRoutes } from "./routes/leveling.js";
+import { registerGiveawayRoutes } from "./routes/giveaways.js";
 import { registerSuggestionRoutes } from "./routes/suggestions.js";
 import { registerStarboardRoutes } from "./routes/starboard.js";
 
@@ -105,6 +106,7 @@ async function main(): Promise<void> {
   registerWelcomeRoutes(app);
   registerRolePanelRoutes(app);
   registerLevelingRoutes(app);
+  registerGiveawayRoutes(app);
   registerSuggestionRoutes(app);
   registerStarboardRoutes(app);
 
