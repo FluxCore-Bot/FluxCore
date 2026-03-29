@@ -324,6 +324,31 @@ model LevelGuildSettings {
   xpMultipliers       String  @default("{}")
 }
 
+// === Anti-Raid ===
+
+model AntiRaidConfig {
+  guildId             String  @id
+  enabled             Boolean @default(false)
+  joinThreshold       Int     @default(10)
+  joinWindow          Int     @default(10)
+  joinAction          String  @default("kick")
+  accountAgeMinDays   Int     @default(0)
+  accountAgeAction    String  @default("kick")
+  antiNukeEnabled     Boolean @default(false)
+  antiNukeThreshold   Int     @default(3)
+  lockdownOnRaid      Boolean @default(false)
+  whitelistedRoleIds  String  @default("[]")
+  logChannelId        String?
+}
+
+model RaidEvent {
+  id          Int      @id @default(autoincrement())
+  guildId     String
+  eventType   String
+  details     String   @default("{}")
+  triggeredAt DateTime @default(now())
+
+  @@index([guildId, triggeredAt])
 // === Ticket System ===
 
 model TicketPanel {

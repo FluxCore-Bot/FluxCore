@@ -7,10 +7,89 @@ import { sendLogEmbed } from "@fluxcore/systems/logging/sender";
 import { formatMemberJoin } from "@fluxcore/systems/logging/formatter";
 import { getWelcomeConfig } from "@fluxcore/systems/welcome/config";
 import { buildWelcomeEmbed } from "@fluxcore/systems/welcome/builder";
+import { getAntiRaidConfig } from "@fluxcore/systems/antiraid/config";
+import { recordJoin } from "@fluxcore/systems/antiraid/tracker";
+import { executeRaidAction, lockdownGuild } from "@fluxcore/systems/antiraid/actions";
+import { createRaidEvent } from "@fluxcore/systems/antiraid/persistence";
+
+async function handleAntiRaid(member: GuildMember): Promise<boolean> {
+  const config = await getAntiRaidConfig(member.guild.id);
+  if (!config.enabled) return false;
+
+  // Check if member has a whitelisted role (unlikely on join, but possible via other bots)
+  const hasWhitelistedRole = config.whitelistedRoleIds.some((roleId) =>
+    member.roles.cache.has(roleId),
+  );
+  if (hasWhitelistedRole) return false;
+
+  // Account age check
+  if (config.accountAgeMinDays > 0) {
+    const accountAgeDays = (Date.now() - member.user.createdTimestamp) / 86_400_000;
+    if (accountAgeDays < config.accountAgeMinDays) {
+      const success = await executeRaidAction(
+        member,
+        config.accountAgeAction,
+        `Account too new (${Math.floor(accountAgeDays)} days < ${config.accountAgeMinDays} minimum)`,
+      );
+      await createRaidEvent(member.guild.id, "account_age", {
+        userIds: [member.id],
+        action: config.accountAgeAction,
+        ageDays: Math.floor(accountAgeDays),
+      });
+      logger.info(
+        `Anti-raid: Account age filter triggered for ${member.id} in guild ${member.guild.id} (${Math.floor(accountAgeDays)} days, action: ${config.accountAgeAction}, success: ${success})`,
+      );
+      return true;
+    }
+  }
+
+  // Join rate check
+  const isRaid = recordJoin(member.guild.id, config.joinThreshold, config.joinWindow);
+  if (isRaid) {
+    // Execute action on this member
+    await executeRaidAction(member, config.joinAction, "Join rate spike detected");
+
+    await createRaidEvent(member.guild.id, "join_spike", {
+      userIds: [member.id],
+      action: config.joinAction,
+      count: config.joinThreshold,
+    });
+
+    // Trigger lockdown if configured
+    if (config.lockdownOnRaid) {
+      const lockedCount = await lockdownGuild(member.guild, "Automatic raid lockdown");
+      await createRaidEvent(member.guild.id, "lockdown", {
+        action: "activate",
+        reason: "Automatic raid lockdown triggered by join spike",
+        count: lockedCount,
+      });
+    }
+
+    logger.warn(
+      `Anti-raid: Join spike detected in guild ${member.guild.id} (${config.joinThreshold} joins in ${config.joinWindow}s)`,
+    );
+    return true;
+  }
+
+  return false;
+}
 
 const event: Event<"guildMemberAdd"> = {
   name: "guildMemberAdd",
   async execute(member: GuildMember) {
+    // === Anti-Raid Detection ===
+    if (!member.user.bot) {
+      try {
+        const blocked = await handleAntiRaid(member);
+        if (blocked) return; // Member was actioned, skip welcome
+      } catch (error) {
+        logger.error(
+          `Anti-raid error in guild ${member.guild.id}`,
+          error instanceof Error ? error : new Error(String(error)),
+        );
+      }
+    }
+
     // === Logging ===
     if (!member.user.bot) {
       const config = await getLogConfig(member.guild.id, "member");
