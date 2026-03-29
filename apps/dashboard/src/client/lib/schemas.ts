@@ -639,6 +639,55 @@ export const TicketSettingsSchema = z.object({
 export type TicketSettingsItem = z.infer<typeof TicketSettingsSchema>;
 export type LevelSettings = z.infer<typeof LevelSettingsSchema>;
 
+// --- Scheduled Messages ---
+
+export const ScheduledMessageEmbedSchema = z.object({
+  title: z.string().optional(),
+  description: z.string().optional(),
+  color: z.number().optional(),
+  thumbnail: z.string().optional(),
+  image: z.string().optional(),
+  footer: z.string().optional(),
+  fields: z.array(z.object({
+    name: z.string(),
+    value: z.string(),
+    inline: z.boolean().optional(),
+  })).optional(),
+});
+
+export const ScheduledMessageContentSchema = z.object({
+  type: z.enum(["text", "embed"]),
+  content: z.string().optional(),
+  embed: ScheduledMessageEmbedSchema.optional(),
+});
+export type ScheduledMessageContent = z.infer<typeof ScheduledMessageContentSchema>;
+
+export const ScheduledMessageSchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  channelId: z.string(),
+  name: z.string(),
+  message: ScheduledMessageContentSchema,
+  cronExpr: z.string(),
+  timezone: z.string(),
+  enabled: z.boolean(),
+  lastRunAt: z.string().nullable(),
+  nextRunAt: z.string().nullable(),
+  createdBy: z.string(),
+  createdAt: z.coerce.string(),
+});
+export type ScheduledMessage = z.infer<typeof ScheduledMessageSchema>;
+
+export const ScheduledMessageListResponseSchema = z.object({
+  messages: z.array(ScheduledMessageSchema),
+  total: z.number(),
+});
+export type ScheduledMessageListResponse = z.infer<typeof ScheduledMessageListResponseSchema>;
+
+export const CronPreviewResponseSchema = z.object({
+  nextRuns: z.array(z.string()),
+});
+export type CronPreviewResponse = z.infer<typeof CronPreviewResponseSchema>;
 // --- Custom Commands ---
 export const CustomCommandEmbedSchema = z.object({
   title: z.string().optional(),

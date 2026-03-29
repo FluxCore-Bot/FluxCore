@@ -123,6 +123,13 @@ const event: Event<"ready"> = {
       logger.error("Failed to start tempban scheduler", error instanceof Error ? error : new Error(String(error)));
     }
 
+    // Scheduled Messages scheduler
+    try {
+      const { startScheduledMessageScheduler } = await import("@fluxcore/systems/scheduled-messages/scheduler");
+      startScheduledMessageScheduler(client);
+      logger.info("Scheduled messages scheduler started");
+    } catch (error) {
+      logger.error("Failed to start scheduled messages scheduler", error instanceof Error ? error : new Error(String(error)));
     // Giveaway scheduler
     try {
       const { startGiveawayScheduler } = await import("@fluxcore/systems/giveaways/scheduler");

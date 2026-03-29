@@ -22,6 +22,7 @@ import { ModerationPage } from "./routes/guild/$guildId/moderation";
 import { WelcomePage } from "./routes/guild/$guildId/welcome";
 import { RolesPage } from "./routes/guild/$guildId/roles";
 import { LevelingPage } from "./routes/guild/$guildId/leveling";
+import { ScheduledMessagesPage } from "./routes/guild/$guildId/scheduled";
 import { SecurityPage } from "./routes/guild/$guildId/security";
 import { TicketsPage } from "./routes/guild/$guildId/tickets";
 import { GiveawaysPage } from "./routes/guild/$guildId/giveaways";
@@ -126,6 +127,10 @@ const levelingRoute = createRoute({
   component: LevelingPage,
 });
 
+const scheduledRoute = createRoute({
+  getParentRoute: () => guildRoute,
+  path: "/scheduled",
+  component: ScheduledMessagesPage,
 const securityRoute = createRoute({
   getParentRoute: () => guildRoute,
   path: "/security",
@@ -167,6 +172,7 @@ const routeTree = rootRoute.addChildren([
     welcomeRoute,
     rolesRoute,
     levelingRoute,
+    scheduledRoute,
     securityRoute,
     ticketsRoute,
     giveawaysRoute,

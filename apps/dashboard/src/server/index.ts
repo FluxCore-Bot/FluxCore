@@ -24,6 +24,7 @@ import { registerModerationRoutes } from "./routes/moderation.js";
 import { registerWelcomeRoutes } from "./routes/welcome.js";
 import { registerRolePanelRoutes } from "./routes/rolePanel.js";
 import { registerLevelingRoutes } from "./routes/leveling.js";
+import { registerScheduledMessageRoutes } from "./routes/scheduled-messages.js";
 import { registerCustomCommandRoutes } from "./routes/customCommands.js";
 import { registerAntiRaidRoutes } from "./routes/anti-raid.js";
 import { registerTicketRoutes } from "./routes/tickets.js";
@@ -109,6 +110,7 @@ async function main(): Promise<void> {
   registerWelcomeRoutes(app);
   registerRolePanelRoutes(app);
   registerLevelingRoutes(app);
+  registerScheduledMessageRoutes(app);
   registerCustomCommandRoutes(app);
   registerAntiRaidRoutes(app);
   registerTicketRoutes(app);

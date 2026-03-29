@@ -62,6 +62,11 @@ export { getUserLevel, addXp, addVoiceXp, setXp, getLeaderboard, getUserRank } f
 export { xpForLevel, totalXpForLevel, levelFromXp, applyMultipliers } from "./leveling/xp.js";
 export { checkAndGrantRewards } from "./leveling/rewards.js";
 
+// Scheduled Messages
+export { getScheduledMessages, getScheduledMessageById, createScheduledMessage, updateScheduledMessage, deleteScheduledMessage, getDueMessages, markMessageExecuted } from "./scheduled-messages/persistence.js";
+export { startScheduledMessageScheduler, stopScheduledMessageScheduler, processScheduledMessages } from "./scheduled-messages/scheduler.js";
+export { parseCronExpression, validateCronExpression, getNextCronRun, describeCron } from "./scheduled-messages/cron.js";
+export { SCHEDULER_CHECK_INTERVAL_MS, MAX_SCHEDULED_MESSAGES_PER_GUILD, COMMON_TIMEZONES } from "./scheduled-messages/constants.js";
 // Custom Commands
 export {
   getCustomCommands,

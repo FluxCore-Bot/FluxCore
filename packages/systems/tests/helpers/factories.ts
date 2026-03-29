@@ -110,6 +110,38 @@ export async function createMusicSettings(
   });
 }
 
+// ─── Scheduled Messages ──────────────────────────────────────
+
+export interface CreateScheduledMessageInput {
+  guildId?: string;
+  channelId?: string;
+  name?: string;
+  message?: string;
+  cronExpr?: string;
+  timezone?: string;
+  enabled?: boolean;
+  nextRunAt?: Date | null;
+  createdBy?: string;
+}
+
+let scheduledMsgCounter = 0;
+
+export async function createScheduledMessageFactory(
+  overrides: CreateScheduledMessageInput = {},
+) {
+  scheduledMsgCounter++;
+  const prisma = getPrisma();
+  return prisma.scheduledMessage.create({
+    data: {
+      guildId: overrides.guildId ?? "test-guild-1",
+      channelId: overrides.channelId ?? "ch-1",
+      name: overrides.name ?? `scheduled-msg-${scheduledMsgCounter}`,
+      message: overrides.message ?? JSON.stringify({ type: "text", content: "Hello!" }),
+      cronExpr: overrides.cronExpr ?? "0 9 * * *",
+      timezone: overrides.timezone ?? "UTC",
+      enabled: overrides.enabled ?? true,
+      nextRunAt: overrides.nextRunAt ?? new Date(Date.now() + 3_600_000),
+      createdBy: overrides.createdBy ?? "user-1",
 // ─── Starboard Settings ───────────────────────────────────
 
 export interface CreateStarboardSettingsInput {
