@@ -463,3 +463,33 @@ export const ModSettingsSchema = z.object({
   modLogChannelId: z.string().nullable(),
 });
 export type ModSettings = z.infer<typeof ModSettingsSchema>;
+
+// --- Role Panels ---
+export const RolePanelEntrySchema = z.object({
+  roleId: z.string(),
+  label: z.string(),
+  emoji: z.string().optional(),
+  description: z.string().optional(),
+  style: z.number().optional(),
+});
+export type RolePanelEntryItem = z.infer<typeof RolePanelEntrySchema>;
+
+export const RolePanelSchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  channelId: z.string(),
+  messageId: z.string().nullable(),
+  name: z.string(),
+  type: z.enum(["reaction", "button", "dropdown"]),
+  mode: z.enum(["toggle", "unique", "verify"]),
+  embed: z.string(),
+  roles: z.array(RolePanelEntrySchema),
+  maxRoles: z.number().nullable(),
+  minRoles: z.number().nullable(),
+  createdBy: z.string(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+});
+export type RolePanelItem = z.infer<typeof RolePanelSchema>;
+
+export const RolePanelListSchema = z.array(RolePanelSchema);

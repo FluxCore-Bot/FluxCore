@@ -11,7 +11,9 @@ import {
 import { handleMusicButton } from "../systems/music/interactions.js";
 import { handleActionsAutocomplete } from "../commands/admin/actions.js";
 import { handlePlayAutocomplete } from "../commands/music/play.js";
+import { handleRolePanelAutocomplete } from "../commands/general/rolepanel.js";
 import { MU_PREFIX } from "@fluxcore/systems/music/constants";
+import { handleRolePanelButton, handleRolePanelDropdown } from "@fluxcore/systems/rolePanel/handler";
 import { errorEmbed, warnEmbed, logger } from "@fluxcore/utils";
 
 const event: Event<"interactionCreate"> = {
@@ -22,11 +24,20 @@ const event: Event<"interactionCreate"> = {
         await handleActionsAutocomplete(interaction);
       } else if (interaction.commandName === "play") {
         await handlePlayAutocomplete(interaction);
+      } else if (interaction.commandName === "rolepanel") {
+        await handleRolePanelAutocomplete(interaction);
       }
       return;
     }
 
     if (interaction.isButton()) {
+      if (interaction.customId.startsWith("rp_")) {
+        const parts = interaction.customId.split("_");
+        const panelId = parseInt(parts[1], 10);
+        const roleId = parts[2];
+        await handleRolePanelButton(interaction, panelId, roleId);
+        return;
+      }
       if (interaction.customId.startsWith(MU_PREFIX)) {
         await handleMusicButton(interaction);
       } else {
@@ -46,6 +57,11 @@ const event: Event<"interactionCreate"> = {
     }
 
     if (interaction.isStringSelectMenu()) {
+      if (interaction.customId.startsWith("rpd_")) {
+        const panelId = parseInt(interaction.customId.split("_")[1], 10);
+        await handleRolePanelDropdown(interaction, panelId, interaction.values);
+        return;
+      }
       await handleTempVoiceStringSelect(interaction);
       return;
     }

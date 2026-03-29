@@ -20,6 +20,7 @@ import { OverviewPage } from "./routes/guild/$guildId/overview";
 import { WarningsPage } from "./routes/guild/$guildId/warnings";
 import { ModerationPage } from "./routes/guild/$guildId/moderation";
 import { WelcomePage } from "./routes/guild/$guildId/welcome";
+import { RolesPage } from "./routes/guild/$guildId/roles";
 import "./styles.css";
 
 const queryClient = new QueryClient({
@@ -107,6 +108,12 @@ const welcomeRoute = createRoute({
   component: WelcomePage,
 });
 
+const rolesRoute = createRoute({
+  getParentRoute: () => guildRoute,
+  path: "/roles",
+  component: RolesPage,
+});
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   guildRoute.addChildren([
@@ -118,6 +125,7 @@ const routeTree = rootRoute.addChildren([
     warningsRoute,
     moderationRoute,
     welcomeRoute,
+    rolesRoute,
     settingsRoute,
     logsRoute,
   ]),
