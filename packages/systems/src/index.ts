@@ -54,3 +54,8 @@ export { getLevelSettings, upsertLevelSettings, getLevelRewards, addLevelReward,
 export { getUserLevel, addXp, addVoiceXp, setXp, getLeaderboard, getUserRank } from "./leveling/persistence.js";
 export { xpForLevel, totalXpForLevel, levelFromXp, applyMultipliers } from "./leveling/xp.js";
 export { checkAndGrantRewards } from "./leveling/rewards.js";
+
+// Suggestions
+export { getSuggestionSettings, upsertSuggestionSettings } from "./suggestions/config.js";
+export { createSuggestion, getSuggestion, getSuggestions, updateSuggestionStatus, updateSuggestionMessageId, updateSuggestionVotes, deleteSuggestion } from "./suggestions/persistence.js";
+export { SUGGESTIONS_PAGE_SIZE, VALID_STATUSES, STATUS_COLORS, STATUS_LABELS, MAX_SUGGESTION_LENGTH, DEFAULT_SETTINGS as DEFAULT_SUGGESTION_SETTINGS } from "./suggestions/constants.js";
