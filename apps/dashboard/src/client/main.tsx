@@ -22,6 +22,7 @@ import { ModerationPage } from "./routes/guild/$guildId/moderation";
 import { WelcomePage } from "./routes/guild/$guildId/welcome";
 import { RolesPage } from "./routes/guild/$guildId/roles";
 import { LevelingPage } from "./routes/guild/$guildId/leveling";
+import { SuggestionsPage } from "./routes/guild/$guildId/suggestions";
 import { StarboardPage } from "./routes/guild/$guildId/starboard";
 import "./styles.css";
 
@@ -122,6 +123,12 @@ const levelingRoute = createRoute({
   component: LevelingPage,
 });
 
+const suggestionsRoute = createRoute({
+  getParentRoute: () => guildRoute,
+  path: "/suggestions",
+  component: SuggestionsPage,
+});
+
 const starboardRoute = createRoute({
   getParentRoute: () => guildRoute,
   path: "/starboard",
@@ -141,6 +148,7 @@ const routeTree = rootRoute.addChildren([
     welcomeRoute,
     rolesRoute,
     levelingRoute,
+    suggestionsRoute,
     starboardRoute,
     settingsRoute,
     logsRoute,

@@ -545,3 +545,37 @@ export const LevelSettingsSchema = z.object({
   xpMultipliers: XpMultipliersSchema,
 });
 export type LevelSettings = z.infer<typeof LevelSettingsSchema>;
+
+// --- Suggestions ---
+export const SuggestionSchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  userId: z.string(),
+  messageId: z.string().nullable(),
+  content: z.string(),
+  status: z.enum(["pending", "approved", "denied", "implemented"]),
+  statusReason: z.string().nullable(),
+  statusBy: z.string().nullable(),
+  upvotes: z.number(),
+  downvotes: z.number(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+});
+export type SuggestionItem = z.infer<typeof SuggestionSchema>;
+
+export const SuggestionListResponseSchema = z.object({
+  suggestions: z.array(SuggestionSchema),
+  total: z.number(),
+});
+export type SuggestionListResponse = z.infer<typeof SuggestionListResponseSchema>;
+
+export const SuggestionSettingsSchema = z.object({
+  guildId: z.string(),
+  enabled: z.boolean(),
+  channelId: z.string().nullable(),
+  reviewChannelId: z.string().nullable(),
+  dmOnStatusChange: z.boolean(),
+  autoThread: z.boolean(),
+  anonymousMode: z.boolean(),
+});
+export type SuggestionSettings = z.infer<typeof SuggestionSettingsSchema>;
