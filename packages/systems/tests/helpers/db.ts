@@ -46,6 +46,11 @@ export async function cleanTestData(): Promise<void> {
       "Reminder",
       "DashboardSession",
       "ScheduledMessage"
+      "TicketPanel",
+      "Ticket",
+      "TicketGuildSettings",
+      "StarboardEntry",
+      "StarboardGuildSettings"
     CASCADE
   `);
 }

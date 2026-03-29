@@ -9,3 +9,19 @@ export type {
   CronPresetLabel,
 } from "./scheduled-messages.js";
 export { CRON_PRESETS } from "./scheduled-messages.js";
+  TriggerType,
+  CommandResponse,
+  CommandAction,
+  CustomCommand,
+} from "./custom-commands.js";
+export type { AntiRaidConfig, RaidAction, RaidEvent, RaidEventType, RaidEventDetails } from "./anti-raid.js";
+export type {
+  TicketCategory,
+  TicketFormField,
+  TicketPanel,
+  TicketStatus,
+  Ticket,
+  TicketGuildSettings,
+} from "./tickets.js";
+export type { Giveaway, CreateGiveawayData } from "./giveaways.js";
+export type { Suggestion, SuggestionGuildSettings, SuggestionStatus } from "./suggestions.js";

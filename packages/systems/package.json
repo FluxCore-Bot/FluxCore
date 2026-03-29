@@ -177,6 +177,30 @@
     "./leveling/rewards": {
       "types": "./dist/leveling/rewards.d.ts",
       "import": "./dist/leveling/rewards.js"
+    },
+    "./antiraid/types": {
+      "types": "./dist/antiraid/types.d.ts",
+      "import": "./dist/antiraid/types.js"
+    },
+    "./antiraid/constants": {
+      "types": "./dist/antiraid/constants.d.ts",
+      "import": "./dist/antiraid/constants.js"
+    },
+    "./antiraid/config": {
+      "types": "./dist/antiraid/config.d.ts",
+      "import": "./dist/antiraid/config.js"
+    },
+    "./antiraid/tracker": {
+      "types": "./dist/antiraid/tracker.d.ts",
+      "import": "./dist/antiraid/tracker.js"
+    },
+    "./antiraid/actions": {
+      "types": "./dist/antiraid/actions.d.ts",
+      "import": "./dist/antiraid/actions.js"
+    },
+    "./antiraid/persistence": {
+      "types": "./dist/antiraid/persistence.d.ts",
+      "import": "./dist/antiraid/persistence.js"
     }
   },
   "scripts": {
