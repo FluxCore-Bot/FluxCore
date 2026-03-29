@@ -493,3 +493,55 @@ export const RolePanelSchema = z.object({
 export type RolePanelItem = z.infer<typeof RolePanelSchema>;
 
 export const RolePanelListSchema = z.array(RolePanelSchema);
+
+// --- Leveling ---
+export const UserLevelSchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  userId: z.string(),
+  xp: z.number(),
+  level: z.number(),
+  messageCount: z.number(),
+  voiceMinutes: z.number(),
+  lastMessageXp: z.string().nullable(),
+  updatedAt: z.string(),
+  rank: z.number().optional(),
+});
+export type UserLevelEntry = z.infer<typeof UserLevelSchema>;
+
+export const LeaderboardResponseSchema = z.object({
+  entries: z.array(UserLevelSchema),
+  total: z.number(),
+});
+export type LeaderboardResponse = z.infer<typeof LeaderboardResponseSchema>;
+
+export const LevelRewardSchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  level: z.number(),
+  roleId: z.string(),
+});
+export type LevelReward = z.infer<typeof LevelRewardSchema>;
+
+export const LevelRewardListSchema = z.array(LevelRewardSchema);
+
+export const XpMultipliersSchema = z.object({
+  channels: z.record(z.string(), z.number()).optional(),
+  roles: z.record(z.string(), z.number()).optional(),
+});
+
+export const LevelSettingsSchema = z.object({
+  guildId: z.string(),
+  enabled: z.boolean(),
+  xpPerMessage: z.number(),
+  xpCooldownSeconds: z.number(),
+  voiceXpPerMinute: z.number(),
+  voiceXpEnabled: z.boolean(),
+  announceChannel: z.string().nullable(),
+  announceMessage: z.string(),
+  announceEnabled: z.boolean(),
+  noXpChannels: z.array(z.string()),
+  noXpRoles: z.array(z.string()),
+  xpMultipliers: XpMultipliersSchema,
+});
+export type LevelSettings = z.infer<typeof LevelSettingsSchema>;

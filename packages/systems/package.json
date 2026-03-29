@@ -153,6 +153,30 @@
     "./welcome/builder": {
       "types": "./dist/welcome/builder.d.ts",
       "import": "./dist/welcome/builder.js"
+    },
+    "./leveling/types": {
+      "types": "./dist/leveling/types.d.ts",
+      "import": "./dist/leveling/types.js"
+    },
+    "./leveling/constants": {
+      "types": "./dist/leveling/constants.d.ts",
+      "import": "./dist/leveling/constants.js"
+    },
+    "./leveling/xp": {
+      "types": "./dist/leveling/xp.d.ts",
+      "import": "./dist/leveling/xp.js"
+    },
+    "./leveling/config": {
+      "types": "./dist/leveling/config.d.ts",
+      "import": "./dist/leveling/config.js"
+    },
+    "./leveling/persistence": {
+      "types": "./dist/leveling/persistence.d.ts",
+      "import": "./dist/leveling/persistence.js"
+    },
+    "./leveling/rewards": {
+      "types": "./dist/leveling/rewards.d.ts",
+      "import": "./dist/leveling/rewards.js"
     }
   },
   "scripts": {

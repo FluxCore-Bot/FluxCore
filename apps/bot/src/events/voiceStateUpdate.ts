@@ -13,13 +13,100 @@ import { getLogConfig, isIgnored } from "@fluxcore/systems/logging/config";
 import { createLogEntry } from "@fluxcore/systems/logging/persistence";
 import { sendLogEmbed } from "@fluxcore/systems/logging/sender";
 import { formatVoiceEvent } from "@fluxcore/systems/logging/formatter";
+import { getLevelSettings } from "@fluxcore/systems/leveling/config";
+import { addVoiceXp } from "@fluxcore/systems/leveling/persistence";
+import { checkAndGrantRewards } from "@fluxcore/systems/leveling/rewards";
 import { logger } from "@fluxcore/utils";
+
+// Track voice join times for XP calculation
+const voiceSessions = new Map<string, { guildId: string; joinedAt: number }>();
+
+function shouldGrantVoiceXp(state: VoiceState): boolean {
+  if (!state.channel) return false;
+  // Must not be muted or deafened
+  if (state.selfDeaf || state.serverDeaf || state.selfMute || state.serverMute) return false;
+  // Must have at least 2 non-bot members in the channel
+  const nonBotMembers = state.channel.members.filter((m) => !m.user.bot);
+  return nonBotMembers.size >= 2;
+}
+
+async function grantVoiceXp(state: VoiceState, minutes: number): Promise<void> {
+  const guildId = state.guild.id;
+  const userId = state.member?.id;
+  if (!userId) return;
+
+  try {
+    const settings = await getLevelSettings(guildId);
+    if (!settings.enabled || !settings.voiceXpEnabled) return;
+
+    const xpAmount = minutes * settings.voiceXpPerMinute;
+    if (xpAmount <= 0) return;
+
+    const result = await addVoiceXp(guildId, userId, xpAmount, minutes);
+
+    if (result.leveledUp) {
+      await checkAndGrantRewards(state.guild, userId, result.newLevel);
+    }
+  } catch (error) {
+    logger.debug(
+      `Failed to grant voice XP for ${userId} in ${guildId}: ${
+        error instanceof Error ? error.message : String(error)
+      }`,
+    );
+  }
+}
 
 const event: Event<"voiceStateUpdate"> = {
   name: "voiceStateUpdate",
   async execute(oldState: VoiceState, newState: VoiceState) {
     const guild = newState.guild;
     const client = guild.client as Client;
+
+    // Voice XP tracking — join
+    if (newState.channelId && newState.channelId !== oldState.channelId) {
+      if (newState.member && !newState.member.user.bot && shouldGrantVoiceXp(newState)) {
+        voiceSessions.set(`${guild.id}:${newState.member.id}`, {
+          guildId: guild.id,
+          joinedAt: Date.now(),
+        });
+      }
+    }
+
+    // Voice XP tracking — leave
+    if (oldState.channelId && oldState.channelId !== newState.channelId) {
+      const key = `${guild.id}:${oldState.member?.id}`;
+      const session = voiceSessions.get(key);
+      if (session && oldState.member && !oldState.member.user.bot) {
+        voiceSessions.delete(key);
+        const minutes = Math.floor((Date.now() - session.joinedAt) / 60_000);
+        if (minutes > 0) {
+          grantVoiceXp(oldState, minutes).catch((e) =>
+            logger.debug("Voice XP grant failed", e instanceof Error ? e : new Error(String(e))),
+          );
+        }
+      }
+    }
+
+    // Voice XP tracking — mute/deafen state change (stop tracking)
+    if (newState.channelId && newState.channelId === oldState.channelId) {
+      const key = `${guild.id}:${newState.member?.id}`;
+      if (shouldGrantVoiceXp(newState)) {
+        if (!voiceSessions.has(key) && newState.member && !newState.member.user.bot) {
+          voiceSessions.set(key, { guildId: guild.id, joinedAt: Date.now() });
+        }
+      } else {
+        const session = voiceSessions.get(key);
+        if (session && newState.member) {
+          voiceSessions.delete(key);
+          const minutes = Math.floor((Date.now() - session.joinedAt) / 60_000);
+          if (minutes > 0) {
+            grantVoiceXp(newState, minutes).catch((e) =>
+              logger.debug("Voice XP grant failed", e instanceof Error ? e : new Error(String(e))),
+            );
+          }
+        }
+      }
+    }
 
     // User joined a channel
     if (newState.channelId && newState.channelId !== oldState.channelId) {

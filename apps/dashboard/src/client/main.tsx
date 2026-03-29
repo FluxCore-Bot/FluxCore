@@ -21,6 +21,7 @@ import { WarningsPage } from "./routes/guild/$guildId/warnings";
 import { ModerationPage } from "./routes/guild/$guildId/moderation";
 import { WelcomePage } from "./routes/guild/$guildId/welcome";
 import { RolesPage } from "./routes/guild/$guildId/roles";
+import { LevelingPage } from "./routes/guild/$guildId/leveling";
 import "./styles.css";
 
 const queryClient = new QueryClient({
@@ -114,6 +115,12 @@ const rolesRoute = createRoute({
   component: RolesPage,
 });
 
+const levelingRoute = createRoute({
+  getParentRoute: () => guildRoute,
+  path: "/leveling",
+  component: LevelingPage,
+});
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   guildRoute.addChildren([
@@ -126,6 +133,7 @@ const routeTree = rootRoute.addChildren([
     moderationRoute,
     welcomeRoute,
     rolesRoute,
+    levelingRoute,
     settingsRoute,
     logsRoute,
   ]),
