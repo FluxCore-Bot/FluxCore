@@ -59,3 +59,9 @@ export { checkAndGrantRewards } from "./leveling/rewards.js";
 export { getSuggestionSettings, upsertSuggestionSettings } from "./suggestions/config.js";
 export { createSuggestion, getSuggestion, getSuggestions, updateSuggestionStatus, updateSuggestionMessageId, updateSuggestionVotes, deleteSuggestion } from "./suggestions/persistence.js";
 export { SUGGESTIONS_PAGE_SIZE, VALID_STATUSES, STATUS_COLORS, STATUS_LABELS, MAX_SUGGESTION_LENGTH, DEFAULT_SETTINGS as DEFAULT_SUGGESTION_SETTINGS } from "./suggestions/constants.js";
+
+// Starboard
+export { getStarboardSettings, upsertStarboardSettings } from "./starboard/config.js";
+export { getStarboardEntry, upsertStarboardEntry, updateStarboardMessageId, updateStarCount, deleteStarboardEntry, getStarboardEntries } from "./starboard/persistence.js";
+export { handleStarboardReaction } from "./starboard/handler.js";
+export { DEFAULT_EMOJI, DEFAULT_THRESHOLD, STARBOARD_PAGE_SIZE } from "./starboard/constants.js";

@@ -353,3 +353,30 @@ model SuggestionGuildSettings {
   autoThread       Boolean @default(false) // Create discussion thread
   anonymousMode    Boolean @default(false)
 }
+
+// === Starboard ===
+
+model StarboardEntry {
+  id                 Int      @id @default(autoincrement())
+  guildId            String
+  originalMessageId  String
+  originalChannelId  String
+  starboardMessageId String?  // Message ID in starboard channel
+  authorId           String
+  starCount          Int      @default(0)
+  createdAt          DateTime @default(now())
+
+  @@unique([guildId, originalMessageId])
+  @@index([guildId, starCount])
+}
+
+model StarboardGuildSettings {
+  guildId         String  @id
+  enabled         Boolean @default(true)
+  channelId       String? // Starboard channel
+  emoji           String  @default("⭐")
+  threshold       Int     @default(3) // Stars needed to qualify
+  selfStar        Boolean @default(false) // Allow starring own messages
+  ignoredChannels String  @default("[]") // JSON array
+  nsfwHandling    String  @default("ignore") // "ignore" | "separate"
+}
