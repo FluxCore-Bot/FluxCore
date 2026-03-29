@@ -110,6 +110,67 @@ export async function createMusicSettings(
   });
 }
 
+// ─── Starboard Settings ───────────────────────────────────
+
+export interface CreateStarboardSettingsInput {
+  guildId?: string;
+  enabled?: boolean;
+  channelId?: string | null;
+  emoji?: string;
+  threshold?: number;
+  selfStar?: boolean;
+  ignoredChannels?: string[];
+  nsfwHandling?: string;
+}
+
+export async function createStarboardSettings(
+  overrides: CreateStarboardSettingsInput = {},
+) {
+  const prisma = getPrisma();
+  return prisma.starboardGuildSettings.create({
+    data: {
+      guildId: overrides.guildId ?? "test-guild-1",
+      enabled: overrides.enabled ?? true,
+      channelId: overrides.channelId ?? "starboard-ch",
+      emoji: overrides.emoji ?? "\u2B50",
+      threshold: overrides.threshold ?? 3,
+      selfStar: overrides.selfStar ?? false,
+      ignoredChannels: JSON.stringify(overrides.ignoredChannels ?? []),
+      nsfwHandling: overrides.nsfwHandling ?? "ignore",
+    },
+  });
+}
+
+// ─── Starboard Entry ──────────────────────────────────────
+
+export interface CreateStarboardEntryInput {
+  guildId?: string;
+  originalMessageId?: string;
+  originalChannelId?: string;
+  starboardMessageId?: string | null;
+  authorId?: string;
+  starCount?: number;
+}
+
+let starboardEntryCounter = 0;
+
+export async function createStarboardEntry(
+  overrides: CreateStarboardEntryInput = {},
+) {
+  starboardEntryCounter++;
+  const prisma = getPrisma();
+  return prisma.starboardEntry.create({
+    data: {
+      guildId: overrides.guildId ?? "test-guild-1",
+      originalMessageId: overrides.originalMessageId ?? `msg-${starboardEntryCounter}`,
+      originalChannelId: overrides.originalChannelId ?? "ch-1",
+      starboardMessageId: overrides.starboardMessageId ?? null,
+      authorId: overrides.authorId ?? "user-1",
+      starCount: overrides.starCount ?? 3,
+    },
+  });
+}
+
 // ─── Mock Discord Objects (for unit tests) ─────────────────
 
 /** Minimal mock for a Discord ChatInputCommandInteraction */
