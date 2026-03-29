@@ -19,6 +19,7 @@ import { MusicPage } from "./routes/guild/$guildId/music";
 import { OverviewPage } from "./routes/guild/$guildId/overview";
 import { WarningsPage } from "./routes/guild/$guildId/warnings";
 import { ModerationPage } from "./routes/guild/$guildId/moderation";
+import { WelcomePage } from "./routes/guild/$guildId/welcome";
 import { RolesPage } from "./routes/guild/$guildId/roles";
 import "./styles.css";
 
@@ -101,6 +102,12 @@ const moderationRoute = createRoute({
   component: ModerationPage,
 });
 
+const welcomeRoute = createRoute({
+  getParentRoute: () => guildRoute,
+  path: "/welcome",
+  component: WelcomePage,
+});
+
 const rolesRoute = createRoute({
   getParentRoute: () => guildRoute,
   path: "/roles",
@@ -117,6 +124,7 @@ const routeTree = rootRoute.addChildren([
     musicRoute,
     warningsRoute,
     moderationRoute,
+    welcomeRoute,
     rolesRoute,
     settingsRoute,
     logsRoute,

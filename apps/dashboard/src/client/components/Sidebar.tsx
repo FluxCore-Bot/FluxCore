@@ -15,6 +15,7 @@ const navItems: NavItem[] = [
   { path: "/guild/$guildId/rules", label: "Automation", icon: "bolt" },
   { path: "/guild/$guildId/music", label: "Music", icon: "library_music" },
   { path: "/guild/$guildId/tempvoice", label: "TempVoice", icon: "settings_voice" },
+  { path: "/guild/$guildId/welcome", label: "Welcome", icon: "waving_hand" },
   { path: "/guild/$guildId/moderation", label: "Moderation", icon: "shield" },
   { path: "/guild/$guildId/warnings", label: "Warnings", icon: "warning" },
   { path: "/guild/$guildId/roles", label: "Role Panels", icon: "badge" },

@@ -21,6 +21,7 @@ import { registerMusicRoutes } from "./routes/music.js";
 import { registerLoggingRoutes } from "./routes/logging.js";
 import { registerWarningRoutes } from "./routes/warnings.js";
 import { registerModerationRoutes } from "./routes/moderation.js";
+import { registerWelcomeRoutes } from "./routes/welcome.js";
 import { registerRolePanelRoutes } from "./routes/rolePanel.js";
 
 async function main(): Promise<void> {
@@ -98,6 +99,7 @@ async function main(): Promise<void> {
   registerLoggingRoutes(app);
   registerWarningRoutes(app);
   registerModerationRoutes(app);
+  registerWelcomeRoutes(app);
   registerRolePanelRoutes(app);
 
   // SPA fallback: serve index.html for non-API/auth routes in production
