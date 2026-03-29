@@ -54,3 +54,9 @@ export { getLevelSettings, upsertLevelSettings, getLevelRewards, addLevelReward,
 export { getUserLevel, addXp, addVoiceXp, setXp, getLeaderboard, getUserRank } from "./leveling/persistence.js";
 export { xpForLevel, totalXpForLevel, levelFromXp, applyMultipliers } from "./leveling/xp.js";
 export { checkAndGrantRewards } from "./leveling/rewards.js";
+
+// Anti-Raid
+export { getAntiRaidConfig, upsertAntiRaidConfig, invalidateAntiRaidCache } from "./antiraid/config.js";
+export { recordJoin, clearJoinTracker, recordNukeAction, clearNukeTracker, isLockdownActive, setLockdownState } from "./antiraid/tracker.js";
+export { executeRaidAction, lockdownGuild, liftLockdown, quarantineExecutor } from "./antiraid/actions.js";
+export { createRaidEvent, getRaidEvents } from "./antiraid/persistence.js";

@@ -24,6 +24,7 @@ import { registerModerationRoutes } from "./routes/moderation.js";
 import { registerWelcomeRoutes } from "./routes/welcome.js";
 import { registerRolePanelRoutes } from "./routes/rolePanel.js";
 import { registerLevelingRoutes } from "./routes/leveling.js";
+import { registerAntiRaidRoutes } from "./routes/anti-raid.js";
 
 async function main(): Promise<void> {
   if (!config.dashboardClientSecret) {
@@ -103,6 +104,7 @@ async function main(): Promise<void> {
   registerWelcomeRoutes(app);
   registerRolePanelRoutes(app);
   registerLevelingRoutes(app);
+  registerAntiRaidRoutes(app);
 
   // SPA fallback: serve index.html for non-API/auth routes in production
   if (process.env.NODE_ENV === "production") {
