@@ -243,3 +243,18 @@ model ModGuildSettings {
   dmOnPunishment  Boolean @default(true)
   modLogChannelId String?
 }
+
+// === Welcome & Farewell ===
+
+model WelcomeConfig {
+  guildId           String  @id
+  welcomeEnabled    Boolean @default(false)
+  welcomeChannelId  String?
+  welcomeMessage    String  @default("{}") // JSON embed config
+  farewellEnabled   Boolean @default(false)
+  farewellChannelId String?
+  farewellMessage   String  @default("{}") // JSON embed config
+  dmEnabled         Boolean @default(false)
+  dmMessage         String  @default("{}") // JSON embed config
+  autoRoleIds       String  @default("[]") // JSON array of role IDs
+}
