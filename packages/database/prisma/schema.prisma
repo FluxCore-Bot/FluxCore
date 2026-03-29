@@ -323,3 +323,26 @@ model LevelGuildSettings {
   noXpRoles           String  @default("[]")
   xpMultipliers       String  @default("{}")
 }
+
+// === Custom Commands ===
+
+model CustomCommand {
+  id              Int      @id @default(autoincrement())
+  guildId         String
+  name            String   // Trigger name
+  triggerType     String   // "command" | "keyword" | "startsWith" | "regex"
+  response        String   @default("{}") // JSON: { type: "text"|"embed", content, embed }
+  actions         String   @default("[]") // JSON: additional actions (addRole, removeRole, etc.)
+  enabled         Boolean  @default(true)
+  cooldown        Int      @default(0) // Seconds, 0 = none
+  allowedRoles    String   @default("[]") // JSON — empty = everyone
+  allowedChannels String   @default("[]") // JSON — empty = all
+  deletesTrigger  Boolean  @default(false) // Delete the triggering message
+  dmResponse      Boolean  @default(false) // Send response as DM
+  createdBy       String
+  createdAt       DateTime @default(now())
+
+  @@unique([guildId, name])
+  @@index([guildId, enabled])
+  @@index([guildId, triggerType])
+}

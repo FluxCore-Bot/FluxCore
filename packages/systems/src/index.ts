@@ -54,3 +54,22 @@ export { getLevelSettings, upsertLevelSettings, getLevelRewards, addLevelReward,
 export { getUserLevel, addXp, addVoiceXp, setXp, getLeaderboard, getUserRank } from "./leveling/persistence.js";
 export { xpForLevel, totalXpForLevel, levelFromXp, applyMultipliers } from "./leveling/xp.js";
 export { checkAndGrantRewards } from "./leveling/rewards.js";
+
+// Custom Commands
+export {
+  getCustomCommands,
+  getCustomCommandById,
+  getCustomCommandCount,
+  createCustomCommand,
+  updateCustomCommand,
+  deleteCustomCommand,
+  invalidateCache as invalidateCustomCommandCache,
+} from "./customCommands/persistence.js";
+export { matchesTrigger, isAllowed } from "./customCommands/matcher.js";
+export { executeCustomCommand } from "./customCommands/executor.js";
+export { replaceVariables, TEMPLATE_VARIABLES } from "./customCommands/variables.js";
+export {
+  MAX_COMMANDS_PER_GUILD,
+  TRIGGER_TYPES,
+  TRIGGER_TYPE_LABELS,
+} from "./customCommands/constants.js";
