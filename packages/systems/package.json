@@ -137,12 +137,29 @@
     "./moderation/dm": {
       "types": "./dist/moderation/dm.d.ts",
       "import": "./dist/moderation/dm.js"
+    },
+    "./welcome/types": {
+      "types": "./dist/welcome/types.d.ts",
+      "import": "./dist/welcome/types.js"
+    },
+    "./welcome/constants": {
+      "types": "./dist/welcome/constants.d.ts",
+      "import": "./dist/welcome/constants.js"
+    },
+    "./welcome/config": {
+      "types": "./dist/welcome/config.d.ts",
+      "import": "./dist/welcome/config.js"
+    },
+    "./welcome/builder": {
+      "types": "./dist/welcome/builder.d.ts",
+      "import": "./dist/welcome/builder.js"
     }
   },
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",
+    "test": "vitest run --config vitest.config.ts",
     "test:integration": "vitest run --config vitest.integration.config.ts"
   },
   "dependencies": {
