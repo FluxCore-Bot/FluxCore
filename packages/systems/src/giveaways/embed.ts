@@ -4,7 +4,7 @@ import {
   ButtonBuilder,
   ButtonStyle,
 } from "discord.js";
-import type { Giveaway } from "@fluxcore/types";
+import type { Giveaway } from "./types.js";
 import { GIVEAWAY_BUTTON_PREFIX } from "./constants.js";
 
 /**

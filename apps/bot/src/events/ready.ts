@@ -130,6 +130,8 @@ const event: Event<"ready"> = {
       logger.info("Scheduled messages scheduler started");
     } catch (error) {
       logger.error("Failed to start scheduled messages scheduler", error instanceof Error ? error : new Error(String(error)));
+    }
+
     // Giveaway scheduler
     try {
       const { startGiveawayScheduler } = await import("@fluxcore/systems/giveaways/scheduler");

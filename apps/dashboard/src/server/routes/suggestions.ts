@@ -6,7 +6,6 @@ import {
 } from "@fluxcore/systems/suggestions/config";
 import {
   getSuggestions,
-  getSuggestion,
   createSuggestion,
   updateSuggestionStatus,
   deleteSuggestion,

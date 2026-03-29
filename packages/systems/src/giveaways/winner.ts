@@ -1,4 +1,4 @@
-import type { Giveaway } from "@fluxcore/types";
+import type { Giveaway } from "./types.js";
 
 /**
  * Select random winners from a giveaway's entrants.

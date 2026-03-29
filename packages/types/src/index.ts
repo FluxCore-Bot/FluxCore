@@ -9,6 +9,7 @@ export type {
   CronPresetLabel,
 } from "./scheduled-messages.js";
 export { CRON_PRESETS } from "./scheduled-messages.js";
+export type {
   TriggerType,
   CommandResponse,
   CommandAction,

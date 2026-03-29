@@ -178,6 +178,26 @@
       "types": "./dist/leveling/rewards.d.ts",
       "import": "./dist/leveling/rewards.js"
     },
+    "./rolePanel/persistence": {
+      "types": "./dist/rolePanel/persistence.d.ts",
+      "import": "./dist/rolePanel/persistence.js"
+    },
+    "./rolePanel/builder": {
+      "types": "./dist/rolePanel/builder.d.ts",
+      "import": "./dist/rolePanel/builder.js"
+    },
+    "./rolePanel/handler": {
+      "types": "./dist/rolePanel/handler.d.ts",
+      "import": "./dist/rolePanel/handler.js"
+    },
+    "./rolePanel/constants": {
+      "types": "./dist/rolePanel/constants.d.ts",
+      "import": "./dist/rolePanel/constants.js"
+    },
+    "./tickets/types": {
+      "types": "./dist/tickets/types.d.ts",
+      "import": "./dist/tickets/types.js"
+    },
     "./antiraid/types": {
       "types": "./dist/antiraid/types.d.ts",
       "import": "./dist/antiraid/types.js"
@@ -201,6 +221,106 @@
     "./antiraid/persistence": {
       "types": "./dist/antiraid/persistence.d.ts",
       "import": "./dist/antiraid/persistence.js"
+    },
+    "./giveaways/constants": {
+      "types": "./dist/giveaways/constants.d.ts",
+      "import": "./dist/giveaways/constants.js"
+    },
+    "./giveaways/embed": {
+      "types": "./dist/giveaways/embed.d.ts",
+      "import": "./dist/giveaways/embed.js"
+    },
+    "./giveaways/persistence": {
+      "types": "./dist/giveaways/persistence.d.ts",
+      "import": "./dist/giveaways/persistence.js"
+    },
+    "./giveaways/winner": {
+      "types": "./dist/giveaways/winner.d.ts",
+      "import": "./dist/giveaways/winner.js"
+    },
+    "./giveaways/scheduler": {
+      "types": "./dist/giveaways/scheduler.d.ts",
+      "import": "./dist/giveaways/scheduler.js"
+    },
+    "./tickets/builder": {
+      "types": "./dist/tickets/builder.d.ts",
+      "import": "./dist/tickets/builder.js"
+    },
+    "./tickets/config": {
+      "types": "./dist/tickets/config.d.ts",
+      "import": "./dist/tickets/config.js"
+    },
+    "./tickets/constants": {
+      "types": "./dist/tickets/constants.d.ts",
+      "import": "./dist/tickets/constants.js"
+    },
+    "./tickets/persistence": {
+      "types": "./dist/tickets/persistence.d.ts",
+      "import": "./dist/tickets/persistence.js"
+    },
+    "./tickets/transcript": {
+      "types": "./dist/tickets/transcript.d.ts",
+      "import": "./dist/tickets/transcript.js"
+    },
+    "./starboard/config": {
+      "types": "./dist/starboard/config.d.ts",
+      "import": "./dist/starboard/config.js"
+    },
+    "./starboard/constants": {
+      "types": "./dist/starboard/constants.d.ts",
+      "import": "./dist/starboard/constants.js"
+    },
+    "./starboard/handler": {
+      "types": "./dist/starboard/handler.d.ts",
+      "import": "./dist/starboard/handler.js"
+    },
+    "./starboard/persistence": {
+      "types": "./dist/starboard/persistence.d.ts",
+      "import": "./dist/starboard/persistence.js"
+    },
+    "./suggestions/config": {
+      "types": "./dist/suggestions/config.d.ts",
+      "import": "./dist/suggestions/config.js"
+    },
+    "./suggestions/constants": {
+      "types": "./dist/suggestions/constants.d.ts",
+      "import": "./dist/suggestions/constants.js"
+    },
+    "./suggestions/persistence": {
+      "types": "./dist/suggestions/persistence.d.ts",
+      "import": "./dist/suggestions/persistence.js"
+    },
+    "./suggestions/types": {
+      "types": "./dist/suggestions/types.d.ts",
+      "import": "./dist/suggestions/types.js"
+    },
+    "./customCommands/constants": {
+      "types": "./dist/customCommands/constants.d.ts",
+      "import": "./dist/customCommands/constants.js"
+    },
+    "./customCommands/executor": {
+      "types": "./dist/customCommands/executor.d.ts",
+      "import": "./dist/customCommands/executor.js"
+    },
+    "./customCommands/matcher": {
+      "types": "./dist/customCommands/matcher.d.ts",
+      "import": "./dist/customCommands/matcher.js"
+    },
+    "./customCommands/persistence": {
+      "types": "./dist/customCommands/persistence.d.ts",
+      "import": "./dist/customCommands/persistence.js"
+    },
+    "./scheduled-messages/cron": {
+      "types": "./dist/scheduled-messages/cron.d.ts",
+      "import": "./dist/scheduled-messages/cron.js"
+    },
+    "./scheduled-messages/persistence": {
+      "types": "./dist/scheduled-messages/persistence.d.ts",
+      "import": "./dist/scheduled-messages/persistence.js"
+    },
+    "./scheduled-messages/scheduler": {
+      "types": "./dist/scheduled-messages/scheduler.d.ts",
+      "import": "./dist/scheduled-messages/scheduler.js"
     }
   },
   "scripts": {

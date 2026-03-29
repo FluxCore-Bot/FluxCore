@@ -142,6 +142,10 @@ export async function createScheduledMessageFactory(
       enabled: overrides.enabled ?? true,
       nextRunAt: overrides.nextRunAt ?? new Date(Date.now() + 3_600_000),
       createdBy: overrides.createdBy ?? "user-1",
+    },
+  });
+}
+
 // ─── Starboard Settings ───────────────────────────────────
 
 export interface CreateStarboardSettingsInput {

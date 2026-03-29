@@ -2,7 +2,6 @@ import type { FastifyInstance } from "fastify";
 import { requireAuth, requireGuildAdmin } from "../middleware.js";
 import {
   getCustomCommands,
-  getCustomCommandById,
   getCustomCommandCount,
   createCustomCommand,
   updateCustomCommand,
@@ -119,7 +118,7 @@ export function registerCustomCommandRoutes(app: FastifyInstance): void {
       }
 
       try {
-        const session = (request as Record<string, unknown>).session as { userId: string };
+        const session = (request as unknown as Record<string, unknown>).session as { userId: string };
         const command = await createCustomCommand({
           guildId,
           name: body.name,

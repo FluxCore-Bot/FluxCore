@@ -45,7 +45,7 @@ export async function cleanTestData(): Promise<void> {
       "TempVoiceUserSettings",
       "Reminder",
       "DashboardSession",
-      "ScheduledMessage"
+      "ScheduledMessage",
       "TicketPanel",
       "Ticket",
       "TicketGuildSettings",

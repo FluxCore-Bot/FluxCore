@@ -6,6 +6,7 @@ import {
 } from "@fluxcore/systems/antiraid/config";
 import { getRaidEvents } from "@fluxcore/systems/antiraid/persistence";
 import { VALID_RAID_ACTIONS, RAID_EVENT_PAGE_SIZE } from "@fluxcore/systems/antiraid/constants";
+import type { RaidAction } from "@fluxcore/systems/antiraid/types";
 
 export function registerAntiRaidRoutes(app: FastifyInstance): void {
   // GET anti-raid config
@@ -50,9 +51,9 @@ export function registerAntiRaidRoutes(app: FastifyInstance): void {
         enabled: boolean;
         joinThreshold: number;
         joinWindow: number;
-        joinAction: string;
+        joinAction: RaidAction;
         accountAgeMinDays: number;
-        accountAgeAction: string;
+        accountAgeAction: RaidAction;
         antiNukeEnabled: boolean;
         antiNukeThreshold: number;
         lockdownOnRaid: boolean;

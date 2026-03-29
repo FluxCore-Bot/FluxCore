@@ -1,5 +1,5 @@
 import { getPrisma } from "@fluxcore/database";
-import type { Giveaway, CreateGiveawayData } from "@fluxcore/types";
+import type { Giveaway, CreateGiveawayData } from "./types.js";
 import { GIVEAWAY_PAGE_SIZE } from "./constants.js";
 
 function rowToGiveaway(row: {

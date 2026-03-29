@@ -15,7 +15,7 @@ import {
   deleteTicketPanel,
 } from "@fluxcore/systems/tickets/persistence";
 import { TICKETS_PAGE_SIZE, MAX_CATEGORIES, MAX_FORM_FIELDS } from "@fluxcore/systems/tickets/constants";
-import type { TicketStatus, TicketCategory } from "@fluxcore/types";
+import type { TicketStatus, TicketCategory } from "@fluxcore/systems/tickets/types";
 
 function parseIntParam(value: string): number | null {
   const n = parseInt(value, 10);

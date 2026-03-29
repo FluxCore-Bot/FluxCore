@@ -87,7 +87,7 @@ export function registerGiveawayRoutes(app: FastifyInstance): void {
         return;
       }
 
-      const session = (request as Record<string, unknown>).session as {
+      const session = (request as unknown as Record<string, unknown>).session as {
         userId: string;
       };
 

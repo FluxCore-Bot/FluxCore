@@ -5,7 +5,7 @@ import {
   EmbedBuilder,
   type APIEmbed,
 } from "discord.js";
-import type { TicketPanel, TicketCategory } from "./types.js";
+import type { TicketPanel } from "./types.js";
 import { TICKET_BUTTON_PREFIX, TICKET_CLAIM_ID, TICKET_CLOSE_ID } from "./constants.js";
 
 export function buildPanelComponents(

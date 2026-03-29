@@ -1,4 +1,4 @@
-import type { Message, EmbedBuilder as DiscordEmbedBuilder } from "discord.js";
+import type { Message } from "discord.js";
 import type { CustomCommand } from "./types.js";
 import { replaceVariables } from "./variables.js";
 import { logger } from "@fluxcore/utils";
@@ -63,7 +63,7 @@ export async function executeCustomCommand(
           // DMs may be disabled
         });
       } else {
-        await message.channel.send({ embeds: [embed] });
+        if ("send" in message.channel) await message.channel.send({ embeds: [embed] });
       }
     } else if (cmd.response.content) {
       const text = replaceVariables(cmd.response.content, context);
@@ -73,7 +73,7 @@ export async function executeCustomCommand(
           // DMs may be disabled
         });
       } else {
-        await message.channel.send(text);
+        if ("send" in message.channel) await message.channel.send(text);
       }
     }
 

@@ -343,6 +343,8 @@ model ScheduledMessage {
   @@unique([guildId, name])
   @@index([guildId])
   @@index([nextRunAt, enabled])
+}
+
 // === Custom Commands ===
 
 model CustomCommand {
@@ -364,6 +366,8 @@ model CustomCommand {
   @@unique([guildId, name])
   @@index([guildId, enabled])
   @@index([guildId, triggerType])
+}
+
 // === Anti-Raid ===
 
 model AntiRaidConfig {
@@ -389,6 +393,8 @@ model RaidEvent {
   triggeredAt DateTime @default(now())
 
   @@index([guildId, triggeredAt])
+}
+
 // === Ticket System ===
 
 model TicketPanel {
