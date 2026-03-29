@@ -324,6 +324,52 @@ model LevelGuildSettings {
   xpMultipliers       String  @default("{}")
 }
 
+// === Ticket System ===
+
+model TicketPanel {
+  id          Int      @id @default(autoincrement())
+  guildId     String
+  channelId   String   // Channel where panel message lives
+  messageId   String?  // Populated after send
+  name        String
+  embed       String   @default("{}") // JSON embed config
+  categories  String   @default("[]") // JSON array of TicketCategory
+  createdBy   String
+  createdAt   DateTime @default(now())
+
+  @@index([guildId])
+}
+
+model Ticket {
+  id            Int       @id @default(autoincrement())
+  guildId       String
+  channelId     String    @unique // The ticket channel
+  userId        String    // Creator
+  categoryName  String?
+  panelId       Int?
+  status        String    @default("open") // "open" | "claimed" | "closed"
+  claimedBy     String?   // Staff who claimed
+  closeReason   String?
+  formResponses String    @default("{}") // JSON of form answers
+  transcriptUrl String?   // URL/path to transcript
+  createdAt     DateTime  @default(now())
+  closedAt      DateTime?
+
+  @@index([guildId, userId])
+  @@index([guildId, status])
+  @@index([guildId, createdAt])
+}
+
+model TicketGuildSettings {
+  guildId             String @id
+  staffRoleIds        String @default("[]") // JSON array
+  transcriptChannelId String?
+  maxOpenPerUser      Int    @default(3)
+  autoCloseHours      Int    @default(0) // 0 = disabled
+  namingFormat        String @default("ticket-{number}") // {number}, {username}
+  ticketCounter       Int    @default(0) // Auto-incrementing per guild
+}
+
 // === Giveaways ===
 
 model Giveaway {

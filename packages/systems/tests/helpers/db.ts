@@ -45,6 +45,9 @@ export async function cleanTestData(): Promise<void> {
       "TempVoiceUserSettings",
       "Reminder",
       "DashboardSession",
+      "TicketPanel",
+      "Ticket",
+      "TicketGuildSettings",
       "StarboardEntry",
       "StarboardGuildSettings"
     CASCADE

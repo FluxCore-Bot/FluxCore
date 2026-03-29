@@ -22,6 +22,7 @@ import { ModerationPage } from "./routes/guild/$guildId/moderation";
 import { WelcomePage } from "./routes/guild/$guildId/welcome";
 import { RolesPage } from "./routes/guild/$guildId/roles";
 import { LevelingPage } from "./routes/guild/$guildId/leveling";
+import { TicketsPage } from "./routes/guild/$guildId/tickets";
 import { GiveawaysPage } from "./routes/guild/$guildId/giveaways";
 import { SuggestionsPage } from "./routes/guild/$guildId/suggestions";
 import { StarboardPage } from "./routes/guild/$guildId/starboard";
@@ -124,6 +125,12 @@ const levelingRoute = createRoute({
   component: LevelingPage,
 });
 
+const ticketsRoute = createRoute({
+  getParentRoute: () => guildRoute,
+  path: "/tickets",
+  component: TicketsPage,
+});
+
 const giveawaysRoute = createRoute({
   getParentRoute: () => guildRoute,
   path: "/giveaways",
@@ -155,6 +162,7 @@ const routeTree = rootRoute.addChildren([
     welcomeRoute,
     rolesRoute,
     levelingRoute,
+    ticketsRoute,
     giveawaysRoute,
     suggestionsRoute,
     starboardRoute,

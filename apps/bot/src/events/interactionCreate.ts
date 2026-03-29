@@ -15,6 +15,8 @@ import { handleRolePanelAutocomplete } from "../commands/general/rolepanel.js";
 import { MU_PREFIX } from "@fluxcore/systems/music/constants";
 import { GIVEAWAY_BUTTON_PREFIX } from "@fluxcore/systems/giveaways/constants";
 import { handleRolePanelButton, handleRolePanelDropdown } from "@fluxcore/systems/rolePanel/handler";
+import { handleTicketButton, handleTicketModal } from "../systems/tickets/interactions.js";
+import { TICKET_BUTTON_PREFIX, TICKET_CLAIM_ID, TICKET_CLOSE_ID } from "@fluxcore/systems/tickets/constants";
 import { handleGiveawayButton } from "../systems/giveaways/interactions.js";
 import { errorEmbed, warnEmbed, logger } from "@fluxcore/utils";
 
@@ -44,6 +46,14 @@ const event: Event<"interactionCreate"> = {
         await handleRolePanelButton(interaction, panelId, roleId);
         return;
       }
+      if (
+        interaction.customId.startsWith(TICKET_BUTTON_PREFIX) ||
+        interaction.customId === TICKET_CLAIM_ID ||
+        interaction.customId === TICKET_CLOSE_ID
+      ) {
+        await handleTicketButton(interaction);
+        return;
+      }
       if (interaction.customId.startsWith(MU_PREFIX)) {
         await handleMusicButton(interaction);
       } else {
@@ -53,6 +63,10 @@ const event: Event<"interactionCreate"> = {
     }
 
     if (interaction.isModalSubmit()) {
+      if (interaction.customId.startsWith("ticket_form_")) {
+        await handleTicketModal(interaction);
+        return;
+      }
       await handleTempVoiceModal(interaction);
       return;
     }
