@@ -47,7 +47,9 @@ export async function cleanTestData(): Promise<void> {
       "DashboardSession",
       "TicketPanel",
       "Ticket",
-      "TicketGuildSettings"
+      "TicketGuildSettings",
+      "StarboardEntry",
+      "StarboardGuildSettings"
     CASCADE
   `);
 }

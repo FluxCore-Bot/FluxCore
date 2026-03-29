@@ -369,3 +369,90 @@ model TicketGuildSettings {
   namingFormat        String @default("ticket-{number}") // {number}, {username}
   ticketCounter       Int    @default(0) // Auto-incrementing per guild
 }
+
+// === Giveaways ===
+
+model Giveaway {
+  id              Int      @id @default(autoincrement())
+  guildId         String
+  channelId       String
+  messageId       String?  // Giveaway embed message
+  hostId          String   // Who created it
+  prize           String   // Prize description
+  winners         Int      @default(1) // Number of winners
+  endsAt          DateTime
+  ended           Boolean  @default(false)
+  winnerIds       String   @default("[]") // JSON array of winner user IDs
+  entrantIds      String   @default("[]") // JSON array of entrant user IDs
+  requiredRoleIds String   @default("[]") // JSON array — must have one of these roles
+  createdAt       DateTime @default(now())
+
+  @@index([guildId])
+  @@index([endsAt, ended]) // For scheduler
+}
+
+model GiveawayCacheInvalidation {
+  id        Int      @id @default(autoincrement())
+  guildId   String
+  action    String // "reload"
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+// === Suggestions ===
+
+model Suggestion {
+  id           Int      @id @default(autoincrement())
+  guildId      String
+  userId       String
+  messageId    String?  // Discord message ID in suggestions channel
+  content      String   // Suggestion text (max 2000)
+  status       String   @default("pending") // "pending" | "approved" | "denied" | "implemented"
+  statusReason String?
+  statusBy     String?  // Mod who changed status
+  upvotes      Int      @default(0) // Cached count
+  downvotes    Int      @default(0) // Cached count
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([guildId, status])
+  @@index([guildId, createdAt])
+}
+
+model SuggestionGuildSettings {
+  guildId          String  @id
+  enabled          Boolean @default(true)
+  channelId        String? // Suggestions channel
+  reviewChannelId  String? // Optional: mod review channel
+  dmOnStatusChange Boolean @default(true)
+  autoThread       Boolean @default(false) // Create discussion thread
+  anonymousMode    Boolean @default(false)
+}
+
+// === Starboard ===
+
+model StarboardEntry {
+  id                 Int      @id @default(autoincrement())
+  guildId            String
+  originalMessageId  String
+  originalChannelId  String
+  starboardMessageId String?  // Message ID in starboard channel
+  authorId           String
+  starCount          Int      @default(0)
+  createdAt          DateTime @default(now())
+
+  @@unique([guildId, originalMessageId])
+  @@index([guildId, starCount])
+}
+
+model StarboardGuildSettings {
+  guildId         String  @id
+  enabled         Boolean @default(true)
+  channelId       String? // Starboard channel
+  emoji           String  @default("⭐")
+  threshold       Int     @default(3) // Stars needed to qualify
+  selfStar        Boolean @default(false) // Allow starring own messages
+  ignoredChannels String  @default("[]") // JSON array
+  nsfwHandling    String  @default("ignore") // "ignore" | "separate"
+}

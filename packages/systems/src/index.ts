@@ -49,6 +49,13 @@ export { buildButtonComponents, buildDropdownComponent, buildPanelEmbed } from "
 export { handleRolePanelButton, handleRolePanelDropdown, handleRolePanelReaction } from "./rolePanel/handler.js";
 export { MAX_ROLES_PER_PANEL, VALID_PANEL_TYPES, VALID_PANEL_MODES, BUTTON_STYLES } from "./rolePanel/constants.js";
 
+// Giveaways
+export { createGiveaway, getGiveaway, getActiveGiveaways, listGiveaways, setGiveawayMessageId, addEntrant, removeEntrant, endGiveaway, getDueGiveaways, getActiveGiveawayCount } from "./giveaways/persistence.js";
+export { selectWinners, rerollWinners } from "./giveaways/winner.js";
+export { buildGiveawayEmbed, buildEndedGiveawayEmbed, buildGiveawayButton } from "./giveaways/embed.js";
+export { startGiveawayScheduler, stopGiveawayScheduler, processEndedGiveaways } from "./giveaways/scheduler.js";
+export { GIVEAWAY_BUTTON_PREFIX, GIVEAWAY_CHECK_INTERVAL_MS, MAX_WINNERS, MAX_PRIZE_LENGTH, MAX_ACTIVE_GIVEAWAYS, GIVEAWAY_PAGE_SIZE } from "./giveaways/constants.js";
+
 // Leveling
 export { getLevelSettings, upsertLevelSettings, getLevelRewards, addLevelReward, removeLevelReward } from "./leveling/config.js";
 export { getUserLevel, addXp, addVoiceXp, setXp, getLeaderboard, getUserRank } from "./leveling/persistence.js";
@@ -66,3 +73,14 @@ export {
 export { buildTranscriptHtml } from "./tickets/transcript.js";
 export { buildPanelComponents, buildPanelEmbed, buildTicketWelcomeEmbed, buildTicketActionRow } from "./tickets/builder.js";
 export { TICKET_BUTTON_PREFIX, TICKET_CLAIM_ID, TICKET_CLOSE_ID, MAX_FORM_FIELDS, MAX_CATEGORIES, TICKETS_PAGE_SIZE } from "./tickets/constants.js";
+
+// Suggestions
+export { getSuggestionSettings, upsertSuggestionSettings } from "./suggestions/config.js";
+export { createSuggestion, getSuggestion, getSuggestions, updateSuggestionStatus, updateSuggestionMessageId, updateSuggestionVotes, deleteSuggestion } from "./suggestions/persistence.js";
+export { SUGGESTIONS_PAGE_SIZE, VALID_STATUSES, STATUS_COLORS, STATUS_LABELS, MAX_SUGGESTION_LENGTH, DEFAULT_SETTINGS as DEFAULT_SUGGESTION_SETTINGS } from "./suggestions/constants.js";
+
+// Starboard
+export { getStarboardSettings, upsertStarboardSettings } from "./starboard/config.js";
+export { getStarboardEntry, upsertStarboardEntry, updateStarboardMessageId, updateStarCount, deleteStarboardEntry, getStarboardEntries } from "./starboard/persistence.js";
+export { handleStarboardReaction } from "./starboard/handler.js";
+export { DEFAULT_EMOJI, DEFAULT_THRESHOLD, STARBOARD_PAGE_SIZE } from "./starboard/constants.js";

@@ -8,3 +8,5 @@ export type {
   Ticket,
   TicketGuildSettings,
 } from "./tickets.js";
+export type { Giveaway, CreateGiveawayData } from "./giveaways.js";
+export type { Suggestion, SuggestionGuildSettings, SuggestionStatus } from "./suggestions.js";

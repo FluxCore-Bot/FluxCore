@@ -13,9 +13,11 @@ import { handleActionsAutocomplete } from "../commands/admin/actions.js";
 import { handlePlayAutocomplete } from "../commands/music/play.js";
 import { handleRolePanelAutocomplete } from "../commands/general/rolepanel.js";
 import { MU_PREFIX } from "@fluxcore/systems/music/constants";
+import { GIVEAWAY_BUTTON_PREFIX } from "@fluxcore/systems/giveaways/constants";
 import { handleRolePanelButton, handleRolePanelDropdown } from "@fluxcore/systems/rolePanel/handler";
 import { handleTicketButton, handleTicketModal } from "../systems/tickets/interactions.js";
 import { TICKET_BUTTON_PREFIX, TICKET_CLAIM_ID, TICKET_CLOSE_ID } from "@fluxcore/systems/tickets/constants";
+import { handleGiveawayButton } from "../systems/giveaways/interactions.js";
 import { errorEmbed, warnEmbed, logger } from "@fluxcore/utils";
 
 const event: Event<"interactionCreate"> = {
@@ -33,6 +35,10 @@ const event: Event<"interactionCreate"> = {
     }
 
     if (interaction.isButton()) {
+      if (interaction.customId.startsWith(GIVEAWAY_BUTTON_PREFIX)) {
+        await handleGiveawayButton(interaction);
+        return;
+      }
       if (interaction.customId.startsWith("rp_")) {
         const parts = interaction.customId.split("_");
         const panelId = parseInt(parts[1], 10);

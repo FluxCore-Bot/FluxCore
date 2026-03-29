@@ -530,6 +530,30 @@ export const XpMultipliersSchema = z.object({
   roles: z.record(z.string(), z.number()).optional(),
 });
 
+// --- Giveaways ---
+export const GiveawaySchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  channelId: z.string(),
+  messageId: z.string().nullable(),
+  hostId: z.string(),
+  prize: z.string(),
+  winners: z.number(),
+  endsAt: z.string(),
+  ended: z.boolean(),
+  winnerIds: z.array(z.string()),
+  entrantIds: z.array(z.string()),
+  requiredRoleIds: z.array(z.string()),
+  createdAt: z.string(),
+});
+export type GiveawayItem = z.infer<typeof GiveawaySchema>;
+
+export const GiveawayListResponseSchema = z.object({
+  giveaways: z.array(GiveawaySchema),
+  total: z.number(),
+});
+export type GiveawayListResponse = z.infer<typeof GiveawayListResponseSchema>;
+
 export const LevelSettingsSchema = z.object({
   guildId: z.string(),
   enabled: z.boolean(),
@@ -614,3 +638,37 @@ export const TicketSettingsSchema = z.object({
 });
 export type TicketSettingsItem = z.infer<typeof TicketSettingsSchema>;
 export type LevelSettings = z.infer<typeof LevelSettingsSchema>;
+
+// --- Suggestions ---
+export const SuggestionSchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  userId: z.string(),
+  messageId: z.string().nullable(),
+  content: z.string(),
+  status: z.enum(["pending", "approved", "denied", "implemented"]),
+  statusReason: z.string().nullable(),
+  statusBy: z.string().nullable(),
+  upvotes: z.number(),
+  downvotes: z.number(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+});
+export type SuggestionItem = z.infer<typeof SuggestionSchema>;
+
+export const SuggestionListResponseSchema = z.object({
+  suggestions: z.array(SuggestionSchema),
+  total: z.number(),
+});
+export type SuggestionListResponse = z.infer<typeof SuggestionListResponseSchema>;
+
+export const SuggestionSettingsSchema = z.object({
+  guildId: z.string(),
+  enabled: z.boolean(),
+  channelId: z.string().nullable(),
+  reviewChannelId: z.string().nullable(),
+  dmOnStatusChange: z.boolean(),
+  autoThread: z.boolean(),
+  anonymousMode: z.boolean(),
+});
+export type SuggestionSettings = z.infer<typeof SuggestionSettingsSchema>;
