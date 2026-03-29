@@ -345,4 +345,160 @@ model CustomCommand {
   @@unique([guildId, name])
   @@index([guildId, enabled])
   @@index([guildId, triggerType])
+// === Anti-Raid ===
+
+model AntiRaidConfig {
+  guildId             String  @id
+  enabled             Boolean @default(false)
+  joinThreshold       Int     @default(10)
+  joinWindow          Int     @default(10)
+  joinAction          String  @default("kick")
+  accountAgeMinDays   Int     @default(0)
+  accountAgeAction    String  @default("kick")
+  antiNukeEnabled     Boolean @default(false)
+  antiNukeThreshold   Int     @default(3)
+  lockdownOnRaid      Boolean @default(false)
+  whitelistedRoleIds  String  @default("[]")
+  logChannelId        String?
+}
+
+model RaidEvent {
+  id          Int      @id @default(autoincrement())
+  guildId     String
+  eventType   String
+  details     String   @default("{}")
+  triggeredAt DateTime @default(now())
+
+  @@index([guildId, triggeredAt])
+// === Ticket System ===
+
+model TicketPanel {
+  id          Int      @id @default(autoincrement())
+  guildId     String
+  channelId   String   // Channel where panel message lives
+  messageId   String?  // Populated after send
+  name        String
+  embed       String   @default("{}") // JSON embed config
+  categories  String   @default("[]") // JSON array of TicketCategory
+  createdBy   String
+  createdAt   DateTime @default(now())
+
+  @@index([guildId])
+}
+
+model Ticket {
+  id            Int       @id @default(autoincrement())
+  guildId       String
+  channelId     String    @unique // The ticket channel
+  userId        String    // Creator
+  categoryName  String?
+  panelId       Int?
+  status        String    @default("open") // "open" | "claimed" | "closed"
+  claimedBy     String?   // Staff who claimed
+  closeReason   String?
+  formResponses String    @default("{}") // JSON of form answers
+  transcriptUrl String?   // URL/path to transcript
+  createdAt     DateTime  @default(now())
+  closedAt      DateTime?
+
+  @@index([guildId, userId])
+  @@index([guildId, status])
+  @@index([guildId, createdAt])
+}
+
+model TicketGuildSettings {
+  guildId             String @id
+  staffRoleIds        String @default("[]") // JSON array
+  transcriptChannelId String?
+  maxOpenPerUser      Int    @default(3)
+  autoCloseHours      Int    @default(0) // 0 = disabled
+  namingFormat        String @default("ticket-{number}") // {number}, {username}
+  ticketCounter       Int    @default(0) // Auto-incrementing per guild
+}
+
+// === Giveaways ===
+
+model Giveaway {
+  id              Int      @id @default(autoincrement())
+  guildId         String
+  channelId       String
+  messageId       String?  // Giveaway embed message
+  hostId          String   // Who created it
+  prize           String   // Prize description
+  winners         Int      @default(1) // Number of winners
+  endsAt          DateTime
+  ended           Boolean  @default(false)
+  winnerIds       String   @default("[]") // JSON array of winner user IDs
+  entrantIds      String   @default("[]") // JSON array of entrant user IDs
+  requiredRoleIds String   @default("[]") // JSON array — must have one of these roles
+  createdAt       DateTime @default(now())
+
+  @@index([guildId])
+  @@index([endsAt, ended]) // For scheduler
+}
+
+model GiveawayCacheInvalidation {
+  id        Int      @id @default(autoincrement())
+  guildId   String
+  action    String // "reload"
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+// === Suggestions ===
+
+model Suggestion {
+  id           Int      @id @default(autoincrement())
+  guildId      String
+  userId       String
+  messageId    String?  // Discord message ID in suggestions channel
+  content      String   // Suggestion text (max 2000)
+  status       String   @default("pending") // "pending" | "approved" | "denied" | "implemented"
+  statusReason String?
+  statusBy     String?  // Mod who changed status
+  upvotes      Int      @default(0) // Cached count
+  downvotes    Int      @default(0) // Cached count
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([guildId, status])
+  @@index([guildId, createdAt])
+}
+
+model SuggestionGuildSettings {
+  guildId          String  @id
+  enabled          Boolean @default(true)
+  channelId        String? // Suggestions channel
+  reviewChannelId  String? // Optional: mod review channel
+  dmOnStatusChange Boolean @default(true)
+  autoThread       Boolean @default(false) // Create discussion thread
+  anonymousMode    Boolean @default(false)
+}
+
+// === Starboard ===
+
+model StarboardEntry {
+  id                 Int      @id @default(autoincrement())
+  guildId            String
+  originalMessageId  String
+  originalChannelId  String
+  starboardMessageId String?  // Message ID in starboard channel
+  authorId           String
+  starCount          Int      @default(0)
+  createdAt          DateTime @default(now())
+
+  @@unique([guildId, originalMessageId])
+  @@index([guildId, starCount])
+}
+
+model StarboardGuildSettings {
+  guildId         String  @id
+  enabled         Boolean @default(true)
+  channelId       String? // Starboard channel
+  emoji           String  @default("⭐")
+  threshold       Int     @default(3) // Stars needed to qualify
+  selfStar        Boolean @default(false) // Allow starring own messages
+  ignoredChannels String  @default("[]") // JSON array
+  nsfwHandling    String  @default("ignore") // "ignore" | "separate"
 }

@@ -22,6 +22,11 @@ import { ModerationPage } from "./routes/guild/$guildId/moderation";
 import { WelcomePage } from "./routes/guild/$guildId/welcome";
 import { RolesPage } from "./routes/guild/$guildId/roles";
 import { LevelingPage } from "./routes/guild/$guildId/leveling";
+import { SecurityPage } from "./routes/guild/$guildId/security";
+import { TicketsPage } from "./routes/guild/$guildId/tickets";
+import { GiveawaysPage } from "./routes/guild/$guildId/giveaways";
+import { SuggestionsPage } from "./routes/guild/$guildId/suggestions";
+import { StarboardPage } from "./routes/guild/$guildId/starboard";
 import "./styles.css";
 
 const queryClient = new QueryClient({
@@ -121,6 +126,34 @@ const levelingRoute = createRoute({
   component: LevelingPage,
 });
 
+const securityRoute = createRoute({
+  getParentRoute: () => guildRoute,
+  path: "/security",
+  component: SecurityPage,
+const ticketsRoute = createRoute({
+  getParentRoute: () => guildRoute,
+  path: "/tickets",
+  component: TicketsPage,
+});
+
+const giveawaysRoute = createRoute({
+  getParentRoute: () => guildRoute,
+  path: "/giveaways",
+  component: GiveawaysPage,
+});
+
+const suggestionsRoute = createRoute({
+  getParentRoute: () => guildRoute,
+  path: "/suggestions",
+  component: SuggestionsPage,
+});
+
+const starboardRoute = createRoute({
+  getParentRoute: () => guildRoute,
+  path: "/starboard",
+  component: StarboardPage,
+});
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   guildRoute.addChildren([
@@ -134,6 +167,11 @@ const routeTree = rootRoute.addChildren([
     welcomeRoute,
     rolesRoute,
     levelingRoute,
+    securityRoute,
+    ticketsRoute,
+    giveawaysRoute,
+    suggestionsRoute,
+    starboardRoute,
     settingsRoute,
     logsRoute,
   ]),

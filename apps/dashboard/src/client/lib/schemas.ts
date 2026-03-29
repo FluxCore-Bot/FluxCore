@@ -530,6 +530,30 @@ export const XpMultipliersSchema = z.object({
   roles: z.record(z.string(), z.number()).optional(),
 });
 
+// --- Giveaways ---
+export const GiveawaySchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  channelId: z.string(),
+  messageId: z.string().nullable(),
+  hostId: z.string(),
+  prize: z.string(),
+  winners: z.number(),
+  endsAt: z.string(),
+  ended: z.boolean(),
+  winnerIds: z.array(z.string()),
+  entrantIds: z.array(z.string()),
+  requiredRoleIds: z.array(z.string()),
+  createdAt: z.string(),
+});
+export type GiveawayItem = z.infer<typeof GiveawaySchema>;
+
+export const GiveawayListResponseSchema = z.object({
+  giveaways: z.array(GiveawaySchema),
+  total: z.number(),
+});
+export type GiveawayListResponse = z.infer<typeof GiveawayListResponseSchema>;
+
 export const LevelSettingsSchema = z.object({
   guildId: z.string(),
   enabled: z.boolean(),
@@ -544,6 +568,75 @@ export const LevelSettingsSchema = z.object({
   noXpRoles: z.array(z.string()),
   xpMultipliers: XpMultipliersSchema,
 });
+
+// --- Tickets ---
+export const TicketFormFieldSchema = z.object({
+  label: z.string(),
+  placeholder: z.string().optional(),
+  style: z.enum(["short", "paragraph"]),
+  required: z.boolean(),
+  maxLength: z.number().optional(),
+});
+export type TicketFormFieldItem = z.infer<typeof TicketFormFieldSchema>;
+
+export const TicketCategorySchema = z.object({
+  name: z.string(),
+  label: z.string(),
+  emoji: z.string().optional(),
+  description: z.string().optional(),
+  staffRoleIds: z.array(z.string()).optional(),
+  formFields: z.array(TicketFormFieldSchema).optional(),
+});
+export type TicketCategoryItem = z.infer<typeof TicketCategorySchema>;
+
+export const TicketPanelSchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  channelId: z.string(),
+  messageId: z.string().nullable(),
+  name: z.string(),
+  embed: z.string(),
+  categories: z.array(TicketCategorySchema),
+  createdBy: z.string(),
+  createdAt: z.string(),
+});
+export type TicketPanelItem = z.infer<typeof TicketPanelSchema>;
+
+export const TicketPanelListSchema = z.array(TicketPanelSchema);
+
+export const TicketSchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  channelId: z.string(),
+  userId: z.string(),
+  categoryName: z.string().nullable(),
+  panelId: z.number().nullable(),
+  status: z.enum(["open", "claimed", "closed"]),
+  claimedBy: z.string().nullable(),
+  closeReason: z.string().nullable(),
+  formResponses: z.record(z.string(), z.string()),
+  transcriptUrl: z.string().nullable(),
+  createdAt: z.string(),
+  closedAt: z.string().nullable(),
+});
+export type TicketItem = z.infer<typeof TicketSchema>;
+
+export const TicketListResponseSchema = z.object({
+  tickets: z.array(TicketSchema),
+  total: z.number(),
+});
+export type TicketListResponse = z.infer<typeof TicketListResponseSchema>;
+
+export const TicketSettingsSchema = z.object({
+  guildId: z.string(),
+  staffRoleIds: z.array(z.string()),
+  transcriptChannelId: z.string().nullable(),
+  maxOpenPerUser: z.number(),
+  autoCloseHours: z.number(),
+  namingFormat: z.string(),
+  ticketCounter: z.number(),
+});
+export type TicketSettingsItem = z.infer<typeof TicketSettingsSchema>;
 export type LevelSettings = z.infer<typeof LevelSettingsSchema>;
 
 // --- Custom Commands ---
@@ -588,3 +681,36 @@ export const CustomCommandSchema = z.object({
 export type CustomCommandItem = z.infer<typeof CustomCommandSchema>;
 
 export const CustomCommandListSchema = z.array(CustomCommandSchema);
+// --- Suggestions ---
+export const SuggestionSchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  userId: z.string(),
+  messageId: z.string().nullable(),
+  content: z.string(),
+  status: z.enum(["pending", "approved", "denied", "implemented"]),
+  statusReason: z.string().nullable(),
+  statusBy: z.string().nullable(),
+  upvotes: z.number(),
+  downvotes: z.number(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+});
+export type SuggestionItem = z.infer<typeof SuggestionSchema>;
+
+export const SuggestionListResponseSchema = z.object({
+  suggestions: z.array(SuggestionSchema),
+  total: z.number(),
+});
+export type SuggestionListResponse = z.infer<typeof SuggestionListResponseSchema>;
+
+export const SuggestionSettingsSchema = z.object({
+  guildId: z.string(),
+  enabled: z.boolean(),
+  channelId: z.string().nullable(),
+  reviewChannelId: z.string().nullable(),
+  dmOnStatusChange: z.boolean(),
+  autoThread: z.boolean(),
+  anonymousMode: z.boolean(),
+});
+export type SuggestionSettings = z.infer<typeof SuggestionSettingsSchema>;
