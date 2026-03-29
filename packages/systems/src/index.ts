@@ -54,3 +54,15 @@ export { getLevelSettings, upsertLevelSettings, getLevelRewards, addLevelReward,
 export { getUserLevel, addXp, addVoiceXp, setXp, getLeaderboard, getUserRank } from "./leveling/persistence.js";
 export { xpForLevel, totalXpForLevel, levelFromXp, applyMultipliers } from "./leveling/xp.js";
 export { checkAndGrantRewards } from "./leveling/rewards.js";
+
+// Tickets
+export { getTicketSettings, upsertTicketSettings, incrementTicketCounter } from "./tickets/config.js";
+export {
+  createTicket, getTicketByChannel, getTicketById, getTickets, getOpenTicketCount,
+  updateTicket, closeTicket, claimTicket, getInactiveTickets,
+  getTicketPanels, getTicketPanel, createTicketPanel, updateTicketPanel,
+  deleteTicketPanel, updatePanelMessageId,
+} from "./tickets/persistence.js";
+export { buildTranscriptHtml } from "./tickets/transcript.js";
+export { buildPanelComponents, buildPanelEmbed, buildTicketWelcomeEmbed, buildTicketActionRow } from "./tickets/builder.js";
+export { TICKET_BUTTON_PREFIX, TICKET_CLAIM_ID, TICKET_CLOSE_ID, MAX_FORM_FIELDS, MAX_CATEGORIES, TICKETS_PAGE_SIZE } from "./tickets/constants.js";

@@ -1,5 +1,3 @@
-export type { Command } from "./Command.js";
-export type { Event } from "./Event.js";
 export type {
   TicketCategory,
   TicketFormField,
@@ -7,4 +5,4 @@ export type {
   TicketStatus,
   Ticket,
   TicketGuildSettings,
-} from "./tickets.js";
+} from "@fluxcore/types";
