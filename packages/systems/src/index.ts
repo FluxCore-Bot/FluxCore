@@ -48,3 +48,9 @@ export { getRolePanels, getRolePanel, getRolePanelByName, getRolePanelByMessageI
 export { buildButtonComponents, buildDropdownComponent, buildPanelEmbed } from "./rolePanel/builder.js";
 export { handleRolePanelButton, handleRolePanelDropdown, handleRolePanelReaction } from "./rolePanel/handler.js";
 export { MAX_ROLES_PER_PANEL, VALID_PANEL_TYPES, VALID_PANEL_MODES, BUTTON_STYLES } from "./rolePanel/constants.js";
+
+// Leveling
+export { getLevelSettings, upsertLevelSettings, getLevelRewards, addLevelReward, removeLevelReward } from "./leveling/config.js";
+export { getUserLevel, addXp, addVoiceXp, setXp, getLeaderboard, getUserRank } from "./leveling/persistence.js";
+export { xpForLevel, totalXpForLevel, levelFromXp, applyMultipliers } from "./leveling/xp.js";
+export { checkAndGrantRewards } from "./leveling/rewards.js";

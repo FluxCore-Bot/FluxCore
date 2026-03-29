@@ -280,3 +280,46 @@ model RolePanel {
   @@unique([guildId, messageId])
   @@index([guildId])
 }
+
+// === Leveling System ===
+
+model UserLevel {
+  id            Int       @id @default(autoincrement())
+  guildId       String
+  userId        String
+  xp            Int       @default(0)
+  level         Int       @default(0)
+  messageCount  Int       @default(0)
+  voiceMinutes  Int       @default(0)
+  lastMessageXp DateTime?
+  updatedAt     DateTime  @updatedAt
+
+  @@unique([guildId, userId])
+  @@index([guildId, xp])
+  @@index([guildId, level])
+}
+
+model LevelReward {
+  id      Int    @id @default(autoincrement())
+  guildId String
+  level   Int
+  roleId  String
+
+  @@unique([guildId, level, roleId])
+  @@index([guildId])
+}
+
+model LevelGuildSettings {
+  guildId             String  @id
+  enabled             Boolean @default(true)
+  xpPerMessage        Int     @default(15)
+  xpCooldownSeconds   Int     @default(60)
+  voiceXpPerMinute    Int     @default(5)
+  voiceXpEnabled      Boolean @default(true)
+  announceChannel     String? // null = same channel, "dm" = DM, channel ID = specific
+  announceMessage     String  @default("{user} just reached **Level {level}**!")
+  announceEnabled     Boolean @default(true)
+  noXpChannels        String  @default("[]")
+  noXpRoles           String  @default("[]")
+  xpMultipliers       String  @default("{}")
+}
