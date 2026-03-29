@@ -42,3 +42,9 @@ export { getWarnSettings, upsertWarnSettings, getPunishments, addPunishment, rem
 export { createModCase, getModCases, getModCaseById, updateModCase, deleteModCase, getModSettings, upsertModSettings } from "./moderation/persistence.js";
 export { startTempbanScheduler, stopTempbanScheduler, checkExpiredTempbans } from "./moderation/scheduler.js";
 export { dmOnPunishment } from "./moderation/dm.js";
+
+// Role Panels
+export { getRolePanels, getRolePanel, getRolePanelByName, getRolePanelByMessageId, createRolePanel, updateRolePanel, deleteRolePanel, updatePanelMessageId } from "./rolePanel/persistence.js";
+export { buildButtonComponents, buildDropdownComponent, buildPanelEmbed } from "./rolePanel/builder.js";
+export { handleRolePanelButton, handleRolePanelDropdown, handleRolePanelReaction } from "./rolePanel/handler.js";
+export { MAX_ROLES_PER_PANEL, VALID_PANEL_TYPES, VALID_PANEL_MODES, BUTTON_STYLES } from "./rolePanel/constants.js";

@@ -243,3 +243,25 @@ model ModGuildSettings {
   dmOnPunishment  Boolean @default(true)
   modLogChannelId String?
 }
+
+// === Role Panels ===
+
+model RolePanel {
+  id          Int      @id @default(autoincrement())
+  guildId     String
+  channelId   String
+  messageId   String?  // Populated after message is sent
+  name        String
+  type        String   // "reaction" | "button" | "dropdown"
+  mode        String   @default("toggle") // "toggle" | "unique" | "verify"
+  embed       String   @default("{}") // JSON embed config
+  roles       String   @default("[]") // JSON array of RolePanelEntry
+  maxRoles    Int?     // Max roles selectable (for dropdown)
+  minRoles    Int?     // Min roles required (for dropdown)
+  createdBy   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([guildId, messageId])
+  @@index([guildId])
+}
