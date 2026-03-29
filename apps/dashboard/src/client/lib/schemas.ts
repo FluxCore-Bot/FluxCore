@@ -639,6 +639,48 @@ export const TicketSettingsSchema = z.object({
 export type TicketSettingsItem = z.infer<typeof TicketSettingsSchema>;
 export type LevelSettings = z.infer<typeof LevelSettingsSchema>;
 
+// --- Custom Commands ---
+export const CustomCommandEmbedSchema = z.object({
+  title: z.string().optional(),
+  description: z.string().optional(),
+  color: z.number().optional(),
+  footer: z.string().optional(),
+  thumbnail: z.string().optional(),
+  image: z.string().optional(),
+});
+
+export const CustomCommandResponseSchema = z.object({
+  type: z.enum(["text", "embed"]),
+  content: z.string().optional(),
+  embed: CustomCommandEmbedSchema.optional(),
+});
+export type CustomCommandResponse = z.infer<typeof CustomCommandResponseSchema>;
+
+export const CustomCommandActionSchema = z.object({
+  type: z.enum(["addRole", "removeRole"]),
+  roleId: z.string(),
+});
+export type CustomCommandAction = z.infer<typeof CustomCommandActionSchema>;
+
+export const CustomCommandSchema = z.object({
+  id: z.number(),
+  guildId: z.string(),
+  name: z.string(),
+  triggerType: z.enum(["command", "keyword", "startsWith", "regex"]),
+  response: CustomCommandResponseSchema,
+  actions: z.array(CustomCommandActionSchema),
+  enabled: z.boolean(),
+  cooldown: z.number(),
+  allowedRoles: z.array(z.string()),
+  allowedChannels: z.array(z.string()),
+  deletesTrigger: z.boolean(),
+  dmResponse: z.boolean(),
+  createdBy: z.string(),
+  createdAt: z.string(),
+});
+export type CustomCommandItem = z.infer<typeof CustomCommandSchema>;
+
+export const CustomCommandListSchema = z.array(CustomCommandSchema);
 // --- Suggestions ---
 export const SuggestionSchema = z.object({
   id: z.number(),
