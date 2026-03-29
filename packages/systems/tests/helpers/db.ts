@@ -44,7 +44,8 @@ export async function cleanTestData(): Promise<void> {
       "TempVoiceGuildConfig",
       "TempVoiceUserSettings",
       "Reminder",
-      "DashboardSession"
+      "DashboardSession",
+      "ScheduledMessage"
     CASCADE
   `);
 }

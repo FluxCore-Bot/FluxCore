@@ -323,3 +323,24 @@ model LevelGuildSettings {
   noXpRoles           String  @default("[]")
   xpMultipliers       String  @default("{}")
 }
+
+// === Scheduled Messages ===
+
+model ScheduledMessage {
+  id          Int       @id @default(autoincrement())
+  guildId     String
+  channelId   String
+  name        String
+  message     String    @default("{}") // JSON: { type: "text"|"embed", content, embed }
+  cronExpr    String    // Cron expression: "0 9 * * *" (daily at 9am)
+  timezone    String    @default("UTC")
+  enabled     Boolean   @default(true)
+  lastRunAt   DateTime?
+  nextRunAt   DateTime?
+  createdBy   String
+  createdAt   DateTime  @default(now())
+
+  @@unique([guildId, name])
+  @@index([guildId])
+  @@index([nextRunAt, enabled])
+}
