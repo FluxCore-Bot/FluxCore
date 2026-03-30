@@ -1,6 +1,6 @@
 # FluxCore — Project Index
 
-> Auto-generated on 2026-03-29. Comprehensive repository map for navigation and onboarding.
+> Auto-generated on 2026-03-30. Comprehensive repository map for navigation and onboarding.
 
 ---
 
@@ -35,11 +35,11 @@ FluxCore/
 ├── packages/
 │   ├── config/                 # Environment & configuration
 │   ├── database/               # Prisma ORM + PostgreSQL
-│   ├── systems/                # Shared stateful systems
+│   ├── systems/                # Shared stateful systems (16 modules)
 │   ├── types/                  # Shared TypeScript interfaces
 │   └── utils/                  # Logger, embeds, permissions, time
 ├── docs/                       # Feature specs & planning docs
-│   └── features/               # Per-feature specification files
+│   └── features/               # Per-feature specification files (13)
 ├── docker/                     # Support scripts (Caddyfile, backup.sh)
 ├── docker-compose.yml          # Dev environment
 ├── docker-compose.prod.yml     # Production environment
@@ -58,30 +58,34 @@ FluxCore/
 
 **Entry:** `src/index.ts` → `src/client/ExtendedClient.ts`
 
-#### Commands (26)
+#### Commands (40 across 10 modules)
 
-| Module | Commands |
-|--------|----------|
-| **General** (4) | `help`, `ping`, `server-info`, `user-info` |
-| **Moderation** (14) | `ban`, `case`, `cases`, `clear`, `clearwarnings`, `kick`, `lock`, `note`, `purge`, `softban`, `tempban`, `timeout`, `unlock`, `warn` |
-| **Utility** (3) | `avatar`, `embed-builder`, `remind` |
-| **Music** (2) | `play`, `queue` |
-| **Voice** (1) | `tempvoice` |
-| **Admin** (1) | `actions` |
+| Module | Count | Commands |
+|--------|-------|----------|
+| **Admin** | 2 | `actions`, `lockdown` |
+| **General** | 6 | `help`, `ping`, `rolepanel`, `server-info`, `user-info`, `welcome` |
+| **Moderation** | 15 | `ban`, `case`, `cases`, `clear`, `clearwarnings`, `kick`, `lock`, `note`, `purge`, `softban`, `tempban`, `timeout`, `unlock`, `warn`, `warnings` |
+| **Music** | 2 | `play`, `queue` |
+| **Utility** | 3 | `avatar`, `embed-builder`, `remind` |
+| **Voice** | 1 | `tempvoice` |
+| **Tickets** | 5 | `add`, `claim`, `close`, `remove`, `transcript` |
+| **Suggestions** | 2 | `suggest`, `suggestion` |
+| **Giveaways** | 1 | `giveaway` |
+| **Leveling** | 3 | `leaderboard`, `rank`, `xp` |
 
-#### Events (18)
+#### Events (22)
 
-`channelCreate`, `channelDelete`, `channelUpdate`, `guildBanAdd`, `guildBanRemove`, `guildMemberAdd`, `guildMemberRemove`, `guildMemberUpdate`, `guildUpdate`, `interactionCreate`, `messageBulkDelete`, `messageDelete`, `messageUpdate`, `ready`, `roleCreate`, `roleDelete`, `roleUpdate`, `voiceStateUpdate`
+`channelCreate`, `channelDelete`, `channelUpdate`, `customCommandHandler`, `guildBanAdd`, `guildBanRemove`, `guildMemberAdd`, `guildMemberRemove`, `guildMemberUpdate`, `guildUpdate`, `interactionCreate`, `messageBulkDelete`, `messageCreate`, `messageDelete`, `messageReactionAdd`, `messageReactionRemove`, `messageUpdate`, `ready`, `roleCreate`, `roleDelete`, `roleUpdate`, `voiceStateUpdate`
 
 #### Bot Systems
 
-| System | Files | Purpose |
-|--------|-------|---------|
-| Music | `music/` (8 files) | Lavalink integration, queue, panel, events, settings |
-| TempVoice | `tempVoice/` (2 files) | Temporary voice channel lifecycle |
-| Actions | `actions/` (4 files) | Event bridge, executor, registry, sync |
-| Reminders | `reminders.ts` | Scheduled reminder system |
-| Permissions | `permissionAudit.ts` | Permission auditing |
+| System | Directory | Purpose |
+|--------|-----------|---------|
+| Actions | `systems/actions/` | Event bridge, executor, registry, sync |
+| Giveaways | `systems/giveaways/` | Giveaway lifecycle management |
+| Music | `systems/music/` | Lavalink integration, queue, panel, events, settings |
+| TempVoice | `systems/tempVoice/` | Temporary voice channel lifecycle |
+| Tickets | `systems/tickets/` | Ticket system management |
 
 #### Handlers
 
@@ -97,55 +101,64 @@ FluxCore/
 **Server:** Fastify 5 API
 **Client:** React 19 SPA (Vite 6, TanStack Router)
 
-#### API Routes (9)
+#### API Routes (19)
 
 | Route | Purpose |
 |-------|---------|
 | `auth.ts` | OAuth2 authentication |
 | `actions.ts` | Action/automation CRUD |
+| `anti-raid.ts` | Anti-raid configuration |
+| `customCommands.ts` | Custom command management |
 | `discord.ts` | Discord API proxy |
+| `giveaways.ts` | Giveaway management |
 | `guilds.ts` | Guild management |
+| `leveling.ts` | Leveling/XP configuration |
 | `logging.ts` | Logging configuration |
 | `moderation.ts` | Moderation data |
 | `music.ts` | Music settings |
+| `rolePanel.ts` | Role panel management |
+| `scheduled-messages.ts` | Scheduled message CRUD |
+| `starboard.ts` | Starboard configuration |
+| `suggestions.ts` | Suggestion system |
 | `tempvoice.ts` | TempVoice configuration |
+| `tickets.ts` | Ticket system settings |
 | `warnings.ts` | Warning management |
+| `welcome.ts` | Welcome/farewell settings |
 
-#### Client Routes (11)
+#### Client Routes (21)
 
 ```
 / (root)
 ├── /                           → Landing page
 └── /guild/$guildId
     ├── /overview               → Guild dashboard
-    ├── /rules                  → Automation rules
-    ├── /tempvoice              → TempVoice settings
-    ├── /settings               → Guild settings
+    ├── /commands               → Custom commands
+    ├── /giveaways              → Giveaway management
+    ├── /leveling               → Leveling/XP settings
     ├── /logs                   → Event log browser
+    ├── /moderation             → Moderation cases
     ├── /music                  → Music settings & library
+    ├── /roles                  → Role panel management
+    ├── /rules                  → Automation rules
+    ├── /scheduled              → Scheduled messages
+    ├── /security               → Anti-raid settings
+    ├── /settings               → Guild settings
+    ├── /starboard              → Starboard settings
+    ├── /suggestions            → Suggestion system
+    ├── /tempvoice              → TempVoice settings
+    ├── /tickets                → Ticket system
     ├── /warnings               → Warning management
-    └── /moderation             → Moderation cases
+    └── /welcome                → Welcome/farewell system
 ```
 
-#### Components (58)
+#### Components
 
 | Category | Count | Key Components |
 |----------|-------|----------------|
-| **Layout** | 4 | `Sidebar`, `PageHeader`, `PageSkeleton`, `Icon` |
-| **Feature** | 12 | `ActionFields`, `RuleForm`, `RuleList`, `EventLogBrowser`, `EventLogConfig`, `LogsTable`, `MusicSettingsForm`, `MusicLibraryManager`, `TempVoiceForm`, `SettingsForm`, `ConditionsEditor`, `VariableHelper` |
+| **UI (shadcn)** | 23 | `alert`, `badge`, `button`, `card`, `checkbox`, `collapsible`, `dialog`, `dropdown-menu`, `input`, `label`, `popover`, `progress`, `scroll-area`, `select`, `separator`, `skeleton`, `slider`, `sonner`, `switch`, `table`, `tabs`, `textarea`, `tooltip` |
+| **Workflow** | 10 | `WorkflowEditor`, `NodeDetailPanel`, node components, workflow hooks |
 | **Landing** | 5 | `LandingPage`, `HeroSection`, `FeaturesSection`, `CTASection`, `Footer` |
 | **Overview** | 3 | `ExecutionChart`, `EventDistributionChart`, `RecentActivityFeed` |
-| **Workflow** | 6 | `WorkflowEditor`, `NodeDetailPanel`, `TriggerNode`, `ActionNode`, `AddActionNode`, `ConditionNode`, `DelayNode` |
-| **UI (shadcn)** | 19 | `alert`, `badge`, `button`, `card`, `checkbox`, `collapsible`, `dialog`, `dropdown-menu`, `input`, `label`, `popover`, `progress`, `scroll-area`, `select`, `separator`, `skeleton`, `slider`, `switch`, `table`, `tabs`, `textarea`, `tooltip`, `sonner` |
-| **Misc** | 4 | `ConfirmDialog`, `EmptyState`, `GuildCard`, `StatsCard`, `RefreshDataWidget` |
-
-#### Custom Hooks (18)
-
-`useAnalytics`, `useAuth`, `useBotInfo`, `useChannels`, `useConstants`, `useGuilds`, `useLogging`, `useLogs`, `useModeration`, `useMobileSidebar`, `useMusic`, `usePreferences`, `useRoles`, `useRuleDraft`, `useRules`, `useSettings`, `useTempVoice`, `useWarnings`
-
-#### Client Lib
-
-`schemas.ts` (Zod validation), `client.ts` (API client), `utils.ts`, `rule-icons.ts`, `workflow-validation.ts`
 
 ---
 
@@ -153,48 +166,74 @@ FluxCore/
 
 ### `packages/database/` (@fluxcore/database)
 
-**Schema:** `prisma/schema.prisma`
-**Migrations:** 9 applied
+**Schema:** `prisma/schema.prisma` (15 KB)
+**Migrations:** 11 applied
 
-| Model | Domain |
-|-------|--------|
-| `TempVoiceGuildConfig`, `TempVoiceUserSettings` | TempVoice |
-| `ActionRule`, `ActionLog`, `ActionGuildSettings`, `ActionCacheInvalidation` | Actions/Automation |
-| `Reminder` | Reminders |
-| `DashboardSession` | Auth |
-| `MusicGuildSettings`, `MusicLibraryAlbum`, `MusicLibraryTrack` | Music |
-| `LogGuildConfig`, `LogEntry` | Logging |
-| `Warning`, `WarnPunishment`, `WarnGuildSettings` | Warnings |
-| `ModCase`, `ModGuildSettings` | Moderation |
+| Domain | Models |
+|--------|--------|
+| TempVoice | `TempVoiceGuildConfig`, `TempVoiceUserSettings` |
+| Actions/Automation | `ActionRule`, `ActionLog`, `ActionGuildSettings`, `ActionCacheInvalidation` |
+| Reminders | `Reminder` |
+| Auth | `DashboardSession` |
+| Music | `MusicGuildSettings`, `MusicLibraryAlbum`, `MusicLibraryTrack` |
+| Logging | `LogGuildConfig`, `LogEntry` |
+| Warnings | `Warning`, `WarnPunishment`, `WarnGuildSettings` |
+| Moderation | `ModCase`, `ModGuildSettings` |
+| Welcome/Farewell | Welcome-related models |
+| Leveling | Level/XP-related models |
+| Role Panels | Role panel models |
+| Tickets | Ticket system models |
+| Suggestions | Suggestion models |
+| Starboard | Starboard models |
+| Giveaways | Giveaway models |
+| Anti-Raid | Anti-raid configuration models |
+| Custom Commands | Custom command models |
+| Scheduled Messages | Scheduled message models |
 
 ---
 
-### `packages/systems/` (@fluxcore/systems)
+### `packages/systems/` (@fluxcore/systems) — 16 modules, 87 files
 
 Shared stateful logic consumed by both bot and dashboard.
 
 | System | Files | Purpose |
 |--------|-------|---------|
-| **Actions** | `config`, `types`, `constants`, `persistence`, `cache`, `cacheSync`, `templateEngine` | Rule engine with cache sync |
-| **Logging** | `types`, `constants`, `config`, `persistence`, `formatter`, `sender` | Event logging pipeline |
-| **TempVoice** | `types`, `constants`, `config`, `persistence` | TempVoice configuration |
-| **Music** | `types`, `constants`, `config`, `library` | Music settings & library |
-| **Moderation** | `types`, `constants`, `persistence`, `scheduler`, `dm` | Case management, tempban scheduler |
-| **Warnings** | `types`, `constants`, `config`, `persistence`, `escalation` | Warning system with auto-escalation |
-| **Shared** | `cooldown.ts`, `reminders.ts` | Cooldown manager, reminder scheduling |
+| **Actions** | 7 | Rule engine with cache sync, template engine |
+| **Anti-Raid** | 6 | Raid detection, tracker, auto-actions |
+| **Custom Commands** | 6 | Command executor, matcher, variables |
+| **Giveaways** | 6 | Embed builder, scheduler, winner selection |
+| **Leveling** | 6 | XP calculation, config, rewards |
+| **Logging** | 6 | Event logging pipeline, formatter, sender |
+| **Moderation** | 5 | Case management, tempban scheduler, DM notifications |
+| **Music** | 4 | Settings, library management |
+| **Role Panel** | 5 | Panel builder, handler, persistence |
+| **Scheduled Messages** | 5 | Cron scheduler, persistence |
+| **Starboard** | 5 | Star handler, config, persistence |
+| **Suggestions** | 4 | Config, persistence |
+| **TempVoice** | 4 | Configuration, persistence |
+| **Tickets** | 6 | Panel builder, transcript, config |
+| **Warnings** | 5 | Auto-escalation, config, persistence |
+| **Welcome** | 4 | Message builder, config |
+| **Shared** | 2 | `cooldown.ts`, `reminders.ts` |
 
 ---
 
-### `packages/types/` (@fluxcore/types)
+### `packages/types/` (@fluxcore/types) — 9 files
 
 | File | Purpose |
 |------|---------|
 | `Command.ts` | Slash command type definitions |
 | `Event.ts` | Gateway event type definitions |
+| `anti-raid.ts` | Anti-raid system types |
+| `custom-commands.ts` | Custom command types |
+| `giveaways.ts` | Giveaway types |
+| `scheduled-messages.ts` | Scheduled message types |
+| `suggestions.ts` | Suggestion types |
+| `tickets.ts` | Ticket system types |
 
 ---
 
-### `packages/utils/` (@fluxcore/utils)
+### `packages/utils/` (@fluxcore/utils) — 6 files
 
 | File | Purpose |
 |------|---------|
@@ -208,39 +247,38 @@ Shared stateful logic consumed by both bot and dashboard.
 
 ### `packages/config/` (@fluxcore/config)
 
-Single `src/index.ts` — environment variable loading and validation.
+Single `src/index.ts` — environment variable loading for Discord, dashboard, Lavalink, and bot sync configuration.
 
 ---
 
-## Tests
+## Tests (90 files)
 
-### Bot Tests (35 files)
+### Bot Tests (52 files)
 
 | Category | Count | Location |
 |----------|-------|----------|
-| Command tests | 19 | `apps/bot/tests/commands/` |
-| Event tests | 5 | `apps/bot/tests/events/` |
+| Command tests | 32 | `apps/bot/tests/commands/{moderation,general,utility,leveling,voice,admin,giveaways,suggestions,tickets}/` |
+| Event tests | 8 | `apps/bot/tests/events/` |
 | System tests | 4 | `apps/bot/tests/systems/` |
 | Utility tests | 5 | `apps/bot/tests/utils/` |
 | Client tests | 1 | `apps/bot/tests/client/` |
 | Config tests | 1 | `apps/bot/tests/config/` |
 
-### Dashboard Tests (10 files)
+### Dashboard Tests (20 files)
 
 | Category | Count | Location |
 |----------|-------|----------|
-| Server middleware/auth | 4 | `apps/dashboard/tests/server/` |
-| Route tests | 6 | `apps/dashboard/tests/server/routes/` |
+| Server middleware/auth | 3 | `apps/dashboard/tests/server/` |
+| API tests | 1 | `apps/dashboard/tests/server/discordApi.test.ts` |
+| Route tests | 17 | `apps/dashboard/tests/server/routes/` |
 
-### Integration Tests (3 files)
+### System Tests (18 files)
 
-| Test | Location |
-|------|----------|
-| Actions sync | `packages/systems/tests/integration/actions-sync.test.ts` |
-| Cache sync | `packages/systems/tests/integration/cache-sync.test.ts` |
-| Music sync | `packages/systems/tests/integration/music-sync.test.ts` |
-
-**Total test files: 48**
+| Category | Count | Location |
+|----------|-------|----------|
+| Integration tests | 6 | `packages/systems/tests/integration/` (actions, cache, music, scheduled-messages, starboard, tickets sync) |
+| Unit tests | 8 | `packages/systems/tests/unit/` (welcome, leveling, rolePanel, antiraid, customCommands, giveaways, starboard, suggestions) |
+| Test helpers | 4 | `packages/systems/tests/helpers/` (setup, db, factories, cron) |
 
 ---
 
@@ -249,7 +287,8 @@ Single `src/index.ts` — environment variable loading and validation.
 | File | Purpose |
 |------|---------|
 | `design.md` | "The Obsidian Engine" design system tokens |
-| `docs/implementation-plan.md` | Master 4-phase roadmap |
+| `docs/implementation-plan.md` | Master 5-phase roadmap with decision log |
+| `docs/phase2-implementation.md` | Phase 2 detailed planning |
 | `docs/automation-improvement-workflow.md` | Automation workflow specs |
 | `docs/music-setup.md` | Lavalink/music setup guide |
 | `docs/ui-ux-agent-prompt.md` | UI/UX design brief |
@@ -263,16 +302,16 @@ Single `src/index.ts` — environment variable loading and validation.
 | `warn-system.md` | 1 | Done |
 | `moderation.md` | 1 | Done |
 | `logging.md` | 1 | Done |
-| `welcome-farewell.md` | 2 | Not Started |
-| `reaction-roles.md` | 2 | Not Started |
-| `leveling.md` | 2 | Not Started |
-| `tickets.md` | 3 | Not Started |
-| `suggestions.md` | 3 | Not Started |
-| `starboard.md` | 3 | Not Started |
-| `giveaways.md` | 3 | Not Started |
-| `anti-raid.md` | 4 | Not Started |
-| `custom-commands.md` | 4 | Not Started |
-| `scheduled-messages.md` | 4 | Not Started |
+| `welcome-farewell.md` | 2 | Done |
+| `reaction-roles.md` | 2 | Done |
+| `leveling.md` | 2 | Done |
+| `tickets.md` | 3 | Done |
+| `suggestions.md` | 3 | Done |
+| `starboard.md` | 3 | Done |
+| `giveaways.md` | 3 | Done |
+| `anti-raid.md` | 4 | Done |
+| `custom-commands.md` | 4 | Done |
+| `scheduled-messages.md` | 4 | Done |
 
 ---
 
@@ -309,16 +348,14 @@ Resource limits: bot 512M, dashboard 256M, postgres 512M, caddy 128M, backup 256
 
 | Area | Files |
 |------|-------|
-| Bot commands | 26 |
-| Bot events | 18 |
-| Bot systems | 17 |
-| Dashboard routes | 9 |
-| Dashboard pages | 11 |
-| Dashboard components | 58 |
-| Dashboard hooks | 18 |
-| Database models | 18 |
-| Database migrations | 9 |
-| System packages | 35 |
-| Test files | 48 |
+| Bot commands | 40 |
+| Bot events | 22 |
+| Bot systems | 5 dirs |
+| Dashboard API routes | 19 |
+| Dashboard pages | 21 |
+| Dashboard UI components | 23 (shadcn) |
+| System packages | 87 |
+| Database migrations | 11 |
+| Test files | 90 |
 | Feature specs | 13 |
-| **Total tracked source** | **~280** |
+| **Total tracked source** | **~382** |

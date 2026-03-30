@@ -104,6 +104,12 @@ Moderation (basic), Utility, TempVoice, Music, Actions/Automation
 | Custom Commands | `docs/features/custom-commands.md` | Not Started |
 | Scheduled Messages | `docs/features/scheduled-messages.md` | Not Started |
 
+### Cross-Cutting
+
+| Module                | Spec                                     | Status      |
+|-----------------------|------------------------------------------|-------------|
+| Dashboard Permissions | `docs/features/dashboard-permissions.md` | Not Started |
+
 ### Scheduled (Later)
 
 - Economy System — high complexity, build after core features stabilize

@@ -1,2 +1,5 @@
 [ ] add search in rule events
 [ ] send webhook action has error with object and string
+[x] add permissions system to dashboard settings
+[ ] add welcome image template and make it customizable
+[ ] add automated way to migrate config and data from current bots to our bot
