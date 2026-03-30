@@ -3,3 +3,5 @@
 [x] add permissions system to dashboard settings
 [ ] add welcome image template and make it customizable
 [ ] add automated way to migrate config and data from current bots to our bot
+[ ] add docs website to explain everything in bot 
+[ ] add i18n for dashboard

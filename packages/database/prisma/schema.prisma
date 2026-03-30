@@ -247,16 +247,22 @@ model ModGuildSettings {
 // === Welcome & Farewell ===
 
 model WelcomeConfig {
-  guildId           String  @id
-  welcomeEnabled    Boolean @default(false)
-  welcomeChannelId  String?
-  welcomeMessage    String  @default("{}") // JSON embed config
-  farewellEnabled   Boolean @default(false)
-  farewellChannelId String?
-  farewellMessage   String  @default("{}") // JSON embed config
-  dmEnabled         Boolean @default(false)
-  dmMessage         String  @default("{}") // JSON embed config
-  autoRoleIds       String  @default("[]") // JSON array of role IDs
+  guildId               String  @id
+  welcomeEnabled        Boolean @default(false)
+  welcomeChannelId      String?
+  welcomeMessage        String  @default("{}") // JSON embed config
+  farewellEnabled       Boolean @default(false)
+  farewellChannelId     String?
+  farewellMessage       String  @default("{}") // JSON embed config
+  dmEnabled             Boolean @default(false)
+  dmMessage             String  @default("{}") // JSON embed config
+  autoRoleIds           String  @default("[]") // JSON array of role IDs
+  // Welcome image
+  welcomeImageEnabled   Boolean @default(false)
+  welcomeImageConfig    String  @default("{}") // JSON WelcomeImageSettings
+  // Farewell image
+  farewellImageEnabled  Boolean @default(false)
+  farewellImageConfig   String  @default("{}") // JSON WelcomeImageSettings
 }
 
 // === Role Panels ===

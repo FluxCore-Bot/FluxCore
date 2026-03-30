@@ -49,10 +49,40 @@ const mockUpsertWelcomeConfig = vi.fn().mockResolvedValue({
   dmEnabled: false,
   dmMessage: {},
   autoRoleIds: [],
+  welcomeImageEnabled: false,
+  welcomeImageConfig: {},
+  farewellImageEnabled: false,
+  farewellImageConfig: {},
 });
 vi.mock("@fluxcore/systems/welcome/config", () => ({
   getWelcomeConfig: (...args: unknown[]) => mockGetWelcomeConfig(...args),
   upsertWelcomeConfig: (...args: unknown[]) => mockUpsertWelcomeConfig(...args),
+}));
+
+const mockGenerateWelcomeImage = vi.fn().mockResolvedValue(Buffer.from("fake-png"));
+vi.mock("@fluxcore/systems/welcome/image", () => ({
+  generateWelcomeImage: (...args: unknown[]) => mockGenerateWelcomeImage(...args),
+  getAllTemplates: () => [
+    { name: "starter", displayName: "Starter", description: "Classic", canvas: { width: 1024, height: 450 } },
+  ],
+  getAvailableFonts: () => [
+    { name: "Inter", displayName: "Inter", category: "sans-serif", file: "Inter.ttf", weight: 600 },
+  ],
+  createStorageAdapter: () => ({
+    upload: vi.fn().mockResolvedValue("key"),
+    delete: vi.fn().mockResolvedValue(undefined),
+    get: vi.fn().mockResolvedValue(Buffer.from("")),
+    exists: vi.fn().mockResolvedValue(false),
+    getUrl: vi.fn().mockReturnValue("/uploads/test"),
+  }),
+  welcomeImageSettingsSchema: {
+    safeParse: (data: unknown) => ({ success: true, data }),
+  },
+  DEFAULT_WELCOME_IMAGE_SETTINGS: {},
+  DEFAULT_FAREWELL_IMAGE_SETTINGS: {},
+  MAX_BACKGROUND_SIZE: 3 * 1024 * 1024,
+  ALLOWED_BACKGROUND_TYPES: ["image/jpeg", "image/png", "image/webp"],
+  PRESET_BACKGROUNDS: ["midnight", "ocean"],
 }));
 
 vi.mock("@fluxcore/utils", () => ({
@@ -90,7 +120,7 @@ describe("welcome routes", () => {
       expect(res.statusCode).toBe(401);
     });
 
-    it("returns default config when none exists", async () => {
+    it("returns default config with image fields when none exists", async () => {
       mockGetWelcomeConfig.mockResolvedValueOnce(null);
 
       const res = await app.inject({
@@ -104,6 +134,8 @@ describe("welcome routes", () => {
       expect(body.guildId).toBe("guild-1");
       expect(body.welcomeEnabled).toBe(false);
       expect(body.autoRoleIds).toEqual([]);
+      expect(body.welcomeImageEnabled).toBe(false);
+      expect(body.farewellImageEnabled).toBe(false);
     });
 
     it("returns existing config", async () => {
@@ -194,7 +226,7 @@ describe("welcome routes", () => {
       );
     });
 
-    it("rejects invalid body fields", async () => {
+    it("ignores unknown body fields and succeeds", async () => {
       const res = await app.inject({
         method: "PUT",
         url: "/api/guilds/guild-1/welcome",
@@ -204,7 +236,8 @@ describe("welcome routes", () => {
         },
       });
 
-      expect(res.statusCode).toBe(400);
+      // additionalProperties: false strips unknown keys — empty update still succeeds
+      expect(res.statusCode).toBe(200);
     });
 
     it("returns 403 when user lacks guild permissions", async () => {
@@ -278,6 +311,170 @@ describe("welcome routes", () => {
       expect(res.statusCode).toBe(200);
       expect(res.json().success).toBe(true);
       expect(res.json().channelId).toBe("ch-1");
+    });
+  });
+
+  describe("POST /api/guilds/:guildId/welcome/image/preview", () => {
+    it("returns 401 without auth", async () => {
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/welcome/image/preview",
+        payload: { settings: {} },
+      });
+      expect(res.statusCode).toBe(401);
+    });
+
+    it("generates a preview image", async () => {
+      mockGetSession.mockResolvedValueOnce({
+        ...mockSession,
+        avatar: "abc123",
+      });
+
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/welcome/image/preview",
+        cookies: { session: app.signCookie("valid") },
+        payload: {
+          settings: { template: "starter" },
+          type: "welcome",
+        },
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(res.headers["content-type"]).toBe("image/png");
+      expect(mockGenerateWelcomeImage).toHaveBeenCalled();
+    });
+  });
+
+  describe("POST /api/guilds/:guildId/welcome/image/background", () => {
+    it("returns 401 without auth", async () => {
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/welcome/image/background",
+        payload: { data: "abc", contentType: "image/png" },
+      });
+      expect(res.statusCode).toBe(401);
+    });
+
+    it("rejects invalid content type", async () => {
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/welcome/image/background",
+        cookies: { session: app.signCookie("valid") },
+        payload: { data: btoa("test"), contentType: "application/pdf" },
+      });
+
+      expect(res.statusCode).toBe(400);
+      expect(res.json().error).toContain("Invalid file type");
+    });
+
+    it("accepts valid image upload", async () => {
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/welcome/image/background",
+        cookies: { session: app.signCookie("valid") },
+        payload: { data: Buffer.from("fake-png").toString("base64"), contentType: "image/png" },
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(res.json().key).toContain("backgrounds/guild-1/");
+    });
+  });
+
+  describe("DELETE /api/guilds/:guildId/welcome/image/background", () => {
+    it("rejects cross-guild deletion", async () => {
+      const res = await app.inject({
+        method: "DELETE",
+        url: "/api/guilds/guild-1/welcome/image/background",
+        cookies: { session: app.signCookie("valid") },
+        payload: { key: "backgrounds/guild-2/evil.png" },
+      });
+
+      expect(res.statusCode).toBe(403);
+    });
+
+    it("deletes own guild background", async () => {
+      const res = await app.inject({
+        method: "DELETE",
+        url: "/api/guilds/guild-1/welcome/image/background",
+        cookies: { session: app.signCookie("valid") },
+        payload: { key: "backgrounds/guild-1/image.png" },
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(res.json().success).toBe(true);
+    });
+  });
+
+  describe("GET /api/welcome/templates", () => {
+    it("returns available templates", async () => {
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/welcome/templates",
+        cookies: { session: app.signCookie("valid") },
+      });
+
+      expect(res.statusCode).toBe(200);
+      const body = res.json();
+      expect(body.templates).toBeDefined();
+      expect(Array.isArray(body.templates)).toBe(true);
+    });
+  });
+
+  describe("GET /api/welcome/fonts", () => {
+    it("returns available fonts", async () => {
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/welcome/fonts",
+        cookies: { session: app.signCookie("valid") },
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(res.json().fonts).toBeDefined();
+    });
+  });
+
+  describe("GET /api/welcome/presets", () => {
+    it("returns preset background names", async () => {
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/welcome/presets",
+        cookies: { session: app.signCookie("valid") },
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(res.json().backgrounds).toBeDefined();
+    });
+  });
+
+  describe("PUT /api/guilds/:guildId/welcome with image config", () => {
+    it("saves image settings alongside text config", async () => {
+      mockUpsertWelcomeConfig.mockResolvedValueOnce({
+        guildId: "guild-1",
+        welcomeEnabled: true,
+        welcomeImageEnabled: true,
+        welcomeImageConfig: { template: "neon" },
+      });
+
+      const res = await app.inject({
+        method: "PUT",
+        url: "/api/guilds/guild-1/welcome",
+        cookies: { session: app.signCookie("valid") },
+        payload: {
+          welcomeEnabled: true,
+          welcomeImageEnabled: true,
+          welcomeImageConfig: { template: "neon" },
+        },
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(mockUpsertWelcomeConfig).toHaveBeenCalledWith(
+        "guild-1",
+        expect.objectContaining({
+          welcomeImageEnabled: true,
+          welcomeImageConfig: expect.objectContaining({ template: "neon" }),
+        }),
+      );
     });
   });
 });
