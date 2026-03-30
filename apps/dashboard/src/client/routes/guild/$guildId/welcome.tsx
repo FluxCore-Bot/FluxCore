@@ -8,7 +8,9 @@ import {
   useUpdateWelcomeConfig,
   useTestWelcome,
   type EmbedConfig,
+  type WelcomeImageSettings,
 } from "../../../lib/hooks/useWelcome";
+import { WelcomeImageEditor } from "../../../components/WelcomeImageEditor";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
@@ -17,6 +19,23 @@ import { Switch } from "../../../components/ui/switch";
 import { Separator } from "../../../components/ui/separator";
 import { Textarea } from "../../../components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
+
+const DEFAULT_WELCOME_IMAGE: WelcomeImageSettings = {
+  template: "starter",
+  background: { type: "color", color: "#1a1a2e" },
+  overlay: { enabled: true, color: "#000000", opacity: 0.5 },
+  avatar: { shape: "circle", borderColor: "#a3a6ff", borderWidth: 4, glowEnabled: false, glowColor: "#a3a6ff" },
+  title: { font: "SpaceGrotesk", color: "#ffffff", size: 36 },
+  subtitle: { font: "Inter", color: "#a3a6ff", size: 20, text: "Welcome to {server}!" },
+  accentColor: "#a3a6ff",
+  sendMode: "with",
+};
+
+const DEFAULT_FAREWELL_IMAGE: WelcomeImageSettings = {
+  ...DEFAULT_WELCOME_IMAGE,
+  subtitle: { font: "Inter", color: "#6b7280", size: 20, text: "Goodbye, {user.name}!" },
+  accentColor: "#6b7280",
+};
 
 function EmbedEditor({
   value,
@@ -105,7 +124,7 @@ export function WelcomePage() {
   const updateConfig = useUpdateWelcomeConfig(guildId);
   const testWelcome = useTestWelcome(guildId);
 
-  // Local state for form
+  // Text message state
   const [welcomeEnabled, setWelcomeEnabled] = useState(false);
   const [welcomeChannelId, setWelcomeChannelId] = useState("");
   const [welcomeMessage, setWelcomeMessage] = useState<EmbedConfig>({});
@@ -115,6 +134,12 @@ export function WelcomePage() {
   const [dmEnabled, setDmEnabled] = useState(false);
   const [dmMessage, setDmMessage] = useState<EmbedConfig>({});
   const [autoRoleIds, setAutoRoleIds] = useState("");
+
+  // Image state
+  const [welcomeImageEnabled, setWelcomeImageEnabled] = useState(false);
+  const [welcomeImageConfig, setWelcomeImageConfig] = useState<WelcomeImageSettings>(DEFAULT_WELCOME_IMAGE);
+  const [farewellImageEnabled, setFarewellImageEnabled] = useState(false);
+  const [farewellImageConfig, setFarewellImageConfig] = useState<WelcomeImageSettings>(DEFAULT_FAREWELL_IMAGE);
 
   // Sync from server
   useEffect(() => {
@@ -128,6 +153,10 @@ export function WelcomePage() {
       setDmEnabled(config.dmEnabled);
       setDmMessage(config.dmMessage);
       setAutoRoleIds(config.autoRoleIds.join(", "));
+      setWelcomeImageEnabled(config.welcomeImageEnabled);
+      setWelcomeImageConfig(config.welcomeImageConfig ?? DEFAULT_WELCOME_IMAGE);
+      setFarewellImageEnabled(config.farewellImageEnabled);
+      setFarewellImageConfig(config.farewellImageConfig ?? DEFAULT_FAREWELL_IMAGE);
     }
   }, [config]);
 
@@ -148,6 +177,10 @@ export function WelcomePage() {
         dmEnabled,
         dmMessage,
         autoRoleIds: roleIds,
+        welcomeImageEnabled,
+        welcomeImageConfig,
+        farewellImageEnabled,
+        farewellImageConfig,
       },
       {
         onSuccess: () => toast.success("Welcome configuration saved"),
@@ -182,13 +215,15 @@ export function WelcomePage() {
     <div className="space-y-8">
       <PageHeader
         title="Welcome & Farewell"
-        subtitle="Configure welcome and farewell messages for your server."
+        subtitle="Configure welcome and farewell messages, images, and auto-roles."
       />
 
       <Tabs defaultValue="welcome">
         <TabsList>
           <TabsTrigger value="welcome">Welcome</TabsTrigger>
+          <TabsTrigger value="welcome-image">Welcome Image</TabsTrigger>
           <TabsTrigger value="farewell">Farewell</TabsTrigger>
+          <TabsTrigger value="farewell-image">Farewell Image</TabsTrigger>
           <TabsTrigger value="dm">Welcome DM</TabsTrigger>
           <TabsTrigger value="autorole">Auto-Role</TabsTrigger>
         </TabsList>
@@ -200,7 +235,7 @@ export function WelcomePage() {
               <div>
                 <h3 className="text-lg font-semibold">Welcome Message</h3>
                 <p className="text-sm text-text-muted">
-                  Send a custom message when a new member joins.
+                  Send a custom embed when a new member joins.
                 </p>
               </div>
               <Switch checked={welcomeEnabled} onCheckedChange={setWelcomeEnabled} />
@@ -221,6 +256,41 @@ export function WelcomePage() {
 
             <h4 className="mb-3 text-sm font-semibold">Embed Builder</h4>
             <EmbedEditor value={welcomeMessage} onChange={setWelcomeMessage} />
+          </Card>
+        </TabsContent>
+
+        {/* Welcome Image */}
+        <TabsContent value="welcome-image">
+          <Card className="bg-surface p-6">
+            <div className="mb-6 flex items-center justify-between">
+              <div>
+                <h3 className="text-lg font-semibold">Welcome Image</h3>
+                <p className="text-sm text-text-muted">
+                  Generate a custom image card with the member's avatar when they join.
+                </p>
+              </div>
+              <Switch
+                checked={welcomeImageEnabled}
+                onCheckedChange={setWelcomeImageEnabled}
+              />
+            </div>
+
+            <Separator className="mb-6" />
+
+            {welcomeImageEnabled && (
+              <WelcomeImageEditor
+                guildId={guildId}
+                settings={welcomeImageConfig}
+                onChange={setWelcomeImageConfig}
+                type="welcome"
+              />
+            )}
+
+            {!welcomeImageEnabled && (
+              <p className="text-sm text-text-muted">
+                Enable the toggle above to configure welcome images.
+              </p>
+            )}
           </Card>
         </TabsContent>
 
@@ -252,6 +322,41 @@ export function WelcomePage() {
 
             <h4 className="mb-3 text-sm font-semibold">Embed Builder</h4>
             <EmbedEditor value={farewellMessage} onChange={setFarewellMessage} />
+          </Card>
+        </TabsContent>
+
+        {/* Farewell Image */}
+        <TabsContent value="farewell-image">
+          <Card className="bg-surface p-6">
+            <div className="mb-6 flex items-center justify-between">
+              <div>
+                <h3 className="text-lg font-semibold">Farewell Image</h3>
+                <p className="text-sm text-text-muted">
+                  Generate a custom farewell card when a member leaves.
+                </p>
+              </div>
+              <Switch
+                checked={farewellImageEnabled}
+                onCheckedChange={setFarewellImageEnabled}
+              />
+            </div>
+
+            <Separator className="mb-6" />
+
+            {farewellImageEnabled && (
+              <WelcomeImageEditor
+                guildId={guildId}
+                settings={farewellImageConfig}
+                onChange={setFarewellImageConfig}
+                type="farewell"
+              />
+            )}
+
+            {!farewellImageEnabled && (
+              <p className="text-sm text-text-muted">
+                Enable the toggle above to configure farewell images.
+              </p>
+            )}
           </Card>
         </TabsContent>
 
