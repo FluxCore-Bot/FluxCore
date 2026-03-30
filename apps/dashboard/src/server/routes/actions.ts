@@ -1,5 +1,5 @@
 import type { FastifyInstance, FastifyReply } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import {
   createRule,
   updateRule,
@@ -134,7 +134,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
   // --- Rules CRUD ---
   app.get(
     "/api/guilds/:guildId/actions/rules",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.rules.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const [rules, lastFiredMap] = await Promise.all([
@@ -151,7 +151,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
 
   app.post(
     "/api/guilds/:guildId/actions/rules",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.rules.manage")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const body = request.body as RuleRequestBody;
@@ -193,7 +193,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
 
   app.put(
     "/api/guilds/:guildId/actions/rules/:ruleId",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.rules.manage")] },
     async (request, reply) => {
       const { guildId, ruleId } = request.params as {
         guildId: string;
@@ -236,7 +236,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
 
   app.delete(
     "/api/guilds/:guildId/actions/rules/:ruleId",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.rules.manage")] },
     async (request, reply) => {
       const { guildId, ruleId } = request.params as {
         guildId: string;
@@ -253,7 +253,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
   // --- Bulk Operations ---
   app.patch(
     "/api/guilds/:guildId/actions/rules/bulk",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.rules.execute")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const body = request.body as {
@@ -297,7 +297,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
   // --- Per-Rule Analytics ---
   app.get(
     "/api/guilds/:guildId/actions/rules/:ruleId/analytics",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.analytics.view")] },
     async (request, reply) => {
       const { guildId, ruleId } = request.params as {
         guildId: string;
@@ -313,7 +313,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
   // --- Settings ---
   app.get(
     "/api/guilds/:guildId/actions/settings",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.settings.manage")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       reply.send(getGuildSettingsOrDefault(guildId));
@@ -322,7 +322,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
 
   app.put(
     "/api/guilds/:guildId/actions/settings",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.settings.manage")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const body = request.body as {
@@ -363,7 +363,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
   // --- Analytics ---
   app.get(
     "/api/guilds/:guildId/actions/analytics",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.analytics.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as { days?: string };
@@ -376,7 +376,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
   // --- Logs ---
   app.get(
     "/api/guilds/:guildId/actions/logs",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.analytics.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as { ruleName?: string; limit?: string };

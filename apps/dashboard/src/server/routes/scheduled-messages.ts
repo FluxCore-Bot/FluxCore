@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import {
   getScheduledMessages,
   getScheduledMessageById,
@@ -18,7 +18,7 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
   // GET list scheduled messages
   app.get(
     "/api/guilds/:guildId/scheduled-messages",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as { page?: string; limit?: string };
@@ -38,7 +38,7 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/scheduled-messages",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.manage")],
       schema: {
         body: {
           type: "object",
@@ -111,7 +111,7 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/scheduled-messages/:id",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.manage")],
       schema: {
         body: {
           type: "object",
@@ -172,7 +172,7 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
   // DELETE scheduled message
   app.delete(
     "/api/guilds/:guildId/scheduled-messages/:id",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.manage")] },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
       const msgId = parseIntParam(id);
@@ -193,7 +193,7 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
   // POST test send a scheduled message
   app.post(
     "/api/guilds/:guildId/scheduled-messages/:id/test",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.execute")] },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
       const msgId = parseIntParam(id);
@@ -220,7 +220,7 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
   // GET preview next run time for a cron expression
   app.get(
     "/api/guilds/:guildId/scheduled-messages/preview-cron",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.view")] },
     async (request, reply) => {
       const query = request.query as { cronExpr?: string; timezone?: string };
       if (!query.cronExpr) {

@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import {
   getCustomCommands,
   getCustomCommandCount,
@@ -19,7 +19,7 @@ export function registerCustomCommandRoutes(app: FastifyInstance): void {
   // GET list custom commands
   app.get(
     "/api/guilds/:guildId/custom-commands",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("commands.list.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const commands = await getCustomCommands(guildId);
@@ -31,7 +31,7 @@ export function registerCustomCommandRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/custom-commands",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("commands.list.manage")],
       schema: {
         body: {
           type: "object",
@@ -144,7 +144,7 @@ export function registerCustomCommandRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/custom-commands/:id",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("commands.list.manage")],
       schema: {
         body: {
           type: "object",
@@ -239,7 +239,7 @@ export function registerCustomCommandRoutes(app: FastifyInstance): void {
   // DELETE custom command
   app.delete(
     "/api/guilds/:guildId/custom-commands/:id",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("commands.list.manage")] },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
       const commandId = parseIntParam(id);

@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import {
   createWarning,
   getWarnings,
@@ -24,7 +24,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   // GET warnings for a guild (filterable by userId)
   app.get(
     "/api/guilds/:guildId/warnings",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.warnings.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as { userId?: string; page?: string; limit?: string };
@@ -45,7 +45,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/warnings",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.warnings.manage")],
       schema: {
         body: {
           type: "object",
@@ -76,7 +76,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   // DELETE a specific warning
   app.delete(
     "/api/guilds/:guildId/warnings/:warningId",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.warnings.manage")] },
     async (request, reply) => {
       const { guildId, warningId } = request.params as { guildId: string; warningId: string };
       const id = parseIntParam(warningId);
@@ -92,7 +92,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   // DELETE all warnings for a user
   app.delete(
     "/api/guilds/:guildId/warnings/user/:userId",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.warnings.manage")] },
     async (request, reply) => {
       const { guildId, userId } = request.params as { guildId: string; userId: string };
       const count = await deleteAllWarnings(guildId, userId);
@@ -103,7 +103,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   // GET punishment config
   app.get(
     "/api/guilds/:guildId/warn-punishments",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const punishments = await getPunishments(guildId);
@@ -115,7 +115,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/warn-punishments",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")],
       schema: {
         body: {
           type: "object",
@@ -145,7 +145,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   // DELETE a punishment
   app.delete(
     "/api/guilds/:guildId/warn-punishments/:id",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")] },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
       const punishmentId = parseIntParam(id);
@@ -161,7 +161,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   // GET warn settings
   app.get(
     "/api/guilds/:guildId/warn-settings",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const settings = await getWarnSettings(guildId);
@@ -173,7 +173,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/warn-settings",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")],
       schema: {
         body: {
           type: "object",

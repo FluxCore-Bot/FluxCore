@@ -90,6 +90,9 @@ importers:
       '@fluxcore/systems':
         specifier: workspace:*
         version: link:../../packages/systems
+      '@fluxcore/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       '@fluxcore/utils':
         specifier: workspace:*
         version: link:../../packages/utils

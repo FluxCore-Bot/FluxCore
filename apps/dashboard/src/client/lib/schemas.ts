@@ -763,3 +763,66 @@ export const SuggestionSettingsSchema = z.object({
   anonymousMode: z.boolean(),
 });
 export type SuggestionSettings = z.infer<typeof SuggestionSettingsSchema>;
+
+// --- Dashboard Permissions ---
+export const DashboardRoleSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  color: z.string().nullable(),
+  position: z.number(),
+  isDefault: z.boolean(),
+  permissions: z.array(z.string()),
+  memberCount: z.number(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+});
+export type DashboardRole = z.infer<typeof DashboardRoleSchema>;
+
+export const DashboardRoleListSchema = z.array(DashboardRoleSchema);
+
+export const DashboardRoleMemberSchema = z.object({
+  id: z.string(),
+  userId: z.string(),
+  assignedBy: z.string(),
+  createdAt: z.string(),
+});
+export type DashboardRoleMember = z.infer<typeof DashboardRoleMemberSchema>;
+
+export const MyPermissionsSchema = z.object({
+  permissions: z.array(z.string()),
+  effectivePermissions: z.array(z.string()),
+  roles: z.array(z.object({
+    id: z.string(),
+    name: z.string(),
+    color: z.string().nullable(),
+  })),
+  isOwner: z.boolean(),
+});
+export type MyPermissions = z.infer<typeof MyPermissionsSchema>;
+
+export const DashboardGuildSettingsSchema = z.object({
+  guildId: z.string(),
+  auditRetentionDays: z.number(),
+  requirePermissions: z.boolean(),
+});
+export type DashboardGuildSettings = z.infer<typeof DashboardGuildSettingsSchema>;
+
+export const DashboardAuditEntrySchema = z.object({
+  id: z.string(),
+  userId: z.string(),
+  username: z.string(),
+  action: z.string(),
+  targetType: z.string().nullable(),
+  targetId: z.string().nullable(),
+  details: z.record(z.string(), z.unknown()),
+  createdAt: z.string(),
+});
+export type DashboardAuditEntry = z.infer<typeof DashboardAuditEntrySchema>;
+
+export const DashboardAuditResponseSchema = z.object({
+  entries: z.array(DashboardAuditEntrySchema),
+  total: z.number(),
+  page: z.number(),
+  pages: z.number(),
+});
+export type DashboardAuditResponse = z.infer<typeof DashboardAuditResponseSchema>;

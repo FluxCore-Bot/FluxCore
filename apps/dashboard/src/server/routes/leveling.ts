@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import {
   getLevelSettings,
   upsertLevelSettings,
@@ -25,7 +25,7 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   // GET leaderboard
   app.get(
     "/api/guilds/:guildId/leaderboard",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.leaderboard.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as { page?: string; limit?: string };
@@ -44,7 +44,7 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   // GET user level info
   app.get(
     "/api/guilds/:guildId/levels/:userId",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.leaderboard.view")] },
     async (request, reply) => {
       const { guildId, userId } = request.params as { guildId: string; userId: string };
       const userLevel = await getUserLevel(guildId, userId);
@@ -71,7 +71,7 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/levels/:userId",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.users.manage")],
       schema: {
         body: {
           type: "object",
@@ -94,7 +94,7 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   // GET level settings
   app.get(
     "/api/guilds/:guildId/level-settings",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.settings.manage")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const settings = await getLevelSettings(guildId);
@@ -106,7 +106,7 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/level-settings",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.settings.manage")],
       schema: {
         body: {
           type: "object",
@@ -151,7 +151,7 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   // GET level rewards
   app.get(
     "/api/guilds/:guildId/level-rewards",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.rewards.manage")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const rewards = await getLevelRewards(guildId);
@@ -163,7 +163,7 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/level-rewards",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.rewards.manage")],
       schema: {
         body: {
           type: "object",
@@ -192,7 +192,7 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   // DELETE level reward
   app.delete(
     "/api/guilds/:guildId/level-rewards/:id",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.rewards.manage")] },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
       const rewardId = parseIntParam(id);

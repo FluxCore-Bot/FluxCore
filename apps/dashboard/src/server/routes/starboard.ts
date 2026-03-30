@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import { getStarboardSettings, upsertStarboardSettings } from "@fluxcore/systems/starboard/config";
 import { getStarboardEntries } from "@fluxcore/systems/starboard/persistence";
 import { STARBOARD_PAGE_SIZE } from "@fluxcore/systems/starboard/constants";
@@ -8,7 +8,7 @@ export function registerStarboardRoutes(app: FastifyInstance): void {
   // GET starred messages
   app.get(
     "/api/guilds/:guildId/starboard",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("starboard.entries.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as { page?: string; limit?: string };
@@ -27,7 +27,7 @@ export function registerStarboardRoutes(app: FastifyInstance): void {
   // GET starboard settings
   app.get(
     "/api/guilds/:guildId/starboard-settings",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("starboard.settings.manage")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const settings = await getStarboardSettings(guildId);
@@ -39,7 +39,7 @@ export function registerStarboardRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/starboard-settings",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("starboard.settings.manage")],
       schema: {
         body: {
           type: "object",

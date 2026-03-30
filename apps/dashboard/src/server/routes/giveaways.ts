@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import {
   createGiveaway,
   getGiveaway,
@@ -24,7 +24,7 @@ export function registerGiveawayRoutes(app: FastifyInstance): void {
   // GET list giveaways
   app.get(
     "/api/guilds/:guildId/giveaways",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("giveaways.list.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as { active?: string; page?: string; limit?: string };
@@ -49,7 +49,7 @@ export function registerGiveawayRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/giveaways",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("giveaways.list.manage")],
       schema: {
         body: {
           type: "object",
@@ -109,7 +109,7 @@ export function registerGiveawayRoutes(app: FastifyInstance): void {
   // PUT end giveaway early
   app.put(
     "/api/guilds/:guildId/giveaways/:id/end",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("giveaways.list.manage")] },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
       const giveawayId = parseIntParam(id);
@@ -138,7 +138,7 @@ export function registerGiveawayRoutes(app: FastifyInstance): void {
   // POST reroll giveaway
   app.post(
     "/api/guilds/:guildId/giveaways/:id/reroll",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("giveaways.list.manage")] },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
       const giveawayId = parseIntParam(id);

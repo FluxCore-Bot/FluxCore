@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import {
   getRolePanels,
   getRolePanel,
@@ -22,7 +22,7 @@ export function registerRolePanelRoutes(app: FastifyInstance): void {
   // GET all panels for a guild
   app.get(
     "/api/guilds/:guildId/role-panels",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const panels = await getRolePanels(guildId);
@@ -34,7 +34,7 @@ export function registerRolePanelRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/role-panels",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.manage")],
       schema: {
         body: {
           type: "object",
@@ -108,7 +108,7 @@ export function registerRolePanelRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/role-panels/:panelId",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.manage")],
       schema: {
         body: {
           type: "object",
@@ -189,7 +189,7 @@ export function registerRolePanelRoutes(app: FastifyInstance): void {
   // DELETE a panel
   app.delete(
     "/api/guilds/:guildId/role-panels/:panelId",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.manage")] },
     async (request, reply) => {
       const { guildId, panelId } = request.params as { guildId: string; panelId: string };
       const id = parseIntParam(panelId);
@@ -211,7 +211,7 @@ export function registerRolePanelRoutes(app: FastifyInstance): void {
   // POST send/resend panel message
   app.post(
     "/api/guilds/:guildId/role-panels/:panelId/send",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.manage")] },
     async (request, reply) => {
       const { guildId, panelId } = request.params as { guildId: string; panelId: string };
       const id = parseIntParam(panelId);

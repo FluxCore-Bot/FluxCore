@@ -24,8 +24,17 @@ vi.mock("../../src/server/session.js", () => ({
 }));
 
 const mockIsBotInGuild = vi.fn().mockResolvedValue(true);
+const mockGetGuildOwnerId = vi.fn().mockResolvedValue("owner-1");
 vi.mock("../../src/server/discordApi.js", () => ({
   isBotInGuild: (...args: unknown[]) => mockIsBotInGuild(...args),
+  getGuildOwnerId: (...args: unknown[]) => mockGetGuildOwnerId(...args),
+}));
+
+vi.mock("../../src/server/permissions.js", () => ({
+  resolveUserPermissions: vi.fn().mockResolvedValue({ permissions: new Set(["*"]), isOwner: false }),
+  hasPermission: vi.fn().mockReturnValue(true),
+  invalidatePermissionCache: vi.fn(),
+  createDashboardAuditLog: vi.fn().mockResolvedValue(undefined),
 }));
 
 const mockPanel = {

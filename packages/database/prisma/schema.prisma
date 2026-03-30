@@ -527,3 +527,71 @@ model StarboardGuildSettings {
   ignoredChannels String  @default("[]") // JSON array
   nsfwHandling    String  @default("ignore") // "ignore" | "separate"
 }
+
+// === Dashboard Permissions ===
+
+model DashboardGuildSettings {
+  guildId            String   @id
+  auditRetentionDays Int      @default(90)
+  requirePermissions Boolean  @default(false) // false = legacy mode (all admins have full access)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model DashboardRole {
+  id          String   @id @default(uuid())
+  guildId     String
+  name        String
+  color       String?  // Hex color for UI badge
+  position    Int      @default(0)
+  isDefault   Boolean  @default(false)
+  permissions String   @default("[]") // JSON array of permission keys
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  assignments DashboardRoleAssignment[]
+
+  @@unique([guildId, name])
+  @@index([guildId])
+}
+
+model DashboardRoleAssignment {
+  id         String   @id @default(uuid())
+  guildId    String
+  userId     String
+  roleId     String
+  role       DashboardRole @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  assignedBy String
+  createdAt  DateTime @default(now())
+
+  @@unique([guildId, userId, roleId])
+  @@index([guildId, userId])
+}
+
+model DashboardUserPermission {
+  id         String   @id @default(uuid())
+  guildId    String
+  userId     String
+  permission String   // Single permission key (supports wildcards)
+  grantedBy  String
+  createdAt  DateTime @default(now())
+
+  @@unique([guildId, userId, permission])
+  @@index([guildId, userId])
+}
+
+model DashboardAuditLog {
+  id         String   @id @default(uuid())
+  guildId    String
+  userId     String
+  username   String
+  action     String   // Permission key or action descriptor
+  targetType String?  // "case", "rule", "role", "user", "settings"
+  targetId   String?
+  details    String   @default("{}") // JSON — before/after, metadata
+  createdAt  DateTime @default(now())
+
+  @@index([guildId, createdAt])
+  @@index([guildId, userId])
+  @@index([createdAt])
+}

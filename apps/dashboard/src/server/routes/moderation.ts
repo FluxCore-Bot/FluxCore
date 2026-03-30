@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import {
   getModCases,
   getModCaseById,
@@ -19,7 +19,7 @@ export function registerModerationRoutes(app: FastifyInstance): void {
   // GET /api/guilds/:guildId/cases — list cases
   app.get(
     "/api/guilds/:guildId/cases",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.cases.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as {
@@ -51,7 +51,7 @@ export function registerModerationRoutes(app: FastifyInstance): void {
   // GET /api/guilds/:guildId/cases/:caseId — get single case
   app.get(
     "/api/guilds/:guildId/cases/:caseId",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.cases.view")] },
     async (request, reply) => {
       const { guildId, caseId } = request.params as { guildId: string; caseId: string };
       const caseIdNum = parseIntParam(caseId);
@@ -74,7 +74,7 @@ export function registerModerationRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/cases/:caseId",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.cases.manage")],
       schema: {
         body: {
           type: "object",
@@ -110,7 +110,7 @@ export function registerModerationRoutes(app: FastifyInstance): void {
   // DELETE /api/guilds/:guildId/cases/:caseId — delete case
   app.delete(
     "/api/guilds/:guildId/cases/:caseId",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.cases.manage")] },
     async (request, reply) => {
       const { guildId, caseId } = request.params as { guildId: string; caseId: string };
       const caseIdNum = parseIntParam(caseId);
@@ -133,7 +133,7 @@ export function registerModerationRoutes(app: FastifyInstance): void {
   // GET /api/guilds/:guildId/mod-settings
   app.get(
     "/api/guilds/:guildId/mod-settings",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.settings.manage")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const settings = await getModSettings(guildId);
@@ -145,7 +145,7 @@ export function registerModerationRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/mod-settings",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.settings.manage")],
       schema: {
         body: {
           type: "object",
