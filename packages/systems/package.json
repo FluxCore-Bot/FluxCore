@@ -154,6 +154,34 @@
       "types": "./dist/welcome/builder.d.ts",
       "import": "./dist/welcome/builder.js"
     },
+    "./welcome/image": {
+      "types": "./dist/welcome/image/index.d.ts",
+      "import": "./dist/welcome/image/index.js"
+    },
+    "./welcome/image/renderer": {
+      "types": "./dist/welcome/image/renderer.d.ts",
+      "import": "./dist/welcome/image/renderer.js"
+    },
+    "./welcome/image/templates": {
+      "types": "./dist/welcome/image/templates/index.d.ts",
+      "import": "./dist/welcome/image/templates/index.js"
+    },
+    "./welcome/image/storage": {
+      "types": "./dist/welcome/image/storage/index.d.ts",
+      "import": "./dist/welcome/image/storage/index.js"
+    },
+    "./welcome/image/fonts": {
+      "types": "./dist/welcome/image/fonts/index.d.ts",
+      "import": "./dist/welcome/image/fonts/index.js"
+    },
+    "./welcome/image/types": {
+      "types": "./dist/welcome/image/types.d.ts",
+      "import": "./dist/welcome/image/types.js"
+    },
+    "./welcome/image/constants": {
+      "types": "./dist/welcome/image/constants.d.ts",
+      "import": "./dist/welcome/image/constants.js"
+    },
     "./leveling/types": {
       "types": "./dist/leveling/types.d.ts",
       "import": "./dist/leveling/types.js"
@@ -324,7 +352,7 @@
     }
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp -r src/welcome/image/fonts/files dist/welcome/image/fonts/",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",
     "test": "vitest run --config vitest.config.ts",
@@ -334,7 +362,9 @@
     "@fluxcore/config": "workspace:*",
     "@fluxcore/database": "workspace:*",
     "@fluxcore/utils": "workspace:*",
-    "discord.js": "catalog:"
+    "@napi-rs/canvas": "^0.1.97",
+    "discord.js": "catalog:",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^4.0.18",
