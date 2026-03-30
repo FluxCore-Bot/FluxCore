@@ -55,6 +55,7 @@ vi.mock("../../src/server/middleware.js", () => ({
     request.session = mockSession;
   }),
   requireGuildAdmin: vi.fn(async () => {}),
+  requirePermission: vi.fn((..._keys: string[]) => async () => {}),
 }));
 
 const { registerSuggestionRoutes } = await import("../../../src/server/routes/suggestions.js");

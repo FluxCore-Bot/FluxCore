@@ -19,15 +19,26 @@ const mockSession = {
 const mockGetSession = vi.fn().mockResolvedValue(mockSession);
 vi.mock("../../src/server/session.js", () => ({
   getSession: (...args: unknown[]) => mockGetSession(...args),
+  touchSession: vi.fn().mockResolvedValue(undefined),
 }));
 
 const mockIsBotInGuild = vi.fn().mockResolvedValue(true);
 const mockGetGuildChannels = vi.fn().mockResolvedValue([]);
 const mockGetGuildRoles = vi.fn().mockResolvedValue([]);
+const mockGetGuildOwnerId = vi.fn().mockResolvedValue("owner-1");
 vi.mock("../../src/server/discordApi.js", () => ({
   isBotInGuild: (...args: unknown[]) => mockIsBotInGuild(...args),
   getGuildChannels: (...args: unknown[]) => mockGetGuildChannels(...args),
   getGuildRoles: (...args: unknown[]) => mockGetGuildRoles(...args),
+  getGuildOwnerId: (...args: unknown[]) => mockGetGuildOwnerId(...args),
+  invalidateGuildCache: vi.fn(),
+}));
+
+vi.mock("../../src/server/permissions.js", () => ({
+  resolveUserPermissions: vi.fn().mockResolvedValue({ permissions: new Set(["*"]), isOwner: false }),
+  hasPermission: vi.fn().mockReturnValue(true),
+  invalidatePermissionCache: vi.fn(),
+  createDashboardAuditLog: vi.fn().mockResolvedValue(undefined),
 }));
 
 vi.mock("@fluxcore/utils", () => ({
