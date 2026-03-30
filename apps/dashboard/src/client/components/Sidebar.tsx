@@ -3,32 +3,35 @@ import { Icon } from "./Icon";
 import { ScrollArea } from "./ui/scroll-area";
 import { Separator } from "./ui/separator";
 import { useBotInfo } from "../lib/hooks/useBotInfo";
+import { usePermissions } from "../lib/hooks/usePermissions";
 
 interface NavItem {
   path: string;
   label: string;
   icon: string;
+  permission?: string; // If set, item only shown when user has this permission
 }
 
 const navItems: NavItem[] = [
   { path: "/guild/$guildId/overview", label: "Overview", icon: "dashboard" },
-  { path: "/guild/$guildId/rules", label: "Automation", icon: "bolt" },
-  { path: "/guild/$guildId/music", label: "Music", icon: "library_music" },
-  { path: "/guild/$guildId/tempvoice", label: "TempVoice", icon: "settings_voice" },
-  { path: "/guild/$guildId/welcome", label: "Welcome", icon: "waving_hand" },
-  { path: "/guild/$guildId/moderation", label: "Moderation", icon: "shield" },
-  { path: "/guild/$guildId/warnings", label: "Warnings", icon: "warning" },
-  { path: "/guild/$guildId/roles", label: "Role Panels", icon: "badge" },
-  { path: "/guild/$guildId/leveling", label: "Leveling", icon: "trending_up" },
-  { path: "/guild/$guildId/scheduled", label: "Scheduled", icon: "schedule" },
-  { path: "/guild/$guildId/commands", label: "Commands", icon: "terminal" },
-  { path: "/guild/$guildId/security", label: "Security", icon: "security" },
-  { path: "/guild/$guildId/tickets", label: "Tickets", icon: "confirmation_number" },
-  { path: "/guild/$guildId/giveaways", label: "Giveaways", icon: "celebration" },
-  { path: "/guild/$guildId/suggestions", label: "Suggestions", icon: "lightbulb" },
-  { path: "/guild/$guildId/starboard", label: "Starboard", icon: "star" },
-  { path: "/guild/$guildId/logs", label: "Logs", icon: "description" },
-  { path: "/guild/$guildId/settings", label: "Settings", icon: "tune" },
+  { path: "/guild/$guildId/rules", label: "Automation", icon: "bolt", permission: "actions.rules.view" },
+  { path: "/guild/$guildId/music", label: "Music", icon: "library_music", permission: "music.settings.view" },
+  { path: "/guild/$guildId/tempvoice", label: "TempVoice", icon: "settings_voice", permission: "tempvoice.config.view" },
+  { path: "/guild/$guildId/welcome", label: "Welcome", icon: "waving_hand", permission: "welcome.config.view" },
+  { path: "/guild/$guildId/moderation", label: "Moderation", icon: "shield", permission: "moderation.cases.view" },
+  { path: "/guild/$guildId/warnings", label: "Warnings", icon: "warning", permission: "moderation.warnings.view" },
+  { path: "/guild/$guildId/roles", label: "Role Panels", icon: "badge", permission: "roles.panels.view" },
+  { path: "/guild/$guildId/leveling", label: "Leveling", icon: "trending_up", permission: "leveling.leaderboard.view" },
+  { path: "/guild/$guildId/scheduled", label: "Scheduled", icon: "schedule", permission: "scheduled.messages.view" },
+  { path: "/guild/$guildId/commands", label: "Commands", icon: "terminal", permission: "commands.list.view" },
+  { path: "/guild/$guildId/security", label: "Security", icon: "security", permission: "security.config.view" },
+  { path: "/guild/$guildId/tickets", label: "Tickets", icon: "confirmation_number", permission: "tickets.list.view" },
+  { path: "/guild/$guildId/giveaways", label: "Giveaways", icon: "celebration", permission: "giveaways.list.view" },
+  { path: "/guild/$guildId/suggestions", label: "Suggestions", icon: "lightbulb", permission: "suggestions.list.view" },
+  { path: "/guild/$guildId/starboard", label: "Starboard", icon: "star", permission: "starboard.entries.view" },
+  { path: "/guild/$guildId/logs", label: "Logs", icon: "description", permission: "logging.entries.view" },
+  { path: "/guild/$guildId/permissions", label: "Permissions", icon: "admin_panel_settings", permission: "dashboard.roles.view" },
+  { path: "/guild/$guildId/settings", label: "Settings", icon: "tune", permission: "dashboard.settings.manage" },
 ];
 
 interface SidebarProps {
@@ -40,6 +43,11 @@ interface SidebarProps {
 export function Sidebar({ guildId, isOpen, onClose }: SidebarProps) {
   const matchRoute = useMatchRoute();
   const { data: botInfo } = useBotInfo();
+  const { can } = usePermissions(guildId);
+
+  const visibleNavItems = navItems.filter(
+    (item) => !item.permission || can(item.permission),
+  );
 
   return (
     <aside
@@ -75,7 +83,7 @@ export function Sidebar({ guildId, isOpen, onClose }: SidebarProps) {
       {/* Navigation */}
       <ScrollArea className="flex-1">
         <nav className="space-y-1">
-          {navItems.map((item) => {
+          {visibleNavItems.map((item) => {
             const isActive = !!matchRoute({
               to: item.path,
               params: { guildId },
