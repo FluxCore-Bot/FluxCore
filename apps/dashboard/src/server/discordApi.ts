@@ -75,6 +75,11 @@ export function invalidateGuildCache(guildId: string): void {
   cache.delete(`roles:${guildId}`);
 }
 
+interface DiscordGuild {
+  id: string;
+  owner_id: string;
+}
+
 /**
  * Check if the bot is a member of the given guild.
  */
@@ -83,10 +88,26 @@ export async function isBotInGuild(guildId: string): Promise<boolean> {
   const cached = getCached<boolean>(cacheKey);
   if (cached !== undefined) return cached;
 
-  const guild = await botFetch(`/guilds/${guildId}`);
+  const guild = await botFetch<DiscordGuild>(`/guilds/${guildId}`);
   const result = guild !== null;
   setCache(cacheKey, result);
+  if (guild) setCache(`guild_owner:${guildId}`, guild.owner_id);
   return result;
+}
+
+/**
+ * Get the owner ID of a guild.
+ */
+export async function getGuildOwnerId(guildId: string): Promise<string | null> {
+  const cacheKey = `guild_owner:${guildId}`;
+  const cached = getCached<string>(cacheKey);
+  if (cached !== undefined) return cached;
+
+  const guild = await botFetch<DiscordGuild>(`/guilds/${guildId}`);
+  if (!guild) return null;
+  setCache(cacheKey, guild.owner_id);
+  setCache(`guild:${guildId}`, true);
+  return guild.owner_id;
 }
 
 /**
