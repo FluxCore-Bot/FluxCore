@@ -1,6 +1,11 @@
 import type { FastifyRequest, FastifyReply } from "fastify";
 import { getSession, touchSession, type Session } from "./session.js";
 import { isBotInGuild } from "./discordApi.js";
+import {
+  resolveUserPermissions,
+  hasPermission,
+  type ResolvedPermissions,
+} from "./permissions.js";
 
 const MANAGE_GUILD = BigInt(0x20);
 
@@ -8,6 +13,7 @@ declare module "fastify" {
   interface FastifyRequest {
     session?: Session;
     sessionId?: string;
+    resolvedPermissions?: ResolvedPermissions;
   }
 }
 
@@ -59,4 +65,35 @@ export async function requireGuildAdmin(
     reply.code(403).send({ error: "Bot is not in this guild" });
     return;
   }
+
+  // Pre-resolve permissions so downstream handlers can use them
+  request.resolvedPermissions = await resolveUserPermissions(
+    session.userId,
+    guildId,
+  );
+}
+
+/**
+ * Require specific dashboard permissions.
+ * Must be used AFTER requireGuildAdmin (which resolves permissions).
+ * Accepts one or more permission keys — ALL must be granted.
+ */
+export function requirePermission(...keys: string[]) {
+  return async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
+    const resolved = request.resolvedPermissions;
+    if (!resolved) {
+      reply.code(500).send({ error: "Permissions not resolved" });
+      return;
+    }
+
+    for (const key of keys) {
+      if (!hasPermission(resolved, key)) {
+        reply.code(403).send({
+          error: "Insufficient permissions",
+          required: key,
+        });
+        return;
+      }
+    }
+  };
 }

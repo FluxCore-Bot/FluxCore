@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import {
   getAntiRaidConfig,
   upsertAntiRaidConfig,
@@ -12,7 +12,7 @@ export function registerAntiRaidRoutes(app: FastifyInstance): void {
   // GET anti-raid config
   app.get(
     "/api/guilds/:guildId/antiraid-config",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("security.config.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const config = await getAntiRaidConfig(guildId);
@@ -24,7 +24,7 @@ export function registerAntiRaidRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/antiraid-config",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("security.config.manage")],
       schema: {
         body: {
           type: "object",
@@ -69,7 +69,7 @@ export function registerAntiRaidRoutes(app: FastifyInstance): void {
   // GET raid events (paginated)
   app.get(
     "/api/guilds/:guildId/raid-events",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("security.events.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as { page?: string; limit?: string };

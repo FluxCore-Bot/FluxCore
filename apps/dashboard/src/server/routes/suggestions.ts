@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import {
   getSuggestionSettings,
   upsertSuggestionSettings,
@@ -17,7 +17,7 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
   // GET suggestions list
   app.get(
     "/api/guilds/:guildId/suggestions",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.list.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as { status?: string; page?: string; limit?: string };
@@ -41,7 +41,7 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/suggestions",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.list.manage")],
       schema: {
         body: {
           type: "object",
@@ -67,7 +67,7 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/suggestions/:id/status",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.list.manage")],
       schema: {
         body: {
           type: "object",
@@ -111,7 +111,7 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
   // DELETE suggestion
   app.delete(
     "/api/guilds/:guildId/suggestions/:id",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.list.manage")] },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
       const suggestionId = parseInt(id, 10);
@@ -133,7 +133,7 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
   // GET suggestion settings
   app.get(
     "/api/guilds/:guildId/suggestion-settings",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.settings.manage")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const settings = await getSuggestionSettings(guildId);
@@ -145,7 +145,7 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/suggestion-settings",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.settings.manage")],
       schema: {
         body: {
           type: "object",

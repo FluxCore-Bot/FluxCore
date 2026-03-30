@@ -1,12 +1,12 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import { getWelcomeConfig, upsertWelcomeConfig } from "@fluxcore/systems/welcome/config";
 
 export function registerWelcomeRoutes(app: FastifyInstance): void {
   // GET full welcome config
   app.get(
     "/api/guilds/:guildId/welcome",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.config.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const config = await getWelcomeConfig(guildId);
@@ -29,7 +29,7 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/welcome",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.config.manage")],
       schema: {
         body: {
           type: "object",
@@ -81,7 +81,7 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
   // POST test welcome message
   app.post(
     "/api/guilds/:guildId/welcome/test",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.test.execute")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const config = await getWelcomeConfig(guildId);

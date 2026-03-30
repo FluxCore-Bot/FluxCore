@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import { getLogConfig, loadLogConfigs, upsertLogConfig } from "@fluxcore/systems/logging/config";
 import { getLogEntries, cleanOldLogEntries } from "@fluxcore/systems/logging/persistence";
 import { LOG_CATEGORIES, EVENT_TYPES_BY_CATEGORY } from "@fluxcore/systems/logging/constants";
@@ -9,7 +9,7 @@ export function registerLoggingRoutes(app: FastifyInstance): void {
   // GET log entries for a guild with optional filters
   app.get(
     "/api/guilds/:guildId/logs",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("logging.entries.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as {
@@ -44,7 +44,7 @@ export function registerLoggingRoutes(app: FastifyInstance): void {
   // GET all category configs for a guild
   app.get(
     "/api/guilds/:guildId/log-config",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("logging.config.manage")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const configs = await loadLogConfigs(guildId);
@@ -56,7 +56,7 @@ export function registerLoggingRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/log-config/:category",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("logging.config.manage")],
       schema: {
         body: {
           type: "object",
@@ -103,7 +103,7 @@ export function registerLoggingRoutes(app: FastifyInstance): void {
   // DELETE purge old logs
   app.delete(
     "/api/guilds/:guildId/logs",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("logging.entries.purge")] },
     async (_request, reply) => {
       const count = await cleanOldLogEntries();
       reply.send({ purged: count });

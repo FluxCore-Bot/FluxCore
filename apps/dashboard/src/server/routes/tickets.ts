@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import {
   getTicketSettings,
   upsertTicketSettings,
@@ -28,7 +28,7 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   // GET list tickets
   app.get(
     "/api/guilds/:guildId/tickets",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.list.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as {
@@ -62,7 +62,7 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   // GET ticket by ID
   app.get(
     "/api/guilds/:guildId/tickets/:ticketId",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.list.view")] },
     async (request, reply) => {
       const { guildId, ticketId } = request.params as { guildId: string; ticketId: string };
       const id = parseIntParam(ticketId);
@@ -84,7 +84,7 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   // DELETE force-close ticket
   app.delete(
     "/api/guilds/:guildId/tickets/:ticketId",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.list.manage")] },
     async (request, reply) => {
       const { guildId, ticketId } = request.params as { guildId: string; ticketId: string };
       const id = parseIntParam(ticketId);
@@ -109,7 +109,7 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   // GET list panels
   app.get(
     "/api/guilds/:guildId/ticket-panels",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.panels.manage")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const panels = await getTicketPanels(guildId);
@@ -121,7 +121,7 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/ticket-panels",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.panels.manage")],
       schema: {
         body: {
           type: "object",
@@ -198,7 +198,7 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/ticket-panels/:panelId",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.panels.manage")],
       schema: {
         body: {
           type: "object",
@@ -270,7 +270,7 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   // DELETE panel
   app.delete(
     "/api/guilds/:guildId/ticket-panels/:panelId",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.panels.manage")] },
     async (request, reply) => {
       const { guildId, panelId } = request.params as { guildId: string; panelId: string };
       const id = parseIntParam(panelId);
@@ -287,7 +287,7 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   // POST send panel message (placeholder — actual sending requires bot client)
   app.post(
     "/api/guilds/:guildId/ticket-panels/:panelId/send",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.panels.manage")] },
     async (request, reply) => {
       const { guildId, panelId } = request.params as { guildId: string; panelId: string };
       const id = parseIntParam(panelId);
@@ -313,7 +313,7 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   // GET settings
   app.get(
     "/api/guilds/:guildId/ticket-settings",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.settings.manage")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const settings = await getTicketSettings(guildId);
@@ -325,7 +325,7 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/ticket-settings",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.settings.manage")],
       schema: {
         body: {
           type: "object",

@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import {
   fetchMusicSettings,
   upsertMusicSettings,
@@ -32,7 +32,7 @@ export function registerMusicRoutes(app: FastifyInstance): void {
   // GET music settings for a guild
   app.get(
     "/api/guilds/:guildId/music/settings",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.settings.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const settings = await fetchMusicSettings(guildId);
@@ -44,7 +44,7 @@ export function registerMusicRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/music/settings",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.settings.manage")],
       schema: {
         body: {
           type: "object",
@@ -92,7 +92,7 @@ export function registerMusicRoutes(app: FastifyInstance): void {
   // GET all albums for a guild
   app.get(
     "/api/guilds/:guildId/music/library",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.library.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const albums = await getAlbums(guildId);
@@ -104,7 +104,7 @@ export function registerMusicRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/music/library",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.library.manage")],
       schema: {
         body: {
           type: "object",
@@ -138,7 +138,7 @@ export function registerMusicRoutes(app: FastifyInstance): void {
   // DELETE an album
   app.delete(
     "/api/guilds/:guildId/music/library/:albumId",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.library.manage")] },
     async (request, reply) => {
       const { guildId, albumId } = request.params as { guildId: string; albumId: string };
       const albumIdNum = parseIntParam(albumId);
@@ -159,7 +159,7 @@ export function registerMusicRoutes(app: FastifyInstance): void {
   // GET tracks in an album
   app.get(
     "/api/guilds/:guildId/music/library/:albumId/tracks",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.library.view")] },
     async (request, reply) => {
       const { guildId, albumId } = request.params as { guildId: string; albumId: string };
       const albumIdNum = parseIntParam(albumId);
@@ -181,7 +181,7 @@ export function registerMusicRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/music/library/:albumId/tracks",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.library.manage")],
       schema: {
         body: {
           type: "object",
@@ -242,7 +242,7 @@ export function registerMusicRoutes(app: FastifyInstance): void {
   // DELETE a track
   app.delete(
     "/api/guilds/:guildId/music/library/:albumId/tracks/:trackId",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.library.manage")] },
     async (request, reply) => {
       const { guildId, albumId, trackId } = request.params as {
         guildId: string;

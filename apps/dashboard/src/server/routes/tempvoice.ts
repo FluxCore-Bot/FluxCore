@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../middleware.js";
+import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import {
   getGuildConfigs,
   addGuildConfig,
@@ -15,7 +15,7 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
   // GET all configs for a guild
   app.get(
     "/api/guilds/:guildId/tempvoice",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tempvoice.config.view")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const configs = getGuildConfigs(guildId);
@@ -26,7 +26,7 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
   // POST create a new config
   app.post(
     "/api/guilds/:guildId/tempvoice",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tempvoice.config.manage")] },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const body = request.body as {
@@ -86,7 +86,7 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
   // PUT update an existing config
   app.put(
     "/api/guilds/:guildId/tempvoice/:configId",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tempvoice.config.manage")] },
     async (request, reply) => {
       const { guildId, configId } = request.params as {
         guildId: string;
@@ -148,7 +148,7 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
   // DELETE a specific config
   app.delete(
     "/api/guilds/:guildId/tempvoice/:configId",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tempvoice.config.manage")] },
     async (request, reply) => {
       const { guildId, configId } = request.params as {
         guildId: string;
