@@ -31,6 +31,8 @@ import { registerTicketRoutes } from "./routes/tickets.js";
 import { registerGiveawayRoutes } from "./routes/giveaways.js";
 import { registerSuggestionRoutes } from "./routes/suggestions.js";
 import { registerStarboardRoutes } from "./routes/starboard.js";
+import { registerDashboardRoleRoutes } from "./routes/dashboardRoles.js";
+import { registerDashboardPermissionRoutes } from "./routes/dashboardPermissions.js";
 
 async function main(): Promise<void> {
   if (!config.dashboardClientSecret) {
@@ -117,6 +119,8 @@ async function main(): Promise<void> {
   registerGiveawayRoutes(app);
   registerSuggestionRoutes(app);
   registerStarboardRoutes(app);
+  registerDashboardRoleRoutes(app);
+  registerDashboardPermissionRoutes(app);
 
   // SPA fallback: serve index.html for non-API/auth routes in production
   if (process.env.NODE_ENV === "production") {
