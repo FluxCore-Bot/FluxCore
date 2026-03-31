@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Veřejná beta",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Komplexní",
+    "titleLine2": "framework pro Discord boty",
+    "subtitle": "Nasaďte profesionálního Discord bota během minut. Modulární, self-hosted a vytvořený pro komunity, které vyžadují více."
+  },
+  "cta": {
+    "addToServer": "Přidat na server",
+    "openDashboard": "Otevřít panel",
+    "exploreFeatures": "Prozkoumat funkce"
+  },
+  "stats": {
+    "servers": "Servery",
+    "latency": "Latence",
+    "uptime": "Dostupnost",
+    "modules": "Moduly",
+    "serversValue": "1 000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99,9 %",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Možnosti",
+    "title": "Vše, co váš server potřebuje",
+    "subtitle": "Modulární sada nástrojů pro komunity, které si cení spolehlivosti, flexibility a kontroly.",
+    "automation": {
+      "title": "Pravidla automatizace",
+      "description": "Vytvářejte složité pracovní postupy řízené událostmi bez kódu. Spouštěče if-this-then-that s 23 typy událostí a 10 typy akcí."
+    },
+    "music": {
+      "title": "Hudební systém",
+      "description": "Vysoká kvalita audio streamování s podporou více platforem. Správa fronty, DJ režim a knihovna."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Dynamická správa hlasových kanálů. Automatické vytváření se šablonami názvů, oprávněními a čištěním."
+    },
+    "logs": {
+      "title": "Logy aktivity",
+      "description": "Kompletní audit každého provedení automatizace. Vyhledávání, filtrování a ladění pravidel s podrobnými logy."
+    },
+    "webhooks": {
+      "title": "Webhooky a API",
+      "description": "Odesílejte data do externích služeb přes HTTP webhooky. Vlastní hlavičky, šablony těla a interpolace proměnných."
+    },
+    "dashboard": {
+      "title": "Panel v reálném čase",
+      "description": "Spravujte vše z elegantního webového panelu. Analytika, konfigurace a monitoring na jednom místě."
+    }
+  },
+  "ctaSection": {
+    "title": "Připraveni vylepšit svou komunitu?",
+    "subtitle": "Začněte během minut bez konfigurace. Self-hosted, open-source a zcela zdarma."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "\u00a9 {{year}} FluxCore Technologies. Všechna práva vyhrazena.",
+    "links": {
+      "documentation": "Dokumentace",
+      "support": "Podpora",
+      "privacy": "Zásady ochrany soukromí",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

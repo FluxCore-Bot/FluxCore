@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Ikke godkendt",
+    "sessionExpired": "Sessionen er udløbet",
+    "missingCode": "Mangler kodeparameter",
+    "tokenExchangeFailed": "Tokenudveksling mislykkedes",
+    "failedToFetchUser": "Kunne ikke hente brugeroplysninger"
+  },
+  "permissions": {
+    "noGuildPermission": "Ingen tilladelse til denne server",
+    "botNotInGuild": "Botten er ikke på denne server",
+    "insufficientPermissions": "Utilstrækkelige tilladelser",
+    "permissionsNotResolved": "Tilladelser kunne ikke løses",
+    "requiresPermission": "Denne handling kræver tilladelsen \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Ugyldigt input",
+    "missingField": "Obligatorisk felt mangler: {{field}}",
+    "invalidFormat": "Ugyldigt format for {{field}}",
+    "tooLong": "{{field}} overstiger maksimal længde på {{max}} tegn",
+    "tooShort": "{{field}} skal være mindst {{min}} tegn",
+    "outOfRange": "{{field}} skal være mellem {{min}} og {{max}}"
+  },
+  "resources": {
+    "notFound": "Ikke fundet",
+    "alreadyExists": "{{resource}} eksisterer allerede",
+    "limitReached": "Maksimalt {{max}} {{resource}} per server",
+    "createFailed": "Kunne ikke oprette {{resource}}",
+    "updateFailed": "Kunne ikke opdatere {{resource}}",
+    "deleteFailed": "Kunne ikke slette {{resource}}"
+  },
+  "server": {
+    "internalError": "Intern serverfejl",
+    "serviceUnavailable": "Tjenesten er midlertidigt utilgængelig",
+    "rateLimited": "For mange forespørgsler. Prøv igen senere."
+  },
+  "csrf": {
+    "invalidToken": "Ugyldig eller manglende CSRF-token"
+  }
+}

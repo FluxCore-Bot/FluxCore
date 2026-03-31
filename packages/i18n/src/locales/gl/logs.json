@@ -1,0 +1,8 @@
+{
+  "title": "Rexistros",
+  "subtitle": "Monitoriza as execucións de regras e o rexistro de eventos.",
+  "tabs": {
+    "activity": "Rexistros de Actividade",
+    "events": "Rexistros de Eventos"
+  }
+}

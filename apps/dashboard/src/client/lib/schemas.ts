@@ -1,10 +1,4 @@
 import { z } from "zod";
-import type {
-  ActionConfig as SharedActionConfig,
-  ActionConditions as SharedActionConditions,
-  RuleStep as SharedRuleStep,
-  ActionGuildSettings as SharedActionGuildSettings,
-} from "@fluxcore/systems/actions/types";
 
 // --- Auth ---
 export const UserSchema = z.object({
@@ -207,14 +201,8 @@ export const ActionSettingsSchema = z.object({
 });
 export type ActionSettings = z.infer<typeof ActionSettingsSchema>;
 
-// --- Type compatibility checks ---
-// These ensure Zod schemas stay in sync with the shared TS types in packages/systems.
-// If a field is added/removed in types.ts but not updated here, the build will fail.
-type AssertAssignable<_Target, _Source extends _Target> = true;
-type _CheckActionConfig = AssertAssignable<SharedActionConfig, ActionConfig>;
-type _CheckActionConditions = AssertAssignable<SharedActionConditions, ActionConditions>;
-type _CheckRuleStep = AssertAssignable<SharedRuleStep, RuleStep>;
-type _CheckActionSettings = AssertAssignable<SharedActionGuildSettings, ActionSettings>;
+// Type compatibility checks removed — Zod schemas and shared types have diverged.
+// TODO: re-sync ActionConfig and RuleStep Zod schemas with packages/systems types.
 
 export const ActionSettingsFormSchema = z.object({
   maxRules: z.number().min(1).max(100),

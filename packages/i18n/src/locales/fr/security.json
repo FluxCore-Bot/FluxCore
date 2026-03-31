@@ -1,0 +1,108 @@
+{
+  "title": "Securite",
+  "subtitle": "Configurez la protection anti-raid et les parametres de securite du serveur.",
+  "antiRaid": {
+    "title": "Protection anti-raid",
+    "description": "Activez la detection et la reponse automatiques aux raids coordonnes, aux comptes suspects et aux actions destructrices."
+  },
+  "sections": {
+    "joinRate": "Taux d'arrivees",
+    "accountAge": "Age du compte",
+    "antiNuke": "Anti-Nuke",
+    "lockdown": "Verrouillage",
+    "events": "Evenements"
+  },
+  "joinRate": {
+    "title": "Detection du taux d'arrivees",
+    "description": "Detectez les arrivees massives en surveillant le taux de nouveaux membres.",
+    "threshold": "Seuil d'arrivees",
+    "thresholdHint": "Nombre d'arrivees pour declencher la detection",
+    "window": "Fenetre de temps (secondes)",
+    "windowHint": "Fenetre durant laquelle les arrivees sont comptees",
+    "action": "Action lors de la detection",
+    "actionHint": "Action a effectuer sur les membres suspects de raid",
+    "actions": {
+      "ban": "Bannir",
+      "kick": "Expulser",
+      "timeout": "Exclusion temporaire",
+      "lockdown": "Verrouillage"
+    }
+  },
+  "accountAge": {
+    "title": "Filtre d'age du compte",
+    "description": "Appliquer automatiquement une action aux comptes plus jeunes qu'un age minimum. Mettez 0 pour desactiver.",
+    "minAge": "Age minimum du compte (jours)",
+    "minAgeHint": "0 = desactive. Les comptes plus jeunes seront sanctionnes.",
+    "action": "Action"
+  },
+  "antiNuke": {
+    "title": "Protection Anti-Nuke",
+    "description": "Detectez les suppressions massives de salons/roles et mettez en quarantaine l'utilisateur responsable en lui retirant tous ses roles.",
+    "threshold": "Seuil de suppression",
+    "thresholdHint": "Nombre de suppressions en 10 secondes pour declencher la quarantaine",
+    "channelDeleteThreshold": "Seuil de suppression de salons",
+    "roleDeleteThreshold": "Seuil de suppression de roles",
+    "massbanThreshold": "Seuil de bannissements massifs",
+    "interval": "Intervalle (secondes)",
+    "action": "Action"
+  },
+  "lockdown": {
+    "title": "Verrouillage automatique en cas de raid",
+    "description": "Verrouiller automatiquement tous les salons lorsqu'un raid est detecte.",
+    "whitelistedRoles": "IDs des roles en liste blanche (separes par des virgules)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Les membres avec ces roles seront exemptes de la detection de raid.",
+    "logChannel": "ID du salon de journalisation",
+    "logChannelPlaceholder": "ID du salon pour les journaux de raid...",
+    "enableButton": "Activer le verrouillage",
+    "disableButton": "Desactiver le verrouillage",
+    "active": "Verrouillage actif",
+    "inactive": "Verrouillage inactif"
+  },
+  "events": {
+    "title": "Evenements de raid recents",
+    "description": "Chronologie des raids detectes, blocages d'age de compte et evenements de verrouillage.",
+    "empty": "Aucun evenement de raid enregistre pour l'instant. Les evenements apparaitront ici lorsque la detection de raid se declenchera.",
+    "actionLabel": "Action : {{action}}",
+    "usersLabel": "Utilisateurs : {{count}}",
+    "accountAgeLabel": "Age du compte : {{days}}j",
+    "table": {
+      "type": "Type",
+      "description": "Description",
+      "time": "Heure",
+      "action": "Action effectuee"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Pic d'arrivees",
+    "account_age": "Age du compte",
+    "nuke_attempt": "Tentative de nuke",
+    "lockdown": "Verrouillage",
+    "massJoin": "Arrivees massives",
+    "suspiciousAccounts": "Comptes suspects",
+    "channelDeletion": "Suppression de salons",
+    "roleDeletion": "Suppression de roles",
+    "massBan": "Bannissements massifs"
+  },
+  "pagination": {
+    "previous": "Precedent",
+    "next": "Suivant",
+    "page": "Page {{current}} sur {{total}}"
+  },
+  "toast": {
+    "saved": "Configuration anti-raid enregistree",
+    "saveFailed": "Echec de l'enregistrement de la configuration",
+    "lockdownEnabled": "Verrouillage du serveur active",
+    "lockdownDisabled": "Verrouillage du serveur desactive",
+    "lockdownFailed": "Echec du changement d'etat du verrouillage"
+  },
+  "saveButton": {
+    "saving": "Enregistrement...",
+    "save": "Enregistrer les modifications"
+  },
+  "labels": {
+    "seconds": "secondes",
+    "minutes": "minutes",
+    "hours": "heures"
+  }
+}

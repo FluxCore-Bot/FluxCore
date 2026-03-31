@@ -1,0 +1,118 @@
+{
+  "title": "Roles et permissions",
+  "subtitle": "Controlez qui peut acceder et gerer chaque module du tableau de bord.",
+  "actions": {
+    "createRole": "Creer un role"
+  },
+  "permissionSystem": {
+    "title": "Systeme de permissions",
+    "active": "Actif — les administrateurs sont limites a leurs permissions attribuees.",
+    "inactive": "Inactif — tous les administrateurs avec MANAGE_GUILD ont un acces complet.",
+    "enabledToast": "Systeme de permissions active",
+    "disabledToast": "Systeme de permissions desactive — tous les administrateurs ont un acces complet"
+  },
+  "warning": {
+    "disabled": "Le systeme de permissions est desactive. Tous les administrateurs du tableau de bord ont actuellement un acces complet. Activez-le ci-dessus pour appliquer des permissions granulaires."
+  },
+  "tabs": {
+    "roles": "Roles",
+    "auditLog": "Journal d'audit"
+  },
+  "roleList": {
+    "title": "Roles du tableau de bord",
+    "empty": "Aucun role cree pour l'instant.",
+    "selectHint": "Selectionnez un role a modifier ou creez-en un nouveau.",
+    "default": "Par defaut",
+    "name": "Nom",
+    "members": "Membres",
+    "permissions": "Permissions",
+    "edit": "Modifier",
+    "delete": "Supprimer"
+  },
+  "presets": {
+    "title": "Ajout rapide depuis un modele",
+    "createdToast": "Role \"{{name}}\" cree"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} membre",
+    "memberCount_plural": "{{count}} membres",
+    "name": "Nom du role",
+    "color": "Couleur",
+    "defaultRole": "Role par defaut",
+    "permissions": "Permissions",
+    "allBadge": "Toutes",
+    "discordRoles": "Roles Discord"
+  },
+  "roleForm": {
+    "name": "Nom du role",
+    "discordRoles": "Roles Discord",
+    "permissions": "Permissions",
+    "create": "Creer le role",
+    "update": "Mettre a jour le role",
+    "cancel": "Annuler"
+  },
+  "createDialog": {
+    "title": "Creer un role de tableau de bord",
+    "name": "Nom",
+    "namePlaceholder": "ex. Moderateur",
+    "color": "Couleur"
+  },
+  "permissionCategories": {
+    "actions": "Actions et automatisation",
+    "music": "Musique",
+    "tempvoice": "TempVoice",
+    "welcome": "Bienvenue et adieu",
+    "moderation": "Moderation",
+    "logging": "Journalisation",
+    "leveling": "Niveaux",
+    "roles": "Panneaux de roles",
+    "tickets": "Tickets",
+    "suggestions": "Suggestions",
+    "starboard": "Starboard",
+    "giveaways": "Concours",
+    "security": "Securite",
+    "scheduled": "Messages programmes",
+    "commands": "Commandes personnalisees",
+    "settings": "Parametres du serveur"
+  },
+  "audit": {
+    "table": {
+      "user": "Utilisateur",
+      "action": "Action",
+      "target": "Cible",
+      "timestamp": "Quand"
+    },
+    "noEntries": "Aucune entree dans le journal d'audit pour l'instant."
+  },
+  "pagination": {
+    "previous": "Precedent",
+    "next": "Suivant",
+    "page": "Page {{current}} sur {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Role \"{{name}}\" cree",
+    "roleCreateFailed": "Echec de la creation du role",
+    "roleUpdated": "Role mis a jour",
+    "roleUpdateFailed": "Echec de la mise a jour du role",
+    "roleDeleted": "Role supprime",
+    "roleDeleteFailed": "Echec de la suppression du role"
+  },
+  "confirm": {
+    "deleteTitle": "Supprimer le role \"{{name}}\" ?",
+    "deleteMessage": "Cela supprimera le role et desassignera tous les membres. Cette action est irreversible.",
+    "deleteRole": "Etes-vous sur de vouloir supprimer ce role ? Les membres perdront les permissions qui leur ont ete attribuees."
+  },
+  "saveButton": {
+    "saving": "Enregistrement...",
+    "save": "Enregistrer les modifications"
+  },
+  "deleteButton": {
+    "deleting": "Suppression...",
+    "delete": "Supprimer"
+  },
+  "createButton": {
+    "creating": "Creation...",
+    "create": "Creer"
+  },
+  "loading": "Chargement des permissions..."
+}

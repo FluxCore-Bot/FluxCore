@@ -11,7 +11,6 @@ import {
   Eye,
 } from "lucide-react";
 import { toast } from "sonner";
-import { Card } from "./ui/card";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
@@ -67,7 +66,7 @@ export function WelcomeImageEditor({
 
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const debounceRef = useRef<ReturnType<typeof setTimeout>>();
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const templates = templateData?.templates ?? [];
   const fonts = fontData?.fonts ?? [];
@@ -116,7 +115,7 @@ export function WelcomeImageEditor({
   >(key: K, field: keyof V & string, value: V[keyof V]) {
     onChange({
       ...settings,
-      [key]: { ...(settings[key] as V), [field]: value },
+      [key]: { ...((settings[key] ?? {}) as Record<string, unknown>), [field]: value },
     });
   }
 

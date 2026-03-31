@@ -1,0 +1,12 @@
+{
+  "title": "คำเตือน", "subtitle": "ติดตามและจัดการคำเตือนสมาชิกพร้อมการยกระดับอัตโนมัติ",
+  "stats": { "totalWarnings": "คำเตือนทั้งหมด", "escalationRules": "กฎยกระดับ", "dmOnWarn": "DM เมื่อเตือน" },
+  "tabs": { "warnings": "บันทึกคำเตือน", "escalation": "การยกระดับ", "settings": "ตั้งค่า" },
+  "table": { "id": "ID", "user": "ผู้ใช้", "moderator": "ผู้จัดการ", "reason": "เหตุผล", "date": "วันที่" },
+  "filter": { "userPlaceholder": "กรองตาม ID ผู้ใช้...", "clearAll": "ล้างทั้งหมด" },
+  "pagination": { "previous": "ก่อนหน้า", "next": "ถัดไป", "page": "หน้า {{page}} จาก {{total}} (ทั้งหมด {{count}} รายการ)" },
+  "loading": "กำลังโหลดคำเตือน...", "noWarnings": "ไม่พบคำเตือน",
+  "toast": { "warningRemoved": "ลบคำเตือนแล้ว", "warningsFailed": "ไม่สามารถลบคำเตือนได้", "enterUserId": "ป้อน ID ผู้ใช้เพื่อล้างคำเตือนทั้งหมดของผู้ใช้นั้น", "allCleared": "ล้างคำเตือนทั้งหมดของผู้ใช้แล้ว", "clearFailed": "ไม่สามารถล้างคำเตือนได้", "thresholdAdded": "เพิ่มเกณฑ์ลงโทษแล้ว", "thresholdFailed": "ไม่สามารถเพิ่มการลงโทษได้", "thresholdRemoved": "ลบการลงโทษแล้ว", "removeFailed": "ไม่สามารถลบการลงโทษได้", "settingFailed": "ไม่สามารถอัปเดตการตั้งค่าได้", "thresholdInvalid": "เกณฑ์ต้องเป็นจำนวนบวก" },
+  "escalation": { "title": "การยกระดับการลงโทษ", "description": "ตั้งค่าการดำเนินการอัตโนมัติเมื่อผู้ใช้ถึงจำนวนคำเตือนที่กำหนด", "threshold": "เกณฑ์", "action": "การดำเนินการ", "duration": "ระยะเวลา", "noRules": "ยังไม่ได้ตั้งค่ากฎยกระดับ", "addRule": "เพิ่มกฎยกระดับ", "addButton": "เพิ่มกฎ", "warnings": "{{count}} คำเตือน", "min": "{{count}} นาที", "timeout": "ไทม์เอาท์", "kick": "เตะ", "ban": "แบน", "durationLabel": "ระยะเวลา (วินาที)", "thresholdPlaceholder": "เช่น 3", "durationPlaceholder": "เช่น 3600" },
+  "settings": { "title": "การตั้งค่าคำเตือน", "dmOnWarn": "ส่ง DM เมื่อเตือน", "dmOnWarnDesc": "ส่งข้อความส่วนตัวถึงผู้ใช้เมื่อได้รับคำเตือน", "requireReason": "ต้องระบุเหตุผล", "requireReasonDesc": "ผู้จัดการต้องระบุเหตุผลเมื่อออกคำเตือน", "maxWarnings": "คำเตือนสูงสุด", "maxWarningsDesc": "จำนวนคำเตือนสูงสุดต่อผู้ใช้ (0 = ไม่จำกัด)" }
+}

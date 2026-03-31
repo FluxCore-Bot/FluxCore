@@ -1,0 +1,50 @@
+{
+  "title": "Concours",
+  "subtitle": "Organisez des concours avec une duree, des conditions de participation et une selection de gagnants personnalisables.",
+  "stats": {
+    "activeGiveaways": "Concours actifs",
+    "pastGiveaways": "Concours termines",
+    "totalEntries": "Total des participations"
+  },
+  "table": {
+    "prize": "Prix",
+    "winners": "Gagnants",
+    "entries": "Participations",
+    "endsIn": "Se termine dans",
+    "status": "Statut"
+  },
+  "statuses": {
+    "active": "Actif",
+    "ended": "Termine",
+    "cancelled": "Annule"
+  },
+  "actions": {
+    "create": "Creer un concours",
+    "edit": "Modifier",
+    "end": "Terminer",
+    "reroll": "Retirer au sort",
+    "delete": "Supprimer"
+  },
+  "form": {
+    "prize": "Prix",
+    "winnersCount": "Nombre de gagnants",
+    "duration": "Duree",
+    "channel": "Salon",
+    "requiredRole": "Role requis",
+    "description": "Description"
+  },
+  "toast": {
+    "created": "Concours cree",
+    "createFailed": "Echec de la creation du concours",
+    "updated": "Concours mis a jour",
+    "updateFailed": "Echec de la mise a jour du concours",
+    "ended": "Concours termine",
+    "endFailed": "Echec de la cloture du concours",
+    "rerolled": "Gagnants retires au sort",
+    "rerollFailed": "Echec du nouveau tirage au sort",
+    "deleted": "Concours supprime",
+    "deleteFailed": "Echec de la suppression du concours"
+  },
+  "empty": "Aucun concours pour l'instant. Creez-en un pour commencer.",
+  "loading": "Chargement des concours..."
+}

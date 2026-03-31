@@ -1,0 +1,41 @@
+{
+  "title": "Bảng Sao",
+  "subtitle": "Làm nổi bật những tin nhắn hay nhất bằng cách thu thập phản ứng sao vào một kênh chuyên dụng.",
+  "tabs": {
+    "settings": "Cài Đặt",
+    "starredMessages": "Tin Nhắn Được Gắn Sao"
+  },
+  "settings": {
+    "title": "Cấu Hình Bảng Sao",
+    "description": "Cấu hình khi nào và nơi nào tin nhắn được gắn sao được đăng.",
+    "channelId": "Kênh Bảng Sao",
+    "channelIdDesc": "Kênh nơi tin nhắn được gắn sao được đăng.",
+    "starEmoji": "Emoji Sao",
+    "starEmojiDesc": "Emoji dùng để gắn sao tin nhắn. Mặc định là emoji sao.",
+    "threshold": "Ngưỡng Sao",
+    "thresholdDesc": "Số lượng phản ứng tối thiểu cần thiết để đăng tin nhắn lên bảng sao.",
+    "selfStar": "Tự Gắn Sao",
+    "selfStarDesc": "Cho phép tác giả tin nhắn tự gắn sao tin nhắn của mình.",
+    "nsfwAllowed": "Cho Phép NSFW",
+    "nsfwAllowedDesc": "Cho phép tin nhắn từ kênh NSFW xuất hiện trên bảng sao.",
+    "ignoredChannels": "Kênh Bị Bỏ Qua",
+    "ignoredChannelsDesc": "Tin nhắn từ các kênh này sẽ không bao giờ xuất hiện trên bảng sao."
+  },
+  "messages": {
+    "table": {
+      "original": "Tin Nhắn Gốc",
+      "stars": "Sao",
+      "channel": "Kênh",
+      "date": "Ngày"
+    },
+    "noMessages": "Chưa có tin nhắn nào được gắn sao."
+  },
+  "toast": {
+    "saved": "Đã lưu cài đặt bảng sao",
+    "saveFailed": "Lưu cài đặt bảng sao thất bại"
+  },
+  "actions": {
+    "save": "Lưu",
+    "saving": "Đang lưu..."
+  }
+}

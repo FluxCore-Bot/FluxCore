@@ -81,7 +81,7 @@ const event: Event<"voiceStateUpdate"> = {
         const minutes = Math.floor((Date.now() - session.joinedAt) / 60_000);
         if (minutes > 0) {
           grantVoiceXp(oldState, minutes).catch((e) =>
-            logger.debug("Voice XP grant failed", e instanceof Error ? e : new Error(String(e))),
+            logger.debug(`Voice XP grant failed: ${e instanceof Error ? e.message : String(e)}`),
           );
         }
       }
@@ -101,7 +101,7 @@ const event: Event<"voiceStateUpdate"> = {
           const minutes = Math.floor((Date.now() - session.joinedAt) / 60_000);
           if (minutes > 0) {
             grantVoiceXp(newState, minutes).catch((e) =>
-              logger.debug("Voice XP grant failed", e instanceof Error ? e : new Error(String(e))),
+              logger.debug(`Voice XP grant failed: ${e instanceof Error ? e.message : String(e)}`),
             );
           }
         }

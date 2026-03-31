@@ -1,0 +1,112 @@
+{
+  "title": "Paneli uloga",
+  "subtitle": "Kreirajte panele za samododelu uloga pomocu dugmadi, padajucih menija ili reakcija.",
+  "stats": {
+    "totalPanels": "Ukupno panela",
+    "deployed": "Postavljeno",
+    "totalRoles": "Ukupno uloga"
+  },
+  "tabs": {
+    "panels": "Paneli",
+    "preview": "Pregled"
+  },
+  "table": {
+    "name": "Naziv",
+    "type": "Tip",
+    "mode": "Rezim",
+    "roles": "Uloge",
+    "status": "Status"
+  },
+  "panelTypes": {
+    "reaction": "Reakcija",
+    "button": "Dugme",
+    "dropdown": "Padajuci meni"
+  },
+  "panelModes": {
+    "toggle": "Prebacivanje",
+    "unique": "Jedinstveno",
+    "verify": "Verifikacija"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Prebacivanje (dodaj/ukloni)",
+    "unique": "Jedinstveno (jedno po jedno)",
+    "verify": "Verifikacija (samo dodaj)"
+  },
+  "status": {
+    "deployed": "Postavljeno",
+    "draft": "Nacrt"
+  },
+  "dialog": {
+    "createPanel": "Kreiraj panel",
+    "editPanel": "Uredi panel"
+  },
+  "panelList": {
+    "title": "Svi paneli"
+  },
+  "form": {
+    "name": "Naziv",
+    "namePlaceholder": "npr. Uloge boja",
+    "type": "Tip",
+    "mode": "Rezim",
+    "channel": "Kanal",
+    "channelPlaceholder": "Izaberite kanal",
+    "minRoles": "Min uloga",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Maks uloga",
+    "maxRolesPlaceholder": "Sve",
+    "embedSection": "Embed",
+    "embedTitle": "Naslov",
+    "embedTitlePlaceholder": "Naslov panela (podrazumevano je naziv panela)",
+    "embedDescription": "Opis",
+    "embedDescriptionPlaceholder": "Tekst opisa",
+    "rolesCount": "Uloge ({{count}}/25)",
+    "addRole": "Dodaj ulogu"
+  },
+  "entry": {
+    "role": "Uloga",
+    "rolePlaceholder": "Izaberite ulogu",
+    "label": "Oznaka",
+    "labelPlaceholder": "Oznaka dugmeta",
+    "emoji": "Emotikon",
+    "emojiPlaceholder": "npr. zvezdica",
+    "description": "Opis",
+    "descriptionPlaceholder": "Opis opcije",
+    "style": "Stil"
+  },
+  "buttonStyles": {
+    "primary": "Primarni",
+    "secondary": "Sekundarni",
+    "success": "Uspeh",
+    "danger": "Opasnost"
+  },
+  "actions": {
+    "create": "Kreiraj",
+    "update": "Azuriraj",
+    "cancel": "Otkazi",
+    "deploy": "Postavi",
+    "delete": "Obrisi",
+    "addEntry": "Dodaj stavku",
+    "removeEntry": "Ukloni stavku"
+  },
+  "preview": {
+    "title": "Pregled uzivo",
+    "description": "Pregledajte kako ce vasi paneli izgledati u Discordu.",
+    "selectRoles": "Izaberite uloge...",
+    "noPreview": "Nema panela za pregled."
+  },
+  "empty": "Nema kreiranih panela uloga. Kliknite \"Kreiraj panel\" za pocetak.",
+  "toast": {
+    "created": "Panel kreiran",
+    "createFailed": "Kreiranje panela nije uspelo",
+    "updated": "Panel azuriran",
+    "updateFailed": "Azuriranje panela nije uspelo",
+    "deleted": "Panel obrisan",
+    "deleteFailed": "Brisanje panela nije uspelo",
+    "deployed": "Panel uloga postavljen u kanal",
+    "deployFailed": "Slanje panela nije uspelo",
+    "nameRequired": "Naziv panela je obavezan",
+    "channelRequired": "Kanal je obavezan",
+    "maxRolesReached": "Maksimalno 25 uloga po panelu"
+  },
+  "loading": "Ucitavanje panela..."
+}

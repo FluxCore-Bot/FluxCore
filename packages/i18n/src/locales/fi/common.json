@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore Hallintapaneeli"
+  },
+  "status": {
+    "online": "Online",
+    "offline": "Offline",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Yleiskatsaus",
+    "automation": "Automaatio",
+    "music": "Musiikki",
+    "tempvoice": "TempVoice",
+    "welcome": "Tervetuloa",
+    "moderation": "Moderointi",
+    "warnings": "Varoitukset",
+    "rolePanels": "Roolipaneelit",
+    "leveling": "Tasojärjestelmä",
+    "scheduled": "Ajastettu",
+    "commands": "Komennot",
+    "security": "Turvallisuus",
+    "tickets": "Tiketit",
+    "giveaways": "Arvonnat",
+    "suggestions": "Ehdotukset",
+    "starboard": "Starboard",
+    "logs": "Lokit",
+    "permissions": "Oikeudet",
+    "settings": "Asetukset"
+  },
+  "actions": {
+    "save": "Tallenna",
+    "cancel": "Peruuta",
+    "delete": "Poista",
+    "edit": "Muokkaa",
+    "create": "Luo",
+    "add": "Lisää",
+    "remove": "Poista",
+    "confirm": "Vahvista",
+    "close": "Sulje",
+    "back": "Takaisin",
+    "next": "Seuraava",
+    "search": "Hae",
+    "filter": "Suodata",
+    "refresh": "Päivitä",
+    "reset": "Nollaa",
+    "enable": "Ota käyttöön",
+    "disable": "Poista käytöstä",
+    "copy": "Kopioi",
+    "export": "Vie",
+    "import": "Tuo",
+    "submit": "Lähetä",
+    "loading": "Ladataan...",
+    "retry": "Yritä uudelleen"
+  },
+  "labels": {
+    "enabled": "Käytössä",
+    "disabled": "Pois käytöstä",
+    "active": "Aktiivinen",
+    "inactive": "Epäaktiivinen",
+    "none": "Ei mitään",
+    "all": "Kaikki",
+    "custom": "Mukautettu",
+    "default": "Oletus",
+    "required": "Pakollinen",
+    "optional": "Valinnainen",
+    "name": "Nimi",
+    "description": "Kuvaus",
+    "type": "Tyyppi",
+    "status": "Tila",
+    "channel": "Kanava",
+    "role": "Rooli",
+    "member": "Jäsen",
+    "duration": "Kesto",
+    "reason": "Syy",
+    "language": "Kieli"
+  },
+  "header": {
+    "notifications": "Ilmoitukset",
+    "settings": "Asetukset",
+    "logout": "Kirjaudu ulos",
+    "toggleSidebar": "Vaihda sivupalkkia",
+    "refreshData": "Päivitä Discord-tiedot"
+  },
+  "sidebar": {
+    "closeSidebar": "Sulje sivupalkki",
+    "addToServer": "Lisää palvelimelle",
+    "docs": "Dokumentaatio",
+    "support": "Tuki",
+    "backToServers": "Takaisin palvelimiin"
+  },
+  "empty": {
+    "noData": "Ei tietoja saatavilla",
+    "noResults": "Ei tuloksia",
+    "noItems": "Ei kohteita vielä"
+  },
+  "time": {
+    "seconds": "sekuntia",
+    "minutes": "minuuttia",
+    "hours": "tuntia",
+    "days": "päivää",
+    "ago": "{{time}} sitten",
+    "in": "{{time}} kuluttua"
+  },
+  "confirm": {
+    "title": "Oletko varma?",
+    "deleteTitle": "Vahvista poistaminen",
+    "deleteMessage": "Tätä toimintoa ei voi kumota.",
+    "unsavedChanges": "Sinulla on tallentamattomia muutoksia. Haluatko varmasti poistua?"
+  },
+  "accessibility": {
+    "skipToContent": "Siirry pääsisältöön",
+    "loading": "Ladataan sisältöä",
+    "loaded": "Sisältö ladattu",
+    "error": "Tapahtui virhe",
+    "menuOpen": "Valikko on auki",
+    "menuClosed": "Valikko on suljettu"
+  }
+}

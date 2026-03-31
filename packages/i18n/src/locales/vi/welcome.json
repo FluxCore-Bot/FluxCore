@@ -1,0 +1,65 @@
+{
+  "title": "Chào Mừng & Tạm Biệt",
+  "subtitle": "Cấu hình tin nhắn chào mừng và tạm biệt, hình ảnh và vai trò tự động.",
+  "loadingSubtitle": "Cấu hình tin nhắn chào mừng và tạm biệt cho máy chủ của bạn.",
+  "tabs": {
+    "welcome": "Chào Mừng",
+    "welcomeImage": "Hình Ảnh Chào Mừng",
+    "farewell": "Tạm Biệt",
+    "farewellImage": "Hình Ảnh Tạm Biệt",
+    "dm": "DM Chào Mừng",
+    "autorole": "Vai Trò Tự Động"
+  },
+  "welcome": {
+    "title": "Tin Nhắn Chào Mừng",
+    "description": "Gửi embed tùy chỉnh khi thành viên mới tham gia.",
+    "channelLabel": "ID Kênh Chào Mừng",
+    "channelPlaceholder": "ID Kênh...",
+    "embedBuilder": "Trình Tạo Embed"
+  },
+  "welcomeImage": {
+    "title": "Hình Ảnh Chào Mừng",
+    "description": "Tạo thẻ hình ảnh tùy chỉnh với avatar của thành viên khi họ tham gia.",
+    "disabled": "Bật nút chuyển đổi ở trên để cấu hình hình ảnh chào mừng."
+  },
+  "farewell": {
+    "title": "Tin Nhắn Tạm Biệt",
+    "description": "Gửi tin nhắn khi thành viên rời khỏi máy chủ.",
+    "channelLabel": "ID Kênh Tạm Biệt",
+    "channelPlaceholder": "ID Kênh..."
+  },
+  "farewellImage": {
+    "title": "Hình Ảnh Tạm Biệt",
+    "description": "Tạo thẻ tạm biệt tùy chỉnh khi thành viên rời đi.",
+    "disabled": "Bật nút chuyển đổi ở trên để cấu hình hình ảnh tạm biệt."
+  },
+  "dm": {
+    "title": "DM Chào Mừng",
+    "description": "Gửi tin nhắn trực tiếp cho thành viên mới. Sẽ thầm lặng thất bại nếu DM bị tắt."
+  },
+  "autorole": {
+    "title": "Vai Trò Tự Động",
+    "description": "Tự động gán vai trò cho thành viên mới khi họ tham gia. Bot bị loại trừ. Bot phải có vai trò cao hơn các vai trò được liệt kê ở đây.",
+    "label": "ID Vai Trò (phân cách bằng dấu phẩy)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Tiêu Đề",
+    "description": "Mô Tả",
+    "color": "Màu Sắc (hex)",
+    "footer": "Chân Trang",
+    "thumbnail": "URL Hình Thu Nhỏ",
+    "image": "URL Hình Ảnh",
+    "variables": "Biến:"
+  },
+  "saveChanges": "Lưu Thay Đổi",
+  "saving": "Đang lưu...",
+  "sendTest": "Gửi Tin Nhắn Kiểm Tra",
+  "sending": "Đang gửi...",
+  "toast": {
+    "saved": "Đã lưu cấu hình chào mừng",
+    "saveFailed": "Lưu cấu hình thất bại",
+    "testSent": "Tin nhắn kiểm tra sẽ được gửi đến <#{{channelId}}>",
+    "testFailed": "Gửi tin nhắn kiểm tra thất bại"
+  }
+}

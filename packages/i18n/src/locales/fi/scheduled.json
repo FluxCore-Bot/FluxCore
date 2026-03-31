@@ -1,0 +1,86 @@
+{
+  "title": "Ajastetut viestit",
+  "subtitle": "Luo toistuvia automaattisesti julkaistavia viestejä määritettävillä aikatauluilla.",
+  "stats": {
+    "totalMessages": "Viestejä yhteensä",
+    "active": "Aktiiviset",
+    "inactive": "Epäaktiiviset"
+  },
+  "table": {
+    "name": "Nimi",
+    "channel": "Kanava",
+    "schedule": "Aikataulu",
+    "nextRun": "Seuraava suoritus",
+    "status": "Tila"
+  },
+  "dialog": {
+    "editTitle": "Muokkaa ajastettua viestiä",
+    "createTitle": "Uusi ajastettu viesti"
+  },
+  "form": {
+    "name": "Nimi",
+    "channel": "Kanava",
+    "schedulePreset": "Aikataulun esiasetus",
+    "cronExpression": "Cron-lauseke",
+    "timezone": "Aikavyöhyke",
+    "messageContent": "Viestin sisältö",
+    "text": "Teksti",
+    "embed": "Upotus",
+    "enabled": "Käytössä",
+    "enabledDesc": "Onko tämä ajastettu viesti aktiivinen."
+  },
+  "cronPresets": {
+    "everyHour": "Joka tunti",
+    "every6Hours": "Joka 6. tunti",
+    "daily9am": "Päivittäin klo 09:00",
+    "dailyMidnight": "Päivittäin keskiyöllä",
+    "weeklyMonday": "Viikoittain maanantaina",
+    "monthly1st": "Kuukausittain 1. päivä",
+    "custom": "Mukautettu"
+  },
+  "embed": {
+    "title": "Otsikko",
+    "description": "Kuvaus",
+    "color": "Väri (hex)",
+    "footer": "Alatunniste",
+    "thumbnail": "Pikkukuva-URL",
+    "image": "Kuva-URL"
+  },
+  "toast": {
+    "created": "Ajastettu viesti luotu",
+    "createFailed": "Ajastetun viestin luominen epäonnistui",
+    "updated": "Ajastettu viesti päivitetty",
+    "updateFailed": "Ajastetun viestin päivittäminen epäonnistui",
+    "deleted": "Ajastettu viesti poistettu",
+    "deleteFailed": "Ajastetun viestin poistaminen epäonnistui",
+    "testSent": "Testiviesti lähetetty",
+    "testFailed": "Testiviestin lähettäminen epäonnistui"
+  },
+  "empty": {
+    "title": "Ei ajastettuja viestejä vielä",
+    "description": "Luo ajastettu viesti julkaistaksesi sisältöä automaattisesti toistuvasti.",
+    "createButton": "Luo viesti"
+  },
+  "pagination": {
+    "previous": "Edellinen",
+    "next": "Seuraava",
+    "page": "Sivu {{page}} / {{total}}"
+  },
+  "actions": {
+    "newMessage": "Uusi viesti",
+    "testSend": "Testilähetys",
+    "edit": "Muokkaa",
+    "delete": "Poista",
+    "save": "Tallenna",
+    "cancel": "Peruuta"
+  },
+  "validation": {
+    "nameRequired": "Viestin nimi vaaditaan",
+    "channelRequired": "Kanava vaaditaan"
+  },
+  "cronPreview": {
+    "nextRuns": "Seuraavat suoritukset"
+  },
+  "characters": "{{count}}/2000 merkkiä",
+  "never": "Ei koskaan"
+}

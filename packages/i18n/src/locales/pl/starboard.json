@@ -1,0 +1,41 @@
+{
+  "title": "Tablica gwiazd",
+  "subtitle": "Wyróżniaj najlepsze wiadomości, zbierając reakcje gwiazdek w dedykowanym kanale.",
+  "tabs": {
+    "settings": "Ustawienia",
+    "starredMessages": "Oznaczone wiadomości"
+  },
+  "settings": {
+    "title": "Konfiguracja tablicy gwiazd",
+    "description": "Skonfiguruj, kiedy i gdzie publikowane są oznaczone wiadomości.",
+    "channelId": "Kanał tablicy gwiazd",
+    "channelIdDesc": "Kanał, na którym publikowane są oznaczone wiadomości.",
+    "starEmoji": "Emoji gwiazdy",
+    "starEmojiDesc": "Emoji używane do oznaczania wiadomości. Domyślnie gwiazdka.",
+    "threshold": "Próg gwiazd",
+    "thresholdDesc": "Minimalna liczba reakcji wymagana do opublikowania wiadomości na tablicy gwiazd.",
+    "selfStar": "Samooznaczanie",
+    "selfStarDesc": "Pozwól autorom oznaczać własne wiadomości.",
+    "nsfwAllowed": "NSFW dozwolone",
+    "nsfwAllowedDesc": "Pozwól wiadomościom z kanałów NSFW pojawiać się na tablicy gwiazd.",
+    "ignoredChannels": "Ignorowane kanały",
+    "ignoredChannelsDesc": "Wiadomości z tych kanałów nie pojawią się na tablicy gwiazd."
+  },
+  "messages": {
+    "table": {
+      "original": "Oryginalna wiadomość",
+      "stars": "Gwiazdy",
+      "channel": "Kanał",
+      "date": "Data"
+    },
+    "noMessages": "Brak oznaczonych wiadomości."
+  },
+  "toast": {
+    "saved": "Ustawienia tablicy gwiazd zapisane",
+    "saveFailed": "Nie udało się zapisać ustawień tablicy gwiazd"
+  },
+  "actions": {
+    "save": "Zapisz",
+    "saving": "Zapisywanie..."
+  }
+}

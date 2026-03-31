@@ -1,0 +1,50 @@
+{
+  "title": "Loosimised",
+  "subtitle": "Korraldage loosimisi kohandatava kestuse, osalemistingimuste ja võitjate valikuga.",
+  "stats": {
+    "activeGiveaways": "Aktiivsed loosimised",
+    "pastGiveaways": "Möödunud loosimised",
+    "totalEntries": "Osalejaid kokku"
+  },
+  "table": {
+    "prize": "Auhind",
+    "winners": "Võitjad",
+    "entries": "Osalejad",
+    "endsIn": "Lõpeb",
+    "status": "Olek"
+  },
+  "statuses": {
+    "active": "Aktiivne",
+    "ended": "Lõppenud",
+    "cancelled": "Tühistatud"
+  },
+  "actions": {
+    "create": "Loo loosimine",
+    "edit": "Muuda",
+    "end": "Lõpeta",
+    "reroll": "Loosi uuesti",
+    "delete": "Kustuta"
+  },
+  "form": {
+    "prize": "Auhind",
+    "winnersCount": "Võitjate arv",
+    "duration": "Kestus",
+    "channel": "Kanal",
+    "requiredRole": "Nõutav roll",
+    "description": "Kirjeldus"
+  },
+  "toast": {
+    "created": "Loosimine loodud",
+    "createFailed": "Loosimise loomine ebaõnnestus",
+    "updated": "Loosimine uuendatud",
+    "updateFailed": "Loosimise uuendamine ebaõnnestus",
+    "ended": "Loosimine lõpetatud",
+    "endFailed": "Loosimise lõpetamine ebaõnnestus",
+    "rerolled": "Võitjad uuesti loositud",
+    "rerollFailed": "Võitjate uuesti loosimine ebaõnnestus",
+    "deleted": "Loosimine kustutatud",
+    "deleteFailed": "Loosimise kustutamine ebaõnnestus"
+  },
+  "empty": "Loosimisi pole veel. Loo üks, et alustada.",
+  "loading": "Laadin loosimisi..."
+}

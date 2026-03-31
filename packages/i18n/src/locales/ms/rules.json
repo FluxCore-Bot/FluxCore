@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Pelayan",
+    "automation": "Automasi"
+  },
+  "title": "Peraturan Automasi",
+  "subtitle": "Konfigurasikan pencetus berasaskan peristiwa dan respons automatik untuk pelayan anda.",
+  "createRule": "Cipta Peraturan",
+  "stats": {
+    "totalRules": "Jumlah Peraturan",
+    "active": "Aktif",
+    "executions7d": "Pelaksanaan (7h)",
+    "successRate": "Kadar Kejayaan"
+  },
+  "filter": {
+    "searchPlaceholder": "Cari peraturan...",
+    "eventType": "Jenis peristiwa",
+    "allEvents": "Semua Peristiwa",
+    "allStatus": "Semua Status",
+    "enabled": "Diaktifkan",
+    "disabled": "Dinyahaktifkan",
+    "sortBy": "Susun mengikut",
+    "priority": "Keutamaan",
+    "name": "Nama",
+    "lastFired": "Terakhir Dijalankan",
+    "status": "Status",
+    "clear": "Kosongkan",
+    "showing": "Menunjukkan {{filtered}} daripada {{total}} peraturan"
+  },
+  "bulk": {
+    "selected": "{{count}} peraturan dipilih",
+    "selected_other": "{{count}} peraturan dipilih",
+    "enable": "Aktifkan",
+    "disable": "Nyahaktifkan",
+    "delete": "Padam",
+    "clear": "Kosongkan"
+  },
+  "empty": {
+    "title": "Mulakan dengan Automasi",
+    "description": "Pilih templat untuk bermula dengan cepat, atau cipta peraturan dari awal.",
+    "createFromScratch": "Cipta dari Awal"
+  },
+  "noResults": {
+    "title": "Tiada peraturan yang sepadan",
+    "description": "Cuba laraskan carian atau penapis untuk mencari apa yang anda cari."
+  },
+  "templates": {
+    "welcomeMessage": "Mesej Selamat Datang",
+    "welcomeMessageDesc": "Sambut ahli baru dengan mesej tersuai di saluran",
+    "autoRole": "Peranan Automatik",
+    "autoRoleDesc": "Berikan peranan secara automatik apabila ahli menyertai",
+    "logDeleted": "Log Mesej yang Dipadam",
+    "logDeletedDesc": "Hantar maklumat mesej yang dipadam ke saluran log",
+    "boostThankYou": "Terima Kasih Boost",
+    "boostThankYouDesc": "Hantar DM untuk berterima kasih kepada pengguna yang mem-boost pelayan",
+    "banLogger": "Logger Ban",
+    "banLoggerDesc": "Rekodkan peristiwa ban ke saluran moderasi",
+    "autoThread": "Thread Automatik",
+    "autoThreadDesc": "Cipta thread secara automatik apabila mesej dihantar"
+  },
+  "deleteDialog": {
+    "title": "Padam Peraturan",
+    "description": "Adakah anda pasti mahu memadam \"{{name}}\"? Tindakan ini tidak boleh dibuat asal.",
+    "confirm": "Padam"
+  },
+  "bulkDeleteDialog": {
+    "title": "Padam Peraturan yang Dipilih",
+    "description": "Adakah anda pasti mahu memadam {{count}} peraturan? Tindakan ini tidak boleh dibuat asal.",
+    "description_other": "Adakah anda pasti mahu memadam {{count}} peraturan? Tindakan ini tidak boleh dibuat asal.",
+    "confirm": "Padam Semua"
+  },
+  "toast": {
+    "deleted": "Peraturan dipadam",
+    "deleteFailed": "Gagal memadam peraturan",
+    "enabled": "Peraturan diaktifkan",
+    "disabled": "Peraturan dinyahaktifkan",
+    "toggleFailed": "Gagal mengalih peraturan",
+    "duplicated": "Peraturan diduplikasi",
+    "duplicateFailed": "Gagal menduplikasi peraturan",
+    "bulkEnabled": "{{count}} peraturan diaktifkan",
+    "bulkDisabled": "{{count}} peraturan dinyahaktifkan",
+    "bulkEnableFailed": "Gagal mengaktifkan peraturan",
+    "bulkDisableFailed": "Gagal menyahaktifkan peraturan",
+    "bulkDeleted": "{{count}} peraturan dipadam",
+    "bulkDeleteFailed": "Gagal memadam peraturan"
+  }
+}

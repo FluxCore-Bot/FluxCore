@@ -1,0 +1,50 @@
+{
+  "title": "Sorteios",
+  "subtitle": "Organiza sorteios con duración personalizable, requisitos de participación e selección de gañadores.",
+  "stats": {
+    "activeGiveaways": "Sorteios Activos",
+    "pastGiveaways": "Sorteios Pasados",
+    "totalEntries": "Total de Participacións"
+  },
+  "table": {
+    "prize": "Premio",
+    "winners": "Gañadores",
+    "entries": "Participacións",
+    "endsIn": "Remata En",
+    "status": "Estado"
+  },
+  "statuses": {
+    "active": "Activo",
+    "ended": "Rematado",
+    "cancelled": "Cancelado"
+  },
+  "actions": {
+    "create": "Crear Sorteio",
+    "edit": "Editar",
+    "end": "Rematar",
+    "reroll": "Novo sorteo",
+    "delete": "Eliminar"
+  },
+  "form": {
+    "prize": "Premio",
+    "winnersCount": "Número de Gañadores",
+    "duration": "Duración",
+    "channel": "Canal",
+    "requiredRole": "Rol Requirido",
+    "description": "Descrición"
+  },
+  "toast": {
+    "created": "Sorteio creado",
+    "createFailed": "Non se puido crear o sorteio",
+    "updated": "Sorteio actualizado",
+    "updateFailed": "Non se puido actualizar o sorteio",
+    "ended": "Sorteio rematado",
+    "endFailed": "Non se puido rematar o sorteio",
+    "rerolled": "Gañadores sorteados de novo",
+    "rerollFailed": "Non se puideron sortear de novo os gañadores",
+    "deleted": "Sorteio eliminado",
+    "deleteFailed": "Non se puido eliminar o sorteio"
+  },
+  "empty": "Aínda non hai sorteios. Crea un para comezar.",
+  "loading": "Cargando sorteios..."
+}

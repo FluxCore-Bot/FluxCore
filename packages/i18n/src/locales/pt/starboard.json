@@ -1,0 +1,41 @@
+{
+  "title": "Starboard",
+  "subtitle": "Destaque as melhores mensagens recolhendo reacoes de estrela num canal dedicado.",
+  "tabs": {
+    "settings": "Definicoes",
+    "starredMessages": "Mensagens com estrela"
+  },
+  "settings": {
+    "title": "Configuracao do Starboard",
+    "description": "Configure quando e onde as mensagens com estrela sao publicadas.",
+    "channelId": "Canal do Starboard",
+    "channelIdDesc": "O canal onde as mensagens com estrela sao publicadas.",
+    "starEmoji": "Emoji de estrela",
+    "starEmojiDesc": "O emoji usado para destacar mensagens. Por defeito o emoji de estrela.",
+    "threshold": "Limiar de estrelas",
+    "thresholdDesc": "Numero minimo de reacoes necessarias para publicar uma mensagem no starboard.",
+    "selfStar": "Auto-estrela",
+    "selfStarDesc": "Permitir que os autores das mensagens destaquem as suas proprias mensagens.",
+    "nsfwAllowed": "NSFW permitido",
+    "nsfwAllowedDesc": "Permitir que mensagens de canais NSFW aparecam no starboard.",
+    "ignoredChannels": "Canais ignorados",
+    "ignoredChannelsDesc": "Mensagens destes canais nunca aparecerao no starboard."
+  },
+  "messages": {
+    "table": {
+      "original": "Mensagem original",
+      "stars": "Estrelas",
+      "channel": "Canal",
+      "date": "Data"
+    },
+    "noMessages": "Ainda sem mensagens com estrela."
+  },
+  "toast": {
+    "saved": "Definicoes do starboard guardadas",
+    "saveFailed": "Falha ao guardar as definicoes do starboard"
+  },
+  "actions": {
+    "save": "Guardar",
+    "saving": "A guardar..."
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "title": "Moderering",
+  "subtitle": "Bekyk en bestuur modereringssake, stel straf-instellings op.",
+  "stats": {
+    "totalCases": "Totale Sake",
+    "activeTempbans": "Aktiewe Tydelike Verbanne",
+    "last24h": "Laaste 24u"
+  },
+  "cases": "Sake",
+  "actions": {
+    "ban": "Verban",
+    "tempban": "Tydelike Verban",
+    "kick": "Skop",
+    "timeout": "Tyduit",
+    "softban": "Sagte Verban",
+    "warn": "Waarsku",
+    "note": "Nota"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Aksie",
+    "target": "Teiken",
+    "moderator": "Moderator",
+    "reason": "Rede",
+    "date": "Datum",
+    "actions": "Aksies",
+    "noCases": "Geen sake gevind nie.",
+    "noReason": "Geen rede"
+  },
+  "filter": {
+    "userPlaceholder": "Filtreer op Gebruiker-ID...",
+    "allActions": "Alle Aksies"
+  },
+  "pagination": {
+    "previous": "Vorige",
+    "next": "Volgende",
+    "page": "Bladsy {{page}} van {{total}}"
+  },
+  "editDialog": {
+    "title": "Wysig Saak #{{id}} Rede",
+    "placeholder": "Voer nuwe rede in...",
+    "saving": "Stoor..."
+  },
+  "editReason": "Wysig rede",
+  "deleteCase": "Verwyder saak",
+  "deleteConfirm": "Is jy seker jy wil hierdie saak verwyder?",
+  "settings": {
+    "title": "Instellings",
+    "dmOnPunishment": "DM by Straf",
+    "dmOnPunishmentDesc": "Stuur 'n DM aan gebruikers wanneer hulle gestraf word (verban, skop, tyduit).",
+    "modLogChannel": "Moderering-logkanaal",
+    "modLogChannelDesc": "Kanaal waar modereringsaksies gelogboek word."
+  }
+}

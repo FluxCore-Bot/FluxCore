@@ -1,0 +1,67 @@
+{
+  "title": "Pasiulymai",
+  "subtitle": "Leiskite nariams teikti idejas ir balsuoti uz jas. Valdykite busena ir atsiliepimus.",
+  "stats": {
+    "totalSuggestions": "Viso pasiulymu",
+    "systemStatus": "Sistemos busena",
+    "channel": {
+      "configured": "Kanalas sukonfigurotas",
+      "notSet": "Kanalas nenustatytas"
+    }
+  },
+  "tabs": {
+    "suggestions": "Pasiulymai",
+    "settings": "Nustatymai"
+  },
+  "filter": {
+    "filterByStatus": "Filtruoti pagal busena",
+    "all": "Visi",
+    "pending": "Laukiantys",
+    "approved": "Patvirtinti",
+    "rejected": "Atmesti",
+    "implemented": "Igyvendinti",
+    "considered": "Svarstomi"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Autorius",
+    "content": "Turinys",
+    "status": "Busena",
+    "votes": "Balsai",
+    "date": "Data"
+  },
+  "actions": {
+    "approve": "Patvirtinti",
+    "reject": "Atmesti",
+    "implement": "Pazymeti kaip igyvendinta",
+    "consider": "Apsvarstyti",
+    "delete": "Istrinti"
+  },
+  "settings": {
+    "channel": "Pasiulymu kanalas",
+    "channelDesc": "Kanalas, kuriame skelbiami pasiulymai balsavimui.",
+    "voteEmojis": "Balsavimo emodziai",
+    "voteEmojisDesc": "Emodziai naudojami teigiamoms ir neigiamioms reakcijoms.",
+    "autoThread": "Automatinis gijos kurimas",
+    "autoThreadDesc": "Automatiskai sukurti diskusijos gija kiekvienam naujam pasiulymui.",
+    "dmOnStatusChange": "Pranesimas apie busenos pakeitima",
+    "dmOnStatusChangeDesc": "Pranesti autoriui privatia zinute, kai pasiciu busena pasikeicia."
+  },
+  "toast": {
+    "approved": "Pasiulymas patvirtintas",
+    "rejected": "Pasiulymas atmestas",
+    "implemented": "Pasiulymas pazymetas kaip igyvendintas",
+    "considered": "Pasiulymas pazymetas kaip svarstomas",
+    "deleted": "Pasiulymas istrintas",
+    "actionFailed": "Nepavyko atnaujinti pasiulymo",
+    "settingsSaved": "Pasiulymu nustatymai issaugoti",
+    "settingsFailed": "Nepavyko issaugoti pasiulymu nustatymu"
+  },
+  "empty": "Pasiulymu nera.",
+  "loading": "Kraunami pasiulymai...",
+  "pagination": {
+    "previous": "Ankstesnis",
+    "next": "Kitas",
+    "page": "Puslapis {{page}} is {{total}}"
+  }
+}

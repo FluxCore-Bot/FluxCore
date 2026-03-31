@@ -1,0 +1,113 @@
+{
+  "title": "Comandos personalizados",
+  "subtitle": "Crea auto-respuestas y comandos con prefijo activados por mensajes.",
+  "stats": {
+    "totalCommands": "Total de comandos",
+    "enabled": "Activados",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Comandos",
+    "variables": "Variables"
+  },
+  "table": {
+    "name": "Nombre",
+    "trigger": "Activador",
+    "response": "Respuesta",
+    "cooldown": "Tiempo de espera",
+    "status": "Estado"
+  },
+  "triggerTypes": {
+    "command": "!comando",
+    "keyword": "Palabra clave",
+    "startsWith": "Empieza con",
+    "regex": "Regex",
+    "prefixCommand": "Comando con prefijo (!nombre)",
+    "keywordContains": "Palabra clave (contiene)"
+  },
+  "dialog": {
+    "createCommand": "Crear comando",
+    "editCommand": "Editar comando"
+  },
+  "form": {
+    "commandName": "Nombre del comando",
+    "triggerText": "Texto activador",
+    "regexPattern": "Patron Regex",
+    "triggerType": "Tipo de activador",
+    "response": "Respuesta",
+    "message": "Mensaje",
+    "embedTitle": "Titulo del embed",
+    "embedDescription": "Descripcion del embed",
+    "color": "Color",
+    "footer": "Pie de pagina"
+  },
+  "options": {
+    "cooldown": "Tiempo de espera (segundos)",
+    "enabled": "Activado",
+    "enabledDesc": "Si este comando esta activo",
+    "deleteTrigger": "Eliminar mensaje activador",
+    "deleteTriggerDesc": "Eliminar automaticamente el mensaje que activo este comando.",
+    "dmResponse": "Respuesta por MD",
+    "dmResponseDesc": "Enviar la respuesta como mensaje directo en lugar de en el canal."
+  },
+  "restrictions": {
+    "title": "Restricciones",
+    "allowedChannels": "Canales permitidos (vacio = todos)",
+    "allowedRoles": "Roles permitidos (vacio = todos)",
+    "addChannel": "Agregar canal",
+    "addRole": "Agregar rol"
+  },
+  "actions": {
+    "create": "Crear",
+    "update": "Actualizar",
+    "cancel": "Cancelar",
+    "addAction": "Agregar accion",
+    "addRole": "Agregar rol",
+    "removeRole": "Quitar rol"
+  },
+  "actionsSection": {
+    "title": "Acciones ({{count}}/5)",
+    "noActions": "No hay acciones configuradas. Agrega una accion para definir lo que hace este comando.",
+    "maxActions": "Maximo 5 acciones por comando"
+  },
+  "variables": {
+    "title": "Variables de plantilla",
+    "description": "Usa estas variables en tus respuestas de comando. Seran reemplazadas por los valores reales cuando se active el comando.",
+    "table": {
+      "variable": "Variable",
+      "description": "Descripcion"
+    },
+    "entries": {
+      "user": "{user} — Menciona al usuario que activo el comando",
+      "username": "{username} — El nombre visible del usuario",
+      "userId": "{userId} — El ID del usuario",
+      "server": "{server} — El nombre del servidor",
+      "channel": "{channel} — Menciona el canal actual",
+      "channelName": "{channelName} — El nombre del canal",
+      "memberCount": "{memberCount} — Numero total de miembros del servidor"
+    }
+  },
+  "toast": {
+    "created": "Comando creado",
+    "createFailed": "Error al crear el comando",
+    "updated": "Comando actualizado",
+    "updateFailed": "Error al actualizar el comando",
+    "deleted": "Comando eliminado",
+    "deleteFailed": "Error al eliminar el comando",
+    "toggleEnabled": "Comando activado",
+    "toggleDisabled": "Comando desactivado",
+    "toggleFailed": "Error al cambiar el estado del comando"
+  },
+  "empty": "Aun no se han creado comandos personalizados.",
+  "loading": "Cargando comandos...",
+  "badge": {
+    "active": "Activo",
+    "disabled": "Desactivado",
+    "text": "Texto",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "El nombre del comando es obligatorio"
+  },
+  "triggerPrefix": "Activador: !{{name}}"
+}

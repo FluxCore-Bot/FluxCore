@@ -1,0 +1,120 @@
+{
+  "title": "Система рівнів",
+  "subtitle": "Налаштуйте отримання досвіду, оголошення про підвищення рівня, нагородні ролі та множники.",
+  "stats": {
+    "rankedMembers": "Учасників у рейтингу",
+    "roleRewards": "Нагородні ролі",
+    "systemStatus": "Статус системи",
+    "enabled": "Увімкнена",
+    "disabled": "Вимкнена"
+  },
+  "tabs": {
+    "leaderboard": "Таблиця лідерів",
+    "settings": "Налаштування",
+    "roleRewards": "Нагородні ролі",
+    "exclusions": "Винятки",
+    "multipliers": "Множники"
+  },
+  "table": {
+    "rank": "Місце",
+    "userId": "ID користувача",
+    "level": "Рівень",
+    "xp": "Досвід",
+    "messages": "Повідомлення",
+    "voiceTime": "Час у голосовому"
+  },
+  "settings": {
+    "title": "Налаштування рівнів",
+    "enabled": "Увімкнути рівні",
+    "enabledDesc": "Увімкнути або вимкнути всю систему рівнів.",
+    "xpPerMessage": "Досвід за повідомлення",
+    "xpPerMessageDesc": "Базовий досвід за повідомлення (додається випадкове значення 0-9).",
+    "xpCooldown": "Кулдаун досвіду (секунди)",
+    "xpCooldownDesc": "Мінімальний час між нарахуваннями досвіду для користувача.",
+    "voiceXpEnabled": "Досвід за голосовий",
+    "voiceXpEnabledDesc": "Нараховувати досвід за час у голосових каналах.",
+    "voiceXpPerMinute": "Досвід за хвилину в голосовому",
+    "voiceXpPerMinuteDesc": "Досвід, що нараховується за хвилину в голосовому каналі.",
+    "levelUpAnnouncements": "Оголошення про підвищення рівня",
+    "levelUpAnnouncementsDesc": "Оголошувати, коли учасник підвищує рівень.",
+    "announceDest": "Місце оголошення",
+    "announceDestHint": "Ви також можете ввести ID каналу безпосередньо в поле вище.",
+    "announceDestSameChannel": "Той самий канал",
+    "announceDestDM": "Особисте повідомлення",
+    "announceMessage": "Текст оголошення",
+    "announceMessagePlaceholder": "{user} досяг **рівня {level}**!",
+    "announceMessageVars": "Змінні: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Нагородні ролі",
+    "description": "Автоматично призначайте ролі, коли учасники досягають певних рівнів.",
+    "addReward": "Додати нагороду",
+    "addRewardTitle": "Додати нагородну роль",
+    "level": "Рівень",
+    "levelPrefix": "Рівень {{level}}",
+    "roleId": "ID ролі",
+    "levelPlaceholder": "напр. 5",
+    "rolePlaceholder": "напр. 123456789",
+    "removeReward": "Видалити",
+    "noRewards": "Нагородні ролі не налаштовані."
+  },
+  "exclusions": {
+    "title": "Винятки з досвіду",
+    "description": "Канали та ролі, за які не нараховується досвід.",
+    "noXpChannels": "Канали без досвіду (ID через кому)",
+    "noXpChannelsPlaceholder": "напр. 123456789, 987654321",
+    "noXpRoles": "Ролі без досвіду (ID через кому)",
+    "noXpRolesPlaceholder": "напр. 123456789, 987654321",
+    "save": "Зберегти винятки"
+  },
+  "multipliers": {
+    "title": "Множники досвіду",
+    "description": "Встановіть множники досвіду для каналів або ролей. Множник 2 подвоює отриманий досвід.",
+    "channelMultipliers": "Множники каналів",
+    "roleMultipliers": "Множники ролей",
+    "channelId": "ID каналу",
+    "roleId": "ID ролі",
+    "multiplier": "Множник",
+    "type": "Тип",
+    "typeChannel": "Канал",
+    "typeRole": "Роль",
+    "id": "ID",
+    "idPlaceholder": "ID каналу або ролі",
+    "value": "Множник",
+    "valuePlaceholder": "напр. 2",
+    "add": "Додати множник",
+    "addTitle": "Додати множник",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Множники досвіду не налаштовані."
+  },
+  "pagination": {
+    "previous": "Назад",
+    "next": "Далі",
+    "pageInfo": "Сторінка {{page}} з {{totalPages}} ({{total}} всього)"
+  },
+  "loading": "Завантаження таблиці лідерів...",
+  "loadingGeneric": "Завантаження...",
+  "emptyLeaderboard": "Жоден учасник ще не отримав досвід.",
+  "toast": {
+    "saved": "Налаштування рівнів збережено",
+    "saveFailed": "Не вдалося оновити налаштування",
+    "rewardAdded": "Нагороду додано",
+    "rewardAddFailed": "Не вдалося додати нагороду",
+    "rewardRemoved": "Нагороду видалено",
+    "rewardRemoveFailed": "Не вдалося видалити нагороду",
+    "multiplierAdded": "Множник додано",
+    "multiplierAddFailed": "Не вдалося додати множник",
+    "multiplierRemoved": "Множник видалено",
+    "multiplierRemoveFailed": "Не вдалося видалити множник",
+    "exclusionUpdated": "Винятки збережено",
+    "exclusionFailed": "Не вдалося зберегти винятки",
+    "levelValidation": "Рівень має бути від 1 до 100",
+    "roleIdRequired": "ID ролі обов'язковий",
+    "multiplierIdRequired": "ID та значення множника обов'язкові",
+    "multiplierRange": "Множник має бути від 0 до 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}г {{minutes}}хв",
+    "voiceTimeMinutesOnly": "{{minutes}}хв"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "title": "[NEEDS TRANSLATION] Suggestions",
+  "subtitle": "[NEEDS TRANSLATION] Let members submit ideas and vote on them. Manage status and feedback.",
+  "stats": {
+    "totalSuggestions": "[NEEDS TRANSLATION] Total Suggestions",
+    "systemStatus": "[NEEDS TRANSLATION] System Status",
+    "channel": {
+      "configured": "[NEEDS TRANSLATION] Channel Configured",
+      "notSet": "[NEEDS TRANSLATION] Channel Not Set"
+    }
+  },
+  "tabs": {
+    "suggestions": "[NEEDS TRANSLATION] Suggestions",
+    "settings": "[NEEDS TRANSLATION] Settings"
+  },
+  "filter": {
+    "filterByStatus": "[NEEDS TRANSLATION] Filter by Status",
+    "all": "[NEEDS TRANSLATION] All",
+    "pending": "[NEEDS TRANSLATION] Pending",
+    "approved": "[NEEDS TRANSLATION] Approved",
+    "rejected": "[NEEDS TRANSLATION] Rejected",
+    "implemented": "[NEEDS TRANSLATION] Implemented",
+    "considered": "[NEEDS TRANSLATION] Under Consideration"
+  },
+  "table": {
+    "id": "[NEEDS TRANSLATION] ID",
+    "author": "[NEEDS TRANSLATION] Author",
+    "content": "[NEEDS TRANSLATION] Content",
+    "status": "[NEEDS TRANSLATION] Status",
+    "votes": "[NEEDS TRANSLATION] Votes",
+    "date": "[NEEDS TRANSLATION] Date"
+  },
+  "actions": {
+    "approve": "[NEEDS TRANSLATION] Approve",
+    "reject": "[NEEDS TRANSLATION] Reject",
+    "implement": "[NEEDS TRANSLATION] Mark Implemented",
+    "consider": "[NEEDS TRANSLATION] Consider",
+    "delete": "[NEEDS TRANSLATION] Delete"
+  },
+  "settings": {
+    "channel": "[NEEDS TRANSLATION] Suggestions Channel",
+    "channelDesc": "[NEEDS TRANSLATION] The channel where suggestions are posted for voting.",
+    "voteEmojis": "[NEEDS TRANSLATION] Vote Emojis",
+    "voteEmojisDesc": "[NEEDS TRANSLATION] Emojis used for upvote and downvote reactions.",
+    "autoThread": "[NEEDS TRANSLATION] Auto-Create Thread",
+    "autoThreadDesc": "[NEEDS TRANSLATION] Automatically create a discussion thread on each new suggestion.",
+    "dmOnStatusChange": "[NEEDS TRANSLATION] DM on Status Change",
+    "dmOnStatusChangeDesc": "[NEEDS TRANSLATION] Notify the author via DM when their suggestion status changes."
+  },
+  "toast": {
+    "approved": "[NEEDS TRANSLATION] Suggestion approved",
+    "rejected": "[NEEDS TRANSLATION] Suggestion rejected",
+    "implemented": "[NEEDS TRANSLATION] Suggestion marked as implemented",
+    "considered": "[NEEDS TRANSLATION] Suggestion marked as under consideration",
+    "deleted": "[NEEDS TRANSLATION] Suggestion deleted",
+    "actionFailed": "[NEEDS TRANSLATION] Failed to update suggestion",
+    "settingsSaved": "[NEEDS TRANSLATION] Suggestion settings saved",
+    "settingsFailed": "[NEEDS TRANSLATION] Failed to save suggestion settings"
+  },
+  "empty": "[NEEDS TRANSLATION] No suggestions yet.",
+  "loading": "[NEEDS TRANSLATION] Loading suggestions...",
+  "pagination": {
+    "previous": "[NEEDS TRANSLATION] Previous",
+    "next": "[NEEDS TRANSLATION] Next",
+    "page": "[NEEDS TRANSLATION] Page {{page}} of {{total}}"
+  }
+}

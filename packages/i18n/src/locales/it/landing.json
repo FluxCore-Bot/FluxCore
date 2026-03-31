@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Ora in beta pubblica",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Il framework",
+    "titleLine2": "tutto-in-uno per bot Discord",
+    "subtitle": "Implementa una presenza Discord professionale in pochi minuti. Modulare, self-hosted e progettato per comunita esigenti."
+  },
+  "cta": {
+    "addToServer": "Aggiungi al server",
+    "openDashboard": "Apri pannello",
+    "exploreFeatures": "Esplora le funzionalita"
+  },
+  "stats": {
+    "servers": "Server",
+    "latency": "Latenza",
+    "uptime": "Disponibilita",
+    "modules": "Moduli",
+    "serversValue": "1.000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99,9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Funzionalita",
+    "title": "Tutto cio di cui il tuo server ha bisogno",
+    "subtitle": "Un toolkit modulare progettato per comunita che richiedono affidabilita, flessibilita e controllo.",
+    "automation": {
+      "title": "Regole di automazione",
+      "description": "Crea workflow complessi basati su eventi senza codice. Trigger se-questo-allora-quello con 23 tipi di eventi e 10 tipi di azioni."
+    },
+    "music": {
+      "title": "Sistema musicale",
+      "description": "Streaming audio ad alta fedelta con supporto multi-piattaforma. Gestione code, controlli DJ e modalita libreria."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Gestione dinamica dei canali vocali. Creazione automatica con modelli di nomi personalizzati, permessi e pulizia."
+    },
+    "logs": {
+      "title": "Registri di attivita",
+      "description": "Traccia di audit completa di ogni esecuzione di automazione. Cerca, filtra e debug delle tue regole con registri dettagliati."
+    },
+    "webhooks": {
+      "title": "Webhook e API",
+      "description": "Invia dati a servizi esterni con webhook HTTP. Header personalizzati, modelli di corpo e interpolazione di variabili."
+    },
+    "dashboard": {
+      "title": "Pannello in tempo reale",
+      "description": "Gestisci tutto da un elegante pannello web. Analisi, configurazione e monitoraggio in un unico posto."
+    }
+  },
+  "ctaSection": {
+    "title": "Pronto a migliorare la tua comunita?",
+    "subtitle": "Inizia in pochi minuti senza configurazione. Self-hosted, open source e completamente gratuito."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "\u00a9 {{year}} FluxCore Technologies. Tutti i diritti riservati.",
+    "links": {
+      "documentation": "Documentazione",
+      "support": "Supporto",
+      "privacy": "Informativa sulla privacy",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

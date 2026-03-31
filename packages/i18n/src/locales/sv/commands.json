@@ -1,0 +1,113 @@
+{
+  "title": "Anpassade kommandon",
+  "subtitle": "Skapa autosvar och prefixkommandon som triggas av meddelanden.",
+  "stats": {
+    "totalCommands": "Totalt antal kommandon",
+    "enabled": "Aktiverade",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Kommandon",
+    "variables": "Variabler"
+  },
+  "table": {
+    "name": "Namn",
+    "trigger": "Utlösare",
+    "response": "Svar",
+    "cooldown": "Avkylningstid",
+    "status": "Status"
+  },
+  "triggerTypes": {
+    "command": "!kommando",
+    "keyword": "Nyckelord",
+    "startsWith": "Börjar med",
+    "regex": "Regex",
+    "prefixCommand": "Prefixkommando (!namn)",
+    "keywordContains": "Nyckelord (innehåller)"
+  },
+  "dialog": {
+    "createCommand": "Skapa kommando",
+    "editCommand": "Redigera kommando"
+  },
+  "form": {
+    "commandName": "Kommandonamn",
+    "triggerText": "Utlösartext",
+    "regexPattern": "Regex-mönster",
+    "triggerType": "Utlösartyp",
+    "response": "Svar",
+    "message": "Meddelande",
+    "embedTitle": "Inbäddningstitel",
+    "embedDescription": "Inbäddningsbeskrivning",
+    "color": "Färg",
+    "footer": "Sidfot"
+  },
+  "options": {
+    "cooldown": "Avkylningstid (sekunder)",
+    "enabled": "Aktiverad",
+    "enabledDesc": "Om detta kommando är aktivt",
+    "deleteTrigger": "Ta bort utlösarmeddelande",
+    "deleteTriggerDesc": "Ta automatiskt bort meddelandet som utlöste detta kommando.",
+    "dmResponse": "DM-svar",
+    "dmResponseDesc": "Skicka svaret som ett direktmeddelande istället för i kanalen."
+  },
+  "restrictions": {
+    "title": "Begränsningar",
+    "allowedChannels": "Tillåtna kanaler (tom = alla)",
+    "allowedRoles": "Tillåtna roller (tom = alla)",
+    "addChannel": "Lägg till kanal",
+    "addRole": "Lägg till roll"
+  },
+  "actions": {
+    "create": "Skapa",
+    "update": "Uppdatera",
+    "cancel": "Avbryt",
+    "addAction": "Lägg till åtgärd",
+    "addRole": "Lägg till roll",
+    "removeRole": "Ta bort roll"
+  },
+  "actionsSection": {
+    "title": "Åtgärder ({{count}}/5)",
+    "noActions": "Inga åtgärder konfigurerade. Lägg till en åtgärd för att definiera vad detta kommando gör.",
+    "maxActions": "Maximalt 5 åtgärder per kommando"
+  },
+  "variables": {
+    "title": "Mallvariabler",
+    "description": "Använd dessa variabler i dina kommandosvar. De ersätts med de faktiska värdena när kommandot utlöses.",
+    "table": {
+      "variable": "Variabel",
+      "description": "Beskrivning"
+    },
+    "entries": {
+      "user": "{user} — Nämner användaren som utlöste kommandot",
+      "username": "{username} — Användarens visningsnamn",
+      "userId": "{userId} — Användarens ID",
+      "server": "{server} — Servernamnet",
+      "channel": "{channel} — Nämner den aktuella kanalen",
+      "channelName": "{channelName} — Kanalnamnet",
+      "memberCount": "{memberCount} — Totalt antal servermedlemmar"
+    }
+  },
+  "toast": {
+    "created": "Kommando skapat",
+    "createFailed": "Misslyckades med att skapa kommando",
+    "updated": "Kommando uppdaterat",
+    "updateFailed": "Misslyckades med att uppdatera kommando",
+    "deleted": "Kommando borttaget",
+    "deleteFailed": "Misslyckades med att ta bort kommando",
+    "toggleEnabled": "Kommando aktiverat",
+    "toggleDisabled": "Kommando inaktiverat",
+    "toggleFailed": "Misslyckades med att växla kommando"
+  },
+  "empty": "Inga anpassade kommandon skapade ännu.",
+  "loading": "Laddar kommandon...",
+  "badge": {
+    "active": "Aktiv",
+    "disabled": "Inaktiverad",
+    "text": "Text",
+    "embed": "Inbäddning"
+  },
+  "validation": {
+    "nameRequired": "Kommandonamn krävs"
+  },
+  "triggerPrefix": "Utlösare: !{{name}}"
+}

@@ -1,5 +1,5 @@
 import type { Event } from "@fluxcore/types";
-import type { Collection, Message, PartialMessage, Snowflake } from "discord.js";
+import type { GuildTextBasedChannel, Message, PartialMessage, ReadonlyCollection } from "discord.js";
 import { getLogConfig } from "@fluxcore/systems/logging/config";
 import { createLogEntry } from "@fluxcore/systems/logging/persistence";
 import { sendLogEmbed } from "@fluxcore/systems/logging/sender";
@@ -8,10 +8,10 @@ import { formatBulkDelete } from "@fluxcore/systems/logging/formatter";
 const event: Event<"messageDeleteBulk"> = {
   name: "messageDeleteBulk",
   async execute(
-    messages: Collection<Snowflake, Message | PartialMessage>,
-    channel: { id: string; guild?: { id: string } | null },
+    messages: ReadonlyCollection<string, Message<true> | PartialMessage<true>>,
+    channel: GuildTextBasedChannel,
   ) {
-    const guild = (channel as { guild?: { id: string } | null }).guild;
+    const guild = channel.guild;
     if (!guild) return;
 
     const guildId = guild.id;

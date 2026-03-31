@@ -1,0 +1,67 @@
+{
+  "title": "Forslag",
+  "subtitle": "La medlemmer sende inn idéer og stemme på dem. Administrer status og tilbakemelding.",
+  "stats": {
+    "totalSuggestions": "Totalt antall forslag",
+    "systemStatus": "Systemstatus",
+    "channel": {
+      "configured": "Kanal konfigurert",
+      "notSet": "Kanal ikke satt"
+    }
+  },
+  "tabs": {
+    "suggestions": "Forslag",
+    "settings": "Innstillinger"
+  },
+  "filter": {
+    "filterByStatus": "Filtrer etter status",
+    "all": "Alle",
+    "pending": "Ventende",
+    "approved": "Godkjente",
+    "rejected": "Avviste",
+    "implemented": "Implementerte",
+    "considered": "Under vurdering"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Forfatter",
+    "content": "Innhold",
+    "status": "Status",
+    "votes": "Stemmer",
+    "date": "Dato"
+  },
+  "actions": {
+    "approve": "Godkjenn",
+    "reject": "Avvis",
+    "implement": "Merk som implementert",
+    "consider": "Vurder",
+    "delete": "Slett"
+  },
+  "settings": {
+    "channel": "Forslagskanal",
+    "channelDesc": "Kanalen der forslag publiseres for avstemning.",
+    "voteEmojis": "Avstemningsemojier",
+    "voteEmojisDesc": "Emojier brukt for oppstemmning og nedstemmning.",
+    "autoThread": "Opprett tråd automatisk",
+    "autoThreadDesc": "Opprett automatisk en diskusjonstråd på hvert nye forslag.",
+    "dmOnStatusChange": "DM ved statusendring",
+    "dmOnStatusChangeDesc": "Varsle forfatteren via DM når forslagsstatusen endres."
+  },
+  "toast": {
+    "approved": "Forslag godkjent",
+    "rejected": "Forslag avvist",
+    "implemented": "Forslag merket som implementert",
+    "considered": "Forslag merket som under vurdering",
+    "deleted": "Forslag slettet",
+    "actionFailed": "Kunne ikke oppdatere forslag",
+    "settingsSaved": "Forslagsinnstillinger lagret",
+    "settingsFailed": "Kunne ikke lagre forslagsinnstillinger"
+  },
+  "empty": "Ingen forslag ennå.",
+  "loading": "Laster forslag...",
+  "pagination": {
+    "previous": "Forrige",
+    "next": "Neste",
+    "page": "Side {{page}} av {{total}}"
+  }
+}

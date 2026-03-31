@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Palvelin",
+    "automation": "Automaatio"
+  },
+  "title": "Automaatiosäännöt",
+  "subtitle": "Määritä tapahtumapohjaiset laukaisimet ja automatisoidut vastaukset palvelimellesi.",
+  "createRule": "Luo sääntö",
+  "stats": {
+    "totalRules": "Sääntöjä yhteensä",
+    "active": "Aktiiviset",
+    "executions7d": "Suoritukset (7pv)",
+    "successRate": "Onnistumisprosentti"
+  },
+  "filter": {
+    "searchPlaceholder": "Hae sääntöjä...",
+    "eventType": "Tapahtumatyyppi",
+    "allEvents": "Kaikki tapahtumat",
+    "allStatus": "Kaikki tilat",
+    "enabled": "Käytössä",
+    "disabled": "Pois käytöstä",
+    "sortBy": "Lajittele",
+    "priority": "Prioriteetti",
+    "name": "Nimi",
+    "lastFired": "Viimeksi laukaistu",
+    "status": "Tila",
+    "clear": "Tyhjennä",
+    "showing": "Näytetään {{filtered}} / {{total}} sääntöä"
+  },
+  "bulk": {
+    "selected": "{{count}} sääntö valittu",
+    "selected_other": "{{count}} sääntöä valittu",
+    "enable": "Ota käyttöön",
+    "disable": "Poista käytöstä",
+    "delete": "Poista",
+    "clear": "Tyhjennä"
+  },
+  "empty": {
+    "title": "Aloita automaation käyttö",
+    "description": "Valitse malli aloittaaksesi nopeasti tai luo sääntö alusta asti.",
+    "createFromScratch": "Luo alusta asti"
+  },
+  "noResults": {
+    "title": "Ei vastaavia sääntöjä",
+    "description": "Kokeile säätää hakua tai suodattimia löytääksesi etsimäsi."
+  },
+  "templates": {
+    "welcomeMessage": "Tervetuloviesti",
+    "welcomeMessageDesc": "Tervehdi uusia jäseniä mukautetulla viestillä kanavalla",
+    "autoRole": "Automaattirooli",
+    "autoRoleDesc": "Myönnä automaattisesti rooli kun jäsen liittyy",
+    "logDeleted": "Kirjaa poistetut viestit",
+    "logDeletedDesc": "Lähetä poistettujen viestien tiedot lokikanavalle",
+    "boostThankYou": "Boost-kiitos",
+    "boostThankYouDesc": "Lähetä DM kiittääksesi palvelimen boostanneita käyttäjiä",
+    "banLogger": "Estolokin kirjaaja",
+    "banLoggerDesc": "Kirjaa estotapahtumat moderointikanavalle",
+    "autoThread": "Automaattilanka",
+    "autoThreadDesc": "Luo automaattisesti lanka kun viesti lähetetään"
+  },
+  "deleteDialog": {
+    "title": "Poista sääntö",
+    "description": "Haluatko varmasti poistaa \"{{name}}\"? Tätä toimintoa ei voi kumota.",
+    "confirm": "Poista"
+  },
+  "bulkDeleteDialog": {
+    "title": "Poista valitut säännöt",
+    "description": "Haluatko varmasti poistaa {{count}} säännön? Tätä toimintoa ei voi kumota.",
+    "description_other": "Haluatko varmasti poistaa {{count}} sääntöä? Tätä toimintoa ei voi kumota.",
+    "confirm": "Poista kaikki"
+  },
+  "toast": {
+    "deleted": "Sääntö poistettu",
+    "deleteFailed": "Säännön poistaminen epäonnistui",
+    "enabled": "Sääntö käytössä",
+    "disabled": "Sääntö pois käytöstä",
+    "toggleFailed": "Säännön vaihtaminen epäonnistui",
+    "duplicated": "Sääntö kopioitu",
+    "duplicateFailed": "Säännön kopiointi epäonnistui",
+    "bulkEnabled": "{{count}} sääntöä käytössä",
+    "bulkDisabled": "{{count}} sääntöä pois käytöstä",
+    "bulkEnableFailed": "Sääntöjen käyttöönotto epäonnistui",
+    "bulkDisableFailed": "Sääntöjen käytöstä poistaminen epäonnistui",
+    "bulkDeleted": "{{count}} sääntöä poistettu",
+    "bulkDeleteFailed": "Sääntöjen poistaminen epäonnistui"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "title": "Mfumo wa Tiketi",
+  "subtitle": "Unda paneli za tiketi za msaada na simamia tiketi wazi kutoka dashibodi.",
+  "stats": {
+    "totalTickets": "Jumla ya Tiketi",
+    "open": "Wazi",
+    "claimed": "Zilizochukuliwa",
+    "panels": "Paneli"
+  },
+  "tabs": {
+    "activeTickets": "Tiketi Hai",
+    "panelBuilder": "Kijenzi cha Paneli",
+    "settings": "Mipangilio"
+  },
+  "table": {
+    "id": "Kitambulisho",
+    "user": "Mtumiaji",
+    "subject": "Mada",
+    "status": "Hali",
+    "assignee": "Aliyepewa",
+    "created": "Iliundwa"
+  },
+  "statuses": {
+    "open": "Wazi",
+    "claimed": "Imechukuliwa",
+    "closed": "Imefungwa"
+  },
+  "panelBuilder": {
+    "title": "Kichwa cha Paneli",
+    "channel": "Chaneli",
+    "buttonLabel": "Lebo ya Kitufe",
+    "welcomeMessage": "Ujumbe wa Karibu",
+    "category": "Kategoria ya Tiketi",
+    "create": "Unda Paneli",
+    "edit": "Hariri Paneli",
+    "deploy": "Tuma Paneli"
+  },
+  "settings": {
+    "transcriptChannel": "Chaneli ya Nakala",
+    "transcriptChannelDesc": "Chaneli ambapo nakala za tiketi zinahifadhiwa zinapofungwa.",
+    "maxTicketsPerUser": "Tiketi za Juu kwa Mtumiaji",
+    "maxTicketsPerUserDesc": "Idadi ya juu ya tiketi wazi ambazo mtumiaji mmoja anaweza kuwa nazo.",
+    "closeConfirmation": "Uthibitisho wa Kufunga",
+    "closeConfirmationDesc": "Hitaji uthibitisho kabla ya kufunga tiketi.",
+    "dmTranscript": "Nakala kwa DM",
+    "dmTranscriptDesc": "Tuma nakala ya tiketi kwa muundaji wa tiketi kupitia DM."
+  },
+  "actions": {
+    "claim": "Chukua",
+    "close": "Funga",
+    "delete": "Futa",
+    "reopen": "Fungua Upya"
+  },
+  "toast": {
+    "panelCreated": "Paneli ya tiketi imeundwa",
+    "panelCreateFailed": "Imeshindwa kuunda paneli ya tiketi",
+    "panelUpdated": "Paneli ya tiketi imesasishwa",
+    "panelUpdateFailed": "Imeshindwa kusasisha paneli ya tiketi",
+    "panelDeployed": "Paneli ya tiketi imetumwa",
+    "panelDeployFailed": "Imeshindwa kutuma paneli ya tiketi",
+    "ticketClaimed": "Tiketi imechukuliwa",
+    "ticketClaimFailed": "Imeshindwa kuchukua tiketi",
+    "ticketClosed": "Tiketi imefungwa",
+    "ticketCloseFailed": "Imeshindwa kufunga tiketi",
+    "ticketReopened": "Tiketi imefunguliwa upya",
+    "ticketReopenFailed": "Imeshindwa kufungua upya tiketi",
+    "ticketDeleted": "Tiketi imefutwa",
+    "ticketDeleteFailed": "Imeshindwa kufuta tiketi",
+    "settingsSaved": "Mipangilio ya tiketi imehifadhiwa",
+    "settingsFailed": "Imeshindwa kuhifadhi mipangilio ya tiketi"
+  },
+  "empty": {
+    "tickets": "Hakuna tiketi hai.",
+    "panels": "Hakuna paneli za tiketi zilizotengenezwa bado."
+  },
+  "loading": "Inapakia tiketi..."
+}

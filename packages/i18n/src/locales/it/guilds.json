@@ -1,0 +1,9 @@
+{
+  "title": "I tuoi server",
+  "subtitle": "Scegli un server da gestire e configurare.",
+  "loading": "Caricamento server...",
+  "empty": {
+    "title": "Nessun server trovato",
+    "description": "Assicurati che il bot sia aggiunto a un server dove hai il permesso Gestisci server."
+  }
+}

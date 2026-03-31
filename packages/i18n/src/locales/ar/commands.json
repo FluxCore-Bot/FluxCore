@@ -1,0 +1,113 @@
+{
+  "title": "الأوامر المخصصة",
+  "subtitle": "إنشاء ردود تلقائية وأوامر بادئة يتم تشغيلها بالرسائل.",
+  "stats": {
+    "totalCommands": "إجمالي الأوامر",
+    "enabled": "مفعّلة",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "الأوامر",
+    "variables": "المتغيرات"
+  },
+  "table": {
+    "name": "الاسم",
+    "trigger": "المشغل",
+    "response": "الاستجابة",
+    "cooldown": "فترة الانتظار",
+    "status": "الحالة"
+  },
+  "triggerTypes": {
+    "command": "!أمر",
+    "keyword": "كلمة مفتاحية",
+    "startsWith": "يبدأ بـ",
+    "regex": "تعبير نمطي",
+    "prefixCommand": "أمر بادئة (!الاسم)",
+    "keywordContains": "كلمة مفتاحية (يحتوي على)"
+  },
+  "dialog": {
+    "createCommand": "إنشاء أمر",
+    "editCommand": "تعديل أمر"
+  },
+  "form": {
+    "commandName": "اسم الأمر",
+    "triggerText": "نص المشغل",
+    "regexPattern": "نمط التعبير النمطي",
+    "triggerType": "نوع المشغل",
+    "response": "الاستجابة",
+    "message": "الرسالة",
+    "embedTitle": "عنوان التضمين",
+    "embedDescription": "وصف التضمين",
+    "color": "اللون",
+    "footer": "التذييل"
+  },
+  "options": {
+    "cooldown": "فترة الانتظار (بالثواني)",
+    "enabled": "مفعّل",
+    "enabledDesc": "ما إذا كان هذا الأمر نشطًا",
+    "deleteTrigger": "حذف رسالة المشغل",
+    "deleteTriggerDesc": "حذف الرسالة التي أطلقت هذا الأمر تلقائيًا.",
+    "dmResponse": "استجابة برسالة خاصة",
+    "dmResponseDesc": "إرسال الاستجابة كرسالة خاصة بدلاً من في القناة."
+  },
+  "restrictions": {
+    "title": "القيود",
+    "allowedChannels": "القنوات المسموح بها (فارغ = الكل)",
+    "allowedRoles": "الأدوار المسموح بها (فارغ = الجميع)",
+    "addChannel": "إضافة قناة",
+    "addRole": "إضافة دور"
+  },
+  "actions": {
+    "create": "إنشاء",
+    "update": "تحديث",
+    "cancel": "إلغاء",
+    "addAction": "إضافة إجراء",
+    "addRole": "إضافة دور",
+    "removeRole": "إزالة دور"
+  },
+  "actionsSection": {
+    "title": "الإجراءات ({{count}}/5)",
+    "noActions": "لا توجد إجراءات مكونة. أضف إجراءً لتحديد ما يفعله هذا الأمر.",
+    "maxActions": "الحد الأقصى 5 إجراءات لكل أمر"
+  },
+  "variables": {
+    "title": "متغيرات القوالب",
+    "description": "استخدم هذه المتغيرات في ردود أوامرك. سيتم استبدالها بالقيم الفعلية عند تشغيل الأمر.",
+    "table": {
+      "variable": "المتغير",
+      "description": "الوصف"
+    },
+    "entries": {
+      "user": "{user} — يذكر المستخدم الذي أطلق الأمر",
+      "username": "{username} — اسم العرض للمستخدم",
+      "userId": "{userId} — معرف المستخدم",
+      "server": "{server} — اسم السيرفر",
+      "channel": "{channel} — يذكر القناة الحالية",
+      "channelName": "{channelName} — اسم القناة",
+      "memberCount": "{memberCount} — العدد الإجمالي لأعضاء السيرفر"
+    }
+  },
+  "toast": {
+    "created": "تم إنشاء الأمر",
+    "createFailed": "فشل في إنشاء الأمر",
+    "updated": "تم تحديث الأمر",
+    "updateFailed": "فشل في تحديث الأمر",
+    "deleted": "تم حذف الأمر",
+    "deleteFailed": "فشل في حذف الأمر",
+    "toggleEnabled": "تم تفعيل الأمر",
+    "toggleDisabled": "تم تعطيل الأمر",
+    "toggleFailed": "فشل في تبديل حالة الأمر"
+  },
+  "empty": "لم يتم إنشاء أوامر مخصصة بعد.",
+  "loading": "جارٍ تحميل الأوامر...",
+  "badge": {
+    "active": "نشط",
+    "disabled": "معطّل",
+    "text": "نص",
+    "embed": "تضمين"
+  },
+  "validation": {
+    "nameRequired": "اسم الأمر مطلوب"
+  },
+  "triggerPrefix": "المشغل: !{{name}}"
+}

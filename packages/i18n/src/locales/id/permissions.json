@@ -1,0 +1,118 @@
+{
+  "title": "Peran & Izin",
+  "subtitle": "Kontrol siapa yang dapat mengakses dan mengelola setiap modul dashboard.",
+  "actions": {
+    "createRole": "Buat Peran"
+  },
+  "permissionSystem": {
+    "title": "Sistem Izin",
+    "active": "Aktif — admin dibatasi pada izin yang ditetapkan.",
+    "inactive": "Tidak Aktif — semua admin dengan MANAGE_GUILD memiliki akses penuh.",
+    "enabledToast": "Sistem izin diaktifkan",
+    "disabledToast": "Sistem izin dinonaktifkan — semua admin memiliki akses penuh"
+  },
+  "warning": {
+    "disabled": "Sistem izin dinonaktifkan. Semua admin dashboard saat ini memiliki akses penuh. Aktifkan di atas untuk memberlakukan izin granular."
+  },
+  "tabs": {
+    "roles": "Peran",
+    "auditLog": "Log Audit"
+  },
+  "roleList": {
+    "title": "Peran Dashboard",
+    "empty": "Belum ada peran yang dibuat.",
+    "selectHint": "Pilih peran untuk diedit, atau buat yang baru.",
+    "default": "Bawaan",
+    "name": "Nama",
+    "members": "Anggota",
+    "permissions": "Izin",
+    "edit": "Edit",
+    "delete": "Hapus"
+  },
+  "presets": {
+    "title": "Tambah Cepat dari Preset",
+    "createdToast": "Peran \"{{name}}\" dibuat"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} anggota",
+    "memberCount_plural": "{{count}} anggota",
+    "name": "Nama Peran",
+    "color": "Warna",
+    "defaultRole": "Peran bawaan",
+    "permissions": "Izin",
+    "allBadge": "Semua",
+    "discordRoles": "Peran Discord"
+  },
+  "roleForm": {
+    "name": "Nama Peran",
+    "discordRoles": "Peran Discord",
+    "permissions": "Izin",
+    "create": "Buat Peran",
+    "update": "Perbarui Peran",
+    "cancel": "Batal"
+  },
+  "createDialog": {
+    "title": "Buat Peran Dashboard",
+    "name": "Nama",
+    "namePlaceholder": "mis. Moderator",
+    "color": "Warna"
+  },
+  "permissionCategories": {
+    "actions": "Aksi & Otomasi",
+    "music": "Musik",
+    "tempvoice": "TempVoice",
+    "welcome": "Sambutan & Perpisahan",
+    "moderation": "Moderasi",
+    "logging": "Pencatatan",
+    "leveling": "Leveling",
+    "roles": "Panel Peran",
+    "tickets": "Tiket",
+    "suggestions": "Saran",
+    "starboard": "Starboard",
+    "giveaways": "Giveaway",
+    "security": "Keamanan",
+    "scheduled": "Pesan Terjadwal",
+    "commands": "Perintah Kustom",
+    "settings": "Pengaturan Server"
+  },
+  "audit": {
+    "table": {
+      "user": "Pengguna",
+      "action": "Aksi",
+      "target": "Target",
+      "timestamp": "Kapan"
+    },
+    "noEntries": "Belum ada entri log audit."
+  },
+  "pagination": {
+    "previous": "Sebelumnya",
+    "next": "Berikutnya",
+    "page": "Halaman {{current}} dari {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Peran \"{{name}}\" dibuat",
+    "roleCreateFailed": "Gagal membuat peran",
+    "roleUpdated": "Peran diperbarui",
+    "roleUpdateFailed": "Gagal memperbarui peran",
+    "roleDeleted": "Peran dihapus",
+    "roleDeleteFailed": "Gagal menghapus peran"
+  },
+  "confirm": {
+    "deleteTitle": "Hapus peran \"{{name}}\"?",
+    "deleteMessage": "Ini akan menghapus peran dan mencabut semua anggota. Tindakan ini tidak dapat dibatalkan.",
+    "deleteRole": "Apakah Anda yakin ingin menghapus peran ini? Anggota akan kehilangan izin yang ditetapkan."
+  },
+  "saveButton": {
+    "saving": "Menyimpan...",
+    "save": "Simpan Perubahan"
+  },
+  "deleteButton": {
+    "deleting": "Menghapus...",
+    "delete": "Hapus"
+  },
+  "createButton": {
+    "creating": "Membuat...",
+    "create": "Buat"
+  },
+  "loading": "Memuat izin..."
+}

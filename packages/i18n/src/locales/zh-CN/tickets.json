@@ -1,0 +1,77 @@
+{
+  "title": "工单系统",
+  "subtitle": "创建支持工单面板，并从仪表盘管理已开启的工单。",
+  "stats": {
+    "totalTickets": "工单总数",
+    "open": "开启中",
+    "claimed": "已认领",
+    "panels": "面板"
+  },
+  "tabs": {
+    "activeTickets": "活跃工单",
+    "panelBuilder": "面板构建器",
+    "settings": "设置"
+  },
+  "table": {
+    "id": "ID",
+    "user": "用户",
+    "subject": "主题",
+    "status": "状态",
+    "assignee": "负责人",
+    "created": "创建时间"
+  },
+  "statuses": {
+    "open": "开启中",
+    "claimed": "已认领",
+    "closed": "已关闭"
+  },
+  "panelBuilder": {
+    "title": "面板标题",
+    "channel": "频道",
+    "buttonLabel": "按钮标签",
+    "welcomeMessage": "欢迎消息",
+    "category": "工单分类",
+    "create": "创建面板",
+    "edit": "编辑面板",
+    "deploy": "部署面板"
+  },
+  "settings": {
+    "transcriptChannel": "记录频道",
+    "transcriptChannelDesc": "工单关闭时保存记录的频道。",
+    "maxTicketsPerUser": "每用户最大工单数",
+    "maxTicketsPerUserDesc": "单个用户可拥有的最大开启工单数。",
+    "closeConfirmation": "关闭确认",
+    "closeConfirmationDesc": "关闭工单前需要确认。",
+    "dmTranscript": "私信发送记录",
+    "dmTranscriptDesc": "通过私信向工单创建者发送记录副本。"
+  },
+  "actions": {
+    "claim": "认领",
+    "close": "关闭",
+    "delete": "删除",
+    "reopen": "重新开启"
+  },
+  "toast": {
+    "panelCreated": "工单面板已创建",
+    "panelCreateFailed": "创建工单面板失败",
+    "panelUpdated": "工单面板已更新",
+    "panelUpdateFailed": "更新工单面板失败",
+    "panelDeployed": "工单面板已部署",
+    "panelDeployFailed": "部署工单面板失败",
+    "ticketClaimed": "工单已认领",
+    "ticketClaimFailed": "认领工单失败",
+    "ticketClosed": "工单已关闭",
+    "ticketCloseFailed": "关闭工单失败",
+    "ticketReopened": "工单已重新开启",
+    "ticketReopenFailed": "重新开启工单失败",
+    "ticketDeleted": "工单已删除",
+    "ticketDeleteFailed": "删除工单失败",
+    "settingsSaved": "工单设置已保存",
+    "settingsFailed": "保存工单设置失败"
+  },
+  "empty": {
+    "tickets": "没有活跃工单。",
+    "panels": "尚未创建工单面板。"
+  },
+  "loading": "正在加载工单..."
+}

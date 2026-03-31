@@ -1,0 +1,15 @@
+{
+  "breadcrumb": { "guild": "Server", "automation": "Automazione" },
+  "title": "Regole di automazione",
+  "subtitle": "Configura trigger basati su eventi e risposte automatizzate per il tuo server.",
+  "createRule": "Crea regola",
+  "stats": { "totalRules": "Regole totali", "active": "Attive", "executions7d": "Esecuzioni (7g)", "successRate": "Tasso di successo" },
+  "filter": { "searchPlaceholder": "Cerca regole...", "eventType": "Tipo di evento", "allEvents": "Tutti gli eventi", "allStatus": "Tutti gli stati", "enabled": "Attivata", "disabled": "Disattivata", "sortBy": "Ordina per", "priority": "Priorita", "name": "Nome", "lastFired": "Ultimo attivamento", "status": "Stato", "clear": "Pulisci", "showing": "Visualizzando {{filtered}} di {{total}} regole" },
+  "bulk": { "selected": "{{count}} regola selezionata", "selected_other": "{{count}} regole selezionate", "enable": "Attiva", "disable": "Disattiva", "delete": "Elimina", "clear": "Pulisci" },
+  "empty": { "title": "Inizia con l'automazione", "description": "Scegli un modello per iniziare rapidamente o crea una regola da zero.", "createFromScratch": "Crea da zero" },
+  "noResults": { "title": "Nessuna regola corrispondente", "description": "Prova ad aggiustare la ricerca o i filtri per trovare quello che cerchi." },
+  "templates": { "welcomeMessage": "Messaggio di benvenuto", "welcomeMessageDesc": "Saluta i nuovi membri con un messaggio personalizzato in un canale", "autoRole": "Ruolo automatico", "autoRoleDesc": "Assegna automaticamente un ruolo quando un membro entra", "logDeleted": "Registra messaggi eliminati", "logDeletedDesc": "Invia info sui messaggi eliminati a un canale di registro", "boostThankYou": "Ringraziamento per boost", "boostThankYouDesc": "Invia un MD di ringraziamento agli utenti che boostano il server", "banLogger": "Registro ban", "banLoggerDesc": "Registra gli eventi di ban in un canale di moderazione", "autoThread": "Thread automatico", "autoThreadDesc": "Crea automaticamente un thread quando viene inviato un messaggio" },
+  "deleteDialog": { "title": "Elimina regola", "description": "Sei sicuro di voler eliminare \"{{name}}\"? Questa azione non puo essere annullata.", "confirm": "Elimina" },
+  "bulkDeleteDialog": { "title": "Elimina regole selezionate", "description": "Sei sicuro di voler eliminare {{count}} regola? Questa azione non puo essere annullata.", "description_other": "Sei sicuro di voler eliminare {{count}} regole? Questa azione non puo essere annullata.", "confirm": "Elimina tutto" },
+  "toast": { "deleted": "Regola eliminata", "deleteFailed": "Impossibile eliminare la regola", "enabled": "Regola attivata", "disabled": "Regola disattivata", "toggleFailed": "Impossibile cambiare lo stato della regola", "duplicated": "Regola duplicata", "duplicateFailed": "Impossibile duplicare la regola", "bulkEnabled": "{{count}} regole attivate", "bulkDisabled": "{{count}} regole disattivate", "bulkEnableFailed": "Impossibile attivare le regole", "bulkDisableFailed": "Impossibile disattivare le regole", "bulkDeleted": "{{count}} regole eliminate", "bulkDeleteFailed": "Impossibile eliminare le regole" }
+}

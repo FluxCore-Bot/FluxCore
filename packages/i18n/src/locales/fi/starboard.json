@@ -1,0 +1,41 @@
+{
+  "title": "Starboard",
+  "subtitle": "Korosta parhaat viestit keräämällä tähtireaktiot erilliselle kanavalle.",
+  "tabs": {
+    "settings": "Asetukset",
+    "starredMessages": "Tähditetyt viestit"
+  },
+  "settings": {
+    "title": "Starboard-asetukset",
+    "description": "Määritä milloin ja minne tähditetyt viestit julkaistaan.",
+    "channelId": "Starboard-kanava",
+    "channelIdDesc": "Kanava, jolle tähditetyt viestit julkaistaan.",
+    "starEmoji": "Tähtimerkki",
+    "starEmojiDesc": "Emoji, jota käytetään viestien tähdittämiseen. Oletus on tähti-emoji.",
+    "threshold": "Tähtiraja",
+    "thresholdDesc": "Vähimmäismäärä reaktioita viestin julkaisemiseksi starboardille.",
+    "selfStar": "Itsetähdittäminen",
+    "selfStarDesc": "Salli viestin kirjoittajien tähdittää omia viestejään.",
+    "nsfwAllowed": "NSFW sallittu",
+    "nsfwAllowedDesc": "Salli NSFW-kanavien viestit starboardilla.",
+    "ignoredChannels": "Ohitetut kanavat",
+    "ignoredChannelsDesc": "Näiden kanavien viestit eivät koskaan näy starboardilla."
+  },
+  "messages": {
+    "table": {
+      "original": "Alkuperäinen viesti",
+      "stars": "Tähdet",
+      "channel": "Kanava",
+      "date": "Päivämäärä"
+    },
+    "noMessages": "Ei tähditettyj viestejä vielä."
+  },
+  "toast": {
+    "saved": "Starboard-asetukset tallennettu",
+    "saveFailed": "Starboard-asetusten tallentaminen epäonnistui"
+  },
+  "actions": {
+    "save": "Tallenna",
+    "saving": "Tallennetaan..."
+  }
+}

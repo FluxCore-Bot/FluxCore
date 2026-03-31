@@ -1,0 +1,108 @@
+{
+  "title": "セキュリティ",
+  "subtitle": "レイド対策とサーバーセキュリティの設定を行います。",
+  "antiRaid": {
+    "title": "レイド対策",
+    "description": "組織的なレイド、不審なアカウント、破壊的な行為の自動検出と対応を有効にします。"
+  },
+  "sections": {
+    "joinRate": "参加レート",
+    "accountAge": "アカウント年齢",
+    "antiNuke": "荒らし対策",
+    "lockdown": "ロックダウン",
+    "events": "イベント"
+  },
+  "joinRate": {
+    "title": "参加レート検出",
+    "description": "新規メンバーの参加レートを監視して大量参加を検出します。",
+    "threshold": "参加しきい値",
+    "thresholdHint": "検出をトリガーする参加数",
+    "window": "時間ウィンドウ (秒)",
+    "windowHint": "参加をカウントするウィンドウ",
+    "action": "検出時のアクション",
+    "actionHint": "レイド疑いのメンバーに対するアクション",
+    "actions": {
+      "ban": "BAN",
+      "kick": "キック",
+      "timeout": "タイムアウト",
+      "lockdown": "ロックダウン"
+    }
+  },
+  "accountAge": {
+    "title": "アカウント年齢フィルター",
+    "description": "最小年齢より新しいアカウントに自動的にアクションを実行します。0で無効にします。",
+    "minAge": "最小アカウント年齢 (日)",
+    "minAgeHint": "0 = 無効。これより新しいアカウントにアクションが実行されます。",
+    "action": "アクション"
+  },
+  "antiNuke": {
+    "title": "荒らし対策",
+    "description": "チャンネル/ロールの大量削除を検出し、責任者のロールをすべて剥奪して隔離します。",
+    "threshold": "削除しきい値",
+    "thresholdHint": "10秒以内の削除数で隔離をトリガー",
+    "channelDeleteThreshold": "チャンネル削除しきい値",
+    "roleDeleteThreshold": "ロール削除しきい値",
+    "massbanThreshold": "大量BANしきい値",
+    "interval": "間隔 (秒)",
+    "action": "アクション"
+  },
+  "lockdown": {
+    "title": "レイド時自動ロックダウン",
+    "description": "レイドが検出された時にすべてのチャンネルを自動的にロックします。",
+    "whitelistedRoles": "ホワイトリストロールID (カンマ区切り)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "これらのロールを持つメンバーはレイド検出から除外されます。",
+    "logChannel": "ログチャンネルID",
+    "logChannelPlaceholder": "レイドイベントログのチャンネルID...",
+    "enableButton": "ロックダウンを有効化",
+    "disableButton": "ロックダウンを無効化",
+    "active": "ロックダウン有効",
+    "inactive": "ロックダウン無効"
+  },
+  "events": {
+    "title": "最近のレイドイベント",
+    "description": "検出されたレイド、アカウント年齢ブロック、ロックダウンイベントのタイムライン。",
+    "empty": "レイドイベントはまだ記録されていません。レイド検出がトリガーされるとここに表示されます。",
+    "actionLabel": "アクション: {{action}}",
+    "usersLabel": "ユーザー: {{count}}",
+    "accountAgeLabel": "アカウント年齢: {{days}}日",
+    "table": {
+      "type": "タイプ",
+      "description": "説明",
+      "time": "時刻",
+      "action": "実行されたアクション"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "参加スパイク",
+    "account_age": "アカウント年齢",
+    "nuke_attempt": "荒らし試行",
+    "lockdown": "ロックダウン",
+    "massJoin": "大量参加",
+    "suspiciousAccounts": "不審なアカウント",
+    "channelDeletion": "チャンネル削除",
+    "roleDeletion": "ロール削除",
+    "massBan": "大量BAN"
+  },
+  "pagination": {
+    "previous": "前へ",
+    "next": "次へ",
+    "page": "ページ {{current}} / {{total}}"
+  },
+  "toast": {
+    "saved": "レイド対策設定を保存しました",
+    "saveFailed": "設定の保存に失敗しました",
+    "lockdownEnabled": "サーバーロックダウンを有効にしました",
+    "lockdownDisabled": "サーバーロックダウンを無効にしました",
+    "lockdownFailed": "ロックダウンの切り替えに失敗しました"
+  },
+  "saveButton": {
+    "saving": "保存中...",
+    "save": "変更を保存"
+  },
+  "labels": {
+    "seconds": "秒",
+    "minutes": "分",
+    "hours": "時間"
+  }
+}

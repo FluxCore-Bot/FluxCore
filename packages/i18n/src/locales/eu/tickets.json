@@ -1,0 +1,77 @@
+{
+  "title": "Txartel Sistema",
+  "subtitle": "Sortu laguntza txartel panelak eta kudeatu irekitako txartelak agintari paneletik.",
+  "stats": {
+    "totalTickets": "Txartel Guztiak",
+    "open": "Irekita",
+    "claimed": "Erreklamatuta",
+    "panels": "Panelak"
+  },
+  "tabs": {
+    "activeTickets": "Txartel Aktiboak",
+    "panelBuilder": "Panel Eraikitzailea",
+    "settings": "Ezarpenak"
+  },
+  "table": {
+    "id": "IDa",
+    "user": "Erabiltzailea",
+    "subject": "Gaia",
+    "status": "Egoera",
+    "assignee": "Esleitua",
+    "created": "Sortua"
+  },
+  "statuses": {
+    "open": "Irekita",
+    "claimed": "Erreklamatuta",
+    "closed": "Itxita"
+  },
+  "panelBuilder": {
+    "title": "Panelaren Izenburua",
+    "channel": "Kanala",
+    "buttonLabel": "Botoiaren Etiketa",
+    "welcomeMessage": "Ongi Etorri Mezua",
+    "category": "Txartelaren Kategoria",
+    "create": "Panel Sortu",
+    "edit": "Panel Editatu",
+    "deploy": "Panel Zabaldu"
+  },
+  "settings": {
+    "transcriptChannel": "Transkripzio Kanala",
+    "transcriptChannelDesc": "Txartelak ixten direnean transkripzioak gordetzen diren kanala.",
+    "maxTicketsPerUser": "Erabiltzaileko Gehienezko Txartelak",
+    "maxTicketsPerUserDesc": "Erabiltzaile bakar batek eduki dezakeen irekitako txartel kopuru maximoa.",
+    "closeConfirmation": "Itxiera Berrespena",
+    "closeConfirmationDesc": "Txartela ixtean berrespena eskatu.",
+    "dmTranscript": "DM Transkripzioa",
+    "dmTranscriptDesc": "Bidali transkripzioaren kopia txartel sortzaileari DM bidez."
+  },
+  "actions": {
+    "claim": "Erreklamatu",
+    "close": "Itxi",
+    "delete": "Ezabatu",
+    "reopen": "Berrireki"
+  },
+  "toast": {
+    "panelCreated": "Txartel panela sortua",
+    "panelCreateFailed": "Ezin izan da txartel panela sortu",
+    "panelUpdated": "Txartel panela eguneratua",
+    "panelUpdateFailed": "Ezin izan da txartel panela eguneratu",
+    "panelDeployed": "Txartel panela zabalduta",
+    "panelDeployFailed": "Ezin izan da txartel panela zabaldu",
+    "ticketClaimed": "Txartela erreklamatuta",
+    "ticketClaimFailed": "Ezin izan da txartela erreklamatu",
+    "ticketClosed": "Txartela itxita",
+    "ticketCloseFailed": "Ezin izan da txartela itxi",
+    "ticketReopened": "Txartela berriro irekita",
+    "ticketReopenFailed": "Ezin izan da txartela berriro ireki",
+    "ticketDeleted": "Txartela ezabatua",
+    "ticketDeleteFailed": "Ezin izan da txartela ezabatu",
+    "settingsSaved": "Txartelaren ezarpenak gordeta",
+    "settingsFailed": "Ezin izan dira txartelaren ezarpenak gorde"
+  },
+  "empty": {
+    "tickets": "Ez dago txartel aktiborik.",
+    "panels": "Oraindik ez da txartel panelik sortu."
+  },
+  "loading": "Txartelak kargatzen..."
+}

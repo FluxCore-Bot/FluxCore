@@ -1,0 +1,54 @@
+{
+  "title": "Moderasi",
+  "subtitle": "Lihat dan urus kes moderasi, konfigurasikan tetapan hukuman.",
+  "stats": {
+    "totalCases": "Jumlah Kes",
+    "activeTempbans": "Tempban Aktif",
+    "last24h": "24 Jam Lepas"
+  },
+  "cases": "Kes",
+  "actions": {
+    "ban": "Ban",
+    "tempban": "Tempban",
+    "kick": "Kick",
+    "timeout": "Timeout",
+    "softban": "Softban",
+    "warn": "Beri Amaran",
+    "note": "Nota"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Tindakan",
+    "target": "Sasaran",
+    "moderator": "Moderator",
+    "reason": "Sebab",
+    "date": "Tarikh",
+    "actions": "Tindakan",
+    "noCases": "Tiada kes ditemui.",
+    "noReason": "Tiada sebab"
+  },
+  "filter": {
+    "userPlaceholder": "Tapis mengikut ID Pengguna...",
+    "allActions": "Semua Tindakan"
+  },
+  "pagination": {
+    "previous": "Sebelumnya",
+    "next": "Seterusnya",
+    "page": "Halaman {{page}} daripada {{total}}"
+  },
+  "editDialog": {
+    "title": "Edit Sebab Kes #{{id}}",
+    "placeholder": "Masukkan sebab baru...",
+    "saving": "Menyimpan..."
+  },
+  "editReason": "Edit sebab",
+  "deleteCase": "Padam kes",
+  "deleteConfirm": "Adakah anda pasti mahu memadam kes ini?",
+  "settings": {
+    "title": "Tetapan",
+    "dmOnPunishment": "DM semasa Hukuman",
+    "dmOnPunishmentDesc": "Hantar DM kepada pengguna apabila mereka dihukum (ban, kick, timeout).",
+    "modLogChannel": "Saluran Log Moderasi",
+    "modLogChannelDesc": "Saluran di mana tindakan moderasi direkodkan."
+  }
+}

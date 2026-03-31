@@ -1,0 +1,108 @@
+{
+  "title": "安全",
+  "subtitle": "配置防突袭和服务器安全设置。",
+  "antiRaid": {
+    "title": "防突袭保护",
+    "description": "启用对组织性突袭、可疑账户和破坏性行为的自动检测和响应。"
+  },
+  "sections": {
+    "joinRate": "加入速率",
+    "accountAge": "账户年龄",
+    "antiNuke": "防核保护",
+    "lockdown": "锁定",
+    "events": "事件"
+  },
+  "joinRate": {
+    "title": "加入速率检测",
+    "description": "通过监控新成员加入速率来检测大规模加入。",
+    "threshold": "加入阈值",
+    "thresholdHint": "触发检测的加入数量",
+    "window": "时间窗口（秒）",
+    "windowHint": "统计加入数的时间窗口",
+    "action": "检测时的操作",
+    "actionHint": "对疑似突袭成员采取的操作",
+    "actions": {
+      "ban": "封禁",
+      "kick": "踢出",
+      "timeout": "超时",
+      "lockdown": "锁定"
+    }
+  },
+  "accountAge": {
+    "title": "账户年龄过滤",
+    "description": "自动对低于最小年龄的账户执行操作。设为 0 表示禁用。",
+    "minAge": "最小账户年龄（天）",
+    "minAgeHint": "0 = 禁用。低于此年龄的账户将被执行操作。",
+    "action": "操作"
+  },
+  "antiNuke": {
+    "title": "防核保护",
+    "description": "检测大规模频道/角色删除，并通过移除责任者的所有角色进行隔离。",
+    "threshold": "删除阈值",
+    "thresholdHint": "10 秒内的删除数量触发隔离",
+    "channelDeleteThreshold": "频道删除阈值",
+    "roleDeleteThreshold": "角色删除阈值",
+    "massbanThreshold": "大规模封禁阈值",
+    "interval": "间隔（秒）",
+    "action": "操作"
+  },
+  "lockdown": {
+    "title": "突袭时自动锁定",
+    "description": "检测到突袭时自动锁定所有频道。",
+    "whitelistedRoles": "白名单角色 ID（逗号分隔）",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "拥有这些角色的成员将不受突袭检测影响。",
+    "logChannel": "日志频道 ID",
+    "logChannelPlaceholder": "突袭事件日志的频道 ID...",
+    "enableButton": "启用锁定",
+    "disableButton": "禁用锁定",
+    "active": "锁定已激活",
+    "inactive": "锁定未激活"
+  },
+  "events": {
+    "title": "最近突袭事件",
+    "description": "已检测突袭、账户年龄拦截和锁定事件的时间线。",
+    "empty": "尚无记录的突袭事件。当突袭检测被触发时，事件将显示在这里。",
+    "actionLabel": "操作：{{action}}",
+    "usersLabel": "用户：{{count}}",
+    "accountAgeLabel": "账户年龄：{{days}}天",
+    "table": {
+      "type": "类型",
+      "description": "描述",
+      "time": "时间",
+      "action": "已执行操作"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "加入激增",
+    "account_age": "账户年龄",
+    "nuke_attempt": "核攻击尝试",
+    "lockdown": "锁定",
+    "massJoin": "大规模加入",
+    "suspiciousAccounts": "可疑账户",
+    "channelDeletion": "频道删除",
+    "roleDeletion": "角色删除",
+    "massBan": "大规模封禁"
+  },
+  "pagination": {
+    "previous": "上一页",
+    "next": "下一页",
+    "page": "第 {{current}} 页 / 共 {{total}} 页"
+  },
+  "toast": {
+    "saved": "防突袭配置已保存",
+    "saveFailed": "保存配置失败",
+    "lockdownEnabled": "服务器锁定已启用",
+    "lockdownDisabled": "服务器锁定已禁用",
+    "lockdownFailed": "切换锁定失败"
+  },
+  "saveButton": {
+    "saving": "保存中...",
+    "save": "保存更改"
+  },
+  "labels": {
+    "seconds": "秒",
+    "minutes": "分钟",
+    "hours": "小时"
+  }
+}

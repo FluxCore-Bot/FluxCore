@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore juhtpaneel"
+  },
+  "status": {
+    "online": "Vorgus",
+    "offline": "Vorgust valjas",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Ulevaade",
+    "automation": "Automatiseerimine",
+    "music": "Muusika",
+    "tempvoice": "TempVoice",
+    "welcome": "Tervitus",
+    "moderation": "Modereerimine",
+    "warnings": "Hoiatused",
+    "rolePanels": "Rollipaneelid",
+    "leveling": "Tasemed",
+    "scheduled": "Ajastatud",
+    "commands": "Kaklused",
+    "security": "Turvalisus",
+    "tickets": "Piletid",
+    "giveaways": "Loosimised",
+    "suggestions": "Ettepanekud",
+    "starboard": "Starboard",
+    "logs": "Logid",
+    "permissions": "Oigused",
+    "settings": "Seaded"
+  },
+  "actions": {
+    "save": "Salvesta",
+    "cancel": "Tuhista",
+    "delete": "Kustuta",
+    "edit": "Muuda",
+    "create": "Loo",
+    "add": "Lisa",
+    "remove": "Eemalda",
+    "confirm": "Kinnita",
+    "close": "Sulge",
+    "back": "Tagasi",
+    "next": "Edasi",
+    "search": "Otsi",
+    "filter": "Filtreeri",
+    "refresh": "Varskenda",
+    "reset": "Lahtesta",
+    "enable": "Luba",
+    "disable": "Keela",
+    "copy": "Kopeeri",
+    "export": "Ekspordi",
+    "import": "Impordi",
+    "submit": "Esita",
+    "loading": "Laadimine...",
+    "retry": "Proovi uuesti"
+  },
+  "labels": {
+    "enabled": "Lubatud",
+    "disabled": "Keelatud",
+    "active": "Aktiivne",
+    "inactive": "Mitteaktiivne",
+    "none": "Puudub",
+    "all": "Koik",
+    "custom": "Kohandatud",
+    "default": "Vaikimisi",
+    "required": "NoUtud",
+    "optional": "Valikuline",
+    "name": "Nimi",
+    "description": "Kirjeldus",
+    "type": "Tuup",
+    "status": "Olek",
+    "channel": "Kanal",
+    "role": "Roll",
+    "member": "Liige",
+    "duration": "Kestus",
+    "reason": "Pohjus",
+    "language": "Keel"
+  },
+  "header": {
+    "notifications": "Teavitused",
+    "settings": "Seaded",
+    "logout": "Logi valja",
+    "toggleSidebar": "Lulita kulgriba",
+    "refreshData": "Varskenda Discord andmeid"
+  },
+  "sidebar": {
+    "closeSidebar": "Sulge kulgriba",
+    "addToServer": "Lisa serverisse",
+    "docs": "Dokumentatsioon",
+    "support": "Tugi",
+    "backToServers": "Tagasi serveritesse"
+  },
+  "empty": {
+    "noData": "Andmed puuduvad",
+    "noResults": "Tulemusi ei leitud",
+    "noItems": "Uksusi veel pole"
+  },
+  "time": {
+    "seconds": "sekundit",
+    "minutes": "minutit",
+    "hours": "tundi",
+    "days": "paeva",
+    "ago": "{{time}} tagasi",
+    "in": "{{time}} parast"
+  },
+  "confirm": {
+    "title": "Kas olete kindel?",
+    "deleteTitle": "Kinnita kustutamine",
+    "deleteMessage": "Seda toimingut ei saa tagasi votta.",
+    "unsavedChanges": "Teil on salvestamata muudatused. Kas soovite kindlasti lahkuda?"
+  },
+  "accessibility": {
+    "skipToContent": "Liigu pohisisuni",
+    "loading": "Sisu laadimine",
+    "loaded": "Sisu laaditud",
+    "error": "Tekkis viga",
+    "menuOpen": "Menuu on avatud",
+    "menuClosed": "Menuu on suletud"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "title": "אזהרות",
+  "subtitle": "עקוב ונהל אזהרות חברים עם הסלמה אוטומטית.",
+  "stats": {
+    "totalWarnings": "סה\"כ אזהרות",
+    "escalationRules": "כללי הסלמה",
+    "dmOnWarn": "הודעה פרטית באזהרה"
+  },
+  "tabs": {
+    "warnings": "יומן אזהרות",
+    "escalation": "הסלמה",
+    "settings": "הגדרות"
+  },
+  "table": {
+    "id": "מזהה",
+    "user": "משתמש",
+    "moderator": "מנהל",
+    "reason": "סיבה",
+    "date": "תאריך"
+  },
+  "filter": {
+    "userPlaceholder": "סנן לפי מזהה משתמש...",
+    "clearAll": "נקה הכל"
+  },
+  "pagination": {
+    "previous": "הקודם",
+    "next": "הבא",
+    "page": "עמוד {{page}} מתוך {{total}} ({{count}} סה\"כ)"
+  },
+  "loading": "טוען אזהרות...",
+  "noWarnings": "לא נמצאו אזהרות.",
+  "toast": {
+    "warningRemoved": "האזהרה הוסרה",
+    "warningsFailed": "מחיקת האזהרה נכשלה",
+    "enterUserId": "הזן מזהה משתמש כדי לנקות את כל האזהרות שלו",
+    "allCleared": "כל האזהרות נוקו עבור המשתמש",
+    "clearFailed": "ניקוי האזהרות נכשל",
+    "thresholdAdded": "סף עונש נוסף",
+    "thresholdFailed": "הוספת העונש נכשלה",
+    "thresholdRemoved": "העונש הוסר",
+    "removeFailed": "הסרת העונש נכשלה",
+    "settingFailed": "עדכון ההגדרה נכשל",
+    "thresholdInvalid": "הסף חייב להיות מספר חיובי"
+  },
+  "escalation": {
+    "title": "הסלמת עונשים",
+    "description": "הגדר פעולות אוטומטיות כאשר משתמש מגיע למספר מסוים של אזהרות.",
+    "threshold": "סף",
+    "action": "פעולה",
+    "duration": "משך",
+    "noRules": "לא הוגדרו כללי הסלמה.",
+    "addRule": "הוסף כלל הסלמה",
+    "addButton": "הוסף כלל",
+    "warnings": "{{count}} אזהרות",
+    "min": "{{count}} דק'",
+    "timeout": "השתקה",
+    "kick": "הסרה",
+    "ban": "חסימה",
+    "durationLabel": "משך (שניות)",
+    "thresholdPlaceholder": "לדוגמה 3",
+    "durationPlaceholder": "לדוגמה 3600"
+  },
+  "settings": {
+    "title": "הגדרות אזהרות",
+    "dmOnWarn": "הודעה פרטית באזהרה",
+    "dmOnWarnDesc": "שלח הודעה פרטית למשתמש כאשר הוא מקבל אזהרה.",
+    "requireReason": "חובת סיבה",
+    "requireReasonDesc": "מנהלים חייבים לספק סיבה בעת מתן אזהרה.",
+    "maxWarnings": "מקסימום אזהרות",
+    "maxWarningsDesc": "מקסימום אזהרות למשתמש (0 = ללא הגבלה)."
+  }
+}

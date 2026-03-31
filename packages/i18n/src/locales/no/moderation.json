@@ -1,0 +1,54 @@
+{
+  "title": "Moderering",
+  "subtitle": "Vis og administrer modereringssaker, konfigurer straffinnstillinger.",
+  "stats": {
+    "totalCases": "Totalt antall saker",
+    "activeTempbans": "Aktive midlertidige utestengelser",
+    "last24h": "Siste 24t"
+  },
+  "cases": "Saker",
+  "actions": {
+    "ban": "Utesteng",
+    "tempban": "Midlertidig utestengelse",
+    "kick": "Spark",
+    "timeout": "Tidsavbrudd",
+    "softban": "Myk utestengelse",
+    "warn": "Advar",
+    "note": "Notat"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Handling",
+    "target": "Mål",
+    "moderator": "Moderator",
+    "reason": "Grunn",
+    "date": "Dato",
+    "actions": "Handlinger",
+    "noCases": "Ingen saker funnet.",
+    "noReason": "Ingen grunn"
+  },
+  "filter": {
+    "userPlaceholder": "Filtrer etter bruker-ID...",
+    "allActions": "Alle handlinger"
+  },
+  "pagination": {
+    "previous": "Forrige",
+    "next": "Neste",
+    "page": "Side {{page}} av {{total}}"
+  },
+  "editDialog": {
+    "title": "Rediger sak #{{id}} grunn",
+    "placeholder": "Skriv inn ny grunn...",
+    "saving": "Lagrer..."
+  },
+  "editReason": "Rediger grunn",
+  "deleteCase": "Slett sak",
+  "deleteConfirm": "Er du sikker på at du vil slette denne saken?",
+  "settings": {
+    "title": "Innstillinger",
+    "dmOnPunishment": "DM ved straff",
+    "dmOnPunishmentDesc": "Send en DM til brukere når de straffes (utestengelse, spark, tidsavbrudd).",
+    "modLogChannel": "Modereringsloggkanal",
+    "modLogChannelDesc": "Kanal der modereringshandlinger logges."
+  }
+}

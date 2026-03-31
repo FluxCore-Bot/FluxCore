@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../lib/client";
 import { PageHeader } from "../../../components/PageHeader";
@@ -19,19 +20,21 @@ import { Badge } from "../../../components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 
 const ACTION_OPTIONS = [
-  { value: "kick", label: "Kick" },
-  { value: "ban", label: "Ban" },
-  { value: "timeout", label: "Timeout" },
+  { value: "kick", labelKey: "joinRate.actions.kick" },
+  { value: "ban", labelKey: "joinRate.actions.ban" },
+  { value: "timeout", labelKey: "joinRate.actions.timeout" },
 ];
 
 function ActionSelect({
   value,
   onChange,
   id,
+  t,
 }: {
   value: string;
   onChange: (value: string) => void;
   id: string;
+  t: (key: string) => string;
 }) {
   return (
     <select
@@ -42,26 +45,18 @@ function ActionSelect({
     >
       {ACTION_OPTIONS.map((opt) => (
         <option key={opt.value} value={opt.value}>
-          {opt.label}
+          {t(opt.labelKey)}
         </option>
       ))}
     </select>
   );
 }
 
-function eventTypeLabel(type: string): string {
-  switch (type) {
-    case "join_spike":
-      return "Join Spike";
-    case "account_age":
-      return "Account Age";
-    case "nuke_attempt":
-      return "Nuke Attempt";
-    case "lockdown":
-      return "Lockdown";
-    default:
-      return type;
-  }
+function eventTypeLabel(type: string, t: (key: string) => string): string {
+  const key = `raidEventTypes.${type}`;
+  const translated = t(key);
+  // If the key doesn't exist, t() returns the key itself — fall back to raw type
+  return translated === key ? type : translated;
 }
 
 function eventTypeBadgeVariant(
@@ -81,13 +76,13 @@ function eventTypeBadgeVariant(
   }
 }
 
-function RaidEventRow({ event }: { event: RaidEventData }) {
+function RaidEventRow({ event, t }: { event: RaidEventData; t: (key: string, opts?: Record<string, unknown>) => string }) {
   const date = new Date(event.triggeredAt);
   return (
     <div className="flex items-center justify-between rounded-md border border-border bg-surface-high/30 px-4 py-3">
       <div className="flex items-center gap-3">
         <Badge variant={eventTypeBadgeVariant(event.eventType)}>
-          {eventTypeLabel(event.eventType)}
+          {eventTypeLabel(event.eventType, t)}
         </Badge>
         <div className="text-sm">
           {event.details.reason && (
@@ -95,17 +90,17 @@ function RaidEventRow({ event }: { event: RaidEventData }) {
           )}
           {event.details.action && (
             <span className="ml-2 text-xs text-text-muted">
-              Action: {event.details.action}
+              {t("events.actionLabel", { action: event.details.action })}
             </span>
           )}
           {event.details.userIds && event.details.userIds.length > 0 && (
             <span className="ml-2 text-xs text-text-muted">
-              Users: {event.details.userIds.length}
+              {t("events.usersLabel", { count: event.details.userIds.length })}
             </span>
           )}
           {event.details.ageDays !== undefined && (
             <span className="ml-2 text-xs text-text-muted">
-              Account age: {event.details.ageDays}d
+              {t("events.accountAgeLabel", { days: event.details.ageDays })}
             </span>
           )}
         </div>
@@ -119,6 +114,7 @@ function RaidEventRow({ event }: { event: RaidEventData }) {
 
 export function SecurityPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
+  const { t } = useTranslation("security");
   const { data: config, isLoading } = useAntiRaidConfig(guildId);
   const updateConfig = useUpdateAntiRaidConfig(guildId);
   const [eventsPage, setEventsPage] = useState(1);
@@ -175,10 +171,10 @@ export function SecurityPage() {
         logChannelId: logChannelId || null,
       },
       {
-        onSuccess: () => toast.success("Anti-raid configuration saved"),
+        onSuccess: () => toast.success(t("toast.saved")),
         onError: (err) =>
           toast.error(
-            err instanceof ApiError ? err.message : "Failed to save configuration",
+            err instanceof ApiError ? err.message : t("toast.saveFailed"),
           ),
       },
     );
@@ -188,10 +184,10 @@ export function SecurityPage() {
     return (
       <div className="space-y-8">
         <PageHeader
-          title="Security"
-          subtitle="Configure anti-raid protection and server security settings."
+          title={t("title")}
+          subtitle={t("subtitle")}
         />
-        <p className="text-text-muted">Loading...</p>
+        <p className="text-text-muted">{t("common:actions.loading")}</p>
       </div>
     );
   }
@@ -199,18 +195,17 @@ export function SecurityPage() {
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Security"
-        subtitle="Configure anti-raid protection and server security settings."
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
       {/* Master Toggle */}
       <Card className="bg-surface p-6">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-semibold">Anti-Raid Protection</h3>
+            <h3 className="text-lg font-semibold">{t("antiRaid.title")}</h3>
             <p className="text-sm text-text-muted">
-              Enable automatic detection and response to coordinated raids, suspicious accounts,
-              and destructive actions.
+              {t("antiRaid.description")}
             </p>
           </div>
           <Switch checked={enabled} onCheckedChange={setEnabled} />
@@ -219,26 +214,26 @@ export function SecurityPage() {
 
       <Tabs defaultValue="join-rate">
         <TabsList>
-          <TabsTrigger value="join-rate">Join Rate</TabsTrigger>
-          <TabsTrigger value="account-age">Account Age</TabsTrigger>
-          <TabsTrigger value="anti-nuke">Anti-Nuke</TabsTrigger>
-          <TabsTrigger value="lockdown">Lockdown</TabsTrigger>
-          <TabsTrigger value="events">Events</TabsTrigger>
+          <TabsTrigger value="join-rate">{t("sections.joinRate")}</TabsTrigger>
+          <TabsTrigger value="account-age">{t("sections.accountAge")}</TabsTrigger>
+          <TabsTrigger value="anti-nuke">{t("sections.antiNuke")}</TabsTrigger>
+          <TabsTrigger value="lockdown">{t("sections.lockdown")}</TabsTrigger>
+          <TabsTrigger value="events">{t("sections.events")}</TabsTrigger>
         </TabsList>
 
         {/* Join Rate Detection */}
         <TabsContent value="join-rate">
           <Card className="bg-surface p-6">
-            <h3 className="mb-2 text-lg font-semibold">Join Rate Detection</h3>
+            <h3 className="mb-2 text-lg font-semibold">{t("joinRate.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
-              Detect mass joins by monitoring the rate of new members joining.
+              {t("joinRate.description")}
             </p>
 
             <Separator className="mb-6" />
 
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div>
-                <Label htmlFor="join-threshold">Join Threshold</Label>
+                <Label htmlFor="join-threshold">{t("joinRate.threshold")}</Label>
                 <Input
                   id="join-threshold"
                   type="number"
@@ -249,12 +244,12 @@ export function SecurityPage() {
                   className="mt-1"
                 />
                 <p className="mt-1 text-xs text-text-muted">
-                  Number of joins to trigger detection
+                  {t("joinRate.thresholdHint")}
                 </p>
               </div>
 
               <div>
-                <Label htmlFor="join-window">Time Window (seconds)</Label>
+                <Label htmlFor="join-window">{t("joinRate.window")}</Label>
                 <Input
                   id="join-window"
                   type="number"
@@ -265,17 +260,17 @@ export function SecurityPage() {
                   className="mt-1"
                 />
                 <p className="mt-1 text-xs text-text-muted">
-                  Window in which joins are counted
+                  {t("joinRate.windowHint")}
                 </p>
               </div>
 
               <div>
-                <Label htmlFor="join-action">Action on Detection</Label>
+                <Label htmlFor="join-action">{t("joinRate.action")}</Label>
                 <div className="mt-1">
-                  <ActionSelect id="join-action" value={joinAction} onChange={setJoinAction} />
+                  <ActionSelect id="join-action" value={joinAction} onChange={setJoinAction} t={t} />
                 </div>
                 <p className="mt-1 text-xs text-text-muted">
-                  Action to take on suspected raid members
+                  {t("joinRate.actionHint")}
                 </p>
               </div>
             </div>
@@ -285,17 +280,16 @@ export function SecurityPage() {
         {/* Account Age Filter */}
         <TabsContent value="account-age">
           <Card className="bg-surface p-6">
-            <h3 className="mb-2 text-lg font-semibold">Account Age Filter</h3>
+            <h3 className="mb-2 text-lg font-semibold">{t("accountAge.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
-              Automatically action accounts that are younger than a minimum age. Set to 0 to
-              disable.
+              {t("accountAge.description")}
             </p>
 
             <Separator className="mb-6" />
 
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div>
-                <Label htmlFor="account-age-days">Minimum Account Age (days)</Label>
+                <Label htmlFor="account-age-days">{t("accountAge.minAge")}</Label>
                 <Input
                   id="account-age-days"
                   type="number"
@@ -306,17 +300,18 @@ export function SecurityPage() {
                   className="mt-1"
                 />
                 <p className="mt-1 text-xs text-text-muted">
-                  0 = disabled. Accounts younger than this will be actioned.
+                  {t("accountAge.minAgeHint")}
                 </p>
               </div>
 
               <div>
-                <Label htmlFor="account-age-action">Action</Label>
+                <Label htmlFor="account-age-action">{t("accountAge.action")}</Label>
                 <div className="mt-1">
                   <ActionSelect
                     id="account-age-action"
                     value={accountAgeAction}
                     onChange={setAccountAgeAction}
+                    t={t}
                   />
                 </div>
               </div>
@@ -329,10 +324,9 @@ export function SecurityPage() {
           <Card className="bg-surface p-6">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold">Anti-Nuke Protection</h3>
+                <h3 className="text-lg font-semibold">{t("antiNuke.title")}</h3>
                 <p className="text-sm text-text-muted">
-                  Detect mass channel/role deletions and quarantine the responsible user by
-                  removing all their roles.
+                  {t("antiNuke.description")}
                 </p>
               </div>
               <Switch checked={antiNukeEnabled} onCheckedChange={setAntiNukeEnabled} />
@@ -342,7 +336,7 @@ export function SecurityPage() {
 
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div>
-                <Label htmlFor="nuke-threshold">Deletion Threshold</Label>
+                <Label htmlFor="nuke-threshold">{t("antiNuke.threshold")}</Label>
                 <Input
                   id="nuke-threshold"
                   type="number"
@@ -353,7 +347,7 @@ export function SecurityPage() {
                   className="mt-1"
                 />
                 <p className="mt-1 text-xs text-text-muted">
-                  Number of deletions within 10 seconds to trigger quarantine
+                  {t("antiNuke.thresholdHint")}
                 </p>
               </div>
             </div>
@@ -365,9 +359,9 @@ export function SecurityPage() {
           <Card className="bg-surface p-6">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold">Auto-Lockdown on Raid</h3>
+                <h3 className="text-lg font-semibold">{t("lockdown.title")}</h3>
                 <p className="text-sm text-text-muted">
-                  Automatically lock all channels when a raid is detected.
+                  {t("lockdown.description")}
                 </p>
               </div>
               <Switch checked={lockdownOnRaid} onCheckedChange={setLockdownOnRaid} />
@@ -377,24 +371,24 @@ export function SecurityPage() {
 
             <div className="space-y-6">
               <div>
-                <Label htmlFor="whitelist-roles">Whitelisted Role IDs (comma-separated)</Label>
+                <Label htmlFor="whitelist-roles">{t("lockdown.whitelistedRoles")}</Label>
                 <Input
                   id="whitelist-roles"
-                  placeholder="123456789, 987654321"
+                  placeholder={t("lockdown.whitelistedRolesPlaceholder")}
                   value={whitelistedRoleIds}
                   onChange={(e) => setWhitelistedRoleIds(e.target.value)}
                   className="mt-1"
                 />
                 <p className="mt-1 text-xs text-text-muted">
-                  Members with these roles will be exempt from raid detection.
+                  {t("lockdown.whitelistedRolesHint")}
                 </p>
               </div>
 
               <div>
-                <Label htmlFor="log-channel">Log Channel ID</Label>
+                <Label htmlFor="log-channel">{t("lockdown.logChannel")}</Label>
                 <Input
                   id="log-channel"
-                  placeholder="Channel ID for raid event logs..."
+                  placeholder={t("lockdown.logChannelPlaceholder")}
                   value={logChannelId}
                   onChange={(e) => setLogChannelId(e.target.value)}
                   className="mt-1 w-64"
@@ -407,9 +401,9 @@ export function SecurityPage() {
         {/* Recent Events */}
         <TabsContent value="events">
           <Card className="bg-surface p-6">
-            <h3 className="mb-2 text-lg font-semibold">Recent Raid Events</h3>
+            <h3 className="mb-2 text-lg font-semibold">{t("events.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
-              Timeline of detected raids, account age blocks, and lockdown events.
+              {t("events.description")}
             </p>
 
             <Separator className="mb-6" />
@@ -417,7 +411,7 @@ export function SecurityPage() {
             {eventsData && eventsData.events.length > 0 ? (
               <div className="space-y-2">
                 {eventsData.events.map((event) => (
-                  <RaidEventRow key={event.id} event={event} />
+                  <RaidEventRow key={event.id} event={event} t={t} />
                 ))}
 
                 {/* Pagination */}
@@ -429,10 +423,10 @@ export function SecurityPage() {
                       disabled={eventsPage <= 1}
                       onClick={() => setEventsPage((p) => Math.max(1, p - 1))}
                     >
-                      Previous
+                      {t("pagination.previous")}
                     </Button>
                     <span className="text-xs text-text-muted">
-                      Page {eventsPage} of {Math.ceil(eventsData.total / 20)}
+                      {t("pagination.page", { current: eventsPage, total: Math.ceil(eventsData.total / 20) })}
                     </span>
                     <Button
                       variant="outline"
@@ -440,15 +434,14 @@ export function SecurityPage() {
                       disabled={eventsPage >= Math.ceil(eventsData.total / 20)}
                       onClick={() => setEventsPage((p) => p + 1)}
                     >
-                      Next
+                      {t("pagination.next")}
                     </Button>
                   </div>
                 )}
               </div>
             ) : (
               <p className="text-sm text-text-muted">
-                No raid events recorded yet. Events will appear here when raid detection
-                triggers.
+                {t("events.empty")}
               </p>
             )}
           </Card>
@@ -458,7 +451,7 @@ export function SecurityPage() {
       {/* Save Button */}
       <div className="flex gap-3">
         <Button onClick={handleSave} disabled={updateConfig.isPending}>
-          {updateConfig.isPending ? "Saving..." : "Save Changes"}
+          {updateConfig.isPending ? t("saveButton.saving") : t("saveButton.save")}
         </Button>
       </div>
     </div>

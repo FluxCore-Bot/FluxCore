@@ -1,0 +1,50 @@
+{
+  "title": "Giveaway",
+  "subtitle": "Jalankan giveaway dengan tempoh, syarat penyertaan, dan pemilihan pemenang yang boleh dikustomisasi.",
+  "stats": {
+    "activeGiveaways": "Giveaway Aktif",
+    "pastGiveaways": "Giveaway Lepas",
+    "totalEntries": "Jumlah Penyertaan"
+  },
+  "table": {
+    "prize": "Hadiah",
+    "winners": "Pemenang",
+    "entries": "Penyertaan",
+    "endsIn": "Tamat Dalam",
+    "status": "Status"
+  },
+  "statuses": {
+    "active": "Aktif",
+    "ended": "Tamat",
+    "cancelled": "Dibatalkan"
+  },
+  "actions": {
+    "create": "Cipta Giveaway",
+    "edit": "Edit",
+    "end": "Tamatkan",
+    "reroll": "Reroll",
+    "delete": "Padam"
+  },
+  "form": {
+    "prize": "Hadiah",
+    "winnersCount": "Bilangan Pemenang",
+    "duration": "Tempoh",
+    "channel": "Saluran",
+    "requiredRole": "Peranan Diperlukan",
+    "description": "Penerangan"
+  },
+  "toast": {
+    "created": "Giveaway dicipta",
+    "createFailed": "Gagal mencipta giveaway",
+    "updated": "Giveaway dikemaskini",
+    "updateFailed": "Gagal mengemaskini giveaway",
+    "ended": "Giveaway ditamatkan",
+    "endFailed": "Gagal menamatkan giveaway",
+    "rerolled": "Pemenang di-reroll",
+    "rerollFailed": "Gagal mereroll pemenang",
+    "deleted": "Giveaway dipadam",
+    "deleteFailed": "Gagal memadam giveaway"
+  },
+  "empty": "Belum ada giveaway. Cipta satu untuk bermula.",
+  "loading": "Memuatkan giveaway..."
+}

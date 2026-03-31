@@ -1,0 +1,9 @@
+{
+  "title": "Jusu serveri",
+  "subtitle": "Izvelieties serveri parvaldisanai un konfigurecijai.",
+  "loading": "Iellade serverus...",
+  "empty": {
+    "title": "Serveri nav atrasti",
+    "description": "Parliecinieties, ka bots ir pievienots serverim, kura jums ir Servera parvaldibas atlauja."
+  }
+}

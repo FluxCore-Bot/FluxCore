@@ -1,0 +1,12 @@
+{
+  "title": "概要",
+  "subtitle": "自動化のパフォーマンスとアクティビティを一目で確認できます。",
+  "stats": {
+    "actionRules": "アクションルール",
+    "activeNow": "現在アクティブ",
+    "executions": "実行回数",
+    "successRate": "成功率"
+  },
+  "errorsInLast24h": "過去24時間で{{count}}件のエラー",
+  "errorsInLast24h_other": "過去24時間で{{count}}件のエラー"
+}

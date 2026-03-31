@@ -1,0 +1,113 @@
+{
+  "title": "Lastni ukazi",
+  "subtitle": "Ustvarite samodejne odzivnike in predponske ukaze, ki jih sprožajo sporočila.",
+  "stats": {
+    "totalCommands": "Skupaj ukazov",
+    "enabled": "Omogočeno",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Ukazi",
+    "variables": "Spremenljivke"
+  },
+  "table": {
+    "name": "Ime",
+    "trigger": "Sprožilec",
+    "response": "Odziv",
+    "cooldown": "Čas hlajenja",
+    "status": "Stanje"
+  },
+  "triggerTypes": {
+    "command": "!ukaz",
+    "keyword": "Ključna beseda",
+    "startsWith": "Začne se z",
+    "regex": "Regex",
+    "prefixCommand": "Predponski ukaz (!ime)",
+    "keywordContains": "Ključna beseda (vsebuje)"
+  },
+  "dialog": {
+    "createCommand": "Ustvari ukaz",
+    "editCommand": "Uredi ukaz"
+  },
+  "form": {
+    "commandName": "Ime ukaza",
+    "triggerText": "Besedilo sprožilca",
+    "regexPattern": "Vzorec Regex",
+    "triggerType": "Vrsta sprožilca",
+    "response": "Odziv",
+    "message": "Sporočilo",
+    "embedTitle": "Naslov vdelane vsebine",
+    "embedDescription": "Opis vdelane vsebine",
+    "color": "Barva",
+    "footer": "Noga"
+  },
+  "options": {
+    "cooldown": "Čas hlajenja (sekunde)",
+    "enabled": "Omogočeno",
+    "enabledDesc": "Ali je ta ukaz aktiven",
+    "deleteTrigger": "Izbriši sprožilno sporočilo",
+    "deleteTriggerDesc": "Samodejno izbriši sporočilo, ki je sprožilo ta ukaz.",
+    "dmResponse": "Odziv v DM",
+    "dmResponseDesc": "Pošlji odziv kot neposredno sporočilo namesto v kanal."
+  },
+  "restrictions": {
+    "title": "Omejitve",
+    "allowedChannels": "Dovoljeni kanali (prazno = vsi)",
+    "allowedRoles": "Dovoljene vloge (prazno = vsi)",
+    "addChannel": "Dodaj kanal",
+    "addRole": "Dodaj vlogo"
+  },
+  "actions": {
+    "create": "Ustvari",
+    "update": "Posodobi",
+    "cancel": "Prekliči",
+    "addAction": "Dodaj dejanje",
+    "addRole": "Dodaj vlogo",
+    "removeRole": "Odstrani vlogo"
+  },
+  "actionsSection": {
+    "title": "Dejanja ({{count}}/5)",
+    "noActions": "Ni konfiguriranih dejanj. Dodajte dejanje, da določite, kaj ta ukaz počne.",
+    "maxActions": "Največ 5 dejanj na ukaz"
+  },
+  "variables": {
+    "title": "Spremenljivke predloge",
+    "description": "Uporabite te spremenljivke v odzivih ukaza. Zamenjane bodo z dejanskimi vrednostmi, ko se ukaz sproži.",
+    "table": {
+      "variable": "Spremenljivka",
+      "description": "Opis"
+    },
+    "entries": {
+      "user": "{user} — Omeni uporabnika, ki je sprožil ukaz",
+      "username": "{username} — Prikazno ime uporabnika",
+      "userId": "{userId} — ID uporabnika",
+      "server": "{server} — Ime strežnika",
+      "channel": "{channel} — Omeni trenutni kanal",
+      "channelName": "{channelName} — Ime kanala",
+      "memberCount": "{memberCount} — Skupno število članov strežnika"
+    }
+  },
+  "toast": {
+    "created": "Ukaz ustvarjen",
+    "createFailed": "Ustvarjanje ukaza ni uspelo",
+    "updated": "Ukaz posodobljen",
+    "updateFailed": "Posodabljanje ukaza ni uspelo",
+    "deleted": "Ukaz izbrisan",
+    "deleteFailed": "Brisanje ukaza ni uspelo",
+    "toggleEnabled": "Ukaz omogočen",
+    "toggleDisabled": "Ukaz onemogočen",
+    "toggleFailed": "Preklop ukaza ni uspel"
+  },
+  "empty": "Še ni ustvarjenih lastnih ukazov.",
+  "loading": "Nalaganje ukazov...",
+  "badge": {
+    "active": "Aktivno",
+    "disabled": "Onemogočeno",
+    "text": "Besedilo",
+    "embed": "Vdelana vsebina"
+  },
+  "validation": {
+    "nameRequired": "Ime ukaza je obvezno"
+  },
+  "triggerPrefix": "Sprožilec: !{{name}}"
+}

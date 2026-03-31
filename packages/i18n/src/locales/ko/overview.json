@@ -1,0 +1,12 @@
+{
+  "title": "개요",
+  "subtitle": "자동화 성능과 활동을 한눈에 모니터링합니다.",
+  "stats": {
+    "actionRules": "액션 규칙",
+    "activeNow": "현재 활성",
+    "executions": "실행 횟수",
+    "successRate": "성공률"
+  },
+  "errorsInLast24h": "최근 24시간 동안 {{count}}건의 오류",
+  "errorsInLast24h_other": "최근 24시간 동안 {{count}}건의 오류"
+}

@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Nou in Openbare Beta",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Die Alles-in-Een",
+    "titleLine2": "Discord Bot-raamwerk",
+    "subtitle": "Ontplooi 'n professionele Discord-teenwoordigheid binne minute. Moduler, self-gehuisves, en gebou vir gemeenskappe wat meer vereis."
+  },
+  "cta": {
+    "addToServer": "Voeg by Bediener",
+    "openDashboard": "Maak Kontrolepaneel Oop",
+    "exploreFeatures": "Verken Kenmerke"
+  },
+  "stats": {
+    "servers": "Bedieners",
+    "latency": "Latensie",
+    "uptime": "Optyd",
+    "modules": "Modules",
+    "serversValue": "1,000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99.9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Vermoens",
+    "title": "Alles wat jou bediener nodig het",
+    "subtitle": "'n Modulere gereedskapstel ontwerp vir gemeenskappe wat betroubaarheid, buigsaamheid en beheer vereis.",
+    "automation": {
+      "title": "Outomatiseringsreels",
+      "description": "Skep komplekse gebeurtenisgedrewe werkvloeie sonder kode. As-dit-dan-dat-snellers met 23 gebeurtenistipes en 10 aksietipes."
+    },
+    "music": {
+      "title": "Musiekstelsel",
+      "description": "Hoetrou-klankstroom met meervoudige platformondersteuning. Rybestuur, DJ-kontroles en biblioteek-modus."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Dinamiese stemkanaalbestuur. Outo-skepping met pasgemaakte naamsjablone, toestemmings en opruiming."
+    },
+    "logs": {
+      "title": "Aktiwiteitslogboeke",
+      "description": "Volledige ouditspoor van elke outomatisering-uitvoering. Soek, filtreer en ontfout jou reels met gedetailleerde logboeke."
+    },
+    "webhooks": {
+      "title": "Webhooks & API",
+      "description": "Stuur data na eksterne dienste met HTTP-webhooks. Pasgemaakte opskrifte, liggaamsjablone en veranderlike-interpolasie."
+    },
+    "dashboard": {
+      "title": "Intydse Kontrolepaneel",
+      "description": "Bestuur alles vanaf 'n netjiese webkontrolepaneel. Analise, konfigurasie en monitering op een plek."
+    }
+  },
+  "ctaSection": {
+    "title": "Gereed om jou gemeenskap op te gradeer?",
+    "subtitle": "Begin binne minute met zero konfigurasie. Self-gehuisves, oopbron en heeltemal gratis."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "\u00a9 {{year}} FluxCore Technologies. Alle regte voorbehou.",
+    "links": {
+      "documentation": "Dokumentasie",
+      "support": "Ondersteuning",
+      "privacy": "Privaatheidsbeleid",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "title": "Saugumas",
+  "subtitle": "Konfigurukite apsauga nuo uzpuolimu ir serverio saugumo nustatymus.",
+  "antiRaid": {
+    "title": "Apsauga nuo uzpuolimu",
+    "description": "Ijunkite automatini aptikima ir atsaka i koordinuotus uzpuolimus, itartinas paskyras ir destruktyvius veiksmus."
+  },
+  "sections": {
+    "joinRate": "Prisijungimu greitis",
+    "accountAge": "Paskyros amzius",
+    "antiNuke": "Anti-Nuke",
+    "lockdown": "Uzrakinimas",
+    "events": "Ivykiai"
+  },
+  "joinRate": {
+    "title": "Prisijungimu greicio aptikimas",
+    "description": "Aptikite masinius prisijungimus stebedami nauju nariu greiti.",
+    "threshold": "Prisijungimu riba",
+    "thresholdHint": "Prisijungimu skaicius aptikimui suaktyvinti",
+    "window": "Laiko langas (sekundes)",
+    "windowHint": "Langas, kuriame skaičiuojami prisijungimai",
+    "action": "Veiksmas aptikus",
+    "actionHint": "Veiksmas, kuris bus atliktas su itartinais uzpuolimo nariais",
+    "actions": {
+      "ban": "Draudimas",
+      "kick": "Ismetimas",
+      "timeout": "Laikinas nutildymas",
+      "lockdown": "Uzrakinimas"
+    }
+  },
+  "accountAge": {
+    "title": "Paskyros amziaus filtras",
+    "description": "Automatiskai imkites veiksmu su paskyromis, kurios yra jaunesnes nei minimalus amzius. Nustatykite 0, kad isjungtumete.",
+    "minAge": "Minimalus paskyros amzius (dienos)",
+    "minAgeHint": "0 = isjungta. Paskyros jaunesnes uz si bus apdorotos.",
+    "action": "Veiksmas"
+  },
+  "antiNuke": {
+    "title": "Anti-Nuke apsauga",
+    "description": "Aptikite masini kanalu/roliu trinima ir izoliuokite atsakinga naudotoja pasalindami visas jo roles.",
+    "threshold": "Trinimu riba",
+    "thresholdHint": "Trinimu skaicius per 10 sekundziu izoliacijos suaktyvinimui",
+    "channelDeleteThreshold": "Kanalu trinimu riba",
+    "roleDeleteThreshold": "Roliu trinimu riba",
+    "massbanThreshold": "Masiniu draudimu riba",
+    "interval": "Intervalas (sekundes)",
+    "action": "Veiksmas"
+  },
+  "lockdown": {
+    "title": "Automatinis uzrakinimas uzpuolimo metu",
+    "description": "Automatiskai uzrakinkite visus kanalus, kai aptinkamas uzpuolimas.",
+    "whitelistedRoles": "Privilegijuotu roliu ID (atskirti kableliais)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Nariai su siomis rolemis bus isklyčiami is uzpuolimo aptikimo.",
+    "logChannel": "Zurnalo kanalo ID",
+    "logChannelPlaceholder": "Kanalo ID uzpuolimo ivykiu zurnalui...",
+    "enableButton": "Ijungti uzrakinima",
+    "disableButton": "Isjungti uzrakinima",
+    "active": "Uzrakinimas aktyvus",
+    "inactive": "Uzrakinimas neaktyvus"
+  },
+  "events": {
+    "title": "Naujausios uzpuolimo ivykiai",
+    "description": "Aptiktu uzpuolimu, paskyros amziaus blokavimo ir uzrakinimo ivykiu laiko juosta.",
+    "empty": "Uzpuolimo ivykiu neuzregistruota. Ivykiai pasirodys cia, kai suveiks uzpuolimo aptikimas.",
+    "actionLabel": "Veiksmas: {{action}}",
+    "usersLabel": "Naudotojai: {{count}}",
+    "accountAgeLabel": "Paskyros amzius: {{days}}d",
+    "table": {
+      "type": "Tipas",
+      "description": "Aprasymas",
+      "time": "Laikas",
+      "action": "Atliktas veiksmas"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Prisijungimu suolis",
+    "account_age": "Paskyros amzius",
+    "nuke_attempt": "Naikinimo bandymas",
+    "lockdown": "Uzrakinimas",
+    "massJoin": "Masinis prisijungimas",
+    "suspiciousAccounts": "Itartinos paskyros",
+    "channelDeletion": "Kanalu trinimas",
+    "roleDeletion": "Roliu trinimas",
+    "massBan": "Masinis draudimas"
+  },
+  "pagination": {
+    "previous": "Ankstesnis",
+    "next": "Kitas",
+    "page": "Puslapis {{current}} is {{total}}"
+  },
+  "toast": {
+    "saved": "Apsaugos nuo uzpuolimu konfiguracija issaugota",
+    "saveFailed": "Nepavyko issaugoti konfiguracijos",
+    "lockdownEnabled": "Serverio uzrakinimas ijungtas",
+    "lockdownDisabled": "Serverio uzrakinimas isjungtas",
+    "lockdownFailed": "Nepavyko perjungti uzrakinimo"
+  },
+  "saveButton": {
+    "saving": "Issaugoma...",
+    "save": "Issaugoti pakeitimus"
+  },
+  "labels": {
+    "seconds": "sekundes",
+    "minutes": "minutes",
+    "hours": "valandos"
+  }
+}

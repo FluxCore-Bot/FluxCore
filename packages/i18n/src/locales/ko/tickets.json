@@ -1,0 +1,77 @@
+{
+  "title": "티켓 시스템",
+  "subtitle": "지원 티켓 패널을 만들고 대시보드에서 열린 티켓을 관리합니다.",
+  "stats": {
+    "totalTickets": "총 티켓",
+    "open": "열림",
+    "claimed": "담당 중",
+    "panels": "패널"
+  },
+  "tabs": {
+    "activeTickets": "활성 티켓",
+    "panelBuilder": "패널 빌더",
+    "settings": "설정"
+  },
+  "table": {
+    "id": "ID",
+    "user": "사용자",
+    "subject": "제목",
+    "status": "상태",
+    "assignee": "담당자",
+    "created": "생성일"
+  },
+  "statuses": {
+    "open": "열림",
+    "claimed": "담당 중",
+    "closed": "닫힘"
+  },
+  "panelBuilder": {
+    "title": "패널 제목",
+    "channel": "채널",
+    "buttonLabel": "버튼 라벨",
+    "welcomeMessage": "환영 메시지",
+    "category": "티켓 카테고리",
+    "create": "패널 만들기",
+    "edit": "패널 편집",
+    "deploy": "패널 배포"
+  },
+  "settings": {
+    "transcriptChannel": "대화 기록 채널",
+    "transcriptChannelDesc": "티켓 닫을 때 대화 기록이 저장되는 채널.",
+    "maxTicketsPerUser": "사용자당 최대 티켓",
+    "maxTicketsPerUserDesc": "한 사용자가 가질 수 있는 최대 열린 티켓 수.",
+    "closeConfirmation": "닫기 확인",
+    "closeConfirmationDesc": "티켓을 닫기 전에 확인을 요구합니다.",
+    "dmTranscript": "DM 대화 기록",
+    "dmTranscriptDesc": "티켓 작성자에게 DM으로 대화 기록 사본을 보냅니다."
+  },
+  "actions": {
+    "claim": "담당",
+    "close": "닫기",
+    "delete": "삭제",
+    "reopen": "다시 열기"
+  },
+  "toast": {
+    "panelCreated": "티켓 패널이 생성되었습니다",
+    "panelCreateFailed": "티켓 패널 생성에 실패했습니다",
+    "panelUpdated": "티켓 패널이 업데이트되었습니다",
+    "panelUpdateFailed": "티켓 패널 업데이트에 실패했습니다",
+    "panelDeployed": "티켓 패널이 배포되었습니다",
+    "panelDeployFailed": "티켓 패널 배포에 실패했습니다",
+    "ticketClaimed": "티켓을 담당했습니다",
+    "ticketClaimFailed": "티켓 담당에 실패했습니다",
+    "ticketClosed": "티켓이 닫혔습니다",
+    "ticketCloseFailed": "티켓 닫기에 실패했습니다",
+    "ticketReopened": "티켓이 다시 열렸습니다",
+    "ticketReopenFailed": "티켓 다시 열기에 실패했습니다",
+    "ticketDeleted": "티켓이 삭제되었습니다",
+    "ticketDeleteFailed": "티켓 삭제에 실패했습니다",
+    "settingsSaved": "티켓 설정이 저장되었습니다",
+    "settingsFailed": "티켓 설정 저장에 실패했습니다"
+  },
+  "empty": {
+    "tickets": "활성 티켓이 없습니다.",
+    "panels": "아직 티켓 패널이 생성되지 않았습니다."
+  },
+  "loading": "티켓 불러오는 중..."
+}

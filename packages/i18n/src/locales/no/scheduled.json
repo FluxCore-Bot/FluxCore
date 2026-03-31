@@ -1,0 +1,86 @@
+{
+  "title": "Planlagte meldinger",
+  "subtitle": "Opprett gjentakende automatisk publiserte meldinger på konfigurerbare tidsplaner.",
+  "stats": {
+    "totalMessages": "Totalt antall meldinger",
+    "active": "Aktive",
+    "inactive": "Inaktive"
+  },
+  "table": {
+    "name": "Navn",
+    "channel": "Kanal",
+    "schedule": "Tidsplan",
+    "nextRun": "Neste kjøring",
+    "status": "Status"
+  },
+  "dialog": {
+    "editTitle": "Rediger planlagt melding",
+    "createTitle": "Ny planlagt melding"
+  },
+  "form": {
+    "name": "Navn",
+    "channel": "Kanal",
+    "schedulePreset": "Tidsplanforhåndsinnstilling",
+    "cronExpression": "Cron-uttrykk",
+    "timezone": "Tidssone",
+    "messageContent": "Meldingsinnhold",
+    "text": "Tekst",
+    "embed": "Innbygging",
+    "enabled": "Aktivert",
+    "enabledDesc": "Om denne planlagte meldingen er aktiv."
+  },
+  "cronPresets": {
+    "everyHour": "Hver time",
+    "every6Hours": "Hver 6. time",
+    "daily9am": "Daglig kl. 09:00",
+    "dailyMidnight": "Daglig ved midnatt",
+    "weeklyMonday": "Ukentlig på mandag",
+    "monthly1st": "Månedlig den 1.",
+    "custom": "Egendefinert"
+  },
+  "embed": {
+    "title": "Tittel",
+    "description": "Beskrivelse",
+    "color": "Farge (hex)",
+    "footer": "Bunntekst",
+    "thumbnail": "Miniatyrbilde-URL",
+    "image": "Bilde-URL"
+  },
+  "toast": {
+    "created": "Planlagt melding opprettet",
+    "createFailed": "Kunne ikke opprette planlagt melding",
+    "updated": "Planlagt melding oppdatert",
+    "updateFailed": "Kunne ikke oppdatere planlagt melding",
+    "deleted": "Planlagt melding slettet",
+    "deleteFailed": "Kunne ikke slette planlagt melding",
+    "testSent": "Testmelding sendt",
+    "testFailed": "Kunne ikke sende testmelding"
+  },
+  "empty": {
+    "title": "Ingen planlagte meldinger ennå",
+    "description": "Opprett en planlagt melding for å automatisk publisere innhold på gjentakende basis.",
+    "createButton": "Opprett melding"
+  },
+  "pagination": {
+    "previous": "Forrige",
+    "next": "Neste",
+    "page": "Side {{page}} av {{total}}"
+  },
+  "actions": {
+    "newMessage": "Ny melding",
+    "testSend": "Testsending",
+    "edit": "Rediger",
+    "delete": "Slett",
+    "save": "Lagre",
+    "cancel": "Avbryt"
+  },
+  "validation": {
+    "nameRequired": "Meldingsnavn er påkrevd",
+    "channelRequired": "Kanal er påkrevd"
+  },
+  "cronPreview": {
+    "nextRuns": "Neste kjøringer"
+  },
+  "characters": "{{count}}/2000 tegn",
+  "never": "Aldri"
+}

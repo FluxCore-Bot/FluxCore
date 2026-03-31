@@ -1,0 +1,120 @@
+{
+  "title": "Systém úrovní",
+  "subtitle": "Nakonfigurujte získávání XP, oznámení o postupu, odměny rolí a násobičky.",
+  "stats": {
+    "rankedMembers": "Členů v žebříčku",
+    "roleRewards": "Odměny rolí",
+    "systemStatus": "Stav systému",
+    "enabled": "Povolen",
+    "disabled": "Zakázán"
+  },
+  "tabs": {
+    "leaderboard": "Žebříček",
+    "settings": "Nastavení",
+    "roleRewards": "Odměny rolí",
+    "exclusions": "Výjimky",
+    "multipliers": "Násobičky"
+  },
+  "table": {
+    "rank": "Pořadí",
+    "userId": "ID uživatele",
+    "level": "Úroveň",
+    "xp": "XP",
+    "messages": "Zprávy",
+    "voiceTime": "Čas v hlasovém"
+  },
+  "settings": {
+    "title": "Nastavení úrovní",
+    "enabled": "Povolit úrovně",
+    "enabledDesc": "Zapnout nebo vypnout celý systém úrovní.",
+    "xpPerMessage": "XP za zprávu",
+    "xpPerMessageDesc": "Základní XP za zprávu (přidává se náhodné 0-9).",
+    "xpCooldown": "Cooldown XP (sekundy)",
+    "xpCooldownDesc": "Minimální čas mezi udělením XP uživateli.",
+    "voiceXpEnabled": "Hlasové XP",
+    "voiceXpEnabledDesc": "Udělovat XP za čas strávený v hlasových kanálech.",
+    "voiceXpPerMinute": "Hlasové XP za minutu",
+    "voiceXpPerMinuteDesc": "XP udělená za minutu v hlasovém kanálu.",
+    "levelUpAnnouncements": "Oznámení o postupu",
+    "levelUpAnnouncementsDesc": "Oznamovat, když člen postoupí na vyšší úroveň.",
+    "announceDest": "Místo oznámení",
+    "announceDestHint": "Můžete také zadat ID kanálu přímo do pole výše.",
+    "announceDestSameChannel": "Stejný kanál",
+    "announceDestDM": "Soukromá zpráva",
+    "announceMessage": "Text oznámení",
+    "announceMessagePlaceholder": "{user} právě dosáhl **úrovně {level}**!",
+    "announceMessageVars": "Proměnné: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Odměny rolí",
+    "description": "Automaticky přidělujte role, když členové dosáhnou určitých úrovní.",
+    "addReward": "Přidat odměnu",
+    "addRewardTitle": "Přidat odměnu role",
+    "level": "Úroveň",
+    "levelPrefix": "Úroveň {{level}}",
+    "roleId": "ID role",
+    "levelPlaceholder": "např. 5",
+    "rolePlaceholder": "např. 123456789",
+    "removeReward": "Odebrat",
+    "noRewards": "Žádné odměny rolí nejsou nakonfigurovány."
+  },
+  "exclusions": {
+    "title": "Výjimky XP",
+    "description": "Kanály a role, za které se neuděluje XP.",
+    "noXpChannels": "Kanály bez XP (ID oddělená čárkou)",
+    "noXpChannelsPlaceholder": "např. 123456789, 987654321",
+    "noXpRoles": "Role bez XP (ID oddělená čárkou)",
+    "noXpRolesPlaceholder": "např. 123456789, 987654321",
+    "save": "Uložit výjimky"
+  },
+  "multipliers": {
+    "title": "Násobičky XP",
+    "description": "Nastavte násobičky XP pro kanály nebo role. Násobička 2 zdvojnásobí získané XP.",
+    "channelMultipliers": "Násobičky kanálů",
+    "roleMultipliers": "Násobičky rolí",
+    "channelId": "ID kanálu",
+    "roleId": "ID role",
+    "multiplier": "Násobička",
+    "type": "Typ",
+    "typeChannel": "Kanál",
+    "typeRole": "Role",
+    "id": "ID",
+    "idPlaceholder": "ID kanálu nebo role",
+    "value": "Násobička",
+    "valuePlaceholder": "např. 2",
+    "add": "Přidat násobičku",
+    "addTitle": "Přidat násobičku",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Žádné násobičky XP nejsou nakonfigurovány."
+  },
+  "pagination": {
+    "previous": "Předchozí",
+    "next": "Další",
+    "pageInfo": "Stránka {{page}} z {{totalPages}} ({{total}} celkem)"
+  },
+  "loading": "Načítání žebříčku...",
+  "loadingGeneric": "Načítání...",
+  "emptyLeaderboard": "Zatím žádný člen nezískal XP.",
+  "toast": {
+    "saved": "Nastavení úrovní uloženo",
+    "saveFailed": "Nepodařilo se aktualizovat nastavení",
+    "rewardAdded": "Odměna přidána",
+    "rewardAddFailed": "Nepodařilo se přidat odměnu",
+    "rewardRemoved": "Odměna odebrána",
+    "rewardRemoveFailed": "Nepodařilo se odebrat odměnu",
+    "multiplierAdded": "Násobička přidána",
+    "multiplierAddFailed": "Nepodařilo se přidat násobičku",
+    "multiplierRemoved": "Násobička odebrána",
+    "multiplierRemoveFailed": "Nepodařilo se odebrat násobičku",
+    "exclusionUpdated": "Výjimky uloženy",
+    "exclusionFailed": "Nepodařilo se uložit výjimky",
+    "levelValidation": "Úroveň musí být mezi 1 a 100",
+    "roleIdRequired": "ID role je povinné",
+    "multiplierIdRequired": "ID a hodnota násobičky jsou povinné",
+    "multiplierRange": "Násobička musí být mezi 0 a 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}h {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

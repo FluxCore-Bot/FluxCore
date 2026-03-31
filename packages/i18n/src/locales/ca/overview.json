@@ -1,0 +1,12 @@
+{
+  "title": "Resum",
+  "subtitle": "Monitoritza el rendiment i l'activitat de l'automatització d'un cop d'ull.",
+  "stats": {
+    "actionRules": "Regles d'accions",
+    "activeNow": "Actives ara",
+    "executions": "Execucions",
+    "successRate": "Taxa d'exit"
+  },
+  "errorsInLast24h": "{{count}} error en les últimes 24h",
+  "errorsInLast24h_other": "{{count}} errors en les últimes 24h"
+}

@@ -1,0 +1,65 @@
+{
+  "title": "Selamat Datang & Selamat Tinggal",
+  "subtitle": "Konfigurasikan mesej selamat datang dan selamat tinggal, imej, dan peranan automatik.",
+  "loadingSubtitle": "Konfigurasikan mesej selamat datang dan selamat tinggal untuk pelayan anda.",
+  "tabs": {
+    "welcome": "Selamat Datang",
+    "welcomeImage": "Imej Selamat Datang",
+    "farewell": "Selamat Tinggal",
+    "farewellImage": "Imej Selamat Tinggal",
+    "dm": "DM Selamat Datang",
+    "autorole": "Peranan Automatik"
+  },
+  "welcome": {
+    "title": "Mesej Selamat Datang",
+    "description": "Hantar embed tersuai apabila ahli baru menyertai.",
+    "channelLabel": "ID Saluran Selamat Datang",
+    "channelPlaceholder": "ID Saluran...",
+    "embedBuilder": "Pembina Embed"
+  },
+  "welcomeImage": {
+    "title": "Imej Selamat Datang",
+    "description": "Jana kad imej tersuai dengan avatar ahli apabila mereka menyertai.",
+    "disabled": "Aktifkan togol di atas untuk mengkonfigurasi imej selamat datang."
+  },
+  "farewell": {
+    "title": "Mesej Selamat Tinggal",
+    "description": "Hantar mesej apabila ahli meninggalkan pelayan.",
+    "channelLabel": "ID Saluran Selamat Tinggal",
+    "channelPlaceholder": "ID Saluran..."
+  },
+  "farewellImage": {
+    "title": "Imej Selamat Tinggal",
+    "description": "Jana kad selamat tinggal tersuai apabila ahli pergi.",
+    "disabled": "Aktifkan togol di atas untuk mengkonfigurasi imej selamat tinggal."
+  },
+  "dm": {
+    "title": "DM Selamat Datang",
+    "description": "Hantar mesej terus kepada ahli baru. Akan gagal secara senyap sekiranya DM dinyahaktifkan."
+  },
+  "autorole": {
+    "title": "Peranan Automatik",
+    "description": "Berikan peranan secara automatik kepada ahli baru apabila mereka menyertai. Bot dikecualikan. Bot mesti mempunyai peranan yang lebih tinggi daripada peranan yang disenaraikan di sini.",
+    "label": "ID Peranan (dipisahkan koma)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Tajuk",
+    "description": "Penerangan",
+    "color": "Warna (hex)",
+    "footer": "Footer",
+    "thumbnail": "URL Lakaran Kecil",
+    "image": "URL Imej",
+    "variables": "Pemboleh ubah:"
+  },
+  "saveChanges": "Simpan Perubahan",
+  "saving": "Menyimpan...",
+  "sendTest": "Hantar Mesej Ujian",
+  "sending": "Menghantar...",
+  "toast": {
+    "saved": "Konfigurasi selamat datang disimpan",
+    "saveFailed": "Gagal menyimpan konfigurasi",
+    "testSent": "Mesej ujian akan dihantar ke <#{{channelId}}>",
+    "testFailed": "Gagal menghantar mesej ujian"
+  }
+}

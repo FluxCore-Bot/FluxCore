@@ -1,0 +1,120 @@
+{
+  "title": "Mfumo wa Viwango",
+  "subtitle": "Sanidi kupata XP, tangazo la kupanda kiwango, tuzo za majukumu, na vizidishi.",
+  "stats": {
+    "rankedMembers": "Wanachama Wenye Cheo",
+    "roleRewards": "Tuzo za Majukumu",
+    "systemStatus": "Hali ya Mfumo",
+    "enabled": "Imewashwa",
+    "disabled": "Imezimwa"
+  },
+  "tabs": {
+    "leaderboard": "Orodha ya Washindi",
+    "settings": "Mipangilio",
+    "roleRewards": "Tuzo za Majukumu",
+    "exclusions": "Vitenga",
+    "multipliers": "Vizidishi"
+  },
+  "table": {
+    "rank": "Cheo",
+    "userId": "Kitambulisho cha Mtumiaji",
+    "level": "Kiwango",
+    "xp": "XP",
+    "messages": "Ujumbe",
+    "voiceTime": "Muda wa Sauti"
+  },
+  "settings": {
+    "title": "Mipangilio ya Viwango",
+    "enabled": "Washa Viwango",
+    "enabledDesc": "Washa au zima mfumo mzima wa viwango.",
+    "xpPerMessage": "XP kwa Ujumbe",
+    "xpPerMessageDesc": "XP ya msingi inayotolewa kwa kila ujumbe (nasibu ya 0-9 huongezwa).",
+    "xpCooldown": "Muda wa Kusubiri wa XP (sekunde)",
+    "xpCooldownDesc": "Muda wa chini kati ya utoaji wa XP kwa mtumiaji.",
+    "voiceXpEnabled": "XP ya Sauti",
+    "voiceXpEnabledDesc": "Toa XP kwa muda uliotumika kwenye chaneli za sauti.",
+    "voiceXpPerMinute": "XP ya Sauti kwa Dakika",
+    "voiceXpPerMinuteDesc": "XP inayotolewa kwa dakika katika sauti.",
+    "levelUpAnnouncements": "Matangazo ya Kupanda Kiwango",
+    "levelUpAnnouncementsDesc": "Tangazo wakati mwanachama anapanda kiwango.",
+    "announceDest": "Mahali pa Tangazo",
+    "announceDestHint": "Unaweza pia kuingiza kitambulisho cha chaneli moja kwa moja kwenye sehemu ya kuingiza hapo juu.",
+    "announceDestSameChannel": "Chaneli Ile Ile",
+    "announceDestDM": "Ujumbe wa Moja kwa Moja",
+    "announceMessage": "Ujumbe wa Tangazo",
+    "announceMessagePlaceholder": "{user} amefikia **Kiwango {level}**!",
+    "announceMessageVars": "Vigezo: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Tuzo za Majukumu",
+    "description": "Gawa majukumu kiotomatiki wakati wanachama wanapofikia viwango fulani.",
+    "addReward": "Ongeza Tuzo",
+    "addRewardTitle": "Ongeza Tuzo ya Jukumu",
+    "level": "Kiwango",
+    "levelPrefix": "Kiwango {{level}}",
+    "roleId": "Kitambulisho cha Jukumu",
+    "levelPlaceholder": "mf. 5",
+    "rolePlaceholder": "mf. 123456789",
+    "removeReward": "Ondoa",
+    "noRewards": "Hakuna tuzo za majukumu zilizosanidiwa."
+  },
+  "exclusions": {
+    "title": "Vitenga vya XP",
+    "description": "Chaneli na majukumu ambayo hayapati XP.",
+    "noXpChannels": "Chaneli Zisizo na XP (vitambulisho vilivyotenganishwa kwa koma)",
+    "noXpChannelsPlaceholder": "mf. 123456789, 987654321",
+    "noXpRoles": "Majukumu Yasiyo na XP (vitambulisho vilivyotenganishwa kwa koma)",
+    "noXpRolesPlaceholder": "mf. 123456789, 987654321",
+    "save": "Hifadhi Vitenga"
+  },
+  "multipliers": {
+    "title": "Vizidishi vya XP",
+    "description": "Weka vizidishi vya XP kwa kila chaneli au jukumu. Kizidishi cha 2 huongeza XP mara mbili.",
+    "channelMultipliers": "Vizidishi vya Chaneli",
+    "roleMultipliers": "Vizidishi vya Majukumu",
+    "channelId": "Kitambulisho cha Chaneli",
+    "roleId": "Kitambulisho cha Jukumu",
+    "multiplier": "Kizidishi",
+    "type": "Aina",
+    "typeChannel": "Chaneli",
+    "typeRole": "Jukumu",
+    "id": "Kitambulisho",
+    "idPlaceholder": "Kitambulisho cha Chaneli au Jukumu",
+    "value": "Kizidishi",
+    "valuePlaceholder": "mf. 2",
+    "add": "Ongeza Kizidishi",
+    "addTitle": "Ongeza Kizidishi",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Hakuna vizidishi vya XP vilivyosanidiwa."
+  },
+  "pagination": {
+    "previous": "Iliyotangulia",
+    "next": "Inayofuata",
+    "pageInfo": "Ukurasa {{page}} wa {{totalPages}} ({{total}} jumla)"
+  },
+  "loading": "Inapakia orodha ya washindi...",
+  "loadingGeneric": "Inapakia...",
+  "emptyLeaderboard": "Hakuna wanachama waliokusanya XP bado.",
+  "toast": {
+    "saved": "Mipangilio ya viwango imehifadhiwa",
+    "saveFailed": "Imeshindwa kusasisha mpangilio",
+    "rewardAdded": "Tuzo imeongezwa",
+    "rewardAddFailed": "Imeshindwa kuongeza tuzo",
+    "rewardRemoved": "Tuzo imeondolewa",
+    "rewardRemoveFailed": "Imeshindwa kuondoa tuzo",
+    "multiplierAdded": "Kizidishi kimeongezwa",
+    "multiplierAddFailed": "Imeshindwa kuongeza kizidishi",
+    "multiplierRemoved": "Kizidishi kimeondolewa",
+    "multiplierRemoveFailed": "Imeshindwa kuondoa kizidishi",
+    "exclusionUpdated": "Vitenga vimehifadhiwa",
+    "exclusionFailed": "Imeshindwa kuhifadhi vitenga",
+    "levelValidation": "Kiwango lazima kiwe kati ya 1 na 100",
+    "roleIdRequired": "Kitambulisho cha jukumu kinahitajika",
+    "multiplierIdRequired": "Kitambulisho na thamani ya kizidishi zinahitajika",
+    "multiplierRange": "Kizidishi lazima kiwe kati ya 0 na 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}s {{minutes}}d",
+    "voiceTimeMinutesOnly": "{{minutes}}d"
+  }
+}

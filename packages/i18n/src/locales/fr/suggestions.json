@@ -1,0 +1,67 @@
+{
+  "title": "Suggestions",
+  "subtitle": "Permettez aux membres de soumettre des idees et de voter. Gerez le statut et les retours.",
+  "stats": {
+    "totalSuggestions": "Total des suggestions",
+    "systemStatus": "Etat du systeme",
+    "channel": {
+      "configured": "Salon configure",
+      "notSet": "Salon non defini"
+    }
+  },
+  "tabs": {
+    "suggestions": "Suggestions",
+    "settings": "Parametres"
+  },
+  "filter": {
+    "filterByStatus": "Filtrer par statut",
+    "all": "Toutes",
+    "pending": "En attente",
+    "approved": "Approuvees",
+    "rejected": "Rejetees",
+    "implemented": "Implementees",
+    "considered": "En consideration"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Auteur",
+    "content": "Contenu",
+    "status": "Statut",
+    "votes": "Votes",
+    "date": "Date"
+  },
+  "actions": {
+    "approve": "Approuver",
+    "reject": "Rejeter",
+    "implement": "Marquer comme implementee",
+    "consider": "Considerer",
+    "delete": "Supprimer"
+  },
+  "settings": {
+    "channel": "Salon des suggestions",
+    "channelDesc": "Le salon ou les suggestions sont publiees pour le vote.",
+    "voteEmojis": "Emojis de vote",
+    "voteEmojisDesc": "Emojis utilises pour les reactions de vote positif et negatif.",
+    "autoThread": "Creation automatique de fil",
+    "autoThreadDesc": "Creer automatiquement un fil de discussion pour chaque nouvelle suggestion.",
+    "dmOnStatusChange": "MP lors d'un changement de statut",
+    "dmOnStatusChangeDesc": "Notifier l'auteur par MP lorsque le statut de sa suggestion change."
+  },
+  "toast": {
+    "approved": "Suggestion approuvee",
+    "rejected": "Suggestion rejetee",
+    "implemented": "Suggestion marquee comme implementee",
+    "considered": "Suggestion mise en consideration",
+    "deleted": "Suggestion supprimee",
+    "actionFailed": "Echec de la mise a jour de la suggestion",
+    "settingsSaved": "Parametres de suggestions enregistres",
+    "settingsFailed": "Echec de l'enregistrement des parametres de suggestions"
+  },
+  "empty": "Aucune suggestion pour l'instant.",
+  "loading": "Chargement des suggestions...",
+  "pagination": {
+    "previous": "Precedent",
+    "next": "Suivant",
+    "page": "Page {{page}} sur {{total}}"
+  }
+}

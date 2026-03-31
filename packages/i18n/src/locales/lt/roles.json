@@ -1,0 +1,112 @@
+{
+  "title": "Roliu paneliai",
+  "subtitle": "Kurkite savitarnaimo roliu panelius naudojant mygtukus, isplesiamuosius sarasus arba reakcijas.",
+  "stats": {
+    "totalPanels": "Viso paneliu",
+    "deployed": "Patalpinta",
+    "totalRoles": "Viso roliu"
+  },
+  "tabs": {
+    "panels": "Paneliai",
+    "preview": "Perzilra"
+  },
+  "table": {
+    "name": "Pavadinimas",
+    "type": "Tipas",
+    "mode": "Rezimas",
+    "roles": "Roles",
+    "status": "Busena"
+  },
+  "panelTypes": {
+    "reaction": "Reakcija",
+    "button": "Mygtukas",
+    "dropdown": "Isplesiamasis sarasas"
+  },
+  "panelModes": {
+    "toggle": "Perjungimas",
+    "unique": "Unikalus",
+    "verify": "Verifikacija"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Perjungimas (prideti/pasalinti)",
+    "unique": "Unikalus (po viena)",
+    "verify": "Verifikacija (tik prideti)"
+  },
+  "status": {
+    "deployed": "Patalpinta",
+    "draft": "Juodrastis"
+  },
+  "dialog": {
+    "createPanel": "Sukurti paneli",
+    "editPanel": "Redaguoti paneli"
+  },
+  "panelList": {
+    "title": "Visi paneliai"
+  },
+  "form": {
+    "name": "Pavadinimas",
+    "namePlaceholder": "pvz. Spalvu roles",
+    "type": "Tipas",
+    "mode": "Rezimas",
+    "channel": "Kanalas",
+    "channelPlaceholder": "Pasirinkite kanala",
+    "minRoles": "Min roliu",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Maks roliu",
+    "maxRolesPlaceholder": "Visos",
+    "embedSection": "Embed",
+    "embedTitle": "Pavadinimas",
+    "embedTitlePlaceholder": "Panelio pavadinimas (numatytasis — panelio pavadinimas)",
+    "embedDescription": "Aprasymas",
+    "embedDescriptionPlaceholder": "Aprasymo tekstas",
+    "rolesCount": "Roles ({{count}}/25)",
+    "addRole": "Prideti role"
+  },
+  "entry": {
+    "role": "Role",
+    "rolePlaceholder": "Pasirinkite role",
+    "label": "Etikete",
+    "labelPlaceholder": "Mygtuko etikete",
+    "emoji": "Emodzis",
+    "emojiPlaceholder": "pvz. zvaizdute",
+    "description": "Aprasymas",
+    "descriptionPlaceholder": "Pasirinkties aprasymas",
+    "style": "Stilius"
+  },
+  "buttonStyles": {
+    "primary": "Pagrindinis",
+    "secondary": "Antrinis",
+    "success": "Sekme",
+    "danger": "Pavojus"
+  },
+  "actions": {
+    "create": "Sukurti",
+    "update": "Atnaujinti",
+    "cancel": "Atsaukti",
+    "deploy": "Patalpinti",
+    "delete": "Istrinti",
+    "addEntry": "Prideti irasa",
+    "removeEntry": "Pasalinti irasa"
+  },
+  "preview": {
+    "title": "Tiesioginei perzilra",
+    "description": "Perziurekite, kaip jusu paneliai atrodys Discord'e.",
+    "selectRoles": "Pasirinkite roles...",
+    "noPreview": "Nera paneliu perziurai."
+  },
+  "empty": "Roliu paneliu nesukurta. Spauskite \"Sukurti paneli\" pradziai.",
+  "toast": {
+    "created": "Panelis sukurtas",
+    "createFailed": "Nepavyko sukurti panelio",
+    "updated": "Panelis atnaujintas",
+    "updateFailed": "Nepavyko atnaujinti panelio",
+    "deleted": "Panelis istrintas",
+    "deleteFailed": "Nepavyko istrinti panelio",
+    "deployed": "Roliu panelis patalpintas i kanala",
+    "deployFailed": "Nepavyko issiusti panelio",
+    "nameRequired": "Panelio pavadinimas privalomas",
+    "channelRequired": "Kanalas privalomas",
+    "maxRolesReached": "Maksimaliai 25 roles panelye"
+  },
+  "loading": "Kraunami paneliai..."
+}

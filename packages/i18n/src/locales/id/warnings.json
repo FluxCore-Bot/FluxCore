@@ -1,0 +1,72 @@
+{
+  "title": "Peringatan",
+  "subtitle": "Lacak dan kelola peringatan anggota dengan eskalasi otomatis.",
+  "stats": {
+    "totalWarnings": "Total Peringatan",
+    "escalationRules": "Aturan Eskalasi",
+    "dmOnWarn": "DM saat Diperingatkan"
+  },
+  "tabs": {
+    "warnings": "Log Peringatan",
+    "escalation": "Eskalasi",
+    "settings": "Pengaturan"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Pengguna",
+    "moderator": "Moderator",
+    "reason": "Alasan",
+    "date": "Tanggal"
+  },
+  "filter": {
+    "userPlaceholder": "Filter berdasarkan ID Pengguna...",
+    "clearAll": "Hapus Semua"
+  },
+  "pagination": {
+    "previous": "Sebelumnya",
+    "next": "Berikutnya",
+    "page": "Halaman {{page}} dari {{total}} ({{count}} total)"
+  },
+  "loading": "Memuat peringatan...",
+  "noWarnings": "Tidak ada peringatan ditemukan.",
+  "toast": {
+    "warningRemoved": "Peringatan dihapus",
+    "warningsFailed": "Gagal menghapus peringatan",
+    "enterUserId": "Masukkan ID pengguna untuk menghapus semua peringatan pengguna tersebut",
+    "allCleared": "Semua peringatan dihapus untuk pengguna",
+    "clearFailed": "Gagal menghapus peringatan",
+    "thresholdAdded": "Ambang hukuman ditambahkan",
+    "thresholdFailed": "Gagal menambahkan hukuman",
+    "thresholdRemoved": "Hukuman dihapus",
+    "removeFailed": "Gagal menghapus hukuman",
+    "settingFailed": "Gagal memperbarui pengaturan",
+    "thresholdInvalid": "Ambang harus berupa angka positif"
+  },
+  "escalation": {
+    "title": "Eskalasi Hukuman",
+    "description": "Konfigurasikan tindakan otomatis ketika pengguna mencapai jumlah peringatan tertentu.",
+    "threshold": "Ambang",
+    "action": "Aksi",
+    "duration": "Durasi",
+    "noRules": "Tidak ada aturan eskalasi yang dikonfigurasi.",
+    "addRule": "Tambah Aturan Eskalasi",
+    "addButton": "Tambah Aturan",
+    "warnings": "{{count}} peringatan",
+    "min": "{{count}} mnt",
+    "timeout": "Timeout",
+    "kick": "Kick",
+    "ban": "Ban",
+    "durationLabel": "Durasi (detik)",
+    "thresholdPlaceholder": "mis. 3",
+    "durationPlaceholder": "mis. 3600"
+  },
+  "settings": {
+    "title": "Pengaturan Peringatan",
+    "dmOnWarn": "DM saat Diperingatkan",
+    "dmOnWarnDesc": "Kirim pesan langsung ke pengguna saat mereka menerima peringatan.",
+    "requireReason": "Wajibkan Alasan",
+    "requireReasonDesc": "Moderator harus memberikan alasan saat mengeluarkan peringatan.",
+    "maxWarnings": "Maks Peringatan",
+    "maxWarningsDesc": "Peringatan maksimum per pengguna (0 = tidak terbatas)."
+  }
+}

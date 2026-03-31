@@ -1,0 +1,118 @@
+{
+  "title": "Mga Role at Pahintulot",
+  "subtitle": "Kontrolin kung sino ang makakaakses at makakapamahala ng bawat module ng dashboard.",
+  "actions": {
+    "createRole": "Gumawa ng Role"
+  },
+  "permissionSystem": {
+    "title": "Sistema ng Pahintulot",
+    "active": "Aktibo — ang mga admin ay limitado sa kanilang mga itinalagang pahintulot.",
+    "inactive": "Hindi Aktibo — lahat ng admin na may MANAGE_GUILD ay may buong access.",
+    "enabledToast": "Sistema ng pahintulot ay pinagana",
+    "disabledToast": "Sistema ng pahintulot ay na-disable — lahat ng admin ay may buong access"
+  },
+  "warning": {
+    "disabled": "Ang sistema ng pahintulot ay naka-disable. Lahat ng admin ng dashboard ay kasalukuyang may buong access. I-enable ito sa itaas upang ipatupad ang mga granular na pahintulot."
+  },
+  "tabs": {
+    "roles": "Mga Role",
+    "auditLog": "Audit Log"
+  },
+  "roleList": {
+    "title": "Mga Role ng Dashboard",
+    "empty": "Wala pang mga role na nagawa.",
+    "selectHint": "Pumili ng role para i-edit, o gumawa ng bago.",
+    "default": "Default",
+    "name": "Pangalan",
+    "members": "Mga Miyembro",
+    "permissions": "Mga Pahintulot",
+    "edit": "I-edit",
+    "delete": "Burahin"
+  },
+  "presets": {
+    "title": "Mabilis na Magdagdag mula sa Preset",
+    "createdToast": "Nagawa ang role na \"{{name}}\""
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} miyembro",
+    "memberCount_plural": "{{count}} mga miyembro",
+    "name": "Pangalan ng Role",
+    "color": "Kulay",
+    "defaultRole": "Default na role",
+    "permissions": "Mga Pahintulot",
+    "allBadge": "Lahat",
+    "discordRoles": "Mga Discord Role"
+  },
+  "roleForm": {
+    "name": "Pangalan ng Role",
+    "discordRoles": "Mga Discord Role",
+    "permissions": "Mga Pahintulot",
+    "create": "Gumawa ng Role",
+    "update": "I-update ang Role",
+    "cancel": "Kanselahin"
+  },
+  "createDialog": {
+    "title": "Gumawa ng Role ng Dashboard",
+    "name": "Pangalan",
+    "namePlaceholder": "hal. Moderator",
+    "color": "Kulay"
+  },
+  "permissionCategories": {
+    "actions": "Mga Aksyon at Automation",
+    "music": "Musika",
+    "tempvoice": "TempVoice",
+    "welcome": "Maligayang Pagdating at Paalam",
+    "moderation": "Moderasyon",
+    "logging": "Pag-log",
+    "leveling": "Leveling",
+    "roles": "Mga Role Panel",
+    "tickets": "Mga Tiket",
+    "suggestions": "Mga Mungkahi",
+    "starboard": "Starboard",
+    "giveaways": "Mga Giveaway",
+    "security": "Seguridad",
+    "scheduled": "Mga Nakatakdang Mensahe",
+    "commands": "Mga Custom na Utos",
+    "settings": "Mga Setting ng Server"
+  },
+  "audit": {
+    "table": {
+      "user": "User",
+      "action": "Aksyon",
+      "target": "Target",
+      "timestamp": "Kailan"
+    },
+    "noEntries": "Wala pang mga entry sa audit log."
+  },
+  "pagination": {
+    "previous": "Nakaraan",
+    "next": "Susunod",
+    "page": "Pahina {{current}} ng {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Nagawa ang role na \"{{name}}\"",
+    "roleCreateFailed": "Hindi nagawa ang role",
+    "roleUpdated": "Role na na-update",
+    "roleUpdateFailed": "Hindi na-update ang role",
+    "roleDeleted": "Role na nabura",
+    "roleDeleteFailed": "Hindi nabura ang role"
+  },
+  "confirm": {
+    "deleteTitle": "Burahin ang role na \"{{name}}\"?",
+    "deleteMessage": "Aalisin nito ang role at ia-unassign ang lahat ng miyembro. Hindi maaaring baguhin ang aksyong ito.",
+    "deleteRole": "Sigurado ka bang gusto mong burahin ang role na ito? Mawawala ang kanilang mga itinalagang pahintulot sa mga miyembro."
+  },
+  "saveButton": {
+    "saving": "Sino-save...",
+    "save": "I-save ang mga Pagbabago"
+  },
+  "deleteButton": {
+    "deleting": "Binubura...",
+    "delete": "Burahin"
+  },
+  "createButton": {
+    "creating": "Ginagawa...",
+    "create": "Gumawa"
+  },
+  "loading": "Naglo-load ng mga pahintulot..."
+}

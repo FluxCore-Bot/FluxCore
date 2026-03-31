@@ -1,0 +1,113 @@
+{
+  "title": "Comandes personalitzades",
+  "subtitle": "Crea respostes automatiques i comandes amb prefix activades per missatges.",
+  "stats": {
+    "totalCommands": "Total de comandes",
+    "enabled": "Activades",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Comandes",
+    "variables": "Variables"
+  },
+  "table": {
+    "name": "Nom",
+    "trigger": "Activador",
+    "response": "Resposta",
+    "cooldown": "Temps d'espera",
+    "status": "Estat"
+  },
+  "triggerTypes": {
+    "command": "!comanda",
+    "keyword": "Paraula clau",
+    "startsWith": "Comenca amb",
+    "regex": "Regex",
+    "prefixCommand": "Comanda amb prefix (!nom)",
+    "keywordContains": "Paraula clau (conté)"
+  },
+  "dialog": {
+    "createCommand": "Crear comanda",
+    "editCommand": "Editar comanda"
+  },
+  "form": {
+    "commandName": "Nom de la comanda",
+    "triggerText": "Text de l'activador",
+    "regexPattern": "Patró Regex",
+    "triggerType": "Tipus d'activador",
+    "response": "Resposta",
+    "message": "Missatge",
+    "embedTitle": "Títol de l'embed",
+    "embedDescription": "Descripció de l'embed",
+    "color": "Color",
+    "footer": "Peu de pagina"
+  },
+  "options": {
+    "cooldown": "Temps d'espera (segons)",
+    "enabled": "Activada",
+    "enabledDesc": "Si aquesta comanda esta activa",
+    "deleteTrigger": "Eliminar missatge activador",
+    "deleteTriggerDesc": "Elimina automaticament el missatge que ha activat aquesta comanda.",
+    "dmResponse": "Resposta per DM",
+    "dmResponseDesc": "Envia la resposta com a missatge directe en lloc del canal."
+  },
+  "restrictions": {
+    "title": "Restriccions",
+    "allowedChannels": "Canals permesos (buit = tots)",
+    "allowedRoles": "Rols permesos (buit = tothom)",
+    "addChannel": "Afegir canal",
+    "addRole": "Afegir rol"
+  },
+  "actions": {
+    "create": "Crear",
+    "update": "Actualitzar",
+    "cancel": "Cancel\u00b7lar",
+    "addAction": "Afegir acció",
+    "addRole": "Afegir rol",
+    "removeRole": "Eliminar rol"
+  },
+  "actionsSection": {
+    "title": "Accions ({{count}}/5)",
+    "noActions": "No hi ha accions configurades. Afegeix una acció per definir que fa aquesta comanda.",
+    "maxActions": "Maxim 5 accions per comanda"
+  },
+  "variables": {
+    "title": "Variables de plantilla",
+    "description": "Utilitza aquestes variables a les respostes de les comandes. Se substituiran pels valors reals quan s'activi la comanda.",
+    "table": {
+      "variable": "Variable",
+      "description": "Descripció"
+    },
+    "entries": {
+      "user": "{user} — Menciona l'usuari que ha activat la comanda",
+      "username": "{username} — El nom visible de l'usuari",
+      "userId": "{userId} — L'ID de l'usuari",
+      "server": "{server} — El nom del servidor",
+      "channel": "{channel} — Menciona el canal actual",
+      "channelName": "{channelName} — El nom del canal",
+      "memberCount": "{memberCount} — Nombre total de membres del servidor"
+    }
+  },
+  "toast": {
+    "created": "Comanda creada",
+    "createFailed": "No s'ha pogut crear la comanda",
+    "updated": "Comanda actualitzada",
+    "updateFailed": "No s'ha pogut actualitzar la comanda",
+    "deleted": "Comanda eliminada",
+    "deleteFailed": "No s'ha pogut eliminar la comanda",
+    "toggleEnabled": "Comanda activada",
+    "toggleDisabled": "Comanda desactivada",
+    "toggleFailed": "No s'ha pogut canviar l'estat de la comanda"
+  },
+  "empty": "Encara no s'han creat comandes personalitzades.",
+  "loading": "Carregant comandes...",
+  "badge": {
+    "active": "Activa",
+    "disabled": "Desactivada",
+    "text": "Text",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "El nom de la comanda es obligatori"
+  },
+  "triggerPrefix": "Activador: !{{name}}"
+}

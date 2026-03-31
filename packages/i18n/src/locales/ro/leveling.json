@@ -1,0 +1,120 @@
+{
+  "title": "Sistem de Nivelare",
+  "subtitle": "Configurează câștigul de XP, anunțurile de avansare în nivel, recompensele de roluri și multiplicatorii.",
+  "stats": {
+    "rankedMembers": "Membri Clasați",
+    "roleRewards": "Recompense de Roluri",
+    "systemStatus": "Starea Sistemului",
+    "enabled": "Activat",
+    "disabled": "Dezactivat"
+  },
+  "tabs": {
+    "leaderboard": "Clasament",
+    "settings": "Setări",
+    "roleRewards": "Recompense de Roluri",
+    "exclusions": "Excluderi",
+    "multipliers": "Multiplicatori"
+  },
+  "table": {
+    "rank": "Rang",
+    "userId": "ID Utilizator",
+    "level": "Nivel",
+    "xp": "XP",
+    "messages": "Mesaje",
+    "voiceTime": "Timp Vocal"
+  },
+  "settings": {
+    "title": "Setări de Nivelare",
+    "enabled": "Activează Nivelarea",
+    "enabledDesc": "Activează sau dezactivează întregul sistem de nivelare.",
+    "xpPerMessage": "XP per Mesaj",
+    "xpPerMessageDesc": "XP de bază acordat per mesaj (se adaugă o variabilitate de 0-9).",
+    "xpCooldown": "Cooldown XP (secunde)",
+    "xpCooldownDesc": "Timp minim între acordările de XP per utilizator.",
+    "voiceXpEnabled": "XP Vocal",
+    "voiceXpEnabledDesc": "Acordă XP pentru timpul petrecut în canalele vocale.",
+    "voiceXpPerMinute": "XP Vocal per Minut",
+    "voiceXpPerMinuteDesc": "XP acordat per minut în vocal.",
+    "levelUpAnnouncements": "Anunțuri de Avansare în Nivel",
+    "levelUpAnnouncementsDesc": "Anunță când un membru avansează în nivel.",
+    "announceDest": "Destinația Anunțului",
+    "announceDestHint": "Poți introduce și un ID de canal direct în câmpul de mai sus.",
+    "announceDestSameChannel": "Același Canal",
+    "announceDestDM": "Mesaj Direct",
+    "announceMessage": "Mesajul de Anunț",
+    "announceMessagePlaceholder": "{user} tocmai a atins **Nivelul {level}**!",
+    "announceMessageVars": "Variabile: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Recompense de Roluri",
+    "description": "Atribuie automat roluri când membrii ating anumite niveluri.",
+    "addReward": "Adaugă Recompensă",
+    "addRewardTitle": "Adaugă Recompensă de Rol",
+    "level": "Nivel",
+    "levelPrefix": "Nivel {{level}}",
+    "roleId": "ID Rol",
+    "levelPlaceholder": "ex. 5",
+    "rolePlaceholder": "ex. 123456789",
+    "removeReward": "Elimină",
+    "noRewards": "Nu există recompense de roluri configurate."
+  },
+  "exclusions": {
+    "title": "Excluderi XP",
+    "description": "Canale și roluri care nu câștigă XP.",
+    "noXpChannels": "Canale fără XP (ID-uri separate prin virgulă)",
+    "noXpChannelsPlaceholder": "ex. 123456789, 987654321",
+    "noXpRoles": "Roluri fără XP (ID-uri separate prin virgulă)",
+    "noXpRolesPlaceholder": "ex. 123456789, 987654321",
+    "save": "Salvează Excluderile"
+  },
+  "multipliers": {
+    "title": "Multiplicatori XP",
+    "description": "Setează multiplicatori XP per canal sau rol. Un multiplicator de 2 dublează XP-ul câștigat.",
+    "channelMultipliers": "Multiplicatori de Canal",
+    "roleMultipliers": "Multiplicatori de Rol",
+    "channelId": "ID Canal",
+    "roleId": "ID Rol",
+    "multiplier": "Multiplicator",
+    "type": "Tip",
+    "typeChannel": "Canal",
+    "typeRole": "Rol",
+    "id": "ID",
+    "idPlaceholder": "ID Canal sau Rol",
+    "value": "Multiplicator",
+    "valuePlaceholder": "ex. 2",
+    "add": "Adaugă Multiplicator",
+    "addTitle": "Adaugă Multiplicator",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Nu există multiplicatori XP configurați."
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Următor",
+    "pageInfo": "Pagina {{page}} din {{totalPages}} ({{total}} total)"
+  },
+  "loading": "Se încarcă clasamentul...",
+  "loadingGeneric": "Se încarcă...",
+  "emptyLeaderboard": "Niciun membru nu a câștigat XP încă.",
+  "toast": {
+    "saved": "Setările de nivelare salvate",
+    "saveFailed": "Actualizarea setării a eșuat",
+    "rewardAdded": "Recompensă adăugată",
+    "rewardAddFailed": "Adăugarea recompensei a eșuat",
+    "rewardRemoved": "Recompensă eliminată",
+    "rewardRemoveFailed": "Eliminarea recompensei a eșuat",
+    "multiplierAdded": "Multiplicator adăugat",
+    "multiplierAddFailed": "Adăugarea multiplicatorului a eșuat",
+    "multiplierRemoved": "Multiplicator eliminat",
+    "multiplierRemoveFailed": "Eliminarea multiplicatorului a eșuat",
+    "exclusionUpdated": "Excluderi salvate",
+    "exclusionFailed": "Salvarea excluderilor a eșuat",
+    "levelValidation": "Nivelul trebuie să fie între 1 și 100",
+    "roleIdRequired": "ID-ul rolului este obligatoriu",
+    "multiplierIdRequired": "ID-ul și valoarea multiplicatorului sunt obligatorii",
+    "multiplierRange": "Multiplicatorul trebuie să fie între 0 și 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}h {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

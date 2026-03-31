@@ -1,0 +1,86 @@
+{
+  "title": "Mezu Programatuak",
+  "subtitle": "Sortu aldizka automatikoki argitaratzen diren mezuak konfiguragarriak diren programekin.",
+  "stats": {
+    "totalMessages": "Mezu Guztiak",
+    "active": "Aktibo",
+    "inactive": "Inaktibo"
+  },
+  "table": {
+    "name": "Izena",
+    "channel": "Kanala",
+    "schedule": "Programa",
+    "nextRun": "Hurrengo Exekuzioa",
+    "status": "Egoera"
+  },
+  "dialog": {
+    "editTitle": "Editatu Mezu Programatua",
+    "createTitle": "Mezu Programatu Berria"
+  },
+  "form": {
+    "name": "Izena",
+    "channel": "Kanala",
+    "schedulePreset": "Programa Aurrezetatua",
+    "cronExpression": "Cron Adierazpena",
+    "timezone": "Ordu Zona",
+    "messageContent": "Mezuaren Edukia",
+    "text": "Testua",
+    "embed": "Txertatua",
+    "enabled": "Gaituta",
+    "enabledDesc": "Mezu programatu hau aktibo ote dagoen."
+  },
+  "cronPresets": {
+    "everyHour": "Ordu Bakoitzean",
+    "every6Hours": "6 Ordurik Behin",
+    "daily9am": "Egunero 9:00etan",
+    "dailyMidnight": "Egunero Gauerdian",
+    "weeklyMonday": "Astero Astelehenen",
+    "monthly1st": "Hilero 1ean",
+    "custom": "Pertsonalizatua"
+  },
+  "embed": {
+    "title": "Izenburua",
+    "description": "Deskribapena",
+    "color": "Kolorea (hex)",
+    "footer": "Oina",
+    "thumbnail": "Miniatura URL",
+    "image": "Irudi URL"
+  },
+  "toast": {
+    "created": "Mezu programatua sortua",
+    "createFailed": "Ezin izan da mezu programatua sortu",
+    "updated": "Mezu programatua eguneratua",
+    "updateFailed": "Ezin izan da mezu programatua eguneratu",
+    "deleted": "Mezu programatua ezabatua",
+    "deleteFailed": "Ezin izan da mezu programatua ezabatu",
+    "testSent": "Proba mezua bidalia",
+    "testFailed": "Ezin izan da proba mezua bidali"
+  },
+  "empty": {
+    "title": "Oraindik ez dago mezu programaturik",
+    "description": "Sortu mezu programatu bat edukia aldizka automatikoki argitaratzeko.",
+    "createButton": "Sortu Mezua"
+  },
+  "pagination": {
+    "previous": "Aurrekoa",
+    "next": "Hurrengoa",
+    "page": "{{page}} / {{total}} orrialdea"
+  },
+  "actions": {
+    "newMessage": "Mezu Berria",
+    "testSend": "Proba Bidali",
+    "edit": "Editatu",
+    "delete": "Ezabatu",
+    "save": "Gorde",
+    "cancel": "Utzi"
+  },
+  "validation": {
+    "nameRequired": "Mezuaren izena beharrezkoa da",
+    "channelRequired": "Kanala beharrezkoa da"
+  },
+  "cronPreview": {
+    "nextRuns": "Hurrengo Exekuzioak"
+  },
+  "characters": "{{count}}/2000 karaktere",
+  "never": "Inoiz ez"
+}

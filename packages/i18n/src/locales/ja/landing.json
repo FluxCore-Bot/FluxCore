@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "パブリックベータ公開中",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "オールインワン",
+    "titleLine2": "Discord Botフレームワーク",
+    "subtitle": "プロフェッショナルなDiscordプレゼンスを数分でデプロイ。モジュール式、セルフホスト、そしてより多くを求めるコミュニティのために構築。"
+  },
+  "cta": {
+    "addToServer": "サーバーに追加",
+    "openDashboard": "ダッシュボードを開く",
+    "exploreFeatures": "機能を見る"
+  },
+  "stats": {
+    "servers": "サーバー",
+    "latency": "レイテンシー",
+    "uptime": "稼働率",
+    "modules": "モジュール",
+    "serversValue": "1,000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99.9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "機能",
+    "title": "サーバーに必要なすべてを",
+    "subtitle": "信頼性、柔軟性、コントロールを求めるコミュニティのために設計されたモジュール式ツールキット。",
+    "automation": {
+      "title": "自動化ルール",
+      "description": "コード不要で複雑なイベント駆動ワークフローを作成。23のイベントタイプと10のアクションタイプによるトリガー。"
+    },
+    "music": {
+      "title": "ミュージックシステム",
+      "description": "マルチプラットフォーム対応の高音質オーディオストリーミング。キュー管理、DJコントロール、ライブラリモード。"
+    },
+    "tempVoice": {
+      "title": "テンポラリボイス",
+      "description": "動的なボイスチャンネル管理。カスタムネーミングテンプレート、権限設定、自動クリーンアップ。"
+    },
+    "logs": {
+      "title": "アクティビティログ",
+      "description": "すべての自動化実行の完全な監査証跡。詳細なログで検索、フィルター、デバッグが可能。"
+    },
+    "webhooks": {
+      "title": "Webhook & API",
+      "description": "HTTP Webhookで外部サービスにデータを送信。カスタムヘッダー、ボディテンプレート、変数補間。"
+    },
+    "dashboard": {
+      "title": "リアルタイムダッシュボード",
+      "description": "洗練されたWebダッシュボードですべてを管理。分析、設定、モニタリングを一箇所で。"
+    }
+  },
+  "ctaSection": {
+    "title": "コミュニティをアップグレードする準備はできましたか？",
+    "subtitle": "設定不要で数分で開始。セルフホスト、オープンソース、完全無料。"
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "© {{year}} FluxCore Technologies. All rights reserved.",
+    "links": {
+      "documentation": "ドキュメント",
+      "support": "サポート",
+      "privacy": "プライバシーポリシー",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "title": "Hệ Thống Cấp Độ",
+  "subtitle": "Cấu hình việc kiếm XP, thông báo lên cấp, phần thưởng vai trò và hệ số nhân.",
+  "stats": {
+    "rankedMembers": "Thành Viên Được Xếp Hạng",
+    "roleRewards": "Phần Thưởng Vai Trò",
+    "systemStatus": "Trạng Thái Hệ Thống",
+    "enabled": "Đang Bật",
+    "disabled": "Đã Tắt"
+  },
+  "tabs": {
+    "leaderboard": "Bảng Xếp Hạng",
+    "settings": "Cài Đặt",
+    "roleRewards": "Phần Thưởng Vai Trò",
+    "exclusions": "Loại Trừ",
+    "multipliers": "Hệ Số Nhân"
+  },
+  "table": {
+    "rank": "Hạng",
+    "userId": "ID Người Dùng",
+    "level": "Cấp Độ",
+    "xp": "XP",
+    "messages": "Tin Nhắn",
+    "voiceTime": "Thời Gian Thoại"
+  },
+  "settings": {
+    "title": "Cài Đặt Cấp Độ",
+    "enabled": "Bật Hệ Thống Cấp Độ",
+    "enabledDesc": "Bật hoặc tắt toàn bộ hệ thống cấp độ.",
+    "xpPerMessage": "XP Mỗi Tin Nhắn",
+    "xpPerMessageDesc": "XP cơ bản được trao cho mỗi tin nhắn (cộng thêm ngẫu nhiên 0-9).",
+    "xpCooldown": "Thời Gian Chờ XP (giây)",
+    "xpCooldownDesc": "Thời gian tối thiểu giữa các lần nhận XP của mỗi người dùng.",
+    "voiceXpEnabled": "XP Thoại",
+    "voiceXpEnabledDesc": "Trao XP cho thời gian dành trong kênh thoại.",
+    "voiceXpPerMinute": "XP Thoại Mỗi Phút",
+    "voiceXpPerMinuteDesc": "XP được trao mỗi phút trong kênh thoại.",
+    "levelUpAnnouncements": "Thông Báo Lên Cấp",
+    "levelUpAnnouncementsDesc": "Thông báo khi một thành viên lên cấp.",
+    "announceDest": "Điểm Đến Thông Báo",
+    "announceDestHint": "Bạn cũng có thể nhập ID kênh trực tiếp vào ô nhập ở trên.",
+    "announceDestSameChannel": "Cùng Kênh",
+    "announceDestDM": "Tin Nhắn Trực Tiếp",
+    "announceMessage": "Tin Nhắn Thông Báo",
+    "announceMessagePlaceholder": "{user} vừa đạt **Cấp {level}**!",
+    "announceMessageVars": "Biến: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Phần Thưởng Vai Trò",
+    "description": "Tự động gán vai trò khi thành viên đạt đến các cấp độ nhất định.",
+    "addReward": "Thêm Phần Thưởng",
+    "addRewardTitle": "Thêm Phần Thưởng Vai Trò",
+    "level": "Cấp Độ",
+    "levelPrefix": "Cấp {{level}}",
+    "roleId": "ID Vai Trò",
+    "levelPlaceholder": "vd. 5",
+    "rolePlaceholder": "vd. 123456789",
+    "removeReward": "Xóa",
+    "noRewards": "Chưa có phần thưởng vai trò nào được cấu hình."
+  },
+  "exclusions": {
+    "title": "Loại Trừ XP",
+    "description": "Các kênh và vai trò không kiếm được XP.",
+    "noXpChannels": "Kênh Không Có XP (ID phân cách bằng dấu phẩy)",
+    "noXpChannelsPlaceholder": "vd. 123456789, 987654321",
+    "noXpRoles": "Vai Trò Không Có XP (ID phân cách bằng dấu phẩy)",
+    "noXpRolesPlaceholder": "vd. 123456789, 987654321",
+    "save": "Lưu Loại Trừ"
+  },
+  "multipliers": {
+    "title": "Hệ Số Nhân XP",
+    "description": "Đặt hệ số nhân XP theo kênh hoặc vai trò. Hệ số nhân 2 sẽ nhân đôi XP kiếm được.",
+    "channelMultipliers": "Hệ Số Nhân Kênh",
+    "roleMultipliers": "Hệ Số Nhân Vai Trò",
+    "channelId": "ID Kênh",
+    "roleId": "ID Vai Trò",
+    "multiplier": "Hệ Số Nhân",
+    "type": "Loại",
+    "typeChannel": "Kênh",
+    "typeRole": "Vai Trò",
+    "id": "ID",
+    "idPlaceholder": "ID Kênh hoặc Vai Trò",
+    "value": "Hệ Số Nhân",
+    "valuePlaceholder": "vd. 2",
+    "add": "Thêm Hệ Số Nhân",
+    "addTitle": "Thêm Hệ Số Nhân",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Chưa có hệ số nhân XP nào được cấu hình."
+  },
+  "pagination": {
+    "previous": "Trước",
+    "next": "Tiếp",
+    "pageInfo": "Trang {{page}} / {{totalPages}} (tổng {{total}})"
+  },
+  "loading": "Đang tải bảng xếp hạng...",
+  "loadingGeneric": "Đang tải...",
+  "emptyLeaderboard": "Chưa có thành viên nào kiếm được XP.",
+  "toast": {
+    "saved": "Đã lưu cài đặt cấp độ",
+    "saveFailed": "Cập nhật cài đặt thất bại",
+    "rewardAdded": "Đã thêm phần thưởng",
+    "rewardAddFailed": "Thêm phần thưởng thất bại",
+    "rewardRemoved": "Đã xóa phần thưởng",
+    "rewardRemoveFailed": "Xóa phần thưởng thất bại",
+    "multiplierAdded": "Đã thêm hệ số nhân",
+    "multiplierAddFailed": "Thêm hệ số nhân thất bại",
+    "multiplierRemoved": "Đã xóa hệ số nhân",
+    "multiplierRemoveFailed": "Xóa hệ số nhân thất bại",
+    "exclusionUpdated": "Đã lưu loại trừ",
+    "exclusionFailed": "Lưu loại trừ thất bại",
+    "levelValidation": "Cấp độ phải nằm trong khoảng 1 đến 100",
+    "roleIdRequired": "ID vai trò là bắt buộc",
+    "multiplierIdRequired": "ID và giá trị hệ số nhân là bắt buộc",
+    "multiplierRange": "Hệ số nhân phải nằm trong khoảng 0 đến 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}g {{minutes}}p",
+    "voiceTimeMinutesOnly": "{{minutes}}p"
+  }
+}

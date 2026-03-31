@@ -1,0 +1,50 @@
+{
+  "title": "Konkurranser",
+  "subtitle": "Kjør konkurranser med tilpassbar varighet, deltakelseskrav og vinnertrekning.",
+  "stats": {
+    "activeGiveaways": "Aktive konkurranser",
+    "pastGiveaways": "Avsluttede konkurranser",
+    "totalEntries": "Totalt antall deltakere"
+  },
+  "table": {
+    "prize": "Premie",
+    "winners": "Vinnere",
+    "entries": "Deltakere",
+    "endsIn": "Slutter om",
+    "status": "Status"
+  },
+  "statuses": {
+    "active": "Aktiv",
+    "ended": "Avsluttet",
+    "cancelled": "Avbrutt"
+  },
+  "actions": {
+    "create": "Opprett konkurranse",
+    "edit": "Rediger",
+    "end": "Avslutt",
+    "reroll": "Trekk på nytt",
+    "delete": "Slett"
+  },
+  "form": {
+    "prize": "Premie",
+    "winnersCount": "Antall vinnere",
+    "duration": "Varighet",
+    "channel": "Kanal",
+    "requiredRole": "Påkrevd rolle",
+    "description": "Beskrivelse"
+  },
+  "toast": {
+    "created": "Konkurranse opprettet",
+    "createFailed": "Kunne ikke opprette konkurranse",
+    "updated": "Konkurranse oppdatert",
+    "updateFailed": "Kunne ikke oppdatere konkurranse",
+    "ended": "Konkurranse avsluttet",
+    "endFailed": "Kunne ikke avslutte konkurranse",
+    "rerolled": "Vinnere trukket på nytt",
+    "rerollFailed": "Kunne ikke trekke vinnere på nytt",
+    "deleted": "Konkurranse slettet",
+    "deleteFailed": "Kunne ikke slette konkurranse"
+  },
+  "empty": "Ingen konkurranser ennå. Opprett en for å komme i gang.",
+  "loading": "Laster konkurranser..."
+}

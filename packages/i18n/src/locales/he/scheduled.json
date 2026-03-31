@@ -1,0 +1,86 @@
+{
+  "title": "הודעות מתוזמנות",
+  "subtitle": "צור הודעות חוזרות שמתפרסמות אוטומטית בלוחות זמנים הניתנים להגדרה.",
+  "stats": {
+    "totalMessages": "סה\"כ הודעות",
+    "active": "פעילות",
+    "inactive": "לא פעילות"
+  },
+  "table": {
+    "name": "שם",
+    "channel": "ערוץ",
+    "schedule": "לוח זמנים",
+    "nextRun": "הרצה הבאה",
+    "status": "מצב"
+  },
+  "dialog": {
+    "editTitle": "עריכת הודעה מתוזמנת",
+    "createTitle": "הודעה מתוזמנת חדשה"
+  },
+  "form": {
+    "name": "שם",
+    "channel": "ערוץ",
+    "schedulePreset": "תבנית לוח זמנים",
+    "cronExpression": "ביטוי Cron",
+    "timezone": "אזור זמן",
+    "messageContent": "תוכן ההודעה",
+    "text": "טקסט",
+    "embed": "Embed",
+    "enabled": "מופעל",
+    "enabledDesc": "האם הודעה מתוזמנת זו פעילה."
+  },
+  "cronPresets": {
+    "everyHour": "כל שעה",
+    "every6Hours": "כל 6 שעות",
+    "daily9am": "יומית ב-9 בבוקר",
+    "dailyMidnight": "יומית בחצות",
+    "weeklyMonday": "שבועית ביום שני",
+    "monthly1st": "חודשית ב-1 בחודש",
+    "custom": "מותאם אישית"
+  },
+  "embed": {
+    "title": "כותרת",
+    "description": "תיאור",
+    "color": "צבע (hex)",
+    "footer": "כותרת תחתונה",
+    "thumbnail": "כתובת תמונה ממוזערת",
+    "image": "כתובת תמונה"
+  },
+  "toast": {
+    "created": "ההודעה המתוזמנת נוצרה",
+    "createFailed": "יצירת ההודעה המתוזמנת נכשלה",
+    "updated": "ההודעה המתוזמנת עודכנה",
+    "updateFailed": "עדכון ההודעה המתוזמנת נכשל",
+    "deleted": "ההודעה המתוזמנת נמחקה",
+    "deleteFailed": "מחיקת ההודעה המתוזמנת נכשלה",
+    "testSent": "הודעת הבדיקה נשלחה",
+    "testFailed": "שליחת הודעת הבדיקה נכשלה"
+  },
+  "empty": {
+    "title": "אין הודעות מתוזמנות עדיין",
+    "description": "צור הודעה מתוזמנת כדי לפרסם תוכן אוטומטית באופן חוזר.",
+    "createButton": "צור הודעה"
+  },
+  "pagination": {
+    "previous": "הקודם",
+    "next": "הבא",
+    "page": "עמוד {{page}} מתוך {{total}}"
+  },
+  "actions": {
+    "newMessage": "הודעה חדשה",
+    "testSend": "שליחת בדיקה",
+    "edit": "עריכה",
+    "delete": "מחיקה",
+    "save": "שמירה",
+    "cancel": "ביטול"
+  },
+  "validation": {
+    "nameRequired": "שם ההודעה הוא שדה חובה",
+    "channelRequired": "ערוץ הוא שדה חובה"
+  },
+  "cronPreview": {
+    "nextRuns": "הרצות הבאות"
+  },
+  "characters": "{{count}}/2000 תווים",
+  "never": "אף פעם"
+}

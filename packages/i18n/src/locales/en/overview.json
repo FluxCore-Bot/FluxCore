@@ -1,0 +1,12 @@
+{
+  "title": "Overview",
+  "subtitle": "Monitor your automation performance and activity at a glance.",
+  "stats": {
+    "actionRules": "Action Rules",
+    "activeNow": "Active Now",
+    "executions": "Executions",
+    "successRate": "Success Rate"
+  },
+  "errorsInLast24h": "{{count}} error in last 24h",
+  "errorsInLast24h_other": "{{count}} errors in last 24h"
+}

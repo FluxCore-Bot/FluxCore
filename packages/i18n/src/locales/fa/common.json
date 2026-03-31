@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "موتور FluxCore",
+    "dashboard": "داشبورد FluxCore"
+  },
+  "status": {
+    "online": "آنلاین",
+    "offline": "آفلاین",
+    "latency": "{{ms}} میلی‌ثانیه"
+  },
+  "nav": {
+    "overview": "نمای کلی",
+    "automation": "اتوماسیون",
+    "music": "موسیقی",
+    "tempvoice": "کانال‌های صوتی موقت",
+    "welcome": "خوش‌آمدگویی",
+    "moderation": "مدیریت",
+    "warnings": "هشدارها",
+    "rolePanels": "پنل‌های نقش",
+    "leveling": "سطح‌بندی",
+    "scheduled": "پیام‌های زمان‌بندی شده",
+    "commands": "دستورات",
+    "security": "امنیت",
+    "tickets": "تیکت‌ها",
+    "giveaways": "قرعه‌کشی‌ها",
+    "suggestions": "پیشنهادات",
+    "starboard": "تابلوی ستاره‌ها",
+    "logs": "گزارش‌ها",
+    "permissions": "دسترسی‌ها",
+    "settings": "تنظیمات"
+  },
+  "actions": {
+    "save": "ذخیره",
+    "cancel": "لغو",
+    "delete": "حذف",
+    "edit": "ویرایش",
+    "create": "ایجاد",
+    "add": "افزودن",
+    "remove": "حذف",
+    "confirm": "تأیید",
+    "close": "بستن",
+    "back": "بازگشت",
+    "next": "بعدی",
+    "search": "جستجو",
+    "filter": "فیلتر",
+    "refresh": "بازنشانی",
+    "reset": "بازنشانی به حالت اولیه",
+    "enable": "فعال‌سازی",
+    "disable": "غیرفعال‌سازی",
+    "copy": "کپی",
+    "export": "خروجی",
+    "import": "ورودی",
+    "submit": "ارسال",
+    "loading": "در حال بارگذاری...",
+    "retry": "تلاش مجدد"
+  },
+  "labels": {
+    "enabled": "فعال",
+    "disabled": "غیرفعال",
+    "active": "فعال",
+    "inactive": "غیرفعال",
+    "none": "هیچ‌کدام",
+    "all": "همه",
+    "custom": "سفارشی",
+    "default": "پیش‌فرض",
+    "required": "الزامی",
+    "optional": "اختیاری",
+    "name": "نام",
+    "description": "توضیحات",
+    "type": "نوع",
+    "status": "وضعیت",
+    "channel": "کانال",
+    "role": "نقش",
+    "member": "عضو",
+    "duration": "مدت",
+    "reason": "دلیل",
+    "language": "زبان"
+  },
+  "header": {
+    "notifications": "اعلان‌ها",
+    "settings": "تنظیمات",
+    "logout": "خروج",
+    "toggleSidebar": "تغییر نوار کناری",
+    "refreshData": "بازنشانی داده‌های Discord"
+  },
+  "sidebar": {
+    "closeSidebar": "بستن نوار کناری",
+    "addToServer": "افزودن به سرور",
+    "docs": "مستندات",
+    "support": "پشتیبانی",
+    "backToServers": "بازگشت به سرورها"
+  },
+  "empty": {
+    "noData": "داده‌ای موجود نیست",
+    "noResults": "نتیجه‌ای یافت نشد",
+    "noItems": "هنوز موردی وجود ندارد"
+  },
+  "time": {
+    "seconds": "ثانیه",
+    "minutes": "دقیقه",
+    "hours": "ساعت",
+    "days": "روز",
+    "ago": "{{time}} پیش",
+    "in": "در {{time}}"
+  },
+  "confirm": {
+    "title": "آیا مطمئن هستید؟",
+    "deleteTitle": "تأیید حذف",
+    "deleteMessage": "این عمل قابل بازگشت نیست.",
+    "unsavedChanges": "تغییرات ذخیره‌نشده دارید. آیا مطمئن هستید که می‌خواهید خارج شوید؟"
+  },
+  "accessibility": {
+    "skipToContent": "رفتن به محتوای اصلی",
+    "loading": "در حال بارگذاری محتوا",
+    "loaded": "محتوا بارگذاری شد",
+    "error": "خطایی رخ داد",
+    "menuOpen": "منو باز است",
+    "menuClosed": "منو بسته است"
+  }
+}

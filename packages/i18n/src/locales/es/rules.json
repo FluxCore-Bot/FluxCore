@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Servidor",
+    "automation": "Automatizacion"
+  },
+  "title": "Reglas de automatizacion",
+  "subtitle": "Configura disparadores basados en eventos y respuestas automatizadas para tu servidor.",
+  "createRule": "Crear regla",
+  "stats": {
+    "totalRules": "Total de reglas",
+    "active": "Activas",
+    "executions7d": "Ejecuciones (7d)",
+    "successRate": "Tasa de exito"
+  },
+  "filter": {
+    "searchPlaceholder": "Buscar reglas...",
+    "eventType": "Tipo de evento",
+    "allEvents": "Todos los eventos",
+    "allStatus": "Todos los estados",
+    "enabled": "Activada",
+    "disabled": "Desactivada",
+    "sortBy": "Ordenar por",
+    "priority": "Prioridad",
+    "name": "Nombre",
+    "lastFired": "Ultimo disparo",
+    "status": "Estado",
+    "clear": "Limpiar",
+    "showing": "Mostrando {{filtered}} de {{total}} reglas"
+  },
+  "bulk": {
+    "selected": "{{count}} regla seleccionada",
+    "selected_other": "{{count}} reglas seleccionadas",
+    "enable": "Activar",
+    "disable": "Desactivar",
+    "delete": "Eliminar",
+    "clear": "Limpiar"
+  },
+  "empty": {
+    "title": "Comienza con la automatizacion",
+    "description": "Elige una plantilla para comenzar rapidamente o crea una regla desde cero.",
+    "createFromScratch": "Crear desde cero"
+  },
+  "noResults": {
+    "title": "No hay reglas coincidentes",
+    "description": "Intenta ajustar tu busqueda o filtros para encontrar lo que buscas."
+  },
+  "templates": {
+    "welcomeMessage": "Mensaje de bienvenida",
+    "welcomeMessageDesc": "Saluda a los nuevos miembros con un mensaje personalizado en un canal",
+    "autoRole": "Rol automatico",
+    "autoRoleDesc": "Asignar automaticamente un rol cuando un miembro se une",
+    "logDeleted": "Registrar mensajes eliminados",
+    "logDeletedDesc": "Enviar informacion de mensajes eliminados a un canal de registros",
+    "boostThankYou": "Agradecimiento por boost",
+    "boostThankYouDesc": "Enviar un MD agradeciendo a los usuarios que impulsan el servidor",
+    "banLogger": "Registro de baneos",
+    "banLoggerDesc": "Registrar eventos de baneo en un canal de moderacion",
+    "autoThread": "Thread automatico",
+    "autoThreadDesc": "Crear automaticamente un hilo cuando se envia un mensaje"
+  },
+  "deleteDialog": {
+    "title": "Eliminar regla",
+    "description": "Estas seguro de que deseas eliminar \"{{name}}\"? Esta accion no se puede deshacer.",
+    "confirm": "Eliminar"
+  },
+  "bulkDeleteDialog": {
+    "title": "Eliminar reglas seleccionadas",
+    "description": "Estas seguro de que deseas eliminar {{count}} regla? Esta accion no se puede deshacer.",
+    "description_other": "Estas seguro de que deseas eliminar {{count}} reglas? Esta accion no se puede deshacer.",
+    "confirm": "Eliminar todo"
+  },
+  "toast": {
+    "deleted": "Regla eliminada",
+    "deleteFailed": "Error al eliminar la regla",
+    "enabled": "Regla activada",
+    "disabled": "Regla desactivada",
+    "toggleFailed": "Error al cambiar el estado de la regla",
+    "duplicated": "Regla duplicada",
+    "duplicateFailed": "Error al duplicar la regla",
+    "bulkEnabled": "{{count}} reglas activadas",
+    "bulkDisabled": "{{count}} reglas desactivadas",
+    "bulkEnableFailed": "Error al activar las reglas",
+    "bulkDisableFailed": "Error al desactivar las reglas",
+    "bulkDeleted": "{{count}} reglas eliminadas",
+    "bulkDeleteFailed": "Error al eliminar las reglas"
+  }
+}

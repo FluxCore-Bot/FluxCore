@@ -1,0 +1,54 @@
+{
+  "title": "Moderation",
+  "subtitle": "Moderationsfaelle anzeigen und verwalten, Bestrafungseinstellungen konfigurieren.",
+  "stats": {
+    "totalCases": "Faelle gesamt",
+    "activeTempbans": "Aktive Tempbans",
+    "last24h": "Letzte 24h"
+  },
+  "cases": "Faelle",
+  "actions": {
+    "ban": "Bannen",
+    "tempban": "Tempban",
+    "kick": "Kicken",
+    "timeout": "Timeout",
+    "softban": "Softban",
+    "warn": "Verwarnen",
+    "note": "Notiz"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Aktion",
+    "target": "Ziel",
+    "moderator": "Moderator",
+    "reason": "Grund",
+    "date": "Datum",
+    "actions": "Aktionen",
+    "noCases": "Keine Faelle gefunden.",
+    "noReason": "Kein Grund"
+  },
+  "filter": {
+    "userPlaceholder": "Nach Benutzer-ID filtern...",
+    "allActions": "Alle Aktionen"
+  },
+  "pagination": {
+    "previous": "Zurueck",
+    "next": "Weiter",
+    "page": "Seite {{page}} von {{total}}"
+  },
+  "editDialog": {
+    "title": "Grund fuer Fall #{{id}} bearbeiten",
+    "placeholder": "Neuen Grund eingeben...",
+    "saving": "Speichern..."
+  },
+  "editReason": "Grund bearbeiten",
+  "deleteCase": "Fall loeschen",
+  "deleteConfirm": "Sind Sie sicher, dass Sie diesen Fall loeschen moechten?",
+  "settings": {
+    "title": "Einstellungen",
+    "dmOnPunishment": "DM bei Bestrafung",
+    "dmOnPunishmentDesc": "Benutzern eine DM senden, wenn sie bestraft werden (Ban, Kick, Timeout).",
+    "modLogChannel": "Moderationslog-Kanal",
+    "modLogChannelDesc": "Kanal, in dem Moderationsaktionen protokolliert werden."
+  }
+}

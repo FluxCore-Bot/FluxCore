@@ -1,0 +1,65 @@
+{
+  "title": "Sveiciens un atvadas",
+  "subtitle": "Konfigurejiet sveicinasanas un atvadu zinojumus, attealus un automatiskas lomas.",
+  "loadingSubtitle": "Konfigurejiet sveicinasanas un atvadu zinojumus savam serverim.",
+  "tabs": {
+    "welcome": "Sveiciens",
+    "welcomeImage": "Sveicinasanas attels",
+    "farewell": "Atvadas",
+    "farewellImage": "Atvadu attels",
+    "dm": "Sveicinasanas privatais zinojums",
+    "autorole": "Automatiska loma"
+  },
+  "welcome": {
+    "title": "Sveicinasanas zinojums",
+    "description": "Nosutiet pielgotu embed, kad pievienojas jauns dalibnieks.",
+    "channelLabel": "Sveicinasanas kanala ID",
+    "channelPlaceholder": "Kanala ID...",
+    "embedBuilder": "Embed veideljs"
+  },
+  "welcomeImage": {
+    "title": "Sveicinasanas attels",
+    "description": "Generejiet pielgotu attela karti ar dalibnieka avataru, kad vins pievienojas.",
+    "disabled": "Iespejojiet slegzi augstaka, lai konfiguetru sveicinasanas attelus."
+  },
+  "farewell": {
+    "title": "Atvadu zinojums",
+    "description": "Nosutiet zinojumu, kad dalibnieks pamet serveri.",
+    "channelLabel": "Atvadu kanala ID",
+    "channelPlaceholder": "Kanala ID..."
+  },
+  "farewellImage": {
+    "title": "Atvadu attels",
+    "description": "Generejiet pielgotu atvadu karti, kad dalibnieks pamet.",
+    "disabled": "Iespejojiet slegzi augstaka, lai konfiguetru atvadu attelus."
+  },
+  "dm": {
+    "title": "Sveicinasanas privatais zinojums",
+    "description": "Nosutiet privatu zinojumu jaunajiem dalibniekiem. Klusi nedarbosies, ja privatie zinojumi ir atspejoti."
+  },
+  "autorole": {
+    "title": "Automatiska loma",
+    "description": "Automatiski piesskiriet lomas jaunajiem dalibniekiem, kad vini pievienojas. Boti ir izsliegti. Botam jabet ar augstaku lomu neka seit noraditas lomas.",
+    "label": "Lomu ID (atdaliti ar komatiem)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Virsraksts",
+    "description": "Apraksts",
+    "color": "Krasa (hex)",
+    "footer": "Kajene",
+    "thumbnail": "Sikattela URL",
+    "image": "Attela URL",
+    "variables": "Maingie:"
+  },
+  "saveChanges": "Saglabar izmainas",
+  "saving": "Saglaba...",
+  "sendTest": "Sutit testa zinojumu",
+  "sending": "Suta...",
+  "toast": {
+    "saved": "Sveicinasanas konfiguracija saglabata",
+    "saveFailed": "Neizdevas saglabar konfiguraciju",
+    "testSent": "Testa zinojums tiks nosutits uz <#{{channelId}}>",
+    "testFailed": "Neizdevas nosutit testa zinojumu"
+  }
+}

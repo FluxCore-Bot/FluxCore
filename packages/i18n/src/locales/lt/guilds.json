@@ -1,0 +1,9 @@
+{
+  "title": "Jusu serveriai",
+  "subtitle": "Pasirinkite serveri valdymui ir konfiguracijai.",
+  "loading": "Kraunami serveriai...",
+  "empty": {
+    "title": "Serveriu nerasta",
+    "description": "Isitikinkite, kad botas pridetas prie serverio, kuriame turite Serverio valdymo leidima."
+  }
+}

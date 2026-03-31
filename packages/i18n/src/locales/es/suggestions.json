@@ -1,0 +1,67 @@
+{
+  "title": "Sugerencias",
+  "subtitle": "Permite a los miembros enviar ideas y votar sobre ellas. Gestiona estados y comentarios.",
+  "stats": {
+    "totalSuggestions": "Total de sugerencias",
+    "systemStatus": "Estado del sistema",
+    "channel": {
+      "configured": "Canal configurado",
+      "notSet": "Canal no establecido"
+    }
+  },
+  "tabs": {
+    "suggestions": "Sugerencias",
+    "settings": "Configuracion"
+  },
+  "filter": {
+    "filterByStatus": "Filtrar por estado",
+    "all": "Todas",
+    "pending": "Pendientes",
+    "approved": "Aprobadas",
+    "rejected": "Rechazadas",
+    "implemented": "Implementadas",
+    "considered": "En consideracion"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Autor",
+    "content": "Contenido",
+    "status": "Estado",
+    "votes": "Votos",
+    "date": "Fecha"
+  },
+  "actions": {
+    "approve": "Aprobar",
+    "reject": "Rechazar",
+    "implement": "Marcar como implementada",
+    "consider": "Considerar",
+    "delete": "Eliminar"
+  },
+  "settings": {
+    "channel": "Canal de sugerencias",
+    "channelDesc": "El canal donde se publican las sugerencias para votar.",
+    "voteEmojis": "Emojis de votacion",
+    "voteEmojisDesc": "Emojis usados para las reacciones de voto positivo y negativo.",
+    "autoThread": "Crear hilo automaticamente",
+    "autoThreadDesc": "Crear automaticamente un hilo de discusion en cada nueva sugerencia.",
+    "dmOnStatusChange": "MD al cambiar estado",
+    "dmOnStatusChangeDesc": "Notificar al autor por MD cuando cambie el estado de su sugerencia."
+  },
+  "toast": {
+    "approved": "Sugerencia aprobada",
+    "rejected": "Sugerencia rechazada",
+    "implemented": "Sugerencia marcada como implementada",
+    "considered": "Sugerencia puesta en consideracion",
+    "deleted": "Sugerencia eliminada",
+    "actionFailed": "Error al actualizar la sugerencia",
+    "settingsSaved": "Configuracion de sugerencias guardada",
+    "settingsFailed": "Error al guardar la configuracion de sugerencias"
+  },
+  "empty": "Aun no hay sugerencias.",
+  "loading": "Cargando sugerencias...",
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "page": "Pagina {{page}} de {{total}}"
+  }
+}

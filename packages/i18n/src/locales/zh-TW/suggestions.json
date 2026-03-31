@@ -1,0 +1,14 @@
+{
+  "title": "建議",
+  "subtitle": "讓成員提交想法並投票。管理狀態和回饋。",
+  "stats": { "totalSuggestions": "建議總數", "systemStatus": "系統狀態", "channel": { "configured": "頻道已設定", "notSet": "頻道未設定" } },
+  "tabs": { "suggestions": "建議", "settings": "設定" },
+  "filter": { "filterByStatus": "依狀態篩選", "all": "全部", "pending": "待處理", "approved": "已核准", "rejected": "已拒絕", "implemented": "已實現", "considered": "考慮中" },
+  "table": { "id": "ID", "author": "作者", "content": "內容", "status": "狀態", "votes": "投票數", "date": "日期" },
+  "actions": { "approve": "核准", "reject": "拒絕", "implement": "標記為已實現", "consider": "考慮", "delete": "刪除" },
+  "settings": { "channel": "建議頻道", "channelDesc": "建議發佈供投票的頻道。", "voteEmojis": "投票表情", "voteEmojisDesc": "用於贊成和反對反應的表情。", "autoThread": "自動建立討論串", "autoThreadDesc": "每條新建議自動建立討論串。", "dmOnStatusChange": "狀態變更時傳送私訊", "dmOnStatusChangeDesc": "當建議狀態變更時透過私訊通知作者。" },
+  "toast": { "approved": "建議已核准", "rejected": "建議已拒絕", "implemented": "建議已標記為已實現", "considered": "建議已標記為考慮中", "deleted": "建議已刪除", "actionFailed": "更新建議失敗", "settingsSaved": "建議設定已儲存", "settingsFailed": "儲存建議設定失敗" },
+  "empty": "尚無建議。",
+  "loading": "正在載入建議...",
+  "pagination": { "previous": "上一頁", "next": "下一頁", "page": "第 {{page}} 頁 / 共 {{total}} 頁" }
+}

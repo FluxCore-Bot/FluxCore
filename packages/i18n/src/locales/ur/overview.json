@@ -1,0 +1,12 @@
+{
+  "title": "[NEEDS TRANSLATION] Overview",
+  "subtitle": "[NEEDS TRANSLATION] Monitor your automation performance and activity at a glance.",
+  "stats": {
+    "actionRules": "[NEEDS TRANSLATION] Action Rules",
+    "activeNow": "[NEEDS TRANSLATION] Active Now",
+    "executions": "[NEEDS TRANSLATION] Executions",
+    "successRate": "[NEEDS TRANSLATION] Success Rate"
+  },
+  "errorsInLast24h": "[NEEDS TRANSLATION] {{count}} error in last 24h",
+  "errorsInLast24h_other": "[NEEDS TRANSLATION] {{count}} errors in last 24h"
+}

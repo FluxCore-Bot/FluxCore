@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Bediener",
+    "automation": "Outomatisering"
+  },
+  "title": "Outomatiseringsreels",
+  "subtitle": "Stel gebeurtenisgedrewe snellers en outomatiese antwoorde vir jou bediener op.",
+  "createRule": "Skep Reel",
+  "stats": {
+    "totalRules": "Totale Reels",
+    "active": "Aktief",
+    "executions7d": "Uitvoerings (7d)",
+    "successRate": "Sukseskoers"
+  },
+  "filter": {
+    "searchPlaceholder": "Soek reels...",
+    "eventType": "Gebeurtenistipe",
+    "allEvents": "Alle Gebeurtenisse",
+    "allStatus": "Alle Status",
+    "enabled": "Geaktiveer",
+    "disabled": "Gedeaktiveer",
+    "sortBy": "Sorteer op",
+    "priority": "Prioriteit",
+    "name": "Naam",
+    "lastFired": "Laaste Geaktiveer",
+    "status": "Status",
+    "clear": "Maak Skoon",
+    "showing": "Wys {{filtered}} van {{total}} reels"
+  },
+  "bulk": {
+    "selected": "{{count}} reel gekies",
+    "selected_other": "{{count}} reels gekies",
+    "enable": "Aktiveer",
+    "disable": "Deaktiveer",
+    "delete": "Verwyder",
+    "clear": "Maak Skoon"
+  },
+  "empty": {
+    "title": "Begin met Outomatisering",
+    "description": "Kies 'n sjabloon om vinnig te begin, of skep 'n reel van nuuts af.",
+    "createFromScratch": "Skep van Nuuts Af"
+  },
+  "noResults": {
+    "title": "Geen ooreenstemmende reels nie",
+    "description": "Probeer jou soektog of filters aanpas om te vind waarna jy soek."
+  },
+  "templates": {
+    "welcomeMessage": "Welkomboodskap",
+    "welcomeMessageDesc": "Groet nuwe lede met 'n pasgemaakte boodskap in 'n kanaal",
+    "autoRole": "Outo-rol",
+    "autoRoleDesc": "Ken outomaties 'n rol toe wanneer 'n lid aansluit",
+    "logDeleted": "Log Verwyderde Boodskappe",
+    "logDeletedDesc": "Stuur verwyderde boodskapinligting na 'n logkanaal",
+    "boostThankYou": "Boost-dankie",
+    "boostThankYouDesc": "Stuur 'n DM om gebruikers te bedank wat die bediener boost",
+    "banLogger": "Verban-logger",
+    "banLoggerDesc": "Log verban-gebeurtenisse na 'n modereringskanaal",
+    "autoThread": "Outo-draad",
+    "autoThreadDesc": "Skep outomaties 'n draad wanneer 'n boodskap gestuur word"
+  },
+  "deleteDialog": {
+    "title": "Verwyder Reel",
+    "description": "Is jy seker jy wil \"{{name}}\" verwyder? Hierdie aksie kan nie ongedaan gemaak word nie.",
+    "confirm": "Verwyder"
+  },
+  "bulkDeleteDialog": {
+    "title": "Verwyder Geselekteerde Reels",
+    "description": "Is jy seker jy wil {{count}} reel verwyder? Hierdie aksie kan nie ongedaan gemaak word nie.",
+    "description_other": "Is jy seker jy wil {{count}} reels verwyder? Hierdie aksie kan nie ongedaan gemaak word nie.",
+    "confirm": "Verwyder Almal"
+  },
+  "toast": {
+    "deleted": "Reel verwyder",
+    "deleteFailed": "Kon nie reel verwyder nie",
+    "enabled": "Reel geaktiveer",
+    "disabled": "Reel gedeaktiveer",
+    "toggleFailed": "Kon nie reel wissel nie",
+    "duplicated": "Reel gedupliseer",
+    "duplicateFailed": "Kon nie reel dupliseer nie",
+    "bulkEnabled": "{{count}} reels geaktiveer",
+    "bulkDisabled": "{{count}} reels gedeaktiveer",
+    "bulkEnableFailed": "Kon nie reels aktiveer nie",
+    "bulkDisableFailed": "Kon nie reels deaktiveer nie",
+    "bulkDeleted": "{{count}} reels verwyder",
+    "bulkDeleteFailed": "Kon nie reels verwyder nie"
+  }
+}

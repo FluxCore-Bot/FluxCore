@@ -1,0 +1,118 @@
+{
+  "title": "Roles ir leidimai",
+  "subtitle": "Kontroliukite, kas gali pasiekti ir valdyti kiekviena valdymo skydelio moduli.",
+  "actions": {
+    "createRole": "Sukurti role"
+  },
+  "permissionSystem": {
+    "title": "Leidimu sistema",
+    "active": "Aktyvi — administratoriai apriboti priskirtais leidimais.",
+    "inactive": "Neaktyvi — visi administratoriai su MANAGE_GUILD turi pilna priega.",
+    "enabledToast": "Leidimu sistema ijungta",
+    "disabledToast": "Leidimu sistema isjungta — visi administratoriai turi pilna priega"
+  },
+  "warning": {
+    "disabled": "Leidimu sistema isjungta. Visi valdymo skydelio administratoriai siuo metu turi pilna priega. Ijunkite ja virs, kad primestumete detalius leidimus."
+  },
+  "tabs": {
+    "roles": "Roles",
+    "auditLog": "Audito zurnalas"
+  },
+  "roleList": {
+    "title": "Valdymo skydelio roles",
+    "empty": "Roliu nesukurta.",
+    "selectHint": "Pasirinkite role redagavimui arba sukurkite nauja.",
+    "default": "Numatytoji",
+    "name": "Pavadinimas",
+    "members": "Nariai",
+    "permissions": "Leidimai",
+    "edit": "Redaguoti",
+    "delete": "Istrinti"
+  },
+  "presets": {
+    "title": "Greitas pridejimas is sablono",
+    "createdToast": "Role \"{{name}}\" sukurta"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} narys",
+    "memberCount_plural": "{{count}} nariu",
+    "name": "Roles pavadinimas",
+    "color": "Spalva",
+    "defaultRole": "Numatytoji role",
+    "permissions": "Leidimai",
+    "allBadge": "Visi",
+    "discordRoles": "Discord roles"
+  },
+  "roleForm": {
+    "name": "Roles pavadinimas",
+    "discordRoles": "Discord roles",
+    "permissions": "Leidimai",
+    "create": "Sukurti role",
+    "update": "Atnaujinti role",
+    "cancel": "Atsaukti"
+  },
+  "createDialog": {
+    "title": "Sukurti valdymo skydelio role",
+    "name": "Pavadinimas",
+    "namePlaceholder": "pvz. Moderatorius",
+    "color": "Spalva"
+  },
+  "permissionCategories": {
+    "actions": "Veiksmai ir automatizavimas",
+    "music": "Muzika",
+    "tempvoice": "TempVoice",
+    "welcome": "Pasisveikinimas ir atsisveikinimas",
+    "moderation": "Moderavimas",
+    "logging": "Zurnalavimas",
+    "leveling": "Lygiavimas",
+    "roles": "Roliu paneliai",
+    "tickets": "Bilietai",
+    "suggestions": "Pasiulymai",
+    "starboard": "Starboard",
+    "giveaways": "Dovanojimai",
+    "security": "Saugumas",
+    "scheduled": "Suplanuotos zinutes",
+    "commands": "Pasirinktines komandos",
+    "settings": "Serverio nustatymai"
+  },
+  "audit": {
+    "table": {
+      "user": "Naudotojas",
+      "action": "Veiksmas",
+      "target": "Tikslas",
+      "timestamp": "Kada"
+    },
+    "noEntries": "Audito zurnalo irasu nera."
+  },
+  "pagination": {
+    "previous": "Ankstesnis",
+    "next": "Kitas",
+    "page": "Puslapis {{current}} is {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Role \"{{name}}\" sukurta",
+    "roleCreateFailed": "Nepavyko sukurti roles",
+    "roleUpdated": "Role atnaujinta",
+    "roleUpdateFailed": "Nepavyko atnaujinti roles",
+    "roleDeleted": "Role istrinta",
+    "roleDeleteFailed": "Nepavyko istrinti roles"
+  },
+  "confirm": {
+    "deleteTitle": "Istrinti role \"{{name}}\"?",
+    "deleteMessage": "Tai pasalins role ir atskyrs visus narius. Sio veiksmo negalima atsiaukti.",
+    "deleteRole": "Ar tikrai norite istrinti sia role? Nariai praras priskirtus leidimus."
+  },
+  "saveButton": {
+    "saving": "Issaugoma...",
+    "save": "Issaugoti pakeitimus"
+  },
+  "deleteButton": {
+    "deleting": "Trinama...",
+    "delete": "Istrinti"
+  },
+  "createButton": {
+    "creating": "Kuriama...",
+    "create": "Sukurti"
+  },
+  "loading": "Kraunami leidimai..."
+}

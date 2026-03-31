@@ -1,0 +1,9 @@
+{
+  "title": "Ihre Server",
+  "subtitle": "Waehlen Sie einen Server zum Verwalten und Konfigurieren.",
+  "loading": "Server werden geladen...",
+  "empty": {
+    "title": "Keine Server gefunden",
+    "description": "Stellen Sie sicher, dass der Bot einem Server hinzugefuegt wurde, auf dem Sie die Berechtigung Server verwalten haben."
+  }
+}

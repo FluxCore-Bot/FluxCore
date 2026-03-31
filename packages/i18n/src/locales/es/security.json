@@ -1,0 +1,108 @@
+{
+  "title": "Seguridad",
+  "subtitle": "Configura la proteccion anti-raid y los ajustes de seguridad del servidor.",
+  "antiRaid": {
+    "title": "Proteccion anti-raid",
+    "description": "Activa la deteccion y respuesta automatica a raids coordinados, cuentas sospechosas y acciones destructivas."
+  },
+  "sections": {
+    "joinRate": "Tasa de ingreso",
+    "accountAge": "Antiguedad de cuenta",
+    "antiNuke": "Anti-Nuke",
+    "lockdown": "Bloqueo",
+    "events": "Eventos"
+  },
+  "joinRate": {
+    "title": "Deteccion de tasa de ingreso",
+    "description": "Detecta ingresos masivos monitoreando la tasa de nuevos miembros.",
+    "threshold": "Umbral de ingreso",
+    "thresholdHint": "Numero de ingresos para activar la deteccion",
+    "window": "Ventana de tiempo (segundos)",
+    "windowHint": "Ventana en la que se cuentan los ingresos",
+    "action": "Accion al detectar",
+    "actionHint": "Accion a tomar con los miembros sospechosos de raid",
+    "actions": {
+      "ban": "Banear",
+      "kick": "Expulsar",
+      "timeout": "Timeout",
+      "lockdown": "Bloqueo"
+    }
+  },
+  "accountAge": {
+    "title": "Filtro de antiguedad de cuenta",
+    "description": "Sancionar automaticamente cuentas mas nuevas que una edad minima. Establecer en 0 para desactivar.",
+    "minAge": "Edad minima de cuenta (dias)",
+    "minAgeHint": "0 = desactivado. Las cuentas mas nuevas seran sancionadas.",
+    "action": "Accion"
+  },
+  "antiNuke": {
+    "title": "Proteccion Anti-Nuke",
+    "description": "Detecta eliminaciones masivas de canales/roles y pone en cuarentena al usuario responsable quitandole todos sus roles.",
+    "threshold": "Umbral de eliminacion",
+    "thresholdHint": "Numero de eliminaciones en 10 segundos para activar la cuarentena",
+    "channelDeleteThreshold": "Umbral de eliminacion de canales",
+    "roleDeleteThreshold": "Umbral de eliminacion de roles",
+    "massbanThreshold": "Umbral de baneos masivos",
+    "interval": "Intervalo (segundos)",
+    "action": "Accion"
+  },
+  "lockdown": {
+    "title": "Bloqueo automatico en caso de raid",
+    "description": "Bloquear automaticamente todos los canales cuando se detecta un raid.",
+    "whitelistedRoles": "IDs de roles en lista blanca (separados por comas)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Los miembros con estos roles estaran exentos de la deteccion de raid.",
+    "logChannel": "ID del canal de registro",
+    "logChannelPlaceholder": "ID del canal para registros de raid...",
+    "enableButton": "Activar bloqueo",
+    "disableButton": "Desactivar bloqueo",
+    "active": "Bloqueo activo",
+    "inactive": "Bloqueo inactivo"
+  },
+  "events": {
+    "title": "Eventos de raid recientes",
+    "description": "Linea de tiempo de raids detectados, bloqueos por antiguedad de cuenta y eventos de bloqueo.",
+    "empty": "Aun no se han registrado eventos de raid. Los eventos apareceran aqui cuando se active la deteccion de raid.",
+    "actionLabel": "Accion: {{action}}",
+    "usersLabel": "Usuarios: {{count}}",
+    "accountAgeLabel": "Antiguedad de cuenta: {{days}}d",
+    "table": {
+      "type": "Tipo",
+      "description": "Descripcion",
+      "time": "Hora",
+      "action": "Accion tomada"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Pico de ingresos",
+    "account_age": "Antiguedad de cuenta",
+    "nuke_attempt": "Intento de nuke",
+    "lockdown": "Bloqueo",
+    "massJoin": "Ingreso masivo",
+    "suspiciousAccounts": "Cuentas sospechosas",
+    "channelDeletion": "Eliminacion de canales",
+    "roleDeletion": "Eliminacion de roles",
+    "massBan": "Baneo masivo"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "page": "Pagina {{current}} de {{total}}"
+  },
+  "toast": {
+    "saved": "Configuracion anti-raid guardada",
+    "saveFailed": "Error al guardar la configuracion",
+    "lockdownEnabled": "Bloqueo del servidor activado",
+    "lockdownDisabled": "Bloqueo del servidor desactivado",
+    "lockdownFailed": "Error al cambiar el estado del bloqueo"
+  },
+  "saveButton": {
+    "saving": "Guardando...",
+    "save": "Guardar cambios"
+  },
+  "labels": {
+    "seconds": "segundos",
+    "minutes": "minutos",
+    "hours": "horas"
+  }
+}

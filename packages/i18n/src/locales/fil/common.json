@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore Dashboard"
+  },
+  "status": {
+    "online": "Online",
+    "offline": "Offline",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Pangkalahatang-tanaw",
+    "automation": "Automation",
+    "music": "Musika",
+    "tempvoice": "TempVoice",
+    "welcome": "Maligayang Pagdating",
+    "moderation": "Moderasyon",
+    "warnings": "Mga Babala",
+    "rolePanels": "Mga Role Panel",
+    "leveling": "Leveling",
+    "scheduled": "Nakatakda",
+    "commands": "Mga Utos",
+    "security": "Seguridad",
+    "tickets": "Mga Tiket",
+    "giveaways": "Mga Giveaway",
+    "suggestions": "Mga Mungkahi",
+    "starboard": "Starboard",
+    "logs": "Mga Log",
+    "permissions": "Mga Pahintulot",
+    "settings": "Mga Setting"
+  },
+  "actions": {
+    "save": "I-save",
+    "cancel": "Kanselahin",
+    "delete": "Burahin",
+    "edit": "I-edit",
+    "create": "Gumawa",
+    "add": "Idagdag",
+    "remove": "Alisin",
+    "confirm": "Kumpirmahin",
+    "close": "Isara",
+    "back": "Bumalik",
+    "next": "Susunod",
+    "search": "Maghanap",
+    "filter": "I-filter",
+    "refresh": "I-refresh",
+    "reset": "I-reset",
+    "enable": "Paganahin",
+    "disable": "I-disable",
+    "copy": "Kopyahin",
+    "export": "I-export",
+    "import": "I-import",
+    "submit": "Isumite",
+    "loading": "Naglo-load...",
+    "retry": "Subukan Muli"
+  },
+  "labels": {
+    "enabled": "Pinagana",
+    "disabled": "Hindi Pinagana",
+    "active": "Aktibo",
+    "inactive": "Hindi Aktibo",
+    "none": "Wala",
+    "all": "Lahat",
+    "custom": "Custom",
+    "default": "Default",
+    "required": "Kinakailangan",
+    "optional": "Opsyonal",
+    "name": "Pangalan",
+    "description": "Paglalarawan",
+    "type": "Uri",
+    "status": "Status",
+    "channel": "Channel",
+    "role": "Role",
+    "member": "Miyembro",
+    "duration": "Tagal",
+    "reason": "Dahilan",
+    "language": "Wika"
+  },
+  "header": {
+    "notifications": "Mga Abiso",
+    "settings": "Mga Setting",
+    "logout": "Mag-logout",
+    "toggleSidebar": "I-toggle ang sidebar",
+    "refreshData": "I-refresh ang data ng Discord"
+  },
+  "sidebar": {
+    "closeSidebar": "Isara ang sidebar",
+    "addToServer": "Idagdag sa Server",
+    "docs": "Dokumentasyon",
+    "support": "Suporta",
+    "backToServers": "Bumalik sa mga Server"
+  },
+  "empty": {
+    "noData": "Walang available na data",
+    "noResults": "Walang nahanap na resulta",
+    "noItems": "Wala pang mga item"
+  },
+  "time": {
+    "seconds": "segundo",
+    "minutes": "minuto",
+    "hours": "oras",
+    "days": "araw",
+    "ago": "{{time}} ang nakalipas",
+    "in": "sa loob ng {{time}}"
+  },
+  "confirm": {
+    "title": "Sigurado ka ba?",
+    "deleteTitle": "Kumpirmahin ang pagbubura",
+    "deleteMessage": "Hindi maaaring baguhin ang aksyong ito.",
+    "unsavedChanges": "Mayroon kang mga hindi na-save na pagbabago. Sigurado ka bang gusto mong umalis?"
+  },
+  "accessibility": {
+    "skipToContent": "Lumaktaw sa pangunahing nilalaman",
+    "loading": "Naglo-load ng nilalaman",
+    "loaded": "Na-load na ang nilalaman",
+    "error": "May naganap na error",
+    "menuOpen": "Bukas ang menu",
+    "menuClosed": "Sarado ang menu"
+  }
+}

@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useParams } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../lib/client";
 import { PageHeader } from "../../../components/PageHeader";
@@ -45,31 +46,25 @@ import { Separator } from "../../../components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 import { Icon } from "../../../components/Icon";
 
-const PANEL_TYPE_LABELS: Record<string, string> = {
-  reaction: "Reaction",
-  button: "Button",
-  dropdown: "Dropdown",
-};
-
-const PANEL_MODE_LABELS: Record<string, string> = {
-  toggle: "Toggle",
-  unique: "Unique",
-  verify: "Verify",
-};
-
-const BUTTON_STYLE_LABELS: Record<number, string> = {
-  1: "Primary",
-  2: "Secondary",
-  3: "Success",
-  4: "Danger",
-};
-
 function EmptyRoleEntry(): RolePanelEntryItem {
   return { roleId: "", label: "", emoji: "", description: "", style: 2 };
 }
 
 export function RolesPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
+  const { t } = useTranslation("roles");
+
+  const PANEL_TYPE_LABELS: Record<string, string> = useMemo(() => ({
+    reaction: t("panelTypes.reaction"),
+    button: t("panelTypes.button"),
+    dropdown: t("panelTypes.dropdown"),
+  }), [t]);
+
+  const PANEL_MODE_LABELS: Record<string, string> = useMemo(() => ({
+    toggle: t("panelModes.toggle"),
+    unique: t("panelModes.unique"),
+    verify: t("panelModes.verify"),
+  }), [t]);
 
   const { data: panels, isLoading } = useRolePanels(guildId);
   const createPanel = useCreateRolePanel(guildId);
@@ -133,7 +128,7 @@ export function RolesPage() {
 
   function handleAddRoleEntry() {
     if (formRoles.length >= 25) {
-      toast.error("Maximum 25 roles per panel");
+      toast.error(t("toast.maxRolesReached"));
       return;
     }
     setFormRoles([...formRoles, EmptyRoleEntry()]);
@@ -151,11 +146,11 @@ export function RolesPage() {
 
   function handleSubmit() {
     if (!formName.trim()) {
-      toast.error("Panel name is required");
+      toast.error(t("toast.nameRequired"));
       return;
     }
     if (!formChannelId) {
-      toast.error("Channel is required");
+      toast.error(t("toast.channelRequired"));
       return;
     }
 
@@ -183,12 +178,12 @@ export function RolesPage() {
         },
         {
           onSuccess: () => {
-            toast.success("Panel updated");
+            toast.success(t("toast.updated"));
             setDialogOpen(false);
             resetForm();
           },
           onError: (err) =>
-            toast.error(err instanceof ApiError ? err.message : "Failed to update panel"),
+            toast.error(err instanceof ApiError ? err.message : t("toast.updateFailed")),
         },
       );
     } else {
@@ -205,21 +200,21 @@ export function RolesPage() {
 
       createPanel.mutate(data, {
         onSuccess: () => {
-          toast.success("Panel created");
+          toast.success(t("toast.created"));
           setDialogOpen(false);
           resetForm();
         },
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to create panel"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.createFailed")),
       });
     }
   }
 
   function handleDelete(panelId: number) {
     deletePanel.mutate(panelId, {
-      onSuccess: () => toast.success("Panel deleted"),
+      onSuccess: () => toast.success(t("toast.deleted")),
       onError: (err) =>
-        toast.error(err instanceof ApiError ? err.message : "Failed to delete panel"),
+        toast.error(err instanceof ApiError ? err.message : t("toast.deleteFailed")),
     });
   }
 
@@ -227,7 +222,7 @@ export function RolesPage() {
     sendPanel.mutate(panelId, {
       onSuccess: (res) => toast.success(res.message),
       onError: (err) =>
-        toast.error(err instanceof ApiError ? err.message : "Failed to send panel"),
+        toast.error(err instanceof ApiError ? err.message : t("toast.deployFailed")),
     });
   }
 
@@ -236,26 +231,26 @@ export function RolesPage() {
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Role Panels"
-        subtitle="Create self-assignable role panels using buttons, dropdowns, or reactions."
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Total Panels</p>
+          <p className="section-label text-text-muted">{t("stats.totalPanels")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {isLoading ? "..." : panels?.length ?? 0}
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Deployed</p>
+          <p className="section-label text-text-muted">{t("stats.deployed")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {isLoading ? "..." : panels?.filter((p) => p.messageId).length ?? 0}
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Total Roles</p>
+          <p className="section-label text-text-muted">{t("stats.totalRoles")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {isLoading ? "..." : panels?.reduce((sum, p) => sum + p.roles.length, 0) ?? 0}
           </p>
@@ -264,45 +259,45 @@ export function RolesPage() {
 
       <Tabs defaultValue="panels">
         <TabsList>
-          <TabsTrigger value="panels">Panels</TabsTrigger>
-          <TabsTrigger value="preview">Preview</TabsTrigger>
+          <TabsTrigger value="panels">{t("tabs.panels")}</TabsTrigger>
+          <TabsTrigger value="preview">{t("tabs.preview")}</TabsTrigger>
         </TabsList>
 
         {/* Panel List */}
         <TabsContent value="panels">
           <Card className="bg-surface p-6">
             <div className="mb-4 flex items-center justify-between">
-              <h3 className="text-lg font-semibold">All Panels</h3>
+              <h3 className="text-lg font-semibold">{t("panelList.title")}</h3>
               <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                 <DialogTrigger asChild>
                   <Button onClick={openCreateDialog}>
                     <Icon name="add" size={16} className="mr-1" />
-                    Create Panel
+                    {t("dialog.createPanel")}
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-2xl">
                   <DialogHeader>
                     <DialogTitle>
-                      {editingPanel ? "Edit Panel" : "Create Panel"}
+                      {editingPanel ? t("dialog.editPanel") : t("dialog.createPanel")}
                     </DialogTitle>
                   </DialogHeader>
                   <div className="space-y-6 pt-4">
                     {/* Basic Info */}
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <div>
-                        <Label htmlFor="panel-name">Name</Label>
+                        <Label htmlFor="panel-name">{t("form.name")}</Label>
                         <Input
                           id="panel-name"
                           value={formName}
                           onChange={(e) => setFormName(e.target.value)}
-                          placeholder="e.g. Color Roles"
+                          placeholder={t("form.namePlaceholder")}
                         />
                       </div>
                       <div>
-                        <Label htmlFor="panel-channel">Channel</Label>
+                        <Label htmlFor="panel-channel">{t("form.channel")}</Label>
                         <Select value={formChannelId} onValueChange={setFormChannelId}>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select channel" />
+                            <SelectValue placeholder={t("form.channelPlaceholder")} />
                           </SelectTrigger>
                           <SelectContent>
                             {textChannels.map((ch) => (
@@ -317,28 +312,28 @@ export function RolesPage() {
 
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <div>
-                        <Label htmlFor="panel-type">Type</Label>
+                        <Label htmlFor="panel-type">{t("form.type")}</Label>
                         <Select value={formType} onValueChange={(v) => setFormType(v as typeof formType)}>
                           <SelectTrigger>
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="button">Button</SelectItem>
-                            <SelectItem value="dropdown">Dropdown</SelectItem>
-                            <SelectItem value="reaction">Reaction</SelectItem>
+                            <SelectItem value="button">{t("panelTypes.button")}</SelectItem>
+                            <SelectItem value="dropdown">{t("panelTypes.dropdown")}</SelectItem>
+                            <SelectItem value="reaction">{t("panelTypes.reaction")}</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
                       <div>
-                        <Label htmlFor="panel-mode">Mode</Label>
+                        <Label htmlFor="panel-mode">{t("form.mode")}</Label>
                         <Select value={formMode} onValueChange={(v) => setFormMode(v as typeof formMode)}>
                           <SelectTrigger>
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="toggle">Toggle (add/remove)</SelectItem>
-                            <SelectItem value="unique">Unique (one at a time)</SelectItem>
-                            <SelectItem value="verify">Verify (add only)</SelectItem>
+                            <SelectItem value="toggle">{t("panelModeDescriptions.toggle")}</SelectItem>
+                            <SelectItem value="unique">{t("panelModeDescriptions.unique")}</SelectItem>
+                            <SelectItem value="verify">{t("panelModeDescriptions.verify")}</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -347,25 +342,25 @@ export function RolesPage() {
                     {formType === "dropdown" && (
                       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <div>
-                          <Label htmlFor="min-roles">Min Roles</Label>
+                          <Label htmlFor="min-roles">{t("form.minRoles")}</Label>
                           <Input
                             id="min-roles"
                             type="number"
                             min={0}
                             value={formMinRoles}
                             onChange={(e) => setFormMinRoles(e.target.value)}
-                            placeholder="0"
+                            placeholder={t("form.minRolesPlaceholder")}
                           />
                         </div>
                         <div>
-                          <Label htmlFor="max-roles">Max Roles</Label>
+                          <Label htmlFor="max-roles">{t("form.maxRoles")}</Label>
                           <Input
                             id="max-roles"
                             type="number"
                             min={1}
                             value={formMaxRoles}
                             onChange={(e) => setFormMaxRoles(e.target.value)}
-                            placeholder="All"
+                            placeholder={t("form.maxRolesPlaceholder")}
                           />
                         </div>
                       </div>
@@ -375,24 +370,24 @@ export function RolesPage() {
 
                     {/* Embed Config */}
                     <div>
-                      <h4 className="mb-3 text-sm font-semibold">Embed</h4>
+                      <h4 className="mb-3 text-sm font-semibold">{t("form.embedSection")}</h4>
                       <div className="space-y-3">
                         <div>
-                          <Label htmlFor="embed-title">Title</Label>
+                          <Label htmlFor="embed-title">{t("form.embedTitle")}</Label>
                           <Input
                             id="embed-title"
                             value={formEmbedTitle}
                             onChange={(e) => setFormEmbedTitle(e.target.value)}
-                            placeholder="Panel title (defaults to panel name)"
+                            placeholder={t("form.embedTitlePlaceholder")}
                           />
                         </div>
                         <div>
-                          <Label htmlFor="embed-description">Description</Label>
+                          <Label htmlFor="embed-description">{t("form.embedDescription")}</Label>
                           <Input
                             id="embed-description"
                             value={formEmbedDescription}
                             onChange={(e) => setFormEmbedDescription(e.target.value)}
-                            placeholder="Description text"
+                            placeholder={t("form.embedDescriptionPlaceholder")}
                           />
                         </div>
                       </div>
@@ -404,7 +399,7 @@ export function RolesPage() {
                     <div>
                       <div className="mb-3 flex items-center justify-between">
                         <h4 className="text-sm font-semibold">
-                          Roles ({formRoles.length}/25)
+                          {t("form.rolesCount", { count: formRoles.length })}
                         </h4>
                         <Button
                           variant="outline"
@@ -413,7 +408,7 @@ export function RolesPage() {
                           disabled={formRoles.length >= 25}
                         >
                           <Icon name="add" size={14} className="mr-1" />
-                          Add Role
+                          {t("form.addRole")}
                         </Button>
                       </div>
 
@@ -424,13 +419,13 @@ export function RolesPage() {
                             className="flex flex-col gap-2 rounded-md border border-border p-3 sm:flex-row sm:items-end"
                           >
                             <div className="flex-1">
-                              <Label>Role</Label>
+                              <Label>{t("entry.role")}</Label>
                               <Select
                                 value={entry.roleId}
                                 onValueChange={(v) => handleRoleEntryChange(idx, "roleId", v)}
                               >
                                 <SelectTrigger>
-                                  <SelectValue placeholder="Select role" />
+                                  <SelectValue placeholder={t("entry.rolePlaceholder")} />
                                 </SelectTrigger>
                                 <SelectContent>
                                   {roles?.map((r) => (
@@ -442,36 +437,36 @@ export function RolesPage() {
                               </Select>
                             </div>
                             <div className="flex-1">
-                              <Label>Label</Label>
+                              <Label>{t("entry.label")}</Label>
                               <Input
                                 value={entry.label}
                                 onChange={(e) => handleRoleEntryChange(idx, "label", e.target.value)}
-                                placeholder="Button label"
+                                placeholder={t("entry.labelPlaceholder")}
                               />
                             </div>
                             <div className="w-24">
-                              <Label>Emoji</Label>
+                              <Label>{t("entry.emoji")}</Label>
                               <Input
                                 value={entry.emoji ?? ""}
                                 onChange={(e) => handleRoleEntryChange(idx, "emoji", e.target.value)}
-                                placeholder="e.g. star"
+                                placeholder={t("entry.emojiPlaceholder")}
                               />
                             </div>
                             {formType === "dropdown" && (
                               <div className="flex-1">
-                                <Label>Description</Label>
+                                <Label>{t("entry.description")}</Label>
                                 <Input
                                   value={entry.description ?? ""}
                                   onChange={(e) =>
                                     handleRoleEntryChange(idx, "description", e.target.value)
                                   }
-                                  placeholder="Option description"
+                                  placeholder={t("entry.descriptionPlaceholder")}
                                 />
                               </div>
                             )}
                             {formType === "button" && (
                               <div className="w-28">
-                                <Label>Style</Label>
+                                <Label>{t("entry.style")}</Label>
                                 <Select
                                   value={String(entry.style ?? 2)}
                                   onValueChange={(v) =>
@@ -482,10 +477,10 @@ export function RolesPage() {
                                     <SelectValue />
                                   </SelectTrigger>
                                   <SelectContent>
-                                    <SelectItem value="1">Primary</SelectItem>
-                                    <SelectItem value="2">Secondary</SelectItem>
-                                    <SelectItem value="3">Success</SelectItem>
-                                    <SelectItem value="4">Danger</SelectItem>
+                                    <SelectItem value="1">{t("buttonStyles.primary")}</SelectItem>
+                                    <SelectItem value="2">{t("buttonStyles.secondary")}</SelectItem>
+                                    <SelectItem value="3">{t("buttonStyles.success")}</SelectItem>
+                                    <SelectItem value="4">{t("buttonStyles.danger")}</SelectItem>
                                   </SelectContent>
                                 </Select>
                               </div>
@@ -505,13 +500,13 @@ export function RolesPage() {
 
                     <div className="flex justify-end gap-2">
                       <Button variant="outline" onClick={() => setDialogOpen(false)}>
-                        Cancel
+                        {t("actions.cancel")}
                       </Button>
                       <Button
                         onClick={handleSubmit}
                         disabled={createPanel.isPending || updatePanel.isPending}
                       >
-                        {editingPanel ? "Update" : "Create"}
+                        {editingPanel ? t("actions.update") : t("actions.create")}
                       </Button>
                     </div>
                   </div>
@@ -520,16 +515,16 @@ export function RolesPage() {
             </div>
 
             {isLoading ? (
-              <p className="text-text-muted">Loading panels...</p>
+              <p className="text-text-muted">{t("loading")}</p>
             ) : panels && panels.length > 0 ? (
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Type</TableHead>
-                    <TableHead>Mode</TableHead>
-                    <TableHead>Roles</TableHead>
-                    <TableHead>Status</TableHead>
+                    <TableHead>{t("table.name")}</TableHead>
+                    <TableHead>{t("table.type")}</TableHead>
+                    <TableHead>{t("table.mode")}</TableHead>
+                    <TableHead>{t("table.roles")}</TableHead>
+                    <TableHead>{t("table.status")}</TableHead>
                     <TableHead className="w-32" />
                   </TableRow>
                 </TableHeader>
@@ -550,10 +545,10 @@ export function RolesPage() {
                       <TableCell>{panel.roles.length}</TableCell>
                       <TableCell>
                         {panel.messageId ? (
-                          <Badge className="bg-success/20 text-success">Deployed</Badge>
+                          <Badge className="bg-success/20 text-success">{t("status.deployed")}</Badge>
                         ) : (
                           <Badge variant="outline" className="text-text-muted">
-                            Draft
+                            {t("status.draft")}
                           </Badge>
                         )}
                       </TableCell>
@@ -563,7 +558,7 @@ export function RolesPage() {
                             variant="ghost"
                             size="sm"
                             onClick={() => openEditDialog(panel)}
-                            title="Edit"
+                            title={t("common:actions.edit")}
                           >
                             <Icon name="edit" size={16} />
                           </Button>
@@ -572,7 +567,7 @@ export function RolesPage() {
                             size="sm"
                             onClick={() => handleSend(panel.id)}
                             disabled={sendPanel.isPending || panel.roles.length === 0}
-                            title="Send to channel"
+                            title={t("actions.deploy")}
                           >
                             <Icon name="send" size={16} />
                           </Button>
@@ -581,7 +576,7 @@ export function RolesPage() {
                             size="sm"
                             onClick={() => handleDelete(panel.id)}
                             disabled={deletePanel.isPending}
-                            title="Delete"
+                            title={t("common:actions.delete")}
                           >
                             <Icon name="delete" size={16} className="text-danger" />
                           </Button>
@@ -593,7 +588,7 @@ export function RolesPage() {
               </Table>
             ) : (
               <p className="text-text-muted">
-                No role panels created yet. Click "Create Panel" to get started.
+                {t("empty")}
               </p>
             )}
           </Card>
@@ -602,9 +597,9 @@ export function RolesPage() {
         {/* Preview */}
         <TabsContent value="preview">
           <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">Live Preview</h3>
+            <h3 className="mb-4 text-lg font-semibold">{t("preview.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
-              Preview how your panels will appear in Discord.
+              {t("preview.description")}
             </p>
 
             {panels && panels.length > 0 ? (
@@ -668,7 +663,7 @@ export function RolesPage() {
                     {panel.type === "dropdown" && panel.roles.length > 0 && (
                       <div className="mt-3">
                         <div className="inline-flex items-center rounded border border-[#4f545c] bg-[#2f3136] px-3 py-1.5 text-sm text-[#b9bbbe]">
-                          Select roles...
+                          {t("preview.selectRoles")}
                           <Icon name="expand_more" size={16} className="ml-2" />
                         </div>
                       </div>
@@ -691,7 +686,7 @@ export function RolesPage() {
                 ))}
               </div>
             ) : (
-              <p className="text-text-muted">No panels to preview.</p>
+              <p className="text-text-muted">{t("preview.noPreview")}</p>
             )}
           </Card>
         </TabsContent>

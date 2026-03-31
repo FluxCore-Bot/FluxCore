@@ -1,0 +1,9 @@
+{
+  "title": "Os teus Servidores",
+  "subtitle": "Escolle un servidor para xestionar e configurar.",
+  "loading": "Cargando servidores...",
+  "empty": {
+    "title": "Non se atoparon servidores",
+    "description": "Asegúrate de que o bot está engadido a un servidor onde tes o permiso de Xestionar Servidor."
+  }
+}

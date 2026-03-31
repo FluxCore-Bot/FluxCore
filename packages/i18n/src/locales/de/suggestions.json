@@ -1,0 +1,67 @@
+{
+  "title": "Vorschlaege",
+  "subtitle": "Lassen Sie Mitglieder Ideen einreichen und darueber abstimmen. Status und Feedback verwalten.",
+  "stats": {
+    "totalSuggestions": "Vorschlaege gesamt",
+    "systemStatus": "Systemstatus",
+    "channel": {
+      "configured": "Kanal konfiguriert",
+      "notSet": "Kanal nicht festgelegt"
+    }
+  },
+  "tabs": {
+    "suggestions": "Vorschlaege",
+    "settings": "Einstellungen"
+  },
+  "filter": {
+    "filterByStatus": "Nach Status filtern",
+    "all": "Alle",
+    "pending": "Ausstehend",
+    "approved": "Genehmigt",
+    "rejected": "Abgelehnt",
+    "implemented": "Umgesetzt",
+    "considered": "In Betracht gezogen"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Autor",
+    "content": "Inhalt",
+    "status": "Status",
+    "votes": "Stimmen",
+    "date": "Datum"
+  },
+  "actions": {
+    "approve": "Genehmigen",
+    "reject": "Ablehnen",
+    "implement": "Als umgesetzt markieren",
+    "consider": "In Betracht ziehen",
+    "delete": "Loeschen"
+  },
+  "settings": {
+    "channel": "Vorschlagskanal",
+    "channelDesc": "Der Kanal, in dem Vorschlaege zur Abstimmung gepostet werden.",
+    "voteEmojis": "Abstimmungs-Emojis",
+    "voteEmojisDesc": "Emojis fuer Zustimmungs- und Ablehnungsreaktionen.",
+    "autoThread": "Automatischer Thread",
+    "autoThreadDesc": "Automatisch einen Diskussionsthread bei jedem neuen Vorschlag erstellen.",
+    "dmOnStatusChange": "DM bei Statusaenderung",
+    "dmOnStatusChangeDesc": "Den Autor per DM benachrichtigen, wenn sich der Status seines Vorschlags aendert."
+  },
+  "toast": {
+    "approved": "Vorschlag genehmigt",
+    "rejected": "Vorschlag abgelehnt",
+    "implemented": "Vorschlag als umgesetzt markiert",
+    "considered": "Vorschlag in Betracht gezogen",
+    "deleted": "Vorschlag geloescht",
+    "actionFailed": "Vorschlag konnte nicht aktualisiert werden",
+    "settingsSaved": "Vorschlagseinstellungen gespeichert",
+    "settingsFailed": "Vorschlagseinstellungen konnten nicht gespeichert werden"
+  },
+  "empty": "Noch keine Vorschlaege.",
+  "loading": "Vorschlaege werden geladen...",
+  "pagination": {
+    "previous": "Zurueck",
+    "next": "Weiter",
+    "page": "Seite {{page}} von {{total}}"
+  }
+}

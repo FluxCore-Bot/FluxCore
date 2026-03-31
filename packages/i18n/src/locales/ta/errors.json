@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "அங்கீகரிக்கப்படவில்லை",
+    "sessionExpired": "அமர்வு காலாவதியானது",
+    "missingCode": "குறியீடு அளவுரு காணவில்லை",
+    "tokenExchangeFailed": "டோக்கன் பரிமாற்றம் தோல்வியடைந்தது",
+    "failedToFetchUser": "பயனர் தகவலைப் பெறத் தவறியது"
+  },
+  "permissions": {
+    "noGuildPermission": "இந்த கில்டுக்கு அனுமதி இல்லை",
+    "botNotInGuild": "பாட் இந்த கில்டில் இல்லை",
+    "insufficientPermissions": "போதிய அனுமதிகள் இல்லை",
+    "permissionsNotResolved": "அனுமதிகள் தீர்க்கப்படவில்லை",
+    "requiresPermission": "இந்த செயலுக்கு \"{{permission}}\" அனுமதி தேவை"
+  },
+  "validation": {
+    "invalidInput": "தவறான உள்ளீடு",
+    "missingField": "தேவையான புலம் காணவில்லை: {{field}}",
+    "invalidFormat": "{{field}} க்கு தவறான வடிவம்",
+    "tooLong": "{{field}} அதிகபட்ச {{max}} எழுத்து வரம்பை மீறுகிறது",
+    "tooShort": "{{field}} குறைந்தபட்சம் {{min}} எழுத்துகள் இருக்க வேண்டும்",
+    "outOfRange": "{{field}} {{min}} மற்றும் {{max}} இடையே இருக்க வேண்டும்"
+  },
+  "resources": {
+    "notFound": "கிடைக்கவில்லை",
+    "alreadyExists": "{{resource}} ஏற்கனவே உள்ளது",
+    "limitReached": "ஒரு கில்டுக்கு அதிகபட்சம் {{max}} {{resource}}",
+    "createFailed": "{{resource}} உருவாக்கத் தவறியது",
+    "updateFailed": "{{resource}} புதுப்பிக்கத் தவறியது",
+    "deleteFailed": "{{resource}} நீக்கத் தவறியது"
+  },
+  "server": {
+    "internalError": "உள் சேவையகப் பிழை",
+    "serviceUnavailable": "சேவை தற்காலிகமாக கிடைக்கவில்லை",
+    "rateLimited": "அதிகமான கோரிக்கைகள். பின்னர் மீண்டும் முயற்சிக்கவும்."
+  },
+  "csrf": {
+    "invalidToken": "தவறான அல்லது காணாமல் போன CSRF டோக்கன்"
+  }
+}

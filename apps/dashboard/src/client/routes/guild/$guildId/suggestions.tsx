@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useParams } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../lib/client";
 import { PageHeader } from "../../../components/PageHeader";
@@ -60,6 +61,7 @@ function formatDate(dateStr: string): string {
 
 export function SuggestionsPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
+  const { t } = useTranslation("suggestions");
   const [page, setPage] = useState(1);
   const [statusFilter, setStatusFilter] = useState<string>("all");
 
@@ -98,7 +100,7 @@ export function SuggestionsPage() {
       { [key]: value },
       {
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to update setting"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.settingsFailed")),
       },
     );
   }
@@ -109,7 +111,7 @@ export function SuggestionsPage() {
       { [key]: channelId },
       {
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to update setting"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.settingsFailed")),
       },
     );
   }
@@ -128,56 +130,56 @@ export function SuggestionsPage() {
       },
       {
         onSuccess: () => {
-          toast.success(`Suggestion #${statusDialog.id} ${statusDialog.action}`);
+          toast.success(t(`toast.${statusDialog.action}`));
           setStatusDialog({ open: false, id: 0, action: "" });
         },
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to update status"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.actionFailed")),
       },
     );
   }
 
   function handleDelete(id: number) {
     deleteSuggestion.mutate(id, {
-      onSuccess: () => toast.success(`Suggestion #${id} deleted`),
+      onSuccess: () => toast.success(t("toast.deleted")),
       onError: (err) =>
-        toast.error(err instanceof ApiError ? err.message : "Failed to delete suggestion"),
+        toast.error(err instanceof ApiError ? err.message : t("toast.actionFailed")),
     });
   }
 
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Suggestions"
-        subtitle="Review and manage community suggestions. Configure channels, voting, and notification settings."
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Total Suggestions</p>
+          <p className="section-label text-text-muted">{t("stats.totalSuggestions")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {suggestionsLoading ? "..." : suggestionsData?.total ?? 0}
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">System Status</p>
+          <p className="section-label text-text-muted">{t("stats.systemStatus")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
-            {settingsLoading ? "..." : settings?.enabled ? "Enabled" : "Disabled"}
+            {settingsLoading ? "..." : settings?.enabled ? t("common:labels.enabled") : t("common:labels.disabled")}
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Channel</p>
+          <p className="section-label text-text-muted">{t("common:labels.channel")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
-            {settingsLoading ? "..." : settings?.channelId ? "Configured" : "Not Set"}
+            {settingsLoading ? "..." : settings?.channelId ? t("stats.channel.configured") : t("stats.channel.notSet")}
           </p>
         </Card>
       </div>
 
       <Tabs defaultValue="suggestions">
         <TabsList>
-          <TabsTrigger value="suggestions">Suggestions</TabsTrigger>
-          <TabsTrigger value="settings">Settings</TabsTrigger>
+          <TabsTrigger value="suggestions">{t("tabs.suggestions")}</TabsTrigger>
+          <TabsTrigger value="settings">{t("tabs.settings")}</TabsTrigger>
         </TabsList>
 
         {/* Suggestions List */}
@@ -185,34 +187,34 @@ export function SuggestionsPage() {
           <Card className="bg-surface p-6">
             {/* Filter */}
             <div className="mb-4 flex items-center gap-3">
-              <Label>Filter by status:</Label>
+              <Label>{t("filter.filterByStatus")}:</Label>
               <Select value={statusFilter} onValueChange={(v) => { setStatusFilter(v); setPage(1); }}>
                 <SelectTrigger className="w-40">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All</SelectItem>
-                  <SelectItem value="pending">Pending</SelectItem>
-                  <SelectItem value="approved">Approved</SelectItem>
-                  <SelectItem value="denied">Denied</SelectItem>
-                  <SelectItem value="implemented">Implemented</SelectItem>
+                  <SelectItem value="all">{t("filter.all")}</SelectItem>
+                  <SelectItem value="pending">{t("filter.pending")}</SelectItem>
+                  <SelectItem value="approved">{t("filter.approved")}</SelectItem>
+                  <SelectItem value="denied">{t("filter.rejected")}</SelectItem>
+                  <SelectItem value="implemented">{t("filter.implemented")}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             {suggestionsLoading ? (
-              <p className="text-text-muted">Loading suggestions...</p>
+              <p className="text-text-muted">{t("loading")}</p>
             ) : suggestionsData && suggestionsData.suggestions.length > 0 ? (
               <>
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead className="w-16">ID</TableHead>
-                      <TableHead>Content</TableHead>
-                      <TableHead className="w-24">Status</TableHead>
-                      <TableHead className="w-20">Votes</TableHead>
-                      <TableHead className="w-28">Date</TableHead>
-                      <TableHead className="w-32">Actions</TableHead>
+                      <TableHead className="w-16">{t("table.id")}</TableHead>
+                      <TableHead>{t("table.content")}</TableHead>
+                      <TableHead className="w-24">{t("table.status")}</TableHead>
+                      <TableHead className="w-20">{t("table.votes")}</TableHead>
+                      <TableHead className="w-28">{t("table.date")}</TableHead>
+                      <TableHead className="w-32">{t("common:labels.status")}</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -246,7 +248,7 @@ export function SuggestionsPage() {
                                   variant="ghost"
                                   size="sm"
                                   onClick={() => openStatusDialog(s.id, "approved")}
-                                  title="Approve"
+                                  title={t("actions.approve")}
                                 >
                                   <Icon name="check_circle" size={16} className="text-success" />
                                 </Button>
@@ -254,7 +256,7 @@ export function SuggestionsPage() {
                                   variant="ghost"
                                   size="sm"
                                   onClick={() => openStatusDialog(s.id, "denied")}
-                                  title="Deny"
+                                  title={t("actions.reject")}
                                 >
                                   <Icon name="cancel" size={16} className="text-danger" />
                                 </Button>
@@ -265,7 +267,7 @@ export function SuggestionsPage() {
                                 variant="ghost"
                                 size="sm"
                                 onClick={() => openStatusDialog(s.id, "implemented")}
-                                title="Mark Implemented"
+                                title={t("actions.implement")}
                               >
                                 <Icon name="task_alt" size={16} className="text-accent" />
                               </Button>
@@ -275,7 +277,7 @@ export function SuggestionsPage() {
                               size="sm"
                               onClick={() => handleDelete(s.id)}
                               disabled={deleteSuggestion.isPending}
-                              title="Delete"
+                              title={t("actions.delete")}
                             >
                               <Icon name="delete" size={16} className="text-danger" />
                             </Button>
@@ -289,7 +291,7 @@ export function SuggestionsPage() {
                 {totalPages > 1 && (
                   <div className="mt-4 flex items-center justify-between">
                     <p className="text-sm text-text-muted">
-                      Page {page} of {totalPages} ({suggestionsData.total} total)
+                      {t("pagination.page", { page, total: totalPages })}
                     </p>
                     <div className="flex gap-2">
                       <Button
@@ -298,7 +300,7 @@ export function SuggestionsPage() {
                         onClick={() => setPage((p) => Math.max(1, p - 1))}
                         disabled={page <= 1}
                       >
-                        Previous
+                        {t("pagination.previous")}
                       </Button>
                       <Button
                         variant="outline"
@@ -306,14 +308,14 @@ export function SuggestionsPage() {
                         onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                         disabled={page >= totalPages}
                       >
-                        Next
+                        {t("pagination.next")}
                       </Button>
                     </div>
                   </div>
                 )}
               </>
             ) : (
-              <p className="text-text-muted">No suggestions found.</p>
+              <p className="text-text-muted">{t("empty")}</p>
             )}
           </Card>
         </TabsContent>
@@ -321,17 +323,17 @@ export function SuggestionsPage() {
         {/* Settings */}
         <TabsContent value="settings">
           <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">Suggestion Settings</h3>
+            <h3 className="mb-4 text-lg font-semibold">{t("tabs.settings")}</h3>
 
             {settingsLoading ? (
-              <p className="text-text-muted">Loading...</p>
+              <p className="text-text-muted">{t("common:actions.loading")}</p>
             ) : settings ? (
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">Enable Suggestions</p>
+                    <p className="font-medium">{t("common:actions.enable")}</p>
                     <p className="text-sm text-text-muted">
-                      Toggle the entire suggestions system on or off.
+                      {t("settings.channelDesc")}
                     </p>
                   </div>
                   <Switch
@@ -343,7 +345,7 @@ export function SuggestionsPage() {
                 <Separator />
 
                 <div className="space-y-2">
-                  <Label htmlFor="suggestions-channel">Suggestions Channel ID</Label>
+                  <Label htmlFor="suggestions-channel">{t("settings.channel")}</Label>
                   <Input
                     id="suggestions-channel"
                     placeholder="e.g. 123456789012345678"
@@ -351,14 +353,14 @@ export function SuggestionsPage() {
                     onBlur={(e) => handleChannelSetting("channelId", e.target.value)}
                   />
                   <p className="text-xs text-text-muted">
-                    The channel where suggestion embeds will be posted.
+                    {t("settings.channelDesc")}
                   </p>
                 </div>
 
                 <Separator />
 
                 <div className="space-y-2">
-                  <Label htmlFor="review-channel">Review Channel ID (Optional)</Label>
+                  <Label htmlFor="review-channel">{t("common:labels.channel")} ({t("common:labels.optional")})</Label>
                   <Input
                     id="review-channel"
                     placeholder="e.g. 123456789012345678"
@@ -366,7 +368,7 @@ export function SuggestionsPage() {
                     onBlur={(e) => handleChannelSetting("reviewChannelId", e.target.value)}
                   />
                   <p className="text-xs text-text-muted">
-                    Optional channel for mod review notifications.
+                    {t("settings.channelDesc")}
                   </p>
                 </div>
 
@@ -374,9 +376,9 @@ export function SuggestionsPage() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">DM on Status Change</p>
+                    <p className="font-medium">{t("settings.dmOnStatusChange")}</p>
                     <p className="text-sm text-text-muted">
-                      Send a DM to the suggestion author when status changes.
+                      {t("settings.dmOnStatusChangeDesc")}
                     </p>
                   </div>
                   <Switch
@@ -389,9 +391,9 @@ export function SuggestionsPage() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">Auto-Create Discussion Thread</p>
+                    <p className="font-medium">{t("settings.autoThread")}</p>
                     <p className="text-sm text-text-muted">
-                      Automatically create a thread for each suggestion.
+                      {t("settings.autoThreadDesc")}
                     </p>
                   </div>
                   <Switch
@@ -404,9 +406,9 @@ export function SuggestionsPage() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">Anonymous Mode</p>
+                    <p className="font-medium">{t("settings.voteEmojis")}</p>
                     <p className="text-sm text-text-muted">
-                      Hide suggestion author names in the suggestions channel.
+                      {t("settings.voteEmojisDesc")}
                     </p>
                   </div>
                   <Switch
@@ -430,20 +432,20 @@ export function SuggestionsPage() {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>
-              {statusDialog.action === "approved" && "Approve Suggestion"}
-              {statusDialog.action === "denied" && "Deny Suggestion"}
-              {statusDialog.action === "implemented" && "Mark as Implemented"}
+              {statusDialog.action === "approved" && t("actions.approve")}
+              {statusDialog.action === "denied" && t("actions.reject")}
+              {statusDialog.action === "implemented" && t("actions.implement")}
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-3">
             <p className="text-sm text-text-muted">
-              Updating suggestion #{statusDialog.id} to <strong>{statusDialog.action}</strong>.
+              {t("table.id")} #{statusDialog.id} — <strong>{statusDialog.action}</strong>
             </p>
             <div>
-              <Label htmlFor="status-reason">Reason (optional)</Label>
+              <Label htmlFor="status-reason">{t("common:labels.reason")} ({t("common:labels.optional")})</Label>
               <Textarea
                 id="status-reason"
-                placeholder="Add a reason..."
+                placeholder={t("common:labels.reason")}
                 value={statusReason}
                 onChange={(e) => setStatusReason(e.target.value)}
                 className="mt-1"
@@ -455,13 +457,13 @@ export function SuggestionsPage() {
               variant="outline"
               onClick={() => setStatusDialog({ open: false, id: 0, action: "" })}
             >
-              Cancel
+              {t("common:actions.cancel")}
             </Button>
             <Button
               onClick={handleStatusChange}
               disabled={updateStatus.isPending}
             >
-              Confirm
+              {t("common:actions.confirm")}
             </Button>
           </DialogFooter>
         </DialogContent>

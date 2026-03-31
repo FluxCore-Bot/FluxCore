@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Hindi authenticated",
+    "sessionExpired": "Nag-expire na ang session",
+    "missingCode": "Nawawala ang code parameter",
+    "tokenExchangeFailed": "Nabigo ang token exchange",
+    "failedToFetchUser": "Hindi nakuha ang impormasyon ng user"
+  },
+  "permissions": {
+    "noGuildPermission": "Walang pahintulot para sa guild na ito",
+    "botNotInGuild": "Hindi kasali ang bot sa guild na ito",
+    "insufficientPermissions": "Hindi sapat ang mga pahintulot",
+    "permissionsNotResolved": "Hindi na-resolve ang mga pahintulot",
+    "requiresPermission": "Ang aksyong ito ay nangangailangan ng pahintulot na \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Hindi wastong input",
+    "missingField": "Nawawalang kinakailangang field: {{field}}",
+    "invalidFormat": "Hindi wastong format para sa {{field}}",
+    "tooLong": "Ang {{field}} ay lumalagpas sa maximum na haba na {{max}} na karakter",
+    "tooShort": "Ang {{field}} ay dapat na hindi bababa sa {{min}} na karakter",
+    "outOfRange": "Ang {{field}} ay dapat na nasa pagitan ng {{min}} at {{max}}"
+  },
+  "resources": {
+    "notFound": "Hindi nahanap",
+    "alreadyExists": "Mayroon na ang {{resource}}",
+    "limitReached": "Maximum na {{max}} {{resource}} bawat guild",
+    "createFailed": "Hindi nagawa ang {{resource}}",
+    "updateFailed": "Hindi na-update ang {{resource}}",
+    "deleteFailed": "Hindi nabura ang {{resource}}"
+  },
+  "server": {
+    "internalError": "Internal na error ng server",
+    "serviceUnavailable": "Pansamantalang hindi available ang serbisyo",
+    "rateLimited": "Napakaraming kahilingan. Pakisubukan muli mamaya."
+  },
+  "csrf": {
+    "invalidToken": "Hindi wasto o nawawalang CSRF token"
+  }
+}

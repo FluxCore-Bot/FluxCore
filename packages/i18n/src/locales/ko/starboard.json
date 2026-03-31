@@ -1,0 +1,41 @@
+{
+  "title": "스타보드",
+  "subtitle": "스타 반응을 모아 최고의 메시지를 전용 채널에 하이라이트합니다.",
+  "tabs": {
+    "settings": "설정",
+    "starredMessages": "스타 메시지"
+  },
+  "settings": {
+    "title": "스타보드 설정",
+    "description": "스타 메시지가 언제 어디에 게시되는지 설정합니다.",
+    "channelId": "스타보드 채널",
+    "channelIdDesc": "스타 메시지가 게시되는 채널.",
+    "starEmoji": "스타 이모지",
+    "starEmojiDesc": "메시지에 스타를 주는 데 사용하는 이모지. 기본값은 스타 이모지입니다.",
+    "threshold": "스타 임계값",
+    "thresholdDesc": "스타보드에 게시하기 위한 최소 반응 수.",
+    "selfStar": "셀프 스타",
+    "selfStarDesc": "메시지 작성자가 자신의 메시지에 스타를 줄 수 있게 허용합니다.",
+    "nsfwAllowed": "NSFW 허용",
+    "nsfwAllowedDesc": "NSFW 채널의 메시지가 스타보드에 표시되도록 허용합니다.",
+    "ignoredChannels": "제외 채널",
+    "ignoredChannelsDesc": "이 채널의 메시지는 스타보드에 표시되지 않습니다."
+  },
+  "messages": {
+    "table": {
+      "original": "원본 메시지",
+      "stars": "스타 수",
+      "channel": "채널",
+      "date": "날짜"
+    },
+    "noMessages": "아직 스타 메시지가 없습니다."
+  },
+  "toast": {
+    "saved": "스타보드 설정이 저장되었습니다",
+    "saveFailed": "스타보드 설정 저장에 실패했습니다"
+  },
+  "actions": {
+    "save": "저장",
+    "saving": "저장 중..."
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Jetzt in der oeffentlichen Beta",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Das All-in-One",
+    "titleLine2": "Discord-Bot-Framework",
+    "subtitle": "Stellen Sie in wenigen Minuten eine professionelle Discord-Praesenz bereit. Modular, selbstgehostet und fuer anspruchsvolle Communities entwickelt."
+  },
+  "cta": {
+    "addToServer": "Zum Server hinzufuegen",
+    "openDashboard": "Dashboard oeffnen",
+    "exploreFeatures": "Funktionen entdecken"
+  },
+  "stats": {
+    "servers": "Server",
+    "latency": "Latenz",
+    "uptime": "Verfuegbarkeit",
+    "modules": "Module",
+    "serversValue": "1.000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99,9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Funktionen",
+    "title": "Alles, was Ihr Server braucht",
+    "subtitle": "Ein modulares Toolkit fuer Communities, die Zuverlaessigkeit, Flexibilitaet und Kontrolle verlangen.",
+    "automation": {
+      "title": "Automatisierungsregeln",
+      "description": "Erstellen Sie komplexe ereignisgesteuerte Workflows ohne Code. Wenn-dann-Ausloeser mit 23 Ereignistypen und 10 Aktionstypen."
+    },
+    "music": {
+      "title": "Musiksystem",
+      "description": "High-Fidelity-Audio-Streaming mit Multi-Plattform-Unterstuetzung. Warteschlangenverwaltung, DJ-Steuerung und Bibliotheksmodus."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Dynamische Sprachkanalverwaltung. Automatische Erstellung mit benutzerdefinierten Namensvorlagen, Berechtigungen und Bereinigung."
+    },
+    "logs": {
+      "title": "Aktivitaetsprotokolle",
+      "description": "Vollstaendiger Audit-Trail jeder Automatisierungsausfuehrung. Suchen, filtern und debuggen Sie Ihre Regeln mit detaillierten Protokollen."
+    },
+    "webhooks": {
+      "title": "Webhooks & API",
+      "description": "Senden Sie Daten an externe Dienste mit HTTP-Webhooks. Benutzerdefinierte Header, Body-Vorlagen und Variableninterpolation."
+    },
+    "dashboard": {
+      "title": "Echtzeit-Dashboard",
+      "description": "Verwalten Sie alles ueber ein elegantes Web-Dashboard. Analysen, Konfiguration und Ueberwachung an einem Ort."
+    }
+  },
+  "ctaSection": {
+    "title": "Bereit, Ihre Community aufzuwerten?",
+    "subtitle": "Starten Sie in wenigen Minuten ohne Konfiguration. Selbstgehostet, Open Source und voellig kostenlos."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "\u00a9 {{year}} FluxCore Technologies. Alle Rechte vorbehalten.",
+    "links": {
+      "documentation": "Dokumentation",
+      "support": "Support",
+      "privacy": "Datenschutzerklaerung",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

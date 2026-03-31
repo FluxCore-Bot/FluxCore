@@ -1,0 +1,120 @@
+{
+  "title": "Maila-sistema",
+  "subtitle": "Konfiguratu XP irabazpena, maila-igoeraren iragarpenak, rol-sariak eta biderkatzaileak.",
+  "stats": {
+    "rankedMembers": "Sailkatutako kideak",
+    "roleRewards": "Rol-sariak",
+    "systemStatus": "Sistemaren egoera",
+    "enabled": "Gaituta",
+    "disabled": "Desgaituta"
+  },
+  "tabs": {
+    "leaderboard": "Sailkapena",
+    "settings": "Ezarpenak",
+    "roleRewards": "Rol-sariak",
+    "exclusions": "Bazterketak",
+    "multipliers": "Biderkatzaileak"
+  },
+  "table": {
+    "rank": "Posizioa",
+    "userId": "Erabiltzaile IDa",
+    "level": "Maila",
+    "xp": "XP",
+    "messages": "Mezuak",
+    "voiceTime": "Ahots-denbora"
+  },
+  "settings": {
+    "title": "Maila-ezarpenak",
+    "enabled": "Mailak gaitu",
+    "enabledDesc": "Gaitu edo desgaitu maila-sistema osoa.",
+    "xpPerMessage": "XP mezuko",
+    "xpPerMessageDesc": "Mezuko ematen den oinarrizko XP (0-9 ausazkotasuna gehitzen da).",
+    "xpCooldown": "XP itxaron-denbora (segundoak)",
+    "xpCooldownDesc": "Erabiltzaileko XP ematean arteko gutxieneko denbora.",
+    "voiceXpEnabled": "Ahots XP",
+    "voiceXpEnabledDesc": "Eman XP ahots-kanaletan emandako denboragatik.",
+    "voiceXpPerMinute": "Ahots XP minutuko",
+    "voiceXpPerMinuteDesc": "Ahotsean minutuko ematen den XP.",
+    "levelUpAnnouncements": "Maila-igoera iragarpenak",
+    "levelUpAnnouncementsDesc": "Iragarri kide batek maila igotzen duenean.",
+    "announceDest": "Iragarpen-helmuga",
+    "announceDestHint": "Kanal ID bat ere zuzenean sartu dezakezu goiko sarrera-eremuan.",
+    "announceDestSameChannel": "Kanal bera",
+    "announceDestDM": "Mezu zuzena",
+    "announceMessage": "Iragarpen-mezua",
+    "announceMessagePlaceholder": "{user} **{level} maila**-ra iritsi da!",
+    "announceMessageVars": "Aldagaiak: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Rol-sariak",
+    "description": "Automatikoki esleitu rolak kideek maila jakin batera iristen direnean.",
+    "addReward": "Saria gehitu",
+    "addRewardTitle": "Rol-saria gehitu",
+    "level": "Maila",
+    "levelPrefix": "{{level}} maila",
+    "roleId": "Rol IDa",
+    "levelPlaceholder": "adib. 5",
+    "rolePlaceholder": "adib. 123456789",
+    "removeReward": "Kendu",
+    "noRewards": "Ez dago rol-saririk konfiguratuta."
+  },
+  "exclusions": {
+    "title": "XP bazterketak",
+    "description": "XP irabazten ez duten kanalak eta rolak.",
+    "noXpChannels": "XP gabeko kanalak (koma bidez bereizitako IDak)",
+    "noXpChannelsPlaceholder": "adib. 123456789, 987654321",
+    "noXpRoles": "XP gabeko rolak (koma bidez bereizitako IDak)",
+    "noXpRolesPlaceholder": "adib. 123456789, 987654321",
+    "save": "Bazterketak gorde"
+  },
+  "multipliers": {
+    "title": "XP biderkatzaileak",
+    "description": "Ezarri XP biderkatzaileak kanaleko edo roleko. 2 biderkatzaileak irabazitako XP bikoizten du.",
+    "channelMultipliers": "Kanal-biderkatzaileak",
+    "roleMultipliers": "Rol-biderkatzaileak",
+    "channelId": "Kanal IDa",
+    "roleId": "Rol IDa",
+    "multiplier": "Biderkatzailea",
+    "type": "Mota",
+    "typeChannel": "Kanala",
+    "typeRole": "Rola",
+    "id": "IDa",
+    "idPlaceholder": "Kanal edo Rol IDa",
+    "value": "Biderkatzailea",
+    "valuePlaceholder": "adib. 2",
+    "add": "Biderkatzailea gehitu",
+    "addTitle": "Biderkatzailea gehitu",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Ez dago XP biderkatzailerik konfiguratuta."
+  },
+  "pagination": {
+    "previous": "Aurrekoa",
+    "next": "Hurrengoa",
+    "pageInfo": "{{page}}. orrialdea {{totalPages}}-tik ({{total}} guztira)"
+  },
+  "loading": "Sailkapena kargatzen...",
+  "loadingGeneric": "Kargatzen...",
+  "emptyLeaderboard": "Oraindik ez du inork XP irabazi.",
+  "toast": {
+    "saved": "Maila-ezarpenak gordeta",
+    "saveFailed": "Ezin izan da ezarpena eguneratu",
+    "rewardAdded": "Saria gehituta",
+    "rewardAddFailed": "Ezin izan da saria gehitu",
+    "rewardRemoved": "Saria kenduta",
+    "rewardRemoveFailed": "Ezin izan da saria kendu",
+    "multiplierAdded": "Biderkatzailea gehituta",
+    "multiplierAddFailed": "Ezin izan da biderkatzailea gehitu",
+    "multiplierRemoved": "Biderkatzailea kenduta",
+    "multiplierRemoveFailed": "Ezin izan da biderkatzailea kendu",
+    "exclusionUpdated": "Bazterketak gordeta",
+    "exclusionFailed": "Ezin izan dira bazterketak gorde",
+    "levelValidation": "Mailak 1 eta 100 artean egon behar du",
+    "roleIdRequired": "Rol IDa beharrezkoa da",
+    "multiplierIdRequired": "IDa eta biderkatzailearen balioa beharrezkoak dira",
+    "multiplierRange": "Biderkatzaileak 0 eta 10 artean egon behar du"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}o {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

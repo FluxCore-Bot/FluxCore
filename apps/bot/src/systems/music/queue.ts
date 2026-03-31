@@ -32,7 +32,7 @@ function extractTrack(result: { loadType: string; data: unknown }): LavalinkReso
 
 export class GuildMusicQueue {
   public readonly guildId: string;
-  public readonly textChannelId: string;
+  public textChannelId: string;
   public readonly voiceChannelId: string;
   public tracks: QueueTrack[] = [];
   public current: QueueTrack | null = null;
@@ -153,10 +153,12 @@ export class GuildMusicQueue {
       track.encoded = encoded;
     }
 
-    await this.player.playTrack({ track: { encoded } });
-    await this.player.setGlobalVolume(this.volume);
+    // Set current BEFORE playing so the "start" event handler sees it
+    // (the event can fire during any subsequent await)
     this.current = track;
     this.syncPosition(0);
+    await this.player.playTrack({ track: { encoded } });
+    await this.player.setGlobalVolume(this.volume);
     return track;
   }
 

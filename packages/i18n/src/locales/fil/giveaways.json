@@ -1,0 +1,50 @@
+{
+  "title": "Mga Giveaway",
+  "subtitle": "Magsagawa ng mga giveaway na may nako-customize na tagal, mga kinakailangan sa pagpasok, at pagpili ng mga panalo.",
+  "stats": {
+    "activeGiveaways": "Mga Aktibong Giveaway",
+    "pastGiveaways": "Mga Nakaraang Giveaway",
+    "totalEntries": "Kabuuang Mga Entry"
+  },
+  "table": {
+    "prize": "Premyo",
+    "winners": "Mga Panalo",
+    "entries": "Mga Entry",
+    "endsIn": "Magtatapos Sa",
+    "status": "Status"
+  },
+  "statuses": {
+    "active": "Aktibo",
+    "ended": "Tapos Na",
+    "cancelled": "Kinansela"
+  },
+  "actions": {
+    "create": "Gumawa ng Giveaway",
+    "edit": "I-edit",
+    "end": "Tapusin",
+    "reroll": "Reroll",
+    "delete": "Burahin"
+  },
+  "form": {
+    "prize": "Premyo",
+    "winnersCount": "Bilang ng mga Panalo",
+    "duration": "Tagal",
+    "channel": "Channel",
+    "requiredRole": "Kinakailangang Role",
+    "description": "Paglalarawan"
+  },
+  "toast": {
+    "created": "Giveaway na nagawa",
+    "createFailed": "Hindi nagawa ang giveaway",
+    "updated": "Giveaway na na-update",
+    "updateFailed": "Hindi na-update ang giveaway",
+    "ended": "Giveaway na natapos",
+    "endFailed": "Hindi natapos ang giveaway",
+    "rerolled": "Mga panalo na na-reroll",
+    "rerollFailed": "Hindi na-reroll ang mga panalo",
+    "deleted": "Giveaway na nabura",
+    "deleteFailed": "Hindi nabura ang giveaway"
+  },
+  "empty": "Wala pang mga giveaway. Gumawa ng isa upang magsimula.",
+  "loading": "Naglo-load ng mga giveaway..."
+}

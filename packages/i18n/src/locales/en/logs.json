@@ -1,0 +1,8 @@
+{
+  "title": "Logs",
+  "subtitle": "Monitor rule executions and event logging.",
+  "tabs": {
+    "activity": "Activity Logs",
+    "events": "Event Logs"
+  }
+}

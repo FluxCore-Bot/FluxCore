@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Guild",
+    "automation": "Automation"
+  },
+  "title": "Mga Panuntunan ng Automation",
+  "subtitle": "I-configure ang mga event-driven na trigger at awtomatikong tugon para sa iyong guild.",
+  "createRule": "Gumawa ng Panuntunan",
+  "stats": {
+    "totalRules": "Kabuuang Mga Panuntunan",
+    "active": "Aktibo",
+    "executions7d": "Mga Pagpapatupad (7d)",
+    "successRate": "Rate ng Tagumpay"
+  },
+  "filter": {
+    "searchPlaceholder": "Maghanap ng mga panuntunan...",
+    "eventType": "Uri ng event",
+    "allEvents": "Lahat ng Event",
+    "allStatus": "Lahat ng Status",
+    "enabled": "Pinagana",
+    "disabled": "Hindi Pinagana",
+    "sortBy": "Ayusin ayon sa",
+    "priority": "Priyoridad",
+    "name": "Pangalan",
+    "lastFired": "Huling Nagana",
+    "status": "Status",
+    "clear": "I-clear",
+    "showing": "Ipinapakita ang {{filtered}} ng {{total}} na mga panuntunan"
+  },
+  "bulk": {
+    "selected": "{{count}} panuntunan ang napili",
+    "selected_other": "{{count}} na mga panuntunan ang napili",
+    "enable": "Paganahin",
+    "disable": "I-disable",
+    "delete": "Burahin",
+    "clear": "I-clear"
+  },
+  "empty": {
+    "title": "Magsimula sa Automation",
+    "description": "Pumili ng template upang mabilis na magsimula, o gumawa ng panuntunan mula sa simula.",
+    "createFromScratch": "Gumawa mula sa Simula"
+  },
+  "noResults": {
+    "title": "Walang mga panuntunan na naaangkop",
+    "description": "Subukang ayusin ang iyong paghahanap o mga filter upang mahanap ang hinahanap mo."
+  },
+  "templates": {
+    "welcomeMessage": "Mensahe ng Pagbati",
+    "welcomeMessageDesc": "Batiin ang mga bagong miyembro ng custom na mensahe sa isang channel",
+    "autoRole": "Auto Role",
+    "autoRoleDesc": "Awtomatikong magtalaga ng role kapag sumali ang isang miyembro",
+    "logDeleted": "I-log ang Mga Naburang Mensahe",
+    "logDeletedDesc": "Ipadala ang impormasyon ng naburang mensahe sa isang log channel",
+    "boostThankYou": "Pasasalamat sa Boost",
+    "boostThankYouDesc": "Magpadala ng DM na nagpapasalamat sa mga user na nag-boost ng server",
+    "banLogger": "Ban Logger",
+    "banLoggerDesc": "I-log ang mga ban event sa isang moderation channel",
+    "autoThread": "Auto Thread",
+    "autoThreadDesc": "Awtomatikong gumawa ng thread kapag may napadaling mensahe"
+  },
+  "deleteDialog": {
+    "title": "Burahin ang Panuntunan",
+    "description": "Sigurado ka bang gusto mong burahin ang \"{{name}}\"? Hindi maaaring baguhin ang aksyong ito.",
+    "confirm": "Burahin"
+  },
+  "bulkDeleteDialog": {
+    "title": "Burahin ang Mga Napiling Panuntunan",
+    "description": "Sigurado ka bang gusto mong burahin ang {{count}} na panuntunan? Hindi maaaring baguhin ang aksyong ito.",
+    "description_other": "Sigurado ka bang gusto mong burahin ang {{count}} na mga panuntunan? Hindi maaaring baguhin ang aksyong ito.",
+    "confirm": "Burahin Lahat"
+  },
+  "toast": {
+    "deleted": "Panuntunan na nabura",
+    "deleteFailed": "Hindi nabura ang panuntunan",
+    "enabled": "Panuntunan na pinagana",
+    "disabled": "Panuntunan na na-disable",
+    "toggleFailed": "Hindi na-toggle ang panuntunan",
+    "duplicated": "Panuntunan na na-duplicate",
+    "duplicateFailed": "Hindi na-duplicate ang panuntunan",
+    "bulkEnabled": "{{count}} na mga panuntunan ang pinagana",
+    "bulkDisabled": "{{count}} na mga panuntunan ang na-disable",
+    "bulkEnableFailed": "Hindi napagana ang mga panuntunan",
+    "bulkDisableFailed": "Hindi na-disable ang mga panuntunan",
+    "bulkDeleted": "{{count}} na mga panuntunan ang nabura",
+    "bulkDeleteFailed": "Hindi nabura ang mga panuntunan"
+  }
+}

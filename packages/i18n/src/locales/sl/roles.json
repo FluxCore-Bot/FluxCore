@@ -1,0 +1,112 @@
+{
+  "title": "Plošče vlog",
+  "subtitle": "Ustvarite plošče vlog za samododeljevanje z gumbi, spustnimi meniji ali reakcijami.",
+  "stats": {
+    "totalPanels": "Skupaj plošč",
+    "deployed": "Nameščeno",
+    "totalRoles": "Skupaj vlog"
+  },
+  "tabs": {
+    "panels": "Plošče",
+    "preview": "Predogled"
+  },
+  "table": {
+    "name": "Ime",
+    "type": "Vrsta",
+    "mode": "Način",
+    "roles": "Vloge",
+    "status": "Stanje"
+  },
+  "panelTypes": {
+    "reaction": "Reakcija",
+    "button": "Gumb",
+    "dropdown": "Spustni meni"
+  },
+  "panelModes": {
+    "toggle": "Preklop",
+    "unique": "Edinstveno",
+    "verify": "Preveri"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Preklop (dodaj/odstrani)",
+    "unique": "Edinstveno (eno naenkrat)",
+    "verify": "Preveri (samo dodajanje)"
+  },
+  "status": {
+    "deployed": "Nameščeno",
+    "draft": "Osnutek"
+  },
+  "dialog": {
+    "createPanel": "Ustvari ploščo",
+    "editPanel": "Uredi ploščo"
+  },
+  "panelList": {
+    "title": "Vse plošče"
+  },
+  "form": {
+    "name": "Ime",
+    "namePlaceholder": "npr. Barvne vloge",
+    "type": "Vrsta",
+    "mode": "Način",
+    "channel": "Kanal",
+    "channelPlaceholder": "Izberite kanal",
+    "minRoles": "Min vlog",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Max vlog",
+    "maxRolesPlaceholder": "Vse",
+    "embedSection": "Vdelana vsebina",
+    "embedTitle": "Naslov",
+    "embedTitlePlaceholder": "Naslov plošče (privzeto ime plošče)",
+    "embedDescription": "Opis",
+    "embedDescriptionPlaceholder": "Besedilo opisa",
+    "rolesCount": "Vloge ({{count}}/25)",
+    "addRole": "Dodaj vlogo"
+  },
+  "entry": {
+    "role": "Vloga",
+    "rolePlaceholder": "Izberite vlogo",
+    "label": "Oznaka",
+    "labelPlaceholder": "Oznaka gumba",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "npr. zvezda",
+    "description": "Opis",
+    "descriptionPlaceholder": "Opis možnosti",
+    "style": "Slog"
+  },
+  "buttonStyles": {
+    "primary": "Primarna",
+    "secondary": "Sekundarna",
+    "success": "Uspešna",
+    "danger": "Nevarna"
+  },
+  "actions": {
+    "create": "Ustvari",
+    "update": "Posodobi",
+    "cancel": "Prekliči",
+    "deploy": "Namesti",
+    "delete": "Izbriši",
+    "addEntry": "Dodaj vnos",
+    "removeEntry": "Odstrani vnos"
+  },
+  "preview": {
+    "title": "Predogled v živo",
+    "description": "Oglejte si, kako bodo vaše plošče prikazane v Discord-u.",
+    "selectRoles": "Izberite vloge...",
+    "noPreview": "Ni plošč za predogled."
+  },
+  "empty": "Še ni ustvarjenih plošč vlog. Kliknite \"Ustvari ploščo\" za začetek.",
+  "toast": {
+    "created": "Plošča ustvarjena",
+    "createFailed": "Ustvarjanje plošče ni uspelo",
+    "updated": "Plošča posodobljena",
+    "updateFailed": "Posodabljanje plošče ni uspelo",
+    "deleted": "Plošča izbrisana",
+    "deleteFailed": "Brisanje plošče ni uspelo",
+    "deployed": "Plošča vlog nameščena v kanal",
+    "deployFailed": "Pošiljanje plošče ni uspelo",
+    "nameRequired": "Ime plošče je obvezno",
+    "channelRequired": "Kanal je obvezen",
+    "maxRolesReached": "Največ 25 vlog na ploščo"
+  },
+  "loading": "Nalaganje plošč..."
+}

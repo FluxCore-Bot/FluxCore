@@ -1,0 +1,77 @@
+{
+  "title": "Система тикетов",
+  "subtitle": "Создавайте панели тикетов поддержки и управляйте открытыми тикетами из панели управления.",
+  "stats": {
+    "totalTickets": "Всего тикетов",
+    "open": "Открытых",
+    "claimed": "Принятых",
+    "panels": "Панелей"
+  },
+  "tabs": {
+    "activeTickets": "Активные тикеты",
+    "panelBuilder": "Конструктор панелей",
+    "settings": "Настройки"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Пользователь",
+    "subject": "Тема",
+    "status": "Статус",
+    "assignee": "Ответственный",
+    "created": "Создан"
+  },
+  "statuses": {
+    "open": "Открыт",
+    "claimed": "Принят",
+    "closed": "Закрыт"
+  },
+  "panelBuilder": {
+    "title": "Заголовок панели",
+    "channel": "Канал",
+    "buttonLabel": "Текст кнопки",
+    "welcomeMessage": "Приветственное сообщение",
+    "category": "Категория тикета",
+    "create": "Создать панель",
+    "edit": "Редактировать панель",
+    "deploy": "Развернуть панель"
+  },
+  "settings": {
+    "transcriptChannel": "Канал транскриптов",
+    "transcriptChannelDesc": "Канал, в который сохраняются транскрипты тикетов при закрытии.",
+    "maxTicketsPerUser": "Макс. тикетов на пользователя",
+    "maxTicketsPerUserDesc": "Максимальное количество открытых тикетов для одного пользователя.",
+    "closeConfirmation": "Подтверждение закрытия",
+    "closeConfirmationDesc": "Требовать подтверждение перед закрытием тикета.",
+    "dmTranscript": "Транскрипт в ЛС",
+    "dmTranscriptDesc": "Отправлять копию транскрипта создателю тикета через ЛС."
+  },
+  "actions": {
+    "claim": "Принять",
+    "close": "Закрыть",
+    "delete": "Удалить",
+    "reopen": "Открыть заново"
+  },
+  "toast": {
+    "panelCreated": "Панель тикетов создана",
+    "panelCreateFailed": "Не удалось создать панель тикетов",
+    "panelUpdated": "Панель тикетов обновлена",
+    "panelUpdateFailed": "Не удалось обновить панель тикетов",
+    "panelDeployed": "Панель тикетов развёрнута",
+    "panelDeployFailed": "Не удалось развернуть панель тикетов",
+    "ticketClaimed": "Тикет принят",
+    "ticketClaimFailed": "Не удалось принять тикет",
+    "ticketClosed": "Тикет закрыт",
+    "ticketCloseFailed": "Не удалось закрыть тикет",
+    "ticketReopened": "Тикет открыт заново",
+    "ticketReopenFailed": "Не удалось открыть тикет заново",
+    "ticketDeleted": "Тикет удалён",
+    "ticketDeleteFailed": "Не удалось удалить тикет",
+    "settingsSaved": "Настройки тикетов сохранены",
+    "settingsFailed": "Не удалось сохранить настройки тикетов"
+  },
+  "empty": {
+    "tickets": "Нет активных тикетов.",
+    "panels": "Панели тикетов ещё не созданы."
+  },
+  "loading": "Загрузка тикетов..."
+}

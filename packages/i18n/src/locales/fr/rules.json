@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Serveur",
+    "automation": "Automatisation"
+  },
+  "title": "Regles d'automatisation",
+  "subtitle": "Configurez des declencheurs bases sur les evenements et des reponses automatisees pour votre serveur.",
+  "createRule": "Creer une regle",
+  "stats": {
+    "totalRules": "Total des regles",
+    "active": "Actives",
+    "executions7d": "Executions (7j)",
+    "successRate": "Taux de reussite"
+  },
+  "filter": {
+    "searchPlaceholder": "Rechercher des regles...",
+    "eventType": "Type d'evenement",
+    "allEvents": "Tous les evenements",
+    "allStatus": "Tous les statuts",
+    "enabled": "Activee",
+    "disabled": "Desactivee",
+    "sortBy": "Trier par",
+    "priority": "Priorite",
+    "name": "Nom",
+    "lastFired": "Dernier declenchement",
+    "status": "Statut",
+    "clear": "Effacer",
+    "showing": "Affichage de {{filtered}} sur {{total}} regles"
+  },
+  "bulk": {
+    "selected": "{{count}} regle selectionnee",
+    "selected_other": "{{count}} regles selectionnees",
+    "enable": "Activer",
+    "disable": "Desactiver",
+    "delete": "Supprimer",
+    "clear": "Effacer"
+  },
+  "empty": {
+    "title": "Lancez-vous avec l'automatisation",
+    "description": "Choisissez un modele pour demarrer rapidement ou creez une regle de zero.",
+    "createFromScratch": "Creer de zero"
+  },
+  "noResults": {
+    "title": "Aucune regle correspondante",
+    "description": "Essayez d'ajuster votre recherche ou vos filtres pour trouver ce que vous cherchez."
+  },
+  "templates": {
+    "welcomeMessage": "Message de bienvenue",
+    "welcomeMessageDesc": "Accueillir les nouveaux membres avec un message personnalise dans un salon",
+    "autoRole": "Role automatique",
+    "autoRoleDesc": "Attribuer automatiquement un role lorsqu'un membre rejoint",
+    "logDeleted": "Journaliser les messages supprimes",
+    "logDeletedDesc": "Envoyer les informations des messages supprimes dans un salon de journalisation",
+    "boostThankYou": "Remerciement de boost",
+    "boostThankYouDesc": "Envoyer un MP de remerciement aux utilisateurs qui boostent le serveur",
+    "banLogger": "Journal des bannissements",
+    "banLoggerDesc": "Journaliser les evenements de bannissement dans un salon de moderation",
+    "autoThread": "Thread automatique",
+    "autoThreadDesc": "Creer automatiquement un fil de discussion lorsqu'un message est envoye"
+  },
+  "deleteDialog": {
+    "title": "Supprimer la regle",
+    "description": "Etes-vous sur de vouloir supprimer \"{{name}}\" ? Cette action est irreversible.",
+    "confirm": "Supprimer"
+  },
+  "bulkDeleteDialog": {
+    "title": "Supprimer les regles selectionnees",
+    "description": "Etes-vous sur de vouloir supprimer {{count}} regle ? Cette action est irreversible.",
+    "description_other": "Etes-vous sur de vouloir supprimer {{count}} regles ? Cette action est irreversible.",
+    "confirm": "Tout supprimer"
+  },
+  "toast": {
+    "deleted": "Regle supprimee",
+    "deleteFailed": "Echec de la suppression de la regle",
+    "enabled": "Regle activee",
+    "disabled": "Regle desactivee",
+    "toggleFailed": "Echec du changement d'etat de la regle",
+    "duplicated": "Regle dupliquee",
+    "duplicateFailed": "Echec de la duplication de la regle",
+    "bulkEnabled": "{{count}} regles activees",
+    "bulkDisabled": "{{count}} regles desactivees",
+    "bulkEnableFailed": "Echec de l'activation des regles",
+    "bulkDisableFailed": "Echec de la desactivation des regles",
+    "bulkDeleted": "{{count}} regles supprimees",
+    "bulkDeleteFailed": "Echec de la suppression des regles"
+  }
+}

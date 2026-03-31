@@ -1,0 +1,8 @@
+{
+  "title": "Glazbeni sustav",
+  "subtitle": "Konfigurirajte globalne nacine reprodukcije i postavke audio biblioteke.",
+  "tabs": {
+    "settings": "Postavke reprodukcije",
+    "library": "Glazbena biblioteka"
+  }
+}

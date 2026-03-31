@@ -1,0 +1,12 @@
+{
+  "title": "Огляд",
+  "subtitle": "Відстежуйте продуктивність та активність автоматизації.",
+  "stats": {
+    "actionRules": "Правила дій",
+    "activeNow": "Активних зараз",
+    "executions": "Виконань",
+    "successRate": "Відсоток успіху"
+  },
+  "errorsInLast24h": "{{count}} помилка за останні 24г",
+  "errorsInLast24h_other": "{{count}} помилок за останні 24г"
+}

@@ -1,0 +1,65 @@
+{
+  "title": "Bun Venit & La Revedere",
+  "subtitle": "Configurează mesajele de bun venit și la revedere, imaginile și rolurile automate.",
+  "loadingSubtitle": "Configurează mesajele de bun venit și la revedere pentru serverul tău.",
+  "tabs": {
+    "welcome": "Bun Venit",
+    "welcomeImage": "Imagine Bun Venit",
+    "farewell": "La Revedere",
+    "farewellImage": "Imagine La Revedere",
+    "dm": "MP Bun Venit",
+    "autorole": "Rol Automat"
+  },
+  "welcome": {
+    "title": "Mesaj de Bun Venit",
+    "description": "Trimite un embed personalizat când un nou membru se alătură.",
+    "channelLabel": "ID Canal Bun Venit",
+    "channelPlaceholder": "ID Canal...",
+    "embedBuilder": "Constructor Embed"
+  },
+  "welcomeImage": {
+    "title": "Imagine Bun Venit",
+    "description": "Generează o carte cu imagine personalizată cu avatarul membrului când se alătură.",
+    "disabled": "Activează comutatorul de mai sus pentru a configura imaginile de bun venit."
+  },
+  "farewell": {
+    "title": "Mesaj de La Revedere",
+    "description": "Trimite un mesaj când un membru părăsește serverul.",
+    "channelLabel": "ID Canal La Revedere",
+    "channelPlaceholder": "ID Canal..."
+  },
+  "farewellImage": {
+    "title": "Imagine La Revedere",
+    "description": "Generează o carte de la revedere personalizată când un membru pleacă.",
+    "disabled": "Activează comutatorul de mai sus pentru a configura imaginile de la revedere."
+  },
+  "dm": {
+    "title": "MP Bun Venit",
+    "description": "Trimite un mesaj direct noilor membri. Va eșua silențios dacă MP-urile sunt dezactivate."
+  },
+  "autorole": {
+    "title": "Rol Automat",
+    "description": "Atribuie automat roluri noilor membri când se alătură. Boții sunt excluși. Botul trebuie să aibă un rol mai mare decât rolurile listate aici.",
+    "label": "ID-uri Roluri (separate prin virgulă)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Titlu",
+    "description": "Descriere",
+    "color": "Culoare (hex)",
+    "footer": "Subsol",
+    "thumbnail": "URL Miniatură",
+    "image": "URL Imagine",
+    "variables": "Variabile:"
+  },
+  "saveChanges": "Salvează Modificările",
+  "saving": "Se salvează...",
+  "sendTest": "Trimite Mesaj de Test",
+  "sending": "Se trimite...",
+  "toast": {
+    "saved": "Configurație bun venit salvată",
+    "saveFailed": "Salvarea configurației a eșuat",
+    "testSent": "Mesajul de test va fi trimis în <#{{channelId}}>",
+    "testFailed": "Trimiterea mesajului de test a eșuat"
+  }
+}

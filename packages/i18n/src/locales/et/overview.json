@@ -1,0 +1,12 @@
+{
+  "title": "Ülevaade",
+  "subtitle": "Jälgi automatiseerimise jõudlust ja tegevust esmapilgul.",
+  "stats": {
+    "actionRules": "Toimingureeglid",
+    "activeNow": "Praegu aktiivsed",
+    "executions": "Täitmisi",
+    "successRate": "Edukuse määr"
+  },
+  "errorsInLast24h": "{{count}} viga viimase 24 tunni jooksul",
+  "errorsInLast24h_other": "{{count}} viga viimase 24 tunni jooksul"
+}

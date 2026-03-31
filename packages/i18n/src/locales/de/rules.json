@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Server",
+    "automation": "Automatisierung"
+  },
+  "title": "Automatisierungsregeln",
+  "subtitle": "Konfigurieren Sie ereignisgesteuerte Ausloeser und automatisierte Antworten fuer Ihren Server.",
+  "createRule": "Regel erstellen",
+  "stats": {
+    "totalRules": "Regeln gesamt",
+    "active": "Aktiv",
+    "executions7d": "Ausfuehrungen (7T)",
+    "successRate": "Erfolgsrate"
+  },
+  "filter": {
+    "searchPlaceholder": "Regeln suchen...",
+    "eventType": "Ereignistyp",
+    "allEvents": "Alle Ereignisse",
+    "allStatus": "Alle Status",
+    "enabled": "Aktiviert",
+    "disabled": "Deaktiviert",
+    "sortBy": "Sortieren nach",
+    "priority": "Prioritaet",
+    "name": "Name",
+    "lastFired": "Zuletzt ausgeloest",
+    "status": "Status",
+    "clear": "Leeren",
+    "showing": "{{filtered}} von {{total}} Regeln angezeigt"
+  },
+  "bulk": {
+    "selected": "{{count}} Regel ausgewaehlt",
+    "selected_other": "{{count}} Regeln ausgewaehlt",
+    "enable": "Aktivieren",
+    "disable": "Deaktivieren",
+    "delete": "Loeschen",
+    "clear": "Leeren"
+  },
+  "empty": {
+    "title": "Erste Schritte mit Automatisierung",
+    "description": "Waehlen Sie eine Vorlage fuer einen schnellen Start oder erstellen Sie eine Regel von Grund auf.",
+    "createFromScratch": "Von Grund auf erstellen"
+  },
+  "noResults": {
+    "title": "Keine passenden Regeln",
+    "description": "Versuchen Sie, Ihre Suche oder Filter anzupassen, um das Gesuchte zu finden."
+  },
+  "templates": {
+    "welcomeMessage": "Willkommensnachricht",
+    "welcomeMessageDesc": "Neue Mitglieder mit einer benutzerdefinierten Nachricht in einem Kanal begruessen",
+    "autoRole": "Automatische Rolle",
+    "autoRoleDesc": "Automatisch eine Rolle zuweisen, wenn ein Mitglied beitritt",
+    "logDeleted": "Geloeschte Nachrichten protokollieren",
+    "logDeletedDesc": "Infos zu geloeschten Nachrichten in einen Protokollkanal senden",
+    "boostThankYou": "Boost-Dankeschoen",
+    "boostThankYouDesc": "Eine DM an Benutzer senden, die den Server boosten",
+    "banLogger": "Ban-Protokoll",
+    "banLoggerDesc": "Ban-Ereignisse in einem Moderationskanal protokollieren",
+    "autoThread": "Automatischer Thread",
+    "autoThreadDesc": "Automatisch einen Thread erstellen, wenn eine Nachricht gesendet wird"
+  },
+  "deleteDialog": {
+    "title": "Regel loeschen",
+    "description": "Sind Sie sicher, dass Sie \"{{name}}\" loeschen moechten? Diese Aktion kann nicht rueckgaengig gemacht werden.",
+    "confirm": "Loeschen"
+  },
+  "bulkDeleteDialog": {
+    "title": "Ausgewaehlte Regeln loeschen",
+    "description": "Sind Sie sicher, dass Sie {{count}} Regel loeschen moechten? Diese Aktion kann nicht rueckgaengig gemacht werden.",
+    "description_other": "Sind Sie sicher, dass Sie {{count}} Regeln loeschen moechten? Diese Aktion kann nicht rueckgaengig gemacht werden.",
+    "confirm": "Alle loeschen"
+  },
+  "toast": {
+    "deleted": "Regel geloescht",
+    "deleteFailed": "Regel konnte nicht geloescht werden",
+    "enabled": "Regel aktiviert",
+    "disabled": "Regel deaktiviert",
+    "toggleFailed": "Regel konnte nicht umgeschaltet werden",
+    "duplicated": "Regel dupliziert",
+    "duplicateFailed": "Regel konnte nicht dupliziert werden",
+    "bulkEnabled": "{{count}} Regeln aktiviert",
+    "bulkDisabled": "{{count}} Regeln deaktiviert",
+    "bulkEnableFailed": "Regeln konnten nicht aktiviert werden",
+    "bulkDisableFailed": "Regeln konnten nicht deaktiviert werden",
+    "bulkDeleted": "{{count}} Regeln geloescht",
+    "bulkDeleteFailed": "Regeln konnten nicht geloescht werden"
+  }
+}

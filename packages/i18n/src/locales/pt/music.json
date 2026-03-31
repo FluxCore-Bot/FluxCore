@@ -1,0 +1,8 @@
+{
+  "title": "Sistema de musica",
+  "subtitle": "Configure os modos de reproducao globais e as preferencias da biblioteca de audio.",
+  "tabs": {
+    "settings": "Definicoes de reproducao",
+    "library": "Biblioteca musical"
+  }
+}

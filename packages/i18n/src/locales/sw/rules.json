@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Seva",
+    "automation": "Otomatiki"
+  },
+  "title": "Sheria za Otomatiki",
+  "subtitle": "Sanidi vichocheo vya matukio na majibu ya kiotomatiki kwa seva yako.",
+  "createRule": "Unda Sheria",
+  "stats": {
+    "totalRules": "Jumla ya Sheria",
+    "active": "Hai",
+    "executions7d": "Utekelezaji (siku 7)",
+    "successRate": "Kiwango cha Mafanikio"
+  },
+  "filter": {
+    "searchPlaceholder": "Tafuta sheria...",
+    "eventType": "Aina ya tukio",
+    "allEvents": "Matukio Yote",
+    "allStatus": "Hali Zote",
+    "enabled": "Imewashwa",
+    "disabled": "Imezimwa",
+    "sortBy": "Panga kwa",
+    "priority": "Kipaumbele",
+    "name": "Jina",
+    "lastFired": "Iliyotekelezwa Mwisho",
+    "status": "Hali",
+    "clear": "Futa",
+    "showing": "Inaonyesha {{filtered}} kati ya {{total}} sheria"
+  },
+  "bulk": {
+    "selected": "Sheria {{count}} imechaguliwa",
+    "selected_other": "Sheria {{count}} zimechaguliwa",
+    "enable": "Washa",
+    "disable": "Zima",
+    "delete": "Futa",
+    "clear": "Futa"
+  },
+  "empty": {
+    "title": "Anza na Otomatiki",
+    "description": "Chagua kiolezo ili kuanza haraka, au unda sheria kutoka mwanzo.",
+    "createFromScratch": "Unda kutoka Mwanzo"
+  },
+  "noResults": {
+    "title": "Hakuna sheria zinazolingana",
+    "description": "Jaribu kubadilisha utafutaji wako au vichujio ili kupata unachotafuta."
+  },
+  "templates": {
+    "welcomeMessage": "Ujumbe wa Karibu",
+    "welcomeMessageDesc": "Salimia wanachama wapya kwa ujumbe maalum kwenye chaneli",
+    "autoRole": "Jukumu la Kiotomatiki",
+    "autoRoleDesc": "Gawa jukumu kiotomatiki wakati mwanachama anajiunga",
+    "logDeleted": "Rekodi Ujumbe Uliofutwa",
+    "logDeletedDesc": "Tuma taarifa za ujumbe uliofutwa kwenye chaneli ya kumbukumbu",
+    "boostThankYou": "Shukrani za Kuimarisha",
+    "boostThankYouDesc": "Tuma DM ya kushukuru watumiaji wanaoimarisha seva",
+    "banLogger": "Rekodi za Kuzuia",
+    "banLoggerDesc": "Rekodi matukio ya kuzuia kwenye chaneli ya usimamizi",
+    "autoThread": "Mfululizo wa Kiotomatiki",
+    "autoThreadDesc": "Unda mfululizo kiotomatiki wakati ujumbe unapotumwa"
+  },
+  "deleteDialog": {
+    "title": "Futa Sheria",
+    "description": "Una uhakika unataka kufuta \"{{name}}\"? Kitendo hiki hakiwezi kutendwa upya.",
+    "confirm": "Futa"
+  },
+  "bulkDeleteDialog": {
+    "title": "Futa Sheria Zilizochaguliwa",
+    "description": "Una uhakika unataka kufuta sheria {{count}}? Kitendo hiki hakiwezi kutendwa upya.",
+    "description_other": "Una uhakika unataka kufuta sheria {{count}}? Kitendo hiki hakiwezi kutendwa upya.",
+    "confirm": "Futa Zote"
+  },
+  "toast": {
+    "deleted": "Sheria imefutwa",
+    "deleteFailed": "Imeshindwa kufuta sheria",
+    "enabled": "Sheria imewashwa",
+    "disabled": "Sheria imezimwa",
+    "toggleFailed": "Imeshindwa kubadilisha hali ya sheria",
+    "duplicated": "Sheria imenakiliwa",
+    "duplicateFailed": "Imeshindwa kunakili sheria",
+    "bulkEnabled": "Sheria {{count}} zimewashwa",
+    "bulkDisabled": "Sheria {{count}} zimezimwa",
+    "bulkEnableFailed": "Imeshindwa kuwasha sheria",
+    "bulkDisableFailed": "Imeshindwa kuzima sheria",
+    "bulkDeleted": "Sheria {{count}} zimefutwa",
+    "bulkDeleteFailed": "Imeshindwa kufuta sheria"
+  }
+}

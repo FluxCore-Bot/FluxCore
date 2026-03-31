@@ -1,0 +1,108 @@
+{
+  "title": "Säkerhet",
+  "subtitle": "Konfigurera anti-raid-skydd och serversäkerhetsinställningar.",
+  "antiRaid": {
+    "title": "Anti-raid-skydd",
+    "description": "Aktivera automatisk detektering och respons vid koordinerade raider, misstänkta konton och destruktiva åtgärder."
+  },
+  "sections": {
+    "joinRate": "Anslutningsfrekvens",
+    "accountAge": "Kontoålder",
+    "antiNuke": "Anti-nuke",
+    "lockdown": "Lockdown",
+    "events": "Händelser"
+  },
+  "joinRate": {
+    "title": "Detektering av anslutningsfrekvens",
+    "description": "Detektera massanslutningar genom att övervaka takten av nya medlemmar som går med.",
+    "threshold": "Anslutningsgräns",
+    "thresholdHint": "Antal anslutningar för att utlösa detektering",
+    "window": "Tidsfönster (sekunder)",
+    "windowHint": "Fönster inom vilket anslutningar räknas",
+    "action": "Åtgärd vid detektering",
+    "actionHint": "Åtgärd att vidta mot misstänkta raid-medlemmar",
+    "actions": {
+      "ban": "Banna",
+      "kick": "Sparka",
+      "timeout": "Timeout",
+      "lockdown": "Lockdown"
+    }
+  },
+  "accountAge": {
+    "title": "Kontoåldersfilter",
+    "description": "Vidta automatiskt åtgärder mot konton som är yngre än en minimiålder. Sätt till 0 för att inaktivera.",
+    "minAge": "Lägsta kontoålder (dagar)",
+    "minAgeHint": "0 = inaktiverad. Konton yngre än detta kommer att åtgärdas.",
+    "action": "Åtgärd"
+  },
+  "antiNuke": {
+    "title": "Anti-nuke-skydd",
+    "description": "Detektera massborttagning av kanaler/roller och sätt den ansvariga användaren i karantän genom att ta bort alla deras roller.",
+    "threshold": "Borttagningsgräns",
+    "thresholdHint": "Antal borttagningar inom 10 sekunder för att utlösa karantän",
+    "channelDeleteThreshold": "Kanalborttagningsgräns",
+    "roleDeleteThreshold": "Rollborttagningsgräns",
+    "massbanThreshold": "Massbanningsgräns",
+    "interval": "Intervall (sekunder)",
+    "action": "Åtgärd"
+  },
+  "lockdown": {
+    "title": "Automatisk lockdown vid raid",
+    "description": "Lås automatiskt alla kanaler när en raid detekteras.",
+    "whitelistedRoles": "Vitlistade roll-ID:n (kommaseparerade)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Medlemmar med dessa roller är undantagna från raid-detektering.",
+    "logChannel": "Loggkanal-ID",
+    "logChannelPlaceholder": "Kanal-ID för raidhändelseloggar...",
+    "enableButton": "Aktivera lockdown",
+    "disableButton": "Inaktivera lockdown",
+    "active": "Lockdown aktiv",
+    "inactive": "Lockdown inaktiv"
+  },
+  "events": {
+    "title": "Senaste raidhändelser",
+    "description": "Tidslinje över detekterade raider, kontoåldersblockningar och lockdownhändelser.",
+    "empty": "Inga raidhändelser registrerade ännu. Händelser visas här när raid-detektering utlöses.",
+    "actionLabel": "Åtgärd: {{action}}",
+    "usersLabel": "Användare: {{count}}",
+    "accountAgeLabel": "Kontoålder: {{days}}d",
+    "table": {
+      "type": "Typ",
+      "description": "Beskrivning",
+      "time": "Tid",
+      "action": "Vidtagen åtgärd"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Anslutningsökning",
+    "account_age": "Kontoålder",
+    "nuke_attempt": "Nuke-försök",
+    "lockdown": "Lockdown",
+    "massJoin": "Massanslutning",
+    "suspiciousAccounts": "Misstänkta konton",
+    "channelDeletion": "Kanalborttagning",
+    "roleDeletion": "Rollborttagning",
+    "massBan": "Massbanning"
+  },
+  "pagination": {
+    "previous": "Föregående",
+    "next": "Nästa",
+    "page": "Sida {{current}} av {{total}}"
+  },
+  "toast": {
+    "saved": "Anti-raid-konfiguration sparad",
+    "saveFailed": "Misslyckades med att spara konfiguration",
+    "lockdownEnabled": "Server-lockdown aktiverad",
+    "lockdownDisabled": "Server-lockdown inaktiverad",
+    "lockdownFailed": "Misslyckades med att växla lockdown"
+  },
+  "saveButton": {
+    "saving": "Sparar...",
+    "save": "Spara ändringar"
+  },
+  "labels": {
+    "seconds": "sekunder",
+    "minutes": "minuter",
+    "hours": "timmar"
+  }
+}

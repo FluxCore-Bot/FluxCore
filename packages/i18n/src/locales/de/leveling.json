@@ -1,0 +1,120 @@
+{
+  "title": "Levelsystem",
+  "subtitle": "Konfigurieren Sie XP-Verdienst, Level-Up-Ankuendigungen, Rollenbelohnungen und Multiplikatoren.",
+  "stats": {
+    "rankedMembers": "Mitglieder im Ranking",
+    "roleRewards": "Rollenbelohnungen",
+    "systemStatus": "Systemstatus",
+    "enabled": "Aktiviert",
+    "disabled": "Deaktiviert"
+  },
+  "tabs": {
+    "leaderboard": "Rangliste",
+    "settings": "Einstellungen",
+    "roleRewards": "Rollenbelohnungen",
+    "exclusions": "Ausschluesse",
+    "multipliers": "Multiplikatoren"
+  },
+  "table": {
+    "rank": "Rang",
+    "userId": "Benutzer-ID",
+    "level": "Level",
+    "xp": "XP",
+    "messages": "Nachrichten",
+    "voiceTime": "Sprachzeit"
+  },
+  "settings": {
+    "title": "Levelsystem-Einstellungen",
+    "enabled": "Levelsystem aktivieren",
+    "enabledDesc": "Das gesamte Levelsystem ein- oder ausschalten.",
+    "xpPerMessage": "XP pro Nachricht",
+    "xpPerMessageDesc": "Basis-XP pro Nachricht (ein Zufallswert von 0-9 wird hinzugefuegt).",
+    "xpCooldown": "XP-Abklingzeit (Sekunden)",
+    "xpCooldownDesc": "Mindestzeit zwischen XP-Vergaben pro Benutzer.",
+    "voiceXpEnabled": "Sprach-XP",
+    "voiceXpEnabledDesc": "XP fuer Zeit in Sprachkanaelen vergeben.",
+    "voiceXpPerMinute": "Sprach-XP pro Minute",
+    "voiceXpPerMinuteDesc": "XP pro Minute im Sprachkanal.",
+    "levelUpAnnouncements": "Level-Up-Ankuendigungen",
+    "levelUpAnnouncementsDesc": "Ankuendigen, wenn ein Mitglied ein Level aufsteigt.",
+    "announceDest": "Ankuendigungsziel",
+    "announceDestHint": "Sie koennen auch eine Kanal-ID direkt in das Feld oben eingeben.",
+    "announceDestSameChannel": "Gleicher Kanal",
+    "announceDestDM": "Direktnachricht",
+    "announceMessage": "Ankuendigungsnachricht",
+    "announceMessagePlaceholder": "{user} hat gerade **Level {level}** erreicht!",
+    "announceMessageVars": "Variablen: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Rollenbelohnungen",
+    "description": "Weisen Sie automatisch Rollen zu, wenn Mitglieder bestimmte Level erreichen.",
+    "addReward": "Belohnung hinzufuegen",
+    "addRewardTitle": "Rollenbelohnung hinzufuegen",
+    "level": "Level",
+    "levelPrefix": "Level {{level}}",
+    "roleId": "Rollen-ID",
+    "levelPlaceholder": "z.B. 5",
+    "rolePlaceholder": "z.B. 123456789",
+    "removeReward": "Entfernen",
+    "noRewards": "Keine Rollenbelohnungen konfiguriert."
+  },
+  "exclusions": {
+    "title": "XP-Ausschluesse",
+    "description": "Kanaele und Rollen, die kein XP verdienen.",
+    "noXpChannels": "XP-freie Kanaele (kommagetrennte IDs)",
+    "noXpChannelsPlaceholder": "z.B. 123456789, 987654321",
+    "noXpRoles": "XP-freie Rollen (kommagetrennte IDs)",
+    "noXpRolesPlaceholder": "z.B. 123456789, 987654321",
+    "save": "Ausschluesse speichern"
+  },
+  "multipliers": {
+    "title": "XP-Multiplikatoren",
+    "description": "XP-Multiplikatoren pro Kanal oder Rolle festlegen. Ein Multiplikator von 2 verdoppelt die verdienten XP.",
+    "channelMultipliers": "Kanal-Multiplikatoren",
+    "roleMultipliers": "Rollen-Multiplikatoren",
+    "channelId": "Kanal-ID",
+    "roleId": "Rollen-ID",
+    "multiplier": "Multiplikator",
+    "type": "Typ",
+    "typeChannel": "Kanal",
+    "typeRole": "Rolle",
+    "id": "ID",
+    "idPlaceholder": "Kanal- oder Rollen-ID",
+    "value": "Multiplikator",
+    "valuePlaceholder": "z.B. 2",
+    "add": "Multiplikator hinzufuegen",
+    "addTitle": "Multiplikator hinzufuegen",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Keine XP-Multiplikatoren konfiguriert."
+  },
+  "pagination": {
+    "previous": "Zurueck",
+    "next": "Weiter",
+    "pageInfo": "Seite {{page}} von {{totalPages}} ({{total}} gesamt)"
+  },
+  "loading": "Rangliste wird geladen...",
+  "loadingGeneric": "Laden...",
+  "emptyLeaderboard": "Noch keine Mitglieder haben XP verdient.",
+  "toast": {
+    "saved": "Levelsystem-Einstellungen gespeichert",
+    "saveFailed": "Einstellung konnte nicht aktualisiert werden",
+    "rewardAdded": "Belohnung hinzugefuegt",
+    "rewardAddFailed": "Belohnung konnte nicht hinzugefuegt werden",
+    "rewardRemoved": "Belohnung entfernt",
+    "rewardRemoveFailed": "Belohnung konnte nicht entfernt werden",
+    "multiplierAdded": "Multiplikator hinzugefuegt",
+    "multiplierAddFailed": "Multiplikator konnte nicht hinzugefuegt werden",
+    "multiplierRemoved": "Multiplikator entfernt",
+    "multiplierRemoveFailed": "Multiplikator konnte nicht entfernt werden",
+    "exclusionUpdated": "Ausschluesse gespeichert",
+    "exclusionFailed": "Ausschluesse konnten nicht gespeichert werden",
+    "levelValidation": "Level muss zwischen 1 und 100 liegen",
+    "roleIdRequired": "Rollen-ID ist erforderlich",
+    "multiplierIdRequired": "ID und Multiplikatorwert sind erforderlich",
+    "multiplierRange": "Multiplikator muss zwischen 0 und 10 liegen"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}h {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

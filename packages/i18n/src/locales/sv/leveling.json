@@ -1,0 +1,120 @@
+{
+  "title": "Nivåsystem",
+  "subtitle": "Konfigurera XP-intjäning, nivå-uppmeddelanden, rollbelöningar och multiplikatorer.",
+  "stats": {
+    "rankedMembers": "Rankade medlemmar",
+    "roleRewards": "Rollbelöningar",
+    "systemStatus": "Systemstatus",
+    "enabled": "Aktiverad",
+    "disabled": "Inaktiverad"
+  },
+  "tabs": {
+    "leaderboard": "Topplista",
+    "settings": "Inställningar",
+    "roleRewards": "Rollbelöningar",
+    "exclusions": "Undantag",
+    "multipliers": "Multiplikatorer"
+  },
+  "table": {
+    "rank": "Rank",
+    "userId": "Användar-ID",
+    "level": "Nivå",
+    "xp": "XP",
+    "messages": "Meddelanden",
+    "voiceTime": "Rösttid"
+  },
+  "settings": {
+    "title": "Nivåinställningar",
+    "enabled": "Aktivera nivåsystem",
+    "enabledDesc": "Slå på eller av hela nivåsystemet.",
+    "xpPerMessage": "XP per meddelande",
+    "xpPerMessageDesc": "Bas-XP som delas ut per meddelande (slumpmässighet på 0-9 läggs till).",
+    "xpCooldown": "XP-avkylningstid (sekunder)",
+    "xpCooldownDesc": "Minsta tid mellan XP-utdelningar per användare.",
+    "voiceXpEnabled": "Röst-XP",
+    "voiceXpEnabledDesc": "Dela ut XP för tid i röstkanaler.",
+    "voiceXpPerMinute": "Röst-XP per minut",
+    "voiceXpPerMinuteDesc": "XP som delas ut per minut i röst.",
+    "levelUpAnnouncements": "Nivå-uppmeddelanden",
+    "levelUpAnnouncementsDesc": "Meddela när en medlem går upp i nivå.",
+    "announceDest": "Meddelandedestination",
+    "announceDestHint": "Du kan även ange ett kanal-ID direkt i inmatningen ovan.",
+    "announceDestSameChannel": "Samma kanal",
+    "announceDestDM": "Direktmeddelande",
+    "announceMessage": "Meddelandetext",
+    "announceMessagePlaceholder": "{user} har just nått **Nivå {level}**!",
+    "announceMessageVars": "Variabler: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Rollbelöningar",
+    "description": "Tilldela automatiskt roller när medlemmar når vissa nivåer.",
+    "addReward": "Lägg till belöning",
+    "addRewardTitle": "Lägg till rollbelöning",
+    "level": "Nivå",
+    "levelPrefix": "Nivå {{level}}",
+    "roleId": "Roll-ID",
+    "levelPlaceholder": "t.ex. 5",
+    "rolePlaceholder": "t.ex. 123456789",
+    "removeReward": "Ta bort",
+    "noRewards": "Inga rollbelöningar konfigurerade."
+  },
+  "exclusions": {
+    "title": "XP-undantag",
+    "description": "Kanaler och roller som inte tjänar XP.",
+    "noXpChannels": "Kanaler utan XP (kommaseparerade ID:n)",
+    "noXpChannelsPlaceholder": "t.ex. 123456789, 987654321",
+    "noXpRoles": "Roller utan XP (kommaseparerade ID:n)",
+    "noXpRolesPlaceholder": "t.ex. 123456789, 987654321",
+    "save": "Spara undantag"
+  },
+  "multipliers": {
+    "title": "XP-multiplikatorer",
+    "description": "Ställ in XP-multiplikatorer per kanal eller roll. En multiplikator på 2 fördubblar intjänad XP.",
+    "channelMultipliers": "Kanalmultiplikatorer",
+    "roleMultipliers": "Rollmultiplikatorer",
+    "channelId": "Kanal-ID",
+    "roleId": "Roll-ID",
+    "multiplier": "Multiplikator",
+    "type": "Typ",
+    "typeChannel": "Kanal",
+    "typeRole": "Roll",
+    "id": "ID",
+    "idPlaceholder": "Kanal- eller Roll-ID",
+    "value": "Multiplikator",
+    "valuePlaceholder": "t.ex. 2",
+    "add": "Lägg till multiplikator",
+    "addTitle": "Lägg till multiplikator",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Inga XP-multiplikatorer konfigurerade."
+  },
+  "pagination": {
+    "previous": "Föregående",
+    "next": "Nästa",
+    "pageInfo": "Sida {{page}} av {{totalPages}} ({{total}} totalt)"
+  },
+  "loading": "Laddar topplista...",
+  "loadingGeneric": "Laddar...",
+  "emptyLeaderboard": "Inga medlemmar har tjänat XP ännu.",
+  "toast": {
+    "saved": "Nivåinställningar sparade",
+    "saveFailed": "Misslyckades med att uppdatera inställning",
+    "rewardAdded": "Belöning tillagd",
+    "rewardAddFailed": "Misslyckades med att lägga till belöning",
+    "rewardRemoved": "Belöning borttagen",
+    "rewardRemoveFailed": "Misslyckades med att ta bort belöning",
+    "multiplierAdded": "Multiplikator tillagd",
+    "multiplierAddFailed": "Misslyckades med att lägga till multiplikator",
+    "multiplierRemoved": "Multiplikator borttagen",
+    "multiplierRemoveFailed": "Misslyckades med att ta bort multiplikator",
+    "exclusionUpdated": "Undantag sparade",
+    "exclusionFailed": "Misslyckades med att spara undantag",
+    "levelValidation": "Nivån måste vara mellan 1 och 100",
+    "roleIdRequired": "Roll-ID krävs",
+    "multiplierIdRequired": "ID och multiplikatorvärde krävs",
+    "multiplierRange": "Multiplikatorn måste vara mellan 0 och 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}t {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

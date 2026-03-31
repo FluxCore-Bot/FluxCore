@@ -1,0 +1,112 @@
+{
+  "title": "Панели ролей",
+  "subtitle": "Создавайте панели самоназначения ролей с помощью кнопок, выпадающих списков или реакций.",
+  "stats": {
+    "totalPanels": "Всего панелей",
+    "deployed": "Развёрнуто",
+    "totalRoles": "Всего ролей"
+  },
+  "tabs": {
+    "panels": "Панели",
+    "preview": "Предпросмотр"
+  },
+  "table": {
+    "name": "Название",
+    "type": "Тип",
+    "mode": "Режим",
+    "roles": "Роли",
+    "status": "Статус"
+  },
+  "panelTypes": {
+    "reaction": "Реакция",
+    "button": "Кнопка",
+    "dropdown": "Выпадающий список"
+  },
+  "panelModes": {
+    "toggle": "Переключение",
+    "unique": "Уникальный",
+    "verify": "Верификация"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Переключение (добавить/убрать)",
+    "unique": "Уникальный (только одна за раз)",
+    "verify": "Верификация (только добавление)"
+  },
+  "status": {
+    "deployed": "Развёрнута",
+    "draft": "Черновик"
+  },
+  "dialog": {
+    "createPanel": "Создать панель",
+    "editPanel": "Редактировать панель"
+  },
+  "panelList": {
+    "title": "Все панели"
+  },
+  "form": {
+    "name": "Название",
+    "namePlaceholder": "напр. Цветные роли",
+    "type": "Тип",
+    "mode": "Режим",
+    "channel": "Канал",
+    "channelPlaceholder": "Выберите канал",
+    "minRoles": "Мин. ролей",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Макс. ролей",
+    "maxRolesPlaceholder": "Все",
+    "embedSection": "Эмбед",
+    "embedTitle": "Заголовок",
+    "embedTitlePlaceholder": "Заголовок панели (по умолчанию — название панели)",
+    "embedDescription": "Описание",
+    "embedDescriptionPlaceholder": "Текст описания",
+    "rolesCount": "Роли ({{count}}/25)",
+    "addRole": "Добавить роль"
+  },
+  "entry": {
+    "role": "Роль",
+    "rolePlaceholder": "Выберите роль",
+    "label": "Метка",
+    "labelPlaceholder": "Текст кнопки",
+    "emoji": "Эмодзи",
+    "emojiPlaceholder": "напр. star",
+    "description": "Описание",
+    "descriptionPlaceholder": "Описание варианта",
+    "style": "Стиль"
+  },
+  "buttonStyles": {
+    "primary": "Основной",
+    "secondary": "Вторичный",
+    "success": "Успех",
+    "danger": "Опасность"
+  },
+  "actions": {
+    "create": "Создать",
+    "update": "Обновить",
+    "cancel": "Отмена",
+    "deploy": "Развернуть",
+    "delete": "Удалить",
+    "addEntry": "Добавить запись",
+    "removeEntry": "Удалить запись"
+  },
+  "preview": {
+    "title": "Предпросмотр",
+    "description": "Посмотрите, как ваши панели будут выглядеть в Discord.",
+    "selectRoles": "Выберите роли...",
+    "noPreview": "Нет панелей для предпросмотра."
+  },
+  "empty": "Панели ролей ещё не созданы. Нажмите «Создать панель», чтобы начать.",
+  "toast": {
+    "created": "Панель создана",
+    "createFailed": "Не удалось создать панель",
+    "updated": "Панель обновлена",
+    "updateFailed": "Не удалось обновить панель",
+    "deleted": "Панель удалена",
+    "deleteFailed": "Не удалось удалить панель",
+    "deployed": "Панель ролей развёрнута в канал",
+    "deployFailed": "Не удалось отправить панель",
+    "nameRequired": "Название панели обязательно",
+    "channelRequired": "Канал обязателен",
+    "maxRolesReached": "Максимум 25 ролей на панель"
+  },
+  "loading": "Загрузка панелей..."
+}

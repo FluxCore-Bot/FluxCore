@@ -1,0 +1,72 @@
+{
+  "title": "警告",
+  "subtitle": "追踪和管理成员警告，设置自动升级处罚。",
+  "stats": {
+    "totalWarnings": "警告总数",
+    "escalationRules": "升级规则",
+    "dmOnWarn": "警告时私信"
+  },
+  "tabs": {
+    "warnings": "警告日志",
+    "escalation": "升级处罚",
+    "settings": "设置"
+  },
+  "table": {
+    "id": "ID",
+    "user": "用户",
+    "moderator": "管理员",
+    "reason": "原因",
+    "date": "日期"
+  },
+  "filter": {
+    "userPlaceholder": "按用户 ID 筛选...",
+    "clearAll": "全部清除"
+  },
+  "pagination": {
+    "previous": "上一页",
+    "next": "下一页",
+    "page": "第 {{page}} 页 / 共 {{total}} 页（共 {{count}} 条）"
+  },
+  "loading": "正在加载警告...",
+  "noWarnings": "未找到警告。",
+  "toast": {
+    "warningRemoved": "警告已移除",
+    "warningsFailed": "删除警告失败",
+    "enterUserId": "输入用户 ID 以清除该用户的所有警告",
+    "allCleared": "已清除用户的所有警告",
+    "clearFailed": "清除警告失败",
+    "thresholdAdded": "处罚阈值已添加",
+    "thresholdFailed": "添加处罚失败",
+    "thresholdRemoved": "处罚已移除",
+    "removeFailed": "移除处罚失败",
+    "settingFailed": "更新设置失败",
+    "thresholdInvalid": "阈值必须为正数"
+  },
+  "escalation": {
+    "title": "处罚升级",
+    "description": "设置用户达到特定警告次数时的自动操作。",
+    "threshold": "阈值",
+    "action": "操作",
+    "duration": "时长",
+    "noRules": "未配置升级规则。",
+    "addRule": "添加升级规则",
+    "addButton": "添加规则",
+    "warnings": "{{count}} 次警告",
+    "min": "{{count}} 分钟",
+    "timeout": "超时",
+    "kick": "踢出",
+    "ban": "封禁",
+    "durationLabel": "时长（秒）",
+    "thresholdPlaceholder": "例：3",
+    "durationPlaceholder": "例：3600"
+  },
+  "settings": {
+    "title": "警告设置",
+    "dmOnWarn": "警告时发送私信",
+    "dmOnWarnDesc": "用户收到警告时向其发送私信。",
+    "requireReason": "必须填写原因",
+    "requireReasonDesc": "管理员发出警告时必须提供原因。",
+    "maxWarnings": "最大警告数",
+    "maxWarningsDesc": "每个用户的最大警告数（0 = 无限制）。"
+  }
+}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useParams } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../lib/client";
 import { PageHeader } from "../../../components/PageHeader";
@@ -8,18 +9,15 @@ import {
   useCloseTicket,
   useTicketPanels,
   useCreateTicketPanel,
-  useUpdateTicketPanel,
   useDeleteTicketPanel,
   useSendTicketPanel,
   useTicketSettings,
   useUpdateTicketSettings,
 } from "../../../lib/hooks/useTickets";
-import type { TicketCategoryItem } from "../../../lib/schemas";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
 import { Card } from "../../../components/ui/card";
-import { Switch } from "../../../components/ui/switch";
 import { Badge } from "../../../components/ui/badge";
 import {
   Table,
@@ -48,6 +46,7 @@ function statusColor(status: string) {
 
 export function TicketsPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
+  const { t } = useTranslation("tickets");
   const [page, setPage] = useState(1);
   const [statusFilter, setStatusFilter] = useState<string>("");
 
@@ -84,15 +83,15 @@ export function TicketsPage() {
 
   function handleCloseTicket(ticketId: number) {
     closeTicketMutation.mutate(ticketId, {
-      onSuccess: () => toast.success("Ticket closed"),
+      onSuccess: () => toast.success(t("toast.ticketClosed")),
       onError: (err) =>
-        toast.error(err instanceof ApiError ? err.message : "Failed to close ticket"),
+        toast.error(err instanceof ApiError ? err.message : t("toast.ticketCloseFailed")),
     });
   }
 
   function handleCreatePanel() {
     if (!newPanelName.trim() || !newPanelChannel.trim()) {
-      toast.error("Panel name and channel ID are required");
+      toast.error(t("toast.panelCreateFailed"));
       return;
     }
     createPanel.mutate(
@@ -103,29 +102,29 @@ export function TicketsPage() {
       },
       {
         onSuccess: () => {
-          toast.success("Panel created");
+          toast.success(t("toast.panelCreated"));
           setNewPanelName("");
           setNewPanelChannel("");
         },
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to create panel"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.panelCreateFailed")),
       },
     );
   }
 
   function handleDeletePanel(panelId: number) {
     deletePanel.mutate(panelId, {
-      onSuccess: () => toast.success("Panel deleted"),
+      onSuccess: () => toast.success(t("toast.ticketDeleted")),
       onError: (err) =>
-        toast.error(err instanceof ApiError ? err.message : "Failed to delete panel"),
+        toast.error(err instanceof ApiError ? err.message : t("toast.ticketDeleteFailed")),
     });
   }
 
   function handleSendPanel(panelId: number) {
     sendPanel.mutate(panelId, {
-      onSuccess: () => toast.success("Panel send requested"),
+      onSuccess: () => toast.success(t("toast.panelDeployed")),
       onError: (err) =>
-        toast.error(err instanceof ApiError ? err.message : "Failed to send panel"),
+        toast.error(err instanceof ApiError ? err.message : t("toast.panelDeployFailed")),
     });
   }
 
@@ -138,9 +137,9 @@ export function TicketsPage() {
     updateSettings.mutate(
       { staffRoleIds, transcriptChannelId },
       {
-        onSuccess: () => toast.success("Settings saved"),
+        onSuccess: () => toast.success(t("toast.settingsSaved")),
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to save settings"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.settingsFailed")),
       },
     );
   }
@@ -152,7 +151,7 @@ export function TicketsPage() {
       { [key]: num },
       {
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to update setting"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.settingsFailed")),
       },
     );
   }
@@ -162,7 +161,7 @@ export function TicketsPage() {
       { namingFormat: value },
       {
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to update setting"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.settingsFailed")),
       },
     );
   }
@@ -174,32 +173,32 @@ export function TicketsPage() {
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Ticket System"
-        subtitle="Manage support tickets, panels, and settings."
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Total Tickets</p>
+          <p className="section-label text-text-muted">{t("stats.totalTickets")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {ticketsLoading ? "..." : ticketData?.total ?? 0}
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Open</p>
+          <p className="section-label text-text-muted">{t("stats.open")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {ticketsLoading ? "..." : openCount}
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Claimed</p>
+          <p className="section-label text-text-muted">{t("stats.claimed")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {ticketsLoading ? "..." : claimedCount}
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Panels</p>
+          <p className="section-label text-text-muted">{t("stats.panels")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {panelsLoading ? "..." : panels?.length ?? 0}
           </p>
@@ -208,16 +207,16 @@ export function TicketsPage() {
 
       <Tabs defaultValue="tickets">
         <TabsList>
-          <TabsTrigger value="tickets">Active Tickets</TabsTrigger>
-          <TabsTrigger value="panels">Panel Builder</TabsTrigger>
-          <TabsTrigger value="settings">Settings</TabsTrigger>
+          <TabsTrigger value="tickets">{t("tabs.activeTickets")}</TabsTrigger>
+          <TabsTrigger value="panels">{t("tabs.panelBuilder")}</TabsTrigger>
+          <TabsTrigger value="settings">{t("tabs.settings")}</TabsTrigger>
         </TabsList>
 
         {/* Active Tickets */}
         <TabsContent value="tickets">
           <Card className="bg-surface p-6">
             <div className="mb-4 flex items-center gap-3">
-              <Label>Filter by status:</Label>
+              <Label>{t("common:actions.filter")}:</Label>
               <div className="flex gap-2">
                 {["", "open", "claimed", "closed"].map((s) => (
                   <Button
@@ -229,25 +228,25 @@ export function TicketsPage() {
                       setPage(1);
                     }}
                   >
-                    {s || "All"}
+                    {s ? t(`statuses.${s}`) : t("common:labels.all")}
                   </Button>
                 ))}
               </div>
             </div>
 
             {ticketsLoading ? (
-              <p className="text-text-muted">Loading tickets...</p>
+              <p className="text-text-muted">{t("loading")}</p>
             ) : ticketData && ticketData.tickets.length > 0 ? (
               <>
                 <Table>
                   <TableHeader>
                     <TableRow>
                       <TableHead className="w-16">#</TableHead>
-                      <TableHead>User</TableHead>
-                      <TableHead>Category</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead>Claimed By</TableHead>
-                      <TableHead>Created</TableHead>
+                      <TableHead>{t("table.user")}</TableHead>
+                      <TableHead>{t("table.subject")}</TableHead>
+                      <TableHead>{t("table.status")}</TableHead>
+                      <TableHead>{t("table.assignee")}</TableHead>
+                      <TableHead>{t("table.created")}</TableHead>
                       <TableHead className="w-16" />
                     </TableRow>
                   </TableHeader>
@@ -311,7 +310,7 @@ export function TicketsPage() {
                         onClick={() => setPage((p) => Math.max(1, p - 1))}
                         disabled={page <= 1}
                       >
-                        Previous
+                        {t("common:actions.back")}
                       </Button>
                       <Button
                         variant="outline"
@@ -319,14 +318,14 @@ export function TicketsPage() {
                         onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                         disabled={page >= totalPages}
                       >
-                        Next
+                        {t("common:actions.next")}
                       </Button>
                     </div>
                   </div>
                 )}
               </>
             ) : (
-              <p className="text-text-muted">No tickets found.</p>
+              <p className="text-text-muted">{t("empty.tickets")}</p>
             )}
           </Card>
         </TabsContent>
@@ -334,21 +333,21 @@ export function TicketsPage() {
         {/* Panel Builder */}
         <TabsContent value="panels">
           <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">Ticket Panels</h3>
+            <h3 className="mb-4 text-lg font-semibold">{t("tabs.panelBuilder")}</h3>
             <p className="mb-4 text-sm text-text-muted">
-              Create panels that users click to open tickets. Each panel is posted as a message with buttons in a channel.
+              {t("empty.panels")}
             </p>
 
             {panelsLoading ? (
-              <p className="text-text-muted">Loading panels...</p>
+              <p className="text-text-muted">{t("loading")}</p>
             ) : panels && panels.length > 0 ? (
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Channel</TableHead>
-                    <TableHead>Categories</TableHead>
-                    <TableHead>Sent</TableHead>
+                    <TableHead>{t("common:labels.name")}</TableHead>
+                    <TableHead>{t("common:labels.channel")}</TableHead>
+                    <TableHead>{t("panelBuilder.category")}</TableHead>
+                    <TableHead>{t("common:labels.status")}</TableHead>
                     <TableHead className="w-24" />
                   </TableRow>
                 </TableHeader>
@@ -366,9 +365,9 @@ export function TicketsPage() {
                       </TableCell>
                       <TableCell>
                         {panel.messageId ? (
-                          <Badge variant="default">Sent</Badge>
+                          <Badge variant="default">{t("panelBuilder.deploy")}</Badge>
                         ) : (
-                          <Badge variant="outline">Draft</Badge>
+                          <Badge variant="outline">{t("common:labels.default")}</Badge>
                         )}
                       </TableCell>
                       <TableCell className="flex gap-1">
@@ -377,7 +376,7 @@ export function TicketsPage() {
                           size="sm"
                           onClick={() => handleSendPanel(panel.id)}
                           disabled={sendPanel.isPending}
-                          title="Send panel to channel"
+                          title={t("panelBuilder.deploy")}
                         >
                           <Icon name="send" size={16} />
                         </Button>
@@ -395,35 +394,35 @@ export function TicketsPage() {
                 </TableBody>
               </Table>
             ) : (
-              <p className="mb-4 text-text-muted">No panels configured.</p>
+              <p className="mb-4 text-text-muted">{t("empty.panels")}</p>
             )}
 
             <Separator className="my-6" />
 
-            <h4 className="mb-3 text-sm font-semibold">Create Panel</h4>
+            <h4 className="mb-3 text-sm font-semibold">{t("panelBuilder.create")}</h4>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
               <div>
-                <Label htmlFor="panel-name">Panel Name</Label>
+                <Label htmlFor="panel-name">{t("panelBuilder.title")}</Label>
                 <Input
                   id="panel-name"
-                  placeholder="e.g. Support Tickets"
+                  placeholder={t("panelBuilder.title")}
                   value={newPanelName}
                   onChange={(e) => setNewPanelName(e.target.value)}
                   className="w-48"
                 />
               </div>
               <div>
-                <Label htmlFor="panel-channel">Channel ID</Label>
+                <Label htmlFor="panel-channel">{t("panelBuilder.channel")}</Label>
                 <Input
                   id="panel-channel"
-                  placeholder="e.g. 123456789"
+                  placeholder={t("panelBuilder.channel")}
                   value={newPanelChannel}
                   onChange={(e) => setNewPanelChannel(e.target.value)}
                   className="w-48"
                 />
               </div>
               <Button onClick={handleCreatePanel} disabled={createPanel.isPending}>
-                Create Panel
+                {t("panelBuilder.create")}
               </Button>
             </div>
           </Card>
@@ -432,14 +431,14 @@ export function TicketsPage() {
         {/* Settings */}
         <TabsContent value="settings">
           <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">Ticket Settings</h3>
+            <h3 className="mb-4 text-lg font-semibold">{t("tabs.settings")}</h3>
 
             {settingsLoading ? (
-              <p className="text-text-muted">Loading...</p>
+              <p className="text-text-muted">{t("common:actions.loading")}</p>
             ) : settings ? (
               <div className="space-y-6">
                 <div>
-                  <Label htmlFor="staff-roles">Staff Role IDs (comma-separated)</Label>
+                  <Label htmlFor="staff-roles">{t("common:labels.role")}</Label>
                   <Input
                     id="staff-roles"
                     placeholder="e.g. 123456789, 987654321"
@@ -447,14 +446,14 @@ export function TicketsPage() {
                     onChange={(e) => setStaffRolesInput(e.target.value)}
                   />
                   <p className="mt-1 text-xs text-text-muted">
-                    Roles that can see and manage tickets.
+                    {t("settings.transcriptChannelDesc")}
                   </p>
                 </div>
 
                 <Separator />
 
                 <div>
-                  <Label htmlFor="transcript-channel">Transcript Channel ID</Label>
+                  <Label htmlFor="transcript-channel">{t("settings.transcriptChannel")}</Label>
                   <Input
                     id="transcript-channel"
                     placeholder="e.g. 123456789"
@@ -462,7 +461,7 @@ export function TicketsPage() {
                     onChange={(e) => setTranscriptChannelInput(e.target.value)}
                   />
                   <p className="mt-1 text-xs text-text-muted">
-                    Channel where ticket transcripts are sent on close.
+                    {t("settings.transcriptChannelDesc")}
                   </p>
                 </div>
 
@@ -470,9 +469,9 @@ export function TicketsPage() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">Max Open Tickets Per User</p>
+                    <p className="font-medium">{t("settings.maxTicketsPerUser")}</p>
                     <p className="text-sm text-text-muted">
-                      Limit how many tickets a user can have open.
+                      {t("settings.maxTicketsPerUserDesc")}
                     </p>
                   </div>
                   <Input
@@ -489,9 +488,9 @@ export function TicketsPage() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">Auto-Close After (hours)</p>
+                    <p className="font-medium">{t("settings.closeConfirmation")}</p>
                     <p className="text-sm text-text-muted">
-                      Automatically close inactive tickets. 0 = disabled.
+                      {t("settings.closeConfirmationDesc")}
                     </p>
                   </div>
                   <Input
@@ -507,7 +506,7 @@ export function TicketsPage() {
                 <Separator />
 
                 <div>
-                  <Label htmlFor="naming-format">Channel Naming Format</Label>
+                  <Label htmlFor="naming-format">{t("common:labels.name")}</Label>
                   <Input
                     id="naming-format"
                     value={settings.namingFormat}
@@ -522,7 +521,7 @@ export function TicketsPage() {
                 <Separator />
 
                 <Button onClick={handleSaveSettings} disabled={updateSettings.isPending}>
-                  Save Settings
+                  {t("common:actions.save")}
                 </Button>
               </div>
             ) : null}

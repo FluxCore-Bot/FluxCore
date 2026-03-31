@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "인증되지 않았습니다",
+    "sessionExpired": "세션이 만료되었습니다",
+    "missingCode": "code 매개변수가 없습니다",
+    "tokenExchangeFailed": "토큰 교환에 실패했습니다",
+    "failedToFetchUser": "사용자 정보를 가져오는 데 실패했습니다"
+  },
+  "permissions": {
+    "noGuildPermission": "이 서버에 대한 권한이 없습니다",
+    "botNotInGuild": "봇이 이 서버에 없습니다",
+    "insufficientPermissions": "권한이 부족합니다",
+    "permissionsNotResolved": "권한을 확인할 수 없습니다",
+    "requiresPermission": "이 작업에는 \"{{permission}}\" 권한이 필요합니다"
+  },
+  "validation": {
+    "invalidInput": "잘못된 입력입니다",
+    "missingField": "필수 필드가 누락되었습니다: {{field}}",
+    "invalidFormat": "{{field}}의 형식이 올바르지 않습니다",
+    "tooLong": "{{field}}이(가) 최대 {{max}}자를 초과했습니다",
+    "tooShort": "{{field}}은(는) 최소 {{min}}자 이상이어야 합니다",
+    "outOfRange": "{{field}}은(는) {{min}}에서 {{max}} 사이여야 합니다"
+  },
+  "resources": {
+    "notFound": "찾을 수 없습니다",
+    "alreadyExists": "{{resource}}이(가) 이미 존재합니다",
+    "limitReached": "서버당 {{resource}} 최대 {{max}}개",
+    "createFailed": "{{resource}} 생성에 실패했습니다",
+    "updateFailed": "{{resource}} 업데이트에 실패했습니다",
+    "deleteFailed": "{{resource}} 삭제에 실패했습니다"
+  },
+  "server": {
+    "internalError": "내부 서버 오류",
+    "serviceUnavailable": "서비스를 일시적으로 사용할 수 없습니다",
+    "rateLimited": "요청이 너무 많습니다. 잠시 후 다시 시도해 주세요."
+  },
+  "csrf": {
+    "invalidToken": "유효하지 않거나 누락된 CSRF 토큰"
+  }
+}

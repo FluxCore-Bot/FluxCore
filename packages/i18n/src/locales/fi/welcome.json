@@ -1,0 +1,65 @@
+{
+  "title": "Tervetuloa ja hyvästit",
+  "subtitle": "Määritä tervetulo- ja hyvästelyviestit, kuvat ja autoroolit.",
+  "loadingSubtitle": "Määritä tervetulo- ja hyvästelyviestit palvelimellesi.",
+  "tabs": {
+    "welcome": "Tervetuloa",
+    "welcomeImage": "Tervetulokuva",
+    "farewell": "Hyvästit",
+    "farewellImage": "Hyvästelyuva",
+    "dm": "Tervetulo-DM",
+    "autorole": "Automaattirooli"
+  },
+  "welcome": {
+    "title": "Tervetuloviesti",
+    "description": "Lähetä mukautettu upotus kun uusi jäsen liittyy.",
+    "channelLabel": "Tervetulokanavan ID",
+    "channelPlaceholder": "Kanava-ID...",
+    "embedBuilder": "Upotuksen rakentaja"
+  },
+  "welcomeImage": {
+    "title": "Tervetulokuva",
+    "description": "Luo mukautettu kuvakortti jäsenen avatarilla kun he liittyvät.",
+    "disabled": "Ota käyttöön yläpuolella oleva kytkin tervetulokuvien määrittämiseksi."
+  },
+  "farewell": {
+    "title": "Hyvästelyviesti",
+    "description": "Lähetä viesti kun jäsen poistuu palvelimelta.",
+    "channelLabel": "Hyvästelykanavan ID",
+    "channelPlaceholder": "Kanava-ID..."
+  },
+  "farewellImage": {
+    "title": "Hyvästelyuva",
+    "description": "Luo mukautettu hyvästelykortti kun jäsen poistuu.",
+    "disabled": "Ota käyttöön yläpuolella oleva kytkin hyvästelyuvia määrittämiseksi."
+  },
+  "dm": {
+    "title": "Tervetulo-DM",
+    "description": "Lähetä yksityisviesti uusille jäsenille. Epäonnistuu hiljaisesti jos DM on pois käytöstä."
+  },
+  "autorole": {
+    "title": "Automaattirooli",
+    "description": "Myönnä automaattisesti rooleja uusille jäsenille kun he liittyvät. Botit on jätetty pois. Botin on oltava korkeammalla kuin tässä luetellut roolit.",
+    "label": "Rooli-ID:t (pilkuilla erotetut)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Otsikko",
+    "description": "Kuvaus",
+    "color": "Väri (hex)",
+    "footer": "Alatunniste",
+    "thumbnail": "Pikkukuva-URL",
+    "image": "Kuva-URL",
+    "variables": "Muuttujat:"
+  },
+  "saveChanges": "Tallenna muutokset",
+  "saving": "Tallennetaan...",
+  "sendTest": "Lähetä testiviesti",
+  "sending": "Lähetetään...",
+  "toast": {
+    "saved": "Tervetulomääritys tallennettu",
+    "saveFailed": "Määrityksen tallentaminen epäonnistui",
+    "testSent": "Testiviesti lähetetään kanavalle <#{{channelId}}>",
+    "testFailed": "Testiviestin lähettäminen epäonnistui"
+  }
+}

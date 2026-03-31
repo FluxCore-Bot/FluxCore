@@ -1,0 +1,118 @@
+{
+  "title": "Rolak eta baimenak",
+  "subtitle": "Kontrolatu nork atzitu eta kudeatu dezakeen kontrol-paneleko modulu bakoitza.",
+  "actions": {
+    "createRole": "Rola sortu"
+  },
+  "permissionSystem": {
+    "title": "Baimen-sistema",
+    "active": "Aktiboa — administratzaileak esleitutako baimenetan mugatuta daude.",
+    "inactive": "Inaktiboa — MANAGE_GUILD duten administratzaile guztiek sarbide osoa dute.",
+    "enabledToast": "Baimen-sistema gaituta",
+    "disabledToast": "Baimen-sistema desgaituta — administratzaile guztiek sarbide osoa dute"
+  },
+  "warning": {
+    "disabled": "Baimen-sistema desgaituta dago. Kontrol-paneleko administratzaile guztiek sarbide osoa dute une honetan. Gaitu goian baimen xehatuak betearazteko."
+  },
+  "tabs": {
+    "roles": "Rolak",
+    "auditLog": "Auditoretza-erregistroa"
+  },
+  "roleList": {
+    "title": "Kontrol-paneleko rolak",
+    "empty": "Oraindik ez da rolik sortu.",
+    "selectHint": "Hautatu rol bat editatzeko, edo sortu berri bat.",
+    "default": "Lehenetsia",
+    "name": "Izena",
+    "members": "Kideak",
+    "permissions": "Baimenak",
+    "edit": "Editatu",
+    "delete": "Ezabatu"
+  },
+  "presets": {
+    "title": "Azkar gehitu aurre-ezarpenetik",
+    "createdToast": "\"{{name}}\" rola sortuta"
+  },
+  "roleEditor": {
+    "memberCount": "Kide {{count}}",
+    "memberCount_plural": "{{count}} kide",
+    "name": "Rol-izena",
+    "color": "Kolorea",
+    "defaultRole": "Lehenetsitako rola",
+    "permissions": "Baimenak",
+    "allBadge": "Denak",
+    "discordRoles": "Discord rolak"
+  },
+  "roleForm": {
+    "name": "Rol-izena",
+    "discordRoles": "Discord rolak",
+    "permissions": "Baimenak",
+    "create": "Rola sortu",
+    "update": "Rola eguneratu",
+    "cancel": "Utzi"
+  },
+  "createDialog": {
+    "title": "Kontrol-paneleko rola sortu",
+    "name": "Izena",
+    "namePlaceholder": "adib. Moderatzailea",
+    "color": "Kolorea"
+  },
+  "permissionCategories": {
+    "actions": "Ekintzak eta automatizazioa",
+    "music": "Musika",
+    "tempvoice": "TempVoice",
+    "welcome": "Ongi etorria eta agurra",
+    "moderation": "Moderazioa",
+    "logging": "Erregistratzea",
+    "leveling": "Mailak",
+    "roles": "Rol panelak",
+    "tickets": "Tiketak",
+    "suggestions": "Iradokizunak",
+    "starboard": "Izar-taula",
+    "giveaways": "Zozketak",
+    "security": "Segurtasuna",
+    "scheduled": "Programatutako mezuak",
+    "commands": "Komando pertsonalizatuak",
+    "settings": "Zerbitzariaren ezarpenak"
+  },
+  "audit": {
+    "table": {
+      "user": "Erabiltzailea",
+      "action": "Ekintza",
+      "target": "Helburua",
+      "timestamp": "Noiz"
+    },
+    "noEntries": "Oraindik ez dago auditoretza-erregistro sarrerarik."
+  },
+  "pagination": {
+    "previous": "Aurrekoa",
+    "next": "Hurrengoa",
+    "page": "{{current}}. orrialdea {{total}}-tik"
+  },
+  "toast": {
+    "roleCreated": "\"{{name}}\" rola sortuta",
+    "roleCreateFailed": "Ezin izan da rola sortu",
+    "roleUpdated": "Rola eguneratuta",
+    "roleUpdateFailed": "Ezin izan da rola eguneratu",
+    "roleDeleted": "Rola ezabatuta",
+    "roleDeleteFailed": "Ezin izan da rola ezabatu"
+  },
+  "confirm": {
+    "deleteTitle": "\"{{name}}\" rola ezabatu?",
+    "deleteMessage": "Honek rola ezabatuko du eta kide guztiak desesleituko ditu. Ekintza hau ezin da desegin.",
+    "deleteRole": "Ziur zaude rol hau ezabatu nahi duzula? Kideek esleitutako baimenak galduko dituzte."
+  },
+  "saveButton": {
+    "saving": "Gordetzen...",
+    "save": "Aldaketak gorde"
+  },
+  "deleteButton": {
+    "deleting": "Ezabatzen...",
+    "delete": "Ezabatu"
+  },
+  "createButton": {
+    "creating": "Sortzen...",
+    "create": "Sortu"
+  },
+  "loading": "Baimenak kargatzen..."
+}

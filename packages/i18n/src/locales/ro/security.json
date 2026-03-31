@@ -1,0 +1,108 @@
+{
+  "title": "Securitate",
+  "subtitle": "Configurează protecția anti-raid și setările de securitate ale serverului.",
+  "antiRaid": {
+    "title": "Protecție Anti-Raid",
+    "description": "Activează detectarea automată și răspunsul la raiduri coordonate, conturi suspecte și acțiuni distructive."
+  },
+  "sections": {
+    "joinRate": "Rata de Intrare",
+    "accountAge": "Vârsta Contului",
+    "antiNuke": "Anti-Nuke",
+    "lockdown": "Blocare",
+    "events": "Evenimente"
+  },
+  "joinRate": {
+    "title": "Detectarea Ratei de Intrare",
+    "description": "Detectează intrările masive monitorizând rata de înregistrare a noilor membri.",
+    "threshold": "Prag de Intrare",
+    "thresholdHint": "Numărul de intrări pentru a declanșa detectarea",
+    "window": "Fereastră de Timp (secunde)",
+    "windowHint": "Fereastra în care sunt numărate intrările",
+    "action": "Acțiune la Detectare",
+    "actionHint": "Acțiunea de luat asupra membrilor suspectați de raid",
+    "actions": {
+      "ban": "Ban",
+      "kick": "Expulzare",
+      "timeout": "Timeout",
+      "lockdown": "Blocare"
+    }
+  },
+  "accountAge": {
+    "title": "Filtru Vârstă Cont",
+    "description": "Acționează automat asupra conturilor mai noi decât o vârstă minimă. Setează la 0 pentru a dezactiva.",
+    "minAge": "Vârsta Minimă a Contului (zile)",
+    "minAgeHint": "0 = dezactivat. Conturile mai noi de atât vor fi acționate.",
+    "action": "Acțiune"
+  },
+  "antiNuke": {
+    "title": "Protecție Anti-Nuke",
+    "description": "Detectează ștergerea în masă a canalelor/rolurilor și pune în carantină utilizatorul responsabil eliminând toate rolurile sale.",
+    "threshold": "Prag de Ștergere",
+    "thresholdHint": "Numărul de ștergeri în 10 secunde pentru a declanșa carantina",
+    "channelDeleteThreshold": "Prag de Ștergere Canal",
+    "roleDeleteThreshold": "Prag de Ștergere Rol",
+    "massbanThreshold": "Prag de Ban în Masă",
+    "interval": "Interval (secunde)",
+    "action": "Acțiune"
+  },
+  "lockdown": {
+    "title": "Blocare Automată la Raid",
+    "description": "Blochează automat toate canalele când este detectat un raid.",
+    "whitelistedRoles": "ID-uri Roluri pe Lista Albă (separate prin virgulă)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Membrii cu aceste roluri vor fi exceptați de la detectarea raidurilor.",
+    "logChannel": "ID Canal Jurnal",
+    "logChannelPlaceholder": "ID canal pentru jurnalele evenimentelor de raid...",
+    "enableButton": "Activează Blocarea",
+    "disableButton": "Dezactivează Blocarea",
+    "active": "Blocare Activă",
+    "inactive": "Blocare Inactivă"
+  },
+  "events": {
+    "title": "Evenimente Recente de Raid",
+    "description": "Cronologia raidurilor detectate, blocărilor pe baza vârstei contului și evenimentelor de blocare.",
+    "empty": "Nu există evenimente de raid înregistrate încă. Evenimentele vor apărea aici când detecția raidurilor se declanșează.",
+    "actionLabel": "Acțiune: {{action}}",
+    "usersLabel": "Utilizatori: {{count}}",
+    "accountAgeLabel": "Vârsta contului: {{days}}z",
+    "table": {
+      "type": "Tip",
+      "description": "Descriere",
+      "time": "Timp",
+      "action": "Acțiune Luată"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Vârf de Intrări",
+    "account_age": "Vârsta Contului",
+    "nuke_attempt": "Tentativă de Nuke",
+    "lockdown": "Blocare",
+    "massJoin": "Intrare în Masă",
+    "suspiciousAccounts": "Conturi Suspecte",
+    "channelDeletion": "Ștergere Canal",
+    "roleDeletion": "Ștergere Rol",
+    "massBan": "Ban în Masă"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Următor",
+    "page": "Pagina {{current}} din {{total}}"
+  },
+  "toast": {
+    "saved": "Configurație anti-raid salvată",
+    "saveFailed": "Salvarea configurației a eșuat",
+    "lockdownEnabled": "Blocare server activată",
+    "lockdownDisabled": "Blocare server dezactivată",
+    "lockdownFailed": "Activarea/dezactivarea blocării a eșuat"
+  },
+  "saveButton": {
+    "saving": "Se salvează...",
+    "save": "Salvează Modificările"
+  },
+  "labels": {
+    "seconds": "secunde",
+    "minutes": "minute",
+    "hours": "ore"
+  }
+}

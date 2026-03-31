@@ -1,0 +1,41 @@
+{
+  "title": "Starboard",
+  "subtitle": "Fremhev de beste meldingene ved å samle stjernereaksjoner i en dedikert kanal.",
+  "tabs": {
+    "settings": "Innstillinger",
+    "starredMessages": "Stjernemerkede meldinger"
+  },
+  "settings": {
+    "title": "Starboard-konfigurasjon",
+    "description": "Konfigurer når og hvor stjernemerkede meldinger publiseres.",
+    "channelId": "Starboard-kanal",
+    "channelIdDesc": "Kanalen der stjernemerkede meldinger publiseres.",
+    "starEmoji": "Stjerneemoji",
+    "starEmojiDesc": "Emojien som brukes for å stjernemerke meldinger. Standard er stjerneemojien.",
+    "threshold": "Stjernegrense",
+    "thresholdDesc": "Minimum antall reaksjoner som kreves for å publisere en melding til starboarden.",
+    "selfStar": "Selvstjerne",
+    "selfStarDesc": "Tillat meldingsforfattere å stjernemerke sine egne meldinger.",
+    "nsfwAllowed": "NSFW tillatt",
+    "nsfwAllowedDesc": "Tillat meldinger fra NSFW-kanaler å vises på starboarden.",
+    "ignoredChannels": "Ignorerte kanaler",
+    "ignoredChannelsDesc": "Meldinger fra disse kanalene vises aldri på starboarden."
+  },
+  "messages": {
+    "table": {
+      "original": "Originalmelding",
+      "stars": "Stjerner",
+      "channel": "Kanal",
+      "date": "Dato"
+    },
+    "noMessages": "Ingen stjernemerkede meldinger ennå."
+  },
+  "toast": {
+    "saved": "Starboard-innstillinger lagret",
+    "saveFailed": "Kunne ikke lagre starboard-innstillinger"
+  },
+  "actions": {
+    "save": "Lagre",
+    "saving": "Lagrer..."
+  }
+}

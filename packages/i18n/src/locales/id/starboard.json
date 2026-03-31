@@ -1,0 +1,41 @@
+{
+  "title": "Starboard",
+  "subtitle": "Soroti pesan terbaik dengan mengumpulkan reaksi bintang ke saluran khusus.",
+  "tabs": {
+    "settings": "Pengaturan",
+    "starredMessages": "Pesan Berbintang"
+  },
+  "settings": {
+    "title": "Konfigurasi Starboard",
+    "description": "Konfigurasikan kapan dan di mana pesan berbintang diposting.",
+    "channelId": "Saluran Starboard",
+    "channelIdDesc": "Saluran tempat pesan berbintang diposting.",
+    "starEmoji": "Emoji Bintang",
+    "starEmojiDesc": "Emoji yang digunakan untuk memberi bintang pada pesan. Default emoji bintang.",
+    "threshold": "Ambang Bintang",
+    "thresholdDesc": "Jumlah minimum reaksi yang diperlukan untuk memposting pesan ke starboard.",
+    "selfStar": "Bintang Sendiri",
+    "selfStarDesc": "Izinkan penulis pesan untuk memberi bintang pada pesan mereka sendiri.",
+    "nsfwAllowed": "NSFW Diizinkan",
+    "nsfwAllowedDesc": "Izinkan pesan dari saluran NSFW untuk muncul di starboard.",
+    "ignoredChannels": "Saluran yang Diabaikan",
+    "ignoredChannelsDesc": "Pesan dari saluran ini tidak akan pernah muncul di starboard."
+  },
+  "messages": {
+    "table": {
+      "original": "Pesan Asli",
+      "stars": "Bintang",
+      "channel": "Saluran",
+      "date": "Tanggal"
+    },
+    "noMessages": "Belum ada pesan berbintang."
+  },
+  "toast": {
+    "saved": "Pengaturan starboard disimpan",
+    "saveFailed": "Gagal menyimpan pengaturan starboard"
+  },
+  "actions": {
+    "save": "Simpan",
+    "saving": "Menyimpan..."
+  }
+}

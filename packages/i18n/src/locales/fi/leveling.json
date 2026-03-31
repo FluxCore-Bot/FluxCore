@@ -1,0 +1,120 @@
+{
+  "title": "Tasojärjestelmä",
+  "subtitle": "Määritä XP:n ansainta, tasonousuilmoitukset, roolipalkinnot ja kertoimet.",
+  "stats": {
+    "rankedMembers": "Sijoitetut jäsenet",
+    "roleRewards": "Roolipalkinnot",
+    "systemStatus": "Järjestelmän tila",
+    "enabled": "Käytössä",
+    "disabled": "Pois käytöstä"
+  },
+  "tabs": {
+    "leaderboard": "Tulostaulukko",
+    "settings": "Asetukset",
+    "roleRewards": "Roolipalkinnot",
+    "exclusions": "Poikkeukset",
+    "multipliers": "Kertoimet"
+  },
+  "table": {
+    "rank": "Sijoitus",
+    "userId": "Käyttäjä-ID",
+    "level": "Taso",
+    "xp": "XP",
+    "messages": "Viestit",
+    "voiceTime": "Puheaika"
+  },
+  "settings": {
+    "title": "Tasoasetukset",
+    "enabled": "Ota tasojärjestelmä käyttöön",
+    "enabledDesc": "Kytke koko tasojärjestelmä päälle tai pois.",
+    "xpPerMessage": "XP per viesti",
+    "xpPerMessageDesc": "Perus-XP per viesti (satunnaisuus 0-9 lisätään).",
+    "xpCooldown": "XP:n jäähdytysaika (sekuntia)",
+    "xpCooldownDesc": "Vähimmäisaika XP-myöntöjen välillä per käyttäjä.",
+    "voiceXpEnabled": "Puhe-XP",
+    "voiceXpEnabledDesc": "Myönnä XP äänikanavilla vietetystä ajasta.",
+    "voiceXpPerMinute": "Puhe-XP per minuutti",
+    "voiceXpPerMinuteDesc": "XP per minuutti puheessa.",
+    "levelUpAnnouncements": "Tasonousuilmoitukset",
+    "levelUpAnnouncementsDesc": "Ilmoita kun jäsen nousee tasoa.",
+    "announceDest": "Ilmoituksen kohde",
+    "announceDestHint": "Voit myös syöttää kanava-ID:n suoraan yllä olevaan kenttään.",
+    "announceDestSameChannel": "Sama kanava",
+    "announceDestDM": "Yksityisviesti",
+    "announceMessage": "Ilmoitusteksti",
+    "announceMessagePlaceholder": "{user} saavutti juuri **Tason {level}**!",
+    "announceMessageVars": "Muuttujat: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Roolipalkinnot",
+    "description": "Myönnä automaattisesti rooleja kun jäsenet saavuttavat tiettyjä tasoja.",
+    "addReward": "Lisää palkinto",
+    "addRewardTitle": "Lisää roolipalkinto",
+    "level": "Taso",
+    "levelPrefix": "Taso {{level}}",
+    "roleId": "Rooli-ID",
+    "levelPlaceholder": "esim. 5",
+    "rolePlaceholder": "esim. 123456789",
+    "removeReward": "Poista",
+    "noRewards": "Ei roolipalkintoja määritetty."
+  },
+  "exclusions": {
+    "title": "XP-poikkeukset",
+    "description": "Kanavat ja roolit, jotka eivät ansaitse XP:tä.",
+    "noXpChannels": "XP-vapaat kanavat (pilkuilla erotetut ID:t)",
+    "noXpChannelsPlaceholder": "esim. 123456789, 987654321",
+    "noXpRoles": "XP-vapaat roolit (pilkuilla erotetut ID:t)",
+    "noXpRolesPlaceholder": "esim. 123456789, 987654321",
+    "save": "Tallenna poikkeukset"
+  },
+  "multipliers": {
+    "title": "XP-kertoimet",
+    "description": "Aseta XP-kertoimet per kanava tai rooli. Kerroin 2 kaksinkertaistaa ansaitun XP:n.",
+    "channelMultipliers": "Kanavakertoimet",
+    "roleMultipliers": "Roolikertoimet",
+    "channelId": "Kanava-ID",
+    "roleId": "Rooli-ID",
+    "multiplier": "Kerroin",
+    "type": "Tyyppi",
+    "typeChannel": "Kanava",
+    "typeRole": "Rooli",
+    "id": "ID",
+    "idPlaceholder": "Kanava- tai rooli-ID",
+    "value": "Kerroin",
+    "valuePlaceholder": "esim. 2",
+    "add": "Lisää kerroin",
+    "addTitle": "Lisää kerroin",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Ei XP-kertoimia määritetty."
+  },
+  "pagination": {
+    "previous": "Edellinen",
+    "next": "Seuraava",
+    "pageInfo": "Sivu {{page}} / {{totalPages}} ({{total}} yhteensä)"
+  },
+  "loading": "Ladataan tulostaulukkoa...",
+  "loadingGeneric": "Ladataan...",
+  "emptyLeaderboard": "Kukaan ei ole vielä ansainnut XP:tä.",
+  "toast": {
+    "saved": "Tasoasetukset tallennettu",
+    "saveFailed": "Asetuksen päivittäminen epäonnistui",
+    "rewardAdded": "Palkinto lisätty",
+    "rewardAddFailed": "Palkinnon lisääminen epäonnistui",
+    "rewardRemoved": "Palkinto poistettu",
+    "rewardRemoveFailed": "Palkinnon poistaminen epäonnistui",
+    "multiplierAdded": "Kerroin lisätty",
+    "multiplierAddFailed": "Kertoimen lisääminen epäonnistui",
+    "multiplierRemoved": "Kerroin poistettu",
+    "multiplierRemoveFailed": "Kertoimen poistaminen epäonnistui",
+    "exclusionUpdated": "Poikkeukset tallennettu",
+    "exclusionFailed": "Poikkeusten tallentaminen epäonnistui",
+    "levelValidation": "Tason on oltava välillä 1 ja 100",
+    "roleIdRequired": "Rooli-ID vaaditaan",
+    "multiplierIdRequired": "ID ja kerroin vaaditaan",
+    "multiplierRange": "Kertoimen on oltava välillä 0 ja 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}t {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

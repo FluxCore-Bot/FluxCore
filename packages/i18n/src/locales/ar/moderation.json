@@ -1,0 +1,54 @@
+{
+  "title": "الإشراف",
+  "subtitle": "عرض وإدارة حالات الإشراف وتكوين إعدادات العقوبات.",
+  "stats": {
+    "totalCases": "إجمالي الحالات",
+    "activeTempbans": "حالات الحظر المؤقت النشطة",
+    "last24h": "آخر 24 ساعة"
+  },
+  "cases": "الحالات",
+  "actions": {
+    "ban": "حظر",
+    "tempban": "حظر مؤقت",
+    "kick": "طرد",
+    "timeout": "إسكات",
+    "softban": "حظر ناعم",
+    "warn": "تحذير",
+    "note": "ملاحظة"
+  },
+  "table": {
+    "id": "المعرف",
+    "action": "الإجراء",
+    "target": "الهدف",
+    "moderator": "المشرف",
+    "reason": "السبب",
+    "date": "التاريخ",
+    "actions": "الإجراءات",
+    "noCases": "لم يتم العثور على حالات.",
+    "noReason": "بدون سبب"
+  },
+  "filter": {
+    "userPlaceholder": "تصفية بمعرف المستخدم...",
+    "allActions": "جميع الإجراءات"
+  },
+  "pagination": {
+    "previous": "السابق",
+    "next": "التالي",
+    "page": "صفحة {{page}} من {{total}}"
+  },
+  "editDialog": {
+    "title": "تعديل سبب الحالة #{{id}}",
+    "placeholder": "أدخل السبب الجديد...",
+    "saving": "جارٍ الحفظ..."
+  },
+  "editReason": "تعديل السبب",
+  "deleteCase": "حذف الحالة",
+  "deleteConfirm": "هل أنت متأكد أنك تريد حذف هذه الحالة؟",
+  "settings": {
+    "title": "الإعدادات",
+    "dmOnPunishment": "إرسال رسالة خاصة عند العقوبة",
+    "dmOnPunishmentDesc": "إرسال رسالة خاصة للمستخدمين عند معاقبتهم (حظر، طرد، إسكات).",
+    "modLogChannel": "قناة سجل الإشراف",
+    "modLogChannelDesc": "القناة التي يتم فيها تسجيل إجراءات الإشراف."
+  }
+}

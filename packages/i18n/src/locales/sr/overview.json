@@ -1,0 +1,12 @@
+{
+  "title": "Pregled",
+  "subtitle": "Pratite performanse automatizacije i aktivnosti na prvi pogled.",
+  "stats": {
+    "actionRules": "Pravila radnji",
+    "activeNow": "Trenutno aktivno",
+    "executions": "Izvrsavanja",
+    "successRate": "Stopa uspesnosti"
+  },
+  "errorsInLast24h": "{{count}} greska u poslednjih 24h",
+  "errorsInLast24h_other": "{{count}} gresaka u poslednjih 24h"
+}

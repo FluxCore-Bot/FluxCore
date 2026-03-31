@@ -1,0 +1,9 @@
+{
+  "title": "Máy Chủ Của Bạn",
+  "subtitle": "Chọn một máy chủ để quản lý và cấu hình.",
+  "loading": "Đang tải máy chủ...",
+  "empty": {
+    "title": "Không tìm thấy máy chủ",
+    "description": "Hãy đảm bảo bot đã được thêm vào máy chủ mà bạn có quyền Quản Lý Máy Chủ."
+  }
+}

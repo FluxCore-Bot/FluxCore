@@ -1,0 +1,112 @@
+{
+  "title": "Panele ról",
+  "subtitle": "Twórz panele samoprzypisywania ról za pomocą przycisków, list rozwijanych lub reakcji.",
+  "stats": {
+    "totalPanels": "Łącznie paneli",
+    "deployed": "Wdrożone",
+    "totalRoles": "Łącznie ról"
+  },
+  "tabs": {
+    "panels": "Panele",
+    "preview": "Podgląd"
+  },
+  "table": {
+    "name": "Nazwa",
+    "type": "Typ",
+    "mode": "Tryb",
+    "roles": "Role",
+    "status": "Status"
+  },
+  "panelTypes": {
+    "reaction": "Reakcja",
+    "button": "Przycisk",
+    "dropdown": "Lista rozwijana"
+  },
+  "panelModes": {
+    "toggle": "Przełączanie",
+    "unique": "Unikalny",
+    "verify": "Weryfikacja"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Przełączanie (dodaj/usuń)",
+    "unique": "Unikalny (jedna na raz)",
+    "verify": "Weryfikacja (tylko dodawanie)"
+  },
+  "status": {
+    "deployed": "Wdrożony",
+    "draft": "Szkic"
+  },
+  "dialog": {
+    "createPanel": "Utwórz panel",
+    "editPanel": "Edytuj panel"
+  },
+  "panelList": {
+    "title": "Wszystkie panele"
+  },
+  "form": {
+    "name": "Nazwa",
+    "namePlaceholder": "np. Role kolorów",
+    "type": "Typ",
+    "mode": "Tryb",
+    "channel": "Kanał",
+    "channelPlaceholder": "Wybierz kanał",
+    "minRoles": "Min. ról",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Maks. ról",
+    "maxRolesPlaceholder": "Wszystkie",
+    "embedSection": "Embed",
+    "embedTitle": "Tytuł",
+    "embedTitlePlaceholder": "Tytuł panelu (domyślnie nazwa panelu)",
+    "embedDescription": "Opis",
+    "embedDescriptionPlaceholder": "Tekst opisu",
+    "rolesCount": "Role ({{count}}/25)",
+    "addRole": "Dodaj rolę"
+  },
+  "entry": {
+    "role": "Rola",
+    "rolePlaceholder": "Wybierz rolę",
+    "label": "Etykieta",
+    "labelPlaceholder": "Tekst przycisku",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "np. star",
+    "description": "Opis",
+    "descriptionPlaceholder": "Opis opcji",
+    "style": "Styl"
+  },
+  "buttonStyles": {
+    "primary": "Podstawowy",
+    "secondary": "Drugorzędny",
+    "success": "Sukces",
+    "danger": "Niebezpieczeństwo"
+  },
+  "actions": {
+    "create": "Utwórz",
+    "update": "Aktualizuj",
+    "cancel": "Anuluj",
+    "deploy": "Wdróż",
+    "delete": "Usuń",
+    "addEntry": "Dodaj wpis",
+    "removeEntry": "Usuń wpis"
+  },
+  "preview": {
+    "title": "Podgląd na żywo",
+    "description": "Podgląd wyglądu paneli w Discord.",
+    "selectRoles": "Wybierz role...",
+    "noPreview": "Brak paneli do podglądu."
+  },
+  "empty": "Nie utworzono jeszcze żadnych paneli ról. Kliknij \"Utwórz panel\", aby rozpocząć.",
+  "toast": {
+    "created": "Panel utworzony",
+    "createFailed": "Nie udało się utworzyć panelu",
+    "updated": "Panel zaktualizowany",
+    "updateFailed": "Nie udało się zaktualizować panelu",
+    "deleted": "Panel usunięty",
+    "deleteFailed": "Nie udało się usunąć panelu",
+    "deployed": "Panel ról wdrożony na kanał",
+    "deployFailed": "Nie udało się wysłać panelu",
+    "nameRequired": "Nazwa panelu jest wymagana",
+    "channelRequired": "Kanał jest wymagany",
+    "maxRolesReached": "Maksymalnie 25 ról na panel"
+  },
+  "loading": "Ładowanie paneli..."
+}

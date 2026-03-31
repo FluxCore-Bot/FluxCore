@@ -1,0 +1,86 @@
+{
+  "title": "Zamanlanmış Mesajlar",
+  "subtitle": "Yapılandırılabilir zamanlamalarda düzenli olarak gönderilen otomatik mesajlar oluşturun.",
+  "stats": {
+    "totalMessages": "Toplam Mesaj",
+    "active": "Aktif",
+    "inactive": "Pasif"
+  },
+  "table": {
+    "name": "Ad",
+    "channel": "Kanal",
+    "schedule": "Zamanlama",
+    "nextRun": "Sonraki Çalışma",
+    "status": "Durum"
+  },
+  "dialog": {
+    "editTitle": "Zamanlanmış Mesajı Düzenle",
+    "createTitle": "Yeni Zamanlanmış Mesaj"
+  },
+  "form": {
+    "name": "Ad",
+    "channel": "Kanal",
+    "schedulePreset": "Zamanlama Önayarı",
+    "cronExpression": "Cron İfadesi",
+    "timezone": "Saat Dilimi",
+    "messageContent": "Mesaj İçeriği",
+    "text": "Metin",
+    "embed": "Gömü",
+    "enabled": "Etkin",
+    "enabledDesc": "Bu zamanlanmış mesajın aktif olup olmadığı."
+  },
+  "cronPresets": {
+    "everyHour": "Her Saat",
+    "every6Hours": "Her 6 Saatte Bir",
+    "daily9am": "Günlük Sabah 9'da",
+    "dailyMidnight": "Günlük Gece Yarısı",
+    "weeklyMonday": "Haftalık Pazartesi",
+    "monthly1st": "Aylık 1. Günde",
+    "custom": "Özel"
+  },
+  "embed": {
+    "title": "Başlık",
+    "description": "Açıklama",
+    "color": "Renk (hex)",
+    "footer": "Alt Bilgi",
+    "thumbnail": "Küçük Resim URL'si",
+    "image": "Resim URL'si"
+  },
+  "toast": {
+    "created": "Zamanlanmış mesaj oluşturuldu",
+    "createFailed": "Zamanlanmış mesaj oluşturulamadı",
+    "updated": "Zamanlanmış mesaj güncellendi",
+    "updateFailed": "Zamanlanmış mesaj güncellenemedi",
+    "deleted": "Zamanlanmış mesaj silindi",
+    "deleteFailed": "Zamanlanmış mesaj silinemedi",
+    "testSent": "Test mesajı gönderildi",
+    "testFailed": "Test mesajı gönderilemedi"
+  },
+  "empty": {
+    "title": "Henüz zamanlanmış mesaj yok",
+    "description": "Düzenli aralıklarla otomatik olarak içerik yayınlamak için zamanlanmış bir mesaj oluşturun.",
+    "createButton": "Mesaj Oluştur"
+  },
+  "pagination": {
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "page": "Sayfa {{page}} / {{total}}"
+  },
+  "actions": {
+    "newMessage": "Yeni Mesaj",
+    "testSend": "Test Gönder",
+    "edit": "Düzenle",
+    "delete": "Sil",
+    "save": "Kaydet",
+    "cancel": "İptal"
+  },
+  "validation": {
+    "nameRequired": "Mesaj adı zorunludur",
+    "channelRequired": "Kanal zorunludur"
+  },
+  "cronPreview": {
+    "nextRuns": "Sonraki Çalışmalar"
+  },
+  "characters": "{{count}}/2000 karakter",
+  "never": "Hiçbir Zaman"
+}

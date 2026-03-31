@@ -1,0 +1,50 @@
+{
+  "title": "الهدايا",
+  "subtitle": "إجراء هدايا مع مدة قابلة للتخصيص ومتطلبات دخول واختيار فائزين.",
+  "stats": {
+    "activeGiveaways": "الهدايا النشطة",
+    "pastGiveaways": "الهدايا السابقة",
+    "totalEntries": "إجمالي المشاركات"
+  },
+  "table": {
+    "prize": "الجائزة",
+    "winners": "الفائزون",
+    "entries": "المشاركات",
+    "endsIn": "تنتهي خلال",
+    "status": "الحالة"
+  },
+  "statuses": {
+    "active": "نشطة",
+    "ended": "انتهت",
+    "cancelled": "ملغاة"
+  },
+  "actions": {
+    "create": "إنشاء هدية",
+    "edit": "تعديل",
+    "end": "إنهاء",
+    "reroll": "إعادة السحب",
+    "delete": "حذف"
+  },
+  "form": {
+    "prize": "الجائزة",
+    "winnersCount": "عدد الفائزين",
+    "duration": "المدة",
+    "channel": "القناة",
+    "requiredRole": "الدور المطلوب",
+    "description": "الوصف"
+  },
+  "toast": {
+    "created": "تم إنشاء الهدية",
+    "createFailed": "فشل في إنشاء الهدية",
+    "updated": "تم تحديث الهدية",
+    "updateFailed": "فشل في تحديث الهدية",
+    "ended": "تم إنهاء الهدية",
+    "endFailed": "فشل في إنهاء الهدية",
+    "rerolled": "تم إعادة سحب الفائزين",
+    "rerollFailed": "فشل في إعادة سحب الفائزين",
+    "deleted": "تم حذف الهدية",
+    "deleteFailed": "فشل في حذف الهدية"
+  },
+  "empty": "لا توجد هدايا بعد. أنشئ واحدة للبدء.",
+  "loading": "جارٍ تحميل الهدايا..."
+}

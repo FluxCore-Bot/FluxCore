@@ -1,0 +1,8 @@
+{
+  "title": "Logi",
+  "subtitle": "Monitoruj wykonania reguł i rejestrowanie zdarzeń.",
+  "tabs": {
+    "activity": "Logi aktywności",
+    "events": "Logi zdarzeń"
+  }
+}

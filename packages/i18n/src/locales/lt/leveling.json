@@ -1,0 +1,120 @@
+{
+  "title": "Lygiavimo sistema",
+  "subtitle": "Konfigurukite XP uzdarbio, lygio pakelimo pranesomu, roliu apdovanojimu ir daugikliu nustatymus.",
+  "stats": {
+    "rankedMembers": "Reitinguoti nariai",
+    "roleRewards": "Roliu apdovanojimai",
+    "systemStatus": "Sistemos busena",
+    "enabled": "Ijungta",
+    "disabled": "Isjungta"
+  },
+  "tabs": {
+    "leaderboard": "Lyderiu lentele",
+    "settings": "Nustatymai",
+    "roleRewards": "Roliu apdovanojimai",
+    "exclusions": "Isklyčimai",
+    "multipliers": "Daugikliai"
+  },
+  "table": {
+    "rank": "Rangas",
+    "userId": "Naudotojo ID",
+    "level": "Lygis",
+    "xp": "XP",
+    "messages": "Zinutes",
+    "voiceTime": "Balso laikas"
+  },
+  "settings": {
+    "title": "Lygiavimo nustatymai",
+    "enabled": "Ijungti lygiavima",
+    "enabledDesc": "Ijunkite arba isjunkite visa lygiavimo sistema.",
+    "xpPerMessage": "XP uz zinute",
+    "xpPerMessageDesc": "Bazinis XP skiriamas uz zinute (pridedama atsitiktinumas 0-9).",
+    "xpCooldown": "XP atvelsinimas (sekundes)",
+    "xpCooldownDesc": "Minimalus laikas tarp XP skyrimu vienam naudotojui.",
+    "voiceXpEnabled": "Balso XP",
+    "voiceXpEnabledDesc": "Skirti XP uz laika, praleista balso kanaluose.",
+    "voiceXpPerMinute": "Balso XP per minute",
+    "voiceXpPerMinuteDesc": "XP skiriamas per minute balso kanale.",
+    "levelUpAnnouncements": "Lygio pakelimo pranesimai",
+    "levelUpAnnouncementsDesc": "Pranesti, kai narys pakyla i aukstesni lygi.",
+    "announceDest": "Pranesimo tikslas",
+    "announceDestHint": "Taip pat galite ivesti kanalo ID tiesiogiai i lauka virs.",
+    "announceDestSameChannel": "Tas pats kanalas",
+    "announceDestDM": "Privatui zinute",
+    "announceMessage": "Pranesimo zinute",
+    "announceMessagePlaceholder": "{user} ka tik pasieke **lygi {level}**!",
+    "announceMessageVars": "Kintamieji: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Roliu apdovanojimai",
+    "description": "Automatiskai priskirkite roles, kai nariai pasiekia tam tikrus lygius.",
+    "addReward": "Prideti apdovanojima",
+    "addRewardTitle": "Prideti roles apdovanojima",
+    "level": "Lygis",
+    "levelPrefix": "Lygis {{level}}",
+    "roleId": "Roles ID",
+    "levelPlaceholder": "pvz. 5",
+    "rolePlaceholder": "pvz. 123456789",
+    "removeReward": "Pasalinti",
+    "noRewards": "Roliu apdovanojimu nekonfiguruota."
+  },
+  "exclusions": {
+    "title": "XP isklyčimai",
+    "description": "Kanalai ir roles, kurie neuzdirba XP.",
+    "noXpChannels": "Be-XP kanalai (ID atskirti kableliais)",
+    "noXpChannelsPlaceholder": "pvz. 123456789, 987654321",
+    "noXpRoles": "Be-XP roles (ID atskirti kableliais)",
+    "noXpRolesPlaceholder": "pvz. 123456789, 987654321",
+    "save": "Issaugoti isklyčius"
+  },
+  "multipliers": {
+    "title": "XP daugikliai",
+    "description": "Nustatykite XP daugiklius pagal kanala arba role. Daugiklis 2 dvigubina uzdirbia XP.",
+    "channelMultipliers": "Kanalu daugikliai",
+    "roleMultipliers": "Roliu daugikliai",
+    "channelId": "Kanalo ID",
+    "roleId": "Roles ID",
+    "multiplier": "Daugiklis",
+    "type": "Tipas",
+    "typeChannel": "Kanalas",
+    "typeRole": "Role",
+    "id": "ID",
+    "idPlaceholder": "Kanalo arba roles ID",
+    "value": "Daugiklis",
+    "valuePlaceholder": "pvz. 2",
+    "add": "Prideti daugikli",
+    "addTitle": "Prideti daugikli",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "XP daugikliu nekonfiguruota."
+  },
+  "pagination": {
+    "previous": "Ankstesnis",
+    "next": "Kitas",
+    "pageInfo": "Puslapis {{page}} is {{totalPages}} ({{total}} viso)"
+  },
+  "loading": "Kraunama lyderiu lentele...",
+  "loadingGeneric": "Kraunama...",
+  "emptyLeaderboard": "Joks narys dar neuzdirbo XP.",
+  "toast": {
+    "saved": "Lygiavimo nustatymai issaugoti",
+    "saveFailed": "Nepavyko atnaujinti nustatymo",
+    "rewardAdded": "Apdovanojimas pridetas",
+    "rewardAddFailed": "Nepavyko prideti apdovanojimo",
+    "rewardRemoved": "Apdovanojimas pasalintas",
+    "rewardRemoveFailed": "Nepavyko pasalinti apdovanojimo",
+    "multiplierAdded": "Daugiklis pridetas",
+    "multiplierAddFailed": "Nepavyko prideti daugiklio",
+    "multiplierRemoved": "Daugiklis pasalintas",
+    "multiplierRemoveFailed": "Nepavyko pasalinti daugiklio",
+    "exclusionUpdated": "Isklyčimai issaugoti",
+    "exclusionFailed": "Nepavyko issaugoti isklyčiu",
+    "levelValidation": "Lygis turi buti tarp 1 ir 100",
+    "roleIdRequired": "Roles ID privalomas",
+    "multiplierIdRequired": "ID ir daugiklio reikšme privalomi",
+    "multiplierRange": "Daugiklis turi buti tarp 0 ir 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}h {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

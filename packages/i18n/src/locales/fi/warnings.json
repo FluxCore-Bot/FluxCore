@@ -1,0 +1,72 @@
+{
+  "title": "Varoitukset",
+  "subtitle": "Seuraa ja hallitse jäsenten varoituksia automaattisella eskaloinnilla.",
+  "stats": {
+    "totalWarnings": "Varoituksia yhteensä",
+    "escalationRules": "Eskalointisäännöt",
+    "dmOnWarn": "DM varoituksesta"
+  },
+  "tabs": {
+    "warnings": "Varoitusloki",
+    "escalation": "Eskalointi",
+    "settings": "Asetukset"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Käyttäjä",
+    "moderator": "Moderaattori",
+    "reason": "Syy",
+    "date": "Päivämäärä"
+  },
+  "filter": {
+    "userPlaceholder": "Suodata käyttäjä-ID:llä...",
+    "clearAll": "Tyhjennä kaikki"
+  },
+  "pagination": {
+    "previous": "Edellinen",
+    "next": "Seuraava",
+    "page": "Sivu {{page}} / {{total}} ({{count}} yhteensä)"
+  },
+  "loading": "Ladataan varoituksia...",
+  "noWarnings": "Ei varoituksia.",
+  "toast": {
+    "warningRemoved": "Varoitus poistettu",
+    "warningsFailed": "Varoituksen poistaminen epäonnistui",
+    "enterUserId": "Syötä käyttäjä-ID tyhjentääksesi kaikki varoitukset kyseiseltä käyttäjältä",
+    "allCleared": "Kaikki varoitukset tyhjennetty käyttäjältä",
+    "clearFailed": "Varoitusten tyhjentäminen epäonnistui",
+    "thresholdAdded": "Rangaistusraja lisätty",
+    "thresholdFailed": "Rangaistuksen lisääminen epäonnistui",
+    "thresholdRemoved": "Rangaistus poistettu",
+    "removeFailed": "Rangaistuksen poistaminen epäonnistui",
+    "settingFailed": "Asetuksen päivittäminen epäonnistui",
+    "thresholdInvalid": "Raja-arvon on oltava positiivinen luku"
+  },
+  "escalation": {
+    "title": "Rangaistuseskalointi",
+    "description": "Määritä automaattiset toiminnot kun käyttäjä saavuttaa tietyn määrän varoituksia.",
+    "threshold": "Raja",
+    "action": "Toiminto",
+    "duration": "Kesto",
+    "noRules": "Ei eskalointisääntöjä määritetty.",
+    "addRule": "Lisää eskalointisääntö",
+    "addButton": "Lisää sääntö",
+    "warnings": "{{count}} varoitusta",
+    "min": "{{count}} min",
+    "timeout": "Aikakatkaisu",
+    "kick": "Potkaise",
+    "ban": "Estä",
+    "durationLabel": "Kesto (sekuntia)",
+    "thresholdPlaceholder": "esim. 3",
+    "durationPlaceholder": "esim. 3600"
+  },
+  "settings": {
+    "title": "Varoitusasetukset",
+    "dmOnWarn": "DM varoituksesta",
+    "dmOnWarnDesc": "Lähetä yksityisviesti käyttäjälle kun he saavat varoituksen.",
+    "requireReason": "Vaadi syy",
+    "requireReasonDesc": "Moderaattorien on annettava syy varoitusta antaessaan.",
+    "maxWarnings": "Max varoituksia",
+    "maxWarningsDesc": "Enimmäismäärä varoituksia per käyttäjä (0 = rajaton)."
+  }
+}

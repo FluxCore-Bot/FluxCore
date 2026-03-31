@@ -1,0 +1,54 @@
+{
+  "title": "管理",
+  "subtitle": "查看和管理管理案例，配置处罚设置。",
+  "stats": {
+    "totalCases": "案例总数",
+    "activeTempbans": "活跃临时封禁",
+    "last24h": "最近 24 小时"
+  },
+  "cases": "案例",
+  "actions": {
+    "ban": "封禁",
+    "tempban": "临时封禁",
+    "kick": "踢出",
+    "timeout": "超时",
+    "softban": "软封禁",
+    "warn": "警告",
+    "note": "备注"
+  },
+  "table": {
+    "id": "ID",
+    "action": "操作",
+    "target": "对象",
+    "moderator": "管理员",
+    "reason": "原因",
+    "date": "日期",
+    "actions": "操作",
+    "noCases": "未找到案例。",
+    "noReason": "无原因"
+  },
+  "filter": {
+    "userPlaceholder": "按用户 ID 筛选...",
+    "allActions": "所有操作"
+  },
+  "pagination": {
+    "previous": "上一页",
+    "next": "下一页",
+    "page": "第 {{page}} 页 / 共 {{total}} 页"
+  },
+  "editDialog": {
+    "title": "编辑案例 #{{id}} 的原因",
+    "placeholder": "输入新原因...",
+    "saving": "保存中..."
+  },
+  "editReason": "编辑原因",
+  "deleteCase": "删除案例",
+  "deleteConfirm": "确定要删除此案例吗？",
+  "settings": {
+    "title": "设置",
+    "dmOnPunishment": "处罚时发送私信",
+    "dmOnPunishmentDesc": "在处罚（封禁、踢出、超时）时向用户发送私信。",
+    "modLogChannel": "管理日志频道",
+    "modLogChannelDesc": "记录管理操作的频道。"
+  }
+}

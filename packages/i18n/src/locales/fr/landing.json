@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Maintenant en beta publique",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Le framework",
+    "titleLine2": "Discord bot tout-en-un",
+    "subtitle": "Deployez une presence Discord professionnelle en quelques minutes. Modulaire, auto-heberge et concu pour les communautes exigeantes."
+  },
+  "cta": {
+    "addToServer": "Ajouter au serveur",
+    "openDashboard": "Ouvrir le tableau de bord",
+    "exploreFeatures": "Decouvrir les fonctionnalites"
+  },
+  "stats": {
+    "servers": "Serveurs",
+    "latency": "Latence",
+    "uptime": "Disponibilite",
+    "modules": "Modules",
+    "serversValue": "1 000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99,9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Fonctionnalites",
+    "title": "Tout ce dont votre serveur a besoin",
+    "subtitle": "Une boite a outils modulaire concue pour les communautes qui exigent fiabilite, flexibilite et controle.",
+    "automation": {
+      "title": "Regles d'automatisation",
+      "description": "Creez des workflows complexes bases sur les evenements sans coder. Des declencheurs si-ceci-alors-cela avec 23 types d'evenements et 10 types d'actions."
+    },
+    "music": {
+      "title": "Systeme musical",
+      "description": "Streaming audio haute fidelite avec support multi-plateforme. Gestion de file d'attente, controles DJ et mode bibliotheque."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Gestion dynamique des salons vocaux. Creation automatique avec modeles de noms personnalises, permissions et nettoyage."
+    },
+    "logs": {
+      "title": "Journaux d'activite",
+      "description": "Piste d'audit complete de chaque execution d'automatisation. Recherchez, filtrez et deboguez vos regles avec des journaux detailles."
+    },
+    "webhooks": {
+      "title": "Webhooks et API",
+      "description": "Envoyez des donnees a des services externes via des webhooks HTTP. En-tetes personnalises, modeles de corps et interpolation de variables."
+    },
+    "dashboard": {
+      "title": "Tableau de bord en temps reel",
+      "description": "Gerez tout depuis un tableau de bord web elegant. Analytique, configuration et surveillance en un seul endroit."
+    }
+  },
+  "ctaSection": {
+    "title": "Pret a ameliorer votre communaute ?",
+    "subtitle": "Commencez en quelques minutes sans aucune configuration. Auto-heberge, open source et entierement gratuit."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "\u00a9 {{year}} FluxCore Technologies. Tous droits reserves.",
+    "links": {
+      "documentation": "Documentation",
+      "support": "Support",
+      "privacy": "Politique de confidentialite",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

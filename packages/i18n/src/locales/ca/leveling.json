@@ -1,0 +1,120 @@
+{
+  "title": "Sistema de nivells",
+  "subtitle": "Configura l'obtenció d'XP, anuncis de pujada de nivell, recompenses de rols i multiplicadors.",
+  "stats": {
+    "rankedMembers": "Membres classificats",
+    "roleRewards": "Recompenses de rols",
+    "systemStatus": "Estat del sistema",
+    "enabled": "Activat",
+    "disabled": "Desactivat"
+  },
+  "tabs": {
+    "leaderboard": "Classificació",
+    "settings": "Configuració",
+    "roleRewards": "Recompenses de rols",
+    "exclusions": "Exclusions",
+    "multipliers": "Multiplicadors"
+  },
+  "table": {
+    "rank": "Posició",
+    "userId": "ID d'usuari",
+    "level": "Nivell",
+    "xp": "XP",
+    "messages": "Missatges",
+    "voiceTime": "Temps de veu"
+  },
+  "settings": {
+    "title": "Configuració de nivells",
+    "enabled": "Activar nivells",
+    "enabledDesc": "Activa o desactiva tot el sistema de nivells.",
+    "xpPerMessage": "XP per missatge",
+    "xpPerMessageDesc": "XP base atorgada per missatge (s'afegeix un aleatori de 0-9).",
+    "xpCooldown": "Temps d'espera d'XP (segons)",
+    "xpCooldownDesc": "Temps minim entre atorgaments d'XP per usuari.",
+    "voiceXpEnabled": "XP de veu",
+    "voiceXpEnabledDesc": "Atorga XP pel temps passat als canals de veu.",
+    "voiceXpPerMinute": "XP de veu per minut",
+    "voiceXpPerMinuteDesc": "XP atorgada per minut en veu.",
+    "levelUpAnnouncements": "Anuncis de pujada de nivell",
+    "levelUpAnnouncementsDesc": "Anuncia quan un membre puja de nivell.",
+    "announceDest": "Destinació de l'anunci",
+    "announceDestHint": "També pots introduir un ID de canal directament al camp d'entrada de dalt.",
+    "announceDestSameChannel": "Mateix canal",
+    "announceDestDM": "Missatge directe",
+    "announceMessage": "Missatge d'anunci",
+    "announceMessagePlaceholder": "{user} acaba d'arribar al **Nivell {level}**!",
+    "announceMessageVars": "Variables: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Recompenses de rols",
+    "description": "Assigna automaticament rols quan els membres arriben a certs nivells.",
+    "addReward": "Afegir recompensa",
+    "addRewardTitle": "Afegir recompensa de rol",
+    "level": "Nivell",
+    "levelPrefix": "Nivell {{level}}",
+    "roleId": "ID del rol",
+    "levelPlaceholder": "p. ex. 5",
+    "rolePlaceholder": "p. ex. 123456789",
+    "removeReward": "Eliminar",
+    "noRewards": "No hi ha recompenses de rols configurades."
+  },
+  "exclusions": {
+    "title": "Exclusions d'XP",
+    "description": "Canals i rols que no guanyen XP.",
+    "noXpChannels": "Canals sense XP (IDs separats per comes)",
+    "noXpChannelsPlaceholder": "p. ex. 123456789, 987654321",
+    "noXpRoles": "Rols sense XP (IDs separats per comes)",
+    "noXpRolesPlaceholder": "p. ex. 123456789, 987654321",
+    "save": "Desar exclusions"
+  },
+  "multipliers": {
+    "title": "Multiplicadors d'XP",
+    "description": "Estableix multiplicadors d'XP per canal o rol. Un multiplicador de 2 duplica l'XP guanyada.",
+    "channelMultipliers": "Multiplicadors de canal",
+    "roleMultipliers": "Multiplicadors de rol",
+    "channelId": "ID del canal",
+    "roleId": "ID del rol",
+    "multiplier": "Multiplicador",
+    "type": "Tipus",
+    "typeChannel": "Canal",
+    "typeRole": "Rol",
+    "id": "ID",
+    "idPlaceholder": "ID del canal o rol",
+    "value": "Multiplicador",
+    "valuePlaceholder": "p. ex. 2",
+    "add": "Afegir multiplicador",
+    "addTitle": "Afegir multiplicador",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "No hi ha multiplicadors d'XP configurats."
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguent",
+    "pageInfo": "Pagina {{page}} de {{totalPages}} ({{total}} en total)"
+  },
+  "loading": "Carregant classificació...",
+  "loadingGeneric": "Carregant...",
+  "emptyLeaderboard": "Encara cap membre ha guanyat XP.",
+  "toast": {
+    "saved": "Configuració de nivells desada",
+    "saveFailed": "No s'ha pogut actualitzar la configuració",
+    "rewardAdded": "Recompensa afegida",
+    "rewardAddFailed": "No s'ha pogut afegir la recompensa",
+    "rewardRemoved": "Recompensa eliminada",
+    "rewardRemoveFailed": "No s'ha pogut eliminar la recompensa",
+    "multiplierAdded": "Multiplicador afegit",
+    "multiplierAddFailed": "No s'ha pogut afegir el multiplicador",
+    "multiplierRemoved": "Multiplicador eliminat",
+    "multiplierRemoveFailed": "No s'ha pogut eliminar el multiplicador",
+    "exclusionUpdated": "Exclusions desades",
+    "exclusionFailed": "No s'han pogut desar les exclusions",
+    "levelValidation": "El nivell ha d'estar entre 1 i 100",
+    "roleIdRequired": "L'ID del rol es obligatori",
+    "multiplierIdRequired": "L'ID i el valor del multiplicador son obligatoris",
+    "multiplierRange": "El multiplicador ha d'estar entre 0 i 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}h {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

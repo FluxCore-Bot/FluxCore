@@ -1,0 +1,8 @@
+{
+  "auth": { "notAuthenticated": "ยังไม่ได้ยืนยันตัวตน", "sessionExpired": "เซสชันหมดอายุ", "missingCode": "ไม่มีพารามิเตอร์ code", "tokenExchangeFailed": "การแลกเปลี่ยนโทเค็นล้มเหลว", "failedToFetchUser": "ไม่สามารถดึงข้อมูลผู้ใช้ได้" },
+  "permissions": { "noGuildPermission": "ไม่มีสิทธิ์สำหรับเซิร์ฟเวอร์นี้", "botNotInGuild": "บอทไม่อยู่ในเซิร์ฟเวอร์นี้", "insufficientPermissions": "สิทธิ์ไม่เพียงพอ", "permissionsNotResolved": "ไม่สามารถตรวจสอบสิทธิ์ได้", "requiresPermission": "การดำเนินการนี้ต้องการสิทธิ์ \"{{permission}}\"" },
+  "validation": { "invalidInput": "ข้อมูลไม่ถูกต้อง", "missingField": "ขาดฟิลด์ที่จำเป็น: {{field}}", "invalidFormat": "รูปแบบ {{field}} ไม่ถูกต้อง", "tooLong": "{{field}} เกินความยาวสูงสุด {{max}} ตัวอักษร", "tooShort": "{{field}} ต้องมีอย่างน้อย {{min}} ตัวอักษร", "outOfRange": "{{field}} ต้องอยู่ระหว่าง {{min}} และ {{max}}" },
+  "resources": { "notFound": "ไม่พบ", "alreadyExists": "{{resource}} มีอยู่แล้ว", "limitReached": "จำกัดสูงสุด {{max}} {{resource}} ต่อเซิร์ฟเวอร์", "createFailed": "สร้าง {{resource}} ล้มเหลว", "updateFailed": "อัปเดต {{resource}} ล้มเหลว", "deleteFailed": "ลบ {{resource}} ล้มเหลว" },
+  "server": { "internalError": "เกิดข้อผิดพลาดภายในเซิร์ฟเวอร์", "serviceUnavailable": "บริการไม่พร้อมใช้งานชั่วคราว", "rateLimited": "คำขอมากเกินไป กรุณาลองอีกครั้งภายหลัง" },
+  "csrf": { "invalidToken": "โทเค็น CSRF ไม่ถูกต้องหรือหายไป" }
+}

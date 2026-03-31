@@ -1,0 +1,86 @@
+{
+  "title": "Zakazane poruke",
+  "subtitle": "Stvorite ponavljajuce automatski objavljene poruke prema podesivim rasporedima.",
+  "stats": {
+    "totalMessages": "Ukupno poruka",
+    "active": "Aktivno",
+    "inactive": "Neaktivno"
+  },
+  "table": {
+    "name": "Naziv",
+    "channel": "Kanal",
+    "schedule": "Raspored",
+    "nextRun": "Sljedece pokretanje",
+    "status": "Status"
+  },
+  "dialog": {
+    "editTitle": "Uredi zakazanu poruku",
+    "createTitle": "Nova zakazana poruka"
+  },
+  "form": {
+    "name": "Naziv",
+    "channel": "Kanal",
+    "schedulePreset": "Predlozak rasporeda",
+    "cronExpression": "Cron izraz",
+    "timezone": "Vremenska zona",
+    "messageContent": "Sadrzaj poruke",
+    "text": "Tekst",
+    "embed": "Embed",
+    "enabled": "Omoguceno",
+    "enabledDesc": "Je li ova zakazana poruka aktivna."
+  },
+  "cronPresets": {
+    "everyHour": "Svaki sat",
+    "every6Hours": "Svakih 6 sati",
+    "daily9am": "Dnevno u 9:00",
+    "dailyMidnight": "Dnevno u ponoc",
+    "weeklyMonday": "Tjedno u ponedjeljak",
+    "monthly1st": "Mjesecno 1. u mjesecu",
+    "custom": "Prilagodeno"
+  },
+  "embed": {
+    "title": "Naslov",
+    "description": "Opis",
+    "color": "Boja (hex)",
+    "footer": "Podnozje",
+    "thumbnail": "URL slike za prikaz",
+    "image": "URL slike"
+  },
+  "toast": {
+    "created": "Zakazana poruka stvorena",
+    "createFailed": "Stvaranje zakazane poruke nije uspjelo",
+    "updated": "Zakazana poruka azurirana",
+    "updateFailed": "Azuriranje zakazane poruke nije uspjelo",
+    "deleted": "Zakazana poruka obrisana",
+    "deleteFailed": "Brisanje zakazane poruke nije uspjelo",
+    "testSent": "Testna poruka poslana",
+    "testFailed": "Slanje testne poruke nije uspjelo"
+  },
+  "empty": {
+    "title": "Nema zakazanih poruka",
+    "description": "Stvorite zakazanu poruku za automatsko objavljivanje sadrzaja na ponavljajucoj osnovi.",
+    "createButton": "Stvori poruku"
+  },
+  "pagination": {
+    "previous": "Prethodna",
+    "next": "Sljedeca",
+    "page": "Stranica {{page}} od {{total}}"
+  },
+  "actions": {
+    "newMessage": "Nova poruka",
+    "testSend": "Testno slanje",
+    "edit": "Uredi",
+    "delete": "Obrisi",
+    "save": "Spremi",
+    "cancel": "Odustani"
+  },
+  "validation": {
+    "nameRequired": "Naziv poruke je obavezan",
+    "channelRequired": "Kanal je obavezan"
+  },
+  "cronPreview": {
+    "nextRuns": "Sljedeca pokretanja"
+  },
+  "characters": "{{count}}/2000 znakova",
+  "never": "Nikada"
+}

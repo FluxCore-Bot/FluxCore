@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Niet geverifieerd",
+    "sessionExpired": "Sessie verlopen",
+    "missingCode": "Codeparameter ontbreekt",
+    "tokenExchangeFailed": "Token-uitwisseling mislukt",
+    "failedToFetchUser": "Gebruikersinfo ophalen mislukt"
+  },
+  "permissions": {
+    "noGuildPermission": "Geen toestemming voor deze server",
+    "botNotInGuild": "Bot bevindt zich niet op deze server",
+    "insufficientPermissions": "Onvoldoende rechten",
+    "permissionsNotResolved": "Rechten niet opgelost",
+    "requiresPermission": "Deze actie vereist de toestemming \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Ongeldige invoer",
+    "missingField": "Verplicht veld ontbreekt: {{field}}",
+    "invalidFormat": "Ongeldig formaat voor {{field}}",
+    "tooLong": "{{field}} overschrijdt de maximale lengte van {{max}} tekens",
+    "tooShort": "{{field}} moet minimaal {{min}} tekens bevatten",
+    "outOfRange": "{{field}} moet tussen {{min}} en {{max}} liggen"
+  },
+  "resources": {
+    "notFound": "Niet gevonden",
+    "alreadyExists": "{{resource}} bestaat al",
+    "limitReached": "Maximum van {{max}} {{resource}} per server",
+    "createFailed": "{{resource}} aanmaken mislukt",
+    "updateFailed": "{{resource}} bijwerken mislukt",
+    "deleteFailed": "{{resource}} verwijderen mislukt"
+  },
+  "server": {
+    "internalError": "Interne serverfout",
+    "serviceUnavailable": "Service tijdelijk niet beschikbaar",
+    "rateLimited": "Te veel verzoeken. Probeer het later opnieuw."
+  },
+  "csrf": {
+    "invalidToken": "Ongeldig of ontbrekend CSRF-token"
+  }
+}

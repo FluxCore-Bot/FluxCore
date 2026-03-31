@@ -1,0 +1,20 @@
+{
+  "title": "แผงบทบาท", "subtitle": "สร้างแผงกำหนดบทบาทด้วยตนเองโดยใช้ปุ่ม ดรอปดาวน์ หรือรีแอ็กชัน",
+  "stats": { "totalPanels": "แผงทั้งหมด", "deployed": "ติดตั้งแล้ว", "totalRoles": "บทบาททั้งหมด" },
+  "tabs": { "panels": "แผง", "preview": "ตัวอย่าง" },
+  "table": { "name": "ชื่อ", "type": "ประเภท", "mode": "โหมด", "roles": "บทบาท", "status": "สถานะ" },
+  "panelTypes": { "reaction": "รีแอ็กชัน", "button": "ปุ่ม", "dropdown": "ดรอปดาวน์" },
+  "panelModes": { "toggle": "สลับ", "unique": "เฉพาะ", "verify": "ยืนยัน" },
+  "panelModeDescriptions": { "toggle": "สลับ (เพิ่ม/ลบ)", "unique": "เฉพาะ (ทีละอัน)", "verify": "ยืนยัน (เพิ่มเท่านั้น)" },
+  "status": { "deployed": "ติดตั้งแล้ว", "draft": "แบบร่าง" },
+  "dialog": { "createPanel": "สร้างแผง", "editPanel": "แก้ไขแผง" },
+  "panelList": { "title": "แผงทั้งหมด" },
+  "form": { "name": "ชื่อ", "namePlaceholder": "เช่น บทบาทสี", "type": "ประเภท", "mode": "โหมด", "channel": "แชนเนล", "channelPlaceholder": "เลือกแชนเนล", "minRoles": "บทบาทขั้นต่ำ", "minRolesPlaceholder": "0", "maxRoles": "บทบาทสูงสุด", "maxRolesPlaceholder": "ทั้งหมด", "embedSection": "Embed", "embedTitle": "ชื่อ", "embedTitlePlaceholder": "ชื่อแผง (ใช้ชื่อแผงเป็นค่าเริ่มต้น)", "embedDescription": "คำอธิบาย", "embedDescriptionPlaceholder": "ข้อความอธิบาย", "rolesCount": "บทบาท ({{count}}/25)", "addRole": "เพิ่มบทบาท" },
+  "entry": { "role": "บทบาท", "rolePlaceholder": "เลือกบทบาท", "label": "ป้ายกำกับ", "labelPlaceholder": "ป้ายปุ่ม", "emoji": "อิโมจิ", "emojiPlaceholder": "เช่น star", "description": "คำอธิบาย", "descriptionPlaceholder": "คำอธิบายตัวเลือก", "style": "สไตล์" },
+  "buttonStyles": { "primary": "หลัก", "secondary": "รอง", "success": "สำเร็จ", "danger": "อันตราย" },
+  "actions": { "create": "สร้าง", "update": "อัปเดต", "cancel": "ยกเลิก", "deploy": "ติดตั้ง", "delete": "ลบ", "addEntry": "เพิ่มรายการ", "removeEntry": "ลบรายการ" },
+  "preview": { "title": "ตัวอย่างสด", "description": "ดูตัวอย่างว่าแผงจะแสดงใน Discord อย่างไร", "selectRoles": "เลือกบทบาท...", "noPreview": "ไม่มีแผงให้ดูตัวอย่าง" },
+  "empty": "ยังไม่มีแผงบทบาท คลิก \"สร้างแผง\" เพื่อเริ่มต้น",
+  "toast": { "created": "สร้างแผงแล้ว", "createFailed": "ไม่สามารถสร้างแผงได้", "updated": "อัปเดตแผงแล้ว", "updateFailed": "ไม่สามารถอัปเดตแผงได้", "deleted": "ลบแผงแล้ว", "deleteFailed": "ไม่สามารถลบแผงได้", "deployed": "ติดตั้งแผงบทบาทไปยังแชนเนลแล้ว", "deployFailed": "ไม่สามารถส่งแผงได้", "nameRequired": "ต้องระบุชื่อแผง", "channelRequired": "ต้องระบุแชนเนล", "maxRolesReached": "สูงสุด 25 บทบาทต่อแผง" },
+  "loading": "กำลังโหลดแผง..."
+}

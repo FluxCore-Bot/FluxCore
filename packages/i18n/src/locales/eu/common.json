@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore kontrol-panela"
+  },
+  "status": {
+    "online": "Linean",
+    "offline": "Lineaz kanpo",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Ikuspegi orokorra",
+    "automation": "Automatizazioa",
+    "music": "Musika",
+    "tempvoice": "TempVoice",
+    "welcome": "Ongi etorria",
+    "moderation": "Moderazioa",
+    "warnings": "Abisuak",
+    "rolePanels": "Rol panelak",
+    "leveling": "Mailak",
+    "scheduled": "Programatuta",
+    "commands": "Komandoak",
+    "security": "Segurtasuna",
+    "tickets": "Tiketak",
+    "giveaways": "Zozketa",
+    "suggestions": "Iradokizunak",
+    "starboard": "Izar-taula",
+    "logs": "Erregistroak",
+    "permissions": "Baimenak",
+    "settings": "Ezarpenak"
+  },
+  "actions": {
+    "save": "Gorde",
+    "cancel": "Utzi",
+    "delete": "Ezabatu",
+    "edit": "Editatu",
+    "create": "Sortu",
+    "add": "Gehitu",
+    "remove": "Kendu",
+    "confirm": "Berretsi",
+    "close": "Itxi",
+    "back": "Atzera",
+    "next": "Hurrengoa",
+    "search": "Bilatu",
+    "filter": "Iragazi",
+    "refresh": "Freskatu",
+    "reset": "Berrezarri",
+    "enable": "Gaitu",
+    "disable": "Desgaitu",
+    "copy": "Kopiatu",
+    "export": "Esportatu",
+    "import": "Inportatu",
+    "submit": "Bidali",
+    "loading": "Kargatzen...",
+    "retry": "Saiatu berriro"
+  },
+  "labels": {
+    "enabled": "Gaituta",
+    "disabled": "Desgaituta",
+    "active": "Aktiboa",
+    "inactive": "Inaktiboa",
+    "none": "Bat ere ez",
+    "all": "Denak",
+    "custom": "Pertsonalizatua",
+    "default": "Lehenetsia",
+    "required": "Beharrezkoa",
+    "optional": "Aukerakoa",
+    "name": "Izena",
+    "description": "Deskripzioa",
+    "type": "Mota",
+    "status": "Egoera",
+    "channel": "Kanala",
+    "role": "Rola",
+    "member": "Kidea",
+    "duration": "Iraupena",
+    "reason": "Arrazoia",
+    "language": "Hizkuntza"
+  },
+  "header": {
+    "notifications": "Jakinarazpenak",
+    "settings": "Ezarpenak",
+    "logout": "Saioa itxi",
+    "toggleSidebar": "Albo-barra txandakatu",
+    "refreshData": "Discord datuak freskatu"
+  },
+  "sidebar": {
+    "closeSidebar": "Albo-barra itxi",
+    "addToServer": "Zerbitzarira gehitu",
+    "docs": "Dokumentazioa",
+    "support": "Laguntza",
+    "backToServers": "Zerbitzarietara itzuli"
+  },
+  "empty": {
+    "noData": "Ez dago daturik eskuragarri",
+    "noResults": "Ez da emaitzarik aurkitu",
+    "noItems": "Oraindik ez dago elementurik"
+  },
+  "time": {
+    "seconds": "segundoak",
+    "minutes": "minutuak",
+    "hours": "orduak",
+    "days": "egunak",
+    "ago": "duela {{time}}",
+    "in": "{{time}} barru"
+  },
+  "confirm": {
+    "title": "Ziur zaude?",
+    "deleteTitle": "Ezabaketa berretsi",
+    "deleteMessage": "Ekintza hau ezin da desegin.",
+    "unsavedChanges": "Gorde gabeko aldaketak dituzu. Ziur zaude irten nahi duzula?"
+  },
+  "accessibility": {
+    "skipToContent": "Eduki nagusira joan",
+    "loading": "Edukia kargatzen",
+    "loaded": "Edukia kargatuta",
+    "error": "Errore bat gertatu da",
+    "menuOpen": "Menua irekita dago",
+    "menuClosed": "Menua itxita dago"
+  }
+}

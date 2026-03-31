@@ -1,0 +1,54 @@
+{
+  "title": "Moderació",
+  "subtitle": "Visualitza i gestiona els casos de moderació, configura els ajustos de sancions.",
+  "stats": {
+    "totalCases": "Total de casos",
+    "activeTempbans": "Bans temporals actius",
+    "last24h": "Últimes 24h"
+  },
+  "cases": "Casos",
+  "actions": {
+    "ban": "Bandejar",
+    "tempban": "Ban temporal",
+    "kick": "Expulsar",
+    "timeout": "Temps mort",
+    "softban": "Ban suau",
+    "warn": "Advertir",
+    "note": "Nota"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Acció",
+    "target": "Objectiu",
+    "moderator": "Moderador",
+    "reason": "Motiu",
+    "date": "Data",
+    "actions": "Accions",
+    "noCases": "No s'han trobat casos.",
+    "noReason": "Sense motiu"
+  },
+  "filter": {
+    "userPlaceholder": "Filtrar per ID d'usuari...",
+    "allActions": "Totes les accions"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguent",
+    "page": "Pagina {{page}} de {{total}}"
+  },
+  "editDialog": {
+    "title": "Editar motiu del cas #{{id}}",
+    "placeholder": "Introdueix el nou motiu...",
+    "saving": "Desant..."
+  },
+  "editReason": "Editar motiu",
+  "deleteCase": "Eliminar cas",
+  "deleteConfirm": "Segur que vols eliminar aquest cas?",
+  "settings": {
+    "title": "Configuració",
+    "dmOnPunishment": "DM per sanció",
+    "dmOnPunishmentDesc": "Envia un DM als usuaris quan son sancionats (ban, expulsió, temps mort).",
+    "modLogChannel": "Canal de registre de moderació",
+    "modLogChannelDesc": "Canal on es registren les accions de moderació."
+  }
+}

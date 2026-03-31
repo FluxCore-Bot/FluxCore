@@ -1,0 +1,77 @@
+{
+  "title": "מערכת פניות",
+  "subtitle": "צור לוחות פניות תמיכה ונהל פניות פתוחות מלוח הבקרה.",
+  "stats": {
+    "totalTickets": "סה\"כ פניות",
+    "open": "פתוחות",
+    "claimed": "נתפסו",
+    "panels": "לוחות"
+  },
+  "tabs": {
+    "activeTickets": "פניות פעילות",
+    "panelBuilder": "בונה לוחות",
+    "settings": "הגדרות"
+  },
+  "table": {
+    "id": "מזהה",
+    "user": "משתמש",
+    "subject": "נושא",
+    "status": "מצב",
+    "assignee": "מוקצה",
+    "created": "נוצר"
+  },
+  "statuses": {
+    "open": "פתוחה",
+    "claimed": "נתפסה",
+    "closed": "סגורה"
+  },
+  "panelBuilder": {
+    "title": "כותרת הלוח",
+    "channel": "ערוץ",
+    "buttonLabel": "תווית כפתור",
+    "welcomeMessage": "הודעת ברוכים הבאים",
+    "category": "קטגוריית פנייה",
+    "create": "צור לוח",
+    "edit": "ערוך לוח",
+    "deploy": "פרוס לוח"
+  },
+  "settings": {
+    "transcriptChannel": "ערוץ תמלילים",
+    "transcriptChannelDesc": "הערוץ שבו נשמרים תמלילי הפניות בעת סגירה.",
+    "maxTicketsPerUser": "מקסימום פניות למשתמש",
+    "maxTicketsPerUserDesc": "מספר מקסימלי של פניות פתוחות שמשתמש יחיד יכול להחזיק.",
+    "closeConfirmation": "אישור סגירה",
+    "closeConfirmationDesc": "דרוש אישור לפני סגירת פנייה.",
+    "dmTranscript": "תמליל בהודעה פרטית",
+    "dmTranscriptDesc": "שלח עותק של התמליל ליוצר הפנייה בהודעה פרטית."
+  },
+  "actions": {
+    "claim": "תפוס",
+    "close": "סגור",
+    "delete": "מחק",
+    "reopen": "פתח מחדש"
+  },
+  "toast": {
+    "panelCreated": "לוח הפניות נוצר",
+    "panelCreateFailed": "יצירת לוח הפניות נכשלה",
+    "panelUpdated": "לוח הפניות עודכן",
+    "panelUpdateFailed": "עדכון לוח הפניות נכשל",
+    "panelDeployed": "לוח הפניות נפרס",
+    "panelDeployFailed": "פריסת לוח הפניות נכשלה",
+    "ticketClaimed": "הפנייה נתפסה",
+    "ticketClaimFailed": "תפיסת הפנייה נכשלה",
+    "ticketClosed": "הפנייה נסגרה",
+    "ticketCloseFailed": "סגירת הפנייה נכשלה",
+    "ticketReopened": "הפנייה נפתחה מחדש",
+    "ticketReopenFailed": "פתיחת הפנייה מחדש נכשלה",
+    "ticketDeleted": "הפנייה נמחקה",
+    "ticketDeleteFailed": "מחיקת הפנייה נכשלה",
+    "settingsSaved": "הגדרות הפניות נשמרו",
+    "settingsFailed": "שמירת הגדרות הפניות נכשלה"
+  },
+  "empty": {
+    "tickets": "אין פניות פעילות.",
+    "panels": "לא נוצרו לוחות פניות עדיין."
+  },
+  "loading": "טוען פניות..."
+}

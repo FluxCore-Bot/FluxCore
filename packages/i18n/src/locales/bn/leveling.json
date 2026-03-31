@@ -1,0 +1,120 @@
+{
+  "title": "লেভেলিং সিস্টেম",
+  "subtitle": "XP অর্জন, লেভেল-আপ ঘোষণা, রোল পুরস্কার এবং গুণক কনফিগার করুন।",
+  "stats": {
+    "rankedMembers": "র‍্যাঙ্কড সদস্য",
+    "roleRewards": "রোল পুরস্কার",
+    "systemStatus": "সিস্টেম স্থিতি",
+    "enabled": "সক্রিয়",
+    "disabled": "নিষ্ক্রিয়"
+  },
+  "tabs": {
+    "leaderboard": "লিডারবোর্ড",
+    "settings": "সেটিংস",
+    "roleRewards": "রোল পুরস্কার",
+    "exclusions": "বাদ দেওয়া",
+    "multipliers": "গুণক"
+  },
+  "table": {
+    "rank": "র‍্যাঙ্ক",
+    "userId": "ব্যবহারকারী ID",
+    "level": "লেভেল",
+    "xp": "XP",
+    "messages": "বার্তা",
+    "voiceTime": "ভয়েস সময়"
+  },
+  "settings": {
+    "title": "লেভেলিং সেটিংস",
+    "enabled": "লেভেলিং সক্রিয় করুন",
+    "enabledDesc": "সম্পূর্ণ লেভেলিং সিস্টেম চালু বা বন্ধ করুন।",
+    "xpPerMessage": "প্রতি বার্তায় XP",
+    "xpPerMessageDesc": "প্রতি বার্তায় প্রদত্ত বেস XP (0-9 র‍্যান্ডমনেস যোগ হয়)।",
+    "xpCooldown": "XP কুলডাউন (সেকেন্ড)",
+    "xpCooldownDesc": "প্রতি ব্যবহারকারীর জন্য XP প্রদানের মধ্যে ন্যূনতম সময়।",
+    "voiceXpEnabled": "ভয়েস XP",
+    "voiceXpEnabledDesc": "ভয়েস চ্যানেলে সময় কাটানোর জন্য XP দিন।",
+    "voiceXpPerMinute": "প্রতি মিনিটে ভয়েস XP",
+    "voiceXpPerMinuteDesc": "ভয়েসে প্রতি মিনিটে প্রদত্ত XP।",
+    "levelUpAnnouncements": "লেভেল-আপ ঘোষণা",
+    "levelUpAnnouncementsDesc": "কোনো সদস্য লেভেল আপ করলে ঘোষণা করুন।",
+    "announceDest": "ঘোষণার গন্তব্য",
+    "announceDestHint": "আপনি উপরের ইনপুটে সরাসরি চ্যানেল ID ও দিতে পারেন।",
+    "announceDestSameChannel": "একই চ্যানেল",
+    "announceDestDM": "ডাইরেক্ট মেসেজ",
+    "announceMessage": "ঘোষণার বার্তা",
+    "announceMessagePlaceholder": "{user} এইমাত্র **লেভেল {level}** এ পৌঁছেছে!",
+    "announceMessageVars": "ভেরিয়েবল: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "রোল পুরস্কার",
+    "description": "সদস্যরা নির্দিষ্ট লেভেলে পৌঁছালে স্বয়ংক্রিয়ভাবে রোল অ্যাসাইন করুন।",
+    "addReward": "পুরস্কার যোগ করুন",
+    "addRewardTitle": "রোল পুরস্কার যোগ করুন",
+    "level": "লেভেল",
+    "levelPrefix": "লেভেল {{level}}",
+    "roleId": "রোল ID",
+    "levelPlaceholder": "যেমন 5",
+    "rolePlaceholder": "যেমন 123456789",
+    "removeReward": "সরান",
+    "noRewards": "কোনো রোল পুরস্কার কনফিগার করা হয়নি।"
+  },
+  "exclusions": {
+    "title": "XP বাদ দেওয়া",
+    "description": "চ্যানেল এবং রোল যেগুলো XP অর্জন করে না।",
+    "noXpChannels": "নো-XP চ্যানেল (কমা দিয়ে আলাদা ID)",
+    "noXpChannelsPlaceholder": "যেমন 123456789, 987654321",
+    "noXpRoles": "নো-XP রোল (কমা দিয়ে আলাদা ID)",
+    "noXpRolesPlaceholder": "যেমন 123456789, 987654321",
+    "save": "বাদ দেওয়া সংরক্ষণ করুন"
+  },
+  "multipliers": {
+    "title": "XP গুণক",
+    "description": "প্রতি চ্যানেল বা রোলের জন্য XP গুণক সেট করুন। 2 এর গুণক অর্জিত XP দ্বিগুণ করে।",
+    "channelMultipliers": "চ্যানেল গুণক",
+    "roleMultipliers": "রোল গুণক",
+    "channelId": "চ্যানেল ID",
+    "roleId": "রোল ID",
+    "multiplier": "গুণক",
+    "type": "ধরন",
+    "typeChannel": "চ্যানেল",
+    "typeRole": "রোল",
+    "id": "ID",
+    "idPlaceholder": "চ্যানেল বা রোল ID",
+    "value": "গুণক",
+    "valuePlaceholder": "যেমন 2",
+    "add": "গুণক যোগ করুন",
+    "addTitle": "গুণক যোগ করুন",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "কোনো XP গুণক কনফিগার করা হয়নি।"
+  },
+  "pagination": {
+    "previous": "আগের",
+    "next": "পরবর্তী",
+    "pageInfo": "পৃষ্ঠা {{page}} / {{totalPages}} (মোট {{total}})"
+  },
+  "loading": "লিডারবোর্ড লোড হচ্ছে...",
+  "loadingGeneric": "লোড হচ্ছে...",
+  "emptyLeaderboard": "এখনো কোনো সদস্য XP অর্জন করেনি।",
+  "toast": {
+    "saved": "লেভেলিং সেটিংস সংরক্ষিত",
+    "saveFailed": "সেটিং আপডেট ব্যর্থ",
+    "rewardAdded": "পুরস্কার যোগ হয়েছে",
+    "rewardAddFailed": "পুরস্কার যোগ ব্যর্থ",
+    "rewardRemoved": "পুরস্কার সরানো হয়েছে",
+    "rewardRemoveFailed": "পুরস্কার সরাতে ব্যর্থ",
+    "multiplierAdded": "গুণক যোগ হয়েছে",
+    "multiplierAddFailed": "গুণক যোগ ব্যর্থ",
+    "multiplierRemoved": "গুণক সরানো হয়েছে",
+    "multiplierRemoveFailed": "গুণক সরাতে ব্যর্থ",
+    "exclusionUpdated": "বাদ দেওয়া সংরক্ষিত",
+    "exclusionFailed": "বাদ দেওয়া সংরক্ষণে ব্যর্থ",
+    "levelValidation": "লেভেল 1 থেকে 100 এর মধ্যে হতে হবে",
+    "roleIdRequired": "রোল ID আবশ্যক",
+    "multiplierIdRequired": "ID এবং গুণক মান আবশ্যক",
+    "multiplierRange": "গুণক 0 থেকে 10 এর মধ্যে হতে হবে"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}ঘ {{minutes}}মি",
+    "voiceTimeMinutesOnly": "{{minutes}}মি"
+  }
+}

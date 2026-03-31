@@ -1,0 +1,118 @@
+{
+  "title": "Rols i permisos",
+  "subtitle": "Controla qui pot accedir i gestionar cada modul del panell de control.",
+  "actions": {
+    "createRole": "Crear rol"
+  },
+  "permissionSystem": {
+    "title": "Sistema de permisos",
+    "active": "Actiu — els administradors estan restringits als seus permisos assignats.",
+    "inactive": "Inactiu — tots els administradors amb MANAGE_GUILD tenen acces complet.",
+    "enabledToast": "Sistema de permisos activat",
+    "disabledToast": "Sistema de permisos desactivat — tots els administradors tenen acces complet"
+  },
+  "warning": {
+    "disabled": "El sistema de permisos esta desactivat. Tots els administradors del panell de control tenen acces complet actualment. Activa'l a dalt per aplicar permisos granulars."
+  },
+  "tabs": {
+    "roles": "Rols",
+    "auditLog": "Registre d'auditoria"
+  },
+  "roleList": {
+    "title": "Rols del panell de control",
+    "empty": "Encara no s'han creat rols.",
+    "selectHint": "Selecciona un rol per editar o crea'n un de nou.",
+    "default": "Per defecte",
+    "name": "Nom",
+    "members": "Membres",
+    "permissions": "Permisos",
+    "edit": "Editar",
+    "delete": "Eliminar"
+  },
+  "presets": {
+    "title": "Afegir rapidament des de plantilla",
+    "createdToast": "Rol \"{{name}}\" creat"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} membre",
+    "memberCount_plural": "{{count}} membres",
+    "name": "Nom del rol",
+    "color": "Color",
+    "defaultRole": "Rol per defecte",
+    "permissions": "Permisos",
+    "allBadge": "Tots",
+    "discordRoles": "Rols de Discord"
+  },
+  "roleForm": {
+    "name": "Nom del rol",
+    "discordRoles": "Rols de Discord",
+    "permissions": "Permisos",
+    "create": "Crear rol",
+    "update": "Actualitzar rol",
+    "cancel": "Cancel\u00b7lar"
+  },
+  "createDialog": {
+    "title": "Crear rol del panell de control",
+    "name": "Nom",
+    "namePlaceholder": "p. ex. Moderador",
+    "color": "Color"
+  },
+  "permissionCategories": {
+    "actions": "Accions i automatització",
+    "music": "Música",
+    "tempvoice": "TempVoice",
+    "welcome": "Benvinguda i comiat",
+    "moderation": "Moderació",
+    "logging": "Registre",
+    "leveling": "Nivells",
+    "roles": "Panells de rols",
+    "tickets": "Tiquets",
+    "suggestions": "Suggeriments",
+    "starboard": "Tauler d'estrelles",
+    "giveaways": "Sortejos",
+    "security": "Seguretat",
+    "scheduled": "Missatges programats",
+    "commands": "Comandes personalitzades",
+    "settings": "Configuració del servidor"
+  },
+  "audit": {
+    "table": {
+      "user": "Usuari",
+      "action": "Acció",
+      "target": "Objectiu",
+      "timestamp": "Quan"
+    },
+    "noEntries": "Encara no hi ha entrades al registre d'auditoria."
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguent",
+    "page": "Pagina {{current}} de {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Rol \"{{name}}\" creat",
+    "roleCreateFailed": "No s'ha pogut crear el rol",
+    "roleUpdated": "Rol actualitzat",
+    "roleUpdateFailed": "No s'ha pogut actualitzar el rol",
+    "roleDeleted": "Rol eliminat",
+    "roleDeleteFailed": "No s'ha pogut eliminar el rol"
+  },
+  "confirm": {
+    "deleteTitle": "Eliminar el rol \"{{name}}\"?",
+    "deleteMessage": "Aixo eliminara el rol i desassignara tots els membres. Aquesta acció no es pot desfer.",
+    "deleteRole": "Segur que vols eliminar aquest rol? Els membres perdran els seus permisos assignats."
+  },
+  "saveButton": {
+    "saving": "Desant...",
+    "save": "Desar canvis"
+  },
+  "deleteButton": {
+    "deleting": "Eliminant...",
+    "delete": "Eliminar"
+  },
+  "createButton": {
+    "creating": "Creant...",
+    "create": "Crear"
+  },
+  "loading": "Carregant permisos..."
+}

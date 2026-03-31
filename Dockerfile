@@ -15,6 +15,7 @@ COPY packages/types/package.json ./packages/types/
 COPY packages/utils/package.json ./packages/utils/
 COPY packages/database/package.json ./packages/database/
 COPY packages/systems/package.json ./packages/systems/
+COPY packages/i18n/package.json ./packages/i18n/
 COPY apps/bot/package.json ./apps/bot/
 COPY apps/dashboard/package.json ./apps/dashboard/
 COPY packages/database/prisma ./packages/database/prisma/

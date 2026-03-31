@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useParams } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../lib/client";
 import { PageHeader } from "../../../components/PageHeader";
@@ -50,29 +51,13 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 import { Icon } from "../../../components/Icon";
 
-const TRIGGER_TYPE_LABELS: Record<string, string> = {
-  command: "!command",
-  keyword: "Keyword",
-  startsWith: "Starts With",
-  regex: "Regex",
-};
-
-const VARIABLE_HELP = [
-  { variable: "{user}", description: "Mention the user" },
-  { variable: "{username}", description: "Display name" },
-  { variable: "{userId}", description: "User ID" },
-  { variable: "{server}", description: "Server name" },
-  { variable: "{channel}", description: "Channel mention" },
-  { variable: "{channelName}", description: "Channel name" },
-  { variable: "{memberCount}", description: "Member count" },
-];
-
 function emptyAction(): CustomCommandAction {
   return { type: "addRole", roleId: "" };
 }
 
 export function CommandsPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
+  const { t } = useTranslation("commands");
 
   const { data: commands, isLoading } = useCustomCommands(guildId);
   const createCommand = useCreateCustomCommand(guildId);
@@ -102,6 +87,29 @@ export function CommandsPage() {
   const [formAllowedChannels, setFormAllowedChannels] = useState<string[]>([]);
   const [formDeletesTrigger, setFormDeletesTrigger] = useState(false);
   const [formDmResponse, setFormDmResponse] = useState(false);
+
+  const TRIGGER_TYPE_LABELS = useMemo<Record<string, string>>(
+    () => ({
+      command: t("triggerTypes.command"),
+      keyword: t("triggerTypes.keyword"),
+      startsWith: t("triggerTypes.startsWith"),
+      regex: t("triggerTypes.regex"),
+    }),
+    [t],
+  );
+
+  const VARIABLE_HELP = useMemo(
+    () => [
+      { variable: "{user}", description: t("variables.entries.user") },
+      { variable: "{username}", description: t("variables.entries.username") },
+      { variable: "{userId}", description: t("variables.entries.userId") },
+      { variable: "{server}", description: t("variables.entries.server") },
+      { variable: "{channel}", description: t("variables.entries.channel") },
+      { variable: "{channelName}", description: t("variables.entries.channelName") },
+      { variable: "{memberCount}", description: t("variables.entries.memberCount") },
+    ],
+    [t],
+  );
 
   function resetForm() {
     setFormName("");
@@ -168,7 +176,7 @@ export function CommandsPage() {
 
   function handleSubmit() {
     if (!formName.trim()) {
-      toast.error("Command name is required");
+      toast.error(t("validation.nameRequired"));
       return;
     }
 
@@ -194,12 +202,12 @@ export function CommandsPage() {
         },
         {
           onSuccess: () => {
-            toast.success("Command updated");
+            toast.success(t("toast.updated"));
             setDialogOpen(false);
             resetForm();
           },
           onError: (err) =>
-            toast.error(err instanceof ApiError ? err.message : "Failed to update command"),
+            toast.error(err instanceof ApiError ? err.message : t("toast.updateFailed")),
         },
       );
     } else {
@@ -218,21 +226,21 @@ export function CommandsPage() {
 
       createCommand.mutate(data, {
         onSuccess: () => {
-          toast.success("Command created");
+          toast.success(t("toast.created"));
           setDialogOpen(false);
           resetForm();
         },
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to create command"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.createFailed")),
       });
     }
   }
 
   function handleDelete(commandId: number) {
     deleteCommand.mutate(commandId, {
-      onSuccess: () => toast.success("Command deleted"),
+      onSuccess: () => toast.success(t("toast.deleted")),
       onError: (err) =>
-        toast.error(err instanceof ApiError ? err.message : "Failed to delete command"),
+        toast.error(err instanceof ApiError ? err.message : t("toast.deleteFailed")),
     });
   }
 
@@ -241,16 +249,16 @@ export function CommandsPage() {
       { commandId: cmd.id, data: { enabled: !cmd.enabled } },
       {
         onSuccess: () =>
-          toast.success(cmd.enabled ? "Command disabled" : "Command enabled"),
+          toast.success(cmd.enabled ? t("toast.toggleDisabled") : t("toast.toggleEnabled")),
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to toggle command"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.toggleFailed")),
       },
     );
   }
 
   function handleAddAction() {
     if (formActions.length >= 5) {
-      toast.error("Maximum 5 actions per command");
+      toast.error(t("actionsSection.maxActions"));
       return;
     }
     setFormActions([...formActions, emptyAction()]);
@@ -276,54 +284,54 @@ export function CommandsPage() {
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Custom Commands"
-        subtitle="Create auto-responders and prefix commands triggered by messages."
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Total Commands</p>
+          <p className="section-label text-text-muted">{t("stats.totalCommands")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {isLoading ? "..." : commands?.length ?? 0}
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Enabled</p>
+          <p className="section-label text-text-muted">{t("stats.enabled")}</p>
           <p className="mt-1 text-2xl font-bold text-success">
             {isLoading ? "..." : enabledCount}
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Limit</p>
+          <p className="section-label text-text-muted">{t("common:limit")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
-            {isLoading ? "..." : `${commands?.length ?? 0} / 50`}
+            {isLoading ? "..." : t("stats.limit", { count: commands?.length ?? 0 })}
           </p>
         </Card>
       </div>
 
       <Tabs defaultValue="commands">
         <TabsList>
-          <TabsTrigger value="commands">Commands</TabsTrigger>
-          <TabsTrigger value="variables">Variables</TabsTrigger>
+          <TabsTrigger value="commands">{t("tabs.commands")}</TabsTrigger>
+          <TabsTrigger value="variables">{t("tabs.variables")}</TabsTrigger>
         </TabsList>
 
         {/* Command List */}
         <TabsContent value="commands">
           <Card className="bg-surface p-6">
             <div className="mb-4 flex items-center justify-between">
-              <h3 className="text-lg font-semibold">All Commands</h3>
+              <h3 className="text-lg font-semibold">{t("tabs.commands")}</h3>
               <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                 <DialogTrigger asChild>
                   <Button onClick={openCreateDialog}>
                     <Icon name="add" size={16} className="mr-1" />
-                    Create Command
+                    {t("dialog.createCommand")}
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-2xl">
                   <DialogHeader>
                     <DialogTitle>
-                      {editingCommand ? "Edit Command" : "Create Command"}
+                      {editingCommand ? t("dialog.editCommand") : t("dialog.createCommand")}
                     </DialogTitle>
                   </DialogHeader>
                   <div className="space-y-6 pt-4">
@@ -332,10 +340,10 @@ export function CommandsPage() {
                       <div>
                         <Label htmlFor="cmd-name">
                           {formTriggerType === "command"
-                            ? "Command Name"
+                            ? t("form.commandName")
                             : formTriggerType === "regex"
-                              ? "Regex Pattern"
-                              : "Trigger Text"}
+                              ? t("form.regexPattern")
+                              : t("form.triggerText")}
                         </Label>
                         <Input
                           id="cmd-name"
@@ -351,12 +359,12 @@ export function CommandsPage() {
                         />
                         {formTriggerType === "command" && formName && (
                           <p className="mt-1 font-mono text-xs text-text-muted">
-                            Trigger: !{formName}
+                            {t("triggerPrefix", { name: formName })}
                           </p>
                         )}
                       </div>
                       <div>
-                        <Label htmlFor="cmd-trigger">Trigger Type</Label>
+                        <Label htmlFor="cmd-trigger">{t("form.triggerType")}</Label>
                         <Select
                           value={formTriggerType}
                           onValueChange={(v) =>
@@ -370,16 +378,16 @@ export function CommandsPage() {
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="command">
-                              Prefix Command (!name)
+                              {t("triggerTypes.prefixCommand")}
                             </SelectItem>
                             <SelectItem value="keyword">
-                              Keyword (contains)
+                              {t("triggerTypes.keywordContains")}
                             </SelectItem>
                             <SelectItem value="startsWith">
-                              Starts With
+                              {t("triggerTypes.startsWith")}
                             </SelectItem>
                             <SelectItem value="regex">
-                              Regex Pattern
+                              {t("triggerTypes.regex")}
                             </SelectItem>
                           </SelectContent>
                         </Select>
@@ -391,7 +399,7 @@ export function CommandsPage() {
                     {/* Response Config */}
                     <div>
                       <div className="mb-3 flex items-center gap-3">
-                        <h4 className="text-sm font-semibold">Response</h4>
+                        <h4 className="text-sm font-semibold">{t("form.response")}</h4>
                         <Select
                           value={formResponseType}
                           onValueChange={(v) =>
@@ -402,37 +410,37 @@ export function CommandsPage() {
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="text">Text</SelectItem>
-                            <SelectItem value="embed">Embed</SelectItem>
+                            <SelectItem value="text">{t("badge.text")}</SelectItem>
+                            <SelectItem value="embed">{t("badge.embed")}</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
 
                       {formResponseType === "text" ? (
                         <div>
-                          <Label htmlFor="cmd-content">Message</Label>
+                          <Label htmlFor="cmd-content">{t("form.message")}</Label>
                           <Textarea
                             id="cmd-content"
                             value={formContent}
                             onChange={(e) => setFormContent(e.target.value)}
-                            placeholder="Response message... Use {user}, {server}, etc."
+                            placeholder={t("form.message")}
                             rows={4}
                           />
                         </div>
                       ) : (
                         <div className="space-y-3">
                           <div>
-                            <Label htmlFor="embed-title">Embed Title</Label>
+                            <Label htmlFor="embed-title">{t("form.embedTitle")}</Label>
                             <Input
                               id="embed-title"
                               value={formEmbedTitle}
                               onChange={(e) => setFormEmbedTitle(e.target.value)}
-                              placeholder="Embed title"
+                              placeholder={t("form.embedTitle")}
                             />
                           </div>
                           <div>
                             <Label htmlFor="embed-desc">
-                              Embed Description
+                              {t("form.embedDescription")}
                             </Label>
                             <Textarea
                               id="embed-desc"
@@ -440,13 +448,13 @@ export function CommandsPage() {
                               onChange={(e) =>
                                 setFormEmbedDescription(e.target.value)
                               }
-                              placeholder="Embed description... Use {user}, {server}, etc."
+                              placeholder={t("form.embedDescription")}
                               rows={3}
                             />
                           </div>
                           <div className="grid grid-cols-2 gap-4">
                             <div>
-                              <Label htmlFor="embed-color">Color</Label>
+                              <Label htmlFor="embed-color">{t("form.color")}</Label>
                               <Input
                                 id="embed-color"
                                 type="color"
@@ -458,14 +466,14 @@ export function CommandsPage() {
                               />
                             </div>
                             <div>
-                              <Label htmlFor="embed-footer">Footer</Label>
+                              <Label htmlFor="embed-footer">{t("form.footer")}</Label>
                               <Input
                                 id="embed-footer"
                                 value={formEmbedFooter}
                                 onChange={(e) =>
                                   setFormEmbedFooter(e.target.value)
                                 }
-                                placeholder="Footer text"
+                                placeholder={t("form.footer")}
                               />
                             </div>
                           </div>
@@ -479,7 +487,7 @@ export function CommandsPage() {
                     <div>
                       <div className="mb-3 flex items-center justify-between">
                         <h4 className="text-sm font-semibold">
-                          Actions ({formActions.length}/5)
+                          {t("actionsSection.title", { count: formActions.length })}
                         </h4>
                         <Button
                           variant="outline"
@@ -488,7 +496,7 @@ export function CommandsPage() {
                           disabled={formActions.length >= 5}
                         >
                           <Icon name="add" size={14} className="mr-1" />
-                          Add Action
+                          {t("actions.addAction")}
                         </Button>
                       </div>
 
@@ -500,7 +508,7 @@ export function CommandsPage() {
                               className="flex items-end gap-2 rounded-md border border-border p-3"
                             >
                               <div className="w-36">
-                                <Label>Type</Label>
+                                <Label>{t("common:type")}</Label>
                                 <Select
                                   value={action.type}
                                   onValueChange={(v) =>
@@ -512,16 +520,16 @@ export function CommandsPage() {
                                   </SelectTrigger>
                                   <SelectContent>
                                     <SelectItem value="addRole">
-                                      Add Role
+                                      {t("actions.addRole")}
                                     </SelectItem>
                                     <SelectItem value="removeRole">
-                                      Remove Role
+                                      {t("actions.removeRole")}
                                     </SelectItem>
                                   </SelectContent>
                                 </Select>
                               </div>
                               <div className="flex-1">
-                                <Label>Role</Label>
+                                <Label>{t("common:role")}</Label>
                                 <Select
                                   value={action.roleId}
                                   onValueChange={(v) =>
@@ -529,7 +537,7 @@ export function CommandsPage() {
                                   }
                                 >
                                   <SelectTrigger>
-                                    <SelectValue placeholder="Select role" />
+                                    <SelectValue placeholder={t("restrictions.addRole")} />
                                   </SelectTrigger>
                                   <SelectContent>
                                     {roles?.map((r) => (
@@ -556,8 +564,7 @@ export function CommandsPage() {
                         </div>
                       ) : (
                         <p className="text-sm text-text-muted">
-                          No actions configured. Add role actions to run when
-                          the command triggers.
+                          {t("actionsSection.noActions")}
                         </p>
                       )}
                     </div>
@@ -566,12 +573,12 @@ export function CommandsPage() {
 
                     {/* Options */}
                     <div>
-                      <h4 className="mb-3 text-sm font-semibold">Options</h4>
+                      <h4 className="mb-3 text-sm font-semibold">{t("common:options")}</h4>
                       <div className="space-y-4">
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                           <div>
                             <Label htmlFor="cmd-cooldown">
-                              Cooldown (seconds)
+                              {t("options.cooldown")}
                             </Label>
                             <Input
                               id="cmd-cooldown"
@@ -587,9 +594,9 @@ export function CommandsPage() {
 
                         <div className="flex items-center justify-between rounded-md border border-border p-3">
                           <div>
-                            <p className="text-sm font-medium">Enabled</p>
+                            <p className="text-sm font-medium">{t("options.enabled")}</p>
                             <p className="text-xs text-text-muted">
-                              Whether this command is active
+                              {t("options.enabledDesc")}
                             </p>
                           </div>
                           <Switch
@@ -601,10 +608,10 @@ export function CommandsPage() {
                         <div className="flex items-center justify-between rounded-md border border-border p-3">
                           <div>
                             <p className="text-sm font-medium">
-                              Delete Trigger Message
+                              {t("options.deleteTrigger")}
                             </p>
                             <p className="text-xs text-text-muted">
-                              Remove the message that triggered the command
+                              {t("options.deleteTriggerDesc")}
                             </p>
                           </div>
                           <Switch
@@ -616,10 +623,10 @@ export function CommandsPage() {
                         <div className="flex items-center justify-between rounded-md border border-border p-3">
                           <div>
                             <p className="text-sm font-medium">
-                              DM Response
+                              {t("options.dmResponse")}
                             </p>
                             <p className="text-xs text-text-muted">
-                              Send the response as a direct message
+                              {t("options.dmResponseDesc")}
                             </p>
                           </div>
                           <Switch
@@ -635,11 +642,11 @@ export function CommandsPage() {
                     {/* Permissions */}
                     <div>
                       <h4 className="mb-3 text-sm font-semibold">
-                        Restrictions
+                        {t("restrictions.title")}
                       </h4>
                       <div className="space-y-3">
                         <div>
-                          <Label>Allowed Channels (empty = all)</Label>
+                          <Label>{t("restrictions.allowedChannels")}</Label>
                           <Select
                             value={
                               formAllowedChannels.length > 0
@@ -658,7 +665,7 @@ export function CommandsPage() {
                             }}
                           >
                             <SelectTrigger>
-                              <SelectValue placeholder="Add channel..." />
+                              <SelectValue placeholder={t("restrictions.addChannel")} />
                             </SelectTrigger>
                             <SelectContent>
                               {textChannels.map((ch) => (
@@ -696,7 +703,7 @@ export function CommandsPage() {
                         </div>
 
                         <div>
-                          <Label>Allowed Roles (empty = everyone)</Label>
+                          <Label>{t("restrictions.allowedRoles")}</Label>
                           <Select
                             value={
                               formAllowedRoles.length > 0
@@ -715,7 +722,7 @@ export function CommandsPage() {
                             }}
                           >
                             <SelectTrigger>
-                              <SelectValue placeholder="Add role..." />
+                              <SelectValue placeholder={t("restrictions.addRole")} />
                             </SelectTrigger>
                             <SelectContent>
                               {roles?.map((r) => (
@@ -759,7 +766,7 @@ export function CommandsPage() {
                         variant="outline"
                         onClick={() => setDialogOpen(false)}
                       >
-                        Cancel
+                        {t("actions.cancel")}
                       </Button>
                       <Button
                         onClick={handleSubmit}
@@ -767,7 +774,7 @@ export function CommandsPage() {
                           createCommand.isPending || updateCommand.isPending
                         }
                       >
-                        {editingCommand ? "Update" : "Create"}
+                        {editingCommand ? t("actions.update") : t("actions.create")}
                       </Button>
                     </div>
                   </div>
@@ -776,16 +783,16 @@ export function CommandsPage() {
             </div>
 
             {isLoading ? (
-              <p className="text-text-muted">Loading commands...</p>
+              <p className="text-text-muted">{t("loading")}</p>
             ) : commands && commands.length > 0 ? (
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Trigger</TableHead>
-                    <TableHead>Response</TableHead>
-                    <TableHead>Cooldown</TableHead>
-                    <TableHead>Status</TableHead>
+                    <TableHead>{t("table.name")}</TableHead>
+                    <TableHead>{t("table.trigger")}</TableHead>
+                    <TableHead>{t("table.response")}</TableHead>
+                    <TableHead>{t("table.cooldown")}</TableHead>
+                    <TableHead>{t("table.status")}</TableHead>
                     <TableHead className="w-32" />
                   </TableRow>
                 </TableHeader>
@@ -805,7 +812,7 @@ export function CommandsPage() {
                       </TableCell>
                       <TableCell>
                         <Badge variant="secondary">
-                          {cmd.response.type === "embed" ? "Embed" : "Text"}
+                          {cmd.response.type === "embed" ? t("badge.embed") : t("badge.text")}
                         </Badge>
                       </TableCell>
                       <TableCell>
@@ -814,14 +821,14 @@ export function CommandsPage() {
                       <TableCell>
                         {cmd.enabled ? (
                           <Badge className="bg-success/20 text-success">
-                            Active
+                            {t("badge.active")}
                           </Badge>
                         ) : (
                           <Badge
                             variant="outline"
                             className="text-text-muted"
                           >
-                            Disabled
+                            {t("badge.disabled")}
                           </Badge>
                         )}
                       </TableCell>
@@ -831,7 +838,7 @@ export function CommandsPage() {
                             variant="ghost"
                             size="sm"
                             onClick={() => handleToggleEnabled(cmd)}
-                            title={cmd.enabled ? "Disable" : "Enable"}
+                            title={cmd.enabled ? t("common:disable") : t("common:enable")}
                           >
                             <Icon
                               name={
@@ -846,7 +853,7 @@ export function CommandsPage() {
                             variant="ghost"
                             size="sm"
                             onClick={() => openEditDialog(cmd)}
-                            title="Edit"
+                            title={t("common:edit")}
                           >
                             <Icon name="edit" size={16} />
                           </Button>
@@ -855,7 +862,7 @@ export function CommandsPage() {
                             size="sm"
                             onClick={() => handleDelete(cmd.id)}
                             disabled={deleteCommand.isPending}
-                            title="Delete"
+                            title={t("common:delete")}
                           >
                             <Icon
                               name="delete"
@@ -871,8 +878,7 @@ export function CommandsPage() {
               </Table>
             ) : (
               <p className="text-text-muted">
-                No custom commands created yet. Click "Create Command" to
-                get started.
+                {t("empty")}
               </p>
             )}
           </Card>
@@ -881,16 +887,15 @@ export function CommandsPage() {
         {/* Variables Reference */}
         <TabsContent value="variables">
           <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">Template Variables</h3>
+            <h3 className="mb-4 text-lg font-semibold">{t("variables.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
-              Use these variables in your response messages. They will be
-              replaced with actual values when the command is triggered.
+              {t("variables.description")}
             </p>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Variable</TableHead>
-                  <TableHead>Description</TableHead>
+                  <TableHead>{t("variables.table.variable")}</TableHead>
+                  <TableHead>{t("variables.table.description")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

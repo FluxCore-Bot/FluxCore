@@ -1,0 +1,77 @@
+{
+  "title": "Bilietu sistema",
+  "subtitle": "Kurkite pagalbos bilietu panelius ir valdykite atvirus bilietus is valdymo skydelio.",
+  "stats": {
+    "totalTickets": "Viso bilietu",
+    "open": "Atviri",
+    "claimed": "Paimti",
+    "panels": "Paneliai"
+  },
+  "tabs": {
+    "activeTickets": "Aktyvus bilietai",
+    "panelBuilder": "Paneliu konstruktorius",
+    "settings": "Nustatymai"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Naudotojas",
+    "subject": "Tema",
+    "status": "Busena",
+    "assignee": "Priskirtas",
+    "created": "Sukurtas"
+  },
+  "statuses": {
+    "open": "Atviras",
+    "claimed": "Paimtas",
+    "closed": "Uzdarytas"
+  },
+  "panelBuilder": {
+    "title": "Panelio pavadinimas",
+    "channel": "Kanalas",
+    "buttonLabel": "Mygtuko etikete",
+    "welcomeMessage": "Pasisveikinimo zinute",
+    "category": "Bilieto kategorija",
+    "create": "Sukurti paneli",
+    "edit": "Redaguoti paneli",
+    "deploy": "Patalpinti paneli"
+  },
+  "settings": {
+    "transcriptChannel": "Transkripto kanalas",
+    "transcriptChannelDesc": "Kanalas, kuriame issaugomi bilietu transkriptai uzdarant.",
+    "maxTicketsPerUser": "Maks. bilietu naudotojui",
+    "maxTicketsPerUserDesc": "Maksimalus atviriu bilietu skaicius, kuri gali tureti vienas naudotojas.",
+    "closeConfirmation": "Uzdarymo patvirtinimas",
+    "closeConfirmationDesc": "Reikalauti patvirtinimo pries uzdarant bilieta.",
+    "dmTranscript": "Transkriptas privatia zinute",
+    "dmTranscriptDesc": "Siusti transkripto kopija bilieto autoriui privatia zinute."
+  },
+  "actions": {
+    "claim": "Paimti",
+    "close": "Uzdaryti",
+    "delete": "Istrinti",
+    "reopen": "Atidaryti is naujo"
+  },
+  "toast": {
+    "panelCreated": "Bilietu panelis sukurtas",
+    "panelCreateFailed": "Nepavyko sukurti bilietu panelio",
+    "panelUpdated": "Bilietu panelis atnaujintas",
+    "panelUpdateFailed": "Nepavyko atnaujinti bilietu panelio",
+    "panelDeployed": "Bilietu panelis patalpintas",
+    "panelDeployFailed": "Nepavyko patalpinti bilietu panelio",
+    "ticketClaimed": "Bilietas paimtas",
+    "ticketClaimFailed": "Nepavyko paimti bilieto",
+    "ticketClosed": "Bilietas uzdarytas",
+    "ticketCloseFailed": "Nepavyko uzdaryti bilieto",
+    "ticketReopened": "Bilietas atidarytas is naujo",
+    "ticketReopenFailed": "Nepavyko atidaryti bilieto is naujo",
+    "ticketDeleted": "Bilietas istrintas",
+    "ticketDeleteFailed": "Nepavyko istrinti bilieto",
+    "settingsSaved": "Bilietu nustatymai issaugoti",
+    "settingsFailed": "Nepavyko issaugoti bilietu nustatymu"
+  },
+  "empty": {
+    "tickets": "Nera aktyviu bilietu.",
+    "panels": "Bilietu paneliu nesukurta."
+  },
+  "loading": "Kraunami bilietai..."
+}

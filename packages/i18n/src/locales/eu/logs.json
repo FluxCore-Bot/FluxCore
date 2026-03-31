@@ -1,0 +1,8 @@
+{
+  "title": "Erregistroak",
+  "subtitle": "Monitorizatu arauen exekuzioak eta gertaeren erregistroak.",
+  "tabs": {
+    "activity": "Jarduera-erregistroak",
+    "events": "Gertaera-erregistroak"
+  }
+}

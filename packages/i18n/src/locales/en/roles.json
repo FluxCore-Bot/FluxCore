@@ -1,0 +1,112 @@
+{
+  "title": "Role Panels",
+  "subtitle": "Create self-assignable role panels using buttons, dropdowns, or reactions.",
+  "stats": {
+    "totalPanels": "Total Panels",
+    "deployed": "Deployed",
+    "totalRoles": "Total Roles"
+  },
+  "tabs": {
+    "panels": "Panels",
+    "preview": "Preview"
+  },
+  "table": {
+    "name": "Name",
+    "type": "Type",
+    "mode": "Mode",
+    "roles": "Roles",
+    "status": "Status"
+  },
+  "panelTypes": {
+    "reaction": "Reaction",
+    "button": "Button",
+    "dropdown": "Dropdown"
+  },
+  "panelModes": {
+    "toggle": "Toggle",
+    "unique": "Unique",
+    "verify": "Verify"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Toggle (add/remove)",
+    "unique": "Unique (one at a time)",
+    "verify": "Verify (add only)"
+  },
+  "status": {
+    "deployed": "Deployed",
+    "draft": "Draft"
+  },
+  "dialog": {
+    "createPanel": "Create Panel",
+    "editPanel": "Edit Panel"
+  },
+  "panelList": {
+    "title": "All Panels"
+  },
+  "form": {
+    "name": "Name",
+    "namePlaceholder": "e.g. Color Roles",
+    "type": "Type",
+    "mode": "Mode",
+    "channel": "Channel",
+    "channelPlaceholder": "Select channel",
+    "minRoles": "Min Roles",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Max Roles",
+    "maxRolesPlaceholder": "All",
+    "embedSection": "Embed",
+    "embedTitle": "Title",
+    "embedTitlePlaceholder": "Panel title (defaults to panel name)",
+    "embedDescription": "Description",
+    "embedDescriptionPlaceholder": "Description text",
+    "rolesCount": "Roles ({{count}}/25)",
+    "addRole": "Add Role"
+  },
+  "entry": {
+    "role": "Role",
+    "rolePlaceholder": "Select role",
+    "label": "Label",
+    "labelPlaceholder": "Button label",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "e.g. star",
+    "description": "Description",
+    "descriptionPlaceholder": "Option description",
+    "style": "Style"
+  },
+  "buttonStyles": {
+    "primary": "Primary",
+    "secondary": "Secondary",
+    "success": "Success",
+    "danger": "Danger"
+  },
+  "actions": {
+    "create": "Create",
+    "update": "Update",
+    "cancel": "Cancel",
+    "deploy": "Deploy",
+    "delete": "Delete",
+    "addEntry": "Add Entry",
+    "removeEntry": "Remove Entry"
+  },
+  "preview": {
+    "title": "Live Preview",
+    "description": "Preview how your panels will appear in Discord.",
+    "selectRoles": "Select roles...",
+    "noPreview": "No panels to preview."
+  },
+  "empty": "No role panels created yet. Click \"Create Panel\" to get started.",
+  "toast": {
+    "created": "Panel created",
+    "createFailed": "Failed to create panel",
+    "updated": "Panel updated",
+    "updateFailed": "Failed to update panel",
+    "deleted": "Panel deleted",
+    "deleteFailed": "Failed to delete panel",
+    "deployed": "Role panel deployed to channel",
+    "deployFailed": "Failed to send panel",
+    "nameRequired": "Panel name is required",
+    "channelRequired": "Channel is required",
+    "maxRolesReached": "Maximum 25 roles per panel"
+  },
+  "loading": "Loading panels..."
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Music System",
+  "subtitle": "Configure global playback modes and audio library preferences.",
+  "tabs": {
+    "settings": "Playback Settings",
+    "library": "Music Library"
+  }
+}

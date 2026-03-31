@@ -1,0 +1,67 @@
+{
+  "title": "Ehdotukset",
+  "subtitle": "Anna jäsenten lähettää ideoita ja äänestää niistä. Hallitse tilaa ja palautetta.",
+  "stats": {
+    "totalSuggestions": "Ehdotuksia yhteensä",
+    "systemStatus": "Järjestelmän tila",
+    "channel": {
+      "configured": "Kanava määritetty",
+      "notSet": "Kanavaa ei asetettu"
+    }
+  },
+  "tabs": {
+    "suggestions": "Ehdotukset",
+    "settings": "Asetukset"
+  },
+  "filter": {
+    "filterByStatus": "Suodata tilan mukaan",
+    "all": "Kaikki",
+    "pending": "Odottava",
+    "approved": "Hyväksytty",
+    "rejected": "Hylätty",
+    "implemented": "Toteutettu",
+    "considered": "Harkinnassa"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Kirjoittaja",
+    "content": "Sisältö",
+    "status": "Tila",
+    "votes": "Äänet",
+    "date": "Päivämäärä"
+  },
+  "actions": {
+    "approve": "Hyväksy",
+    "reject": "Hylkää",
+    "implement": "Merkitse toteutetuksi",
+    "consider": "Harkitse",
+    "delete": "Poista"
+  },
+  "settings": {
+    "channel": "Ehdotuskanava",
+    "channelDesc": "Kanava, jolle ehdotukset julkaistaan äänestykseen.",
+    "voteEmojis": "Äänestysemojit",
+    "voteEmojisDesc": "Emojit, joita käytetään puolesta- ja vastaanäänestyksessä.",
+    "autoThread": "Luo lanka automaattisesti",
+    "autoThreadDesc": "Luo automaattisesti keskustelulanka jokaiseen uuteen ehdotukseen.",
+    "dmOnStatusChange": "DM tilamuutoksesta",
+    "dmOnStatusChangeDesc": "Ilmoita kirjoittajalle DM:llä kun ehdotuksen tila muuttuu."
+  },
+  "toast": {
+    "approved": "Ehdotus hyväksytty",
+    "rejected": "Ehdotus hylätty",
+    "implemented": "Ehdotus merkitty toteutetuksi",
+    "considered": "Ehdotus merkitty harkinnassa olevaksi",
+    "deleted": "Ehdotus poistettu",
+    "actionFailed": "Ehdotuksen päivittäminen epäonnistui",
+    "settingsSaved": "Ehdotusasetukset tallennettu",
+    "settingsFailed": "Ehdotusasetusten tallentaminen epäonnistui"
+  },
+  "empty": "Ei ehdotuksia vielä.",
+  "loading": "Ladataan ehdotuksia...",
+  "pagination": {
+    "previous": "Edellinen",
+    "next": "Seuraava",
+    "page": "Sivu {{page}} / {{total}}"
+  }
+}

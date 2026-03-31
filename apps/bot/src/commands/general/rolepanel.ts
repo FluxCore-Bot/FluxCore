@@ -123,7 +123,7 @@ async function handleSend(interaction: ChatInputCommandInteraction): Promise<voi
     }
 
     const embed = buildPanelEmbed(panel);
-    const components: ReturnType<typeof buildButtonComponents> | [ReturnType<typeof buildDropdownComponent>] = [];
+    const components: (ReturnType<typeof buildButtonComponents>[number] | ReturnType<typeof buildDropdownComponent>)[] = [];
 
     if (panel.type === "button") {
       components.push(...buildButtonComponents(panel));

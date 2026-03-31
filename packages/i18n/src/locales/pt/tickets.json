@@ -1,0 +1,77 @@
+{
+  "title": "Sistema de tickets",
+  "subtitle": "Crie paineis de tickets de suporte e gira os tickets abertos a partir do painel.",
+  "stats": {
+    "totalTickets": "Total de tickets",
+    "open": "Abertos",
+    "claimed": "Reivindicados",
+    "panels": "Paineis"
+  },
+  "tabs": {
+    "activeTickets": "Tickets ativos",
+    "panelBuilder": "Editor de paineis",
+    "settings": "Definicoes"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Utilizador",
+    "subject": "Assunto",
+    "status": "Estado",
+    "assignee": "Atribuido a",
+    "created": "Criado"
+  },
+  "statuses": {
+    "open": "Aberto",
+    "claimed": "Reivindicado",
+    "closed": "Fechado"
+  },
+  "panelBuilder": {
+    "title": "Titulo do painel",
+    "channel": "Canal",
+    "buttonLabel": "Etiqueta do botao",
+    "welcomeMessage": "Mensagem de boas-vindas",
+    "category": "Categoria do ticket",
+    "create": "Criar painel",
+    "edit": "Editar painel",
+    "deploy": "Implementar painel"
+  },
+  "settings": {
+    "transcriptChannel": "Canal de transcricao",
+    "transcriptChannelDesc": "Canal onde as transcricoes de tickets sao guardadas ao fechar.",
+    "maxTicketsPerUser": "Tickets maximos por utilizador",
+    "maxTicketsPerUserDesc": "Numero maximo de tickets abertos que um utilizador pode ter.",
+    "closeConfirmation": "Confirmacao de fecho",
+    "closeConfirmationDesc": "Exigir confirmacao antes de fechar um ticket.",
+    "dmTranscript": "Transcricao por MD",
+    "dmTranscriptDesc": "Enviar uma copia da transcricao ao criador do ticket por MD."
+  },
+  "actions": {
+    "claim": "Reivindicar",
+    "close": "Fechar",
+    "delete": "Eliminar",
+    "reopen": "Reabrir"
+  },
+  "toast": {
+    "panelCreated": "Painel de tickets criado",
+    "panelCreateFailed": "Falha ao criar o painel de tickets",
+    "panelUpdated": "Painel de tickets atualizado",
+    "panelUpdateFailed": "Falha ao atualizar o painel de tickets",
+    "panelDeployed": "Painel de tickets implementado",
+    "panelDeployFailed": "Falha ao implementar o painel de tickets",
+    "ticketClaimed": "Ticket reivindicado",
+    "ticketClaimFailed": "Falha ao reivindicar o ticket",
+    "ticketClosed": "Ticket fechado",
+    "ticketCloseFailed": "Falha ao fechar o ticket",
+    "ticketReopened": "Ticket reaberto",
+    "ticketReopenFailed": "Falha ao reabrir o ticket",
+    "ticketDeleted": "Ticket eliminado",
+    "ticketDeleteFailed": "Falha ao eliminar o ticket",
+    "settingsSaved": "Definicoes de tickets guardadas",
+    "settingsFailed": "Falha ao guardar as definicoes de tickets"
+  },
+  "empty": {
+    "tickets": "Sem tickets ativos.",
+    "panels": "Nenhum painel de tickets criado ainda."
+  },
+  "loading": "A carregar tickets..."
+}

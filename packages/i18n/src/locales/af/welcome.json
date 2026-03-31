@@ -1,0 +1,65 @@
+{
+  "title": "Welkom & Afskeid",
+  "subtitle": "Stel welkom- en afskeidsboodskappe, beelde en outo-rolle op.",
+  "loadingSubtitle": "Stel welkom- en afskeidsboodskappe vir jou bediener op.",
+  "tabs": {
+    "welcome": "Welkom",
+    "welcomeImage": "Welkombeeld",
+    "farewell": "Afskeid",
+    "farewellImage": "Afskeidsbeeld",
+    "dm": "Welkom-DM",
+    "autorole": "Outo-rol"
+  },
+  "welcome": {
+    "title": "Welkomboodskap",
+    "description": "Stuur 'n pasgemaakte embed wanneer 'n nuwe lid aansluit.",
+    "channelLabel": "Welkomkanaal-ID",
+    "channelPlaceholder": "Kanaal-ID...",
+    "embedBuilder": "Embed-bouer"
+  },
+  "welcomeImage": {
+    "title": "Welkombeeld",
+    "description": "Genereer 'n pasgemaakte beeldkaart met die lid se avatar wanneer hulle aansluit.",
+    "disabled": "Aktiveer die skakelaar hierbo om welkombeelde op te stel."
+  },
+  "farewell": {
+    "title": "Afskeidsboodskap",
+    "description": "Stuur 'n boodskap wanneer 'n lid die bediener verlaat.",
+    "channelLabel": "Afskeidskanaal-ID",
+    "channelPlaceholder": "Kanaal-ID..."
+  },
+  "farewellImage": {
+    "title": "Afskeidsbeeld",
+    "description": "Genereer 'n pasgemaakte afskeidskaart wanneer 'n lid vertrek.",
+    "disabled": "Aktiveer die skakelaar hierbo om afskeidsbeelde op te stel."
+  },
+  "dm": {
+    "title": "Welkom-DM",
+    "description": "Stuur 'n direkte boodskap aan nuwe lede. Sal stilweg misluk as DM's gedeaktiveer is."
+  },
+  "autorole": {
+    "title": "Outo-rol",
+    "description": "Ken outomaties rolle toe aan nuwe lede wanneer hulle aansluit. Bots is uitgesluit. Die bot moet 'n hoer rol he as die rolle hier gelys.",
+    "label": "Rol-ID's (komma-geskei)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Titel",
+    "description": "Beskrywing",
+    "color": "Kleur (hex)",
+    "footer": "Voetskrif",
+    "thumbnail": "Duimnael-URL",
+    "image": "Beeld-URL",
+    "variables": "Veranderlikes:"
+  },
+  "saveChanges": "Stoor Veranderinge",
+  "saving": "Stoor...",
+  "sendTest": "Stuur Toetsboodskap",
+  "sending": "Stuur...",
+  "toast": {
+    "saved": "Welkomkonfigurasie gestoor",
+    "saveFailed": "Kon nie konfigurasie stoor nie",
+    "testSent": "Toetsboodskap sal na <#{{channelId}}> gestuur word",
+    "testFailed": "Kon nie toetsboodskap stuur nie"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "title": "Vlakstelsel",
+  "subtitle": "Stel XP-verdienste, vlakop-aankondigings, rolbelonings en vermenigvuldigers op.",
+  "stats": {
+    "rankedMembers": "Gerangskikte Lede",
+    "roleRewards": "Rolbelonings",
+    "systemStatus": "Stelselstatus",
+    "enabled": "Geaktiveer",
+    "disabled": "Gedeaktiveer"
+  },
+  "tabs": {
+    "leaderboard": "Ranglys",
+    "settings": "Instellings",
+    "roleRewards": "Rolbelonings",
+    "exclusions": "Uitsluitings",
+    "multipliers": "Vermenigvuldigers"
+  },
+  "table": {
+    "rank": "Rang",
+    "userId": "Gebruiker-ID",
+    "level": "Vlak",
+    "xp": "XP",
+    "messages": "Boodskappe",
+    "voiceTime": "Stemtyd"
+  },
+  "settings": {
+    "title": "Vlakinstellings",
+    "enabled": "Aktiveer Vlakstelsel",
+    "enabledDesc": "Skakel die hele vlakstelsel aan of af.",
+    "xpPerMessage": "XP per Boodskap",
+    "xpPerMessageDesc": "Basis-XP wat per boodskap toegeken word (ewekansigheid van 0-9 word bygevoeg).",
+    "xpCooldown": "XP-afkoeltyd (sekondes)",
+    "xpCooldownDesc": "Minimum tyd tussen XP-toekennings per gebruiker.",
+    "voiceXpEnabled": "Stem-XP",
+    "voiceXpEnabledDesc": "Ken XP toe vir tyd spandeer in stemkanale.",
+    "voiceXpPerMinute": "Stem-XP per Minuut",
+    "voiceXpPerMinuteDesc": "XP wat per minuut in stem toegeken word.",
+    "levelUpAnnouncements": "Vlakop-aankondigings",
+    "levelUpAnnouncementsDesc": "Kondig aan wanneer 'n lid vlak op gaan.",
+    "announceDest": "Aankondigingsbestemming",
+    "announceDestHint": "Jy kan ook 'n kanaal-ID direk in die invoerveld hierbo invoer.",
+    "announceDestSameChannel": "Dieselfde Kanaal",
+    "announceDestDM": "Direkte Boodskap",
+    "announceMessage": "Aankondigingsboodskap",
+    "announceMessagePlaceholder": "{user} het pas **Vlak {level}** bereik!",
+    "announceMessageVars": "Veranderlikes: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Rolbelonings",
+    "description": "Ken outomaties rolle toe wanneer lede sekere vlakke bereik.",
+    "addReward": "Voeg Beloning By",
+    "addRewardTitle": "Voeg Rolbeloning By",
+    "level": "Vlak",
+    "levelPrefix": "Vlak {{level}}",
+    "roleId": "Rol-ID",
+    "levelPlaceholder": "bv. 5",
+    "rolePlaceholder": "bv. 123456789",
+    "removeReward": "Verwyder",
+    "noRewards": "Geen rolbelonings opgestel nie."
+  },
+  "exclusions": {
+    "title": "XP-uitsluitings",
+    "description": "Kanale en rolle wat nie XP verdien nie.",
+    "noXpChannels": "Geen-XP-kanale (komma-geskeide ID's)",
+    "noXpChannelsPlaceholder": "bv. 123456789, 987654321",
+    "noXpRoles": "Geen-XP-rolle (komma-geskeide ID's)",
+    "noXpRolesPlaceholder": "bv. 123456789, 987654321",
+    "save": "Stoor Uitsluitings"
+  },
+  "multipliers": {
+    "title": "XP-vermenigvuldigers",
+    "description": "Stel XP-vermenigvuldigers per kanaal of rol in. 'n Vermenigvuldiger van 2 verdubbel die XP wat verdien word.",
+    "channelMultipliers": "Kanaalvermenigvuldigers",
+    "roleMultipliers": "Rolvermenigvuldigers",
+    "channelId": "Kanaal-ID",
+    "roleId": "Rol-ID",
+    "multiplier": "Vermenigvuldiger",
+    "type": "Tipe",
+    "typeChannel": "Kanaal",
+    "typeRole": "Rol",
+    "id": "ID",
+    "idPlaceholder": "Kanaal- of Rol-ID",
+    "value": "Vermenigvuldiger",
+    "valuePlaceholder": "bv. 2",
+    "add": "Voeg Vermenigvuldiger By",
+    "addTitle": "Voeg Vermenigvuldiger By",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Geen XP-vermenigvuldigers opgestel nie."
+  },
+  "pagination": {
+    "previous": "Vorige",
+    "next": "Volgende",
+    "pageInfo": "Bladsy {{page}} van {{totalPages}} ({{total}} totaal)"
+  },
+  "loading": "Laai ranglys...",
+  "loadingGeneric": "Laai...",
+  "emptyLeaderboard": "Nog geen lede het XP verdien nie.",
+  "toast": {
+    "saved": "Vlakinstellings gestoor",
+    "saveFailed": "Kon nie instelling bywerk nie",
+    "rewardAdded": "Beloning bygevoeg",
+    "rewardAddFailed": "Kon nie beloning byvoeg nie",
+    "rewardRemoved": "Beloning verwyder",
+    "rewardRemoveFailed": "Kon nie beloning verwyder nie",
+    "multiplierAdded": "Vermenigvuldiger bygevoeg",
+    "multiplierAddFailed": "Kon nie vermenigvuldiger byvoeg nie",
+    "multiplierRemoved": "Vermenigvuldiger verwyder",
+    "multiplierRemoveFailed": "Kon nie vermenigvuldiger verwyder nie",
+    "exclusionUpdated": "Uitsluitings gestoor",
+    "exclusionFailed": "Kon nie uitsluitings stoor nie",
+    "levelValidation": "Vlak moet tussen 1 en 100 wees",
+    "roleIdRequired": "Rol-ID is verpligtend",
+    "multiplierIdRequired": "ID en vermenigvuldigerwaarde is verpligtend",
+    "multiplierRange": "Vermenigvuldiger moet tussen 0 en 10 wees"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}u {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

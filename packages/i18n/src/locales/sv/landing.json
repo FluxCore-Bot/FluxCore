@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Nu i öppen beta",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Det allt-i-ett",
+    "titleLine2": "Discord Bot-ramverket",
+    "subtitle": "Driftsätt en professionell Discord-närvaro på minuter. Modulärt, självhostat och byggt för communities som kräver mer."
+  },
+  "cta": {
+    "addToServer": "Lägg till på server",
+    "openDashboard": "Öppna kontrollpanelen",
+    "exploreFeatures": "Utforska funktioner"
+  },
+  "stats": {
+    "servers": "Servrar",
+    "latency": "Latens",
+    "uptime": "Drifttid",
+    "modules": "Moduler",
+    "serversValue": "1 000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99,9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Funktioner",
+    "title": "Allt din server behöver",
+    "subtitle": "En modulär verktygslåda designad för communities som kräver pålitlighet, flexibilitet och kontroll.",
+    "automation": {
+      "title": "Automatiseringsregler",
+      "description": "Skapa komplexa händelsestyrda arbetsflöden utan kod. Om-detta-så-det-utlösare med 23 händelsetyper och 10 åtgärdstyper."
+    },
+    "music": {
+      "title": "Musiksystem",
+      "description": "Högkvalitativ ljudströmning med stöd för flera plattformar. Köhantering, DJ-kontroller och biblioteksläge."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Dynamisk röstkanalshantering. Automatiskt skapande med anpassade namnmallar, behörigheter och uppstädning."
+    },
+    "logs": {
+      "title": "Aktivitetsloggar",
+      "description": "Fullständig revisionslogg för varje automatiseringskörning. Sök, filtrera och felsök dina regler med detaljerade loggar."
+    },
+    "webhooks": {
+      "title": "Webhooks & API",
+      "description": "Skicka data till externa tjänster med HTTP-webhooks. Anpassade headers, kroppmallar och variabelinterpolering."
+    },
+    "dashboard": {
+      "title": "Realtidskontrollpanel",
+      "description": "Hantera allt från en snygg webbkontrollpanel. Analys, konfiguration och övervakning på ett ställe."
+    }
+  },
+  "ctaSection": {
+    "title": "Redo att uppgradera ditt community?",
+    "subtitle": "Kom igång på minuter utan någon konfiguration. Självhostat, öppen källkod och helt gratis."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "\u00a9 {{year}} FluxCore Technologies. Alla rättigheter förbehållna.",
+    "links": {
+      "documentation": "Dokumentation",
+      "support": "Support",
+      "privacy": "Integritetspolicy",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "title": "Özel Komutlar",
+  "subtitle": "Mesajlarla tetiklenen otomatik yanıtlayıcılar ve ön ekli komutlar oluşturun.",
+  "stats": {
+    "totalCommands": "Toplam Komut",
+    "enabled": "Etkin",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Komutlar",
+    "variables": "Değişkenler"
+  },
+  "table": {
+    "name": "Ad",
+    "trigger": "Tetikleyici",
+    "response": "Yanıt",
+    "cooldown": "Bekleme Süresi",
+    "status": "Durum"
+  },
+  "triggerTypes": {
+    "command": "!komut",
+    "keyword": "Anahtar Kelime",
+    "startsWith": "Şununla Başlar",
+    "regex": "Regex",
+    "prefixCommand": "Ön Ekli Komut (!ad)",
+    "keywordContains": "Anahtar Kelime (içerir)"
+  },
+  "dialog": {
+    "createCommand": "Komut Oluştur",
+    "editCommand": "Komutu Düzenle"
+  },
+  "form": {
+    "commandName": "Komut Adı",
+    "triggerText": "Tetikleyici Metin",
+    "regexPattern": "Regex Deseni",
+    "triggerType": "Tetikleyici Türü",
+    "response": "Yanıt",
+    "message": "Mesaj",
+    "embedTitle": "Gömü Başlığı",
+    "embedDescription": "Gömü Açıklaması",
+    "color": "Renk",
+    "footer": "Alt Bilgi"
+  },
+  "options": {
+    "cooldown": "Bekleme Süresi (saniye)",
+    "enabled": "Etkin",
+    "enabledDesc": "Bu komutun aktif olup olmadığı",
+    "deleteTrigger": "Tetikleyici Mesajı Sil",
+    "deleteTriggerDesc": "Bu komutu tetikleyen mesajı otomatik olarak sil.",
+    "dmResponse": "DM Yanıtı",
+    "dmResponseDesc": "Yanıtı kanalda değil, doğrudan mesaj olarak gönder."
+  },
+  "restrictions": {
+    "title": "Kısıtlamalar",
+    "allowedChannels": "İzin Verilen Kanallar (boş = tümü)",
+    "allowedRoles": "İzin Verilen Roller (boş = herkes)",
+    "addChannel": "Kanal Ekle",
+    "addRole": "Rol Ekle"
+  },
+  "actions": {
+    "create": "Oluştur",
+    "update": "Güncelle",
+    "cancel": "İptal",
+    "addAction": "Eylem Ekle",
+    "addRole": "Rol Ekle",
+    "removeRole": "Rolü Kaldır"
+  },
+  "actionsSection": {
+    "title": "Eylemler ({{count}}/5)",
+    "noActions": "Eylem yapılandırılmamış. Bu komutun ne yapacağını tanımlamak için bir eylem ekleyin.",
+    "maxActions": "Komut başına en fazla 5 eylem"
+  },
+  "variables": {
+    "title": "Şablon Değişkenleri",
+    "description": "Bu değişkenleri komut yanıtlarınızda kullanın. Komut tetiklendiğinde gerçek değerlerle değiştirilecekler.",
+    "table": {
+      "variable": "Değişken",
+      "description": "Açıklama"
+    },
+    "entries": {
+      "user": "{user} — Komutu tetikleyen kullanıcıyı etiketler",
+      "username": "{username} — Kullanıcının görünen adı",
+      "userId": "{userId} — Kullanıcının kimliği",
+      "server": "{server} — Sunucu adı",
+      "channel": "{channel} — Mevcut kanalı etiketler",
+      "channelName": "{channelName} — Kanal adı",
+      "memberCount": "{memberCount} — Toplam sunucu üyesi sayısı"
+    }
+  },
+  "toast": {
+    "created": "Komut oluşturuldu",
+    "createFailed": "Komut oluşturulamadı",
+    "updated": "Komut güncellendi",
+    "updateFailed": "Komut güncellenemedi",
+    "deleted": "Komut silindi",
+    "deleteFailed": "Komut silinemedi",
+    "toggleEnabled": "Komut etkinleştirildi",
+    "toggleDisabled": "Komut devre dışı bırakıldı",
+    "toggleFailed": "Komut durumu değiştirilemedi"
+  },
+  "empty": "Henüz özel komut oluşturulmadı.",
+  "loading": "Komutlar yükleniyor...",
+  "badge": {
+    "active": "Aktif",
+    "disabled": "Devre Dışı",
+    "text": "Metin",
+    "embed": "Gömü"
+  },
+  "validation": {
+    "nameRequired": "Komut adı zorunludur"
+  },
+  "triggerPrefix": "Tetikleyici: !{{name}}"
+}

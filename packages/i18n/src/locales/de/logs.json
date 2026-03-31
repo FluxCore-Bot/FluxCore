@@ -1,0 +1,8 @@
+{
+  "title": "Protokolle",
+  "subtitle": "Ueberwachen Sie Regelausfuehrungen und Ereignisprotokollierung.",
+  "tabs": {
+    "activity": "Aktivitaetsprotokolle",
+    "events": "Ereignisprotokolle"
+  }
+}

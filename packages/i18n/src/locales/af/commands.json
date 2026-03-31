@@ -1,0 +1,113 @@
+{
+  "title": "Pasgemaakte Opdragte",
+  "subtitle": "Skep outo-antwoorde en voorvoegsel-opdragte wat deur boodskappe geaktiveer word.",
+  "stats": {
+    "totalCommands": "Totale Opdragte",
+    "enabled": "Geaktiveer",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Opdragte",
+    "variables": "Veranderlikes"
+  },
+  "table": {
+    "name": "Naam",
+    "trigger": "Sneller",
+    "response": "Antwoord",
+    "cooldown": "Afkoeltyd",
+    "status": "Status"
+  },
+  "triggerTypes": {
+    "command": "!opdrag",
+    "keyword": "Sleutelwoord",
+    "startsWith": "Begin Met",
+    "regex": "Regex",
+    "prefixCommand": "Voorvoegsel-opdrag (!naam)",
+    "keywordContains": "Sleutelwoord (bevat)"
+  },
+  "dialog": {
+    "createCommand": "Skep Opdrag",
+    "editCommand": "Wysig Opdrag"
+  },
+  "form": {
+    "commandName": "Opdragnaam",
+    "triggerText": "Snellerteks",
+    "regexPattern": "Regex-patroon",
+    "triggerType": "Snellertipe",
+    "response": "Antwoord",
+    "message": "Boodskap",
+    "embedTitle": "Embed-titel",
+    "embedDescription": "Embed-beskrywing",
+    "color": "Kleur",
+    "footer": "Voetskrif"
+  },
+  "options": {
+    "cooldown": "Afkoeltyd (sekondes)",
+    "enabled": "Geaktiveer",
+    "enabledDesc": "Of hierdie opdrag aktief is",
+    "deleteTrigger": "Verwyder Snellerboodskap",
+    "deleteTriggerDesc": "Verwyder outomaties die boodskap wat hierdie opdrag geaktiveer het.",
+    "dmResponse": "DM-antwoord",
+    "dmResponseDesc": "Stuur die antwoord as 'n direkte boodskap in plaas van in die kanaal."
+  },
+  "restrictions": {
+    "title": "Beperkings",
+    "allowedChannels": "Toegelate Kanale (leeg = almal)",
+    "allowedRoles": "Toegelate Rolle (leeg = almal)",
+    "addChannel": "Voeg Kanaal By",
+    "addRole": "Voeg Rol By"
+  },
+  "actions": {
+    "create": "Skep",
+    "update": "Werk By",
+    "cancel": "Kanselleer",
+    "addAction": "Voeg Aksie By",
+    "addRole": "Voeg Rol By",
+    "removeRole": "Verwyder Rol"
+  },
+  "actionsSection": {
+    "title": "Aksies ({{count}}/5)",
+    "noActions": "Geen aksies opgestel nie. Voeg 'n aksie by om te definieer wat hierdie opdrag doen.",
+    "maxActions": "Maksimum 5 aksies per opdrag"
+  },
+  "variables": {
+    "title": "Sjabloonveranderlikes",
+    "description": "Gebruik hierdie veranderlikes in jou opdragantwoorde. Hulle sal met die werklike waardes vervang word wanneer die opdrag geaktiveer word.",
+    "table": {
+      "variable": "Veranderlike",
+      "description": "Beskrywing"
+    },
+    "entries": {
+      "user": "{user} — Noem die gebruiker wat die opdrag geaktiveer het",
+      "username": "{username} — Die gebruiker se vertoonnaam",
+      "userId": "{userId} — Die gebruiker se ID",
+      "server": "{server} — Die bedienernaam",
+      "channel": "{channel} — Noem die huidige kanaal",
+      "channelName": "{channelName} — Die kanaalnaam",
+      "memberCount": "{memberCount} — Totale aantal bediener-lede"
+    }
+  },
+  "toast": {
+    "created": "Opdrag geskep",
+    "createFailed": "Kon nie opdrag skep nie",
+    "updated": "Opdrag bygewerk",
+    "updateFailed": "Kon nie opdrag bywerk nie",
+    "deleted": "Opdrag verwyder",
+    "deleteFailed": "Kon nie opdrag verwyder nie",
+    "toggleEnabled": "Opdrag geaktiveer",
+    "toggleDisabled": "Opdrag gedeaktiveer",
+    "toggleFailed": "Kon nie opdrag wissel nie"
+  },
+  "empty": "Nog geen pasgemaakte opdragte geskep nie.",
+  "loading": "Laai opdragte...",
+  "badge": {
+    "active": "Aktief",
+    "disabled": "Gedeaktiveer",
+    "text": "Teks",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Opdragnaam is verpligtend"
+  },
+  "triggerPrefix": "Sneller: !{{name}}"
+}

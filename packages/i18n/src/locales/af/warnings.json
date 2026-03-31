@@ -1,0 +1,72 @@
+{
+  "title": "Waarskuwings",
+  "subtitle": "Volg en bestuur ledewaarskuwings met outomatiese eskalasie.",
+  "stats": {
+    "totalWarnings": "Totale Waarskuwings",
+    "escalationRules": "Eskalasie-reels",
+    "dmOnWarn": "DM by Waarskuwing"
+  },
+  "tabs": {
+    "warnings": "Waarskuwingslogboek",
+    "escalation": "Eskalasie",
+    "settings": "Instellings"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Gebruiker",
+    "moderator": "Moderator",
+    "reason": "Rede",
+    "date": "Datum"
+  },
+  "filter": {
+    "userPlaceholder": "Filtreer op Gebruiker-ID...",
+    "clearAll": "Maak Alles Skoon"
+  },
+  "pagination": {
+    "previous": "Vorige",
+    "next": "Volgende",
+    "page": "Bladsy {{page}} van {{total}} ({{count}} totaal)"
+  },
+  "loading": "Laai waarskuwings...",
+  "noWarnings": "Geen waarskuwings gevind nie.",
+  "toast": {
+    "warningRemoved": "Waarskuwing verwyder",
+    "warningsFailed": "Kon nie waarskuwing verwyder nie",
+    "enterUserId": "Voer 'n gebruiker-ID in om alle waarskuwings vir daardie gebruiker te verwyder",
+    "allCleared": "Alle waarskuwings vir gebruiker verwyder",
+    "clearFailed": "Kon nie waarskuwings verwyder nie",
+    "thresholdAdded": "Strafdrempel bygevoeg",
+    "thresholdFailed": "Kon nie straf byvoeg nie",
+    "thresholdRemoved": "Straf verwyder",
+    "removeFailed": "Kon nie straf verwyder nie",
+    "settingFailed": "Kon nie instelling bywerk nie",
+    "thresholdInvalid": "Drempel moet 'n positiewe getal wees"
+  },
+  "escalation": {
+    "title": "Strafeskalasie",
+    "description": "Stel outomatiese aksies op wanneer 'n gebruiker 'n sekere aantal waarskuwings bereik.",
+    "threshold": "Drempel",
+    "action": "Aksie",
+    "duration": "Duur",
+    "noRules": "Geen eskalasie-reels opgestel nie.",
+    "addRule": "Voeg Eskalasie-reel By",
+    "addButton": "Voeg Reel By",
+    "warnings": "{{count}} waarskuwings",
+    "min": "{{count}} min",
+    "timeout": "Tyduit",
+    "kick": "Skop",
+    "ban": "Verban",
+    "durationLabel": "Duur (sekondes)",
+    "thresholdPlaceholder": "bv. 3",
+    "durationPlaceholder": "bv. 3600"
+  },
+  "settings": {
+    "title": "Waarskuwingsinstellings",
+    "dmOnWarn": "DM by Waarskuwing",
+    "dmOnWarnDesc": "Stuur 'n direkte boodskap aan die gebruiker wanneer hulle 'n waarskuwing ontvang.",
+    "requireReason": "Vereis Rede",
+    "requireReasonDesc": "Moderators moet 'n rede verskaf wanneer hulle 'n waarskuwing uitreik.",
+    "maxWarnings": "Maks Waarskuwings",
+    "maxWarningsDesc": "Maksimum waarskuwings per gebruiker (0 = onbeperk)."
+  }
+}

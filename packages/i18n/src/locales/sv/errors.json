@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Ej autentiserad",
+    "sessionExpired": "Sessionen har gått ut",
+    "missingCode": "Saknar kodparameter",
+    "tokenExchangeFailed": "Tokenbyte misslyckades",
+    "failedToFetchUser": "Misslyckades med att hämta användarinformation"
+  },
+  "permissions": {
+    "noGuildPermission": "Ingen behörighet för denna server",
+    "botNotInGuild": "Boten är inte på denna server",
+    "insufficientPermissions": "Otillräckliga behörigheter",
+    "permissionsNotResolved": "Behörigheter kunde inte lösas",
+    "requiresPermission": "Denna åtgärd kräver behörigheten \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Ogiltig inmatning",
+    "missingField": "Obligatoriskt fält saknas: {{field}}",
+    "invalidFormat": "Ogiltigt format för {{field}}",
+    "tooLong": "{{field}} överskrider maxlängden på {{max}} tecken",
+    "tooShort": "{{field}} måste vara minst {{min}} tecken",
+    "outOfRange": "{{field}} måste vara mellan {{min}} och {{max}}"
+  },
+  "resources": {
+    "notFound": "Hittades inte",
+    "alreadyExists": "{{resource}} finns redan",
+    "limitReached": "Maximalt {{max}} {{resource}} per server",
+    "createFailed": "Misslyckades med att skapa {{resource}}",
+    "updateFailed": "Misslyckades med att uppdatera {{resource}}",
+    "deleteFailed": "Misslyckades med att ta bort {{resource}}"
+  },
+  "server": {
+    "internalError": "Internt serverfel",
+    "serviceUnavailable": "Tjänsten är tillfälligt otillgänglig",
+    "rateLimited": "För många förfrågningar. Försök igen senare."
+  },
+  "csrf": {
+    "invalidToken": "Ogiltig eller saknad CSRF-token"
+  }
+}

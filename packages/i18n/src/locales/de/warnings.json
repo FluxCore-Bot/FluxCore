@@ -1,0 +1,72 @@
+{
+  "title": "Verwarnungen",
+  "subtitle": "Verwarnungen von Mitgliedern verfolgen und verwalten mit automatischer Eskalation.",
+  "stats": {
+    "totalWarnings": "Verwarnungen gesamt",
+    "escalationRules": "Eskalationsregeln",
+    "dmOnWarn": "DM bei Verwarnung"
+  },
+  "tabs": {
+    "warnings": "Verwarnungsprotokoll",
+    "escalation": "Eskalation",
+    "settings": "Einstellungen"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Benutzer",
+    "moderator": "Moderator",
+    "reason": "Grund",
+    "date": "Datum"
+  },
+  "filter": {
+    "userPlaceholder": "Nach Benutzer-ID filtern...",
+    "clearAll": "Alle loeschen"
+  },
+  "pagination": {
+    "previous": "Zurueck",
+    "next": "Weiter",
+    "page": "Seite {{page}} von {{total}} ({{count}} gesamt)"
+  },
+  "loading": "Verwarnungen werden geladen...",
+  "noWarnings": "Keine Verwarnungen gefunden.",
+  "toast": {
+    "warningRemoved": "Verwarnung entfernt",
+    "warningsFailed": "Verwarnung konnte nicht geloescht werden",
+    "enterUserId": "Geben Sie eine Benutzer-ID ein, um alle Verwarnungen fuer diesen Benutzer zu loeschen",
+    "allCleared": "Alle Verwarnungen fuer den Benutzer geloescht",
+    "clearFailed": "Verwarnungen konnten nicht geloescht werden",
+    "thresholdAdded": "Bestrafungsschwelle hinzugefuegt",
+    "thresholdFailed": "Bestrafung konnte nicht hinzugefuegt werden",
+    "thresholdRemoved": "Bestrafung entfernt",
+    "removeFailed": "Bestrafung konnte nicht entfernt werden",
+    "settingFailed": "Einstellung konnte nicht aktualisiert werden",
+    "thresholdInvalid": "Schwelle muss eine positive Zahl sein"
+  },
+  "escalation": {
+    "title": "Bestrafungseskalation",
+    "description": "Konfigurieren Sie automatische Aktionen, wenn ein Benutzer eine bestimmte Anzahl an Verwarnungen erreicht.",
+    "threshold": "Schwelle",
+    "action": "Aktion",
+    "duration": "Dauer",
+    "noRules": "Keine Eskalationsregeln konfiguriert.",
+    "addRule": "Eskalationsregel hinzufuegen",
+    "addButton": "Regel hinzufuegen",
+    "warnings": "{{count}} Verwarnungen",
+    "min": "{{count}} Min.",
+    "timeout": "Timeout",
+    "kick": "Kick",
+    "ban": "Ban",
+    "durationLabel": "Dauer (Sekunden)",
+    "thresholdPlaceholder": "z.B. 3",
+    "durationPlaceholder": "z.B. 3600"
+  },
+  "settings": {
+    "title": "Verwarnungseinstellungen",
+    "dmOnWarn": "DM bei Verwarnung",
+    "dmOnWarnDesc": "Dem Benutzer eine Direktnachricht senden, wenn er eine Verwarnung erhaelt.",
+    "requireReason": "Grund erforderlich",
+    "requireReasonDesc": "Moderatoren muessen einen Grund angeben, wenn sie eine Verwarnung aussprechen.",
+    "maxWarnings": "Maximale Verwarnungen",
+    "maxWarningsDesc": "Maximale Verwarnungen pro Benutzer (0 = unbegrenzt)."
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "title": "Sistem Leveling",
+  "subtitle": "Konfigurasikan perolehan XP, pengumuman naik tahap, ganjaran peranan, dan pengganda.",
+  "stats": {
+    "rankedMembers": "Ahli Berperingkat",
+    "roleRewards": "Ganjaran Peranan",
+    "systemStatus": "Status Sistem",
+    "enabled": "Diaktifkan",
+    "disabled": "Dinyahaktifkan"
+  },
+  "tabs": {
+    "leaderboard": "Papan Pendahulu",
+    "settings": "Tetapan",
+    "roleRewards": "Ganjaran Peranan",
+    "exclusions": "Pengecualian",
+    "multipliers": "Pengganda"
+  },
+  "table": {
+    "rank": "Kedudukan",
+    "userId": "ID Pengguna",
+    "level": "Tahap",
+    "xp": "XP",
+    "messages": "Mesej",
+    "voiceTime": "Masa Suara"
+  },
+  "settings": {
+    "title": "Tetapan Leveling",
+    "enabled": "Aktifkan Leveling",
+    "enabledDesc": "Aktifkan atau nyahaktifkan keseluruhan sistem leveling.",
+    "xpPerMessage": "XP setiap Mesej",
+    "xpPerMessageDesc": "XP asas yang diberikan setiap mesej (rawak 0-9 ditambah).",
+    "xpCooldown": "Cooldown XP (saat)",
+    "xpCooldownDesc": "Masa minimum antara pemberian XP setiap pengguna.",
+    "voiceXpEnabled": "XP Suara",
+    "voiceXpEnabledDesc": "Berikan XP untuk masa yang dihabiskan di saluran suara.",
+    "voiceXpPerMinute": "XP Suara setiap Minit",
+    "voiceXpPerMinuteDesc": "XP yang diberikan setiap minit di saluran suara.",
+    "levelUpAnnouncements": "Pengumuman Naik Tahap",
+    "levelUpAnnouncementsDesc": "Umumkan apabila ahli naik tahap.",
+    "announceDest": "Destinasi Pengumuman",
+    "announceDestHint": "Anda juga boleh memasukkan ID saluran terus dalam input di atas.",
+    "announceDestSameChannel": "Saluran yang Sama",
+    "announceDestDM": "Mesej Terus",
+    "announceMessage": "Mesej Pengumuman",
+    "announceMessagePlaceholder": "{user} baru sahaja mencapai **Tahap {level}**!",
+    "announceMessageVars": "Pemboleh ubah: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Ganjaran Peranan",
+    "description": "Berikan peranan secara automatik apabila ahli mencapai tahap tertentu.",
+    "addReward": "Tambah Ganjaran",
+    "addRewardTitle": "Tambah Ganjaran Peranan",
+    "level": "Tahap",
+    "levelPrefix": "Tahap {{level}}",
+    "roleId": "ID Peranan",
+    "levelPlaceholder": "cth. 5",
+    "rolePlaceholder": "cth. 123456789",
+    "removeReward": "Buang",
+    "noRewards": "Tiada ganjaran peranan yang dikonfigurasi."
+  },
+  "exclusions": {
+    "title": "Pengecualian XP",
+    "description": "Saluran dan peranan yang tidak memperoleh XP.",
+    "noXpChannels": "Saluran Tanpa XP (ID dipisahkan koma)",
+    "noXpChannelsPlaceholder": "cth. 123456789, 987654321",
+    "noXpRoles": "Peranan Tanpa XP (ID dipisahkan koma)",
+    "noXpRolesPlaceholder": "cth. 123456789, 987654321",
+    "save": "Simpan Pengecualian"
+  },
+  "multipliers": {
+    "title": "Pengganda XP",
+    "description": "Tetapkan pengganda XP setiap saluran atau peranan. Pengganda 2 menggandakan XP yang diperoleh.",
+    "channelMultipliers": "Pengganda Saluran",
+    "roleMultipliers": "Pengganda Peranan",
+    "channelId": "ID Saluran",
+    "roleId": "ID Peranan",
+    "multiplier": "Pengganda",
+    "type": "Jenis",
+    "typeChannel": "Saluran",
+    "typeRole": "Peranan",
+    "id": "ID",
+    "idPlaceholder": "ID Saluran atau Peranan",
+    "value": "Pengganda",
+    "valuePlaceholder": "cth. 2",
+    "add": "Tambah Pengganda",
+    "addTitle": "Tambah Pengganda",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Tiada pengganda XP yang dikonfigurasi."
+  },
+  "pagination": {
+    "previous": "Sebelumnya",
+    "next": "Seterusnya",
+    "pageInfo": "Halaman {{page}} daripada {{totalPages}} ({{total}} jumlah)"
+  },
+  "loading": "Memuatkan papan pendahulu...",
+  "loadingGeneric": "Memuatkan...",
+  "emptyLeaderboard": "Tiada ahli yang telah memperoleh XP lagi.",
+  "toast": {
+    "saved": "Tetapan leveling disimpan",
+    "saveFailed": "Gagal mengemaskini tetapan",
+    "rewardAdded": "Ganjaran ditambah",
+    "rewardAddFailed": "Gagal menambah ganjaran",
+    "rewardRemoved": "Ganjaran dibuang",
+    "rewardRemoveFailed": "Gagal membuang ganjaran",
+    "multiplierAdded": "Pengganda ditambah",
+    "multiplierAddFailed": "Gagal menambah pengganda",
+    "multiplierRemoved": "Pengganda dibuang",
+    "multiplierRemoveFailed": "Gagal membuang pengganda",
+    "exclusionUpdated": "Pengecualian disimpan",
+    "exclusionFailed": "Gagal menyimpan pengecualian",
+    "levelValidation": "Tahap mesti berada antara 1 dan 100",
+    "roleIdRequired": "ID Peranan diperlukan",
+    "multiplierIdRequired": "ID dan nilai pengganda diperlukan",
+    "multiplierRange": "Pengganda mesti berada antara 0 dan 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}j {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "title": "Rollpaneler",
+  "subtitle": "Skapa självtilldelande rollpaneler med knappar, rullgardinsmenyer eller reaktioner.",
+  "stats": {
+    "totalPanels": "Totalt antal paneler",
+    "deployed": "Publicerade",
+    "totalRoles": "Totalt antal roller"
+  },
+  "tabs": {
+    "panels": "Paneler",
+    "preview": "Förhandsgranskning"
+  },
+  "table": {
+    "name": "Namn",
+    "type": "Typ",
+    "mode": "Läge",
+    "roles": "Roller",
+    "status": "Status"
+  },
+  "panelTypes": {
+    "reaction": "Reaktion",
+    "button": "Knapp",
+    "dropdown": "Rullgardinsmeny"
+  },
+  "panelModes": {
+    "toggle": "Växla",
+    "unique": "Unik",
+    "verify": "Verifiera"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Växla (lägg till/ta bort)",
+    "unique": "Unik (en åt gången)",
+    "verify": "Verifiera (bara lägg till)"
+  },
+  "status": {
+    "deployed": "Publicerad",
+    "draft": "Utkast"
+  },
+  "dialog": {
+    "createPanel": "Skapa panel",
+    "editPanel": "Redigera panel"
+  },
+  "panelList": {
+    "title": "Alla paneler"
+  },
+  "form": {
+    "name": "Namn",
+    "namePlaceholder": "t.ex. Färgroller",
+    "type": "Typ",
+    "mode": "Läge",
+    "channel": "Kanal",
+    "channelPlaceholder": "Välj kanal",
+    "minRoles": "Minsta antal roller",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Maxantal roller",
+    "maxRolesPlaceholder": "Alla",
+    "embedSection": "Inbäddning",
+    "embedTitle": "Titel",
+    "embedTitlePlaceholder": "Paneltitel (standard är panelnamnet)",
+    "embedDescription": "Beskrivning",
+    "embedDescriptionPlaceholder": "Beskrivningstext",
+    "rolesCount": "Roller ({{count}}/25)",
+    "addRole": "Lägg till roll"
+  },
+  "entry": {
+    "role": "Roll",
+    "rolePlaceholder": "Välj roll",
+    "label": "Etikett",
+    "labelPlaceholder": "Knappetikett",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "t.ex. star",
+    "description": "Beskrivning",
+    "descriptionPlaceholder": "Alternativbeskrivning",
+    "style": "Stil"
+  },
+  "buttonStyles": {
+    "primary": "Primär",
+    "secondary": "Sekundär",
+    "success": "Framgång",
+    "danger": "Fara"
+  },
+  "actions": {
+    "create": "Skapa",
+    "update": "Uppdatera",
+    "cancel": "Avbryt",
+    "deploy": "Publicera",
+    "delete": "Ta bort",
+    "addEntry": "Lägg till post",
+    "removeEntry": "Ta bort post"
+  },
+  "preview": {
+    "title": "Liveförhandsgranskning",
+    "description": "Förhandsgranska hur dina paneler kommer att se ut i Discord.",
+    "selectRoles": "Välj roller...",
+    "noPreview": "Inga paneler att förhandsgranska."
+  },
+  "empty": "Inga rollpaneler skapade ännu. Klicka på \"Skapa panel\" för att komma igång.",
+  "toast": {
+    "created": "Panel skapad",
+    "createFailed": "Misslyckades med att skapa panel",
+    "updated": "Panel uppdaterad",
+    "updateFailed": "Misslyckades med att uppdatera panel",
+    "deleted": "Panel borttagen",
+    "deleteFailed": "Misslyckades med att ta bort panel",
+    "deployed": "Rollpanel publicerad till kanal",
+    "deployFailed": "Misslyckades med att skicka panel",
+    "nameRequired": "Panelnamn krävs",
+    "channelRequired": "Kanal krävs",
+    "maxRolesReached": "Maximalt 25 roller per panel"
+  },
+  "loading": "Laddar paneler..."
+}

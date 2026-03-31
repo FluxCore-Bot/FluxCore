@@ -1,0 +1,120 @@
+{
+  "title": "System poziomów",
+  "subtitle": "Skonfiguruj zdobywanie XP, ogłoszenia o awansach, nagrody w postaci ról i mnożniki.",
+  "stats": {
+    "rankedMembers": "Członkowie w rankingu",
+    "roleRewards": "Nagrody ról",
+    "systemStatus": "Status systemu",
+    "enabled": "Włączony",
+    "disabled": "Wyłączony"
+  },
+  "tabs": {
+    "leaderboard": "Ranking",
+    "settings": "Ustawienia",
+    "roleRewards": "Nagrody ról",
+    "exclusions": "Wykluczenia",
+    "multipliers": "Mnożniki"
+  },
+  "table": {
+    "rank": "Miejsce",
+    "userId": "ID użytkownika",
+    "level": "Poziom",
+    "xp": "XP",
+    "messages": "Wiadomości",
+    "voiceTime": "Czas głosowy"
+  },
+  "settings": {
+    "title": "Ustawienia poziomów",
+    "enabled": "Włącz poziomy",
+    "enabledDesc": "Włącz lub wyłącz cały system poziomów.",
+    "xpPerMessage": "XP za wiadomość",
+    "xpPerMessageDesc": "Bazowe XP za wiadomość (dodawane jest losowe 0-9).",
+    "xpCooldown": "Cooldown XP (sekundy)",
+    "xpCooldownDesc": "Minimalny czas między przyznaniami XP dla użytkownika.",
+    "voiceXpEnabled": "XP głosowe",
+    "voiceXpEnabledDesc": "Przyznawaj XP za czas spędzony na kanałach głosowych.",
+    "voiceXpPerMinute": "XP głosowe na minutę",
+    "voiceXpPerMinuteDesc": "XP przyznawane za minutę na kanale głosowym.",
+    "levelUpAnnouncements": "Ogłoszenia o awansach",
+    "levelUpAnnouncementsDesc": "Ogłaszaj, gdy członek awansuje na wyższy poziom.",
+    "announceDest": "Miejsce ogłoszenia",
+    "announceDestHint": "Możesz również wpisać ID kanału bezpośrednio w polu powyżej.",
+    "announceDestSameChannel": "Ten sam kanał",
+    "announceDestDM": "Wiadomość prywatna",
+    "announceMessage": "Treść ogłoszenia",
+    "announceMessagePlaceholder": "{user} właśnie osiągnął **poziom {level}**!",
+    "announceMessageVars": "Zmienne: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Nagrody ról",
+    "description": "Automatycznie przypisuj role, gdy członkowie osiągną określone poziomy.",
+    "addReward": "Dodaj nagrodę",
+    "addRewardTitle": "Dodaj nagrodę roli",
+    "level": "Poziom",
+    "levelPrefix": "Poziom {{level}}",
+    "roleId": "ID roli",
+    "levelPlaceholder": "np. 5",
+    "rolePlaceholder": "np. 123456789",
+    "removeReward": "Usuń",
+    "noRewards": "Brak skonfigurowanych nagród ról."
+  },
+  "exclusions": {
+    "title": "Wykluczenia XP",
+    "description": "Kanały i role, za które nie przyznaje się XP.",
+    "noXpChannels": "Kanały bez XP (ID oddzielone przecinkami)",
+    "noXpChannelsPlaceholder": "np. 123456789, 987654321",
+    "noXpRoles": "Role bez XP (ID oddzielone przecinkami)",
+    "noXpRolesPlaceholder": "np. 123456789, 987654321",
+    "save": "Zapisz wykluczenia"
+  },
+  "multipliers": {
+    "title": "Mnożniki XP",
+    "description": "Ustaw mnożniki XP dla kanałów lub ról. Mnożnik 2 podwaja zdobywane XP.",
+    "channelMultipliers": "Mnożniki kanałów",
+    "roleMultipliers": "Mnożniki ról",
+    "channelId": "ID kanału",
+    "roleId": "ID roli",
+    "multiplier": "Mnożnik",
+    "type": "Typ",
+    "typeChannel": "Kanał",
+    "typeRole": "Rola",
+    "id": "ID",
+    "idPlaceholder": "ID kanału lub roli",
+    "value": "Mnożnik",
+    "valuePlaceholder": "np. 2",
+    "add": "Dodaj mnożnik",
+    "addTitle": "Dodaj mnożnik",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Brak skonfigurowanych mnożników XP."
+  },
+  "pagination": {
+    "previous": "Poprzednia",
+    "next": "Następna",
+    "pageInfo": "Strona {{page}} z {{totalPages}} ({{total}} łącznie)"
+  },
+  "loading": "Ładowanie rankingu...",
+  "loadingGeneric": "Ładowanie...",
+  "emptyLeaderboard": "Żaden członek nie zdobył jeszcze XP.",
+  "toast": {
+    "saved": "Ustawienia poziomów zapisane",
+    "saveFailed": "Nie udało się zaktualizować ustawienia",
+    "rewardAdded": "Nagroda dodana",
+    "rewardAddFailed": "Nie udało się dodać nagrody",
+    "rewardRemoved": "Nagroda usunięta",
+    "rewardRemoveFailed": "Nie udało się usunąć nagrody",
+    "multiplierAdded": "Mnożnik dodany",
+    "multiplierAddFailed": "Nie udało się dodać mnożnika",
+    "multiplierRemoved": "Mnożnik usunięty",
+    "multiplierRemoveFailed": "Nie udało się usunąć mnożnika",
+    "exclusionUpdated": "Wykluczenia zapisane",
+    "exclusionFailed": "Nie udało się zapisać wykluczeń",
+    "levelValidation": "Poziom musi być między 1 a 100",
+    "roleIdRequired": "ID roli jest wymagane",
+    "multiplierIdRequired": "ID i wartość mnożnika są wymagane",
+    "multiplierRange": "Mnożnik musi być między 0 a 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}g {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

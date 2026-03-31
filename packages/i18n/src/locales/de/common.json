@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore Dashboard"
+  },
+  "status": {
+    "online": "Online",
+    "offline": "Offline",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Uebersicht",
+    "automation": "Automatisierung",
+    "music": "Musik",
+    "tempvoice": "TempVoice",
+    "welcome": "Willkommen",
+    "moderation": "Moderation",
+    "warnings": "Verwarnungen",
+    "rolePanels": "Rollenpanels",
+    "leveling": "Levelsystem",
+    "scheduled": "Geplante Nachrichten",
+    "commands": "Befehle",
+    "security": "Sicherheit",
+    "tickets": "Tickets",
+    "giveaways": "Gewinnspiele",
+    "suggestions": "Vorschlaege",
+    "starboard": "Starboard",
+    "logs": "Protokolle",
+    "permissions": "Berechtigungen",
+    "settings": "Einstellungen"
+  },
+  "actions": {
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Loeschen",
+    "edit": "Bearbeiten",
+    "create": "Erstellen",
+    "add": "Hinzufuegen",
+    "remove": "Entfernen",
+    "confirm": "Bestaetigen",
+    "close": "Schliessen",
+    "back": "Zurueck",
+    "next": "Weiter",
+    "search": "Suchen",
+    "filter": "Filtern",
+    "refresh": "Aktualisieren",
+    "reset": "Zuruecksetzen",
+    "enable": "Aktivieren",
+    "disable": "Deaktivieren",
+    "copy": "Kopieren",
+    "export": "Exportieren",
+    "import": "Importieren",
+    "submit": "Absenden",
+    "loading": "Laden...",
+    "retry": "Erneut versuchen"
+  },
+  "labels": {
+    "enabled": "Aktiviert",
+    "disabled": "Deaktiviert",
+    "active": "Aktiv",
+    "inactive": "Inaktiv",
+    "none": "Keine",
+    "all": "Alle",
+    "custom": "Benutzerdefiniert",
+    "default": "Standard",
+    "required": "Erforderlich",
+    "optional": "Optional",
+    "name": "Name",
+    "description": "Beschreibung",
+    "type": "Typ",
+    "status": "Status",
+    "channel": "Kanal",
+    "role": "Rolle",
+    "member": "Mitglied",
+    "duration": "Dauer",
+    "reason": "Grund",
+    "language": "Sprache"
+  },
+  "header": {
+    "notifications": "Benachrichtigungen",
+    "settings": "Einstellungen",
+    "logout": "Abmelden",
+    "toggleSidebar": "Seitenleiste umschalten",
+    "refreshData": "Discord-Daten aktualisieren"
+  },
+  "sidebar": {
+    "closeSidebar": "Seitenleiste schliessen",
+    "addToServer": "Zum Server hinzufuegen",
+    "docs": "Dokumentation",
+    "support": "Support",
+    "backToServers": "Zurueck zu den Servern"
+  },
+  "empty": {
+    "noData": "Keine Daten verfuegbar",
+    "noResults": "Keine Ergebnisse gefunden",
+    "noItems": "Noch keine Eintraege"
+  },
+  "time": {
+    "seconds": "Sekunden",
+    "minutes": "Minuten",
+    "hours": "Stunden",
+    "days": "Tage",
+    "ago": "vor {{time}}",
+    "in": "in {{time}}"
+  },
+  "confirm": {
+    "title": "Sind Sie sicher?",
+    "deleteTitle": "Loeschen bestaetigen",
+    "deleteMessage": "Diese Aktion kann nicht rueckgaengig gemacht werden.",
+    "unsavedChanges": "Sie haben ungespeicherte Aenderungen. Sind Sie sicher, dass Sie die Seite verlassen moechten?"
+  },
+  "accessibility": {
+    "skipToContent": "Zum Hauptinhalt springen",
+    "loading": "Inhalt wird geladen",
+    "loaded": "Inhalt geladen",
+    "error": "Ein Fehler ist aufgetreten",
+    "menuOpen": "Menue ist geoeffnet",
+    "menuClosed": "Menue ist geschlossen"
+  }
+}

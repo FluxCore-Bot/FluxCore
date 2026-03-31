@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore-kontrolepaneel"
+  },
+  "status": {
+    "online": "Aanlyn",
+    "offline": "Aflyn",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Oorsig",
+    "automation": "Outomatisering",
+    "music": "Musiek",
+    "tempvoice": "TempVoice",
+    "welcome": "Welkom",
+    "moderation": "Moderering",
+    "warnings": "Waarskuwings",
+    "rolePanels": "Rolpanele",
+    "leveling": "Vlakstelsel",
+    "scheduled": "Geskeduleer",
+    "commands": "Opdragte",
+    "security": "Sekuriteit",
+    "tickets": "Kaartjies",
+    "giveaways": "Weggeeaksies",
+    "suggestions": "Voorstelle",
+    "starboard": "Sterbord",
+    "logs": "Logboeke",
+    "permissions": "Toestemmings",
+    "settings": "Instellings"
+  },
+  "actions": {
+    "save": "Stoor",
+    "cancel": "Kanselleer",
+    "delete": "Verwyder",
+    "edit": "Wysig",
+    "create": "Skep",
+    "add": "Voeg By",
+    "remove": "Verwyder",
+    "confirm": "Bevestig",
+    "close": "Sluit",
+    "back": "Terug",
+    "next": "Volgende",
+    "search": "Soek",
+    "filter": "Filtreer",
+    "refresh": "Verfris",
+    "reset": "Herstel",
+    "enable": "Aktiveer",
+    "disable": "Deaktiveer",
+    "copy": "Kopieer",
+    "export": "Voer Uit",
+    "import": "Voer In",
+    "submit": "Dien In",
+    "loading": "Laai...",
+    "retry": "Probeer Weer"
+  },
+  "labels": {
+    "enabled": "Geaktiveer",
+    "disabled": "Gedeaktiveer",
+    "active": "Aktief",
+    "inactive": "Onaktief",
+    "none": "Geen",
+    "all": "Almal",
+    "custom": "Pasgemaak",
+    "default": "Verstek",
+    "required": "Verpligtend",
+    "optional": "Opsioneel",
+    "name": "Naam",
+    "description": "Beskrywing",
+    "type": "Tipe",
+    "status": "Status",
+    "channel": "Kanaal",
+    "role": "Rol",
+    "member": "Lid",
+    "duration": "Duur",
+    "reason": "Rede",
+    "language": "Taal"
+  },
+  "header": {
+    "notifications": "Kennisgewings",
+    "settings": "Instellings",
+    "logout": "Teken Uit",
+    "toggleSidebar": "Wissel sybalk",
+    "refreshData": "Verfris Discord-data"
+  },
+  "sidebar": {
+    "closeSidebar": "Sluit sybalk",
+    "addToServer": "Voeg by Bediener",
+    "docs": "Dokumentasie",
+    "support": "Ondersteuning",
+    "backToServers": "Terug na Bedieners"
+  },
+  "empty": {
+    "noData": "Geen data beskikbaar nie",
+    "noResults": "Geen resultate gevind nie",
+    "noItems": "Nog geen items nie"
+  },
+  "time": {
+    "seconds": "sekondes",
+    "minutes": "minute",
+    "hours": "ure",
+    "days": "dae",
+    "ago": "{{time}} gelede",
+    "in": "oor {{time}}"
+  },
+  "confirm": {
+    "title": "Is jy seker?",
+    "deleteTitle": "Bevestig verwydering",
+    "deleteMessage": "Hierdie aksie kan nie ongedaan gemaak word nie.",
+    "unsavedChanges": "Jy het ongestoorde veranderinge. Is jy seker jy wil weggaan?"
+  },
+  "accessibility": {
+    "skipToContent": "Spring na hoofinhoud",
+    "loading": "Laai inhoud",
+    "loaded": "Inhoud gelaai",
+    "error": "'n Fout het voorgekom",
+    "menuOpen": "Kieslys is oop",
+    "menuClosed": "Kieslys is gesluit"
+  }
+}

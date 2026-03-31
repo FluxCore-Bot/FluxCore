@@ -1,0 +1,9 @@
+{
+  "title": "Pelayan Anda",
+  "subtitle": "Pilih pelayan untuk diurus dan dikonfigurasi.",
+  "loading": "Memuatkan pelayan...",
+  "empty": {
+    "title": "Tiada pelayan ditemui",
+    "description": "Pastikan bot telah ditambahkan ke pelayan di mana anda mempunyai kebenaran Urus Pelayan."
+  }
+}

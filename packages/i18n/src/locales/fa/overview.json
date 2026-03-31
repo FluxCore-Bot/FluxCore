@@ -1,0 +1,12 @@
+{
+  "title": "نمای کلی",
+  "subtitle": "عملکرد اتوماسیون و فعالیت را در یک نگاه بررسی کنید.",
+  "stats": {
+    "actionRules": "قوانین عملیات",
+    "activeNow": "فعال در حال حاضر",
+    "executions": "اجراها",
+    "successRate": "نرخ موفقیت"
+  },
+  "errorsInLast24h": "{{count}} خطا در ۲۴ ساعت گذشته",
+  "errorsInLast24h_other": "{{count}} خطا در ۲۴ ساعت گذشته"
+}

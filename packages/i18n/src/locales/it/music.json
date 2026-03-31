@@ -1,0 +1,8 @@
+{
+  "title": "Sistema musicale",
+  "subtitle": "Configura le modalita di riproduzione globali e le preferenze della libreria audio.",
+  "tabs": {
+    "settings": "Impostazioni di riproduzione",
+    "library": "Libreria musicale"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "title": "總覽",
+  "subtitle": "一目瞭然地監控自動化效能和活動。",
+  "stats": {
+    "actionRules": "動作規則",
+    "activeNow": "目前活躍",
+    "executions": "執行次數",
+    "successRate": "成功率"
+  },
+  "errorsInLast24h": "最近 24 小時內 {{count}} 個錯誤",
+  "errorsInLast24h_other": "最近 24 小時內 {{count}} 個錯誤"
+}

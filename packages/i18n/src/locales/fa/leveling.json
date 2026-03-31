@@ -1,0 +1,120 @@
+{
+  "title": "سیستم سطح‌بندی",
+  "subtitle": "پیکربندی کسب XP، اعلان‌های ارتقای سطح، پاداش نقش‌ها و ضریب‌ها.",
+  "stats": {
+    "rankedMembers": "اعضای رتبه‌بندی‌شده",
+    "roleRewards": "پاداش نقش‌ها",
+    "systemStatus": "وضعیت سیستم",
+    "enabled": "فعال",
+    "disabled": "غیرفعال"
+  },
+  "tabs": {
+    "leaderboard": "جدول رتبه‌بندی",
+    "settings": "تنظیمات",
+    "roleRewards": "پاداش نقش‌ها",
+    "exclusions": "استثناها",
+    "multipliers": "ضریب‌ها"
+  },
+  "table": {
+    "rank": "رتبه",
+    "userId": "شناسه کاربر",
+    "level": "سطح",
+    "xp": "XP",
+    "messages": "پیام‌ها",
+    "voiceTime": "زمان صوتی"
+  },
+  "settings": {
+    "title": "تنظیمات سطح‌بندی",
+    "enabled": "فعال‌سازی سطح‌بندی",
+    "enabledDesc": "روشن/خاموش کردن کل سیستم سطح‌بندی.",
+    "xpPerMessage": "XP هر پیام",
+    "xpPerMessageDesc": "XP پایه اعطاشده برای هر پیام (تصادفی ۰-۹ اضافه می‌شود).",
+    "xpCooldown": "زمان انتظار XP (ثانیه)",
+    "xpCooldownDesc": "حداقل زمان بین اعطای XP برای هر کاربر.",
+    "voiceXpEnabled": "XP صوتی",
+    "voiceXpEnabledDesc": "اعطای XP برای زمان سپری‌شده در کانال‌های صوتی.",
+    "voiceXpPerMinute": "XP صوتی در دقیقه",
+    "voiceXpPerMinuteDesc": "XP اعطاشده برای هر دقیقه در صوت.",
+    "levelUpAnnouncements": "اعلان‌های ارتقای سطح",
+    "levelUpAnnouncementsDesc": "اعلان هنگام ارتقای سطح عضو.",
+    "announceDest": "مقصد اعلان",
+    "announceDestHint": "همچنین می‌توانید شناسه کانال را مستقیماً در فیلد بالا وارد کنید.",
+    "announceDestSameChannel": "همان کانال",
+    "announceDestDM": "پیام خصوصی",
+    "announceMessage": "پیام اعلان",
+    "announceMessagePlaceholder": "{user} به تازگی به **سطح {level}** رسید!",
+    "announceMessageVars": "متغیرها: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "پاداش نقش‌ها",
+    "description": "اختصاص خودکار نقش‌ها وقتی اعضا به سطوح مشخصی می‌رسند.",
+    "addReward": "افزودن پاداش",
+    "addRewardTitle": "افزودن پاداش نقش",
+    "level": "سطح",
+    "levelPrefix": "سطح {{level}}",
+    "roleId": "شناسه نقش",
+    "levelPlaceholder": "مثلاً ۵",
+    "rolePlaceholder": "مثلاً 123456789",
+    "removeReward": "حذف",
+    "noRewards": "پاداش نقشی پیکربندی نشده."
+  },
+  "exclusions": {
+    "title": "استثناهای XP",
+    "description": "کانال‌ها و نقش‌هایی که XP کسب نمی‌کنند.",
+    "noXpChannels": "کانال‌های بدون XP (شناسه‌ها جداشده با کاما)",
+    "noXpChannelsPlaceholder": "مثلاً 123456789, 987654321",
+    "noXpRoles": "نقش‌های بدون XP (شناسه‌ها جداشده با کاما)",
+    "noXpRolesPlaceholder": "مثلاً 123456789, 987654321",
+    "save": "ذخیره استثناها"
+  },
+  "multipliers": {
+    "title": "ضریب‌های XP",
+    "description": "تنظیم ضریب‌های XP برای هر کانال یا نقش. ضریب ۲ مقدار XP کسب‌شده را دو برابر می‌کند.",
+    "channelMultipliers": "ضریب‌های کانال",
+    "roleMultipliers": "ضریب‌های نقش",
+    "channelId": "شناسه کانال",
+    "roleId": "شناسه نقش",
+    "multiplier": "ضریب",
+    "type": "نوع",
+    "typeChannel": "کانال",
+    "typeRole": "نقش",
+    "id": "شناسه",
+    "idPlaceholder": "شناسه کانال یا نقش",
+    "value": "ضریب",
+    "valuePlaceholder": "مثلاً ۲",
+    "add": "افزودن ضریب",
+    "addTitle": "افزودن ضریب",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "ضریب XP پیکربندی نشده."
+  },
+  "pagination": {
+    "previous": "قبلی",
+    "next": "بعدی",
+    "pageInfo": "صفحه {{page}} از {{totalPages}} ({{total}} کل)"
+  },
+  "loading": "در حال بارگذاری جدول رتبه‌بندی...",
+  "loadingGeneric": "در حال بارگذاری...",
+  "emptyLeaderboard": "هنوز هیچ عضوی XP کسب نکرده.",
+  "toast": {
+    "saved": "تنظیمات سطح‌بندی ذخیره شد",
+    "saveFailed": "به‌روزرسانی تنظیم ناموفق بود",
+    "rewardAdded": "پاداش اضافه شد",
+    "rewardAddFailed": "افزودن پاداش ناموفق بود",
+    "rewardRemoved": "پاداش حذف شد",
+    "rewardRemoveFailed": "حذف پاداش ناموفق بود",
+    "multiplierAdded": "ضریب اضافه شد",
+    "multiplierAddFailed": "افزودن ضریب ناموفق بود",
+    "multiplierRemoved": "ضریب حذف شد",
+    "multiplierRemoveFailed": "حذف ضریب ناموفق بود",
+    "exclusionUpdated": "استثناها ذخیره شد",
+    "exclusionFailed": "ذخیره استثناها ناموفق بود",
+    "levelValidation": "سطح باید بین ۱ و ۱۰۰ باشد",
+    "roleIdRequired": "شناسه نقش الزامی است",
+    "multiplierIdRequired": "شناسه و مقدار ضریب الزامی هستند",
+    "multiplierRange": "ضریب باید بین ۰ و ۱۰ باشد"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}} ساعت {{minutes}} دقیقه",
+    "voiceTimeMinutesOnly": "{{minutes}} دقیقه"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "title": "Turvallisuus",
+  "subtitle": "Määritä hyökkäyksenestojärjestelmä ja palvelimen turvallisuusasetukset.",
+  "antiRaid": {
+    "title": "Hyökkäyksenestojärjestelmä",
+    "description": "Ota käyttöön automaattinen tunnistus ja vastaus koordinoituihin hyökkäyksiin, epäilyttäviin tileihin ja tuhoaviin toimiin."
+  },
+  "sections": {
+    "joinRate": "Liittymistahti",
+    "accountAge": "Tilin ikä",
+    "antiNuke": "Anti-nuke",
+    "lockdown": "Lukitus",
+    "events": "Tapahtumat"
+  },
+  "joinRate": {
+    "title": "Liittymistahdin tunnistus",
+    "description": "Tunnista joukkolittymiset seuraamalla uusien jäsenten liittymistahtia.",
+    "threshold": "Liittymisraja",
+    "thresholdHint": "Liittymisten määrä tunnistuksen laukaisemiseksi",
+    "window": "Aikaikkuna (sekuntia)",
+    "windowHint": "Ikkuna, jonka aikana liittymiset lasketaan",
+    "action": "Toiminto tunnistuksessa",
+    "actionHint": "Toiminto epäiltyjä hyökkääjiä kohtaan",
+    "actions": {
+      "ban": "Estä",
+      "kick": "Potkaise",
+      "timeout": "Aikakatkaisu",
+      "lockdown": "Lukitus"
+    }
+  },
+  "accountAge": {
+    "title": "Tilin ikäsuodatin",
+    "description": "Toteuta automaattisesti toiminto tileihin, jotka ovat vähimmäisikää nuorempia. Aseta 0 poistaaksesi käytöstä.",
+    "minAge": "Tilin vähimmäisikä (päivää)",
+    "minAgeHint": "0 = pois käytöstä. Tätä nuorempia tilejä kohtaan toimitaan.",
+    "action": "Toiminto"
+  },
+  "antiNuke": {
+    "title": "Anti-nuke-suojaus",
+    "description": "Tunnista kanavien/roolien joukkopoistaminen ja eristä vastuussa oleva käyttäjä poistamalla kaikki heidän roolinsa.",
+    "threshold": "Poistamisraja",
+    "thresholdHint": "Poistojen määrä 10 sekunnin sisällä eristyksen laukaisemiseksi",
+    "channelDeleteThreshold": "Kanavien poistoraja",
+    "roleDeleteThreshold": "Roolien poistoraja",
+    "massbanThreshold": "Joukkoestoraja",
+    "interval": "Aikaväli (sekuntia)",
+    "action": "Toiminto"
+  },
+  "lockdown": {
+    "title": "Automaattinen lukitus hyökkäyksessä",
+    "description": "Lukitse automaattisesti kaikki kanavat kun hyökkäys tunnistetaan.",
+    "whitelistedRoles": "Sallittujen roolien ID:t (pilkuilla erotetut)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Näiden roolien jäsenet on vapautettu hyökkäyksentunnistuksesta.",
+    "logChannel": "Lokikanavan ID",
+    "logChannelPlaceholder": "Kanava-ID hyökkäystapahtumalokeille...",
+    "enableButton": "Ota lukitus käyttöön",
+    "disableButton": "Poista lukitus käytöstä",
+    "active": "Lukitus aktiivinen",
+    "inactive": "Lukitus epäaktiivinen"
+  },
+  "events": {
+    "title": "Viimeaikaiset hyökkäystapahtumat",
+    "description": "Aikajana tunnistetuista hyökkäyksistä, tilin ikäestoista ja lukitustapahtumista.",
+    "empty": "Ei hyökkäystapahtumia vielä. Tapahtumat näkyvät täällä kun hyökkäyksentunnistus laukeaa.",
+    "actionLabel": "Toiminto: {{action}}",
+    "usersLabel": "Käyttäjät: {{count}}",
+    "accountAgeLabel": "Tilin ikä: {{days}}pv",
+    "table": {
+      "type": "Tyyppi",
+      "description": "Kuvaus",
+      "time": "Aika",
+      "action": "Suoritettu toiminto"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Liittymispiikki",
+    "account_age": "Tilin ikä",
+    "nuke_attempt": "Nuke-yritys",
+    "lockdown": "Lukitus",
+    "massJoin": "Joukkolittymiset",
+    "suspiciousAccounts": "Epäilyttävät tilit",
+    "channelDeletion": "Kanavien poisto",
+    "roleDeletion": "Roolien poisto",
+    "massBan": "Joukkoesto"
+  },
+  "pagination": {
+    "previous": "Edellinen",
+    "next": "Seuraava",
+    "page": "Sivu {{current}} / {{total}}"
+  },
+  "toast": {
+    "saved": "Hyökkäyksenestomääritys tallennettu",
+    "saveFailed": "Määrityksen tallentaminen epäonnistui",
+    "lockdownEnabled": "Palvelimen lukitus käytössä",
+    "lockdownDisabled": "Palvelimen lukitus pois käytöstä",
+    "lockdownFailed": "Lukituksen vaihtaminen epäonnistui"
+  },
+  "saveButton": {
+    "saving": "Tallennetaan...",
+    "save": "Tallenna muutokset"
+  },
+  "labels": {
+    "seconds": "sekuntia",
+    "minutes": "minuuttia",
+    "hours": "tuntia"
+  }
+}

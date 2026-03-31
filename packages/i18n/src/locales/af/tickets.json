@@ -1,0 +1,77 @@
+{
+  "title": "Kaartjiestelsel",
+  "subtitle": "Skep ondersteuningskaartjiepanele en bestuur oop kaartjies vanaf die kontrolepaneel.",
+  "stats": {
+    "totalTickets": "Totale Kaartjies",
+    "open": "Oop",
+    "claimed": "Geeis",
+    "panels": "Panele"
+  },
+  "tabs": {
+    "activeTickets": "Aktiewe Kaartjies",
+    "panelBuilder": "Paneelbouer",
+    "settings": "Instellings"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Gebruiker",
+    "subject": "Onderwerp",
+    "status": "Status",
+    "assignee": "Toegewysde",
+    "created": "Geskep"
+  },
+  "statuses": {
+    "open": "Oop",
+    "claimed": "Geeis",
+    "closed": "Gesluit"
+  },
+  "panelBuilder": {
+    "title": "Paneeltitel",
+    "channel": "Kanaal",
+    "buttonLabel": "Knoppie-etiket",
+    "welcomeMessage": "Welkomboodskap",
+    "category": "Kaartjiekategorie",
+    "create": "Skep Paneel",
+    "edit": "Wysig Paneel",
+    "deploy": "Ontplooi Paneel"
+  },
+  "settings": {
+    "transcriptChannel": "Transkripsiekanaal",
+    "transcriptChannelDesc": "Kanaal waar kaartjietranskripsies gestoor word by sluiting.",
+    "maxTicketsPerUser": "Maks Kaartjies per Gebruiker",
+    "maxTicketsPerUserDesc": "Maksimum aantal oop kaartjies wat 'n enkele gebruiker kan he.",
+    "closeConfirmation": "Sluitbevestiging",
+    "closeConfirmationDesc": "Vereis bevestiging voor die sluiting van 'n kaartjie.",
+    "dmTranscript": "DM-transkripsie",
+    "dmTranscriptDesc": "Stuur 'n kopie van die transkripsie na die kaartjieskepper via DM."
+  },
+  "actions": {
+    "claim": "Eis",
+    "close": "Sluit",
+    "delete": "Verwyder",
+    "reopen": "Heropen"
+  },
+  "toast": {
+    "panelCreated": "Kaartjiepaneel geskep",
+    "panelCreateFailed": "Kon nie kaartjiepaneel skep nie",
+    "panelUpdated": "Kaartjiepaneel bygewerk",
+    "panelUpdateFailed": "Kon nie kaartjiepaneel bywerk nie",
+    "panelDeployed": "Kaartjiepaneel ontplooi",
+    "panelDeployFailed": "Kon nie kaartjiepaneel ontplooi nie",
+    "ticketClaimed": "Kaartjie geeis",
+    "ticketClaimFailed": "Kon nie kaartjie eis nie",
+    "ticketClosed": "Kaartjie gesluit",
+    "ticketCloseFailed": "Kon nie kaartjie sluit nie",
+    "ticketReopened": "Kaartjie heropen",
+    "ticketReopenFailed": "Kon nie kaartjie heropen nie",
+    "ticketDeleted": "Kaartjie verwyder",
+    "ticketDeleteFailed": "Kon nie kaartjie verwyder nie",
+    "settingsSaved": "Kaartjie-instellings gestoor",
+    "settingsFailed": "Kon nie kaartjie-instellings stoor nie"
+  },
+  "empty": {
+    "tickets": "Geen aktiewe kaartjies nie.",
+    "panels": "Nog geen kaartjiepanele geskep nie."
+  },
+  "loading": "Laai kaartjies..."
+}

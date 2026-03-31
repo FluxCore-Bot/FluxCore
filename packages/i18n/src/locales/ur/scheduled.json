@@ -1,0 +1,86 @@
+{
+  "title": "[NEEDS TRANSLATION] Scheduled Messages",
+  "subtitle": "[NEEDS TRANSLATION] Create recurring auto-posted messages on configurable schedules.",
+  "stats": {
+    "totalMessages": "[NEEDS TRANSLATION] Total Messages",
+    "active": "[NEEDS TRANSLATION] Active",
+    "inactive": "[NEEDS TRANSLATION] Inactive"
+  },
+  "table": {
+    "name": "[NEEDS TRANSLATION] Name",
+    "channel": "[NEEDS TRANSLATION] Channel",
+    "schedule": "[NEEDS TRANSLATION] Schedule",
+    "nextRun": "[NEEDS TRANSLATION] Next Run",
+    "status": "[NEEDS TRANSLATION] Status"
+  },
+  "dialog": {
+    "editTitle": "[NEEDS TRANSLATION] Edit Scheduled Message",
+    "createTitle": "[NEEDS TRANSLATION] New Scheduled Message"
+  },
+  "form": {
+    "name": "[NEEDS TRANSLATION] Name",
+    "channel": "[NEEDS TRANSLATION] Channel",
+    "schedulePreset": "[NEEDS TRANSLATION] Schedule Preset",
+    "cronExpression": "[NEEDS TRANSLATION] Cron Expression",
+    "timezone": "[NEEDS TRANSLATION] Timezone",
+    "messageContent": "[NEEDS TRANSLATION] Message Content",
+    "text": "[NEEDS TRANSLATION] Text",
+    "embed": "[NEEDS TRANSLATION] Embed",
+    "enabled": "[NEEDS TRANSLATION] Enabled",
+    "enabledDesc": "[NEEDS TRANSLATION] Whether this scheduled message is active."
+  },
+  "cronPresets": {
+    "everyHour": "[NEEDS TRANSLATION] Every Hour",
+    "every6Hours": "[NEEDS TRANSLATION] Every 6 Hours",
+    "daily9am": "[NEEDS TRANSLATION] Daily at 9 AM",
+    "dailyMidnight": "[NEEDS TRANSLATION] Daily at Midnight",
+    "weeklyMonday": "[NEEDS TRANSLATION] Weekly on Monday",
+    "monthly1st": "[NEEDS TRANSLATION] Monthly on the 1st",
+    "custom": "[NEEDS TRANSLATION] Custom"
+  },
+  "embed": {
+    "title": "[NEEDS TRANSLATION] Title",
+    "description": "[NEEDS TRANSLATION] Description",
+    "color": "[NEEDS TRANSLATION] Color (hex)",
+    "footer": "[NEEDS TRANSLATION] Footer",
+    "thumbnail": "[NEEDS TRANSLATION] Thumbnail URL",
+    "image": "[NEEDS TRANSLATION] Image URL"
+  },
+  "toast": {
+    "created": "[NEEDS TRANSLATION] Scheduled message created",
+    "createFailed": "[NEEDS TRANSLATION] Failed to create scheduled message",
+    "updated": "[NEEDS TRANSLATION] Scheduled message updated",
+    "updateFailed": "[NEEDS TRANSLATION] Failed to update scheduled message",
+    "deleted": "[NEEDS TRANSLATION] Scheduled message deleted",
+    "deleteFailed": "[NEEDS TRANSLATION] Failed to delete scheduled message",
+    "testSent": "[NEEDS TRANSLATION] Test message sent",
+    "testFailed": "[NEEDS TRANSLATION] Failed to send test message"
+  },
+  "empty": {
+    "title": "[NEEDS TRANSLATION] No scheduled messages yet",
+    "description": "[NEEDS TRANSLATION] Create a scheduled message to automatically post content on a recurring basis.",
+    "createButton": "[NEEDS TRANSLATION] Create Message"
+  },
+  "pagination": {
+    "previous": "[NEEDS TRANSLATION] Previous",
+    "next": "[NEEDS TRANSLATION] Next",
+    "page": "[NEEDS TRANSLATION] Page {{page}} of {{total}}"
+  },
+  "actions": {
+    "newMessage": "[NEEDS TRANSLATION] New Message",
+    "testSend": "[NEEDS TRANSLATION] Test Send",
+    "edit": "[NEEDS TRANSLATION] Edit",
+    "delete": "[NEEDS TRANSLATION] Delete",
+    "save": "[NEEDS TRANSLATION] Save",
+    "cancel": "[NEEDS TRANSLATION] Cancel"
+  },
+  "validation": {
+    "nameRequired": "[NEEDS TRANSLATION] Message name is required",
+    "channelRequired": "[NEEDS TRANSLATION] Channel is required"
+  },
+  "cronPreview": {
+    "nextRuns": "[NEEDS TRANSLATION] Next Runs"
+  },
+  "characters": "[NEEDS TRANSLATION] {{count}}/2000 characters",
+  "never": "[NEEDS TRANSLATION] Never"
+}

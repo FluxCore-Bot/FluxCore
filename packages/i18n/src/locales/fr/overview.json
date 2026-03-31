@@ -1,0 +1,12 @@
+{
+  "title": "Vue d'ensemble",
+  "subtitle": "Surveillez les performances et l'activite de votre automatisation en un coup d'oeil.",
+  "stats": {
+    "actionRules": "Regles d'action",
+    "activeNow": "Actives maintenant",
+    "executions": "Executions",
+    "successRate": "Taux de reussite"
+  },
+  "errorsInLast24h": "{{count}} erreur dans les dernieres 24h",
+  "errorsInLast24h_other": "{{count}} erreurs dans les dernieres 24h"
+}

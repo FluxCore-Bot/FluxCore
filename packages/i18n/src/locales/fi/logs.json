@@ -1,0 +1,8 @@
+{
+  "title": "Lokit",
+  "subtitle": "Seuraa sääntöjen suorituksia ja tapahtumakirjauksia.",
+  "tabs": {
+    "activity": "Toimintalokit",
+    "events": "Tapahtumalokit"
+  }
+}

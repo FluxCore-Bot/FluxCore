@@ -1,0 +1,118 @@
+{
+  "title": "Role i uprawnienia",
+  "subtitle": "Kontroluj, kto ma dostęp do poszczególnych modułów panelu i kto może nimi zarządzać.",
+  "actions": {
+    "createRole": "Utwórz rolę"
+  },
+  "permissionSystem": {
+    "title": "System uprawnień",
+    "active": "Aktywny — administratorzy są ograniczeni do przypisanych uprawnień.",
+    "inactive": "Nieaktywny — wszyscy administratorzy z MANAGE_GUILD mają pełny dostęp.",
+    "enabledToast": "System uprawnień włączony",
+    "disabledToast": "System uprawnień wyłączony — wszyscy administratorzy mają pełny dostęp"
+  },
+  "warning": {
+    "disabled": "System uprawnień jest wyłączony. Wszyscy administratorzy panelu mają pełny dostęp. Włącz go powyżej, aby egzekwować szczegółowe uprawnienia."
+  },
+  "tabs": {
+    "roles": "Role",
+    "auditLog": "Dziennik audytu"
+  },
+  "roleList": {
+    "title": "Role panelu",
+    "empty": "Nie utworzono jeszcze żadnych ról.",
+    "selectHint": "Wybierz rolę do edycji lub utwórz nową.",
+    "default": "Domyślna",
+    "name": "Nazwa",
+    "members": "Członkowie",
+    "permissions": "Uprawnienia",
+    "edit": "Edytuj",
+    "delete": "Usuń"
+  },
+  "presets": {
+    "title": "Szybkie dodanie z szablonu",
+    "createdToast": "Utworzono rolę \"{{name}}\""
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} członek",
+    "memberCount_plural": "{{count}} członków",
+    "name": "Nazwa roli",
+    "color": "Kolor",
+    "defaultRole": "Rola domyślna",
+    "permissions": "Uprawnienia",
+    "allBadge": "Wszystkie",
+    "discordRoles": "Role Discord"
+  },
+  "roleForm": {
+    "name": "Nazwa roli",
+    "discordRoles": "Role Discord",
+    "permissions": "Uprawnienia",
+    "create": "Utwórz rolę",
+    "update": "Aktualizuj rolę",
+    "cancel": "Anuluj"
+  },
+  "createDialog": {
+    "title": "Utwórz rolę panelu",
+    "name": "Nazwa",
+    "namePlaceholder": "np. Moderator",
+    "color": "Kolor"
+  },
+  "permissionCategories": {
+    "actions": "Akcje i automatyzacja",
+    "music": "Muzyka",
+    "tempvoice": "TempVoice",
+    "welcome": "Powitanie i pożegnanie",
+    "moderation": "Moderacja",
+    "logging": "Logowanie",
+    "leveling": "Poziomy",
+    "roles": "Panele ról",
+    "tickets": "Tikety",
+    "suggestions": "Sugestie",
+    "starboard": "Tablica gwiazd",
+    "giveaways": "Losowania",
+    "security": "Bezpieczeństwo",
+    "scheduled": "Zaplanowane wiadomości",
+    "commands": "Komendy niestandardowe",
+    "settings": "Ustawienia serwera"
+  },
+  "audit": {
+    "table": {
+      "user": "Użytkownik",
+      "action": "Akcja",
+      "target": "Cel",
+      "timestamp": "Kiedy"
+    },
+    "noEntries": "Brak wpisów w dzienniku audytu."
+  },
+  "pagination": {
+    "previous": "Poprzednia",
+    "next": "Następna",
+    "page": "Strona {{current}} z {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Utworzono rolę \"{{name}}\"",
+    "roleCreateFailed": "Nie udało się utworzyć roli",
+    "roleUpdated": "Rola zaktualizowana",
+    "roleUpdateFailed": "Nie udało się zaktualizować roli",
+    "roleDeleted": "Rola usunięta",
+    "roleDeleteFailed": "Nie udało się usunąć roli"
+  },
+  "confirm": {
+    "deleteTitle": "Usunąć rolę \"{{name}}\"?",
+    "deleteMessage": "Spowoduje to usunięcie roli i odłączenie wszystkich członków. Tej akcji nie można cofnąć.",
+    "deleteRole": "Czy na pewno chcesz usunąć tę rolę? Członkowie stracą przypisane uprawnienia."
+  },
+  "saveButton": {
+    "saving": "Zapisywanie...",
+    "save": "Zapisz zmiany"
+  },
+  "deleteButton": {
+    "deleting": "Usuwanie...",
+    "delete": "Usuń"
+  },
+  "createButton": {
+    "creating": "Tworzenie...",
+    "create": "Utwórz"
+  },
+  "loading": "Ładowanie uprawnień..."
+}

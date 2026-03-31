@@ -1,0 +1,8 @@
+{
+  "title": "Logid",
+  "subtitle": "Jälgi reeglite täitmisi ja sündmuste logimist.",
+  "tabs": {
+    "activity": "Tegevuslogid",
+    "events": "Sündmuselogid"
+  }
+}

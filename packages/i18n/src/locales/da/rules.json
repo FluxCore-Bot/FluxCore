@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Server",
+    "automation": "Automatisering"
+  },
+  "title": "Automatiseringsregler",
+  "subtitle": "Konfigurer hændelsesdrevne udløsere og automatiserede svar for din server.",
+  "createRule": "Opret regel",
+  "stats": {
+    "totalRules": "Regler i alt",
+    "active": "Aktive",
+    "executions7d": "Kørsler (7d)",
+    "successRate": "Succesrate"
+  },
+  "filter": {
+    "searchPlaceholder": "Søg regler...",
+    "eventType": "Hændelsestype",
+    "allEvents": "Alle hændelser",
+    "allStatus": "Alle statusser",
+    "enabled": "Aktiveret",
+    "disabled": "Deaktiveret",
+    "sortBy": "Sorter efter",
+    "priority": "Prioritet",
+    "name": "Navn",
+    "lastFired": "Sidst udløst",
+    "status": "Status",
+    "clear": "Ryd",
+    "showing": "Viser {{filtered}} af {{total}} regler"
+  },
+  "bulk": {
+    "selected": "{{count}} regel valgt",
+    "selected_other": "{{count}} regler valgt",
+    "enable": "Aktiver",
+    "disable": "Deaktiver",
+    "delete": "Slet",
+    "clear": "Ryd"
+  },
+  "empty": {
+    "title": "Kom i gang med automatisering",
+    "description": "Vælg en skabelon for at komme hurtigt i gang, eller opret en regel fra bunden.",
+    "createFromScratch": "Opret fra bunden"
+  },
+  "noResults": {
+    "title": "Ingen matchende regler",
+    "description": "Prøv at justere din søgning eller dine filtre for at finde det, du leder efter."
+  },
+  "templates": {
+    "welcomeMessage": "Velkomstbesked",
+    "welcomeMessageDesc": "Hils nye medlemmer med en tilpasset besked i en kanal",
+    "autoRole": "Autorolle",
+    "autoRoleDesc": "Tildel automatisk en rolle, når et medlem tilslutter sig",
+    "logDeleted": "Log slettede beskeder",
+    "logDeletedDesc": "Send info om slettede beskeder til en logkanal",
+    "boostThankYou": "Boost-tak",
+    "boostThankYouDesc": "Send en DM for at takke brugere, der booster serveren",
+    "banLogger": "Udelukkelseslogger",
+    "banLoggerDesc": "Log udelukkelseshændelser til en modereringskanal",
+    "autoThread": "Autotråd",
+    "autoThreadDesc": "Opret automatisk en tråd, når en besked sendes"
+  },
+  "deleteDialog": {
+    "title": "Slet regel",
+    "description": "Er du sikker på, at du vil slette \"{{name}}\"? Denne handling kan ikke fortrydes.",
+    "confirm": "Slet"
+  },
+  "bulkDeleteDialog": {
+    "title": "Slet valgte regler",
+    "description": "Er du sikker på, at du vil slette {{count}} regel? Denne handling kan ikke fortrydes.",
+    "description_other": "Er du sikker på, at du vil slette {{count}} regler? Denne handling kan ikke fortrydes.",
+    "confirm": "Slet alle"
+  },
+  "toast": {
+    "deleted": "Regel slettet",
+    "deleteFailed": "Kunne ikke slette regel",
+    "enabled": "Regel aktiveret",
+    "disabled": "Regel deaktiveret",
+    "toggleFailed": "Kunne ikke skifte regel",
+    "duplicated": "Regel duplikeret",
+    "duplicateFailed": "Kunne ikke duplikere regel",
+    "bulkEnabled": "{{count}} regler aktiveret",
+    "bulkDisabled": "{{count}} regler deaktiveret",
+    "bulkEnableFailed": "Kunne ikke aktivere regler",
+    "bulkDisableFailed": "Kunne ikke deaktivere regler",
+    "bulkDeleted": "{{count}} regler slettet",
+    "bulkDeleteFailed": "Kunne ikke slette regler"
+  }
+}

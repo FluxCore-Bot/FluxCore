@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "प्रमाणित नहीं है",
+    "sessionExpired": "सत्र समाप्त हो गया",
+    "missingCode": "कोड पैरामीटर गायब है",
+    "tokenExchangeFailed": "टोकन एक्सचेंज विफल रहा",
+    "failedToFetchUser": "उपयोगकर्ता जानकारी प्राप्त करने में विफल"
+  },
+  "permissions": {
+    "noGuildPermission": "इस गिल्ड के लिए अनुमति नहीं है",
+    "botNotInGuild": "बॉट इस गिल्ड में नहीं है",
+    "insufficientPermissions": "अपर्याप्त अनुमतियां",
+    "permissionsNotResolved": "अनुमतियां हल नहीं हुईं",
+    "requiresPermission": "इस कार्रवाई के लिए \"{{permission}}\" अनुमति आवश्यक है"
+  },
+  "validation": {
+    "invalidInput": "अमान्य इनपुट",
+    "missingField": "आवश्यक फ़ील्ड गायब है: {{field}}",
+    "invalidFormat": "{{field}} के लिए अमान्य प्रारूप",
+    "tooLong": "{{field}} अधिकतम {{max}} वर्णों की सीमा से अधिक है",
+    "tooShort": "{{field}} कम से कम {{min}} वर्णों का होना चाहिए",
+    "outOfRange": "{{field}} {{min}} और {{max}} के बीच होना चाहिए"
+  },
+  "resources": {
+    "notFound": "नहीं मिला",
+    "alreadyExists": "{{resource}} पहले से मौजूद है",
+    "limitReached": "प्रति गिल्ड अधिकतम {{max}} {{resource}}",
+    "createFailed": "{{resource}} बनाने में विफल",
+    "updateFailed": "{{resource}} अपडेट करने में विफल",
+    "deleteFailed": "{{resource}} हटाने में विफल"
+  },
+  "server": {
+    "internalError": "आंतरिक सर्वर त्रुटि",
+    "serviceUnavailable": "सेवा अस्थायी रूप से अनुपलब्ध है",
+    "rateLimited": "बहुत अधिक अनुरोध। कृपया बाद में पुनः प्रयास करें।"
+  },
+  "csrf": {
+    "invalidToken": "अमान्य या गायब CSRF टोकन"
+  }
+}

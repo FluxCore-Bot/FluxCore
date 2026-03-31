@@ -1,0 +1,118 @@
+{
+  "title": "রোল ও অনুমতি",
+  "subtitle": "কে প্রতিটি ড্যাশবোর্ড মডিউল অ্যাক্সেস ও পরিচালনা করতে পারে তা নিয়ন্ত্রণ করুন।",
+  "actions": {
+    "createRole": "রোল তৈরি করুন"
+  },
+  "permissionSystem": {
+    "title": "অনুমতি সিস্টেম",
+    "active": "সক্রিয় — অ্যাডমিনরা তাদের অ্যাসাইনকৃত অনুমতিতে সীমাবদ্ধ।",
+    "inactive": "নিষ্ক্রিয় — MANAGE_GUILD সহ সব অ্যাডমিনের পূর্ণ অ্যাক্সেস আছে।",
+    "enabledToast": "অনুমতি সিস্টেম সক্রিয় হয়েছে",
+    "disabledToast": "অনুমতি সিস্টেম নিষ্ক্রিয় — সব অ্যাডমিনের পূর্ণ অ্যাক্সেস আছে"
+  },
+  "warning": {
+    "disabled": "অনুমতি সিস্টেম নিষ্ক্রিয়। সব ড্যাশবোর্ড অ্যাডমিনের বর্তমানে পূর্ণ অ্যাক্সেস আছে। বিশদ অনুমতি প্রয়োগ করতে উপরে সক্রিয় করুন।"
+  },
+  "tabs": {
+    "roles": "রোল",
+    "auditLog": "অডিট লগ"
+  },
+  "roleList": {
+    "title": "ড্যাশবোর্ড রোল",
+    "empty": "এখনো কোনো রোল তৈরি হয়নি।",
+    "selectHint": "সম্পাদনা করতে একটি রোল নির্বাচন করুন, অথবা নতুন তৈরি করুন।",
+    "default": "ডিফল্ট",
+    "name": "নাম",
+    "members": "সদস্য",
+    "permissions": "অনুমতি",
+    "edit": "সম্পাদনা",
+    "delete": "মুছুন"
+  },
+  "presets": {
+    "title": "প্রিসেট থেকে দ্রুত যোগ করুন",
+    "createdToast": "\"{{name}}\" রোল তৈরি হয়েছে"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} সদস্য",
+    "memberCount_plural": "{{count}} সদস্য",
+    "name": "রোলের নাম",
+    "color": "রঙ",
+    "defaultRole": "ডিফল্ট রোল",
+    "permissions": "অনুমতি",
+    "allBadge": "সব",
+    "discordRoles": "Discord রোল"
+  },
+  "roleForm": {
+    "name": "রোলের নাম",
+    "discordRoles": "Discord রোল",
+    "permissions": "অনুমতি",
+    "create": "রোল তৈরি করুন",
+    "update": "রোল আপডেট করুন",
+    "cancel": "বাতিল"
+  },
+  "createDialog": {
+    "title": "ড্যাশবোর্ড রোল তৈরি করুন",
+    "name": "নাম",
+    "namePlaceholder": "যেমন মডারেটর",
+    "color": "রঙ"
+  },
+  "permissionCategories": {
+    "actions": "অ্যাকশন ও অটোমেশন",
+    "music": "সঙ্গীত",
+    "tempvoice": "TempVoice",
+    "welcome": "স্বাগতম ও বিদায়",
+    "moderation": "মডারেশন",
+    "logging": "লগিং",
+    "leveling": "লেভেলিং",
+    "roles": "রোল প্যানেল",
+    "tickets": "টিকেট",
+    "suggestions": "পরামর্শ",
+    "starboard": "স্টারবোর্ড",
+    "giveaways": "গিভঅ্যাওয়ে",
+    "security": "নিরাপত্তা",
+    "scheduled": "শিডিউলড বার্তা",
+    "commands": "কাস্টম কমান্ড",
+    "settings": "সার্ভার সেটিংস"
+  },
+  "audit": {
+    "table": {
+      "user": "ব্যবহারকারী",
+      "action": "কার্যকলাপ",
+      "target": "লক্ষ্য",
+      "timestamp": "কখন"
+    },
+    "noEntries": "এখনো কোনো অডিট লগ এন্ট্রি নেই।"
+  },
+  "pagination": {
+    "previous": "আগের",
+    "next": "পরবর্তী",
+    "page": "পৃষ্ঠা {{current}} / {{total}}"
+  },
+  "toast": {
+    "roleCreated": "\"{{name}}\" রোল তৈরি হয়েছে",
+    "roleCreateFailed": "রোল তৈরি ব্যর্থ",
+    "roleUpdated": "রোল আপডেট হয়েছে",
+    "roleUpdateFailed": "রোল আপডেট ব্যর্থ",
+    "roleDeleted": "রোল মুছে ফেলা হয়েছে",
+    "roleDeleteFailed": "রোল মুছতে ব্যর্থ"
+  },
+  "confirm": {
+    "deleteTitle": "\"{{name}}\" রোল মুছবেন?",
+    "deleteMessage": "এটি রোল মুছে ফেলবে এবং সব সদস্যকে আনঅ্যাসাইন করবে। এই কাজটি পূর্বাবস্থায় ফেরানো যাবে না।",
+    "deleteRole": "আপনি কি নিশ্চিত যে আপনি এই রোলটি মুছতে চান? সদস্যরা তাদের অ্যাসাইনকৃত অনুমতি হারাবে।"
+  },
+  "saveButton": {
+    "saving": "সংরক্ষণ হচ্ছে...",
+    "save": "পরিবর্তন সংরক্ষণ করুন"
+  },
+  "deleteButton": {
+    "deleting": "মুছে ফেলা হচ্ছে...",
+    "delete": "মুছুন"
+  },
+  "createButton": {
+    "creating": "তৈরি হচ্ছে...",
+    "create": "তৈরি করুন"
+  },
+  "loading": "অনুমতি লোড হচ্ছে..."
+}

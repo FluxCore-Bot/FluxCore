@@ -1,0 +1,8 @@
+{
+  "title": "Musika sistema",
+  "subtitle": "Konfiguratu erreprodukzio-modu orokorrak eta audio-liburutegiaren hobespenak.",
+  "tabs": {
+    "settings": "Erreprodukzio-ezarpenak",
+    "library": "Musika-liburutegia"
+  }
+}

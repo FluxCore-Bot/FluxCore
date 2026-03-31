@@ -1,0 +1,120 @@
+{
+  "title": "מערכת דירוג",
+  "subtitle": "הגדר צבירת XP, הכרזות עליית רמה, תגמולי תפקידים ומכפילים.",
+  "stats": {
+    "rankedMembers": "חברים מדורגים",
+    "roleRewards": "תגמולי תפקידים",
+    "systemStatus": "מצב המערכת",
+    "enabled": "מופעל",
+    "disabled": "מושבת"
+  },
+  "tabs": {
+    "leaderboard": "טבלת מובילים",
+    "settings": "הגדרות",
+    "roleRewards": "תגמולי תפקידים",
+    "exclusions": "החרגות",
+    "multipliers": "מכפילים"
+  },
+  "table": {
+    "rank": "דירוג",
+    "userId": "מזהה משתמש",
+    "level": "רמה",
+    "xp": "XP",
+    "messages": "הודעות",
+    "voiceTime": "זמן קול"
+  },
+  "settings": {
+    "title": "הגדרות דירוג",
+    "enabled": "הפעל דירוג",
+    "enabledDesc": "החלף את מערכת הדירוג כולה.",
+    "xpPerMessage": "XP להודעה",
+    "xpPerMessageDesc": "XP בסיסי שניתן להודעה (אקראיות של 0-9 מתווספת).",
+    "xpCooldown": "זמן המתנת XP (שניות)",
+    "xpCooldownDesc": "זמן מינימלי בין הענקות XP למשתמש.",
+    "voiceXpEnabled": "XP קולי",
+    "voiceXpEnabledDesc": "העניק XP עבור זמן בערוצי קול.",
+    "voiceXpPerMinute": "XP קולי לדקה",
+    "voiceXpPerMinuteDesc": "XP שניתן לדקה בקול.",
+    "levelUpAnnouncements": "הכרזות עליית רמה",
+    "levelUpAnnouncementsDesc": "הכרז כאשר חבר עולה רמה.",
+    "announceDest": "יעד הכרזה",
+    "announceDestHint": "ניתן גם להזין מזהה ערוץ ישירות בשדה למעלה.",
+    "announceDestSameChannel": "אותו ערוץ",
+    "announceDestDM": "הודעה פרטית",
+    "announceMessage": "הודעת הכרזה",
+    "announceMessagePlaceholder": "{user} הגיע ל-**רמה {level}**!",
+    "announceMessageVars": "משתנים: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "תגמולי תפקידים",
+    "description": "הקצה תפקידים אוטומטית כאשר חברים מגיעים לרמות מסוימות.",
+    "addReward": "הוסף תגמול",
+    "addRewardTitle": "הוסף תגמול תפקיד",
+    "level": "רמה",
+    "levelPrefix": "רמה {{level}}",
+    "roleId": "מזהה תפקיד",
+    "levelPlaceholder": "לדוגמה 5",
+    "rolePlaceholder": "לדוגמה 123456789",
+    "removeReward": "הסר",
+    "noRewards": "לא הוגדרו תגמולי תפקידים."
+  },
+  "exclusions": {
+    "title": "החרגות XP",
+    "description": "ערוצים ותפקידים שאינם צוברים XP.",
+    "noXpChannels": "ערוצים ללא XP (מזהים מופרדים בפסיק)",
+    "noXpChannelsPlaceholder": "לדוגמה 123456789, 987654321",
+    "noXpRoles": "תפקידים ללא XP (מזהים מופרדים בפסיק)",
+    "noXpRolesPlaceholder": "לדוגמה 123456789, 987654321",
+    "save": "שמור החרגות"
+  },
+  "multipliers": {
+    "title": "מכפילי XP",
+    "description": "הגדר מכפילי XP לערוץ או תפקיד. מכפיל 2 מכפיל את ה-XP שנצבר.",
+    "channelMultipliers": "מכפילי ערוצים",
+    "roleMultipliers": "מכפילי תפקידים",
+    "channelId": "מזהה ערוץ",
+    "roleId": "מזהה תפקיד",
+    "multiplier": "מכפיל",
+    "type": "סוג",
+    "typeChannel": "ערוץ",
+    "typeRole": "תפקיד",
+    "id": "מזהה",
+    "idPlaceholder": "מזהה ערוץ או תפקיד",
+    "value": "מכפיל",
+    "valuePlaceholder": "לדוגמה 2",
+    "add": "הוסף מכפיל",
+    "addTitle": "הוסף מכפיל",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "לא הוגדרו מכפילי XP."
+  },
+  "pagination": {
+    "previous": "הקודם",
+    "next": "הבא",
+    "pageInfo": "עמוד {{page}} מתוך {{totalPages}} ({{total}} סה\"כ)"
+  },
+  "loading": "טוען טבלת מובילים...",
+  "loadingGeneric": "טוען...",
+  "emptyLeaderboard": "אף חבר לא צבר XP עדיין.",
+  "toast": {
+    "saved": "הגדרות הדירוג נשמרו",
+    "saveFailed": "עדכון ההגדרה נכשל",
+    "rewardAdded": "התגמול נוסף",
+    "rewardAddFailed": "הוספת התגמול נכשלה",
+    "rewardRemoved": "התגמול הוסר",
+    "rewardRemoveFailed": "הסרת התגמול נכשלה",
+    "multiplierAdded": "המכפיל נוסף",
+    "multiplierAddFailed": "הוספת המכפיל נכשלה",
+    "multiplierRemoved": "המכפיל הוסר",
+    "multiplierRemoveFailed": "הסרת המכפיל נכשלה",
+    "exclusionUpdated": "ההחרגות נשמרו",
+    "exclusionFailed": "שמירת ההחרגות נכשלה",
+    "levelValidation": "הרמה חייבת להיות בין 1 ל-100",
+    "roleIdRequired": "מזהה תפקיד הוא שדה חובה",
+    "multiplierIdRequired": "מזהה וערך מכפיל הם שדות חובה",
+    "multiplierRange": "המכפיל חייב להיות בין 0 ל-10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}} שע' {{minutes}} דק'",
+    "voiceTimeMinutesOnly": "{{minutes}} דק'"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "title": "Hoiatused",
+  "subtitle": "Jälgi ja halda liikme hoiatusi automaatse eskaleerumisega.",
+  "stats": {
+    "totalWarnings": "Hoiatusi kokku",
+    "escalationRules": "Eskalatsioonireeglid",
+    "dmOnWarn": "DM hoiatuse korral"
+  },
+  "tabs": {
+    "warnings": "Hoiatuste logi",
+    "escalation": "Eskaleerimine",
+    "settings": "Seaded"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Kasutaja",
+    "moderator": "Moderaator",
+    "reason": "Põhjus",
+    "date": "Kuupäev"
+  },
+  "filter": {
+    "userPlaceholder": "Filtreeri kasutaja ID järgi...",
+    "clearAll": "Tühjenda kõik"
+  },
+  "pagination": {
+    "previous": "Eelmine",
+    "next": "Järgmine",
+    "page": "Leht {{page}} / {{total}} ({{count}} kokku)"
+  },
+  "loading": "Laadin hoiatusi...",
+  "noWarnings": "Hoiatusi ei leitud.",
+  "toast": {
+    "warningRemoved": "Hoiatus eemaldatud",
+    "warningsFailed": "Hoiatuse kustutamine ebaõnnestus",
+    "enterUserId": "Sisesta kasutaja ID, et kustutada kõik selle kasutaja hoiatused",
+    "allCleared": "Kõik hoiatused kustutatud kasutajale",
+    "clearFailed": "Hoiatuste kustutamine ebaõnnestus",
+    "thresholdAdded": "Karistuselävi lisatud",
+    "thresholdFailed": "Karistuse lisamine ebaõnnestus",
+    "thresholdRemoved": "Karistus eemaldatud",
+    "removeFailed": "Karistuse eemaldamine ebaõnnestus",
+    "settingFailed": "Seade uuendamine ebaõnnestus",
+    "thresholdInvalid": "Lävi peab olema positiivne arv"
+  },
+  "escalation": {
+    "title": "Karistuse eskaleerimine",
+    "description": "Seadista automaatsed toimingud, kui kasutaja jõuab teatud hoiatuste arvuni.",
+    "threshold": "Lävi",
+    "action": "Toiming",
+    "duration": "Kestus",
+    "noRules": "Eskalatsioonireegleid pole seadistatud.",
+    "addRule": "Lisa eskalaatsioonireegel",
+    "addButton": "Lisa reegel",
+    "warnings": "{{count}} hoiatust",
+    "min": "{{count}} min",
+    "timeout": "Timeout",
+    "kick": "Kick",
+    "ban": "Bann",
+    "durationLabel": "Kestus (sekundites)",
+    "thresholdPlaceholder": "nt 3",
+    "durationPlaceholder": "nt 3600"
+  },
+  "settings": {
+    "title": "Hoiatuste seaded",
+    "dmOnWarn": "DM hoiatuse korral",
+    "dmOnWarnDesc": "Saada kasutajale otse-sõnum, kui ta hoiatuse saab.",
+    "requireReason": "Nõua põhjust",
+    "requireReasonDesc": "Moderaatorid peavad hoiatuse andmisel põhjuse esitama.",
+    "maxWarnings": "Maks hoiatusi",
+    "maxWarningsDesc": "Maksimaalne hoiatuste arv kasutaja kohta (0 = piiramatu)."
+  }
+}

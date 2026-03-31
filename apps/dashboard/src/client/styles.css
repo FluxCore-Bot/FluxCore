@@ -20,6 +20,14 @@
   /* ── Text ── */
   --color-text: #f9f5f8;
   --color-text-muted: #adaaad;
+  /*
+   * WCAG AA contrast-safe replacements for opacity-based text.
+   * text-text/50 (#0e0e10 bg) = ~3.4:1 — FAILS normal text.
+   * text-secondary replaces text/50 for interactive/inactive: 5.2:1 on #0e0e10.
+   * text-tertiary replaces text/40 for subtle hints: 4.6:1 on #0e0e10.
+   */
+  --color-text-secondary: #918f92;
+  --color-text-tertiary: #7d7b7e;
 
   /* ── Accent & Brand ── */
   --color-accent: #a3a6ff;
@@ -61,6 +69,19 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
+}
+
+/* ── Screen-reader only (WCAG) ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* Reusable section label — replaces all text-[10px] uppercase patterns (12px WCAG minimum) */
@@ -136,4 +157,22 @@ input[type="color"] {
   font-size: 20px;
   line-height: 1;
   vertical-align: middle;
+}
+
+/* ── Focus visible — enhanced for WCAG AA ── */
+:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+/* ── Reduced motion preference ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

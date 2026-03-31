@@ -1,0 +1,118 @@
+{
+  "title": "Rolle & Toestemmings",
+  "subtitle": "Beheer wie toegang het tot en elke kontrolepaneel-module kan bestuur.",
+  "actions": {
+    "createRole": "Skep Rol"
+  },
+  "permissionSystem": {
+    "title": "Toestemmingstelsel",
+    "active": "Aktief — administrateurs is beperk tot hul toegewysde toestemmings.",
+    "inactive": "Onaktief — alle administrateurs met MANAGE_GUILD het volle toegang.",
+    "enabledToast": "Toestemmingstelsel geaktiveer",
+    "disabledToast": "Toestemmingstelsel gedeaktiveer — alle administrateurs het volle toegang"
+  },
+  "warning": {
+    "disabled": "Die toestemmingstelsel is gedeaktiveer. Alle kontrolepaneel-administrateurs het tans volle toegang. Aktiveer dit hierbo om gedetailleerde toestemmings af te dwing."
+  },
+  "tabs": {
+    "roles": "Rolle",
+    "auditLog": "Ouditlogboek"
+  },
+  "roleList": {
+    "title": "Kontrolepaneelrolle",
+    "empty": "Nog geen rolle geskep nie.",
+    "selectHint": "Kies 'n rol om te wysig, of skep 'n nuwe een.",
+    "default": "Verstek",
+    "name": "Naam",
+    "members": "Lede",
+    "permissions": "Toestemmings",
+    "edit": "Wysig",
+    "delete": "Verwyder"
+  },
+  "presets": {
+    "title": "Vinnig Byvoeg vanaf Voorinstelling",
+    "createdToast": "Rol \"{{name}}\" geskep"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} lid",
+    "memberCount_plural": "{{count}} lede",
+    "name": "Rolnaam",
+    "color": "Kleur",
+    "defaultRole": "Verstekrol",
+    "permissions": "Toestemmings",
+    "allBadge": "Almal",
+    "discordRoles": "Discord-rolle"
+  },
+  "roleForm": {
+    "name": "Rolnaam",
+    "discordRoles": "Discord-rolle",
+    "permissions": "Toestemmings",
+    "create": "Skep Rol",
+    "update": "Werk Rol By",
+    "cancel": "Kanselleer"
+  },
+  "createDialog": {
+    "title": "Skep Kontrolepaneelrol",
+    "name": "Naam",
+    "namePlaceholder": "bv. Moderator",
+    "color": "Kleur"
+  },
+  "permissionCategories": {
+    "actions": "Aksies & Outomatisering",
+    "music": "Musiek",
+    "tempvoice": "TempVoice",
+    "welcome": "Welkom & Afskeid",
+    "moderation": "Moderering",
+    "logging": "Logboekhouding",
+    "leveling": "Vlakstelsel",
+    "roles": "Rolpanele",
+    "tickets": "Kaartjies",
+    "suggestions": "Voorstelle",
+    "starboard": "Sterbord",
+    "giveaways": "Weggeeaksies",
+    "security": "Sekuriteit",
+    "scheduled": "Geskeduleerde Boodskappe",
+    "commands": "Pasgemaakte Opdragte",
+    "settings": "Bedienerinstellings"
+  },
+  "audit": {
+    "table": {
+      "user": "Gebruiker",
+      "action": "Aksie",
+      "target": "Teiken",
+      "timestamp": "Wanneer"
+    },
+    "noEntries": "Nog geen ouditlogboek-inskrywings nie."
+  },
+  "pagination": {
+    "previous": "Vorige",
+    "next": "Volgende",
+    "page": "Bladsy {{current}} van {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Rol \"{{name}}\" geskep",
+    "roleCreateFailed": "Kon nie rol skep nie",
+    "roleUpdated": "Rol bygewerk",
+    "roleUpdateFailed": "Kon nie rol bywerk nie",
+    "roleDeleted": "Rol verwyder",
+    "roleDeleteFailed": "Kon nie rol verwyder nie"
+  },
+  "confirm": {
+    "deleteTitle": "Verwyder rol \"{{name}}\"?",
+    "deleteMessage": "Dit sal die rol verwyder en alle lede onttoewy. Hierdie aksie kan nie ongedaan gemaak word nie.",
+    "deleteRole": "Is jy seker jy wil hierdie rol verwyder? Lede sal hul toegewysde toestemmings verloor."
+  },
+  "saveButton": {
+    "saving": "Stoor...",
+    "save": "Stoor Veranderinge"
+  },
+  "deleteButton": {
+    "deleting": "Verwyder...",
+    "delete": "Verwyder"
+  },
+  "createButton": {
+    "creating": "Skep...",
+    "create": "Skep"
+  },
+  "loading": "Laai toestemmings..."
+}

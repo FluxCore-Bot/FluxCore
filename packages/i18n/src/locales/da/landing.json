@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Nu i åben beta",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Det alt-i-en",
+    "titleLine2": "Discord Bot-frameworket",
+    "subtitle": "Udrull en professionel Discord-tilstedeværelse på minutter. Modulært, selvhostet og bygget til fællesskaber, der kræver mere."
+  },
+  "cta": {
+    "addToServer": "Tilføj til server",
+    "openDashboard": "Åbn kontrolpanel",
+    "exploreFeatures": "Udforsk funktioner"
+  },
+  "stats": {
+    "servers": "Servere",
+    "latency": "Forsinkelse",
+    "uptime": "Oppetid",
+    "modules": "Moduler",
+    "serversValue": "1.000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99,9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Funktioner",
+    "title": "Alt din server har brug for",
+    "subtitle": "Et modulært værktøjssæt designet til fællesskaber, der kræver pålidelighed, fleksibilitet og kontrol.",
+    "automation": {
+      "title": "Automatiseringsregler",
+      "description": "Opret komplekse hændelsesdrevne workflows uden kode. Hvis-dette-så-det-udløsere med 23 hændelsestyper og 10 handlingstyper."
+    },
+    "music": {
+      "title": "Musiksystem",
+      "description": "Lydstreaming i høj kvalitet med understøttelse af flere platforme. Køhåndtering, DJ-kontroller og bibliotekstilstand."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Dynamisk talekanalhåndtering. Automatisk oprettelse med tilpassede navneskabeloner, tilladelser og oprydning."
+    },
+    "logs": {
+      "title": "Aktivitetslogfiler",
+      "description": "Komplet revisionslog for hver automatiseringskørsel. Søg, filtrer og fejlfind dine regler med detaljerede logfiler."
+    },
+    "webhooks": {
+      "title": "Webhooks og API",
+      "description": "Send data til eksterne tjenester med HTTP-webhooks. Tilpassede headere, body-skabeloner og variabelinterpolering."
+    },
+    "dashboard": {
+      "title": "Realtidskontrolpanel",
+      "description": "Administrer alt fra et elegant webkontrolpanel. Analyse, konfiguration og overvågning ét sted."
+    }
+  },
+  "ctaSection": {
+    "title": "Klar til at opgradere dit fællesskab?",
+    "subtitle": "Kom i gang på minutter uden konfiguration. Selvhostet, open source og helt gratis."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "\u00a9 {{year}} FluxCore Technologies. Alle rettigheder forbeholdes.",
+    "links": {
+      "documentation": "Dokumentation",
+      "support": "Support",
+      "privacy": "Privatlivspolitik",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

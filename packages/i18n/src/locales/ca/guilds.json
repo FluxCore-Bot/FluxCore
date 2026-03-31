@@ -1,0 +1,9 @@
+{
+  "title": "Els teus servidors",
+  "subtitle": "Tria un servidor per gestionar i configurar.",
+  "loading": "Carregant servidors...",
+  "empty": {
+    "title": "No s'han trobat servidors",
+    "description": "Assegura't que el bot s'ha afegit a un servidor on tinguis el permis de Gestionar Servidor."
+  }
+}

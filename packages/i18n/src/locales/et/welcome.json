@@ -1,0 +1,65 @@
+{
+  "title": "Tervitus ja hüvastijätt",
+  "subtitle": "Seadista tervitus- ja hüvastijätusõnumid, pildid ja automaatsed rollid.",
+  "loadingSubtitle": "Seadista tervitus- ja hüvastijätusõnumid oma serverile.",
+  "tabs": {
+    "welcome": "Tervitus",
+    "welcomeImage": "Tervituspilt",
+    "farewell": "Hüvastijätt",
+    "farewellImage": "Hüvastijätupilt",
+    "dm": "Tervitus DM",
+    "autorole": "Automaatne roll"
+  },
+  "welcome": {
+    "title": "Tervitussõnum",
+    "description": "Saada kohandatud manus, kui uus liige liitub.",
+    "channelLabel": "Tervituskanali ID",
+    "channelPlaceholder": "Kanali ID...",
+    "embedBuilder": "Manuse koostaja"
+  },
+  "welcomeImage": {
+    "title": "Tervituspilt",
+    "description": "Loo kohandatud pildikaart liikme avataraga, kui ta liitub.",
+    "disabled": "Luba ülal olev lüliti, et seadistada tervituspilte."
+  },
+  "farewell": {
+    "title": "Hüvastijätusõnum",
+    "description": "Saada sõnum, kui liige serverist lahkub.",
+    "channelLabel": "Hüvastijätukanali ID",
+    "channelPlaceholder": "Kanali ID..."
+  },
+  "farewellImage": {
+    "title": "Hüvastijätupilt",
+    "description": "Loo kohandatud hüvastijätukaart, kui liige lahkub.",
+    "disabled": "Luba ülal olev lüliti, et seadistada hüvastijätupilte."
+  },
+  "dm": {
+    "title": "Tervitus DM",
+    "description": "Saada uutele liikmetele otse-sõnum. Ebaõnnestub vaikselt, kui DM-id on keelatud."
+  },
+  "autorole": {
+    "title": "Automaatne roll",
+    "description": "Määra automaatselt rollid uutele liikmetele, kui nad liituvad. Botid on välistatud. Botil peab olema kõrgem roll kui siin loetletud rollidel.",
+    "label": "Rollide ID-d (komadega eraldatud)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Pealkiri",
+    "description": "Kirjeldus",
+    "color": "Värv (hex)",
+    "footer": "Jalus",
+    "thumbnail": "Pisipildi URL",
+    "image": "Pildi URL",
+    "variables": "Muutujad:"
+  },
+  "saveChanges": "Salvesta muudatused",
+  "saving": "Salvestan...",
+  "sendTest": "Saada testisõnum",
+  "sending": "Saadan...",
+  "toast": {
+    "saved": "Tervitusseadistus salvestatud",
+    "saveFailed": "Seadistuse salvestamine ebaõnnestus",
+    "testSent": "Testisõnum saadetakse kanalile <#{{channelId}}>",
+    "testFailed": "Testisõnumi saatmine ebaõnnestus"
+  }
+}

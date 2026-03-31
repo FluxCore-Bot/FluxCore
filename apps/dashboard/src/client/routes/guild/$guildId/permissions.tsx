@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { useParams } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { PageHeader } from "../../../components/PageHeader";
 import { PageSkeleton } from "../../../components/PageSkeleton";
@@ -9,7 +10,7 @@ import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
 import { Switch } from "../../../components/ui/switch";
 import { Badge } from "../../../components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card";
+import { Card, CardContent } from "../../../components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 import { Separator } from "../../../components/ui/separator";
 import { ScrollArea } from "../../../components/ui/scroll-area";
@@ -42,6 +43,7 @@ import {
 
 export function PermissionsPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
+  const { t } = useTranslation("permissions");
   const { isOwner, isLoading: permLoading } = usePermissions(guildId);
   const { data: roles, isLoading: rolesLoading } = useDashboardRoles(guildId);
   const { data: settings, isLoading: settingsLoading } = useDashboardSettings(guildId);
@@ -69,12 +71,12 @@ export function PermissionsPage() {
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Roles & Permissions"
-        subtitle="Control who can access and manage each dashboard module."
+        title={t("title")}
+        subtitle={t("subtitle")}
         actions={
           <Button onClick={() => setShowCreateDialog(true)} size="sm">
             <Icon name="add" size={16} className="mr-1" />
-            Create Role
+            {t("actions.createRole")}
           </Button>
         }
       />
@@ -83,11 +85,11 @@ export function PermissionsPage() {
       <Card>
         <CardContent className="flex items-center justify-between py-4">
           <div>
-            <p className="font-medium">Permission System</p>
+            <p className="font-medium">{t("permissionSystem.title")}</p>
             <p className="text-sm text-text-muted">
               {requirePermissions
-                ? "Active — admins are restricted to their assigned permissions."
-                : "Inactive — all admins with MANAGE_GUILD have full access."}
+                ? t("permissionSystem.active")
+                : t("permissionSystem.inactive")}
             </p>
           </div>
           <Switch
@@ -100,8 +102,8 @@ export function PermissionsPage() {
                   onSuccess: () =>
                     toast.success(
                       checked
-                        ? "Permission system enabled"
-                        : "Permission system disabled — all admins have full access",
+                        ? t("permissionSystem.enabledToast")
+                        : t("permissionSystem.disabledToast"),
                     ),
                   onError: (err) => toast.error(err.message),
                 },
@@ -114,21 +116,21 @@ export function PermissionsPage() {
       {!requirePermissions && (
         <div className="rounded-md border border-warning/30 bg-warning/5 px-4 py-3 text-sm text-warning">
           <Icon name="info" size={16} className="mr-2 inline-block align-text-bottom" />
-          The permission system is disabled. All dashboard admins currently have full access. Enable it above to enforce granular permissions.
+          {t("warning.disabled")}
         </div>
       )}
 
       <Tabs defaultValue="roles">
         <TabsList>
-          <TabsTrigger value="roles">Roles</TabsTrigger>
-          <TabsTrigger value="audit">Audit Log</TabsTrigger>
+          <TabsTrigger value="roles">{t("tabs.roles")}</TabsTrigger>
+          <TabsTrigger value="audit">{t("tabs.auditLog")}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="roles" className="mt-6">
           <div className="flex gap-6">
             {/* Role List */}
             <div className="w-64 shrink-0 space-y-2">
-              <p className="section-label text-text-muted">Dashboard Roles</p>
+              <p className="section-label text-text-muted">{t("roleList.title")}</p>
               <div className="space-y-1">
                 {roles?.map((role) => (
                   <button
@@ -147,14 +149,14 @@ export function PermissionsPage() {
                     <span className="truncate">{role.name}</span>
                     {role.isDefault && (
                       <Badge variant="secondary" className="ml-auto text-[10px]">
-                        Default
+                        {t("roleList.default")}
                       </Badge>
                     )}
                   </button>
                 ))}
                 {(!roles || roles.length === 0) && (
                   <p className="px-3 py-4 text-center text-xs text-text-muted">
-                    No roles created yet.
+                    {t("roleList.empty")}
                   </p>
                 )}
               </div>
@@ -173,7 +175,7 @@ export function PermissionsPage() {
                 />
               ) : (
                 <div className="flex h-64 items-center justify-center text-sm text-text-muted">
-                  Select a role to edit, or create a new one.
+                  {t("roleList.selectHint")}
                 </div>
               )}
             </div>
@@ -209,6 +211,7 @@ function RoleEditor({
   role: DashboardRole;
   onDelete: () => void;
 }) {
+  const { t } = useTranslation("permissions");
   const updateRole = useUpdateDashboardRole(guildId);
   const deleteRole = useDeleteDashboardRole(guildId);
   const [name, setName] = useState(role.name);
@@ -235,7 +238,7 @@ function RoleEditor({
         },
       },
       {
-        onSuccess: () => toast.success("Role updated"),
+        onSuccess: () => toast.success(t("toast.roleUpdated")),
         onError: (err) => toast.error(err.message),
       },
     );
@@ -244,7 +247,7 @@ function RoleEditor({
   function handleDelete() {
     deleteRole.mutate(role.id, {
       onSuccess: () => {
-        toast.success("Role deleted");
+        toast.success(t("toast.roleDeleted"));
         onDelete();
       },
       onError: (err) => toast.error(err.message),
@@ -289,7 +292,7 @@ function RoleEditor({
           />
           <h3 className="text-lg font-semibold">{role.name}</h3>
           <Badge variant="outline" className="text-xs">
-            {role.memberCount} member{role.memberCount !== 1 ? "s" : ""}
+            {t("roleEditor.memberCount", { count: role.memberCount })}
           </Badge>
         </div>
         <Button
@@ -305,7 +308,7 @@ function RoleEditor({
       {/* Name & Color */}
       <div className="flex gap-4">
         <div className="flex-1 space-y-2">
-          <Label>Role Name</Label>
+          <Label>{t("roleEditor.name")}</Label>
           <Input
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -313,7 +316,7 @@ function RoleEditor({
           />
         </div>
         <div className="space-y-2">
-          <Label>Color</Label>
+          <Label>{t("roleEditor.color")}</Label>
           <input
             type="color"
             value={color}
@@ -323,13 +326,13 @@ function RoleEditor({
         </div>
         <div className="flex items-end gap-2 pb-0.5">
           <Switch checked={isDefault} onCheckedChange={setIsDefault} />
-          <Label className="text-sm text-text-muted">Default role</Label>
+          <Label className="text-sm text-text-muted">{t("roleEditor.defaultRole")}</Label>
         </div>
       </div>
 
       {/* Permission Grid */}
       <div className="space-y-2">
-        <Label>Permissions</Label>
+        <Label>{t("roleEditor.permissions")}</Label>
         <ScrollArea className="h-[400px] rounded-md border border-outline-variant/20 bg-surface-low p-4">
           <div className="space-y-6">
             {PERMISSION_REGISTRY.map((mod) => {
@@ -351,7 +354,7 @@ function RoleEditor({
                     </span>
                     {hasWildcard && (
                       <Badge variant="secondary" className="text-[10px]">
-                        All
+                        {t("roleEditor.allBadge")}
                       </Badge>
                     )}
                   </div>
@@ -389,7 +392,7 @@ function RoleEditor({
       {/* Actions */}
       <div className="flex gap-3">
         <Button onClick={handleSave} disabled={!dirty || updateRole.isPending}>
-          {updateRole.isPending ? "Saving..." : "Save Changes"}
+          {updateRole.isPending ? t("saveButton.saving") : t("saveButton.save")}
         </Button>
       </div>
 
@@ -397,21 +400,21 @@ function RoleEditor({
       <Dialog open={confirmDelete} onOpenChange={setConfirmDelete}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Delete role "{role.name}"?</DialogTitle>
+            <DialogTitle>{t("confirm.deleteTitle", { name: role.name })}</DialogTitle>
           </DialogHeader>
           <p className="text-sm text-text-muted">
-            This will remove the role and unassign all members. This action cannot be undone.
+            {t("confirm.deleteMessage")}
           </p>
           <DialogFooter>
             <Button variant="outline" onClick={() => setConfirmDelete(false)}>
-              Cancel
+              {t("common:actions.cancel")}
             </Button>
             <Button
               variant="destructive"
               onClick={handleDelete}
               disabled={deleteRole.isPending}
             >
-              {deleteRole.isPending ? "Deleting..." : "Delete"}
+              {deleteRole.isPending ? t("deleteButton.deleting") : t("deleteButton.delete")}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -423,18 +426,19 @@ function RoleEditor({
 // ─── Preset Dropdown ───
 
 function PresetDropdown({ guildId }: { guildId: string }) {
+  const { t } = useTranslation("permissions");
   const createFromPreset = useCreateRoleFromPreset(guildId);
 
   function handlePreset(key: string) {
     createFromPreset.mutate(key, {
-      onSuccess: () => toast.success(`Created "${ROLE_PRESETS[key].name}" role`),
+      onSuccess: () => toast.success(t("presets.createdToast", { name: ROLE_PRESETS[key].name })),
       onError: (err) => toast.error(err.message),
     });
   }
 
   return (
     <div className="space-y-1">
-      <p className="section-label text-text-muted">Quick Add from Preset</p>
+      <p className="section-label text-text-muted">{t("presets.title")}</p>
       {Object.entries(ROLE_PRESETS).map(([key, preset]) => (
         <button
           key={key}
@@ -466,6 +470,7 @@ function CreateRoleDialog({
   onOpenChange: (open: boolean) => void;
   onCreated: (role: DashboardRole) => void;
 }) {
+  const { t } = useTranslation("permissions");
   const createRole = useCreateDashboardRole(guildId);
   const [name, setName] = useState("");
   const [color, setColor] = useState("#a3a6ff");
@@ -475,7 +480,7 @@ function CreateRoleDialog({
       { name: name.trim(), color, permissions: [] },
       {
         onSuccess: (role) => {
-          toast.success(`Created role "${role.name}"`);
+          toast.success(t("toast.roleCreated", { name: role.name }));
           setName("");
           onCreated(role);
         },
@@ -488,20 +493,20 @@ function CreateRoleDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Create Dashboard Role</DialogTitle>
+          <DialogTitle>{t("createDialog.title")}</DialogTitle>
         </DialogHeader>
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label>Name</Label>
+            <Label>{t("createDialog.name")}</Label>
             <Input
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g. Moderator"
+              placeholder={t("createDialog.namePlaceholder")}
               maxLength={32}
             />
           </div>
           <div className="space-y-2">
-            <Label>Color</Label>
+            <Label>{t("createDialog.color")}</Label>
             <div className="flex items-center gap-3">
               <input
                 type="color"
@@ -515,13 +520,13 @@ function CreateRoleDialog({
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Cancel
+            {t("common:actions.cancel")}
           </Button>
           <Button
             onClick={handleCreate}
             disabled={!name.trim() || createRole.isPending}
           >
-            {createRole.isPending ? "Creating..." : "Create"}
+            {createRole.isPending ? t("createButton.creating") : t("createButton.create")}
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -532,6 +537,7 @@ function CreateRoleDialog({
 // ─── Audit Log Tab ───
 
 function AuditLogTab({ guildId }: { guildId: string }) {
+  const { t } = useTranslation("permissions");
   const [page, setPage] = useState(1);
   const { data, isLoading } = useDashboardAuditLog(guildId, { page, limit: 25 });
 
@@ -540,7 +546,7 @@ function AuditLogTab({ guildId }: { guildId: string }) {
   if (!data?.entries.length) {
     return (
       <div className="flex h-48 items-center justify-center text-sm text-text-muted">
-        No audit log entries yet.
+        {t("audit.noEntries")}
       </div>
     );
   }
@@ -549,10 +555,10 @@ function AuditLogTab({ guildId }: { guildId: string }) {
     <div className="space-y-4">
       <div className="rounded-md border border-outline-variant/20">
         <div className="grid grid-cols-[1fr_1fr_1fr_auto] gap-4 border-b border-outline-variant/10 px-4 py-2 text-xs font-medium text-text-muted">
-          <span>User</span>
-          <span>Action</span>
-          <span>Target</span>
-          <span>When</span>
+          <span>{t("audit.table.user")}</span>
+          <span>{t("audit.table.action")}</span>
+          <span>{t("audit.table.target")}</span>
+          <span>{t("audit.table.timestamp")}</span>
         </div>
         {data.entries.map((entry) => (
           <div
@@ -586,10 +592,10 @@ function AuditLogTab({ guildId }: { guildId: string }) {
             disabled={page <= 1}
             onClick={() => setPage((p) => p - 1)}
           >
-            Previous
+            {t("pagination.previous")}
           </Button>
           <span className="text-xs text-text-muted">
-            Page {data.page} of {data.pages}
+            {t("pagination.page", { current: data.page, total: data.pages })}
           </span>
           <Button
             variant="outline"
@@ -597,7 +603,7 @@ function AuditLogTab({ guildId }: { guildId: string }) {
             disabled={page >= data.pages}
             onClick={() => setPage((p) => p + 1)}
           >
-            Next
+            {t("pagination.next")}
           </Button>
         </div>
       )}

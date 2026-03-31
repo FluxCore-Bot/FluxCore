@@ -1,0 +1,8 @@
+{
+  "title": "Systeme musical",
+  "subtitle": "Configurez les modes de lecture globaux et les preferences de bibliotheque audio.",
+  "tabs": {
+    "settings": "Parametres de lecture",
+    "library": "Bibliotheque musicale"
+  }
+}

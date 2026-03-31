@@ -1,0 +1,65 @@
+{
+  "title": "Benvinguda i comiat",
+  "subtitle": "Configura missatges de benvinguda i comiat, imatges i rols automatics.",
+  "loadingSubtitle": "Configura missatges de benvinguda i comiat per al teu servidor.",
+  "tabs": {
+    "welcome": "Benvinguda",
+    "welcomeImage": "Imatge de benvinguda",
+    "farewell": "Comiat",
+    "farewellImage": "Imatge de comiat",
+    "dm": "DM de benvinguda",
+    "autorole": "Rol automatic"
+  },
+  "welcome": {
+    "title": "Missatge de benvinguda",
+    "description": "Envia un embed personalitzat quan un nou membre s'uneix.",
+    "channelLabel": "ID del canal de benvinguda",
+    "channelPlaceholder": "ID del canal...",
+    "embedBuilder": "Constructor d'embed"
+  },
+  "welcomeImage": {
+    "title": "Imatge de benvinguda",
+    "description": "Genera una targeta d'imatge personalitzada amb l'avatar del membre quan s'uneix.",
+    "disabled": "Activa l'interruptor de dalt per configurar les imatges de benvinguda."
+  },
+  "farewell": {
+    "title": "Missatge de comiat",
+    "description": "Envia un missatge quan un membre deixa el servidor.",
+    "channelLabel": "ID del canal de comiat",
+    "channelPlaceholder": "ID del canal..."
+  },
+  "farewellImage": {
+    "title": "Imatge de comiat",
+    "description": "Genera una targeta de comiat personalitzada quan un membre marxa.",
+    "disabled": "Activa l'interruptor de dalt per configurar les imatges de comiat."
+  },
+  "dm": {
+    "title": "DM de benvinguda",
+    "description": "Envia un missatge directe als nous membres. Fallara silenciosament si els DM estan desactivats."
+  },
+  "autorole": {
+    "title": "Rol automatic",
+    "description": "Assigna automaticament rols als nous membres quan s'uneixen. Els bots estan exclosos. El bot ha de tenir un rol superior als rols llistats aqui.",
+    "label": "IDs de rols (separats per comes)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Títol",
+    "description": "Descripció",
+    "color": "Color (hex)",
+    "footer": "Peu de pagina",
+    "thumbnail": "URL de la miniatura",
+    "image": "URL de la imatge",
+    "variables": "Variables:"
+  },
+  "saveChanges": "Desar canvis",
+  "saving": "Desant...",
+  "sendTest": "Enviar missatge de prova",
+  "sending": "Enviant...",
+  "toast": {
+    "saved": "Configuració de benvinguda desada",
+    "saveFailed": "No s'ha pogut desar la configuració",
+    "testSent": "El missatge de prova s'enviara a <#{{channelId}}>",
+    "testFailed": "No s'ha pogut enviar el missatge de prova"
+  }
+}

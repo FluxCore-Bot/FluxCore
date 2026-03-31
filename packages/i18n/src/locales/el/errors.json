@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Δεν έχετε πιστοποιηθεί",
+    "sessionExpired": "Η συνεδρία έληξε",
+    "missingCode": "Λείπει η παράμετρος κωδικού",
+    "tokenExchangeFailed": "Η ανταλλαγή token απέτυχε",
+    "failedToFetchUser": "Αποτυχία ανάκτησης πληροφοριών χρήστη"
+  },
+  "permissions": {
+    "noGuildPermission": "Δεν έχετε άδεια για αυτόν τον server",
+    "botNotInGuild": "Το bot δεν βρίσκεται σε αυτόν τον server",
+    "insufficientPermissions": "Ανεπαρκή δικαιώματα",
+    "permissionsNotResolved": "Τα δικαιώματα δεν επιλύθηκαν",
+    "requiresPermission": "Αυτή η ενέργεια απαιτεί τo δικαίωμα \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Μη έγκυρη είσοδος",
+    "missingField": "Λείπει το υποχρεωτικό πεδίο: {{field}}",
+    "invalidFormat": "Μη έγκυρη μορφή για {{field}}",
+    "tooLong": "Το {{field}} υπερβαίνει το μέγιστο μήκος των {{max}} χαρακτήρων",
+    "tooShort": "Το {{field}} πρέπει να έχει τουλάχιστον {{min}} χαρακτήρες",
+    "outOfRange": "Το {{field}} πρέπει να είναι μεταξύ {{min}} και {{max}}"
+  },
+  "resources": {
+    "notFound": "Δεν βρέθηκε",
+    "alreadyExists": "Το {{resource}} υπάρχει ήδη",
+    "limitReached": "Μέγιστο {{max}} {{resource}} ανά server",
+    "createFailed": "Αποτυχία δημιουργίας {{resource}}",
+    "updateFailed": "Αποτυχία ενημέρωσης {{resource}}",
+    "deleteFailed": "Αποτυχία διαγραφής {{resource}}"
+  },
+  "server": {
+    "internalError": "Εσωτερικό σφάλμα server",
+    "serviceUnavailable": "Η υπηρεσία είναι προσωρινά μη διαθέσιμη",
+    "rateLimited": "Πολλά αιτήματα. Παρακαλώ δοκιμάστε ξανά αργότερα."
+  },
+  "csrf": {
+    "invalidToken": "Μη έγκυρο ή ελλείπον CSRF token"
+  }
+}

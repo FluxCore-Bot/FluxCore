@@ -1,0 +1,50 @@
+{
+  "title": "Soutěže",
+  "subtitle": "Pořádejte soutěže s nastavitelnou dobou trvání, podmínkami účasti a výběrem vítězů.",
+  "stats": {
+    "activeGiveaways": "Aktivní soutěže",
+    "pastGiveaways": "Ukončené soutěže",
+    "totalEntries": "Celkem účastníků"
+  },
+  "table": {
+    "prize": "Cena",
+    "winners": "Vítězové",
+    "entries": "Účastníci",
+    "endsIn": "Končí za",
+    "status": "Stav"
+  },
+  "statuses": {
+    "active": "Aktivní",
+    "ended": "Ukončená",
+    "cancelled": "Zrušená"
+  },
+  "actions": {
+    "create": "Vytvořit soutěž",
+    "edit": "Upravit",
+    "end": "Ukončit",
+    "reroll": "Přelosovat",
+    "delete": "Smazat"
+  },
+  "form": {
+    "prize": "Cena",
+    "winnersCount": "Počet vítězů",
+    "duration": "Doba trvání",
+    "channel": "Kanál",
+    "requiredRole": "Požadovaná role",
+    "description": "Popis"
+  },
+  "toast": {
+    "created": "Soutěž vytvořena",
+    "createFailed": "Nepodařilo se vytvořit soutěž",
+    "updated": "Soutěž aktualizována",
+    "updateFailed": "Nepodařilo se aktualizovat soutěž",
+    "ended": "Soutěž ukončena",
+    "endFailed": "Nepodařilo se ukončit soutěž",
+    "rerolled": "Vítězové přelosováni",
+    "rerollFailed": "Nepodařilo se přelosovat vítěze",
+    "deleted": "Soutěž smazána",
+    "deleteFailed": "Nepodařilo se smazat soutěž"
+  },
+  "empty": "Zatím žádné soutěže. Vytvořte první a začněte.",
+  "loading": "Načítání soutěží..."
+}

@@ -1,0 +1,18 @@
+{
+  "title": "排程訊息",
+  "subtitle": "建立按可設定排程定期自動發佈的訊息。",
+  "stats": { "totalMessages": "訊息總數", "active": "活躍", "inactive": "未啟用" },
+  "table": { "name": "名稱", "channel": "頻道", "schedule": "排程", "nextRun": "下次執行", "status": "狀態" },
+  "dialog": { "editTitle": "編輯排程訊息", "createTitle": "新建排程訊息" },
+  "form": { "name": "名稱", "channel": "頻道", "schedulePreset": "排程預設", "cronExpression": "Cron 運算式", "timezone": "時區", "messageContent": "訊息內容", "text": "文字", "embed": "嵌入", "enabled": "啟用", "enabledDesc": "此排程訊息是否啟用。" },
+  "cronPresets": { "everyHour": "每小時", "every6Hours": "每 6 小時", "daily9am": "每天上午 9 點", "dailyMidnight": "每天午夜", "weeklyMonday": "每週一", "monthly1st": "每月 1 日", "custom": "自訂" },
+  "embed": { "title": "標題", "description": "描述", "color": "顏色（十六進位）", "footer": "頁尾", "thumbnail": "縮圖 URL", "image": "圖片 URL" },
+  "toast": { "created": "排程訊息已建立", "createFailed": "建立排程訊息失敗", "updated": "排程訊息已更新", "updateFailed": "更新排程訊息失敗", "deleted": "排程訊息已刪除", "deleteFailed": "刪除排程訊息失敗", "testSent": "測試訊息已傳送", "testFailed": "傳送測試訊息失敗" },
+  "empty": { "title": "尚無排程訊息", "description": "建立排程訊息以定期自動發佈內容。", "createButton": "建立訊息" },
+  "pagination": { "previous": "上一頁", "next": "下一頁", "page": "第 {{page}} 頁 / 共 {{total}} 頁" },
+  "actions": { "newMessage": "新訊息", "testSend": "測試傳送", "edit": "編輯", "delete": "刪除", "save": "儲存", "cancel": "取消" },
+  "validation": { "nameRequired": "訊息名稱為必填", "channelRequired": "頻道為必填" },
+  "cronPreview": { "nextRuns": "下次執行時間" },
+  "characters": "{{count}}/2000 字元",
+  "never": "從未"
+}

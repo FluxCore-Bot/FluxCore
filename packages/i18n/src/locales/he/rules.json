@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "שרת",
+    "automation": "אוטומציה"
+  },
+  "title": "כללי אוטומציה",
+  "subtitle": "הגדר טריגרים מונחי אירועים ותגובות אוטומטיות עבור השרת שלך.",
+  "createRule": "צור כלל",
+  "stats": {
+    "totalRules": "סה\"כ כללים",
+    "active": "פעילים",
+    "executions7d": "הרצות (7 ימים)",
+    "successRate": "אחוז הצלחה"
+  },
+  "filter": {
+    "searchPlaceholder": "חפש כללים...",
+    "eventType": "סוג אירוע",
+    "allEvents": "כל האירועים",
+    "allStatus": "כל המצבים",
+    "enabled": "מופעל",
+    "disabled": "מושבת",
+    "sortBy": "מיין לפי",
+    "priority": "עדיפות",
+    "name": "שם",
+    "lastFired": "הפעלה אחרונה",
+    "status": "מצב",
+    "clear": "נקה",
+    "showing": "מציג {{filtered}} מתוך {{total}} כללים"
+  },
+  "bulk": {
+    "selected": "נבחר {{count}} כלל",
+    "selected_other": "נבחרו {{count}} כללים",
+    "enable": "הפעלה",
+    "disable": "השבתה",
+    "delete": "מחיקה",
+    "clear": "נקה"
+  },
+  "empty": {
+    "title": "התחל עם אוטומציה",
+    "description": "בחר תבנית כדי להתחיל במהירות, או צור כלל מאפס.",
+    "createFromScratch": "צור מאפס"
+  },
+  "noResults": {
+    "title": "אין כללים תואמים",
+    "description": "נסה לשנות את החיפוש או המסננים כדי למצוא את מה שאתה מחפש."
+  },
+  "templates": {
+    "welcomeMessage": "הודעת ברוכים הבאים",
+    "welcomeMessageDesc": "קבל פני חברים חדשים עם הודעה מותאמת אישית בערוץ",
+    "autoRole": "תפקיד אוטומטי",
+    "autoRoleDesc": "הקצה תפקיד אוטומטית כאשר חבר מצטרף",
+    "logDeleted": "רישום הודעות שנמחקו",
+    "logDeletedDesc": "שלח מידע על הודעות שנמחקו לערוץ יומן",
+    "boostThankYou": "תודה על בוסט",
+    "boostThankYouDesc": "שלח הודעה פרטית למשתמשים שעושים בוסט לשרת",
+    "banLogger": "רושם חסימות",
+    "banLoggerDesc": "רשום אירועי חסימה בערוץ ניהול",
+    "autoThread": "שרשור אוטומטי",
+    "autoThreadDesc": "צור שרשור אוטומטית כאשר נשלחת הודעה"
+  },
+  "deleteDialog": {
+    "title": "מחיקת כלל",
+    "description": "האם אתה בטוח שברצונך למחוק את \"{{name}}\"? לא ניתן לבטל פעולה זו.",
+    "confirm": "מחק"
+  },
+  "bulkDeleteDialog": {
+    "title": "מחיקת כללים נבחרים",
+    "description": "האם אתה בטוח שברצונך למחוק {{count}} כלל? לא ניתן לבטל פעולה זו.",
+    "description_other": "האם אתה בטוח שברצונך למחוק {{count}} כללים? לא ניתן לבטל פעולה זו.",
+    "confirm": "מחק הכל"
+  },
+  "toast": {
+    "deleted": "הכלל נמחק",
+    "deleteFailed": "מחיקת הכלל נכשלה",
+    "enabled": "הכלל הופעל",
+    "disabled": "הכלל הושבת",
+    "toggleFailed": "החלפת מצב הכלל נכשלה",
+    "duplicated": "הכלל שוכפל",
+    "duplicateFailed": "שכפול הכלל נכשל",
+    "bulkEnabled": "{{count}} כללים הופעלו",
+    "bulkDisabled": "{{count}} כללים הושבתו",
+    "bulkEnableFailed": "הפעלת הכללים נכשלה",
+    "bulkDisableFailed": "השבתת הכללים נכשלה",
+    "bulkDeleted": "{{count}} כללים נמחקו",
+    "bulkDeleteFailed": "מחיקת הכללים נכשלה"
+  }
+}

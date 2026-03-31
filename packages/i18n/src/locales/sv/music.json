@@ -1,0 +1,8 @@
+{
+  "title": "Musiksystem",
+  "subtitle": "Konfigurera globala uppspelningslägen och ljudbibliotekspreferenser.",
+  "tabs": {
+    "settings": "Uppspelningsinställningar",
+    "library": "Musikbibliotek"
+  }
+}

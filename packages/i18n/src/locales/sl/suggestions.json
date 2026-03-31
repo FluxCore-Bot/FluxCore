@@ -1,0 +1,67 @@
+{
+  "title": "Predlogi",
+  "subtitle": "Pustite, da člani oddajajo ideje in glasujejo o njih. Upravljajte stanja in povratne informacije.",
+  "stats": {
+    "totalSuggestions": "Skupaj predlogov",
+    "systemStatus": "Stanje sistema",
+    "channel": {
+      "configured": "Kanal konfiguriran",
+      "notSet": "Kanal ni nastavljen"
+    }
+  },
+  "tabs": {
+    "suggestions": "Predlogi",
+    "settings": "Nastavitve"
+  },
+  "filter": {
+    "filterByStatus": "Filtriraj po stanju",
+    "all": "Vse",
+    "pending": "V čakanju",
+    "approved": "Odobreno",
+    "rejected": "Zavrnjeno",
+    "implemented": "Izvedeno",
+    "considered": "V obravnavi"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Avtor",
+    "content": "Vsebina",
+    "status": "Stanje",
+    "votes": "Glasovi",
+    "date": "Datum"
+  },
+  "actions": {
+    "approve": "Odobri",
+    "reject": "Zavrni",
+    "implement": "Označi kot izvedeno",
+    "consider": "Obravnavaj",
+    "delete": "Izbriši"
+  },
+  "settings": {
+    "channel": "Kanal predlogov",
+    "channelDesc": "Kanal, kjer so objavljeni predlogi za glasovanje.",
+    "voteEmojis": "Emojiji za glasovanje",
+    "voteEmojisDesc": "Emojiji, ki se uporabljajo za reakcije za in proti.",
+    "autoThread": "Samodejno ustvarjena nit",
+    "autoThreadDesc": "Samodejno ustvarite nit za razpravo ob vsakem novem predlogu.",
+    "dmOnStatusChange": "DM ob spremembi stanja",
+    "dmOnStatusChangeDesc": "Obvestite avtorja prek DM, ko se stanje predloga spremeni."
+  },
+  "toast": {
+    "approved": "Predlog odobren",
+    "rejected": "Predlog zavrnjen",
+    "implemented": "Predlog označen kot izveden",
+    "considered": "Predlog označen kot v obravnavi",
+    "deleted": "Predlog izbrisan",
+    "actionFailed": "Posodabljanje predloga ni uspelo",
+    "settingsSaved": "Nastavitve predlogov shranjene",
+    "settingsFailed": "Shranjevanje nastavitev predlogov ni uspelo"
+  },
+  "empty": "Še ni predlogov.",
+  "loading": "Nalaganje predlogov...",
+  "pagination": {
+    "previous": "Prejšnja",
+    "next": "Naslednja",
+    "page": "Stran {{page}} od {{total}}"
+  }
+}

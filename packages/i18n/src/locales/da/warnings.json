@@ -1,0 +1,72 @@
+{
+  "title": "Advarsler",
+  "subtitle": "Spor og administrer medlemsadvarsler med automatisk eskalering.",
+  "stats": {
+    "totalWarnings": "Advarsler i alt",
+    "escalationRules": "Eskaleringsregler",
+    "dmOnWarn": "DM ved advarsel"
+  },
+  "tabs": {
+    "warnings": "Advarselslog",
+    "escalation": "Eskalering",
+    "settings": "Indstillinger"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Bruger",
+    "moderator": "Moderator",
+    "reason": "Årsag",
+    "date": "Dato"
+  },
+  "filter": {
+    "userPlaceholder": "Filtrer efter bruger-ID...",
+    "clearAll": "Ryd alle"
+  },
+  "pagination": {
+    "previous": "Forrige",
+    "next": "Næste",
+    "page": "Side {{page}} af {{total}} ({{count}} i alt)"
+  },
+  "loading": "Indlæser advarsler...",
+  "noWarnings": "Ingen advarsler fundet.",
+  "toast": {
+    "warningRemoved": "Advarsel fjernet",
+    "warningsFailed": "Kunne ikke slette advarsel",
+    "enterUserId": "Indtast et bruger-ID for at rydde alle advarsler for den bruger",
+    "allCleared": "Alle advarsler ryddet for bruger",
+    "clearFailed": "Kunne ikke rydde advarsler",
+    "thresholdAdded": "Strafgrænse tilføjet",
+    "thresholdFailed": "Kunne ikke tilføje straf",
+    "thresholdRemoved": "Straf fjernet",
+    "removeFailed": "Kunne ikke fjerne straf",
+    "settingFailed": "Kunne ikke opdatere indstilling",
+    "thresholdInvalid": "Grænseværdi skal være et positivt tal"
+  },
+  "escalation": {
+    "title": "Straffeseskalering",
+    "description": "Konfigurer automatiske handlinger, når en bruger når et bestemt antal advarsler.",
+    "threshold": "Grænse",
+    "action": "Handling",
+    "duration": "Varighed",
+    "noRules": "Ingen eskaleringsregler konfigureret.",
+    "addRule": "Tilføj eskaleringsregel",
+    "addButton": "Tilføj regel",
+    "warnings": "{{count}} advarsler",
+    "min": "{{count}} min",
+    "timeout": "Timeout",
+    "kick": "Smid ud",
+    "ban": "Udeluk",
+    "durationLabel": "Varighed (sekunder)",
+    "thresholdPlaceholder": "f.eks. 3",
+    "durationPlaceholder": "f.eks. 3600"
+  },
+  "settings": {
+    "title": "Advarselsindstillinger",
+    "dmOnWarn": "DM ved advarsel",
+    "dmOnWarnDesc": "Send en direkte besked til brugeren, når de modtager en advarsel.",
+    "requireReason": "Kræv årsag",
+    "requireReasonDesc": "Moderatorer skal angive en årsag, når de udsteder en advarsel.",
+    "maxWarnings": "Maks. advarsler",
+    "maxWarningsDesc": "Maksimalt antal advarsler per bruger (0 = ubegrænset)."
+  }
+}

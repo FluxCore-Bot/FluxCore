@@ -1,0 +1,113 @@
+{
+  "title": "Aangepaste Commando's",
+  "subtitle": "Maak auto-responders en prefixcommando's aan die worden geactiveerd door berichten.",
+  "stats": {
+    "totalCommands": "Totaal Commando's",
+    "enabled": "Ingeschakeld",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Commando's",
+    "variables": "Variabelen"
+  },
+  "table": {
+    "name": "Naam",
+    "trigger": "Trigger",
+    "response": "Reactie",
+    "cooldown": "Cooldown",
+    "status": "Status"
+  },
+  "triggerTypes": {
+    "command": "!commando",
+    "keyword": "Sleutelwoord",
+    "startsWith": "Begint met",
+    "regex": "Regex",
+    "prefixCommand": "Prefixcommando (!naam)",
+    "keywordContains": "Sleutelwoord (bevat)"
+  },
+  "dialog": {
+    "createCommand": "Commando aanmaken",
+    "editCommand": "Commando bewerken"
+  },
+  "form": {
+    "commandName": "Commandonaam",
+    "triggerText": "Triggertekst",
+    "regexPattern": "Regex-patroon",
+    "triggerType": "Triggertype",
+    "response": "Reactie",
+    "message": "Bericht",
+    "embedTitle": "Embed-titel",
+    "embedDescription": "Embed-beschrijving",
+    "color": "Kleur",
+    "footer": "Voettekst"
+  },
+  "options": {
+    "cooldown": "Cooldown (seconden)",
+    "enabled": "Ingeschakeld",
+    "enabledDesc": "Of dit commando actief is",
+    "deleteTrigger": "Triggerbericht verwijderen",
+    "deleteTriggerDesc": "Verwijder automatisch het bericht dat dit commando heeft geactiveerd.",
+    "dmResponse": "DM-reactie",
+    "dmResponseDesc": "Stuur de reactie als een directe berichtgeving in plaats van in het kanaal."
+  },
+  "restrictions": {
+    "title": "Beperkingen",
+    "allowedChannels": "Toegestane kanalen (leeg = alle)",
+    "allowedRoles": "Toegestane rollen (leeg = iedereen)",
+    "addChannel": "Kanaal toevoegen",
+    "addRole": "Rol toevoegen"
+  },
+  "actions": {
+    "create": "Aanmaken",
+    "update": "Bijwerken",
+    "cancel": "Annuleren",
+    "addAction": "Actie toevoegen",
+    "addRole": "Rol toevoegen",
+    "removeRole": "Rol verwijderen"
+  },
+  "actionsSection": {
+    "title": "Acties ({{count}}/5)",
+    "noActions": "Geen acties geconfigureerd. Voeg een actie toe om te bepalen wat dit commando doet.",
+    "maxActions": "Maximaal 5 acties per commando"
+  },
+  "variables": {
+    "title": "Sjabloonvariabelen",
+    "description": "Gebruik deze variabelen in je commandoreacties. Ze worden vervangen door de werkelijke waarden wanneer het commando wordt geactiveerd.",
+    "table": {
+      "variable": "Variabele",
+      "description": "Beschrijving"
+    },
+    "entries": {
+      "user": "{user} — Vermeldt de gebruiker die het commando heeft geactiveerd",
+      "username": "{username} — De weergavenaam van de gebruiker",
+      "userId": "{userId} — Het ID van de gebruiker",
+      "server": "{server} — De servernaam",
+      "channel": "{channel} — Vermeldt het huidige kanaal",
+      "channelName": "{channelName} — De kanaalnaam",
+      "memberCount": "{memberCount} — Totaal aantal serverleden"
+    }
+  },
+  "toast": {
+    "created": "Commando aangemaakt",
+    "createFailed": "Commando aanmaken mislukt",
+    "updated": "Commando bijgewerkt",
+    "updateFailed": "Commando bijwerken mislukt",
+    "deleted": "Commando verwijderd",
+    "deleteFailed": "Commando verwijderen mislukt",
+    "toggleEnabled": "Commando ingeschakeld",
+    "toggleDisabled": "Commando uitgeschakeld",
+    "toggleFailed": "Commando in-/uitschakelen mislukt"
+  },
+  "empty": "Nog geen aangepaste commando's aangemaakt.",
+  "loading": "Commando's laden...",
+  "badge": {
+    "active": "Actief",
+    "disabled": "Uitgeschakeld",
+    "text": "Tekst",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Commandonaam is verplicht"
+  },
+  "triggerPrefix": "Trigger: !{{name}}"
+}

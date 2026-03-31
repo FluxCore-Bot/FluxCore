@@ -1,0 +1,54 @@
+{
+  "title": "Moderering",
+  "subtitle": "Visa och hantera modereringsärenden, konfigurera bestraffningsinställningar.",
+  "stats": {
+    "totalCases": "Totalt antal ärenden",
+    "activeTempbans": "Aktiva tillfälliga banningar",
+    "last24h": "Senaste 24t"
+  },
+  "cases": "Ärenden",
+  "actions": {
+    "ban": "Banna",
+    "tempban": "Tillfällig banning",
+    "kick": "Sparka",
+    "timeout": "Timeout",
+    "softban": "Mjukbanna",
+    "warn": "Varna",
+    "note": "Anteckning"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Åtgärd",
+    "target": "Mål",
+    "moderator": "Moderator",
+    "reason": "Orsak",
+    "date": "Datum",
+    "actions": "Åtgärder",
+    "noCases": "Inga ärenden hittades.",
+    "noReason": "Ingen orsak"
+  },
+  "filter": {
+    "userPlaceholder": "Filtrera efter användar-ID...",
+    "allActions": "Alla åtgärder"
+  },
+  "pagination": {
+    "previous": "Föregående",
+    "next": "Nästa",
+    "page": "Sida {{page}} av {{total}}"
+  },
+  "editDialog": {
+    "title": "Redigera ärende #{{id}} orsak",
+    "placeholder": "Ange ny orsak...",
+    "saving": "Sparar..."
+  },
+  "editReason": "Redigera orsak",
+  "deleteCase": "Ta bort ärende",
+  "deleteConfirm": "Är du säker på att du vill ta bort detta ärende?",
+  "settings": {
+    "title": "Inställningar",
+    "dmOnPunishment": "DM vid bestraffning",
+    "dmOnPunishmentDesc": "Skicka ett DM till användare när de bestraffas (banning, spark, timeout).",
+    "modLogChannel": "Modereringsloggkanal",
+    "modLogChannelDesc": "Kanal där modereringsåtgärder loggas."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Nicht authentifiziert",
+    "sessionExpired": "Sitzung abgelaufen",
+    "missingCode": "Fehlender Code-Parameter",
+    "tokenExchangeFailed": "Token-Austausch fehlgeschlagen",
+    "failedToFetchUser": "Benutzerinformationen konnten nicht abgerufen werden"
+  },
+  "permissions": {
+    "noGuildPermission": "Keine Berechtigung fuer diesen Server",
+    "botNotInGuild": "Bot ist nicht auf diesem Server",
+    "insufficientPermissions": "Unzureichende Berechtigungen",
+    "permissionsNotResolved": "Berechtigungen nicht aufgeloest",
+    "requiresPermission": "Diese Aktion erfordert die Berechtigung \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Ungueltige Eingabe",
+    "missingField": "Pflichtfeld fehlt: {{field}}",
+    "invalidFormat": "Ungueltiges Format fuer {{field}}",
+    "tooLong": "{{field}} ueberschreitet die maximale Laenge von {{max}} Zeichen",
+    "tooShort": "{{field}} muss mindestens {{min}} Zeichen lang sein",
+    "outOfRange": "{{field}} muss zwischen {{min}} und {{max}} liegen"
+  },
+  "resources": {
+    "notFound": "Nicht gefunden",
+    "alreadyExists": "{{resource}} existiert bereits",
+    "limitReached": "Maximal {{max}} {{resource}} pro Server",
+    "createFailed": "{{resource}} konnte nicht erstellt werden",
+    "updateFailed": "{{resource}} konnte nicht aktualisiert werden",
+    "deleteFailed": "{{resource}} konnte nicht geloescht werden"
+  },
+  "server": {
+    "internalError": "Interner Serverfehler",
+    "serviceUnavailable": "Dienst voruebergehend nicht verfuegbar",
+    "rateLimited": "Zu viele Anfragen. Bitte versuchen Sie es spaeter erneut."
+  },
+  "csrf": {
+    "invalidToken": "Ungueltiges oder fehlendes CSRF-Token"
+  }
+}

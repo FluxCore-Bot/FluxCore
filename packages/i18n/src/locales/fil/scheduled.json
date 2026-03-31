@@ -1,0 +1,86 @@
+{
+  "title": "Mga Nakatakdang Mensahe",
+  "subtitle": "Gumawa ng mga recurring na auto-posted na mensahe sa mga nako-configure na iskedyul.",
+  "stats": {
+    "totalMessages": "Kabuuang Mensahe",
+    "active": "Aktibo",
+    "inactive": "Hindi Aktibo"
+  },
+  "table": {
+    "name": "Pangalan",
+    "channel": "Channel",
+    "schedule": "Iskedyul",
+    "nextRun": "Susunod na Takbo",
+    "status": "Status"
+  },
+  "dialog": {
+    "editTitle": "I-edit ang Nakatakdang Mensahe",
+    "createTitle": "Bagong Nakatakdang Mensahe"
+  },
+  "form": {
+    "name": "Pangalan",
+    "channel": "Channel",
+    "schedulePreset": "Preset ng Iskedyul",
+    "cronExpression": "Cron Expression",
+    "timezone": "Timezone",
+    "messageContent": "Nilalaman ng Mensahe",
+    "text": "Teksto",
+    "embed": "Embed",
+    "enabled": "Pinagana",
+    "enabledDesc": "Kung aktibo ang nakatakdang mensaheng ito."
+  },
+  "cronPresets": {
+    "everyHour": "Bawat Oras",
+    "every6Hours": "Bawat 6 na Oras",
+    "daily9am": "Araw-araw nang 9 AM",
+    "dailyMidnight": "Araw-araw sa Hatinggabi",
+    "weeklyMonday": "Lingguhang sa Lunes",
+    "monthly1st": "Buwanan sa Ika-1",
+    "custom": "Custom"
+  },
+  "embed": {
+    "title": "Pamagat",
+    "description": "Paglalarawan",
+    "color": "Kulay (hex)",
+    "footer": "Footer",
+    "thumbnail": "Thumbnail URL",
+    "image": "Image URL"
+  },
+  "toast": {
+    "created": "Nakatakdang mensahe na nagawa",
+    "createFailed": "Hindi nagawa ang nakatakdang mensahe",
+    "updated": "Nakatakdang mensahe na na-update",
+    "updateFailed": "Hindi na-update ang nakatakdang mensahe",
+    "deleted": "Nakatakdang mensahe na nabura",
+    "deleteFailed": "Hindi nabura ang nakatakdang mensahe",
+    "testSent": "Napadala ang test na mensahe",
+    "testFailed": "Hindi napadala ang test na mensahe"
+  },
+  "empty": {
+    "title": "Wala pang mga nakatakdang mensahe",
+    "description": "Gumawa ng nakatakdang mensahe upang awtomatikong mag-post ng nilalaman nang paulit-ulit.",
+    "createButton": "Gumawa ng Mensahe"
+  },
+  "pagination": {
+    "previous": "Nakaraan",
+    "next": "Susunod",
+    "page": "Pahina {{page}} ng {{total}}"
+  },
+  "actions": {
+    "newMessage": "Bagong Mensahe",
+    "testSend": "Test na Ipadala",
+    "edit": "I-edit",
+    "delete": "Burahin",
+    "save": "I-save",
+    "cancel": "Kanselahin"
+  },
+  "validation": {
+    "nameRequired": "Kailangan ng pangalan ng mensahe",
+    "channelRequired": "Kailangan ng channel"
+  },
+  "cronPreview": {
+    "nextRuns": "Mga Susunod na Takbo"
+  },
+  "characters": "{{count}}/2000 na karakter",
+  "never": "Hindi Kailanman"
+}

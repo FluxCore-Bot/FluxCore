@@ -1,0 +1,108 @@
+{
+  "title": "Beveiliging",
+  "subtitle": "Configureer anti-raidbescherming en serverbeveiligingsinstellingen.",
+  "antiRaid": {
+    "title": "Anti-raidbescherming",
+    "description": "Schakel automatische detectie en reactie in op gecoördineerde raids, verdachte accounts en destructieve acties."
+  },
+  "sections": {
+    "joinRate": "Deelnamefrequentie",
+    "accountAge": "Accountleeftijd",
+    "antiNuke": "Anti-Nuke",
+    "lockdown": "Vergrendeling",
+    "events": "Gebeurtenissen"
+  },
+  "joinRate": {
+    "title": "Detectie deelnamefrequentie",
+    "description": "Detecteer massale deelnames door de snelheid van nieuwe leden die deelnemen te bewaken.",
+    "threshold": "Deelnamedrempel",
+    "thresholdHint": "Aantal deelnames om detectie te activeren",
+    "window": "Tijdvenster (seconden)",
+    "windowHint": "Venster waarin deelnames worden geteld",
+    "action": "Actie bij detectie",
+    "actionHint": "Actie die wordt ondernomen bij verdachte raidleden",
+    "actions": {
+      "ban": "Verbannen",
+      "kick": "Verwijderen",
+      "timeout": "Time-out",
+      "lockdown": "Vergrendeling"
+    }
+  },
+  "accountAge": {
+    "title": "Accountleeftijdsfilter",
+    "description": "Actie ondernemen op accounts die jonger zijn dan een minimumleeftijd. Stel in op 0 om uit te schakelen.",
+    "minAge": "Minimale accountleeftijd (dagen)",
+    "minAgeHint": "0 = uitgeschakeld. Accounts jonger dan dit worden geactioneerd.",
+    "action": "Actie"
+  },
+  "antiNuke": {
+    "title": "Anti-Nuke-bescherming",
+    "description": "Detecteer massa-verwijdering van kanalen/rollen en quarantaine de verantwoordelijke gebruiker door al zijn rollen te verwijderen.",
+    "threshold": "Verwijderingsdrempel",
+    "thresholdHint": "Aantal verwijderingen binnen 10 seconden om quarantaine te activeren",
+    "channelDeleteThreshold": "Drempel voor kanaalsverwijdering",
+    "roleDeleteThreshold": "Drempel voor rolverwijdering",
+    "massbanThreshold": "Massamverbannerings drempel",
+    "interval": "Interval (seconden)",
+    "action": "Actie"
+  },
+  "lockdown": {
+    "title": "Automatische vergrendeling bij raid",
+    "description": "Vergrendel automatisch alle kanalen wanneer een raid wordt gedetecteerd.",
+    "whitelistedRoles": "Whitelisted rol-ID's (kommagescheiden)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Leden met deze rollen zijn vrijgesteld van raiddetectie.",
+    "logChannel": "Log kanaal-ID",
+    "logChannelPlaceholder": "Kanaal-ID voor raidgebeurtenislogboeken...",
+    "enableButton": "Vergrendeling inschakelen",
+    "disableButton": "Vergrendeling uitschakelen",
+    "active": "Vergrendeling actief",
+    "inactive": "Vergrendeling inactief"
+  },
+  "events": {
+    "title": "Recente raidgebeurtenissen",
+    "description": "Tijdlijn van gedetecteerde raids, accountleeftijdsblokkades en vergrendelingsgebeurtenissen.",
+    "empty": "Nog geen raidgebeurtenissen geregistreerd. Gebeurtenissen verschijnen hier wanneer raiddetectie wordt geactiveerd.",
+    "actionLabel": "Actie: {{action}}",
+    "usersLabel": "Gebruikers: {{count}}",
+    "accountAgeLabel": "Accountleeftijd: {{days}}d",
+    "table": {
+      "type": "Type",
+      "description": "Beschrijving",
+      "time": "Tijd",
+      "action": "Ondernomen actie"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Deelnamepiek",
+    "account_age": "Accountleeftijd",
+    "nuke_attempt": "Nukepoging",
+    "lockdown": "Vergrendeling",
+    "massJoin": "Massale deelname",
+    "suspiciousAccounts": "Verdachte accounts",
+    "channelDeletion": "Kanaalsverwijdering",
+    "roleDeletion": "Rolverwijdering",
+    "massBan": "Massaverbanning"
+  },
+  "pagination": {
+    "previous": "Vorige",
+    "next": "Volgende",
+    "page": "Pagina {{current}} van {{total}}"
+  },
+  "toast": {
+    "saved": "Anti-raidconfiguratie opgeslagen",
+    "saveFailed": "Configuratie opslaan mislukt",
+    "lockdownEnabled": "Serververgrendeling ingeschakeld",
+    "lockdownDisabled": "Serververgrendeling uitgeschakeld",
+    "lockdownFailed": "Vergrendeling in-/uitschakelen mislukt"
+  },
+  "saveButton": {
+    "saving": "Opslaan...",
+    "save": "Wijzigingen opslaan"
+  },
+  "labels": {
+    "seconds": "seconden",
+    "minutes": "minuten",
+    "hours": "uur"
+  }
+}

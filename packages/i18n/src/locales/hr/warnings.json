@@ -1,0 +1,72 @@
+{
+  "title": "Upozorenja",
+  "subtitle": "Pratite i upravljajte upozorenjima clanova s automatskom eskalacijom.",
+  "stats": {
+    "totalWarnings": "Ukupno upozorenja",
+    "escalationRules": "Pravila eskalacije",
+    "dmOnWarn": "Poruka pri upozorenju"
+  },
+  "tabs": {
+    "warnings": "Zapis upozorenja",
+    "escalation": "Eskalacija",
+    "settings": "Postavke"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Korisnik",
+    "moderator": "Moderator",
+    "reason": "Razlog",
+    "date": "Datum"
+  },
+  "filter": {
+    "userPlaceholder": "Filtriraj po ID-u korisnika...",
+    "clearAll": "Obrisi sve"
+  },
+  "pagination": {
+    "previous": "Prethodna",
+    "next": "Sljedeca",
+    "page": "Stranica {{page}} od {{total}} ({{count}} ukupno)"
+  },
+  "loading": "Ucitavanje upozorenja...",
+  "noWarnings": "Nisu pronadena upozorenja.",
+  "toast": {
+    "warningRemoved": "Upozorenje uklonjeno",
+    "warningsFailed": "Brisanje upozorenja nije uspjelo",
+    "enterUserId": "Unesite ID korisnika za brisanje svih upozorenja tog korisnika",
+    "allCleared": "Sva upozorenja obrisana za korisnika",
+    "clearFailed": "Brisanje upozorenja nije uspjelo",
+    "thresholdAdded": "Prag kazne dodan",
+    "thresholdFailed": "Dodavanje kazne nije uspjelo",
+    "thresholdRemoved": "Kazna uklonjena",
+    "removeFailed": "Uklanjanje kazne nije uspjelo",
+    "settingFailed": "Azuriranje postavke nije uspjelo",
+    "thresholdInvalid": "Prag mora biti pozitivan broj"
+  },
+  "escalation": {
+    "title": "Eskalacija kazni",
+    "description": "Konfigurirajte automatske radnje kada korisnik dosegne odredeni broj upozorenja.",
+    "threshold": "Prag",
+    "action": "Radnja",
+    "duration": "Trajanje",
+    "noRules": "Nema konfiguriranih pravila eskalacije.",
+    "addRule": "Dodaj pravilo eskalacije",
+    "addButton": "Dodaj pravilo",
+    "warnings": "{{count}} upozorenja",
+    "min": "{{count}} min",
+    "timeout": "Istek vremena",
+    "kick": "Izbacivanje",
+    "ban": "Zabrana",
+    "durationLabel": "Trajanje (sekunde)",
+    "thresholdPlaceholder": "npr. 3",
+    "durationPlaceholder": "npr. 3600"
+  },
+  "settings": {
+    "title": "Postavke upozorenja",
+    "dmOnWarn": "Poruka pri upozorenju",
+    "dmOnWarnDesc": "Posaljite korisniku privatnu poruku kada primi upozorenje.",
+    "requireReason": "Obavezan razlog",
+    "requireReasonDesc": "Moderatori moraju navesti razlog prilikom izdavanja upozorenja.",
+    "maxWarnings": "Maksimalan broj upozorenja",
+    "maxWarningsDesc": "Maksimalan broj upozorenja po korisniku (0 = neograniceno)."
+  }
+}

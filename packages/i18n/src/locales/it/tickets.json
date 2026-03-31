@@ -1,0 +1,14 @@
+{
+  "title": "Sistema ticket",
+  "subtitle": "Crea pannelli di ticket di supporto e gestisci i ticket aperti dal pannello.",
+  "stats": { "totalTickets": "Ticket totali", "open": "Aperti", "claimed": "Rivendicati", "panels": "Pannelli" },
+  "tabs": { "activeTickets": "Ticket attivi", "panelBuilder": "Editor pannelli", "settings": "Impostazioni" },
+  "table": { "id": "ID", "user": "Utente", "subject": "Oggetto", "status": "Stato", "assignee": "Assegnato a", "created": "Creato" },
+  "statuses": { "open": "Aperto", "claimed": "Rivendicato", "closed": "Chiuso" },
+  "panelBuilder": { "title": "Titolo del pannello", "channel": "Canale", "buttonLabel": "Etichetta pulsante", "welcomeMessage": "Messaggio di benvenuto", "category": "Categoria ticket", "create": "Crea pannello", "edit": "Modifica pannello", "deploy": "Pubblica pannello" },
+  "settings": { "transcriptChannel": "Canale trascrizioni", "transcriptChannelDesc": "Canale dove le trascrizioni dei ticket vengono salvate alla chiusura.", "maxTicketsPerUser": "Ticket massimi per utente", "maxTicketsPerUserDesc": "Numero massimo di ticket aperti che un singolo utente puo avere.", "closeConfirmation": "Conferma chiusura", "closeConfirmationDesc": "Richiedere conferma prima di chiudere un ticket.", "dmTranscript": "Trascrizione via MD", "dmTranscriptDesc": "Inviare una copia della trascrizione al creatore del ticket via MD." },
+  "actions": { "claim": "Rivendica", "close": "Chiudi", "delete": "Elimina", "reopen": "Riapri" },
+  "toast": { "panelCreated": "Pannello ticket creato", "panelCreateFailed": "Impossibile creare il pannello ticket", "panelUpdated": "Pannello ticket aggiornato", "panelUpdateFailed": "Impossibile aggiornare il pannello ticket", "panelDeployed": "Pannello ticket pubblicato", "panelDeployFailed": "Impossibile pubblicare il pannello ticket", "ticketClaimed": "Ticket rivendicato", "ticketClaimFailed": "Impossibile rivendicare il ticket", "ticketClosed": "Ticket chiuso", "ticketCloseFailed": "Impossibile chiudere il ticket", "ticketReopened": "Ticket riaperto", "ticketReopenFailed": "Impossibile riaprire il ticket", "ticketDeleted": "Ticket eliminato", "ticketDeleteFailed": "Impossibile eliminare il ticket", "settingsSaved": "Impostazioni ticket salvate", "settingsFailed": "Impossibile salvare le impostazioni dei ticket" },
+  "empty": { "tickets": "Nessun ticket attivo.", "panels": "Nessun pannello ticket creato ancora." },
+  "loading": "Caricamento ticket..."
+}

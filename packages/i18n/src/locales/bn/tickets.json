@@ -1,0 +1,77 @@
+{
+  "title": "টিকেট সিস্টেম",
+  "subtitle": "সাপোর্ট টিকেট প্যানেল তৈরি করুন এবং ড্যাশবোর্ড থেকে খোলা টিকেট পরিচালনা করুন।",
+  "stats": {
+    "totalTickets": "মোট টিকেট",
+    "open": "খোলা",
+    "claimed": "ক্লেইমড",
+    "panels": "প্যানেল"
+  },
+  "tabs": {
+    "activeTickets": "সক্রিয় টিকেট",
+    "panelBuilder": "প্যানেল বিল্ডার",
+    "settings": "সেটিংস"
+  },
+  "table": {
+    "id": "ID",
+    "user": "ব্যবহারকারী",
+    "subject": "বিষয়",
+    "status": "স্থিতি",
+    "assignee": "অ্যাসাইনি",
+    "created": "তৈরি"
+  },
+  "statuses": {
+    "open": "খোলা",
+    "claimed": "ক্লেইমড",
+    "closed": "বন্ধ"
+  },
+  "panelBuilder": {
+    "title": "প্যানেল শিরোনাম",
+    "channel": "চ্যানেল",
+    "buttonLabel": "বাটন লেবেল",
+    "welcomeMessage": "স্বাগতম বার্তা",
+    "category": "টিকেট ক্যাটাগরি",
+    "create": "প্যানেল তৈরি করুন",
+    "edit": "প্যানেল সম্পাদনা করুন",
+    "deploy": "প্যানেল ডিপ্লয় করুন"
+  },
+  "settings": {
+    "transcriptChannel": "ট্রান্সক্রিপ্ট চ্যানেল",
+    "transcriptChannelDesc": "বন্ধ করার সময় যে চ্যানেলে টিকেট ট্রান্সক্রিপ্ট সংরক্ষণ করা হয়।",
+    "maxTicketsPerUser": "প্রতি ব্যবহারকারী সর্বোচ্চ টিকেট",
+    "maxTicketsPerUserDesc": "একজন ব্যবহারকারীর সর্বোচ্চ খোলা টিকেট সংখ্যা।",
+    "closeConfirmation": "বন্ধ করার নিশ্চিতকরণ",
+    "closeConfirmationDesc": "টিকেট বন্ধ করার আগে নিশ্চিতকরণ প্রয়োজন।",
+    "dmTranscript": "DM ট্রান্সক্রিপ্ট",
+    "dmTranscriptDesc": "টিকেট তৈরিকারীকে DM-এ ট্রান্সক্রিপ্টের একটি কপি পাঠান।"
+  },
+  "actions": {
+    "claim": "ক্লেইম",
+    "close": "বন্ধ করুন",
+    "delete": "মুছুন",
+    "reopen": "পুনরায় খুলুন"
+  },
+  "toast": {
+    "panelCreated": "টিকেট প্যানেল তৈরি হয়েছে",
+    "panelCreateFailed": "টিকেট প্যানেল তৈরি ব্যর্থ",
+    "panelUpdated": "টিকেট প্যানেল আপডেট হয়েছে",
+    "panelUpdateFailed": "টিকেট প্যানেল আপডেট ব্যর্থ",
+    "panelDeployed": "টিকেট প্যানেল ডিপ্লয় হয়েছে",
+    "panelDeployFailed": "টিকেট প্যানেল ডিপ্লয় ব্যর্থ",
+    "ticketClaimed": "টিকেট ক্লেইম হয়েছে",
+    "ticketClaimFailed": "টিকেট ক্লেইম ব্যর্থ",
+    "ticketClosed": "টিকেট বন্ধ হয়েছে",
+    "ticketCloseFailed": "টিকেট বন্ধ করতে ব্যর্থ",
+    "ticketReopened": "টিকেট পুনরায় খোলা হয়েছে",
+    "ticketReopenFailed": "টিকেট পুনরায় খুলতে ব্যর্থ",
+    "ticketDeleted": "টিকেট মুছে ফেলা হয়েছে",
+    "ticketDeleteFailed": "টিকেট মুছতে ব্যর্থ",
+    "settingsSaved": "টিকেট সেটিংস সংরক্ষিত",
+    "settingsFailed": "টিকেট সেটিংস সংরক্ষণে ব্যর্থ"
+  },
+  "empty": {
+    "tickets": "কোনো সক্রিয় টিকেট নেই।",
+    "panels": "এখনো কোনো টিকেট প্যানেল তৈরি হয়নি।"
+  },
+  "loading": "টিকেট লোড হচ্ছে..."
+}

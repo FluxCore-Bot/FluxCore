@@ -1,0 +1,41 @@
+{
+  "title": "Tauler d'estrelles",
+  "subtitle": "Destaca els millors missatges recollint reaccions d'estrelles en un canal dedicat.",
+  "tabs": {
+    "settings": "Configuració",
+    "starredMessages": "Missatges destacats"
+  },
+  "settings": {
+    "title": "Configuració del tauler d'estrelles",
+    "description": "Configura quan i on es publiquen els missatges destacats.",
+    "channelId": "Canal del tauler d'estrelles",
+    "channelIdDesc": "El canal on es publiquen els missatges destacats.",
+    "starEmoji": "Emoji d'estrella",
+    "starEmojiDesc": "L'emoji utilitzat per destacar missatges. Per defecte l'emoji d'estrella.",
+    "threshold": "Llindar d'estrelles",
+    "thresholdDesc": "Nombre minim de reaccions necessaries per publicar un missatge al tauler d'estrelles.",
+    "selfStar": "Auto-estrella",
+    "selfStarDesc": "Permet als autors dels missatges destacar els seus propis missatges.",
+    "nsfwAllowed": "NSFW permes",
+    "nsfwAllowedDesc": "Permet que missatges de canals NSFW apareguin al tauler d'estrelles.",
+    "ignoredChannels": "Canals ignorats",
+    "ignoredChannelsDesc": "Els missatges d'aquests canals no apareixeran mai al tauler d'estrelles."
+  },
+  "messages": {
+    "table": {
+      "original": "Missatge original",
+      "stars": "Estrelles",
+      "channel": "Canal",
+      "date": "Data"
+    },
+    "noMessages": "Encara no hi ha missatges destacats."
+  },
+  "toast": {
+    "saved": "Configuració del tauler d'estrelles desada",
+    "saveFailed": "No s'ha pogut desar la configuració del tauler d'estrelles"
+  },
+  "actions": {
+    "save": "Desar",
+    "saving": "Desant..."
+  }
+}

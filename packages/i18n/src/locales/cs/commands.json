@@ -1,0 +1,113 @@
+{
+  "title": "Vlastní příkazy",
+  "subtitle": "Vytvářejte auto-odpovědi a prefixové příkazy spouštěné zprávami.",
+  "stats": {
+    "totalCommands": "Celkem příkazů",
+    "enabled": "Povoleno",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Příkazy",
+    "variables": "Proměnné"
+  },
+  "table": {
+    "name": "Název",
+    "trigger": "Spouštěč",
+    "response": "Odpověď",
+    "cooldown": "Cooldown",
+    "status": "Stav"
+  },
+  "triggerTypes": {
+    "command": "!příkaz",
+    "keyword": "Klíčové slovo",
+    "startsWith": "Začíná na",
+    "regex": "Regulární výraz",
+    "prefixCommand": "Prefixový příkaz (!název)",
+    "keywordContains": "Klíčové slovo (obsahuje)"
+  },
+  "dialog": {
+    "createCommand": "Vytvořit příkaz",
+    "editCommand": "Upravit příkaz"
+  },
+  "form": {
+    "commandName": "Název příkazu",
+    "triggerText": "Text spouštěče",
+    "regexPattern": "Vzor regulárního výrazu",
+    "triggerType": "Typ spouštěče",
+    "response": "Odpověď",
+    "message": "Zpráva",
+    "embedTitle": "Nadpis embedu",
+    "embedDescription": "Popis embedu",
+    "color": "Barva",
+    "footer": "Zápatí"
+  },
+  "options": {
+    "cooldown": "Cooldown (sekundy)",
+    "enabled": "Povoleno",
+    "enabledDesc": "Zda je tento příkaz aktivní",
+    "deleteTrigger": "Smazat spouštěcí zprávu",
+    "deleteTriggerDesc": "Automaticky smazat zprávu, která spustila tento příkaz.",
+    "dmResponse": "Odpověď v SZ",
+    "dmResponseDesc": "Odeslat odpověď jako soukromou zprávu místo do kanálu."
+  },
+  "restrictions": {
+    "title": "Omezení",
+    "allowedChannels": "Povolené kanály (prázdné = všechny)",
+    "allowedRoles": "Povolené role (prázdné = všichni)",
+    "addChannel": "Přidat kanál",
+    "addRole": "Přidat roli"
+  },
+  "actions": {
+    "create": "Vytvořit",
+    "update": "Aktualizovat",
+    "cancel": "Zrušit",
+    "addAction": "Přidat akci",
+    "addRole": "Přidat roli",
+    "removeRole": "Odebrat roli"
+  },
+  "actionsSection": {
+    "title": "Akce ({{count}}/5)",
+    "noActions": "Žádné akce nejsou nakonfigurovány. Přidejte akci pro definování, co tento příkaz dělá.",
+    "maxActions": "Maximálně 5 akcí na příkaz"
+  },
+  "variables": {
+    "title": "Šablonové proměnné",
+    "description": "Použijte tyto proměnné v odpovědích příkazů. Budou nahrazeny skutečnými hodnotami při spuštění příkazu.",
+    "table": {
+      "variable": "Proměnná",
+      "description": "Popis"
+    },
+    "entries": {
+      "user": "{user} — Zmíní uživatele, který spustil příkaz",
+      "username": "{username} — Zobrazované jméno uživatele",
+      "userId": "{userId} — ID uživatele",
+      "server": "{server} — Název serveru",
+      "channel": "{channel} — Zmíní aktuální kanál",
+      "channelName": "{channelName} — Název kanálu",
+      "memberCount": "{memberCount} — Celkový počet členů serveru"
+    }
+  },
+  "toast": {
+    "created": "Příkaz vytvořen",
+    "createFailed": "Nepodařilo se vytvořit příkaz",
+    "updated": "Příkaz aktualizován",
+    "updateFailed": "Nepodařilo se aktualizovat příkaz",
+    "deleted": "Příkaz smazán",
+    "deleteFailed": "Nepodařilo se smazat příkaz",
+    "toggleEnabled": "Příkaz povolen",
+    "toggleDisabled": "Příkaz zakázán",
+    "toggleFailed": "Nepodařilo se přepnout příkaz"
+  },
+  "empty": "Zatím nebyly vytvořeny žádné vlastní příkazy.",
+  "loading": "Načítání příkazů...",
+  "badge": {
+    "active": "Aktivní",
+    "disabled": "Zakázaný",
+    "text": "Text",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Název příkazu je povinný"
+  },
+  "triggerPrefix": "Spouštěč: !{{name}}"
+}

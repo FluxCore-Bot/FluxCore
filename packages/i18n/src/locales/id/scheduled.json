@@ -1,0 +1,86 @@
+{
+  "title": "Pesan Terjadwal",
+  "subtitle": "Buat pesan yang diposting ulang secara otomatis sesuai jadwal yang dapat dikonfigurasi.",
+  "stats": {
+    "totalMessages": "Total Pesan",
+    "active": "Aktif",
+    "inactive": "Tidak Aktif"
+  },
+  "table": {
+    "name": "Nama",
+    "channel": "Saluran",
+    "schedule": "Jadwal",
+    "nextRun": "Jadwal Berikutnya",
+    "status": "Status"
+  },
+  "dialog": {
+    "editTitle": "Edit Pesan Terjadwal",
+    "createTitle": "Pesan Terjadwal Baru"
+  },
+  "form": {
+    "name": "Nama",
+    "channel": "Saluran",
+    "schedulePreset": "Preset Jadwal",
+    "cronExpression": "Ekspresi Cron",
+    "timezone": "Zona Waktu",
+    "messageContent": "Isi Pesan",
+    "text": "Teks",
+    "embed": "Embed",
+    "enabled": "Diaktifkan",
+    "enabledDesc": "Apakah pesan terjadwal ini aktif."
+  },
+  "cronPresets": {
+    "everyHour": "Setiap Jam",
+    "every6Hours": "Setiap 6 Jam",
+    "daily9am": "Harian pukul 9 Pagi",
+    "dailyMidnight": "Harian Tengah Malam",
+    "weeklyMonday": "Mingguan pada Senin",
+    "monthly1st": "Bulanan pada tanggal 1",
+    "custom": "Kustom"
+  },
+  "embed": {
+    "title": "Judul",
+    "description": "Deskripsi",
+    "color": "Warna (hex)",
+    "footer": "Footer",
+    "thumbnail": "URL Thumbnail",
+    "image": "URL Gambar"
+  },
+  "toast": {
+    "created": "Pesan terjadwal dibuat",
+    "createFailed": "Gagal membuat pesan terjadwal",
+    "updated": "Pesan terjadwal diperbarui",
+    "updateFailed": "Gagal memperbarui pesan terjadwal",
+    "deleted": "Pesan terjadwal dihapus",
+    "deleteFailed": "Gagal menghapus pesan terjadwal",
+    "testSent": "Pesan uji dikirim",
+    "testFailed": "Gagal mengirim pesan uji"
+  },
+  "empty": {
+    "title": "Belum ada pesan terjadwal",
+    "description": "Buat pesan terjadwal untuk memposting konten secara otomatis pada jadwal berulang.",
+    "createButton": "Buat Pesan"
+  },
+  "pagination": {
+    "previous": "Sebelumnya",
+    "next": "Berikutnya",
+    "page": "Halaman {{page}} dari {{total}}"
+  },
+  "actions": {
+    "newMessage": "Pesan Baru",
+    "testSend": "Kirim Uji",
+    "edit": "Edit",
+    "delete": "Hapus",
+    "save": "Simpan",
+    "cancel": "Batal"
+  },
+  "validation": {
+    "nameRequired": "Nama pesan wajib diisi",
+    "channelRequired": "Saluran wajib diisi"
+  },
+  "cronPreview": {
+    "nextRuns": "Jadwal Berikutnya"
+  },
+  "characters": "{{count}}/2000 karakter",
+  "never": "Tidak Pernah"
+}

@@ -1,0 +1,113 @@
+{
+  "title": "Prilagodene naredbe",
+  "subtitle": "Stvorite automatske odgovore i naredbe s prefiksom pokrenute porukama.",
+  "stats": {
+    "totalCommands": "Ukupno naredbi",
+    "enabled": "Omoguceno",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Naredbe",
+    "variables": "Varijable"
+  },
+  "table": {
+    "name": "Naziv",
+    "trigger": "Okidac",
+    "response": "Odgovor",
+    "cooldown": "Hladenje",
+    "status": "Status"
+  },
+  "triggerTypes": {
+    "command": "!naredba",
+    "keyword": "Kljucna rijec",
+    "startsWith": "Pocinje s",
+    "regex": "Regex",
+    "prefixCommand": "Naredba s prefiksom (!naziv)",
+    "keywordContains": "Kljucna rijec (sadrzi)"
+  },
+  "dialog": {
+    "createCommand": "Stvori naredbu",
+    "editCommand": "Uredi naredbu"
+  },
+  "form": {
+    "commandName": "Naziv naredbe",
+    "triggerText": "Tekst okidaca",
+    "regexPattern": "Regex uzorak",
+    "triggerType": "Vrsta okidaca",
+    "response": "Odgovor",
+    "message": "Poruka",
+    "embedTitle": "Naslov embeda",
+    "embedDescription": "Opis embeda",
+    "color": "Boja",
+    "footer": "Podnozje"
+  },
+  "options": {
+    "cooldown": "Hladenje (sekunde)",
+    "enabled": "Omoguceno",
+    "enabledDesc": "Je li ova naredba aktivna",
+    "deleteTrigger": "Obrisi poruku okidaca",
+    "deleteTriggerDesc": "Automatski obrisite poruku koja je pokrenula ovu naredbu.",
+    "dmResponse": "Odgovor privatnom porukom",
+    "dmResponseDesc": "Posaljite odgovor kao privatnu poruku umjesto u kanal."
+  },
+  "restrictions": {
+    "title": "Ogranicenja",
+    "allowedChannels": "Dozvoljeni kanali (prazno = svi)",
+    "allowedRoles": "Dozvoljene uloge (prazno = svi)",
+    "addChannel": "Dodaj kanal",
+    "addRole": "Dodaj ulogu"
+  },
+  "actions": {
+    "create": "Stvori",
+    "update": "Azuriraj",
+    "cancel": "Odustani",
+    "addAction": "Dodaj radnju",
+    "addRole": "Dodaj ulogu",
+    "removeRole": "Ukloni ulogu"
+  },
+  "actionsSection": {
+    "title": "Radnje ({{count}}/5)",
+    "noActions": "Nema konfiguriranih radnji. Dodajte radnju za definiranje sto ova naredba radi.",
+    "maxActions": "Maksimalno 5 radnji po naredbi"
+  },
+  "variables": {
+    "title": "Varijable predloska",
+    "description": "Koristite ove varijable u odgovorima svojih naredbi. Bit ce zamijenjene stvarnim vrijednostima kada se naredba pokrene.",
+    "table": {
+      "variable": "Varijabla",
+      "description": "Opis"
+    },
+    "entries": {
+      "user": "{user} — Spominje korisnika koji je pokrenuo naredbu",
+      "username": "{username} — Prikazno ime korisnika",
+      "userId": "{userId} — ID korisnika",
+      "server": "{server} — Naziv posluzitelja",
+      "channel": "{channel} — Spominje trenutni kanal",
+      "channelName": "{channelName} — Naziv kanala",
+      "memberCount": "{memberCount} — Ukupan broj clanova posluzitelja"
+    }
+  },
+  "toast": {
+    "created": "Naredba stvorena",
+    "createFailed": "Stvaranje naredbe nije uspjelo",
+    "updated": "Naredba azurirana",
+    "updateFailed": "Azuriranje naredbe nije uspjelo",
+    "deleted": "Naredba obrisana",
+    "deleteFailed": "Brisanje naredbe nije uspjelo",
+    "toggleEnabled": "Naredba omogucena",
+    "toggleDisabled": "Naredba onemogucena",
+    "toggleFailed": "Prebacivanje naredbe nije uspjelo"
+  },
+  "empty": "Nema stvorenih prilagodenih naredbi.",
+  "loading": "Ucitavanje naredbi...",
+  "badge": {
+    "active": "Aktivno",
+    "disabled": "Onemoguceno",
+    "text": "Tekst",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Naziv naredbe je obavezan"
+  },
+  "triggerPrefix": "Okidac: !{{name}}"
+}

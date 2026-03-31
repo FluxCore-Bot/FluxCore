@@ -1,0 +1,8 @@
+{
+  "title": "Muzikos sistema",
+  "subtitle": "Konfigurukite globalius grotuvo rezimus ir garso bibliotekos nustatymus.",
+  "tabs": {
+    "settings": "Grotuvo nustatymai",
+    "library": "Muzikos biblioteka"
+  }
+}

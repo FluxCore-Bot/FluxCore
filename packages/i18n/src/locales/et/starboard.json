@@ -1,0 +1,41 @@
+{
+  "title": "Starboard",
+  "subtitle": "Tõsta esile parimaid sõnumeid, kogudes tähereaktoreid pühendatud kanalisse.",
+  "tabs": {
+    "settings": "Seaded",
+    "starredMessages": "Tähistatud sõnumid"
+  },
+  "settings": {
+    "title": "Starbardi seadistamine",
+    "description": "Seadista, millal ja kuhu tähistatud sõnumid postitatakse.",
+    "channelId": "Starbardi kanal",
+    "channelIdDesc": "Kanal, kuhu tähistatud sõnumid postitatakse.",
+    "starEmoji": "Tähe emoji",
+    "starEmojiDesc": "Emoji, mida kasutatakse sõnumite tähistamiseks. Vaikimisi tähe emoji.",
+    "threshold": "Tähtede lävi",
+    "thresholdDesc": "Minimaalne reaktsioonide arv sõnumi starbardi postitamiseks.",
+    "selfStar": "Ise tähistamine",
+    "selfStarDesc": "Luba sõnumiautoritel oma sõnumeid tähistada.",
+    "nsfwAllowed": "NSFW lubatud",
+    "nsfwAllowedDesc": "Luba NSFW kanalite sõnumitel starbardis ilmuda.",
+    "ignoredChannels": "Eiratud kanalid",
+    "ignoredChannelsDesc": "Nende kanalite sõnumid ei ilmu starbardis kunagi."
+  },
+  "messages": {
+    "table": {
+      "original": "Algne sõnum",
+      "stars": "Tähti",
+      "channel": "Kanal",
+      "date": "Kuupäev"
+    },
+    "noMessages": "Tähistatud sõnumeid pole veel."
+  },
+  "toast": {
+    "saved": "Starbardi seaded salvestatud",
+    "saveFailed": "Starbardi seadete salvestamine ebaõnnestus"
+  },
+  "actions": {
+    "save": "Salvesta",
+    "saving": "Salvestan..."
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "title": "Tasemesüsteem",
+  "subtitle": "Seadista XP teenimine, taseme tõusu teated, rolli auhinnad ja kordajad.",
+  "stats": {
+    "rankedMembers": "Reastatud liikmeid",
+    "roleRewards": "Rolli auhinnad",
+    "systemStatus": "Süsteemi olek",
+    "enabled": "Lubatud",
+    "disabled": "Keelatud"
+  },
+  "tabs": {
+    "leaderboard": "Edetabel",
+    "settings": "Seaded",
+    "roleRewards": "Rolli auhinnad",
+    "exclusions": "Välistused",
+    "multipliers": "Kordajad"
+  },
+  "table": {
+    "rank": "Koht",
+    "userId": "Kasutaja ID",
+    "level": "Tase",
+    "xp": "XP",
+    "messages": "Sõnumeid",
+    "voiceTime": "Hääleaeg"
+  },
+  "settings": {
+    "title": "Tasemesüsteemi seaded",
+    "enabled": "Luba tasemesüsteem",
+    "enabledDesc": "Lülita kogu tasemesüsteem sisse või välja.",
+    "xpPerMessage": "XP sõnumi kohta",
+    "xpPerMessageDesc": "Põhi-XP iga sõnumi eest (lisatakse juhuslik väärtus 0–9).",
+    "xpCooldown": "XP ooteaeg (sekundites)",
+    "xpCooldownDesc": "Minimaalne aeg XP andmiste vahel kasutaja kohta.",
+    "voiceXpEnabled": "Hääle-XP",
+    "voiceXpEnabledDesc": "Anna XP häälekanalites veedetud aja eest.",
+    "voiceXpPerMinute": "Hääle-XP minutis",
+    "voiceXpPerMinuteDesc": "XP antud minuti kohta hääles.",
+    "levelUpAnnouncements": "Taseme tõusu teated",
+    "levelUpAnnouncementsDesc": "Teata, kui liige tõuseb tasemele.",
+    "announceDest": "Teate sihtkoht",
+    "announceDestHint": "Võid sisestada kanali ID ka otse ülaltoodud väljale.",
+    "announceDestSameChannel": "Sama kanal",
+    "announceDestDM": "Otse-sõnum",
+    "announceMessage": "Teate sõnum",
+    "announceMessagePlaceholder": "{user} jõudis just **tasemele {level}**!",
+    "announceMessageVars": "Muutujad: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Rolli auhinnad",
+    "description": "Määra automaatselt rollid, kui liikmed jõuavad teatud tasemetele.",
+    "addReward": "Lisa auhind",
+    "addRewardTitle": "Lisa rolli auhind",
+    "level": "Tase",
+    "levelPrefix": "Tase {{level}}",
+    "roleId": "Rolli ID",
+    "levelPlaceholder": "nt 5",
+    "rolePlaceholder": "nt 123456789",
+    "removeReward": "Eemalda",
+    "noRewards": "Rolli auhindade pole seadistatud."
+  },
+  "exclusions": {
+    "title": "XP välistused",
+    "description": "Kanalid ja rollid, mis XP-d ei teeni.",
+    "noXpChannels": "XP-ta kanalid (komadega eraldatud ID-d)",
+    "noXpChannelsPlaceholder": "nt 123456789, 987654321",
+    "noXpRoles": "XP-ta rollid (komadega eraldatud ID-d)",
+    "noXpRolesPlaceholder": "nt 123456789, 987654321",
+    "save": "Salvesta välistused"
+  },
+  "multipliers": {
+    "title": "XP kordajad",
+    "description": "Määra XP kordajad kanali või rolli järgi. Kordaja 2 kahekordistab teenitud XP.",
+    "channelMultipliers": "Kanali kordajad",
+    "roleMultipliers": "Rolli kordajad",
+    "channelId": "Kanali ID",
+    "roleId": "Rolli ID",
+    "multiplier": "Kordaja",
+    "type": "Tüüp",
+    "typeChannel": "Kanal",
+    "typeRole": "Roll",
+    "id": "ID",
+    "idPlaceholder": "Kanali või rolli ID",
+    "value": "Kordaja",
+    "valuePlaceholder": "nt 2",
+    "add": "Lisa kordaja",
+    "addTitle": "Lisa kordaja",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "XP kordajaid pole seadistatud."
+  },
+  "pagination": {
+    "previous": "Eelmine",
+    "next": "Järgmine",
+    "pageInfo": "Leht {{page}} / {{totalPages}} ({{total}} kokku)"
+  },
+  "loading": "Laadin edetabelit...",
+  "loadingGeneric": "Laadin...",
+  "emptyLeaderboard": "Ükski liige pole veel XP-d teeninud.",
+  "toast": {
+    "saved": "Tasemesüsteemi seaded salvestatud",
+    "saveFailed": "Seade uuendamine ebaõnnestus",
+    "rewardAdded": "Auhind lisatud",
+    "rewardAddFailed": "Auhinna lisamine ebaõnnestus",
+    "rewardRemoved": "Auhind eemaldatud",
+    "rewardRemoveFailed": "Auhinna eemaldamine ebaõnnestus",
+    "multiplierAdded": "Kordaja lisatud",
+    "multiplierAddFailed": "Kordaja lisamine ebaõnnestus",
+    "multiplierRemoved": "Kordaja eemaldatud",
+    "multiplierRemoveFailed": "Kordaja eemaldamine ebaõnnestus",
+    "exclusionUpdated": "Välistused salvestatud",
+    "exclusionFailed": "Välistuste salvestamine ebaõnnestus",
+    "levelValidation": "Tase peab jääma vahemikku 1 kuni 100",
+    "roleIdRequired": "Rolli ID on kohustuslik",
+    "multiplierIdRequired": "ID ja kordaja väärtus on kohustuslikud",
+    "multiplierRange": "Kordaja peab jääma vahemikku 0 kuni 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}t {{minutes}}min",
+    "voiceTimeMinutesOnly": "{{minutes}}min"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "title": "Starboard",
+  "subtitle": "Izceciet labakos zinojumus, vai rakstot zvaiagznitu reakcijas dediketa kanala.",
+  "tabs": {
+    "settings": "Iestatijumi",
+    "starredMessages": "Atzimeti zinojumi"
+  },
+  "settings": {
+    "title": "Starboard konfiguracija",
+    "description": "Konfigurejiet, kad un kur tiek publiceti atzimeti zinojumi.",
+    "channelId": "Starboard kanals",
+    "channelIdDesc": "Kanals, kura tiek publiceti atzimeti zinojumi.",
+    "starEmoji": "Zvaiagznites emodzijs",
+    "starEmojiDesc": "Emodzijs, ko izmanto zinojumu atzimesanai. Noklusetais ir zvaiagznites emodzijs.",
+    "threshold": "Zvaiagzniisu slieksnis",
+    "thresholdDesc": "Minimalais reakciju skaits, lai zinojums tiktu publicets starboard.",
+    "selfStar": "Sevis atzimesana",
+    "selfStarDesc": "Atlaujiet zinojumu autoriem atzimet savus pasu zinojumus.",
+    "nsfwAllowed": "NSFW atlauts",
+    "nsfwAllowedDesc": "Atlaujiet zinojumiem no NSFW kanaliem paradities starboard.",
+    "ignoredChannels": "Ignoretie kanali",
+    "ignoredChannelsDesc": "Zinojumi no siem kanaliem nekad neparadisies starboard."
+  },
+  "messages": {
+    "table": {
+      "original": "Originalais zinojums",
+      "stars": "Zvaiagznites",
+      "channel": "Kanals",
+      "date": "Datums"
+    },
+    "noMessages": "Nav atziimetu zinojumu."
+  },
+  "toast": {
+    "saved": "Starboard iestatijumi saglabati",
+    "saveFailed": "Neizdevas saglabar starboard iestatijumus"
+  },
+  "actions": {
+    "save": "Saglabar",
+    "saving": "Saglaba..."
+  }
+}

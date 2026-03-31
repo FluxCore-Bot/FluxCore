@@ -1,0 +1,8 @@
+{
+  "title": "Journaux",
+  "subtitle": "Surveillez les executions de regles et la journalisation des evenements.",
+  "tabs": {
+    "activity": "Journaux d'activite",
+    "events": "Journaux d'evenements"
+  }
+}

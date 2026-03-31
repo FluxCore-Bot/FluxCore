@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Tagad publiskaja beta",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Viss vienaa",
+    "titleLine2": "Discord botu ietvars",
+    "subtitle": "Izvietojiet profesionalu Discord klaatbuutni dazaas minutees. Modulars, pashostets un veidots kopienam, kas prasa vairak."
+  },
+  "cta": {
+    "addToServer": "Pievienot serverim",
+    "openDashboard": "Atveart vadibas paneli",
+    "exploreFeatures": "Izpetit iespejas"
+  },
+  "stats": {
+    "servers": "Serveri",
+    "latency": "Latence",
+    "uptime": "Darblaiks",
+    "modules": "Moduli",
+    "serversValue": "1 000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99,9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Iespejas",
+    "title": "Viss, kas nepieciessams jasu serverim",
+    "subtitle": "Modulars riku komplekts, veidots kopienam, kas prasa uzticamibu, elastibu un kontroli.",
+    "automation": {
+      "title": "Automatizacijas noteikumi",
+      "description": "Izveidojiet sarezgitas notikumos balstitas darbu pllusmas bez koda. Ja-si-tad-ta trigeri ar 23 notikumu tipiem un 10 darbibu tipiem."
+    },
+    "music": {
+      "title": "Muzikas sistema",
+      "description": "Augstas kvalitates audio straumesana ar vairaku platformu atbalstu. Rindu parvaldiba, DJ kontrole un biblioteekas rezims."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Dinamiska balss kanalu parvaldiba. Automatiska izveide ar pielgotam nosaukumu veidnem, atlaujaam un tirisanu."
+    },
+    "logs": {
+      "title": "Aktivitates zurnals",
+      "description": "Pilna audita izsekosana katram automatizacijas izpildijumam. Mekllejiet, filtrejiet un atkludojiet noteikumus ar detalizeetiem zurnaliem."
+    },
+    "webhooks": {
+      "title": "Webhuki un API",
+      "description": "Sutiet datus arejiem pakalpojumiem ar HTTP webhuciem. Pieelagotas galvenes, kermenya veidnes un mainigo interpolacija."
+    },
+    "dashboard": {
+      "title": "Reaallaika vadibas panelis",
+      "description": "Parvaldiet visu no eleganta tiimekla vadibas panela. Analitika, konfiguracija un uzraudziba vienaa vietaa."
+    }
+  },
+  "ctaSection": {
+    "title": "Gatavi uzlabot savu kopienu?",
+    "subtitle": "Saaciet dazaas minutees bez konfiguracijas. Pashostets, atvertaa koda un pilnibi bez maksas."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "(c) {{year}} FluxCore Technologies. Visas tiesibas aizsargatas.",
+    "links": {
+      "documentation": "Dokumentacija",
+      "support": "Atbalsts",
+      "privacy": "Privatuma politika",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "title": "Kohandatud käsud",
+  "subtitle": "Loo automaatsed vastajad ja prefikskäsud, mida käivitavad sõnumid.",
+  "stats": {
+    "totalCommands": "Käske kokku",
+    "enabled": "Lubatud",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Käsud",
+    "variables": "Muutujad"
+  },
+  "table": {
+    "name": "Nimi",
+    "trigger": "Käivitaja",
+    "response": "Vastus",
+    "cooldown": "Ooteaeg",
+    "status": "Olek"
+  },
+  "triggerTypes": {
+    "command": "!käsk",
+    "keyword": "Märksõna",
+    "startsWith": "Algab tähega",
+    "regex": "Regex",
+    "prefixCommand": "Prefikskäsk (!nimi)",
+    "keywordContains": "Märksõna (sisaldab)"
+  },
+  "dialog": {
+    "createCommand": "Loo käsk",
+    "editCommand": "Muuda käsku"
+  },
+  "form": {
+    "commandName": "Käsu nimi",
+    "triggerText": "Käivitaja tekst",
+    "regexPattern": "Regex muster",
+    "triggerType": "Käivitaja tüüp",
+    "response": "Vastus",
+    "message": "Sõnum",
+    "embedTitle": "Manuse pealkiri",
+    "embedDescription": "Manuse kirjeldus",
+    "color": "Värv",
+    "footer": "Jalus"
+  },
+  "options": {
+    "cooldown": "Ooteaeg (sekundites)",
+    "enabled": "Lubatud",
+    "enabledDesc": "Kas see käsk on aktiivne",
+    "deleteTrigger": "Kustuta käivitaja sõnum",
+    "deleteTriggerDesc": "Kustuta automaatselt sõnum, mis käivitas selle käsu.",
+    "dmResponse": "DM-vastus",
+    "dmResponseDesc": "Saada vastus otse-sõnumina kanali asemel."
+  },
+  "restrictions": {
+    "title": "Piirangud",
+    "allowedChannels": "Lubatud kanalid (tühi = kõik)",
+    "allowedRoles": "Lubatud rollid (tühi = kõik)",
+    "addChannel": "Lisa kanal",
+    "addRole": "Lisa roll"
+  },
+  "actions": {
+    "create": "Loo",
+    "update": "Uuenda",
+    "cancel": "Tühista",
+    "addAction": "Lisa toiming",
+    "addRole": "Lisa roll",
+    "removeRole": "Eemalda roll"
+  },
+  "actionsSection": {
+    "title": "Toimingud ({{count}}/5)",
+    "noActions": "Toiminguid pole seadistatud. Lisa toiming, et määratleda, mida see käsk teeb.",
+    "maxActions": "Maksimaalselt 5 toimingut käsu kohta"
+  },
+  "variables": {
+    "title": "Malli muutujad",
+    "description": "Kasuta neid muutujaid oma käsu vastustes. Need asendatakse tegelike väärtustega, kui käsk käivitatakse.",
+    "table": {
+      "variable": "Muutuja",
+      "description": "Kirjeldus"
+    },
+    "entries": {
+      "user": "{user} — Mainib kasutajat, kes käivitas käsu",
+      "username": "{username} — Kasutaja kuvatav nimi",
+      "userId": "{userId} — Kasutaja ID",
+      "server": "{server} — Serveri nimi",
+      "channel": "{channel} — Mainib praegust kanalit",
+      "channelName": "{channelName} — Kanali nimi",
+      "memberCount": "{memberCount} — Serveri liikmete koguarv"
+    }
+  },
+  "toast": {
+    "created": "Käsk loodud",
+    "createFailed": "Käsu loomine ebaõnnestus",
+    "updated": "Käsk uuendatud",
+    "updateFailed": "Käsu uuendamine ebaõnnestus",
+    "deleted": "Käsk kustutatud",
+    "deleteFailed": "Käsu kustutamine ebaõnnestus",
+    "toggleEnabled": "Käsk lubatud",
+    "toggleDisabled": "Käsk keelatud",
+    "toggleFailed": "Käsu lülitamine ebaõnnestus"
+  },
+  "empty": "Kohandatud käske pole veel loodud.",
+  "loading": "Laadin käske...",
+  "badge": {
+    "active": "Aktiivne",
+    "disabled": "Keelatud",
+    "text": "Tekst",
+    "embed": "Manus"
+  },
+  "validation": {
+    "nameRequired": "Käsu nimi on kohustuslik"
+  },
+  "triggerPrefix": "Käivitaja: !{{name}}"
+}

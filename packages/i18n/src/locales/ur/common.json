@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore انجن",
+    "dashboard": "FluxCore ڈیش بورڈ"
+  },
+  "status": {
+    "online": "آن لائن",
+    "offline": "آف لائن",
+    "latency": "{{ms}} ملی سیکنڈ"
+  },
+  "nav": {
+    "overview": "جائزہ",
+    "automation": "آٹومیشن",
+    "music": "موسیقی",
+    "tempvoice": "عارضی آواز",
+    "welcome": "خوش آمدید",
+    "moderation": "نگرانی",
+    "warnings": "انتباہات",
+    "rolePanels": "رول پینلز",
+    "leveling": "درجہ بندی",
+    "scheduled": "طے شدہ",
+    "commands": "کمانڈز",
+    "security": "سیکیورٹی",
+    "tickets": "ٹکٹس",
+    "giveaways": "تحائف",
+    "suggestions": "تجاویز",
+    "starboard": "ستاروں کا بورڈ",
+    "logs": "لاگز",
+    "permissions": "اجازتیں",
+    "settings": "ترتیبات"
+  },
+  "actions": {
+    "save": "محفوظ کریں",
+    "cancel": "منسوخ کریں",
+    "delete": "حذف کریں",
+    "edit": "ترمیم کریں",
+    "create": "بنائیں",
+    "add": "شامل کریں",
+    "remove": "ہٹائیں",
+    "confirm": "تصدیق کریں",
+    "close": "بند کریں",
+    "back": "واپس",
+    "next": "اگلا",
+    "search": "تلاش کریں",
+    "filter": "فلٹر",
+    "refresh": "تازہ کریں",
+    "reset": "ری سیٹ",
+    "enable": "فعال کریں",
+    "disable": "غیر فعال کریں",
+    "copy": "کاپی کریں",
+    "export": "برآمد",
+    "import": "درآمد",
+    "submit": "جمع کرائیں",
+    "loading": "لوڈ ہو رہا ہے...",
+    "retry": "دوبارہ کوشش کریں"
+  },
+  "labels": {
+    "enabled": "فعال",
+    "disabled": "غیر فعال",
+    "active": "متحرک",
+    "inactive": "غیر متحرک",
+    "none": "کوئی نہیں",
+    "all": "سب",
+    "custom": "اپنی مرضی",
+    "default": "طے شدہ",
+    "required": "ضروری",
+    "optional": "اختیاری",
+    "name": "نام",
+    "description": "تفصیل",
+    "type": "قسم",
+    "status": "حالت",
+    "channel": "چینل",
+    "role": "کردار",
+    "member": "ممبر",
+    "duration": "مدت",
+    "reason": "وجہ",
+    "language": "زبان"
+  },
+  "header": {
+    "notifications": "اطلاعات",
+    "settings": "ترتیبات",
+    "logout": "لاگ آؤٹ",
+    "toggleSidebar": "سائیڈ بار ٹوگل کریں",
+    "refreshData": "Discord ڈیٹا تازہ کریں"
+  },
+  "sidebar": {
+    "closeSidebar": "سائیڈ بار بند کریں",
+    "addToServer": "سرور میں شامل کریں",
+    "docs": "دستاویزات",
+    "support": "مدد",
+    "backToServers": "سرورز پر واپس جائیں"
+  },
+  "empty": {
+    "noData": "کوئی ڈیٹا دستیاب نہیں",
+    "noResults": "کوئی نتائج نہیں ملے",
+    "noItems": "ابھی تک کوئی آئٹمز نہیں"
+  },
+  "time": {
+    "seconds": "سیکنڈ",
+    "minutes": "منٹ",
+    "hours": "گھنٹے",
+    "days": "دن",
+    "ago": "{{time}} پہلے",
+    "in": "{{time}} میں"
+  },
+  "confirm": {
+    "title": "کیا آپ یقین رکھتے ہیں؟",
+    "deleteTitle": "حذف کی تصدیق",
+    "deleteMessage": "یہ عمل واپس نہیں کیا جا سکتا۔",
+    "unsavedChanges": "آپ کی غیر محفوظ تبدیلیاں ہیں۔ کیا آپ واقعی چھوڑنا چاہتے ہیں؟"
+  },
+  "accessibility": {
+    "skipToContent": "بنیادی مواد پر جائیں",
+    "loading": "مواد لوڈ ہو رہا ہے",
+    "loaded": "مواد لوڈ ہو گیا",
+    "error": "ایک خرابی پیش آئی",
+    "menuOpen": "مینو کھلا ہے",
+    "menuClosed": "مینو بند ہے"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "title": "Boas-vindas e despedida",
+  "subtitle": "Configure mensagens de boas-vindas e despedida, imagens e cargos automaticos.",
+  "loadingSubtitle": "Configure as mensagens de boas-vindas e despedida para o seu servidor.",
+  "tabs": {
+    "welcome": "Boas-vindas",
+    "welcomeImage": "Imagem de boas-vindas",
+    "farewell": "Despedida",
+    "farewellImage": "Imagem de despedida",
+    "dm": "MD de boas-vindas",
+    "autorole": "Cargo automatico"
+  },
+  "welcome": {
+    "title": "Mensagem de boas-vindas",
+    "description": "Envie um embed personalizado quando um novo membro entra.",
+    "channelLabel": "ID do canal de boas-vindas",
+    "channelPlaceholder": "ID do canal...",
+    "embedBuilder": "Editor de embed"
+  },
+  "welcomeImage": {
+    "title": "Imagem de boas-vindas",
+    "description": "Gere um cartao de imagem personalizado com o avatar do membro ao entrar.",
+    "disabled": "Ative o interruptor acima para configurar as imagens de boas-vindas."
+  },
+  "farewell": {
+    "title": "Mensagem de despedida",
+    "description": "Envie uma mensagem quando um membro sai do servidor.",
+    "channelLabel": "ID do canal de despedida",
+    "channelPlaceholder": "ID do canal..."
+  },
+  "farewellImage": {
+    "title": "Imagem de despedida",
+    "description": "Gere um cartao de despedida personalizado quando um membro sai.",
+    "disabled": "Ative o interruptor acima para configurar as imagens de despedida."
+  },
+  "dm": {
+    "title": "MD de boas-vindas",
+    "description": "Envie uma mensagem direta aos novos membros. Falhara silenciosamente se as MDs estiverem desativadas."
+  },
+  "autorole": {
+    "title": "Cargo automatico",
+    "description": "Atribua cargos automaticamente aos novos membros ao entrar. Os bots sao excluidos. O bot deve ter um cargo superior aos cargos listados aqui.",
+    "label": "IDs dos cargos (separados por virgulas)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Titulo",
+    "description": "Descricao",
+    "color": "Cor (hex)",
+    "footer": "Rodape",
+    "thumbnail": "URL da miniatura",
+    "image": "URL da imagem",
+    "variables": "Variaveis:"
+  },
+  "saveChanges": "Guardar alteracoes",
+  "saving": "A guardar...",
+  "sendTest": "Enviar mensagem de teste",
+  "sending": "A enviar...",
+  "toast": {
+    "saved": "Configuracao de boas-vindas guardada",
+    "saveFailed": "Falha ao guardar a configuracao",
+    "testSent": "A mensagem de teste sera enviada para <#{{channelId}}>",
+    "testFailed": "Falha ao enviar a mensagem de teste"
+  }
+}

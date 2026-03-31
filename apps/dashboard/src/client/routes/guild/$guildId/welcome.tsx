@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../lib/client";
 import { PageHeader } from "../../../components/PageHeader";
@@ -19,6 +20,7 @@ import { Switch } from "../../../components/ui/switch";
 import { Separator } from "../../../components/ui/separator";
 import { Textarea } from "../../../components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
+import type { TFunction } from "i18next";
 
 const DEFAULT_WELCOME_IMAGE: WelcomeImageSettings = {
   template: "starter",
@@ -40,14 +42,16 @@ const DEFAULT_FAREWELL_IMAGE: WelcomeImageSettings = {
 function EmbedEditor({
   value,
   onChange,
+  t,
 }: {
   value: EmbedConfig;
   onChange: (config: EmbedConfig) => void;
+  t: TFunction<"welcome">;
 }) {
   return (
     <div className="space-y-4">
       <div>
-        <Label htmlFor="embed-title">Title</Label>
+        <Label htmlFor="embed-title">{t("embed.title")}</Label>
         <Input
           id="embed-title"
           placeholder="Welcome to {server}!"
@@ -56,7 +60,7 @@ function EmbedEditor({
         />
       </div>
       <div>
-        <Label htmlFor="embed-description">Description</Label>
+        <Label htmlFor="embed-description">{t("embed.description")}</Label>
         <Textarea
           id="embed-description"
           placeholder="Hey {user}, welcome to **{server}**! You are member #{membercount}."
@@ -67,7 +71,7 @@ function EmbedEditor({
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <Label htmlFor="embed-color">Color (hex)</Label>
+          <Label htmlFor="embed-color">{t("embed.color")}</Label>
           <Input
             id="embed-color"
             type="text"
@@ -81,7 +85,7 @@ function EmbedEditor({
           />
         </div>
         <div>
-          <Label htmlFor="embed-footer">Footer</Label>
+          <Label htmlFor="embed-footer">{t("embed.footer")}</Label>
           <Input
             id="embed-footer"
             placeholder="Footer text..."
@@ -92,7 +96,7 @@ function EmbedEditor({
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <Label htmlFor="embed-thumbnail">Thumbnail URL</Label>
+          <Label htmlFor="embed-thumbnail">{t("embed.thumbnail")}</Label>
           <Input
             id="embed-thumbnail"
             placeholder="{user.avatar}"
@@ -101,7 +105,7 @@ function EmbedEditor({
           />
         </div>
         <div>
-          <Label htmlFor="embed-image">Image URL</Label>
+          <Label htmlFor="embed-image">{t("embed.image")}</Label>
           <Input
             id="embed-image"
             placeholder="https://..."
@@ -111,7 +115,7 @@ function EmbedEditor({
         </div>
       </div>
       <p className="text-xs text-text-muted">
-        Variables: {"{user}"} {"{user.tag}"} {"{user.name}"} {"{user.id}"} {"{user.avatar}"}{" "}
+        {t("embed.variables")} {"{user}"} {"{user.tag}"} {"{user.name}"} {"{user.id}"} {"{user.avatar}"}{" "}
         {"{server}"} {"{server.id}"} {"{membercount}"} {"{server.icon}"}
       </p>
     </div>
@@ -119,6 +123,7 @@ function EmbedEditor({
 }
 
 export function WelcomePage() {
+  const { t } = useTranslation("welcome");
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: config, isLoading } = useWelcomeConfig(guildId);
   const updateConfig = useUpdateWelcomeConfig(guildId);
@@ -183,9 +188,9 @@ export function WelcomePage() {
         farewellImageConfig,
       },
       {
-        onSuccess: () => toast.success("Welcome configuration saved"),
+        onSuccess: () => toast.success(t("toast.saved")),
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to save configuration"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.saveFailed")),
       },
     );
   }
@@ -193,9 +198,9 @@ export function WelcomePage() {
   function handleTest() {
     testWelcome.mutate(undefined, {
       onSuccess: (data) =>
-        toast.success(`Test message will be sent to <#${data.channelId}>`),
+        toast.success(t("toast.testSent", { channelId: data.channelId })),
       onError: (err) =>
-        toast.error(err instanceof ApiError ? err.message : "Failed to send test message"),
+        toast.error(err instanceof ApiError ? err.message : t("toast.testFailed")),
     });
   }
 
@@ -203,10 +208,10 @@ export function WelcomePage() {
     return (
       <div className="space-y-8">
         <PageHeader
-          title="Welcome & Farewell"
-          subtitle="Configure welcome and farewell messages for your server."
+          title={t("title")}
+          subtitle={t("loadingSubtitle")}
         />
-        <p className="text-text-muted">Loading...</p>
+        <p className="text-text-muted">{t("common:actions.loading")}</p>
       </div>
     );
   }
@@ -214,18 +219,18 @@ export function WelcomePage() {
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Welcome & Farewell"
-        subtitle="Configure welcome and farewell messages, images, and auto-roles."
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
       <Tabs defaultValue="welcome">
         <TabsList>
-          <TabsTrigger value="welcome">Welcome</TabsTrigger>
-          <TabsTrigger value="welcome-image">Welcome Image</TabsTrigger>
-          <TabsTrigger value="farewell">Farewell</TabsTrigger>
-          <TabsTrigger value="farewell-image">Farewell Image</TabsTrigger>
-          <TabsTrigger value="dm">Welcome DM</TabsTrigger>
-          <TabsTrigger value="autorole">Auto-Role</TabsTrigger>
+          <TabsTrigger value="welcome">{t("tabs.welcome")}</TabsTrigger>
+          <TabsTrigger value="welcome-image">{t("tabs.welcomeImage")}</TabsTrigger>
+          <TabsTrigger value="farewell">{t("tabs.farewell")}</TabsTrigger>
+          <TabsTrigger value="farewell-image">{t("tabs.farewellImage")}</TabsTrigger>
+          <TabsTrigger value="dm">{t("tabs.dm")}</TabsTrigger>
+          <TabsTrigger value="autorole">{t("tabs.autorole")}</TabsTrigger>
         </TabsList>
 
         {/* Welcome Message */}
@@ -233,9 +238,9 @@ export function WelcomePage() {
           <Card className="bg-surface p-6">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold">Welcome Message</h3>
+                <h3 className="text-lg font-semibold">{t("welcome.title")}</h3>
                 <p className="text-sm text-text-muted">
-                  Send a custom embed when a new member joins.
+                  {t("welcome.description")}
                 </p>
               </div>
               <Switch checked={welcomeEnabled} onCheckedChange={setWelcomeEnabled} />
@@ -244,18 +249,18 @@ export function WelcomePage() {
             <Separator className="mb-6" />
 
             <div className="mb-6">
-              <Label htmlFor="welcome-channel">Welcome Channel ID</Label>
+              <Label htmlFor="welcome-channel">{t("welcome.channelLabel")}</Label>
               <Input
                 id="welcome-channel"
-                placeholder="Channel ID..."
+                placeholder={t("welcome.channelPlaceholder")}
                 value={welcomeChannelId}
                 onChange={(e) => setWelcomeChannelId(e.target.value)}
                 className="mt-1 w-64"
               />
             </div>
 
-            <h4 className="mb-3 text-sm font-semibold">Embed Builder</h4>
-            <EmbedEditor value={welcomeMessage} onChange={setWelcomeMessage} />
+            <h4 className="mb-3 text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
+            <EmbedEditor value={welcomeMessage} onChange={setWelcomeMessage} t={t} />
           </Card>
         </TabsContent>
 
@@ -264,9 +269,9 @@ export function WelcomePage() {
           <Card className="bg-surface p-6">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold">Welcome Image</h3>
+                <h3 className="text-lg font-semibold">{t("welcomeImage.title")}</h3>
                 <p className="text-sm text-text-muted">
-                  Generate a custom image card with the member's avatar when they join.
+                  {t("welcomeImage.description")}
                 </p>
               </div>
               <Switch
@@ -288,7 +293,7 @@ export function WelcomePage() {
 
             {!welcomeImageEnabled && (
               <p className="text-sm text-text-muted">
-                Enable the toggle above to configure welcome images.
+                {t("welcomeImage.disabled")}
               </p>
             )}
           </Card>
@@ -299,9 +304,9 @@ export function WelcomePage() {
           <Card className="bg-surface p-6">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold">Farewell Message</h3>
+                <h3 className="text-lg font-semibold">{t("farewell.title")}</h3>
                 <p className="text-sm text-text-muted">
-                  Send a message when a member leaves the server.
+                  {t("farewell.description")}
                 </p>
               </div>
               <Switch checked={farewellEnabled} onCheckedChange={setFarewellEnabled} />
@@ -310,18 +315,18 @@ export function WelcomePage() {
             <Separator className="mb-6" />
 
             <div className="mb-6">
-              <Label htmlFor="farewell-channel">Farewell Channel ID</Label>
+              <Label htmlFor="farewell-channel">{t("farewell.channelLabel")}</Label>
               <Input
                 id="farewell-channel"
-                placeholder="Channel ID..."
+                placeholder={t("farewell.channelPlaceholder")}
                 value={farewellChannelId}
                 onChange={(e) => setFarewellChannelId(e.target.value)}
                 className="mt-1 w-64"
               />
             </div>
 
-            <h4 className="mb-3 text-sm font-semibold">Embed Builder</h4>
-            <EmbedEditor value={farewellMessage} onChange={setFarewellMessage} />
+            <h4 className="mb-3 text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
+            <EmbedEditor value={farewellMessage} onChange={setFarewellMessage} t={t} />
           </Card>
         </TabsContent>
 
@@ -330,9 +335,9 @@ export function WelcomePage() {
           <Card className="bg-surface p-6">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold">Farewell Image</h3>
+                <h3 className="text-lg font-semibold">{t("farewellImage.title")}</h3>
                 <p className="text-sm text-text-muted">
-                  Generate a custom farewell card when a member leaves.
+                  {t("farewellImage.description")}
                 </p>
               </div>
               <Switch
@@ -354,7 +359,7 @@ export function WelcomePage() {
 
             {!farewellImageEnabled && (
               <p className="text-sm text-text-muted">
-                Enable the toggle above to configure farewell images.
+                {t("farewellImage.disabled")}
               </p>
             )}
           </Card>
@@ -365,9 +370,9 @@ export function WelcomePage() {
           <Card className="bg-surface p-6">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold">Welcome DM</h3>
+                <h3 className="text-lg font-semibold">{t("dm.title")}</h3>
                 <p className="text-sm text-text-muted">
-                  Send a direct message to new members. Will silently fail if DMs are disabled.
+                  {t("dm.description")}
                 </p>
               </div>
               <Switch checked={dmEnabled} onCheckedChange={setDmEnabled} />
@@ -375,27 +380,26 @@ export function WelcomePage() {
 
             <Separator className="mb-6" />
 
-            <h4 className="mb-3 text-sm font-semibold">Embed Builder</h4>
-            <EmbedEditor value={dmMessage} onChange={setDmMessage} />
+            <h4 className="mb-3 text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
+            <EmbedEditor value={dmMessage} onChange={setDmMessage} t={t} />
           </Card>
         </TabsContent>
 
         {/* Auto-Role */}
         <TabsContent value="autorole">
           <Card className="bg-surface p-6">
-            <h3 className="mb-2 text-lg font-semibold">Auto-Role</h3>
+            <h3 className="mb-2 text-lg font-semibold">{t("autorole.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
-              Automatically assign roles to new members when they join. Bots are excluded.
-              The bot must have a role higher than the roles listed here.
+              {t("autorole.description")}
             </p>
 
             <Separator className="mb-6" />
 
             <div>
-              <Label htmlFor="autorole-ids">Role IDs (comma-separated)</Label>
+              <Label htmlFor="autorole-ids">{t("autorole.label")}</Label>
               <Input
                 id="autorole-ids"
-                placeholder="123456789, 987654321"
+                placeholder={t("autorole.placeholder")}
                 value={autoRoleIds}
                 onChange={(e) => setAutoRoleIds(e.target.value)}
                 className="mt-1"
@@ -408,14 +412,14 @@ export function WelcomePage() {
       {/* Action Buttons */}
       <div className="flex gap-3">
         <Button onClick={handleSave} disabled={updateConfig.isPending}>
-          {updateConfig.isPending ? "Saving..." : "Save Changes"}
+          {updateConfig.isPending ? t("saving") : t("saveChanges")}
         </Button>
         <Button
           variant="outline"
           onClick={handleTest}
           disabled={testWelcome.isPending || !welcomeEnabled}
         >
-          {testWelcome.isPending ? "Sending..." : "Send Test Message"}
+          {testWelcome.isPending ? t("sending") : t("sendTest")}
         </Button>
       </div>
     </div>

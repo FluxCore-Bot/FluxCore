@@ -1,0 +1,9 @@
+{
+  "title": "Vasi posluzitelji",
+  "subtitle": "Odaberite posluzitelj za upravljanje i konfiguraciju.",
+  "loading": "Ucitavanje posluzitelja...",
+  "empty": {
+    "title": "Nisu pronadeni posluzitelji",
+    "description": "Provjerite je li bot dodan na posluzitelj na kojem imate dozvolu Upravljanje posluziteljem."
+  }
+}

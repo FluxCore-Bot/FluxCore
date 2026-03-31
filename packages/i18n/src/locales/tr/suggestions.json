@@ -1,0 +1,67 @@
+{
+  "title": "Öneriler",
+  "subtitle": "Üyelerin fikir göndermesine ve oy kullanmasına izin verin. Durumu ve geri bildirimleri yönetin.",
+  "stats": {
+    "totalSuggestions": "Toplam Öneri",
+    "systemStatus": "Sistem Durumu",
+    "channel": {
+      "configured": "Kanal Yapılandırıldı",
+      "notSet": "Kanal Ayarlanmadı"
+    }
+  },
+  "tabs": {
+    "suggestions": "Öneriler",
+    "settings": "Ayarlar"
+  },
+  "filter": {
+    "filterByStatus": "Duruma Göre Filtrele",
+    "all": "Tümü",
+    "pending": "Beklemede",
+    "approved": "Onaylandı",
+    "rejected": "Reddedildi",
+    "implemented": "Uygulandı",
+    "considered": "Değerlendiriliyor"
+  },
+  "table": {
+    "id": "Kimlik",
+    "author": "Yazar",
+    "content": "İçerik",
+    "status": "Durum",
+    "votes": "Oylar",
+    "date": "Tarih"
+  },
+  "actions": {
+    "approve": "Onayla",
+    "reject": "Reddet",
+    "implement": "Uygulandı Olarak İşaretle",
+    "consider": "Değerlendir",
+    "delete": "Sil"
+  },
+  "settings": {
+    "channel": "Öneriler Kanalı",
+    "channelDesc": "Önerilerin oylama için gönderildiği kanal.",
+    "voteEmojis": "Oy Emojileri",
+    "voteEmojisDesc": "Olumlu ve olumsuz oy tepkileri için kullanılan emojiler.",
+    "autoThread": "Otomatik Konu Oluştur",
+    "autoThreadDesc": "Her yeni öneri için otomatik olarak tartışma konusu oluşturun.",
+    "dmOnStatusChange": "Durum Değişikliğinde DM",
+    "dmOnStatusChangeDesc": "Öneri durumu değiştiğinde yazara DM ile bildirim gönderin."
+  },
+  "toast": {
+    "approved": "Öneri onaylandı",
+    "rejected": "Öneri reddedildi",
+    "implemented": "Öneri uygulandı olarak işaretlendi",
+    "considered": "Öneri değerlendiriliyor olarak işaretlendi",
+    "deleted": "Öneri silindi",
+    "actionFailed": "Öneri güncellenemedi",
+    "settingsSaved": "Öneri ayarları kaydedildi",
+    "settingsFailed": "Öneri ayarları kaydedilemedi"
+  },
+  "empty": "Henüz öneri yok.",
+  "loading": "Öneriler yükleniyor...",
+  "pagination": {
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "page": "Sayfa {{page}} / {{total}}"
+  }
+}

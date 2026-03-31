@@ -1,0 +1,113 @@
+{
+  "title": "自定义命令",
+  "subtitle": "创建由消息触发的自动回复和前缀命令。",
+  "stats": {
+    "totalCommands": "命令总数",
+    "enabled": "已启用",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "命令",
+    "variables": "变量"
+  },
+  "table": {
+    "name": "名称",
+    "trigger": "触发器",
+    "response": "回复",
+    "cooldown": "冷却时间",
+    "status": "状态"
+  },
+  "triggerTypes": {
+    "command": "!command",
+    "keyword": "关键词",
+    "startsWith": "前缀匹配",
+    "regex": "正则表达式",
+    "prefixCommand": "前缀命令 (!name)",
+    "keywordContains": "关键词（包含）"
+  },
+  "dialog": {
+    "createCommand": "创建命令",
+    "editCommand": "编辑命令"
+  },
+  "form": {
+    "commandName": "命令名称",
+    "triggerText": "触发文本",
+    "regexPattern": "正则表达式",
+    "triggerType": "触发类型",
+    "response": "回复",
+    "message": "消息",
+    "embedTitle": "嵌入标题",
+    "embedDescription": "嵌入描述",
+    "color": "颜色",
+    "footer": "页脚"
+  },
+  "options": {
+    "cooldown": "冷却时间（秒）",
+    "enabled": "启用",
+    "enabledDesc": "此命令是否启用",
+    "deleteTrigger": "删除触发消息",
+    "deleteTriggerDesc": "自动删除触发此命令的消息。",
+    "dmResponse": "私信回复",
+    "dmResponseDesc": "将回复作为私信发送，而不是在频道中发送。"
+  },
+  "restrictions": {
+    "title": "限制",
+    "allowedChannels": "允许的频道（留空 = 全部）",
+    "allowedRoles": "允许的角色（留空 = 所有人）",
+    "addChannel": "添加频道",
+    "addRole": "添加角色"
+  },
+  "actions": {
+    "create": "创建",
+    "update": "更新",
+    "cancel": "取消",
+    "addAction": "添加动作",
+    "addRole": "添加角色",
+    "removeRole": "移除角色"
+  },
+  "actionsSection": {
+    "title": "动作（{{count}}/5）",
+    "noActions": "尚未配置动作。添加动作来定义此命令的行为。",
+    "maxActions": "每个命令最多 5 个动作"
+  },
+  "variables": {
+    "title": "模板变量",
+    "description": "在命令回复中使用这些变量。命令触发时，变量将被替换为实际值。",
+    "table": {
+      "variable": "变量",
+      "description": "描述"
+    },
+    "entries": {
+      "user": "{user} — 提及触发命令的用户",
+      "username": "{username} — 用户的显示名称",
+      "userId": "{userId} — 用户 ID",
+      "server": "{server} — 服务器名称",
+      "channel": "{channel} — 提及当前频道",
+      "channelName": "{channelName} — 频道名称",
+      "memberCount": "{memberCount} — 服务器成员总数"
+    }
+  },
+  "toast": {
+    "created": "命令已创建",
+    "createFailed": "创建命令失败",
+    "updated": "命令已更新",
+    "updateFailed": "更新命令失败",
+    "deleted": "命令已删除",
+    "deleteFailed": "删除命令失败",
+    "toggleEnabled": "命令已启用",
+    "toggleDisabled": "命令已禁用",
+    "toggleFailed": "切换命令失败"
+  },
+  "empty": "尚未创建自定义命令。",
+  "loading": "正在加载命令...",
+  "badge": {
+    "active": "活跃",
+    "disabled": "已禁用",
+    "text": "文本",
+    "embed": "嵌入"
+  },
+  "validation": {
+    "nameRequired": "命令名称为必填项"
+  },
+  "triggerPrefix": "触发器: !{{name}}"
+}

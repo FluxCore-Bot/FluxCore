@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Nyt avoimessa betassa",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Kaikki yhdessä",
+    "titleLine2": "Discord Bot -kehys",
+    "subtitle": "Ota käyttöön ammattimainen Discord-läsnäolo minuuteissa. Modulaarinen, itse ylläpidetty ja rakennettu yhteisöille, jotka vaativat enemmän."
+  },
+  "cta": {
+    "addToServer": "Lisää palvelimelle",
+    "openDashboard": "Avaa hallintapaneeli",
+    "exploreFeatures": "Tutustu ominaisuuksiin"
+  },
+  "stats": {
+    "servers": "Palvelimet",
+    "latency": "Viive",
+    "uptime": "Käyttöaika",
+    "modules": "Moduulit",
+    "serversValue": "1 000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99,9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Ominaisuudet",
+    "title": "Kaikki mitä palvelimesi tarvitsee",
+    "subtitle": "Modulaarinen työkalupakki, joka on suunniteltu yhteisöille, jotka vaativat luotettavuutta, joustavuutta ja hallintaa.",
+    "automation": {
+      "title": "Automaatiosäännöt",
+      "description": "Luo monimutkaisia tapahtumapohjaisia työnkulkuja ilman koodia. Jos-tämä-niin-tuo-laukaisimet 23 tapahtumatyypillä ja 10 toimintotyypillä."
+    },
+    "music": {
+      "title": "Musiikkijärjestelmä",
+      "description": "Korkealaatuinen äänisuoratoisto usean alustan tuella. Jononhallinta, DJ-ohjaimet ja kirjastotila."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Dynaaminen äänikanavien hallinta. Automaattinen luonti mukautetuilla nimimalleilla, oikeuksilla ja siivouksella."
+    },
+    "logs": {
+      "title": "Toimintalokit",
+      "description": "Täydellinen tarkastusloki jokaisesta automaatioajosta. Hae, suodata ja virheenjäljitä sääntöjäsi yksityiskohtaisilla lokeilla."
+    },
+    "webhooks": {
+      "title": "Webhookit ja API",
+      "description": "Lähetä tietoja ulkoisiin palveluihin HTTP-webhookeilla. Mukautetut otsikot, runkomallit ja muuttujainterpolointi."
+    },
+    "dashboard": {
+      "title": "Reaaliaikainen hallintapaneeli",
+      "description": "Hallitse kaikkea tyylikkäästä verkkopaneelista. Analytiikka, konfigurointi ja valvonta yhdessä paikassa."
+    }
+  },
+  "ctaSection": {
+    "title": "Valmis päivittämään yhteisösi?",
+    "subtitle": "Aloita minuuteissa ilman konfigurointia. Itse ylläpidetty, avoimen lähdekoodin ja täysin ilmainen."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "\u00a9 {{year}} FluxCore Technologies. Kaikki oikeudet pidätetään.",
+    "links": {
+      "documentation": "Dokumentaatio",
+      "support": "Tuki",
+      "privacy": "Tietosuojakäytäntö",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

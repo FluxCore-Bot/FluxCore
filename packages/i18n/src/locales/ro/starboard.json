@@ -1,0 +1,41 @@
+{
+  "title": "Starboard",
+  "subtitle": "Evidențiază cele mai bune mesaje colectând reacții cu stele într-un canal dedicat.",
+  "tabs": {
+    "settings": "Setări",
+    "starredMessages": "Mesaje cu Stele"
+  },
+  "settings": {
+    "title": "Configurare Starboard",
+    "description": "Configurează când și unde sunt postate mesajele cu stele.",
+    "channelId": "Canal Starboard",
+    "channelIdDesc": "Canalul unde sunt postate mesajele cu stele.",
+    "starEmoji": "Emoji Stea",
+    "starEmojiDesc": "Emoji-ul folosit pentru a marca mesajele. Implicit este emoji-ul stea.",
+    "threshold": "Prag Stele",
+    "thresholdDesc": "Numărul minim de reacții necesare pentru a posta un mesaj pe starboard.",
+    "selfStar": "Auto-Marcare",
+    "selfStarDesc": "Permite autorilor de mesaje să își marcheze propriile mesaje.",
+    "nsfwAllowed": "NSFW Permis",
+    "nsfwAllowedDesc": "Permite mesajelor din canalele NSFW să apară pe starboard.",
+    "ignoredChannels": "Canale Ignorate",
+    "ignoredChannelsDesc": "Mesajele din aceste canale nu vor apărea niciodată pe starboard."
+  },
+  "messages": {
+    "table": {
+      "original": "Mesaj Original",
+      "stars": "Stele",
+      "channel": "Canal",
+      "date": "Dată"
+    },
+    "noMessages": "Nu există mesaje cu stele încă."
+  },
+  "toast": {
+    "saved": "Setările starboard salvate",
+    "saveFailed": "Salvarea setărilor starboard a eșuat"
+  },
+  "actions": {
+    "save": "Salvează",
+    "saving": "Se salvează..."
+  }
+}

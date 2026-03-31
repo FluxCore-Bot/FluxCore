@@ -1,0 +1,120 @@
+{
+  "title": "Niveausysteem",
+  "subtitle": "Configureer XP-verdienen, niveau-omhoogmeldingen, rolbeloningen en vermenigvuldigers.",
+  "stats": {
+    "rankedMembers": "Gerangschikte leden",
+    "roleRewards": "Rolbeloningen",
+    "systemStatus": "Systeemstatus",
+    "enabled": "Ingeschakeld",
+    "disabled": "Uitgeschakeld"
+  },
+  "tabs": {
+    "leaderboard": "Klassement",
+    "settings": "Instellingen",
+    "roleRewards": "Rolbeloningen",
+    "exclusions": "Uitsluitingen",
+    "multipliers": "Vermenigvuldigers"
+  },
+  "table": {
+    "rank": "Rang",
+    "userId": "Gebruikers-ID",
+    "level": "Niveau",
+    "xp": "XP",
+    "messages": "Berichten",
+    "voiceTime": "Spreektijd"
+  },
+  "settings": {
+    "title": "Niveauinstellingen",
+    "enabled": "Niveausysteem inschakelen",
+    "enabledDesc": "Schakel het volledige niveausysteem in of uit.",
+    "xpPerMessage": "XP per bericht",
+    "xpPerMessageDesc": "Basis XP per bericht (willekeurigheid van 0-9 wordt toegevoegd).",
+    "xpCooldown": "XP-cooldown (seconden)",
+    "xpCooldownDesc": "Minimale tijd tussen XP-toekenningen per gebruiker.",
+    "voiceXpEnabled": "Spraak-XP",
+    "voiceXpEnabledDesc": "Verleen XP voor tijd doorgebracht in spraakkanalen.",
+    "voiceXpPerMinute": "Spraak-XP per minuut",
+    "voiceXpPerMinuteDesc": "XP per minuut in spraak.",
+    "levelUpAnnouncements": "Niveau-omhoogmeldingen",
+    "levelUpAnnouncementsDesc": "Meld wanneer een lid een hoger niveau bereikt.",
+    "announceDest": "Aankondigingsbestemming",
+    "announceDestHint": "Je kunt ook een kanaal-ID rechtstreeks invoeren in het bovenstaande veld.",
+    "announceDestSameChannel": "Hetzelfde kanaal",
+    "announceDestDM": "Directe berichtgeving",
+    "announceMessage": "Aankondigingsbericht",
+    "announceMessagePlaceholder": "{user} heeft zojuist **Niveau {level}** bereikt!",
+    "announceMessageVars": "Variabelen: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Rolbeloningen",
+    "description": "Wijs automatisch rollen toe wanneer leden bepaalde niveaus bereiken.",
+    "addReward": "Beloning toevoegen",
+    "addRewardTitle": "Rolbeloning toevoegen",
+    "level": "Niveau",
+    "levelPrefix": "Niveau {{level}}",
+    "roleId": "Rol-ID",
+    "levelPlaceholder": "bijv. 5",
+    "rolePlaceholder": "bijv. 123456789",
+    "removeReward": "Verwijderen",
+    "noRewards": "Geen rolbeloningen geconfigureerd."
+  },
+  "exclusions": {
+    "title": "XP-uitsluitingen",
+    "description": "Kanalen en rollen die geen XP verdienen.",
+    "noXpChannels": "Geen-XP-kanalen (kommagescheiden ID's)",
+    "noXpChannelsPlaceholder": "bijv. 123456789, 987654321",
+    "noXpRoles": "Geen-XP-rollen (kommagescheiden ID's)",
+    "noXpRolesPlaceholder": "bijv. 123456789, 987654321",
+    "save": "Uitsluitingen opslaan"
+  },
+  "multipliers": {
+    "title": "XP-vermenigvuldigers",
+    "description": "Stel XP-vermenigvuldigers in per kanaal of rol. Een vermenigvuldiger van 2 verdubbelt de verdiende XP.",
+    "channelMultipliers": "Kanaalmenigvuldigers",
+    "roleMultipliers": "Rolvermenigvuldigers",
+    "channelId": "Kanaal-ID",
+    "roleId": "Rol-ID",
+    "multiplier": "Vermenigvuldiger",
+    "type": "Type",
+    "typeChannel": "Kanaal",
+    "typeRole": "Rol",
+    "id": "ID",
+    "idPlaceholder": "Kanaal- of Rol-ID",
+    "value": "Vermenigvuldiger",
+    "valuePlaceholder": "bijv. 2",
+    "add": "Vermenigvuldiger toevoegen",
+    "addTitle": "Vermenigvuldiger toevoegen",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Geen XP-vermenigvuldigers geconfigureerd."
+  },
+  "pagination": {
+    "previous": "Vorige",
+    "next": "Volgende",
+    "pageInfo": "Pagina {{page}} van {{totalPages}} ({{total}} totaal)"
+  },
+  "loading": "Klassement laden...",
+  "loadingGeneric": "Laden...",
+  "emptyLeaderboard": "Nog geen leden hebben XP verdiend.",
+  "toast": {
+    "saved": "Niveauinstellingen opgeslagen",
+    "saveFailed": "Instelling bijwerken mislukt",
+    "rewardAdded": "Beloning toegevoegd",
+    "rewardAddFailed": "Beloning toevoegen mislukt",
+    "rewardRemoved": "Beloning verwijderd",
+    "rewardRemoveFailed": "Beloning verwijderen mislukt",
+    "multiplierAdded": "Vermenigvuldiger toegevoegd",
+    "multiplierAddFailed": "Vermenigvuldiger toevoegen mislukt",
+    "multiplierRemoved": "Vermenigvuldiger verwijderd",
+    "multiplierRemoveFailed": "Vermenigvuldiger verwijderen mislukt",
+    "exclusionUpdated": "Uitsluitingen opgeslagen",
+    "exclusionFailed": "Uitsluitingen opslaan mislukt",
+    "levelValidation": "Niveau moet tussen 1 en 100 liggen",
+    "roleIdRequired": "Rol-ID is verplicht",
+    "multiplierIdRequired": "ID en vermenigvuldigerwaarde zijn verplicht",
+    "multiplierRange": "Vermenigvuldiger moet tussen 0 en 10 liggen"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}u {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

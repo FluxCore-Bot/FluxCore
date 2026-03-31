@@ -1,0 +1,50 @@
+{
+  "title": "Dovanojimal",
+  "subtitle": "Renkite dovanojimus su pritaikomu trukme, dalyvavimo reikalavimais ir laimetojo parinkimu.",
+  "stats": {
+    "activeGiveaways": "Aktyvus dovanojimal",
+    "pastGiveaways": "Praeje dovanojimal",
+    "totalEntries": "Viso dalyvu"
+  },
+  "table": {
+    "prize": "Prizas",
+    "winners": "Laimetojai",
+    "entries": "Dalyviai",
+    "endsIn": "Baigiasi po",
+    "status": "Busena"
+  },
+  "statuses": {
+    "active": "Aktyvus",
+    "ended": "Pasibaige",
+    "cancelled": "Atsauktas"
+  },
+  "actions": {
+    "create": "Sukurti dovanojima",
+    "edit": "Redaguoti",
+    "end": "Baigti",
+    "reroll": "Perpasirinkti",
+    "delete": "Istrinti"
+  },
+  "form": {
+    "prize": "Prizas",
+    "winnersCount": "Laimetoju skaicius",
+    "duration": "Trukme",
+    "channel": "Kanalas",
+    "requiredRole": "Reikalinga role",
+    "description": "Aprasymas"
+  },
+  "toast": {
+    "created": "Dovanojimas sukurtas",
+    "createFailed": "Nepavyko sukurti dovanojimo",
+    "updated": "Dovanojimas atnaujintas",
+    "updateFailed": "Nepavyko atnaujinti dovanojimo",
+    "ended": "Dovanojimas baigtas",
+    "endFailed": "Nepavyko baigti dovanojimo",
+    "rerolled": "Laimetojai perpasirinkti",
+    "rerollFailed": "Nepavyko perpasirinkti laimetoju",
+    "deleted": "Dovanojimas istrintas",
+    "deleteFailed": "Nepavyko istrinti dovanojimo"
+  },
+  "empty": "Dovanojimo nera. Sukurkite viena pradziai.",
+  "loading": "Kraunami dovanojimai..."
+}

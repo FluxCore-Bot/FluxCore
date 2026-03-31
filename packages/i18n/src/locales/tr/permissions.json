@@ -1,0 +1,118 @@
+{
+  "title": "Roller ve İzinler",
+  "subtitle": "Her kontrol paneli modülüne kimin erişebileceğini ve yönetebileceğini kontrol edin.",
+  "actions": {
+    "createRole": "Rol Oluştur"
+  },
+  "permissionSystem": {
+    "title": "İzin Sistemi",
+    "active": "Aktif — yöneticiler atanmış izinleriyle sınırlıdır.",
+    "inactive": "Pasif — MANAGE_GUILD iznine sahip tüm yöneticilerin tam erişimi vardır.",
+    "enabledToast": "İzin sistemi etkinleştirildi",
+    "disabledToast": "İzin sistemi devre dışı bırakıldı — tüm yöneticilerin tam erişimi var"
+  },
+  "warning": {
+    "disabled": "İzin sistemi devre dışı. Tüm kontrol paneli yöneticilerinin şu anda tam erişimi var. Ayrıntılı izinleri uygulamak için yukarıdan etkinleştirin."
+  },
+  "tabs": {
+    "roles": "Roller",
+    "auditLog": "Denetim Günlüğü"
+  },
+  "roleList": {
+    "title": "Kontrol Paneli Rolleri",
+    "empty": "Henüz rol oluşturulmadı.",
+    "selectHint": "Düzenlemek için bir rol seçin veya yeni bir tane oluşturun.",
+    "default": "Varsayılan",
+    "name": "Ad",
+    "members": "Üyeler",
+    "permissions": "İzinler",
+    "edit": "Düzenle",
+    "delete": "Sil"
+  },
+  "presets": {
+    "title": "Önayardan Hızlı Ekle",
+    "createdToast": "\"{{name}}\" rolü oluşturuldu"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} üye",
+    "memberCount_plural": "{{count}} üye",
+    "name": "Rol Adı",
+    "color": "Renk",
+    "defaultRole": "Varsayılan rol",
+    "permissions": "İzinler",
+    "allBadge": "Tümü",
+    "discordRoles": "Discord Rolleri"
+  },
+  "roleForm": {
+    "name": "Rol Adı",
+    "discordRoles": "Discord Rolleri",
+    "permissions": "İzinler",
+    "create": "Rol Oluştur",
+    "update": "Rolü Güncelle",
+    "cancel": "İptal"
+  },
+  "createDialog": {
+    "title": "Kontrol Paneli Rolü Oluştur",
+    "name": "Ad",
+    "namePlaceholder": "örn. Moderatör",
+    "color": "Renk"
+  },
+  "permissionCategories": {
+    "actions": "Eylemler ve Otomasyon",
+    "music": "Müzik",
+    "tempvoice": "Geçici Ses",
+    "welcome": "Hoş Geldin ve Güle Güle",
+    "moderation": "Moderasyon",
+    "logging": "Günlükleme",
+    "leveling": "Seviye",
+    "roles": "Rol Panelleri",
+    "tickets": "Destek Talepleri",
+    "suggestions": "Öneriler",
+    "starboard": "Yıldız Panosu",
+    "giveaways": "Çekilişler",
+    "security": "Güvenlik",
+    "scheduled": "Zamanlanmış Mesajlar",
+    "commands": "Özel Komutlar",
+    "settings": "Sunucu Ayarları"
+  },
+  "audit": {
+    "table": {
+      "user": "Kullanıcı",
+      "action": "Eylem",
+      "target": "Hedef",
+      "timestamp": "Ne Zaman"
+    },
+    "noEntries": "Henüz denetim günlüğü girişi yok."
+  },
+  "pagination": {
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "page": "Sayfa {{current}} / {{total}}"
+  },
+  "toast": {
+    "roleCreated": "\"{{name}}\" rolü oluşturuldu",
+    "roleCreateFailed": "Rol oluşturulamadı",
+    "roleUpdated": "Rol güncellendi",
+    "roleUpdateFailed": "Rol güncellenemedi",
+    "roleDeleted": "Rol silindi",
+    "roleDeleteFailed": "Rol silinemedi"
+  },
+  "confirm": {
+    "deleteTitle": "\"{{name}}\" rolü silinsin mi?",
+    "deleteMessage": "Bu işlem rolü kaldıracak ve tüm üyelerin atamasını kaldıracaktır. Bu işlem geri alınamaz.",
+    "deleteRole": "Bu rolü silmek istediğinizden emin misiniz? Üyeler atanmış izinlerini kaybedecek."
+  },
+  "saveButton": {
+    "saving": "Kaydediliyor...",
+    "save": "Değişiklikleri Kaydet"
+  },
+  "deleteButton": {
+    "deleting": "Siliniyor...",
+    "delete": "Sil"
+  },
+  "createButton": {
+    "creating": "Oluşturuluyor...",
+    "create": "Oluştur"
+  },
+  "loading": "İzinler yükleniyor..."
+}

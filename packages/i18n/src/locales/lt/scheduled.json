@@ -1,0 +1,86 @@
+{
+  "title": "Suplanuotos zinutes",
+  "subtitle": "Kurkite pasikartojanciai automatiskai skelbiamas zinutes pagal konfigurujamus grafikus.",
+  "stats": {
+    "totalMessages": "Viso zinuciu",
+    "active": "Aktyvios",
+    "inactive": "Neaktyvios"
+  },
+  "table": {
+    "name": "Pavadinimas",
+    "channel": "Kanalas",
+    "schedule": "Grafikas",
+    "nextRun": "Kitas paleidimas",
+    "status": "Busena"
+  },
+  "dialog": {
+    "editTitle": "Redaguoti suplanuota zinute",
+    "createTitle": "Nauja suplanuota zinute"
+  },
+  "form": {
+    "name": "Pavadinimas",
+    "channel": "Kanalas",
+    "schedulePreset": "Grafiko sablonas",
+    "cronExpression": "Cron israiska",
+    "timezone": "Laiko zona",
+    "messageContent": "Zinutes turinys",
+    "text": "Tekstas",
+    "embed": "Embed",
+    "enabled": "Ijungta",
+    "enabledDesc": "Ar si suplanuota zinute yra aktyvi."
+  },
+  "cronPresets": {
+    "everyHour": "Kas valanda",
+    "every6Hours": "Kas 6 valandas",
+    "daily9am": "Kasdien 9:00",
+    "dailyMidnight": "Kasdien vidurnakti",
+    "weeklyMonday": "Kas savaite pirmadieni",
+    "monthly1st": "Kas menesi 1 diena",
+    "custom": "Pasirinktinis"
+  },
+  "embed": {
+    "title": "Pavadinimas",
+    "description": "Aprasymas",
+    "color": "Spalva (hex)",
+    "footer": "Porastine",
+    "thumbnail": "Miniatiuros URL",
+    "image": "Paveikslelo URL"
+  },
+  "toast": {
+    "created": "Suplanuota zinute sukurta",
+    "createFailed": "Nepavyko sukurti suplanuotos zinutes",
+    "updated": "Suplanuota zinute atnaujinta",
+    "updateFailed": "Nepavyko atnaujinti suplanuotos zinutes",
+    "deleted": "Suplanuota zinute istrinta",
+    "deleteFailed": "Nepavyko istrinti suplanuotos zinutes",
+    "testSent": "Testine zinute issiusta",
+    "testFailed": "Nepavyko issiusti testines zinutes"
+  },
+  "empty": {
+    "title": "Nera suplanuotu zinuciu",
+    "description": "Sukurkite suplanuota zinute automatiniam turinio skelbimui pasikartojanciai.",
+    "createButton": "Sukurti zinute"
+  },
+  "pagination": {
+    "previous": "Ankstesnis",
+    "next": "Kitas",
+    "page": "Puslapis {{page}} is {{total}}"
+  },
+  "actions": {
+    "newMessage": "Nauja zinute",
+    "testSend": "Testinis siuntimas",
+    "edit": "Redaguoti",
+    "delete": "Istrinti",
+    "save": "Issaugoti",
+    "cancel": "Atsaukti"
+  },
+  "validation": {
+    "nameRequired": "Zinutes pavadinimas privalomas",
+    "channelRequired": "Kanalas privalomas"
+  },
+  "cronPreview": {
+    "nextRuns": "Kiti paleidimai"
+  },
+  "characters": "{{count}}/2000 simboliu",
+  "never": "Niekada"
+}

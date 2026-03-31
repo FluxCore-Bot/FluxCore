@@ -1,0 +1,118 @@
+{
+  "title": "Roolit ja oikeudet",
+  "subtitle": "Hallitse kuka voi käyttää ja hallita kutakin hallintapaneelimoduulia.",
+  "actions": {
+    "createRole": "Luo rooli"
+  },
+  "permissionSystem": {
+    "title": "Oikeusjärjestelmä",
+    "active": "Aktiivinen — ylläpitäjät on rajoitettu heidän määrättyihin oikeuksiin.",
+    "inactive": "Epäaktiivinen — kaikilla MANAGE_GUILD-ylläpitäjillä on täysi pääsy.",
+    "enabledToast": "Oikeusjärjestelmä käytössä",
+    "disabledToast": "Oikeusjärjestelmä pois käytöstä — kaikilla ylläpitäjillä on täysi pääsy"
+  },
+  "warning": {
+    "disabled": "Oikeusjärjestelmä on pois käytöstä. Kaikilla hallintapaneelin ylläpitäjillä on tällä hetkellä täysi pääsy. Ota se käyttöön yläpuolelta hienojakoisten oikeuksien soveltamiseksi."
+  },
+  "tabs": {
+    "roles": "Roolit",
+    "auditLog": "Tarkastusloki"
+  },
+  "roleList": {
+    "title": "Hallintapaneeliiroolit",
+    "empty": "Ei rooleja luotu vielä.",
+    "selectHint": "Valitse rooli muokattavaksi tai luo uusi.",
+    "default": "Oletus",
+    "name": "Nimi",
+    "members": "Jäsenet",
+    "permissions": "Oikeudet",
+    "edit": "Muokkaa",
+    "delete": "Poista"
+  },
+  "presets": {
+    "title": "Pikalisäys mallista",
+    "createdToast": "Luotiin rooli \"{{name}}\""
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} jäsen",
+    "memberCount_plural": "{{count}} jäsentä",
+    "name": "Roolin nimi",
+    "color": "Väri",
+    "defaultRole": "Oletusrooli",
+    "permissions": "Oikeudet",
+    "allBadge": "Kaikki",
+    "discordRoles": "Discord-roolit"
+  },
+  "roleForm": {
+    "name": "Roolin nimi",
+    "discordRoles": "Discord-roolit",
+    "permissions": "Oikeudet",
+    "create": "Luo rooli",
+    "update": "Päivitä rooli",
+    "cancel": "Peruuta"
+  },
+  "createDialog": {
+    "title": "Luo hallintapaneelirooli",
+    "name": "Nimi",
+    "namePlaceholder": "esim. Moderaattori",
+    "color": "Väri"
+  },
+  "permissionCategories": {
+    "actions": "Toiminnot ja automaatio",
+    "music": "Musiikki",
+    "tempvoice": "TempVoice",
+    "welcome": "Tervetuloa ja hyvästit",
+    "moderation": "Moderointi",
+    "logging": "Kirjaus",
+    "leveling": "Tasojärjestelmä",
+    "roles": "Roolipaneelit",
+    "tickets": "Tiketit",
+    "suggestions": "Ehdotukset",
+    "starboard": "Starboard",
+    "giveaways": "Arvonnat",
+    "security": "Turvallisuus",
+    "scheduled": "Ajastetut viestit",
+    "commands": "Mukautetut komennot",
+    "settings": "Palvelinasetukset"
+  },
+  "audit": {
+    "table": {
+      "user": "Käyttäjä",
+      "action": "Toiminto",
+      "target": "Kohde",
+      "timestamp": "Milloin"
+    },
+    "noEntries": "Ei tarkastuslokimerkintöjä vielä."
+  },
+  "pagination": {
+    "previous": "Edellinen",
+    "next": "Seuraava",
+    "page": "Sivu {{current}} / {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Luotiin rooli \"{{name}}\"",
+    "roleCreateFailed": "Roolin luominen epäonnistui",
+    "roleUpdated": "Rooli päivitetty",
+    "roleUpdateFailed": "Roolin päivittäminen epäonnistui",
+    "roleDeleted": "Rooli poistettu",
+    "roleDeleteFailed": "Roolin poistaminen epäonnistui"
+  },
+  "confirm": {
+    "deleteTitle": "Poista rooli \"{{name}}\"?",
+    "deleteMessage": "Tämä poistaa roolin ja purkaa kaikkien jäsenten määrityksen. Tätä toimintoa ei voi kumota.",
+    "deleteRole": "Haluatko varmasti poistaa tämän roolin? Jäsenet menettävät heille määritetyt oikeudet."
+  },
+  "saveButton": {
+    "saving": "Tallennetaan...",
+    "save": "Tallenna muutokset"
+  },
+  "deleteButton": {
+    "deleting": "Poistetaan...",
+    "delete": "Poista"
+  },
+  "createButton": {
+    "creating": "Luodaan...",
+    "create": "Luo"
+  },
+  "loading": "Ladataan oikeuksia..."
+}

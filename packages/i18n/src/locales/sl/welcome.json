@@ -1,0 +1,65 @@
+{
+  "title": "Dobrodošlica in poslovitev",
+  "subtitle": "Konfigurirajte sporočila dobrodošlice in poslovitve, slike ter samodejno dodeljene vloge.",
+  "loadingSubtitle": "Konfigurirajte sporočila dobrodošlice in poslovitve za vaš strežnik.",
+  "tabs": {
+    "welcome": "Dobrodošlica",
+    "welcomeImage": "Slika dobrodošlice",
+    "farewell": "Poslovitev",
+    "farewellImage": "Slika poslovitve",
+    "dm": "DM dobrodošlice",
+    "autorole": "Samodejno dodeljena vloga"
+  },
+  "welcome": {
+    "title": "Sporočilo dobrodošlice",
+    "description": "Pošljite lastno vdelano vsebino, ko se pridruži nov član.",
+    "channelLabel": "ID kanala dobrodošlice",
+    "channelPlaceholder": "ID kanala...",
+    "embedBuilder": "Graditelj vdelane vsebine"
+  },
+  "welcomeImage": {
+    "title": "Slika dobrodošlice",
+    "description": "Ustvarite lastno slikovno kartico z avatarjem člana ob pridružitvi.",
+    "disabled": "Omogočite zgornje stikalo za konfiguracijo slik dobrodošlice."
+  },
+  "farewell": {
+    "title": "Sporočilo poslovitve",
+    "description": "Pošljite sporočilo, ko član zapusti strežnik.",
+    "channelLabel": "ID kanala poslovitve",
+    "channelPlaceholder": "ID kanala..."
+  },
+  "farewellImage": {
+    "title": "Slika poslovitve",
+    "description": "Ustvarite lastno kartico poslovitve, ko član odide.",
+    "disabled": "Omogočite zgornje stikalo za konfiguracijo slik poslovitve."
+  },
+  "dm": {
+    "title": "DM dobrodošlice",
+    "description": "Pošljite neposredno sporočilo novim članom. Tiho ne bo uspelo, če so DM-ji onemogočeni."
+  },
+  "autorole": {
+    "title": "Samodejno dodeljena vloga",
+    "description": "Samodejno dodelite vloge novim članom ob pridružitvi. Boti so izvzeti. Bot mora imeti višjo vlogo od vlog, navedenih tukaj.",
+    "label": "ID-ji vlog (ločeni z vejico)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Naslov",
+    "description": "Opis",
+    "color": "Barva (hex)",
+    "footer": "Noga",
+    "thumbnail": "URL sličice",
+    "image": "URL slike",
+    "variables": "Spremenljivke:"
+  },
+  "saveChanges": "Shrani spremembe",
+  "saving": "Shranjevanje...",
+  "sendTest": "Pošlji testno sporočilo",
+  "sending": "Pošiljanje...",
+  "toast": {
+    "saved": "Konfiguracija dobrodošlice shranjena",
+    "saveFailed": "Shranjevanje konfiguracije ni uspelo",
+    "testSent": "Testno sporočilo bo poslano v <#{{channelId}}>",
+    "testFailed": "Pošiljanje testnega sporočila ni uspelo"
+  }
+}

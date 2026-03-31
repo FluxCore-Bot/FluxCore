@@ -1,0 +1,120 @@
+{
+  "title": "等級系統",
+  "subtitle": "設定經驗值獲取、升級公告、角色獎勵和倍率。",
+  "stats": {
+    "rankedMembers": "已排名成員",
+    "roleRewards": "角色獎勵",
+    "systemStatus": "系統狀態",
+    "enabled": "已啟用",
+    "disabled": "已停用"
+  },
+  "tabs": {
+    "leaderboard": "排行榜",
+    "settings": "設定",
+    "roleRewards": "角色獎勵",
+    "exclusions": "排除設定",
+    "multipliers": "倍率"
+  },
+  "table": {
+    "rank": "排名",
+    "userId": "使用者 ID",
+    "level": "等級",
+    "xp": "經驗值",
+    "messages": "訊息數",
+    "voiceTime": "語音時長"
+  },
+  "settings": {
+    "title": "等級設定",
+    "enabled": "啟用等級系統",
+    "enabledDesc": "開啟或關閉整個等級系統。",
+    "xpPerMessage": "每則訊息經驗值",
+    "xpPerMessageDesc": "每則訊息獲得的基礎經驗值（會額外加上 0-9 的隨機值）。",
+    "xpCooldown": "經驗冷卻時間（秒）",
+    "xpCooldownDesc": "每位使用者獲得經驗的最短間隔。",
+    "voiceXpEnabled": "語音經驗",
+    "voiceXpEnabledDesc": "在語音頻道中待的時間也能獲得經驗。",
+    "voiceXpPerMinute": "每分鐘語音經驗",
+    "voiceXpPerMinuteDesc": "在語音頻道中每分鐘獲得的經驗值。",
+    "levelUpAnnouncements": "升級公告",
+    "levelUpAnnouncementsDesc": "當成員升級時傳送公告。",
+    "announceDest": "公告目標",
+    "announceDestHint": "您也可以在上方的輸入框中直接輸入頻道 ID。",
+    "announceDestSameChannel": "相同頻道",
+    "announceDestDM": "私訊",
+    "announceMessage": "公告訊息",
+    "announceMessagePlaceholder": "{user} 剛剛達到了 **{level} 級**！",
+    "announceMessageVars": "變數：{user}、{level}、{username}"
+  },
+  "roleRewards": {
+    "title": "角色獎勵",
+    "description": "當成員達到特定等級時自動分配角色。",
+    "addReward": "新增獎勵",
+    "addRewardTitle": "新增角色獎勵",
+    "level": "等級",
+    "levelPrefix": "等級 {{level}}",
+    "roleId": "角色 ID",
+    "levelPlaceholder": "例：5",
+    "rolePlaceholder": "例：123456789",
+    "removeReward": "移除",
+    "noRewards": "未設定角色獎勵。"
+  },
+  "exclusions": {
+    "title": "經驗排除設定",
+    "description": "不獲得經驗的頻道和角色。",
+    "noXpChannels": "無經驗頻道（逗號分隔的 ID）",
+    "noXpChannelsPlaceholder": "例：123456789, 987654321",
+    "noXpRoles": "無經驗角色（逗號分隔的 ID）",
+    "noXpRolesPlaceholder": "例：123456789, 987654321",
+    "save": "儲存排除設定"
+  },
+  "multipliers": {
+    "title": "經驗倍率",
+    "description": "為頻道或角色設定經驗倍率。倍率 2 表示經驗翻倍。",
+    "channelMultipliers": "頻道倍率",
+    "roleMultipliers": "角色倍率",
+    "channelId": "頻道 ID",
+    "roleId": "角色 ID",
+    "multiplier": "倍率",
+    "type": "類型",
+    "typeChannel": "頻道",
+    "typeRole": "角色",
+    "id": "ID",
+    "idPlaceholder": "頻道或角色 ID",
+    "value": "倍率",
+    "valuePlaceholder": "例：2",
+    "add": "新增倍率",
+    "addTitle": "新增倍率",
+    "multiplierSuffix": "{{value}}倍",
+    "noMultipliers": "未設定經驗倍率。"
+  },
+  "pagination": {
+    "previous": "上一頁",
+    "next": "下一頁",
+    "pageInfo": "第 {{page}} 頁 / 共 {{totalPages}} 頁（共 {{total}} 筆）"
+  },
+  "loading": "正在載入排行榜...",
+  "loadingGeneric": "載入中...",
+  "emptyLeaderboard": "尚無成員獲得經驗值。",
+  "toast": {
+    "saved": "等級設定已儲存",
+    "saveFailed": "更新設定失敗",
+    "rewardAdded": "獎勵已新增",
+    "rewardAddFailed": "新增獎勵失敗",
+    "rewardRemoved": "獎勵已移除",
+    "rewardRemoveFailed": "移除獎勵失敗",
+    "multiplierAdded": "倍率已新增",
+    "multiplierAddFailed": "新增倍率失敗",
+    "multiplierRemoved": "倍率已移除",
+    "multiplierRemoveFailed": "移除倍率失敗",
+    "exclusionUpdated": "排除設定已儲存",
+    "exclusionFailed": "儲存排除設定失敗",
+    "levelValidation": "等級必須在 1 到 100 之間",
+    "roleIdRequired": "角色 ID 為必填",
+    "multiplierIdRequired": "ID 和倍率值為必填",
+    "multiplierRange": "倍率必須在 0 到 10 之間"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}小時{{minutes}}分鐘",
+    "voiceTimeMinutesOnly": "{{minutes}}分鐘"
+  }
+}

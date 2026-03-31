@@ -1,0 +1,9 @@
+{
+  "title": "Twoje serwery",
+  "subtitle": "Wybierz serwer do zarządzania i konfiguracji.",
+  "loading": "Ładowanie serwerów...",
+  "empty": {
+    "title": "Nie znaleziono serwerów",
+    "description": "Upewnij się, że bot jest dodany do serwera, na którym masz uprawnienie Zarządzanie serwerem."
+  }
+}

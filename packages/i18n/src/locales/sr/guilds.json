@@ -1,0 +1,9 @@
+{
+  "title": "Vasi serveri",
+  "subtitle": "Izaberite server za upravljanje i konfiguraciju.",
+  "loading": "Ucitavanje servera...",
+  "empty": {
+    "title": "Nisu pronadeni serveri",
+    "description": "Proverite da li je bot dodat na server na kojem imate dozvolu za upravljanje serverom."
+  }
+}

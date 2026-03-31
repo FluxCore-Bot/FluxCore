@@ -1,0 +1,86 @@
+{
+  "title": "Messages programmes",
+  "subtitle": "Creez des messages recurrents publies automatiquement selon des horaires configurables.",
+  "stats": {
+    "totalMessages": "Total des messages",
+    "active": "Actifs",
+    "inactive": "Inactifs"
+  },
+  "table": {
+    "name": "Nom",
+    "channel": "Salon",
+    "schedule": "Horaire",
+    "nextRun": "Prochaine execution",
+    "status": "Statut"
+  },
+  "dialog": {
+    "editTitle": "Modifier le message programme",
+    "createTitle": "Nouveau message programme"
+  },
+  "form": {
+    "name": "Nom",
+    "channel": "Salon",
+    "schedulePreset": "Modele d'horaire",
+    "cronExpression": "Expression Cron",
+    "timezone": "Fuseau horaire",
+    "messageContent": "Contenu du message",
+    "text": "Texte",
+    "embed": "Embed",
+    "enabled": "Active",
+    "enabledDesc": "Indique si ce message programme est actif."
+  },
+  "cronPresets": {
+    "everyHour": "Toutes les heures",
+    "every6Hours": "Toutes les 6 heures",
+    "daily9am": "Quotidien a 9h",
+    "dailyMidnight": "Quotidien a minuit",
+    "weeklyMonday": "Hebdomadaire le lundi",
+    "monthly1st": "Mensuel le 1er",
+    "custom": "Personnalise"
+  },
+  "embed": {
+    "title": "Titre",
+    "description": "Description",
+    "color": "Couleur (hex)",
+    "footer": "Pied de page",
+    "thumbnail": "URL de la miniature",
+    "image": "URL de l'image"
+  },
+  "toast": {
+    "created": "Message programme cree",
+    "createFailed": "Echec de la creation du message programme",
+    "updated": "Message programme mis a jour",
+    "updateFailed": "Echec de la mise a jour du message programme",
+    "deleted": "Message programme supprime",
+    "deleteFailed": "Echec de la suppression du message programme",
+    "testSent": "Message de test envoye",
+    "testFailed": "Echec de l'envoi du message de test"
+  },
+  "empty": {
+    "title": "Aucun message programme pour l'instant",
+    "description": "Creez un message programme pour publier automatiquement du contenu de maniere recurrente.",
+    "createButton": "Creer un message"
+  },
+  "pagination": {
+    "previous": "Precedent",
+    "next": "Suivant",
+    "page": "Page {{page}} sur {{total}}"
+  },
+  "actions": {
+    "newMessage": "Nouveau message",
+    "testSend": "Envoi test",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "save": "Enregistrer",
+    "cancel": "Annuler"
+  },
+  "validation": {
+    "nameRequired": "Le nom du message est requis",
+    "channelRequired": "Le salon est requis"
+  },
+  "cronPreview": {
+    "nextRuns": "Prochaines executions"
+  },
+  "characters": "{{count}}/2000 caracteres",
+  "never": "Jamais"
+}

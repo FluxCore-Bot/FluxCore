@@ -1,0 +1,113 @@
+{
+  "title": "Pieelagotas komandas",
+  "subtitle": "Izveidojiet automatiskos atbildetajus un prefiksu komandas, ko aktivize zinojumi.",
+  "stats": {
+    "totalCommands": "Kopejais komandu skaits",
+    "enabled": "Iespejots",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Komandas",
+    "variables": "Maingie"
+  },
+  "table": {
+    "name": "Nosaukums",
+    "trigger": "Trigeris",
+    "response": "Atbilde",
+    "cooldown": "Atdzesesana",
+    "status": "Statuss"
+  },
+  "triggerTypes": {
+    "command": "!komanda",
+    "keyword": "Atslegvards",
+    "startsWith": "Sacas ar",
+    "regex": "Regex",
+    "prefixCommand": "Prefiksu komanda (!nosaukums)",
+    "keywordContains": "Atslegvards (satur)"
+  },
+  "dialog": {
+    "createCommand": "Izveidot komandu",
+    "editCommand": "Rediget komandu"
+  },
+  "form": {
+    "commandName": "Komandas nosaukums",
+    "triggerText": "Trigera teksts",
+    "regexPattern": "Regex paraugs",
+    "triggerType": "Trigera tips",
+    "response": "Atbilde",
+    "message": "Zinojums",
+    "embedTitle": "Embed virsraksts",
+    "embedDescription": "Embed apraksts",
+    "color": "Krasa",
+    "footer": "Kajene"
+  },
+  "options": {
+    "cooldown": "Atdzesesana (sekundes)",
+    "enabled": "Iespejots",
+    "enabledDesc": "Vai si komanda ir aktiva",
+    "deleteTrigger": "Dzest trigera zinojumu",
+    "deleteTriggerDesc": "Automatiski dzest zinojumu, kas aktivizeja so komandu.",
+    "dmResponse": "Atbilde privataja zinojuma",
+    "dmResponseDesc": "Sutit atbildi ka privatu zinojumu, nevis kanala."
+  },
+  "restrictions": {
+    "title": "Ierobezojumi",
+    "allowedChannels": "Atlauti kanali (tukss = visi)",
+    "allowedRoles": "Atlautas lomas (tukss = visi)",
+    "addChannel": "Pievienot kanalu",
+    "addRole": "Pievienot lomu"
+  },
+  "actions": {
+    "create": "Izveidot",
+    "update": "Atjaunot",
+    "cancel": "Atcelt",
+    "addAction": "Pievienot darbibu",
+    "addRole": "Pievienot lomu",
+    "removeRole": "Nonemt lomu"
+  },
+  "actionsSection": {
+    "title": "Darbibas ({{count}}/5)",
+    "noActions": "Darbibas nav konfiguuetas. Pievienojiet darbibu, lai nordiitu, ko si komanda dara.",
+    "maxActions": "Maksimali 5 darbibas vienai komandai"
+  },
+  "variables": {
+    "title": "Veidnes maingie",
+    "description": "Izmantojiet sos mainigos savu komandu atbildes. Tie tiks aizstatiti ar faktiskajam vertibam, kad komanda tiks aktivizeta.",
+    "table": {
+      "variable": "Mainigais",
+      "description": "Apraksts"
+    },
+    "entries": {
+      "user": "{user} — Piemin lietotaju, kurss aktivizeja komandu",
+      "username": "{username} — Lietotaja paradzamais vards",
+      "userId": "{userId} — Lietotaja ID",
+      "server": "{server} — Servera nosaukums",
+      "channel": "{channel} — Piemin pasreizejo kanalu",
+      "channelName": "{channelName} — Kanala nosaukums",
+      "memberCount": "{memberCount} — Kopejais servera dalibnieku skaits"
+    }
+  },
+  "toast": {
+    "created": "Komanda izveidota",
+    "createFailed": "Neizdevas izveidot komandu",
+    "updated": "Komanda atjaunota",
+    "updateFailed": "Neizdevas atjaunot komandu",
+    "deleted": "Komanda dzesta",
+    "deleteFailed": "Neizdevas dzest komandu",
+    "toggleEnabled": "Komanda iespejota",
+    "toggleDisabled": "Komanda atspejota",
+    "toggleFailed": "Neizdevas parlikt komandu"
+  },
+  "empty": "Pieelagotas komandas nav izveidotas.",
+  "loading": "Iellade komandas...",
+  "badge": {
+    "active": "Aktiva",
+    "disabled": "Atspejota",
+    "text": "Teksts",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Komandas nosaukums ir obligats"
+  },
+  "triggerPrefix": "Trigeris: !{{name}}"
+}

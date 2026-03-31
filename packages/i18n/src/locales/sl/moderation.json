@@ -1,0 +1,54 @@
+{
+  "title": "Moderiranje",
+  "subtitle": "Oglejte si in upravljajte primere moderiranja ter konfigurirajte nastavitve kazni.",
+  "stats": {
+    "totalCases": "Skupaj primerov",
+    "activeTempbans": "Aktivne začasne prepovedi",
+    "last24h": "Zadnjih 24h"
+  },
+  "cases": "Primeri",
+  "actions": {
+    "ban": "Prepoved",
+    "tempban": "Začasna prepoved",
+    "kick": "Izklop",
+    "timeout": "Odmor",
+    "softban": "Mehka prepoved",
+    "warn": "Opozori",
+    "note": "Opomba"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Dejanje",
+    "target": "Cilj",
+    "moderator": "Moderator",
+    "reason": "Razlog",
+    "date": "Datum",
+    "actions": "Dejanja",
+    "noCases": "Ni najdenih primerov.",
+    "noReason": "Brez razloga"
+  },
+  "filter": {
+    "userPlaceholder": "Filtriraj po ID-ju uporabnika...",
+    "allActions": "Vsa dejanja"
+  },
+  "pagination": {
+    "previous": "Prejšnja",
+    "next": "Naslednja",
+    "page": "Stran {{page}} od {{total}}"
+  },
+  "editDialog": {
+    "title": "Uredi razlog za primer #{{id}}",
+    "placeholder": "Vnesite nov razlog...",
+    "saving": "Shranjevanje..."
+  },
+  "editReason": "Uredi razlog",
+  "deleteCase": "Izbriši primer",
+  "deleteConfirm": "Ali ste prepričani, da želite izbrisati ta primer?",
+  "settings": {
+    "title": "Nastavitve",
+    "dmOnPunishment": "DM ob kazni",
+    "dmOnPunishmentDesc": "Pošljite DM uporabnikom, ko so kaznovani (prepoved, izklop, odmor).",
+    "modLogChannel": "Kanal dnevnika moderiranja",
+    "modLogChannelDesc": "Kanal, kjer so zabeležena dejanja moderiranja."
+  }
+}

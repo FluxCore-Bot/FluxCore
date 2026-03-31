@@ -1,0 +1,77 @@
+{
+  "title": "Sistema de Tickets",
+  "subtitle": "Crea paneis de tickets de soporte e xestiona os tickets abertos desde o panel.",
+  "stats": {
+    "totalTickets": "Total de Tickets",
+    "open": "Abertos",
+    "claimed": "Reclamados",
+    "panels": "Paneis"
+  },
+  "tabs": {
+    "activeTickets": "Tickets Activos",
+    "panelBuilder": "Constructor de Paneis",
+    "settings": "Configuración"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Usuario",
+    "subject": "Asunto",
+    "status": "Estado",
+    "assignee": "Asignado a",
+    "created": "Creado"
+  },
+  "statuses": {
+    "open": "Aberto",
+    "claimed": "Reclamado",
+    "closed": "Pechado"
+  },
+  "panelBuilder": {
+    "title": "Título do Painel",
+    "channel": "Canal",
+    "buttonLabel": "Etiqueta do Botón",
+    "welcomeMessage": "Mensaxe de Benvida",
+    "category": "Categoría do Ticket",
+    "create": "Crear Painel",
+    "edit": "Editar Painel",
+    "deploy": "Despregar Painel"
+  },
+  "settings": {
+    "transcriptChannel": "Canal de Transcricións",
+    "transcriptChannelDesc": "Canal onde se gardan as transcricións dos tickets ao pecharse.",
+    "maxTicketsPerUser": "Máx. Tickets por Usuario",
+    "maxTicketsPerUserDesc": "Número máximo de tickets abertos que pode ter un único usuario.",
+    "closeConfirmation": "Confirmación de Peche",
+    "closeConfirmationDesc": "Requirir confirmación antes de pechar un ticket.",
+    "dmTranscript": "Transcrición por DM",
+    "dmTranscriptDesc": "Enviar unha copia da transcrición ao creador do ticket por DM."
+  },
+  "actions": {
+    "claim": "Reclamar",
+    "close": "Pechar",
+    "delete": "Eliminar",
+    "reopen": "Reabrir"
+  },
+  "toast": {
+    "panelCreated": "Painel de ticket creado",
+    "panelCreateFailed": "Non se puido crear o painel de ticket",
+    "panelUpdated": "Painel de ticket actualizado",
+    "panelUpdateFailed": "Non se puido actualizar o painel de ticket",
+    "panelDeployed": "Painel de ticket despregado",
+    "panelDeployFailed": "Non se puido despregar o painel de ticket",
+    "ticketClaimed": "Ticket reclamado",
+    "ticketClaimFailed": "Non se puido reclamar o ticket",
+    "ticketClosed": "Ticket pechado",
+    "ticketCloseFailed": "Non se puido pechar o ticket",
+    "ticketReopened": "Ticket reaberto",
+    "ticketReopenFailed": "Non se puido reabrir o ticket",
+    "ticketDeleted": "Ticket eliminado",
+    "ticketDeleteFailed": "Non se puido eliminar o ticket",
+    "settingsSaved": "Configuración de tickets gardada",
+    "settingsFailed": "Non se puido gardar a configuración de tickets"
+  },
+  "empty": {
+    "tickets": "Non hai tickets activos.",
+    "panels": "Aínda non se crearon paneis de tickets."
+  },
+  "loading": "Cargando tickets..."
+}

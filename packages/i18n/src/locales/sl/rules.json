@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Strežnik",
+    "automation": "Avtomatizacija"
+  },
+  "title": "Pravila avtomatizacije",
+  "subtitle": "Konfigurirajte sprožilce na osnovi dogodkov in samodejne odzive za vaš strežnik.",
+  "createRule": "Ustvari pravilo",
+  "stats": {
+    "totalRules": "Skupaj pravil",
+    "active": "Aktivno",
+    "executions7d": "Izvedbe (7d)",
+    "successRate": "Stopnja uspešnosti"
+  },
+  "filter": {
+    "searchPlaceholder": "Iskanje pravil...",
+    "eventType": "Vrsta dogodka",
+    "allEvents": "Vsi dogodki",
+    "allStatus": "Vsa stanja",
+    "enabled": "Omogočeno",
+    "disabled": "Onemogočeno",
+    "sortBy": "Razvrsti po",
+    "priority": "Prednost",
+    "name": "Ime",
+    "lastFired": "Nazadnje sproženo",
+    "status": "Stanje",
+    "clear": "Počisti",
+    "showing": "Prikazano {{filtered}} od {{total}} pravil"
+  },
+  "bulk": {
+    "selected": "{{count}} pravilo izbrano",
+    "selected_other": "{{count}} pravil izbranih",
+    "enable": "Omogoči",
+    "disable": "Onemogoči",
+    "delete": "Izbriši",
+    "clear": "Počisti"
+  },
+  "empty": {
+    "title": "Začnite z avtomatizacijo",
+    "description": "Izberite predlogo za hiter začetek ali ustvarite pravilo iz nič.",
+    "createFromScratch": "Ustvari iz nič"
+  },
+  "noResults": {
+    "title": "Ni ujemajočih pravil",
+    "description": "Poskusite prilagoditi iskanje ali filtre, da najdete, kar iščete."
+  },
+  "templates": {
+    "welcomeMessage": "Sporočilo dobrodošlice",
+    "welcomeMessageDesc": "Pozdravite nove člane z lastnim sporočilom v kanalu",
+    "autoRole": "Samodejno dodeljena vloga",
+    "autoRoleDesc": "Samodejno dodelite vlogo, ko se član pridruži",
+    "logDeleted": "Beleženje izbrisanih sporočil",
+    "logDeletedDesc": "Pošljite podatke o izbrisanih sporočilih v kanal dnevnika",
+    "boostThankYou": "Zahvala za ojačitev",
+    "boostThankYouDesc": "Pošljite DM v zahvalo uporabnikom, ki ojačajo strežnik",
+    "banLogger": "Beleženje prepovedi",
+    "banLoggerDesc": "Beležite eventi prepovedi v kanal moderiranja",
+    "autoThread": "Samodejno ustvarjena nit",
+    "autoThreadDesc": "Samodejno ustvarite nit ob pošiljanju sporočila"
+  },
+  "deleteDialog": {
+    "title": "Izbriši pravilo",
+    "description": "Ali ste prepričani, da želite izbrisati \"{{name}}\"? Tega dejanja ni mogoče razveljaviti.",
+    "confirm": "Izbriši"
+  },
+  "bulkDeleteDialog": {
+    "title": "Izbriši izbrana pravila",
+    "description": "Ali ste prepričani, da želite izbrisati {{count}} pravilo? Tega dejanja ni mogoče razveljaviti.",
+    "description_other": "Ali ste prepričani, da želite izbrisati {{count}} pravil? Tega dejanja ni mogoče razveljaviti.",
+    "confirm": "Izbriši vse"
+  },
+  "toast": {
+    "deleted": "Pravilo izbrisano",
+    "deleteFailed": "Brisanje pravila ni uspelo",
+    "enabled": "Pravilo omogočeno",
+    "disabled": "Pravilo onemogočeno",
+    "toggleFailed": "Preklop pravila ni uspel",
+    "duplicated": "Pravilo podvojeno",
+    "duplicateFailed": "Podvajanje pravila ni uspelo",
+    "bulkEnabled": "{{count}} pravil omogočenih",
+    "bulkDisabled": "{{count}} pravil onemogočenih",
+    "bulkEnableFailed": "Omogočanje pravil ni uspelo",
+    "bulkDisableFailed": "Onemogočanje pravil ni uspelo",
+    "bulkDeleted": "{{count}} pravil izbrisanih",
+    "bulkDeleteFailed": "Brisanje pravil ni uspelo"
+  }
+}

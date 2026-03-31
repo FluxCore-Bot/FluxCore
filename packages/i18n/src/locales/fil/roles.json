@@ -1,0 +1,112 @@
+{
+  "title": "Mga Role Panel",
+  "subtitle": "Gumawa ng mga self-assignable na role panel gamit ang mga button, dropdown, o reaction.",
+  "stats": {
+    "totalPanels": "Kabuuang Mga Panel",
+    "deployed": "Naka-deploy",
+    "totalRoles": "Kabuuang Mga Role"
+  },
+  "tabs": {
+    "panels": "Mga Panel",
+    "preview": "Preview"
+  },
+  "table": {
+    "name": "Pangalan",
+    "type": "Uri",
+    "mode": "Mode",
+    "roles": "Mga Role",
+    "status": "Status"
+  },
+  "panelTypes": {
+    "reaction": "Reaction",
+    "button": "Button",
+    "dropdown": "Dropdown"
+  },
+  "panelModes": {
+    "toggle": "Toggle",
+    "unique": "Natatangi",
+    "verify": "Verify"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Toggle (idagdag/alisin)",
+    "unique": "Natatangi (isa sa isang pagkakataon)",
+    "verify": "Verify (idagdag lamang)"
+  },
+  "status": {
+    "deployed": "Naka-deploy",
+    "draft": "Draft"
+  },
+  "dialog": {
+    "createPanel": "Gumawa ng Panel",
+    "editPanel": "I-edit ang Panel"
+  },
+  "panelList": {
+    "title": "Lahat ng Mga Panel"
+  },
+  "form": {
+    "name": "Pangalan",
+    "namePlaceholder": "hal. Mga Kulay na Role",
+    "type": "Uri",
+    "mode": "Mode",
+    "channel": "Channel",
+    "channelPlaceholder": "Pumili ng channel",
+    "minRoles": "Min na Mga Role",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Max na Mga Role",
+    "maxRolesPlaceholder": "Lahat",
+    "embedSection": "Embed",
+    "embedTitle": "Pamagat",
+    "embedTitlePlaceholder": "Pamagat ng panel (default ay pangalan ng panel)",
+    "embedDescription": "Paglalarawan",
+    "embedDescriptionPlaceholder": "Teksto ng paglalarawan",
+    "rolesCount": "Mga Role ({{count}}/25)",
+    "addRole": "Magdagdag ng Role"
+  },
+  "entry": {
+    "role": "Role",
+    "rolePlaceholder": "Pumili ng role",
+    "label": "Label",
+    "labelPlaceholder": "Label ng button",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "hal. bituin",
+    "description": "Paglalarawan",
+    "descriptionPlaceholder": "Paglalarawan ng opsyon",
+    "style": "Estilo"
+  },
+  "buttonStyles": {
+    "primary": "Primary",
+    "secondary": "Secondary",
+    "success": "Tagumpay",
+    "danger": "Panganib"
+  },
+  "actions": {
+    "create": "Gumawa",
+    "update": "I-update",
+    "cancel": "Kanselahin",
+    "deploy": "I-deploy",
+    "delete": "Burahin",
+    "addEntry": "Magdagdag ng Entry",
+    "removeEntry": "Alisin ang Entry"
+  },
+  "preview": {
+    "title": "Live Preview",
+    "description": "I-preview kung paano lalabas ang iyong mga panel sa Discord.",
+    "selectRoles": "Pumili ng mga role...",
+    "noPreview": "Walang mga panel na ipapakita."
+  },
+  "empty": "Wala pang mga role panel na nagawa. I-click ang \"Gumawa ng Panel\" upang magsimula.",
+  "toast": {
+    "created": "Panel na nagawa",
+    "createFailed": "Hindi nagawa ang panel",
+    "updated": "Panel na na-update",
+    "updateFailed": "Hindi na-update ang panel",
+    "deleted": "Panel na nabura",
+    "deleteFailed": "Hindi nabura ang panel",
+    "deployed": "Role panel na na-deploy sa channel",
+    "deployFailed": "Hindi naipadala ang panel",
+    "nameRequired": "Kailangan ng pangalan ng panel",
+    "channelRequired": "Kailangan ng channel",
+    "maxRolesReached": "Maximum na 25 role bawat panel"
+  },
+  "loading": "Naglo-load ng mga panel..."
+}

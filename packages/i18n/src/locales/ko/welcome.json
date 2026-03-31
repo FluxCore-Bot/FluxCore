@@ -1,0 +1,65 @@
+{
+  "title": "환영 및 작별",
+  "subtitle": "환영 메시지, 작별 메시지, 이미지, 자동 역할을 설정합니다.",
+  "loadingSubtitle": "서버의 환영 및 작별 메시지를 설정합니다.",
+  "tabs": {
+    "welcome": "환영",
+    "welcomeImage": "환영 이미지",
+    "farewell": "작별",
+    "farewellImage": "작별 이미지",
+    "dm": "환영 DM",
+    "autorole": "자동 역할"
+  },
+  "welcome": {
+    "title": "환영 메시지",
+    "description": "새 멤버가 참여하면 커스텀 임베드를 보냅니다.",
+    "channelLabel": "환영 채널 ID",
+    "channelPlaceholder": "채널 ID...",
+    "embedBuilder": "임베드 빌더"
+  },
+  "welcomeImage": {
+    "title": "환영 이미지",
+    "description": "멤버가 참여하면 아바타가 포함된 커스텀 이미지 카드를 생성합니다.",
+    "disabled": "위의 토글을 활성화하여 환영 이미지를 설정하세요."
+  },
+  "farewell": {
+    "title": "작별 메시지",
+    "description": "멤버가 서버를 떠나면 메시지를 보냅니다.",
+    "channelLabel": "작별 채널 ID",
+    "channelPlaceholder": "채널 ID..."
+  },
+  "farewellImage": {
+    "title": "작별 이미지",
+    "description": "멤버가 떠나면 커스텀 작별 카드를 생성합니다.",
+    "disabled": "위의 토글을 활성화하여 작별 이미지를 설정하세요."
+  },
+  "dm": {
+    "title": "환영 DM",
+    "description": "새 멤버에게 다이렉트 메시지를 보냅니다. DM이 비활성화된 경우 조용히 실패합니다."
+  },
+  "autorole": {
+    "title": "자동 역할",
+    "description": "새 멤버가 참여하면 자동으로 역할을 할당합니다. 봇은 제외됩니다. 봇은 여기에 나열된 역할보다 높은 역할을 가지고 있어야 합니다.",
+    "label": "역할 ID (쉼표 구분)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "제목",
+    "description": "설명",
+    "color": "색상 (16진수)",
+    "footer": "푸터",
+    "thumbnail": "썸네일 URL",
+    "image": "이미지 URL",
+    "variables": "변수:"
+  },
+  "saveChanges": "변경사항 저장",
+  "saving": "저장 중...",
+  "sendTest": "테스트 메시지 보내기",
+  "sending": "전송 중...",
+  "toast": {
+    "saved": "환영 설정이 저장되었습니다",
+    "saveFailed": "설정 저장에 실패했습니다",
+    "testSent": "테스트 메시지가 <#{{channelId}}>로 전송됩니다",
+    "testFailed": "테스트 메시지 전송에 실패했습니다"
+  }
+}

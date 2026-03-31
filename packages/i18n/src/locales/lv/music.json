@@ -1,0 +1,8 @@
+{
+  "title": "Muzikas sistema",
+  "subtitle": "Konfigurejiet globalos atskanoosanas rezimus un audio biblioteekas iestatijumus.",
+  "tabs": {
+    "settings": "Atskanoosanas iestatijumi",
+    "library": "Muzikas biblioteka"
+  }
+}

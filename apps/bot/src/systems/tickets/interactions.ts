@@ -10,6 +10,8 @@ import {
   type TextInputBuilder as TextInputType,
   AttachmentBuilder,
   type TextChannel,
+  type APIEmbed,
+  type JSONEncodable,
 } from "discord.js";
 import { infoEmbed, errorEmbed, logger } from "@fluxcore/utils";
 import {
@@ -99,7 +101,7 @@ async function handlePanelButton(interaction: ButtonInteraction): Promise<void> 
   }
 
   // No form fields — create ticket directly
-  await createTicketChannel(interaction, panelId, category, {});
+  await createTicketChannel(interaction, panelId, category ?? null, {});
 }
 
 async function handleClaimButton(interaction: ButtonInteraction): Promise<void> {
@@ -394,7 +396,7 @@ async function createTicketChannel(
     });
 
     // Create ticket record
-    const ticket = await createTicket({
+    await createTicket({
       guildId,
       channelId: channel.id,
       userId: interaction.user.id,
@@ -439,7 +441,7 @@ async function createTicketChannel(
 // Helper to handle reply differences between Button and Modal interactions
 async function safeReply(
   interaction: ButtonInteraction | ModalSubmitInteraction,
-  data: { embeds: unknown[]; ephemeral?: boolean },
+  data: { embeds: (APIEmbed | JSONEncodable<APIEmbed>)[]; ephemeral?: boolean },
 ): Promise<void> {
   if (interaction.replied || interaction.deferred) {
     await interaction.followUp(data);
@@ -458,7 +460,7 @@ async function safeDeferReply(
 
 async function safeEditReply(
   interaction: ButtonInteraction | ModalSubmitInteraction,
-  data: { embeds: unknown[] },
+  data: { embeds: (APIEmbed | JSONEncodable<APIEmbed>)[] },
 ): Promise<void> {
   if (interaction.deferred) {
     await interaction.editReply(data);

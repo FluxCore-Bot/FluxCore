@@ -1,0 +1,112 @@
+{
+  "title": "Paneles de roles",
+  "subtitle": "Crea paneles de roles autoasignables usando botones, menus desplegables o reacciones.",
+  "stats": {
+    "totalPanels": "Total de paneles",
+    "deployed": "Desplegados",
+    "totalRoles": "Total de roles"
+  },
+  "tabs": {
+    "panels": "Paneles",
+    "preview": "Vista previa"
+  },
+  "table": {
+    "name": "Nombre",
+    "type": "Tipo",
+    "mode": "Modo",
+    "roles": "Roles",
+    "status": "Estado"
+  },
+  "panelTypes": {
+    "reaction": "Reaccion",
+    "button": "Boton",
+    "dropdown": "Menu desplegable"
+  },
+  "panelModes": {
+    "toggle": "Alternar",
+    "unique": "Unico",
+    "verify": "Verificar"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Alternar (agregar/quitar)",
+    "unique": "Unico (uno a la vez)",
+    "verify": "Verificar (solo agregar)"
+  },
+  "status": {
+    "deployed": "Desplegado",
+    "draft": "Borrador"
+  },
+  "dialog": {
+    "createPanel": "Crear panel",
+    "editPanel": "Editar panel"
+  },
+  "panelList": {
+    "title": "Todos los paneles"
+  },
+  "form": {
+    "name": "Nombre",
+    "namePlaceholder": "ej. Roles de color",
+    "type": "Tipo",
+    "mode": "Modo",
+    "channel": "Canal",
+    "channelPlaceholder": "Seleccionar canal",
+    "minRoles": "Roles minimos",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Roles maximos",
+    "maxRolesPlaceholder": "Todos",
+    "embedSection": "Embed",
+    "embedTitle": "Titulo",
+    "embedTitlePlaceholder": "Titulo del panel (por defecto el nombre del panel)",
+    "embedDescription": "Descripcion",
+    "embedDescriptionPlaceholder": "Texto de descripcion",
+    "rolesCount": "Roles ({{count}}/25)",
+    "addRole": "Agregar rol"
+  },
+  "entry": {
+    "role": "Rol",
+    "rolePlaceholder": "Seleccionar rol",
+    "label": "Etiqueta",
+    "labelPlaceholder": "Etiqueta del boton",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "ej. star",
+    "description": "Descripcion",
+    "descriptionPlaceholder": "Descripcion de la opcion",
+    "style": "Estilo"
+  },
+  "buttonStyles": {
+    "primary": "Principal",
+    "secondary": "Secundario",
+    "success": "Exito",
+    "danger": "Peligro"
+  },
+  "actions": {
+    "create": "Crear",
+    "update": "Actualizar",
+    "cancel": "Cancelar",
+    "deploy": "Desplegar",
+    "delete": "Eliminar",
+    "addEntry": "Agregar entrada",
+    "removeEntry": "Quitar entrada"
+  },
+  "preview": {
+    "title": "Vista previa en vivo",
+    "description": "Previsualizacion de como se veran tus paneles en Discord.",
+    "selectRoles": "Seleccionar roles...",
+    "noPreview": "No hay paneles para previsualizar."
+  },
+  "empty": "Aun no se han creado paneles de roles. Haz clic en \"Crear panel\" para comenzar.",
+  "toast": {
+    "created": "Panel creado",
+    "createFailed": "Error al crear el panel",
+    "updated": "Panel actualizado",
+    "updateFailed": "Error al actualizar el panel",
+    "deleted": "Panel eliminado",
+    "deleteFailed": "Error al eliminar el panel",
+    "deployed": "Panel de roles desplegado en el canal",
+    "deployFailed": "Error al enviar el panel",
+    "nameRequired": "El nombre del panel es obligatorio",
+    "channelRequired": "El canal es obligatorio",
+    "maxRolesReached": "Maximo 25 roles por panel"
+  },
+  "loading": "Cargando paneles..."
+}

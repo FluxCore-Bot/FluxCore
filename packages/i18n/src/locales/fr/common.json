@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "Tableau de bord FluxCore"
+  },
+  "status": {
+    "online": "En ligne",
+    "offline": "Hors ligne",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Vue d'ensemble",
+    "automation": "Automatisation",
+    "music": "Musique",
+    "tempvoice": "TempVoice",
+    "welcome": "Bienvenue",
+    "moderation": "Moderation",
+    "warnings": "Avertissements",
+    "rolePanels": "Panneaux de roles",
+    "leveling": "Niveaux",
+    "scheduled": "Messages programmes",
+    "commands": "Commandes",
+    "security": "Securite",
+    "tickets": "Tickets",
+    "giveaways": "Concours",
+    "suggestions": "Suggestions",
+    "starboard": "Starboard",
+    "logs": "Journaux",
+    "permissions": "Permissions",
+    "settings": "Parametres"
+  },
+  "actions": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "create": "Creer",
+    "add": "Ajouter",
+    "remove": "Retirer",
+    "confirm": "Confirmer",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "refresh": "Actualiser",
+    "reset": "Reinitialiser",
+    "enable": "Activer",
+    "disable": "Desactiver",
+    "copy": "Copier",
+    "export": "Exporter",
+    "import": "Importer",
+    "submit": "Soumettre",
+    "loading": "Chargement...",
+    "retry": "Reessayer"
+  },
+  "labels": {
+    "enabled": "Active",
+    "disabled": "Desactive",
+    "active": "Actif",
+    "inactive": "Inactif",
+    "none": "Aucun",
+    "all": "Tous",
+    "custom": "Personnalise",
+    "default": "Par defaut",
+    "required": "Requis",
+    "optional": "Optionnel",
+    "name": "Nom",
+    "description": "Description",
+    "type": "Type",
+    "status": "Statut",
+    "channel": "Salon",
+    "role": "Role",
+    "member": "Membre",
+    "duration": "Duree",
+    "reason": "Raison",
+    "language": "Langue"
+  },
+  "header": {
+    "notifications": "Notifications",
+    "settings": "Parametres",
+    "logout": "Deconnexion",
+    "toggleSidebar": "Afficher/masquer la barre laterale",
+    "refreshData": "Actualiser les donnees Discord"
+  },
+  "sidebar": {
+    "closeSidebar": "Fermer la barre laterale",
+    "addToServer": "Ajouter au serveur",
+    "docs": "Documentation",
+    "support": "Support",
+    "backToServers": "Retour aux serveurs"
+  },
+  "empty": {
+    "noData": "Aucune donnee disponible",
+    "noResults": "Aucun resultat trouve",
+    "noItems": "Aucun element pour l'instant"
+  },
+  "time": {
+    "seconds": "secondes",
+    "minutes": "minutes",
+    "hours": "heures",
+    "days": "jours",
+    "ago": "il y a {{time}}",
+    "in": "dans {{time}}"
+  },
+  "confirm": {
+    "title": "Etes-vous sur ?",
+    "deleteTitle": "Confirmer la suppression",
+    "deleteMessage": "Cette action est irreversible.",
+    "unsavedChanges": "Vous avez des modifications non enregistrees. Etes-vous sur de vouloir quitter ?"
+  },
+  "accessibility": {
+    "skipToContent": "Aller au contenu principal",
+    "loading": "Chargement du contenu",
+    "loaded": "Contenu charge",
+    "error": "Une erreur est survenue",
+    "menuOpen": "Le menu est ouvert",
+    "menuClosed": "Le menu est ferme"
+  }
+}

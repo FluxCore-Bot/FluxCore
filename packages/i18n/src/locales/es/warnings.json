@@ -1,0 +1,72 @@
+{
+  "title": "Advertencias",
+  "subtitle": "Rastrea y gestiona las advertencias de miembros con escalado automatico.",
+  "stats": {
+    "totalWarnings": "Total de advertencias",
+    "escalationRules": "Reglas de escalado",
+    "dmOnWarn": "MD al advertir"
+  },
+  "tabs": {
+    "warnings": "Registro de advertencias",
+    "escalation": "Escalado",
+    "settings": "Configuracion"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Usuario",
+    "moderator": "Moderador",
+    "reason": "Razon",
+    "date": "Fecha"
+  },
+  "filter": {
+    "userPlaceholder": "Filtrar por ID de usuario...",
+    "clearAll": "Limpiar todo"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "page": "Pagina {{page}} de {{total}} ({{count}} en total)"
+  },
+  "loading": "Cargando advertencias...",
+  "noWarnings": "No se encontraron advertencias.",
+  "toast": {
+    "warningRemoved": "Advertencia eliminada",
+    "warningsFailed": "Error al eliminar la advertencia",
+    "enterUserId": "Ingresa un ID de usuario para limpiar todas las advertencias de ese usuario",
+    "allCleared": "Todas las advertencias eliminadas para el usuario",
+    "clearFailed": "Error al limpiar las advertencias",
+    "thresholdAdded": "Umbral de sancion agregado",
+    "thresholdFailed": "Error al agregar la sancion",
+    "thresholdRemoved": "Sancion eliminada",
+    "removeFailed": "Error al eliminar la sancion",
+    "settingFailed": "Error al actualizar la configuracion",
+    "thresholdInvalid": "El umbral debe ser un numero positivo"
+  },
+  "escalation": {
+    "title": "Escalado de sanciones",
+    "description": "Configura acciones automaticas cuando un usuario alcanza cierto numero de advertencias.",
+    "threshold": "Umbral",
+    "action": "Accion",
+    "duration": "Duracion",
+    "noRules": "No hay reglas de escalado configuradas.",
+    "addRule": "Agregar regla de escalado",
+    "addButton": "Agregar regla",
+    "warnings": "{{count}} advertencias",
+    "min": "{{count}} min",
+    "timeout": "Timeout",
+    "kick": "Expulsion",
+    "ban": "Baneo",
+    "durationLabel": "Duracion (segundos)",
+    "thresholdPlaceholder": "ej. 3",
+    "durationPlaceholder": "ej. 3600"
+  },
+  "settings": {
+    "title": "Configuracion de advertencias",
+    "dmOnWarn": "MD al advertir",
+    "dmOnWarnDesc": "Enviar un mensaje directo al usuario cuando recibe una advertencia.",
+    "requireReason": "Razon obligatoria",
+    "requireReasonDesc": "Los moderadores deben proporcionar una razon al emitir una advertencia.",
+    "maxWarnings": "Advertencias maximas",
+    "maxWarningsDesc": "Maximo de advertencias por usuario (0 = ilimitado)."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Sistem Muzik",
+  "subtitle": "Konfigurasikan mod main semula global dan pilihan perpustakaan audio.",
+  "tabs": {
+    "settings": "Tetapan Main Semula",
+    "library": "Perpustakaan Muzik"
+  }
+}

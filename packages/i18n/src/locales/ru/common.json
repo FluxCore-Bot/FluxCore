@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "Панель управления FluxCore"
+  },
+  "status": {
+    "online": "В сети",
+    "offline": "Не в сети",
+    "latency": "{{ms}}мс"
+  },
+  "nav": {
+    "overview": "Обзор",
+    "automation": "Автоматизация",
+    "music": "Музыка",
+    "tempvoice": "TempVoice",
+    "welcome": "Приветствие",
+    "moderation": "Модерация",
+    "warnings": "Предупреждения",
+    "rolePanels": "Панели ролей",
+    "leveling": "Уровни",
+    "scheduled": "Отложенные",
+    "commands": "Команды",
+    "security": "Безопасность",
+    "tickets": "Тикеты",
+    "giveaways": "Розыгрыши",
+    "suggestions": "Предложения",
+    "starboard": "Доска почёта",
+    "logs": "Логи",
+    "permissions": "Права доступа",
+    "settings": "Настройки"
+  },
+  "actions": {
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "delete": "Удалить",
+    "edit": "Редактировать",
+    "create": "Создать",
+    "add": "Добавить",
+    "remove": "Удалить",
+    "confirm": "Подтвердить",
+    "close": "Закрыть",
+    "back": "Назад",
+    "next": "Далее",
+    "search": "Поиск",
+    "filter": "Фильтр",
+    "refresh": "Обновить",
+    "reset": "Сбросить",
+    "enable": "Включить",
+    "disable": "Отключить",
+    "copy": "Копировать",
+    "export": "Экспорт",
+    "import": "Импорт",
+    "submit": "Отправить",
+    "loading": "Загрузка...",
+    "retry": "Повторить"
+  },
+  "labels": {
+    "enabled": "Включено",
+    "disabled": "Отключено",
+    "active": "Активно",
+    "inactive": "Неактивно",
+    "none": "Нет",
+    "all": "Все",
+    "custom": "Настраиваемый",
+    "default": "По умолчанию",
+    "required": "Обязательно",
+    "optional": "Необязательно",
+    "name": "Название",
+    "description": "Описание",
+    "type": "Тип",
+    "status": "Статус",
+    "channel": "Канал",
+    "role": "Роль",
+    "member": "Участник",
+    "duration": "Длительность",
+    "reason": "Причина",
+    "language": "Язык"
+  },
+  "header": {
+    "notifications": "Уведомления",
+    "settings": "Настройки",
+    "logout": "Выйти",
+    "toggleSidebar": "Переключить боковую панель",
+    "refreshData": "Обновить данные Discord"
+  },
+  "sidebar": {
+    "closeSidebar": "Закрыть боковую панель",
+    "addToServer": "Добавить на сервер",
+    "docs": "Документация",
+    "support": "Поддержка",
+    "backToServers": "Назад к серверам"
+  },
+  "empty": {
+    "noData": "Данные отсутствуют",
+    "noResults": "Результаты не найдены",
+    "noItems": "Элементов пока нет"
+  },
+  "time": {
+    "seconds": "секунды",
+    "minutes": "минуты",
+    "hours": "часы",
+    "days": "дни",
+    "ago": "{{time}} назад",
+    "in": "через {{time}}"
+  },
+  "confirm": {
+    "title": "Вы уверены?",
+    "deleteTitle": "Подтверждение удаления",
+    "deleteMessage": "Это действие нельзя отменить.",
+    "unsavedChanges": "У вас есть несохранённые изменения. Вы уверены, что хотите уйти?"
+  },
+  "accessibility": {
+    "skipToContent": "Перейти к основному содержимому",
+    "loading": "Загрузка содержимого",
+    "loaded": "Содержимое загружено",
+    "error": "Произошла ошибка",
+    "menuOpen": "Меню открыто",
+    "menuClosed": "Меню закрыто"
+  }
+}

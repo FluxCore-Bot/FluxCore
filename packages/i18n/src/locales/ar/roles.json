@@ -1,0 +1,112 @@
+{
+  "title": "لوحات الأدوار",
+  "subtitle": "إنشاء لوحات أدوار ذاتية التعيين باستخدام الأزرار أو القوائم المنسدلة أو التفاعلات.",
+  "stats": {
+    "totalPanels": "إجمالي اللوحات",
+    "deployed": "منشورة",
+    "totalRoles": "إجمالي الأدوار"
+  },
+  "tabs": {
+    "panels": "اللوحات",
+    "preview": "معاينة"
+  },
+  "table": {
+    "name": "الاسم",
+    "type": "النوع",
+    "mode": "الوضع",
+    "roles": "الأدوار",
+    "status": "الحالة"
+  },
+  "panelTypes": {
+    "reaction": "تفاعل",
+    "button": "زر",
+    "dropdown": "قائمة منسدلة"
+  },
+  "panelModes": {
+    "toggle": "تبديل",
+    "unique": "فريد",
+    "verify": "تحقق"
+  },
+  "panelModeDescriptions": {
+    "toggle": "تبديل (إضافة/إزالة)",
+    "unique": "فريد (واحد في كل مرة)",
+    "verify": "تحقق (إضافة فقط)"
+  },
+  "status": {
+    "deployed": "منشورة",
+    "draft": "مسودة"
+  },
+  "dialog": {
+    "createPanel": "إنشاء لوحة",
+    "editPanel": "تعديل لوحة"
+  },
+  "panelList": {
+    "title": "جميع اللوحات"
+  },
+  "form": {
+    "name": "الاسم",
+    "namePlaceholder": "مثال: أدوار الألوان",
+    "type": "النوع",
+    "mode": "الوضع",
+    "channel": "القناة",
+    "channelPlaceholder": "اختر قناة",
+    "minRoles": "الحد الأدنى للأدوار",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "الحد الأقصى للأدوار",
+    "maxRolesPlaceholder": "الكل",
+    "embedSection": "التضمين",
+    "embedTitle": "العنوان",
+    "embedTitlePlaceholder": "عنوان اللوحة (الافتراضي هو اسم اللوحة)",
+    "embedDescription": "الوصف",
+    "embedDescriptionPlaceholder": "نص الوصف",
+    "rolesCount": "الأدوار ({{count}}/25)",
+    "addRole": "إضافة دور"
+  },
+  "entry": {
+    "role": "الدور",
+    "rolePlaceholder": "اختر دورًا",
+    "label": "التسمية",
+    "labelPlaceholder": "نص الزر",
+    "emoji": "الرمز",
+    "emojiPlaceholder": "مثال: star",
+    "description": "الوصف",
+    "descriptionPlaceholder": "وصف الخيار",
+    "style": "النمط"
+  },
+  "buttonStyles": {
+    "primary": "أساسي",
+    "secondary": "ثانوي",
+    "success": "نجاح",
+    "danger": "خطر"
+  },
+  "actions": {
+    "create": "إنشاء",
+    "update": "تحديث",
+    "cancel": "إلغاء",
+    "deploy": "نشر",
+    "delete": "حذف",
+    "addEntry": "إضافة عنصر",
+    "removeEntry": "إزالة عنصر"
+  },
+  "preview": {
+    "title": "معاينة مباشرة",
+    "description": "معاينة كيف ستظهر لوحاتك في Discord.",
+    "selectRoles": "اختر أدوارًا...",
+    "noPreview": "لا توجد لوحات للمعاينة."
+  },
+  "empty": "لم يتم إنشاء لوحات أدوار بعد. انقر \"إنشاء لوحة\" للبدء.",
+  "toast": {
+    "created": "تم إنشاء اللوحة",
+    "createFailed": "فشل في إنشاء اللوحة",
+    "updated": "تم تحديث اللوحة",
+    "updateFailed": "فشل في تحديث اللوحة",
+    "deleted": "تم حذف اللوحة",
+    "deleteFailed": "فشل في حذف اللوحة",
+    "deployed": "تم نشر لوحة الأدوار في القناة",
+    "deployFailed": "فشل في إرسال اللوحة",
+    "nameRequired": "اسم اللوحة مطلوب",
+    "channelRequired": "القناة مطلوبة",
+    "maxRolesReached": "الحد الأقصى 25 دورًا لكل لوحة"
+  },
+  "loading": "جارٍ تحميل اللوحات..."
+}

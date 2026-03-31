@@ -1,0 +1,113 @@
+{
+  "title": "Egendefinerte kommandoer",
+  "subtitle": "Opprett autosvar og prefikskommandoer som utløses av meldinger.",
+  "stats": {
+    "totalCommands": "Totalt antall kommandoer",
+    "enabled": "Aktiverte",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Kommandoer",
+    "variables": "Variabler"
+  },
+  "table": {
+    "name": "Navn",
+    "trigger": "Utløser",
+    "response": "Svar",
+    "cooldown": "Nedkjølingstid",
+    "status": "Status"
+  },
+  "triggerTypes": {
+    "command": "!kommando",
+    "keyword": "Nøkkelord",
+    "startsWith": "Begynner med",
+    "regex": "Regex",
+    "prefixCommand": "Prefikskommando (!navn)",
+    "keywordContains": "Nøkkelord (inneholder)"
+  },
+  "dialog": {
+    "createCommand": "Opprett kommando",
+    "editCommand": "Rediger kommando"
+  },
+  "form": {
+    "commandName": "Kommandonavn",
+    "triggerText": "Utløsertekst",
+    "regexPattern": "Regex-mønster",
+    "triggerType": "Utløsertype",
+    "response": "Svar",
+    "message": "Melding",
+    "embedTitle": "Innbyggingstittel",
+    "embedDescription": "Innbyggingsbeskrivelse",
+    "color": "Farge",
+    "footer": "Bunntekst"
+  },
+  "options": {
+    "cooldown": "Nedkjølingstid (sekunder)",
+    "enabled": "Aktivert",
+    "enabledDesc": "Om denne kommandoen er aktiv",
+    "deleteTrigger": "Slett utløsermelding",
+    "deleteTriggerDesc": "Slett automatisk meldingen som utløste denne kommandoen.",
+    "dmResponse": "DM-svar",
+    "dmResponseDesc": "Send svaret som en direktemelding i stedet for i kanalen."
+  },
+  "restrictions": {
+    "title": "Begrensninger",
+    "allowedChannels": "Tillatte kanaler (tom = alle)",
+    "allowedRoles": "Tillatte roller (tom = alle)",
+    "addChannel": "Legg til kanal",
+    "addRole": "Legg til rolle"
+  },
+  "actions": {
+    "create": "Opprett",
+    "update": "Oppdater",
+    "cancel": "Avbryt",
+    "addAction": "Legg til handling",
+    "addRole": "Legg til rolle",
+    "removeRole": "Fjern rolle"
+  },
+  "actionsSection": {
+    "title": "Handlinger ({{count}}/5)",
+    "noActions": "Ingen handlinger konfigurert. Legg til en handling for å definere hva denne kommandoen gjør.",
+    "maxActions": "Maksimalt 5 handlinger per kommando"
+  },
+  "variables": {
+    "title": "Malvariabler",
+    "description": "Bruk disse variablene i kommandosvarene dine. De erstattes med de faktiske verdiene når kommandoen utløses.",
+    "table": {
+      "variable": "Variabel",
+      "description": "Beskrivelse"
+    },
+    "entries": {
+      "user": "{user} — Nevner brukeren som utløste kommandoen",
+      "username": "{username} — Brukerens visningsnavn",
+      "userId": "{userId} — Brukerens ID",
+      "server": "{server} — Servernavnet",
+      "channel": "{channel} — Nevner den nåværende kanalen",
+      "channelName": "{channelName} — Kanalnavnet",
+      "memberCount": "{memberCount} — Totalt antall servermedlemmer"
+    }
+  },
+  "toast": {
+    "created": "Kommando opprettet",
+    "createFailed": "Kunne ikke opprette kommando",
+    "updated": "Kommando oppdatert",
+    "updateFailed": "Kunne ikke oppdatere kommando",
+    "deleted": "Kommando slettet",
+    "deleteFailed": "Kunne ikke slette kommando",
+    "toggleEnabled": "Kommando aktivert",
+    "toggleDisabled": "Kommando deaktivert",
+    "toggleFailed": "Kunne ikke veksle kommando"
+  },
+  "empty": "Ingen egendefinerte kommandoer opprettet ennå.",
+  "loading": "Laster kommandoer...",
+  "badge": {
+    "active": "Aktiv",
+    "disabled": "Deaktivert",
+    "text": "Tekst",
+    "embed": "Innbygging"
+  },
+  "validation": {
+    "nameRequired": "Kommandonavn er påkrevd"
+  },
+  "triggerPrefix": "Utløser: !{{name}}"
+}

@@ -1,0 +1,72 @@
+{
+  "title": "Warnings",
+  "subtitle": "Track and manage member warnings with automatic escalation.",
+  "stats": {
+    "totalWarnings": "Total Warnings",
+    "escalationRules": "Escalation Rules",
+    "dmOnWarn": "DM on Warn"
+  },
+  "tabs": {
+    "warnings": "Warning Log",
+    "escalation": "Escalation",
+    "settings": "Settings"
+  },
+  "table": {
+    "id": "ID",
+    "user": "User",
+    "moderator": "Moderator",
+    "reason": "Reason",
+    "date": "Date"
+  },
+  "filter": {
+    "userPlaceholder": "Filter by User ID...",
+    "clearAll": "Clear All"
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {{page}} of {{total}} ({{count}} total)"
+  },
+  "loading": "Loading warnings...",
+  "noWarnings": "No warnings found.",
+  "toast": {
+    "warningRemoved": "Warning removed",
+    "warningsFailed": "Failed to delete warning",
+    "enterUserId": "Enter a user ID to clear all warnings for that user",
+    "allCleared": "All warnings cleared for user",
+    "clearFailed": "Failed to clear warnings",
+    "thresholdAdded": "Punishment threshold added",
+    "thresholdFailed": "Failed to add punishment",
+    "thresholdRemoved": "Punishment removed",
+    "removeFailed": "Failed to remove punishment",
+    "settingFailed": "Failed to update setting",
+    "thresholdInvalid": "Threshold must be a positive number"
+  },
+  "escalation": {
+    "title": "Punishment Escalation",
+    "description": "Configure automatic actions when a user reaches a certain number of warnings.",
+    "threshold": "Threshold",
+    "action": "Action",
+    "duration": "Duration",
+    "noRules": "No escalation rules configured.",
+    "addRule": "Add Escalation Rule",
+    "addButton": "Add Rule",
+    "warnings": "{{count}} warnings",
+    "min": "{{count}} min",
+    "timeout": "Timeout",
+    "kick": "Kick",
+    "ban": "Ban",
+    "durationLabel": "Duration (seconds)",
+    "thresholdPlaceholder": "e.g. 3",
+    "durationPlaceholder": "e.g. 3600"
+  },
+  "settings": {
+    "title": "Warning Settings",
+    "dmOnWarn": "DM on Warn",
+    "dmOnWarnDesc": "Send a direct message to the user when they receive a warning.",
+    "requireReason": "Require Reason",
+    "requireReasonDesc": "Moderators must provide a reason when issuing a warning.",
+    "maxWarnings": "Max Warnings",
+    "maxWarningsDesc": "Maximum warnings per user (0 = unlimited)."
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "title": "Roller & behörigheter",
+  "subtitle": "Styr vem som kan komma åt och hantera varje kontrollpanelsmodul.",
+  "actions": {
+    "createRole": "Skapa roll"
+  },
+  "permissionSystem": {
+    "title": "Behörighetssystem",
+    "active": "Aktivt — administratörer är begränsade till sina tilldelade behörigheter.",
+    "inactive": "Inaktivt — alla administratörer med MANAGE_GUILD har full åtkomst.",
+    "enabledToast": "Behörighetssystem aktiverat",
+    "disabledToast": "Behörighetssystem inaktiverat — alla administratörer har full åtkomst"
+  },
+  "warning": {
+    "disabled": "Behörighetssystemet är inaktiverat. Alla kontrollpanelsadministratörer har för närvarande full åtkomst. Aktivera det ovan för att tillämpa granulära behörigheter."
+  },
+  "tabs": {
+    "roles": "Roller",
+    "auditLog": "Revisionslogg"
+  },
+  "roleList": {
+    "title": "Kontrollpanelsroller",
+    "empty": "Inga roller skapade ännu.",
+    "selectHint": "Välj en roll att redigera, eller skapa en ny.",
+    "default": "Standard",
+    "name": "Namn",
+    "members": "Medlemmar",
+    "permissions": "Behörigheter",
+    "edit": "Redigera",
+    "delete": "Ta bort"
+  },
+  "presets": {
+    "title": "Snabblägg från mall",
+    "createdToast": "Skapade rollen \"{{name}}\""
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} medlem",
+    "memberCount_plural": "{{count}} medlemmar",
+    "name": "Rollnamn",
+    "color": "Färg",
+    "defaultRole": "Standardroll",
+    "permissions": "Behörigheter",
+    "allBadge": "Alla",
+    "discordRoles": "Discord-roller"
+  },
+  "roleForm": {
+    "name": "Rollnamn",
+    "discordRoles": "Discord-roller",
+    "permissions": "Behörigheter",
+    "create": "Skapa roll",
+    "update": "Uppdatera roll",
+    "cancel": "Avbryt"
+  },
+  "createDialog": {
+    "title": "Skapa kontrollpanelsroll",
+    "name": "Namn",
+    "namePlaceholder": "t.ex. Moderator",
+    "color": "Färg"
+  },
+  "permissionCategories": {
+    "actions": "Åtgärder & automatisering",
+    "music": "Musik",
+    "tempvoice": "TempVoice",
+    "welcome": "Välkommen & farväl",
+    "moderation": "Moderering",
+    "logging": "Loggning",
+    "leveling": "Nivåer",
+    "roles": "Rollpaneler",
+    "tickets": "Ärenden",
+    "suggestions": "Förslag",
+    "starboard": "Starboard",
+    "giveaways": "Utlottningar",
+    "security": "Säkerhet",
+    "scheduled": "Schemalagda meddelanden",
+    "commands": "Anpassade kommandon",
+    "settings": "Serverinställningar"
+  },
+  "audit": {
+    "table": {
+      "user": "Användare",
+      "action": "Åtgärd",
+      "target": "Mål",
+      "timestamp": "När"
+    },
+    "noEntries": "Inga revisionsloggposter ännu."
+  },
+  "pagination": {
+    "previous": "Föregående",
+    "next": "Nästa",
+    "page": "Sida {{current}} av {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Skapade rollen \"{{name}}\"",
+    "roleCreateFailed": "Misslyckades med att skapa roll",
+    "roleUpdated": "Roll uppdaterad",
+    "roleUpdateFailed": "Misslyckades med att uppdatera roll",
+    "roleDeleted": "Roll borttagen",
+    "roleDeleteFailed": "Misslyckades med att ta bort roll"
+  },
+  "confirm": {
+    "deleteTitle": "Ta bort rollen \"{{name}}\"?",
+    "deleteMessage": "Detta tar bort rollen och avslutar alla medlemmars tilldelning. Denna åtgärd kan inte ångras.",
+    "deleteRole": "Är du säker på att du vill ta bort denna roll? Medlemmar förlorar sina tilldelade behörigheter."
+  },
+  "saveButton": {
+    "saving": "Sparar...",
+    "save": "Spara ändringar"
+  },
+  "deleteButton": {
+    "deleting": "Tar bort...",
+    "delete": "Ta bort"
+  },
+  "createButton": {
+    "creating": "Skapar...",
+    "create": "Skapa"
+  },
+  "loading": "Laddar behörigheter..."
+}

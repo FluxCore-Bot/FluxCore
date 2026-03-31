@@ -1,0 +1,54 @@
+{
+  "title": "Moderare",
+  "subtitle": "Vizualizează și gestionează cazurile de moderare, configurează setările de sancțiuni.",
+  "stats": {
+    "totalCases": "Total Cazuri",
+    "activeTempbans": "Banuri Temporare Active",
+    "last24h": "Ultimele 24h"
+  },
+  "cases": "Cazuri",
+  "actions": {
+    "ban": "Ban",
+    "tempban": "Ban Temporar",
+    "kick": "Expulzare",
+    "timeout": "Timeout",
+    "softban": "Ban Soft",
+    "warn": "Avertizare",
+    "note": "Notă"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Acțiune",
+    "target": "Țintă",
+    "moderator": "Moderator",
+    "reason": "Motiv",
+    "date": "Dată",
+    "actions": "Acțiuni",
+    "noCases": "Nu s-au găsit cazuri.",
+    "noReason": "Niciun motiv"
+  },
+  "filter": {
+    "userPlaceholder": "Filtrează după ID utilizator...",
+    "allActions": "Toate Acțiunile"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Următor",
+    "page": "Pagina {{page}} din {{total}}"
+  },
+  "editDialog": {
+    "title": "Editează Motivul Cazului #{{id}}",
+    "placeholder": "Introdu noul motiv...",
+    "saving": "Se salvează..."
+  },
+  "editReason": "Editează motivul",
+  "deleteCase": "Șterge cazul",
+  "deleteConfirm": "Ești sigur că vrei să ștergi acest caz?",
+  "settings": {
+    "title": "Setări",
+    "dmOnPunishment": "MP la Sancțiune",
+    "dmOnPunishmentDesc": "Trimite un MP utilizatorilor când sunt sancționați (ban, expulzare, timeout).",
+    "modLogChannel": "Canal Jurnal Moderare",
+    "modLogChannelDesc": "Canalul unde sunt înregistrate acțiunile de moderare."
+  }
+}

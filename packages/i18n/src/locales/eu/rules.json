@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Zerbitzaria",
+    "automation": "Automatizazioa"
+  },
+  "title": "Automatizazio-arauak",
+  "subtitle": "Konfiguratu gertaeretan oinarritutako aktibatzaileak eta erantzun automatikoak zure zerbitzarirako.",
+  "createRule": "Araua sortu",
+  "stats": {
+    "totalRules": "Arau guztiak",
+    "active": "Aktiboak",
+    "executions7d": "Exekuzioak (7e)",
+    "successRate": "Arrakasta-tasa"
+  },
+  "filter": {
+    "searchPlaceholder": "Arauak bilatu...",
+    "eventType": "Gertaera mota",
+    "allEvents": "Gertaera guztiak",
+    "allStatus": "Egoera guztiak",
+    "enabled": "Gaituta",
+    "disabled": "Desgaituta",
+    "sortBy": "Sailkatu honela",
+    "priority": "Lehentasuna",
+    "name": "Izena",
+    "lastFired": "Azken exekuzioa",
+    "status": "Egoera",
+    "clear": "Garbitu",
+    "showing": "{{filtered}} / {{total}} arau erakusten"
+  },
+  "bulk": {
+    "selected": "Arau {{count}} hautatuta",
+    "selected_other": "{{count}} arau hautatuta",
+    "enable": "Gaitu",
+    "disable": "Desgaitu",
+    "delete": "Ezabatu",
+    "clear": "Garbitu"
+  },
+  "empty": {
+    "title": "Hasi automatizazioarekin",
+    "description": "Hautatu txantiloi bat azkar hasteko, edo sortu arau bat hutsetik.",
+    "createFromScratch": "Hutsetik sortu"
+  },
+  "noResults": {
+    "title": "Ez dago arau bat datorenik",
+    "description": "Saiatu bilaketa edo iragazkiak doitzen bilatzen duzuna aurkitzeko."
+  },
+  "templates": {
+    "welcomeMessage": "Ongi etorri mezua",
+    "welcomeMessageDesc": "Agurtu kide berriak mezu pertsonalizatu batekin kanal batean",
+    "autoRole": "Auto-rola",
+    "autoRoleDesc": "Automatikoki esleitu rol bat kide bat batzen denean",
+    "logDeleted": "Ezabatutako mezuak erregistratu",
+    "logDeletedDesc": "Bidali ezabatutako mezuen informazioa erregistro-kanal batera",
+    "boostThankYou": "Boost eskerrak",
+    "boostThankYouDesc": "Bidali DM bat zerbitzaria boost egiten duten erabiltzaileei eskerrak emateko",
+    "banLogger": "Debeku-erregistratzailea",
+    "banLoggerDesc": "Erregistratu debeku-gertaerak moderazio-kanal batean",
+    "autoThread": "Auto-haria",
+    "autoThreadDesc": "Automatikoki sortu hari bat mezu bat bidaltzen denean"
+  },
+  "deleteDialog": {
+    "title": "Araua ezabatu",
+    "description": "Ziur zaude \"{{name}}\" ezabatu nahi duzula? Ekintza hau ezin da desegin.",
+    "confirm": "Ezabatu"
+  },
+  "bulkDeleteDialog": {
+    "title": "Hautatutako arauak ezabatu",
+    "description": "Ziur zaude arau {{count}} ezabatu nahi duzula? Ekintza hau ezin da desegin.",
+    "description_other": "Ziur zaude {{count}} arau ezabatu nahi dituzula? Ekintza hau ezin da desegin.",
+    "confirm": "Denak ezabatu"
+  },
+  "toast": {
+    "deleted": "Araua ezabatuta",
+    "deleteFailed": "Ezin izan da araua ezabatu",
+    "enabled": "Araua gaituta",
+    "disabled": "Araua desgaituta",
+    "toggleFailed": "Ezin izan da arauaren egoera aldatu",
+    "duplicated": "Araua bikoiztuta",
+    "duplicateFailed": "Ezin izan da araua bikoiztu",
+    "bulkEnabled": "{{count}} arau gaituta",
+    "bulkDisabled": "{{count}} arau desgaituta",
+    "bulkEnableFailed": "Ezin izan dira arauak gaitu",
+    "bulkDisableFailed": "Ezin izan dira arauak desgaitu",
+    "bulkDeleted": "{{count}} arau ezabatuta",
+    "bulkDeleteFailed": "Ezin izan dira arauak ezabatu"
+  }
+}

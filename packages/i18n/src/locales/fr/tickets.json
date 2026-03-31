@@ -1,0 +1,77 @@
+{
+  "title": "Systeme de tickets",
+  "subtitle": "Creez des panneaux de tickets de support et gerez les tickets ouverts depuis le tableau de bord.",
+  "stats": {
+    "totalTickets": "Total des tickets",
+    "open": "Ouverts",
+    "claimed": "Pris en charge",
+    "panels": "Panneaux"
+  },
+  "tabs": {
+    "activeTickets": "Tickets actifs",
+    "panelBuilder": "Editeur de panneaux",
+    "settings": "Parametres"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Utilisateur",
+    "subject": "Sujet",
+    "status": "Statut",
+    "assignee": "Assigne a",
+    "created": "Cree le"
+  },
+  "statuses": {
+    "open": "Ouvert",
+    "claimed": "Pris en charge",
+    "closed": "Ferme"
+  },
+  "panelBuilder": {
+    "title": "Titre du panneau",
+    "channel": "Salon",
+    "buttonLabel": "Libelle du bouton",
+    "welcomeMessage": "Message de bienvenue",
+    "category": "Categorie du ticket",
+    "create": "Creer le panneau",
+    "edit": "Modifier le panneau",
+    "deploy": "Deployer le panneau"
+  },
+  "settings": {
+    "transcriptChannel": "Salon de transcription",
+    "transcriptChannelDesc": "Salon ou les transcriptions de tickets sont enregistrees a la fermeture.",
+    "maxTicketsPerUser": "Tickets maximum par utilisateur",
+    "maxTicketsPerUserDesc": "Nombre maximum de tickets ouverts qu'un seul utilisateur peut avoir.",
+    "closeConfirmation": "Confirmation de fermeture",
+    "closeConfirmationDesc": "Exiger une confirmation avant de fermer un ticket.",
+    "dmTranscript": "Transcription en MP",
+    "dmTranscriptDesc": "Envoyer une copie de la transcription au createur du ticket par MP."
+  },
+  "actions": {
+    "claim": "Prendre en charge",
+    "close": "Fermer",
+    "delete": "Supprimer",
+    "reopen": "Rouvrir"
+  },
+  "toast": {
+    "panelCreated": "Panneau de tickets cree",
+    "panelCreateFailed": "Echec de la creation du panneau de tickets",
+    "panelUpdated": "Panneau de tickets mis a jour",
+    "panelUpdateFailed": "Echec de la mise a jour du panneau de tickets",
+    "panelDeployed": "Panneau de tickets deploye",
+    "panelDeployFailed": "Echec du deploiement du panneau de tickets",
+    "ticketClaimed": "Ticket pris en charge",
+    "ticketClaimFailed": "Echec de la prise en charge du ticket",
+    "ticketClosed": "Ticket ferme",
+    "ticketCloseFailed": "Echec de la fermeture du ticket",
+    "ticketReopened": "Ticket rouvert",
+    "ticketReopenFailed": "Echec de la reouverture du ticket",
+    "ticketDeleted": "Ticket supprime",
+    "ticketDeleteFailed": "Echec de la suppression du ticket",
+    "settingsSaved": "Parametres de tickets enregistres",
+    "settingsFailed": "Echec de l'enregistrement des parametres de tickets"
+  },
+  "empty": {
+    "tickets": "Aucun ticket actif.",
+    "panels": "Aucun panneau de tickets cree pour l'instant."
+  },
+  "loading": "Chargement des tickets..."
+}

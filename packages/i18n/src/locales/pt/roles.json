@@ -1,0 +1,112 @@
+{
+  "title": "Paineis de cargos",
+  "subtitle": "Crie paineis de cargos autoatribuiveis usando botoes, menus suspensos ou reacoes.",
+  "stats": {
+    "totalPanels": "Total de paineis",
+    "deployed": "Implementados",
+    "totalRoles": "Total de cargos"
+  },
+  "tabs": {
+    "panels": "Paineis",
+    "preview": "Pre-visualizacao"
+  },
+  "table": {
+    "name": "Nome",
+    "type": "Tipo",
+    "mode": "Modo",
+    "roles": "Cargos",
+    "status": "Estado"
+  },
+  "panelTypes": {
+    "reaction": "Reacao",
+    "button": "Botao",
+    "dropdown": "Menu suspenso"
+  },
+  "panelModes": {
+    "toggle": "Alternar",
+    "unique": "Unico",
+    "verify": "Verificar"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Alternar (adicionar/remover)",
+    "unique": "Unico (um de cada vez)",
+    "verify": "Verificar (apenas adicionar)"
+  },
+  "status": {
+    "deployed": "Implementado",
+    "draft": "Rascunho"
+  },
+  "dialog": {
+    "createPanel": "Criar painel",
+    "editPanel": "Editar painel"
+  },
+  "panelList": {
+    "title": "Todos os paineis"
+  },
+  "form": {
+    "name": "Nome",
+    "namePlaceholder": "ex. Cargos de cor",
+    "type": "Tipo",
+    "mode": "Modo",
+    "channel": "Canal",
+    "channelPlaceholder": "Selecionar canal",
+    "minRoles": "Cargos minimos",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Cargos maximos",
+    "maxRolesPlaceholder": "Todos",
+    "embedSection": "Embed",
+    "embedTitle": "Titulo",
+    "embedTitlePlaceholder": "Titulo do painel (predefinido e o nome do painel)",
+    "embedDescription": "Descricao",
+    "embedDescriptionPlaceholder": "Texto de descricao",
+    "rolesCount": "Cargos ({{count}}/25)",
+    "addRole": "Adicionar cargo"
+  },
+  "entry": {
+    "role": "Cargo",
+    "rolePlaceholder": "Selecionar cargo",
+    "label": "Etiqueta",
+    "labelPlaceholder": "Etiqueta do botao",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "ex. star",
+    "description": "Descricao",
+    "descriptionPlaceholder": "Descricao da opcao",
+    "style": "Estilo"
+  },
+  "buttonStyles": {
+    "primary": "Principal",
+    "secondary": "Secundario",
+    "success": "Sucesso",
+    "danger": "Perigo"
+  },
+  "actions": {
+    "create": "Criar",
+    "update": "Atualizar",
+    "cancel": "Cancelar",
+    "deploy": "Implementar",
+    "delete": "Eliminar",
+    "addEntry": "Adicionar entrada",
+    "removeEntry": "Remover entrada"
+  },
+  "preview": {
+    "title": "Pre-visualizacao ao vivo",
+    "description": "Pre-visualize como os seus paineis irao aparecer no Discord.",
+    "selectRoles": "Selecionar cargos...",
+    "noPreview": "Nenhum painel para pre-visualizar."
+  },
+  "empty": "Nenhum painel de cargos criado ainda. Clique em \"Criar painel\" para comecar.",
+  "toast": {
+    "created": "Painel criado",
+    "createFailed": "Falha ao criar o painel",
+    "updated": "Painel atualizado",
+    "updateFailed": "Falha ao atualizar o painel",
+    "deleted": "Painel eliminado",
+    "deleteFailed": "Falha ao eliminar o painel",
+    "deployed": "Painel de cargos implementado no canal",
+    "deployFailed": "Falha ao enviar o painel",
+    "nameRequired": "O nome do painel e obrigatorio",
+    "channelRequired": "O canal e obrigatorio",
+    "maxRolesReached": "Maximo de 25 cargos por painel"
+  },
+  "loading": "A carregar paineis..."
+}

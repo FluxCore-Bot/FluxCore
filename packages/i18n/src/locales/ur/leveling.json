@@ -1,0 +1,120 @@
+{
+  "title": "[NEEDS TRANSLATION] Leveling System",
+  "subtitle": "[NEEDS TRANSLATION] Configure XP earning, level-up announcements, role rewards, and multipliers.",
+  "stats": {
+    "rankedMembers": "[NEEDS TRANSLATION] Ranked Members",
+    "roleRewards": "[NEEDS TRANSLATION] Role Rewards",
+    "systemStatus": "[NEEDS TRANSLATION] System Status",
+    "enabled": "[NEEDS TRANSLATION] Enabled",
+    "disabled": "[NEEDS TRANSLATION] Disabled"
+  },
+  "tabs": {
+    "leaderboard": "[NEEDS TRANSLATION] Leaderboard",
+    "settings": "[NEEDS TRANSLATION] Settings",
+    "roleRewards": "[NEEDS TRANSLATION] Role Rewards",
+    "exclusions": "[NEEDS TRANSLATION] Exclusions",
+    "multipliers": "[NEEDS TRANSLATION] Multipliers"
+  },
+  "table": {
+    "rank": "[NEEDS TRANSLATION] Rank",
+    "userId": "[NEEDS TRANSLATION] User ID",
+    "level": "[NEEDS TRANSLATION] Level",
+    "xp": "[NEEDS TRANSLATION] XP",
+    "messages": "[NEEDS TRANSLATION] Messages",
+    "voiceTime": "[NEEDS TRANSLATION] Voice Time"
+  },
+  "settings": {
+    "title": "[NEEDS TRANSLATION] Leveling Settings",
+    "enabled": "[NEEDS TRANSLATION] Enable Leveling",
+    "enabledDesc": "[NEEDS TRANSLATION] Toggle the entire leveling system on or off.",
+    "xpPerMessage": "[NEEDS TRANSLATION] XP per Message",
+    "xpPerMessageDesc": "[NEEDS TRANSLATION] Base XP awarded per message (randomness of 0-9 is added).",
+    "xpCooldown": "[NEEDS TRANSLATION] XP Cooldown (seconds)",
+    "xpCooldownDesc": "[NEEDS TRANSLATION] Minimum time between XP grants per user.",
+    "voiceXpEnabled": "[NEEDS TRANSLATION] Voice XP",
+    "voiceXpEnabledDesc": "[NEEDS TRANSLATION] Grant XP for time spent in voice channels.",
+    "voiceXpPerMinute": "[NEEDS TRANSLATION] Voice XP per Minute",
+    "voiceXpPerMinuteDesc": "[NEEDS TRANSLATION] XP awarded per minute in voice.",
+    "levelUpAnnouncements": "[NEEDS TRANSLATION] Level-up Announcements",
+    "levelUpAnnouncementsDesc": "[NEEDS TRANSLATION] Announce when a member levels up.",
+    "announceDest": "[NEEDS TRANSLATION] Announcement Destination",
+    "announceDestHint": "[NEEDS TRANSLATION] You can also enter a channel ID directly in the input above.",
+    "announceDestSameChannel": "[NEEDS TRANSLATION] Same Channel",
+    "announceDestDM": "[NEEDS TRANSLATION] Direct Message",
+    "announceMessage": "[NEEDS TRANSLATION] Announcement Message",
+    "announceMessagePlaceholder": "[NEEDS TRANSLATION] {user} just reached **Level {level}**!",
+    "announceMessageVars": "[NEEDS TRANSLATION] Variables: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "[NEEDS TRANSLATION] Role Rewards",
+    "description": "[NEEDS TRANSLATION] Automatically assign roles when members reach certain levels.",
+    "addReward": "[NEEDS TRANSLATION] Add Reward",
+    "addRewardTitle": "[NEEDS TRANSLATION] Add Role Reward",
+    "level": "[NEEDS TRANSLATION] Level",
+    "levelPrefix": "[NEEDS TRANSLATION] Level {{level}}",
+    "roleId": "[NEEDS TRANSLATION] Role ID",
+    "levelPlaceholder": "[NEEDS TRANSLATION] e.g. 5",
+    "rolePlaceholder": "[NEEDS TRANSLATION] e.g. 123456789",
+    "removeReward": "[NEEDS TRANSLATION] Remove",
+    "noRewards": "[NEEDS TRANSLATION] No role rewards configured."
+  },
+  "exclusions": {
+    "title": "[NEEDS TRANSLATION] XP Exclusions",
+    "description": "[NEEDS TRANSLATION] Channels and roles that do not earn XP.",
+    "noXpChannels": "[NEEDS TRANSLATION] No-XP Channels (comma-separated IDs)",
+    "noXpChannelsPlaceholder": "[NEEDS TRANSLATION] e.g. 123456789, 987654321",
+    "noXpRoles": "[NEEDS TRANSLATION] No-XP Roles (comma-separated IDs)",
+    "noXpRolesPlaceholder": "[NEEDS TRANSLATION] e.g. 123456789, 987654321",
+    "save": "[NEEDS TRANSLATION] Save Exclusions"
+  },
+  "multipliers": {
+    "title": "[NEEDS TRANSLATION] XP Multipliers",
+    "description": "[NEEDS TRANSLATION] Set XP multipliers per channel or role. A multiplier of 2 doubles the XP earned.",
+    "channelMultipliers": "[NEEDS TRANSLATION] Channel Multipliers",
+    "roleMultipliers": "[NEEDS TRANSLATION] Role Multipliers",
+    "channelId": "[NEEDS TRANSLATION] Channel ID",
+    "roleId": "[NEEDS TRANSLATION] Role ID",
+    "multiplier": "[NEEDS TRANSLATION] Multiplier",
+    "type": "[NEEDS TRANSLATION] Type",
+    "typeChannel": "[NEEDS TRANSLATION] Channel",
+    "typeRole": "[NEEDS TRANSLATION] Role",
+    "id": "[NEEDS TRANSLATION] ID",
+    "idPlaceholder": "[NEEDS TRANSLATION] Channel or Role ID",
+    "value": "[NEEDS TRANSLATION] Multiplier",
+    "valuePlaceholder": "[NEEDS TRANSLATION] e.g. 2",
+    "add": "[NEEDS TRANSLATION] Add Multiplier",
+    "addTitle": "[NEEDS TRANSLATION] Add Multiplier",
+    "multiplierSuffix": "[NEEDS TRANSLATION] {{value}}x",
+    "noMultipliers": "[NEEDS TRANSLATION] No XP multipliers configured."
+  },
+  "pagination": {
+    "previous": "[NEEDS TRANSLATION] Previous",
+    "next": "[NEEDS TRANSLATION] Next",
+    "pageInfo": "[NEEDS TRANSLATION] Page {{page}} of {{totalPages}} ({{total}} total)"
+  },
+  "loading": "[NEEDS TRANSLATION] Loading leaderboard...",
+  "loadingGeneric": "[NEEDS TRANSLATION] Loading...",
+  "emptyLeaderboard": "[NEEDS TRANSLATION] No members have earned XP yet.",
+  "toast": {
+    "saved": "[NEEDS TRANSLATION] Leveling settings saved",
+    "saveFailed": "[NEEDS TRANSLATION] Failed to update setting",
+    "rewardAdded": "[NEEDS TRANSLATION] Reward added",
+    "rewardAddFailed": "[NEEDS TRANSLATION] Failed to add reward",
+    "rewardRemoved": "[NEEDS TRANSLATION] Reward removed",
+    "rewardRemoveFailed": "[NEEDS TRANSLATION] Failed to remove reward",
+    "multiplierAdded": "[NEEDS TRANSLATION] Multiplier added",
+    "multiplierAddFailed": "[NEEDS TRANSLATION] Failed to add multiplier",
+    "multiplierRemoved": "[NEEDS TRANSLATION] Multiplier removed",
+    "multiplierRemoveFailed": "[NEEDS TRANSLATION] Failed to remove multiplier",
+    "exclusionUpdated": "[NEEDS TRANSLATION] Exclusions saved",
+    "exclusionFailed": "[NEEDS TRANSLATION] Failed to save exclusions",
+    "levelValidation": "[NEEDS TRANSLATION] Level must be between 1 and 100",
+    "roleIdRequired": "[NEEDS TRANSLATION] Role ID is required",
+    "multiplierIdRequired": "[NEEDS TRANSLATION] ID and multiplier value are required",
+    "multiplierRange": "[NEEDS TRANSLATION] Multiplier must be between 0 and 10"
+  },
+  "formatters": {
+    "voiceTime": "[NEEDS TRANSLATION] {{hours}}h {{minutes}}m",
+    "voiceTimeMinutesOnly": "[NEEDS TRANSLATION] {{minutes}}m"
+  }
+}

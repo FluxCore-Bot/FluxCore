@@ -1,0 +1,118 @@
+{
+  "title": "Peranan & Kebenaran",
+  "subtitle": "Kawal siapa yang boleh mengakses dan menguruskan setiap modul dashboard.",
+  "actions": {
+    "createRole": "Cipta Peranan"
+  },
+  "permissionSystem": {
+    "title": "Sistem Kebenaran",
+    "active": "Aktif — pentadbir dihadkan kepada kebenaran yang ditetapkan.",
+    "inactive": "Tidak Aktif — semua pentadbir dengan MANAGE_GUILD mempunyai akses penuh.",
+    "enabledToast": "Sistem kebenaran diaktifkan",
+    "disabledToast": "Sistem kebenaran dinyahaktifkan — semua pentadbir mempunyai akses penuh"
+  },
+  "warning": {
+    "disabled": "Sistem kebenaran dinyahaktifkan. Semua pentadbir dashboard kini mempunyai akses penuh. Aktifkan di atas untuk menguatkuasakan kebenaran granular."
+  },
+  "tabs": {
+    "roles": "Peranan",
+    "auditLog": "Log Audit"
+  },
+  "roleList": {
+    "title": "Peranan Dashboard",
+    "empty": "Belum ada peranan yang dicipta.",
+    "selectHint": "Pilih peranan untuk diedit, atau cipta yang baru.",
+    "default": "Lalai",
+    "name": "Nama",
+    "members": "Ahli",
+    "permissions": "Kebenaran",
+    "edit": "Edit",
+    "delete": "Padam"
+  },
+  "presets": {
+    "title": "Tambah Pantas daripada Pratetap",
+    "createdToast": "Peranan \"{{name}}\" dicipta"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} ahli",
+    "memberCount_plural": "{{count}} ahli",
+    "name": "Nama Peranan",
+    "color": "Warna",
+    "defaultRole": "Peranan lalai",
+    "permissions": "Kebenaran",
+    "allBadge": "Semua",
+    "discordRoles": "Peranan Discord"
+  },
+  "roleForm": {
+    "name": "Nama Peranan",
+    "discordRoles": "Peranan Discord",
+    "permissions": "Kebenaran",
+    "create": "Cipta Peranan",
+    "update": "Kemaskini Peranan",
+    "cancel": "Batal"
+  },
+  "createDialog": {
+    "title": "Cipta Peranan Dashboard",
+    "name": "Nama",
+    "namePlaceholder": "cth. Moderator",
+    "color": "Warna"
+  },
+  "permissionCategories": {
+    "actions": "Tindakan & Automasi",
+    "music": "Muzik",
+    "tempvoice": "TempVoice",
+    "welcome": "Selamat Datang & Selamat Tinggal",
+    "moderation": "Moderasi",
+    "logging": "Pengelogan",
+    "leveling": "Leveling",
+    "roles": "Panel Peranan",
+    "tickets": "Tiket",
+    "suggestions": "Cadangan",
+    "starboard": "Starboard",
+    "giveaways": "Giveaway",
+    "security": "Keselamatan",
+    "scheduled": "Mesej Berjadual",
+    "commands": "Arahan Tersuai",
+    "settings": "Tetapan Pelayan"
+  },
+  "audit": {
+    "table": {
+      "user": "Pengguna",
+      "action": "Tindakan",
+      "target": "Sasaran",
+      "timestamp": "Bila"
+    },
+    "noEntries": "Belum ada entri log audit."
+  },
+  "pagination": {
+    "previous": "Sebelumnya",
+    "next": "Seterusnya",
+    "page": "Halaman {{current}} daripada {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Peranan \"{{name}}\" dicipta",
+    "roleCreateFailed": "Gagal mencipta peranan",
+    "roleUpdated": "Peranan dikemaskini",
+    "roleUpdateFailed": "Gagal mengemaskini peranan",
+    "roleDeleted": "Peranan dipadam",
+    "roleDeleteFailed": "Gagal memadam peranan"
+  },
+  "confirm": {
+    "deleteTitle": "Padam peranan \"{{name}}\"?",
+    "deleteMessage": "Ini akan membuang peranan dan menyahperuntukkan semua ahli. Tindakan ini tidak boleh dibuat asal.",
+    "deleteRole": "Adakah anda pasti mahu memadam peranan ini? Ahli akan kehilangan kebenaran yang ditetapkan."
+  },
+  "saveButton": {
+    "saving": "Menyimpan...",
+    "save": "Simpan Perubahan"
+  },
+  "deleteButton": {
+    "deleting": "Memadam...",
+    "delete": "Padam"
+  },
+  "createButton": {
+    "creating": "Mencipta...",
+    "create": "Cipta"
+  },
+  "loading": "Memuatkan kebenaran..."
+}

@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore vadibas panelis"
+  },
+  "status": {
+    "online": "Tiesaiste",
+    "offline": "Bezsaiste",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Parskats",
+    "automation": "Automatizacija",
+    "music": "Muzika",
+    "tempvoice": "TempVoice",
+    "welcome": "Sveiciens",
+    "moderation": "Moderacija",
+    "warnings": "Bridinajumi",
+    "rolePanels": "Lomu paneli",
+    "leveling": "Limenu sistema",
+    "scheduled": "Ieplanotie",
+    "commands": "Komandas",
+    "security": "Drosiba",
+    "tickets": "Biletes",
+    "giveaways": "Izlozes",
+    "suggestions": "Ierosinajumi",
+    "starboard": "Starboard",
+    "logs": "Zurnals",
+    "permissions": "Atlaujas",
+    "settings": "Iestatijumi"
+  },
+  "actions": {
+    "save": "Saglabar",
+    "cancel": "Atcelt",
+    "delete": "Dzest",
+    "edit": "Rediget",
+    "create": "Izveidot",
+    "add": "Pievienot",
+    "remove": "Nonemt",
+    "confirm": "Apstiprint",
+    "close": "Aizvart",
+    "back": "Atpakal",
+    "next": "Talak",
+    "search": "Meklet",
+    "filter": "Filtret",
+    "refresh": "Atjaunot",
+    "reset": "Atiestatit",
+    "enable": "Iespejot",
+    "disable": "Atspejot",
+    "copy": "Kopet",
+    "export": "Eksportet",
+    "import": "Importet",
+    "submit": "Iesniegt",
+    "loading": "Ielade...",
+    "retry": "Megint velreiz"
+  },
+  "labels": {
+    "enabled": "Iespejots",
+    "disabled": "Atspejots",
+    "active": "Aktivs",
+    "inactive": "Neaktivs",
+    "none": "Nav",
+    "all": "Visi",
+    "custom": "Pielgots",
+    "default": "Noklusetais",
+    "required": "Obligats",
+    "optional": "Neobligats",
+    "name": "Nosaukums",
+    "description": "Apraksts",
+    "type": "Tips",
+    "status": "Statuss",
+    "channel": "Kanals",
+    "role": "Loma",
+    "member": "Dalibnieks",
+    "duration": "Ilgums",
+    "reason": "Iemesls",
+    "language": "Valoda"
+  },
+  "header": {
+    "notifications": "Pazinojumi",
+    "settings": "Iestatijumi",
+    "logout": "Iziet",
+    "toggleSidebar": "Parlikt sanu joslu",
+    "refreshData": "Atjaunot Discord datus"
+  },
+  "sidebar": {
+    "closeSidebar": "Aizvart sanu joslu",
+    "addToServer": "Pievienot serverim",
+    "docs": "Dokumentacija",
+    "support": "Atbalsts",
+    "backToServers": "Atpakal uz serveriem"
+  },
+  "empty": {
+    "noData": "Nav pieejamu datu",
+    "noResults": "Nav rezultatu",
+    "noItems": "Pagaidam nav elementu"
+  },
+  "time": {
+    "seconds": "sekundes",
+    "minutes": "minutes",
+    "hours": "stundas",
+    "days": "dienas",
+    "ago": "pirms {{time}}",
+    "in": "pec {{time}}"
+  },
+  "confirm": {
+    "title": "Vai esat parliecinats?",
+    "deleteTitle": "Apstiprinat dzesanu",
+    "deleteMessage": "So darbibu nevar atcelt.",
+    "unsavedChanges": "Jums ir nesaglabaras izmainas. Vai tiessam velaties aiziet?"
+  },
+  "accessibility": {
+    "skipToContent": "Pariet uz galveno saturu",
+    "loading": "Ielade saturu",
+    "loaded": "Saturs ieladers",
+    "error": "Radusies kluda",
+    "menuOpen": "Izvalne ir atverta",
+    "menuClosed": "Izvalne ir aizverta"
+  }
+}

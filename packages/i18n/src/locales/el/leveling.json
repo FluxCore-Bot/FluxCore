@@ -1,0 +1,120 @@
+{
+  "title": "Σύστημα επιπέδων",
+  "subtitle": "Ρυθμίστε την απόκτηση XP, ανακοινώσεις ανόδου επιπέδου, ανταμοιβές ρόλων και πολλαπλασιαστές.",
+  "stats": {
+    "rankedMembers": "Κατατεταγμένα μέλη",
+    "roleRewards": "Ανταμοιβές ρόλων",
+    "systemStatus": "Κατάσταση συστήματος",
+    "enabled": "Ενεργό",
+    "disabled": "Ανενεργό"
+  },
+  "tabs": {
+    "leaderboard": "Κατάταξη",
+    "settings": "Ρυθμίσεις",
+    "roleRewards": "Ανταμοιβές ρόλων",
+    "exclusions": "Εξαιρέσεις",
+    "multipliers": "Πολλαπλασιαστές"
+  },
+  "table": {
+    "rank": "Κατάταξη",
+    "userId": "ID χρήστη",
+    "level": "Επίπεδο",
+    "xp": "XP",
+    "messages": "Μηνύματα",
+    "voiceTime": "Χρόνος φωνής"
+  },
+  "settings": {
+    "title": "Ρυθμίσεις επιπέδων",
+    "enabled": "Ενεργοποίηση επιπέδων",
+    "enabledDesc": "Ενεργοποίηση ή απενεργοποίηση ολόκληρου του συστήματος επιπέδων.",
+    "xpPerMessage": "XP ανά μήνυμα",
+    "xpPerMessageDesc": "Βασικά XP που απονέμονται ανά μήνυμα (προστίθεται τυχαιότητα 0-9).",
+    "xpCooldown": "Cooldown XP (δευτερόλεπτα)",
+    "xpCooldownDesc": "Ελάχιστος χρόνος μεταξύ παραχωρήσεων XP ανά χρήστη.",
+    "voiceXpEnabled": "XP φωνής",
+    "voiceXpEnabledDesc": "Απονομή XP για χρόνο σε φωνητικά κανάλια.",
+    "voiceXpPerMinute": "XP φωνής ανά λεπτό",
+    "voiceXpPerMinuteDesc": "XP που απονέμονται ανά λεπτό σε φωνητικό κανάλι.",
+    "levelUpAnnouncements": "Ανακοινώσεις ανόδου επιπέδου",
+    "levelUpAnnouncementsDesc": "Ανακοίνωση όταν ένα μέλος ανεβαίνει επίπεδο.",
+    "announceDest": "Προορισμός ανακοίνωσης",
+    "announceDestHint": "Μπορείτε επίσης να εισάγετε απευθείας ένα ID καναλιού στο πεδίο παραπάνω.",
+    "announceDestSameChannel": "Ίδιο κανάλι",
+    "announceDestDM": "Προσωπικό μήνυμα",
+    "announceMessage": "Μήνυμα ανακοίνωσης",
+    "announceMessagePlaceholder": "{user} μόλις έφτασε στο **Επίπεδο {level}**!",
+    "announceMessageVars": "Μεταβλητές: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Ανταμοιβές ρόλων",
+    "description": "Αυτόματη ανάθεση ρόλων όταν τα μέλη φτάνουν σε ορισμένα επίπεδα.",
+    "addReward": "Προσθήκη ανταμοιβής",
+    "addRewardTitle": "Προσθήκη ανταμοιβής ρόλου",
+    "level": "Επίπεδο",
+    "levelPrefix": "Επίπεδο {{level}}",
+    "roleId": "ID ρόλου",
+    "levelPlaceholder": "π.χ. 5",
+    "rolePlaceholder": "π.χ. 123456789",
+    "removeReward": "Αφαίρεση",
+    "noRewards": "Δεν έχουν ρυθμιστεί ανταμοιβές ρόλων."
+  },
+  "exclusions": {
+    "title": "Εξαιρέσεις XP",
+    "description": "Κανάλια και ρόλοι που δεν κερδίζουν XP.",
+    "noXpChannels": "Κανάλια χωρίς XP (ID διαχωρισμένα με κόμμα)",
+    "noXpChannelsPlaceholder": "π.χ. 123456789, 987654321",
+    "noXpRoles": "Ρόλοι χωρίς XP (ID διαχωρισμένα με κόμμα)",
+    "noXpRolesPlaceholder": "π.χ. 123456789, 987654321",
+    "save": "Αποθήκευση εξαιρέσεων"
+  },
+  "multipliers": {
+    "title": "Πολλαπλασιαστές XP",
+    "description": "Ορίστε πολλαπλασιαστές XP ανά κανάλι ή ρόλο. Ένας πολλαπλασιαστής 2 διπλασιάζει τα κερδισμένα XP.",
+    "channelMultipliers": "Πολλαπλασιαστές καναλιών",
+    "roleMultipliers": "Πολλαπλασιαστές ρόλων",
+    "channelId": "ID καναλιού",
+    "roleId": "ID ρόλου",
+    "multiplier": "Πολλαπλασιαστής",
+    "type": "Τύπος",
+    "typeChannel": "Κανάλι",
+    "typeRole": "Ρόλος",
+    "id": "ID",
+    "idPlaceholder": "ID καναλιού ή ρόλου",
+    "value": "Πολλαπλασιαστής",
+    "valuePlaceholder": "π.χ. 2",
+    "add": "Προσθήκη πολλαπλασιαστή",
+    "addTitle": "Προσθήκη πολλαπλασιαστή",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Δεν έχουν ρυθμιστεί πολλαπλασιαστές XP."
+  },
+  "pagination": {
+    "previous": "Προηγούμενη",
+    "next": "Επόμενη",
+    "pageInfo": "Σελίδα {{page}} από {{totalPages}} ({{total}} συνολικά)"
+  },
+  "loading": "Φόρτωση κατάταξης...",
+  "loadingGeneric": "Φόρτωση...",
+  "emptyLeaderboard": "Κανένα μέλος δεν έχει κερδίσει XP ακόμα.",
+  "toast": {
+    "saved": "Οι ρυθμίσεις επιπέδων αποθηκεύτηκαν",
+    "saveFailed": "Αποτυχία ενημέρωσης ρύθμισης",
+    "rewardAdded": "Η ανταμοιβή προστέθηκε",
+    "rewardAddFailed": "Αποτυχία προσθήκης ανταμοιβής",
+    "rewardRemoved": "Η ανταμοιβή αφαιρέθηκε",
+    "rewardRemoveFailed": "Αποτυχία αφαίρεσης ανταμοιβής",
+    "multiplierAdded": "Ο πολλαπλασιαστής προστέθηκε",
+    "multiplierAddFailed": "Αποτυχία προσθήκης πολλαπλασιαστή",
+    "multiplierRemoved": "Ο πολλαπλασιαστής αφαιρέθηκε",
+    "multiplierRemoveFailed": "Αποτυχία αφαίρεσης πολλαπλασιαστή",
+    "exclusionUpdated": "Οι εξαιρέσεις αποθηκεύτηκαν",
+    "exclusionFailed": "Αποτυχία αποθήκευσης εξαιρέσεων",
+    "levelValidation": "Το επίπεδο πρέπει να είναι μεταξύ 1 και 100",
+    "roleIdRequired": "Το ID ρόλου είναι υποχρεωτικό",
+    "multiplierIdRequired": "Απαιτούνται ID και τιμή πολλαπλασιαστή",
+    "multiplierRange": "Ο πολλαπλασιαστής πρέπει να είναι μεταξύ 0 και 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}ω {{minutes}}λ",
+    "voiceTimeMinutesOnly": "{{minutes}}λ"
+  }
+}

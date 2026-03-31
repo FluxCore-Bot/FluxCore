@@ -1,0 +1,41 @@
+{
+  "title": "Starboard",
+  "subtitle": "Heben Sie die besten Nachrichten hervor, indem Sie Stern-Reaktionen in einem dedizierten Kanal sammeln.",
+  "tabs": {
+    "settings": "Einstellungen",
+    "starredMessages": "Markierte Nachrichten"
+  },
+  "settings": {
+    "title": "Starboard-Konfiguration",
+    "description": "Konfigurieren Sie, wann und wo markierte Nachrichten gepostet werden.",
+    "channelId": "Starboard-Kanal",
+    "channelIdDesc": "Der Kanal, in dem markierte Nachrichten gepostet werden.",
+    "starEmoji": "Stern-Emoji",
+    "starEmojiDesc": "Das Emoji zum Markieren von Nachrichten. Standardmaessig das Stern-Emoji.",
+    "threshold": "Stern-Schwelle",
+    "thresholdDesc": "Mindestanzahl an Reaktionen, um eine Nachricht im Starboard zu posten.",
+    "selfStar": "Selbst-Stern",
+    "selfStarDesc": "Nachrichtenautoren erlauben, ihre eigenen Nachrichten zu markieren.",
+    "nsfwAllowed": "NSFW erlaubt",
+    "nsfwAllowedDesc": "Nachrichten aus NSFW-Kanaelen im Starboard zulassen.",
+    "ignoredChannels": "Ignorierte Kanaele",
+    "ignoredChannelsDesc": "Nachrichten aus diesen Kanaelen erscheinen nie im Starboard."
+  },
+  "messages": {
+    "table": {
+      "original": "Originalnachricht",
+      "stars": "Sterne",
+      "channel": "Kanal",
+      "date": "Datum"
+    },
+    "noMessages": "Noch keine markierten Nachrichten."
+  },
+  "toast": {
+    "saved": "Starboard-Einstellungen gespeichert",
+    "saveFailed": "Starboard-Einstellungen konnten nicht gespeichert werden"
+  },
+  "actions": {
+    "save": "Speichern",
+    "saving": "Speichern..."
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "title": "Moderavimas",
+  "subtitle": "Perziurekite ir valdykite moderavimo atvejus, konfigurukite bausniu nustatymus.",
+  "stats": {
+    "totalCases": "Viso atveju",
+    "activeTempbans": "Aktyvus laik. draudimai",
+    "last24h": "Per 24 val."
+  },
+  "cases": "Atvejai",
+  "actions": {
+    "ban": "Draudimas",
+    "tempban": "Laikinas draudimas",
+    "kick": "Ismetimas",
+    "timeout": "Laikinas nutildymas",
+    "softban": "Minkstasis draudimas",
+    "warn": "Ispejimas",
+    "note": "Pastaba"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Veiksmas",
+    "target": "Tikslas",
+    "moderator": "Moderatorius",
+    "reason": "Priezastis",
+    "date": "Data",
+    "actions": "Veiksmai",
+    "noCases": "Atveju nerasta.",
+    "noReason": "Be priezasties"
+  },
+  "filter": {
+    "userPlaceholder": "Filtruoti pagal naudotojo ID...",
+    "allActions": "Visi veiksmai"
+  },
+  "pagination": {
+    "previous": "Ankstesnis",
+    "next": "Kitas",
+    "page": "Puslapis {{page}} is {{total}}"
+  },
+  "editDialog": {
+    "title": "Redaguoti atvejo #{{id}} priezasti",
+    "placeholder": "Iveskite nauja priezasti...",
+    "saving": "Issaugoma..."
+  },
+  "editReason": "Redaguoti priezasti",
+  "deleteCase": "Istrinti atvej",
+  "deleteConfirm": "Ar tikrai norite istrinti si atvej?",
+  "settings": {
+    "title": "Nustatymai",
+    "dmOnPunishment": "Pranesimas apie bausme",
+    "dmOnPunishmentDesc": "Siusti privatia zinute naudotojams, kai jie yra nubaudziami (draudimas, ismetimas, nutildymas).",
+    "modLogChannel": "Moderavimo zurnalas",
+    "modLogChannelDesc": "Kanalas, kuriame registruojami moderavimo veiksmai."
+  }
+}

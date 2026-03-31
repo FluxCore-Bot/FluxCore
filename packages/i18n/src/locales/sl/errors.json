@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Niste prijavljeni",
+    "sessionExpired": "Seja je potekla",
+    "missingCode": "Manjka parameter kode",
+    "tokenExchangeFailed": "Izmenjava žetona ni uspela",
+    "failedToFetchUser": "Pridobivanje podatkov o uporabniku ni uspelo"
+  },
+  "permissions": {
+    "noGuildPermission": "Ni dovoljenja za ta strežnik",
+    "botNotInGuild": "Bot ni na tem strežniku",
+    "insufficientPermissions": "Nezadostna dovoljenja",
+    "permissionsNotResolved": "Dovoljenja niso bila razrešena",
+    "requiresPermission": "To dejanje zahteva dovoljenje \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Neveljaven vnos",
+    "missingField": "Manjka obvezno polje: {{field}}",
+    "invalidFormat": "Neveljavna oblika za {{field}}",
+    "tooLong": "{{field}} presega največjo dolžino {{max}} znakov",
+    "tooShort": "{{field}} mora imeti vsaj {{min}} znakov",
+    "outOfRange": "{{field}} mora biti med {{min}} in {{max}}"
+  },
+  "resources": {
+    "notFound": "Ni najdeno",
+    "alreadyExists": "{{resource}} že obstaja",
+    "limitReached": "Največ {{max}} {{resource}} na strežnik",
+    "createFailed": "Ustvarjanje {{resource}} ni uspelo",
+    "updateFailed": "Posodabljanje {{resource}} ni uspelo",
+    "deleteFailed": "Brisanje {{resource}} ni uspelo"
+  },
+  "server": {
+    "internalError": "Notranja napaka strežnika",
+    "serviceUnavailable": "Storitev je začasno nedostopna",
+    "rateLimited": "Preveč zahtev. Prosimo, poskusite znova kasneje."
+  },
+  "csrf": {
+    "invalidToken": "Neveljaven ali manjkajoč žeton CSRF"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "title": "Lệnh Tùy Chỉnh",
+  "subtitle": "Tạo bộ phản hồi tự động và lệnh tiền tố được kích hoạt bởi tin nhắn.",
+  "stats": {
+    "totalCommands": "Tổng Lệnh",
+    "enabled": "Đang Bật",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Lệnh",
+    "variables": "Biến"
+  },
+  "table": {
+    "name": "Tên",
+    "trigger": "Kích Hoạt",
+    "response": "Phản Hồi",
+    "cooldown": "Thời Gian Chờ",
+    "status": "Trạng Thái"
+  },
+  "triggerTypes": {
+    "command": "!lệnh",
+    "keyword": "Từ Khóa",
+    "startsWith": "Bắt Đầu Bằng",
+    "regex": "Regex",
+    "prefixCommand": "Lệnh Tiền Tố (!tên)",
+    "keywordContains": "Từ Khóa (chứa)"
+  },
+  "dialog": {
+    "createCommand": "Tạo Lệnh",
+    "editCommand": "Chỉnh Sửa Lệnh"
+  },
+  "form": {
+    "commandName": "Tên Lệnh",
+    "triggerText": "Văn Bản Kích Hoạt",
+    "regexPattern": "Mẫu Regex",
+    "triggerType": "Loại Kích Hoạt",
+    "response": "Phản Hồi",
+    "message": "Tin Nhắn",
+    "embedTitle": "Tiêu Đề Embed",
+    "embedDescription": "Mô Tả Embed",
+    "color": "Màu Sắc",
+    "footer": "Chân Trang"
+  },
+  "options": {
+    "cooldown": "Thời Gian Chờ (giây)",
+    "enabled": "Đang Bật",
+    "enabledDesc": "Lệnh này có đang hoạt động không",
+    "deleteTrigger": "Xóa Tin Nhắn Kích Hoạt",
+    "deleteTriggerDesc": "Tự động xóa tin nhắn đã kích hoạt lệnh này.",
+    "dmResponse": "Phản Hồi Qua DM",
+    "dmResponseDesc": "Gửi phản hồi dưới dạng tin nhắn trực tiếp thay vì trong kênh."
+  },
+  "restrictions": {
+    "title": "Hạn Chế",
+    "allowedChannels": "Kênh Được Phép (trống = tất cả)",
+    "allowedRoles": "Vai Trò Được Phép (trống = tất cả mọi người)",
+    "addChannel": "Thêm Kênh",
+    "addRole": "Thêm Vai Trò"
+  },
+  "actions": {
+    "create": "Tạo",
+    "update": "Cập Nhật",
+    "cancel": "Hủy",
+    "addAction": "Thêm Hành Động",
+    "addRole": "Thêm Vai Trò",
+    "removeRole": "Xóa Vai Trò"
+  },
+  "actionsSection": {
+    "title": "Hành Động ({{count}}/5)",
+    "noActions": "Chưa có hành động nào được cấu hình. Thêm hành động để xác định lệnh này làm gì.",
+    "maxActions": "Tối đa 5 hành động mỗi lệnh"
+  },
+  "variables": {
+    "title": "Biến Mẫu",
+    "description": "Sử dụng các biến này trong phản hồi lệnh của bạn. Chúng sẽ được thay thế bằng giá trị thực khi lệnh được kích hoạt.",
+    "table": {
+      "variable": "Biến",
+      "description": "Mô Tả"
+    },
+    "entries": {
+      "user": "{user} — Đề cập đến người dùng đã kích hoạt lệnh",
+      "username": "{username} — Tên hiển thị của người dùng",
+      "userId": "{userId} — ID của người dùng",
+      "server": "{server} — Tên máy chủ",
+      "channel": "{channel} — Đề cập đến kênh hiện tại",
+      "channelName": "{channelName} — Tên kênh",
+      "memberCount": "{memberCount} — Tổng số thành viên máy chủ"
+    }
+  },
+  "toast": {
+    "created": "Đã tạo lệnh",
+    "createFailed": "Tạo lệnh thất bại",
+    "updated": "Đã cập nhật lệnh",
+    "updateFailed": "Cập nhật lệnh thất bại",
+    "deleted": "Đã xóa lệnh",
+    "deleteFailed": "Xóa lệnh thất bại",
+    "toggleEnabled": "Đã bật lệnh",
+    "toggleDisabled": "Đã tắt lệnh",
+    "toggleFailed": "Thay đổi trạng thái lệnh thất bại"
+  },
+  "empty": "Chưa có lệnh tùy chỉnh nào được tạo.",
+  "loading": "Đang tải lệnh...",
+  "badge": {
+    "active": "Hoạt Động",
+    "disabled": "Đã Tắt",
+    "text": "Văn Bản",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Tên lệnh là bắt buộc"
+  },
+  "triggerPrefix": "Kích hoạt: !{{name}}"
+}

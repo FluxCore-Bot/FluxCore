@@ -1,0 +1,113 @@
+{
+  "title": "Arahan Tersuai",
+  "subtitle": "Cipta responden automatik dan arahan prefix yang dicetuskan oleh mesej.",
+  "stats": {
+    "totalCommands": "Jumlah Arahan",
+    "enabled": "Diaktifkan",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Arahan",
+    "variables": "Pemboleh Ubah"
+  },
+  "table": {
+    "name": "Nama",
+    "trigger": "Pencetus",
+    "response": "Respons",
+    "cooldown": "Cooldown",
+    "status": "Status"
+  },
+  "triggerTypes": {
+    "command": "!arahan",
+    "keyword": "Kata Kunci",
+    "startsWith": "Bermula Dengan",
+    "regex": "Regex",
+    "prefixCommand": "Arahan Prefix (!nama)",
+    "keywordContains": "Kata Kunci (mengandungi)"
+  },
+  "dialog": {
+    "createCommand": "Cipta Arahan",
+    "editCommand": "Edit Arahan"
+  },
+  "form": {
+    "commandName": "Nama Arahan",
+    "triggerText": "Teks Pencetus",
+    "regexPattern": "Corak Regex",
+    "triggerType": "Jenis Pencetus",
+    "response": "Respons",
+    "message": "Mesej",
+    "embedTitle": "Tajuk Embed",
+    "embedDescription": "Penerangan Embed",
+    "color": "Warna",
+    "footer": "Footer"
+  },
+  "options": {
+    "cooldown": "Cooldown (saat)",
+    "enabled": "Diaktifkan",
+    "enabledDesc": "Sama ada arahan ini aktif",
+    "deleteTrigger": "Padam Mesej Pencetus",
+    "deleteTriggerDesc": "Padam secara automatik mesej yang mencetuskan arahan ini.",
+    "dmResponse": "Respons DM",
+    "dmResponseDesc": "Hantar respons sebagai mesej terus dan bukannya di saluran."
+  },
+  "restrictions": {
+    "title": "Sekatan",
+    "allowedChannels": "Saluran yang Dibenarkan (kosong = semua)",
+    "allowedRoles": "Peranan yang Dibenarkan (kosong = semua orang)",
+    "addChannel": "Tambah Saluran",
+    "addRole": "Tambah Peranan"
+  },
+  "actions": {
+    "create": "Cipta",
+    "update": "Kemaskini",
+    "cancel": "Batal",
+    "addAction": "Tambah Tindakan",
+    "addRole": "Tambah Peranan",
+    "removeRole": "Buang Peranan"
+  },
+  "actionsSection": {
+    "title": "Tindakan ({{count}}/5)",
+    "noActions": "Tiada tindakan yang dikonfigurasi. Tambah tindakan untuk menentukan apa yang dilakukan arahan ini.",
+    "maxActions": "Maksimum 5 tindakan setiap arahan"
+  },
+  "variables": {
+    "title": "Pemboleh Ubah Template",
+    "description": "Gunakan pemboleh ubah ini dalam respons arahan anda. Pemboleh ubah akan digantikan dengan nilai sebenar apabila arahan dicetuskan.",
+    "table": {
+      "variable": "Pemboleh Ubah",
+      "description": "Penerangan"
+    },
+    "entries": {
+      "user": "{user} — Menyebut pengguna yang mencetuskan arahan",
+      "username": "{username} — Nama paparan pengguna",
+      "userId": "{userId} — ID pengguna",
+      "server": "{server} — Nama pelayan",
+      "channel": "{channel} — Menyebut saluran semasa",
+      "channelName": "{channelName} — Nama saluran",
+      "memberCount": "{memberCount} — Jumlah keseluruhan ahli pelayan"
+    }
+  },
+  "toast": {
+    "created": "Arahan dicipta",
+    "createFailed": "Gagal mencipta arahan",
+    "updated": "Arahan dikemaskini",
+    "updateFailed": "Gagal mengemaskini arahan",
+    "deleted": "Arahan dipadam",
+    "deleteFailed": "Gagal memadam arahan",
+    "toggleEnabled": "Arahan diaktifkan",
+    "toggleDisabled": "Arahan dinyahaktifkan",
+    "toggleFailed": "Gagal mengalih arahan"
+  },
+  "empty": "Belum ada arahan tersuai yang dicipta.",
+  "loading": "Memuatkan arahan...",
+  "badge": {
+    "active": "Aktif",
+    "disabled": "Dinyahaktifkan",
+    "text": "Teks",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Nama arahan diperlukan"
+  },
+  "triggerPrefix": "Pencetus: !{{name}}"
+}

@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Artık Genel Beta'da",
+    "tagline": "Obsidian Motoru",
+    "titleLine1": "Her Şeyi Kapsayan",
+    "titleLine2": "Discord Bot Çerçevesi",
+    "subtitle": "Dakikalar içinde profesyonel düzeyde bir Discord varlığı oluşturun. Modüler, kendi sunucunuzda barındırılabilir ve daha fazlasını talep eden topluluklar için tasarlandı."
+  },
+  "cta": {
+    "addToServer": "Sunucuya Ekle",
+    "openDashboard": "Kontrol Panelini Aç",
+    "exploreFeatures": "Özellikleri Keşfet"
+  },
+  "stats": {
+    "servers": "Sunucular",
+    "latency": "Gecikme",
+    "uptime": "Çalışma Süresi",
+    "modules": "Modüller",
+    "serversValue": "1.000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "%99,9",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Yetenekler",
+    "title": "Sunucunuzun ihtiyaç duyduğu her şey",
+    "subtitle": "Güvenilirlik, esneklik ve kontrol isteyen topluluklar için tasarlanmış modüler bir araç seti.",
+    "automation": {
+      "title": "Otomasyon Kuralları",
+      "description": "Kod yazmadan karmaşık olay güdümlü iş akışları oluşturun. 23 olay türü ve 10 eylem türüyle bunu-yap-sonra-şunu-yap tetikleyicileri."
+    },
+    "music": {
+      "title": "Müzik Sistemi",
+      "description": "Çok platformlu destek ile yüksek kaliteli ses akışı. Kuyruk yönetimi, DJ kontrolleri ve kütüphane modu."
+    },
+    "tempVoice": {
+      "title": "Geçici Ses Kanalları",
+      "description": "Dinamik ses kanalı yönetimi. Özel adlandırma şablonları, izinler ve otomatik temizlik ile otomatik oluşturma."
+    },
+    "logs": {
+      "title": "Etkinlik Günlükleri",
+      "description": "Her otomasyon yürütmesinin tam denetim kaydı. Ayrıntılı günlüklerle kurallarınızı arayın, filtreleyin ve hata ayıklayın."
+    },
+    "webhooks": {
+      "title": "Webhook'lar ve API",
+      "description": "HTTP webhook'larıyla dış servislere veri gönderin. Özel başlıklar, gövde şablonları ve değişken interpolasyonu."
+    },
+    "dashboard": {
+      "title": "Gerçek Zamanlı Kontrol Paneli",
+      "description": "Her şeyi şık bir web kontrol panelinden yönetin. Tek bir yerde analitik, yapılandırma ve izleme."
+    }
+  },
+  "ctaSection": {
+    "title": "Topluluğunuzu yükseltmeye hazır mısınız?",
+    "subtitle": "Sıfır yapılandırmayla dakikalar içinde başlayın. Kendi sunucunuzda barındırılabilir, açık kaynaklı ve tamamen ücretsiz."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "© {{year}} FluxCore Technologies. Tüm hakları saklıdır.",
+    "links": {
+      "documentation": "Belgeler",
+      "support": "Destek",
+      "privacy": "Gizlilik Politikası",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

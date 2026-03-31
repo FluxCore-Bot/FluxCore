@@ -1,0 +1,77 @@
+{
+  "title": "Tikettijärjestelmä",
+  "subtitle": "Luo tukitikettipaneeleita ja hallitse avoimia tikettejä hallintapaneelista.",
+  "stats": {
+    "totalTickets": "Tikettejä yhteensä",
+    "open": "Avoimet",
+    "claimed": "Varatut",
+    "panels": "Paneelit"
+  },
+  "tabs": {
+    "activeTickets": "Aktiiviset tiketit",
+    "panelBuilder": "Paneelinrakentaja",
+    "settings": "Asetukset"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Käyttäjä",
+    "subject": "Aihe",
+    "status": "Tila",
+    "assignee": "Vastaava",
+    "created": "Luotu"
+  },
+  "statuses": {
+    "open": "Avoin",
+    "claimed": "Varattu",
+    "closed": "Suljettu"
+  },
+  "panelBuilder": {
+    "title": "Paneelin otsikko",
+    "channel": "Kanava",
+    "buttonLabel": "Painikkeen tunniste",
+    "welcomeMessage": "Tervetuloviesti",
+    "category": "Tikettikategoria",
+    "create": "Luo paneeli",
+    "edit": "Muokkaa paneelia",
+    "deploy": "Julkaise paneeli"
+  },
+  "settings": {
+    "transcriptChannel": "Käsikirjoituskanava",
+    "transcriptChannelDesc": "Kanava, jolle tikettien käsikirjoitukset tallennetaan sulkemisen yhteydessä.",
+    "maxTicketsPerUser": "Max tikettejä per käyttäjä",
+    "maxTicketsPerUserDesc": "Enimmäismäärä avoimia tikettejä yhdellä käyttäjällä.",
+    "closeConfirmation": "Sulkemisvahvistus",
+    "closeConfirmationDesc": "Vaadi vahvistus ennen tiketin sulkemista.",
+    "dmTranscript": "DM-käsikirjoitus",
+    "dmTranscriptDesc": "Lähetä kopio käsikirjoituksesta tiketin luojalle DM:llä."
+  },
+  "actions": {
+    "claim": "Varaa",
+    "close": "Sulje",
+    "delete": "Poista",
+    "reopen": "Avaa uudelleen"
+  },
+  "toast": {
+    "panelCreated": "Tikettipaneeli luotu",
+    "panelCreateFailed": "Tikettipaneelin luominen epäonnistui",
+    "panelUpdated": "Tikettipaneeli päivitetty",
+    "panelUpdateFailed": "Tikettipaneelin päivittäminen epäonnistui",
+    "panelDeployed": "Tikettipaneeli julkaistu",
+    "panelDeployFailed": "Tikettipaneelin julkaiseminen epäonnistui",
+    "ticketClaimed": "Tiketti varattu",
+    "ticketClaimFailed": "Tiketin varaaminen epäonnistui",
+    "ticketClosed": "Tiketti suljettu",
+    "ticketCloseFailed": "Tiketin sulkeminen epäonnistui",
+    "ticketReopened": "Tiketti avattu uudelleen",
+    "ticketReopenFailed": "Tiketin uudelleenavaaminen epäonnistui",
+    "ticketDeleted": "Tiketti poistettu",
+    "ticketDeleteFailed": "Tiketin poistaminen epäonnistui",
+    "settingsSaved": "Tikettiasetukset tallennettu",
+    "settingsFailed": "Tikettiasetusten tallentaminen epäonnistui"
+  },
+  "empty": {
+    "tickets": "Ei aktiivisia tikettejä.",
+    "panels": "Ei tikettipaneeleita luotu vielä."
+  },
+  "loading": "Ladataan tikettejä..."
+}

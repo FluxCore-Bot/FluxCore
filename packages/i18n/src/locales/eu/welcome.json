@@ -1,0 +1,65 @@
+{
+  "title": "Ongi Etorria eta Agurra",
+  "subtitle": "Konfiguratu ongi etorri eta agur mezuak, irudiak eta rol automatikoak.",
+  "loadingSubtitle": "Konfiguratu zure zerbitzarirako ongi etorri eta agur mezuak.",
+  "tabs": {
+    "welcome": "Ongi Etorria",
+    "welcomeImage": "Ongi Etorri Irudia",
+    "farewell": "Agurra",
+    "farewellImage": "Agur Irudia",
+    "dm": "Ongi Etorri DM",
+    "autorole": "Rol Automatikoa"
+  },
+  "welcome": {
+    "title": "Ongi Etorri Mezua",
+    "description": "Bidali txertatze pertsonalizatu bat kide berri bat sartzen denean.",
+    "channelLabel": "Ongi Etorri Kanalaren IDa",
+    "channelPlaceholder": "Kanal IDa...",
+    "embedBuilder": "Txertaketa Eraikitzailea"
+  },
+  "welcomeImage": {
+    "title": "Ongi Etorri Irudia",
+    "description": "Sortu irudi txartel pertsonalizatu bat kidearen avatarrekin sartzen direnean.",
+    "disabled": "Gaitu goiko etengailua ongi etorri irudiak konfiguratzeko."
+  },
+  "farewell": {
+    "title": "Agur Mezua",
+    "description": "Bidali mezu bat kide bat zerbitzaria uzten duenean.",
+    "channelLabel": "Agur Kanalaren IDa",
+    "channelPlaceholder": "Kanal IDa..."
+  },
+  "farewellImage": {
+    "title": "Agur Irudia",
+    "description": "Sortu agur txartel pertsonalizatu bat kide bat uzten denean.",
+    "disabled": "Gaitu goiko etengailua agur irudiak konfiguratzeko."
+  },
+  "dm": {
+    "title": "Ongi Etorri DM",
+    "description": "Bidali mezu zuzena kide berriei. Isilik huts egingo du DM-ak desgaituta badaude."
+  },
+  "autorole": {
+    "title": "Rol Automatikoa",
+    "description": "Automatikoki esleitu rolak kide berriei sartzen direnean. Botak baztertuta daude. Botak hemen zerrendatutako rolak baino rol altuagoa eduki behar du.",
+    "label": "Rol IDak (komaz bereizita)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Izenburua",
+    "description": "Deskribapena",
+    "color": "Kolorea (hex)",
+    "footer": "Oina",
+    "thumbnail": "Miniatura URL",
+    "image": "Irudi URL",
+    "variables": "Aldagaiak:"
+  },
+  "saveChanges": "Aldaketak Gorde",
+  "saving": "Gordetzen...",
+  "sendTest": "Proba Mezua Bidali",
+  "sending": "Bidaltzen...",
+  "toast": {
+    "saved": "Ongi etorriaren konfigurazioa gordeta",
+    "saveFailed": "Ezin izan da konfigurazioa gorde",
+    "testSent": "Proba mezua <#{{channelId}}> kanalera bidaliko da",
+    "testFailed": "Ezin izan da proba mezua bidali"
+  }
+}

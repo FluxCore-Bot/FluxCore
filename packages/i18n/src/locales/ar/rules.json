@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "السيرفر",
+    "automation": "الأتمتة"
+  },
+  "title": "قواعد الأتمتة",
+  "subtitle": "تكوين المشغلات المبنية على الأحداث والاستجابات التلقائية لسيرفرك.",
+  "createRule": "إنشاء قاعدة",
+  "stats": {
+    "totalRules": "إجمالي القواعد",
+    "active": "نشطة",
+    "executions7d": "التنفيذات (7 أيام)",
+    "successRate": "معدل النجاح"
+  },
+  "filter": {
+    "searchPlaceholder": "البحث في القواعد...",
+    "eventType": "نوع الحدث",
+    "allEvents": "جميع الأحداث",
+    "allStatus": "جميع الحالات",
+    "enabled": "مفعّل",
+    "disabled": "معطّل",
+    "sortBy": "ترتيب حسب",
+    "priority": "الأولوية",
+    "name": "الاسم",
+    "lastFired": "آخر تنفيذ",
+    "status": "الحالة",
+    "clear": "مسح",
+    "showing": "عرض {{filtered}} من {{total}} قاعدة"
+  },
+  "bulk": {
+    "selected": "تم تحديد {{count}} قاعدة",
+    "selected_other": "تم تحديد {{count}} قواعد",
+    "enable": "تفعيل",
+    "disable": "تعطيل",
+    "delete": "حذف",
+    "clear": "مسح"
+  },
+  "empty": {
+    "title": "ابدأ مع الأتمتة",
+    "description": "اختر قالبًا للبدء بسرعة، أو أنشئ قاعدة من الصفر.",
+    "createFromScratch": "إنشاء من الصفر"
+  },
+  "noResults": {
+    "title": "لا توجد قواعد مطابقة",
+    "description": "حاول تعديل البحث أو المرشحات للعثور على ما تبحث عنه."
+  },
+  "templates": {
+    "welcomeMessage": "رسالة ترحيب",
+    "welcomeMessageDesc": "رحب بالأعضاء الجدد برسالة مخصصة في قناة",
+    "autoRole": "دور تلقائي",
+    "autoRoleDesc": "تعيين دور تلقائيًا عند انضمام عضو",
+    "logDeleted": "تسجيل الرسائل المحذوفة",
+    "logDeletedDesc": "إرسال معلومات الرسائل المحذوفة إلى قناة السجل",
+    "boostThankYou": "شكر على التعزيز",
+    "boostThankYouDesc": "إرسال رسالة خاصة لشكر المستخدمين الذين يعززون السيرفر",
+    "banLogger": "مسجل الحظر",
+    "banLoggerDesc": "تسجيل أحداث الحظر في قناة الإشراف",
+    "autoThread": "موضوع تلقائي",
+    "autoThreadDesc": "إنشاء موضوع تلقائيًا عند إرسال رسالة"
+  },
+  "deleteDialog": {
+    "title": "حذف القاعدة",
+    "description": "هل أنت متأكد أنك تريد حذف \"{{name}}\"؟ لا يمكن التراجع عن هذا الإجراء.",
+    "confirm": "حذف"
+  },
+  "bulkDeleteDialog": {
+    "title": "حذف القواعد المحددة",
+    "description": "هل أنت متأكد أنك تريد حذف {{count}} قاعدة؟ لا يمكن التراجع عن هذا الإجراء.",
+    "description_other": "هل أنت متأكد أنك تريد حذف {{count}} قواعد؟ لا يمكن التراجع عن هذا الإجراء.",
+    "confirm": "حذف الكل"
+  },
+  "toast": {
+    "deleted": "تم حذف القاعدة",
+    "deleteFailed": "فشل في حذف القاعدة",
+    "enabled": "تم تفعيل القاعدة",
+    "disabled": "تم تعطيل القاعدة",
+    "toggleFailed": "فشل في تبديل حالة القاعدة",
+    "duplicated": "تم تكرار القاعدة",
+    "duplicateFailed": "فشل في تكرار القاعدة",
+    "bulkEnabled": "تم تفعيل {{count}} قواعد",
+    "bulkDisabled": "تم تعطيل {{count}} قواعد",
+    "bulkEnableFailed": "فشل في تفعيل القواعد",
+    "bulkDisableFailed": "فشل في تعطيل القواعد",
+    "bulkDeleted": "تم حذف {{count}} قواعد",
+    "bulkDeleteFailed": "فشل في حذف القواعد"
+  }
+}

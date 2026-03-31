@@ -1,0 +1,113 @@
+{
+  "title": "Commandes personnalisees",
+  "subtitle": "Creez des repondeurs automatiques et des commandes a prefixe declenchees par des messages.",
+  "stats": {
+    "totalCommands": "Total des commandes",
+    "enabled": "Activees",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Commandes",
+    "variables": "Variables"
+  },
+  "table": {
+    "name": "Nom",
+    "trigger": "Declencheur",
+    "response": "Reponse",
+    "cooldown": "Delai de recharge",
+    "status": "Statut"
+  },
+  "triggerTypes": {
+    "command": "!commande",
+    "keyword": "Mot-cle",
+    "startsWith": "Commence par",
+    "regex": "Regex",
+    "prefixCommand": "Commande a prefixe (!nom)",
+    "keywordContains": "Mot-cle (contient)"
+  },
+  "dialog": {
+    "createCommand": "Creer une commande",
+    "editCommand": "Modifier la commande"
+  },
+  "form": {
+    "commandName": "Nom de la commande",
+    "triggerText": "Texte declencheur",
+    "regexPattern": "Motif Regex",
+    "triggerType": "Type de declencheur",
+    "response": "Reponse",
+    "message": "Message",
+    "embedTitle": "Titre de l'embed",
+    "embedDescription": "Description de l'embed",
+    "color": "Couleur",
+    "footer": "Pied de page"
+  },
+  "options": {
+    "cooldown": "Delai de recharge (secondes)",
+    "enabled": "Activee",
+    "enabledDesc": "Indique si cette commande est active",
+    "deleteTrigger": "Supprimer le message declencheur",
+    "deleteTriggerDesc": "Supprime automatiquement le message qui a declenche cette commande.",
+    "dmResponse": "Reponse en MP",
+    "dmResponseDesc": "Envoie la reponse en message prive au lieu du salon."
+  },
+  "restrictions": {
+    "title": "Restrictions",
+    "allowedChannels": "Salons autorises (vide = tous)",
+    "allowedRoles": "Roles autorises (vide = tout le monde)",
+    "addChannel": "Ajouter un salon",
+    "addRole": "Ajouter un role"
+  },
+  "actions": {
+    "create": "Creer",
+    "update": "Mettre a jour",
+    "cancel": "Annuler",
+    "addAction": "Ajouter une action",
+    "addRole": "Ajouter un role",
+    "removeRole": "Retirer un role"
+  },
+  "actionsSection": {
+    "title": "Actions ({{count}}/5)",
+    "noActions": "Aucune action configuree. Ajoutez une action pour definir le comportement de cette commande.",
+    "maxActions": "Maximum 5 actions par commande"
+  },
+  "variables": {
+    "title": "Variables de modele",
+    "description": "Utilisez ces variables dans vos reponses de commande. Elles seront remplacees par les valeurs reelles lorsque la commande est declenchee.",
+    "table": {
+      "variable": "Variable",
+      "description": "Description"
+    },
+    "entries": {
+      "user": "{user} — Mentionne l'utilisateur qui a declenche la commande",
+      "username": "{username} — Le nom d'affichage de l'utilisateur",
+      "userId": "{userId} — L'identifiant de l'utilisateur",
+      "server": "{server} — Le nom du serveur",
+      "channel": "{channel} — Mentionne le salon actuel",
+      "channelName": "{channelName} — Le nom du salon",
+      "memberCount": "{memberCount} — Nombre total de membres du serveur"
+    }
+  },
+  "toast": {
+    "created": "Commande creee",
+    "createFailed": "Echec de la creation de la commande",
+    "updated": "Commande mise a jour",
+    "updateFailed": "Echec de la mise a jour de la commande",
+    "deleted": "Commande supprimee",
+    "deleteFailed": "Echec de la suppression de la commande",
+    "toggleEnabled": "Commande activee",
+    "toggleDisabled": "Commande desactivee",
+    "toggleFailed": "Echec du changement d'etat de la commande"
+  },
+  "empty": "Aucune commande personnalisee creee pour l'instant.",
+  "loading": "Chargement des commandes...",
+  "badge": {
+    "active": "Active",
+    "disabled": "Desactivee",
+    "text": "Texte",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Le nom de la commande est requis"
+  },
+  "triggerPrefix": "Declencheur : !{{name}}"
+}

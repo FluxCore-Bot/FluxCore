@@ -1,0 +1,67 @@
+{
+  "title": "הצעות",
+  "subtitle": "אפשר לחברים להגיש רעיונות ולהצביע עליהם. נהל סטטוס ומשוב.",
+  "stats": {
+    "totalSuggestions": "סה\"כ הצעות",
+    "systemStatus": "מצב המערכת",
+    "channel": {
+      "configured": "ערוץ מוגדר",
+      "notSet": "ערוץ לא הוגדר"
+    }
+  },
+  "tabs": {
+    "suggestions": "הצעות",
+    "settings": "הגדרות"
+  },
+  "filter": {
+    "filterByStatus": "סנן לפי סטטוס",
+    "all": "הכל",
+    "pending": "ממתין",
+    "approved": "אושר",
+    "rejected": "נדחה",
+    "implemented": "מומש",
+    "considered": "בבדיקה"
+  },
+  "table": {
+    "id": "מזהה",
+    "author": "מחבר",
+    "content": "תוכן",
+    "status": "סטטוס",
+    "votes": "הצבעות",
+    "date": "תאריך"
+  },
+  "actions": {
+    "approve": "אשר",
+    "reject": "דחה",
+    "implement": "סמן כמומש",
+    "consider": "שקול",
+    "delete": "מחק"
+  },
+  "settings": {
+    "channel": "ערוץ הצעות",
+    "channelDesc": "הערוץ שבו ההצעות מתפרסמות להצבעה.",
+    "voteEmojis": "אימוג'י הצבעה",
+    "voteEmojisDesc": "אימוג'ים לתגובות הצבעה בעד ונגד.",
+    "autoThread": "יצירת שרשור אוטומטית",
+    "autoThreadDesc": "צור שרשור דיון אוטומטית בכל הצעה חדשה.",
+    "dmOnStatusChange": "הודעה פרטית בשינוי סטטוס",
+    "dmOnStatusChangeDesc": "הודע למחבר בהודעה פרטית כאשר סטטוס ההצעה שלו משתנה."
+  },
+  "toast": {
+    "approved": "ההצעה אושרה",
+    "rejected": "ההצעה נדחתה",
+    "implemented": "ההצעה סומנה כמומשת",
+    "considered": "ההצעה סומנה כבבדיקה",
+    "deleted": "ההצעה נמחקה",
+    "actionFailed": "עדכון ההצעה נכשל",
+    "settingsSaved": "הגדרות ההצעות נשמרו",
+    "settingsFailed": "שמירת הגדרות ההצעות נכשלה"
+  },
+  "empty": "אין הצעות עדיין.",
+  "loading": "טוען הצעות...",
+  "pagination": {
+    "previous": "הקודם",
+    "next": "הבא",
+    "page": "עמוד {{page}} מתוך {{total}}"
+  }
+}

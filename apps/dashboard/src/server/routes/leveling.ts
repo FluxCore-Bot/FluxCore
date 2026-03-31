@@ -13,7 +13,6 @@ import {
   setXp,
   getUserRank,
 } from "@fluxcore/systems/leveling/persistence";
-import { levelFromXp } from "@fluxcore/systems/leveling/xp";
 import { LEADERBOARD_PAGE_SIZE } from "@fluxcore/systems/leveling/constants";
 
 function parseIntParam(value: string): number | null {

@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Motoru",
+    "dashboard": "FluxCore Kontrol Paneli"
+  },
+  "status": {
+    "online": "Çevrimiçi",
+    "offline": "Çevrimdışı",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Genel Bakış",
+    "automation": "Otomasyon",
+    "music": "Müzik",
+    "tempvoice": "Geçici Ses",
+    "welcome": "Hoş Geldin",
+    "moderation": "Moderasyon",
+    "warnings": "Uyarılar",
+    "rolePanels": "Rol Panelleri",
+    "leveling": "Seviye",
+    "scheduled": "Zamanlanmış",
+    "commands": "Komutlar",
+    "security": "Güvenlik",
+    "tickets": "Destek Talepleri",
+    "giveaways": "Çekilişler",
+    "suggestions": "Öneriler",
+    "starboard": "Yıldız Panosu",
+    "logs": "Günlükler",
+    "permissions": "İzinler",
+    "settings": "Ayarlar"
+  },
+  "actions": {
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "create": "Oluştur",
+    "add": "Ekle",
+    "remove": "Kaldır",
+    "confirm": "Onayla",
+    "close": "Kapat",
+    "back": "Geri",
+    "next": "İleri",
+    "search": "Ara",
+    "filter": "Filtrele",
+    "refresh": "Yenile",
+    "reset": "Sıfırla",
+    "enable": "Etkinleştir",
+    "disable": "Devre Dışı Bırak",
+    "copy": "Kopyala",
+    "export": "Dışa Aktar",
+    "import": "İçe Aktar",
+    "submit": "Gönder",
+    "loading": "Yükleniyor...",
+    "retry": "Tekrar Dene"
+  },
+  "labels": {
+    "enabled": "Etkin",
+    "disabled": "Devre Dışı",
+    "active": "Aktif",
+    "inactive": "Pasif",
+    "none": "Yok",
+    "all": "Tümü",
+    "custom": "Özel",
+    "default": "Varsayılan",
+    "required": "Zorunlu",
+    "optional": "İsteğe Bağlı",
+    "name": "Ad",
+    "description": "Açıklama",
+    "type": "Tür",
+    "status": "Durum",
+    "channel": "Kanal",
+    "role": "Rol",
+    "member": "Üye",
+    "duration": "Süre",
+    "reason": "Sebep",
+    "language": "Dil"
+  },
+  "header": {
+    "notifications": "Bildirimler",
+    "settings": "Ayarlar",
+    "logout": "Çıkış Yap",
+    "toggleSidebar": "Kenar çubuğunu aç/kapat",
+    "refreshData": "Discord verilerini yenile"
+  },
+  "sidebar": {
+    "closeSidebar": "Kenar çubuğunu kapat",
+    "addToServer": "Sunucuya Ekle",
+    "docs": "Belgeler",
+    "support": "Destek",
+    "backToServers": "Sunuculara Dön"
+  },
+  "empty": {
+    "noData": "Veri mevcut değil",
+    "noResults": "Sonuç bulunamadı",
+    "noItems": "Henüz öğe yok"
+  },
+  "time": {
+    "seconds": "saniye",
+    "minutes": "dakika",
+    "hours": "saat",
+    "days": "gün",
+    "ago": "{{time}} önce",
+    "in": "{{time}} içinde"
+  },
+  "confirm": {
+    "title": "Emin misiniz?",
+    "deleteTitle": "Silme işlemini onayla",
+    "deleteMessage": "Bu işlem geri alınamaz.",
+    "unsavedChanges": "Kaydedilmemiş değişiklikleriniz var. Ayrılmak istediğinizden emin misiniz?"
+  },
+  "accessibility": {
+    "skipToContent": "Ana içeriğe atla",
+    "loading": "İçerik yükleniyor",
+    "loaded": "İçerik yüklendi",
+    "error": "Bir hata oluştu",
+    "menuOpen": "Menü açık",
+    "menuClosed": "Menü kapalı"
+  }
+}

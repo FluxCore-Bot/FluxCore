@@ -1,0 +1,9 @@
+{
+  "title": "Je Servers",
+  "subtitle": "Kies een server om te beheren en configureren.",
+  "loading": "Servers laden...",
+  "empty": {
+    "title": "Geen servers gevonden",
+    "description": "Zorg ervoor dat de bot is toegevoegd aan een server waar je de toestemming Server beheren hebt."
+  }
+}

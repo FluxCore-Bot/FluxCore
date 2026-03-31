@@ -1,0 +1,54 @@
+{
+  "title": "Moderacja",
+  "subtitle": "Przeglądaj i zarządzaj sprawami moderacji, konfiguruj ustawienia kar.",
+  "stats": {
+    "totalCases": "Łącznie spraw",
+    "activeTempbans": "Aktywne bany tymczasowe",
+    "last24h": "Ostatnie 24h"
+  },
+  "cases": "Sprawy",
+  "actions": {
+    "ban": "Ban",
+    "tempban": "Ban tymczasowy",
+    "kick": "Kick",
+    "timeout": "Timeout",
+    "softban": "Softban",
+    "warn": "Ostrzeżenie",
+    "note": "Notatka"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Akcja",
+    "target": "Cel",
+    "moderator": "Moderator",
+    "reason": "Powód",
+    "date": "Data",
+    "actions": "Akcje",
+    "noCases": "Nie znaleziono spraw.",
+    "noReason": "Brak powodu"
+  },
+  "filter": {
+    "userPlaceholder": "Filtruj po ID użytkownika...",
+    "allActions": "Wszystkie akcje"
+  },
+  "pagination": {
+    "previous": "Poprzednia",
+    "next": "Następna",
+    "page": "Strona {{page}} z {{total}}"
+  },
+  "editDialog": {
+    "title": "Edytuj powód sprawy #{{id}}",
+    "placeholder": "Wpisz nowy powód...",
+    "saving": "Zapisywanie..."
+  },
+  "editReason": "Edytuj powód",
+  "deleteCase": "Usuń sprawę",
+  "deleteConfirm": "Czy na pewno chcesz usunąć tę sprawę?",
+  "settings": {
+    "title": "Ustawienia",
+    "dmOnPunishment": "PW przy karze",
+    "dmOnPunishmentDesc": "Wysyłaj wiadomość prywatną do użytkowników przy ukaraniu (ban, kick, timeout).",
+    "modLogChannel": "Kanał logów moderacji",
+    "modLogChannelDesc": "Kanał, w którym rejestrowane są akcje moderacji."
+  }
+}

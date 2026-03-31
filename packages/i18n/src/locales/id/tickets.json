@@ -1,0 +1,77 @@
+{
+  "title": "Sistem Tiket",
+  "subtitle": "Buat panel tiket dukungan dan kelola tiket yang terbuka dari dashboard.",
+  "stats": {
+    "totalTickets": "Total Tiket",
+    "open": "Terbuka",
+    "claimed": "Diklaim",
+    "panels": "Panel"
+  },
+  "tabs": {
+    "activeTickets": "Tiket Aktif",
+    "panelBuilder": "Pembuat Panel",
+    "settings": "Pengaturan"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Pengguna",
+    "subject": "Subjek",
+    "status": "Status",
+    "assignee": "Penanggung Jawab",
+    "created": "Dibuat"
+  },
+  "statuses": {
+    "open": "Terbuka",
+    "claimed": "Diklaim",
+    "closed": "Ditutup"
+  },
+  "panelBuilder": {
+    "title": "Judul Panel",
+    "channel": "Saluran",
+    "buttonLabel": "Label Tombol",
+    "welcomeMessage": "Pesan Sambutan",
+    "category": "Kategori Tiket",
+    "create": "Buat Panel",
+    "edit": "Edit Panel",
+    "deploy": "Terapkan Panel"
+  },
+  "settings": {
+    "transcriptChannel": "Saluran Transkip",
+    "transcriptChannelDesc": "Saluran tempat transkip tiket disimpan saat ditutup.",
+    "maxTicketsPerUser": "Maks Tiket per Pengguna",
+    "maxTicketsPerUserDesc": "Jumlah maksimum tiket terbuka yang dapat dimiliki satu pengguna.",
+    "closeConfirmation": "Konfirmasi Tutup",
+    "closeConfirmationDesc": "Minta konfirmasi sebelum menutup tiket.",
+    "dmTranscript": "Transkip DM",
+    "dmTranscriptDesc": "Kirim salinan transkip ke pembuat tiket melalui DM."
+  },
+  "actions": {
+    "claim": "Klaim",
+    "close": "Tutup",
+    "delete": "Hapus",
+    "reopen": "Buka Kembali"
+  },
+  "toast": {
+    "panelCreated": "Panel tiket dibuat",
+    "panelCreateFailed": "Gagal membuat panel tiket",
+    "panelUpdated": "Panel tiket diperbarui",
+    "panelUpdateFailed": "Gagal memperbarui panel tiket",
+    "panelDeployed": "Panel tiket diterapkan",
+    "panelDeployFailed": "Gagal menerapkan panel tiket",
+    "ticketClaimed": "Tiket diklaim",
+    "ticketClaimFailed": "Gagal mengklaim tiket",
+    "ticketClosed": "Tiket ditutup",
+    "ticketCloseFailed": "Gagal menutup tiket",
+    "ticketReopened": "Tiket dibuka kembali",
+    "ticketReopenFailed": "Gagal membuka kembali tiket",
+    "ticketDeleted": "Tiket dihapus",
+    "ticketDeleteFailed": "Gagal menghapus tiket",
+    "settingsSaved": "Pengaturan tiket disimpan",
+    "settingsFailed": "Gagal menyimpan pengaturan tiket"
+  },
+  "empty": {
+    "tickets": "Tidak ada tiket aktif.",
+    "panels": "Belum ada panel tiket yang dibuat."
+  },
+  "loading": "Memuat tiket..."
+}

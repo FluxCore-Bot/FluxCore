@@ -1,0 +1,113 @@
+{
+  "title": "Comenzi Personalizate",
+  "subtitle": "Creează răspunsuri automate și comenzi cu prefix declanșate de mesaje.",
+  "stats": {
+    "totalCommands": "Total Comenzi",
+    "enabled": "Activate",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Comenzi",
+    "variables": "Variabile"
+  },
+  "table": {
+    "name": "Nume",
+    "trigger": "Declanșator",
+    "response": "Răspuns",
+    "cooldown": "Cooldown",
+    "status": "Stare"
+  },
+  "triggerTypes": {
+    "command": "!comandă",
+    "keyword": "Cuvânt cheie",
+    "startsWith": "Începe cu",
+    "regex": "Regex",
+    "prefixCommand": "Comandă cu prefix (!nume)",
+    "keywordContains": "Cuvânt cheie (conține)"
+  },
+  "dialog": {
+    "createCommand": "Creează Comandă",
+    "editCommand": "Editează Comandă"
+  },
+  "form": {
+    "commandName": "Numele Comenzii",
+    "triggerText": "Text Declanșator",
+    "regexPattern": "Tipar Regex",
+    "triggerType": "Tip Declanșator",
+    "response": "Răspuns",
+    "message": "Mesaj",
+    "embedTitle": "Titlu Embed",
+    "embedDescription": "Descriere Embed",
+    "color": "Culoare",
+    "footer": "Subsol"
+  },
+  "options": {
+    "cooldown": "Cooldown (secunde)",
+    "enabled": "Activat",
+    "enabledDesc": "Dacă această comandă este activă",
+    "deleteTrigger": "Șterge Mesajul Declanșator",
+    "deleteTriggerDesc": "Șterge automat mesajul care a declanșat această comandă.",
+    "dmResponse": "Răspuns prin MP",
+    "dmResponseDesc": "Trimite răspunsul ca mesaj direct în loc de în canal."
+  },
+  "restrictions": {
+    "title": "Restricții",
+    "allowedChannels": "Canale permise (gol = toate)",
+    "allowedRoles": "Roluri permise (gol = toți)",
+    "addChannel": "Adaugă Canal",
+    "addRole": "Adaugă Rol"
+  },
+  "actions": {
+    "create": "Creează",
+    "update": "Actualizează",
+    "cancel": "Anulează",
+    "addAction": "Adaugă Acțiune",
+    "addRole": "Adaugă Rol",
+    "removeRole": "Elimină Rol"
+  },
+  "actionsSection": {
+    "title": "Acțiuni ({{count}}/5)",
+    "noActions": "Nicio acțiune configurată. Adaugă o acțiune pentru a defini ce face această comandă.",
+    "maxActions": "Maxim 5 acțiuni per comandă"
+  },
+  "variables": {
+    "title": "Variabile Șablon",
+    "description": "Folosește aceste variabile în răspunsurile comenzilor tale. Vor fi înlocuite cu valorile reale când comanda este declanșată.",
+    "table": {
+      "variable": "Variabilă",
+      "description": "Descriere"
+    },
+    "entries": {
+      "user": "{user} — Menționează utilizatorul care a declanșat comanda",
+      "username": "{username} — Numele afișat al utilizatorului",
+      "userId": "{userId} — ID-ul utilizatorului",
+      "server": "{server} — Numele serverului",
+      "channel": "{channel} — Menționează canalul curent",
+      "channelName": "{channelName} — Numele canalului",
+      "memberCount": "{memberCount} — Numărul total de membri ai serverului"
+    }
+  },
+  "toast": {
+    "created": "Comandă creată",
+    "createFailed": "Crearea comenzii a eșuat",
+    "updated": "Comandă actualizată",
+    "updateFailed": "Actualizarea comenzii a eșuat",
+    "deleted": "Comandă ștearsă",
+    "deleteFailed": "Ștergerea comenzii a eșuat",
+    "toggleEnabled": "Comandă activată",
+    "toggleDisabled": "Comandă dezactivată",
+    "toggleFailed": "Activarea/dezactivarea comenzii a eșuat"
+  },
+  "empty": "Nu există comenzi personalizate create încă.",
+  "loading": "Se încarcă comenzile...",
+  "badge": {
+    "active": "Activ",
+    "disabled": "Dezactivat",
+    "text": "Text",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Numele comenzii este obligatoriu"
+  },
+  "triggerPrefix": "Declanșator: !{{name}}"
+}

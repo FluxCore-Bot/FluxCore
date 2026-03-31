@@ -1,0 +1,120 @@
+{
+  "title": "Sustav napredovanja",
+  "subtitle": "Konfigurirajte zaradu XP-a, obavijesti o napredovanju, nagrade uloga i mnozitelje.",
+  "stats": {
+    "rankedMembers": "Rangirani clanovi",
+    "roleRewards": "Nagrade uloga",
+    "systemStatus": "Status sustava",
+    "enabled": "Omoguceno",
+    "disabled": "Onemoguceno"
+  },
+  "tabs": {
+    "leaderboard": "Ljestvica",
+    "settings": "Postavke",
+    "roleRewards": "Nagrade uloga",
+    "exclusions": "Iskljucenja",
+    "multipliers": "Mnozitelji"
+  },
+  "table": {
+    "rank": "Rang",
+    "userId": "ID korisnika",
+    "level": "Razina",
+    "xp": "XP",
+    "messages": "Poruke",
+    "voiceTime": "Glasovno vrijeme"
+  },
+  "settings": {
+    "title": "Postavke napredovanja",
+    "enabled": "Omoguci napredovanje",
+    "enabledDesc": "Ukljucite ili iskljucite cijeli sustav napredovanja.",
+    "xpPerMessage": "XP po poruci",
+    "xpPerMessageDesc": "Osnovni XP dodijeljen po poruci (dodaje se nasumicnost od 0-9).",
+    "xpCooldown": "Hladenje XP-a (sekunde)",
+    "xpCooldownDesc": "Minimalno vrijeme izmedu dodjela XP-a po korisniku.",
+    "voiceXpEnabled": "Glasovni XP",
+    "voiceXpEnabledDesc": "Dodijelite XP za vrijeme provedeno u glasovnim kanalima.",
+    "voiceXpPerMinute": "Glasovni XP po minuti",
+    "voiceXpPerMinuteDesc": "XP dodijeljen po minuti u glasovnom kanalu.",
+    "levelUpAnnouncements": "Obavijesti o napredovanju",
+    "levelUpAnnouncementsDesc": "Obavijestite kada clan napreduje na sljedecu razinu.",
+    "announceDest": "Odrediste obavijesti",
+    "announceDestHint": "Mozete takoder unijeti ID kanala izravno u polje iznad.",
+    "announceDestSameChannel": "Isti kanal",
+    "announceDestDM": "Privatna poruka",
+    "announceMessage": "Poruka obavijesti",
+    "announceMessagePlaceholder": "{user} je upravo dosegao **razinu {level}**!",
+    "announceMessageVars": "Varijable: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Nagrade uloga",
+    "description": "Automatski dodijelite uloge kada clanovi dosegnu odredene razine.",
+    "addReward": "Dodaj nagradu",
+    "addRewardTitle": "Dodaj nagradu uloge",
+    "level": "Razina",
+    "levelPrefix": "Razina {{level}}",
+    "roleId": "ID uloge",
+    "levelPlaceholder": "npr. 5",
+    "rolePlaceholder": "npr. 123456789",
+    "removeReward": "Ukloni",
+    "noRewards": "Nema konfiguriranih nagrada uloga."
+  },
+  "exclusions": {
+    "title": "Iskljucenja XP-a",
+    "description": "Kanali i uloge koji ne zaraduju XP.",
+    "noXpChannels": "Kanali bez XP-a (ID-ovi odvojeni zarezom)",
+    "noXpChannelsPlaceholder": "npr. 123456789, 987654321",
+    "noXpRoles": "Uloge bez XP-a (ID-ovi odvojeni zarezom)",
+    "noXpRolesPlaceholder": "npr. 123456789, 987654321",
+    "save": "Spremi iskljucenja"
+  },
+  "multipliers": {
+    "title": "Mnozitelji XP-a",
+    "description": "Postavite mnozitelje XP-a po kanalu ili ulozi. Mnozitelj 2 udvostucuje zaradeni XP.",
+    "channelMultipliers": "Mnozitelji kanala",
+    "roleMultipliers": "Mnozitelji uloga",
+    "channelId": "ID kanala",
+    "roleId": "ID uloge",
+    "multiplier": "Mnozitelj",
+    "type": "Vrsta",
+    "typeChannel": "Kanal",
+    "typeRole": "Uloga",
+    "id": "ID",
+    "idPlaceholder": "ID kanala ili uloge",
+    "value": "Mnozitelj",
+    "valuePlaceholder": "npr. 2",
+    "add": "Dodaj mnozitelj",
+    "addTitle": "Dodaj mnozitelj",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Nema konfiguriranih mnozitelja XP-a."
+  },
+  "pagination": {
+    "previous": "Prethodna",
+    "next": "Sljedeca",
+    "pageInfo": "Stranica {{page}} od {{totalPages}} ({{total}} ukupno)"
+  },
+  "loading": "Ucitavanje ljestvice...",
+  "loadingGeneric": "Ucitavanje...",
+  "emptyLeaderboard": "Niti jedan clan jos nije zaradio XP.",
+  "toast": {
+    "saved": "Postavke napredovanja spremljene",
+    "saveFailed": "Azuriranje postavke nije uspjelo",
+    "rewardAdded": "Nagrada dodana",
+    "rewardAddFailed": "Dodavanje nagrade nije uspjelo",
+    "rewardRemoved": "Nagrada uklonjena",
+    "rewardRemoveFailed": "Uklanjanje nagrade nije uspjelo",
+    "multiplierAdded": "Mnozitelj dodan",
+    "multiplierAddFailed": "Dodavanje mnozitelja nije uspjelo",
+    "multiplierRemoved": "Mnozitelj uklonjen",
+    "multiplierRemoveFailed": "Uklanjanje mnozitelja nije uspjelo",
+    "exclusionUpdated": "Iskljucenja spremljena",
+    "exclusionFailed": "Spremanje iskljucenja nije uspjelo",
+    "levelValidation": "Razina mora biti izmedu 1 i 100",
+    "roleIdRequired": "ID uloge je obavezan",
+    "multiplierIdRequired": "ID i vrijednost mnozitelja su obavezni",
+    "multiplierRange": "Mnozitelj mora biti izmedu 0 i 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}h {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

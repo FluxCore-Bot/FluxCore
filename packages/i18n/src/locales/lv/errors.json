@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Nav autentificets",
+    "sessionExpired": "Sesija beigusies",
+    "missingCode": "Trukst koda parametra",
+    "tokenExchangeFailed": "Zymekla apmaina neizdevas",
+    "failedToFetchUser": "Neizdevas iegut lietotaja informaciju"
+  },
+  "permissions": {
+    "noGuildPermission": "Nav atlaujas sim serverim",
+    "botNotInGuild": "Bots nav si serveri",
+    "insufficientPermissions": "Nepietieksamas atlaujas",
+    "permissionsNotResolved": "Atlaujas nav atrisinatas",
+    "requiresPermission": "Sai darbibai nepieciesama atlauja \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Nederiga ievade",
+    "missingField": "Trukst obligata lauka: {{field}}",
+    "invalidFormat": "Nederigs formats laukam {{field}}",
+    "tooLong": "{{field}} parsniiedz maksimalo garumu {{max}} rakstzimes",
+    "tooShort": "{{field}} jabutir vismaz {{min}} rakstzimju",
+    "outOfRange": "{{field}} jabutir starp {{min}} un {{max}}"
+  },
+  "resources": {
+    "notFound": "Nav atrasts",
+    "alreadyExists": "{{resource}} jau eksiste",
+    "limitReached": "Maksimali {{max}} {{resource}} vienam serverim",
+    "createFailed": "Neizdevas izveidot {{resource}}",
+    "updateFailed": "Neizdevas atjaunot {{resource}}",
+    "deleteFailed": "Neizdevas dzest {{resource}}"
+  },
+  "server": {
+    "internalError": "Ieksejas servera kluda",
+    "serviceUnavailable": "Pakalpojums ipaslaicigi nav pieejams",
+    "rateLimited": "Par daudz pieprasijumu. Luudzu, meginiet velak."
+  },
+  "csrf": {
+    "invalidToken": "Nederigs vai trukstoss CSRF zymeklis"
+  }
+}

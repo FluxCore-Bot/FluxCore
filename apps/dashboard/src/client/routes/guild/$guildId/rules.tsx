@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { useParams } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import {
   useRules,
   useCreateRule,
@@ -19,7 +20,6 @@ import { PageSkeleton } from "../../../components/PageSkeleton";
 import { Icon } from "../../../components/Icon";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
-import { Badge } from "../../../components/ui/badge";
 import {
   Select,
   SelectContent,
@@ -27,14 +27,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../../components/ui/select";
-import type { ActionRule, RuleFormData } from "../../../lib/schemas";
+import type { ActionRule } from "../../../lib/schemas";
 
 // ── Preset templates ──────────────────────────────────────────────────
 
 interface RuleTemplate {
   icon: string;
-  label: string;
-  description: string;
+  labelKey: string;
+  descriptionKey: string;
   color: string;
   draft: RuleDraft;
 }
@@ -42,8 +42,8 @@ interface RuleTemplate {
 const RULE_TEMPLATES: RuleTemplate[] = [
   {
     icon: "waving_hand",
-    label: "Welcome Message",
-    description: "Greet new members with a custom message in a channel",
+    labelKey: "templates.welcomeMessage",
+    descriptionKey: "templates.welcomeMessageDesc",
     color: "text-secondary",
     draft: {
       name: "Welcome Message",
@@ -56,8 +56,8 @@ const RULE_TEMPLATES: RuleTemplate[] = [
   },
   {
     icon: "shield_person",
-    label: "Auto Role",
-    description: "Automatically assign a role when a member joins",
+    labelKey: "templates.autoRole",
+    descriptionKey: "templates.autoRoleDesc",
     color: "text-accent",
     draft: {
       name: "Auto Role",
@@ -70,8 +70,8 @@ const RULE_TEMPLATES: RuleTemplate[] = [
   },
   {
     icon: "delete_sweep",
-    label: "Log Deleted Messages",
-    description: "Send deleted message info to a log channel",
+    labelKey: "templates.logDeleted",
+    descriptionKey: "templates.logDeletedDesc",
     color: "text-warning",
     draft: {
       name: "Log Deleted Messages",
@@ -84,8 +84,8 @@ const RULE_TEMPLATES: RuleTemplate[] = [
   },
   {
     icon: "rocket_launch",
-    label: "Boost Thank You",
-    description: "Send a DM thanking users who boost the server",
+    labelKey: "templates.boostThankYou",
+    descriptionKey: "templates.boostThankYouDesc",
     color: "text-[#f47fff]",
     draft: {
       name: "Boost Thank You",
@@ -98,8 +98,8 @@ const RULE_TEMPLATES: RuleTemplate[] = [
   },
   {
     icon: "gavel",
-    label: "Ban Logger",
-    description: "Log ban events to a moderation channel",
+    labelKey: "templates.banLogger",
+    descriptionKey: "templates.banLoggerDesc",
     color: "text-danger",
     draft: {
       name: "Ban Logger",
@@ -112,8 +112,8 @@ const RULE_TEMPLATES: RuleTemplate[] = [
   },
   {
     icon: "forum",
-    label: "Auto Thread",
-    description: "Automatically create a thread when a message is sent",
+    labelKey: "templates.autoThread",
+    descriptionKey: "templates.autoThreadDesc",
     color: "text-secondary",
     draft: {
       name: "Auto Thread",
@@ -153,6 +153,7 @@ function sortRules(rules: ActionRule[], sort: SortOption): ActionRule[] {
 // ── Component ─────────────────────────────────────────────────────────
 
 export function RulesPage() {
+  const { t } = useTranslation("rules");
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: rules = [], isLoading } = useRules(guildId);
   const { data: constants } = useConstants();
@@ -222,9 +223,9 @@ export function RulesPage() {
     if (!deleteTarget) return;
     try {
       await deleteRule.mutateAsync(deleteTarget.id);
-      toast.success("Rule deleted");
+      toast.success(t("toast.deleted"));
     } catch {
-      toast.error("Failed to delete rule");
+      toast.error(t("toast.deleteFailed"));
     }
     setDeleteTarget(null);
   };
@@ -235,9 +236,9 @@ export function RulesPage() {
         ruleId: rule.id,
         data: { enabled: !rule.enabled },
       });
-      toast.success(`Rule ${rule.enabled ? "disabled" : "enabled"}`);
+      toast.success(rule.enabled ? t("toast.disabled") : t("toast.enabled"));
     } catch {
-      toast.error("Failed to toggle rule");
+      toast.error(t("toast.toggleFailed"));
     }
   };
 
@@ -263,9 +264,9 @@ export function RulesPage() {
         priority: rule.priority,
         enabled: rule.enabled,
       });
-      toast.success("Rule duplicated");
+      toast.success(t("toast.duplicated"));
     } catch {
-      toast.error("Failed to duplicate rule");
+      toast.error(t("toast.duplicateFailed"));
     }
   };
 
@@ -275,10 +276,10 @@ export function RulesPage() {
         ruleIds: Array.from(selectedRuleIds),
         action: "enable",
       });
-      toast.success(`${selectedRuleIds.size} rules enabled`);
+      toast.success(t("toast.bulkEnabled", { count: selectedRuleIds.size }));
       setSelectedRuleIds(new Set());
     } catch {
-      toast.error("Failed to enable rules");
+      toast.error(t("toast.bulkEnableFailed"));
     }
   };
 
@@ -288,10 +289,10 @@ export function RulesPage() {
         ruleIds: Array.from(selectedRuleIds),
         action: "disable",
       });
-      toast.success(`${selectedRuleIds.size} rules disabled`);
+      toast.success(t("toast.bulkDisabled", { count: selectedRuleIds.size }));
       setSelectedRuleIds(new Set());
     } catch {
-      toast.error("Failed to disable rules");
+      toast.error(t("toast.bulkDisableFailed"));
     }
   };
 
@@ -301,10 +302,10 @@ export function RulesPage() {
         ruleIds: Array.from(selectedRuleIds),
         action: "delete",
       });
-      toast.success(`${selectedRuleIds.size} rules deleted`);
+      toast.success(t("toast.bulkDeleted", { count: selectedRuleIds.size }));
       setSelectedRuleIds(new Set());
     } catch {
-      toast.error("Failed to delete rules");
+      toast.error(t("toast.bulkDeleteFailed"));
     }
     setBulkDeleteConfirm(false);
   };
@@ -329,21 +330,21 @@ export function RulesPage() {
     <div className="space-y-6">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-1.5 text-xs text-text-muted">
-        <span className="text-accent">FluxCore</span>
+        <span className="text-accent">{t("common:brand.name")}</span>
         <Icon name="chevron_right" size={14} />
-        <span>Guild</span>
+        <span>{t("breadcrumb.guild")}</span>
         <Icon name="chevron_right" size={14} />
-        <span className="text-text">Automation</span>
+        <span className="text-text">{t("breadcrumb.automation")}</span>
       </nav>
 
       <PageHeader
-        title="Automation Rules"
-        subtitle="Configure event-driven triggers and automated responses for your guild."
+        title={t("title")}
+        subtitle={t("subtitle")}
         actions={
           <div className="flex items-center gap-3">
             {!showEditor && (
               <Button onClick={() => setShowEditor(true)}>
-                <Icon name="add" /> Create Rule
+                <Icon name="add" /> {t("createRule")}
               </Button>
             )}
           </div>
@@ -354,19 +355,19 @@ export function RulesPage() {
         <>
           {/* Stats row */}
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-            <StatsCard label="Total Rules" value={rules.length} />
+            <StatsCard label={t("stats.totalRules")} value={rules.length} />
             <StatsCard
-              label="Active"
+              label={t("stats.active")}
               value={activeRules}
               accentColor="border-secondary"
             />
             <StatsCard
-              label="Executions (7d)"
+              label={t("stats.executions7d")}
               value={executions7d}
               accentColor="border-accent"
             />
             <StatsCard
-              label="Success Rate"
+              label={t("stats.successRate")}
               value={rules.length > 0 ? `${Math.round(successRate)}%` : "--"}
               accentColor={successRate >= 90 ? "border-secondary" : "border-warning"}
               valueClassName={successRate < 90 ? "text-warning" : ""}
@@ -383,7 +384,7 @@ export function RulesPage() {
               />
               <Input
                 type="text"
-                placeholder="Search rules..."
+                placeholder={t("filter.searchPlaceholder")}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="pl-9"
@@ -392,10 +393,10 @@ export function RulesPage() {
 
             <Select value={eventFilter} onValueChange={setEventFilter}>
               <SelectTrigger className="w-full sm:w-44">
-                <SelectValue placeholder="Event type" />
+                <SelectValue placeholder={t("filter.eventType")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All Events</SelectItem>
+                <SelectItem value="all">{t("filter.allEvents")}</SelectItem>
                 {usedEventTypes.map((et) => (
                   <SelectItem key={et} value={et}>
                     {constants?.eventTypes[et]?.label ?? et}
@@ -406,24 +407,24 @@ export function RulesPage() {
 
             <Select value={statusFilter} onValueChange={setStatusFilter}>
               <SelectTrigger className="w-[calc(50%-6px)] sm:w-36">
-                <SelectValue placeholder="Status" />
+                <SelectValue placeholder={t("filter.status")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All Status</SelectItem>
-                <SelectItem value="enabled">Enabled</SelectItem>
-                <SelectItem value="disabled">Disabled</SelectItem>
+                <SelectItem value="all">{t("filter.allStatus")}</SelectItem>
+                <SelectItem value="enabled">{t("filter.enabled")}</SelectItem>
+                <SelectItem value="disabled">{t("filter.disabled")}</SelectItem>
               </SelectContent>
             </Select>
 
             <Select value={sortBy} onValueChange={(v) => setSortBy(v as SortOption)}>
               <SelectTrigger className="w-[calc(50%-6px)] sm:w-40">
-                <SelectValue placeholder="Sort by" />
+                <SelectValue placeholder={t("filter.sortBy")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="priority">Priority</SelectItem>
-                <SelectItem value="name">Name</SelectItem>
-                <SelectItem value="recent">Last Fired</SelectItem>
-                <SelectItem value="status">Status</SelectItem>
+                <SelectItem value="priority">{t("filter.priority")}</SelectItem>
+                <SelectItem value="name">{t("filter.name")}</SelectItem>
+                <SelectItem value="recent">{t("filter.lastFired")}</SelectItem>
+                <SelectItem value="status">{t("filter.status")}</SelectItem>
               </SelectContent>
             </Select>
 
@@ -439,7 +440,7 @@ export function RulesPage() {
                 className="text-text-muted"
               >
                 <Icon name="close" size={14} />
-                Clear
+                {t("filter.clear")}
               </Button>
             )}
           </div>
@@ -447,7 +448,7 @@ export function RulesPage() {
           {/* Filter results badge */}
           {filteredRules.length !== rules.length && rules.length > 0 && (
             <p className="text-xs text-text-muted">
-              Showing {filteredRules.length} of {rules.length} rules
+              {t("filter.showing", { filtered: filteredRules.length, total: rules.length })}
             </p>
           )}
         </>
@@ -457,16 +458,16 @@ export function RulesPage() {
       {!showEditor && selectedRuleIds.size > 0 && (
         <div className="flex flex-col gap-2 rounded-lg border border-accent/30 bg-accent/5 px-4 py-2.5 sm:flex-row sm:items-center sm:gap-3">
           <span className="text-sm font-medium">
-            {selectedRuleIds.size} rule{selectedRuleIds.size > 1 ? "s" : ""} selected
+            {t("bulk.selected", { count: selectedRuleIds.size })}
           </span>
           <div className="flex flex-wrap gap-2 sm:ml-auto">
             <Button variant="ghost" size="sm" onClick={handleBulkEnable}>
               <Icon name="check_circle" size={16} />
-              Enable
+              {t("bulk.enable")}
             </Button>
             <Button variant="ghost" size="sm" onClick={handleBulkDisable}>
               <Icon name="cancel" size={16} />
-              Disable
+              {t("bulk.disable")}
             </Button>
             <Button
               variant="ghost"
@@ -475,14 +476,14 @@ export function RulesPage() {
               onClick={() => setBulkDeleteConfirm(true)}
             >
               <Icon name="delete" size={16} />
-              Delete
+              {t("bulk.delete")}
             </Button>
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setSelectedRuleIds(new Set())}
             >
-              Clear
+              {t("bulk.clear")}
             </Button>
           </div>
         </div>
@@ -497,16 +498,16 @@ export function RulesPage() {
             <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
               <Icon name="bolt" size={24} className="text-accent" />
             </div>
-            <h3 className="text-lg font-semibold">Get Started with Automation</h3>
+            <h3 className="text-lg font-semibold">{t("empty.title")}</h3>
             <p className="mt-1 text-sm text-text-muted">
-              Choose a template to get started quickly, or create a rule from scratch.
+              {t("empty.description")}
             </p>
           </div>
 
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {RULE_TEMPLATES.map((template) => (
               <button
-                key={template.label}
+                key={template.labelKey}
                 onClick={() => handleUseTemplate(template)}
                 className="group flex items-start gap-3 rounded-lg border border-border bg-surface-lowest p-4 text-left transition-all hover:border-accent/40 hover:bg-surface-high/50"
               >
@@ -515,10 +516,10 @@ export function RulesPage() {
                 </div>
                 <div className="min-w-0">
                   <p className="text-sm font-medium text-text group-hover:text-accent transition-colors">
-                    {template.label}
+                    {t(template.labelKey)}
                   </p>
                   <p className="mt-0.5 text-xs leading-relaxed text-text-muted">
-                    {template.description}
+                    {t(template.descriptionKey)}
                   </p>
                 </div>
               </button>
@@ -528,7 +529,7 @@ export function RulesPage() {
           <div className="mt-6 flex justify-center">
             <Button variant="ghost" onClick={() => setShowEditor(true)} className="gap-2">
               <Icon name="add" size={16} />
-              Create from Scratch
+              {t("empty.createFromScratch")}
             </Button>
           </div>
         </div>
@@ -538,9 +539,9 @@ export function RulesPage() {
           <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-surface-high">
             <Icon name="search_off" size={24} className="text-text-muted" />
           </div>
-          <h3 className="text-lg font-semibold">No matching rules</h3>
+          <h3 className="text-lg font-semibold">{t("noResults.title")}</h3>
           <p className="mt-1 max-w-sm text-sm text-text-muted">
-            Try adjusting your search or filters to find what you're looking for.
+            {t("noResults.description")}
           </p>
         </div>
       ) : (
@@ -559,20 +560,20 @@ export function RulesPage() {
       <ConfirmDialog
         open={!!deleteTarget}
         onOpenChange={(open) => !open && setDeleteTarget(null)}
-        title="Delete Rule"
-        description={`Are you sure you want to delete "${deleteTarget?.name}"? This action cannot be undone.`}
+        title={t("deleteDialog.title")}
+        description={t("deleteDialog.description", { name: deleteTarget?.name })}
         onConfirm={confirmDelete}
-        confirmLabel="Delete"
+        confirmLabel={t("deleteDialog.confirm")}
         destructive
       />
 
       <ConfirmDialog
         open={bulkDeleteConfirm}
         onOpenChange={(open) => !open && setBulkDeleteConfirm(false)}
-        title="Delete Selected Rules"
-        description={`Are you sure you want to delete ${selectedRuleIds.size} rule${selectedRuleIds.size > 1 ? "s" : ""}? This action cannot be undone.`}
+        title={t("bulkDeleteDialog.title")}
+        description={t("bulkDeleteDialog.description", { count: selectedRuleIds.size })}
         onConfirm={confirmBulkDelete}
-        confirmLabel="Delete All"
+        confirmLabel={t("bulkDeleteDialog.confirm")}
         destructive
       />
     </div>

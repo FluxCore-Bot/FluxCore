@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Sunucu",
+    "automation": "Otomasyon"
+  },
+  "title": "Otomasyon Kuralları",
+  "subtitle": "Sunucunuz için olay güdümlü tetikleyicileri ve otomatik yanıtları yapılandırın.",
+  "createRule": "Kural Oluştur",
+  "stats": {
+    "totalRules": "Toplam Kural",
+    "active": "Aktif",
+    "executions7d": "Yürütmeler (7 gün)",
+    "successRate": "Başarı Oranı"
+  },
+  "filter": {
+    "searchPlaceholder": "Kural ara...",
+    "eventType": "Olay türü",
+    "allEvents": "Tüm Olaylar",
+    "allStatus": "Tüm Durumlar",
+    "enabled": "Etkin",
+    "disabled": "Devre Dışı",
+    "sortBy": "Sırala",
+    "priority": "Öncelik",
+    "name": "Ad",
+    "lastFired": "Son Tetikleme",
+    "status": "Durum",
+    "clear": "Temizle",
+    "showing": "{{filtered}} / {{total}} kural gösteriliyor"
+  },
+  "bulk": {
+    "selected": "{{count}} kural seçildi",
+    "selected_other": "{{count}} kural seçildi",
+    "enable": "Etkinleştir",
+    "disable": "Devre Dışı Bırak",
+    "delete": "Sil",
+    "clear": "Temizle"
+  },
+  "empty": {
+    "title": "Otomasyona Başlayın",
+    "description": "Hızlı başlamak için bir şablon seçin veya sıfırdan bir kural oluşturun.",
+    "createFromScratch": "Sıfırdan Oluştur"
+  },
+  "noResults": {
+    "title": "Eşleşen kural yok",
+    "description": "Aradığınızı bulmak için arama veya filtrelerinizi ayarlamayı deneyin."
+  },
+  "templates": {
+    "welcomeMessage": "Karşılama Mesajı",
+    "welcomeMessageDesc": "Yeni üyeleri bir kanaldaki özel mesajla selamlayın",
+    "autoRole": "Otomatik Rol",
+    "autoRoleDesc": "Bir üye katıldığında otomatik olarak rol ata",
+    "logDeleted": "Silinen Mesajları Kaydet",
+    "logDeletedDesc": "Silinen mesaj bilgilerini bir günlük kanalına gönderin",
+    "boostThankYou": "Boost Teşekkür",
+    "boostThankYouDesc": "Sunucuyu boost yapan kullanıcılara teşekkür eden bir DM gönderin",
+    "banLogger": "Yasak Kayıt",
+    "banLoggerDesc": "Yasak olaylarını bir moderasyon kanalına kaydedin",
+    "autoThread": "Otomatik Konu",
+    "autoThreadDesc": "Bir mesaj gönderildiğinde otomatik olarak konu oluşturun"
+  },
+  "deleteDialog": {
+    "title": "Kuralı Sil",
+    "description": "\"{{name}}\" kuralını silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+    "confirm": "Sil"
+  },
+  "bulkDeleteDialog": {
+    "title": "Seçili Kuralları Sil",
+    "description": "{{count}} kuralı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+    "description_other": "{{count}} kuralı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+    "confirm": "Tümünü Sil"
+  },
+  "toast": {
+    "deleted": "Kural silindi",
+    "deleteFailed": "Kural silinemedi",
+    "enabled": "Kural etkinleştirildi",
+    "disabled": "Kural devre dışı bırakıldı",
+    "toggleFailed": "Kural durumu değiştirilemedi",
+    "duplicated": "Kural çoğaltıldı",
+    "duplicateFailed": "Kural çoğaltılamadı",
+    "bulkEnabled": "{{count}} kural etkinleştirildi",
+    "bulkDisabled": "{{count}} kural devre dışı bırakıldı",
+    "bulkEnableFailed": "Kurallar etkinleştirilemedi",
+    "bulkDisableFailed": "Kurallar devre dışı bırakılamadı",
+    "bulkDeleted": "{{count}} kural silindi",
+    "bulkDeleteFailed": "Kurallar silinemedi"
+  }
+}

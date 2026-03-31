@@ -1,0 +1,65 @@
+{
+  "title": "Bienvenida y despedida",
+  "subtitle": "Configura mensajes de bienvenida y despedida, imagenes y roles automaticos.",
+  "loadingSubtitle": "Configura los mensajes de bienvenida y despedida para tu servidor.",
+  "tabs": {
+    "welcome": "Bienvenida",
+    "welcomeImage": "Imagen de bienvenida",
+    "farewell": "Despedida",
+    "farewellImage": "Imagen de despedida",
+    "dm": "MD de bienvenida",
+    "autorole": "Rol automatico"
+  },
+  "welcome": {
+    "title": "Mensaje de bienvenida",
+    "description": "Envia un embed personalizado cuando un nuevo miembro se une.",
+    "channelLabel": "ID del canal de bienvenida",
+    "channelPlaceholder": "ID del canal...",
+    "embedBuilder": "Editor de embed"
+  },
+  "welcomeImage": {
+    "title": "Imagen de bienvenida",
+    "description": "Genera una tarjeta de imagen personalizada con el avatar del miembro cuando se une.",
+    "disabled": "Activa el interruptor de arriba para configurar las imagenes de bienvenida."
+  },
+  "farewell": {
+    "title": "Mensaje de despedida",
+    "description": "Envia un mensaje cuando un miembro abandona el servidor.",
+    "channelLabel": "ID del canal de despedida",
+    "channelPlaceholder": "ID del canal..."
+  },
+  "farewellImage": {
+    "title": "Imagen de despedida",
+    "description": "Genera una tarjeta de despedida personalizada cuando un miembro se va.",
+    "disabled": "Activa el interruptor de arriba para configurar las imagenes de despedida."
+  },
+  "dm": {
+    "title": "MD de bienvenida",
+    "description": "Envia un mensaje directo a los nuevos miembros. Fallara silenciosamente si los MD estan desactivados."
+  },
+  "autorole": {
+    "title": "Rol automatico",
+    "description": "Asigna roles automaticamente a los nuevos miembros cuando se unen. Los bots estan excluidos. El bot debe tener un rol superior a los roles listados aqui.",
+    "label": "IDs de roles (separados por comas)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Titulo",
+    "description": "Descripcion",
+    "color": "Color (hex)",
+    "footer": "Pie de pagina",
+    "thumbnail": "URL de miniatura",
+    "image": "URL de imagen",
+    "variables": "Variables:"
+  },
+  "saveChanges": "Guardar cambios",
+  "saving": "Guardando...",
+  "sendTest": "Enviar mensaje de prueba",
+  "sending": "Enviando...",
+  "toast": {
+    "saved": "Configuracion de bienvenida guardada",
+    "saveFailed": "Error al guardar la configuracion",
+    "testSent": "El mensaje de prueba se enviara a <#{{channelId}}>",
+    "testFailed": "Error al enviar el mensaje de prueba"
+  }
+}

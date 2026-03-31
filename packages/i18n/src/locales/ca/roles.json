@@ -1,0 +1,112 @@
+{
+  "title": "Panells de rols",
+  "subtitle": "Crea panells de rols autoassignables amb botons, desplegables o reaccions.",
+  "stats": {
+    "totalPanels": "Total de panells",
+    "deployed": "Desplegats",
+    "totalRoles": "Total de rols"
+  },
+  "tabs": {
+    "panels": "Panells",
+    "preview": "Vista previa"
+  },
+  "table": {
+    "name": "Nom",
+    "type": "Tipus",
+    "mode": "Mode",
+    "roles": "Rols",
+    "status": "Estat"
+  },
+  "panelTypes": {
+    "reaction": "Reacció",
+    "button": "Botó",
+    "dropdown": "Desplegable"
+  },
+  "panelModes": {
+    "toggle": "Alternar",
+    "unique": "Únic",
+    "verify": "Verificar"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Alternar (afegir/eliminar)",
+    "unique": "Únic (un a la vegada)",
+    "verify": "Verificar (nomes afegir)"
+  },
+  "status": {
+    "deployed": "Desplegat",
+    "draft": "Esborrany"
+  },
+  "dialog": {
+    "createPanel": "Crear panell",
+    "editPanel": "Editar panell"
+  },
+  "panelList": {
+    "title": "Tots els panells"
+  },
+  "form": {
+    "name": "Nom",
+    "namePlaceholder": "p. ex. Rols de color",
+    "type": "Tipus",
+    "mode": "Mode",
+    "channel": "Canal",
+    "channelPlaceholder": "Selecciona canal",
+    "minRoles": "Rols minims",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Rols maxims",
+    "maxRolesPlaceholder": "Tots",
+    "embedSection": "Embed",
+    "embedTitle": "Títol",
+    "embedTitlePlaceholder": "Títol del panell (per defecte el nom del panell)",
+    "embedDescription": "Descripció",
+    "embedDescriptionPlaceholder": "Text de descripció",
+    "rolesCount": "Rols ({{count}}/25)",
+    "addRole": "Afegir rol"
+  },
+  "entry": {
+    "role": "Rol",
+    "rolePlaceholder": "Selecciona rol",
+    "label": "Etiqueta",
+    "labelPlaceholder": "Etiqueta del botó",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "p. ex. estrella",
+    "description": "Descripció",
+    "descriptionPlaceholder": "Descripció de l'opció",
+    "style": "Estil"
+  },
+  "buttonStyles": {
+    "primary": "Primari",
+    "secondary": "Secundari",
+    "success": "Exit",
+    "danger": "Perill"
+  },
+  "actions": {
+    "create": "Crear",
+    "update": "Actualitzar",
+    "cancel": "Cancel\u00b7lar",
+    "deploy": "Desplegar",
+    "delete": "Eliminar",
+    "addEntry": "Afegir entrada",
+    "removeEntry": "Eliminar entrada"
+  },
+  "preview": {
+    "title": "Vista previa en directe",
+    "description": "Previsualitza com apareixeran els teus panells a Discord.",
+    "selectRoles": "Selecciona rols...",
+    "noPreview": "No hi ha panells per previsualitzar."
+  },
+  "empty": "Encara no s'han creat panells de rols. Fes clic a \"Crear panell\" per comencar.",
+  "toast": {
+    "created": "Panell creat",
+    "createFailed": "No s'ha pogut crear el panell",
+    "updated": "Panell actualitzat",
+    "updateFailed": "No s'ha pogut actualitzar el panell",
+    "deleted": "Panell eliminat",
+    "deleteFailed": "No s'ha pogut eliminar el panell",
+    "deployed": "Panell de rols desplegat al canal",
+    "deployFailed": "No s'ha pogut enviar el panell",
+    "nameRequired": "El nom del panell es obligatori",
+    "channelRequired": "El canal es obligatori",
+    "maxRolesReached": "Maxim 25 rols per panell"
+  },
+  "loading": "Carregant panells..."
+}

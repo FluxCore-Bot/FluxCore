@@ -1,0 +1,120 @@
+{
+  "title": "레벨링 시스템",
+  "subtitle": "XP 획득, 레벨업 알림, 역할 보상, 배율을 설정합니다.",
+  "stats": {
+    "rankedMembers": "랭크 멤버",
+    "roleRewards": "역할 보상",
+    "systemStatus": "시스템 상태",
+    "enabled": "활성화됨",
+    "disabled": "비활성화됨"
+  },
+  "tabs": {
+    "leaderboard": "리더보드",
+    "settings": "설정",
+    "roleRewards": "역할 보상",
+    "exclusions": "제외 설정",
+    "multipliers": "배율"
+  },
+  "table": {
+    "rank": "순위",
+    "userId": "사용자 ID",
+    "level": "레벨",
+    "xp": "XP",
+    "messages": "메시지 수",
+    "voiceTime": "음성 시간"
+  },
+  "settings": {
+    "title": "레벨링 설정",
+    "enabled": "레벨링 활성화",
+    "enabledDesc": "전체 레벨링 시스템을 켜거나 끕니다.",
+    "xpPerMessage": "메시지당 XP",
+    "xpPerMessageDesc": "메시지당 부여되는 기본 XP (0-9의 랜덤 값이 추가됩니다).",
+    "xpCooldown": "XP 쿨다운 (초)",
+    "xpCooldownDesc": "사용자별 XP 부여 최소 간격.",
+    "voiceXpEnabled": "음성 XP",
+    "voiceXpEnabledDesc": "음성 채널에서 보낸 시간에 대해 XP를 부여합니다.",
+    "voiceXpPerMinute": "분당 음성 XP",
+    "voiceXpPerMinuteDesc": "음성 채널에서 분당 부여되는 XP.",
+    "levelUpAnnouncements": "레벨업 알림",
+    "levelUpAnnouncementsDesc": "멤버가 레벨업할 때 알림을 보냅니다.",
+    "announceDest": "알림 채널",
+    "announceDestHint": "위의 입력란에 채널 ID를 직접 입력할 수도 있습니다.",
+    "announceDestSameChannel": "같은 채널",
+    "announceDestDM": "다이렉트 메시지",
+    "announceMessage": "알림 메시지",
+    "announceMessagePlaceholder": "{user}님이 **레벨 {level}**에 도달했습니다!",
+    "announceMessageVars": "변수: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "역할 보상",
+    "description": "멤버가 특정 레벨에 도달하면 자동으로 역할을 부여합니다.",
+    "addReward": "보상 추가",
+    "addRewardTitle": "역할 보상 추가",
+    "level": "레벨",
+    "levelPrefix": "레벨 {{level}}",
+    "roleId": "역할 ID",
+    "levelPlaceholder": "예: 5",
+    "rolePlaceholder": "예: 123456789",
+    "removeReward": "제거",
+    "noRewards": "설정된 역할 보상이 없습니다."
+  },
+  "exclusions": {
+    "title": "XP 제외 설정",
+    "description": "XP가 부여되지 않는 채널과 역할.",
+    "noXpChannels": "XP 제외 채널 (쉼표로 구분된 ID)",
+    "noXpChannelsPlaceholder": "예: 123456789, 987654321",
+    "noXpRoles": "XP 제외 역할 (쉼표로 구분된 ID)",
+    "noXpRolesPlaceholder": "예: 123456789, 987654321",
+    "save": "제외 설정 저장"
+  },
+  "multipliers": {
+    "title": "XP 배율",
+    "description": "채널 또는 역할별 XP 배율을 설정합니다. 배율 2는 XP를 2배로 만듭니다.",
+    "channelMultipliers": "채널 배율",
+    "roleMultipliers": "역할 배율",
+    "channelId": "채널 ID",
+    "roleId": "역할 ID",
+    "multiplier": "배율",
+    "type": "유형",
+    "typeChannel": "채널",
+    "typeRole": "역할",
+    "id": "ID",
+    "idPlaceholder": "채널 또는 역할 ID",
+    "value": "배율",
+    "valuePlaceholder": "예: 2",
+    "add": "배율 추가",
+    "addTitle": "배율 추가",
+    "multiplierSuffix": "{{value}}배",
+    "noMultipliers": "설정된 XP 배율이 없습니다."
+  },
+  "pagination": {
+    "previous": "이전",
+    "next": "다음",
+    "pageInfo": "페이지 {{page}} / {{totalPages}} (총 {{total}}건)"
+  },
+  "loading": "리더보드 불러오는 중...",
+  "loadingGeneric": "불러오는 중...",
+  "emptyLeaderboard": "아직 XP를 획득한 멤버가 없습니다.",
+  "toast": {
+    "saved": "레벨링 설정이 저장되었습니다",
+    "saveFailed": "설정 업데이트에 실패했습니다",
+    "rewardAdded": "보상이 추가되었습니다",
+    "rewardAddFailed": "보상 추가에 실패했습니다",
+    "rewardRemoved": "보상이 제거되었습니다",
+    "rewardRemoveFailed": "보상 제거에 실패했습니다",
+    "multiplierAdded": "배율이 추가되었습니다",
+    "multiplierAddFailed": "배율 추가에 실패했습니다",
+    "multiplierRemoved": "배율이 제거되었습니다",
+    "multiplierRemoveFailed": "배율 제거에 실패했습니다",
+    "exclusionUpdated": "제외 설정이 저장되었습니다",
+    "exclusionFailed": "제외 설정 저장에 실패했습니다",
+    "levelValidation": "레벨은 1에서 100 사이여야 합니다",
+    "roleIdRequired": "역할 ID는 필수입니다",
+    "multiplierIdRequired": "ID와 배율 값은 필수입니다",
+    "multiplierRange": "배율은 0에서 10 사이여야 합니다"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}시간 {{minutes}}분",
+    "voiceTimeMinutesOnly": "{{minutes}}분"
+  }
+}

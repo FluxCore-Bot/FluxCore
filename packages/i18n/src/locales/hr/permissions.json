@@ -1,0 +1,118 @@
+{
+  "title": "Uloge i dozvole",
+  "subtitle": "Kontrolirajte tko moze pristupiti i upravljati svakim modulom nadzorne ploce.",
+  "actions": {
+    "createRole": "Stvori ulogu"
+  },
+  "permissionSystem": {
+    "title": "Sustav dozvola",
+    "active": "Aktivno — administratori su ograniceni na dodijeljene dozvole.",
+    "inactive": "Neaktivno — svi administratori s MANAGE_GUILD imaju puni pristup.",
+    "enabledToast": "Sustav dozvola omogucen",
+    "disabledToast": "Sustav dozvola onemogucen — svi administratori imaju puni pristup"
+  },
+  "warning": {
+    "disabled": "Sustav dozvola je onemogucen. Svi administratori nadzorne ploce trenutno imaju puni pristup. Omogucite ga iznad za primjenu detaljnih dozvola."
+  },
+  "tabs": {
+    "roles": "Uloge",
+    "auditLog": "Revizijski zapis"
+  },
+  "roleList": {
+    "title": "Uloge nadzorne ploce",
+    "empty": "Nema stvorenih uloga.",
+    "selectHint": "Odaberite ulogu za uredivanje ili stvorite novu.",
+    "default": "Zadano",
+    "name": "Naziv",
+    "members": "Clanovi",
+    "permissions": "Dozvole",
+    "edit": "Uredi",
+    "delete": "Obrisi"
+  },
+  "presets": {
+    "title": "Brzo dodavanje iz predloska",
+    "createdToast": "Uloga \"{{name}}\" stvorena"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} clan",
+    "memberCount_plural": "{{count}} clanova",
+    "name": "Naziv uloge",
+    "color": "Boja",
+    "defaultRole": "Zadana uloga",
+    "permissions": "Dozvole",
+    "allBadge": "Sve",
+    "discordRoles": "Discord uloge"
+  },
+  "roleForm": {
+    "name": "Naziv uloge",
+    "discordRoles": "Discord uloge",
+    "permissions": "Dozvole",
+    "create": "Stvori ulogu",
+    "update": "Azuriraj ulogu",
+    "cancel": "Odustani"
+  },
+  "createDialog": {
+    "title": "Stvori ulogu nadzorne ploce",
+    "name": "Naziv",
+    "namePlaceholder": "npr. Moderator",
+    "color": "Boja"
+  },
+  "permissionCategories": {
+    "actions": "Radnje i automatizacija",
+    "music": "Glazba",
+    "tempvoice": "TempVoice",
+    "welcome": "Dobrodoslica i oprostaj",
+    "moderation": "Moderacija",
+    "logging": "Zapisivanje",
+    "leveling": "Napredovanje",
+    "roles": "Paneli uloga",
+    "tickets": "Tiketi",
+    "suggestions": "Prijedlozi",
+    "starboard": "Starboard",
+    "giveaways": "Nagradne igre",
+    "security": "Sigurnost",
+    "scheduled": "Zakazane poruke",
+    "commands": "Prilagodene naredbe",
+    "settings": "Postavke posluzitelja"
+  },
+  "audit": {
+    "table": {
+      "user": "Korisnik",
+      "action": "Radnja",
+      "target": "Cilj",
+      "timestamp": "Kada"
+    },
+    "noEntries": "Nema zapisa revizije."
+  },
+  "pagination": {
+    "previous": "Prethodna",
+    "next": "Sljedeca",
+    "page": "Stranica {{current}} od {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Uloga \"{{name}}\" stvorena",
+    "roleCreateFailed": "Stvaranje uloge nije uspjelo",
+    "roleUpdated": "Uloga azurirana",
+    "roleUpdateFailed": "Azuriranje uloge nije uspjelo",
+    "roleDeleted": "Uloga obrisana",
+    "roleDeleteFailed": "Brisanje uloge nije uspjelo"
+  },
+  "confirm": {
+    "deleteTitle": "Obrisati ulogu \"{{name}}\"?",
+    "deleteMessage": "Ovo ce ukloniti ulogu i poništiti dodjelu svim clanovima. Ova radnja se ne moze ponistiti.",
+    "deleteRole": "Jeste li sigurni da zelite obrisati ovu ulogu? Clanovi ce izgubiti dodijeljene dozvole."
+  },
+  "saveButton": {
+    "saving": "Spremanje...",
+    "save": "Spremi promjene"
+  },
+  "deleteButton": {
+    "deleting": "Brisanje...",
+    "delete": "Obrisi"
+  },
+  "createButton": {
+    "creating": "Stvaranje...",
+    "create": "Stvori"
+  },
+  "loading": "Ucitavanje dozvola..."
+}

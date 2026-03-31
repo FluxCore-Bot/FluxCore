@@ -1,0 +1,108 @@
+{
+  "title": "Turvalisus",
+  "subtitle": "Seadista reidikaitse ja serveri turvaseaded.",
+  "antiRaid": {
+    "title": "Reidikaitse",
+    "description": "Luba koordineeritud reidide, kahtlaste kontode ja hävitavate toimingute automaatne tuvastamine ja reageerimine."
+  },
+  "sections": {
+    "joinRate": "Liitumise kiirus",
+    "accountAge": "Konto vanus",
+    "antiNuke": "Nuke-kaitse",
+    "lockdown": "Lukustus",
+    "events": "Sündmused"
+  },
+  "joinRate": {
+    "title": "Liitumise kiiruse tuvastamine",
+    "description": "Tuvasta massliitumised, jälgides uute liikmete liitumise kiirust.",
+    "threshold": "Liitumise lävi",
+    "thresholdHint": "Liitumiste arv tuvastamise käivitamiseks",
+    "window": "Ajavahemik (sekundites)",
+    "windowHint": "Vahemik, milles liitumisi loendatakse",
+    "action": "Toiming tuvastamisel",
+    "actionHint": "Toiming kahtlustatavate reidi liikmetega",
+    "actions": {
+      "ban": "Banni",
+      "kick": "Kicki",
+      "timeout": "Timeout",
+      "lockdown": "Lukusta"
+    }
+  },
+  "accountAge": {
+    "title": "Konto vanuse filter",
+    "description": "Automaatselt tee toiming kontodega, mis on nooremad kui minimaalne vanus. Seadista 0, et keelata.",
+    "minAge": "Minimaalne konto vanus (päevades)",
+    "minAgeHint": "0 = keelatud. Selle vanusest nooremad kontod saavad toimingu.",
+    "action": "Toiming"
+  },
+  "antiNuke": {
+    "title": "Nuke-kaitse",
+    "description": "Tuvasta massilised kanalite/rollide kustutamised ja karantini vastutav kasutaja, eemaldades kõik tema rollid.",
+    "threshold": "Kustutamise lävi",
+    "thresholdHint": "Kustutamiste arv 10 sekundi jooksul karantiini käivitamiseks",
+    "channelDeleteThreshold": "Kanali kustutamise lävi",
+    "roleDeleteThreshold": "Rolli kustutamise lävi",
+    "massbanThreshold": "Massilise bannimise lävi",
+    "interval": "Intervall (sekundites)",
+    "action": "Toiming"
+  },
+  "lockdown": {
+    "title": "Automaatne lukustus reidi korral",
+    "description": "Lukusta automaatselt kõik kanalid, kui reidi tuvastatakse.",
+    "whitelistedRoles": "Lubatud rollide ID-d (komadega eraldatud)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Nende rollidega liikmed on reidi tuvastamisest vabastatud.",
+    "logChannel": "Logikanali ID",
+    "logChannelPlaceholder": "Kanali ID reidi sündmuselogide jaoks...",
+    "enableButton": "Luba lukustus",
+    "disableButton": "Keela lukustus",
+    "active": "Lukustus aktiivne",
+    "inactive": "Lukustus mitteaktiivne"
+  },
+  "events": {
+    "title": "Hiljutised reidi sündmused",
+    "description": "Tuvastatud reidide, konto vanuse blokkide ja lukustussündmuste ajaskaala.",
+    "empty": "Reidi sündmused pole veel salvestatud. Sündmused ilmuvad siia, kui reidi tuvastamine käivitub.",
+    "actionLabel": "Toiming: {{action}}",
+    "usersLabel": "Kasutajaid: {{count}}",
+    "accountAgeLabel": "Konto vanus: {{days}}p",
+    "table": {
+      "type": "Tüüp",
+      "description": "Kirjeldus",
+      "time": "Aeg",
+      "action": "Võetud toiming"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Liitumise tõus",
+    "account_age": "Konto vanus",
+    "nuke_attempt": "Nuke katse",
+    "lockdown": "Lukustus",
+    "massJoin": "Massliitumine",
+    "suspiciousAccounts": "Kahtlased kontod",
+    "channelDeletion": "Kanali kustutamine",
+    "roleDeletion": "Rolli kustutamine",
+    "massBan": "Massiline bann"
+  },
+  "pagination": {
+    "previous": "Eelmine",
+    "next": "Järgmine",
+    "page": "Leht {{current}} / {{total}}"
+  },
+  "toast": {
+    "saved": "Reidikaitse seadistus salvestatud",
+    "saveFailed": "Seadistuse salvestamine ebaõnnestus",
+    "lockdownEnabled": "Serveri lukustus lubatud",
+    "lockdownDisabled": "Serveri lukustus keelatud",
+    "lockdownFailed": "Lukustuse lülitamine ebaõnnestus"
+  },
+  "saveButton": {
+    "saving": "Salvestan...",
+    "save": "Salvesta muudatused"
+  },
+  "labels": {
+    "seconds": "sekundit",
+    "minutes": "minutit",
+    "hours": "tundi"
+  }
+}

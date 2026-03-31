@@ -1,0 +1,54 @@
+{
+  "title": "Moderering",
+  "subtitle": "Vis og administrer modereringssager, konfigurer strafindstillinger.",
+  "stats": {
+    "totalCases": "Sager i alt",
+    "activeTempbans": "Aktive midlertidige udelukkelser",
+    "last24h": "Sidste 24t"
+  },
+  "cases": "Sager",
+  "actions": {
+    "ban": "Udeluk",
+    "tempban": "Midlertidig udelukkelse",
+    "kick": "Smid ud",
+    "timeout": "Timeout",
+    "softban": "Blød udelukkelse",
+    "warn": "Advar",
+    "note": "Note"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Handling",
+    "target": "Mål",
+    "moderator": "Moderator",
+    "reason": "Årsag",
+    "date": "Dato",
+    "actions": "Handlinger",
+    "noCases": "Ingen sager fundet.",
+    "noReason": "Ingen årsag"
+  },
+  "filter": {
+    "userPlaceholder": "Filtrer efter bruger-ID...",
+    "allActions": "Alle handlinger"
+  },
+  "pagination": {
+    "previous": "Forrige",
+    "next": "Næste",
+    "page": "Side {{page}} af {{total}}"
+  },
+  "editDialog": {
+    "title": "Rediger sag #{{id}} årsag",
+    "placeholder": "Indtast ny årsag...",
+    "saving": "Gemmer..."
+  },
+  "editReason": "Rediger årsag",
+  "deleteCase": "Slet sag",
+  "deleteConfirm": "Er du sikker på, at du vil slette denne sag?",
+  "settings": {
+    "title": "Indstillinger",
+    "dmOnPunishment": "DM ved straf",
+    "dmOnPunishmentDesc": "Send en DM til brugere, når de straffes (udelukkelse, udsmidning, timeout).",
+    "modLogChannel": "Modereringslogkanal",
+    "modLogChannelDesc": "Kanal, hvor modereringshandlinger logges."
+  }
+}

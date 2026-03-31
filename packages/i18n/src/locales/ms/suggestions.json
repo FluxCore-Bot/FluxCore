@@ -1,0 +1,67 @@
+{
+  "title": "Cadangan",
+  "subtitle": "Benarkan ahli menghantar idea dan mengundi. Urus status dan maklum balas.",
+  "stats": {
+    "totalSuggestions": "Jumlah Cadangan",
+    "systemStatus": "Status Sistem",
+    "channel": {
+      "configured": "Saluran Dikonfigurasi",
+      "notSet": "Saluran Belum Ditetapkan"
+    }
+  },
+  "tabs": {
+    "suggestions": "Cadangan",
+    "settings": "Tetapan"
+  },
+  "filter": {
+    "filterByStatus": "Tapis mengikut Status",
+    "all": "Semua",
+    "pending": "Tertangguh",
+    "approved": "Diluluskan",
+    "rejected": "Ditolak",
+    "implemented": "Dilaksanakan",
+    "considered": "Sedang Dipertimbangkan"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Pengarang",
+    "content": "Kandungan",
+    "status": "Status",
+    "votes": "Undi",
+    "date": "Tarikh"
+  },
+  "actions": {
+    "approve": "Luluskan",
+    "reject": "Tolak",
+    "implement": "Tandakan Dilaksanakan",
+    "consider": "Pertimbangkan",
+    "delete": "Padam"
+  },
+  "settings": {
+    "channel": "Saluran Cadangan",
+    "channelDesc": "Saluran di mana cadangan dipos untuk pengundian.",
+    "voteEmojis": "Emoji Undi",
+    "voteEmojisDesc": "Emoji yang digunakan untuk reaksi setuju dan tidak setuju.",
+    "autoThread": "Cipta Thread Automatik",
+    "autoThreadDesc": "Cipta thread perbincangan secara automatik untuk setiap cadangan baru.",
+    "dmOnStatusChange": "DM semasa Status Berubah",
+    "dmOnStatusChangeDesc": "Maklumkan pengarang melalui DM apabila status cadangan mereka berubah."
+  },
+  "toast": {
+    "approved": "Cadangan diluluskan",
+    "rejected": "Cadangan ditolak",
+    "implemented": "Cadangan ditandakan sebagai dilaksanakan",
+    "considered": "Cadangan ditandakan sedang dipertimbangkan",
+    "deleted": "Cadangan dipadam",
+    "actionFailed": "Gagal mengemaskini cadangan",
+    "settingsSaved": "Tetapan cadangan disimpan",
+    "settingsFailed": "Gagal menyimpan tetapan cadangan"
+  },
+  "empty": "Belum ada cadangan.",
+  "loading": "Memuatkan cadangan...",
+  "pagination": {
+    "previous": "Sebelumnya",
+    "next": "Seterusnya",
+    "page": "Halaman {{page}} daripada {{total}}"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "title": "カスタムコマンド",
+  "subtitle": "メッセージで起動する自動応答やプレフィックスコマンドを作成します。",
+  "stats": {
+    "totalCommands": "コマンド総数",
+    "enabled": "有効",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "コマンド",
+    "variables": "変数"
+  },
+  "table": {
+    "name": "名前",
+    "trigger": "トリガー",
+    "response": "応答",
+    "cooldown": "クールダウン",
+    "status": "ステータス"
+  },
+  "triggerTypes": {
+    "command": "!command",
+    "keyword": "キーワード",
+    "startsWith": "前方一致",
+    "regex": "正規表現",
+    "prefixCommand": "プレフィックスコマンド (!name)",
+    "keywordContains": "キーワード (含む)"
+  },
+  "dialog": {
+    "createCommand": "コマンドを作成",
+    "editCommand": "コマンドを編集"
+  },
+  "form": {
+    "commandName": "コマンド名",
+    "triggerText": "トリガーテキスト",
+    "regexPattern": "正規表現パターン",
+    "triggerType": "トリガータイプ",
+    "response": "応答",
+    "message": "メッセージ",
+    "embedTitle": "埋め込みタイトル",
+    "embedDescription": "埋め込み説明",
+    "color": "色",
+    "footer": "フッター"
+  },
+  "options": {
+    "cooldown": "クールダウン (秒)",
+    "enabled": "有効",
+    "enabledDesc": "このコマンドが有効かどうか",
+    "deleteTrigger": "トリガーメッセージを削除",
+    "deleteTriggerDesc": "このコマンドを起動したメッセージを自動的に削除します。",
+    "dmResponse": "DM応答",
+    "dmResponseDesc": "チャンネルではなくダイレクトメッセージで応答を送信します。"
+  },
+  "restrictions": {
+    "title": "制限",
+    "allowedChannels": "許可チャンネル (空 = すべて)",
+    "allowedRoles": "許可ロール (空 = 全員)",
+    "addChannel": "チャンネルを追加",
+    "addRole": "ロールを追加"
+  },
+  "actions": {
+    "create": "作成",
+    "update": "更新",
+    "cancel": "キャンセル",
+    "addAction": "アクションを追加",
+    "addRole": "ロールを追加",
+    "removeRole": "ロールを削除"
+  },
+  "actionsSection": {
+    "title": "アクション ({{count}}/5)",
+    "noActions": "アクションが設定されていません。このコマンドの動作を定義するアクションを追加してください。",
+    "maxActions": "コマンドあたり最大5アクション"
+  },
+  "variables": {
+    "title": "テンプレート変数",
+    "description": "コマンドの応答でこれらの変数を使用できます。コマンドが起動されると実際の値に置き換えられます。",
+    "table": {
+      "variable": "変数",
+      "description": "説明"
+    },
+    "entries": {
+      "user": "{user} — コマンドを起動したユーザーをメンション",
+      "username": "{username} — ユーザーの表示名",
+      "userId": "{userId} — ユーザーのID",
+      "server": "{server} — サーバー名",
+      "channel": "{channel} — 現在のチャンネルをメンション",
+      "channelName": "{channelName} — チャンネル名",
+      "memberCount": "{memberCount} — サーバーメンバーの総数"
+    }
+  },
+  "toast": {
+    "created": "コマンドを作成しました",
+    "createFailed": "コマンドの作成に失敗しました",
+    "updated": "コマンドを更新しました",
+    "updateFailed": "コマンドの更新に失敗しました",
+    "deleted": "コマンドを削除しました",
+    "deleteFailed": "コマンドの削除に失敗しました",
+    "toggleEnabled": "コマンドを有効にしました",
+    "toggleDisabled": "コマンドを無効にしました",
+    "toggleFailed": "コマンドの切り替えに失敗しました"
+  },
+  "empty": "カスタムコマンドはまだ作成されていません。",
+  "loading": "コマンドを読み込み中...",
+  "badge": {
+    "active": "有効",
+    "disabled": "無効",
+    "text": "テキスト",
+    "embed": "埋め込み"
+  },
+  "validation": {
+    "nameRequired": "コマンド名は必須です"
+  },
+  "triggerPrefix": "トリガー: !{{name}}"
+}

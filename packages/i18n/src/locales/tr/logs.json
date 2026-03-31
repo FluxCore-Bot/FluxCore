@@ -1,0 +1,8 @@
+{
+  "title": "Günlükler",
+  "subtitle": "Kural yürütmelerini ve olay günlüklerini izleyin.",
+  "tabs": {
+    "activity": "Etkinlik Günlükleri",
+    "events": "Olay Günlükleri"
+  }
+}

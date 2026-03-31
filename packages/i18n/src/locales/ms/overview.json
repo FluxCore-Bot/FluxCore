@@ -1,0 +1,12 @@
+{
+  "title": "Gambaran Keseluruhan",
+  "subtitle": "Pantau prestasi automasi dan aktiviti anda sepintas lalu.",
+  "stats": {
+    "actionRules": "Peraturan Tindakan",
+    "activeNow": "Aktif Sekarang",
+    "executions": "Pelaksanaan",
+    "successRate": "Kadar Kejayaan"
+  },
+  "errorsInLast24h": "{{count}} ralat dalam 24 jam lepas",
+  "errorsInLast24h_other": "{{count}} ralat dalam 24 jam lepas"
+}

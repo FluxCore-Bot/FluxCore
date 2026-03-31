@@ -1,0 +1,72 @@
+{
+  "title": "সতর্কতা",
+  "subtitle": "স্বয়ংক্রিয় এস্কেলেশন সহ সদস্য সতর্কতা ট্র্যাক ও পরিচালনা করুন।",
+  "stats": {
+    "totalWarnings": "মোট সতর্কতা",
+    "escalationRules": "এস্কেলেশন নিয়ম",
+    "dmOnWarn": "সতর্কতায় DM"
+  },
+  "tabs": {
+    "warnings": "সতর্কতা লগ",
+    "escalation": "এস্কেলেশন",
+    "settings": "সেটিংস"
+  },
+  "table": {
+    "id": "ID",
+    "user": "ব্যবহারকারী",
+    "moderator": "মডারেটর",
+    "reason": "কারণ",
+    "date": "তারিখ"
+  },
+  "filter": {
+    "userPlaceholder": "ব্যবহারকারী ID দিয়ে ফিল্টার...",
+    "clearAll": "সব সাফ করুন"
+  },
+  "pagination": {
+    "previous": "আগের",
+    "next": "পরবর্তী",
+    "page": "পৃষ্ঠা {{page}} / {{total}} (মোট {{count}})"
+  },
+  "loading": "সতর্কতা লোড হচ্ছে...",
+  "noWarnings": "কোনো সতর্কতা পাওয়া যায়নি।",
+  "toast": {
+    "warningRemoved": "সতর্কতা সরানো হয়েছে",
+    "warningsFailed": "সতর্কতা মুছতে ব্যর্থ",
+    "enterUserId": "সেই ব্যবহারকারীর সব সতর্কতা সাফ করতে ব্যবহারকারী ID দিন",
+    "allCleared": "ব্যবহারকারীর সব সতর্কতা সাফ করা হয়েছে",
+    "clearFailed": "সতর্কতা সাফ ব্যর্থ",
+    "thresholdAdded": "শাস্তি সীমা যোগ হয়েছে",
+    "thresholdFailed": "শাস্তি যোগ ব্যর্থ",
+    "thresholdRemoved": "শাস্তি সরানো হয়েছে",
+    "removeFailed": "শাস্তি সরাতে ব্যর্থ",
+    "settingFailed": "সেটিং আপডেট ব্যর্থ",
+    "thresholdInvalid": "সীমা একটি ধনাত্মক সংখ্যা হতে হবে"
+  },
+  "escalation": {
+    "title": "শাস্তি এস্কেলেশন",
+    "description": "কোনো ব্যবহারকারী নির্দিষ্ট সংখ্যক সতর্কতায় পৌঁছালে স্বয়ংক্রিয় পদক্ষেপ কনফিগার করুন।",
+    "threshold": "সীমা",
+    "action": "কার্যকলাপ",
+    "duration": "সময়কাল",
+    "noRules": "কোনো এস্কেলেশন নিয়ম কনফিগার করা হয়নি।",
+    "addRule": "এস্কেলেশন নিয়ম যোগ করুন",
+    "addButton": "নিয়ম যোগ করুন",
+    "warnings": "{{count}} সতর্কতা",
+    "min": "{{count}} মিনিট",
+    "timeout": "টাইমআউট",
+    "kick": "কিক",
+    "ban": "নিষেধাজ্ঞা",
+    "durationLabel": "সময়কাল (সেকেন্ড)",
+    "thresholdPlaceholder": "যেমন 3",
+    "durationPlaceholder": "যেমন 3600"
+  },
+  "settings": {
+    "title": "সতর্কতা সেটিংস",
+    "dmOnWarn": "সতর্কতায় DM",
+    "dmOnWarnDesc": "ব্যবহারকারী সতর্কতা পেলে তাদের ডাইরেক্ট মেসেজ পাঠান।",
+    "requireReason": "কারণ আবশ্যক",
+    "requireReasonDesc": "সতর্কতা দেওয়ার সময় মডারেটরদের কারণ দিতে হবে।",
+    "maxWarnings": "সর্বোচ্চ সতর্কতা",
+    "maxWarningsDesc": "প্রতি ব্যবহারকারী সর্বোচ্চ সতর্কতা (0 = সীমাহীন)।"
+  }
+}

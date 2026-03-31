@@ -1,0 +1,113 @@
+{
+  "title": "Komendy niestandardowe",
+  "subtitle": "Twórz auto-odpowiedzi i komendy prefiksowe wyzwalane przez wiadomości.",
+  "stats": {
+    "totalCommands": "Łącznie komend",
+    "enabled": "Włączone",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Komendy",
+    "variables": "Zmienne"
+  },
+  "table": {
+    "name": "Nazwa",
+    "trigger": "Wyzwalacz",
+    "response": "Odpowiedź",
+    "cooldown": "Cooldown",
+    "status": "Status"
+  },
+  "triggerTypes": {
+    "command": "!komenda",
+    "keyword": "Słowo kluczowe",
+    "startsWith": "Zaczyna się od",
+    "regex": "Wyrażenie regularne",
+    "prefixCommand": "Komenda prefiksowa (!nazwa)",
+    "keywordContains": "Słowo kluczowe (zawiera)"
+  },
+  "dialog": {
+    "createCommand": "Utwórz komendę",
+    "editCommand": "Edytuj komendę"
+  },
+  "form": {
+    "commandName": "Nazwa komendy",
+    "triggerText": "Tekst wyzwalacza",
+    "regexPattern": "Wzorzec wyrażenia regularnego",
+    "triggerType": "Typ wyzwalacza",
+    "response": "Odpowiedź",
+    "message": "Wiadomość",
+    "embedTitle": "Tytuł embeda",
+    "embedDescription": "Opis embeda",
+    "color": "Kolor",
+    "footer": "Stopka"
+  },
+  "options": {
+    "cooldown": "Cooldown (sekundy)",
+    "enabled": "Włączona",
+    "enabledDesc": "Czy ta komenda jest aktywna",
+    "deleteTrigger": "Usuń wiadomość wyzwalającą",
+    "deleteTriggerDesc": "Automatycznie usuwaj wiadomość, która wyzwoliła tę komendę.",
+    "dmResponse": "Odpowiedź w PW",
+    "dmResponseDesc": "Wyślij odpowiedź jako wiadomość prywatną zamiast na kanał."
+  },
+  "restrictions": {
+    "title": "Ograniczenia",
+    "allowedChannels": "Dozwolone kanały (puste = wszystkie)",
+    "allowedRoles": "Dozwolone role (puste = wszyscy)",
+    "addChannel": "Dodaj kanał",
+    "addRole": "Dodaj rolę"
+  },
+  "actions": {
+    "create": "Utwórz",
+    "update": "Aktualizuj",
+    "cancel": "Anuluj",
+    "addAction": "Dodaj akcję",
+    "addRole": "Dodaj rolę",
+    "removeRole": "Usuń rolę"
+  },
+  "actionsSection": {
+    "title": "Akcje ({{count}}/5)",
+    "noActions": "Brak skonfigurowanych akcji. Dodaj akcję, aby określić, co robi ta komenda.",
+    "maxActions": "Maksymalnie 5 akcji na komendę"
+  },
+  "variables": {
+    "title": "Zmienne szablonowe",
+    "description": "Użyj tych zmiennych w odpowiedziach komend. Zostaną zastąpione rzeczywistymi wartościami po wyzwoleniu komendy.",
+    "table": {
+      "variable": "Zmienna",
+      "description": "Opis"
+    },
+    "entries": {
+      "user": "{user} — Oznacza użytkownika, który wyzwolił komendę",
+      "username": "{username} — Wyświetlana nazwa użytkownika",
+      "userId": "{userId} — ID użytkownika",
+      "server": "{server} — Nazwa serwera",
+      "channel": "{channel} — Oznacza bieżący kanał",
+      "channelName": "{channelName} — Nazwa kanału",
+      "memberCount": "{memberCount} — Łączna liczba członków serwera"
+    }
+  },
+  "toast": {
+    "created": "Komenda utworzona",
+    "createFailed": "Nie udało się utworzyć komendy",
+    "updated": "Komenda zaktualizowana",
+    "updateFailed": "Nie udało się zaktualizować komendy",
+    "deleted": "Komenda usunięta",
+    "deleteFailed": "Nie udało się usunąć komendy",
+    "toggleEnabled": "Komenda włączona",
+    "toggleDisabled": "Komenda wyłączona",
+    "toggleFailed": "Nie udało się przełączyć komendy"
+  },
+  "empty": "Nie utworzono jeszcze żadnych komend niestandardowych.",
+  "loading": "Ładowanie komend...",
+  "badge": {
+    "active": "Aktywna",
+    "disabled": "Wyłączona",
+    "text": "Tekst",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Nazwa komendy jest wymagana"
+  },
+  "triggerPrefix": "Wyzwalacz: !{{name}}"
+}

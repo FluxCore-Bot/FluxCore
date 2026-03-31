@@ -1,0 +1,50 @@
+{
+  "title": "Nagradne igre",
+  "subtitle": "Izvedite nagradne igre z nastavljivo trajanjem, pogoji sodelovanja in izborom zmagovalcev.",
+  "stats": {
+    "activeGiveaways": "Aktivne nagradne igre",
+    "pastGiveaways": "Pretekle nagradne igre",
+    "totalEntries": "Skupaj prijav"
+  },
+  "table": {
+    "prize": "Nagrada",
+    "winners": "Zmagovalci",
+    "entries": "Prijave",
+    "endsIn": "Konča se čez",
+    "status": "Stanje"
+  },
+  "statuses": {
+    "active": "Aktivno",
+    "ended": "Končano",
+    "cancelled": "Preklicano"
+  },
+  "actions": {
+    "create": "Ustvari nagradno igro",
+    "edit": "Uredi",
+    "end": "Končaj",
+    "reroll": "Ponovno žrebaj",
+    "delete": "Izbriši"
+  },
+  "form": {
+    "prize": "Nagrada",
+    "winnersCount": "Število zmagovalcev",
+    "duration": "Trajanje",
+    "channel": "Kanal",
+    "requiredRole": "Zahtevana vloga",
+    "description": "Opis"
+  },
+  "toast": {
+    "created": "Nagradna igra ustvarjena",
+    "createFailed": "Ustvarjanje nagradne igre ni uspelo",
+    "updated": "Nagradna igra posodobljena",
+    "updateFailed": "Posodabljanje nagradne igre ni uspelo",
+    "ended": "Nagradna igra je končana",
+    "endFailed": "Končanje nagradne igre ni uspelo",
+    "rerolled": "Zmagovalci ponovno žrebani",
+    "rerollFailed": "Ponovno žrebanje zmagovalcev ni uspelo",
+    "deleted": "Nagradna igra izbrisana",
+    "deleteFailed": "Brisanje nagradne igre ni uspelo"
+  },
+  "empty": "Še ni nagradnih iger. Ustvarite eno za začetek.",
+  "loading": "Nalaganje nagradnih iger..."
+}

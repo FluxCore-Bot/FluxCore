@@ -1,0 +1,8 @@
+{
+  "title": "Muzicki sistem",
+  "subtitle": "Konfigurisi globalne rezime reprodukcije i podesavanja audio biblioteke.",
+  "tabs": {
+    "settings": "Podesavanja reprodukcije",
+    "library": "Muzicka biblioteka"
+  }
+}

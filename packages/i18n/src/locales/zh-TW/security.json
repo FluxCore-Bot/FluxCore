@@ -1,0 +1,16 @@
+{
+  "title": "安全",
+  "subtitle": "設定防突襲和伺服器安全選項。",
+  "antiRaid": { "title": "防突襲保護", "description": "啟用對組織性突襲、可疑帳號和破壞性行為的自動偵測和回應。" },
+  "sections": { "joinRate": "加入速率", "accountAge": "帳號年齡", "antiNuke": "防核保護", "lockdown": "鎖定", "events": "事件" },
+  "joinRate": { "title": "加入速率偵測", "description": "透過監控新成員加入速率來偵測大規模加入。", "threshold": "加入閾值", "thresholdHint": "觸發偵測的加入數量", "window": "時間窗口（秒）", "windowHint": "統計加入數的時間窗口", "action": "偵測時的操作", "actionHint": "對疑似突襲成員採取的操作", "actions": { "ban": "封鎖", "kick": "踢出", "timeout": "禁言", "lockdown": "鎖定" } },
+  "accountAge": { "title": "帳號年齡篩選", "description": "自動對低於最小年齡的帳號執行操作。設為 0 表示停用。", "minAge": "最小帳號年齡（天）", "minAgeHint": "0 = 停用。低於此年齡的帳號將被執行操作。", "action": "操作" },
+  "antiNuke": { "title": "防核保護", "description": "偵測大規模頻道/角色刪除，並透過移除責任者的所有角色進行隔離。", "threshold": "刪除閾值", "thresholdHint": "10 秒內的刪除數量觸發隔離", "channelDeleteThreshold": "頻道刪除閾值", "roleDeleteThreshold": "角色刪除閾值", "massbanThreshold": "大規模封鎖閾值", "interval": "間隔（秒）", "action": "操作" },
+  "lockdown": { "title": "突襲時自動鎖定", "description": "偵測到突襲時自動鎖定所有頻道。", "whitelistedRoles": "白名單角色 ID（逗號分隔）", "whitelistedRolesPlaceholder": "123456789, 987654321", "whitelistedRolesHint": "擁有這些角色的成員將不受突襲偵測影響。", "logChannel": "日誌頻道 ID", "logChannelPlaceholder": "突襲事件日誌的頻道 ID...", "enableButton": "啟用鎖定", "disableButton": "停用鎖定", "active": "鎖定已啟用", "inactive": "鎖定未啟用" },
+  "events": { "title": "最近突襲事件", "description": "已偵測突襲、帳號年齡攔截和鎖定事件的時間軸。", "empty": "尚無記錄的突襲事件。當突襲偵測被觸發時，事件將顯示在這裡。", "actionLabel": "操作：{{action}}", "usersLabel": "使用者：{{count}}", "accountAgeLabel": "帳號年齡：{{days}}天", "table": { "type": "類型", "description": "描述", "time": "時間", "action": "已執行操作" } },
+  "raidEventTypes": { "join_spike": "加入激增", "account_age": "帳號年齡", "nuke_attempt": "核攻擊嘗試", "lockdown": "鎖定", "massJoin": "大規模加入", "suspiciousAccounts": "可疑帳號", "channelDeletion": "頻道刪除", "roleDeletion": "角色刪除", "massBan": "大規模封鎖" },
+  "pagination": { "previous": "上一頁", "next": "下一頁", "page": "第 {{current}} 頁 / 共 {{total}} 頁" },
+  "toast": { "saved": "防突襲設定已儲存", "saveFailed": "儲存設定失敗", "lockdownEnabled": "伺服器鎖定已啟用", "lockdownDisabled": "伺服器鎖定已停用", "lockdownFailed": "切換鎖定失敗" },
+  "saveButton": { "saving": "儲存中...", "save": "儲存變更" },
+  "labels": { "seconds": "秒", "minutes": "分鐘", "hours": "小時" }
+}

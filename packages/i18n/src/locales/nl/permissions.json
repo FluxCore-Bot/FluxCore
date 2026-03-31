@@ -1,0 +1,118 @@
+{
+  "title": "Rollen & Rechten",
+  "subtitle": "Bepaal wie toegang heeft tot en elk dashboardmodule kan beheren.",
+  "actions": {
+    "createRole": "Rol aanmaken"
+  },
+  "permissionSystem": {
+    "title": "Rechtensysteem",
+    "active": "Actief — beheerders zijn beperkt tot hun toegewezen rechten.",
+    "inactive": "Inactief — alle beheerders met MANAGE_GUILD hebben volledige toegang.",
+    "enabledToast": "Rechtensysteem ingeschakeld",
+    "disabledToast": "Rechtensysteem uitgeschakeld — alle beheerders hebben volledige toegang"
+  },
+  "warning": {
+    "disabled": "Het rechtensysteem is uitgeschakeld. Alle dashboardbeheerders hebben momenteel volledige toegang. Schakel het hierboven in om gedetailleerde rechten af te dwingen."
+  },
+  "tabs": {
+    "roles": "Rollen",
+    "auditLog": "Auditlogboek"
+  },
+  "roleList": {
+    "title": "Dashboardrollen",
+    "empty": "Nog geen rollen aangemaakt.",
+    "selectHint": "Selecteer een rol om te bewerken of maak een nieuwe aan.",
+    "default": "Standaard",
+    "name": "Naam",
+    "members": "Leden",
+    "permissions": "Rechten",
+    "edit": "Bewerken",
+    "delete": "Verwijderen"
+  },
+  "presets": {
+    "title": "Snel toevoegen vanuit voorinstelling",
+    "createdToast": "Rol \"{{name}}\" aangemaakt"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} lid",
+    "memberCount_plural": "{{count}} leden",
+    "name": "Rolnaam",
+    "color": "Kleur",
+    "defaultRole": "Standaardrol",
+    "permissions": "Rechten",
+    "allBadge": "Alle",
+    "discordRoles": "Discord-rollen"
+  },
+  "roleForm": {
+    "name": "Rolnaam",
+    "discordRoles": "Discord-rollen",
+    "permissions": "Rechten",
+    "create": "Rol aanmaken",
+    "update": "Rol bijwerken",
+    "cancel": "Annuleren"
+  },
+  "createDialog": {
+    "title": "Dashboardrol aanmaken",
+    "name": "Naam",
+    "namePlaceholder": "bijv. Moderator",
+    "color": "Kleur"
+  },
+  "permissionCategories": {
+    "actions": "Acties & Automatisering",
+    "music": "Muziek",
+    "tempvoice": "TempVoice",
+    "welcome": "Welkom & Afscheid",
+    "moderation": "Moderatie",
+    "logging": "Logboekregistratie",
+    "leveling": "Niveausysteem",
+    "roles": "Rolpanelen",
+    "tickets": "Tickets",
+    "suggestions": "Suggesties",
+    "starboard": "Starboard",
+    "giveaways": "Weggeefacties",
+    "security": "Beveiliging",
+    "scheduled": "Geplande berichten",
+    "commands": "Aangepaste commando's",
+    "settings": "Serverinstellingen"
+  },
+  "audit": {
+    "table": {
+      "user": "Gebruiker",
+      "action": "Actie",
+      "target": "Doelwit",
+      "timestamp": "Wanneer"
+    },
+    "noEntries": "Nog geen auditlogboekentries."
+  },
+  "pagination": {
+    "previous": "Vorige",
+    "next": "Volgende",
+    "page": "Pagina {{current}} van {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Rol \"{{name}}\" aangemaakt",
+    "roleCreateFailed": "Rol aanmaken mislukt",
+    "roleUpdated": "Rol bijgewerkt",
+    "roleUpdateFailed": "Rol bijwerken mislukt",
+    "roleDeleted": "Rol verwijderd",
+    "roleDeleteFailed": "Rol verwijderen mislukt"
+  },
+  "confirm": {
+    "deleteTitle": "Rol \"{{name}}\" verwijderen?",
+    "deleteMessage": "Hierdoor wordt de rol verwijderd en alle leden gedeblokkeerd. Deze actie kan niet ongedaan worden gemaakt.",
+    "deleteRole": "Weet je zeker dat je deze rol wilt verwijderen? Leden verliezen hun toegewezen rechten."
+  },
+  "saveButton": {
+    "saving": "Opslaan...",
+    "save": "Wijzigingen opslaan"
+  },
+  "deleteButton": {
+    "deleting": "Verwijderen...",
+    "delete": "Verwijderen"
+  },
+  "createButton": {
+    "creating": "Aanmaken...",
+    "create": "Aanmaken"
+  },
+  "loading": "Rechten laden..."
+}

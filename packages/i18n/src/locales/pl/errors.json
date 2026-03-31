@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Nie uwierzytelniono",
+    "sessionExpired": "Sesja wygasła",
+    "missingCode": "Brakujący parametr code",
+    "tokenExchangeFailed": "Wymiana tokena nie powiodła się",
+    "failedToFetchUser": "Nie udało się pobrać informacji o użytkowniku"
+  },
+  "permissions": {
+    "noGuildPermission": "Brak uprawnień do tego serwera",
+    "botNotInGuild": "Bot nie jest na tym serwerze",
+    "insufficientPermissions": "Niewystarczające uprawnienia",
+    "permissionsNotResolved": "Uprawnienia nie zostały rozwiązane",
+    "requiresPermission": "Ta akcja wymaga uprawnienia \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Nieprawidłowe dane wejściowe",
+    "missingField": "Brakujące wymagane pole: {{field}}",
+    "invalidFormat": "Nieprawidłowy format dla {{field}}",
+    "tooLong": "{{field}} przekracza maksymalną długość {{max}} znaków",
+    "tooShort": "{{field}} musi mieć co najmniej {{min}} znaków",
+    "outOfRange": "{{field}} musi być między {{min}} a {{max}}"
+  },
+  "resources": {
+    "notFound": "Nie znaleziono",
+    "alreadyExists": "{{resource}} już istnieje",
+    "limitReached": "Maksymalnie {{max}} {{resource}} na serwer",
+    "createFailed": "Nie udało się utworzyć {{resource}}",
+    "updateFailed": "Nie udało się zaktualizować {{resource}}",
+    "deleteFailed": "Nie udało się usunąć {{resource}}"
+  },
+  "server": {
+    "internalError": "Wewnętrzny błąd serwera",
+    "serviceUnavailable": "Usługa tymczasowo niedostępna",
+    "rateLimited": "Zbyt wiele żądań. Spróbuj ponownie później."
+  },
+  "csrf": {
+    "invalidToken": "Nieprawidłowy lub brakujący token CSRF"
+  }
+}

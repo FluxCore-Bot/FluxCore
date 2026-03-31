@@ -1,0 +1,8 @@
+{
+  "title": "[NEEDS TRANSLATION] Logs",
+  "subtitle": "[NEEDS TRANSLATION] Monitor rule executions and event logging.",
+  "tabs": {
+    "activity": "[NEEDS TRANSLATION] Activity Logs",
+    "events": "[NEEDS TRANSLATION] Event Logs"
+  }
+}

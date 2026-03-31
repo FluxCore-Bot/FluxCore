@@ -1,0 +1,118 @@
+{
+  "title": "Vloge in dovoljenja",
+  "subtitle": "Nadzorujte, kdo lahko dostopa do posameznih modulov nadzorne plošče in jih upravlja.",
+  "actions": {
+    "createRole": "Ustvari vlogo"
+  },
+  "permissionSystem": {
+    "title": "Sistem dovoljenj",
+    "active": "Aktiven — skrbniki so omejeni na svoja dodeljena dovoljenja.",
+    "inactive": "Neaktiven — vsi skrbniki z MANAGE_GUILD imajo poln dostop.",
+    "enabledToast": "Sistem dovoljenj omogočen",
+    "disabledToast": "Sistem dovoljenj onemogočen — vsi skrbniki imajo poln dostop"
+  },
+  "warning": {
+    "disabled": "Sistem dovoljenj je onemogočen. Vsi skrbniki nadzorne plošče imajo trenutno poln dostop. Zgoraj ga omogočite, da uveljavite natančnejša dovoljenja."
+  },
+  "tabs": {
+    "roles": "Vloge",
+    "auditLog": "Revizijski dnevnik"
+  },
+  "roleList": {
+    "title": "Vloge nadzorne plošče",
+    "empty": "Še ni ustvarjenih vlog.",
+    "selectHint": "Izberite vlogo za urejanje ali ustvarite novo.",
+    "default": "Privzeto",
+    "name": "Ime",
+    "members": "Člani",
+    "permissions": "Dovoljenja",
+    "edit": "Uredi",
+    "delete": "Izbriši"
+  },
+  "presets": {
+    "title": "Hitro dodajanje iz prednastavitve",
+    "createdToast": "Ustvarjena vloga \"{{name}}\""
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} član",
+    "memberCount_plural": "{{count}} članov",
+    "name": "Ime vloge",
+    "color": "Barva",
+    "defaultRole": "Privzeta vloga",
+    "permissions": "Dovoljenja",
+    "allBadge": "Vse",
+    "discordRoles": "Discord vloge"
+  },
+  "roleForm": {
+    "name": "Ime vloge",
+    "discordRoles": "Discord vloge",
+    "permissions": "Dovoljenja",
+    "create": "Ustvari vlogo",
+    "update": "Posodobi vlogo",
+    "cancel": "Prekliči"
+  },
+  "createDialog": {
+    "title": "Ustvari vlogo nadzorne plošče",
+    "name": "Ime",
+    "namePlaceholder": "npr. Moderator",
+    "color": "Barva"
+  },
+  "permissionCategories": {
+    "actions": "Dejanja in avtomatizacija",
+    "music": "Glasba",
+    "tempvoice": "TempVoice",
+    "welcome": "Dobrodošlica in poslovitev",
+    "moderation": "Moderiranje",
+    "logging": "Beleženje",
+    "leveling": "Sistem ravni",
+    "roles": "Plošče vlog",
+    "tickets": "Vstopnice",
+    "suggestions": "Predlogi",
+    "starboard": "Starboard",
+    "giveaways": "Nagradne igre",
+    "security": "Varnost",
+    "scheduled": "Načrtovana sporočila",
+    "commands": "Lastni ukazi",
+    "settings": "Nastavitve strežnika"
+  },
+  "audit": {
+    "table": {
+      "user": "Uporabnik",
+      "action": "Dejanje",
+      "target": "Cilj",
+      "timestamp": "Kdaj"
+    },
+    "noEntries": "Še ni vnosov v revizijskem dnevniku."
+  },
+  "pagination": {
+    "previous": "Prejšnja",
+    "next": "Naslednja",
+    "page": "Stran {{current}} od {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Ustvarjena vloga \"{{name}}\"",
+    "roleCreateFailed": "Ustvarjanje vloge ni uspelo",
+    "roleUpdated": "Vloga posodobljena",
+    "roleUpdateFailed": "Posodabljanje vloge ni uspelo",
+    "roleDeleted": "Vloga izbrisana",
+    "roleDeleteFailed": "Brisanje vloge ni uspelo"
+  },
+  "confirm": {
+    "deleteTitle": "Izbriši vlogo \"{{name}}\"?",
+    "deleteMessage": "To bo odstranilo vlogo in odjavilo vse člane. Tega dejanja ni mogoče razveljaviti.",
+    "deleteRole": "Ali ste prepričani, da želite izbrisati to vlogo? Člani bodo izgubili svoja dodeljena dovoljenja."
+  },
+  "saveButton": {
+    "saving": "Shranjevanje...",
+    "save": "Shrani spremembe"
+  },
+  "deleteButton": {
+    "deleting": "Brisanje...",
+    "delete": "Izbriši"
+  },
+  "createButton": {
+    "creating": "Ustvarjanje...",
+    "create": "Ustvari"
+  },
+  "loading": "Nalaganje dovoljenj..."
+}

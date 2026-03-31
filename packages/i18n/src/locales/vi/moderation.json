@@ -1,0 +1,54 @@
+{
+  "title": "Kiểm Duyệt",
+  "subtitle": "Xem và quản lý các trường hợp kiểm duyệt, cấu hình cài đặt hình phạt.",
+  "stats": {
+    "totalCases": "Tổng Trường Hợp",
+    "activeTempbans": "Cấm Tạm Thời Đang Hoạt Động",
+    "last24h": "24 Giờ Qua"
+  },
+  "cases": "Trường Hợp",
+  "actions": {
+    "ban": "Cấm",
+    "tempban": "Cấm Tạm Thời",
+    "kick": "Đuổi",
+    "timeout": "Hết Thời Gian",
+    "softban": "Cấm Nhẹ",
+    "warn": "Cảnh Báo",
+    "note": "Ghi Chú"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Hành Động",
+    "target": "Mục Tiêu",
+    "moderator": "Điều Phối Viên",
+    "reason": "Lý Do",
+    "date": "Ngày",
+    "actions": "Hành Động",
+    "noCases": "Không tìm thấy trường hợp nào.",
+    "noReason": "Không có lý do"
+  },
+  "filter": {
+    "userPlaceholder": "Lọc theo ID Người Dùng...",
+    "allActions": "Tất Cả Hành Động"
+  },
+  "pagination": {
+    "previous": "Trước",
+    "next": "Tiếp",
+    "page": "Trang {{page}} / {{total}}"
+  },
+  "editDialog": {
+    "title": "Chỉnh Sửa Lý Do Trường Hợp #{{id}}",
+    "placeholder": "Nhập lý do mới...",
+    "saving": "Đang lưu..."
+  },
+  "editReason": "Chỉnh sửa lý do",
+  "deleteCase": "Xóa trường hợp",
+  "deleteConfirm": "Bạn có chắc muốn xóa trường hợp này không?",
+  "settings": {
+    "title": "Cài Đặt",
+    "dmOnPunishment": "DM Khi Bị Phạt",
+    "dmOnPunishmentDesc": "Gửi DM cho người dùng khi họ bị phạt (cấm, đuổi, hết thời gian).",
+    "modLogChannel": "Kênh Nhật Ký Kiểm Duyệt",
+    "modLogChannelDesc": "Kênh nơi các hành động kiểm duyệt được ghi lại."
+  }
+}

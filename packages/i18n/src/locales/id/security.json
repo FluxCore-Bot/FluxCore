@@ -1,0 +1,108 @@
+{
+  "title": "Keamanan",
+  "subtitle": "Konfigurasikan perlindungan anti-raid dan pengaturan keamanan server.",
+  "antiRaid": {
+    "title": "Perlindungan Anti-Raid",
+    "description": "Aktifkan deteksi otomatis dan respons terhadap raid terkoordinasi, akun mencurigakan, dan tindakan destruktif."
+  },
+  "sections": {
+    "joinRate": "Tingkat Bergabung",
+    "accountAge": "Umur Akun",
+    "antiNuke": "Anti-Nuke",
+    "lockdown": "Lockdown",
+    "events": "Kejadian"
+  },
+  "joinRate": {
+    "title": "Deteksi Tingkat Bergabung",
+    "description": "Deteksi bergabung massal dengan memantau tingkat anggota baru yang bergabung.",
+    "threshold": "Ambang Bergabung",
+    "thresholdHint": "Jumlah bergabung untuk memicu deteksi",
+    "window": "Jendela Waktu (detik)",
+    "windowHint": "Jendela di mana bergabung dihitung",
+    "action": "Aksi saat Terdeteksi",
+    "actionHint": "Aksi yang diambil terhadap anggota yang diduga raider",
+    "actions": {
+      "ban": "Ban",
+      "kick": "Kick",
+      "timeout": "Timeout",
+      "lockdown": "Lockdown"
+    }
+  },
+  "accountAge": {
+    "title": "Filter Umur Akun",
+    "description": "Tindak secara otomatis akun yang lebih muda dari umur minimum. Setel ke 0 untuk menonaktifkan.",
+    "minAge": "Umur Akun Minimum (hari)",
+    "minAgeHint": "0 = dinonaktifkan. Akun yang lebih muda dari ini akan ditindak.",
+    "action": "Aksi"
+  },
+  "antiNuke": {
+    "title": "Perlindungan Anti-Nuke",
+    "description": "Deteksi penghapusan massal saluran/peran dan karantina pengguna yang bertanggung jawab dengan menghapus semua peran mereka.",
+    "threshold": "Ambang Penghapusan",
+    "thresholdHint": "Jumlah penghapusan dalam 10 detik untuk memicu karantina",
+    "channelDeleteThreshold": "Ambang Hapus Saluran",
+    "roleDeleteThreshold": "Ambang Hapus Peran",
+    "massbanThreshold": "Ambang Ban Massal",
+    "interval": "Interval (detik)",
+    "action": "Aksi"
+  },
+  "lockdown": {
+    "title": "Lockdown Otomatis saat Raid",
+    "description": "Kunci semua saluran secara otomatis ketika raid terdeteksi.",
+    "whitelistedRoles": "ID Peran yang Dikecualikan (dipisahkan koma)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Anggota dengan peran ini akan dikecualikan dari deteksi raid.",
+    "logChannel": "ID Saluran Log",
+    "logChannelPlaceholder": "ID saluran untuk log kejadian raid...",
+    "enableButton": "Aktifkan Lockdown",
+    "disableButton": "Nonaktifkan Lockdown",
+    "active": "Lockdown Aktif",
+    "inactive": "Lockdown Tidak Aktif"
+  },
+  "events": {
+    "title": "Kejadian Raid Terbaru",
+    "description": "Garis waktu raid yang terdeteksi, pemblokiran umur akun, dan kejadian lockdown.",
+    "empty": "Belum ada kejadian raid yang tercatat. Kejadian akan muncul di sini ketika deteksi raid terpicu.",
+    "actionLabel": "Aksi: {{action}}",
+    "usersLabel": "Pengguna: {{count}}",
+    "accountAgeLabel": "Umur akun: {{days}}h",
+    "table": {
+      "type": "Tipe",
+      "description": "Deskripsi",
+      "time": "Waktu",
+      "action": "Aksi yang Diambil"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Lonjakan Bergabung",
+    "account_age": "Umur Akun",
+    "nuke_attempt": "Percobaan Nuke",
+    "lockdown": "Lockdown",
+    "massJoin": "Bergabung Massal",
+    "suspiciousAccounts": "Akun Mencurigakan",
+    "channelDeletion": "Penghapusan Saluran",
+    "roleDeletion": "Penghapusan Peran",
+    "massBan": "Ban Massal"
+  },
+  "pagination": {
+    "previous": "Sebelumnya",
+    "next": "Berikutnya",
+    "page": "Halaman {{current}} dari {{total}}"
+  },
+  "toast": {
+    "saved": "Konfigurasi anti-raid disimpan",
+    "saveFailed": "Gagal menyimpan konfigurasi",
+    "lockdownEnabled": "Lockdown server diaktifkan",
+    "lockdownDisabled": "Lockdown server dinonaktifkan",
+    "lockdownFailed": "Gagal mengalihkan lockdown"
+  },
+  "saveButton": {
+    "saving": "Menyimpan...",
+    "save": "Simpan Perubahan"
+  },
+  "labels": {
+    "seconds": "detik",
+    "minutes": "menit",
+    "hours": "jam"
+  }
+}

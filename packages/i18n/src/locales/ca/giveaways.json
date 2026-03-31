@@ -1,0 +1,50 @@
+{
+  "title": "Sortejos",
+  "subtitle": "Organitza sortejos amb durada, requisits de participació i selecció de guanyadors personalitzables.",
+  "stats": {
+    "activeGiveaways": "Sortejos actius",
+    "pastGiveaways": "Sortejos passats",
+    "totalEntries": "Total de participacions"
+  },
+  "table": {
+    "prize": "Premi",
+    "winners": "Guanyadors",
+    "entries": "Participacions",
+    "endsIn": "Acaba en",
+    "status": "Estat"
+  },
+  "statuses": {
+    "active": "Actiu",
+    "ended": "Finalitzat",
+    "cancelled": "Cancel\u00b7lat"
+  },
+  "actions": {
+    "create": "Crear sorteig",
+    "edit": "Editar",
+    "end": "Finalitzar",
+    "reroll": "Tornar a sortejar",
+    "delete": "Eliminar"
+  },
+  "form": {
+    "prize": "Premi",
+    "winnersCount": "Nombre de guanyadors",
+    "duration": "Durada",
+    "channel": "Canal",
+    "requiredRole": "Rol requerit",
+    "description": "Descripció"
+  },
+  "toast": {
+    "created": "Sorteig creat",
+    "createFailed": "No s'ha pogut crear el sorteig",
+    "updated": "Sorteig actualitzat",
+    "updateFailed": "No s'ha pogut actualitzar el sorteig",
+    "ended": "Sorteig finalitzat",
+    "endFailed": "No s'ha pogut finalitzar el sorteig",
+    "rerolled": "Guanyadors tornats a sortejar",
+    "rerollFailed": "No s'ha pogut tornar a sortejar els guanyadors",
+    "deleted": "Sorteig eliminat",
+    "deleteFailed": "No s'ha pogut eliminar el sorteig"
+  },
+  "empty": "Encara no hi ha sortejos. Crea'n un per comencar.",
+  "loading": "Carregant sortejos..."
+}

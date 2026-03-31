@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Ara en Beta Publica",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "El marc de bot",
+    "titleLine2": "de Discord tot en un",
+    "subtitle": "Desplega una presencia professional a Discord en minuts. Modular, autoallotjat i dissenyat per a comunitats que exigeixen mes."
+  },
+  "cta": {
+    "addToServer": "Afegir al servidor",
+    "openDashboard": "Obrir panell de control",
+    "exploreFeatures": "Explorar funcionalitats"
+  },
+  "stats": {
+    "servers": "Servidors",
+    "latency": "Latencia",
+    "uptime": "Temps actiu",
+    "modules": "Moduls",
+    "serversValue": "1,000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99.9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Capacitats",
+    "title": "Tot el que el teu servidor necessita",
+    "subtitle": "Un conjunt d'eines modular dissenyat per a comunitats que exigeixen fiabilitat, flexibilitat i control.",
+    "automation": {
+      "title": "Regles d'automatització",
+      "description": "Crea fluxos de treball complexos basats en esdeveniments sense codi. Activadors si-aixo-llavors-allo amb 23 tipus d'esdeveniments i 10 tipus d'accions."
+    },
+    "music": {
+      "title": "Sistema de música",
+      "description": "Transmissió d'audio d'alta fidelitat amb suport multiplataforma. Gestió de cua, controls de DJ i mode biblioteca."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Gestió dinamica de canals de veu. Creació automatica amb plantilles de noms personalitzats, permisos i neteja."
+    },
+    "logs": {
+      "title": "Registres d'activitat",
+      "description": "Rastre d'auditoria complet de cada execució d'automatització. Cerca, filtra i depura les teves regles amb registres detallats."
+    },
+    "webhooks": {
+      "title": "Webhooks i API",
+      "description": "Envia dades a serveis externs amb webhooks HTTP. Capcaleres personalitzades, plantilles de cos i interpolació de variables."
+    },
+    "dashboard": {
+      "title": "Panell de control en temps real",
+      "description": "Gestiona-ho tot des d'un elegant panell de control web. Analitiques, configuració i monitoratge en un sol lloc."
+    }
+  },
+  "ctaSection": {
+    "title": "Preparat per millorar la teva comunitat?",
+    "subtitle": "Comenca en minuts amb zero configuració. Autoallotjat, codi obert i completament gratuit."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "\u00a9 {{year}} FluxCore Technologies. Tots els drets reservats.",
+    "links": {
+      "documentation": "Documentació",
+      "support": "Suport",
+      "privacy": "Politica de privacitat",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "title": "Ettepanekud",
+  "subtitle": "Lase liikmetel esitada ideid ja nende üle hääletada. Halda olekuid ja tagasisidet.",
+  "stats": {
+    "totalSuggestions": "Ettepanekuid kokku",
+    "systemStatus": "Süsteemi olek",
+    "channel": {
+      "configured": "Kanal seadistatud",
+      "notSet": "Kanal määramata"
+    }
+  },
+  "tabs": {
+    "suggestions": "Ettepanekud",
+    "settings": "Seaded"
+  },
+  "filter": {
+    "filterByStatus": "Filtreeri oleku järgi",
+    "all": "Kõik",
+    "pending": "Ootel",
+    "approved": "Heaks kiidetud",
+    "rejected": "Tagasi lükatud",
+    "implemented": "Rakendatud",
+    "considered": "Kaalumisel"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Autor",
+    "content": "Sisu",
+    "status": "Olek",
+    "votes": "Hääled",
+    "date": "Kuupäev"
+  },
+  "actions": {
+    "approve": "Kiida heaks",
+    "reject": "Lükka tagasi",
+    "implement": "Märgi rakendetuks",
+    "consider": "Kaalu",
+    "delete": "Kustuta"
+  },
+  "settings": {
+    "channel": "Ettepanekute kanal",
+    "channelDesc": "Kanal, kuhu ettepanekud hääletamiseks postitatakse.",
+    "voteEmojis": "Hääleemojid",
+    "voteEmojisDesc": "Emojid, mida kasutatakse positiivsete ja negatiivsete reaktsioonide jaoks.",
+    "autoThread": "Automaatne lõim",
+    "autoThreadDesc": "Loo iga uue ettepaneku jaoks automaatselt arutelulõim.",
+    "dmOnStatusChange": "DM oleku muutumisel",
+    "dmOnStatusChangeDesc": "Teavita autorit DM-i teel, kui ettepaneku olek muutub."
+  },
+  "toast": {
+    "approved": "Ettepanek heaks kiidetud",
+    "rejected": "Ettepanek tagasi lükatud",
+    "implemented": "Ettepanek märgitud rakendetuks",
+    "considered": "Ettepanek märgitud kaalumisele",
+    "deleted": "Ettepanek kustutatud",
+    "actionFailed": "Ettepaneku uuendamine ebaõnnestus",
+    "settingsSaved": "Ettepanekute seaded salvestatud",
+    "settingsFailed": "Ettepanekute seadete salvestamine ebaõnnestus"
+  },
+  "empty": "Ettepanekuid pole veel.",
+  "loading": "Laadin ettepanekuid...",
+  "pagination": {
+    "previous": "Eelmine",
+    "next": "Järgmine",
+    "page": "Leht {{page}} / {{total}}"
+  }
+}

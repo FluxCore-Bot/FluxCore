@@ -1,0 +1,54 @@
+{
+  "title": "Moderatie",
+  "subtitle": "Bekijk en beheer moderatiezaken, configureer strafinstelling.",
+  "stats": {
+    "totalCases": "Totaal zaken",
+    "activeTempbans": "Actieve tijdelijke verbanneningen",
+    "last24h": "Laatste 24u"
+  },
+  "cases": "Zaken",
+  "actions": {
+    "ban": "Verbannen",
+    "tempban": "Tijdelijk verbannen",
+    "kick": "Verwijderen",
+    "timeout": "Time-out",
+    "softban": "Zacht verbannen",
+    "warn": "Waarschuwen",
+    "note": "Notitie"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Actie",
+    "target": "Doelwit",
+    "moderator": "Moderator",
+    "reason": "Reden",
+    "date": "Datum",
+    "actions": "Acties",
+    "noCases": "Geen zaken gevonden.",
+    "noReason": "Geen reden"
+  },
+  "filter": {
+    "userPlaceholder": "Filteren op gebruikers-ID...",
+    "allActions": "Alle acties"
+  },
+  "pagination": {
+    "previous": "Vorige",
+    "next": "Volgende",
+    "page": "Pagina {{page}} van {{total}}"
+  },
+  "editDialog": {
+    "title": "Reden van zaak #{{id}} bewerken",
+    "placeholder": "Nieuwe reden invoeren...",
+    "saving": "Opslaan..."
+  },
+  "editReason": "Reden bewerken",
+  "deleteCase": "Zaak verwijderen",
+  "deleteConfirm": "Weet je zeker dat je deze zaak wilt verwijderen?",
+  "settings": {
+    "title": "Instellingen",
+    "dmOnPunishment": "DM bij straf",
+    "dmOnPunishmentDesc": "Stuur een DM naar gebruikers wanneer ze worden gestraft (verbanning, verwijdering, time-out).",
+    "modLogChannel": "Moderatielogkanaal",
+    "modLogChannelDesc": "Kanaal waar moderatieacties worden geregistreerd."
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "title": "Cargos e permissoes",
+  "subtitle": "Controle quem pode aceder e gerir cada modulo do painel.",
+  "actions": {
+    "createRole": "Criar cargo"
+  },
+  "permissionSystem": {
+    "title": "Sistema de permissoes",
+    "active": "Ativo — os administradores estao limitados as permissoes atribuidas.",
+    "inactive": "Inativo — todos os administradores com MANAGE_GUILD tem acesso total.",
+    "enabledToast": "Sistema de permissoes ativado",
+    "disabledToast": "Sistema de permissoes desativado — todos os administradores tem acesso total"
+  },
+  "warning": {
+    "disabled": "O sistema de permissoes esta desativado. Todos os administradores do painel tem atualmente acesso total. Ative-o acima para aplicar permissoes granulares."
+  },
+  "tabs": {
+    "roles": "Cargos",
+    "auditLog": "Registo de auditoria"
+  },
+  "roleList": {
+    "title": "Cargos do painel",
+    "empty": "Nenhum cargo criado ainda.",
+    "selectHint": "Selecione um cargo para editar ou crie um novo.",
+    "default": "Predefinido",
+    "name": "Nome",
+    "members": "Membros",
+    "permissions": "Permissoes",
+    "edit": "Editar",
+    "delete": "Eliminar"
+  },
+  "presets": {
+    "title": "Adicao rapida a partir de modelo",
+    "createdToast": "Cargo \"{{name}}\" criado"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} membro",
+    "memberCount_plural": "{{count}} membros",
+    "name": "Nome do cargo",
+    "color": "Cor",
+    "defaultRole": "Cargo predefinido",
+    "permissions": "Permissoes",
+    "allBadge": "Todas",
+    "discordRoles": "Cargos do Discord"
+  },
+  "roleForm": {
+    "name": "Nome do cargo",
+    "discordRoles": "Cargos do Discord",
+    "permissions": "Permissoes",
+    "create": "Criar cargo",
+    "update": "Atualizar cargo",
+    "cancel": "Cancelar"
+  },
+  "createDialog": {
+    "title": "Criar cargo do painel",
+    "name": "Nome",
+    "namePlaceholder": "ex. Moderador",
+    "color": "Cor"
+  },
+  "permissionCategories": {
+    "actions": "Acoes e automatizacao",
+    "music": "Musica",
+    "tempvoice": "TempVoice",
+    "welcome": "Boas-vindas e despedida",
+    "moderation": "Moderacao",
+    "logging": "Registo",
+    "leveling": "Niveis",
+    "roles": "Paineis de cargos",
+    "tickets": "Tickets",
+    "suggestions": "Sugestoes",
+    "starboard": "Starboard",
+    "giveaways": "Sorteios",
+    "security": "Seguranca",
+    "scheduled": "Mensagens agendadas",
+    "commands": "Comandos personalizados",
+    "settings": "Definicoes do servidor"
+  },
+  "audit": {
+    "table": {
+      "user": "Utilizador",
+      "action": "Acao",
+      "target": "Alvo",
+      "timestamp": "Quando"
+    },
+    "noEntries": "Ainda sem entradas no registo de auditoria."
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "page": "Pagina {{current}} de {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Cargo \"{{name}}\" criado",
+    "roleCreateFailed": "Falha ao criar o cargo",
+    "roleUpdated": "Cargo atualizado",
+    "roleUpdateFailed": "Falha ao atualizar o cargo",
+    "roleDeleted": "Cargo eliminado",
+    "roleDeleteFailed": "Falha ao eliminar o cargo"
+  },
+  "confirm": {
+    "deleteTitle": "Eliminar cargo \"{{name}}\"?",
+    "deleteMessage": "Isto ira remover o cargo e desatribuir todos os membros. Esta acao nao pode ser desfeita.",
+    "deleteRole": "Tem a certeza de que deseja eliminar este cargo? Os membros perderao as permissoes atribuidas."
+  },
+  "saveButton": {
+    "saving": "A guardar...",
+    "save": "Guardar alteracoes"
+  },
+  "deleteButton": {
+    "deleting": "A eliminar...",
+    "delete": "Eliminar"
+  },
+  "createButton": {
+    "creating": "A criar...",
+    "create": "Criar"
+  },
+  "loading": "A carregar permissoes..."
+}

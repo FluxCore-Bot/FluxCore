@@ -1,0 +1,67 @@
+{
+  "title": "Förslag",
+  "subtitle": "Låt medlemmar skicka in idéer och rösta på dem. Hantera status och feedback.",
+  "stats": {
+    "totalSuggestions": "Totalt antal förslag",
+    "systemStatus": "Systemstatus",
+    "channel": {
+      "configured": "Kanal konfigurerad",
+      "notSet": "Kanal ej inställd"
+    }
+  },
+  "tabs": {
+    "suggestions": "Förslag",
+    "settings": "Inställningar"
+  },
+  "filter": {
+    "filterByStatus": "Filtrera efter status",
+    "all": "Alla",
+    "pending": "Väntande",
+    "approved": "Godkända",
+    "rejected": "Avvisade",
+    "implemented": "Implementerade",
+    "considered": "Under övervägande"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Författare",
+    "content": "Innehåll",
+    "status": "Status",
+    "votes": "Röster",
+    "date": "Datum"
+  },
+  "actions": {
+    "approve": "Godkänn",
+    "reject": "Avvisa",
+    "implement": "Markera som implementerad",
+    "consider": "Överväg",
+    "delete": "Ta bort"
+  },
+  "settings": {
+    "channel": "Förslagskanal",
+    "channelDesc": "Kanalen där förslag publiceras för omröstning.",
+    "voteEmojis": "Omröstningsemojis",
+    "voteEmojisDesc": "Emojis som används för uppröstning och nedröstning.",
+    "autoThread": "Skapa tråd automatiskt",
+    "autoThreadDesc": "Skapa automatiskt en diskussionstråd på varje nytt förslag.",
+    "dmOnStatusChange": "DM vid statusändring",
+    "dmOnStatusChangeDesc": "Meddela författaren via DM när deras förslagsstatus ändras."
+  },
+  "toast": {
+    "approved": "Förslag godkänt",
+    "rejected": "Förslag avvisat",
+    "implemented": "Förslag markerat som implementerat",
+    "considered": "Förslag markerat som under övervägande",
+    "deleted": "Förslag borttaget",
+    "actionFailed": "Misslyckades med att uppdatera förslag",
+    "settingsSaved": "Förslagsinställningar sparade",
+    "settingsFailed": "Misslyckades med att spara förslagsinställningar"
+  },
+  "empty": "Inga förslag ännu.",
+  "loading": "Laddar förslag...",
+  "pagination": {
+    "previous": "Föregående",
+    "next": "Nästa",
+    "page": "Sida {{page}} av {{total}}"
+  }
+}

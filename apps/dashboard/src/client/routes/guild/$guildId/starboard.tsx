@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../lib/client";
 import { PageHeader } from "../../../components/PageHeader";
@@ -35,6 +36,7 @@ import { Icon } from "../../../components/Icon";
 
 export function StarboardPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
+  const { t } = useTranslation("starboard");
   const { data: settings, isLoading } = useStarboardSettings(guildId);
   const updateSettings = useUpdateStarboardSettings(guildId);
   const [page, setPage] = useState(1);
@@ -79,9 +81,9 @@ export function StarboardPage() {
         nsfwHandling,
       },
       {
-        onSuccess: () => toast.success("Starboard settings saved"),
+        onSuccess: () => toast.success(t("toast.saved")),
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to save settings"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.saveFailed")),
       },
     );
   }
@@ -90,10 +92,10 @@ export function StarboardPage() {
     return (
       <div className="space-y-8">
         <PageHeader
-          title="Starboard"
-          subtitle="Automatically highlight popular messages in a dedicated channel."
+          title={t("title")}
+          subtitle={t("subtitle")}
         />
-        <p className="text-text-muted">Loading...</p>
+        <p className="text-text-muted">{t("common:actions.loading")}</p>
       </div>
     );
   }
@@ -103,14 +105,14 @@ export function StarboardPage() {
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Starboard"
-        subtitle="Automatically highlight popular messages in a dedicated channel."
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
       <Tabs defaultValue="settings">
         <TabsList>
-          <TabsTrigger value="settings">Settings</TabsTrigger>
-          <TabsTrigger value="entries">Starred Messages</TabsTrigger>
+          <TabsTrigger value="settings">{t("tabs.settings")}</TabsTrigger>
+          <TabsTrigger value="entries">{t("tabs.starredMessages")}</TabsTrigger>
         </TabsList>
 
         {/* Settings Tab */}
@@ -118,10 +120,9 @@ export function StarboardPage() {
           <Card className="bg-surface p-6">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold">Starboard Configuration</h3>
+                <h3 className="text-lg font-semibold">{t("settings.title")}</h3>
                 <p className="text-sm text-text-muted">
-                  Messages that receive enough star reactions will be posted to your starboard
-                  channel.
+                  {t("settings.description")}
                 </p>
               </div>
               <Switch checked={enabled} onCheckedChange={setEnabled} />
@@ -132,23 +133,23 @@ export function StarboardPage() {
             <div className="space-y-6">
               {/* Channel */}
               <div>
-                <Label htmlFor="starboard-channel">Starboard Channel ID</Label>
+                <Label htmlFor="starboard-channel">{t("settings.channelId")}</Label>
                 <Input
                   id="starboard-channel"
-                  placeholder="Channel ID..."
+                  placeholder={t("settings.channelId")}
                   value={channelId}
                   onChange={(e) => setChannelId(e.target.value)}
                   className="mt-1 w-64"
                 />
                 <p className="mt-1 text-xs text-text-muted">
-                  The channel where starred messages will be posted.
+                  {t("settings.channelIdDesc")}
                 </p>
               </div>
 
               {/* Emoji & Threshold */}
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <Label htmlFor="starboard-emoji">Star Emoji</Label>
+                  <Label htmlFor="starboard-emoji">{t("settings.starEmoji")}</Label>
                   <Input
                     id="starboard-emoji"
                     placeholder="\u2B50"
@@ -157,11 +158,11 @@ export function StarboardPage() {
                     className="mt-1"
                   />
                   <p className="mt-1 text-xs text-text-muted">
-                    The emoji users react with to star a message. Default: star.
+                    {t("settings.starEmojiDesc")}
                   </p>
                 </div>
                 <div>
-                  <Label htmlFor="starboard-threshold">Star Threshold</Label>
+                  <Label htmlFor="starboard-threshold">{t("settings.threshold")}</Label>
                   <Input
                     id="starboard-threshold"
                     type="number"
@@ -175,7 +176,7 @@ export function StarboardPage() {
                     className="mt-1"
                   />
                   <p className="mt-1 text-xs text-text-muted">
-                    Number of reactions needed for a message to be starred.
+                    {t("settings.thresholdDesc")}
                   </p>
                 </div>
               </div>
@@ -183,9 +184,9 @@ export function StarboardPage() {
               {/* Self-star toggle */}
               <div className="flex items-center justify-between rounded-lg border border-border p-4">
                 <div>
-                  <p className="font-medium">Allow Self-Star</p>
+                  <p className="font-medium">{t("settings.selfStar")}</p>
                   <p className="text-sm text-text-muted">
-                    Whether message authors can star their own messages.
+                    {t("settings.selfStarDesc")}
                   </p>
                 </div>
                 <Switch checked={selfStar} onCheckedChange={setSelfStar} />
@@ -193,7 +194,7 @@ export function StarboardPage() {
 
               {/* Ignored Channels */}
               <div>
-                <Label htmlFor="starboard-ignored">Ignored Channel IDs</Label>
+                <Label htmlFor="starboard-ignored">{t("settings.ignoredChannels")}</Label>
                 <Input
                   id="starboard-ignored"
                   placeholder="123456789, 987654321"
@@ -202,24 +203,24 @@ export function StarboardPage() {
                   className="mt-1"
                 />
                 <p className="mt-1 text-xs text-text-muted">
-                  Comma-separated list of channel IDs to exclude from starboard.
+                  {t("settings.ignoredChannelsDesc")}
                 </p>
               </div>
 
               {/* NSFW Handling */}
               <div>
-                <Label>NSFW Channel Handling</Label>
+                <Label>{t("settings.nsfwAllowed")}</Label>
                 <Select value={nsfwHandling} onValueChange={(v) => setNsfwHandling(v as "ignore" | "separate")}>
                   <SelectTrigger className="mt-1 w-48">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="ignore">Ignore NSFW</SelectItem>
-                    <SelectItem value="separate">Allow NSFW</SelectItem>
+                    <SelectItem value="ignore">{t("common:actions.disable")}</SelectItem>
+                    <SelectItem value="separate">{t("common:actions.enable")}</SelectItem>
                   </SelectContent>
                 </Select>
                 <p className="mt-1 text-xs text-text-muted">
-                  Whether messages from NSFW channels can appear on the starboard.
+                  {t("settings.nsfwAllowedDesc")}
                 </p>
               </div>
             </div>
@@ -227,7 +228,7 @@ export function StarboardPage() {
 
           <div className="mt-6 flex gap-3">
             <Button onClick={handleSave} disabled={updateSettings.isPending}>
-              {updateSettings.isPending ? "Saving..." : "Save Changes"}
+              {updateSettings.isPending ? t("actions.saving") : t("actions.save")}
             </Button>
           </div>
         </TabsContent>
@@ -235,21 +236,21 @@ export function StarboardPage() {
         {/* Starred Messages Tab */}
         <TabsContent value="entries">
           <Card className="bg-surface p-6">
-            <h3 className="mb-2 text-lg font-semibold">Starred Messages</h3>
+            <h3 className="mb-2 text-lg font-semibold">{t("tabs.starredMessages")}</h3>
             <p className="mb-4 text-sm text-text-muted">
-              Browse all messages that have been starred in this server.
+              {t("settings.description")}
             </p>
 
             <Separator className="mb-4" />
 
             {entriesLoading ? (
-              <p className="text-text-muted">Loading entries...</p>
+              <p className="text-text-muted">{t("common:actions.loading")}</p>
             ) : !entriesData?.entries.length ? (
               <div className="flex flex-col items-center justify-center py-12 text-center">
                 <Icon name="star" size={48} className="mb-3 text-text-muted/30" />
-                <p className="text-text-muted">No starred messages yet.</p>
+                <p className="text-text-muted">{t("messages.noMessages")}</p>
                 <p className="text-sm text-text-muted/60">
-                  Messages will appear here once they receive enough star reactions.
+                  {t("settings.thresholdDesc")}
                 </p>
               </div>
             ) : (
@@ -257,11 +258,11 @@ export function StarboardPage() {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Message ID</TableHead>
-                      <TableHead>Channel</TableHead>
-                      <TableHead>Author</TableHead>
-                      <TableHead>Stars</TableHead>
-                      <TableHead>Date</TableHead>
+                      <TableHead>{t("messages.table.original")}</TableHead>
+                      <TableHead>{t("messages.table.channel")}</TableHead>
+                      <TableHead>{t("table.author")}</TableHead>
+                      <TableHead>{t("messages.table.stars")}</TableHead>
+                      <TableHead>{t("messages.table.date")}</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -300,7 +301,7 @@ export function StarboardPage() {
                         onClick={() => setPage((p) => Math.max(1, p - 1))}
                         disabled={page <= 1}
                       >
-                        Previous
+                        {t("common:actions.back")}
                       </Button>
                       <Button
                         variant="outline"
@@ -308,7 +309,7 @@ export function StarboardPage() {
                         onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                         disabled={page >= totalPages}
                       >
-                        Next
+                        {t("common:actions.next")}
                       </Button>
                     </div>
                   </div>

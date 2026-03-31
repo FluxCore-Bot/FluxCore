@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "سرور",
+    "automation": "اتوماسیون"
+  },
+  "title": "قوانین اتوماسیون",
+  "subtitle": "تریگرهای مبتنی بر رویداد و پاسخ‌های خودکار را برای سرور خود پیکربندی کنید.",
+  "createRule": "ایجاد قانون",
+  "stats": {
+    "totalRules": "کل قوانین",
+    "active": "فعال",
+    "executions7d": "اجراها (۷ روز)",
+    "successRate": "نرخ موفقیت"
+  },
+  "filter": {
+    "searchPlaceholder": "جستجوی قوانین...",
+    "eventType": "نوع رویداد",
+    "allEvents": "همه رویدادها",
+    "allStatus": "همه وضعیت‌ها",
+    "enabled": "فعال",
+    "disabled": "غیرفعال",
+    "sortBy": "مرتب‌سازی بر اساس",
+    "priority": "اولویت",
+    "name": "نام",
+    "lastFired": "آخرین اجرا",
+    "status": "وضعیت",
+    "clear": "پاک کردن",
+    "showing": "نمایش {{filtered}} از {{total}} قانون"
+  },
+  "bulk": {
+    "selected": "{{count}} قانون انتخاب شده",
+    "selected_other": "{{count}} قانون انتخاب شده",
+    "enable": "فعال‌سازی",
+    "disable": "غیرفعال‌سازی",
+    "delete": "حذف",
+    "clear": "پاک کردن"
+  },
+  "empty": {
+    "title": "شروع کار با اتوماسیون",
+    "description": "یک الگو انتخاب کنید تا سریع شروع کنید، یا از صفر قانون بسازید.",
+    "createFromScratch": "ایجاد از صفر"
+  },
+  "noResults": {
+    "title": "قانون مطابقی یافت نشد",
+    "description": "سعی کنید جستجو یا فیلترها را تنظیم کنید."
+  },
+  "templates": {
+    "welcomeMessage": "پیام خوش‌آمدگویی",
+    "welcomeMessageDesc": "خوش‌آمدگویی به اعضای جدید با پیام سفارشی در یک کانال",
+    "autoRole": "نقش خودکار",
+    "autoRoleDesc": "اختصاص خودکار نقش هنگام پیوستن عضو",
+    "logDeleted": "ثبت پیام‌های حذف‌شده",
+    "logDeletedDesc": "ارسال اطلاعات پیام‌های حذف‌شده به کانال گزارش",
+    "boostThankYou": "تشکر از بوست",
+    "boostThankYouDesc": "ارسال پیام خصوصی تشکر به کاربرانی که سرور را بوست می‌کنند",
+    "banLogger": "ثبت مسدودیت‌ها",
+    "banLoggerDesc": "ثبت رویدادهای مسدودیت در کانال مدیریت",
+    "autoThread": "رشته خودکار",
+    "autoThreadDesc": "ایجاد خودکار رشته هنگام ارسال پیام"
+  },
+  "deleteDialog": {
+    "title": "حذف قانون",
+    "description": "آیا مطمئن هستید که می‌خواهید \"{{name}}\" را حذف کنید؟ این عمل قابل بازگشت نیست.",
+    "confirm": "حذف"
+  },
+  "bulkDeleteDialog": {
+    "title": "حذف قوانین انتخاب‌شده",
+    "description": "آیا مطمئن هستید که می‌خواهید {{count}} قانون را حذف کنید؟ این عمل قابل بازگشت نیست.",
+    "description_other": "آیا مطمئن هستید که می‌خواهید {{count}} قانون را حذف کنید؟ این عمل قابل بازگشت نیست.",
+    "confirm": "حذف همه"
+  },
+  "toast": {
+    "deleted": "قانون حذف شد",
+    "deleteFailed": "حذف قانون ناموفق بود",
+    "enabled": "قانون فعال شد",
+    "disabled": "قانون غیرفعال شد",
+    "toggleFailed": "تغییر وضعیت قانون ناموفق بود",
+    "duplicated": "قانون تکرار شد",
+    "duplicateFailed": "تکرار قانون ناموفق بود",
+    "bulkEnabled": "{{count}} قانون فعال شد",
+    "bulkDisabled": "{{count}} قانون غیرفعال شد",
+    "bulkEnableFailed": "فعال‌سازی قوانین ناموفق بود",
+    "bulkDisableFailed": "غیرفعال‌سازی قوانین ناموفق بود",
+    "bulkDeleted": "{{count}} قانون حذف شد",
+    "bulkDeleteFailed": "حذف قوانین ناموفق بود"
+  }
+}

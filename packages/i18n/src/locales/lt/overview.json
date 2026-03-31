@@ -1,0 +1,12 @@
+{
+  "title": "Apzvalga",
+  "subtitle": "Stebkite automatizavimo veikla ir rezultatus is pirmo zvalgsnio.",
+  "stats": {
+    "actionRules": "Veiksmu taisykles",
+    "activeNow": "Dabar aktyvios",
+    "executions": "Vykdymai",
+    "successRate": "Sekmes rodiklis"
+  },
+  "errorsInLast24h": "{{count}} klaida per paskutines 24 val.",
+  "errorsInLast24h_other": "{{count}} klaidu per paskutines 24 val."
+}

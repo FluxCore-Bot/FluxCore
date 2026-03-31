@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore ইঞ্জিন",
+    "dashboard": "FluxCore ড্যাশবোর্ড"
+  },
+  "status": {
+    "online": "অনলাইন",
+    "offline": "অফলাইন",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "সারসংক্ষেপ",
+    "automation": "অটোমেশন",
+    "music": "সঙ্গীত",
+    "tempvoice": "অস্থায়ী ভয়েস",
+    "welcome": "স্বাগতম",
+    "moderation": "মডারেশন",
+    "warnings": "সতর্কতা",
+    "rolePanels": "রোল প্যানেল",
+    "leveling": "লেভেলিং",
+    "scheduled": "শিডিউলড",
+    "commands": "কমান্ড",
+    "security": "নিরাপত্তা",
+    "tickets": "টিকেট",
+    "giveaways": "গিভঅ্যাওয়ে",
+    "suggestions": "পরামর্শ",
+    "starboard": "স্টারবোর্ড",
+    "logs": "লগ",
+    "permissions": "অনুমতি",
+    "settings": "সেটিংস"
+  },
+  "actions": {
+    "save": "সংরক্ষণ",
+    "cancel": "বাতিল",
+    "delete": "মুছুন",
+    "edit": "সম্পাদনা",
+    "create": "তৈরি করুন",
+    "add": "যোগ করুন",
+    "remove": "সরান",
+    "confirm": "নিশ্চিত করুন",
+    "close": "বন্ধ করুন",
+    "back": "পিছনে",
+    "next": "পরবর্তী",
+    "search": "অনুসন্ধান",
+    "filter": "ফিল্টার",
+    "refresh": "রিফ্রেশ",
+    "reset": "রিসেট",
+    "enable": "সক্রিয় করুন",
+    "disable": "নিষ্ক্রিয় করুন",
+    "copy": "কপি",
+    "export": "রপ্তানি",
+    "import": "আমদানি",
+    "submit": "জমা দিন",
+    "loading": "লোড হচ্ছে...",
+    "retry": "পুনরায় চেষ্টা করুন"
+  },
+  "labels": {
+    "enabled": "সক্রিয়",
+    "disabled": "নিষ্ক্রিয়",
+    "active": "চালু",
+    "inactive": "বন্ধ",
+    "none": "কিছুই না",
+    "all": "সব",
+    "custom": "কাস্টম",
+    "default": "ডিফল্ট",
+    "required": "আবশ্যক",
+    "optional": "ঐচ্ছিক",
+    "name": "নাম",
+    "description": "বিবরণ",
+    "type": "ধরন",
+    "status": "স্থিতি",
+    "channel": "চ্যানেল",
+    "role": "রোল",
+    "member": "সদস্য",
+    "duration": "সময়কাল",
+    "reason": "কারণ",
+    "language": "ভাষা"
+  },
+  "header": {
+    "notifications": "বিজ্ঞপ্তি",
+    "settings": "সেটিংস",
+    "logout": "লগ আউট",
+    "toggleSidebar": "সাইডবার টগল করুন",
+    "refreshData": "Discord ডেটা রিফ্রেশ করুন"
+  },
+  "sidebar": {
+    "closeSidebar": "সাইডবার বন্ধ করুন",
+    "addToServer": "সার্ভারে যোগ করুন",
+    "docs": "ডকুমেন্টেশন",
+    "support": "সাপোর্ট",
+    "backToServers": "সার্ভারে ফিরে যান"
+  },
+  "empty": {
+    "noData": "কোনো ডেটা উপলব্ধ নেই",
+    "noResults": "কোনো ফলাফল পাওয়া যায়নি",
+    "noItems": "এখনো কোনো আইটেম নেই"
+  },
+  "time": {
+    "seconds": "সেকেন্ড",
+    "minutes": "মিনিট",
+    "hours": "ঘণ্টা",
+    "days": "দিন",
+    "ago": "{{time}} আগে",
+    "in": "{{time}} এ"
+  },
+  "confirm": {
+    "title": "আপনি কি নিশ্চিত?",
+    "deleteTitle": "মুছে ফেলা নিশ্চিত করুন",
+    "deleteMessage": "এই কাজটি পূর্বাবস্থায় ফেরানো যাবে না।",
+    "unsavedChanges": "আপনার অসংরক্ষিত পরিবর্তন আছে। আপনি কি নিশ্চিত যে আপনি চলে যেতে চান?"
+  },
+  "accessibility": {
+    "skipToContent": "মূল বিষয়বস্তুতে যান",
+    "loading": "বিষয়বস্তু লোড হচ্ছে",
+    "loaded": "বিষয়বস্তু লোড হয়েছে",
+    "error": "একটি ত্রুটি ঘটেছে",
+    "menuOpen": "মেনু খোলা আছে",
+    "menuClosed": "মেনু বন্ধ আছে"
+  }
+}

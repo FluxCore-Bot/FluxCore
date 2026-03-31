@@ -1,0 +1,65 @@
+{
+  "title": "Velkommen og farvel",
+  "subtitle": "Konfigurer velkomst- og farvelmeldinger, bilder og autoroller.",
+  "loadingSubtitle": "Konfigurer velkomst- og farvelmeldinger for serveren din.",
+  "tabs": {
+    "welcome": "Velkommen",
+    "welcomeImage": "Velkomstbilde",
+    "farewell": "Farvel",
+    "farewellImage": "Farvelbilde",
+    "dm": "Velkomst-DM",
+    "autorole": "Autorolle"
+  },
+  "welcome": {
+    "title": "Velkomstmelding",
+    "description": "Send en tilpasset innbygging når et nytt medlem blir med.",
+    "channelLabel": "Velkomstkanal-ID",
+    "channelPlaceholder": "Kanal-ID...",
+    "embedBuilder": "Innbyggingsbygger"
+  },
+  "welcomeImage": {
+    "title": "Velkomstbilde",
+    "description": "Generer et tilpasset bildekort med medlemmets avatar når de blir med.",
+    "disabled": "Aktiver bryteren ovenfor for å konfigurere velkomstbilder."
+  },
+  "farewell": {
+    "title": "Farvelmelding",
+    "description": "Send en melding når et medlem forlater serveren.",
+    "channelLabel": "Farvelkanal-ID",
+    "channelPlaceholder": "Kanal-ID..."
+  },
+  "farewellImage": {
+    "title": "Farvelbilde",
+    "description": "Generer et tilpasset farvelkort når et medlem forlater.",
+    "disabled": "Aktiver bryteren ovenfor for å konfigurere farvelbilder."
+  },
+  "dm": {
+    "title": "Velkomst-DM",
+    "description": "Send en direktemelding til nye medlemmer. Feiler stille hvis DM-er er deaktivert."
+  },
+  "autorole": {
+    "title": "Autorolle",
+    "description": "Tildel automatisk roller til nye medlemmer når de blir med. Boter er unntatt. Boten må ha en rolle høyere enn rollene listet her.",
+    "label": "Rolle-ID-er (kommaseparerte)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Tittel",
+    "description": "Beskrivelse",
+    "color": "Farge (hex)",
+    "footer": "Bunntekst",
+    "thumbnail": "Miniatyrbilde-URL",
+    "image": "Bilde-URL",
+    "variables": "Variabler:"
+  },
+  "saveChanges": "Lagre endringer",
+  "saving": "Lagrer...",
+  "sendTest": "Send testmelding",
+  "sending": "Sender...",
+  "toast": {
+    "saved": "Velkomstkonfigurasjon lagret",
+    "saveFailed": "Kunne ikke lagre konfigurasjon",
+    "testSent": "Testmelding sendes til <#{{channelId}}>",
+    "testFailed": "Kunne ikke sende testmelding"
+  }
+}

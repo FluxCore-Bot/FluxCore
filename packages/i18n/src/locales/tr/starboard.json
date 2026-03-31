@@ -1,0 +1,41 @@
+{
+  "title": "Yıldız Panosu",
+  "subtitle": "Yıldız tepkilerini özel bir kanalda toplayarak en iyi mesajları öne çıkarın.",
+  "tabs": {
+    "settings": "Ayarlar",
+    "starredMessages": "Yıldızlı Mesajlar"
+  },
+  "settings": {
+    "title": "Yıldız Panosu Yapılandırması",
+    "description": "Yıldızlı mesajların ne zaman ve nereye gönderileceğini yapılandırın.",
+    "channelId": "Yıldız Panosu Kanalı",
+    "channelIdDesc": "Yıldızlı mesajların gönderildiği kanal.",
+    "starEmoji": "Yıldız Emojisi",
+    "starEmojiDesc": "Mesajları yıldızlamak için kullanılan emoji. Varsayılan olarak yıldız emojisini kullanır.",
+    "threshold": "Yıldız Eşiği",
+    "thresholdDesc": "Bir mesajı yıldız panosuna göndermek için gereken minimum tepki sayısı.",
+    "selfStar": "Kendini Yıldızlama",
+    "selfStarDesc": "Mesaj yazarlarının kendi mesajlarını yıldızlamasına izin verin.",
+    "nsfwAllowed": "NSFW İzinli",
+    "nsfwAllowedDesc": "NSFW kanallarından gelen mesajların yıldız panosunda görünmesine izin verin.",
+    "ignoredChannels": "Yoksayılan Kanallar",
+    "ignoredChannelsDesc": "Bu kanallardan gelen mesajlar yıldız panosunda asla görünmeyecektir."
+  },
+  "messages": {
+    "table": {
+      "original": "Orijinal Mesaj",
+      "stars": "Yıldızlar",
+      "channel": "Kanal",
+      "date": "Tarih"
+    },
+    "noMessages": "Henüz yıldızlı mesaj yok."
+  },
+  "toast": {
+    "saved": "Yıldız panosu ayarları kaydedildi",
+    "saveFailed": "Yıldız panosu ayarları kaydedilemedi"
+  },
+  "actions": {
+    "save": "Kaydet",
+    "saving": "Kaydediliyor..."
+  }
+}

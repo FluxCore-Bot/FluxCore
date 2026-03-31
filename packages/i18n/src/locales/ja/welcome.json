@@ -1,0 +1,65 @@
+{
+  "title": "ウェルカム＆お別れ",
+  "subtitle": "ウェルカムメッセージ、お別れメッセージ、画像、自動ロールを設定します。",
+  "loadingSubtitle": "サーバーのウェルカムメッセージとお別れメッセージを設定します。",
+  "tabs": {
+    "welcome": "ウェルカム",
+    "welcomeImage": "ウェルカム画像",
+    "farewell": "お別れ",
+    "farewellImage": "お別れ画像",
+    "dm": "ウェルカムDM",
+    "autorole": "自動ロール"
+  },
+  "welcome": {
+    "title": "ウェルカムメッセージ",
+    "description": "新しいメンバーが参加した時にカスタム埋め込みを送信します。",
+    "channelLabel": "ウェルカムチャンネルID",
+    "channelPlaceholder": "チャンネルID...",
+    "embedBuilder": "埋め込みビルダー"
+  },
+  "welcomeImage": {
+    "title": "ウェルカム画像",
+    "description": "メンバーが参加した時にアバター付きのカスタム画像カードを生成します。",
+    "disabled": "上のトグルを有効にしてウェルカム画像を設定してください。"
+  },
+  "farewell": {
+    "title": "お別れメッセージ",
+    "description": "メンバーがサーバーを離れた時にメッセージを送信します。",
+    "channelLabel": "お別れチャンネルID",
+    "channelPlaceholder": "チャンネルID..."
+  },
+  "farewellImage": {
+    "title": "お別れ画像",
+    "description": "メンバーが離れた時にカスタムお別れカードを生成します。",
+    "disabled": "上のトグルを有効にしてお別れ画像を設定してください。"
+  },
+  "dm": {
+    "title": "ウェルカムDM",
+    "description": "新しいメンバーにダイレクトメッセージを送信します。DMが無効の場合はサイレントに失敗します。"
+  },
+  "autorole": {
+    "title": "自動ロール",
+    "description": "新しいメンバーが参加した時に自動的にロールを割り当てます。Botは除外されます。Botはここに記載されたロールより高いロールを持っている必要があります。",
+    "label": "ロールID (カンマ区切り)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "タイトル",
+    "description": "説明",
+    "color": "色 (16進数)",
+    "footer": "フッター",
+    "thumbnail": "サムネイルURL",
+    "image": "画像URL",
+    "variables": "変数:"
+  },
+  "saveChanges": "変更を保存",
+  "saving": "保存中...",
+  "sendTest": "テストメッセージを送信",
+  "sending": "送信中...",
+  "toast": {
+    "saved": "ウェルカム設定を保存しました",
+    "saveFailed": "設定の保存に失敗しました",
+    "testSent": "テストメッセージが<#{{channelId}}>に送信されます",
+    "testFailed": "テストメッセージの送信に失敗しました"
+  }
+}

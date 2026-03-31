@@ -1,0 +1,54 @@
+{
+  "title": "Moderacija",
+  "subtitle": "Pregledajte i upravljajte moderacijskim slucajevima, konfigurisi podesavanja kazni.",
+  "stats": {
+    "totalCases": "Ukupno slucajeva",
+    "activeTempbans": "Aktivne privremene zabrane",
+    "last24h": "Poslednjih 24h"
+  },
+  "cases": "Slucajevi",
+  "actions": {
+    "ban": "Zabrana",
+    "tempban": "Privremena zabrana",
+    "kick": "Izbacivanje",
+    "timeout": "Tajmaut",
+    "softban": "Meka zabrana",
+    "warn": "Upozorenje",
+    "note": "Beleska"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Radnja",
+    "target": "Cilj",
+    "moderator": "Moderator",
+    "reason": "Razlog",
+    "date": "Datum",
+    "actions": "Radnje",
+    "noCases": "Nisu pronadeni slucajevi.",
+    "noReason": "Bez razloga"
+  },
+  "filter": {
+    "userPlaceholder": "Filtriraj po ID-u korisnika...",
+    "allActions": "Sve radnje"
+  },
+  "pagination": {
+    "previous": "Prethodna",
+    "next": "Sledeca",
+    "page": "Stranica {{page}} od {{total}}"
+  },
+  "editDialog": {
+    "title": "Uredi razlog slucaja #{{id}}",
+    "placeholder": "Unesite novi razlog...",
+    "saving": "Cuvanje..."
+  },
+  "editReason": "Uredi razlog",
+  "deleteCase": "Obrisi slucaj",
+  "deleteConfirm": "Da li ste sigurni da zelite da obrisete ovaj slucaj?",
+  "settings": {
+    "title": "Podesavanja",
+    "dmOnPunishment": "Poruka pri kazni",
+    "dmOnPunishmentDesc": "Posaljite korisnicima privatnu poruku kada su kaznjeni (zabrana, izbacivanje, tajmaut).",
+    "modLogChannel": "Kanal za moderacijske zapise",
+    "modLogChannelDesc": "Kanal u koji se evidentiraju moderacijske radnje."
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Kini dalam Beta Awam",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Bot Discord",
+    "titleLine2": "Framework Semua-dalam-Satu",
+    "subtitle": "Terapkan kehadiran Discord bertaraf profesional dalam beberapa minit. Modular, self-hosted, dan dibina untuk komuniti yang menuntut lebih."
+  },
+  "cta": {
+    "addToServer": "Tambah ke Pelayan",
+    "openDashboard": "Buka Dashboard",
+    "exploreFeatures": "Terokai Ciri"
+  },
+  "stats": {
+    "servers": "Pelayan",
+    "latency": "Kependaman",
+    "uptime": "Uptime",
+    "modules": "Modul",
+    "serversValue": "1,000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99.9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Keupayaan",
+    "title": "Semua yang diperlukan pelayan anda",
+    "subtitle": "Toolkit modular yang direka untuk komuniti yang menuntut kebolehpercayaan, fleksibiliti, dan kawalan.",
+    "automation": {
+      "title": "Peraturan Automasi",
+      "description": "Cipta aliran kerja berasaskan peristiwa yang kompleks tanpa kod. Pencetus jika-ini-maka-itu dengan 23 jenis peristiwa dan 10 jenis tindakan."
+    },
+    "music": {
+      "title": "Sistem Muzik",
+      "description": "Penstriman audio berkualiti tinggi dengan sokongan pelbagai platform. Pengurusan baris gilir, kawalan DJ, dan mod perpustakaan."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Pengurusan saluran suara dinamik. Penciptaan automatik dengan templat penamaan tersuai, kebenaran, dan pembersihan."
+    },
+    "logs": {
+      "title": "Log Aktiviti",
+      "description": "Rekod audit penuh bagi setiap pelaksanaan automasi. Cari, tapis, dan nyahpepijat peraturan anda dengan log terperinci."
+    },
+    "webhooks": {
+      "title": "Webhook & API",
+      "description": "Hantar data ke perkhidmatan luaran dengan webhook HTTP. Pengepala tersuai, templat badan, dan interpolasi pemboleh ubah."
+    },
+    "dashboard": {
+      "title": "Dashboard Masa Nyata",
+      "description": "Urus semua daripada dashboard web yang elegan. Analitik, konfigurasi, dan pemantauan dalam satu tempat."
+    }
+  },
+  "ctaSection": {
+    "title": "Bersedia untuk meningkatkan komuniti anda?",
+    "subtitle": "Mulakan dalam beberapa minit tanpa konfigurasi. Self-hosted, sumber terbuka, dan percuma sepenuhnya."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "© {{year}} FluxCore Technologies. Hak cipta terpelihara.",
+    "links": {
+      "documentation": "Dokumentasi",
+      "support": "Sokongan",
+      "privacy": "Dasar Privasi",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

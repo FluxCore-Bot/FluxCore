@@ -1,0 +1,54 @@
+{
+  "title": "관리",
+  "subtitle": "관리 케이스를 보고 관리하며 처벌 설정을 구성합니다.",
+  "stats": {
+    "totalCases": "총 케이스",
+    "activeTempbans": "활성 임시 차단",
+    "last24h": "최근 24시간"
+  },
+  "cases": "케이스",
+  "actions": {
+    "ban": "차단",
+    "tempban": "임시 차단",
+    "kick": "추방",
+    "timeout": "타임아웃",
+    "softban": "소프트밴",
+    "warn": "경고",
+    "note": "메모"
+  },
+  "table": {
+    "id": "ID",
+    "action": "액션",
+    "target": "대상",
+    "moderator": "관리자",
+    "reason": "사유",
+    "date": "날짜",
+    "actions": "작업",
+    "noCases": "케이스를 찾을 수 없습니다.",
+    "noReason": "사유 없음"
+  },
+  "filter": {
+    "userPlaceholder": "사용자 ID로 필터...",
+    "allActions": "모든 액션"
+  },
+  "pagination": {
+    "previous": "이전",
+    "next": "다음",
+    "page": "페이지 {{page}} / {{total}}"
+  },
+  "editDialog": {
+    "title": "케이스 #{{id}} 사유 편집",
+    "placeholder": "새 사유를 입력하세요...",
+    "saving": "저장 중..."
+  },
+  "editReason": "사유 편집",
+  "deleteCase": "케이스 삭제",
+  "deleteConfirm": "이 케이스를 삭제하시겠습니까?",
+  "settings": {
+    "title": "설정",
+    "dmOnPunishment": "처벌 시 DM 전송",
+    "dmOnPunishmentDesc": "처벌 (차단, 추방, 타임아웃) 시 사용자에게 DM을 보냅니다.",
+    "modLogChannel": "관리 로그 채널",
+    "modLogChannelDesc": "관리 작업이 기록되는 채널."
+  }
+}

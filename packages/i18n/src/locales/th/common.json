@@ -1,0 +1,13 @@
+{
+  "brand": { "name": "FluxCore", "engine": "FluxCore Engine", "dashboard": "FluxCore แดชบอร์ด" },
+  "status": { "online": "ออนไลน์", "offline": "ออฟไลน์", "latency": "{{ms}}ms" },
+  "nav": { "overview": "ภาพรวม", "automation": "ระบบอัตโนมัติ", "music": "เพลง", "tempvoice": "ห้องเสียงชั่วคราว", "welcome": "ต้อนรับ", "moderation": "การจัดการ", "warnings": "คำเตือน", "rolePanels": "แผงบทบาท", "leveling": "ระบบเลเวล", "scheduled": "ข้อความตั้งเวลา", "commands": "คำสั่ง", "security": "ความปลอดภัย", "tickets": "ตั๋ว", "giveaways": "แจกของรางวัล", "suggestions": "ข้อเสนอแนะ", "starboard": "กระดานดาว", "logs": "บันทึก", "permissions": "สิทธิ์", "settings": "ตั้งค่า" },
+  "actions": { "save": "บันทึก", "cancel": "ยกเลิก", "delete": "ลบ", "edit": "แก้ไข", "create": "สร้าง", "add": "เพิ่ม", "remove": "ลบ", "confirm": "ยืนยัน", "close": "ปิด", "back": "กลับ", "next": "ถัดไป", "search": "ค้นหา", "filter": "กรอง", "refresh": "รีเฟรช", "reset": "รีเซ็ต", "enable": "เปิดใช้งาน", "disable": "ปิดใช้งาน", "copy": "คัดลอก", "export": "ส่งออก", "import": "นำเข้า", "submit": "ส่ง", "loading": "กำลังโหลด...", "retry": "ลองอีกครั้ง" },
+  "labels": { "enabled": "เปิดใช้งาน", "disabled": "ปิดใช้งาน", "active": "ใช้งาน", "inactive": "ไม่ใช้งาน", "none": "ไม่มี", "all": "ทั้งหมด", "custom": "กำหนดเอง", "default": "ค่าเริ่มต้น", "required": "จำเป็น", "optional": "ไม่บังคับ", "name": "ชื่อ", "description": "คำอธิบาย", "type": "ประเภท", "status": "สถานะ", "channel": "แชนเนล", "role": "บทบาท", "member": "สมาชิก", "duration": "ระยะเวลา", "reason": "เหตุผล", "language": "ภาษา" },
+  "header": { "notifications": "การแจ้งเตือน", "settings": "ตั้งค่า", "logout": "ออกจากระบบ", "toggleSidebar": "สลับแถบด้านข้าง", "refreshData": "รีเฟรชข้อมูล Discord" },
+  "sidebar": { "closeSidebar": "ปิดแถบด้านข้าง", "addToServer": "เพิ่มไปยังเซิร์ฟเวอร์", "docs": "เอกสาร", "support": "สนับสนุน", "backToServers": "กลับไปยังรายการเซิร์ฟเวอร์" },
+  "empty": { "noData": "ไม่มีข้อมูล", "noResults": "ไม่พบผลลัพธ์", "noItems": "ยังไม่มีรายการ" },
+  "time": { "seconds": "วินาที", "minutes": "นาที", "hours": "ชั่วโมง", "days": "วัน", "ago": "{{time}}ที่แล้ว", "in": "อีก {{time}}" },
+  "confirm": { "title": "คุณแน่ใจหรือไม่?", "deleteTitle": "ยืนยันการลบ", "deleteMessage": "การดำเนินการนี้ไม่สามารถย้อนกลับได้", "unsavedChanges": "คุณมีการเปลี่ยนแปลงที่ยังไม่ได้บันทึก แน่ใจหรือว่าต้องการออก?" },
+  "accessibility": { "skipToContent": "ข้ามไปยังเนื้อหาหลัก", "loading": "กำลังโหลดเนื้อหา", "loaded": "โหลดเนื้อหาแล้ว", "error": "เกิดข้อผิดพลาด", "menuOpen": "เมนูเปิดอยู่", "menuClosed": "เมนูปิดอยู่" }
+}

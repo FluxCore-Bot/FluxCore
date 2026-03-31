@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore valdymo skydelis"
+  },
+  "status": {
+    "online": "Prisijunges",
+    "offline": "Atsijunges",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Apzvalga",
+    "automation": "Automatizavimas",
+    "music": "Muzika",
+    "tempvoice": "TempVoice",
+    "welcome": "Pasisveikinimas",
+    "moderation": "Moderavimas",
+    "warnings": "Ispejimal",
+    "rolePanels": "Roliu paneliai",
+    "leveling": "Lygiavimas",
+    "scheduled": "Suplanuota",
+    "commands": "Komandos",
+    "security": "Saugumas",
+    "tickets": "Bilietai",
+    "giveaways": "Dovanojimal",
+    "suggestions": "Pasiulymai",
+    "starboard": "Starboard",
+    "logs": "Zurnalas",
+    "permissions": "Leidimai",
+    "settings": "Nustatymai"
+  },
+  "actions": {
+    "save": "Issaugoti",
+    "cancel": "Atsaukti",
+    "delete": "Istrinti",
+    "edit": "Redaguoti",
+    "create": "Sukurti",
+    "add": "Prideti",
+    "remove": "Pasalinti",
+    "confirm": "Patvirtinti",
+    "close": "Uzdaryti",
+    "back": "Atgal",
+    "next": "Toliau",
+    "search": "Ieskoti",
+    "filter": "Filtruoti",
+    "refresh": "Atnaujinti",
+    "reset": "Atstatyti",
+    "enable": "Ijungti",
+    "disable": "Isjungti",
+    "copy": "Kopijuoti",
+    "export": "Eksportuoti",
+    "import": "Importuoti",
+    "submit": "Pateikti",
+    "loading": "Kraunama...",
+    "retry": "Bandyti dar karta"
+  },
+  "labels": {
+    "enabled": "Ijungta",
+    "disabled": "Isjungta",
+    "active": "Aktyvus",
+    "inactive": "Neaktyvus",
+    "none": "Nera",
+    "all": "Visi",
+    "custom": "Pasirinktinis",
+    "default": "Numatytasis",
+    "required": "Privalomas",
+    "optional": "Neprivalomas",
+    "name": "Pavadinimas",
+    "description": "Aprasymas",
+    "type": "Tipas",
+    "status": "Busena",
+    "channel": "Kanalas",
+    "role": "Role",
+    "member": "Narys",
+    "duration": "Trukme",
+    "reason": "Priezastis",
+    "language": "Kalba"
+  },
+  "header": {
+    "notifications": "Pranesimai",
+    "settings": "Nustatymai",
+    "logout": "Atsijungti",
+    "toggleSidebar": "Perjungti sonine juosta",
+    "refreshData": "Atnaujinti Discord duomenis"
+  },
+  "sidebar": {
+    "closeSidebar": "Uzdaryti sonine juosta",
+    "addToServer": "Prideti i serveri",
+    "docs": "Dokumentacija",
+    "support": "Palaikymas",
+    "backToServers": "Atgal i serverius"
+  },
+  "empty": {
+    "noData": "Nera duomenu",
+    "noResults": "Rezultatu nerasta",
+    "noItems": "Kol kas nera elementu"
+  },
+  "time": {
+    "seconds": "sekundes",
+    "minutes": "minutes",
+    "hours": "valandos",
+    "days": "dienos",
+    "ago": "pries {{time}}",
+    "in": "po {{time}}"
+  },
+  "confirm": {
+    "title": "Ar esate tikri?",
+    "deleteTitle": "Patvirtinkite istrynyma",
+    "deleteMessage": "Sio veiksmo negalima atsiaukti.",
+    "unsavedChanges": "Turite neissaugotu pakeitimu. Ar tikrai norite isejti?"
+  },
+  "accessibility": {
+    "skipToContent": "Perejti prie pagrindinio turinio",
+    "loading": "Kraunamas turinys",
+    "loaded": "Turinys ikrautas",
+    "error": "Ivyko klaida",
+    "menuOpen": "Meniu atidarytas",
+    "menuClosed": "Meniu uzdarytas"
+  }
+}

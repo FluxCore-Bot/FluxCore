@@ -1,0 +1,77 @@
+{
+  "title": "Piletisüsteem",
+  "subtitle": "Loo tugipileti paneelid ja halda avatud pileteid armatuurlaualt.",
+  "stats": {
+    "totalTickets": "Pileteid kokku",
+    "open": "Avatud",
+    "claimed": "Hõivatud",
+    "panels": "Paneelid"
+  },
+  "tabs": {
+    "activeTickets": "Aktiivsed piletid",
+    "panelBuilder": "Paneeli koostaja",
+    "settings": "Seaded"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Kasutaja",
+    "subject": "Teema",
+    "status": "Olek",
+    "assignee": "Määratud",
+    "created": "Loodud"
+  },
+  "statuses": {
+    "open": "Avatud",
+    "claimed": "Hõivatud",
+    "closed": "Suletud"
+  },
+  "panelBuilder": {
+    "title": "Paneeli pealkiri",
+    "channel": "Kanal",
+    "buttonLabel": "Nupu silt",
+    "welcomeMessage": "Tervitussõnum",
+    "category": "Pileti kategooria",
+    "create": "Loo paneel",
+    "edit": "Muuda paneeli",
+    "deploy": "Juuruta paneel"
+  },
+  "settings": {
+    "transcriptChannel": "Transkripti kanal",
+    "transcriptChannelDesc": "Kanal, kuhu pileti transkriptid sulgemise korral salvestatakse.",
+    "maxTicketsPerUser": "Max pileteid kasutaja kohta",
+    "maxTicketsPerUserDesc": "Maksimaalne avatud piletite arv, mida ühel kasutajal saab olla.",
+    "closeConfirmation": "Sulgemise kinnitus",
+    "closeConfirmationDesc": "Nõua kinnitust enne pileti sulgemist.",
+    "dmTranscript": "DM transkript",
+    "dmTranscriptDesc": "Saada transkripti koopia pileti loojale DM-i teel."
+  },
+  "actions": {
+    "claim": "Hõiva",
+    "close": "Sulge",
+    "delete": "Kustuta",
+    "reopen": "Ava uuesti"
+  },
+  "toast": {
+    "panelCreated": "Piletipaneel loodud",
+    "panelCreateFailed": "Piletipaneeli loomine ebaõnnestus",
+    "panelUpdated": "Piletipaneel uuendatud",
+    "panelUpdateFailed": "Piletipaneeli uuendamine ebaõnnestus",
+    "panelDeployed": "Piletipaneel juurutatud",
+    "panelDeployFailed": "Piletipaneeli juurutamine ebaõnnestus",
+    "ticketClaimed": "Pilet hõivatud",
+    "ticketClaimFailed": "Pileti hõivamine ebaõnnestus",
+    "ticketClosed": "Pilet suletud",
+    "ticketCloseFailed": "Pileti sulgemine ebaõnnestus",
+    "ticketReopened": "Pilet avatud uuesti",
+    "ticketReopenFailed": "Pileti uuesti avamine ebaõnnestus",
+    "ticketDeleted": "Pilet kustutatud",
+    "ticketDeleteFailed": "Pileti kustutamine ebaõnnestus",
+    "settingsSaved": "Pileti seaded salvestatud",
+    "settingsFailed": "Pileti seadete salvestamine ebaõnnestus"
+  },
+  "empty": {
+    "tickets": "Aktiivseid pileteid pole.",
+    "panels": "Piletipaneele pole veel loodud."
+  },
+  "loading": "Laadin pileteid..."
+}

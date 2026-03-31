@@ -1,0 +1,108 @@
+{
+  "title": "אבטחה",
+  "subtitle": "הגדר הגנה נגד פשיטות והגדרות אבטחת שרת.",
+  "antiRaid": {
+    "title": "הגנה נגד פשיטות",
+    "description": "הפעל זיהוי אוטומטי ותגובה לפשיטות מתואמות, חשבונות חשודים ופעולות הרסניות."
+  },
+  "sections": {
+    "joinRate": "קצב הצטרפות",
+    "accountAge": "גיל חשבון",
+    "antiNuke": "הגנה נגד הרס",
+    "lockdown": "נעילה",
+    "events": "אירועים"
+  },
+  "joinRate": {
+    "title": "זיהוי קצב הצטרפות",
+    "description": "זהה הצטרפויות המוניות על ידי ניטור קצב הצטרפות חברים חדשים.",
+    "threshold": "סף הצטרפויות",
+    "thresholdHint": "מספר הצטרפויות להפעלת הזיהוי",
+    "window": "חלון זמן (שניות)",
+    "windowHint": "חלון שבו ההצטרפויות נספרות",
+    "action": "פעולה בזיהוי",
+    "actionHint": "הפעולה שיש לנקוט כלפי חברי פשיטה חשודים",
+    "actions": {
+      "ban": "חסימה",
+      "kick": "הסרה",
+      "timeout": "השתקה",
+      "lockdown": "נעילה"
+    }
+  },
+  "accountAge": {
+    "title": "מסנן גיל חשבון",
+    "description": "פעל אוטומטית כלפי חשבונות צעירים מגיל מינימלי. הגדר 0 להשבתה.",
+    "minAge": "גיל חשבון מינימלי (ימים)",
+    "minAgeHint": "0 = מושבת. חשבונות צעירים מגיל זה ייכנסו לפעולה.",
+    "action": "פעולה"
+  },
+  "antiNuke": {
+    "title": "הגנה נגד הרס",
+    "description": "זהה מחיקות המוניות של ערוצים/תפקידים והכנס להסגר את המשתמש האחראי על ידי הסרת כל תפקידיו.",
+    "threshold": "סף מחיקות",
+    "thresholdHint": "מספר מחיקות תוך 10 שניות להפעלת ההסגר",
+    "channelDeleteThreshold": "סף מחיקת ערוצים",
+    "roleDeleteThreshold": "סף מחיקת תפקידים",
+    "massbanThreshold": "סף חסימות המוניות",
+    "interval": "מרווח (שניות)",
+    "action": "פעולה"
+  },
+  "lockdown": {
+    "title": "נעילה אוטומטית בפשיטה",
+    "description": "נעל אוטומטית את כל הערוצים כאשר מזוהה פשיטה.",
+    "whitelistedRoles": "מזהי תפקידים ברשימה לבנה (מופרדים בפסיק)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "חברים עם תפקידים אלו יהיו פטורים מזיהוי פשיטות.",
+    "logChannel": "מזהה ערוץ יומן",
+    "logChannelPlaceholder": "מזהה ערוץ ליומני אירועי פשיטה...",
+    "enableButton": "הפעל נעילה",
+    "disableButton": "השבת נעילה",
+    "active": "נעילה פעילה",
+    "inactive": "נעילה לא פעילה"
+  },
+  "events": {
+    "title": "אירועי פשיטה אחרונים",
+    "description": "ציר זמן של פשיטות שזוהו, חסימות גיל חשבון ואירועי נעילה.",
+    "empty": "לא נרשמו אירועי פשיטה עדיין. אירועים יופיעו כאן כאשר זיהוי פשיטות מופעל.",
+    "actionLabel": "פעולה: {{action}}",
+    "usersLabel": "משתמשים: {{count}}",
+    "accountAgeLabel": "גיל חשבון: {{days}} ימים",
+    "table": {
+      "type": "סוג",
+      "description": "תיאור",
+      "time": "זמן",
+      "action": "פעולה שננקטה"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "קפיצת הצטרפויות",
+    "account_age": "גיל חשבון",
+    "nuke_attempt": "ניסיון הרס",
+    "lockdown": "נעילה",
+    "massJoin": "הצטרפות המונית",
+    "suspiciousAccounts": "חשבונות חשודים",
+    "channelDeletion": "מחיקת ערוץ",
+    "roleDeletion": "מחיקת תפקיד",
+    "massBan": "חסימה המונית"
+  },
+  "pagination": {
+    "previous": "הקודם",
+    "next": "הבא",
+    "page": "עמוד {{current}} מתוך {{total}}"
+  },
+  "toast": {
+    "saved": "הגדרות ההגנה נגד פשיטות נשמרו",
+    "saveFailed": "שמירת ההגדרות נכשלה",
+    "lockdownEnabled": "נעילת השרת הופעלה",
+    "lockdownDisabled": "נעילת השרת הושבתה",
+    "lockdownFailed": "החלפת מצב הנעילה נכשלה"
+  },
+  "saveButton": {
+    "saving": "שומר...",
+    "save": "שמור שינויים"
+  },
+  "labels": {
+    "seconds": "שניות",
+    "minutes": "דקות",
+    "hours": "שעות"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "title": "Rolpanele",
+  "subtitle": "Skep selftoekenbare rolpanele met knoppies, aftreklysies of reaksies.",
+  "stats": {
+    "totalPanels": "Totale Panele",
+    "deployed": "Ontplooi",
+    "totalRoles": "Totale Rolle"
+  },
+  "tabs": {
+    "panels": "Panele",
+    "preview": "Voorskou"
+  },
+  "table": {
+    "name": "Naam",
+    "type": "Tipe",
+    "mode": "Modus",
+    "roles": "Rolle",
+    "status": "Status"
+  },
+  "panelTypes": {
+    "reaction": "Reaksie",
+    "button": "Knoppie",
+    "dropdown": "Aftreklys"
+  },
+  "panelModes": {
+    "toggle": "Wissel",
+    "unique": "Uniek",
+    "verify": "Verifieer"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Wissel (voeg by/verwyder)",
+    "unique": "Uniek (een op 'n slag)",
+    "verify": "Verifieer (voeg net by)"
+  },
+  "status": {
+    "deployed": "Ontplooi",
+    "draft": "Konsep"
+  },
+  "dialog": {
+    "createPanel": "Skep Paneel",
+    "editPanel": "Wysig Paneel"
+  },
+  "panelList": {
+    "title": "Alle Panele"
+  },
+  "form": {
+    "name": "Naam",
+    "namePlaceholder": "bv. Kleurrolle",
+    "type": "Tipe",
+    "mode": "Modus",
+    "channel": "Kanaal",
+    "channelPlaceholder": "Kies kanaal",
+    "minRoles": "Min Rolle",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Maks Rolle",
+    "maxRolesPlaceholder": "Almal",
+    "embedSection": "Embed",
+    "embedTitle": "Titel",
+    "embedTitlePlaceholder": "Paneeltitel (verstek na paneelnaam)",
+    "embedDescription": "Beskrywing",
+    "embedDescriptionPlaceholder": "Beskrywingsteks",
+    "rolesCount": "Rolle ({{count}}/25)",
+    "addRole": "Voeg Rol By"
+  },
+  "entry": {
+    "role": "Rol",
+    "rolePlaceholder": "Kies rol",
+    "label": "Etiket",
+    "labelPlaceholder": "Knoppie-etiket",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "bv. ster",
+    "description": "Beskrywing",
+    "descriptionPlaceholder": "Opsiebeskrywing",
+    "style": "Styl"
+  },
+  "buttonStyles": {
+    "primary": "Primer",
+    "secondary": "Sekonder",
+    "success": "Sukses",
+    "danger": "Gevaar"
+  },
+  "actions": {
+    "create": "Skep",
+    "update": "Werk By",
+    "cancel": "Kanselleer",
+    "deploy": "Ontplooi",
+    "delete": "Verwyder",
+    "addEntry": "Voeg Inskrywing By",
+    "removeEntry": "Verwyder Inskrywing"
+  },
+  "preview": {
+    "title": "Lewendige Voorskou",
+    "description": "Voorskou hoe jou panele in Discord sal verskyn.",
+    "selectRoles": "Kies rolle...",
+    "noPreview": "Geen panele om te voorskou nie."
+  },
+  "empty": "Nog geen rolpanele geskep nie. Klik \"Skep Paneel\" om te begin.",
+  "toast": {
+    "created": "Paneel geskep",
+    "createFailed": "Kon nie paneel skep nie",
+    "updated": "Paneel bygewerk",
+    "updateFailed": "Kon nie paneel bywerk nie",
+    "deleted": "Paneel verwyder",
+    "deleteFailed": "Kon nie paneel verwyder nie",
+    "deployed": "Rolpaneel na kanaal ontplooi",
+    "deployFailed": "Kon nie paneel stuur nie",
+    "nameRequired": "Paneelnaam is verpligtend",
+    "channelRequired": "Kanaal is verpligtend",
+    "maxRolesReached": "Maksimum 25 rolle per paneel"
+  },
+  "loading": "Laai panele..."
+}

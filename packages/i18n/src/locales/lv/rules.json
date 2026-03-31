@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Serveris",
+    "automation": "Automatizacija"
+  },
+  "title": "Automatizacijas noteikumi",
+  "subtitle": "Konfigurejiet notikumos balstitus trigerus un automatizetas atbildes savam serverim.",
+  "createRule": "Izveidot noteikumu",
+  "stats": {
+    "totalRules": "Kopejie noteikumi",
+    "active": "Aktivi",
+    "executions7d": "Izpildes (7d)",
+    "successRate": "Veiksmibas raditajs"
+  },
+  "filter": {
+    "searchPlaceholder": "Meklet noteikumus...",
+    "eventType": "Notikuma tips",
+    "allEvents": "Visi notikumi",
+    "allStatus": "Visi statusi",
+    "enabled": "Iespejots",
+    "disabled": "Atspejots",
+    "sortBy": "Kartot pec",
+    "priority": "Prioritate",
+    "name": "Nosaukums",
+    "lastFired": "Pedejo reizi aktivizets",
+    "status": "Statuss",
+    "clear": "Notirit",
+    "showing": "Rada {{filtered}} no {{total}} noteikumiem"
+  },
+  "bulk": {
+    "selected": "{{count}} noteikums izveets",
+    "selected_other": "{{count}} noteikumi izveciti",
+    "enable": "Iespejot",
+    "disable": "Atspejot",
+    "delete": "Dzest",
+    "clear": "Notirit"
+  },
+  "empty": {
+    "title": "Sakiet ar automatizaciju",
+    "description": "Izvelieties veidni atram sakumam vai izveidojiet noteikumu no nulles.",
+    "createFromScratch": "Izveidot no nulles"
+  },
+  "noResults": {
+    "title": "Nav atbilstosu noteikumu",
+    "description": "Meginiet pielgot meklesanu vai filtrus, lai atrastu mekleto."
+  },
+  "templates": {
+    "welcomeMessage": "Sveicinasanas zinojums",
+    "welcomeMessageDesc": "Apsveiciiet jaunos dalibgniekus ar pielgotu zinojumu kanala",
+    "autoRole": "Automatiska loma",
+    "autoRoleDesc": "Automatiski piesskiriet lomu, kad dalibnieks pievienojas",
+    "logDeleted": "Registret dzestas zinias",
+    "logDeletedDesc": "Sutit informaciju par dzestam zinam zurnala kanala",
+    "boostThankYou": "Paldies par pastiprinajumu",
+    "boostThankYouDesc": "Sutit privatu paldies zinojumu lietotajiem, kuri pastiprina serveri",
+    "banLogger": "Aizliegumu registrators",
+    "banLoggerDesc": "Registret aizliegumu notikumus moderacijas kanala",
+    "autoThread": "Automatisks pavediens",
+    "autoThreadDesc": "Automatiski izveidot pavedienu, kad tiek nosutita zina"
+  },
+  "deleteDialog": {
+    "title": "Dzest noteikumu",
+    "description": "Vai tiessam velaties dzest \"{{name}}\"? So darbibu nevar atsaukt.",
+    "confirm": "Dzest"
+  },
+  "bulkDeleteDialog": {
+    "title": "Dzest izveletos noteikumus",
+    "description": "Vai tiessam velaties dzest {{count}} noteikumu? So darbibu nevar atsaukt.",
+    "description_other": "Vai tiessam velaties dzest {{count}} noteikumus? So darbibu nevar atsaukt.",
+    "confirm": "Dzest visus"
+  },
+  "toast": {
+    "deleted": "Noteikums dzests",
+    "deleteFailed": "Neizdevas dzest noteikumu",
+    "enabled": "Noteikums iespejots",
+    "disabled": "Noteikums atspejots",
+    "toggleFailed": "Neizdevas parlikt noteikumu",
+    "duplicated": "Noteikums dublicets",
+    "duplicateFailed": "Neizdevas dublicet noteikumu",
+    "bulkEnabled": "{{count}} noteikumi iespejoti",
+    "bulkDisabled": "{{count}} noteikumi atspejoti",
+    "bulkEnableFailed": "Neizdevas iespejot noteikumus",
+    "bulkDisableFailed": "Neizdevas atspejot noteikumus",
+    "bulkDeleted": "{{count}} noteikumi dzesti",
+    "bulkDeleteFailed": "Neizdevas dzest noteikumus"
+  }
+}

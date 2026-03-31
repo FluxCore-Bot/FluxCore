@@ -1,0 +1,12 @@
+{
+  "title": "Ikuspegi orokorra",
+  "subtitle": "Monitorizatu zure automatizazio-errendimendua eta jarduera begirada batez.",
+  "stats": {
+    "actionRules": "Ekintza-arauak",
+    "activeNow": "Orain aktiboak",
+    "executions": "Exekuzioak",
+    "successRate": "Arrakasta-tasa"
+  },
+  "errorsInLast24h": "Errore {{count}} azken 24 orduetan",
+  "errorsInLast24h_other": "{{count}} errore azken 24 orduetan"
+}

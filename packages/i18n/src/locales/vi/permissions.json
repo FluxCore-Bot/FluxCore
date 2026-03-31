@@ -1,0 +1,118 @@
+{
+  "title": "Vai Trò & Quyền Hạn",
+  "subtitle": "Kiểm soát ai có thể truy cập và quản lý từng mô-đun bảng điều khiển.",
+  "actions": {
+    "createRole": "Tạo Vai Trò"
+  },
+  "permissionSystem": {
+    "title": "Hệ Thống Quyền Hạn",
+    "active": "Đang Hoạt Động — quản trị viên bị giới hạn bởi quyền hạn được gán.",
+    "inactive": "Không Hoạt Động — tất cả quản trị viên có MANAGE_GUILD đều có toàn quyền truy cập.",
+    "enabledToast": "Hệ thống quyền hạn đã được bật",
+    "disabledToast": "Hệ thống quyền hạn đã tắt — tất cả quản trị viên có toàn quyền truy cập"
+  },
+  "warning": {
+    "disabled": "Hệ thống quyền hạn đang tắt. Tất cả quản trị viên bảng điều khiển hiện có toàn quyền truy cập. Bật nó ở trên để áp dụng quyền hạn chi tiết."
+  },
+  "tabs": {
+    "roles": "Vai Trò",
+    "auditLog": "Nhật Ký Kiểm Toán"
+  },
+  "roleList": {
+    "title": "Vai Trò Bảng Điều Khiển",
+    "empty": "Chưa có vai trò nào được tạo.",
+    "selectHint": "Chọn một vai trò để chỉnh sửa, hoặc tạo mới.",
+    "default": "Mặc Định",
+    "name": "Tên",
+    "members": "Thành Viên",
+    "permissions": "Quyền Hạn",
+    "edit": "Chỉnh Sửa",
+    "delete": "Xóa"
+  },
+  "presets": {
+    "title": "Thêm Nhanh Từ Mẫu",
+    "createdToast": "Đã tạo vai trò \"{{name}}\""
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} thành viên",
+    "memberCount_plural": "{{count}} thành viên",
+    "name": "Tên Vai Trò",
+    "color": "Màu Sắc",
+    "defaultRole": "Vai trò mặc định",
+    "permissions": "Quyền Hạn",
+    "allBadge": "Tất Cả",
+    "discordRoles": "Vai Trò Discord"
+  },
+  "roleForm": {
+    "name": "Tên Vai Trò",
+    "discordRoles": "Vai Trò Discord",
+    "permissions": "Quyền Hạn",
+    "create": "Tạo Vai Trò",
+    "update": "Cập Nhật Vai Trò",
+    "cancel": "Hủy"
+  },
+  "createDialog": {
+    "title": "Tạo Vai Trò Bảng Điều Khiển",
+    "name": "Tên",
+    "namePlaceholder": "vd. Điều Phối Viên",
+    "color": "Màu Sắc"
+  },
+  "permissionCategories": {
+    "actions": "Hành Động & Tự Động Hóa",
+    "music": "Âm Nhạc",
+    "tempvoice": "Kênh Thoại Tạm",
+    "welcome": "Chào Mừng & Tạm Biệt",
+    "moderation": "Kiểm Duyệt",
+    "logging": "Ghi Nhật Ký",
+    "leveling": "Cấp Độ",
+    "roles": "Bảng Vai Trò",
+    "tickets": "Phiếu Hỗ Trợ",
+    "suggestions": "Đề Xuất",
+    "starboard": "Bảng Sao",
+    "giveaways": "Giveaway",
+    "security": "Bảo Mật",
+    "scheduled": "Tin Nhắn Lịch Trình",
+    "commands": "Lệnh Tùy Chỉnh",
+    "settings": "Cài Đặt Máy Chủ"
+  },
+  "audit": {
+    "table": {
+      "user": "Người Dùng",
+      "action": "Hành Động",
+      "target": "Mục Tiêu",
+      "timestamp": "Thời Gian"
+    },
+    "noEntries": "Chưa có mục nhật ký kiểm toán nào."
+  },
+  "pagination": {
+    "previous": "Trước",
+    "next": "Tiếp",
+    "page": "Trang {{current}} / {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Đã tạo vai trò \"{{name}}\"",
+    "roleCreateFailed": "Tạo vai trò thất bại",
+    "roleUpdated": "Đã cập nhật vai trò",
+    "roleUpdateFailed": "Cập nhật vai trò thất bại",
+    "roleDeleted": "Đã xóa vai trò",
+    "roleDeleteFailed": "Xóa vai trò thất bại"
+  },
+  "confirm": {
+    "deleteTitle": "Xóa vai trò \"{{name}}\"?",
+    "deleteMessage": "Điều này sẽ xóa vai trò và hủy gán tất cả thành viên. Hành động này không thể hoàn tác.",
+    "deleteRole": "Bạn có chắc muốn xóa vai trò này không? Thành viên sẽ mất quyền hạn được gán."
+  },
+  "saveButton": {
+    "saving": "Đang lưu...",
+    "save": "Lưu Thay Đổi"
+  },
+  "deleteButton": {
+    "deleting": "Đang xóa...",
+    "delete": "Xóa"
+  },
+  "createButton": {
+    "creating": "Đang tạo...",
+    "create": "Tạo"
+  },
+  "loading": "Đang tải quyền hạn..."
+}

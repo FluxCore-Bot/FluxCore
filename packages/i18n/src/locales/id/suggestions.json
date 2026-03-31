@@ -1,0 +1,67 @@
+{
+  "title": "Saran",
+  "subtitle": "Biarkan anggota mengajukan ide dan memilihnya. Kelola status dan umpan balik.",
+  "stats": {
+    "totalSuggestions": "Total Saran",
+    "systemStatus": "Status Sistem",
+    "channel": {
+      "configured": "Saluran Dikonfigurasi",
+      "notSet": "Saluran Belum Diatur"
+    }
+  },
+  "tabs": {
+    "suggestions": "Saran",
+    "settings": "Pengaturan"
+  },
+  "filter": {
+    "filterByStatus": "Filter berdasarkan Status",
+    "all": "Semua",
+    "pending": "Tertunda",
+    "approved": "Disetujui",
+    "rejected": "Ditolak",
+    "implemented": "Diterapkan",
+    "considered": "Sedang Dipertimbangkan"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Penulis",
+    "content": "Konten",
+    "status": "Status",
+    "votes": "Suara",
+    "date": "Tanggal"
+  },
+  "actions": {
+    "approve": "Setujui",
+    "reject": "Tolak",
+    "implement": "Tandai Diterapkan",
+    "consider": "Pertimbangkan",
+    "delete": "Hapus"
+  },
+  "settings": {
+    "channel": "Saluran Saran",
+    "channelDesc": "Saluran tempat saran diposting untuk pemungutan suara.",
+    "voteEmojis": "Emoji Suara",
+    "voteEmojisDesc": "Emoji yang digunakan untuk reaksi setuju dan tidak setuju.",
+    "autoThread": "Buat Thread Otomatis",
+    "autoThreadDesc": "Buat thread diskusi secara otomatis untuk setiap saran baru.",
+    "dmOnStatusChange": "DM saat Status Berubah",
+    "dmOnStatusChangeDesc": "Beri tahu penulis melalui DM ketika status saran mereka berubah."
+  },
+  "toast": {
+    "approved": "Saran disetujui",
+    "rejected": "Saran ditolak",
+    "implemented": "Saran ditandai sebagai diterapkan",
+    "considered": "Saran ditandai sedang dipertimbangkan",
+    "deleted": "Saran dihapus",
+    "actionFailed": "Gagal memperbarui saran",
+    "settingsSaved": "Pengaturan saran disimpan",
+    "settingsFailed": "Gagal menyimpan pengaturan saran"
+  },
+  "empty": "Belum ada saran.",
+  "loading": "Memuat saran...",
+  "pagination": {
+    "previous": "Sebelumnya",
+    "next": "Berikutnya",
+    "page": "Halaman {{page}} dari {{total}}"
+  }
+}

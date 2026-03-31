@@ -1,0 +1,120 @@
+{
+  "title": "Система за нива",
+  "subtitle": "Конфигурирайте печелене на XP, съобщения за повишаване, награди с роли и множители.",
+  "stats": {
+    "rankedMembers": "Класирани членове",
+    "roleRewards": "Награди с роли",
+    "systemStatus": "Статус на системата",
+    "enabled": "Активна",
+    "disabled": "Неактивна"
+  },
+  "tabs": {
+    "leaderboard": "Класация",
+    "settings": "Настройки",
+    "roleRewards": "Награди с роли",
+    "exclusions": "Изключения",
+    "multipliers": "Множители"
+  },
+  "table": {
+    "rank": "Ранг",
+    "userId": "ID на потребителя",
+    "level": "Ниво",
+    "xp": "XP",
+    "messages": "Съобщения",
+    "voiceTime": "Гласово време"
+  },
+  "settings": {
+    "title": "Настройки за нива",
+    "enabled": "Активирай нивата",
+    "enabledDesc": "Включи или изключи цялата система за нива.",
+    "xpPerMessage": "XP за съобщение",
+    "xpPerMessageDesc": "Базов XP, присъден за съобщение (добавя се произволност от 0-9).",
+    "xpCooldown": "XP изчакване (секунди)",
+    "xpCooldownDesc": "Минимално време между присъждания на XP на потребител.",
+    "voiceXpEnabled": "Гласов XP",
+    "voiceXpEnabledDesc": "Присъждане на XP за времето, прекарано в гласови канали.",
+    "voiceXpPerMinute": "Гласов XP на минута",
+    "voiceXpPerMinuteDesc": "XP, присъден за минута в гласов канал.",
+    "levelUpAnnouncements": "Съобщения за повишаване",
+    "levelUpAnnouncementsDesc": "Обявявайте когато член се повиши в ниво.",
+    "announceDest": "Дестинация на обявлението",
+    "announceDestHint": "Можете също да въведете директно ID на канал в полето по-горе.",
+    "announceDestSameChannel": "Същият канал",
+    "announceDestDM": "Лично съобщение",
+    "announceMessage": "Съобщение за обявяване",
+    "announceMessagePlaceholder": "{user} достигна **Ниво {level}**!",
+    "announceMessageVars": "Променливи: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Награди с роли",
+    "description": "Автоматично присвоявайте роли, когато членовете достигнат определени нива.",
+    "addReward": "Добави награда",
+    "addRewardTitle": "Добави награда с роля",
+    "level": "Ниво",
+    "levelPrefix": "Ниво {{level}}",
+    "roleId": "ID на ролята",
+    "levelPlaceholder": "напр. 5",
+    "rolePlaceholder": "напр. 123456789",
+    "removeReward": "Премахни",
+    "noRewards": "Няма конфигурирани награди с роли."
+  },
+  "exclusions": {
+    "title": "XP изключения",
+    "description": "Канали и роли, които не печелят XP.",
+    "noXpChannels": "Канали без XP (ID-та, разделени със запетаи)",
+    "noXpChannelsPlaceholder": "напр. 123456789, 987654321",
+    "noXpRoles": "Роли без XP (ID-та, разделени със запетаи)",
+    "noXpRolesPlaceholder": "напр. 123456789, 987654321",
+    "save": "Запази изключенията"
+  },
+  "multipliers": {
+    "title": "XP множители",
+    "description": "Задайте XP множители за канал или роля. Множител от 2 удвоява спечеления XP.",
+    "channelMultipliers": "Множители за канали",
+    "roleMultipliers": "Множители за роли",
+    "channelId": "ID на канала",
+    "roleId": "ID на ролята",
+    "multiplier": "Множител",
+    "type": "Тип",
+    "typeChannel": "Канал",
+    "typeRole": "Роля",
+    "id": "ID",
+    "idPlaceholder": "ID на канал или роля",
+    "value": "Множител",
+    "valuePlaceholder": "напр. 2",
+    "add": "Добави множител",
+    "addTitle": "Добави множител",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Няма конфигурирани XP множители."
+  },
+  "pagination": {
+    "previous": "Предишна",
+    "next": "Следваща",
+    "pageInfo": "Страница {{page}} от {{totalPages}} ({{total}} общо)"
+  },
+  "loading": "Зареждане на класацията...",
+  "loadingGeneric": "Зареждане...",
+  "emptyLeaderboard": "Все още никой член не е спечелил XP.",
+  "toast": {
+    "saved": "Настройките за нива са запазени",
+    "saveFailed": "Неуспешно актуализиране на настройката",
+    "rewardAdded": "Наградата е добавена",
+    "rewardAddFailed": "Неуспешно добавяне на награда",
+    "rewardRemoved": "Наградата е премахната",
+    "rewardRemoveFailed": "Неуспешно премахване на награда",
+    "multiplierAdded": "Множителят е добавен",
+    "multiplierAddFailed": "Неуспешно добавяне на множител",
+    "multiplierRemoved": "Множителят е премахнат",
+    "multiplierRemoveFailed": "Неуспешно премахване на множител",
+    "exclusionUpdated": "Изключенията са запазени",
+    "exclusionFailed": "Неуспешно запазване на изключенията",
+    "levelValidation": "Нивото трябва да е между 1 и 100",
+    "roleIdRequired": "ID на ролята е задължително",
+    "multiplierIdRequired": "ID и стойност на множителя са задължителни",
+    "multiplierRange": "Множителят трябва да е между 0 и 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}ч {{minutes}}мин",
+    "voiceTimeMinutesOnly": "{{minutes}}мин"
+  }
+}

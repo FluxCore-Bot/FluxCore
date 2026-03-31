@@ -1,0 +1,9 @@
+{
+  "title": "Iyong mga Server",
+  "subtitle": "Pumili ng server upang pamahalaan at i-configure.",
+  "loading": "Naglo-load ng mga server...",
+  "empty": {
+    "title": "Walang nahanap na mga server",
+    "description": "Siguraduhing naidagdag na ang bot sa isang server kung saan mayroon kang pahintulot na Pamahalaan ang Server."
+  }
+}

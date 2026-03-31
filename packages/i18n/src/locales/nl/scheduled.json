@@ -1,0 +1,86 @@
+{
+  "title": "Geplande berichten",
+  "subtitle": "Maak terugkerende auto-geplaatste berichten aan op configureerbare schema's.",
+  "stats": {
+    "totalMessages": "Totaal berichten",
+    "active": "Actief",
+    "inactive": "Inactief"
+  },
+  "table": {
+    "name": "Naam",
+    "channel": "Kanaal",
+    "schedule": "Schema",
+    "nextRun": "Volgende uitvoering",
+    "status": "Status"
+  },
+  "dialog": {
+    "editTitle": "Gepland bericht bewerken",
+    "createTitle": "Nieuw gepland bericht"
+  },
+  "form": {
+    "name": "Naam",
+    "channel": "Kanaal",
+    "schedulePreset": "Schemavoorinstelling",
+    "cronExpression": "Cron-expressie",
+    "timezone": "Tijdzone",
+    "messageContent": "Berichtinhoud",
+    "text": "Tekst",
+    "embed": "Embed",
+    "enabled": "Ingeschakeld",
+    "enabledDesc": "Of dit geplande bericht actief is."
+  },
+  "cronPresets": {
+    "everyHour": "Elk uur",
+    "every6Hours": "Elke 6 uur",
+    "daily9am": "Dagelijks om 9:00",
+    "dailyMidnight": "Dagelijks om middernacht",
+    "weeklyMonday": "Wekelijks op maandag",
+    "monthly1st": "Maandelijks op de 1e",
+    "custom": "Aangepast"
+  },
+  "embed": {
+    "title": "Titel",
+    "description": "Beschrijving",
+    "color": "Kleur (hex)",
+    "footer": "Voettekst",
+    "thumbnail": "Miniatuur-URL",
+    "image": "Afbeeldings-URL"
+  },
+  "toast": {
+    "created": "Gepland bericht aangemaakt",
+    "createFailed": "Gepland bericht aanmaken mislukt",
+    "updated": "Gepland bericht bijgewerkt",
+    "updateFailed": "Gepland bericht bijwerken mislukt",
+    "deleted": "Gepland bericht verwijderd",
+    "deleteFailed": "Gepland bericht verwijderen mislukt",
+    "testSent": "Testbericht verzonden",
+    "testFailed": "Testbericht versturen mislukt"
+  },
+  "empty": {
+    "title": "Nog geen geplande berichten",
+    "description": "Maak een gepland bericht aan om automatisch inhoud op terugkerende basis te plaatsen.",
+    "createButton": "Bericht aanmaken"
+  },
+  "pagination": {
+    "previous": "Vorige",
+    "next": "Volgende",
+    "page": "Pagina {{page}} van {{total}}"
+  },
+  "actions": {
+    "newMessage": "Nieuw bericht",
+    "testSend": "Testverzending",
+    "edit": "Bewerken",
+    "delete": "Verwijderen",
+    "save": "Opslaan",
+    "cancel": "Annuleren"
+  },
+  "validation": {
+    "nameRequired": "Berichtnaam is verplicht",
+    "channelRequired": "Kanaal is verplicht"
+  },
+  "cronPreview": {
+    "nextRuns": "Volgende uitvoeringen"
+  },
+  "characters": "{{count}}/2000 tekens",
+  "never": "Nooit"
+}

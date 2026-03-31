@@ -1,0 +1,9 @@
+{
+  "title": "Vos serveurs",
+  "subtitle": "Choisissez un serveur a gerer et configurer.",
+  "loading": "Chargement des serveurs...",
+  "empty": {
+    "title": "Aucun serveur trouve",
+    "description": "Assurez-vous que le bot est ajoute a un serveur ou vous avez la permission Gerer le serveur."
+  }
+}

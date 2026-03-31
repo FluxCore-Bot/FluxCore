@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "公开测试中",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "一站式",
+    "titleLine2": "Discord 机器人框架",
+    "subtitle": "几分钟内部署专业级 Discord 服务。模块化、自托管，为追求更多的社区而构建。"
+  },
+  "cta": {
+    "addToServer": "添加到服务器",
+    "openDashboard": "打开仪表盘",
+    "exploreFeatures": "探索功能"
+  },
+  "stats": {
+    "servers": "服务器",
+    "latency": "延迟",
+    "uptime": "在线率",
+    "modules": "模块",
+    "serversValue": "1,000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99.9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "功能",
+    "title": "您的服务器所需的一切",
+    "subtitle": "为追求可靠性、灵活性和控制力的社区而设计的模块化工具包。",
+    "automation": {
+      "title": "自动化规则",
+      "description": "无需代码即可创建复杂的事件驱动工作流。支持 23 种事件类型和 10 种动作类型的触发器。"
+    },
+    "music": {
+      "title": "音乐系统",
+      "description": "多平台支持的高保真音频流。队列管理、DJ 控制和曲库模式。"
+    },
+    "tempVoice": {
+      "title": "临时语音",
+      "description": "动态语音频道管理。自定义命名模板、权限设置和自动清理。"
+    },
+    "logs": {
+      "title": "活动日志",
+      "description": "所有自动化执行的完整审计跟踪。通过详细日志搜索、筛选和调试。"
+    },
+    "webhooks": {
+      "title": "Webhook 和 API",
+      "description": "通过 HTTP Webhook 向外部服务发送数据。自定义头部、正文模板和变量插值。"
+    },
+    "dashboard": {
+      "title": "实时仪表盘",
+      "description": "通过精美的 Web 仪表盘管理一切。分析、配置和监控集于一处。"
+    }
+  },
+  "ctaSection": {
+    "title": "准备好升级您的社区了吗？",
+    "subtitle": "零配置，几分钟内即可开始。自托管、开源，完全免费。"
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "© {{year}} FluxCore Technologies. All rights reserved.",
+    "links": {
+      "documentation": "文档",
+      "support": "支持",
+      "privacy": "隐私政策",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

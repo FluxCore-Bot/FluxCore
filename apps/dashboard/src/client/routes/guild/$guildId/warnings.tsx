@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams } from "@tanstack/react-router";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 import { ApiError } from "../../../lib/client";
 import { PageHeader } from "../../../components/PageHeader";
 import {
@@ -38,6 +39,7 @@ import { Icon } from "../../../components/Icon";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 
 export function WarningsPage() {
+  const { t } = useTranslation("warnings");
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const [userFilter, setUserFilter] = useState("");
   const [page, setPage] = useState(1);
@@ -69,31 +71,31 @@ export function WarningsPage() {
 
   function handleDeleteWarning(id: number) {
     deleteWarning.mutate(id, {
-      onSuccess: () => toast.success("Warning removed"),
+      onSuccess: () => toast.success(t("toast.warningRemoved")),
       onError: (err) =>
-        toast.error(err instanceof ApiError ? err.message : "Failed to delete warning"),
+        toast.error(err instanceof ApiError ? err.message : t("toast.warningsFailed")),
     });
   }
 
   function handleClearUserWarnings() {
     if (!userFilter) {
-      toast.error("Enter a user ID to clear all warnings for that user");
+      toast.error(t("toast.enterUserId"));
       return;
     }
     clearUserWarnings.mutate(userFilter, {
       onSuccess: () => {
-        toast.success("All warnings cleared for user");
+        toast.success(t("toast.allCleared"));
         setUserFilter("");
       },
       onError: (err) =>
-        toast.error(err instanceof ApiError ? err.message : "Failed to clear warnings"),
+        toast.error(err instanceof ApiError ? err.message : t("toast.clearFailed")),
     });
   }
 
   function handleAddPunishment() {
     const threshold = parseInt(newThreshold, 10);
     if (!Number.isFinite(threshold) || threshold < 1) {
-      toast.error("Threshold must be a positive number");
+      toast.error(t("toast.thresholdInvalid"));
       return;
     }
     const duration = newAction === "timeout" && newDuration
@@ -104,21 +106,21 @@ export function WarningsPage() {
       { threshold, action: newAction, duration },
       {
         onSuccess: () => {
-          toast.success("Punishment threshold added");
+          toast.success(t("toast.thresholdAdded"));
           setNewThreshold("");
           setNewDuration("");
         },
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to add punishment"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.thresholdFailed")),
       },
     );
   }
 
   function handleRemovePunishment(id: number) {
     removePunishment.mutate(id, {
-      onSuccess: () => toast.success("Punishment removed"),
+      onSuccess: () => toast.success(t("toast.thresholdRemoved")),
       onError: (err) =>
-        toast.error(err instanceof ApiError ? err.message : "Failed to remove punishment"),
+        toast.error(err instanceof ApiError ? err.message : t("toast.removeFailed")),
     });
   }
 
@@ -127,7 +129,7 @@ export function WarningsPage() {
       { [key]: value },
       {
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to update setting"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.settingFailed")),
       },
     );
   }
@@ -139,7 +141,7 @@ export function WarningsPage() {
       { maxWarnings: num },
       {
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to update setting"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.settingFailed")),
       },
     );
   }
@@ -147,37 +149,37 @@ export function WarningsPage() {
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Warnings"
-        subtitle="Track and manage member warnings with automatic escalation."
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Total Warnings</p>
+          <p className="section-label text-text-muted">{t("stats.totalWarnings")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {warningsLoading ? "..." : warningsData?.total ?? 0}
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Escalation Rules</p>
+          <p className="section-label text-text-muted">{t("stats.escalationRules")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {punishmentsLoading ? "..." : punishments?.length ?? 0}
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">DM on Warn</p>
+          <p className="section-label text-text-muted">{t("stats.dmOnWarn")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
-            {settingsLoading ? "..." : settings?.dmOnWarn ? "Enabled" : "Disabled"}
+            {settingsLoading ? "..." : settings?.dmOnWarn ? t("common:labels.enabled") : t("common:labels.disabled")}
           </p>
         </Card>
       </div>
 
       <Tabs defaultValue="warnings">
         <TabsList>
-          <TabsTrigger value="warnings">Warning Log</TabsTrigger>
-          <TabsTrigger value="escalation">Escalation</TabsTrigger>
-          <TabsTrigger value="settings">Settings</TabsTrigger>
+          <TabsTrigger value="warnings">{t("tabs.warnings")}</TabsTrigger>
+          <TabsTrigger value="escalation">{t("tabs.escalation")}</TabsTrigger>
+          <TabsTrigger value="settings">{t("tabs.settings")}</TabsTrigger>
         </TabsList>
 
         {/* Warnings Table */}
@@ -186,7 +188,7 @@ export function WarningsPage() {
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-2">
                 <Input
-                  placeholder="Filter by User ID..."
+                  placeholder={t("filter.userPlaceholder")}
                   value={userFilter}
                   onChange={(e) => {
                     setUserFilter(e.target.value);
@@ -201,24 +203,24 @@ export function WarningsPage() {
                     onClick={handleClearUserWarnings}
                     disabled={clearUserWarnings.isPending}
                   >
-                    Clear All
+                    {t("filter.clearAll")}
                   </Button>
                 )}
               </div>
             </div>
 
             {warningsLoading ? (
-              <p className="text-text-muted">Loading warnings...</p>
+              <p className="text-text-muted">{t("loading")}</p>
             ) : warningsData && warningsData.warnings.length > 0 ? (
               <>
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead className="w-16">ID</TableHead>
-                      <TableHead>User</TableHead>
-                      <TableHead>Moderator</TableHead>
-                      <TableHead>Reason</TableHead>
-                      <TableHead>Date</TableHead>
+                      <TableHead className="w-16">{t("table.id")}</TableHead>
+                      <TableHead>{t("table.user")}</TableHead>
+                      <TableHead>{t("table.moderator")}</TableHead>
+                      <TableHead>{t("table.reason")}</TableHead>
+                      <TableHead>{t("table.date")}</TableHead>
                       <TableHead className="w-16" />
                     </TableRow>
                   </TableHeader>
@@ -251,7 +253,7 @@ export function WarningsPage() {
                 {totalPages > 1 && (
                   <div className="mt-4 flex items-center justify-between">
                     <p className="text-sm text-text-muted">
-                      Page {page} of {totalPages} ({warningsData.total} total)
+                      {t("pagination.page", { page, total: totalPages, count: warningsData.total })}
                     </p>
                     <div className="flex gap-2">
                       <Button
@@ -260,7 +262,7 @@ export function WarningsPage() {
                         onClick={() => setPage((p) => Math.max(1, p - 1))}
                         disabled={page <= 1}
                       >
-                        Previous
+                        {t("pagination.previous")}
                       </Button>
                       <Button
                         variant="outline"
@@ -268,14 +270,14 @@ export function WarningsPage() {
                         onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                         disabled={page >= totalPages}
                       >
-                        Next
+                        {t("pagination.next")}
                       </Button>
                     </div>
                   </div>
                 )}
               </>
             ) : (
-              <p className="text-text-muted">No warnings found.</p>
+              <p className="text-text-muted">{t("noWarnings")}</p>
             )}
           </Card>
         </TabsContent>
@@ -283,32 +285,32 @@ export function WarningsPage() {
         {/* Escalation Config */}
         <TabsContent value="escalation">
           <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">Punishment Escalation</h3>
+            <h3 className="mb-4 text-lg font-semibold">{t("escalation.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
-              Configure automatic actions when a user reaches a certain number of warnings.
+              {t("escalation.description")}
             </p>
 
             {punishmentsLoading ? (
-              <p className="text-text-muted">Loading...</p>
+              <p className="text-text-muted">{t("common:actions.loading")}</p>
             ) : punishments && punishments.length > 0 ? (
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Threshold</TableHead>
-                    <TableHead>Action</TableHead>
-                    <TableHead>Duration</TableHead>
+                    <TableHead>{t("escalation.threshold")}</TableHead>
+                    <TableHead>{t("escalation.action")}</TableHead>
+                    <TableHead>{t("escalation.duration")}</TableHead>
                     <TableHead className="w-16" />
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {punishments.map((p) => (
                     <TableRow key={p.id}>
-                      <TableCell>{p.threshold} warnings</TableCell>
+                      <TableCell>{t("escalation.warnings", { count: p.threshold })}</TableCell>
                       <TableCell className="capitalize">{p.action}</TableCell>
                       <TableCell>
                         {p.action === "timeout" && p.duration
-                          ? `${Math.floor(p.duration / 60)} min`
-                          : "—"}
+                          ? t("escalation.min", { count: Math.floor(p.duration / 60) })
+                          : "\u2014"}
                       </TableCell>
                       <TableCell>
                         <Button
@@ -325,46 +327,46 @@ export function WarningsPage() {
                 </TableBody>
               </Table>
             ) : (
-              <p className="mb-4 text-text-muted">No escalation rules configured.</p>
+              <p className="mb-4 text-text-muted">{t("escalation.noRules")}</p>
             )}
 
             <Separator className="my-6" />
 
-            <h4 className="mb-3 text-sm font-semibold">Add Escalation Rule</h4>
+            <h4 className="mb-3 text-sm font-semibold">{t("escalation.addRule")}</h4>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
               <div>
-                <Label htmlFor="threshold">Threshold</Label>
+                <Label htmlFor="threshold">{t("escalation.threshold")}</Label>
                 <Input
                   id="threshold"
                   type="number"
                   min={1}
-                  placeholder="e.g. 3"
+                  placeholder={t("escalation.thresholdPlaceholder")}
                   value={newThreshold}
                   onChange={(e) => setNewThreshold(e.target.value)}
                   className="w-24"
                 />
               </div>
               <div>
-                <Label htmlFor="action">Action</Label>
+                <Label htmlFor="action">{t("escalation.action")}</Label>
                 <Select value={newAction} onValueChange={setNewAction}>
                   <SelectTrigger className="w-32">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="timeout">Timeout</SelectItem>
-                    <SelectItem value="kick">Kick</SelectItem>
-                    <SelectItem value="ban">Ban</SelectItem>
+                    <SelectItem value="timeout">{t("escalation.timeout")}</SelectItem>
+                    <SelectItem value="kick">{t("escalation.kick")}</SelectItem>
+                    <SelectItem value="ban">{t("escalation.ban")}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               {newAction === "timeout" && (
                 <div>
-                  <Label htmlFor="duration">Duration (seconds)</Label>
+                  <Label htmlFor="duration">{t("escalation.durationLabel")}</Label>
                   <Input
                     id="duration"
                     type="number"
                     min={1}
-                    placeholder="e.g. 3600"
+                    placeholder={t("escalation.durationPlaceholder")}
                     value={newDuration}
                     onChange={(e) => setNewDuration(e.target.value)}
                     className="w-32"
@@ -375,7 +377,7 @@ export function WarningsPage() {
                 onClick={handleAddPunishment}
                 disabled={addPunishment.isPending}
               >
-                Add Rule
+                {t("escalation.addButton")}
               </Button>
             </div>
           </Card>
@@ -384,17 +386,17 @@ export function WarningsPage() {
         {/* Settings */}
         <TabsContent value="settings">
           <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">Warning Settings</h3>
+            <h3 className="mb-4 text-lg font-semibold">{t("settings.title")}</h3>
 
             {settingsLoading ? (
-              <p className="text-text-muted">Loading...</p>
+              <p className="text-text-muted">{t("common:actions.loading")}</p>
             ) : settings ? (
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">DM on Warn</p>
+                    <p className="font-medium">{t("settings.dmOnWarn")}</p>
                     <p className="text-sm text-text-muted">
-                      Send a direct message to the user when they receive a warning.
+                      {t("settings.dmOnWarnDesc")}
                     </p>
                   </div>
                   <Switch
@@ -407,9 +409,9 @@ export function WarningsPage() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">Require Reason</p>
+                    <p className="font-medium">{t("settings.requireReason")}</p>
                     <p className="text-sm text-text-muted">
-                      Moderators must provide a reason when issuing a warning.
+                      {t("settings.requireReasonDesc")}
                     </p>
                   </div>
                   <Switch
@@ -422,9 +424,9 @@ export function WarningsPage() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">Max Warnings</p>
+                    <p className="font-medium">{t("settings.maxWarnings")}</p>
                     <p className="text-sm text-text-muted">
-                      Maximum warnings per user (0 = unlimited).
+                      {t("settings.maxWarningsDesc")}
                     </p>
                   </div>
                   <Input

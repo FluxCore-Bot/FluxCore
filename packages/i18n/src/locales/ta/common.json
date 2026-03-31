@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore இயந்திரம்",
+    "dashboard": "FluxCore டாஷ்போர்டு"
+  },
+  "status": {
+    "online": "ஆன்லைன்",
+    "offline": "ஆஃப்லைன்",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "கண்ணோட்டம்",
+    "automation": "தன்னியக்கம்",
+    "music": "இசை",
+    "tempvoice": "தற்காலிக குரல்",
+    "welcome": "வரவேற்பு",
+    "moderation": "மதிப்பீடு",
+    "warnings": "எச்சரிக்கைகள்",
+    "rolePanels": "பங்கு பேனல்கள்",
+    "leveling": "நிலை உயர்வு",
+    "scheduled": "திட்டமிடப்பட்டது",
+    "commands": "கட்டளைகள்",
+    "security": "பாதுகாப்பு",
+    "tickets": "டிக்கெட்டுகள்",
+    "giveaways": "பரிசு வழங்கல்",
+    "suggestions": "பரிந்துரைகள்",
+    "starboard": "ஸ்டார்போர்டு",
+    "logs": "பதிவுகள்",
+    "permissions": "அனுமதிகள்",
+    "settings": "அமைப்புகள்"
+  },
+  "actions": {
+    "save": "சேமி",
+    "cancel": "ரத்து செய்",
+    "delete": "நீக்கு",
+    "edit": "திருத்து",
+    "create": "உருவாக்கு",
+    "add": "சேர்",
+    "remove": "நீக்கு",
+    "confirm": "உறுதிப்படுத்து",
+    "close": "மூடு",
+    "back": "பின்",
+    "next": "அடுத்து",
+    "search": "தேடு",
+    "filter": "வடிகட்டு",
+    "refresh": "புதுப்பி",
+    "reset": "மீட்டமை",
+    "enable": "செயல்படுத்து",
+    "disable": "முடக்கு",
+    "copy": "நகலெடு",
+    "export": "ஏற்றுமதி",
+    "import": "இறக்குமதி",
+    "submit": "சமர்ப்பி",
+    "loading": "ஏற்றுகிறது...",
+    "retry": "மீண்டும் முயற்சி"
+  },
+  "labels": {
+    "enabled": "செயலில்",
+    "disabled": "முடக்கப்பட்டது",
+    "active": "செயலில்",
+    "inactive": "செயலற்றது",
+    "none": "எதுவுமில்லை",
+    "all": "அனைத்தும்",
+    "custom": "தனிப்பயன்",
+    "default": "இயல்புநிலை",
+    "required": "தேவை",
+    "optional": "விருப்பத்தேர்வு",
+    "name": "பெயர்",
+    "description": "விளக்கம்",
+    "type": "வகை",
+    "status": "நிலை",
+    "channel": "சேனல்",
+    "role": "பங்கு",
+    "member": "உறுப்பினர்",
+    "duration": "காலம்",
+    "reason": "காரணம்",
+    "language": "மொழி"
+  },
+  "header": {
+    "notifications": "அறிவிப்புகள்",
+    "settings": "அமைப்புகள்",
+    "logout": "வெளியேறு",
+    "toggleSidebar": "பக்கப்பட்டி மாற்று",
+    "refreshData": "Discord தரவை புதுப்பி"
+  },
+  "sidebar": {
+    "closeSidebar": "பக்கப்பட்டி மூடு",
+    "addToServer": "சேவையகத்தில் சேர்",
+    "docs": "ஆவணங்கள்",
+    "support": "ஆதரவு",
+    "backToServers": "சேவையகங்களுக்குத் திரும்பு"
+  },
+  "empty": {
+    "noData": "தரவு எதுவும் இல்லை",
+    "noResults": "முடிவுகள் எதுவும் கிடைக்கவில்லை",
+    "noItems": "இதுவரை உருப்படிகள் எதுவுமில்லை"
+  },
+  "time": {
+    "seconds": "வினாடிகள்",
+    "minutes": "நிமிடங்கள்",
+    "hours": "மணி நேரம்",
+    "days": "நாட்கள்",
+    "ago": "{{time}} முன்",
+    "in": "{{time}} இல்"
+  },
+  "confirm": {
+    "title": "நீங்கள் நிச்சயமா?",
+    "deleteTitle": "நீக்குதலை உறுதிப்படுத்து",
+    "deleteMessage": "இந்த செயலை மீட்டெடுக்க முடியாது.",
+    "unsavedChanges": "சேமிக்கப்படாத மாற்றங்கள் உள்ளன. நீங்கள் வெளியேற நிச்சயமா?"
+  },
+  "accessibility": {
+    "skipToContent": "முதன்மை உள்ளடக்கத்திற்குச் செல்",
+    "loading": "உள்ளடக்கம் ஏற்றப்படுகிறது",
+    "loaded": "உள்ளடக்கம் ஏற்றப்பட்டது",
+    "error": "பிழை ஏற்பட்டது",
+    "menuOpen": "மெனு திறந்துள்ளது",
+    "menuClosed": "மெனு மூடப்பட்டுள்ளது"
+  }
+}

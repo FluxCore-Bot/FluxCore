@@ -1,0 +1,112 @@
+{
+  "title": "پنل‌های نقش",
+  "subtitle": "ایجاد پنل‌های نقش خود‌اختصاصی با استفاده از دکمه‌ها، منوهای کشویی یا واکنش‌ها.",
+  "stats": {
+    "totalPanels": "کل پنل‌ها",
+    "deployed": "مستقر شده",
+    "totalRoles": "کل نقش‌ها"
+  },
+  "tabs": {
+    "panels": "پنل‌ها",
+    "preview": "پیش‌نمایش"
+  },
+  "table": {
+    "name": "نام",
+    "type": "نوع",
+    "mode": "حالت",
+    "roles": "نقش‌ها",
+    "status": "وضعیت"
+  },
+  "panelTypes": {
+    "reaction": "واکنش",
+    "button": "دکمه",
+    "dropdown": "منوی کشویی"
+  },
+  "panelModes": {
+    "toggle": "تغییر",
+    "unique": "یکتا",
+    "verify": "تأیید"
+  },
+  "panelModeDescriptions": {
+    "toggle": "تغییر (افزودن/حذف)",
+    "unique": "یکتا (یکی در هر بار)",
+    "verify": "تأیید (فقط افزودن)"
+  },
+  "status": {
+    "deployed": "مستقر شده",
+    "draft": "پیش‌نویس"
+  },
+  "dialog": {
+    "createPanel": "ایجاد پنل",
+    "editPanel": "ویرایش پنل"
+  },
+  "panelList": {
+    "title": "همه پنل‌ها"
+  },
+  "form": {
+    "name": "نام",
+    "namePlaceholder": "مثلاً نقش‌های رنگی",
+    "type": "نوع",
+    "mode": "حالت",
+    "channel": "کانال",
+    "channelPlaceholder": "انتخاب کانال",
+    "minRoles": "حداقل نقش‌ها",
+    "minRolesPlaceholder": "۰",
+    "maxRoles": "حداکثر نقش‌ها",
+    "maxRolesPlaceholder": "همه",
+    "embedSection": "Embed",
+    "embedTitle": "عنوان",
+    "embedTitlePlaceholder": "عنوان پنل (پیش‌فرض نام پنل)",
+    "embedDescription": "توضیحات",
+    "embedDescriptionPlaceholder": "متن توضیحات",
+    "rolesCount": "نقش‌ها ({{count}}/25)",
+    "addRole": "افزودن نقش"
+  },
+  "entry": {
+    "role": "نقش",
+    "rolePlaceholder": "انتخاب نقش",
+    "label": "برچسب",
+    "labelPlaceholder": "برچسب دکمه",
+    "emoji": "ایموجی",
+    "emojiPlaceholder": "مثلاً star",
+    "description": "توضیحات",
+    "descriptionPlaceholder": "توضیحات گزینه",
+    "style": "سبک"
+  },
+  "buttonStyles": {
+    "primary": "اصلی",
+    "secondary": "فرعی",
+    "success": "موفقیت",
+    "danger": "خطر"
+  },
+  "actions": {
+    "create": "ایجاد",
+    "update": "به‌روزرسانی",
+    "cancel": "لغو",
+    "deploy": "استقرار",
+    "delete": "حذف",
+    "addEntry": "افزودن مورد",
+    "removeEntry": "حذف مورد"
+  },
+  "preview": {
+    "title": "پیش‌نمایش زنده",
+    "description": "پیش‌نمایش نحوه نمایش پنل‌ها در Discord.",
+    "selectRoles": "انتخاب نقش‌ها...",
+    "noPreview": "پنلی برای پیش‌نمایش وجود ندارد."
+  },
+  "empty": "هنوز پنل نقشی ایجاد نشده. روی \"ایجاد پنل\" کلیک کنید تا شروع کنید.",
+  "toast": {
+    "created": "پنل ایجاد شد",
+    "createFailed": "ایجاد پنل ناموفق بود",
+    "updated": "پنل به‌روزرسانی شد",
+    "updateFailed": "به‌روزرسانی پنل ناموفق بود",
+    "deleted": "پنل حذف شد",
+    "deleteFailed": "حذف پنل ناموفق بود",
+    "deployed": "پنل نقش در کانال مستقر شد",
+    "deployFailed": "ارسال پنل ناموفق بود",
+    "nameRequired": "نام پنل الزامی است",
+    "channelRequired": "کانال الزامی است",
+    "maxRolesReached": "حداکثر ۲۵ نقش برای هر پنل"
+  },
+  "loading": "در حال بارگذاری پنل‌ها..."
+}

@@ -1,6 +1,6 @@
 import type { FastifyInstance } from "fastify";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
-import { getLogConfig, loadLogConfigs, upsertLogConfig } from "@fluxcore/systems/logging/config";
+import { loadLogConfigs, upsertLogConfig } from "@fluxcore/systems/logging/config";
 import { getLogEntries, cleanOldLogEntries } from "@fluxcore/systems/logging/persistence";
 import { LOG_CATEGORIES, EVENT_TYPES_BY_CATEGORY } from "@fluxcore/systems/logging/constants";
 import type { LogCategory } from "@fluxcore/systems/logging/types";

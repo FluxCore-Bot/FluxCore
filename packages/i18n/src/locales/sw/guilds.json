@@ -1,0 +1,9 @@
+{
+  "title": "Seva Zako",
+  "subtitle": "Chagua seva ya kusimamia na kusanidi.",
+  "loading": "Inapakia seva...",
+  "empty": {
+    "title": "Hakuna seva zilizopatikana",
+    "description": "Hakikisha bot imeongezwa kwenye seva ambayo una ruhusa ya Kusimamia Seva."
+  }
+}

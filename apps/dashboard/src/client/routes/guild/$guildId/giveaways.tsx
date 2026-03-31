@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useParams } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../lib/client";
 import { PageHeader } from "../../../components/PageHeader";
@@ -31,7 +32,6 @@ import {
 } from "../../../components/ui/select";
 import { Separator } from "../../../components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
-import { Icon } from "../../../components/Icon";
 
 function formatTimeRemaining(endsAt: string): string {
   const end = new Date(endsAt).getTime();
@@ -53,6 +53,7 @@ function formatTimeRemaining(endsAt: string): string {
 
 export function GiveawaysPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
+  const { t } = useTranslation("giveaways");
   const [activePage, setActivePage] = useState(1);
   const [pastPage, setPastPage] = useState(1);
 
@@ -90,17 +91,17 @@ export function GiveawaysPage() {
 
   function handleCreate() {
     if (!prize.trim()) {
-      toast.error("Prize is required");
+      toast.error(t("toast.createFailed"));
       return;
     }
     if (!channelId.trim()) {
-      toast.error("Channel ID is required");
+      toast.error(t("toast.createFailed"));
       return;
     }
 
     const dur = parseFloat(durationValue);
     if (!Number.isFinite(dur) || dur <= 0) {
-      toast.error("Duration must be a positive number");
+      toast.error(t("toast.createFailed"));
       return;
     }
 
@@ -114,7 +115,7 @@ export function GiveawaysPage() {
 
     const winners = parseInt(winnersCount, 10);
     if (!Number.isFinite(winners) || winners < 1 || winners > 20) {
-      toast.error("Winners must be between 1 and 20");
+      toast.error(t("toast.createFailed"));
       return;
     }
 
@@ -135,7 +136,7 @@ export function GiveawaysPage() {
       },
       {
         onSuccess: () => {
-          toast.success("Giveaway created");
+          toast.success(t("toast.created"));
           setPrize("");
           setChannelId("");
           setWinnersCount("1");
@@ -143,50 +144,50 @@ export function GiveawaysPage() {
           setRequiredRoleId("");
         },
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to create giveaway"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.createFailed")),
       },
     );
   }
 
   function handleEnd(id: number) {
     endGiveaway.mutate(id, {
-      onSuccess: () => toast.success("Giveaway ended"),
+      onSuccess: () => toast.success(t("toast.ended")),
       onError: (err) =>
-        toast.error(err instanceof ApiError ? err.message : "Failed to end giveaway"),
+        toast.error(err instanceof ApiError ? err.message : t("toast.endFailed")),
     });
   }
 
   function handleReroll(id: number) {
     rerollGiveaway.mutate(id, {
-      onSuccess: () => toast.success("Giveaway rerolled"),
+      onSuccess: () => toast.success(t("toast.rerolled")),
       onError: (err) =>
-        toast.error(err instanceof ApiError ? err.message : "Failed to reroll giveaway"),
+        toast.error(err instanceof ApiError ? err.message : t("toast.rerollFailed")),
     });
   }
 
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Giveaways"
-        subtitle="Create and manage giveaways for your server members."
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Active Giveaways</p>
+          <p className="section-label text-text-muted">{t("stats.activeGiveaways")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {activeLoading ? "..." : activeData?.total ?? 0}
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Past Giveaways</p>
+          <p className="section-label text-text-muted">{t("stats.pastGiveaways")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {pastLoading ? "..." : pastData?.total ?? 0}
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Total Entries</p>
+          <p className="section-label text-text-muted">{t("stats.totalEntries")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {activeLoading
               ? "..."
@@ -200,26 +201,26 @@ export function GiveawaysPage() {
 
       <Tabs defaultValue="active">
         <TabsList>
-          <TabsTrigger value="active">Active</TabsTrigger>
-          <TabsTrigger value="past">Past</TabsTrigger>
-          <TabsTrigger value="create">Create</TabsTrigger>
+          <TabsTrigger value="active">{t("statuses.active")}</TabsTrigger>
+          <TabsTrigger value="past">{t("statuses.ended")}</TabsTrigger>
+          <TabsTrigger value="create">{t("common:actions.create")}</TabsTrigger>
         </TabsList>
 
         {/* Active Giveaways */}
         <TabsContent value="active">
           <Card className="bg-surface p-6">
             {activeLoading ? (
-              <p className="text-text-muted">Loading giveaways...</p>
+              <p className="text-text-muted">{t("loading")}</p>
             ) : activeData && activeData.giveaways.length > 0 ? (
               <>
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead className="w-16">ID</TableHead>
-                      <TableHead>Prize</TableHead>
-                      <TableHead>Winners</TableHead>
-                      <TableHead>Entries</TableHead>
-                      <TableHead>Ends In</TableHead>
+                      <TableHead className="w-16">{t("table.status")}</TableHead>
+                      <TableHead>{t("table.prize")}</TableHead>
+                      <TableHead>{t("table.winners")}</TableHead>
+                      <TableHead>{t("table.entries")}</TableHead>
+                      <TableHead>{t("table.endsIn")}</TableHead>
                       <TableHead className="w-24" />
                     </TableRow>
                   </TableHeader>
@@ -244,7 +245,7 @@ export function GiveawaysPage() {
                             onClick={() => handleEnd(g.id)}
                             disabled={endGiveaway.isPending}
                           >
-                            End
+                            {t("actions.end")}
                           </Button>
                         </TableCell>
                       </TableRow>
@@ -264,7 +265,7 @@ export function GiveawaysPage() {
                         onClick={() => setActivePage((p) => Math.max(1, p - 1))}
                         disabled={activePage <= 1}
                       >
-                        Previous
+                        {t("common:actions.back")}
                       </Button>
                       <Button
                         variant="outline"
@@ -274,14 +275,14 @@ export function GiveawaysPage() {
                         }
                         disabled={activePage >= activeTotalPages}
                       >
-                        Next
+                        {t("common:actions.next")}
                       </Button>
                     </div>
                   </div>
                 )}
               </>
             ) : (
-              <p className="text-text-muted">No active giveaways.</p>
+              <p className="text-text-muted">{t("empty")}</p>
             )}
           </Card>
         </TabsContent>
@@ -290,17 +291,17 @@ export function GiveawaysPage() {
         <TabsContent value="past">
           <Card className="bg-surface p-6">
             {pastLoading ? (
-              <p className="text-text-muted">Loading past giveaways...</p>
+              <p className="text-text-muted">{t("loading")}</p>
             ) : pastData && pastData.giveaways.length > 0 ? (
               <>
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead className="w-16">ID</TableHead>
-                      <TableHead>Prize</TableHead>
-                      <TableHead>Winners</TableHead>
-                      <TableHead>Entries</TableHead>
-                      <TableHead>Ended</TableHead>
+                      <TableHead className="w-16">{t("table.status")}</TableHead>
+                      <TableHead>{t("table.prize")}</TableHead>
+                      <TableHead>{t("table.winners")}</TableHead>
+                      <TableHead>{t("table.entries")}</TableHead>
+                      <TableHead>{t("statuses.ended")}</TableHead>
                       <TableHead className="w-24" />
                     </TableRow>
                   </TableHeader>
@@ -314,7 +315,7 @@ export function GiveawaysPage() {
                         <TableCell>
                           {g.winnerIds.length > 0
                             ? g.winnerIds.map((id) => id.slice(0, 8)).join(", ")
-                            : "None"}
+                            : t("common:labels.none")}
                         </TableCell>
                         <TableCell>{g.entrantIds.length}</TableCell>
                         <TableCell>
@@ -327,7 +328,7 @@ export function GiveawaysPage() {
                             onClick={() => handleReroll(g.id)}
                             disabled={rerollGiveaway.isPending}
                           >
-                            Reroll
+                            {t("actions.reroll")}
                           </Button>
                         </TableCell>
                       </TableRow>
@@ -347,7 +348,7 @@ export function GiveawaysPage() {
                         onClick={() => setPastPage((p) => Math.max(1, p - 1))}
                         disabled={pastPage <= 1}
                       >
-                        Previous
+                        {t("common:actions.back")}
                       </Button>
                       <Button
                         variant="outline"
@@ -357,14 +358,14 @@ export function GiveawaysPage() {
                         }
                         disabled={pastPage >= pastTotalPages}
                       >
-                        Next
+                        {t("common:actions.next")}
                       </Button>
                     </div>
                   </div>
                 )}
               </>
             ) : (
-              <p className="text-text-muted">No past giveaways.</p>
+              <p className="text-text-muted">{t("empty")}</p>
             )}
           </Card>
         </TabsContent>
@@ -372,19 +373,17 @@ export function GiveawaysPage() {
         {/* Create Giveaway */}
         <TabsContent value="create">
           <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">Create Giveaway</h3>
+            <h3 className="mb-4 text-lg font-semibold">{t("actions.create")}</h3>
             <p className="mb-6 text-sm text-text-muted">
-              Note: Giveaways created from the dashboard will need the bot to post the entry
-              message in the channel. Use the <code>/giveaway start</code> command in Discord
-              for full functionality.
+              {t("subtitle")}
             </p>
 
             <div className="space-y-4">
               <div>
-                <Label htmlFor="gw-prize">Prize</Label>
+                <Label htmlFor="gw-prize">{t("form.prize")}</Label>
                 <Input
                   id="gw-prize"
-                  placeholder="e.g. Nitro Classic (1 Month)"
+                  placeholder={t("form.prize")}
                   value={prize}
                   onChange={(e) => setPrize(e.target.value)}
                   maxLength={256}
@@ -392,7 +391,7 @@ export function GiveawaysPage() {
               </div>
 
               <div>
-                <Label htmlFor="gw-channel">Channel ID</Label>
+                <Label htmlFor="gw-channel">{t("form.channel")}</Label>
                 <Input
                   id="gw-channel"
                   placeholder="e.g. 123456789012345678"
@@ -403,7 +402,7 @@ export function GiveawaysPage() {
 
               <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
                 <div>
-                  <Label htmlFor="gw-duration">Duration</Label>
+                  <Label htmlFor="gw-duration">{t("form.duration")}</Label>
                   <Input
                     id="gw-duration"
                     type="number"
@@ -415,23 +414,23 @@ export function GiveawaysPage() {
                   />
                 </div>
                 <div>
-                  <Label>Unit</Label>
+                  <Label>{t("common:labels.type")}</Label>
                   <Select value={durationUnit} onValueChange={setDurationUnit}>
                     <SelectTrigger className="w-32">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="m">Minutes</SelectItem>
-                      <SelectItem value="h">Hours</SelectItem>
-                      <SelectItem value="d">Days</SelectItem>
-                      <SelectItem value="w">Weeks</SelectItem>
+                      <SelectItem value="m">{t("common:time.minutes")}</SelectItem>
+                      <SelectItem value="h">{t("common:time.hours")}</SelectItem>
+                      <SelectItem value="d">{t("common:time.days")}</SelectItem>
+                      <SelectItem value="w">{t("common:time.days")}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
               </div>
 
               <div>
-                <Label htmlFor="gw-winners">Number of Winners</Label>
+                <Label htmlFor="gw-winners">{t("form.winnersCount")}</Label>
                 <Input
                   id="gw-winners"
                   type="number"
@@ -444,7 +443,7 @@ export function GiveawaysPage() {
               </div>
 
               <div>
-                <Label htmlFor="gw-role">Required Role IDs (optional, comma-separated)</Label>
+                <Label htmlFor="gw-role">{t("form.requiredRole")} ({t("common:labels.optional")})</Label>
                 <Input
                   id="gw-role"
                   placeholder="e.g. 123456789012345678"
@@ -459,7 +458,7 @@ export function GiveawaysPage() {
                 onClick={handleCreate}
                 disabled={createGiveaway.isPending}
               >
-                Create Giveaway
+                {t("actions.create")}
               </Button>
             </div>
           </Card>

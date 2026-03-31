@@ -1,0 +1,36 @@
+{
+  "title": "角色面板",
+  "subtitle": "使用按鈕、下拉選單或反應建立自助角色指派面板。",
+  "stats": { "totalPanels": "面板總數", "deployed": "已部署", "totalRoles": "角色總數" },
+  "tabs": { "panels": "面板", "preview": "預覽" },
+  "table": { "name": "名稱", "type": "類型", "mode": "模式", "roles": "角色", "status": "狀態" },
+  "panelTypes": { "reaction": "反應", "button": "按鈕", "dropdown": "下拉選單" },
+  "panelModes": { "toggle": "切換", "unique": "唯一", "verify": "驗證" },
+  "panelModeDescriptions": { "toggle": "切換（新增/移除）", "unique": "唯一（一次一個）", "verify": "驗證（僅新增）" },
+  "status": { "deployed": "已部署", "draft": "草稿" },
+  "dialog": { "createPanel": "建立面板", "editPanel": "編輯面板" },
+  "panelList": { "title": "所有面板" },
+  "form": {
+    "name": "名稱", "namePlaceholder": "例：顏色角色", "type": "類型", "mode": "模式",
+    "channel": "頻道", "channelPlaceholder": "選擇頻道", "minRoles": "最少角色數", "minRolesPlaceholder": "0",
+    "maxRoles": "最多角色數", "maxRolesPlaceholder": "全部", "embedSection": "嵌入", "embedTitle": "標題",
+    "embedTitlePlaceholder": "面板標題（預設為面板名稱）", "embedDescription": "描述",
+    "embedDescriptionPlaceholder": "描述文字", "rolesCount": "角色（{{count}}/25）", "addRole": "新增角色"
+  },
+  "entry": {
+    "role": "角色", "rolePlaceholder": "選擇角色", "label": "標籤", "labelPlaceholder": "按鈕標籤",
+    "emoji": "表情", "emojiPlaceholder": "例：star", "description": "描述",
+    "descriptionPlaceholder": "選項描述", "style": "樣式"
+  },
+  "buttonStyles": { "primary": "主要", "secondary": "次要", "success": "成功", "danger": "危險" },
+  "actions": { "create": "建立", "update": "更新", "cancel": "取消", "deploy": "部署", "delete": "刪除", "addEntry": "新增項目", "removeEntry": "移除項目" },
+  "preview": { "title": "即時預覽", "description": "預覽面板在 Discord 中的顯示效果。", "selectRoles": "選擇角色...", "noPreview": "沒有可預覽的面板。" },
+  "empty": "尚未建立角色面板。點選「建立面板」開始。",
+  "toast": {
+    "created": "面板已建立", "createFailed": "建立面板失敗", "updated": "面板已更新", "updateFailed": "更新面板失敗",
+    "deleted": "面板已刪除", "deleteFailed": "刪除面板失敗", "deployed": "角色面板已部署到頻道",
+    "deployFailed": "傳送面板失敗", "nameRequired": "面板名稱為必填", "channelRequired": "頻道為必填",
+    "maxRolesReached": "每個面板最多 25 個角色"
+  },
+  "loading": "正在載入面板..."
+}

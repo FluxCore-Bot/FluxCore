@@ -1,0 +1,86 @@
+{
+  "title": "Mesaje Programate",
+  "subtitle": "Creează mesaje auto-postate recurente pe programe configurabile.",
+  "stats": {
+    "totalMessages": "Total Mesaje",
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "table": {
+    "name": "Nume",
+    "channel": "Canal",
+    "schedule": "Program",
+    "nextRun": "Următoarea Rulare",
+    "status": "Stare"
+  },
+  "dialog": {
+    "editTitle": "Editează Mesaj Programat",
+    "createTitle": "Mesaj Programat Nou"
+  },
+  "form": {
+    "name": "Nume",
+    "channel": "Canal",
+    "schedulePreset": "Preset Program",
+    "cronExpression": "Expresie Cron",
+    "timezone": "Fus Orar",
+    "messageContent": "Conținutul Mesajului",
+    "text": "Text",
+    "embed": "Embed",
+    "enabled": "Activat",
+    "enabledDesc": "Dacă acest mesaj programat este activ."
+  },
+  "cronPresets": {
+    "everyHour": "În Fiecare Oră",
+    "every6Hours": "La Fiecare 6 Ore",
+    "daily9am": "Zilnic la ora 9",
+    "dailyMidnight": "Zilnic la Miezul Nopții",
+    "weeklyMonday": "Săptămânal Luni",
+    "monthly1st": "Lunar pe 1",
+    "custom": "Personalizat"
+  },
+  "embed": {
+    "title": "Titlu",
+    "description": "Descriere",
+    "color": "Culoare (hex)",
+    "footer": "Subsol",
+    "thumbnail": "URL Miniatură",
+    "image": "URL Imagine"
+  },
+  "toast": {
+    "created": "Mesaj programat creat",
+    "createFailed": "Crearea mesajului programat a eșuat",
+    "updated": "Mesaj programat actualizat",
+    "updateFailed": "Actualizarea mesajului programat a eșuat",
+    "deleted": "Mesaj programat șters",
+    "deleteFailed": "Ștergerea mesajului programat a eșuat",
+    "testSent": "Mesaj de test trimis",
+    "testFailed": "Trimiterea mesajului de test a eșuat"
+  },
+  "empty": {
+    "title": "Nu există mesaje programate încă",
+    "description": "Creează un mesaj programat pentru a posta automat conținut în mod recurent.",
+    "createButton": "Creează Mesaj"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Următor",
+    "page": "Pagina {{page}} din {{total}}"
+  },
+  "actions": {
+    "newMessage": "Mesaj Nou",
+    "testSend": "Trimitere Test",
+    "edit": "Editează",
+    "delete": "Șterge",
+    "save": "Salvează",
+    "cancel": "Anulează"
+  },
+  "validation": {
+    "nameRequired": "Numele mesajului este obligatoriu",
+    "channelRequired": "Canalul este obligatoriu"
+  },
+  "cronPreview": {
+    "nextRuns": "Următoarele Rulări"
+  },
+  "characters": "{{count}}/2000 caractere",
+  "never": "Niciodată"
+}

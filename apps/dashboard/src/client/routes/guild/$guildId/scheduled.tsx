@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useParams } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../lib/client";
 import { PageHeader } from "../../../components/PageHeader";
@@ -46,15 +47,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui
 import { Icon } from "../../../components/Icon";
 import type { ScheduledMessageContent } from "../../../lib/schemas";
 
-const CRON_PRESETS: Record<string, string> = {
-  "Every hour": "0 * * * *",
-  "Every 6 hours": "0 */6 * * *",
-  "Daily at 9am": "0 9 * * *",
-  "Daily at midnight": "0 0 * * *",
-  "Weekly (Monday 9am)": "0 9 * * 1",
-  "Monthly (1st at 9am)": "0 9 1 * *",
-};
-
 const COMMON_TIMEZONES = [
   "UTC",
   "America/New_York",
@@ -69,11 +61,6 @@ const COMMON_TIMEZONES = [
   "Australia/Sydney",
   "Pacific/Auckland",
 ];
-
-function formatDate(dateStr: string | null): string {
-  if (!dateStr) return "Never";
-  return new Date(dateStr).toLocaleString();
-}
 
 interface MessageFormState {
   name: string;
@@ -126,10 +113,23 @@ function formToContent(form: MessageFormState): ScheduledMessageContent {
 
 export function ScheduledMessagesPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
+  const { t } = useTranslation("scheduled");
   const [page, setPage] = useState(1);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [form, setForm] = useState<MessageFormState>(emptyForm);
+
+  const CRON_PRESETS = useMemo<Record<string, string>>(
+    () => ({
+      [t("cronPresets.everyHour")]: "0 * * * *",
+      [t("cronPresets.every6Hours")]: "0 */6 * * *",
+      [t("cronPresets.daily9am")]: "0 9 * * *",
+      [t("cronPresets.dailyMidnight")]: "0 0 * * *",
+      [t("cronPresets.weeklyMonday")]: "0 9 * * 1",
+      [t("cronPresets.monthly1st")]: "0 9 1 * *",
+    }),
+    [t],
+  );
 
   const { data, isLoading } = useScheduledMessages(guildId, { page, limit: 10 });
   const { data: channels } = useChannels(guildId);
@@ -141,6 +141,11 @@ export function ScheduledMessagesPage() {
 
   const totalPages = data ? Math.max(1, Math.ceil(data.total / 10)) : 1;
   const textChannels = channels?.filter((c) => c.type === 0 || c.type === 5) ?? [];
+
+  function formatDate(dateStr: string | null): string {
+    if (!dateStr) return t("never");
+    return new Date(dateStr).toLocaleString();
+  }
 
   function openCreate() {
     setEditingId(null);
@@ -180,11 +185,11 @@ export function ScheduledMessagesPage() {
 
   function handleSubmit() {
     if (!form.name.trim()) {
-      toast.error("Name is required");
+      toast.error(t("validation.nameRequired"));
       return;
     }
     if (!form.channelId) {
-      toast.error("Channel is required");
+      toast.error(t("validation.channelRequired"));
       return;
     }
 
@@ -203,11 +208,11 @@ export function ScheduledMessagesPage() {
         },
         {
           onSuccess: () => {
-            toast.success("Scheduled message updated");
+            toast.success(t("toast.updated"));
             setDialogOpen(false);
           },
           onError: (err) =>
-            toast.error(err instanceof ApiError ? err.message : "Failed to update"),
+            toast.error(err instanceof ApiError ? err.message : t("toast.updateFailed")),
         },
       );
     } else {
@@ -222,11 +227,11 @@ export function ScheduledMessagesPage() {
         },
         {
           onSuccess: () => {
-            toast.success("Scheduled message created");
+            toast.success(t("toast.created"));
             setDialogOpen(false);
           },
           onError: (err) =>
-            toast.error(err instanceof ApiError ? err.message : "Failed to create"),
+            toast.error(err instanceof ApiError ? err.message : t("toast.createFailed")),
         },
       );
     }
@@ -237,24 +242,24 @@ export function ScheduledMessagesPage() {
       { id, enabled },
       {
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to toggle"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.updateFailed")),
       },
     );
   }
 
   function handleDelete(id: number) {
     deleteMsg.mutate(id, {
-      onSuccess: () => toast.success("Scheduled message deleted"),
+      onSuccess: () => toast.success(t("toast.deleted")),
       onError: (err) =>
-        toast.error(err instanceof ApiError ? err.message : "Failed to delete"),
+        toast.error(err instanceof ApiError ? err.message : t("toast.deleteFailed")),
     });
   }
 
   function handleTestSend(id: number) {
     testMsg.mutate(id, {
-      onSuccess: () => toast.success("Test message sent"),
+      onSuccess: () => toast.success(t("toast.testSent")),
       onError: (err) =>
-        toast.error(err instanceof ApiError ? err.message : "Failed to test send"),
+        toast.error(err instanceof ApiError ? err.message : t("toast.testFailed")),
     });
   }
 
@@ -265,12 +270,12 @@ export function ScheduledMessagesPage() {
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Scheduled Messages"
-        subtitle="Create recurring auto-posted messages on configurable schedules."
+        title={t("title")}
+        subtitle={t("subtitle")}
         actions={
           <Button onClick={openCreate}>
             <Icon name="add" size={16} className="mr-2" />
-            New Message
+            {t("actions.newMessage")}
           </Button>
         }
       />
@@ -278,13 +283,13 @@ export function ScheduledMessagesPage() {
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Total Messages</p>
+          <p className="section-label text-text-muted">{t("stats.totalMessages")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {isLoading ? "..." : data?.total ?? 0}
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Active</p>
+          <p className="section-label text-text-muted">{t("stats.active")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {isLoading
               ? "..."
@@ -292,7 +297,7 @@ export function ScheduledMessagesPage() {
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Inactive</p>
+          <p className="section-label text-text-muted">{t("stats.inactive")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {isLoading
               ? "..."
@@ -304,17 +309,17 @@ export function ScheduledMessagesPage() {
       {/* Message List */}
       <Card className="bg-surface p-6">
         {isLoading ? (
-          <p className="text-text-muted">Loading scheduled messages...</p>
+          <p className="text-text-muted">{t("common:loading")}</p>
         ) : data && data.messages.length > 0 ? (
           <>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Channel</TableHead>
-                  <TableHead>Schedule</TableHead>
-                  <TableHead>Next Run</TableHead>
-                  <TableHead>Status</TableHead>
+                  <TableHead>{t("table.name")}</TableHead>
+                  <TableHead>{t("table.channel")}</TableHead>
+                  <TableHead>{t("table.schedule")}</TableHead>
+                  <TableHead>{t("table.nextRun")}</TableHead>
+                  <TableHead>{t("table.status")}</TableHead>
                   <TableHead className="w-32" />
                 </TableRow>
               </TableHeader>
@@ -340,7 +345,7 @@ export function ScheduledMessagesPage() {
                           }
                         />
                         <Badge variant={msg.enabled ? "default" : "secondary"}>
-                          {msg.enabled ? "Active" : "Inactive"}
+                          {msg.enabled ? t("stats.active") : t("stats.inactive")}
                         </Badge>
                       </div>
                     </TableCell>
@@ -350,7 +355,7 @@ export function ScheduledMessagesPage() {
                           variant="ghost"
                           size="sm"
                           onClick={() => handleTestSend(msg.id)}
-                          title="Test send"
+                          title={t("actions.testSend")}
                         >
                           <Icon name="play_arrow" size={16} />
                         </Button>
@@ -358,7 +363,7 @@ export function ScheduledMessagesPage() {
                           variant="ghost"
                           size="sm"
                           onClick={() => openEdit(msg)}
-                          title="Edit"
+                          title={t("actions.edit")}
                         >
                           <Icon name="edit" size={16} />
                         </Button>
@@ -366,7 +371,7 @@ export function ScheduledMessagesPage() {
                           variant="ghost"
                           size="sm"
                           onClick={() => handleDelete(msg.id)}
-                          title="Delete"
+                          title={t("actions.delete")}
                         >
                           <Icon name="delete" size={16} className="text-danger" />
                         </Button>
@@ -380,7 +385,7 @@ export function ScheduledMessagesPage() {
             {totalPages > 1 && (
               <div className="mt-4 flex items-center justify-between">
                 <p className="text-sm text-text-muted">
-                  Page {page} of {totalPages} ({data.total} total)
+                  {t("pagination.page", { page, total: totalPages })}
                 </p>
                 <div className="flex gap-2">
                   <Button
@@ -389,7 +394,7 @@ export function ScheduledMessagesPage() {
                     onClick={() => setPage((p) => Math.max(1, p - 1))}
                     disabled={page <= 1}
                   >
-                    Previous
+                    {t("pagination.previous")}
                   </Button>
                   <Button
                     variant="outline"
@@ -397,7 +402,7 @@ export function ScheduledMessagesPage() {
                     onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                     disabled={page >= totalPages}
                   >
-                    Next
+                    {t("pagination.next")}
                   </Button>
                 </div>
               </div>
@@ -407,14 +412,14 @@ export function ScheduledMessagesPage() {
           <div className="flex flex-col items-center gap-4 py-12 text-center">
             <Icon name="schedule" size={48} className="text-text-muted" />
             <div>
-              <p className="font-medium text-text">No scheduled messages yet</p>
+              <p className="font-medium text-text">{t("empty.title")}</p>
               <p className="mt-1 text-sm text-text-muted">
-                Create your first scheduled message to automate recurring posts.
+                {t("empty.description")}
               </p>
             </div>
             <Button onClick={openCreate}>
               <Icon name="add" size={16} className="mr-2" />
-              Create Message
+              {t("empty.createButton")}
             </Button>
           </div>
         )}
@@ -425,17 +430,17 @@ export function ScheduledMessagesPage() {
         <DialogContent className="max-w-2xl">
           <DialogHeader>
             <DialogTitle>
-              {editingId !== null ? "Edit Scheduled Message" : "New Scheduled Message"}
+              {editingId !== null ? t("dialog.editTitle") : t("dialog.createTitle")}
             </DialogTitle>
           </DialogHeader>
 
           <div className="space-y-6">
             {/* Name */}
             <div>
-              <Label htmlFor="msg-name">Name</Label>
+              <Label htmlFor="msg-name">{t("form.name")}</Label>
               <Input
                 id="msg-name"
-                placeholder="e.g. Daily Announcement"
+                placeholder={t("form.name")}
                 value={form.name}
                 onChange={(e) => updateForm({ name: e.target.value })}
                 maxLength={100}
@@ -444,10 +449,10 @@ export function ScheduledMessagesPage() {
 
             {/* Channel */}
             <div>
-              <Label>Channel</Label>
+              <Label>{t("form.channel")}</Label>
               <Select value={form.channelId} onValueChange={(v) => updateForm({ channelId: v })}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select a channel" />
+                  <SelectValue placeholder={t("form.channel")} />
                 </SelectTrigger>
                 <SelectContent>
                   {textChannels.map((ch) => (
@@ -462,7 +467,7 @@ export function ScheduledMessagesPage() {
             {/* Schedule */}
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
-                <Label>Schedule Preset</Label>
+                <Label>{t("form.schedulePreset")}</Label>
                 <Select
                   value={
                     Object.entries(CRON_PRESETS).find(
@@ -484,12 +489,12 @@ export function ScheduledMessagesPage() {
                         {label}
                       </SelectItem>
                     ))}
-                    <SelectItem value="custom">Custom</SelectItem>
+                    <SelectItem value="custom">{t("cronPresets.custom")}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div>
-                <Label htmlFor="cron-expr">Cron Expression</Label>
+                <Label htmlFor="cron-expr">{t("form.cronExpression")}</Label>
                 <Input
                   id="cron-expr"
                   placeholder="0 9 * * *"
@@ -502,7 +507,7 @@ export function ScheduledMessagesPage() {
 
             {/* Timezone */}
             <div>
-              <Label>Timezone</Label>
+              <Label>{t("form.timezone")}</Label>
               <Select value={form.timezone} onValueChange={(v) => updateForm({ timezone: v })}>
                 <SelectTrigger>
                   <SelectValue />
@@ -520,7 +525,7 @@ export function ScheduledMessagesPage() {
             {/* Next run preview */}
             {cronPreview && cronPreview.nextRuns.length > 0 && (
               <div className="rounded-md border border-border bg-surface-high p-3">
-                <p className="mb-2 text-xs font-semibold text-text-muted">Next runs:</p>
+                <p className="mb-2 text-xs font-semibold text-text-muted">{t("cronPreview.nextRuns")}:</p>
                 <ul className="space-y-1">
                   {cronPreview.nextRuns.slice(0, 3).map((run, i) => (
                     <li key={i} className="font-mono text-xs text-text">
@@ -539,42 +544,42 @@ export function ScheduledMessagesPage() {
               onValueChange={(v) => updateForm({ messageType: v as "text" | "embed" })}
             >
               <TabsList>
-                <TabsTrigger value="text">Text</TabsTrigger>
-                <TabsTrigger value="embed">Embed</TabsTrigger>
+                <TabsTrigger value="text">{t("form.text")}</TabsTrigger>
+                <TabsTrigger value="embed">{t("form.embed")}</TabsTrigger>
               </TabsList>
 
               <TabsContent value="text" className="mt-4">
                 <div>
-                  <Label htmlFor="msg-content">Message Content</Label>
+                  <Label htmlFor="msg-content">{t("form.messageContent")}</Label>
                   <Textarea
                     id="msg-content"
-                    placeholder="Type your message..."
+                    placeholder={t("form.messageContent")}
                     value={form.textContent}
                     onChange={(e) => updateForm({ textContent: e.target.value })}
                     maxLength={2000}
                     rows={5}
                   />
                   <p className="mt-1 text-xs text-text-muted">
-                    {form.textContent.length}/2000 characters
+                    {t("characters", { count: form.textContent.length })}
                   </p>
                 </div>
               </TabsContent>
 
               <TabsContent value="embed" className="mt-4 space-y-4">
                 <div>
-                  <Label htmlFor="embed-title">Title</Label>
+                  <Label htmlFor="embed-title">{t("embed.title")}</Label>
                   <Input
                     id="embed-title"
-                    placeholder="Embed title"
+                    placeholder={t("embed.title")}
                     value={form.embedTitle}
                     onChange={(e) => updateForm({ embedTitle: e.target.value })}
                   />
                 </div>
                 <div>
-                  <Label htmlFor="embed-description">Description</Label>
+                  <Label htmlFor="embed-description">{t("embed.description")}</Label>
                   <Textarea
                     id="embed-description"
-                    placeholder="Embed description..."
+                    placeholder={t("embed.description")}
                     value={form.embedDescription}
                     onChange={(e) => updateForm({ embedDescription: e.target.value })}
                     rows={4}
@@ -582,7 +587,7 @@ export function ScheduledMessagesPage() {
                 </div>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
-                    <Label htmlFor="embed-color">Color</Label>
+                    <Label htmlFor="embed-color">{t("embed.color")}</Label>
                     <div className="flex items-center gap-2">
                       <input
                         id="embed-color"
@@ -600,10 +605,10 @@ export function ScheduledMessagesPage() {
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="embed-footer">Footer</Label>
+                    <Label htmlFor="embed-footer">{t("embed.footer")}</Label>
                     <Input
                       id="embed-footer"
-                      placeholder="Footer text"
+                      placeholder={t("embed.footer")}
                       value={form.embedFooter}
                       onChange={(e) => updateForm({ embedFooter: e.target.value })}
                     />
@@ -611,7 +616,7 @@ export function ScheduledMessagesPage() {
                 </div>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
-                    <Label htmlFor="embed-thumbnail">Thumbnail URL</Label>
+                    <Label htmlFor="embed-thumbnail">{t("embed.thumbnail")}</Label>
                     <Input
                       id="embed-thumbnail"
                       placeholder="https://..."
@@ -620,7 +625,7 @@ export function ScheduledMessagesPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="embed-image">Image URL</Label>
+                    <Label htmlFor="embed-image">{t("embed.image")}</Label>
                     <Input
                       id="embed-image"
                       placeholder="https://..."
@@ -655,9 +660,9 @@ export function ScheduledMessagesPage() {
             {/* Enabled toggle */}
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-medium">Enabled</p>
+                <p className="font-medium">{t("form.enabled")}</p>
                 <p className="text-sm text-text-muted">
-                  Whether this message is active and will be sent on schedule.
+                  {t("form.enabledDesc")}
                 </p>
               </div>
               <Switch
@@ -669,13 +674,13 @@ export function ScheduledMessagesPage() {
 
           <DialogFooter>
             <Button variant="outline" onClick={() => setDialogOpen(false)}>
-              Cancel
+              {t("actions.cancel")}
             </Button>
             <Button
               onClick={handleSubmit}
               disabled={createMsg.isPending || updateMsg.isPending}
             >
-              {editingId !== null ? "Save Changes" : "Create Message"}
+              {editingId !== null ? t("actions.save") : t("actions.newMessage")}
             </Button>
           </DialogFooter>
         </DialogContent>

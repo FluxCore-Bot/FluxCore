@@ -1,0 +1,112 @@
+{
+  "title": "Panneaux de roles",
+  "subtitle": "Creez des panneaux de roles auto-assignables avec des boutons, des menus deroulants ou des reactions.",
+  "stats": {
+    "totalPanels": "Total des panneaux",
+    "deployed": "Deployes",
+    "totalRoles": "Total des roles"
+  },
+  "tabs": {
+    "panels": "Panneaux",
+    "preview": "Apercu"
+  },
+  "table": {
+    "name": "Nom",
+    "type": "Type",
+    "mode": "Mode",
+    "roles": "Roles",
+    "status": "Statut"
+  },
+  "panelTypes": {
+    "reaction": "Reaction",
+    "button": "Bouton",
+    "dropdown": "Menu deroulant"
+  },
+  "panelModes": {
+    "toggle": "Basculer",
+    "unique": "Unique",
+    "verify": "Verification"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Basculer (ajouter/retirer)",
+    "unique": "Unique (un a la fois)",
+    "verify": "Verification (ajout uniquement)"
+  },
+  "status": {
+    "deployed": "Deploye",
+    "draft": "Brouillon"
+  },
+  "dialog": {
+    "createPanel": "Creer un panneau",
+    "editPanel": "Modifier le panneau"
+  },
+  "panelList": {
+    "title": "Tous les panneaux"
+  },
+  "form": {
+    "name": "Nom",
+    "namePlaceholder": "ex. Roles de couleur",
+    "type": "Type",
+    "mode": "Mode",
+    "channel": "Salon",
+    "channelPlaceholder": "Selectionner un salon",
+    "minRoles": "Roles minimum",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Roles maximum",
+    "maxRolesPlaceholder": "Tous",
+    "embedSection": "Embed",
+    "embedTitle": "Titre",
+    "embedTitlePlaceholder": "Titre du panneau (par defaut le nom du panneau)",
+    "embedDescription": "Description",
+    "embedDescriptionPlaceholder": "Texte de description",
+    "rolesCount": "Roles ({{count}}/25)",
+    "addRole": "Ajouter un role"
+  },
+  "entry": {
+    "role": "Role",
+    "rolePlaceholder": "Selectionner un role",
+    "label": "Libelle",
+    "labelPlaceholder": "Libelle du bouton",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "ex. star",
+    "description": "Description",
+    "descriptionPlaceholder": "Description de l'option",
+    "style": "Style"
+  },
+  "buttonStyles": {
+    "primary": "Principal",
+    "secondary": "Secondaire",
+    "success": "Succes",
+    "danger": "Danger"
+  },
+  "actions": {
+    "create": "Creer",
+    "update": "Mettre a jour",
+    "cancel": "Annuler",
+    "deploy": "Deployer",
+    "delete": "Supprimer",
+    "addEntry": "Ajouter une entree",
+    "removeEntry": "Supprimer l'entree"
+  },
+  "preview": {
+    "title": "Apercu en direct",
+    "description": "Previsualisation de l'apparence de vos panneaux dans Discord.",
+    "selectRoles": "Selectionner les roles...",
+    "noPreview": "Aucun panneau a previsualiser."
+  },
+  "empty": "Aucun panneau de roles cree pour l'instant. Cliquez sur \"Creer un panneau\" pour commencer.",
+  "toast": {
+    "created": "Panneau cree",
+    "createFailed": "Echec de la creation du panneau",
+    "updated": "Panneau mis a jour",
+    "updateFailed": "Echec de la mise a jour du panneau",
+    "deleted": "Panneau supprime",
+    "deleteFailed": "Echec de la suppression du panneau",
+    "deployed": "Panneau de roles deploye dans le salon",
+    "deployFailed": "Echec de l'envoi du panneau",
+    "nameRequired": "Le nom du panneau est requis",
+    "channelRequired": "Le salon est requis",
+    "maxRolesReached": "Maximum 25 roles par panneau"
+  },
+  "loading": "Chargement des panneaux..."
+}

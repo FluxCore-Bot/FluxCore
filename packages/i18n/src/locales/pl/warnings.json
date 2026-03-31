@@ -1,0 +1,72 @@
+{
+  "title": "Ostrzeżenia",
+  "subtitle": "Śledź i zarządzaj ostrzeżeniami członków z automatyczną eskalacją.",
+  "stats": {
+    "totalWarnings": "Łącznie ostrzeżeń",
+    "escalationRules": "Reguły eskalacji",
+    "dmOnWarn": "PW przy ostrzeżeniu"
+  },
+  "tabs": {
+    "warnings": "Dziennik ostrzeżeń",
+    "escalation": "Eskalacja",
+    "settings": "Ustawienia"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Użytkownik",
+    "moderator": "Moderator",
+    "reason": "Powód",
+    "date": "Data"
+  },
+  "filter": {
+    "userPlaceholder": "Filtruj po ID użytkownika...",
+    "clearAll": "Wyczyść wszystkie"
+  },
+  "pagination": {
+    "previous": "Poprzednia",
+    "next": "Następna",
+    "page": "Strona {{page}} z {{total}} ({{count}} łącznie)"
+  },
+  "loading": "Ładowanie ostrzeżeń...",
+  "noWarnings": "Nie znaleziono ostrzeżeń.",
+  "toast": {
+    "warningRemoved": "Ostrzeżenie usunięte",
+    "warningsFailed": "Nie udało się usunąć ostrzeżenia",
+    "enterUserId": "Wpisz ID użytkownika, aby wyczyścić wszystkie jego ostrzeżenia",
+    "allCleared": "Wszystkie ostrzeżenia użytkownika wyczyszczone",
+    "clearFailed": "Nie udało się wyczyścić ostrzeżeń",
+    "thresholdAdded": "Próg kary dodany",
+    "thresholdFailed": "Nie udało się dodać kary",
+    "thresholdRemoved": "Kara usunięta",
+    "removeFailed": "Nie udało się usunąć kary",
+    "settingFailed": "Nie udało się zaktualizować ustawienia",
+    "thresholdInvalid": "Próg musi być liczbą dodatnią"
+  },
+  "escalation": {
+    "title": "Eskalacja kar",
+    "description": "Skonfiguruj automatyczne akcje po osiągnięciu przez użytkownika określonej liczby ostrzeżeń.",
+    "threshold": "Próg",
+    "action": "Akcja",
+    "duration": "Czas trwania",
+    "noRules": "Brak skonfigurowanych reguł eskalacji.",
+    "addRule": "Dodaj regułę eskalacji",
+    "addButton": "Dodaj regułę",
+    "warnings": "{{count}} ostrzeżeń",
+    "min": "{{count}} min",
+    "timeout": "Timeout",
+    "kick": "Kick",
+    "ban": "Ban",
+    "durationLabel": "Czas trwania (sekundy)",
+    "thresholdPlaceholder": "np. 3",
+    "durationPlaceholder": "np. 3600"
+  },
+  "settings": {
+    "title": "Ustawienia ostrzeżeń",
+    "dmOnWarn": "PW przy ostrzeżeniu",
+    "dmOnWarnDesc": "Wyślij wiadomość prywatną do użytkownika po otrzymaniu ostrzeżenia.",
+    "requireReason": "Wymagany powód",
+    "requireReasonDesc": "Moderatorzy muszą podać powód przy wydawaniu ostrzeżenia.",
+    "maxWarnings": "Maks. ostrzeżeń",
+    "maxWarningsDesc": "Maksymalna liczba ostrzeżeń na użytkownika (0 = bez limitu)."
+  }
+}

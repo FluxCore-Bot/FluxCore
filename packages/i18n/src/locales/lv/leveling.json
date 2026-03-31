@@ -1,0 +1,120 @@
+{
+  "title": "Limenu sistema",
+  "subtitle": "Konfigurejiet XP pelnesanu, limena paaugstinasanas pazinojumus, lomu atliidzibas un reizinataajus.",
+  "stats": {
+    "rankedMembers": "Reitingoti dalibnieki",
+    "roleRewards": "Lomu atlidzibas",
+    "systemStatus": "Sistemas statuss",
+    "enabled": "Iespejots",
+    "disabled": "Atspejots"
+  },
+  "tabs": {
+    "leaderboard": "Lideru tabula",
+    "settings": "Iestatijumi",
+    "roleRewards": "Lomu atlidzibas",
+    "exclusions": "Izsleegsanas",
+    "multipliers": "Reizinataaji"
+  },
+  "table": {
+    "rank": "Rangs",
+    "userId": "Lietotaja ID",
+    "level": "Limenis",
+    "xp": "XP",
+    "messages": "Zinojumi",
+    "voiceTime": "Balss laiks"
+  },
+  "settings": {
+    "title": "Limenu iestatijumi",
+    "enabled": "Iespejot limenus",
+    "enabledDesc": "Iesleedt vai izsleedt visu limenu sistemu.",
+    "xpPerMessage": "XP par zinojumu",
+    "xpPerMessageDesc": "Pamata XP, kas pieskirits par zinojumu (tiek pievienota nejausiiba 0-9).",
+    "xpCooldown": "XP atdzesesana (sekundes)",
+    "xpCooldownDesc": "Minimalais laiks starp XP piesskirsanam lietotajam.",
+    "voiceXpEnabled": "Balss XP",
+    "voiceXpEnabledDesc": "Piesskiriet XP par laiku balss kanalos.",
+    "voiceXpPerMinute": "Balss XP minuutee",
+    "voiceXpPerMinuteDesc": "XP pieskirits par minuuti balss kanala.",
+    "levelUpAnnouncements": "Limena paaugstinasanas pazinojumi",
+    "levelUpAnnouncementsDesc": "Pazinot, kad dalibnieks paaugstina limeni.",
+    "announceDest": "Pazinojuma galamerkis",
+    "announceDestHint": "Jus varat ari ievaddit kanala ID tiesii lauka augstakk.",
+    "announceDestSameChannel": "Tas pats kanals",
+    "announceDestDM": "Privatais zinojums",
+    "announceMessage": "Pazinojuma zinojums",
+    "announceMessagePlaceholder": "{user} tikko sasniedza **limeni {level}**!",
+    "announceMessageVars": "Maingie: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Lomu atlidzibas",
+    "description": "Automatiski piesskiriet lomas, kad dalibnieki sasniedz noteiktus limenus.",
+    "addReward": "Pievienot atlidzibu",
+    "addRewardTitle": "Pievienot lomas atlidzibu",
+    "level": "Limenis",
+    "levelPrefix": "Limenis {{level}}",
+    "roleId": "Lomas ID",
+    "levelPlaceholder": "piem. 5",
+    "rolePlaceholder": "piem. 123456789",
+    "removeReward": "Nonemt",
+    "noRewards": "Lomu atlidzibas nav konfiguuetas."
+  },
+  "exclusions": {
+    "title": "XP izsleegsanas",
+    "description": "Kanali un lomas, kas nepelna XP.",
+    "noXpChannels": "Bez-XP kanali (ID atdaliti ar komatiem)",
+    "noXpChannelsPlaceholder": "piem. 123456789, 987654321",
+    "noXpRoles": "Bez-XP lomas (ID atdaliti ar komatiem)",
+    "noXpRolesPlaceholder": "piem. 123456789, 987654321",
+    "save": "Saglabar izsleegsanas"
+  },
+  "multipliers": {
+    "title": "XP reizinataaji",
+    "description": "Iestatiet XP reizinataajus pa kanalam vai lomam. Reizinatajs 2 dubulto pelniito XP.",
+    "channelMultipliers": "Kanalu reizinataaji",
+    "roleMultipliers": "Lomu reizinataaji",
+    "channelId": "Kanala ID",
+    "roleId": "Lomas ID",
+    "multiplier": "Reizinatajs",
+    "type": "Tips",
+    "typeChannel": "Kanals",
+    "typeRole": "Loma",
+    "id": "ID",
+    "idPlaceholder": "Kanala vai lomas ID",
+    "value": "Reizinatajs",
+    "valuePlaceholder": "piem. 2",
+    "add": "Pievienot reizinataaju",
+    "addTitle": "Pievienot reizinataaju",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "XP reizinataaji nav konfiguueti."
+  },
+  "pagination": {
+    "previous": "Iepriekssejais",
+    "next": "Nakamais",
+    "pageInfo": "Lapa {{page}} no {{totalPages}} ({{total}} kopaa)"
+  },
+  "loading": "Iellade lideru tabulu...",
+  "loadingGeneric": "Ielade...",
+  "emptyLeaderboard": "Neviens dalibnieks vel nav pelniijis XP.",
+  "toast": {
+    "saved": "Limenu iestatijumi saglabati",
+    "saveFailed": "Neizdevas atjaunot iestatijumu",
+    "rewardAdded": "Atlidziba pievienota",
+    "rewardAddFailed": "Neizdevas pievienot atlidzibu",
+    "rewardRemoved": "Atlidziba nonemta",
+    "rewardRemoveFailed": "Neizdevas nonemt atlidzibu",
+    "multiplierAdded": "Reizinatajs pievienots",
+    "multiplierAddFailed": "Neizdevas pievienot reizinataaju",
+    "multiplierRemoved": "Reizinatajs nonemts",
+    "multiplierRemoveFailed": "Neizdevas nonemt reizinataaju",
+    "exclusionUpdated": "Izsleegsanas saglabatas",
+    "exclusionFailed": "Neizdevas saglabar izsleegsanas",
+    "levelValidation": "Limenim jabut starp 1 un 100",
+    "roleIdRequired": "Lomas ID ir obligats",
+    "multiplierIdRequired": "ID un reizinataaja vertiba ir obligata",
+    "multiplierRange": "Reizinataajam jabut starp 0 un 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}h {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

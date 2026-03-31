@@ -1,0 +1,77 @@
+{
+  "title": "Sistema ng Tiket",
+  "subtitle": "Gumawa ng mga support ticket panel at pamahalaan ang mga bukas na tiket mula sa dashboard.",
+  "stats": {
+    "totalTickets": "Kabuuang Mga Tiket",
+    "open": "Bukas",
+    "claimed": "Kinuha",
+    "panels": "Mga Panel"
+  },
+  "tabs": {
+    "activeTickets": "Mga Aktibong Tiket",
+    "panelBuilder": "Panel Builder",
+    "settings": "Mga Setting"
+  },
+  "table": {
+    "id": "ID",
+    "user": "User",
+    "subject": "Paksa",
+    "status": "Status",
+    "assignee": "Itinalaga sa",
+    "created": "Nagawa"
+  },
+  "statuses": {
+    "open": "Bukas",
+    "claimed": "Kinuha",
+    "closed": "Sarado"
+  },
+  "panelBuilder": {
+    "title": "Pamagat ng Panel",
+    "channel": "Channel",
+    "buttonLabel": "Label ng Button",
+    "welcomeMessage": "Mensahe ng Pagbati",
+    "category": "Kategorya ng Tiket",
+    "create": "Gumawa ng Panel",
+    "edit": "I-edit ang Panel",
+    "deploy": "I-deploy ang Panel"
+  },
+  "settings": {
+    "transcriptChannel": "Channel ng Transcript",
+    "transcriptChannelDesc": "Channel kung saan sino-save ang mga transcript ng tiket kapag sarado.",
+    "maxTicketsPerUser": "Max na Tiket bawat User",
+    "maxTicketsPerUserDesc": "Maximum na bilang ng mga bukas na tiket na maaaring mayroon ang isang user.",
+    "closeConfirmation": "Kumpirmasyon ng Pagsasara",
+    "closeConfirmationDesc": "Mangailangan ng kumpirmasyon bago isara ang tiket.",
+    "dmTranscript": "DM Transcript",
+    "dmTranscriptDesc": "Magpadala ng kopya ng transcript sa lumikhang user ng tiket sa pamamagitan ng DM."
+  },
+  "actions": {
+    "claim": "Kunin",
+    "close": "Isara",
+    "delete": "Burahin",
+    "reopen": "Buksan Muli"
+  },
+  "toast": {
+    "panelCreated": "Ticket panel na nagawa",
+    "panelCreateFailed": "Hindi nagawa ang ticket panel",
+    "panelUpdated": "Ticket panel na na-update",
+    "panelUpdateFailed": "Hindi na-update ang ticket panel",
+    "panelDeployed": "Ticket panel na na-deploy",
+    "panelDeployFailed": "Hindi na-deploy ang ticket panel",
+    "ticketClaimed": "Tiket na kinuha",
+    "ticketClaimFailed": "Hindi nakuha ang tiket",
+    "ticketClosed": "Tiket na sarado",
+    "ticketCloseFailed": "Hindi nasara ang tiket",
+    "ticketReopened": "Tiket na muling binuksan",
+    "ticketReopenFailed": "Hindi muling nabuksan ang tiket",
+    "ticketDeleted": "Tiket na nabura",
+    "ticketDeleteFailed": "Hindi nabura ang tiket",
+    "settingsSaved": "Mga setting ng tiket na na-save",
+    "settingsFailed": "Hindi na-save ang mga setting ng tiket"
+  },
+  "empty": {
+    "tickets": "Walang mga aktibong tiket.",
+    "panels": "Wala pang mga ticket panel na nagawa."
+  },
+  "loading": "Naglo-load ng mga tiket..."
+}

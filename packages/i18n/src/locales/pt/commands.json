@@ -1,0 +1,113 @@
+{
+  "title": "Comandos personalizados",
+  "subtitle": "Crie respostas automaticas e comandos com prefixo acionados por mensagens.",
+  "stats": {
+    "totalCommands": "Total de comandos",
+    "enabled": "Ativados",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Comandos",
+    "variables": "Variaveis"
+  },
+  "table": {
+    "name": "Nome",
+    "trigger": "Gatilho",
+    "response": "Resposta",
+    "cooldown": "Tempo de espera",
+    "status": "Estado"
+  },
+  "triggerTypes": {
+    "command": "!comando",
+    "keyword": "Palavra-chave",
+    "startsWith": "Comeca com",
+    "regex": "Regex",
+    "prefixCommand": "Comando com prefixo (!nome)",
+    "keywordContains": "Palavra-chave (contem)"
+  },
+  "dialog": {
+    "createCommand": "Criar comando",
+    "editCommand": "Editar comando"
+  },
+  "form": {
+    "commandName": "Nome do comando",
+    "triggerText": "Texto do gatilho",
+    "regexPattern": "Padrao Regex",
+    "triggerType": "Tipo de gatilho",
+    "response": "Resposta",
+    "message": "Mensagem",
+    "embedTitle": "Titulo do embed",
+    "embedDescription": "Descricao do embed",
+    "color": "Cor",
+    "footer": "Rodape"
+  },
+  "options": {
+    "cooldown": "Tempo de espera (segundos)",
+    "enabled": "Ativado",
+    "enabledDesc": "Se este comando esta ativo",
+    "deleteTrigger": "Apagar mensagem do gatilho",
+    "deleteTriggerDesc": "Apagar automaticamente a mensagem que acionou este comando.",
+    "dmResponse": "Resposta por MD",
+    "dmResponseDesc": "Enviar a resposta como mensagem direta em vez de no canal."
+  },
+  "restrictions": {
+    "title": "Restricoes",
+    "allowedChannels": "Canais permitidos (vazio = todos)",
+    "allowedRoles": "Cargos permitidos (vazio = todos)",
+    "addChannel": "Adicionar canal",
+    "addRole": "Adicionar cargo"
+  },
+  "actions": {
+    "create": "Criar",
+    "update": "Atualizar",
+    "cancel": "Cancelar",
+    "addAction": "Adicionar acao",
+    "addRole": "Adicionar cargo",
+    "removeRole": "Remover cargo"
+  },
+  "actionsSection": {
+    "title": "Acoes ({{count}}/5)",
+    "noActions": "Nenhuma acao configurada. Adicione uma acao para definir o que este comando faz.",
+    "maxActions": "Maximo de 5 acoes por comando"
+  },
+  "variables": {
+    "title": "Variaveis de modelo",
+    "description": "Use estas variaveis nas respostas dos seus comandos. Elas serao substituidas pelos valores reais quando o comando for acionado.",
+    "table": {
+      "variable": "Variavel",
+      "description": "Descricao"
+    },
+    "entries": {
+      "user": "{user} — Menciona o utilizador que acionou o comando",
+      "username": "{username} — O nome de exibicao do utilizador",
+      "userId": "{userId} — O ID do utilizador",
+      "server": "{server} — O nome do servidor",
+      "channel": "{channel} — Menciona o canal atual",
+      "channelName": "{channelName} — O nome do canal",
+      "memberCount": "{memberCount} — Numero total de membros do servidor"
+    }
+  },
+  "toast": {
+    "created": "Comando criado",
+    "createFailed": "Falha ao criar o comando",
+    "updated": "Comando atualizado",
+    "updateFailed": "Falha ao atualizar o comando",
+    "deleted": "Comando eliminado",
+    "deleteFailed": "Falha ao eliminar o comando",
+    "toggleEnabled": "Comando ativado",
+    "toggleDisabled": "Comando desativado",
+    "toggleFailed": "Falha ao alternar o comando"
+  },
+  "empty": "Nenhum comando personalizado criado ainda.",
+  "loading": "A carregar comandos...",
+  "badge": {
+    "active": "Ativo",
+    "disabled": "Desativado",
+    "text": "Texto",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "O nome do comando e obrigatorio"
+  },
+  "triggerPrefix": "Gatilho: !{{name}}"
+}

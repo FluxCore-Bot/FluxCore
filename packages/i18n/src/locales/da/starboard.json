@@ -1,0 +1,41 @@
+{
+  "title": "Starboard",
+  "subtitle": "Fremhæv de bedste beskeder ved at samle stjernereaktioner i en dedikeret kanal.",
+  "tabs": {
+    "settings": "Indstillinger",
+    "starredMessages": "Stjernemærkede beskeder"
+  },
+  "settings": {
+    "title": "Starboard-konfiguration",
+    "description": "Konfigurer, hvornår og hvor stjernemærkede beskeder publiceres.",
+    "channelId": "Starboard-kanal",
+    "channelIdDesc": "Kanalen, hvor stjernemærkede beskeder publiceres.",
+    "starEmoji": "Stjerneemoji",
+    "starEmojiDesc": "Emojien, der bruges til at stjernemærke beskeder. Standard er stjerneemojien.",
+    "threshold": "Stjernegrænse",
+    "thresholdDesc": "Minimum antal reaktioner påkrævet for at publicere en besked til starboarden.",
+    "selfStar": "Selvstjerne",
+    "selfStarDesc": "Tillad beskedforfattere at stjernemærke deres egne beskeder.",
+    "nsfwAllowed": "NSFW tilladt",
+    "nsfwAllowedDesc": "Tillad beskeder fra NSFW-kanaler at blive vist på starboarden.",
+    "ignoredChannels": "Ignorerede kanaler",
+    "ignoredChannelsDesc": "Beskeder fra disse kanaler vises aldrig på starboarden."
+  },
+  "messages": {
+    "table": {
+      "original": "Originalbesked",
+      "stars": "Stjerner",
+      "channel": "Kanal",
+      "date": "Dato"
+    },
+    "noMessages": "Ingen stjernemærkede beskeder endnu."
+  },
+  "toast": {
+    "saved": "Starboard-indstillinger gemt",
+    "saveFailed": "Kunne ikke gemme starboard-indstillinger"
+  },
+  "actions": {
+    "save": "Gem",
+    "saving": "Gemmer..."
+  }
+}

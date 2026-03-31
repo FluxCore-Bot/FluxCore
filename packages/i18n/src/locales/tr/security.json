@@ -1,0 +1,108 @@
+{
+  "title": "Güvenlik",
+  "subtitle": "Saldırı karşıtı koruma ve sunucu güvenlik ayarlarını yapılandırın.",
+  "antiRaid": {
+    "title": "Saldırı Karşıtı Koruma",
+    "description": "Koordineli saldırılara, şüpheli hesaplara ve yıkıcı eylemlere karşı otomatik algılama ve yanıtı etkinleştirin."
+  },
+  "sections": {
+    "joinRate": "Katılım Hızı",
+    "accountAge": "Hesap Yaşı",
+    "antiNuke": "Nükleer Saldırı Karşıtı",
+    "lockdown": "Kilitleme",
+    "events": "Olaylar"
+  },
+  "joinRate": {
+    "title": "Katılım Hızı Algılama",
+    "description": "Yeni üyelerin katılım hızını izleyerek toplu katılımları algılayın.",
+    "threshold": "Katılım Eşiği",
+    "thresholdHint": "Algılamayı tetiklemek için gereken katılım sayısı",
+    "window": "Zaman Penceresi (saniye)",
+    "windowHint": "Katılımların sayıldığı pencere",
+    "action": "Algılamada Eylem",
+    "actionHint": "Şüpheli baskın üyelerine yapılacak işlem",
+    "actions": {
+      "ban": "Yasakla",
+      "kick": "At",
+      "timeout": "Zaman Aşımı",
+      "lockdown": "Kilitle"
+    }
+  },
+  "accountAge": {
+    "title": "Hesap Yaşı Filtresi",
+    "description": "Minimum yaşın altındaki hesaplara otomatik olarak işlem uygulayın. Devre dışı bırakmak için 0 girin.",
+    "minAge": "Minimum Hesap Yaşı (gün)",
+    "minAgeHint": "0 = devre dışı. Bu yaşın altındaki hesaplara işlem uygulanacak.",
+    "action": "Eylem"
+  },
+  "antiNuke": {
+    "title": "Nükleer Saldırı Karşıtı Koruma",
+    "description": "Toplu kanal/rol silmelerini algılayın ve sorumlu kullanıcıyı tüm rollerini kaldırarak karantinaya alın.",
+    "threshold": "Silme Eşiği",
+    "thresholdHint": "Karantinayı tetiklemek için 10 saniye içindeki silme sayısı",
+    "channelDeleteThreshold": "Kanal Silme Eşiği",
+    "roleDeleteThreshold": "Rol Silme Eşiği",
+    "massbanThreshold": "Toplu Yasak Eşiği",
+    "interval": "Aralık (saniye)",
+    "action": "Eylem"
+  },
+  "lockdown": {
+    "title": "Saldırıda Otomatik Kilitleme",
+    "description": "Bir saldırı algılandığında tüm kanalları otomatik olarak kilitleyin.",
+    "whitelistedRoles": "İzin Verilen Rol Kimlikleri (virgülle ayrılmış)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Bu rollere sahip üyeler saldırı algılamasından muaf tutulacaktır.",
+    "logChannel": "Günlük Kanalı Kimliği",
+    "logChannelPlaceholder": "Saldırı olay günlükleri için kanal kimliği...",
+    "enableButton": "Kilitlemeyi Etkinleştir",
+    "disableButton": "Kilitlemeyi Devre Dışı Bırak",
+    "active": "Kilitleme Aktif",
+    "inactive": "Kilitleme Pasif"
+  },
+  "events": {
+    "title": "Son Saldırı Olayları",
+    "description": "Algılanan saldırıların, hesap yaşı engellerinin ve kilitleme olaylarının zaman çizelgesi.",
+    "empty": "Henüz saldırı olayı kaydedilmedi. Saldırı algılama tetiklendiğinde olaylar burada görünecektir.",
+    "actionLabel": "Eylem: {{action}}",
+    "usersLabel": "Kullanıcılar: {{count}}",
+    "accountAgeLabel": "Hesap yaşı: {{days}} gün",
+    "table": {
+      "type": "Tür",
+      "description": "Açıklama",
+      "time": "Zaman",
+      "action": "Alınan Eylem"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Katılım Artışı",
+    "account_age": "Hesap Yaşı",
+    "nuke_attempt": "Nükleer Girişim",
+    "lockdown": "Kilitleme",
+    "massJoin": "Toplu Katılım",
+    "suspiciousAccounts": "Şüpheli Hesaplar",
+    "channelDeletion": "Kanal Silme",
+    "roleDeletion": "Rol Silme",
+    "massBan": "Toplu Yasak"
+  },
+  "pagination": {
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "page": "Sayfa {{current}} / {{total}}"
+  },
+  "toast": {
+    "saved": "Saldırı karşıtı yapılandırma kaydedildi",
+    "saveFailed": "Yapılandırma kaydedilemedi",
+    "lockdownEnabled": "Sunucu kilitleme etkinleştirildi",
+    "lockdownDisabled": "Sunucu kilitleme devre dışı bırakıldı",
+    "lockdownFailed": "Kilitleme durumu değiştirilemedi"
+  },
+  "saveButton": {
+    "saving": "Kaydediliyor...",
+    "save": "Değişiklikleri Kaydet"
+  },
+  "labels": {
+    "seconds": "saniye",
+    "minutes": "dakika",
+    "hours": "saat"
+  }
+}

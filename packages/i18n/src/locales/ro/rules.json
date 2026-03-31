@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Server",
+    "automation": "Automatizare"
+  },
+  "title": "Reguli de Automatizare",
+  "subtitle": "Configurează declanșatoare bazate pe evenimente și răspunsuri automate pentru serverul tău.",
+  "createRule": "Creează Regulă",
+  "stats": {
+    "totalRules": "Total Reguli",
+    "active": "Active",
+    "executions7d": "Execuții (7z)",
+    "successRate": "Rată de Succes"
+  },
+  "filter": {
+    "searchPlaceholder": "Caută reguli...",
+    "eventType": "Tip eveniment",
+    "allEvents": "Toate Evenimentele",
+    "allStatus": "Toate Stările",
+    "enabled": "Activate",
+    "disabled": "Dezactivate",
+    "sortBy": "Sortează după",
+    "priority": "Prioritate",
+    "name": "Nume",
+    "lastFired": "Ultima Declanșare",
+    "status": "Stare",
+    "clear": "Șterge",
+    "showing": "Se afișează {{filtered}} din {{total}} reguli"
+  },
+  "bulk": {
+    "selected": "{{count}} regulă selectată",
+    "selected_other": "{{count}} reguli selectate",
+    "enable": "Activează",
+    "disable": "Dezactivează",
+    "delete": "Șterge",
+    "clear": "Șterge"
+  },
+  "empty": {
+    "title": "Începe cu Automatizarea",
+    "description": "Alege un șablon pentru a începe rapid sau creează o regulă de la zero.",
+    "createFromScratch": "Creează de la Zero"
+  },
+  "noResults": {
+    "title": "Nu există reguli potrivite",
+    "description": "Încearcă să ajustezi căutarea sau filtrele pentru a găsi ce cauți."
+  },
+  "templates": {
+    "welcomeMessage": "Mesaj de Bun Venit",
+    "welcomeMessageDesc": "Urează bun venit noilor membri cu un mesaj personalizat într-un canal",
+    "autoRole": "Rol Automat",
+    "autoRoleDesc": "Atribuie automat un rol când un membru se alătură",
+    "logDeleted": "Înregistrează Mesajele Șterse",
+    "logDeletedDesc": "Trimite informații despre mesajele șterse într-un canal de jurnal",
+    "boostThankYou": "Mulțumire pentru Boost",
+    "boostThankYouDesc": "Trimite un MP mulțumind utilizatorilor care boostează serverul",
+    "banLogger": "Jurnal de Banuri",
+    "banLoggerDesc": "Înregistrează evenimentele de ban într-un canal de moderare",
+    "autoThread": "Thread Automat",
+    "autoThreadDesc": "Creează automat un thread când este trimis un mesaj"
+  },
+  "deleteDialog": {
+    "title": "Șterge Regulă",
+    "description": "Ești sigur că vrei să ștergi \"{{name}}\"? Această acțiune nu poate fi anulată.",
+    "confirm": "Șterge"
+  },
+  "bulkDeleteDialog": {
+    "title": "Șterge Regulile Selectate",
+    "description": "Ești sigur că vrei să ștergi {{count}} regulă? Această acțiune nu poate fi anulată.",
+    "description_other": "Ești sigur că vrei să ștergi {{count}} reguli? Această acțiune nu poate fi anulată.",
+    "confirm": "Șterge Tot"
+  },
+  "toast": {
+    "deleted": "Regulă ștearsă",
+    "deleteFailed": "Ștergerea regulii a eșuat",
+    "enabled": "Regulă activată",
+    "disabled": "Regulă dezactivată",
+    "toggleFailed": "Activarea/dezactivarea regulii a eșuat",
+    "duplicated": "Regulă duplicată",
+    "duplicateFailed": "Duplicarea regulii a eșuat",
+    "bulkEnabled": "{{count}} reguli activate",
+    "bulkDisabled": "{{count}} reguli dezactivate",
+    "bulkEnableFailed": "Activarea regulilor a eșuat",
+    "bulkDisableFailed": "Dezactivarea regulilor a eșuat",
+    "bulkDeleted": "{{count}} reguli șterse",
+    "bulkDeleteFailed": "Ștergerea regulilor a eșuat"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "title": "Gewinnspiele",
+  "subtitle": "Veranstalten Sie Gewinnspiele mit anpassbarer Dauer, Teilnahmebedingungen und Gewinnerauswahl.",
+  "stats": {
+    "activeGiveaways": "Aktive Gewinnspiele",
+    "pastGiveaways": "Vergangene Gewinnspiele",
+    "totalEntries": "Teilnahmen gesamt"
+  },
+  "table": {
+    "prize": "Preis",
+    "winners": "Gewinner",
+    "entries": "Teilnahmen",
+    "endsIn": "Endet in",
+    "status": "Status"
+  },
+  "statuses": {
+    "active": "Aktiv",
+    "ended": "Beendet",
+    "cancelled": "Abgebrochen"
+  },
+  "actions": {
+    "create": "Gewinnspiel erstellen",
+    "edit": "Bearbeiten",
+    "end": "Beenden",
+    "reroll": "Neu auslosen",
+    "delete": "Loeschen"
+  },
+  "form": {
+    "prize": "Preis",
+    "winnersCount": "Anzahl der Gewinner",
+    "duration": "Dauer",
+    "channel": "Kanal",
+    "requiredRole": "Erforderliche Rolle",
+    "description": "Beschreibung"
+  },
+  "toast": {
+    "created": "Gewinnspiel erstellt",
+    "createFailed": "Gewinnspiel konnte nicht erstellt werden",
+    "updated": "Gewinnspiel aktualisiert",
+    "updateFailed": "Gewinnspiel konnte nicht aktualisiert werden",
+    "ended": "Gewinnspiel beendet",
+    "endFailed": "Gewinnspiel konnte nicht beendet werden",
+    "rerolled": "Gewinner neu ausgelost",
+    "rerollFailed": "Neuauslosung fehlgeschlagen",
+    "deleted": "Gewinnspiel geloescht",
+    "deleteFailed": "Gewinnspiel konnte nicht geloescht werden"
+  },
+  "empty": "Noch keine Gewinnspiele. Erstellen Sie eines, um loszulegen.",
+  "loading": "Gewinnspiele werden geladen..."
+}

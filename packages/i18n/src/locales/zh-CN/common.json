@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore 仪表盘"
+  },
+  "status": {
+    "online": "在线",
+    "offline": "离线",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "概览",
+    "automation": "自动化",
+    "music": "音乐",
+    "tempvoice": "临时语音",
+    "welcome": "欢迎",
+    "moderation": "管理",
+    "warnings": "警告",
+    "rolePanels": "角色面板",
+    "leveling": "等级系统",
+    "scheduled": "定时消息",
+    "commands": "命令",
+    "security": "安全",
+    "tickets": "工单",
+    "giveaways": "抽奖",
+    "suggestions": "建议",
+    "starboard": "精华消息",
+    "logs": "日志",
+    "permissions": "权限",
+    "settings": "设置"
+  },
+  "actions": {
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "create": "创建",
+    "add": "添加",
+    "remove": "移除",
+    "confirm": "确认",
+    "close": "关闭",
+    "back": "返回",
+    "next": "下一步",
+    "search": "搜索",
+    "filter": "筛选",
+    "refresh": "刷新",
+    "reset": "重置",
+    "enable": "启用",
+    "disable": "禁用",
+    "copy": "复制",
+    "export": "导出",
+    "import": "导入",
+    "submit": "提交",
+    "loading": "加载中...",
+    "retry": "重试"
+  },
+  "labels": {
+    "enabled": "已启用",
+    "disabled": "已禁用",
+    "active": "活跃",
+    "inactive": "未激活",
+    "none": "无",
+    "all": "全部",
+    "custom": "自定义",
+    "default": "默认",
+    "required": "必填",
+    "optional": "可选",
+    "name": "名称",
+    "description": "描述",
+    "type": "类型",
+    "status": "状态",
+    "channel": "频道",
+    "role": "角色",
+    "member": "成员",
+    "duration": "时长",
+    "reason": "原因",
+    "language": "语言"
+  },
+  "header": {
+    "notifications": "通知",
+    "settings": "设置",
+    "logout": "退出登录",
+    "toggleSidebar": "切换侧边栏",
+    "refreshData": "刷新 Discord 数据"
+  },
+  "sidebar": {
+    "closeSidebar": "关闭侧边栏",
+    "addToServer": "添加到服务器",
+    "docs": "文档",
+    "support": "支持",
+    "backToServers": "返回服务器列表"
+  },
+  "empty": {
+    "noData": "暂无数据",
+    "noResults": "未找到结果",
+    "noItems": "暂无项目"
+  },
+  "time": {
+    "seconds": "秒",
+    "minutes": "分钟",
+    "hours": "小时",
+    "days": "天",
+    "ago": "{{time}}前",
+    "in": "{{time}}后"
+  },
+  "confirm": {
+    "title": "确定要继续吗？",
+    "deleteTitle": "确认删除",
+    "deleteMessage": "此操作无法撤销。",
+    "unsavedChanges": "您有未保存的更改。确定要离开吗？"
+  },
+  "accessibility": {
+    "skipToContent": "跳转到主要内容",
+    "loading": "正在加载内容",
+    "loaded": "内容已加载",
+    "error": "发生错误",
+    "menuOpen": "菜单已打开",
+    "menuClosed": "菜单已关闭"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "title": "建议",
+  "subtitle": "让成员提交想法并投票。管理状态和反馈。",
+  "stats": {
+    "totalSuggestions": "建议总数",
+    "systemStatus": "系统状态",
+    "channel": {
+      "configured": "频道已配置",
+      "notSet": "频道未设置"
+    }
+  },
+  "tabs": {
+    "suggestions": "建议",
+    "settings": "设置"
+  },
+  "filter": {
+    "filterByStatus": "按状态筛选",
+    "all": "全部",
+    "pending": "待处理",
+    "approved": "已批准",
+    "rejected": "已拒绝",
+    "implemented": "已实现",
+    "considered": "考虑中"
+  },
+  "table": {
+    "id": "ID",
+    "author": "作者",
+    "content": "内容",
+    "status": "状态",
+    "votes": "投票数",
+    "date": "日期"
+  },
+  "actions": {
+    "approve": "批准",
+    "reject": "拒绝",
+    "implement": "标记为已实现",
+    "consider": "考虑",
+    "delete": "删除"
+  },
+  "settings": {
+    "channel": "建议频道",
+    "channelDesc": "建议发布供投票的频道。",
+    "voteEmojis": "投票表情",
+    "voteEmojisDesc": "用于赞成和反对反应的表情。",
+    "autoThread": "自动创建话题",
+    "autoThreadDesc": "每条新建议自动创建讨论话题。",
+    "dmOnStatusChange": "状态变更时发送私信",
+    "dmOnStatusChangeDesc": "当建议状态变更时通过私信通知作者。"
+  },
+  "toast": {
+    "approved": "建议已批准",
+    "rejected": "建议已拒绝",
+    "implemented": "建议已标记为已实现",
+    "considered": "建议已标记为考虑中",
+    "deleted": "建议已删除",
+    "actionFailed": "更新建议失败",
+    "settingsSaved": "建议设置已保存",
+    "settingsFailed": "保存建议设置失败"
+  },
+  "empty": "暂无建议。",
+  "loading": "正在加载建议...",
+  "pagination": {
+    "previous": "上一页",
+    "next": "下一页",
+    "page": "第 {{page}} 页 / 共 {{total}} 页"
+  }
+}

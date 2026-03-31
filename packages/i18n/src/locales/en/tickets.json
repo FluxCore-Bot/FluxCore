@@ -1,0 +1,77 @@
+{
+  "title": "Ticket System",
+  "subtitle": "Create support ticket panels and manage open tickets from the dashboard.",
+  "stats": {
+    "totalTickets": "Total Tickets",
+    "open": "Open",
+    "claimed": "Claimed",
+    "panels": "Panels"
+  },
+  "tabs": {
+    "activeTickets": "Active Tickets",
+    "panelBuilder": "Panel Builder",
+    "settings": "Settings"
+  },
+  "table": {
+    "id": "ID",
+    "user": "User",
+    "subject": "Subject",
+    "status": "Status",
+    "assignee": "Assignee",
+    "created": "Created"
+  },
+  "statuses": {
+    "open": "Open",
+    "claimed": "Claimed",
+    "closed": "Closed"
+  },
+  "panelBuilder": {
+    "title": "Panel Title",
+    "channel": "Channel",
+    "buttonLabel": "Button Label",
+    "welcomeMessage": "Welcome Message",
+    "category": "Ticket Category",
+    "create": "Create Panel",
+    "edit": "Edit Panel",
+    "deploy": "Deploy Panel"
+  },
+  "settings": {
+    "transcriptChannel": "Transcript Channel",
+    "transcriptChannelDesc": "Channel where ticket transcripts are saved on close.",
+    "maxTicketsPerUser": "Max Tickets per User",
+    "maxTicketsPerUserDesc": "Maximum number of open tickets a single user can have.",
+    "closeConfirmation": "Close Confirmation",
+    "closeConfirmationDesc": "Require confirmation before closing a ticket.",
+    "dmTranscript": "DM Transcript",
+    "dmTranscriptDesc": "Send a copy of the transcript to the ticket creator via DM."
+  },
+  "actions": {
+    "claim": "Claim",
+    "close": "Close",
+    "delete": "Delete",
+    "reopen": "Reopen"
+  },
+  "toast": {
+    "panelCreated": "Ticket panel created",
+    "panelCreateFailed": "Failed to create ticket panel",
+    "panelUpdated": "Ticket panel updated",
+    "panelUpdateFailed": "Failed to update ticket panel",
+    "panelDeployed": "Ticket panel deployed",
+    "panelDeployFailed": "Failed to deploy ticket panel",
+    "ticketClaimed": "Ticket claimed",
+    "ticketClaimFailed": "Failed to claim ticket",
+    "ticketClosed": "Ticket closed",
+    "ticketCloseFailed": "Failed to close ticket",
+    "ticketReopened": "Ticket reopened",
+    "ticketReopenFailed": "Failed to reopen ticket",
+    "ticketDeleted": "Ticket deleted",
+    "ticketDeleteFailed": "Failed to delete ticket",
+    "settingsSaved": "Ticket settings saved",
+    "settingsFailed": "Failed to save ticket settings"
+  },
+  "empty": {
+    "tickets": "No active tickets.",
+    "panels": "No ticket panels created yet."
+  },
+  "loading": "Loading tickets..."
+}

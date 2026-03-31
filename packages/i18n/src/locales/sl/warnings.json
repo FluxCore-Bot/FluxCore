@@ -1,0 +1,72 @@
+{
+  "title": "Opozorila",
+  "subtitle": "Sledite in upravljajte opozorila članov s samodejno stopnjevanjem.",
+  "stats": {
+    "totalWarnings": "Skupaj opozoril",
+    "escalationRules": "Pravila stopnjevanja",
+    "dmOnWarn": "DM ob opozorilu"
+  },
+  "tabs": {
+    "warnings": "Dnevnik opozoril",
+    "escalation": "Stopnjevanje",
+    "settings": "Nastavitve"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Uporabnik",
+    "moderator": "Moderator",
+    "reason": "Razlog",
+    "date": "Datum"
+  },
+  "filter": {
+    "userPlaceholder": "Filtriraj po ID-ju uporabnika...",
+    "clearAll": "Počisti vse"
+  },
+  "pagination": {
+    "previous": "Prejšnja",
+    "next": "Naslednja",
+    "page": "Stran {{page}} od {{total}} ({{count}} skupaj)"
+  },
+  "loading": "Nalaganje opozoril...",
+  "noWarnings": "Ni najdenih opozoril.",
+  "toast": {
+    "warningRemoved": "Opozorilo odstranjeno",
+    "warningsFailed": "Brisanje opozorila ni uspelo",
+    "enterUserId": "Vnesite ID uporabnika za brisanje vseh opozoril tega uporabnika",
+    "allCleared": "Vsa opozorila zbrisana za uporabnika",
+    "clearFailed": "Brisanje opozoril ni uspelo",
+    "thresholdAdded": "Prag kazni dodan",
+    "thresholdFailed": "Dodajanje kazni ni uspelo",
+    "thresholdRemoved": "Kazen odstranjena",
+    "removeFailed": "Odstranjevanje kazni ni uspelo",
+    "settingFailed": "Posodabljanje nastavitve ni uspelo",
+    "thresholdInvalid": "Prag mora biti pozitivno število"
+  },
+  "escalation": {
+    "title": "Stopnjevanje kazni",
+    "description": "Konfigurirajte samodejne ukrepe, ko uporabnik doseže določeno število opozoril.",
+    "threshold": "Prag",
+    "action": "Dejanje",
+    "duration": "Trajanje",
+    "noRules": "Ni konfiguriranih pravil stopnjevanja.",
+    "addRule": "Dodaj pravilo stopnjevanja",
+    "addButton": "Dodaj pravilo",
+    "warnings": "{{count}} opozoril",
+    "min": "{{count}} min",
+    "timeout": "Odmor",
+    "kick": "Izklop",
+    "ban": "Prepoved",
+    "durationLabel": "Trajanje (sekunde)",
+    "thresholdPlaceholder": "npr. 3",
+    "durationPlaceholder": "npr. 3600"
+  },
+  "settings": {
+    "title": "Nastavitve opozoril",
+    "dmOnWarn": "DM ob opozorilu",
+    "dmOnWarnDesc": "Pošljite neposredno sporočilo uporabniku, ko prejme opozorilo.",
+    "requireReason": "Zahtevaj razlog",
+    "requireReasonDesc": "Moderatorji morajo navesti razlog pri izdaji opozorila.",
+    "maxWarnings": "Maks opozoril",
+    "maxWarningsDesc": "Največje število opozoril na uporabnika (0 = neomejeno)."
+  }
+}

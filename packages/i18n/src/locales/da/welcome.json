@@ -1,0 +1,65 @@
+{
+  "title": "Velkommen og farvel",
+  "subtitle": "Konfigurer velkomst- og farvelbeskeder, billeder og autoroller.",
+  "loadingSubtitle": "Konfigurer velkomst- og farvelbeskeder for din server.",
+  "tabs": {
+    "welcome": "Velkommen",
+    "welcomeImage": "Velkomstbillede",
+    "farewell": "Farvel",
+    "farewellImage": "Farvelbillede",
+    "dm": "Velkomst-DM",
+    "autorole": "Autorolle"
+  },
+  "welcome": {
+    "title": "Velkomstbesked",
+    "description": "Send en tilpasset indlejring, når et nyt medlem tilslutter sig.",
+    "channelLabel": "Velkomstkanal-ID",
+    "channelPlaceholder": "Kanal-ID...",
+    "embedBuilder": "Indlejringsbygger"
+  },
+  "welcomeImage": {
+    "title": "Velkomstbillede",
+    "description": "Generer et tilpasset billedkort med medlemmets avatar, når de tilslutter sig.",
+    "disabled": "Aktiver kontakten ovenfor for at konfigurere velkomstbilleder."
+  },
+  "farewell": {
+    "title": "Farvelbesked",
+    "description": "Send en besked, når et medlem forlader serveren.",
+    "channelLabel": "Farvelkanal-ID",
+    "channelPlaceholder": "Kanal-ID..."
+  },
+  "farewellImage": {
+    "title": "Farvelbillede",
+    "description": "Generer et tilpasset farvelkort, når et medlem forlader.",
+    "disabled": "Aktiver kontakten ovenfor for at konfigurere farvelbilleder."
+  },
+  "dm": {
+    "title": "Velkomst-DM",
+    "description": "Send en direkte besked til nye medlemmer. Fejler stille, hvis DM'er er deaktiveret."
+  },
+  "autorole": {
+    "title": "Autorolle",
+    "description": "Tildel automatisk roller til nye medlemmer, når de tilslutter sig. Botter er undtaget. Botten skal have en rolle højere end rollerne angivet her.",
+    "label": "Rolle-ID'er (kommaseparerede)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Titel",
+    "description": "Beskrivelse",
+    "color": "Farve (hex)",
+    "footer": "Sidefod",
+    "thumbnail": "Miniaturebillede-URL",
+    "image": "Billed-URL",
+    "variables": "Variabler:"
+  },
+  "saveChanges": "Gem ændringer",
+  "saving": "Gemmer...",
+  "sendTest": "Send testbesked",
+  "sending": "Sender...",
+  "toast": {
+    "saved": "Velkomstkonfiguration gemt",
+    "saveFailed": "Kunne ikke gemme konfiguration",
+    "testSent": "Testbesked sendes til <#{{channelId}}>",
+    "testFailed": "Kunne ikke sende testbesked"
+  }
+}

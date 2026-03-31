@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore 儀表板"
+  },
+  "status": {
+    "online": "線上",
+    "offline": "離線",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "總覽",
+    "automation": "自動化",
+    "music": "音樂",
+    "tempvoice": "臨時語音",
+    "welcome": "歡迎",
+    "moderation": "管理",
+    "warnings": "警告",
+    "rolePanels": "角色面板",
+    "leveling": "等級系統",
+    "scheduled": "排程訊息",
+    "commands": "指令",
+    "security": "安全",
+    "tickets": "工單",
+    "giveaways": "抽獎",
+    "suggestions": "建議",
+    "starboard": "精華訊息",
+    "logs": "日誌",
+    "permissions": "權限",
+    "settings": "設定"
+  },
+  "actions": {
+    "save": "儲存",
+    "cancel": "取消",
+    "delete": "刪除",
+    "edit": "編輯",
+    "create": "建立",
+    "add": "新增",
+    "remove": "移除",
+    "confirm": "確認",
+    "close": "關閉",
+    "back": "返回",
+    "next": "下一步",
+    "search": "搜尋",
+    "filter": "篩選",
+    "refresh": "重新整理",
+    "reset": "重設",
+    "enable": "啟用",
+    "disable": "停用",
+    "copy": "複製",
+    "export": "匯出",
+    "import": "匯入",
+    "submit": "提交",
+    "loading": "載入中...",
+    "retry": "重試"
+  },
+  "labels": {
+    "enabled": "已啟用",
+    "disabled": "已停用",
+    "active": "活躍",
+    "inactive": "未啟用",
+    "none": "無",
+    "all": "全部",
+    "custom": "自訂",
+    "default": "預設",
+    "required": "必填",
+    "optional": "選填",
+    "name": "名稱",
+    "description": "描述",
+    "type": "類型",
+    "status": "狀態",
+    "channel": "頻道",
+    "role": "角色",
+    "member": "成員",
+    "duration": "時長",
+    "reason": "原因",
+    "language": "語言"
+  },
+  "header": {
+    "notifications": "通知",
+    "settings": "設定",
+    "logout": "登出",
+    "toggleSidebar": "切換側邊欄",
+    "refreshData": "重新整理 Discord 資料"
+  },
+  "sidebar": {
+    "closeSidebar": "關閉側邊欄",
+    "addToServer": "新增至伺服器",
+    "docs": "文件",
+    "support": "支援",
+    "backToServers": "返回伺服器列表"
+  },
+  "empty": {
+    "noData": "沒有資料",
+    "noResults": "找不到結果",
+    "noItems": "尚無項目"
+  },
+  "time": {
+    "seconds": "秒",
+    "minutes": "分鐘",
+    "hours": "小時",
+    "days": "天",
+    "ago": "{{time}}前",
+    "in": "{{time}}後"
+  },
+  "confirm": {
+    "title": "確定要繼續嗎？",
+    "deleteTitle": "確認刪除",
+    "deleteMessage": "此操作無法復原。",
+    "unsavedChanges": "您有未儲存的變更。確定要離開嗎？"
+  },
+  "accessibility": {
+    "skipToContent": "跳至主要內容",
+    "loading": "正在載入內容",
+    "loaded": "內容已載入",
+    "error": "發生錯誤",
+    "menuOpen": "選單已開啟",
+    "menuClosed": "選單已關閉"
+  }
+}

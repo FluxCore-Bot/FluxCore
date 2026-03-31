@@ -1,0 +1,50 @@
+{
+  "title": "[NEEDS TRANSLATION] Giveaways",
+  "subtitle": "[NEEDS TRANSLATION] Run giveaways with customizable duration, entry requirements, and winner selection.",
+  "stats": {
+    "activeGiveaways": "[NEEDS TRANSLATION] Active Giveaways",
+    "pastGiveaways": "[NEEDS TRANSLATION] Past Giveaways",
+    "totalEntries": "[NEEDS TRANSLATION] Total Entries"
+  },
+  "table": {
+    "prize": "[NEEDS TRANSLATION] Prize",
+    "winners": "[NEEDS TRANSLATION] Winners",
+    "entries": "[NEEDS TRANSLATION] Entries",
+    "endsIn": "[NEEDS TRANSLATION] Ends In",
+    "status": "[NEEDS TRANSLATION] Status"
+  },
+  "statuses": {
+    "active": "[NEEDS TRANSLATION] Active",
+    "ended": "[NEEDS TRANSLATION] Ended",
+    "cancelled": "[NEEDS TRANSLATION] Cancelled"
+  },
+  "actions": {
+    "create": "[NEEDS TRANSLATION] Create Giveaway",
+    "edit": "[NEEDS TRANSLATION] Edit",
+    "end": "[NEEDS TRANSLATION] End",
+    "reroll": "[NEEDS TRANSLATION] Reroll",
+    "delete": "[NEEDS TRANSLATION] Delete"
+  },
+  "form": {
+    "prize": "[NEEDS TRANSLATION] Prize",
+    "winnersCount": "[NEEDS TRANSLATION] Number of Winners",
+    "duration": "[NEEDS TRANSLATION] Duration",
+    "channel": "[NEEDS TRANSLATION] Channel",
+    "requiredRole": "[NEEDS TRANSLATION] Required Role",
+    "description": "[NEEDS TRANSLATION] Description"
+  },
+  "toast": {
+    "created": "[NEEDS TRANSLATION] Giveaway created",
+    "createFailed": "[NEEDS TRANSLATION] Failed to create giveaway",
+    "updated": "[NEEDS TRANSLATION] Giveaway updated",
+    "updateFailed": "[NEEDS TRANSLATION] Failed to update giveaway",
+    "ended": "[NEEDS TRANSLATION] Giveaway ended",
+    "endFailed": "[NEEDS TRANSLATION] Failed to end giveaway",
+    "rerolled": "[NEEDS TRANSLATION] Winners rerolled",
+    "rerollFailed": "[NEEDS TRANSLATION] Failed to reroll winners",
+    "deleted": "[NEEDS TRANSLATION] Giveaway deleted",
+    "deleteFailed": "[NEEDS TRANSLATION] Failed to delete giveaway"
+  },
+  "empty": "[NEEDS TRANSLATION] No giveaways yet. Create one to get started.",
+  "loading": "[NEEDS TRANSLATION] Loading giveaways..."
+}

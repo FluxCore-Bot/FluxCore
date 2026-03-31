@@ -1,0 +1,65 @@
+{
+  "title": "Pasisveikinimas ir atsisveikinimai",
+  "subtitle": "Konfigurukite pasisveikinimo ir atsisveikinimu zinutes, paveikslus ir automatines roles.",
+  "loadingSubtitle": "Konfigurukite pasisveikinimo ir atsisveikinimu zinutes savo serveriui.",
+  "tabs": {
+    "welcome": "Pasisveikinimas",
+    "welcomeImage": "Pasisveikinimo paveikslas",
+    "farewell": "Atsisveikinimai",
+    "farewellImage": "Atsisveikinimu paveikslas",
+    "dm": "Pasisveikinimo privatui zinute",
+    "autorole": "Automatine role"
+  },
+  "welcome": {
+    "title": "Pasisveikinimo zinute",
+    "description": "Issiuskite pritaikyta embed, kai prisijungia naujas narys.",
+    "channelLabel": "Pasisveikinimo kanalo ID",
+    "channelPlaceholder": "Kanalo ID...",
+    "embedBuilder": "Embed konstruktorius"
+  },
+  "welcomeImage": {
+    "title": "Pasisveikinimo paveikslas",
+    "description": "Generuokite pritaikyta vaizdo kortele su nario avataru, kai jis prisijungia.",
+    "disabled": "Ijunkite jungikl virs, kad konfiguroutumete pasisveikinimo paveikslus."
+  },
+  "farewell": {
+    "title": "Atsisveikinimu zinute",
+    "description": "Issiuskite zinute, kai narys palieka serveri.",
+    "channelLabel": "Atsisveikinimu kanalo ID",
+    "channelPlaceholder": "Kanalo ID..."
+  },
+  "farewellImage": {
+    "title": "Atsisveikinimu paveikslas",
+    "description": "Generuokite pritaikyta atsisveikinimu kortele, kai narys palieka.",
+    "disabled": "Ijunkite jungikli virs, kad konfiguroutumete atsisveikinimu paveikslus."
+  },
+  "dm": {
+    "title": "Pasisveikinimo privatui zinute",
+    "description": "Issiuskite privatia zinute naujiems nariams. Tyliai nepavyks, jei privatuos zinutes isjungtos."
+  },
+  "autorole": {
+    "title": "Automatine role",
+    "description": "Automatiskai priskirkite roles naujiems nariams prisijungus. Botai yra isklyčiami. Botas privalo tureti aukstesne role nei čia nurodytos roles.",
+    "label": "Roliu ID (atskirti kableliais)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Pavadinimas",
+    "description": "Aprasymas",
+    "color": "Spalva (hex)",
+    "footer": "Porastine",
+    "thumbnail": "Miniatiuros URL",
+    "image": "Paveikslelo URL",
+    "variables": "Kintamieji:"
+  },
+  "saveChanges": "Issaugoti pakeitimus",
+  "saving": "Issaugoma...",
+  "sendTest": "Siusti testine zinute",
+  "sending": "Siunciama...",
+  "toast": {
+    "saved": "Pasisveikinimo konfiguracija issaugota",
+    "saveFailed": "Nepavyko issaugoti konfiguracijos",
+    "testSent": "Testine zinute bus issiusta i <#{{channelId}}>",
+    "testFailed": "Nepavyko issiusti testines zinutes"
+  }
+}

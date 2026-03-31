@@ -1,0 +1,108 @@
+{
+  "title": "Seguridade",
+  "subtitle": "Configura a protección anti-raid e os axustes de seguridade do servidor.",
+  "antiRaid": {
+    "title": "Protección Anti-Raid",
+    "description": "Activa a detección automática e resposta a raids coordinados, contas sospeitosas e accións destrutivas."
+  },
+  "sections": {
+    "joinRate": "Taxa de Unión",
+    "accountAge": "Idade da Conta",
+    "antiNuke": "Anti-Nuke",
+    "lockdown": "Peche",
+    "events": "Eventos"
+  },
+  "joinRate": {
+    "title": "Detección de Taxa de Unión",
+    "description": "Detecta unións masivas monitorizando a taxa de novos membros que se unen.",
+    "threshold": "Limiar de Unión",
+    "thresholdHint": "Número de unións para activar a detección",
+    "window": "Ventá de Tempo (segundos)",
+    "windowHint": "Ventá na que se contan as unións",
+    "action": "Acción ao Detectar",
+    "actionHint": "Acción a tomar con membros sospeitosos de raid",
+    "actions": {
+      "ban": "Banear",
+      "kick": "Expulsar",
+      "timeout": "Silenciar",
+      "lockdown": "Peche"
+    }
+  },
+  "accountAge": {
+    "title": "Filtro de Idade da Conta",
+    "description": "Actúa automaticamente sobre contas máis novas que a idade mínima. Establece en 0 para desactivar.",
+    "minAge": "Idade Mínima da Conta (días)",
+    "minAgeHint": "0 = desactivado. As contas máis novas que isto serán accionadas.",
+    "action": "Acción"
+  },
+  "antiNuke": {
+    "title": "Protección Anti-Nuke",
+    "description": "Detecta eliminacións masivas de canles/roles e pon en corentena ao usuario responsable eliminando todos os seus roles.",
+    "threshold": "Limiar de Eliminación",
+    "thresholdHint": "Número de eliminacións en 10 segundos para activar a corentena",
+    "channelDeleteThreshold": "Limiar de Eliminación de Canles",
+    "roleDeleteThreshold": "Limiar de Eliminación de Roles",
+    "massbanThreshold": "Limiar de Bans Masivos",
+    "interval": "Intervalo (segundos)",
+    "action": "Acción"
+  },
+  "lockdown": {
+    "title": "Peche Automático por Raid",
+    "description": "Bloquear automaticamente todos os canles cando se detecta un raid.",
+    "whitelistedRoles": "IDs de Roles en Lista Branca (separados por comas)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Os membros con estes roles estarán exentos da detección de raid.",
+    "logChannel": "ID do Canal de Rexistro",
+    "logChannelPlaceholder": "ID do canal para rexistros de eventos de raid...",
+    "enableButton": "Activar Peche",
+    "disableButton": "Desactivar Peche",
+    "active": "Peche Activo",
+    "inactive": "Peche Inactivo"
+  },
+  "events": {
+    "title": "Eventos de Raid Recentes",
+    "description": "Cronoloxía de raids detectados, bloqueos por idade de conta e eventos de peche.",
+    "empty": "Aínda non se rexistraron eventos de raid. Os eventos aparecerán aquí cando se active a detección de raid.",
+    "actionLabel": "Acción: {{action}}",
+    "usersLabel": "Usuarios: {{count}}",
+    "accountAgeLabel": "Idade da conta: {{days}}d",
+    "table": {
+      "type": "Tipo",
+      "description": "Descrición",
+      "time": "Hora",
+      "action": "Acción Tomada"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Pico de Unións",
+    "account_age": "Idade da Conta",
+    "nuke_attempt": "Intento de Nuke",
+    "lockdown": "Peche",
+    "massJoin": "Unión Masiva",
+    "suspiciousAccounts": "Contas Sospeitosas",
+    "channelDeletion": "Eliminación de Canal",
+    "roleDeletion": "Eliminación de Rol",
+    "massBan": "Ban Masivo"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "page": "Páxina {{current}} de {{total}}"
+  },
+  "toast": {
+    "saved": "Configuración anti-raid gardada",
+    "saveFailed": "Non se puido gardar a configuración",
+    "lockdownEnabled": "Peche do servidor activado",
+    "lockdownDisabled": "Peche do servidor desactivado",
+    "lockdownFailed": "Non se puido cambiar o estado do peche"
+  },
+  "saveButton": {
+    "saving": "Gardando...",
+    "save": "Gardar Cambios"
+  },
+  "labels": {
+    "seconds": "segundos",
+    "minutes": "minutos",
+    "hours": "horas"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "title": "[NEEDS TRANSLATION] Starboard",
+  "subtitle": "[NEEDS TRANSLATION] Highlight the best messages by collecting star reactions into a dedicated channel.",
+  "tabs": {
+    "settings": "[NEEDS TRANSLATION] Settings",
+    "starredMessages": "[NEEDS TRANSLATION] Starred Messages"
+  },
+  "settings": {
+    "title": "[NEEDS TRANSLATION] Starboard Configuration",
+    "description": "[NEEDS TRANSLATION] Configure when and where starred messages are posted.",
+    "channelId": "[NEEDS TRANSLATION] Starboard Channel",
+    "channelIdDesc": "[NEEDS TRANSLATION] The channel where starred messages are posted.",
+    "starEmoji": "[NEEDS TRANSLATION] Star Emoji",
+    "starEmojiDesc": "[NEEDS TRANSLATION] The emoji used to star messages. Defaults to the star emoji.",
+    "threshold": "[NEEDS TRANSLATION] Star Threshold",
+    "thresholdDesc": "[NEEDS TRANSLATION] Minimum number of reactions required to post a message to the starboard.",
+    "selfStar": "[NEEDS TRANSLATION] Self-Star",
+    "selfStarDesc": "[NEEDS TRANSLATION] Allow message authors to star their own messages.",
+    "nsfwAllowed": "[NEEDS TRANSLATION] NSFW Allowed",
+    "nsfwAllowedDesc": "[NEEDS TRANSLATION] Allow messages from NSFW channels to appear on the starboard.",
+    "ignoredChannels": "[NEEDS TRANSLATION] Ignored Channels",
+    "ignoredChannelsDesc": "[NEEDS TRANSLATION] Messages from these channels will never appear on the starboard."
+  },
+  "messages": {
+    "table": {
+      "original": "[NEEDS TRANSLATION] Original Message",
+      "stars": "[NEEDS TRANSLATION] Stars",
+      "channel": "[NEEDS TRANSLATION] Channel",
+      "date": "[NEEDS TRANSLATION] Date"
+    },
+    "noMessages": "[NEEDS TRANSLATION] No starred messages yet."
+  },
+  "toast": {
+    "saved": "[NEEDS TRANSLATION] Starboard settings saved",
+    "saveFailed": "[NEEDS TRANSLATION] Failed to save starboard settings"
+  },
+  "actions": {
+    "save": "[NEEDS TRANSLATION] Save",
+    "saving": "[NEEDS TRANSLATION] Saving..."
+  }
+}

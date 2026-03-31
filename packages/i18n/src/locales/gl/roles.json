@@ -1,0 +1,112 @@
+{
+  "title": "Paneis de Roles",
+  "subtitle": "Crea paneis de roles auto-asignables usando botóns, menús despregables ou reaccións.",
+  "stats": {
+    "totalPanels": "Total de Paneis",
+    "deployed": "Despregados",
+    "totalRoles": "Total de Roles"
+  },
+  "tabs": {
+    "panels": "Paneis",
+    "preview": "Vista Previa"
+  },
+  "table": {
+    "name": "Nome",
+    "type": "Tipo",
+    "mode": "Modo",
+    "roles": "Roles",
+    "status": "Estado"
+  },
+  "panelTypes": {
+    "reaction": "Reacción",
+    "button": "Botón",
+    "dropdown": "Menú Despregable"
+  },
+  "panelModes": {
+    "toggle": "Alternar",
+    "unique": "Único",
+    "verify": "Verificar"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Alternar (engadir/eliminar)",
+    "unique": "Único (un á vez)",
+    "verify": "Verificar (só engadir)"
+  },
+  "status": {
+    "deployed": "Despregado",
+    "draft": "Borrador"
+  },
+  "dialog": {
+    "createPanel": "Crear Painel",
+    "editPanel": "Editar Painel"
+  },
+  "panelList": {
+    "title": "Todos os Paneis"
+  },
+  "form": {
+    "name": "Nome",
+    "namePlaceholder": "ex. Roles de Cor",
+    "type": "Tipo",
+    "mode": "Modo",
+    "channel": "Canal",
+    "channelPlaceholder": "Seleccionar canal",
+    "minRoles": "Roles Mínimos",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Roles Máximos",
+    "maxRolesPlaceholder": "Todos",
+    "embedSection": "Embed",
+    "embedTitle": "Título",
+    "embedTitlePlaceholder": "Título do painel (predeterminado ao nome do painel)",
+    "embedDescription": "Descrición",
+    "embedDescriptionPlaceholder": "Texto de descrición",
+    "rolesCount": "Roles ({{count}}/25)",
+    "addRole": "Engadir Rol"
+  },
+  "entry": {
+    "role": "Rol",
+    "rolePlaceholder": "Seleccionar rol",
+    "label": "Etiqueta",
+    "labelPlaceholder": "Etiqueta do botón",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "ex. estrela",
+    "description": "Descrición",
+    "descriptionPlaceholder": "Descrición da opción",
+    "style": "Estilo"
+  },
+  "buttonStyles": {
+    "primary": "Principal",
+    "secondary": "Secundario",
+    "success": "Éxito",
+    "danger": "Perigo"
+  },
+  "actions": {
+    "create": "Crear",
+    "update": "Actualizar",
+    "cancel": "Cancelar",
+    "deploy": "Despregar",
+    "delete": "Eliminar",
+    "addEntry": "Engadir Entrada",
+    "removeEntry": "Eliminar Entrada"
+  },
+  "preview": {
+    "title": "Vista Previa en Vivo",
+    "description": "Previsualiza como aparecerán os teus paneis en Discord.",
+    "selectRoles": "Seleccionar roles...",
+    "noPreview": "Non hai paneis para previsualizar."
+  },
+  "empty": "Aínda non se crearon paneis de roles. Fai clic en \"Crear Painel\" para comezar.",
+  "toast": {
+    "created": "Painel creado",
+    "createFailed": "Non se puido crear o painel",
+    "updated": "Painel actualizado",
+    "updateFailed": "Non se puido actualizar o painel",
+    "deleted": "Painel eliminado",
+    "deleteFailed": "Non se puido eliminar o painel",
+    "deployed": "Painel de roles despregado no canal",
+    "deployFailed": "Non se puido enviar o painel",
+    "nameRequired": "O nome do painel é obrigatorio",
+    "channelRequired": "O canal é obrigatorio",
+    "maxRolesReached": "Máximo de 25 roles por painel"
+  },
+  "loading": "Cargando paneis..."
+}

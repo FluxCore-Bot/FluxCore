@@ -1,0 +1,8 @@
+{
+  "title": "Nhật Ký",
+  "subtitle": "Giám sát các lần thực thi quy tắc và ghi nhật ký sự kiện.",
+  "tabs": {
+    "activity": "Nhật Ký Hoạt Động",
+    "events": "Nhật Ký Sự Kiện"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "title": "Giveaway",
+  "subtitle": "Tổ chức giveaway với thời gian, yêu cầu tham gia và cách chọn người thắng tùy chỉnh.",
+  "stats": {
+    "activeGiveaways": "Giveaway Đang Diễn Ra",
+    "pastGiveaways": "Giveaway Đã Kết Thúc",
+    "totalEntries": "Tổng Lượt Tham Gia"
+  },
+  "table": {
+    "prize": "Giải Thưởng",
+    "winners": "Người Thắng",
+    "entries": "Lượt Tham Gia",
+    "endsIn": "Kết Thúc Sau",
+    "status": "Trạng Thái"
+  },
+  "statuses": {
+    "active": "Đang Diễn Ra",
+    "ended": "Đã Kết Thúc",
+    "cancelled": "Đã Hủy"
+  },
+  "actions": {
+    "create": "Tạo Giveaway",
+    "edit": "Chỉnh Sửa",
+    "end": "Kết Thúc",
+    "reroll": "Quay Lại",
+    "delete": "Xóa"
+  },
+  "form": {
+    "prize": "Giải Thưởng",
+    "winnersCount": "Số Người Thắng",
+    "duration": "Thời Lượng",
+    "channel": "Kênh",
+    "requiredRole": "Vai Trò Yêu Cầu",
+    "description": "Mô Tả"
+  },
+  "toast": {
+    "created": "Đã tạo giveaway",
+    "createFailed": "Tạo giveaway thất bại",
+    "updated": "Đã cập nhật giveaway",
+    "updateFailed": "Cập nhật giveaway thất bại",
+    "ended": "Giveaway đã kết thúc",
+    "endFailed": "Kết thúc giveaway thất bại",
+    "rerolled": "Đã quay lại người thắng",
+    "rerollFailed": "Quay lại người thắng thất bại",
+    "deleted": "Đã xóa giveaway",
+    "deleteFailed": "Xóa giveaway thất bại"
+  },
+  "empty": "Chưa có giveaway nào. Tạo một cái để bắt đầu.",
+  "loading": "Đang tải giveaway..."
+}

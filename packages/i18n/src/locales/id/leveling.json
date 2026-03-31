@@ -1,0 +1,120 @@
+{
+  "title": "Sistem Leveling",
+  "subtitle": "Konfigurasikan perolehan XP, pengumuman naik level, hadiah peran, dan pengali.",
+  "stats": {
+    "rankedMembers": "Anggota Berperingkat",
+    "roleRewards": "Hadiah Peran",
+    "systemStatus": "Status Sistem",
+    "enabled": "Diaktifkan",
+    "disabled": "Dinonaktifkan"
+  },
+  "tabs": {
+    "leaderboard": "Papan Peringkat",
+    "settings": "Pengaturan",
+    "roleRewards": "Hadiah Peran",
+    "exclusions": "Pengecualian",
+    "multipliers": "Pengali"
+  },
+  "table": {
+    "rank": "Peringkat",
+    "userId": "ID Pengguna",
+    "level": "Level",
+    "xp": "XP",
+    "messages": "Pesan",
+    "voiceTime": "Waktu Suara"
+  },
+  "settings": {
+    "title": "Pengaturan Leveling",
+    "enabled": "Aktifkan Leveling",
+    "enabledDesc": "Aktifkan atau nonaktifkan seluruh sistem leveling.",
+    "xpPerMessage": "XP per Pesan",
+    "xpPerMessageDesc": "XP dasar yang diberikan per pesan (keacakan 0-9 ditambahkan).",
+    "xpCooldown": "Cooldown XP (detik)",
+    "xpCooldownDesc": "Waktu minimum antara pemberian XP per pengguna.",
+    "voiceXpEnabled": "XP Suara",
+    "voiceXpEnabledDesc": "Berikan XP untuk waktu yang dihabiskan di saluran suara.",
+    "voiceXpPerMinute": "XP Suara per Menit",
+    "voiceXpPerMinuteDesc": "XP yang diberikan per menit di saluran suara.",
+    "levelUpAnnouncements": "Pengumuman Naik Level",
+    "levelUpAnnouncementsDesc": "Umumkan ketika anggota naik level.",
+    "announceDest": "Tujuan Pengumuman",
+    "announceDestHint": "Anda juga dapat memasukkan ID saluran langsung di kolom input di atas.",
+    "announceDestSameChannel": "Saluran yang Sama",
+    "announceDestDM": "Pesan Langsung",
+    "announceMessage": "Pesan Pengumuman",
+    "announceMessagePlaceholder": "{user} baru saja mencapai **Level {level}**!",
+    "announceMessageVars": "Variabel: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Hadiah Peran",
+    "description": "Berikan peran secara otomatis ketika anggota mencapai level tertentu.",
+    "addReward": "Tambah Hadiah",
+    "addRewardTitle": "Tambah Hadiah Peran",
+    "level": "Level",
+    "levelPrefix": "Level {{level}}",
+    "roleId": "ID Peran",
+    "levelPlaceholder": "mis. 5",
+    "rolePlaceholder": "mis. 123456789",
+    "removeReward": "Hapus",
+    "noRewards": "Tidak ada hadiah peran yang dikonfigurasi."
+  },
+  "exclusions": {
+    "title": "Pengecualian XP",
+    "description": "Saluran dan peran yang tidak mendapatkan XP.",
+    "noXpChannels": "Saluran Tanpa XP (ID dipisahkan koma)",
+    "noXpChannelsPlaceholder": "mis. 123456789, 987654321",
+    "noXpRoles": "Peran Tanpa XP (ID dipisahkan koma)",
+    "noXpRolesPlaceholder": "mis. 123456789, 987654321",
+    "save": "Simpan Pengecualian"
+  },
+  "multipliers": {
+    "title": "Pengali XP",
+    "description": "Atur pengali XP per saluran atau peran. Pengali 2 menggandakan XP yang diperoleh.",
+    "channelMultipliers": "Pengali Saluran",
+    "roleMultipliers": "Pengali Peran",
+    "channelId": "ID Saluran",
+    "roleId": "ID Peran",
+    "multiplier": "Pengali",
+    "type": "Tipe",
+    "typeChannel": "Saluran",
+    "typeRole": "Peran",
+    "id": "ID",
+    "idPlaceholder": "ID Saluran atau Peran",
+    "value": "Pengali",
+    "valuePlaceholder": "mis. 2",
+    "add": "Tambah Pengali",
+    "addTitle": "Tambah Pengali",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Tidak ada pengali XP yang dikonfigurasi."
+  },
+  "pagination": {
+    "previous": "Sebelumnya",
+    "next": "Berikutnya",
+    "pageInfo": "Halaman {{page}} dari {{totalPages}} ({{total}} total)"
+  },
+  "loading": "Memuat papan peringkat...",
+  "loadingGeneric": "Memuat...",
+  "emptyLeaderboard": "Belum ada anggota yang mendapatkan XP.",
+  "toast": {
+    "saved": "Pengaturan leveling disimpan",
+    "saveFailed": "Gagal memperbarui pengaturan",
+    "rewardAdded": "Hadiah ditambahkan",
+    "rewardAddFailed": "Gagal menambahkan hadiah",
+    "rewardRemoved": "Hadiah dihapus",
+    "rewardRemoveFailed": "Gagal menghapus hadiah",
+    "multiplierAdded": "Pengali ditambahkan",
+    "multiplierAddFailed": "Gagal menambahkan pengali",
+    "multiplierRemoved": "Pengali dihapus",
+    "multiplierRemoveFailed": "Gagal menghapus pengali",
+    "exclusionUpdated": "Pengecualian disimpan",
+    "exclusionFailed": "Gagal menyimpan pengecualian",
+    "levelValidation": "Level harus berada di antara 1 dan 100",
+    "roleIdRequired": "ID Peran wajib diisi",
+    "multiplierIdRequired": "ID dan nilai pengali wajib diisi",
+    "multiplierRange": "Pengali harus berada di antara 0 dan 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}j {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

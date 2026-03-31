@@ -1,0 +1,65 @@
+{
+  "title": "Welkom & Afscheid",
+  "subtitle": "Configureer welkom- en afscheidberichten, afbeeldingen en automatische rollen.",
+  "loadingSubtitle": "Configureer welkom- en afscheidberichten voor je server.",
+  "tabs": {
+    "welcome": "Welkom",
+    "welcomeImage": "Welkomstafbeelding",
+    "farewell": "Afscheid",
+    "farewellImage": "Afscheidsafbeelding",
+    "dm": "Welkomst-DM",
+    "autorole": "Automatische rol"
+  },
+  "welcome": {
+    "title": "Welkomstbericht",
+    "description": "Stuur een aangepaste embed wanneer een nieuw lid deelneemt.",
+    "channelLabel": "Welkomstkanaal-ID",
+    "channelPlaceholder": "Kanaal-ID...",
+    "embedBuilder": "Embedbouwer"
+  },
+  "welcomeImage": {
+    "title": "Welkomstafbeelding",
+    "description": "Genereer een aangepaste afbeeldingskaart met de avatar van het lid wanneer hij deelneemt.",
+    "disabled": "Schakel de schakelaar hierboven in om welkomstafbeeldingen te configureren."
+  },
+  "farewell": {
+    "title": "Afscheidsbericht",
+    "description": "Stuur een bericht wanneer een lid de server verlaat.",
+    "channelLabel": "Afscheidskanaal-ID",
+    "channelPlaceholder": "Kanaal-ID..."
+  },
+  "farewellImage": {
+    "title": "Afscheidsafbeelding",
+    "description": "Genereer een aangepaste afscheidskaart wanneer een lid vertrekt.",
+    "disabled": "Schakel de schakelaar hierboven in om afscheidsafbeeldingen te configureren."
+  },
+  "dm": {
+    "title": "Welkomst-DM",
+    "description": "Stuur een direct bericht naar nieuwe leden. Mislukt stilzwijgend als DM's zijn uitgeschakeld."
+  },
+  "autorole": {
+    "title": "Automatische rol",
+    "description": "Wijs automatisch rollen toe aan nieuwe leden wanneer ze deelnemen. Bots zijn uitgesloten. De bot moet een hogere rol hebben dan de hier vermelde rollen.",
+    "label": "Rol-ID's (kommagescheiden)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Titel",
+    "description": "Beschrijving",
+    "color": "Kleur (hex)",
+    "footer": "Voettekst",
+    "thumbnail": "Miniatuur-URL",
+    "image": "Afbeeldings-URL",
+    "variables": "Variabelen:"
+  },
+  "saveChanges": "Wijzigingen opslaan",
+  "saving": "Opslaan...",
+  "sendTest": "Testbericht versturen",
+  "sending": "Verzenden...",
+  "toast": {
+    "saved": "Welkomstconfiguratie opgeslagen",
+    "saveFailed": "Configuratie opslaan mislukt",
+    "testSent": "Testbericht wordt verzonden naar <#{{channelId}}>",
+    "testFailed": "Testbericht versturen mislukt"
+  }
+}

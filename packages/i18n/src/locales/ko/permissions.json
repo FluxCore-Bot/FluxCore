@@ -1,0 +1,118 @@
+{
+  "title": "역할 및 권한",
+  "subtitle": "대시보드 각 모듈에 대한 접근 및 관리 권한을 제어합니다.",
+  "actions": {
+    "createRole": "역할 만들기"
+  },
+  "permissionSystem": {
+    "title": "권한 시스템",
+    "active": "활성 — 관리자는 할당된 권한으로 제한됩니다.",
+    "inactive": "비활성 — MANAGE_GUILD 권한을 가진 모든 관리자가 전체 접근 가능합니다.",
+    "enabledToast": "권한 시스템이 활성화되었습니다",
+    "disabledToast": "권한 시스템이 비활성화되었습니다 — 모든 관리자가 전체 접근 가능합니다"
+  },
+  "warning": {
+    "disabled": "권한 시스템이 비활성화되어 있습니다. 현재 모든 대시보드 관리자가 전체 접근 권한을 가지고 있습니다. 위에서 활성화하여 세분화된 권한을 적용하세요."
+  },
+  "tabs": {
+    "roles": "역할",
+    "auditLog": "감사 로그"
+  },
+  "roleList": {
+    "title": "대시보드 역할",
+    "empty": "아직 역할이 생성되지 않았습니다.",
+    "selectHint": "역할을 선택하여 편집하거나 새 역할을 만드세요.",
+    "default": "기본값",
+    "name": "이름",
+    "members": "멤버",
+    "permissions": "권한",
+    "edit": "편집",
+    "delete": "삭제"
+  },
+  "presets": {
+    "title": "프리셋으로 빠르게 추가",
+    "createdToast": "\"{{name}}\" 역할이 생성되었습니다"
+  },
+  "roleEditor": {
+    "memberCount": "멤버 {{count}}명",
+    "memberCount_plural": "멤버 {{count}}명",
+    "name": "역할 이름",
+    "color": "색상",
+    "defaultRole": "기본 역할",
+    "permissions": "권한",
+    "allBadge": "전체",
+    "discordRoles": "Discord 역할"
+  },
+  "roleForm": {
+    "name": "역할 이름",
+    "discordRoles": "Discord 역할",
+    "permissions": "권한",
+    "create": "역할 만들기",
+    "update": "역할 업데이트",
+    "cancel": "취소"
+  },
+  "createDialog": {
+    "title": "대시보드 역할 만들기",
+    "name": "이름",
+    "namePlaceholder": "예: 관리자",
+    "color": "색상"
+  },
+  "permissionCategories": {
+    "actions": "액션 및 자동화",
+    "music": "음악",
+    "tempvoice": "임시 음성",
+    "welcome": "환영 및 작별",
+    "moderation": "관리",
+    "logging": "로깅",
+    "leveling": "레벨링",
+    "roles": "역할 패널",
+    "tickets": "티켓",
+    "suggestions": "제안",
+    "starboard": "스타보드",
+    "giveaways": "이벤트",
+    "security": "보안",
+    "scheduled": "예약 메시지",
+    "commands": "커스텀 명령어",
+    "settings": "서버 설정"
+  },
+  "audit": {
+    "table": {
+      "user": "사용자",
+      "action": "액션",
+      "target": "대상",
+      "timestamp": "일시"
+    },
+    "noEntries": "아직 감사 로그 항목이 없습니다."
+  },
+  "pagination": {
+    "previous": "이전",
+    "next": "다음",
+    "page": "페이지 {{current}} / {{total}}"
+  },
+  "toast": {
+    "roleCreated": "역할 \"{{name}}\"이(가) 생성되었습니다",
+    "roleCreateFailed": "역할 생성에 실패했습니다",
+    "roleUpdated": "역할이 업데이트되었습니다",
+    "roleUpdateFailed": "역할 업데이트에 실패했습니다",
+    "roleDeleted": "역할이 삭제되었습니다",
+    "roleDeleteFailed": "역할 삭제에 실패했습니다"
+  },
+  "confirm": {
+    "deleteTitle": "역할 \"{{name}}\"을(를) 삭제하시겠습니까?",
+    "deleteMessage": "이 역할을 삭제하고 모든 멤버의 할당을 해제합니다. 이 작업은 되돌릴 수 없습니다.",
+    "deleteRole": "이 역할을 삭제하시겠습니까? 멤버는 할당된 권한을 잃게 됩니다."
+  },
+  "saveButton": {
+    "saving": "저장 중...",
+    "save": "변경사항 저장"
+  },
+  "deleteButton": {
+    "deleting": "삭제 중...",
+    "delete": "삭제"
+  },
+  "createButton": {
+    "creating": "생성 중...",
+    "create": "만들기"
+  },
+  "loading": "권한 불러오는 중..."
+}

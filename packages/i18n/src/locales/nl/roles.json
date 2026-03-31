@@ -1,0 +1,112 @@
+{
+  "title": "Rolpanelen",
+  "subtitle": "Maak zelf-toewijsbare rolpanelen aan met knoppen, dropdowns of reacties.",
+  "stats": {
+    "totalPanels": "Totaal panelen",
+    "deployed": "Geïmplementeerd",
+    "totalRoles": "Totaal rollen"
+  },
+  "tabs": {
+    "panels": "Panelen",
+    "preview": "Voorbeeld"
+  },
+  "table": {
+    "name": "Naam",
+    "type": "Type",
+    "mode": "Modus",
+    "roles": "Rollen",
+    "status": "Status"
+  },
+  "panelTypes": {
+    "reaction": "Reactie",
+    "button": "Knop",
+    "dropdown": "Dropdown"
+  },
+  "panelModes": {
+    "toggle": "Wisselaar",
+    "unique": "Uniek",
+    "verify": "Verifiëren"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Wisselaar (toevoegen/verwijderen)",
+    "unique": "Uniek (één tegelijk)",
+    "verify": "Verifiëren (alleen toevoegen)"
+  },
+  "status": {
+    "deployed": "Geïmplementeerd",
+    "draft": "Concept"
+  },
+  "dialog": {
+    "createPanel": "Paneel aanmaken",
+    "editPanel": "Paneel bewerken"
+  },
+  "panelList": {
+    "title": "Alle panelen"
+  },
+  "form": {
+    "name": "Naam",
+    "namePlaceholder": "bijv. Kleurrollan",
+    "type": "Type",
+    "mode": "Modus",
+    "channel": "Kanaal",
+    "channelPlaceholder": "Kanaal selecteren",
+    "minRoles": "Min. rollen",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Max. rollen",
+    "maxRolesPlaceholder": "Alle",
+    "embedSection": "Embed",
+    "embedTitle": "Titel",
+    "embedTitlePlaceholder": "Paneeltitel (standaard is paneelnaam)",
+    "embedDescription": "Beschrijving",
+    "embedDescriptionPlaceholder": "Beschrijvingstekst",
+    "rolesCount": "Rollen ({{count}}/25)",
+    "addRole": "Rol toevoegen"
+  },
+  "entry": {
+    "role": "Rol",
+    "rolePlaceholder": "Rol selecteren",
+    "label": "Label",
+    "labelPlaceholder": "Knoplabel",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "bijv. ster",
+    "description": "Beschrijving",
+    "descriptionPlaceholder": "Optiebeschrijving",
+    "style": "Stijl"
+  },
+  "buttonStyles": {
+    "primary": "Primair",
+    "secondary": "Secundair",
+    "success": "Succes",
+    "danger": "Gevaar"
+  },
+  "actions": {
+    "create": "Aanmaken",
+    "update": "Bijwerken",
+    "cancel": "Annuleren",
+    "deploy": "Implementeren",
+    "delete": "Verwijderen",
+    "addEntry": "Item toevoegen",
+    "removeEntry": "Item verwijderen"
+  },
+  "preview": {
+    "title": "Live voorbeeld",
+    "description": "Bekijk hoe je panelen eruitzien in Discord.",
+    "selectRoles": "Rollen selecteren...",
+    "noPreview": "Geen panelen om een ​​voorbeeld van te bekijken."
+  },
+  "empty": "Nog geen rolpanelen aangemaakt. Klik op \"Paneel aanmaken\" om te beginnen.",
+  "toast": {
+    "created": "Paneel aangemaakt",
+    "createFailed": "Paneel aanmaken mislukt",
+    "updated": "Paneel bijgewerkt",
+    "updateFailed": "Paneel bijwerken mislukt",
+    "deleted": "Paneel verwijderd",
+    "deleteFailed": "Paneel verwijderen mislukt",
+    "deployed": "Rolpaneel geïmplementeerd in kanaal",
+    "deployFailed": "Paneel versturen mislukt",
+    "nameRequired": "Paneelnaam is verplicht",
+    "channelRequired": "Kanaal is verplicht",
+    "maxRolesReached": "Maximaal 25 rollen per paneel"
+  },
+  "loading": "Panelen laden..."
+}

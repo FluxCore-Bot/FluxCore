@@ -1,0 +1,112 @@
+{
+  "title": "역할 패널",
+  "subtitle": "버튼, 드롭다운 또는 반응을 사용한 자가 할당 역할 패널을 만듭니다.",
+  "stats": {
+    "totalPanels": "총 패널",
+    "deployed": "배포됨",
+    "totalRoles": "총 역할"
+  },
+  "tabs": {
+    "panels": "패널",
+    "preview": "미리보기"
+  },
+  "table": {
+    "name": "이름",
+    "type": "유형",
+    "mode": "모드",
+    "roles": "역할",
+    "status": "상태"
+  },
+  "panelTypes": {
+    "reaction": "반응",
+    "button": "버튼",
+    "dropdown": "드롭다운"
+  },
+  "panelModes": {
+    "toggle": "토글",
+    "unique": "고유",
+    "verify": "인증"
+  },
+  "panelModeDescriptions": {
+    "toggle": "토글 (추가/제거)",
+    "unique": "고유 (하나만)",
+    "verify": "인증 (추가만)"
+  },
+  "status": {
+    "deployed": "배포됨",
+    "draft": "초안"
+  },
+  "dialog": {
+    "createPanel": "패널 만들기",
+    "editPanel": "패널 편집"
+  },
+  "panelList": {
+    "title": "모든 패널"
+  },
+  "form": {
+    "name": "이름",
+    "namePlaceholder": "예: 색상 역할",
+    "type": "유형",
+    "mode": "모드",
+    "channel": "채널",
+    "channelPlaceholder": "채널 선택",
+    "minRoles": "최소 역할",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "최대 역할",
+    "maxRolesPlaceholder": "전체",
+    "embedSection": "임베드",
+    "embedTitle": "제목",
+    "embedTitlePlaceholder": "패널 제목 (기본값은 패널 이름)",
+    "embedDescription": "설명",
+    "embedDescriptionPlaceholder": "설명 텍스트",
+    "rolesCount": "역할 ({{count}}/25)",
+    "addRole": "역할 추가"
+  },
+  "entry": {
+    "role": "역할",
+    "rolePlaceholder": "역할 선택",
+    "label": "라벨",
+    "labelPlaceholder": "버튼 라벨",
+    "emoji": "이모지",
+    "emojiPlaceholder": "예: star",
+    "description": "설명",
+    "descriptionPlaceholder": "옵션 설명",
+    "style": "스타일"
+  },
+  "buttonStyles": {
+    "primary": "기본",
+    "secondary": "보조",
+    "success": "성공",
+    "danger": "위험"
+  },
+  "actions": {
+    "create": "만들기",
+    "update": "업데이트",
+    "cancel": "취소",
+    "deploy": "배포",
+    "delete": "삭제",
+    "addEntry": "항목 추가",
+    "removeEntry": "항목 제거"
+  },
+  "preview": {
+    "title": "실시간 미리보기",
+    "description": "패널이 Discord에서 어떻게 표시되는지 미리보기합니다.",
+    "selectRoles": "역할 선택...",
+    "noPreview": "미리볼 패널이 없습니다."
+  },
+  "empty": "아직 역할 패널이 생성되지 않았습니다. \"패널 만들기\"를 클릭하여 시작하세요.",
+  "toast": {
+    "created": "패널이 생성되었습니다",
+    "createFailed": "패널 생성에 실패했습니다",
+    "updated": "패널이 업데이트되었습니다",
+    "updateFailed": "패널 업데이트에 실패했습니다",
+    "deleted": "패널이 삭제되었습니다",
+    "deleteFailed": "패널 삭제에 실패했습니다",
+    "deployed": "역할 패널이 채널에 배포되었습니다",
+    "deployFailed": "패널 전송에 실패했습니다",
+    "nameRequired": "패널 이름은 필수입니다",
+    "channelRequired": "채널은 필수입니다",
+    "maxRolesReached": "패널당 최대 25개 역할"
+  },
+  "loading": "패널 불러오는 중..."
+}

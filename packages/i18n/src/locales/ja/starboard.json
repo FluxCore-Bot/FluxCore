@@ -1,0 +1,41 @@
+{
+  "title": "スターボード",
+  "subtitle": "スターリアクションを集めて、最高のメッセージを専用チャンネルにハイライトします。",
+  "tabs": {
+    "settings": "設定",
+    "starredMessages": "スター付きメッセージ"
+  },
+  "settings": {
+    "title": "スターボード設定",
+    "description": "スター付きメッセージがいつどこに投稿されるかを設定します。",
+    "channelId": "スターボードチャンネル",
+    "channelIdDesc": "スター付きメッセージが投稿されるチャンネル。",
+    "starEmoji": "スター絵文字",
+    "starEmojiDesc": "メッセージにスターを付けるために使用する絵文字。デフォルトはスター絵文字です。",
+    "threshold": "スターしきい値",
+    "thresholdDesc": "スターボードに投稿するために必要な最小リアクション数。",
+    "selfStar": "セルフスター",
+    "selfStarDesc": "メッセージの投稿者が自分のメッセージにスターを付けることを許可します。",
+    "nsfwAllowed": "NSFW許可",
+    "nsfwAllowedDesc": "NSFWチャンネルのメッセージをスターボードに表示することを許可します。",
+    "ignoredChannels": "除外チャンネル",
+    "ignoredChannelsDesc": "これらのチャンネルのメッセージはスターボードに表示されません。"
+  },
+  "messages": {
+    "table": {
+      "original": "元のメッセージ",
+      "stars": "スター数",
+      "channel": "チャンネル",
+      "date": "日付"
+    },
+    "noMessages": "スター付きメッセージはまだありません。"
+  },
+  "toast": {
+    "saved": "スターボード設定を保存しました",
+    "saveFailed": "スターボード設定の保存に失敗しました"
+  },
+  "actions": {
+    "save": "保存",
+    "saving": "保存中..."
+  }
+}

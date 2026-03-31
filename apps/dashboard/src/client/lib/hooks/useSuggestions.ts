@@ -6,7 +6,6 @@ import {
   SuggestionSchema,
   type SuggestionListResponse,
   type SuggestionSettings,
-  type SuggestionItem,
 } from "../schemas";
 
 interface SuggestionFilters {

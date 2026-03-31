@@ -1,0 +1,77 @@
+{
+  "title": "نظام التذاكر",
+  "subtitle": "إنشاء لوحات تذاكر الدعم وإدارة التذاكر المفتوحة من لوحة التحكم.",
+  "stats": {
+    "totalTickets": "إجمالي التذاكر",
+    "open": "مفتوحة",
+    "claimed": "مطالب بها",
+    "panels": "اللوحات"
+  },
+  "tabs": {
+    "activeTickets": "التذاكر النشطة",
+    "panelBuilder": "منشئ اللوحات",
+    "settings": "الإعدادات"
+  },
+  "table": {
+    "id": "المعرف",
+    "user": "المستخدم",
+    "subject": "الموضوع",
+    "status": "الحالة",
+    "assignee": "المكلف",
+    "created": "تاريخ الإنشاء"
+  },
+  "statuses": {
+    "open": "مفتوحة",
+    "claimed": "مطالب بها",
+    "closed": "مغلقة"
+  },
+  "panelBuilder": {
+    "title": "عنوان اللوحة",
+    "channel": "القناة",
+    "buttonLabel": "نص الزر",
+    "welcomeMessage": "رسالة الترحيب",
+    "category": "فئة التذكرة",
+    "create": "إنشاء لوحة",
+    "edit": "تعديل اللوحة",
+    "deploy": "نشر اللوحة"
+  },
+  "settings": {
+    "transcriptChannel": "قناة النسخ",
+    "transcriptChannelDesc": "القناة التي يتم فيها حفظ نسخ التذاكر عند الإغلاق.",
+    "maxTicketsPerUser": "الحد الأقصى للتذاكر لكل مستخدم",
+    "maxTicketsPerUserDesc": "الحد الأقصى لعدد التذاكر المفتوحة التي يمكن لمستخدم واحد امتلاكها.",
+    "closeConfirmation": "تأكيد الإغلاق",
+    "closeConfirmationDesc": "طلب تأكيد قبل إغلاق التذكرة.",
+    "dmTranscript": "إرسال النسخة عبر رسالة خاصة",
+    "dmTranscriptDesc": "إرسال نسخة من المحادثة إلى منشئ التذكرة عبر رسالة خاصة."
+  },
+  "actions": {
+    "claim": "المطالبة",
+    "close": "إغلاق",
+    "delete": "حذف",
+    "reopen": "إعادة فتح"
+  },
+  "toast": {
+    "panelCreated": "تم إنشاء لوحة التذاكر",
+    "panelCreateFailed": "فشل في إنشاء لوحة التذاكر",
+    "panelUpdated": "تم تحديث لوحة التذاكر",
+    "panelUpdateFailed": "فشل في تحديث لوحة التذاكر",
+    "panelDeployed": "تم نشر لوحة التذاكر",
+    "panelDeployFailed": "فشل في نشر لوحة التذاكر",
+    "ticketClaimed": "تم المطالبة بالتذكرة",
+    "ticketClaimFailed": "فشل في المطالبة بالتذكرة",
+    "ticketClosed": "تم إغلاق التذكرة",
+    "ticketCloseFailed": "فشل في إغلاق التذكرة",
+    "ticketReopened": "تم إعادة فتح التذكرة",
+    "ticketReopenFailed": "فشل في إعادة فتح التذكرة",
+    "ticketDeleted": "تم حذف التذكرة",
+    "ticketDeleteFailed": "فشل في حذف التذكرة",
+    "settingsSaved": "تم حفظ إعدادات التذاكر",
+    "settingsFailed": "فشل في حفظ إعدادات التذاكر"
+  },
+  "empty": {
+    "tickets": "لا توجد تذاكر نشطة.",
+    "panels": "لم يتم إنشاء لوحات تذاكر بعد."
+  },
+  "loading": "جارٍ تحميل التذاكر..."
+}

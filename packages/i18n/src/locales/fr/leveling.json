@@ -1,0 +1,120 @@
+{
+  "title": "Systeme de niveaux",
+  "subtitle": "Configurez le gain d'XP, les annonces de montee de niveau, les recompenses de roles et les multiplicateurs.",
+  "stats": {
+    "rankedMembers": "Membres classes",
+    "roleRewards": "Recompenses de roles",
+    "systemStatus": "Etat du systeme",
+    "enabled": "Active",
+    "disabled": "Desactive"
+  },
+  "tabs": {
+    "leaderboard": "Classement",
+    "settings": "Parametres",
+    "roleRewards": "Recompenses de roles",
+    "exclusions": "Exclusions",
+    "multipliers": "Multiplicateurs"
+  },
+  "table": {
+    "rank": "Rang",
+    "userId": "ID utilisateur",
+    "level": "Niveau",
+    "xp": "XP",
+    "messages": "Messages",
+    "voiceTime": "Temps vocal"
+  },
+  "settings": {
+    "title": "Parametres de niveaux",
+    "enabled": "Activer les niveaux",
+    "enabledDesc": "Activer ou desactiver l'ensemble du systeme de niveaux.",
+    "xpPerMessage": "XP par message",
+    "xpPerMessageDesc": "XP de base attribuee par message (un aleatoire de 0 a 9 est ajoute).",
+    "xpCooldown": "Delai de recharge XP (secondes)",
+    "xpCooldownDesc": "Temps minimum entre chaque gain d'XP par utilisateur.",
+    "voiceXpEnabled": "XP vocal",
+    "voiceXpEnabledDesc": "Accorder de l'XP pour le temps passe en salon vocal.",
+    "voiceXpPerMinute": "XP vocal par minute",
+    "voiceXpPerMinuteDesc": "XP attribuee par minute en vocal.",
+    "levelUpAnnouncements": "Annonces de montee de niveau",
+    "levelUpAnnouncementsDesc": "Annoncer quand un membre monte de niveau.",
+    "announceDest": "Destination des annonces",
+    "announceDestHint": "Vous pouvez egalement entrer un ID de salon directement dans le champ ci-dessus.",
+    "announceDestSameChannel": "Meme salon",
+    "announceDestDM": "Message prive",
+    "announceMessage": "Message d'annonce",
+    "announceMessagePlaceholder": "{user} vient d'atteindre le **Niveau {level}** !",
+    "announceMessageVars": "Variables : {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Recompenses de roles",
+    "description": "Attribuez automatiquement des roles lorsque les membres atteignent certains niveaux.",
+    "addReward": "Ajouter une recompense",
+    "addRewardTitle": "Ajouter une recompense de role",
+    "level": "Niveau",
+    "levelPrefix": "Niveau {{level}}",
+    "roleId": "ID du role",
+    "levelPlaceholder": "ex. 5",
+    "rolePlaceholder": "ex. 123456789",
+    "removeReward": "Supprimer",
+    "noRewards": "Aucune recompense de role configuree."
+  },
+  "exclusions": {
+    "title": "Exclusions d'XP",
+    "description": "Salons et roles qui ne gagnent pas d'XP.",
+    "noXpChannels": "Salons sans XP (IDs separes par des virgules)",
+    "noXpChannelsPlaceholder": "ex. 123456789, 987654321",
+    "noXpRoles": "Roles sans XP (IDs separes par des virgules)",
+    "noXpRolesPlaceholder": "ex. 123456789, 987654321",
+    "save": "Enregistrer les exclusions"
+  },
+  "multipliers": {
+    "title": "Multiplicateurs d'XP",
+    "description": "Definissez des multiplicateurs d'XP par salon ou par role. Un multiplicateur de 2 double l'XP gagnee.",
+    "channelMultipliers": "Multiplicateurs de salons",
+    "roleMultipliers": "Multiplicateurs de roles",
+    "channelId": "ID du salon",
+    "roleId": "ID du role",
+    "multiplier": "Multiplicateur",
+    "type": "Type",
+    "typeChannel": "Salon",
+    "typeRole": "Role",
+    "id": "ID",
+    "idPlaceholder": "ID du salon ou du role",
+    "value": "Multiplicateur",
+    "valuePlaceholder": "ex. 2",
+    "add": "Ajouter un multiplicateur",
+    "addTitle": "Ajouter un multiplicateur",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Aucun multiplicateur d'XP configure."
+  },
+  "pagination": {
+    "previous": "Precedent",
+    "next": "Suivant",
+    "pageInfo": "Page {{page}} sur {{totalPages}} ({{total}} au total)"
+  },
+  "loading": "Chargement du classement...",
+  "loadingGeneric": "Chargement...",
+  "emptyLeaderboard": "Aucun membre n'a encore gagne d'XP.",
+  "toast": {
+    "saved": "Parametres de niveaux enregistres",
+    "saveFailed": "Echec de la mise a jour du parametre",
+    "rewardAdded": "Recompense ajoutee",
+    "rewardAddFailed": "Echec de l'ajout de la recompense",
+    "rewardRemoved": "Recompense supprimee",
+    "rewardRemoveFailed": "Echec de la suppression de la recompense",
+    "multiplierAdded": "Multiplicateur ajoute",
+    "multiplierAddFailed": "Echec de l'ajout du multiplicateur",
+    "multiplierRemoved": "Multiplicateur supprime",
+    "multiplierRemoveFailed": "Echec de la suppression du multiplicateur",
+    "exclusionUpdated": "Exclusions enregistrees",
+    "exclusionFailed": "Echec de l'enregistrement des exclusions",
+    "levelValidation": "Le niveau doit etre compris entre 1 et 100",
+    "roleIdRequired": "L'ID du role est requis",
+    "multiplierIdRequired": "L'ID et la valeur du multiplicateur sont requis",
+    "multiplierRange": "Le multiplicateur doit etre compris entre 0 et 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}h {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

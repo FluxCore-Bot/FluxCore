@@ -1,0 +1,113 @@
+{
+  "title": "دستورات سفارشی",
+  "subtitle": "ایجاد پاسخ‌دهنده‌های خودکار و دستورات پیشوندی که با پیام‌ها فعال می‌شوند.",
+  "stats": {
+    "totalCommands": "کل دستورات",
+    "enabled": "فعال",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "دستورات",
+    "variables": "متغیرها"
+  },
+  "table": {
+    "name": "نام",
+    "trigger": "تریگر",
+    "response": "پاسخ",
+    "cooldown": "زمان انتظار",
+    "status": "وضعیت"
+  },
+  "triggerTypes": {
+    "command": "!دستور",
+    "keyword": "کلمه کلیدی",
+    "startsWith": "شروع با",
+    "regex": "عبارت منظم",
+    "prefixCommand": "دستور پیشوندی (!نام)",
+    "keywordContains": "کلمه کلیدی (شامل)"
+  },
+  "dialog": {
+    "createCommand": "ایجاد دستور",
+    "editCommand": "ویرایش دستور"
+  },
+  "form": {
+    "commandName": "نام دستور",
+    "triggerText": "متن تریگر",
+    "regexPattern": "الگوی عبارت منظم",
+    "triggerType": "نوع تریگر",
+    "response": "پاسخ",
+    "message": "پیام",
+    "embedTitle": "عنوان Embed",
+    "embedDescription": "توضیحات Embed",
+    "color": "رنگ",
+    "footer": "پاورقی"
+  },
+  "options": {
+    "cooldown": "زمان انتظار (ثانیه)",
+    "enabled": "فعال",
+    "enabledDesc": "آیا این دستور فعال است",
+    "deleteTrigger": "حذف پیام تریگر",
+    "deleteTriggerDesc": "حذف خودکار پیامی که این دستور را فعال کرد.",
+    "dmResponse": "پاسخ با پیام خصوصی",
+    "dmResponseDesc": "ارسال پاسخ به‌صورت پیام خصوصی به‌جای کانال."
+  },
+  "restrictions": {
+    "title": "محدودیت‌ها",
+    "allowedChannels": "کانال‌های مجاز (خالی = همه)",
+    "allowedRoles": "نقش‌های مجاز (خالی = همه)",
+    "addChannel": "افزودن کانال",
+    "addRole": "افزودن نقش"
+  },
+  "actions": {
+    "create": "ایجاد",
+    "update": "به‌روزرسانی",
+    "cancel": "لغو",
+    "addAction": "افزودن عملیات",
+    "addRole": "افزودن نقش",
+    "removeRole": "حذف نقش"
+  },
+  "actionsSection": {
+    "title": "عملیات‌ها ({{count}}/5)",
+    "noActions": "عملیاتی پیکربندی نشده. عملیاتی اضافه کنید تا عملکرد دستور مشخص شود.",
+    "maxActions": "حداکثر ۵ عملیات برای هر دستور"
+  },
+  "variables": {
+    "title": "متغیرهای الگو",
+    "description": "از این متغیرها در پاسخ‌های دستورات خود استفاده کنید. هنگام فعال شدن دستور با مقادیر واقعی جایگزین می‌شوند.",
+    "table": {
+      "variable": "متغیر",
+      "description": "توضیحات"
+    },
+    "entries": {
+      "user": "{user} — اشاره به کاربری که دستور را فعال کرد",
+      "username": "{username} — نام نمایشی کاربر",
+      "userId": "{userId} — شناسه کاربر",
+      "server": "{server} — نام سرور",
+      "channel": "{channel} — اشاره به کانال فعلی",
+      "channelName": "{channelName} — نام کانال",
+      "memberCount": "{memberCount} — تعداد کل اعضای سرور"
+    }
+  },
+  "toast": {
+    "created": "دستور ایجاد شد",
+    "createFailed": "ایجاد دستور ناموفق بود",
+    "updated": "دستور به‌روزرسانی شد",
+    "updateFailed": "به‌روزرسانی دستور ناموفق بود",
+    "deleted": "دستور حذف شد",
+    "deleteFailed": "حذف دستور ناموفق بود",
+    "toggleEnabled": "دستور فعال شد",
+    "toggleDisabled": "دستور غیرفعال شد",
+    "toggleFailed": "تغییر وضعیت دستور ناموفق بود"
+  },
+  "empty": "هنوز دستور سفارشی ایجاد نشده.",
+  "loading": "در حال بارگذاری دستورات...",
+  "badge": {
+    "active": "فعال",
+    "disabled": "غیرفعال",
+    "text": "متن",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "نام دستور الزامی است"
+  },
+  "triggerPrefix": "تریگر: !{{name}}"
+}

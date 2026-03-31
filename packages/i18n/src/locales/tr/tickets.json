@@ -1,0 +1,77 @@
+{
+  "title": "Destek Talebi Sistemi",
+  "subtitle": "Destek talebi panelleri oluşturun ve açık talepleri kontrol panelinden yönetin.",
+  "stats": {
+    "totalTickets": "Toplam Talep",
+    "open": "Açık",
+    "claimed": "Üstlenildi",
+    "panels": "Paneller"
+  },
+  "tabs": {
+    "activeTickets": "Aktif Talepler",
+    "panelBuilder": "Panel Oluşturucu",
+    "settings": "Ayarlar"
+  },
+  "table": {
+    "id": "Kimlik",
+    "user": "Kullanıcı",
+    "subject": "Konu",
+    "status": "Durum",
+    "assignee": "Atanan",
+    "created": "Oluşturulma"
+  },
+  "statuses": {
+    "open": "Açık",
+    "claimed": "Üstlenildi",
+    "closed": "Kapatıldı"
+  },
+  "panelBuilder": {
+    "title": "Panel Başlığı",
+    "channel": "Kanal",
+    "buttonLabel": "Buton Etiketi",
+    "welcomeMessage": "Karşılama Mesajı",
+    "category": "Talep Kategorisi",
+    "create": "Panel Oluştur",
+    "edit": "Paneli Düzenle",
+    "deploy": "Paneli Yayınla"
+  },
+  "settings": {
+    "transcriptChannel": "Transkript Kanalı",
+    "transcriptChannelDesc": "Talep transkriptlerinin kapanışta kaydedildiği kanal.",
+    "maxTicketsPerUser": "Kullanıcı Başına Maksimum Talep",
+    "maxTicketsPerUserDesc": "Tek bir kullanıcının sahip olabileceği maksimum açık talep sayısı.",
+    "closeConfirmation": "Kapatma Onayı",
+    "closeConfirmationDesc": "Talebi kapatmadan önce onay isteyin.",
+    "dmTranscript": "DM Transkripti",
+    "dmTranscriptDesc": "Talep oluşturucuya DM ile transkript kopyası gönderin."
+  },
+  "actions": {
+    "claim": "Üstlen",
+    "close": "Kapat",
+    "delete": "Sil",
+    "reopen": "Yeniden Aç"
+  },
+  "toast": {
+    "panelCreated": "Destek talebi paneli oluşturuldu",
+    "panelCreateFailed": "Destek talebi paneli oluşturulamadı",
+    "panelUpdated": "Destek talebi paneli güncellendi",
+    "panelUpdateFailed": "Destek talebi paneli güncellenemedi",
+    "panelDeployed": "Destek talebi paneli yayınlandı",
+    "panelDeployFailed": "Destek talebi paneli yayınlanamadı",
+    "ticketClaimed": "Talep üstlenildi",
+    "ticketClaimFailed": "Talep üstlenilemedi",
+    "ticketClosed": "Talep kapatıldı",
+    "ticketCloseFailed": "Talep kapatılamadı",
+    "ticketReopened": "Talep yeniden açıldı",
+    "ticketReopenFailed": "Talep yeniden açılamadı",
+    "ticketDeleted": "Talep silindi",
+    "ticketDeleteFailed": "Talep silinemedi",
+    "settingsSaved": "Talep ayarları kaydedildi",
+    "settingsFailed": "Talep ayarları kaydedilemedi"
+  },
+  "empty": {
+    "tickets": "Aktif talep yok.",
+    "panels": "Henüz destek talebi paneli oluşturulmadı."
+  },
+  "loading": "Talepler yükleniyor..."
+}

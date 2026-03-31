@@ -1,4 +1,4 @@
-import type { FastifyInstance, FastifyReply } from "fastify";
+import type { FastifyInstance } from "fastify";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../middleware.js";
 import {
   createRule,
@@ -178,7 +178,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
           type: a.type as ActionType,
         })),
         ...(body.steps && body.entryStepId
-          ? { steps: body.steps as RuleStep[], entryStepId: body.entryStepId }
+          ? { steps: body.steps as unknown as RuleStep[], entryStepId: body.entryStepId }
           : {}),
         conditions: body.conditions ?? {},
         priority: body.priority ?? 0,
@@ -220,7 +220,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
             })),
           }),
           ...(body.steps && body.entryStepId
-            ? { steps: body.steps as RuleStep[], entryStepId: body.entryStepId }
+            ? { steps: body.steps as unknown as RuleStep[], entryStepId: body.entryStepId }
             : {}),
           ...(body.conditions !== undefined && { conditions: body.conditions }),
           ...(body.priority !== undefined && { priority: body.priority }),

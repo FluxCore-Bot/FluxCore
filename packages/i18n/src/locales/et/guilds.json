@@ -1,0 +1,9 @@
+{
+  "title": "Sinu serverid",
+  "subtitle": "Vali server, mida hallata ja seadistada.",
+  "loading": "Laadin servereid...",
+  "empty": {
+    "title": "Servereid ei leitud",
+    "description": "Veendu, et bot on lisatud serverile, kus sul on serveri haldamise õigus."
+  }
+}

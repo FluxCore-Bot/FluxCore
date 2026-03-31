@@ -1,0 +1,8 @@
+{
+  "title": "Log",
+  "subtitle": "Pantau pelaksanaan peraturan dan log peristiwa.",
+  "tabs": {
+    "activity": "Log Aktiviti",
+    "events": "Log Peristiwa"
+  }
+}

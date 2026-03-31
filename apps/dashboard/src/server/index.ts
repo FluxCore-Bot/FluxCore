@@ -33,6 +33,7 @@ import { registerSuggestionRoutes } from "./routes/suggestions.js";
 import { registerStarboardRoutes } from "./routes/starboard.js";
 import { registerDashboardRoleRoutes } from "./routes/dashboardRoles.js";
 import { registerDashboardPermissionRoutes } from "./routes/dashboardPermissions.js";
+import { registerI18n } from "./i18n.js";
 
 async function main(): Promise<void> {
   if (!config.dashboardClientSecret) {
@@ -80,6 +81,9 @@ async function main(): Promise<void> {
       wildcard: false,
     });
   }
+
+  // Initialize i18n (server-side translations + /api/i18n/:lng/:ns endpoint)
+  await registerI18n(app);
 
   // Public endpoint — no auth required
   app.get("/api/bot-info", async (_request, reply) => {

@@ -1,0 +1,72 @@
+{
+  "title": "Uyarılar",
+  "subtitle": "Otomatik artışla üye uyarılarını takip edin ve yönetin.",
+  "stats": {
+    "totalWarnings": "Toplam Uyarı",
+    "escalationRules": "Artış Kuralları",
+    "dmOnWarn": "Uyarıda DM"
+  },
+  "tabs": {
+    "warnings": "Uyarı Günlüğü",
+    "escalation": "Artış",
+    "settings": "Ayarlar"
+  },
+  "table": {
+    "id": "Kimlik",
+    "user": "Kullanıcı",
+    "moderator": "Moderatör",
+    "reason": "Sebep",
+    "date": "Tarih"
+  },
+  "filter": {
+    "userPlaceholder": "Kullanıcı Kimliğine göre filtrele...",
+    "clearAll": "Tümünü Temizle"
+  },
+  "pagination": {
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "page": "Sayfa {{page}} / {{total}} (toplam {{count}})"
+  },
+  "loading": "Uyarılar yükleniyor...",
+  "noWarnings": "Uyarı bulunamadı.",
+  "toast": {
+    "warningRemoved": "Uyarı kaldırıldı",
+    "warningsFailed": "Uyarı silinemedi",
+    "enterUserId": "O kullanıcının tüm uyarılarını temizlemek için bir kullanıcı kimliği girin",
+    "allCleared": "Kullanıcı için tüm uyarılar temizlendi",
+    "clearFailed": "Uyarılar temizlenemedi",
+    "thresholdAdded": "Ceza eşiği eklendi",
+    "thresholdFailed": "Ceza eklenemedi",
+    "thresholdRemoved": "Ceza kaldırıldı",
+    "removeFailed": "Ceza kaldırılamadı",
+    "settingFailed": "Ayar güncellenemedi",
+    "thresholdInvalid": "Eşik pozitif bir sayı olmalıdır"
+  },
+  "escalation": {
+    "title": "Ceza Artışı",
+    "description": "Bir kullanıcı belirli sayıda uyarıya ulaştığında otomatik eylemleri yapılandırın.",
+    "threshold": "Eşik",
+    "action": "Eylem",
+    "duration": "Süre",
+    "noRules": "Artış kuralı yapılandırılmamış.",
+    "addRule": "Artış Kuralı Ekle",
+    "addButton": "Kural Ekle",
+    "warnings": "{{count}} uyarı",
+    "min": "{{count}} dk",
+    "timeout": "Zaman Aşımı",
+    "kick": "At",
+    "ban": "Yasakla",
+    "durationLabel": "Süre (saniye)",
+    "thresholdPlaceholder": "örn. 3",
+    "durationPlaceholder": "örn. 3600"
+  },
+  "settings": {
+    "title": "Uyarı Ayarları",
+    "dmOnWarn": "Uyarıda DM",
+    "dmOnWarnDesc": "Kullanıcı uyarı aldığında doğrudan mesaj gönderin.",
+    "requireReason": "Sebep Zorunlu",
+    "requireReasonDesc": "Moderatörler uyarı verirken bir sebep belirtmek zorunda olmalı.",
+    "maxWarnings": "Maksimum Uyarı",
+    "maxWarningsDesc": "Kullanıcı başına maksimum uyarı (0 = sınırsız)."
+  }
+}

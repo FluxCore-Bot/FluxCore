@@ -1,0 +1,50 @@
+{
+  "title": "Izlozes",
+  "subtitle": "Riekojiet izlozes ar pielgojiamu ilgumu, dalibas prasibam un uzvaretraja izveeli.",
+  "stats": {
+    "activeGiveaways": "Aktivaas izlozes",
+    "pastGiveaways": "Ieprieksejas izlozes",
+    "totalEntries": "Kopejie daliibnieki"
+  },
+  "table": {
+    "prize": "Balva",
+    "winners": "Uzvaretaji",
+    "entries": "Daliibnieki",
+    "endsIn": "Beidzas pec",
+    "status": "Statuss"
+  },
+  "statuses": {
+    "active": "Aktiva",
+    "ended": "Beigusies",
+    "cancelled": "Atcelta"
+  },
+  "actions": {
+    "create": "Izveidot izlozi",
+    "edit": "Rediget",
+    "end": "Beigt",
+    "reroll": "Paarizvielet",
+    "delete": "Dzest"
+  },
+  "form": {
+    "prize": "Balva",
+    "winnersCount": "Uzvaretaju skaits",
+    "duration": "Ilgums",
+    "channel": "Kanals",
+    "requiredRole": "Nepieciesama loma",
+    "description": "Apraksts"
+  },
+  "toast": {
+    "created": "Izloze izveidota",
+    "createFailed": "Neizdevas izveidot izlozi",
+    "updated": "Izloze atjaunota",
+    "updateFailed": "Neizdevas atjaunot izlozi",
+    "ended": "Izloze beigusies",
+    "endFailed": "Neizdevas beigt izlozi",
+    "rerolled": "Uzvaretaji paarizveletii",
+    "rerollFailed": "Neizdevas paarizvielet uzvaretajus",
+    "deleted": "Izloze dzesta",
+    "deleteFailed": "Neizdevas dzest izlozi"
+  },
+  "empty": "Izlozu nav. Izveidojiet vienu, lai saaktu.",
+  "loading": "Iellade izlozes..."
+}
