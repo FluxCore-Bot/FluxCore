@@ -1,0 +1,65 @@
+{
+  "title": "欢迎与告别",
+  "subtitle": "配置欢迎消息、告别消息、图片和自动角色。",
+  "loadingSubtitle": "配置服务器的欢迎和告别消息。",
+  "tabs": {
+    "welcome": "欢迎",
+    "welcomeImage": "欢迎图片",
+    "farewell": "告别",
+    "farewellImage": "告别图片",
+    "dm": "欢迎私信",
+    "autorole": "自动角色"
+  },
+  "welcome": {
+    "title": "欢迎消息",
+    "description": "当新成员加入时发送自定义嵌入消息。",
+    "channelLabel": "欢迎频道 ID",
+    "channelPlaceholder": "频道 ID...",
+    "embedBuilder": "嵌入构建器"
+  },
+  "welcomeImage": {
+    "title": "欢迎图片",
+    "description": "当成员加入时生成带有头像的自定义图片卡。",
+    "disabled": "启用上方的开关以配置欢迎图片。"
+  },
+  "farewell": {
+    "title": "告别消息",
+    "description": "当成员离开服务器时发送消息。",
+    "channelLabel": "告别频道 ID",
+    "channelPlaceholder": "频道 ID..."
+  },
+  "farewellImage": {
+    "title": "告别图片",
+    "description": "当成员离开时生成自定义告别卡。",
+    "disabled": "启用上方的开关以配置告别图片。"
+  },
+  "dm": {
+    "title": "欢迎私信",
+    "description": "向新成员发送私信。如果对方关闭了私信，将静默失败。"
+  },
+  "autorole": {
+    "title": "自动角色",
+    "description": "新成员加入时自动分配角色。机器人除外。机器人必须拥有比此处列出的角色更高的角色。",
+    "label": "角色 ID（逗号分隔）",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "标题",
+    "description": "描述",
+    "color": "颜色（十六进制）",
+    "footer": "页脚",
+    "thumbnail": "缩略图 URL",
+    "image": "图片 URL",
+    "variables": "变量："
+  },
+  "saveChanges": "保存更改",
+  "saving": "保存中...",
+  "sendTest": "发送测试消息",
+  "sending": "发送中...",
+  "toast": {
+    "saved": "欢迎配置已保存",
+    "saveFailed": "保存配置失败",
+    "testSent": "测试消息将发送到 <#{{channelId}}>",
+    "testFailed": "发送测试消息失败"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "title": "抽奖",
+  "subtitle": "通过自定义时长、参与条件和中奖者选择来举办抽奖活动。",
+  "stats": {
+    "activeGiveaways": "进行中的抽奖",
+    "pastGiveaways": "已结束的抽奖",
+    "totalEntries": "总参与数"
+  },
+  "table": {
+    "prize": "奖品",
+    "winners": "中奖者",
+    "entries": "参与数",
+    "endsIn": "剩余时间",
+    "status": "状态"
+  },
+  "statuses": {
+    "active": "进行中",
+    "ended": "已结束",
+    "cancelled": "已取消"
+  },
+  "actions": {
+    "create": "创建抽奖",
+    "edit": "编辑",
+    "end": "结束",
+    "reroll": "重新抽奖",
+    "delete": "删除"
+  },
+  "form": {
+    "prize": "奖品",
+    "winnersCount": "中奖人数",
+    "duration": "时长",
+    "channel": "频道",
+    "requiredRole": "所需角色",
+    "description": "描述"
+  },
+  "toast": {
+    "created": "抽奖已创建",
+    "createFailed": "创建抽奖失败",
+    "updated": "抽奖已更新",
+    "updateFailed": "更新抽奖失败",
+    "ended": "抽奖已结束",
+    "endFailed": "结束抽奖失败",
+    "rerolled": "已重新抽奖",
+    "rerollFailed": "重新抽奖失败",
+    "deleted": "抽奖已删除",
+    "deleteFailed": "删除抽奖失败"
+  },
+  "empty": "暂无抽奖活动。创建一个开始吧。",
+  "loading": "正在加载抽奖..."
+}

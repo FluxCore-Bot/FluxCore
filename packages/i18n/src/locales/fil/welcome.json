@@ -1,0 +1,65 @@
+{
+  "title": "Maligayang Pagdating at Paalam",
+  "subtitle": "I-configure ang mga mensahe ng maligayang pagdating at paalam, mga larawan, at mga auto-role.",
+  "loadingSubtitle": "I-configure ang mga mensahe ng maligayang pagdating at paalam para sa iyong server.",
+  "tabs": {
+    "welcome": "Maligayang Pagdating",
+    "welcomeImage": "Larawan ng Pagbati",
+    "farewell": "Paalam",
+    "farewellImage": "Larawan ng Paalam",
+    "dm": "Welcome DM",
+    "autorole": "Auto-Role"
+  },
+  "welcome": {
+    "title": "Mensahe ng Pagbati",
+    "description": "Magpadala ng custom na embed kapag sumali ang bagong miyembro.",
+    "channelLabel": "Welcome Channel ID",
+    "channelPlaceholder": "Channel ID...",
+    "embedBuilder": "Embed Builder"
+  },
+  "welcomeImage": {
+    "title": "Larawan ng Pagbati",
+    "description": "Gumawa ng custom na image card na may avatar ng miyembro kapag sumali sila.",
+    "disabled": "Paganahin ang toggle sa itaas upang i-configure ang mga larawan ng pagbati."
+  },
+  "farewell": {
+    "title": "Mensahe ng Paalam",
+    "description": "Magpadala ng mensahe kapag umalis ang miyembro sa server.",
+    "channelLabel": "Farewell Channel ID",
+    "channelPlaceholder": "Channel ID..."
+  },
+  "farewellImage": {
+    "title": "Larawan ng Paalam",
+    "description": "Gumawa ng custom na farewell card kapag umalis ang miyembro.",
+    "disabled": "Paganahin ang toggle sa itaas upang i-configure ang mga larawan ng paalam."
+  },
+  "dm": {
+    "title": "Welcome DM",
+    "description": "Magpadala ng direktang mensahe sa mga bagong miyembro. Tahimik na mabibigo kung hindi pinagana ang mga DM."
+  },
+  "autorole": {
+    "title": "Auto-Role",
+    "description": "Awtomatikong magtalaga ng mga role sa mga bagong miyembro kapag sumali sila. Excluded ang mga bot. Ang bot ay dapat magkaroon ng mas mataas na role kaysa sa mga role na nakalista dito.",
+    "label": "Mga Role ID (comma-separated)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Pamagat",
+    "description": "Paglalarawan",
+    "color": "Kulay (hex)",
+    "footer": "Footer",
+    "thumbnail": "Thumbnail URL",
+    "image": "Image URL",
+    "variables": "Mga Variable:"
+  },
+  "saveChanges": "I-save ang mga Pagbabago",
+  "saving": "Sino-save...",
+  "sendTest": "Magpadala ng Test na Mensahe",
+  "sending": "Nagpapadala...",
+  "toast": {
+    "saved": "Nai-save ang configuration ng pagbati",
+    "saveFailed": "Hindi na-save ang configuration",
+    "testSent": "Ang test na mensahe ay ipapadala sa <#{{channelId}}>",
+    "testFailed": "Hindi napadala ang test na mensahe"
+  }
+}

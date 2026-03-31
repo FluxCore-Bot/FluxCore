@@ -1,0 +1,12 @@
+{
+  "title": "Muhtasari",
+  "subtitle": "Fuatilia utendaji na shughuli zako za otomatiki kwa mtazamo mmoja.",
+  "stats": {
+    "actionRules": "Sheria za Vitendo",
+    "activeNow": "Hai Sasa",
+    "executions": "Utekelezaji",
+    "successRate": "Kiwango cha Mafanikio"
+  },
+  "errorsInLast24h": "Hitilafu {{count}} katika masaa 24 yaliyopita",
+  "errorsInLast24h_other": "Hitilafu {{count}} katika masaa 24 yaliyopita"
+}

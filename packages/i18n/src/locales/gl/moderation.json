@@ -1,0 +1,54 @@
+{
+  "title": "Moderación",
+  "subtitle": "Ver e xestionar casos de moderación, configurar os axustes de sancións.",
+  "stats": {
+    "totalCases": "Total de Casos",
+    "activeTempbans": "Banos Temporais Activos",
+    "last24h": "Últimas 24h"
+  },
+  "cases": "Casos",
+  "actions": {
+    "ban": "Banear",
+    "tempban": "Ban Temporal",
+    "kick": "Expulsar",
+    "timeout": "Silenciar",
+    "softban": "Ban Suave",
+    "warn": "Advertir",
+    "note": "Nota"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Acción",
+    "target": "Obxectivo",
+    "moderator": "Moderador",
+    "reason": "Motivo",
+    "date": "Data",
+    "actions": "Accións",
+    "noCases": "Non se atoparon casos.",
+    "noReason": "Sen motivo"
+  },
+  "filter": {
+    "userPlaceholder": "Filtrar por ID de Usuario...",
+    "allActions": "Todas as Accións"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "page": "Páxina {{page}} de {{total}}"
+  },
+  "editDialog": {
+    "title": "Editar Motivo do Caso #{{id}}",
+    "placeholder": "Introduce o novo motivo...",
+    "saving": "Gardando..."
+  },
+  "editReason": "Editar motivo",
+  "deleteCase": "Eliminar caso",
+  "deleteConfirm": "Estás seguro de que queres eliminar este caso?",
+  "settings": {
+    "title": "Configuración",
+    "dmOnPunishment": "DM ao Sancionar",
+    "dmOnPunishmentDesc": "Enviar un DM aos usuarios cando sexan sancionados (ban, expulsión, silencio).",
+    "modLogChannel": "Canal de Rexistro de Moderación",
+    "modLogChannelDesc": "Canal onde se rexistran as accións de moderación."
+  }
+}

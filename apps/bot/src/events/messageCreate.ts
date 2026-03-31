@@ -38,7 +38,7 @@ async function handleLevelUp(
         await (channel as TextChannel).send(text);
       }
     } else {
-      await message.channel.send(text);
+      await (message.channel as { send: (text: string) => Promise<unknown> }).send(text);
     }
   } catch (error) {
     logger.debug(

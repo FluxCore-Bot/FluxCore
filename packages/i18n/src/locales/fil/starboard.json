@@ -1,0 +1,41 @@
+{
+  "title": "Starboard",
+  "subtitle": "I-highlight ang pinakamahusay na mga mensahe sa pamamagitan ng pagkolekta ng mga bituin na reaction sa isang dedicated na channel.",
+  "tabs": {
+    "settings": "Mga Setting",
+    "starredMessages": "Mga Bintuhang Mensahe"
+  },
+  "settings": {
+    "title": "Pagsasaayos ng Starboard",
+    "description": "I-configure kung kailan at saan nipo-post ang mga bintuhang mensahe.",
+    "channelId": "Channel ng Starboard",
+    "channelIdDesc": "Ang channel kung saan nipo-post ang mga bintuhang mensahe.",
+    "starEmoji": "Star Emoji",
+    "starEmojiDesc": "Ang emoji na ginagamit upang ibintang ang mga mensahe. Default ay ang star emoji.",
+    "threshold": "Threshold ng Bituin",
+    "thresholdDesc": "Minimum na bilang ng mga reaction na kailangan upang ma-post ang mensahe sa starboard.",
+    "selfStar": "Self-Star",
+    "selfStarDesc": "Pahintulutan ang mga may-akda ng mensahe na ibintangan ang kanilang sariling mga mensahe.",
+    "nsfwAllowed": "Pinahintulutang NSFW",
+    "nsfwAllowedDesc": "Pahintulutan ang mga mensahe mula sa mga NSFW channel na lumabas sa starboard.",
+    "ignoredChannels": "Mga Ignored na Channel",
+    "ignoredChannelsDesc": "Ang mga mensahe mula sa mga channel na ito ay hindi kailanman lalabas sa starboard."
+  },
+  "messages": {
+    "table": {
+      "original": "Orihinal na Mensahe",
+      "stars": "Mga Bituin",
+      "channel": "Channel",
+      "date": "Petsa"
+    },
+    "noMessages": "Wala pang mga bintuhang mensahe."
+  },
+  "toast": {
+    "saved": "Mga setting ng starboard na na-save",
+    "saveFailed": "Hindi na-save ang mga setting ng starboard"
+  },
+  "actions": {
+    "save": "I-save",
+    "saving": "Sino-save..."
+  }
+}

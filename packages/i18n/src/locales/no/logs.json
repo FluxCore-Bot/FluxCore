@@ -1,0 +1,8 @@
+{
+  "title": "Logger",
+  "subtitle": "Overvåk regelkjøringer og hendelseslogging.",
+  "tabs": {
+    "activity": "Aktivitetslogger",
+    "events": "Hendelseslogger"
+  }
+}

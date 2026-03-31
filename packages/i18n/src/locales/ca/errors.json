@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "No autenticat",
+    "sessionExpired": "La sessió ha expirat",
+    "missingCode": "Falta el parametre de codi",
+    "tokenExchangeFailed": "L'intercanvi de token ha fallat",
+    "failedToFetchUser": "No s'ha pogut obtenir la informació de l'usuari"
+  },
+  "permissions": {
+    "noGuildPermission": "No tens permis per a aquest servidor",
+    "botNotInGuild": "El bot no es en aquest servidor",
+    "insufficientPermissions": "Permisos insuficients",
+    "permissionsNotResolved": "Permisos no resolts",
+    "requiresPermission": "Aquesta acció requereix el permis \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Entrada no valida",
+    "missingField": "Falta el camp obligatori: {{field}}",
+    "invalidFormat": "Format no valid per a {{field}}",
+    "tooLong": "{{field}} supera la longitud maxima de {{max}} caracters",
+    "tooShort": "{{field}} ha de tenir almenys {{min}} caracters",
+    "outOfRange": "{{field}} ha d'estar entre {{min}} i {{max}}"
+  },
+  "resources": {
+    "notFound": "No trobat",
+    "alreadyExists": "{{resource}} ja existeix",
+    "limitReached": "Maxim de {{max}} {{resource}} per servidor",
+    "createFailed": "No s'ha pogut crear {{resource}}",
+    "updateFailed": "No s'ha pogut actualitzar {{resource}}",
+    "deleteFailed": "No s'ha pogut eliminar {{resource}}"
+  },
+  "server": {
+    "internalError": "Error intern del servidor",
+    "serviceUnavailable": "Servei temporalment no disponible",
+    "rateLimited": "Massa sol\u00b7licituds. Si us plau, torna-ho a intentar mes tard."
+  },
+  "csrf": {
+    "invalidToken": "Token CSRF no valid o absent"
+  }
+}

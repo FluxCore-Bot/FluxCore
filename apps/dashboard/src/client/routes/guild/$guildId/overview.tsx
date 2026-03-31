@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useParams } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { useAnalytics } from "../../../lib/hooks/useAnalytics";
 import { useConstants } from "../../../lib/hooks/useConstants";
 import { PageHeader } from "../../../components/PageHeader";
@@ -11,6 +12,7 @@ import { RecentActivityFeed } from "../../../components/overview/RecentActivityF
 import { Button } from "../../../components/ui/button";
 
 export function OverviewPage() {
+  const { t } = useTranslation("overview");
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const [days, setDays] = useState(7);
   const { data: analytics, isLoading } = useAnalytics(guildId, days);
@@ -23,37 +25,35 @@ export function OverviewPage() {
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Overview"
-        subtitle="Monitor your automation performance and activity at a glance."
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
-      {/* Summary Stats (Stitch: module-oriented cards) */}
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         <StatsCard
-          label="Action Rules"
+          label={t("stats.actionRules")}
           value={summary.totalRules}
           accentColor="border-accent"
         />
         <StatsCard
-          label="Active Now"
+          label={t("stats.activeNow")}
           value={summary.activeRules}
           accentColor="border-success"
           valueClassName="text-success"
         />
         <StatsCard
-          label="Executions"
+          label={t("stats.executions")}
           value={summary.totalExecutions.toLocaleString()}
           accentColor="border-secondary"
         />
         <StatsCard
-          label="Success Rate"
+          label={t("stats.successRate")}
           value={`${summary.successRate}%`}
           accentColor={summary.successRate >= 90 ? "border-success" : "border-danger"}
           valueClassName={summary.successRate >= 90 ? "text-success" : "text-danger"}
         />
       </div>
 
-      {/* Period Toggle */}
       <div className="flex gap-1">
         {[7, 30].map((d) => (
           <Button
@@ -67,12 +67,11 @@ export function OverviewPage() {
         ))}
         {summary.recentErrors > 0 && (
           <span className="ml-auto flex items-center gap-1.5 rounded-full bg-danger/10 px-3 py-1 text-xs font-medium text-danger">
-            {summary.recentErrors} error{summary.recentErrors !== 1 ? "s" : ""} in last 24h
+            {t("errorsInLast24h", { count: summary.recentErrors })}
           </span>
         )}
       </div>
 
-      {/* Charts */}
       <div className="grid gap-4 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <ExecutionChart data={analytics.executionTrend} />
@@ -85,7 +84,6 @@ export function OverviewPage() {
         </div>
       </div>
 
-      {/* Recent Activity */}
       <RecentActivityFeed
         data={analytics.recentActivity}
         guildId={guildId}

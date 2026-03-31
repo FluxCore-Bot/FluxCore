@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Ei todennettu",
+    "sessionExpired": "Istunto on vanhentunut",
+    "missingCode": "Koodiparametri puuttuu",
+    "tokenExchangeFailed": "Tokenin vaihto epäonnistui",
+    "failedToFetchUser": "Käyttäjätietojen hakeminen epäonnistui"
+  },
+  "permissions": {
+    "noGuildPermission": "Ei oikeuksia tälle palvelimelle",
+    "botNotInGuild": "Botti ei ole tällä palvelimella",
+    "insufficientPermissions": "Riittämättömät oikeudet",
+    "permissionsNotResolved": "Oikeuksia ei voitu selvittää",
+    "requiresPermission": "Tämä toiminto vaatii oikeuden \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Virheellinen syöte",
+    "missingField": "Pakollinen kenttä puuttuu: {{field}}",
+    "invalidFormat": "Virheellinen muoto: {{field}}",
+    "tooLong": "{{field}} ylittää enimmäispituuden {{max}} merkkiä",
+    "tooShort": "{{field}} on oltava vähintään {{min}} merkkiä",
+    "outOfRange": "{{field}} on oltava välillä {{min}} ja {{max}}"
+  },
+  "resources": {
+    "notFound": "Ei löytynyt",
+    "alreadyExists": "{{resource}} on jo olemassa",
+    "limitReached": "Enintään {{max}} {{resource}} per palvelin",
+    "createFailed": "Luominen epäonnistui: {{resource}}",
+    "updateFailed": "Päivittäminen epäonnistui: {{resource}}",
+    "deleteFailed": "Poistaminen epäonnistui: {{resource}}"
+  },
+  "server": {
+    "internalError": "Sisäinen palvelinvirhe",
+    "serviceUnavailable": "Palvelu on tilapäisesti poissa käytöstä",
+    "rateLimited": "Liian monta pyyntöä. Yritä myöhemmin uudelleen."
+  },
+  "csrf": {
+    "invalidToken": "Virheellinen tai puuttuva CSRF-token"
+  }
+}

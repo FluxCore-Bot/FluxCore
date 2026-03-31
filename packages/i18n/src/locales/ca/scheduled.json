@@ -1,0 +1,86 @@
+{
+  "title": "Missatges programats",
+  "subtitle": "Crea missatges recurrents publicats automaticament segons horaris configurables.",
+  "stats": {
+    "totalMessages": "Total de missatges",
+    "active": "Actius",
+    "inactive": "Inactius"
+  },
+  "table": {
+    "name": "Nom",
+    "channel": "Canal",
+    "schedule": "Horari",
+    "nextRun": "Propera execució",
+    "status": "Estat"
+  },
+  "dialog": {
+    "editTitle": "Editar missatge programat",
+    "createTitle": "Nou missatge programat"
+  },
+  "form": {
+    "name": "Nom",
+    "channel": "Canal",
+    "schedulePreset": "Plantilla d'horari",
+    "cronExpression": "Expressió Cron",
+    "timezone": "Zona horaria",
+    "messageContent": "Contingut del missatge",
+    "text": "Text",
+    "embed": "Embed",
+    "enabled": "Activat",
+    "enabledDesc": "Si aquest missatge programat esta actiu."
+  },
+  "cronPresets": {
+    "everyHour": "Cada hora",
+    "every6Hours": "Cada 6 hores",
+    "daily9am": "Diariament a les 9 del mati",
+    "dailyMidnight": "Diariament a mitjanit",
+    "weeklyMonday": "Setmanalment el dilluns",
+    "monthly1st": "Mensualment el dia 1",
+    "custom": "Personalitzat"
+  },
+  "embed": {
+    "title": "Títol",
+    "description": "Descripció",
+    "color": "Color (hex)",
+    "footer": "Peu de pagina",
+    "thumbnail": "URL de la miniatura",
+    "image": "URL de la imatge"
+  },
+  "toast": {
+    "created": "Missatge programat creat",
+    "createFailed": "No s'ha pogut crear el missatge programat",
+    "updated": "Missatge programat actualitzat",
+    "updateFailed": "No s'ha pogut actualitzar el missatge programat",
+    "deleted": "Missatge programat eliminat",
+    "deleteFailed": "No s'ha pogut eliminar el missatge programat",
+    "testSent": "Missatge de prova enviat",
+    "testFailed": "No s'ha pogut enviar el missatge de prova"
+  },
+  "empty": {
+    "title": "Encara no hi ha missatges programats",
+    "description": "Crea un missatge programat per publicar contingut automaticament de forma recurrent.",
+    "createButton": "Crear missatge"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguent",
+    "page": "Pagina {{page}} de {{total}}"
+  },
+  "actions": {
+    "newMessage": "Nou missatge",
+    "testSend": "Enviar prova",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "save": "Desar",
+    "cancel": "Cancel\u00b7lar"
+  },
+  "validation": {
+    "nameRequired": "El nom del missatge es obligatori",
+    "channelRequired": "El canal es obligatori"
+  },
+  "cronPreview": {
+    "nextRuns": "Properes execucions"
+  },
+  "characters": "{{count}}/2000 caracters",
+  "never": "Mai"
+}

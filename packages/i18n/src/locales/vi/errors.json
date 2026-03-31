@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Chưa xác thực",
+    "sessionExpired": "Phiên đã hết hạn",
+    "missingCode": "Thiếu tham số mã",
+    "tokenExchangeFailed": "Trao đổi token thất bại",
+    "failedToFetchUser": "Không thể lấy thông tin người dùng"
+  },
+  "permissions": {
+    "noGuildPermission": "Không có quyền cho máy chủ này",
+    "botNotInGuild": "Bot không ở trong máy chủ này",
+    "insufficientPermissions": "Quyền hạn không đủ",
+    "permissionsNotResolved": "Quyền hạn chưa được xác định",
+    "requiresPermission": "Hành động này yêu cầu quyền \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Đầu vào không hợp lệ",
+    "missingField": "Thiếu trường bắt buộc: {{field}}",
+    "invalidFormat": "Định dạng không hợp lệ cho {{field}}",
+    "tooLong": "{{field}} vượt quá độ dài tối đa {{max}} ký tự",
+    "tooShort": "{{field}} phải có ít nhất {{min}} ký tự",
+    "outOfRange": "{{field}} phải nằm trong khoảng {{min}} và {{max}}"
+  },
+  "resources": {
+    "notFound": "Không tìm thấy",
+    "alreadyExists": "{{resource}} đã tồn tại",
+    "limitReached": "Tối đa {{max}} {{resource}} mỗi máy chủ",
+    "createFailed": "Tạo {{resource}} thất bại",
+    "updateFailed": "Cập nhật {{resource}} thất bại",
+    "deleteFailed": "Xóa {{resource}} thất bại"
+  },
+  "server": {
+    "internalError": "Lỗi máy chủ nội bộ",
+    "serviceUnavailable": "Dịch vụ tạm thời không khả dụng",
+    "rateLimited": "Quá nhiều yêu cầu. Vui lòng thử lại sau."
+  },
+  "csrf": {
+    "invalidToken": "Token CSRF không hợp lệ hoặc bị thiếu"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Guild",
+    "automation": "Automation"
+  },
+  "title": "Automation Rules",
+  "subtitle": "Configure event-driven triggers and automated responses for your guild.",
+  "createRule": "Create Rule",
+  "stats": {
+    "totalRules": "Total Rules",
+    "active": "Active",
+    "executions7d": "Executions (7d)",
+    "successRate": "Success Rate"
+  },
+  "filter": {
+    "searchPlaceholder": "Search rules...",
+    "eventType": "Event type",
+    "allEvents": "All Events",
+    "allStatus": "All Status",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "sortBy": "Sort by",
+    "priority": "Priority",
+    "name": "Name",
+    "lastFired": "Last Fired",
+    "status": "Status",
+    "clear": "Clear",
+    "showing": "Showing {{filtered}} of {{total}} rules"
+  },
+  "bulk": {
+    "selected": "{{count}} rule selected",
+    "selected_other": "{{count}} rules selected",
+    "enable": "Enable",
+    "disable": "Disable",
+    "delete": "Delete",
+    "clear": "Clear"
+  },
+  "empty": {
+    "title": "Get Started with Automation",
+    "description": "Choose a template to get started quickly, or create a rule from scratch.",
+    "createFromScratch": "Create from Scratch"
+  },
+  "noResults": {
+    "title": "No matching rules",
+    "description": "Try adjusting your search or filters to find what you're looking for."
+  },
+  "templates": {
+    "welcomeMessage": "Welcome Message",
+    "welcomeMessageDesc": "Greet new members with a custom message in a channel",
+    "autoRole": "Auto Role",
+    "autoRoleDesc": "Automatically assign a role when a member joins",
+    "logDeleted": "Log Deleted Messages",
+    "logDeletedDesc": "Send deleted message info to a log channel",
+    "boostThankYou": "Boost Thank You",
+    "boostThankYouDesc": "Send a DM thanking users who boost the server",
+    "banLogger": "Ban Logger",
+    "banLoggerDesc": "Log ban events to a moderation channel",
+    "autoThread": "Auto Thread",
+    "autoThreadDesc": "Automatically create a thread when a message is sent"
+  },
+  "deleteDialog": {
+    "title": "Delete Rule",
+    "description": "Are you sure you want to delete \"{{name}}\"? This action cannot be undone.",
+    "confirm": "Delete"
+  },
+  "bulkDeleteDialog": {
+    "title": "Delete Selected Rules",
+    "description": "Are you sure you want to delete {{count}} rule? This action cannot be undone.",
+    "description_other": "Are you sure you want to delete {{count}} rules? This action cannot be undone.",
+    "confirm": "Delete All"
+  },
+  "toast": {
+    "deleted": "Rule deleted",
+    "deleteFailed": "Failed to delete rule",
+    "enabled": "Rule enabled",
+    "disabled": "Rule disabled",
+    "toggleFailed": "Failed to toggle rule",
+    "duplicated": "Rule duplicated",
+    "duplicateFailed": "Failed to duplicate rule",
+    "bulkEnabled": "{{count}} rules enabled",
+    "bulkDisabled": "{{count}} rules disabled",
+    "bulkEnableFailed": "Failed to enable rules",
+    "bulkDisableFailed": "Failed to disable rules",
+    "bulkDeleted": "{{count}} rules deleted",
+    "bulkDeleteFailed": "Failed to delete rules"
+  }
+}

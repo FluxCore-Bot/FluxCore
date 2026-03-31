@@ -1,0 +1,54 @@
+{
+  "title": "Moderace",
+  "subtitle": "Prohlížejte a spravujte případy moderace, konfigurujte nastavení trestů.",
+  "stats": {
+    "totalCases": "Celkem případů",
+    "activeTempbans": "Aktivní dočasné bany",
+    "last24h": "Posledních 24h"
+  },
+  "cases": "Případy",
+  "actions": {
+    "ban": "Ban",
+    "tempban": "Dočasný ban",
+    "kick": "Kick",
+    "timeout": "Timeout",
+    "softban": "Softban",
+    "warn": "Varování",
+    "note": "Poznámka"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Akce",
+    "target": "Cíl",
+    "moderator": "Moderátor",
+    "reason": "Důvod",
+    "date": "Datum",
+    "actions": "Akce",
+    "noCases": "Žádné případy nenalezeny.",
+    "noReason": "Bez důvodu"
+  },
+  "filter": {
+    "userPlaceholder": "Filtrovat podle ID uživatele...",
+    "allActions": "Všechny akce"
+  },
+  "pagination": {
+    "previous": "Předchozí",
+    "next": "Další",
+    "page": "Stránka {{page}} z {{total}}"
+  },
+  "editDialog": {
+    "title": "Upravit důvod případu #{{id}}",
+    "placeholder": "Zadejte nový důvod...",
+    "saving": "Ukládání..."
+  },
+  "editReason": "Upravit důvod",
+  "deleteCase": "Smazat případ",
+  "deleteConfirm": "Opravdu chcete smazat tento případ?",
+  "settings": {
+    "title": "Nastavení",
+    "dmOnPunishment": "SZ při trestu",
+    "dmOnPunishmentDesc": "Odeslat soukromou zprávu uživatelům při potrestání (ban, kick, timeout).",
+    "modLogChannel": "Kanál logů moderace",
+    "modLogChannelDesc": "Kanál, kam se zaznamenávají akce moderace."
+  }
+}

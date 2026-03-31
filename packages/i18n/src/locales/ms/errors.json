@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Tidak disahkan",
+    "sessionExpired": "Sesi telah tamat",
+    "missingCode": "Parameter kod tidak dijumpai",
+    "tokenExchangeFailed": "Pertukaran token gagal",
+    "failedToFetchUser": "Gagal mendapatkan maklumat pengguna"
+  },
+  "permissions": {
+    "noGuildPermission": "Tiada kebenaran untuk pelayan ini",
+    "botNotInGuild": "Bot tidak berada dalam pelayan ini",
+    "insufficientPermissions": "Kebenaran tidak mencukupi",
+    "permissionsNotResolved": "Kebenaran tidak dapat diselesaikan",
+    "requiresPermission": "Tindakan ini memerlukan kebenaran \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Input tidak sah",
+    "missingField": "Medan diperlukan tidak dijumpai: {{field}}",
+    "invalidFormat": "Format tidak sah untuk {{field}}",
+    "tooLong": "{{field}} melebihi panjang maksimum {{max}} aksara",
+    "tooShort": "{{field}} mesti sekurang-kurangnya {{min}} aksara",
+    "outOfRange": "{{field}} mesti berada antara {{min}} dan {{max}}"
+  },
+  "resources": {
+    "notFound": "Tidak dijumpai",
+    "alreadyExists": "{{resource}} sudah wujud",
+    "limitReached": "Maksimum {{max}} {{resource}} setiap pelayan",
+    "createFailed": "Gagal mencipta {{resource}}",
+    "updateFailed": "Gagal mengemaskini {{resource}}",
+    "deleteFailed": "Gagal memadam {{resource}}"
+  },
+  "server": {
+    "internalError": "Ralat pelayan dalaman",
+    "serviceUnavailable": "Perkhidmatan tidak tersedia buat sementara",
+    "rateLimited": "Terlalu banyak permintaan. Sila cuba lagi kemudian."
+  },
+  "csrf": {
+    "invalidToken": "Token CSRF tidak sah atau tidak dijumpai"
+  }
+}

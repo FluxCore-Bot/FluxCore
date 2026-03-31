@@ -1,0 +1,50 @@
+{
+  "title": "Losowania",
+  "subtitle": "Organizuj losowania z konfigurowalnm czasem trwania, wymaganiami i wyborem zwycięzców.",
+  "stats": {
+    "activeGiveaways": "Aktywne losowania",
+    "pastGiveaways": "Zakończone losowania",
+    "totalEntries": "Łącznie uczestników"
+  },
+  "table": {
+    "prize": "Nagroda",
+    "winners": "Zwycięzcy",
+    "entries": "Uczestnicy",
+    "endsIn": "Kończy się za",
+    "status": "Status"
+  },
+  "statuses": {
+    "active": "Aktywne",
+    "ended": "Zakończone",
+    "cancelled": "Anulowane"
+  },
+  "actions": {
+    "create": "Utwórz losowanie",
+    "edit": "Edytuj",
+    "end": "Zakończ",
+    "reroll": "Losuj ponownie",
+    "delete": "Usuń"
+  },
+  "form": {
+    "prize": "Nagroda",
+    "winnersCount": "Liczba zwycięzców",
+    "duration": "Czas trwania",
+    "channel": "Kanał",
+    "requiredRole": "Wymagana rola",
+    "description": "Opis"
+  },
+  "toast": {
+    "created": "Losowanie utworzone",
+    "createFailed": "Nie udało się utworzyć losowania",
+    "updated": "Losowanie zaktualizowane",
+    "updateFailed": "Nie udało się zaktualizować losowania",
+    "ended": "Losowanie zakończone",
+    "endFailed": "Nie udało się zakończyć losowania",
+    "rerolled": "Zwycięzcy wylosowani ponownie",
+    "rerollFailed": "Nie udało się ponownie wylosować zwycięzców",
+    "deleted": "Losowanie usunięte",
+    "deleteFailed": "Nie udało się usunąć losowania"
+  },
+  "empty": "Brak losowań. Utwórz pierwsze, aby rozpocząć.",
+  "loading": "Ładowanie losowań..."
+}

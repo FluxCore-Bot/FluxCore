@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Non autenticato",
+    "sessionExpired": "Sessione scaduta",
+    "missingCode": "Parametro codice mancante",
+    "tokenExchangeFailed": "Scambio token fallito",
+    "failedToFetchUser": "Impossibile recuperare le informazioni utente"
+  },
+  "permissions": {
+    "noGuildPermission": "Nessun permesso per questo server",
+    "botNotInGuild": "Il bot non e in questo server",
+    "insufficientPermissions": "Permessi insufficienti",
+    "permissionsNotResolved": "Permessi non risolti",
+    "requiresPermission": "Questa azione richiede il permesso \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Input non valido",
+    "missingField": "Campo obbligatorio mancante: {{field}}",
+    "invalidFormat": "Formato non valido per {{field}}",
+    "tooLong": "{{field}} supera la lunghezza massima di {{max}} caratteri",
+    "tooShort": "{{field}} deve avere almeno {{min}} caratteri",
+    "outOfRange": "{{field}} deve essere compreso tra {{min}} e {{max}}"
+  },
+  "resources": {
+    "notFound": "Non trovato",
+    "alreadyExists": "{{resource}} esiste gia",
+    "limitReached": "Massimo {{max}} {{resource}} per server",
+    "createFailed": "Impossibile creare {{resource}}",
+    "updateFailed": "Impossibile aggiornare {{resource}}",
+    "deleteFailed": "Impossibile eliminare {{resource}}"
+  },
+  "server": {
+    "internalError": "Errore interno del server",
+    "serviceUnavailable": "Servizio temporaneamente non disponibile",
+    "rateLimited": "Troppe richieste. Riprova piu tardi."
+  },
+  "csrf": {
+    "invalidToken": "Token CSRF non valido o mancante"
+  }
+}

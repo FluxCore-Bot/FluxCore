@@ -1,0 +1,9 @@
+{
+  "title": "Sunucularınız",
+  "subtitle": "Yönetmek ve yapılandırmak için bir sunucu seçin.",
+  "loading": "Sunucular yükleniyor...",
+  "empty": {
+    "title": "Sunucu bulunamadı",
+    "description": "Botun, Sunucuyu Yönet iznine sahip olduğunuz bir sunucuya eklendiğinden emin olun."
+  }
+}

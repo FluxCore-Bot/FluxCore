@@ -1,0 +1,118 @@
+{
+  "title": "نقش‌ها و دسترسی‌ها",
+  "subtitle": "کنترل اینکه چه کسی می‌تواند به هر ماژول داشبورد دسترسی داشته باشد و آن را مدیریت کند.",
+  "actions": {
+    "createRole": "ایجاد نقش"
+  },
+  "permissionSystem": {
+    "title": "سیستم دسترسی‌ها",
+    "active": "فعال — مدیران محدود به دسترسی‌های اختصاص‌یافته هستند.",
+    "inactive": "غیرفعال — تمام مدیران با MANAGE_GUILD دسترسی کامل دارند.",
+    "enabledToast": "سیستم دسترسی‌ها فعال شد",
+    "disabledToast": "سیستم دسترسی‌ها غیرفعال شد — تمام مدیران دسترسی کامل دارند"
+  },
+  "warning": {
+    "disabled": "سیستم دسترسی‌ها غیرفعال است. تمام مدیران داشبورد در حال حاضر دسترسی کامل دارند. آن را فعال کنید تا دسترسی‌های دقیق اعمال شود."
+  },
+  "tabs": {
+    "roles": "نقش‌ها",
+    "auditLog": "گزارش بازرسی"
+  },
+  "roleList": {
+    "title": "نقش‌های داشبورد",
+    "empty": "هنوز نقشی ایجاد نشده.",
+    "selectHint": "یک نقش برای ویرایش انتخاب کنید یا نقش جدیدی بسازید.",
+    "default": "پیش‌فرض",
+    "name": "نام",
+    "members": "اعضا",
+    "permissions": "دسترسی‌ها",
+    "edit": "ویرایش",
+    "delete": "حذف"
+  },
+  "presets": {
+    "title": "افزودن سریع از الگو",
+    "createdToast": "نقش \"{{name}}\" ایجاد شد"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} عضو",
+    "memberCount_plural": "{{count}} عضو",
+    "name": "نام نقش",
+    "color": "رنگ",
+    "defaultRole": "نقش پیش‌فرض",
+    "permissions": "دسترسی‌ها",
+    "allBadge": "همه",
+    "discordRoles": "نقش‌های Discord"
+  },
+  "roleForm": {
+    "name": "نام نقش",
+    "discordRoles": "نقش‌های Discord",
+    "permissions": "دسترسی‌ها",
+    "create": "ایجاد نقش",
+    "update": "به‌روزرسانی نقش",
+    "cancel": "لغو"
+  },
+  "createDialog": {
+    "title": "ایجاد نقش داشبورد",
+    "name": "نام",
+    "namePlaceholder": "مثلاً مدیر",
+    "color": "رنگ"
+  },
+  "permissionCategories": {
+    "actions": "عملیات و اتوماسیون",
+    "music": "موسیقی",
+    "tempvoice": "کانال‌های صوتی موقت",
+    "welcome": "خوش‌آمدگویی و بدرقه",
+    "moderation": "مدیریت",
+    "logging": "ثبت گزارش",
+    "leveling": "سطح‌بندی",
+    "roles": "پنل‌های نقش",
+    "tickets": "تیکت‌ها",
+    "suggestions": "پیشنهادات",
+    "starboard": "تابلوی ستاره‌ها",
+    "giveaways": "قرعه‌کشی‌ها",
+    "security": "امنیت",
+    "scheduled": "پیام‌های زمان‌بندی شده",
+    "commands": "دستورات سفارشی",
+    "settings": "تنظیمات سرور"
+  },
+  "audit": {
+    "table": {
+      "user": "کاربر",
+      "action": "عملیات",
+      "target": "هدف",
+      "timestamp": "زمان"
+    },
+    "noEntries": "هنوز موردی در گزارش بازرسی وجود ندارد."
+  },
+  "pagination": {
+    "previous": "قبلی",
+    "next": "بعدی",
+    "page": "صفحه {{current}} از {{total}}"
+  },
+  "toast": {
+    "roleCreated": "نقش \"{{name}}\" ایجاد شد",
+    "roleCreateFailed": "ایجاد نقش ناموفق بود",
+    "roleUpdated": "نقش به‌روزرسانی شد",
+    "roleUpdateFailed": "به‌روزرسانی نقش ناموفق بود",
+    "roleDeleted": "نقش حذف شد",
+    "roleDeleteFailed": "حذف نقش ناموفق بود"
+  },
+  "confirm": {
+    "deleteTitle": "حذف نقش \"{{name}}\"؟",
+    "deleteMessage": "این عمل نقش را حذف و تمام اعضا را لغو اختصاص می‌کند. قابل بازگشت نیست.",
+    "deleteRole": "آیا مطمئن هستید که می‌خواهید این نقش را حذف کنید؟ اعضا دسترسی‌های اختصاص‌یافته خود را از دست خواهند داد."
+  },
+  "saveButton": {
+    "saving": "در حال ذخیره...",
+    "save": "ذخیره تغییرات"
+  },
+  "deleteButton": {
+    "deleting": "در حال حذف...",
+    "delete": "حذف"
+  },
+  "createButton": {
+    "creating": "در حال ایجاد...",
+    "create": "ایجاد"
+  },
+  "loading": "در حال بارگذاری دسترسی‌ها..."
+}

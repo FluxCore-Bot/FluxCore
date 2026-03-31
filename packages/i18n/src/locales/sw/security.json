@@ -1,0 +1,108 @@
+{
+  "title": "Usalama",
+  "subtitle": "Sanidi ulinzi dhidi ya mashambulizi na mipangilio ya usalama wa seva.",
+  "antiRaid": {
+    "title": "Ulinzi Dhidi ya Mashambulizi",
+    "description": "Washa ugunduzi wa kiotomatiki na majibu kwa mashambulizi yaliyoratibiwa, akaunti zenye tuhuma, na vitendo vya uharibifu."
+  },
+  "sections": {
+    "joinRate": "Kiwango cha Kujiunga",
+    "accountAge": "Umri wa Akaunti",
+    "antiNuke": "Kinga ya Uharibifu",
+    "lockdown": "Kufunga",
+    "events": "Matukio"
+  },
+  "joinRate": {
+    "title": "Ugunduzi wa Kiwango cha Kujiunga",
+    "description": "Gundua kujiunga kwa wingi kwa kufuatilia kiwango cha wanachama wapya wanaojiunga.",
+    "threshold": "Kizingiti cha Kujiunga",
+    "thresholdHint": "Idadi ya kujiunga ili kuanzisha ugunduzi",
+    "window": "Dirisha la Muda (sekunde)",
+    "windowHint": "Dirisha ambalo kujiunga kunahesabiwa",
+    "action": "Kitendo kwa Ugunduzi",
+    "actionHint": "Kitendo cha kuchukua kwa wanachama wanaoshukiwa",
+    "actions": {
+      "ban": "Zuia",
+      "kick": "Fukuza",
+      "timeout": "Simamisha kwa Muda",
+      "lockdown": "Funga"
+    }
+  },
+  "accountAge": {
+    "title": "Kichujio cha Umri wa Akaunti",
+    "description": "Chukua hatua kiotomatiki kwa akaunti changa kuliko umri wa chini. Weka 0 ili kuzima.",
+    "minAge": "Umri wa Chini wa Akaunti (siku)",
+    "minAgeHint": "0 = imezimwa. Akaunti changa kuliko hii zitachukuliwa hatua.",
+    "action": "Kitendo"
+  },
+  "antiNuke": {
+    "title": "Ulinzi Dhidi ya Uharibifu",
+    "description": "Gundua ufutaji wa chaneli/majukumu kwa wingi na kuweka karantini mtumiaji anayehusika kwa kuondoa majukumu yake yote.",
+    "threshold": "Kizingiti cha Ufutaji",
+    "thresholdHint": "Idadi ya ufutaji ndani ya sekunde 10 ili kuanzisha karantini",
+    "channelDeleteThreshold": "Kizingiti cha Ufutaji wa Chaneli",
+    "roleDeleteThreshold": "Kizingiti cha Ufutaji wa Majukumu",
+    "massbanThreshold": "Kizingiti cha Kuzuia kwa Wingi",
+    "interval": "Muda (sekunde)",
+    "action": "Kitendo"
+  },
+  "lockdown": {
+    "title": "Kufunga Kiotomatiki kwa Mashambulizi",
+    "description": "Funga chaneli zote kiotomatiki wakati mashambulizi yanapogunduliwa.",
+    "whitelistedRoles": "Vitambulisho vya Majukumu Yaliyoruhusiwa (vilivyotenganishwa kwa koma)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Wanachama wenye majukumu haya watatolewa kwenye ugunduzi wa mashambulizi.",
+    "logChannel": "Kitambulisho cha Chaneli ya Kumbukumbu",
+    "logChannelPlaceholder": "Kitambulisho cha chaneli kwa kumbukumbu za matukio ya mashambulizi...",
+    "enableButton": "Washa Kufunga",
+    "disableButton": "Zima Kufunga",
+    "active": "Kufunga Kumetumika",
+    "inactive": "Kufunga Hakujatumika"
+  },
+  "events": {
+    "title": "Matukio ya Hivi Karibuni ya Mashambulizi",
+    "description": "Kalenda ya mashambulizi yaliyogunduliwa, vizuizi vya umri wa akaunti, na matukio ya kufunga.",
+    "empty": "Hakuna matukio ya mashambulizi yaliyorekodiwa bado. Matukio yataonekana hapa wakati ugunduzi wa mashambulizi unapoanzishwa.",
+    "actionLabel": "Kitendo: {{action}}",
+    "usersLabel": "Watumiaji: {{count}}",
+    "accountAgeLabel": "Umri wa akaunti: siku {{days}}",
+    "table": {
+      "type": "Aina",
+      "description": "Maelezo",
+      "time": "Wakati",
+      "action": "Kitendo Kilichochukuliwa"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Ongezeko la Kujiunga",
+    "account_age": "Umri wa Akaunti",
+    "nuke_attempt": "Jaribio la Uharibifu",
+    "lockdown": "Kufunga",
+    "massJoin": "Kujiunga kwa Wingi",
+    "suspiciousAccounts": "Akaunti Zenye Tuhuma",
+    "channelDeletion": "Ufutaji wa Chaneli",
+    "roleDeletion": "Ufutaji wa Majukumu",
+    "massBan": "Kuzuia kwa Wingi"
+  },
+  "pagination": {
+    "previous": "Iliyotangulia",
+    "next": "Inayofuata",
+    "page": "Ukurasa {{current}} wa {{total}}"
+  },
+  "toast": {
+    "saved": "Usanidi wa kinga dhidi ya mashambulizi umehifadhiwa",
+    "saveFailed": "Imeshindwa kuhifadhi usanidi",
+    "lockdownEnabled": "Kufunga kwa seva kumewashwa",
+    "lockdownDisabled": "Kufunga kwa seva kumezimwa",
+    "lockdownFailed": "Imeshindwa kubadilisha hali ya kufunga"
+  },
+  "saveButton": {
+    "saving": "Inahifadhi...",
+    "save": "Hifadhi Mabadiliko"
+  },
+  "labels": {
+    "seconds": "sekunde",
+    "minutes": "dakika",
+    "hours": "masaa"
+  }
+}

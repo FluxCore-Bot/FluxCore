@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Server",
+    "automation": "Automatisering"
+  },
+  "title": "Automatiseringsregler",
+  "subtitle": "Konfigurera händelsestyrda utlösare och automatiserade svar för din server.",
+  "createRule": "Skapa regel",
+  "stats": {
+    "totalRules": "Totalt antal regler",
+    "active": "Aktiva",
+    "executions7d": "Körningar (7d)",
+    "successRate": "Framgångsfrekvens"
+  },
+  "filter": {
+    "searchPlaceholder": "Sök regler...",
+    "eventType": "Händelsetyp",
+    "allEvents": "Alla händelser",
+    "allStatus": "Alla statusar",
+    "enabled": "Aktiverad",
+    "disabled": "Inaktiverad",
+    "sortBy": "Sortera efter",
+    "priority": "Prioritet",
+    "name": "Namn",
+    "lastFired": "Senast utlöst",
+    "status": "Status",
+    "clear": "Rensa",
+    "showing": "Visar {{filtered}} av {{total}} regler"
+  },
+  "bulk": {
+    "selected": "{{count}} regel vald",
+    "selected_other": "{{count}} regler valda",
+    "enable": "Aktivera",
+    "disable": "Inaktivera",
+    "delete": "Ta bort",
+    "clear": "Rensa"
+  },
+  "empty": {
+    "title": "Kom igång med automatisering",
+    "description": "Välj en mall för att komma igång snabbt, eller skapa en regel från grunden.",
+    "createFromScratch": "Skapa från grunden"
+  },
+  "noResults": {
+    "title": "Inga matchande regler",
+    "description": "Försök justera din sökning eller dina filter för att hitta det du letar efter."
+  },
+  "templates": {
+    "welcomeMessage": "Välkomstmeddelande",
+    "welcomeMessageDesc": "Hälsa nya medlemmar med ett anpassat meddelande i en kanal",
+    "autoRole": "Autoroll",
+    "autoRoleDesc": "Tilldela automatiskt en roll när en medlem går med",
+    "logDeleted": "Logga borttagna meddelanden",
+    "logDeletedDesc": "Skicka info om borttagna meddelanden till en loggkanal",
+    "boostThankYou": "Boost-tack",
+    "boostThankYouDesc": "Skicka ett DM och tacka användare som boostar servern",
+    "banLogger": "Banloggare",
+    "banLoggerDesc": "Logga banningshändelser till en modereringskanal",
+    "autoThread": "Autotråd",
+    "autoThreadDesc": "Skapa automatiskt en tråd när ett meddelande skickas"
+  },
+  "deleteDialog": {
+    "title": "Ta bort regel",
+    "description": "Är du säker på att du vill ta bort \"{{name}}\"? Denna åtgärd kan inte ångras.",
+    "confirm": "Ta bort"
+  },
+  "bulkDeleteDialog": {
+    "title": "Ta bort valda regler",
+    "description": "Är du säker på att du vill ta bort {{count}} regel? Denna åtgärd kan inte ångras.",
+    "description_other": "Är du säker på att du vill ta bort {{count}} regler? Denna åtgärd kan inte ångras.",
+    "confirm": "Ta bort alla"
+  },
+  "toast": {
+    "deleted": "Regel borttagen",
+    "deleteFailed": "Misslyckades med att ta bort regel",
+    "enabled": "Regel aktiverad",
+    "disabled": "Regel inaktiverad",
+    "toggleFailed": "Misslyckades med att växla regel",
+    "duplicated": "Regel duplicerad",
+    "duplicateFailed": "Misslyckades med att duplicera regel",
+    "bulkEnabled": "{{count}} regler aktiverade",
+    "bulkDisabled": "{{count}} regler inaktiverade",
+    "bulkEnableFailed": "Misslyckades med att aktivera regler",
+    "bulkDisableFailed": "Misslyckades med att inaktivera regler",
+    "bulkDeleted": "{{count}} regler borttagna",
+    "bulkDeleteFailed": "Misslyckades med att ta bort regler"
+  }
+}

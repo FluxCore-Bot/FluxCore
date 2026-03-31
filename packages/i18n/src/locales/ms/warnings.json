@@ -1,0 +1,72 @@
+{
+  "title": "Amaran",
+  "subtitle": "Jejak dan urus amaran ahli dengan eskalasi automatik.",
+  "stats": {
+    "totalWarnings": "Jumlah Amaran",
+    "escalationRules": "Peraturan Eskalasi",
+    "dmOnWarn": "DM semasa Diberi Amaran"
+  },
+  "tabs": {
+    "warnings": "Log Amaran",
+    "escalation": "Eskalasi",
+    "settings": "Tetapan"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Pengguna",
+    "moderator": "Moderator",
+    "reason": "Sebab",
+    "date": "Tarikh"
+  },
+  "filter": {
+    "userPlaceholder": "Tapis mengikut ID Pengguna...",
+    "clearAll": "Kosongkan Semua"
+  },
+  "pagination": {
+    "previous": "Sebelumnya",
+    "next": "Seterusnya",
+    "page": "Halaman {{page}} daripada {{total}} ({{count}} jumlah)"
+  },
+  "loading": "Memuatkan amaran...",
+  "noWarnings": "Tiada amaran ditemui.",
+  "toast": {
+    "warningRemoved": "Amaran dibuang",
+    "warningsFailed": "Gagal memadam amaran",
+    "enterUserId": "Masukkan ID pengguna untuk mengosongkan semua amaran pengguna tersebut",
+    "allCleared": "Semua amaran dikosongkan untuk pengguna",
+    "clearFailed": "Gagal mengosongkan amaran",
+    "thresholdAdded": "Ambang hukuman ditambah",
+    "thresholdFailed": "Gagal menambah hukuman",
+    "thresholdRemoved": "Hukuman dibuang",
+    "removeFailed": "Gagal membuang hukuman",
+    "settingFailed": "Gagal mengemaskini tetapan",
+    "thresholdInvalid": "Ambang mestilah nombor positif"
+  },
+  "escalation": {
+    "title": "Eskalasi Hukuman",
+    "description": "Konfigurasikan tindakan automatik apabila pengguna mencapai bilangan amaran tertentu.",
+    "threshold": "Ambang",
+    "action": "Tindakan",
+    "duration": "Tempoh",
+    "noRules": "Tiada peraturan eskalasi yang dikonfigurasi.",
+    "addRule": "Tambah Peraturan Eskalasi",
+    "addButton": "Tambah Peraturan",
+    "warnings": "{{count}} amaran",
+    "min": "{{count}} min",
+    "timeout": "Timeout",
+    "kick": "Kick",
+    "ban": "Ban",
+    "durationLabel": "Tempoh (saat)",
+    "thresholdPlaceholder": "cth. 3",
+    "durationPlaceholder": "cth. 3600"
+  },
+  "settings": {
+    "title": "Tetapan Amaran",
+    "dmOnWarn": "DM semasa Diberi Amaran",
+    "dmOnWarnDesc": "Hantar mesej terus kepada pengguna apabila mereka menerima amaran.",
+    "requireReason": "Wajibkan Sebab",
+    "requireReasonDesc": "Moderator mesti memberikan sebab apabila mengeluarkan amaran.",
+    "maxWarnings": "Maks Amaran",
+    "maxWarningsDesc": "Amaran maksimum setiap pengguna (0 = tidak terhad)."
+  }
+}

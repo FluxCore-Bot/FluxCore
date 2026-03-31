@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore Dashboard"
+  },
+  "status": {
+    "online": "Online",
+    "offline": "Offline",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Overview",
+    "automation": "Automation",
+    "music": "Music",
+    "tempvoice": "TempVoice",
+    "welcome": "Welcome",
+    "moderation": "Moderation",
+    "warnings": "Warnings",
+    "rolePanels": "Role Panels",
+    "leveling": "Leveling",
+    "scheduled": "Scheduled",
+    "commands": "Commands",
+    "security": "Security",
+    "tickets": "Tickets",
+    "giveaways": "Giveaways",
+    "suggestions": "Suggestions",
+    "starboard": "Starboard",
+    "logs": "Logs",
+    "permissions": "Permissions",
+    "settings": "Settings"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "add": "Add",
+    "remove": "Remove",
+    "confirm": "Confirm",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "search": "Search",
+    "filter": "Filter",
+    "refresh": "Refresh",
+    "reset": "Reset",
+    "enable": "Enable",
+    "disable": "Disable",
+    "copy": "Copy",
+    "export": "Export",
+    "import": "Import",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "retry": "Retry"
+  },
+  "labels": {
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "active": "Active",
+    "inactive": "Inactive",
+    "none": "None",
+    "all": "All",
+    "custom": "Custom",
+    "default": "Default",
+    "required": "Required",
+    "optional": "Optional",
+    "name": "Name",
+    "description": "Description",
+    "type": "Type",
+    "status": "Status",
+    "channel": "Channel",
+    "role": "Role",
+    "member": "Member",
+    "duration": "Duration",
+    "reason": "Reason",
+    "language": "Language"
+  },
+  "header": {
+    "notifications": "Notifications",
+    "settings": "Settings",
+    "logout": "Logout",
+    "toggleSidebar": "Toggle sidebar",
+    "refreshData": "Refresh Discord data"
+  },
+  "sidebar": {
+    "closeSidebar": "Close sidebar",
+    "addToServer": "Add to Server",
+    "docs": "Docs",
+    "support": "Support",
+    "backToServers": "Back to Servers"
+  },
+  "empty": {
+    "noData": "No data available",
+    "noResults": "No results found",
+    "noItems": "No items yet"
+  },
+  "time": {
+    "seconds": "seconds",
+    "minutes": "minutes",
+    "hours": "hours",
+    "days": "days",
+    "ago": "{{time}} ago",
+    "in": "in {{time}}"
+  },
+  "confirm": {
+    "title": "Are you sure?",
+    "deleteTitle": "Confirm deletion",
+    "deleteMessage": "This action cannot be undone.",
+    "unsavedChanges": "You have unsaved changes. Are you sure you want to leave?"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "loading": "Loading content",
+    "loaded": "Content loaded",
+    "error": "An error occurred",
+    "menuOpen": "Menu is open",
+    "menuClosed": "Menu is closed"
+  }
+}

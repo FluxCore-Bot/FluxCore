@@ -1,0 +1,50 @@
+{
+  "title": "Giveaway",
+  "subtitle": "Organizza giveaway con durata, requisiti di partecipazione e selezione dei vincitori personalizzabili.",
+  "stats": {
+    "activeGiveaways": "Giveaway attivi",
+    "pastGiveaways": "Giveaway passati",
+    "totalEntries": "Partecipazioni totali"
+  },
+  "table": {
+    "prize": "Premio",
+    "winners": "Vincitori",
+    "entries": "Partecipazioni",
+    "endsIn": "Termina tra",
+    "status": "Stato"
+  },
+  "statuses": {
+    "active": "Attivo",
+    "ended": "Terminato",
+    "cancelled": "Annullato"
+  },
+  "actions": {
+    "create": "Crea giveaway",
+    "edit": "Modifica",
+    "end": "Termina",
+    "reroll": "Riestrai",
+    "delete": "Elimina"
+  },
+  "form": {
+    "prize": "Premio",
+    "winnersCount": "Numero di vincitori",
+    "duration": "Durata",
+    "channel": "Canale",
+    "requiredRole": "Ruolo richiesto",
+    "description": "Descrizione"
+  },
+  "toast": {
+    "created": "Giveaway creato",
+    "createFailed": "Impossibile creare il giveaway",
+    "updated": "Giveaway aggiornato",
+    "updateFailed": "Impossibile aggiornare il giveaway",
+    "ended": "Giveaway terminato",
+    "endFailed": "Impossibile terminare il giveaway",
+    "rerolled": "Vincitori riestratti",
+    "rerollFailed": "Impossibile riestrarre i vincitori",
+    "deleted": "Giveaway eliminato",
+    "deleteFailed": "Impossibile eliminare il giveaway"
+  },
+  "empty": "Ancora nessun giveaway. Creane uno per iniziare.",
+  "loading": "Caricamento giveaway..."
+}

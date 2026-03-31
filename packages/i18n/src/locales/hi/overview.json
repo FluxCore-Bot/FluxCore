@@ -1,0 +1,12 @@
+{
+  "title": "अवलोकन",
+  "subtitle": "अपने ऑटोमेशन प्रदर्शन और गतिविधि पर एक नज़र डालें।",
+  "stats": {
+    "actionRules": "एक्शन नियम",
+    "activeNow": "अभी सक्रिय",
+    "executions": "निष्पादन",
+    "successRate": "सफलता दर"
+  },
+  "errorsInLast24h": "पिछले 24 घंटों में {{count}} त्रुटि",
+  "errorsInLast24h_other": "पिछले 24 घंटों में {{count}} त्रुटियां"
+}

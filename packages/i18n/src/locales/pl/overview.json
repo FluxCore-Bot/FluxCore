@@ -1,0 +1,12 @@
+{
+  "title": "Przegląd",
+  "subtitle": "Monitoruj wydajność automatyzacji i aktywność na bieżąco.",
+  "stats": {
+    "actionRules": "Reguły akcji",
+    "activeNow": "Aktywne teraz",
+    "executions": "Wykonania",
+    "successRate": "Wskaźnik sukcesu"
+  },
+  "errorsInLast24h": "{{count}} błąd w ostatnich 24h",
+  "errorsInLast24h_other": "{{count}} błędów w ostatnich 24h"
+}

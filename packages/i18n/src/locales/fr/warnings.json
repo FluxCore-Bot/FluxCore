@@ -1,0 +1,72 @@
+{
+  "title": "Avertissements",
+  "subtitle": "Suivez et gerez les avertissements des membres avec escalade automatique.",
+  "stats": {
+    "totalWarnings": "Total des avertissements",
+    "escalationRules": "Regles d'escalade",
+    "dmOnWarn": "MP lors d'un avertissement"
+  },
+  "tabs": {
+    "warnings": "Journal des avertissements",
+    "escalation": "Escalade",
+    "settings": "Parametres"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Utilisateur",
+    "moderator": "Moderateur",
+    "reason": "Raison",
+    "date": "Date"
+  },
+  "filter": {
+    "userPlaceholder": "Filtrer par ID utilisateur...",
+    "clearAll": "Tout effacer"
+  },
+  "pagination": {
+    "previous": "Precedent",
+    "next": "Suivant",
+    "page": "Page {{page}} sur {{total}} ({{count}} au total)"
+  },
+  "loading": "Chargement des avertissements...",
+  "noWarnings": "Aucun avertissement trouve.",
+  "toast": {
+    "warningRemoved": "Avertissement supprime",
+    "warningsFailed": "Echec de la suppression de l'avertissement",
+    "enterUserId": "Entrez un ID utilisateur pour effacer tous les avertissements de cet utilisateur",
+    "allCleared": "Tous les avertissements effaces pour l'utilisateur",
+    "clearFailed": "Echec de l'effacement des avertissements",
+    "thresholdAdded": "Seuil de sanction ajoute",
+    "thresholdFailed": "Echec de l'ajout de la sanction",
+    "thresholdRemoved": "Sanction supprimee",
+    "removeFailed": "Echec de la suppression de la sanction",
+    "settingFailed": "Echec de la mise a jour du parametre",
+    "thresholdInvalid": "Le seuil doit etre un nombre positif"
+  },
+  "escalation": {
+    "title": "Escalade des sanctions",
+    "description": "Configurez des actions automatiques lorsqu'un utilisateur atteint un certain nombre d'avertissements.",
+    "threshold": "Seuil",
+    "action": "Action",
+    "duration": "Duree",
+    "noRules": "Aucune regle d'escalade configuree.",
+    "addRule": "Ajouter une regle d'escalade",
+    "addButton": "Ajouter une regle",
+    "warnings": "{{count}} avertissements",
+    "min": "{{count}} min",
+    "timeout": "Exclusion temporaire",
+    "kick": "Expulsion",
+    "ban": "Bannissement",
+    "durationLabel": "Duree (secondes)",
+    "thresholdPlaceholder": "ex. 3",
+    "durationPlaceholder": "ex. 3600"
+  },
+  "settings": {
+    "title": "Parametres des avertissements",
+    "dmOnWarn": "MP lors d'un avertissement",
+    "dmOnWarnDesc": "Envoyer un message prive a l'utilisateur lorsqu'il recoit un avertissement.",
+    "requireReason": "Raison obligatoire",
+    "requireReasonDesc": "Les moderateurs doivent fournir une raison lorsqu'ils emettent un avertissement.",
+    "maxWarnings": "Avertissements maximum",
+    "maxWarningsDesc": "Nombre maximum d'avertissements par utilisateur (0 = illimite)."
+  }
+}

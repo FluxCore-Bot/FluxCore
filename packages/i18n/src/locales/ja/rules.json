@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "サーバー",
+    "automation": "自動化"
+  },
+  "title": "自動化ルール",
+  "subtitle": "サーバーのイベント駆動トリガーと自動応答を設定します。",
+  "createRule": "ルールを作成",
+  "stats": {
+    "totalRules": "ルール総数",
+    "active": "アクティブ",
+    "executions7d": "実行回数 (7日間)",
+    "successRate": "成功率"
+  },
+  "filter": {
+    "searchPlaceholder": "ルールを検索...",
+    "eventType": "イベントタイプ",
+    "allEvents": "すべてのイベント",
+    "allStatus": "すべてのステータス",
+    "enabled": "有効",
+    "disabled": "無効",
+    "sortBy": "並び替え",
+    "priority": "優先度",
+    "name": "名前",
+    "lastFired": "最終実行",
+    "status": "ステータス",
+    "clear": "クリア",
+    "showing": "{{total}}件中{{filtered}}件を表示"
+  },
+  "bulk": {
+    "selected": "{{count}}件のルールを選択",
+    "selected_other": "{{count}}件のルールを選択",
+    "enable": "有効にする",
+    "disable": "無効にする",
+    "delete": "削除",
+    "clear": "クリア"
+  },
+  "empty": {
+    "title": "自動化を始めよう",
+    "description": "テンプレートを選択して素早く始めるか、ルールをゼロから作成します。",
+    "createFromScratch": "ゼロから作成"
+  },
+  "noResults": {
+    "title": "一致するルールがありません",
+    "description": "検索条件やフィルターを調整して、お探しのものを見つけてください。"
+  },
+  "templates": {
+    "welcomeMessage": "ウェルカムメッセージ",
+    "welcomeMessageDesc": "新しいメンバーをチャンネルでカスタムメッセージで迎えます",
+    "autoRole": "自動ロール",
+    "autoRoleDesc": "メンバーが参加した時に自動的にロールを割り当てます",
+    "logDeleted": "削除メッセージログ",
+    "logDeletedDesc": "削除されたメッセージの情報をログチャンネルに送信します",
+    "boostThankYou": "ブーストお礼",
+    "boostThankYouDesc": "サーバーをブーストしたユーザーにDMでお礼を送ります",
+    "banLogger": "BANログ",
+    "banLoggerDesc": "BANイベントをモデレーションチャンネルに記録します",
+    "autoThread": "自動スレッド",
+    "autoThreadDesc": "メッセージ送信時に自動的にスレッドを作成します"
+  },
+  "deleteDialog": {
+    "title": "ルールを削除",
+    "description": "「{{name}}」を削除してもよろしいですか？この操作は取り消せません。",
+    "confirm": "削除"
+  },
+  "bulkDeleteDialog": {
+    "title": "選択したルールを削除",
+    "description": "{{count}}件のルールを削除してもよろしいですか？この操作は取り消せません。",
+    "description_other": "{{count}}件のルールを削除してもよろしいですか？この操作は取り消せません。",
+    "confirm": "すべて削除"
+  },
+  "toast": {
+    "deleted": "ルールを削除しました",
+    "deleteFailed": "ルールの削除に失敗しました",
+    "enabled": "ルールを有効にしました",
+    "disabled": "ルールを無効にしました",
+    "toggleFailed": "ルールの切り替えに失敗しました",
+    "duplicated": "ルールを複製しました",
+    "duplicateFailed": "ルールの複製に失敗しました",
+    "bulkEnabled": "{{count}}件のルールを有効にしました",
+    "bulkDisabled": "{{count}}件のルールを無効にしました",
+    "bulkEnableFailed": "ルールの有効化に失敗しました",
+    "bulkDisableFailed": "ルールの無効化に失敗しました",
+    "bulkDeleted": "{{count}}件のルールを削除しました",
+    "bulkDeleteFailed": "ルールの削除に失敗しました"
+  }
+}

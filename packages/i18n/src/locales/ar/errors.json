@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "غير مصادق عليه",
+    "sessionExpired": "انتهت صلاحية الجلسة",
+    "missingCode": "رمز المصادقة مفقود",
+    "tokenExchangeFailed": "فشل تبادل الرمز المميز",
+    "failedToFetchUser": "فشل في جلب معلومات المستخدم"
+  },
+  "permissions": {
+    "noGuildPermission": "لا تملك صلاحية لهذا السيرفر",
+    "botNotInGuild": "البوت ليس في هذا السيرفر",
+    "insufficientPermissions": "صلاحيات غير كافية",
+    "permissionsNotResolved": "لم يتم حل الصلاحيات",
+    "requiresPermission": "يتطلب هذا الإجراء صلاحية \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "إدخال غير صالح",
+    "missingField": "الحقل المطلوب مفقود: {{field}}",
+    "invalidFormat": "تنسيق غير صالح لـ {{field}}",
+    "tooLong": "{{field}} يتجاوز الحد الأقصى البالغ {{max}} حرفًا",
+    "tooShort": "{{field}} يجب أن يكون {{min}} حرفًا على الأقل",
+    "outOfRange": "{{field}} يجب أن يكون بين {{min}} و {{max}}"
+  },
+  "resources": {
+    "notFound": "غير موجود",
+    "alreadyExists": "{{resource}} موجود بالفعل",
+    "limitReached": "الحد الأقصى {{max}} من {{resource}} لكل سيرفر",
+    "createFailed": "فشل في إنشاء {{resource}}",
+    "updateFailed": "فشل في تحديث {{resource}}",
+    "deleteFailed": "فشل في حذف {{resource}}"
+  },
+  "server": {
+    "internalError": "خطأ داخلي في الخادم",
+    "serviceUnavailable": "الخدمة غير متاحة مؤقتًا",
+    "rateLimited": "طلبات كثيرة جدًا. يرجى المحاولة مرة أخرى لاحقًا."
+  },
+  "csrf": {
+    "invalidToken": "رمز CSRF غير صالح أو مفقود"
+  }
+}

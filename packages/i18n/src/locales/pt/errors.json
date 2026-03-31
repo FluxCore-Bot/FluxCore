@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Nao autenticado",
+    "sessionExpired": "Sessao expirada",
+    "missingCode": "Parametro de codigo em falta",
+    "tokenExchangeFailed": "Falha na troca de token",
+    "failedToFetchUser": "Falha ao obter informacoes do utilizador"
+  },
+  "permissions": {
+    "noGuildPermission": "Sem permissao para este servidor",
+    "botNotInGuild": "O bot nao esta neste servidor",
+    "insufficientPermissions": "Permissoes insuficientes",
+    "permissionsNotResolved": "Permissoes nao resolvidas",
+    "requiresPermission": "Esta acao requer a permissao \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Entrada invalida",
+    "missingField": "Campo obrigatorio em falta: {{field}}",
+    "invalidFormat": "Formato invalido para {{field}}",
+    "tooLong": "{{field}} excede o comprimento maximo de {{max}} caracteres",
+    "tooShort": "{{field}} deve ter pelo menos {{min}} caracteres",
+    "outOfRange": "{{field}} deve estar entre {{min}} e {{max}}"
+  },
+  "resources": {
+    "notFound": "Nao encontrado",
+    "alreadyExists": "{{resource}} ja existe",
+    "limitReached": "Maximo de {{max}} {{resource}} por servidor",
+    "createFailed": "Falha ao criar {{resource}}",
+    "updateFailed": "Falha ao atualizar {{resource}}",
+    "deleteFailed": "Falha ao eliminar {{resource}}"
+  },
+  "server": {
+    "internalError": "Erro interno do servidor",
+    "serviceUnavailable": "Servico temporariamente indisponivel",
+    "rateLimited": "Demasiados pedidos. Por favor, tente novamente mais tarde."
+  },
+  "csrf": {
+    "invalidToken": "Token CSRF invalido ou em falta"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "title": "[NEEDS TRANSLATION] Warnings",
+  "subtitle": "[NEEDS TRANSLATION] Track and manage member warnings with automatic escalation.",
+  "stats": {
+    "totalWarnings": "[NEEDS TRANSLATION] Total Warnings",
+    "escalationRules": "[NEEDS TRANSLATION] Escalation Rules",
+    "dmOnWarn": "[NEEDS TRANSLATION] DM on Warn"
+  },
+  "tabs": {
+    "warnings": "[NEEDS TRANSLATION] Warning Log",
+    "escalation": "[NEEDS TRANSLATION] Escalation",
+    "settings": "[NEEDS TRANSLATION] Settings"
+  },
+  "table": {
+    "id": "[NEEDS TRANSLATION] ID",
+    "user": "[NEEDS TRANSLATION] User",
+    "moderator": "[NEEDS TRANSLATION] Moderator",
+    "reason": "[NEEDS TRANSLATION] Reason",
+    "date": "[NEEDS TRANSLATION] Date"
+  },
+  "filter": {
+    "userPlaceholder": "[NEEDS TRANSLATION] Filter by User ID...",
+    "clearAll": "[NEEDS TRANSLATION] Clear All"
+  },
+  "pagination": {
+    "previous": "[NEEDS TRANSLATION] Previous",
+    "next": "[NEEDS TRANSLATION] Next",
+    "page": "[NEEDS TRANSLATION] Page {{page}} of {{total}} ({{count}} total)"
+  },
+  "loading": "[NEEDS TRANSLATION] Loading warnings...",
+  "noWarnings": "[NEEDS TRANSLATION] No warnings found.",
+  "toast": {
+    "warningRemoved": "[NEEDS TRANSLATION] Warning removed",
+    "warningsFailed": "[NEEDS TRANSLATION] Failed to delete warning",
+    "enterUserId": "[NEEDS TRANSLATION] Enter a user ID to clear all warnings for that user",
+    "allCleared": "[NEEDS TRANSLATION] All warnings cleared for user",
+    "clearFailed": "[NEEDS TRANSLATION] Failed to clear warnings",
+    "thresholdAdded": "[NEEDS TRANSLATION] Punishment threshold added",
+    "thresholdFailed": "[NEEDS TRANSLATION] Failed to add punishment",
+    "thresholdRemoved": "[NEEDS TRANSLATION] Punishment removed",
+    "removeFailed": "[NEEDS TRANSLATION] Failed to remove punishment",
+    "settingFailed": "[NEEDS TRANSLATION] Failed to update setting",
+    "thresholdInvalid": "[NEEDS TRANSLATION] Threshold must be a positive number"
+  },
+  "escalation": {
+    "title": "[NEEDS TRANSLATION] Punishment Escalation",
+    "description": "[NEEDS TRANSLATION] Configure automatic actions when a user reaches a certain number of warnings.",
+    "threshold": "[NEEDS TRANSLATION] Threshold",
+    "action": "[NEEDS TRANSLATION] Action",
+    "duration": "[NEEDS TRANSLATION] Duration",
+    "noRules": "[NEEDS TRANSLATION] No escalation rules configured.",
+    "addRule": "[NEEDS TRANSLATION] Add Escalation Rule",
+    "addButton": "[NEEDS TRANSLATION] Add Rule",
+    "warnings": "[NEEDS TRANSLATION] {{count}} warnings",
+    "min": "[NEEDS TRANSLATION] {{count}} min",
+    "timeout": "[NEEDS TRANSLATION] Timeout",
+    "kick": "[NEEDS TRANSLATION] Kick",
+    "ban": "[NEEDS TRANSLATION] Ban",
+    "durationLabel": "[NEEDS TRANSLATION] Duration (seconds)",
+    "thresholdPlaceholder": "[NEEDS TRANSLATION] e.g. 3",
+    "durationPlaceholder": "[NEEDS TRANSLATION] e.g. 3600"
+  },
+  "settings": {
+    "title": "[NEEDS TRANSLATION] Warning Settings",
+    "dmOnWarn": "[NEEDS TRANSLATION] DM on Warn",
+    "dmOnWarnDesc": "[NEEDS TRANSLATION] Send a direct message to the user when they receive a warning.",
+    "requireReason": "[NEEDS TRANSLATION] Require Reason",
+    "requireReasonDesc": "[NEEDS TRANSLATION] Moderators must provide a reason when issuing a warning.",
+    "maxWarnings": "[NEEDS TRANSLATION] Max Warnings",
+    "maxWarningsDesc": "[NEEDS TRANSLATION] Maximum warnings per user (0 = unlimited)."
+  }
+}

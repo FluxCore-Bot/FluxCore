@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore Dashboard"
+  },
+  "status": {
+    "online": "Online",
+    "offline": "Offline",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Prezentare generală",
+    "automation": "Automatizare",
+    "music": "Muzică",
+    "tempvoice": "TempVoice",
+    "welcome": "Bun venit",
+    "moderation": "Moderare",
+    "warnings": "Avertismente",
+    "rolePanels": "Panouri de Roluri",
+    "leveling": "Nivelare",
+    "scheduled": "Programat",
+    "commands": "Comenzi",
+    "security": "Securitate",
+    "tickets": "Tichete",
+    "giveaways": "Tombole",
+    "suggestions": "Sugestii",
+    "starboard": "Starboard",
+    "logs": "Jurnale",
+    "permissions": "Permisiuni",
+    "settings": "Setări"
+  },
+  "actions": {
+    "save": "Salvează",
+    "cancel": "Anulează",
+    "delete": "Șterge",
+    "edit": "Editează",
+    "create": "Creează",
+    "add": "Adaugă",
+    "remove": "Elimină",
+    "confirm": "Confirmă",
+    "close": "Închide",
+    "back": "Înapoi",
+    "next": "Următor",
+    "search": "Caută",
+    "filter": "Filtrează",
+    "refresh": "Reîmprospătează",
+    "reset": "Resetează",
+    "enable": "Activează",
+    "disable": "Dezactivează",
+    "copy": "Copiază",
+    "export": "Exportă",
+    "import": "Importă",
+    "submit": "Trimite",
+    "loading": "Se încarcă...",
+    "retry": "Încearcă din nou"
+  },
+  "labels": {
+    "enabled": "Activat",
+    "disabled": "Dezactivat",
+    "active": "Activ",
+    "inactive": "Inactiv",
+    "none": "Niciunul",
+    "all": "Toate",
+    "custom": "Personalizat",
+    "default": "Implicit",
+    "required": "Obligatoriu",
+    "optional": "Opțional",
+    "name": "Nume",
+    "description": "Descriere",
+    "type": "Tip",
+    "status": "Stare",
+    "channel": "Canal",
+    "role": "Rol",
+    "member": "Membru",
+    "duration": "Durată",
+    "reason": "Motiv",
+    "language": "Limbă"
+  },
+  "header": {
+    "notifications": "Notificări",
+    "settings": "Setări",
+    "logout": "Deconectare",
+    "toggleSidebar": "Comută bara laterală",
+    "refreshData": "Reîmprospătează datele Discord"
+  },
+  "sidebar": {
+    "closeSidebar": "Închide bara laterală",
+    "addToServer": "Adaugă pe Server",
+    "docs": "Documentație",
+    "support": "Suport",
+    "backToServers": "Înapoi la Servere"
+  },
+  "empty": {
+    "noData": "Nu există date disponibile",
+    "noResults": "Nu s-au găsit rezultate",
+    "noItems": "Nu există elemente încă"
+  },
+  "time": {
+    "seconds": "secunde",
+    "minutes": "minute",
+    "hours": "ore",
+    "days": "zile",
+    "ago": "acum {{time}}",
+    "in": "în {{time}}"
+  },
+  "confirm": {
+    "title": "Ești sigur?",
+    "deleteTitle": "Confirmă ștergerea",
+    "deleteMessage": "Această acțiune nu poate fi anulată.",
+    "unsavedChanges": "Ai modificări nesalvate. Ești sigur că vrei să pleci?"
+  },
+  "accessibility": {
+    "skipToContent": "Salt la conținutul principal",
+    "loading": "Se încarcă conținutul",
+    "loaded": "Conținut încărcat",
+    "error": "A apărut o eroare",
+    "menuOpen": "Meniul este deschis",
+    "menuClosed": "Meniul este închis"
+  }
+}

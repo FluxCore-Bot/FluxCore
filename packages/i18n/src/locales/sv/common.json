@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore Kontrollpanel"
+  },
+  "status": {
+    "online": "Online",
+    "offline": "Offline",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Översikt",
+    "automation": "Automatisering",
+    "music": "Musik",
+    "tempvoice": "TempVoice",
+    "welcome": "Välkommen",
+    "moderation": "Moderering",
+    "warnings": "Varningar",
+    "rolePanels": "Rollpaneler",
+    "leveling": "Nivåer",
+    "scheduled": "Schemalagt",
+    "commands": "Kommandon",
+    "security": "Säkerhet",
+    "tickets": "Ärenden",
+    "giveaways": "Utlottningar",
+    "suggestions": "Förslag",
+    "starboard": "Starboard",
+    "logs": "Loggar",
+    "permissions": "Behörigheter",
+    "settings": "Inställningar"
+  },
+  "actions": {
+    "save": "Spara",
+    "cancel": "Avbryt",
+    "delete": "Ta bort",
+    "edit": "Redigera",
+    "create": "Skapa",
+    "add": "Lägg till",
+    "remove": "Ta bort",
+    "confirm": "Bekräfta",
+    "close": "Stäng",
+    "back": "Tillbaka",
+    "next": "Nästa",
+    "search": "Sök",
+    "filter": "Filtrera",
+    "refresh": "Uppdatera",
+    "reset": "Återställ",
+    "enable": "Aktivera",
+    "disable": "Inaktivera",
+    "copy": "Kopiera",
+    "export": "Exportera",
+    "import": "Importera",
+    "submit": "Skicka",
+    "loading": "Laddar...",
+    "retry": "Försök igen"
+  },
+  "labels": {
+    "enabled": "Aktiverad",
+    "disabled": "Inaktiverad",
+    "active": "Aktiv",
+    "inactive": "Inaktiv",
+    "none": "Ingen",
+    "all": "Alla",
+    "custom": "Anpassad",
+    "default": "Standard",
+    "required": "Obligatorisk",
+    "optional": "Valfri",
+    "name": "Namn",
+    "description": "Beskrivning",
+    "type": "Typ",
+    "status": "Status",
+    "channel": "Kanal",
+    "role": "Roll",
+    "member": "Medlem",
+    "duration": "Varaktighet",
+    "reason": "Orsak",
+    "language": "Språk"
+  },
+  "header": {
+    "notifications": "Aviseringar",
+    "settings": "Inställningar",
+    "logout": "Logga ut",
+    "toggleSidebar": "Växla sidofält",
+    "refreshData": "Uppdatera Discord-data"
+  },
+  "sidebar": {
+    "closeSidebar": "Stäng sidofält",
+    "addToServer": "Lägg till på server",
+    "docs": "Dokumentation",
+    "support": "Support",
+    "backToServers": "Tillbaka till servrar"
+  },
+  "empty": {
+    "noData": "Ingen data tillgänglig",
+    "noResults": "Inga resultat hittades",
+    "noItems": "Inga objekt ännu"
+  },
+  "time": {
+    "seconds": "sekunder",
+    "minutes": "minuter",
+    "hours": "timmar",
+    "days": "dagar",
+    "ago": "{{time}} sedan",
+    "in": "om {{time}}"
+  },
+  "confirm": {
+    "title": "Är du säker?",
+    "deleteTitle": "Bekräfta borttagning",
+    "deleteMessage": "Denna åtgärd kan inte ångras.",
+    "unsavedChanges": "Du har osparade ändringar. Är du säker på att du vill lämna?"
+  },
+  "accessibility": {
+    "skipToContent": "Hoppa till huvudinnehåll",
+    "loading": "Laddar innehåll",
+    "loaded": "Innehåll laddat",
+    "error": "Ett fel uppstod",
+    "menuOpen": "Menyn är öppen",
+    "menuClosed": "Menyn är stängd"
+  }
+}

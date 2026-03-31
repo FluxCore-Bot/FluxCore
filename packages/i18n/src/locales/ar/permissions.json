@@ -1,0 +1,118 @@
+{
+  "title": "الأدوار والصلاحيات",
+  "subtitle": "التحكم في من يمكنه الوصول إلى كل وحدة في لوحة التحكم وإدارتها.",
+  "actions": {
+    "createRole": "إنشاء دور"
+  },
+  "permissionSystem": {
+    "title": "نظام الصلاحيات",
+    "active": "نشط — المشرفون مقيدون بالصلاحيات المعينة لهم.",
+    "inactive": "غير نشط — جميع المشرفين الذين يملكون MANAGE_GUILD لديهم وصول كامل.",
+    "enabledToast": "تم تفعيل نظام الصلاحيات",
+    "disabledToast": "تم تعطيل نظام الصلاحيات — جميع المشرفين لديهم وصول كامل"
+  },
+  "warning": {
+    "disabled": "نظام الصلاحيات معطّل. جميع مشرفي لوحة التحكم لديهم حاليًا وصول كامل. فعّله أعلاه لفرض صلاحيات دقيقة."
+  },
+  "tabs": {
+    "roles": "الأدوار",
+    "auditLog": "سجل التدقيق"
+  },
+  "roleList": {
+    "title": "أدوار لوحة التحكم",
+    "empty": "لم يتم إنشاء أدوار بعد.",
+    "selectHint": "اختر دورًا للتعديل، أو أنشئ دورًا جديدًا.",
+    "default": "افتراضي",
+    "name": "الاسم",
+    "members": "الأعضاء",
+    "permissions": "الصلاحيات",
+    "edit": "تعديل",
+    "delete": "حذف"
+  },
+  "presets": {
+    "title": "إضافة سريعة من قالب",
+    "createdToast": "تم إنشاء دور \"{{name}}\""
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} عضو",
+    "memberCount_plural": "{{count}} أعضاء",
+    "name": "اسم الدور",
+    "color": "اللون",
+    "defaultRole": "الدور الافتراضي",
+    "permissions": "الصلاحيات",
+    "allBadge": "الكل",
+    "discordRoles": "أدوار Discord"
+  },
+  "roleForm": {
+    "name": "اسم الدور",
+    "discordRoles": "أدوار Discord",
+    "permissions": "الصلاحيات",
+    "create": "إنشاء دور",
+    "update": "تحديث الدور",
+    "cancel": "إلغاء"
+  },
+  "createDialog": {
+    "title": "إنشاء دور لوحة التحكم",
+    "name": "الاسم",
+    "namePlaceholder": "مثال: مشرف",
+    "color": "اللون"
+  },
+  "permissionCategories": {
+    "actions": "الإجراءات والأتمتة",
+    "music": "الموسيقى",
+    "tempvoice": "القنوات الصوتية المؤقتة",
+    "welcome": "الترحيب والتوديع",
+    "moderation": "الإشراف",
+    "logging": "التسجيل",
+    "leveling": "المستويات",
+    "roles": "لوحات الأدوار",
+    "tickets": "التذاكر",
+    "suggestions": "الاقتراحات",
+    "starboard": "لوحة النجوم",
+    "giveaways": "الهدايا",
+    "security": "الأمان",
+    "scheduled": "الرسائل المجدولة",
+    "commands": "الأوامر المخصصة",
+    "settings": "إعدادات السيرفر"
+  },
+  "audit": {
+    "table": {
+      "user": "المستخدم",
+      "action": "الإجراء",
+      "target": "الهدف",
+      "timestamp": "متى"
+    },
+    "noEntries": "لا توجد إدخالات في سجل التدقيق بعد."
+  },
+  "pagination": {
+    "previous": "السابق",
+    "next": "التالي",
+    "page": "صفحة {{current}} من {{total}}"
+  },
+  "toast": {
+    "roleCreated": "تم إنشاء دور \"{{name}}\"",
+    "roleCreateFailed": "فشل في إنشاء الدور",
+    "roleUpdated": "تم تحديث الدور",
+    "roleUpdateFailed": "فشل في تحديث الدور",
+    "roleDeleted": "تم حذف الدور",
+    "roleDeleteFailed": "فشل في حذف الدور"
+  },
+  "confirm": {
+    "deleteTitle": "حذف دور \"{{name}}\"؟",
+    "deleteMessage": "سيؤدي هذا إلى إزالة الدور وإلغاء تعيين جميع الأعضاء. لا يمكن التراجع عن هذا الإجراء.",
+    "deleteRole": "هل أنت متأكد أنك تريد حذف هذا الدور؟ سيفقد الأعضاء صلاحياتهم المعينة."
+  },
+  "saveButton": {
+    "saving": "جارٍ الحفظ...",
+    "save": "حفظ التغييرات"
+  },
+  "deleteButton": {
+    "deleting": "جارٍ الحذف...",
+    "delete": "حذف"
+  },
+  "createButton": {
+    "creating": "جارٍ الإنشاء...",
+    "create": "إنشاء"
+  },
+  "loading": "جارٍ تحميل الصلاحيات..."
+}

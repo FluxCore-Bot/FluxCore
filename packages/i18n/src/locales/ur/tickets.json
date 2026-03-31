@@ -1,0 +1,77 @@
+{
+  "title": "[NEEDS TRANSLATION] Ticket System",
+  "subtitle": "[NEEDS TRANSLATION] Create support ticket panels and manage open tickets from the dashboard.",
+  "stats": {
+    "totalTickets": "[NEEDS TRANSLATION] Total Tickets",
+    "open": "[NEEDS TRANSLATION] Open",
+    "claimed": "[NEEDS TRANSLATION] Claimed",
+    "panels": "[NEEDS TRANSLATION] Panels"
+  },
+  "tabs": {
+    "activeTickets": "[NEEDS TRANSLATION] Active Tickets",
+    "panelBuilder": "[NEEDS TRANSLATION] Panel Builder",
+    "settings": "[NEEDS TRANSLATION] Settings"
+  },
+  "table": {
+    "id": "[NEEDS TRANSLATION] ID",
+    "user": "[NEEDS TRANSLATION] User",
+    "subject": "[NEEDS TRANSLATION] Subject",
+    "status": "[NEEDS TRANSLATION] Status",
+    "assignee": "[NEEDS TRANSLATION] Assignee",
+    "created": "[NEEDS TRANSLATION] Created"
+  },
+  "statuses": {
+    "open": "[NEEDS TRANSLATION] Open",
+    "claimed": "[NEEDS TRANSLATION] Claimed",
+    "closed": "[NEEDS TRANSLATION] Closed"
+  },
+  "panelBuilder": {
+    "title": "[NEEDS TRANSLATION] Panel Title",
+    "channel": "[NEEDS TRANSLATION] Channel",
+    "buttonLabel": "[NEEDS TRANSLATION] Button Label",
+    "welcomeMessage": "[NEEDS TRANSLATION] Welcome Message",
+    "category": "[NEEDS TRANSLATION] Ticket Category",
+    "create": "[NEEDS TRANSLATION] Create Panel",
+    "edit": "[NEEDS TRANSLATION] Edit Panel",
+    "deploy": "[NEEDS TRANSLATION] Deploy Panel"
+  },
+  "settings": {
+    "transcriptChannel": "[NEEDS TRANSLATION] Transcript Channel",
+    "transcriptChannelDesc": "[NEEDS TRANSLATION] Channel where ticket transcripts are saved on close.",
+    "maxTicketsPerUser": "[NEEDS TRANSLATION] Max Tickets per User",
+    "maxTicketsPerUserDesc": "[NEEDS TRANSLATION] Maximum number of open tickets a single user can have.",
+    "closeConfirmation": "[NEEDS TRANSLATION] Close Confirmation",
+    "closeConfirmationDesc": "[NEEDS TRANSLATION] Require confirmation before closing a ticket.",
+    "dmTranscript": "[NEEDS TRANSLATION] DM Transcript",
+    "dmTranscriptDesc": "[NEEDS TRANSLATION] Send a copy of the transcript to the ticket creator via DM."
+  },
+  "actions": {
+    "claim": "[NEEDS TRANSLATION] Claim",
+    "close": "[NEEDS TRANSLATION] Close",
+    "delete": "[NEEDS TRANSLATION] Delete",
+    "reopen": "[NEEDS TRANSLATION] Reopen"
+  },
+  "toast": {
+    "panelCreated": "[NEEDS TRANSLATION] Ticket panel created",
+    "panelCreateFailed": "[NEEDS TRANSLATION] Failed to create ticket panel",
+    "panelUpdated": "[NEEDS TRANSLATION] Ticket panel updated",
+    "panelUpdateFailed": "[NEEDS TRANSLATION] Failed to update ticket panel",
+    "panelDeployed": "[NEEDS TRANSLATION] Ticket panel deployed",
+    "panelDeployFailed": "[NEEDS TRANSLATION] Failed to deploy ticket panel",
+    "ticketClaimed": "[NEEDS TRANSLATION] Ticket claimed",
+    "ticketClaimFailed": "[NEEDS TRANSLATION] Failed to claim ticket",
+    "ticketClosed": "[NEEDS TRANSLATION] Ticket closed",
+    "ticketCloseFailed": "[NEEDS TRANSLATION] Failed to close ticket",
+    "ticketReopened": "[NEEDS TRANSLATION] Ticket reopened",
+    "ticketReopenFailed": "[NEEDS TRANSLATION] Failed to reopen ticket",
+    "ticketDeleted": "[NEEDS TRANSLATION] Ticket deleted",
+    "ticketDeleteFailed": "[NEEDS TRANSLATION] Failed to delete ticket",
+    "settingsSaved": "[NEEDS TRANSLATION] Ticket settings saved",
+    "settingsFailed": "[NEEDS TRANSLATION] Failed to save ticket settings"
+  },
+  "empty": {
+    "tickets": "[NEEDS TRANSLATION] No active tickets.",
+    "panels": "[NEEDS TRANSLATION] No ticket panels created yet."
+  },
+  "loading": "[NEEDS TRANSLATION] Loading tickets..."
+}

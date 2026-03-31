@@ -1,0 +1,77 @@
+{
+  "title": "Ticketsysteem",
+  "subtitle": "Maak supportticketpanelen aan en beheer open tickets vanuit het dashboard.",
+  "stats": {
+    "totalTickets": "Totaal tickets",
+    "open": "Open",
+    "claimed": "Geclaimd",
+    "panels": "Panelen"
+  },
+  "tabs": {
+    "activeTickets": "Actieve tickets",
+    "panelBuilder": "Paneelbouwer",
+    "settings": "Instellingen"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Gebruiker",
+    "subject": "Onderwerp",
+    "status": "Status",
+    "assignee": "Toegewezen aan",
+    "created": "Aangemaakt"
+  },
+  "statuses": {
+    "open": "Open",
+    "claimed": "Geclaimd",
+    "closed": "Gesloten"
+  },
+  "panelBuilder": {
+    "title": "Paneeltitel",
+    "channel": "Kanaal",
+    "buttonLabel": "Knoplabel",
+    "welcomeMessage": "Welkomstbericht",
+    "category": "Ticketcategorie",
+    "create": "Paneel aanmaken",
+    "edit": "Paneel bewerken",
+    "deploy": "Paneel implementeren"
+  },
+  "settings": {
+    "transcriptChannel": "Transcriptiekanaal",
+    "transcriptChannelDesc": "Kanaal waar tickettranscripties worden opgeslagen bij sluiting.",
+    "maxTicketsPerUser": "Max. tickets per gebruiker",
+    "maxTicketsPerUserDesc": "Maximaal aantal open tickets dat een enkele gebruiker kan hebben.",
+    "closeConfirmation": "Sluitingsbevestiging",
+    "closeConfirmationDesc": "Vereist bevestiging voordat een ticket wordt gesloten.",
+    "dmTranscript": "DM-transcriptie",
+    "dmTranscriptDesc": "Stuur een kopie van de transcriptie naar de ticketmaker via DM."
+  },
+  "actions": {
+    "claim": "Claimen",
+    "close": "Sluiten",
+    "delete": "Verwijderen",
+    "reopen": "Heropenen"
+  },
+  "toast": {
+    "panelCreated": "Ticketpaneel aangemaakt",
+    "panelCreateFailed": "Ticketpaneel aanmaken mislukt",
+    "panelUpdated": "Ticketpaneel bijgewerkt",
+    "panelUpdateFailed": "Ticketpaneel bijwerken mislukt",
+    "panelDeployed": "Ticketpaneel geïmplementeerd",
+    "panelDeployFailed": "Ticketpaneel implementeren mislukt",
+    "ticketClaimed": "Ticket geclaimd",
+    "ticketClaimFailed": "Ticket claimen mislukt",
+    "ticketClosed": "Ticket gesloten",
+    "ticketCloseFailed": "Ticket sluiten mislukt",
+    "ticketReopened": "Ticket heropend",
+    "ticketReopenFailed": "Ticket heropenen mislukt",
+    "ticketDeleted": "Ticket verwijderd",
+    "ticketDeleteFailed": "Ticket verwijderen mislukt",
+    "settingsSaved": "Ticketinstellingen opgeslagen",
+    "settingsFailed": "Ticketinstellingen opslaan mislukt"
+  },
+  "empty": {
+    "tickets": "Geen actieve tickets.",
+    "panels": "Nog geen ticketpanelen aangemaakt."
+  },
+  "loading": "Tickets laden..."
+}

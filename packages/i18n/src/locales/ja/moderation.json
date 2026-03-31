@@ -1,0 +1,54 @@
+{
+  "title": "モデレーション",
+  "subtitle": "モデレーションケースの表示・管理、処罰設定を行います。",
+  "stats": {
+    "totalCases": "総ケース数",
+    "activeTempbans": "有効な一時BAN",
+    "last24h": "過去24時間"
+  },
+  "cases": "ケース",
+  "actions": {
+    "ban": "BAN",
+    "tempban": "一時BAN",
+    "kick": "キック",
+    "timeout": "タイムアウト",
+    "softban": "ソフトBAN",
+    "warn": "警告",
+    "note": "メモ"
+  },
+  "table": {
+    "id": "ID",
+    "action": "アクション",
+    "target": "対象",
+    "moderator": "モデレーター",
+    "reason": "理由",
+    "date": "日付",
+    "actions": "操作",
+    "noCases": "ケースが見つかりません。",
+    "noReason": "理由なし"
+  },
+  "filter": {
+    "userPlaceholder": "ユーザーIDでフィルター...",
+    "allActions": "すべてのアクション"
+  },
+  "pagination": {
+    "previous": "前へ",
+    "next": "次へ",
+    "page": "ページ {{page}} / {{total}}"
+  },
+  "editDialog": {
+    "title": "ケース #{{id}} の理由を編集",
+    "placeholder": "新しい理由を入力...",
+    "saving": "保存中..."
+  },
+  "editReason": "理由を編集",
+  "deleteCase": "ケースを削除",
+  "deleteConfirm": "このケースを削除してもよろしいですか？",
+  "settings": {
+    "title": "設定",
+    "dmOnPunishment": "処罰時にDM送信",
+    "dmOnPunishmentDesc": "処罰 (BAN、キック、タイムアウト) 時にユーザーにDMを送信します。",
+    "modLogChannel": "モデレーションログチャンネル",
+    "modLogChannelDesc": "モデレーションアクションが記録されるチャンネル。"
+  }
+}

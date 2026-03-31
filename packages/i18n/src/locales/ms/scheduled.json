@@ -1,0 +1,86 @@
+{
+  "title": "Mesej Berjadual",
+  "subtitle": "Cipta mesej yang dipos semula secara automatik mengikut jadual yang boleh dikonfigurasi.",
+  "stats": {
+    "totalMessages": "Jumlah Mesej",
+    "active": "Aktif",
+    "inactive": "Tidak Aktif"
+  },
+  "table": {
+    "name": "Nama",
+    "channel": "Saluran",
+    "schedule": "Jadual",
+    "nextRun": "Larian Seterusnya",
+    "status": "Status"
+  },
+  "dialog": {
+    "editTitle": "Edit Mesej Berjadual",
+    "createTitle": "Mesej Berjadual Baru"
+  },
+  "form": {
+    "name": "Nama",
+    "channel": "Saluran",
+    "schedulePreset": "Pratetap Jadual",
+    "cronExpression": "Ungkapan Cron",
+    "timezone": "Zon Masa",
+    "messageContent": "Kandungan Mesej",
+    "text": "Teks",
+    "embed": "Embed",
+    "enabled": "Diaktifkan",
+    "enabledDesc": "Sama ada mesej berjadual ini aktif."
+  },
+  "cronPresets": {
+    "everyHour": "Setiap Jam",
+    "every6Hours": "Setiap 6 Jam",
+    "daily9am": "Harian pada Pukul 9 Pagi",
+    "dailyMidnight": "Harian Tengah Malam",
+    "weeklyMonday": "Mingguan pada Isnin",
+    "monthly1st": "Bulanan pada Tanggal 1",
+    "custom": "Tersuai"
+  },
+  "embed": {
+    "title": "Tajuk",
+    "description": "Penerangan",
+    "color": "Warna (hex)",
+    "footer": "Footer",
+    "thumbnail": "URL Lakaran Kecil",
+    "image": "URL Imej"
+  },
+  "toast": {
+    "created": "Mesej berjadual dicipta",
+    "createFailed": "Gagal mencipta mesej berjadual",
+    "updated": "Mesej berjadual dikemaskini",
+    "updateFailed": "Gagal mengemaskini mesej berjadual",
+    "deleted": "Mesej berjadual dipadam",
+    "deleteFailed": "Gagal memadam mesej berjadual",
+    "testSent": "Mesej ujian dihantar",
+    "testFailed": "Gagal menghantar mesej ujian"
+  },
+  "empty": {
+    "title": "Belum ada mesej berjadual",
+    "description": "Cipta mesej berjadual untuk mempos kandungan secara automatik pada jadual berulang.",
+    "createButton": "Cipta Mesej"
+  },
+  "pagination": {
+    "previous": "Sebelumnya",
+    "next": "Seterusnya",
+    "page": "Halaman {{page}} daripada {{total}}"
+  },
+  "actions": {
+    "newMessage": "Mesej Baru",
+    "testSend": "Hantar Ujian",
+    "edit": "Edit",
+    "delete": "Padam",
+    "save": "Simpan",
+    "cancel": "Batal"
+  },
+  "validation": {
+    "nameRequired": "Nama mesej diperlukan",
+    "channelRequired": "Saluran diperlukan"
+  },
+  "cronPreview": {
+    "nextRuns": "Larian Seterusnya"
+  },
+  "characters": "{{count}}/2000 aksara",
+  "never": "Tidak Pernah"
+}

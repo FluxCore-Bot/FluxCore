@@ -1,0 +1,112 @@
+{
+  "title": "Rollenpanels",
+  "subtitle": "Erstellen Sie selbstzuweisbare Rollenpanels mit Buttons, Dropdowns oder Reaktionen.",
+  "stats": {
+    "totalPanels": "Panels gesamt",
+    "deployed": "Bereitgestellt",
+    "totalRoles": "Rollen gesamt"
+  },
+  "tabs": {
+    "panels": "Panels",
+    "preview": "Vorschau"
+  },
+  "table": {
+    "name": "Name",
+    "type": "Typ",
+    "mode": "Modus",
+    "roles": "Rollen",
+    "status": "Status"
+  },
+  "panelTypes": {
+    "reaction": "Reaktion",
+    "button": "Button",
+    "dropdown": "Dropdown"
+  },
+  "panelModes": {
+    "toggle": "Umschalten",
+    "unique": "Einzigartig",
+    "verify": "Verifizieren"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Umschalten (hinzufuegen/entfernen)",
+    "unique": "Einzigartig (eine zur Zeit)",
+    "verify": "Verifizieren (nur hinzufuegen)"
+  },
+  "status": {
+    "deployed": "Bereitgestellt",
+    "draft": "Entwurf"
+  },
+  "dialog": {
+    "createPanel": "Panel erstellen",
+    "editPanel": "Panel bearbeiten"
+  },
+  "panelList": {
+    "title": "Alle Panels"
+  },
+  "form": {
+    "name": "Name",
+    "namePlaceholder": "z.B. Farbrollen",
+    "type": "Typ",
+    "mode": "Modus",
+    "channel": "Kanal",
+    "channelPlaceholder": "Kanal auswaehlen",
+    "minRoles": "Min. Rollen",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Max. Rollen",
+    "maxRolesPlaceholder": "Alle",
+    "embedSection": "Embed",
+    "embedTitle": "Titel",
+    "embedTitlePlaceholder": "Panel-Titel (Standard ist der Panel-Name)",
+    "embedDescription": "Beschreibung",
+    "embedDescriptionPlaceholder": "Beschreibungstext",
+    "rolesCount": "Rollen ({{count}}/25)",
+    "addRole": "Rolle hinzufuegen"
+  },
+  "entry": {
+    "role": "Rolle",
+    "rolePlaceholder": "Rolle auswaehlen",
+    "label": "Bezeichnung",
+    "labelPlaceholder": "Button-Bezeichnung",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "z.B. star",
+    "description": "Beschreibung",
+    "descriptionPlaceholder": "Optionsbeschreibung",
+    "style": "Stil"
+  },
+  "buttonStyles": {
+    "primary": "Primaer",
+    "secondary": "Sekundaer",
+    "success": "Erfolg",
+    "danger": "Gefahr"
+  },
+  "actions": {
+    "create": "Erstellen",
+    "update": "Aktualisieren",
+    "cancel": "Abbrechen",
+    "deploy": "Bereitstellen",
+    "delete": "Loeschen",
+    "addEntry": "Eintrag hinzufuegen",
+    "removeEntry": "Eintrag entfernen"
+  },
+  "preview": {
+    "title": "Live-Vorschau",
+    "description": "Vorschau, wie Ihre Panels in Discord aussehen werden.",
+    "selectRoles": "Rollen auswaehlen...",
+    "noPreview": "Keine Panels zur Vorschau."
+  },
+  "empty": "Noch keine Rollenpanels erstellt. Klicken Sie auf \"Panel erstellen\", um loszulegen.",
+  "toast": {
+    "created": "Panel erstellt",
+    "createFailed": "Panel konnte nicht erstellt werden",
+    "updated": "Panel aktualisiert",
+    "updateFailed": "Panel konnte nicht aktualisiert werden",
+    "deleted": "Panel geloescht",
+    "deleteFailed": "Panel konnte nicht geloescht werden",
+    "deployed": "Rollenpanel im Kanal bereitgestellt",
+    "deployFailed": "Panel konnte nicht gesendet werden",
+    "nameRequired": "Panel-Name ist erforderlich",
+    "channelRequired": "Kanal ist erforderlich",
+    "maxRolesReached": "Maximal 25 Rollen pro Panel"
+  },
+  "loading": "Panels werden geladen..."
+}

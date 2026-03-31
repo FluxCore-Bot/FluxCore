@@ -1,0 +1,120 @@
+{
+  "title": "Seviye Sistemi",
+  "subtitle": "XP kazanımını, seviye atlama duyurularını, rol ödüllerini ve çarpanları yapılandırın.",
+  "stats": {
+    "rankedMembers": "Sıralı Üyeler",
+    "roleRewards": "Rol Ödülleri",
+    "systemStatus": "Sistem Durumu",
+    "enabled": "Etkin",
+    "disabled": "Devre Dışı"
+  },
+  "tabs": {
+    "leaderboard": "Lider Tablosu",
+    "settings": "Ayarlar",
+    "roleRewards": "Rol Ödülleri",
+    "exclusions": "İstisnalar",
+    "multipliers": "Çarpanlar"
+  },
+  "table": {
+    "rank": "Sıra",
+    "userId": "Kullanıcı Kimliği",
+    "level": "Seviye",
+    "xp": "XP",
+    "messages": "Mesajlar",
+    "voiceTime": "Ses Süresi"
+  },
+  "settings": {
+    "title": "Seviye Ayarları",
+    "enabled": "Seviyeyi Etkinleştir",
+    "enabledDesc": "Tüm seviye sistemini açın veya kapatın.",
+    "xpPerMessage": "Mesaj Başına XP",
+    "xpPerMessageDesc": "Mesaj başına verilen temel XP (0-9 rastgelelik eklenir).",
+    "xpCooldown": "XP Bekleme Süresi (saniye)",
+    "xpCooldownDesc": "Kullanıcı başına XP verilmesi arasındaki minimum süre.",
+    "voiceXpEnabled": "Ses XP'si",
+    "voiceXpEnabledDesc": "Ses kanallarında geçirilen süre için XP ver.",
+    "voiceXpPerMinute": "Dakika Başına Ses XP'si",
+    "voiceXpPerMinuteDesc": "Ses kanalında dakika başına verilen XP.",
+    "levelUpAnnouncements": "Seviye Atlama Duyuruları",
+    "levelUpAnnouncementsDesc": "Bir üye seviye atladığında duyur.",
+    "announceDest": "Duyuru Hedefi",
+    "announceDestHint": "Yukarıdaki alana doğrudan bir kanal kimliği de girebilirsiniz.",
+    "announceDestSameChannel": "Aynı Kanal",
+    "announceDestDM": "Doğrudan Mesaj",
+    "announceMessage": "Duyuru Mesajı",
+    "announceMessagePlaceholder": "{user} az önce **Seviye {level}**'e ulaştı!",
+    "announceMessageVars": "Değişkenler: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Rol Ödülleri",
+    "description": "Üyeler belirli seviyelere ulaştığında otomatik olarak roller atayın.",
+    "addReward": "Ödül Ekle",
+    "addRewardTitle": "Rol Ödülü Ekle",
+    "level": "Seviye",
+    "levelPrefix": "Seviye {{level}}",
+    "roleId": "Rol Kimliği",
+    "levelPlaceholder": "örn. 5",
+    "rolePlaceholder": "örn. 123456789",
+    "removeReward": "Kaldır",
+    "noRewards": "Rol ödülü yapılandırılmamış."
+  },
+  "exclusions": {
+    "title": "XP İstisnaları",
+    "description": "XP kazanamayan kanallar ve roller.",
+    "noXpChannels": "XP Kazanamayan Kanallar (virgülle ayrılmış kimlikler)",
+    "noXpChannelsPlaceholder": "örn. 123456789, 987654321",
+    "noXpRoles": "XP Kazanamayan Roller (virgülle ayrılmış kimlikler)",
+    "noXpRolesPlaceholder": "örn. 123456789, 987654321",
+    "save": "İstisnaları Kaydet"
+  },
+  "multipliers": {
+    "title": "XP Çarpanları",
+    "description": "Kanal veya rol başına XP çarpanları ayarlayın. 2'lik bir çarpan kazanılan XP'yi iki katına çıkarır.",
+    "channelMultipliers": "Kanal Çarpanları",
+    "roleMultipliers": "Rol Çarpanları",
+    "channelId": "Kanal Kimliği",
+    "roleId": "Rol Kimliği",
+    "multiplier": "Çarpan",
+    "type": "Tür",
+    "typeChannel": "Kanal",
+    "typeRole": "Rol",
+    "id": "Kimlik",
+    "idPlaceholder": "Kanal veya Rol Kimliği",
+    "value": "Çarpan",
+    "valuePlaceholder": "örn. 2",
+    "add": "Çarpan Ekle",
+    "addTitle": "Çarpan Ekle",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "XP çarpanı yapılandırılmamış."
+  },
+  "pagination": {
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "pageInfo": "Sayfa {{page}} / {{totalPages}} (toplam {{total}})"
+  },
+  "loading": "Lider tablosu yükleniyor...",
+  "loadingGeneric": "Yükleniyor...",
+  "emptyLeaderboard": "Henüz hiçbir üye XP kazanmadı.",
+  "toast": {
+    "saved": "Seviye ayarları kaydedildi",
+    "saveFailed": "Ayar güncellenemedi",
+    "rewardAdded": "Ödül eklendi",
+    "rewardAddFailed": "Ödül eklenemedi",
+    "rewardRemoved": "Ödül kaldırıldı",
+    "rewardRemoveFailed": "Ödül kaldırılamadı",
+    "multiplierAdded": "Çarpan eklendi",
+    "multiplierAddFailed": "Çarpan eklenemedi",
+    "multiplierRemoved": "Çarpan kaldırıldı",
+    "multiplierRemoveFailed": "Çarpan kaldırılamadı",
+    "exclusionUpdated": "İstisnalar kaydedildi",
+    "exclusionFailed": "İstisnalar kaydedilemedi",
+    "levelValidation": "Seviye 1 ile 100 arasında olmalıdır",
+    "roleIdRequired": "Rol kimliği zorunludur",
+    "multiplierIdRequired": "Kimlik ve çarpan değeri zorunludur",
+    "multiplierRange": "Çarpan 0 ile 10 arasında olmalıdır"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}s {{minutes}}d",
+    "voiceTimeMinutesOnly": "{{minutes}}d"
+  }
+}

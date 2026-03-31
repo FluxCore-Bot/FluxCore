@@ -1,0 +1,118 @@
+{
+  "title": "Roller og tilladelser",
+  "subtitle": "Kontroller, hvem der kan tilgå og administrere hvert kontrolpanelmodul.",
+  "actions": {
+    "createRole": "Opret rolle"
+  },
+  "permissionSystem": {
+    "title": "Tilladelsessystem",
+    "active": "Aktivt — administratorer er begrænset til deres tildelte tilladelser.",
+    "inactive": "Inaktivt — alle administratorer med MANAGE_GUILD har fuld adgang.",
+    "enabledToast": "Tilladelsessystem aktiveret",
+    "disabledToast": "Tilladelsessystem deaktiveret — alle administratorer har fuld adgang"
+  },
+  "warning": {
+    "disabled": "Tilladelsessystemet er deaktiveret. Alle kontrolpaneladministratorer har i øjeblikket fuld adgang. Aktiver det ovenfor for at håndhæve granulære tilladelser."
+  },
+  "tabs": {
+    "roles": "Roller",
+    "auditLog": "Revisionslog"
+  },
+  "roleList": {
+    "title": "Kontrolpanelroller",
+    "empty": "Ingen roller oprettet endnu.",
+    "selectHint": "Vælg en rolle at redigere, eller opret en ny.",
+    "default": "Standard",
+    "name": "Navn",
+    "members": "Medlemmer",
+    "permissions": "Tilladelser",
+    "edit": "Rediger",
+    "delete": "Slet"
+  },
+  "presets": {
+    "title": "Hurtig tilføjelse fra skabelon",
+    "createdToast": "Oprettede rollen \"{{name}}\""
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} medlem",
+    "memberCount_plural": "{{count}} medlemmer",
+    "name": "Rollenavn",
+    "color": "Farve",
+    "defaultRole": "Standardrolle",
+    "permissions": "Tilladelser",
+    "allBadge": "Alle",
+    "discordRoles": "Discord-roller"
+  },
+  "roleForm": {
+    "name": "Rollenavn",
+    "discordRoles": "Discord-roller",
+    "permissions": "Tilladelser",
+    "create": "Opret rolle",
+    "update": "Opdater rolle",
+    "cancel": "Annuller"
+  },
+  "createDialog": {
+    "title": "Opret kontrolpanelrolle",
+    "name": "Navn",
+    "namePlaceholder": "f.eks. Moderator",
+    "color": "Farve"
+  },
+  "permissionCategories": {
+    "actions": "Handlinger og automatisering",
+    "music": "Musik",
+    "tempvoice": "TempVoice",
+    "welcome": "Velkommen og farvel",
+    "moderation": "Moderering",
+    "logging": "Logning",
+    "leveling": "Niveauer",
+    "roles": "Rollepaneler",
+    "tickets": "Sager",
+    "suggestions": "Forslag",
+    "starboard": "Starboard",
+    "giveaways": "Konkurrencer",
+    "security": "Sikkerhed",
+    "scheduled": "Planlagte beskeder",
+    "commands": "Brugerdefinerede kommandoer",
+    "settings": "Serverindstillinger"
+  },
+  "audit": {
+    "table": {
+      "user": "Bruger",
+      "action": "Handling",
+      "target": "Mål",
+      "timestamp": "Hvornår"
+    },
+    "noEntries": "Ingen revisionslogposter endnu."
+  },
+  "pagination": {
+    "previous": "Forrige",
+    "next": "Næste",
+    "page": "Side {{current}} af {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Oprettede rollen \"{{name}}\"",
+    "roleCreateFailed": "Kunne ikke oprette rolle",
+    "roleUpdated": "Rolle opdateret",
+    "roleUpdateFailed": "Kunne ikke opdatere rolle",
+    "roleDeleted": "Rolle slettet",
+    "roleDeleteFailed": "Kunne ikke slette rolle"
+  },
+  "confirm": {
+    "deleteTitle": "Slet rollen \"{{name}}\"?",
+    "deleteMessage": "Dette fjerner rollen og afslutter alle medlemmers tildeling. Denne handling kan ikke fortrydes.",
+    "deleteRole": "Er du sikker på, at du vil slette denne rolle? Medlemmer vil miste deres tildelte tilladelser."
+  },
+  "saveButton": {
+    "saving": "Gemmer...",
+    "save": "Gem ændringer"
+  },
+  "deleteButton": {
+    "deleting": "Sletter...",
+    "delete": "Slet"
+  },
+  "createButton": {
+    "creating": "Opretter...",
+    "create": "Opret"
+  },
+  "loading": "Indlæser tilladelser..."
+}

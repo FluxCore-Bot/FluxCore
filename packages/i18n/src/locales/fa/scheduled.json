@@ -1,0 +1,86 @@
+{
+  "title": "پیام‌های زمان‌بندی شده",
+  "subtitle": "ایجاد پیام‌های تکراری که به‌صورت خودکار طبق زمان‌بندی قابل تنظیم منتشر می‌شوند.",
+  "stats": {
+    "totalMessages": "کل پیام‌ها",
+    "active": "فعال",
+    "inactive": "غیرفعال"
+  },
+  "table": {
+    "name": "نام",
+    "channel": "کانال",
+    "schedule": "زمان‌بندی",
+    "nextRun": "اجرای بعدی",
+    "status": "وضعیت"
+  },
+  "dialog": {
+    "editTitle": "ویرایش پیام زمان‌بندی شده",
+    "createTitle": "پیام زمان‌بندی شده جدید"
+  },
+  "form": {
+    "name": "نام",
+    "channel": "کانال",
+    "schedulePreset": "الگوی زمان‌بندی",
+    "cronExpression": "عبارت Cron",
+    "timezone": "منطقه زمانی",
+    "messageContent": "محتوای پیام",
+    "text": "متن",
+    "embed": "Embed",
+    "enabled": "فعال",
+    "enabledDesc": "آیا این پیام زمان‌بندی شده فعال است."
+  },
+  "cronPresets": {
+    "everyHour": "هر ساعت",
+    "every6Hours": "هر ۶ ساعت",
+    "daily9am": "روزانه ساعت ۹ صبح",
+    "dailyMidnight": "روزانه نیمه‌شب",
+    "weeklyMonday": "هفتگی روز دوشنبه",
+    "monthly1st": "ماهانه روز اول",
+    "custom": "سفارشی"
+  },
+  "embed": {
+    "title": "عنوان",
+    "description": "توضیحات",
+    "color": "رنگ (hex)",
+    "footer": "پاورقی",
+    "thumbnail": "آدرس تصویر بندانگشتی",
+    "image": "آدرس تصویر"
+  },
+  "toast": {
+    "created": "پیام زمان‌بندی شده ایجاد شد",
+    "createFailed": "ایجاد پیام زمان‌بندی شده ناموفق بود",
+    "updated": "پیام زمان‌بندی شده به‌روزرسانی شد",
+    "updateFailed": "به‌روزرسانی پیام زمان‌بندی شده ناموفق بود",
+    "deleted": "پیام زمان‌بندی شده حذف شد",
+    "deleteFailed": "حذف پیام زمان‌بندی شده ناموفق بود",
+    "testSent": "پیام آزمایشی ارسال شد",
+    "testFailed": "ارسال پیام آزمایشی ناموفق بود"
+  },
+  "empty": {
+    "title": "هنوز پیام زمان‌بندی شده‌ای وجود ندارد",
+    "description": "یک پیام زمان‌بندی شده ایجاد کنید تا به‌صورت خودکار محتوا منتشر شود.",
+    "createButton": "ایجاد پیام"
+  },
+  "pagination": {
+    "previous": "قبلی",
+    "next": "بعدی",
+    "page": "صفحه {{page}} از {{total}}"
+  },
+  "actions": {
+    "newMessage": "پیام جدید",
+    "testSend": "ارسال آزمایشی",
+    "edit": "ویرایش",
+    "delete": "حذف",
+    "save": "ذخیره",
+    "cancel": "لغو"
+  },
+  "validation": {
+    "nameRequired": "نام پیام الزامی است",
+    "channelRequired": "کانال الزامی است"
+  },
+  "cronPreview": {
+    "nextRuns": "اجراهای بعدی"
+  },
+  "characters": "{{count}}/2000 کاراکتر",
+  "never": "هرگز"
+}

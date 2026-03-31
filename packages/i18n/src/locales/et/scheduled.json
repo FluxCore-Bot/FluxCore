@@ -1,0 +1,86 @@
+{
+  "title": "Ajastatud sõnumid",
+  "subtitle": "Loo korduvalt automaatselt postitatavad sõnumid seadistatavatel ajavahemikel.",
+  "stats": {
+    "totalMessages": "Sõnumeid kokku",
+    "active": "Aktiivsed",
+    "inactive": "Mitteaktiivsed"
+  },
+  "table": {
+    "name": "Nimi",
+    "channel": "Kanal",
+    "schedule": "Ajavahemik",
+    "nextRun": "Järgmine käivitamine",
+    "status": "Olek"
+  },
+  "dialog": {
+    "editTitle": "Muuda ajastatud sõnumit",
+    "createTitle": "Uus ajastatud sõnum"
+  },
+  "form": {
+    "name": "Nimi",
+    "channel": "Kanal",
+    "schedulePreset": "Ajavahemiku eelseadistus",
+    "cronExpression": "Cron-avaldis",
+    "timezone": "Ajavöönd",
+    "messageContent": "Sõnumi sisu",
+    "text": "Tekst",
+    "embed": "Manus",
+    "enabled": "Lubatud",
+    "enabledDesc": "Kas see ajastatud sõnum on aktiivne."
+  },
+  "cronPresets": {
+    "everyHour": "Iga tund",
+    "every6Hours": "Iga 6 tunni järel",
+    "daily9am": "Iga päev kell 9",
+    "dailyMidnight": "Iga päev keskööl",
+    "weeklyMonday": "Igal esmaspäeval",
+    "monthly1st": "Iga kuu 1. kuupäeval",
+    "custom": "Kohandatud"
+  },
+  "embed": {
+    "title": "Pealkiri",
+    "description": "Kirjeldus",
+    "color": "Värv (hex)",
+    "footer": "Jalus",
+    "thumbnail": "Pisipildi URL",
+    "image": "Pildi URL"
+  },
+  "toast": {
+    "created": "Ajastatud sõnum loodud",
+    "createFailed": "Ajastatud sõnumi loomine ebaõnnestus",
+    "updated": "Ajastatud sõnum uuendatud",
+    "updateFailed": "Ajastatud sõnumi uuendamine ebaõnnestus",
+    "deleted": "Ajastatud sõnum kustutatud",
+    "deleteFailed": "Ajastatud sõnumi kustutamine ebaõnnestus",
+    "testSent": "Testisõnum saadetud",
+    "testFailed": "Testisõnumi saatmine ebaõnnestus"
+  },
+  "empty": {
+    "title": "Ajastatud sõnumeid pole veel",
+    "description": "Loo ajastatud sõnum, et automaatselt postitada sisu korduval alusel.",
+    "createButton": "Loo sõnum"
+  },
+  "pagination": {
+    "previous": "Eelmine",
+    "next": "Järgmine",
+    "page": "Leht {{page}} / {{total}}"
+  },
+  "actions": {
+    "newMessage": "Uus sõnum",
+    "testSend": "Testi saatmine",
+    "edit": "Muuda",
+    "delete": "Kustuta",
+    "save": "Salvesta",
+    "cancel": "Tühista"
+  },
+  "validation": {
+    "nameRequired": "Sõnumi nimi on kohustuslik",
+    "channelRequired": "Kanal on kohustuslik"
+  },
+  "cronPreview": {
+    "nextRuns": "Järgmised käivitamised"
+  },
+  "characters": "{{count}}/2000 tähemärki",
+  "never": "Kunagi"
+}

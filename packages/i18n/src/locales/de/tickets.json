@@ -1,0 +1,77 @@
+{
+  "title": "Ticketsystem",
+  "subtitle": "Erstellen Sie Support-Ticket-Panels und verwalten Sie offene Tickets ueber das Dashboard.",
+  "stats": {
+    "totalTickets": "Tickets gesamt",
+    "open": "Offen",
+    "claimed": "Uebernommen",
+    "panels": "Panels"
+  },
+  "tabs": {
+    "activeTickets": "Aktive Tickets",
+    "panelBuilder": "Panel-Editor",
+    "settings": "Einstellungen"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Benutzer",
+    "subject": "Betreff",
+    "status": "Status",
+    "assignee": "Zugewiesen an",
+    "created": "Erstellt"
+  },
+  "statuses": {
+    "open": "Offen",
+    "claimed": "Uebernommen",
+    "closed": "Geschlossen"
+  },
+  "panelBuilder": {
+    "title": "Panel-Titel",
+    "channel": "Kanal",
+    "buttonLabel": "Button-Bezeichnung",
+    "welcomeMessage": "Willkommensnachricht",
+    "category": "Ticket-Kategorie",
+    "create": "Panel erstellen",
+    "edit": "Panel bearbeiten",
+    "deploy": "Panel bereitstellen"
+  },
+  "settings": {
+    "transcriptChannel": "Transkript-Kanal",
+    "transcriptChannelDesc": "Kanal, in dem Ticket-Transkripte beim Schliessen gespeichert werden.",
+    "maxTicketsPerUser": "Max. Tickets pro Benutzer",
+    "maxTicketsPerUserDesc": "Maximale Anzahl offener Tickets pro Benutzer.",
+    "closeConfirmation": "Schliessbestaetigung",
+    "closeConfirmationDesc": "Bestaetigung vor dem Schliessen eines Tickets erfordern.",
+    "dmTranscript": "DM-Transkript",
+    "dmTranscriptDesc": "Dem Ticket-Ersteller eine Kopie des Transkripts per DM senden."
+  },
+  "actions": {
+    "claim": "Uebernehmen",
+    "close": "Schliessen",
+    "delete": "Loeschen",
+    "reopen": "Wieder oeffnen"
+  },
+  "toast": {
+    "panelCreated": "Ticket-Panel erstellt",
+    "panelCreateFailed": "Ticket-Panel konnte nicht erstellt werden",
+    "panelUpdated": "Ticket-Panel aktualisiert",
+    "panelUpdateFailed": "Ticket-Panel konnte nicht aktualisiert werden",
+    "panelDeployed": "Ticket-Panel bereitgestellt",
+    "panelDeployFailed": "Ticket-Panel konnte nicht bereitgestellt werden",
+    "ticketClaimed": "Ticket uebernommen",
+    "ticketClaimFailed": "Ticket konnte nicht uebernommen werden",
+    "ticketClosed": "Ticket geschlossen",
+    "ticketCloseFailed": "Ticket konnte nicht geschlossen werden",
+    "ticketReopened": "Ticket wieder geoeffnet",
+    "ticketReopenFailed": "Ticket konnte nicht wieder geoeffnet werden",
+    "ticketDeleted": "Ticket geloescht",
+    "ticketDeleteFailed": "Ticket konnte nicht geloescht werden",
+    "settingsSaved": "Ticket-Einstellungen gespeichert",
+    "settingsFailed": "Ticket-Einstellungen konnten nicht gespeichert werden"
+  },
+  "empty": {
+    "tickets": "Keine aktiven Tickets.",
+    "panels": "Noch keine Ticket-Panels erstellt."
+  },
+  "loading": "Tickets werden geladen..."
+}

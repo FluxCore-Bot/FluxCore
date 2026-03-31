@@ -1,0 +1,113 @@
+{
+  "title": "Mukautetut komennot",
+  "subtitle": "Luo automaattivastauksia ja etuliitekomentoja, jotka käynnistyvät viesteistä.",
+  "stats": {
+    "totalCommands": "Komentoja yhteensä",
+    "enabled": "Käytössä",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Komennot",
+    "variables": "Muuttujat"
+  },
+  "table": {
+    "name": "Nimi",
+    "trigger": "Laukaisin",
+    "response": "Vastaus",
+    "cooldown": "Jäähdytysaika",
+    "status": "Tila"
+  },
+  "triggerTypes": {
+    "command": "!komento",
+    "keyword": "Avainsana",
+    "startsWith": "Alkaa",
+    "regex": "Regex",
+    "prefixCommand": "Etuliitekomento (!nimi)",
+    "keywordContains": "Avainsana (sisältää)"
+  },
+  "dialog": {
+    "createCommand": "Luo komento",
+    "editCommand": "Muokkaa komentoa"
+  },
+  "form": {
+    "commandName": "Komennon nimi",
+    "triggerText": "Laukaisinteksti",
+    "regexPattern": "Regex-kuvio",
+    "triggerType": "Laukaisintyyppi",
+    "response": "Vastaus",
+    "message": "Viesti",
+    "embedTitle": "Upotuksen otsikko",
+    "embedDescription": "Upotuksen kuvaus",
+    "color": "Väri",
+    "footer": "Alatunniste"
+  },
+  "options": {
+    "cooldown": "Jäähdytysaika (sekuntia)",
+    "enabled": "Käytössä",
+    "enabledDesc": "Onko tämä komento aktiivinen",
+    "deleteTrigger": "Poista laukaisinviesti",
+    "deleteTriggerDesc": "Poista automaattisesti viesti, joka laukaisi tämän komennon.",
+    "dmResponse": "DM-vastaus",
+    "dmResponseDesc": "Lähetä vastaus yksityisviestinä kanavan sijaan."
+  },
+  "restrictions": {
+    "title": "Rajoitukset",
+    "allowedChannels": "Sallitut kanavat (tyhjä = kaikki)",
+    "allowedRoles": "Sallitut roolit (tyhjä = kaikki)",
+    "addChannel": "Lisää kanava",
+    "addRole": "Lisää rooli"
+  },
+  "actions": {
+    "create": "Luo",
+    "update": "Päivitä",
+    "cancel": "Peruuta",
+    "addAction": "Lisää toiminto",
+    "addRole": "Lisää rooli",
+    "removeRole": "Poista rooli"
+  },
+  "actionsSection": {
+    "title": "Toiminnot ({{count}}/5)",
+    "noActions": "Ei toimintoja määritetty. Lisää toiminto määrittääksesi, mitä tämä komento tekee.",
+    "maxActions": "Enintään 5 toimintoa per komento"
+  },
+  "variables": {
+    "title": "Mallimuuttujat",
+    "description": "Käytä näitä muuttujia komentovastauksissa. Ne korvataan todellisilla arvoilla, kun komento laukaistaan.",
+    "table": {
+      "variable": "Muuttuja",
+      "description": "Kuvaus"
+    },
+    "entries": {
+      "user": "{user} — Mainitsee komennon laukaisseen käyttäjän",
+      "username": "{username} — Käyttäjän näyttönimi",
+      "userId": "{userId} — Käyttäjän ID",
+      "server": "{server} — Palvelimen nimi",
+      "channel": "{channel} — Mainitsee nykyisen kanavan",
+      "channelName": "{channelName} — Kanavan nimi",
+      "memberCount": "{memberCount} — Palvelimen jäsenten kokonaismäärä"
+    }
+  },
+  "toast": {
+    "created": "Komento luotu",
+    "createFailed": "Komennon luominen epäonnistui",
+    "updated": "Komento päivitetty",
+    "updateFailed": "Komennon päivittäminen epäonnistui",
+    "deleted": "Komento poistettu",
+    "deleteFailed": "Komennon poistaminen epäonnistui",
+    "toggleEnabled": "Komento käytössä",
+    "toggleDisabled": "Komento pois käytöstä",
+    "toggleFailed": "Komennon vaihtaminen epäonnistui"
+  },
+  "empty": "Ei mukautettuja komentoja vielä.",
+  "loading": "Ladataan komentoja...",
+  "badge": {
+    "active": "Aktiivinen",
+    "disabled": "Pois käytöstä",
+    "text": "Teksti",
+    "embed": "Upotus"
+  },
+  "validation": {
+    "nameRequired": "Komennon nimi vaaditaan"
+  },
+  "triggerPrefix": "Laukaisin: !{{name}}"
+}

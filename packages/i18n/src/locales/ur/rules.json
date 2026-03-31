@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "[NEEDS TRANSLATION] Guild",
+    "automation": "[NEEDS TRANSLATION] Automation"
+  },
+  "title": "[NEEDS TRANSLATION] Automation Rules",
+  "subtitle": "[NEEDS TRANSLATION] Configure event-driven triggers and automated responses for your guild.",
+  "createRule": "[NEEDS TRANSLATION] Create Rule",
+  "stats": {
+    "totalRules": "[NEEDS TRANSLATION] Total Rules",
+    "active": "[NEEDS TRANSLATION] Active",
+    "executions7d": "[NEEDS TRANSLATION] Executions (7d)",
+    "successRate": "[NEEDS TRANSLATION] Success Rate"
+  },
+  "filter": {
+    "searchPlaceholder": "[NEEDS TRANSLATION] Search rules...",
+    "eventType": "[NEEDS TRANSLATION] Event type",
+    "allEvents": "[NEEDS TRANSLATION] All Events",
+    "allStatus": "[NEEDS TRANSLATION] All Status",
+    "enabled": "[NEEDS TRANSLATION] Enabled",
+    "disabled": "[NEEDS TRANSLATION] Disabled",
+    "sortBy": "[NEEDS TRANSLATION] Sort by",
+    "priority": "[NEEDS TRANSLATION] Priority",
+    "name": "[NEEDS TRANSLATION] Name",
+    "lastFired": "[NEEDS TRANSLATION] Last Fired",
+    "status": "[NEEDS TRANSLATION] Status",
+    "clear": "[NEEDS TRANSLATION] Clear",
+    "showing": "[NEEDS TRANSLATION] Showing {{filtered}} of {{total}} rules"
+  },
+  "bulk": {
+    "selected": "[NEEDS TRANSLATION] {{count}} rule selected",
+    "selected_other": "[NEEDS TRANSLATION] {{count}} rules selected",
+    "enable": "[NEEDS TRANSLATION] Enable",
+    "disable": "[NEEDS TRANSLATION] Disable",
+    "delete": "[NEEDS TRANSLATION] Delete",
+    "clear": "[NEEDS TRANSLATION] Clear"
+  },
+  "empty": {
+    "title": "[NEEDS TRANSLATION] Get Started with Automation",
+    "description": "[NEEDS TRANSLATION] Choose a template to get started quickly, or create a rule from scratch.",
+    "createFromScratch": "[NEEDS TRANSLATION] Create from Scratch"
+  },
+  "noResults": {
+    "title": "[NEEDS TRANSLATION] No matching rules",
+    "description": "[NEEDS TRANSLATION] Try adjusting your search or filters to find what you're looking for."
+  },
+  "templates": {
+    "welcomeMessage": "[NEEDS TRANSLATION] Welcome Message",
+    "welcomeMessageDesc": "[NEEDS TRANSLATION] Greet new members with a custom message in a channel",
+    "autoRole": "[NEEDS TRANSLATION] Auto Role",
+    "autoRoleDesc": "[NEEDS TRANSLATION] Automatically assign a role when a member joins",
+    "logDeleted": "[NEEDS TRANSLATION] Log Deleted Messages",
+    "logDeletedDesc": "[NEEDS TRANSLATION] Send deleted message info to a log channel",
+    "boostThankYou": "[NEEDS TRANSLATION] Boost Thank You",
+    "boostThankYouDesc": "[NEEDS TRANSLATION] Send a DM thanking users who boost the server",
+    "banLogger": "[NEEDS TRANSLATION] Ban Logger",
+    "banLoggerDesc": "[NEEDS TRANSLATION] Log ban events to a moderation channel",
+    "autoThread": "[NEEDS TRANSLATION] Auto Thread",
+    "autoThreadDesc": "[NEEDS TRANSLATION] Automatically create a thread when a message is sent"
+  },
+  "deleteDialog": {
+    "title": "[NEEDS TRANSLATION] Delete Rule",
+    "description": "[NEEDS TRANSLATION] Are you sure you want to delete \"{{name}}\"? This action cannot be undone.",
+    "confirm": "[NEEDS TRANSLATION] Delete"
+  },
+  "bulkDeleteDialog": {
+    "title": "[NEEDS TRANSLATION] Delete Selected Rules",
+    "description": "[NEEDS TRANSLATION] Are you sure you want to delete {{count}} rule? This action cannot be undone.",
+    "description_other": "[NEEDS TRANSLATION] Are you sure you want to delete {{count}} rules? This action cannot be undone.",
+    "confirm": "[NEEDS TRANSLATION] Delete All"
+  },
+  "toast": {
+    "deleted": "[NEEDS TRANSLATION] Rule deleted",
+    "deleteFailed": "[NEEDS TRANSLATION] Failed to delete rule",
+    "enabled": "[NEEDS TRANSLATION] Rule enabled",
+    "disabled": "[NEEDS TRANSLATION] Rule disabled",
+    "toggleFailed": "[NEEDS TRANSLATION] Failed to toggle rule",
+    "duplicated": "[NEEDS TRANSLATION] Rule duplicated",
+    "duplicateFailed": "[NEEDS TRANSLATION] Failed to duplicate rule",
+    "bulkEnabled": "[NEEDS TRANSLATION] {{count}} rules enabled",
+    "bulkDisabled": "[NEEDS TRANSLATION] {{count}} rules disabled",
+    "bulkEnableFailed": "[NEEDS TRANSLATION] Failed to enable rules",
+    "bulkDisableFailed": "[NEEDS TRANSLATION] Failed to disable rules",
+    "bulkDeleted": "[NEEDS TRANSLATION] {{count}} rules deleted",
+    "bulkDeleteFailed": "[NEEDS TRANSLATION] Failed to delete rules"
+  }
+}

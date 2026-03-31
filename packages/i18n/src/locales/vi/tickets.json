@@ -1,0 +1,77 @@
+{
+  "title": "Hệ Thống Phiếu Hỗ Trợ",
+  "subtitle": "Tạo bảng phiếu hỗ trợ và quản lý phiếu đang mở từ bảng điều khiển.",
+  "stats": {
+    "totalTickets": "Tổng Phiếu",
+    "open": "Đang Mở",
+    "claimed": "Đã Nhận",
+    "panels": "Bảng"
+  },
+  "tabs": {
+    "activeTickets": "Phiếu Đang Hoạt Động",
+    "panelBuilder": "Trình Tạo Bảng",
+    "settings": "Cài Đặt"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Người Dùng",
+    "subject": "Chủ Đề",
+    "status": "Trạng Thái",
+    "assignee": "Người Phụ Trách",
+    "created": "Ngày Tạo"
+  },
+  "statuses": {
+    "open": "Đang Mở",
+    "claimed": "Đã Nhận",
+    "closed": "Đã Đóng"
+  },
+  "panelBuilder": {
+    "title": "Tiêu Đề Bảng",
+    "channel": "Kênh",
+    "buttonLabel": "Nhãn Nút",
+    "welcomeMessage": "Tin Nhắn Chào Mừng",
+    "category": "Danh Mục Phiếu",
+    "create": "Tạo Bảng",
+    "edit": "Chỉnh Sửa Bảng",
+    "deploy": "Triển Khai Bảng"
+  },
+  "settings": {
+    "transcriptChannel": "Kênh Lưu Transcript",
+    "transcriptChannelDesc": "Kênh nơi transcript phiếu được lưu khi đóng.",
+    "maxTicketsPerUser": "Số Phiếu Tối Đa Mỗi Người",
+    "maxTicketsPerUserDesc": "Số lượng phiếu đang mở tối đa mà một người dùng có thể có.",
+    "closeConfirmation": "Xác Nhận Đóng",
+    "closeConfirmationDesc": "Yêu cầu xác nhận trước khi đóng phiếu.",
+    "dmTranscript": "DM Transcript",
+    "dmTranscriptDesc": "Gửi bản sao transcript cho người tạo phiếu qua DM."
+  },
+  "actions": {
+    "claim": "Nhận",
+    "close": "Đóng",
+    "delete": "Xóa",
+    "reopen": "Mở Lại"
+  },
+  "toast": {
+    "panelCreated": "Đã tạo bảng phiếu hỗ trợ",
+    "panelCreateFailed": "Tạo bảng phiếu hỗ trợ thất bại",
+    "panelUpdated": "Đã cập nhật bảng phiếu hỗ trợ",
+    "panelUpdateFailed": "Cập nhật bảng phiếu hỗ trợ thất bại",
+    "panelDeployed": "Đã triển khai bảng phiếu hỗ trợ",
+    "panelDeployFailed": "Triển khai bảng phiếu hỗ trợ thất bại",
+    "ticketClaimed": "Đã nhận phiếu",
+    "ticketClaimFailed": "Nhận phiếu thất bại",
+    "ticketClosed": "Đã đóng phiếu",
+    "ticketCloseFailed": "Đóng phiếu thất bại",
+    "ticketReopened": "Đã mở lại phiếu",
+    "ticketReopenFailed": "Mở lại phiếu thất bại",
+    "ticketDeleted": "Đã xóa phiếu",
+    "ticketDeleteFailed": "Xóa phiếu thất bại",
+    "settingsSaved": "Đã lưu cài đặt phiếu",
+    "settingsFailed": "Lưu cài đặt phiếu thất bại"
+  },
+  "empty": {
+    "tickets": "Không có phiếu đang hoạt động.",
+    "panels": "Chưa có bảng phiếu hỗ trợ nào được tạo."
+  },
+  "loading": "Đang tải phiếu..."
+}

@@ -1,0 +1,77 @@
+{
+  "title": "سیستم تیکت",
+  "subtitle": "ایجاد پنل‌های تیکت پشتیبانی و مدیریت تیکت‌های باز از داشبورد.",
+  "stats": {
+    "totalTickets": "کل تیکت‌ها",
+    "open": "باز",
+    "claimed": "در دست بررسی",
+    "panels": "پنل‌ها"
+  },
+  "tabs": {
+    "activeTickets": "تیکت‌های فعال",
+    "panelBuilder": "سازنده پنل",
+    "settings": "تنظیمات"
+  },
+  "table": {
+    "id": "شناسه",
+    "user": "کاربر",
+    "subject": "موضوع",
+    "status": "وضعیت",
+    "assignee": "مسئول",
+    "created": "ایجاد شده"
+  },
+  "statuses": {
+    "open": "باز",
+    "claimed": "در دست بررسی",
+    "closed": "بسته"
+  },
+  "panelBuilder": {
+    "title": "عنوان پنل",
+    "channel": "کانال",
+    "buttonLabel": "برچسب دکمه",
+    "welcomeMessage": "پیام خوش‌آمدگویی",
+    "category": "دسته‌بندی تیکت",
+    "create": "ایجاد پنل",
+    "edit": "ویرایش پنل",
+    "deploy": "استقرار پنل"
+  },
+  "settings": {
+    "transcriptChannel": "کانال رونوشت",
+    "transcriptChannelDesc": "کانالی که رونوشت تیکت‌ها هنگام بسته شدن ذخیره می‌شود.",
+    "maxTicketsPerUser": "حداکثر تیکت برای هر کاربر",
+    "maxTicketsPerUserDesc": "حداکثر تعداد تیکت‌های باز که یک کاربر می‌تواند داشته باشد.",
+    "closeConfirmation": "تأیید بستن",
+    "closeConfirmationDesc": "نیاز به تأیید قبل از بستن تیکت.",
+    "dmTranscript": "رونوشت با پیام خصوصی",
+    "dmTranscriptDesc": "ارسال نسخه‌ای از رونوشت به سازنده تیکت از طریق پیام خصوصی."
+  },
+  "actions": {
+    "claim": "دست گرفتن",
+    "close": "بستن",
+    "delete": "حذف",
+    "reopen": "بازگشایی"
+  },
+  "toast": {
+    "panelCreated": "پنل تیکت ایجاد شد",
+    "panelCreateFailed": "ایجاد پنل تیکت ناموفق بود",
+    "panelUpdated": "پنل تیکت به‌روزرسانی شد",
+    "panelUpdateFailed": "به‌روزرسانی پنل تیکت ناموفق بود",
+    "panelDeployed": "پنل تیکت مستقر شد",
+    "panelDeployFailed": "استقرار پنل تیکت ناموفق بود",
+    "ticketClaimed": "تیکت در دست گرفته شد",
+    "ticketClaimFailed": "در دست گرفتن تیکت ناموفق بود",
+    "ticketClosed": "تیکت بسته شد",
+    "ticketCloseFailed": "بستن تیکت ناموفق بود",
+    "ticketReopened": "تیکت بازگشایی شد",
+    "ticketReopenFailed": "بازگشایی تیکت ناموفق بود",
+    "ticketDeleted": "تیکت حذف شد",
+    "ticketDeleteFailed": "حذف تیکت ناموفق بود",
+    "settingsSaved": "تنظیمات تیکت ذخیره شد",
+    "settingsFailed": "ذخیره تنظیمات تیکت ناموفق بود"
+  },
+  "empty": {
+    "tickets": "تیکت فعالی وجود ندارد.",
+    "panels": "هنوز پنل تیکتی ایجاد نشده."
+  },
+  "loading": "در حال بارگذاری تیکت‌ها..."
+}

@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Neautentificat",
+    "sessionExpired": "Sesiunea a expirat",
+    "missingCode": "Parametrul de cod lipsește",
+    "tokenExchangeFailed": "Schimbul de token a eșuat",
+    "failedToFetchUser": "Preluarea informațiilor utilizatorului a eșuat"
+  },
+  "permissions": {
+    "noGuildPermission": "Nicio permisiune pentru acest server",
+    "botNotInGuild": "Botul nu se află pe acest server",
+    "insufficientPermissions": "Permisiuni insuficiente",
+    "permissionsNotResolved": "Permisiunile nu au fost rezolvate",
+    "requiresPermission": "Această acțiune necesită permisiunea \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Intrare invalidă",
+    "missingField": "Câmp obligatoriu lipsă: {{field}}",
+    "invalidFormat": "Format invalid pentru {{field}}",
+    "tooLong": "{{field}} depășește lungimea maximă de {{max}} caractere",
+    "tooShort": "{{field}} trebuie să aibă cel puțin {{min}} caractere",
+    "outOfRange": "{{field}} trebuie să fie între {{min}} și {{max}}"
+  },
+  "resources": {
+    "notFound": "Nu a fost găsit",
+    "alreadyExists": "{{resource}} există deja",
+    "limitReached": "Maximum de {{max}} {{resource}} per server",
+    "createFailed": "Crearea {{resource}} a eșuat",
+    "updateFailed": "Actualizarea {{resource}} a eșuat",
+    "deleteFailed": "Ștergerea {{resource}} a eșuat"
+  },
+  "server": {
+    "internalError": "Eroare internă a serverului",
+    "serviceUnavailable": "Serviciu temporar indisponibil",
+    "rateLimited": "Prea multe solicitări. Te rugăm să încerci din nou mai târziu."
+  },
+  "csrf": {
+    "invalidToken": "Token CSRF invalid sau lipsă"
+  }
+}

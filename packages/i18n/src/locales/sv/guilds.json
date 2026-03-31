@@ -1,0 +1,9 @@
+{
+  "title": "Dina servrar",
+  "subtitle": "Välj en server att hantera och konfigurera.",
+  "loading": "Laddar servrar...",
+  "empty": {
+    "title": "Inga servrar hittades",
+    "description": "Se till att boten är tillagd på en server där du har behörigheten Hantera server."
+  }
+}

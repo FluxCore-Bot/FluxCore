@@ -1,0 +1,41 @@
+{
+  "title": "Sterbord",
+  "subtitle": "Lig die beste boodskappe uit deur sterreaksies in 'n toegewyde kanaal te versamel.",
+  "tabs": {
+    "settings": "Instellings",
+    "starredMessages": "Gesterde Boodskappe"
+  },
+  "settings": {
+    "title": "Sterbord-konfigurasie",
+    "description": "Stel op wanneer en waar gesterde boodskappe geplaas word.",
+    "channelId": "Sterbordkanaal",
+    "channelIdDesc": "Die kanaal waar gesterde boodskappe geplaas word.",
+    "starEmoji": "Ster-emoji",
+    "starEmojiDesc": "Die emoji wat gebruik word om boodskappe te ster. Verstek na die ster-emoji.",
+    "threshold": "Sterdrempel",
+    "thresholdDesc": "Minimum aantal reaksies benodig om 'n boodskap op die sterbord te plaas.",
+    "selfStar": "Self-ster",
+    "selfStarDesc": "Laat boodskapskrywers toe om hul eie boodskappe te ster.",
+    "nsfwAllowed": "NSFW Toegelaat",
+    "nsfwAllowedDesc": "Laat boodskappe van NSFW-kanale toe om op die sterbord te verskyn.",
+    "ignoredChannels": "Geignoreerde Kanale",
+    "ignoredChannelsDesc": "Boodskappe van hierdie kanale sal nooit op die sterbord verskyn nie."
+  },
+  "messages": {
+    "table": {
+      "original": "Oorspronklike Boodskap",
+      "stars": "Sterre",
+      "channel": "Kanaal",
+      "date": "Datum"
+    },
+    "noMessages": "Nog geen gesterde boodskappe nie."
+  },
+  "toast": {
+    "saved": "Sterbordinstellings gestoor",
+    "saveFailed": "Kon nie sterbordinstellings stoor nie"
+  },
+  "actions": {
+    "save": "Stoor",
+    "saving": "Stoor..."
+  }
+}

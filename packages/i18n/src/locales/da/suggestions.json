@@ -1,0 +1,67 @@
+{
+  "title": "Forslag",
+  "subtitle": "Lad medlemmer indsende idéer og stemme om dem. Administrer status og feedback.",
+  "stats": {
+    "totalSuggestions": "Forslag i alt",
+    "systemStatus": "Systemstatus",
+    "channel": {
+      "configured": "Kanal konfigureret",
+      "notSet": "Kanal ikke indstillet"
+    }
+  },
+  "tabs": {
+    "suggestions": "Forslag",
+    "settings": "Indstillinger"
+  },
+  "filter": {
+    "filterByStatus": "Filtrer efter status",
+    "all": "Alle",
+    "pending": "Afventende",
+    "approved": "Godkendte",
+    "rejected": "Afviste",
+    "implemented": "Implementerede",
+    "considered": "Under overvejelse"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Forfatter",
+    "content": "Indhold",
+    "status": "Status",
+    "votes": "Stemmer",
+    "date": "Dato"
+  },
+  "actions": {
+    "approve": "Godkend",
+    "reject": "Afvis",
+    "implement": "Markér som implementeret",
+    "consider": "Overvej",
+    "delete": "Slet"
+  },
+  "settings": {
+    "channel": "Forslagskanal",
+    "channelDesc": "Kanalen, hvor forslag publiceres til afstemning.",
+    "voteEmojis": "Afstemningsemojier",
+    "voteEmojisDesc": "Emojier brugt til op- og nedstemning.",
+    "autoThread": "Opret tråd automatisk",
+    "autoThreadDesc": "Opret automatisk en diskussionstråd på hvert nyt forslag.",
+    "dmOnStatusChange": "DM ved statusændring",
+    "dmOnStatusChangeDesc": "Underret forfatteren via DM, når deres forslagsstatus ændres."
+  },
+  "toast": {
+    "approved": "Forslag godkendt",
+    "rejected": "Forslag afvist",
+    "implemented": "Forslag markeret som implementeret",
+    "considered": "Forslag markeret som under overvejelse",
+    "deleted": "Forslag slettet",
+    "actionFailed": "Kunne ikke opdatere forslag",
+    "settingsSaved": "Forslagsindstillinger gemt",
+    "settingsFailed": "Kunne ikke gemme forslagsindstillinger"
+  },
+  "empty": "Ingen forslag endnu.",
+  "loading": "Indlæser forslag...",
+  "pagination": {
+    "previous": "Forrige",
+    "next": "Næste",
+    "page": "Side {{page}} af {{total}}"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore Kontrollpanel"
+  },
+  "status": {
+    "online": "Tilkoblet",
+    "offline": "Frakoblet",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Oversikt",
+    "automation": "Automatisering",
+    "music": "Musikk",
+    "tempvoice": "TempVoice",
+    "welcome": "Velkommen",
+    "moderation": "Moderering",
+    "warnings": "Advarsler",
+    "rolePanels": "Rollepaneler",
+    "leveling": "Nivåer",
+    "scheduled": "Planlagt",
+    "commands": "Kommandoer",
+    "security": "Sikkerhet",
+    "tickets": "Saker",
+    "giveaways": "Konkurranser",
+    "suggestions": "Forslag",
+    "starboard": "Starboard",
+    "logs": "Logger",
+    "permissions": "Tillatelser",
+    "settings": "Innstillinger"
+  },
+  "actions": {
+    "save": "Lagre",
+    "cancel": "Avbryt",
+    "delete": "Slett",
+    "edit": "Rediger",
+    "create": "Opprett",
+    "add": "Legg til",
+    "remove": "Fjern",
+    "confirm": "Bekreft",
+    "close": "Lukk",
+    "back": "Tilbake",
+    "next": "Neste",
+    "search": "Søk",
+    "filter": "Filtrer",
+    "refresh": "Oppdater",
+    "reset": "Tilbakestill",
+    "enable": "Aktiver",
+    "disable": "Deaktiver",
+    "copy": "Kopier",
+    "export": "Eksporter",
+    "import": "Importer",
+    "submit": "Send inn",
+    "loading": "Laster...",
+    "retry": "Prøv igjen"
+  },
+  "labels": {
+    "enabled": "Aktivert",
+    "disabled": "Deaktivert",
+    "active": "Aktiv",
+    "inactive": "Inaktiv",
+    "none": "Ingen",
+    "all": "Alle",
+    "custom": "Egendefinert",
+    "default": "Standard",
+    "required": "Påkrevd",
+    "optional": "Valgfri",
+    "name": "Navn",
+    "description": "Beskrivelse",
+    "type": "Type",
+    "status": "Status",
+    "channel": "Kanal",
+    "role": "Rolle",
+    "member": "Medlem",
+    "duration": "Varighet",
+    "reason": "Grunn",
+    "language": "Språk"
+  },
+  "header": {
+    "notifications": "Varsler",
+    "settings": "Innstillinger",
+    "logout": "Logg ut",
+    "toggleSidebar": "Veksle sidefelt",
+    "refreshData": "Oppdater Discord-data"
+  },
+  "sidebar": {
+    "closeSidebar": "Lukk sidefelt",
+    "addToServer": "Legg til på server",
+    "docs": "Dokumentasjon",
+    "support": "Støtte",
+    "backToServers": "Tilbake til servere"
+  },
+  "empty": {
+    "noData": "Ingen data tilgjengelig",
+    "noResults": "Ingen resultater funnet",
+    "noItems": "Ingen elementer ennå"
+  },
+  "time": {
+    "seconds": "sekunder",
+    "minutes": "minutter",
+    "hours": "timer",
+    "days": "dager",
+    "ago": "{{time}} siden",
+    "in": "om {{time}}"
+  },
+  "confirm": {
+    "title": "Er du sikker?",
+    "deleteTitle": "Bekreft sletting",
+    "deleteMessage": "Denne handlingen kan ikke angres.",
+    "unsavedChanges": "Du har ulagrede endringer. Er du sikker på at du vil forlate?"
+  },
+  "accessibility": {
+    "skipToContent": "Hopp til hovedinnhold",
+    "loading": "Laster innhold",
+    "loaded": "Innhold lastet",
+    "error": "En feil oppstod",
+    "menuOpen": "Menyen er åpen",
+    "menuClosed": "Menyen er lukket"
+  }
+}

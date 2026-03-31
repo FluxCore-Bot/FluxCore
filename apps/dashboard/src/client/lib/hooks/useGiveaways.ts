@@ -4,7 +4,6 @@ import {
   GiveawayListResponseSchema,
   GiveawaySchema,
   type GiveawayListResponse,
-  type GiveawayItem,
 } from "../schemas";
 
 interface GiveawayFilters {

@@ -1,0 +1,112 @@
+{
+  "title": "Roolipaneelit",
+  "subtitle": "Luo itsemääritettäviä roolipaneeleita painikkeilla, pudotusvalikoilla tai reaktioilla.",
+  "stats": {
+    "totalPanels": "Paneeleja yhteensä",
+    "deployed": "Julkaistu",
+    "totalRoles": "Rooleja yhteensä"
+  },
+  "tabs": {
+    "panels": "Paneelit",
+    "preview": "Esikatselu"
+  },
+  "table": {
+    "name": "Nimi",
+    "type": "Tyyppi",
+    "mode": "Tila",
+    "roles": "Roolit",
+    "status": "Tila"
+  },
+  "panelTypes": {
+    "reaction": "Reaktio",
+    "button": "Painike",
+    "dropdown": "Pudotusvalikko"
+  },
+  "panelModes": {
+    "toggle": "Vaihda",
+    "unique": "Yksilöllinen",
+    "verify": "Vahvista"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Vaihda (lisää/poista)",
+    "unique": "Yksilöllinen (yksi kerrallaan)",
+    "verify": "Vahvista (vain lisää)"
+  },
+  "status": {
+    "deployed": "Julkaistu",
+    "draft": "Luonnos"
+  },
+  "dialog": {
+    "createPanel": "Luo paneeli",
+    "editPanel": "Muokkaa paneelia"
+  },
+  "panelList": {
+    "title": "Kaikki paneelit"
+  },
+  "form": {
+    "name": "Nimi",
+    "namePlaceholder": "esim. Väriroolit",
+    "type": "Tyyppi",
+    "mode": "Tila",
+    "channel": "Kanava",
+    "channelPlaceholder": "Valitse kanava",
+    "minRoles": "Vähimmäisroolit",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Enimmäisroolit",
+    "maxRolesPlaceholder": "Kaikki",
+    "embedSection": "Upotus",
+    "embedTitle": "Otsikko",
+    "embedTitlePlaceholder": "Paneelin otsikko (oletus on paneelin nimi)",
+    "embedDescription": "Kuvaus",
+    "embedDescriptionPlaceholder": "Kuvausteksti",
+    "rolesCount": "Roolit ({{count}}/25)",
+    "addRole": "Lisää rooli"
+  },
+  "entry": {
+    "role": "Rooli",
+    "rolePlaceholder": "Valitse rooli",
+    "label": "Tunniste",
+    "labelPlaceholder": "Painikkeen tunniste",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "esim. star",
+    "description": "Kuvaus",
+    "descriptionPlaceholder": "Vaihtoehdon kuvaus",
+    "style": "Tyyli"
+  },
+  "buttonStyles": {
+    "primary": "Ensisijainen",
+    "secondary": "Toissijainen",
+    "success": "Onnistuminen",
+    "danger": "Vaara"
+  },
+  "actions": {
+    "create": "Luo",
+    "update": "Päivitä",
+    "cancel": "Peruuta",
+    "deploy": "Julkaise",
+    "delete": "Poista",
+    "addEntry": "Lisää merkintä",
+    "removeEntry": "Poista merkintä"
+  },
+  "preview": {
+    "title": "Live-esikatselu",
+    "description": "Esikatsele miltä paneelit näyttävät Discordissa.",
+    "selectRoles": "Valitse rooleja...",
+    "noPreview": "Ei paneeleita esikatseltavaksi."
+  },
+  "empty": "Ei roolipaneeleita vielä. Klikkaa \"Luo paneeli\" aloittaaksesi.",
+  "toast": {
+    "created": "Paneeli luotu",
+    "createFailed": "Paneelin luominen epäonnistui",
+    "updated": "Paneeli päivitetty",
+    "updateFailed": "Paneelin päivittäminen epäonnistui",
+    "deleted": "Paneeli poistettu",
+    "deleteFailed": "Paneelin poistaminen epäonnistui",
+    "deployed": "Roolipaneeli julkaistu kanavalle",
+    "deployFailed": "Paneelin lähettäminen epäonnistui",
+    "nameRequired": "Paneelin nimi vaaditaan",
+    "channelRequired": "Kanava vaaditaan",
+    "maxRolesReached": "Enintään 25 roolia per paneeli"
+  },
+  "loading": "Ladataan paneeleita..."
+}

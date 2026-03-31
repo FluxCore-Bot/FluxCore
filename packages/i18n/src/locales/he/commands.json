@@ -1,0 +1,113 @@
+{
+  "title": "פקודות מותאמות",
+  "subtitle": "צור מגיבים אוטומטיים ופקודות קידומת שמופעלות בהודעות.",
+  "stats": {
+    "totalCommands": "סה\"כ פקודות",
+    "enabled": "מופעלות",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "פקודות",
+    "variables": "משתנים"
+  },
+  "table": {
+    "name": "שם",
+    "trigger": "טריגר",
+    "response": "תגובה",
+    "cooldown": "זמן המתנה",
+    "status": "מצב"
+  },
+  "triggerTypes": {
+    "command": "!פקודה",
+    "keyword": "מילת מפתח",
+    "startsWith": "מתחיל ב",
+    "regex": "ביטוי רגולרי",
+    "prefixCommand": "פקודת קידומת (!שם)",
+    "keywordContains": "מילת מפתח (מכיל)"
+  },
+  "dialog": {
+    "createCommand": "צור פקודה",
+    "editCommand": "ערוך פקודה"
+  },
+  "form": {
+    "commandName": "שם הפקודה",
+    "triggerText": "טקסט טריגר",
+    "regexPattern": "תבנית ביטוי רגולרי",
+    "triggerType": "סוג טריגר",
+    "response": "תגובה",
+    "message": "הודעה",
+    "embedTitle": "כותרת Embed",
+    "embedDescription": "תיאור Embed",
+    "color": "צבע",
+    "footer": "כותרת תחתונה"
+  },
+  "options": {
+    "cooldown": "זמן המתנה (שניות)",
+    "enabled": "מופעל",
+    "enabledDesc": "האם פקודה זו פעילה",
+    "deleteTrigger": "מחק הודעת טריגר",
+    "deleteTriggerDesc": "מחק אוטומטית את ההודעה שהפעילה את הפקודה.",
+    "dmResponse": "תגובה בהודעה פרטית",
+    "dmResponseDesc": "שלח את התגובה כהודעה פרטית במקום בערוץ."
+  },
+  "restrictions": {
+    "title": "הגבלות",
+    "allowedChannels": "ערוצים מותרים (ריק = כולם)",
+    "allowedRoles": "תפקידים מותרים (ריק = כולם)",
+    "addChannel": "הוסף ערוץ",
+    "addRole": "הוסף תפקיד"
+  },
+  "actions": {
+    "create": "צור",
+    "update": "עדכן",
+    "cancel": "בטל",
+    "addAction": "הוסף פעולה",
+    "addRole": "הוסף תפקיד",
+    "removeRole": "הסר תפקיד"
+  },
+  "actionsSection": {
+    "title": "פעולות ({{count}}/5)",
+    "noActions": "לא הוגדרו פעולות. הוסף פעולה כדי להגדיר מה הפקודה עושה.",
+    "maxActions": "מקסימום 5 פעולות לפקודה"
+  },
+  "variables": {
+    "title": "משתני תבנית",
+    "description": "השתמש במשתנים אלו בתגובות הפקודות שלך. הם יוחלפו בערכים בפועל כאשר הפקודה מופעלת.",
+    "table": {
+      "variable": "משתנה",
+      "description": "תיאור"
+    },
+    "entries": {
+      "user": "{user} — מזכיר את המשתמש שהפעיל את הפקודה",
+      "username": "{username} — שם התצוגה של המשתמש",
+      "userId": "{userId} — מזהה המשתמש",
+      "server": "{server} — שם השרת",
+      "channel": "{channel} — מזכיר את הערוץ הנוכחי",
+      "channelName": "{channelName} — שם הערוץ",
+      "memberCount": "{memberCount} — סה\"כ חברי השרת"
+    }
+  },
+  "toast": {
+    "created": "הפקודה נוצרה",
+    "createFailed": "יצירת הפקודה נכשלה",
+    "updated": "הפקודה עודכנה",
+    "updateFailed": "עדכון הפקודה נכשל",
+    "deleted": "הפקודה נמחקה",
+    "deleteFailed": "מחיקת הפקודה נכשלה",
+    "toggleEnabled": "הפקודה הופעלה",
+    "toggleDisabled": "הפקודה הושבתה",
+    "toggleFailed": "החלפת מצב הפקודה נכשלה"
+  },
+  "empty": "לא נוצרו פקודות מותאמות עדיין.",
+  "loading": "טוען פקודות...",
+  "badge": {
+    "active": "פעיל",
+    "disabled": "מושבת",
+    "text": "טקסט",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "שם הפקודה הוא שדה חובה"
+  },
+  "triggerPrefix": "טריגר: !{{name}}"
+}

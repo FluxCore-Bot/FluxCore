@@ -1,0 +1,50 @@
+{
+  "title": "Utlottningar",
+  "subtitle": "Kör utlottningar med anpassningsbar varaktighet, deltagandekrav och vinnarval.",
+  "stats": {
+    "activeGiveaways": "Aktiva utlottningar",
+    "pastGiveaways": "Avslutade utlottningar",
+    "totalEntries": "Totalt antal deltagare"
+  },
+  "table": {
+    "prize": "Pris",
+    "winners": "Vinnare",
+    "entries": "Deltagare",
+    "endsIn": "Slutar om",
+    "status": "Status"
+  },
+  "statuses": {
+    "active": "Aktiv",
+    "ended": "Avslutad",
+    "cancelled": "Avbruten"
+  },
+  "actions": {
+    "create": "Skapa utlottning",
+    "edit": "Redigera",
+    "end": "Avsluta",
+    "reroll": "Lotta om",
+    "delete": "Ta bort"
+  },
+  "form": {
+    "prize": "Pris",
+    "winnersCount": "Antal vinnare",
+    "duration": "Varaktighet",
+    "channel": "Kanal",
+    "requiredRole": "Obligatorisk roll",
+    "description": "Beskrivning"
+  },
+  "toast": {
+    "created": "Utlottning skapad",
+    "createFailed": "Misslyckades med att skapa utlottning",
+    "updated": "Utlottning uppdaterad",
+    "updateFailed": "Misslyckades med att uppdatera utlottning",
+    "ended": "Utlottning avslutad",
+    "endFailed": "Misslyckades med att avsluta utlottning",
+    "rerolled": "Vinnare omlottade",
+    "rerollFailed": "Misslyckades med att lotta om vinnare",
+    "deleted": "Utlottning borttagen",
+    "deleteFailed": "Misslyckades med att ta bort utlottning"
+  },
+  "empty": "Inga utlottningar ännu. Skapa en för att komma igång.",
+  "loading": "Laddar utlottningar..."
+}

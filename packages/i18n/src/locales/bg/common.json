@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore Табло"
+  },
+  "status": {
+    "online": "Онлайн",
+    "offline": "Офлайн",
+    "latency": "{{ms}}мс"
+  },
+  "nav": {
+    "overview": "Преглед",
+    "automation": "Автоматизация",
+    "music": "Музика",
+    "tempvoice": "TempVoice",
+    "welcome": "Добре дошли",
+    "moderation": "Модерация",
+    "warnings": "Предупреждения",
+    "rolePanels": "Панели с роли",
+    "leveling": "Нива",
+    "scheduled": "Планирани",
+    "commands": "Команди",
+    "security": "Сигурност",
+    "tickets": "Тикети",
+    "giveaways": "Раздавания",
+    "suggestions": "Предложения",
+    "starboard": "Starboard",
+    "logs": "Журнали",
+    "permissions": "Разрешения",
+    "settings": "Настройки"
+  },
+  "actions": {
+    "save": "Запази",
+    "cancel": "Отказ",
+    "delete": "Изтрий",
+    "edit": "Редактирай",
+    "create": "Създай",
+    "add": "Добави",
+    "remove": "Премахни",
+    "confirm": "Потвърди",
+    "close": "Затвори",
+    "back": "Назад",
+    "next": "Напред",
+    "search": "Търси",
+    "filter": "Филтрирай",
+    "refresh": "Обнови",
+    "reset": "Нулирай",
+    "enable": "Активирай",
+    "disable": "Деактивирай",
+    "copy": "Копирай",
+    "export": "Експортирай",
+    "import": "Импортирай",
+    "submit": "Изпрати",
+    "loading": "Зареждане...",
+    "retry": "Опитай отново"
+  },
+  "labels": {
+    "enabled": "Активно",
+    "disabled": "Неактивно",
+    "active": "Активен",
+    "inactive": "Неактивен",
+    "none": "Няма",
+    "all": "Всички",
+    "custom": "Персонализирано",
+    "default": "По подразбиране",
+    "required": "Задължително",
+    "optional": "Незадължително",
+    "name": "Име",
+    "description": "Описание",
+    "type": "Тип",
+    "status": "Статус",
+    "channel": "Канал",
+    "role": "Роля",
+    "member": "Член",
+    "duration": "Продължителност",
+    "reason": "Причина",
+    "language": "Език"
+  },
+  "header": {
+    "notifications": "Известия",
+    "settings": "Настройки",
+    "logout": "Изход",
+    "toggleSidebar": "Превключи страничната лента",
+    "refreshData": "Обнови данните от Discord"
+  },
+  "sidebar": {
+    "closeSidebar": "Затвори страничната лента",
+    "addToServer": "Добави към сървъра",
+    "docs": "Документация",
+    "support": "Поддръжка",
+    "backToServers": "Назад към сървърите"
+  },
+  "empty": {
+    "noData": "Няма налични данни",
+    "noResults": "Няма намерени резултати",
+    "noItems": "Все още няма елементи"
+  },
+  "time": {
+    "seconds": "секунди",
+    "minutes": "минути",
+    "hours": "часове",
+    "days": "дни",
+    "ago": "преди {{time}}",
+    "in": "след {{time}}"
+  },
+  "confirm": {
+    "title": "Сигурни ли сте?",
+    "deleteTitle": "Потвърди изтриването",
+    "deleteMessage": "Това действие не може да бъде отменено.",
+    "unsavedChanges": "Имате незапазени промени. Сигурни ли сте, че искате да излезете?"
+  },
+  "accessibility": {
+    "skipToContent": "Прескочи към основното съдържание",
+    "loading": "Зареждане на съдържание",
+    "loaded": "Съдържанието е заредено",
+    "error": "Възникна грешка",
+    "menuOpen": "Менюто е отворено",
+    "menuClosed": "Менюто е затворено"
+  }
+}

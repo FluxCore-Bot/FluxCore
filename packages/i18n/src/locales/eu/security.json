@@ -1,0 +1,108 @@
+{
+  "title": "Segurtasuna",
+  "subtitle": "Konfiguratu eraso-aurkako babesa eta zerbitzariaren segurtasun ezarpenak.",
+  "antiRaid": {
+    "title": "Eraso-Aurkako Babesa",
+    "description": "Gaitu koordinatutako erasoen, susmagarriak diren kontuen eta ekintza suntsitzaileen detekzio eta erantzun automatikoa."
+  },
+  "sections": {
+    "joinRate": "Sarrera Tasa",
+    "accountAge": "Kontuaren Adina",
+    "antiNuke": "Nuke-Aurkakoa",
+    "lockdown": "Blokeoa",
+    "events": "Gertaerak"
+  },
+  "joinRate": {
+    "title": "Sarrera Tasaren Detekzioa",
+    "description": "Detektatu sarrera masiboak kide berrien sarrera tasa monitorizatuz.",
+    "threshold": "Sarrera Atalasea",
+    "thresholdHint": "Detekzioa aktibatzeko sarrera kopurua",
+    "window": "Denbora Leihoa (segundoak)",
+    "windowHint": "Sarrerak zenbatzen diren leiho denbora",
+    "action": "Detekzioan Ekintza",
+    "actionHint": "Erasoko kide susmagarriei aplikatu beharreko ekintza",
+    "actions": {
+      "ban": "Debekatu",
+      "kick": "Kanporatu",
+      "timeout": "Isilarazi",
+      "lockdown": "Blokeatu"
+    }
+  },
+  "accountAge": {
+    "title": "Kontuaren Adinaren Filtroa",
+    "description": "Gutxieneko adina baino gazteagoak diren kontuak automatikoki ekintzapetu. Ezarri 0 desgaitzeko.",
+    "minAge": "Kontuaren Gutxieneko Adina (egunak)",
+    "minAgeHint": "0 = desgaituta. Hau baino gazteagoak diren kontuak ekintzan jarriko dira.",
+    "action": "Ekintza"
+  },
+  "antiNuke": {
+    "title": "Nuke-Aurkako Babesa",
+    "description": "Detektatu kanal/rol ezabatze masiboak eta ardura duen erabiltzailea kuarantinatu bere rol guztiak kenduz.",
+    "threshold": "Ezabatze Atalasea",
+    "thresholdHint": "10 segundotan kuarantina aktibatzeko ezabatze kopurua",
+    "channelDeleteThreshold": "Kanal Ezabatze Atalasea",
+    "roleDeleteThreshold": "Rol Ezabatze Atalasea",
+    "massbanThreshold": "Debeku Masibo Atalasea",
+    "interval": "Tartea (segundoak)",
+    "action": "Ekintza"
+  },
+  "lockdown": {
+    "title": "Erasoan Auto-Blokeoa",
+    "description": "Eraso bat detektatzean automatikoki blokeatu kanal guztiak.",
+    "whitelistedRoles": "Baimendutako Rol IDak (komaz bereizita)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Rol hauek dituzten kideak eraso detekziotik salbuetsita egongo dira.",
+    "logChannel": "Erregistro Kanalaren IDa",
+    "logChannelPlaceholder": "Eraso gertaeren erregistroko kanal IDa...",
+    "enableButton": "Gaitu Blokeoa",
+    "disableButton": "Desgaitu Blokeoa",
+    "active": "Blokeoa Aktibo",
+    "inactive": "Blokeoa Inaktibo"
+  },
+  "events": {
+    "title": "Azken Eraso Gertaerak",
+    "description": "Detektatutako erasoen, adinaren blokeoen eta blokeoen kronologia.",
+    "empty": "Oraindik ez da eraso gertaerarik erregistratu. Gertaerak hemen agertuko dira eraso detekzioa aktibatzean.",
+    "actionLabel": "Ekintza: {{action}}",
+    "usersLabel": "Erabiltzaileak: {{count}}",
+    "accountAgeLabel": "Kontuaren adina: {{days}}d",
+    "table": {
+      "type": "Mota",
+      "description": "Deskribapena",
+      "time": "Ordua",
+      "action": "Hartutako Ekintza"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Sarrera Gorakada",
+    "account_age": "Kontuaren Adina",
+    "nuke_attempt": "Nuke Saiakera",
+    "lockdown": "Blokeoa",
+    "massJoin": "Sarrera Masiboa",
+    "suspiciousAccounts": "Kontu Susmagarriak",
+    "channelDeletion": "Kanal Ezabaketa",
+    "roleDeletion": "Rol Ezabaketa",
+    "massBan": "Debeku Masiboa"
+  },
+  "pagination": {
+    "previous": "Aurrekoa",
+    "next": "Hurrengoa",
+    "page": "{{current}} / {{total}} orrialdea"
+  },
+  "toast": {
+    "saved": "Eraso-aurkako konfigurazioa gordeta",
+    "saveFailed": "Ezin izan da konfigurazioa gorde",
+    "lockdownEnabled": "Zerbitzariaren blokeoa gaituta",
+    "lockdownDisabled": "Zerbitzariaren blokeoa desgaituta",
+    "lockdownFailed": "Ezin izan da blokeoa aldatu"
+  },
+  "saveButton": {
+    "saving": "Gordetzen...",
+    "save": "Aldaketak Gorde"
+  },
+  "labels": {
+    "seconds": "segundoak",
+    "minutes": "minutuak",
+    "hours": "orduak"
+  }
+}

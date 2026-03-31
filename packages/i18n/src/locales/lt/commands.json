@@ -1,0 +1,113 @@
+{
+  "title": "Pasirinktines komandos",
+  "subtitle": "Kurkite automatinus atsakytuvus ir prefikso komandas, kurias paleidzio zinutes.",
+  "stats": {
+    "totalCommands": "Viso komandu",
+    "enabled": "Ijungta",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Komandos",
+    "variables": "Kintamieji"
+  },
+  "table": {
+    "name": "Pavadinimas",
+    "trigger": "Trigeris",
+    "response": "Atsakymas",
+    "cooldown": "Atvelsinimas",
+    "status": "Busena"
+  },
+  "triggerTypes": {
+    "command": "!komanda",
+    "keyword": "Raktazodis",
+    "startsWith": "Prasideda nuo",
+    "regex": "Regex",
+    "prefixCommand": "Prefikso komanda (!pavadinimas)",
+    "keywordContains": "Raktazodis (turi)"
+  },
+  "dialog": {
+    "createCommand": "Sukurti komanda",
+    "editCommand": "Redaguoti komanda"
+  },
+  "form": {
+    "commandName": "Komandos pavadinimas",
+    "triggerText": "Trigerio tekstas",
+    "regexPattern": "Regex sablonas",
+    "triggerType": "Trigerio tipas",
+    "response": "Atsakymas",
+    "message": "Zinute",
+    "embedTitle": "Embed pavadinimas",
+    "embedDescription": "Embed aprasymas",
+    "color": "Spalva",
+    "footer": "Porastine"
+  },
+  "options": {
+    "cooldown": "Atvelsinimas (sekundes)",
+    "enabled": "Ijungta",
+    "enabledDesc": "Ar si komanda yra aktyvi",
+    "deleteTrigger": "Istrinti trigerio zinute",
+    "deleteTriggerDesc": "Automatiskai istrinti zinute, kuri paleido sia komanda.",
+    "dmResponse": "Atsakymas privatia zinute",
+    "dmResponseDesc": "Siusti atsakyma privatia zinute vietoj kanalo."
+  },
+  "restrictions": {
+    "title": "Apribojimai",
+    "allowedChannels": "Leistini kanalai (tuscia = visi)",
+    "allowedRoles": "Leistinos roles (tuscia = visi)",
+    "addChannel": "Prideti kanala",
+    "addRole": "Prideti role"
+  },
+  "actions": {
+    "create": "Sukurti",
+    "update": "Atnaujinti",
+    "cancel": "Atsaukti",
+    "addAction": "Prideti veiksma",
+    "addRole": "Prideti role",
+    "removeRole": "Pasalinti role"
+  },
+  "actionsSection": {
+    "title": "Veiksmai ({{count}}/5)",
+    "noActions": "Veiksmu nekonfiguruota. Pridekite veiksma, kad nurodytumete, ka si komanda daro.",
+    "maxActions": "Maksimaliai 5 veiksmai komandai"
+  },
+  "variables": {
+    "title": "Sablono kintamieji",
+    "description": "Naudokite siuos kintamuosius savo komandu atsakymuose. Jie bus pakeisti tikrosiomis reikszemis, kai komanda bus paleista.",
+    "table": {
+      "variable": "Kintamasis",
+      "description": "Aprasymas"
+    },
+    "entries": {
+      "user": "{user} — Pamini naudotoja, kuris paleido komanda",
+      "username": "{username} — Naudotojo rodomas vardas",
+      "userId": "{userId} — Naudotojo ID",
+      "server": "{server} — Serverio pavadinimas",
+      "channel": "{channel} — Pamini dabartini kanala",
+      "channelName": "{channelName} — Kanalo pavadinimas",
+      "memberCount": "{memberCount} — Bendras serverio nariu skaicius"
+    }
+  },
+  "toast": {
+    "created": "Komanda sukurta",
+    "createFailed": "Nepavyko sukurti komandos",
+    "updated": "Komanda atnaujinta",
+    "updateFailed": "Nepavyko atnaujinti komandos",
+    "deleted": "Komanda istrinta",
+    "deleteFailed": "Nepavyko istrinti komandos",
+    "toggleEnabled": "Komanda ijungta",
+    "toggleDisabled": "Komanda isjungta",
+    "toggleFailed": "Nepavyko perjungti komandos"
+  },
+  "empty": "Pasirintiniu komandu nesukurta.",
+  "loading": "Kraunamos komandos...",
+  "badge": {
+    "active": "Aktyvi",
+    "disabled": "Isjungta",
+    "text": "Tekstas",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Komandos pavadinimas privalomas"
+  },
+  "triggerPrefix": "Trigeris: !{{name}}"
+}

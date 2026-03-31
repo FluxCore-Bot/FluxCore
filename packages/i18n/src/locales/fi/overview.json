@@ -1,0 +1,12 @@
+{
+  "title": "Yleiskatsaus",
+  "subtitle": "Seuraa automaatiosi suorituskykyä ja toimintaa yhdellä silmäyksellä.",
+  "stats": {
+    "actionRules": "Toimintosäännöt",
+    "activeNow": "Aktiiviset nyt",
+    "executions": "Suoritukset",
+    "successRate": "Onnistumisprosentti"
+  },
+  "errorsInLast24h": "{{count}} virhe viimeisen 24t aikana",
+  "errorsInLast24h_other": "{{count}} virhettä viimeisen 24t aikana"
+}

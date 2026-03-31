@@ -1,0 +1,8 @@
+{
+  "title": "Loggar",
+  "subtitle": "Övervaka regelkörningar och händelseloggning.",
+  "tabs": {
+    "activity": "Aktivitetsloggar",
+    "events": "Händelseloggar"
+  }
+}

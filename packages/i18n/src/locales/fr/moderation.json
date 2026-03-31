@@ -1,0 +1,54 @@
+{
+  "title": "Moderation",
+  "subtitle": "Consultez et gerez les cas de moderation, configurez les parametres de sanctions.",
+  "stats": {
+    "totalCases": "Total des cas",
+    "activeTempbans": "Bannissements temporaires actifs",
+    "last24h": "Dernieres 24h"
+  },
+  "cases": "Cas",
+  "actions": {
+    "ban": "Bannir",
+    "tempban": "Bannissement temporaire",
+    "kick": "Expulser",
+    "timeout": "Exclusion temporaire",
+    "softban": "Bannissement leger",
+    "warn": "Avertir",
+    "note": "Note"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Action",
+    "target": "Cible",
+    "moderator": "Moderateur",
+    "reason": "Raison",
+    "date": "Date",
+    "actions": "Actions",
+    "noCases": "Aucun cas trouve.",
+    "noReason": "Aucune raison"
+  },
+  "filter": {
+    "userPlaceholder": "Filtrer par ID utilisateur...",
+    "allActions": "Toutes les actions"
+  },
+  "pagination": {
+    "previous": "Precedent",
+    "next": "Suivant",
+    "page": "Page {{page}} sur {{total}}"
+  },
+  "editDialog": {
+    "title": "Modifier la raison du cas #{{id}}",
+    "placeholder": "Entrez la nouvelle raison...",
+    "saving": "Enregistrement..."
+  },
+  "editReason": "Modifier la raison",
+  "deleteCase": "Supprimer le cas",
+  "deleteConfirm": "Etes-vous sur de vouloir supprimer ce cas ?",
+  "settings": {
+    "title": "Parametres",
+    "dmOnPunishment": "MP lors d'une sanction",
+    "dmOnPunishmentDesc": "Envoyer un MP aux utilisateurs lorsqu'ils sont sanctionnes (ban, expulsion, exclusion temporaire).",
+    "modLogChannel": "Salon de journal de moderation",
+    "modLogChannelDesc": "Salon ou les actions de moderation sont enregistrees."
+  }
+}

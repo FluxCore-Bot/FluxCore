@@ -1,0 +1,77 @@
+{
+  "title": "System tiketów",
+  "subtitle": "Twórz panele tiketów wsparcia i zarządzaj otwartymi tiketami z panelu.",
+  "stats": {
+    "totalTickets": "Łącznie tiketów",
+    "open": "Otwartych",
+    "claimed": "Przypisanych",
+    "panels": "Paneli"
+  },
+  "tabs": {
+    "activeTickets": "Aktywne tikety",
+    "panelBuilder": "Kreator paneli",
+    "settings": "Ustawienia"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Użytkownik",
+    "subject": "Temat",
+    "status": "Status",
+    "assignee": "Przypisany",
+    "created": "Utworzony"
+  },
+  "statuses": {
+    "open": "Otwarty",
+    "claimed": "Przypisany",
+    "closed": "Zamknięty"
+  },
+  "panelBuilder": {
+    "title": "Tytuł panelu",
+    "channel": "Kanał",
+    "buttonLabel": "Tekst przycisku",
+    "welcomeMessage": "Wiadomość powitalna",
+    "category": "Kategoria tiketu",
+    "create": "Utwórz panel",
+    "edit": "Edytuj panel",
+    "deploy": "Wdróż panel"
+  },
+  "settings": {
+    "transcriptChannel": "Kanał transkrypcji",
+    "transcriptChannelDesc": "Kanał, na którym zapisywane są transkrypcje tiketów po zamknięciu.",
+    "maxTicketsPerUser": "Maks. tiketów na użytkownika",
+    "maxTicketsPerUserDesc": "Maksymalna liczba otwartych tiketów dla jednego użytkownika.",
+    "closeConfirmation": "Potwierdzenie zamknięcia",
+    "closeConfirmationDesc": "Wymagaj potwierdzenia przed zamknięciem tiketu.",
+    "dmTranscript": "Transkrypcja w PW",
+    "dmTranscriptDesc": "Wyślij kopię transkrypcji twórcy tiketu przez PW."
+  },
+  "actions": {
+    "claim": "Przypisz",
+    "close": "Zamknij",
+    "delete": "Usuń",
+    "reopen": "Otwórz ponownie"
+  },
+  "toast": {
+    "panelCreated": "Panel tiketu utworzony",
+    "panelCreateFailed": "Nie udało się utworzyć panelu tiketu",
+    "panelUpdated": "Panel tiketu zaktualizowany",
+    "panelUpdateFailed": "Nie udało się zaktualizować panelu tiketu",
+    "panelDeployed": "Panel tiketu wdrożony",
+    "panelDeployFailed": "Nie udało się wdrożyć panelu tiketu",
+    "ticketClaimed": "Tiket przypisany",
+    "ticketClaimFailed": "Nie udało się przypisać tiketu",
+    "ticketClosed": "Tiket zamknięty",
+    "ticketCloseFailed": "Nie udało się zamknąć tiketu",
+    "ticketReopened": "Tiket otwarty ponownie",
+    "ticketReopenFailed": "Nie udało się otworzyć tiketu ponownie",
+    "ticketDeleted": "Tiket usunięty",
+    "ticketDeleteFailed": "Nie udało się usunąć tiketu",
+    "settingsSaved": "Ustawienia tiketów zapisane",
+    "settingsFailed": "Nie udało się zapisać ustawień tiketów"
+  },
+  "empty": {
+    "tickets": "Brak aktywnych tiketów.",
+    "panels": "Nie utworzono jeszcze żadnych paneli tiketów."
+  },
+  "loading": "Ładowanie tiketów..."
+}

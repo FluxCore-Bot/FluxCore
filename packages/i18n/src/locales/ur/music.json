@@ -1,0 +1,8 @@
+{
+  "title": "[NEEDS TRANSLATION] Music System",
+  "subtitle": "[NEEDS TRANSLATION] Configure global playback modes and audio library preferences.",
+  "tabs": {
+    "settings": "[NEEDS TRANSLATION] Playback Settings",
+    "library": "[NEEDS TRANSLATION] Music Library"
+  }
+}

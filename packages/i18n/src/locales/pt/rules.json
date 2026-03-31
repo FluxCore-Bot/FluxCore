@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Servidor",
+    "automation": "Automatizacao"
+  },
+  "title": "Regras de automatizacao",
+  "subtitle": "Configure gatilhos baseados em eventos e respostas automatizadas para o seu servidor.",
+  "createRule": "Criar regra",
+  "stats": {
+    "totalRules": "Total de regras",
+    "active": "Ativas",
+    "executions7d": "Execucoes (7d)",
+    "successRate": "Taxa de sucesso"
+  },
+  "filter": {
+    "searchPlaceholder": "Pesquisar regras...",
+    "eventType": "Tipo de evento",
+    "allEvents": "Todos os eventos",
+    "allStatus": "Todos os estados",
+    "enabled": "Ativada",
+    "disabled": "Desativada",
+    "sortBy": "Ordenar por",
+    "priority": "Prioridade",
+    "name": "Nome",
+    "lastFired": "Ultimo acionamento",
+    "status": "Estado",
+    "clear": "Limpar",
+    "showing": "A mostrar {{filtered}} de {{total}} regras"
+  },
+  "bulk": {
+    "selected": "{{count}} regra selecionada",
+    "selected_other": "{{count}} regras selecionadas",
+    "enable": "Ativar",
+    "disable": "Desativar",
+    "delete": "Eliminar",
+    "clear": "Limpar"
+  },
+  "empty": {
+    "title": "Comece com a automatizacao",
+    "description": "Escolha um modelo para comecar rapidamente ou crie uma regra de raiz.",
+    "createFromScratch": "Criar de raiz"
+  },
+  "noResults": {
+    "title": "Nenhuma regra correspondente",
+    "description": "Tente ajustar a sua pesquisa ou filtros para encontrar o que procura."
+  },
+  "templates": {
+    "welcomeMessage": "Mensagem de boas-vindas",
+    "welcomeMessageDesc": "Saudar novos membros com uma mensagem personalizada num canal",
+    "autoRole": "Cargo automatico",
+    "autoRoleDesc": "Atribuir automaticamente um cargo quando um membro entra",
+    "logDeleted": "Registar mensagens eliminadas",
+    "logDeletedDesc": "Enviar informacoes de mensagens eliminadas para um canal de registo",
+    "boostThankYou": "Agradecimento por boost",
+    "boostThankYouDesc": "Enviar uma MD agradecendo aos utilizadores que fazem boost ao servidor",
+    "banLogger": "Registo de bans",
+    "banLoggerDesc": "Registar eventos de ban num canal de moderacao",
+    "autoThread": "Thread automatico",
+    "autoThreadDesc": "Criar automaticamente um topico quando uma mensagem e enviada"
+  },
+  "deleteDialog": {
+    "title": "Eliminar regra",
+    "description": "Tem a certeza de que deseja eliminar \"{{name}}\"? Esta acao nao pode ser desfeita.",
+    "confirm": "Eliminar"
+  },
+  "bulkDeleteDialog": {
+    "title": "Eliminar regras selecionadas",
+    "description": "Tem a certeza de que deseja eliminar {{count}} regra? Esta acao nao pode ser desfeita.",
+    "description_other": "Tem a certeza de que deseja eliminar {{count}} regras? Esta acao nao pode ser desfeita.",
+    "confirm": "Eliminar tudo"
+  },
+  "toast": {
+    "deleted": "Regra eliminada",
+    "deleteFailed": "Falha ao eliminar a regra",
+    "enabled": "Regra ativada",
+    "disabled": "Regra desativada",
+    "toggleFailed": "Falha ao alternar a regra",
+    "duplicated": "Regra duplicada",
+    "duplicateFailed": "Falha ao duplicar a regra",
+    "bulkEnabled": "{{count}} regras ativadas",
+    "bulkDisabled": "{{count}} regras desativadas",
+    "bulkEnableFailed": "Falha ao ativar as regras",
+    "bulkDisableFailed": "Falha ao desativar as regras",
+    "bulkDeleted": "{{count}} regras eliminadas",
+    "bulkDeleteFailed": "Falha ao eliminar as regras"
+  }
+}

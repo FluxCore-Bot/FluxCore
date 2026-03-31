@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Sada u javnoj beti",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Sve-u-jednom",
+    "titleLine2": "Discord bot okvir",
+    "subtitle": "Pokrenite profesionalnu Discord prisutnost u nekoliko minuta. Modularno, samohostirano i stvoreno za zajednice koje zahtijevaju vise."
+  },
+  "cta": {
+    "addToServer": "Dodaj na posluzitelj",
+    "openDashboard": "Otvori nadzornu plocu",
+    "exploreFeatures": "Istrazite mogucnosti"
+  },
+  "stats": {
+    "servers": "Posluzitelji",
+    "latency": "Latencija",
+    "uptime": "Dostupnost",
+    "modules": "Moduli",
+    "serversValue": "1.000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99,9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Mogucnosti",
+    "title": "Sve sto vas posluzitelj treba",
+    "subtitle": "Modularni alat dizajniran za zajednice koje zahtijevaju pouzdanost, fleksibilnost i kontrolu.",
+    "automation": {
+      "title": "Pravila automatizacije",
+      "description": "Stvorite slozene radne tokove temeljene na dogadajima bez koda. Okidaci tipa ako-ovo-onda-to s 23 vrste dogadaja i 10 vrsta radnji."
+    },
+    "music": {
+      "title": "Glazbeni sustav",
+      "description": "Audio streaming visoke kvalitete s podrskom za vise platformi. Upravljanje redom cekanja, DJ kontrole i nacin biblioteke."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Dinamicko upravljanje glasovnim kanalima. Automatsko stvaranje s prilagodenim predloscima naziva, dozvolama i ciscenjem."
+    },
+    "logs": {
+      "title": "Zapisi aktivnosti",
+      "description": "Potpuna revizijska staza svakog izvrsenja automatizacije. Pretrazujte, filtrirajte i otklanjajte pogreske pravila s detaljnim zapisima."
+    },
+    "webhooks": {
+      "title": "Webhookovi i API",
+      "description": "Saljite podatke vanjskim uslugama putem HTTP webhookova. Prilagodena zaglavlja, predlosci tijela i interpolacija varijabli."
+    },
+    "dashboard": {
+      "title": "Nadzorna ploca u stvarnom vremenu",
+      "description": "Upravljajte svime s elegantne web nadzorne ploce. Analitika, konfiguracija i pracenje na jednom mjestu."
+    }
+  },
+  "ctaSection": {
+    "title": "Spremni za nadogradnju vase zajednice?",
+    "subtitle": "Zapocnite u nekoliko minuta bez konfiguracije. Samohostirano, otvorenog koda i potpuno besplatno."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "(c) {{year}} FluxCore Technologies. Sva prava pridrzana.",
+    "links": {
+      "documentation": "Dokumentacija",
+      "support": "Podrska",
+      "privacy": "Politika privatnosti",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "[NEEDS TRANSLATION] Now in Public Beta",
+    "tagline": "[NEEDS TRANSLATION] The Obsidian Engine",
+    "titleLine1": "[NEEDS TRANSLATION] The All-in-One",
+    "titleLine2": "[NEEDS TRANSLATION] Discord Bot Framework",
+    "subtitle": "[NEEDS TRANSLATION] Deploy a professional-grade Discord presence in minutes. Modular, self-hosted, and built for communities that demand more."
+  },
+  "cta": {
+    "addToServer": "[NEEDS TRANSLATION] Add to Server",
+    "openDashboard": "[NEEDS TRANSLATION] Open Dashboard",
+    "exploreFeatures": "[NEEDS TRANSLATION] Explore Features"
+  },
+  "stats": {
+    "servers": "[NEEDS TRANSLATION] Servers",
+    "latency": "[NEEDS TRANSLATION] Latency",
+    "uptime": "[NEEDS TRANSLATION] Uptime",
+    "modules": "[NEEDS TRANSLATION] Modules",
+    "serversValue": "[NEEDS TRANSLATION] 1,000+",
+    "latencyValue": "[NEEDS TRANSLATION] <50ms",
+    "uptimeValue": "[NEEDS TRANSLATION] 99.9%",
+    "modulesValue": "[NEEDS TRANSLATION] 10+"
+  },
+  "features": {
+    "label": "[NEEDS TRANSLATION] Capabilities",
+    "title": "[NEEDS TRANSLATION] Everything your server needs",
+    "subtitle": "[NEEDS TRANSLATION] A modular toolkit designed for communities that demand reliability, flexibility, and control.",
+    "automation": {
+      "title": "[NEEDS TRANSLATION] Automation Rules",
+      "description": "[NEEDS TRANSLATION] Create complex event-driven workflows without code. If-this-then-that triggers with 23 event types and 10 action types."
+    },
+    "music": {
+      "title": "[NEEDS TRANSLATION] Music System",
+      "description": "[NEEDS TRANSLATION] High-fidelity audio streaming with multi-platform support. Queue management, DJ controls, and library mode."
+    },
+    "tempVoice": {
+      "title": "[NEEDS TRANSLATION] TempVoice",
+      "description": "[NEEDS TRANSLATION] Dynamic voice channel management. Auto-creation with custom naming templates, permissions, and cleanup."
+    },
+    "logs": {
+      "title": "[NEEDS TRANSLATION] Activity Logs",
+      "description": "[NEEDS TRANSLATION] Full audit trail of every automation execution. Search, filter, and debug your rules with detailed logs."
+    },
+    "webhooks": {
+      "title": "[NEEDS TRANSLATION] Webhooks & API",
+      "description": "[NEEDS TRANSLATION] Send data to external services with HTTP webhooks. Custom headers, body templates, and variable interpolation."
+    },
+    "dashboard": {
+      "title": "[NEEDS TRANSLATION] Real-time Dashboard",
+      "description": "[NEEDS TRANSLATION] Manage everything from a sleek web dashboard. Analytics, configuration, and monitoring in one place."
+    }
+  },
+  "ctaSection": {
+    "title": "[NEEDS TRANSLATION] Ready to upgrade your community?",
+    "subtitle": "[NEEDS TRANSLATION] Get started in minutes with zero configuration. Self-hosted, open-source, and completely free."
+  },
+  "footer": {
+    "brand": "[NEEDS TRANSLATION] FluxCore",
+    "copyright": "[NEEDS TRANSLATION] © {{year}} FluxCore Technologies. All rights reserved.",
+    "links": {
+      "documentation": "[NEEDS TRANSLATION] Documentation",
+      "support": "[NEEDS TRANSLATION] Support",
+      "privacy": "[NEEDS TRANSLATION] Privacy Policy",
+      "api": "[NEEDS TRANSLATION] API",
+      "github": "[NEEDS TRANSLATION] GitHub"
+    }
+  }
+}

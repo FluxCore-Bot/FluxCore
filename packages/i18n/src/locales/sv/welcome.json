@@ -1,0 +1,65 @@
+{
+  "title": "Välkommen & farväl",
+  "subtitle": "Konfigurera välkomst- och farväl meddelanden, bilder och autoroller.",
+  "loadingSubtitle": "Konfigurera välkomst- och farväl meddelanden för din server.",
+  "tabs": {
+    "welcome": "Välkommen",
+    "welcomeImage": "Välkomstbild",
+    "farewell": "Farväl",
+    "farewellImage": "Farvälbild",
+    "dm": "Välkomst-DM",
+    "autorole": "Autoroll"
+  },
+  "welcome": {
+    "title": "Välkomstmeddelande",
+    "description": "Skicka en anpassad inbäddning när en ny medlem går med.",
+    "channelLabel": "Välkomstkanal-ID",
+    "channelPlaceholder": "Kanal-ID...",
+    "embedBuilder": "Inbäddningsbyggare"
+  },
+  "welcomeImage": {
+    "title": "Välkomstbild",
+    "description": "Generera ett anpassat bildkort med medlemmens avatar när de går med.",
+    "disabled": "Aktivera växlingen ovan för att konfigurera välkomstbilder."
+  },
+  "farewell": {
+    "title": "Farvälmeddelande",
+    "description": "Skicka ett meddelande när en medlem lämnar servern.",
+    "channelLabel": "Farvälkanal-ID",
+    "channelPlaceholder": "Kanal-ID..."
+  },
+  "farewellImage": {
+    "title": "Farvälbild",
+    "description": "Generera ett anpassat farvälkort när en medlem lämnar.",
+    "disabled": "Aktivera växlingen ovan för att konfigurera farvälbilder."
+  },
+  "dm": {
+    "title": "Välkomst-DM",
+    "description": "Skicka ett direktmeddelande till nya medlemmar. Misslyckas tyst om DM är inaktiverat."
+  },
+  "autorole": {
+    "title": "Autoroll",
+    "description": "Tilldela automatiskt roller till nya medlemmar när de går med. Botar undantas. Boten måste ha en roll högre än rollerna som listas här.",
+    "label": "Roll-ID:n (kommaseparerade)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Titel",
+    "description": "Beskrivning",
+    "color": "Färg (hex)",
+    "footer": "Sidfot",
+    "thumbnail": "Miniatyrbild-URL",
+    "image": "Bild-URL",
+    "variables": "Variabler:"
+  },
+  "saveChanges": "Spara ändringar",
+  "saving": "Sparar...",
+  "sendTest": "Skicka testmeddelande",
+  "sending": "Skickar...",
+  "toast": {
+    "saved": "Välkomstkonfiguration sparad",
+    "saveFailed": "Misslyckades med att spara konfiguration",
+    "testSent": "Testmeddelande skickas till <#{{channelId}}>",
+    "testFailed": "Misslyckades med att skicka testmeddelande"
+  }
+}

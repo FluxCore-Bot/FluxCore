@@ -1,0 +1,8 @@
+{
+  "title": "Registres",
+  "subtitle": "Monitoritza les execucions de regles i el registre d'esdeveniments.",
+  "tabs": {
+    "activity": "Registres d'activitat",
+    "events": "Registres d'esdeveniments"
+  }
+}

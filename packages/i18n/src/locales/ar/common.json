@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "محرك FluxCore",
+    "dashboard": "لوحة تحكم FluxCore"
+  },
+  "status": {
+    "online": "متصل",
+    "offline": "غير متصل",
+    "latency": "{{ms}} مللي ثانية"
+  },
+  "nav": {
+    "overview": "نظرة عامة",
+    "automation": "الأتمتة",
+    "music": "الموسيقى",
+    "tempvoice": "القنوات الصوتية المؤقتة",
+    "welcome": "الترحيب",
+    "moderation": "الإشراف",
+    "warnings": "التحذيرات",
+    "rolePanels": "لوحات الأدوار",
+    "leveling": "نظام المستويات",
+    "scheduled": "الرسائل المجدولة",
+    "commands": "الأوامر",
+    "security": "الأمان",
+    "tickets": "التذاكر",
+    "giveaways": "الهدايا",
+    "suggestions": "الاقتراحات",
+    "starboard": "لوحة النجوم",
+    "logs": "السجلات",
+    "permissions": "الصلاحيات",
+    "settings": "الإعدادات"
+  },
+  "actions": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "create": "إنشاء",
+    "add": "إضافة",
+    "remove": "إزالة",
+    "confirm": "تأكيد",
+    "close": "إغلاق",
+    "back": "رجوع",
+    "next": "التالي",
+    "search": "بحث",
+    "filter": "تصفية",
+    "refresh": "تحديث",
+    "reset": "إعادة تعيين",
+    "enable": "تفعيل",
+    "disable": "تعطيل",
+    "copy": "نسخ",
+    "export": "تصدير",
+    "import": "استيراد",
+    "submit": "إرسال",
+    "loading": "جارٍ التحميل...",
+    "retry": "إعادة المحاولة"
+  },
+  "labels": {
+    "enabled": "مفعّل",
+    "disabled": "معطّل",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "none": "لا شيء",
+    "all": "الكل",
+    "custom": "مخصص",
+    "default": "افتراضي",
+    "required": "مطلوب",
+    "optional": "اختياري",
+    "name": "الاسم",
+    "description": "الوصف",
+    "type": "النوع",
+    "status": "الحالة",
+    "channel": "القناة",
+    "role": "الدور",
+    "member": "العضو",
+    "duration": "المدة",
+    "reason": "السبب",
+    "language": "اللغة"
+  },
+  "header": {
+    "notifications": "الإشعارات",
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج",
+    "toggleSidebar": "تبديل الشريط الجانبي",
+    "refreshData": "تحديث بيانات Discord"
+  },
+  "sidebar": {
+    "closeSidebar": "إغلاق الشريط الجانبي",
+    "addToServer": "إضافة إلى السيرفر",
+    "docs": "المستندات",
+    "support": "الدعم",
+    "backToServers": "العودة إلى السيرفرات"
+  },
+  "empty": {
+    "noData": "لا توجد بيانات متاحة",
+    "noResults": "لم يتم العثور على نتائج",
+    "noItems": "لا توجد عناصر بعد"
+  },
+  "time": {
+    "seconds": "ثوانٍ",
+    "minutes": "دقائق",
+    "hours": "ساعات",
+    "days": "أيام",
+    "ago": "منذ {{time}}",
+    "in": "خلال {{time}}"
+  },
+  "confirm": {
+    "title": "هل أنت متأكد؟",
+    "deleteTitle": "تأكيد الحذف",
+    "deleteMessage": "لا يمكن التراجع عن هذا الإجراء.",
+    "unsavedChanges": "لديك تغييرات غير محفوظة. هل أنت متأكد أنك تريد المغادرة؟"
+  },
+  "accessibility": {
+    "skipToContent": "انتقل إلى المحتوى الرئيسي",
+    "loading": "جارٍ تحميل المحتوى",
+    "loaded": "تم تحميل المحتوى",
+    "error": "حدث خطأ",
+    "menuOpen": "القائمة مفتوحة",
+    "menuClosed": "القائمة مغلقة"
+  }
+}

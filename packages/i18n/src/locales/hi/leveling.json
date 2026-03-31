@@ -1,0 +1,120 @@
+{
+  "title": "लेवलिंग सिस्टम",
+  "subtitle": "XP अर्जन, लेवल-अप घोषणाएं, रोल पुरस्कार और गुणक कॉन्फ़िगर करें।",
+  "stats": {
+    "rankedMembers": "रैंक किए गए सदस्य",
+    "roleRewards": "रोल पुरस्कार",
+    "systemStatus": "सिस्टम स्थिति",
+    "enabled": "सक्रिय",
+    "disabled": "निष्क्रिय"
+  },
+  "tabs": {
+    "leaderboard": "लीडरबोर्ड",
+    "settings": "सेटिंग्स",
+    "roleRewards": "रोल पुरस्कार",
+    "exclusions": "बहिष्करण",
+    "multipliers": "गुणक"
+  },
+  "table": {
+    "rank": "रैंक",
+    "userId": "उपयोगकर्ता ID",
+    "level": "लेवल",
+    "xp": "XP",
+    "messages": "संदेश",
+    "voiceTime": "वॉइस समय"
+  },
+  "settings": {
+    "title": "लेवलिंग सेटिंग्स",
+    "enabled": "लेवलिंग सक्रिय करें",
+    "enabledDesc": "संपूर्ण लेवलिंग सिस्टम को चालू या बंद करें।",
+    "xpPerMessage": "प्रति संदेश XP",
+    "xpPerMessageDesc": "प्रति संदेश दिया जाने वाला आधार XP (0-9 की रैंडमनेस जोड़ी जाती है)।",
+    "xpCooldown": "XP कूलडाउन (सेकंड)",
+    "xpCooldownDesc": "प्रति उपयोगकर्ता XP देने के बीच न्यूनतम समय।",
+    "voiceXpEnabled": "वॉइस XP",
+    "voiceXpEnabledDesc": "वॉइस चैनल में बिताए समय के लिए XP दें।",
+    "voiceXpPerMinute": "प्रति मिनट वॉइस XP",
+    "voiceXpPerMinuteDesc": "वॉइस में प्रति मिनट दिया जाने वाला XP।",
+    "levelUpAnnouncements": "लेवल-अप घोषणाएं",
+    "levelUpAnnouncementsDesc": "जब कोई सदस्य लेवल अप करे तो घोषणा करें।",
+    "announceDest": "घोषणा गंतव्य",
+    "announceDestHint": "आप ऊपर इनपुट में सीधे चैनल ID भी दर्ज कर सकते हैं।",
+    "announceDestSameChannel": "वही चैनल",
+    "announceDestDM": "डायरेक्ट मैसेज",
+    "announceMessage": "घोषणा संदेश",
+    "announceMessagePlaceholder": "{user} ने अभी **लेवल {level}** प्राप्त किया!",
+    "announceMessageVars": "वेरिएबल: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "रोल पुरस्कार",
+    "description": "जब सदस्य किसी निश्चित लेवल पर पहुंचें तो स्वचालित रूप से रोल असाइन करें।",
+    "addReward": "पुरस्कार जोड़ें",
+    "addRewardTitle": "रोल पुरस्कार जोड़ें",
+    "level": "लेवल",
+    "levelPrefix": "लेवल {{level}}",
+    "roleId": "रोल ID",
+    "levelPlaceholder": "जैसे 5",
+    "rolePlaceholder": "जैसे 123456789",
+    "removeReward": "हटाएं",
+    "noRewards": "कोई रोल पुरस्कार कॉन्फ़िगर नहीं किया गया।"
+  },
+  "exclusions": {
+    "title": "XP बहिष्करण",
+    "description": "ऐसे चैनल और रोल जो XP नहीं अर्जित करते।",
+    "noXpChannels": "नो-XP चैनल (कॉमा-सेपरेटेड ID)",
+    "noXpChannelsPlaceholder": "जैसे 123456789, 987654321",
+    "noXpRoles": "नो-XP रोल (कॉमा-सेपरेटेड ID)",
+    "noXpRolesPlaceholder": "जैसे 123456789, 987654321",
+    "save": "बहिष्करण सहेजें"
+  },
+  "multipliers": {
+    "title": "XP गुणक",
+    "description": "प्रति चैनल या रोल XP गुणक सेट करें। 2 का गुणक अर्जित XP को दोगुना करता है।",
+    "channelMultipliers": "चैनल गुणक",
+    "roleMultipliers": "रोल गुणक",
+    "channelId": "चैनल ID",
+    "roleId": "रोल ID",
+    "multiplier": "गुणक",
+    "type": "प्रकार",
+    "typeChannel": "चैनल",
+    "typeRole": "रोल",
+    "id": "ID",
+    "idPlaceholder": "चैनल या रोल ID",
+    "value": "गुणक",
+    "valuePlaceholder": "जैसे 2",
+    "add": "गुणक जोड़ें",
+    "addTitle": "गुणक जोड़ें",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "कोई XP गुणक कॉन्फ़िगर नहीं किया गया।"
+  },
+  "pagination": {
+    "previous": "पिछला",
+    "next": "अगला",
+    "pageInfo": "पृष्ठ {{page}} / {{totalPages}} (कुल {{total}})"
+  },
+  "loading": "लीडरबोर्ड लोड हो रहा है...",
+  "loadingGeneric": "लोड हो रहा है...",
+  "emptyLeaderboard": "अभी तक किसी सदस्य ने XP नहीं अर्जित किया।",
+  "toast": {
+    "saved": "लेवलिंग सेटिंग्स सहेजी गईं",
+    "saveFailed": "सेटिंग अपडेट करने में विफल",
+    "rewardAdded": "पुरस्कार जोड़ा गया",
+    "rewardAddFailed": "पुरस्कार जोड़ने में विफल",
+    "rewardRemoved": "पुरस्कार हटाया गया",
+    "rewardRemoveFailed": "पुरस्कार हटाने में विफल",
+    "multiplierAdded": "गुणक जोड़ा गया",
+    "multiplierAddFailed": "गुणक जोड़ने में विफल",
+    "multiplierRemoved": "गुणक हटाया गया",
+    "multiplierRemoveFailed": "गुणक हटाने में विफल",
+    "exclusionUpdated": "बहिष्करण सहेजे गए",
+    "exclusionFailed": "बहिष्करण सहेजने में विफल",
+    "levelValidation": "लेवल 1 और 100 के बीच होना चाहिए",
+    "roleIdRequired": "रोल ID आवश्यक है",
+    "multiplierIdRequired": "ID और गुणक मान आवश्यक हैं",
+    "multiplierRange": "गुणक 0 और 10 के बीच होना चाहिए"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}घं {{minutes}}मि",
+    "voiceTimeMinutesOnly": "{{minutes}}मि"
+  }
+}

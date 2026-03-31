@@ -1,0 +1,108 @@
+{
+  "title": "Sigurnost",
+  "subtitle": "Konfigurirajte zastitu od napada i sigurnosne postavke posluzitelja.",
+  "antiRaid": {
+    "title": "Zastita od napada",
+    "description": "Omogucite automatsku detekciju i odgovor na koordinirane napade, sumnjive racune i destruktivne radnje."
+  },
+  "sections": {
+    "joinRate": "Stopa pridruživanja",
+    "accountAge": "Starost racuna",
+    "antiNuke": "Anti-Nuke",
+    "lockdown": "Zakljucavanje",
+    "events": "Dogadaji"
+  },
+  "joinRate": {
+    "title": "Detekcija stope pridruzivanja",
+    "description": "Detektirajte masovna pridruzivanja pracenjem stope novih clanova.",
+    "threshold": "Prag pridruzivanja",
+    "thresholdHint": "Broj pridruzivanja za aktiviranje detekcije",
+    "window": "Vremenski prozor (sekunde)",
+    "windowHint": "Prozor u kojem se broje pridruzivanja",
+    "action": "Radnja pri detekciji",
+    "actionHint": "Radnja koja se poduzima nad sumnjivim clanovima napada",
+    "actions": {
+      "ban": "Zabrana",
+      "kick": "Izbacivanje",
+      "timeout": "Istek vremena",
+      "lockdown": "Zakljucavanje"
+    }
+  },
+  "accountAge": {
+    "title": "Filtar starosti racuna",
+    "description": "Automatski poduzmite radnju nad racunima koji su mladi od minimalne starosti. Postavite na 0 za onemogucavanje.",
+    "minAge": "Minimalna starost racuna (dani)",
+    "minAgeHint": "0 = onemoguceno. Racuni mladi od ovoga ce biti obradjeni.",
+    "action": "Radnja"
+  },
+  "antiNuke": {
+    "title": "Anti-Nuke zastita",
+    "description": "Detektirajte masovno brisanje kanala/uloga i stavite odgovornog korisnika u karantenu uklanjanjem svih njegovih uloga.",
+    "threshold": "Prag brisanja",
+    "thresholdHint": "Broj brisanja unutar 10 sekundi za aktiviranje karantene",
+    "channelDeleteThreshold": "Prag brisanja kanala",
+    "roleDeleteThreshold": "Prag brisanja uloga",
+    "massbanThreshold": "Prag masovnih zabrana",
+    "interval": "Interval (sekunde)",
+    "action": "Radnja"
+  },
+  "lockdown": {
+    "title": "Automatsko zakljucavanje pri napadu",
+    "description": "Automatski zakljucajte sve kanale kada se detektira napad.",
+    "whitelistedRoles": "ID-ovi privilegiranih uloga (odvojeni zarezom)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Clanovi s ovim ulogama bit ce izuzeti od detekcije napada.",
+    "logChannel": "ID kanala za zapise",
+    "logChannelPlaceholder": "ID kanala za zapise dogadaja napada...",
+    "enableButton": "Omoguci zakljucavanje",
+    "disableButton": "Onemogudi zakljucavanje",
+    "active": "Zakljucavanje aktivno",
+    "inactive": "Zakljucavanje neaktivno"
+  },
+  "events": {
+    "title": "Nedavni dogadaji napada",
+    "description": "Vremenska crta detektiranih napada, blokada starosti racuna i dogadaja zakljucavanja.",
+    "empty": "Nema zabilježenih dogadaja napada. Dogadaji ce se pojaviti ovdje kada se aktivira detekcija napada.",
+    "actionLabel": "Radnja: {{action}}",
+    "usersLabel": "Korisnici: {{count}}",
+    "accountAgeLabel": "Starost racuna: {{days}}d",
+    "table": {
+      "type": "Vrsta",
+      "description": "Opis",
+      "time": "Vrijeme",
+      "action": "Poduzeta radnja"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Skok pridruzivanja",
+    "account_age": "Starost racuna",
+    "nuke_attempt": "Pokusaj nukleacije",
+    "lockdown": "Zakljucavanje",
+    "massJoin": "Masovno pridruzivanje",
+    "suspiciousAccounts": "Sumnjivi racuni",
+    "channelDeletion": "Brisanje kanala",
+    "roleDeletion": "Brisanje uloga",
+    "massBan": "Masovna zabrana"
+  },
+  "pagination": {
+    "previous": "Prethodna",
+    "next": "Sljedeca",
+    "page": "Stranica {{current}} od {{total}}"
+  },
+  "toast": {
+    "saved": "Konfiguracija zastite od napada spremljena",
+    "saveFailed": "Spremanje konfiguracije nije uspjelo",
+    "lockdownEnabled": "Zakljucavanje posluzitelja omoguceno",
+    "lockdownDisabled": "Zakljucavanje posluzitelja onemoguceno",
+    "lockdownFailed": "Prebacivanje zakljucavanja nije uspjelo"
+  },
+  "saveButton": {
+    "saving": "Spremanje...",
+    "save": "Spremi promjene"
+  },
+  "labels": {
+    "seconds": "sekunde",
+    "minutes": "minute",
+    "hours": "sati"
+  }
+}

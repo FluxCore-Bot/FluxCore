@@ -1,0 +1,108 @@
+{
+  "title": "Seguretat",
+  "subtitle": "Configura la protecció anti-raid i els ajustos de seguretat del servidor.",
+  "antiRaid": {
+    "title": "Protecció anti-raid",
+    "description": "Activa la detecció automatica i la resposta a atacs coordinats, comptes sospitosos i accions destructives."
+  },
+  "sections": {
+    "joinRate": "Taxa d'unió",
+    "accountAge": "Antiguitat del compte",
+    "antiNuke": "Anti-destrucció",
+    "lockdown": "Bloqueig",
+    "events": "Esdeveniments"
+  },
+  "joinRate": {
+    "title": "Detecció de taxa d'unió",
+    "description": "Detecta unions massives monitoritzant la taxa de nous membres que s'uneixen.",
+    "threshold": "Llindar d'unió",
+    "thresholdHint": "Nombre d'unions per activar la detecció",
+    "window": "Finestra de temps (segons)",
+    "windowHint": "Finestra en la qual es compten les unions",
+    "action": "Acció en detecció",
+    "actionHint": "Acció a prendre contra membres sospitosos de raid",
+    "actions": {
+      "ban": "Bandejar",
+      "kick": "Expulsar",
+      "timeout": "Temps mort",
+      "lockdown": "Bloqueig"
+    }
+  },
+  "accountAge": {
+    "title": "Filtre d'antiguitat del compte",
+    "description": "Actua automaticament contra comptes mes joves que una edat minima. Posa 0 per desactivar.",
+    "minAge": "Antiguitat minima del compte (dies)",
+    "minAgeHint": "0 = desactivat. Els comptes mes joves que aixo seran sancionats.",
+    "action": "Acció"
+  },
+  "antiNuke": {
+    "title": "Protecció anti-destrucció",
+    "description": "Detecta eliminacions massives de canals/rols i posa en quarantena l'usuari responsable eliminant tots els seus rols.",
+    "threshold": "Llindar d'eliminació",
+    "thresholdHint": "Nombre d'eliminacions en 10 segons per activar la quarantena",
+    "channelDeleteThreshold": "Llindar d'eliminació de canals",
+    "roleDeleteThreshold": "Llindar d'eliminació de rols",
+    "massbanThreshold": "Llindar de bans massius",
+    "interval": "Interval (segons)",
+    "action": "Acció"
+  },
+  "lockdown": {
+    "title": "Bloqueig automatic per raid",
+    "description": "Bloqueja automaticament tots els canals quan es detecta un raid.",
+    "whitelistedRoles": "IDs de rols en llista blanca (separats per comes)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Els membres amb aquests rols estaran exempts de la detecció de raids.",
+    "logChannel": "ID del canal de registre",
+    "logChannelPlaceholder": "ID del canal per als registres d'esdeveniments de raid...",
+    "enableButton": "Activar bloqueig",
+    "disableButton": "Desactivar bloqueig",
+    "active": "Bloqueig actiu",
+    "inactive": "Bloqueig inactiu"
+  },
+  "events": {
+    "title": "Esdeveniments de raid recents",
+    "description": "Cronologia de raids detectats, bloquejos per antiguitat de compte i esdeveniments de bloqueig.",
+    "empty": "Encara no s'han registrat esdeveniments de raid. Els esdeveniments apareixeran aqui quan s'activi la detecció de raids.",
+    "actionLabel": "Acció: {{action}}",
+    "usersLabel": "Usuaris: {{count}}",
+    "accountAgeLabel": "Antiguitat del compte: {{days}}d",
+    "table": {
+      "type": "Tipus",
+      "description": "Descripció",
+      "time": "Hora",
+      "action": "Acció presa"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Pic d'unions",
+    "account_age": "Antiguitat del compte",
+    "nuke_attempt": "Intent de destrucció",
+    "lockdown": "Bloqueig",
+    "massJoin": "Unió massiva",
+    "suspiciousAccounts": "Comptes sospitosos",
+    "channelDeletion": "Eliminació de canal",
+    "roleDeletion": "Eliminació de rol",
+    "massBan": "Ban massiu"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguent",
+    "page": "Pagina {{current}} de {{total}}"
+  },
+  "toast": {
+    "saved": "Configuració anti-raid desada",
+    "saveFailed": "No s'ha pogut desar la configuració",
+    "lockdownEnabled": "Bloqueig del servidor activat",
+    "lockdownDisabled": "Bloqueig del servidor desactivat",
+    "lockdownFailed": "No s'ha pogut alternar el bloqueig"
+  },
+  "saveButton": {
+    "saving": "Desant...",
+    "save": "Desar canvis"
+  },
+  "labels": {
+    "seconds": "segons",
+    "minutes": "minuts",
+    "hours": "hores"
+  }
+}

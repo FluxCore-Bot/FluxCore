@@ -1,0 +1,118 @@
+{
+  "title": "תפקידים והרשאות",
+  "subtitle": "שלוט מי יכול לגשת ולנהל כל מודול בלוח הבקרה.",
+  "actions": {
+    "createRole": "צור תפקיד"
+  },
+  "permissionSystem": {
+    "title": "מערכת הרשאות",
+    "active": "פעיל — מנהלים מוגבלים להרשאות שהוקצו להם.",
+    "inactive": "לא פעיל — לכל המנהלים עם MANAGE_GUILD יש גישה מלאה.",
+    "enabledToast": "מערכת ההרשאות הופעלה",
+    "disabledToast": "מערכת ההרשאות הושבתה — לכל המנהלים יש גישה מלאה"
+  },
+  "warning": {
+    "disabled": "מערכת ההרשאות מושבתת. לכל מנהלי לוח הבקרה כרגע יש גישה מלאה. הפעל אותה למעלה כדי לאכוף הרשאות מפורטות."
+  },
+  "tabs": {
+    "roles": "תפקידים",
+    "auditLog": "יומן ביקורת"
+  },
+  "roleList": {
+    "title": "תפקידי לוח בקרה",
+    "empty": "לא נוצרו תפקידים עדיין.",
+    "selectHint": "בחר תפקיד לעריכה, או צור חדש.",
+    "default": "ברירת מחדל",
+    "name": "שם",
+    "members": "חברים",
+    "permissions": "הרשאות",
+    "edit": "ערוך",
+    "delete": "מחק"
+  },
+  "presets": {
+    "title": "הוספה מהירה מתבנית",
+    "createdToast": "נוצר תפקיד \"{{name}}\""
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} חבר",
+    "memberCount_plural": "{{count}} חברים",
+    "name": "שם תפקיד",
+    "color": "צבע",
+    "defaultRole": "תפקיד ברירת מחדל",
+    "permissions": "הרשאות",
+    "allBadge": "הכל",
+    "discordRoles": "תפקידי Discord"
+  },
+  "roleForm": {
+    "name": "שם תפקיד",
+    "discordRoles": "תפקידי Discord",
+    "permissions": "הרשאות",
+    "create": "צור תפקיד",
+    "update": "עדכן תפקיד",
+    "cancel": "בטל"
+  },
+  "createDialog": {
+    "title": "צור תפקיד לוח בקרה",
+    "name": "שם",
+    "namePlaceholder": "לדוגמה מנהל",
+    "color": "צבע"
+  },
+  "permissionCategories": {
+    "actions": "פעולות ואוטומציה",
+    "music": "מוזיקה",
+    "tempvoice": "קול זמני",
+    "welcome": "ברוכים הבאים ופרידה",
+    "moderation": "ניהול",
+    "logging": "רישום",
+    "leveling": "דירוג",
+    "roles": "לוחות תפקידים",
+    "tickets": "פניות",
+    "suggestions": "הצעות",
+    "starboard": "לוח כוכבים",
+    "giveaways": "הגרלות",
+    "security": "אבטחה",
+    "scheduled": "הודעות מתוזמנות",
+    "commands": "פקודות מותאמות",
+    "settings": "הגדרות שרת"
+  },
+  "audit": {
+    "table": {
+      "user": "משתמש",
+      "action": "פעולה",
+      "target": "יעד",
+      "timestamp": "מתי"
+    },
+    "noEntries": "אין רשומות ביומן הביקורת עדיין."
+  },
+  "pagination": {
+    "previous": "הקודם",
+    "next": "הבא",
+    "page": "עמוד {{current}} מתוך {{total}}"
+  },
+  "toast": {
+    "roleCreated": "נוצר תפקיד \"{{name}}\"",
+    "roleCreateFailed": "יצירת התפקיד נכשלה",
+    "roleUpdated": "התפקיד עודכן",
+    "roleUpdateFailed": "עדכון התפקיד נכשל",
+    "roleDeleted": "התפקיד נמחק",
+    "roleDeleteFailed": "מחיקת התפקיד נכשלה"
+  },
+  "confirm": {
+    "deleteTitle": "למחוק תפקיד \"{{name}}\"?",
+    "deleteMessage": "פעולה זו תסיר את התפקיד ותבטל הקצאה לכל החברים. לא ניתן לבטל פעולה זו.",
+    "deleteRole": "האם אתה בטוח שברצונך למחוק תפקיד זה? חברים יאבדו את ההרשאות שהוקצו להם."
+  },
+  "saveButton": {
+    "saving": "שומר...",
+    "save": "שמור שינויים"
+  },
+  "deleteButton": {
+    "deleting": "מוחק...",
+    "delete": "מחק"
+  },
+  "createButton": {
+    "creating": "יוצר...",
+    "create": "צור"
+  },
+  "loading": "טוען הרשאות..."
+}

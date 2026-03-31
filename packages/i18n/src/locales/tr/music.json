@@ -1,0 +1,8 @@
+{
+  "title": "Müzik Sistemi",
+  "subtitle": "Global oynatma modlarını ve ses kütüphanesi tercihlerini yapılandırın.",
+  "tabs": {
+    "settings": "Oynatma Ayarları",
+    "library": "Müzik Kütüphanesi"
+  }
+}

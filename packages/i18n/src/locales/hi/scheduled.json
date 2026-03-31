@@ -1,0 +1,86 @@
+{
+  "title": "शेड्यूल्ड संदेश",
+  "subtitle": "कॉन्फ़िगर करने योग्य शेड्यूल पर आवर्ती ऑटो-पोस्ट संदेश बनाएं।",
+  "stats": {
+    "totalMessages": "कुल संदेश",
+    "active": "सक्रिय",
+    "inactive": "निष्क्रिय"
+  },
+  "table": {
+    "name": "नाम",
+    "channel": "चैनल",
+    "schedule": "शेड्यूल",
+    "nextRun": "अगला रन",
+    "status": "स्थिति"
+  },
+  "dialog": {
+    "editTitle": "शेड्यूल्ड संदेश संपादित करें",
+    "createTitle": "नया शेड्यूल्ड संदेश"
+  },
+  "form": {
+    "name": "नाम",
+    "channel": "चैनल",
+    "schedulePreset": "शेड्यूल प्रीसेट",
+    "cronExpression": "Cron एक्सप्रेशन",
+    "timezone": "टाइमज़ोन",
+    "messageContent": "संदेश सामग्री",
+    "text": "टेक्स्ट",
+    "embed": "Embed",
+    "enabled": "सक्रिय",
+    "enabledDesc": "क्या यह शेड्यूल्ड संदेश सक्रिय है।"
+  },
+  "cronPresets": {
+    "everyHour": "हर घंटे",
+    "every6Hours": "हर 6 घंटे",
+    "daily9am": "रोज़ सुबह 9 बजे",
+    "dailyMidnight": "रोज़ आधी रात",
+    "weeklyMonday": "हर सोमवार",
+    "monthly1st": "हर महीने की पहली तारीख",
+    "custom": "कस्टम"
+  },
+  "embed": {
+    "title": "शीर्षक",
+    "description": "विवरण",
+    "color": "रंग (hex)",
+    "footer": "फ़ुटर",
+    "thumbnail": "थंबनेल URL",
+    "image": "इमेज URL"
+  },
+  "toast": {
+    "created": "शेड्यूल्ड संदेश बनाया गया",
+    "createFailed": "शेड्यूल्ड संदेश बनाने में विफल",
+    "updated": "शेड्यूल्ड संदेश अपडेट किया गया",
+    "updateFailed": "शेड्यूल्ड संदेश अपडेट करने में विफल",
+    "deleted": "शेड्यूल्ड संदेश हटाया गया",
+    "deleteFailed": "शेड्यूल्ड संदेश हटाने में विफल",
+    "testSent": "टेस्ट संदेश भेजा गया",
+    "testFailed": "टेस्ट संदेश भेजने में विफल"
+  },
+  "empty": {
+    "title": "अभी तक कोई शेड्यूल्ड संदेश नहीं",
+    "description": "आवर्ती आधार पर स्वचालित रूप से सामग्री पोस्ट करने के लिए एक शेड्यूल्ड संदेश बनाएं।",
+    "createButton": "संदेश बनाएं"
+  },
+  "pagination": {
+    "previous": "पिछला",
+    "next": "अगला",
+    "page": "पृष्ठ {{page}} / {{total}}"
+  },
+  "actions": {
+    "newMessage": "नया संदेश",
+    "testSend": "टेस्ट भेजें",
+    "edit": "संपादित करें",
+    "delete": "हटाएं",
+    "save": "सहेजें",
+    "cancel": "रद्द करें"
+  },
+  "validation": {
+    "nameRequired": "संदेश का नाम आवश्यक है",
+    "channelRequired": "चैनल आवश्यक है"
+  },
+  "cronPreview": {
+    "nextRuns": "अगले रन"
+  },
+  "characters": "{{count}}/2000 वर्ण",
+  "never": "कभी नहीं"
+}

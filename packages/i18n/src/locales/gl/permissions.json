@@ -1,0 +1,118 @@
+{
+  "title": "Roles e Permisos",
+  "subtitle": "Controla quen pode acceder e xestionar cada módulo do panel.",
+  "actions": {
+    "createRole": "Crear Rol"
+  },
+  "permissionSystem": {
+    "title": "Sistema de Permisos",
+    "active": "Activo — os administradores están limitados aos seus permisos asignados.",
+    "inactive": "Inactivo — todos os administradores con MANAGE_GUILD teñen acceso completo.",
+    "enabledToast": "Sistema de permisos activado",
+    "disabledToast": "Sistema de permisos desactivado — todos os administradores teñen acceso completo"
+  },
+  "warning": {
+    "disabled": "O sistema de permisos está desactivado. Todos os administradores do panel teñen actualmente acceso completo. Actívao arriba para aplicar permisos detallados."
+  },
+  "tabs": {
+    "roles": "Roles",
+    "auditLog": "Rexistro de Auditoría"
+  },
+  "roleList": {
+    "title": "Roles do Panel",
+    "empty": "Aínda non se crearon roles.",
+    "selectHint": "Selecciona un rol para editalo ou crea un novo.",
+    "default": "Predeterminado",
+    "name": "Nome",
+    "members": "Membros",
+    "permissions": "Permisos",
+    "edit": "Editar",
+    "delete": "Eliminar"
+  },
+  "presets": {
+    "title": "Engadir Rapidamente desde Predefinido",
+    "createdToast": "Rol \"{{name}}\" creado"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} membro",
+    "memberCount_plural": "{{count}} membros",
+    "name": "Nome do Rol",
+    "color": "Cor",
+    "defaultRole": "Rol predeterminado",
+    "permissions": "Permisos",
+    "allBadge": "Todos",
+    "discordRoles": "Roles de Discord"
+  },
+  "roleForm": {
+    "name": "Nome do Rol",
+    "discordRoles": "Roles de Discord",
+    "permissions": "Permisos",
+    "create": "Crear Rol",
+    "update": "Actualizar Rol",
+    "cancel": "Cancelar"
+  },
+  "createDialog": {
+    "title": "Crear Rol do Panel",
+    "name": "Nome",
+    "namePlaceholder": "ex. Moderador",
+    "color": "Cor"
+  },
+  "permissionCategories": {
+    "actions": "Accións e Automatización",
+    "music": "Música",
+    "tempvoice": "TempVoice",
+    "welcome": "Benvida e Despedida",
+    "moderation": "Moderación",
+    "logging": "Rexistros",
+    "leveling": "Nivelación",
+    "roles": "Paneis de Roles",
+    "tickets": "Tickets",
+    "suggestions": "Suxestións",
+    "starboard": "Starboard",
+    "giveaways": "Sorteios",
+    "security": "Seguridade",
+    "scheduled": "Mensaxes Programadas",
+    "commands": "Ordes Personalizadas",
+    "settings": "Configuración do Servidor"
+  },
+  "audit": {
+    "table": {
+      "user": "Usuario",
+      "action": "Acción",
+      "target": "Obxectivo",
+      "timestamp": "Cando"
+    },
+    "noEntries": "Aínda non hai entradas no rexistro de auditoría."
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "page": "Páxina {{current}} de {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Rol \"{{name}}\" creado",
+    "roleCreateFailed": "Non se puido crear o rol",
+    "roleUpdated": "Rol actualizado",
+    "roleUpdateFailed": "Non se puido actualizar o rol",
+    "roleDeleted": "Rol eliminado",
+    "roleDeleteFailed": "Non se puido eliminar o rol"
+  },
+  "confirm": {
+    "deleteTitle": "Eliminar o rol \"{{name}}\"?",
+    "deleteMessage": "Isto eliminará o rol e desasignará a todos os membros. Esta acción non se pode desfacer.",
+    "deleteRole": "Estás seguro de que queres eliminar este rol? Os membros perderán os seus permisos asignados."
+  },
+  "saveButton": {
+    "saving": "Gardando...",
+    "save": "Gardar Cambios"
+  },
+  "deleteButton": {
+    "deleting": "Eliminando...",
+    "delete": "Eliminar"
+  },
+  "createButton": {
+    "creating": "Creando...",
+    "create": "Crear"
+  },
+  "loading": "Cargando permisos..."
+}

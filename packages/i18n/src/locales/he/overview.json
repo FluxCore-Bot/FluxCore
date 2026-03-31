@@ -1,0 +1,12 @@
+{
+  "title": "סקירה כללית",
+  "subtitle": "עקוב אחר ביצועי האוטומציה והפעילות במבט אחד.",
+  "stats": {
+    "actionRules": "כללי פעולה",
+    "activeNow": "פעילים כעת",
+    "executions": "הרצות",
+    "successRate": "אחוז הצלחה"
+  },
+  "errorsInLast24h": "{{count}} שגיאה ב-24 השעות האחרונות",
+  "errorsInLast24h_other": "{{count}} שגיאות ב-24 השעות האחרונות"
+}

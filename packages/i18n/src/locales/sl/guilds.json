@@ -1,0 +1,9 @@
+{
+  "title": "Vaši strežniki",
+  "subtitle": "Izberite strežnik za upravljanje in konfiguracijo.",
+  "loading": "Nalaganje strežnikov...",
+  "empty": {
+    "title": "Ni najdenih strežnikov",
+    "description": "Prepričajte se, da je bot dodan strežniku, na katerem imate dovoljenje Upravljanje strežnika."
+  }
+}

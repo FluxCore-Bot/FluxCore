@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Dabar viesojoje betoje",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Viskas viename",
+    "titleLine2": "Discord botu platforma",
+    "subtitle": "Paleiskite profesionalu Discord buvima per kelias minutes. Moduline, savarankiskai talpinama ir sukurta bendruomenems, kurios reikalauja daugiau."
+  },
+  "cta": {
+    "addToServer": "Prideti i serveri",
+    "openDashboard": "Atidaryti valdymo skydeli",
+    "exploreFeatures": "Suzinokite galimybes"
+  },
+  "stats": {
+    "servers": "Serveriai",
+    "latency": "Delsa",
+    "uptime": "Veikimo laikas",
+    "modules": "Moduliai",
+    "serversValue": "1 000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99,9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Galimybes",
+    "title": "Viskas, ko reikia jusu serveriui",
+    "subtitle": "Modulinis irankiu rinkinys, sukurtas bendruomenems, kurios reikalauja patikimumo, lankstumo ir kontroles.",
+    "automation": {
+      "title": "Automatizavimo taisykles",
+      "description": "Kurkite sudtingus ivykiais grindziamus darbo eigos procesus be kodo. Jei-si-tai-tai trigeriai su 23 ivykiu tipais ir 10 veiksmu tipu."
+    },
+    "music": {
+      "title": "Muzikos sistema",
+      "description": "Aukštos kokybes garso transliavimas su keliu platformu palaikymu. Eiles valdymas, DJ kontrole ir bibliotekos rezimas."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Dinaminis balso kanalu valdymas. Automatinis kurimas su pasirinktiniais pavadinimu sablonais, teisemis ir valymu."
+    },
+    "logs": {
+      "title": "Veiklos zurnalas",
+      "description": "Pilnas kiekvieno automatizavimo vykdymo audito pedsaka. Ieskokite, filtruokite ir derinkite taisykles su detaliais zurnalais."
+    },
+    "webhooks": {
+      "title": "Webhookai ir API",
+      "description": "Siuskite duomenis isorinemis paslaugoms per HTTP webhook'us. Pasirinktines antrast, kurio sablonai ir kintamuju interpoliacija."
+    },
+    "dashboard": {
+      "title": "Realaus laiko valdymo skydelis",
+      "description": "Valdykite viska is elegantisko tinklo valdymo skydelio. Analitika, konfiguracija ir stebjimas vienoje vietoje."
+    }
+  },
+  "ctaSection": {
+    "title": "Pasiruose atnaujinti savo bendruomene?",
+    "subtitle": "Pradekite per kelias minutes be konfiguracijos. Savarankiskai talpinama, atviro kodo ir vissiiskai nemokama."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "(c) {{year}} FluxCore Technologies. Visos teises saugomos.",
+    "links": {
+      "documentation": "Dokumentacija",
+      "support": "Palaikymas",
+      "privacy": "Privatumo politika",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

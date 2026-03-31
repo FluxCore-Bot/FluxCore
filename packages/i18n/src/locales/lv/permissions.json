@@ -1,0 +1,118 @@
+{
+  "title": "Lomas un atlaujas",
+  "subtitle": "Kontrolejiet, kas var piekluut un parvalddit katru vadibas panela moduli.",
+  "actions": {
+    "createRole": "Izveidot lomu"
+  },
+  "permissionSystem": {
+    "title": "Atlauju sistema",
+    "active": "Aktiva — administratori ir ierobezoti ar piesskiritajam atlaujam.",
+    "inactive": "Neaktiva — visi administratori ar MANAGE_GUILD ir pilna piekluve.",
+    "enabledToast": "Atlauju sistema iespejota",
+    "disabledToast": "Atlauju sistema atspejota — visiem administratoriem ir pilna piekluve"
+  },
+  "warning": {
+    "disabled": "Atlauju sistema ir atspejota. Visi vadibas panela administratori paslaik var pieklut visam. Iespejojiet to augstaka, lai piemeerotu detalizetas atlaujas."
+  },
+  "tabs": {
+    "roles": "Lomas",
+    "auditLog": "Audita zurnals"
+  },
+  "roleList": {
+    "title": "Vadibas panela lomas",
+    "empty": "Lomas nav izveidotas.",
+    "selectHint": "Izvelieties lomu redigesanai vai izveidojiet jaunu.",
+    "default": "Noklusetais",
+    "name": "Nosaukums",
+    "members": "Dalibnieki",
+    "permissions": "Atlaujas",
+    "edit": "Rediget",
+    "delete": "Dzest"
+  },
+  "presets": {
+    "title": "Atra pievienosana no veidnes",
+    "createdToast": "Loma \"{{name}}\" izveidota"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} dalibnieks",
+    "memberCount_plural": "{{count}} dalibnieki",
+    "name": "Lomas nosaukums",
+    "color": "Krasa",
+    "defaultRole": "Noklusetaa loma",
+    "permissions": "Atlaujas",
+    "allBadge": "Visas",
+    "discordRoles": "Discord lomas"
+  },
+  "roleForm": {
+    "name": "Lomas nosaukums",
+    "discordRoles": "Discord lomas",
+    "permissions": "Atlaujas",
+    "create": "Izveidot lomu",
+    "update": "Atjaunot lomu",
+    "cancel": "Atcelt"
+  },
+  "createDialog": {
+    "title": "Izveidot vadibas panela lomu",
+    "name": "Nosaukums",
+    "namePlaceholder": "piem. Moderators",
+    "color": "Krasa"
+  },
+  "permissionCategories": {
+    "actions": "Darbibas un automatizacija",
+    "music": "Muzika",
+    "tempvoice": "TempVoice",
+    "welcome": "Sveiciens un atvadas",
+    "moderation": "Moderacija",
+    "logging": "Zurnalosana",
+    "leveling": "Limeni",
+    "roles": "Lomu paneli",
+    "tickets": "Biletes",
+    "suggestions": "Ierosinajumi",
+    "starboard": "Starboard",
+    "giveaways": "Izlozes",
+    "security": "Drosiba",
+    "scheduled": "Ieplanotie zinojumi",
+    "commands": "Pieelagotas komandas",
+    "settings": "Servera iestatijumi"
+  },
+  "audit": {
+    "table": {
+      "user": "Lietotajs",
+      "action": "Darbiba",
+      "target": "Merkis",
+      "timestamp": "Kad"
+    },
+    "noEntries": "Audita zurnala ierakstu nav."
+  },
+  "pagination": {
+    "previous": "Iepriekssejais",
+    "next": "Nakamais",
+    "page": "Lapa {{current}} no {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Loma \"{{name}}\" izveidota",
+    "roleCreateFailed": "Neizdevas izveidot lomu",
+    "roleUpdated": "Loma atjaunota",
+    "roleUpdateFailed": "Neizdevas atjaunot lomu",
+    "roleDeleted": "Loma dzesta",
+    "roleDeleteFailed": "Neizdevas dzest lomu"
+  },
+  "confirm": {
+    "deleteTitle": "Dzest lomu \"{{name}}\"?",
+    "deleteMessage": "Tas noneems lomu un atcels piesskirssanu visiem dalibniekiem. So darbibu nevar atsaukt.",
+    "deleteRole": "Vai tiessam velaties dzest so lomu? Dalibnieki zaudees piesskirtas atlaujas."
+  },
+  "saveButton": {
+    "saving": "Saglaba...",
+    "save": "Saglabar izmainas"
+  },
+  "deleteButton": {
+    "deleting": "Dzess...",
+    "delete": "Dzest"
+  },
+  "createButton": {
+    "creating": "Veido...",
+    "create": "Izveidot"
+  },
+  "loading": "Iellade atlaujas..."
+}

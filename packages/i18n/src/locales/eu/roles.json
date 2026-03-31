@@ -1,0 +1,112 @@
+{
+  "title": "Rol panelak",
+  "subtitle": "Sortu auto-esleigarriak diren rol panelak botoiak, goitibehera-menuak edo erreakzioak erabiliz.",
+  "stats": {
+    "totalPanels": "Panel guztiak",
+    "deployed": "Zabalduta",
+    "totalRoles": "Rol guztiak"
+  },
+  "tabs": {
+    "panels": "Panelak",
+    "preview": "Aurrebista"
+  },
+  "table": {
+    "name": "Izena",
+    "type": "Mota",
+    "mode": "Modua",
+    "roles": "Rolak",
+    "status": "Egoera"
+  },
+  "panelTypes": {
+    "reaction": "Erreakzioa",
+    "button": "Botoia",
+    "dropdown": "Goitibehera"
+  },
+  "panelModes": {
+    "toggle": "Txandakatu",
+    "unique": "Bakarra",
+    "verify": "Egiaztatu"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Txandakatu (gehitu/kendu)",
+    "unique": "Bakarra (bat aldi bakoitzean)",
+    "verify": "Egiaztatu (gehitu bakarrik)"
+  },
+  "status": {
+    "deployed": "Zabalduta",
+    "draft": "Zirriborroa"
+  },
+  "dialog": {
+    "createPanel": "Panela sortu",
+    "editPanel": "Panela editatu"
+  },
+  "panelList": {
+    "title": "Panel guztiak"
+  },
+  "form": {
+    "name": "Izena",
+    "namePlaceholder": "adib. Kolore-rolak",
+    "type": "Mota",
+    "mode": "Modua",
+    "channel": "Kanala",
+    "channelPlaceholder": "Kanala hautatu",
+    "minRoles": "Gutxieneko rolak",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Gehieneko rolak",
+    "maxRolesPlaceholder": "Denak",
+    "embedSection": "Embed",
+    "embedTitle": "Izenburua",
+    "embedTitlePlaceholder": "Panelaren izenburua (lehenetsita panelaren izena)",
+    "embedDescription": "Deskripzioa",
+    "embedDescriptionPlaceholder": "Deskripzio testua",
+    "rolesCount": "Rolak ({{count}}/25)",
+    "addRole": "Rola gehitu"
+  },
+  "entry": {
+    "role": "Rola",
+    "rolePlaceholder": "Rola hautatu",
+    "label": "Etiketa",
+    "labelPlaceholder": "Botoiaren etiketa",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "adib. izarra",
+    "description": "Deskripzioa",
+    "descriptionPlaceholder": "Aukeraren deskripzioa",
+    "style": "Estiloa"
+  },
+  "buttonStyles": {
+    "primary": "Nagusia",
+    "secondary": "Bigarren mailakoa",
+    "success": "Arrakasta",
+    "danger": "Arriskua"
+  },
+  "actions": {
+    "create": "Sortu",
+    "update": "Eguneratu",
+    "cancel": "Utzi",
+    "deploy": "Zabaldu",
+    "delete": "Ezabatu",
+    "addEntry": "Sarrera gehitu",
+    "removeEntry": "Sarrera kendu"
+  },
+  "preview": {
+    "title": "Zuzeneko aurrebista",
+    "description": "Aurreikusi zure panelak Discorden nola agertuko diren.",
+    "selectRoles": "Rolak hautatu...",
+    "noPreview": "Ez dago panelik aurreikusteko."
+  },
+  "empty": "Oraindik ez da rol panelik sortu. Egin klik \"Panela sortu\" hasteko.",
+  "toast": {
+    "created": "Panela sortuta",
+    "createFailed": "Ezin izan da panela sortu",
+    "updated": "Panela eguneratuta",
+    "updateFailed": "Ezin izan da panela eguneratu",
+    "deleted": "Panela ezabatuta",
+    "deleteFailed": "Ezin izan da panela ezabatu",
+    "deployed": "Rol panela kanalera zabalduta",
+    "deployFailed": "Ezin izan da panela bidali",
+    "nameRequired": "Panelaren izena beharrezkoa da",
+    "channelRequired": "Kanala beharrezkoa da",
+    "maxRolesReached": "Gehienez 25 rol paneleko"
+  },
+  "loading": "Panelak kargatzen..."
+}

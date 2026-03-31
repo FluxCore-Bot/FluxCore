@@ -1,0 +1,12 @@
+{
+  "title": "Parskats",
+  "subtitle": "Parveribiiet automatizacijas veikumu un aktivitati vienaa acu uzmetiena.",
+  "stats": {
+    "actionRules": "Darbibu noteikumi",
+    "activeNow": "Paslaik aktivi",
+    "executions": "Izpildes",
+    "successRate": "Veiksmibas raditajs"
+  },
+  "errorsInLast24h": "{{count}} kluda pedejass 24h",
+  "errorsInLast24h_other": "{{count}} kludas pedejass 24h"
+}

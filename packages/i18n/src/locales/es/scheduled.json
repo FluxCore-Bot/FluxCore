@@ -1,0 +1,86 @@
+{
+  "title": "Mensajes programados",
+  "subtitle": "Crea mensajes recurrentes publicados automaticamente con horarios configurables.",
+  "stats": {
+    "totalMessages": "Total de mensajes",
+    "active": "Activos",
+    "inactive": "Inactivos"
+  },
+  "table": {
+    "name": "Nombre",
+    "channel": "Canal",
+    "schedule": "Horario",
+    "nextRun": "Proxima ejecucion",
+    "status": "Estado"
+  },
+  "dialog": {
+    "editTitle": "Editar mensaje programado",
+    "createTitle": "Nuevo mensaje programado"
+  },
+  "form": {
+    "name": "Nombre",
+    "channel": "Canal",
+    "schedulePreset": "Plantilla de horario",
+    "cronExpression": "Expresion Cron",
+    "timezone": "Zona horaria",
+    "messageContent": "Contenido del mensaje",
+    "text": "Texto",
+    "embed": "Embed",
+    "enabled": "Activado",
+    "enabledDesc": "Si este mensaje programado esta activo."
+  },
+  "cronPresets": {
+    "everyHour": "Cada hora",
+    "every6Hours": "Cada 6 horas",
+    "daily9am": "Diario a las 9 AM",
+    "dailyMidnight": "Diario a medianoche",
+    "weeklyMonday": "Semanal el lunes",
+    "monthly1st": "Mensual el dia 1",
+    "custom": "Personalizado"
+  },
+  "embed": {
+    "title": "Titulo",
+    "description": "Descripcion",
+    "color": "Color (hex)",
+    "footer": "Pie de pagina",
+    "thumbnail": "URL de miniatura",
+    "image": "URL de imagen"
+  },
+  "toast": {
+    "created": "Mensaje programado creado",
+    "createFailed": "Error al crear el mensaje programado",
+    "updated": "Mensaje programado actualizado",
+    "updateFailed": "Error al actualizar el mensaje programado",
+    "deleted": "Mensaje programado eliminado",
+    "deleteFailed": "Error al eliminar el mensaje programado",
+    "testSent": "Mensaje de prueba enviado",
+    "testFailed": "Error al enviar el mensaje de prueba"
+  },
+  "empty": {
+    "title": "Aun no hay mensajes programados",
+    "description": "Crea un mensaje programado para publicar contenido automaticamente de forma recurrente.",
+    "createButton": "Crear mensaje"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "page": "Pagina {{page}} de {{total}}"
+  },
+  "actions": {
+    "newMessage": "Nuevo mensaje",
+    "testSend": "Envio de prueba",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "save": "Guardar",
+    "cancel": "Cancelar"
+  },
+  "validation": {
+    "nameRequired": "El nombre del mensaje es obligatorio",
+    "channelRequired": "El canal es obligatorio"
+  },
+  "cronPreview": {
+    "nextRuns": "Proximas ejecuciones"
+  },
+  "characters": "{{count}}/2000 caracteres",
+  "never": "Nunca"
+}

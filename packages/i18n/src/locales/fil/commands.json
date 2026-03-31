@@ -1,0 +1,113 @@
+{
+  "title": "Mga Custom na Utos",
+  "subtitle": "Gumawa ng mga auto-responder at prefix na utos na ini-trigger ng mga mensahe.",
+  "stats": {
+    "totalCommands": "Kabuuang Utos",
+    "enabled": "Pinagana",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Mga Utos",
+    "variables": "Mga Variable"
+  },
+  "table": {
+    "name": "Pangalan",
+    "trigger": "Trigger",
+    "response": "Tugon",
+    "cooldown": "Cooldown",
+    "status": "Status"
+  },
+  "triggerTypes": {
+    "command": "!utos",
+    "keyword": "Keyword",
+    "startsWith": "Nagsisimula Sa",
+    "regex": "Regex",
+    "prefixCommand": "Prefix na Utos (!pangalan)",
+    "keywordContains": "Keyword (naglalaman)"
+  },
+  "dialog": {
+    "createCommand": "Gumawa ng Utos",
+    "editCommand": "I-edit ang Utos"
+  },
+  "form": {
+    "commandName": "Pangalan ng Utos",
+    "triggerText": "Trigger na Teksto",
+    "regexPattern": "Regex Pattern",
+    "triggerType": "Uri ng Trigger",
+    "response": "Tugon",
+    "message": "Mensahe",
+    "embedTitle": "Pamagat ng Embed",
+    "embedDescription": "Paglalarawan ng Embed",
+    "color": "Kulay",
+    "footer": "Footer"
+  },
+  "options": {
+    "cooldown": "Cooldown (segundo)",
+    "enabled": "Pinagana",
+    "enabledDesc": "Kung aktibo ang utos na ito",
+    "deleteTrigger": "Burahin ang Trigger na Mensahe",
+    "deleteTriggerDesc": "Awtomatikong burahin ang mensaheng nag-trigger ng utos na ito.",
+    "dmResponse": "Tugon sa DM",
+    "dmResponseDesc": "Ipadala ang tugon bilang direktang mensahe sa halip na sa channel."
+  },
+  "restrictions": {
+    "title": "Mga Paghihigpit",
+    "allowedChannels": "Mga Pinahintulutang Channel (walang laman = lahat)",
+    "allowedRoles": "Mga Pinahintulutang Role (walang laman = lahat)",
+    "addChannel": "Magdagdag ng Channel",
+    "addRole": "Magdagdag ng Role"
+  },
+  "actions": {
+    "create": "Gumawa",
+    "update": "I-update",
+    "cancel": "Kanselahin",
+    "addAction": "Magdagdag ng Aksyon",
+    "addRole": "Magdagdag ng Role",
+    "removeRole": "Alisin ang Role"
+  },
+  "actionsSection": {
+    "title": "Mga Aksyon ({{count}}/5)",
+    "noActions": "Walang mga aksyong naka-configure. Magdagdag ng aksyon upang tukuyin kung ano ang gagawin ng utos na ito.",
+    "maxActions": "Maximum na 5 aksyon bawat utos"
+  },
+  "variables": {
+    "title": "Mga Template Variable",
+    "description": "Gamitin ang mga variable na ito sa iyong mga tugon ng utos. Papalitan ang mga ito ng aktwal na mga halaga kapag na-trigger ang utos.",
+    "table": {
+      "variable": "Variable",
+      "description": "Paglalarawan"
+    },
+    "entries": {
+      "user": "{user} — Binabanggit ang user na nag-trigger ng utos",
+      "username": "{username} — Ang display name ng user",
+      "userId": "{userId} — Ang ID ng user",
+      "server": "{server} — Ang pangalan ng server",
+      "channel": "{channel} — Binabanggit ang kasalukuyang channel",
+      "channelName": "{channelName} — Ang pangalan ng channel",
+      "memberCount": "{memberCount} — Kabuuang bilang ng mga miyembro ng server"
+    }
+  },
+  "toast": {
+    "created": "Utos na nagawa",
+    "createFailed": "Hindi nagawa ang utos",
+    "updated": "Utos na na-update",
+    "updateFailed": "Hindi na-update ang utos",
+    "deleted": "Utos na nabura",
+    "deleteFailed": "Hindi nabura ang utos",
+    "toggleEnabled": "Utos na pinagana",
+    "toggleDisabled": "Utos na na-disable",
+    "toggleFailed": "Hindi na-toggle ang utos"
+  },
+  "empty": "Wala pang mga custom na utos na nagawa.",
+  "loading": "Naglo-load ng mga utos...",
+  "badge": {
+    "active": "Aktibo",
+    "disabled": "Hindi Pinagana",
+    "text": "Teksto",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Kailangan ng pangalan ng utos"
+  },
+  "triggerPrefix": "Trigger: !{{name}}"
+}

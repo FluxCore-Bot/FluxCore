@@ -1,0 +1,12 @@
+{
+  "title": "Ikhtisar",
+  "subtitle": "Pantau performa otomasi dan aktivitas Anda sekilas.",
+  "stats": {
+    "actionRules": "Aturan Aksi",
+    "activeNow": "Aktif Sekarang",
+    "executions": "Eksekusi",
+    "successRate": "Tingkat Keberhasilan"
+  },
+  "errorsInLast24h": "{{count}} kesalahan dalam 24 jam terakhir",
+  "errorsInLast24h_other": "{{count}} kesalahan dalam 24 jam terakhir"
+}

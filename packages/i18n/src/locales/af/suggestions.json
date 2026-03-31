@@ -1,0 +1,67 @@
+{
+  "title": "Voorstelle",
+  "subtitle": "Laat lede idees indien en daarop stem. Bestuur status en terugvoer.",
+  "stats": {
+    "totalSuggestions": "Totale Voorstelle",
+    "systemStatus": "Stelselstatus",
+    "channel": {
+      "configured": "Kanaal Opgestel",
+      "notSet": "Kanaal Nie Gestel Nie"
+    }
+  },
+  "tabs": {
+    "suggestions": "Voorstelle",
+    "settings": "Instellings"
+  },
+  "filter": {
+    "filterByStatus": "Filtreer op Status",
+    "all": "Almal",
+    "pending": "Hangende",
+    "approved": "Goedgekeur",
+    "rejected": "Afgekeur",
+    "implemented": "Geimplementeer",
+    "considered": "Onder Oorweging"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Skrywer",
+    "content": "Inhoud",
+    "status": "Status",
+    "votes": "Stemme",
+    "date": "Datum"
+  },
+  "actions": {
+    "approve": "Keur Goed",
+    "reject": "Keur Af",
+    "implement": "Merk as Geimplementeer",
+    "consider": "Oorweeg",
+    "delete": "Verwyder"
+  },
+  "settings": {
+    "channel": "Voorstellekanaal",
+    "channelDesc": "Die kanaal waar voorstelle geplaas word om op te stem.",
+    "voteEmojis": "Stem-emoji's",
+    "voteEmojisDesc": "Emoji's wat gebruik word vir opsiem- en afstemreaksies.",
+    "autoThread": "Outo-skep Draad",
+    "autoThreadDesc": "Skep outomaties 'n besprekingsdraad op elke nuwe voorstel.",
+    "dmOnStatusChange": "DM by Statusverandering",
+    "dmOnStatusChangeDesc": "Stel die skrywer in kennis via DM wanneer hul voorstellstatus verander."
+  },
+  "toast": {
+    "approved": "Voorstel goedgekeur",
+    "rejected": "Voorstel afgekeur",
+    "implemented": "Voorstel as geimplementeer gemerk",
+    "considered": "Voorstel as onder oorweging gemerk",
+    "deleted": "Voorstel verwyder",
+    "actionFailed": "Kon nie voorstel bywerk nie",
+    "settingsSaved": "Voorstelleinstellings gestoor",
+    "settingsFailed": "Kon nie voorstelleinstellings stoor nie"
+  },
+  "empty": "Nog geen voorstelle nie.",
+  "loading": "Laai voorstelle...",
+  "pagination": {
+    "previous": "Vorige",
+    "next": "Volgende",
+    "page": "Bladsy {{page}} van {{total}}"
+  }
+}

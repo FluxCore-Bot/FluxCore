@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "প্রমাণীকৃত নয়",
+    "sessionExpired": "সেশনের মেয়াদ শেষ",
+    "missingCode": "কোড প্যারামিটার অনুপস্থিত",
+    "tokenExchangeFailed": "টোকেন বিনিময় ব্যর্থ",
+    "failedToFetchUser": "ব্যবহারকারীর তথ্য আনতে ব্যর্থ"
+  },
+  "permissions": {
+    "noGuildPermission": "এই গিল্ডের জন্য অনুমতি নেই",
+    "botNotInGuild": "বট এই গিল্ডে নেই",
+    "insufficientPermissions": "অপর্যাপ্ত অনুমতি",
+    "permissionsNotResolved": "অনুমতি সমাধান হয়নি",
+    "requiresPermission": "এই কাজের জন্য \"{{permission}}\" অনুমতি প্রয়োজন"
+  },
+  "validation": {
+    "invalidInput": "অবৈধ ইনপুট",
+    "missingField": "আবশ্যক ক্ষেত্র অনুপস্থিত: {{field}}",
+    "invalidFormat": "{{field}} এর জন্য অবৈধ ফরম্যাট",
+    "tooLong": "{{field}} সর্বোচ্চ {{max}} অক্ষরের সীমা অতিক্রম করেছে",
+    "tooShort": "{{field}} কমপক্ষে {{min}} অক্ষরের হতে হবে",
+    "outOfRange": "{{field}} {{min}} এবং {{max}} এর মধ্যে হতে হবে"
+  },
+  "resources": {
+    "notFound": "পাওয়া যায়নি",
+    "alreadyExists": "{{resource}} ইতিমধ্যে বিদ্যমান",
+    "limitReached": "প্রতি গিল্ডে সর্বোচ্চ {{max}} {{resource}}",
+    "createFailed": "{{resource}} তৈরি করতে ব্যর্থ",
+    "updateFailed": "{{resource}} আপডেট করতে ব্যর্থ",
+    "deleteFailed": "{{resource}} মুছতে ব্যর্থ"
+  },
+  "server": {
+    "internalError": "অভ্যন্তরীণ সার্ভার ত্রুটি",
+    "serviceUnavailable": "সেবা সাময়িকভাবে অনুপলব্ধ",
+    "rateLimited": "অত্যধিক অনুরোধ। অনুগ্রহ করে পরে আবার চেষ্টা করুন।"
+  },
+  "csrf": {
+    "invalidToken": "অবৈধ বা অনুপস্থিত CSRF টোকেন"
+  }
+}

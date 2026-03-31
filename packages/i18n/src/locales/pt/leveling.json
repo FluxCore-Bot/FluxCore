@@ -1,0 +1,120 @@
+{
+  "title": "Sistema de niveis",
+  "subtitle": "Configure o ganho de XP, anuncios de subida de nivel, recompensas de cargos e multiplicadores.",
+  "stats": {
+    "rankedMembers": "Membros classificados",
+    "roleRewards": "Recompensas de cargos",
+    "systemStatus": "Estado do sistema",
+    "enabled": "Ativado",
+    "disabled": "Desativado"
+  },
+  "tabs": {
+    "leaderboard": "Classificacao",
+    "settings": "Definicoes",
+    "roleRewards": "Recompensas de cargos",
+    "exclusions": "Exclusoes",
+    "multipliers": "Multiplicadores"
+  },
+  "table": {
+    "rank": "Posicao",
+    "userId": "ID do utilizador",
+    "level": "Nivel",
+    "xp": "XP",
+    "messages": "Mensagens",
+    "voiceTime": "Tempo de voz"
+  },
+  "settings": {
+    "title": "Definicoes de niveis",
+    "enabled": "Ativar niveis",
+    "enabledDesc": "Ativar ou desativar todo o sistema de niveis.",
+    "xpPerMessage": "XP por mensagem",
+    "xpPerMessageDesc": "XP base atribuida por mensagem (um aleatorio de 0-9 e adicionado).",
+    "xpCooldown": "Tempo de espera de XP (segundos)",
+    "xpCooldownDesc": "Tempo minimo entre atribuicoes de XP por utilizador.",
+    "voiceXpEnabled": "XP de voz",
+    "voiceXpEnabledDesc": "Atribuir XP pelo tempo passado em canais de voz.",
+    "voiceXpPerMinute": "XP de voz por minuto",
+    "voiceXpPerMinuteDesc": "XP atribuida por minuto em voz.",
+    "levelUpAnnouncements": "Anuncios de subida de nivel",
+    "levelUpAnnouncementsDesc": "Anunciar quando um membro sobe de nivel.",
+    "announceDest": "Destino do anuncio",
+    "announceDestHint": "Tambem pode introduzir um ID de canal diretamente no campo acima.",
+    "announceDestSameChannel": "Mesmo canal",
+    "announceDestDM": "Mensagem direta",
+    "announceMessage": "Mensagem de anuncio",
+    "announceMessagePlaceholder": "{user} acabou de alcancar o **Nivel {level}**!",
+    "announceMessageVars": "Variaveis: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Recompensas de cargos",
+    "description": "Atribuir cargos automaticamente quando os membros atingem certos niveis.",
+    "addReward": "Adicionar recompensa",
+    "addRewardTitle": "Adicionar recompensa de cargo",
+    "level": "Nivel",
+    "levelPrefix": "Nivel {{level}}",
+    "roleId": "ID do cargo",
+    "levelPlaceholder": "ex. 5",
+    "rolePlaceholder": "ex. 123456789",
+    "removeReward": "Remover",
+    "noRewards": "Nenhuma recompensa de cargo configurada."
+  },
+  "exclusions": {
+    "title": "Exclusoes de XP",
+    "description": "Canais e cargos que nao ganham XP.",
+    "noXpChannels": "Canais sem XP (IDs separados por virgulas)",
+    "noXpChannelsPlaceholder": "ex. 123456789, 987654321",
+    "noXpRoles": "Cargos sem XP (IDs separados por virgulas)",
+    "noXpRolesPlaceholder": "ex. 123456789, 987654321",
+    "save": "Guardar exclusoes"
+  },
+  "multipliers": {
+    "title": "Multiplicadores de XP",
+    "description": "Defina multiplicadores de XP por canal ou cargo. Um multiplicador de 2 duplica o XP ganho.",
+    "channelMultipliers": "Multiplicadores de canal",
+    "roleMultipliers": "Multiplicadores de cargo",
+    "channelId": "ID do canal",
+    "roleId": "ID do cargo",
+    "multiplier": "Multiplicador",
+    "type": "Tipo",
+    "typeChannel": "Canal",
+    "typeRole": "Cargo",
+    "id": "ID",
+    "idPlaceholder": "ID do canal ou cargo",
+    "value": "Multiplicador",
+    "valuePlaceholder": "ex. 2",
+    "add": "Adicionar multiplicador",
+    "addTitle": "Adicionar multiplicador",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Nenhum multiplicador de XP configurado."
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "pageInfo": "Pagina {{page}} de {{totalPages}} ({{total}} no total)"
+  },
+  "loading": "A carregar classificacao...",
+  "loadingGeneric": "A carregar...",
+  "emptyLeaderboard": "Nenhum membro ganhou XP ainda.",
+  "toast": {
+    "saved": "Definicoes de niveis guardadas",
+    "saveFailed": "Falha ao atualizar a definicao",
+    "rewardAdded": "Recompensa adicionada",
+    "rewardAddFailed": "Falha ao adicionar a recompensa",
+    "rewardRemoved": "Recompensa removida",
+    "rewardRemoveFailed": "Falha ao remover a recompensa",
+    "multiplierAdded": "Multiplicador adicionado",
+    "multiplierAddFailed": "Falha ao adicionar o multiplicador",
+    "multiplierRemoved": "Multiplicador removido",
+    "multiplierRemoveFailed": "Falha ao remover o multiplicador",
+    "exclusionUpdated": "Exclusoes guardadas",
+    "exclusionFailed": "Falha ao guardar as exclusoes",
+    "levelValidation": "O nivel deve estar entre 1 e 100",
+    "roleIdRequired": "O ID do cargo e obrigatorio",
+    "multiplierIdRequired": "O ID e o valor do multiplicador sao obrigatorios",
+    "multiplierRange": "O multiplicador deve estar entre 0 e 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}h {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

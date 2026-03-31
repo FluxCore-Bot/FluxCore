@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Server",
+    "automation": "Otomasi"
+  },
+  "title": "Aturan Otomasi",
+  "subtitle": "Konfigurasikan pemicu berbasis kejadian dan respons otomatis untuk server Anda.",
+  "createRule": "Buat Aturan",
+  "stats": {
+    "totalRules": "Total Aturan",
+    "active": "Aktif",
+    "executions7d": "Eksekusi (7h)",
+    "successRate": "Tingkat Keberhasilan"
+  },
+  "filter": {
+    "searchPlaceholder": "Cari aturan...",
+    "eventType": "Tipe kejadian",
+    "allEvents": "Semua Kejadian",
+    "allStatus": "Semua Status",
+    "enabled": "Diaktifkan",
+    "disabled": "Dinonaktifkan",
+    "sortBy": "Urutkan berdasarkan",
+    "priority": "Prioritas",
+    "name": "Nama",
+    "lastFired": "Terakhir Dijalankan",
+    "status": "Status",
+    "clear": "Bersihkan",
+    "showing": "Menampilkan {{filtered}} dari {{total}} aturan"
+  },
+  "bulk": {
+    "selected": "{{count}} aturan dipilih",
+    "selected_other": "{{count}} aturan dipilih",
+    "enable": "Aktifkan",
+    "disable": "Nonaktifkan",
+    "delete": "Hapus",
+    "clear": "Bersihkan"
+  },
+  "empty": {
+    "title": "Mulai dengan Otomasi",
+    "description": "Pilih template untuk memulai dengan cepat, atau buat aturan dari awal.",
+    "createFromScratch": "Buat dari Awal"
+  },
+  "noResults": {
+    "title": "Tidak ada aturan yang cocok",
+    "description": "Coba sesuaikan pencarian atau filter untuk menemukan apa yang Anda cari."
+  },
+  "templates": {
+    "welcomeMessage": "Pesan Sambutan",
+    "welcomeMessageDesc": "Sambut anggota baru dengan pesan kustom di saluran",
+    "autoRole": "Peran Otomatis",
+    "autoRoleDesc": "Berikan peran secara otomatis ketika anggota bergabung",
+    "logDeleted": "Log Pesan yang Dihapus",
+    "logDeletedDesc": "Kirim info pesan yang dihapus ke saluran log",
+    "boostThankYou": "Terima Kasih Boost",
+    "boostThankYouDesc": "Kirim DM untuk berterima kasih kepada pengguna yang boost server",
+    "banLogger": "Logger Ban",
+    "banLoggerDesc": "Catat kejadian ban ke saluran moderasi",
+    "autoThread": "Thread Otomatis",
+    "autoThreadDesc": "Buat thread secara otomatis ketika pesan dikirim"
+  },
+  "deleteDialog": {
+    "title": "Hapus Aturan",
+    "description": "Apakah Anda yakin ingin menghapus \"{{name}}\"? Tindakan ini tidak dapat dibatalkan.",
+    "confirm": "Hapus"
+  },
+  "bulkDeleteDialog": {
+    "title": "Hapus Aturan yang Dipilih",
+    "description": "Apakah Anda yakin ingin menghapus {{count}} aturan? Tindakan ini tidak dapat dibatalkan.",
+    "description_other": "Apakah Anda yakin ingin menghapus {{count}} aturan? Tindakan ini tidak dapat dibatalkan.",
+    "confirm": "Hapus Semua"
+  },
+  "toast": {
+    "deleted": "Aturan dihapus",
+    "deleteFailed": "Gagal menghapus aturan",
+    "enabled": "Aturan diaktifkan",
+    "disabled": "Aturan dinonaktifkan",
+    "toggleFailed": "Gagal mengalihkan aturan",
+    "duplicated": "Aturan diduplikasi",
+    "duplicateFailed": "Gagal menduplikasi aturan",
+    "bulkEnabled": "{{count}} aturan diaktifkan",
+    "bulkDisabled": "{{count}} aturan dinonaktifkan",
+    "bulkEnableFailed": "Gagal mengaktifkan aturan",
+    "bulkDisableFailed": "Gagal menonaktifkan aturan",
+    "bulkDeleted": "{{count}} aturan dihapus",
+    "bulkDeleteFailed": "Gagal menghapus aturan"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "title": "Geskeduleerde Boodskappe",
+  "subtitle": "Skep herhalende outo-geplaasde boodskappe op instelbare skedules.",
+  "stats": {
+    "totalMessages": "Totale Boodskappe",
+    "active": "Aktief",
+    "inactive": "Onaktief"
+  },
+  "table": {
+    "name": "Naam",
+    "channel": "Kanaal",
+    "schedule": "Skedule",
+    "nextRun": "Volgende Uitvoering",
+    "status": "Status"
+  },
+  "dialog": {
+    "editTitle": "Wysig Geskeduleerde Boodskap",
+    "createTitle": "Nuwe Geskeduleerde Boodskap"
+  },
+  "form": {
+    "name": "Naam",
+    "channel": "Kanaal",
+    "schedulePreset": "Skedulevoorinstelling",
+    "cronExpression": "Cron-uitdrukking",
+    "timezone": "Tydsone",
+    "messageContent": "Boodskapinhoud",
+    "text": "Teks",
+    "embed": "Embed",
+    "enabled": "Geaktiveer",
+    "enabledDesc": "Of hierdie geskeduleerde boodskap aktief is."
+  },
+  "cronPresets": {
+    "everyHour": "Elke Uur",
+    "every6Hours": "Elke 6 Ure",
+    "daily9am": "Daagliks om 9 VM",
+    "dailyMidnight": "Daagliks om Middernag",
+    "weeklyMonday": "Weekliks op Maandag",
+    "monthly1st": "Maandeliks op die 1ste",
+    "custom": "Pasgemaak"
+  },
+  "embed": {
+    "title": "Titel",
+    "description": "Beskrywing",
+    "color": "Kleur (hex)",
+    "footer": "Voetskrif",
+    "thumbnail": "Duimnael-URL",
+    "image": "Beeld-URL"
+  },
+  "toast": {
+    "created": "Geskeduleerde boodskap geskep",
+    "createFailed": "Kon nie geskeduleerde boodskap skep nie",
+    "updated": "Geskeduleerde boodskap bygewerk",
+    "updateFailed": "Kon nie geskeduleerde boodskap bywerk nie",
+    "deleted": "Geskeduleerde boodskap verwyder",
+    "deleteFailed": "Kon nie geskeduleerde boodskap verwyder nie",
+    "testSent": "Toetsboodskap gestuur",
+    "testFailed": "Kon nie toetsboodskap stuur nie"
+  },
+  "empty": {
+    "title": "Nog geen geskeduleerde boodskappe nie",
+    "description": "Skep 'n geskeduleerde boodskap om outomaties inhoud op 'n herhalende basis te plaas.",
+    "createButton": "Skep Boodskap"
+  },
+  "pagination": {
+    "previous": "Vorige",
+    "next": "Volgende",
+    "page": "Bladsy {{page}} van {{total}}"
+  },
+  "actions": {
+    "newMessage": "Nuwe Boodskap",
+    "testSend": "Toetsstuur",
+    "edit": "Wysig",
+    "delete": "Verwyder",
+    "save": "Stoor",
+    "cancel": "Kanselleer"
+  },
+  "validation": {
+    "nameRequired": "Boodskapnaam is verpligtend",
+    "channelRequired": "Kanaal is verpligtend"
+  },
+  "cronPreview": {
+    "nextRuns": "Volgende Uitvoerings"
+  },
+  "characters": "{{count}}/2000 karakters",
+  "never": "Nooit"
+}

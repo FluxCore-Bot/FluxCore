@@ -1,0 +1,9 @@
+{
+  "title": "Jou Bedieners",
+  "subtitle": "Kies 'n bediener om te bestuur en op te stel.",
+  "loading": "Laai bedieners...",
+  "empty": {
+    "title": "Geen bedieners gevind nie",
+    "description": "Maak seker die bot is bygevoeg by 'n bediener waar jy die Bestuur Bediener-toestemming het."
+  }
+}

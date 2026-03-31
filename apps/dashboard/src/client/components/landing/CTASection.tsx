@@ -1,7 +1,9 @@
+import { useTranslation } from "react-i18next";
 import { Icon } from "../Icon";
 import { useBotInfo } from "../../lib/hooks/useBotInfo";
 
 export function CTASection() {
+  const { t } = useTranslation("landing");
   const { data: botInfo } = useBotInfo();
   return (
     <section className="px-4 py-16 sm:px-6 sm:py-24">
@@ -13,10 +15,10 @@ export function CTASection() {
 
         <div className="relative z-10">
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-text md:text-4xl">
-            Ready to upgrade your community?
+            {t("ctaSection.title")}
           </h2>
           <p className="mx-auto mb-8 max-w-lg text-text-muted">
-            Get started in minutes with zero configuration. Self-hosted, open-source, and completely free.
+            {t("ctaSection.subtitle")}
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             {botInfo?.inviteUrl && (
@@ -27,7 +29,7 @@ export function CTASection() {
                 className="group inline-flex h-12 items-center gap-2.5 rounded-lg bg-accent px-8 font-semibold text-bg shadow-lg shadow-accent/20 transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
               >
                 <Icon name="add_circle" size={18} />
-                Add to Server
+                {t("cta.addToServer")}
               </a>
             )}
             <a
@@ -35,7 +37,7 @@ export function CTASection() {
               className="inline-flex h-12 items-center gap-2.5 rounded-lg border border-outline-variant/20 bg-surface-high px-8 font-semibold text-text transition-all duration-200 hover:bg-surface-hover active:scale-[0.98]"
             >
               <Icon name="bolt" size={18} />
-              Open Dashboard
+              {t("cta.openDashboard")}
             </a>
           </div>
         </div>

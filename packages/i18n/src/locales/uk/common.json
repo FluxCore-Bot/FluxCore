@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "Панель керування FluxCore"
+  },
+  "status": {
+    "online": "Онлайн",
+    "offline": "Офлайн",
+    "latency": "{{ms}}мс"
+  },
+  "nav": {
+    "overview": "Огляд",
+    "automation": "Автоматизація",
+    "music": "Музика",
+    "tempvoice": "TempVoice",
+    "welcome": "Привітання",
+    "moderation": "Модерація",
+    "warnings": "Попередження",
+    "rolePanels": "Панелі ролей",
+    "leveling": "Рівні",
+    "scheduled": "Заплановані",
+    "commands": "Команди",
+    "security": "Безпека",
+    "tickets": "Тікети",
+    "giveaways": "Розіграші",
+    "suggestions": "Пропозиції",
+    "starboard": "Дошка пошани",
+    "logs": "Логи",
+    "permissions": "Права доступу",
+    "settings": "Налаштування"
+  },
+  "actions": {
+    "save": "Зберегти",
+    "cancel": "Скасувати",
+    "delete": "Видалити",
+    "edit": "Редагувати",
+    "create": "Створити",
+    "add": "Додати",
+    "remove": "Видалити",
+    "confirm": "Підтвердити",
+    "close": "Закрити",
+    "back": "Назад",
+    "next": "Далі",
+    "search": "Пошук",
+    "filter": "Фільтр",
+    "refresh": "Оновити",
+    "reset": "Скинути",
+    "enable": "Увімкнути",
+    "disable": "Вимкнути",
+    "copy": "Копіювати",
+    "export": "Експорт",
+    "import": "Імпорт",
+    "submit": "Надіслати",
+    "loading": "Завантаження...",
+    "retry": "Повторити"
+  },
+  "labels": {
+    "enabled": "Увімкнено",
+    "disabled": "Вимкнено",
+    "active": "Активно",
+    "inactive": "Неактивно",
+    "none": "Немає",
+    "all": "Всі",
+    "custom": "Налаштовуваний",
+    "default": "За замовчуванням",
+    "required": "Обов'язково",
+    "optional": "Необов'язково",
+    "name": "Назва",
+    "description": "Опис",
+    "type": "Тип",
+    "status": "Статус",
+    "channel": "Канал",
+    "role": "Роль",
+    "member": "Учасник",
+    "duration": "Тривалість",
+    "reason": "Причина",
+    "language": "Мова"
+  },
+  "header": {
+    "notifications": "Сповіщення",
+    "settings": "Налаштування",
+    "logout": "Вийти",
+    "toggleSidebar": "Перемкнути бічну панель",
+    "refreshData": "Оновити дані Discord"
+  },
+  "sidebar": {
+    "closeSidebar": "Закрити бічну панель",
+    "addToServer": "Додати на сервер",
+    "docs": "Документація",
+    "support": "Підтримка",
+    "backToServers": "Назад до серверів"
+  },
+  "empty": {
+    "noData": "Дані відсутні",
+    "noResults": "Результатів не знайдено",
+    "noItems": "Елементів поки немає"
+  },
+  "time": {
+    "seconds": "секунди",
+    "minutes": "хвилини",
+    "hours": "години",
+    "days": "дні",
+    "ago": "{{time}} тому",
+    "in": "через {{time}}"
+  },
+  "confirm": {
+    "title": "Ви впевнені?",
+    "deleteTitle": "Підтвердження видалення",
+    "deleteMessage": "Цю дію не можна скасувати.",
+    "unsavedChanges": "У вас є незбережені зміни. Ви впевнені, що хочете піти?"
+  },
+  "accessibility": {
+    "skipToContent": "Перейти до основного вмісту",
+    "loading": "Завантаження вмісту",
+    "loaded": "Вміст завантажено",
+    "error": "Сталася помилка",
+    "menuOpen": "Меню відкрите",
+    "menuClosed": "Меню закрите"
+  }
+}

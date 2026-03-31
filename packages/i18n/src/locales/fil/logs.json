@@ -1,0 +1,8 @@
+{
+  "title": "Mga Log",
+  "subtitle": "Subaybayan ang mga pagpapatupad ng panuntunan at pag-log ng event.",
+  "tabs": {
+    "activity": "Mga Log ng Aktibidad",
+    "events": "Mga Log ng Event"
+  }
+}

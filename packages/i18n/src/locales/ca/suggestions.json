@@ -1,0 +1,67 @@
+{
+  "title": "Suggeriments",
+  "subtitle": "Permet als membres enviar idees i votar-les. Gestiona l'estat i els comentaris.",
+  "stats": {
+    "totalSuggestions": "Total de suggeriments",
+    "systemStatus": "Estat del sistema",
+    "channel": {
+      "configured": "Canal configurat",
+      "notSet": "Canal no establert"
+    }
+  },
+  "tabs": {
+    "suggestions": "Suggeriments",
+    "settings": "Configuració"
+  },
+  "filter": {
+    "filterByStatus": "Filtrar per estat",
+    "all": "Tots",
+    "pending": "Pendents",
+    "approved": "Aprovats",
+    "rejected": "Rebutjats",
+    "implemented": "Implementats",
+    "considered": "En consideració"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Autor",
+    "content": "Contingut",
+    "status": "Estat",
+    "votes": "Vots",
+    "date": "Data"
+  },
+  "actions": {
+    "approve": "Aprovar",
+    "reject": "Rebutjar",
+    "implement": "Marcar com a implementat",
+    "consider": "Considerar",
+    "delete": "Eliminar"
+  },
+  "settings": {
+    "channel": "Canal de suggeriments",
+    "channelDesc": "El canal on es publiquen els suggeriments per votar.",
+    "voteEmojis": "Emojis de votació",
+    "voteEmojisDesc": "Emojis utilitzats per a les reaccions de vot a favor i en contra.",
+    "autoThread": "Crear fil automaticament",
+    "autoThreadDesc": "Crea automaticament un fil de discussió a cada nou suggeriment.",
+    "dmOnStatusChange": "DM en canvi d'estat",
+    "dmOnStatusChangeDesc": "Notifica l'autor per DM quan canvia l'estat del seu suggeriment."
+  },
+  "toast": {
+    "approved": "Suggeriment aprovat",
+    "rejected": "Suggeriment rebutjat",
+    "implemented": "Suggeriment marcat com a implementat",
+    "considered": "Suggeriment marcat com en consideració",
+    "deleted": "Suggeriment eliminat",
+    "actionFailed": "No s'ha pogut actualitzar el suggeriment",
+    "settingsSaved": "Configuració de suggeriments desada",
+    "settingsFailed": "No s'ha pogut desar la configuració de suggeriments"
+  },
+  "empty": "Encara no hi ha suggeriments.",
+  "loading": "Carregant suggeriments...",
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguent",
+    "page": "Pagina {{page}} de {{total}}"
+  }
+}

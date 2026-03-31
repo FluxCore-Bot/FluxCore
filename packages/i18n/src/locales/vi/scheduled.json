@@ -1,0 +1,86 @@
+{
+  "title": "Tin Nhắn Lịch Trình",
+  "subtitle": "Tạo tin nhắn được đăng tự động theo lịch có thể cấu hình.",
+  "stats": {
+    "totalMessages": "Tổng Tin Nhắn",
+    "active": "Đang Hoạt Động",
+    "inactive": "Không Hoạt Động"
+  },
+  "table": {
+    "name": "Tên",
+    "channel": "Kênh",
+    "schedule": "Lịch Trình",
+    "nextRun": "Lần Chạy Tiếp",
+    "status": "Trạng Thái"
+  },
+  "dialog": {
+    "editTitle": "Chỉnh Sửa Tin Nhắn Lịch Trình",
+    "createTitle": "Tin Nhắn Lịch Trình Mới"
+  },
+  "form": {
+    "name": "Tên",
+    "channel": "Kênh",
+    "schedulePreset": "Mẫu Lịch Trình",
+    "cronExpression": "Biểu Thức Cron",
+    "timezone": "Múi Giờ",
+    "messageContent": "Nội Dung Tin Nhắn",
+    "text": "Văn Bản",
+    "embed": "Embed",
+    "enabled": "Đang Bật",
+    "enabledDesc": "Tin nhắn lịch trình này có đang hoạt động không."
+  },
+  "cronPresets": {
+    "everyHour": "Mỗi Giờ",
+    "every6Hours": "Mỗi 6 Giờ",
+    "daily9am": "Hàng Ngày Lúc 9 Giờ Sáng",
+    "dailyMidnight": "Hàng Ngày Lúc Nửa Đêm",
+    "weeklyMonday": "Hàng Tuần Vào Thứ Hai",
+    "monthly1st": "Hàng Tháng Vào Ngày 1",
+    "custom": "Tùy Chỉnh"
+  },
+  "embed": {
+    "title": "Tiêu Đề",
+    "description": "Mô Tả",
+    "color": "Màu Sắc (hex)",
+    "footer": "Chân Trang",
+    "thumbnail": "URL Hình Thu Nhỏ",
+    "image": "URL Hình Ảnh"
+  },
+  "toast": {
+    "created": "Đã tạo tin nhắn lịch trình",
+    "createFailed": "Tạo tin nhắn lịch trình thất bại",
+    "updated": "Đã cập nhật tin nhắn lịch trình",
+    "updateFailed": "Cập nhật tin nhắn lịch trình thất bại",
+    "deleted": "Đã xóa tin nhắn lịch trình",
+    "deleteFailed": "Xóa tin nhắn lịch trình thất bại",
+    "testSent": "Đã gửi tin nhắn kiểm tra",
+    "testFailed": "Gửi tin nhắn kiểm tra thất bại"
+  },
+  "empty": {
+    "title": "Chưa có tin nhắn lịch trình",
+    "description": "Tạo tin nhắn lịch trình để tự động đăng nội dung theo chu kỳ.",
+    "createButton": "Tạo Tin Nhắn"
+  },
+  "pagination": {
+    "previous": "Trước",
+    "next": "Tiếp",
+    "page": "Trang {{page}} / {{total}}"
+  },
+  "actions": {
+    "newMessage": "Tin Nhắn Mới",
+    "testSend": "Gửi Kiểm Tra",
+    "edit": "Chỉnh Sửa",
+    "delete": "Xóa",
+    "save": "Lưu",
+    "cancel": "Hủy"
+  },
+  "validation": {
+    "nameRequired": "Tên tin nhắn là bắt buộc",
+    "channelRequired": "Kênh là bắt buộc"
+  },
+  "cronPreview": {
+    "nextRuns": "Các Lần Chạy Tiếp"
+  },
+  "characters": "{{count}}/2000 ký tự",
+  "never": "Không Bao Giờ"
+}

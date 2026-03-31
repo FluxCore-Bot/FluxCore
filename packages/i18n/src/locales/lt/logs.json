@@ -1,0 +1,8 @@
+{
+  "title": "Zurnalas",
+  "subtitle": "Stebkite taisykliu vykdyma ir ivykiu registravima.",
+  "tabs": {
+    "activity": "Veiklos zurnalas",
+    "events": "Ivykiu zurnalas"
+  }
+}

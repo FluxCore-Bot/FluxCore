@@ -1,0 +1,77 @@
+{
+  "title": "Sistem vstopnic",
+  "subtitle": "Ustvarite plošče vstopnic za podporo in upravljajte odprte vstopnice z nadzorne plošče.",
+  "stats": {
+    "totalTickets": "Skupaj vstopnic",
+    "open": "Odprto",
+    "claimed": "Prevzeto",
+    "panels": "Plošče"
+  },
+  "tabs": {
+    "activeTickets": "Aktivne vstopnice",
+    "panelBuilder": "Graditelj plošč",
+    "settings": "Nastavitve"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Uporabnik",
+    "subject": "Zadeva",
+    "status": "Stanje",
+    "assignee": "Dodeljen",
+    "created": "Ustvarjeno"
+  },
+  "statuses": {
+    "open": "Odprto",
+    "claimed": "Prevzeto",
+    "closed": "Zaprto"
+  },
+  "panelBuilder": {
+    "title": "Naslov plošče",
+    "channel": "Kanal",
+    "buttonLabel": "Oznaka gumba",
+    "welcomeMessage": "Sporočilo dobrodošlice",
+    "category": "Kategorija vstopnice",
+    "create": "Ustvari ploščo",
+    "edit": "Uredi ploščo",
+    "deploy": "Namesti ploščo"
+  },
+  "settings": {
+    "transcriptChannel": "Kanal prepisov",
+    "transcriptChannelDesc": "Kanal, kjer so shranjeni prepisi vstopnic ob zaprtju.",
+    "maxTicketsPerUser": "Maks vstopnic na uporabnika",
+    "maxTicketsPerUserDesc": "Največje število odprtih vstopnic, ki jih ima lahko en uporabnik.",
+    "closeConfirmation": "Potrditev zaprtja",
+    "closeConfirmationDesc": "Zahtevajte potrditev pred zaprtjem vstopnice.",
+    "dmTranscript": "DM prepis",
+    "dmTranscriptDesc": "Pošljite kopijo prepisa ustvarjalcu vstopnice prek DM."
+  },
+  "actions": {
+    "claim": "Prevzemi",
+    "close": "Zapri",
+    "delete": "Izbriši",
+    "reopen": "Znova odpri"
+  },
+  "toast": {
+    "panelCreated": "Plošča vstopnic ustvarjena",
+    "panelCreateFailed": "Ustvarjanje plošče vstopnic ni uspelo",
+    "panelUpdated": "Plošča vstopnic posodobljena",
+    "panelUpdateFailed": "Posodabljanje plošče vstopnic ni uspelo",
+    "panelDeployed": "Plošča vstopnic nameščena",
+    "panelDeployFailed": "Nameščanje plošče vstopnic ni uspelo",
+    "ticketClaimed": "Vstopnica prevzeta",
+    "ticketClaimFailed": "Prevzemanje vstopnice ni uspelo",
+    "ticketClosed": "Vstopnica zaprta",
+    "ticketCloseFailed": "Zapiranje vstopnice ni uspelo",
+    "ticketReopened": "Vstopnica znova odprta",
+    "ticketReopenFailed": "Ponovno odpiranje vstopnice ni uspelo",
+    "ticketDeleted": "Vstopnica izbrisana",
+    "ticketDeleteFailed": "Brisanje vstopnice ni uspelo",
+    "settingsSaved": "Nastavitve vstopnic shranjene",
+    "settingsFailed": "Shranjevanje nastavitev vstopnic ni uspelo"
+  },
+  "empty": {
+    "tickets": "Ni aktivnih vstopnic.",
+    "panels": "Še ni ustvarjenih plošč vstopnic."
+  },
+  "loading": "Nalaganje vstopnic..."
+}

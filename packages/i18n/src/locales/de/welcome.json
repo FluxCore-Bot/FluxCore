@@ -1,0 +1,65 @@
+{
+  "title": "Willkommen & Abschied",
+  "subtitle": "Konfigurieren Sie Willkommens- und Abschiedsnachrichten, Bilder und automatische Rollen.",
+  "loadingSubtitle": "Konfigurieren Sie Willkommens- und Abschiedsnachrichten fuer Ihren Server.",
+  "tabs": {
+    "welcome": "Willkommen",
+    "welcomeImage": "Willkommensbild",
+    "farewell": "Abschied",
+    "farewellImage": "Abschiedsbild",
+    "dm": "Willkommens-DM",
+    "autorole": "Automatische Rolle"
+  },
+  "welcome": {
+    "title": "Willkommensnachricht",
+    "description": "Senden Sie ein benutzerdefiniertes Embed, wenn ein neues Mitglied beitritt.",
+    "channelLabel": "Willkommenskanal-ID",
+    "channelPlaceholder": "Kanal-ID...",
+    "embedBuilder": "Embed-Editor"
+  },
+  "welcomeImage": {
+    "title": "Willkommensbild",
+    "description": "Generieren Sie eine benutzerdefinierte Bildkarte mit dem Avatar des Mitglieds beim Beitritt.",
+    "disabled": "Aktivieren Sie den Schalter oben, um Willkommensbilder zu konfigurieren."
+  },
+  "farewell": {
+    "title": "Abschiedsnachricht",
+    "description": "Senden Sie eine Nachricht, wenn ein Mitglied den Server verlaesst.",
+    "channelLabel": "Abschiedskanal-ID",
+    "channelPlaceholder": "Kanal-ID..."
+  },
+  "farewellImage": {
+    "title": "Abschiedsbild",
+    "description": "Generieren Sie eine benutzerdefinierte Abschiedskarte, wenn ein Mitglied den Server verlaesst.",
+    "disabled": "Aktivieren Sie den Schalter oben, um Abschiedsbilder zu konfigurieren."
+  },
+  "dm": {
+    "title": "Willkommens-DM",
+    "description": "Senden Sie neuen Mitgliedern eine Direktnachricht. Schlaegt stillschweigend fehl, wenn DMs deaktiviert sind."
+  },
+  "autorole": {
+    "title": "Automatische Rolle",
+    "description": "Weisen Sie neuen Mitgliedern beim Beitritt automatisch Rollen zu. Bots sind ausgenommen. Der Bot muss eine hoehere Rolle als die hier aufgelisteten Rollen haben.",
+    "label": "Rollen-IDs (kommagetrennt)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Titel",
+    "description": "Beschreibung",
+    "color": "Farbe (Hex)",
+    "footer": "Fusszeile",
+    "thumbnail": "Vorschaubild-URL",
+    "image": "Bild-URL",
+    "variables": "Variablen:"
+  },
+  "saveChanges": "Aenderungen speichern",
+  "saving": "Speichern...",
+  "sendTest": "Testnachricht senden",
+  "sending": "Senden...",
+  "toast": {
+    "saved": "Willkommenskonfiguration gespeichert",
+    "saveFailed": "Konfiguration konnte nicht gespeichert werden",
+    "testSent": "Testnachricht wird an <#{{channelId}}> gesendet",
+    "testFailed": "Testnachricht konnte nicht gesendet werden"
+  }
+}

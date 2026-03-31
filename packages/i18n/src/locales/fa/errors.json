@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "احراز هویت نشده",
+    "sessionExpired": "نشست منقضی شده است",
+    "missingCode": "پارامتر کد موجود نیست",
+    "tokenExchangeFailed": "تبادل توکن ناموفق بود",
+    "failedToFetchUser": "دریافت اطلاعات کاربر ناموفق بود"
+  },
+  "permissions": {
+    "noGuildPermission": "دسترسی به این سرور وجود ندارد",
+    "botNotInGuild": "ربات در این سرور نیست",
+    "insufficientPermissions": "دسترسی‌ها کافی نیست",
+    "permissionsNotResolved": "دسترسی‌ها تعیین نشده‌اند",
+    "requiresPermission": "این عمل نیاز به دسترسی \"{{permission}}\" دارد"
+  },
+  "validation": {
+    "invalidInput": "ورودی نامعتبر",
+    "missingField": "فیلد الزامی موجود نیست: {{field}}",
+    "invalidFormat": "قالب نامعتبر برای {{field}}",
+    "tooLong": "{{field}} از حداکثر {{max}} کاراکتر بیشتر است",
+    "tooShort": "{{field}} باید حداقل {{min}} کاراکتر باشد",
+    "outOfRange": "{{field}} باید بین {{min}} و {{max}} باشد"
+  },
+  "resources": {
+    "notFound": "یافت نشد",
+    "alreadyExists": "{{resource}} از قبل وجود دارد",
+    "limitReached": "حداکثر {{max}} {{resource}} برای هر سرور",
+    "createFailed": "ایجاد {{resource}} ناموفق بود",
+    "updateFailed": "به‌روزرسانی {{resource}} ناموفق بود",
+    "deleteFailed": "حذف {{resource}} ناموفق بود"
+  },
+  "server": {
+    "internalError": "خطای داخلی سرور",
+    "serviceUnavailable": "سرویس موقتاً در دسترس نیست",
+    "rateLimited": "درخواست‌های بیش از حد. لطفاً بعداً تلاش کنید."
+  },
+  "csrf": {
+    "invalidToken": "توکن CSRF نامعتبر یا موجود نیست"
+  }
+}

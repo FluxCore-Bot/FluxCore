@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Nie gestaaf nie",
+    "sessionExpired": "Sessie verval",
+    "missingCode": "Ontbrekende kode-parameter",
+    "tokenExchangeFailed": "Token-uitruiling het misluk",
+    "failedToFetchUser": "Kon nie gebruikersinligting kry nie"
+  },
+  "permissions": {
+    "noGuildPermission": "Geen toestemming vir hierdie bediener nie",
+    "botNotInGuild": "Bot is nie in hierdie bediener nie",
+    "insufficientPermissions": "Onvoldoende toestemmings",
+    "permissionsNotResolved": "Toestemmings nie opgelos nie",
+    "requiresPermission": "Hierdie aksie vereis die \"{{permission}}\"-toestemming"
+  },
+  "validation": {
+    "invalidInput": "Ongeldige invoer",
+    "missingField": "Ontbrekende verpligte veld: {{field}}",
+    "invalidFormat": "Ongeldige formaat vir {{field}}",
+    "tooLong": "{{field}} oorskry die maksimum lengte van {{max}} karakters",
+    "tooShort": "{{field}} moet ten minste {{min}} karakters wees",
+    "outOfRange": "{{field}} moet tussen {{min}} en {{max}} wees"
+  },
+  "resources": {
+    "notFound": "Nie gevind nie",
+    "alreadyExists": "{{resource}} bestaan reeds",
+    "limitReached": "Maksimum van {{max}} {{resource}} per bediener",
+    "createFailed": "Kon nie {{resource}} skep nie",
+    "updateFailed": "Kon nie {{resource}} bywerk nie",
+    "deleteFailed": "Kon nie {{resource}} verwyder nie"
+  },
+  "server": {
+    "internalError": "Interne bedienerfout",
+    "serviceUnavailable": "Diens tydelik onbeskikbaar",
+    "rateLimited": "Te veel versoeke. Probeer asseblief later weer."
+  },
+  "csrf": {
+    "invalidToken": "Ongeldige of ontbrekende CSRF-token"
+  }
+}

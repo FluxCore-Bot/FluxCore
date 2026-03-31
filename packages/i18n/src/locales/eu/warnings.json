@@ -1,0 +1,72 @@
+{
+  "title": "Abisuak",
+  "subtitle": "Jarraitu eta kudeatu kideen abisuak eskalada automatikoarekin.",
+  "stats": {
+    "totalWarnings": "Abisu Guztiak",
+    "escalationRules": "Eskalada Arauak",
+    "dmOnWarn": "DM Abisuan"
+  },
+  "tabs": {
+    "warnings": "Abisu Erregistroa",
+    "escalation": "Eskalada",
+    "settings": "Ezarpenak"
+  },
+  "table": {
+    "id": "IDa",
+    "user": "Erabiltzailea",
+    "moderator": "Moderatzailea",
+    "reason": "Arrazoia",
+    "date": "Data"
+  },
+  "filter": {
+    "userPlaceholder": "Erabiltzaile IDaren arabera iragazi...",
+    "clearAll": "Dena Garbitu"
+  },
+  "pagination": {
+    "previous": "Aurrekoa",
+    "next": "Hurrengoa",
+    "page": "{{page}} / {{total}} orrialdea ({{count}} guztira)"
+  },
+  "loading": "Abisuak kargatzen...",
+  "noWarnings": "Ez da abisuzik aurkitu.",
+  "toast": {
+    "warningRemoved": "Abisua kenduta",
+    "warningsFailed": "Ezin izan da abisua ezabatu",
+    "enterUserId": "Sartu erabiltzaile ID bat erabiltzaile horren abisu guztiak garbitzeko",
+    "allCleared": "Erabiltzailearen abisu guztiak garbitu dira",
+    "clearFailed": "Ezin izan dira abisuak garbitu",
+    "thresholdAdded": "Zigor atalasea gehitua",
+    "thresholdFailed": "Ezin izan da zigorra gehitu",
+    "thresholdRemoved": "Zigorra kenduta",
+    "removeFailed": "Ezin izan da zigorra kendu",
+    "settingFailed": "Ezin izan da ezarpena eguneratu",
+    "thresholdInvalid": "Atalasea zenbaki positibo bat izan behar da"
+  },
+  "escalation": {
+    "title": "Zigor Eskalada",
+    "description": "Konfiguratu ekintza automatikoak erabiltzaile batek abisu kopuru jakin bat lortzen duenean.",
+    "threshold": "Atalasea",
+    "action": "Ekintza",
+    "duration": "Iraupena",
+    "noRules": "Ez dago eskalada araurik konfiguratuta.",
+    "addRule": "Eskalada Araua Gehitu",
+    "addButton": "Araua Gehitu",
+    "warnings": "{{count}} abisu",
+    "min": "{{count}} min",
+    "timeout": "Isilarazi",
+    "kick": "Kanporatu",
+    "ban": "Debekatu",
+    "durationLabel": "Iraupena (segundoak)",
+    "thresholdPlaceholder": "adib. 3",
+    "durationPlaceholder": "adib. 3600"
+  },
+  "settings": {
+    "title": "Abisu Ezarpenak",
+    "dmOnWarn": "DM Abisuan",
+    "dmOnWarnDesc": "Bidali mezu zuzena erabiltzaileari abisua jasotzen duenean.",
+    "requireReason": "Arrazoia Beharrezkoa",
+    "requireReasonDesc": "Moderatzaileek arrazoia eman behar dute abisua ematean.",
+    "maxWarnings": "Gehienezko Abisuak",
+    "maxWarningsDesc": "Erabiltzaileko gehienezko abisuak (0 = mugagabea)."
+  }
+}

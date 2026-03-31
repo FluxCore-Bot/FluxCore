@@ -1,0 +1,112 @@
+{
+  "title": "Панелі ролей",
+  "subtitle": "Створюйте панелі самопризначення ролей за допомогою кнопок, випадаючих списків або реакцій.",
+  "stats": {
+    "totalPanels": "Всього панелей",
+    "deployed": "Розгорнуто",
+    "totalRoles": "Всього ролей"
+  },
+  "tabs": {
+    "panels": "Панелі",
+    "preview": "Попередній перегляд"
+  },
+  "table": {
+    "name": "Назва",
+    "type": "Тип",
+    "mode": "Режим",
+    "roles": "Ролі",
+    "status": "Статус"
+  },
+  "panelTypes": {
+    "reaction": "Реакція",
+    "button": "Кнопка",
+    "dropdown": "Випадаючий список"
+  },
+  "panelModes": {
+    "toggle": "Перемикання",
+    "unique": "Унікальний",
+    "verify": "Верифікація"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Перемикання (додати/прибрати)",
+    "unique": "Унікальний (лише одна за раз)",
+    "verify": "Верифікація (лише додавання)"
+  },
+  "status": {
+    "deployed": "Розгорнута",
+    "draft": "Чернетка"
+  },
+  "dialog": {
+    "createPanel": "Створити панель",
+    "editPanel": "Редагувати панель"
+  },
+  "panelList": {
+    "title": "Всі панелі"
+  },
+  "form": {
+    "name": "Назва",
+    "namePlaceholder": "напр. Кольорові ролі",
+    "type": "Тип",
+    "mode": "Режим",
+    "channel": "Канал",
+    "channelPlaceholder": "Оберіть канал",
+    "minRoles": "Мін. ролей",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Макс. ролей",
+    "maxRolesPlaceholder": "Всі",
+    "embedSection": "Ембед",
+    "embedTitle": "Заголовок",
+    "embedTitlePlaceholder": "Заголовок панелі (за замовчуванням — назва панелі)",
+    "embedDescription": "Опис",
+    "embedDescriptionPlaceholder": "Текст опису",
+    "rolesCount": "Ролі ({{count}}/25)",
+    "addRole": "Додати роль"
+  },
+  "entry": {
+    "role": "Роль",
+    "rolePlaceholder": "Оберіть роль",
+    "label": "Мітка",
+    "labelPlaceholder": "Текст кнопки",
+    "emoji": "Емодзі",
+    "emojiPlaceholder": "напр. star",
+    "description": "Опис",
+    "descriptionPlaceholder": "Опис варіанту",
+    "style": "Стиль"
+  },
+  "buttonStyles": {
+    "primary": "Основний",
+    "secondary": "Вторинний",
+    "success": "Успіх",
+    "danger": "Небезпека"
+  },
+  "actions": {
+    "create": "Створити",
+    "update": "Оновити",
+    "cancel": "Скасувати",
+    "deploy": "Розгорнути",
+    "delete": "Видалити",
+    "addEntry": "Додати запис",
+    "removeEntry": "Видалити запис"
+  },
+  "preview": {
+    "title": "Попередній перегляд",
+    "description": "Подивіться, як ваші панелі виглядатимуть у Discord.",
+    "selectRoles": "Оберіть ролі...",
+    "noPreview": "Немає панелей для перегляду."
+  },
+  "empty": "Панелей ролей ще не створено. Натисніть «Створити панель», щоб розпочати.",
+  "toast": {
+    "created": "Панель створено",
+    "createFailed": "Не вдалося створити панель",
+    "updated": "Панель оновлено",
+    "updateFailed": "Не вдалося оновити панель",
+    "deleted": "Панель видалено",
+    "deleteFailed": "Не вдалося видалити панель",
+    "deployed": "Панель ролей розгорнуто в канал",
+    "deployFailed": "Не вдалося надіслати панель",
+    "nameRequired": "Назва панелі обов'язкова",
+    "channelRequired": "Канал обов'язковий",
+    "maxRolesReached": "Максимум 25 ролей на панель"
+  },
+  "loading": "Завантаження панелей..."
+}

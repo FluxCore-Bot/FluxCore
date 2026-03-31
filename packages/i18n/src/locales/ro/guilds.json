@@ -1,0 +1,9 @@
+{
+  "title": "Serverele Tale",
+  "subtitle": "Alege un server de gestionat și configurat.",
+  "loading": "Se încarcă serverele...",
+  "empty": {
+    "title": "Nu s-au găsit servere",
+    "description": "Asigură-te că botul este adăugat pe un server unde ai permisiunea de a Gestiona Serverul."
+  }
+}

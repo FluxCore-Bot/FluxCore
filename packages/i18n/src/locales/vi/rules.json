@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Máy Chủ",
+    "automation": "Tự Động Hóa"
+  },
+  "title": "Quy Tắc Tự Động Hóa",
+  "subtitle": "Cấu hình các kích hoạt dựa trên sự kiện và phản hồi tự động cho máy chủ của bạn.",
+  "createRule": "Tạo Quy Tắc",
+  "stats": {
+    "totalRules": "Tổng Quy Tắc",
+    "active": "Đang Hoạt Động",
+    "executions7d": "Lần Thực Thi (7 ngày)",
+    "successRate": "Tỷ Lệ Thành Công"
+  },
+  "filter": {
+    "searchPlaceholder": "Tìm kiếm quy tắc...",
+    "eventType": "Loại sự kiện",
+    "allEvents": "Tất Cả Sự Kiện",
+    "allStatus": "Tất Cả Trạng Thái",
+    "enabled": "Đang Bật",
+    "disabled": "Đã Tắt",
+    "sortBy": "Sắp xếp theo",
+    "priority": "Ưu Tiên",
+    "name": "Tên",
+    "lastFired": "Lần Kích Hoạt Cuối",
+    "status": "Trạng Thái",
+    "clear": "Xóa",
+    "showing": "Hiển thị {{filtered}} / {{total}} quy tắc"
+  },
+  "bulk": {
+    "selected": "{{count}} quy tắc được chọn",
+    "selected_other": "{{count}} quy tắc được chọn",
+    "enable": "Bật",
+    "disable": "Tắt",
+    "delete": "Xóa",
+    "clear": "Xóa"
+  },
+  "empty": {
+    "title": "Bắt Đầu Với Tự Động Hóa",
+    "description": "Chọn một mẫu để bắt đầu nhanh chóng, hoặc tạo quy tắc từ đầu.",
+    "createFromScratch": "Tạo Từ Đầu"
+  },
+  "noResults": {
+    "title": "Không có quy tắc phù hợp",
+    "description": "Hãy thử điều chỉnh tìm kiếm hoặc bộ lọc để tìm những gì bạn cần."
+  },
+  "templates": {
+    "welcomeMessage": "Tin Nhắn Chào Mừng",
+    "welcomeMessageDesc": "Chào đón thành viên mới bằng tin nhắn tùy chỉnh trong kênh",
+    "autoRole": "Vai Trò Tự Động",
+    "autoRoleDesc": "Tự động gán vai trò khi thành viên tham gia",
+    "logDeleted": "Ghi Tin Nhắn Bị Xóa",
+    "logDeletedDesc": "Gửi thông tin tin nhắn bị xóa vào kênh nhật ký",
+    "boostThankYou": "Cảm Ơn Boost",
+    "boostThankYouDesc": "Gửi DM cảm ơn người dùng đã boost máy chủ",
+    "banLogger": "Ghi Nhật Ký Cấm",
+    "banLoggerDesc": "Ghi lại sự kiện cấm vào kênh kiểm duyệt",
+    "autoThread": "Tự Động Tạo Chủ Đề",
+    "autoThreadDesc": "Tự động tạo chủ đề khi tin nhắn được gửi"
+  },
+  "deleteDialog": {
+    "title": "Xóa Quy Tắc",
+    "description": "Bạn có chắc muốn xóa \"{{name}}\"? Hành động này không thể hoàn tác.",
+    "confirm": "Xóa"
+  },
+  "bulkDeleteDialog": {
+    "title": "Xóa Các Quy Tắc Đã Chọn",
+    "description": "Bạn có chắc muốn xóa {{count}} quy tắc? Hành động này không thể hoàn tác.",
+    "description_other": "Bạn có chắc muốn xóa {{count}} quy tắc? Hành động này không thể hoàn tác.",
+    "confirm": "Xóa Tất Cả"
+  },
+  "toast": {
+    "deleted": "Đã xóa quy tắc",
+    "deleteFailed": "Xóa quy tắc thất bại",
+    "enabled": "Đã bật quy tắc",
+    "disabled": "Đã tắt quy tắc",
+    "toggleFailed": "Thay đổi trạng thái quy tắc thất bại",
+    "duplicated": "Đã sao chép quy tắc",
+    "duplicateFailed": "Sao chép quy tắc thất bại",
+    "bulkEnabled": "Đã bật {{count}} quy tắc",
+    "bulkDisabled": "Đã tắt {{count}} quy tắc",
+    "bulkEnableFailed": "Bật các quy tắc thất bại",
+    "bulkDisableFailed": "Tắt các quy tắc thất bại",
+    "bulkDeleted": "Đã xóa {{count}} quy tắc",
+    "bulkDeleteFailed": "Xóa các quy tắc thất bại"
+  }
+}

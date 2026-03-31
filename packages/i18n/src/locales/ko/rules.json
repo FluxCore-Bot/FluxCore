@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "서버",
+    "automation": "자동화"
+  },
+  "title": "자동화 규칙",
+  "subtitle": "서버의 이벤트 기반 트리거와 자동 응답을 구성합니다.",
+  "createRule": "규칙 만들기",
+  "stats": {
+    "totalRules": "총 규칙",
+    "active": "활성",
+    "executions7d": "실행 횟수 (7일)",
+    "successRate": "성공률"
+  },
+  "filter": {
+    "searchPlaceholder": "규칙 검색...",
+    "eventType": "이벤트 유형",
+    "allEvents": "모든 이벤트",
+    "allStatus": "모든 상태",
+    "enabled": "활성화됨",
+    "disabled": "비활성화됨",
+    "sortBy": "정렬 기준",
+    "priority": "우선순위",
+    "name": "이름",
+    "lastFired": "마지막 실행",
+    "status": "상태",
+    "clear": "초기화",
+    "showing": "{{total}}개 중 {{filtered}}개 표시"
+  },
+  "bulk": {
+    "selected": "{{count}}개 규칙 선택됨",
+    "selected_other": "{{count}}개 규칙 선택됨",
+    "enable": "활성화",
+    "disable": "비활성화",
+    "delete": "삭제",
+    "clear": "초기화"
+  },
+  "empty": {
+    "title": "자동화 시작하기",
+    "description": "템플릿을 선택하여 빠르게 시작하거나 규칙을 처음부터 만드세요.",
+    "createFromScratch": "처음부터 만들기"
+  },
+  "noResults": {
+    "title": "일치하는 규칙 없음",
+    "description": "검색어나 필터를 조정하여 원하는 것을 찾아보세요."
+  },
+  "templates": {
+    "welcomeMessage": "환영 메시지",
+    "welcomeMessageDesc": "새 멤버를 채널에서 커스텀 메시지로 환영합니다",
+    "autoRole": "자동 역할",
+    "autoRoleDesc": "멤버가 참여할 때 자동으로 역할을 할당합니다",
+    "logDeleted": "삭제된 메시지 로그",
+    "logDeletedDesc": "삭제된 메시지 정보를 로그 채널로 보냅니다",
+    "boostThankYou": "부스트 감사",
+    "boostThankYouDesc": "서버를 부스트한 사용자에게 DM으로 감사 인사를 보냅니다",
+    "banLogger": "차단 로거",
+    "banLoggerDesc": "차단 이벤트를 관리 채널에 기록합니다",
+    "autoThread": "자동 스레드",
+    "autoThreadDesc": "메시지가 전송되면 자동으로 스레드를 생성합니다"
+  },
+  "deleteDialog": {
+    "title": "규칙 삭제",
+    "description": "\"{{name}}\"을(를) 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+    "confirm": "삭제"
+  },
+  "bulkDeleteDialog": {
+    "title": "선택한 규칙 삭제",
+    "description": "{{count}}개의 규칙을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+    "description_other": "{{count}}개의 규칙을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+    "confirm": "모두 삭제"
+  },
+  "toast": {
+    "deleted": "규칙이 삭제되었습니다",
+    "deleteFailed": "규칙 삭제에 실패했습니다",
+    "enabled": "규칙이 활성화되었습니다",
+    "disabled": "규칙이 비활성화되었습니다",
+    "toggleFailed": "규칙 전환에 실패했습니다",
+    "duplicated": "규칙이 복제되었습니다",
+    "duplicateFailed": "규칙 복제에 실패했습니다",
+    "bulkEnabled": "{{count}}개 규칙이 활성화되었습니다",
+    "bulkDisabled": "{{count}}개 규칙이 비활성화되었습니다",
+    "bulkEnableFailed": "규칙 활성화에 실패했습니다",
+    "bulkDisableFailed": "규칙 비활성화에 실패했습니다",
+    "bulkDeleted": "{{count}}개 규칙이 삭제되었습니다",
+    "bulkDeleteFailed": "규칙 삭제에 실패했습니다"
+  }
+}

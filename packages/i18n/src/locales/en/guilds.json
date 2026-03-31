@@ -1,0 +1,9 @@
+{
+  "title": "Your Servers",
+  "subtitle": "Choose a server to manage and configure.",
+  "loading": "Loading servers...",
+  "empty": {
+    "title": "No servers found",
+    "description": "Make sure the bot is added to a server where you have the Manage Server permission."
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "title": "Suggesties",
+  "subtitle": "Laat leden ideeën indienen en erop stemmen. Beheer status en feedback.",
+  "stats": {
+    "totalSuggestions": "Totaal suggesties",
+    "systemStatus": "Systeemstatus",
+    "channel": {
+      "configured": "Kanaal geconfigureerd",
+      "notSet": "Kanaal niet ingesteld"
+    }
+  },
+  "tabs": {
+    "suggestions": "Suggesties",
+    "settings": "Instellingen"
+  },
+  "filter": {
+    "filterByStatus": "Filteren op status",
+    "all": "Alle",
+    "pending": "In behandeling",
+    "approved": "Goedgekeurd",
+    "rejected": "Afgewezen",
+    "implemented": "Geïmplementeerd",
+    "considered": "Wordt overwogen"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Auteur",
+    "content": "Inhoud",
+    "status": "Status",
+    "votes": "Stemmen",
+    "date": "Datum"
+  },
+  "actions": {
+    "approve": "Goedkeuren",
+    "reject": "Afwijzen",
+    "implement": "Markeer als geïmplementeerd",
+    "consider": "Overwegen",
+    "delete": "Verwijderen"
+  },
+  "settings": {
+    "channel": "Suggestiekanaal",
+    "channelDesc": "Het kanaal waar suggesties worden geplaatst om op te stemmen.",
+    "voteEmojis": "Stememi's",
+    "voteEmojisDesc": "Emoji's die worden gebruikt voor positieve en negatieve stemreacties.",
+    "autoThread": "Automatische thread aanmaken",
+    "autoThreadDesc": "Maak automatisch een discussiethread aan bij elke nieuwe suggestie.",
+    "dmOnStatusChange": "DM bij statuswijziging",
+    "dmOnStatusChangeDesc": "Informeer de auteur via DM wanneer de status van zijn suggestie verandert."
+  },
+  "toast": {
+    "approved": "Suggestie goedgekeurd",
+    "rejected": "Suggestie afgewezen",
+    "implemented": "Suggestie gemarkeerd als geïmplementeerd",
+    "considered": "Suggestie gemarkeerd als wordt overwogen",
+    "deleted": "Suggestie verwijderd",
+    "actionFailed": "Suggestie bijwerken mislukt",
+    "settingsSaved": "Suggestieinstellingen opgeslagen",
+    "settingsFailed": "Suggestieinstellingen opslaan mislukt"
+  },
+  "empty": "Nog geen suggesties.",
+  "loading": "Suggesties laden...",
+  "pagination": {
+    "previous": "Vorige",
+    "next": "Volgende",
+    "page": "Pagina {{page}} van {{total}}"
+  }
+}

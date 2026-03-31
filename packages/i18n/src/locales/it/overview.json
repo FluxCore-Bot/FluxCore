@@ -1,0 +1,12 @@
+{
+  "title": "Panoramica",
+  "subtitle": "Monitora le prestazioni e l'attivita della tua automazione a colpo d'occhio.",
+  "stats": {
+    "actionRules": "Regole di azione",
+    "activeNow": "Attive adesso",
+    "executions": "Esecuzioni",
+    "successRate": "Tasso di successo"
+  },
+  "errorsInLast24h": "{{count}} errore nelle ultime 24h",
+  "errorsInLast24h_other": "{{count}} errori nelle ultime 24h"
+}

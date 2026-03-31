@@ -1,0 +1,54 @@
+{
+  "title": "Moderasyon",
+  "subtitle": "Moderasyon vakalarını görüntüleyin ve yönetin, ceza ayarlarını yapılandırın.",
+  "stats": {
+    "totalCases": "Toplam Vaka",
+    "activeTempbans": "Aktif Geçici Yasaklar",
+    "last24h": "Son 24 Saat"
+  },
+  "cases": "Vakalar",
+  "actions": {
+    "ban": "Yasakla",
+    "tempban": "Geçici Yasakla",
+    "kick": "At",
+    "timeout": "Zaman Aşımı",
+    "softban": "Yumuşak Yasak",
+    "warn": "Uyar",
+    "note": "Not"
+  },
+  "table": {
+    "id": "Kimlik",
+    "action": "Eylem",
+    "target": "Hedef",
+    "moderator": "Moderatör",
+    "reason": "Sebep",
+    "date": "Tarih",
+    "actions": "İşlemler",
+    "noCases": "Vaka bulunamadı.",
+    "noReason": "Sebep yok"
+  },
+  "filter": {
+    "userPlaceholder": "Kullanıcı Kimliğine göre filtrele...",
+    "allActions": "Tüm İşlemler"
+  },
+  "pagination": {
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "page": "Sayfa {{page}} / {{total}}"
+  },
+  "editDialog": {
+    "title": "#{{id}} Vakasının Sebebini Düzenle",
+    "placeholder": "Yeni sebep girin...",
+    "saving": "Kaydediliyor..."
+  },
+  "editReason": "Sebebi düzenle",
+  "deleteCase": "Vakayı sil",
+  "deleteConfirm": "Bu vakayı silmek istediğinizden emin misiniz?",
+  "settings": {
+    "title": "Ayarlar",
+    "dmOnPunishment": "Cezada DM Gönder",
+    "dmOnPunishmentDesc": "Kullanıcılar cezalandırıldığında (yasak, atma, zaman aşımı) DM gönderin.",
+    "modLogChannel": "Moderasyon Günlük Kanalı",
+    "modLogChannelDesc": "Moderasyon eylemlerinin günlüğe kaydedildiği kanal."
+  }
+}

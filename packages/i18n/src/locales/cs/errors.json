@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Nepřihlášen",
+    "sessionExpired": "Relace vypršela",
+    "missingCode": "Chybějící parametr code",
+    "tokenExchangeFailed": "Výměna tokenu selhala",
+    "failedToFetchUser": "Nepodařilo se získat informace o uživateli"
+  },
+  "permissions": {
+    "noGuildPermission": "Nemáte oprávnění pro tento server",
+    "botNotInGuild": "Bot není na tomto serveru",
+    "insufficientPermissions": "Nedostatečná oprávnění",
+    "permissionsNotResolved": "Oprávnění nebyla vyřešena",
+    "requiresPermission": "Tato akce vyžaduje oprávnění \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Neplatný vstup",
+    "missingField": "Chybějící povinné pole: {{field}}",
+    "invalidFormat": "Neplatný formát pro {{field}}",
+    "tooLong": "{{field}} přesahuje maximální délku {{max}} znaků",
+    "tooShort": "{{field}} musí mít alespoň {{min}} znaků",
+    "outOfRange": "{{field}} musí být mezi {{min}} a {{max}}"
+  },
+  "resources": {
+    "notFound": "Nenalezeno",
+    "alreadyExists": "{{resource}} již existuje",
+    "limitReached": "Maximum {{max}} {{resource}} na server",
+    "createFailed": "Nepodařilo se vytvořit {{resource}}",
+    "updateFailed": "Nepodařilo se aktualizovat {{resource}}",
+    "deleteFailed": "Nepodařilo se smazat {{resource}}"
+  },
+  "server": {
+    "internalError": "Interní chyba serveru",
+    "serviceUnavailable": "Služba je dočasně nedostupná",
+    "rateLimited": "Příliš mnoho požadavků. Zkuste to prosím později."
+  },
+  "csrf": {
+    "invalidToken": "Neplatný nebo chybějící CSRF token"
+  }
+}

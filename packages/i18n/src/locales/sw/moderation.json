@@ -1,0 +1,54 @@
+{
+  "title": "Usimamizi",
+  "subtitle": "Tazama na simamia kesi za usimamizi, sanidi mipangilio ya adhabu.",
+  "stats": {
+    "totalCases": "Jumla ya Kesi",
+    "activeTempbans": "Marufuku ya Muda Hai",
+    "last24h": "Masaa 24 Yaliyopita"
+  },
+  "cases": "Kesi",
+  "actions": {
+    "ban": "Zuia",
+    "tempban": "Zuia kwa Muda",
+    "kick": "Fukuza",
+    "timeout": "Simamisha kwa Muda",
+    "softban": "Zuia Taratibu",
+    "warn": "Onya",
+    "note": "Kumbuka"
+  },
+  "table": {
+    "id": "Kitambulisho",
+    "action": "Kitendo",
+    "target": "Lengo",
+    "moderator": "Msimamizi",
+    "reason": "Sababu",
+    "date": "Tarehe",
+    "actions": "Vitendo",
+    "noCases": "Hakuna kesi zilizopatikana.",
+    "noReason": "Hakuna sababu"
+  },
+  "filter": {
+    "userPlaceholder": "Chuja kwa Kitambulisho cha Mtumiaji...",
+    "allActions": "Vitendo Vyote"
+  },
+  "pagination": {
+    "previous": "Iliyotangulia",
+    "next": "Inayofuata",
+    "page": "Ukurasa {{page}} wa {{total}}"
+  },
+  "editDialog": {
+    "title": "Hariri Sababu ya Kesi #{{id}}",
+    "placeholder": "Ingiza sababu mpya...",
+    "saving": "Inahifadhi..."
+  },
+  "editReason": "Hariri sababu",
+  "deleteCase": "Futa kesi",
+  "deleteConfirm": "Una uhakika unataka kufuta kesi hii?",
+  "settings": {
+    "title": "Mipangilio",
+    "dmOnPunishment": "DM kwa Adhabu",
+    "dmOnPunishmentDesc": "Tuma DM kwa watumiaji wanapoadhibiwa (kuzuia, kufukuza, kusimamishwa kwa muda).",
+    "modLogChannel": "Chaneli ya Kumbukumbu za Usimamizi",
+    "modLogChannelDesc": "Chaneli ambapo vitendo vya usimamizi vinarekodiwa."
+  }
+}

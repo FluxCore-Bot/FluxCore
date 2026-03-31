@@ -1,0 +1,54 @@
+{
+  "title": "Modereerimine",
+  "subtitle": "Vaata ja halda modereerimise juhtumeid, seadista karistuseseadeid.",
+  "stats": {
+    "totalCases": "Juhtumeid kokku",
+    "activeTempbans": "Aktiivsed ajutised bannimised",
+    "last24h": "Viimased 24h"
+  },
+  "cases": "Juhtumid",
+  "actions": {
+    "ban": "Banni",
+    "tempban": "Ajutine bann",
+    "kick": "Kicki",
+    "timeout": "Timeout",
+    "softban": "Pehme bann",
+    "warn": "Hoiata",
+    "note": "Märkus"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Toiming",
+    "target": "Sihtmärk",
+    "moderator": "Moderaator",
+    "reason": "Põhjus",
+    "date": "Kuupäev",
+    "actions": "Toimingud",
+    "noCases": "Juhtumeid ei leitud.",
+    "noReason": "Põhjus puudub"
+  },
+  "filter": {
+    "userPlaceholder": "Filtreeri kasutaja ID järgi...",
+    "allActions": "Kõik toimingud"
+  },
+  "pagination": {
+    "previous": "Eelmine",
+    "next": "Järgmine",
+    "page": "Leht {{page}} / {{total}}"
+  },
+  "editDialog": {
+    "title": "Muuda juhtumi #{{id}} põhjust",
+    "placeholder": "Sisesta uus põhjus...",
+    "saving": "Salvestan..."
+  },
+  "editReason": "Muuda põhjust",
+  "deleteCase": "Kustuta juhtum",
+  "deleteConfirm": "Kas oled kindel, et soovid selle juhtumi kustutada?",
+  "settings": {
+    "title": "Seaded",
+    "dmOnPunishment": "DM karistuse korral",
+    "dmOnPunishmentDesc": "Saada kasutajatele DM, kui neid karistatakse (bann, kick, timeout).",
+    "modLogChannel": "Modereerimislogi kanal",
+    "modLogChannelDesc": "Kanal, kuhu modereerimistoimingud logitakse."
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "title": "Πάνελ ρόλων",
+  "subtitle": "Δημιουργήστε πάνελ αυτο-ανάθεσης ρόλων χρησιμοποιώντας κουμπιά, αναπτυσσόμενα μενού ή αντιδράσεις.",
+  "stats": {
+    "totalPanels": "Συνολικά πάνελ",
+    "deployed": "Αναπτυγμένα",
+    "totalRoles": "Συνολικοί ρόλοι"
+  },
+  "tabs": {
+    "panels": "Πάνελ",
+    "preview": "Προεπισκόπηση"
+  },
+  "table": {
+    "name": "Όνομα",
+    "type": "Τύπος",
+    "mode": "Λειτουργία",
+    "roles": "Ρόλοι",
+    "status": "Κατάσταση"
+  },
+  "panelTypes": {
+    "reaction": "Αντίδραση",
+    "button": "Κουμπί",
+    "dropdown": "Αναπτυσσόμενο"
+  },
+  "panelModes": {
+    "toggle": "Εναλλαγή",
+    "unique": "Μοναδικός",
+    "verify": "Επαλήθευση"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Εναλλαγή (προσθήκη/αφαίρεση)",
+    "unique": "Μοναδικός (ένας κάθε φορά)",
+    "verify": "Επαλήθευση (μόνο προσθήκη)"
+  },
+  "status": {
+    "deployed": "Αναπτυγμένο",
+    "draft": "Πρόχειρο"
+  },
+  "dialog": {
+    "createPanel": "Δημιουργία πάνελ",
+    "editPanel": "Επεξεργασία πάνελ"
+  },
+  "panelList": {
+    "title": "Όλα τα πάνελ"
+  },
+  "form": {
+    "name": "Όνομα",
+    "namePlaceholder": "π.χ. Ρόλοι χρωμάτων",
+    "type": "Τύπος",
+    "mode": "Λειτουργία",
+    "channel": "Κανάλι",
+    "channelPlaceholder": "Επιλογή καναλιού",
+    "minRoles": "Ελάχ. ρόλοι",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Μέγ. ρόλοι",
+    "maxRolesPlaceholder": "Όλοι",
+    "embedSection": "Embed",
+    "embedTitle": "Τίτλος",
+    "embedTitlePlaceholder": "Τίτλος πάνελ (προεπιλογή: όνομα πάνελ)",
+    "embedDescription": "Περιγραφή",
+    "embedDescriptionPlaceholder": "Περιγραφικό κείμενο",
+    "rolesCount": "Ρόλοι ({{count}}/25)",
+    "addRole": "Προσθήκη ρόλου"
+  },
+  "entry": {
+    "role": "Ρόλος",
+    "rolePlaceholder": "Επιλογή ρόλου",
+    "label": "Ετικέτα",
+    "labelPlaceholder": "Ετικέτα κουμπιού",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "π.χ. star",
+    "description": "Περιγραφή",
+    "descriptionPlaceholder": "Περιγραφή επιλογής",
+    "style": "Στυλ"
+  },
+  "buttonStyles": {
+    "primary": "Κύριο",
+    "secondary": "Δευτερεύον",
+    "success": "Επιτυχία",
+    "danger": "Κίνδυνος"
+  },
+  "actions": {
+    "create": "Δημιουργία",
+    "update": "Ενημέρωση",
+    "cancel": "Ακύρωση",
+    "deploy": "Ανάπτυξη",
+    "delete": "Διαγραφή",
+    "addEntry": "Προσθήκη εγγραφής",
+    "removeEntry": "Αφαίρεση εγγραφής"
+  },
+  "preview": {
+    "title": "Ζωντανή προεπισκόπηση",
+    "description": "Προεπισκόπηση της εμφάνισης των πάνελ στο Discord.",
+    "selectRoles": "Επιλογή ρόλων...",
+    "noPreview": "Δεν υπάρχουν πάνελ για προεπισκόπηση."
+  },
+  "empty": "Δεν έχουν δημιουργηθεί πάνελ ρόλων ακόμα. Κάντε κλικ στο «Δημιουργία πάνελ» για να ξεκινήσετε.",
+  "toast": {
+    "created": "Το πάνελ δημιουργήθηκε",
+    "createFailed": "Αποτυχία δημιουργίας πάνελ",
+    "updated": "Το πάνελ ενημερώθηκε",
+    "updateFailed": "Αποτυχία ενημέρωσης πάνελ",
+    "deleted": "Το πάνελ διαγράφηκε",
+    "deleteFailed": "Αποτυχία διαγραφής πάνελ",
+    "deployed": "Το πάνελ ρόλων αναπτύχθηκε στο κανάλι",
+    "deployFailed": "Αποτυχία αποστολής πάνελ",
+    "nameRequired": "Το όνομα πάνελ είναι υποχρεωτικό",
+    "channelRequired": "Το κανάλι είναι υποχρεωτικό",
+    "maxRolesReached": "Μέγιστο 25 ρόλοι ανά πάνελ"
+  },
+  "loading": "Φόρτωση πάνελ..."
+}

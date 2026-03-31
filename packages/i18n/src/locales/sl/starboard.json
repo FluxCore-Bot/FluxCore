@@ -1,0 +1,41 @@
+{
+  "title": "Starboard",
+  "subtitle": "Izpostavite najboljša sporočila z zbiranjem zvezdnih reakcij v namenski kanal.",
+  "tabs": {
+    "settings": "Nastavitve",
+    "starredMessages": "Označena sporočila"
+  },
+  "settings": {
+    "title": "Konfiguracija Starborda",
+    "description": "Konfigurirajte, kdaj in kam se objavljajo označena sporočila.",
+    "channelId": "Kanal Starborda",
+    "channelIdDesc": "Kanal, kjer so objavljena označena sporočila.",
+    "starEmoji": "Emoji zvezde",
+    "starEmojiDesc": "Emoji, ki se uporablja za označevanje sporočil. Privzeto emoji zvezda.",
+    "threshold": "Prag zvezd",
+    "thresholdDesc": "Minimalno število reakcij za objavo sporočila na Starboard.",
+    "selfStar": "Samoznačevanje",
+    "selfStarDesc": "Avtorjem sporočil dovolite označevanje lastnih sporočil.",
+    "nsfwAllowed": "NSFW dovoljeno",
+    "nsfwAllowedDesc": "Dovolite sporočilom iz NSFW kanalov, da se pojavijo na Starbordu.",
+    "ignoredChannels": "Prezrti kanali",
+    "ignoredChannelsDesc": "Sporočila iz teh kanalov se nikoli ne bodo pojavila na Starbordu."
+  },
+  "messages": {
+    "table": {
+      "original": "Izvirno sporočilo",
+      "stars": "Zvezde",
+      "channel": "Kanal",
+      "date": "Datum"
+    },
+    "noMessages": "Še ni označenih sporočil."
+  },
+  "toast": {
+    "saved": "Nastavitve Starborda shranjene",
+    "saveFailed": "Shranjevanje nastavitev Starborda ni uspelo"
+  },
+  "actions": {
+    "save": "Shrani",
+    "saving": "Shranjevanje..."
+  }
+}

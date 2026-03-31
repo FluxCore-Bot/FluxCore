@@ -1,0 +1,67 @@
+{
+  "title": "Iradokizunak",
+  "subtitle": "Utzi kideei ideiak bidaltzen eta horien aldean bozkatzeko. Kudeatu egoera eta iritzia.",
+  "stats": {
+    "totalSuggestions": "Iradokizun Guztiak",
+    "systemStatus": "Sistemaren Egoera",
+    "channel": {
+      "configured": "Kanala Konfiguratuta",
+      "notSet": "Kanala Ez Ezarrita"
+    }
+  },
+  "tabs": {
+    "suggestions": "Iradokizunak",
+    "settings": "Ezarpenak"
+  },
+  "filter": {
+    "filterByStatus": "Egoeraz Iragazi",
+    "all": "Guztiak",
+    "pending": "Zain",
+    "approved": "Onartuta",
+    "rejected": "Baztertuta",
+    "implemented": "Ezarrita",
+    "considered": "Kontuan Hartzen"
+  },
+  "table": {
+    "id": "IDa",
+    "author": "Egilea",
+    "content": "Edukia",
+    "status": "Egoera",
+    "votes": "Botoak",
+    "date": "Data"
+  },
+  "actions": {
+    "approve": "Onartu",
+    "reject": "Baztertu",
+    "implement": "Ezarrita Markatu",
+    "consider": "Kontuan Hartu",
+    "delete": "Ezabatu"
+  },
+  "settings": {
+    "channel": "Iradokizunen Kanala",
+    "channelDesc": "Iradokizunak bozketarako argitaratzen diren kanala.",
+    "voteEmojis": "Boto Emojiak",
+    "voteEmojisDesc": "Boto positibo eta negatiboen erreakzioetarako erabiltzen diren emojiak.",
+    "autoThread": "Hari Automatikoa",
+    "autoThreadDesc": "Automatikoki sortu eztabaida hari bat iradokizun berri bakoitzean.",
+    "dmOnStatusChange": "DM Egoera Aldatzean",
+    "dmOnStatusChangeDesc": "Jakinarazi egileari DM bidez iradokizunaren egoera aldatzean."
+  },
+  "toast": {
+    "approved": "Iradokizuna onartua",
+    "rejected": "Iradokizuna baztertua",
+    "implemented": "Iradokizuna ezarrita markatu da",
+    "considered": "Iradokizuna kontuan hartzen markatu da",
+    "deleted": "Iradokizuna ezabatua",
+    "actionFailed": "Ezin izan da iradokizuna eguneratu",
+    "settingsSaved": "Iradokizunen ezarpenak gordeta",
+    "settingsFailed": "Ezin izan dira iradokizunen ezarpenak gorde"
+  },
+  "empty": "Oraindik ez dago iradokizunik.",
+  "loading": "Iradokizunak kargatzen...",
+  "pagination": {
+    "previous": "Aurrekoa",
+    "next": "Hurrengoa",
+    "page": "{{page}} / {{total}} orrialdea"
+  }
+}

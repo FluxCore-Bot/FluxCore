@@ -1,0 +1,112 @@
+{
+  "title": "रोल पैनल",
+  "subtitle": "बटन, ड्रॉपडाउन, या रिएक्शन का उपयोग करके सेल्फ-असाइनेबल रोल पैनल बनाएं।",
+  "stats": {
+    "totalPanels": "कुल पैनल",
+    "deployed": "तैनात",
+    "totalRoles": "कुल रोल"
+  },
+  "tabs": {
+    "panels": "पैनल",
+    "preview": "प्रीव्यू"
+  },
+  "table": {
+    "name": "नाम",
+    "type": "प्रकार",
+    "mode": "मोड",
+    "roles": "रोल",
+    "status": "स्थिति"
+  },
+  "panelTypes": {
+    "reaction": "रिएक्शन",
+    "button": "बटन",
+    "dropdown": "ड्रॉपडाउन"
+  },
+  "panelModes": {
+    "toggle": "टॉगल",
+    "unique": "यूनीक",
+    "verify": "वेरिफ़ाई"
+  },
+  "panelModeDescriptions": {
+    "toggle": "टॉगल (जोड़ें/हटाएं)",
+    "unique": "यूनीक (एक बार में एक)",
+    "verify": "वेरिफ़ाई (केवल जोड़ें)"
+  },
+  "status": {
+    "deployed": "तैनात",
+    "draft": "ड्राफ़्ट"
+  },
+  "dialog": {
+    "createPanel": "पैनल बनाएं",
+    "editPanel": "पैनल संपादित करें"
+  },
+  "panelList": {
+    "title": "सभी पैनल"
+  },
+  "form": {
+    "name": "नाम",
+    "namePlaceholder": "जैसे रंग रोल",
+    "type": "प्रकार",
+    "mode": "मोड",
+    "channel": "चैनल",
+    "channelPlaceholder": "चैनल चुनें",
+    "minRoles": "न्यूनतम रोल",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "अधिकतम रोल",
+    "maxRolesPlaceholder": "सभी",
+    "embedSection": "Embed",
+    "embedTitle": "शीर्षक",
+    "embedTitlePlaceholder": "पैनल शीर्षक (डिफ़ॉल्ट पैनल नाम)",
+    "embedDescription": "विवरण",
+    "embedDescriptionPlaceholder": "विवरण टेक्स्ट",
+    "rolesCount": "रोल ({{count}}/25)",
+    "addRole": "रोल जोड़ें"
+  },
+  "entry": {
+    "role": "रोल",
+    "rolePlaceholder": "रोल चुनें",
+    "label": "लेबल",
+    "labelPlaceholder": "बटन लेबल",
+    "emoji": "इमोजी",
+    "emojiPlaceholder": "जैसे star",
+    "description": "विवरण",
+    "descriptionPlaceholder": "विकल्प विवरण",
+    "style": "स्टाइल"
+  },
+  "buttonStyles": {
+    "primary": "प्राइमरी",
+    "secondary": "सेकंडरी",
+    "success": "सफलता",
+    "danger": "खतरा"
+  },
+  "actions": {
+    "create": "बनाएं",
+    "update": "अपडेट करें",
+    "cancel": "रद्द करें",
+    "deploy": "तैनात करें",
+    "delete": "हटाएं",
+    "addEntry": "प्रविष्टि जोड़ें",
+    "removeEntry": "प्रविष्टि हटाएं"
+  },
+  "preview": {
+    "title": "लाइव प्रीव्यू",
+    "description": "देखें कि आपके पैनल Discord में कैसे दिखाई देंगे।",
+    "selectRoles": "रोल चुनें...",
+    "noPreview": "प्रीव्यू के लिए कोई पैनल नहीं।"
+  },
+  "empty": "अभी तक कोई रोल पैनल नहीं बनाया गया। शुरू करने के लिए \"पैनल बनाएं\" पर क्लिक करें।",
+  "toast": {
+    "created": "पैनल बनाया गया",
+    "createFailed": "पैनल बनाने में विफल",
+    "updated": "पैनल अपडेट किया गया",
+    "updateFailed": "पैनल अपडेट करने में विफल",
+    "deleted": "पैनल हटाया गया",
+    "deleteFailed": "पैनल हटाने में विफल",
+    "deployed": "रोल पैनल चैनल में तैनात किया गया",
+    "deployFailed": "पैनल भेजने में विफल",
+    "nameRequired": "पैनल का नाम आवश्यक है",
+    "channelRequired": "चैनल आवश्यक है",
+    "maxRolesReached": "प्रति पैनल अधिकतम 25 रोल"
+  },
+  "loading": "पैनल लोड हो रहे हैं..."
+}

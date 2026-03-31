@@ -1,0 +1,50 @@
+{
+  "title": "Weggeeaksies",
+  "subtitle": "Bestuur weggeeaksies met aanpasbare duur, toelatingsvereistes en wennerkeuse.",
+  "stats": {
+    "activeGiveaways": "Aktiewe Weggeeaksies",
+    "pastGiveaways": "Vorige Weggeeaksies",
+    "totalEntries": "Totale Inskrywings"
+  },
+  "table": {
+    "prize": "Prys",
+    "winners": "Wenners",
+    "entries": "Inskrywings",
+    "endsIn": "Eindig Oor",
+    "status": "Status"
+  },
+  "statuses": {
+    "active": "Aktief",
+    "ended": "Beeindig",
+    "cancelled": "Gekanselleer"
+  },
+  "actions": {
+    "create": "Skep Weggeeaksie",
+    "edit": "Wysig",
+    "end": "Beeindig",
+    "reroll": "Hertrek",
+    "delete": "Verwyder"
+  },
+  "form": {
+    "prize": "Prys",
+    "winnersCount": "Aantal Wenners",
+    "duration": "Duur",
+    "channel": "Kanaal",
+    "requiredRole": "Vereiste Rol",
+    "description": "Beskrywing"
+  },
+  "toast": {
+    "created": "Weggeeaksie geskep",
+    "createFailed": "Kon nie weggeeaksie skep nie",
+    "updated": "Weggeeaksie bygewerk",
+    "updateFailed": "Kon nie weggeeaksie bywerk nie",
+    "ended": "Weggeeaksie beeindig",
+    "endFailed": "Kon nie weggeeaksie beeindig nie",
+    "rerolled": "Wenners hertrek",
+    "rerollFailed": "Kon nie wenners hertrek nie",
+    "deleted": "Weggeeaksie verwyder",
+    "deleteFailed": "Kon nie weggeeaksie verwyder nie"
+  },
+  "empty": "Nog geen weggeeaksies nie. Skep een om te begin.",
+  "loading": "Laai weggeeaksies..."
+}

@@ -1,0 +1,12 @@
+{
+  "title": "نظرة عامة",
+  "subtitle": "راقب أداء الأتمتة والنشاط بلمحة سريعة.",
+  "stats": {
+    "actionRules": "قواعد الإجراءات",
+    "activeNow": "نشط الآن",
+    "executions": "عمليات التنفيذ",
+    "successRate": "معدل النجاح"
+  },
+  "errorsInLast24h": "{{count}} خطأ في آخر 24 ساعة",
+  "errorsInLast24h_other": "{{count}} أخطاء في آخر 24 ساعة"
+}

@@ -1,0 +1,72 @@
+{
+  "title": "Cảnh Báo",
+  "subtitle": "Theo dõi và quản lý cảnh báo thành viên với leo thang tự động.",
+  "stats": {
+    "totalWarnings": "Tổng Cảnh Báo",
+    "escalationRules": "Quy Tắc Leo Thang",
+    "dmOnWarn": "DM Khi Cảnh Báo"
+  },
+  "tabs": {
+    "warnings": "Nhật Ký Cảnh Báo",
+    "escalation": "Leo Thang",
+    "settings": "Cài Đặt"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Người Dùng",
+    "moderator": "Điều Phối Viên",
+    "reason": "Lý Do",
+    "date": "Ngày"
+  },
+  "filter": {
+    "userPlaceholder": "Lọc theo ID Người Dùng...",
+    "clearAll": "Xóa Tất Cả"
+  },
+  "pagination": {
+    "previous": "Trước",
+    "next": "Tiếp",
+    "page": "Trang {{page}} / {{total}} (tổng {{count}})"
+  },
+  "loading": "Đang tải cảnh báo...",
+  "noWarnings": "Không tìm thấy cảnh báo nào.",
+  "toast": {
+    "warningRemoved": "Đã xóa cảnh báo",
+    "warningsFailed": "Xóa cảnh báo thất bại",
+    "enterUserId": "Nhập ID người dùng để xóa tất cả cảnh báo của người dùng đó",
+    "allCleared": "Đã xóa tất cả cảnh báo của người dùng",
+    "clearFailed": "Xóa cảnh báo thất bại",
+    "thresholdAdded": "Đã thêm ngưỡng hình phạt",
+    "thresholdFailed": "Thêm hình phạt thất bại",
+    "thresholdRemoved": "Đã xóa hình phạt",
+    "removeFailed": "Xóa hình phạt thất bại",
+    "settingFailed": "Cập nhật cài đặt thất bại",
+    "thresholdInvalid": "Ngưỡng phải là số dương"
+  },
+  "escalation": {
+    "title": "Leo Thang Hình Phạt",
+    "description": "Cấu hình hành động tự động khi người dùng đạt đến một số cảnh báo nhất định.",
+    "threshold": "Ngưỡng",
+    "action": "Hành Động",
+    "duration": "Thời Lượng",
+    "noRules": "Chưa có quy tắc leo thang nào được cấu hình.",
+    "addRule": "Thêm Quy Tắc Leo Thang",
+    "addButton": "Thêm Quy Tắc",
+    "warnings": "{{count}} cảnh báo",
+    "min": "{{count}} phút",
+    "timeout": "Hết Thời Gian",
+    "kick": "Đuổi",
+    "ban": "Cấm",
+    "durationLabel": "Thời Lượng (giây)",
+    "thresholdPlaceholder": "vd. 3",
+    "durationPlaceholder": "vd. 3600"
+  },
+  "settings": {
+    "title": "Cài Đặt Cảnh Báo",
+    "dmOnWarn": "DM Khi Cảnh Báo",
+    "dmOnWarnDesc": "Gửi tin nhắn trực tiếp cho người dùng khi họ nhận cảnh báo.",
+    "requireReason": "Yêu Cầu Lý Do",
+    "requireReasonDesc": "Điều phối viên phải cung cấp lý do khi đưa ra cảnh báo.",
+    "maxWarnings": "Cảnh Báo Tối Đa",
+    "maxWarningsDesc": "Số cảnh báo tối đa mỗi người dùng (0 = không giới hạn)."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Dine servere",
+  "subtitle": "Velg en server å administrere og konfigurere.",
+  "loading": "Laster servere...",
+  "empty": {
+    "title": "Ingen servere funnet",
+    "description": "Sørg for at boten er lagt til på en server der du har tillatelsen Administrer server."
+  }
+}

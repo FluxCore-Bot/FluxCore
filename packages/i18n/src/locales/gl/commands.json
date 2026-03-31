@@ -1,0 +1,113 @@
+{
+  "title": "Ordes Personalizadas",
+  "subtitle": "Crea auto-respostas e ordes con prefixo activadas por mensaxes.",
+  "stats": {
+    "totalCommands": "Total de Ordes",
+    "enabled": "Activadas",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Ordes",
+    "variables": "Variables"
+  },
+  "table": {
+    "name": "Nome",
+    "trigger": "Disparador",
+    "response": "Resposta",
+    "cooldown": "Tempo de espera",
+    "status": "Estado"
+  },
+  "triggerTypes": {
+    "command": "!orde",
+    "keyword": "Palabra clave",
+    "startsWith": "Comeza por",
+    "regex": "Regex",
+    "prefixCommand": "Orde con prefixo (!nome)",
+    "keywordContains": "Palabra clave (contén)"
+  },
+  "dialog": {
+    "createCommand": "Crear Orde",
+    "editCommand": "Editar Orde"
+  },
+  "form": {
+    "commandName": "Nome da Orde",
+    "triggerText": "Texto Disparador",
+    "regexPattern": "Patrón Regex",
+    "triggerType": "Tipo de Disparador",
+    "response": "Resposta",
+    "message": "Mensaxe",
+    "embedTitle": "Título do Embed",
+    "embedDescription": "Descrición do Embed",
+    "color": "Cor",
+    "footer": "Pé de páxina"
+  },
+  "options": {
+    "cooldown": "Tempo de espera (segundos)",
+    "enabled": "Activada",
+    "enabledDesc": "Se esta orde está activa",
+    "deleteTrigger": "Eliminar mensaxe disparadora",
+    "deleteTriggerDesc": "Eliminar automaticamente a mensaxe que activou esta orde.",
+    "dmResponse": "Resposta por DM",
+    "dmResponseDesc": "Enviar a resposta como mensaxe directa en lugar de no canal."
+  },
+  "restrictions": {
+    "title": "Restricións",
+    "allowedChannels": "Canles permitidos (baleiro = todos)",
+    "allowedRoles": "Roles permitidos (baleiro = todos)",
+    "addChannel": "Engadir Canal",
+    "addRole": "Engadir Rol"
+  },
+  "actions": {
+    "create": "Crear",
+    "update": "Actualizar",
+    "cancel": "Cancelar",
+    "addAction": "Engadir Acción",
+    "addRole": "Engadir Rol",
+    "removeRole": "Eliminar Rol"
+  },
+  "actionsSection": {
+    "title": "Accións ({{count}}/5)",
+    "noActions": "Sen accións configuradas. Engade unha acción para definir o que fai esta orde.",
+    "maxActions": "Máximo de 5 accións por orde"
+  },
+  "variables": {
+    "title": "Variables de Modelo",
+    "description": "Usa estas variables nas respostas das túas ordes. Serán substituídas polos valores reais cando se active a orde.",
+    "table": {
+      "variable": "Variable",
+      "description": "Descrición"
+    },
+    "entries": {
+      "user": "{user} — Menciona o usuario que activou a orde",
+      "username": "{username} — O nome para mostrar do usuario",
+      "userId": "{userId} — O ID do usuario",
+      "server": "{server} — O nome do servidor",
+      "channel": "{channel} — Menciona o canal actual",
+      "channelName": "{channelName} — O nome do canal",
+      "memberCount": "{memberCount} — Número total de membros do servidor"
+    }
+  },
+  "toast": {
+    "created": "Orde creada",
+    "createFailed": "Non se puido crear a orde",
+    "updated": "Orde actualizada",
+    "updateFailed": "Non se puido actualizar a orde",
+    "deleted": "Orde eliminada",
+    "deleteFailed": "Non se puido eliminar a orde",
+    "toggleEnabled": "Orde activada",
+    "toggleDisabled": "Orde desactivada",
+    "toggleFailed": "Non se puido cambiar o estado da orde"
+  },
+  "empty": "Aínda non se crearon ordes personalizadas.",
+  "loading": "Cargando ordes...",
+  "badge": {
+    "active": "Activa",
+    "disabled": "Desactivada",
+    "text": "Texto",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "O nome da orde é obrigatorio"
+  },
+  "triggerPrefix": "Disparador: !{{name}}"
+}

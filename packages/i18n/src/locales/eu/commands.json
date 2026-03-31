@@ -1,0 +1,113 @@
+{
+  "title": "Komando pertsonalizatuak",
+  "subtitle": "Sortu auto-erantzunak eta aurrizki-komandoak mezuek aktibatuta.",
+  "stats": {
+    "totalCommands": "Komando guztiak",
+    "enabled": "Gaituta",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Komandoak",
+    "variables": "Aldagaiak"
+  },
+  "table": {
+    "name": "Izena",
+    "trigger": "Aktibatzailea",
+    "response": "Erantzuna",
+    "cooldown": "Itxaron-denbora",
+    "status": "Egoera"
+  },
+  "triggerTypes": {
+    "command": "!komandoa",
+    "keyword": "Gako-hitza",
+    "startsWith": "Honekin hasten da",
+    "regex": "Regex",
+    "prefixCommand": "Aurrizki-komandoa (!izena)",
+    "keywordContains": "Gako-hitza (dauka)"
+  },
+  "dialog": {
+    "createCommand": "Komandoa sortu",
+    "editCommand": "Komandoa editatu"
+  },
+  "form": {
+    "commandName": "Komandoaren izena",
+    "triggerText": "Aktibatzailearen testua",
+    "regexPattern": "Regex eredua",
+    "triggerType": "Aktibatzaile mota",
+    "response": "Erantzuna",
+    "message": "Mezua",
+    "embedTitle": "Embed-aren izenburua",
+    "embedDescription": "Embed-aren deskripzioa",
+    "color": "Kolorea",
+    "footer": "Oin-oharrea"
+  },
+  "options": {
+    "cooldown": "Itxaron-denbora (segundoak)",
+    "enabled": "Gaituta",
+    "enabledDesc": "Komando hau aktiboa den ala ez",
+    "deleteTrigger": "Aktibatzaile mezua ezabatu",
+    "deleteTriggerDesc": "Automatikoki ezabatu komando hau aktibatu duen mezua.",
+    "dmResponse": "DM erantzuna",
+    "dmResponseDesc": "Bidali erantzuna mezu zuzen gisa kanalean ordez."
+  },
+  "restrictions": {
+    "title": "Murrizketak",
+    "allowedChannels": "Baimendutako kanalak (hutsik = denak)",
+    "allowedRoles": "Baimendutako rolak (hutsik = denak)",
+    "addChannel": "Kanala gehitu",
+    "addRole": "Rola gehitu"
+  },
+  "actions": {
+    "create": "Sortu",
+    "update": "Eguneratu",
+    "cancel": "Utzi",
+    "addAction": "Ekintza gehitu",
+    "addRole": "Rola gehitu",
+    "removeRole": "Rola kendu"
+  },
+  "actionsSection": {
+    "title": "Ekintzak ({{count}}/5)",
+    "noActions": "Ez dago ekintzarik konfiguratuta. Gehitu ekintza bat komando honek zer egiten duen definitzeko.",
+    "maxActions": "Gehienez 5 ekintza komandoko"
+  },
+  "variables": {
+    "title": "Txantiloi aldagaiak",
+    "description": "Erabili aldagai hauek zure komando erantzunetan. Benetako balioekin ordezkatuko dira komandoa aktibatzen denean.",
+    "table": {
+      "variable": "Aldagaia",
+      "description": "Deskripzioa"
+    },
+    "entries": {
+      "user": "{user} — Komandoa aktibatu duen erabiltzailea aipatzen du",
+      "username": "{username} — Erabiltzailearen bistaratzeko izena",
+      "userId": "{userId} — Erabiltzailearen IDa",
+      "server": "{server} — Zerbitzariaren izena",
+      "channel": "{channel} — Uneko kanala aipatzen du",
+      "channelName": "{channelName} — Kanalaren izena",
+      "memberCount": "{memberCount} — Zerbitzariko kideen guztizko kopurua"
+    }
+  },
+  "toast": {
+    "created": "Komandoa sortuta",
+    "createFailed": "Ezin izan da komandoa sortu",
+    "updated": "Komandoa eguneratuta",
+    "updateFailed": "Ezin izan da komandoa eguneratu",
+    "deleted": "Komandoa ezabatuta",
+    "deleteFailed": "Ezin izan da komandoa ezabatu",
+    "toggleEnabled": "Komandoa gaituta",
+    "toggleDisabled": "Komandoa desgaituta",
+    "toggleFailed": "Ezin izan da komandoaren egoera aldatu"
+  },
+  "empty": "Oraindik ez da komando pertsonalizaturik sortu.",
+  "loading": "Komandoak kargatzen...",
+  "badge": {
+    "active": "Aktiboa",
+    "disabled": "Desgaituta",
+    "text": "Testua",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Komandoaren izena beharrezkoa da"
+  },
+  "triggerPrefix": "Aktibatzailea: !{{name}}"
+}

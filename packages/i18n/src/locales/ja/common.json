@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore ダッシュボード"
+  },
+  "status": {
+    "online": "オンライン",
+    "offline": "オフライン",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "概要",
+    "automation": "自動化",
+    "music": "ミュージック",
+    "tempvoice": "テンポラリボイス",
+    "welcome": "ウェルカム",
+    "moderation": "モデレーション",
+    "warnings": "警告",
+    "rolePanels": "ロールパネル",
+    "leveling": "レベリング",
+    "scheduled": "予約メッセージ",
+    "commands": "コマンド",
+    "security": "セキュリティ",
+    "tickets": "チケット",
+    "giveaways": "プレゼント企画",
+    "suggestions": "提案",
+    "starboard": "スターボード",
+    "logs": "ログ",
+    "permissions": "権限",
+    "settings": "設定"
+  },
+  "actions": {
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "create": "作成",
+    "add": "追加",
+    "remove": "削除",
+    "confirm": "確認",
+    "close": "閉じる",
+    "back": "戻る",
+    "next": "次へ",
+    "search": "検索",
+    "filter": "フィルター",
+    "refresh": "更新",
+    "reset": "リセット",
+    "enable": "有効にする",
+    "disable": "無効にする",
+    "copy": "コピー",
+    "export": "エクスポート",
+    "import": "インポート",
+    "submit": "送信",
+    "loading": "読み込み中...",
+    "retry": "再試行"
+  },
+  "labels": {
+    "enabled": "有効",
+    "disabled": "無効",
+    "active": "アクティブ",
+    "inactive": "非アクティブ",
+    "none": "なし",
+    "all": "すべて",
+    "custom": "カスタム",
+    "default": "デフォルト",
+    "required": "必須",
+    "optional": "任意",
+    "name": "名前",
+    "description": "説明",
+    "type": "タイプ",
+    "status": "ステータス",
+    "channel": "チャンネル",
+    "role": "ロール",
+    "member": "メンバー",
+    "duration": "期間",
+    "reason": "理由",
+    "language": "言語"
+  },
+  "header": {
+    "notifications": "通知",
+    "settings": "設定",
+    "logout": "ログアウト",
+    "toggleSidebar": "サイドバーの切り替え",
+    "refreshData": "Discordデータを更新"
+  },
+  "sidebar": {
+    "closeSidebar": "サイドバーを閉じる",
+    "addToServer": "サーバーに追加",
+    "docs": "ドキュメント",
+    "support": "サポート",
+    "backToServers": "サーバー一覧に戻る"
+  },
+  "empty": {
+    "noData": "データがありません",
+    "noResults": "結果が見つかりません",
+    "noItems": "アイテムはまだありません"
+  },
+  "time": {
+    "seconds": "秒",
+    "minutes": "分",
+    "hours": "時間",
+    "days": "日",
+    "ago": "{{time}}前",
+    "in": "{{time}}後"
+  },
+  "confirm": {
+    "title": "よろしいですか？",
+    "deleteTitle": "削除の確認",
+    "deleteMessage": "この操作は取り消せません。",
+    "unsavedChanges": "保存されていない変更があります。ページを離れてもよろしいですか？"
+  },
+  "accessibility": {
+    "skipToContent": "メインコンテンツへスキップ",
+    "loading": "コンテンツを読み込み中",
+    "loaded": "コンテンツが読み込まれました",
+    "error": "エラーが発生しました",
+    "menuOpen": "メニューが開いています",
+    "menuClosed": "メニューが閉じています"
+  }
+}

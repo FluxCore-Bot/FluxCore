@@ -1,0 +1,108 @@
+{
+  "title": "Sikkerhed",
+  "subtitle": "Konfigurer anti-raid-beskyttelse og serversikkerhedsindstillinger.",
+  "antiRaid": {
+    "title": "Anti-raid-beskyttelse",
+    "description": "Aktiver automatisk registrering og respons på koordinerede raids, mistænkelige konti og destruktive handlinger."
+  },
+  "sections": {
+    "joinRate": "Tilslutningsfrekvens",
+    "accountAge": "Kontoalder",
+    "antiNuke": "Anti-nuke",
+    "lockdown": "Lockdown",
+    "events": "Hændelser"
+  },
+  "joinRate": {
+    "title": "Registrering af tilslutningsfrekvens",
+    "description": "Registrer massetilslutninger ved at overvåge raten af nye medlemmer, der tilslutter sig.",
+    "threshold": "Tilslutningsgrænse",
+    "thresholdHint": "Antal tilslutninger for at udløse registrering",
+    "window": "Tidsvindue (sekunder)",
+    "windowHint": "Vindue, hvori tilslutninger tælles",
+    "action": "Handling ved registrering",
+    "actionHint": "Handling at udføre mod mistænkte raid-medlemmer",
+    "actions": {
+      "ban": "Udeluk",
+      "kick": "Smid ud",
+      "timeout": "Timeout",
+      "lockdown": "Lockdown"
+    }
+  },
+  "accountAge": {
+    "title": "Kontoaldersfilter",
+    "description": "Udfør automatisk handling mod konti, der er yngre end en minimumsalder. Sæt til 0 for at deaktivere.",
+    "minAge": "Minimum kontoalder (dage)",
+    "minAgeHint": "0 = deaktiveret. Konti yngre end dette vil blive handlet mod.",
+    "action": "Handling"
+  },
+  "antiNuke": {
+    "title": "Anti-nuke-beskyttelse",
+    "description": "Registrer massesletning af kanaler/roller og sæt den ansvarlige bruger i karantæne ved at fjerne alle deres roller.",
+    "threshold": "Sletningsgrænse",
+    "thresholdHint": "Antal sletninger inden for 10 sekunder for at udløse karantæne",
+    "channelDeleteThreshold": "Kanalsletningsgrænse",
+    "roleDeleteThreshold": "Rollesletningsgrænse",
+    "massbanThreshold": "Masseudelukkelsesgrænse",
+    "interval": "Interval (sekunder)",
+    "action": "Handling"
+  },
+  "lockdown": {
+    "title": "Automatisk lockdown ved raid",
+    "description": "Lås automatisk alle kanaler, når et raid registreres.",
+    "whitelistedRoles": "Hvidlistede rolle-ID'er (kommaseparerede)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Medlemmer med disse roller er undtaget fra raid-registrering.",
+    "logChannel": "Logkanal-ID",
+    "logChannelPlaceholder": "Kanal-ID til raidhændelseslogfiler...",
+    "enableButton": "Aktiver lockdown",
+    "disableButton": "Deaktiver lockdown",
+    "active": "Lockdown aktiv",
+    "inactive": "Lockdown inaktiv"
+  },
+  "events": {
+    "title": "Seneste raidhændelser",
+    "description": "Tidslinje over registrerede raids, kontoaldersblokeringer og lockdownhændelser.",
+    "empty": "Ingen raidhændelser registreret endnu. Hændelser vises her, når raid-registrering udløses.",
+    "actionLabel": "Handling: {{action}}",
+    "usersLabel": "Brugere: {{count}}",
+    "accountAgeLabel": "Kontoalder: {{days}}d",
+    "table": {
+      "type": "Type",
+      "description": "Beskrivelse",
+      "time": "Tid",
+      "action": "Udført handling"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Tilslutningsstigning",
+    "account_age": "Kontoalder",
+    "nuke_attempt": "Nuke-forsøg",
+    "lockdown": "Lockdown",
+    "massJoin": "Massetilslutning",
+    "suspiciousAccounts": "Mistænkelige konti",
+    "channelDeletion": "Kanalsletning",
+    "roleDeletion": "Rollesletning",
+    "massBan": "Masseudelukkelse"
+  },
+  "pagination": {
+    "previous": "Forrige",
+    "next": "Næste",
+    "page": "Side {{current}} af {{total}}"
+  },
+  "toast": {
+    "saved": "Anti-raid-konfiguration gemt",
+    "saveFailed": "Kunne ikke gemme konfiguration",
+    "lockdownEnabled": "Server-lockdown aktiveret",
+    "lockdownDisabled": "Server-lockdown deaktiveret",
+    "lockdownFailed": "Kunne ikke skifte lockdown"
+  },
+  "saveButton": {
+    "saving": "Gemmer...",
+    "save": "Gem ændringer"
+  },
+  "labels": {
+    "seconds": "sekunder",
+    "minutes": "minutter",
+    "hours": "timer"
+  }
+}

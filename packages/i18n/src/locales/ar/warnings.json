@@ -1,0 +1,72 @@
+{
+  "title": "التحذيرات",
+  "subtitle": "تتبع وإدارة تحذيرات الأعضاء مع التصعيد التلقائي.",
+  "stats": {
+    "totalWarnings": "إجمالي التحذيرات",
+    "escalationRules": "قواعد التصعيد",
+    "dmOnWarn": "رسالة خاصة عند التحذير"
+  },
+  "tabs": {
+    "warnings": "سجل التحذيرات",
+    "escalation": "التصعيد",
+    "settings": "الإعدادات"
+  },
+  "table": {
+    "id": "المعرف",
+    "user": "المستخدم",
+    "moderator": "المشرف",
+    "reason": "السبب",
+    "date": "التاريخ"
+  },
+  "filter": {
+    "userPlaceholder": "تصفية بمعرف المستخدم...",
+    "clearAll": "مسح الكل"
+  },
+  "pagination": {
+    "previous": "السابق",
+    "next": "التالي",
+    "page": "صفحة {{page}} من {{total}} ({{count}} إجمالي)"
+  },
+  "loading": "جارٍ تحميل التحذيرات...",
+  "noWarnings": "لم يتم العثور على تحذيرات.",
+  "toast": {
+    "warningRemoved": "تم إزالة التحذير",
+    "warningsFailed": "فشل في حذف التحذير",
+    "enterUserId": "أدخل معرف المستخدم لمسح جميع تحذيراته",
+    "allCleared": "تم مسح جميع التحذيرات للمستخدم",
+    "clearFailed": "فشل في مسح التحذيرات",
+    "thresholdAdded": "تمت إضافة حد العقوبة",
+    "thresholdFailed": "فشل في إضافة العقوبة",
+    "thresholdRemoved": "تم إزالة العقوبة",
+    "removeFailed": "فشل في إزالة العقوبة",
+    "settingFailed": "فشل في تحديث الإعداد",
+    "thresholdInvalid": "يجب أن يكون الحد رقمًا موجبًا"
+  },
+  "escalation": {
+    "title": "تصعيد العقوبات",
+    "description": "تكوين الإجراءات التلقائية عندما يصل المستخدم إلى عدد معين من التحذيرات.",
+    "threshold": "الحد",
+    "action": "الإجراء",
+    "duration": "المدة",
+    "noRules": "لا توجد قواعد تصعيد مكونة.",
+    "addRule": "إضافة قاعدة تصعيد",
+    "addButton": "إضافة قاعدة",
+    "warnings": "{{count}} تحذيرات",
+    "min": "{{count}} دقيقة",
+    "timeout": "إسكات",
+    "kick": "طرد",
+    "ban": "حظر",
+    "durationLabel": "المدة (بالثواني)",
+    "thresholdPlaceholder": "مثال: 3",
+    "durationPlaceholder": "مثال: 3600"
+  },
+  "settings": {
+    "title": "إعدادات التحذيرات",
+    "dmOnWarn": "رسالة خاصة عند التحذير",
+    "dmOnWarnDesc": "إرسال رسالة خاصة للمستخدم عند تلقيه تحذيرًا.",
+    "requireReason": "السبب مطلوب",
+    "requireReasonDesc": "يجب على المشرفين تقديم سبب عند إصدار تحذير.",
+    "maxWarnings": "الحد الأقصى للتحذيرات",
+    "maxWarningsDesc": "الحد الأقصى للتحذيرات لكل مستخدم (0 = غير محدود)."
+  }
+}

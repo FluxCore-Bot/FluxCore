@@ -1,0 +1,108 @@
+{
+  "title": "Sikkerhet",
+  "subtitle": "Konfigurer anti-raid-beskyttelse og serversikkerhetsinnstillinger.",
+  "antiRaid": {
+    "title": "Anti-raid-beskyttelse",
+    "description": "Aktiver automatisk oppdagelse og respons på koordinerte raider, mistenkelige kontoer og destruktive handlinger."
+  },
+  "sections": {
+    "joinRate": "Innloggingsfrekvens",
+    "accountAge": "Kontoalder",
+    "antiNuke": "Anti-nuke",
+    "lockdown": "Lockdown",
+    "events": "Hendelser"
+  },
+  "joinRate": {
+    "title": "Oppdagelse av innloggingsfrekvens",
+    "description": "Oppdage masseinnlogginger ved å overvåke raten av nye medlemmer som blir med.",
+    "threshold": "Innloggingsgrense",
+    "thresholdHint": "Antall innlogginger for å utløse oppdagelse",
+    "window": "Tidsvindu (sekunder)",
+    "windowHint": "Vindu der innlogginger telles",
+    "action": "Handling ved oppdagelse",
+    "actionHint": "Handling å utføre mot mistenkte raid-medlemmer",
+    "actions": {
+      "ban": "Utesteng",
+      "kick": "Spark",
+      "timeout": "Tidsavbrudd",
+      "lockdown": "Lockdown"
+    }
+  },
+  "accountAge": {
+    "title": "Kontoaldersfilter",
+    "description": "Utfør automatisk handling mot kontoer som er yngre enn en minimumsalder. Sett til 0 for å deaktivere.",
+    "minAge": "Minimum kontoalder (dager)",
+    "minAgeHint": "0 = deaktivert. Kontoer yngre enn dette vil bli handlet mot.",
+    "action": "Handling"
+  },
+  "antiNuke": {
+    "title": "Anti-nuke-beskyttelse",
+    "description": "Oppdage massesletting av kanaler/roller og sette den ansvarlige brukeren i karantene ved å fjerne alle rollene deres.",
+    "threshold": "Slettingsgrense",
+    "thresholdHint": "Antall slettinger innen 10 sekunder for å utløse karantene",
+    "channelDeleteThreshold": "Kanalslettingsgrense",
+    "roleDeleteThreshold": "Rolleslettingsgrense",
+    "massbanThreshold": "Masseutestengelsesgrense",
+    "interval": "Intervall (sekunder)",
+    "action": "Handling"
+  },
+  "lockdown": {
+    "title": "Automatisk lockdown ved raid",
+    "description": "Lås automatisk alle kanaler når en raid oppdages.",
+    "whitelistedRoles": "Hvitelistede rolle-ID-er (kommaseparerte)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Medlemmer med disse rollene er unntatt fra raid-oppdagelse.",
+    "logChannel": "Loggkanal-ID",
+    "logChannelPlaceholder": "Kanal-ID for raidhendelseslogger...",
+    "enableButton": "Aktiver lockdown",
+    "disableButton": "Deaktiver lockdown",
+    "active": "Lockdown aktiv",
+    "inactive": "Lockdown inaktiv"
+  },
+  "events": {
+    "title": "Nylige raidhendelser",
+    "description": "Tidslinje over oppdagede raider, kontoaldersblokkinger og lockdownhendelser.",
+    "empty": "Ingen raidhendelser registrert ennå. Hendelser vises her når raid-oppdagelse utløses.",
+    "actionLabel": "Handling: {{action}}",
+    "usersLabel": "Brukere: {{count}}",
+    "accountAgeLabel": "Kontoalder: {{days}}d",
+    "table": {
+      "type": "Type",
+      "description": "Beskrivelse",
+      "time": "Tid",
+      "action": "Utført handling"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Innloggingsøkning",
+    "account_age": "Kontoalder",
+    "nuke_attempt": "Nuke-forsøk",
+    "lockdown": "Lockdown",
+    "massJoin": "Masseinnlogging",
+    "suspiciousAccounts": "Mistenkelige kontoer",
+    "channelDeletion": "Kanalsletting",
+    "roleDeletion": "Rollesletting",
+    "massBan": "Masseutestengelse"
+  },
+  "pagination": {
+    "previous": "Forrige",
+    "next": "Neste",
+    "page": "Side {{current}} av {{total}}"
+  },
+  "toast": {
+    "saved": "Anti-raid-konfigurasjon lagret",
+    "saveFailed": "Kunne ikke lagre konfigurasjon",
+    "lockdownEnabled": "Server-lockdown aktivert",
+    "lockdownDisabled": "Server-lockdown deaktivert",
+    "lockdownFailed": "Kunne ikke veksle lockdown"
+  },
+  "saveButton": {
+    "saving": "Lagrer...",
+    "save": "Lagre endringer"
+  },
+  "labels": {
+    "seconds": "sekunder",
+    "minutes": "minutter",
+    "hours": "timer"
+  }
+}

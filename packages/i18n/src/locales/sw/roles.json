@@ -1,0 +1,112 @@
+{
+  "title": "Paneli za Majukumu",
+  "subtitle": "Unda paneli za majukumu yanayoweza kujigawa kwa kutumia vitufe, menyu za kushuka, au mwitikio.",
+  "stats": {
+    "totalPanels": "Jumla ya Paneli",
+    "deployed": "Zilizotumwa",
+    "totalRoles": "Jumla ya Majukumu"
+  },
+  "tabs": {
+    "panels": "Paneli",
+    "preview": "Hakiki"
+  },
+  "table": {
+    "name": "Jina",
+    "type": "Aina",
+    "mode": "Hali",
+    "roles": "Majukumu",
+    "status": "Hali"
+  },
+  "panelTypes": {
+    "reaction": "Mwitikio",
+    "button": "Kitufe",
+    "dropdown": "Menyu ya Kushuka"
+  },
+  "panelModes": {
+    "toggle": "Badilisha",
+    "unique": "Ya Pekee",
+    "verify": "Thibitisha"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Badilisha (ongeza/ondoa)",
+    "unique": "Ya Pekee (moja kwa wakati)",
+    "verify": "Thibitisha (ongeza tu)"
+  },
+  "status": {
+    "deployed": "Imetumwa",
+    "draft": "Rasimu"
+  },
+  "dialog": {
+    "createPanel": "Unda Paneli",
+    "editPanel": "Hariri Paneli"
+  },
+  "panelList": {
+    "title": "Paneli Zote"
+  },
+  "form": {
+    "name": "Jina",
+    "namePlaceholder": "mf. Majukumu ya Rangi",
+    "type": "Aina",
+    "mode": "Hali",
+    "channel": "Chaneli",
+    "channelPlaceholder": "Chagua chaneli",
+    "minRoles": "Majukumu ya Chini",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Majukumu ya Juu",
+    "maxRolesPlaceholder": "Yote",
+    "embedSection": "Embed",
+    "embedTitle": "Kichwa",
+    "embedTitlePlaceholder": "Kichwa cha paneli (chaguo-msingi ni jina la paneli)",
+    "embedDescription": "Maelezo",
+    "embedDescriptionPlaceholder": "Maandishi ya maelezo",
+    "rolesCount": "Majukumu ({{count}}/25)",
+    "addRole": "Ongeza Jukumu"
+  },
+  "entry": {
+    "role": "Jukumu",
+    "rolePlaceholder": "Chagua jukumu",
+    "label": "Lebo",
+    "labelPlaceholder": "Lebo ya kitufe",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "mf. nyota",
+    "description": "Maelezo",
+    "descriptionPlaceholder": "Maelezo ya chaguo",
+    "style": "Mtindo"
+  },
+  "buttonStyles": {
+    "primary": "Msingi",
+    "secondary": "Msaidizi",
+    "success": "Mafanikio",
+    "danger": "Hatari"
+  },
+  "actions": {
+    "create": "Unda",
+    "update": "Sasisha",
+    "cancel": "Ghairi",
+    "deploy": "Tuma",
+    "delete": "Futa",
+    "addEntry": "Ongeza Ingizo",
+    "removeEntry": "Ondoa Ingizo"
+  },
+  "preview": {
+    "title": "Hakiki ya Moja kwa Moja",
+    "description": "Hakiki jinsi paneli zako zitaonekana kwenye Discord.",
+    "selectRoles": "Chagua majukumu...",
+    "noPreview": "Hakuna paneli za kuhakiki."
+  },
+  "empty": "Hakuna paneli za majukumu zilizotengenezwa bado. Bofya \"Unda Paneli\" ili kuanza.",
+  "toast": {
+    "created": "Paneli imeundwa",
+    "createFailed": "Imeshindwa kuunda paneli",
+    "updated": "Paneli imesasishwa",
+    "updateFailed": "Imeshindwa kusasisha paneli",
+    "deleted": "Paneli imefutwa",
+    "deleteFailed": "Imeshindwa kufuta paneli",
+    "deployed": "Paneli ya majukumu imetumwa kwenye chaneli",
+    "deployFailed": "Imeshindwa kutuma paneli",
+    "nameRequired": "Jina la paneli linahitajika",
+    "channelRequired": "Chaneli inahitajika",
+    "maxRolesReached": "Kiwango cha juu cha majukumu 25 kwa kila paneli"
+  },
+  "loading": "Inapakia paneli..."
+}

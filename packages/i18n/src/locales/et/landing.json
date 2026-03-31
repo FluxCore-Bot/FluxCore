@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Nüüd avalikus beetaversioonis",
+    "tagline": "Obsidiani mootor",
+    "titleLine1": "Kõik-ühes",
+    "titleLine2": "Discord boti raamistik",
+    "subtitle": "Juuruta professionaalne Discord kohalolek minutitega. Modulaarne, ise majutatud ja loodud kogukondadele, kes nõuavad enamat."
+  },
+  "cta": {
+    "addToServer": "Lisa serverile",
+    "openDashboard": "Ava armatuurlaud",
+    "exploreFeatures": "Uuri funktsioone"
+  },
+  "stats": {
+    "servers": "Servereid",
+    "latency": "Latentsus",
+    "uptime": "Tööaeg",
+    "modules": "Mooduleid",
+    "serversValue": "1 000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99,9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Võimalused",
+    "title": "Kõik, mida su server vajab",
+    "subtitle": "Modulaarne tööriistakomplekt, mis on loodud kogukondadele, kes nõuavad töökindlust, paindlikkust ja kontrolli.",
+    "automation": {
+      "title": "Automatiseerimisreeglid",
+      "description": "Loo keerukaid sündmuspõhiseid töövoogusid ilma koodita. Kui-siis käivitajad 23 sündmusetüübi ja 10 toiminguliigiga."
+    },
+    "music": {
+      "title": "Muusikasüsteem",
+      "description": "Kõrgkvaliteediline helivoogesitus mitme platvormi toega. Järjehaldus, DJ-juhtelemendid ja raamatukogurežiim."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Dünaamiline häälkanalite haldus. Automaatne loomine kohandatud nimemallide, õiguste ja puhastamisega."
+    },
+    "logs": {
+      "title": "Tegevuslogid",
+      "description": "Täielik auditilogi iga automatiseerimise täitmisest. Otsi, filtreeri ja silugi oma reegleid üksikasjalike logidega."
+    },
+    "webhooks": {
+      "title": "Veebikonksud ja API",
+      "description": "Saada andmeid väliste teenuste juurde HTTP veebikonksudega. Kohandatud päised, kehamallid ja muutujate interpolatsioon."
+    },
+    "dashboard": {
+      "title": "Reaalajas armatuurlaud",
+      "description": "Halda kõike elegantse veebiarmatuurlaualt. Analüütika, seadistamine ja monitooring ühes kohas."
+    }
+  },
+  "ctaSection": {
+    "title": "Valmis oma kogukonda täiustama?",
+    "subtitle": "Alusta minutitega ilma seadistamiseta. Ise majutatud, avatud lähtekoodiga ja täiesti tasuta."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "© {{year}} FluxCore Technologies. Kõik õigused kaitstud.",
+    "links": {
+      "documentation": "Dokumentatsioon",
+      "support": "Tugi",
+      "privacy": "Privaatsuspoliitika",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

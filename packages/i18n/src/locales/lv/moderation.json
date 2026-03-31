@@ -1,0 +1,54 @@
+{
+  "title": "Moderacija",
+  "subtitle": "Parskatiet un parvaldiet moderacijas gadijumus, konfigurejiet sodu iestatijumus.",
+  "stats": {
+    "totalCases": "Kopejie gadijumi",
+    "activeTempbans": "Aktivi pagaidu aizliegumi",
+    "last24h": "Pedejas 24h"
+  },
+  "cases": "Gadijumi",
+  "actions": {
+    "ban": "Aizliegums",
+    "tempban": "Pagaidu aizliegums",
+    "kick": "Izraidisana",
+    "timeout": "Noildze",
+    "softban": "Mekstais aizliegums",
+    "warn": "Bridinajums",
+    "note": "Piezime"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Darbiba",
+    "target": "Merkis",
+    "moderator": "Moderators",
+    "reason": "Iemesls",
+    "date": "Datums",
+    "actions": "Darbibas",
+    "noCases": "Gadijumi nav atrasti.",
+    "noReason": "Bez iemesla"
+  },
+  "filter": {
+    "userPlaceholder": "Filtret pec lietotaja ID...",
+    "allActions": "Visas darbibas"
+  },
+  "pagination": {
+    "previous": "Iepriekssejais",
+    "next": "Nakamais",
+    "page": "Lapa {{page}} no {{total}}"
+  },
+  "editDialog": {
+    "title": "Rediget gadijuma #{{id}} iemeslu",
+    "placeholder": "Ievadiet jaunu iemeslu...",
+    "saving": "Saglaba..."
+  },
+  "editReason": "Rediget iemeslu",
+  "deleteCase": "Dzest gadijumu",
+  "deleteConfirm": "Vai tiessam velaties dzest so gadijumu?",
+  "settings": {
+    "title": "Iestatijumi",
+    "dmOnPunishment": "Zinojums par sodu",
+    "dmOnPunishmentDesc": "Suutit lietotajiem privatu zinojumu, kad vini tiek soditi (aizliegums, izraidisana, noildze).",
+    "modLogChannel": "Moderacijas zurnala kanals",
+    "modLogChannelDesc": "Kanals, kura tiek registretas moderacijas darbibas."
+  }
+}

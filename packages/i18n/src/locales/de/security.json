@@ -1,0 +1,108 @@
+{
+  "title": "Sicherheit",
+  "subtitle": "Anti-Raid-Schutz und Serversicherheitseinstellungen konfigurieren.",
+  "antiRaid": {
+    "title": "Anti-Raid-Schutz",
+    "description": "Aktivieren Sie die automatische Erkennung und Reaktion auf koordinierte Raids, verdaechtige Konten und destruktive Aktionen."
+  },
+  "sections": {
+    "joinRate": "Beitrittsrate",
+    "accountAge": "Kontoalter",
+    "antiNuke": "Anti-Nuke",
+    "lockdown": "Lockdown",
+    "events": "Ereignisse"
+  },
+  "joinRate": {
+    "title": "Beitrittsraten-Erkennung",
+    "description": "Massenbeitritte durch Ueberwachung der Rate neuer Mitglieder erkennen.",
+    "threshold": "Beitrittsschwelle",
+    "thresholdHint": "Anzahl der Beitritte, um die Erkennung auszuloesen",
+    "window": "Zeitfenster (Sekunden)",
+    "windowHint": "Fenster, in dem Beitritte gezaehlt werden",
+    "action": "Aktion bei Erkennung",
+    "actionHint": "Aktion bei verdaechtigen Raid-Mitgliedern",
+    "actions": {
+      "ban": "Bannen",
+      "kick": "Kicken",
+      "timeout": "Timeout",
+      "lockdown": "Lockdown"
+    }
+  },
+  "accountAge": {
+    "title": "Kontoalter-Filter",
+    "description": "Automatisch Konten sanktionieren, die juenger als ein Mindestalter sind. Auf 0 setzen zum Deaktivieren.",
+    "minAge": "Mindest-Kontoalter (Tage)",
+    "minAgeHint": "0 = deaktiviert. Juengere Konten werden sanktioniert.",
+    "action": "Aktion"
+  },
+  "antiNuke": {
+    "title": "Anti-Nuke-Schutz",
+    "description": "Massenloeschungen von Kanaelen/Rollen erkennen und den verantwortlichen Benutzer durch Entfernen aller Rollen unter Quarantaene stellen.",
+    "threshold": "Loeschschwelle",
+    "thresholdHint": "Anzahl der Loeschungen innerhalb von 10 Sekunden, um Quarantaene auszuloesen",
+    "channelDeleteThreshold": "Kanal-Loeschschwelle",
+    "roleDeleteThreshold": "Rollen-Loeschschwelle",
+    "massbanThreshold": "Massenban-Schwelle",
+    "interval": "Intervall (Sekunden)",
+    "action": "Aktion"
+  },
+  "lockdown": {
+    "title": "Auto-Lockdown bei Raid",
+    "description": "Automatisch alle Kanaele sperren, wenn ein Raid erkannt wird.",
+    "whitelistedRoles": "Freigestellte Rollen-IDs (kommagetrennt)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Mitglieder mit diesen Rollen sind von der Raid-Erkennung ausgenommen.",
+    "logChannel": "Protokollkanal-ID",
+    "logChannelPlaceholder": "Kanal-ID fuer Raid-Ereignisprotokolle...",
+    "enableButton": "Lockdown aktivieren",
+    "disableButton": "Lockdown deaktivieren",
+    "active": "Lockdown aktiv",
+    "inactive": "Lockdown inaktiv"
+  },
+  "events": {
+    "title": "Letzte Raid-Ereignisse",
+    "description": "Zeitleiste erkannter Raids, Kontoalter-Blockierungen und Lockdown-Ereignisse.",
+    "empty": "Noch keine Raid-Ereignisse aufgezeichnet. Ereignisse werden hier angezeigt, wenn die Raid-Erkennung ausloest.",
+    "actionLabel": "Aktion: {{action}}",
+    "usersLabel": "Benutzer: {{count}}",
+    "accountAgeLabel": "Kontoalter: {{days}}T",
+    "table": {
+      "type": "Typ",
+      "description": "Beschreibung",
+      "time": "Zeit",
+      "action": "Durchgefuehrte Aktion"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Beitrittsspitze",
+    "account_age": "Kontoalter",
+    "nuke_attempt": "Nuke-Versuch",
+    "lockdown": "Lockdown",
+    "massJoin": "Massenbeitritt",
+    "suspiciousAccounts": "Verdaechtige Konten",
+    "channelDeletion": "Kanalloeschung",
+    "roleDeletion": "Rollenloeschung",
+    "massBan": "Massenban"
+  },
+  "pagination": {
+    "previous": "Zurueck",
+    "next": "Weiter",
+    "page": "Seite {{current}} von {{total}}"
+  },
+  "toast": {
+    "saved": "Anti-Raid-Konfiguration gespeichert",
+    "saveFailed": "Konfiguration konnte nicht gespeichert werden",
+    "lockdownEnabled": "Server-Lockdown aktiviert",
+    "lockdownDisabled": "Server-Lockdown deaktiviert",
+    "lockdownFailed": "Lockdown konnte nicht umgeschaltet werden"
+  },
+  "saveButton": {
+    "saving": "Speichern...",
+    "save": "Aenderungen speichern"
+  },
+  "labels": {
+    "seconds": "Sekunden",
+    "minutes": "Minuten",
+    "hours": "Stunden"
+  }
+}

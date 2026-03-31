@@ -1,0 +1,113 @@
+{
+  "title": "Amri Maalum",
+  "subtitle": "Unda majibu ya kiotomatiki na amri za kiambishi awali zinazoanzishwa na ujumbe.",
+  "stats": {
+    "totalCommands": "Amri Zote",
+    "enabled": "Zimewashwa",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Amri",
+    "variables": "Vigezo"
+  },
+  "table": {
+    "name": "Jina",
+    "trigger": "Kichocheo",
+    "response": "Jibu",
+    "cooldown": "Muda wa Kusubiri",
+    "status": "Hali"
+  },
+  "triggerTypes": {
+    "command": "!amri",
+    "keyword": "Neno Kuu",
+    "startsWith": "Inaanza Na",
+    "regex": "Regex",
+    "prefixCommand": "Amri ya Kiambishi (!jina)",
+    "keywordContains": "Neno Kuu (linalojumuisha)"
+  },
+  "dialog": {
+    "createCommand": "Unda Amri",
+    "editCommand": "Hariri Amri"
+  },
+  "form": {
+    "commandName": "Jina la Amri",
+    "triggerText": "Maandishi ya Kichocheo",
+    "regexPattern": "Muundo wa Regex",
+    "triggerType": "Aina ya Kichocheo",
+    "response": "Jibu",
+    "message": "Ujumbe",
+    "embedTitle": "Kichwa cha Embed",
+    "embedDescription": "Maelezo ya Embed",
+    "color": "Rangi",
+    "footer": "Kijachini"
+  },
+  "options": {
+    "cooldown": "Muda wa Kusubiri (sekunde)",
+    "enabled": "Imewashwa",
+    "enabledDesc": "Iwapo amri hii inatumika",
+    "deleteTrigger": "Futa Ujumbe wa Kichocheo",
+    "deleteTriggerDesc": "Futa kiotomatiki ujumbe ulioanzisha amri hii.",
+    "dmResponse": "Jibu kwa DM",
+    "dmResponseDesc": "Tuma jibu kama ujumbe wa moja kwa moja badala ya kwenye chaneli."
+  },
+  "restrictions": {
+    "title": "Vikwazo",
+    "allowedChannels": "Chaneli Zinazoruhusiwa (tupu = zote)",
+    "allowedRoles": "Majukumu Yanayoruhusiwa (tupu = kila mtu)",
+    "addChannel": "Ongeza Chaneli",
+    "addRole": "Ongeza Jukumu"
+  },
+  "actions": {
+    "create": "Unda",
+    "update": "Sasisha",
+    "cancel": "Ghairi",
+    "addAction": "Ongeza Kitendo",
+    "addRole": "Ongeza Jukumu",
+    "removeRole": "Ondoa Jukumu"
+  },
+  "actionsSection": {
+    "title": "Vitendo ({{count}}/5)",
+    "noActions": "Hakuna vitendo vilivyosanidiwa. Ongeza kitendo ili kufafanua amri hii inachofanya.",
+    "maxActions": "Vitendo 5 kwa kiwango cha juu kwa kila amri"
+  },
+  "variables": {
+    "title": "Vigezo vya Kiolezo",
+    "description": "Tumia vigezo hivi katika majibu ya amri zako. Vitabadilishwa na thamani halisi wakati amri inapoanzishwa.",
+    "table": {
+      "variable": "Kigezo",
+      "description": "Maelezo"
+    },
+    "entries": {
+      "user": "{user} — Inamtaja mtumiaji aliyeanzisha amri",
+      "username": "{username} — Jina la kuonyesha la mtumiaji",
+      "userId": "{userId} — Kitambulisho cha mtumiaji",
+      "server": "{server} — Jina la seva",
+      "channel": "{channel} — Inataja chaneli ya sasa",
+      "channelName": "{channelName} — Jina la chaneli",
+      "memberCount": "{memberCount} — Jumla ya wanachama wa seva"
+    }
+  },
+  "toast": {
+    "created": "Amri imeundwa",
+    "createFailed": "Imeshindwa kuunda amri",
+    "updated": "Amri imesasishwa",
+    "updateFailed": "Imeshindwa kusasisha amri",
+    "deleted": "Amri imefutwa",
+    "deleteFailed": "Imeshindwa kufuta amri",
+    "toggleEnabled": "Amri imewashwa",
+    "toggleDisabled": "Amri imezimwa",
+    "toggleFailed": "Imeshindwa kubadilisha hali ya amri"
+  },
+  "empty": "Hakuna amri maalum zilizotengenezwa bado.",
+  "loading": "Inapakia amri...",
+  "badge": {
+    "active": "Hai",
+    "disabled": "Imezimwa",
+    "text": "Maandishi",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Jina la amri linahitajika"
+  },
+  "triggerPrefix": "Kichocheo: !{{name}}"
+}

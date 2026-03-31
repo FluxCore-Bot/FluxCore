@@ -1,0 +1,118 @@
+{
+  "title": "Rollen & Berechtigungen",
+  "subtitle": "Steuern Sie, wer auf jedes Dashboard-Modul zugreifen und es verwalten kann.",
+  "actions": {
+    "createRole": "Rolle erstellen"
+  },
+  "permissionSystem": {
+    "title": "Berechtigungssystem",
+    "active": "Aktiv — Administratoren sind auf ihre zugewiesenen Berechtigungen beschraenkt.",
+    "inactive": "Inaktiv — alle Administratoren mit MANAGE_GUILD haben vollen Zugriff.",
+    "enabledToast": "Berechtigungssystem aktiviert",
+    "disabledToast": "Berechtigungssystem deaktiviert — alle Administratoren haben vollen Zugriff"
+  },
+  "warning": {
+    "disabled": "Das Berechtigungssystem ist deaktiviert. Alle Dashboard-Administratoren haben derzeit vollen Zugriff. Aktivieren Sie es oben, um granulare Berechtigungen durchzusetzen."
+  },
+  "tabs": {
+    "roles": "Rollen",
+    "auditLog": "Audit-Protokoll"
+  },
+  "roleList": {
+    "title": "Dashboard-Rollen",
+    "empty": "Noch keine Rollen erstellt.",
+    "selectHint": "Waehlen Sie eine Rolle zum Bearbeiten oder erstellen Sie eine neue.",
+    "default": "Standard",
+    "name": "Name",
+    "members": "Mitglieder",
+    "permissions": "Berechtigungen",
+    "edit": "Bearbeiten",
+    "delete": "Loeschen"
+  },
+  "presets": {
+    "title": "Schnell aus Vorlage hinzufuegen",
+    "createdToast": "Rolle \"{{name}}\" erstellt"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} Mitglied",
+    "memberCount_plural": "{{count}} Mitglieder",
+    "name": "Rollenname",
+    "color": "Farbe",
+    "defaultRole": "Standardrolle",
+    "permissions": "Berechtigungen",
+    "allBadge": "Alle",
+    "discordRoles": "Discord-Rollen"
+  },
+  "roleForm": {
+    "name": "Rollenname",
+    "discordRoles": "Discord-Rollen",
+    "permissions": "Berechtigungen",
+    "create": "Rolle erstellen",
+    "update": "Rolle aktualisieren",
+    "cancel": "Abbrechen"
+  },
+  "createDialog": {
+    "title": "Dashboard-Rolle erstellen",
+    "name": "Name",
+    "namePlaceholder": "z.B. Moderator",
+    "color": "Farbe"
+  },
+  "permissionCategories": {
+    "actions": "Aktionen & Automatisierung",
+    "music": "Musik",
+    "tempvoice": "TempVoice",
+    "welcome": "Willkommen & Abschied",
+    "moderation": "Moderation",
+    "logging": "Protokollierung",
+    "leveling": "Levelsystem",
+    "roles": "Rollenpanels",
+    "tickets": "Tickets",
+    "suggestions": "Vorschlaege",
+    "starboard": "Starboard",
+    "giveaways": "Gewinnspiele",
+    "security": "Sicherheit",
+    "scheduled": "Geplante Nachrichten",
+    "commands": "Benutzerdefinierte Befehle",
+    "settings": "Servereinstellungen"
+  },
+  "audit": {
+    "table": {
+      "user": "Benutzer",
+      "action": "Aktion",
+      "target": "Ziel",
+      "timestamp": "Wann"
+    },
+    "noEntries": "Noch keine Audit-Protokolleintraege."
+  },
+  "pagination": {
+    "previous": "Zurueck",
+    "next": "Weiter",
+    "page": "Seite {{current}} von {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Rolle \"{{name}}\" erstellt",
+    "roleCreateFailed": "Rolle konnte nicht erstellt werden",
+    "roleUpdated": "Rolle aktualisiert",
+    "roleUpdateFailed": "Rolle konnte nicht aktualisiert werden",
+    "roleDeleted": "Rolle geloescht",
+    "roleDeleteFailed": "Rolle konnte nicht geloescht werden"
+  },
+  "confirm": {
+    "deleteTitle": "Rolle \"{{name}}\" loeschen?",
+    "deleteMessage": "Dies entfernt die Rolle und hebt die Zuweisung aller Mitglieder auf. Diese Aktion kann nicht rueckgaengig gemacht werden.",
+    "deleteRole": "Sind Sie sicher, dass Sie diese Rolle loeschen moechten? Mitglieder verlieren ihre zugewiesenen Berechtigungen."
+  },
+  "saveButton": {
+    "saving": "Speichern...",
+    "save": "Aenderungen speichern"
+  },
+  "deleteButton": {
+    "deleting": "Loeschen...",
+    "delete": "Loeschen"
+  },
+  "createButton": {
+    "creating": "Erstellen...",
+    "create": "Erstellen"
+  },
+  "loading": "Berechtigungen werden geladen..."
+}

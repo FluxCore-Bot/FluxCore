@@ -1,0 +1,41 @@
+{
+  "title": "Ubao wa Nyota",
+  "subtitle": "Angazia ujumbe bora kwa kukusanya mwitikio wa nyota kwenye chaneli maalum.",
+  "tabs": {
+    "settings": "Mipangilio",
+    "starredMessages": "Ujumbe Wenye Nyota"
+  },
+  "settings": {
+    "title": "Usanidi wa Ubao wa Nyota",
+    "description": "Sanidi wakati na mahali ujumbe wenye nyota unapochapishwa.",
+    "channelId": "Chaneli ya Ubao wa Nyota",
+    "channelIdDesc": "Chaneli ambapo ujumbe wenye nyota unachapishwa.",
+    "starEmoji": "Emoji ya Nyota",
+    "starEmojiDesc": "Emoji inayotumika kuweka nyota kwenye ujumbe. Chaguo-msingi ni emoji ya nyota.",
+    "threshold": "Kizingiti cha Nyota",
+    "thresholdDesc": "Idadi ya chini ya mwitikio inayohitajika ili kuchapisha ujumbe kwenye ubao wa nyota.",
+    "selfStar": "Jinyoteshe",
+    "selfStarDesc": "Ruhusu waandishi wa ujumbe kuweka nyota kwenye ujumbe wao wenyewe.",
+    "nsfwAllowed": "NSFW Inaruhusiwa",
+    "nsfwAllowedDesc": "Ruhusu ujumbe kutoka chaneli za NSFW kuonekana kwenye ubao wa nyota.",
+    "ignoredChannels": "Chaneli Zilizopuuzwa",
+    "ignoredChannelsDesc": "Ujumbe kutoka chaneli hizi hautaonekana kamwe kwenye ubao wa nyota."
+  },
+  "messages": {
+    "table": {
+      "original": "Ujumbe wa Asili",
+      "stars": "Nyota",
+      "channel": "Chaneli",
+      "date": "Tarehe"
+    },
+    "noMessages": "Hakuna ujumbe wenye nyota bado."
+  },
+  "toast": {
+    "saved": "Mipangilio ya ubao wa nyota imehifadhiwa",
+    "saveFailed": "Imeshindwa kuhifadhi mipangilio ya ubao wa nyota"
+  },
+  "actions": {
+    "save": "Hifadhi",
+    "saving": "Inahifadhi..."
+  }
+}

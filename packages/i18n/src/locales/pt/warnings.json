@@ -1,0 +1,72 @@
+{
+  "title": "Avisos",
+  "subtitle": "Acompanhe e gira os avisos dos membros com escalamento automatico.",
+  "stats": {
+    "totalWarnings": "Total de avisos",
+    "escalationRules": "Regras de escalamento",
+    "dmOnWarn": "MD ao avisar"
+  },
+  "tabs": {
+    "warnings": "Registo de avisos",
+    "escalation": "Escalamento",
+    "settings": "Definicoes"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Utilizador",
+    "moderator": "Moderador",
+    "reason": "Motivo",
+    "date": "Data"
+  },
+  "filter": {
+    "userPlaceholder": "Filtrar por ID de utilizador...",
+    "clearAll": "Limpar tudo"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "page": "Pagina {{page}} de {{total}} ({{count}} no total)"
+  },
+  "loading": "A carregar avisos...",
+  "noWarnings": "Nenhum aviso encontrado.",
+  "toast": {
+    "warningRemoved": "Aviso removido",
+    "warningsFailed": "Falha ao eliminar o aviso",
+    "enterUserId": "Introduza um ID de utilizador para limpar todos os avisos desse utilizador",
+    "allCleared": "Todos os avisos limpos para o utilizador",
+    "clearFailed": "Falha ao limpar os avisos",
+    "thresholdAdded": "Limiar de punicao adicionado",
+    "thresholdFailed": "Falha ao adicionar a punicao",
+    "thresholdRemoved": "Punicao removida",
+    "removeFailed": "Falha ao remover a punicao",
+    "settingFailed": "Falha ao atualizar a definicao",
+    "thresholdInvalid": "O limiar deve ser um numero positivo"
+  },
+  "escalation": {
+    "title": "Escalamento de punicoes",
+    "description": "Configure acoes automaticas quando um utilizador atinge um certo numero de avisos.",
+    "threshold": "Limiar",
+    "action": "Acao",
+    "duration": "Duracao",
+    "noRules": "Nenhuma regra de escalamento configurada.",
+    "addRule": "Adicionar regra de escalamento",
+    "addButton": "Adicionar regra",
+    "warnings": "{{count}} avisos",
+    "min": "{{count}} min",
+    "timeout": "Timeout",
+    "kick": "Expulsao",
+    "ban": "Ban",
+    "durationLabel": "Duracao (segundos)",
+    "thresholdPlaceholder": "ex. 3",
+    "durationPlaceholder": "ex. 3600"
+  },
+  "settings": {
+    "title": "Definicoes de avisos",
+    "dmOnWarn": "MD ao avisar",
+    "dmOnWarnDesc": "Enviar uma mensagem direta ao utilizador quando recebe um aviso.",
+    "requireReason": "Motivo obrigatorio",
+    "requireReasonDesc": "Os moderadores devem fornecer um motivo ao emitir um aviso.",
+    "maxWarnings": "Avisos maximos",
+    "maxWarningsDesc": "Maximo de avisos por utilizador (0 = ilimitado)."
+  }
+}

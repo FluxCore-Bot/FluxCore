@@ -1,0 +1,12 @@
+{
+  "title": "Tổng Quan",
+  "subtitle": "Giám sát hiệu suất tự động hóa và hoạt động của bạn trong nháy mắt.",
+  "stats": {
+    "actionRules": "Quy Tắc Hành Động",
+    "activeNow": "Đang Hoạt Động",
+    "executions": "Lần Thực Thi",
+    "successRate": "Tỷ Lệ Thành Công"
+  },
+  "errorsInLast24h": "{{count}} lỗi trong 24 giờ qua",
+  "errorsInLast24h_other": "{{count}} lỗi trong 24 giờ qua"
+}

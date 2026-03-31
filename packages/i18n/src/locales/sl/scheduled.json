@@ -1,0 +1,86 @@
+{
+  "title": "Načrtovana sporočila",
+  "subtitle": "Ustvarite ponavljajoča se samodejno objavljena sporočila po nastavljenih urnikih.",
+  "stats": {
+    "totalMessages": "Skupaj sporočil",
+    "active": "Aktivno",
+    "inactive": "Neaktivno"
+  },
+  "table": {
+    "name": "Ime",
+    "channel": "Kanal",
+    "schedule": "Urnik",
+    "nextRun": "Naslednji zagon",
+    "status": "Stanje"
+  },
+  "dialog": {
+    "editTitle": "Uredi načrtovano sporočilo",
+    "createTitle": "Novo načrtovano sporočilo"
+  },
+  "form": {
+    "name": "Ime",
+    "channel": "Kanal",
+    "schedulePreset": "Prednastavitev urnika",
+    "cronExpression": "Izraz Cron",
+    "timezone": "Časovni pas",
+    "messageContent": "Vsebina sporočila",
+    "text": "Besedilo",
+    "embed": "Vdelana vsebina",
+    "enabled": "Omogočeno",
+    "enabledDesc": "Ali je to načrtovano sporočilo aktivno."
+  },
+  "cronPresets": {
+    "everyHour": "Vsako uro",
+    "every6Hours": "Vsakih 6 ur",
+    "daily9am": "Vsak dan ob 9:00",
+    "dailyMidnight": "Vsak dan ob polnoči",
+    "weeklyMonday": "Vsak ponedeljek",
+    "monthly1st": "Vsak mesec 1.",
+    "custom": "Po meri"
+  },
+  "embed": {
+    "title": "Naslov",
+    "description": "Opis",
+    "color": "Barva (hex)",
+    "footer": "Noga",
+    "thumbnail": "URL sličice",
+    "image": "URL slike"
+  },
+  "toast": {
+    "created": "Načrtovano sporočilo ustvarjeno",
+    "createFailed": "Ustvarjanje načrtovanega sporočila ni uspelo",
+    "updated": "Načrtovano sporočilo posodobljeno",
+    "updateFailed": "Posodabljanje načrtovanega sporočila ni uspelo",
+    "deleted": "Načrtovano sporočilo izbrisano",
+    "deleteFailed": "Brisanje načrtovanega sporočila ni uspelo",
+    "testSent": "Testno sporočilo poslano",
+    "testFailed": "Pošiljanje testnega sporočila ni uspelo"
+  },
+  "empty": {
+    "title": "Še ni načrtovanih sporočil",
+    "description": "Ustvarite načrtovano sporočilo za samodejno objavljanje vsebine na ponavljajoči se osnovi.",
+    "createButton": "Ustvari sporočilo"
+  },
+  "pagination": {
+    "previous": "Prejšnja",
+    "next": "Naslednja",
+    "page": "Stran {{page}} od {{total}}"
+  },
+  "actions": {
+    "newMessage": "Novo sporočilo",
+    "testSend": "Testno pošiljanje",
+    "edit": "Uredi",
+    "delete": "Izbriši",
+    "save": "Shrani",
+    "cancel": "Prekliči"
+  },
+  "validation": {
+    "nameRequired": "Ime sporočila je obvezno",
+    "channelRequired": "Kanal je obvezen"
+  },
+  "cronPreview": {
+    "nextRuns": "Naslednji zagoni"
+  },
+  "characters": "{{count}}/2000 znakov",
+  "never": "Nikoli"
+}

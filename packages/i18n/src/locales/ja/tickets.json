@@ -1,0 +1,77 @@
+{
+  "title": "チケットシステム",
+  "subtitle": "サポートチケットパネルを作成し、ダッシュボードからチケットを管理します。",
+  "stats": {
+    "totalTickets": "チケット総数",
+    "open": "オープン",
+    "claimed": "対応中",
+    "panels": "パネル"
+  },
+  "tabs": {
+    "activeTickets": "アクティブなチケット",
+    "panelBuilder": "パネルビルダー",
+    "settings": "設定"
+  },
+  "table": {
+    "id": "ID",
+    "user": "ユーザー",
+    "subject": "件名",
+    "status": "ステータス",
+    "assignee": "担当者",
+    "created": "作成日"
+  },
+  "statuses": {
+    "open": "オープン",
+    "claimed": "対応中",
+    "closed": "クローズ"
+  },
+  "panelBuilder": {
+    "title": "パネルタイトル",
+    "channel": "チャンネル",
+    "buttonLabel": "ボタンラベル",
+    "welcomeMessage": "ウェルカムメッセージ",
+    "category": "チケットカテゴリ",
+    "create": "パネルを作成",
+    "edit": "パネルを編集",
+    "deploy": "パネルをデプロイ"
+  },
+  "settings": {
+    "transcriptChannel": "トランスクリプトチャンネル",
+    "transcriptChannelDesc": "チケットクローズ時にトランスクリプトが保存されるチャンネル。",
+    "maxTicketsPerUser": "ユーザーあたりの最大チケット数",
+    "maxTicketsPerUserDesc": "1人のユーザーが持てるオープンチケットの最大数。",
+    "closeConfirmation": "クローズ確認",
+    "closeConfirmationDesc": "チケットをクローズする前に確認を求めます。",
+    "dmTranscript": "DMトランスクリプト",
+    "dmTranscriptDesc": "チケット作成者にDMでトランスクリプトのコピーを送信します。"
+  },
+  "actions": {
+    "claim": "対応する",
+    "close": "クローズ",
+    "delete": "削除",
+    "reopen": "再オープン"
+  },
+  "toast": {
+    "panelCreated": "チケットパネルを作成しました",
+    "panelCreateFailed": "チケットパネルの作成に失敗しました",
+    "panelUpdated": "チケットパネルを更新しました",
+    "panelUpdateFailed": "チケットパネルの更新に失敗しました",
+    "panelDeployed": "チケットパネルをデプロイしました",
+    "panelDeployFailed": "チケットパネルのデプロイに失敗しました",
+    "ticketClaimed": "チケットを対応中にしました",
+    "ticketClaimFailed": "チケットの対応に失敗しました",
+    "ticketClosed": "チケットをクローズしました",
+    "ticketCloseFailed": "チケットのクローズに失敗しました",
+    "ticketReopened": "チケットを再オープンしました",
+    "ticketReopenFailed": "チケットの再オープンに失敗しました",
+    "ticketDeleted": "チケットを削除しました",
+    "ticketDeleteFailed": "チケットの削除に失敗しました",
+    "settingsSaved": "チケット設定を保存しました",
+    "settingsFailed": "チケット設定の保存に失敗しました"
+  },
+  "empty": {
+    "tickets": "アクティブなチケットはありません。",
+    "panels": "チケットパネルはまだ作成されていません。"
+  },
+  "loading": "チケットを読み込み中..."
+}

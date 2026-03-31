@@ -1,0 +1,54 @@
+{
+  "title": "[NEEDS TRANSLATION] Moderation",
+  "subtitle": "[NEEDS TRANSLATION] View and manage moderation cases, configure punishment settings.",
+  "stats": {
+    "totalCases": "[NEEDS TRANSLATION] Total Cases",
+    "activeTempbans": "[NEEDS TRANSLATION] Active Tempbans",
+    "last24h": "[NEEDS TRANSLATION] Last 24h"
+  },
+  "cases": "[NEEDS TRANSLATION] Cases",
+  "actions": {
+    "ban": "[NEEDS TRANSLATION] Ban",
+    "tempban": "[NEEDS TRANSLATION] Tempban",
+    "kick": "[NEEDS TRANSLATION] Kick",
+    "timeout": "[NEEDS TRANSLATION] Timeout",
+    "softban": "[NEEDS TRANSLATION] Softban",
+    "warn": "[NEEDS TRANSLATION] Warn",
+    "note": "[NEEDS TRANSLATION] Note"
+  },
+  "table": {
+    "id": "[NEEDS TRANSLATION] ID",
+    "action": "[NEEDS TRANSLATION] Action",
+    "target": "[NEEDS TRANSLATION] Target",
+    "moderator": "[NEEDS TRANSLATION] Moderator",
+    "reason": "[NEEDS TRANSLATION] Reason",
+    "date": "[NEEDS TRANSLATION] Date",
+    "actions": "[NEEDS TRANSLATION] Actions",
+    "noCases": "[NEEDS TRANSLATION] No cases found.",
+    "noReason": "[NEEDS TRANSLATION] No reason"
+  },
+  "filter": {
+    "userPlaceholder": "[NEEDS TRANSLATION] Filter by User ID...",
+    "allActions": "[NEEDS TRANSLATION] All Actions"
+  },
+  "pagination": {
+    "previous": "[NEEDS TRANSLATION] Previous",
+    "next": "[NEEDS TRANSLATION] Next",
+    "page": "[NEEDS TRANSLATION] Page {{page}} of {{total}}"
+  },
+  "editDialog": {
+    "title": "[NEEDS TRANSLATION] Edit Case #{{id}} Reason",
+    "placeholder": "[NEEDS TRANSLATION] Enter new reason...",
+    "saving": "[NEEDS TRANSLATION] Saving..."
+  },
+  "editReason": "[NEEDS TRANSLATION] Edit reason",
+  "deleteCase": "[NEEDS TRANSLATION] Delete case",
+  "deleteConfirm": "[NEEDS TRANSLATION] Are you sure you want to delete this case?",
+  "settings": {
+    "title": "[NEEDS TRANSLATION] Settings",
+    "dmOnPunishment": "[NEEDS TRANSLATION] DM on Punishment",
+    "dmOnPunishmentDesc": "[NEEDS TRANSLATION] Send a DM to users when they are punished (ban, kick, timeout).",
+    "modLogChannel": "[NEEDS TRANSLATION] Mod Log Channel",
+    "modLogChannelDesc": "[NEEDS TRANSLATION] Channel where moderation actions are logged."
+  }
+}

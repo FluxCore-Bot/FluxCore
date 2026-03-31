@@ -1,0 +1,54 @@
+{
+  "title": "ניהול",
+  "subtitle": "צפה ונהל תיקי ניהול, הגדר הגדרות ענישה.",
+  "stats": {
+    "totalCases": "סה\"כ תיקים",
+    "activeTempbans": "חסימות זמניות פעילות",
+    "last24h": "24 שעות אחרונות"
+  },
+  "cases": "תיקים",
+  "actions": {
+    "ban": "חסימה",
+    "tempban": "חסימה זמנית",
+    "kick": "הסרה",
+    "timeout": "השתקה",
+    "softban": "חסימה רכה",
+    "warn": "אזהרה",
+    "note": "הערה"
+  },
+  "table": {
+    "id": "מזהה",
+    "action": "פעולה",
+    "target": "יעד",
+    "moderator": "מנהל",
+    "reason": "סיבה",
+    "date": "תאריך",
+    "actions": "פעולות",
+    "noCases": "לא נמצאו תיקים.",
+    "noReason": "ללא סיבה"
+  },
+  "filter": {
+    "userPlaceholder": "סנן לפי מזהה משתמש...",
+    "allActions": "כל הפעולות"
+  },
+  "pagination": {
+    "previous": "הקודם",
+    "next": "הבא",
+    "page": "עמוד {{page}} מתוך {{total}}"
+  },
+  "editDialog": {
+    "title": "עריכת סיבת תיק #{{id}}",
+    "placeholder": "הזן סיבה חדשה...",
+    "saving": "שומר..."
+  },
+  "editReason": "עריכת סיבה",
+  "deleteCase": "מחיקת תיק",
+  "deleteConfirm": "האם אתה בטוח שברצונך למחוק תיק זה?",
+  "settings": {
+    "title": "הגדרות",
+    "dmOnPunishment": "הודעה פרטית בעונש",
+    "dmOnPunishmentDesc": "שלח הודעה פרטית למשתמשים כאשר הם נענשים (חסימה, הסרה, השתקה).",
+    "modLogChannel": "ערוץ יומן ניהול",
+    "modLogChannelDesc": "הערוץ שבו נרשמות פעולות ניהול."
+  }
+}

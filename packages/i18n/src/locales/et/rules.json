@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Server",
+    "automation": "Automatiseerimine"
+  },
+  "title": "Automatiseerimisreeglid",
+  "subtitle": "Seadista sündmuspõhised käivitajad ja automaatreaktsioonid oma serveris.",
+  "createRule": "Loo reegel",
+  "stats": {
+    "totalRules": "Reegleid kokku",
+    "active": "Aktiivsed",
+    "executions7d": "Täitmisi (7p)",
+    "successRate": "Edukuse määr"
+  },
+  "filter": {
+    "searchPlaceholder": "Otsi reegleid...",
+    "eventType": "Sündmuse tüüp",
+    "allEvents": "Kõik sündmused",
+    "allStatus": "Kõik olekud",
+    "enabled": "Lubatud",
+    "disabled": "Keelatud",
+    "sortBy": "Sorteeri",
+    "priority": "Prioriteet",
+    "name": "Nimi",
+    "lastFired": "Viimati käivitatud",
+    "status": "Olek",
+    "clear": "Tühjenda",
+    "showing": "Kuvatakse {{filtered}} / {{total}} reeglit"
+  },
+  "bulk": {
+    "selected": "{{count}} reegel valitud",
+    "selected_other": "{{count}} reeglit valitud",
+    "enable": "Luba",
+    "disable": "Keela",
+    "delete": "Kustuta",
+    "clear": "Tühjenda"
+  },
+  "empty": {
+    "title": "Alusta automatiseerimisega",
+    "description": "Vali mall kiireks alustamiseks või loo reegel nullist.",
+    "createFromScratch": "Loo nullist"
+  },
+  "noResults": {
+    "title": "Sobivaid reegleid ei leitud",
+    "description": "Proovi kohandada oma otsingut või filtreid, et leida otsitav."
+  },
+  "templates": {
+    "welcomeMessage": "Tervitussõnum",
+    "welcomeMessageDesc": "Tervita uusi liikmeid kohandatud sõnumiga kanalis",
+    "autoRole": "Automaatne roll",
+    "autoRoleDesc": "Määra automaatselt roll, kui liige liitub",
+    "logDeleted": "Kustutatud sõnumite logimine",
+    "logDeletedDesc": "Saada kustutatud sõnumite teave logikanalile",
+    "boostThankYou": "Tänu boostitamise eest",
+    "boostThankYouDesc": "Saada DM tänades kasutajaid, kes serverit boostivad",
+    "banLogger": "Bannide logimine",
+    "banLoggerDesc": "Loги banni sündmused modereerimiskanalile",
+    "autoThread": "Automaatne lõim",
+    "autoThreadDesc": "Loo automaatselt lõim, kui sõnum saadetakse"
+  },
+  "deleteDialog": {
+    "title": "Kustuta reegel",
+    "description": "Kas oled kindel, et soovid kustutada \"{{name}}\"? Seda toimingut ei saa tagasi võtta.",
+    "confirm": "Kustuta"
+  },
+  "bulkDeleteDialog": {
+    "title": "Kustuta valitud reeglid",
+    "description": "Kas oled kindel, et soovid kustutada {{count}} reegeli? Seda toimingut ei saa tagasi võtta.",
+    "description_other": "Kas oled kindel, et soovid kustutada {{count}} reeglit? Seda toimingut ei saa tagasi võtta.",
+    "confirm": "Kustuta kõik"
+  },
+  "toast": {
+    "deleted": "Reegel kustutatud",
+    "deleteFailed": "Reegli kustutamine ebaõnnestus",
+    "enabled": "Reegel lubatud",
+    "disabled": "Reegel keelatud",
+    "toggleFailed": "Reegli lülitamine ebaõnnestus",
+    "duplicated": "Reegel dubleeritud",
+    "duplicateFailed": "Reegli dubleerimine ebaõnnestus",
+    "bulkEnabled": "{{count}} reeglit lubatud",
+    "bulkDisabled": "{{count}} reeglit keelatud",
+    "bulkEnableFailed": "Reeglite lubamine ebaõnnestus",
+    "bulkDisableFailed": "Reeglite keelamine ebaõnnestus",
+    "bulkDeleted": "{{count}} reeglit kustutatud",
+    "bulkDeleteFailed": "Reeglite kustutamine ebaõnnestus"
+  }
+}

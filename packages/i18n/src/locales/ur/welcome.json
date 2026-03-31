@@ -1,0 +1,65 @@
+{
+  "title": "[NEEDS TRANSLATION] Welcome & Farewell",
+  "subtitle": "[NEEDS TRANSLATION] Configure welcome and farewell messages, images, and auto-roles.",
+  "loadingSubtitle": "[NEEDS TRANSLATION] Configure welcome and farewell messages for your server.",
+  "tabs": {
+    "welcome": "[NEEDS TRANSLATION] Welcome",
+    "welcomeImage": "[NEEDS TRANSLATION] Welcome Image",
+    "farewell": "[NEEDS TRANSLATION] Farewell",
+    "farewellImage": "[NEEDS TRANSLATION] Farewell Image",
+    "dm": "[NEEDS TRANSLATION] Welcome DM",
+    "autorole": "[NEEDS TRANSLATION] Auto-Role"
+  },
+  "welcome": {
+    "title": "[NEEDS TRANSLATION] Welcome Message",
+    "description": "[NEEDS TRANSLATION] Send a custom embed when a new member joins.",
+    "channelLabel": "[NEEDS TRANSLATION] Welcome Channel ID",
+    "channelPlaceholder": "[NEEDS TRANSLATION] Channel ID...",
+    "embedBuilder": "[NEEDS TRANSLATION] Embed Builder"
+  },
+  "welcomeImage": {
+    "title": "[NEEDS TRANSLATION] Welcome Image",
+    "description": "[NEEDS TRANSLATION] Generate a custom image card with the member's avatar when they join.",
+    "disabled": "[NEEDS TRANSLATION] Enable the toggle above to configure welcome images."
+  },
+  "farewell": {
+    "title": "[NEEDS TRANSLATION] Farewell Message",
+    "description": "[NEEDS TRANSLATION] Send a message when a member leaves the server.",
+    "channelLabel": "[NEEDS TRANSLATION] Farewell Channel ID",
+    "channelPlaceholder": "[NEEDS TRANSLATION] Channel ID..."
+  },
+  "farewellImage": {
+    "title": "[NEEDS TRANSLATION] Farewell Image",
+    "description": "[NEEDS TRANSLATION] Generate a custom farewell card when a member leaves.",
+    "disabled": "[NEEDS TRANSLATION] Enable the toggle above to configure farewell images."
+  },
+  "dm": {
+    "title": "[NEEDS TRANSLATION] Welcome DM",
+    "description": "[NEEDS TRANSLATION] Send a direct message to new members. Will silently fail if DMs are disabled."
+  },
+  "autorole": {
+    "title": "[NEEDS TRANSLATION] Auto-Role",
+    "description": "[NEEDS TRANSLATION] Automatically assign roles to new members when they join. Bots are excluded. The bot must have a role higher than the roles listed here.",
+    "label": "[NEEDS TRANSLATION] Role IDs (comma-separated)",
+    "placeholder": "[NEEDS TRANSLATION] 123456789, 987654321"
+  },
+  "embed": {
+    "title": "[NEEDS TRANSLATION] Title",
+    "description": "[NEEDS TRANSLATION] Description",
+    "color": "[NEEDS TRANSLATION] Color (hex)",
+    "footer": "[NEEDS TRANSLATION] Footer",
+    "thumbnail": "[NEEDS TRANSLATION] Thumbnail URL",
+    "image": "[NEEDS TRANSLATION] Image URL",
+    "variables": "[NEEDS TRANSLATION] Variables:"
+  },
+  "saveChanges": "[NEEDS TRANSLATION] Save Changes",
+  "saving": "[NEEDS TRANSLATION] Saving...",
+  "sendTest": "[NEEDS TRANSLATION] Send Test Message",
+  "sending": "[NEEDS TRANSLATION] Sending...",
+  "toast": {
+    "saved": "[NEEDS TRANSLATION] Welcome configuration saved",
+    "saveFailed": "[NEEDS TRANSLATION] Failed to save configuration",
+    "testSent": "[NEEDS TRANSLATION] Test message will be sent to <#{{channelId}}>",
+    "testFailed": "[NEEDS TRANSLATION] Failed to send test message"
+  }
+}

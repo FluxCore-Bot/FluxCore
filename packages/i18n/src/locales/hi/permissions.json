@@ -1,0 +1,118 @@
+{
+  "title": "रोल और अनुमतियां",
+  "subtitle": "नियंत्रित करें कि कौन प्रत्येक डैशबोर्ड मॉड्यूल तक पहुंच और प्रबंधन कर सकता है।",
+  "actions": {
+    "createRole": "रोल बनाएं"
+  },
+  "permissionSystem": {
+    "title": "अनुमति सिस्टम",
+    "active": "सक्रिय — एडमिन अपनी असाइन की गई अनुमतियों तक सीमित हैं।",
+    "inactive": "निष्क्रिय — MANAGE_GUILD वाले सभी एडमिन को पूर्ण एक्सेस है।",
+    "enabledToast": "अनुमति सिस्टम सक्रिय किया गया",
+    "disabledToast": "अनुमति सिस्टम निष्क्रिय किया गया — सभी एडमिन को पूर्ण एक्सेस है"
+  },
+  "warning": {
+    "disabled": "अनुमति सिस्टम निष्क्रिय है। सभी डैशबोर्ड एडमिन के पास वर्तमान में पूर्ण एक्सेस है। विस्तृत अनुमतियां लागू करने के लिए ऊपर सक्रिय करें।"
+  },
+  "tabs": {
+    "roles": "रोल",
+    "auditLog": "ऑडिट लॉग"
+  },
+  "roleList": {
+    "title": "डैशबोर्ड रोल",
+    "empty": "अभी तक कोई रोल नहीं बनाया गया।",
+    "selectHint": "संपादित करने के लिए एक रोल चुनें, या नया बनाएं।",
+    "default": "डिफ़ॉल्ट",
+    "name": "नाम",
+    "members": "सदस्य",
+    "permissions": "अनुमतियां",
+    "edit": "संपादित करें",
+    "delete": "हटाएं"
+  },
+  "presets": {
+    "title": "प्रीसेट से जल्दी जोड़ें",
+    "createdToast": "\"{{name}}\" रोल बनाया गया"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} सदस्य",
+    "memberCount_plural": "{{count}} सदस्य",
+    "name": "रोल का नाम",
+    "color": "रंग",
+    "defaultRole": "डिफ़ॉल्ट रोल",
+    "permissions": "अनुमतियां",
+    "allBadge": "सभी",
+    "discordRoles": "Discord रोल"
+  },
+  "roleForm": {
+    "name": "रोल का नाम",
+    "discordRoles": "Discord रोल",
+    "permissions": "अनुमतियां",
+    "create": "रोल बनाएं",
+    "update": "रोल अपडेट करें",
+    "cancel": "रद्द करें"
+  },
+  "createDialog": {
+    "title": "डैशबोर्ड रोल बनाएं",
+    "name": "नाम",
+    "namePlaceholder": "जैसे मॉडरेटर",
+    "color": "रंग"
+  },
+  "permissionCategories": {
+    "actions": "एक्शन और ऑटोमेशन",
+    "music": "संगीत",
+    "tempvoice": "TempVoice",
+    "welcome": "स्वागत और विदाई",
+    "moderation": "मॉडरेशन",
+    "logging": "लॉगिंग",
+    "leveling": "लेवलिंग",
+    "roles": "रोल पैनल",
+    "tickets": "टिकट",
+    "suggestions": "सुझाव",
+    "starboard": "स्टारबोर्ड",
+    "giveaways": "गिवअवे",
+    "security": "सुरक्षा",
+    "scheduled": "शेड्यूल्ड संदेश",
+    "commands": "कस्टम कमांड",
+    "settings": "सर्वर सेटिंग्स"
+  },
+  "audit": {
+    "table": {
+      "user": "उपयोगकर्ता",
+      "action": "कार्रवाई",
+      "target": "लक्ष्य",
+      "timestamp": "कब"
+    },
+    "noEntries": "अभी तक कोई ऑडिट लॉग प्रविष्टि नहीं।"
+  },
+  "pagination": {
+    "previous": "पिछला",
+    "next": "अगला",
+    "page": "पृष्ठ {{current}} / {{total}}"
+  },
+  "toast": {
+    "roleCreated": "\"{{name}}\" रोल बनाया गया",
+    "roleCreateFailed": "रोल बनाने में विफल",
+    "roleUpdated": "रोल अपडेट किया गया",
+    "roleUpdateFailed": "रोल अपडेट करने में विफल",
+    "roleDeleted": "रोल हटाया गया",
+    "roleDeleteFailed": "रोल हटाने में विफल"
+  },
+  "confirm": {
+    "deleteTitle": "\"{{name}}\" रोल हटाएं?",
+    "deleteMessage": "यह रोल हटा दिया जाएगा और सभी सदस्यों को अनअसाइन कर दिया जाएगा। यह कार्रवाई पूर्ववत नहीं की जा सकती।",
+    "deleteRole": "क्या आप सुनिश्चित हैं कि आप इस रोल को हटाना चाहते हैं? सदस्य अपनी असाइन की गई अनुमतियां खो देंगे।"
+  },
+  "saveButton": {
+    "saving": "सहेजा जा रहा है...",
+    "save": "परिवर्तन सहेजें"
+  },
+  "deleteButton": {
+    "deleting": "हटाया जा रहा है...",
+    "delete": "हटाएं"
+  },
+  "createButton": {
+    "creating": "बनाया जा रहा है...",
+    "create": "बनाएं"
+  },
+  "loading": "अनुमतियां लोड हो रही हैं..."
+}

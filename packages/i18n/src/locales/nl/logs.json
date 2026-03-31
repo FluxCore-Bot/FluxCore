@@ -1,0 +1,8 @@
+{
+  "title": "Logboeken",
+  "subtitle": "Bewaak regeluitvoeringen en gebeurtenislogboekregistratie.",
+  "tabs": {
+    "activity": "Activiteitenlogboeken",
+    "events": "Gebeurtenislogboeken"
+  }
+}

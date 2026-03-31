@@ -1,0 +1,108 @@
+{
+  "title": "Bezbednost",
+  "subtitle": "Konfigurisi zastitu od napada i bezbednosna podesavanja servera.",
+  "antiRaid": {
+    "title": "Zastita od napada",
+    "description": "Omogucite automatsku detekciju i odgovor na koordinisane napade, sumnjive naloge i destruktivne radnje."
+  },
+  "sections": {
+    "joinRate": "Stopa pridruzivanja",
+    "accountAge": "Starost naloga",
+    "antiNuke": "Anti-Nuke",
+    "lockdown": "Zakljucavanje",
+    "events": "Dogadaji"
+  },
+  "joinRate": {
+    "title": "Detekcija stope pridruzivanja",
+    "description": "Detektujte masovna pridruzivanja pracenjem stope novih clanova.",
+    "threshold": "Prag pridruzivanja",
+    "thresholdHint": "Broj pridruzivanja za aktiviranje detekcije",
+    "window": "Vremenski prozor (sekunde)",
+    "windowHint": "Prozor u kojem se broje pridruzivanja",
+    "action": "Radnja pri detekciji",
+    "actionHint": "Radnja koja se preduzima nad sumnjivim clanovima napada",
+    "actions": {
+      "ban": "Zabrana",
+      "kick": "Izbacivanje",
+      "timeout": "Tajmaut",
+      "lockdown": "Zakljucavanje"
+    }
+  },
+  "accountAge": {
+    "title": "Filter starosti naloga",
+    "description": "Automatski preduzmite radnju nad nalozima koji su mladi od minimalne starosti. Postavite na 0 za onemogucavanje.",
+    "minAge": "Minimalna starost naloga (dani)",
+    "minAgeHint": "0 = onemoguceno. Nalozi mladi od ovoga ce biti obradjeni.",
+    "action": "Radnja"
+  },
+  "antiNuke": {
+    "title": "Anti-Nuke zastita",
+    "description": "Detektujte masovno brisanje kanala/uloga i stavite odgovornog korisnika u karantin uklanjanjem svih njegovih uloga.",
+    "threshold": "Prag brisanja",
+    "thresholdHint": "Broj brisanja unutar 10 sekundi za aktiviranje karantina",
+    "channelDeleteThreshold": "Prag brisanja kanala",
+    "roleDeleteThreshold": "Prag brisanja uloga",
+    "massbanThreshold": "Prag masovnih zabrana",
+    "interval": "Interval (sekunde)",
+    "action": "Radnja"
+  },
+  "lockdown": {
+    "title": "Automatsko zakljucavanje pri napadu",
+    "description": "Automatski zakljucajte sve kanale kada se detektuje napad.",
+    "whitelistedRoles": "ID-ovi privilegovanih uloga (odvojeni zarezom)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Clanovi sa ovim ulogama bice izuzeti od detekcije napada.",
+    "logChannel": "ID kanala za zapise",
+    "logChannelPlaceholder": "ID kanala za zapise dogadaja napada...",
+    "enableButton": "Omoguci zakljucavanje",
+    "disableButton": "Onemogudi zakljucavanje",
+    "active": "Zakljucavanje aktivno",
+    "inactive": "Zakljucavanje neaktivno"
+  },
+  "events": {
+    "title": "Nedavni dogadaji napada",
+    "description": "Vremenska linija detektovanih napada, blokada starosti naloga i dogadaja zakljucavanja.",
+    "empty": "Nema evidentirani dogadaja napada. Dogadaji ce se pojaviti ovde kada se aktivira detekcija napada.",
+    "actionLabel": "Radnja: {{action}}",
+    "usersLabel": "Korisnici: {{count}}",
+    "accountAgeLabel": "Starost naloga: {{days}}d",
+    "table": {
+      "type": "Tip",
+      "description": "Opis",
+      "time": "Vreme",
+      "action": "Preduzeta radnja"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Skok pridruzivanja",
+    "account_age": "Starost naloga",
+    "nuke_attempt": "Pokusaj nukleacije",
+    "lockdown": "Zakljucavanje",
+    "massJoin": "Masovno pridruzivanje",
+    "suspiciousAccounts": "Sumnjivi nalozi",
+    "channelDeletion": "Brisanje kanala",
+    "roleDeletion": "Brisanje uloga",
+    "massBan": "Masovna zabrana"
+  },
+  "pagination": {
+    "previous": "Prethodna",
+    "next": "Sledeca",
+    "page": "Stranica {{current}} od {{total}}"
+  },
+  "toast": {
+    "saved": "Konfiguracija zastite od napada sacuvana",
+    "saveFailed": "Cuvanje konfiguracije nije uspelo",
+    "lockdownEnabled": "Zakljucavanje servera omoguceno",
+    "lockdownDisabled": "Zakljucavanje servera onemoguceno",
+    "lockdownFailed": "Prebacivanje zakljucavanja nije uspelo"
+  },
+  "saveButton": {
+    "saving": "Cuvanje...",
+    "save": "Sacuvaj promene"
+  },
+  "labels": {
+    "seconds": "sekunde",
+    "minutes": "minute",
+    "hours": "sati"
+  }
+}

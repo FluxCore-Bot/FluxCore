@@ -1,0 +1,54 @@
+{
+  "title": "Moderasyon",
+  "subtitle": "Tingnan at pamahalaan ang mga kaso ng moderasyon, i-configure ang mga setting ng parusa.",
+  "stats": {
+    "totalCases": "Kabuuang Kaso",
+    "activeTempbans": "Mga Aktibong Tempban",
+    "last24h": "Nakaraang 24h"
+  },
+  "cases": "Mga Kaso",
+  "actions": {
+    "ban": "I-ban",
+    "tempban": "Tempban",
+    "kick": "I-kick",
+    "timeout": "Timeout",
+    "softban": "Softban",
+    "warn": "Bigyan ng Babala",
+    "note": "Tala"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Aksyon",
+    "target": "Target",
+    "moderator": "Moderator",
+    "reason": "Dahilan",
+    "date": "Petsa",
+    "actions": "Mga Aksyon",
+    "noCases": "Walang nahanap na kaso.",
+    "noReason": "Walang dahilan"
+  },
+  "filter": {
+    "userPlaceholder": "I-filter ayon sa User ID...",
+    "allActions": "Lahat ng Aksyon"
+  },
+  "pagination": {
+    "previous": "Nakaraan",
+    "next": "Susunod",
+    "page": "Pahina {{page}} ng {{total}}"
+  },
+  "editDialog": {
+    "title": "I-edit ang Dahilan ng Kaso #{{id}}",
+    "placeholder": "Mag-enter ng bagong dahilan...",
+    "saving": "Sino-save..."
+  },
+  "editReason": "I-edit ang dahilan",
+  "deleteCase": "Burahin ang kaso",
+  "deleteConfirm": "Sigurado ka bang gusto mong burahin ang kasong ito?",
+  "settings": {
+    "title": "Mga Setting",
+    "dmOnPunishment": "DM sa Parusa",
+    "dmOnPunishmentDesc": "Magpadala ng DM sa mga user kapag sila ay pinarusahan (ban, kick, timeout).",
+    "modLogChannel": "Channel ng Mod Log",
+    "modLogChannelDesc": "Channel kung saan nilo-log ang mga aksyon ng moderasyon."
+  }
+}

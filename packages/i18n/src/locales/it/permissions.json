@@ -1,0 +1,118 @@
+{
+  "title": "Ruoli e permessi",
+  "subtitle": "Controlla chi puo accedere e gestire ogni modulo del pannello.",
+  "actions": {
+    "createRole": "Crea ruolo"
+  },
+  "permissionSystem": {
+    "title": "Sistema di permessi",
+    "active": "Attivo — gli amministratori sono limitati ai permessi assegnati.",
+    "inactive": "Inattivo — tutti gli amministratori con MANAGE_GUILD hanno accesso completo.",
+    "enabledToast": "Sistema di permessi attivato",
+    "disabledToast": "Sistema di permessi disattivato — tutti gli amministratori hanno accesso completo"
+  },
+  "warning": {
+    "disabled": "Il sistema di permessi e disattivato. Tutti gli amministratori del pannello hanno attualmente accesso completo. Attivalo sopra per applicare permessi granulari."
+  },
+  "tabs": {
+    "roles": "Ruoli",
+    "auditLog": "Registro di audit"
+  },
+  "roleList": {
+    "title": "Ruoli del pannello",
+    "empty": "Nessun ruolo creato ancora.",
+    "selectHint": "Seleziona un ruolo da modificare o creane uno nuovo.",
+    "default": "Predefinito",
+    "name": "Nome",
+    "members": "Membri",
+    "permissions": "Permessi",
+    "edit": "Modifica",
+    "delete": "Elimina"
+  },
+  "presets": {
+    "title": "Aggiunta rapida da modello",
+    "createdToast": "Ruolo \"{{name}}\" creato"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} membro",
+    "memberCount_plural": "{{count}} membri",
+    "name": "Nome del ruolo",
+    "color": "Colore",
+    "defaultRole": "Ruolo predefinito",
+    "permissions": "Permessi",
+    "allBadge": "Tutti",
+    "discordRoles": "Ruoli Discord"
+  },
+  "roleForm": {
+    "name": "Nome del ruolo",
+    "discordRoles": "Ruoli Discord",
+    "permissions": "Permessi",
+    "create": "Crea ruolo",
+    "update": "Aggiorna ruolo",
+    "cancel": "Annulla"
+  },
+  "createDialog": {
+    "title": "Crea ruolo del pannello",
+    "name": "Nome",
+    "namePlaceholder": "es. Moderatore",
+    "color": "Colore"
+  },
+  "permissionCategories": {
+    "actions": "Azioni e automazione",
+    "music": "Musica",
+    "tempvoice": "TempVoice",
+    "welcome": "Benvenuto e addio",
+    "moderation": "Moderazione",
+    "logging": "Registrazione",
+    "leveling": "Livelli",
+    "roles": "Pannelli ruoli",
+    "tickets": "Ticket",
+    "suggestions": "Suggerimenti",
+    "starboard": "Starboard",
+    "giveaways": "Giveaway",
+    "security": "Sicurezza",
+    "scheduled": "Messaggi programmati",
+    "commands": "Comandi personalizzati",
+    "settings": "Impostazioni server"
+  },
+  "audit": {
+    "table": {
+      "user": "Utente",
+      "action": "Azione",
+      "target": "Obiettivo",
+      "timestamp": "Quando"
+    },
+    "noEntries": "Ancora nessuna voce nel registro di audit."
+  },
+  "pagination": {
+    "previous": "Precedente",
+    "next": "Successivo",
+    "page": "Pagina {{current}} di {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Ruolo \"{{name}}\" creato",
+    "roleCreateFailed": "Impossibile creare il ruolo",
+    "roleUpdated": "Ruolo aggiornato",
+    "roleUpdateFailed": "Impossibile aggiornare il ruolo",
+    "roleDeleted": "Ruolo eliminato",
+    "roleDeleteFailed": "Impossibile eliminare il ruolo"
+  },
+  "confirm": {
+    "deleteTitle": "Eliminare il ruolo \"{{name}}\"?",
+    "deleteMessage": "Questo rimuovera il ruolo e disassegnera tutti i membri. Questa azione non puo essere annullata.",
+    "deleteRole": "Sei sicuro di voler eliminare questo ruolo? I membri perderanno i permessi assegnati."
+  },
+  "saveButton": {
+    "saving": "Salvataggio...",
+    "save": "Salva modifiche"
+  },
+  "deleteButton": {
+    "deleting": "Eliminazione...",
+    "delete": "Elimina"
+  },
+  "createButton": {
+    "creating": "Creazione...",
+    "create": "Crea"
+  },
+  "loading": "Caricamento permessi..."
+}

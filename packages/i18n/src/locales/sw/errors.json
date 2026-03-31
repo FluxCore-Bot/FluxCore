@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Haujathibitishwa",
+    "sessionExpired": "Kipindi kimeisha",
+    "missingCode": "Parameta ya msimbo haipo",
+    "tokenExchangeFailed": "Ubadilishanaji wa tokeni umeshindwa",
+    "failedToFetchUser": "Imeshindwa kupata taarifa za mtumiaji"
+  },
+  "permissions": {
+    "noGuildPermission": "Huna ruhusa kwa seva hii",
+    "botNotInGuild": "Bot haiko kwenye seva hii",
+    "insufficientPermissions": "Ruhusa hazitoshi",
+    "permissionsNotResolved": "Ruhusa hazijatatuliwa",
+    "requiresPermission": "Kitendo hiki kinahitaji ruhusa ya \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Ingizo batili",
+    "missingField": "Sehemu inayohitajika haipo: {{field}}",
+    "invalidFormat": "Muundo batili wa {{field}}",
+    "tooLong": "{{field}} imezidi urefu wa juu wa herufi {{max}}",
+    "tooShort": "{{field}} lazima iwe angalau herufi {{min}}",
+    "outOfRange": "{{field}} lazima iwe kati ya {{min}} na {{max}}"
+  },
+  "resources": {
+    "notFound": "Haipatikani",
+    "alreadyExists": "{{resource}} tayari ipo",
+    "limitReached": "Kiwango cha juu cha {{max}} {{resource}} kwa kila seva",
+    "createFailed": "Imeshindwa kuunda {{resource}}",
+    "updateFailed": "Imeshindwa kusasisha {{resource}}",
+    "deleteFailed": "Imeshindwa kufuta {{resource}}"
+  },
+  "server": {
+    "internalError": "Hitilafu ya ndani ya seva",
+    "serviceUnavailable": "Huduma haipatikani kwa muda",
+    "rateLimited": "Maombi mengi sana. Tafadhali jaribu tena baadaye."
+  },
+  "csrf": {
+    "invalidToken": "Tokeni ya CSRF batili au haipo"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "title": "Perintah Kustom",
+  "subtitle": "Buat responden otomatis dan perintah prefix yang dipicu oleh pesan.",
+  "stats": {
+    "totalCommands": "Total Perintah",
+    "enabled": "Diaktifkan",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Perintah",
+    "variables": "Variabel"
+  },
+  "table": {
+    "name": "Nama",
+    "trigger": "Pemicu",
+    "response": "Respons",
+    "cooldown": "Cooldown",
+    "status": "Status"
+  },
+  "triggerTypes": {
+    "command": "!perintah",
+    "keyword": "Kata Kunci",
+    "startsWith": "Diawali Dengan",
+    "regex": "Regex",
+    "prefixCommand": "Perintah Prefix (!nama)",
+    "keywordContains": "Kata Kunci (mengandung)"
+  },
+  "dialog": {
+    "createCommand": "Buat Perintah",
+    "editCommand": "Edit Perintah"
+  },
+  "form": {
+    "commandName": "Nama Perintah",
+    "triggerText": "Teks Pemicu",
+    "regexPattern": "Pola Regex",
+    "triggerType": "Tipe Pemicu",
+    "response": "Respons",
+    "message": "Pesan",
+    "embedTitle": "Judul Embed",
+    "embedDescription": "Deskripsi Embed",
+    "color": "Warna",
+    "footer": "Footer"
+  },
+  "options": {
+    "cooldown": "Cooldown (detik)",
+    "enabled": "Diaktifkan",
+    "enabledDesc": "Apakah perintah ini aktif",
+    "deleteTrigger": "Hapus Pesan Pemicu",
+    "deleteTriggerDesc": "Hapus otomatis pesan yang memicu perintah ini.",
+    "dmResponse": "Respons DM",
+    "dmResponseDesc": "Kirim respons sebagai pesan langsung, bukan di saluran."
+  },
+  "restrictions": {
+    "title": "Pembatasan",
+    "allowedChannels": "Saluran yang Diizinkan (kosong = semua)",
+    "allowedRoles": "Peran yang Diizinkan (kosong = semua orang)",
+    "addChannel": "Tambah Saluran",
+    "addRole": "Tambah Peran"
+  },
+  "actions": {
+    "create": "Buat",
+    "update": "Perbarui",
+    "cancel": "Batal",
+    "addAction": "Tambah Aksi",
+    "addRole": "Tambah Peran",
+    "removeRole": "Hapus Peran"
+  },
+  "actionsSection": {
+    "title": "Aksi ({{count}}/5)",
+    "noActions": "Tidak ada aksi yang dikonfigurasi. Tambahkan aksi untuk menentukan apa yang dilakukan perintah ini.",
+    "maxActions": "Maksimum 5 aksi per perintah"
+  },
+  "variables": {
+    "title": "Variabel Template",
+    "description": "Gunakan variabel ini dalam respons perintah Anda. Variabel akan diganti dengan nilai sebenarnya saat perintah dipicu.",
+    "table": {
+      "variable": "Variabel",
+      "description": "Deskripsi"
+    },
+    "entries": {
+      "user": "{user} — Menyebut pengguna yang memicu perintah",
+      "username": "{username} — Nama tampilan pengguna",
+      "userId": "{userId} — ID pengguna",
+      "server": "{server} — Nama server",
+      "channel": "{channel} — Menyebut saluran saat ini",
+      "channelName": "{channelName} — Nama saluran",
+      "memberCount": "{memberCount} — Jumlah total anggota server"
+    }
+  },
+  "toast": {
+    "created": "Perintah dibuat",
+    "createFailed": "Gagal membuat perintah",
+    "updated": "Perintah diperbarui",
+    "updateFailed": "Gagal memperbarui perintah",
+    "deleted": "Perintah dihapus",
+    "deleteFailed": "Gagal menghapus perintah",
+    "toggleEnabled": "Perintah diaktifkan",
+    "toggleDisabled": "Perintah dinonaktifkan",
+    "toggleFailed": "Gagal mengalihkan perintah"
+  },
+  "empty": "Belum ada perintah kustom yang dibuat.",
+  "loading": "Memuat perintah...",
+  "badge": {
+    "active": "Aktif",
+    "disabled": "Dinonaktifkan",
+    "text": "Teks",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Nama perintah wajib diisi"
+  },
+  "triggerPrefix": "Pemicu: !{{name}}"
+}

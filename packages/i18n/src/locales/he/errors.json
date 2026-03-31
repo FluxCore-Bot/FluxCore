@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "לא מאומת",
+    "sessionExpired": "פג תוקף ההפעלה",
+    "missingCode": "פרמטר הקוד חסר",
+    "tokenExchangeFailed": "החלפת הטוקן נכשלה",
+    "failedToFetchUser": "שליפת פרטי המשתמש נכשלה"
+  },
+  "permissions": {
+    "noGuildPermission": "אין הרשאה לשרת זה",
+    "botNotInGuild": "הבוט אינו בשרת זה",
+    "insufficientPermissions": "הרשאות לא מספיקות",
+    "permissionsNotResolved": "ההרשאות לא נקבעו",
+    "requiresPermission": "פעולה זו דורשת את ההרשאה \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "קלט לא תקין",
+    "missingField": "שדה חובה חסר: {{field}}",
+    "invalidFormat": "פורמט לא תקין עבור {{field}}",
+    "tooLong": "{{field}} חורג מאורך מרבי של {{max}} תווים",
+    "tooShort": "{{field}} חייב להכיל לפחות {{min}} תווים",
+    "outOfRange": "{{field}} חייב להיות בין {{min}} ל-{{max}}"
+  },
+  "resources": {
+    "notFound": "לא נמצא",
+    "alreadyExists": "{{resource}} כבר קיים",
+    "limitReached": "מקסימום {{max}} {{resource}} לכל שרת",
+    "createFailed": "יצירת {{resource}} נכשלה",
+    "updateFailed": "עדכון {{resource}} נכשל",
+    "deleteFailed": "מחיקת {{resource}} נכשלה"
+  },
+  "server": {
+    "internalError": "שגיאת שרת פנימית",
+    "serviceUnavailable": "השירות אינו זמין זמנית",
+    "rateLimited": "יותר מדי בקשות. אנא נסה שוב מאוחר יותר."
+  },
+  "csrf": {
+    "invalidToken": "טוקן CSRF לא תקין או חסר"
+  }
+}

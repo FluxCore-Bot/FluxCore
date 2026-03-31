@@ -1,0 +1,12 @@
+{
+  "title": "概览",
+  "subtitle": "一目了然地监控自动化性能和活动。",
+  "stats": {
+    "actionRules": "动作规则",
+    "activeNow": "当前活跃",
+    "executions": "执行次数",
+    "successRate": "成功率"
+  },
+  "errorsInLast24h": "最近 24 小时内 {{count}} 个错误",
+  "errorsInLast24h_other": "最近 24 小时内 {{count}} 个错误"
+}

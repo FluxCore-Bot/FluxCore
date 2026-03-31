@@ -1,0 +1,120 @@
+{
+  "title": "Система уровней",
+  "subtitle": "Настройте получение опыта, объявления о повышении уровня, наградные роли и множители.",
+  "stats": {
+    "rankedMembers": "Участников в рейтинге",
+    "roleRewards": "Наградные роли",
+    "systemStatus": "Статус системы",
+    "enabled": "Включена",
+    "disabled": "Отключена"
+  },
+  "tabs": {
+    "leaderboard": "Таблица лидеров",
+    "settings": "Настройки",
+    "roleRewards": "Наградные роли",
+    "exclusions": "Исключения",
+    "multipliers": "Множители"
+  },
+  "table": {
+    "rank": "Место",
+    "userId": "ID пользователя",
+    "level": "Уровень",
+    "xp": "Опыт",
+    "messages": "Сообщения",
+    "voiceTime": "Время в голосовом"
+  },
+  "settings": {
+    "title": "Настройки уровней",
+    "enabled": "Включить уровни",
+    "enabledDesc": "Включить или отключить всю систему уровней.",
+    "xpPerMessage": "Опыт за сообщение",
+    "xpPerMessageDesc": "Базовый опыт за сообщение (добавляется случайное значение 0-9).",
+    "xpCooldown": "Кулдаун опыта (секунды)",
+    "xpCooldownDesc": "Минимальное время между начислениями опыта для пользователя.",
+    "voiceXpEnabled": "Опыт за голосовой",
+    "voiceXpEnabledDesc": "Начислять опыт за время в голосовых каналах.",
+    "voiceXpPerMinute": "Опыт за минуту в голосовом",
+    "voiceXpPerMinuteDesc": "Опыт, начисляемый за минуту в голосовом канале.",
+    "levelUpAnnouncements": "Объявления о повышении уровня",
+    "levelUpAnnouncementsDesc": "Объявлять, когда участник повышает уровень.",
+    "announceDest": "Место объявления",
+    "announceDestHint": "Вы также можете ввести ID канала напрямую в поле выше.",
+    "announceDestSameChannel": "Тот же канал",
+    "announceDestDM": "Личное сообщение",
+    "announceMessage": "Текст объявления",
+    "announceMessagePlaceholder": "{user} достиг **уровня {level}**!",
+    "announceMessageVars": "Переменные: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Наградные роли",
+    "description": "Автоматически назначайте роли, когда участники достигают определённых уровней.",
+    "addReward": "Добавить награду",
+    "addRewardTitle": "Добавить наградную роль",
+    "level": "Уровень",
+    "levelPrefix": "Уровень {{level}}",
+    "roleId": "ID роли",
+    "levelPlaceholder": "напр. 5",
+    "rolePlaceholder": "напр. 123456789",
+    "removeReward": "Удалить",
+    "noRewards": "Наградные роли не настроены."
+  },
+  "exclusions": {
+    "title": "Исключения из опыта",
+    "description": "Каналы и роли, за которые не начисляется опыт.",
+    "noXpChannels": "Каналы без опыта (ID через запятую)",
+    "noXpChannelsPlaceholder": "напр. 123456789, 987654321",
+    "noXpRoles": "Роли без опыта (ID через запятую)",
+    "noXpRolesPlaceholder": "напр. 123456789, 987654321",
+    "save": "Сохранить исключения"
+  },
+  "multipliers": {
+    "title": "Множители опыта",
+    "description": "Установите множители опыта для каналов или ролей. Множитель 2 удваивает получаемый опыт.",
+    "channelMultipliers": "Множители каналов",
+    "roleMultipliers": "Множители ролей",
+    "channelId": "ID канала",
+    "roleId": "ID роли",
+    "multiplier": "Множитель",
+    "type": "Тип",
+    "typeChannel": "Канал",
+    "typeRole": "Роль",
+    "id": "ID",
+    "idPlaceholder": "ID канала или роли",
+    "value": "Множитель",
+    "valuePlaceholder": "напр. 2",
+    "add": "Добавить множитель",
+    "addTitle": "Добавить множитель",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Множители опыта не настроены."
+  },
+  "pagination": {
+    "previous": "Назад",
+    "next": "Далее",
+    "pageInfo": "Страница {{page}} из {{totalPages}} ({{total}} всего)"
+  },
+  "loading": "Загрузка таблицы лидеров...",
+  "loadingGeneric": "Загрузка...",
+  "emptyLeaderboard": "Ни один участник ещё не получил опыт.",
+  "toast": {
+    "saved": "Настройки уровней сохранены",
+    "saveFailed": "Не удалось обновить настройку",
+    "rewardAdded": "Награда добавлена",
+    "rewardAddFailed": "Не удалось добавить награду",
+    "rewardRemoved": "Награда удалена",
+    "rewardRemoveFailed": "Не удалось удалить награду",
+    "multiplierAdded": "Множитель добавлен",
+    "multiplierAddFailed": "Не удалось добавить множитель",
+    "multiplierRemoved": "Множитель удалён",
+    "multiplierRemoveFailed": "Не удалось удалить множитель",
+    "exclusionUpdated": "Исключения сохранены",
+    "exclusionFailed": "Не удалось сохранить исключения",
+    "levelValidation": "Уровень должен быть от 1 до 100",
+    "roleIdRequired": "ID роли обязателен",
+    "multiplierIdRequired": "ID и значение множителя обязательны",
+    "multiplierRange": "Множитель должен быть от 0 до 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}ч {{minutes}}м",
+    "voiceTimeMinutesOnly": "{{minutes}}м"
+  }
+}

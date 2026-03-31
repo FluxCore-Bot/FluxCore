@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Autentifikatu gabe",
+    "sessionExpired": "Saioa iraungi da",
+    "missingCode": "Kode-parametroa falta da",
+    "tokenExchangeFailed": "Token-trukaketa huts egin du",
+    "failedToFetchUser": "Ezin izan da erabiltzaile-informazioa eskuratu"
+  },
+  "permissions": {
+    "noGuildPermission": "Ez duzu baimen hau zerbitzari honetarako",
+    "botNotInGuild": "Bot-a ez dago zerbitzari honetan",
+    "insufficientPermissions": "Baimen nahikorik ez",
+    "permissionsNotResolved": "Baimenak ez dira ebatzi",
+    "requiresPermission": "Ekintza honek \"{{permission}}\" baimena behar du"
+  },
+  "validation": {
+    "invalidInput": "Sarrera baliogabea",
+    "missingField": "Beharrezko eremua falta da: {{field}}",
+    "invalidFormat": "Formatu baliogabea {{field}} eremurako",
+    "tooLong": "{{field}} gehieneko luzera gainditzen du, {{max}} karaktere",
+    "tooShort": "{{field}} gutxienez {{min}} karaktere izan behar ditu",
+    "outOfRange": "{{field}} {{min}} eta {{max}} artean egon behar du"
+  },
+  "resources": {
+    "notFound": "Ez da aurkitu",
+    "alreadyExists": "{{resource}} dagoeneko existitzen da",
+    "limitReached": "Gehienez {{max}} {{resource}} zerbitzariko",
+    "createFailed": "Ezin izan da {{resource}} sortu",
+    "updateFailed": "Ezin izan da {{resource}} eguneratu",
+    "deleteFailed": "Ezin izan da {{resource}} ezabatu"
+  },
+  "server": {
+    "internalError": "Zerbitzariaren barne-errorea",
+    "serviceUnavailable": "Zerbitzua aldi baterako ez dago eskuragarri",
+    "rateLimited": "Eskaera gehiegi. Mesedez, saiatu beranduago berriro."
+  },
+  "csrf": {
+    "invalidToken": "CSRF token baliogabea edo falta da"
+  }
+}

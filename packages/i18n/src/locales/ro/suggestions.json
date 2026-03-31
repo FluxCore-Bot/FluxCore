@@ -1,0 +1,67 @@
+{
+  "title": "Sugestii",
+  "subtitle": "Lasă membrii să trimită idei și să voteze pentru ele. Gestionează starea și feedback-ul.",
+  "stats": {
+    "totalSuggestions": "Total Sugestii",
+    "systemStatus": "Starea Sistemului",
+    "channel": {
+      "configured": "Canal Configurat",
+      "notSet": "Canal Neconfigurat"
+    }
+  },
+  "tabs": {
+    "suggestions": "Sugestii",
+    "settings": "Setări"
+  },
+  "filter": {
+    "filterByStatus": "Filtrează după Stare",
+    "all": "Toate",
+    "pending": "În Așteptare",
+    "approved": "Aprobate",
+    "rejected": "Respinse",
+    "implemented": "Implementate",
+    "considered": "În Considerare"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Autor",
+    "content": "Conținut",
+    "status": "Stare",
+    "votes": "Voturi",
+    "date": "Dată"
+  },
+  "actions": {
+    "approve": "Aprobă",
+    "reject": "Respinge",
+    "implement": "Marchează ca Implementat",
+    "consider": "Ia în Considerare",
+    "delete": "Șterge"
+  },
+  "settings": {
+    "channel": "Canal Sugestii",
+    "channelDesc": "Canalul unde sunt postate sugestiile pentru vot.",
+    "voteEmojis": "Emoji-uri de Vot",
+    "voteEmojisDesc": "Emoji-urile folosite pentru reacțiile de vot pozitiv și negativ.",
+    "autoThread": "Creare Automată Thread",
+    "autoThreadDesc": "Creează automat un thread de discuție pentru fiecare sugestie nouă.",
+    "dmOnStatusChange": "MP la Schimbarea Stării",
+    "dmOnStatusChangeDesc": "Notifică autorul prin MP când starea sugestiei sale se schimbă."
+  },
+  "toast": {
+    "approved": "Sugestie aprobată",
+    "rejected": "Sugestie respinsă",
+    "implemented": "Sugestie marcată ca implementată",
+    "considered": "Sugestie marcată ca în considerare",
+    "deleted": "Sugestie ștearsă",
+    "actionFailed": "Actualizarea sugestiei a eșuat",
+    "settingsSaved": "Setările sugestiilor salvate",
+    "settingsFailed": "Salvarea setărilor sugestiilor a eșuat"
+  },
+  "empty": "Nu există sugestii încă.",
+  "loading": "Se încarcă sugestiile...",
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Următor",
+    "page": "Pagina {{page}} din {{total}}"
+  }
+}

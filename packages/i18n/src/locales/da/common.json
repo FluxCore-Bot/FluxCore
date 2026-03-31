@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore Kontrolpanel"
+  },
+  "status": {
+    "online": "Online",
+    "offline": "Offline",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Oversigt",
+    "automation": "Automatisering",
+    "music": "Musik",
+    "tempvoice": "TempVoice",
+    "welcome": "Velkommen",
+    "moderation": "Moderering",
+    "warnings": "Advarsler",
+    "rolePanels": "Rollepaneler",
+    "leveling": "Niveauer",
+    "scheduled": "Planlagt",
+    "commands": "Kommandoer",
+    "security": "Sikkerhed",
+    "tickets": "Sager",
+    "giveaways": "Konkurrencer",
+    "suggestions": "Forslag",
+    "starboard": "Starboard",
+    "logs": "Logfiler",
+    "permissions": "Tilladelser",
+    "settings": "Indstillinger"
+  },
+  "actions": {
+    "save": "Gem",
+    "cancel": "Annuller",
+    "delete": "Slet",
+    "edit": "Rediger",
+    "create": "Opret",
+    "add": "Tilføj",
+    "remove": "Fjern",
+    "confirm": "Bekræft",
+    "close": "Luk",
+    "back": "Tilbage",
+    "next": "Næste",
+    "search": "Søg",
+    "filter": "Filtrer",
+    "refresh": "Opdater",
+    "reset": "Nulstil",
+    "enable": "Aktiver",
+    "disable": "Deaktiver",
+    "copy": "Kopier",
+    "export": "Eksporter",
+    "import": "Importer",
+    "submit": "Indsend",
+    "loading": "Indlæser...",
+    "retry": "Prøv igen"
+  },
+  "labels": {
+    "enabled": "Aktiveret",
+    "disabled": "Deaktiveret",
+    "active": "Aktiv",
+    "inactive": "Inaktiv",
+    "none": "Ingen",
+    "all": "Alle",
+    "custom": "Brugerdefineret",
+    "default": "Standard",
+    "required": "Påkrævet",
+    "optional": "Valgfri",
+    "name": "Navn",
+    "description": "Beskrivelse",
+    "type": "Type",
+    "status": "Status",
+    "channel": "Kanal",
+    "role": "Rolle",
+    "member": "Medlem",
+    "duration": "Varighed",
+    "reason": "Årsag",
+    "language": "Sprog"
+  },
+  "header": {
+    "notifications": "Notifikationer",
+    "settings": "Indstillinger",
+    "logout": "Log ud",
+    "toggleSidebar": "Skift sidepanel",
+    "refreshData": "Opdater Discord-data"
+  },
+  "sidebar": {
+    "closeSidebar": "Luk sidepanel",
+    "addToServer": "Tilføj til server",
+    "docs": "Dokumentation",
+    "support": "Support",
+    "backToServers": "Tilbage til servere"
+  },
+  "empty": {
+    "noData": "Ingen data tilgængelig",
+    "noResults": "Ingen resultater fundet",
+    "noItems": "Ingen elementer endnu"
+  },
+  "time": {
+    "seconds": "sekunder",
+    "minutes": "minutter",
+    "hours": "timer",
+    "days": "dage",
+    "ago": "{{time}} siden",
+    "in": "om {{time}}"
+  },
+  "confirm": {
+    "title": "Er du sikker?",
+    "deleteTitle": "Bekræft sletning",
+    "deleteMessage": "Denne handling kan ikke fortrydes.",
+    "unsavedChanges": "Du har ugemte ændringer. Er du sikker på, at du vil forlade?"
+  },
+  "accessibility": {
+    "skipToContent": "Spring til hovedindhold",
+    "loading": "Indlæser indhold",
+    "loaded": "Indhold indlæst",
+    "error": "Der opstod en fejl",
+    "menuOpen": "Menuen er åben",
+    "menuClosed": "Menuen er lukket"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Uebersicht",
+  "subtitle": "Ueberwachen Sie Ihre Automatisierungsleistung und Aktivitaet auf einen Blick.",
+  "stats": {
+    "actionRules": "Aktionsregeln",
+    "activeNow": "Aktuell aktiv",
+    "executions": "Ausfuehrungen",
+    "successRate": "Erfolgsrate"
+  },
+  "errorsInLast24h": "{{count}} Fehler in den letzten 24h",
+  "errorsInLast24h_other": "{{count}} Fehler in den letzten 24h"
+}

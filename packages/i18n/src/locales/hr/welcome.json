@@ -1,0 +1,65 @@
+{
+  "title": "Dobrodoslica i oprostaj",
+  "subtitle": "Konfigurirajte poruke dobrodoslice i oprostaja, slike i automatske uloge.",
+  "loadingSubtitle": "Konfigurirajte poruke dobrodoslice i oprostaja za vas posluzitelj.",
+  "tabs": {
+    "welcome": "Dobrodoslica",
+    "welcomeImage": "Slika dobrodoslice",
+    "farewell": "Oprostaj",
+    "farewellImage": "Slika oprostaja",
+    "dm": "Privatna poruka dobrodoslice",
+    "autorole": "Automatska uloga"
+  },
+  "welcome": {
+    "title": "Poruka dobrodoslice",
+    "description": "Posaljite prilagodeni embed kada se novi clan pridruzuje.",
+    "channelLabel": "ID kanala dobrodoslice",
+    "channelPlaceholder": "ID kanala...",
+    "embedBuilder": "Graditelj embeda"
+  },
+  "welcomeImage": {
+    "title": "Slika dobrodoslice",
+    "description": "Generirajte prilagodenu slikovnu karticu s avatarom clana kada se pridruzuje.",
+    "disabled": "Omogucite prekidac iznad za konfiguraciju slika dobrodoslice."
+  },
+  "farewell": {
+    "title": "Poruka oprostaja",
+    "description": "Posaljite poruku kada clan napusti posluzitelj.",
+    "channelLabel": "ID kanala oprostaja",
+    "channelPlaceholder": "ID kanala..."
+  },
+  "farewellImage": {
+    "title": "Slika oprostaja",
+    "description": "Generirajte prilagodenu oprostajnu karticu kada clan napusti.",
+    "disabled": "Omogucite prekidac iznad za konfiguraciju slika oprostaja."
+  },
+  "dm": {
+    "title": "Privatna poruka dobrodoslice",
+    "description": "Posaljite privatnu poruku novim clanovima. Tiho ce propasti ako su privatne poruke onemogucene."
+  },
+  "autorole": {
+    "title": "Automatska uloga",
+    "description": "Automatski dodijelite uloge novim clanovima kada se pridruzuju. Botovi su iskljuceni. Bot mora imati ulogu viseg ranga od ovdje navedenih uloga.",
+    "label": "ID-ovi uloga (odvojeni zarezom)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Naslov",
+    "description": "Opis",
+    "color": "Boja (hex)",
+    "footer": "Podnozje",
+    "thumbnail": "URL slike za prikaz",
+    "image": "URL slike",
+    "variables": "Varijable:"
+  },
+  "saveChanges": "Spremi promjene",
+  "saving": "Spremanje...",
+  "sendTest": "Posalji testnu poruku",
+  "sending": "Slanje...",
+  "toast": {
+    "saved": "Konfiguracija dobrodoslice spremljena",
+    "saveFailed": "Spremanje konfiguracije nije uspjelo",
+    "testSent": "Testna poruka ce biti poslana u <#{{channelId}}>",
+    "testFailed": "Slanje testne poruke nije uspjelo"
+  }
+}

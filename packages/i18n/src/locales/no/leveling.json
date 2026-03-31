@@ -1,0 +1,120 @@
+{
+  "title": "Nivåsystem",
+  "subtitle": "Konfigurer XP-opptjening, nivåopp-meldinger, rollebelønninger og multiplikatorer.",
+  "stats": {
+    "rankedMembers": "Rangerte medlemmer",
+    "roleRewards": "Rollebelønninger",
+    "systemStatus": "Systemstatus",
+    "enabled": "Aktivert",
+    "disabled": "Deaktivert"
+  },
+  "tabs": {
+    "leaderboard": "Ledertavle",
+    "settings": "Innstillinger",
+    "roleRewards": "Rollebelønninger",
+    "exclusions": "Unntak",
+    "multipliers": "Multiplikatorer"
+  },
+  "table": {
+    "rank": "Rang",
+    "userId": "Bruker-ID",
+    "level": "Nivå",
+    "xp": "XP",
+    "messages": "Meldinger",
+    "voiceTime": "Taletid"
+  },
+  "settings": {
+    "title": "Nivåinnstillinger",
+    "enabled": "Aktiver nivåsystem",
+    "enabledDesc": "Slå hele nivåsystemet av eller på.",
+    "xpPerMessage": "XP per melding",
+    "xpPerMessageDesc": "Basis-XP tildelt per melding (tilfeldighet på 0-9 legges til).",
+    "xpCooldown": "XP-nedkjølingstid (sekunder)",
+    "xpCooldownDesc": "Minste tid mellom XP-tildelinger per bruker.",
+    "voiceXpEnabled": "Tale-XP",
+    "voiceXpEnabledDesc": "Tildel XP for tid i talekanaler.",
+    "voiceXpPerMinute": "Tale-XP per minutt",
+    "voiceXpPerMinuteDesc": "XP tildelt per minutt i tale.",
+    "levelUpAnnouncements": "Nivåopp-meldinger",
+    "levelUpAnnouncementsDesc": "Kunngjør når et medlem går opp et nivå.",
+    "announceDest": "Meldingsdestinasjon",
+    "announceDestHint": "Du kan også skrive inn en kanal-ID direkte i feltet ovenfor.",
+    "announceDestSameChannel": "Samme kanal",
+    "announceDestDM": "Direktemelding",
+    "announceMessage": "Meldingstekst",
+    "announceMessagePlaceholder": "{user} har nettopp nådd **Nivå {level}**!",
+    "announceMessageVars": "Variabler: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Rollebelønninger",
+    "description": "Tildel automatisk roller når medlemmer når bestemte nivåer.",
+    "addReward": "Legg til belønning",
+    "addRewardTitle": "Legg til rollebelønning",
+    "level": "Nivå",
+    "levelPrefix": "Nivå {{level}}",
+    "roleId": "Rolle-ID",
+    "levelPlaceholder": "f.eks. 5",
+    "rolePlaceholder": "f.eks. 123456789",
+    "removeReward": "Fjern",
+    "noRewards": "Ingen rollebelønninger konfigurert."
+  },
+  "exclusions": {
+    "title": "XP-unntak",
+    "description": "Kanaler og roller som ikke tjener XP.",
+    "noXpChannels": "Kanaler uten XP (kommaseparerte ID-er)",
+    "noXpChannelsPlaceholder": "f.eks. 123456789, 987654321",
+    "noXpRoles": "Roller uten XP (kommaseparerte ID-er)",
+    "noXpRolesPlaceholder": "f.eks. 123456789, 987654321",
+    "save": "Lagre unntak"
+  },
+  "multipliers": {
+    "title": "XP-multiplikatorer",
+    "description": "Sett XP-multiplikatorer per kanal eller rolle. En multiplikator på 2 dobler opptjent XP.",
+    "channelMultipliers": "Kanalmultiplikatorer",
+    "roleMultipliers": "Rollemultiplikatorer",
+    "channelId": "Kanal-ID",
+    "roleId": "Rolle-ID",
+    "multiplier": "Multiplikator",
+    "type": "Type",
+    "typeChannel": "Kanal",
+    "typeRole": "Rolle",
+    "id": "ID",
+    "idPlaceholder": "Kanal- eller Rolle-ID",
+    "value": "Multiplikator",
+    "valuePlaceholder": "f.eks. 2",
+    "add": "Legg til multiplikator",
+    "addTitle": "Legg til multiplikator",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Ingen XP-multiplikatorer konfigurert."
+  },
+  "pagination": {
+    "previous": "Forrige",
+    "next": "Neste",
+    "pageInfo": "Side {{page}} av {{totalPages}} ({{total}} totalt)"
+  },
+  "loading": "Laster ledertavle...",
+  "loadingGeneric": "Laster...",
+  "emptyLeaderboard": "Ingen medlemmer har tjent XP ennå.",
+  "toast": {
+    "saved": "Nivåinnstillinger lagret",
+    "saveFailed": "Kunne ikke oppdatere innstilling",
+    "rewardAdded": "Belønning lagt til",
+    "rewardAddFailed": "Kunne ikke legge til belønning",
+    "rewardRemoved": "Belønning fjernet",
+    "rewardRemoveFailed": "Kunne ikke fjerne belønning",
+    "multiplierAdded": "Multiplikator lagt til",
+    "multiplierAddFailed": "Kunne ikke legge til multiplikator",
+    "multiplierRemoved": "Multiplikator fjernet",
+    "multiplierRemoveFailed": "Kunne ikke fjerne multiplikator",
+    "exclusionUpdated": "Unntak lagret",
+    "exclusionFailed": "Kunne ikke lagre unntak",
+    "levelValidation": "Nivå må være mellom 1 og 100",
+    "roleIdRequired": "Rolle-ID er påkrevd",
+    "multiplierIdRequired": "ID og multiplikatorverdi er påkrevd",
+    "multiplierRange": "Multiplikatoren må være mellom 0 og 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}t {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

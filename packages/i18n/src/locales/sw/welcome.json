@@ -1,0 +1,65 @@
+{
+  "title": "Karibu na Kuaga",
+  "subtitle": "Sanidi ujumbe wa karibu na kuaga, picha, na majukumu ya kiotomatiki.",
+  "loadingSubtitle": "Sanidi ujumbe wa karibu na kuaga kwa seva yako.",
+  "tabs": {
+    "welcome": "Karibu",
+    "welcomeImage": "Picha ya Karibu",
+    "farewell": "Kuaga",
+    "farewellImage": "Picha ya Kuaga",
+    "dm": "DM ya Karibu",
+    "autorole": "Jukumu la Kiotomatiki"
+  },
+  "welcome": {
+    "title": "Ujumbe wa Karibu",
+    "description": "Tuma embed maalum wakati mwanachama mpya anajiunga.",
+    "channelLabel": "Kitambulisho cha Chaneli ya Karibu",
+    "channelPlaceholder": "Kitambulisho cha Chaneli...",
+    "embedBuilder": "Kijenzi cha Embed"
+  },
+  "welcomeImage": {
+    "title": "Picha ya Karibu",
+    "description": "Tengeneza kadi ya picha maalum na picha ya mwanachama wanapojiunga.",
+    "disabled": "Washa kitufe hapo juu ili kusanidi picha za karibu."
+  },
+  "farewell": {
+    "title": "Ujumbe wa Kuaga",
+    "description": "Tuma ujumbe wakati mwanachama anapoondoka kwenye seva.",
+    "channelLabel": "Kitambulisho cha Chaneli ya Kuaga",
+    "channelPlaceholder": "Kitambulisho cha Chaneli..."
+  },
+  "farewellImage": {
+    "title": "Picha ya Kuaga",
+    "description": "Tengeneza kadi ya kuaga maalum wakati mwanachama anapoondoka.",
+    "disabled": "Washa kitufe hapo juu ili kusanidi picha za kuaga."
+  },
+  "dm": {
+    "title": "DM ya Karibu",
+    "description": "Tuma ujumbe wa moja kwa moja kwa wanachama wapya. Itashindwa kimya kimya ikiwa DM zimezimwa."
+  },
+  "autorole": {
+    "title": "Jukumu la Kiotomatiki",
+    "description": "Gawa majukumu kiotomatiki kwa wanachama wapya wanapojiunga. Bot hazijumuishwi. Bot lazima iwe na jukumu la juu kuliko majukumu yaliyoorodheshwa hapa.",
+    "label": "Vitambulisho vya Majukumu (vilivyotenganishwa kwa koma)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Kichwa",
+    "description": "Maelezo",
+    "color": "Rangi (hex)",
+    "footer": "Kijachini",
+    "thumbnail": "URL ya Kijipicha",
+    "image": "URL ya Picha",
+    "variables": "Vigezo:"
+  },
+  "saveChanges": "Hifadhi Mabadiliko",
+  "saving": "Inahifadhi...",
+  "sendTest": "Tuma Ujumbe wa Majaribio",
+  "sending": "Inatuma...",
+  "toast": {
+    "saved": "Usanidi wa karibu umehifadhiwa",
+    "saveFailed": "Imeshindwa kuhifadhi usanidi",
+    "testSent": "Ujumbe wa majaribio utatumwa kwa <#{{channelId}}>",
+    "testFailed": "Imeshindwa kutuma ujumbe wa majaribio"
+  }
+}

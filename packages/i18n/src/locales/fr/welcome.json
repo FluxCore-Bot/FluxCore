@@ -1,0 +1,65 @@
+{
+  "title": "Bienvenue et adieu",
+  "subtitle": "Configurez les messages de bienvenue et d'adieu, les images et les roles automatiques.",
+  "loadingSubtitle": "Configurez les messages de bienvenue et d'adieu pour votre serveur.",
+  "tabs": {
+    "welcome": "Bienvenue",
+    "welcomeImage": "Image de bienvenue",
+    "farewell": "Adieu",
+    "farewellImage": "Image d'adieu",
+    "dm": "MP de bienvenue",
+    "autorole": "Role automatique"
+  },
+  "welcome": {
+    "title": "Message de bienvenue",
+    "description": "Envoyez un embed personnalise lorsqu'un nouveau membre rejoint.",
+    "channelLabel": "ID du salon de bienvenue",
+    "channelPlaceholder": "ID du salon...",
+    "embedBuilder": "Editeur d'embed"
+  },
+  "welcomeImage": {
+    "title": "Image de bienvenue",
+    "description": "Generez une carte image personnalisee avec l'avatar du membre lorsqu'il rejoint.",
+    "disabled": "Activez le bouton ci-dessus pour configurer les images de bienvenue."
+  },
+  "farewell": {
+    "title": "Message d'adieu",
+    "description": "Envoyez un message lorsqu'un membre quitte le serveur.",
+    "channelLabel": "ID du salon d'adieu",
+    "channelPlaceholder": "ID du salon..."
+  },
+  "farewellImage": {
+    "title": "Image d'adieu",
+    "description": "Generez une carte d'adieu personnalisee lorsqu'un membre quitte.",
+    "disabled": "Activez le bouton ci-dessus pour configurer les images d'adieu."
+  },
+  "dm": {
+    "title": "MP de bienvenue",
+    "description": "Envoyez un message prive aux nouveaux membres. Echouera silencieusement si les MP sont desactives."
+  },
+  "autorole": {
+    "title": "Role automatique",
+    "description": "Attribuez automatiquement des roles aux nouveaux membres lorsqu'ils rejoignent. Les bots sont exclus. Le bot doit avoir un role superieur aux roles listes ici.",
+    "label": "IDs des roles (separes par des virgules)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Titre",
+    "description": "Description",
+    "color": "Couleur (hex)",
+    "footer": "Pied de page",
+    "thumbnail": "URL de la miniature",
+    "image": "URL de l'image",
+    "variables": "Variables :"
+  },
+  "saveChanges": "Enregistrer les modifications",
+  "saving": "Enregistrement...",
+  "sendTest": "Envoyer un message test",
+  "sending": "Envoi...",
+  "toast": {
+    "saved": "Configuration de bienvenue enregistree",
+    "saveFailed": "Echec de l'enregistrement de la configuration",
+    "testSent": "Le message de test sera envoye dans <#{{channelId}}>",
+    "testFailed": "Echec de l'envoi du message de test"
+  }
+}

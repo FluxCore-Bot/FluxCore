@@ -1,0 +1,8 @@
+{
+  "title": "Logboeke",
+  "subtitle": "Monitor reel-uitvoerings en gebeurtenislogboeke.",
+  "tabs": {
+    "activity": "Aktiwiteitslogboeke",
+    "events": "Gebeurtenislogboeke"
+  }
+}

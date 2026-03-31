@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Servidor",
+    "automation": "Automatización"
+  },
+  "title": "Regras de Automatización",
+  "subtitle": "Configura disparadores orientados a eventos e respostas automáticas para o teu servidor.",
+  "createRule": "Crear Regra",
+  "stats": {
+    "totalRules": "Total de Regras",
+    "active": "Activas",
+    "executions7d": "Execucións (7d)",
+    "successRate": "Taxa de Éxito"
+  },
+  "filter": {
+    "searchPlaceholder": "Buscar regras...",
+    "eventType": "Tipo de evento",
+    "allEvents": "Todos os Eventos",
+    "allStatus": "Todos os Estados",
+    "enabled": "Activadas",
+    "disabled": "Desactivadas",
+    "sortBy": "Ordenar por",
+    "priority": "Prioridade",
+    "name": "Nome",
+    "lastFired": "Último Disparo",
+    "status": "Estado",
+    "clear": "Limpar",
+    "showing": "Mostrando {{filtered}} de {{total}} regras"
+  },
+  "bulk": {
+    "selected": "{{count}} regra seleccionada",
+    "selected_other": "{{count}} regras seleccionadas",
+    "enable": "Activar",
+    "disable": "Desactivar",
+    "delete": "Eliminar",
+    "clear": "Limpar"
+  },
+  "empty": {
+    "title": "Comeza coa Automatización",
+    "description": "Escolle un modelo para comezar rapidamente ou crea unha regra desde cero.",
+    "createFromScratch": "Crear desde Cero"
+  },
+  "noResults": {
+    "title": "Non hai regras coincidentes",
+    "description": "Proba a axustar a túa busca ou os filtros para atopar o que estás a buscar."
+  },
+  "templates": {
+    "welcomeMessage": "Mensaxe de Benvida",
+    "welcomeMessageDesc": "Saudar os novos membros cunha mensaxe personalizada nun canal",
+    "autoRole": "Rol Automático",
+    "autoRoleDesc": "Asignar automaticamente un rol cando un membro se une",
+    "logDeleted": "Rexistrar Mensaxes Eliminadas",
+    "logDeletedDesc": "Enviar información de mensaxes eliminadas a un canal de rexistro",
+    "boostThankYou": "Agradecemento por Boost",
+    "boostThankYouDesc": "Enviar un DM agradecendo aos usuarios que impulsaron o servidor",
+    "banLogger": "Rexistrador de Bans",
+    "banLoggerDesc": "Rexistrar eventos de ban nun canal de moderación",
+    "autoThread": "Fío Automático",
+    "autoThreadDesc": "Crear automaticamente un fío cando se envía unha mensaxe"
+  },
+  "deleteDialog": {
+    "title": "Eliminar Regra",
+    "description": "Estás seguro de que queres eliminar \"{{name}}\"? Esta acción non se pode desfacer.",
+    "confirm": "Eliminar"
+  },
+  "bulkDeleteDialog": {
+    "title": "Eliminar Regras Seleccionadas",
+    "description": "Estás seguro de que queres eliminar {{count}} regra? Esta acción non se pode desfacer.",
+    "description_other": "Estás seguro de que queres eliminar {{count}} regras? Esta acción non se pode desfacer.",
+    "confirm": "Eliminar Todas"
+  },
+  "toast": {
+    "deleted": "Regra eliminada",
+    "deleteFailed": "Non se puido eliminar a regra",
+    "enabled": "Regra activada",
+    "disabled": "Regra desactivada",
+    "toggleFailed": "Non se puido cambiar o estado da regra",
+    "duplicated": "Regra duplicada",
+    "duplicateFailed": "Non se puido duplicar a regra",
+    "bulkEnabled": "{{count}} regras activadas",
+    "bulkDisabled": "{{count}} regras desactivadas",
+    "bulkEnableFailed": "Non se puideron activar as regras",
+    "bulkDisableFailed": "Non se puideron desactivar as regras",
+    "bulkDeleted": "{{count}} regras eliminadas",
+    "bulkDeleteFailed": "Non se puideron eliminar as regras"
+  }
+}

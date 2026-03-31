@@ -1,0 +1,120 @@
+{
+  "title": "Sistema ng Leveling",
+  "subtitle": "I-configure ang pagkita ng XP, mga anunsyo ng pag-level up, mga gantimpala ng role, at mga multiplier.",
+  "stats": {
+    "rankedMembers": "Mga Miyembro na May Ranggo",
+    "roleRewards": "Mga Gantimpala ng Role",
+    "systemStatus": "Status ng Sistema",
+    "enabled": "Pinagana",
+    "disabled": "Hindi Pinagana"
+  },
+  "tabs": {
+    "leaderboard": "Leaderboard",
+    "settings": "Mga Setting",
+    "roleRewards": "Mga Gantimpala ng Role",
+    "exclusions": "Mga Pagbubukod",
+    "multipliers": "Mga Multiplier"
+  },
+  "table": {
+    "rank": "Ranggo",
+    "userId": "User ID",
+    "level": "Antas",
+    "xp": "XP",
+    "messages": "Mga Mensahe",
+    "voiceTime": "Oras sa Voice"
+  },
+  "settings": {
+    "title": "Mga Setting ng Leveling",
+    "enabled": "Paganahin ang Leveling",
+    "enabledDesc": "I-toggle ang buong sistema ng leveling.",
+    "xpPerMessage": "XP bawat Mensahe",
+    "xpPerMessageDesc": "Base XP na ibinibigay bawat mensahe (may idinagdag na randomness na 0-9).",
+    "xpCooldown": "XP Cooldown (segundo)",
+    "xpCooldownDesc": "Minimum na oras sa pagitan ng mga XP grant bawat user.",
+    "voiceXpEnabled": "Voice XP",
+    "voiceXpEnabledDesc": "Magbigay ng XP para sa oras na ginugol sa mga voice channel.",
+    "voiceXpPerMinute": "Voice XP bawat Minuto",
+    "voiceXpPerMinuteDesc": "XP na ibinibigay bawat minuto sa voice.",
+    "levelUpAnnouncements": "Mga Anunsyo ng Level-up",
+    "levelUpAnnouncementsDesc": "Mag-anunsyo kapag nag-level up ang isang miyembro.",
+    "announceDest": "Destinasyon ng Anunsyo",
+    "announceDestHint": "Maaari ka ring direktang mag-enter ng channel ID sa input sa itaas.",
+    "announceDestSameChannel": "Parehong Channel",
+    "announceDestDM": "Direktang Mensahe",
+    "announceMessage": "Mensahe ng Anunsyo",
+    "announceMessagePlaceholder": "{user} ay umabot na sa **Level {level}**!",
+    "announceMessageVars": "Mga Variable: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Mga Gantimpala ng Role",
+    "description": "Awtomatikong magtalaga ng mga role kapag naabot ng mga miyembro ang ilang antas.",
+    "addReward": "Magdagdag ng Gantimpala",
+    "addRewardTitle": "Magdagdag ng Gantimpala ng Role",
+    "level": "Antas",
+    "levelPrefix": "Antas {{level}}",
+    "roleId": "Role ID",
+    "levelPlaceholder": "hal. 5",
+    "rolePlaceholder": "hal. 123456789",
+    "removeReward": "Alisin",
+    "noRewards": "Walang mga gantimpala ng role na naka-configure."
+  },
+  "exclusions": {
+    "title": "Mga Pagbubukod ng XP",
+    "description": "Mga channel at role na hindi kumikita ng XP.",
+    "noXpChannels": "Mga Channel na Walang XP (comma-separated na mga ID)",
+    "noXpChannelsPlaceholder": "hal. 123456789, 987654321",
+    "noXpRoles": "Mga Role na Walang XP (comma-separated na mga ID)",
+    "noXpRolesPlaceholder": "hal. 123456789, 987654321",
+    "save": "I-save ang mga Pagbubukod"
+  },
+  "multipliers": {
+    "title": "Mga XP Multiplier",
+    "description": "Magtakda ng mga XP multiplier bawat channel o role. Ang multiplier na 2 ay nagdoble ng kinitang XP.",
+    "channelMultipliers": "Mga Channel Multiplier",
+    "roleMultipliers": "Mga Role Multiplier",
+    "channelId": "Channel ID",
+    "roleId": "Role ID",
+    "multiplier": "Multiplier",
+    "type": "Uri",
+    "typeChannel": "Channel",
+    "typeRole": "Role",
+    "id": "ID",
+    "idPlaceholder": "Channel o Role ID",
+    "value": "Multiplier",
+    "valuePlaceholder": "hal. 2",
+    "add": "Magdagdag ng Multiplier",
+    "addTitle": "Magdagdag ng Multiplier",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Walang mga XP multiplier na naka-configure."
+  },
+  "pagination": {
+    "previous": "Nakaraan",
+    "next": "Susunod",
+    "pageInfo": "Pahina {{page}} ng {{totalPages}} ({{total}} kabuuan)"
+  },
+  "loading": "Naglo-load ng leaderboard...",
+  "loadingGeneric": "Naglo-load...",
+  "emptyLeaderboard": "Wala pang mga miyembro na kumita ng XP.",
+  "toast": {
+    "saved": "Mga setting ng leveling na na-save",
+    "saveFailed": "Hindi na-update ang setting",
+    "rewardAdded": "Gantimpala na naidagdag",
+    "rewardAddFailed": "Hindi naidagdag ang gantimpala",
+    "rewardRemoved": "Gantimpala na naalis",
+    "rewardRemoveFailed": "Hindi naalis ang gantimpala",
+    "multiplierAdded": "Multiplier na naidagdag",
+    "multiplierAddFailed": "Hindi naidagdag ang multiplier",
+    "multiplierRemoved": "Multiplier na naalis",
+    "multiplierRemoveFailed": "Hindi naalis ang multiplier",
+    "exclusionUpdated": "Mga pagbubukod na na-save",
+    "exclusionFailed": "Hindi na-save ang mga pagbubukod",
+    "levelValidation": "Ang antas ay dapat na nasa pagitan ng 1 at 100",
+    "roleIdRequired": "Kailangan ng Role ID",
+    "multiplierIdRequired": "Kailangan ng ID at halaga ng multiplier",
+    "multiplierRange": "Ang multiplier ay dapat na nasa pagitan ng 0 at 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}h {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

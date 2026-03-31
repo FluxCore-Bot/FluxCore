@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Server",
+    "automation": "Automatisering"
+  },
+  "title": "Automatiseringsregels",
+  "subtitle": "Configureer gebeurtenisgestuurde triggers en geautomatiseerde reacties voor je server.",
+  "createRule": "Regel aanmaken",
+  "stats": {
+    "totalRules": "Totaal regels",
+    "active": "Actief",
+    "executions7d": "Uitvoeringen (7d)",
+    "successRate": "Succespercentage"
+  },
+  "filter": {
+    "searchPlaceholder": "Regels zoeken...",
+    "eventType": "Gebeurtenistype",
+    "allEvents": "Alle gebeurtenissen",
+    "allStatus": "Alle statussen",
+    "enabled": "Ingeschakeld",
+    "disabled": "Uitgeschakeld",
+    "sortBy": "Sorteren op",
+    "priority": "Prioriteit",
+    "name": "Naam",
+    "lastFired": "Laatst geactiveerd",
+    "status": "Status",
+    "clear": "Wissen",
+    "showing": "{{filtered}} van {{total}} regels worden weergegeven"
+  },
+  "bulk": {
+    "selected": "{{count}} regel geselecteerd",
+    "selected_other": "{{count}} regels geselecteerd",
+    "enable": "Inschakelen",
+    "disable": "Uitschakelen",
+    "delete": "Verwijderen",
+    "clear": "Wissen"
+  },
+  "empty": {
+    "title": "Aan de slag met automatisering",
+    "description": "Kies een sjabloon om snel te beginnen of maak een regel helemaal opnieuw aan.",
+    "createFromScratch": "Helemaal opnieuw aanmaken"
+  },
+  "noResults": {
+    "title": "Geen overeenkomende regels",
+    "description": "Probeer je zoekopdracht of filters aan te passen om te vinden wat je zoekt."
+  },
+  "templates": {
+    "welcomeMessage": "Welkomstbericht",
+    "welcomeMessageDesc": "Begroet nieuwe leden met een aangepast bericht in een kanaal",
+    "autoRole": "Automatische rol",
+    "autoRoleDesc": "Wijs automatisch een rol toe wanneer een lid lid wordt",
+    "logDeleted": "Verwijderde berichten registreren",
+    "logDeletedDesc": "Stuur informatie over verwijderde berichten naar een logkanaal",
+    "boostThankYou": "Boost-bedankt",
+    "boostThankYouDesc": "Stuur een DM om gebruikers te bedanken die de server boosten",
+    "banLogger": "Verbannenaarsregistrator",
+    "banLoggerDesc": "Registreer verbanneneringsgebeurtenissen in een moderatiekanaal",
+    "autoThread": "Automatische thread",
+    "autoThreadDesc": "Maak automatisch een thread aan wanneer een bericht wordt verzonden"
+  },
+  "deleteDialog": {
+    "title": "Regel verwijderen",
+    "description": "Weet je zeker dat je \"{{name}}\" wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
+    "confirm": "Verwijderen"
+  },
+  "bulkDeleteDialog": {
+    "title": "Geselecteerde regels verwijderen",
+    "description": "Weet je zeker dat je {{count}} regel wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
+    "description_other": "Weet je zeker dat je {{count}} regels wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
+    "confirm": "Alles verwijderen"
+  },
+  "toast": {
+    "deleted": "Regel verwijderd",
+    "deleteFailed": "Regel verwijderen mislukt",
+    "enabled": "Regel ingeschakeld",
+    "disabled": "Regel uitgeschakeld",
+    "toggleFailed": "Regel in-/uitschakelen mislukt",
+    "duplicated": "Regel gedupliceerd",
+    "duplicateFailed": "Regel dupliceren mislukt",
+    "bulkEnabled": "{{count}} regels ingeschakeld",
+    "bulkDisabled": "{{count}} regels uitgeschakeld",
+    "bulkEnableFailed": "Regels inschakelen mislukt",
+    "bulkDisableFailed": "Regels uitschakelen mislukt",
+    "bulkDeleted": "{{count}} regels verwijderd",
+    "bulkDeleteFailed": "Regels verwijderen mislukt"
+  }
+}

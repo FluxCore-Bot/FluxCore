@@ -1,0 +1,86 @@
+{
+  "title": "Zaplanowane wiadomości",
+  "subtitle": "Twórz cyklicznie publikowane wiadomości zgodnie z harmonogramem.",
+  "stats": {
+    "totalMessages": "Łącznie wiadomości",
+    "active": "Aktywnych",
+    "inactive": "Nieaktywnych"
+  },
+  "table": {
+    "name": "Nazwa",
+    "channel": "Kanał",
+    "schedule": "Harmonogram",
+    "nextRun": "Następne uruchomienie",
+    "status": "Status"
+  },
+  "dialog": {
+    "editTitle": "Edytuj zaplanowaną wiadomość",
+    "createTitle": "Nowa zaplanowana wiadomość"
+  },
+  "form": {
+    "name": "Nazwa",
+    "channel": "Kanał",
+    "schedulePreset": "Szablon harmonogramu",
+    "cronExpression": "Wyrażenie cron",
+    "timezone": "Strefa czasowa",
+    "messageContent": "Treść wiadomości",
+    "text": "Tekst",
+    "embed": "Embed",
+    "enabled": "Włączona",
+    "enabledDesc": "Czy ta zaplanowana wiadomość jest aktywna."
+  },
+  "cronPresets": {
+    "everyHour": "Co godzinę",
+    "every6Hours": "Co 6 godzin",
+    "daily9am": "Codziennie o 9:00",
+    "dailyMidnight": "Codziennie o północy",
+    "weeklyMonday": "Co tydzień w poniedziałek",
+    "monthly1st": "Co miesiąc 1-go",
+    "custom": "Niestandardowy"
+  },
+  "embed": {
+    "title": "Tytuł",
+    "description": "Opis",
+    "color": "Kolor (hex)",
+    "footer": "Stopka",
+    "thumbnail": "URL miniaturki",
+    "image": "URL obrazu"
+  },
+  "toast": {
+    "created": "Zaplanowana wiadomość utworzona",
+    "createFailed": "Nie udało się utworzyć zaplanowanej wiadomości",
+    "updated": "Zaplanowana wiadomość zaktualizowana",
+    "updateFailed": "Nie udało się zaktualizować zaplanowanej wiadomości",
+    "deleted": "Zaplanowana wiadomość usunięta",
+    "deleteFailed": "Nie udało się usunąć zaplanowanej wiadomości",
+    "testSent": "Wiadomość testowa wysłana",
+    "testFailed": "Nie udało się wysłać wiadomości testowej"
+  },
+  "empty": {
+    "title": "Brak zaplanowanych wiadomości",
+    "description": "Utwórz zaplanowaną wiadomość, aby automatycznie publikować treści cyklicznie.",
+    "createButton": "Utwórz wiadomość"
+  },
+  "pagination": {
+    "previous": "Poprzednia",
+    "next": "Następna",
+    "page": "Strona {{page}} z {{total}}"
+  },
+  "actions": {
+    "newMessage": "Nowa wiadomość",
+    "testSend": "Testowe wysłanie",
+    "edit": "Edytuj",
+    "delete": "Usuń",
+    "save": "Zapisz",
+    "cancel": "Anuluj"
+  },
+  "validation": {
+    "nameRequired": "Nazwa wiadomości jest wymagana",
+    "channelRequired": "Kanał jest wymagany"
+  },
+  "cronPreview": {
+    "nextRuns": "Następne uruchomienia"
+  },
+  "characters": "{{count}}/2000 znaków",
+  "never": "Nigdy"
+}

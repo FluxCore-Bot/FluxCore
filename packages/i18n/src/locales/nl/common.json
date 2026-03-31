@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore Dashboard"
+  },
+  "status": {
+    "online": "Online",
+    "offline": "Offline",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Overzicht",
+    "automation": "Automatisering",
+    "music": "Muziek",
+    "tempvoice": "TempVoice",
+    "welcome": "Welkom",
+    "moderation": "Moderatie",
+    "warnings": "Waarschuwingen",
+    "rolePanels": "Rolpanelen",
+    "leveling": "Niveausysteem",
+    "scheduled": "Gepland",
+    "commands": "Commando's",
+    "security": "Beveiliging",
+    "tickets": "Tickets",
+    "giveaways": "Weggeefacties",
+    "suggestions": "Suggesties",
+    "starboard": "Starboard",
+    "logs": "Logboeken",
+    "permissions": "Rechten",
+    "settings": "Instellingen"
+  },
+  "actions": {
+    "save": "Opslaan",
+    "cancel": "Annuleren",
+    "delete": "Verwijderen",
+    "edit": "Bewerken",
+    "create": "Aanmaken",
+    "add": "Toevoegen",
+    "remove": "Verwijderen",
+    "confirm": "Bevestigen",
+    "close": "Sluiten",
+    "back": "Terug",
+    "next": "Volgende",
+    "search": "Zoeken",
+    "filter": "Filteren",
+    "refresh": "Vernieuwen",
+    "reset": "Resetten",
+    "enable": "Inschakelen",
+    "disable": "Uitschakelen",
+    "copy": "Kopiëren",
+    "export": "Exporteren",
+    "import": "Importeren",
+    "submit": "Versturen",
+    "loading": "Laden...",
+    "retry": "Opnieuw proberen"
+  },
+  "labels": {
+    "enabled": "Ingeschakeld",
+    "disabled": "Uitgeschakeld",
+    "active": "Actief",
+    "inactive": "Inactief",
+    "none": "Geen",
+    "all": "Alle",
+    "custom": "Aangepast",
+    "default": "Standaard",
+    "required": "Verplicht",
+    "optional": "Optioneel",
+    "name": "Naam",
+    "description": "Beschrijving",
+    "type": "Type",
+    "status": "Status",
+    "channel": "Kanaal",
+    "role": "Rol",
+    "member": "Lid",
+    "duration": "Duur",
+    "reason": "Reden",
+    "language": "Taal"
+  },
+  "header": {
+    "notifications": "Meldingen",
+    "settings": "Instellingen",
+    "logout": "Uitloggen",
+    "toggleSidebar": "Zijbalk in-/uitschakelen",
+    "refreshData": "Discord-gegevens vernieuwen"
+  },
+  "sidebar": {
+    "closeSidebar": "Zijbalk sluiten",
+    "addToServer": "Toevoegen aan server",
+    "docs": "Documentatie",
+    "support": "Ondersteuning",
+    "backToServers": "Terug naar servers"
+  },
+  "empty": {
+    "noData": "Geen gegevens beschikbaar",
+    "noResults": "Geen resultaten gevonden",
+    "noItems": "Nog geen items"
+  },
+  "time": {
+    "seconds": "seconden",
+    "minutes": "minuten",
+    "hours": "uur",
+    "days": "dagen",
+    "ago": "{{time}} geleden",
+    "in": "over {{time}}"
+  },
+  "confirm": {
+    "title": "Weet je het zeker?",
+    "deleteTitle": "Verwijdering bevestigen",
+    "deleteMessage": "Deze actie kan niet ongedaan worden gemaakt.",
+    "unsavedChanges": "Je hebt niet-opgeslagen wijzigingen. Weet je zeker dat je wilt verlaten?"
+  },
+  "accessibility": {
+    "skipToContent": "Naar hoofdinhoud",
+    "loading": "Inhoud laden",
+    "loaded": "Inhoud geladen",
+    "error": "Er is een fout opgetreden",
+    "menuOpen": "Menu is open",
+    "menuClosed": "Menu is gesloten"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Musiikkijärjestelmä",
+  "subtitle": "Määritä yleiset toistotilat ja äänikirjaston asetukset.",
+  "tabs": {
+    "settings": "Toistoasetukset",
+    "library": "Musiikkikirjasto"
+  }
+}

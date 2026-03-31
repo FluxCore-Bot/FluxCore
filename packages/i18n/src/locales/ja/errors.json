@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "認証されていません",
+    "sessionExpired": "セッションの有効期限が切れました",
+    "missingCode": "codeパラメータがありません",
+    "tokenExchangeFailed": "トークンの交換に失敗しました",
+    "failedToFetchUser": "ユーザー情報の取得に失敗しました"
+  },
+  "permissions": {
+    "noGuildPermission": "このサーバーへの権限がありません",
+    "botNotInGuild": "Botはこのサーバーに参加していません",
+    "insufficientPermissions": "権限が不足しています",
+    "permissionsNotResolved": "権限を解決できませんでした",
+    "requiresPermission": "この操作には「{{permission}}」権限が必要です"
+  },
+  "validation": {
+    "invalidInput": "無効な入力です",
+    "missingField": "必須フィールドがありません: {{field}}",
+    "invalidFormat": "{{field}}の形式が無効です",
+    "tooLong": "{{field}}は最大{{max}}文字を超えています",
+    "tooShort": "{{field}}は{{min}}文字以上である必要があります",
+    "outOfRange": "{{field}}は{{min}}から{{max}}の間である必要があります"
+  },
+  "resources": {
+    "notFound": "見つかりません",
+    "alreadyExists": "{{resource}}は既に存在します",
+    "limitReached": "サーバーあたり{{resource}}の上限は{{max}}です",
+    "createFailed": "{{resource}}の作成に失敗しました",
+    "updateFailed": "{{resource}}の更新に失敗しました",
+    "deleteFailed": "{{resource}}の削除に失敗しました"
+  },
+  "server": {
+    "internalError": "内部サーバーエラー",
+    "serviceUnavailable": "サービスは一時的に利用できません",
+    "rateLimited": "リクエストが多すぎます。しばらくしてからもう一度お試しください。"
+  },
+  "csrf": {
+    "invalidToken": "無効または欠落しているCSRFトークン"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "title": "[NEEDS TRANSLATION] Roles & Permissions",
+  "subtitle": "[NEEDS TRANSLATION] Control who can access and manage each dashboard module.",
+  "actions": {
+    "createRole": "[NEEDS TRANSLATION] Create Role"
+  },
+  "permissionSystem": {
+    "title": "[NEEDS TRANSLATION] Permission System",
+    "active": "[NEEDS TRANSLATION] Active — admins are restricted to their assigned permissions.",
+    "inactive": "[NEEDS TRANSLATION] Inactive — all admins with MANAGE_GUILD have full access.",
+    "enabledToast": "[NEEDS TRANSLATION] Permission system enabled",
+    "disabledToast": "[NEEDS TRANSLATION] Permission system disabled — all admins have full access"
+  },
+  "warning": {
+    "disabled": "[NEEDS TRANSLATION] The permission system is disabled. All dashboard admins currently have full access. Enable it above to enforce granular permissions."
+  },
+  "tabs": {
+    "roles": "[NEEDS TRANSLATION] Roles",
+    "auditLog": "[NEEDS TRANSLATION] Audit Log"
+  },
+  "roleList": {
+    "title": "[NEEDS TRANSLATION] Dashboard Roles",
+    "empty": "[NEEDS TRANSLATION] No roles created yet.",
+    "selectHint": "[NEEDS TRANSLATION] Select a role to edit, or create a new one.",
+    "default": "[NEEDS TRANSLATION] Default",
+    "name": "[NEEDS TRANSLATION] Name",
+    "members": "[NEEDS TRANSLATION] Members",
+    "permissions": "[NEEDS TRANSLATION] Permissions",
+    "edit": "[NEEDS TRANSLATION] Edit",
+    "delete": "[NEEDS TRANSLATION] Delete"
+  },
+  "presets": {
+    "title": "[NEEDS TRANSLATION] Quick Add from Preset",
+    "createdToast": "[NEEDS TRANSLATION] Created \"{{name}}\" role"
+  },
+  "roleEditor": {
+    "memberCount": "[NEEDS TRANSLATION] {{count}} member",
+    "memberCount_plural": "[NEEDS TRANSLATION] {{count}} members",
+    "name": "[NEEDS TRANSLATION] Role Name",
+    "color": "[NEEDS TRANSLATION] Color",
+    "defaultRole": "[NEEDS TRANSLATION] Default role",
+    "permissions": "[NEEDS TRANSLATION] Permissions",
+    "allBadge": "[NEEDS TRANSLATION] All",
+    "discordRoles": "[NEEDS TRANSLATION] Discord Roles"
+  },
+  "roleForm": {
+    "name": "[NEEDS TRANSLATION] Role Name",
+    "discordRoles": "[NEEDS TRANSLATION] Discord Roles",
+    "permissions": "[NEEDS TRANSLATION] Permissions",
+    "create": "[NEEDS TRANSLATION] Create Role",
+    "update": "[NEEDS TRANSLATION] Update Role",
+    "cancel": "[NEEDS TRANSLATION] Cancel"
+  },
+  "createDialog": {
+    "title": "[NEEDS TRANSLATION] Create Dashboard Role",
+    "name": "[NEEDS TRANSLATION] Name",
+    "namePlaceholder": "[NEEDS TRANSLATION] e.g. Moderator",
+    "color": "[NEEDS TRANSLATION] Color"
+  },
+  "permissionCategories": {
+    "actions": "[NEEDS TRANSLATION] Actions & Automation",
+    "music": "[NEEDS TRANSLATION] Music",
+    "tempvoice": "[NEEDS TRANSLATION] TempVoice",
+    "welcome": "[NEEDS TRANSLATION] Welcome & Farewell",
+    "moderation": "[NEEDS TRANSLATION] Moderation",
+    "logging": "[NEEDS TRANSLATION] Logging",
+    "leveling": "[NEEDS TRANSLATION] Leveling",
+    "roles": "[NEEDS TRANSLATION] Role Panels",
+    "tickets": "[NEEDS TRANSLATION] Tickets",
+    "suggestions": "[NEEDS TRANSLATION] Suggestions",
+    "starboard": "[NEEDS TRANSLATION] Starboard",
+    "giveaways": "[NEEDS TRANSLATION] Giveaways",
+    "security": "[NEEDS TRANSLATION] Security",
+    "scheduled": "[NEEDS TRANSLATION] Scheduled Messages",
+    "commands": "[NEEDS TRANSLATION] Custom Commands",
+    "settings": "[NEEDS TRANSLATION] Server Settings"
+  },
+  "audit": {
+    "table": {
+      "user": "[NEEDS TRANSLATION] User",
+      "action": "[NEEDS TRANSLATION] Action",
+      "target": "[NEEDS TRANSLATION] Target",
+      "timestamp": "[NEEDS TRANSLATION] When"
+    },
+    "noEntries": "[NEEDS TRANSLATION] No audit log entries yet."
+  },
+  "pagination": {
+    "previous": "[NEEDS TRANSLATION] Previous",
+    "next": "[NEEDS TRANSLATION] Next",
+    "page": "[NEEDS TRANSLATION] Page {{current}} of {{total}}"
+  },
+  "toast": {
+    "roleCreated": "[NEEDS TRANSLATION] Created role \"{{name}}\"",
+    "roleCreateFailed": "[NEEDS TRANSLATION] Failed to create role",
+    "roleUpdated": "[NEEDS TRANSLATION] Role updated",
+    "roleUpdateFailed": "[NEEDS TRANSLATION] Failed to update role",
+    "roleDeleted": "[NEEDS TRANSLATION] Role deleted",
+    "roleDeleteFailed": "[NEEDS TRANSLATION] Failed to delete role"
+  },
+  "confirm": {
+    "deleteTitle": "[NEEDS TRANSLATION] Delete role \"{{name}}\"?",
+    "deleteMessage": "[NEEDS TRANSLATION] This will remove the role and unassign all members. This action cannot be undone.",
+    "deleteRole": "[NEEDS TRANSLATION] Are you sure you want to delete this role? Members will lose their assigned permissions."
+  },
+  "saveButton": {
+    "saving": "[NEEDS TRANSLATION] Saving...",
+    "save": "[NEEDS TRANSLATION] Save Changes"
+  },
+  "deleteButton": {
+    "deleting": "[NEEDS TRANSLATION] Deleting...",
+    "delete": "[NEEDS TRANSLATION] Delete"
+  },
+  "createButton": {
+    "creating": "[NEEDS TRANSLATION] Creating...",
+    "create": "[NEEDS TRANSLATION] Create"
+  },
+  "loading": "[NEEDS TRANSLATION] Loading permissions..."
+}

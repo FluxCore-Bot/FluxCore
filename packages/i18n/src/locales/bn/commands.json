@@ -1,0 +1,113 @@
+{
+  "title": "কাস্টম কমান্ড",
+  "subtitle": "মেসেজ দ্বারা ট্রিগার হওয়া অটো-রেসপন্ডার এবং প্রিফিক্স কমান্ড তৈরি করুন।",
+  "stats": {
+    "totalCommands": "মোট কমান্ড",
+    "enabled": "সক্রিয়",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "কমান্ড",
+    "variables": "ভেরিয়েবল"
+  },
+  "table": {
+    "name": "নাম",
+    "trigger": "ট্রিগার",
+    "response": "প্রতিক্রিয়া",
+    "cooldown": "কুলডাউন",
+    "status": "স্থিতি"
+  },
+  "triggerTypes": {
+    "command": "!command",
+    "keyword": "কীওয়ার্ড",
+    "startsWith": "দিয়ে শুরু হয়",
+    "regex": "Regex",
+    "prefixCommand": "প্রিফিক্স কমান্ড (!name)",
+    "keywordContains": "কীওয়ার্ড (ধারণ করে)"
+  },
+  "dialog": {
+    "createCommand": "কমান্ড তৈরি করুন",
+    "editCommand": "কমান্ড সম্পাদনা করুন"
+  },
+  "form": {
+    "commandName": "কমান্ডের নাম",
+    "triggerText": "ট্রিগার টেক্সট",
+    "regexPattern": "Regex প্যাটার্ন",
+    "triggerType": "ট্রিগার ধরন",
+    "response": "প্রতিক্রিয়া",
+    "message": "বার্তা",
+    "embedTitle": "Embed শিরোনাম",
+    "embedDescription": "Embed বিবরণ",
+    "color": "রঙ",
+    "footer": "ফুটার"
+  },
+  "options": {
+    "cooldown": "কুলডাউন (সেকেন্ড)",
+    "enabled": "সক্রিয়",
+    "enabledDesc": "এই কমান্ডটি সক্রিয় কিনা",
+    "deleteTrigger": "ট্রিগার মেসেজ মুছুন",
+    "deleteTriggerDesc": "এই কমান্ড ট্রিগার করা মেসেজটি স্বয়ংক্রিয়ভাবে মুছুন।",
+    "dmResponse": "DM প্রতিক্রিয়া",
+    "dmResponseDesc": "চ্যানেলের পরিবর্তে ডাইরেক্ট মেসেজ হিসেবে প্রতিক্রিয়া পাঠান।"
+  },
+  "restrictions": {
+    "title": "সীমাবদ্ধতা",
+    "allowedChannels": "অনুমোদিত চ্যানেল (খালি = সব)",
+    "allowedRoles": "অনুমোদিত রোল (খালি = সবাই)",
+    "addChannel": "চ্যানেল যোগ করুন",
+    "addRole": "রোল যোগ করুন"
+  },
+  "actions": {
+    "create": "তৈরি করুন",
+    "update": "আপডেট করুন",
+    "cancel": "বাতিল",
+    "addAction": "অ্যাকশন যোগ করুন",
+    "addRole": "রোল যোগ করুন",
+    "removeRole": "রোল সরান"
+  },
+  "actionsSection": {
+    "title": "অ্যাকশন ({{count}}/5)",
+    "noActions": "কোনো অ্যাকশন কনফিগার করা হয়নি। এই কমান্ড কী করবে তা নির্ধারণ করতে একটি অ্যাকশন যোগ করুন।",
+    "maxActions": "প্রতি কমান্ডে সর্বোচ্চ 5টি অ্যাকশন"
+  },
+  "variables": {
+    "title": "টেমপ্লেট ভেরিয়েবল",
+    "description": "আপনার কমান্ড প্রতিক্রিয়ায় এই ভেরিয়েবলগুলি ব্যবহার করুন। কমান্ড ট্রিগার হলে এগুলি প্রকৃত মান দিয়ে প্রতিস্থাপিত হবে।",
+    "table": {
+      "variable": "ভেরিয়েবল",
+      "description": "বিবরণ"
+    },
+    "entries": {
+      "user": "{user} — কমান্ড ট্রিগারকারী ব্যবহারকারীকে মেনশন করে",
+      "username": "{username} — ব্যবহারকারীর প্রদর্শন নাম",
+      "userId": "{userId} — ব্যবহারকারীর ID",
+      "server": "{server} — সার্ভারের নাম",
+      "channel": "{channel} — বর্তমান চ্যানেল মেনশন করে",
+      "channelName": "{channelName} — চ্যানেলের নাম",
+      "memberCount": "{memberCount} — সার্ভার সদস্যদের মোট সংখ্যা"
+    }
+  },
+  "toast": {
+    "created": "কমান্ড তৈরি হয়েছে",
+    "createFailed": "কমান্ড তৈরি ব্যর্থ",
+    "updated": "কমান্ড আপডেট হয়েছে",
+    "updateFailed": "কমান্ড আপডেট ব্যর্থ",
+    "deleted": "কমান্ড মুছে ফেলা হয়েছে",
+    "deleteFailed": "কমান্ড মুছতে ব্যর্থ",
+    "toggleEnabled": "কমান্ড সক্রিয় করা হয়েছে",
+    "toggleDisabled": "কমান্ড নিষ্ক্রিয় করা হয়েছে",
+    "toggleFailed": "কমান্ড টগল করতে ব্যর্থ"
+  },
+  "empty": "এখনো কোনো কাস্টম কমান্ড তৈরি হয়নি।",
+  "loading": "কমান্ড লোড হচ্ছে...",
+  "badge": {
+    "active": "সক্রিয়",
+    "disabled": "নিষ্ক্রিয়",
+    "text": "টেক্সট",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "কমান্ডের নাম আবশ্যক"
+  },
+  "triggerPrefix": "ট্রিগার: !{{name}}"
+}

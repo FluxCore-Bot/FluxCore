@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "Bảng Điều Khiển FluxCore"
+  },
+  "status": {
+    "online": "Trực Tuyến",
+    "offline": "Ngoại Tuyến",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Tổng Quan",
+    "automation": "Tự Động Hóa",
+    "music": "Âm Nhạc",
+    "tempvoice": "Kênh Thoại Tạm",
+    "welcome": "Chào Mừng",
+    "moderation": "Kiểm Duyệt",
+    "warnings": "Cảnh Báo",
+    "rolePanels": "Bảng Vai Trò",
+    "leveling": "Cấp Độ",
+    "scheduled": "Lịch Trình",
+    "commands": "Lệnh",
+    "security": "Bảo Mật",
+    "tickets": "Phiếu Hỗ Trợ",
+    "giveaways": "Giveaway",
+    "suggestions": "Đề Xuất",
+    "starboard": "Bảng Sao",
+    "logs": "Nhật Ký",
+    "permissions": "Quyền Hạn",
+    "settings": "Cài Đặt"
+  },
+  "actions": {
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "edit": "Chỉnh Sửa",
+    "create": "Tạo",
+    "add": "Thêm",
+    "remove": "Bỏ",
+    "confirm": "Xác Nhận",
+    "close": "Đóng",
+    "back": "Quay Lại",
+    "next": "Tiếp Theo",
+    "search": "Tìm Kiếm",
+    "filter": "Lọc",
+    "refresh": "Làm Mới",
+    "reset": "Đặt Lại",
+    "enable": "Bật",
+    "disable": "Tắt",
+    "copy": "Sao Chép",
+    "export": "Xuất",
+    "import": "Nhập",
+    "submit": "Gửi",
+    "loading": "Đang tải...",
+    "retry": "Thử Lại"
+  },
+  "labels": {
+    "enabled": "Đang Bật",
+    "disabled": "Đã Tắt",
+    "active": "Hoạt Động",
+    "inactive": "Không Hoạt Động",
+    "none": "Không Có",
+    "all": "Tất Cả",
+    "custom": "Tùy Chỉnh",
+    "default": "Mặc Định",
+    "required": "Bắt Buộc",
+    "optional": "Tùy Chọn",
+    "name": "Tên",
+    "description": "Mô Tả",
+    "type": "Loại",
+    "status": "Trạng Thái",
+    "channel": "Kênh",
+    "role": "Vai Trò",
+    "member": "Thành Viên",
+    "duration": "Thời Lượng",
+    "reason": "Lý Do",
+    "language": "Ngôn Ngữ"
+  },
+  "header": {
+    "notifications": "Thông Báo",
+    "settings": "Cài Đặt",
+    "logout": "Đăng Xuất",
+    "toggleSidebar": "Hiện/ẩn thanh bên",
+    "refreshData": "Làm mới dữ liệu Discord"
+  },
+  "sidebar": {
+    "closeSidebar": "Đóng thanh bên",
+    "addToServer": "Thêm Vào Máy Chủ",
+    "docs": "Tài Liệu",
+    "support": "Hỗ Trợ",
+    "backToServers": "Quay Lại Danh Sách Máy Chủ"
+  },
+  "empty": {
+    "noData": "Không có dữ liệu",
+    "noResults": "Không tìm thấy kết quả",
+    "noItems": "Chưa có mục nào"
+  },
+  "time": {
+    "seconds": "giây",
+    "minutes": "phút",
+    "hours": "giờ",
+    "days": "ngày",
+    "ago": "{{time}} trước",
+    "in": "trong {{time}}"
+  },
+  "confirm": {
+    "title": "Bạn có chắc không?",
+    "deleteTitle": "Xác nhận xóa",
+    "deleteMessage": "Hành động này không thể hoàn tác.",
+    "unsavedChanges": "Bạn có thay đổi chưa lưu. Bạn có chắc muốn rời đi không?"
+  },
+  "accessibility": {
+    "skipToContent": "Chuyển đến nội dung chính",
+    "loading": "Đang tải nội dung",
+    "loaded": "Đã tải nội dung",
+    "error": "Đã xảy ra lỗi",
+    "menuOpen": "Menu đang mở",
+    "menuClosed": "Menu đang đóng"
+  }
+}

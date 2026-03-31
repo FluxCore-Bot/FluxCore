@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "公開測試中",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "一站式",
+    "titleLine2": "Discord 機器人框架",
+    "subtitle": "幾分鐘內部署專業級 Discord 服務。模組化、自架設，為追求更多的社群而打造。"
+  },
+  "cta": {
+    "addToServer": "新增至伺服器",
+    "openDashboard": "開啟儀表板",
+    "exploreFeatures": "探索功能"
+  },
+  "stats": {
+    "servers": "伺服器",
+    "latency": "延遲",
+    "uptime": "上線率",
+    "modules": "模組",
+    "serversValue": "1,000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99.9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "功能",
+    "title": "伺服器所需的一切",
+    "subtitle": "為追求可靠性、靈活性和控制力的社群設計的模組化工具包。",
+    "automation": {
+      "title": "自動化規則",
+      "description": "無需程式碼即可建立複雜的事件驅動工作流程。支援 23 種事件類型和 10 種動作類型的觸發器。"
+    },
+    "music": {
+      "title": "音樂系統",
+      "description": "多平台支援的高音質串流。佇列管理、DJ 控制和曲庫模式。"
+    },
+    "tempVoice": {
+      "title": "臨時語音",
+      "description": "動態語音頻道管理。自訂命名範本、權限設定和自動清理。"
+    },
+    "logs": {
+      "title": "活動日誌",
+      "description": "所有自動化執行的完整稽核追蹤。透過詳細日誌搜尋、篩選和除錯。"
+    },
+    "webhooks": {
+      "title": "Webhook 和 API",
+      "description": "透過 HTTP Webhook 向外部服務傳送資料。自訂標頭、內文範本和變數插值。"
+    },
+    "dashboard": {
+      "title": "即時儀表板",
+      "description": "透過精美的 Web 儀表板管理一切。分析、設定和監控集於一處。"
+    }
+  },
+  "ctaSection": {
+    "title": "準備好升級您的社群了嗎？",
+    "subtitle": "零設定，幾分鐘內即可開始。自架設、開源，完全免費。"
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "© {{year}} FluxCore Technologies. All rights reserved.",
+    "links": {
+      "documentation": "文件",
+      "support": "支援",
+      "privacy": "隱私權政策",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

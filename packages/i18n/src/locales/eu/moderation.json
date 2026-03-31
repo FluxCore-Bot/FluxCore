@@ -1,0 +1,54 @@
+{
+  "title": "Moderazioa",
+  "subtitle": "Ikusi eta kudeatu moderazio-kasuak, konfiguratu zigorraren ezarpenak.",
+  "stats": {
+    "totalCases": "Kasu guztiak",
+    "activeTempbans": "Aldi baterako debekuak aktiboak",
+    "last24h": "Azken 24 orduak"
+  },
+  "cases": "Kasuak",
+  "actions": {
+    "ban": "Debekatu",
+    "tempban": "Aldi baterako debekua",
+    "kick": "Kanporatu",
+    "timeout": "Denbora-muga",
+    "softban": "Debeku biguna",
+    "warn": "Abisatu",
+    "note": "Oharra"
+  },
+  "table": {
+    "id": "IDa",
+    "action": "Ekintza",
+    "target": "Helburua",
+    "moderator": "Moderatzailea",
+    "reason": "Arrazoia",
+    "date": "Data",
+    "actions": "Ekintzak",
+    "noCases": "Ez da kasurik aurkitu.",
+    "noReason": "Arrazoirik ez"
+  },
+  "filter": {
+    "userPlaceholder": "Iragazi Erabiltzaile IDaz...",
+    "allActions": "Ekintza guztiak"
+  },
+  "pagination": {
+    "previous": "Aurrekoa",
+    "next": "Hurrengoa",
+    "page": "{{page}}. orrialdea {{total}}-tik"
+  },
+  "editDialog": {
+    "title": "#{{id}} kasuaren arrazoia editatu",
+    "placeholder": "Sartu arrazoi berria...",
+    "saving": "Gordetzen..."
+  },
+  "editReason": "Arrazoia editatu",
+  "deleteCase": "Kasua ezabatu",
+  "deleteConfirm": "Ziur zaude kasu hau ezabatu nahi duzula?",
+  "settings": {
+    "title": "Ezarpenak",
+    "dmOnPunishment": "DM zigorrarengatik",
+    "dmOnPunishmentDesc": "Bidali DM bat erabiltzaileei zigortuak direnean (debekatu, kanporatu, denbora-muga).",
+    "modLogChannel": "Moderazio-erregistro kanala",
+    "modLogChannelDesc": "Moderazio-ekintzak erregistratzen diren kanala."
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "title": "Панели с роли",
+  "subtitle": "Създайте панели за самостоятелно назначаване на роли чрез бутони, падащи менюта или реакции.",
+  "stats": {
+    "totalPanels": "Общо панели",
+    "deployed": "Разгърнати",
+    "totalRoles": "Общо роли"
+  },
+  "tabs": {
+    "panels": "Панели",
+    "preview": "Преглед"
+  },
+  "table": {
+    "name": "Име",
+    "type": "Тип",
+    "mode": "Режим",
+    "roles": "Роли",
+    "status": "Статус"
+  },
+  "panelTypes": {
+    "reaction": "Реакция",
+    "button": "Бутон",
+    "dropdown": "Падащо меню"
+  },
+  "panelModes": {
+    "toggle": "Превключване",
+    "unique": "Уникален",
+    "verify": "Потвърждение"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Превключване (добавяне/премахване)",
+    "unique": "Уникален (само един наведнъж)",
+    "verify": "Потвърждение (само добавяне)"
+  },
+  "status": {
+    "deployed": "Разгърнат",
+    "draft": "Чернова"
+  },
+  "dialog": {
+    "createPanel": "Създай панел",
+    "editPanel": "Редактирай панел"
+  },
+  "panelList": {
+    "title": "Всички панели"
+  },
+  "form": {
+    "name": "Име",
+    "namePlaceholder": "напр. Роли с цветове",
+    "type": "Тип",
+    "mode": "Режим",
+    "channel": "Канал",
+    "channelPlaceholder": "Избери канал",
+    "minRoles": "Мин. роли",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Макс. роли",
+    "maxRolesPlaceholder": "Всички",
+    "embedSection": "Embed",
+    "embedTitle": "Заглавие",
+    "embedTitlePlaceholder": "Заглавие на панела (по подразбиране е името на панела)",
+    "embedDescription": "Описание",
+    "embedDescriptionPlaceholder": "Описателен текст",
+    "rolesCount": "Роли ({{count}}/25)",
+    "addRole": "Добави роля"
+  },
+  "entry": {
+    "role": "Роля",
+    "rolePlaceholder": "Избери роля",
+    "label": "Етикет",
+    "labelPlaceholder": "Надпис на бутона",
+    "emoji": "Емоджи",
+    "emojiPlaceholder": "напр. star",
+    "description": "Описание",
+    "descriptionPlaceholder": "Описание на опцията",
+    "style": "Стил"
+  },
+  "buttonStyles": {
+    "primary": "Основен",
+    "secondary": "Вторичен",
+    "success": "Успех",
+    "danger": "Опасност"
+  },
+  "actions": {
+    "create": "Създай",
+    "update": "Актуализирай",
+    "cancel": "Отказ",
+    "deploy": "Разгърни",
+    "delete": "Изтрий",
+    "addEntry": "Добави запис",
+    "removeEntry": "Премахни запис"
+  },
+  "preview": {
+    "title": "Преглед на живо",
+    "description": "Прегледайте как ще изглеждат панелите ви в Discord.",
+    "selectRoles": "Избери роли...",
+    "noPreview": "Няма панели за преглед."
+  },
+  "empty": "Все още няма създадени панели с роли. Натиснете „Създай панел", за да започнете.",
+  "toast": {
+    "created": "Панелът е създаден",
+    "createFailed": "Неуспешно създаване на панел",
+    "updated": "Панелът е актуализиран",
+    "updateFailed": "Неуспешно актуализиране на панел",
+    "deleted": "Панелът е изтрит",
+    "deleteFailed": "Неуспешно изтриване на панел",
+    "deployed": "Панелът с роли е разгърнат в канала",
+    "deployFailed": "Неуспешно изпращане на панел",
+    "nameRequired": "Името на панела е задължително",
+    "channelRequired": "Каналът е задължителен",
+    "maxRolesReached": "Максимум 25 роли на панел"
+  },
+  "loading": "Зареждане на панели..."
+}

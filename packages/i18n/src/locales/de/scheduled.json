@@ -1,0 +1,86 @@
+{
+  "title": "Geplante Nachrichten",
+  "subtitle": "Erstellen Sie wiederkehrende automatische Nachrichten mit konfigurierbaren Zeitplaenen.",
+  "stats": {
+    "totalMessages": "Nachrichten gesamt",
+    "active": "Aktiv",
+    "inactive": "Inaktiv"
+  },
+  "table": {
+    "name": "Name",
+    "channel": "Kanal",
+    "schedule": "Zeitplan",
+    "nextRun": "Naechste Ausfuehrung",
+    "status": "Status"
+  },
+  "dialog": {
+    "editTitle": "Geplante Nachricht bearbeiten",
+    "createTitle": "Neue geplante Nachricht"
+  },
+  "form": {
+    "name": "Name",
+    "channel": "Kanal",
+    "schedulePreset": "Zeitplan-Vorlage",
+    "cronExpression": "Cron-Ausdruck",
+    "timezone": "Zeitzone",
+    "messageContent": "Nachrichteninhalt",
+    "text": "Text",
+    "embed": "Embed",
+    "enabled": "Aktiviert",
+    "enabledDesc": "Ob diese geplante Nachricht aktiv ist."
+  },
+  "cronPresets": {
+    "everyHour": "Jede Stunde",
+    "every6Hours": "Alle 6 Stunden",
+    "daily9am": "Taeglich um 9 Uhr",
+    "dailyMidnight": "Taeglich um Mitternacht",
+    "weeklyMonday": "Woechentlich am Montag",
+    "monthly1st": "Monatlich am 1.",
+    "custom": "Benutzerdefiniert"
+  },
+  "embed": {
+    "title": "Titel",
+    "description": "Beschreibung",
+    "color": "Farbe (Hex)",
+    "footer": "Fusszeile",
+    "thumbnail": "Vorschaubild-URL",
+    "image": "Bild-URL"
+  },
+  "toast": {
+    "created": "Geplante Nachricht erstellt",
+    "createFailed": "Geplante Nachricht konnte nicht erstellt werden",
+    "updated": "Geplante Nachricht aktualisiert",
+    "updateFailed": "Geplante Nachricht konnte nicht aktualisiert werden",
+    "deleted": "Geplante Nachricht geloescht",
+    "deleteFailed": "Geplante Nachricht konnte nicht geloescht werden",
+    "testSent": "Testnachricht gesendet",
+    "testFailed": "Testnachricht konnte nicht gesendet werden"
+  },
+  "empty": {
+    "title": "Noch keine geplanten Nachrichten",
+    "description": "Erstellen Sie eine geplante Nachricht, um Inhalte automatisch wiederkehrend zu veroeffentlichen.",
+    "createButton": "Nachricht erstellen"
+  },
+  "pagination": {
+    "previous": "Zurueck",
+    "next": "Weiter",
+    "page": "Seite {{page}} von {{total}}"
+  },
+  "actions": {
+    "newMessage": "Neue Nachricht",
+    "testSend": "Testversand",
+    "edit": "Bearbeiten",
+    "delete": "Loeschen",
+    "save": "Speichern",
+    "cancel": "Abbrechen"
+  },
+  "validation": {
+    "nameRequired": "Nachrichtenname ist erforderlich",
+    "channelRequired": "Kanal ist erforderlich"
+  },
+  "cronPreview": {
+    "nextRuns": "Naechste Ausfuehrungen"
+  },
+  "characters": "{{count}}/2000 Zeichen",
+  "never": "Nie"
+}

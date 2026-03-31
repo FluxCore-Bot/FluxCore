@@ -1,0 +1,120 @@
+{
+  "title": "நிலை உயர்வு அமைப்பு",
+  "subtitle": "XP சம்பாதிப்பு, நிலை உயர்வு அறிவிப்புகள், பங்கு வெகுமதிகள் மற்றும் பெருக்கிகளை கட்டமைக்கவும்.",
+  "stats": {
+    "rankedMembers": "தரவரிசை உறுப்பினர்கள்",
+    "roleRewards": "பங்கு வெகுமதிகள்",
+    "systemStatus": "அமைப்பு நிலை",
+    "enabled": "செயலில்",
+    "disabled": "முடக்கப்பட்டது"
+  },
+  "tabs": {
+    "leaderboard": "தலைவர் பட்டியல்",
+    "settings": "அமைப்புகள்",
+    "roleRewards": "பங்கு வெகுமதிகள்",
+    "exclusions": "விலக்குகள்",
+    "multipliers": "பெருக்கிகள்"
+  },
+  "table": {
+    "rank": "தரவரிசை",
+    "userId": "பயனர் ID",
+    "level": "நிலை",
+    "xp": "XP",
+    "messages": "செய்திகள்",
+    "voiceTime": "குரல் நேரம்"
+  },
+  "settings": {
+    "title": "நிலை உயர்வு அமைப்புகள்",
+    "enabled": "நிலை உயர்வை செயல்படுத்து",
+    "enabledDesc": "முழு நிலை உயர்வு அமைப்பை இயக்கு அல்லது நிறுத்து.",
+    "xpPerMessage": "ஒரு செய்திக்கு XP",
+    "xpPerMessageDesc": "ஒரு செய்திக்கு வழங்கப்படும் அடிப்படை XP (0-9 சீரற்றதன்மை சேர்க்கப்படும்).",
+    "xpCooldown": "XP குளிர்வு (வினாடிகள்)",
+    "xpCooldownDesc": "ஒரு பயனருக்கு XP வழங்குவதற்கிடையில் குறைந்தபட்ச நேரம்.",
+    "voiceXpEnabled": "குரல் XP",
+    "voiceXpEnabledDesc": "குரல் சேனல்களில் செலவிட்ட நேரத்திற்கு XP வழங்கு.",
+    "voiceXpPerMinute": "ஒரு நிமிடத்திற்கு குரல் XP",
+    "voiceXpPerMinuteDesc": "குரலில் ஒரு நிமிடத்திற்கு வழங்கப்படும் XP.",
+    "levelUpAnnouncements": "நிலை உயர்வு அறிவிப்புகள்",
+    "levelUpAnnouncementsDesc": "ஒரு உறுப்பினர் நிலை உயரும்போது அறிவிக்கவும்.",
+    "announceDest": "அறிவிப்பு இடம்",
+    "announceDestHint": "மேலே உள்ள உள்ளீட்டில் நேரடியாக சேனல் ID ஐயும் உள்ளிடலாம்.",
+    "announceDestSameChannel": "அதே சேனல்",
+    "announceDestDM": "நேரடி செய்தி",
+    "announceMessage": "அறிவிப்பு செய்தி",
+    "announceMessagePlaceholder": "{user} **நிலை {level}** ஐ அடைந்தார்!",
+    "announceMessageVars": "மாறிகள்: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "பங்கு வெகுமதிகள்",
+    "description": "உறுப்பினர்கள் குறிப்பிட்ட நிலைகளை அடையும்போது தானாகவே பங்குகளை ஒதுக்கவும்.",
+    "addReward": "வெகுமதி சேர்",
+    "addRewardTitle": "பங்கு வெகுமதி சேர்",
+    "level": "நிலை",
+    "levelPrefix": "நிலை {{level}}",
+    "roleId": "பங்கு ID",
+    "levelPlaceholder": "எ.கா. 5",
+    "rolePlaceholder": "எ.கா. 123456789",
+    "removeReward": "நீக்கு",
+    "noRewards": "பங்கு வெகுமதிகள் எதுவும் கட்டமைக்கப்படவில்லை."
+  },
+  "exclusions": {
+    "title": "XP விலக்குகள்",
+    "description": "XP சம்பாதிக்காத சேனல்கள் மற்றும் பங்குகள்.",
+    "noXpChannels": "XP இல்லா சேனல்கள் (கமா பிரிக்கப்பட்ட ID)",
+    "noXpChannelsPlaceholder": "எ.கா. 123456789, 987654321",
+    "noXpRoles": "XP இல்லா பங்குகள் (கமா பிரிக்கப்பட்ட ID)",
+    "noXpRolesPlaceholder": "எ.கா. 123456789, 987654321",
+    "save": "விலக்குகளை சேமி"
+  },
+  "multipliers": {
+    "title": "XP பெருக்கிகள்",
+    "description": "ஒரு சேனல் அல்லது பங்குக்கு XP பெருக்கிகளை அமைக்கவும். 2 பெருக்கி சம்பாதித்த XP ஐ இரட்டிப்பாக்குகிறது.",
+    "channelMultipliers": "சேனல் பெருக்கிகள்",
+    "roleMultipliers": "பங்கு பெருக்கிகள்",
+    "channelId": "சேனல் ID",
+    "roleId": "பங்கு ID",
+    "multiplier": "பெருக்கி",
+    "type": "வகை",
+    "typeChannel": "சேனல்",
+    "typeRole": "பங்கு",
+    "id": "ID",
+    "idPlaceholder": "சேனல் அல்லது பங்கு ID",
+    "value": "பெருக்கி",
+    "valuePlaceholder": "எ.கா. 2",
+    "add": "பெருக்கி சேர்",
+    "addTitle": "பெருக்கி சேர்",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "XP பெருக்கிகள் எதுவும் கட்டமைக்கப்படவில்லை."
+  },
+  "pagination": {
+    "previous": "முந்தைய",
+    "next": "அடுத்து",
+    "pageInfo": "பக்கம் {{page}} / {{totalPages}} (மொத்தம் {{total}})"
+  },
+  "loading": "தலைவர் பட்டியல் ஏற்றப்படுகிறது...",
+  "loadingGeneric": "ஏற்றுகிறது...",
+  "emptyLeaderboard": "இதுவரை எந்த உறுப்பினரும் XP சம்பாதிக்கவில்லை.",
+  "toast": {
+    "saved": "நிலை உயர்வு அமைப்புகள் சேமிக்கப்பட்டன",
+    "saveFailed": "அமைப்பை புதுப்பிக்கத் தவறியது",
+    "rewardAdded": "வெகுமதி சேர்க்கப்பட்டது",
+    "rewardAddFailed": "வெகுமதி சேர்க்கத் தவறியது",
+    "rewardRemoved": "வெகுமதி நீக்கப்பட்டது",
+    "rewardRemoveFailed": "வெகுமதி நீக்கத் தவறியது",
+    "multiplierAdded": "பெருக்கி சேர்க்கப்பட்டது",
+    "multiplierAddFailed": "பெருக்கி சேர்க்கத் தவறியது",
+    "multiplierRemoved": "பெருக்கி நீக்கப்பட்டது",
+    "multiplierRemoveFailed": "பெருக்கி நீக்கத் தவறியது",
+    "exclusionUpdated": "விலக்குகள் சேமிக்கப்பட்டன",
+    "exclusionFailed": "விலக்குகளை சேமிக்கத் தவறியது",
+    "levelValidation": "நிலை 1 முதல் 100 வரை இருக்க வேண்டும்",
+    "roleIdRequired": "பங்கு ID தேவை",
+    "multiplierIdRequired": "ID மற்றும் பெருக்கி மதிப்பு தேவை",
+    "multiplierRange": "பெருக்கி 0 முதல் 10 வரை இருக்க வேண்டும்"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}ம {{minutes}}நி",
+    "voiceTimeMinutesOnly": "{{minutes}}நி"
+  }
+}

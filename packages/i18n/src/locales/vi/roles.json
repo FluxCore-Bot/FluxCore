@@ -1,0 +1,112 @@
+{
+  "title": "Bảng Vai Trò",
+  "subtitle": "Tạo bảng vai trò tự gán sử dụng nút bấm, menu thả xuống hoặc phản ứng.",
+  "stats": {
+    "totalPanels": "Tổng Bảng",
+    "deployed": "Đã Triển Khai",
+    "totalRoles": "Tổng Vai Trò"
+  },
+  "tabs": {
+    "panels": "Bảng",
+    "preview": "Xem Trước"
+  },
+  "table": {
+    "name": "Tên",
+    "type": "Loại",
+    "mode": "Chế Độ",
+    "roles": "Vai Trò",
+    "status": "Trạng Thái"
+  },
+  "panelTypes": {
+    "reaction": "Phản Ứng",
+    "button": "Nút Bấm",
+    "dropdown": "Menu Thả Xuống"
+  },
+  "panelModes": {
+    "toggle": "Bật/Tắt",
+    "unique": "Duy Nhất",
+    "verify": "Xác Minh"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Bật/Tắt (thêm/xóa)",
+    "unique": "Duy Nhất (mỗi lần một cái)",
+    "verify": "Xác Minh (chỉ thêm)"
+  },
+  "status": {
+    "deployed": "Đã Triển Khai",
+    "draft": "Bản Nháp"
+  },
+  "dialog": {
+    "createPanel": "Tạo Bảng",
+    "editPanel": "Chỉnh Sửa Bảng"
+  },
+  "panelList": {
+    "title": "Tất Cả Bảng"
+  },
+  "form": {
+    "name": "Tên",
+    "namePlaceholder": "vd. Vai Trò Màu Sắc",
+    "type": "Loại",
+    "mode": "Chế Độ",
+    "channel": "Kênh",
+    "channelPlaceholder": "Chọn kênh",
+    "minRoles": "Vai Trò Tối Thiểu",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Vai Trò Tối Đa",
+    "maxRolesPlaceholder": "Tất Cả",
+    "embedSection": "Embed",
+    "embedTitle": "Tiêu Đề",
+    "embedTitlePlaceholder": "Tiêu đề bảng (mặc định là tên bảng)",
+    "embedDescription": "Mô Tả",
+    "embedDescriptionPlaceholder": "Văn bản mô tả",
+    "rolesCount": "Vai Trò ({{count}}/25)",
+    "addRole": "Thêm Vai Trò"
+  },
+  "entry": {
+    "role": "Vai Trò",
+    "rolePlaceholder": "Chọn vai trò",
+    "label": "Nhãn",
+    "labelPlaceholder": "Nhãn nút",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "vd. sao",
+    "description": "Mô Tả",
+    "descriptionPlaceholder": "Mô tả tùy chọn",
+    "style": "Kiểu"
+  },
+  "buttonStyles": {
+    "primary": "Chính",
+    "secondary": "Phụ",
+    "success": "Thành Công",
+    "danger": "Nguy Hiểm"
+  },
+  "actions": {
+    "create": "Tạo",
+    "update": "Cập Nhật",
+    "cancel": "Hủy",
+    "deploy": "Triển Khai",
+    "delete": "Xóa",
+    "addEntry": "Thêm Mục",
+    "removeEntry": "Xóa Mục"
+  },
+  "preview": {
+    "title": "Xem Trước Trực Tiếp",
+    "description": "Xem trước cách các bảng của bạn sẽ xuất hiện trên Discord.",
+    "selectRoles": "Chọn vai trò...",
+    "noPreview": "Không có bảng nào để xem trước."
+  },
+  "empty": "Chưa có bảng vai trò nào được tạo. Nhấp vào \"Tạo Bảng\" để bắt đầu.",
+  "toast": {
+    "created": "Đã tạo bảng",
+    "createFailed": "Tạo bảng thất bại",
+    "updated": "Đã cập nhật bảng",
+    "updateFailed": "Cập nhật bảng thất bại",
+    "deleted": "Đã xóa bảng",
+    "deleteFailed": "Xóa bảng thất bại",
+    "deployed": "Đã triển khai bảng vai trò vào kênh",
+    "deployFailed": "Gửi bảng thất bại",
+    "nameRequired": "Tên bảng là bắt buộc",
+    "channelRequired": "Kênh là bắt buộc",
+    "maxRolesReached": "Tối đa 25 vai trò mỗi bảng"
+  },
+  "loading": "Đang tải bảng..."
+}

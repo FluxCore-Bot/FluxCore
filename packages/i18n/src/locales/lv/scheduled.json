@@ -1,0 +1,86 @@
+{
+  "title": "Ieplanotie zinojumi",
+  "subtitle": "Izveidojiet atkartojosooss automatiski publicetus zinojumus pec konfigurejamiem grafikiem.",
+  "stats": {
+    "totalMessages": "Kopejie zinojumi",
+    "active": "Aktivi",
+    "inactive": "Neaktivi"
+  },
+  "table": {
+    "name": "Nosaukums",
+    "channel": "Kanals",
+    "schedule": "Grafiks",
+    "nextRun": "Nakamais palaisisana",
+    "status": "Statuss"
+  },
+  "dialog": {
+    "editTitle": "Rediget iepllanotu zinojumu",
+    "createTitle": "Jauns ieplanotais zinojums"
+  },
+  "form": {
+    "name": "Nosaukums",
+    "channel": "Kanals",
+    "schedulePreset": "Grafika veidne",
+    "cronExpression": "Cron izteiksme",
+    "timezone": "Laika zona",
+    "messageContent": "Zinojuma saturs",
+    "text": "Teksts",
+    "embed": "Embed",
+    "enabled": "Iespejots",
+    "enabledDesc": "Vai sis ieplanotais zinojums ir aktivs."
+  },
+  "cronPresets": {
+    "everyHour": "Katru stundu",
+    "every6Hours": "Katras 6 stundas",
+    "daily9am": "Katru dienu plkst. 9:00",
+    "dailyMidnight": "Katru dienu pusnakti",
+    "weeklyMonday": "Katru nedelu pirmdien",
+    "monthly1st": "Katru menesi 1. datuma",
+    "custom": "Pielgots"
+  },
+  "embed": {
+    "title": "Virsraksts",
+    "description": "Apraksts",
+    "color": "Krasa (hex)",
+    "footer": "Kajene",
+    "thumbnail": "Sikattela URL",
+    "image": "Attela URL"
+  },
+  "toast": {
+    "created": "Ieplanotais zinojums izveidots",
+    "createFailed": "Neizdevas izveidot ieplanoto zinojumu",
+    "updated": "Ieplanotais zinojums atjaunots",
+    "updateFailed": "Neizdevas atjaunot ieplanoto zinojumu",
+    "deleted": "Ieplanotais zinojums dzests",
+    "deleteFailed": "Neizdevas dzest ieplanoto zinojumu",
+    "testSent": "Testa zinojums nosutits",
+    "testFailed": "Neizdevas nosutit testa zinojumu"
+  },
+  "empty": {
+    "title": "Nav iepllanotu zinojumu",
+    "description": "Izveidojiet ieplanotu zinojumu automatiskai satura publicesanai atkartojosoaa veida.",
+    "createButton": "Izveidot zinojumu"
+  },
+  "pagination": {
+    "previous": "Iepriekssejais",
+    "next": "Nakamais",
+    "page": "Lapa {{page}} no {{total}}"
+  },
+  "actions": {
+    "newMessage": "Jauns zinojums",
+    "testSend": "Testa sutisana",
+    "edit": "Rediget",
+    "delete": "Dzest",
+    "save": "Saglabar",
+    "cancel": "Atcelt"
+  },
+  "validation": {
+    "nameRequired": "Zinojuma nosaukums ir obligats",
+    "channelRequired": "Kanals ir obligats"
+  },
+  "cronPreview": {
+    "nextRuns": "Nakamas palaissanas"
+  },
+  "characters": "{{count}}/2000 rakstzimju",
+  "never": "Nekad"
+}

@@ -1,0 +1,13 @@
+{
+  "title": "ระบบตั๋ว", "subtitle": "สร้างแผงตั๋วสนับสนุนและจัดการตั๋วที่เปิดอยู่จากแดชบอร์ด",
+  "stats": { "totalTickets": "ตั๋วทั้งหมด", "open": "เปิด", "claimed": "รับแล้ว", "panels": "แผง" },
+  "tabs": { "activeTickets": "ตั๋วที่ใช้งาน", "panelBuilder": "ตัวสร้างแผง", "settings": "ตั้งค่า" },
+  "table": { "id": "ID", "user": "ผู้ใช้", "subject": "หัวข้อ", "status": "สถานะ", "assignee": "ผู้รับผิดชอบ", "created": "สร้างเมื่อ" },
+  "statuses": { "open": "เปิด", "claimed": "รับแล้ว", "closed": "ปิดแล้ว" },
+  "panelBuilder": { "title": "ชื่อแผง", "channel": "แชนเนล", "buttonLabel": "ป้ายปุ่ม", "welcomeMessage": "ข้อความต้อนรับ", "category": "หมวดหมู่ตั๋ว", "create": "สร้างแผง", "edit": "แก้ไขแผง", "deploy": "ติดตั้งแผง" },
+  "settings": { "transcriptChannel": "แชนเนลบันทึกการสนทนา", "transcriptChannelDesc": "แชนเนลที่บันทึกการสนทนาเมื่อปิดตั๋ว", "maxTicketsPerUser": "ตั๋วสูงสุดต่อผู้ใช้", "maxTicketsPerUserDesc": "จำนวนตั๋วที่เปิดได้สูงสุดต่อผู้ใช้", "closeConfirmation": "ยืนยันการปิด", "closeConfirmationDesc": "ต้องยืนยันก่อนปิดตั๋ว", "dmTranscript": "ส่งบันทึกทาง DM", "dmTranscriptDesc": "ส่งสำเนาบันทึกการสนทนาถึงผู้สร้างตั๋วทาง DM" },
+  "actions": { "claim": "รับ", "close": "ปิด", "delete": "ลบ", "reopen": "เปิดใหม่" },
+  "toast": { "panelCreated": "สร้างแผงตั๋วแล้ว", "panelCreateFailed": "ไม่สามารถสร้างแผงตั๋วได้", "panelUpdated": "อัปเดตแผงตั๋วแล้ว", "panelUpdateFailed": "ไม่สามารถอัปเดตแผงตั๋วได้", "panelDeployed": "ติดตั้งแผงตั๋วแล้ว", "panelDeployFailed": "ไม่สามารถติดตั้งแผงตั๋วได้", "ticketClaimed": "รับตั๋วแล้ว", "ticketClaimFailed": "ไม่สามารถรับตั๋วได้", "ticketClosed": "ปิดตั๋วแล้ว", "ticketCloseFailed": "ไม่สามารถปิดตั๋วได้", "ticketReopened": "เปิดตั๋วใหม่แล้ว", "ticketReopenFailed": "ไม่สามารถเปิดตั๋วใหม่ได้", "ticketDeleted": "ลบตั๋วแล้ว", "ticketDeleteFailed": "ไม่สามารถลบตั๋วได้", "settingsSaved": "บันทึกการตั้งค่าตั๋วแล้ว", "settingsFailed": "ไม่สามารถบันทึกการตั้งค่าตั๋วได้" },
+  "empty": { "tickets": "ไม่มีตั๋วที่ใช้งาน", "panels": "ยังไม่มีแผงตั๋ว" },
+  "loading": "กำลังโหลดตั๋ว..."
+}

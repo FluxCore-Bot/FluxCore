@@ -58,6 +58,8 @@ const command: Command = {
           if (!queue) {
             queue = await createQueue(guildId, interaction.channelId, voiceChannelId, interaction.client);
             setupPlayerEvents(guildId, interaction.client);
+          } else {
+            queue.textChannelId = interaction.channelId;
           }
 
           const remaining = settings.maxQueueSize - queue.tracks.length;
@@ -130,6 +132,8 @@ const command: Command = {
       if (!queue) {
         queue = await createQueue(guildId, interaction.channelId, voiceChannelId, interaction.client);
         setupPlayerEvents(guildId, interaction.client);
+      } else {
+        queue.textChannelId = interaction.channelId;
       }
 
       // Check queue size

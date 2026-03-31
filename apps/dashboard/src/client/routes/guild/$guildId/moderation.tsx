@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useParams } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { PageHeader } from "../../../components/PageHeader";
 import { StatsCard } from "../../../components/StatsCard";
 import { PageSkeleton } from "../../../components/PageSkeleton";
@@ -40,15 +41,7 @@ import {
 import { useChannels } from "../../../lib/hooks/useChannels";
 import type { ModCase } from "../../../lib/schemas";
 
-const ACTION_LABELS: Record<string, string> = {
-  ban: "Ban",
-  tempban: "Tempban",
-  kick: "Kick",
-  timeout: "Timeout",
-  softban: "Softban",
-  warn: "Warn",
-  note: "Note",
-};
+const ACTION_KEYS = ["ban", "tempban", "kick", "timeout", "softban", "warn", "note"] as const;
 
 const ACTION_COLORS: Record<string, string> = {
   ban: "text-red-400",
@@ -61,6 +54,7 @@ const ACTION_COLORS: Record<string, string> = {
 };
 
 export function ModerationPage() {
+  const { t } = useTranslation("moderation");
   const { guildId } = useParams({ strict: false }) as { guildId: string };
   const [page, setPage] = useState(1);
   const [actionFilter, setActionFilter] = useState("");
@@ -100,7 +94,7 @@ export function ModerationPage() {
   const textChannels = channels?.filter((c) => c.type === 0) ?? [];
 
   const handleDelete = (caseId: number) => {
-    if (confirm("Are you sure you want to delete this case?")) {
+    if (confirm(t("deleteConfirm"))) {
       deleteMutation.mutate(caseId);
     }
   };
@@ -122,20 +116,20 @@ export function ModerationPage() {
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Moderation"
-        subtitle="View and manage moderation cases, configure punishment settings."
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <StatsCard label="Total Cases" value={total} />
+        <StatsCard label={t("stats.totalCases")} value={total} />
         <StatsCard
-          label="Active Tempbans"
+          label={t("stats.activeTempbans")}
           value={activeTempbans}
           accentColor="border-orange-400"
         />
         <StatsCard
-          label="Last 24h"
+          label={t("stats.last24h")}
           value={recent24h}
           accentColor="border-success"
         />
@@ -143,13 +137,13 @@ export function ModerationPage() {
 
       {/* Cases Table */}
       <div className="space-y-4">
-        <h3 className="font-label text-lg font-semibold">Cases</h3>
+        <h3 className="font-label text-lg font-semibold">{t("cases")}</h3>
 
         {/* Filters */}
         <div className="flex flex-wrap gap-3">
           <Input
             type="text"
-            placeholder="Filter by User ID..."
+            placeholder={t("filter.userPlaceholder")}
             value={userFilter}
             onChange={(e) => {
               setUserFilter(e.target.value);
@@ -165,13 +159,13 @@ export function ModerationPage() {
             }}
           >
             <SelectTrigger className="w-40">
-              <SelectValue placeholder="All Actions" />
+              <SelectValue placeholder={t("filter.allActions")} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Actions</SelectItem>
-              {Object.entries(ACTION_LABELS).map(([value, label]) => (
-                <SelectItem key={value} value={value}>
-                  {label}
+              <SelectItem value="all">{t("filter.allActions")}</SelectItem>
+              {ACTION_KEYS.map((key) => (
+                <SelectItem key={key} value={key}>
+                  {t(`actions.${key}`)}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -183,20 +177,20 @@ export function ModerationPage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>ID</TableHead>
-                <TableHead>Action</TableHead>
-                <TableHead>Target</TableHead>
-                <TableHead>Moderator</TableHead>
-                <TableHead>Reason</TableHead>
-                <TableHead>Date</TableHead>
-                <TableHead>Actions</TableHead>
+                <TableHead>{t("table.id")}</TableHead>
+                <TableHead>{t("table.action")}</TableHead>
+                <TableHead>{t("table.target")}</TableHead>
+                <TableHead>{t("table.moderator")}</TableHead>
+                <TableHead>{t("table.reason")}</TableHead>
+                <TableHead>{t("table.date")}</TableHead>
+                <TableHead>{t("table.actions")}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {cases.length === 0 ? (
                 <TableRow>
                   <TableCell colSpan={7} className="text-center text-text-muted">
-                    No cases found.
+                    {t("table.noCases")}
                   </TableCell>
                 </TableRow>
               ) : (
@@ -205,13 +199,13 @@ export function ModerationPage() {
                     <TableCell className="font-mono text-text-muted">#{modCase.id}</TableCell>
                     <TableCell>
                       <span className={`font-medium ${ACTION_COLORS[modCase.action] ?? "text-text"}`}>
-                        {ACTION_LABELS[modCase.action] ?? modCase.action}
+                        {t(`actions.${modCase.action}`, { defaultValue: modCase.action })}
                       </span>
                     </TableCell>
                     <TableCell className="font-mono text-xs">{modCase.targetId}</TableCell>
                     <TableCell className="font-mono text-xs">{modCase.moderatorId}</TableCell>
                     <TableCell className="max-w-48 truncate text-text-muted">
-                      {modCase.reason ?? "No reason"}
+                      {modCase.reason ?? t("table.noReason")}
                     </TableCell>
                     <TableCell className="text-text-muted">
                       {new Date(modCase.createdAt).toLocaleDateString()}
@@ -222,7 +216,7 @@ export function ModerationPage() {
                           variant="ghost"
                           size="icon"
                           onClick={() => handleEditStart(modCase)}
-                          title="Edit reason"
+                          title={t("editReason")}
                         >
                           <Icon name="edit" size={16} />
                         </Button>
@@ -231,7 +225,7 @@ export function ModerationPage() {
                           size="icon"
                           onClick={() => handleDelete(modCase.id)}
                           className="hover:text-red-400"
-                          title="Delete case"
+                          title={t("deleteCase")}
                         >
                           <Icon name="delete" size={16} />
                         </Button>
@@ -253,10 +247,10 @@ export function ModerationPage() {
               onClick={() => setPage((p) => Math.max(1, p - 1))}
               disabled={page <= 1}
             >
-              Previous
+              {t("pagination.previous")}
             </Button>
             <span className="text-sm text-text-muted">
-              Page {page} of {totalPages}
+              {t("pagination.page", { page, total: totalPages })}
             </span>
             <Button
               variant="outline"
@@ -264,7 +258,7 @@ export function ModerationPage() {
               onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
               disabled={page >= totalPages}
             >
-              Next
+              {t("pagination.next")}
             </Button>
           </div>
         )}
@@ -275,7 +269,7 @@ export function ModerationPage() {
         <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle>
-              Edit Case #{editingCase?.id} Reason
+              {t("editDialog.title", { id: editingCase?.id })}
             </DialogTitle>
           </DialogHeader>
           <Textarea
@@ -283,20 +277,20 @@ export function ModerationPage() {
             onChange={(e) => setEditReason(e.target.value)}
             maxLength={500}
             rows={3}
-            placeholder="Enter new reason..."
+            placeholder={t("editDialog.placeholder")}
           />
           <DialogFooter>
             <Button
               variant="outline"
               onClick={() => setEditingCase(null)}
             >
-              Cancel
+              {t("common:actions.cancel")}
             </Button>
             <Button
               onClick={handleEditSave}
               disabled={updateMutation.isPending}
             >
-              {updateMutation.isPending ? "Saving..." : "Save"}
+              {updateMutation.isPending ? t("editDialog.saving") : t("common:actions.save")}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -304,15 +298,15 @@ export function ModerationPage() {
 
       {/* Settings */}
       <div className="space-y-4">
-        <h3 className="font-label text-lg font-semibold">Settings</h3>
+        <h3 className="font-label text-lg font-semibold">{t("settings.title")}</h3>
         <div className="rounded-lg border border-border bg-surface-low p-6 glass-edge">
           <div className="space-y-6">
             {/* DM on Punishment */}
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-medium">DM on Punishment</p>
+                <p className="font-medium">{t("settings.dmOnPunishment")}</p>
                 <p className="text-sm text-text-muted">
-                  Send a DM to users when they are punished (ban, kick, timeout).
+                  {t("settings.dmOnPunishmentDesc")}
                 </p>
               </div>
               <Switch
@@ -325,9 +319,9 @@ export function ModerationPage() {
 
             {/* Mod Log Channel */}
             <div>
-              <p className="mb-2 font-medium">Mod Log Channel</p>
+              <p className="mb-2 font-medium">{t("settings.modLogChannel")}</p>
               <p className="mb-3 text-sm text-text-muted">
-                Channel where moderation actions are logged.
+                {t("settings.modLogChannelDesc")}
               </p>
               <Select
                 value={settings?.modLogChannelId ?? "none"}
@@ -338,10 +332,10 @@ export function ModerationPage() {
                 }
               >
                 <SelectTrigger className="w-full sm:w-64">
-                  <SelectValue placeholder="None" />
+                  <SelectValue placeholder={t("common:labels.none")} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="none">None</SelectItem>
+                  <SelectItem value="none">{t("common:labels.none")}</SelectItem>
                   {textChannels.map((ch) => (
                     <SelectItem key={ch.id} value={ch.id}>
                       #{ch.name}

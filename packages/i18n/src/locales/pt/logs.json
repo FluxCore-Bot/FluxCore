@@ -1,0 +1,8 @@
+{
+  "title": "Registos",
+  "subtitle": "Monitorize as execucoes de regras e o registo de eventos.",
+  "tabs": {
+    "activity": "Registos de atividade",
+    "events": "Registos de eventos"
+  }
+}

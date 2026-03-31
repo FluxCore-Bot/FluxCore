@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore इंजन",
+    "dashboard": "FluxCore डैशबोर्ड"
+  },
+  "status": {
+    "online": "ऑनलाइन",
+    "offline": "ऑफ़लाइन",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "अवलोकन",
+    "automation": "ऑटोमेशन",
+    "music": "संगीत",
+    "tempvoice": "अस्थायी आवाज़",
+    "welcome": "स्वागत",
+    "moderation": "मॉडरेशन",
+    "warnings": "चेतावनियाँ",
+    "rolePanels": "रोल पैनल",
+    "leveling": "लेवलिंग",
+    "scheduled": "शेड्यूल्ड",
+    "commands": "कमांड",
+    "security": "सुरक्षा",
+    "tickets": "टिकट",
+    "giveaways": "गिवअवे",
+    "suggestions": "सुझाव",
+    "starboard": "स्टारबोर्ड",
+    "logs": "लॉग",
+    "permissions": "अनुमतियाँ",
+    "settings": "सेटिंग्स"
+  },
+  "actions": {
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "delete": "हटाएं",
+    "edit": "संपादित करें",
+    "create": "बनाएं",
+    "add": "जोड़ें",
+    "remove": "हटाएं",
+    "confirm": "पुष्टि करें",
+    "close": "बंद करें",
+    "back": "वापस",
+    "next": "अगला",
+    "search": "खोजें",
+    "filter": "फ़िल्टर",
+    "refresh": "ताज़ा करें",
+    "reset": "रीसेट",
+    "enable": "सक्रिय करें",
+    "disable": "अक्षम करें",
+    "copy": "कॉपी करें",
+    "export": "निर्यात",
+    "import": "आयात",
+    "submit": "सबमिट करें",
+    "loading": "लोड हो रहा है...",
+    "retry": "पुनः प्रयास करें"
+  },
+  "labels": {
+    "enabled": "सक्रिय",
+    "disabled": "अक्षम",
+    "active": "चालू",
+    "inactive": "बंद",
+    "none": "कोई नहीं",
+    "all": "सभी",
+    "custom": "कस्टम",
+    "default": "डिफ़ॉल्ट",
+    "required": "आवश्यक",
+    "optional": "वैकल्पिक",
+    "name": "नाम",
+    "description": "विवरण",
+    "type": "प्रकार",
+    "status": "स्थिति",
+    "channel": "चैनल",
+    "role": "रोल",
+    "member": "सदस्य",
+    "duration": "अवधि",
+    "reason": "कारण",
+    "language": "भाषा"
+  },
+  "header": {
+    "notifications": "सूचनाएं",
+    "settings": "सेटिंग्स",
+    "logout": "लॉग आउट",
+    "toggleSidebar": "साइडबार टॉगल करें",
+    "refreshData": "Discord डेटा ताज़ा करें"
+  },
+  "sidebar": {
+    "closeSidebar": "साइडबार बंद करें",
+    "addToServer": "सर्वर में जोड़ें",
+    "docs": "दस्तावेज़",
+    "support": "सहायता",
+    "backToServers": "सर्वर पर वापस जाएं"
+  },
+  "empty": {
+    "noData": "कोई डेटा उपलब्ध नहीं है",
+    "noResults": "कोई परिणाम नहीं मिला",
+    "noItems": "अभी तक कोई आइटम नहीं"
+  },
+  "time": {
+    "seconds": "सेकंड",
+    "minutes": "मिनट",
+    "hours": "घंटे",
+    "days": "दिन",
+    "ago": "{{time}} पहले",
+    "in": "{{time}} में"
+  },
+  "confirm": {
+    "title": "क्या आप सुनिश्चित हैं?",
+    "deleteTitle": "हटाने की पुष्टि करें",
+    "deleteMessage": "यह कार्रवाई पूर्ववत नहीं की जा सकती।",
+    "unsavedChanges": "आपके पास सहेजे नहीं गए परिवर्तन हैं। क्या आप सुनिश्चित हैं कि आप छोड़ना चाहते हैं?"
+  },
+  "accessibility": {
+    "skipToContent": "मुख्य सामग्री पर जाएं",
+    "loading": "सामग्री लोड हो रही है",
+    "loaded": "सामग्री लोड हो गई",
+    "error": "एक त्रुटि हुई",
+    "menuOpen": "मेनू खुला है",
+    "menuClosed": "मेनू बंद है"
+  }
+}

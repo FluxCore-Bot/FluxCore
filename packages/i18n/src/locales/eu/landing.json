@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Orain Beta Publikoan",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Dena-batean",
+    "titleLine2": "Discord Bot Esparrua",
+    "subtitle": "Zabaldu Discord presentzia profesional bat minututan. Modularra, auto-ostatatua eta gehiago eskatzen duten komunitateetarako eraikia."
+  },
+  "cta": {
+    "addToServer": "Zerbitzarira gehitu",
+    "openDashboard": "Kontrol-panela ireki",
+    "exploreFeatures": "Ezaugarriak esploratu"
+  },
+  "stats": {
+    "servers": "Zerbitzariak",
+    "latency": "Latentzia",
+    "uptime": "Jardun-denbora",
+    "modules": "Moduluak",
+    "serversValue": "1,000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99.9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Gaitasunak",
+    "title": "Zure zerbitzariak behar duen guztia",
+    "subtitle": "Fidagarritasuna, malgutasuna eta kontrola eskatzen duten komunitateetarako diseinatutako tresna-multzo modularra.",
+    "automation": {
+      "title": "Automatizazio-arauak",
+      "description": "Sortu gertaeretan oinarritutako lan-fluxu konplexuak koderik gabe. Hau-bada-hura aktibatzaileak 23 gertaera mota eta 10 ekintza motarekin."
+    },
+    "music": {
+      "title": "Musika sistema",
+      "description": "Fidelitate handiko audio streaming-a plataforma anitzeko laguntzarekin. Ilararen kudeaketa, DJ kontrolak eta liburutegi modua."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Ahots-kanalen kudeaketa dinamikoa. Sorrera automatikoa izen-txantiloi pertsonalizatuekin, baimenak eta garbiketa."
+    },
+    "logs": {
+      "title": "Jarduera-erregistroak",
+      "description": "Automatizazio-exekuzio bakoitzaren auditoretza-aztarna osoa. Bilatu, iragazi eta araztatu zure arauak erregistro zehatzekin."
+    },
+    "webhooks": {
+      "title": "Webhook-ak eta API",
+      "description": "Bidali datuak kanpoko zerbitzuetara HTTP webhook-ekin. Goiburu pertsonalizatuak, gorputz-txantiloiak eta aldagaien interpolazioa."
+    },
+    "dashboard": {
+      "title": "Denbora errealeko kontrol-panela",
+      "description": "Kudeatu guztia web kontrol-panel dotore batetik. Analitika, konfigurazioa eta monitorizazioa leku bakar batean."
+    }
+  },
+  "ctaSection": {
+    "title": "Prest zure komunitatea hobetzeko?",
+    "subtitle": "Hasi minututan zero konfigurazioaz. Auto-ostatatua, kode irekikoa eta erabat doakoa."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "\u00a9 {{year}} FluxCore Technologies. Eskubide guztiak erreserbatuak.",
+    "links": {
+      "documentation": "Dokumentazioa",
+      "support": "Laguntza",
+      "privacy": "Pribatutasun-politika",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

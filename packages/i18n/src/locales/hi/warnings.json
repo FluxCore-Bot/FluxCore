@@ -1,0 +1,72 @@
+{
+  "title": "चेतावनियां",
+  "subtitle": "स्वचालित एस्केलेशन के साथ सदस्य चेतावनियों को ट्रैक और प्रबंधित करें।",
+  "stats": {
+    "totalWarnings": "कुल चेतावनियां",
+    "escalationRules": "एस्केलेशन नियम",
+    "dmOnWarn": "चेतावनी पर DM"
+  },
+  "tabs": {
+    "warnings": "चेतावनी लॉग",
+    "escalation": "एस्केलेशन",
+    "settings": "सेटिंग्स"
+  },
+  "table": {
+    "id": "ID",
+    "user": "उपयोगकर्ता",
+    "moderator": "मॉडरेटर",
+    "reason": "कारण",
+    "date": "तिथि"
+  },
+  "filter": {
+    "userPlaceholder": "उपयोगकर्ता ID से फ़िल्टर करें...",
+    "clearAll": "सभी साफ़ करें"
+  },
+  "pagination": {
+    "previous": "पिछला",
+    "next": "अगला",
+    "page": "पृष्ठ {{page}} / {{total}} (कुल {{count}})"
+  },
+  "loading": "चेतावनियां लोड हो रही हैं...",
+  "noWarnings": "कोई चेतावनी नहीं मिली।",
+  "toast": {
+    "warningRemoved": "चेतावनी हटाई गई",
+    "warningsFailed": "चेतावनी हटाने में विफल",
+    "enterUserId": "उस उपयोगकर्ता की सभी चेतावनियां साफ़ करने के लिए उपयोगकर्ता ID दर्ज करें",
+    "allCleared": "उपयोगकर्ता की सभी चेतावनियां साफ़ की गईं",
+    "clearFailed": "चेतावनियां साफ़ करने में विफल",
+    "thresholdAdded": "दंड सीमा जोड़ी गई",
+    "thresholdFailed": "दंड जोड़ने में विफल",
+    "thresholdRemoved": "दंड हटाया गया",
+    "removeFailed": "दंड हटाने में विफल",
+    "settingFailed": "सेटिंग अपडेट करने में विफल",
+    "thresholdInvalid": "सीमा एक सकारात्मक संख्या होनी चाहिए"
+  },
+  "escalation": {
+    "title": "दंड एस्केलेशन",
+    "description": "कॉन्फ़िगर करें कि जब कोई उपयोगकर्ता निश्चित संख्या में चेतावनियों तक पहुंचे तो स्वचालित कार्रवाई करें।",
+    "threshold": "सीमा",
+    "action": "कार्रवाई",
+    "duration": "अवधि",
+    "noRules": "कोई एस्केलेशन नियम कॉन्फ़िगर नहीं किया गया।",
+    "addRule": "एस्केलेशन नियम जोड़ें",
+    "addButton": "नियम जोड़ें",
+    "warnings": "{{count}} चेतावनियां",
+    "min": "{{count}} मिनट",
+    "timeout": "टाइमआउट",
+    "kick": "किक",
+    "ban": "प्रतिबंध",
+    "durationLabel": "अवधि (सेकंड)",
+    "thresholdPlaceholder": "जैसे 3",
+    "durationPlaceholder": "जैसे 3600"
+  },
+  "settings": {
+    "title": "चेतावनी सेटिंग्स",
+    "dmOnWarn": "चेतावनी पर DM",
+    "dmOnWarnDesc": "जब उपयोगकर्ता को चेतावनी मिले तो उन्हें डायरेक्ट मैसेज भेजें।",
+    "requireReason": "कारण आवश्यक",
+    "requireReasonDesc": "चेतावनी देते समय मॉडरेटर को कारण देना आवश्यक है।",
+    "maxWarnings": "अधिकतम चेतावनियां",
+    "maxWarningsDesc": "प्रति उपयोगकर्ता अधिकतम चेतावनियां (0 = असीमित)।"
+  }
+}

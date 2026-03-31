@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Acum în Beta Public",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Framework-ul All-in-One",
+    "titleLine2": "pentru Boți Discord",
+    "subtitle": "Lansează o prezență Discord de nivel profesional în câteva minute. Modular, auto-găzduit și construit pentru comunitățile care cer mai mult."
+  },
+  "cta": {
+    "addToServer": "Adaugă pe Server",
+    "openDashboard": "Deschide Dashboard",
+    "exploreFeatures": "Explorează Funcțiile"
+  },
+  "stats": {
+    "servers": "Servere",
+    "latency": "Latență",
+    "uptime": "Disponibilitate",
+    "modules": "Module",
+    "serversValue": "1.000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99,9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Capabilități",
+    "title": "Tot ce are nevoie serverul tău",
+    "subtitle": "Un set de instrumente modular conceput pentru comunități care cer fiabilitate, flexibilitate și control.",
+    "automation": {
+      "title": "Reguli de Automatizare",
+      "description": "Creează fluxuri de lucru complexe bazate pe evenimente fără cod. Declanșatoare dacă-asta-atunci-aceea cu 23 tipuri de evenimente și 10 tipuri de acțiuni."
+    },
+    "music": {
+      "title": "Sistem de Muzică",
+      "description": "Streaming audio de înaltă fidelitate cu suport multi-platformă. Gestionarea cozii, controale DJ și mod bibliotecă."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Gestionarea dinamică a canalelor vocale. Auto-creare cu șabloane de denumire personalizate, permisiuni și curățare automată."
+    },
+    "logs": {
+      "title": "Jurnale de Activitate",
+      "description": "Urmărire completă a fiecărei execuții de automatizare. Caută, filtrează și depanează regulile tale cu jurnale detaliate."
+    },
+    "webhooks": {
+      "title": "Webhookuri & API",
+      "description": "Trimite date către servicii externe prin webhookuri HTTP. Anteturi personalizate, șabloane de corp și interpolare de variabile."
+    },
+    "dashboard": {
+      "title": "Dashboard în Timp Real",
+      "description": "Gestionează totul dintr-un dashboard web elegant. Analize, configurare și monitorizare într-un singur loc."
+    }
+  },
+  "ctaSection": {
+    "title": "Ești gata să îți îmbunătățești comunitatea?",
+    "subtitle": "Începe în câteva minute fără nicio configurare. Auto-găzduit, open-source și complet gratuit."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "© {{year}} FluxCore Technologies. Toate drepturile rezervate.",
+    "links": {
+      "documentation": "Documentație",
+      "support": "Suport",
+      "privacy": "Politica de Confidențialitate",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

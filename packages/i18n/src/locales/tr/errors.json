@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Kimlik doğrulanmadı",
+    "sessionExpired": "Oturum süresi doldu",
+    "missingCode": "Kod parametresi eksik",
+    "tokenExchangeFailed": "Token değişimi başarısız oldu",
+    "failedToFetchUser": "Kullanıcı bilgisi alınamadı"
+  },
+  "permissions": {
+    "noGuildPermission": "Bu sunucu için izniniz yok",
+    "botNotInGuild": "Bot bu sunucuda değil",
+    "insufficientPermissions": "Yetersiz izinler",
+    "permissionsNotResolved": "İzinler çözümlenmedi",
+    "requiresPermission": "Bu işlem \"{{permission}}\" iznini gerektirir"
+  },
+  "validation": {
+    "invalidInput": "Geçersiz giriş",
+    "missingField": "Zorunlu alan eksik: {{field}}",
+    "invalidFormat": "{{field}} için geçersiz biçim",
+    "tooLong": "{{field}}, {{max}} karakter sınırını aşıyor",
+    "tooShort": "{{field}} en az {{min}} karakter olmalıdır",
+    "outOfRange": "{{field}}, {{min}} ile {{max}} arasında olmalıdır"
+  },
+  "resources": {
+    "notFound": "Bulunamadı",
+    "alreadyExists": "{{resource}} zaten mevcut",
+    "limitReached": "Sunucu başına en fazla {{max}} {{resource}}",
+    "createFailed": "{{resource}} oluşturulamadı",
+    "updateFailed": "{{resource}} güncellenemedi",
+    "deleteFailed": "{{resource}} silinemedi"
+  },
+  "server": {
+    "internalError": "Dahili sunucu hatası",
+    "serviceUnavailable": "Hizmet geçici olarak kullanılamıyor",
+    "rateLimited": "Çok fazla istek. Lütfen daha sonra tekrar deneyin."
+  },
+  "csrf": {
+    "invalidToken": "Geçersiz veya eksik CSRF token"
+  }
+}

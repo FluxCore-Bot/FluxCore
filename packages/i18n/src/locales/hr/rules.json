@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Posluzitelj",
+    "automation": "Automatizacija"
+  },
+  "title": "Pravila automatizacije",
+  "subtitle": "Konfigurirajte okidace temeljene na dogadajima i automatizirane odgovore za vas posluzitelj.",
+  "createRule": "Stvori pravilo",
+  "stats": {
+    "totalRules": "Ukupno pravila",
+    "active": "Aktivno",
+    "executions7d": "Izvrsenja (7d)",
+    "successRate": "Stopa uspjesnosti"
+  },
+  "filter": {
+    "searchPlaceholder": "Pretrazi pravila...",
+    "eventType": "Vrsta dogadaja",
+    "allEvents": "Svi dogadaji",
+    "allStatus": "Svi statusi",
+    "enabled": "Omoguceno",
+    "disabled": "Onemoguceno",
+    "sortBy": "Sortiraj po",
+    "priority": "Prioritet",
+    "name": "Naziv",
+    "lastFired": "Zadnje pokrenuto",
+    "status": "Status",
+    "clear": "Obrisi",
+    "showing": "Prikazano {{filtered}} od {{total}} pravila"
+  },
+  "bulk": {
+    "selected": "{{count}} pravilo odabrano",
+    "selected_other": "{{count}} pravila odabrano",
+    "enable": "Omoguci",
+    "disable": "Onemogudi",
+    "delete": "Obrisi",
+    "clear": "Obrisi"
+  },
+  "empty": {
+    "title": "Zapocnite s automatizacijom",
+    "description": "Odaberite predlozak za brzi pocetak ili stvorite pravilo od nule.",
+    "createFromScratch": "Stvori od nule"
+  },
+  "noResults": {
+    "title": "Nema odgovarajucih pravila",
+    "description": "Pokusajte prilagoditi pretragu ili filtere kako biste pronasli ono sto trazite."
+  },
+  "templates": {
+    "welcomeMessage": "Poruka dobrodoslice",
+    "welcomeMessageDesc": "Pozdravite nove clanove prilagodenom porukom u kanalu",
+    "autoRole": "Automatska uloga",
+    "autoRoleDesc": "Automatski dodijelite ulogu kada se clan pridruzuje",
+    "logDeleted": "Zapisi obrisane poruke",
+    "logDeletedDesc": "Posaljite podatke o obrisanim porukama u kanal za zapise",
+    "boostThankYou": "Zahvala za pojacanje",
+    "boostThankYouDesc": "Posaljite privatnu poruku zahvale korisnicima koji pojacaju posluzitelj",
+    "banLogger": "Zapisivac zabrana",
+    "banLoggerDesc": "Zapisujte zabrane u moderacijski kanal",
+    "autoThread": "Automatska nit",
+    "autoThreadDesc": "Automatski stvorite nit kada se poslje poruka"
+  },
+  "deleteDialog": {
+    "title": "Obrisi pravilo",
+    "description": "Jeste li sigurni da zelite obrisati \"{{name}}\"? Ova radnja se ne moze ponistiti.",
+    "confirm": "Obrisi"
+  },
+  "bulkDeleteDialog": {
+    "title": "Obrisi odabrana pravila",
+    "description": "Jeste li sigurni da zelite obrisati {{count}} pravilo? Ova radnja se ne moze ponistiti.",
+    "description_other": "Jeste li sigurni da zelite obrisati {{count}} pravila? Ova radnja se ne moze ponistiti.",
+    "confirm": "Obrisi sve"
+  },
+  "toast": {
+    "deleted": "Pravilo obrisano",
+    "deleteFailed": "Brisanje pravila nije uspjelo",
+    "enabled": "Pravilo omoguceno",
+    "disabled": "Pravilo onemoguceno",
+    "toggleFailed": "Prebacivanje pravila nije uspjelo",
+    "duplicated": "Pravilo duplicirano",
+    "duplicateFailed": "Dupliciranje pravila nije uspjelo",
+    "bulkEnabled": "{{count}} pravila omoguceno",
+    "bulkDisabled": "{{count}} pravila onemoguceno",
+    "bulkEnableFailed": "Omogucavanje pravila nije uspjelo",
+    "bulkDisableFailed": "Onemogucavanje pravila nije uspjelo",
+    "bulkDeleted": "{{count}} pravila obrisano",
+    "bulkDeleteFailed": "Brisanje pravila nije uspjelo"
+  }
+}

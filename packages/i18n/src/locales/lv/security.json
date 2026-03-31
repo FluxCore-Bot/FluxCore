@@ -1,0 +1,108 @@
+{
+  "title": "Drosiba",
+  "subtitle": "Konfigurejiet aizsardzibu pret uzbrukumiem un servera drosibas iestatijumus.",
+  "antiRaid": {
+    "title": "Aizsardziba pret uzbrukumiem",
+    "description": "Iespejojiet automatisku noteeksanu un reakciju uz koordinetiem uzbrukumiem, aizdomiigiem kontiem un destruktivam darbiibam."
+  },
+  "sections": {
+    "joinRate": "Pievienosanas atrums",
+    "accountAge": "Konta vecums",
+    "antiNuke": "Anti-Nuke",
+    "lockdown": "Blokeesana",
+    "events": "Notikumi"
+  },
+  "joinRate": {
+    "title": "Pievienosanas atruma noteeksana",
+    "description": "Noteikiet masveida pievienosanos, uzraugot jauno dalibnieku atrumu.",
+    "threshold": "Pievienosanas slieksnis",
+    "thresholdHint": "Pievienosanas skaits noteeksanas aktivizesanai",
+    "window": "Laika logs (sekundes)",
+    "windowHint": "Logs, kura tiek skaititas pievienosanas",
+    "action": "Darbiba pec noteeksanas",
+    "actionHint": "Darbiba, kas tiek veikta ar aizdomiigiem uzbrukuma dalibniekiem",
+    "actions": {
+      "ban": "Aizliegums",
+      "kick": "Izraidisana",
+      "timeout": "Noildze",
+      "lockdown": "Blokeesana"
+    }
+  },
+  "accountAge": {
+    "title": "Konta vecuma filtrs",
+    "description": "Automatiski veiciet darbibu ar kontiem, kas ir jaunaki par minimalo vecumu. Iestatiet uz 0, lai atspejotu.",
+    "minAge": "Minimalais konta vecums (dienas)",
+    "minAgeHint": "0 = atspejots. Konti jaunaki par so tiks apstradati.",
+    "action": "Darbiba"
+  },
+  "antiNuke": {
+    "title": "Anti-Nuke aizsardziba",
+    "description": "Noteikiet masveida kanalu/lomu dzeesanu un izoliejiet atbildiigo lietotaju, noneemot visas vina lomas.",
+    "threshold": "Dzeesanas slieksnis",
+    "thresholdHint": "Dzeesanu skaits 10 sekunzu laika izolacijas aktivizesanai",
+    "channelDeleteThreshold": "Kanalu dzeesanas slieksnis",
+    "roleDeleteThreshold": "Lomu dzeesanas slieksnis",
+    "massbanThreshold": "Masveida aizliegumu slieksnis",
+    "interval": "Intervals (sekundes)",
+    "action": "Darbiba"
+  },
+  "lockdown": {
+    "title": "Automatiska blokeesana uzbrukuma laika",
+    "description": "Automatiski blokeejiet visus kanalus, kad tiek noteikts uzbrukums.",
+    "whitelistedRoles": "Privilegeeto lomu ID (atdaliti ar komatiem)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Dalibnieki ar sam lomam buus izsslegti no uzbrukuma noteeksanas.",
+    "logChannel": "Zurnala kanala ID",
+    "logChannelPlaceholder": "Kanala ID uzbrukuma notikumu zurnalam...",
+    "enableButton": "Iespejot blokeesanu",
+    "disableButton": "Atspejot blokeesanu",
+    "active": "Blokeesana aktiva",
+    "inactive": "Blokeesana neaktiva"
+  },
+  "events": {
+    "title": "Nesenie uzbrukuma notikumi",
+    "description": "Noteikto uzbrukumu, konta vecuma blokesanu un blokeesanas notikumu laikalinja.",
+    "empty": "Uzbrukuma notikumi nav registreti. Notikumi paradisies seit, kad uzbrukuma noteeksana tiks aktivizeta.",
+    "actionLabel": "Darbiba: {{action}}",
+    "usersLabel": "Lietotaji: {{count}}",
+    "accountAgeLabel": "Konta vecums: {{days}}d",
+    "table": {
+      "type": "Tips",
+      "description": "Apraksts",
+      "time": "Laiks",
+      "action": "Veikta darbiba"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Pievienosanas leciens",
+    "account_age": "Konta vecums",
+    "nuke_attempt": "Izniciinasanas meginajums",
+    "lockdown": "Blokeesana",
+    "massJoin": "Masveida pievienosanas",
+    "suspiciousAccounts": "Aizdomiigi konti",
+    "channelDeletion": "Kanalu dzeesana",
+    "roleDeletion": "Lomu dzeesana",
+    "massBan": "Masveida aizliegums"
+  },
+  "pagination": {
+    "previous": "Iepriekssejais",
+    "next": "Nakamais",
+    "page": "Lapa {{current}} no {{total}}"
+  },
+  "toast": {
+    "saved": "Aizsardzibas pret uzbrukumiem konfiguracija saglabata",
+    "saveFailed": "Neizdevas saglabar konfiguraciju",
+    "lockdownEnabled": "Servera blokeesana iespejota",
+    "lockdownDisabled": "Servera blokeesana atspejota",
+    "lockdownFailed": "Neizdevas parlikt blokeesanu"
+  },
+  "saveButton": {
+    "saving": "Saglaba...",
+    "save": "Saglabar izmainas"
+  },
+  "labels": {
+    "seconds": "sekundes",
+    "minutes": "minutes",
+    "hours": "stundas"
+  }
+}

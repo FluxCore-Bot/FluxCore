@@ -1,0 +1,50 @@
+{
+  "title": "プレゼント企画",
+  "subtitle": "カスタマイズ可能な期間、参加条件、当選者選定でプレゼント企画を実施します。",
+  "stats": {
+    "activeGiveaways": "開催中の企画",
+    "pastGiveaways": "過去の企画",
+    "totalEntries": "総エントリー数"
+  },
+  "table": {
+    "prize": "賞品",
+    "winners": "当選者",
+    "entries": "エントリー数",
+    "endsIn": "終了まで",
+    "status": "ステータス"
+  },
+  "statuses": {
+    "active": "開催中",
+    "ended": "終了",
+    "cancelled": "キャンセル"
+  },
+  "actions": {
+    "create": "プレゼント企画を作成",
+    "edit": "編集",
+    "end": "終了",
+    "reroll": "再抽選",
+    "delete": "削除"
+  },
+  "form": {
+    "prize": "賞品",
+    "winnersCount": "当選者数",
+    "duration": "期間",
+    "channel": "チャンネル",
+    "requiredRole": "必要なロール",
+    "description": "説明"
+  },
+  "toast": {
+    "created": "プレゼント企画を作成しました",
+    "createFailed": "プレゼント企画の作成に失敗しました",
+    "updated": "プレゼント企画を更新しました",
+    "updateFailed": "プレゼント企画の更新に失敗しました",
+    "ended": "プレゼント企画を終了しました",
+    "endFailed": "プレゼント企画の終了に失敗しました",
+    "rerolled": "当選者を再抽選しました",
+    "rerollFailed": "当選者の再抽選に失敗しました",
+    "deleted": "プレゼント企画を削除しました",
+    "deleteFailed": "プレゼント企画の削除に失敗しました"
+  },
+  "empty": "プレゼント企画はまだありません。作成して始めましょう。",
+  "loading": "プレゼント企画を読み込み中..."
+}

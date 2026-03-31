@@ -1,0 +1,41 @@
+{
+  "title": "Starboard",
+  "subtitle": "Isryskinkite geriausias zinutes rinkdami zvaizdziu reakcijas i dedikuota kanala.",
+  "tabs": {
+    "settings": "Nustatymai",
+    "starredMessages": "Pażymetos zinutes"
+  },
+  "settings": {
+    "title": "Starboard konfiguracija",
+    "description": "Konfigurukite, kada ir kur skelbiamos pazymetos zinutes.",
+    "channelId": "Starboard kanalas",
+    "channelIdDesc": "Kanalas, kuriame skelbiamos pazymetos zinutes.",
+    "starEmoji": "Zvaizdutes emodzis",
+    "starEmojiDesc": "Emodzis naudojamas zinuciu zymejimui. Numatytasis yra zvaizdutes emodzis.",
+    "threshold": "Zvaizdziu riba",
+    "thresholdDesc": "Minimalus reakciju skaicius, reikalingas zinutes paskelbimui starboard'e.",
+    "selfStar": "Savyzymejimas",
+    "selfStarDesc": "Leisti zinuciu autoriams pazymeti savo pačiu zinutes.",
+    "nsfwAllowed": "NSFW leistinas",
+    "nsfwAllowedDesc": "Leisti zinucias is NSFW kanalu pasirodyti starboard'e.",
+    "ignoredChannels": "Ignoruojami kanalai",
+    "ignoredChannelsDesc": "Zinutes is siu kanalu niekada nepasirodys starboard'e."
+  },
+  "messages": {
+    "table": {
+      "original": "Originali zinute",
+      "stars": "Zvaizdutes",
+      "channel": "Kanalas",
+      "date": "Data"
+    },
+    "noMessages": "Pazymetu zinuciu nera."
+  },
+  "toast": {
+    "saved": "Starboard nustatymai issaugoti",
+    "saveFailed": "Nepavyko issaugoti starboard nustatymu"
+  },
+  "actions": {
+    "save": "Issaugoti",
+    "saving": "Issaugoma..."
+  }
+}

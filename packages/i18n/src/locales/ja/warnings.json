@@ -1,0 +1,72 @@
+{
+  "title": "警告",
+  "subtitle": "メンバーの警告を追跡・管理し、自動エスカレーションを設定します。",
+  "stats": {
+    "totalWarnings": "警告総数",
+    "escalationRules": "エスカレーションルール",
+    "dmOnWarn": "警告時DM"
+  },
+  "tabs": {
+    "warnings": "警告ログ",
+    "escalation": "エスカレーション",
+    "settings": "設定"
+  },
+  "table": {
+    "id": "ID",
+    "user": "ユーザー",
+    "moderator": "モデレーター",
+    "reason": "理由",
+    "date": "日付"
+  },
+  "filter": {
+    "userPlaceholder": "ユーザーIDでフィルター...",
+    "clearAll": "すべてクリア"
+  },
+  "pagination": {
+    "previous": "前へ",
+    "next": "次へ",
+    "page": "ページ {{page}} / {{total}} (全{{count}}件)"
+  },
+  "loading": "警告を読み込み中...",
+  "noWarnings": "警告が見つかりません。",
+  "toast": {
+    "warningRemoved": "警告を削除しました",
+    "warningsFailed": "警告の削除に失敗しました",
+    "enterUserId": "すべての警告をクリアするにはユーザーIDを入力してください",
+    "allCleared": "ユーザーのすべての警告をクリアしました",
+    "clearFailed": "警告のクリアに失敗しました",
+    "thresholdAdded": "処罰しきい値を追加しました",
+    "thresholdFailed": "処罰の追加に失敗しました",
+    "thresholdRemoved": "処罰を削除しました",
+    "removeFailed": "処罰の削除に失敗しました",
+    "settingFailed": "設定の更新に失敗しました",
+    "thresholdInvalid": "しきい値は正の数である必要があります"
+  },
+  "escalation": {
+    "title": "処罰エスカレーション",
+    "description": "ユーザーが一定数の警告に達した時の自動アクションを設定します。",
+    "threshold": "しきい値",
+    "action": "アクション",
+    "duration": "期間",
+    "noRules": "エスカレーションルールは設定されていません。",
+    "addRule": "エスカレーションルールを追加",
+    "addButton": "ルールを追加",
+    "warnings": "{{count}}回の警告",
+    "min": "{{count}}分",
+    "timeout": "タイムアウト",
+    "kick": "キック",
+    "ban": "BAN",
+    "durationLabel": "期間 (秒)",
+    "thresholdPlaceholder": "例: 3",
+    "durationPlaceholder": "例: 3600"
+  },
+  "settings": {
+    "title": "警告設定",
+    "dmOnWarn": "警告時にDM送信",
+    "dmOnWarnDesc": "警告を受けたユーザーにダイレクトメッセージを送信します。",
+    "requireReason": "理由を必須にする",
+    "requireReasonDesc": "モデレーターが警告を出す際に理由を記載することを必須にします。",
+    "maxWarnings": "最大警告数",
+    "maxWarningsDesc": "ユーザーあたりの最大警告数 (0 = 無制限)。"
+  }
+}

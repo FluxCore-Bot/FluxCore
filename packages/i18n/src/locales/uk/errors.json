@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Не авторизовано",
+    "sessionExpired": "Сесія закінчилася",
+    "missingCode": "Відсутній параметр code",
+    "tokenExchangeFailed": "Не вдалося обміняти токен",
+    "failedToFetchUser": "Не вдалося отримати інформацію про користувача"
+  },
+  "permissions": {
+    "noGuildPermission": "Немає прав для цього сервера",
+    "botNotInGuild": "Бот не додано на цей сервер",
+    "insufficientPermissions": "Недостатньо прав",
+    "permissionsNotResolved": "Права не визначені",
+    "requiresPermission": "Для цієї дії потрібен дозвіл «{{permission}}»"
+  },
+  "validation": {
+    "invalidInput": "Некоректне введення",
+    "missingField": "Відсутнє обов'язкове поле: {{field}}",
+    "invalidFormat": "Некоректний формат для {{field}}",
+    "tooLong": "{{field}} перевищує максимальну довжину в {{max}} символів",
+    "tooShort": "{{field}} має містити щонайменше {{min}} символів",
+    "outOfRange": "{{field}} має бути між {{min}} та {{max}}"
+  },
+  "resources": {
+    "notFound": "Не знайдено",
+    "alreadyExists": "{{resource}} вже існує",
+    "limitReached": "Максимум {{max}} {{resource}} на сервер",
+    "createFailed": "Не вдалося створити {{resource}}",
+    "updateFailed": "Не вдалося оновити {{resource}}",
+    "deleteFailed": "Не вдалося видалити {{resource}}"
+  },
+  "server": {
+    "internalError": "Внутрішня помилка сервера",
+    "serviceUnavailable": "Сервіс тимчасово недоступний",
+    "rateLimited": "Забагато запитів. Будь ласка, спробуйте пізніше."
+  },
+  "csrf": {
+    "invalidToken": "Недійсний або відсутній CSRF-токен"
+  }
+}

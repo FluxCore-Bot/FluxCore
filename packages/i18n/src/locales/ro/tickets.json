@@ -1,0 +1,77 @@
+{
+  "title": "Sistem de Tichete",
+  "subtitle": "Creează panouri de tichete de suport și gestionează tichetele deschise din dashboard.",
+  "stats": {
+    "totalTickets": "Total Tichete",
+    "open": "Deschise",
+    "claimed": "Revendicate",
+    "panels": "Panouri"
+  },
+  "tabs": {
+    "activeTickets": "Tichete Active",
+    "panelBuilder": "Constructor de Panouri",
+    "settings": "Setări"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Utilizator",
+    "subject": "Subiect",
+    "status": "Stare",
+    "assignee": "Responsabil",
+    "created": "Creat"
+  },
+  "statuses": {
+    "open": "Deschis",
+    "claimed": "Revendicat",
+    "closed": "Închis"
+  },
+  "panelBuilder": {
+    "title": "Titlul Panoului",
+    "channel": "Canal",
+    "buttonLabel": "Eticheta Butonului",
+    "welcomeMessage": "Mesaj de Bun Venit",
+    "category": "Categoria Tichetului",
+    "create": "Creează Panou",
+    "edit": "Editează Panou",
+    "deploy": "Implementează Panou"
+  },
+  "settings": {
+    "transcriptChannel": "Canal Transcrieri",
+    "transcriptChannelDesc": "Canalul unde sunt salvate transcrierile tichetelor la închidere.",
+    "maxTicketsPerUser": "Max Tichete per Utilizator",
+    "maxTicketsPerUserDesc": "Numărul maxim de tichete deschise pe care un singur utilizator le poate avea.",
+    "closeConfirmation": "Confirmare la Închidere",
+    "closeConfirmationDesc": "Solicită confirmare înainte de a închide un tichet.",
+    "dmTranscript": "Transcriere prin MP",
+    "dmTranscriptDesc": "Trimite o copie a transcrierii creatorului tichetului prin MP."
+  },
+  "actions": {
+    "claim": "Revendică",
+    "close": "Închide",
+    "delete": "Șterge",
+    "reopen": "Redeschide"
+  },
+  "toast": {
+    "panelCreated": "Panou de tichete creat",
+    "panelCreateFailed": "Crearea panoului de tichete a eșuat",
+    "panelUpdated": "Panou de tichete actualizat",
+    "panelUpdateFailed": "Actualizarea panoului de tichete a eșuat",
+    "panelDeployed": "Panou de tichete implementat",
+    "panelDeployFailed": "Implementarea panoului de tichete a eșuat",
+    "ticketClaimed": "Tichet revendicat",
+    "ticketClaimFailed": "Revendicarea tichetului a eșuat",
+    "ticketClosed": "Tichet închis",
+    "ticketCloseFailed": "Închiderea tichetului a eșuat",
+    "ticketReopened": "Tichet redeschis",
+    "ticketReopenFailed": "Redeschiderea tichetului a eșuat",
+    "ticketDeleted": "Tichet șters",
+    "ticketDeleteFailed": "Ștergerea tichetului a eșuat",
+    "settingsSaved": "Setările tichetelor salvate",
+    "settingsFailed": "Salvarea setărilor tichetelor a eșuat"
+  },
+  "empty": {
+    "tickets": "Nu există tichete active.",
+    "panels": "Nu există panouri de tichete create încă."
+  },
+  "loading": "Se încarcă tichetele..."
+}

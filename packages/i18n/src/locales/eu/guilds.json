@@ -1,0 +1,9 @@
+{
+  "title": "Zure zerbitzariak",
+  "subtitle": "Hautatu kudeatu eta konfiguratzeko zerbitzari bat.",
+  "loading": "Zerbitzariak kargatzen...",
+  "empty": {
+    "title": "Ez da zerbitzaririk aurkitu",
+    "description": "Ziurtatu bot-a gehituta dagoela Zerbitzaria Kudeatu baimena duzun zerbitzari batean."
+  }
+}

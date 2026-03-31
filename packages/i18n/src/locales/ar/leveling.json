@@ -1,0 +1,120 @@
+{
+  "title": "نظام المستويات",
+  "subtitle": "تكوين كسب XP وإعلانات الترقية ومكافآت الأدوار والمضاعفات.",
+  "stats": {
+    "rankedMembers": "الأعضاء المصنفون",
+    "roleRewards": "مكافآت الأدوار",
+    "systemStatus": "حالة النظام",
+    "enabled": "مفعّل",
+    "disabled": "معطّل"
+  },
+  "tabs": {
+    "leaderboard": "لوحة الصدارة",
+    "settings": "الإعدادات",
+    "roleRewards": "مكافآت الأدوار",
+    "exclusions": "الاستثناءات",
+    "multipliers": "المضاعفات"
+  },
+  "table": {
+    "rank": "الترتيب",
+    "userId": "معرف المستخدم",
+    "level": "المستوى",
+    "xp": "XP",
+    "messages": "الرسائل",
+    "voiceTime": "وقت الصوت"
+  },
+  "settings": {
+    "title": "إعدادات المستويات",
+    "enabled": "تفعيل المستويات",
+    "enabledDesc": "تبديل نظام المستويات بالكامل.",
+    "xpPerMessage": "XP لكل رسالة",
+    "xpPerMessageDesc": "XP الأساسي الممنوح لكل رسالة (يُضاف عشوائيًا 0-9).",
+    "xpCooldown": "فترة انتظار XP (بالثواني)",
+    "xpCooldownDesc": "الحد الأدنى للوقت بين منح XP لكل مستخدم.",
+    "voiceXpEnabled": "XP الصوتي",
+    "voiceXpEnabledDesc": "منح XP مقابل الوقت المقضي في القنوات الصوتية.",
+    "voiceXpPerMinute": "XP الصوتي لكل دقيقة",
+    "voiceXpPerMinuteDesc": "XP الممنوح لكل دقيقة في الصوت.",
+    "levelUpAnnouncements": "إعلانات الترقية",
+    "levelUpAnnouncementsDesc": "الإعلان عندما يرتقي عضو مستوى.",
+    "announceDest": "وجهة الإعلان",
+    "announceDestHint": "يمكنك أيضًا إدخال معرف قناة مباشرة في الحقل أعلاه.",
+    "announceDestSameChannel": "نفس القناة",
+    "announceDestDM": "رسالة خاصة",
+    "announceMessage": "رسالة الإعلان",
+    "announceMessagePlaceholder": "{user} وصل للتو إلى **المستوى {level}**!",
+    "announceMessageVars": "المتغيرات: {user}، {level}، {username}"
+  },
+  "roleRewards": {
+    "title": "مكافآت الأدوار",
+    "description": "تعيين أدوار تلقائيًا عندما يصل الأعضاء إلى مستويات معينة.",
+    "addReward": "إضافة مكافأة",
+    "addRewardTitle": "إضافة مكافأة دور",
+    "level": "المستوى",
+    "levelPrefix": "المستوى {{level}}",
+    "roleId": "معرف الدور",
+    "levelPlaceholder": "مثال: 5",
+    "rolePlaceholder": "مثال: 123456789",
+    "removeReward": "إزالة",
+    "noRewards": "لا توجد مكافآت أدوار مكونة."
+  },
+  "exclusions": {
+    "title": "استثناءات XP",
+    "description": "القنوات والأدوار التي لا تكسب XP.",
+    "noXpChannels": "قنوات بدون XP (معرفات مفصولة بفاصلة)",
+    "noXpChannelsPlaceholder": "مثال: 123456789, 987654321",
+    "noXpRoles": "أدوار بدون XP (معرفات مفصولة بفاصلة)",
+    "noXpRolesPlaceholder": "مثال: 123456789, 987654321",
+    "save": "حفظ الاستثناءات"
+  },
+  "multipliers": {
+    "title": "مضاعفات XP",
+    "description": "تعيين مضاعفات XP لكل قناة أو دور. المضاعف 2 يضاعف XP المكتسب.",
+    "channelMultipliers": "مضاعفات القنوات",
+    "roleMultipliers": "مضاعفات الأدوار",
+    "channelId": "معرف القناة",
+    "roleId": "معرف الدور",
+    "multiplier": "المضاعف",
+    "type": "النوع",
+    "typeChannel": "قناة",
+    "typeRole": "دور",
+    "id": "المعرف",
+    "idPlaceholder": "معرف القناة أو الدور",
+    "value": "المضاعف",
+    "valuePlaceholder": "مثال: 2",
+    "add": "إضافة مضاعف",
+    "addTitle": "إضافة مضاعف",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "لا توجد مضاعفات XP مكونة."
+  },
+  "pagination": {
+    "previous": "السابق",
+    "next": "التالي",
+    "pageInfo": "صفحة {{page}} من {{totalPages}} ({{total}} إجمالي)"
+  },
+  "loading": "جارٍ تحميل لوحة الصدارة...",
+  "loadingGeneric": "جارٍ التحميل...",
+  "emptyLeaderboard": "لم يكسب أي عضو XP بعد.",
+  "toast": {
+    "saved": "تم حفظ إعدادات المستويات",
+    "saveFailed": "فشل في تحديث الإعداد",
+    "rewardAdded": "تمت إضافة المكافأة",
+    "rewardAddFailed": "فشل في إضافة المكافأة",
+    "rewardRemoved": "تم إزالة المكافأة",
+    "rewardRemoveFailed": "فشل في إزالة المكافأة",
+    "multiplierAdded": "تمت إضافة المضاعف",
+    "multiplierAddFailed": "فشل في إضافة المضاعف",
+    "multiplierRemoved": "تم إزالة المضاعف",
+    "multiplierRemoveFailed": "فشل في إزالة المضاعف",
+    "exclusionUpdated": "تم حفظ الاستثناءات",
+    "exclusionFailed": "فشل في حفظ الاستثناءات",
+    "levelValidation": "يجب أن يكون المستوى بين 1 و 100",
+    "roleIdRequired": "معرف الدور مطلوب",
+    "multiplierIdRequired": "المعرف وقيمة المضاعف مطلوبان",
+    "multiplierRange": "يجب أن يكون المضاعف بين 0 و 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}} ساعة {{minutes}} دقيقة",
+    "voiceTimeMinutesOnly": "{{minutes}} دقيقة"
+  }
+}

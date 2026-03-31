@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore Dashboard"
+  },
+  "status": {
+    "online": "En liña",
+    "offline": "Fóra de liña",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Resumo",
+    "automation": "Automatización",
+    "music": "Música",
+    "tempvoice": "TempVoice",
+    "welcome": "Benvida",
+    "moderation": "Moderación",
+    "warnings": "Advertencias",
+    "rolePanels": "Paneis de Roles",
+    "leveling": "Nivelación",
+    "scheduled": "Programado",
+    "commands": "Ordes",
+    "security": "Seguridade",
+    "tickets": "Tickets",
+    "giveaways": "Sorteios",
+    "suggestions": "Suxestións",
+    "starboard": "Starboard",
+    "logs": "Rexistros",
+    "permissions": "Permisos",
+    "settings": "Configuración"
+  },
+  "actions": {
+    "save": "Gardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "add": "Engadir",
+    "remove": "Eliminar",
+    "confirm": "Confirmar",
+    "close": "Pechar",
+    "back": "Volver",
+    "next": "Seguinte",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "refresh": "Actualizar",
+    "reset": "Restablecer",
+    "enable": "Activar",
+    "disable": "Desactivar",
+    "copy": "Copiar",
+    "export": "Exportar",
+    "import": "Importar",
+    "submit": "Enviar",
+    "loading": "Cargando...",
+    "retry": "Reintentar"
+  },
+  "labels": {
+    "enabled": "Activado",
+    "disabled": "Desactivado",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "none": "Ningún",
+    "all": "Todos",
+    "custom": "Personalizado",
+    "default": "Predeterminado",
+    "required": "Obrigatorio",
+    "optional": "Opcional",
+    "name": "Nome",
+    "description": "Descrición",
+    "type": "Tipo",
+    "status": "Estado",
+    "channel": "Canal",
+    "role": "Rol",
+    "member": "Membro",
+    "duration": "Duración",
+    "reason": "Motivo",
+    "language": "Idioma"
+  },
+  "header": {
+    "notifications": "Notificacións",
+    "settings": "Configuración",
+    "logout": "Pechar sesión",
+    "toggleSidebar": "Alternar barra lateral",
+    "refreshData": "Actualizar datos de Discord"
+  },
+  "sidebar": {
+    "closeSidebar": "Pechar barra lateral",
+    "addToServer": "Engadir ao Servidor",
+    "docs": "Documentación",
+    "support": "Soporte",
+    "backToServers": "Volver aos Servidores"
+  },
+  "empty": {
+    "noData": "Non hai datos dispoñibles",
+    "noResults": "Non se atoparon resultados",
+    "noItems": "Aínda non hai elementos"
+  },
+  "time": {
+    "seconds": "segundos",
+    "minutes": "minutos",
+    "hours": "horas",
+    "days": "días",
+    "ago": "hai {{time}}",
+    "in": "en {{time}}"
+  },
+  "confirm": {
+    "title": "Estás seguro?",
+    "deleteTitle": "Confirmar eliminación",
+    "deleteMessage": "Esta acción non se pode desfacer.",
+    "unsavedChanges": "Tes cambios sen gardar. Estás seguro de que queres saír?"
+  },
+  "accessibility": {
+    "skipToContent": "Saltar ao contido principal",
+    "loading": "Cargando contido",
+    "loaded": "Contido cargado",
+    "error": "Produciuse un erro",
+    "menuOpen": "O menú está aberto",
+    "menuClosed": "O menú está pechado"
+  }
+}

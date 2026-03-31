@@ -1,0 +1,50 @@
+{
+  "title": "Arvonnat",
+  "subtitle": "Järjestä arvontoja mukautettavalla kestolla, osallistumisvaatimuksilla ja voittajavalinnalla.",
+  "stats": {
+    "activeGiveaways": "Aktiiviset arvonnat",
+    "pastGiveaways": "Päättyneet arvonnat",
+    "totalEntries": "Osallistujia yhteensä"
+  },
+  "table": {
+    "prize": "Palkinto",
+    "winners": "Voittajat",
+    "entries": "Osallistujat",
+    "endsIn": "Päättyy",
+    "status": "Tila"
+  },
+  "statuses": {
+    "active": "Aktiivinen",
+    "ended": "Päättynyt",
+    "cancelled": "Peruutettu"
+  },
+  "actions": {
+    "create": "Luo arvonta",
+    "edit": "Muokkaa",
+    "end": "Päätä",
+    "reroll": "Arvo uudelleen",
+    "delete": "Poista"
+  },
+  "form": {
+    "prize": "Palkinto",
+    "winnersCount": "Voittajien määrä",
+    "duration": "Kesto",
+    "channel": "Kanava",
+    "requiredRole": "Vaadittu rooli",
+    "description": "Kuvaus"
+  },
+  "toast": {
+    "created": "Arvonta luotu",
+    "createFailed": "Arvonnan luominen epäonnistui",
+    "updated": "Arvonta päivitetty",
+    "updateFailed": "Arvonnan päivittäminen epäonnistui",
+    "ended": "Arvonta päättynyt",
+    "endFailed": "Arvonnan päättäminen epäonnistui",
+    "rerolled": "Voittajat arvottu uudelleen",
+    "rerollFailed": "Voittajien uudelleenarvonta epäonnistui",
+    "deleted": "Arvonta poistettu",
+    "deleteFailed": "Arvonnan poistaminen epäonnistui"
+  },
+  "empty": "Ei arvontoja vielä. Luo yksi aloittaaksesi.",
+  "loading": "Ladataan arvontoja..."
+}

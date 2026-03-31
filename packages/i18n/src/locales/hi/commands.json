@@ -1,0 +1,113 @@
+{
+  "title": "कस्टम कमांड",
+  "subtitle": "संदेशों द्वारा ट्रिगर होने वाले ऑटो-रिस्पॉन्डर और प्रीफिक्स कमांड बनाएं।",
+  "stats": {
+    "totalCommands": "कुल कमांड",
+    "enabled": "सक्रिय",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "कमांड",
+    "variables": "वेरिएबल"
+  },
+  "table": {
+    "name": "नाम",
+    "trigger": "ट्रिगर",
+    "response": "प्रतिक्रिया",
+    "cooldown": "कूलडाउन",
+    "status": "स्थिति"
+  },
+  "triggerTypes": {
+    "command": "!command",
+    "keyword": "कीवर्ड",
+    "startsWith": "से शुरू होता है",
+    "regex": "Regex",
+    "prefixCommand": "प्रीफिक्स कमांड (!name)",
+    "keywordContains": "कीवर्ड (शामिल है)"
+  },
+  "dialog": {
+    "createCommand": "कमांड बनाएं",
+    "editCommand": "कमांड संपादित करें"
+  },
+  "form": {
+    "commandName": "कमांड का नाम",
+    "triggerText": "ट्रिगर टेक्स्ट",
+    "regexPattern": "Regex पैटर्न",
+    "triggerType": "ट्रिगर प्रकार",
+    "response": "प्रतिक्रिया",
+    "message": "संदेश",
+    "embedTitle": "Embed शीर्षक",
+    "embedDescription": "Embed विवरण",
+    "color": "रंग",
+    "footer": "फ़ुटर"
+  },
+  "options": {
+    "cooldown": "कूलडाउन (सेकंड)",
+    "enabled": "सक्रिय",
+    "enabledDesc": "क्या यह कमांड सक्रिय है",
+    "deleteTrigger": "ट्रिगर संदेश हटाएं",
+    "deleteTriggerDesc": "इस कमांड को ट्रिगर करने वाले संदेश को स्वचालित रूप से हटाएं।",
+    "dmResponse": "DM प्रतिक्रिया",
+    "dmResponseDesc": "चैनल के बजाय डायरेक्ट मैसेज के रूप में प्रतिक्रिया भेजें।"
+  },
+  "restrictions": {
+    "title": "प्रतिबंध",
+    "allowedChannels": "अनुमत चैनल (खाली = सभी)",
+    "allowedRoles": "अनुमत रोल (खाली = सभी)",
+    "addChannel": "चैनल जोड़ें",
+    "addRole": "रोल जोड़ें"
+  },
+  "actions": {
+    "create": "बनाएं",
+    "update": "अपडेट करें",
+    "cancel": "रद्द करें",
+    "addAction": "एक्शन जोड़ें",
+    "addRole": "रोल जोड़ें",
+    "removeRole": "रोल हटाएं"
+  },
+  "actionsSection": {
+    "title": "एक्शन ({{count}}/5)",
+    "noActions": "कोई एक्शन कॉन्फ़िगर नहीं किया गया। यह कमांड क्या करे, यह परिभाषित करने के लिए एक एक्शन जोड़ें।",
+    "maxActions": "प्रति कमांड अधिकतम 5 एक्शन"
+  },
+  "variables": {
+    "title": "टेम्पलेट वेरिएबल",
+    "description": "अपनी कमांड प्रतिक्रियाओं में इन वेरिएबल का उपयोग करें। कमांड ट्रिगर होने पर ये वास्तविक मानों से बदल दिए जाएंगे।",
+    "table": {
+      "variable": "वेरिएबल",
+      "description": "विवरण"
+    },
+    "entries": {
+      "user": "{user} — कमांड ट्रिगर करने वाले उपयोगकर्ता को मेंशन करता है",
+      "username": "{username} — उपयोगकर्ता का प्रदर्शन नाम",
+      "userId": "{userId} — उपयोगकर्ता की ID",
+      "server": "{server} — सर्वर का नाम",
+      "channel": "{channel} — वर्तमान चैनल को मेंशन करता है",
+      "channelName": "{channelName} — चैनल का नाम",
+      "memberCount": "{memberCount} — सर्वर सदस्यों की कुल संख्या"
+    }
+  },
+  "toast": {
+    "created": "कमांड बनाया गया",
+    "createFailed": "कमांड बनाने में विफल",
+    "updated": "कमांड अपडेट किया गया",
+    "updateFailed": "कमांड अपडेट करने में विफल",
+    "deleted": "कमांड हटाया गया",
+    "deleteFailed": "कमांड हटाने में विफल",
+    "toggleEnabled": "कमांड सक्रिय किया गया",
+    "toggleDisabled": "कमांड निष्क्रिय किया गया",
+    "toggleFailed": "कमांड टॉगल करने में विफल"
+  },
+  "empty": "अभी तक कोई कस्टम कमांड नहीं बनाया गया।",
+  "loading": "कमांड लोड हो रहे हैं...",
+  "badge": {
+    "active": "सक्रिय",
+    "disabled": "निष्क्रिय",
+    "text": "टेक्स्ट",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "कमांड का नाम आवश्यक है"
+  },
+  "triggerPrefix": "ट्रिगर: !{{name}}"
+}

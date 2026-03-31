@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Agora em beta publica",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "O framework",
+    "titleLine2": "tudo-em-um para bots Discord",
+    "subtitle": "Implemente uma presenca profissional no Discord em minutos. Modular, auto-hospedado e criado para comunidades exigentes."
+  },
+  "cta": {
+    "addToServer": "Adicionar ao servidor",
+    "openDashboard": "Abrir painel",
+    "exploreFeatures": "Explorar funcionalidades"
+  },
+  "stats": {
+    "servers": "Servidores",
+    "latency": "Latencia",
+    "uptime": "Disponibilidade",
+    "modules": "Modulos",
+    "serversValue": "1.000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99,9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Funcionalidades",
+    "title": "Tudo o que o seu servidor precisa",
+    "subtitle": "Um kit de ferramentas modular concebido para comunidades que exigem fiabilidade, flexibilidade e controlo.",
+    "automation": {
+      "title": "Regras de automatizacao",
+      "description": "Crie workflows complexos baseados em eventos sem codigo. Gatilhos se-isto-entao-aquilo com 23 tipos de eventos e 10 tipos de acoes."
+    },
+    "music": {
+      "title": "Sistema de musica",
+      "description": "Streaming de audio de alta fidelidade com suporte multi-plataforma. Gestao de fila, controlos de DJ e modo biblioteca."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Gestao dinamica de canais de voz. Criacao automatica com modelos de nomes personalizados, permissoes e limpeza."
+    },
+    "logs": {
+      "title": "Registos de atividade",
+      "description": "Registo de auditoria completo de cada execucao de automatizacao. Pesquise, filtre e depure as suas regras com registos detalhados."
+    },
+    "webhooks": {
+      "title": "Webhooks e API",
+      "description": "Envie dados para servicos externos com webhooks HTTP. Cabecalhos personalizados, modelos de corpo e interpolacao de variaveis."
+    },
+    "dashboard": {
+      "title": "Painel em tempo real",
+      "description": "Gira tudo a partir de um painel web elegante. Analiticas, configuracao e monitorizacao num so lugar."
+    }
+  },
+  "ctaSection": {
+    "title": "Pronto para melhorar a sua comunidade?",
+    "subtitle": "Comece em minutos sem qualquer configuracao. Auto-hospedado, codigo aberto e totalmente gratuito."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "\u00a9 {{year}} FluxCore Technologies. Todos os direitos reservados.",
+    "links": {
+      "documentation": "Documentacao",
+      "support": "Suporte",
+      "privacy": "Politica de privacidade",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

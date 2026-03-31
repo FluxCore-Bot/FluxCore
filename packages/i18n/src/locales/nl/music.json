@@ -1,0 +1,8 @@
+{
+  "title": "Muzieksysteem",
+  "subtitle": "Configureer globale afspeelmodi en audiovoorkeursinstellingen.",
+  "tabs": {
+    "settings": "Afspeelinstelling",
+    "library": "Muziekbibliotheek"
+  }
+}

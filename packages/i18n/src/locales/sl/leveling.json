@@ -1,0 +1,120 @@
+{
+  "title": "Sistem ravni",
+  "subtitle": "Konfigurirajte pridobivanje XP, obvestila o napredovanju, nagrade za vloge in multiplikatorje.",
+  "stats": {
+    "rankedMembers": "Uvrščeni člani",
+    "roleRewards": "Nagrade za vloge",
+    "systemStatus": "Stanje sistema",
+    "enabled": "Omogočeno",
+    "disabled": "Onemogočeno"
+  },
+  "tabs": {
+    "leaderboard": "Lestvica",
+    "settings": "Nastavitve",
+    "roleRewards": "Nagrade za vloge",
+    "exclusions": "Izjeme",
+    "multipliers": "Multiplikatorji"
+  },
+  "table": {
+    "rank": "Uvrstitev",
+    "userId": "ID uporabnika",
+    "level": "Raven",
+    "xp": "XP",
+    "messages": "Sporočila",
+    "voiceTime": "Čas v glasovnem kanalu"
+  },
+  "settings": {
+    "title": "Nastavitve sistema ravni",
+    "enabled": "Omogoči sistem ravni",
+    "enabledDesc": "Vklopite ali izklopite celoten sistem ravni.",
+    "xpPerMessage": "XP na sporočilo",
+    "xpPerMessageDesc": "Osnovna XP za vsako sporočilo (dodana naključnost 0–9).",
+    "xpCooldown": "Čas hlajenja XP (sekunde)",
+    "xpCooldownDesc": "Minimalni čas med dodeljevanjem XP na uporabnika.",
+    "voiceXpEnabled": "Glasovni XP",
+    "voiceXpEnabledDesc": "Dodeli XP za čas, prebit v glasovnih kanalih.",
+    "voiceXpPerMinute": "Glasovni XP na minuto",
+    "voiceXpPerMinuteDesc": "XP, dodeljena na minuto v glasovnem kanalu.",
+    "levelUpAnnouncements": "Obvestila o napredovanju",
+    "levelUpAnnouncementsDesc": "Objavi, ko član napreduje na novo raven.",
+    "announceDest": "Cilj obvestila",
+    "announceDestHint": "Lahko vnesete ID kanala neposredno v zgornje polje.",
+    "announceDestSameChannel": "Isti kanal",
+    "announceDestDM": "Neposredno sporočilo",
+    "announceMessage": "Sporočilo obvestila",
+    "announceMessagePlaceholder": "{user} je pravkar dosegel **Raven {level}**!",
+    "announceMessageVars": "Spremenljivke: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Nagrade za vloge",
+    "description": "Samodejno dodelite vloge, ko člani dosežejo določene ravni.",
+    "addReward": "Dodaj nagrado",
+    "addRewardTitle": "Dodaj nagrado za vlogo",
+    "level": "Raven",
+    "levelPrefix": "Raven {{level}}",
+    "roleId": "ID vloge",
+    "levelPlaceholder": "npr. 5",
+    "rolePlaceholder": "npr. 123456789",
+    "removeReward": "Odstrani",
+    "noRewards": "Ni konfiguriranih nagrad za vloge."
+  },
+  "exclusions": {
+    "title": "Izjeme XP",
+    "description": "Kanali in vloge, ki ne pridobivajo XP.",
+    "noXpChannels": "Kanali brez XP (ID-ji ločeni z vejico)",
+    "noXpChannelsPlaceholder": "npr. 123456789, 987654321",
+    "noXpRoles": "Vloge brez XP (ID-ji ločeni z vejico)",
+    "noXpRolesPlaceholder": "npr. 123456789, 987654321",
+    "save": "Shrani izjeme"
+  },
+  "multipliers": {
+    "title": "Multiplikatorji XP",
+    "description": "Nastavite multiplikatorje XP po kanalih ali vlogah. Multiplikator 2 podvoji pridobljeno XP.",
+    "channelMultipliers": "Multiplikatorji kanalov",
+    "roleMultipliers": "Multiplikatorji vlog",
+    "channelId": "ID kanala",
+    "roleId": "ID vloge",
+    "multiplier": "Multiplikator",
+    "type": "Vrsta",
+    "typeChannel": "Kanal",
+    "typeRole": "Vloga",
+    "id": "ID",
+    "idPlaceholder": "ID kanala ali vloge",
+    "value": "Multiplikator",
+    "valuePlaceholder": "npr. 2",
+    "add": "Dodaj multiplikator",
+    "addTitle": "Dodaj multiplikator",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "Ni konfiguriranih multiplikatorjev XP."
+  },
+  "pagination": {
+    "previous": "Prejšnja",
+    "next": "Naslednja",
+    "pageInfo": "Stran {{page}} od {{totalPages}} ({{total}} skupaj)"
+  },
+  "loading": "Nalaganje lestvice...",
+  "loadingGeneric": "Nalaganje...",
+  "emptyLeaderboard": "Še noben član ni pridobil XP.",
+  "toast": {
+    "saved": "Nastavitve sistema ravni shranjene",
+    "saveFailed": "Posodabljanje nastavitve ni uspelo",
+    "rewardAdded": "Nagrada dodana",
+    "rewardAddFailed": "Dodajanje nagrade ni uspelo",
+    "rewardRemoved": "Nagrada odstranjena",
+    "rewardRemoveFailed": "Odstranjevanje nagrade ni uspelo",
+    "multiplierAdded": "Multiplikator dodan",
+    "multiplierAddFailed": "Dodajanje multiplikatorja ni uspelo",
+    "multiplierRemoved": "Multiplikator odstranjen",
+    "multiplierRemoveFailed": "Odstranjevanje multiplikatorja ni uspelo",
+    "exclusionUpdated": "Izjeme shranjene",
+    "exclusionFailed": "Shranjevanje izjem ni uspelo",
+    "levelValidation": "Raven mora biti med 1 in 100",
+    "roleIdRequired": "ID vloge je obvezen",
+    "multiplierIdRequired": "ID in vrednost multiplikatorja sta obvezna",
+    "multiplierRange": "Multiplikator mora biti med 0 in 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}h {{minutes}}min",
+    "voiceTimeMinutesOnly": "{{minutes}}min"
+  }
+}

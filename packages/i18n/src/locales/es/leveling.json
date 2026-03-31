@@ -1,0 +1,120 @@
+{
+  "title": "Sistema de niveles",
+  "subtitle": "Configura la ganancia de XP, anuncios de subida de nivel, recompensas de roles y multiplicadores.",
+  "stats": {
+    "rankedMembers": "Miembros clasificados",
+    "roleRewards": "Recompensas de roles",
+    "systemStatus": "Estado del sistema",
+    "enabled": "Activado",
+    "disabled": "Desactivado"
+  },
+  "tabs": {
+    "leaderboard": "Clasificacion",
+    "settings": "Configuracion",
+    "roleRewards": "Recompensas de roles",
+    "exclusions": "Exclusiones",
+    "multipliers": "Multiplicadores"
+  },
+  "table": {
+    "rank": "Posicion",
+    "userId": "ID de usuario",
+    "level": "Nivel",
+    "xp": "XP",
+    "messages": "Mensajes",
+    "voiceTime": "Tiempo en voz"
+  },
+  "settings": {
+    "title": "Configuracion de niveles",
+    "enabled": "Activar niveles",
+    "enabledDesc": "Activar o desactivar todo el sistema de niveles.",
+    "xpPerMessage": "XP por mensaje",
+    "xpPerMessageDesc": "XP base otorgada por mensaje (se agrega un aleatorio de 0-9).",
+    "xpCooldown": "Tiempo de espera de XP (segundos)",
+    "xpCooldownDesc": "Tiempo minimo entre otorgamientos de XP por usuario.",
+    "voiceXpEnabled": "XP de voz",
+    "voiceXpEnabledDesc": "Otorgar XP por tiempo en canales de voz.",
+    "voiceXpPerMinute": "XP de voz por minuto",
+    "voiceXpPerMinuteDesc": "XP otorgada por minuto en voz.",
+    "levelUpAnnouncements": "Anuncios de subida de nivel",
+    "levelUpAnnouncementsDesc": "Anunciar cuando un miembro sube de nivel.",
+    "announceDest": "Destino del anuncio",
+    "announceDestHint": "Tambien puedes ingresar un ID de canal directamente en el campo de arriba.",
+    "announceDestSameChannel": "Mismo canal",
+    "announceDestDM": "Mensaje directo",
+    "announceMessage": "Mensaje de anuncio",
+    "announceMessagePlaceholder": "{user} acaba de alcanzar el **Nivel {level}**!",
+    "announceMessageVars": "Variables: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Recompensas de roles",
+    "description": "Asigna roles automaticamente cuando los miembros alcanzan ciertos niveles.",
+    "addReward": "Agregar recompensa",
+    "addRewardTitle": "Agregar recompensa de rol",
+    "level": "Nivel",
+    "levelPrefix": "Nivel {{level}}",
+    "roleId": "ID del rol",
+    "levelPlaceholder": "ej. 5",
+    "rolePlaceholder": "ej. 123456789",
+    "removeReward": "Eliminar",
+    "noRewards": "No hay recompensas de roles configuradas."
+  },
+  "exclusions": {
+    "title": "Exclusiones de XP",
+    "description": "Canales y roles que no ganan XP.",
+    "noXpChannels": "Canales sin XP (IDs separados por comas)",
+    "noXpChannelsPlaceholder": "ej. 123456789, 987654321",
+    "noXpRoles": "Roles sin XP (IDs separados por comas)",
+    "noXpRolesPlaceholder": "ej. 123456789, 987654321",
+    "save": "Guardar exclusiones"
+  },
+  "multipliers": {
+    "title": "Multiplicadores de XP",
+    "description": "Establece multiplicadores de XP por canal o rol. Un multiplicador de 2 duplica la XP ganada.",
+    "channelMultipliers": "Multiplicadores de canal",
+    "roleMultipliers": "Multiplicadores de rol",
+    "channelId": "ID del canal",
+    "roleId": "ID del rol",
+    "multiplier": "Multiplicador",
+    "type": "Tipo",
+    "typeChannel": "Canal",
+    "typeRole": "Rol",
+    "id": "ID",
+    "idPlaceholder": "ID de canal o rol",
+    "value": "Multiplicador",
+    "valuePlaceholder": "ej. 2",
+    "add": "Agregar multiplicador",
+    "addTitle": "Agregar multiplicador",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "No hay multiplicadores de XP configurados."
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "pageInfo": "Pagina {{page}} de {{totalPages}} ({{total}} en total)"
+  },
+  "loading": "Cargando clasificacion...",
+  "loadingGeneric": "Cargando...",
+  "emptyLeaderboard": "Ningun miembro ha ganado XP todavia.",
+  "toast": {
+    "saved": "Configuracion de niveles guardada",
+    "saveFailed": "Error al actualizar la configuracion",
+    "rewardAdded": "Recompensa agregada",
+    "rewardAddFailed": "Error al agregar la recompensa",
+    "rewardRemoved": "Recompensa eliminada",
+    "rewardRemoveFailed": "Error al eliminar la recompensa",
+    "multiplierAdded": "Multiplicador agregado",
+    "multiplierAddFailed": "Error al agregar el multiplicador",
+    "multiplierRemoved": "Multiplicador eliminado",
+    "multiplierRemoveFailed": "Error al eliminar el multiplicador",
+    "exclusionUpdated": "Exclusiones guardadas",
+    "exclusionFailed": "Error al guardar las exclusiones",
+    "levelValidation": "El nivel debe estar entre 1 y 100",
+    "roleIdRequired": "El ID del rol es obligatorio",
+    "multiplierIdRequired": "El ID y el valor del multiplicador son obligatorios",
+    "multiplierRange": "El multiplicador debe estar entre 0 y 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}h {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

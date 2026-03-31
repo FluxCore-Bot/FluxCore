@@ -1,0 +1,67 @@
+{
+  "title": "Đề Xuất",
+  "subtitle": "Cho phép thành viên gửi ý tưởng và bỏ phiếu. Quản lý trạng thái và phản hồi.",
+  "stats": {
+    "totalSuggestions": "Tổng Đề Xuất",
+    "systemStatus": "Trạng Thái Hệ Thống",
+    "channel": {
+      "configured": "Đã Cấu Hình Kênh",
+      "notSet": "Chưa Đặt Kênh"
+    }
+  },
+  "tabs": {
+    "suggestions": "Đề Xuất",
+    "settings": "Cài Đặt"
+  },
+  "filter": {
+    "filterByStatus": "Lọc Theo Trạng Thái",
+    "all": "Tất Cả",
+    "pending": "Đang Chờ",
+    "approved": "Đã Duyệt",
+    "rejected": "Đã Từ Chối",
+    "implemented": "Đã Thực Hiện",
+    "considered": "Đang Xem Xét"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Tác Giả",
+    "content": "Nội Dung",
+    "status": "Trạng Thái",
+    "votes": "Bình Chọn",
+    "date": "Ngày"
+  },
+  "actions": {
+    "approve": "Duyệt",
+    "reject": "Từ Chối",
+    "implement": "Đánh Dấu Đã Thực Hiện",
+    "consider": "Xem Xét",
+    "delete": "Xóa"
+  },
+  "settings": {
+    "channel": "Kênh Đề Xuất",
+    "channelDesc": "Kênh nơi các đề xuất được đăng để bỏ phiếu.",
+    "voteEmojis": "Emoji Bình Chọn",
+    "voteEmojisDesc": "Emoji dùng cho phản ứng bình chọn thuận và phản.",
+    "autoThread": "Tự Động Tạo Chủ Đề",
+    "autoThreadDesc": "Tự động tạo chủ đề thảo luận cho mỗi đề xuất mới.",
+    "dmOnStatusChange": "DM Khi Thay Đổi Trạng Thái",
+    "dmOnStatusChangeDesc": "Thông báo cho tác giả qua DM khi trạng thái đề xuất thay đổi."
+  },
+  "toast": {
+    "approved": "Đề xuất đã được duyệt",
+    "rejected": "Đề xuất đã bị từ chối",
+    "implemented": "Đề xuất đã được đánh dấu là đã thực hiện",
+    "considered": "Đề xuất đã được đánh dấu là đang xem xét",
+    "deleted": "Đã xóa đề xuất",
+    "actionFailed": "Cập nhật đề xuất thất bại",
+    "settingsSaved": "Đã lưu cài đặt đề xuất",
+    "settingsFailed": "Lưu cài đặt đề xuất thất bại"
+  },
+  "empty": "Chưa có đề xuất nào.",
+  "loading": "Đang tải đề xuất...",
+  "pagination": {
+    "previous": "Trước",
+    "next": "Tiếp",
+    "page": "Trang {{page}} / {{total}}"
+  }
+}

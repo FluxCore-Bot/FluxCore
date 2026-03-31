@@ -1,0 +1,41 @@
+{
+  "title": "Starboard",
+  "subtitle": "Lyft fram de bästa meddelandena genom att samla stjärnreaktioner i en dedikerad kanal.",
+  "tabs": {
+    "settings": "Inställningar",
+    "starredMessages": "Stjärnmärkta meddelanden"
+  },
+  "settings": {
+    "title": "Starboard-konfiguration",
+    "description": "Konfigurera när och var stjärnmärkta meddelanden publiceras.",
+    "channelId": "Starboard-kanal",
+    "channelIdDesc": "Kanalen där stjärnmärkta meddelanden publiceras.",
+    "starEmoji": "Stjärnemoji",
+    "starEmojiDesc": "Emojin som används för att stjärnmärka meddelanden. Standard är stjärnemojin.",
+    "threshold": "Stjärngräns",
+    "thresholdDesc": "Minsta antal reaktioner som krävs för att publicera ett meddelande till starboarden.",
+    "selfStar": "Självstjärna",
+    "selfStarDesc": "Tillåt meddelandeförfattare att stjärnmärka sina egna meddelanden.",
+    "nsfwAllowed": "NSFW tillåtet",
+    "nsfwAllowedDesc": "Tillåt meddelanden från NSFW-kanaler att visas på starboarden.",
+    "ignoredChannels": "Ignorerade kanaler",
+    "ignoredChannelsDesc": "Meddelanden från dessa kanaler visas aldrig på starboarden."
+  },
+  "messages": {
+    "table": {
+      "original": "Originalmeddelande",
+      "stars": "Stjärnor",
+      "channel": "Kanal",
+      "date": "Datum"
+    },
+    "noMessages": "Inga stjärnmärkta meddelanden ännu."
+  },
+  "toast": {
+    "saved": "Starboard-inställningar sparade",
+    "saveFailed": "Misslyckades med att spara starboard-inställningar"
+  },
+  "actions": {
+    "save": "Spara",
+    "saving": "Sparar..."
+  }
+}

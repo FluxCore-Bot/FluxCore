@@ -1,0 +1,67 @@
+{
+  "title": "Ierosinajumi",
+  "subtitle": "Laujiet dalibniekiem iesniegt idejas un balsot par tam. Parvaldiet statusu un atsauksmes.",
+  "stats": {
+    "totalSuggestions": "Kopejie ierosinajumi",
+    "systemStatus": "Sistemas statuss",
+    "channel": {
+      "configured": "Kanals konfigurets",
+      "notSet": "Kanals nav iestatits"
+    }
+  },
+  "tabs": {
+    "suggestions": "Ierosinajumi",
+    "settings": "Iestatijumi"
+  },
+  "filter": {
+    "filterByStatus": "Filtret pec statusa",
+    "all": "Visi",
+    "pending": "Gaidoss",
+    "approved": "Apstiprindats",
+    "rejected": "Noraidits",
+    "implemented": "Ievietss",
+    "considered": "Tiek apsverts"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Autors",
+    "content": "Saturs",
+    "status": "Statuss",
+    "votes": "Balsis",
+    "date": "Datums"
+  },
+  "actions": {
+    "approve": "Apstiprint",
+    "reject": "Noraiddet",
+    "implement": "Atzimmeet ka ieviests",
+    "consider": "Apsvert",
+    "delete": "Dzest"
+  },
+  "settings": {
+    "channel": "Ierosinajumu kanals",
+    "channelDesc": "Kanals, kura tiek publiceti ierosinajumi balsosanai.",
+    "voteEmojis": "Balsosanas emodziji",
+    "voteEmojisDesc": "Emodziji, ko izmanto pozitiva un negativa balsosana.",
+    "autoThread": "Automatiski izveidot pavedienu",
+    "autoThreadDesc": "Automatiski izveidot diskusijas pavedienu katram jaunam ierosinajumam.",
+    "dmOnStatusChange": "Zinojums par statusa mainu",
+    "dmOnStatusChangeDesc": "Informet autoru privataa zinojuma, kad vina ierosinajuma statuss mainas."
+  },
+  "toast": {
+    "approved": "Ierosinajums apstiprindats",
+    "rejected": "Ierosinajums noraidits",
+    "implemented": "Ierosinajums atzimets ka ieviests",
+    "considered": "Ierosinajums atzimets ka apsverams",
+    "deleted": "Ierosinajums dzests",
+    "actionFailed": "Neizdevas atjaunot ierosinajumu",
+    "settingsSaved": "Ierosinajumu iestatijumi saglabati",
+    "settingsFailed": "Neizdevas saglabar ierosinajumu iestatijumus"
+  },
+  "empty": "Ierosinajumu nav.",
+  "loading": "Iellade ierosinajumus...",
+  "pagination": {
+    "previous": "Iepriekssejais",
+    "next": "Nakamais",
+    "page": "Lapa {{page}} no {{total}}"
+  }
+}

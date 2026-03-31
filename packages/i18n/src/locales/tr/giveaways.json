@@ -1,0 +1,50 @@
+{
+  "title": "Çekilişler",
+  "subtitle": "Özelleştirilebilir süre, katılım gereksinimleri ve kazanan seçimiyle çekilişler düzenleyin.",
+  "stats": {
+    "activeGiveaways": "Aktif Çekilişler",
+    "pastGiveaways": "Geçmiş Çekilişler",
+    "totalEntries": "Toplam Katılım"
+  },
+  "table": {
+    "prize": "Ödül",
+    "winners": "Kazananlar",
+    "entries": "Katılımlar",
+    "endsIn": "Bitiş Süresi",
+    "status": "Durum"
+  },
+  "statuses": {
+    "active": "Aktif",
+    "ended": "Bitti",
+    "cancelled": "İptal Edildi"
+  },
+  "actions": {
+    "create": "Çekiliş Oluştur",
+    "edit": "Düzenle",
+    "end": "Bitir",
+    "reroll": "Yeniden Çek",
+    "delete": "Sil"
+  },
+  "form": {
+    "prize": "Ödül",
+    "winnersCount": "Kazanan Sayısı",
+    "duration": "Süre",
+    "channel": "Kanal",
+    "requiredRole": "Gerekli Rol",
+    "description": "Açıklama"
+  },
+  "toast": {
+    "created": "Çekiliş oluşturuldu",
+    "createFailed": "Çekiliş oluşturulamadı",
+    "updated": "Çekiliş güncellendi",
+    "updateFailed": "Çekiliş güncellenemedi",
+    "ended": "Çekiliş sona erdi",
+    "endFailed": "Çekiliş sonlandırılamadı",
+    "rerolled": "Kazananlar yeniden çekildi",
+    "rerollFailed": "Kazananlar yeniden çekilemedi",
+    "deleted": "Çekiliş silindi",
+    "deleteFailed": "Çekiliş silinemedi"
+  },
+  "empty": "Henüz çekiliş yok. Başlamak için bir tane oluşturun.",
+  "loading": "Çekilişler yükleniyor..."
+}

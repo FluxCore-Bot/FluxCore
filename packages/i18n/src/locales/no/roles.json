@@ -1,0 +1,112 @@
+{
+  "title": "Rollepaneler",
+  "subtitle": "Opprett selvtildelende rollepaneler med knapper, rullegardinmenyer eller reaksjoner.",
+  "stats": {
+    "totalPanels": "Totalt antall paneler",
+    "deployed": "Publiserte",
+    "totalRoles": "Totalt antall roller"
+  },
+  "tabs": {
+    "panels": "Paneler",
+    "preview": "Forhåndsvisning"
+  },
+  "table": {
+    "name": "Navn",
+    "type": "Type",
+    "mode": "Modus",
+    "roles": "Roller",
+    "status": "Status"
+  },
+  "panelTypes": {
+    "reaction": "Reaksjon",
+    "button": "Knapp",
+    "dropdown": "Rullegardinmeny"
+  },
+  "panelModes": {
+    "toggle": "Veksle",
+    "unique": "Unik",
+    "verify": "Verifiser"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Veksle (legg til/fjern)",
+    "unique": "Unik (én om gangen)",
+    "verify": "Verifiser (kun legg til)"
+  },
+  "status": {
+    "deployed": "Publisert",
+    "draft": "Utkast"
+  },
+  "dialog": {
+    "createPanel": "Opprett panel",
+    "editPanel": "Rediger panel"
+  },
+  "panelList": {
+    "title": "Alle paneler"
+  },
+  "form": {
+    "name": "Navn",
+    "namePlaceholder": "f.eks. Fargeroller",
+    "type": "Type",
+    "mode": "Modus",
+    "channel": "Kanal",
+    "channelPlaceholder": "Velg kanal",
+    "minRoles": "Minimumsroller",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Maksimumsroller",
+    "maxRolesPlaceholder": "Alle",
+    "embedSection": "Innbygging",
+    "embedTitle": "Tittel",
+    "embedTitlePlaceholder": "Paneltittel (standard er panelnavnet)",
+    "embedDescription": "Beskrivelse",
+    "embedDescriptionPlaceholder": "Beskrivelsestekst",
+    "rolesCount": "Roller ({{count}}/25)",
+    "addRole": "Legg til rolle"
+  },
+  "entry": {
+    "role": "Rolle",
+    "rolePlaceholder": "Velg rolle",
+    "label": "Etikett",
+    "labelPlaceholder": "Knappetikett",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "f.eks. star",
+    "description": "Beskrivelse",
+    "descriptionPlaceholder": "Alternativbeskrivelse",
+    "style": "Stil"
+  },
+  "buttonStyles": {
+    "primary": "Primær",
+    "secondary": "Sekundær",
+    "success": "Suksess",
+    "danger": "Fare"
+  },
+  "actions": {
+    "create": "Opprett",
+    "update": "Oppdater",
+    "cancel": "Avbryt",
+    "deploy": "Publiser",
+    "delete": "Slett",
+    "addEntry": "Legg til oppføring",
+    "removeEntry": "Fjern oppføring"
+  },
+  "preview": {
+    "title": "Live forhåndsvisning",
+    "description": "Forhåndsvis hvordan panelene dine vil se ut i Discord.",
+    "selectRoles": "Velg roller...",
+    "noPreview": "Ingen paneler å forhåndsvise."
+  },
+  "empty": "Ingen rollepaneler opprettet ennå. Klikk \"Opprett panel\" for å komme i gang.",
+  "toast": {
+    "created": "Panel opprettet",
+    "createFailed": "Kunne ikke opprette panel",
+    "updated": "Panel oppdatert",
+    "updateFailed": "Kunne ikke oppdatere panel",
+    "deleted": "Panel slettet",
+    "deleteFailed": "Kunne ikke slette panel",
+    "deployed": "Rollepanel publisert til kanal",
+    "deployFailed": "Kunne ikke sende panel",
+    "nameRequired": "Panelnavn er påkrevd",
+    "channelRequired": "Kanal er påkrevd",
+    "maxRolesReached": "Maksimalt 25 roller per panel"
+  },
+  "loading": "Laster paneler..."
+}

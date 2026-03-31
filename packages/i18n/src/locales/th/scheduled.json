@@ -1,0 +1,16 @@
+{
+  "title": "ข้อความตั้งเวลา", "subtitle": "สร้างข้อความที่โพสต์อัตโนมัติตามกำหนดเวลาที่ปรับแต่งได้",
+  "stats": { "totalMessages": "ข้อความทั้งหมด", "active": "ใช้งาน", "inactive": "ไม่ใช้งาน" },
+  "table": { "name": "ชื่อ", "channel": "แชนเนล", "schedule": "กำหนดเวลา", "nextRun": "ทำงานครั้งต่อไป", "status": "สถานะ" },
+  "dialog": { "editTitle": "แก้ไขข้อความตั้งเวลา", "createTitle": "สร้างข้อความตั้งเวลาใหม่" },
+  "form": { "name": "ชื่อ", "channel": "แชนเนล", "schedulePreset": "เทมเพลตเวลา", "cronExpression": "นิพจน์ Cron", "timezone": "เขตเวลา", "messageContent": "เนื้อหาข้อความ", "text": "ข้อความ", "embed": "Embed", "enabled": "เปิดใช้งาน", "enabledDesc": "ข้อความตั้งเวลานี้เปิดใช้งานหรือไม่" },
+  "cronPresets": { "everyHour": "ทุกชั่วโมง", "every6Hours": "ทุก 6 ชั่วโมง", "daily9am": "ทุกวันเวลา 9.00 น.", "dailyMidnight": "ทุกวันเที่ยงคืน", "weeklyMonday": "ทุกวันจันทร์", "monthly1st": "ทุกวันที่ 1 ของเดือน", "custom": "กำหนดเอง" },
+  "embed": { "title": "ชื่อ", "description": "คำอธิบาย", "color": "สี (เลขฐาน 16)", "footer": "ส่วนท้าย", "thumbnail": "URL รูปขนาดย่อ", "image": "URL รูปภาพ" },
+  "toast": { "created": "สร้างข้อความตั้งเวลาแล้ว", "createFailed": "ไม่สามารถสร้างข้อความตั้งเวลาได้", "updated": "อัปเดตข้อความตั้งเวลาแล้ว", "updateFailed": "ไม่สามารถอัปเดตข้อความตั้งเวลาได้", "deleted": "ลบข้อความตั้งเวลาแล้ว", "deleteFailed": "ไม่สามารถลบข้อความตั้งเวลาได้", "testSent": "ส่งข้อความทดสอบแล้ว", "testFailed": "ไม่สามารถส่งข้อความทดสอบได้" },
+  "empty": { "title": "ยังไม่มีข้อความตั้งเวลา", "description": "สร้างข้อความตั้งเวลาเพื่อโพสต์เนื้อหาอัตโนมัติตามกำหนด", "createButton": "สร้างข้อความ" },
+  "pagination": { "previous": "ก่อนหน้า", "next": "ถัดไป", "page": "หน้า {{page}} จาก {{total}}" },
+  "actions": { "newMessage": "ข้อความใหม่", "testSend": "ส่งทดสอบ", "edit": "แก้ไข", "delete": "ลบ", "save": "บันทึก", "cancel": "ยกเลิก" },
+  "validation": { "nameRequired": "ต้องระบุชื่อข้อความ", "channelRequired": "ต้องระบุแชนเนล" },
+  "cronPreview": { "nextRuns": "การทำงานครั้งต่อไป" },
+  "characters": "{{count}}/2000 ตัวอักษร", "never": "ไม่เคย"
+}

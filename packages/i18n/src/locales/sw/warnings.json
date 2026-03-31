@@ -1,0 +1,72 @@
+{
+  "title": "Maonyo",
+  "subtitle": "Fuatilia na simamia maonyo ya wanachama na kupanda kwa adhabu kiotomatiki.",
+  "stats": {
+    "totalWarnings": "Jumla ya Maonyo",
+    "escalationRules": "Sheria za Kupanda",
+    "dmOnWarn": "DM kwa Onyo"
+  },
+  "tabs": {
+    "warnings": "Kumbukumbu ya Maonyo",
+    "escalation": "Kupanda kwa Adhabu",
+    "settings": "Mipangilio"
+  },
+  "table": {
+    "id": "Kitambulisho",
+    "user": "Mtumiaji",
+    "moderator": "Msimamizi",
+    "reason": "Sababu",
+    "date": "Tarehe"
+  },
+  "filter": {
+    "userPlaceholder": "Chuja kwa Kitambulisho cha Mtumiaji...",
+    "clearAll": "Futa Yote"
+  },
+  "pagination": {
+    "previous": "Iliyotangulia",
+    "next": "Inayofuata",
+    "page": "Ukurasa {{page}} wa {{total}} ({{count}} jumla)"
+  },
+  "loading": "Inapakia maonyo...",
+  "noWarnings": "Hakuna maonyo yaliyopatikana.",
+  "toast": {
+    "warningRemoved": "Onyo limeondolewa",
+    "warningsFailed": "Imeshindwa kufuta onyo",
+    "enterUserId": "Ingiza kitambulisho cha mtumiaji ili kufuta maonyo yote ya mtumiaji huyo",
+    "allCleared": "Maonyo yote yamefutwa kwa mtumiaji",
+    "clearFailed": "Imeshindwa kufuta maonyo",
+    "thresholdAdded": "Kizingiti cha adhabu kimeongezwa",
+    "thresholdFailed": "Imeshindwa kuongeza adhabu",
+    "thresholdRemoved": "Adhabu imeondolewa",
+    "removeFailed": "Imeshindwa kuondoa adhabu",
+    "settingFailed": "Imeshindwa kusasisha mpangilio",
+    "thresholdInvalid": "Kizingiti lazima kiwe nambari chanya"
+  },
+  "escalation": {
+    "title": "Kupanda kwa Adhabu",
+    "description": "Sanidi vitendo vya kiotomatiki wakati mtumiaji anapofikia idadi fulani ya maonyo.",
+    "threshold": "Kizingiti",
+    "action": "Kitendo",
+    "duration": "Muda",
+    "noRules": "Hakuna sheria za kupanda zilizosanidiwa.",
+    "addRule": "Ongeza Sheria ya Kupanda",
+    "addButton": "Ongeza Sheria",
+    "warnings": "maonyo {{count}}",
+    "min": "dakika {{count}}",
+    "timeout": "Simamisha kwa Muda",
+    "kick": "Fukuza",
+    "ban": "Zuia",
+    "durationLabel": "Muda (sekunde)",
+    "thresholdPlaceholder": "mf. 3",
+    "durationPlaceholder": "mf. 3600"
+  },
+  "settings": {
+    "title": "Mipangilio ya Maonyo",
+    "dmOnWarn": "DM kwa Onyo",
+    "dmOnWarnDesc": "Tuma ujumbe wa moja kwa moja kwa mtumiaji anapopokea onyo.",
+    "requireReason": "Hitaji Sababu",
+    "requireReasonDesc": "Wasimamizi lazima watoe sababu wanapotoa onyo.",
+    "maxWarnings": "Maonyo ya Juu",
+    "maxWarningsDesc": "Maonyo ya juu kwa kila mtumiaji (0 = bila kikomo)."
+  }
+}

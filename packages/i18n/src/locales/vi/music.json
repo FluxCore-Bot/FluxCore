@@ -1,0 +1,8 @@
+{
+  "title": "Hệ Thống Âm Nhạc",
+  "subtitle": "Cấu hình chế độ phát lại toàn cục và tùy chọn thư viện âm nhạc.",
+  "tabs": {
+    "settings": "Cài Đặt Phát Lại",
+    "library": "Thư Viện Âm Nhạc"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Benvenuto e addio",
+  "subtitle": "Configura messaggi di benvenuto e addio, immagini e ruoli automatici.",
+  "loadingSubtitle": "Configura i messaggi di benvenuto e addio per il tuo server.",
+  "tabs": { "welcome": "Benvenuto", "welcomeImage": "Immagine di benvenuto", "farewell": "Addio", "farewellImage": "Immagine di addio", "dm": "MD di benvenuto", "autorole": "Ruolo automatico" },
+  "welcome": { "title": "Messaggio di benvenuto", "description": "Invia un embed personalizzato quando un nuovo membro entra.", "channelLabel": "ID canale di benvenuto", "channelPlaceholder": "ID canale...", "embedBuilder": "Editor embed" },
+  "welcomeImage": { "title": "Immagine di benvenuto", "description": "Genera una scheda immagine personalizzata con l'avatar del membro quando entra.", "disabled": "Attiva l'interruttore sopra per configurare le immagini di benvenuto." },
+  "farewell": { "title": "Messaggio di addio", "description": "Invia un messaggio quando un membro lascia il server.", "channelLabel": "ID canale di addio", "channelPlaceholder": "ID canale..." },
+  "farewellImage": { "title": "Immagine di addio", "description": "Genera una scheda di addio personalizzata quando un membro se ne va.", "disabled": "Attiva l'interruttore sopra per configurare le immagini di addio." },
+  "dm": { "title": "MD di benvenuto", "description": "Invia un messaggio diretto ai nuovi membri. Fallira silenziosamente se i MD sono disattivati." },
+  "autorole": { "title": "Ruolo automatico", "description": "Assegna automaticamente ruoli ai nuovi membri quando entrano. I bot sono esclusi. Il bot deve avere un ruolo superiore ai ruoli elencati qui.", "label": "ID dei ruoli (separati da virgole)", "placeholder": "123456789, 987654321" },
+  "embed": { "title": "Titolo", "description": "Descrizione", "color": "Colore (hex)", "footer": "Pie di pagina", "thumbnail": "URL miniatura", "image": "URL immagine", "variables": "Variabili:" },
+  "saveChanges": "Salva modifiche",
+  "saving": "Salvataggio...",
+  "sendTest": "Invia messaggio di prova",
+  "sending": "Invio...",
+  "toast": { "saved": "Configurazione di benvenuto salvata", "saveFailed": "Impossibile salvare la configurazione", "testSent": "Il messaggio di prova verra inviato a <#{{channelId}}>", "testFailed": "Impossibile inviare il messaggio di prova" }
+}

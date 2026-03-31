@@ -1,0 +1,8 @@
+{
+  "title": "Musiksystem",
+  "subtitle": "Globale Wiedergabemodi und Audio-Bibliothekseinstellungen konfigurieren.",
+  "tabs": {
+    "settings": "Wiedergabeeinstellungen",
+    "library": "Musikbibliothek"
+  }
+}

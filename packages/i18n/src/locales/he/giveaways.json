@@ -1,0 +1,50 @@
+{
+  "title": "הגרלות",
+  "subtitle": "ערוך הגרלות עם משך מותאם אישית, דרישות כניסה ובחירת זוכים.",
+  "stats": {
+    "activeGiveaways": "הגרלות פעילות",
+    "pastGiveaways": "הגרלות קודמות",
+    "totalEntries": "סה\"כ השתתפויות"
+  },
+  "table": {
+    "prize": "פרס",
+    "winners": "זוכים",
+    "entries": "השתתפויות",
+    "endsIn": "מסתיימת בעוד",
+    "status": "מצב"
+  },
+  "statuses": {
+    "active": "פעילה",
+    "ended": "הסתיימה",
+    "cancelled": "בוטלה"
+  },
+  "actions": {
+    "create": "צור הגרלה",
+    "edit": "ערוך",
+    "end": "סיים",
+    "reroll": "הגרל מחדש",
+    "delete": "מחק"
+  },
+  "form": {
+    "prize": "פרס",
+    "winnersCount": "מספר זוכים",
+    "duration": "משך",
+    "channel": "ערוץ",
+    "requiredRole": "תפקיד נדרש",
+    "description": "תיאור"
+  },
+  "toast": {
+    "created": "ההגרלה נוצרה",
+    "createFailed": "יצירת ההגרלה נכשלה",
+    "updated": "ההגרלה עודכנה",
+    "updateFailed": "עדכון ההגרלה נכשל",
+    "ended": "ההגרלה הסתיימה",
+    "endFailed": "סיום ההגרלה נכשל",
+    "rerolled": "הזוכים הוגרלו מחדש",
+    "rerollFailed": "ההגרלה מחדש נכשלה",
+    "deleted": "ההגרלה נמחקה",
+    "deleteFailed": "מחיקת ההגרלה נכשלה"
+  },
+  "empty": "אין הגרלות עדיין. צור אחת כדי להתחיל.",
+  "loading": "טוען הגרלות..."
+}

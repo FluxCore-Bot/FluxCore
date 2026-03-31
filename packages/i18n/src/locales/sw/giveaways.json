@@ -1,0 +1,50 @@
+{
+  "title": "Zawadi",
+  "subtitle": "Endesha zawadi zenye muda, masharti ya kushiriki, na uchaguzi wa washindi unaoweza kubinafsishwa.",
+  "stats": {
+    "activeGiveaways": "Zawadi Hai",
+    "pastGiveaways": "Zawadi Zilizopita",
+    "totalEntries": "Jumla ya Washiriki"
+  },
+  "table": {
+    "prize": "Tuzo",
+    "winners": "Washindi",
+    "entries": "Washiriki",
+    "endsIn": "Inaisha Ndani ya",
+    "status": "Hali"
+  },
+  "statuses": {
+    "active": "Hai",
+    "ended": "Imeisha",
+    "cancelled": "Imeghairiwa"
+  },
+  "actions": {
+    "create": "Unda Zawadi",
+    "edit": "Hariri",
+    "end": "Maliza",
+    "reroll": "Chagua Upya",
+    "delete": "Futa"
+  },
+  "form": {
+    "prize": "Tuzo",
+    "winnersCount": "Idadi ya Washindi",
+    "duration": "Muda",
+    "channel": "Chaneli",
+    "requiredRole": "Jukumu Linalohitajika",
+    "description": "Maelezo"
+  },
+  "toast": {
+    "created": "Zawadi imeundwa",
+    "createFailed": "Imeshindwa kuunda zawadi",
+    "updated": "Zawadi imesasishwa",
+    "updateFailed": "Imeshindwa kusasisha zawadi",
+    "ended": "Zawadi imeisha",
+    "endFailed": "Imeshindwa kumaliza zawadi",
+    "rerolled": "Washindi wamechaguliwa upya",
+    "rerollFailed": "Imeshindwa kuchagua washindi upya",
+    "deleted": "Zawadi imefutwa",
+    "deleteFailed": "Imeshindwa kufuta zawadi"
+  },
+  "empty": "Hakuna zawadi bado. Unda moja ili kuanza.",
+  "loading": "Inapakia zawadi..."
+}

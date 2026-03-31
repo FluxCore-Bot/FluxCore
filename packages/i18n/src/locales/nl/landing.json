@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Nu in openbare bèta",
+    "tagline": "De Obsidian Engine",
+    "titleLine1": "Het alles-in-één",
+    "titleLine2": "Discord Bot Framework",
+    "subtitle": "Zet in minuten een professionele Discord-aanwezigheid op. Modulair, zelf-gehost en gebouwd voor communities die meer eisen."
+  },
+  "cta": {
+    "addToServer": "Toevoegen aan server",
+    "openDashboard": "Dashboard openen",
+    "exploreFeatures": "Functies verkennen"
+  },
+  "stats": {
+    "servers": "Servers",
+    "latency": "Latentie",
+    "uptime": "Uptime",
+    "modules": "Modules",
+    "serversValue": "1.000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99,9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Mogelijkheden",
+    "title": "Alles wat je server nodig heeft",
+    "subtitle": "Een modulaire toolkit ontworpen voor communities die betrouwbaarheid, flexibiliteit en controle eisen.",
+    "automation": {
+      "title": "Automatiseringsregels",
+      "description": "Maak complexe gebeurtenisgestuurde workflows zonder code. Als-dit-dan-dat-triggers met 23 gebeurtenistypen en 10 actietypen."
+    },
+    "music": {
+      "title": "Muzieksysteem",
+      "description": "Hoogwaardige audiostreaming met ondersteuning voor meerdere platforms. Wachtrijbeheer, DJ-bedieningselementen en bibliotheekm modus."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Dynamisch beheer van spraakkanalen. Auto-aanmaak met aangepaste naamsjablonen, rechten en opruiming."
+    },
+    "logs": {
+      "title": "Activiteitenlogboeken",
+      "description": "Volledig auditspoor van elke automatiseringsuitvoering. Zoek, filter en debug je regels met gedetailleerde logboeken."
+    },
+    "webhooks": {
+      "title": "Webhooks & API",
+      "description": "Stuur gegevens naar externe services met HTTP-webhooks. Aangepaste headers, bodysjablonen en variabele-interpolatie."
+    },
+    "dashboard": {
+      "title": "Realtime dashboard",
+      "description": "Beheer alles vanuit een strak webdashboard. Analyses, configuratie en monitoring op één plek."
+    }
+  },
+  "ctaSection": {
+    "title": "Klaar om je community te upgraden?",
+    "subtitle": "Begin in minuten zonder configuratie. Zelf-gehost, open-source en volledig gratis."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "© {{year}} FluxCore Technologies. Alle rechten voorbehouden.",
+    "links": {
+      "documentation": "Documentatie",
+      "support": "Ondersteuning",
+      "privacy": "Privacybeleid",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "title": "Bilesu sistema",
+  "subtitle": "Izveidojiet atbalsta bilesu panelus un parvaldiet atvertas biletes no vadibas panela.",
+  "stats": {
+    "totalTickets": "Kopejais bilestes",
+    "open": "Atvertas",
+    "claimed": "Pienetemas",
+    "panels": "Paneli"
+  },
+  "tabs": {
+    "activeTickets": "Aktivas biletes",
+    "panelBuilder": "Panelu veideljs",
+    "settings": "Iestatijumi"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Lietotajs",
+    "subject": "Tema",
+    "status": "Statuss",
+    "assignee": "Piesskirits",
+    "created": "Izveidots"
+  },
+  "statuses": {
+    "open": "Atverta",
+    "claimed": "Pienemta",
+    "closed": "Aizverta"
+  },
+  "panelBuilder": {
+    "title": "Panela virsraksts",
+    "channel": "Kanals",
+    "buttonLabel": "Pogas etiksete",
+    "welcomeMessage": "Sveicinasanas zinojums",
+    "category": "Biletes kategorija",
+    "create": "Izveidot paneli",
+    "edit": "Rediget paneli",
+    "deploy": "Izvietot paneli"
+  },
+  "settings": {
+    "transcriptChannel": "Transkriptu kanals",
+    "transcriptChannelDesc": "Kanals, kura tiek saglaabati bilesu transkripti aizverot.",
+    "maxTicketsPerUser": "Maks. bilestes lietotajam",
+    "maxTicketsPerUserDesc": "Maksimalais atvertu bilesu skaits, ko var but vienam lietotajam.",
+    "closeConfirmation": "Aizverasanas apstiprinajums",
+    "closeConfirmationDesc": "Pieprasit apstiprinajumu pirms biletes aizverassanas.",
+    "dmTranscript": "Transkripts privataja zinojuma",
+    "dmTranscriptDesc": "Nosutit transkripta kopiju biletes autoram privataa zinojuma."
+  },
+  "actions": {
+    "claim": "Piienemt",
+    "close": "Aizvart",
+    "delete": "Dzest",
+    "reopen": "Atvart atkartoti"
+  },
+  "toast": {
+    "panelCreated": "Bilesu panelis izveidots",
+    "panelCreateFailed": "Neizdevas izveidot bilesu paneli",
+    "panelUpdated": "Bilesu panelis atjaunots",
+    "panelUpdateFailed": "Neizdevas atjaunot bilesu paneli",
+    "panelDeployed": "Bilesu panelis izvietots",
+    "panelDeployFailed": "Neizdevas izvietot bilesu paneli",
+    "ticketClaimed": "Bilete pienemta",
+    "ticketClaimFailed": "Neizdevas pienemt bileti",
+    "ticketClosed": "Bilete aizverta",
+    "ticketCloseFailed": "Neizdevas aizveart bileti",
+    "ticketReopened": "Bilete atverta atkartoti",
+    "ticketReopenFailed": "Neizdevas atkartoti atveart bileti",
+    "ticketDeleted": "Bilete dzesta",
+    "ticketDeleteFailed": "Neizdevas dzest bileti",
+    "settingsSaved": "Bilesu iestatijumi saglabati",
+    "settingsFailed": "Neizdevas saglabar bilesu iestatijumus"
+  },
+  "empty": {
+    "tickets": "Nav aktivu bilesu.",
+    "panels": "Bilesu paneli nav izveidoti."
+  },
+  "loading": "Iellade biletes..."
+}

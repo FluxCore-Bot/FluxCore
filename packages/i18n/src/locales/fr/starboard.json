@@ -1,0 +1,41 @@
+{
+  "title": "Starboard",
+  "subtitle": "Mettez en avant les meilleurs messages en collectant les reactions etoiles dans un salon dedie.",
+  "tabs": {
+    "settings": "Parametres",
+    "starredMessages": "Messages etoiles"
+  },
+  "settings": {
+    "title": "Configuration du Starboard",
+    "description": "Configurez quand et ou les messages etoiles sont publies.",
+    "channelId": "Salon Starboard",
+    "channelIdDesc": "Le salon ou les messages etoiles sont publies.",
+    "starEmoji": "Emoji etoile",
+    "starEmojiDesc": "L'emoji utilise pour mettre en avant les messages. Par defaut l'emoji etoile.",
+    "threshold": "Seuil d'etoiles",
+    "thresholdDesc": "Nombre minimum de reactions requises pour publier un message sur le starboard.",
+    "selfStar": "Auto-etoile",
+    "selfStarDesc": "Permettre aux auteurs de messages de mettre en avant leurs propres messages.",
+    "nsfwAllowed": "NSFW autorise",
+    "nsfwAllowedDesc": "Permettre aux messages des salons NSFW d'apparaitre sur le starboard.",
+    "ignoredChannels": "Salons ignores",
+    "ignoredChannelsDesc": "Les messages de ces salons n'apparaitront jamais sur le starboard."
+  },
+  "messages": {
+    "table": {
+      "original": "Message original",
+      "stars": "Etoiles",
+      "channel": "Salon",
+      "date": "Date"
+    },
+    "noMessages": "Aucun message etoile pour l'instant."
+  },
+  "toast": {
+    "saved": "Parametres du starboard enregistres",
+    "saveFailed": "Echec de l'enregistrement des parametres du starboard"
+  },
+  "actions": {
+    "save": "Enregistrer",
+    "saving": "Enregistrement..."
+  }
+}

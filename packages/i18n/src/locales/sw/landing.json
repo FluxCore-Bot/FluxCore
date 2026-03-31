@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Sasa katika Beta ya Umma",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Mfumo Kamili",
+    "titleLine2": "wa Bot ya Discord",
+    "subtitle": "Weka bot ya Discord ya kiwango cha kitaalamu kwa dakika chache. Moduli, inayojihifadhi, na iliyojengwa kwa jamii zinazotaka zaidi."
+  },
+  "cta": {
+    "addToServer": "Ongeza kwenye Seva",
+    "openDashboard": "Fungua Dashibodi",
+    "exploreFeatures": "Gundua Vipengele"
+  },
+  "stats": {
+    "servers": "Seva",
+    "latency": "Muda wa Kusubiri",
+    "uptime": "Muda wa Kufanya Kazi",
+    "modules": "Moduli",
+    "serversValue": "1,000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99.9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Uwezo",
+    "title": "Kila kitu seva yako inahitaji",
+    "subtitle": "Zana ya moduli iliyoundwa kwa jamii zinazotaka uaminifu, kubadilika, na udhibiti.",
+    "automation": {
+      "title": "Sheria za Otomatiki",
+      "description": "Unda mtiririko tata wa matukio bila msimbo. Vichocheo vya ikiwa-hii-basi-ile na aina 23 za matukio na aina 10 za vitendo."
+    },
+    "music": {
+      "title": "Mfumo wa Muziki",
+      "description": "Utiririshaji wa sauti ubora wa juu na msaada wa majukwaa mengi. Usimamizi wa foleni, vidhibiti vya DJ, na hali ya maktaba."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Usimamizi wa chaneli za sauti zenye nguvu. Uundaji wa kiotomatiki na violezo vya majina maalum, ruhusa, na usafishaji."
+    },
+    "logs": {
+      "title": "Kumbukumbu za Shughuli",
+      "description": "Rekodi kamili ya ukaguzi wa kila utekelezaji wa otomatiki. Tafuta, chuja, na tatua shida za sheria zako kwa kumbukumbu za kina."
+    },
+    "webhooks": {
+      "title": "Webhook na API",
+      "description": "Tuma data kwa huduma za nje kwa webhook za HTTP. Vichwa maalum, violezo vya mwili, na uingizaji wa vigezo."
+    },
+    "dashboard": {
+      "title": "Dashibodi ya Wakati Halisi",
+      "description": "Simamia kila kitu kutoka dashibodi nzuri ya wavuti. Uchambuzi, usanidi, na ufuatiliaji katika sehemu moja."
+    }
+  },
+  "ctaSection": {
+    "title": "Uko tayari kuboresha jamii yako?",
+    "subtitle": "Anza kwa dakika chache bila usanidi wowote. Inajihifadhi, chanzo wazi, na bure kabisa."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "\u00a9 {{year}} FluxCore Technologies. Haki zote zimehifadhiwa.",
+    "links": {
+      "documentation": "Nyaraka",
+      "support": "Msaada",
+      "privacy": "Sera ya Faragha",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "title": "自訂指令",
+  "subtitle": "建立由訊息觸發的自動回覆和前綴指令。",
+  "stats": {
+    "totalCommands": "指令總數",
+    "enabled": "已啟用",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "指令",
+    "variables": "變數"
+  },
+  "table": {
+    "name": "名稱",
+    "trigger": "觸發器",
+    "response": "回覆",
+    "cooldown": "冷卻時間",
+    "status": "狀態"
+  },
+  "triggerTypes": {
+    "command": "!command",
+    "keyword": "關鍵字",
+    "startsWith": "前綴匹配",
+    "regex": "正規表達式",
+    "prefixCommand": "前綴指令 (!name)",
+    "keywordContains": "關鍵字（包含）"
+  },
+  "dialog": {
+    "createCommand": "建立指令",
+    "editCommand": "編輯指令"
+  },
+  "form": {
+    "commandName": "指令名稱",
+    "triggerText": "觸發文字",
+    "regexPattern": "正規表達式",
+    "triggerType": "觸發類型",
+    "response": "回覆",
+    "message": "訊息",
+    "embedTitle": "嵌入標題",
+    "embedDescription": "嵌入描述",
+    "color": "顏色",
+    "footer": "頁尾"
+  },
+  "options": {
+    "cooldown": "冷卻時間（秒）",
+    "enabled": "啟用",
+    "enabledDesc": "此指令是否啟用",
+    "deleteTrigger": "刪除觸發訊息",
+    "deleteTriggerDesc": "自動刪除觸發此指令的訊息。",
+    "dmResponse": "私訊回覆",
+    "dmResponseDesc": "將回覆以私訊方式傳送，而非在頻道中傳送。"
+  },
+  "restrictions": {
+    "title": "限制",
+    "allowedChannels": "允許的頻道（留空 = 全部）",
+    "allowedRoles": "允許的角色（留空 = 所有人）",
+    "addChannel": "新增頻道",
+    "addRole": "新增角色"
+  },
+  "actions": {
+    "create": "建立",
+    "update": "更新",
+    "cancel": "取消",
+    "addAction": "新增動作",
+    "addRole": "新增角色",
+    "removeRole": "移除角色"
+  },
+  "actionsSection": {
+    "title": "動作（{{count}}/5）",
+    "noActions": "尚未設定動作。新增動作來定義此指令的行為。",
+    "maxActions": "每個指令最多 5 個動作"
+  },
+  "variables": {
+    "title": "範本變數",
+    "description": "在指令回覆中使用這些變數。指令觸發時，變數將被替換為實際值。",
+    "table": {
+      "variable": "變數",
+      "description": "描述"
+    },
+    "entries": {
+      "user": "{user} — 提及觸發指令的使用者",
+      "username": "{username} — 使用者的顯示名稱",
+      "userId": "{userId} — 使用者 ID",
+      "server": "{server} — 伺服器名稱",
+      "channel": "{channel} — 提及目前頻道",
+      "channelName": "{channelName} — 頻道名稱",
+      "memberCount": "{memberCount} — 伺服器成員總數"
+    }
+  },
+  "toast": {
+    "created": "指令已建立",
+    "createFailed": "建立指令失敗",
+    "updated": "指令已更新",
+    "updateFailed": "更新指令失敗",
+    "deleted": "指令已刪除",
+    "deleteFailed": "刪除指令失敗",
+    "toggleEnabled": "指令已啟用",
+    "toggleDisabled": "指令已停用",
+    "toggleFailed": "切換指令失敗"
+  },
+  "empty": "尚未建立自訂指令。",
+  "loading": "正在載入指令...",
+  "badge": {
+    "active": "啟用",
+    "disabled": "停用",
+    "text": "文字",
+    "embed": "嵌入"
+  },
+  "validation": {
+    "nameRequired": "指令名稱為必填"
+  },
+  "triggerPrefix": "觸發器: !{{name}}"
+}

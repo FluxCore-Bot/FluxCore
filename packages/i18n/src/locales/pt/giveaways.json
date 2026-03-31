@@ -1,0 +1,50 @@
+{
+  "title": "Sorteios",
+  "subtitle": "Realize sorteios com duracao, requisitos de participacao e selecao de vencedores personalizaveis.",
+  "stats": {
+    "activeGiveaways": "Sorteios ativos",
+    "pastGiveaways": "Sorteios anteriores",
+    "totalEntries": "Total de participacoes"
+  },
+  "table": {
+    "prize": "Premio",
+    "winners": "Vencedores",
+    "entries": "Participacoes",
+    "endsIn": "Termina em",
+    "status": "Estado"
+  },
+  "statuses": {
+    "active": "Ativo",
+    "ended": "Terminado",
+    "cancelled": "Cancelado"
+  },
+  "actions": {
+    "create": "Criar sorteio",
+    "edit": "Editar",
+    "end": "Terminar",
+    "reroll": "Sortear novamente",
+    "delete": "Eliminar"
+  },
+  "form": {
+    "prize": "Premio",
+    "winnersCount": "Numero de vencedores",
+    "duration": "Duracao",
+    "channel": "Canal",
+    "requiredRole": "Cargo necessario",
+    "description": "Descricao"
+  },
+  "toast": {
+    "created": "Sorteio criado",
+    "createFailed": "Falha ao criar o sorteio",
+    "updated": "Sorteio atualizado",
+    "updateFailed": "Falha ao atualizar o sorteio",
+    "ended": "Sorteio terminado",
+    "endFailed": "Falha ao terminar o sorteio",
+    "rerolled": "Vencedores sorteados novamente",
+    "rerollFailed": "Falha ao sortear novamente",
+    "deleted": "Sorteio eliminado",
+    "deleteFailed": "Falha ao eliminar o sorteio"
+  },
+  "empty": "Ainda sem sorteios. Crie um para comecar.",
+  "loading": "A carregar sorteios..."
+}

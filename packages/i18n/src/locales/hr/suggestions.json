@@ -1,0 +1,67 @@
+{
+  "title": "Prijedlozi",
+  "subtitle": "Omogucite clanovima da salju ideje i glasaju o njima. Upravljajte statusom i povratnim informacijama.",
+  "stats": {
+    "totalSuggestions": "Ukupno prijedloga",
+    "systemStatus": "Status sustava",
+    "channel": {
+      "configured": "Kanal konfiguriran",
+      "notSet": "Kanal nije postavljen"
+    }
+  },
+  "tabs": {
+    "suggestions": "Prijedlozi",
+    "settings": "Postavke"
+  },
+  "filter": {
+    "filterByStatus": "Filtriraj po statusu",
+    "all": "Sve",
+    "pending": "Na cekanju",
+    "approved": "Odobreno",
+    "rejected": "Odbijeno",
+    "implemented": "Implementirano",
+    "considered": "Razmatra se"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Autor",
+    "content": "Sadrzaj",
+    "status": "Status",
+    "votes": "Glasovi",
+    "date": "Datum"
+  },
+  "actions": {
+    "approve": "Odobri",
+    "reject": "Odbij",
+    "implement": "Oznaci kao implementirano",
+    "consider": "Razmotri",
+    "delete": "Obrisi"
+  },
+  "settings": {
+    "channel": "Kanal za prijedloge",
+    "channelDesc": "Kanal u koji se objavljuju prijedlozi za glasanje.",
+    "voteEmojis": "Emotikoni za glasanje",
+    "voteEmojisDesc": "Emotikoni koji se koriste za pozitivne i negativne reakcije.",
+    "autoThread": "Automatsko stvaranje niti",
+    "autoThreadDesc": "Automatski stvorite nit za raspravu uz svaki novi prijedlog.",
+    "dmOnStatusChange": "Poruka pri promjeni statusa",
+    "dmOnStatusChangeDesc": "Obavijestite autora privatnom porukom kada se status njihovog prijedloga promijeni."
+  },
+  "toast": {
+    "approved": "Prijedlog odobren",
+    "rejected": "Prijedlog odbijen",
+    "implemented": "Prijedlog oznacen kao implementiran",
+    "considered": "Prijedlog oznacen kao u razmatranju",
+    "deleted": "Prijedlog obrisan",
+    "actionFailed": "Azuriranje prijedloga nije uspjelo",
+    "settingsSaved": "Postavke prijedloga spremljene",
+    "settingsFailed": "Spremanje postavki prijedloga nije uspjelo"
+  },
+  "empty": "Nema prijedloga.",
+  "loading": "Ucitavanje prijedloga...",
+  "pagination": {
+    "previous": "Prethodna",
+    "next": "Sljedeca",
+    "page": "Stranica {{page}} od {{total}}"
+  }
+}

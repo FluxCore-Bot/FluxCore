@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "未驗證",
+    "sessionExpired": "工作階段已過期",
+    "missingCode": "缺少 code 參數",
+    "tokenExchangeFailed": "權杖交換失敗",
+    "failedToFetchUser": "取得使用者資訊失敗"
+  },
+  "permissions": {
+    "noGuildPermission": "沒有此伺服器的權限",
+    "botNotInGuild": "機器人不在此伺服器中",
+    "insufficientPermissions": "權限不足",
+    "permissionsNotResolved": "無法解析權限",
+    "requiresPermission": "此操作需要「{{permission}}」權限"
+  },
+  "validation": {
+    "invalidInput": "輸入無效",
+    "missingField": "缺少必填欄位：{{field}}",
+    "invalidFormat": "{{field}} 格式無效",
+    "tooLong": "{{field}} 超過最大長度 {{max}} 個字元",
+    "tooShort": "{{field}} 至少需要 {{min}} 個字元",
+    "outOfRange": "{{field}} 必須在 {{min}} 和 {{max}} 之間"
+  },
+  "resources": {
+    "notFound": "找不到",
+    "alreadyExists": "{{resource}} 已存在",
+    "limitReached": "每個伺服器最多 {{max}} 個 {{resource}}",
+    "createFailed": "建立 {{resource}} 失敗",
+    "updateFailed": "更新 {{resource}} 失敗",
+    "deleteFailed": "刪除 {{resource}} 失敗"
+  },
+  "server": {
+    "internalError": "內部伺服器錯誤",
+    "serviceUnavailable": "服務暫時無法使用",
+    "rateLimited": "請求過多，請稍後再試。"
+  },
+  "csrf": {
+    "invalidToken": "無效或缺少 CSRF 權杖"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Οι servers σας",
+  "subtitle": "Επιλέξτε έναν server για διαχείριση και ρύθμιση.",
+  "loading": "Φόρτωση servers...",
+  "empty": {
+    "title": "Δεν βρέθηκαν servers",
+    "description": "Βεβαιωθείτε ότι το bot έχει προστεθεί σε έναν server όπου έχετε δικαίωμα διαχείρισης server."
+  }
+}

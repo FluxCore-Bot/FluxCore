@@ -1,0 +1,108 @@
+{
+  "title": "Bezpieczeństwo",
+  "subtitle": "Skonfiguruj ochronę przed rajdami i ustawienia bezpieczeństwa serwera.",
+  "antiRaid": {
+    "title": "Ochrona przed rajdami",
+    "description": "Włącz automatyczne wykrywanie i reagowanie na skoordynowane rajdy, podejrzane konta i destrukcyjne działania."
+  },
+  "sections": {
+    "joinRate": "Częstotliwość dołączeń",
+    "accountAge": "Wiek konta",
+    "antiNuke": "Anti-Nuke",
+    "lockdown": "Blokada",
+    "events": "Zdarzenia"
+  },
+  "joinRate": {
+    "title": "Wykrywanie masowych dołączeń",
+    "description": "Wykrywaj masowe dołączenia, monitorując częstotliwość nowych członków.",
+    "threshold": "Próg dołączeń",
+    "thresholdHint": "Liczba dołączeń wyzwalająca wykrywanie",
+    "window": "Okno czasowe (sekundy)",
+    "windowHint": "Okno, w którym zliczane są dołączenia",
+    "action": "Akcja przy wykryciu",
+    "actionHint": "Akcja wobec podejrzanych uczestników rajdu",
+    "actions": {
+      "ban": "Ban",
+      "kick": "Kick",
+      "timeout": "Timeout",
+      "lockdown": "Blokada"
+    }
+  },
+  "accountAge": {
+    "title": "Filtr wieku konta",
+    "description": "Automatycznie podejmuj akcje wobec kont młodszych niż minimalny wiek. Ustaw 0, aby wyłączyć.",
+    "minAge": "Minimalny wiek konta (dni)",
+    "minAgeHint": "0 = wyłączone. Konta młodsze od tego zostaną objęte akcją.",
+    "action": "Akcja"
+  },
+  "antiNuke": {
+    "title": "Ochrona Anti-Nuke",
+    "description": "Wykrywaj masowe usuwanie kanałów/ról i poddaj kwarantannie odpowiedzialnego użytkownika, usuwając wszystkie jego role.",
+    "threshold": "Próg usunięć",
+    "thresholdHint": "Liczba usunięć w ciągu 10 sekund wyzwalająca kwarantannę",
+    "channelDeleteThreshold": "Próg usuwania kanałów",
+    "roleDeleteThreshold": "Próg usuwania ról",
+    "massbanThreshold": "Próg masowych banów",
+    "interval": "Interwał (sekundy)",
+    "action": "Akcja"
+  },
+  "lockdown": {
+    "title": "Auto-blokada przy rajdzie",
+    "description": "Automatycznie zablokuj wszystkie kanały po wykryciu rajdu.",
+    "whitelistedRoles": "ID ról na białej liście (oddzielone przecinkami)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Członkowie z tymi rolami będą wyłączeni z wykrywania rajdów.",
+    "logChannel": "ID kanału logów",
+    "logChannelPlaceholder": "ID kanału do logów zdarzeń rajdów...",
+    "enableButton": "Włącz blokadę",
+    "disableButton": "Wyłącz blokadę",
+    "active": "Blokada aktywna",
+    "inactive": "Blokada nieaktywna"
+  },
+  "events": {
+    "title": "Ostatnie zdarzenia rajdów",
+    "description": "Chronologia wykrytych rajdów, blokad wieku kont i zdarzeń blokady.",
+    "empty": "Brak zarejestrowanych zdarzeń rajdów. Zdarzenia pojawią się tutaj po wyzwoleniu wykrywania.",
+    "actionLabel": "Akcja: {{action}}",
+    "usersLabel": "Użytkownicy: {{count}}",
+    "accountAgeLabel": "Wiek konta: {{days}}d",
+    "table": {
+      "type": "Typ",
+      "description": "Opis",
+      "time": "Czas",
+      "action": "Podjęta akcja"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Skok dołączeń",
+    "account_age": "Wiek konta",
+    "nuke_attempt": "Próba nuke",
+    "lockdown": "Blokada",
+    "massJoin": "Masowe dołączenie",
+    "suspiciousAccounts": "Podejrzane konta",
+    "channelDeletion": "Usunięcie kanału",
+    "roleDeletion": "Usunięcie roli",
+    "massBan": "Masowy ban"
+  },
+  "pagination": {
+    "previous": "Poprzednia",
+    "next": "Następna",
+    "page": "Strona {{current}} z {{total}}"
+  },
+  "toast": {
+    "saved": "Konfiguracja anti-raid zapisana",
+    "saveFailed": "Nie udało się zapisać konfiguracji",
+    "lockdownEnabled": "Blokada serwera włączona",
+    "lockdownDisabled": "Blokada serwera wyłączona",
+    "lockdownFailed": "Nie udało się przełączyć blokady"
+  },
+  "saveButton": {
+    "saving": "Zapisywanie...",
+    "save": "Zapisz zmiany"
+  },
+  "labels": {
+    "seconds": "sekundy",
+    "minutes": "minuty",
+    "hours": "godziny"
+  }
+}

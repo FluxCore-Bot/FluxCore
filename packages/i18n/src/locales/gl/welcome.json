@@ -1,0 +1,65 @@
+{
+  "title": "Benvida e Despedida",
+  "subtitle": "Configura as mensaxes de benvida e despedida, imaxes e roles automáticos.",
+  "loadingSubtitle": "Configura as mensaxes de benvida e despedida para o teu servidor.",
+  "tabs": {
+    "welcome": "Benvida",
+    "welcomeImage": "Imaxe de Benvida",
+    "farewell": "Despedida",
+    "farewellImage": "Imaxe de Despedida",
+    "dm": "DM de Benvida",
+    "autorole": "Rol Automático"
+  },
+  "welcome": {
+    "title": "Mensaxe de Benvida",
+    "description": "Enviar un embed personalizado cando un novo membro se une.",
+    "channelLabel": "ID do Canal de Benvida",
+    "channelPlaceholder": "ID do canal...",
+    "embedBuilder": "Constructor de Embed"
+  },
+  "welcomeImage": {
+    "title": "Imaxe de Benvida",
+    "description": "Xerar unha tarxeta de imaxe personalizada co avatar do membro cando se une.",
+    "disabled": "Activa o interruptor de arriba para configurar as imaxes de benvida."
+  },
+  "farewell": {
+    "title": "Mensaxe de Despedida",
+    "description": "Enviar unha mensaxe cando un membro abandona o servidor.",
+    "channelLabel": "ID do Canal de Despedida",
+    "channelPlaceholder": "ID do canal..."
+  },
+  "farewellImage": {
+    "title": "Imaxe de Despedida",
+    "description": "Xerar unha tarxeta de despedida personalizada cando un membro abandona.",
+    "disabled": "Activa o interruptor de arriba para configurar as imaxes de despedida."
+  },
+  "dm": {
+    "title": "DM de Benvida",
+    "description": "Enviar unha mensaxe directa aos novos membros. Fallará silenciosamente se os DMs están desactivados."
+  },
+  "autorole": {
+    "title": "Rol Automático",
+    "description": "Asignar automaticamente roles aos novos membros cando se unen. Os bots están excluídos. O bot debe ter un rol superior aos roles listados aquí.",
+    "label": "IDs de Roles (separados por comas)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Título",
+    "description": "Descrición",
+    "color": "Cor (hex)",
+    "footer": "Pé de páxina",
+    "thumbnail": "URL de Miniatura",
+    "image": "URL de Imaxe",
+    "variables": "Variables:"
+  },
+  "saveChanges": "Gardar Cambios",
+  "saving": "Gardando...",
+  "sendTest": "Enviar Mensaxe de Proba",
+  "sending": "Enviando...",
+  "toast": {
+    "saved": "Configuración de benvida gardada",
+    "saveFailed": "Non se puido gardar a configuración",
+    "testSent": "A mensaxe de proba enviarase a <#{{channelId}}>",
+    "testFailed": "Non se puido enviar a mensaxe de proba"
+  }
+}

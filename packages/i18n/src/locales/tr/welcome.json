@@ -1,0 +1,65 @@
+{
+  "title": "Hoş Geldin ve Güle Güle",
+  "subtitle": "Hoş geldin ve güle güle mesajlarını, görselleri ve otomatik rolleri yapılandırın.",
+  "loadingSubtitle": "Sunucunuz için hoş geldin ve güle güle mesajlarını yapılandırın.",
+  "tabs": {
+    "welcome": "Hoş Geldin",
+    "welcomeImage": "Hoş Geldin Görseli",
+    "farewell": "Güle Güle",
+    "farewellImage": "Güle Güle Görseli",
+    "dm": "Hoş Geldin DM",
+    "autorole": "Otomatik Rol"
+  },
+  "welcome": {
+    "title": "Hoş Geldin Mesajı",
+    "description": "Yeni bir üye katıldığında özel bir gömü gönderin.",
+    "channelLabel": "Hoş Geldin Kanalı Kimliği",
+    "channelPlaceholder": "Kanal Kimliği...",
+    "embedBuilder": "Gömü Oluşturucu"
+  },
+  "welcomeImage": {
+    "title": "Hoş Geldin Görseli",
+    "description": "Üye katıldığında avatarıyla özel bir görsel kart oluşturun.",
+    "disabled": "Hoş geldin görsellerini yapılandırmak için yukarıdaki geçişi etkinleştirin."
+  },
+  "farewell": {
+    "title": "Güle Güle Mesajı",
+    "description": "Bir üye sunucudan ayrıldığında mesaj gönderin.",
+    "channelLabel": "Güle Güle Kanalı Kimliği",
+    "channelPlaceholder": "Kanal Kimliği..."
+  },
+  "farewellImage": {
+    "title": "Güle Güle Görseli",
+    "description": "Bir üye ayrıldığında özel bir güle güle kartı oluşturun.",
+    "disabled": "Güle güle görsellerini yapılandırmak için yukarıdaki geçişi etkinleştirin."
+  },
+  "dm": {
+    "title": "Hoş Geldin DM",
+    "description": "Yeni üyelere doğrudan mesaj gönderin. DM'ler devre dışıysa sessizce başarısız olacaktır."
+  },
+  "autorole": {
+    "title": "Otomatik Rol",
+    "description": "Yeni üyeler katıldığında otomatik olarak rol atayın. Botlar hariç tutulur. Botun burada listelenen rollerden daha yüksek bir rolü olmalıdır.",
+    "label": "Rol Kimlikleri (virgülle ayrılmış)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Başlık",
+    "description": "Açıklama",
+    "color": "Renk (hex)",
+    "footer": "Alt Bilgi",
+    "thumbnail": "Küçük Resim URL'si",
+    "image": "Resim URL'si",
+    "variables": "Değişkenler:"
+  },
+  "saveChanges": "Değişiklikleri Kaydet",
+  "saving": "Kaydediliyor...",
+  "sendTest": "Test Mesajı Gönder",
+  "sending": "Gönderiliyor...",
+  "toast": {
+    "saved": "Hoş geldin yapılandırması kaydedildi",
+    "saveFailed": "Yapılandırma kaydedilemedi",
+    "testSent": "Test mesajı <#{{channelId}}> kanalına gönderilecek",
+    "testFailed": "Test mesajı gönderilemedi"
+  }
+}

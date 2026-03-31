@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "Panell de control de FluxCore"
+  },
+  "status": {
+    "online": "En linia",
+    "offline": "Fora de linia",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Resum",
+    "automation": "Automatització",
+    "music": "Música",
+    "tempvoice": "TempVoice",
+    "welcome": "Benvinguda",
+    "moderation": "Moderació",
+    "warnings": "Advertencies",
+    "rolePanels": "Panells de rols",
+    "leveling": "Nivells",
+    "scheduled": "Programats",
+    "commands": "Comandes",
+    "security": "Seguretat",
+    "tickets": "Tiquets",
+    "giveaways": "Sortejos",
+    "suggestions": "Suggeriments",
+    "starboard": "Tauler d'estrelles",
+    "logs": "Registres",
+    "permissions": "Permisos",
+    "settings": "Configuració"
+  },
+  "actions": {
+    "save": "Desar",
+    "cancel": "Cancel\u00b7lar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "add": "Afegir",
+    "remove": "Eliminar",
+    "confirm": "Confirmar",
+    "close": "Tancar",
+    "back": "Enrere",
+    "next": "Seguent",
+    "search": "Cercar",
+    "filter": "Filtrar",
+    "refresh": "Actualitzar",
+    "reset": "Restablir",
+    "enable": "Activar",
+    "disable": "Desactivar",
+    "copy": "Copiar",
+    "export": "Exportar",
+    "import": "Importar",
+    "submit": "Enviar",
+    "loading": "Carregant...",
+    "retry": "Reintentar"
+  },
+  "labels": {
+    "enabled": "Activat",
+    "disabled": "Desactivat",
+    "active": "Actiu",
+    "inactive": "Inactiu",
+    "none": "Cap",
+    "all": "Tots",
+    "custom": "Personalitzat",
+    "default": "Per defecte",
+    "required": "Obligatori",
+    "optional": "Opcional",
+    "name": "Nom",
+    "description": "Descripció",
+    "type": "Tipus",
+    "status": "Estat",
+    "channel": "Canal",
+    "role": "Rol",
+    "member": "Membre",
+    "duration": "Durada",
+    "reason": "Motiu",
+    "language": "Idioma"
+  },
+  "header": {
+    "notifications": "Notificacions",
+    "settings": "Configuració",
+    "logout": "Tancar sessió",
+    "toggleSidebar": "Alternar barra lateral",
+    "refreshData": "Actualitzar dades de Discord"
+  },
+  "sidebar": {
+    "closeSidebar": "Tancar barra lateral",
+    "addToServer": "Afegir al servidor",
+    "docs": "Documentació",
+    "support": "Suport",
+    "backToServers": "Tornar als servidors"
+  },
+  "empty": {
+    "noData": "No hi ha dades disponibles",
+    "noResults": "No s'han trobat resultats",
+    "noItems": "Encara no hi ha elements"
+  },
+  "time": {
+    "seconds": "segons",
+    "minutes": "minuts",
+    "hours": "hores",
+    "days": "dies",
+    "ago": "fa {{time}}",
+    "in": "d'aqui a {{time}}"
+  },
+  "confirm": {
+    "title": "N'estas segur?",
+    "deleteTitle": "Confirmar eliminació",
+    "deleteMessage": "Aquesta acció no es pot desfer.",
+    "unsavedChanges": "Tens canvis sense desar. Segur que vols sortir?"
+  },
+  "accessibility": {
+    "skipToContent": "Salta al contingut principal",
+    "loading": "Carregant contingut",
+    "loaded": "Contingut carregat",
+    "error": "S'ha produit un error",
+    "menuOpen": "El menu esta obert",
+    "menuClosed": "El menu esta tancat"
+  }
+}

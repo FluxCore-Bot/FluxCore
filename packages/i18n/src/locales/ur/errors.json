@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "تصدیق شدہ نہیں",
+    "sessionExpired": "سیشن ختم ہو گیا",
+    "missingCode": "کوڈ پیرامیٹر غائب ہے",
+    "tokenExchangeFailed": "ٹوکن ایکسچینج ناکام ہو گیا",
+    "failedToFetchUser": "صارف کی معلومات حاصل کرنے میں ناکامی"
+  },
+  "permissions": {
+    "noGuildPermission": "اس سرور کے لیے اجازت نہیں ہے",
+    "botNotInGuild": "بوٹ اس سرور میں نہیں ہے",
+    "insufficientPermissions": "ناکافی اجازتیں",
+    "permissionsNotResolved": "اجازتیں طے نہیں ہوئیں",
+    "requiresPermission": "اس عمل کے لیے \"{{permission}}\" اجازت درکار ہے"
+  },
+  "validation": {
+    "invalidInput": "غلط ان پٹ",
+    "missingField": "ضروری فیلڈ غائب ہے: {{field}}",
+    "invalidFormat": "{{field}} کے لیے غلط فارمیٹ",
+    "tooLong": "{{field}} زیادہ سے زیادہ {{max}} حروف کی حد سے تجاوز کر گیا",
+    "tooShort": "{{field}} کم از کم {{min}} حروف ہونے چاہئیں",
+    "outOfRange": "{{field}} {{min}} اور {{max}} کے درمیان ہونا چاہیے"
+  },
+  "resources": {
+    "notFound": "نہیں ملا",
+    "alreadyExists": "{{resource}} پہلے سے موجود ہے",
+    "limitReached": "فی سرور زیادہ سے زیادہ {{max}} {{resource}}",
+    "createFailed": "{{resource}} بنانے میں ناکامی",
+    "updateFailed": "{{resource}} اپ ڈیٹ کرنے میں ناکامی",
+    "deleteFailed": "{{resource}} حذف کرنے میں ناکامی"
+  },
+  "server": {
+    "internalError": "اندرونی سرور خرابی",
+    "serviceUnavailable": "سروس عارضی طور پر دستیاب نہیں",
+    "rateLimited": "بہت زیادہ درخواستیں۔ براہ کرم بعد میں دوبارہ کوشش کریں۔"
+  },
+  "csrf": {
+    "invalidToken": "CSRF ٹوکن غلط یا غائب ہے"
+  }
+}

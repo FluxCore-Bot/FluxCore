@@ -1,0 +1,72 @@
+{
+  "title": "Mga Babala",
+  "subtitle": "Subaybayan at pamahalaan ang mga babala ng miyembro na may awtomatikong escalation.",
+  "stats": {
+    "totalWarnings": "Kabuuang Mga Babala",
+    "escalationRules": "Mga Panuntunan ng Escalation",
+    "dmOnWarn": "DM sa Babala"
+  },
+  "tabs": {
+    "warnings": "Log ng Babala",
+    "escalation": "Escalation",
+    "settings": "Mga Setting"
+  },
+  "table": {
+    "id": "ID",
+    "user": "User",
+    "moderator": "Moderator",
+    "reason": "Dahilan",
+    "date": "Petsa"
+  },
+  "filter": {
+    "userPlaceholder": "I-filter ayon sa User ID...",
+    "clearAll": "I-clear Lahat"
+  },
+  "pagination": {
+    "previous": "Nakaraan",
+    "next": "Susunod",
+    "page": "Pahina {{page}} ng {{total}} ({{count}} kabuuan)"
+  },
+  "loading": "Naglo-load ng mga babala...",
+  "noWarnings": "Walang nahanap na mga babala.",
+  "toast": {
+    "warningRemoved": "Babala na naalis",
+    "warningsFailed": "Hindi nabura ang babala",
+    "enterUserId": "Mag-enter ng user ID upang i-clear ang lahat ng babala para sa user na iyon",
+    "allCleared": "Lahat ng babala ay na-clear para sa user",
+    "clearFailed": "Hindi na-clear ang mga babala",
+    "thresholdAdded": "Threshold ng parusa na naidagdag",
+    "thresholdFailed": "Hindi naidagdag ang parusa",
+    "thresholdRemoved": "Parusa na naalis",
+    "removeFailed": "Hindi naalis ang parusa",
+    "settingFailed": "Hindi na-update ang setting",
+    "thresholdInvalid": "Ang threshold ay dapat na positibong numero"
+  },
+  "escalation": {
+    "title": "Escalation ng Parusa",
+    "description": "I-configure ang mga awtomatikong aksyon kapag ang isang user ay umabot sa isang tiyak na bilang ng mga babala.",
+    "threshold": "Threshold",
+    "action": "Aksyon",
+    "duration": "Tagal",
+    "noRules": "Walang mga panuntunan ng escalation na naka-configure.",
+    "addRule": "Magdagdag ng Panuntunan ng Escalation",
+    "addButton": "Magdagdag ng Panuntunan",
+    "warnings": "{{count}} babala",
+    "min": "{{count}} min",
+    "timeout": "Timeout",
+    "kick": "I-kick",
+    "ban": "I-ban",
+    "durationLabel": "Tagal (segundo)",
+    "thresholdPlaceholder": "hal. 3",
+    "durationPlaceholder": "hal. 3600"
+  },
+  "settings": {
+    "title": "Mga Setting ng Babala",
+    "dmOnWarn": "DM sa Babala",
+    "dmOnWarnDesc": "Magpadala ng direktang mensahe sa user kapag nakatanggap sila ng babala.",
+    "requireReason": "Mangailangan ng Dahilan",
+    "requireReasonDesc": "Kailangang magbigay ng dahilan ang mga moderator kapag nagbibigay ng babala.",
+    "maxWarnings": "Max na Mga Babala",
+    "maxWarningsDesc": "Maximum na babala bawat user (0 = walang limitasyon)."
+  }
+}

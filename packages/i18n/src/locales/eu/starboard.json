@@ -1,0 +1,41 @@
+{
+  "title": "Izar Taula",
+  "subtitle": "Nabarmendu mezu onenak izar erreakzioak kanal dedikatu batean bilduz.",
+  "tabs": {
+    "settings": "Ezarpenak",
+    "starredMessages": "Izardun Mezuak"
+  },
+  "settings": {
+    "title": "Izar Taularen Konfigurazioa",
+    "description": "Konfiguratu noiz eta non argitaratzen diren izardun mezuak.",
+    "channelId": "Izar Taularen Kanala",
+    "channelIdDesc": "Izardun mezuak argitaratzen diren kanala.",
+    "starEmoji": "Izar Emojia",
+    "starEmojiDesc": "Mezuak izartzeko erabiltzen den emojia. Lehenespenez izar emojia erabiltzen da.",
+    "threshold": "Izar Atalasea",
+    "thresholdDesc": "Mezu bat izar taulan argitaratzeko beharrezko erreakzio kopuru minimoa.",
+    "selfStar": "Norberaren Izarra",
+    "selfStarDesc": "Utzi mezuen egileei beren mezuak izartzen.",
+    "nsfwAllowed": "NSFW Onartuta",
+    "nsfwAllowedDesc": "Utzi NSFW kanaletako mezuak izar taulan agertzen.",
+    "ignoredChannels": "Baztertutako Kanalak",
+    "ignoredChannelsDesc": "Kanal hauetako mezuak ez dira inoiz izar taulan agertuko."
+  },
+  "messages": {
+    "table": {
+      "original": "Jatorrizko Mezua",
+      "stars": "Izarrak",
+      "channel": "Kanala",
+      "date": "Data"
+    },
+    "noMessages": "Oraindik ez dago izardun mezurik."
+  },
+  "toast": {
+    "saved": "Izar taularen ezarpenak gordeta",
+    "saveFailed": "Ezin izan dira izar taularen ezarpenak gorde"
+  },
+  "actions": {
+    "save": "Gorde",
+    "saving": "Gordetzen..."
+  }
+}

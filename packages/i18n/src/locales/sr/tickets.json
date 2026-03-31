@@ -1,0 +1,77 @@
+{
+  "title": "Sistem tiketa",
+  "subtitle": "Kreirajte panele za tikete podrske i upravljajte otvorenim tiketima sa kontrolne table.",
+  "stats": {
+    "totalTickets": "Ukupno tiketa",
+    "open": "Otvoreno",
+    "claimed": "Preuzeto",
+    "panels": "Paneli"
+  },
+  "tabs": {
+    "activeTickets": "Aktivni tiketi",
+    "panelBuilder": "Graditelj panela",
+    "settings": "Podesavanja"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Korisnik",
+    "subject": "Predmet",
+    "status": "Status",
+    "assignee": "Dodeljeno",
+    "created": "Kreirano"
+  },
+  "statuses": {
+    "open": "Otvoreno",
+    "claimed": "Preuzeto",
+    "closed": "Zatvoreno"
+  },
+  "panelBuilder": {
+    "title": "Naslov panela",
+    "channel": "Kanal",
+    "buttonLabel": "Oznaka dugmeta",
+    "welcomeMessage": "Poruka dobrodoslice",
+    "category": "Kategorija tiketa",
+    "create": "Kreiraj panel",
+    "edit": "Uredi panel",
+    "deploy": "Postavi panel"
+  },
+  "settings": {
+    "transcriptChannel": "Kanal za transkripte",
+    "transcriptChannelDesc": "Kanal u koji se cuvaju transkripti tiketa pri zatvaranju.",
+    "maxTicketsPerUser": "Maks. tiketa po korisniku",
+    "maxTicketsPerUserDesc": "Maksimalan broj otvorenih tiketa koje jedan korisnik moze imati.",
+    "closeConfirmation": "Potvrda zatvaranja",
+    "closeConfirmationDesc": "Zahtevajte potvrdu pre zatvaranja tiketa.",
+    "dmTranscript": "Transkript privatnom porukom",
+    "dmTranscriptDesc": "Posaljite kopiju transkripta autoru tiketa putem privatne poruke."
+  },
+  "actions": {
+    "claim": "Preuzmi",
+    "close": "Zatvori",
+    "delete": "Obrisi",
+    "reopen": "Ponovo otvori"
+  },
+  "toast": {
+    "panelCreated": "Panel tiketa kreiran",
+    "panelCreateFailed": "Kreiranje panela tiketa nije uspelo",
+    "panelUpdated": "Panel tiketa azuriran",
+    "panelUpdateFailed": "Azuriranje panela tiketa nije uspelo",
+    "panelDeployed": "Panel tiketa postavljen",
+    "panelDeployFailed": "Postavljanje panela tiketa nije uspelo",
+    "ticketClaimed": "Tiket preuzet",
+    "ticketClaimFailed": "Preuzimanje tiketa nije uspelo",
+    "ticketClosed": "Tiket zatvoren",
+    "ticketCloseFailed": "Zatvaranje tiketa nije uspelo",
+    "ticketReopened": "Tiket ponovo otvoren",
+    "ticketReopenFailed": "Ponovno otvaranje tiketa nije uspelo",
+    "ticketDeleted": "Tiket obrisan",
+    "ticketDeleteFailed": "Brisanje tiketa nije uspelo",
+    "settingsSaved": "Podesavanja tiketa sacuvana",
+    "settingsFailed": "Cuvanje podesavanja tiketa nije uspelo"
+  },
+  "empty": {
+    "tickets": "Nema aktivnih tiketa.",
+    "panels": "Nema kreiranih panela tiketa."
+  },
+  "loading": "Ucitavanje tiketa..."
+}

@@ -1,0 +1,118 @@
+{
+  "title": "Rollid ja õigused",
+  "subtitle": "Kontrolli, kes pääseb ligi ja haldab iga armatuurlaua moodulit.",
+  "actions": {
+    "createRole": "Loo roll"
+  },
+  "permissionSystem": {
+    "title": "Õigussüsteem",
+    "active": "Aktiivne — administraatorid on piiratud oma määratud õigustega.",
+    "inactive": "Mitteaktiivne — kõigil MANAGE_GUILD õigusega administraatoritel on täielik juurdepääs.",
+    "enabledToast": "Õigussüsteem lubatud",
+    "disabledToast": "Õigussüsteem keelatud — kõigil administraatoritel on täielik juurdepääs"
+  },
+  "warning": {
+    "disabled": "Õigussüsteem on keelatud. Kõigil armatuurlaua administraatoritel on praegu täielik juurdepääs. Luba see ülal, et jõustada täpsemad õigused."
+  },
+  "tabs": {
+    "roles": "Rollid",
+    "auditLog": "Auditilogi"
+  },
+  "roleList": {
+    "title": "Armatuurlaua rollid",
+    "empty": "Rolle pole veel loodud.",
+    "selectHint": "Vali roll muutmiseks või loo uus.",
+    "default": "Vaikimisi",
+    "name": "Nimi",
+    "members": "Liikmed",
+    "permissions": "Õigused",
+    "edit": "Muuda",
+    "delete": "Kustuta"
+  },
+  "presets": {
+    "title": "Kiire lisamine mallist",
+    "createdToast": "Loodud roll \"{{name}}\""
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} liige",
+    "memberCount_plural": "{{count}} liiget",
+    "name": "Rolli nimi",
+    "color": "Värv",
+    "defaultRole": "Vaikimisi roll",
+    "permissions": "Õigused",
+    "allBadge": "Kõik",
+    "discordRoles": "Discord rollid"
+  },
+  "roleForm": {
+    "name": "Rolli nimi",
+    "discordRoles": "Discord rollid",
+    "permissions": "Õigused",
+    "create": "Loo roll",
+    "update": "Uuenda rolli",
+    "cancel": "Tühista"
+  },
+  "createDialog": {
+    "title": "Loo armatuurlaua roll",
+    "name": "Nimi",
+    "namePlaceholder": "nt Moderaator",
+    "color": "Värv"
+  },
+  "permissionCategories": {
+    "actions": "Toimingud ja automatiseerimine",
+    "music": "Muusika",
+    "tempvoice": "TempVoice",
+    "welcome": "Tervitus ja hüvastijätt",
+    "moderation": "Modereerimine",
+    "logging": "Logimine",
+    "leveling": "Tasemesüsteem",
+    "roles": "Rollipaneelid",
+    "tickets": "Piletid",
+    "suggestions": "Ettepanekud",
+    "starboard": "Starboard",
+    "giveaways": "Loosimised",
+    "security": "Turvalisus",
+    "scheduled": "Ajastatud sõnumid",
+    "commands": "Kohandatud käsud",
+    "settings": "Serveri seaded"
+  },
+  "audit": {
+    "table": {
+      "user": "Kasutaja",
+      "action": "Toiming",
+      "target": "Sihtmärk",
+      "timestamp": "Millal"
+    },
+    "noEntries": "Auditilogi kirjeid pole veel."
+  },
+  "pagination": {
+    "previous": "Eelmine",
+    "next": "Järgmine",
+    "page": "Leht {{current}} / {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Roll \"{{name}}\" loodud",
+    "roleCreateFailed": "Rolli loomine ebaõnnestus",
+    "roleUpdated": "Roll uuendatud",
+    "roleUpdateFailed": "Rolli uuendamine ebaõnnestus",
+    "roleDeleted": "Roll kustutatud",
+    "roleDeleteFailed": "Rolli kustutamine ebaõnnestus"
+  },
+  "confirm": {
+    "deleteTitle": "Kustuta roll \"{{name}}\"?",
+    "deleteMessage": "See eemaldab rolli ja tühistab kõigi liikmete määrangud. Seda toimingut ei saa tagasi võtta.",
+    "deleteRole": "Kas oled kindel, et soovid selle rolli kustutada? Liikmed kaotavad oma määratud õigused."
+  },
+  "saveButton": {
+    "saving": "Salvestan...",
+    "save": "Salvesta muudatused"
+  },
+  "deleteButton": {
+    "deleting": "Kustutan...",
+    "delete": "Kustuta"
+  },
+  "createButton": {
+    "creating": "Loon...",
+    "create": "Loo"
+  },
+  "loading": "Laadin õiguseid..."
+}

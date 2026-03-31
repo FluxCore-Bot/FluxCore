@@ -1,0 +1,67 @@
+{
+  "title": "提案",
+  "subtitle": "メンバーがアイデアを提出し、投票できるようにします。ステータスとフィードバックを管理します。",
+  "stats": {
+    "totalSuggestions": "提案総数",
+    "systemStatus": "システムステータス",
+    "channel": {
+      "configured": "チャンネル設定済み",
+      "notSet": "チャンネル未設定"
+    }
+  },
+  "tabs": {
+    "suggestions": "提案",
+    "settings": "設定"
+  },
+  "filter": {
+    "filterByStatus": "ステータスでフィルター",
+    "all": "すべて",
+    "pending": "保留中",
+    "approved": "承認済み",
+    "rejected": "却下",
+    "implemented": "実装済み",
+    "considered": "検討中"
+  },
+  "table": {
+    "id": "ID",
+    "author": "投稿者",
+    "content": "内容",
+    "status": "ステータス",
+    "votes": "投票数",
+    "date": "日付"
+  },
+  "actions": {
+    "approve": "承認",
+    "reject": "却下",
+    "implement": "実装済みにする",
+    "consider": "検討中にする",
+    "delete": "削除"
+  },
+  "settings": {
+    "channel": "提案チャンネル",
+    "channelDesc": "提案が投票のために投稿されるチャンネル。",
+    "voteEmojis": "投票絵文字",
+    "voteEmojisDesc": "賛成・反対のリアクションに使用する絵文字。",
+    "autoThread": "自動スレッド作成",
+    "autoThreadDesc": "新しい提案ごとに自動的にディスカッションスレッドを作成します。",
+    "dmOnStatusChange": "ステータス変更時にDM送信",
+    "dmOnStatusChangeDesc": "提案のステータスが変更された時に投稿者にDMで通知します。"
+  },
+  "toast": {
+    "approved": "提案を承認しました",
+    "rejected": "提案を却下しました",
+    "implemented": "提案を実装済みにしました",
+    "considered": "提案を検討中にしました",
+    "deleted": "提案を削除しました",
+    "actionFailed": "提案の更新に失敗しました",
+    "settingsSaved": "提案設定を保存しました",
+    "settingsFailed": "提案設定の保存に失敗しました"
+  },
+  "empty": "提案はまだありません。",
+  "loading": "提案を読み込み中...",
+  "pagination": {
+    "previous": "前へ",
+    "next": "次へ",
+    "page": "ページ {{page}} / {{total}}"
+  }
+}

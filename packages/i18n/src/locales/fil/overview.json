@@ -1,0 +1,12 @@
+{
+  "title": "Pangkalahatang-tanaw",
+  "subtitle": "Subaybayan ang iyong performance ng automation at aktibidad sa isang tingin.",
+  "stats": {
+    "actionRules": "Mga Panuntunan ng Aksyon",
+    "activeNow": "Aktibo Ngayon",
+    "executions": "Mga Pagpapatupad",
+    "successRate": "Rate ng Tagumpay"
+  },
+  "errorsInLast24h": "{{count}} error sa nakaraang 24h",
+  "errorsInLast24h_other": "{{count}} mga error sa nakaraang 24h"
+}

@@ -1,0 +1,120 @@
+{
+  "title": "レベリングシステム",
+  "subtitle": "XP獲得、レベルアップ通知、ロール報酬、乗数を設定します。",
+  "stats": {
+    "rankedMembers": "ランク付きメンバー",
+    "roleRewards": "ロール報酬",
+    "systemStatus": "システムステータス",
+    "enabled": "有効",
+    "disabled": "無効"
+  },
+  "tabs": {
+    "leaderboard": "リーダーボード",
+    "settings": "設定",
+    "roleRewards": "ロール報酬",
+    "exclusions": "除外設定",
+    "multipliers": "乗数"
+  },
+  "table": {
+    "rank": "順位",
+    "userId": "ユーザーID",
+    "level": "レベル",
+    "xp": "XP",
+    "messages": "メッセージ数",
+    "voiceTime": "ボイス時間"
+  },
+  "settings": {
+    "title": "レベリング設定",
+    "enabled": "レベリングを有効にする",
+    "enabledDesc": "レベリングシステム全体のオン/オフを切り替えます。",
+    "xpPerMessage": "メッセージあたりのXP",
+    "xpPerMessageDesc": "メッセージごとに付与される基本XP (0-9のランダム値が加算されます)。",
+    "xpCooldown": "XPクールダウン (秒)",
+    "xpCooldownDesc": "ユーザーごとのXP付与の最小間隔。",
+    "voiceXpEnabled": "ボイスXP",
+    "voiceXpEnabledDesc": "ボイスチャンネルで過ごした時間に対してXPを付与します。",
+    "voiceXpPerMinute": "1分あたりのボイスXP",
+    "voiceXpPerMinuteDesc": "ボイスチャンネルで1分あたりに付与されるXP。",
+    "levelUpAnnouncements": "レベルアップ通知",
+    "levelUpAnnouncementsDesc": "メンバーがレベルアップした時に通知します。",
+    "announceDest": "通知先",
+    "announceDestHint": "上の入力欄にチャンネルIDを直接入力することもできます。",
+    "announceDestSameChannel": "同じチャンネル",
+    "announceDestDM": "ダイレクトメッセージ",
+    "announceMessage": "通知メッセージ",
+    "announceMessagePlaceholder": "{user}が**レベル{level}**に到達しました！",
+    "announceMessageVars": "変数: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "ロール報酬",
+    "description": "メンバーが特定のレベルに達した時に自動的にロールを付与します。",
+    "addReward": "報酬を追加",
+    "addRewardTitle": "ロール報酬を追加",
+    "level": "レベル",
+    "levelPrefix": "レベル {{level}}",
+    "roleId": "ロールID",
+    "levelPlaceholder": "例: 5",
+    "rolePlaceholder": "例: 123456789",
+    "removeReward": "削除",
+    "noRewards": "ロール報酬は設定されていません。"
+  },
+  "exclusions": {
+    "title": "XP除外設定",
+    "description": "XPが付与されないチャンネルとロール。",
+    "noXpChannels": "XP無効チャンネル (カンマ区切りのID)",
+    "noXpChannelsPlaceholder": "例: 123456789, 987654321",
+    "noXpRoles": "XP無効ロール (カンマ区切りのID)",
+    "noXpRolesPlaceholder": "例: 123456789, 987654321",
+    "save": "除外設定を保存"
+  },
+  "multipliers": {
+    "title": "XP乗数",
+    "description": "チャンネルまたはロールごとにXP乗数を設定します。乗数2でXPが2倍になります。",
+    "channelMultipliers": "チャンネル乗数",
+    "roleMultipliers": "ロール乗数",
+    "channelId": "チャンネルID",
+    "roleId": "ロールID",
+    "multiplier": "乗数",
+    "type": "タイプ",
+    "typeChannel": "チャンネル",
+    "typeRole": "ロール",
+    "id": "ID",
+    "idPlaceholder": "チャンネルまたはロールID",
+    "value": "乗数",
+    "valuePlaceholder": "例: 2",
+    "add": "乗数を追加",
+    "addTitle": "乗数を追加",
+    "multiplierSuffix": "{{value}}倍",
+    "noMultipliers": "XP乗数は設定されていません。"
+  },
+  "pagination": {
+    "previous": "前へ",
+    "next": "次へ",
+    "pageInfo": "ページ {{page}} / {{totalPages}} (全{{total}}件)"
+  },
+  "loading": "リーダーボードを読み込み中...",
+  "loadingGeneric": "読み込み中...",
+  "emptyLeaderboard": "まだXPを獲得したメンバーがいません。",
+  "toast": {
+    "saved": "レベリング設定を保存しました",
+    "saveFailed": "設定の更新に失敗しました",
+    "rewardAdded": "報酬を追加しました",
+    "rewardAddFailed": "報酬の追加に失敗しました",
+    "rewardRemoved": "報酬を削除しました",
+    "rewardRemoveFailed": "報酬の削除に失敗しました",
+    "multiplierAdded": "乗数を追加しました",
+    "multiplierAddFailed": "乗数の追加に失敗しました",
+    "multiplierRemoved": "乗数を削除しました",
+    "multiplierRemoveFailed": "乗数の削除に失敗しました",
+    "exclusionUpdated": "除外設定を保存しました",
+    "exclusionFailed": "除外設定の保存に失敗しました",
+    "levelValidation": "レベルは1から100の間で指定してください",
+    "roleIdRequired": "ロールIDは必須です",
+    "multiplierIdRequired": "IDと乗数値は必須です",
+    "multiplierRange": "乗数は0から10の間で指定してください"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}時間{{minutes}}分",
+    "voiceTimeMinutesOnly": "{{minutes}}分"
+  }
+}

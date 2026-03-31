@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { LogsTable } from "../../../components/LogsTable";
 import { PageHeader } from "../../../components/PageHeader";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../../components/ui/tabs";
@@ -7,19 +7,20 @@ import { EventLogConfig } from "../../../components/EventLogConfig";
 import { EventLogBrowser } from "../../../components/EventLogBrowser";
 
 export function LogsPage() {
+  const { t } = useTranslation("logs");
   const [activeTab, setActiveTab] = useState("activity");
 
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Logs"
-        subtitle="Monitor rule executions and event logging."
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <TabsList>
-          <TabsTrigger value="activity">Activity Logs</TabsTrigger>
-          <TabsTrigger value="events">Event Logs</TabsTrigger>
+          <TabsTrigger value="activity">{t("tabs.activity")}</TabsTrigger>
+          <TabsTrigger value="events">{t("tabs.events")}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="activity">

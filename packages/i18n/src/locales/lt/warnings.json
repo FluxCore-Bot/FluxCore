@@ -1,0 +1,72 @@
+{
+  "title": "Ispejimai",
+  "subtitle": "Sekite ir valdykite nariu ispejimus su automatiniu eskalavimo.",
+  "stats": {
+    "totalWarnings": "Viso ispejimu",
+    "escalationRules": "Eskalavimo taisykles",
+    "dmOnWarn": "Pranesimas apie ispejima"
+  },
+  "tabs": {
+    "warnings": "Ispejimu zurnalas",
+    "escalation": "Eskalavimas",
+    "settings": "Nustatymai"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Naudotojas",
+    "moderator": "Moderatorius",
+    "reason": "Priezastis",
+    "date": "Data"
+  },
+  "filter": {
+    "userPlaceholder": "Filtruoti pagal naudotojo ID...",
+    "clearAll": "Istrinti visus"
+  },
+  "pagination": {
+    "previous": "Ankstesnis",
+    "next": "Kitas",
+    "page": "Puslapis {{page}} is {{total}} ({{count}} viso)"
+  },
+  "loading": "Kraunami ispejimai...",
+  "noWarnings": "Ispejimu nerasta.",
+  "toast": {
+    "warningRemoved": "Ispejimas pasalintas",
+    "warningsFailed": "Nepavyko istrinti ispejimo",
+    "enterUserId": "Iveskite naudotojo ID, kad istrintumete visus to naudotojo ispejimus",
+    "allCleared": "Visi ispejimai istrinti naudotojui",
+    "clearFailed": "Nepavyko istrinti ispejimu",
+    "thresholdAdded": "Bausmes riba prideta",
+    "thresholdFailed": "Nepavyko prideti bausmes",
+    "thresholdRemoved": "Bausme pasalinta",
+    "removeFailed": "Nepavyko pasalinti bausmes",
+    "settingFailed": "Nepavyko atnaujinti nustatymo",
+    "thresholdInvalid": "Riba turi buti teigiamas skaicius"
+  },
+  "escalation": {
+    "title": "Bausniu eskalavimas",
+    "description": "Konfigurukite automatinius veiksmus, kai naudotojas pasiekia tam tikra ispejimu skaiciu.",
+    "threshold": "Riba",
+    "action": "Veiksmas",
+    "duration": "Trukme",
+    "noRules": "Eskalavimo taisykliu nera.",
+    "addRule": "Prideti eskalavimo taisykle",
+    "addButton": "Prideti taisykle",
+    "warnings": "{{count}} ispejimu",
+    "min": "{{count}} min",
+    "timeout": "Laikinas nutildymas",
+    "kick": "Ismetimas",
+    "ban": "Draudimas",
+    "durationLabel": "Trukme (sekundes)",
+    "thresholdPlaceholder": "pvz. 3",
+    "durationPlaceholder": "pvz. 3600"
+  },
+  "settings": {
+    "title": "Ispejimu nustatymai",
+    "dmOnWarn": "Pranesimas apie ispejima",
+    "dmOnWarnDesc": "Siusti privatia zinute naudotojui, kai jis gauna ispejima.",
+    "requireReason": "Privaloma priezastis",
+    "requireReasonDesc": "Moderatoriai privalo nurodyti priezasti issduodant ispejima.",
+    "maxWarnings": "Maksimalus ispejimu skaicius",
+    "maxWarningsDesc": "Maksimalus ispejimu skaicius vienam naudotojui (0 = neribota)."
+  }
+}

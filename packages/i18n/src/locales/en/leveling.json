@@ -1,0 +1,120 @@
+{
+  "title": "Leveling System",
+  "subtitle": "Configure XP earning, level-up announcements, role rewards, and multipliers.",
+  "stats": {
+    "rankedMembers": "Ranked Members",
+    "roleRewards": "Role Rewards",
+    "systemStatus": "System Status",
+    "enabled": "Enabled",
+    "disabled": "Disabled"
+  },
+  "tabs": {
+    "leaderboard": "Leaderboard",
+    "settings": "Settings",
+    "roleRewards": "Role Rewards",
+    "exclusions": "Exclusions",
+    "multipliers": "Multipliers"
+  },
+  "table": {
+    "rank": "Rank",
+    "userId": "User ID",
+    "level": "Level",
+    "xp": "XP",
+    "messages": "Messages",
+    "voiceTime": "Voice Time"
+  },
+  "settings": {
+    "title": "Leveling Settings",
+    "enabled": "Enable Leveling",
+    "enabledDesc": "Toggle the entire leveling system on or off.",
+    "xpPerMessage": "XP per Message",
+    "xpPerMessageDesc": "Base XP awarded per message (randomness of 0-9 is added).",
+    "xpCooldown": "XP Cooldown (seconds)",
+    "xpCooldownDesc": "Minimum time between XP grants per user.",
+    "voiceXpEnabled": "Voice XP",
+    "voiceXpEnabledDesc": "Grant XP for time spent in voice channels.",
+    "voiceXpPerMinute": "Voice XP per Minute",
+    "voiceXpPerMinuteDesc": "XP awarded per minute in voice.",
+    "levelUpAnnouncements": "Level-up Announcements",
+    "levelUpAnnouncementsDesc": "Announce when a member levels up.",
+    "announceDest": "Announcement Destination",
+    "announceDestHint": "You can also enter a channel ID directly in the input above.",
+    "announceDestSameChannel": "Same Channel",
+    "announceDestDM": "Direct Message",
+    "announceMessage": "Announcement Message",
+    "announceMessagePlaceholder": "{user} just reached **Level {level}**!",
+    "announceMessageVars": "Variables: {user}, {level}, {username}"
+  },
+  "roleRewards": {
+    "title": "Role Rewards",
+    "description": "Automatically assign roles when members reach certain levels.",
+    "addReward": "Add Reward",
+    "addRewardTitle": "Add Role Reward",
+    "level": "Level",
+    "levelPrefix": "Level {{level}}",
+    "roleId": "Role ID",
+    "levelPlaceholder": "e.g. 5",
+    "rolePlaceholder": "e.g. 123456789",
+    "removeReward": "Remove",
+    "noRewards": "No role rewards configured."
+  },
+  "exclusions": {
+    "title": "XP Exclusions",
+    "description": "Channels and roles that do not earn XP.",
+    "noXpChannels": "No-XP Channels (comma-separated IDs)",
+    "noXpChannelsPlaceholder": "e.g. 123456789, 987654321",
+    "noXpRoles": "No-XP Roles (comma-separated IDs)",
+    "noXpRolesPlaceholder": "e.g. 123456789, 987654321",
+    "save": "Save Exclusions"
+  },
+  "multipliers": {
+    "title": "XP Multipliers",
+    "description": "Set XP multipliers per channel or role. A multiplier of 2 doubles the XP earned.",
+    "channelMultipliers": "Channel Multipliers",
+    "roleMultipliers": "Role Multipliers",
+    "channelId": "Channel ID",
+    "roleId": "Role ID",
+    "multiplier": "Multiplier",
+    "type": "Type",
+    "typeChannel": "Channel",
+    "typeRole": "Role",
+    "id": "ID",
+    "idPlaceholder": "Channel or Role ID",
+    "value": "Multiplier",
+    "valuePlaceholder": "e.g. 2",
+    "add": "Add Multiplier",
+    "addTitle": "Add Multiplier",
+    "multiplierSuffix": "{{value}}x",
+    "noMultipliers": "No XP multipliers configured."
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "pageInfo": "Page {{page}} of {{totalPages}} ({{total}} total)"
+  },
+  "loading": "Loading leaderboard...",
+  "loadingGeneric": "Loading...",
+  "emptyLeaderboard": "No members have earned XP yet.",
+  "toast": {
+    "saved": "Leveling settings saved",
+    "saveFailed": "Failed to update setting",
+    "rewardAdded": "Reward added",
+    "rewardAddFailed": "Failed to add reward",
+    "rewardRemoved": "Reward removed",
+    "rewardRemoveFailed": "Failed to remove reward",
+    "multiplierAdded": "Multiplier added",
+    "multiplierAddFailed": "Failed to add multiplier",
+    "multiplierRemoved": "Multiplier removed",
+    "multiplierRemoveFailed": "Failed to remove multiplier",
+    "exclusionUpdated": "Exclusions saved",
+    "exclusionFailed": "Failed to save exclusions",
+    "levelValidation": "Level must be between 1 and 100",
+    "roleIdRequired": "Role ID is required",
+    "multiplierIdRequired": "ID and multiplier value are required",
+    "multiplierRange": "Multiplier must be between 0 and 10"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}h {{minutes}}m",
+    "voiceTimeMinutesOnly": "{{minutes}}m"
+  }
+}

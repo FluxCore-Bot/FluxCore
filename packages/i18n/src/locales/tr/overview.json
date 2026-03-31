@@ -1,0 +1,12 @@
+{
+  "title": "Genel Bakış",
+  "subtitle": "Otomasyon performansınızı ve etkinliğinizi bir bakışta izleyin.",
+  "stats": {
+    "actionRules": "Eylem Kuralları",
+    "activeNow": "Şu An Aktif",
+    "executions": "Yürütmeler",
+    "successRate": "Başarı Oranı"
+  },
+  "errorsInLast24h": "Son 24 saatte {{count}} hata",
+  "errorsInLast24h_other": "Son 24 saatte {{count}} hata"
+}

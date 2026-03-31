@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useParams } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../lib/client";
 import { PageHeader } from "../../../components/PageHeader";
@@ -35,17 +36,18 @@ import {
 import { Separator } from "../../../components/ui/separator";
 import { Icon } from "../../../components/Icon";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
-import { Progress } from "../../../components/ui/progress";
 
-function formatVoiceTime(minutes: number): string {
+
+function formatVoiceTime(minutes: number, t: (key: string, opts?: Record<string, unknown>) => string): string {
   const hours = Math.floor(minutes / 60);
   const mins = minutes % 60;
-  if (hours === 0) return `${mins}m`;
-  return `${hours}h ${mins}m`;
+  if (hours === 0) return t("formatters.voiceTimeMinutesOnly", { minutes: mins });
+  return t("formatters.voiceTime", { hours, minutes: mins });
 }
 
 export function LevelingPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
+  const { t } = useTranslation("leveling");
   const [page, setPage] = useState(1);
 
   // Leaderboard
@@ -85,7 +87,7 @@ export function LevelingPage() {
       { [key]: value },
       {
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to update setting"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.saveFailed")),
       },
     );
   }
@@ -97,7 +99,7 @@ export function LevelingPage() {
       { [key]: num },
       {
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to update setting"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.saveFailed")),
       },
     );
   }
@@ -108,7 +110,7 @@ export function LevelingPage() {
       { announceChannel: channel },
       {
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to update setting"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.saveFailed")),
       },
     );
   }
@@ -118,7 +120,7 @@ export function LevelingPage() {
       { announceMessage: value },
       {
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to update setting"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.saveFailed")),
       },
     );
   }
@@ -126,32 +128,32 @@ export function LevelingPage() {
   function handleAddReward() {
     const level = parseInt(newRewardLevel, 10);
     if (!Number.isFinite(level) || level < 1 || level > 100) {
-      toast.error("Level must be between 1 and 100");
+      toast.error(t("toast.levelValidation"));
       return;
     }
     if (!newRewardRole.trim()) {
-      toast.error("Role ID is required");
+      toast.error(t("toast.roleIdRequired"));
       return;
     }
     addReward.mutate(
       { level, roleId: newRewardRole.trim() },
       {
         onSuccess: () => {
-          toast.success("Reward added");
+          toast.success(t("toast.rewardAdded"));
           setNewRewardLevel("");
           setNewRewardRole("");
         },
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to add reward"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.rewardAddFailed")),
       },
     );
   }
 
   function handleRemoveReward(id: number) {
     removeReward.mutate(id, {
-      onSuccess: () => toast.success("Reward removed"),
+      onSuccess: () => toast.success(t("toast.rewardRemoved")),
       onError: (err) =>
-        toast.error(err instanceof ApiError ? err.message : "Failed to remove reward"),
+        toast.error(err instanceof ApiError ? err.message : t("toast.rewardRemoveFailed")),
     });
   }
 
@@ -167,21 +169,21 @@ export function LevelingPage() {
     updateSettings.mutate(
       { noXpChannels: channels, noXpRoles: roles },
       {
-        onSuccess: () => toast.success("Exclusions saved"),
+        onSuccess: () => toast.success(t("toast.exclusionUpdated")),
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to save exclusions"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.exclusionFailed")),
       },
     );
   }
 
   function handleAddMultiplier() {
     if (!multiplierId.trim() || !multiplierValue.trim()) {
-      toast.error("ID and multiplier value are required");
+      toast.error(t("toast.multiplierIdRequired"));
       return;
     }
     const val = parseFloat(multiplierValue);
     if (!Number.isFinite(val) || val <= 0 || val > 10) {
-      toast.error("Multiplier must be between 0 and 10");
+      toast.error(t("toast.multiplierRange"));
       return;
     }
 
@@ -198,12 +200,12 @@ export function LevelingPage() {
       { xpMultipliers: updated },
       {
         onSuccess: () => {
-          toast.success("Multiplier added");
+          toast.success(t("toast.multiplierAdded"));
           setMultiplierId("");
           setMultiplierValue("");
         },
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to add multiplier"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.multiplierAddFailed")),
       },
     );
   }
@@ -220,9 +222,9 @@ export function LevelingPage() {
     updateSettings.mutate(
       { xpMultipliers: updated },
       {
-        onSuccess: () => toast.success("Multiplier removed"),
+        onSuccess: () => toast.success(t("toast.multiplierRemoved")),
         onError: (err) =>
-          toast.error(err instanceof ApiError ? err.message : "Failed to remove multiplier"),
+          toast.error(err instanceof ApiError ? err.message : t("toast.multiplierRemoveFailed")),
       },
     );
   }
@@ -236,57 +238,57 @@ export function LevelingPage() {
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Leveling System"
-        subtitle="Configure XP earning, level-up announcements, role rewards, and multipliers."
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Ranked Members</p>
+          <p className="section-label text-text-muted">{t("stats.rankedMembers")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {leaderboardLoading ? "..." : leaderboardData?.total ?? 0}
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">Role Rewards</p>
+          <p className="section-label text-text-muted">{t("stats.roleRewards")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
             {rewardsLoading ? "..." : rewards?.length ?? 0}
           </p>
         </Card>
         <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">System Status</p>
+          <p className="section-label text-text-muted">{t("stats.systemStatus")}</p>
           <p className="mt-1 text-2xl font-bold text-text">
-            {settingsLoading ? "..." : settings?.enabled ? "Enabled" : "Disabled"}
+            {settingsLoading ? "..." : settings?.enabled ? t("stats.enabled") : t("stats.disabled")}
           </p>
         </Card>
       </div>
 
       <Tabs defaultValue="leaderboard">
         <TabsList>
-          <TabsTrigger value="leaderboard">Leaderboard</TabsTrigger>
-          <TabsTrigger value="settings">Settings</TabsTrigger>
-          <TabsTrigger value="rewards">Role Rewards</TabsTrigger>
-          <TabsTrigger value="exclusions">Exclusions</TabsTrigger>
-          <TabsTrigger value="multipliers">Multipliers</TabsTrigger>
+          <TabsTrigger value="leaderboard">{t("tabs.leaderboard")}</TabsTrigger>
+          <TabsTrigger value="settings">{t("tabs.settings")}</TabsTrigger>
+          <TabsTrigger value="rewards">{t("tabs.roleRewards")}</TabsTrigger>
+          <TabsTrigger value="exclusions">{t("tabs.exclusions")}</TabsTrigger>
+          <TabsTrigger value="multipliers">{t("tabs.multipliers")}</TabsTrigger>
         </TabsList>
 
         {/* Leaderboard */}
         <TabsContent value="leaderboard">
           <Card className="bg-surface p-6">
             {leaderboardLoading ? (
-              <p className="text-text-muted">Loading leaderboard...</p>
+              <p className="text-text-muted">{t("loading")}</p>
             ) : leaderboardData && leaderboardData.entries.length > 0 ? (
               <>
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead className="w-16">Rank</TableHead>
-                      <TableHead>User ID</TableHead>
-                      <TableHead>Level</TableHead>
-                      <TableHead>XP</TableHead>
-                      <TableHead>Messages</TableHead>
-                      <TableHead>Voice Time</TableHead>
+                      <TableHead className="w-16">{t("table.rank")}</TableHead>
+                      <TableHead>{t("table.userId")}</TableHead>
+                      <TableHead>{t("table.level")}</TableHead>
+                      <TableHead>{t("table.xp")}</TableHead>
+                      <TableHead>{t("table.messages")}</TableHead>
+                      <TableHead>{t("table.voiceTime")}</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -299,7 +301,7 @@ export function LevelingPage() {
                         <TableCell className="font-bold">{entry.level}</TableCell>
                         <TableCell>{entry.xp.toLocaleString()}</TableCell>
                         <TableCell>{entry.messageCount.toLocaleString()}</TableCell>
-                        <TableCell>{formatVoiceTime(entry.voiceMinutes)}</TableCell>
+                        <TableCell>{formatVoiceTime(entry.voiceMinutes, t)}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -308,7 +310,7 @@ export function LevelingPage() {
                 {totalPages > 1 && (
                   <div className="mt-4 flex items-center justify-between">
                     <p className="text-sm text-text-muted">
-                      Page {page} of {totalPages} ({leaderboardData.total} total)
+                      {t("pagination.pageInfo", { page, totalPages, total: leaderboardData.total })}
                     </p>
                     <div className="flex gap-2">
                       <Button
@@ -317,7 +319,7 @@ export function LevelingPage() {
                         onClick={() => setPage((p) => Math.max(1, p - 1))}
                         disabled={page <= 1}
                       >
-                        Previous
+                        {t("pagination.previous")}
                       </Button>
                       <Button
                         variant="outline"
@@ -325,14 +327,14 @@ export function LevelingPage() {
                         onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                         disabled={page >= totalPages}
                       >
-                        Next
+                        {t("pagination.next")}
                       </Button>
                     </div>
                   </div>
                 )}
               </>
             ) : (
-              <p className="text-text-muted">No members have earned XP yet.</p>
+              <p className="text-text-muted">{t("emptyLeaderboard")}</p>
             )}
           </Card>
         </TabsContent>
@@ -340,17 +342,17 @@ export function LevelingPage() {
         {/* Settings */}
         <TabsContent value="settings">
           <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">Leveling Settings</h3>
+            <h3 className="mb-4 text-lg font-semibold">{t("settings.title")}</h3>
 
             {settingsLoading ? (
-              <p className="text-text-muted">Loading...</p>
+              <p className="text-text-muted">{t("loadingGeneric")}</p>
             ) : settings ? (
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">Enable Leveling</p>
+                    <p className="font-medium">{t("settings.enabled")}</p>
                     <p className="text-sm text-text-muted">
-                      Toggle the entire leveling system on or off.
+                      {t("settings.enabledDesc")}
                     </p>
                   </div>
                   <Switch
@@ -363,9 +365,9 @@ export function LevelingPage() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">XP per Message</p>
+                    <p className="font-medium">{t("settings.xpPerMessage")}</p>
                     <p className="text-sm text-text-muted">
-                      Base XP awarded per message (randomness of 0-9 is added).
+                      {t("settings.xpPerMessageDesc")}
                     </p>
                   </div>
                   <Input
@@ -382,9 +384,9 @@ export function LevelingPage() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">XP Cooldown (seconds)</p>
+                    <p className="font-medium">{t("settings.xpCooldown")}</p>
                     <p className="text-sm text-text-muted">
-                      Minimum time between XP grants per user.
+                      {t("settings.xpCooldownDesc")}
                     </p>
                   </div>
                   <Input
@@ -401,9 +403,9 @@ export function LevelingPage() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">Voice XP</p>
+                    <p className="font-medium">{t("settings.voiceXpEnabled")}</p>
                     <p className="text-sm text-text-muted">
-                      Grant XP for time spent in voice channels.
+                      {t("settings.voiceXpEnabledDesc")}
                     </p>
                   </div>
                   <Switch
@@ -417,9 +419,9 @@ export function LevelingPage() {
                     <Separator />
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="font-medium">Voice XP per Minute</p>
+                        <p className="font-medium">{t("settings.voiceXpPerMinute")}</p>
                         <p className="text-sm text-text-muted">
-                          XP awarded per minute in voice.
+                          {t("settings.voiceXpPerMinuteDesc")}
                         </p>
                       </div>
                       <Input
@@ -438,9 +440,9 @@ export function LevelingPage() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">Level-up Announcements</p>
+                    <p className="font-medium">{t("settings.levelUpAnnouncements")}</p>
                     <p className="text-sm text-text-muted">
-                      Announce when a member levels up.
+                      {t("settings.levelUpAnnouncementsDesc")}
                     </p>
                   </div>
                   <Switch
@@ -454,7 +456,7 @@ export function LevelingPage() {
                     <Separator />
                     <div className="space-y-3">
                       <div>
-                        <Label>Announcement Destination</Label>
+                        <Label>{t("settings.announceDest")}</Label>
                         <Select
                           value={settings.announceChannel === null ? "same" : settings.announceChannel === "dm" ? "dm" : "channel"}
                           onValueChange={handleAnnounceChannelChange}
@@ -463,24 +465,24 @@ export function LevelingPage() {
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="same">Same Channel</SelectItem>
-                            <SelectItem value="dm">Direct Message</SelectItem>
+                            <SelectItem value="same">{t("settings.announceDestSameChannel")}</SelectItem>
+                            <SelectItem value="dm">{t("settings.announceDestDM")}</SelectItem>
                           </SelectContent>
                         </Select>
                         <p className="mt-1 text-xs text-text-muted">
-                          You can also enter a channel ID directly in the input above.
+                          {t("settings.announceDestHint")}
                         </p>
                       </div>
                       <div>
-                        <Label>Announcement Message</Label>
+                        <Label>{t("settings.announceMessage")}</Label>
                         <Textarea
                           value={settings.announceMessage}
                           onChange={(e) => handleAnnounceMessageChange(e.target.value)}
-                          placeholder="{user} just reached **Level {level}**!"
+                          placeholder={t("settings.announceMessagePlaceholder")}
                           className="mt-1"
                         />
                         <p className="mt-1 text-xs text-text-muted">
-                          Variables: {"{user}"}, {"{level}"}, {"{username}"}
+                          {t("settings.announceMessageVars")}
                         </p>
                       </div>
                     </div>
@@ -494,26 +496,26 @@ export function LevelingPage() {
         {/* Role Rewards */}
         <TabsContent value="rewards">
           <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">Role Rewards</h3>
+            <h3 className="mb-4 text-lg font-semibold">{t("roleRewards.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
-              Automatically assign roles when members reach certain levels.
+              {t("roleRewards.description")}
             </p>
 
             {rewardsLoading ? (
-              <p className="text-text-muted">Loading...</p>
+              <p className="text-text-muted">{t("loadingGeneric")}</p>
             ) : rewards && rewards.length > 0 ? (
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Level</TableHead>
-                    <TableHead>Role ID</TableHead>
+                    <TableHead>{t("roleRewards.level")}</TableHead>
+                    <TableHead>{t("roleRewards.roleId")}</TableHead>
                     <TableHead className="w-16" />
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {rewards.map((r) => (
                     <TableRow key={r.id}>
-                      <TableCell className="font-bold">Level {r.level}</TableCell>
+                      <TableCell className="font-bold">{t("roleRewards.levelPrefix", { level: r.level })}</TableCell>
                       <TableCell className="font-mono text-xs">{r.roleId}</TableCell>
                       <TableCell>
                         <Button
@@ -530,31 +532,31 @@ export function LevelingPage() {
                 </TableBody>
               </Table>
             ) : (
-              <p className="mb-4 text-text-muted">No role rewards configured.</p>
+              <p className="mb-4 text-text-muted">{t("roleRewards.noRewards")}</p>
             )}
 
             <Separator className="my-6" />
 
-            <h4 className="mb-3 text-sm font-semibold">Add Role Reward</h4>
+            <h4 className="mb-3 text-sm font-semibold">{t("roleRewards.addRewardTitle")}</h4>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
               <div>
-                <Label htmlFor="reward-level">Level</Label>
+                <Label htmlFor="reward-level">{t("roleRewards.level")}</Label>
                 <Input
                   id="reward-level"
                   type="number"
                   min={1}
                   max={100}
-                  placeholder="e.g. 5"
+                  placeholder={t("roleRewards.levelPlaceholder")}
                   value={newRewardLevel}
                   onChange={(e) => setNewRewardLevel(e.target.value)}
                   className="w-24"
                 />
               </div>
               <div>
-                <Label htmlFor="reward-role">Role ID</Label>
+                <Label htmlFor="reward-role">{t("roleRewards.roleId")}</Label>
                 <Input
                   id="reward-role"
-                  placeholder="e.g. 123456789"
+                  placeholder={t("roleRewards.rolePlaceholder")}
                   value={newRewardRole}
                   onChange={(e) => setNewRewardRole(e.target.value)}
                   className="w-48"
@@ -564,7 +566,7 @@ export function LevelingPage() {
                 onClick={handleAddReward}
                 disabled={addReward.isPending}
               >
-                Add Reward
+                {t("roleRewards.addReward")}
               </Button>
             </div>
           </Card>
@@ -573,26 +575,26 @@ export function LevelingPage() {
         {/* Exclusions */}
         <TabsContent value="exclusions">
           <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">XP Exclusions</h3>
+            <h3 className="mb-4 text-lg font-semibold">{t("exclusions.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
-              Channels and roles that do not earn XP.
+              {t("exclusions.description")}
             </p>
 
             <div className="space-y-4">
               <div>
-                <Label htmlFor="no-xp-channels">No-XP Channels (comma-separated IDs)</Label>
+                <Label htmlFor="no-xp-channels">{t("exclusions.noXpChannels")}</Label>
                 <Input
                   id="no-xp-channels"
-                  placeholder="e.g. 123456789, 987654321"
+                  placeholder={t("exclusions.noXpChannelsPlaceholder")}
                   value={noXpChannelsValue}
                   onChange={(e) => setNoXpChannelsInput(e.target.value)}
                 />
               </div>
               <div>
-                <Label htmlFor="no-xp-roles">No-XP Roles (comma-separated IDs)</Label>
+                <Label htmlFor="no-xp-roles">{t("exclusions.noXpRoles")}</Label>
                 <Input
                   id="no-xp-roles"
-                  placeholder="e.g. 123456789, 987654321"
+                  placeholder={t("exclusions.noXpRolesPlaceholder")}
                   value={noXpRolesValue}
                   onChange={(e) => setNoXpRolesInput(e.target.value)}
                 />
@@ -601,7 +603,7 @@ export function LevelingPage() {
                 onClick={handleSaveExclusions}
                 disabled={updateSettings.isPending}
               >
-                Save Exclusions
+                {t("exclusions.save")}
               </Button>
             </div>
           </Card>
@@ -610,9 +612,9 @@ export function LevelingPage() {
         {/* Multipliers */}
         <TabsContent value="multipliers">
           <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">XP Multipliers</h3>
+            <h3 className="mb-4 text-lg font-semibold">{t("multipliers.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
-              Set XP multipliers per channel or role. A multiplier of 2 doubles the XP earned.
+              {t("multipliers.description")}
             </p>
 
             {/* Current multipliers */}
@@ -621,12 +623,12 @@ export function LevelingPage() {
                 {settings.xpMultipliers.channels &&
                   Object.entries(settings.xpMultipliers.channels).length > 0 && (
                     <div>
-                      <h4 className="mb-2 text-sm font-semibold">Channel Multipliers</h4>
+                      <h4 className="mb-2 text-sm font-semibold">{t("multipliers.channelMultipliers")}</h4>
                       <Table>
                         <TableHeader>
                           <TableRow>
-                            <TableHead>Channel ID</TableHead>
-                            <TableHead>Multiplier</TableHead>
+                            <TableHead>{t("multipliers.channelId")}</TableHead>
+                            <TableHead>{t("multipliers.multiplier")}</TableHead>
                             <TableHead className="w-16" />
                           </TableRow>
                         </TableHeader>
@@ -635,7 +637,7 @@ export function LevelingPage() {
                             ([id, value]) => (
                               <TableRow key={id}>
                                 <TableCell className="font-mono text-xs">{id}</TableCell>
-                                <TableCell>{value}x</TableCell>
+                                <TableCell>{t("multipliers.multiplierSuffix", { value })}</TableCell>
                                 <TableCell>
                                   <Button
                                     variant="ghost"
@@ -656,12 +658,12 @@ export function LevelingPage() {
                 {settings.xpMultipliers.roles &&
                   Object.entries(settings.xpMultipliers.roles).length > 0 && (
                     <div>
-                      <h4 className="mb-2 text-sm font-semibold">Role Multipliers</h4>
+                      <h4 className="mb-2 text-sm font-semibold">{t("multipliers.roleMultipliers")}</h4>
                       <Table>
                         <TableHeader>
                           <TableRow>
-                            <TableHead>Role ID</TableHead>
-                            <TableHead>Multiplier</TableHead>
+                            <TableHead>{t("multipliers.roleId")}</TableHead>
+                            <TableHead>{t("multipliers.multiplier")}</TableHead>
                             <TableHead className="w-16" />
                           </TableRow>
                         </TableHeader>
@@ -670,7 +672,7 @@ export function LevelingPage() {
                             ([id, value]) => (
                               <TableRow key={id}>
                                 <TableCell className="font-mono text-xs">{id}</TableCell>
-                                <TableCell>{value}x</TableCell>
+                                <TableCell>{t("multipliers.multiplierSuffix", { value })}</TableCell>
                                 <TableCell>
                                   <Button
                                     variant="ghost"
@@ -692,39 +694,39 @@ export function LevelingPage() {
 
             <Separator className="my-6" />
 
-            <h4 className="mb-3 text-sm font-semibold">Add Multiplier</h4>
+            <h4 className="mb-3 text-sm font-semibold">{t("multipliers.addTitle")}</h4>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
               <div>
-                <Label>Type</Label>
+                <Label>{t("multipliers.type")}</Label>
                 <Select value={multiplierType} onValueChange={(v) => setMultiplierType(v as "channels" | "roles")}>
                   <SelectTrigger className="w-32">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="channels">Channel</SelectItem>
-                    <SelectItem value="roles">Role</SelectItem>
+                    <SelectItem value="channels">{t("multipliers.typeChannel")}</SelectItem>
+                    <SelectItem value="roles">{t("multipliers.typeRole")}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div>
-                <Label htmlFor="multiplier-id">ID</Label>
+                <Label htmlFor="multiplier-id">{t("multipliers.id")}</Label>
                 <Input
                   id="multiplier-id"
-                  placeholder="Channel or Role ID"
+                  placeholder={t("multipliers.idPlaceholder")}
                   value={multiplierId}
                   onChange={(e) => setMultiplierId(e.target.value)}
                   className="w-48"
                 />
               </div>
               <div>
-                <Label htmlFor="multiplier-value">Multiplier</Label>
+                <Label htmlFor="multiplier-value">{t("multipliers.value")}</Label>
                 <Input
                   id="multiplier-value"
                   type="number"
                   min={0.1}
                   max={10}
                   step={0.1}
-                  placeholder="e.g. 2"
+                  placeholder={t("multipliers.valuePlaceholder")}
                   value={multiplierValue}
                   onChange={(e) => setMultiplierValue(e.target.value)}
                   className="w-24"
@@ -734,7 +736,7 @@ export function LevelingPage() {
                 onClick={handleAddMultiplier}
                 disabled={updateSettings.isPending}
               >
-                Add Multiplier
+                {t("multipliers.add")}
               </Button>
             </div>
           </Card>

@@ -1,0 +1,12 @@
+{
+  "title": "Oorsig",
+  "subtitle": "Monitor jou outomatiseringsprestasie en aktiwiteit met een oogopslag.",
+  "stats": {
+    "actionRules": "Aksiereels",
+    "activeNow": "Nou Aktief",
+    "executions": "Uitvoerings",
+    "successRate": "Sukseskoers"
+  },
+  "errorsInLast24h": "{{count}} fout in laaste 24u",
+  "errorsInLast24h_other": "{{count}} foute in laaste 24u"
+}

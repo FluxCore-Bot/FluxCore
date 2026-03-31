@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore nadzorna plosca"
+  },
+  "status": {
+    "online": "Na spletu",
+    "offline": "Brez povezave",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Pregled",
+    "automation": "Avtomatizacija",
+    "music": "Glasba",
+    "tempvoice": "TempVoice",
+    "welcome": "Dobrodoslica",
+    "moderation": "Moderiranje",
+    "warnings": "Opozorila",
+    "rolePanels": "Paneli vlog",
+    "leveling": "Napredovanje",
+    "scheduled": "Nacrtovano",
+    "commands": "Ukazi",
+    "security": "Varnost",
+    "tickets": "Vstopnice",
+    "giveaways": "Podaritve",
+    "suggestions": "Predlogi",
+    "starboard": "Starboard",
+    "logs": "Dnevniki",
+    "permissions": "Dovoljenja",
+    "settings": "Nastavitve"
+  },
+  "actions": {
+    "save": "Shrani",
+    "cancel": "Preklici",
+    "delete": "Izbrisi",
+    "edit": "Uredi",
+    "create": "Ustvari",
+    "add": "Dodaj",
+    "remove": "Odstrani",
+    "confirm": "Potrdi",
+    "close": "Zapri",
+    "back": "Nazaj",
+    "next": "Naprej",
+    "search": "Iskanje",
+    "filter": "Filtriraj",
+    "refresh": "Osvezi",
+    "reset": "Ponastavi",
+    "enable": "Omogoci",
+    "disable": "Onemogoci",
+    "copy": "Kopiraj",
+    "export": "Izvozi",
+    "import": "Uvozi",
+    "submit": "Oddaj",
+    "loading": "Nalaganje...",
+    "retry": "Poskusi znova"
+  },
+  "labels": {
+    "enabled": "Omogoceno",
+    "disabled": "Onemogoceno",
+    "active": "Aktivno",
+    "inactive": "Neaktivno",
+    "none": "Nic",
+    "all": "Vse",
+    "custom": "Prilagojeno",
+    "default": "Privzeto",
+    "required": "Obvezno",
+    "optional": "Neobvezno",
+    "name": "Ime",
+    "description": "Opis",
+    "type": "Vrsta",
+    "status": "Stanje",
+    "channel": "Kanal",
+    "role": "Vloga",
+    "member": "Clan",
+    "duration": "Trajanje",
+    "reason": "Razlog",
+    "language": "Jezik"
+  },
+  "header": {
+    "notifications": "Obvestila",
+    "settings": "Nastavitve",
+    "logout": "Odjava",
+    "toggleSidebar": "Preklopi stransko vrstico",
+    "refreshData": "Osvezi Discord podatke"
+  },
+  "sidebar": {
+    "closeSidebar": "Zapri stransko vrstico",
+    "addToServer": "Dodaj na streznik",
+    "docs": "Dokumentacija",
+    "support": "Podpora",
+    "backToServers": "Nazaj na streznike"
+  },
+  "empty": {
+    "noData": "Ni razpolozljivih podatkov",
+    "noResults": "Ni rezultatov",
+    "noItems": "Se ni elementov"
+  },
+  "time": {
+    "seconds": "sekund",
+    "minutes": "minut",
+    "hours": "ur",
+    "days": "dni",
+    "ago": "pred {{time}}",
+    "in": "cez {{time}}"
+  },
+  "confirm": {
+    "title": "Ali ste prepricani?",
+    "deleteTitle": "Potrdite izbris",
+    "deleteMessage": "Tega dejanja ni mogoce razveljaviti.",
+    "unsavedChanges": "Imate neshranjene spremembe. Ali ste prepricani, da zelite oditi?"
+  },
+  "accessibility": {
+    "skipToContent": "Preskoci na glavno vsebino",
+    "loading": "Nalaganje vsebine",
+    "loaded": "Vsebina nalozena",
+    "error": "Prislo je do napake",
+    "menuOpen": "Meni je odprt",
+    "menuClosed": "Meni je zaprt"
+  }
+}

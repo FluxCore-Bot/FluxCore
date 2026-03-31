@@ -1,0 +1,118 @@
+{
+  "title": "Majukumu na Ruhusa",
+  "subtitle": "Dhibiti nani anayeweza kufikia na kusimamia kila moduli ya dashibodi.",
+  "actions": {
+    "createRole": "Unda Jukumu"
+  },
+  "permissionSystem": {
+    "title": "Mfumo wa Ruhusa",
+    "active": "Hai — wasimamizi wamezuiwa kwa ruhusa zao zilizopewa.",
+    "inactive": "Haifanyi Kazi — wasimamizi wote wenye MANAGE_GUILD wana ufikiaji kamili.",
+    "enabledToast": "Mfumo wa ruhusa umewashwa",
+    "disabledToast": "Mfumo wa ruhusa umezimwa — wasimamizi wote wana ufikiaji kamili"
+  },
+  "warning": {
+    "disabled": "Mfumo wa ruhusa umezimwa. Wasimamizi wote wa dashibodi kwa sasa wana ufikiaji kamili. Uwashe hapo juu ili kutekeleza ruhusa za kina."
+  },
+  "tabs": {
+    "roles": "Majukumu",
+    "auditLog": "Kumbukumbu ya Ukaguzi"
+  },
+  "roleList": {
+    "title": "Majukumu ya Dashibodi",
+    "empty": "Hakuna majukumu yaliyoundwa bado.",
+    "selectHint": "Chagua jukumu la kuhariri, au unda jipya.",
+    "default": "Chaguo-msingi",
+    "name": "Jina",
+    "members": "Wanachama",
+    "permissions": "Ruhusa",
+    "edit": "Hariri",
+    "delete": "Futa"
+  },
+  "presets": {
+    "title": "Ongeza Haraka kutoka Muundo",
+    "createdToast": "Jukumu \"{{name}}\" limeundwa"
+  },
+  "roleEditor": {
+    "memberCount": "Mwanachama {{count}}",
+    "memberCount_plural": "Wanachama {{count}}",
+    "name": "Jina la Jukumu",
+    "color": "Rangi",
+    "defaultRole": "Jukumu la chaguo-msingi",
+    "permissions": "Ruhusa",
+    "allBadge": "Zote",
+    "discordRoles": "Majukumu ya Discord"
+  },
+  "roleForm": {
+    "name": "Jina la Jukumu",
+    "discordRoles": "Majukumu ya Discord",
+    "permissions": "Ruhusa",
+    "create": "Unda Jukumu",
+    "update": "Sasisha Jukumu",
+    "cancel": "Ghairi"
+  },
+  "createDialog": {
+    "title": "Unda Jukumu la Dashibodi",
+    "name": "Jina",
+    "namePlaceholder": "mf. Msimamizi",
+    "color": "Rangi"
+  },
+  "permissionCategories": {
+    "actions": "Vitendo na Otomatiki",
+    "music": "Muziki",
+    "tempvoice": "TempVoice",
+    "welcome": "Karibu na Kuaga",
+    "moderation": "Usimamizi",
+    "logging": "Uwekaji Kumbukumbu",
+    "leveling": "Viwango",
+    "roles": "Paneli za Majukumu",
+    "tickets": "Tiketi",
+    "suggestions": "Mapendekezo",
+    "starboard": "Ubao wa Nyota",
+    "giveaways": "Zawadi",
+    "security": "Usalama",
+    "scheduled": "Ujumbe Uliopangwa",
+    "commands": "Amri Maalum",
+    "settings": "Mipangilio ya Seva"
+  },
+  "audit": {
+    "table": {
+      "user": "Mtumiaji",
+      "action": "Kitendo",
+      "target": "Lengo",
+      "timestamp": "Wakati"
+    },
+    "noEntries": "Hakuna rekodi za ukaguzi bado."
+  },
+  "pagination": {
+    "previous": "Iliyotangulia",
+    "next": "Inayofuata",
+    "page": "Ukurasa {{current}} wa {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Jukumu \"{{name}}\" limeundwa",
+    "roleCreateFailed": "Imeshindwa kuunda jukumu",
+    "roleUpdated": "Jukumu limesasishwa",
+    "roleUpdateFailed": "Imeshindwa kusasisha jukumu",
+    "roleDeleted": "Jukumu limefutwa",
+    "roleDeleteFailed": "Imeshindwa kufuta jukumu"
+  },
+  "confirm": {
+    "deleteTitle": "Futa jukumu \"{{name}}\"?",
+    "deleteMessage": "Hii itaondoa jukumu na kuondoa wanachama wote waliopewa. Kitendo hiki hakiwezi kutendwa upya.",
+    "deleteRole": "Una uhakika unataka kufuta jukumu hili? Wanachama watapoteza ruhusa zao zilizopewa."
+  },
+  "saveButton": {
+    "saving": "Inahifadhi...",
+    "save": "Hifadhi Mabadiliko"
+  },
+  "deleteButton": {
+    "deleting": "Inafuta...",
+    "delete": "Futa"
+  },
+  "createButton": {
+    "creating": "Inaunda...",
+    "create": "Unda"
+  },
+  "loading": "Inapakia ruhusa..."
+}

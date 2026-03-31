@@ -1,0 +1,13 @@
+{
+  "breadcrumb": { "guild": "เซิร์ฟเวอร์", "automation": "ระบบอัตโนมัติ" },
+  "title": "กฎอัตโนมัติ", "subtitle": "ตั้งค่าทริกเกอร์ตามเหตุการณ์และการตอบสนองอัตโนมัติสำหรับเซิร์ฟเวอร์ของคุณ", "createRule": "สร้างกฎ",
+  "stats": { "totalRules": "กฎทั้งหมด", "active": "ใช้งาน", "executions7d": "การทำงาน (7 วัน)", "successRate": "อัตราสำเร็จ" },
+  "filter": { "searchPlaceholder": "ค้นหากฎ...", "eventType": "ประเภทเหตุการณ์", "allEvents": "ทุกเหตุการณ์", "allStatus": "ทุกสถานะ", "enabled": "เปิดใช้งาน", "disabled": "ปิดใช้งาน", "sortBy": "เรียงตาม", "priority": "ลำดับความสำคัญ", "name": "ชื่อ", "lastFired": "ทำงานล่าสุด", "status": "สถานะ", "clear": "ล้าง", "showing": "แสดง {{filtered}} จาก {{total}} กฎ" },
+  "bulk": { "selected": "เลือก {{count}} กฎ", "selected_other": "เลือก {{count}} กฎ", "enable": "เปิดใช้งาน", "disable": "ปิดใช้งาน", "delete": "ลบ", "clear": "ล้าง" },
+  "empty": { "title": "เริ่มต้นกับระบบอัตโนมัติ", "description": "เลือกเทมเพลตเพื่อเริ่มต้นอย่างรวดเร็ว หรือสร้างกฎจากศูนย์", "createFromScratch": "สร้างจากศูนย์" },
+  "noResults": { "title": "ไม่พบกฎที่ตรงกัน", "description": "ลองปรับการค้นหาหรือตัวกรองเพื่อค้นหาสิ่งที่คุณต้องการ" },
+  "templates": { "welcomeMessage": "ข้อความต้อนรับ", "welcomeMessageDesc": "ต้อนรับสมาชิกใหม่ด้วยข้อความกำหนดเองในแชนเนล", "autoRole": "บทบาทอัตโนมัติ", "autoRoleDesc": "กำหนดบทบาทโดยอัตโนมัติเมื่อสมาชิกเข้าร่วม", "logDeleted": "บันทึกข้อความที่ถูกลบ", "logDeletedDesc": "ส่งข้อมูลข้อความที่ถูกลบไปยังแชนเนลบันทึก", "boostThankYou": "ขอบคุณการบูสต์", "boostThankYouDesc": "ส่ง DM ขอบคุณผู้ใช้ที่บูสต์เซิร์ฟเวอร์", "banLogger": "บันทึกการแบน", "banLoggerDesc": "บันทึกเหตุการณ์แบนไปยังแชนเนลจัดการ", "autoThread": "เธรดอัตโนมัติ", "autoThreadDesc": "สร้างเธรดโดยอัตโนมัติเมื่อมีข้อความ" },
+  "deleteDialog": { "title": "ลบกฎ", "description": "แน่ใจหรือว่าต้องการลบ \"{{name}}\"? การดำเนินการนี้ไม่สามารถย้อนกลับได้", "confirm": "ลบ" },
+  "bulkDeleteDialog": { "title": "ลบกฎที่เลือก", "description": "แน่ใจหรือว่าต้องการลบ {{count}} กฎ? การดำเนินการนี้ไม่สามารถย้อนกลับได้", "description_other": "แน่ใจหรือว่าต้องการลบ {{count}} กฎ? การดำเนินการนี้ไม่สามารถย้อนกลับได้", "confirm": "ลบทั้งหมด" },
+  "toast": { "deleted": "ลบกฎแล้ว", "deleteFailed": "ไม่สามารถลบกฎได้", "enabled": "เปิดใช้งานกฎแล้ว", "disabled": "ปิดใช้งานกฎแล้ว", "toggleFailed": "ไม่สามารถสลับกฎได้", "duplicated": "คัดลอกกฎแล้ว", "duplicateFailed": "ไม่สามารถคัดลอกกฎได้", "bulkEnabled": "เปิดใช้งาน {{count}} กฎแล้ว", "bulkDisabled": "ปิดใช้งาน {{count}} กฎแล้ว", "bulkEnableFailed": "ไม่สามารถเปิดใช้งานกฎได้", "bulkDisableFailed": "ไม่สามารถปิดใช้งานกฎได้", "bulkDeleted": "ลบ {{count}} กฎแล้ว", "bulkDeleteFailed": "ไม่สามารถลบกฎได้" }
+}

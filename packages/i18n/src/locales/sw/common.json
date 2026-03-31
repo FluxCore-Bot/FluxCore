@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "Dashibodi ya FluxCore"
+  },
+  "status": {
+    "online": "Mtandaoni",
+    "offline": "Nje ya Mtandao",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Muhtasari",
+    "automation": "Otomatiki",
+    "music": "Muziki",
+    "tempvoice": "TempVoice",
+    "welcome": "Karibu",
+    "moderation": "Usimamizi",
+    "warnings": "Maonyo",
+    "rolePanels": "Paneli za Majukumu",
+    "leveling": "Viwango",
+    "scheduled": "Zilizopangwa",
+    "commands": "Amri",
+    "security": "Usalama",
+    "tickets": "Tiketi",
+    "giveaways": "Zawadi",
+    "suggestions": "Mapendekezo",
+    "starboard": "Ubao wa Nyota",
+    "logs": "Kumbukumbu",
+    "permissions": "Ruhusa",
+    "settings": "Mipangilio"
+  },
+  "actions": {
+    "save": "Hifadhi",
+    "cancel": "Ghairi",
+    "delete": "Futa",
+    "edit": "Hariri",
+    "create": "Unda",
+    "add": "Ongeza",
+    "remove": "Ondoa",
+    "confirm": "Thibitisha",
+    "close": "Funga",
+    "back": "Rudi",
+    "next": "Mbele",
+    "search": "Tafuta",
+    "filter": "Chuja",
+    "refresh": "Onyesha Upya",
+    "reset": "Weka Upya",
+    "enable": "Washa",
+    "disable": "Zima",
+    "copy": "Nakili",
+    "export": "Hamisha Nje",
+    "import": "Ingiza",
+    "submit": "Wasilisha",
+    "loading": "Inapakia...",
+    "retry": "Jaribu Tena"
+  },
+  "labels": {
+    "enabled": "Imewashwa",
+    "disabled": "Imezimwa",
+    "active": "Hai",
+    "inactive": "Haifanyi Kazi",
+    "none": "Hakuna",
+    "all": "Zote",
+    "custom": "Maalum",
+    "default": "Chaguo-msingi",
+    "required": "Inahitajika",
+    "optional": "Si Lazima",
+    "name": "Jina",
+    "description": "Maelezo",
+    "type": "Aina",
+    "status": "Hali",
+    "channel": "Chaneli",
+    "role": "Jukumu",
+    "member": "Mwanachama",
+    "duration": "Muda",
+    "reason": "Sababu",
+    "language": "Lugha"
+  },
+  "header": {
+    "notifications": "Arifa",
+    "settings": "Mipangilio",
+    "logout": "Ondoka",
+    "toggleSidebar": "Badilisha upau wa pembeni",
+    "refreshData": "Onyesha upya data ya Discord"
+  },
+  "sidebar": {
+    "closeSidebar": "Funga upau wa pembeni",
+    "addToServer": "Ongeza kwenye Seva",
+    "docs": "Nyaraka",
+    "support": "Msaada",
+    "backToServers": "Rudi kwa Seva"
+  },
+  "empty": {
+    "noData": "Hakuna data inayopatikana",
+    "noResults": "Hakuna matokeo yaliyopatikana",
+    "noItems": "Hakuna vipengee bado"
+  },
+  "time": {
+    "seconds": "sekunde",
+    "minutes": "dakika",
+    "hours": "masaa",
+    "days": "siku",
+    "ago": "{{time}} iliyopita",
+    "in": "katika {{time}}"
+  },
+  "confirm": {
+    "title": "Una uhakika?",
+    "deleteTitle": "Thibitisha kufuta",
+    "deleteMessage": "Kitendo hiki hakiwezi kutendwa upya.",
+    "unsavedChanges": "Una mabadiliko ambayo hayajahifadhiwa. Una uhakika unataka kuondoka?"
+  },
+  "accessibility": {
+    "skipToContent": "Ruka hadi maudhui makuu",
+    "loading": "Inapakia maudhui",
+    "loaded": "Maudhui yamepakiwa",
+    "error": "Hitilafu imetokea",
+    "menuOpen": "Menyu imefunguliwa",
+    "menuClosed": "Menyu imefungwa"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "title": "[NEEDS TRANSLATION] Custom Commands",
+  "subtitle": "[NEEDS TRANSLATION] Create auto-responders and prefix commands triggered by messages.",
+  "stats": {
+    "totalCommands": "[NEEDS TRANSLATION] Total Commands",
+    "enabled": "[NEEDS TRANSLATION] Enabled",
+    "limit": "[NEEDS TRANSLATION] {{count}} / 50"
+  },
+  "tabs": {
+    "commands": "[NEEDS TRANSLATION] Commands",
+    "variables": "[NEEDS TRANSLATION] Variables"
+  },
+  "table": {
+    "name": "[NEEDS TRANSLATION] Name",
+    "trigger": "[NEEDS TRANSLATION] Trigger",
+    "response": "[NEEDS TRANSLATION] Response",
+    "cooldown": "[NEEDS TRANSLATION] Cooldown",
+    "status": "[NEEDS TRANSLATION] Status"
+  },
+  "triggerTypes": {
+    "command": "[NEEDS TRANSLATION] !command",
+    "keyword": "[NEEDS TRANSLATION] Keyword",
+    "startsWith": "[NEEDS TRANSLATION] Starts With",
+    "regex": "[NEEDS TRANSLATION] Regex",
+    "prefixCommand": "[NEEDS TRANSLATION] Prefix Command (!name)",
+    "keywordContains": "[NEEDS TRANSLATION] Keyword (contains)"
+  },
+  "dialog": {
+    "createCommand": "[NEEDS TRANSLATION] Create Command",
+    "editCommand": "[NEEDS TRANSLATION] Edit Command"
+  },
+  "form": {
+    "commandName": "[NEEDS TRANSLATION] Command Name",
+    "triggerText": "[NEEDS TRANSLATION] Trigger Text",
+    "regexPattern": "[NEEDS TRANSLATION] Regex Pattern",
+    "triggerType": "[NEEDS TRANSLATION] Trigger Type",
+    "response": "[NEEDS TRANSLATION] Response",
+    "message": "[NEEDS TRANSLATION] Message",
+    "embedTitle": "[NEEDS TRANSLATION] Embed Title",
+    "embedDescription": "[NEEDS TRANSLATION] Embed Description",
+    "color": "[NEEDS TRANSLATION] Color",
+    "footer": "[NEEDS TRANSLATION] Footer"
+  },
+  "options": {
+    "cooldown": "[NEEDS TRANSLATION] Cooldown (seconds)",
+    "enabled": "[NEEDS TRANSLATION] Enabled",
+    "enabledDesc": "[NEEDS TRANSLATION] Whether this command is active",
+    "deleteTrigger": "[NEEDS TRANSLATION] Delete Trigger Message",
+    "deleteTriggerDesc": "[NEEDS TRANSLATION] Automatically delete the message that triggered this command.",
+    "dmResponse": "[NEEDS TRANSLATION] DM Response",
+    "dmResponseDesc": "[NEEDS TRANSLATION] Send the response as a direct message instead of in the channel."
+  },
+  "restrictions": {
+    "title": "[NEEDS TRANSLATION] Restrictions",
+    "allowedChannels": "[NEEDS TRANSLATION] Allowed Channels (empty = all)",
+    "allowedRoles": "[NEEDS TRANSLATION] Allowed Roles (empty = everyone)",
+    "addChannel": "[NEEDS TRANSLATION] Add Channel",
+    "addRole": "[NEEDS TRANSLATION] Add Role"
+  },
+  "actions": {
+    "create": "[NEEDS TRANSLATION] Create",
+    "update": "[NEEDS TRANSLATION] Update",
+    "cancel": "[NEEDS TRANSLATION] Cancel",
+    "addAction": "[NEEDS TRANSLATION] Add Action",
+    "addRole": "[NEEDS TRANSLATION] Add Role",
+    "removeRole": "[NEEDS TRANSLATION] Remove Role"
+  },
+  "actionsSection": {
+    "title": "[NEEDS TRANSLATION] Actions ({{count}}/5)",
+    "noActions": "[NEEDS TRANSLATION] No actions configured. Add an action to define what this command does.",
+    "maxActions": "[NEEDS TRANSLATION] Maximum 5 actions per command"
+  },
+  "variables": {
+    "title": "[NEEDS TRANSLATION] Template Variables",
+    "description": "[NEEDS TRANSLATION] Use these variables in your command responses. They will be replaced with the actual values when the command is triggered.",
+    "table": {
+      "variable": "[NEEDS TRANSLATION] Variable",
+      "description": "[NEEDS TRANSLATION] Description"
+    },
+    "entries": {
+      "user": "[NEEDS TRANSLATION] {user} — Mentions the user who triggered the command",
+      "username": "[NEEDS TRANSLATION] {username} — The user's display name",
+      "userId": "[NEEDS TRANSLATION] {userId} — The user's ID",
+      "server": "[NEEDS TRANSLATION] {server} — The server name",
+      "channel": "[NEEDS TRANSLATION] {channel} — Mentions the current channel",
+      "channelName": "[NEEDS TRANSLATION] {channelName} — The channel name",
+      "memberCount": "[NEEDS TRANSLATION] {memberCount} — Total number of server members"
+    }
+  },
+  "toast": {
+    "created": "[NEEDS TRANSLATION] Command created",
+    "createFailed": "[NEEDS TRANSLATION] Failed to create command",
+    "updated": "[NEEDS TRANSLATION] Command updated",
+    "updateFailed": "[NEEDS TRANSLATION] Failed to update command",
+    "deleted": "[NEEDS TRANSLATION] Command deleted",
+    "deleteFailed": "[NEEDS TRANSLATION] Failed to delete command",
+    "toggleEnabled": "[NEEDS TRANSLATION] Command enabled",
+    "toggleDisabled": "[NEEDS TRANSLATION] Command disabled",
+    "toggleFailed": "[NEEDS TRANSLATION] Failed to toggle command"
+  },
+  "empty": "[NEEDS TRANSLATION] No custom commands created yet.",
+  "loading": "[NEEDS TRANSLATION] Loading commands...",
+  "badge": {
+    "active": "[NEEDS TRANSLATION] Active",
+    "disabled": "[NEEDS TRANSLATION] Disabled",
+    "text": "[NEEDS TRANSLATION] Text",
+    "embed": "[NEEDS TRANSLATION] Embed"
+  },
+  "validation": {
+    "nameRequired": "[NEEDS TRANSLATION] Command name is required"
+  },
+  "triggerPrefix": "[NEEDS TRANSLATION] Trigger: !{{name}}"
+}

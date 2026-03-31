@@ -1,0 +1,112 @@
+{
+  "title": "לוחות תפקידים",
+  "subtitle": "צור לוחות תפקידים לבחירה עצמית באמצעות כפתורים, תפריטים נפתחים או תגובות.",
+  "stats": {
+    "totalPanels": "סה\"כ לוחות",
+    "deployed": "נפרסו",
+    "totalRoles": "סה\"כ תפקידים"
+  },
+  "tabs": {
+    "panels": "לוחות",
+    "preview": "תצוגה מקדימה"
+  },
+  "table": {
+    "name": "שם",
+    "type": "סוג",
+    "mode": "מצב",
+    "roles": "תפקידים",
+    "status": "מצב"
+  },
+  "panelTypes": {
+    "reaction": "תגובה",
+    "button": "כפתור",
+    "dropdown": "תפריט נפתח"
+  },
+  "panelModes": {
+    "toggle": "החלפה",
+    "unique": "ייחודי",
+    "verify": "אימות"
+  },
+  "panelModeDescriptions": {
+    "toggle": "החלפה (הוסף/הסר)",
+    "unique": "ייחודי (אחד בכל פעם)",
+    "verify": "אימות (הוספה בלבד)"
+  },
+  "status": {
+    "deployed": "נפרס",
+    "draft": "טיוטה"
+  },
+  "dialog": {
+    "createPanel": "צור לוח",
+    "editPanel": "ערוך לוח"
+  },
+  "panelList": {
+    "title": "כל הלוחות"
+  },
+  "form": {
+    "name": "שם",
+    "namePlaceholder": "לדוגמה תפקידי צבעים",
+    "type": "סוג",
+    "mode": "מצב",
+    "channel": "ערוץ",
+    "channelPlaceholder": "בחר ערוץ",
+    "minRoles": "מינימום תפקידים",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "מקסימום תפקידים",
+    "maxRolesPlaceholder": "הכל",
+    "embedSection": "Embed",
+    "embedTitle": "כותרת",
+    "embedTitlePlaceholder": "כותרת הלוח (ברירת מחדל: שם הלוח)",
+    "embedDescription": "תיאור",
+    "embedDescriptionPlaceholder": "טקסט תיאור",
+    "rolesCount": "תפקידים ({{count}}/25)",
+    "addRole": "הוסף תפקיד"
+  },
+  "entry": {
+    "role": "תפקיד",
+    "rolePlaceholder": "בחר תפקיד",
+    "label": "תווית",
+    "labelPlaceholder": "תווית כפתור",
+    "emoji": "אימוג'י",
+    "emojiPlaceholder": "לדוגמה star",
+    "description": "תיאור",
+    "descriptionPlaceholder": "תיאור אפשרות",
+    "style": "סגנון"
+  },
+  "buttonStyles": {
+    "primary": "ראשי",
+    "secondary": "משני",
+    "success": "הצלחה",
+    "danger": "סכנה"
+  },
+  "actions": {
+    "create": "צור",
+    "update": "עדכן",
+    "cancel": "בטל",
+    "deploy": "פרוס",
+    "delete": "מחק",
+    "addEntry": "הוסף ערך",
+    "removeEntry": "הסר ערך"
+  },
+  "preview": {
+    "title": "תצוגה מקדימה חיה",
+    "description": "תצוגה מקדימה של איך הלוחות שלך ייראו ב-Discord.",
+    "selectRoles": "בחר תפקידים...",
+    "noPreview": "אין לוחות לתצוגה מקדימה."
+  },
+  "empty": "לא נוצרו לוחות תפקידים עדיין. לחץ \"צור לוח\" כדי להתחיל.",
+  "toast": {
+    "created": "הלוח נוצר",
+    "createFailed": "יצירת הלוח נכשלה",
+    "updated": "הלוח עודכן",
+    "updateFailed": "עדכון הלוח נכשל",
+    "deleted": "הלוח נמחק",
+    "deleteFailed": "מחיקת הלוח נכשלה",
+    "deployed": "לוח התפקידים נפרס בערוץ",
+    "deployFailed": "שליחת הלוח נכשלה",
+    "nameRequired": "שם הלוח הוא שדה חובה",
+    "channelRequired": "ערוץ הוא שדה חובה",
+    "maxRolesReached": "מקסימום 25 תפקידים ללוח"
+  },
+  "loading": "טוען לוחות..."
+}

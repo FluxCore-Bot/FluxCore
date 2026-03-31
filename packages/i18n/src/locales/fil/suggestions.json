@@ -1,0 +1,67 @@
+{
+  "title": "Mga Mungkahi",
+  "subtitle": "Hayaan ang mga miyembro na magsumite ng mga ideya at bumoto sa mga ito. Pamahalaan ang status at feedback.",
+  "stats": {
+    "totalSuggestions": "Kabuuang Mga Mungkahi",
+    "systemStatus": "Status ng Sistema",
+    "channel": {
+      "configured": "Channel na Naka-configure",
+      "notSet": "Hindi Naitakda ang Channel"
+    }
+  },
+  "tabs": {
+    "suggestions": "Mga Mungkahi",
+    "settings": "Mga Setting"
+  },
+  "filter": {
+    "filterByStatus": "I-filter ayon sa Status",
+    "all": "Lahat",
+    "pending": "Naghihintay",
+    "approved": "Naaprubahan",
+    "rejected": "Tinanggihan",
+    "implemented": "Naisakatuparan",
+    "considered": "Isinasaalang-alang"
+  },
+  "table": {
+    "id": "ID",
+    "author": "May-akda",
+    "content": "Nilalaman",
+    "status": "Status",
+    "votes": "Mga Boto",
+    "date": "Petsa"
+  },
+  "actions": {
+    "approve": "Aprubahan",
+    "reject": "Tanggihan",
+    "implement": "Markahan bilang Naisakatuparan",
+    "consider": "Isaalang-alang",
+    "delete": "Burahin"
+  },
+  "settings": {
+    "channel": "Channel ng mga Mungkahi",
+    "channelDesc": "Ang channel kung saan nipo-post ang mga mungkahi para sa pagboto.",
+    "voteEmojis": "Mga Vote Emoji",
+    "voteEmojisDesc": "Mga emoji na ginagamit para sa mga upvote at downvote na reaction.",
+    "autoThread": "Auto-Gumawa ng Thread",
+    "autoThreadDesc": "Awtomatikong gumawa ng discussion thread sa bawat bagong mungkahi.",
+    "dmOnStatusChange": "DM sa Pagbabago ng Status",
+    "dmOnStatusChangeDesc": "Abisuhan ang may-akda sa pamamagitan ng DM kapag nagbago ang status ng kanilang mungkahi."
+  },
+  "toast": {
+    "approved": "Mungkahi na naaprubahan",
+    "rejected": "Mungkahi na tinanggihan",
+    "implemented": "Mungkahi na minarkahan bilang naisakatuparan",
+    "considered": "Mungkahi na minarkahan bilang isinasaalang-alang",
+    "deleted": "Mungkahi na nabura",
+    "actionFailed": "Hindi na-update ang mungkahi",
+    "settingsSaved": "Mga setting ng mungkahi na na-save",
+    "settingsFailed": "Hindi na-save ang mga setting ng mungkahi"
+  },
+  "empty": "Wala pang mga mungkahi.",
+  "loading": "Naglo-load ng mga mungkahi...",
+  "pagination": {
+    "previous": "Nakaraan",
+    "next": "Susunod",
+    "page": "Pahina {{page}} ng {{total}}"
+  }
+}

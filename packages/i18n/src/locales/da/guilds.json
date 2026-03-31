@@ -1,0 +1,9 @@
+{
+  "title": "Dine servere",
+  "subtitle": "Vælg en server at administrere og konfigurere.",
+  "loading": "Indlæser servere...",
+  "empty": {
+    "title": "Ingen servere fundet",
+    "description": "Sørg for, at botten er tilføjet på en server, hvor du har tilladelsen Administrer server."
+  }
+}

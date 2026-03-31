@@ -1,0 +1,12 @@
+{
+  "title": "Prezentare Generală",
+  "subtitle": "Monitorizează performanța și activitatea automatizării tale dintr-o privire.",
+  "stats": {
+    "actionRules": "Reguli de Acțiune",
+    "activeNow": "Active Acum",
+    "executions": "Execuții",
+    "successRate": "Rată de Succes"
+  },
+  "errorsInLast24h": "{{count}} eroare în ultimele 24h",
+  "errorsInLast24h_other": "{{count}} erori în ultimele 24h"
+}

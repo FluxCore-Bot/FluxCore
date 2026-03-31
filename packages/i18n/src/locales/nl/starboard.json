@@ -1,0 +1,41 @@
+{
+  "title": "Starboard",
+  "subtitle": "Belicht de beste berichten door sterreacties te verzamelen in een speciaal kanaal.",
+  "tabs": {
+    "settings": "Instellingen",
+    "starredMessages": "Gemarkeerde berichten"
+  },
+  "settings": {
+    "title": "Starboardconfiguratie",
+    "description": "Configureer wanneer en waar gemarkeerde berichten worden geplaatst.",
+    "channelId": "Starboardkanaal",
+    "channelIdDesc": "Het kanaal waar gemarkeerde berichten worden geplaatst.",
+    "starEmoji": "Sterremoji",
+    "starEmojiDesc": "De emoji die wordt gebruikt om berichten te markeren. Standaard is de ster-emoji.",
+    "threshold": "Sterdrempel",
+    "thresholdDesc": "Minimaal aantal reacties vereist om een bericht op het starboard te plaatsen.",
+    "selfStar": "Zelf markeren",
+    "selfStarDesc": "Sta berichtauteurs toe hun eigen berichten te markeren.",
+    "nsfwAllowed": "NSFW toegestaan",
+    "nsfwAllowedDesc": "Sta berichten uit NSFW-kanalen toe om op het starboard te verschijnen.",
+    "ignoredChannels": "Genegeerde kanalen",
+    "ignoredChannelsDesc": "Berichten uit deze kanalen verschijnen nooit op het starboard."
+  },
+  "messages": {
+    "table": {
+      "original": "Origineel bericht",
+      "stars": "Sterren",
+      "channel": "Kanaal",
+      "date": "Datum"
+    },
+    "noMessages": "Nog geen gemarkeerde berichten."
+  },
+  "toast": {
+    "saved": "Starboardinstellingen opgeslagen",
+    "saveFailed": "Starboardinstellingen opslaan mislukt"
+  },
+  "actions": {
+    "save": "Opslaan",
+    "saving": "Opslaan..."
+  }
+}

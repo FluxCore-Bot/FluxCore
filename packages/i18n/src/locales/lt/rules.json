@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Serveris",
+    "automation": "Automatizavimas"
+  },
+  "title": "Automatizavimo taisykles",
+  "subtitle": "Konfigurukite ivykiais grindziamus trigerius ir automatizuotus atsakymus savo serveriui.",
+  "createRule": "Sukurti taisykle",
+  "stats": {
+    "totalRules": "Viso taisykliu",
+    "active": "Aktyvios",
+    "executions7d": "Vykdymai (7d)",
+    "successRate": "Sekmes rodiklis"
+  },
+  "filter": {
+    "searchPlaceholder": "Ieskoti taisykliu...",
+    "eventType": "Ivykio tipas",
+    "allEvents": "Visi ivykiai",
+    "allStatus": "Visos busenos",
+    "enabled": "Ijungta",
+    "disabled": "Isjungta",
+    "sortBy": "Rusiuoti pagal",
+    "priority": "Prioritetas",
+    "name": "Pavadinimas",
+    "lastFired": "Paskutinis paleidimas",
+    "status": "Busena",
+    "clear": "Isvalyti",
+    "showing": "Rodoma {{filtered}} is {{total}} taisykliu"
+  },
+  "bulk": {
+    "selected": "{{count}} taisykle pasirinkta",
+    "selected_other": "{{count}} taisykles pasirinktos",
+    "enable": "Ijungti",
+    "disable": "Isjungti",
+    "delete": "Istrinti",
+    "clear": "Isvalyti"
+  },
+  "empty": {
+    "title": "Pradekite su automatizavimu",
+    "description": "Pasirinkite sabloną greitam pradejimui arba sukurkite taisyklę nuo nulio.",
+    "createFromScratch": "Sukurti nuo nulio"
+  },
+  "noResults": {
+    "title": "Atitikmenu nerasta",
+    "description": "Pabandykite pakoreguoti paieskos kriterijus arba filtrus."
+  },
+  "templates": {
+    "welcomeMessage": "Pasisveikinimo zinute",
+    "welcomeMessageDesc": "Pasveikinkite naujus narius prilagomu pranesomu kanale",
+    "autoRole": "Automatine role",
+    "autoRoleDesc": "Automatiskai priskirkite role, kai narys prisijungia",
+    "logDeleted": "Registruoti istrintas zinutes",
+    "logDeletedDesc": "Siusti istrintu zinuciu informacija i zurnalavimo kanala",
+    "boostThankYou": "Padekas uz sustiprinima",
+    "boostThankYouDesc": "Siusti asmenine zinute dekojantiems naudotojams, kurie sustiprina serveri",
+    "banLogger": "Draudimu registratorius",
+    "banLoggerDesc": "Registruoti draudimu ivykius moderavimo kanale",
+    "autoThread": "Automatine gija",
+    "autoThreadDesc": "Automatiskai sukurti gija, kai issiunčiama zinute"
+  },
+  "deleteDialog": {
+    "title": "Istrinti taisykle",
+    "description": "Ar tikrai norite istrinti \"{{name}}\"? Sio veiksmo negalima atsiaukti.",
+    "confirm": "Istrinti"
+  },
+  "bulkDeleteDialog": {
+    "title": "Istrinti pasirinktas taisykles",
+    "description": "Ar tikrai norite istrinti {{count}} taisykle? Sio veiksmo negalima atsiaukti.",
+    "description_other": "Ar tikrai norite istrinti {{count}} taisykles? Sio veiksmo negalima atsiaukti.",
+    "confirm": "Istrinti visas"
+  },
+  "toast": {
+    "deleted": "Taisykle istrinta",
+    "deleteFailed": "Nepavyko istrinti taisykles",
+    "enabled": "Taisykle ijungta",
+    "disabled": "Taisykle isjungta",
+    "toggleFailed": "Nepavyko perjungti taisykles",
+    "duplicated": "Taisykle dubliuota",
+    "duplicateFailed": "Nepavyko dubliuoti taisykles",
+    "bulkEnabled": "{{count}} taisykles ijungtos",
+    "bulkDisabled": "{{count}} taisykles isjungtos",
+    "bulkEnableFailed": "Nepavyko ijungti taisykliu",
+    "bulkDisableFailed": "Nepavyko isjungti taisykliu",
+    "bulkDeleted": "{{count}} taisykles istrintos",
+    "bulkDeleteFailed": "Nepavyko istrinti taisykliu"
+  }
+}

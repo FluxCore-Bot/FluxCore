@@ -1,0 +1,18 @@
+{
+  "title": "Messaggi programmati",
+  "subtitle": "Crea messaggi ricorrenti pubblicati automaticamente con orari configurabili.",
+  "stats": { "totalMessages": "Messaggi totali", "active": "Attivi", "inactive": "Inattivi" },
+  "table": { "name": "Nome", "channel": "Canale", "schedule": "Orario", "nextRun": "Prossima esecuzione", "status": "Stato" },
+  "dialog": { "editTitle": "Modifica messaggio programmato", "createTitle": "Nuovo messaggio programmato" },
+  "form": { "name": "Nome", "channel": "Canale", "schedulePreset": "Modello di orario", "cronExpression": "Espressione Cron", "timezone": "Fuso orario", "messageContent": "Contenuto del messaggio", "text": "Testo", "embed": "Embed", "enabled": "Attivato", "enabledDesc": "Se questo messaggio programmato e attivo." },
+  "cronPresets": { "everyHour": "Ogni ora", "every6Hours": "Ogni 6 ore", "daily9am": "Giornaliero alle 9", "dailyMidnight": "Giornaliero a mezzanotte", "weeklyMonday": "Settimanale il lunedi", "monthly1st": "Mensile il 1°", "custom": "Personalizzato" },
+  "embed": { "title": "Titolo", "description": "Descrizione", "color": "Colore (hex)", "footer": "Pie di pagina", "thumbnail": "URL miniatura", "image": "URL immagine" },
+  "toast": { "created": "Messaggio programmato creato", "createFailed": "Impossibile creare il messaggio programmato", "updated": "Messaggio programmato aggiornato", "updateFailed": "Impossibile aggiornare il messaggio programmato", "deleted": "Messaggio programmato eliminato", "deleteFailed": "Impossibile eliminare il messaggio programmato", "testSent": "Messaggio di prova inviato", "testFailed": "Impossibile inviare il messaggio di prova" },
+  "empty": { "title": "Ancora nessun messaggio programmato", "description": "Crea un messaggio programmato per pubblicare contenuti automaticamente in modo ricorrente.", "createButton": "Crea messaggio" },
+  "pagination": { "previous": "Precedente", "next": "Successivo", "page": "Pagina {{page}} di {{total}}" },
+  "actions": { "newMessage": "Nuovo messaggio", "testSend": "Invio di prova", "edit": "Modifica", "delete": "Elimina", "save": "Salva", "cancel": "Annulla" },
+  "validation": { "nameRequired": "Il nome del messaggio e obbligatorio", "channelRequired": "Il canale e obbligatorio" },
+  "cronPreview": { "nextRuns": "Prossime esecuzioni" },
+  "characters": "{{count}}/2000 caratteri",
+  "never": "Mai"
+}

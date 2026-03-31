@@ -1,0 +1,72 @@
+{
+  "title": "Waarschuwingen",
+  "subtitle": "Volg en beheer lidwaarschuwingen met automatische escalatie.",
+  "stats": {
+    "totalWarnings": "Totaal waarschuwingen",
+    "escalationRules": "Escalatieregels",
+    "dmOnWarn": "DM bij waarschuwing"
+  },
+  "tabs": {
+    "warnings": "Waarschuwingslogboek",
+    "escalation": "Escalatie",
+    "settings": "Instellingen"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Gebruiker",
+    "moderator": "Moderator",
+    "reason": "Reden",
+    "date": "Datum"
+  },
+  "filter": {
+    "userPlaceholder": "Filteren op gebruikers-ID...",
+    "clearAll": "Alles wissen"
+  },
+  "pagination": {
+    "previous": "Vorige",
+    "next": "Volgende",
+    "page": "Pagina {{page}} van {{total}} ({{count}} totaal)"
+  },
+  "loading": "Waarschuwingen laden...",
+  "noWarnings": "Geen waarschuwingen gevonden.",
+  "toast": {
+    "warningRemoved": "Waarschuwing verwijderd",
+    "warningsFailed": "Waarschuwing verwijderen mislukt",
+    "enterUserId": "Voer een gebruikers-ID in om alle waarschuwingen voor die gebruiker te wissen",
+    "allCleared": "Alle waarschuwingen voor gebruiker gewist",
+    "clearFailed": "Waarschuwingen wissen mislukt",
+    "thresholdAdded": "Strafdrempel toegevoegd",
+    "thresholdFailed": "Straf toevoegen mislukt",
+    "thresholdRemoved": "Straf verwijderd",
+    "removeFailed": "Straf verwijderen mislukt",
+    "settingFailed": "Instelling bijwerken mislukt",
+    "thresholdInvalid": "Drempel moet een positief getal zijn"
+  },
+  "escalation": {
+    "title": "Strafescalatie",
+    "description": "Configureer automatische acties wanneer een gebruiker een bepaald aantal waarschuwingen bereikt.",
+    "threshold": "Drempel",
+    "action": "Actie",
+    "duration": "Duur",
+    "noRules": "Geen escalatieregels geconfigureerd.",
+    "addRule": "Escalatieregel toevoegen",
+    "addButton": "Regel toevoegen",
+    "warnings": "{{count}} waarschuwingen",
+    "min": "{{count}} min",
+    "timeout": "Time-out",
+    "kick": "Verwijderen",
+    "ban": "Verbannen",
+    "durationLabel": "Duur (seconden)",
+    "thresholdPlaceholder": "bijv. 3",
+    "durationPlaceholder": "bijv. 3600"
+  },
+  "settings": {
+    "title": "Waarschuwingsinstellingen",
+    "dmOnWarn": "DM bij waarschuwing",
+    "dmOnWarnDesc": "Stuur een directe berichtgeving naar de gebruiker wanneer hij een waarschuwing ontvangt.",
+    "requireReason": "Reden vereisen",
+    "requireReasonDesc": "Moderators moeten een reden opgeven bij het geven van een waarschuwing.",
+    "maxWarnings": "Max. waarschuwingen",
+    "maxWarningsDesc": "Maximale waarschuwingen per gebruiker (0 = onbeperkt)."
+  }
+}

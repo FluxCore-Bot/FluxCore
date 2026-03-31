@@ -1,0 +1,8 @@
+{
+  "title": "Logfiler",
+  "subtitle": "Overvåg regelkørsler og hændelseslogning.",
+  "tabs": {
+    "activity": "Aktivitetslogfiler",
+    "events": "Hændelseslogfiler"
+  }
+}

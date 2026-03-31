@@ -1,0 +1,86 @@
+{
+  "title": "শিডিউলড বার্তা",
+  "subtitle": "কনফিগারযোগ্য শিডিউলে পুনরাবৃত্ত অটো-পোস্ট বার্তা তৈরি করুন।",
+  "stats": {
+    "totalMessages": "মোট বার্তা",
+    "active": "সক্রিয়",
+    "inactive": "নিষ্ক্রিয়"
+  },
+  "table": {
+    "name": "নাম",
+    "channel": "চ্যানেল",
+    "schedule": "শিডিউল",
+    "nextRun": "পরবর্তী রান",
+    "status": "স্থিতি"
+  },
+  "dialog": {
+    "editTitle": "শিডিউলড বার্তা সম্পাদনা করুন",
+    "createTitle": "নতুন শিডিউলড বার্তা"
+  },
+  "form": {
+    "name": "নাম",
+    "channel": "চ্যানেল",
+    "schedulePreset": "শিডিউল প্রিসেট",
+    "cronExpression": "Cron এক্সপ্রেশন",
+    "timezone": "টাইমজোন",
+    "messageContent": "বার্তার বিষয়বস্তু",
+    "text": "টেক্সট",
+    "embed": "Embed",
+    "enabled": "সক্রিয়",
+    "enabledDesc": "এই শিডিউলড বার্তাটি সক্রিয় কিনা।"
+  },
+  "cronPresets": {
+    "everyHour": "প্রতি ঘণ্টায়",
+    "every6Hours": "প্রতি 6 ঘণ্টায়",
+    "daily9am": "প্রতিদিন সকাল 9টায়",
+    "dailyMidnight": "প্রতিদিন মধ্যরাতে",
+    "weeklyMonday": "প্রতি সোমবার",
+    "monthly1st": "প্রতি মাসের 1 তারিখে",
+    "custom": "কাস্টম"
+  },
+  "embed": {
+    "title": "শিরোনাম",
+    "description": "বিবরণ",
+    "color": "রঙ (hex)",
+    "footer": "ফুটার",
+    "thumbnail": "থাম্বনেইল URL",
+    "image": "ইমেজ URL"
+  },
+  "toast": {
+    "created": "শিডিউলড বার্তা তৈরি হয়েছে",
+    "createFailed": "শিডিউলড বার্তা তৈরি ব্যর্থ",
+    "updated": "শিডিউলড বার্তা আপডেট হয়েছে",
+    "updateFailed": "শিডিউলড বার্তা আপডেট ব্যর্থ",
+    "deleted": "শিডিউলড বার্তা মুছে ফেলা হয়েছে",
+    "deleteFailed": "শিডিউলড বার্তা মুছতে ব্যর্থ",
+    "testSent": "টেস্ট বার্তা পাঠানো হয়েছে",
+    "testFailed": "টেস্ট বার্তা পাঠাতে ব্যর্থ"
+  },
+  "empty": {
+    "title": "এখনো কোনো শিডিউলড বার্তা নেই",
+    "description": "পুনরাবৃত্ত ভিত্তিতে স্বয়ংক্রিয়ভাবে বিষয়বস্তু পোস্ট করতে একটি শিডিউলড বার্তা তৈরি করুন।",
+    "createButton": "বার্তা তৈরি করুন"
+  },
+  "pagination": {
+    "previous": "আগের",
+    "next": "পরবর্তী",
+    "page": "পৃষ্ঠা {{page}} / {{total}}"
+  },
+  "actions": {
+    "newMessage": "নতুন বার্তা",
+    "testSend": "টেস্ট পাঠান",
+    "edit": "সম্পাদনা",
+    "delete": "মুছুন",
+    "save": "সংরক্ষণ",
+    "cancel": "বাতিল"
+  },
+  "validation": {
+    "nameRequired": "বার্তার নাম আবশ্যক",
+    "channelRequired": "চ্যানেল আবশ্যক"
+  },
+  "cronPreview": {
+    "nextRuns": "পরবর্তী রান"
+  },
+  "characters": "{{count}}/2000 অক্ষর",
+  "never": "কখনো না"
+}

@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Serwer",
+    "automation": "Automatyzacja"
+  },
+  "title": "Reguły automatyzacji",
+  "subtitle": "Skonfiguruj wyzwalacze oparte na zdarzeniach i automatyczne odpowiedzi dla serwera.",
+  "createRule": "Utwórz regułę",
+  "stats": {
+    "totalRules": "Łącznie reguł",
+    "active": "Aktywnych",
+    "executions7d": "Wykonania (7d)",
+    "successRate": "Wskaźnik sukcesu"
+  },
+  "filter": {
+    "searchPlaceholder": "Szukaj reguł...",
+    "eventType": "Typ zdarzenia",
+    "allEvents": "Wszystkie zdarzenia",
+    "allStatus": "Wszystkie statusy",
+    "enabled": "Włączone",
+    "disabled": "Wyłączone",
+    "sortBy": "Sortuj wg",
+    "priority": "Priorytet",
+    "name": "Nazwa",
+    "lastFired": "Ostatnie wyzwolenie",
+    "status": "Status",
+    "clear": "Wyczyść",
+    "showing": "Wyświetlane {{filtered}} z {{total}} reguł"
+  },
+  "bulk": {
+    "selected": "Wybrano {{count}} regułę",
+    "selected_other": "Wybrano {{count}} reguł",
+    "enable": "Włącz",
+    "disable": "Wyłącz",
+    "delete": "Usuń",
+    "clear": "Wyczyść"
+  },
+  "empty": {
+    "title": "Zacznij z automatyzacją",
+    "description": "Wybierz szablon, aby szybko rozpocząć, lub utwórz regułę od zera.",
+    "createFromScratch": "Utwórz od zera"
+  },
+  "noResults": {
+    "title": "Brak pasujących reguł",
+    "description": "Spróbuj dostosować wyszukiwanie lub filtry."
+  },
+  "templates": {
+    "welcomeMessage": "Wiadomość powitalna",
+    "welcomeMessageDesc": "Powitaj nowych członków wiadomością na kanale",
+    "autoRole": "Auto-rola",
+    "autoRoleDesc": "Automatycznie przypisuj rolę, gdy członek dołączy",
+    "logDeleted": "Loguj usunięte wiadomości",
+    "logDeletedDesc": "Wysyłaj informacje o usuniętych wiadomościach na kanał logów",
+    "boostThankYou": "Podziękowanie za boost",
+    "boostThankYouDesc": "Wyślij PW z podziękowaniem użytkownikom, którzy boostują serwer",
+    "banLogger": "Logger banów",
+    "banLoggerDesc": "Loguj zdarzenia banów na kanał moderacji",
+    "autoThread": "Auto-wątek",
+    "autoThreadDesc": "Automatycznie utwórz wątek, gdy wysłana zostanie wiadomość"
+  },
+  "deleteDialog": {
+    "title": "Usuń regułę",
+    "description": "Czy na pewno chcesz usunąć \"{{name}}\"? Tej akcji nie można cofnąć.",
+    "confirm": "Usuń"
+  },
+  "bulkDeleteDialog": {
+    "title": "Usuń wybrane reguły",
+    "description": "Czy na pewno chcesz usunąć {{count}} regułę? Tej akcji nie można cofnąć.",
+    "description_other": "Czy na pewno chcesz usunąć {{count}} reguł? Tej akcji nie można cofnąć.",
+    "confirm": "Usuń wszystkie"
+  },
+  "toast": {
+    "deleted": "Reguła usunięta",
+    "deleteFailed": "Nie udało się usunąć reguły",
+    "enabled": "Reguła włączona",
+    "disabled": "Reguła wyłączona",
+    "toggleFailed": "Nie udało się przełączyć reguły",
+    "duplicated": "Reguła zduplikowana",
+    "duplicateFailed": "Nie udało się zduplikować reguły",
+    "bulkEnabled": "Włączono {{count}} reguł",
+    "bulkDisabled": "Wyłączono {{count}} reguł",
+    "bulkEnableFailed": "Nie udało się włączyć reguł",
+    "bulkDisableFailed": "Nie udało się wyłączyć reguł",
+    "bulkDeleted": "Usunięto {{count}} reguł",
+    "bulkDeleteFailed": "Nie udało się usunąć reguł"
+  }
+}

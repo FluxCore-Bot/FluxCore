@@ -1,0 +1,12 @@
+{
+  "title": "Resumo",
+  "subtitle": "Monitoriza o rendemento da túa automatización e a actividade dunha ollada.",
+  "stats": {
+    "actionRules": "Regras de Acción",
+    "activeNow": "Activo Agora",
+    "executions": "Execucións",
+    "successRate": "Taxa de Éxito"
+  },
+  "errorsInLast24h": "{{count}} erro nas últimas 24h",
+  "errorsInLast24h_other": "{{count}} erros nas últimas 24h"
+}

@@ -1,0 +1,50 @@
+{
+  "title": "Tombole",
+  "subtitle": "Organizează tombole cu durată personalizabilă, cerințe de participare și selecție a câștigătorilor.",
+  "stats": {
+    "activeGiveaways": "Tombole Active",
+    "pastGiveaways": "Tombole Anterioare",
+    "totalEntries": "Total Participări"
+  },
+  "table": {
+    "prize": "Premiu",
+    "winners": "Câștigători",
+    "entries": "Participări",
+    "endsIn": "Se termină în",
+    "status": "Stare"
+  },
+  "statuses": {
+    "active": "Activă",
+    "ended": "Încheiată",
+    "cancelled": "Anulată"
+  },
+  "actions": {
+    "create": "Creează Tombolă",
+    "edit": "Editează",
+    "end": "Încheie",
+    "reroll": "Retrage",
+    "delete": "Șterge"
+  },
+  "form": {
+    "prize": "Premiu",
+    "winnersCount": "Număr de Câștigători",
+    "duration": "Durată",
+    "channel": "Canal",
+    "requiredRole": "Rol Necesar",
+    "description": "Descriere"
+  },
+  "toast": {
+    "created": "Tombolă creată",
+    "createFailed": "Crearea tombolei a eșuat",
+    "updated": "Tombolă actualizată",
+    "updateFailed": "Actualizarea tombolei a eșuat",
+    "ended": "Tombolă încheiată",
+    "endFailed": "Încheierea tombolei a eșuat",
+    "rerolled": "Câștigători retrași",
+    "rerollFailed": "Retragerea câștigătorilor a eșuat",
+    "deleted": "Tombolă ștearsă",
+    "deleteFailed": "Ștergerea tombolei a eșuat"
+  },
+  "empty": "Nu există tombole încă. Creează una pentru a începe.",
+  "loading": "Se încarcă tombolele..."
+}

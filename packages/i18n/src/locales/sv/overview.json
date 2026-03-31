@@ -1,0 +1,12 @@
+{
+  "title": "Översikt",
+  "subtitle": "Övervaka din automatiseringsprestanda och aktivitet med en blick.",
+  "stats": {
+    "actionRules": "Åtgärdsregler",
+    "activeNow": "Aktiva nu",
+    "executions": "Körningar",
+    "successRate": "Framgångsfrekvens"
+  },
+  "errorsInLast24h": "{{count}} fel senaste 24t",
+  "errorsInLast24h_other": "{{count}} fel senaste 24t"
+}

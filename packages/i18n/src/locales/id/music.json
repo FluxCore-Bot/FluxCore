@@ -1,0 +1,8 @@
+{
+  "title": "Sistem Musik",
+  "subtitle": "Konfigurasikan mode pemutaran global dan preferensi perpustakaan audio.",
+  "tabs": {
+    "settings": "Pengaturan Pemutaran",
+    "library": "Perpustakaan Musik"
+  }
+}

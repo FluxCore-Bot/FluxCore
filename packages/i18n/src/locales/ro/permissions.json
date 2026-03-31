@@ -1,0 +1,118 @@
+{
+  "title": "Roluri & Permisiuni",
+  "subtitle": "Controlează cine poate accesa și gestiona fiecare modul al dashboard-ului.",
+  "actions": {
+    "createRole": "Creează Rol"
+  },
+  "permissionSystem": {
+    "title": "Sistem de Permisiuni",
+    "active": "Activ — administratorii sunt limitați la permisiunile lor atribuite.",
+    "inactive": "Inactiv — toți administratorii cu MANAGE_GUILD au acces complet.",
+    "enabledToast": "Sistemul de permisiuni activat",
+    "disabledToast": "Sistemul de permisiuni dezactivat — toți administratorii au acces complet"
+  },
+  "warning": {
+    "disabled": "Sistemul de permisiuni este dezactivat. Toți administratorii dashboard-ului au în prezent acces complet. Activează-l mai sus pentru a impune permisiuni granulare."
+  },
+  "tabs": {
+    "roles": "Roluri",
+    "auditLog": "Jurnal de Audit"
+  },
+  "roleList": {
+    "title": "Roluri Dashboard",
+    "empty": "Nu există roluri create încă.",
+    "selectHint": "Selectează un rol pentru a edita sau creează unul nou.",
+    "default": "Implicit",
+    "name": "Nume",
+    "members": "Membri",
+    "permissions": "Permisiuni",
+    "edit": "Editează",
+    "delete": "Șterge"
+  },
+  "presets": {
+    "title": "Adaugă Rapid din Preset",
+    "createdToast": "Rol \"{{name}}\" creat"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} membru",
+    "memberCount_plural": "{{count}} membri",
+    "name": "Numele Rolului",
+    "color": "Culoare",
+    "defaultRole": "Rol implicit",
+    "permissions": "Permisiuni",
+    "allBadge": "Toate",
+    "discordRoles": "Roluri Discord"
+  },
+  "roleForm": {
+    "name": "Numele Rolului",
+    "discordRoles": "Roluri Discord",
+    "permissions": "Permisiuni",
+    "create": "Creează Rol",
+    "update": "Actualizează Rol",
+    "cancel": "Anulează"
+  },
+  "createDialog": {
+    "title": "Creează Rol Dashboard",
+    "name": "Nume",
+    "namePlaceholder": "ex. Moderator",
+    "color": "Culoare"
+  },
+  "permissionCategories": {
+    "actions": "Acțiuni & Automatizare",
+    "music": "Muzică",
+    "tempvoice": "TempVoice",
+    "welcome": "Bun venit & La revedere",
+    "moderation": "Moderare",
+    "logging": "Înregistrare",
+    "leveling": "Nivelare",
+    "roles": "Panouri de Roluri",
+    "tickets": "Tichete",
+    "suggestions": "Sugestii",
+    "starboard": "Starboard",
+    "giveaways": "Tombole",
+    "security": "Securitate",
+    "scheduled": "Mesaje Programate",
+    "commands": "Comenzi Personalizate",
+    "settings": "Setări Server"
+  },
+  "audit": {
+    "table": {
+      "user": "Utilizator",
+      "action": "Acțiune",
+      "target": "Țintă",
+      "timestamp": "Când"
+    },
+    "noEntries": "Nu există înregistrări în jurnalul de audit încă."
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Următor",
+    "page": "Pagina {{current}} din {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Rol \"{{name}}\" creat",
+    "roleCreateFailed": "Crearea rolului a eșuat",
+    "roleUpdated": "Rol actualizat",
+    "roleUpdateFailed": "Actualizarea rolului a eșuat",
+    "roleDeleted": "Rol șters",
+    "roleDeleteFailed": "Ștergerea rolului a eșuat"
+  },
+  "confirm": {
+    "deleteTitle": "Ștergi rolul \"{{name}}\"?",
+    "deleteMessage": "Aceasta va elimina rolul și va retrage atribuirile tuturor membrilor. Această acțiune nu poate fi anulată.",
+    "deleteRole": "Ești sigur că vrei să ștergi acest rol? Membrii vor pierde permisiunile atribuite."
+  },
+  "saveButton": {
+    "saving": "Se salvează...",
+    "save": "Salvează Modificările"
+  },
+  "deleteButton": {
+    "deleting": "Se șterge...",
+    "delete": "Șterge"
+  },
+  "createButton": {
+    "creating": "Se creează...",
+    "create": "Creează"
+  },
+  "loading": "Se încarcă permisiunile..."
+}

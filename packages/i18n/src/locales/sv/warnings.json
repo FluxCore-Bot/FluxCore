@@ -1,0 +1,72 @@
+{
+  "title": "Varningar",
+  "subtitle": "Spåra och hantera medlemsvarningar med automatisk eskalering.",
+  "stats": {
+    "totalWarnings": "Totalt antal varningar",
+    "escalationRules": "Eskaleringsregler",
+    "dmOnWarn": "DM vid varning"
+  },
+  "tabs": {
+    "warnings": "Varningslogg",
+    "escalation": "Eskalering",
+    "settings": "Inställningar"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Användare",
+    "moderator": "Moderator",
+    "reason": "Orsak",
+    "date": "Datum"
+  },
+  "filter": {
+    "userPlaceholder": "Filtrera efter användar-ID...",
+    "clearAll": "Rensa alla"
+  },
+  "pagination": {
+    "previous": "Föregående",
+    "next": "Nästa",
+    "page": "Sida {{page}} av {{total}} ({{count}} totalt)"
+  },
+  "loading": "Laddar varningar...",
+  "noWarnings": "Inga varningar hittades.",
+  "toast": {
+    "warningRemoved": "Varning borttagen",
+    "warningsFailed": "Misslyckades med att ta bort varning",
+    "enterUserId": "Ange ett användar-ID för att rensa alla varningar för den användaren",
+    "allCleared": "Alla varningar rensade för användare",
+    "clearFailed": "Misslyckades med att rensa varningar",
+    "thresholdAdded": "Bestraffningsgräns tillagd",
+    "thresholdFailed": "Misslyckades med att lägga till bestraffning",
+    "thresholdRemoved": "Bestraffning borttagen",
+    "removeFailed": "Misslyckades med att ta bort bestraffning",
+    "settingFailed": "Misslyckades med att uppdatera inställning",
+    "thresholdInvalid": "Gränsvärde måste vara ett positivt tal"
+  },
+  "escalation": {
+    "title": "Bestraffningseskalering",
+    "description": "Konfigurera automatiska åtgärder när en användare når ett visst antal varningar.",
+    "threshold": "Gräns",
+    "action": "Åtgärd",
+    "duration": "Varaktighet",
+    "noRules": "Inga eskaleringsregler konfigurerade.",
+    "addRule": "Lägg till eskaleringsregel",
+    "addButton": "Lägg till regel",
+    "warnings": "{{count}} varningar",
+    "min": "{{count}} min",
+    "timeout": "Timeout",
+    "kick": "Sparka",
+    "ban": "Banna",
+    "durationLabel": "Varaktighet (sekunder)",
+    "thresholdPlaceholder": "t.ex. 3",
+    "durationPlaceholder": "t.ex. 3600"
+  },
+  "settings": {
+    "title": "Varningsinställningar",
+    "dmOnWarn": "DM vid varning",
+    "dmOnWarnDesc": "Skicka ett direktmeddelande till användaren när de får en varning.",
+    "requireReason": "Kräv orsak",
+    "requireReasonDesc": "Moderatorer måste ange en orsak när de utfärdar en varning.",
+    "maxWarnings": "Max varningar",
+    "maxWarningsDesc": "Maximalt antal varningar per användare (0 = obegränsat)."
+  }
+}

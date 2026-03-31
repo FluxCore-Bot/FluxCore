@@ -1,0 +1,112 @@
+{
+  "title": "Panel Peranan",
+  "subtitle": "Cipta panel peranan yang boleh dipilih sendiri menggunakan butang, dropdown, atau reaksi.",
+  "stats": {
+    "totalPanels": "Jumlah Panel",
+    "deployed": "Digunakan",
+    "totalRoles": "Jumlah Peranan"
+  },
+  "tabs": {
+    "panels": "Panel",
+    "preview": "Pratonton"
+  },
+  "table": {
+    "name": "Nama",
+    "type": "Jenis",
+    "mode": "Mod",
+    "roles": "Peranan",
+    "status": "Status"
+  },
+  "panelTypes": {
+    "reaction": "Reaksi",
+    "button": "Butang",
+    "dropdown": "Dropdown"
+  },
+  "panelModes": {
+    "toggle": "Toggle",
+    "unique": "Unik",
+    "verify": "Sahkan"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Toggle (tambah/buang)",
+    "unique": "Unik (satu pada satu masa)",
+    "verify": "Sahkan (tambah sahaja)"
+  },
+  "status": {
+    "deployed": "Digunakan",
+    "draft": "Draf"
+  },
+  "dialog": {
+    "createPanel": "Cipta Panel",
+    "editPanel": "Edit Panel"
+  },
+  "panelList": {
+    "title": "Semua Panel"
+  },
+  "form": {
+    "name": "Nama",
+    "namePlaceholder": "cth. Peranan Warna",
+    "type": "Jenis",
+    "mode": "Mod",
+    "channel": "Saluran",
+    "channelPlaceholder": "Pilih saluran",
+    "minRoles": "Min Peranan",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Maks Peranan",
+    "maxRolesPlaceholder": "Semua",
+    "embedSection": "Embed",
+    "embedTitle": "Tajuk",
+    "embedTitlePlaceholder": "Tajuk panel (lalai ke nama panel)",
+    "embedDescription": "Penerangan",
+    "embedDescriptionPlaceholder": "Teks penerangan",
+    "rolesCount": "Peranan ({{count}}/25)",
+    "addRole": "Tambah Peranan"
+  },
+  "entry": {
+    "role": "Peranan",
+    "rolePlaceholder": "Pilih peranan",
+    "label": "Label",
+    "labelPlaceholder": "Label butang",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "cth. bintang",
+    "description": "Penerangan",
+    "descriptionPlaceholder": "Penerangan pilihan",
+    "style": "Gaya"
+  },
+  "buttonStyles": {
+    "primary": "Utama",
+    "secondary": "Sekunder",
+    "success": "Berjaya",
+    "danger": "Bahaya"
+  },
+  "actions": {
+    "create": "Cipta",
+    "update": "Kemaskini",
+    "cancel": "Batal",
+    "deploy": "Gunakan",
+    "delete": "Padam",
+    "addEntry": "Tambah Entri",
+    "removeEntry": "Buang Entri"
+  },
+  "preview": {
+    "title": "Pratonton Langsung",
+    "description": "Pratonton bagaimana panel anda akan kelihatan di Discord.",
+    "selectRoles": "Pilih peranan...",
+    "noPreview": "Tiada panel untuk dipratonton."
+  },
+  "empty": "Belum ada panel peranan yang dicipta. Klik \"Cipta Panel\" untuk bermula.",
+  "toast": {
+    "created": "Panel dicipta",
+    "createFailed": "Gagal mencipta panel",
+    "updated": "Panel dikemaskini",
+    "updateFailed": "Gagal mengemaskini panel",
+    "deleted": "Panel dipadam",
+    "deleteFailed": "Gagal memadam panel",
+    "deployed": "Panel peranan digunakan ke saluran",
+    "deployFailed": "Gagal menghantar panel",
+    "nameRequired": "Nama panel diperlukan",
+    "channelRequired": "Saluran diperlukan",
+    "maxRolesReached": "Maksimum 25 peranan setiap panel"
+  },
+  "loading": "Memuatkan panel..."
+}

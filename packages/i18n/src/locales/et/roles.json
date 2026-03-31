@@ -1,0 +1,112 @@
+{
+  "title": "Rollipaneelid",
+  "subtitle": "Loo ise määratavaid rollipaneele nuppude, rippmenüüde või reaktsioonide abil.",
+  "stats": {
+    "totalPanels": "Paneele kokku",
+    "deployed": "Juurutatud",
+    "totalRoles": "Rolle kokku"
+  },
+  "tabs": {
+    "panels": "Paneelid",
+    "preview": "Eelvaade"
+  },
+  "table": {
+    "name": "Nimi",
+    "type": "Tüüp",
+    "mode": "Režiim",
+    "roles": "Rollid",
+    "status": "Olek"
+  },
+  "panelTypes": {
+    "reaction": "Reaktsioon",
+    "button": "Nupp",
+    "dropdown": "Rippmenüü"
+  },
+  "panelModes": {
+    "toggle": "Lüliti",
+    "unique": "Unikaalne",
+    "verify": "Kinnita"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Lüliti (lisa/eemalda)",
+    "unique": "Unikaalne (üks korraga)",
+    "verify": "Kinnita (ainult lisamine)"
+  },
+  "status": {
+    "deployed": "Juurutatud",
+    "draft": "Mustand"
+  },
+  "dialog": {
+    "createPanel": "Loo paneel",
+    "editPanel": "Muuda paneeli"
+  },
+  "panelList": {
+    "title": "Kõik paneelid"
+  },
+  "form": {
+    "name": "Nimi",
+    "namePlaceholder": "nt Värvide rollid",
+    "type": "Tüüp",
+    "mode": "Režiim",
+    "channel": "Kanal",
+    "channelPlaceholder": "Vali kanal",
+    "minRoles": "Min rolle",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Max rolle",
+    "maxRolesPlaceholder": "Kõik",
+    "embedSection": "Manus",
+    "embedTitle": "Pealkiri",
+    "embedTitlePlaceholder": "Paneeli pealkiri (vaikimisi paneeli nimi)",
+    "embedDescription": "Kirjeldus",
+    "embedDescriptionPlaceholder": "Kirjelduse tekst",
+    "rolesCount": "Rollid ({{count}}/25)",
+    "addRole": "Lisa roll"
+  },
+  "entry": {
+    "role": "Roll",
+    "rolePlaceholder": "Vali roll",
+    "label": "Silt",
+    "labelPlaceholder": "Nupu silt",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "nt täht",
+    "description": "Kirjeldus",
+    "descriptionPlaceholder": "Valiku kirjeldus",
+    "style": "Stiil"
+  },
+  "buttonStyles": {
+    "primary": "Esmane",
+    "secondary": "Teisene",
+    "success": "Edukas",
+    "danger": "Ohtlik"
+  },
+  "actions": {
+    "create": "Loo",
+    "update": "Uuenda",
+    "cancel": "Tühista",
+    "deploy": "Juuruta",
+    "delete": "Kustuta",
+    "addEntry": "Lisa kirje",
+    "removeEntry": "Eemalda kirje"
+  },
+  "preview": {
+    "title": "Reaalajas eelvaade",
+    "description": "Eelvaata, kuidas sinu paneelid Discord-is kuvatakse.",
+    "selectRoles": "Vali rollid...",
+    "noPreview": "Paneele pole eelvaatamiseks."
+  },
+  "empty": "Rollipaneele pole veel loodud. Klõpsa \"Loo paneel\", et alustada.",
+  "toast": {
+    "created": "Paneel loodud",
+    "createFailed": "Paneeli loomine ebaõnnestus",
+    "updated": "Paneel uuendatud",
+    "updateFailed": "Paneeli uuendamine ebaõnnestus",
+    "deleted": "Paneel kustutatud",
+    "deleteFailed": "Paneeli kustutamine ebaõnnestus",
+    "deployed": "Rollipaneel juurutatud kanalile",
+    "deployFailed": "Paneeli saatmine ebaõnnestus",
+    "nameRequired": "Paneeli nimi on kohustuslik",
+    "channelRequired": "Kanal on kohustuslik",
+    "maxRolesReached": "Maksimaalselt 25 rolli paneeli kohta"
+  },
+  "loading": "Laadin paneele..."
+}

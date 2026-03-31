@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Kini dalam Beta Publik",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Bot Discord",
+    "titleLine2": "All-in-One Framework",
+    "subtitle": "Terapkan kehadiran Discord berkelas profesional dalam hitungan menit. Modular, self-hosted, dan dibangun untuk komunitas yang menuntut lebih."
+  },
+  "cta": {
+    "addToServer": "Tambahkan ke Server",
+    "openDashboard": "Buka Dashboard",
+    "exploreFeatures": "Jelajahi Fitur"
+  },
+  "stats": {
+    "servers": "Server",
+    "latency": "Latensi",
+    "uptime": "Uptime",
+    "modules": "Modul",
+    "serversValue": "1.000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99,9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Kemampuan",
+    "title": "Semua yang dibutuhkan server Anda",
+    "subtitle": "Toolkit modular yang dirancang untuk komunitas yang menuntut keandalan, fleksibilitas, dan kontrol.",
+    "automation": {
+      "title": "Aturan Otomasi",
+      "description": "Buat alur kerja berbasis kejadian yang kompleks tanpa kode. Pemicu jika-ini-maka-itu dengan 23 jenis kejadian dan 10 jenis aksi."
+    },
+    "music": {
+      "title": "Sistem Musik",
+      "description": "Streaming audio berkualitas tinggi dengan dukungan multi-platform. Manajemen antrean, kontrol DJ, dan mode perpustakaan."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Manajemen saluran suara dinamis. Pembuatan otomatis dengan template penamaan kustom, izin, dan pembersihan."
+    },
+    "logs": {
+      "title": "Log Aktivitas",
+      "description": "Jejak audit penuh dari setiap eksekusi otomasi. Cari, filter, dan debug aturan Anda dengan log terperinci."
+    },
+    "webhooks": {
+      "title": "Webhook & API",
+      "description": "Kirim data ke layanan eksternal dengan webhook HTTP. Header kustom, template body, dan interpolasi variabel."
+    },
+    "dashboard": {
+      "title": "Dashboard Real-time",
+      "description": "Kelola semua dari dashboard web yang elegan. Analitik, konfigurasi, dan pemantauan dalam satu tempat."
+    }
+  },
+  "ctaSection": {
+    "title": "Siap meningkatkan komunitas Anda?",
+    "subtitle": "Mulai dalam hitungan menit tanpa konfigurasi. Self-hosted, open-source, dan sepenuhnya gratis."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "© {{year}} FluxCore Technologies. Semua hak dilindungi.",
+    "links": {
+      "documentation": "Dokumentasi",
+      "support": "Dukungan",
+      "privacy": "Kebijakan Privasi",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

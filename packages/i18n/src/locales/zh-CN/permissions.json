@@ -1,0 +1,118 @@
+{
+  "title": "角色与权限",
+  "subtitle": "控制谁可以访问和管理仪表盘的各个模块。",
+  "actions": {
+    "createRole": "创建角色"
+  },
+  "permissionSystem": {
+    "title": "权限系统",
+    "active": "已激活 — 管理员仅限于其分配的权限。",
+    "inactive": "未激活 — 所有拥有 MANAGE_GUILD 的管理员均有完全访问权。",
+    "enabledToast": "权限系统已启用",
+    "disabledToast": "权限系统已禁用 — 所有管理员拥有完全访问权"
+  },
+  "warning": {
+    "disabled": "权限系统已禁用。当前所有仪表盘管理员均拥有完全访问权。在上方启用以强制执行细粒度权限。"
+  },
+  "tabs": {
+    "roles": "角色",
+    "auditLog": "审计日志"
+  },
+  "roleList": {
+    "title": "仪表盘角色",
+    "empty": "尚未创建角色。",
+    "selectHint": "选择一个角色进行编辑，或创建一个新角色。",
+    "default": "默认",
+    "name": "名称",
+    "members": "成员",
+    "permissions": "权限",
+    "edit": "编辑",
+    "delete": "删除"
+  },
+  "presets": {
+    "title": "从预设快速添加",
+    "createdToast": "已创建「{{name}}」角色"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} 个成员",
+    "memberCount_plural": "{{count}} 个成员",
+    "name": "角色名称",
+    "color": "颜色",
+    "defaultRole": "默认角色",
+    "permissions": "权限",
+    "allBadge": "全部",
+    "discordRoles": "Discord 角色"
+  },
+  "roleForm": {
+    "name": "角色名称",
+    "discordRoles": "Discord 角色",
+    "permissions": "权限",
+    "create": "创建角色",
+    "update": "更新角色",
+    "cancel": "取消"
+  },
+  "createDialog": {
+    "title": "创建仪表盘角色",
+    "name": "名称",
+    "namePlaceholder": "例：管理员",
+    "color": "颜色"
+  },
+  "permissionCategories": {
+    "actions": "动作与自动化",
+    "music": "音乐",
+    "tempvoice": "临时语音",
+    "welcome": "欢迎与告别",
+    "moderation": "管理",
+    "logging": "日志",
+    "leveling": "等级系统",
+    "roles": "角色面板",
+    "tickets": "工单",
+    "suggestions": "建议",
+    "starboard": "精华消息",
+    "giveaways": "抽奖",
+    "security": "安全",
+    "scheduled": "定时消息",
+    "commands": "自定义命令",
+    "settings": "服务器设置"
+  },
+  "audit": {
+    "table": {
+      "user": "用户",
+      "action": "操作",
+      "target": "对象",
+      "timestamp": "时间"
+    },
+    "noEntries": "暂无审计日志。"
+  },
+  "pagination": {
+    "previous": "上一页",
+    "next": "下一页",
+    "page": "第 {{current}} 页 / 共 {{total}} 页"
+  },
+  "toast": {
+    "roleCreated": "已创建角色「{{name}}」",
+    "roleCreateFailed": "创建角色失败",
+    "roleUpdated": "角色已更新",
+    "roleUpdateFailed": "更新角色失败",
+    "roleDeleted": "角色已删除",
+    "roleDeleteFailed": "删除角色失败"
+  },
+  "confirm": {
+    "deleteTitle": "删除角色「{{name}}」？",
+    "deleteMessage": "这将删除角色并取消所有成员的分配。此操作无法撤销。",
+    "deleteRole": "确定要删除此角色吗？成员将失去已分配的权限。"
+  },
+  "saveButton": {
+    "saving": "保存中...",
+    "save": "保存更改"
+  },
+  "deleteButton": {
+    "deleting": "删除中...",
+    "delete": "删除"
+  },
+  "createButton": {
+    "creating": "创建中...",
+    "create": "创建"
+  },
+  "loading": "正在加载权限..."
+}

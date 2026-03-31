@@ -1,0 +1,65 @@
+{
+  "title": "Welcome & Farewell",
+  "subtitle": "Configure welcome and farewell messages, images, and auto-roles.",
+  "loadingSubtitle": "Configure welcome and farewell messages for your server.",
+  "tabs": {
+    "welcome": "Welcome",
+    "welcomeImage": "Welcome Image",
+    "farewell": "Farewell",
+    "farewellImage": "Farewell Image",
+    "dm": "Welcome DM",
+    "autorole": "Auto-Role"
+  },
+  "welcome": {
+    "title": "Welcome Message",
+    "description": "Send a custom embed when a new member joins.",
+    "channelLabel": "Welcome Channel ID",
+    "channelPlaceholder": "Channel ID...",
+    "embedBuilder": "Embed Builder"
+  },
+  "welcomeImage": {
+    "title": "Welcome Image",
+    "description": "Generate a custom image card with the member's avatar when they join.",
+    "disabled": "Enable the toggle above to configure welcome images."
+  },
+  "farewell": {
+    "title": "Farewell Message",
+    "description": "Send a message when a member leaves the server.",
+    "channelLabel": "Farewell Channel ID",
+    "channelPlaceholder": "Channel ID..."
+  },
+  "farewellImage": {
+    "title": "Farewell Image",
+    "description": "Generate a custom farewell card when a member leaves.",
+    "disabled": "Enable the toggle above to configure farewell images."
+  },
+  "dm": {
+    "title": "Welcome DM",
+    "description": "Send a direct message to new members. Will silently fail if DMs are disabled."
+  },
+  "autorole": {
+    "title": "Auto-Role",
+    "description": "Automatically assign roles to new members when they join. Bots are excluded. The bot must have a role higher than the roles listed here.",
+    "label": "Role IDs (comma-separated)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Title",
+    "description": "Description",
+    "color": "Color (hex)",
+    "footer": "Footer",
+    "thumbnail": "Thumbnail URL",
+    "image": "Image URL",
+    "variables": "Variables:"
+  },
+  "saveChanges": "Save Changes",
+  "saving": "Saving...",
+  "sendTest": "Send Test Message",
+  "sending": "Sending...",
+  "toast": {
+    "saved": "Welcome configuration saved",
+    "saveFailed": "Failed to save configuration",
+    "testSent": "Test message will be sent to <#{{channelId}}>",
+    "testFailed": "Failed to send test message"
+  }
+}

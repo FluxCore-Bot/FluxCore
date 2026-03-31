@@ -1,0 +1,50 @@
+{
+  "title": "이벤트",
+  "subtitle": "맞춤형 기간, 참가 조건, 당첨자 선정으로 이벤트를 진행합니다.",
+  "stats": {
+    "activeGiveaways": "진행 중인 이벤트",
+    "pastGiveaways": "종료된 이벤트",
+    "totalEntries": "총 참가 수"
+  },
+  "table": {
+    "prize": "상품",
+    "winners": "당첨자",
+    "entries": "참가 수",
+    "endsIn": "종료까지",
+    "status": "상태"
+  },
+  "statuses": {
+    "active": "진행 중",
+    "ended": "종료됨",
+    "cancelled": "취소됨"
+  },
+  "actions": {
+    "create": "이벤트 만들기",
+    "edit": "편집",
+    "end": "종료",
+    "reroll": "재추첨",
+    "delete": "삭제"
+  },
+  "form": {
+    "prize": "상품",
+    "winnersCount": "당첨자 수",
+    "duration": "기간",
+    "channel": "채널",
+    "requiredRole": "필요 역할",
+    "description": "설명"
+  },
+  "toast": {
+    "created": "이벤트가 생성되었습니다",
+    "createFailed": "이벤트 생성에 실패했습니다",
+    "updated": "이벤트가 업데이트되었습니다",
+    "updateFailed": "이벤트 업데이트에 실패했습니다",
+    "ended": "이벤트가 종료되었습니다",
+    "endFailed": "이벤트 종료에 실패했습니다",
+    "rerolled": "당첨자가 재추첨되었습니다",
+    "rerollFailed": "당첨자 재추첨에 실패했습니다",
+    "deleted": "이벤트가 삭제되었습니다",
+    "deleteFailed": "이벤트 삭제에 실패했습니다"
+  },
+  "empty": "아직 이벤트가 없습니다. 하나를 만들어 시작하세요.",
+  "loading": "이벤트 불러오는 중..."
+}

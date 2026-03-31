@@ -1,0 +1,108 @@
+{
+  "title": "Keselamatan",
+  "subtitle": "Konfigurasikan perlindungan anti-raid dan tetapan keselamatan pelayan.",
+  "antiRaid": {
+    "title": "Perlindungan Anti-Raid",
+    "description": "Aktifkan pengesanan automatik dan respons terhadap serangan raid yang diselaraskan, akaun mencurigakan, dan tindakan merosakkan."
+  },
+  "sections": {
+    "joinRate": "Kadar Menyertai",
+    "accountAge": "Umur Akaun",
+    "antiNuke": "Anti-Nuke",
+    "lockdown": "Lockdown",
+    "events": "Peristiwa"
+  },
+  "joinRate": {
+    "title": "Pengesanan Kadar Menyertai",
+    "description": "Kesan penyertaan massa dengan memantau kadar ahli baru yang menyertai.",
+    "threshold": "Ambang Menyertai",
+    "thresholdHint": "Bilangan penyertaan untuk mencetuskan pengesanan",
+    "window": "Tetingkap Masa (saat)",
+    "windowHint": "Tetingkap di mana penyertaan dikira",
+    "action": "Tindakan semasa Pengesanan",
+    "actionHint": "Tindakan yang diambil terhadap ahli yang disyaki raider",
+    "actions": {
+      "ban": "Ban",
+      "kick": "Kick",
+      "timeout": "Timeout",
+      "lockdown": "Lockdown"
+    }
+  },
+  "accountAge": {
+    "title": "Penapis Umur Akaun",
+    "description": "Tindak secara automatik akaun yang lebih muda daripada umur minimum. Tetapkan kepada 0 untuk nyahaktifkan.",
+    "minAge": "Umur Akaun Minimum (hari)",
+    "minAgeHint": "0 = dinyahaktifkan. Akaun yang lebih muda daripada ini akan ditindak.",
+    "action": "Tindakan"
+  },
+  "antiNuke": {
+    "title": "Perlindungan Anti-Nuke",
+    "description": "Kesan pemadaman saluran/peranan secara besar-besaran dan kuarantin pengguna yang bertanggungjawab dengan membuang semua peranan mereka.",
+    "threshold": "Ambang Pemadaman",
+    "thresholdHint": "Bilangan pemadaman dalam 10 saat untuk mencetuskan kuarantin",
+    "channelDeleteThreshold": "Ambang Padam Saluran",
+    "roleDeleteThreshold": "Ambang Padam Peranan",
+    "massbanThreshold": "Ambang Ban Beramai-ramai",
+    "interval": "Selang (saat)",
+    "action": "Tindakan"
+  },
+  "lockdown": {
+    "title": "Lockdown Automatik semasa Raid",
+    "description": "Kunci semua saluran secara automatik apabila serangan raid dikesan.",
+    "whitelistedRoles": "ID Peranan Dikecualikan (dipisahkan koma)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Ahli dengan peranan ini akan dikecualikan daripada pengesanan raid.",
+    "logChannel": "ID Saluran Log",
+    "logChannelPlaceholder": "ID saluran untuk log peristiwa raid...",
+    "enableButton": "Aktifkan Lockdown",
+    "disableButton": "Nyahaktifkan Lockdown",
+    "active": "Lockdown Aktif",
+    "inactive": "Lockdown Tidak Aktif"
+  },
+  "events": {
+    "title": "Peristiwa Raid Terbaru",
+    "description": "Garis masa serangan raid yang dikesan, sekatan umur akaun, dan peristiwa lockdown.",
+    "empty": "Belum ada peristiwa raid yang direkodkan. Peristiwa akan muncul di sini apabila pengesanan raid dicetuskan.",
+    "actionLabel": "Tindakan: {{action}}",
+    "usersLabel": "Pengguna: {{count}}",
+    "accountAgeLabel": "Umur akaun: {{days}}h",
+    "table": {
+      "type": "Jenis",
+      "description": "Penerangan",
+      "time": "Masa",
+      "action": "Tindakan Diambil"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Lonjakan Penyertaan",
+    "account_age": "Umur Akaun",
+    "nuke_attempt": "Percubaan Nuke",
+    "lockdown": "Lockdown",
+    "massJoin": "Penyertaan Beramai-ramai",
+    "suspiciousAccounts": "Akaun Mencurigakan",
+    "channelDeletion": "Pemadaman Saluran",
+    "roleDeletion": "Pemadaman Peranan",
+    "massBan": "Ban Beramai-ramai"
+  },
+  "pagination": {
+    "previous": "Sebelumnya",
+    "next": "Seterusnya",
+    "page": "Halaman {{current}} daripada {{total}}"
+  },
+  "toast": {
+    "saved": "Konfigurasi anti-raid disimpan",
+    "saveFailed": "Gagal menyimpan konfigurasi",
+    "lockdownEnabled": "Lockdown pelayan diaktifkan",
+    "lockdownDisabled": "Lockdown pelayan dinyahaktifkan",
+    "lockdownFailed": "Gagal mengalih lockdown"
+  },
+  "saveButton": {
+    "saving": "Menyimpan...",
+    "save": "Simpan Perubahan"
+  },
+  "labels": {
+    "seconds": "saat",
+    "minutes": "minit",
+    "hours": "jam"
+  }
+}

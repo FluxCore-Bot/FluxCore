@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "Πίνακας ελέγχου FluxCore"
+  },
+  "status": {
+    "online": "Συνδεδεμένος",
+    "offline": "Αποσυνδεδεμένος",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Επισκόπηση",
+    "automation": "Αυτοματισμός",
+    "music": "Μουσική",
+    "tempvoice": "TempVoice",
+    "welcome": "Καλωσόρισμα",
+    "moderation": "Διαχείριση",
+    "warnings": "Προειδοποιήσεις",
+    "rolePanels": "Πάνελ ρόλων",
+    "leveling": "Επίπεδα",
+    "scheduled": "Προγραμματισμένα",
+    "commands": "Εντολές",
+    "security": "Ασφάλεια",
+    "tickets": "Εισιτήρια",
+    "giveaways": "Κληρώσεις",
+    "suggestions": "Προτάσεις",
+    "starboard": "Starboard",
+    "logs": "Αρχεία καταγραφής",
+    "permissions": "Δικαιώματα",
+    "settings": "Ρυθμίσεις"
+  },
+  "actions": {
+    "save": "Αποθήκευση",
+    "cancel": "Ακύρωση",
+    "delete": "Διαγραφή",
+    "edit": "Επεξεργασία",
+    "create": "Δημιουργία",
+    "add": "Προσθήκη",
+    "remove": "Αφαίρεση",
+    "confirm": "Επιβεβαίωση",
+    "close": "Κλείσιμο",
+    "back": "Πίσω",
+    "next": "Επόμενο",
+    "search": "Αναζήτηση",
+    "filter": "Φίλτρο",
+    "refresh": "Ανανέωση",
+    "reset": "Επαναφορά",
+    "enable": "Ενεργοποίηση",
+    "disable": "Απενεργοποίηση",
+    "copy": "Αντιγραφή",
+    "export": "Εξαγωγή",
+    "import": "Εισαγωγή",
+    "submit": "Υποβολή",
+    "loading": "Φόρτωση...",
+    "retry": "Επανάληψη"
+  },
+  "labels": {
+    "enabled": "Ενεργό",
+    "disabled": "Ανενεργό",
+    "active": "Ενεργός",
+    "inactive": "Ανενεργός",
+    "none": "Κανένα",
+    "all": "Όλα",
+    "custom": "Προσαρμοσμένο",
+    "default": "Προεπιλογή",
+    "required": "Υποχρεωτικό",
+    "optional": "Προαιρετικό",
+    "name": "Όνομα",
+    "description": "Περιγραφή",
+    "type": "Τύπος",
+    "status": "Κατάσταση",
+    "channel": "Κανάλι",
+    "role": "Ρόλος",
+    "member": "Μέλος",
+    "duration": "Διάρκεια",
+    "reason": "Αιτιολογία",
+    "language": "Γλώσσα"
+  },
+  "header": {
+    "notifications": "Ειδοποιήσεις",
+    "settings": "Ρυθμίσεις",
+    "logout": "Αποσύνδεση",
+    "toggleSidebar": "Εναλλαγή πλαϊνής γραμμής",
+    "refreshData": "Ανανέωση δεδομένων Discord"
+  },
+  "sidebar": {
+    "closeSidebar": "Κλείσιμο πλαϊνής γραμμής",
+    "addToServer": "Προσθήκη στον server",
+    "docs": "Τεκμηρίωση",
+    "support": "Υποστήριξη",
+    "backToServers": "Επιστροφή στους servers"
+  },
+  "empty": {
+    "noData": "Δεν υπάρχουν διαθέσιμα δεδομένα",
+    "noResults": "Δεν βρέθηκαν αποτελέσματα",
+    "noItems": "Δεν υπάρχουν στοιχεία ακόμα"
+  },
+  "time": {
+    "seconds": "δευτερόλεπτα",
+    "minutes": "λεπτά",
+    "hours": "ώρες",
+    "days": "ημέρες",
+    "ago": "πριν {{time}}",
+    "in": "σε {{time}}"
+  },
+  "confirm": {
+    "title": "Είστε σίγουροι;",
+    "deleteTitle": "Επιβεβαίωση διαγραφής",
+    "deleteMessage": "Αυτή η ενέργεια δεν μπορεί να αναιρεθεί.",
+    "unsavedChanges": "Έχετε μη αποθηκευμένες αλλαγές. Είστε σίγουροι ότι θέλετε να φύγετε;"
+  },
+  "accessibility": {
+    "skipToContent": "Μετάβαση στο κύριο περιεχόμενο",
+    "loading": "Φόρτωση περιεχομένου",
+    "loaded": "Το περιεχόμενο φορτώθηκε",
+    "error": "Παρουσιάστηκε σφάλμα",
+    "menuOpen": "Το μενού είναι ανοικτό",
+    "menuClosed": "Το μενού είναι κλειστό"
+  }
+}

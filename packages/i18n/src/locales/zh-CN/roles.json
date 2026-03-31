@@ -1,0 +1,112 @@
+{
+  "title": "角色面板",
+  "subtitle": "使用按钮、下拉菜单或反应创建自助角色分配面板。",
+  "stats": {
+    "totalPanels": "面板总数",
+    "deployed": "已部署",
+    "totalRoles": "角色总数"
+  },
+  "tabs": {
+    "panels": "面板",
+    "preview": "预览"
+  },
+  "table": {
+    "name": "名称",
+    "type": "类型",
+    "mode": "模式",
+    "roles": "角色",
+    "status": "状态"
+  },
+  "panelTypes": {
+    "reaction": "反应",
+    "button": "按钮",
+    "dropdown": "下拉菜单"
+  },
+  "panelModes": {
+    "toggle": "切换",
+    "unique": "唯一",
+    "verify": "验证"
+  },
+  "panelModeDescriptions": {
+    "toggle": "切换（添加/移除）",
+    "unique": "唯一（一次一个）",
+    "verify": "验证（仅添加）"
+  },
+  "status": {
+    "deployed": "已部署",
+    "draft": "草稿"
+  },
+  "dialog": {
+    "createPanel": "创建面板",
+    "editPanel": "编辑面板"
+  },
+  "panelList": {
+    "title": "所有面板"
+  },
+  "form": {
+    "name": "名称",
+    "namePlaceholder": "例：颜色角色",
+    "type": "类型",
+    "mode": "模式",
+    "channel": "频道",
+    "channelPlaceholder": "选择频道",
+    "minRoles": "最少角色数",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "最多角色数",
+    "maxRolesPlaceholder": "全部",
+    "embedSection": "嵌入",
+    "embedTitle": "标题",
+    "embedTitlePlaceholder": "面板标题（默认为面板名称）",
+    "embedDescription": "描述",
+    "embedDescriptionPlaceholder": "描述文本",
+    "rolesCount": "角色（{{count}}/25）",
+    "addRole": "添加角色"
+  },
+  "entry": {
+    "role": "角色",
+    "rolePlaceholder": "选择角色",
+    "label": "标签",
+    "labelPlaceholder": "按钮标签",
+    "emoji": "表情",
+    "emojiPlaceholder": "例：star",
+    "description": "描述",
+    "descriptionPlaceholder": "选项描述",
+    "style": "样式"
+  },
+  "buttonStyles": {
+    "primary": "主要",
+    "secondary": "次要",
+    "success": "成功",
+    "danger": "危险"
+  },
+  "actions": {
+    "create": "创建",
+    "update": "更新",
+    "cancel": "取消",
+    "deploy": "部署",
+    "delete": "删除",
+    "addEntry": "添加条目",
+    "removeEntry": "移除条目"
+  },
+  "preview": {
+    "title": "实时预览",
+    "description": "预览面板在 Discord 中的显示效果。",
+    "selectRoles": "选择角色...",
+    "noPreview": "没有可预览的面板。"
+  },
+  "empty": "尚未创建角色面板。点击"创建面板"开始。",
+  "toast": {
+    "created": "面板已创建",
+    "createFailed": "创建面板失败",
+    "updated": "面板已更新",
+    "updateFailed": "更新面板失败",
+    "deleted": "面板已删除",
+    "deleteFailed": "删除面板失败",
+    "deployed": "角色面板已部署到频道",
+    "deployFailed": "发送面板失败",
+    "nameRequired": "面板名称为必填项",
+    "channelRequired": "频道为必填项",
+    "maxRolesReached": "每个面板最多 25 个角色"
+  },
+  "loading": "正在加载面板..."
+}

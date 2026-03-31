@@ -1,0 +1,108 @@
+{
+  "title": "Seguranca",
+  "subtitle": "Configure a protecao anti-raid e as definicoes de seguranca do servidor.",
+  "antiRaid": {
+    "title": "Protecao anti-raid",
+    "description": "Ative a detecao e resposta automatica a raids coordenados, contas suspeitas e acoes destrutivas."
+  },
+  "sections": {
+    "joinRate": "Taxa de entrada",
+    "accountAge": "Idade da conta",
+    "antiNuke": "Anti-Nuke",
+    "lockdown": "Bloqueio",
+    "events": "Eventos"
+  },
+  "joinRate": {
+    "title": "Detecao de taxa de entrada",
+    "description": "Detetar entradas em massa monitorizando a taxa de novos membros.",
+    "threshold": "Limiar de entradas",
+    "thresholdHint": "Numero de entradas para acionar a detecao",
+    "window": "Janela de tempo (segundos)",
+    "windowHint": "Janela na qual as entradas sao contadas",
+    "action": "Acao ao detetar",
+    "actionHint": "Acao a tomar com membros suspeitos de raid",
+    "actions": {
+      "ban": "Banir",
+      "kick": "Expulsar",
+      "timeout": "Timeout",
+      "lockdown": "Bloqueio"
+    }
+  },
+  "accountAge": {
+    "title": "Filtro de idade da conta",
+    "description": "Sancionar automaticamente contas mais novas que uma idade minima. Defina como 0 para desativar.",
+    "minAge": "Idade minima da conta (dias)",
+    "minAgeHint": "0 = desativado. Contas mais novas serao sancionadas.",
+    "action": "Acao"
+  },
+  "antiNuke": {
+    "title": "Protecao Anti-Nuke",
+    "description": "Detetar eliminacoes em massa de canais/cargos e colocar em quarentena o utilizador responsavel removendo todos os seus cargos.",
+    "threshold": "Limiar de eliminacao",
+    "thresholdHint": "Numero de eliminacoes em 10 segundos para acionar a quarentena",
+    "channelDeleteThreshold": "Limiar de eliminacao de canais",
+    "roleDeleteThreshold": "Limiar de eliminacao de cargos",
+    "massbanThreshold": "Limiar de bans em massa",
+    "interval": "Intervalo (segundos)",
+    "action": "Acao"
+  },
+  "lockdown": {
+    "title": "Bloqueio automatico em caso de raid",
+    "description": "Bloquear automaticamente todos os canais quando um raid e detetado.",
+    "whitelistedRoles": "IDs de cargos na lista branca (separados por virgulas)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Membros com estes cargos estarao isentos da detecao de raid.",
+    "logChannel": "ID do canal de registo",
+    "logChannelPlaceholder": "ID do canal para registos de raid...",
+    "enableButton": "Ativar bloqueio",
+    "disableButton": "Desativar bloqueio",
+    "active": "Bloqueio ativo",
+    "inactive": "Bloqueio inativo"
+  },
+  "events": {
+    "title": "Eventos de raid recentes",
+    "description": "Cronologia de raids detetados, bloqueios por idade de conta e eventos de bloqueio.",
+    "empty": "Ainda sem eventos de raid registados. Os eventos aparecerao aqui quando a detecao de raid for acionada.",
+    "actionLabel": "Acao: {{action}}",
+    "usersLabel": "Utilizadores: {{count}}",
+    "accountAgeLabel": "Idade da conta: {{days}}d",
+    "table": {
+      "type": "Tipo",
+      "description": "Descricao",
+      "time": "Hora",
+      "action": "Acao tomada"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Pico de entradas",
+    "account_age": "Idade da conta",
+    "nuke_attempt": "Tentativa de nuke",
+    "lockdown": "Bloqueio",
+    "massJoin": "Entrada em massa",
+    "suspiciousAccounts": "Contas suspeitas",
+    "channelDeletion": "Eliminacao de canais",
+    "roleDeletion": "Eliminacao de cargos",
+    "massBan": "Ban em massa"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "page": "Pagina {{current}} de {{total}}"
+  },
+  "toast": {
+    "saved": "Configuracao anti-raid guardada",
+    "saveFailed": "Falha ao guardar a configuracao",
+    "lockdownEnabled": "Bloqueio do servidor ativado",
+    "lockdownDisabled": "Bloqueio do servidor desativado",
+    "lockdownFailed": "Falha ao alternar o bloqueio"
+  },
+  "saveButton": {
+    "saving": "A guardar...",
+    "save": "Guardar alteracoes"
+  },
+  "labels": {
+    "seconds": "segundos",
+    "minutes": "minutos",
+    "hours": "horas"
+  }
+}

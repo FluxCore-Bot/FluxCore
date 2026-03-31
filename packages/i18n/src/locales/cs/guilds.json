@@ -1,0 +1,9 @@
+{
+  "title": "Vaše servery",
+  "subtitle": "Vyberte server ke správě a konfiguraci.",
+  "loading": "Načítání serverů...",
+  "empty": {
+    "title": "Žádné servery nenalezeny",
+    "description": "Ujistěte se, že bot je přidán na server, kde máte oprávnění Správa serveru."
+  }
+}

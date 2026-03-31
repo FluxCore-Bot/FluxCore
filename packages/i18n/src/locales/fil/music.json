@@ -1,0 +1,8 @@
+{
+  "title": "Sistema ng Musika",
+  "subtitle": "I-configure ang mga global na mode ng playback at mga kagustuhan ng audio library.",
+  "tabs": {
+    "settings": "Mga Setting ng Playback",
+    "library": "Library ng Musika"
+  }
+}

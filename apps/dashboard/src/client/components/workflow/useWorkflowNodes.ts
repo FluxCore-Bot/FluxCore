@@ -41,7 +41,6 @@ export interface AddActionNodeData {
 
 const TRIGGER_X = 80;
 const ACTION_X = 420;
-const BRANCH_X = 700;
 const NODE_Y_START = 60;
 const NODE_Y_GAP = 130;
 const EDGE_INTERACTION_WIDTH = 20; // wider click area for selecting edges
@@ -53,7 +52,7 @@ function buildLinearNodes(
   input: WorkflowNodesInput,
   triggerNode: Node<TriggerNodeData>,
 ): { nodes: Node[]; edges: Edge[] } {
-  const { actions, constants, maxActions = 5, selectedNodeId, onAddAction, validationIssues = [] } = input;
+  const { actions, constants, selectedNodeId, validationIssues = [] } = input;
 
   const actionNodes: Node<ActionNodeData>[] = actions.map((action, i) => {
     const nodeId = `action-${i}`;

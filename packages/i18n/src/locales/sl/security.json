@@ -1,0 +1,108 @@
+{
+  "title": "Varnost",
+  "subtitle": "Konfigurirajte zaščito pred vpadi in varnostne nastavitve strežnika.",
+  "antiRaid": {
+    "title": "Zaščita pred vpadi",
+    "description": "Omogočite samodejno zaznavanje in odziv na usklajene vpade, sumljive račune in destruktivna dejanja."
+  },
+  "sections": {
+    "joinRate": "Stopnja pridruževanja",
+    "accountAge": "Starost računa",
+    "antiNuke": "Zaščita pred uničenjem",
+    "lockdown": "Zapora",
+    "events": "Dogodki"
+  },
+  "joinRate": {
+    "title": "Zaznavanje stopnje pridruževanja",
+    "description": "Zaznajte množično pridruževanje s spremljanjem stopnje novih članov.",
+    "threshold": "Prag pridruževanja",
+    "thresholdHint": "Število pridruževanj za sprožitev zaznavanja",
+    "window": "Časovno okno (sekunde)",
+    "windowHint": "Okno, v katerem se štejejo pridruževanja",
+    "action": "Dejanje ob zaznavanju",
+    "actionHint": "Dejanje za sumljive člane vpada",
+    "actions": {
+      "ban": "Prepoved",
+      "kick": "Izklop",
+      "timeout": "Odmor",
+      "lockdown": "Zapora"
+    }
+  },
+  "accountAge": {
+    "title": "Filter starosti računa",
+    "description": "Samodejno ukrep za račune, mlajše od minimalne starosti. Nastavite na 0 za onemogočitev.",
+    "minAge": "Minimalna starost računa (dni)",
+    "minAgeHint": "0 = onemogočeno. Za račune, mlajše od tega, bo sprejeto ukrep.",
+    "action": "Dejanje"
+  },
+  "antiNuke": {
+    "title": "Zaščita pred uničenjem",
+    "description": "Zaznajte množično brisanje kanalov/vlog in karantenizirajte odgovornega uporabnika z odstranitvijo vseh njegovih vlog.",
+    "threshold": "Prag brisanja",
+    "thresholdHint": "Število brisanj v 10 sekundah za sprožitev karantene",
+    "channelDeleteThreshold": "Prag brisanja kanalov",
+    "roleDeleteThreshold": "Prag brisanja vlog",
+    "massbanThreshold": "Prag množičnih prepovedi",
+    "interval": "Interval (sekunde)",
+    "action": "Dejanje"
+  },
+  "lockdown": {
+    "title": "Samodejna zapora ob vpadu",
+    "description": "Samodejno zaklenite vse kanale ob zaznavanju vpada.",
+    "whitelistedRoles": "ID-ji dovoljenih vlog (ločeni z vejico)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Člani s temi vlogami so izvzeti iz zaznavanja vpada.",
+    "logChannel": "ID kanala dnevnika",
+    "logChannelPlaceholder": "ID kanala za dnevnike vpadnih dogodkov...",
+    "enableButton": "Omogoči zaporo",
+    "disableButton": "Onemogoči zaporo",
+    "active": "Zapora aktivna",
+    "inactive": "Zapora neaktivna"
+  },
+  "events": {
+    "title": "Nedavni vpadni dogodki",
+    "description": "Časovnica zaznanih vpadov, blokad po starosti računa in vpadnih dogodkov.",
+    "empty": "Še ni zabeleženih vpadnih dogodkov. Dogodki se bodo pojavili tukaj, ko se zaznavanje vpadov sproži.",
+    "actionLabel": "Dejanje: {{action}}",
+    "usersLabel": "Uporabniki: {{count}}",
+    "accountAgeLabel": "Starost računa: {{days}}d",
+    "table": {
+      "type": "Vrsta",
+      "description": "Opis",
+      "time": "Čas",
+      "action": "Sprejeto dejanje"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Skok pridruževanj",
+    "account_age": "Starost računa",
+    "nuke_attempt": "Poskus uničenja",
+    "lockdown": "Zapora",
+    "massJoin": "Množično pridruževanje",
+    "suspiciousAccounts": "Sumljivi računi",
+    "channelDeletion": "Brisanje kanala",
+    "roleDeletion": "Brisanje vloge",
+    "massBan": "Množična prepoved"
+  },
+  "pagination": {
+    "previous": "Prejšnja",
+    "next": "Naslednja",
+    "page": "Stran {{current}} od {{total}}"
+  },
+  "toast": {
+    "saved": "Konfiguracija zaščite pred vpadi shranjena",
+    "saveFailed": "Shranjevanje konfiguracije ni uspelo",
+    "lockdownEnabled": "Zapora strežnika omogočena",
+    "lockdownDisabled": "Zapora strežnika onemogočena",
+    "lockdownFailed": "Preklop zapore ni uspel"
+  },
+  "saveButton": {
+    "saving": "Shranjevanje...",
+    "save": "Shrani spremembe"
+  },
+  "labels": {
+    "seconds": "sekund",
+    "minutes": "minut",
+    "hours": "ur"
+  }
+}

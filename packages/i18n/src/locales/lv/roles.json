@@ -1,0 +1,112 @@
+{
+  "title": "Lomu paneli",
+  "subtitle": "Izveidojiet pasobligtas lomu panelus, izmantojot pogas, nolaizamos sarakstus vai reakcijas.",
+  "stats": {
+    "totalPanels": "Kopejie paneli",
+    "deployed": "Izvietoti",
+    "totalRoles": "Kopejais lomas"
+  },
+  "tabs": {
+    "panels": "Paneli",
+    "preview": "Prieksskats"
+  },
+  "table": {
+    "name": "Nosaukums",
+    "type": "Tips",
+    "mode": "Rezims",
+    "roles": "Lomas",
+    "status": "Statuss"
+  },
+  "panelTypes": {
+    "reaction": "Reakcija",
+    "button": "Poga",
+    "dropdown": "Nolaizamais saraksts"
+  },
+  "panelModes": {
+    "toggle": "Parsleegsana",
+    "unique": "Unikals",
+    "verify": "Verifikacija"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Parsleegsana (pievienot/nonemt)",
+    "unique": "Unikals (pa vienai)",
+    "verify": "Verifikacija (tikai pievienot)"
+  },
+  "status": {
+    "deployed": "Izvietots",
+    "draft": "Melnraksts"
+  },
+  "dialog": {
+    "createPanel": "Izveidot paneli",
+    "editPanel": "Rediget paneli"
+  },
+  "panelList": {
+    "title": "Visi paneli"
+  },
+  "form": {
+    "name": "Nosaukums",
+    "namePlaceholder": "piem. Krassu lomas",
+    "type": "Tips",
+    "mode": "Rezims",
+    "channel": "Kanals",
+    "channelPlaceholder": "Izvelieties kanalu",
+    "minRoles": "Min lomu",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Maks lomu",
+    "maxRolesPlaceholder": "Visas",
+    "embedSection": "Embed",
+    "embedTitle": "Virsraksts",
+    "embedTitlePlaceholder": "Panela virsraksts (noklusetais — panela nosaukums)",
+    "embedDescription": "Apraksts",
+    "embedDescriptionPlaceholder": "Apraksta teksts",
+    "rolesCount": "Lomas ({{count}}/25)",
+    "addRole": "Pievienot lomu"
+  },
+  "entry": {
+    "role": "Loma",
+    "rolePlaceholder": "Izvelieties lomu",
+    "label": "Etiksete",
+    "labelPlaceholder": "Pogas etiksete",
+    "emoji": "Emodzijs",
+    "emojiPlaceholder": "piem. zvaiagznite",
+    "description": "Apraksts",
+    "descriptionPlaceholder": "Izveeles apraksts",
+    "style": "Stils"
+  },
+  "buttonStyles": {
+    "primary": "Pamata",
+    "secondary": "Sekundarais",
+    "success": "Veeiksme",
+    "danger": "Briesmas"
+  },
+  "actions": {
+    "create": "Izveidot",
+    "update": "Atjaunot",
+    "cancel": "Atcelt",
+    "deploy": "Izvietot",
+    "delete": "Dzest",
+    "addEntry": "Pievienot ierakstu",
+    "removeEntry": "Nonemt ierakstu"
+  },
+  "preview": {
+    "title": "Tiesraides prieksskats",
+    "description": "Apskatiet, ka jusu paneli izskatiisies Discord.",
+    "selectRoles": "Izvelieties lomas...",
+    "noPreview": "Nav panelu prieksskatam."
+  },
+  "empty": "Lomu paneli nav izveidoti. Nospiediet \"Izveidot paneli\", lai saaktu.",
+  "toast": {
+    "created": "Panelis izveidots",
+    "createFailed": "Neizdevas izveidot paneli",
+    "updated": "Panelis atjaunots",
+    "updateFailed": "Neizdevas atjaunot paneli",
+    "deleted": "Panelis dzests",
+    "deleteFailed": "Neizdevas dzest paneli",
+    "deployed": "Lomu panelis izvietots kanala",
+    "deployFailed": "Neizdevas nosutit paneli",
+    "nameRequired": "Panela nosaukums ir obligats",
+    "channelRequired": "Kanals ir obligats",
+    "maxRolesReached": "Maksimali 25 lomas paneli"
+  },
+  "loading": "Iellade panelus..."
+}

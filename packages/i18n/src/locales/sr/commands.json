@@ -1,0 +1,113 @@
+{
+  "title": "Prilagodene komande",
+  "subtitle": "Kreirajte automatske odgovore i komande sa prefiksom pokrenute porukama.",
+  "stats": {
+    "totalCommands": "Ukupno komandi",
+    "enabled": "Omoguceno",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Komande",
+    "variables": "Promenljive"
+  },
+  "table": {
+    "name": "Naziv",
+    "trigger": "Okidac",
+    "response": "Odgovor",
+    "cooldown": "Hladenje",
+    "status": "Status"
+  },
+  "triggerTypes": {
+    "command": "!komanda",
+    "keyword": "Kljucna rec",
+    "startsWith": "Pocinje sa",
+    "regex": "Regex",
+    "prefixCommand": "Komanda sa prefiksom (!naziv)",
+    "keywordContains": "Kljucna rec (sadrzi)"
+  },
+  "dialog": {
+    "createCommand": "Kreiraj komandu",
+    "editCommand": "Uredi komandu"
+  },
+  "form": {
+    "commandName": "Naziv komande",
+    "triggerText": "Tekst okidaca",
+    "regexPattern": "Regex sablon",
+    "triggerType": "Tip okidaca",
+    "response": "Odgovor",
+    "message": "Poruka",
+    "embedTitle": "Naslov embeda",
+    "embedDescription": "Opis embeda",
+    "color": "Boja",
+    "footer": "Podnozje"
+  },
+  "options": {
+    "cooldown": "Hladenje (sekunde)",
+    "enabled": "Omoguceno",
+    "enabledDesc": "Da li je ova komanda aktivna",
+    "deleteTrigger": "Obrisi poruku okidaca",
+    "deleteTriggerDesc": "Automatski obrisite poruku koja je pokrenula ovu komandu.",
+    "dmResponse": "Odgovor privatnom porukom",
+    "dmResponseDesc": "Posaljite odgovor kao privatnu poruku umesto u kanal."
+  },
+  "restrictions": {
+    "title": "Ogranicenja",
+    "allowedChannels": "Dozvoljeni kanali (prazno = svi)",
+    "allowedRoles": "Dozvoljene uloge (prazno = svi)",
+    "addChannel": "Dodaj kanal",
+    "addRole": "Dodaj ulogu"
+  },
+  "actions": {
+    "create": "Kreiraj",
+    "update": "Azuriraj",
+    "cancel": "Otkazi",
+    "addAction": "Dodaj radnju",
+    "addRole": "Dodaj ulogu",
+    "removeRole": "Ukloni ulogu"
+  },
+  "actionsSection": {
+    "title": "Radnje ({{count}}/5)",
+    "noActions": "Nema konfigurisanih radnji. Dodajte radnju za definisanje sta ova komanda radi.",
+    "maxActions": "Maksimalno 5 radnji po komandi"
+  },
+  "variables": {
+    "title": "Promenljive sablona",
+    "description": "Koristite ove promenljive u odgovorima svojih komandi. Bice zamenjene stvarnim vrednostima kada se komanda pokrene.",
+    "table": {
+      "variable": "Promenljiva",
+      "description": "Opis"
+    },
+    "entries": {
+      "user": "{user} — Pominje korisnika koji je pokrenuo komandu",
+      "username": "{username} — Prikazno ime korisnika",
+      "userId": "{userId} — ID korisnika",
+      "server": "{server} — Naziv servera",
+      "channel": "{channel} — Pominje trenutni kanal",
+      "channelName": "{channelName} — Naziv kanala",
+      "memberCount": "{memberCount} — Ukupan broj clanova servera"
+    }
+  },
+  "toast": {
+    "created": "Komanda kreirana",
+    "createFailed": "Kreiranje komande nije uspelo",
+    "updated": "Komanda azurirana",
+    "updateFailed": "Azuriranje komande nije uspelo",
+    "deleted": "Komanda obrisana",
+    "deleteFailed": "Brisanje komande nije uspelo",
+    "toggleEnabled": "Komanda omogucena",
+    "toggleDisabled": "Komanda onemogucena",
+    "toggleFailed": "Prebacivanje komande nije uspelo"
+  },
+  "empty": "Nema kreiranih prilagodenih komandi.",
+  "loading": "Ucitavanje komandi...",
+  "badge": {
+    "active": "Aktivno",
+    "disabled": "Onemoguceno",
+    "text": "Tekst",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Naziv komande je obavezan"
+  },
+  "triggerPrefix": "Okidac: !{{name}}"
+}

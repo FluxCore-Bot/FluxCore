@@ -1,0 +1,86 @@
+{
+  "title": "Ujumbe Uliopangwa",
+  "subtitle": "Unda ujumbe wa kutumwa kiotomatiki kwa ratiba zinazoweza kusanidiwa.",
+  "stats": {
+    "totalMessages": "Jumla ya Ujumbe",
+    "active": "Hai",
+    "inactive": "Haifanyi Kazi"
+  },
+  "table": {
+    "name": "Jina",
+    "channel": "Chaneli",
+    "schedule": "Ratiba",
+    "nextRun": "Utekelezaji Ujao",
+    "status": "Hali"
+  },
+  "dialog": {
+    "editTitle": "Hariri Ujumbe Uliopangwa",
+    "createTitle": "Ujumbe Mpya Uliopangwa"
+  },
+  "form": {
+    "name": "Jina",
+    "channel": "Chaneli",
+    "schedulePreset": "Muundo wa Ratiba",
+    "cronExpression": "Usemi wa Cron",
+    "timezone": "Eneo la Saa",
+    "messageContent": "Maudhui ya Ujumbe",
+    "text": "Maandishi",
+    "embed": "Embed",
+    "enabled": "Imewashwa",
+    "enabledDesc": "Iwapo ujumbe huu uliopangwa unatumika."
+  },
+  "cronPresets": {
+    "everyHour": "Kila Saa",
+    "every6Hours": "Kila Masaa 6",
+    "daily9am": "Kila Siku saa 9 Asubuhi",
+    "dailyMidnight": "Kila Siku Usiku wa Manane",
+    "weeklyMonday": "Kila Wiki Jumatatu",
+    "monthly1st": "Kila Mwezi Tarehe 1",
+    "custom": "Maalum"
+  },
+  "embed": {
+    "title": "Kichwa",
+    "description": "Maelezo",
+    "color": "Rangi (hex)",
+    "footer": "Kijachini",
+    "thumbnail": "URL ya Kijipicha",
+    "image": "URL ya Picha"
+  },
+  "toast": {
+    "created": "Ujumbe uliopangwa umeundwa",
+    "createFailed": "Imeshindwa kuunda ujumbe uliopangwa",
+    "updated": "Ujumbe uliopangwa umesasishwa",
+    "updateFailed": "Imeshindwa kusasisha ujumbe uliopangwa",
+    "deleted": "Ujumbe uliopangwa umefutwa",
+    "deleteFailed": "Imeshindwa kufuta ujumbe uliopangwa",
+    "testSent": "Ujumbe wa majaribio umetumwa",
+    "testFailed": "Imeshindwa kutuma ujumbe wa majaribio"
+  },
+  "empty": {
+    "title": "Hakuna ujumbe uliopangwa bado",
+    "description": "Unda ujumbe uliopangwa ili kutuma maudhui kiotomatiki kwa ratiba ya kujirudia.",
+    "createButton": "Unda Ujumbe"
+  },
+  "pagination": {
+    "previous": "Iliyotangulia",
+    "next": "Inayofuata",
+    "page": "Ukurasa {{page}} wa {{total}}"
+  },
+  "actions": {
+    "newMessage": "Ujumbe Mpya",
+    "testSend": "Jaribu Kutuma",
+    "edit": "Hariri",
+    "delete": "Futa",
+    "save": "Hifadhi",
+    "cancel": "Ghairi"
+  },
+  "validation": {
+    "nameRequired": "Jina la ujumbe linahitajika",
+    "channelRequired": "Chaneli inahitajika"
+  },
+  "cronPreview": {
+    "nextRuns": "Utekelezaji Ujao"
+  },
+  "characters": "Herufi {{count}}/2000",
+  "never": "Kamwe"
+}

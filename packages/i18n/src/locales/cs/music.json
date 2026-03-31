@@ -1,0 +1,8 @@
+{
+  "title": "Hudební systém",
+  "subtitle": "Nakonfigurujte globální režimy přehrávání a preference audio knihovny.",
+  "tabs": {
+    "settings": "Nastavení přehrávání",
+    "library": "Hudební knihovna"
+  }
+}

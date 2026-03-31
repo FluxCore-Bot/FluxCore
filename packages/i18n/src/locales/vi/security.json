@@ -1,0 +1,108 @@
+{
+  "title": "Bảo Mật",
+  "subtitle": "Cấu hình bảo vệ chống raid và cài đặt bảo mật máy chủ.",
+  "antiRaid": {
+    "title": "Bảo Vệ Chống Raid",
+    "description": "Bật tính năng tự động phát hiện và phản hồi các cuộc tấn công phối hợp, tài khoản đáng ngờ và hành động phá hoại."
+  },
+  "sections": {
+    "joinRate": "Tốc Độ Tham Gia",
+    "accountAge": "Tuổi Tài Khoản",
+    "antiNuke": "Chống Nuke",
+    "lockdown": "Khóa Máy Chủ",
+    "events": "Sự Kiện"
+  },
+  "joinRate": {
+    "title": "Phát Hiện Tốc Độ Tham Gia",
+    "description": "Phát hiện tham gia hàng loạt bằng cách theo dõi tốc độ thành viên mới tham gia.",
+    "threshold": "Ngưỡng Tham Gia",
+    "thresholdHint": "Số lần tham gia để kích hoạt phát hiện",
+    "window": "Cửa Sổ Thời Gian (giây)",
+    "windowHint": "Cửa sổ trong đó các lần tham gia được đếm",
+    "action": "Hành Động Khi Phát Hiện",
+    "actionHint": "Hành động thực hiện với thành viên được nghi ngờ raid",
+    "actions": {
+      "ban": "Cấm",
+      "kick": "Đuổi",
+      "timeout": "Hết Thời Gian",
+      "lockdown": "Khóa Máy Chủ"
+    }
+  },
+  "accountAge": {
+    "title": "Bộ Lọc Tuổi Tài Khoản",
+    "description": "Tự động xử lý các tài khoản trẻ hơn độ tuổi tối thiểu. Đặt 0 để tắt.",
+    "minAge": "Tuổi Tài Khoản Tối Thiểu (ngày)",
+    "minAgeHint": "0 = tắt. Các tài khoản trẻ hơn mức này sẽ bị xử lý.",
+    "action": "Hành Động"
+  },
+  "antiNuke": {
+    "title": "Bảo Vệ Chống Nuke",
+    "description": "Phát hiện xóa kênh/vai trò hàng loạt và cách ly người dùng chịu trách nhiệm bằng cách xóa tất cả vai trò của họ.",
+    "threshold": "Ngưỡng Xóa",
+    "thresholdHint": "Số lần xóa trong 10 giây để kích hoạt cách ly",
+    "channelDeleteThreshold": "Ngưỡng Xóa Kênh",
+    "roleDeleteThreshold": "Ngưỡng Xóa Vai Trò",
+    "massbanThreshold": "Ngưỡng Cấm Hàng Loạt",
+    "interval": "Khoảng Thời Gian (giây)",
+    "action": "Hành Động"
+  },
+  "lockdown": {
+    "title": "Tự Động Khóa Khi Bị Raid",
+    "description": "Tự động khóa tất cả kênh khi phát hiện raid.",
+    "whitelistedRoles": "ID Vai Trò Được Miễn (phân cách bằng dấu phẩy)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Thành viên có các vai trò này sẽ được miễn khỏi phát hiện raid.",
+    "logChannel": "ID Kênh Nhật Ký",
+    "logChannelPlaceholder": "ID kênh cho nhật ký sự kiện raid...",
+    "enableButton": "Bật Khóa Máy Chủ",
+    "disableButton": "Tắt Khóa Máy Chủ",
+    "active": "Đang Khóa",
+    "inactive": "Không Khóa"
+  },
+  "events": {
+    "title": "Sự Kiện Raid Gần Đây",
+    "description": "Dòng thời gian của các raid được phát hiện, chặn tuổi tài khoản và sự kiện khóa.",
+    "empty": "Chưa có sự kiện raid nào được ghi lại. Các sự kiện sẽ xuất hiện ở đây khi phát hiện raid kích hoạt.",
+    "actionLabel": "Hành động: {{action}}",
+    "usersLabel": "Người dùng: {{count}}",
+    "accountAgeLabel": "Tuổi tài khoản: {{days}} ngày",
+    "table": {
+      "type": "Loại",
+      "description": "Mô Tả",
+      "time": "Thời Gian",
+      "action": "Hành Động Đã Thực Hiện"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Đột Biến Tham Gia",
+    "account_age": "Tuổi Tài Khoản",
+    "nuke_attempt": "Nỗ Lực Nuke",
+    "lockdown": "Khóa Máy Chủ",
+    "massJoin": "Tham Gia Hàng Loạt",
+    "suspiciousAccounts": "Tài Khoản Đáng Ngờ",
+    "channelDeletion": "Xóa Kênh",
+    "roleDeletion": "Xóa Vai Trò",
+    "massBan": "Cấm Hàng Loạt"
+  },
+  "pagination": {
+    "previous": "Trước",
+    "next": "Tiếp",
+    "page": "Trang {{current}} / {{total}}"
+  },
+  "toast": {
+    "saved": "Đã lưu cấu hình chống raid",
+    "saveFailed": "Lưu cấu hình thất bại",
+    "lockdownEnabled": "Đã bật khóa máy chủ",
+    "lockdownDisabled": "Đã tắt khóa máy chủ",
+    "lockdownFailed": "Thay đổi trạng thái khóa thất bại"
+  },
+  "saveButton": {
+    "saving": "Đang lưu...",
+    "save": "Lưu Thay Đổi"
+  },
+  "labels": {
+    "seconds": "giây",
+    "minutes": "phút",
+    "hours": "giờ"
+  }
+}

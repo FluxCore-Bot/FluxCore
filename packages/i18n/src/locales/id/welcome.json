@@ -1,0 +1,65 @@
+{
+  "title": "Sambutan & Perpisahan",
+  "subtitle": "Konfigurasikan pesan sambutan dan perpisahan, gambar, dan peran otomatis.",
+  "loadingSubtitle": "Konfigurasikan pesan sambutan dan perpisahan untuk server Anda.",
+  "tabs": {
+    "welcome": "Sambutan",
+    "welcomeImage": "Gambar Sambutan",
+    "farewell": "Perpisahan",
+    "farewellImage": "Gambar Perpisahan",
+    "dm": "DM Sambutan",
+    "autorole": "Peran Otomatis"
+  },
+  "welcome": {
+    "title": "Pesan Sambutan",
+    "description": "Kirim embed kustom ketika anggota baru bergabung.",
+    "channelLabel": "ID Saluran Sambutan",
+    "channelPlaceholder": "ID Saluran...",
+    "embedBuilder": "Pembuat Embed"
+  },
+  "welcomeImage": {
+    "title": "Gambar Sambutan",
+    "description": "Buat kartu gambar kustom dengan avatar anggota ketika mereka bergabung.",
+    "disabled": "Aktifkan toggle di atas untuk mengonfigurasi gambar sambutan."
+  },
+  "farewell": {
+    "title": "Pesan Perpisahan",
+    "description": "Kirim pesan ketika anggota meninggalkan server.",
+    "channelLabel": "ID Saluran Perpisahan",
+    "channelPlaceholder": "ID Saluran..."
+  },
+  "farewellImage": {
+    "title": "Gambar Perpisahan",
+    "description": "Buat kartu perpisahan kustom ketika anggota pergi.",
+    "disabled": "Aktifkan toggle di atas untuk mengonfigurasi gambar perpisahan."
+  },
+  "dm": {
+    "title": "DM Sambutan",
+    "description": "Kirim pesan langsung ke anggota baru. Akan gagal secara diam-diam jika DM dinonaktifkan."
+  },
+  "autorole": {
+    "title": "Peran Otomatis",
+    "description": "Berikan peran secara otomatis ke anggota baru ketika mereka bergabung. Bot dikecualikan. Bot harus memiliki peran yang lebih tinggi dari peran yang terdaftar di sini.",
+    "label": "ID Peran (dipisahkan koma)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Judul",
+    "description": "Deskripsi",
+    "color": "Warna (hex)",
+    "footer": "Footer",
+    "thumbnail": "URL Thumbnail",
+    "image": "URL Gambar",
+    "variables": "Variabel:"
+  },
+  "saveChanges": "Simpan Perubahan",
+  "saving": "Menyimpan...",
+  "sendTest": "Kirim Pesan Uji",
+  "sending": "Mengirim...",
+  "toast": {
+    "saved": "Konfigurasi sambutan disimpan",
+    "saveFailed": "Gagal menyimpan konfigurasi",
+    "testSent": "Pesan uji akan dikirim ke <#{{channelId}}>",
+    "testFailed": "Gagal mengirim pesan uji"
+  }
+}

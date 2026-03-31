@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Pole autentitud",
+    "sessionExpired": "Seanss on aegunud",
+    "missingCode": "Puudub koodiparameeter",
+    "tokenExchangeFailed": "Tokeni vahetus ebaõnnestus",
+    "failedToFetchUser": "Kasutajainfo toomine ebaõnnestus"
+  },
+  "permissions": {
+    "noGuildPermission": "Sellel serveril puudub luba",
+    "botNotInGuild": "Bot pole sellel serveril",
+    "insufficientPermissions": "Ebapiisavad õigused",
+    "permissionsNotResolved": "Õiguseid ei lahendatud",
+    "requiresPermission": "See toiming nõuab õigust \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Vigane sisend",
+    "missingField": "Puudub kohustuslik väli: {{field}}",
+    "invalidFormat": "Vigane vorming väljal {{field}}",
+    "tooLong": "{{field}} ületab maksimaalse pikkuse {{max}} tähemärki",
+    "tooShort": "{{field}} peab olema vähemalt {{min}} tähemärki",
+    "outOfRange": "{{field}} peab jääma vahemikku {{min}} ja {{max}}"
+  },
+  "resources": {
+    "notFound": "Ei leitud",
+    "alreadyExists": "{{resource}} on juba olemas",
+    "limitReached": "Maksimaalselt {{max}} {{resource}} serveri kohta",
+    "createFailed": "{{resource}} loomine ebaõnnestus",
+    "updateFailed": "{{resource}} uuendamine ebaõnnestus",
+    "deleteFailed": "{{resource}} kustutamine ebaõnnestus"
+  },
+  "server": {
+    "internalError": "Serveri sisemine viga",
+    "serviceUnavailable": "Teenus on ajutiselt kättesaamatu",
+    "rateLimited": "Liiga palju päringuid. Palun proovi hiljem uuesti."
+  },
+  "csrf": {
+    "invalidToken": "Vigane või puuduv CSRF-token"
+  }
+}

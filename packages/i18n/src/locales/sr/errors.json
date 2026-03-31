@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Niste prijavljeni",
+    "sessionExpired": "Sesija je istekla",
+    "missingCode": "Nedostaje parametar koda",
+    "tokenExchangeFailed": "Razmena tokena nije uspela",
+    "failedToFetchUser": "Preuzimanje korisnickih podataka nije uspelo"
+  },
+  "permissions": {
+    "noGuildPermission": "Nemate dozvolu za ovaj server",
+    "botNotInGuild": "Bot nije na ovom serveru",
+    "insufficientPermissions": "Nedovoljne dozvole",
+    "permissionsNotResolved": "Dozvole nisu razresene",
+    "requiresPermission": "Ova radnja zahteva dozvolu \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Neispravan unos",
+    "missingField": "Nedostaje obavezno polje: {{field}}",
+    "invalidFormat": "Neispravan format za {{field}}",
+    "tooLong": "{{field}} prelazi maksimalnu duzinu od {{max}} znakova",
+    "tooShort": "{{field}} mora imati najmanje {{min}} znakova",
+    "outOfRange": "{{field}} mora biti izmedu {{min}} i {{max}}"
+  },
+  "resources": {
+    "notFound": "Nije pronadeno",
+    "alreadyExists": "{{resource}} vec postoji",
+    "limitReached": "Maksimalno {{max}} {{resource}} po serveru",
+    "createFailed": "Kreiranje {{resource}} nije uspelo",
+    "updateFailed": "Azuriranje {{resource}} nije uspelo",
+    "deleteFailed": "Brisanje {{resource}} nije uspelo"
+  },
+  "server": {
+    "internalError": "Interna greska servera",
+    "serviceUnavailable": "Usluga je privremeno nedostupna",
+    "rateLimited": "Previse zahteva. Pokusajte ponovo kasnije."
+  },
+  "csrf": {
+    "invalidToken": "Neispravan ili nedostajuci CSRF token"
+  }
+}

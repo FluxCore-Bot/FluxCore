@@ -1,0 +1,50 @@
+{
+  "title": "Weggeefacties",
+  "subtitle": "Organiseer weggeefacties met aanpasbare duur, deelnamevereisten en winnaarselectie.",
+  "stats": {
+    "activeGiveaways": "Actieve weggeefacties",
+    "pastGiveaways": "Voorbije weggeefacties",
+    "totalEntries": "Totaal deelnames"
+  },
+  "table": {
+    "prize": "Prijs",
+    "winners": "Winnaars",
+    "entries": "Deelnames",
+    "endsIn": "Eindigt over",
+    "status": "Status"
+  },
+  "statuses": {
+    "active": "Actief",
+    "ended": "Beëindigd",
+    "cancelled": "Geannuleerd"
+  },
+  "actions": {
+    "create": "Weggeefactie aanmaken",
+    "edit": "Bewerken",
+    "end": "Beëindigen",
+    "reroll": "Opnieuw trekken",
+    "delete": "Verwijderen"
+  },
+  "form": {
+    "prize": "Prijs",
+    "winnersCount": "Aantal winnaars",
+    "duration": "Duur",
+    "channel": "Kanaal",
+    "requiredRole": "Vereiste rol",
+    "description": "Beschrijving"
+  },
+  "toast": {
+    "created": "Weggeefactie aangemaakt",
+    "createFailed": "Weggeefactie aanmaken mislukt",
+    "updated": "Weggeefactie bijgewerkt",
+    "updateFailed": "Weggeefactie bijwerken mislukt",
+    "ended": "Weggeefactie beëindigd",
+    "endFailed": "Weggeefactie beëindigen mislukt",
+    "rerolled": "Winnaars opnieuw getrokken",
+    "rerollFailed": "Winnaars opnieuw trekken mislukt",
+    "deleted": "Weggeefactie verwijderd",
+    "deleteFailed": "Weggeefactie verwijderen mislukt"
+  },
+  "empty": "Nog geen weggeefacties. Maak er een aan om te beginnen.",
+  "loading": "Weggeefacties laden..."
+}

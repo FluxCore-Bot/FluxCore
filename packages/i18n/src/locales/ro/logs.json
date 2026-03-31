@@ -1,0 +1,8 @@
+{
+  "title": "Jurnale",
+  "subtitle": "Monitorizează execuțiile regulilor și înregistrarea evenimentelor.",
+  "tabs": {
+    "activity": "Jurnale de Activitate",
+    "events": "Jurnale de Evenimente"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "title": "Moderointi",
+  "subtitle": "Tarkastele ja hallitse moderointitapauksia, määritä rangaistusasetukset.",
+  "stats": {
+    "totalCases": "Tapauksia yhteensä",
+    "activeTempbans": "Aktiiviset väliaikaiset estot",
+    "last24h": "Viimeiset 24t"
+  },
+  "cases": "Tapaukset",
+  "actions": {
+    "ban": "Estä",
+    "tempban": "Väliaikainen esto",
+    "kick": "Potkaise",
+    "timeout": "Aikakatkaisu",
+    "softban": "Pehmeä esto",
+    "warn": "Varoita",
+    "note": "Huomautus"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Toiminto",
+    "target": "Kohde",
+    "moderator": "Moderaattori",
+    "reason": "Syy",
+    "date": "Päivämäärä",
+    "actions": "Toiminnot",
+    "noCases": "Tapauksia ei löytynyt.",
+    "noReason": "Ei syytä"
+  },
+  "filter": {
+    "userPlaceholder": "Suodata käyttäjä-ID:llä...",
+    "allActions": "Kaikki toiminnot"
+  },
+  "pagination": {
+    "previous": "Edellinen",
+    "next": "Seuraava",
+    "page": "Sivu {{page}} / {{total}}"
+  },
+  "editDialog": {
+    "title": "Muokkaa tapauksen #{{id}} syytä",
+    "placeholder": "Syötä uusi syy...",
+    "saving": "Tallennetaan..."
+  },
+  "editReason": "Muokkaa syytä",
+  "deleteCase": "Poista tapaus",
+  "deleteConfirm": "Haluatko varmasti poistaa tämän tapauksen?",
+  "settings": {
+    "title": "Asetukset",
+    "dmOnPunishment": "DM rangaistuksesta",
+    "dmOnPunishmentDesc": "Lähetä DM käyttäjille kun heitä rangaistaan (esto, potkut, aikakatkaisu).",
+    "modLogChannel": "Moderointilokikanava",
+    "modLogChannelDesc": "Kanava, johon moderointitoiminnot kirjataan."
+  }
+}

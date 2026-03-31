@@ -1,0 +1,77 @@
+{
+  "title": "Sistema de tickets",
+  "subtitle": "Crea paneles de tickets de soporte y gestiona los tickets abiertos desde el panel.",
+  "stats": {
+    "totalTickets": "Total de tickets",
+    "open": "Abiertos",
+    "claimed": "Reclamados",
+    "panels": "Paneles"
+  },
+  "tabs": {
+    "activeTickets": "Tickets activos",
+    "panelBuilder": "Editor de paneles",
+    "settings": "Configuracion"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Usuario",
+    "subject": "Asunto",
+    "status": "Estado",
+    "assignee": "Asignado a",
+    "created": "Creado"
+  },
+  "statuses": {
+    "open": "Abierto",
+    "claimed": "Reclamado",
+    "closed": "Cerrado"
+  },
+  "panelBuilder": {
+    "title": "Titulo del panel",
+    "channel": "Canal",
+    "buttonLabel": "Etiqueta del boton",
+    "welcomeMessage": "Mensaje de bienvenida",
+    "category": "Categoria del ticket",
+    "create": "Crear panel",
+    "edit": "Editar panel",
+    "deploy": "Desplegar panel"
+  },
+  "settings": {
+    "transcriptChannel": "Canal de transcripcion",
+    "transcriptChannelDesc": "Canal donde se guardan las transcripciones de tickets al cerrar.",
+    "maxTicketsPerUser": "Tickets maximos por usuario",
+    "maxTicketsPerUserDesc": "Numero maximo de tickets abiertos que un usuario puede tener.",
+    "closeConfirmation": "Confirmacion de cierre",
+    "closeConfirmationDesc": "Requerir confirmacion antes de cerrar un ticket.",
+    "dmTranscript": "Transcripcion por MD",
+    "dmTranscriptDesc": "Enviar una copia de la transcripcion al creador del ticket por MD."
+  },
+  "actions": {
+    "claim": "Reclamar",
+    "close": "Cerrar",
+    "delete": "Eliminar",
+    "reopen": "Reabrir"
+  },
+  "toast": {
+    "panelCreated": "Panel de tickets creado",
+    "panelCreateFailed": "Error al crear el panel de tickets",
+    "panelUpdated": "Panel de tickets actualizado",
+    "panelUpdateFailed": "Error al actualizar el panel de tickets",
+    "panelDeployed": "Panel de tickets desplegado",
+    "panelDeployFailed": "Error al desplegar el panel de tickets",
+    "ticketClaimed": "Ticket reclamado",
+    "ticketClaimFailed": "Error al reclamar el ticket",
+    "ticketClosed": "Ticket cerrado",
+    "ticketCloseFailed": "Error al cerrar el ticket",
+    "ticketReopened": "Ticket reabierto",
+    "ticketReopenFailed": "Error al reabrir el ticket",
+    "ticketDeleted": "Ticket eliminado",
+    "ticketDeleteFailed": "Error al eliminar el ticket",
+    "settingsSaved": "Configuracion de tickets guardada",
+    "settingsFailed": "Error al guardar la configuracion de tickets"
+  },
+  "empty": {
+    "tickets": "No hay tickets activos.",
+    "panels": "Aun no se han creado paneles de tickets."
+  },
+  "loading": "Cargando tickets..."
+}

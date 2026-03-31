@@ -1,0 +1,86 @@
+{
+  "title": "Mensagens agendadas",
+  "subtitle": "Crie mensagens recorrentes publicadas automaticamente com horarios configuraveis.",
+  "stats": {
+    "totalMessages": "Total de mensagens",
+    "active": "Ativas",
+    "inactive": "Inativas"
+  },
+  "table": {
+    "name": "Nome",
+    "channel": "Canal",
+    "schedule": "Horario",
+    "nextRun": "Proxima execucao",
+    "status": "Estado"
+  },
+  "dialog": {
+    "editTitle": "Editar mensagem agendada",
+    "createTitle": "Nova mensagem agendada"
+  },
+  "form": {
+    "name": "Nome",
+    "channel": "Canal",
+    "schedulePreset": "Modelo de horario",
+    "cronExpression": "Expressao Cron",
+    "timezone": "Fuso horario",
+    "messageContent": "Conteudo da mensagem",
+    "text": "Texto",
+    "embed": "Embed",
+    "enabled": "Ativada",
+    "enabledDesc": "Se esta mensagem agendada esta ativa."
+  },
+  "cronPresets": {
+    "everyHour": "A cada hora",
+    "every6Hours": "A cada 6 horas",
+    "daily9am": "Diariamente as 9h",
+    "dailyMidnight": "Diariamente a meia-noite",
+    "weeklyMonday": "Semanalmente a segunda-feira",
+    "monthly1st": "Mensalmente no dia 1",
+    "custom": "Personalizado"
+  },
+  "embed": {
+    "title": "Titulo",
+    "description": "Descricao",
+    "color": "Cor (hex)",
+    "footer": "Rodape",
+    "thumbnail": "URL da miniatura",
+    "image": "URL da imagem"
+  },
+  "toast": {
+    "created": "Mensagem agendada criada",
+    "createFailed": "Falha ao criar a mensagem agendada",
+    "updated": "Mensagem agendada atualizada",
+    "updateFailed": "Falha ao atualizar a mensagem agendada",
+    "deleted": "Mensagem agendada eliminada",
+    "deleteFailed": "Falha ao eliminar a mensagem agendada",
+    "testSent": "Mensagem de teste enviada",
+    "testFailed": "Falha ao enviar a mensagem de teste"
+  },
+  "empty": {
+    "title": "Ainda sem mensagens agendadas",
+    "description": "Crie uma mensagem agendada para publicar conteudo automaticamente de forma recorrente.",
+    "createButton": "Criar mensagem"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "page": "Pagina {{page}} de {{total}}"
+  },
+  "actions": {
+    "newMessage": "Nova mensagem",
+    "testSend": "Envio de teste",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "save": "Guardar",
+    "cancel": "Cancelar"
+  },
+  "validation": {
+    "nameRequired": "O nome da mensagem e obrigatorio",
+    "channelRequired": "O canal e obrigatorio"
+  },
+  "cronPreview": {
+    "nextRuns": "Proximas execucoes"
+  },
+  "characters": "{{count}}/2000 caracteres",
+  "never": "Nunca"
+}

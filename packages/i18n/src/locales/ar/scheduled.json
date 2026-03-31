@@ -1,0 +1,86 @@
+{
+  "title": "الرسائل المجدولة",
+  "subtitle": "إنشاء رسائل متكررة يتم نشرها تلقائيًا وفق جداول قابلة للتكوين.",
+  "stats": {
+    "totalMessages": "إجمالي الرسائل",
+    "active": "نشطة",
+    "inactive": "غير نشطة"
+  },
+  "table": {
+    "name": "الاسم",
+    "channel": "القناة",
+    "schedule": "الجدول",
+    "nextRun": "التشغيل التالي",
+    "status": "الحالة"
+  },
+  "dialog": {
+    "editTitle": "تعديل الرسالة المجدولة",
+    "createTitle": "رسالة مجدولة جديدة"
+  },
+  "form": {
+    "name": "الاسم",
+    "channel": "القناة",
+    "schedulePreset": "قالب الجدول",
+    "cronExpression": "تعبير Cron",
+    "timezone": "المنطقة الزمنية",
+    "messageContent": "محتوى الرسالة",
+    "text": "نص",
+    "embed": "تضمين",
+    "enabled": "مفعّل",
+    "enabledDesc": "ما إذا كانت هذه الرسالة المجدولة نشطة."
+  },
+  "cronPresets": {
+    "everyHour": "كل ساعة",
+    "every6Hours": "كل 6 ساعات",
+    "daily9am": "يوميًا الساعة 9 صباحًا",
+    "dailyMidnight": "يوميًا عند منتصف الليل",
+    "weeklyMonday": "أسبوعيًا يوم الاثنين",
+    "monthly1st": "شهريًا في اليوم الأول",
+    "custom": "مخصص"
+  },
+  "embed": {
+    "title": "العنوان",
+    "description": "الوصف",
+    "color": "اللون (hex)",
+    "footer": "التذييل",
+    "thumbnail": "رابط الصورة المصغرة",
+    "image": "رابط الصورة"
+  },
+  "toast": {
+    "created": "تم إنشاء الرسالة المجدولة",
+    "createFailed": "فشل في إنشاء الرسالة المجدولة",
+    "updated": "تم تحديث الرسالة المجدولة",
+    "updateFailed": "فشل في تحديث الرسالة المجدولة",
+    "deleted": "تم حذف الرسالة المجدولة",
+    "deleteFailed": "فشل في حذف الرسالة المجدولة",
+    "testSent": "تم إرسال الرسالة التجريبية",
+    "testFailed": "فشل في إرسال الرسالة التجريبية"
+  },
+  "empty": {
+    "title": "لا توجد رسائل مجدولة بعد",
+    "description": "أنشئ رسالة مجدولة لنشر محتوى تلقائيًا بشكل متكرر.",
+    "createButton": "إنشاء رسالة"
+  },
+  "pagination": {
+    "previous": "السابق",
+    "next": "التالي",
+    "page": "صفحة {{page}} من {{total}}"
+  },
+  "actions": {
+    "newMessage": "رسالة جديدة",
+    "testSend": "إرسال تجريبي",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "save": "حفظ",
+    "cancel": "إلغاء"
+  },
+  "validation": {
+    "nameRequired": "اسم الرسالة مطلوب",
+    "channelRequired": "القناة مطلوبة"
+  },
+  "cronPreview": {
+    "nextRuns": "التشغيلات القادمة"
+  },
+  "characters": "{{count}}/2000 حرف",
+  "never": "أبدًا"
+}

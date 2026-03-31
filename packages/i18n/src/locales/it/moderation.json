@@ -1,0 +1,54 @@
+{
+  "title": "Moderazione",
+  "subtitle": "Visualizza e gestisci i casi di moderazione, configura le impostazioni delle sanzioni.",
+  "stats": {
+    "totalCases": "Casi totali",
+    "activeTempbans": "Tempban attivi",
+    "last24h": "Ultime 24h"
+  },
+  "cases": "Casi",
+  "actions": {
+    "ban": "Ban",
+    "tempban": "Tempban",
+    "kick": "Espulsione",
+    "timeout": "Timeout",
+    "softban": "Softban",
+    "warn": "Avverti",
+    "note": "Nota"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Azione",
+    "target": "Obiettivo",
+    "moderator": "Moderatore",
+    "reason": "Motivo",
+    "date": "Data",
+    "actions": "Azioni",
+    "noCases": "Nessun caso trovato.",
+    "noReason": "Nessun motivo"
+  },
+  "filter": {
+    "userPlaceholder": "Filtra per ID utente...",
+    "allActions": "Tutte le azioni"
+  },
+  "pagination": {
+    "previous": "Precedente",
+    "next": "Successivo",
+    "page": "Pagina {{page}} di {{total}}"
+  },
+  "editDialog": {
+    "title": "Modifica motivo del caso #{{id}}",
+    "placeholder": "Inserisci il nuovo motivo...",
+    "saving": "Salvataggio..."
+  },
+  "editReason": "Modifica motivo",
+  "deleteCase": "Elimina caso",
+  "deleteConfirm": "Sei sicuro di voler eliminare questo caso?",
+  "settings": {
+    "title": "Impostazioni",
+    "dmOnPunishment": "MD alla sanzione",
+    "dmOnPunishmentDesc": "Invia un MD agli utenti quando vengono sanzionati (ban, espulsione, timeout).",
+    "modLogChannel": "Canale registro moderazione",
+    "modLogChannelDesc": "Canale dove vengono registrate le azioni di moderazione."
+  }
+}

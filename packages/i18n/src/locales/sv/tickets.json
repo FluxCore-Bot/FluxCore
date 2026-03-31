@@ -1,0 +1,77 @@
+{
+  "title": "Ärendesystem",
+  "subtitle": "Skapa supportärendepaneler och hantera öppna ärenden från kontrollpanelen.",
+  "stats": {
+    "totalTickets": "Totalt antal ärenden",
+    "open": "Öppna",
+    "claimed": "Tilldelade",
+    "panels": "Paneler"
+  },
+  "tabs": {
+    "activeTickets": "Aktiva ärenden",
+    "panelBuilder": "Panelbyggare",
+    "settings": "Inställningar"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Användare",
+    "subject": "Ämne",
+    "status": "Status",
+    "assignee": "Tilldelad",
+    "created": "Skapad"
+  },
+  "statuses": {
+    "open": "Öppen",
+    "claimed": "Tilldelad",
+    "closed": "Stängd"
+  },
+  "panelBuilder": {
+    "title": "Paneltitel",
+    "channel": "Kanal",
+    "buttonLabel": "Knappetikett",
+    "welcomeMessage": "Välkomstmeddelande",
+    "category": "Ärendekategori",
+    "create": "Skapa panel",
+    "edit": "Redigera panel",
+    "deploy": "Publicera panel"
+  },
+  "settings": {
+    "transcriptChannel": "Transkriptkanal",
+    "transcriptChannelDesc": "Kanal där ärendetranskript sparas vid stängning.",
+    "maxTicketsPerUser": "Max ärenden per användare",
+    "maxTicketsPerUserDesc": "Maximalt antal öppna ärenden en enskild användare kan ha.",
+    "closeConfirmation": "Stängningsbekräftelse",
+    "closeConfirmationDesc": "Kräv bekräftelse innan ett ärende stängs.",
+    "dmTranscript": "DM-transkript",
+    "dmTranscriptDesc": "Skicka en kopia av transkriptet till ärendeskaparen via DM."
+  },
+  "actions": {
+    "claim": "Tilldela",
+    "close": "Stäng",
+    "delete": "Ta bort",
+    "reopen": "Återöppna"
+  },
+  "toast": {
+    "panelCreated": "Ärendepanel skapad",
+    "panelCreateFailed": "Misslyckades med att skapa ärendepanel",
+    "panelUpdated": "Ärendepanel uppdaterad",
+    "panelUpdateFailed": "Misslyckades med att uppdatera ärendepanel",
+    "panelDeployed": "Ärendepanel publicerad",
+    "panelDeployFailed": "Misslyckades med att publicera ärendepanel",
+    "ticketClaimed": "Ärende tilldelat",
+    "ticketClaimFailed": "Misslyckades med att tilldela ärende",
+    "ticketClosed": "Ärende stängt",
+    "ticketCloseFailed": "Misslyckades med att stänga ärende",
+    "ticketReopened": "Ärende återöppnat",
+    "ticketReopenFailed": "Misslyckades med att återöppna ärende",
+    "ticketDeleted": "Ärende borttaget",
+    "ticketDeleteFailed": "Misslyckades med att ta bort ärende",
+    "settingsSaved": "Ärendeinställningar sparade",
+    "settingsFailed": "Misslyckades med att spara ärendeinställningar"
+  },
+  "empty": {
+    "tickets": "Inga aktiva ärenden.",
+    "panels": "Inga ärendepaneler skapade ännu."
+  },
+  "loading": "Laddar ärenden..."
+}

@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Ngayon sa Public Beta",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Ang All-in-One",
+    "titleLine2": "Discord Bot Framework",
+    "subtitle": "Mag-deploy ng propesyonal na Discord presence sa loob ng ilang minuto. Modular, self-hosted, at ginawa para sa mga komunidad na nangangailangan ng higit pa."
+  },
+  "cta": {
+    "addToServer": "Idagdag sa Server",
+    "openDashboard": "Buksan ang Dashboard",
+    "exploreFeatures": "I-explore ang mga Feature"
+  },
+  "stats": {
+    "servers": "Mga Server",
+    "latency": "Latency",
+    "uptime": "Uptime",
+    "modules": "Mga Module",
+    "serversValue": "1,000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99.9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Mga Kakayahan",
+    "title": "Lahat ng kailangan ng iyong server",
+    "subtitle": "Isang modular na toolkit na dinisenyo para sa mga komunidad na nangangailangan ng pagiging maaasahan, kakayahang umangkop, at kontrol.",
+    "automation": {
+      "title": "Mga Panuntunan ng Automation",
+      "description": "Gumawa ng mga kumplikadong event-driven na workflow nang walang code. Mga if-this-then-that trigger na may 23 uri ng event at 10 uri ng aksyon."
+    },
+    "music": {
+      "title": "Sistema ng Musika",
+      "description": "High-fidelity na audio streaming na may suporta sa maraming platform. Pamamahala ng queue, mga kontrol ng DJ, at library mode."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Dynamic na pamamahala ng voice channel. Auto-creation na may mga custom na template ng pangalan, mga pahintulot, at paglilinis."
+    },
+    "logs": {
+      "title": "Mga Log ng Aktibidad",
+      "description": "Kumpletong audit trail ng bawat pagpapatupad ng automation. Maghanap, mag-filter, at i-debug ang iyong mga panuntunan gamit ang mga detalyadong log."
+    },
+    "webhooks": {
+      "title": "Mga Webhook at API",
+      "description": "Magpadala ng data sa mga panlabas na serbisyo gamit ang HTTP webhooks. Mga custom na header, template ng body, at variable interpolation."
+    },
+    "dashboard": {
+      "title": "Real-time Dashboard",
+      "description": "Pamahalaan ang lahat mula sa isang maayos na web dashboard. Analytics, configuration, at monitoring sa iisang lugar."
+    }
+  },
+  "ctaSection": {
+    "title": "Handa ka bang i-upgrade ang iyong komunidad?",
+    "subtitle": "Magsimula sa loob ng ilang minuto nang walang configuration. Self-hosted, open-source, at ganap na libre."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "© {{year}} FluxCore Technologies. Lahat ng karapatan ay nakalaan.",
+    "links": {
+      "documentation": "Dokumentasyon",
+      "support": "Suporta",
+      "privacy": "Patakaran sa Privacy",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

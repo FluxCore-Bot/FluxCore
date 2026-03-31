@@ -1,0 +1,67 @@
+{
+  "title": "Predlozi",
+  "subtitle": "Omogucite clanovima da salju ideje i glasaju o njima. Upravljajte statusom i povratnim informacijama.",
+  "stats": {
+    "totalSuggestions": "Ukupno predloga",
+    "systemStatus": "Status sistema",
+    "channel": {
+      "configured": "Kanal konfigurisan",
+      "notSet": "Kanal nije postavljen"
+    }
+  },
+  "tabs": {
+    "suggestions": "Predlozi",
+    "settings": "Podesavanja"
+  },
+  "filter": {
+    "filterByStatus": "Filtriraj po statusu",
+    "all": "Sve",
+    "pending": "Na cekanju",
+    "approved": "Odobreno",
+    "rejected": "Odbijeno",
+    "implemented": "Implementirano",
+    "considered": "Razmatra se"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Autor",
+    "content": "Sadrzaj",
+    "status": "Status",
+    "votes": "Glasovi",
+    "date": "Datum"
+  },
+  "actions": {
+    "approve": "Odobri",
+    "reject": "Odbij",
+    "implement": "Oznaci kao implementirano",
+    "consider": "Razmotri",
+    "delete": "Obrisi"
+  },
+  "settings": {
+    "channel": "Kanal za predloge",
+    "channelDesc": "Kanal u koji se objavljuju predlozi za glasanje.",
+    "voteEmojis": "Emotikoni za glasanje",
+    "voteEmojisDesc": "Emotikoni koji se koriste za pozitivne i negativne reakcije.",
+    "autoThread": "Automatsko kreiranje niti",
+    "autoThreadDesc": "Automatski kreirajte nit za diskusiju uz svaki novi predlog.",
+    "dmOnStatusChange": "Poruka pri promeni statusa",
+    "dmOnStatusChangeDesc": "Obavestite autora privatnom porukom kada se status njihovog predloga promeni."
+  },
+  "toast": {
+    "approved": "Predlog odobren",
+    "rejected": "Predlog odbijen",
+    "implemented": "Predlog oznacen kao implementiran",
+    "considered": "Predlog oznacen kao u razmatranju",
+    "deleted": "Predlog obrisan",
+    "actionFailed": "Azuriranje predloga nije uspelo",
+    "settingsSaved": "Podesavanja predloga sacuvana",
+    "settingsFailed": "Cuvanje podesavanja predloga nije uspelo"
+  },
+  "empty": "Nema predloga.",
+  "loading": "Ucitavanje predloga...",
+  "pagination": {
+    "previous": "Prethodna",
+    "next": "Sledeca",
+    "page": "Stranica {{page}} od {{total}}"
+  }
+}

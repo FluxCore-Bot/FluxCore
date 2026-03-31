@@ -1,0 +1,112 @@
+{
+  "title": "Rol Panelleri",
+  "subtitle": "Butonlar, açılır menüler veya tepkilerle kendinden atanabilir rol panelleri oluşturun.",
+  "stats": {
+    "totalPanels": "Toplam Panel",
+    "deployed": "Yayınlanan",
+    "totalRoles": "Toplam Rol"
+  },
+  "tabs": {
+    "panels": "Paneller",
+    "preview": "Önizleme"
+  },
+  "table": {
+    "name": "Ad",
+    "type": "Tür",
+    "mode": "Mod",
+    "roles": "Roller",
+    "status": "Durum"
+  },
+  "panelTypes": {
+    "reaction": "Tepki",
+    "button": "Buton",
+    "dropdown": "Açılır Menü"
+  },
+  "panelModes": {
+    "toggle": "Aç/Kapat",
+    "unique": "Tekil",
+    "verify": "Doğrula"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Aç/Kapat (ekle/kaldır)",
+    "unique": "Tekil (seferde bir tane)",
+    "verify": "Doğrula (yalnızca ekle)"
+  },
+  "status": {
+    "deployed": "Yayınlandı",
+    "draft": "Taslak"
+  },
+  "dialog": {
+    "createPanel": "Panel Oluştur",
+    "editPanel": "Paneli Düzenle"
+  },
+  "panelList": {
+    "title": "Tüm Paneller"
+  },
+  "form": {
+    "name": "Ad",
+    "namePlaceholder": "örn. Renk Rolleri",
+    "type": "Tür",
+    "mode": "Mod",
+    "channel": "Kanal",
+    "channelPlaceholder": "Kanal seçin",
+    "minRoles": "Min Roller",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Maks Roller",
+    "maxRolesPlaceholder": "Tümü",
+    "embedSection": "Gömü",
+    "embedTitle": "Başlık",
+    "embedTitlePlaceholder": "Panel başlığı (varsayılan: panel adı)",
+    "embedDescription": "Açıklama",
+    "embedDescriptionPlaceholder": "Açıklama metni",
+    "rolesCount": "Roller ({{count}}/25)",
+    "addRole": "Rol Ekle"
+  },
+  "entry": {
+    "role": "Rol",
+    "rolePlaceholder": "Rol seçin",
+    "label": "Etiket",
+    "labelPlaceholder": "Buton etiketi",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "örn. yıldız",
+    "description": "Açıklama",
+    "descriptionPlaceholder": "Seçenek açıklaması",
+    "style": "Stil"
+  },
+  "buttonStyles": {
+    "primary": "Birincil",
+    "secondary": "İkincil",
+    "success": "Başarı",
+    "danger": "Tehlike"
+  },
+  "actions": {
+    "create": "Oluştur",
+    "update": "Güncelle",
+    "cancel": "İptal",
+    "deploy": "Yayınla",
+    "delete": "Sil",
+    "addEntry": "Giriş Ekle",
+    "removeEntry": "Girişi Kaldır"
+  },
+  "preview": {
+    "title": "Canlı Önizleme",
+    "description": "Panellerinizin Discord'da nasıl görüneceğini önizleyin.",
+    "selectRoles": "Roller seçin...",
+    "noPreview": "Önizlenecek panel yok."
+  },
+  "empty": "Henüz rol paneli oluşturulmadı. Başlamak için \"Panel Oluştur\"a tıklayın.",
+  "toast": {
+    "created": "Panel oluşturuldu",
+    "createFailed": "Panel oluşturulamadı",
+    "updated": "Panel güncellendi",
+    "updateFailed": "Panel güncellenemedi",
+    "deleted": "Panel silindi",
+    "deleteFailed": "Panel silinemedi",
+    "deployed": "Rol paneli kanala yayınlandı",
+    "deployFailed": "Panel gönderilemedi",
+    "nameRequired": "Panel adı zorunludur",
+    "channelRequired": "Kanal zorunludur",
+    "maxRolesReached": "Panel başına en fazla 25 rol"
+  },
+  "loading": "Paneller yükleniyor..."
+}

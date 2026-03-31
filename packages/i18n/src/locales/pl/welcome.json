@@ -1,0 +1,65 @@
+{
+  "title": "Powitanie i pożegnanie",
+  "subtitle": "Skonfiguruj wiadomości powitalne i pożegnalne, obrazy i auto-role.",
+  "loadingSubtitle": "Konfiguracja wiadomości powitalnych i pożegnalnych dla serwera.",
+  "tabs": {
+    "welcome": "Powitanie",
+    "welcomeImage": "Obraz powitalny",
+    "farewell": "Pożegnanie",
+    "farewellImage": "Obraz pożegnalny",
+    "dm": "PW powitalna",
+    "autorole": "Auto-rola"
+  },
+  "welcome": {
+    "title": "Wiadomość powitalna",
+    "description": "Wyślij niestandardowy embed, gdy nowy członek dołącza.",
+    "channelLabel": "ID kanału powitalnego",
+    "channelPlaceholder": "ID kanału...",
+    "embedBuilder": "Kreator embeda"
+  },
+  "welcomeImage": {
+    "title": "Obraz powitalny",
+    "description": "Generuj niestandardową kartę z awatarem członka po dołączeniu.",
+    "disabled": "Włącz przełącznik powyżej, aby skonfigurować obrazy powitalne."
+  },
+  "farewell": {
+    "title": "Wiadomość pożegnalna",
+    "description": "Wyślij wiadomość, gdy członek opuszcza serwer.",
+    "channelLabel": "ID kanału pożegnalnego",
+    "channelPlaceholder": "ID kanału..."
+  },
+  "farewellImage": {
+    "title": "Obraz pożegnalny",
+    "description": "Generuj niestandardową kartę pożegnalną, gdy członek odchodzi.",
+    "disabled": "Włącz przełącznik powyżej, aby skonfigurować obrazy pożegnalne."
+  },
+  "dm": {
+    "title": "PW powitalna",
+    "description": "Wyślij wiadomość prywatną do nowych członków. Zostanie pominięta, jeśli PW są wyłączone."
+  },
+  "autorole": {
+    "title": "Auto-rola",
+    "description": "Automatycznie przypisuj role nowym członkom po dołączeniu. Boty są wykluczone. Bot musi mieć rolę wyższą niż wymienione tutaj.",
+    "label": "ID ról (oddzielone przecinkami)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "Tytuł",
+    "description": "Opis",
+    "color": "Kolor (hex)",
+    "footer": "Stopka",
+    "thumbnail": "URL miniaturki",
+    "image": "URL obrazu",
+    "variables": "Zmienne:"
+  },
+  "saveChanges": "Zapisz zmiany",
+  "saving": "Zapisywanie...",
+  "sendTest": "Wyślij wiadomość testową",
+  "sending": "Wysyłanie...",
+  "toast": {
+    "saved": "Konfiguracja powitań zapisana",
+    "saveFailed": "Nie udało się zapisać konfiguracji",
+    "testSent": "Wiadomość testowa zostanie wysłana na <#{{channelId}}>",
+    "testFailed": "Nie udało się wysłać wiadomości testowej"
+  }
+}

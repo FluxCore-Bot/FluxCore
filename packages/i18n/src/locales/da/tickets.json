@@ -1,0 +1,77 @@
+{
+  "title": "Sagssystem",
+  "subtitle": "Opret supportsagspaneler og administrer åbne sager fra kontrolpanelet.",
+  "stats": {
+    "totalTickets": "Sager i alt",
+    "open": "Åbne",
+    "claimed": "Tildelte",
+    "panels": "Paneler"
+  },
+  "tabs": {
+    "activeTickets": "Aktive sager",
+    "panelBuilder": "Panelbygger",
+    "settings": "Indstillinger"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Bruger",
+    "subject": "Emne",
+    "status": "Status",
+    "assignee": "Tildelt",
+    "created": "Oprettet"
+  },
+  "statuses": {
+    "open": "Åben",
+    "claimed": "Tildelt",
+    "closed": "Lukket"
+  },
+  "panelBuilder": {
+    "title": "Paneltitel",
+    "channel": "Kanal",
+    "buttonLabel": "Knapetiket",
+    "welcomeMessage": "Velkomstbesked",
+    "category": "Sagskategori",
+    "create": "Opret panel",
+    "edit": "Rediger panel",
+    "deploy": "Udsend panel"
+  },
+  "settings": {
+    "transcriptChannel": "Transskriptionskanal",
+    "transcriptChannelDesc": "Kanal, hvor sagstransskriptioner gemmes ved lukning.",
+    "maxTicketsPerUser": "Maks. sager per bruger",
+    "maxTicketsPerUserDesc": "Maksimalt antal åbne sager en enkelt bruger kan have.",
+    "closeConfirmation": "Lukningsbekræftelse",
+    "closeConfirmationDesc": "Kræv bekræftelse før lukning af en sag.",
+    "dmTranscript": "DM-transskription",
+    "dmTranscriptDesc": "Send en kopi af transskriptionen til sagsopretter via DM."
+  },
+  "actions": {
+    "claim": "Tildel",
+    "close": "Luk",
+    "delete": "Slet",
+    "reopen": "Genåbn"
+  },
+  "toast": {
+    "panelCreated": "Sagspanel oprettet",
+    "panelCreateFailed": "Kunne ikke oprette sagspanel",
+    "panelUpdated": "Sagspanel opdateret",
+    "panelUpdateFailed": "Kunne ikke opdatere sagspanel",
+    "panelDeployed": "Sagspanel udsendt",
+    "panelDeployFailed": "Kunne ikke udsende sagspanel",
+    "ticketClaimed": "Sag tildelt",
+    "ticketClaimFailed": "Kunne ikke tildele sag",
+    "ticketClosed": "Sag lukket",
+    "ticketCloseFailed": "Kunne ikke lukke sag",
+    "ticketReopened": "Sag genåbnet",
+    "ticketReopenFailed": "Kunne ikke genåbne sag",
+    "ticketDeleted": "Sag slettet",
+    "ticketDeleteFailed": "Kunne ikke slette sag",
+    "settingsSaved": "Sagsindstillinger gemt",
+    "settingsFailed": "Kunne ikke gemme sagsindstillinger"
+  },
+  "empty": {
+    "tickets": "Ingen aktive sager.",
+    "panels": "Ingen sagspaneler oprettet endnu."
+  },
+  "loading": "Indlæser sager..."
+}

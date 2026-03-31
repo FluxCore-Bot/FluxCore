@@ -1,0 +1,72 @@
+{
+  "title": "경고",
+  "subtitle": "멤버 경고를 추적 및 관리하고 자동 에스컬레이션을 설정합니다.",
+  "stats": {
+    "totalWarnings": "총 경고",
+    "escalationRules": "에스컬레이션 규칙",
+    "dmOnWarn": "경고 시 DM"
+  },
+  "tabs": {
+    "warnings": "경고 로그",
+    "escalation": "에스컬레이션",
+    "settings": "설정"
+  },
+  "table": {
+    "id": "ID",
+    "user": "사용자",
+    "moderator": "관리자",
+    "reason": "사유",
+    "date": "날짜"
+  },
+  "filter": {
+    "userPlaceholder": "사용자 ID로 필터...",
+    "clearAll": "모두 초기화"
+  },
+  "pagination": {
+    "previous": "이전",
+    "next": "다음",
+    "page": "페이지 {{page}} / {{total}} (총 {{count}}건)"
+  },
+  "loading": "경고 불러오는 중...",
+  "noWarnings": "경고를 찾을 수 없습니다.",
+  "toast": {
+    "warningRemoved": "경고가 삭제되었습니다",
+    "warningsFailed": "경고 삭제에 실패했습니다",
+    "enterUserId": "사용자의 모든 경고를 초기화하려면 사용자 ID를 입력하세요",
+    "allCleared": "사용자의 모든 경고가 초기화되었습니다",
+    "clearFailed": "경고 초기화에 실패했습니다",
+    "thresholdAdded": "처벌 임계값이 추가되었습니다",
+    "thresholdFailed": "처벌 추가에 실패했습니다",
+    "thresholdRemoved": "처벌이 삭제되었습니다",
+    "removeFailed": "처벌 삭제에 실패했습니다",
+    "settingFailed": "설정 업데이트에 실패했습니다",
+    "thresholdInvalid": "임계값은 양수여야 합니다"
+  },
+  "escalation": {
+    "title": "처벌 에스컬레이션",
+    "description": "사용자가 특정 경고 수에 도달하면 자동 액션을 설정합니다.",
+    "threshold": "임계값",
+    "action": "액션",
+    "duration": "기간",
+    "noRules": "설정된 에스컬레이션 규칙이 없습니다.",
+    "addRule": "에스컬레이션 규칙 추가",
+    "addButton": "규칙 추가",
+    "warnings": "{{count}}회 경고",
+    "min": "{{count}}분",
+    "timeout": "타임아웃",
+    "kick": "추방",
+    "ban": "차단",
+    "durationLabel": "기간 (초)",
+    "thresholdPlaceholder": "예: 3",
+    "durationPlaceholder": "예: 3600"
+  },
+  "settings": {
+    "title": "경고 설정",
+    "dmOnWarn": "경고 시 DM 전송",
+    "dmOnWarnDesc": "경고를 받은 사용자에게 다이렉트 메시지를 보냅니다.",
+    "requireReason": "사유 필수",
+    "requireReasonDesc": "관리자가 경고 시 사유를 입력하도록 요구합니다.",
+    "maxWarnings": "최대 경고 수",
+    "maxWarningsDesc": "사용자당 최대 경고 수 (0 = 무제한)."
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "title": "Bridinajumi",
+  "subtitle": "Sekojiet un parvaldiet dalibnieku bridinajumus ar automatisku eskalaciju.",
+  "stats": {
+    "totalWarnings": "Kopejie bridinajumi",
+    "escalationRules": "Eskalacijas noteikumi",
+    "dmOnWarn": "Zinojums par bridinajumu"
+  },
+  "tabs": {
+    "warnings": "Bridinajumu zurnals",
+    "escalation": "Eskalacija",
+    "settings": "Iestatijumi"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Lietotajs",
+    "moderator": "Moderators",
+    "reason": "Iemesls",
+    "date": "Datums"
+  },
+  "filter": {
+    "userPlaceholder": "Filtret pec lietotaja ID...",
+    "clearAll": "Notirit visus"
+  },
+  "pagination": {
+    "previous": "Iepriekssejais",
+    "next": "Nakamais",
+    "page": "Lapa {{page}} no {{total}} ({{count}} kopaa)"
+  },
+  "loading": "Iellade bridinajumus...",
+  "noWarnings": "Bridinajumi nav atrasti.",
+  "toast": {
+    "warningRemoved": "Bridinajums nonems",
+    "warningsFailed": "Neizdevas dzest bridinajumu",
+    "enterUserId": "Ievadiet lietotaja ID, lai dzeestu visus bridinajumus sim lietotajam",
+    "allCleared": "Visi bridinajumi dzesti lietotajam",
+    "clearFailed": "Neizdevas dzest bridinajumus",
+    "thresholdAdded": "Soda slieksnis pievienots",
+    "thresholdFailed": "Neizdevas pievienot sodu",
+    "thresholdRemoved": "Sods nonems",
+    "removeFailed": "Neizdevas nonemt sodu",
+    "settingFailed": "Neizdevas atjaunot iestatijumu",
+    "thresholdInvalid": "Slieksniam jabut pozitivam skaitlim"
+  },
+  "escalation": {
+    "title": "Sodu eskalacija",
+    "description": "Konfigurejiet automatiskas darbibas, kad lietotajs sasniedz noteiktu bridinajumu skaitu.",
+    "threshold": "Slieksnis",
+    "action": "Darbiba",
+    "duration": "Ilgums",
+    "noRules": "Eskalacijas noteikumi nav konfiguret.",
+    "addRule": "Pievienot eskalacijas noteikumu",
+    "addButton": "Pievienot noteikumu",
+    "warnings": "{{count}} bridinajumi",
+    "min": "{{count}} min",
+    "timeout": "Noildze",
+    "kick": "Izraidisana",
+    "ban": "Aizliegums",
+    "durationLabel": "Ilgums (sekundes)",
+    "thresholdPlaceholder": "piem. 3",
+    "durationPlaceholder": "piem. 3600"
+  },
+  "settings": {
+    "title": "Bridinajumu iestatijumi",
+    "dmOnWarn": "Zinojums par bridinajumu",
+    "dmOnWarnDesc": "Suutit lietotajam privatu zinojumu, kad vins sanem bridinajumu.",
+    "requireReason": "Obligats iemesls",
+    "requireReasonDesc": "Moderatoriem jabut noraditam iemeslam, izssniedzot bridinajumu.",
+    "maxWarnings": "Maksimalais bridinajumu skaits",
+    "maxWarningsDesc": "Maksimalais bridinajumu skaits lietotajam (0 = neierobezots)."
+  }
+}

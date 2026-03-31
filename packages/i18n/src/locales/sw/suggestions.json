@@ -1,0 +1,67 @@
+{
+  "title": "Mapendekezo",
+  "subtitle": "Ruhusu wanachama kutuma mawazo na kupiga kura. Simamia hali na maoni.",
+  "stats": {
+    "totalSuggestions": "Jumla ya Mapendekezo",
+    "systemStatus": "Hali ya Mfumo",
+    "channel": {
+      "configured": "Chaneli Imesanidiwa",
+      "notSet": "Chaneli Haijawekwa"
+    }
+  },
+  "tabs": {
+    "suggestions": "Mapendekezo",
+    "settings": "Mipangilio"
+  },
+  "filter": {
+    "filterByStatus": "Chuja kwa Hali",
+    "all": "Zote",
+    "pending": "Zinasubiri",
+    "approved": "Zimeidhinishwa",
+    "rejected": "Zimekataliwa",
+    "implemented": "Zimetekelezwa",
+    "considered": "Zinafanyiwa Tathmini"
+  },
+  "table": {
+    "id": "Kitambulisho",
+    "author": "Mwandishi",
+    "content": "Maudhui",
+    "status": "Hali",
+    "votes": "Kura",
+    "date": "Tarehe"
+  },
+  "actions": {
+    "approve": "Idhinisha",
+    "reject": "Kataa",
+    "implement": "Weka kama Imetekelezwa",
+    "consider": "Fanyia Tathmini",
+    "delete": "Futa"
+  },
+  "settings": {
+    "channel": "Chaneli ya Mapendekezo",
+    "channelDesc": "Chaneli ambapo mapendekezo yanachapishwa kwa kupiga kura.",
+    "voteEmojis": "Emoji za Kura",
+    "voteEmojisDesc": "Emoji zinazotumika kwa mwitikio wa kura ya kuunga mkono na kupinga.",
+    "autoThread": "Unda Mfululizo Kiotomatiki",
+    "autoThreadDesc": "Unda mfululizo wa majadiliano kiotomatiki kwa kila pendekezo jipya.",
+    "dmOnStatusChange": "DM kwa Mabadiliko ya Hali",
+    "dmOnStatusChangeDesc": "Mjulishe mwandishi kupitia DM wakati hali ya pendekezo lake inabadilika."
+  },
+  "toast": {
+    "approved": "Pendekezo limeidhinishwa",
+    "rejected": "Pendekezo limekataliwa",
+    "implemented": "Pendekezo limewekwa kama limetekelezwa",
+    "considered": "Pendekezo limewekwa kama linafanyiwa tathmini",
+    "deleted": "Pendekezo limefutwa",
+    "actionFailed": "Imeshindwa kusasisha pendekezo",
+    "settingsSaved": "Mipangilio ya mapendekezo imehifadhiwa",
+    "settingsFailed": "Imeshindwa kuhifadhi mipangilio ya mapendekezo"
+  },
+  "empty": "Hakuna mapendekezo bado.",
+  "loading": "Inapakia mapendekezo...",
+  "pagination": {
+    "previous": "Iliyotangulia",
+    "next": "Inayofuata",
+    "page": "Ukurasa {{page}} wa {{total}}"
+  }
+}

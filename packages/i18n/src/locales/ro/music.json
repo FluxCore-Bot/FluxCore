@@ -1,0 +1,8 @@
+{
+  "title": "Sistem de Muzică",
+  "subtitle": "Configurează modurile globale de redare și preferințele bibliotecii audio.",
+  "tabs": {
+    "settings": "Setări de Redare",
+    "library": "Bibliotecă Muzicală"
+  }
+}

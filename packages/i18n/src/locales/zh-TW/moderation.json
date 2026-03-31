@@ -1,0 +1,54 @@
+{
+  "title": "管理",
+  "subtitle": "檢視和管理管理案例，設定處罰選項。",
+  "stats": {
+    "totalCases": "案例總數",
+    "activeTempbans": "活躍臨時封鎖",
+    "last24h": "最近 24 小時"
+  },
+  "cases": "案例",
+  "actions": {
+    "ban": "封鎖",
+    "tempban": "臨時封鎖",
+    "kick": "踢出",
+    "timeout": "禁言",
+    "softban": "軟封鎖",
+    "warn": "警告",
+    "note": "備註"
+  },
+  "table": {
+    "id": "ID",
+    "action": "操作",
+    "target": "對象",
+    "moderator": "管理員",
+    "reason": "原因",
+    "date": "日期",
+    "actions": "操作",
+    "noCases": "找不到案例。",
+    "noReason": "無原因"
+  },
+  "filter": {
+    "userPlaceholder": "依使用者 ID 篩選...",
+    "allActions": "所有操作"
+  },
+  "pagination": {
+    "previous": "上一頁",
+    "next": "下一頁",
+    "page": "第 {{page}} 頁 / 共 {{total}} 頁"
+  },
+  "editDialog": {
+    "title": "編輯案例 #{{id}} 的原因",
+    "placeholder": "輸入新原因...",
+    "saving": "儲存中..."
+  },
+  "editReason": "編輯原因",
+  "deleteCase": "刪除案例",
+  "deleteConfirm": "確定要刪除此案例嗎？",
+  "settings": {
+    "title": "設定",
+    "dmOnPunishment": "處罰時傳送私訊",
+    "dmOnPunishmentDesc": "處罰（封鎖、踢出、禁言）時向使用者傳送私訊。",
+    "modLogChannel": "管理日誌頻道",
+    "modLogChannelDesc": "記錄管理操作的頻道。"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "title": "等级系统",
+  "subtitle": "配置经验获取、升级公告、角色奖励和倍率。",
+  "stats": {
+    "rankedMembers": "已排名成员",
+    "roleRewards": "角色奖励",
+    "systemStatus": "系统状态",
+    "enabled": "已启用",
+    "disabled": "已禁用"
+  },
+  "tabs": {
+    "leaderboard": "排行榜",
+    "settings": "设置",
+    "roleRewards": "角色奖励",
+    "exclusions": "排除设置",
+    "multipliers": "倍率"
+  },
+  "table": {
+    "rank": "排名",
+    "userId": "用户 ID",
+    "level": "等级",
+    "xp": "经验值",
+    "messages": "消息数",
+    "voiceTime": "语音时长"
+  },
+  "settings": {
+    "title": "等级设置",
+    "enabled": "启用等级系统",
+    "enabledDesc": "开启或关闭整个等级系统。",
+    "xpPerMessage": "每条消息经验值",
+    "xpPerMessageDesc": "每条消息获得的基础经验值（会额外加上 0-9 的随机值）。",
+    "xpCooldown": "经验冷却时间（秒）",
+    "xpCooldownDesc": "每个用户获得经验的最短间隔。",
+    "voiceXpEnabled": "语音经验",
+    "voiceXpEnabledDesc": "在语音频道中花费的时间也能获得经验。",
+    "voiceXpPerMinute": "每分钟语音经验",
+    "voiceXpPerMinuteDesc": "在语音频道中每分钟获得的经验值。",
+    "levelUpAnnouncements": "升级公告",
+    "levelUpAnnouncementsDesc": "当成员升级时发送公告。",
+    "announceDest": "公告目标",
+    "announceDestHint": "您也可以在上方的输入框中直接输入频道 ID。",
+    "announceDestSameChannel": "相同频道",
+    "announceDestDM": "私信",
+    "announceMessage": "公告消息",
+    "announceMessagePlaceholder": "{user} 刚刚达到了 **{level} 级**！",
+    "announceMessageVars": "变量：{user}、{level}、{username}"
+  },
+  "roleRewards": {
+    "title": "角色奖励",
+    "description": "当成员达到特定等级时自动分配角色。",
+    "addReward": "添加奖励",
+    "addRewardTitle": "添加角色奖励",
+    "level": "等级",
+    "levelPrefix": "等级 {{level}}",
+    "roleId": "角色 ID",
+    "levelPlaceholder": "例：5",
+    "rolePlaceholder": "例：123456789",
+    "removeReward": "移除",
+    "noRewards": "未配置角色奖励。"
+  },
+  "exclusions": {
+    "title": "经验排除设置",
+    "description": "不获得经验的频道和角色。",
+    "noXpChannels": "无经验频道（逗号分隔的 ID）",
+    "noXpChannelsPlaceholder": "例：123456789, 987654321",
+    "noXpRoles": "无经验角色（逗号分隔的 ID）",
+    "noXpRolesPlaceholder": "例：123456789, 987654321",
+    "save": "保存排除设置"
+  },
+  "multipliers": {
+    "title": "经验倍率",
+    "description": "为频道或角色设置经验倍率。倍率 2 表示经验翻倍。",
+    "channelMultipliers": "频道倍率",
+    "roleMultipliers": "角色倍率",
+    "channelId": "频道 ID",
+    "roleId": "角色 ID",
+    "multiplier": "倍率",
+    "type": "类型",
+    "typeChannel": "频道",
+    "typeRole": "角色",
+    "id": "ID",
+    "idPlaceholder": "频道或角色 ID",
+    "value": "倍率",
+    "valuePlaceholder": "例：2",
+    "add": "添加倍率",
+    "addTitle": "添加倍率",
+    "multiplierSuffix": "{{value}}倍",
+    "noMultipliers": "未配置经验倍率。"
+  },
+  "pagination": {
+    "previous": "上一页",
+    "next": "下一页",
+    "pageInfo": "第 {{page}} 页 / 共 {{totalPages}} 页（共 {{total}} 条）"
+  },
+  "loading": "正在加载排行榜...",
+  "loadingGeneric": "加载中...",
+  "emptyLeaderboard": "尚无成员获得经验值。",
+  "toast": {
+    "saved": "等级设置已保存",
+    "saveFailed": "更新设置失败",
+    "rewardAdded": "奖励已添加",
+    "rewardAddFailed": "添加奖励失败",
+    "rewardRemoved": "奖励已移除",
+    "rewardRemoveFailed": "移除奖励失败",
+    "multiplierAdded": "倍率已添加",
+    "multiplierAddFailed": "添加倍率失败",
+    "multiplierRemoved": "倍率已移除",
+    "multiplierRemoveFailed": "移除倍率失败",
+    "exclusionUpdated": "排除设置已保存",
+    "exclusionFailed": "保存排除设置失败",
+    "levelValidation": "等级必须在 1 到 100 之间",
+    "roleIdRequired": "角色 ID 为必填项",
+    "multiplierIdRequired": "ID 和倍率值为必填项",
+    "multiplierRange": "倍率必须在 0 到 10 之间"
+  },
+  "formatters": {
+    "voiceTime": "{{hours}}小时{{minutes}}分钟",
+    "voiceTimeMinutesOnly": "{{minutes}}分钟"
+  }
+}

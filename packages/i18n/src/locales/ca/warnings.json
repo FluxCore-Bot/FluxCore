@@ -1,0 +1,72 @@
+{
+  "title": "Advertencies",
+  "subtitle": "Segueix i gestiona les advertencies dels membres amb escalat automatic.",
+  "stats": {
+    "totalWarnings": "Total d'advertencies",
+    "escalationRules": "Regles d'escalat",
+    "dmOnWarn": "DM per advertencia"
+  },
+  "tabs": {
+    "warnings": "Registre d'advertencies",
+    "escalation": "Escalat",
+    "settings": "Configuració"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Usuari",
+    "moderator": "Moderador",
+    "reason": "Motiu",
+    "date": "Data"
+  },
+  "filter": {
+    "userPlaceholder": "Filtrar per ID d'usuari...",
+    "clearAll": "Netejar tot"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguent",
+    "page": "Pagina {{page}} de {{total}} ({{count}} en total)"
+  },
+  "loading": "Carregant advertencies...",
+  "noWarnings": "No s'han trobat advertencies.",
+  "toast": {
+    "warningRemoved": "Advertencia eliminada",
+    "warningsFailed": "No s'ha pogut eliminar l'advertencia",
+    "enterUserId": "Introdueix un ID d'usuari per netejar totes les advertencies d'aquell usuari",
+    "allCleared": "Totes les advertencies netejades per a l'usuari",
+    "clearFailed": "No s'han pogut netejar les advertencies",
+    "thresholdAdded": "Llindar de sanció afegit",
+    "thresholdFailed": "No s'ha pogut afegir la sanció",
+    "thresholdRemoved": "Sanció eliminada",
+    "removeFailed": "No s'ha pogut eliminar la sanció",
+    "settingFailed": "No s'ha pogut actualitzar la configuració",
+    "thresholdInvalid": "El llindar ha de ser un nombre positiu"
+  },
+  "escalation": {
+    "title": "Escalat de sancions",
+    "description": "Configura accions automatiques quan un usuari arriba a un cert nombre d'advertencies.",
+    "threshold": "Llindar",
+    "action": "Acció",
+    "duration": "Durada",
+    "noRules": "No hi ha regles d'escalat configurades.",
+    "addRule": "Afegir regla d'escalat",
+    "addButton": "Afegir regla",
+    "warnings": "{{count}} advertencies",
+    "min": "{{count}} min",
+    "timeout": "Temps mort",
+    "kick": "Expulsar",
+    "ban": "Bandejar",
+    "durationLabel": "Durada (segons)",
+    "thresholdPlaceholder": "p. ex. 3",
+    "durationPlaceholder": "p. ex. 3600"
+  },
+  "settings": {
+    "title": "Configuració d'advertencies",
+    "dmOnWarn": "DM per advertencia",
+    "dmOnWarnDesc": "Envia un missatge directe a l'usuari quan rep una advertencia.",
+    "requireReason": "Requerir motiu",
+    "requireReasonDesc": "Els moderadors han de proporcionar un motiu en emetre una advertencia.",
+    "maxWarnings": "Maxim d'advertencies",
+    "maxWarningsDesc": "Maxim d'advertencies per usuari (0 = il\u00b7limitat)."
+  }
+}

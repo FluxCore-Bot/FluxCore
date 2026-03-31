@@ -1,0 +1,9 @@
+{
+  "title": "[NEEDS TRANSLATION] Your Servers",
+  "subtitle": "[NEEDS TRANSLATION] Choose a server to manage and configure.",
+  "loading": "[NEEDS TRANSLATION] Loading servers...",
+  "empty": {
+    "title": "[NEEDS TRANSLATION] No servers found",
+    "description": "[NEEDS TRANSLATION] Make sure the bot is added to a server where you have the Manage Server permission."
+  }
+}

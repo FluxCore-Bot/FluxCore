@@ -1,0 +1,67 @@
+{
+  "title": "Sugestoes",
+  "subtitle": "Permita que os membros submetam ideias e votem nelas. Gira estados e comentarios.",
+  "stats": {
+    "totalSuggestions": "Total de sugestoes",
+    "systemStatus": "Estado do sistema",
+    "channel": {
+      "configured": "Canal configurado",
+      "notSet": "Canal nao definido"
+    }
+  },
+  "tabs": {
+    "suggestions": "Sugestoes",
+    "settings": "Definicoes"
+  },
+  "filter": {
+    "filterByStatus": "Filtrar por estado",
+    "all": "Todas",
+    "pending": "Pendentes",
+    "approved": "Aprovadas",
+    "rejected": "Rejeitadas",
+    "implemented": "Implementadas",
+    "considered": "Em consideracao"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Autor",
+    "content": "Conteudo",
+    "status": "Estado",
+    "votes": "Votos",
+    "date": "Data"
+  },
+  "actions": {
+    "approve": "Aprovar",
+    "reject": "Rejeitar",
+    "implement": "Marcar como implementada",
+    "consider": "Considerar",
+    "delete": "Eliminar"
+  },
+  "settings": {
+    "channel": "Canal de sugestoes",
+    "channelDesc": "O canal onde as sugestoes sao publicadas para votacao.",
+    "voteEmojis": "Emojis de votacao",
+    "voteEmojisDesc": "Emojis usados para reacoes de voto positivo e negativo.",
+    "autoThread": "Criar topico automaticamente",
+    "autoThreadDesc": "Criar automaticamente um topico de discussao em cada nova sugestao.",
+    "dmOnStatusChange": "MD ao alterar estado",
+    "dmOnStatusChangeDesc": "Notificar o autor por MD quando o estado da sugestao mudar."
+  },
+  "toast": {
+    "approved": "Sugestao aprovada",
+    "rejected": "Sugestao rejeitada",
+    "implemented": "Sugestao marcada como implementada",
+    "considered": "Sugestao colocada em consideracao",
+    "deleted": "Sugestao eliminada",
+    "actionFailed": "Falha ao atualizar a sugestao",
+    "settingsSaved": "Definicoes de sugestoes guardadas",
+    "settingsFailed": "Falha ao guardar as definicoes de sugestoes"
+  },
+  "empty": "Ainda sem sugestoes.",
+  "loading": "A carregar sugestoes...",
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "page": "Pagina {{page}} de {{total}}"
+  }
+}

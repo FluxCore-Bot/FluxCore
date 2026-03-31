@@ -73,7 +73,7 @@ export function RecentActivityFeed({ data, guildId, constants }: RecentActivityF
                   {constants?.actionTypes[item.actionType]?.label ?? item.actionType}
                 </p>
               </div>
-              <span className="shrink-0 font-mono text-[11px] text-text/40">
+              <span className="shrink-0 font-mono text-[11px] text-text-tertiary">
                 {timeAgo(item.executedAt)}
               </span>
             </div>

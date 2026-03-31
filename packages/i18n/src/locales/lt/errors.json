@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Neprisijunges",
+    "sessionExpired": "Sesija pasibaige",
+    "missingCode": "Truksta kodo parametro",
+    "tokenExchangeFailed": "Zymeklio apsikeitimas nepavyko",
+    "failedToFetchUser": "Nepavyko gauti naudotojo informacijos"
+  },
+  "permissions": {
+    "noGuildPermission": "Neturite leidimo siam serveriui",
+    "botNotInGuild": "Botas nera siame serveryje",
+    "insufficientPermissions": "Nepakankamos teises",
+    "permissionsNotResolved": "Leidimai neissiaiskinti",
+    "requiresPermission": "Siam veiksmui reikalingas leidimas \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Netinkama ivestis",
+    "missingField": "Truksta privalomo lauko: {{field}}",
+    "invalidFormat": "Netinkamas formatas laukui {{field}}",
+    "tooLong": "{{field}} virsija maksimalu {{max}} simboliu ilgi",
+    "tooShort": "{{field}} turi buti bent {{min}} simboliu",
+    "outOfRange": "{{field}} turi buti tarp {{min}} ir {{max}}"
+  },
+  "resources": {
+    "notFound": "Nerasta",
+    "alreadyExists": "{{resource}} jau egzistuoja",
+    "limitReached": "Maksimaliai {{max}} {{resource}} vienam serveriui",
+    "createFailed": "Nepavyko sukurti {{resource}}",
+    "updateFailed": "Nepavyko atnaujinti {{resource}}",
+    "deleteFailed": "Nepavyko istrinti {{resource}}"
+  },
+  "server": {
+    "internalError": "Vidine serverio klaida",
+    "serviceUnavailable": "Paslauga laikinai nepasiekiama",
+    "rateLimited": "Per daug uzklausi. Bandykite veliau."
+  },
+  "csrf": {
+    "invalidToken": "Netinkamas arba trukstamas CSRF zymeklis"
+  }
+}

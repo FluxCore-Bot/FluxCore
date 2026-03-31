@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "服务器",
+    "automation": "自动化"
+  },
+  "title": "自动化规则",
+  "subtitle": "为您的服务器配置事件驱动触发器和自动响应。",
+  "createRule": "创建规则",
+  "stats": {
+    "totalRules": "规则总数",
+    "active": "活跃",
+    "executions7d": "执行次数（7天）",
+    "successRate": "成功率"
+  },
+  "filter": {
+    "searchPlaceholder": "搜索规则...",
+    "eventType": "事件类型",
+    "allEvents": "所有事件",
+    "allStatus": "所有状态",
+    "enabled": "已启用",
+    "disabled": "已禁用",
+    "sortBy": "排序方式",
+    "priority": "优先级",
+    "name": "名称",
+    "lastFired": "最后触发",
+    "status": "状态",
+    "clear": "清除",
+    "showing": "显示 {{total}} 中的 {{filtered}} 条规则"
+  },
+  "bulk": {
+    "selected": "已选择 {{count}} 条规则",
+    "selected_other": "已选择 {{count}} 条规则",
+    "enable": "启用",
+    "disable": "禁用",
+    "delete": "删除",
+    "clear": "清除"
+  },
+  "empty": {
+    "title": "开始使用自动化",
+    "description": "选择模板快速开始，或从头创建规则。",
+    "createFromScratch": "从头创建"
+  },
+  "noResults": {
+    "title": "没有匹配的规则",
+    "description": "尝试调整搜索条件或筛选器来找到您要找的内容。"
+  },
+  "templates": {
+    "welcomeMessage": "欢迎消息",
+    "welcomeMessageDesc": "在频道中用自定义消息欢迎新成员",
+    "autoRole": "自动角色",
+    "autoRoleDesc": "成员加入时自动分配角色",
+    "logDeleted": "记录删除的消息",
+    "logDeletedDesc": "将删除的消息信息发送到日志频道",
+    "boostThankYou": "助力感谢",
+    "boostThankYouDesc": "向助力服务器的用户发送私信感谢",
+    "banLogger": "封禁日志",
+    "banLoggerDesc": "将封禁事件记录到管理频道",
+    "autoThread": "自动话题",
+    "autoThreadDesc": "消息发送时自动创建话题"
+  },
+  "deleteDialog": {
+    "title": "删除规则",
+    "description": "确定要删除「{{name}}」吗？此操作无法撤销。",
+    "confirm": "删除"
+  },
+  "bulkDeleteDialog": {
+    "title": "删除所选规则",
+    "description": "确定要删除 {{count}} 条规则吗？此操作无法撤销。",
+    "description_other": "确定要删除 {{count}} 条规则吗？此操作无法撤销。",
+    "confirm": "全部删除"
+  },
+  "toast": {
+    "deleted": "规则已删除",
+    "deleteFailed": "删除规则失败",
+    "enabled": "规则已启用",
+    "disabled": "规则已禁用",
+    "toggleFailed": "切换规则失败",
+    "duplicated": "规则已复制",
+    "duplicateFailed": "复制规则失败",
+    "bulkEnabled": "{{count}} 条规则已启用",
+    "bulkDisabled": "{{count}} 条规则已禁用",
+    "bulkEnableFailed": "批量启用规则失败",
+    "bulkDisableFailed": "批量禁用规则失败",
+    "bulkDeleted": "{{count}} 条规则已删除",
+    "bulkDeleteFailed": "批量删除规则失败"
+  }
+}

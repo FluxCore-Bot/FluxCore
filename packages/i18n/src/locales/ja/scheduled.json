@@ -1,0 +1,86 @@
+{
+  "title": "予約メッセージ",
+  "subtitle": "設定可能なスケジュールで定期的に自動投稿されるメッセージを作成します。",
+  "stats": {
+    "totalMessages": "メッセージ総数",
+    "active": "アクティブ",
+    "inactive": "非アクティブ"
+  },
+  "table": {
+    "name": "名前",
+    "channel": "チャンネル",
+    "schedule": "スケジュール",
+    "nextRun": "次回実行",
+    "status": "ステータス"
+  },
+  "dialog": {
+    "editTitle": "予約メッセージを編集",
+    "createTitle": "新規予約メッセージ"
+  },
+  "form": {
+    "name": "名前",
+    "channel": "チャンネル",
+    "schedulePreset": "スケジュールプリセット",
+    "cronExpression": "Cron式",
+    "timezone": "タイムゾーン",
+    "messageContent": "メッセージ内容",
+    "text": "テキスト",
+    "embed": "埋め込み",
+    "enabled": "有効",
+    "enabledDesc": "この予約メッセージが有効かどうか。"
+  },
+  "cronPresets": {
+    "everyHour": "毎時",
+    "every6Hours": "6時間ごと",
+    "daily9am": "毎日午前9時",
+    "dailyMidnight": "毎日深夜0時",
+    "weeklyMonday": "毎週月曜日",
+    "monthly1st": "毎月1日",
+    "custom": "カスタム"
+  },
+  "embed": {
+    "title": "タイトル",
+    "description": "説明",
+    "color": "色 (16進数)",
+    "footer": "フッター",
+    "thumbnail": "サムネイルURL",
+    "image": "画像URL"
+  },
+  "toast": {
+    "created": "予約メッセージを作成しました",
+    "createFailed": "予約メッセージの作成に失敗しました",
+    "updated": "予約メッセージを更新しました",
+    "updateFailed": "予約メッセージの更新に失敗しました",
+    "deleted": "予約メッセージを削除しました",
+    "deleteFailed": "予約メッセージの削除に失敗しました",
+    "testSent": "テストメッセージを送信しました",
+    "testFailed": "テストメッセージの送信に失敗しました"
+  },
+  "empty": {
+    "title": "予約メッセージはまだありません",
+    "description": "予約メッセージを作成して、定期的にコンテンツを自動投稿しましょう。",
+    "createButton": "メッセージを作成"
+  },
+  "pagination": {
+    "previous": "前へ",
+    "next": "次へ",
+    "page": "ページ {{page}} / {{total}}"
+  },
+  "actions": {
+    "newMessage": "新規メッセージ",
+    "testSend": "テスト送信",
+    "edit": "編集",
+    "delete": "削除",
+    "save": "保存",
+    "cancel": "キャンセル"
+  },
+  "validation": {
+    "nameRequired": "メッセージ名は必須です",
+    "channelRequired": "チャンネルは必須です"
+  },
+  "cronPreview": {
+    "nextRuns": "次回実行予定"
+  },
+  "characters": "{{count}}/2000文字",
+  "never": "なし"
+}

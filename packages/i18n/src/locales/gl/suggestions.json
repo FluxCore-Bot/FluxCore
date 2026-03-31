@@ -1,0 +1,67 @@
+{
+  "title": "Suxestións",
+  "subtitle": "Permite aos membros enviar ideas e votar nelas. Xestiona o estado e os comentarios.",
+  "stats": {
+    "totalSuggestions": "Total de Suxestións",
+    "systemStatus": "Estado do Sistema",
+    "channel": {
+      "configured": "Canal Configurado",
+      "notSet": "Canal Non Establecido"
+    }
+  },
+  "tabs": {
+    "suggestions": "Suxestións",
+    "settings": "Configuración"
+  },
+  "filter": {
+    "filterByStatus": "Filtrar por Estado",
+    "all": "Todas",
+    "pending": "Pendente",
+    "approved": "Aprobada",
+    "rejected": "Rexeitada",
+    "implemented": "Implementada",
+    "considered": "En Consideración"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Autor",
+    "content": "Contido",
+    "status": "Estado",
+    "votes": "Votos",
+    "date": "Data"
+  },
+  "actions": {
+    "approve": "Aprobar",
+    "reject": "Rexeitar",
+    "implement": "Marcar como Implementada",
+    "consider": "Considerar",
+    "delete": "Eliminar"
+  },
+  "settings": {
+    "channel": "Canal de Suxestións",
+    "channelDesc": "O canal onde se publican as suxestións para votar.",
+    "voteEmojis": "Emojis de Voto",
+    "voteEmojisDesc": "Emojis usados para as reaccións de voto positivo e negativo.",
+    "autoThread": "Crear Fío Automático",
+    "autoThreadDesc": "Crear automaticamente un fío de discusión en cada nova suxestión.",
+    "dmOnStatusChange": "DM ao Cambiar de Estado",
+    "dmOnStatusChangeDesc": "Notificar ao autor por DM cando cambia o estado da súa suxestión."
+  },
+  "toast": {
+    "approved": "Suxestión aprobada",
+    "rejected": "Suxestión rexeitada",
+    "implemented": "Suxestión marcada como implementada",
+    "considered": "Suxestión marcada como en consideración",
+    "deleted": "Suxestión eliminada",
+    "actionFailed": "Non se puido actualizar a suxestión",
+    "settingsSaved": "Configuración de suxestións gardada",
+    "settingsFailed": "Non se puido gardar a configuración de suxestións"
+  },
+  "empty": "Aínda non hai suxestións.",
+  "loading": "Cargando suxestións...",
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "page": "Páxina {{page}} de {{total}}"
+  }
+}

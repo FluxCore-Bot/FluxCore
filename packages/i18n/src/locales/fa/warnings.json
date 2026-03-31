@@ -1,0 +1,72 @@
+{
+  "title": "هشدارها",
+  "subtitle": "ردیابی و مدیریت هشدارهای اعضا با تشدید خودکار.",
+  "stats": {
+    "totalWarnings": "کل هشدارها",
+    "escalationRules": "قوانین تشدید",
+    "dmOnWarn": "پیام خصوصی هنگام هشدار"
+  },
+  "tabs": {
+    "warnings": "گزارش هشدارها",
+    "escalation": "تشدید",
+    "settings": "تنظیمات"
+  },
+  "table": {
+    "id": "شناسه",
+    "user": "کاربر",
+    "moderator": "مدیر",
+    "reason": "دلیل",
+    "date": "تاریخ"
+  },
+  "filter": {
+    "userPlaceholder": "فیلتر بر اساس شناسه کاربر...",
+    "clearAll": "پاک کردن همه"
+  },
+  "pagination": {
+    "previous": "قبلی",
+    "next": "بعدی",
+    "page": "صفحه {{page}} از {{total}} ({{count}} کل)"
+  },
+  "loading": "در حال بارگذاری هشدارها...",
+  "noWarnings": "هشداری یافت نشد.",
+  "toast": {
+    "warningRemoved": "هشدار حذف شد",
+    "warningsFailed": "حذف هشدار ناموفق بود",
+    "enterUserId": "شناسه کاربر را برای پاک کردن همه هشدارهای او وارد کنید",
+    "allCleared": "تمام هشدارهای کاربر پاک شد",
+    "clearFailed": "پاک کردن هشدارها ناموفق بود",
+    "thresholdAdded": "آستانه تنبیه اضافه شد",
+    "thresholdFailed": "افزودن تنبیه ناموفق بود",
+    "thresholdRemoved": "تنبیه حذف شد",
+    "removeFailed": "حذف تنبیه ناموفق بود",
+    "settingFailed": "به‌روزرسانی تنظیم ناموفق بود",
+    "thresholdInvalid": "آستانه باید عددی مثبت باشد"
+  },
+  "escalation": {
+    "title": "تشدید تنبیه",
+    "description": "پیکربندی عملیات خودکار وقتی کاربر به تعداد مشخصی هشدار می‌رسد.",
+    "threshold": "آستانه",
+    "action": "عملیات",
+    "duration": "مدت",
+    "noRules": "قانون تشدیدی پیکربندی نشده.",
+    "addRule": "افزودن قانون تشدید",
+    "addButton": "افزودن قانون",
+    "warnings": "{{count}} هشدار",
+    "min": "{{count}} دقیقه",
+    "timeout": "بی‌صدا",
+    "kick": "اخراج",
+    "ban": "مسدودیت",
+    "durationLabel": "مدت (ثانیه)",
+    "thresholdPlaceholder": "مثلاً ۳",
+    "durationPlaceholder": "مثلاً ۳۶۰۰"
+  },
+  "settings": {
+    "title": "تنظیمات هشدارها",
+    "dmOnWarn": "پیام خصوصی هنگام هشدار",
+    "dmOnWarnDesc": "ارسال پیام خصوصی به کاربر هنگام دریافت هشدار.",
+    "requireReason": "الزام دلیل",
+    "requireReasonDesc": "مدیران باید هنگام صدور هشدار دلیل ارائه دهند.",
+    "maxWarnings": "حداکثر هشدارها",
+    "maxWarningsDesc": "حداکثر هشدار برای هر کاربر (۰ = نامحدود)."
+  }
+}

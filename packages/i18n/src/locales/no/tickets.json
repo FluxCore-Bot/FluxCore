@@ -1,0 +1,77 @@
+{
+  "title": "Sakssystem",
+  "subtitle": "Opprett støttesakspaneler og administrer åpne saker fra kontrollpanelet.",
+  "stats": {
+    "totalTickets": "Totalt antall saker",
+    "open": "Åpne",
+    "claimed": "Tildelte",
+    "panels": "Paneler"
+  },
+  "tabs": {
+    "activeTickets": "Aktive saker",
+    "panelBuilder": "Panelbygger",
+    "settings": "Innstillinger"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Bruker",
+    "subject": "Emne",
+    "status": "Status",
+    "assignee": "Tildelt",
+    "created": "Opprettet"
+  },
+  "statuses": {
+    "open": "Åpen",
+    "claimed": "Tildelt",
+    "closed": "Lukket"
+  },
+  "panelBuilder": {
+    "title": "Paneltittel",
+    "channel": "Kanal",
+    "buttonLabel": "Knappetikett",
+    "welcomeMessage": "Velkomstmelding",
+    "category": "Sakskategori",
+    "create": "Opprett panel",
+    "edit": "Rediger panel",
+    "deploy": "Publiser panel"
+  },
+  "settings": {
+    "transcriptChannel": "Transkripsjonkanal",
+    "transcriptChannelDesc": "Kanal der sakstranskripsjoner lagres ved lukking.",
+    "maxTicketsPerUser": "Maks saker per bruker",
+    "maxTicketsPerUserDesc": "Maksimalt antall åpne saker en enkelt bruker kan ha.",
+    "closeConfirmation": "Lukkebekreftelse",
+    "closeConfirmationDesc": "Krev bekreftelse før en sak lukkes.",
+    "dmTranscript": "DM-transkripsjon",
+    "dmTranscriptDesc": "Send en kopi av transkripsjonen til saksoppretter via DM."
+  },
+  "actions": {
+    "claim": "Tildel",
+    "close": "Lukk",
+    "delete": "Slett",
+    "reopen": "Gjenåpne"
+  },
+  "toast": {
+    "panelCreated": "Sakspanel opprettet",
+    "panelCreateFailed": "Kunne ikke opprette sakspanel",
+    "panelUpdated": "Sakspanel oppdatert",
+    "panelUpdateFailed": "Kunne ikke oppdatere sakspanel",
+    "panelDeployed": "Sakspanel publisert",
+    "panelDeployFailed": "Kunne ikke publisere sakspanel",
+    "ticketClaimed": "Sak tildelt",
+    "ticketClaimFailed": "Kunne ikke tildele sak",
+    "ticketClosed": "Sak lukket",
+    "ticketCloseFailed": "Kunne ikke lukke sak",
+    "ticketReopened": "Sak gjenåpnet",
+    "ticketReopenFailed": "Kunne ikke gjenåpne sak",
+    "ticketDeleted": "Sak slettet",
+    "ticketDeleteFailed": "Kunne ikke slette sak",
+    "settingsSaved": "Saksinnstillinger lagret",
+    "settingsFailed": "Kunne ikke lagre saksinnstillinger"
+  },
+  "empty": {
+    "tickets": "Ingen aktive saker.",
+    "panels": "Ingen sakspaneler opprettet ennå."
+  },
+  "loading": "Laster saker..."
+}

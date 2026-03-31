@@ -1,0 +1,118 @@
+{
+  "title": "角色與權限",
+  "subtitle": "控制誰可以存取和管理儀表板的各個模組。",
+  "actions": {
+    "createRole": "建立角色"
+  },
+  "permissionSystem": {
+    "title": "權限系統",
+    "active": "已啟用 — 管理員僅限於其指派的權限。",
+    "inactive": "未啟用 — 所有擁有 MANAGE_GUILD 的管理員均有完整存取權。",
+    "enabledToast": "權限系統已啟用",
+    "disabledToast": "權限系統已停用 — 所有管理員擁有完整存取權"
+  },
+  "warning": {
+    "disabled": "權限系統已停用。目前所有儀表板管理員均擁有完整存取權。在上方啟用以套用細緻的權限控制。"
+  },
+  "tabs": {
+    "roles": "角色",
+    "auditLog": "稽核日誌"
+  },
+  "roleList": {
+    "title": "儀表板角色",
+    "empty": "尚未建立角色。",
+    "selectHint": "選擇角色進行編輯，或建立新角色。",
+    "default": "預設",
+    "name": "名稱",
+    "members": "成員",
+    "permissions": "權限",
+    "edit": "編輯",
+    "delete": "刪除"
+  },
+  "presets": {
+    "title": "從預設快速新增",
+    "createdToast": "已建立「{{name}}」角色"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} 位成員",
+    "memberCount_plural": "{{count}} 位成員",
+    "name": "角色名稱",
+    "color": "顏色",
+    "defaultRole": "預設角色",
+    "permissions": "權限",
+    "allBadge": "全部",
+    "discordRoles": "Discord 角色"
+  },
+  "roleForm": {
+    "name": "角色名稱",
+    "discordRoles": "Discord 角色",
+    "permissions": "權限",
+    "create": "建立角色",
+    "update": "更新角色",
+    "cancel": "取消"
+  },
+  "createDialog": {
+    "title": "建立儀表板角色",
+    "name": "名稱",
+    "namePlaceholder": "例：管理員",
+    "color": "顏色"
+  },
+  "permissionCategories": {
+    "actions": "動作與自動化",
+    "music": "音樂",
+    "tempvoice": "臨時語音",
+    "welcome": "歡迎與告別",
+    "moderation": "管理",
+    "logging": "日誌",
+    "leveling": "等級系統",
+    "roles": "角色面板",
+    "tickets": "工單",
+    "suggestions": "建議",
+    "starboard": "精華訊息",
+    "giveaways": "抽獎",
+    "security": "安全",
+    "scheduled": "排程訊息",
+    "commands": "自訂指令",
+    "settings": "伺服器設定"
+  },
+  "audit": {
+    "table": {
+      "user": "使用者",
+      "action": "操作",
+      "target": "對象",
+      "timestamp": "時間"
+    },
+    "noEntries": "尚無稽核日誌。"
+  },
+  "pagination": {
+    "previous": "上一頁",
+    "next": "下一頁",
+    "page": "第 {{current}} 頁 / 共 {{total}} 頁"
+  },
+  "toast": {
+    "roleCreated": "已建立角色「{{name}}」",
+    "roleCreateFailed": "建立角色失敗",
+    "roleUpdated": "角色已更新",
+    "roleUpdateFailed": "更新角色失敗",
+    "roleDeleted": "角色已刪除",
+    "roleDeleteFailed": "刪除角色失敗"
+  },
+  "confirm": {
+    "deleteTitle": "刪除角色「{{name}}」？",
+    "deleteMessage": "這將刪除角色並取消所有成員的指派。此操作無法復原。",
+    "deleteRole": "確定要刪除此角色嗎？成員將失去已指派的權限。"
+  },
+  "saveButton": {
+    "saving": "儲存中...",
+    "save": "儲存變更"
+  },
+  "deleteButton": {
+    "deleting": "刪除中...",
+    "delete": "刪除"
+  },
+  "createButton": {
+    "creating": "建立中...",
+    "create": "建立"
+  },
+  "loading": "正在載入權限..."
+}

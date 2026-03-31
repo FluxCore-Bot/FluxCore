@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Non authentifie",
+    "sessionExpired": "Session expiree",
+    "missingCode": "Parametre de code manquant",
+    "tokenExchangeFailed": "Echec de l'echange de jeton",
+    "failedToFetchUser": "Echec de la recuperation des informations utilisateur"
+  },
+  "permissions": {
+    "noGuildPermission": "Aucune permission pour ce serveur",
+    "botNotInGuild": "Le bot n'est pas dans ce serveur",
+    "insufficientPermissions": "Permissions insuffisantes",
+    "permissionsNotResolved": "Permissions non resolues",
+    "requiresPermission": "Cette action necessite la permission \"{{permission}}\""
+  },
+  "validation": {
+    "invalidInput": "Saisie invalide",
+    "missingField": "Champ requis manquant : {{field}}",
+    "invalidFormat": "Format invalide pour {{field}}",
+    "tooLong": "{{field}} depasse la longueur maximale de {{max}} caracteres",
+    "tooShort": "{{field}} doit contenir au moins {{min}} caracteres",
+    "outOfRange": "{{field}} doit etre compris entre {{min}} et {{max}}"
+  },
+  "resources": {
+    "notFound": "Introuvable",
+    "alreadyExists": "{{resource}} existe deja",
+    "limitReached": "Maximum de {{max}} {{resource}} par serveur",
+    "createFailed": "Echec de la creation de {{resource}}",
+    "updateFailed": "Echec de la mise a jour de {{resource}}",
+    "deleteFailed": "Echec de la suppression de {{resource}}"
+  },
+  "server": {
+    "internalError": "Erreur interne du serveur",
+    "serviceUnavailable": "Service temporairement indisponible",
+    "rateLimited": "Trop de requetes. Veuillez reessayer plus tard."
+  },
+  "csrf": {
+    "invalidToken": "Jeton CSRF invalide ou manquant"
+  }
+}

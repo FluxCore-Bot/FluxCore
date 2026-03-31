@@ -1,4 +1,5 @@
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 import { useRefreshGuild } from "../lib/hooks/useGuilds";
 import { Button } from "./ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
@@ -9,12 +10,13 @@ interface RefreshDataWidgetProps {
 }
 
 export function RefreshDataWidget({ guildId }: RefreshDataWidgetProps) {
+  const { t } = useTranslation();
   const refresh = useRefreshGuild(guildId);
 
   const handleRefresh = () => {
     refresh.mutate(undefined, {
-      onSuccess: () => toast.success("Data refreshed"),
-      onError: () => toast.error("Refresh failed, try again later"),
+      onSuccess: () => toast.success(t("header.refreshData")),
+      onError: () => toast.error(t("actions.retry")),
     });
   };
 
@@ -26,6 +28,7 @@ export function RefreshDataWidget({ guildId }: RefreshDataWidgetProps) {
           size="icon"
           onClick={handleRefresh}
           disabled={refresh.isPending}
+          aria-label={t("header.refreshData")}
         >
           <Icon
             name="sync"
@@ -34,7 +37,7 @@ export function RefreshDataWidget({ guildId }: RefreshDataWidgetProps) {
           />
         </Button>
       </TooltipTrigger>
-      <TooltipContent>Refresh Discord data</TooltipContent>
+      <TooltipContent>{t("header.refreshData")}</TooltipContent>
     </Tooltip>
   );
 }

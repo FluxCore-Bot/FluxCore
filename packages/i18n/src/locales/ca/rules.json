@@ -1,0 +1,87 @@
+{
+  "breadcrumb": {
+    "guild": "Servidor",
+    "automation": "Automatització"
+  },
+  "title": "Regles d'automatització",
+  "subtitle": "Configura activadors basats en esdeveniments i respostes automatiques per al teu servidor.",
+  "createRule": "Crear regla",
+  "stats": {
+    "totalRules": "Total de regles",
+    "active": "Actives",
+    "executions7d": "Execucions (7d)",
+    "successRate": "Taxa d'exit"
+  },
+  "filter": {
+    "searchPlaceholder": "Cercar regles...",
+    "eventType": "Tipus d'esdeveniment",
+    "allEvents": "Tots els esdeveniments",
+    "allStatus": "Tots els estats",
+    "enabled": "Activada",
+    "disabled": "Desactivada",
+    "sortBy": "Ordenar per",
+    "priority": "Prioritat",
+    "name": "Nom",
+    "lastFired": "Última execució",
+    "status": "Estat",
+    "clear": "Netejar",
+    "showing": "Mostrant {{filtered}} de {{total}} regles"
+  },
+  "bulk": {
+    "selected": "{{count}} regla seleccionada",
+    "selected_other": "{{count}} regles seleccionades",
+    "enable": "Activar",
+    "disable": "Desactivar",
+    "delete": "Eliminar",
+    "clear": "Netejar"
+  },
+  "empty": {
+    "title": "Comenca amb l'automatització",
+    "description": "Tria una plantilla per comencar rapidament o crea una regla des de zero.",
+    "createFromScratch": "Crear des de zero"
+  },
+  "noResults": {
+    "title": "No hi ha regles coincidents",
+    "description": "Prova d'ajustar la cerca o els filtres per trobar el que busques."
+  },
+  "templates": {
+    "welcomeMessage": "Missatge de benvinguda",
+    "welcomeMessageDesc": "Dona la benvinguda als nous membres amb un missatge personalitzat en un canal",
+    "autoRole": "Rol automatic",
+    "autoRoleDesc": "Assigna automaticament un rol quan un membre s'uneix",
+    "logDeleted": "Registrar missatges eliminats",
+    "logDeletedDesc": "Envia informació de missatges eliminats a un canal de registre",
+    "boostThankYou": "Agraiment per boost",
+    "boostThankYouDesc": "Envia un DM d'agraiment als usuaris que fan boost al servidor",
+    "banLogger": "Registre de bans",
+    "banLoggerDesc": "Registra els esdeveniments de ban a un canal de moderació",
+    "autoThread": "Fil automatic",
+    "autoThreadDesc": "Crea automaticament un fil quan s'envia un missatge"
+  },
+  "deleteDialog": {
+    "title": "Eliminar regla",
+    "description": "Segur que vols eliminar \"{{name}}\"? Aquesta acció no es pot desfer.",
+    "confirm": "Eliminar"
+  },
+  "bulkDeleteDialog": {
+    "title": "Eliminar regles seleccionades",
+    "description": "Segur que vols eliminar {{count}} regla? Aquesta acció no es pot desfer.",
+    "description_other": "Segur que vols eliminar {{count}} regles? Aquesta acció no es pot desfer.",
+    "confirm": "Eliminar totes"
+  },
+  "toast": {
+    "deleted": "Regla eliminada",
+    "deleteFailed": "No s'ha pogut eliminar la regla",
+    "enabled": "Regla activada",
+    "disabled": "Regla desactivada",
+    "toggleFailed": "No s'ha pogut canviar l'estat de la regla",
+    "duplicated": "Regla duplicada",
+    "duplicateFailed": "No s'ha pogut duplicar la regla",
+    "bulkEnabled": "{{count}} regles activades",
+    "bulkDisabled": "{{count}} regles desactivades",
+    "bulkEnableFailed": "No s'han pogut activar les regles",
+    "bulkDisableFailed": "No s'han pogut desactivar les regles",
+    "bulkDeleted": "{{count}} regles eliminades",
+    "bulkDeleteFailed": "No s'han pogut eliminar les regles"
+  }
+}

@@ -11,7 +11,6 @@ import {
 } from "discord.js";
 import type { Command } from "@fluxcore/types";
 import {
-  errorEmbed,
   checkPermissions,
 } from "@fluxcore/utils";
 import { getWarnings } from "@fluxcore/systems/warnings/persistence";

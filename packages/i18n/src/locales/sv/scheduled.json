@@ -1,0 +1,86 @@
+{
+  "title": "Schemalagda meddelanden",
+  "subtitle": "Skapa återkommande automatiskt publicerade meddelanden på konfigurerbara scheman.",
+  "stats": {
+    "totalMessages": "Totalt antal meddelanden",
+    "active": "Aktiva",
+    "inactive": "Inaktiva"
+  },
+  "table": {
+    "name": "Namn",
+    "channel": "Kanal",
+    "schedule": "Schema",
+    "nextRun": "Nästa körning",
+    "status": "Status"
+  },
+  "dialog": {
+    "editTitle": "Redigera schemalagt meddelande",
+    "createTitle": "Nytt schemalagt meddelande"
+  },
+  "form": {
+    "name": "Namn",
+    "channel": "Kanal",
+    "schedulePreset": "Schemaförinställning",
+    "cronExpression": "Cron-uttryck",
+    "timezone": "Tidszon",
+    "messageContent": "Meddelandeinnehåll",
+    "text": "Text",
+    "embed": "Inbäddning",
+    "enabled": "Aktiverad",
+    "enabledDesc": "Om detta schemalagda meddelande är aktivt."
+  },
+  "cronPresets": {
+    "everyHour": "Varje timme",
+    "every6Hours": "Var 6:e timme",
+    "daily9am": "Dagligen kl. 09:00",
+    "dailyMidnight": "Dagligen vid midnatt",
+    "weeklyMonday": "Varje måndag",
+    "monthly1st": "Månadsvis den 1:a",
+    "custom": "Anpassad"
+  },
+  "embed": {
+    "title": "Titel",
+    "description": "Beskrivning",
+    "color": "Färg (hex)",
+    "footer": "Sidfot",
+    "thumbnail": "Miniatyrbild-URL",
+    "image": "Bild-URL"
+  },
+  "toast": {
+    "created": "Schemalagt meddelande skapat",
+    "createFailed": "Misslyckades med att skapa schemalagt meddelande",
+    "updated": "Schemalagt meddelande uppdaterat",
+    "updateFailed": "Misslyckades med att uppdatera schemalagt meddelande",
+    "deleted": "Schemalagt meddelande borttaget",
+    "deleteFailed": "Misslyckades med att ta bort schemalagt meddelande",
+    "testSent": "Testmeddelande skickat",
+    "testFailed": "Misslyckades med att skicka testmeddelande"
+  },
+  "empty": {
+    "title": "Inga schemalagda meddelanden ännu",
+    "description": "Skapa ett schemalagt meddelande för att automatiskt publicera innehåll på återkommande basis.",
+    "createButton": "Skapa meddelande"
+  },
+  "pagination": {
+    "previous": "Föregående",
+    "next": "Nästa",
+    "page": "Sida {{page}} av {{total}}"
+  },
+  "actions": {
+    "newMessage": "Nytt meddelande",
+    "testSend": "Testsändning",
+    "edit": "Redigera",
+    "delete": "Ta bort",
+    "save": "Spara",
+    "cancel": "Avbryt"
+  },
+  "validation": {
+    "nameRequired": "Meddelandenamn krävs",
+    "channelRequired": "Kanal krävs"
+  },
+  "cronPreview": {
+    "nextRuns": "Nästa körningar"
+  },
+  "characters": "{{count}}/2000 tecken",
+  "never": "Aldrig"
+}

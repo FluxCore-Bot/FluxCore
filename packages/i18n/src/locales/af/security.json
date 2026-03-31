@@ -1,0 +1,108 @@
+{
+  "title": "Sekuriteit",
+  "subtitle": "Stel anti-aanval-beskerming en bedienersekuriteitsinstellings op.",
+  "antiRaid": {
+    "title": "Anti-aanval-beskerming",
+    "description": "Aktiveer outomatiese opsporing en reaksie op gekoordineerde aanvalle, verdagte rekeninge en vernietigende aksies."
+  },
+  "sections": {
+    "joinRate": "Aansluitkoers",
+    "accountAge": "Rekeningouderdom",
+    "antiNuke": "Anti-vernietiging",
+    "lockdown": "Grendelsluit",
+    "events": "Gebeurtenisse"
+  },
+  "joinRate": {
+    "title": "Aansluitkoers-opsporing",
+    "description": "Spoor massa-aansluitings op deur die tempo van nuwe lede wat aansluit te monitor.",
+    "threshold": "Aansluitdrempel",
+    "thresholdHint": "Aantal aansluitings om opsporing te aktiveer",
+    "window": "Tydvenster (sekondes)",
+    "windowHint": "Venster waarin aansluitings getel word",
+    "action": "Aksie by Opsporing",
+    "actionHint": "Aksie om te neem teen verdagte aanval-lede",
+    "actions": {
+      "ban": "Verban",
+      "kick": "Skop",
+      "timeout": "Tyduit",
+      "lockdown": "Grendelsluit"
+    }
+  },
+  "accountAge": {
+    "title": "Rekeningouderdomfilter",
+    "description": "Neem outomaties aksie teen rekeninge wat jonger as 'n minimum ouderdom is. Stel op 0 om te deaktiveer.",
+    "minAge": "Minimum Rekeningouderdom (dae)",
+    "minAgeHint": "0 = gedeaktiveer. Rekeninge jonger as dit sal geakteer word.",
+    "action": "Aksie"
+  },
+  "antiNuke": {
+    "title": "Anti-vernietigingsbeskerming",
+    "description": "Spoor massa-kanaal/rol-verwyderings op en plaas die verantwoordelike gebruiker in kwarantyn deur al hul rolle te verwyder.",
+    "threshold": "Verwydersdrempel",
+    "thresholdHint": "Aantal verwyderings binne 10 sekondes om kwarantyn te aktiveer",
+    "channelDeleteThreshold": "Kanaalverwyderingsdrempel",
+    "roleDeleteThreshold": "Rolverwyderingsdrempel",
+    "massbanThreshold": "Massa-verbandrempel",
+    "interval": "Interval (sekondes)",
+    "action": "Aksie"
+  },
+  "lockdown": {
+    "title": "Outo-grendelsluit by Aanval",
+    "description": "Sluit outomaties alle kanale wanneer 'n aanval opgespoor word.",
+    "whitelistedRoles": "Witgelysde Rol-ID's (komma-geskei)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Lede met hierdie rolle sal vrygestel wees van aanval-opsporing.",
+    "logChannel": "Logkanaal-ID",
+    "logChannelPlaceholder": "Kanaal-ID vir aanval-gebeurtenislogboeke...",
+    "enableButton": "Aktiveer Grendelsluit",
+    "disableButton": "Deaktiveer Grendelsluit",
+    "active": "Grendelsluit Aktief",
+    "inactive": "Grendelsluit Onaktief"
+  },
+  "events": {
+    "title": "Onlangse Aanvalgebeurtenisse",
+    "description": "Tydlyn van opgespeurde aanvalle, rekeningouderdom-blokkerings en grendelsluit-gebeurtenisse.",
+    "empty": "Nog geen aanvalgebeurtenisse aangeteken nie. Gebeurtenisse sal hier verskyn wanneer aanval-opsporing aktiveer.",
+    "actionLabel": "Aksie: {{action}}",
+    "usersLabel": "Gebruikers: {{count}}",
+    "accountAgeLabel": "Rekeningouderdom: {{days}}d",
+    "table": {
+      "type": "Tipe",
+      "description": "Beskrywing",
+      "time": "Tyd",
+      "action": "Aksie Geneem"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Aansluitpiek",
+    "account_age": "Rekeningouderdom",
+    "nuke_attempt": "Vernietigingspoging",
+    "lockdown": "Grendelsluit",
+    "massJoin": "Massa-aansluiting",
+    "suspiciousAccounts": "Verdagte Rekeninge",
+    "channelDeletion": "Kanaalverwydering",
+    "roleDeletion": "Rolverwydering",
+    "massBan": "Massa-verban"
+  },
+  "pagination": {
+    "previous": "Vorige",
+    "next": "Volgende",
+    "page": "Bladsy {{current}} van {{total}}"
+  },
+  "toast": {
+    "saved": "Anti-aanval-konfigurasie gestoor",
+    "saveFailed": "Kon nie konfigurasie stoor nie",
+    "lockdownEnabled": "Bedienergrendelsluit geaktiveer",
+    "lockdownDisabled": "Bedienergrendelsluit gedeaktiveer",
+    "lockdownFailed": "Kon nie grendelsluit wissel nie"
+  },
+  "saveButton": {
+    "saving": "Stoor...",
+    "save": "Stoor Veranderinge"
+  },
+  "labels": {
+    "seconds": "sekondes",
+    "minutes": "minute",
+    "hours": "ure"
+  }
+}

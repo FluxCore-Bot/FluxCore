@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "Dashboard FluxCore"
+  },
+  "status": {
+    "online": "Online",
+    "offline": "Offline",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Ikhtisar",
+    "automation": "Otomasi",
+    "music": "Musik",
+    "tempvoice": "TempVoice",
+    "welcome": "Sambutan",
+    "moderation": "Moderasi",
+    "warnings": "Peringatan",
+    "rolePanels": "Panel Peran",
+    "leveling": "Leveling",
+    "scheduled": "Terjadwal",
+    "commands": "Perintah",
+    "security": "Keamanan",
+    "tickets": "Tiket",
+    "giveaways": "Giveaway",
+    "suggestions": "Saran",
+    "starboard": "Starboard",
+    "logs": "Log",
+    "permissions": "Izin",
+    "settings": "Pengaturan"
+  },
+  "actions": {
+    "save": "Simpan",
+    "cancel": "Batal",
+    "delete": "Hapus",
+    "edit": "Edit",
+    "create": "Buat",
+    "add": "Tambah",
+    "remove": "Hapus",
+    "confirm": "Konfirmasi",
+    "close": "Tutup",
+    "back": "Kembali",
+    "next": "Berikutnya",
+    "search": "Cari",
+    "filter": "Filter",
+    "refresh": "Segarkan",
+    "reset": "Atur Ulang",
+    "enable": "Aktifkan",
+    "disable": "Nonaktifkan",
+    "copy": "Salin",
+    "export": "Ekspor",
+    "import": "Impor",
+    "submit": "Kirim",
+    "loading": "Memuat...",
+    "retry": "Coba Lagi"
+  },
+  "labels": {
+    "enabled": "Diaktifkan",
+    "disabled": "Dinonaktifkan",
+    "active": "Aktif",
+    "inactive": "Tidak Aktif",
+    "none": "Tidak Ada",
+    "all": "Semua",
+    "custom": "Kustom",
+    "default": "Bawaan",
+    "required": "Wajib",
+    "optional": "Opsional",
+    "name": "Nama",
+    "description": "Deskripsi",
+    "type": "Tipe",
+    "status": "Status",
+    "channel": "Saluran",
+    "role": "Peran",
+    "member": "Anggota",
+    "duration": "Durasi",
+    "reason": "Alasan",
+    "language": "Bahasa"
+  },
+  "header": {
+    "notifications": "Notifikasi",
+    "settings": "Pengaturan",
+    "logout": "Keluar",
+    "toggleSidebar": "Tampilkan/sembunyikan bilah sisi",
+    "refreshData": "Segarkan data Discord"
+  },
+  "sidebar": {
+    "closeSidebar": "Tutup bilah sisi",
+    "addToServer": "Tambahkan ke Server",
+    "docs": "Dokumentasi",
+    "support": "Dukungan",
+    "backToServers": "Kembali ke Server"
+  },
+  "empty": {
+    "noData": "Tidak ada data tersedia",
+    "noResults": "Tidak ada hasil ditemukan",
+    "noItems": "Belum ada item"
+  },
+  "time": {
+    "seconds": "detik",
+    "minutes": "menit",
+    "hours": "jam",
+    "days": "hari",
+    "ago": "{{time}} yang lalu",
+    "in": "dalam {{time}}"
+  },
+  "confirm": {
+    "title": "Apakah Anda yakin?",
+    "deleteTitle": "Konfirmasi penghapusan",
+    "deleteMessage": "Tindakan ini tidak dapat dibatalkan.",
+    "unsavedChanges": "Anda memiliki perubahan yang belum disimpan. Apakah Anda yakin ingin meninggalkan halaman ini?"
+  },
+  "accessibility": {
+    "skipToContent": "Lewati ke konten utama",
+    "loading": "Memuat konten",
+    "loaded": "Konten dimuat",
+    "error": "Terjadi kesalahan",
+    "menuOpen": "Menu terbuka",
+    "menuClosed": "Menu tertutup"
+  }
+}

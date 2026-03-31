@@ -1,0 +1,67 @@
+{
+  "title": "Sugestie",
+  "subtitle": "Pozwól członkom zgłaszać pomysły i głosować na nie. Zarządzaj statusami i opiniami.",
+  "stats": {
+    "totalSuggestions": "Łącznie sugestii",
+    "systemStatus": "Status systemu",
+    "channel": {
+      "configured": "Kanał skonfigurowany",
+      "notSet": "Kanał nie ustawiony"
+    }
+  },
+  "tabs": {
+    "suggestions": "Sugestie",
+    "settings": "Ustawienia"
+  },
+  "filter": {
+    "filterByStatus": "Filtruj po statusie",
+    "all": "Wszystkie",
+    "pending": "Oczekujące",
+    "approved": "Zatwierdzone",
+    "rejected": "Odrzucone",
+    "implemented": "Wdrożone",
+    "considered": "Rozpatrywane"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Autor",
+    "content": "Treść",
+    "status": "Status",
+    "votes": "Głosy",
+    "date": "Data"
+  },
+  "actions": {
+    "approve": "Zatwierdź",
+    "reject": "Odrzuć",
+    "implement": "Oznacz jako wdrożone",
+    "consider": "Rozpatrz",
+    "delete": "Usuń"
+  },
+  "settings": {
+    "channel": "Kanał sugestii",
+    "channelDesc": "Kanał, na którym publikowane są sugestie do głosowania.",
+    "voteEmojis": "Emoji głosowania",
+    "voteEmojisDesc": "Emoji używane do reakcji za i przeciw.",
+    "autoThread": "Automatyczny wątek",
+    "autoThreadDesc": "Automatycznie utwórz wątek dyskusji przy każdej nowej sugestii.",
+    "dmOnStatusChange": "PW przy zmianie statusu",
+    "dmOnStatusChangeDesc": "Powiadom autora przez PW, gdy status jego sugestii się zmieni."
+  },
+  "toast": {
+    "approved": "Sugestia zatwierdzona",
+    "rejected": "Sugestia odrzucona",
+    "implemented": "Sugestia oznaczona jako wdrożona",
+    "considered": "Sugestia oznaczona jako rozpatrywana",
+    "deleted": "Sugestia usunięta",
+    "actionFailed": "Nie udało się zaktualizować sugestii",
+    "settingsSaved": "Ustawienia sugestii zapisane",
+    "settingsFailed": "Nie udało się zapisać ustawień sugestii"
+  },
+  "empty": "Brak sugestii.",
+  "loading": "Ładowanie sugestii...",
+  "pagination": {
+    "previous": "Poprzednia",
+    "next": "Następna",
+    "page": "Strona {{page}} z {{total}}"
+  }
+}

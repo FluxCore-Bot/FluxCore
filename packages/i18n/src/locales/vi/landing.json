@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Hiện Đang Trong Beta Công Khai",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "Bot Discord",
+    "titleLine2": "Toàn Diện Nhất",
+    "subtitle": "Triển khai một hiện diện Discord chuyên nghiệp trong vài phút. Mô-đun hóa, tự lưu trữ và được xây dựng cho những cộng đồng đòi hỏi nhiều hơn."
+  },
+  "cta": {
+    "addToServer": "Thêm Vào Máy Chủ",
+    "openDashboard": "Mở Bảng Điều Khiển",
+    "exploreFeatures": "Khám Phá Tính Năng"
+  },
+  "stats": {
+    "servers": "Máy Chủ",
+    "latency": "Độ Trễ",
+    "uptime": "Thời Gian Hoạt Động",
+    "modules": "Mô-đun",
+    "serversValue": "1.000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99,9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Khả Năng",
+    "title": "Tất cả những gì máy chủ của bạn cần",
+    "subtitle": "Bộ công cụ mô-đun được thiết kế cho các cộng đồng đòi hỏi sự tin cậy, linh hoạt và kiểm soát.",
+    "automation": {
+      "title": "Quy Tắc Tự Động Hóa",
+      "description": "Tạo quy trình làm việc phức tạp dựa trên sự kiện mà không cần lập trình. Kích hoạt nếu-thì với 23 loại sự kiện và 10 loại hành động."
+    },
+    "music": {
+      "title": "Hệ Thống Âm Nhạc",
+      "description": "Phát nhạc chất lượng cao với hỗ trợ đa nền tảng. Quản lý hàng đợi, điều khiển DJ và chế độ thư viện."
+    },
+    "tempVoice": {
+      "title": "Kênh Thoại Tạm Thời",
+      "description": "Quản lý kênh thoại động. Tự tạo với mẫu đặt tên tùy chỉnh, quyền hạn và dọn dẹp tự động."
+    },
+    "logs": {
+      "title": "Nhật Ký Hoạt Động",
+      "description": "Lịch sử kiểm toán đầy đủ của mọi lần thực thi tự động. Tìm kiếm, lọc và gỡ lỗi quy tắc của bạn với nhật ký chi tiết."
+    },
+    "webhooks": {
+      "title": "Webhook & API",
+      "description": "Gửi dữ liệu đến các dịch vụ bên ngoài bằng webhook HTTP. Tiêu đề tùy chỉnh, mẫu nội dung và nội suy biến."
+    },
+    "dashboard": {
+      "title": "Bảng Điều Khiển Thời Gian Thực",
+      "description": "Quản lý mọi thứ từ bảng điều khiển web hiện đại. Phân tích, cấu hình và giám sát ở một nơi."
+    }
+  },
+  "ctaSection": {
+    "title": "Sẵn sàng nâng cấp cộng đồng của bạn?",
+    "subtitle": "Bắt đầu trong vài phút với cấu hình bằng không. Tự lưu trữ, mã nguồn mở và hoàn toàn miễn phí."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "© {{year}} FluxCore Technologies. Bảo lưu mọi quyền.",
+    "links": {
+      "documentation": "Tài Liệu",
+      "support": "Hỗ Trợ",
+      "privacy": "Chính Sách Bảo Mật",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "title": "Benutzerdefinierte Befehle",
+  "subtitle": "Erstellen Sie Auto-Responder und Praefix-Befehle, die durch Nachrichten ausgeloest werden.",
+  "stats": {
+    "totalCommands": "Befehle gesamt",
+    "enabled": "Aktiviert",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Befehle",
+    "variables": "Variablen"
+  },
+  "table": {
+    "name": "Name",
+    "trigger": "Ausloeser",
+    "response": "Antwort",
+    "cooldown": "Abklingzeit",
+    "status": "Status"
+  },
+  "triggerTypes": {
+    "command": "!befehl",
+    "keyword": "Schluesselwort",
+    "startsWith": "Beginnt mit",
+    "regex": "Regex",
+    "prefixCommand": "Praefix-Befehl (!name)",
+    "keywordContains": "Schluesselwort (enthaelt)"
+  },
+  "dialog": {
+    "createCommand": "Befehl erstellen",
+    "editCommand": "Befehl bearbeiten"
+  },
+  "form": {
+    "commandName": "Befehlsname",
+    "triggerText": "Ausloesertext",
+    "regexPattern": "Regex-Muster",
+    "triggerType": "Ausloesertyp",
+    "response": "Antwort",
+    "message": "Nachricht",
+    "embedTitle": "Embed-Titel",
+    "embedDescription": "Embed-Beschreibung",
+    "color": "Farbe",
+    "footer": "Fusszeile"
+  },
+  "options": {
+    "cooldown": "Abklingzeit (Sekunden)",
+    "enabled": "Aktiviert",
+    "enabledDesc": "Ob dieser Befehl aktiv ist",
+    "deleteTrigger": "Ausloesernachricht loeschen",
+    "deleteTriggerDesc": "Die Nachricht, die diesen Befehl ausgeloest hat, automatisch loeschen.",
+    "dmResponse": "DM-Antwort",
+    "dmResponseDesc": "Die Antwort als Direktnachricht statt im Kanal senden."
+  },
+  "restrictions": {
+    "title": "Einschraenkungen",
+    "allowedChannels": "Erlaubte Kanaele (leer = alle)",
+    "allowedRoles": "Erlaubte Rollen (leer = alle)",
+    "addChannel": "Kanal hinzufuegen",
+    "addRole": "Rolle hinzufuegen"
+  },
+  "actions": {
+    "create": "Erstellen",
+    "update": "Aktualisieren",
+    "cancel": "Abbrechen",
+    "addAction": "Aktion hinzufuegen",
+    "addRole": "Rolle hinzufuegen",
+    "removeRole": "Rolle entfernen"
+  },
+  "actionsSection": {
+    "title": "Aktionen ({{count}}/5)",
+    "noActions": "Keine Aktionen konfiguriert. Fuegen Sie eine Aktion hinzu, um das Verhalten dieses Befehls festzulegen.",
+    "maxActions": "Maximal 5 Aktionen pro Befehl"
+  },
+  "variables": {
+    "title": "Vorlagenvariablen",
+    "description": "Verwenden Sie diese Variablen in Ihren Befehlsantworten. Sie werden durch die tatsaechlichen Werte ersetzt, wenn der Befehl ausgeloest wird.",
+    "table": {
+      "variable": "Variable",
+      "description": "Beschreibung"
+    },
+    "entries": {
+      "user": "{user} — Erwaehnt den Benutzer, der den Befehl ausgeloest hat",
+      "username": "{username} — Der Anzeigename des Benutzers",
+      "userId": "{userId} — Die ID des Benutzers",
+      "server": "{server} — Der Servername",
+      "channel": "{channel} — Erwaehnt den aktuellen Kanal",
+      "channelName": "{channelName} — Der Kanalname",
+      "memberCount": "{memberCount} — Gesamtzahl der Servermitglieder"
+    }
+  },
+  "toast": {
+    "created": "Befehl erstellt",
+    "createFailed": "Befehl konnte nicht erstellt werden",
+    "updated": "Befehl aktualisiert",
+    "updateFailed": "Befehl konnte nicht aktualisiert werden",
+    "deleted": "Befehl geloescht",
+    "deleteFailed": "Befehl konnte nicht geloescht werden",
+    "toggleEnabled": "Befehl aktiviert",
+    "toggleDisabled": "Befehl deaktiviert",
+    "toggleFailed": "Befehl konnte nicht umgeschaltet werden"
+  },
+  "empty": "Noch keine benutzerdefinierten Befehle erstellt.",
+  "loading": "Befehle werden geladen...",
+  "badge": {
+    "active": "Aktiv",
+    "disabled": "Deaktiviert",
+    "text": "Text",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Befehlsname ist erforderlich"
+  },
+  "triggerPrefix": "Ausloeser: !{{name}}"
+}

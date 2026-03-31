@@ -1,0 +1,86 @@
+{
+  "title": "Mensaxes Programadas",
+  "subtitle": "Crea mensaxes publicadas automaticamente de forma recorrente en horarios configurables.",
+  "stats": {
+    "totalMessages": "Total de Mensaxes",
+    "active": "Activas",
+    "inactive": "Inactivas"
+  },
+  "table": {
+    "name": "Nome",
+    "channel": "Canal",
+    "schedule": "Horario",
+    "nextRun": "Próxima Execución",
+    "status": "Estado"
+  },
+  "dialog": {
+    "editTitle": "Editar Mensaxe Programada",
+    "createTitle": "Nova Mensaxe Programada"
+  },
+  "form": {
+    "name": "Nome",
+    "channel": "Canal",
+    "schedulePreset": "Horario Predefinido",
+    "cronExpression": "Expresión Cron",
+    "timezone": "Fuso Horario",
+    "messageContent": "Contido da Mensaxe",
+    "text": "Texto",
+    "embed": "Embed",
+    "enabled": "Activada",
+    "enabledDesc": "Se esta mensaxe programada está activa."
+  },
+  "cronPresets": {
+    "everyHour": "Cada Hora",
+    "every6Hours": "Cada 6 Horas",
+    "daily9am": "Diariamente ás 9:00",
+    "dailyMidnight": "Diariamente á Medianoite",
+    "weeklyMonday": "Semanalmente os Luns",
+    "monthly1st": "Mensualmente o Día 1",
+    "custom": "Personalizado"
+  },
+  "embed": {
+    "title": "Título",
+    "description": "Descrición",
+    "color": "Cor (hex)",
+    "footer": "Pé de páxina",
+    "thumbnail": "URL de Miniatura",
+    "image": "URL de Imaxe"
+  },
+  "toast": {
+    "created": "Mensaxe programada creada",
+    "createFailed": "Non se puido crear a mensaxe programada",
+    "updated": "Mensaxe programada actualizada",
+    "updateFailed": "Non se puido actualizar a mensaxe programada",
+    "deleted": "Mensaxe programada eliminada",
+    "deleteFailed": "Non se puido eliminar a mensaxe programada",
+    "testSent": "Mensaxe de proba enviada",
+    "testFailed": "Non se puido enviar a mensaxe de proba"
+  },
+  "empty": {
+    "title": "Aínda non hai mensaxes programadas",
+    "description": "Crea unha mensaxe programada para publicar contido automaticamente de forma recorrente.",
+    "createButton": "Crear Mensaxe"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "page": "Páxina {{page}} de {{total}}"
+  },
+  "actions": {
+    "newMessage": "Nova Mensaxe",
+    "testSend": "Enviar Proba",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "save": "Gardar",
+    "cancel": "Cancelar"
+  },
+  "validation": {
+    "nameRequired": "O nome da mensaxe é obrigatorio",
+    "channelRequired": "O canal é obrigatorio"
+  },
+  "cronPreview": {
+    "nextRuns": "Próximas Execucións"
+  },
+  "characters": "{{count}}/2000 caracteres",
+  "never": "Nunca"
+}

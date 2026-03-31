@@ -1,0 +1,54 @@
+{
+  "title": "Moderasi",
+  "subtitle": "Lihat dan kelola kasus moderasi, konfigurasikan pengaturan hukuman.",
+  "stats": {
+    "totalCases": "Total Kasus",
+    "activeTempbans": "Tempban Aktif",
+    "last24h": "24 Jam Terakhir"
+  },
+  "cases": "Kasus",
+  "actions": {
+    "ban": "Ban",
+    "tempban": "Tempban",
+    "kick": "Kick",
+    "timeout": "Timeout",
+    "softban": "Softban",
+    "warn": "Peringatkan",
+    "note": "Catatan"
+  },
+  "table": {
+    "id": "ID",
+    "action": "Aksi",
+    "target": "Target",
+    "moderator": "Moderator",
+    "reason": "Alasan",
+    "date": "Tanggal",
+    "actions": "Aksi",
+    "noCases": "Tidak ada kasus ditemukan.",
+    "noReason": "Tidak ada alasan"
+  },
+  "filter": {
+    "userPlaceholder": "Filter berdasarkan ID Pengguna...",
+    "allActions": "Semua Aksi"
+  },
+  "pagination": {
+    "previous": "Sebelumnya",
+    "next": "Berikutnya",
+    "page": "Halaman {{page}} dari {{total}}"
+  },
+  "editDialog": {
+    "title": "Edit Alasan Kasus #{{id}}",
+    "placeholder": "Masukkan alasan baru...",
+    "saving": "Menyimpan..."
+  },
+  "editReason": "Edit alasan",
+  "deleteCase": "Hapus kasus",
+  "deleteConfirm": "Apakah Anda yakin ingin menghapus kasus ini?",
+  "settings": {
+    "title": "Pengaturan",
+    "dmOnPunishment": "DM saat Hukuman",
+    "dmOnPunishmentDesc": "Kirim DM ke pengguna ketika mereka dihukum (ban, kick, timeout).",
+    "modLogChannel": "Saluran Log Moderasi",
+    "modLogChannelDesc": "Saluran tempat tindakan moderasi dicatat."
+  }
+}

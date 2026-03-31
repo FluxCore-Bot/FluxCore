@@ -1,0 +1,108 @@
+{
+  "title": "Seguridad",
+  "subtitle": "I-configure ang anti-raid na proteksyon at mga setting ng seguridad ng server.",
+  "antiRaid": {
+    "title": "Anti-Raid na Proteksyon",
+    "description": "Paganahin ang awtomatikong pagtuklas at tugon sa mga coordinated raid, mga kahina-hinalang account, at mga mapanirang aksyon."
+  },
+  "sections": {
+    "joinRate": "Rate ng Pagsali",
+    "accountAge": "Edad ng Account",
+    "antiNuke": "Anti-Nuke",
+    "lockdown": "Lockdown",
+    "events": "Mga Event"
+  },
+  "joinRate": {
+    "title": "Pagtuklas ng Rate ng Pagsali",
+    "description": "Tuklasin ang mass join sa pamamagitan ng pagsubaybay sa rate ng mga bagong miyembro na sumasali.",
+    "threshold": "Threshold ng Pagsali",
+    "thresholdHint": "Bilang ng mga pagsali upang ma-trigger ang pagtuklas",
+    "window": "Oras ng Window (segundo)",
+    "windowHint": "Window kung saan binibilang ang mga pagsali",
+    "action": "Aksyon sa Pagtuklas",
+    "actionHint": "Aksyon na gagawin sa mga hinihinalang miyembro ng raid",
+    "actions": {
+      "ban": "I-ban",
+      "kick": "I-kick",
+      "timeout": "Timeout",
+      "lockdown": "Lockdown"
+    }
+  },
+  "accountAge": {
+    "title": "Filter ng Edad ng Account",
+    "description": "Awtomatikong aksyonin ang mga account na mas bata kaysa sa minimum na edad. Itakda sa 0 upang i-disable.",
+    "minAge": "Minimum na Edad ng Account (araw)",
+    "minAgeHint": "0 = hindi pinagana. Ang mga account na mas bata kaysa dito ay aaksyonin.",
+    "action": "Aksyon"
+  },
+  "antiNuke": {
+    "title": "Anti-Nuke na Proteksyon",
+    "description": "Tuklasin ang mass deletion ng channel/role at i-quarantine ang responsableng user sa pamamagitan ng pag-alis ng lahat ng kanilang mga role.",
+    "threshold": "Threshold ng Deletion",
+    "thresholdHint": "Bilang ng mga deletion sa loob ng 10 segundo upang ma-trigger ang quarantine",
+    "channelDeleteThreshold": "Threshold ng Pagtanggal ng Channel",
+    "roleDeleteThreshold": "Threshold ng Pagtanggal ng Role",
+    "massbanThreshold": "Threshold ng Mass Ban",
+    "interval": "Interval (segundo)",
+    "action": "Aksyon"
+  },
+  "lockdown": {
+    "title": "Auto-Lockdown sa Raid",
+    "description": "Awtomatikong i-lock ang lahat ng channel kapag natuklas ang raid.",
+    "whitelistedRoles": "Mga Whitelisted na Role ID (comma-separated)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Ang mga miyembro na may ganitong mga role ay magiging exempt mula sa pagtuklas ng raid.",
+    "logChannel": "Log Channel ID",
+    "logChannelPlaceholder": "Channel ID para sa mga log ng raid event...",
+    "enableButton": "Paganahin ang Lockdown",
+    "disableButton": "I-disable ang Lockdown",
+    "active": "Aktibo ang Lockdown",
+    "inactive": "Hindi Aktibo ang Lockdown"
+  },
+  "events": {
+    "title": "Mga Kamakailang Raid Event",
+    "description": "Timeline ng mga natuklas na raid, mga block ng edad ng account, at mga lockdown event.",
+    "empty": "Wala pang mga raid event na naitala. Lilitaw dito ang mga event kapag na-trigger ang pagtuklas ng raid.",
+    "actionLabel": "Aksyon: {{action}}",
+    "usersLabel": "Mga User: {{count}}",
+    "accountAgeLabel": "Edad ng account: {{days}}d",
+    "table": {
+      "type": "Uri",
+      "description": "Paglalarawan",
+      "time": "Oras",
+      "action": "Aksyong Ginawa"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Pagtaas ng Pagsali",
+    "account_age": "Edad ng Account",
+    "nuke_attempt": "Pagtatangkang Nuke",
+    "lockdown": "Lockdown",
+    "massJoin": "Mass Join",
+    "suspiciousAccounts": "Mga Kahina-hinalang Account",
+    "channelDeletion": "Pagtanggal ng Channel",
+    "roleDeletion": "Pagtanggal ng Role",
+    "massBan": "Mass Ban"
+  },
+  "pagination": {
+    "previous": "Nakaraan",
+    "next": "Susunod",
+    "page": "Pahina {{current}} ng {{total}}"
+  },
+  "toast": {
+    "saved": "Nai-save ang anti-raid na configuration",
+    "saveFailed": "Hindi na-save ang configuration",
+    "lockdownEnabled": "Pinagana ang lockdown ng server",
+    "lockdownDisabled": "Na-disable ang lockdown ng server",
+    "lockdownFailed": "Hindi na-toggle ang lockdown"
+  },
+  "saveButton": {
+    "saving": "Sino-save...",
+    "save": "I-save ang mga Pagbabago"
+  },
+  "labels": {
+    "seconds": "segundo",
+    "minutes": "minuto",
+    "hours": "oras"
+  }
+}

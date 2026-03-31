@@ -1,0 +1,112 @@
+{
+  "title": "Panouri de Roluri",
+  "subtitle": "Creează panouri de roluri auto-atribuibile folosind butoane, meniuri derulante sau reacții.",
+  "stats": {
+    "totalPanels": "Total Panouri",
+    "deployed": "Implementate",
+    "totalRoles": "Total Roluri"
+  },
+  "tabs": {
+    "panels": "Panouri",
+    "preview": "Previzualizare"
+  },
+  "table": {
+    "name": "Nume",
+    "type": "Tip",
+    "mode": "Mod",
+    "roles": "Roluri",
+    "status": "Stare"
+  },
+  "panelTypes": {
+    "reaction": "Reacție",
+    "button": "Buton",
+    "dropdown": "Meniu derulant"
+  },
+  "panelModes": {
+    "toggle": "Comutare",
+    "unique": "Unic",
+    "verify": "Verificare"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Comutare (adaugă/elimină)",
+    "unique": "Unic (unul câte unul)",
+    "verify": "Verificare (doar adaugă)"
+  },
+  "status": {
+    "deployed": "Implementat",
+    "draft": "Schiță"
+  },
+  "dialog": {
+    "createPanel": "Creează Panou",
+    "editPanel": "Editează Panou"
+  },
+  "panelList": {
+    "title": "Toate Panourile"
+  },
+  "form": {
+    "name": "Nume",
+    "namePlaceholder": "ex. Roluri de Culoare",
+    "type": "Tip",
+    "mode": "Mod",
+    "channel": "Canal",
+    "channelPlaceholder": "Selectează canalul",
+    "minRoles": "Min Roluri",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Max Roluri",
+    "maxRolesPlaceholder": "Toate",
+    "embedSection": "Embed",
+    "embedTitle": "Titlu",
+    "embedTitlePlaceholder": "Titlul panoului (implicit este numele panoului)",
+    "embedDescription": "Descriere",
+    "embedDescriptionPlaceholder": "Textul descrierii",
+    "rolesCount": "Roluri ({{count}}/25)",
+    "addRole": "Adaugă Rol"
+  },
+  "entry": {
+    "role": "Rol",
+    "rolePlaceholder": "Selectează rolul",
+    "label": "Etichetă",
+    "labelPlaceholder": "Eticheta butonului",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "ex. stea",
+    "description": "Descriere",
+    "descriptionPlaceholder": "Descrierea opțiunii",
+    "style": "Stil"
+  },
+  "buttonStyles": {
+    "primary": "Primar",
+    "secondary": "Secundar",
+    "success": "Succes",
+    "danger": "Pericol"
+  },
+  "actions": {
+    "create": "Creează",
+    "update": "Actualizează",
+    "cancel": "Anulează",
+    "deploy": "Implementează",
+    "delete": "Șterge",
+    "addEntry": "Adaugă Intrare",
+    "removeEntry": "Elimină Intrare"
+  },
+  "preview": {
+    "title": "Previzualizare Live",
+    "description": "Previzualizează cum vor apărea panourile tale în Discord.",
+    "selectRoles": "Selectează roluri...",
+    "noPreview": "Nu există panouri de previzualizat."
+  },
+  "empty": "Nu există panouri de roluri create încă. Apasă \"Creează Panou\" pentru a începe.",
+  "toast": {
+    "created": "Panou creat",
+    "createFailed": "Crearea panoului a eșuat",
+    "updated": "Panou actualizat",
+    "updateFailed": "Actualizarea panoului a eșuat",
+    "deleted": "Panou șters",
+    "deleteFailed": "Ștergerea panoului a eșuat",
+    "deployed": "Panou de roluri implementat în canal",
+    "deployFailed": "Trimiterea panoului a eșuat",
+    "nameRequired": "Numele panoului este obligatoriu",
+    "channelRequired": "Canalul este obligatoriu",
+    "maxRolesReached": "Maximum 25 roluri per panou"
+  },
+  "loading": "Se încarcă panourile..."
+}

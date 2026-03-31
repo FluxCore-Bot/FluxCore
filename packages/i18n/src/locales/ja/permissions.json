@@ -1,0 +1,118 @@
+{
+  "title": "ロールと権限",
+  "subtitle": "ダッシュボードの各モジュールへのアクセスと管理権限を制御します。",
+  "actions": {
+    "createRole": "ロールを作成"
+  },
+  "permissionSystem": {
+    "title": "権限システム",
+    "active": "有効 — 管理者は割り当てられた権限に制限されます。",
+    "inactive": "無効 — MANAGE_GUILDを持つすべての管理者がフルアクセスできます。",
+    "enabledToast": "権限システムを有効にしました",
+    "disabledToast": "権限システムを無効にしました — すべての管理者がフルアクセスできます"
+  },
+  "warning": {
+    "disabled": "権限システムが無効です。現在、すべてのダッシュボード管理者がフルアクセスできます。上のボタンで有効にすると、きめ細かい権限が適用されます。"
+  },
+  "tabs": {
+    "roles": "ロール",
+    "auditLog": "監査ログ"
+  },
+  "roleList": {
+    "title": "ダッシュボードロール",
+    "empty": "ロールはまだ作成されていません。",
+    "selectHint": "ロールを選択して編集するか、新しいロールを作成してください。",
+    "default": "デフォルト",
+    "name": "名前",
+    "members": "メンバー",
+    "permissions": "権限",
+    "edit": "編集",
+    "delete": "削除"
+  },
+  "presets": {
+    "title": "プリセットからクイック追加",
+    "createdToast": "「{{name}}」ロールを作成しました"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}}人のメンバー",
+    "memberCount_plural": "{{count}}人のメンバー",
+    "name": "ロール名",
+    "color": "色",
+    "defaultRole": "デフォルトロール",
+    "permissions": "権限",
+    "allBadge": "すべて",
+    "discordRoles": "Discordロール"
+  },
+  "roleForm": {
+    "name": "ロール名",
+    "discordRoles": "Discordロール",
+    "permissions": "権限",
+    "create": "ロールを作成",
+    "update": "ロールを更新",
+    "cancel": "キャンセル"
+  },
+  "createDialog": {
+    "title": "ダッシュボードロールを作成",
+    "name": "名前",
+    "namePlaceholder": "例: モデレーター",
+    "color": "色"
+  },
+  "permissionCategories": {
+    "actions": "アクション＆自動化",
+    "music": "ミュージック",
+    "tempvoice": "テンポラリボイス",
+    "welcome": "ウェルカム＆お別れ",
+    "moderation": "モデレーション",
+    "logging": "ロギング",
+    "leveling": "レベリング",
+    "roles": "ロールパネル",
+    "tickets": "チケット",
+    "suggestions": "提案",
+    "starboard": "スターボード",
+    "giveaways": "プレゼント企画",
+    "security": "セキュリティ",
+    "scheduled": "予約メッセージ",
+    "commands": "カスタムコマンド",
+    "settings": "サーバー設定"
+  },
+  "audit": {
+    "table": {
+      "user": "ユーザー",
+      "action": "アクション",
+      "target": "対象",
+      "timestamp": "日時"
+    },
+    "noEntries": "監査ログのエントリはまだありません。"
+  },
+  "pagination": {
+    "previous": "前へ",
+    "next": "次へ",
+    "page": "ページ {{current}} / {{total}}"
+  },
+  "toast": {
+    "roleCreated": "ロール「{{name}}」を作成しました",
+    "roleCreateFailed": "ロールの作成に失敗しました",
+    "roleUpdated": "ロールを更新しました",
+    "roleUpdateFailed": "ロールの更新に失敗しました",
+    "roleDeleted": "ロールを削除しました",
+    "roleDeleteFailed": "ロールの削除に失敗しました"
+  },
+  "confirm": {
+    "deleteTitle": "ロール「{{name}}」を削除しますか？",
+    "deleteMessage": "このロールを削除し、すべてのメンバーの割り当てを解除します。この操作は取り消せません。",
+    "deleteRole": "このロールを削除してもよろしいですか？メンバーは割り当てられた権限を失います。"
+  },
+  "saveButton": {
+    "saving": "保存中...",
+    "save": "変更を保存"
+  },
+  "deleteButton": {
+    "deleting": "削除中...",
+    "delete": "削除"
+  },
+  "createButton": {
+    "creating": "作成中...",
+    "create": "作成"
+  },
+  "loading": "権限を読み込み中..."
+}

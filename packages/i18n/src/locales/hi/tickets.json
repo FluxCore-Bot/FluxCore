@@ -1,0 +1,77 @@
+{
+  "title": "टिकट सिस्टम",
+  "subtitle": "सपोर्ट टिकट पैनल बनाएं और डैशबोर्ड से खुले टिकट प्रबंधित करें।",
+  "stats": {
+    "totalTickets": "कुल टिकट",
+    "open": "खुले",
+    "claimed": "क्लेम किए गए",
+    "panels": "पैनल"
+  },
+  "tabs": {
+    "activeTickets": "सक्रिय टिकट",
+    "panelBuilder": "पैनल बिल्डर",
+    "settings": "सेटिंग्स"
+  },
+  "table": {
+    "id": "ID",
+    "user": "उपयोगकर्ता",
+    "subject": "विषय",
+    "status": "स्थिति",
+    "assignee": "असाइनी",
+    "created": "बनाया गया"
+  },
+  "statuses": {
+    "open": "खुला",
+    "claimed": "क्लेम किया गया",
+    "closed": "बंद"
+  },
+  "panelBuilder": {
+    "title": "पैनल शीर्षक",
+    "channel": "चैनल",
+    "buttonLabel": "बटन लेबल",
+    "welcomeMessage": "स्वागत संदेश",
+    "category": "टिकट श्रेणी",
+    "create": "पैनल बनाएं",
+    "edit": "पैनल संपादित करें",
+    "deploy": "पैनल तैनात करें"
+  },
+  "settings": {
+    "transcriptChannel": "ट्रांसक्रिप्ट चैनल",
+    "transcriptChannelDesc": "वह चैनल जहां बंद होने पर टिकट ट्रांसक्रिप्ट सहेजे जाते हैं।",
+    "maxTicketsPerUser": "प्रति उपयोगकर्ता अधिकतम टिकट",
+    "maxTicketsPerUserDesc": "एक उपयोगकर्ता के पास अधिकतम खुले टिकटों की संख्या।",
+    "closeConfirmation": "बंद करने की पुष्टि",
+    "closeConfirmationDesc": "टिकट बंद करने से पहले पुष्टि की आवश्यकता रखें।",
+    "dmTranscript": "DM ट्रांसक्रिप्ट",
+    "dmTranscriptDesc": "टिकट निर्माता को DM के माध्यम से ट्रांसक्रिप्ट की एक प्रति भेजें।"
+  },
+  "actions": {
+    "claim": "क्लेम करें",
+    "close": "बंद करें",
+    "delete": "हटाएं",
+    "reopen": "फिर से खोलें"
+  },
+  "toast": {
+    "panelCreated": "टिकट पैनल बनाया गया",
+    "panelCreateFailed": "टिकट पैनल बनाने में विफल",
+    "panelUpdated": "टिकट पैनल अपडेट किया गया",
+    "panelUpdateFailed": "टिकट पैनल अपडेट करने में विफल",
+    "panelDeployed": "टिकट पैनल तैनात किया गया",
+    "panelDeployFailed": "टिकट पैनल तैनात करने में विफल",
+    "ticketClaimed": "टिकट क्लेम किया गया",
+    "ticketClaimFailed": "टिकट क्लेम करने में विफल",
+    "ticketClosed": "टिकट बंद किया गया",
+    "ticketCloseFailed": "टिकट बंद करने में विफल",
+    "ticketReopened": "टिकट फिर से खोला गया",
+    "ticketReopenFailed": "टिकट फिर से खोलने में विफल",
+    "ticketDeleted": "टिकट हटाया गया",
+    "ticketDeleteFailed": "टिकट हटाने में विफल",
+    "settingsSaved": "टिकट सेटिंग्स सहेजी गईं",
+    "settingsFailed": "टिकट सेटिंग्स सहेजने में विफल"
+  },
+  "empty": {
+    "tickets": "कोई सक्रिय टिकट नहीं।",
+    "panels": "अभी तक कोई टिकट पैनल नहीं बनाया गया।"
+  },
+  "loading": "टिकट लोड हो रहे हैं..."
+}

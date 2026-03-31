@@ -1,0 +1,72 @@
+{
+  "title": "Avertismente",
+  "subtitle": "Urmărește și gestionează avertismentele membrilor cu escaladare automată.",
+  "stats": {
+    "totalWarnings": "Total Avertismente",
+    "escalationRules": "Reguli de Escaladare",
+    "dmOnWarn": "MP la Avertizare"
+  },
+  "tabs": {
+    "warnings": "Jurnal Avertismente",
+    "escalation": "Escaladare",
+    "settings": "Setări"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Utilizator",
+    "moderator": "Moderator",
+    "reason": "Motiv",
+    "date": "Dată"
+  },
+  "filter": {
+    "userPlaceholder": "Filtrează după ID utilizator...",
+    "clearAll": "Șterge Tot"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Următor",
+    "page": "Pagina {{page}} din {{total}} ({{count}} total)"
+  },
+  "loading": "Se încarcă avertismentele...",
+  "noWarnings": "Nu s-au găsit avertismente.",
+  "toast": {
+    "warningRemoved": "Avertisment eliminat",
+    "warningsFailed": "Ștergerea avertismentului a eșuat",
+    "enterUserId": "Introdu un ID de utilizator pentru a șterge toate avertismentele acelui utilizator",
+    "allCleared": "Toate avertismentele utilizatorului au fost șterse",
+    "clearFailed": "Ștergerea avertismentelor a eșuat",
+    "thresholdAdded": "Prag de sancțiune adăugat",
+    "thresholdFailed": "Adăugarea sancțiunii a eșuat",
+    "thresholdRemoved": "Sancțiune eliminată",
+    "removeFailed": "Eliminarea sancțiunii a eșuat",
+    "settingFailed": "Actualizarea setării a eșuat",
+    "thresholdInvalid": "Pragul trebuie să fie un număr pozitiv"
+  },
+  "escalation": {
+    "title": "Escaladarea Sancțiunilor",
+    "description": "Configurează acțiuni automate când un utilizator atinge un anumit număr de avertismente.",
+    "threshold": "Prag",
+    "action": "Acțiune",
+    "duration": "Durată",
+    "noRules": "Nu există reguli de escaladare configurate.",
+    "addRule": "Adaugă Regulă de Escaladare",
+    "addButton": "Adaugă Regulă",
+    "warnings": "{{count}} avertismente",
+    "min": "{{count}} min",
+    "timeout": "Timeout",
+    "kick": "Expulzare",
+    "ban": "Ban",
+    "durationLabel": "Durată (secunde)",
+    "thresholdPlaceholder": "ex. 3",
+    "durationPlaceholder": "ex. 3600"
+  },
+  "settings": {
+    "title": "Setări Avertismente",
+    "dmOnWarn": "MP la Avertizare",
+    "dmOnWarnDesc": "Trimite un mesaj direct utilizatorului când primește un avertisment.",
+    "requireReason": "Motiv Obligatoriu",
+    "requireReasonDesc": "Moderatorii trebuie să furnizeze un motiv când emit un avertisment.",
+    "maxWarnings": "Max Avertismente",
+    "maxWarningsDesc": "Numărul maxim de avertismente per utilizator (0 = nelimitat)."
+  }
+}

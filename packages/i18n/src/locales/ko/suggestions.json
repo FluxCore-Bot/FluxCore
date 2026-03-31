@@ -1,0 +1,67 @@
+{
+  "title": "제안",
+  "subtitle": "멤버가 아이디어를 제출하고 투표할 수 있게 합니다. 상태와 피드백을 관리합니다.",
+  "stats": {
+    "totalSuggestions": "총 제안",
+    "systemStatus": "시스템 상태",
+    "channel": {
+      "configured": "채널 설정됨",
+      "notSet": "채널 미설정"
+    }
+  },
+  "tabs": {
+    "suggestions": "제안",
+    "settings": "설정"
+  },
+  "filter": {
+    "filterByStatus": "상태로 필터",
+    "all": "전체",
+    "pending": "대기 중",
+    "approved": "승인됨",
+    "rejected": "거절됨",
+    "implemented": "구현됨",
+    "considered": "검토 중"
+  },
+  "table": {
+    "id": "ID",
+    "author": "작성자",
+    "content": "내용",
+    "status": "상태",
+    "votes": "투표 수",
+    "date": "날짜"
+  },
+  "actions": {
+    "approve": "승인",
+    "reject": "거절",
+    "implement": "구현됨으로 표시",
+    "consider": "검토",
+    "delete": "삭제"
+  },
+  "settings": {
+    "channel": "제안 채널",
+    "channelDesc": "제안이 투표를 위해 게시되는 채널.",
+    "voteEmojis": "투표 이모지",
+    "voteEmojisDesc": "찬성 및 반대 반응에 사용하는 이모지.",
+    "autoThread": "자동 스레드 생성",
+    "autoThreadDesc": "새 제안마다 자동으로 토론 스레드를 생성합니다.",
+    "dmOnStatusChange": "상태 변경 시 DM",
+    "dmOnStatusChangeDesc": "제안 상태가 변경되면 작성자에게 DM으로 알립니다."
+  },
+  "toast": {
+    "approved": "제안이 승인되었습니다",
+    "rejected": "제안이 거절되었습니다",
+    "implemented": "제안이 구현됨으로 표시되었습니다",
+    "considered": "제안이 검토 중으로 표시되었습니다",
+    "deleted": "제안이 삭제되었습니다",
+    "actionFailed": "제안 업데이트에 실패했습니다",
+    "settingsSaved": "제안 설정이 저장되었습니다",
+    "settingsFailed": "제안 설정 저장에 실패했습니다"
+  },
+  "empty": "아직 제안이 없습니다.",
+  "loading": "제안 불러오는 중...",
+  "pagination": {
+    "previous": "이전",
+    "next": "다음",
+    "page": "페이지 {{page}} / {{total}}"
+  }
+}

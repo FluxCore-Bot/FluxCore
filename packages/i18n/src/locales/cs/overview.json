@@ -1,0 +1,12 @@
+{
+  "title": "Přehled",
+  "subtitle": "Sledujte výkon a aktivitu automatizace na první pohled.",
+  "stats": {
+    "actionRules": "Pravidla akcí",
+    "activeNow": "Právě aktivní",
+    "executions": "Provedení",
+    "successRate": "Úspěšnost"
+  },
+  "errorsInLast24h": "{{count}} chyba za posledních 24h",
+  "errorsInLast24h_other": "{{count}} chyb za posledních 24h"
+}

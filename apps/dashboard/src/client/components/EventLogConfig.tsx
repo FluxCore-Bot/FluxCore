@@ -3,7 +3,6 @@ import { useParams } from "@tanstack/react-router";
 import { useLogConfig, useUpdateLogConfig } from "../lib/hooks/useLogging";
 import { useChannels } from "../lib/hooks/useChannels";
 import { Icon } from "./Icon";
-import { Button } from "./ui/button";
 import { Switch } from "./ui/switch";
 import { TableSkeleton } from "./PageSkeleton";
 import {
@@ -107,7 +106,6 @@ function CategoryCard({
   channels,
   events,
   onUpdate,
-  isSaving,
 }: CategoryCardProps) {
   const [selectedChannel, setSelectedChannel] = useState(config?.channelId ?? "");
   const [enabled, setEnabled] = useState(config?.enabled ?? false);

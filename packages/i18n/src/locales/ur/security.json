@@ -1,0 +1,108 @@
+{
+  "title": "[NEEDS TRANSLATION] Security",
+  "subtitle": "[NEEDS TRANSLATION] Configure anti-raid protection and server security settings.",
+  "antiRaid": {
+    "title": "[NEEDS TRANSLATION] Anti-Raid Protection",
+    "description": "[NEEDS TRANSLATION] Enable automatic detection and response to coordinated raids, suspicious accounts, and destructive actions."
+  },
+  "sections": {
+    "joinRate": "[NEEDS TRANSLATION] Join Rate",
+    "accountAge": "[NEEDS TRANSLATION] Account Age",
+    "antiNuke": "[NEEDS TRANSLATION] Anti-Nuke",
+    "lockdown": "[NEEDS TRANSLATION] Lockdown",
+    "events": "[NEEDS TRANSLATION] Events"
+  },
+  "joinRate": {
+    "title": "[NEEDS TRANSLATION] Join Rate Detection",
+    "description": "[NEEDS TRANSLATION] Detect mass joins by monitoring the rate of new members joining.",
+    "threshold": "[NEEDS TRANSLATION] Join Threshold",
+    "thresholdHint": "[NEEDS TRANSLATION] Number of joins to trigger detection",
+    "window": "[NEEDS TRANSLATION] Time Window (seconds)",
+    "windowHint": "[NEEDS TRANSLATION] Window in which joins are counted",
+    "action": "[NEEDS TRANSLATION] Action on Detection",
+    "actionHint": "[NEEDS TRANSLATION] Action to take on suspected raid members",
+    "actions": {
+      "ban": "[NEEDS TRANSLATION] Ban",
+      "kick": "[NEEDS TRANSLATION] Kick",
+      "timeout": "[NEEDS TRANSLATION] Timeout",
+      "lockdown": "[NEEDS TRANSLATION] Lockdown"
+    }
+  },
+  "accountAge": {
+    "title": "[NEEDS TRANSLATION] Account Age Filter",
+    "description": "[NEEDS TRANSLATION] Automatically action accounts that are younger than a minimum age. Set to 0 to disable.",
+    "minAge": "[NEEDS TRANSLATION] Minimum Account Age (days)",
+    "minAgeHint": "[NEEDS TRANSLATION] 0 = disabled. Accounts younger than this will be actioned.",
+    "action": "[NEEDS TRANSLATION] Action"
+  },
+  "antiNuke": {
+    "title": "[NEEDS TRANSLATION] Anti-Nuke Protection",
+    "description": "[NEEDS TRANSLATION] Detect mass channel/role deletions and quarantine the responsible user by removing all their roles.",
+    "threshold": "[NEEDS TRANSLATION] Deletion Threshold",
+    "thresholdHint": "[NEEDS TRANSLATION] Number of deletions within 10 seconds to trigger quarantine",
+    "channelDeleteThreshold": "[NEEDS TRANSLATION] Channel Delete Threshold",
+    "roleDeleteThreshold": "[NEEDS TRANSLATION] Role Delete Threshold",
+    "massbanThreshold": "[NEEDS TRANSLATION] Mass Ban Threshold",
+    "interval": "[NEEDS TRANSLATION] Interval (seconds)",
+    "action": "[NEEDS TRANSLATION] Action"
+  },
+  "lockdown": {
+    "title": "[NEEDS TRANSLATION] Auto-Lockdown on Raid",
+    "description": "[NEEDS TRANSLATION] Automatically lock all channels when a raid is detected.",
+    "whitelistedRoles": "[NEEDS TRANSLATION] Whitelisted Role IDs (comma-separated)",
+    "whitelistedRolesPlaceholder": "[NEEDS TRANSLATION] 123456789, 987654321",
+    "whitelistedRolesHint": "[NEEDS TRANSLATION] Members with these roles will be exempt from raid detection.",
+    "logChannel": "[NEEDS TRANSLATION] Log Channel ID",
+    "logChannelPlaceholder": "[NEEDS TRANSLATION] Channel ID for raid event logs...",
+    "enableButton": "[NEEDS TRANSLATION] Enable Lockdown",
+    "disableButton": "[NEEDS TRANSLATION] Disable Lockdown",
+    "active": "[NEEDS TRANSLATION] Lockdown Active",
+    "inactive": "[NEEDS TRANSLATION] Lockdown Inactive"
+  },
+  "events": {
+    "title": "[NEEDS TRANSLATION] Recent Raid Events",
+    "description": "[NEEDS TRANSLATION] Timeline of detected raids, account age blocks, and lockdown events.",
+    "empty": "[NEEDS TRANSLATION] No raid events recorded yet. Events will appear here when raid detection triggers.",
+    "actionLabel": "[NEEDS TRANSLATION] Action: {{action}}",
+    "usersLabel": "[NEEDS TRANSLATION] Users: {{count}}",
+    "accountAgeLabel": "[NEEDS TRANSLATION] Account age: {{days}}d",
+    "table": {
+      "type": "[NEEDS TRANSLATION] Type",
+      "description": "[NEEDS TRANSLATION] Description",
+      "time": "[NEEDS TRANSLATION] Time",
+      "action": "[NEEDS TRANSLATION] Action Taken"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "[NEEDS TRANSLATION] Join Spike",
+    "account_age": "[NEEDS TRANSLATION] Account Age",
+    "nuke_attempt": "[NEEDS TRANSLATION] Nuke Attempt",
+    "lockdown": "[NEEDS TRANSLATION] Lockdown",
+    "massJoin": "[NEEDS TRANSLATION] Mass Join",
+    "suspiciousAccounts": "[NEEDS TRANSLATION] Suspicious Accounts",
+    "channelDeletion": "[NEEDS TRANSLATION] Channel Deletion",
+    "roleDeletion": "[NEEDS TRANSLATION] Role Deletion",
+    "massBan": "[NEEDS TRANSLATION] Mass Ban"
+  },
+  "pagination": {
+    "previous": "[NEEDS TRANSLATION] Previous",
+    "next": "[NEEDS TRANSLATION] Next",
+    "page": "[NEEDS TRANSLATION] Page {{current}} of {{total}}"
+  },
+  "toast": {
+    "saved": "[NEEDS TRANSLATION] Anti-raid configuration saved",
+    "saveFailed": "[NEEDS TRANSLATION] Failed to save configuration",
+    "lockdownEnabled": "[NEEDS TRANSLATION] Server lockdown enabled",
+    "lockdownDisabled": "[NEEDS TRANSLATION] Server lockdown disabled",
+    "lockdownFailed": "[NEEDS TRANSLATION] Failed to toggle lockdown"
+  },
+  "saveButton": {
+    "saving": "[NEEDS TRANSLATION] Saving...",
+    "save": "[NEEDS TRANSLATION] Save Changes"
+  },
+  "labels": {
+    "seconds": "[NEEDS TRANSLATION] seconds",
+    "minutes": "[NEEDS TRANSLATION] minutes",
+    "hours": "[NEEDS TRANSLATION] hours"
+  }
+}

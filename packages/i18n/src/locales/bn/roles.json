@@ -1,0 +1,112 @@
+{
+  "title": "রোল প্যানেল",
+  "subtitle": "বাটন, ড্রপডাউন বা রিঅ্যাকশন ব্যবহার করে সেলফ-অ্যাসাইনেবল রোল প্যানেল তৈরি করুন।",
+  "stats": {
+    "totalPanels": "মোট প্যানেল",
+    "deployed": "ডিপ্লয়কৃত",
+    "totalRoles": "মোট রোল"
+  },
+  "tabs": {
+    "panels": "প্যানেল",
+    "preview": "প্রিভিউ"
+  },
+  "table": {
+    "name": "নাম",
+    "type": "ধরন",
+    "mode": "মোড",
+    "roles": "রোল",
+    "status": "স্থিতি"
+  },
+  "panelTypes": {
+    "reaction": "রিঅ্যাকশন",
+    "button": "বাটন",
+    "dropdown": "ড্রপডাউন"
+  },
+  "panelModes": {
+    "toggle": "টগল",
+    "unique": "ইউনিক",
+    "verify": "ভেরিফাই"
+  },
+  "panelModeDescriptions": {
+    "toggle": "টগল (যোগ/সরান)",
+    "unique": "ইউনিক (একবারে একটি)",
+    "verify": "ভেরিফাই (শুধু যোগ)"
+  },
+  "status": {
+    "deployed": "ডিপ্লয়কৃত",
+    "draft": "ড্রাফট"
+  },
+  "dialog": {
+    "createPanel": "প্যানেল তৈরি করুন",
+    "editPanel": "প্যানেল সম্পাদনা করুন"
+  },
+  "panelList": {
+    "title": "সব প্যানেল"
+  },
+  "form": {
+    "name": "নাম",
+    "namePlaceholder": "যেমন রঙ রোল",
+    "type": "ধরন",
+    "mode": "মোড",
+    "channel": "চ্যানেল",
+    "channelPlaceholder": "চ্যানেল নির্বাচন করুন",
+    "minRoles": "ন্যূনতম রোল",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "সর্বোচ্চ রোল",
+    "maxRolesPlaceholder": "সব",
+    "embedSection": "Embed",
+    "embedTitle": "শিরোনাম",
+    "embedTitlePlaceholder": "প্যানেল শিরোনাম (ডিফল্ট প্যানেল নাম)",
+    "embedDescription": "বিবরণ",
+    "embedDescriptionPlaceholder": "বিবরণ টেক্সট",
+    "rolesCount": "রোল ({{count}}/25)",
+    "addRole": "রোল যোগ করুন"
+  },
+  "entry": {
+    "role": "রোল",
+    "rolePlaceholder": "রোল নির্বাচন করুন",
+    "label": "লেবেল",
+    "labelPlaceholder": "বাটন লেবেল",
+    "emoji": "ইমোজি",
+    "emojiPlaceholder": "যেমন star",
+    "description": "বিবরণ",
+    "descriptionPlaceholder": "অপশন বিবরণ",
+    "style": "স্টাইল"
+  },
+  "buttonStyles": {
+    "primary": "প্রাইমারি",
+    "secondary": "সেকেন্ডারি",
+    "success": "সাফল্য",
+    "danger": "বিপদ"
+  },
+  "actions": {
+    "create": "তৈরি করুন",
+    "update": "আপডেট করুন",
+    "cancel": "বাতিল",
+    "deploy": "ডিপ্লয় করুন",
+    "delete": "মুছুন",
+    "addEntry": "এন্ট্রি যোগ করুন",
+    "removeEntry": "এন্ট্রি সরান"
+  },
+  "preview": {
+    "title": "লাইভ প্রিভিউ",
+    "description": "দেখুন আপনার প্যানেল Discord-এ কেমন দেখাবে।",
+    "selectRoles": "রোল নির্বাচন করুন...",
+    "noPreview": "প্রিভিউ করার কোনো প্যানেল নেই।"
+  },
+  "empty": "এখনো কোনো রোল প্যানেল তৈরি হয়নি। শুরু করতে \"প্যানেল তৈরি করুন\" এ ক্লিক করুন।",
+  "toast": {
+    "created": "প্যানেল তৈরি হয়েছে",
+    "createFailed": "প্যানেল তৈরি ব্যর্থ",
+    "updated": "প্যানেল আপডেট হয়েছে",
+    "updateFailed": "প্যানেল আপডেট ব্যর্থ",
+    "deleted": "প্যানেল মুছে ফেলা হয়েছে",
+    "deleteFailed": "প্যানেল মুছতে ব্যর্থ",
+    "deployed": "রোল প্যানেল চ্যানেলে ডিপ্লয় হয়েছে",
+    "deployFailed": "প্যানেল পাঠাতে ব্যর্থ",
+    "nameRequired": "প্যানেলের নাম আবশ্যক",
+    "channelRequired": "চ্যানেল আবশ্যক",
+    "maxRolesReached": "প্রতি প্যানেলে সর্বোচ্চ 25টি রোল"
+  },
+  "loading": "প্যানেল লোড হচ্ছে..."
+}

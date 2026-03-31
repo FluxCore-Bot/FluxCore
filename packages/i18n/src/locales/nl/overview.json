@@ -1,0 +1,12 @@
+{
+  "title": "Overzicht",
+  "subtitle": "Bewaak je automatiseringsprestaties en -activiteit in één oogopslag.",
+  "stats": {
+    "actionRules": "Actieregels",
+    "activeNow": "Nu actief",
+    "executions": "Uitvoeringen",
+    "successRate": "Succespercentage"
+  },
+  "errorsInLast24h": "{{count}} fout in de afgelopen 24u",
+  "errorsInLast24h_other": "{{count}} fouten in de afgelopen 24u"
+}

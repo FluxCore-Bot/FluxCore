@@ -1,0 +1,8 @@
+{
+  "title": "Musikksystem",
+  "subtitle": "Konfigurer globale avspillingsmoduser og lydbibliotekpreferanser.",
+  "tabs": {
+    "settings": "Avspillingsinnstillinger",
+    "library": "Musikkbibliotek"
+  }
+}

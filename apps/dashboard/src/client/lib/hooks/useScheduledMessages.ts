@@ -5,7 +5,6 @@ import {
   ScheduledMessageSchema,
   CronPreviewResponseSchema,
   type ScheduledMessageListResponse,
-  type ScheduledMessage,
   type ScheduledMessageContent,
   type CronPreviewResponse,
 } from "../schemas";

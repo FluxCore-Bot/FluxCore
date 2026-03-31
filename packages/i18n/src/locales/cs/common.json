@@ -1,0 +1,121 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "Panel FluxCore"
+  },
+  "status": {
+    "online": "Online",
+    "offline": "Offline",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Přehled",
+    "automation": "Automatizace",
+    "music": "Hudba",
+    "tempvoice": "TempVoice",
+    "welcome": "Uvítání",
+    "moderation": "Moderace",
+    "warnings": "Varování",
+    "rolePanels": "Panely rolí",
+    "leveling": "Úrovně",
+    "scheduled": "Naplánované",
+    "commands": "Příkazy",
+    "security": "Zabezpečení",
+    "tickets": "Tikety",
+    "giveaways": "Soutěže",
+    "suggestions": "Návrhy",
+    "starboard": "Nástěnka hvězd",
+    "logs": "Logy",
+    "permissions": "Oprávnění",
+    "settings": "Nastavení"
+  },
+  "actions": {
+    "save": "Uložit",
+    "cancel": "Zrušit",
+    "delete": "Smazat",
+    "edit": "Upravit",
+    "create": "Vytvořit",
+    "add": "Přidat",
+    "remove": "Odebrat",
+    "confirm": "Potvrdit",
+    "close": "Zavřít",
+    "back": "Zpět",
+    "next": "Další",
+    "search": "Hledat",
+    "filter": "Filtrovat",
+    "refresh": "Obnovit",
+    "reset": "Resetovat",
+    "enable": "Povolit",
+    "disable": "Zakázat",
+    "copy": "Kopírovat",
+    "export": "Exportovat",
+    "import": "Importovat",
+    "submit": "Odeslat",
+    "loading": "Načítání...",
+    "retry": "Opakovat"
+  },
+  "labels": {
+    "enabled": "Povoleno",
+    "disabled": "Zakázáno",
+    "active": "Aktivní",
+    "inactive": "Neaktivní",
+    "none": "Žádné",
+    "all": "Vše",
+    "custom": "Vlastní",
+    "default": "Výchozí",
+    "required": "Povinné",
+    "optional": "Volitelné",
+    "name": "Název",
+    "description": "Popis",
+    "type": "Typ",
+    "status": "Stav",
+    "channel": "Kanál",
+    "role": "Role",
+    "member": "Člen",
+    "duration": "Doba trvání",
+    "reason": "Důvod",
+    "language": "Jazyk"
+  },
+  "header": {
+    "notifications": "Oznámení",
+    "settings": "Nastavení",
+    "logout": "Odhlásit",
+    "toggleSidebar": "Přepnout postranní panel",
+    "refreshData": "Obnovit data Discordu"
+  },
+  "sidebar": {
+    "closeSidebar": "Zavřít postranní panel",
+    "addToServer": "Přidat na server",
+    "docs": "Dokumentace",
+    "support": "Podpora",
+    "backToServers": "Zpět na servery"
+  },
+  "empty": {
+    "noData": "Žádná data",
+    "noResults": "Žádné výsledky",
+    "noItems": "Zatím žádné položky"
+  },
+  "time": {
+    "seconds": "sekundy",
+    "minutes": "minuty",
+    "hours": "hodiny",
+    "days": "dny",
+    "ago": "před {{time}}",
+    "in": "za {{time}}"
+  },
+  "confirm": {
+    "title": "Jste si jisti?",
+    "deleteTitle": "Potvrzení smazání",
+    "deleteMessage": "Tuto akci nelze vrátit zpět.",
+    "unsavedChanges": "Máte neuložené změny. Opravdu chcete odejít?"
+  },
+  "accessibility": {
+    "skipToContent": "Přejít na hlavní obsah",
+    "loading": "Načítání obsahu",
+    "loaded": "Obsah načten",
+    "error": "Došlo k chybě",
+    "menuOpen": "Menu je otevřeno",
+    "menuClosed": "Menu je zavřeno"
+  }
+}

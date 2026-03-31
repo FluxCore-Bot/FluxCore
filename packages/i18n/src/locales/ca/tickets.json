@@ -1,0 +1,77 @@
+{
+  "title": "Sistema de tiquets",
+  "subtitle": "Crea panells de tiquets de suport i gestiona els tiquets oberts des del panell de control.",
+  "stats": {
+    "totalTickets": "Total de tiquets",
+    "open": "Oberts",
+    "claimed": "Reclamats",
+    "panels": "Panells"
+  },
+  "tabs": {
+    "activeTickets": "Tiquets actius",
+    "panelBuilder": "Constructor de panells",
+    "settings": "Configuració"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Usuari",
+    "subject": "Assumpte",
+    "status": "Estat",
+    "assignee": "Assignat",
+    "created": "Creat"
+  },
+  "statuses": {
+    "open": "Obert",
+    "claimed": "Reclamat",
+    "closed": "Tancat"
+  },
+  "panelBuilder": {
+    "title": "Títol del panell",
+    "channel": "Canal",
+    "buttonLabel": "Etiqueta del botó",
+    "welcomeMessage": "Missatge de benvinguda",
+    "category": "Categoria del tiquet",
+    "create": "Crear panell",
+    "edit": "Editar panell",
+    "deploy": "Desplegar panell"
+  },
+  "settings": {
+    "transcriptChannel": "Canal de transcripcions",
+    "transcriptChannelDesc": "Canal on es desen les transcripcions dels tiquets en tancar-los.",
+    "maxTicketsPerUser": "Maxim de tiquets per usuari",
+    "maxTicketsPerUserDesc": "Nombre maxim de tiquets oberts que un sol usuari pot tenir.",
+    "closeConfirmation": "Confirmació de tancament",
+    "closeConfirmationDesc": "Requereix confirmació abans de tancar un tiquet.",
+    "dmTranscript": "Transcripció per DM",
+    "dmTranscriptDesc": "Envia una copia de la transcripció al creador del tiquet per DM."
+  },
+  "actions": {
+    "claim": "Reclamar",
+    "close": "Tancar",
+    "delete": "Eliminar",
+    "reopen": "Reobrir"
+  },
+  "toast": {
+    "panelCreated": "Panell de tiquets creat",
+    "panelCreateFailed": "No s'ha pogut crear el panell de tiquets",
+    "panelUpdated": "Panell de tiquets actualitzat",
+    "panelUpdateFailed": "No s'ha pogut actualitzar el panell de tiquets",
+    "panelDeployed": "Panell de tiquets desplegat",
+    "panelDeployFailed": "No s'ha pogut desplegar el panell de tiquets",
+    "ticketClaimed": "Tiquet reclamat",
+    "ticketClaimFailed": "No s'ha pogut reclamar el tiquet",
+    "ticketClosed": "Tiquet tancat",
+    "ticketCloseFailed": "No s'ha pogut tancar el tiquet",
+    "ticketReopened": "Tiquet reobert",
+    "ticketReopenFailed": "No s'ha pogut reobrir el tiquet",
+    "ticketDeleted": "Tiquet eliminat",
+    "ticketDeleteFailed": "No s'ha pogut eliminar el tiquet",
+    "settingsSaved": "Configuració de tiquets desada",
+    "settingsFailed": "No s'ha pogut desar la configuració de tiquets"
+  },
+  "empty": {
+    "tickets": "No hi ha tiquets actius.",
+    "panels": "Encara no s'han creat panells de tiquets."
+  },
+  "loading": "Carregant tiquets..."
+}

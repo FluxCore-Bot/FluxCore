@@ -1,0 +1,41 @@
+{
+  "title": "Starboard",
+  "subtitle": "Istaknite najbolje poruke prikupljanjem zvezdanih reakcija u namenski kanal.",
+  "tabs": {
+    "settings": "Podesavanja",
+    "starredMessages": "Poruke sa zvezdama"
+  },
+  "settings": {
+    "title": "Konfiguracija Starboarda",
+    "description": "Konfigurisi kada i gde se objavljuju poruke sa zvezdama.",
+    "channelId": "Starboard kanal",
+    "channelIdDesc": "Kanal u koji se objavljuju poruke sa zvezdama.",
+    "starEmoji": "Emotikon zvezdice",
+    "starEmojiDesc": "Emotikon koji se koristi za oznacavanje poruka. Podrazumevano je emotikon zvezdice.",
+    "threshold": "Prag zvezdica",
+    "thresholdDesc": "Minimalan broj reakcija potreban za objavu poruke na starboard.",
+    "selfStar": "Sopstvena zvezdica",
+    "selfStarDesc": "Dozvolite autorima poruka da oznace sopstvene poruke.",
+    "nsfwAllowed": "NSFW dozvoljeno",
+    "nsfwAllowedDesc": "Dozvolite porukama iz NSFW kanala da se pojave na starboardu.",
+    "ignoredChannels": "Ignorisani kanali",
+    "ignoredChannelsDesc": "Poruke iz ovih kanala se nikada nece pojaviti na starboardu."
+  },
+  "messages": {
+    "table": {
+      "original": "Originalna poruka",
+      "stars": "Zvezdice",
+      "channel": "Kanal",
+      "date": "Datum"
+    },
+    "noMessages": "Nema poruka sa zvezdama."
+  },
+  "toast": {
+    "saved": "Podesavanja starboarda sacuvana",
+    "saveFailed": "Cuvanje podesavanja starboarda nije uspelo"
+  },
+  "actions": {
+    "save": "Sacuvaj",
+    "saving": "Cuvanje..."
+  }
+}

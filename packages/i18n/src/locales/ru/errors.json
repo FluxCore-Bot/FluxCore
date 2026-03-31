@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Не авторизован",
+    "sessionExpired": "Сессия истекла",
+    "missingCode": "Отсутствует параметр code",
+    "tokenExchangeFailed": "Не удалось обменять токен",
+    "failedToFetchUser": "Не удалось получить информацию о пользователе"
+  },
+  "permissions": {
+    "noGuildPermission": "Нет прав для этого сервера",
+    "botNotInGuild": "Бот не добавлен на этот сервер",
+    "insufficientPermissions": "Недостаточно прав",
+    "permissionsNotResolved": "Права не определены",
+    "requiresPermission": "Для этого действия требуется право «{{permission}}»"
+  },
+  "validation": {
+    "invalidInput": "Некорректный ввод",
+    "missingField": "Отсутствует обязательное поле: {{field}}",
+    "invalidFormat": "Некорректный формат для {{field}}",
+    "tooLong": "{{field}} превышает максимальную длину в {{max}} символов",
+    "tooShort": "{{field}} должно содержать не менее {{min}} символов",
+    "outOfRange": "{{field}} должно быть между {{min}} и {{max}}"
+  },
+  "resources": {
+    "notFound": "Не найдено",
+    "alreadyExists": "{{resource}} уже существует",
+    "limitReached": "Максимум {{max}} {{resource}} на сервер",
+    "createFailed": "Не удалось создать {{resource}}",
+    "updateFailed": "Не удалось обновить {{resource}}",
+    "deleteFailed": "Не удалось удалить {{resource}}"
+  },
+  "server": {
+    "internalError": "Внутренняя ошибка сервера",
+    "serviceUnavailable": "Сервис временно недоступен",
+    "rateLimited": "Слишком много запросов. Пожалуйста, попробуйте позже."
+  },
+  "csrf": {
+    "invalidToken": "Недействительный или отсутствующий CSRF-токен"
+  }
+}

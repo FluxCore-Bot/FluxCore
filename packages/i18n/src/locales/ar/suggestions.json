@@ -1,0 +1,67 @@
+{
+  "title": "الاقتراحات",
+  "subtitle": "اسمح للأعضاء بتقديم أفكارهم والتصويت عليها. إدارة الحالة والملاحظات.",
+  "stats": {
+    "totalSuggestions": "إجمالي الاقتراحات",
+    "systemStatus": "حالة النظام",
+    "channel": {
+      "configured": "القناة مكونة",
+      "notSet": "القناة غير محددة"
+    }
+  },
+  "tabs": {
+    "suggestions": "الاقتراحات",
+    "settings": "الإعدادات"
+  },
+  "filter": {
+    "filterByStatus": "تصفية حسب الحالة",
+    "all": "الكل",
+    "pending": "قيد الانتظار",
+    "approved": "مقبول",
+    "rejected": "مرفوض",
+    "implemented": "تم التنفيذ",
+    "considered": "قيد الدراسة"
+  },
+  "table": {
+    "id": "المعرف",
+    "author": "الكاتب",
+    "content": "المحتوى",
+    "status": "الحالة",
+    "votes": "الأصوات",
+    "date": "التاريخ"
+  },
+  "actions": {
+    "approve": "قبول",
+    "reject": "رفض",
+    "implement": "تحديد كمنفذ",
+    "consider": "دراسة",
+    "delete": "حذف"
+  },
+  "settings": {
+    "channel": "قناة الاقتراحات",
+    "channelDesc": "القناة التي يتم فيها نشر الاقتراحات للتصويت.",
+    "voteEmojis": "رموز التصويت",
+    "voteEmojisDesc": "الرموز المستخدمة لتفاعلات التصويت بالإيجاب والسلب.",
+    "autoThread": "إنشاء موضوع تلقائي",
+    "autoThreadDesc": "إنشاء موضوع نقاش تلقائيًا لكل اقتراح جديد.",
+    "dmOnStatusChange": "رسالة خاصة عند تغيير الحالة",
+    "dmOnStatusChangeDesc": "إبلاغ الكاتب عبر رسالة خاصة عند تغيير حالة اقتراحه."
+  },
+  "toast": {
+    "approved": "تم قبول الاقتراح",
+    "rejected": "تم رفض الاقتراح",
+    "implemented": "تم تحديد الاقتراح كمنفذ",
+    "considered": "تم تحديد الاقتراح كقيد الدراسة",
+    "deleted": "تم حذف الاقتراح",
+    "actionFailed": "فشل في تحديث الاقتراح",
+    "settingsSaved": "تم حفظ إعدادات الاقتراحات",
+    "settingsFailed": "فشل في حفظ إعدادات الاقتراحات"
+  },
+  "empty": "لا توجد اقتراحات بعد.",
+  "loading": "جارٍ تحميل الاقتراحات...",
+  "pagination": {
+    "previous": "السابق",
+    "next": "التالي",
+    "page": "صفحة {{page}} من {{total}}"
+  }
+}

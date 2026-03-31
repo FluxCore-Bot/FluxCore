@@ -1,0 +1,112 @@
+{
+  "title": "ロールパネル",
+  "subtitle": "ボタン、ドロップダウン、リアクションを使用した自己割り当てロールパネルを作成します。",
+  "stats": {
+    "totalPanels": "パネル総数",
+    "deployed": "デプロイ済み",
+    "totalRoles": "ロール総数"
+  },
+  "tabs": {
+    "panels": "パネル",
+    "preview": "プレビュー"
+  },
+  "table": {
+    "name": "名前",
+    "type": "タイプ",
+    "mode": "モード",
+    "roles": "ロール",
+    "status": "ステータス"
+  },
+  "panelTypes": {
+    "reaction": "リアクション",
+    "button": "ボタン",
+    "dropdown": "ドロップダウン"
+  },
+  "panelModes": {
+    "toggle": "トグル",
+    "unique": "ユニーク",
+    "verify": "認証"
+  },
+  "panelModeDescriptions": {
+    "toggle": "トグル (追加/削除)",
+    "unique": "ユニーク (1つのみ)",
+    "verify": "認証 (追加のみ)"
+  },
+  "status": {
+    "deployed": "デプロイ済み",
+    "draft": "下書き"
+  },
+  "dialog": {
+    "createPanel": "パネルを作成",
+    "editPanel": "パネルを編集"
+  },
+  "panelList": {
+    "title": "すべてのパネル"
+  },
+  "form": {
+    "name": "名前",
+    "namePlaceholder": "例: カラーロール",
+    "type": "タイプ",
+    "mode": "モード",
+    "channel": "チャンネル",
+    "channelPlaceholder": "チャンネルを選択",
+    "minRoles": "最小ロール数",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "最大ロール数",
+    "maxRolesPlaceholder": "すべて",
+    "embedSection": "埋め込み",
+    "embedTitle": "タイトル",
+    "embedTitlePlaceholder": "パネルタイトル (デフォルトはパネル名)",
+    "embedDescription": "説明",
+    "embedDescriptionPlaceholder": "説明テキスト",
+    "rolesCount": "ロール ({{count}}/25)",
+    "addRole": "ロールを追加"
+  },
+  "entry": {
+    "role": "ロール",
+    "rolePlaceholder": "ロールを選択",
+    "label": "ラベル",
+    "labelPlaceholder": "ボタンラベル",
+    "emoji": "絵文字",
+    "emojiPlaceholder": "例: star",
+    "description": "説明",
+    "descriptionPlaceholder": "オプションの説明",
+    "style": "スタイル"
+  },
+  "buttonStyles": {
+    "primary": "プライマリ",
+    "secondary": "セカンダリ",
+    "success": "成功",
+    "danger": "危険"
+  },
+  "actions": {
+    "create": "作成",
+    "update": "更新",
+    "cancel": "キャンセル",
+    "deploy": "デプロイ",
+    "delete": "削除",
+    "addEntry": "エントリを追加",
+    "removeEntry": "エントリを削除"
+  },
+  "preview": {
+    "title": "ライブプレビュー",
+    "description": "パネルがDiscordでどのように表示されるかプレビューします。",
+    "selectRoles": "ロールを選択...",
+    "noPreview": "プレビューするパネルがありません。"
+  },
+  "empty": "ロールパネルはまだ作成されていません。「パネルを作成」をクリックして始めましょう。",
+  "toast": {
+    "created": "パネルを作成しました",
+    "createFailed": "パネルの作成に失敗しました",
+    "updated": "パネルを更新しました",
+    "updateFailed": "パネルの更新に失敗しました",
+    "deleted": "パネルを削除しました",
+    "deleteFailed": "パネルの削除に失敗しました",
+    "deployed": "ロールパネルをチャンネルにデプロイしました",
+    "deployFailed": "パネルの送信に失敗しました",
+    "nameRequired": "パネル名は必須です",
+    "channelRequired": "チャンネルは必須です",
+    "maxRolesReached": "パネルあたり最大25ロール"
+  },
+  "loading": "パネルを読み込み中..."
+}

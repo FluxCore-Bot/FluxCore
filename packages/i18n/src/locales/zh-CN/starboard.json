@@ -1,0 +1,41 @@
+{
+  "title": "精华消息",
+  "subtitle": "通过收集星标反应将最佳消息高亮到专用频道。",
+  "tabs": {
+    "settings": "设置",
+    "starredMessages": "星标消息"
+  },
+  "settings": {
+    "title": "精华消息配置",
+    "description": "配置星标消息的发布时间和位置。",
+    "channelId": "精华频道",
+    "channelIdDesc": "星标消息发布的频道。",
+    "starEmoji": "星标表情",
+    "starEmojiDesc": "用于给消息加星的表情。默认为星星表情。",
+    "threshold": "星标阈值",
+    "thresholdDesc": "消息发布到精华频道所需的最少反应数。",
+    "selfStar": "自我加星",
+    "selfStarDesc": "允许消息作者给自己的消息加星。",
+    "nsfwAllowed": "允许 NSFW",
+    "nsfwAllowedDesc": "允许 NSFW 频道的消息出现在精华频道。",
+    "ignoredChannels": "忽略的频道",
+    "ignoredChannelsDesc": "这些频道的消息不会出现在精华频道。"
+  },
+  "messages": {
+    "table": {
+      "original": "原始消息",
+      "stars": "星标数",
+      "channel": "频道",
+      "date": "日期"
+    },
+    "noMessages": "暂无星标消息。"
+  },
+  "toast": {
+    "saved": "精华消息设置已保存",
+    "saveFailed": "保存精华消息设置失败"
+  },
+  "actions": {
+    "save": "保存",
+    "saving": "保存中..."
+  }
+}

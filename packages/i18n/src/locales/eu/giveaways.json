@@ -1,0 +1,50 @@
+{
+  "title": "Zozketak",
+  "subtitle": "Kudeatu zozketak iraupena, parte-hartze baldintzak eta irabazleen hautaketa pertsonalizagarriarekin.",
+  "stats": {
+    "activeGiveaways": "Zozketa aktiboak",
+    "pastGiveaways": "Iraganeko zozketak",
+    "totalEntries": "Parte-hartze guztiak"
+  },
+  "table": {
+    "prize": "Saria",
+    "winners": "Irabazleak",
+    "entries": "Parte-hartzeak",
+    "endsIn": "Amaitzen da",
+    "status": "Egoera"
+  },
+  "statuses": {
+    "active": "Aktiboa",
+    "ended": "Amaituta",
+    "cancelled": "Bertan behera utzia"
+  },
+  "actions": {
+    "create": "Zozketa sortu",
+    "edit": "Editatu",
+    "end": "Amaitu",
+    "reroll": "Berriz zozkatu",
+    "delete": "Ezabatu"
+  },
+  "form": {
+    "prize": "Saria",
+    "winnersCount": "Irabazle kopurua",
+    "duration": "Iraupena",
+    "channel": "Kanala",
+    "requiredRole": "Beharrezko rola",
+    "description": "Deskripzioa"
+  },
+  "toast": {
+    "created": "Zozketa sortuta",
+    "createFailed": "Ezin izan da zozketa sortu",
+    "updated": "Zozketa eguneratuta",
+    "updateFailed": "Ezin izan da zozketa eguneratu",
+    "ended": "Zozketa amaituta",
+    "endFailed": "Ezin izan da zozketa amaitu",
+    "rerolled": "Irabazleak berriz zozkatuta",
+    "rerollFailed": "Ezin izan dira irabazleak berriz zozkatu",
+    "deleted": "Zozketa ezabatuta",
+    "deleteFailed": "Ezin izan da zozketa ezabatu"
+  },
+  "empty": "Oraindik ez dago zozketarik. Sortu bat hasteko.",
+  "loading": "Zozketak kargatzen..."
+}
