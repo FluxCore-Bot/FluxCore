@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Icon } from "./Icon";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
@@ -114,6 +115,7 @@ function UserIdInput({
   onRemove: (id: string) => void;
   chipColor?: "secondary" | "destructive";
 }) {
+  const { t } = useTranslation("rules");
   const [input, setInput] = useState("");
 
   const handleAdd = () => {
@@ -133,7 +135,7 @@ function UserIdInput({
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), handleAdd())}
-          placeholder="User ID..."
+          placeholder={t("conditions.userId")}
           className="h-8 flex-1 text-xs"
         />
         <Button
@@ -164,6 +166,7 @@ export function ConditionsEditor({
   compact,
   alwaysExpanded,
 }: ConditionsEditorProps) {
+  const { t } = useTranslation("rules");
   const update = (patch: Partial<ActionConditions>) => {
     onChange({ ...conditions, ...patch });
   };
@@ -198,7 +201,7 @@ export function ConditionsEditor({
         className="flex w-full items-center gap-2 rounded-lg border border-dashed border-border px-3 py-2 text-xs text-text-muted transition-colors hover:border-accent/30 hover:text-accent"
       >
         <Icon name="filter_alt" size={14} />
-        Add conditions to filter when this rule fires
+        {t("conditions.addConditions")}
         {hasAnyConditions && (
           <Badge variant="secondary" className="ml-auto text-xs">
             {(conditions.channelIds?.length ?? 0) +
@@ -207,7 +210,7 @@ export function ConditionsEditor({
               (conditions.excludeChannelIds?.length ?? 0) +
               (conditions.excludeRoleIds?.length ?? 0) +
               (conditions.excludeUserIds?.length ?? 0)}{" "}
-            active
+            {t("conditions.active")}
           </Badge>
         )}
       </button>
@@ -219,7 +222,7 @@ export function ConditionsEditor({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Icon name="filter_alt" size={16} className="text-accent" />
-          <span className="text-xs font-semibold">Conditions</span>
+          <span className="text-xs font-semibold">{t("conditions.title")}</span>
         </div>
         {!alwaysExpanded && (
           <Button
@@ -235,33 +238,32 @@ export function ConditionsEditor({
       </div>
 
       <p className="text-[11px] leading-relaxed text-text-muted">
-        When set, this rule only fires if the event matches <strong>all</strong> include
-        filters and <strong>none</strong> of the exclude filters.
+        {t("conditions.description")}
       </p>
 
       {/* Include filters */}
       <div className="space-y-3">
         <span className="section-label text-secondary">
-          Include (whitelist)
+          {t("conditions.include")}
         </span>
         <IdSelector
-          label="Channels"
-          placeholder="Add channel..."
+          label={t("conditions.channels")}
+          placeholder={t("conditions.addChannel")}
           selectedIds={conditions.channelIds ?? []}
           options={channels}
           onAdd={(id) => addToList("channelIds", id)}
           onRemove={(id) => removeFromList("channelIds", id)}
         />
         <IdSelector
-          label="Roles"
-          placeholder="Add role..."
+          label={t("conditions.roles")}
+          placeholder={t("conditions.addRole")}
           selectedIds={conditions.roleIds ?? []}
           options={roles}
           onAdd={(id) => addToList("roleIds", id)}
           onRemove={(id) => removeFromList("roleIds", id)}
         />
         <UserIdInput
-          label="Users"
+          label={t("conditions.users")}
           selectedIds={conditions.userIds ?? []}
           onAdd={(id) => addToList("userIds", id)}
           onRemove={(id) => removeFromList("userIds", id)}
@@ -271,11 +273,11 @@ export function ConditionsEditor({
       {/* Exclude filters */}
       <div className="space-y-3 border-t border-border pt-3">
         <span className="section-label text-danger">
-          Exclude (blacklist)
+          {t("conditions.exclude")}
         </span>
         <IdSelector
-          label="Channels"
-          placeholder="Exclude channel..."
+          label={t("conditions.channels")}
+          placeholder={t("conditions.excludeChannel")}
           selectedIds={conditions.excludeChannelIds ?? []}
           options={channels}
           onAdd={(id) => addToList("excludeChannelIds", id)}
@@ -283,8 +285,8 @@ export function ConditionsEditor({
           chipColor="destructive"
         />
         <IdSelector
-          label="Roles"
-          placeholder="Exclude role..."
+          label={t("conditions.roles")}
+          placeholder={t("conditions.excludeRole")}
           selectedIds={conditions.excludeRoleIds ?? []}
           options={roles}
           onAdd={(id) => addToList("excludeRoleIds", id)}
@@ -292,7 +294,7 @@ export function ConditionsEditor({
           chipColor="destructive"
         />
         <UserIdInput
-          label="Users"
+          label={t("conditions.users")}
           selectedIds={conditions.excludeUserIds ?? []}
           onAdd={(id) => addToList("excludeUserIds", id)}
           onRemove={(id) => removeFromList("excludeUserIds", id)}
@@ -308,7 +310,7 @@ export function ConditionsEditor({
           className="w-full text-xs text-text-muted"
           onClick={() => onChange({})}
         >
-          Clear all conditions
+          {t("conditions.clearAll")}
         </Button>
       )}
     </div>

@@ -71,11 +71,31 @@
     "type": "Type",
     "status": "Status",
     "channel": "Channel",
+    "channels": "Channels",
     "role": "Role",
+    "roles": "Roles",
     "member": "Member",
+    "users": "Users",
+    "conditions": "Conditions",
     "duration": "Duration",
     "reason": "Reason",
     "language": "Language"
+  },
+  "form": {
+    "selectChannel": "Select channel...",
+    "selectRole": "Select role...",
+    "select": "Select...",
+    "saving": "Saving...",
+    "saveSettings": "Save Settings",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {{page}} of {{total}}",
+    "showing": "Showing {{from}} to {{to}} of {{total}} results",
+    "showingPage": "Page {{page}} of {{total}} ({{count}} total)"
   },
   "header": {
     "notifications": "Notifications",

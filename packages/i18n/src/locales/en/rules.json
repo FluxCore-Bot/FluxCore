@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Failed to enable rules",
     "bulkDisableFailed": "Failed to disable rules",
     "bulkDeleted": "{{count}} rules deleted",
-    "bulkDeleteFailed": "Failed to delete rules"
+    "bulkDeleteFailed": "Failed to delete rules",
+    "updated": "Rule updated",
+    "created": "Rule created"
+  },
+  "form": {
+    "ruleName": "Rule Name",
+    "ruleNamePlaceholder": "My rule...",
+    "eventType": "Event Type",
+    "selectEvent": "Select event...",
+    "priority": "Priority",
+    "actions": "Actions",
+    "addAction": "+ Add Action",
+    "enabled": "Enabled",
+    "editRule": "Edit Rule",
+    "createRule": "Create Rule",
+    "workflowView": "Workflow View",
+    "draftRestored": "Draft restored from previous session.",
+    "dismiss": "Dismiss",
+    "atLeastOneAction": "At least one action must be configured with a type.",
+    "saving": "Saving...",
+    "update": "Update Rule",
+    "create": "Create Rule",
+    "cancel": "Cancel"
+  },
+  "conditions": {
+    "title": "Conditions",
+    "channels": "Channels",
+    "roles": "Roles",
+    "users": "Users",
+    "addChannel": "Add channel...",
+    "addRole": "Add role...",
+    "excludeChannel": "Exclude channel...",
+    "excludeRole": "Exclude role...",
+    "userId": "User ID...",
+    "addConditions": "Add conditions to filter when this rule fires",
+    "active": "active",
+    "description": "When set, this rule only fires if the event matches all include filters and none of the exclude filters.",
+    "include": "Include (whitelist)",
+    "exclude": "Exclude (blacklist)",
+    "clearAll": "Clear all conditions"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Cannot connect: would create a cycle"
+    },
+    "labels": {
+      "rules": "Rules",
+      "field": "Field",
+      "operator": "Operator",
+      "value": "Value"
+    },
+    "status": {
+      "ready": "Ready",
+      "notConfigured": "Not configured"
+    },
+    "shortcuts": {
+      "close": "Close",
+      "save": "Save",
+      "removeNode": "Remove node",
+      "addAction": "Add action",
+      "fitView": "Fit view"
+    }
   }
 }

@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Activity Logs",
     "events": "Event Logs"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Execution Rate",
+      "totalFailures": "Total Failures",
+      "totalEntries": "Total Entries"
+    },
+    "filter": {
+      "search": "Search logs...",
+      "last1h": "Last 1 hour",
+      "last24h": "Last 24 hours",
+      "last7d": "Last 7 days"
+    },
+    "table": {
+      "timestamp": "Timestamp",
+      "ruleName": "Rule Name",
+      "eventType": "Event Type",
+      "action": "Action",
+      "status": "Status",
+      "details": "Details",
+      "success": "Success",
+      "failed": "Failed"
+    },
+    "pagination": {
+      "showing": "Showing {{from}} to {{to}} of {{total}} results",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "empty": {
+      "title": "No logs found",
+      "description": "Rule execution logs will appear here once automation rules start running."
+    }
+  },
+  "events": {
+    "title": "Event Log Browser",
+    "filter": {
+      "allCategories": "All Categories",
+      "byUserId": "Filter by User ID...",
+      "entries": "{{count}} entries"
+    },
+    "categories": {
+      "message": "Message",
+      "member": "Member",
+      "voice": "Voice",
+      "channel": "Channel",
+      "role": "Role",
+      "server": "Server",
+      "moderation": "Moderation"
+    },
+    "categoryEvents": {
+      "message": "Message Events",
+      "member": "Member Events",
+      "voice": "Voice Events",
+      "channel": "Channel Events",
+      "role": "Role Events",
+      "server": "Server Events",
+      "moderation": "Moderation Events"
+    },
+    "table": {
+      "timestamp": "Timestamp",
+      "category": "Category",
+      "event": "Event",
+      "target": "Target",
+      "executor": "Executor"
+    },
+    "pagination": {
+      "page": "Page {{page}} of {{total}} ({{count}} total)",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "empty": {
+      "title": "No event logs found",
+      "description": "Event logs will appear here once logging is configured and events start occurring."
+    },
+    "config": {
+      "selectChannel": "Select log channel"
+    }
   }
 }

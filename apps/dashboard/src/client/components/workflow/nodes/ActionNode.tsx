@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Handle, Position, type NodeProps } from "@xyflow/react";
 import { Icon } from "../../Icon";
 import { ACTION_ICONS, getActionPreview } from "../../../lib/rule-icons";
@@ -21,6 +22,7 @@ function getBorderClass(
 }
 
 function ActionNodeComponent({ data, selected }: NodeProps) {
+  const { t } = useTranslation("rules");
   const { index, action, label, validationState } = data as ActionNodeData;
   const icon = ACTION_ICONS[action.type] ?? "play_arrow";
   const preview = getActionPreview(action);
@@ -51,7 +53,7 @@ function ActionNodeComponent({ data, selected }: NodeProps) {
             <Icon name="warning" size={14} className="ml-auto text-warning" />
           )}
           {!isConfigured && !validationState && (
-            <span className="ml-auto flex h-2 w-2 rounded-full bg-warning/60" title="Not configured" />
+            <span className="ml-auto flex h-2 w-2 rounded-full bg-warning/60" title={t("workflow.status.notConfigured")} />
           )}
         </div>
         <p className="text-sm font-medium text-text">{label}</p>

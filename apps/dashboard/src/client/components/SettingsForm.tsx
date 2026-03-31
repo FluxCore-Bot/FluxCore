@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "@tanstack/react-router";
 import { useChannels } from "../lib/hooks/useChannels";
 import { useSettings, useUpdateSettings } from "../lib/hooks/useSettings";
@@ -20,6 +21,7 @@ import {
 import { PageSkeleton } from "./PageSkeleton";
 
 export function SettingsForm() {
+  const { t } = useTranslation("settings");
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: settings, isLoading } = useSettings(guildId);
   const { data: channels = [] } = useChannels(guildId);
@@ -50,22 +52,22 @@ export function SettingsForm() {
     setError("");
 
     if (maxRules < 1 || maxRules > 100) {
-      setError("Max rules must be between 1 and 100");
+      setError(t("actionSystem.maxRulesError"));
       return;
     }
 
     try {
       await updateSettings.mutateAsync({ maxRules, globalEnabled, logChannelId });
-      toast.success("Settings saved");
+      toast.success(t("actionSystem.saved"));
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "An error occurred");
+      setError(err instanceof ApiError ? err.message : t("actionSystem.maxRulesError"));
     }
   };
 
   return (
     <>
     <Card className="p-6">
-      <h3 className="mb-6 text-lg font-semibold">Action System Settings</h3>
+      <h3 className="mb-6 text-lg font-semibold">{t("actionSystem.title")}</h3>
 
       {error && (
         <Alert variant="destructive" className="mb-4">{error}</Alert>
@@ -73,7 +75,7 @@ export function SettingsForm() {
 
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>
-          <Label htmlFor="maxRules">Max Rules Per Guild</Label>
+          <Label htmlFor="maxRules">{t("actionSystem.maxRules")}</Label>
           <Input
             id="maxRules"
             type="number"
@@ -85,16 +87,16 @@ export function SettingsForm() {
         </div>
 
         <div>
-          <Label>Log Channel (optional)</Label>
+          <Label>{t("actionSystem.logChannel")}</Label>
           <Select
             value={logChannelId ?? "none"}
             onValueChange={(v) => setLogChannelId(v === "none" ? null : v)}
           >
             <SelectTrigger>
-              <SelectValue placeholder="No log channel" />
+              <SelectValue placeholder={t("actionSystem.noLogChannel")} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="none">No log channel</SelectItem>
+              <SelectItem value="none">{t("actionSystem.noLogChannel")}</SelectItem>
               {textChannels.map((c) => (
                 <SelectItem key={c.id} value={c.id}>
                   # {c.name}
@@ -110,59 +112,59 @@ export function SettingsForm() {
             onCheckedChange={setGlobalEnabled}
           />
           <Label className="mb-0 text-sm">
-            Global Enable (disable to pause all rules)
+            {t("actionSystem.globalEnable")}
           </Label>
         </div>
 
         <Button type="submit" disabled={updateSettings.isPending}>
-          {updateSettings.isPending ? "Saving..." : "Save Settings"}
+          {updateSettings.isPending ? t("actionSystem.saving") : t("actionSystem.save")}
         </Button>
       </form>
     </Card>
 
     {/* Notification Preferences */}
     <Card className="mt-6 p-6 glass-panel">
-      <h3 className="mb-6 text-lg font-semibold">Notification Preferences</h3>
+      <h3 className="mb-6 text-lg font-semibold">{t("notifications.title")}</h3>
       <div className="space-y-4">
         <div className="flex items-center gap-3">
           <Switch
             checked={notifyRuleTriggered}
             onCheckedChange={setNotifyRuleTriggered}
           />
-          <Label className="mb-0 text-sm">Rule Triggered</Label>
+          <Label className="mb-0 text-sm">{t("notifications.ruleTriggered")}</Label>
         </div>
         <div className="flex items-center gap-3">
           <Switch
             checked={notifyErrors}
             onCheckedChange={setNotifyErrors}
           />
-          <Label className="mb-0 text-sm">Error Alerts</Label>
+          <Label className="mb-0 text-sm">{t("notifications.errorAlerts")}</Label>
         </div>
         <div className="flex items-center gap-3">
           <Switch
             checked={notifySuccess}
             onCheckedChange={setNotifySuccess}
           />
-          <Label className="mb-0 text-sm">Success Reports</Label>
+          <Label className="mb-0 text-sm">{t("notifications.successReports")}</Label>
         </div>
       </div>
     </Card>
 
     {/* Danger Zone */}
     <Card className="mt-6 border border-danger/20 p-6">
-      <h3 className="mb-2 text-lg font-semibold text-danger">Danger Zone</h3>
+      <h3 className="mb-2 text-lg font-semibold text-danger">{t("dangerZone.title")}</h3>
       <p className="mb-4 text-sm text-text-muted">
-        Destructive actions that cannot be undone.
+        {t("dangerZone.description")}
       </p>
       <Button
         variant="destructive"
         onClick={() => {
-          if (window.confirm("Are you sure you want to delete ALL rules? This cannot be undone.")) {
-            toast.info("Delete all rules is not yet implemented");
+          if (window.confirm(t("dangerZone.deleteAllConfirm"))) {
+            toast.info(t("dangerZone.notImplemented"));
           }
         }}
       >
-        Delete All Rules
+        {t("dangerZone.deleteAllRules")}
       </Button>
     </Card>
   </>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "@tanstack/react-router";
 import { useLogConfig, useUpdateLogConfig } from "../lib/hooks/useLogging";
 import { useChannels } from "../lib/hooks/useChannels";
@@ -14,15 +15,6 @@ import {
 } from "./ui/select";
 import { Badge } from "./ui/badge";
 
-const CATEGORY_LABELS: Record<string, string> = {
-  message: "Message Events",
-  member: "Member Events",
-  voice: "Voice Events",
-  channel: "Channel Events",
-  role: "Role Events",
-  server: "Server Events",
-  moderation: "Moderation Events",
-};
 
 const CATEGORY_ICONS: Record<string, string> = {
   message: "message-circle",
@@ -35,6 +27,7 @@ const CATEGORY_ICONS: Record<string, string> = {
 };
 
 export function EventLogConfig() {
+  const { t } = useTranslation("logs");
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: logConfigData, isLoading } = useLogConfig(guildId);
   const { data: channels } = useChannels(guildId);
@@ -51,7 +44,7 @@ export function EventLogConfig() {
     <div className="space-y-4">
       <div className="flex items-center gap-2">
         <Icon name="settings" size={20} className="text-accent" />
-        <h3 className="text-lg font-semibold font-display">Log Configuration</h3>
+        <h3 className="text-lg font-semibold font-display">{t("events.title")}</h3>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -107,6 +100,7 @@ function CategoryCard({
   events,
   onUpdate,
 }: CategoryCardProps) {
+  const { t } = useTranslation("logs");
   const [selectedChannel, setSelectedChannel] = useState(config?.channelId ?? "");
   const [enabled, setEnabled] = useState(config?.enabled ?? false);
 
@@ -132,7 +126,7 @@ function CategoryCard({
             className="text-text-muted"
           />
           <span className="text-sm font-semibold font-display">
-            {CATEGORY_LABELS[category] ?? category}
+            {t(`events.categoryEvents.${category}`, { defaultValue: category })}
           </span>
         </div>
         <Switch checked={enabled} onCheckedChange={handleToggle} />
@@ -140,7 +134,7 @@ function CategoryCard({
 
       <Select value={selectedChannel} onValueChange={handleChannelChange}>
         <SelectTrigger className="w-full text-sm">
-          <SelectValue placeholder="Select log channel" />
+          <SelectValue placeholder={t("events.config.selectChannel")} />
         </SelectTrigger>
         <SelectContent>
           {channels.map((ch) => (
@@ -166,9 +160,9 @@ function CategoryCard({
 
       {config && (
         <p className="text-xs text-text-muted">
-          {config.enabled ? "Active" : "Disabled"}
+          {config.enabled ? t("common:labels.active") : t("common:labels.disabled")}
           {config.ignoredChannels.length > 0 &&
-            ` | ${config.ignoredChannels.length} ignored channel(s)`}
+            ` | ${config.ignoredChannels.length} ${t("common:labels.channels").toLowerCase()}`}
         </p>
       )}
     </div>

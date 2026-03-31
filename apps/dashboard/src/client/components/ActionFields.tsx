@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -35,6 +36,7 @@ export function ActionFields({
   channels,
   roles,
 }: ActionFieldsProps) {
+  const { t } = useTranslation("common");
   return (
     <div className="flex flex-col gap-3">
       {fields.map((field) => {
@@ -53,7 +55,7 @@ export function ActionFields({
                 onValueChange={(v) => onChange(field.key, v)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select channel..." />
+                  <SelectValue placeholder={t("form.selectChannel")} />
                 </SelectTrigger>
                 <SelectContent>
                   {channels
@@ -73,7 +75,7 @@ export function ActionFields({
                 onValueChange={(v) => onChange(field.key, v)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select role..." />
+                  <SelectValue placeholder={t("form.selectRole")} />
                 </SelectTrigger>
                 <SelectContent>
                   {roles.map((r) => (
@@ -125,7 +127,7 @@ export function ActionFields({
                 onValueChange={(v) => onChange(field.key, v)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select..." />
+                  <SelectValue placeholder={t("form.select")} />
                 </SelectTrigger>
                 <SelectContent>
                   {field.options.map((opt) => (
