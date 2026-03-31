@@ -155,3 +155,11 @@ export async function getActiveGiveawayCount(guildId: string): Promise<number> {
   const prisma = getPrisma();
   return prisma.giveaway.count({ where: { guildId, ended: false } });
 }
+
+export async function getPendingGiveaways(): Promise<Giveaway[]> {
+  const prisma = getPrisma();
+  const rows = await prisma.giveaway.findMany({
+    where: { ended: false, messageId: null },
+  });
+  return rows.map(rowToGiveaway);
+}

@@ -1,8 +1,8 @@
 import type { Client, TextChannel } from "discord.js";
 import { logger } from "@fluxcore/utils";
-import { getDueGiveaways, endGiveaway } from "./persistence.js";
+import { getDueGiveaways, endGiveaway, getPendingGiveaways, setGiveawayMessageId } from "./persistence.js";
 import { selectWinners } from "./winner.js";
-import { buildEndedGiveawayEmbed } from "./embed.js";
+import { buildEndedGiveawayEmbed, buildGiveawayEmbed, buildGiveawayButton } from "./embed.js";
 import { GIVEAWAY_CHECK_INTERVAL_MS } from "./constants.js";
 
 let schedulerInterval: ReturnType<typeof setInterval> | null = null;
@@ -73,11 +73,40 @@ export async function processEndedGiveaways(client: Client<true>): Promise<void>
   }
 }
 
+export async function processPendingGiveaways(client: Client<true>): Promise<void> {
+  const pending = await getPendingGiveaways();
+
+  for (const giveaway of pending) {
+    try {
+      const guild = client.guilds.cache.get(giveaway.guildId);
+      if (!guild) continue;
+
+      const channel = guild.channels.cache.get(giveaway.channelId) as TextChannel | undefined;
+      if (!channel) continue;
+
+      const message = await channel.send({
+        embeds: [buildGiveawayEmbed(giveaway)],
+        components: [buildGiveawayButton(giveaway.id)],
+      });
+
+      await setGiveawayMessageId(giveaway.id, message.id);
+    } catch (err) {
+      logger.error(
+        `Failed to post pending giveaway ${giveaway.id}`,
+        err instanceof Error ? err : new Error(String(err)),
+      );
+    }
+  }
+}
+
 export function startGiveawayScheduler(client: Client<true>): void {
   if (schedulerInterval) return;
 
   schedulerInterval = setInterval(() => {
-    processEndedGiveaways(client).catch((err: unknown) =>
+    Promise.all([
+      processPendingGiveaways(client),
+      processEndedGiveaways(client),
+    ]).catch((err: unknown) =>
       logger.error(
         "Giveaway scheduler tick failed",
         err instanceof Error ? err : new Error(String(err)),
