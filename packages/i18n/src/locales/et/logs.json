@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Tegevuslogid",
     "events": "Sündmuselogid"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Täitmiste määr",
+      "totalFailures": "Ebaõnnestumisi kokku",
+      "totalEntries": "Kirjeid kokku"
+    },
+    "filter": {
+      "search": "Otsi logidest...",
+      "last1h": "Viimane 1 tund",
+      "last24h": "Viimased 24 tundi",
+      "last7d": "Viimased 7 päeva"
+    },
+    "table": {
+      "timestamp": "Ajatempel",
+      "ruleName": "Reegli nimi",
+      "eventType": "Sündmuse tüüp",
+      "action": "Toiming",
+      "status": "Olek",
+      "details": "Üksikasjad",
+      "success": "Edukas",
+      "failed": "Ebaõnnestunud"
+    },
+    "pagination": {
+      "showing": "Kuvatakse {{from}}–{{to}} / {{total}} tulemust",
+      "previous": "Eelmine",
+      "next": "Järgmine"
+    },
+    "empty": {
+      "title": "Logisid ei leitud",
+      "description": "Reeglite täitmise logid ilmuvad siia, kui automatiseerimisreeglid hakkavad tööle."
+    }
+  },
+  "events": {
+    "title": "Sündmuselogi brauser",
+    "filter": {
+      "allCategories": "Kõik kategooriad",
+      "byUserId": "Filtreeri kasutaja ID järgi...",
+      "entries": "{{count}} kirjet"
+    },
+    "categories": {
+      "message": "Sõnum",
+      "member": "Liige",
+      "voice": "Hääl",
+      "channel": "Kanal",
+      "role": "Roll",
+      "server": "Server",
+      "moderation": "Modereerimine"
+    },
+    "categoryEvents": {
+      "message": "Sõnumisündmused",
+      "member": "Liikmesündmused",
+      "voice": "Häälsündmused",
+      "channel": "Kanalite sündmused",
+      "role": "Rollide sündmused",
+      "server": "Serveri sündmused",
+      "moderation": "Modereerimissündmused"
+    },
+    "table": {
+      "timestamp": "Ajatempel",
+      "category": "Kategooria",
+      "event": "Sündmus",
+      "target": "Sihtmärk",
+      "executor": "Täitja"
+    },
+    "pagination": {
+      "page": "Lehekülg {{page}} / {{total}} (kokku {{count}})",
+      "previous": "Eelmine",
+      "next": "Järgmine"
+    },
+    "empty": {
+      "title": "Sündmuste logisid ei leitud",
+      "description": "Sündmuselogid ilmuvad siia, kui logimine on seadistatud ja sündmused hakkavad toimuma."
+    },
+    "config": {
+      "selectChannel": "Vali logikanal"
+    }
   }
 }

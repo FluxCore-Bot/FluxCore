@@ -1,4 +1,28 @@
 {
   "title": "Seaded",
-  "subtitle": "Seadista globaalseid toimingusüsteemi seadeid oma serveri jaoks."
+  "subtitle": "Seadista globaalseid toimingusüsteemi seadeid oma serveri jaoks.",
+  "actionSystem": {
+    "title": "Toimingusüsteemi seaded",
+    "maxRules": "Maksimaalne reeglite arv serveri kohta",
+    "logChannel": "Logikanal (valikuline)",
+    "noLogChannel": "Logikanal puudub",
+    "globalEnable": "Globaalne lubamine (keela kõigi reeglite peatamiseks)",
+    "saving": "Salvestamine...",
+    "save": "Salvesta seaded",
+    "saved": "Seaded salvestatud",
+    "maxRulesError": "Maksimaalne reeglite arv peab olema vahemikus 1–100"
+  },
+  "notifications": {
+    "title": "Teavituste eelistused",
+    "ruleTriggered": "Reegel käivitatud",
+    "errorAlerts": "Veateated",
+    "successReports": "Eduraportid"
+  },
+  "dangerZone": {
+    "title": "Ohumärgiline tsoon",
+    "description": "Hävitavad toimingud, mida ei saa tagasi võtta.",
+    "deleteAllRules": "Kustuta kõik reeglid",
+    "deleteAllConfirm": "Kas oled kindel, et soovid kustutada KÕIK reeglid? Seda ei saa tagasi võtta.",
+    "notImplemented": "Kõigi reeglite kustutamine pole veel rakendatud"
+  }
 }

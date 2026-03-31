@@ -1,28 +1,28 @@
 {
   "breadcrumb": {
     "guild": "Servidor",
-    "automation": "Automatizacion"
+    "automation": "Automatización"
   },
-  "title": "Reglas de automatizacion",
-  "subtitle": "Configura disparadores basados en eventos y respuestas automatizadas para tu servidor.",
+  "title": "Reglas de automatización",
+  "subtitle": "Configure activadores basados en eventos y respuestas automatizadas para su servidor.",
   "createRule": "Crear regla",
   "stats": {
     "totalRules": "Total de reglas",
     "active": "Activas",
     "executions7d": "Ejecuciones (7d)",
-    "successRate": "Tasa de exito"
+    "successRate": "Tasa de éxito"
   },
   "filter": {
     "searchPlaceholder": "Buscar reglas...",
     "eventType": "Tipo de evento",
     "allEvents": "Todos los eventos",
     "allStatus": "Todos los estados",
-    "enabled": "Activada",
-    "disabled": "Desactivada",
+    "enabled": "Habilitadas",
+    "disabled": "Deshabilitadas",
     "sortBy": "Ordenar por",
     "priority": "Prioridad",
     "name": "Nombre",
-    "lastFired": "Ultimo disparo",
+    "lastFired": "Último disparo",
     "status": "Estado",
     "clear": "Limpiar",
     "showing": "Mostrando {{filtered}} de {{total}} reglas"
@@ -30,58 +30,119 @@
   "bulk": {
     "selected": "{{count}} regla seleccionada",
     "selected_other": "{{count}} reglas seleccionadas",
-    "enable": "Activar",
-    "disable": "Desactivar",
+    "enable": "Habilitar",
+    "disable": "Deshabilitar",
     "delete": "Eliminar",
     "clear": "Limpiar"
   },
   "empty": {
-    "title": "Comienza con la automatizacion",
-    "description": "Elige una plantilla para comenzar rapidamente o crea una regla desde cero.",
+    "title": "Comenzar con la automatización",
+    "description": "Elija una plantilla para comenzar rápidamente o cree una regla desde cero.",
     "createFromScratch": "Crear desde cero"
   },
   "noResults": {
     "title": "No hay reglas coincidentes",
-    "description": "Intenta ajustar tu busqueda o filtros para encontrar lo que buscas."
+    "description": "Intente ajustar su búsqueda o filtros para encontrar lo que busca."
   },
   "templates": {
     "welcomeMessage": "Mensaje de bienvenida",
-    "welcomeMessageDesc": "Saluda a los nuevos miembros con un mensaje personalizado en un canal",
-    "autoRole": "Rol automatico",
-    "autoRoleDesc": "Asignar automaticamente un rol cuando un miembro se une",
+    "welcomeMessageDesc": "Salude a los nuevos miembros con un mensaje personalizado en un canal",
+    "autoRole": "Rol automático",
+    "autoRoleDesc": "Asignar automáticamente un rol cuando un miembro se une",
     "logDeleted": "Registrar mensajes eliminados",
-    "logDeletedDesc": "Enviar informacion de mensajes eliminados a un canal de registros",
-    "boostThankYou": "Agradecimiento por boost",
-    "boostThankYouDesc": "Enviar un MD agradeciendo a los usuarios que impulsan el servidor",
-    "banLogger": "Registro de baneos",
-    "banLoggerDesc": "Registrar eventos de baneo en un canal de moderacion",
-    "autoThread": "Thread automatico",
-    "autoThreadDesc": "Crear automaticamente un hilo cuando se envia un mensaje"
+    "logDeletedDesc": "Enviar información de mensajes eliminados a un canal de registros",
+    "boostThankYou": "Gracias por el boost",
+    "boostThankYouDesc": "Enviar un DM agradeciendo a los usuarios que hacen boost al servidor",
+    "banLogger": "Registrador de baneos",
+    "banLoggerDesc": "Registrar eventos de baneo en un canal de moderación",
+    "autoThread": "Hilo automático",
+    "autoThreadDesc": "Crear automáticamente un hilo cuando se envía un mensaje"
   },
   "deleteDialog": {
     "title": "Eliminar regla",
-    "description": "Estas seguro de que deseas eliminar \"{{name}}\"? Esta accion no se puede deshacer.",
+    "description": "¿Está seguro de que desea eliminar \"{{name}}\"? Esta acción no se puede deshacer.",
     "confirm": "Eliminar"
   },
   "bulkDeleteDialog": {
     "title": "Eliminar reglas seleccionadas",
-    "description": "Estas seguro de que deseas eliminar {{count}} regla? Esta accion no se puede deshacer.",
-    "description_other": "Estas seguro de que deseas eliminar {{count}} reglas? Esta accion no se puede deshacer.",
+    "description": "¿Está seguro de que desea eliminar {{count}} regla? Esta acción no se puede deshacer.",
+    "description_other": "¿Está seguro de que desea eliminar {{count}} reglas? Esta acción no se puede deshacer.",
     "confirm": "Eliminar todo"
   },
   "toast": {
     "deleted": "Regla eliminada",
     "deleteFailed": "Error al eliminar la regla",
-    "enabled": "Regla activada",
-    "disabled": "Regla desactivada",
+    "enabled": "Regla habilitada",
+    "disabled": "Regla deshabilitada",
     "toggleFailed": "Error al cambiar el estado de la regla",
     "duplicated": "Regla duplicada",
     "duplicateFailed": "Error al duplicar la regla",
-    "bulkEnabled": "{{count}} reglas activadas",
-    "bulkDisabled": "{{count}} reglas desactivadas",
-    "bulkEnableFailed": "Error al activar las reglas",
-    "bulkDisableFailed": "Error al desactivar las reglas",
+    "bulkEnabled": "{{count}} reglas habilitadas",
+    "bulkDisabled": "{{count}} reglas deshabilitadas",
+    "bulkEnableFailed": "Error al habilitar las reglas",
+    "bulkDisableFailed": "Error al deshabilitar las reglas",
     "bulkDeleted": "{{count}} reglas eliminadas",
-    "bulkDeleteFailed": "Error al eliminar las reglas"
+    "bulkDeleteFailed": "Error al eliminar las reglas",
+    "updated": "Regla actualizada",
+    "created": "Regla creada"
+  },
+  "form": {
+    "ruleName": "Nombre de la regla",
+    "ruleNamePlaceholder": "Mi regla...",
+    "eventType": "Tipo de evento",
+    "selectEvent": "Seleccionar evento...",
+    "priority": "Prioridad",
+    "actions": "Acciones",
+    "addAction": "+ Agregar acción",
+    "enabled": "Habilitada",
+    "editRule": "Editar regla",
+    "createRule": "Crear regla",
+    "workflowView": "Vista de flujo de trabajo",
+    "draftRestored": "Borrador restaurado de la sesión anterior.",
+    "dismiss": "Descartar",
+    "atLeastOneAction": "Se debe configurar al menos una acción con un tipo.",
+    "saving": "Guardando...",
+    "update": "Actualizar regla",
+    "create": "Crear regla",
+    "cancel": "Cancelar"
+  },
+  "conditions": {
+    "title": "Condiciones",
+    "channels": "Canales",
+    "roles": "Roles",
+    "users": "Usuarios",
+    "addChannel": "Agregar canal...",
+    "addRole": "Agregar rol...",
+    "excludeChannel": "Excluir canal...",
+    "excludeRole": "Excluir rol...",
+    "userId": "ID de usuario...",
+    "addConditions": "Agregar condiciones para filtrar cuándo se activa esta regla",
+    "active": "activa",
+    "description": "Cuando se establece, esta regla solo se activa si el evento coincide con todos los filtros de inclusión y ninguno de los filtros de exclusión.",
+    "include": "Incluir (lista blanca)",
+    "exclude": "Excluir (lista negra)",
+    "clearAll": "Limpiar todas las condiciones"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "No se puede conectar: crearía un ciclo"
+    },
+    "labels": {
+      "rules": "Reglas",
+      "field": "Campo",
+      "operator": "Operador",
+      "value": "Valor"
+    },
+    "status": {
+      "ready": "Listo",
+      "notConfigured": "No configurado"
+    },
+    "shortcuts": {
+      "close": "Cerrar",
+      "save": "Guardar",
+      "removeNode": "Eliminar nodo",
+      "addAction": "Agregar acción",
+      "fitView": "Ajustar vista"
+    }
   }
 }

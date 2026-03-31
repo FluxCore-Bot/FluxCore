@@ -1,8 +1,85 @@
 {
   "title": "Registos",
-  "subtitle": "Monitorize as execucoes de regras e o registo de eventos.",
+  "subtitle": "Monitorize as execuções de regras e o registo de eventos.",
   "tabs": {
     "activity": "Registos de atividade",
     "events": "Registos de eventos"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Taxa de execução",
+      "totalFailures": "Total de falhas",
+      "totalEntries": "Total de entradas"
+    },
+    "filter": {
+      "search": "Pesquisar registos...",
+      "last1h": "Última hora",
+      "last24h": "Últimas 24 horas",
+      "last7d": "Últimos 7 dias"
+    },
+    "table": {
+      "timestamp": "Timestamp",
+      "ruleName": "Nome da regra",
+      "eventType": "Tipo de evento",
+      "action": "Ação",
+      "status": "Estado",
+      "details": "Detalhes",
+      "success": "Sucesso",
+      "failed": "Falhado"
+    },
+    "pagination": {
+      "showing": "A mostrar {{from}} a {{to}} de {{total}} resultados",
+      "previous": "Anterior",
+      "next": "Seguinte"
+    },
+    "empty": {
+      "title": "Nenhum registo encontrado",
+      "description": "Os registos de execução de regras aparecerão aqui assim que as regras de automatização começarem a ser executadas."
+    }
+  },
+  "events": {
+    "title": "Navegador de registos de eventos",
+    "filter": {
+      "allCategories": "Todas as categorias",
+      "byUserId": "Filtrar por ID de utilizador...",
+      "entries": "{{count}} entradas"
+    },
+    "categories": {
+      "message": "Mensagem",
+      "member": "Membro",
+      "voice": "Voz",
+      "channel": "Canal",
+      "role": "Cargo",
+      "server": "Servidor",
+      "moderation": "Moderação"
+    },
+    "categoryEvents": {
+      "message": "Eventos de mensagens",
+      "member": "Eventos de membros",
+      "voice": "Eventos de voz",
+      "channel": "Eventos de canais",
+      "role": "Eventos de cargos",
+      "server": "Eventos do servidor",
+      "moderation": "Eventos de moderação"
+    },
+    "table": {
+      "timestamp": "Timestamp",
+      "category": "Categoria",
+      "event": "Evento",
+      "target": "Destino",
+      "executor": "Executor"
+    },
+    "pagination": {
+      "page": "Página {{page}} de {{total}} ({{count}} no total)",
+      "previous": "Anterior",
+      "next": "Seguinte"
+    },
+    "empty": {
+      "title": "Nenhum registo de eventos encontrado",
+      "description": "Os registos de eventos aparecerão aqui assim que o registo estiver configurado e os eventos começarem a ocorrer."
+    },
+    "config": {
+      "selectChannel": "Selecionar canal de registo"
+    }
   }
 }

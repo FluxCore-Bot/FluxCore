@@ -1,4 +1,28 @@
 {
   "title": "Nastavitve",
-  "subtitle": "Konfigurirajte globalne nastavitve sistema dejanj za vaš strežnik."
+  "subtitle": "Konfigurirajte globalne nastavitve sistema dejanj za vaš strežnik.",
+  "actionSystem": {
+    "title": "Nastavitve sistema dejanj",
+    "maxRules": "Največje število pravil na strežnik",
+    "logChannel": "Kanal dnevnika (neobvezno)",
+    "noLogChannel": "Ni kanala dnevnika",
+    "globalEnable": "Globalno omogočanje (onemogočite za prekinitev vseh pravil)",
+    "saving": "Shranjevanje...",
+    "save": "Shrani nastavitve",
+    "saved": "Nastavitve shranjene",
+    "maxRulesError": "Največje število pravil mora biti med 1 in 100"
+  },
+  "notifications": {
+    "title": "Nastavitve obvestil",
+    "ruleTriggered": "Pravilo sproženo",
+    "errorAlerts": "Opozorila o napakah",
+    "successReports": "Poročila o uspehu"
+  },
+  "dangerZone": {
+    "title": "Nevarno območje",
+    "description": "Uničujoča dejanja, ki jih ni mogoče razveljaviti.",
+    "deleteAllRules": "Izbriši vsa pravila",
+    "deleteAllConfirm": "Ali ste prepričani, da želite izbrisati VSA pravila? Tega ni mogoče razveljaviti.",
+    "notImplemented": "Brisanje vseh pravil še ni implementirano"
+  }
 }

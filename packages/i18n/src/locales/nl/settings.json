@@ -1,4 +1,28 @@
 {
   "title": "Instellingen",
-  "subtitle": "Configureer globale actiesysteeminstellingen voor je server."
+  "subtitle": "Configureer globale actiesysteeminstellingen voor je server.",
+  "actionSystem": {
+    "title": "Actiesysteeminstellingen",
+    "maxRules": "Maximale regels per server",
+    "logChannel": "Logkanaal (optioneel)",
+    "noLogChannel": "Geen logkanaal",
+    "globalEnable": "Globaal inschakelen (uitschakelen om alle regels te pauzeren)",
+    "saving": "Opslaan...",
+    "save": "Instellingen opslaan",
+    "saved": "Instellingen opgeslagen",
+    "maxRulesError": "Het maximale aantal regels moet tussen 1 en 100 liggen"
+  },
+  "notifications": {
+    "title": "Meldingsvoorkeuren",
+    "ruleTriggered": "Regel geactiveerd",
+    "errorAlerts": "Foutmeldingen",
+    "successReports": "Succesrapporten"
+  },
+  "dangerZone": {
+    "title": "Gevarenzone",
+    "description": "Destructieve acties die niet ongedaan kunnen worden gemaakt.",
+    "deleteAllRules": "Alle regels verwijderen",
+    "deleteAllConfirm": "Weet je zeker dat je ALLE regels wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
+    "notImplemented": "Alle regels verwijderen is nog niet geïmplementeerd"
+  }
 }

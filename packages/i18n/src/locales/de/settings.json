@@ -1,4 +1,28 @@
 {
   "title": "Einstellungen",
-  "subtitle": "Globale Aktionssystem-Einstellungen fuer Ihren Server konfigurieren."
+  "subtitle": "Globale Aktionssystem-Einstellungen für Ihren Server konfigurieren.",
+  "actionSystem": {
+    "title": "Aktionssystem-Einstellungen",
+    "maxRules": "Maximale Regeln pro Server",
+    "logChannel": "Protokollkanal (optional)",
+    "noLogChannel": "Kein Protokollkanal",
+    "globalEnable": "Global aktivieren (deaktivieren, um alle Regeln zu pausieren)",
+    "saving": "Speichern...",
+    "save": "Einstellungen speichern",
+    "saved": "Einstellungen gespeichert",
+    "maxRulesError": "Die maximale Regelanzahl muss zwischen 1 und 100 liegen"
+  },
+  "notifications": {
+    "title": "Benachrichtigungseinstellungen",
+    "ruleTriggered": "Regel ausgelöst",
+    "errorAlerts": "Fehlermeldungen",
+    "successReports": "Erfolgsberichte"
+  },
+  "dangerZone": {
+    "title": "Gefahrenzone",
+    "description": "Destruktive Aktionen, die nicht rückgängig gemacht werden können.",
+    "deleteAllRules": "Alle Regeln löschen",
+    "deleteAllConfirm": "Sind Sie sicher, dass Sie ALLE Regeln löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "notImplemented": "Alle Regeln löschen ist noch nicht implementiert"
+  }
 }

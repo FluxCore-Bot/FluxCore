@@ -71,11 +71,31 @@
     "type": "类型",
     "status": "状态",
     "channel": "频道",
+    "channels": "频道",
     "role": "角色",
+    "roles": "角色",
     "member": "成员",
+    "users": "用户",
+    "conditions": "条件",
     "duration": "时长",
     "reason": "原因",
     "language": "语言"
+  },
+  "form": {
+    "selectChannel": "选择频道...",
+    "selectRole": "选择角色...",
+    "select": "选择...",
+    "saving": "保存中...",
+    "saveSettings": "保存设置",
+    "previous": "上一步",
+    "next": "下一步"
+  },
+  "pagination": {
+    "previous": "上一页",
+    "next": "下一页",
+    "page": "第 {{page}} 页，共 {{total}} 页",
+    "showing": "显示 {{total}} 中第 {{from}} 到 {{to}} 条结果",
+    "showingPage": "第 {{page}} 页，共 {{total}} 页（共 {{count}} 条）"
   },
   "header": {
     "notifications": "通知",

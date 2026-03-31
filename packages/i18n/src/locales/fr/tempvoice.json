@@ -1,5 +1,30 @@
 {
   "label": "Hub de gestion",
   "title": "Salons vocaux temporaires",
-  "subtitle": "Configurez des hubs permettant aux utilisateurs de creer leurs propres salons vocaux ephemeres en les rejoignant."
+  "subtitle": "Configurez des hubs permettant aux utilisateurs de créer leurs propres salons vocaux éphémères en les rejoignant.",
+  "form": {
+    "sameAsHub": "Même que le salon hub",
+    "defaultNameTemplate": "Salon de {user}",
+    "hubChannel": "Salon hub",
+    "selectHub": "Sélectionner un salon vocal...",
+    "category": "Catégorie (optionnel)",
+    "nameTemplate": "Modèle de nom de salon",
+    "addConfig": "Ajouter une configuration",
+    "editConfig": "Modifier la configuration",
+    "save": "Enregistrer la configuration",
+    "saving": "Enregistrement...",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier"
+  },
+  "empty": {
+    "noConfigs": "Aucune configuration pour l'instant",
+    "noConfigsDesc": "Ajoutez un salon hub pour activer les salons vocaux temporaires.",
+    "addFirst": "Ajouter une configuration"
+  },
+  "toast": {
+    "updated": "Configuration mise à jour",
+    "created": "Configuration créée",
+    "removed": "Configuration supprimée"
+  }
 }

@@ -1,5 +1,30 @@
 {
   "label": "Kudeaketa Gunea",
   "title": "Aldi Baterako Ahots Kanalak",
-  "subtitle": "Konfiguratu erabiltzaileei biltegi bat sartuz beren behin-behineko ahots kanalak sortzeko aukera ematen dieten guneak."
+  "subtitle": "Konfiguratu erabiltzaileei biltegi bat sartuz beren behin-behineko ahots kanalak sortzeko aukera ematen dieten guneak.",
+  "form": {
+    "sameAsHub": "Biltegi-kanalaren berdina",
+    "defaultNameTemplate": "{user}ren Kanala",
+    "hubChannel": "Biltegi-kanala",
+    "selectHub": "Hautatu ahots-kanal bat...",
+    "category": "Kategoria (aukerakoa)",
+    "nameTemplate": "Kanalaren izen txantiloia",
+    "addConfig": "Konfigurazioa gehitu",
+    "editConfig": "Konfigurazioa editatu",
+    "save": "Konfigurazioa gorde",
+    "saving": "Gordetzen...",
+    "cancel": "Utzi",
+    "delete": "Ezabatu",
+    "edit": "Editatu"
+  },
+  "empty": {
+    "noConfigs": "Oraindik ez dago konfigaraziorik",
+    "noConfigsDesc": "Gehitu biltegi-kanal bat aldi baterako ahots kanalak gaitzeko.",
+    "addFirst": "Konfigurazioa gehitu"
+  },
+  "toast": {
+    "updated": "Konfigurazioa eguneratuta",
+    "created": "Konfigurazioa sortuta",
+    "removed": "Konfigurazioa kenduta"
+  }
 }

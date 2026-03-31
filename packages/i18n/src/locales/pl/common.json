@@ -71,11 +71,31 @@
     "type": "Typ",
     "status": "Status",
     "channel": "Kanał",
+    "channels": "Kanały",
     "role": "Rola",
+    "roles": "Role",
     "member": "Członek",
+    "users": "Użytkownicy",
+    "conditions": "Warunki",
     "duration": "Czas trwania",
     "reason": "Powód",
     "language": "Język"
+  },
+  "form": {
+    "selectChannel": "Wybierz kanał...",
+    "selectRole": "Wybierz rolę...",
+    "select": "Wybierz...",
+    "saving": "Zapisywanie...",
+    "saveSettings": "Zapisz ustawienia",
+    "previous": "Poprzednia",
+    "next": "Następna"
+  },
+  "pagination": {
+    "previous": "Poprzednia",
+    "next": "Następna",
+    "page": "Strona {{page}} z {{total}}",
+    "showing": "Wyświetlane {{from}} do {{to}} z {{total}} wyników",
+    "showingPage": "Strona {{page}} z {{total}} ({{count}} łącznie)"
   },
   "header": {
     "notifications": "Powiadomienia",

@@ -1,4 +1,28 @@
 {
   "title": "设置",
-  "subtitle": "配置服务器的全局动作系统设置。"
+  "subtitle": "配置服务器的全局动作系统设置。",
+  "actionSystem": {
+    "title": "动作系统设置",
+    "maxRules": "每个服务器的最大规则数",
+    "logChannel": "日志频道（可选）",
+    "noLogChannel": "无日志频道",
+    "globalEnable": "全局启用（禁用则暂停所有规则）",
+    "saving": "保存中...",
+    "save": "保存设置",
+    "saved": "设置已保存",
+    "maxRulesError": "最大规则数必须在 1 到 100 之间"
+  },
+  "notifications": {
+    "title": "通知偏好",
+    "ruleTriggered": "规则已触发",
+    "errorAlerts": "错误警报",
+    "successReports": "成功报告"
+  },
+  "dangerZone": {
+    "title": "危险区域",
+    "description": "无法撤销的破坏性操作。",
+    "deleteAllRules": "删除所有规则",
+    "deleteAllConfirm": "确定要删除所有规则吗？此操作无法撤销。",
+    "notImplemented": "删除所有规则功能尚未实现"
+  }
 }

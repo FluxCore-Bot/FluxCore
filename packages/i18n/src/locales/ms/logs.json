@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Log Aktiviti",
     "events": "Log Peristiwa"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Kadar Pelaksanaan",
+      "totalFailures": "Jumlah Kegagalan",
+      "totalEntries": "Jumlah Entri"
+    },
+    "filter": {
+      "search": "Cari log...",
+      "last1h": "1 jam lepas",
+      "last24h": "24 jam lepas",
+      "last7d": "7 hari lepas"
+    },
+    "table": {
+      "timestamp": "Masa",
+      "ruleName": "Nama Peraturan",
+      "eventType": "Jenis Peristiwa",
+      "action": "Tindakan",
+      "status": "Status",
+      "details": "Butiran",
+      "success": "Berjaya",
+      "failed": "Gagal"
+    },
+    "pagination": {
+      "showing": "Menunjukkan {{from}} hingga {{to}} daripada {{total}} keputusan",
+      "previous": "Sebelumnya",
+      "next": "Seterusnya"
+    },
+    "empty": {
+      "title": "Tiada log ditemui",
+      "description": "Log pelaksanaan peraturan akan muncul di sini setelah peraturan automasi mula berjalan."
+    }
+  },
+  "events": {
+    "title": "Pelayar Log Peristiwa",
+    "filter": {
+      "allCategories": "Semua Kategori",
+      "byUserId": "Tapis mengikut ID Pengguna...",
+      "entries": "{{count}} entri"
+    },
+    "categories": {
+      "message": "Mesej",
+      "member": "Ahli",
+      "voice": "Suara",
+      "channel": "Saluran",
+      "role": "Peranan",
+      "server": "Pelayan",
+      "moderation": "Moderasi"
+    },
+    "categoryEvents": {
+      "message": "Peristiwa Mesej",
+      "member": "Peristiwa Ahli",
+      "voice": "Peristiwa Suara",
+      "channel": "Peristiwa Saluran",
+      "role": "Peristiwa Peranan",
+      "server": "Peristiwa Pelayan",
+      "moderation": "Peristiwa Moderasi"
+    },
+    "table": {
+      "timestamp": "Masa",
+      "category": "Kategori",
+      "event": "Peristiwa",
+      "target": "Sasaran",
+      "executor": "Pelaksana"
+    },
+    "pagination": {
+      "page": "Halaman {{page}} daripada {{total}} ({{count}} jumlah)",
+      "previous": "Sebelumnya",
+      "next": "Seterusnya"
+    },
+    "empty": {
+      "title": "Tiada log peristiwa ditemui",
+      "description": "Log peristiwa akan muncul di sini setelah pengelogan dikonfigurasi dan peristiwa mula berlaku."
+    },
+    "config": {
+      "selectChannel": "Pilih saluran log"
+    }
   }
 }

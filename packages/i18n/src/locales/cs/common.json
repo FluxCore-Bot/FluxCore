@@ -71,18 +71,38 @@
     "type": "Typ",
     "status": "Stav",
     "channel": "Kanál",
+    "channels": "Kanály",
     "role": "Role",
+    "roles": "Role",
     "member": "Člen",
+    "users": "Uživatelé",
+    "conditions": "Podmínky",
     "duration": "Doba trvání",
     "reason": "Důvod",
     "language": "Jazyk"
+  },
+  "form": {
+    "selectChannel": "Vybrat kanál...",
+    "selectRole": "Vybrat roli...",
+    "select": "Vybrat...",
+    "saving": "Ukládání...",
+    "saveSettings": "Uložit nastavení",
+    "previous": "Předchozí",
+    "next": "Další"
+  },
+  "pagination": {
+    "previous": "Předchozí",
+    "next": "Další",
+    "page": "Strana {{page}} z {{total}}",
+    "showing": "Zobrazeno {{from}} až {{to}} z {{total}} výsledků",
+    "showingPage": "Strana {{page}} z {{total}} (celkem {{count}})"
   },
   "header": {
     "notifications": "Oznámení",
     "settings": "Nastavení",
     "logout": "Odhlásit",
     "toggleSidebar": "Přepnout postranní panel",
-    "refreshData": "Obnovit data Discordu"
+    "refreshData": "Obnovit data Discord"
   },
   "sidebar": {
     "closeSidebar": "Zavřít postranní panel",
@@ -92,8 +112,8 @@
     "backToServers": "Zpět na servery"
   },
   "empty": {
-    "noData": "Žádná data",
-    "noResults": "Žádné výsledky",
+    "noData": "Žádná data k dispozici",
+    "noResults": "Nenalezeny žádné výsledky",
     "noItems": "Zatím žádné položky"
   },
   "time": {

@@ -71,11 +71,31 @@
     "type": "Loại",
     "status": "Trạng Thái",
     "channel": "Kênh",
+    "channels": "Kênh",
     "role": "Vai Trò",
+    "roles": "Vai Trò",
     "member": "Thành Viên",
+    "users": "Người Dùng",
+    "conditions": "Điều Kiện",
     "duration": "Thời Lượng",
     "reason": "Lý Do",
     "language": "Ngôn Ngữ"
+  },
+  "form": {
+    "selectChannel": "Chọn kênh...",
+    "selectRole": "Chọn vai trò...",
+    "select": "Chọn...",
+    "saving": "Đang lưu...",
+    "saveSettings": "Lưu Cài Đặt",
+    "previous": "Trước",
+    "next": "Tiếp"
+  },
+  "pagination": {
+    "previous": "Trước",
+    "next": "Tiếp",
+    "page": "Trang {{page}} / {{total}}",
+    "showing": "Hiển thị {{from}} đến {{to}} trong {{total}} kết quả",
+    "showingPage": "Trang {{page}} / {{total}} (tổng {{count}})"
   },
   "header": {
     "notifications": "Thông Báo",

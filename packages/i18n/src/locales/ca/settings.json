@@ -1,4 +1,28 @@
 {
   "title": "Configuració",
-  "subtitle": "Configura els ajustos globals del sistema d'accions per al teu servidor."
+  "subtitle": "Configura els ajustos globals del sistema d'accions per al teu servidor.",
+  "actionSystem": {
+    "title": "Configuració del sistema d'accions",
+    "maxRules": "Màxim de regles per servidor",
+    "logChannel": "Canal de registre (opcional)",
+    "noLogChannel": "Sense canal de registre",
+    "globalEnable": "Activació global (desactiva per pausar totes les regles)",
+    "saving": "Desant...",
+    "save": "Desar configuració",
+    "saved": "Configuració desada",
+    "maxRulesError": "El màxim de regles ha de ser entre 1 i 100"
+  },
+  "notifications": {
+    "title": "Preferències de notificació",
+    "ruleTriggered": "Regla activada",
+    "errorAlerts": "Alertes d'error",
+    "successReports": "Informes d'èxit"
+  },
+  "dangerZone": {
+    "title": "Zona de perill",
+    "description": "Accions destructives que no es poden desfer.",
+    "deleteAllRules": "Eliminar totes les regles",
+    "deleteAllConfirm": "Segur que vols eliminar TOTES les regles? Això no es pot desfer.",
+    "notImplemented": "L'eliminació de totes les regles encara no s'ha implementat"
+  }
 }

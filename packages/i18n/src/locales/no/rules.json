@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Kunne ikke aktivere regler",
     "bulkDisableFailed": "Kunne ikke deaktivere regler",
     "bulkDeleted": "{{count}} regler slettet",
-    "bulkDeleteFailed": "Kunne ikke slette regler"
+    "bulkDeleteFailed": "Kunne ikke slette regler",
+    "updated": "Regel oppdatert",
+    "created": "Regel opprettet"
+  },
+  "form": {
+    "ruleName": "Regelnavn",
+    "ruleNamePlaceholder": "Min regel...",
+    "eventType": "Hendelsestype",
+    "selectEvent": "Velg hendelse...",
+    "priority": "Prioritet",
+    "actions": "Handlinger",
+    "addAction": "+ Legg til handling",
+    "enabled": "Aktivert",
+    "editRule": "Rediger regel",
+    "createRule": "Opprett regel",
+    "workflowView": "Arbeidsflytvisning",
+    "draftRestored": "Utkast gjenopprettet fra forrige økt.",
+    "dismiss": "Avvis",
+    "atLeastOneAction": "Minst én handling må konfigureres med en type.",
+    "saving": "Lagrer...",
+    "update": "Oppdater regel",
+    "create": "Opprett regel",
+    "cancel": "Avbryt"
+  },
+  "conditions": {
+    "title": "Betingelser",
+    "channels": "Kanaler",
+    "roles": "Roller",
+    "users": "Brukere",
+    "addChannel": "Legg til kanal...",
+    "addRole": "Legg til rolle...",
+    "excludeChannel": "Ekskluder kanal...",
+    "excludeRole": "Ekskluder rolle...",
+    "userId": "Bruker-ID...",
+    "addConditions": "Legg til betingelser for å filtrere når denne regelen utløses",
+    "active": "aktiv",
+    "description": "Når dette er satt, utløses regelen bare hvis hendelsen matcher alle inkluderingsfiltre og ingen av ekskluderingsfiltrene.",
+    "include": "Inkluder (hvitliste)",
+    "exclude": "Ekskluder (svarteliste)",
+    "clearAll": "Tøm alle betingelser"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Kan ikke koble til: ville opprette en syklus"
+    },
+    "labels": {
+      "rules": "Regler",
+      "field": "Felt",
+      "operator": "Operator",
+      "value": "Verdi"
+    },
+    "status": {
+      "ready": "Klar",
+      "notConfigured": "Ikke konfigurert"
+    },
+    "shortcuts": {
+      "close": "Lukk",
+      "save": "Lagre",
+      "removeNode": "Fjern node",
+      "addAction": "Legg til handling",
+      "fitView": "Tilpass visning"
+    }
   }
 }

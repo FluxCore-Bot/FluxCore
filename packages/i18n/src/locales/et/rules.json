@@ -54,13 +54,13 @@
     "boostThankYou": "Tänu boostitamise eest",
     "boostThankYouDesc": "Saada DM tänades kasutajaid, kes serverit boostivad",
     "banLogger": "Bannide logimine",
-    "banLoggerDesc": "Loги banni sündmused modereerimiskanalile",
+    "banLoggerDesc": "Logi banni sündmused modereerimiskanalile",
     "autoThread": "Automaatne lõim",
     "autoThreadDesc": "Loo automaatselt lõim, kui sõnum saadetakse"
   },
   "deleteDialog": {
     "title": "Kustuta reegel",
-    "description": "Kas oled kindel, et soovid kustutada \"{{name}}\"? Seda toimingut ei saa tagasi võtta.",
+    "description": "Kas oled kindel, et soovid kustutada „{{name}}"? Seda toimingut ei saa tagasi võtta.",
     "confirm": "Kustuta"
   },
   "bulkDeleteDialog": {
@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Reeglite lubamine ebaõnnestus",
     "bulkDisableFailed": "Reeglite keelamine ebaõnnestus",
     "bulkDeleted": "{{count}} reeglit kustutatud",
-    "bulkDeleteFailed": "Reeglite kustutamine ebaõnnestus"
+    "bulkDeleteFailed": "Reeglite kustutamine ebaõnnestus",
+    "updated": "Reegel uuendatud",
+    "created": "Reegel loodud"
+  },
+  "form": {
+    "ruleName": "Reegli nimi",
+    "ruleNamePlaceholder": "Minu reegel...",
+    "eventType": "Sündmuse tüüp",
+    "selectEvent": "Vali sündmus...",
+    "priority": "Prioriteet",
+    "actions": "Toimingud",
+    "addAction": "+ Lisa toiming",
+    "enabled": "Lubatud",
+    "editRule": "Muuda reeglit",
+    "createRule": "Loo reegel",
+    "workflowView": "Töövoo vaade",
+    "draftRestored": "Mustand taastati eelmisest seansist.",
+    "dismiss": "Sulge",
+    "atLeastOneAction": "Vähemalt üks toiming peab olema konfigureeritud tüübiga.",
+    "saving": "Salvestamine...",
+    "update": "Uuenda reeglit",
+    "create": "Loo reegel",
+    "cancel": "Tühista"
+  },
+  "conditions": {
+    "title": "Tingimused",
+    "channels": "Kanalid",
+    "roles": "Rollid",
+    "users": "Kasutajad",
+    "addChannel": "Lisa kanal...",
+    "addRole": "Lisa roll...",
+    "excludeChannel": "Välista kanal...",
+    "excludeRole": "Välista roll...",
+    "userId": "Kasutaja ID...",
+    "addConditions": "Lisa tingimused, et filtreerida, millal see reegel käivitub",
+    "active": "aktiivne",
+    "description": "Kui on seadistatud, käivitub see reegel ainult siis, kui sündmus vastab kõigile kaasamisfilritele ja ühelegi välistamisfiltritele.",
+    "include": "Kaasa (valge nimekiri)",
+    "exclude": "Välista (must nimekiri)",
+    "clearAll": "Tühjenda kõik tingimused"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Ei saa ühendada: tekitaks tsükli"
+    },
+    "labels": {
+      "rules": "Reeglid",
+      "field": "Väli",
+      "operator": "Operaator",
+      "value": "Väärtus"
+    },
+    "status": {
+      "ready": "Valmis",
+      "notConfigured": "Seadistamata"
+    },
+    "shortcuts": {
+      "close": "Sulge",
+      "save": "Salvesta",
+      "removeNode": "Eemalda sõlm",
+      "addAction": "Lisa toiming",
+      "fitView": "Kohanda vaadet"
+    }
   }
 }

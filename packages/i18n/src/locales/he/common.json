@@ -1,8 +1,8 @@
 {
   "brand": {
     "name": "FluxCore",
-    "engine": "FluxCore מנוע",
-    "dashboard": "FluxCore לוח בקרה"
+    "engine": "מנוע FluxCore",
+    "dashboard": "לוח בקרה FluxCore"
   },
   "status": {
     "online": "מחובר",
@@ -71,11 +71,31 @@
     "type": "סוג",
     "status": "מצב",
     "channel": "ערוץ",
+    "channels": "ערוצים",
     "role": "תפקיד",
+    "roles": "תפקידים",
     "member": "חבר",
+    "users": "משתמשים",
+    "conditions": "תנאים",
     "duration": "משך",
     "reason": "סיבה",
     "language": "שפה"
+  },
+  "form": {
+    "selectChannel": "בחר ערוץ...",
+    "selectRole": "בחר תפקיד...",
+    "select": "בחר...",
+    "saving": "שומר...",
+    "saveSettings": "שמור הגדרות",
+    "previous": "הקודם",
+    "next": "הבא"
+  },
+  "pagination": {
+    "previous": "הקודם",
+    "next": "הבא",
+    "page": "עמוד {{page}} מתוך {{total}}",
+    "showing": "מציג {{from}} עד {{to}} מתוך {{total}} תוצאות",
+    "showingPage": "עמוד {{page}} מתוך {{total}} ({{count}} סה\"כ)"
   },
   "header": {
     "notifications": "התראות",

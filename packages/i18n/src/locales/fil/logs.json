@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Mga Log ng Aktibidad",
     "events": "Mga Log ng Event"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Rate ng Pagpapatupad",
+      "totalFailures": "Kabuuang Mga Kabiguan",
+      "totalEntries": "Kabuuang Mga Entry"
+    },
+    "filter": {
+      "search": "Maghanap ng mga log...",
+      "last1h": "Huling 1 oras",
+      "last24h": "Huling 24 oras",
+      "last7d": "Huling 7 araw"
+    },
+    "table": {
+      "timestamp": "Oras",
+      "ruleName": "Pangalan ng Panuntunan",
+      "eventType": "Uri ng Event",
+      "action": "Aksyon",
+      "status": "Status",
+      "details": "Mga Detalye",
+      "success": "Matagumpay",
+      "failed": "Nabigo"
+    },
+    "pagination": {
+      "showing": "Ipinapakita ang {{from}} hanggang {{to}} ng {{total}} na mga resulta",
+      "previous": "Nakaraan",
+      "next": "Susunod"
+    },
+    "empty": {
+      "title": "Walang nahanap na mga log",
+      "description": "Ang mga log ng pagpapatupad ng panuntunan ay lilitaw dito kapag nagsimulang tumakbo ang mga automation rule."
+    }
+  },
+  "events": {
+    "title": "Browser ng Mga Log ng Event",
+    "filter": {
+      "allCategories": "Lahat ng Kategorya",
+      "byUserId": "I-filter ayon sa User ID...",
+      "entries": "{{count}} na mga entry"
+    },
+    "categories": {
+      "message": "Mensahe",
+      "member": "Miyembro",
+      "voice": "Boses",
+      "channel": "Channel",
+      "role": "Role",
+      "server": "Server",
+      "moderation": "Moderasyon"
+    },
+    "categoryEvents": {
+      "message": "Mga Event ng Mensahe",
+      "member": "Mga Event ng Miyembro",
+      "voice": "Mga Event ng Boses",
+      "channel": "Mga Event ng Channel",
+      "role": "Mga Event ng Role",
+      "server": "Mga Event ng Server",
+      "moderation": "Mga Event ng Moderasyon"
+    },
+    "table": {
+      "timestamp": "Oras",
+      "category": "Kategorya",
+      "event": "Event",
+      "target": "Target",
+      "executor": "Tagapatupad"
+    },
+    "pagination": {
+      "page": "Pahina {{page}} ng {{total}} ({{count}} kabuuan)",
+      "previous": "Nakaraan",
+      "next": "Susunod"
+    },
+    "empty": {
+      "title": "Walang nahanap na mga log ng event",
+      "description": "Ang mga log ng event ay lilitaw dito kapag na-configure na ang pag-log at nagsimulang magkaroon ng mga event."
+    },
+    "config": {
+      "selectChannel": "Pumili ng log channel"
+    }
   }
 }

@@ -1,8 +1,85 @@
 {
   "title": "Protokolle",
-  "subtitle": "Ueberwachen Sie Regelausfuehrungen und Ereignisprotokollierung.",
+  "subtitle": "Überwachen Sie Regelausführungen und Ereignisprotokollierung.",
   "tabs": {
-    "activity": "Aktivitaetsprotokolle",
+    "activity": "Aktivitätsprotokolle",
     "events": "Ereignisprotokolle"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Ausführungsrate",
+      "totalFailures": "Fehlgeschlagene gesamt",
+      "totalEntries": "Einträge gesamt"
+    },
+    "filter": {
+      "search": "Protokolle suchen...",
+      "last1h": "Letzte 1 Stunde",
+      "last24h": "Letzte 24 Stunden",
+      "last7d": "Letzte 7 Tage"
+    },
+    "table": {
+      "timestamp": "Zeitstempel",
+      "ruleName": "Regelname",
+      "eventType": "Ereignistyp",
+      "action": "Aktion",
+      "status": "Status",
+      "details": "Details",
+      "success": "Erfolgreich",
+      "failed": "Fehlgeschlagen"
+    },
+    "pagination": {
+      "showing": "{{from}} bis {{to}} von {{total}} Ergebnissen",
+      "previous": "Zurück",
+      "next": "Weiter"
+    },
+    "empty": {
+      "title": "Keine Protokolle gefunden",
+      "description": "Regelausführungsprotokolle erscheinen hier, sobald Automatisierungsregeln ausgeführt werden."
+    }
+  },
+  "events": {
+    "title": "Ereignisprotokoll-Browser",
+    "filter": {
+      "allCategories": "Alle Kategorien",
+      "byUserId": "Nach Benutzer-ID filtern...",
+      "entries": "{{count}} Einträge"
+    },
+    "categories": {
+      "message": "Nachricht",
+      "member": "Mitglied",
+      "voice": "Sprache",
+      "channel": "Kanal",
+      "role": "Rolle",
+      "server": "Server",
+      "moderation": "Moderation"
+    },
+    "categoryEvents": {
+      "message": "Nachrichtenereignisse",
+      "member": "Mitgliederereignisse",
+      "voice": "Sprachereignisse",
+      "channel": "Kanalereignisse",
+      "role": "Rollenereignisse",
+      "server": "Serverereignisse",
+      "moderation": "Moderationsereignisse"
+    },
+    "table": {
+      "timestamp": "Zeitstempel",
+      "category": "Kategorie",
+      "event": "Ereignis",
+      "target": "Ziel",
+      "executor": "Ausführer"
+    },
+    "pagination": {
+      "page": "Seite {{page}} von {{total}} ({{count}} gesamt)",
+      "previous": "Zurück",
+      "next": "Weiter"
+    },
+    "empty": {
+      "title": "Keine Ereignisprotokolle gefunden",
+      "description": "Ereignisprotokolle erscheinen hier, sobald die Protokollierung konfiguriert ist und Ereignisse auftreten."
+    },
+    "config": {
+      "selectChannel": "Protokollkanal auswählen"
+    }
   }
 }

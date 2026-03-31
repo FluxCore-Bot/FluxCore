@@ -42,7 +42,7 @@
   },
   "noResults": {
     "title": "قانون مطابقی یافت نشد",
-    "description": "سعی کنید جستجو یا فیلترها را تنظیم کنید."
+    "description": "سعی کنید جستجو یا فیلترها را تنظیم کنید تا آنچه می‌خواهید بیابید."
   },
   "templates": {
     "welcomeMessage": "پیام خوش‌آمدگویی",
@@ -82,6 +82,67 @@
     "bulkEnableFailed": "فعال‌سازی قوانین ناموفق بود",
     "bulkDisableFailed": "غیرفعال‌سازی قوانین ناموفق بود",
     "bulkDeleted": "{{count}} قانون حذف شد",
-    "bulkDeleteFailed": "حذف قوانین ناموفق بود"
+    "bulkDeleteFailed": "حذف قوانین ناموفق بود",
+    "updated": "قانون به‌روزرسانی شد",
+    "created": "قانون ایجاد شد"
+  },
+  "form": {
+    "ruleName": "نام قانون",
+    "ruleNamePlaceholder": "قانون من...",
+    "eventType": "نوع رویداد",
+    "selectEvent": "یک رویداد انتخاب کنید...",
+    "priority": "اولویت",
+    "actions": "اقدامات",
+    "addAction": "+ افزودن اقدام",
+    "enabled": "فعال",
+    "editRule": "ویرایش قانون",
+    "createRule": "ایجاد قانون",
+    "workflowView": "نمای گردش کار",
+    "draftRestored": "پیش‌نویس از جلسه قبلی بازیابی شد.",
+    "dismiss": "بستن",
+    "atLeastOneAction": "حداقل یک اقدام باید با نوع مشخص پیکربندی شود.",
+    "saving": "در حال ذخیره...",
+    "update": "به‌روزرسانی قانون",
+    "create": "ایجاد قانون",
+    "cancel": "لغو"
+  },
+  "conditions": {
+    "title": "شرایط",
+    "channels": "کانال‌ها",
+    "roles": "نقش‌ها",
+    "users": "کاربران",
+    "addChannel": "افزودن کانال...",
+    "addRole": "افزودن نقش...",
+    "excludeChannel": "حذف کانال...",
+    "excludeRole": "حذف نقش...",
+    "userId": "شناسه کاربر...",
+    "addConditions": "شرایطی برای فیلتر کردن زمان اجرای این قانون اضافه کنید",
+    "active": "فعال",
+    "description": "در صورت تنظیم، این قانون فقط در صورتی اجرا می‌شود که رویداد با همه فیلترهای شامل‌کردن مطابقت داشته باشد و با هیچ‌کدام از فیلترهای حذف مطابقت نداشته باشد.",
+    "include": "شامل‌کردن (فهرست سفید)",
+    "exclude": "حذف (فهرست سیاه)",
+    "clearAll": "پاک کردن همه شرایط"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "اتصال امکان‌پذیر نیست: یک چرخه ایجاد می‌کند"
+    },
+    "labels": {
+      "rules": "قوانین",
+      "field": "فیلد",
+      "operator": "عملگر",
+      "value": "مقدار"
+    },
+    "status": {
+      "ready": "آماده",
+      "notConfigured": "پیکربندی نشده"
+    },
+    "shortcuts": {
+      "close": "بستن",
+      "save": "ذخیره",
+      "removeNode": "حذف گره",
+      "addAction": "افزودن اقدام",
+      "fitView": "تنظیم نما"
+    }
   }
 }

@@ -1,4 +1,28 @@
 {
-  "title": "Definicoes",
-  "subtitle": "Configure as definicoes globais do sistema de acoes para o seu servidor."
+  "title": "Definições",
+  "subtitle": "Configure as definições globais do sistema de ações para o seu servidor.",
+  "actionSystem": {
+    "title": "Definições do sistema de ações",
+    "maxRules": "Máximo de regras por servidor",
+    "logChannel": "Canal de registo (opcional)",
+    "noLogChannel": "Sem canal de registo",
+    "globalEnable": "Ativação global (desativar para pausar todas as regras)",
+    "saving": "A guardar...",
+    "save": "Guardar definições",
+    "saved": "Definições guardadas",
+    "maxRulesError": "O número máximo de regras deve estar entre 1 e 100"
+  },
+  "notifications": {
+    "title": "Preferências de notificações",
+    "ruleTriggered": "Regra acionada",
+    "errorAlerts": "Alertas de erro",
+    "successReports": "Relatórios de sucesso"
+  },
+  "dangerZone": {
+    "title": "Zona de perigo",
+    "description": "Ações destrutivas que não podem ser desfeitas.",
+    "deleteAllRules": "Eliminar todas as regras",
+    "deleteAllConfirm": "Tem a certeza de que deseja eliminar TODAS as regras? Esta ação não pode ser desfeita.",
+    "notImplemented": "A eliminação de todas as regras ainda não está implementada"
+  }
 }

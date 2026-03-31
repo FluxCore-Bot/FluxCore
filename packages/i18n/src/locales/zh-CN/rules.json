@@ -82,6 +82,67 @@
     "bulkEnableFailed": "批量启用规则失败",
     "bulkDisableFailed": "批量禁用规则失败",
     "bulkDeleted": "{{count}} 条规则已删除",
-    "bulkDeleteFailed": "批量删除规则失败"
+    "bulkDeleteFailed": "批量删除规则失败",
+    "updated": "规则已更新",
+    "created": "规则已创建"
+  },
+  "form": {
+    "ruleName": "规则名称",
+    "ruleNamePlaceholder": "我的规则...",
+    "eventType": "事件类型",
+    "selectEvent": "选择事件...",
+    "priority": "优先级",
+    "actions": "动作",
+    "addAction": "+ 添加动作",
+    "enabled": "已启用",
+    "editRule": "编辑规则",
+    "createRule": "创建规则",
+    "workflowView": "工作流视图",
+    "draftRestored": "已从上次会话恢复草稿。",
+    "dismiss": "关闭",
+    "atLeastOneAction": "至少需要配置一个带有类型的动作。",
+    "saving": "保存中...",
+    "update": "更新规则",
+    "create": "创建规则",
+    "cancel": "取消"
+  },
+  "conditions": {
+    "title": "条件",
+    "channels": "频道",
+    "roles": "角色",
+    "users": "用户",
+    "addChannel": "添加频道...",
+    "addRole": "添加角色...",
+    "excludeChannel": "排除频道...",
+    "excludeRole": "排除角色...",
+    "userId": "用户ID...",
+    "addConditions": "添加条件以过滤此规则的触发时机",
+    "active": "活跃",
+    "description": "设置后，仅当事件符合所有包含过滤器且不符合任何排除过滤器时，此规则才会触发。",
+    "include": "包含（白名单）",
+    "exclude": "排除（黑名单）",
+    "clearAll": "清除所有条件"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "无法连接：将创建循环"
+    },
+    "labels": {
+      "rules": "规则",
+      "field": "字段",
+      "operator": "运算符",
+      "value": "值"
+    },
+    "status": {
+      "ready": "就绪",
+      "notConfigured": "未配置"
+    },
+    "shortcuts": {
+      "close": "关闭",
+      "save": "保存",
+      "removeNode": "删除节点",
+      "addAction": "添加动作",
+      "fitView": "适合视图"
+    }
   }
 }

@@ -71,11 +71,31 @@
     "type": "Tip",
     "status": "Stare",
     "channel": "Canal",
+    "channels": "Canale",
     "role": "Rol",
+    "roles": "Roluri",
     "member": "Membru",
+    "users": "Utilizatori",
+    "conditions": "Condiții",
     "duration": "Durată",
     "reason": "Motiv",
     "language": "Limbă"
+  },
+  "form": {
+    "selectChannel": "Selectează canal...",
+    "selectRole": "Selectează rol...",
+    "select": "Selectează...",
+    "saving": "Se salvează...",
+    "saveSettings": "Salvează Setările",
+    "previous": "Anterior",
+    "next": "Următor"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Următor",
+    "page": "Pagina {{page}} din {{total}}",
+    "showing": "Se afișează {{from}} până la {{to}} din {{total}} rezultate",
+    "showingPage": "Pagina {{page}} din {{total}} ({{count}} total)"
   },
   "header": {
     "notifications": "Notificări",

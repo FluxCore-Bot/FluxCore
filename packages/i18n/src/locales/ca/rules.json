@@ -4,13 +4,13 @@
     "automation": "Automatització"
   },
   "title": "Regles d'automatització",
-  "subtitle": "Configura activadors basats en esdeveniments i respostes automatiques per al teu servidor.",
+  "subtitle": "Configura activadors basats en esdeveniments i respostes automàtiques per al teu servidor.",
   "createRule": "Crear regla",
   "stats": {
     "totalRules": "Total de regles",
     "active": "Actives",
     "executions7d": "Execucions (7d)",
-    "successRate": "Taxa d'exit"
+    "successRate": "Taxa d'èxit"
   },
   "filter": {
     "searchPlaceholder": "Cercar regles...",
@@ -36,8 +36,8 @@
     "clear": "Netejar"
   },
   "empty": {
-    "title": "Comenca amb l'automatització",
-    "description": "Tria una plantilla per comencar rapidament o crea una regla des de zero.",
+    "title": "Comença amb l'automatització",
+    "description": "Tria una plantilla per començar ràpidament o crea una regla des de zero.",
     "createFromScratch": "Crear des de zero"
   },
   "noResults": {
@@ -46,21 +46,21 @@
   },
   "templates": {
     "welcomeMessage": "Missatge de benvinguda",
-    "welcomeMessageDesc": "Dona la benvinguda als nous membres amb un missatge personalitzat en un canal",
-    "autoRole": "Rol automatic",
-    "autoRoleDesc": "Assigna automaticament un rol quan un membre s'uneix",
+    "welcomeMessageDesc": "Dóna la benvinguda als nous membres amb un missatge personalitzat en un canal",
+    "autoRole": "Rol automàtic",
+    "autoRoleDesc": "Assigna automàticament un rol quan un membre s'uneix",
     "logDeleted": "Registrar missatges eliminats",
     "logDeletedDesc": "Envia informació de missatges eliminats a un canal de registre",
-    "boostThankYou": "Agraiment per boost",
-    "boostThankYouDesc": "Envia un DM d'agraiment als usuaris que fan boost al servidor",
+    "boostThankYou": "Agraïment per boost",
+    "boostThankYouDesc": "Envia un DM d'agraïment als usuaris que fan boost al servidor",
     "banLogger": "Registre de bans",
     "banLoggerDesc": "Registra els esdeveniments de ban a un canal de moderació",
-    "autoThread": "Fil automatic",
-    "autoThreadDesc": "Crea automaticament un fil quan s'envia un missatge"
+    "autoThread": "Fil automàtic",
+    "autoThreadDesc": "Crea automàticament un fil quan s'envia un missatge"
   },
   "deleteDialog": {
     "title": "Eliminar regla",
-    "description": "Segur que vols eliminar \"{{name}}\"? Aquesta acció no es pot desfer.",
+    "description": "Segur que vols eliminar «{{name}}»? Aquesta acció no es pot desfer.",
     "confirm": "Eliminar"
   },
   "bulkDeleteDialog": {
@@ -82,6 +82,67 @@
     "bulkEnableFailed": "No s'han pogut activar les regles",
     "bulkDisableFailed": "No s'han pogut desactivar les regles",
     "bulkDeleted": "{{count}} regles eliminades",
-    "bulkDeleteFailed": "No s'han pogut eliminar les regles"
+    "bulkDeleteFailed": "No s'han pogut eliminar les regles",
+    "updated": "Regla actualitzada",
+    "created": "Regla creada"
+  },
+  "form": {
+    "ruleName": "Nom de la regla",
+    "ruleNamePlaceholder": "La meva regla...",
+    "eventType": "Tipus d'esdeveniment",
+    "selectEvent": "Selecciona un esdeveniment...",
+    "priority": "Prioritat",
+    "actions": "Accions",
+    "addAction": "+ Afegir acció",
+    "enabled": "Activada",
+    "editRule": "Editar regla",
+    "createRule": "Crear regla",
+    "workflowView": "Vista de flux de treball",
+    "draftRestored": "L'esborrany s'ha restaurat de la sessió anterior.",
+    "dismiss": "Descartar",
+    "atLeastOneAction": "Cal configurar almenys una acció amb un tipus.",
+    "saving": "Desant...",
+    "update": "Actualitzar regla",
+    "create": "Crear regla",
+    "cancel": "Cancel·lar"
+  },
+  "conditions": {
+    "title": "Condicions",
+    "channels": "Canals",
+    "roles": "Rols",
+    "users": "Usuaris",
+    "addChannel": "Afegir canal...",
+    "addRole": "Afegir rol...",
+    "excludeChannel": "Excloure canal...",
+    "excludeRole": "Excloure rol...",
+    "userId": "ID d'usuari...",
+    "addConditions": "Afegeix condicions per filtrar quan s'activa aquesta regla",
+    "active": "activa",
+    "description": "Quan s'estableix, aquesta regla s'activa només si l'esdeveniment coincideix amb tots els filtres d'inclusió i cap dels filtres d'exclusió.",
+    "include": "Incloure (llista blanca)",
+    "exclude": "Excloure (llista negra)",
+    "clearAll": "Netejar totes les condicions"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "No es pot connectar: crearia un cicle"
+    },
+    "labels": {
+      "rules": "Regles",
+      "field": "Camp",
+      "operator": "Operador",
+      "value": "Valor"
+    },
+    "status": {
+      "ready": "Llest",
+      "notConfigured": "No configurat"
+    },
+    "shortcuts": {
+      "close": "Tancar",
+      "save": "Desar",
+      "removeNode": "Eliminar node",
+      "addAction": "Afegir acció",
+      "fitView": "Ajustar vista"
+    }
   }
 }

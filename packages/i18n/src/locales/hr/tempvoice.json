@@ -1,5 +1,30 @@
 {
-  "label": "Upravljacko srediste",
+  "label": "Upravljačko središte",
   "title": "Privremeni glasovni kanali",
-  "subtitle": "Konfigurirajte sredista koja korisnicima omogucuju stvaranje vlastitih privremenih glasovnih kanala pri pridruzivanju."
+  "subtitle": "Konfigurirajte središta koja korisnicima omogućuju stvaranje vlastitih privremenih glasovnih kanala pri pridruživanju.",
+  "form": {
+    "sameAsHub": "Isto kao hub kanal",
+    "defaultNameTemplate": "Kanal korisnika {user}",
+    "hubChannel": "Hub kanal",
+    "selectHub": "Odaberite glasovni kanal...",
+    "category": "Kategorija (neobavezno)",
+    "nameTemplate": "Predložak naziva kanala",
+    "addConfig": "Dodaj konfiguraciju",
+    "editConfig": "Uredi konfiguraciju",
+    "save": "Spremi konfiguraciju",
+    "saving": "Spremanje...",
+    "cancel": "Odustani",
+    "delete": "Obriši",
+    "edit": "Uredi"
+  },
+  "empty": {
+    "noConfigs": "Nema konfiguracija",
+    "noConfigsDesc": "Dodajte hub kanal kako biste omogućili privremene glasovne kanale.",
+    "addFirst": "Dodaj konfiguraciju"
+  },
+  "toast": {
+    "updated": "Konfiguracija ažurirana",
+    "created": "Konfiguracija stvorena",
+    "removed": "Konfiguracija uklonjena"
+  }
 }

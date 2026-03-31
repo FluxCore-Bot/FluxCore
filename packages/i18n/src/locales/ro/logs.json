@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Jurnale de Activitate",
     "events": "Jurnale de Evenimente"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Rată de Execuție",
+      "totalFailures": "Total Eșecuri",
+      "totalEntries": "Total Intrări"
+    },
+    "filter": {
+      "search": "Caută jurnale...",
+      "last1h": "Ultima 1 oră",
+      "last24h": "Ultimele 24 de ore",
+      "last7d": "Ultimele 7 zile"
+    },
+    "table": {
+      "timestamp": "Marcaj de timp",
+      "ruleName": "Numele Regulii",
+      "eventType": "Tip Eveniment",
+      "action": "Acțiune",
+      "status": "Stare",
+      "details": "Detalii",
+      "success": "Succes",
+      "failed": "Eșuat"
+    },
+    "pagination": {
+      "showing": "Se afișează {{from}} până la {{to}} din {{total}} rezultate",
+      "previous": "Anterior",
+      "next": "Următor"
+    },
+    "empty": {
+      "title": "Nu s-au găsit jurnale",
+      "description": "Jurnalele de execuție a regulilor vor apărea aici odată ce regulile de automatizare vor începe să ruleze."
+    }
+  },
+  "events": {
+    "title": "Browser Jurnal Evenimente",
+    "filter": {
+      "allCategories": "Toate Categoriile",
+      "byUserId": "Filtrează după ID Utilizator...",
+      "entries": "{{count}} intrări"
+    },
+    "categories": {
+      "message": "Mesaj",
+      "member": "Membru",
+      "voice": "Voce",
+      "channel": "Canal",
+      "role": "Rol",
+      "server": "Server",
+      "moderation": "Moderare"
+    },
+    "categoryEvents": {
+      "message": "Evenimente Mesaje",
+      "member": "Evenimente Membri",
+      "voice": "Evenimente Vocale",
+      "channel": "Evenimente Canale",
+      "role": "Evenimente Roluri",
+      "server": "Evenimente Server",
+      "moderation": "Evenimente Moderare"
+    },
+    "table": {
+      "timestamp": "Marcaj de timp",
+      "category": "Categorie",
+      "event": "Eveniment",
+      "target": "Țintă",
+      "executor": "Executor"
+    },
+    "pagination": {
+      "page": "Pagina {{page}} din {{total}} ({{count}} total)",
+      "previous": "Anterior",
+      "next": "Următor"
+    },
+    "empty": {
+      "title": "Nu s-au găsit jurnale de evenimente",
+      "description": "Jurnalele de evenimente vor apărea aici odată ce jurnalizarea este configurată și evenimentele încep să apară."
+    },
+    "config": {
+      "selectChannel": "Selectează canal de jurnal"
+    }
   }
 }

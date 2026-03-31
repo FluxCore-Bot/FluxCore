@@ -1,4 +1,28 @@
 {
   "title": "Ezarpenak",
-  "subtitle": "Konfiguratu zure zerbitzariaren ekintza sistema globalaren ezarpenak."
+  "subtitle": "Konfiguratu zure zerbitzariaren ekintza sistema globalaren ezarpenak.",
+  "actionSystem": {
+    "title": "Ekintza sistemaren ezarpenak",
+    "maxRules": "Gehieneko arauak zerbitzari bakoitzeko",
+    "logChannel": "Erregistro-kanala (aukerakoa)",
+    "noLogChannel": "Erregistro-kanalik ez",
+    "globalEnable": "Gaitzapen globala (desgaitu arau guztiak pausatzeko)",
+    "saving": "Gordetzen...",
+    "save": "Ezarpenak gorde",
+    "saved": "Ezarpenak gordeta",
+    "maxRulesError": "Gehieneko arauak 1 eta 100 artean egon behar dira"
+  },
+  "notifications": {
+    "title": "Jakinarazpen hobespenak",
+    "ruleTriggered": "Araua aktibatuta",
+    "errorAlerts": "Errore-alertak",
+    "successReports": "Arrakasta-txostenak"
+  },
+  "dangerZone": {
+    "title": "Arrisku-eremua",
+    "description": "Ezin diren desegin ekintza suntsitzaileak.",
+    "deleteAllRules": "Arau guztiak ezabatu",
+    "deleteAllConfirm": "Ziur zaude ARAU GUZTIAK ezabatu nahi dituzula? Hau ezin da desegin.",
+    "notImplemented": "Arau guztiak ezabatzea oraindik ez da inplementatu"
+  }
 }

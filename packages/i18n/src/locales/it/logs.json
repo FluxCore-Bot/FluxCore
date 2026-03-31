@@ -2,7 +2,84 @@
   "title": "Registri",
   "subtitle": "Monitora le esecuzioni delle regole e la registrazione degli eventi.",
   "tabs": {
-    "activity": "Registri di attivita",
+    "activity": "Registri di attività",
     "events": "Registri degli eventi"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Tasso di esecuzione",
+      "totalFailures": "Totale errori",
+      "totalEntries": "Totale voci"
+    },
+    "filter": {
+      "search": "Cerca nei registri...",
+      "last1h": "Ultima ora",
+      "last24h": "Ultime 24 ore",
+      "last7d": "Ultimi 7 giorni"
+    },
+    "table": {
+      "timestamp": "Data e ora",
+      "ruleName": "Nome regola",
+      "eventType": "Tipo di evento",
+      "action": "Azione",
+      "status": "Stato",
+      "details": "Dettagli",
+      "success": "Riuscito",
+      "failed": "Fallito"
+    },
+    "pagination": {
+      "showing": "Visualizzando da {{from}} a {{to}} di {{total}} risultati",
+      "previous": "Precedente",
+      "next": "Successivo"
+    },
+    "empty": {
+      "title": "Nessun registro trovato",
+      "description": "I registri di esecuzione delle regole appariranno qui una volta che le regole di automazione inizieranno ad essere eseguite."
+    }
+  },
+  "events": {
+    "title": "Browser dei registri degli eventi",
+    "filter": {
+      "allCategories": "Tutte le categorie",
+      "byUserId": "Filtra per ID utente...",
+      "entries": "{{count}} voci"
+    },
+    "categories": {
+      "message": "Messaggio",
+      "member": "Membro",
+      "voice": "Voce",
+      "channel": "Canale",
+      "role": "Ruolo",
+      "server": "Server",
+      "moderation": "Moderazione"
+    },
+    "categoryEvents": {
+      "message": "Eventi messaggi",
+      "member": "Eventi membri",
+      "voice": "Eventi vocali",
+      "channel": "Eventi canali",
+      "role": "Eventi ruoli",
+      "server": "Eventi server",
+      "moderation": "Eventi moderazione"
+    },
+    "table": {
+      "timestamp": "Data e ora",
+      "category": "Categoria",
+      "event": "Evento",
+      "target": "Destinatario",
+      "executor": "Esecutore"
+    },
+    "pagination": {
+      "page": "Pagina {{page}} di {{total}} ({{count}} totali)",
+      "previous": "Precedente",
+      "next": "Successivo"
+    },
+    "empty": {
+      "title": "Nessun registro degli eventi trovato",
+      "description": "I registri degli eventi appariranno qui una volta configurata la registrazione e quando gli eventi inizieranno a verificarsi."
+    },
+    "config": {
+      "selectChannel": "Seleziona canale di registro"
+    }
   }
 }

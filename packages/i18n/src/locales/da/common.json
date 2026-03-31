@@ -71,11 +71,31 @@
     "type": "Type",
     "status": "Status",
     "channel": "Kanal",
+    "channels": "Kanaler",
     "role": "Rolle",
+    "roles": "Roller",
     "member": "Medlem",
+    "users": "Brugere",
+    "conditions": "Betingelser",
     "duration": "Varighed",
     "reason": "Årsag",
     "language": "Sprog"
+  },
+  "form": {
+    "selectChannel": "Vælg kanal...",
+    "selectRole": "Vælg rolle...",
+    "select": "Vælg...",
+    "saving": "Gemmer...",
+    "saveSettings": "Gem indstillinger",
+    "previous": "Forrige",
+    "next": "Næste"
+  },
+  "pagination": {
+    "previous": "Forrige",
+    "next": "Næste",
+    "page": "Side {{page}} af {{total}}",
+    "showing": "Viser {{from}}–{{to}} af {{total}} resultater",
+    "showingPage": "Side {{page}} af {{total}} ({{count}} i alt)"
   },
   "header": {
     "notifications": "Notifikationer",

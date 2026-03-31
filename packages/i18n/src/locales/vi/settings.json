@@ -1,4 +1,28 @@
 {
   "title": "Cài Đặt",
-  "subtitle": "Cấu hình cài đặt hệ thống hành động toàn cục cho máy chủ của bạn."
+  "subtitle": "Cấu hình cài đặt hệ thống hành động toàn cục cho máy chủ của bạn.",
+  "actionSystem": {
+    "title": "Cài Đặt Hệ Thống Hành Động",
+    "maxRules": "Số Quy Tắc Tối Đa Mỗi Máy Chủ",
+    "logChannel": "Kênh Nhật Ký (tùy chọn)",
+    "noLogChannel": "Không có kênh nhật ký",
+    "globalEnable": "Bật Toàn Cục (tắt để tạm dừng tất cả quy tắc)",
+    "saving": "Đang lưu...",
+    "save": "Lưu Cài Đặt",
+    "saved": "Đã lưu cài đặt",
+    "maxRulesError": "Số quy tắc tối đa phải nằm trong khoảng từ 1 đến 100"
+  },
+  "notifications": {
+    "title": "Tùy Chọn Thông Báo",
+    "ruleTriggered": "Quy Tắc Được Kích Hoạt",
+    "errorAlerts": "Cảnh Báo Lỗi",
+    "successReports": "Báo Cáo Thành Công"
+  },
+  "dangerZone": {
+    "title": "Vùng Nguy Hiểm",
+    "description": "Các hành động phá hoại không thể hoàn tác.",
+    "deleteAllRules": "Xóa Tất Cả Quy Tắc",
+    "deleteAllConfirm": "Bạn có chắc muốn xóa TẤT CẢ quy tắc? Hành động này không thể hoàn tác.",
+    "notImplemented": "Xóa tất cả quy tắc chưa được triển khai"
+  }
 }

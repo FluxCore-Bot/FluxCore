@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Registros de actividad",
     "events": "Registros de eventos"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Tasa de ejecución",
+      "totalFailures": "Total de fallos",
+      "totalEntries": "Total de entradas"
+    },
+    "filter": {
+      "search": "Buscar registros...",
+      "last1h": "Última hora",
+      "last24h": "Últimas 24 horas",
+      "last7d": "Últimos 7 días"
+    },
+    "table": {
+      "timestamp": "Marca de tiempo",
+      "ruleName": "Nombre de la regla",
+      "eventType": "Tipo de evento",
+      "action": "Acción",
+      "status": "Estado",
+      "details": "Detalles",
+      "success": "Exitoso",
+      "failed": "Fallido"
+    },
+    "pagination": {
+      "showing": "Mostrando {{from}} a {{to}} de {{total}} resultados",
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
+    "empty": {
+      "title": "No se encontraron registros",
+      "description": "Los registros de ejecución de reglas aparecerán aquí una vez que las reglas de automatización comiencen a ejecutarse."
+    }
+  },
+  "events": {
+    "title": "Navegador de registros de eventos",
+    "filter": {
+      "allCategories": "Todas las categorías",
+      "byUserId": "Filtrar por ID de usuario...",
+      "entries": "{{count}} entradas"
+    },
+    "categories": {
+      "message": "Mensaje",
+      "member": "Miembro",
+      "voice": "Voz",
+      "channel": "Canal",
+      "role": "Rol",
+      "server": "Servidor",
+      "moderation": "Moderación"
+    },
+    "categoryEvents": {
+      "message": "Eventos de mensajes",
+      "member": "Eventos de miembros",
+      "voice": "Eventos de voz",
+      "channel": "Eventos de canales",
+      "role": "Eventos de roles",
+      "server": "Eventos del servidor",
+      "moderation": "Eventos de moderación"
+    },
+    "table": {
+      "timestamp": "Marca de tiempo",
+      "category": "Categoría",
+      "event": "Evento",
+      "target": "Objetivo",
+      "executor": "Ejecutor"
+    },
+    "pagination": {
+      "page": "Página {{page}} de {{total}} ({{count}} en total)",
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
+    "empty": {
+      "title": "No se encontraron registros de eventos",
+      "description": "Los registros de eventos aparecerán aquí una vez que el registro esté configurado y los eventos comiencen a ocurrir."
+    },
+    "config": {
+      "selectChannel": "Seleccionar canal de registros"
+    }
   }
 }

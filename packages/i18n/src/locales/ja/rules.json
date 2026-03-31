@@ -82,6 +82,67 @@
     "bulkEnableFailed": "ルールの有効化に失敗しました",
     "bulkDisableFailed": "ルールの無効化に失敗しました",
     "bulkDeleted": "{{count}}件のルールを削除しました",
-    "bulkDeleteFailed": "ルールの削除に失敗しました"
+    "bulkDeleteFailed": "ルールの削除に失敗しました",
+    "updated": "ルールを更新しました",
+    "created": "ルールを作成しました"
+  },
+  "form": {
+    "ruleName": "ルール名",
+    "ruleNamePlaceholder": "マイルール...",
+    "eventType": "イベントタイプ",
+    "selectEvent": "イベントを選択...",
+    "priority": "優先度",
+    "actions": "アクション",
+    "addAction": "+ アクションを追加",
+    "enabled": "有効",
+    "editRule": "ルールを編集",
+    "createRule": "ルールを作成",
+    "workflowView": "ワークフロービュー",
+    "draftRestored": "前回のセッションからドラフトを復元しました。",
+    "dismiss": "閉じる",
+    "atLeastOneAction": "少なくとも1つのアクションをタイプ付きで設定する必要があります。",
+    "saving": "保存中...",
+    "update": "ルールを更新",
+    "create": "ルールを作成",
+    "cancel": "キャンセル"
+  },
+  "conditions": {
+    "title": "条件",
+    "channels": "チャンネル",
+    "roles": "ロール",
+    "users": "ユーザー",
+    "addChannel": "チャンネルを追加...",
+    "addRole": "ロールを追加...",
+    "excludeChannel": "チャンネルを除外...",
+    "excludeRole": "ロールを除外...",
+    "userId": "ユーザーID...",
+    "addConditions": "このルールが発動する条件を追加する",
+    "active": "アクティブ",
+    "description": "設定されている場合、イベントがすべての包含フィルターに一致し、除外フィルターのいずれにも一致しない場合のみこのルールが発動します。",
+    "include": "含める（ホワイトリスト）",
+    "exclude": "除外する（ブラックリスト）",
+    "clearAll": "すべての条件をクリア"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "接続できません：循環が発生します"
+    },
+    "labels": {
+      "rules": "ルール",
+      "field": "フィールド",
+      "operator": "演算子",
+      "value": "値"
+    },
+    "status": {
+      "ready": "準備完了",
+      "notConfigured": "未設定"
+    },
+    "shortcuts": {
+      "close": "閉じる",
+      "save": "保存",
+      "removeNode": "ノードを削除",
+      "addAction": "アクションを追加",
+      "fitView": "ビューを調整"
+    }
   }
 }

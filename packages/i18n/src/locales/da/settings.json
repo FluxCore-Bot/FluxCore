@@ -1,4 +1,28 @@
 {
   "title": "Indstillinger",
-  "subtitle": "Konfigurer globale handlingssystemindstillinger for din server."
+  "subtitle": "Konfigurer globale handlingssystemindstillinger for din server.",
+  "actionSystem": {
+    "title": "Indstillinger for handlingssystem",
+    "maxRules": "Maksimalt antal regler pr. server",
+    "logChannel": "Logkanal (valgfrit)",
+    "noLogChannel": "Ingen logkanal",
+    "globalEnable": "Globalt aktiver (deaktiver for at sætte alle regler på pause)",
+    "saving": "Gemmer...",
+    "save": "Gem indstillinger",
+    "saved": "Indstillinger gemt",
+    "maxRulesError": "Maksimalt antal regler skal være mellem 1 og 100"
+  },
+  "notifications": {
+    "title": "Notifikationsindstillinger",
+    "ruleTriggered": "Regel udløst",
+    "errorAlerts": "Fejladvarsler",
+    "successReports": "Succesrapporter"
+  },
+  "dangerZone": {
+    "title": "Farezonen",
+    "description": "Destruktive handlinger, der ikke kan fortrydes.",
+    "deleteAllRules": "Slet alle regler",
+    "deleteAllConfirm": "Er du sikker på, at du vil slette ALLE regler? Dette kan ikke fortrydes.",
+    "notImplemented": "Slet alle regler er ikke implementeret endnu"
+  }
 }

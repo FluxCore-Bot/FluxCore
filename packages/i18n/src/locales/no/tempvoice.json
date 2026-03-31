@@ -1,5 +1,30 @@
 {
   "label": "Administrasjonshub",
   "title": "Midlertidige talekanaler",
-  "subtitle": "Konfigurer huber som lar brukere opprette sine egne midlertidige talekanaler ved å bli med."
+  "subtitle": "Konfigurer huber som lar brukere opprette sine egne midlertidige talekanaler ved å bli med.",
+  "form": {
+    "sameAsHub": "Samme som hubkanalen",
+    "defaultNameTemplate": "{user}s kanal",
+    "hubChannel": "Hubkanal",
+    "selectHub": "Velg en talekanal...",
+    "category": "Kategori (valgfritt)",
+    "nameTemplate": "Kanalnavn-mal",
+    "addConfig": "Legg til konfigurasjon",
+    "editConfig": "Rediger konfigurasjon",
+    "save": "Lagre konfigurasjon",
+    "saving": "Lagrer...",
+    "cancel": "Avbryt",
+    "delete": "Slett",
+    "edit": "Rediger"
+  },
+  "empty": {
+    "noConfigs": "Ingen konfigurasjoner ennå",
+    "noConfigsDesc": "Legg til en hubkanal for å aktivere midlertidige talekanaler.",
+    "addFirst": "Legg til konfigurasjon"
+  },
+  "toast": {
+    "updated": "Konfigurasjon oppdatert",
+    "created": "Konfigurasjon opprettet",
+    "removed": "Konfigurasjon fjernet"
+  }
 }

@@ -1,5 +1,30 @@
 {
   "label": "Hub de Gestionare",
   "title": "Canale Vocale Temporare",
-  "subtitle": "Configurează hub-uri care permit utilizatorilor să creeze propriile canale vocale efemere la intrare."
+  "subtitle": "Configurează hub-uri care permit utilizatorilor să creeze propriile canale vocale efemere la intrare.",
+  "form": {
+    "sameAsHub": "Același ca și canalul hub",
+    "defaultNameTemplate": "Canalul lui {user}",
+    "hubChannel": "Canal Hub",
+    "selectHub": "Selectează un canal vocal...",
+    "category": "Categorie (opțional)",
+    "nameTemplate": "Șablon Nume Canal",
+    "addConfig": "Adaugă Configurație",
+    "editConfig": "Editează Configurație",
+    "save": "Salvează Configurația",
+    "saving": "Se salvează...",
+    "cancel": "Anulează",
+    "delete": "Șterge",
+    "edit": "Editează"
+  },
+  "empty": {
+    "noConfigs": "Nicio configurație încă",
+    "noConfigsDesc": "Adaugă un canal hub pentru a activa canalele vocale temporare.",
+    "addFirst": "Adaugă Configurație"
+  },
+  "toast": {
+    "updated": "Configurație actualizată",
+    "created": "Configurație creată",
+    "removed": "Configurație eliminată"
+  }
 }

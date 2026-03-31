@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "অ্যাক্টিভিটি লগ",
     "events": "ইভেন্ট লগ"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "এক্সিকিউশন হার",
+      "totalFailures": "মোট ব্যর্থতা",
+      "totalEntries": "মোট এন্ট্রি"
+    },
+    "filter": {
+      "search": "লগ অনুসন্ধান করুন...",
+      "last1h": "শেষ ১ ঘণ্টা",
+      "last24h": "শেষ ২৪ ঘণ্টা",
+      "last7d": "শেষ ৭ দিন"
+    },
+    "table": {
+      "timestamp": "টাইমস্ট্যাম্প",
+      "ruleName": "নিয়মের নাম",
+      "eventType": "ইভেন্ট ধরন",
+      "action": "কার্যক্রম",
+      "status": "স্থিতি",
+      "details": "বিবরণ",
+      "success": "সফল",
+      "failed": "ব্যর্থ"
+    },
+    "pagination": {
+      "showing": "{{total}} ফলাফলের মধ্যে {{from}} থেকে {{to}} দেখানো হচ্ছে",
+      "previous": "পূর্ববর্তী",
+      "next": "পরবর্তী"
+    },
+    "empty": {
+      "title": "কোনো লগ পাওয়া যায়নি",
+      "description": "অটোমেশন নিয়ম চলা শুরু হলে নিয়ম এক্সিকিউশন লগ এখানে দেখাবে।"
+    }
+  },
+  "events": {
+    "title": "ইভেন্ট লগ ব্রাউজার",
+    "filter": {
+      "allCategories": "সব ক্যাটাগরি",
+      "byUserId": "ব্যবহারকারী ID দিয়ে ফিল্টার করুন...",
+      "entries": "{{count}}টি এন্ট্রি"
+    },
+    "categories": {
+      "message": "বার্তা",
+      "member": "সদস্য",
+      "voice": "ভয়েস",
+      "channel": "চ্যানেল",
+      "role": "রোল",
+      "server": "সার্ভার",
+      "moderation": "মডারেশন"
+    },
+    "categoryEvents": {
+      "message": "বার্তা ইভেন্ট",
+      "member": "সদস্য ইভেন্ট",
+      "voice": "ভয়েস ইভেন্ট",
+      "channel": "চ্যানেল ইভেন্ট",
+      "role": "রোল ইভেন্ট",
+      "server": "সার্ভার ইভেন্ট",
+      "moderation": "মডারেশন ইভেন্ট"
+    },
+    "table": {
+      "timestamp": "টাইমস্ট্যাম্প",
+      "category": "ক্যাটাগরি",
+      "event": "ইভেন্ট",
+      "target": "লক্ষ্য",
+      "executor": "এক্সিকিউটর"
+    },
+    "pagination": {
+      "page": "পৃষ্ঠা {{page}} / {{total}} ({{count}} মোট)",
+      "previous": "পূর্ববর্তী",
+      "next": "পরবর্তী"
+    },
+    "empty": {
+      "title": "কোনো ইভেন্ট লগ পাওয়া যায়নি",
+      "description": "লগিং কনফিগার হলে এবং ইভেন্ট শুরু হলে ইভেন্ট লগ এখানে দেখাবে।"
+    },
+    "config": {
+      "selectChannel": "লগ চ্যানেল বেছে নিন"
+    }
   }
 }

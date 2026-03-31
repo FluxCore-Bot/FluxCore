@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Gagal mengaktifkan peraturan",
     "bulkDisableFailed": "Gagal menyahaktifkan peraturan",
     "bulkDeleted": "{{count}} peraturan dipadam",
-    "bulkDeleteFailed": "Gagal memadam peraturan"
+    "bulkDeleteFailed": "Gagal memadam peraturan",
+    "updated": "Peraturan dikemas kini",
+    "created": "Peraturan dicipta"
+  },
+  "form": {
+    "ruleName": "Nama Peraturan",
+    "ruleNamePlaceholder": "Peraturan saya...",
+    "eventType": "Jenis Peristiwa",
+    "selectEvent": "Pilih peristiwa...",
+    "priority": "Keutamaan",
+    "actions": "Tindakan",
+    "addAction": "+ Tambah Tindakan",
+    "enabled": "Diaktifkan",
+    "editRule": "Edit Peraturan",
+    "createRule": "Cipta Peraturan",
+    "workflowView": "Paparan Aliran Kerja",
+    "draftRestored": "Draf dipulihkan dari sesi sebelumnya.",
+    "dismiss": "Tutup",
+    "atLeastOneAction": "Sekurang-kurangnya satu tindakan mesti dikonfigurasi dengan jenis.",
+    "saving": "Menyimpan...",
+    "update": "Kemas Kini Peraturan",
+    "create": "Cipta Peraturan",
+    "cancel": "Batal"
+  },
+  "conditions": {
+    "title": "Syarat",
+    "channels": "Saluran",
+    "roles": "Peranan",
+    "users": "Pengguna",
+    "addChannel": "Tambah saluran...",
+    "addRole": "Tambah peranan...",
+    "excludeChannel": "Kecualikan saluran...",
+    "excludeRole": "Kecualikan peranan...",
+    "userId": "ID Pengguna...",
+    "addConditions": "Tambah syarat untuk menapis bila peraturan ini dijalankan",
+    "active": "Aktif",
+    "description": "Apabila ditetapkan, peraturan ini hanya berjalan jika peristiwa sepadan dengan semua penapis sertakan dan tidak sepadan dengan mana-mana penapis kecualikan.",
+    "include": "Sertakan (senarai putih)",
+    "exclude": "Kecualikan (senarai hitam)",
+    "clearAll": "Kosongkan semua syarat"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Tidak boleh disambungkan: akan mewujudkan kitaran"
+    },
+    "labels": {
+      "rules": "Peraturan",
+      "field": "Medan",
+      "operator": "Operator",
+      "value": "Nilai"
+    },
+    "status": {
+      "ready": "Sedia",
+      "notConfigured": "Belum dikonfigurasi"
+    },
+    "shortcuts": {
+      "close": "Tutup",
+      "save": "Simpan",
+      "removeNode": "Buang nod",
+      "addAction": "Tambah tindakan",
+      "fitView": "Sesuaikan paparan"
+    }
   }
 }

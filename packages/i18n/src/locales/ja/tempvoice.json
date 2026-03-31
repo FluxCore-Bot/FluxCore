@@ -1,5 +1,30 @@
 {
   "label": "管理ハブ",
   "title": "テンポラリボイスチャンネル",
-  "subtitle": "参加時にユーザーが独自の一時的なボイスチャンネルを作成できるハブを設定します。"
+  "subtitle": "参加時にユーザーが独自の一時的なボイスチャンネルを作成できるハブを設定します。",
+  "form": {
+    "sameAsHub": "ハブチャンネルと同じ",
+    "defaultNameTemplate": "{user}のチャンネル",
+    "hubChannel": "ハブチャンネル",
+    "selectHub": "ボイスチャンネルを選択...",
+    "category": "カテゴリ（任意）",
+    "nameTemplate": "チャンネル名テンプレート",
+    "addConfig": "設定を追加",
+    "editConfig": "設定を編集",
+    "save": "設定を保存",
+    "saving": "保存中...",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集"
+  },
+  "empty": {
+    "noConfigs": "設定がまだありません",
+    "noConfigsDesc": "ハブチャンネルを追加して一時ボイスチャンネルを有効にしてください。",
+    "addFirst": "設定を追加"
+  },
+  "toast": {
+    "updated": "設定を更新しました",
+    "created": "設定を作成しました",
+    "removed": "設定を削除しました"
+  }
 }

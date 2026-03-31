@@ -1,5 +1,30 @@
 {
   "label": "Halduskeskus",
   "title": "Ajutised häälekanalid",
-  "subtitle": "Seadista jaoturid, mis võimaldavad kasutajatel liitumise korral oma efemeerseid häälekanaleid luua."
+  "subtitle": "Seadista jaoturid, mis võimaldavad kasutajatel liitumise korral oma efemeerseid häälekanaleid luua.",
+  "form": {
+    "sameAsHub": "Sama mis jaoturkanal",
+    "defaultNameTemplate": "{user} kanal",
+    "hubChannel": "Jaoturkanal",
+    "selectHub": "Vali häälekanal...",
+    "category": "Kategooria (valikuline)",
+    "nameTemplate": "Kanali nime mall",
+    "addConfig": "Lisa seadistus",
+    "editConfig": "Muuda seadistust",
+    "save": "Salvesta seadistus",
+    "saving": "Salvestamine...",
+    "cancel": "Tühista",
+    "delete": "Kustuta",
+    "edit": "Muuda"
+  },
+  "empty": {
+    "noConfigs": "Seadistusi pole veel",
+    "noConfigsDesc": "Lisa jaoturkanal, et lubada ajutised häälekanalid.",
+    "addFirst": "Lisa seadistus"
+  },
+  "toast": {
+    "updated": "Seadistus uuendatud",
+    "created": "Seadistus loodud",
+    "removed": "Seadistus eemaldatud"
+  }
 }

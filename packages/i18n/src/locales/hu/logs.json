@@ -1,0 +1,85 @@
+{
+  "title": "Naplók",
+  "subtitle": "Figyelje a szabályok végrehajtását és az eseménynaplózást.",
+  "tabs": {
+    "activity": "Tevékenységnaplók",
+    "events": "Eseménynaplók"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Végrehajtási arány",
+      "totalFailures": "Összes hiba",
+      "totalEntries": "Összes bejegyzés"
+    },
+    "filter": {
+      "search": "Naplók keresése...",
+      "last1h": "Utolsó 1 óra",
+      "last24h": "Utolsó 24 óra",
+      "last7d": "Utolsó 7 nap"
+    },
+    "table": {
+      "timestamp": "Időbélyeg",
+      "ruleName": "Szabály neve",
+      "eventType": "Esemény típusa",
+      "action": "Művelet",
+      "status": "Állapot",
+      "details": "Részletek",
+      "success": "Sikeres",
+      "failed": "Sikertelen"
+    },
+    "pagination": {
+      "showing": "{{from}}–{{to}} megjelenítve {{total}} eredményből",
+      "previous": "Előző",
+      "next": "Következő"
+    },
+    "empty": {
+      "title": "Nem található napló",
+      "description": "A szabályok végrehajtási naplói itt jelennek meg, ha az automatizálási szabályok elkezdenek futni."
+    }
+  },
+  "events": {
+    "title": "Eseménynapló böngésző",
+    "filter": {
+      "allCategories": "Összes kategória",
+      "byUserId": "Szűrés felhasználói azonosítóra...",
+      "entries": "{{count}} bejegyzés"
+    },
+    "categories": {
+      "message": "Üzenet",
+      "member": "Tag",
+      "voice": "Hang",
+      "channel": "Csatorna",
+      "role": "Szerep",
+      "server": "Szerver",
+      "moderation": "Moderáció"
+    },
+    "categoryEvents": {
+      "message": "Üzenet-események",
+      "member": "Tag-események",
+      "voice": "Hang-események",
+      "channel": "Csatorna-események",
+      "role": "Szerep-események",
+      "server": "Szerver-események",
+      "moderation": "Moderációs események"
+    },
+    "table": {
+      "timestamp": "Időbélyeg",
+      "category": "Kategória",
+      "event": "Esemény",
+      "target": "Cél",
+      "executor": "Végrehajtó"
+    },
+    "pagination": {
+      "page": "{{page}}. oldal / {{total}} (összesen {{count}})",
+      "previous": "Előző",
+      "next": "Következő"
+    },
+    "empty": {
+      "title": "Nem található eseménynapló",
+      "description": "Az eseménynaplók itt jelennek meg, ha a naplózás be van állítva és az események bekövetkeznek."
+    },
+    "config": {
+      "selectChannel": "Naplócsatorna kiválasztása"
+    }
+  }
+}

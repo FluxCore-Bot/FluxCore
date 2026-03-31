@@ -46,15 +46,15 @@
   },
   "templates": {
     "welcomeMessage": "Karşılama Mesajı",
-    "welcomeMessageDesc": "Yeni üyeleri bir kanaldaki özel mesajla selamlayın",
+    "welcomeMessageDesc": "Yeni üyeleri bir kanalda özel mesajla selamlayın",
     "autoRole": "Otomatik Rol",
     "autoRoleDesc": "Bir üye katıldığında otomatik olarak rol ata",
     "logDeleted": "Silinen Mesajları Kaydet",
     "logDeletedDesc": "Silinen mesaj bilgilerini bir günlük kanalına gönderin",
-    "boostThankYou": "Boost Teşekkür",
+    "boostThankYou": "Boost Teşekkürü",
     "boostThankYouDesc": "Sunucuyu boost yapan kullanıcılara teşekkür eden bir DM gönderin",
-    "banLogger": "Yasak Kayıt",
-    "banLoggerDesc": "Yasak olaylarını bir moderasyon kanalına kaydedin",
+    "banLogger": "Ban Kaydedici",
+    "banLoggerDesc": "Ban olaylarını bir moderasyon kanalına kaydedin",
     "autoThread": "Otomatik Konu",
     "autoThreadDesc": "Bir mesaj gönderildiğinde otomatik olarak konu oluşturun"
   },
@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Kurallar etkinleştirilemedi",
     "bulkDisableFailed": "Kurallar devre dışı bırakılamadı",
     "bulkDeleted": "{{count}} kural silindi",
-    "bulkDeleteFailed": "Kurallar silinemedi"
+    "bulkDeleteFailed": "Kurallar silinemedi",
+    "updated": "Kural güncellendi",
+    "created": "Kural oluşturuldu"
+  },
+  "form": {
+    "ruleName": "Kural Adı",
+    "ruleNamePlaceholder": "Kuralım...",
+    "eventType": "Olay Türü",
+    "selectEvent": "Olay seç...",
+    "priority": "Öncelik",
+    "actions": "Eylemler",
+    "addAction": "+ Eylem Ekle",
+    "enabled": "Etkin",
+    "editRule": "Kuralı Düzenle",
+    "createRule": "Kural Oluştur",
+    "workflowView": "İş Akışı Görünümü",
+    "draftRestored": "Taslak önceki oturumdan geri yüklendi.",
+    "dismiss": "Kapat",
+    "atLeastOneAction": "En az bir eylem bir türle yapılandırılmalıdır.",
+    "saving": "Kaydediliyor...",
+    "update": "Kuralı Güncelle",
+    "create": "Kural Oluştur",
+    "cancel": "İptal"
+  },
+  "conditions": {
+    "title": "Koşullar",
+    "channels": "Kanallar",
+    "roles": "Roller",
+    "users": "Kullanıcılar",
+    "addChannel": "Kanal ekle...",
+    "addRole": "Rol ekle...",
+    "excludeChannel": "Kanal hariç tut...",
+    "excludeRole": "Rol hariç tut...",
+    "userId": "Kullanıcı Kimliği...",
+    "addConditions": "Bu kuralın ne zaman çalışacağını filtrelemek için koşul ekleyin",
+    "active": "aktif",
+    "description": "Ayarlandığında, bu kural yalnızca olay tüm dahil etme filtrelerini karşıladığında ve dışlama filtrelerinin hiçbirini karşılamadığında çalışır.",
+    "include": "Dahil Et (beyaz liste)",
+    "exclude": "Hariç Tut (kara liste)",
+    "clearAll": "Tüm koşulları temizle"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Bağlanamaz: döngü oluşturur"
+    },
+    "labels": {
+      "rules": "Kurallar",
+      "field": "Alan",
+      "operator": "Operatör",
+      "value": "Değer"
+    },
+    "status": {
+      "ready": "Hazır",
+      "notConfigured": "Yapılandırılmamış"
+    },
+    "shortcuts": {
+      "close": "Kapat",
+      "save": "Kaydet",
+      "removeNode": "Düğümü kaldır",
+      "addAction": "Eylem ekle",
+      "fitView": "Görünümü sığdır"
+    }
   }
 }

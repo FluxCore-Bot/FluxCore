@@ -1,4 +1,28 @@
 {
   "title": "設定",
-  "subtitle": "サーバーのグローバルアクションシステム設定を構成します。"
+  "subtitle": "サーバーのグローバルアクションシステム設定を構成します。",
+  "actionSystem": {
+    "title": "アクションシステム設定",
+    "maxRules": "ギルドあたりの最大ルール数",
+    "logChannel": "ログチャンネル（任意）",
+    "noLogChannel": "ログチャンネルなし",
+    "globalEnable": "グローバル有効化（無効にするとすべてのルールが一時停止）",
+    "saving": "保存中...",
+    "save": "設定を保存",
+    "saved": "設定を保存しました",
+    "maxRulesError": "最大ルール数は1から100の間でなければなりません"
+  },
+  "notifications": {
+    "title": "通知設定",
+    "ruleTriggered": "ルールがトリガーされました",
+    "errorAlerts": "エラーアラート",
+    "successReports": "成功レポート"
+  },
+  "dangerZone": {
+    "title": "危険ゾーン",
+    "description": "取り消しのできない破壊的な操作。",
+    "deleteAllRules": "すべてのルールを削除",
+    "deleteAllConfirm": "すべてのルールを削除してもよろしいですか？この操作は取り消せません。",
+    "notImplemented": "すべてのルールの削除はまだ実装されていません"
+  }
 }

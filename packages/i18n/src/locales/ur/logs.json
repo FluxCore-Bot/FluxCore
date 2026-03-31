@@ -1,8 +1,85 @@
 {
-  "title": "[NEEDS TRANSLATION] Logs",
-  "subtitle": "[NEEDS TRANSLATION] Monitor rule executions and event logging.",
+  "title": "لاگز",
+  "subtitle": "قواعد کے عمل درآمد اور واقعات کی لاگنگ مانیٹر کریں۔",
   "tabs": {
-    "activity": "[NEEDS TRANSLATION] Activity Logs",
-    "events": "[NEEDS TRANSLATION] Event Logs"
+    "activity": "سرگرمی لاگز",
+    "events": "واقعات لاگز"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "عمل درآمد کی شرح",
+      "totalFailures": "کل ناکامیاں",
+      "totalEntries": "کل اندراجات"
+    },
+    "filter": {
+      "search": "لاگز تلاش کریں...",
+      "last1h": "آخری 1 گھنٹہ",
+      "last24h": "آخری 24 گھنٹے",
+      "last7d": "آخری 7 دن"
+    },
+    "table": {
+      "timestamp": "وقت",
+      "ruleName": "قاعدے کا نام",
+      "eventType": "واقعے کی قسم",
+      "action": "عمل",
+      "status": "حالت",
+      "details": "تفصیلات",
+      "success": "کامیاب",
+      "failed": "ناکام"
+    },
+    "pagination": {
+      "showing": "{{total}} نتائج میں سے {{from}} تا {{to}} دکھا رہا ہے",
+      "previous": "پچھلا",
+      "next": "اگلا"
+    },
+    "empty": {
+      "title": "کوئی لاگ نہیں ملا",
+      "description": "آٹومیشن قواعد چلنا شروع ہونے کے بعد قواعد کے عمل درآمد لاگ یہاں نظر آئیں گے۔"
+    }
+  },
+  "events": {
+    "title": "ایونٹ لاگ براؤزر",
+    "filter": {
+      "allCategories": "تمام زمرے",
+      "byUserId": "صارف ID سے فلٹر...",
+      "entries": "{{count}} اندراجات"
+    },
+    "categories": {
+      "message": "پیغام",
+      "member": "ممبر",
+      "voice": "آواز",
+      "channel": "چینل",
+      "role": "کردار",
+      "server": "سرور",
+      "moderation": "نگرانی"
+    },
+    "categoryEvents": {
+      "message": "پیغام واقعات",
+      "member": "ممبر واقعات",
+      "voice": "آواز واقعات",
+      "channel": "چینل واقعات",
+      "role": "کردار واقعات",
+      "server": "سرور واقعات",
+      "moderation": "نگرانی واقعات"
+    },
+    "table": {
+      "timestamp": "وقت",
+      "category": "زمرہ",
+      "event": "واقعہ",
+      "target": "ہدف",
+      "executor": "عمل کنندہ"
+    },
+    "pagination": {
+      "page": "صفحہ {{page}} از {{total}} ({{count}} کل)",
+      "previous": "پچھلا",
+      "next": "اگلا"
+    },
+    "empty": {
+      "title": "کوئی ایونٹ لاگ نہیں ملا",
+      "description": "لاگنگ ترتیب دینے اور واقعات شروع ہونے کے بعد ایونٹ لاگ یہاں نظر آئیں گے۔"
+    },
+    "config": {
+      "selectChannel": "لاگ چینل منتخب کریں"
+    }
   }
 }

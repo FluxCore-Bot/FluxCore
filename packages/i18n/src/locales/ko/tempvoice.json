@@ -1,5 +1,30 @@
 {
   "label": "관리 허브",
   "title": "임시 음성 채널",
-  "subtitle": "참여 시 사용자가 자신만의 임시 음성 채널을 생성할 수 있는 허브를 구성합니다."
+  "subtitle": "참여 시 사용자가 자신만의 임시 음성 채널을 생성할 수 있는 허브를 구성합니다.",
+  "form": {
+    "sameAsHub": "허브 채널과 동일",
+    "defaultNameTemplate": "{user}의 채널",
+    "hubChannel": "허브 채널",
+    "selectHub": "음성 채널 선택...",
+    "category": "카테고리 (선택사항)",
+    "nameTemplate": "채널 이름 템플릿",
+    "addConfig": "구성 추가",
+    "editConfig": "구성 편집",
+    "save": "구성 저장",
+    "saving": "저장 중...",
+    "cancel": "취소",
+    "delete": "삭제",
+    "edit": "편집"
+  },
+  "empty": {
+    "noConfigs": "아직 구성이 없습니다",
+    "noConfigsDesc": "허브 채널을 추가하여 임시 음성 채널을 활성화하세요.",
+    "addFirst": "구성 추가"
+  },
+  "toast": {
+    "updated": "구성이 업데이트되었습니다",
+    "created": "구성이 생성되었습니다",
+    "removed": "구성이 제거되었습니다"
+  }
 }

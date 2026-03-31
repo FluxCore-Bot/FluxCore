@@ -5,12 +5,12 @@
     "dashboard": "FluxCore juhtpaneel"
   },
   "status": {
-    "online": "Vorgus",
-    "offline": "Vorgust valjas",
+    "online": "Võrgus",
+    "offline": "Võrgust väljas",
     "latency": "{{ms}}ms"
   },
   "nav": {
-    "overview": "Ulevaade",
+    "overview": "Ülevaade",
     "automation": "Automatiseerimine",
     "music": "Muusika",
     "tempvoice": "TempVoice",
@@ -20,19 +20,19 @@
     "rolePanels": "Rollipaneelid",
     "leveling": "Tasemed",
     "scheduled": "Ajastatud",
-    "commands": "Kaklused",
+    "commands": "Käsud",
     "security": "Turvalisus",
     "tickets": "Piletid",
     "giveaways": "Loosimised",
     "suggestions": "Ettepanekud",
     "starboard": "Starboard",
     "logs": "Logid",
-    "permissions": "Oigused",
+    "permissions": "Õigused",
     "settings": "Seaded"
   },
   "actions": {
     "save": "Salvesta",
-    "cancel": "Tuhista",
+    "cancel": "Tühista",
     "delete": "Kustuta",
     "edit": "Muuda",
     "create": "Loo",
@@ -44,8 +44,8 @@
     "next": "Edasi",
     "search": "Otsi",
     "filter": "Filtreeri",
-    "refresh": "Varskenda",
-    "reset": "Lahtesta",
+    "refresh": "Värskenda",
+    "reset": "Lähtesta",
     "enable": "Luba",
     "disable": "Keela",
     "copy": "Kopeeri",
@@ -61,31 +61,51 @@
     "active": "Aktiivne",
     "inactive": "Mitteaktiivne",
     "none": "Puudub",
-    "all": "Koik",
+    "all": "Kõik",
     "custom": "Kohandatud",
     "default": "Vaikimisi",
-    "required": "NoUtud",
+    "required": "Nõutav",
     "optional": "Valikuline",
     "name": "Nimi",
     "description": "Kirjeldus",
-    "type": "Tuup",
+    "type": "Tüüp",
     "status": "Olek",
     "channel": "Kanal",
+    "channels": "Kanalid",
     "role": "Roll",
+    "roles": "Rollid",
     "member": "Liige",
+    "users": "Kasutajad",
+    "conditions": "Tingimused",
     "duration": "Kestus",
-    "reason": "Pohjus",
+    "reason": "Põhjus",
     "language": "Keel"
+  },
+  "form": {
+    "selectChannel": "Vali kanal...",
+    "selectRole": "Vali roll...",
+    "select": "Vali...",
+    "saving": "Salvestamine...",
+    "saveSettings": "Salvesta seaded",
+    "previous": "Eelmine",
+    "next": "Järgmine"
+  },
+  "pagination": {
+    "previous": "Eelmine",
+    "next": "Järgmine",
+    "page": "Lehekülg {{page}} / {{total}}",
+    "showing": "Kuvatakse {{from}}–{{to}} / {{total}} tulemust",
+    "showingPage": "Lehekülg {{page}} / {{total}} (kokku {{count}})"
   },
   "header": {
     "notifications": "Teavitused",
     "settings": "Seaded",
-    "logout": "Logi valja",
-    "toggleSidebar": "Lulita kulgriba",
-    "refreshData": "Varskenda Discord andmeid"
+    "logout": "Logi välja",
+    "toggleSidebar": "Lülita külgriba",
+    "refreshData": "Värskenda Discord andmeid"
   },
   "sidebar": {
-    "closeSidebar": "Sulge kulgriba",
+    "closeSidebar": "Sulge külgriba",
     "addToServer": "Lisa serverisse",
     "docs": "Dokumentatsioon",
     "support": "Tugi",
@@ -94,28 +114,28 @@
   "empty": {
     "noData": "Andmed puuduvad",
     "noResults": "Tulemusi ei leitud",
-    "noItems": "Uksusi veel pole"
+    "noItems": "Üksusi pole veel"
   },
   "time": {
     "seconds": "sekundit",
     "minutes": "minutit",
     "hours": "tundi",
-    "days": "paeva",
+    "days": "päeva",
     "ago": "{{time}} tagasi",
-    "in": "{{time}} parast"
+    "in": "{{time}} pärast"
   },
   "confirm": {
-    "title": "Kas olete kindel?",
+    "title": "Kas oled kindel?",
     "deleteTitle": "Kinnita kustutamine",
-    "deleteMessage": "Seda toimingut ei saa tagasi votta.",
-    "unsavedChanges": "Teil on salvestamata muudatused. Kas soovite kindlasti lahkuda?"
+    "deleteMessage": "Seda toimingut ei saa tagasi võtta.",
+    "unsavedChanges": "Sul on salvestamata muudatused. Kas soovid kindlasti lahkuda?"
   },
   "accessibility": {
-    "skipToContent": "Liigu pohisisuni",
+    "skipToContent": "Mine põhisisuni",
     "loading": "Sisu laadimine",
     "loaded": "Sisu laaditud",
     "error": "Tekkis viga",
-    "menuOpen": "Menuu on avatud",
-    "menuClosed": "Menuu on suletud"
+    "menuOpen": "Menüü on avatud",
+    "menuClosed": "Menüü on suletud"
   }
 }

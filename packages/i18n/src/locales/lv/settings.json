@@ -1,4 +1,28 @@
 {
-  "title": "Iestatijumi",
-  "subtitle": "Konfigurejiet globalos darbibu sistemas iestatijumus savam serverim."
+  "title": "Iestatījumi",
+  "subtitle": "Konfigurējiet globālos darbību sistēmas iestatījumus savam serverim.",
+  "actionSystem": {
+    "title": "Darbību sistēmas iestatījumi",
+    "maxRules": "Maksimālie noteikumi vienam serverim",
+    "logChannel": "Žurnāla kanāls (neobligāts)",
+    "noLogChannel": "Nav žurnāla kanāla",
+    "globalEnable": "Globāls ieslēgšanas stāvoklis (atspējojiet, lai apturētu visus noteikumus)",
+    "saving": "Saglabā...",
+    "save": "Saglabāt iestatījumus",
+    "saved": "Iestatījumi saglabāti",
+    "maxRulesError": "Maksimālajam noteikumu skaitam jābūt no 1 līdz 100"
+  },
+  "notifications": {
+    "title": "Paziņojumu preferences",
+    "ruleTriggered": "Noteikums aktivizēts",
+    "errorAlerts": "Kļūdu brīdinājumi",
+    "successReports": "Veiksmju atskaites"
+  },
+  "dangerZone": {
+    "title": "Bīstamā zona",
+    "description": "Destruktīvas darbības, kuras nevar atsaukt.",
+    "deleteAllRules": "Dzēst visus noteikumus",
+    "deleteAllConfirm": "Vai tiešām vēlaties dzēst VISUS noteikumus? To nevar atsaukt.",
+    "notImplemented": "Visu noteikumu dzēšana vēl nav ieviesta"
+  }
 }

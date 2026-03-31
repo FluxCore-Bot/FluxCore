@@ -1,15 +1,15 @@
 {
   "breadcrumb": {
     "guild": "Servidor",
-    "automation": "Automatizacao"
+    "automation": "Automatização"
   },
-  "title": "Regras de automatizacao",
+  "title": "Regras de automatização",
   "subtitle": "Configure gatilhos baseados em eventos e respostas automatizadas para o seu servidor.",
   "createRule": "Criar regra",
   "stats": {
     "totalRules": "Total de regras",
     "active": "Ativas",
-    "executions7d": "Execucoes (7d)",
+    "executions7d": "Execuções (7d)",
     "successRate": "Taxa de sucesso"
   },
   "filter": {
@@ -17,12 +17,12 @@
     "eventType": "Tipo de evento",
     "allEvents": "Todos os eventos",
     "allStatus": "Todos os estados",
-    "enabled": "Ativada",
-    "disabled": "Desativada",
+    "enabled": "Ativadas",
+    "disabled": "Desativadas",
     "sortBy": "Ordenar por",
     "priority": "Prioridade",
     "name": "Nome",
-    "lastFired": "Ultimo acionamento",
+    "lastFired": "Último acionamento",
     "status": "Estado",
     "clear": "Limpar",
     "showing": "A mostrar {{filtered}} de {{total}} regras"
@@ -36,8 +36,8 @@
     "clear": "Limpar"
   },
   "empty": {
-    "title": "Comece com a automatizacao",
-    "description": "Escolha um modelo para comecar rapidamente ou crie uma regra de raiz.",
+    "title": "Comece com a automatização",
+    "description": "Escolha um modelo para começar rapidamente ou crie uma regra de raiz.",
     "createFromScratch": "Criar de raiz"
   },
   "noResults": {
@@ -47,26 +47,26 @@
   "templates": {
     "welcomeMessage": "Mensagem de boas-vindas",
     "welcomeMessageDesc": "Saudar novos membros com uma mensagem personalizada num canal",
-    "autoRole": "Cargo automatico",
+    "autoRole": "Cargo automático",
     "autoRoleDesc": "Atribuir automaticamente um cargo quando um membro entra",
     "logDeleted": "Registar mensagens eliminadas",
-    "logDeletedDesc": "Enviar informacoes de mensagens eliminadas para um canal de registo",
+    "logDeletedDesc": "Enviar informações de mensagens eliminadas para um canal de registo",
     "boostThankYou": "Agradecimento por boost",
-    "boostThankYouDesc": "Enviar uma MD agradecendo aos utilizadores que fazem boost ao servidor",
-    "banLogger": "Registo de bans",
-    "banLoggerDesc": "Registar eventos de ban num canal de moderacao",
-    "autoThread": "Thread automatico",
-    "autoThreadDesc": "Criar automaticamente um topico quando uma mensagem e enviada"
+    "boostThankYouDesc": "Enviar uma DM agradecendo aos utilizadores que fazem boost ao servidor",
+    "banLogger": "Registo de banimentos",
+    "banLoggerDesc": "Registar eventos de banimento num canal de moderação",
+    "autoThread": "Tópico automático",
+    "autoThreadDesc": "Criar automaticamente um tópico quando uma mensagem é enviada"
   },
   "deleteDialog": {
     "title": "Eliminar regra",
-    "description": "Tem a certeza de que deseja eliminar \"{{name}}\"? Esta acao nao pode ser desfeita.",
+    "description": "Tem a certeza de que deseja eliminar \"{{name}}\"? Esta ação não pode ser desfeita.",
     "confirm": "Eliminar"
   },
   "bulkDeleteDialog": {
     "title": "Eliminar regras selecionadas",
-    "description": "Tem a certeza de que deseja eliminar {{count}} regra? Esta acao nao pode ser desfeita.",
-    "description_other": "Tem a certeza de que deseja eliminar {{count}} regras? Esta acao nao pode ser desfeita.",
+    "description": "Tem a certeza de que deseja eliminar {{count}} regra? Esta ação não pode ser desfeita.",
+    "description_other": "Tem a certeza de que deseja eliminar {{count}} regras? Esta ação não pode ser desfeita.",
     "confirm": "Eliminar tudo"
   },
   "toast": {
@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Falha ao ativar as regras",
     "bulkDisableFailed": "Falha ao desativar as regras",
     "bulkDeleted": "{{count}} regras eliminadas",
-    "bulkDeleteFailed": "Falha ao eliminar as regras"
+    "bulkDeleteFailed": "Falha ao eliminar as regras",
+    "updated": "Regra atualizada",
+    "created": "Regra criada"
+  },
+  "form": {
+    "ruleName": "Nome da regra",
+    "ruleNamePlaceholder": "A minha regra...",
+    "eventType": "Tipo de evento",
+    "selectEvent": "Selecionar evento...",
+    "priority": "Prioridade",
+    "actions": "Ações",
+    "addAction": "+ Adicionar ação",
+    "enabled": "Ativada",
+    "editRule": "Editar regra",
+    "createRule": "Criar regra",
+    "workflowView": "Vista do fluxo de trabalho",
+    "draftRestored": "Rascunho restaurado da sessão anterior.",
+    "dismiss": "Dispensar",
+    "atLeastOneAction": "Pelo menos uma ação deve ser configurada com um tipo.",
+    "saving": "A guardar...",
+    "update": "Atualizar regra",
+    "create": "Criar regra",
+    "cancel": "Cancelar"
+  },
+  "conditions": {
+    "title": "Condições",
+    "channels": "Canais",
+    "roles": "Cargos",
+    "users": "Utilizadores",
+    "addChannel": "Adicionar canal...",
+    "addRole": "Adicionar cargo...",
+    "excludeChannel": "Excluir canal...",
+    "excludeRole": "Excluir cargo...",
+    "userId": "ID do utilizador...",
+    "addConditions": "Adicionar condições para filtrar quando esta regra é acionada",
+    "active": "ativa",
+    "description": "Quando definida, esta regra só é acionada se o evento corresponder a todos os filtros de inclusão e a nenhum dos filtros de exclusão.",
+    "include": "Incluir (lista branca)",
+    "exclude": "Excluir (lista negra)",
+    "clearAll": "Limpar todas as condições"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Impossível ligar: criaria um ciclo"
+    },
+    "labels": {
+      "rules": "Regras",
+      "field": "Campo",
+      "operator": "Operador",
+      "value": "Valor"
+    },
+    "status": {
+      "ready": "Pronto",
+      "notConfigured": "Não configurado"
+    },
+    "shortcuts": {
+      "close": "Fechar",
+      "save": "Guardar",
+      "removeNode": "Remover nó",
+      "addAction": "Adicionar ação",
+      "fitView": "Ajustar vista"
+    }
   }
 }

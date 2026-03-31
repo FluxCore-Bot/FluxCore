@@ -60,7 +60,7 @@
   },
   "deleteDialog": {
     "title": "Eliminar Regra",
-    "description": "Estás seguro de que queres eliminar \"{{name}}\"? Esta acción non se pode desfacer.",
+    "description": "Estás seguro de que queres eliminar «{{name}}»? Esta acción non se pode desfacer.",
     "confirm": "Eliminar"
   },
   "bulkDeleteDialog": {
@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Non se puideron activar as regras",
     "bulkDisableFailed": "Non se puideron desactivar as regras",
     "bulkDeleted": "{{count}} regras eliminadas",
-    "bulkDeleteFailed": "Non se puideron eliminar as regras"
+    "bulkDeleteFailed": "Non se puideron eliminar as regras",
+    "updated": "Regra actualizada",
+    "created": "Regra creada"
+  },
+  "form": {
+    "ruleName": "Nome da regra",
+    "ruleNamePlaceholder": "A miña regra...",
+    "eventType": "Tipo de evento",
+    "selectEvent": "Seleccionar evento...",
+    "priority": "Prioridade",
+    "actions": "Accións",
+    "addAction": "+ Engadir acción",
+    "enabled": "Activada",
+    "editRule": "Editar regra",
+    "createRule": "Crear regra",
+    "workflowView": "Vista do fluxo de traballo",
+    "draftRestored": "O borrador restaurouse da sesión anterior.",
+    "dismiss": "Descartar",
+    "atLeastOneAction": "É preciso configurar polo menos unha acción cun tipo.",
+    "saving": "Gardando...",
+    "update": "Actualizar regra",
+    "create": "Crear regra",
+    "cancel": "Cancelar"
+  },
+  "conditions": {
+    "title": "Condicións",
+    "channels": "Canles",
+    "roles": "Roles",
+    "users": "Usuarios",
+    "addChannel": "Engadir canal...",
+    "addRole": "Engadir rol...",
+    "excludeChannel": "Excluír canal...",
+    "excludeRole": "Excluír rol...",
+    "userId": "ID de usuario...",
+    "addConditions": "Engade condicións para filtrar cando se activa esta regra",
+    "active": "activa",
+    "description": "Cando se establece, esta regra só se activa se o evento coincide con todos os filtros de inclusión e ningún dos filtros de exclusión.",
+    "include": "Incluír (lista branca)",
+    "exclude": "Excluír (lista negra)",
+    "clearAll": "Limpar todas as condicións"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Non se pode conectar: crearía un ciclo"
+    },
+    "labels": {
+      "rules": "Regras",
+      "field": "Campo",
+      "operator": "Operador",
+      "value": "Valor"
+    },
+    "status": {
+      "ready": "Listo",
+      "notConfigured": "Non configurado"
+    },
+    "shortcuts": {
+      "close": "Pechar",
+      "save": "Gardar",
+      "removeNode": "Eliminar nodo",
+      "addAction": "Engadir acción",
+      "fitView": "Axustar vista"
+    }
   }
 }

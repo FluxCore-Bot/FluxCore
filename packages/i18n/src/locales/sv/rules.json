@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Misslyckades med att aktivera regler",
     "bulkDisableFailed": "Misslyckades med att inaktivera regler",
     "bulkDeleted": "{{count}} regler borttagna",
-    "bulkDeleteFailed": "Misslyckades med att ta bort regler"
+    "bulkDeleteFailed": "Misslyckades med att ta bort regler",
+    "updated": "Regel uppdaterad",
+    "created": "Regel skapad"
+  },
+  "form": {
+    "ruleName": "Regelnamn",
+    "ruleNamePlaceholder": "Min regel...",
+    "eventType": "Händelsetyp",
+    "selectEvent": "Välj händelse...",
+    "priority": "Prioritet",
+    "actions": "Åtgärder",
+    "addAction": "+ Lägg till åtgärd",
+    "enabled": "Aktiverad",
+    "editRule": "Redigera regel",
+    "createRule": "Skapa regel",
+    "workflowView": "Arbetsflödesvy",
+    "draftRestored": "Utkast återställt från föregående session.",
+    "dismiss": "Avfärda",
+    "atLeastOneAction": "Minst en åtgärd måste konfigureras med en typ.",
+    "saving": "Sparar...",
+    "update": "Uppdatera regel",
+    "create": "Skapa regel",
+    "cancel": "Avbryt"
+  },
+  "conditions": {
+    "title": "Villkor",
+    "channels": "Kanaler",
+    "roles": "Roller",
+    "users": "Användare",
+    "addChannel": "Lägg till kanal...",
+    "addRole": "Lägg till roll...",
+    "excludeChannel": "Exkludera kanal...",
+    "excludeRole": "Exkludera roll...",
+    "userId": "Användar-ID...",
+    "addConditions": "Lägg till villkor för att filtrera när denna regel utlöses",
+    "active": "aktiv",
+    "description": "När detta är inställt utlöses regeln bara om händelsen matchar alla inkluderingsfilter och inget av exkluderingsfiltren.",
+    "include": "Inkludera (vitlista)",
+    "exclude": "Exkludera (svartlista)",
+    "clearAll": "Rensa alla villkor"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Kan inte koppla: skulle skapa en cykel"
+    },
+    "labels": {
+      "rules": "Regler",
+      "field": "Fält",
+      "operator": "Operator",
+      "value": "Värde"
+    },
+    "status": {
+      "ready": "Redo",
+      "notConfigured": "Inte konfigurerad"
+    },
+    "shortcuts": {
+      "close": "Stäng",
+      "save": "Spara",
+      "removeNode": "Ta bort nod",
+      "addAction": "Lägg till åtgärd",
+      "fitView": "Anpassa vy"
+    }
   }
 }

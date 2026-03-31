@@ -71,11 +71,31 @@
     "type": "Type",
     "status": "Status",
     "channel": "Kanaal",
+    "channels": "Kanalen",
     "role": "Rol",
+    "roles": "Rollen",
     "member": "Lid",
+    "users": "Gebruikers",
+    "conditions": "Voorwaarden",
     "duration": "Duur",
     "reason": "Reden",
     "language": "Taal"
+  },
+  "form": {
+    "selectChannel": "Kanaal selecteren...",
+    "selectRole": "Rol selecteren...",
+    "select": "Selecteren...",
+    "saving": "Opslaan...",
+    "saveSettings": "Instellingen opslaan",
+    "previous": "Vorige",
+    "next": "Volgende"
+  },
+  "pagination": {
+    "previous": "Vorige",
+    "next": "Volgende",
+    "page": "Pagina {{page}} van {{total}}",
+    "showing": "{{from}} tot {{to}} van {{total}} resultaten worden weergegeven",
+    "showingPage": "Pagina {{page}} van {{total}} ({{count}} totaal)"
   },
   "header": {
     "notifications": "Meldingen",

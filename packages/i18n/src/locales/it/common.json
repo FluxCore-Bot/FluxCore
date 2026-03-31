@@ -46,8 +46,8 @@
     "filter": "Filtra",
     "refresh": "Aggiorna",
     "reset": "Reimposta",
-    "enable": "Attiva",
-    "disable": "Disattiva",
+    "enable": "Abilita",
+    "disable": "Disabilita",
     "copy": "Copia",
     "export": "Esporta",
     "import": "Importa",
@@ -56,8 +56,8 @@
     "retry": "Riprova"
   },
   "labels": {
-    "enabled": "Attivato",
-    "disabled": "Disattivato",
+    "enabled": "Abilitato",
+    "disabled": "Disabilitato",
     "active": "Attivo",
     "inactive": "Inattivo",
     "none": "Nessuno",
@@ -71,11 +71,31 @@
     "type": "Tipo",
     "status": "Stato",
     "channel": "Canale",
+    "channels": "Canali",
     "role": "Ruolo",
+    "roles": "Ruoli",
     "member": "Membro",
+    "users": "Utenti",
+    "conditions": "Condizioni",
     "duration": "Durata",
     "reason": "Motivo",
     "language": "Lingua"
+  },
+  "form": {
+    "selectChannel": "Seleziona canale...",
+    "selectRole": "Seleziona ruolo...",
+    "select": "Seleziona...",
+    "saving": "Salvataggio...",
+    "saveSettings": "Salva impostazioni",
+    "previous": "Precedente",
+    "next": "Successivo"
+  },
+  "pagination": {
+    "previous": "Precedente",
+    "next": "Successivo",
+    "page": "Pagina {{page}} di {{total}}",
+    "showing": "Visualizzando da {{from}} a {{to}} di {{total}} risultati",
+    "showingPage": "Pagina {{page}} di {{total}} ({{count}} totali)"
   },
   "header": {
     "notifications": "Notifiche",
@@ -107,15 +127,15 @@
   "confirm": {
     "title": "Sei sicuro?",
     "deleteTitle": "Conferma eliminazione",
-    "deleteMessage": "Questa azione non puo essere annullata.",
+    "deleteMessage": "Questa azione non può essere annullata.",
     "unsavedChanges": "Hai modifiche non salvate. Sei sicuro di voler uscire?"
   },
   "accessibility": {
     "skipToContent": "Vai al contenuto principale",
     "loading": "Caricamento contenuto",
     "loaded": "Contenuto caricato",
-    "error": "Si e verificato un errore",
-    "menuOpen": "Menu aperto",
-    "menuClosed": "Menu chiuso"
+    "error": "Si è verificato un errore",
+    "menuOpen": "Menù aperto",
+    "menuClosed": "Menù chiuso"
   }
 }

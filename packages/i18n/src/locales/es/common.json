@@ -5,17 +5,17 @@
     "dashboard": "Panel de FluxCore"
   },
   "status": {
-    "online": "En linea",
+    "online": "En línea",
     "offline": "Desconectado",
     "latency": "{{ms}}ms"
   },
   "nav": {
     "overview": "Vista general",
-    "automation": "Automatizacion",
-    "music": "Musica",
+    "automation": "Automatización",
+    "music": "Música",
     "tempvoice": "TempVoice",
     "welcome": "Bienvenida",
-    "moderation": "Moderacion",
+    "moderation": "Moderación",
     "warnings": "Advertencias",
     "rolePanels": "Paneles de roles",
     "leveling": "Niveles",
@@ -28,7 +28,7 @@
     "starboard": "Starboard",
     "logs": "Registros",
     "permissions": "Permisos",
-    "settings": "Configuracion"
+    "settings": "Configuración"
   },
   "actions": {
     "save": "Guardar",
@@ -40,14 +40,14 @@
     "remove": "Quitar",
     "confirm": "Confirmar",
     "close": "Cerrar",
-    "back": "Atras",
+    "back": "Atrás",
     "next": "Siguiente",
     "search": "Buscar",
     "filter": "Filtrar",
     "refresh": "Actualizar",
     "reset": "Restablecer",
-    "enable": "Activar",
-    "disable": "Desactivar",
+    "enable": "Habilitar",
+    "disable": "Deshabilitar",
     "copy": "Copiar",
     "export": "Exportar",
     "import": "Importar",
@@ -56,8 +56,8 @@
     "retry": "Reintentar"
   },
   "labels": {
-    "enabled": "Activado",
-    "disabled": "Desactivado",
+    "enabled": "Habilitado",
+    "disabled": "Deshabilitado",
     "active": "Activo",
     "inactive": "Inactivo",
     "none": "Ninguno",
@@ -67,55 +67,75 @@
     "required": "Obligatorio",
     "optional": "Opcional",
     "name": "Nombre",
-    "description": "Descripcion",
+    "description": "Descripción",
     "type": "Tipo",
     "status": "Estado",
     "channel": "Canal",
+    "channels": "Canales",
     "role": "Rol",
+    "roles": "Roles",
     "member": "Miembro",
-    "duration": "Duracion",
-    "reason": "Razon",
+    "users": "Usuarios",
+    "conditions": "Condiciones",
+    "duration": "Duración",
+    "reason": "Razón",
     "language": "Idioma"
+  },
+  "form": {
+    "selectChannel": "Seleccionar canal...",
+    "selectRole": "Seleccionar rol...",
+    "select": "Seleccionar...",
+    "saving": "Guardando...",
+    "saveSettings": "Guardar ajustes",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "page": "Página {{page}} de {{total}}",
+    "showing": "Mostrando {{from}} a {{to}} de {{total}} resultados",
+    "showingPage": "Página {{page}} de {{total}} ({{count}} en total)"
   },
   "header": {
     "notifications": "Notificaciones",
-    "settings": "Configuracion",
-    "logout": "Cerrar sesion",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión",
     "toggleSidebar": "Alternar barra lateral",
     "refreshData": "Actualizar datos de Discord"
   },
   "sidebar": {
     "closeSidebar": "Cerrar barra lateral",
     "addToServer": "Agregar al servidor",
-    "docs": "Documentacion",
+    "docs": "Documentación",
     "support": "Soporte",
     "backToServers": "Volver a los servidores"
   },
   "empty": {
     "noData": "No hay datos disponibles",
     "noResults": "No se encontraron resultados",
-    "noItems": "Aun no hay elementos"
+    "noItems": "Aún no hay elementos"
   },
   "time": {
     "seconds": "segundos",
     "minutes": "minutos",
     "hours": "horas",
-    "days": "dias",
+    "days": "días",
     "ago": "hace {{time}}",
     "in": "en {{time}}"
   },
   "confirm": {
-    "title": "Esta seguro?",
-    "deleteTitle": "Confirmar eliminacion",
-    "deleteMessage": "Esta accion no se puede deshacer.",
-    "unsavedChanges": "Tiene cambios sin guardar. Esta seguro de que desea salir?"
+    "title": "¿Está seguro?",
+    "deleteTitle": "Confirmar eliminación",
+    "deleteMessage": "Esta acción no se puede deshacer.",
+    "unsavedChanges": "Tiene cambios sin guardar. ¿Está seguro de que desea salir?"
   },
   "accessibility": {
     "skipToContent": "Ir al contenido principal",
     "loading": "Cargando contenido",
     "loaded": "Contenido cargado",
     "error": "Se produjo un error",
-    "menuOpen": "Menu abierto",
-    "menuClosed": "Menu cerrado"
+    "menuOpen": "Menú abierto",
+    "menuClosed": "Menú cerrado"
   }
 }

@@ -1,4 +1,28 @@
 {
   "title": "Mipangilio",
-  "subtitle": "Sanidi mipangilio ya jumla ya mfumo wa vitendo kwa seva yako."
+  "subtitle": "Sanidi mipangilio ya jumla ya mfumo wa vitendo kwa seva yako.",
+  "actionSystem": {
+    "title": "Mipangilio ya Mfumo wa Vitendo",
+    "maxRules": "Sheria za Juu kwa kila Seva",
+    "logChannel": "Chaneli ya Kumbukumbu (si lazima)",
+    "noLogChannel": "Hakuna chaneli ya kumbukumbu",
+    "globalEnable": "Uwezeshaji wa Jumla (zima kusimamisha sheria zote)",
+    "saving": "Inahifadhi...",
+    "save": "Hifadhi Mipangilio",
+    "saved": "Mipangilio imehifadhiwa",
+    "maxRulesError": "Sheria za juu lazima ziwe kati ya 1 na 100"
+  },
+  "notifications": {
+    "title": "Mapendeleo ya Arifa",
+    "ruleTriggered": "Sheria Imeanzishwa",
+    "errorAlerts": "Tahadhari za Hitilafu",
+    "successReports": "Ripoti za Mafanikio"
+  },
+  "dangerZone": {
+    "title": "Eneo Hatari",
+    "description": "Vitendo vya uharibifu ambavyo haviwezi kutendwa upya.",
+    "deleteAllRules": "Futa Sheria Zote",
+    "deleteAllConfirm": "Una uhakika unataka kufuta sheria ZOTE? Hii haiwezi kutendwa upya.",
+    "notImplemented": "Kufuta sheria zote bado hakujatekelezwa"
+  }
 }

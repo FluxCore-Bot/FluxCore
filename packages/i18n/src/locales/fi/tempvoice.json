@@ -1,5 +1,30 @@
 {
   "label": "Hallintakeskus",
   "title": "Väliaikaiset äänikanavat",
-  "subtitle": "Määritä keskukset, jotka antavat käyttäjien luoda omia lyhytaikaisia äänikanavia liittyessään."
+  "subtitle": "Määritä keskukset, jotka antavat käyttäjien luoda omia lyhytaikaisia äänikanavia liittyessään.",
+  "form": {
+    "sameAsHub": "Sama kuin keskuskanava",
+    "defaultNameTemplate": "{user}n kanava",
+    "hubChannel": "Keskuskanava",
+    "selectHub": "Valitse äänikanava...",
+    "category": "Kategoria (valinnainen)",
+    "nameTemplate": "Kanavan nimipohja",
+    "addConfig": "Lisää konfiguraatio",
+    "editConfig": "Muokkaa konfiguraatiota",
+    "save": "Tallenna konfiguraatio",
+    "saving": "Tallennetaan...",
+    "cancel": "Peruuta",
+    "delete": "Poista",
+    "edit": "Muokkaa"
+  },
+  "empty": {
+    "noConfigs": "Ei konfiguraatioita vielä",
+    "noConfigsDesc": "Lisää keskuskanava ottaaksesi väliaikaiset äänikanavat käyttöön.",
+    "addFirst": "Lisää konfiguraatio"
+  },
+  "toast": {
+    "updated": "Konfiguraatio päivitetty",
+    "created": "Konfiguraatio luotu",
+    "removed": "Konfiguraatio poistettu"
+  }
 }

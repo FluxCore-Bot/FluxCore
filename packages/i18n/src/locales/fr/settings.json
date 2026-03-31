@@ -1,4 +1,28 @@
 {
-  "title": "Parametres",
-  "subtitle": "Configurez les parametres globaux du systeme d'actions pour votre serveur."
+  "title": "Paramètres",
+  "subtitle": "Configurez les paramètres globaux du système d'actions pour votre serveur.",
+  "actionSystem": {
+    "title": "Paramètres du système d'actions",
+    "maxRules": "Nombre maximum de règles par serveur",
+    "logChannel": "Salon de journalisation (optionnel)",
+    "noLogChannel": "Aucun salon de journalisation",
+    "globalEnable": "Activation globale (désactiver pour mettre en pause toutes les règles)",
+    "saving": "Enregistrement...",
+    "save": "Enregistrer les paramètres",
+    "saved": "Paramètres enregistrés",
+    "maxRulesError": "Le nombre maximum de règles doit être compris entre 1 et 100"
+  },
+  "notifications": {
+    "title": "Préférences de notifications",
+    "ruleTriggered": "Règle déclenchée",
+    "errorAlerts": "Alertes d'erreur",
+    "successReports": "Rapports de succès"
+  },
+  "dangerZone": {
+    "title": "Zone de danger",
+    "description": "Actions destructrices qui ne peuvent pas être annulées.",
+    "deleteAllRules": "Supprimer toutes les règles",
+    "deleteAllConfirm": "Êtes-vous sûr de vouloir supprimer TOUTES les règles ? Cette action est irréversible.",
+    "notImplemented": "La suppression de toutes les règles n'est pas encore implémentée"
+  }
 }

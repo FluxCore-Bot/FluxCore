@@ -52,7 +52,7 @@
     "logDeleted": "Înregistrează Mesajele Șterse",
     "logDeletedDesc": "Trimite informații despre mesajele șterse într-un canal de jurnal",
     "boostThankYou": "Mulțumire pentru Boost",
-    "boostThankYouDesc": "Trimite un MP mulțumind utilizatorilor care boostează serverul",
+    "boostThankYouDesc": "Trimite un DM mulțumind utilizatorilor care boostează serverul",
     "banLogger": "Jurnal de Banuri",
     "banLoggerDesc": "Înregistrează evenimentele de ban într-un canal de moderare",
     "autoThread": "Thread Automat",
@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Activarea regulilor a eșuat",
     "bulkDisableFailed": "Dezactivarea regulilor a eșuat",
     "bulkDeleted": "{{count}} reguli șterse",
-    "bulkDeleteFailed": "Ștergerea regulilor a eșuat"
+    "bulkDeleteFailed": "Ștergerea regulilor a eșuat",
+    "updated": "Regulă actualizată",
+    "created": "Regulă creată"
+  },
+  "form": {
+    "ruleName": "Numele Regulii",
+    "ruleNamePlaceholder": "Regula mea...",
+    "eventType": "Tip Eveniment",
+    "selectEvent": "Selectează eveniment...",
+    "priority": "Prioritate",
+    "actions": "Acțiuni",
+    "addAction": "+ Adaugă Acțiune",
+    "enabled": "Activat",
+    "editRule": "Editează Regulă",
+    "createRule": "Creează Regulă",
+    "workflowView": "Vedere Flux de Lucru",
+    "draftRestored": "Ciornă restaurată din sesiunea anterioară.",
+    "dismiss": "Închide",
+    "atLeastOneAction": "Cel puțin o acțiune trebuie configurată cu un tip.",
+    "saving": "Se salvează...",
+    "update": "Actualizează Regulă",
+    "create": "Creează Regulă",
+    "cancel": "Anulează"
+  },
+  "conditions": {
+    "title": "Condiții",
+    "channels": "Canale",
+    "roles": "Roluri",
+    "users": "Utilizatori",
+    "addChannel": "Adaugă canal...",
+    "addRole": "Adaugă rol...",
+    "excludeChannel": "Exclude canal...",
+    "excludeRole": "Exclude rol...",
+    "userId": "ID Utilizator...",
+    "addConditions": "Adaugă condiții pentru a filtra când se declanșează această regulă",
+    "active": "activ",
+    "description": "Când este setat, această regulă se declanșează doar dacă evenimentul corespunde tuturor filtrelor de includere și niciunuia din filtrele de excludere.",
+    "include": "Includeți (lista albă)",
+    "exclude": "Excludeți (lista neagră)",
+    "clearAll": "Șterge toate condițiile"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Nu se poate conecta: ar crea un ciclu"
+    },
+    "labels": {
+      "rules": "Reguli",
+      "field": "Câmp",
+      "operator": "Operator",
+      "value": "Valoare"
+    },
+    "status": {
+      "ready": "Gata",
+      "notConfigured": "Neconfigurat"
+    },
+    "shortcuts": {
+      "close": "Închide",
+      "save": "Salvează",
+      "removeNode": "Elimină nod",
+      "addAction": "Adaugă acțiune",
+      "fitView": "Potrivește vizualizarea"
+    }
   }
 }

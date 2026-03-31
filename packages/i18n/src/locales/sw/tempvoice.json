@@ -1,5 +1,30 @@
 {
   "label": "Kituo cha Usimamizi",
   "title": "Chaneli za Sauti za Muda",
-  "subtitle": "Sanidi vituo vinavyoruhusu watumiaji kuunda chaneli zao za sauti za muda wanapojiunga."
+  "subtitle": "Sanidi vituo vinavyoruhusu watumiaji kuunda chaneli zao za sauti za muda wanapojiunga.",
+  "form": {
+    "sameAsHub": "Sawa na chaneli ya kituo",
+    "defaultNameTemplate": "Chaneli ya {user}",
+    "hubChannel": "Chaneli ya Kituo",
+    "selectHub": "Chagua chaneli ya sauti...",
+    "category": "Kategoria (si lazima)",
+    "nameTemplate": "Kiolezo cha Jina la Chaneli",
+    "addConfig": "Ongeza Usanidi",
+    "editConfig": "Hariri Usanidi",
+    "save": "Hifadhi Usanidi",
+    "saving": "Inahifadhi...",
+    "cancel": "Ghairi",
+    "delete": "Futa",
+    "edit": "Hariri"
+  },
+  "empty": {
+    "noConfigs": "Hakuna usanidi bado",
+    "noConfigsDesc": "Ongeza chaneli ya kituo ili kuwezesha chaneli za sauti za muda.",
+    "addFirst": "Ongeza Usanidi"
+  },
+  "toast": {
+    "updated": "Usanidi umesasishwa",
+    "created": "Usanidi umeundwa",
+    "removed": "Usanidi umeondolewa"
+  }
 }

@@ -71,11 +71,31 @@
     "type": "Uri",
     "status": "Status",
     "channel": "Channel",
+    "channels": "Mga Channel",
     "role": "Role",
+    "roles": "Mga Role",
     "member": "Miyembro",
+    "users": "Mga User",
+    "conditions": "Mga Kondisyon",
     "duration": "Tagal",
     "reason": "Dahilan",
     "language": "Wika"
+  },
+  "form": {
+    "selectChannel": "Pumili ng channel...",
+    "selectRole": "Pumili ng role...",
+    "select": "Pumili...",
+    "saving": "Nag-se-save...",
+    "saveSettings": "I-save ang Mga Setting",
+    "previous": "Nakaraan",
+    "next": "Susunod"
+  },
+  "pagination": {
+    "previous": "Nakaraan",
+    "next": "Susunod",
+    "page": "Pahina {{page}} ng {{total}}",
+    "showing": "Ipinapakita ang {{from}} hanggang {{to}} ng {{total}} na mga resulta",
+    "showingPage": "Pahina {{page}} ng {{total}} ({{count}} kabuuan)"
   },
   "header": {
     "notifications": "Mga Abiso",

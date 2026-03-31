@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Logi aktywności",
     "events": "Logi zdarzeń"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Wskaźnik wykonań",
+      "totalFailures": "Łączne błędy",
+      "totalEntries": "Łączne wpisy"
+    },
+    "filter": {
+      "search": "Szukaj logów...",
+      "last1h": "Ostatnia godzina",
+      "last24h": "Ostatnie 24 godziny",
+      "last7d": "Ostatnie 7 dni"
+    },
+    "table": {
+      "timestamp": "Znacznik czasu",
+      "ruleName": "Nazwa reguły",
+      "eventType": "Typ zdarzenia",
+      "action": "Akcja",
+      "status": "Status",
+      "details": "Szczegóły",
+      "success": "Sukces",
+      "failed": "Niepowodzenie"
+    },
+    "pagination": {
+      "showing": "Wyświetlane {{from}} do {{to}} z {{total}} wyników",
+      "previous": "Poprzednia",
+      "next": "Następna"
+    },
+    "empty": {
+      "title": "Nie znaleziono logów",
+      "description": "Logi wykonań reguł pojawią się tutaj, gdy reguły automatyzacji zaczną działać."
+    }
+  },
+  "events": {
+    "title": "Przeglądarka logów zdarzeń",
+    "filter": {
+      "allCategories": "Wszystkie kategorie",
+      "byUserId": "Filtruj po ID użytkownika...",
+      "entries": "{{count}} wpisów"
+    },
+    "categories": {
+      "message": "Wiadomość",
+      "member": "Członek",
+      "voice": "Głos",
+      "channel": "Kanał",
+      "role": "Rola",
+      "server": "Serwer",
+      "moderation": "Moderacja"
+    },
+    "categoryEvents": {
+      "message": "Zdarzenia wiadomości",
+      "member": "Zdarzenia członków",
+      "voice": "Zdarzenia głosowe",
+      "channel": "Zdarzenia kanałów",
+      "role": "Zdarzenia ról",
+      "server": "Zdarzenia serwera",
+      "moderation": "Zdarzenia moderacji"
+    },
+    "table": {
+      "timestamp": "Znacznik czasu",
+      "category": "Kategoria",
+      "event": "Zdarzenie",
+      "target": "Cel",
+      "executor": "Wykonawca"
+    },
+    "pagination": {
+      "page": "Strona {{page}} z {{total}} ({{count}} łącznie)",
+      "previous": "Poprzednia",
+      "next": "Następna"
+    },
+    "empty": {
+      "title": "Nie znaleziono logów zdarzeń",
+      "description": "Logi zdarzeń pojawią się tutaj, gdy rejestrowanie zostanie skonfigurowane i zdarzenia zaczną występować."
+    },
+    "config": {
+      "selectChannel": "Wybierz kanał logów"
+    }
   }
 }

@@ -71,11 +71,31 @@
     "type": "Tipe",
     "status": "Status",
     "channel": "Saluran",
+    "channels": "Saluran",
     "role": "Peran",
+    "roles": "Peran",
     "member": "Anggota",
+    "users": "Pengguna",
+    "conditions": "Kondisi",
     "duration": "Durasi",
     "reason": "Alasan",
     "language": "Bahasa"
+  },
+  "form": {
+    "selectChannel": "Pilih saluran...",
+    "selectRole": "Pilih peran...",
+    "select": "Pilih...",
+    "saving": "Menyimpan...",
+    "saveSettings": "Simpan Pengaturan",
+    "previous": "Sebelumnya",
+    "next": "Berikutnya"
+  },
+  "pagination": {
+    "previous": "Sebelumnya",
+    "next": "Berikutnya",
+    "page": "Halaman {{page}} dari {{total}}",
+    "showing": "Menampilkan {{from}} hingga {{to}} dari {{total}} hasil",
+    "showingPage": "Halaman {{page}} dari {{total}} ({{count}} total)"
   },
   "header": {
     "notifications": "Notifikasi",

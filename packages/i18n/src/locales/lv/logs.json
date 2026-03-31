@@ -1,8 +1,85 @@
 {
-  "title": "Zurnals",
-  "subtitle": "Parveribiiet noteikumu izpildi un notikumu registraciju.",
+  "title": "Žurnāls",
+  "subtitle": "Pārraugiet noteikumu izpildi un notikumu reģistrāciju.",
   "tabs": {
-    "activity": "Aktivitates zurnals",
-    "events": "Notikumu zurnals"
+    "activity": "Aktivitātes žurnāls",
+    "events": "Notikumu žurnāls"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Izpildes rādītājs",
+      "totalFailures": "Kopējās kļūmes",
+      "totalEntries": "Kopējie ieraksti"
+    },
+    "filter": {
+      "search": "Meklēt žurnālā...",
+      "last1h": "Pēdējā 1 stunda",
+      "last24h": "Pēdējās 24 stundas",
+      "last7d": "Pēdējās 7 dienas"
+    },
+    "table": {
+      "timestamp": "Laikspiedols",
+      "ruleName": "Noteikuma nosaukums",
+      "eventType": "Notikuma tips",
+      "action": "Darbība",
+      "status": "Statuss",
+      "details": "Detaļas",
+      "success": "Veiksmīga",
+      "failed": "Neveiksmīga"
+    },
+    "pagination": {
+      "showing": "Rāda {{from}}–{{to}} no {{total}} rezultātiem",
+      "previous": "Iepriekšējā",
+      "next": "Nākamā"
+    },
+    "empty": {
+      "title": "Žurnāla ieraksti nav atrasti",
+      "description": "Noteikumu izpildes žurnāli parādīsies šeit, kad automatizācijas noteikumi sāks darboties."
+    }
+  },
+  "events": {
+    "title": "Notikumu žurnāla pārlūks",
+    "filter": {
+      "allCategories": "Visas kategorijas",
+      "byUserId": "Filtrēt pēc lietotāja ID...",
+      "entries": "{{count}} ieraksti"
+    },
+    "categories": {
+      "message": "Ziņa",
+      "member": "Dalībnieks",
+      "voice": "Balss",
+      "channel": "Kanāls",
+      "role": "Loma",
+      "server": "Serveris",
+      "moderation": "Moderācija"
+    },
+    "categoryEvents": {
+      "message": "Ziņu notikumi",
+      "member": "Dalībnieku notikumi",
+      "voice": "Balss notikumi",
+      "channel": "Kanālu notikumi",
+      "role": "Lomu notikumi",
+      "server": "Servera notikumi",
+      "moderation": "Moderācijas notikumi"
+    },
+    "table": {
+      "timestamp": "Laikspiedols",
+      "category": "Kategorija",
+      "event": "Notikums",
+      "target": "Mērķis",
+      "executor": "Izpildītājs"
+    },
+    "pagination": {
+      "page": "{{page}}. lappuse no {{total}} (kopā {{count}})",
+      "previous": "Iepriekšējā",
+      "next": "Nākamā"
+    },
+    "empty": {
+      "title": "Notikumu žurnāla ieraksti nav atrasti",
+      "description": "Notikumu žurnāli parādīsies šeit, kad tiks konfigurēta reģistrācija un notikumi sāks parādīties."
+    },
+    "config": {
+      "selectChannel": "Atlasiet žurnāla kanālu"
+    }
   }
 }

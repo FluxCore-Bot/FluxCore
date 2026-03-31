@@ -1,4 +1,28 @@
 {
   "title": "Ayarlar",
-  "subtitle": "Sunucunuz için genel eylem sistemi ayarlarını yapılandırın."
+  "subtitle": "Sunucunuz için genel eylem sistemi ayarlarını yapılandırın.",
+  "actionSystem": {
+    "title": "Eylem Sistemi Ayarları",
+    "maxRules": "Sunucu Başına Maksimum Kural",
+    "logChannel": "Günlük Kanalı (isteğe bağlı)",
+    "noLogChannel": "Günlük kanalı yok",
+    "globalEnable": "Global Etkinleştirme (tüm kuralları duraklatmak için devre dışı bırakın)",
+    "saving": "Kaydediliyor...",
+    "save": "Ayarları Kaydet",
+    "saved": "Ayarlar kaydedildi",
+    "maxRulesError": "Maksimum kural sayısı 1 ile 100 arasında olmalıdır"
+  },
+  "notifications": {
+    "title": "Bildirim Tercihleri",
+    "ruleTriggered": "Kural Tetiklendi",
+    "errorAlerts": "Hata Uyarıları",
+    "successReports": "Başarı Raporları"
+  },
+  "dangerZone": {
+    "title": "Tehlikeli Bölge",
+    "description": "Geri alınamaz yıkıcı eylemler.",
+    "deleteAllRules": "Tüm Kuralları Sil",
+    "deleteAllConfirm": "TÜM kuralları silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+    "notImplemented": "Tüm kuralları silme henüz uygulanmadı"
+  }
 }

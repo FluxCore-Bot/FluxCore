@@ -1,5 +1,30 @@
 {
   "label": "Centro de Xestión",
   "title": "Canles de Voz Temporais",
-  "subtitle": "Configura hubs que permiten aos usuarios crear os seus propios canles de voz efémeros ao unirse."
+  "subtitle": "Configura hubs que permiten aos usuarios crear os seus propios canles de voz efémeros ao unirse.",
+  "form": {
+    "sameAsHub": "O mesmo que o canal hub",
+    "defaultNameTemplate": "Canal de {user}",
+    "hubChannel": "Canal hub",
+    "selectHub": "Selecciona un canal de voz...",
+    "category": "Categoría (opcional)",
+    "nameTemplate": "Modelo do nome do canal",
+    "addConfig": "Engadir configuración",
+    "editConfig": "Editar configuración",
+    "save": "Gardar configuración",
+    "saving": "Gardando...",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar"
+  },
+  "empty": {
+    "noConfigs": "Aínda non hai configuracións",
+    "noConfigsDesc": "Engade un canal hub para activar os canles de voz temporais.",
+    "addFirst": "Engadir configuración"
+  },
+  "toast": {
+    "updated": "Configuración actualizada",
+    "created": "Configuración creada",
+    "removed": "Configuración eliminada"
+  }
 }

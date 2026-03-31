@@ -71,11 +71,31 @@
     "type": "Tür",
     "status": "Durum",
     "channel": "Kanal",
+    "channels": "Kanallar",
     "role": "Rol",
+    "roles": "Roller",
     "member": "Üye",
+    "users": "Kullanıcılar",
+    "conditions": "Koşullar",
     "duration": "Süre",
     "reason": "Sebep",
     "language": "Dil"
+  },
+  "form": {
+    "selectChannel": "Kanal seçin...",
+    "selectRole": "Rol seçin...",
+    "select": "Seçin...",
+    "saving": "Kaydediliyor...",
+    "saveSettings": "Ayarları Kaydet",
+    "previous": "Önceki",
+    "next": "İleri"
+  },
+  "pagination": {
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "page": "{{total}} sayfalık {{page}}. sayfa",
+    "showing": "{{total}} sonuçtan {{from}} - {{to}} arası gösteriliyor",
+    "showingPage": "{{total}} sayfalık {{page}}. sayfa (toplam {{count}})"
   },
   "header": {
     "notifications": "Bildirimler",

@@ -1,4 +1,28 @@
 {
   "title": "설정",
-  "subtitle": "서버의 글로벌 액션 시스템 설정을 구성합니다."
+  "subtitle": "서버의 글로벌 액션 시스템 설정을 구성합니다.",
+  "actionSystem": {
+    "title": "액션 시스템 설정",
+    "maxRules": "서버당 최대 규칙 수",
+    "logChannel": "로그 채널 (선택사항)",
+    "noLogChannel": "로그 채널 없음",
+    "globalEnable": "전역 활성화 (비활성화하면 모든 규칙 일시 중지)",
+    "saving": "저장 중...",
+    "save": "설정 저장",
+    "saved": "설정이 저장되었습니다",
+    "maxRulesError": "최대 규칙 수는 1에서 100 사이여야 합니다"
+  },
+  "notifications": {
+    "title": "알림 설정",
+    "ruleTriggered": "규칙 트리거됨",
+    "errorAlerts": "오류 알림",
+    "successReports": "성공 보고서"
+  },
+  "dangerZone": {
+    "title": "위험 구역",
+    "description": "되돌릴 수 없는 파괴적인 작업입니다.",
+    "deleteAllRules": "모든 규칙 삭제",
+    "deleteAllConfirm": "모든 규칙을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+    "notImplemented": "모든 규칙 삭제는 아직 구현되지 않았습니다"
+  }
 }

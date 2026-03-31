@@ -1,15 +1,148 @@
 {
-  "breadcrumb": { "guild": "Server", "automation": "Automazione" },
+  "breadcrumb": {
+    "guild": "Server",
+    "automation": "Automazione"
+  },
   "title": "Regole di automazione",
   "subtitle": "Configura trigger basati su eventi e risposte automatizzate per il tuo server.",
   "createRule": "Crea regola",
-  "stats": { "totalRules": "Regole totali", "active": "Attive", "executions7d": "Esecuzioni (7g)", "successRate": "Tasso di successo" },
-  "filter": { "searchPlaceholder": "Cerca regole...", "eventType": "Tipo di evento", "allEvents": "Tutti gli eventi", "allStatus": "Tutti gli stati", "enabled": "Attivata", "disabled": "Disattivata", "sortBy": "Ordina per", "priority": "Priorita", "name": "Nome", "lastFired": "Ultimo attivamento", "status": "Stato", "clear": "Pulisci", "showing": "Visualizzando {{filtered}} di {{total}} regole" },
-  "bulk": { "selected": "{{count}} regola selezionata", "selected_other": "{{count}} regole selezionate", "enable": "Attiva", "disable": "Disattiva", "delete": "Elimina", "clear": "Pulisci" },
-  "empty": { "title": "Inizia con l'automazione", "description": "Scegli un modello per iniziare rapidamente o crea una regola da zero.", "createFromScratch": "Crea da zero" },
-  "noResults": { "title": "Nessuna regola corrispondente", "description": "Prova ad aggiustare la ricerca o i filtri per trovare quello che cerchi." },
-  "templates": { "welcomeMessage": "Messaggio di benvenuto", "welcomeMessageDesc": "Saluta i nuovi membri con un messaggio personalizzato in un canale", "autoRole": "Ruolo automatico", "autoRoleDesc": "Assegna automaticamente un ruolo quando un membro entra", "logDeleted": "Registra messaggi eliminati", "logDeletedDesc": "Invia info sui messaggi eliminati a un canale di registro", "boostThankYou": "Ringraziamento per boost", "boostThankYouDesc": "Invia un MD di ringraziamento agli utenti che boostano il server", "banLogger": "Registro ban", "banLoggerDesc": "Registra gli eventi di ban in un canale di moderazione", "autoThread": "Thread automatico", "autoThreadDesc": "Crea automaticamente un thread quando viene inviato un messaggio" },
-  "deleteDialog": { "title": "Elimina regola", "description": "Sei sicuro di voler eliminare \"{{name}}\"? Questa azione non puo essere annullata.", "confirm": "Elimina" },
-  "bulkDeleteDialog": { "title": "Elimina regole selezionate", "description": "Sei sicuro di voler eliminare {{count}} regola? Questa azione non puo essere annullata.", "description_other": "Sei sicuro di voler eliminare {{count}} regole? Questa azione non puo essere annullata.", "confirm": "Elimina tutto" },
-  "toast": { "deleted": "Regola eliminata", "deleteFailed": "Impossibile eliminare la regola", "enabled": "Regola attivata", "disabled": "Regola disattivata", "toggleFailed": "Impossibile cambiare lo stato della regola", "duplicated": "Regola duplicata", "duplicateFailed": "Impossibile duplicare la regola", "bulkEnabled": "{{count}} regole attivate", "bulkDisabled": "{{count}} regole disattivate", "bulkEnableFailed": "Impossibile attivare le regole", "bulkDisableFailed": "Impossibile disattivare le regole", "bulkDeleted": "{{count}} regole eliminate", "bulkDeleteFailed": "Impossibile eliminare le regole" }
+  "stats": {
+    "totalRules": "Regole totali",
+    "active": "Attive",
+    "executions7d": "Esecuzioni (7g)",
+    "successRate": "Tasso di successo"
+  },
+  "filter": {
+    "searchPlaceholder": "Cerca regole...",
+    "eventType": "Tipo di evento",
+    "allEvents": "Tutti gli eventi",
+    "allStatus": "Tutti gli stati",
+    "enabled": "Abilitate",
+    "disabled": "Disabilitate",
+    "sortBy": "Ordina per",
+    "priority": "Priorità",
+    "name": "Nome",
+    "lastFired": "Ultimo attivamento",
+    "status": "Stato",
+    "clear": "Pulisci",
+    "showing": "Visualizzando {{filtered}} di {{total}} regole"
+  },
+  "bulk": {
+    "selected": "{{count}} regola selezionata",
+    "selected_other": "{{count}} regole selezionate",
+    "enable": "Abilita",
+    "disable": "Disabilita",
+    "delete": "Elimina",
+    "clear": "Pulisci"
+  },
+  "empty": {
+    "title": "Inizia con l'automazione",
+    "description": "Scegli un modello per iniziare rapidamente o crea una regola da zero.",
+    "createFromScratch": "Crea da zero"
+  },
+  "noResults": {
+    "title": "Nessuna regola corrispondente",
+    "description": "Prova ad aggiustare la ricerca o i filtri per trovare quello che cerchi."
+  },
+  "templates": {
+    "welcomeMessage": "Messaggio di benvenuto",
+    "welcomeMessageDesc": "Saluta i nuovi membri con un messaggio personalizzato in un canale",
+    "autoRole": "Ruolo automatico",
+    "autoRoleDesc": "Assegna automaticamente un ruolo quando un membro entra",
+    "logDeleted": "Registra messaggi eliminati",
+    "logDeletedDesc": "Invia informazioni sui messaggi eliminati a un canale di registro",
+    "boostThankYou": "Ringraziamento per boost",
+    "boostThankYouDesc": "Invia un DM di ringraziamento agli utenti che boostano il server",
+    "banLogger": "Registro ban",
+    "banLoggerDesc": "Registra gli eventi di ban in un canale di moderazione",
+    "autoThread": "Thread automatico",
+    "autoThreadDesc": "Crea automaticamente un thread quando viene inviato un messaggio"
+  },
+  "deleteDialog": {
+    "title": "Elimina regola",
+    "description": "Sei sicuro di voler eliminare \"{{name}}\"? Questa azione non può essere annullata.",
+    "confirm": "Elimina"
+  },
+  "bulkDeleteDialog": {
+    "title": "Elimina regole selezionate",
+    "description": "Sei sicuro di voler eliminare {{count}} regola? Questa azione non può essere annullata.",
+    "description_other": "Sei sicuro di voler eliminare {{count}} regole? Questa azione non può essere annullata.",
+    "confirm": "Elimina tutto"
+  },
+  "toast": {
+    "deleted": "Regola eliminata",
+    "deleteFailed": "Impossibile eliminare la regola",
+    "enabled": "Regola abilitata",
+    "disabled": "Regola disabilitata",
+    "toggleFailed": "Impossibile cambiare lo stato della regola",
+    "duplicated": "Regola duplicata",
+    "duplicateFailed": "Impossibile duplicare la regola",
+    "bulkEnabled": "{{count}} regole abilitate",
+    "bulkDisabled": "{{count}} regole disabilitate",
+    "bulkEnableFailed": "Impossibile abilitare le regole",
+    "bulkDisableFailed": "Impossibile disabilitare le regole",
+    "bulkDeleted": "{{count}} regole eliminate",
+    "bulkDeleteFailed": "Impossibile eliminare le regole",
+    "updated": "Regola aggiornata",
+    "created": "Regola creata"
+  },
+  "form": {
+    "ruleName": "Nome della regola",
+    "ruleNamePlaceholder": "La mia regola...",
+    "eventType": "Tipo di evento",
+    "selectEvent": "Seleziona evento...",
+    "priority": "Priorità",
+    "actions": "Azioni",
+    "addAction": "+ Aggiungi azione",
+    "enabled": "Abilitata",
+    "editRule": "Modifica regola",
+    "createRule": "Crea regola",
+    "workflowView": "Vista del flusso di lavoro",
+    "draftRestored": "Bozza ripristinata dalla sessione precedente.",
+    "dismiss": "Ignora",
+    "atLeastOneAction": "Almeno un'azione deve essere configurata con un tipo.",
+    "saving": "Salvataggio...",
+    "update": "Aggiorna regola",
+    "create": "Crea regola",
+    "cancel": "Annulla"
+  },
+  "conditions": {
+    "title": "Condizioni",
+    "channels": "Canali",
+    "roles": "Ruoli",
+    "users": "Utenti",
+    "addChannel": "Aggiungi canale...",
+    "addRole": "Aggiungi ruolo...",
+    "excludeChannel": "Escludi canale...",
+    "excludeRole": "Escludi ruolo...",
+    "userId": "ID utente...",
+    "addConditions": "Aggiungi condizioni per filtrare quando questa regola si attiva",
+    "active": "attiva",
+    "description": "Quando impostata, questa regola si attiva solo se l'evento corrisponde a tutti i filtri di inclusione e a nessuno dei filtri di esclusione.",
+    "include": "Includi (whitelist)",
+    "exclude": "Escludi (blacklist)",
+    "clearAll": "Cancella tutte le condizioni"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Impossibile collegare: creerebbe un ciclo"
+    },
+    "labels": {
+      "rules": "Regole",
+      "field": "Campo",
+      "operator": "Operatore",
+      "value": "Valore"
+    },
+    "status": {
+      "ready": "Pronto",
+      "notConfigured": "Non configurato"
+    },
+    "shortcuts": {
+      "close": "Chiudi",
+      "save": "Salva",
+      "removeNode": "Rimuovi nodo",
+      "addAction": "Aggiungi azione",
+      "fitView": "Adatta vista"
+    }
+  }
 }

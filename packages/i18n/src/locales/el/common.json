@@ -71,11 +71,31 @@
     "type": "Τύπος",
     "status": "Κατάσταση",
     "channel": "Κανάλι",
+    "channels": "Κανάλια",
     "role": "Ρόλος",
+    "roles": "Ρόλοι",
     "member": "Μέλος",
+    "users": "Χρήστες",
+    "conditions": "Συνθήκες",
     "duration": "Διάρκεια",
     "reason": "Αιτιολογία",
     "language": "Γλώσσα"
+  },
+  "form": {
+    "selectChannel": "Επιλογή καναλιού...",
+    "selectRole": "Επιλογή ρόλου...",
+    "select": "Επιλογή...",
+    "saving": "Αποθήκευση...",
+    "saveSettings": "Αποθήκευση ρυθμίσεων",
+    "previous": "Προηγούμενο",
+    "next": "Επόμενο"
+  },
+  "pagination": {
+    "previous": "Προηγούμενο",
+    "next": "Επόμενο",
+    "page": "Σελίδα {{page}} από {{total}}",
+    "showing": "Εμφάνιση {{from}} έως {{to}} από {{total}} αποτελέσματα",
+    "showingPage": "Σελίδα {{page}} από {{total}} ({{count}} συνολικά)"
   },
   "header": {
     "notifications": "Ειδοποιήσεις",

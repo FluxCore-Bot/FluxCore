@@ -71,11 +71,31 @@
     "type": "Tyyppi",
     "status": "Tila",
     "channel": "Kanava",
+    "channels": "Kanavat",
     "role": "Rooli",
+    "roles": "Roolit",
     "member": "Jäsen",
+    "users": "Käyttäjät",
+    "conditions": "Ehdot",
     "duration": "Kesto",
     "reason": "Syy",
     "language": "Kieli"
+  },
+  "form": {
+    "selectChannel": "Valitse kanava...",
+    "selectRole": "Valitse rooli...",
+    "select": "Valitse...",
+    "saving": "Tallennetaan...",
+    "saveSettings": "Tallenna asetukset",
+    "previous": "Edellinen",
+    "next": "Seuraava"
+  },
+  "pagination": {
+    "previous": "Edellinen",
+    "next": "Seuraava",
+    "page": "Sivu {{page}} / {{total}}",
+    "showing": "Näytetään {{from}}–{{to}} / {{total}} tulosta",
+    "showingPage": "Sivu {{page}} / {{total}} ({{count}} yhteensä)"
   },
   "header": {
     "notifications": "Ilmoitukset",

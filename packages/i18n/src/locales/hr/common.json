@@ -2,11 +2,11 @@
   "brand": {
     "name": "FluxCore",
     "engine": "FluxCore Engine",
-    "dashboard": "FluxCore nadzorna ploca"
+    "dashboard": "FluxCore nadzorna ploča"
   },
   "status": {
-    "online": "Na mrezi",
-    "offline": "Izvan mreze",
+    "online": "Na mreži",
+    "offline": "Izvan mreže",
     "latency": "{{ms}}ms"
   },
   "nav": {
@@ -14,7 +14,7 @@
     "automation": "Automatizacija",
     "music": "Glazba",
     "tempvoice": "TempVoice",
-    "welcome": "Dobrodoslica",
+    "welcome": "Dobrodošlica",
     "moderation": "Moderacija",
     "warnings": "Upozorenja",
     "rolePanels": "Paneli uloga",
@@ -33,7 +33,7 @@
   "actions": {
     "save": "Spremi",
     "cancel": "Odustani",
-    "delete": "Obrisi",
+    "delete": "Obriši",
     "edit": "Uredi",
     "create": "Stvori",
     "add": "Dodaj",
@@ -42,27 +42,27 @@
     "close": "Zatvori",
     "back": "Natrag",
     "next": "Dalje",
-    "search": "Pretrazi",
+    "search": "Pretraži",
     "filter": "Filtriraj",
-    "refresh": "Osvjezi",
+    "refresh": "Osvježi",
     "reset": "Resetiraj",
-    "enable": "Omoguci",
-    "disable": "Onemogudi",
+    "enable": "Omogući",
+    "disable": "Onemogući",
     "copy": "Kopiraj",
     "export": "Izvezi",
     "import": "Uvezi",
-    "submit": "Posalji",
-    "loading": "Ucitavanje...",
-    "retry": "Pokusaj ponovo"
+    "submit": "Pošalji",
+    "loading": "Učitavanje...",
+    "retry": "Pokušaj ponovo"
   },
   "labels": {
-    "enabled": "Omoguceno",
-    "disabled": "Onemoguceno",
+    "enabled": "Omogućeno",
+    "disabled": "Onemogućeno",
     "active": "Aktivno",
     "inactive": "Neaktivno",
-    "none": "Nista",
+    "none": "Ništa",
     "all": "Sve",
-    "custom": "Prilagodeno",
+    "custom": "Prilagođeno",
     "default": "Zadano",
     "required": "Obavezno",
     "optional": "Neobavezno",
@@ -71,30 +71,50 @@
     "type": "Vrsta",
     "status": "Status",
     "channel": "Kanal",
+    "channels": "Kanali",
     "role": "Uloga",
-    "member": "Clan",
+    "roles": "Uloge",
+    "member": "Član",
+    "users": "Korisnici",
+    "conditions": "Uvjeti",
     "duration": "Trajanje",
     "reason": "Razlog",
     "language": "Jezik"
+  },
+  "form": {
+    "selectChannel": "Odaberite kanal...",
+    "selectRole": "Odaberite ulogu...",
+    "select": "Odaberite...",
+    "saving": "Spremanje...",
+    "saveSettings": "Spremi postavke",
+    "previous": "Prethodna",
+    "next": "Sljedeća"
+  },
+  "pagination": {
+    "previous": "Prethodna",
+    "next": "Sljedeća",
+    "page": "Stranica {{page}} od {{total}}",
+    "showing": "Prikazano {{from}}–{{to}} od {{total}} rezultata",
+    "showingPage": "Stranica {{page}} od {{total}} ({{count}} ukupno)"
   },
   "header": {
     "notifications": "Obavijesti",
     "settings": "Postavke",
     "logout": "Odjava",
-    "toggleSidebar": "Prebaci bocnu traku",
-    "refreshData": "Osvjezi Discord podatke"
+    "toggleSidebar": "Prebaci bočnu traku",
+    "refreshData": "Osvježi Discord podatke"
   },
   "sidebar": {
-    "closeSidebar": "Zatvori bocnu traku",
-    "addToServer": "Dodaj na posluzitelj",
+    "closeSidebar": "Zatvori bočnu traku",
+    "addToServer": "Dodaj na poslužitelj",
     "docs": "Dokumentacija",
-    "support": "Podrska",
-    "backToServers": "Natrag na posluzitelje"
+    "support": "Podrška",
+    "backToServers": "Natrag na poslužitelje"
   },
   "empty": {
     "noData": "Nema dostupnih podataka",
     "noResults": "Nema rezultata",
-    "noItems": "Jos nema stavki"
+    "noItems": "Još nema stavki"
   },
   "time": {
     "seconds": "sekunde",
@@ -107,14 +127,14 @@
   "confirm": {
     "title": "Jeste li sigurni?",
     "deleteTitle": "Potvrda brisanja",
-    "deleteMessage": "Ova radnja se ne moze ponistiti.",
-    "unsavedChanges": "Imate nespremljene promjene. Jeste li sigurni da zelite otici?"
+    "deleteMessage": "Ova radnja se ne može poništiti.",
+    "unsavedChanges": "Imate nespremljene promjene. Jeste li sigurni da želite otići?"
   },
   "accessibility": {
-    "skipToContent": "Preskoci na glavni sadrzaj",
-    "loading": "Ucitavanje sadrzaja",
-    "loaded": "Sadrzaj ucitan",
-    "error": "Doslo je do pogreske",
+    "skipToContent": "Preskoči na glavni sadržaj",
+    "loading": "Učitavanje sadržaja",
+    "loaded": "Sadržaj učitan",
+    "error": "Došlo je do pogreške",
     "menuOpen": "Izbornik je otvoren",
     "menuClosed": "Izbornik je zatvoren"
   }

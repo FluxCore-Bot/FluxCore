@@ -1,4 +1,28 @@
 {
   "title": "Impostazioni",
-  "subtitle": "Configura le impostazioni globali del sistema di azioni per il tuo server."
+  "subtitle": "Configura le impostazioni globali del sistema di azioni per il tuo server.",
+  "actionSystem": {
+    "title": "Impostazioni del sistema di azioni",
+    "maxRules": "Numero massimo di regole per server",
+    "logChannel": "Canale di registro (opzionale)",
+    "noLogChannel": "Nessun canale di registro",
+    "globalEnable": "Abilita globalmente (disabilita per mettere in pausa tutte le regole)",
+    "saving": "Salvataggio...",
+    "save": "Salva impostazioni",
+    "saved": "Impostazioni salvate",
+    "maxRulesError": "Il numero massimo di regole deve essere compreso tra 1 e 100"
+  },
+  "notifications": {
+    "title": "Preferenze di notifica",
+    "ruleTriggered": "Regola attivata",
+    "errorAlerts": "Avvisi di errore",
+    "successReports": "Rapporti di successo"
+  },
+  "dangerZone": {
+    "title": "Zona pericolosa",
+    "description": "Azioni distruttive che non possono essere annullate.",
+    "deleteAllRules": "Elimina tutte le regole",
+    "deleteAllConfirm": "Sei sicuro di voler eliminare TUTTE le regole? Questa azione non può essere annullata.",
+    "notImplemented": "L'eliminazione di tutte le regole non è ancora implementata"
+  }
 }

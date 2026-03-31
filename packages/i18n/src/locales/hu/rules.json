@@ -1,0 +1,148 @@
+{
+  "breadcrumb": {
+    "guild": "Szerver",
+    "automation": "Automatizálás"
+  },
+  "title": "Automatizálási szabályok",
+  "subtitle": "Konfiguráljon eseményvezérelt triggereket és automatizált válaszokat a szervere számára.",
+  "createRule": "Szabály létrehozása",
+  "stats": {
+    "totalRules": "Összes szabály",
+    "active": "Aktív",
+    "executions7d": "Végrehajtások (7n)",
+    "successRate": "Sikerességi arány"
+  },
+  "filter": {
+    "searchPlaceholder": "Szabályok keresése...",
+    "eventType": "Esemény típusa",
+    "allEvents": "Összes esemény",
+    "allStatus": "Összes állapot",
+    "enabled": "Engedélyezett",
+    "disabled": "Letiltott",
+    "sortBy": "Rendezés",
+    "priority": "Prioritás",
+    "name": "Név",
+    "lastFired": "Utolsó indítás",
+    "status": "Állapot",
+    "clear": "Törlés",
+    "showing": "{{filtered}} / {{total}} szabály látható"
+  },
+  "bulk": {
+    "selected": "{{count}} szabály kiválasztva",
+    "selected_other": "{{count}} szabály kiválasztva",
+    "enable": "Engedélyezés",
+    "disable": "Letiltás",
+    "delete": "Törlés",
+    "clear": "Törlés"
+  },
+  "empty": {
+    "title": "Kezdjen az automatizálással",
+    "description": "Válasszon sablont a gyors kezdéshez, vagy hozzon létre egy szabályt nulláról.",
+    "createFromScratch": "Létrehozás nulláról"
+  },
+  "noResults": {
+    "title": "Nincs egyező szabály",
+    "description": "Próbálja meg módosítani a keresést vagy a szűrőket a keresett tartalom megtalálásához."
+  },
+  "templates": {
+    "welcomeMessage": "Üdvözlő üzenet",
+    "welcomeMessageDesc": "Üdvözölje az új tagokat egyéni üzenettel egy csatornán",
+    "autoRole": "Automatikus szerep",
+    "autoRoleDesc": "Automatikusan rendeljen hozzá egy szerepet, amikor egy tag csatlakozik",
+    "logDeleted": "Törölt üzenetek naplózása",
+    "logDeletedDesc": "Törölt üzenetekről szóló információk küldése egy naplócsatornára",
+    "boostThankYou": "Köszönet a boostért",
+    "boostThankYouDesc": "DM küldése köszönettel a szervert boostoló felhasználóknak",
+    "banLogger": "Kitiltás-naplózó",
+    "banLoggerDesc": "Kitiltási események naplózása egy moderációs csatornára",
+    "autoThread": "Automatikus szál",
+    "autoThreadDesc": "Automatikusan hozzon létre egy szálat, amikor üzenetet küldenek"
+  },
+  "deleteDialog": {
+    "title": "Szabály törlése",
+    "description": "Biztosan törölni szeretné a(z) \"{{name}}\" szabályt? Ez a művelet nem vonható vissza.",
+    "confirm": "Törlés"
+  },
+  "bulkDeleteDialog": {
+    "title": "Kiválasztott szabályok törlése",
+    "description": "Biztosan törölni szeretné {{count}} szabályt? Ez a művelet nem vonható vissza.",
+    "description_other": "Biztosan törölni szeretné {{count}} szabályt? Ez a művelet nem vonható vissza.",
+    "confirm": "Összes törlése"
+  },
+  "toast": {
+    "deleted": "Szabály törölve",
+    "deleteFailed": "A szabály törlése sikertelen",
+    "enabled": "Szabály engedélyezve",
+    "disabled": "Szabály letiltva",
+    "toggleFailed": "A szabály váltása sikertelen",
+    "duplicated": "Szabály másolva",
+    "duplicateFailed": "A szabály másolása sikertelen",
+    "bulkEnabled": "{{count}} szabály engedélyezve",
+    "bulkDisabled": "{{count}} szabály letiltva",
+    "bulkEnableFailed": "A szabályok engedélyezése sikertelen",
+    "bulkDisableFailed": "A szabályok letiltása sikertelen",
+    "bulkDeleted": "{{count}} szabály törölve",
+    "bulkDeleteFailed": "A szabályok törlése sikertelen",
+    "updated": "Szabály frissítve",
+    "created": "Szabály létrehozva"
+  },
+  "form": {
+    "ruleName": "Szabály neve",
+    "ruleNamePlaceholder": "A szabályom...",
+    "eventType": "Esemény típusa",
+    "selectEvent": "Esemény kiválasztása...",
+    "priority": "Prioritás",
+    "actions": "Műveletek",
+    "addAction": "+ Művelet hozzáadása",
+    "enabled": "Engedélyezett",
+    "editRule": "Szabály szerkesztése",
+    "createRule": "Szabály létrehozása",
+    "workflowView": "Munkafolyamat nézet",
+    "draftRestored": "Piszkozat visszaállítva az előző munkamenetből.",
+    "dismiss": "Elvetés",
+    "atLeastOneAction": "Legalább egy műveletet kell konfigurálni típussal.",
+    "saving": "Mentés...",
+    "update": "Szabály frissítése",
+    "create": "Szabály létrehozása",
+    "cancel": "Mégse"
+  },
+  "conditions": {
+    "title": "Feltételek",
+    "channels": "Csatornák",
+    "roles": "Szerepek",
+    "users": "Felhasználók",
+    "addChannel": "Csatorna hozzáadása...",
+    "addRole": "Szerep hozzáadása...",
+    "excludeChannel": "Csatorna kizárása...",
+    "excludeRole": "Szerep kizárása...",
+    "userId": "Felhasználó azonosítója...",
+    "addConditions": "Adjon hozzá feltételeket a szabály indítási szűréséhez",
+    "active": "aktív",
+    "description": "Ha beállítva, ez a szabály csak akkor indul el, ha az esemény megfelel az összes belefoglalási szűrőnek, és egyetlen kizárási szűrőnek sem.",
+    "include": "Belefoglalás (fehérlista)",
+    "exclude": "Kizárás (feketelista)",
+    "clearAll": "Összes feltétel törlése"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Nem lehet kapcsolni: ciklust hozna létre"
+    },
+    "labels": {
+      "rules": "Szabályok",
+      "field": "Mező",
+      "operator": "Operátor",
+      "value": "Érték"
+    },
+    "status": {
+      "ready": "Kész",
+      "notConfigured": "Nincs konfigurálva"
+    },
+    "shortcuts": {
+      "close": "Bezárás",
+      "save": "Mentés",
+      "removeNode": "Csomópont eltávolítása",
+      "addAction": "Művelet hozzáadása",
+      "fitView": "Nézet illesztése"
+    }
+  }
+}

@@ -60,7 +60,7 @@
   },
   "deleteDialog": {
     "title": "Futa Sheria",
-    "description": "Una uhakika unataka kufuta \"{{name}}\"? Kitendo hiki hakiwezi kutendwa upya.",
+    "description": "Una uhakika unataka kufuta „{{name}}"? Kitendo hiki hakiwezi kutendwa upya.",
     "confirm": "Futa"
   },
   "bulkDeleteDialog": {
@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Imeshindwa kuwasha sheria",
     "bulkDisableFailed": "Imeshindwa kuzima sheria",
     "bulkDeleted": "Sheria {{count}} zimefutwa",
-    "bulkDeleteFailed": "Imeshindwa kufuta sheria"
+    "bulkDeleteFailed": "Imeshindwa kufuta sheria",
+    "updated": "Sheria imesasishwa",
+    "created": "Sheria imeundwa"
+  },
+  "form": {
+    "ruleName": "Jina la Sheria",
+    "ruleNamePlaceholder": "Sheria yangu...",
+    "eventType": "Aina ya Tukio",
+    "selectEvent": "Chagua tukio...",
+    "priority": "Kipaumbele",
+    "actions": "Vitendo",
+    "addAction": "+ Ongeza Kitendo",
+    "enabled": "Imewashwa",
+    "editRule": "Hariri Sheria",
+    "createRule": "Unda Sheria",
+    "workflowView": "Muonekano wa Mtiririko wa Kazi",
+    "draftRestored": "Rasimu imerudishwa kutoka kipindi kilichopita.",
+    "dismiss": "Funga",
+    "atLeastOneAction": "Angalau kitendo kimoja lazima kisanidiwe na aina.",
+    "saving": "Inahifadhi...",
+    "update": "Sasisha Sheria",
+    "create": "Unda Sheria",
+    "cancel": "Ghairi"
+  },
+  "conditions": {
+    "title": "Masharti",
+    "channels": "Chaneli",
+    "roles": "Majukumu",
+    "users": "Watumiaji",
+    "addChannel": "Ongeza chaneli...",
+    "addRole": "Ongeza jukumu...",
+    "excludeChannel": "Tenga chaneli...",
+    "excludeRole": "Tenga jukumu...",
+    "userId": "Kitambulisho cha Mtumiaji...",
+    "addConditions": "Ongeza masharti ili kuchuja wakati sheria hii inatekelezwa",
+    "active": "hai",
+    "description": "Ikiwekwa, sheria hii inatekelezwa tu ikiwa tukio linalingana na vichujio vyote vya kujumuisha na hakuna vya kutengwa.",
+    "include": "Jumuisha (orodha nyeupe)",
+    "exclude": "Tenga (orodha nyeusi)",
+    "clearAll": "Futa masharti yote"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Haiwezi kuunganisha: itaunda mzunguko"
+    },
+    "labels": {
+      "rules": "Sheria",
+      "field": "Sehemu",
+      "operator": "Opereta",
+      "value": "Thamani"
+    },
+    "status": {
+      "ready": "Tayari",
+      "notConfigured": "Haijasanidiwa"
+    },
+    "shortcuts": {
+      "close": "Funga",
+      "save": "Hifadhi",
+      "removeNode": "Ondoa nodi",
+      "addAction": "Ongeza kitendo",
+      "fitView": "Rekebisha muonekano"
+    }
   }
 }

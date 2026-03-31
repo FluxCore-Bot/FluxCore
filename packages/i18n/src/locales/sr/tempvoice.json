@@ -1,5 +1,30 @@
 {
-  "label": "Upravljacki centar",
-  "title": "Privremeni glasovni kanali",
-  "subtitle": "Konfigurisi centre koji korisnicima omogucavaju kreiranje sopstvenih privremenih glasovnih kanala pri pridruzivanju."
+  "label": "Управљачки центар",
+  "title": "Привремени гласовни канали",
+  "subtitle": "Конфигуришите центре који корисницима омогућавају креирање сопствених привремених гласовних канала при придруживању.",
+  "form": {
+    "sameAsHub": "Исто као хаб канал",
+    "defaultNameTemplate": "Канал корисника {user}",
+    "hubChannel": "Хаб канал",
+    "selectHub": "Изаберите гласовни канал...",
+    "category": "Категорија (опционо)",
+    "nameTemplate": "Шаблон назива канала",
+    "addConfig": "Додај конфигурацију",
+    "editConfig": "Уреди конфигурацију",
+    "save": "Сачувај конфигурацију",
+    "saving": "Чување...",
+    "cancel": "Откажи",
+    "delete": "Обриши",
+    "edit": "Уреди"
+  },
+  "empty": {
+    "noConfigs": "Нема конфигурација",
+    "noConfigsDesc": "Додајте хаб канал да бисте омогућили привремене гласовне канале.",
+    "addFirst": "Додај конфигурацију"
+  },
+  "toast": {
+    "updated": "Конфигурација ажурирана",
+    "created": "Конфигурација креирана",
+    "removed": "Конфигурација уклоњена"
+  }
 }

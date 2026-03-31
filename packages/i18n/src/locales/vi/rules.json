@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Bật các quy tắc thất bại",
     "bulkDisableFailed": "Tắt các quy tắc thất bại",
     "bulkDeleted": "Đã xóa {{count}} quy tắc",
-    "bulkDeleteFailed": "Xóa các quy tắc thất bại"
+    "bulkDeleteFailed": "Xóa các quy tắc thất bại",
+    "updated": "Đã cập nhật quy tắc",
+    "created": "Đã tạo quy tắc"
+  },
+  "form": {
+    "ruleName": "Tên Quy Tắc",
+    "ruleNamePlaceholder": "Quy tắc của tôi...",
+    "eventType": "Loại Sự Kiện",
+    "selectEvent": "Chọn sự kiện...",
+    "priority": "Ưu Tiên",
+    "actions": "Hành Động",
+    "addAction": "+ Thêm Hành Động",
+    "enabled": "Đang Bật",
+    "editRule": "Chỉnh Sửa Quy Tắc",
+    "createRule": "Tạo Quy Tắc",
+    "workflowView": "Xem Luồng Công Việc",
+    "draftRestored": "Đã khôi phục bản nháp từ phiên trước.",
+    "dismiss": "Đóng",
+    "atLeastOneAction": "Cần ít nhất một hành động được cấu hình với loại.",
+    "saving": "Đang lưu...",
+    "update": "Cập Nhật Quy Tắc",
+    "create": "Tạo Quy Tắc",
+    "cancel": "Hủy"
+  },
+  "conditions": {
+    "title": "Điều Kiện",
+    "channels": "Kênh",
+    "roles": "Vai Trò",
+    "users": "Người Dùng",
+    "addChannel": "Thêm kênh...",
+    "addRole": "Thêm vai trò...",
+    "excludeChannel": "Loại trừ kênh...",
+    "excludeRole": "Loại trừ vai trò...",
+    "userId": "ID Người Dùng...",
+    "addConditions": "Thêm điều kiện để lọc khi quy tắc này kích hoạt",
+    "active": "Hoạt Động",
+    "description": "Khi được thiết lập, quy tắc này chỉ kích hoạt nếu sự kiện khớp với tất cả bộ lọc bao gồm và không khớp với bất kỳ bộ lọc loại trừ nào.",
+    "include": "Bao Gồm (danh sách trắng)",
+    "exclude": "Loại Trừ (danh sách đen)",
+    "clearAll": "Xóa tất cả điều kiện"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Không thể kết nối: sẽ tạo ra vòng lặp"
+    },
+    "labels": {
+      "rules": "Quy Tắc",
+      "field": "Trường",
+      "operator": "Toán Tử",
+      "value": "Giá Trị"
+    },
+    "status": {
+      "ready": "Sẵn Sàng",
+      "notConfigured": "Chưa Cấu Hình"
+    },
+    "shortcuts": {
+      "close": "Đóng",
+      "save": "Lưu",
+      "removeNode": "Xóa nút",
+      "addAction": "Thêm hành động",
+      "fitView": "Vừa khung nhìn"
+    }
   }
 }

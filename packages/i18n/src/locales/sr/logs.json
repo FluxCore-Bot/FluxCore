@@ -1,8 +1,85 @@
 {
-  "title": "Zapisi",
-  "subtitle": "Pratite izvrsavanja pravila i evidentiranje dogadaja.",
+  "title": "Записи",
+  "subtitle": "Пратите извршавања правила и евидентирање догађаја.",
   "tabs": {
-    "activity": "Zapisi aktivnosti",
-    "events": "Zapisi dogadaja"
+    "activity": "Записи активности",
+    "events": "Записи догађаја"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Стопа извршавања",
+      "totalFailures": "Укупно грешака",
+      "totalEntries": "Укупно уноса"
+    },
+    "filter": {
+      "search": "Претражи записе...",
+      "last1h": "Последних 1 сат",
+      "last24h": "Последњих 24 сата",
+      "last7d": "Последњих 7 дана"
+    },
+    "table": {
+      "timestamp": "Временска ознака",
+      "ruleName": "Назив правила",
+      "eventType": "Тип догађаја",
+      "action": "Акција",
+      "status": "Статус",
+      "details": "Детаљи",
+      "success": "Успешно",
+      "failed": "Неуспешно"
+    },
+    "pagination": {
+      "showing": "Приказано {{from}}–{{to}} од {{total}} резултата",
+      "previous": "Претходна",
+      "next": "Следећа"
+    },
+    "empty": {
+      "title": "Нема записа",
+      "description": "Записи извршавања правила ће се појавити овде када аутоматизациона правила почну да раде."
+    }
+  },
+  "events": {
+    "title": "Прегледач евиденције догађаја",
+    "filter": {
+      "allCategories": "Све категорије",
+      "byUserId": "Филтрирај по ID корисника...",
+      "entries": "{{count}} уноса"
+    },
+    "categories": {
+      "message": "Порука",
+      "member": "Члан",
+      "voice": "Глас",
+      "channel": "Канал",
+      "role": "Улога",
+      "server": "Сервер",
+      "moderation": "Модерација"
+    },
+    "categoryEvents": {
+      "message": "Догађаји порука",
+      "member": "Догађаји чланова",
+      "voice": "Гласовни догађаји",
+      "channel": "Догађаји канала",
+      "role": "Догађаји улога",
+      "server": "Догађаји сервера",
+      "moderation": "Догађаји модерације"
+    },
+    "table": {
+      "timestamp": "Временска ознака",
+      "category": "Категорија",
+      "event": "Догађај",
+      "target": "Циљ",
+      "executor": "Извршилац"
+    },
+    "pagination": {
+      "page": "Страна {{page}} од {{total}} ({{count}} укупно)",
+      "previous": "Претходна",
+      "next": "Следећа"
+    },
+    "empty": {
+      "title": "Нема евиденција догађаја",
+      "description": "Евиденције догађаја ће се појавити овде када се конфигурише евидентирање и почну да се дешавају događaji."
+    },
+    "config": {
+      "selectChannel": "Изаберите канал за записе"
+    }
   }
 }

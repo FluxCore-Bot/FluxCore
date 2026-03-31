@@ -1,0 +1,148 @@
+{
+  "breadcrumb": {
+    "guild": "Server",
+    "automation": "Automatizace"
+  },
+  "title": "Pravidla automatizace",
+  "subtitle": "Nakonfigurujte spouštěče řízené událostmi a automatizované odpovědi pro váš server.",
+  "createRule": "Vytvořit pravidlo",
+  "stats": {
+    "totalRules": "Celkem pravidel",
+    "active": "Aktivní",
+    "executions7d": "Spuštění (7d)",
+    "successRate": "Míra úspěchu"
+  },
+  "filter": {
+    "searchPlaceholder": "Hledat pravidla...",
+    "eventType": "Typ události",
+    "allEvents": "Všechny události",
+    "allStatus": "Všechny stavy",
+    "enabled": "Povoleno",
+    "disabled": "Zakázáno",
+    "sortBy": "Seřadit podle",
+    "priority": "Priorita",
+    "name": "Název",
+    "lastFired": "Poslední spuštění",
+    "status": "Stav",
+    "clear": "Vymazat",
+    "showing": "Zobrazeno {{filtered}} z {{total}} pravidel"
+  },
+  "bulk": {
+    "selected": "{{count}} pravidlo vybráno",
+    "selected_other": "{{count}} pravidel vybráno",
+    "enable": "Povolit",
+    "disable": "Zakázat",
+    "delete": "Smazat",
+    "clear": "Vymazat"
+  },
+  "empty": {
+    "title": "Začněte s automatizací",
+    "description": "Vyberte šablonu pro rychlý start nebo vytvořte pravidlo od základu.",
+    "createFromScratch": "Vytvořit od základu"
+  },
+  "noResults": {
+    "title": "Žádná odpovídající pravidla",
+    "description": "Zkuste upravit vyhledávání nebo filtry, abyste našli, co hledáte."
+  },
+  "templates": {
+    "welcomeMessage": "Uvítací zpráva",
+    "welcomeMessageDesc": "Přivítejte nové členy vlastní zprávou v kanálu",
+    "autoRole": "Automatická role",
+    "autoRoleDesc": "Automaticky přiřadit roli, když se člen připojí",
+    "logDeleted": "Zaznamenat smazané zprávy",
+    "logDeletedDesc": "Odesílat informace o smazaných zprávách do logovacího kanálu",
+    "boostThankYou": "Poděkování za boost",
+    "boostThankYouDesc": "Odeslat DM s poděkováním uživatelům, kteří boostují server",
+    "banLogger": "Logger banů",
+    "banLoggerDesc": "Zaznamenat ban události do kanálu moderace",
+    "autoThread": "Automatické vlákno",
+    "autoThreadDesc": "Automaticky vytvořit vlákno při odeslání zprávy"
+  },
+  "deleteDialog": {
+    "title": "Smazat pravidlo",
+    "description": "Opravdu chcete smazat \"{{name}}\"? Tuto akci nelze vrátit zpět.",
+    "confirm": "Smazat"
+  },
+  "bulkDeleteDialog": {
+    "title": "Smazat vybraná pravidla",
+    "description": "Opravdu chcete smazat {{count}} pravidlo? Tuto akci nelze vrátit zpět.",
+    "description_other": "Opravdu chcete smazat {{count}} pravidel? Tuto akci nelze vrátit zpět.",
+    "confirm": "Smazat vše"
+  },
+  "toast": {
+    "deleted": "Pravidlo smazáno",
+    "deleteFailed": "Smazání pravidla se nezdařilo",
+    "enabled": "Pravidlo povoleno",
+    "disabled": "Pravidlo zakázáno",
+    "toggleFailed": "Přepnutí pravidla se nezdařilo",
+    "duplicated": "Pravidlo duplikováno",
+    "duplicateFailed": "Duplikování pravidla se nezdařilo",
+    "bulkEnabled": "{{count}} pravidel povoleno",
+    "bulkDisabled": "{{count}} pravidel zakázáno",
+    "bulkEnableFailed": "Povolení pravidel se nezdařilo",
+    "bulkDisableFailed": "Zakázání pravidel se nezdařilo",
+    "bulkDeleted": "{{count}} pravidel smazáno",
+    "bulkDeleteFailed": "Smazání pravidel se nezdařilo",
+    "updated": "Pravidlo aktualizováno",
+    "created": "Pravidlo vytvořeno"
+  },
+  "form": {
+    "ruleName": "Název pravidla",
+    "ruleNamePlaceholder": "Moje pravidlo...",
+    "eventType": "Typ události",
+    "selectEvent": "Vybrat událost...",
+    "priority": "Priorita",
+    "actions": "Akce",
+    "addAction": "+ Přidat akci",
+    "enabled": "Povoleno",
+    "editRule": "Upravit pravidlo",
+    "createRule": "Vytvořit pravidlo",
+    "workflowView": "Zobrazení pracovního postupu",
+    "draftRestored": "Koncept obnoven z předchozí relace.",
+    "dismiss": "Zavřít",
+    "atLeastOneAction": "Musí být nakonfigurována alespoň jedna akce s typem.",
+    "saving": "Ukládání...",
+    "update": "Aktualizovat pravidlo",
+    "create": "Vytvořit pravidlo",
+    "cancel": "Zrušit"
+  },
+  "conditions": {
+    "title": "Podmínky",
+    "channels": "Kanály",
+    "roles": "Role",
+    "users": "Uživatelé",
+    "addChannel": "Přidat kanál...",
+    "addRole": "Přidat roli...",
+    "excludeChannel": "Vyloučit kanál...",
+    "excludeRole": "Vyloučit roli...",
+    "userId": "ID uživatele...",
+    "addConditions": "Přidejte podmínky pro filtrování, kdy se toto pravidlo spustí",
+    "active": "aktivní",
+    "description": "Po nastavení se toto pravidlo spustí pouze tehdy, když událost odpovídá všem filtrům zahrnutí a žádnému z filtrů vyloučení.",
+    "include": "Zahrnout (bílá listina)",
+    "exclude": "Vyloučit (černá listina)",
+    "clearAll": "Vymazat všechny podmínky"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Nelze propojit: způsobilo by to cyklus"
+    },
+    "labels": {
+      "rules": "Pravidla",
+      "field": "Pole",
+      "operator": "Operátor",
+      "value": "Hodnota"
+    },
+    "status": {
+      "ready": "Připraveno",
+      "notConfigured": "Nenakonfigurováno"
+    },
+    "shortcuts": {
+      "close": "Zavřít",
+      "save": "Uložit",
+      "removeNode": "Odebrat uzel",
+      "addAction": "Přidat akci",
+      "fitView": "Přizpůsobit zobrazení"
+    }
+  }
+}

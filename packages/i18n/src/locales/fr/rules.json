@@ -3,85 +3,146 @@
     "guild": "Serveur",
     "automation": "Automatisation"
   },
-  "title": "Regles d'automatisation",
-  "subtitle": "Configurez des declencheurs bases sur les evenements et des reponses automatisees pour votre serveur.",
-  "createRule": "Creer une regle",
+  "title": "Règles d'automatisation",
+  "subtitle": "Configurez des déclencheurs événementiels et des réponses automatisées pour votre serveur.",
+  "createRule": "Créer une règle",
   "stats": {
-    "totalRules": "Total des regles",
+    "totalRules": "Total des règles",
     "active": "Actives",
-    "executions7d": "Executions (7j)",
-    "successRate": "Taux de reussite"
+    "executions7d": "Exécutions (7j)",
+    "successRate": "Taux de succès"
   },
   "filter": {
-    "searchPlaceholder": "Rechercher des regles...",
-    "eventType": "Type d'evenement",
-    "allEvents": "Tous les evenements",
+    "searchPlaceholder": "Rechercher des règles...",
+    "eventType": "Type d'événement",
+    "allEvents": "Tous les événements",
     "allStatus": "Tous les statuts",
-    "enabled": "Activee",
-    "disabled": "Desactivee",
+    "enabled": "Activées",
+    "disabled": "Désactivées",
     "sortBy": "Trier par",
-    "priority": "Priorite",
+    "priority": "Priorité",
     "name": "Nom",
-    "lastFired": "Dernier declenchement",
+    "lastFired": "Dernier déclenchement",
     "status": "Statut",
     "clear": "Effacer",
-    "showing": "Affichage de {{filtered}} sur {{total}} regles"
+    "showing": "Affichage de {{filtered}} sur {{total}} règles"
   },
   "bulk": {
-    "selected": "{{count}} regle selectionnee",
-    "selected_other": "{{count}} regles selectionnees",
+    "selected": "{{count}} règle sélectionnée",
+    "selected_other": "{{count}} règles sélectionnées",
     "enable": "Activer",
-    "disable": "Desactiver",
+    "disable": "Désactiver",
     "delete": "Supprimer",
     "clear": "Effacer"
   },
   "empty": {
-    "title": "Lancez-vous avec l'automatisation",
-    "description": "Choisissez un modele pour demarrer rapidement ou creez une regle de zero.",
-    "createFromScratch": "Creer de zero"
+    "title": "Commencer avec l'automatisation",
+    "description": "Choisissez un modèle pour démarrer rapidement ou créez une règle de zéro.",
+    "createFromScratch": "Créer de zéro"
   },
   "noResults": {
-    "title": "Aucune regle correspondante",
+    "title": "Aucune règle correspondante",
     "description": "Essayez d'ajuster votre recherche ou vos filtres pour trouver ce que vous cherchez."
   },
   "templates": {
     "welcomeMessage": "Message de bienvenue",
-    "welcomeMessageDesc": "Accueillir les nouveaux membres avec un message personnalise dans un salon",
-    "autoRole": "Role automatique",
-    "autoRoleDesc": "Attribuer automatiquement un role lorsqu'un membre rejoint",
-    "logDeleted": "Journaliser les messages supprimes",
-    "logDeletedDesc": "Envoyer les informations des messages supprimes dans un salon de journalisation",
-    "boostThankYou": "Remerciement de boost",
-    "boostThankYouDesc": "Envoyer un MP de remerciement aux utilisateurs qui boostent le serveur",
-    "banLogger": "Journal des bannissements",
-    "banLoggerDesc": "Journaliser les evenements de bannissement dans un salon de moderation",
-    "autoThread": "Thread automatique",
-    "autoThreadDesc": "Creer automatiquement un fil de discussion lorsqu'un message est envoye"
+    "welcomeMessageDesc": "Accueillez les nouveaux membres avec un message personnalisé dans un salon",
+    "autoRole": "Rôle automatique",
+    "autoRoleDesc": "Attribuer automatiquement un rôle lorsqu'un membre rejoint",
+    "logDeleted": "Journaliser les messages supprimés",
+    "logDeletedDesc": "Envoyer les informations des messages supprimés vers un salon de journalisation",
+    "boostThankYou": "Merci pour le boost",
+    "boostThankYouDesc": "Envoyer un DM pour remercier les utilisateurs qui boostent le serveur",
+    "banLogger": "Journaliser les bannissements",
+    "banLoggerDesc": "Enregistrer les événements de bannissement vers un salon de modération",
+    "autoThread": "Fil automatique",
+    "autoThreadDesc": "Créer automatiquement un fil lorsqu'un message est envoyé"
   },
   "deleteDialog": {
-    "title": "Supprimer la regle",
-    "description": "Etes-vous sur de vouloir supprimer \"{{name}}\" ? Cette action est irreversible.",
+    "title": "Supprimer la règle",
+    "description": "Êtes-vous sûr de vouloir supprimer \"{{name}}\" ? Cette action est irréversible.",
     "confirm": "Supprimer"
   },
   "bulkDeleteDialog": {
-    "title": "Supprimer les regles selectionnees",
-    "description": "Etes-vous sur de vouloir supprimer {{count}} regle ? Cette action est irreversible.",
-    "description_other": "Etes-vous sur de vouloir supprimer {{count}} regles ? Cette action est irreversible.",
+    "title": "Supprimer les règles sélectionnées",
+    "description": "Êtes-vous sûr de vouloir supprimer {{count}} règle ? Cette action est irréversible.",
+    "description_other": "Êtes-vous sûr de vouloir supprimer {{count}} règles ? Cette action est irréversible.",
     "confirm": "Tout supprimer"
   },
   "toast": {
-    "deleted": "Regle supprimee",
-    "deleteFailed": "Echec de la suppression de la regle",
-    "enabled": "Regle activee",
-    "disabled": "Regle desactivee",
-    "toggleFailed": "Echec du changement d'etat de la regle",
-    "duplicated": "Regle dupliquee",
-    "duplicateFailed": "Echec de la duplication de la regle",
-    "bulkEnabled": "{{count}} regles activees",
-    "bulkDisabled": "{{count}} regles desactivees",
-    "bulkEnableFailed": "Echec de l'activation des regles",
-    "bulkDisableFailed": "Echec de la desactivation des regles",
-    "bulkDeleted": "{{count}} regles supprimees",
-    "bulkDeleteFailed": "Echec de la suppression des regles"
+    "deleted": "Règle supprimée",
+    "deleteFailed": "Échec de la suppression de la règle",
+    "enabled": "Règle activée",
+    "disabled": "Règle désactivée",
+    "toggleFailed": "Échec du basculement de la règle",
+    "duplicated": "Règle dupliquée",
+    "duplicateFailed": "Échec de la duplication de la règle",
+    "bulkEnabled": "{{count}} règles activées",
+    "bulkDisabled": "{{count}} règles désactivées",
+    "bulkEnableFailed": "Échec de l'activation des règles",
+    "bulkDisableFailed": "Échec de la désactivation des règles",
+    "bulkDeleted": "{{count}} règles supprimées",
+    "bulkDeleteFailed": "Échec de la suppression des règles",
+    "updated": "Règle mise à jour",
+    "created": "Règle créée"
+  },
+  "form": {
+    "ruleName": "Nom de la règle",
+    "ruleNamePlaceholder": "Ma règle...",
+    "eventType": "Type d'événement",
+    "selectEvent": "Sélectionner un événement...",
+    "priority": "Priorité",
+    "actions": "Actions",
+    "addAction": "+ Ajouter une action",
+    "enabled": "Activée",
+    "editRule": "Modifier la règle",
+    "createRule": "Créer une règle",
+    "workflowView": "Vue du flux de travail",
+    "draftRestored": "Brouillon restauré depuis la session précédente.",
+    "dismiss": "Ignorer",
+    "atLeastOneAction": "Au moins une action doit être configurée avec un type.",
+    "saving": "Enregistrement...",
+    "update": "Mettre à jour la règle",
+    "create": "Créer une règle",
+    "cancel": "Annuler"
+  },
+  "conditions": {
+    "title": "Conditions",
+    "channels": "Salons",
+    "roles": "Rôles",
+    "users": "Utilisateurs",
+    "addChannel": "Ajouter un salon...",
+    "addRole": "Ajouter un rôle...",
+    "excludeChannel": "Exclure un salon...",
+    "excludeRole": "Exclure un rôle...",
+    "userId": "ID utilisateur...",
+    "addConditions": "Ajouter des conditions pour filtrer quand cette règle se déclenche",
+    "active": "active",
+    "description": "Quand définie, cette règle se déclenche uniquement si l'événement correspond à tous les filtres d'inclusion et aucun des filtres d'exclusion.",
+    "include": "Inclure (liste blanche)",
+    "exclude": "Exclure (liste noire)",
+    "clearAll": "Effacer toutes les conditions"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Connexion impossible : créerait un cycle"
+    },
+    "labels": {
+      "rules": "Règles",
+      "field": "Champ",
+      "operator": "Opérateur",
+      "value": "Valeur"
+    },
+    "status": {
+      "ready": "Prêt",
+      "notConfigured": "Non configuré"
+    },
+    "shortcuts": {
+      "close": "Fermer",
+      "save": "Enregistrer",
+      "removeNode": "Supprimer le nœud",
+      "addAction": "Ajouter une action",
+      "fitView": "Ajuster la vue"
+    }
   }
 }

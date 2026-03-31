@@ -1,13 +1,148 @@
 {
-  "breadcrumb": { "guild": "เซิร์ฟเวอร์", "automation": "ระบบอัตโนมัติ" },
-  "title": "กฎอัตโนมัติ", "subtitle": "ตั้งค่าทริกเกอร์ตามเหตุการณ์และการตอบสนองอัตโนมัติสำหรับเซิร์ฟเวอร์ของคุณ", "createRule": "สร้างกฎ",
-  "stats": { "totalRules": "กฎทั้งหมด", "active": "ใช้งาน", "executions7d": "การทำงาน (7 วัน)", "successRate": "อัตราสำเร็จ" },
-  "filter": { "searchPlaceholder": "ค้นหากฎ...", "eventType": "ประเภทเหตุการณ์", "allEvents": "ทุกเหตุการณ์", "allStatus": "ทุกสถานะ", "enabled": "เปิดใช้งาน", "disabled": "ปิดใช้งาน", "sortBy": "เรียงตาม", "priority": "ลำดับความสำคัญ", "name": "ชื่อ", "lastFired": "ทำงานล่าสุด", "status": "สถานะ", "clear": "ล้าง", "showing": "แสดง {{filtered}} จาก {{total}} กฎ" },
-  "bulk": { "selected": "เลือก {{count}} กฎ", "selected_other": "เลือก {{count}} กฎ", "enable": "เปิดใช้งาน", "disable": "ปิดใช้งาน", "delete": "ลบ", "clear": "ล้าง" },
-  "empty": { "title": "เริ่มต้นกับระบบอัตโนมัติ", "description": "เลือกเทมเพลตเพื่อเริ่มต้นอย่างรวดเร็ว หรือสร้างกฎจากศูนย์", "createFromScratch": "สร้างจากศูนย์" },
-  "noResults": { "title": "ไม่พบกฎที่ตรงกัน", "description": "ลองปรับการค้นหาหรือตัวกรองเพื่อค้นหาสิ่งที่คุณต้องการ" },
-  "templates": { "welcomeMessage": "ข้อความต้อนรับ", "welcomeMessageDesc": "ต้อนรับสมาชิกใหม่ด้วยข้อความกำหนดเองในแชนเนล", "autoRole": "บทบาทอัตโนมัติ", "autoRoleDesc": "กำหนดบทบาทโดยอัตโนมัติเมื่อสมาชิกเข้าร่วม", "logDeleted": "บันทึกข้อความที่ถูกลบ", "logDeletedDesc": "ส่งข้อมูลข้อความที่ถูกลบไปยังแชนเนลบันทึก", "boostThankYou": "ขอบคุณการบูสต์", "boostThankYouDesc": "ส่ง DM ขอบคุณผู้ใช้ที่บูสต์เซิร์ฟเวอร์", "banLogger": "บันทึกการแบน", "banLoggerDesc": "บันทึกเหตุการณ์แบนไปยังแชนเนลจัดการ", "autoThread": "เธรดอัตโนมัติ", "autoThreadDesc": "สร้างเธรดโดยอัตโนมัติเมื่อมีข้อความ" },
-  "deleteDialog": { "title": "ลบกฎ", "description": "แน่ใจหรือว่าต้องการลบ \"{{name}}\"? การดำเนินการนี้ไม่สามารถย้อนกลับได้", "confirm": "ลบ" },
-  "bulkDeleteDialog": { "title": "ลบกฎที่เลือก", "description": "แน่ใจหรือว่าต้องการลบ {{count}} กฎ? การดำเนินการนี้ไม่สามารถย้อนกลับได้", "description_other": "แน่ใจหรือว่าต้องการลบ {{count}} กฎ? การดำเนินการนี้ไม่สามารถย้อนกลับได้", "confirm": "ลบทั้งหมด" },
-  "toast": { "deleted": "ลบกฎแล้ว", "deleteFailed": "ไม่สามารถลบกฎได้", "enabled": "เปิดใช้งานกฎแล้ว", "disabled": "ปิดใช้งานกฎแล้ว", "toggleFailed": "ไม่สามารถสลับกฎได้", "duplicated": "คัดลอกกฎแล้ว", "duplicateFailed": "ไม่สามารถคัดลอกกฎได้", "bulkEnabled": "เปิดใช้งาน {{count}} กฎแล้ว", "bulkDisabled": "ปิดใช้งาน {{count}} กฎแล้ว", "bulkEnableFailed": "ไม่สามารถเปิดใช้งานกฎได้", "bulkDisableFailed": "ไม่สามารถปิดใช้งานกฎได้", "bulkDeleted": "ลบ {{count}} กฎแล้ว", "bulkDeleteFailed": "ไม่สามารถลบกฎได้" }
+  "breadcrumb": {
+    "guild": "เซิร์ฟเวอร์",
+    "automation": "ระบบอัตโนมัติ"
+  },
+  "title": "กฎอัตโนมัติ",
+  "subtitle": "ตั้งค่าทริกเกอร์ตามเหตุการณ์และการตอบสนองอัตโนมัติสำหรับเซิร์ฟเวอร์ของคุณ",
+  "createRule": "สร้างกฎ",
+  "stats": {
+    "totalRules": "กฎทั้งหมด",
+    "active": "ใช้งาน",
+    "executions7d": "การทำงาน (7 วัน)",
+    "successRate": "อัตราสำเร็จ"
+  },
+  "filter": {
+    "searchPlaceholder": "ค้นหากฎ...",
+    "eventType": "ประเภทเหตุการณ์",
+    "allEvents": "ทุกเหตุการณ์",
+    "allStatus": "ทุกสถานะ",
+    "enabled": "เปิดใช้งาน",
+    "disabled": "ปิดใช้งาน",
+    "sortBy": "เรียงตาม",
+    "priority": "ลำดับความสำคัญ",
+    "name": "ชื่อ",
+    "lastFired": "ทำงานล่าสุด",
+    "status": "สถานะ",
+    "clear": "ล้าง",
+    "showing": "แสดง {{filtered}} จาก {{total}} กฎ"
+  },
+  "bulk": {
+    "selected": "เลือก {{count}} กฎ",
+    "selected_other": "เลือก {{count}} กฎ",
+    "enable": "เปิดใช้งาน",
+    "disable": "ปิดใช้งาน",
+    "delete": "ลบ",
+    "clear": "ล้าง"
+  },
+  "empty": {
+    "title": "เริ่มต้นกับระบบอัตโนมัติ",
+    "description": "เลือกเทมเพลตเพื่อเริ่มต้นอย่างรวดเร็ว หรือสร้างกฎจากศูนย์",
+    "createFromScratch": "สร้างจากศูนย์"
+  },
+  "noResults": {
+    "title": "ไม่พบกฎที่ตรงกัน",
+    "description": "ลองปรับการค้นหาหรือตัวกรองเพื่อค้นหาสิ่งที่คุณต้องการ"
+  },
+  "templates": {
+    "welcomeMessage": "ข้อความต้อนรับ",
+    "welcomeMessageDesc": "ต้อนรับสมาชิกใหม่ด้วยข้อความกำหนดเองในแชนเนล",
+    "autoRole": "บทบาทอัตโนมัติ",
+    "autoRoleDesc": "กำหนดบทบาทโดยอัตโนมัติเมื่อสมาชิกเข้าร่วม",
+    "logDeleted": "บันทึกข้อความที่ถูกลบ",
+    "logDeletedDesc": "ส่งข้อมูลข้อความที่ถูกลบไปยังแชนเนลบันทึก",
+    "boostThankYou": "ขอบคุณการบูสต์",
+    "boostThankYouDesc": "ส่ง DM ขอบคุณผู้ใช้ที่บูสต์เซิร์ฟเวอร์",
+    "banLogger": "บันทึกการแบน",
+    "banLoggerDesc": "บันทึกเหตุการณ์แบนไปยังแชนเนลจัดการ",
+    "autoThread": "เธรดอัตโนมัติ",
+    "autoThreadDesc": "สร้างเธรดโดยอัตโนมัติเมื่อมีข้อความ"
+  },
+  "deleteDialog": {
+    "title": "ลบกฎ",
+    "description": "แน่ใจหรือว่าต้องการลบ \"{{name}}\"? การดำเนินการนี้ไม่สามารถย้อนกลับได้",
+    "confirm": "ลบ"
+  },
+  "bulkDeleteDialog": {
+    "title": "ลบกฎที่เลือก",
+    "description": "แน่ใจหรือว่าต้องการลบ {{count}} กฎ? การดำเนินการนี้ไม่สามารถย้อนกลับได้",
+    "description_other": "แน่ใจหรือว่าต้องการลบ {{count}} กฎ? การดำเนินการนี้ไม่สามารถย้อนกลับได้",
+    "confirm": "ลบทั้งหมด"
+  },
+  "toast": {
+    "deleted": "ลบกฎแล้ว",
+    "deleteFailed": "ไม่สามารถลบกฎได้",
+    "enabled": "เปิดใช้งานกฎแล้ว",
+    "disabled": "ปิดใช้งานกฎแล้ว",
+    "toggleFailed": "ไม่สามารถสลับกฎได้",
+    "duplicated": "คัดลอกกฎแล้ว",
+    "duplicateFailed": "ไม่สามารถคัดลอกกฎได้",
+    "bulkEnabled": "เปิดใช้งาน {{count}} กฎแล้ว",
+    "bulkDisabled": "ปิดใช้งาน {{count}} กฎแล้ว",
+    "bulkEnableFailed": "ไม่สามารถเปิดใช้งานกฎได้",
+    "bulkDisableFailed": "ไม่สามารถปิดใช้งานกฎได้",
+    "bulkDeleted": "ลบ {{count}} กฎแล้ว",
+    "bulkDeleteFailed": "ไม่สามารถลบกฎได้",
+    "updated": "อัปเดตกฎแล้ว",
+    "created": "สร้างกฎแล้ว"
+  },
+  "form": {
+    "ruleName": "ชื่อกฎ",
+    "ruleNamePlaceholder": "กฎของฉัน...",
+    "eventType": "ประเภทเหตุการณ์",
+    "selectEvent": "เลือกเหตุการณ์...",
+    "priority": "ลำดับความสำคัญ",
+    "actions": "แอ็กชัน",
+    "addAction": "+ เพิ่มแอ็กชัน",
+    "enabled": "เปิดใช้งาน",
+    "editRule": "แก้ไขกฎ",
+    "createRule": "สร้างกฎ",
+    "workflowView": "มุมมองเวิร์กโฟลว์",
+    "draftRestored": "กู้คืนแบบร่างจากเซสชันก่อนหน้าแล้ว",
+    "dismiss": "ปิด",
+    "atLeastOneAction": "ต้องกำหนดแอ็กชันอย่างน้อยหนึ่งรายการพร้อมประเภท",
+    "saving": "กำลังบันทึก...",
+    "update": "อัปเดตกฎ",
+    "create": "สร้างกฎ",
+    "cancel": "ยกเลิก"
+  },
+  "conditions": {
+    "title": "เงื่อนไข",
+    "channels": "แชนเนล",
+    "roles": "บทบาท",
+    "users": "ผู้ใช้",
+    "addChannel": "เพิ่มแชนเนล...",
+    "addRole": "เพิ่มบทบาท...",
+    "excludeChannel": "ยกเว้นแชนเนล...",
+    "excludeRole": "ยกเว้นบทบาท...",
+    "userId": "รหัสผู้ใช้...",
+    "addConditions": "เพิ่มเงื่อนไขเพื่อกรองเมื่อกฎนี้ทำงาน",
+    "active": "ใช้งาน",
+    "description": "เมื่อตั้งค่าแล้ว กฎนี้จะทำงานเฉพาะเมื่อเหตุการณ์ตรงกับตัวกรองการรวมทั้งหมดและไม่ตรงกับตัวกรองการยกเว้นใดๆ",
+    "include": "รวม (ไวท์ลิสต์)",
+    "exclude": "ยกเว้น (แบล็กลิสต์)",
+    "clearAll": "ล้างเงื่อนไขทั้งหมด"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "ไม่สามารถเชื่อมต่อได้: จะสร้างวงจร"
+    },
+    "labels": {
+      "rules": "กฎ",
+      "field": "ฟิลด์",
+      "operator": "ตัวดำเนินการ",
+      "value": "ค่า"
+    },
+    "status": {
+      "ready": "พร้อม",
+      "notConfigured": "ยังไม่ได้ตั้งค่า"
+    },
+    "shortcuts": {
+      "close": "ปิด",
+      "save": "บันทึก",
+      "removeNode": "ลบโหนด",
+      "addAction": "เพิ่มแอ็กชัน",
+      "fitView": "ปรับมุมมอง"
+    }
+  }
 }

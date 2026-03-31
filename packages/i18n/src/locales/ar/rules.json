@@ -82,6 +82,67 @@
     "bulkEnableFailed": "فشل في تفعيل القواعد",
     "bulkDisableFailed": "فشل في تعطيل القواعد",
     "bulkDeleted": "تم حذف {{count}} قواعد",
-    "bulkDeleteFailed": "فشل في حذف القواعد"
+    "bulkDeleteFailed": "فشل في حذف القواعد",
+    "updated": "تم تحديث القاعدة",
+    "created": "تم إنشاء القاعدة"
+  },
+  "form": {
+    "ruleName": "اسم القاعدة",
+    "ruleNamePlaceholder": "قاعدتي...",
+    "eventType": "نوع الحدث",
+    "selectEvent": "اختر حدثًا...",
+    "priority": "الأولوية",
+    "actions": "الإجراءات",
+    "addAction": "+ إضافة إجراء",
+    "enabled": "مفعّل",
+    "editRule": "تعديل القاعدة",
+    "createRule": "إنشاء قاعدة",
+    "workflowView": "عرض سير العمل",
+    "draftRestored": "تم استعادة المسودة من الجلسة السابقة.",
+    "dismiss": "تجاهل",
+    "atLeastOneAction": "يجب تهيئة إجراء واحد على الأقل بنوع محدد.",
+    "saving": "جارٍ الحفظ...",
+    "update": "تحديث القاعدة",
+    "create": "إنشاء قاعدة",
+    "cancel": "إلغاء"
+  },
+  "conditions": {
+    "title": "الشروط",
+    "channels": "القنوات",
+    "roles": "الأدوار",
+    "users": "المستخدمون",
+    "addChannel": "إضافة قناة...",
+    "addRole": "إضافة دور...",
+    "excludeChannel": "استثناء قناة...",
+    "excludeRole": "استثناء دور...",
+    "userId": "معرف المستخدم...",
+    "addConditions": "أضف شروطًا لتصفية متى تُشغَّل هذه القاعدة",
+    "active": "نشط",
+    "description": "عند التعيين، تُشغَّل هذه القاعدة فقط إذا تطابق الحدث مع جميع فلاتر التضمين ولا أيٍّ من فلاتر الاستثناء.",
+    "include": "تضمين (قائمة بيضاء)",
+    "exclude": "استثناء (قائمة سوداء)",
+    "clearAll": "مسح جميع الشروط"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "لا يمكن الاتصال: سيؤدي ذلك إلى إنشاء دورة"
+    },
+    "labels": {
+      "rules": "القواعد",
+      "field": "الحقل",
+      "operator": "المشغّل",
+      "value": "القيمة"
+    },
+    "status": {
+      "ready": "جاهز",
+      "notConfigured": "غير مهيأ"
+    },
+    "shortcuts": {
+      "close": "إغلاق",
+      "save": "حفظ",
+      "removeNode": "إزالة عقدة",
+      "addAction": "إضافة إجراء",
+      "fitView": "ملاءمة العرض"
+    }
   }
 }

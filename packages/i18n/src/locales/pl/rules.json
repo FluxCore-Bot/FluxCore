@@ -42,17 +42,17 @@
   },
   "noResults": {
     "title": "Brak pasujących reguł",
-    "description": "Spróbuj dostosować wyszukiwanie lub filtry."
+    "description": "Spróbuj dostosować wyszukiwanie lub filtry, aby znaleźć to, czego szukasz."
   },
   "templates": {
     "welcomeMessage": "Wiadomość powitalna",
-    "welcomeMessageDesc": "Powitaj nowych członków wiadomością na kanale",
+    "welcomeMessageDesc": "Powitaj nowych członków niestandardową wiadomością na kanale",
     "autoRole": "Auto-rola",
     "autoRoleDesc": "Automatycznie przypisuj rolę, gdy członek dołączy",
     "logDeleted": "Loguj usunięte wiadomości",
     "logDeletedDesc": "Wysyłaj informacje o usuniętych wiadomościach na kanał logów",
     "boostThankYou": "Podziękowanie za boost",
-    "boostThankYouDesc": "Wyślij PW z podziękowaniem użytkownikom, którzy boostują serwer",
+    "boostThankYouDesc": "Wyślij DM z podziękowaniem użytkownikom, którzy boostują serwer",
     "banLogger": "Logger banów",
     "banLoggerDesc": "Loguj zdarzenia banów na kanał moderacji",
     "autoThread": "Auto-wątek",
@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Nie udało się włączyć reguł",
     "bulkDisableFailed": "Nie udało się wyłączyć reguł",
     "bulkDeleted": "Usunięto {{count}} reguł",
-    "bulkDeleteFailed": "Nie udało się usunąć reguł"
+    "bulkDeleteFailed": "Nie udało się usunąć reguł",
+    "updated": "Reguła zaktualizowana",
+    "created": "Reguła utworzona"
+  },
+  "form": {
+    "ruleName": "Nazwa reguły",
+    "ruleNamePlaceholder": "Moja reguła...",
+    "eventType": "Typ zdarzenia",
+    "selectEvent": "Wybierz zdarzenie...",
+    "priority": "Priorytet",
+    "actions": "Akcje",
+    "addAction": "+ Dodaj akcję",
+    "enabled": "Włączone",
+    "editRule": "Edytuj regułę",
+    "createRule": "Utwórz regułę",
+    "workflowView": "Widok przepływu pracy",
+    "draftRestored": "Szkic przywrócony z poprzedniej sesji.",
+    "dismiss": "Odrzuć",
+    "atLeastOneAction": "Co najmniej jedna akcja musi być skonfigurowana z typem.",
+    "saving": "Zapisywanie...",
+    "update": "Zaktualizuj regułę",
+    "create": "Utwórz regułę",
+    "cancel": "Anuluj"
+  },
+  "conditions": {
+    "title": "Warunki",
+    "channels": "Kanały",
+    "roles": "Role",
+    "users": "Użytkownicy",
+    "addChannel": "Dodaj kanał...",
+    "addRole": "Dodaj rolę...",
+    "excludeChannel": "Wyklucz kanał...",
+    "excludeRole": "Wyklucz rolę...",
+    "userId": "ID użytkownika...",
+    "addConditions": "Dodaj warunki, aby filtrować kiedy ta reguła jest wyzwalana",
+    "active": "aktywne",
+    "description": "Po ustawieniu ta reguła uruchamia się tylko wtedy, gdy zdarzenie spełnia wszystkie filtry dołączenia i żaden z filtrów wykluczenia.",
+    "include": "Dołącz (biała lista)",
+    "exclude": "Wyklucz (czarna lista)",
+    "clearAll": "Wyczyść wszystkie warunki"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Nie można połączyć: spowodowałoby to cykl"
+    },
+    "labels": {
+      "rules": "Reguły",
+      "field": "Pole",
+      "operator": "Operator",
+      "value": "Wartość"
+    },
+    "status": {
+      "ready": "Gotowy",
+      "notConfigured": "Nieskonfigurowany"
+    },
+    "shortcuts": {
+      "close": "Zamknij",
+      "save": "Zapisz",
+      "removeNode": "Usuń węzeł",
+      "addAction": "Dodaj akcję",
+      "fitView": "Dopasuj widok"
+    }
   }
 }

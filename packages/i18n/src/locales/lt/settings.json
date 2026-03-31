@@ -1,4 +1,28 @@
 {
   "title": "Nustatymai",
-  "subtitle": "Konfigurukite globalius veiksmu sistemos nustatymus jasu serveriui."
+  "subtitle": "Konfigūruokite globalius veiksmų sistemos nustatymus jūsų serveriui.",
+  "actionSystem": {
+    "title": "Veiksmų sistemos nustatymai",
+    "maxRules": "Maksimalus taisyklių skaičius serveriui",
+    "logChannel": "Žurnalo kanalas (neprivaloma)",
+    "noLogChannel": "Nėra žurnalo kanalo",
+    "globalEnable": "Globalus įjungimas (išjunkite, kad pristabdytumėte visas taisykles)",
+    "saving": "Saugoma...",
+    "save": "Išsaugoti nustatymus",
+    "saved": "Nustatymai išsaugoti",
+    "maxRulesError": "Maksimalus taisyklių skaičius turi būti nuo 1 iki 100"
+  },
+  "notifications": {
+    "title": "Pranešimų nuostatos",
+    "ruleTriggered": "Taisyklė suveikė",
+    "errorAlerts": "Klaidų įspėjimai",
+    "successReports": "Sėkmės ataskaitos"
+  },
+  "dangerZone": {
+    "title": "Pavojingoji zona",
+    "description": "Destruktyvūs veiksmai, kurių negalima atšaukti.",
+    "deleteAllRules": "Ištrinti visas taisykles",
+    "deleteAllConfirm": "Ar tikrai norite ištrinti VISAS taisykles? To negalima atšaukti.",
+    "notImplemented": "Visų taisyklių ištrynimas dar neįgyvendintas"
+  }
 }

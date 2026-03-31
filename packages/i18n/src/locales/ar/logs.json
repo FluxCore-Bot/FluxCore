@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "سجلات النشاط",
     "events": "سجلات الأحداث"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "معدل التنفيذ",
+      "totalFailures": "إجمالي الإخفاقات",
+      "totalEntries": "إجمالي المدخلات"
+    },
+    "filter": {
+      "search": "البحث في السجلات...",
+      "last1h": "آخر ساعة",
+      "last24h": "آخر 24 ساعة",
+      "last7d": "آخر 7 أيام"
+    },
+    "table": {
+      "timestamp": "الطابع الزمني",
+      "ruleName": "اسم القاعدة",
+      "eventType": "نوع الحدث",
+      "action": "الإجراء",
+      "status": "الحالة",
+      "details": "التفاصيل",
+      "success": "نجاح",
+      "failed": "فشل"
+    },
+    "pagination": {
+      "showing": "عرض {{from}} إلى {{to}} من {{total}} نتيجة",
+      "previous": "السابق",
+      "next": "التالي"
+    },
+    "empty": {
+      "title": "لم يتم العثور على سجلات",
+      "description": "ستظهر سجلات تنفيذ القواعد هنا بمجرد بدء تشغيل قواعد الأتمتة."
+    }
+  },
+  "events": {
+    "title": "متصفح سجل الأحداث",
+    "filter": {
+      "allCategories": "جميع الفئات",
+      "byUserId": "تصفية حسب معرف المستخدم...",
+      "entries": "{{count}} مدخلات"
+    },
+    "categories": {
+      "message": "الرسالة",
+      "member": "العضو",
+      "voice": "الصوت",
+      "channel": "القناة",
+      "role": "الدور",
+      "server": "السيرفر",
+      "moderation": "الإشراف"
+    },
+    "categoryEvents": {
+      "message": "أحداث الرسائل",
+      "member": "أحداث الأعضاء",
+      "voice": "أحداث الصوت",
+      "channel": "أحداث القنوات",
+      "role": "أحداث الأدوار",
+      "server": "أحداث السيرفر",
+      "moderation": "أحداث الإشراف"
+    },
+    "table": {
+      "timestamp": "الطابع الزمني",
+      "category": "الفئة",
+      "event": "الحدث",
+      "target": "الهدف",
+      "executor": "المنفذ"
+    },
+    "pagination": {
+      "page": "الصفحة {{page}} من {{total}} ({{count}} إجمالي)",
+      "previous": "السابق",
+      "next": "التالي"
+    },
+    "empty": {
+      "title": "لم يتم العثور على سجلات أحداث",
+      "description": "ستظهر سجلات الأحداث هنا بمجرد تهيئة التسجيل وبدء وقوع الأحداث."
+    },
+    "config": {
+      "selectChannel": "اختر قناة السجل"
+    }
   }
 }

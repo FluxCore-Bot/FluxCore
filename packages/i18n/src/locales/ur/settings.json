@@ -1,4 +1,28 @@
 {
-  "title": "[NEEDS TRANSLATION] Settings",
-  "subtitle": "[NEEDS TRANSLATION] Configure global action system settings for your server."
+  "title": "ترتیبات",
+  "subtitle": "اپنے سرور کے لیے عالمی ایکشن سسٹم کی ترتیبات ترتیب دیں۔",
+  "actionSystem": {
+    "title": "ایکشن سسٹم ترتیبات",
+    "maxRules": "فی سرور زیادہ سے زیادہ قواعد",
+    "logChannel": "لاگ چینل (اختیاری)",
+    "noLogChannel": "کوئی لاگ چینل نہیں",
+    "globalEnable": "عالمی فعال (تمام قواعد روکنے کے لیے غیر فعال کریں)",
+    "saving": "محفوظ ہو رہا ہے...",
+    "save": "ترتیبات محفوظ کریں",
+    "saved": "ترتیبات محفوظ ہو گئیں",
+    "maxRulesError": "زیادہ سے زیادہ قواعد 1 اور 100 کے درمیان ہونے چاہئیں"
+  },
+  "notifications": {
+    "title": "اطلاع ترجیحات",
+    "ruleTriggered": "قاعدہ چلا",
+    "errorAlerts": "خرابی الرٹس",
+    "successReports": "کامیابی رپورٹس"
+  },
+  "dangerZone": {
+    "title": "خطرناک زون",
+    "description": "تباہ کن اعمال جو واپس نہیں کیے جا سکتے۔",
+    "deleteAllRules": "تمام قواعد حذف کریں",
+    "deleteAllConfirm": "کیا آپ واقعی تمام قواعد حذف کرنا چاہتے ہیں؟ یہ عمل واپس نہیں کیا جا سکتا۔",
+    "notImplemented": "تمام قواعد حذف کرنا ابھی نافذ نہیں ہوا"
+  }
 }

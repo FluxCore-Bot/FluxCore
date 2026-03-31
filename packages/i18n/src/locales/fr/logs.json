@@ -1,8 +1,85 @@
 {
   "title": "Journaux",
-  "subtitle": "Surveillez les executions de regles et la journalisation des evenements.",
+  "subtitle": "Surveillez les exécutions de règles et la journalisation des événements.",
   "tabs": {
-    "activity": "Journaux d'activite",
-    "events": "Journaux d'evenements"
+    "activity": "Journaux d'activité",
+    "events": "Journaux d'événements"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Taux d'exécution",
+      "totalFailures": "Total des échecs",
+      "totalEntries": "Total des entrées"
+    },
+    "filter": {
+      "search": "Rechercher dans les journaux...",
+      "last1h": "Dernière heure",
+      "last24h": "Dernières 24 heures",
+      "last7d": "Derniers 7 jours"
+    },
+    "table": {
+      "timestamp": "Horodatage",
+      "ruleName": "Nom de la règle",
+      "eventType": "Type d'événement",
+      "action": "Action",
+      "status": "Statut",
+      "details": "Détails",
+      "success": "Succès",
+      "failed": "Échec"
+    },
+    "pagination": {
+      "showing": "Affichage de {{from}} à {{to}} sur {{total}} résultats",
+      "previous": "Précédent",
+      "next": "Suivant"
+    },
+    "empty": {
+      "title": "Aucun journal trouvé",
+      "description": "Les journaux d'exécution des règles apparaîtront ici une fois que les règles d'automatisation commenceront à s'exécuter."
+    }
+  },
+  "events": {
+    "title": "Navigateur de journaux d'événements",
+    "filter": {
+      "allCategories": "Toutes les catégories",
+      "byUserId": "Filtrer par ID utilisateur...",
+      "entries": "{{count}} entrées"
+    },
+    "categories": {
+      "message": "Message",
+      "member": "Membre",
+      "voice": "Vocal",
+      "channel": "Salon",
+      "role": "Rôle",
+      "server": "Serveur",
+      "moderation": "Modération"
+    },
+    "categoryEvents": {
+      "message": "Événements de messages",
+      "member": "Événements de membres",
+      "voice": "Événements vocaux",
+      "channel": "Événements de salons",
+      "role": "Événements de rôles",
+      "server": "Événements du serveur",
+      "moderation": "Événements de modération"
+    },
+    "table": {
+      "timestamp": "Horodatage",
+      "category": "Catégorie",
+      "event": "Événement",
+      "target": "Cible",
+      "executor": "Exécuteur"
+    },
+    "pagination": {
+      "page": "Page {{page}} sur {{total}} ({{count}} au total)",
+      "previous": "Précédent",
+      "next": "Suivant"
+    },
+    "empty": {
+      "title": "Aucun journal d'événements trouvé",
+      "description": "Les journaux d'événements apparaîtront ici une fois que la journalisation sera configurée et que les événements commenceront à se produire."
+    },
+    "config": {
+      "selectChannel": "Sélectionner un salon de journalisation"
+    }
   }
 }

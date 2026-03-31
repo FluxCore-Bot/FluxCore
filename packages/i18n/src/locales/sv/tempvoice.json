@@ -1,5 +1,30 @@
 {
   "label": "Hanteringshubb",
   "title": "Temporära röstkanaler",
-  "subtitle": "Konfigurera hubbar som låter användare skapa sina egna tillfälliga röstkanaler vid anslutning."
+  "subtitle": "Konfigurera hubbar som låter användare skapa sina egna tillfälliga röstkanaler vid anslutning.",
+  "form": {
+    "sameAsHub": "Samma som hubbkanalen",
+    "defaultNameTemplate": "{user}s kanal",
+    "hubChannel": "Hubbkanal",
+    "selectHub": "Välj en röstkanal...",
+    "category": "Kategori (valfritt)",
+    "nameTemplate": "Kanalnamnsmall",
+    "addConfig": "Lägg till konfiguration",
+    "editConfig": "Redigera konfiguration",
+    "save": "Spara konfiguration",
+    "saving": "Sparar...",
+    "cancel": "Avbryt",
+    "delete": "Ta bort",
+    "edit": "Redigera"
+  },
+  "empty": {
+    "noConfigs": "Inga konfigurationer ännu",
+    "noConfigsDesc": "Lägg till en hubbkanal för att aktivera temporära röstkanaler.",
+    "addFirst": "Lägg till konfiguration"
+  },
+  "toast": {
+    "updated": "Konfiguration uppdaterad",
+    "created": "Konfiguration skapad",
+    "removed": "Konfiguration borttagen"
+  }
 }

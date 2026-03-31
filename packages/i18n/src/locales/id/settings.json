@@ -1,4 +1,28 @@
 {
   "title": "Pengaturan",
-  "subtitle": "Konfigurasikan pengaturan sistem aksi global untuk server Anda."
+  "subtitle": "Konfigurasikan pengaturan sistem aksi global untuk server Anda.",
+  "actionSystem": {
+    "title": "Pengaturan Sistem Aksi",
+    "maxRules": "Aturan Maksimal Per Server",
+    "logChannel": "Saluran Log (opsional)",
+    "noLogChannel": "Tidak ada saluran log",
+    "globalEnable": "Aktifkan Global (nonaktifkan untuk menjeda semua aturan)",
+    "saving": "Menyimpan...",
+    "save": "Simpan Pengaturan",
+    "saved": "Pengaturan disimpan",
+    "maxRulesError": "Aturan maksimal harus antara 1 dan 100"
+  },
+  "notifications": {
+    "title": "Preferensi Notifikasi",
+    "ruleTriggered": "Aturan Dipicu",
+    "errorAlerts": "Peringatan Error",
+    "successReports": "Laporan Keberhasilan"
+  },
+  "dangerZone": {
+    "title": "Zona Berbahaya",
+    "description": "Tindakan destruktif yang tidak dapat dibatalkan.",
+    "deleteAllRules": "Hapus Semua Aturan",
+    "deleteAllConfirm": "Apakah Anda yakin ingin menghapus SEMUA aturan? Tindakan ini tidak dapat dibatalkan.",
+    "notImplemented": "Hapus semua aturan belum diimplementasikan"
+  }
 }

@@ -1,4 +1,28 @@
 {
   "title": "Postavke",
-  "subtitle": "Konfigurirajte globalne postavke sustava radnji za vas posluzitelj."
+  "subtitle": "Konfigurirajte globalne postavke sustava radnji za vaš poslužitelj.",
+  "actionSystem": {
+    "title": "Postavke sustava radnji",
+    "maxRules": "Maksimalan broj pravila po poslužitelju",
+    "logChannel": "Kanal za zapise (neobavezno)",
+    "noLogChannel": "Nema kanala za zapise",
+    "globalEnable": "Globalno omogući (onemogućite za pauziranje svih pravila)",
+    "saving": "Spremanje...",
+    "save": "Spremi postavke",
+    "saved": "Postavke spremljene",
+    "maxRulesError": "Maksimalan broj pravila mora biti između 1 i 100"
+  },
+  "notifications": {
+    "title": "Postavke obavijesti",
+    "ruleTriggered": "Pravilo pokrenuto",
+    "errorAlerts": "Upozorenja o pogreškama",
+    "successReports": "Izvještaji o uspjehu"
+  },
+  "dangerZone": {
+    "title": "Opasna zona",
+    "description": "Destruktivne radnje koje se ne mogu poništiti.",
+    "deleteAllRules": "Obriši sva pravila",
+    "deleteAllConfirm": "Jeste li sigurni da želite obrisati SVA pravila? Ovo se ne može poništiti.",
+    "notImplemented": "Brisanje svih pravila još nije implementirano"
+  }
 }

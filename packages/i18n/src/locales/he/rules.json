@@ -82,6 +82,67 @@
     "bulkEnableFailed": "הפעלת הכללים נכשלה",
     "bulkDisableFailed": "השבתת הכללים נכשלה",
     "bulkDeleted": "{{count}} כללים נמחקו",
-    "bulkDeleteFailed": "מחיקת הכללים נכשלה"
+    "bulkDeleteFailed": "מחיקת הכללים נכשלה",
+    "updated": "הכלל עודכן",
+    "created": "הכלל נוצר"
+  },
+  "form": {
+    "ruleName": "שם הכלל",
+    "ruleNamePlaceholder": "הכלל שלי...",
+    "eventType": "סוג אירוע",
+    "selectEvent": "בחר אירוע...",
+    "priority": "עדיפות",
+    "actions": "פעולות",
+    "addAction": "+ הוסף פעולה",
+    "enabled": "מופעל",
+    "editRule": "ערוך כלל",
+    "createRule": "צור כלל",
+    "workflowView": "תצוגת תהליך עבודה",
+    "draftRestored": "הטיוטה שוחזרה מהסשן הקודם.",
+    "dismiss": "סגור",
+    "atLeastOneAction": "יש להגדיר לפחות פעולה אחת עם סוג.",
+    "saving": "שומר...",
+    "update": "עדכן כלל",
+    "create": "צור כלל",
+    "cancel": "ביטול"
+  },
+  "conditions": {
+    "title": "תנאים",
+    "channels": "ערוצים",
+    "roles": "תפקידים",
+    "users": "משתמשים",
+    "addChannel": "הוסף ערוץ...",
+    "addRole": "הוסף תפקיד...",
+    "excludeChannel": "אל תכלול ערוץ...",
+    "excludeRole": "אל תכלול תפקיד...",
+    "userId": "מזהה משתמש...",
+    "addConditions": "הוסף תנאים לסינון מתי הכלל יופעל",
+    "active": "פעיל",
+    "description": "כאשר מוגדר, כלל זה יופעל רק אם האירוע תואם לכל מסנני ההכללה ואף אחד ממסנני ההחרגה.",
+    "include": "כלול (רשימה לבנה)",
+    "exclude": "אל תכלול (רשימה שחורה)",
+    "clearAll": "נקה את כל התנאים"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "לא ניתן להתחבר: יגרום ליצירת מחזור"
+    },
+    "labels": {
+      "rules": "כללים",
+      "field": "שדה",
+      "operator": "אופרטור",
+      "value": "ערך"
+    },
+    "status": {
+      "ready": "מוכן",
+      "notConfigured": "לא מוגדר"
+    },
+    "shortcuts": {
+      "close": "סגור",
+      "save": "שמור",
+      "removeNode": "הסר צומת",
+      "addAction": "הוסף פעולה",
+      "fitView": "התאם תצוגה"
+    }
   }
 }

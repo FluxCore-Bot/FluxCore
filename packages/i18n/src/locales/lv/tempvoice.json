@@ -1,5 +1,30 @@
 {
-  "label": "Parvaldibas centrs",
-  "title": "Pagaidu balss kanali",
-  "subtitle": "Konfigurejiet centrus, kas lietotajiem lauj izveidot savus pagaidu balss kanalus pievienos anas bridi."
+  "label": "Pārvaldības centrs",
+  "title": "Pagaidu balss kanāli",
+  "subtitle": "Konfigurējiet centrmezglus, kas lietotājiem ļauj izveidot savus pagaidu balss kanālus pievienošanās brīdī.",
+  "form": {
+    "sameAsHub": "Tāds pats kā centrmezgla kanāls",
+    "defaultNameTemplate": "{user} kanāls",
+    "hubChannel": "Centrmezgla kanāls",
+    "selectHub": "Atlasiet balss kanālu...",
+    "category": "Kategorija (neobligāta)",
+    "nameTemplate": "Kanāla nosaukuma veidne",
+    "addConfig": "Pievienot konfigurāciju",
+    "editConfig": "Rediģēt konfigurāciju",
+    "save": "Saglabāt konfigurāciju",
+    "saving": "Saglabā...",
+    "cancel": "Atcelt",
+    "delete": "Dzēst",
+    "edit": "Rediģēt"
+  },
+  "empty": {
+    "noConfigs": "Konfigurāciju vēl nav",
+    "noConfigsDesc": "Pievienojiet centrmezgla kanālu, lai iespējotu pagaidu balss kanālus.",
+    "addFirst": "Pievienot konfigurāciju"
+  },
+  "toast": {
+    "updated": "Konfigurācija atjaunināta",
+    "created": "Konfigurācija izveidota",
+    "removed": "Konfigurācija noņemta"
+  }
 }
