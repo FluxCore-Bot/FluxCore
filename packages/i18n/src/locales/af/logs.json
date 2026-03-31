@@ -1,8 +1,85 @@
 {
   "title": "Logboeke",
-  "subtitle": "Monitor reel-uitvoerings en gebeurtenislogboeke.",
+  "subtitle": "Monitor reël-uitvoerings en gebeurtenislogboeke.",
   "tabs": {
     "activity": "Aktiwiteitslogboeke",
     "events": "Gebeurtenislogboeke"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Uitvoeringskoers",
+      "totalFailures": "Totale Mislukkings",
+      "totalEntries": "Totale Inskrywings"
+    },
+    "filter": {
+      "search": "Soek logboeke...",
+      "last1h": "Laaste 1 uur",
+      "last24h": "Laaste 24 uur",
+      "last7d": "Laaste 7 dae"
+    },
+    "table": {
+      "timestamp": "Tydstempel",
+      "ruleName": "Reëlnaam",
+      "eventType": "Gebeurtenistipe",
+      "action": "Aksie",
+      "status": "Status",
+      "details": "Besonderhede",
+      "success": "Sukses",
+      "failed": "Misluk"
+    },
+    "pagination": {
+      "showing": "Wys {{from}}–{{to}} van {{total}} resultate",
+      "previous": "Vorige",
+      "next": "Volgende"
+    },
+    "empty": {
+      "title": "Geen logboeke gevind nie",
+      "description": "Reël-uitvoeringslogboeke sal hier verskyn sodra outomatiseringsreëls begin werk."
+    }
+  },
+  "events": {
+    "title": "Gebeurtenislogboek-blaaier",
+    "filter": {
+      "allCategories": "Alle Kategorieë",
+      "byUserId": "Filtreer op Gebruiker-ID...",
+      "entries": "{{count}} inskrywings"
+    },
+    "categories": {
+      "message": "Boodskap",
+      "member": "Lid",
+      "voice": "Stem",
+      "channel": "Kanaal",
+      "role": "Rol",
+      "server": "Bediener",
+      "moderation": "Moderering"
+    },
+    "categoryEvents": {
+      "message": "Boodskapgebeurtenisse",
+      "member": "Lidgebeurtenisse",
+      "voice": "Stemgebeurtenisse",
+      "channel": "Kanaalgebeurtenisse",
+      "role": "Rolgebeurtenisse",
+      "server": "Bedienergebeurtenisse",
+      "moderation": "Modereringsgebeurtenisse"
+    },
+    "table": {
+      "timestamp": "Tydstempel",
+      "category": "Kategorie",
+      "event": "Gebeurtenis",
+      "target": "Teiken",
+      "executor": "Uitvoerder"
+    },
+    "pagination": {
+      "page": "Bladsy {{page}} van {{total}} ({{count}} totaal)",
+      "previous": "Vorige",
+      "next": "Volgende"
+    },
+    "empty": {
+      "title": "Geen gebeurtenislogboeke gevind nie",
+      "description": "Gebeurtenislogboeke sal hier verskyn sodra logboeke opgestel is en gebeurtenisse begin plaasvind."
+    },
+    "config": {
+      "selectChannel": "Kies logkanaal"
+    }
   }
 }

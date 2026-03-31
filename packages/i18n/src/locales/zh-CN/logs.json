@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "活动日志",
     "events": "事件日志"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "执行率",
+      "totalFailures": "总失败次数",
+      "totalEntries": "总条目数"
+    },
+    "filter": {
+      "search": "搜索日志...",
+      "last1h": "最近1小时",
+      "last24h": "最近24小时",
+      "last7d": "最近7天"
+    },
+    "table": {
+      "timestamp": "时间戳",
+      "ruleName": "规则名称",
+      "eventType": "事件类型",
+      "action": "动作",
+      "status": "状态",
+      "details": "详情",
+      "success": "成功",
+      "failed": "失败"
+    },
+    "pagination": {
+      "showing": "显示 {{total}} 中第 {{from}} 到 {{to}} 条结果",
+      "previous": "上一页",
+      "next": "下一页"
+    },
+    "empty": {
+      "title": "未找到日志",
+      "description": "自动化规则开始运行后，规则执行日志将显示在此处。"
+    }
+  },
+  "events": {
+    "title": "事件日志浏览器",
+    "filter": {
+      "allCategories": "所有分类",
+      "byUserId": "按用户ID筛选...",
+      "entries": "{{count}} 条目"
+    },
+    "categories": {
+      "message": "消息",
+      "member": "成员",
+      "voice": "语音",
+      "channel": "频道",
+      "role": "角色",
+      "server": "服务器",
+      "moderation": "管理"
+    },
+    "categoryEvents": {
+      "message": "消息事件",
+      "member": "成员事件",
+      "voice": "语音事件",
+      "channel": "频道事件",
+      "role": "角色事件",
+      "server": "服务器事件",
+      "moderation": "管理事件"
+    },
+    "table": {
+      "timestamp": "时间戳",
+      "category": "分类",
+      "event": "事件",
+      "target": "目标",
+      "executor": "执行者"
+    },
+    "pagination": {
+      "page": "第 {{page}} 页，共 {{total}} 页（共 {{count}} 条）",
+      "previous": "上一页",
+      "next": "下一页"
+    },
+    "empty": {
+      "title": "未找到事件日志",
+      "description": "配置日志并开始发生事件后，事件日志将显示在此处。"
+    },
+    "config": {
+      "selectChannel": "选择日志频道"
+    }
   }
 }

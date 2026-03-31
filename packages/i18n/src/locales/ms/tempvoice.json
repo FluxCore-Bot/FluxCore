@@ -1,5 +1,30 @@
 {
   "label": "Pusat Pengurusan",
   "title": "Saluran Suara Sementara",
-  "subtitle": "Konfigurasikan hab yang membenarkan pengguna mencipta saluran suara sementara milik mereka sendiri semasa menyertai."
+  "subtitle": "Konfigurasikan hab yang membenarkan pengguna mencipta saluran suara sementara milik mereka sendiri semasa menyertai.",
+  "form": {
+    "sameAsHub": "Sama dengan saluran hab",
+    "defaultNameTemplate": "Saluran {user}",
+    "hubChannel": "Saluran Hab",
+    "selectHub": "Pilih saluran suara...",
+    "category": "Kategori (pilihan)",
+    "nameTemplate": "Templat Nama Saluran",
+    "addConfig": "Tambah Konfigurasi",
+    "editConfig": "Edit Konfigurasi",
+    "save": "Simpan Konfigurasi",
+    "saving": "Menyimpan...",
+    "cancel": "Batal",
+    "delete": "Padam",
+    "edit": "Edit"
+  },
+  "empty": {
+    "noConfigs": "Belum ada konfigurasi",
+    "noConfigsDesc": "Tambahkan saluran hab untuk mengaktifkan saluran suara sementara.",
+    "addFirst": "Tambah Konfigurasi"
+  },
+  "toast": {
+    "updated": "Konfigurasi dikemas kini",
+    "created": "Konfigurasi dicipta",
+    "removed": "Konfigurasi dibuang"
+  }
 }

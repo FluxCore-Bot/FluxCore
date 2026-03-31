@@ -1,4 +1,28 @@
 {
   "title": "Inställningar",
-  "subtitle": "Konfigurera globala åtgärdssysteminställningar för din server."
+  "subtitle": "Konfigurera globala åtgärdssysteminställningar för din server.",
+  "actionSystem": {
+    "title": "Inställningar för åtgärdssystem",
+    "maxRules": "Maximalt antal regler per server",
+    "logChannel": "Loggkanal (valfritt)",
+    "noLogChannel": "Ingen loggkanal",
+    "globalEnable": "Globalt aktivera (inaktivera för att pausa alla regler)",
+    "saving": "Sparar...",
+    "save": "Spara inställningar",
+    "saved": "Inställningar sparade",
+    "maxRulesError": "Maximalt antal regler måste vara mellan 1 och 100"
+  },
+  "notifications": {
+    "title": "Aviseringsinställningar",
+    "ruleTriggered": "Regel utlöst",
+    "errorAlerts": "Felvarningar",
+    "successReports": "Framgångsrapporter"
+  },
+  "dangerZone": {
+    "title": "Farlig zon",
+    "description": "Destruktiva åtgärder som inte kan ångras.",
+    "deleteAllRules": "Ta bort alla regler",
+    "deleteAllConfirm": "Är du säker på att du vill ta bort ALLA regler? Detta kan inte ångras.",
+    "notImplemented": "Ta bort alla regler är inte implementerat ännu"
+  }
 }

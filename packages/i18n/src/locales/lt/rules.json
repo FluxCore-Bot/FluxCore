@@ -3,85 +3,146 @@
     "guild": "Serveris",
     "automation": "Automatizavimas"
   },
-  "title": "Automatizavimo taisykles",
-  "subtitle": "Konfigurukite ivykiais grindziamus trigerius ir automatizuotus atsakymus savo serveriui.",
-  "createRule": "Sukurti taisykle",
+  "title": "Automatizavimo taisyklės",
+  "subtitle": "Konfigūruokite įvykiais grindžiamus trigerius ir automatizuotus atsakymus savo serveriui.",
+  "createRule": "Sukurti taisyklę",
   "stats": {
-    "totalRules": "Viso taisykliu",
+    "totalRules": "Viso taisyklių",
     "active": "Aktyvios",
     "executions7d": "Vykdymai (7d)",
-    "successRate": "Sekmes rodiklis"
+    "successRate": "Sėkmės rodiklis"
   },
   "filter": {
-    "searchPlaceholder": "Ieskoti taisykliu...",
-    "eventType": "Ivykio tipas",
-    "allEvents": "Visi ivykiai",
-    "allStatus": "Visos busenos",
-    "enabled": "Ijungta",
-    "disabled": "Isjungta",
-    "sortBy": "Rusiuoti pagal",
+    "searchPlaceholder": "Ieškoti taisyklių...",
+    "eventType": "Įvykio tipas",
+    "allEvents": "Visi įvykiai",
+    "allStatus": "Visos būsenos",
+    "enabled": "Įjungta",
+    "disabled": "Išjungta",
+    "sortBy": "Rūšiuoti pagal",
     "priority": "Prioritetas",
     "name": "Pavadinimas",
     "lastFired": "Paskutinis paleidimas",
-    "status": "Busena",
-    "clear": "Isvalyti",
-    "showing": "Rodoma {{filtered}} is {{total}} taisykliu"
+    "status": "Būsena",
+    "clear": "Išvalyti",
+    "showing": "Rodoma {{filtered}} iš {{total}} taisyklių"
   },
   "bulk": {
-    "selected": "{{count}} taisykle pasirinkta",
-    "selected_other": "{{count}} taisykles pasirinktos",
-    "enable": "Ijungti",
-    "disable": "Isjungti",
-    "delete": "Istrinti",
-    "clear": "Isvalyti"
+    "selected": "{{count}} taisyklė pasirinkta",
+    "selected_other": "{{count}} taisyklės pasirinktos",
+    "enable": "Įjungti",
+    "disable": "Išjungti",
+    "delete": "Ištrinti",
+    "clear": "Išvalyti"
   },
   "empty": {
-    "title": "Pradekite su automatizavimu",
-    "description": "Pasirinkite sabloną greitam pradejimui arba sukurkite taisyklę nuo nulio.",
+    "title": "Pradėkite su automatizavimu",
+    "description": "Pasirinkite šabloną greitam pradėjimui arba sukurkite taisyklę nuo nulio.",
     "createFromScratch": "Sukurti nuo nulio"
   },
   "noResults": {
-    "title": "Atitikmenu nerasta",
-    "description": "Pabandykite pakoreguoti paieskos kriterijus arba filtrus."
+    "title": "Atitikmenų nerasta",
+    "description": "Pabandykite pakoreguoti paieškos kriterijus arba filtrus."
   },
   "templates": {
-    "welcomeMessage": "Pasisveikinimo zinute",
-    "welcomeMessageDesc": "Pasveikinkite naujus narius prilagomu pranesomu kanale",
-    "autoRole": "Automatine role",
-    "autoRoleDesc": "Automatiskai priskirkite role, kai narys prisijungia",
-    "logDeleted": "Registruoti istrintas zinutes",
-    "logDeletedDesc": "Siusti istrintu zinuciu informacija i zurnalavimo kanala",
-    "boostThankYou": "Padekas uz sustiprinima",
-    "boostThankYouDesc": "Siusti asmenine zinute dekojantiems naudotojams, kurie sustiprina serveri",
-    "banLogger": "Draudimu registratorius",
-    "banLoggerDesc": "Registruoti draudimu ivykius moderavimo kanale",
-    "autoThread": "Automatine gija",
-    "autoThreadDesc": "Automatiskai sukurti gija, kai issiunčiama zinute"
+    "welcomeMessage": "Pasisveikinimo žinutė",
+    "welcomeMessageDesc": "Pasveikinkite naujus narius pritaikytu pranešimu kanale",
+    "autoRole": "Automatinė rolė",
+    "autoRoleDesc": "Automatiškai priskirti rolę, kai narys prisijungia",
+    "logDeleted": "Registruoti ištrintas žinutes",
+    "logDeletedDesc": "Siųsti ištrintų žinučių informaciją į žurnalavimo kanalą",
+    "boostThankYou": "Padėka už sustiprinimą",
+    "boostThankYouDesc": "Siųsti asmeninę žinutę vartotojams, kurie sustiprina serverį",
+    "banLogger": "Draudimų registratorius",
+    "banLoggerDesc": "Registruoti draudimų įvykius moderavimo kanale",
+    "autoThread": "Automatinė gija",
+    "autoThreadDesc": "Automatiškai sukurti giją, kai išsiunčiama žinutė"
   },
   "deleteDialog": {
-    "title": "Istrinti taisykle",
-    "description": "Ar tikrai norite istrinti \"{{name}}\"? Sio veiksmo negalima atsiaukti.",
-    "confirm": "Istrinti"
+    "title": "Ištrinti taisyklę",
+    "description": "Ar tikrai norite ištrinti „{{name}}"? Šio veiksmo negalima atšaukti.",
+    "confirm": "Ištrinti"
   },
   "bulkDeleteDialog": {
-    "title": "Istrinti pasirinktas taisykles",
-    "description": "Ar tikrai norite istrinti {{count}} taisykle? Sio veiksmo negalima atsiaukti.",
-    "description_other": "Ar tikrai norite istrinti {{count}} taisykles? Sio veiksmo negalima atsiaukti.",
-    "confirm": "Istrinti visas"
+    "title": "Ištrinti pasirinktas taisykles",
+    "description": "Ar tikrai norite ištrinti {{count}} taisyklę? Šio veiksmo negalima atšaukti.",
+    "description_other": "Ar tikrai norite ištrinti {{count}} taisykles? Šio veiksmo negalima atšaukti.",
+    "confirm": "Ištrinti visas"
   },
   "toast": {
-    "deleted": "Taisykle istrinta",
-    "deleteFailed": "Nepavyko istrinti taisykles",
-    "enabled": "Taisykle ijungta",
-    "disabled": "Taisykle isjungta",
-    "toggleFailed": "Nepavyko perjungti taisykles",
-    "duplicated": "Taisykle dubliuota",
-    "duplicateFailed": "Nepavyko dubliuoti taisykles",
-    "bulkEnabled": "{{count}} taisykles ijungtos",
-    "bulkDisabled": "{{count}} taisykles isjungtos",
-    "bulkEnableFailed": "Nepavyko ijungti taisykliu",
-    "bulkDisableFailed": "Nepavyko isjungti taisykliu",
-    "bulkDeleted": "{{count}} taisykles istrintos",
-    "bulkDeleteFailed": "Nepavyko istrinti taisykliu"
+    "deleted": "Taisyklė ištrinta",
+    "deleteFailed": "Nepavyko ištrinti taisyklės",
+    "enabled": "Taisyklė įjungta",
+    "disabled": "Taisyklė išjungta",
+    "toggleFailed": "Nepavyko perjungti taisyklės",
+    "duplicated": "Taisyklė dubliuota",
+    "duplicateFailed": "Nepavyko dubliuoti taisyklės",
+    "bulkEnabled": "{{count}} taisyklės įjungtos",
+    "bulkDisabled": "{{count}} taisyklės išjungtos",
+    "bulkEnableFailed": "Nepavyko įjungti taisyklių",
+    "bulkDisableFailed": "Nepavyko išjungti taisyklių",
+    "bulkDeleted": "{{count}} taisyklės ištrintos",
+    "bulkDeleteFailed": "Nepavyko ištrinti taisyklių",
+    "updated": "Taisyklė atnaujinta",
+    "created": "Taisyklė sukurta"
+  },
+  "form": {
+    "ruleName": "Taisyklės pavadinimas",
+    "ruleNamePlaceholder": "Mano taisyklė...",
+    "eventType": "Įvykio tipas",
+    "selectEvent": "Pasirinkite įvykį...",
+    "priority": "Prioritetas",
+    "actions": "Veiksmai",
+    "addAction": "+ Pridėti veiksmą",
+    "enabled": "Įjungta",
+    "editRule": "Redaguoti taisyklę",
+    "createRule": "Sukurti taisyklę",
+    "workflowView": "Darbo eigos vaizdas",
+    "draftRestored": "Juodraštis atkurtas iš ankstesnės sesijos.",
+    "dismiss": "Atmesti",
+    "atLeastOneAction": "Bent vienas veiksmas turi būti sukonfigūruotas su tipu.",
+    "saving": "Saugoma...",
+    "update": "Atnaujinti taisyklę",
+    "create": "Sukurti taisyklę",
+    "cancel": "Atšaukti"
+  },
+  "conditions": {
+    "title": "Sąlygos",
+    "channels": "Kanalai",
+    "roles": "Rolės",
+    "users": "Vartotojai",
+    "addChannel": "Pridėti kanalą...",
+    "addRole": "Pridėti rolę...",
+    "excludeChannel": "Neįtraukti kanalo...",
+    "excludeRole": "Neįtraukti rolės...",
+    "userId": "Vartotojo ID...",
+    "addConditions": "Pridėkite sąlygas, kad filtruotumėte, kada ši taisyklė suveikia",
+    "active": "aktyvus",
+    "description": "Kai nustatyta, ši taisyklė suveikia tik jei įvykis atitinka visus įtraukimo filtrus ir nė vieno pašalinimo filtro.",
+    "include": "Įtraukti (baltasis sąrašas)",
+    "exclude": "Neįtraukti (juodasis sąrašas)",
+    "clearAll": "Išvalyti visas sąlygas"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Negalima prijungti: sukurtų ciklą"
+    },
+    "labels": {
+      "rules": "Taisyklės",
+      "field": "Laukas",
+      "operator": "Operatorius",
+      "value": "Reikšmė"
+    },
+    "status": {
+      "ready": "Paruošta",
+      "notConfigured": "Nesukonfigūruota"
+    },
+    "shortcuts": {
+      "close": "Uždaryti",
+      "save": "Išsaugoti",
+      "removeNode": "Pašalinti mazgą",
+      "addAction": "Pridėti veiksmą",
+      "fitView": "Pritaikyti vaizdą"
+    }
   }
 }

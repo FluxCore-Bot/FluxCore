@@ -1,0 +1,148 @@
+{
+  "breadcrumb": {
+    "guild": "Server",
+    "automation": "Automatizácia"
+  },
+  "title": "Pravidlá automatizácie",
+  "subtitle": "Nakonfigurujte spúšťače riadené udalosťami a automatizované odpovede pre váš server.",
+  "createRule": "Vytvoriť pravidlo",
+  "stats": {
+    "totalRules": "Celkom pravidiel",
+    "active": "Aktívne",
+    "executions7d": "Spustenia (7d)",
+    "successRate": "Miera úspešnosti"
+  },
+  "filter": {
+    "searchPlaceholder": "Hľadať pravidlá...",
+    "eventType": "Typ udalosti",
+    "allEvents": "Všetky udalosti",
+    "allStatus": "Všetky stavy",
+    "enabled": "Povolené",
+    "disabled": "Zakázané",
+    "sortBy": "Zoradiť podľa",
+    "priority": "Priorita",
+    "name": "Názov",
+    "lastFired": "Posledné spustenie",
+    "status": "Stav",
+    "clear": "Vymazať",
+    "showing": "Zobrazené {{filtered}} z {{total}} pravidiel"
+  },
+  "bulk": {
+    "selected": "{{count}} pravidlo vybrané",
+    "selected_other": "{{count}} pravidiel vybraných",
+    "enable": "Povoliť",
+    "disable": "Zakázať",
+    "delete": "Odstrániť",
+    "clear": "Vymazať"
+  },
+  "empty": {
+    "title": "Začnite s automatizáciou",
+    "description": "Vyberte šablónu pre rýchly štart alebo vytvorte pravidlo od základu.",
+    "createFromScratch": "Vytvoriť od základu"
+  },
+  "noResults": {
+    "title": "Žiadne zodpovedajúce pravidlá",
+    "description": "Skúste upraviť vyhľadávanie alebo filtre, aby ste našli to, čo hľadáte."
+  },
+  "templates": {
+    "welcomeMessage": "Uvítacia správa",
+    "welcomeMessageDesc": "Privítajte nových členov vlastnou správou v kanáli",
+    "autoRole": "Automatická rola",
+    "autoRoleDesc": "Automaticky priradiť rolu, keď sa člen pripojí",
+    "logDeleted": "Zaznamenať zmazané správy",
+    "logDeletedDesc": "Odosielať informácie o zmazaných správach do logovacieho kanálu",
+    "boostThankYou": "Poďakovanie za boost",
+    "boostThankYouDesc": "Odoslať DM s poďakovaním používateľom, ktorí boostujú server",
+    "banLogger": "Logger banov",
+    "banLoggerDesc": "Zaznamenať ban udalosti do kanálu moderácie",
+    "autoThread": "Automatické vlákno",
+    "autoThreadDesc": "Automaticky vytvoriť vlákno pri odoslaní správy"
+  },
+  "deleteDialog": {
+    "title": "Odstrániť pravidlo",
+    "description": "Naozaj chcete odstrániť \"{{name}}\"? Túto akciu nie je možné vrátiť.",
+    "confirm": "Odstrániť"
+  },
+  "bulkDeleteDialog": {
+    "title": "Odstrániť vybrané pravidlá",
+    "description": "Naozaj chcete odstrániť {{count}} pravidlo? Túto akciu nie je možné vrátiť.",
+    "description_other": "Naozaj chcete odstrániť {{count}} pravidiel? Túto akciu nie je možné vrátiť.",
+    "confirm": "Odstrániť všetky"
+  },
+  "toast": {
+    "deleted": "Pravidlo odstránené",
+    "deleteFailed": "Odstránenie pravidla zlyhalo",
+    "enabled": "Pravidlo povolené",
+    "disabled": "Pravidlo zakázané",
+    "toggleFailed": "Prepnutie pravidla zlyhalo",
+    "duplicated": "Pravidlo duplikované",
+    "duplicateFailed": "Duplikovanie pravidla zlyhalo",
+    "bulkEnabled": "{{count}} pravidiel povolených",
+    "bulkDisabled": "{{count}} pravidiel zakázaných",
+    "bulkEnableFailed": "Povolenie pravidiel zlyhalo",
+    "bulkDisableFailed": "Zakázanie pravidiel zlyhalo",
+    "bulkDeleted": "{{count}} pravidiel odstránených",
+    "bulkDeleteFailed": "Odstránenie pravidiel zlyhalo",
+    "updated": "Pravidlo aktualizované",
+    "created": "Pravidlo vytvorené"
+  },
+  "form": {
+    "ruleName": "Názov pravidla",
+    "ruleNamePlaceholder": "Moje pravidlo...",
+    "eventType": "Typ udalosti",
+    "selectEvent": "Vybrať udalosť...",
+    "priority": "Priorita",
+    "actions": "Akcie",
+    "addAction": "+ Pridať akciu",
+    "enabled": "Povolené",
+    "editRule": "Upraviť pravidlo",
+    "createRule": "Vytvoriť pravidlo",
+    "workflowView": "Zobrazenie pracovného postupu",
+    "draftRestored": "Koncept obnovený z predchádzajúcej relácie.",
+    "dismiss": "Zatvoriť",
+    "atLeastOneAction": "Musí byť nakonfigurovaná aspoň jedna akcia s typom.",
+    "saving": "Ukladanie...",
+    "update": "Aktualizovať pravidlo",
+    "create": "Vytvoriť pravidlo",
+    "cancel": "Zrušiť"
+  },
+  "conditions": {
+    "title": "Podmienky",
+    "channels": "Kanály",
+    "roles": "Roly",
+    "users": "Používatelia",
+    "addChannel": "Pridať kanál...",
+    "addRole": "Pridať rolu...",
+    "excludeChannel": "Vylúčiť kanál...",
+    "excludeRole": "Vylúčiť rolu...",
+    "userId": "ID používateľa...",
+    "addConditions": "Pridajte podmienky na filtrovanie, kedy sa toto pravidlo spustí",
+    "active": "aktívne",
+    "description": "Po nastavení sa toto pravidlo spustí iba vtedy, keď udalosť zodpovedá všetkým filtrom zahrnutia a žiadnemu z filtrov vylúčenia.",
+    "include": "Zahrnúť (biela listina)",
+    "exclude": "Vylúčiť (čierna listina)",
+    "clearAll": "Vymazať všetky podmienky"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Nemožno prepojiť: spôsobilo by to cyklus"
+    },
+    "labels": {
+      "rules": "Pravidlá",
+      "field": "Pole",
+      "operator": "Operátor",
+      "value": "Hodnota"
+    },
+    "status": {
+      "ready": "Pripravené",
+      "notConfigured": "Nenakonfigurované"
+    },
+    "shortcuts": {
+      "close": "Zatvoriť",
+      "save": "Uložiť",
+      "removeNode": "Odstrániť uzol",
+      "addAction": "Pridať akciu",
+      "fitView": "Prispôsobiť zobrazenie"
+    }
+  }
+}

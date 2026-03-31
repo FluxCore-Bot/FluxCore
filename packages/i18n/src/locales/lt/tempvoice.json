@@ -1,5 +1,30 @@
 {
   "label": "Valdymo centras",
   "title": "Laikini balso kanalai",
-  "subtitle": "Konfigurukite centrus, kurie leidzia naudotojams kurti savo laikinus balso kanalus prisijungus."
+  "subtitle": "Konfigūruokite centrus, kurie leidžia vartotojams kurti savo laikinus balso kanalus prisijungus.",
+  "form": {
+    "sameAsHub": "Tas pats kaip centras kanalas",
+    "defaultNameTemplate": "{user} kanalas",
+    "hubChannel": "Centro kanalas",
+    "selectHub": "Pasirinkite balso kanalą...",
+    "category": "Kategorija (neprivaloma)",
+    "nameTemplate": "Kanalo pavadinimo šablonas",
+    "addConfig": "Pridėti konfigūraciją",
+    "editConfig": "Redaguoti konfigūraciją",
+    "save": "Išsaugoti konfigūraciją",
+    "saving": "Saugoma...",
+    "cancel": "Atšaukti",
+    "delete": "Ištrinti",
+    "edit": "Redaguoti"
+  },
+  "empty": {
+    "noConfigs": "Konfigūracijų dar nėra",
+    "noConfigsDesc": "Pridėkite centro kanalą, kad įgalintumėte laikinus balso kanalus.",
+    "addFirst": "Pridėti konfigūraciją"
+  },
+  "toast": {
+    "updated": "Konfigūracija atnaujinta",
+    "created": "Konfigūracija sukurta",
+    "removed": "Konfigūracija pašalinta"
+  }
 }

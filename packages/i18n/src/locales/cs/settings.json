@@ -1,0 +1,28 @@
+{
+  "title": "Nastavení",
+  "subtitle": "Nakonfigurujte globální nastavení systému akcí pro váš server.",
+  "actionSystem": {
+    "title": "Nastavení systému akcí",
+    "maxRules": "Max. pravidel na server",
+    "logChannel": "Logovací kanál (volitelné)",
+    "noLogChannel": "Žádný logovací kanál",
+    "globalEnable": "Globální povolení (zakázat pro pozastavení všech pravidel)",
+    "saving": "Ukládání...",
+    "save": "Uložit nastavení",
+    "saved": "Nastavení uloženo",
+    "maxRulesError": "Maximální počet pravidel musí být mezi 1 a 100"
+  },
+  "notifications": {
+    "title": "Předvolby oznámení",
+    "ruleTriggered": "Pravidlo spuštěno",
+    "errorAlerts": "Upozornění na chyby",
+    "successReports": "Zprávy o úspěchu"
+  },
+  "dangerZone": {
+    "title": "Nebezpečná zóna",
+    "description": "Destruktivní akce, které nelze vrátit zpět.",
+    "deleteAllRules": "Smazat všechna pravidla",
+    "deleteAllConfirm": "Opravdu chcete smazat VŠECHNA pravidla? Tuto akci nelze vrátit zpět.",
+    "notImplemented": "Smazání všech pravidel ještě není implementováno"
+  }
+}

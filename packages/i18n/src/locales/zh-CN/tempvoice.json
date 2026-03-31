@@ -1,5 +1,30 @@
 {
   "label": "管理中心",
   "title": "临时语音频道",
-  "subtitle": "配置允许用户在加入时创建自己的临时语音频道的中心。"
+  "subtitle": "配置允许用户在加入时创建自己的临时语音频道的中心。",
+  "form": {
+    "sameAsHub": "与中心频道相同",
+    "defaultNameTemplate": "{user}的频道",
+    "hubChannel": "中心频道",
+    "selectHub": "选择语音频道...",
+    "category": "分类（可选）",
+    "nameTemplate": "频道名称模板",
+    "addConfig": "添加配置",
+    "editConfig": "编辑配置",
+    "save": "保存配置",
+    "saving": "保存中...",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑"
+  },
+  "empty": {
+    "noConfigs": "暂无配置",
+    "noConfigsDesc": "添加中心频道以启用临时语音频道。",
+    "addFirst": "添加配置"
+  },
+  "toast": {
+    "updated": "配置已更新",
+    "created": "配置已创建",
+    "removed": "配置已移除"
+  }
 }

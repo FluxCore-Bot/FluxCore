@@ -71,11 +71,31 @@
     "type": "வகை",
     "status": "நிலை",
     "channel": "சேனல்",
+    "channels": "சேனல்கள்",
     "role": "பங்கு",
+    "roles": "பங்குகள்",
     "member": "உறுப்பினர்",
+    "users": "பயனர்கள்",
+    "conditions": "நிபந்தனைகள்",
     "duration": "காலம்",
     "reason": "காரணம்",
     "language": "மொழி"
+  },
+  "form": {
+    "selectChannel": "சேனலை தேர்ந்தெடு...",
+    "selectRole": "பங்கை தேர்ந்தெடு...",
+    "select": "தேர்ந்தெடு...",
+    "saving": "சேமிக்கிறது...",
+    "saveSettings": "அமைப்புகளை சேமி",
+    "previous": "முந்தைய",
+    "next": "அடுத்து"
+  },
+  "pagination": {
+    "previous": "முந்தைய",
+    "next": "அடுத்து",
+    "page": "பக்கம் {{page}} / {{total}}",
+    "showing": "{{total}} முடிவுகளில் {{from}} முதல் {{to}} வரை காட்டப்படுகிறது",
+    "showingPage": "பக்கம் {{page}} / {{total}} ({{count}} மொத்தம்)"
   },
   "header": {
     "notifications": "அறிவிப்புகள்",

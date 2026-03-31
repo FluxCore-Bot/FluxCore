@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "@tanstack/react-router";
 import { Icon } from "./Icon";
 import { Button } from "./ui/button";
@@ -29,6 +30,7 @@ import { ApiError } from "../lib/client";
 const MAX_CONFIGS = 10;
 
 export function TempVoiceForm() {
+  const { t } = useTranslation("tempvoice");
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: configs = [], isLoading } = useTempVoiceConfigs(guildId);
   const { data: channels = [] } = useChannels(guildId);
@@ -103,10 +105,10 @@ export function TempVoiceForm() {
           configId: editingId,
           data: result.data,
         });
-        toast.success("Configuration updated");
+        toast.success(t("toast.updated"));
       } else {
         await createConfig.mutateAsync(result.data);
-        toast.success("Configuration created");
+        toast.success(t("toast.created"));
       }
       closeForm();
     } catch (err) {
@@ -117,7 +119,7 @@ export function TempVoiceForm() {
   const handleDelete = async (configId: number) => {
     try {
       await deleteConfig.mutateAsync(configId);
-      toast.success("Configuration removed");
+      toast.success(t("toast.removed"));
       if (editingId === configId) closeForm();
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "An error occurred");
@@ -165,10 +167,10 @@ export function TempVoiceForm() {
               </div>
               <div className="flex gap-2">
                 <Button variant="secondary" size="sm" onClick={() => openEditForm(cfg)} disabled={isPending}>
-                  Edit
+                  {t("form.edit")}
                 </Button>
                 <Button variant="ghost" size="sm" className="text-danger hover:text-danger" onClick={() => handleDelete(cfg.id)} disabled={isPending}>
-                  Delete
+                  {t("form.delete")}
                 </Button>
               </div>
             </div>
@@ -179,11 +181,11 @@ export function TempVoiceForm() {
       {configs.length === 0 && !showForm && (
         <EmptyState
           icon="settings_voice"
-          title="No configurations yet"
-          description="Click 'Add Hub' to create your first temporary voice channel configuration."
+          title={t("empty.noConfigs")}
+          description={t("empty.noConfigsDesc")}
           action={
             <Button onClick={openCreateForm}>
-              <Icon name="add" /> Add Hub
+              <Icon name="add" /> {t("empty.addFirst")}
             </Button>
           }
         />
@@ -196,7 +198,7 @@ export function TempVoiceForm() {
           className="rounded-lg bg-surface-high p-5 space-y-5"
         >
           <h4 className="text-sm font-semibold">
-            {editingId !== null ? "Edit Configuration" : "New Configuration"}
+            {editingId !== null ? t("form.editConfig") : t("form.addConfig")}
           </h4>
 
           {error && (
@@ -204,13 +206,13 @@ export function TempVoiceForm() {
           )}
 
           <div>
-            <Label>Hub Channel <span className="text-danger">*</span></Label>
+            <Label>{t("form.hubChannel")} <span className="text-danger">*</span></Label>
             <Select
               value={hubChannelId || undefined}
               onValueChange={setHubChannelId}
             >
               <SelectTrigger>
-                <SelectValue placeholder="Select voice channel..." />
+                <SelectValue placeholder={t("form.selectHub")} />
               </SelectTrigger>
               <SelectContent>
                 {availableVoiceChannels.map((c) => (
@@ -223,16 +225,16 @@ export function TempVoiceForm() {
           </div>
 
           <div>
-            <Label>Category (optional)</Label>
+            <Label>{t("form.category")}</Label>
             <Select
               value={categoryId ?? "none"}
               onValueChange={(v) => setCategoryId(v === "none" ? null : v)}
             >
               <SelectTrigger>
-                <SelectValue placeholder="Same as hub channel" />
+                <SelectValue placeholder={t("form.sameAsHub")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="none">Same as hub channel</SelectItem>
+                <SelectItem value="none">{t("form.sameAsHub")}</SelectItem>
                 {categories.map((c) => (
                   <SelectItem key={c.id} value={c.id}>
                     {c.name}
@@ -243,12 +245,12 @@ export function TempVoiceForm() {
           </div>
 
           <div>
-            <Label>Name Template</Label>
+            <Label>{t("form.nameTemplate")}</Label>
             <Input
               type="text"
               value={nameTemplate}
               onChange={(e) => setNameTemplate(e.target.value)}
-              placeholder="{user}'s Channel"
+              placeholder={t("form.defaultNameTemplate")}
               maxLength={100}
             />
             <p className="mt-1 text-xs text-text-muted">
@@ -258,14 +260,10 @@ export function TempVoiceForm() {
 
           <div className="flex items-center gap-3">
             <Button type="submit" disabled={isPending}>
-              {isPending
-                ? "Saving..."
-                : editingId !== null
-                  ? "Update"
-                  : "Create"}
+              {isPending ? t("form.saving") : editingId !== null ? t("form.save") : t("form.save")}
             </Button>
             <Button type="button" variant="ghost" onClick={closeForm}>
-              Cancel
+              {t("form.cancel")}
             </Button>
           </div>
         </form>

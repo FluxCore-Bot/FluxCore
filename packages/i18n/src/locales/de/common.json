@@ -10,7 +10,7 @@
     "latency": "{{ms}}ms"
   },
   "nav": {
-    "overview": "Uebersicht",
+    "overview": "Übersicht",
     "automation": "Automatisierung",
     "music": "Musik",
     "tempvoice": "TempVoice",
@@ -24,7 +24,7 @@
     "security": "Sicherheit",
     "tickets": "Tickets",
     "giveaways": "Gewinnspiele",
-    "suggestions": "Vorschlaege",
+    "suggestions": "Vorschläge",
     "starboard": "Starboard",
     "logs": "Protokolle",
     "permissions": "Berechtigungen",
@@ -33,19 +33,19 @@
   "actions": {
     "save": "Speichern",
     "cancel": "Abbrechen",
-    "delete": "Loeschen",
+    "delete": "Löschen",
     "edit": "Bearbeiten",
     "create": "Erstellen",
-    "add": "Hinzufuegen",
+    "add": "Hinzufügen",
     "remove": "Entfernen",
-    "confirm": "Bestaetigen",
-    "close": "Schliessen",
-    "back": "Zurueck",
+    "confirm": "Bestätigen",
+    "close": "Schließen",
+    "back": "Zurück",
     "next": "Weiter",
     "search": "Suchen",
     "filter": "Filtern",
     "refresh": "Aktualisieren",
-    "reset": "Zuruecksetzen",
+    "reset": "Zurücksetzen",
     "enable": "Aktivieren",
     "disable": "Deaktivieren",
     "copy": "Kopieren",
@@ -71,11 +71,31 @@
     "type": "Typ",
     "status": "Status",
     "channel": "Kanal",
+    "channels": "Kanäle",
     "role": "Rolle",
+    "roles": "Rollen",
     "member": "Mitglied",
+    "users": "Benutzer",
+    "conditions": "Bedingungen",
     "duration": "Dauer",
     "reason": "Grund",
     "language": "Sprache"
+  },
+  "form": {
+    "selectChannel": "Kanal auswählen...",
+    "selectRole": "Rolle auswählen...",
+    "select": "Auswählen...",
+    "saving": "Speichern...",
+    "saveSettings": "Einstellungen speichern",
+    "previous": "Zurück",
+    "next": "Weiter"
+  },
+  "pagination": {
+    "previous": "Zurück",
+    "next": "Weiter",
+    "page": "Seite {{page}} von {{total}}",
+    "showing": "{{from}} bis {{to}} von {{total}} Ergebnissen",
+    "showingPage": "Seite {{page}} von {{total}} ({{count}} gesamt)"
   },
   "header": {
     "notifications": "Benachrichtigungen",
@@ -85,16 +105,16 @@
     "refreshData": "Discord-Daten aktualisieren"
   },
   "sidebar": {
-    "closeSidebar": "Seitenleiste schliessen",
-    "addToServer": "Zum Server hinzufuegen",
+    "closeSidebar": "Seitenleiste schließen",
+    "addToServer": "Zum Server hinzufügen",
     "docs": "Dokumentation",
     "support": "Support",
-    "backToServers": "Zurueck zu den Servern"
+    "backToServers": "Zurück zu den Servern"
   },
   "empty": {
-    "noData": "Keine Daten verfuegbar",
+    "noData": "Keine Daten verfügbar",
     "noResults": "Keine Ergebnisse gefunden",
-    "noItems": "Noch keine Eintraege"
+    "noItems": "Noch keine Einträge"
   },
   "time": {
     "seconds": "Sekunden",
@@ -106,16 +126,16 @@
   },
   "confirm": {
     "title": "Sind Sie sicher?",
-    "deleteTitle": "Loeschen bestaetigen",
-    "deleteMessage": "Diese Aktion kann nicht rueckgaengig gemacht werden.",
-    "unsavedChanges": "Sie haben ungespeicherte Aenderungen. Sind Sie sicher, dass Sie die Seite verlassen moechten?"
+    "deleteTitle": "Löschen bestätigen",
+    "deleteMessage": "Diese Aktion kann nicht rückgängig gemacht werden.",
+    "unsavedChanges": "Sie haben nicht gespeicherte Änderungen. Sind Sie sicher, dass Sie die Seite verlassen möchten?"
   },
   "accessibility": {
     "skipToContent": "Zum Hauptinhalt springen",
     "loading": "Inhalt wird geladen",
     "loaded": "Inhalt geladen",
     "error": "Ein Fehler ist aufgetreten",
-    "menuOpen": "Menue ist geoeffnet",
-    "menuClosed": "Menue ist geschlossen"
+    "menuOpen": "Menü ist geöffnet",
+    "menuClosed": "Menü ist geschlossen"
   }
 }

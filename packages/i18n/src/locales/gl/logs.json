@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Rexistros de Actividade",
     "events": "Rexistros de Eventos"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Taxa de execución",
+      "totalFailures": "Total de fallos",
+      "totalEntries": "Total de entradas"
+    },
+    "filter": {
+      "search": "Buscar rexistros...",
+      "last1h": "Última 1 hora",
+      "last24h": "Últimas 24 horas",
+      "last7d": "Últimos 7 días"
+    },
+    "table": {
+      "timestamp": "Marca de tempo",
+      "ruleName": "Nome da regra",
+      "eventType": "Tipo de evento",
+      "action": "Acción",
+      "status": "Estado",
+      "details": "Detalles",
+      "success": "Éxito",
+      "failed": "Fallido"
+    },
+    "pagination": {
+      "showing": "Mostrando {{from}}–{{to}} de {{total}} resultados",
+      "previous": "Anterior",
+      "next": "Seguinte"
+    },
+    "empty": {
+      "title": "Non se atoparon rexistros",
+      "description": "Os rexistros de execución de regras aparecerán aquí unha vez que as regras de automatización comecen a funcionar."
+    }
+  },
+  "events": {
+    "title": "Explorador de rexistros de eventos",
+    "filter": {
+      "allCategories": "Todas as categorías",
+      "byUserId": "Filtrar por ID de usuario...",
+      "entries": "{{count}} entradas"
+    },
+    "categories": {
+      "message": "Mensaxe",
+      "member": "Membro",
+      "voice": "Voz",
+      "channel": "Canal",
+      "role": "Rol",
+      "server": "Servidor",
+      "moderation": "Moderación"
+    },
+    "categoryEvents": {
+      "message": "Eventos de mensaxes",
+      "member": "Eventos de membros",
+      "voice": "Eventos de voz",
+      "channel": "Eventos de canles",
+      "role": "Eventos de roles",
+      "server": "Eventos do servidor",
+      "moderation": "Eventos de moderación"
+    },
+    "table": {
+      "timestamp": "Marca de tempo",
+      "category": "Categoría",
+      "event": "Evento",
+      "target": "Obxectivo",
+      "executor": "Executor"
+    },
+    "pagination": {
+      "page": "Páxina {{page}} de {{total}} ({{count}} total)",
+      "previous": "Anterior",
+      "next": "Seguinte"
+    },
+    "empty": {
+      "title": "Non se atoparon rexistros de eventos",
+      "description": "Os rexistros de eventos aparecerán aquí unha vez que o rexistro estea configurado e os eventos comecen a ocorrer."
+    },
+    "config": {
+      "selectChannel": "Seleccionar canal de rexistro"
+    }
   }
 }

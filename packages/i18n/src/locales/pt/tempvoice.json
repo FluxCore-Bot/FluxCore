@@ -1,5 +1,30 @@
 {
-  "label": "Hub de gestao",
-  "title": "Canais de voz temporarios",
-  "subtitle": "Configure hubs que permitem aos utilizadores criar os seus proprios canais de voz efemeros ao entrar."
+  "label": "Hub de gestão",
+  "title": "Canais de voz temporários",
+  "subtitle": "Configure hubs que permitem aos utilizadores criar os seus próprios canais de voz efémeros ao entrar.",
+  "form": {
+    "sameAsHub": "Igual ao canal hub",
+    "defaultNameTemplate": "Canal de {user}",
+    "hubChannel": "Canal hub",
+    "selectHub": "Selecionar um canal de voz...",
+    "category": "Categoria (opcional)",
+    "nameTemplate": "Modelo de nome do canal",
+    "addConfig": "Adicionar configuração",
+    "editConfig": "Editar configuração",
+    "save": "Guardar configuração",
+    "saving": "A guardar...",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar"
+  },
+  "empty": {
+    "noConfigs": "Ainda sem configurações",
+    "noConfigsDesc": "Adicione um canal hub para ativar os canais de voz temporários.",
+    "addFirst": "Adicionar configuração"
+  },
+  "toast": {
+    "updated": "Configuração atualizada",
+    "created": "Configuração criada",
+    "removed": "Configuração removida"
+  }
 }

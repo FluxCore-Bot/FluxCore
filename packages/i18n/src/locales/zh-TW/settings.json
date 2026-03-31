@@ -1,4 +1,28 @@
 {
   "title": "設定",
-  "subtitle": "設定伺服器的全域動作系統設定。"
+  "subtitle": "設定伺服器的全域動作系統設定。",
+  "actionSystem": {
+    "title": "動作系統設定",
+    "maxRules": "每個伺服器的最大規則數",
+    "logChannel": "日誌頻道（選填）",
+    "noLogChannel": "無日誌頻道",
+    "globalEnable": "全域啟用（停用則暫停所有規則）",
+    "saving": "儲存中...",
+    "save": "儲存設定",
+    "saved": "設定已儲存",
+    "maxRulesError": "最大規則數必須在 1 到 100 之間"
+  },
+  "notifications": {
+    "title": "通知偏好",
+    "ruleTriggered": "規則已觸發",
+    "errorAlerts": "錯誤警示",
+    "successReports": "成功報告"
+  },
+  "dangerZone": {
+    "title": "危險區域",
+    "description": "無法復原的破壞性操作。",
+    "deleteAllRules": "刪除所有規則",
+    "deleteAllConfirm": "確定要刪除所有規則嗎？此操作無法復原。",
+    "notImplemented": "刪除所有規則功能尚未實作"
+  }
 }

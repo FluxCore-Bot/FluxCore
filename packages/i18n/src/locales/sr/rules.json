@@ -1,87 +1,148 @@
 {
   "breadcrumb": {
-    "guild": "Server",
-    "automation": "Automatizacija"
+    "guild": "Сервер",
+    "automation": "Аутоматизација"
   },
-  "title": "Pravila automatizacije",
-  "subtitle": "Konfigurisi okidace zasnovane na dogadajima i automatizovane odgovore za vas server.",
-  "createRule": "Kreiraj pravilo",
+  "title": "Правила аутоматизације",
+  "subtitle": "Конфигуришите окидаче засноване на догађајима и аутоматизоване одговоре за ваш сервер.",
+  "createRule": "Креирај правило",
   "stats": {
-    "totalRules": "Ukupno pravila",
-    "active": "Aktivno",
-    "executions7d": "Izvrsavanja (7d)",
-    "successRate": "Stopa uspesnosti"
+    "totalRules": "Укупно правила",
+    "active": "Активно",
+    "executions7d": "Извршавања (7д)",
+    "successRate": "Стопа успешности"
   },
   "filter": {
-    "searchPlaceholder": "Pretrazi pravila...",
-    "eventType": "Tip dogadaja",
-    "allEvents": "Svi dogadaji",
-    "allStatus": "Svi statusi",
-    "enabled": "Omoguceno",
-    "disabled": "Onemoguceno",
-    "sortBy": "Sortiraj po",
-    "priority": "Prioritet",
-    "name": "Naziv",
-    "lastFired": "Poslednji put pokrenuto",
-    "status": "Status",
-    "clear": "Obrisi",
-    "showing": "Prikazano {{filtered}} od {{total}} pravila"
+    "searchPlaceholder": "Претражи правила...",
+    "eventType": "Тип догађаја",
+    "allEvents": "Сви догађаји",
+    "allStatus": "Сви статуси",
+    "enabled": "Омогућено",
+    "disabled": "Онемогућено",
+    "sortBy": "Сортирај по",
+    "priority": "Приоритет",
+    "name": "Назив",
+    "lastFired": "Последњи пут покренуто",
+    "status": "Статус",
+    "clear": "Обриши",
+    "showing": "Приказано {{filtered}} од {{total}} правила"
   },
   "bulk": {
-    "selected": "{{count}} pravilo izabrano",
-    "selected_other": "{{count}} pravila izabrano",
-    "enable": "Omoguci",
-    "disable": "Onemogudi",
-    "delete": "Obrisi",
-    "clear": "Obrisi"
+    "selected": "{{count}} правило изабрано",
+    "selected_other": "{{count}} правила изабрано",
+    "enable": "Омогући",
+    "disable": "Онемогући",
+    "delete": "Обриши",
+    "clear": "Обриши"
   },
   "empty": {
-    "title": "Zapocnite sa automatizacijom",
-    "description": "Izaberite sablon za brzi pocetak ili kreirajte pravilo od nule.",
-    "createFromScratch": "Kreiraj od nule"
+    "title": "Започните са аутоматизацијом",
+    "description": "Изаберите шаблон за брзи почетак или креирајте правило од нуле.",
+    "createFromScratch": "Креирај од нуле"
   },
   "noResults": {
-    "title": "Nema odgovarajucih pravila",
-    "description": "Pokusajte da prilagodite pretragu ili filtere kako biste pronasli ono sto trazite."
+    "title": "Нема одговарајућих правила",
+    "description": "Покушајте да прилагодите претрагу или филтере да бисте пронашли оно што тражите."
   },
   "templates": {
-    "welcomeMessage": "Poruka dobrodoslice",
-    "welcomeMessageDesc": "Pozdravite nove clanove prilagodenom porukom u kanalu",
-    "autoRole": "Automatska uloga",
-    "autoRoleDesc": "Automatski dodelite ulogu kada se clan pridruzuje",
-    "logDeleted": "Evidentiraj obrisane poruke",
-    "logDeletedDesc": "Posaljite podatke o obrisanim porukama u kanal za zapise",
-    "boostThankYou": "Zahvalnost za bustovanje",
-    "boostThankYouDesc": "Posaljite privatnu poruku zahvalnosti korisnicima koji bustuju server",
-    "banLogger": "Zapisivac zabrana",
-    "banLoggerDesc": "Evidentirajte zabrane u moderacijski kanal",
-    "autoThread": "Automatska nit",
-    "autoThreadDesc": "Automatski kreirajte nit kada se poslje poruka"
+    "welcomeMessage": "Порука добродошлице",
+    "welcomeMessageDesc": "Поздравите нове чланове прилагођеном поруком у каналу",
+    "autoRole": "Аутоматска улога",
+    "autoRoleDesc": "Аутоматски доделите улогу када се члан придружи",
+    "logDeleted": "Евидентирај обрисане поруке",
+    "logDeletedDesc": "Пошаљите податке о обрисаним порукама у канал за записе",
+    "boostThankYou": "Захвалност за бустовање",
+    "boostThankYouDesc": "Пошаљите DM захвалности корисницима који бустују сервер",
+    "banLogger": "Записивач забрана",
+    "banLoggerDesc": "Евидентирајте забране у модерацијски канал",
+    "autoThread": "Аутоматска нит",
+    "autoThreadDesc": "Аутоматски креирајте нит када се пошаље порука"
   },
   "deleteDialog": {
-    "title": "Obrisi pravilo",
-    "description": "Da li ste sigurni da zelite da obrisete \"{{name}}\"? Ova radnja se ne moze ponistiti.",
-    "confirm": "Obrisi"
+    "title": "Обриши правило",
+    "description": "Да ли сте сигурни да желите да обришете \"{{name}}\"? Ова радња се не може поништити.",
+    "confirm": "Обриши"
   },
   "bulkDeleteDialog": {
-    "title": "Obrisi izabrana pravila",
-    "description": "Da li ste sigurni da zelite da obrisete {{count}} pravilo? Ova radnja se ne moze ponistiti.",
-    "description_other": "Da li ste sigurni da zelite da obrisete {{count}} pravila? Ova radnja se ne moze ponistiti.",
-    "confirm": "Obrisi sve"
+    "title": "Обриши изабрана правила",
+    "description": "Да ли сте сигурни да желите да обришете {{count}} правило? Ова радња се не може поништити.",
+    "description_other": "Да ли сте сигурни да желите да обришете {{count}} правила? Ова радња се не може поништити.",
+    "confirm": "Обриши све"
   },
   "toast": {
-    "deleted": "Pravilo obrisano",
-    "deleteFailed": "Brisanje pravila nije uspelo",
-    "enabled": "Pravilo omoguceno",
-    "disabled": "Pravilo onemoguceno",
-    "toggleFailed": "Prebacivanje pravila nije uspelo",
-    "duplicated": "Pravilo duplirano",
-    "duplicateFailed": "Dupliranje pravila nije uspelo",
-    "bulkEnabled": "{{count}} pravila omoguceno",
-    "bulkDisabled": "{{count}} pravila onemoguceno",
-    "bulkEnableFailed": "Omogucavanje pravila nije uspelo",
-    "bulkDisableFailed": "Onemogucavanje pravila nije uspelo",
-    "bulkDeleted": "{{count}} pravila obrisano",
-    "bulkDeleteFailed": "Brisanje pravila nije uspelo"
+    "deleted": "Правило обрисано",
+    "deleteFailed": "Брисање правила није успело",
+    "enabled": "Правило омогућено",
+    "disabled": "Правило онемогућено",
+    "toggleFailed": "Пребацивање правила није успело",
+    "duplicated": "Правило дуплирано",
+    "duplicateFailed": "Дуплирање правила није успело",
+    "bulkEnabled": "{{count}} правила омогућено",
+    "bulkDisabled": "{{count}} правила онемогућено",
+    "bulkEnableFailed": "Омогућавање правила није успело",
+    "bulkDisableFailed": "Онемогућавање правила није успело",
+    "bulkDeleted": "{{count}} правила обрисано",
+    "bulkDeleteFailed": "Брисање правила није успело",
+    "updated": "Правило ажурирано",
+    "created": "Правило креирано"
+  },
+  "form": {
+    "ruleName": "Назив правила",
+    "ruleNamePlaceholder": "Моје правило...",
+    "eventType": "Тип догађаја",
+    "selectEvent": "Изаберите догађај...",
+    "priority": "Приоритет",
+    "actions": "Акције",
+    "addAction": "+ Додај акцију",
+    "enabled": "Омогућено",
+    "editRule": "Уреди правило",
+    "createRule": "Креирај правило",
+    "workflowView": "Приказ тока рада",
+    "draftRestored": "Нацрт је враћен из претходне сесије.",
+    "dismiss": "Одбаци",
+    "atLeastOneAction": "Мора бити конфигурисана најмање једна акција са типом.",
+    "saving": "Чување...",
+    "update": "Ажурирај правило",
+    "create": "Креирај правило",
+    "cancel": "Откажи"
+  },
+  "conditions": {
+    "title": "Услови",
+    "channels": "Канали",
+    "roles": "Улоге",
+    "users": "Корисници",
+    "addChannel": "Додај канал...",
+    "addRole": "Додај улогу...",
+    "excludeChannel": "Искључи канал...",
+    "excludeRole": "Искључи улогу...",
+    "userId": "ID корисника...",
+    "addConditions": "Додајте услове за филтрирање покретања овог правила",
+    "active": "активно",
+    "description": "Када је постављено, ово правило се активира само ако догађај одговара свим филтерима укључивања и ниједном филтеру искључивања.",
+    "include": "Укључи (бела листа)",
+    "exclude": "Искључи (црна листа)",
+    "clearAll": "Обриши све услове"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Не може да се повеже: направило би циклус"
+    },
+    "labels": {
+      "rules": "Правила",
+      "field": "Поље",
+      "operator": "Оператор",
+      "value": "Вредност"
+    },
+    "status": {
+      "ready": "Спремно",
+      "notConfigured": "Није конфигурисано"
+    },
+    "shortcuts": {
+      "close": "Затвори",
+      "save": "Сачувај",
+      "removeNode": "Уклони чвор",
+      "addAction": "Додај акцију",
+      "fitView": "Уклопи приказ"
+    }
   }
 }

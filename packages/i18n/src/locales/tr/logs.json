@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Etkinlik Günlükleri",
     "events": "Olay Günlükleri"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Yürütme Oranı",
+      "totalFailures": "Toplam Başarısızlık",
+      "totalEntries": "Toplam Kayıt"
+    },
+    "filter": {
+      "search": "Günlük ara...",
+      "last1h": "Son 1 saat",
+      "last24h": "Son 24 saat",
+      "last7d": "Son 7 gün"
+    },
+    "table": {
+      "timestamp": "Zaman Damgası",
+      "ruleName": "Kural Adı",
+      "eventType": "Olay Türü",
+      "action": "Eylem",
+      "status": "Durum",
+      "details": "Ayrıntılar",
+      "success": "Başarılı",
+      "failed": "Başarısız"
+    },
+    "pagination": {
+      "showing": "{{total}} sonuçtan {{from}} - {{to}} arası gösteriliyor",
+      "previous": "Önceki",
+      "next": "Sonraki"
+    },
+    "empty": {
+      "title": "Günlük bulunamadı",
+      "description": "Otomasyon kuralları çalışmaya başladığında kural yürütme günlükleri burada görünecektir."
+    }
+  },
+  "events": {
+    "title": "Olay Günlüğü Tarayıcısı",
+    "filter": {
+      "allCategories": "Tüm Kategoriler",
+      "byUserId": "Kullanıcı Kimliğine göre filtrele...",
+      "entries": "{{count}} kayıt"
+    },
+    "categories": {
+      "message": "Mesaj",
+      "member": "Üye",
+      "voice": "Ses",
+      "channel": "Kanal",
+      "role": "Rol",
+      "server": "Sunucu",
+      "moderation": "Moderasyon"
+    },
+    "categoryEvents": {
+      "message": "Mesaj Olayları",
+      "member": "Üye Olayları",
+      "voice": "Ses Olayları",
+      "channel": "Kanal Olayları",
+      "role": "Rol Olayları",
+      "server": "Sunucu Olayları",
+      "moderation": "Moderasyon Olayları"
+    },
+    "table": {
+      "timestamp": "Zaman Damgası",
+      "category": "Kategori",
+      "event": "Olay",
+      "target": "Hedef",
+      "executor": "Uygulayan"
+    },
+    "pagination": {
+      "page": "{{total}} sayfalık {{page}}. sayfa (toplam {{count}})",
+      "previous": "Önceki",
+      "next": "Sonraki"
+    },
+    "empty": {
+      "title": "Olay günlüğü bulunamadı",
+      "description": "Günlük kaydı yapılandırıldığında ve olaylar gerçekleşmeye başladığında olay günlükleri burada görünecektir."
+    },
+    "config": {
+      "selectChannel": "Günlük kanalı seçin"
+    }
   }
 }

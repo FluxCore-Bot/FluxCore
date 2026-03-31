@@ -1,5 +1,30 @@
 {
   "label": "Centre de gestió",
   "title": "Canals de veu temporals",
-  "subtitle": "Configura centres que permeten als usuaris crear els seus propis canals de veu efimers en unir-se."
+  "subtitle": "Configura centres que permeten als usuaris crear els seus propis canals de veu efímers en unir-se.",
+  "form": {
+    "sameAsHub": "Igual que el canal centre",
+    "defaultNameTemplate": "Canal d'{user}",
+    "hubChannel": "Canal centre",
+    "selectHub": "Selecciona un canal de veu...",
+    "category": "Categoria (opcional)",
+    "nameTemplate": "Plantilla del nom del canal",
+    "addConfig": "Afegir configuració",
+    "editConfig": "Editar configuració",
+    "save": "Desar configuració",
+    "saving": "Desant...",
+    "cancel": "Cancel·lar",
+    "delete": "Eliminar",
+    "edit": "Editar"
+  },
+  "empty": {
+    "noConfigs": "Encara no hi ha configuracions",
+    "noConfigsDesc": "Afegeix un canal centre per activar els canals de veu temporals.",
+    "addFirst": "Afegir configuració"
+  },
+  "toast": {
+    "updated": "Configuració actualitzada",
+    "created": "Configuració creada",
+    "removed": "Configuració eliminada"
+  }
 }

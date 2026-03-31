@@ -1,5 +1,30 @@
 {
   "label": "Verwaltungs-Hub",
-  "title": "Temporaere Sprachkanaele",
-  "subtitle": "Konfigurieren Sie Hubs, die es Benutzern ermoeglichen, beim Beitreten eigene temporaere Sprachkanaele zu erstellen."
+  "title": "Temporäre Sprachkanäle",
+  "subtitle": "Konfigurieren Sie Hubs, die es Benutzern ermöglichen, beim Beitreten eigene temporäre Sprachkanäle zu erstellen.",
+  "form": {
+    "sameAsHub": "Gleich wie Hub-Kanal",
+    "defaultNameTemplate": "Kanal von {user}",
+    "hubChannel": "Hub-Kanal",
+    "selectHub": "Sprachkanal auswählen...",
+    "category": "Kategorie (optional)",
+    "nameTemplate": "Kanalname-Vorlage",
+    "addConfig": "Konfiguration hinzufügen",
+    "editConfig": "Konfiguration bearbeiten",
+    "save": "Konfiguration speichern",
+    "saving": "Speichern...",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten"
+  },
+  "empty": {
+    "noConfigs": "Noch keine Konfigurationen",
+    "noConfigsDesc": "Fügen Sie einen Hub-Kanal hinzu, um temporäre Sprachkanäle zu aktivieren.",
+    "addFirst": "Konfiguration hinzufügen"
+  },
+  "toast": {
+    "updated": "Konfiguration aktualisiert",
+    "created": "Konfiguration erstellt",
+    "removed": "Konfiguration entfernt"
+  }
 }

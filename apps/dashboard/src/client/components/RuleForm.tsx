@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "@tanstack/react-router";
 import { useConstants } from "../lib/hooks/useConstants";
 import { useChannels } from "../lib/hooks/useChannels";
@@ -48,6 +49,7 @@ interface RuleFormProps {
 const emptyAction: ActionConfig = { type: "" };
 
 export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) {
+  const { t } = useTranslation("rules");
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: constants } = useConstants();
   const { data: channels = [] } = useChannels(guildId);
@@ -116,7 +118,7 @@ export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) 
     // Filter out unconfigured (empty type) actions before submitting
     const configuredActions = actions.filter((a) => a.type);
     if (configuredActions.length === 0) {
-      setError("At least one action must be configured with a type.");
+      setError(t("form.atLeastOneAction"));
       return;
     }
 
@@ -138,17 +140,15 @@ export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) 
     try {
       if (rule) {
         await updateRule.mutateAsync({ ruleId: rule.id, data: result.data });
-        toast.success("Rule updated");
+        toast.success(t("toast.updated"));
       } else {
         await createRule.mutateAsync(result.data);
-        toast.success("Rule created");
+        toast.success(t("toast.created"));
       }
       clearDraft();
       onClose();
     } catch (err) {
-      const message =
-        err instanceof ApiError ? err.message : "An error occurred";
-      setError(message);
+      setError(err instanceof ApiError ? err.message : t("form.atLeastOneAction"));
     }
   };
 
@@ -158,7 +158,7 @@ export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) 
     <Card className="p-6">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-lg font-semibold">
-          {rule ? "Edit Rule" : "Create Rule"}
+          {rule ? t("form.editRule") : t("form.createRule")}
         </h3>
         {onSwitchView && (
           <Button
@@ -170,7 +170,7 @@ export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) 
             }
           >
             <Icon name="account_tree" size={16} />
-            Workflow View
+            {t("form.workflowView")}
           </Button>
         )}
       </div>
@@ -178,9 +178,9 @@ export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) 
       {hasDraft && (
         <div className="mb-4 flex items-center gap-3 rounded-lg border border-accent/30 bg-accent/5 px-4 py-2.5 text-sm">
           <Icon name="history" size={16} className="text-accent" />
-          <span className="text-text-muted">Draft restored from previous session.</span>
+          <span className="text-text-muted">{t("form.draftRestored")}</span>
           <Button type="button" variant="link" size="sm" onClick={dismissDraft}>
-            Dismiss
+            {t("form.dismiss")}
           </Button>
         </div>
       )}
@@ -192,13 +192,13 @@ export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) 
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <Label>
-            Rule Name <span className="text-danger">*</span>
+            {t("form.ruleName")} <span className="text-danger">*</span>
           </Label>
           <Input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="My rule..."
+            placeholder={t("form.ruleNamePlaceholder")}
             maxLength={50}
           />
         </div>
@@ -206,11 +206,11 @@ export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) 
         <div className="mb-4 grid grid-cols-2 gap-4">
           <div>
             <Label>
-              Event Type <span className="text-danger">*</span>
+              {t("form.eventType")} <span className="text-danger">*</span>
             </Label>
             <Select value={eventType || undefined} onValueChange={setEventType}>
               <SelectTrigger>
-                <SelectValue placeholder="Select event..." />
+                <SelectValue placeholder={t("form.selectEvent")} />
               </SelectTrigger>
               <SelectContent>
                 {Object.entries(constants.eventTypes).map(([key, info]) => (
@@ -222,7 +222,7 @@ export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) 
             </Select>
           </div>
           <div>
-            <Label>Priority</Label>
+            <Label>{t("form.priority")}</Label>
             <Input
               type="number"
               value={priority}
@@ -241,10 +241,10 @@ export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) 
 
         <div className="mb-4">
           <div className="mb-2 flex items-center justify-between">
-            <Label className="mb-0">Actions</Label>
+            <Label className="mb-0">{t("form.actions")}</Label>
             {actions.length < constants.maxActionsPerRule && (
               <Button type="button" variant="link" size="sm" onClick={addAction}>
-                + Add Action
+                {t("form.addAction")}
               </Button>
             )}
           </div>
@@ -279,15 +279,15 @@ export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) 
 
         <div className="mb-6 flex items-center gap-3">
           <Switch checked={enabled} onCheckedChange={setEnabled} />
-          <Label className="mb-0 text-sm">Enabled</Label>
+          <Label className="mb-0 text-sm">{t("form.enabled")}</Label>
         </div>
 
         <div className="flex items-center gap-3">
           <Button type="submit" disabled={isPending}>
-            {isPending ? "Saving..." : rule ? "Update Rule" : "Create Rule"}
+            {isPending ? t("form.saving") : rule ? t("form.update") : t("form.create")}
           </Button>
           <Button type="button" variant="ghost" onClick={onClose}>
-            Cancel
+            {t("form.cancel")}
           </Button>
         </div>
       </form>

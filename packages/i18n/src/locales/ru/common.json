@@ -71,11 +71,31 @@
     "type": "Тип",
     "status": "Статус",
     "channel": "Канал",
+    "channels": "Каналы",
     "role": "Роль",
+    "roles": "Роли",
     "member": "Участник",
+    "users": "Пользователи",
+    "conditions": "Условия",
     "duration": "Длительность",
     "reason": "Причина",
     "language": "Язык"
+  },
+  "form": {
+    "selectChannel": "Выберите канал...",
+    "selectRole": "Выберите роль...",
+    "select": "Выберите...",
+    "saving": "Сохранение...",
+    "saveSettings": "Сохранить настройки",
+    "previous": "Назад",
+    "next": "Далее"
+  },
+  "pagination": {
+    "previous": "Назад",
+    "next": "Далее",
+    "page": "Страница {{page}} из {{total}}",
+    "showing": "Показано {{from}}–{{to}} из {{total}} результатов",
+    "showingPage": "Страница {{page}} из {{total}} (всего {{count}})"
   },
   "header": {
     "notifications": "Уведомления",

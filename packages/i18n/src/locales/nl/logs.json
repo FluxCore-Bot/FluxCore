@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Activiteitenlogboeken",
     "events": "Gebeurtenislogboeken"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Uitvoeringspercentage",
+      "totalFailures": "Totaal mislukkingen",
+      "totalEntries": "Totaal vermeldingen"
+    },
+    "filter": {
+      "search": "Logboeken zoeken...",
+      "last1h": "Afgelopen uur",
+      "last24h": "Afgelopen 24 uur",
+      "last7d": "Afgelopen 7 dagen"
+    },
+    "table": {
+      "timestamp": "Tijdstempel",
+      "ruleName": "Regelnaam",
+      "eventType": "Gebeurtenistype",
+      "action": "Actie",
+      "status": "Status",
+      "details": "Details",
+      "success": "Geslaagd",
+      "failed": "Mislukt"
+    },
+    "pagination": {
+      "showing": "{{from}} tot {{to}} van {{total}} resultaten worden weergegeven",
+      "previous": "Vorige",
+      "next": "Volgende"
+    },
+    "empty": {
+      "title": "Geen logboeken gevonden",
+      "description": "Regeluitvoeringslogboeken verschijnen hier zodra automatiseringsregels beginnen met uitvoeren."
+    }
+  },
+  "events": {
+    "title": "Gebeurtenislogboekbrowser",
+    "filter": {
+      "allCategories": "Alle categorieën",
+      "byUserId": "Filteren op gebruikers-ID...",
+      "entries": "{{count}} vermeldingen"
+    },
+    "categories": {
+      "message": "Bericht",
+      "member": "Lid",
+      "voice": "Spraak",
+      "channel": "Kanaal",
+      "role": "Rol",
+      "server": "Server",
+      "moderation": "Moderatie"
+    },
+    "categoryEvents": {
+      "message": "Berichtgebeurtenissen",
+      "member": "Ledengebeurtenissen",
+      "voice": "Spraakgebeurtenissen",
+      "channel": "Kanaalgebeurtenissen",
+      "role": "Rolgebeurtenissen",
+      "server": "Servergebeurtenissen",
+      "moderation": "Moderatiegebeurtenissen"
+    },
+    "table": {
+      "timestamp": "Tijdstempel",
+      "category": "Categorie",
+      "event": "Gebeurtenis",
+      "target": "Doel",
+      "executor": "Uitvoerder"
+    },
+    "pagination": {
+      "page": "Pagina {{page}} van {{total}} ({{count}} totaal)",
+      "previous": "Vorige",
+      "next": "Volgende"
+    },
+    "empty": {
+      "title": "Geen gebeurtenislogboeken gevonden",
+      "description": "Gebeurtenislogboeken verschijnen hier zodra logboekregistratie is geconfigureerd en gebeurtenissen beginnen op te treden."
+    },
+    "config": {
+      "selectChannel": "Logkanaal selecteren"
+    }
   }
 }

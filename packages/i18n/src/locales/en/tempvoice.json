@@ -1,5 +1,30 @@
 {
   "label": "Management Hub",
   "title": "Temporary Voice Channels",
-  "subtitle": "Configure hubs that allow users to create their own ephemeral voice channels upon joining."
+  "subtitle": "Configure hubs that allow users to create their own ephemeral voice channels upon joining.",
+  "form": {
+    "sameAsHub": "Same as hub channel",
+    "defaultNameTemplate": "{user}'s Channel",
+    "hubChannel": "Hub Channel",
+    "selectHub": "Select a voice channel...",
+    "category": "Category (optional)",
+    "nameTemplate": "Channel Name Template",
+    "addConfig": "Add Configuration",
+    "editConfig": "Edit Configuration",
+    "save": "Save Configuration",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit"
+  },
+  "empty": {
+    "noConfigs": "No configurations yet",
+    "noConfigsDesc": "Add a hub channel to enable temporary voice channels.",
+    "addFirst": "Add Configuration"
+  },
+  "toast": {
+    "updated": "Configuration updated",
+    "created": "Configuration created",
+    "removed": "Configuration removed"
+  }
 }

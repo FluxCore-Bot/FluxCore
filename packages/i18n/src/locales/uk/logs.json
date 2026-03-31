@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Логи активності",
     "events": "Логи подій"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Частота виконань",
+      "totalFailures": "Всього помилок",
+      "totalEntries": "Всього записів"
+    },
+    "filter": {
+      "search": "Пошук у логах...",
+      "last1h": "Остання 1 година",
+      "last24h": "Останні 24 години",
+      "last7d": "Останні 7 днів"
+    },
+    "table": {
+      "timestamp": "Час",
+      "ruleName": "Назва правила",
+      "eventType": "Тип події",
+      "action": "Дія",
+      "status": "Статус",
+      "details": "Подробиці",
+      "success": "Успішно",
+      "failed": "Помилка"
+    },
+    "pagination": {
+      "showing": "Показано {{from}}–{{to}} з {{total}} результатів",
+      "previous": "Назад",
+      "next": "Вперед"
+    },
+    "empty": {
+      "title": "Логи не знайдено",
+      "description": "Логи виконання правил з'являться тут після запуску правил автоматизації."
+    }
+  },
+  "events": {
+    "title": "Браузер журналу подій",
+    "filter": {
+      "allCategories": "Всі категорії",
+      "byUserId": "Фільтр за ID користувача...",
+      "entries": "{{count}} записів"
+    },
+    "categories": {
+      "message": "Повідомлення",
+      "member": "Учасник",
+      "voice": "Голос",
+      "channel": "Канал",
+      "role": "Роль",
+      "server": "Сервер",
+      "moderation": "Модерація"
+    },
+    "categoryEvents": {
+      "message": "Події повідомлень",
+      "member": "Події учасників",
+      "voice": "Голосові події",
+      "channel": "Події каналів",
+      "role": "Події ролей",
+      "server": "Події сервера",
+      "moderation": "Події модерації"
+    },
+    "table": {
+      "timestamp": "Час",
+      "category": "Категорія",
+      "event": "Подія",
+      "target": "Ціль",
+      "executor": "Виконавець"
+    },
+    "pagination": {
+      "page": "Сторінка {{page}} з {{total}} (всього {{count}})",
+      "previous": "Назад",
+      "next": "Вперед"
+    },
+    "empty": {
+      "title": "Журнал подій порожній",
+      "description": "Журнал подій з'явиться тут після налаштування логування та початку подій."
+    },
+    "config": {
+      "selectChannel": "Оберіть канал логів"
+    }
   }
 }

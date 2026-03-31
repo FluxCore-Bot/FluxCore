@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Hindi napagana ang mga panuntunan",
     "bulkDisableFailed": "Hindi na-disable ang mga panuntunan",
     "bulkDeleted": "{{count}} na mga panuntunan ang nabura",
-    "bulkDeleteFailed": "Hindi nabura ang mga panuntunan"
+    "bulkDeleteFailed": "Hindi nabura ang mga panuntunan",
+    "updated": "Na-update ang panuntunan",
+    "created": "Nagawa ang panuntunan"
+  },
+  "form": {
+    "ruleName": "Pangalan ng Panuntunan",
+    "ruleNamePlaceholder": "Ang aking panuntunan...",
+    "eventType": "Uri ng Event",
+    "selectEvent": "Pumili ng event...",
+    "priority": "Priyoridad",
+    "actions": "Mga Aksyon",
+    "addAction": "+ Magdagdag ng Aksyon",
+    "enabled": "Pinagana",
+    "editRule": "I-edit ang Panuntunan",
+    "createRule": "Gumawa ng Panuntunan",
+    "workflowView": "Workflow View",
+    "draftRestored": "Na-restore ang draft mula sa nakaraang session.",
+    "dismiss": "Isara",
+    "atLeastOneAction": "Kailangan ng kahit isang aksyon na may uri.",
+    "saving": "Nag-se-save...",
+    "update": "I-update ang Panuntunan",
+    "create": "Gumawa ng Panuntunan",
+    "cancel": "Kanselahin"
+  },
+  "conditions": {
+    "title": "Mga Kondisyon",
+    "channels": "Mga Channel",
+    "roles": "Mga Role",
+    "users": "Mga User",
+    "addChannel": "Magdagdag ng channel...",
+    "addRole": "Magdagdag ng role...",
+    "excludeChannel": "I-exclude ang channel...",
+    "excludeRole": "I-exclude ang role...",
+    "userId": "User ID...",
+    "addConditions": "Magdagdag ng mga kondisyon upang i-filter kung kailan magagana ang panuntunan",
+    "active": "Aktibo",
+    "description": "Kapag nakatakda, ang panuntunan ay magagana lamang kung ang event ay tumutugma sa lahat ng include filter at walang exclude filter.",
+    "include": "Isama (whitelist)",
+    "exclude": "I-exclude (blacklist)",
+    "clearAll": "I-clear ang lahat ng kondisyon"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Hindi makakonekta: magdudulot ng cycle"
+    },
+    "labels": {
+      "rules": "Mga Panuntunan",
+      "field": "Field",
+      "operator": "Operator",
+      "value": "Halaga"
+    },
+    "status": {
+      "ready": "Handa",
+      "notConfigured": "Hindi pa naka-configure"
+    },
+    "shortcuts": {
+      "close": "Isara",
+      "save": "I-save",
+      "removeNode": "Alisin ang node",
+      "addAction": "Magdagdag ng aksyon",
+      "fitView": "Iakma ang view"
+    }
   }
 }

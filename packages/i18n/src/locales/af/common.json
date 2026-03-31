@@ -71,11 +71,31 @@
     "type": "Tipe",
     "status": "Status",
     "channel": "Kanaal",
+    "channels": "Kanale",
     "role": "Rol",
+    "roles": "Rolle",
     "member": "Lid",
+    "users": "Gebruikers",
+    "conditions": "Voorwaardes",
     "duration": "Duur",
     "reason": "Rede",
     "language": "Taal"
+  },
+  "form": {
+    "selectChannel": "Kies kanaal...",
+    "selectRole": "Kies rol...",
+    "select": "Kies...",
+    "saving": "Stoor...",
+    "saveSettings": "Stoor Instellings",
+    "previous": "Vorige",
+    "next": "Volgende"
+  },
+  "pagination": {
+    "previous": "Vorige",
+    "next": "Volgende",
+    "page": "Bladsy {{page}} van {{total}}",
+    "showing": "Wys {{from}}–{{to}} van {{total}} resultate",
+    "showingPage": "Bladsy {{page}} van {{total}} ({{count}} totaal)"
   },
   "header": {
     "notifications": "Kennisgewings",

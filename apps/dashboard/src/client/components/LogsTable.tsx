@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "@tanstack/react-router";
 import { useLogs } from "../lib/hooks/useLogs";
 import { useConstants } from "../lib/hooks/useConstants";
@@ -21,6 +22,7 @@ import {
 const PAGE_SIZE = 10;
 
 export function LogsTable() {
+  const { t } = useTranslation("logs");
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: constants } = useConstants();
   const [ruleFilter, setRuleFilter] = useState("");
@@ -56,19 +58,19 @@ export function LogsTable() {
       {/* Metrics Row */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <StatsCard
-          label="Execution Rate"
+          label={t("activity.stats.executionRate")}
           value={`${successRate}%`}
           accentColor="border-success"
           valueClassName="text-success"
         />
         <StatsCard
-          label="Total Failures"
+          label={t("activity.stats.totalFailures")}
           value={failureCount}
           accentColor="border-danger"
           valueClassName="text-danger"
         />
         <StatsCard
-          label="Total Entries"
+          label={t("activity.stats.totalEntries")}
           value={totalLogs.toLocaleString()}
           accentColor="border-accent"
         />
@@ -82,7 +84,7 @@ export function LogsTable() {
             type="text"
             value={ruleFilter}
             onChange={(e) => { setRuleFilter(e.target.value); setPage(1); }}
-            placeholder="Search logs..."
+            placeholder={t("activity.filter.search")}
             className="pl-10 font-mono"
           />
         </div>
@@ -91,9 +93,9 @@ export function LogsTable() {
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="1h">Last 1 hour</SelectItem>
-            <SelectItem value="24h">Last 24 hours</SelectItem>
-            <SelectItem value="7d">Last 7 days</SelectItem>
+            <SelectItem value="1h">{t("activity.filter.last1h")}</SelectItem>
+            <SelectItem value="24h">{t("activity.filter.last24h")}</SelectItem>
+            <SelectItem value="7d">{t("activity.filter.last7d")}</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -101,8 +103,8 @@ export function LogsTable() {
       {!filteredLogs || filteredLogs.length === 0 ? (
         <EmptyState
           icon="description"
-          title="No logs found"
-          description="Rule execution logs will appear here once automation rules start running."
+          title={t("activity.empty.title")}
+          description={t("activity.empty.description")}
         />
       ) : (
         <>
@@ -110,12 +112,12 @@ export function LogsTable() {
             <Table className="min-w-160">
               <TableHeader>
                 <TableRow className="hover:bg-transparent">
-                  <TableHead>Timestamp</TableHead>
-                  <TableHead>Rule Name</TableHead>
-                  <TableHead>Event Type</TableHead>
-                  <TableHead>Action</TableHead>
-                  <TableHead className="text-center">Status</TableHead>
-                  <TableHead>Details</TableHead>
+                  <TableHead>{t("activity.table.timestamp")}</TableHead>
+                  <TableHead>{t("activity.table.ruleName")}</TableHead>
+                  <TableHead>{t("activity.table.eventType")}</TableHead>
+                  <TableHead>{t("activity.table.action")}</TableHead>
+                  <TableHead className="text-center">{t("activity.table.status")}</TableHead>
+                  <TableHead>{t("activity.table.details")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -133,7 +135,7 @@ export function LogsTable() {
                     </TableCell>
                     <TableCell className="text-center">
                       <Badge variant={log.success ? "success" : "destructive"}>
-                        {log.success ? "Success" : "Failed"}
+                        {log.success ? t("activity.table.success") : t("activity.table.failed")}
                       </Badge>
                     </TableCell>
                     <TableCell className="text-xs text-danger max-w-48 truncate">
@@ -148,9 +150,11 @@ export function LogsTable() {
           {/* Pagination */}
           <div className="flex flex-col gap-2 text-sm text-text-muted sm:flex-row sm:items-center sm:justify-between">
             <span className="text-xs sm:text-sm">
-              Showing {(page - 1) * PAGE_SIZE + 1} to{" "}
-              {Math.min(page * PAGE_SIZE, filteredLogs.length)} of{" "}
-              {filteredLogs.length.toLocaleString()} results
+              {t("activity.pagination.showing", {
+                from: (page - 1) * PAGE_SIZE + 1,
+                to: Math.min(page * PAGE_SIZE, filteredLogs.length),
+                total: filteredLogs.length.toLocaleString(),
+              })}
             </span>
             <div className="flex gap-1">
               <Button
@@ -159,7 +163,7 @@ export function LogsTable() {
                 disabled={page <= 1}
                 onClick={() => setPage((p) => p - 1)}
               >
-                Previous
+                {t("activity.pagination.previous")}
               </Button>
               <Button
                 variant="ghost"
@@ -167,7 +171,7 @@ export function LogsTable() {
                 disabled={page >= totalPages}
                 onClick={() => setPage((p) => p + 1)}
               >
-                Next
+                {t("activity.pagination.next")}
               </Button>
             </div>
           </div>

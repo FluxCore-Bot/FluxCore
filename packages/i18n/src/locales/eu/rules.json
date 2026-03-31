@@ -60,7 +60,7 @@
   },
   "deleteDialog": {
     "title": "Araua ezabatu",
-    "description": "Ziur zaude \"{{name}}\" ezabatu nahi duzula? Ekintza hau ezin da desegin.",
+    "description": "Ziur zaude «{{name}}» ezabatu nahi duzula? Ekintza hau ezin da desegin.",
     "confirm": "Ezabatu"
   },
   "bulkDeleteDialog": {
@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Ezin izan dira arauak gaitu",
     "bulkDisableFailed": "Ezin izan dira arauak desgaitu",
     "bulkDeleted": "{{count}} arau ezabatuta",
-    "bulkDeleteFailed": "Ezin izan dira arauak ezabatu"
+    "bulkDeleteFailed": "Ezin izan dira arauak ezabatu",
+    "updated": "Araua eguneratuta",
+    "created": "Araua sortuta"
+  },
+  "form": {
+    "ruleName": "Arauaren izena",
+    "ruleNamePlaceholder": "Nire araua...",
+    "eventType": "Gertaera mota",
+    "selectEvent": "Hautatu gertaera...",
+    "priority": "Lehentasuna",
+    "actions": "Ekintzak",
+    "addAction": "+ Ekintza gehitu",
+    "enabled": "Gaituta",
+    "editRule": "Araua editatu",
+    "createRule": "Araua sortu",
+    "workflowView": "Lan-fluxuaren ikuspegia",
+    "draftRestored": "Zirriborroa aurreko saiotiik berreskuratu da.",
+    "dismiss": "Baztertu",
+    "atLeastOneAction": "Gutxienez ekintza bat mota batekin konfiguratu behar da.",
+    "saving": "Gordetzen...",
+    "update": "Araua eguneratu",
+    "create": "Araua sortu",
+    "cancel": "Utzi"
+  },
+  "conditions": {
+    "title": "Baldintzak",
+    "channels": "Kanalak",
+    "roles": "Rolak",
+    "users": "Erabiltzaileak",
+    "addChannel": "Kanala gehitu...",
+    "addRole": "Rola gehitu...",
+    "excludeChannel": "Kanala baztertu...",
+    "excludeRole": "Rola baztertu...",
+    "userId": "Erabiltzaile IDa...",
+    "addConditions": "Gehitu baldintzak arau hau noiz aktibatzen den iragazteko",
+    "active": "aktiboa",
+    "description": "Ezarrita dagoenean, arau hau soilik aktibatzen da gertaera barne-hartzeko iragazki guztiekin bat datorrenean eta baztertze-iragazkietan bat ere ez bada.",
+    "include": "Barne hartu (zerrenda zuria)",
+    "exclude": "Baztertu (zerrenda beltza)",
+    "clearAll": "Baldintza guztiak garbitu"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Ezin konektatu: ziklo bat sortuko luke"
+    },
+    "labels": {
+      "rules": "Arauak",
+      "field": "Eremua",
+      "operator": "Operadorea",
+      "value": "Balioa"
+    },
+    "status": {
+      "ready": "Prest",
+      "notConfigured": "Konfiguratu gabe"
+    },
+    "shortcuts": {
+      "close": "Itxi",
+      "save": "Gorde",
+      "removeNode": "Nodoa kendu",
+      "addAction": "Ekintza gehitu",
+      "fitView": "Ikuspegia egokitu"
+    }
   }
 }

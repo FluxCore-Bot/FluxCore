@@ -1,0 +1,141 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "Panel FluxCore"
+  },
+  "status": {
+    "online": "Online",
+    "offline": "Offline",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Prehľad",
+    "automation": "Automatizácia",
+    "music": "Hudba",
+    "tempvoice": "TempVoice",
+    "welcome": "Uvítanie",
+    "moderation": "Moderácia",
+    "warnings": "Varovania",
+    "rolePanels": "Panely rolí",
+    "leveling": "Úrovne",
+    "scheduled": "Naplánované",
+    "commands": "Príkazy",
+    "security": "Zabezpečenie",
+    "tickets": "Tikety",
+    "giveaways": "Súťaže",
+    "suggestions": "Návrhy",
+    "starboard": "Nástenka hviezd",
+    "logs": "Logy",
+    "permissions": "Oprávnenia",
+    "settings": "Nastavenia"
+  },
+  "actions": {
+    "save": "Uložiť",
+    "cancel": "Zrušiť",
+    "delete": "Odstrániť",
+    "edit": "Upraviť",
+    "create": "Vytvoriť",
+    "add": "Pridať",
+    "remove": "Odstrániť",
+    "confirm": "Potvrdiť",
+    "close": "Zatvoriť",
+    "back": "Späť",
+    "next": "Ďalej",
+    "search": "Hľadať",
+    "filter": "Filtrovať",
+    "refresh": "Obnoviť",
+    "reset": "Resetovať",
+    "enable": "Povoliť",
+    "disable": "Zakázať",
+    "copy": "Kopírovať",
+    "export": "Exportovať",
+    "import": "Importovať",
+    "submit": "Odoslať",
+    "loading": "Načítanie...",
+    "retry": "Opakovať"
+  },
+  "labels": {
+    "enabled": "Povolené",
+    "disabled": "Zakázané",
+    "active": "Aktívne",
+    "inactive": "Neaktívne",
+    "none": "Žiadne",
+    "all": "Všetko",
+    "custom": "Vlastné",
+    "default": "Predvolené",
+    "required": "Povinné",
+    "optional": "Voliteľné",
+    "name": "Názov",
+    "description": "Popis",
+    "type": "Typ",
+    "status": "Stav",
+    "channel": "Kanál",
+    "channels": "Kanály",
+    "role": "Rola",
+    "roles": "Roly",
+    "member": "Člen",
+    "users": "Používatelia",
+    "conditions": "Podmienky",
+    "duration": "Trvanie",
+    "reason": "Dôvod",
+    "language": "Jazyk"
+  },
+  "form": {
+    "selectChannel": "Vybrať kanál...",
+    "selectRole": "Vybrať rolu...",
+    "select": "Vybrať...",
+    "saving": "Ukladanie...",
+    "saveSettings": "Uložiť nastavenia",
+    "previous": "Predchádzajúca",
+    "next": "Ďalšia"
+  },
+  "pagination": {
+    "previous": "Predchádzajúca",
+    "next": "Ďalšia",
+    "page": "Strana {{page}} z {{total}}",
+    "showing": "Zobrazené {{from}} až {{to}} z {{total}} výsledkov",
+    "showingPage": "Strana {{page}} z {{total}} (celkom {{count}})"
+  },
+  "header": {
+    "notifications": "Oznámenia",
+    "settings": "Nastavenia",
+    "logout": "Odhlásiť",
+    "toggleSidebar": "Prepnúť bočný panel",
+    "refreshData": "Obnoviť údaje Discord"
+  },
+  "sidebar": {
+    "closeSidebar": "Zatvoriť bočný panel",
+    "addToServer": "Pridať na server",
+    "docs": "Dokumentácia",
+    "support": "Podpora",
+    "backToServers": "Späť na servery"
+  },
+  "empty": {
+    "noData": "Žiadne dostupné údaje",
+    "noResults": "Nenašli sa žiadne výsledky",
+    "noItems": "Zatiaľ žiadne položky"
+  },
+  "time": {
+    "seconds": "sekundy",
+    "minutes": "minúty",
+    "hours": "hodiny",
+    "days": "dni",
+    "ago": "pred {{time}}",
+    "in": "o {{time}}"
+  },
+  "confirm": {
+    "title": "Ste si istí?",
+    "deleteTitle": "Potvrdiť odstránenie",
+    "deleteMessage": "Túto akciu nie je možné vrátiť.",
+    "unsavedChanges": "Máte neuložené zmeny. Naozaj chcete odísť?"
+  },
+  "accessibility": {
+    "skipToContent": "Prejsť na hlavný obsah",
+    "loading": "Načítanie obsahu",
+    "loaded": "Obsah načítaný",
+    "error": "Vyskytla sa chyba",
+    "menuOpen": "Menu je otvorené",
+    "menuClosed": "Menu je zatvorené"
+  }
+}

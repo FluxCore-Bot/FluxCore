@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Sääntöjen käyttöönotto epäonnistui",
     "bulkDisableFailed": "Sääntöjen käytöstä poistaminen epäonnistui",
     "bulkDeleted": "{{count}} sääntöä poistettu",
-    "bulkDeleteFailed": "Sääntöjen poistaminen epäonnistui"
+    "bulkDeleteFailed": "Sääntöjen poistaminen epäonnistui",
+    "updated": "Sääntö päivitetty",
+    "created": "Sääntö luotu"
+  },
+  "form": {
+    "ruleName": "Säännön nimi",
+    "ruleNamePlaceholder": "Sääntöni...",
+    "eventType": "Tapahtumatyyppi",
+    "selectEvent": "Valitse tapahtuma...",
+    "priority": "Prioriteetti",
+    "actions": "Toiminnot",
+    "addAction": "+ Lisää toiminto",
+    "enabled": "Käytössä",
+    "editRule": "Muokkaa sääntöä",
+    "createRule": "Luo sääntö",
+    "workflowView": "Työnkulkunäkymä",
+    "draftRestored": "Luonnos palautettu edellisestä istunnosta.",
+    "dismiss": "Hylkää",
+    "atLeastOneAction": "Vähintään yksi toiminto on määritettävä tyypillä.",
+    "saving": "Tallennetaan...",
+    "update": "Päivitä sääntö",
+    "create": "Luo sääntö",
+    "cancel": "Peruuta"
+  },
+  "conditions": {
+    "title": "Ehdot",
+    "channels": "Kanavat",
+    "roles": "Roolit",
+    "users": "Käyttäjät",
+    "addChannel": "Lisää kanava...",
+    "addRole": "Lisää rooli...",
+    "excludeChannel": "Sulje pois kanava...",
+    "excludeRole": "Sulje pois rooli...",
+    "userId": "Käyttäjä-ID...",
+    "addConditions": "Lisää ehtoja suodattaaksesi milloin tämä sääntö laukeaa",
+    "active": "aktiivinen",
+    "description": "Kun tämä on asetettu, sääntö laukeaa vain jos tapahtuma vastaa kaikkia sisällyttämissuodattimia eikä yhtään poissulkemissuodatinta.",
+    "include": "Sisällytä (valkolista)",
+    "exclude": "Sulje pois (mustat lista)",
+    "clearAll": "Tyhjennä kaikki ehdot"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Ei voi yhdistää: loisi silmukan"
+    },
+    "labels": {
+      "rules": "Säännöt",
+      "field": "Kenttä",
+      "operator": "Operaattori",
+      "value": "Arvo"
+    },
+    "status": {
+      "ready": "Valmis",
+      "notConfigured": "Ei määritetty"
+    },
+    "shortcuts": {
+      "close": "Sulje",
+      "save": "Tallenna",
+      "removeNode": "Poista solmu",
+      "addAction": "Lisää toiminto",
+      "fitView": "Sovita näkymä"
+    }
   }
 }

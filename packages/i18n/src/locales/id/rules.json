@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Gagal mengaktifkan aturan",
     "bulkDisableFailed": "Gagal menonaktifkan aturan",
     "bulkDeleted": "{{count}} aturan dihapus",
-    "bulkDeleteFailed": "Gagal menghapus aturan"
+    "bulkDeleteFailed": "Gagal menghapus aturan",
+    "updated": "Aturan diperbarui",
+    "created": "Aturan dibuat"
+  },
+  "form": {
+    "ruleName": "Nama Aturan",
+    "ruleNamePlaceholder": "Aturan saya...",
+    "eventType": "Tipe Kejadian",
+    "selectEvent": "Pilih kejadian...",
+    "priority": "Prioritas",
+    "actions": "Tindakan",
+    "addAction": "+ Tambah Tindakan",
+    "enabled": "Diaktifkan",
+    "editRule": "Edit Aturan",
+    "createRule": "Buat Aturan",
+    "workflowView": "Tampilan Alur Kerja",
+    "draftRestored": "Draf dipulihkan dari sesi sebelumnya.",
+    "dismiss": "Tutup",
+    "atLeastOneAction": "Setidaknya satu tindakan harus dikonfigurasi dengan tipe.",
+    "saving": "Menyimpan...",
+    "update": "Perbarui Aturan",
+    "create": "Buat Aturan",
+    "cancel": "Batal"
+  },
+  "conditions": {
+    "title": "Kondisi",
+    "channels": "Saluran",
+    "roles": "Peran",
+    "users": "Pengguna",
+    "addChannel": "Tambah saluran...",
+    "addRole": "Tambah peran...",
+    "excludeChannel": "Kecualikan saluran...",
+    "excludeRole": "Kecualikan peran...",
+    "userId": "ID Pengguna...",
+    "addConditions": "Tambah kondisi untuk memfilter kapan aturan ini dijalankan",
+    "active": "Aktif",
+    "description": "Jika diatur, aturan ini hanya berjalan jika kejadian cocok dengan semua filter sertakan dan tidak ada filter kecualikan.",
+    "include": "Sertakan (daftar putih)",
+    "exclude": "Kecualikan (daftar hitam)",
+    "clearAll": "Hapus semua kondisi"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Tidak dapat menghubungkan: akan membuat siklus"
+    },
+    "labels": {
+      "rules": "Aturan",
+      "field": "Bidang",
+      "operator": "Operator",
+      "value": "Nilai"
+    },
+    "status": {
+      "ready": "Siap",
+      "notConfigured": "Belum dikonfigurasi"
+    },
+    "shortcuts": {
+      "close": "Tutup",
+      "save": "Simpan",
+      "removeNode": "Hapus node",
+      "addAction": "Tambah tindakan",
+      "fitView": "Sesuaikan tampilan"
+    }
   }
 }

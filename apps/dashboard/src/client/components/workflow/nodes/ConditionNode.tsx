@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Handle, Position, type NodeProps } from "@xyflow/react";
 import { Icon } from "../../Icon";
 
@@ -41,6 +42,7 @@ function getBorderClass(
 }
 
 function ConditionNodeComponent({ data, selected }: NodeProps) {
+  const { t } = useTranslation("rules");
   const { field, operator, value, label, validationState } =
     data as ConditionNodeData;
   const isConfigured = field && operator;
@@ -67,7 +69,7 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
           {!isConfigured && (
             <span
               className="ml-auto flex h-2 w-2 rounded-full bg-warning/60"
-              title="Not configured"
+              title={t("workflow.status.notConfigured")}
             />
           )}
         </div>

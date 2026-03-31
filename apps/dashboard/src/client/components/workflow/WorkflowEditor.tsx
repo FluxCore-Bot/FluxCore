@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { createPortal } from "react-dom";
 import { useParams } from "@tanstack/react-router";
 import {
@@ -86,6 +87,7 @@ type SelectedNode =
   | { type: "step"; stepId: string };
 
 function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
+  const { t } = useTranslation("rules");
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: constants } = useConstants();
   const { data: channels = [] } = useChannels(guildId);
@@ -330,10 +332,10 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     try {
       if (rule) {
         await updateRule.mutateAsync({ ruleId: rule.id, data: result.data });
-        toast.success("Rule updated");
+        toast.success(t("toast.updated"));
       } else {
         await createRule.mutateAsync(result.data);
-        toast.success("Rule created");
+        toast.success(t("toast.created"));
       }
       clearDraft();
       onClose();
@@ -497,7 +499,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
 
           <Button size="sm" onClick={handleSubmit} disabled={isPending || !validation.valid}>
             <Icon name={rule ? "save" : "check"} size={16} />
-            {isPending ? "Saving..." : rule ? "Save" : "Create"}
+            {isPending ? t("form.saving") : rule ? t("form.update") : t("form.create")}
           </Button>
         </div>
       </div>

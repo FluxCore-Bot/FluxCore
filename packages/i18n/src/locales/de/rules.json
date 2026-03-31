@@ -4,12 +4,12 @@
     "automation": "Automatisierung"
   },
   "title": "Automatisierungsregeln",
-  "subtitle": "Konfigurieren Sie ereignisgesteuerte Ausloeser und automatisierte Antworten fuer Ihren Server.",
+  "subtitle": "Konfigurieren Sie ereignisgesteuerte Auslöser und automatisierte Antworten für Ihren Server.",
   "createRule": "Regel erstellen",
   "stats": {
     "totalRules": "Regeln gesamt",
     "active": "Aktiv",
-    "executions7d": "Ausfuehrungen (7T)",
+    "executions7d": "Ausführungen (7T)",
     "successRate": "Erfolgsrate"
   },
   "filter": {
@@ -20,24 +20,24 @@
     "enabled": "Aktiviert",
     "disabled": "Deaktiviert",
     "sortBy": "Sortieren nach",
-    "priority": "Prioritaet",
+    "priority": "Priorität",
     "name": "Name",
-    "lastFired": "Zuletzt ausgeloest",
+    "lastFired": "Zuletzt ausgelöst",
     "status": "Status",
-    "clear": "Leeren",
+    "clear": "Löschen",
     "showing": "{{filtered}} von {{total}} Regeln angezeigt"
   },
   "bulk": {
-    "selected": "{{count}} Regel ausgewaehlt",
-    "selected_other": "{{count}} Regeln ausgewaehlt",
+    "selected": "{{count}} Regel ausgewählt",
+    "selected_other": "{{count}} Regeln ausgewählt",
     "enable": "Aktivieren",
     "disable": "Deaktivieren",
-    "delete": "Loeschen",
-    "clear": "Leeren"
+    "delete": "Löschen",
+    "clear": "Löschen"
   },
   "empty": {
-    "title": "Erste Schritte mit Automatisierung",
-    "description": "Waehlen Sie eine Vorlage fuer einen schnellen Start oder erstellen Sie eine Regel von Grund auf.",
+    "title": "Erste Schritte mit der Automatisierung",
+    "description": "Wählen Sie eine Vorlage für einen schnellen Start oder erstellen Sie eine Regel von Grund auf.",
     "createFromScratch": "Von Grund auf erstellen"
   },
   "noResults": {
@@ -46,42 +46,103 @@
   },
   "templates": {
     "welcomeMessage": "Willkommensnachricht",
-    "welcomeMessageDesc": "Neue Mitglieder mit einer benutzerdefinierten Nachricht in einem Kanal begruessen",
+    "welcomeMessageDesc": "Begrüßen Sie neue Mitglieder mit einer benutzerdefinierten Nachricht in einem Kanal",
     "autoRole": "Automatische Rolle",
     "autoRoleDesc": "Automatisch eine Rolle zuweisen, wenn ein Mitglied beitritt",
-    "logDeleted": "Geloeschte Nachrichten protokollieren",
-    "logDeletedDesc": "Infos zu geloeschten Nachrichten in einen Protokollkanal senden",
-    "boostThankYou": "Boost-Dankeschoen",
-    "boostThankYouDesc": "Eine DM an Benutzer senden, die den Server boosten",
-    "banLogger": "Ban-Protokoll",
-    "banLoggerDesc": "Ban-Ereignisse in einem Moderationskanal protokollieren",
+    "logDeleted": "Gelöschte Nachrichten protokollieren",
+    "logDeletedDesc": "Gelöschte Nachrichteninformationen in einen Protokollkanal senden",
+    "boostThankYou": "Boost-Dankeschön",
+    "boostThankYouDesc": "DM senden, um Benutzer zu danken, die den Server boosten",
+    "banLogger": "Bann-Protokoll",
+    "banLoggerDesc": "Bann-Ereignisse in einem Moderationskanal protokollieren",
     "autoThread": "Automatischer Thread",
     "autoThreadDesc": "Automatisch einen Thread erstellen, wenn eine Nachricht gesendet wird"
   },
   "deleteDialog": {
-    "title": "Regel loeschen",
-    "description": "Sind Sie sicher, dass Sie \"{{name}}\" loeschen moechten? Diese Aktion kann nicht rueckgaengig gemacht werden.",
-    "confirm": "Loeschen"
+    "title": "Regel löschen",
+    "description": "Möchten Sie \"{{name}}\" wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "confirm": "Löschen"
   },
   "bulkDeleteDialog": {
-    "title": "Ausgewaehlte Regeln loeschen",
-    "description": "Sind Sie sicher, dass Sie {{count}} Regel loeschen moechten? Diese Aktion kann nicht rueckgaengig gemacht werden.",
-    "description_other": "Sind Sie sicher, dass Sie {{count}} Regeln loeschen moechten? Diese Aktion kann nicht rueckgaengig gemacht werden.",
-    "confirm": "Alle loeschen"
+    "title": "Ausgewählte Regeln löschen",
+    "description": "Möchten Sie wirklich {{count}} Regel löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "description_other": "Möchten Sie wirklich {{count}} Regeln löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "confirm": "Alle löschen"
   },
   "toast": {
-    "deleted": "Regel geloescht",
-    "deleteFailed": "Regel konnte nicht geloescht werden",
+    "deleted": "Regel gelöscht",
+    "deleteFailed": "Regel konnte nicht gelöscht werden",
     "enabled": "Regel aktiviert",
     "disabled": "Regel deaktiviert",
-    "toggleFailed": "Regel konnte nicht umgeschaltet werden",
+    "toggleFailed": "Regelstatus konnte nicht geändert werden",
     "duplicated": "Regel dupliziert",
     "duplicateFailed": "Regel konnte nicht dupliziert werden",
     "bulkEnabled": "{{count}} Regeln aktiviert",
     "bulkDisabled": "{{count}} Regeln deaktiviert",
     "bulkEnableFailed": "Regeln konnten nicht aktiviert werden",
     "bulkDisableFailed": "Regeln konnten nicht deaktiviert werden",
-    "bulkDeleted": "{{count}} Regeln geloescht",
-    "bulkDeleteFailed": "Regeln konnten nicht geloescht werden"
+    "bulkDeleted": "{{count}} Regeln gelöscht",
+    "bulkDeleteFailed": "Regeln konnten nicht gelöscht werden",
+    "updated": "Regel aktualisiert",
+    "created": "Regel erstellt"
+  },
+  "form": {
+    "ruleName": "Regelname",
+    "ruleNamePlaceholder": "Meine Regel...",
+    "eventType": "Ereignistyp",
+    "selectEvent": "Ereignis auswählen...",
+    "priority": "Priorität",
+    "actions": "Aktionen",
+    "addAction": "+ Aktion hinzufügen",
+    "enabled": "Aktiviert",
+    "editRule": "Regel bearbeiten",
+    "createRule": "Regel erstellen",
+    "workflowView": "Workflow-Ansicht",
+    "draftRestored": "Entwurf aus vorheriger Sitzung wiederhergestellt.",
+    "dismiss": "Schließen",
+    "atLeastOneAction": "Mindestens eine Aktion muss mit einem Typ konfiguriert sein.",
+    "saving": "Speichern...",
+    "update": "Regel aktualisieren",
+    "create": "Regel erstellen",
+    "cancel": "Abbrechen"
+  },
+  "conditions": {
+    "title": "Bedingungen",
+    "channels": "Kanäle",
+    "roles": "Rollen",
+    "users": "Benutzer",
+    "addChannel": "Kanal hinzufügen...",
+    "addRole": "Rolle hinzufügen...",
+    "excludeChannel": "Kanal ausschließen...",
+    "excludeRole": "Rolle ausschließen...",
+    "userId": "Benutzer-ID...",
+    "addConditions": "Bedingungen hinzufügen, um zu filtern, wann diese Regel ausgelöst wird",
+    "active": "aktiv",
+    "description": "Wenn festgelegt, wird diese Regel nur ausgelöst, wenn das Ereignis alle Einschlussfilter und keinen der Ausschlussfilter erfüllt.",
+    "include": "Einschließen (Whitelist)",
+    "exclude": "Ausschließen (Blacklist)",
+    "clearAll": "Alle Bedingungen löschen"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Verbindung nicht möglich: würde einen Zyklus erzeugen"
+    },
+    "labels": {
+      "rules": "Regeln",
+      "field": "Feld",
+      "operator": "Operator",
+      "value": "Wert"
+    },
+    "status": {
+      "ready": "Bereit",
+      "notConfigured": "Nicht konfiguriert"
+    },
+    "shortcuts": {
+      "close": "Schließen",
+      "save": "Speichern",
+      "removeNode": "Knoten entfernen",
+      "addAction": "Aktion hinzufügen",
+      "fitView": "Ansicht anpassen"
+    }
   }
 }

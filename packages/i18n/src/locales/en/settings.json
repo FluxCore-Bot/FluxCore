@@ -1,4 +1,28 @@
 {
   "title": "Settings",
-  "subtitle": "Configure global action system settings for your server."
+  "subtitle": "Configure global action system settings for your server.",
+  "actionSystem": {
+    "title": "Action System Settings",
+    "maxRules": "Max Rules Per Guild",
+    "logChannel": "Log Channel (optional)",
+    "noLogChannel": "No log channel",
+    "globalEnable": "Global Enable (disable to pause all rules)",
+    "saving": "Saving...",
+    "save": "Save Settings",
+    "saved": "Settings saved",
+    "maxRulesError": "Max rules must be between 1 and 100"
+  },
+  "notifications": {
+    "title": "Notification Preferences",
+    "ruleTriggered": "Rule Triggered",
+    "errorAlerts": "Error Alerts",
+    "successReports": "Success Reports"
+  },
+  "dangerZone": {
+    "title": "Danger Zone",
+    "description": "Destructive actions that cannot be undone.",
+    "deleteAllRules": "Delete All Rules",
+    "deleteAllConfirm": "Are you sure you want to delete ALL rules? This cannot be undone.",
+    "notImplemented": "Delete all rules is not yet implemented"
+  }
 }

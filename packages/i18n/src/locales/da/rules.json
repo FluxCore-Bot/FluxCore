@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Kunne ikke aktivere regler",
     "bulkDisableFailed": "Kunne ikke deaktivere regler",
     "bulkDeleted": "{{count}} regler slettet",
-    "bulkDeleteFailed": "Kunne ikke slette regler"
+    "bulkDeleteFailed": "Kunne ikke slette regler",
+    "updated": "Regel opdateret",
+    "created": "Regel oprettet"
+  },
+  "form": {
+    "ruleName": "Regelnavn",
+    "ruleNamePlaceholder": "Min regel...",
+    "eventType": "Hændelsestype",
+    "selectEvent": "Vælg hændelse...",
+    "priority": "Prioritet",
+    "actions": "Handlinger",
+    "addAction": "+ Tilføj handling",
+    "enabled": "Aktiveret",
+    "editRule": "Rediger regel",
+    "createRule": "Opret regel",
+    "workflowView": "Arbejdsgangsvisning",
+    "draftRestored": "Kladde gendannet fra forrige session.",
+    "dismiss": "Afvis",
+    "atLeastOneAction": "Mindst én handling skal konfigureres med en type.",
+    "saving": "Gemmer...",
+    "update": "Opdater regel",
+    "create": "Opret regel",
+    "cancel": "Annuller"
+  },
+  "conditions": {
+    "title": "Betingelser",
+    "channels": "Kanaler",
+    "roles": "Roller",
+    "users": "Brugere",
+    "addChannel": "Tilføj kanal...",
+    "addRole": "Tilføj rolle...",
+    "excludeChannel": "Ekskluder kanal...",
+    "excludeRole": "Ekskluder rolle...",
+    "userId": "Bruger-ID...",
+    "addConditions": "Tilføj betingelser for at filtrere, hvornår denne regel udløses",
+    "active": "aktiv",
+    "description": "Når dette er indstillet, udløses reglen kun, hvis hændelsen matcher alle inkluderingsfiltre og ingen af ekskluderingsfiltrene.",
+    "include": "Inkluder (hvidliste)",
+    "exclude": "Ekskluder (sortliste)",
+    "clearAll": "Ryd alle betingelser"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Kan ikke forbinde: ville skabe en cyklus"
+    },
+    "labels": {
+      "rules": "Regler",
+      "field": "Felt",
+      "operator": "Operator",
+      "value": "Værdi"
+    },
+    "status": {
+      "ready": "Klar",
+      "notConfigured": "Ikke konfigureret"
+    },
+    "shortcuts": {
+      "close": "Luk",
+      "save": "Gem",
+      "removeNode": "Fjern node",
+      "addAction": "Tilføj handling",
+      "fitView": "Tilpas visning"
+    }
   }
 }

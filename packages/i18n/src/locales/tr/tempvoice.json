@@ -1,5 +1,30 @@
 {
   "label": "Yönetim Merkezi",
   "title": "Geçici Ses Kanalları",
-  "subtitle": "Kullanıcıların katılarak kendi geçici ses kanallarını oluşturmalarına olanak tanıyan merkez noktaları yapılandırın."
+  "subtitle": "Kullanıcıların katılarak kendi geçici ses kanallarını oluşturmalarına olanak tanıyan merkez noktaları yapılandırın.",
+  "form": {
+    "sameAsHub": "Merkez kanalıyla aynı",
+    "defaultNameTemplate": "{user}'in Kanalı",
+    "hubChannel": "Merkez Kanalı",
+    "selectHub": "Ses kanalı seçin...",
+    "category": "Kategori (isteğe bağlı)",
+    "nameTemplate": "Kanal Adı Şablonu",
+    "addConfig": "Yapılandırma Ekle",
+    "editConfig": "Yapılandırmayı Düzenle",
+    "save": "Yapılandırmayı Kaydet",
+    "saving": "Kaydediliyor...",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle"
+  },
+  "empty": {
+    "noConfigs": "Henüz yapılandırma yok",
+    "noConfigsDesc": "Geçici ses kanallarını etkinleştirmek için bir merkez kanalı ekleyin.",
+    "addFirst": "Yapılandırma Ekle"
+  },
+  "toast": {
+    "updated": "Yapılandırma güncellendi",
+    "created": "Yapılandırma oluşturuldu",
+    "removed": "Yapılandırma kaldırıldı"
+  }
 }

@@ -1,4 +1,28 @@
 {
   "title": "Ustawienia",
-  "subtitle": "Skonfiguruj globalne ustawienia systemu akcji dla serwera."
+  "subtitle": "Skonfiguruj globalne ustawienia systemu akcji dla serwera.",
+  "actionSystem": {
+    "title": "Ustawienia systemu akcji",
+    "maxRules": "Maksymalna liczba reguł na serwer",
+    "logChannel": "Kanał logów (opcjonalnie)",
+    "noLogChannel": "Brak kanału logów",
+    "globalEnable": "Globalne włączenie (wyłącz, aby wstrzymać wszystkie reguły)",
+    "saving": "Zapisywanie...",
+    "save": "Zapisz ustawienia",
+    "saved": "Ustawienia zapisane",
+    "maxRulesError": "Maksymalna liczba reguł musi być między 1 a 100"
+  },
+  "notifications": {
+    "title": "Preferencje powiadomień",
+    "ruleTriggered": "Reguła wyzwolona",
+    "errorAlerts": "Alerty błędów",
+    "successReports": "Raporty sukcesu"
+  },
+  "dangerZone": {
+    "title": "Strefa niebezpieczna",
+    "description": "Destrukcyjne akcje, których nie można cofnąć.",
+    "deleteAllRules": "Usuń wszystkie reguły",
+    "deleteAllConfirm": "Czy na pewno chcesz usunąć WSZYSTKIE reguły? Tej akcji nie można cofnąć.",
+    "notImplemented": "Usuwanie wszystkich reguł nie jest jeszcze zaimplementowane"
+  }
 }

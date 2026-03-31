@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Kumbukumbu za Shughuli",
     "events": "Kumbukumbu za Matukio"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Kiwango cha Utekelezaji",
+      "totalFailures": "Jumla ya Kushindwa",
+      "totalEntries": "Jumla ya Maingizo"
+    },
+    "filter": {
+      "search": "Tafuta kumbukumbu...",
+      "last1h": "Saa 1 iliyopita",
+      "last24h": "Masaa 24 yaliyopita",
+      "last7d": "Siku 7 zilizopita"
+    },
+    "table": {
+      "timestamp": "Alama ya Wakati",
+      "ruleName": "Jina la Sheria",
+      "eventType": "Aina ya Tukio",
+      "action": "Kitendo",
+      "status": "Hali",
+      "details": "Maelezo",
+      "success": "Mafanikio",
+      "failed": "Kushindwa"
+    },
+    "pagination": {
+      "showing": "Inaonyesha {{from}}–{{to}} kati ya {{total}} matokeo",
+      "previous": "Iliyotangulia",
+      "next": "Inayofuata"
+    },
+    "empty": {
+      "title": "Hakuna kumbukumbu zilizopatikana",
+      "description": "Kumbukumbu za utekelezaji wa sheria zitaonekana hapa baada ya sheria za otomatiki kuanza kufanya kazi."
+    }
+  },
+  "events": {
+    "title": "Kivinjari cha Kumbukumbu za Matukio",
+    "filter": {
+      "allCategories": "Kategoria Zote",
+      "byUserId": "Chuja kwa Kitambulisho cha Mtumiaji...",
+      "entries": "Maingizo {{count}}"
+    },
+    "categories": {
+      "message": "Ujumbe",
+      "member": "Mwanachama",
+      "voice": "Sauti",
+      "channel": "Chaneli",
+      "role": "Jukumu",
+      "server": "Seva",
+      "moderation": "Usimamizi"
+    },
+    "categoryEvents": {
+      "message": "Matukio ya Ujumbe",
+      "member": "Matukio ya Wanachama",
+      "voice": "Matukio ya Sauti",
+      "channel": "Matukio ya Chaneli",
+      "role": "Matukio ya Majukumu",
+      "server": "Matukio ya Seva",
+      "moderation": "Matukio ya Usimamizi"
+    },
+    "table": {
+      "timestamp": "Alama ya Wakati",
+      "category": "Kategoria",
+      "event": "Tukio",
+      "target": "Lengo",
+      "executor": "Mtekelezaji"
+    },
+    "pagination": {
+      "page": "Ukurasa {{page}} kati ya {{total}} (jumla {{count}})",
+      "previous": "Iliyotangulia",
+      "next": "Inayofuata"
+    },
+    "empty": {
+      "title": "Hakuna kumbukumbu za matukio zilizopatikana",
+      "description": "Kumbukumbu za matukio zitaonekana hapa baada ya uwekaji wa kumbukumbu kusanidiwa na matukio kuanza kutokea."
+    },
+    "config": {
+      "selectChannel": "Chagua chaneli ya kumbukumbu"
+    }
   }
 }

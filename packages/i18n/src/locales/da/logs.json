@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Aktivitetslogfiler",
     "events": "Hændelseslogfiler"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Kørselshyppighed",
+      "totalFailures": "Fejl i alt",
+      "totalEntries": "Poster i alt"
+    },
+    "filter": {
+      "search": "Søg logfiler...",
+      "last1h": "Seneste 1 time",
+      "last24h": "Seneste 24 timer",
+      "last7d": "Seneste 7 dage"
+    },
+    "table": {
+      "timestamp": "Tidsstempel",
+      "ruleName": "Regelnavn",
+      "eventType": "Hændelsestype",
+      "action": "Handling",
+      "status": "Status",
+      "details": "Detaljer",
+      "success": "Lykkedes",
+      "failed": "Mislykkedes"
+    },
+    "pagination": {
+      "showing": "Viser {{from}}–{{to}} af {{total}} resultater",
+      "previous": "Forrige",
+      "next": "Næste"
+    },
+    "empty": {
+      "title": "Ingen logfiler fundet",
+      "description": "Regelkøringslogfiler vises her, når automatiseringsreglerne begynder at køre."
+    }
+  },
+  "events": {
+    "title": "Hændelseslog-browser",
+    "filter": {
+      "allCategories": "Alle kategorier",
+      "byUserId": "Filtrer efter bruger-ID...",
+      "entries": "{{count}} poster"
+    },
+    "categories": {
+      "message": "Besked",
+      "member": "Medlem",
+      "voice": "Tale",
+      "channel": "Kanal",
+      "role": "Rolle",
+      "server": "Server",
+      "moderation": "Moderering"
+    },
+    "categoryEvents": {
+      "message": "Beskedhændelser",
+      "member": "Medlemshændelser",
+      "voice": "Talehændelser",
+      "channel": "Kanalhændelser",
+      "role": "Rollehændelser",
+      "server": "Serverhændelser",
+      "moderation": "Modereringshændelser"
+    },
+    "table": {
+      "timestamp": "Tidsstempel",
+      "category": "Kategori",
+      "event": "Hændelse",
+      "target": "Mål",
+      "executor": "Udfører"
+    },
+    "pagination": {
+      "page": "Side {{page}} af {{total}} ({{count}} i alt)",
+      "previous": "Forrige",
+      "next": "Næste"
+    },
+    "empty": {
+      "title": "Ingen hændelseslogfiler fundet",
+      "description": "Hændelseslogfiler vises her, når logning er konfigureret og hændelser begynder at forekomme."
+    },
+    "config": {
+      "selectChannel": "Vælg logkanal"
+    }
   }
 }

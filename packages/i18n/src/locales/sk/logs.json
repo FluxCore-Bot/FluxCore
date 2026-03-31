@@ -1,0 +1,85 @@
+{
+  "title": "Logy",
+  "subtitle": "Sledujte vykonávanie pravidiel a zaznamenávanie udalostí.",
+  "tabs": {
+    "activity": "Logy aktivity",
+    "events": "Logy udalostí"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Miera vykonávania",
+      "totalFailures": "Celkom zlyhaní",
+      "totalEntries": "Celkom záznamov"
+    },
+    "filter": {
+      "search": "Hľadať logy...",
+      "last1h": "Posledná 1 hodina",
+      "last24h": "Posledných 24 hodín",
+      "last7d": "Posledných 7 dní"
+    },
+    "table": {
+      "timestamp": "Časová pečiatka",
+      "ruleName": "Názov pravidla",
+      "eventType": "Typ udalosti",
+      "action": "Akcia",
+      "status": "Stav",
+      "details": "Podrobnosti",
+      "success": "Úspech",
+      "failed": "Zlyhalo"
+    },
+    "pagination": {
+      "showing": "Zobrazené {{from}} až {{to}} z {{total}} výsledkov",
+      "previous": "Predchádzajúca",
+      "next": "Ďalšia"
+    },
+    "empty": {
+      "title": "Nenašli sa žiadne logy",
+      "description": "Logy vykonávania pravidiel sa tu zobrazia, keď začnú fungovať automatizačné pravidlá."
+    }
+  },
+  "events": {
+    "title": "Prehliadač protokolu udalostí",
+    "filter": {
+      "allCategories": "Všetky kategórie",
+      "byUserId": "Filtrovať podľa ID používateľa...",
+      "entries": "{{count}} záznamov"
+    },
+    "categories": {
+      "message": "Správa",
+      "member": "Člen",
+      "voice": "Hlas",
+      "channel": "Kanál",
+      "role": "Rola",
+      "server": "Server",
+      "moderation": "Moderácia"
+    },
+    "categoryEvents": {
+      "message": "Udalosti správ",
+      "member": "Udalosti členov",
+      "voice": "Hlasové udalosti",
+      "channel": "Udalosti kanálov",
+      "role": "Udalosti rolí",
+      "server": "Udalosti servera",
+      "moderation": "Udalosti moderácie"
+    },
+    "table": {
+      "timestamp": "Časová pečiatka",
+      "category": "Kategória",
+      "event": "Udalosť",
+      "target": "Cieľ",
+      "executor": "Vykonávateľ"
+    },
+    "pagination": {
+      "page": "Strana {{page}} z {{total}} (celkom {{count}})",
+      "previous": "Predchádzajúca",
+      "next": "Ďalšia"
+    },
+    "empty": {
+      "title": "Nenašli sa žiadne logy udalostí",
+      "description": "Logy udalostí sa tu zobrazia, keď bude nakonfigurované logovanie a začnú nastávať udalosti."
+    },
+    "config": {
+      "selectChannel": "Vybrať logovací kanál"
+    }
+  }
+}

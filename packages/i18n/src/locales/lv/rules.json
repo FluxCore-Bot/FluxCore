@@ -1,87 +1,148 @@
 {
   "breadcrumb": {
     "guild": "Serveris",
-    "automation": "Automatizacija"
+    "automation": "Automatizācija"
   },
-  "title": "Automatizacijas noteikumi",
-  "subtitle": "Konfigurejiet notikumos balstitus trigerus un automatizetas atbildes savam serverim.",
+  "title": "Automatizācijas noteikumi",
+  "subtitle": "Konfigurējiet notikumos balstītus trigerus un automatizētas atbildes savam serverim.",
   "createRule": "Izveidot noteikumu",
   "stats": {
-    "totalRules": "Kopejie noteikumi",
-    "active": "Aktivi",
+    "totalRules": "Kopējie noteikumi",
+    "active": "Aktīvi",
     "executions7d": "Izpildes (7d)",
-    "successRate": "Veiksmibas raditajs"
+    "successRate": "Veiksmības rādītājs"
   },
   "filter": {
-    "searchPlaceholder": "Meklet noteikumus...",
+    "searchPlaceholder": "Meklēt noteikumus...",
     "eventType": "Notikuma tips",
     "allEvents": "Visi notikumi",
     "allStatus": "Visi statusi",
-    "enabled": "Iespejots",
-    "disabled": "Atspejots",
-    "sortBy": "Kartot pec",
-    "priority": "Prioritate",
+    "enabled": "Iespējots",
+    "disabled": "Atspējots",
+    "sortBy": "Kārtot pēc",
+    "priority": "Prioritāte",
     "name": "Nosaukums",
-    "lastFired": "Pedejo reizi aktivizets",
+    "lastFired": "Pēdējo reizi aktivizēts",
     "status": "Statuss",
-    "clear": "Notirit",
-    "showing": "Rada {{filtered}} no {{total}} noteikumiem"
+    "clear": "Notīrīt",
+    "showing": "Rāda {{filtered}} no {{total}} noteikumiem"
   },
   "bulk": {
-    "selected": "{{count}} noteikums izveets",
-    "selected_other": "{{count}} noteikumi izveciti",
-    "enable": "Iespejot",
-    "disable": "Atspejot",
-    "delete": "Dzest",
-    "clear": "Notirit"
+    "selected": "{{count}} noteikums izvēlēts",
+    "selected_other": "{{count}} noteikumi izvēlēti",
+    "enable": "Iespējot",
+    "disable": "Atspējot",
+    "delete": "Dzēst",
+    "clear": "Notīrīt"
   },
   "empty": {
-    "title": "Sakiet ar automatizaciju",
-    "description": "Izvelieties veidni atram sakumam vai izveidojiet noteikumu no nulles.",
+    "title": "Sāciet ar automatizāciju",
+    "description": "Izvēlieties veidni ātram sākumam vai izveidojiet noteikumu no nulles.",
     "createFromScratch": "Izveidot no nulles"
   },
   "noResults": {
-    "title": "Nav atbilstosu noteikumu",
-    "description": "Meginiet pielgot meklesanu vai filtrus, lai atrastu mekleto."
+    "title": "Nav atbilstošu noteikumu",
+    "description": "Mēģiniet pielāgot meklēšanu vai filtrus, lai atrastu meklēto."
   },
   "templates": {
-    "welcomeMessage": "Sveicinasanas zinojums",
-    "welcomeMessageDesc": "Apsveiciiet jaunos dalibgniekus ar pielgotu zinojumu kanala",
-    "autoRole": "Automatiska loma",
-    "autoRoleDesc": "Automatiski piesskiriet lomu, kad dalibnieks pievienojas",
-    "logDeleted": "Registret dzestas zinias",
-    "logDeletedDesc": "Sutit informaciju par dzestam zinam zurnala kanala",
-    "boostThankYou": "Paldies par pastiprinajumu",
-    "boostThankYouDesc": "Sutit privatu paldies zinojumu lietotajiem, kuri pastiprina serveri",
-    "banLogger": "Aizliegumu registrators",
-    "banLoggerDesc": "Registret aizliegumu notikumus moderacijas kanala",
-    "autoThread": "Automatisks pavediens",
-    "autoThreadDesc": "Automatiski izveidot pavedienu, kad tiek nosutita zina"
+    "welcomeMessage": "Sveicināšanas ziņojums",
+    "welcomeMessageDesc": "Apsveiciet jaunos dalībniekus ar pielāgotu ziņojumu kanālā",
+    "autoRole": "Automātiskā loma",
+    "autoRoleDesc": "Automātiski piešķiriet lomu, kad dalībnieks pievienojas",
+    "logDeleted": "Reģistrēt dzēstās ziņas",
+    "logDeletedDesc": "Sūtīt informāciju par dzēstām ziņām žurnāla kanālā",
+    "boostThankYou": "Paldies par pastiprinājumu",
+    "boostThankYouDesc": "Sūtīt privātu paldies ziņojumu lietotājiem, kuri pastiprina serveri",
+    "banLogger": "Aizliegumu reģistrators",
+    "banLoggerDesc": "Reģistrēt aizliegumu notikumus moderācijas kanālā",
+    "autoThread": "Automātiskais pavediens",
+    "autoThreadDesc": "Automātiski izveidot pavedienu, kad tiek nosūtīta ziņa"
   },
   "deleteDialog": {
-    "title": "Dzest noteikumu",
-    "description": "Vai tiessam velaties dzest \"{{name}}\"? So darbibu nevar atsaukt.",
-    "confirm": "Dzest"
+    "title": "Dzēst noteikumu",
+    "description": "Vai tiešām vēlaties dzēst „{{name}}"? Šo darbību nevar atsaukt.",
+    "confirm": "Dzēst"
   },
   "bulkDeleteDialog": {
-    "title": "Dzest izveletos noteikumus",
-    "description": "Vai tiessam velaties dzest {{count}} noteikumu? So darbibu nevar atsaukt.",
-    "description_other": "Vai tiessam velaties dzest {{count}} noteikumus? So darbibu nevar atsaukt.",
-    "confirm": "Dzest visus"
+    "title": "Dzēst izvēlētos noteikumus",
+    "description": "Vai tiešām vēlaties dzēst {{count}} noteikumu? Šo darbību nevar atsaukt.",
+    "description_other": "Vai tiešām vēlaties dzēst {{count}} noteikumus? Šo darbību nevar atsaukt.",
+    "confirm": "Dzēst visus"
   },
   "toast": {
-    "deleted": "Noteikums dzests",
-    "deleteFailed": "Neizdevas dzest noteikumu",
-    "enabled": "Noteikums iespejots",
-    "disabled": "Noteikums atspejots",
-    "toggleFailed": "Neizdevas parlikt noteikumu",
-    "duplicated": "Noteikums dublicets",
-    "duplicateFailed": "Neizdevas dublicet noteikumu",
-    "bulkEnabled": "{{count}} noteikumi iespejoti",
-    "bulkDisabled": "{{count}} noteikumi atspejoti",
-    "bulkEnableFailed": "Neizdevas iespejot noteikumus",
-    "bulkDisableFailed": "Neizdevas atspejot noteikumus",
-    "bulkDeleted": "{{count}} noteikumi dzesti",
-    "bulkDeleteFailed": "Neizdevas dzest noteikumus"
+    "deleted": "Noteikums dzēsts",
+    "deleteFailed": "Neizdevās dzēst noteikumu",
+    "enabled": "Noteikums iespējots",
+    "disabled": "Noteikums atspējots",
+    "toggleFailed": "Neizdevās pārlikt noteikumu",
+    "duplicated": "Noteikums dublicēts",
+    "duplicateFailed": "Neizdevās dublicēt noteikumu",
+    "bulkEnabled": "{{count}} noteikumi iespējoti",
+    "bulkDisabled": "{{count}} noteikumi atspējoti",
+    "bulkEnableFailed": "Neizdevās iespējot noteikumus",
+    "bulkDisableFailed": "Neizdevās atspējot noteikumus",
+    "bulkDeleted": "{{count}} noteikumi dzēsti",
+    "bulkDeleteFailed": "Neizdevās dzēst noteikumus",
+    "updated": "Noteikums atjaunināts",
+    "created": "Noteikums izveidots"
+  },
+  "form": {
+    "ruleName": "Noteikuma nosaukums",
+    "ruleNamePlaceholder": "Mans noteikums...",
+    "eventType": "Notikuma tips",
+    "selectEvent": "Izvēlēties notikumu...",
+    "priority": "Prioritāte",
+    "actions": "Darbības",
+    "addAction": "+ Pievienot darbību",
+    "enabled": "Iespējots",
+    "editRule": "Rediģēt noteikumu",
+    "createRule": "Izveidot noteikumu",
+    "workflowView": "Darbplūsmas skats",
+    "draftRestored": "Melnraksts atjaunots no iepriekšējās sesijas.",
+    "dismiss": "Noraidīt",
+    "atLeastOneAction": "Vismaz vienai darbībai jābūt konfigurētai ar tipu.",
+    "saving": "Saglabā...",
+    "update": "Atjaunināt noteikumu",
+    "create": "Izveidot noteikumu",
+    "cancel": "Atcelt"
+  },
+  "conditions": {
+    "title": "Nosacījumi",
+    "channels": "Kanāli",
+    "roles": "Lomas",
+    "users": "Lietotāji",
+    "addChannel": "Pievienot kanālu...",
+    "addRole": "Pievienot lomu...",
+    "excludeChannel": "Izslēgt kanālu...",
+    "excludeRole": "Izslēgt lomu...",
+    "userId": "Lietotāja ID...",
+    "addConditions": "Pievienojiet nosacījumus, lai filtrētu, kad šis noteikums tiek aktivizēts",
+    "active": "aktīvs",
+    "description": "Kad iestatīts, šis noteikums tiek aktivizēts tikai tad, ja notikums atbilst visiem iekļaušanas filtriem un nevienam izslēgšanas filtram.",
+    "include": "Iekļaut (baltais saraksts)",
+    "exclude": "Izslēgt (melnais saraksts)",
+    "clearAll": "Notīrīt visus nosacījumus"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Nevar savienot: radītu ciklu"
+    },
+    "labels": {
+      "rules": "Noteikumi",
+      "field": "Lauks",
+      "operator": "Operators",
+      "value": "Vērtība"
+    },
+    "status": {
+      "ready": "Gatavs",
+      "notConfigured": "Nav konfigurēts"
+    },
+    "shortcuts": {
+      "close": "Aizvērt",
+      "save": "Saglabāt",
+      "removeNode": "Noņemt mezglu",
+      "addAction": "Pievienot darbību",
+      "fitView": "Pielāgot skatu"
+    }
   }
 }

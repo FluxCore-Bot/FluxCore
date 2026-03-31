@@ -1,8 +1,85 @@
 {
   "title": "Registres",
-  "subtitle": "Monitoritza les execucions de regles i el registre d'esdeveniments.",
+  "subtitle": "Monitora les execucions de regles i el registre d'esdeveniments.",
   "tabs": {
     "activity": "Registres d'activitat",
     "events": "Registres d'esdeveniments"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Taxa d'execució",
+      "totalFailures": "Total de fallades",
+      "totalEntries": "Total d'entrades"
+    },
+    "filter": {
+      "search": "Cercar registres...",
+      "last1h": "Última 1 hora",
+      "last24h": "Últimes 24 hores",
+      "last7d": "Últims 7 dies"
+    },
+    "table": {
+      "timestamp": "Marca de temps",
+      "ruleName": "Nom de la regla",
+      "eventType": "Tipus d'esdeveniment",
+      "action": "Acció",
+      "status": "Estat",
+      "details": "Detalls",
+      "success": "Èxit",
+      "failed": "Fallat"
+    },
+    "pagination": {
+      "showing": "Mostrant {{from}}–{{to}} de {{total}} resultats",
+      "previous": "Anterior",
+      "next": "Següent"
+    },
+    "empty": {
+      "title": "No s'han trobat registres",
+      "description": "Els registres d'execució de regles apareixeran aquí una vegada que les regles d'automatització comencin a funcionar."
+    }
+  },
+  "events": {
+    "title": "Explorador de registres d'esdeveniments",
+    "filter": {
+      "allCategories": "Totes les categories",
+      "byUserId": "Filtrar per ID d'usuari...",
+      "entries": "{{count}} entrades"
+    },
+    "categories": {
+      "message": "Missatge",
+      "member": "Membre",
+      "voice": "Veu",
+      "channel": "Canal",
+      "role": "Rol",
+      "server": "Servidor",
+      "moderation": "Moderació"
+    },
+    "categoryEvents": {
+      "message": "Esdeveniments de missatges",
+      "member": "Esdeveniments de membres",
+      "voice": "Esdeveniments de veu",
+      "channel": "Esdeveniments de canals",
+      "role": "Esdeveniments de rols",
+      "server": "Esdeveniments del servidor",
+      "moderation": "Esdeveniments de moderació"
+    },
+    "table": {
+      "timestamp": "Marca de temps",
+      "category": "Categoria",
+      "event": "Esdeveniment",
+      "target": "Objectiu",
+      "executor": "Executor"
+    },
+    "pagination": {
+      "page": "Pàgina {{page}} de {{total}} ({{count}} total)",
+      "previous": "Anterior",
+      "next": "Següent"
+    },
+    "empty": {
+      "title": "No s'han trobat registres d'esdeveniments",
+      "description": "Els registres d'esdeveniments apareixeran aquí una vegada que el registre estigui configurat i els esdeveniments comencin a passar."
+    },
+    "config": {
+      "selectChannel": "Seleccionar canal de registre"
+    }
   }
 }

@@ -71,11 +71,31 @@
     "type": "प्रकार",
     "status": "स्थिति",
     "channel": "चैनल",
+    "channels": "चैनल",
     "role": "रोल",
+    "roles": "रोल",
     "member": "सदस्य",
+    "users": "उपयोगकर्ता",
+    "conditions": "शर्तें",
     "duration": "अवधि",
     "reason": "कारण",
     "language": "भाषा"
+  },
+  "form": {
+    "selectChannel": "चैनल चुनें...",
+    "selectRole": "रोल चुनें...",
+    "select": "चुनें...",
+    "saving": "सहेजा जा रहा है...",
+    "saveSettings": "सेटिंग्स सहेजें",
+    "previous": "पिछला",
+    "next": "अगला"
+  },
+  "pagination": {
+    "previous": "पिछला",
+    "next": "अगला",
+    "page": "पृष्ठ {{page}} / {{total}}",
+    "showing": "{{total}} परिणामों में से {{from}} से {{to}} दिखाए जा रहे हैं",
+    "showingPage": "पृष्ठ {{page}} / {{total}} ({{count}} कुल)"
   },
   "header": {
     "notifications": "सूचनाएं",

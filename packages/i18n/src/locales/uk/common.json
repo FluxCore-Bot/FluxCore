@@ -71,11 +71,31 @@
     "type": "Тип",
     "status": "Статус",
     "channel": "Канал",
+    "channels": "Канали",
     "role": "Роль",
+    "roles": "Ролі",
     "member": "Учасник",
+    "users": "Користувачі",
+    "conditions": "Умови",
     "duration": "Тривалість",
     "reason": "Причина",
     "language": "Мова"
+  },
+  "form": {
+    "selectChannel": "Оберіть канал...",
+    "selectRole": "Оберіть роль...",
+    "select": "Оберіть...",
+    "saving": "Збереження...",
+    "saveSettings": "Зберегти налаштування",
+    "previous": "Назад",
+    "next": "Далі"
+  },
+  "pagination": {
+    "previous": "Назад",
+    "next": "Далі",
+    "page": "Сторінка {{page}} з {{total}}",
+    "showing": "Показано {{from}}–{{to}} з {{total}} результатів",
+    "showingPage": "Сторінка {{page}} з {{total}} (всього {{count}})"
   },
   "header": {
     "notifications": "Сповіщення",

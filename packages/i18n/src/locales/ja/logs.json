@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "アクティビティログ",
     "events": "イベントログ"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "実行率",
+      "totalFailures": "総失敗数",
+      "totalEntries": "総エントリ数"
+    },
+    "filter": {
+      "search": "ログを検索...",
+      "last1h": "直近1時間",
+      "last24h": "直近24時間",
+      "last7d": "直近7日間"
+    },
+    "table": {
+      "timestamp": "タイムスタンプ",
+      "ruleName": "ルール名",
+      "eventType": "イベントタイプ",
+      "action": "アクション",
+      "status": "ステータス",
+      "details": "詳細",
+      "success": "成功",
+      "failed": "失敗"
+    },
+    "pagination": {
+      "showing": "{{total}}件中{{from}}〜{{to}}件を表示",
+      "previous": "前へ",
+      "next": "次へ"
+    },
+    "empty": {
+      "title": "ログが見つかりません",
+      "description": "自動化ルールが実行されると、ルール実行ログがここに表示されます。"
+    }
+  },
+  "events": {
+    "title": "イベントログブラウザ",
+    "filter": {
+      "allCategories": "すべてのカテゴリ",
+      "byUserId": "ユーザーIDでフィルター...",
+      "entries": "{{count}}件のエントリ"
+    },
+    "categories": {
+      "message": "メッセージ",
+      "member": "メンバー",
+      "voice": "ボイス",
+      "channel": "チャンネル",
+      "role": "ロール",
+      "server": "サーバー",
+      "moderation": "モデレーション"
+    },
+    "categoryEvents": {
+      "message": "メッセージイベント",
+      "member": "メンバーイベント",
+      "voice": "ボイスイベント",
+      "channel": "チャンネルイベント",
+      "role": "ロールイベント",
+      "server": "サーバーイベント",
+      "moderation": "モデレーションイベント"
+    },
+    "table": {
+      "timestamp": "タイムスタンプ",
+      "category": "カテゴリ",
+      "event": "イベント",
+      "target": "ターゲット",
+      "executor": "実行者"
+    },
+    "pagination": {
+      "page": "{{total}}ページ中{{page}}ページ目（合計{{count}}件）",
+      "previous": "前へ",
+      "next": "次へ"
+    },
+    "empty": {
+      "title": "イベントログが見つかりません",
+      "description": "ログが設定されてイベントが発生すると、イベントログがここに表示されます。"
+    },
+    "config": {
+      "selectChannel": "ログチャンネルを選択"
+    }
   }
 }

@@ -71,11 +71,31 @@
     "type": "قسم",
     "status": "حالت",
     "channel": "چینل",
+    "channels": "چینلز",
     "role": "کردار",
+    "roles": "کردار",
     "member": "ممبر",
+    "users": "صارفین",
+    "conditions": "شرائط",
     "duration": "مدت",
     "reason": "وجہ",
     "language": "زبان"
+  },
+  "form": {
+    "selectChannel": "چینل منتخب کریں...",
+    "selectRole": "کردار منتخب کریں...",
+    "select": "منتخب کریں...",
+    "saving": "محفوظ ہو رہا ہے...",
+    "saveSettings": "ترتیبات محفوظ کریں",
+    "previous": "پچھلا",
+    "next": "اگلا"
+  },
+  "pagination": {
+    "previous": "پچھلا",
+    "next": "اگلا",
+    "page": "صفحہ {{page}} از {{total}}",
+    "showing": "{{total}} نتائج میں سے {{from}} تا {{to}} دکھا رہا ہے",
+    "showingPage": "صفحہ {{page}} از {{total}} ({{count}} کل)"
   },
   "header": {
     "notifications": "اطلاعات",

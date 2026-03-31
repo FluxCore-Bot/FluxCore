@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Jarduera-erregistroak",
     "events": "Gertaera-erregistroak"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Exekuzio-tasa",
+      "totalFailures": "Hutsegite guztiak",
+      "totalEntries": "Sarrera guztiak"
+    },
+    "filter": {
+      "search": "Erregistroak bilatu...",
+      "last1h": "Azken 1 ordua",
+      "last24h": "Azken 24 orduak",
+      "last7d": "Azken 7 egunak"
+    },
+    "table": {
+      "timestamp": "Denbora-zigilua",
+      "ruleName": "Arauaren izena",
+      "eventType": "Gertaera mota",
+      "action": "Ekintza",
+      "status": "Egoera",
+      "details": "Xehetasunak",
+      "success": "Arrakastatsua",
+      "failed": "Hutsegitea"
+    },
+    "pagination": {
+      "showing": "{{from}}–{{to}} erakusten {{total}} emaitzatatik",
+      "previous": "Aurrekoa",
+      "next": "Hurrengoa"
+    },
+    "empty": {
+      "title": "Ez dira erregistroak aurkitu",
+      "description": "Arauen exekuzio-erregistroak hemen agertuko dira automatizazio-arauak martxan jartzen direnean."
+    }
+  },
+  "events": {
+    "title": "Gertaera-erregistroen arakatzailea",
+    "filter": {
+      "allCategories": "Kategoria guztiak",
+      "byUserId": "Erabiltzaile IDaz iragazten...",
+      "entries": "{{count}} sarrera"
+    },
+    "categories": {
+      "message": "Mezua",
+      "member": "Kidea",
+      "voice": "Ahotsa",
+      "channel": "Kanala",
+      "role": "Rola",
+      "server": "Zerbitzaria",
+      "moderation": "Moderazioa"
+    },
+    "categoryEvents": {
+      "message": "Mezu-gertaerak",
+      "member": "Kide-gertaerak",
+      "voice": "Ahots-gertaerak",
+      "channel": "Kanal-gertaerak",
+      "role": "Rol-gertaerak",
+      "server": "Zerbitzari-gertaerak",
+      "moderation": "Moderazio-gertaerak"
+    },
+    "table": {
+      "timestamp": "Denbora-zigilua",
+      "category": "Kategoria",
+      "event": "Gertaera",
+      "target": "Helburua",
+      "executor": "Exekutagailua"
+    },
+    "pagination": {
+      "page": "{{page}}. orrialdea {{total}}tik ({{count}} guztira)",
+      "previous": "Aurrekoa",
+      "next": "Hurrengoa"
+    },
+    "empty": {
+      "title": "Ez dira gertaera-erregistroak aurkitu",
+      "description": "Gertaera-erregistroak hemen agertuko dira erregistroa konfiguratuta dagoenean eta gertaerak gertatzen hasten direnean."
+    },
+    "config": {
+      "selectChannel": "Hautatu erregistro-kanala"
+    }
   }
 }

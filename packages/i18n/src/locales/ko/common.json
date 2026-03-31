@@ -71,11 +71,31 @@
     "type": "유형",
     "status": "상태",
     "channel": "채널",
+    "channels": "채널",
     "role": "역할",
+    "roles": "역할",
     "member": "멤버",
+    "users": "사용자",
+    "conditions": "조건",
     "duration": "기간",
     "reason": "사유",
     "language": "언어"
+  },
+  "form": {
+    "selectChannel": "채널 선택...",
+    "selectRole": "역할 선택...",
+    "select": "선택...",
+    "saving": "저장 중...",
+    "saveSettings": "설정 저장",
+    "previous": "이전",
+    "next": "다음"
+  },
+  "pagination": {
+    "previous": "이전",
+    "next": "다음",
+    "page": "{{total}}페이지 중 {{page}}페이지",
+    "showing": "{{total}}개 중 {{from}}~{{to}} 표시",
+    "showingPage": "{{total}}페이지 중 {{page}}페이지 (총 {{count}}개)"
   },
   "header": {
     "notifications": "알림",

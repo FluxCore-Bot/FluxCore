@@ -1,5 +1,30 @@
 {
   "label": "Vozlišče upravljanja",
   "title": "Začasni glasovni kanali",
-  "subtitle": "Konfigurirajte vozlišča, ki uporabnikom ob pridružitvi omogočajo ustvarjanje lastnih kratkotrajnih glasovnih kanalov."
+  "subtitle": "Konfigurirajte vozlišča, ki uporabnikom ob pridružitvi omogočajo ustvarjanje lastnih kratkotrajnih glasovnih kanalov.",
+  "form": {
+    "sameAsHub": "Enako kot kanal vozlišča",
+    "defaultNameTemplate": "Kanal {user}",
+    "hubChannel": "Kanal vozlišča",
+    "selectHub": "Izberite glasovni kanal...",
+    "category": "Kategorija (neobvezno)",
+    "nameTemplate": "Predloga za ime kanala",
+    "addConfig": "Dodaj konfiguracijo",
+    "editConfig": "Uredi konfiguracijo",
+    "save": "Shrani konfiguracijo",
+    "saving": "Shranjevanje...",
+    "cancel": "Prekliči",
+    "delete": "Izbriši",
+    "edit": "Uredi"
+  },
+  "empty": {
+    "noConfigs": "Konfiguracij še ni",
+    "noConfigsDesc": "Dodajte kanal vozlišča, da omogočite začasne glasovne kanale.",
+    "addFirst": "Dodaj konfiguracijo"
+  },
+  "toast": {
+    "updated": "Konfiguracija posodobljena",
+    "created": "Konfiguracija ustvarjena",
+    "removed": "Konfiguracija odstranjena"
+  }
 }

@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import type { Connection } from "@xyflow/react";
 import { toast } from "sonner";
 import type { ActionConfig, RuleStep, Constants } from "../../lib/schemas";
@@ -18,6 +19,7 @@ export function useWorkflowSteps({
   initialActions,
   constants,
 }: UseWorkflowStepsOptions) {
+  const { t } = useTranslation("rules");
   const [actions, setActions] = useState<ActionConfig[]>(initialActions);
   const [steps, setSteps] = useState<RuleStep[] | undefined>(initialSteps);
   const [entryStepId, setEntryStepId] = useState<string | undefined>(initialEntryStepId);
@@ -229,7 +231,7 @@ export function useWorkflowSteps({
     }
 
     if (wouldCreateCycle(sourceStep, targetStep)) {
-      toast.error("Cannot connect: would create a cycle");
+      toast.error(t("workflow.errors.cyclicConnection"));
       return;
     }
 

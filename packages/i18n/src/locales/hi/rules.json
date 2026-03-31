@@ -82,6 +82,67 @@
     "bulkEnableFailed": "नियम सक्रिय करने में विफल",
     "bulkDisableFailed": "नियम निष्क्रिय करने में विफल",
     "bulkDeleted": "{{count}} नियम हटाए गए",
-    "bulkDeleteFailed": "नियम हटाने में विफल"
+    "bulkDeleteFailed": "नियम हटाने में विफल",
+    "updated": "नियम अपडेट किया गया",
+    "created": "नियम बनाया गया"
+  },
+  "form": {
+    "ruleName": "नियम का नाम",
+    "ruleNamePlaceholder": "मेरा नियम...",
+    "eventType": "इवेंट प्रकार",
+    "selectEvent": "इवेंट चुनें...",
+    "priority": "प्राथमिकता",
+    "actions": "क्रियाएं",
+    "addAction": "+ क्रिया जोड़ें",
+    "enabled": "सक्रिय",
+    "editRule": "नियम संपादित करें",
+    "createRule": "नियम बनाएं",
+    "workflowView": "वर्कफ़्लो दृश्य",
+    "draftRestored": "ड्राफ्ट पिछले सत्र से पुनर्स्थापित किया गया।",
+    "dismiss": "बंद करें",
+    "atLeastOneAction": "कम से कम एक क्रिया को प्रकार के साथ कॉन्फ़िगर किया जाना चाहिए।",
+    "saving": "सहेजा जा रहा है...",
+    "update": "नियम अपडेट करें",
+    "create": "नियम बनाएं",
+    "cancel": "रद्द करें"
+  },
+  "conditions": {
+    "title": "शर्तें",
+    "channels": "चैनल",
+    "roles": "रोल",
+    "users": "उपयोगकर्ता",
+    "addChannel": "चैनल जोड़ें...",
+    "addRole": "रोल जोड़ें...",
+    "excludeChannel": "चैनल बाहर करें...",
+    "excludeRole": "रोल बाहर करें...",
+    "userId": "उपयोगकर्ता ID...",
+    "addConditions": "इस नियम के ट्रिगर होने को फ़िल्टर करने के लिए शर्तें जोड़ें",
+    "active": "सक्रिय",
+    "description": "सेट होने पर, यह नियम केवल तभी ट्रिगर होता है जब इवेंट सभी शामिल फ़िल्टर से मेल खाता हो और किसी भी बाहर करने वाले फ़िल्टर से नहीं।",
+    "include": "शामिल करें (व्हाइटलिस्ट)",
+    "exclude": "बाहर करें (ब्लैकलिस्ट)",
+    "clearAll": "सभी शर्तें साफ़ करें"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "कनेक्ट नहीं कर सकते: एक चक्र बनाएगा"
+    },
+    "labels": {
+      "rules": "नियम",
+      "field": "फ़ील्ड",
+      "operator": "ऑपरेटर",
+      "value": "मान"
+    },
+    "status": {
+      "ready": "तैयार",
+      "notConfigured": "कॉन्फ़िगर नहीं किया गया"
+    },
+    "shortcuts": {
+      "close": "बंद करें",
+      "save": "सहेजें",
+      "removeNode": "नोड हटाएं",
+      "addAction": "क्रिया जोड़ें",
+      "fitView": "दृश्य फ़िट करें"
+    }
   }
 }

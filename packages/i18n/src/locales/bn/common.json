@@ -71,11 +71,31 @@
     "type": "ধরন",
     "status": "স্থিতি",
     "channel": "চ্যানেল",
+    "channels": "চ্যানেল",
     "role": "রোল",
+    "roles": "রোল",
     "member": "সদস্য",
+    "users": "ব্যবহারকারী",
+    "conditions": "শর্তাবলী",
     "duration": "সময়কাল",
     "reason": "কারণ",
     "language": "ভাষা"
+  },
+  "form": {
+    "selectChannel": "চ্যানেল বেছে নিন...",
+    "selectRole": "রোল বেছে নিন...",
+    "select": "বেছে নিন...",
+    "saving": "সংরক্ষণ হচ্ছে...",
+    "saveSettings": "সেটিংস সংরক্ষণ করুন",
+    "previous": "পূর্ববর্তী",
+    "next": "পরবর্তী"
+  },
+  "pagination": {
+    "previous": "পূর্ববর্তী",
+    "next": "পরবর্তী",
+    "page": "পৃষ্ঠা {{page}} / {{total}}",
+    "showing": "{{total}} ফলাফলের মধ্যে {{from}} থেকে {{to}} দেখানো হচ্ছে",
+    "showingPage": "পৃষ্ঠা {{page}} / {{total}} ({{count}} মোট)"
   },
   "header": {
     "notifications": "বিজ্ঞপ্তি",

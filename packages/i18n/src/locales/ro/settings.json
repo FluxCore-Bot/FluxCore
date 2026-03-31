@@ -1,4 +1,28 @@
 {
   "title": "Setări",
-  "subtitle": "Configurează setările globale ale sistemului de acțiuni pentru serverul tău."
+  "subtitle": "Configurează setările globale ale sistemului de acțiuni pentru serverul tău.",
+  "actionSystem": {
+    "title": "Setări Sistem Acțiuni",
+    "maxRules": "Număr Max. Reguli per Server",
+    "logChannel": "Canal de Jurnal (opțional)",
+    "noLogChannel": "Niciun canal de jurnal",
+    "globalEnable": "Activare Globală (dezactivează pentru a întrerupe toate regulile)",
+    "saving": "Se salvează...",
+    "save": "Salvează Setările",
+    "saved": "Setări salvate",
+    "maxRulesError": "Numărul maxim de reguli trebuie să fie între 1 și 100"
+  },
+  "notifications": {
+    "title": "Preferințe Notificări",
+    "ruleTriggered": "Regulă Declanșată",
+    "errorAlerts": "Alerte de Erori",
+    "successReports": "Rapoarte de Succes"
+  },
+  "dangerZone": {
+    "title": "Zonă Periculoasă",
+    "description": "Acțiuni distructive care nu pot fi anulate.",
+    "deleteAllRules": "Șterge Toate Regulile",
+    "deleteAllConfirm": "Ești sigur că vrei să ștergi TOATE regulile? Această acțiune nu poate fi anulată.",
+    "notImplemented": "Ștergerea tuturor regulilor nu este încă implementată"
+  }
 }

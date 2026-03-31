@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Toimintalokit",
     "events": "Tapahtumalokit"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Suoritusnopeus",
+      "totalFailures": "Virheitä yhteensä",
+      "totalEntries": "Merkintöjä yhteensä"
+    },
+    "filter": {
+      "search": "Hae lokeja...",
+      "last1h": "Viimeiset 1 tunti",
+      "last24h": "Viimeiset 24 tuntia",
+      "last7d": "Viimeiset 7 päivää"
+    },
+    "table": {
+      "timestamp": "Aikaleima",
+      "ruleName": "Säännön nimi",
+      "eventType": "Tapahtumatyyppi",
+      "action": "Toiminto",
+      "status": "Tila",
+      "details": "Tiedot",
+      "success": "Onnistui",
+      "failed": "Epäonnistui"
+    },
+    "pagination": {
+      "showing": "Näytetään {{from}}–{{to}} / {{total}} tulosta",
+      "previous": "Edellinen",
+      "next": "Seuraava"
+    },
+    "empty": {
+      "title": "Lokeja ei löydy",
+      "description": "Sääntöjen suoritusloki näkyy tässä kun automaatiosäännöt alkavat toimia."
+    }
+  },
+  "events": {
+    "title": "Tapahtumaloki-selain",
+    "filter": {
+      "allCategories": "Kaikki kategoriat",
+      "byUserId": "Suodata käyttäjä-ID:n mukaan...",
+      "entries": "{{count}} merkintää"
+    },
+    "categories": {
+      "message": "Viesti",
+      "member": "Jäsen",
+      "voice": "Ääni",
+      "channel": "Kanava",
+      "role": "Rooli",
+      "server": "Palvelin",
+      "moderation": "Moderointi"
+    },
+    "categoryEvents": {
+      "message": "Viestintapahtumat",
+      "member": "Jäsentapahtumat",
+      "voice": "Äänitapahtumat",
+      "channel": "Kanavan tapahtumat",
+      "role": "Roolit tapahtumat",
+      "server": "Palvelintapahtumat",
+      "moderation": "Moderointitapahtumat"
+    },
+    "table": {
+      "timestamp": "Aikaleima",
+      "category": "Kategoria",
+      "event": "Tapahtuma",
+      "target": "Kohde",
+      "executor": "Suorittaja"
+    },
+    "pagination": {
+      "page": "Sivu {{page}} / {{total}} ({{count}} yhteensä)",
+      "previous": "Edellinen",
+      "next": "Seuraava"
+    },
+    "empty": {
+      "title": "Tapahtumia ei löydy",
+      "description": "Tapahtumalokit näkyvät täällä kun kirjaaminen on määritetty ja tapahtumat alkavat tapahtua."
+    },
+    "config": {
+      "selectChannel": "Valitse lokikanava"
+    }
   }
 }

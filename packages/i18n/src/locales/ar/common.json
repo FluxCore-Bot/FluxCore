@@ -71,11 +71,31 @@
     "type": "النوع",
     "status": "الحالة",
     "channel": "القناة",
+    "channels": "القنوات",
     "role": "الدور",
+    "roles": "الأدوار",
     "member": "العضو",
+    "users": "المستخدمون",
+    "conditions": "الشروط",
     "duration": "المدة",
     "reason": "السبب",
     "language": "اللغة"
+  },
+  "form": {
+    "selectChannel": "اختر قناة...",
+    "selectRole": "اختر دورًا...",
+    "select": "اختر...",
+    "saving": "جارٍ الحفظ...",
+    "saveSettings": "حفظ الإعدادات",
+    "previous": "السابق",
+    "next": "التالي"
+  },
+  "pagination": {
+    "previous": "السابق",
+    "next": "التالي",
+    "page": "الصفحة {{page}} من {{total}}",
+    "showing": "عرض {{from}} إلى {{to}} من {{total}} نتيجة",
+    "showingPage": "الصفحة {{page}} من {{total}} ({{count}} إجمالي)"
   },
   "header": {
     "notifications": "الإشعارات",

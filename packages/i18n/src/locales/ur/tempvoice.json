@@ -1,5 +1,30 @@
 {
-  "label": "[NEEDS TRANSLATION] Management Hub",
-  "title": "[NEEDS TRANSLATION] Temporary Voice Channels",
-  "subtitle": "[NEEDS TRANSLATION] Configure hubs that allow users to create their own ephemeral voice channels upon joining."
+  "label": "انتظامی مرکز",
+  "title": "عارضی وائس چینلز",
+  "subtitle": "ایسے ہبز ترتیب دیں جو صارفین کو شامل ہونے پر اپنے عارضی وائس چینل بنانے کی اجازت دیتے ہیں۔",
+  "form": {
+    "sameAsHub": "ہب چینل جیسا",
+    "defaultNameTemplate": "{user} کا چینل",
+    "hubChannel": "ہب چینل",
+    "selectHub": "ایک وائس چینل منتخب کریں...",
+    "category": "زمرہ (اختیاری)",
+    "nameTemplate": "چینل نام ٹیمپلیٹ",
+    "addConfig": "ترتیب شامل کریں",
+    "editConfig": "ترتیب ترمیم کریں",
+    "save": "ترتیب محفوظ کریں",
+    "saving": "محفوظ ہو رہا ہے...",
+    "cancel": "منسوخ کریں",
+    "delete": "حذف کریں",
+    "edit": "ترمیم کریں"
+  },
+  "empty": {
+    "noConfigs": "ابھی تک کوئی ترتیب نہیں",
+    "noConfigsDesc": "عارضی وائس چینل فعال کرنے کے لیے ہب چینل شامل کریں۔",
+    "addFirst": "ترتیب شامل کریں"
+  },
+  "toast": {
+    "updated": "ترتیب اپڈیٹ ہو گئی",
+    "created": "ترتیب بن گئی",
+    "removed": "ترتیب ہٹا دی گئی"
+  }
 }

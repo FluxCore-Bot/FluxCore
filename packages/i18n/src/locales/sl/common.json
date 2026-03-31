@@ -2,7 +2,7 @@
   "brand": {
     "name": "FluxCore",
     "engine": "FluxCore Engine",
-    "dashboard": "FluxCore nadzorna plosca"
+    "dashboard": "FluxCore nadzorna plošča"
   },
   "status": {
     "online": "Na spletu",
@@ -14,12 +14,12 @@
     "automation": "Avtomatizacija",
     "music": "Glasba",
     "tempvoice": "TempVoice",
-    "welcome": "Dobrodoslica",
+    "welcome": "Dobrodošlica",
     "moderation": "Moderiranje",
     "warnings": "Opozorila",
     "rolePanels": "Paneli vlog",
     "leveling": "Napredovanje",
-    "scheduled": "Nacrtovano",
+    "scheduled": "Načrtovano",
     "commands": "Ukazi",
     "security": "Varnost",
     "tickets": "Vstopnice",
@@ -32,8 +32,8 @@
   },
   "actions": {
     "save": "Shrani",
-    "cancel": "Preklici",
-    "delete": "Izbrisi",
+    "cancel": "Prekliči",
+    "delete": "Izbriši",
     "edit": "Uredi",
     "create": "Ustvari",
     "add": "Dodaj",
@@ -44,10 +44,10 @@
     "next": "Naprej",
     "search": "Iskanje",
     "filter": "Filtriraj",
-    "refresh": "Osvezi",
+    "refresh": "Osveži",
     "reset": "Ponastavi",
-    "enable": "Omogoci",
-    "disable": "Onemogoci",
+    "enable": "Omogoči",
+    "disable": "Onemogoči",
     "copy": "Kopiraj",
     "export": "Izvozi",
     "import": "Uvozi",
@@ -56,11 +56,11 @@
     "retry": "Poskusi znova"
   },
   "labels": {
-    "enabled": "Omogoceno",
-    "disabled": "Onemogoceno",
+    "enabled": "Omogočeno",
+    "disabled": "Onemogočeno",
     "active": "Aktivno",
     "inactive": "Neaktivno",
-    "none": "Nic",
+    "none": "Nič",
     "all": "Vse",
     "custom": "Prilagojeno",
     "default": "Privzeto",
@@ -71,30 +71,50 @@
     "type": "Vrsta",
     "status": "Stanje",
     "channel": "Kanal",
+    "channels": "Kanali",
     "role": "Vloga",
-    "member": "Clan",
+    "roles": "Vloge",
+    "member": "Član",
+    "users": "Uporabniki",
+    "conditions": "Pogoji",
     "duration": "Trajanje",
     "reason": "Razlog",
     "language": "Jezik"
+  },
+  "form": {
+    "selectChannel": "Izberite kanal...",
+    "selectRole": "Izberite vlogo...",
+    "select": "Izberite...",
+    "saving": "Shranjevanje...",
+    "saveSettings": "Shrani nastavitve",
+    "previous": "Prejšnje",
+    "next": "Naslednje"
+  },
+  "pagination": {
+    "previous": "Prejšnje",
+    "next": "Naslednje",
+    "page": "Stran {{page}} od {{total}}",
+    "showing": "Prikazano {{from}}–{{to}} od {{total}} rezultatov",
+    "showingPage": "Stran {{page}} od {{total}} (skupaj {{count}})"
   },
   "header": {
     "notifications": "Obvestila",
     "settings": "Nastavitve",
     "logout": "Odjava",
     "toggleSidebar": "Preklopi stransko vrstico",
-    "refreshData": "Osvezi Discord podatke"
+    "refreshData": "Osveži Discord podatke"
   },
   "sidebar": {
     "closeSidebar": "Zapri stransko vrstico",
-    "addToServer": "Dodaj na streznik",
+    "addToServer": "Dodaj na strežnik",
     "docs": "Dokumentacija",
     "support": "Podpora",
-    "backToServers": "Nazaj na streznike"
+    "backToServers": "Nazaj na strežnike"
   },
   "empty": {
-    "noData": "Ni razpolozljivih podatkov",
+    "noData": "Ni razpoložljivih podatkov",
     "noResults": "Ni rezultatov",
-    "noItems": "Se ni elementov"
+    "noItems": "Še ni elementov"
   },
   "time": {
     "seconds": "sekund",
@@ -102,19 +122,19 @@
     "hours": "ur",
     "days": "dni",
     "ago": "pred {{time}}",
-    "in": "cez {{time}}"
+    "in": "čez {{time}}"
   },
   "confirm": {
-    "title": "Ali ste prepricani?",
+    "title": "Ali ste prepričani?",
     "deleteTitle": "Potrdite izbris",
-    "deleteMessage": "Tega dejanja ni mogoce razveljaviti.",
-    "unsavedChanges": "Imate neshranjene spremembe. Ali ste prepricani, da zelite oditi?"
+    "deleteMessage": "Tega dejanja ni mogoče razveljaviti.",
+    "unsavedChanges": "Imate neshranjene spremembe. Ali ste prepričani, da želite oditi?"
   },
   "accessibility": {
-    "skipToContent": "Preskoci na glavno vsebino",
+    "skipToContent": "Preskoči na glavno vsebino",
     "loading": "Nalaganje vsebine",
-    "loaded": "Vsebina nalozena",
-    "error": "Prislo je do napake",
+    "loaded": "Vsebina naložena",
+    "error": "Prišlo je do napake",
     "menuOpen": "Meni je odprt",
     "menuClosed": "Meni je zaprt"
   }

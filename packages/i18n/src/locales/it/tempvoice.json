@@ -1,5 +1,30 @@
 {
   "label": "Hub di gestione",
   "title": "Canali vocali temporanei",
-  "subtitle": "Configura hub che permettono agli utenti di creare i propri canali vocali effimeri unendosi."
+  "subtitle": "Configura hub che permettono agli utenti di creare i propri canali vocali effimeri unendosi.",
+  "form": {
+    "sameAsHub": "Uguale al canale hub",
+    "defaultNameTemplate": "Canale di {user}",
+    "hubChannel": "Canale hub",
+    "selectHub": "Seleziona un canale vocale...",
+    "category": "Categoria (opzionale)",
+    "nameTemplate": "Modello nome canale",
+    "addConfig": "Aggiungi configurazione",
+    "editConfig": "Modifica configurazione",
+    "save": "Salva configurazione",
+    "saving": "Salvataggio...",
+    "cancel": "Annulla",
+    "delete": "Elimina",
+    "edit": "Modifica"
+  },
+  "empty": {
+    "noConfigs": "Nessuna configurazione ancora",
+    "noConfigsDesc": "Aggiungi un canale hub per abilitare i canali vocali temporanei.",
+    "addFirst": "Aggiungi configurazione"
+  },
+  "toast": {
+    "updated": "Configurazione aggiornata",
+    "created": "Configurazione creata",
+    "removed": "Configurazione rimossa"
+  }
 }

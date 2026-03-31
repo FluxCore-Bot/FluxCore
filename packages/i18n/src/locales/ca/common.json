@@ -5,8 +5,8 @@
     "dashboard": "Panell de control de FluxCore"
   },
   "status": {
-    "online": "En linia",
-    "offline": "Fora de linia",
+    "online": "En línia",
+    "offline": "Fora de línia",
     "latency": "{{ms}}ms"
   },
   "nav": {
@@ -16,7 +16,7 @@
     "tempvoice": "TempVoice",
     "welcome": "Benvinguda",
     "moderation": "Moderació",
-    "warnings": "Advertencies",
+    "warnings": "Advertències",
     "rolePanels": "Panells de rols",
     "leveling": "Nivells",
     "scheduled": "Programats",
@@ -32,7 +32,7 @@
   },
   "actions": {
     "save": "Desar",
-    "cancel": "Cancel\u00b7lar",
+    "cancel": "Cancel·lar",
     "delete": "Eliminar",
     "edit": "Editar",
     "create": "Crear",
@@ -41,7 +41,7 @@
     "confirm": "Confirmar",
     "close": "Tancar",
     "back": "Enrere",
-    "next": "Seguent",
+    "next": "Següent",
     "search": "Cercar",
     "filter": "Filtrar",
     "refresh": "Actualitzar",
@@ -71,11 +71,31 @@
     "type": "Tipus",
     "status": "Estat",
     "channel": "Canal",
+    "channels": "Canals",
     "role": "Rol",
+    "roles": "Rols",
     "member": "Membre",
+    "users": "Usuaris",
+    "conditions": "Condicions",
     "duration": "Durada",
     "reason": "Motiu",
     "language": "Idioma"
+  },
+  "form": {
+    "selectChannel": "Selecciona un canal...",
+    "selectRole": "Selecciona un rol...",
+    "select": "Selecciona...",
+    "saving": "Desant...",
+    "saveSettings": "Desar configuració",
+    "previous": "Anterior",
+    "next": "Següent"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Següent",
+    "page": "Pàgina {{page}} de {{total}}",
+    "showing": "Mostrant {{from}}–{{to}} de {{total}} resultats",
+    "showingPage": "Pàgina {{page}} de {{total}} ({{count}} total)"
   },
   "header": {
     "notifications": "Notificacions",
@@ -102,10 +122,10 @@
     "hours": "hores",
     "days": "dies",
     "ago": "fa {{time}}",
-    "in": "d'aqui a {{time}}"
+    "in": "d'aquí a {{time}}"
   },
   "confirm": {
-    "title": "N'estas segur?",
+    "title": "N'estàs segur?",
     "deleteTitle": "Confirmar eliminació",
     "deleteMessage": "Aquesta acció no es pot desfer.",
     "unsavedChanges": "Tens canvis sense desar. Segur que vols sortir?"
@@ -114,8 +134,8 @@
     "skipToContent": "Salta al contingut principal",
     "loading": "Carregant contingut",
     "loaded": "Contingut carregat",
-    "error": "S'ha produit un error",
-    "menuOpen": "El menu esta obert",
-    "menuClosed": "El menu esta tancat"
+    "error": "S'ha produït un error",
+    "menuOpen": "El menú està obert",
+    "menuClosed": "El menú està tancat"
   }
 }

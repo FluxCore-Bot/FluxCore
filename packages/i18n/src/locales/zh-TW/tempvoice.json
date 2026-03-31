@@ -1,5 +1,30 @@
 {
   "label": "管理中心",
   "title": "臨時語音頻道",
-  "subtitle": "設定允許使用者在加入時建立自己的臨時語音頻道的中心。"
+  "subtitle": "設定允許使用者在加入時建立自己的臨時語音頻道的中心。",
+  "form": {
+    "sameAsHub": "與中心頻道相同",
+    "defaultNameTemplate": "{user}的頻道",
+    "hubChannel": "中心頻道",
+    "selectHub": "選擇語音頻道...",
+    "category": "分類（選填）",
+    "nameTemplate": "頻道名稱範本",
+    "addConfig": "新增設定",
+    "editConfig": "編輯設定",
+    "save": "儲存設定",
+    "saving": "儲存中...",
+    "cancel": "取消",
+    "delete": "刪除",
+    "edit": "編輯"
+  },
+  "empty": {
+    "noConfigs": "尚無設定",
+    "noConfigsDesc": "新增中心頻道以啟用臨時語音頻道。",
+    "addFirst": "新增設定"
+  },
+  "toast": {
+    "updated": "設定已更新",
+    "created": "設定已建立",
+    "removed": "設定已移除"
+  }
 }

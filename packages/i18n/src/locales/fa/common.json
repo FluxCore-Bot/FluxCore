@@ -71,11 +71,31 @@
     "type": "نوع",
     "status": "وضعیت",
     "channel": "کانال",
+    "channels": "کانال‌ها",
     "role": "نقش",
+    "roles": "نقش‌ها",
     "member": "عضو",
+    "users": "کاربران",
+    "conditions": "شرایط",
     "duration": "مدت",
     "reason": "دلیل",
     "language": "زبان"
+  },
+  "form": {
+    "selectChannel": "یک کانال انتخاب کنید...",
+    "selectRole": "یک نقش انتخاب کنید...",
+    "select": "انتخاب کنید...",
+    "saving": "در حال ذخیره...",
+    "saveSettings": "ذخیره تنظیمات",
+    "previous": "قبلی",
+    "next": "بعدی"
+  },
+  "pagination": {
+    "previous": "قبلی",
+    "next": "بعدی",
+    "page": "صفحه {{page}} از {{total}}",
+    "showing": "نمایش {{from}} تا {{to}} از {{total}} نتیجه",
+    "showingPage": "صفحه {{page}} از {{total}} ({{count}} کل)"
   },
   "header": {
     "notifications": "اعلان‌ها",

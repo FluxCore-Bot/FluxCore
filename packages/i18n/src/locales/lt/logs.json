@@ -1,8 +1,85 @@
 {
-  "title": "Zurnalas",
-  "subtitle": "Stebkite taisykliu vykdyma ir ivykiu registravima.",
+  "title": "Žurnalas",
+  "subtitle": "Stebėkite taisyklių vykdymą ir įvykių registravimą.",
   "tabs": {
-    "activity": "Veiklos zurnalas",
-    "events": "Ivykiu zurnalas"
+    "activity": "Veiklos žurnalas",
+    "events": "Įvykių žurnalas"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Vykdymo rodiklis",
+      "totalFailures": "Viso nesėkmių",
+      "totalEntries": "Viso įrašų"
+    },
+    "filter": {
+      "search": "Ieškoti žurnalo...",
+      "last1h": "Paskutinė 1 valanda",
+      "last24h": "Paskutinės 24 valandos",
+      "last7d": "Paskutinės 7 dienos"
+    },
+    "table": {
+      "timestamp": "Laiko žyma",
+      "ruleName": "Taisyklės pavadinimas",
+      "eventType": "Įvykio tipas",
+      "action": "Veiksmas",
+      "status": "Būsena",
+      "details": "Detalės",
+      "success": "Sėkminga",
+      "failed": "Nesėkminga"
+    },
+    "pagination": {
+      "showing": "Rodoma {{from}}–{{to}} iš {{total}} rezultatų",
+      "previous": "Ankstesnis",
+      "next": "Kitas"
+    },
+    "empty": {
+      "title": "Žurnalo įrašų nerasta",
+      "description": "Taisyklių vykdymo žurnalai pasirodys čia, kai automatizavimo taisyklės pradės veikti."
+    }
+  },
+  "events": {
+    "title": "Įvykių žurnalo naršyklė",
+    "filter": {
+      "allCategories": "Visos kategorijos",
+      "byUserId": "Filtruoti pagal vartotojo ID...",
+      "entries": "{{count}} įrašai"
+    },
+    "categories": {
+      "message": "Žinutė",
+      "member": "Narys",
+      "voice": "Balsas",
+      "channel": "Kanalas",
+      "role": "Rolė",
+      "server": "Serveris",
+      "moderation": "Moderavimas"
+    },
+    "categoryEvents": {
+      "message": "Žinučių įvykiai",
+      "member": "Narių įvykiai",
+      "voice": "Balso įvykiai",
+      "channel": "Kanalų įvykiai",
+      "role": "Rolių įvykiai",
+      "server": "Serverio įvykiai",
+      "moderation": "Moderavimo įvykiai"
+    },
+    "table": {
+      "timestamp": "Laiko žyma",
+      "category": "Kategorija",
+      "event": "Įvykis",
+      "target": "Tikslas",
+      "executor": "Vykdytojas"
+    },
+    "pagination": {
+      "page": "{{page}} puslapis iš {{total}} (iš viso {{count}})",
+      "previous": "Ankstesnis",
+      "next": "Kitas"
+    },
+    "empty": {
+      "title": "Įvykių žurnalo įrašų nerasta",
+      "description": "Įvykių žurnalai pasirodys čia, kai bus sukonfigūruotas registravimas ir pradės vykti įvykiai."
+    },
+    "config": {
+      "selectChannel": "Pasirinkti žurnalo kanalą"
+    }
   }
 }

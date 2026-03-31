@@ -71,11 +71,31 @@
     "type": "Mota",
     "status": "Egoera",
     "channel": "Kanala",
+    "channels": "Kanalak",
     "role": "Rola",
+    "roles": "Rolak",
     "member": "Kidea",
+    "users": "Erabiltzaileak",
+    "conditions": "Baldintzak",
     "duration": "Iraupena",
     "reason": "Arrazoia",
     "language": "Hizkuntza"
+  },
+  "form": {
+    "selectChannel": "Hautatu kanal bat...",
+    "selectRole": "Hautatu rol bat...",
+    "select": "Hautatu...",
+    "saving": "Gordetzen...",
+    "saveSettings": "Ezarpenak gorde",
+    "previous": "Aurrekoa",
+    "next": "Hurrengoa"
+  },
+  "pagination": {
+    "previous": "Aurrekoa",
+    "next": "Hurrengoa",
+    "page": "{{page}}. orrialdea {{total}}tik",
+    "showing": "{{from}}–{{to}} erakusten {{total}} emaitzatatik",
+    "showingPage": "{{page}}. orrialdea {{total}}tik ({{count}} guztira)"
   },
   "header": {
     "notifications": "Jakinarazpenak",

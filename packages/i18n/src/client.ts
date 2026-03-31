@@ -17,7 +17,13 @@ export async function initClientI18n(): Promise<typeof i18next> {
       supportedLngs: supportedLanguageCodes,
       fallbackLng: defaultLanguage,
       defaultNS: "common",
-      ns: ["common", "errors"],
+      ns: [
+        "common", "errors", "landing",
+        "overview", "rules", "tempvoice", "music", "settings", "logs",
+        "moderation", "warnings", "welcome", "roles", "leveling",
+        "scheduled", "security", "tickets", "giveaways", "suggestions",
+        "starboard", "commands", "permissions",
+      ],
 
       detection: {
         order: ["localStorage", "navigator"],

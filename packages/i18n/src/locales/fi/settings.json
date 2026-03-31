@@ -1,4 +1,28 @@
 {
   "title": "Asetukset",
-  "subtitle": "Määritä palvelimesi yleiset toimintojärjestelmäasetukset."
+  "subtitle": "Määritä palvelimesi yleiset toimintojärjestelmäasetukset.",
+  "actionSystem": {
+    "title": "Toimintojärjestelmän asetukset",
+    "maxRules": "Sääntöjen enimmäismäärä palvelinta kohti",
+    "logChannel": "Lokikanava (valinnainen)",
+    "noLogChannel": "Ei lokikanavaa",
+    "globalEnable": "Globaali käyttöönotto (poista käytöstä keskeyttääksesi kaikki säännöt)",
+    "saving": "Tallennetaan...",
+    "save": "Tallenna asetukset",
+    "saved": "Asetukset tallennettu",
+    "maxRulesError": "Sääntöjen enimmäismäärän on oltava välillä 1–100"
+  },
+  "notifications": {
+    "title": "Ilmoitusasetukset",
+    "ruleTriggered": "Sääntö laukaistu",
+    "errorAlerts": "Virhevaroitukset",
+    "successReports": "Onnistumisraportit"
+  },
+  "dangerZone": {
+    "title": "Vaarallinen alue",
+    "description": "Tuhoavat toiminnot, joita ei voi kumota.",
+    "deleteAllRules": "Poista kaikki säännöt",
+    "deleteAllConfirm": "Haluatko varmasti poistaa KAIKKI säännöt? Tätä ei voi kumota.",
+    "notImplemented": "Kaikkien sääntöjen poistamista ei ole vielä toteutettu"
+  }
 }

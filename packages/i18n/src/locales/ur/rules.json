@@ -1,87 +1,148 @@
 {
   "breadcrumb": {
-    "guild": "[NEEDS TRANSLATION] Guild",
-    "automation": "[NEEDS TRANSLATION] Automation"
+    "guild": "سرور",
+    "automation": "آٹومیشن"
   },
-  "title": "[NEEDS TRANSLATION] Automation Rules",
-  "subtitle": "[NEEDS TRANSLATION] Configure event-driven triggers and automated responses for your guild.",
-  "createRule": "[NEEDS TRANSLATION] Create Rule",
+  "title": "آٹومیشن قواعد",
+  "subtitle": "اپنے سرور کے لیے واقعات پر مبنی ٹرگرز اور خودکار جوابات ترتیب دیں۔",
+  "createRule": "قاعدہ بنائیں",
   "stats": {
-    "totalRules": "[NEEDS TRANSLATION] Total Rules",
-    "active": "[NEEDS TRANSLATION] Active",
-    "executions7d": "[NEEDS TRANSLATION] Executions (7d)",
-    "successRate": "[NEEDS TRANSLATION] Success Rate"
+    "totalRules": "کل قواعد",
+    "active": "فعال",
+    "executions7d": "عمل درآمد (7 دن)",
+    "successRate": "کامیابی کی شرح"
   },
   "filter": {
-    "searchPlaceholder": "[NEEDS TRANSLATION] Search rules...",
-    "eventType": "[NEEDS TRANSLATION] Event type",
-    "allEvents": "[NEEDS TRANSLATION] All Events",
-    "allStatus": "[NEEDS TRANSLATION] All Status",
-    "enabled": "[NEEDS TRANSLATION] Enabled",
-    "disabled": "[NEEDS TRANSLATION] Disabled",
-    "sortBy": "[NEEDS TRANSLATION] Sort by",
-    "priority": "[NEEDS TRANSLATION] Priority",
-    "name": "[NEEDS TRANSLATION] Name",
-    "lastFired": "[NEEDS TRANSLATION] Last Fired",
-    "status": "[NEEDS TRANSLATION] Status",
-    "clear": "[NEEDS TRANSLATION] Clear",
-    "showing": "[NEEDS TRANSLATION] Showing {{filtered}} of {{total}} rules"
+    "searchPlaceholder": "قواعد تلاش کریں...",
+    "eventType": "واقعے کی قسم",
+    "allEvents": "تمام واقعات",
+    "allStatus": "تمام حالات",
+    "enabled": "فعال",
+    "disabled": "غیر فعال",
+    "sortBy": "ترتیب بنیاد پر",
+    "priority": "ترجیح",
+    "name": "نام",
+    "lastFired": "آخری بار چلا",
+    "status": "حالت",
+    "clear": "صاف کریں",
+    "showing": "{{filtered}} / {{total}} قواعد دکھا رہا ہے"
   },
   "bulk": {
-    "selected": "[NEEDS TRANSLATION] {{count}} rule selected",
-    "selected_other": "[NEEDS TRANSLATION] {{count}} rules selected",
-    "enable": "[NEEDS TRANSLATION] Enable",
-    "disable": "[NEEDS TRANSLATION] Disable",
-    "delete": "[NEEDS TRANSLATION] Delete",
-    "clear": "[NEEDS TRANSLATION] Clear"
+    "selected": "{{count}} قاعدہ منتخب",
+    "selected_other": "{{count}} قواعد منتخب",
+    "enable": "فعال کریں",
+    "disable": "غیر فعال کریں",
+    "delete": "حذف کریں",
+    "clear": "صاف کریں"
   },
   "empty": {
-    "title": "[NEEDS TRANSLATION] Get Started with Automation",
-    "description": "[NEEDS TRANSLATION] Choose a template to get started quickly, or create a rule from scratch.",
-    "createFromScratch": "[NEEDS TRANSLATION] Create from Scratch"
+    "title": "آٹومیشن شروع کریں",
+    "description": "جلدی شروع کرنے کے لیے ٹیمپلیٹ چنیں، یا صفر سے قاعدہ بنائیں۔",
+    "createFromScratch": "صفر سے بنائیں"
   },
   "noResults": {
-    "title": "[NEEDS TRANSLATION] No matching rules",
-    "description": "[NEEDS TRANSLATION] Try adjusting your search or filters to find what you're looking for."
+    "title": "کوئی مماثل قاعدہ نہیں",
+    "description": "جو آپ ڈھونڈ رہے ہیں اسے تلاش کرنے کے لیے اپنی تلاش یا فلٹر تبدیل کریں۔"
   },
   "templates": {
-    "welcomeMessage": "[NEEDS TRANSLATION] Welcome Message",
-    "welcomeMessageDesc": "[NEEDS TRANSLATION] Greet new members with a custom message in a channel",
-    "autoRole": "[NEEDS TRANSLATION] Auto Role",
-    "autoRoleDesc": "[NEEDS TRANSLATION] Automatically assign a role when a member joins",
-    "logDeleted": "[NEEDS TRANSLATION] Log Deleted Messages",
-    "logDeletedDesc": "[NEEDS TRANSLATION] Send deleted message info to a log channel",
-    "boostThankYou": "[NEEDS TRANSLATION] Boost Thank You",
-    "boostThankYouDesc": "[NEEDS TRANSLATION] Send a DM thanking users who boost the server",
-    "banLogger": "[NEEDS TRANSLATION] Ban Logger",
-    "banLoggerDesc": "[NEEDS TRANSLATION] Log ban events to a moderation channel",
-    "autoThread": "[NEEDS TRANSLATION] Auto Thread",
-    "autoThreadDesc": "[NEEDS TRANSLATION] Automatically create a thread when a message is sent"
+    "welcomeMessage": "خیر مقدم پیغام",
+    "welcomeMessageDesc": "چینل میں نئے ممبران کو کسٹم پیغام کے ساتھ خوش آمدید کہیں",
+    "autoRole": "خودکار کردار",
+    "autoRoleDesc": "ممبر کے شامل ہونے پر خودکار طور پر کردار تفویض کریں",
+    "logDeleted": "حذف شدہ پیغامات لاگ کریں",
+    "logDeletedDesc": "حذف شدہ پیغامات کی معلومات لاگ چینل میں بھیجیں",
+    "boostThankYou": "بوسٹ کا شکریہ",
+    "boostThankYouDesc": "سرور بوسٹ کرنے والے صارفین کو DM میں شکریہ بھیجیں",
+    "banLogger": "پابندی لاگر",
+    "banLoggerDesc": "نگرانی چینل میں پابندی کے واقعات لاگ کریں",
+    "autoThread": "خودکار تھریڈ",
+    "autoThreadDesc": "پیغام بھیجے جانے پر خودکار طور پر تھریڈ بنائیں"
   },
   "deleteDialog": {
-    "title": "[NEEDS TRANSLATION] Delete Rule",
-    "description": "[NEEDS TRANSLATION] Are you sure you want to delete \"{{name}}\"? This action cannot be undone.",
-    "confirm": "[NEEDS TRANSLATION] Delete"
+    "title": "قاعدہ حذف کریں",
+    "description": "کیا آپ واقعی \"{{name}}\" حذف کرنا چاہتے ہیں؟ یہ عمل واپس نہیں کیا جا سکتا۔",
+    "confirm": "حذف کریں"
   },
   "bulkDeleteDialog": {
-    "title": "[NEEDS TRANSLATION] Delete Selected Rules",
-    "description": "[NEEDS TRANSLATION] Are you sure you want to delete {{count}} rule? This action cannot be undone.",
-    "description_other": "[NEEDS TRANSLATION] Are you sure you want to delete {{count}} rules? This action cannot be undone.",
-    "confirm": "[NEEDS TRANSLATION] Delete All"
+    "title": "منتخب قواعد حذف کریں",
+    "description": "کیا آپ واقعی {{count}} قاعدہ حذف کرنا چاہتے ہیں؟ یہ عمل واپس نہیں کیا جا سکتا۔",
+    "description_other": "کیا آپ واقعی {{count}} قواعد حذف کرنا چاہتے ہیں؟ یہ عمل واپس نہیں کیا جا سکتا۔",
+    "confirm": "سب حذف کریں"
   },
   "toast": {
-    "deleted": "[NEEDS TRANSLATION] Rule deleted",
-    "deleteFailed": "[NEEDS TRANSLATION] Failed to delete rule",
-    "enabled": "[NEEDS TRANSLATION] Rule enabled",
-    "disabled": "[NEEDS TRANSLATION] Rule disabled",
-    "toggleFailed": "[NEEDS TRANSLATION] Failed to toggle rule",
-    "duplicated": "[NEEDS TRANSLATION] Rule duplicated",
-    "duplicateFailed": "[NEEDS TRANSLATION] Failed to duplicate rule",
-    "bulkEnabled": "[NEEDS TRANSLATION] {{count}} rules enabled",
-    "bulkDisabled": "[NEEDS TRANSLATION] {{count}} rules disabled",
-    "bulkEnableFailed": "[NEEDS TRANSLATION] Failed to enable rules",
-    "bulkDisableFailed": "[NEEDS TRANSLATION] Failed to disable rules",
-    "bulkDeleted": "[NEEDS TRANSLATION] {{count}} rules deleted",
-    "bulkDeleteFailed": "[NEEDS TRANSLATION] Failed to delete rules"
+    "deleted": "قاعدہ حذف ہو گیا",
+    "deleteFailed": "قاعدہ حذف کرنے میں ناکامی",
+    "enabled": "قاعدہ فعال ہو گیا",
+    "disabled": "قاعدہ غیر فعال ہو گیا",
+    "toggleFailed": "قاعدہ ٹوگل کرنے میں ناکامی",
+    "duplicated": "قاعدہ نقل ہو گیا",
+    "duplicateFailed": "قاعدہ نقل کرنے میں ناکامی",
+    "bulkEnabled": "{{count}} قواعد فعال ہو گئے",
+    "bulkDisabled": "{{count}} قواعد غیر فعال ہو گئے",
+    "bulkEnableFailed": "قواعد فعال کرنے میں ناکامی",
+    "bulkDisableFailed": "قواعد غیر فعال کرنے میں ناکامی",
+    "bulkDeleted": "{{count}} قواعد حذف ہو گئے",
+    "bulkDeleteFailed": "قواعد حذف کرنے میں ناکامی",
+    "updated": "قاعدہ اپڈیٹ ہو گیا",
+    "created": "قاعدہ بن گیا"
+  },
+  "form": {
+    "ruleName": "قاعدے کا نام",
+    "ruleNamePlaceholder": "میرا قاعدہ...",
+    "eventType": "واقعے کی قسم",
+    "selectEvent": "واقعہ چنیں...",
+    "priority": "ترجیح",
+    "actions": "اعمال",
+    "addAction": "+ عمل شامل کریں",
+    "enabled": "فعال",
+    "editRule": "قاعدہ ترمیم کریں",
+    "createRule": "قاعدہ بنائیں",
+    "workflowView": "ورک فلو نظارہ",
+    "draftRestored": "مسودہ پچھلے سیشن سے بحال ہو گیا۔",
+    "dismiss": "رد کریں",
+    "atLeastOneAction": "کم از کم ایک عمل قسم کے ساتھ ترتیب دینا ضروری ہے۔",
+    "saving": "محفوظ ہو رہا ہے...",
+    "update": "قاعدہ اپڈیٹ کریں",
+    "create": "قاعدہ بنائیں",
+    "cancel": "منسوخ کریں"
+  },
+  "conditions": {
+    "title": "شرائط",
+    "channels": "چینلز",
+    "roles": "کردار",
+    "users": "صارفین",
+    "addChannel": "چینل شامل کریں...",
+    "addRole": "کردار شامل کریں...",
+    "excludeChannel": "چینل خارج کریں...",
+    "excludeRole": "کردار خارج کریں...",
+    "userId": "صارف کی ID...",
+    "addConditions": "اس قاعدے کے چلنے کو فلٹر کرنے کے لیے شرائط شامل کریں",
+    "active": "فعال",
+    "description": "جب سیٹ ہو، یہ قاعدہ صرف اس وقت چلتا ہے جب واقعہ تمام شامل فلٹرز سے مماثل ہو اور کوئی بھی خارج فلٹر سے نہ ملے۔",
+    "include": "شامل کریں (سفید فہرست)",
+    "exclude": "خارج کریں (کالی فہرست)",
+    "clearAll": "تمام شرائط صاف کریں"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "جوڑ نہیں سکتے: ایک چکر بنے گا"
+    },
+    "labels": {
+      "rules": "قواعد",
+      "field": "فیلڈ",
+      "operator": "آپریٹر",
+      "value": "قدر"
+    },
+    "status": {
+      "ready": "تیار",
+      "notConfigured": "ترتیب نہیں دیا"
+    },
+    "shortcuts": {
+      "close": "بند کریں",
+      "save": "محفوظ کریں",
+      "removeNode": "نوڈ ہٹائیں",
+      "addAction": "عمل شامل کریں",
+      "fitView": "نظارہ فٹ کریں"
+    }
   }
 }

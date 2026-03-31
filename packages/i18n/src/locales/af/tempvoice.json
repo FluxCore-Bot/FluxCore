@@ -1,5 +1,30 @@
 {
   "label": "Bestuursentrum",
   "title": "Tydelike Stemkanale",
-  "subtitle": "Stel sentrums op wat gebruikers toelaat om hul eie kortstondige stemkanale te skep wanneer hulle aansluit."
+  "subtitle": "Stel sentrums op wat gebruikers toelaat om hul eie kortstondige stemkanale te skep wanneer hulle aansluit.",
+  "form": {
+    "sameAsHub": "Dieselfde as sentrum-kanaal",
+    "defaultNameTemplate": "{user} se Kanaal",
+    "hubChannel": "Sentrum-kanaal",
+    "selectHub": "Kies 'n stemkanaal...",
+    "category": "Kategorie (opsioneel)",
+    "nameTemplate": "Kanaalnaam-sjabloon",
+    "addConfig": "Voeg Konfigurasie By",
+    "editConfig": "Wysig Konfigurasie",
+    "save": "Stoor Konfigurasie",
+    "saving": "Stoor...",
+    "cancel": "Kanselleer",
+    "delete": "Verwyder",
+    "edit": "Wysig"
+  },
+  "empty": {
+    "noConfigs": "Nog geen konfigurasies nie",
+    "noConfigsDesc": "Voeg 'n sentrum-kanaal by om tydelike stemkanale te aktiveer.",
+    "addFirst": "Voeg Konfigurasie By"
+  },
+  "toast": {
+    "updated": "Konfigurasie opgedateer",
+    "created": "Konfigurasie geskep",
+    "removed": "Konfigurasie verwyder"
+  }
 }

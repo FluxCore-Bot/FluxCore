@@ -1,4 +1,28 @@
 {
-  "title": "Configuracion",
-  "subtitle": "Configura los ajustes globales del sistema de acciones para tu servidor."
+  "title": "Configuración",
+  "subtitle": "Configure los ajustes globales del sistema de acciones para su servidor.",
+  "actionSystem": {
+    "title": "Ajustes del sistema de acciones",
+    "maxRules": "Máximo de reglas por servidor",
+    "logChannel": "Canal de registros (opcional)",
+    "noLogChannel": "Sin canal de registros",
+    "globalEnable": "Habilitar globalmente (deshabilitar para pausar todas las reglas)",
+    "saving": "Guardando...",
+    "save": "Guardar ajustes",
+    "saved": "Ajustes guardados",
+    "maxRulesError": "El máximo de reglas debe estar entre 1 y 100"
+  },
+  "notifications": {
+    "title": "Preferencias de notificaciones",
+    "ruleTriggered": "Regla activada",
+    "errorAlerts": "Alertas de error",
+    "successReports": "Informes de éxito"
+  },
+  "dangerZone": {
+    "title": "Zona de peligro",
+    "description": "Acciones destructivas que no se pueden deshacer.",
+    "deleteAllRules": "Eliminar todas las reglas",
+    "deleteAllConfirm": "¿Está seguro de que desea eliminar TODAS las reglas? Esta acción no se puede deshacer.",
+    "notImplemented": "Eliminar todas las reglas aún no está implementado"
+  }
 }

@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Aktivitetsloggar",
     "events": "Händelseloggar"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Körningsfrekvens",
+      "totalFailures": "Totalt antal misslyckanden",
+      "totalEntries": "Totalt antal poster"
+    },
+    "filter": {
+      "search": "Sök loggar...",
+      "last1h": "Senaste 1 timme",
+      "last24h": "Senaste 24 timmar",
+      "last7d": "Senaste 7 dagarna"
+    },
+    "table": {
+      "timestamp": "Tidsstämpel",
+      "ruleName": "Regelnamn",
+      "eventType": "Händelsetyp",
+      "action": "Åtgärd",
+      "status": "Status",
+      "details": "Detaljer",
+      "success": "Lyckades",
+      "failed": "Misslyckades"
+    },
+    "pagination": {
+      "showing": "Visar {{from}}–{{to}} av {{total}} resultat",
+      "previous": "Föregående",
+      "next": "Nästa"
+    },
+    "empty": {
+      "title": "Inga loggar hittades",
+      "description": "Regelkörningsloggar visas här när automatiseringsreglerna börjar köras."
+    }
+  },
+  "events": {
+    "title": "Händelseloggwebbläsare",
+    "filter": {
+      "allCategories": "Alla kategorier",
+      "byUserId": "Filtrera efter användar-ID...",
+      "entries": "{{count}} poster"
+    },
+    "categories": {
+      "message": "Meddelande",
+      "member": "Medlem",
+      "voice": "Röst",
+      "channel": "Kanal",
+      "role": "Roll",
+      "server": "Server",
+      "moderation": "Moderering"
+    },
+    "categoryEvents": {
+      "message": "Meddelandehändelser",
+      "member": "Medlemshändelser",
+      "voice": "Rösthändelser",
+      "channel": "Kanalhändelser",
+      "role": "Rollhändelser",
+      "server": "Serverhändelser",
+      "moderation": "Modereringshändelser"
+    },
+    "table": {
+      "timestamp": "Tidsstämpel",
+      "category": "Kategori",
+      "event": "Händelse",
+      "target": "Mål",
+      "executor": "Utförare"
+    },
+    "pagination": {
+      "page": "Sida {{page}} av {{total}} ({{count}} totalt)",
+      "previous": "Föregående",
+      "next": "Nästa"
+    },
+    "empty": {
+      "title": "Inga händelseloggar hittades",
+      "description": "Händelseloggar visas här när loggning är konfigurerad och händelser börjar inträffa."
+    },
+    "config": {
+      "selectChannel": "Välj loggkanal"
+    }
   }
 }

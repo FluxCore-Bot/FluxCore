@@ -1,0 +1,30 @@
+{
+  "label": "Centrum správy",
+  "title": "Dočasné hlasové kanály",
+  "subtitle": "Nakonfigurujte rozbočovače, které umožňují uživatelům vytvářet vlastní dočasné hlasové kanály po připojení.",
+  "form": {
+    "sameAsHub": "Stejný jako rozbočovač",
+    "defaultNameTemplate": "Kanál {user}",
+    "hubChannel": "Kanál rozbočovače",
+    "selectHub": "Vybrat hlasový kanál...",
+    "category": "Kategorie (volitelné)",
+    "nameTemplate": "Šablona názvu kanálu",
+    "addConfig": "Přidat konfiguraci",
+    "editConfig": "Upravit konfiguraci",
+    "save": "Uložit konfiguraci",
+    "saving": "Ukládání...",
+    "cancel": "Zrušit",
+    "delete": "Smazat",
+    "edit": "Upravit"
+  },
+  "empty": {
+    "noConfigs": "Zatím žádné konfigurace",
+    "noConfigsDesc": "Přidejte kanál rozbočovače pro povolení dočasných hlasových kanálů.",
+    "addFirst": "Přidat konfiguraci"
+  },
+  "toast": {
+    "updated": "Konfigurace aktualizována",
+    "created": "Konfigurace vytvořena",
+    "removed": "Konfigurace odebrána"
+  }
+}

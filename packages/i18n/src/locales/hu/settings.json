@@ -1,0 +1,28 @@
+{
+  "title": "Beállítások",
+  "subtitle": "Konfiguráljon globális műveleti rendszer beállításokat a szervere számára.",
+  "actionSystem": {
+    "title": "Műveleti rendszer beállításai",
+    "maxRules": "Max. szabályok szerverenként",
+    "logChannel": "Naplócsatorna (opcionális)",
+    "noLogChannel": "Nincs naplócsatorna",
+    "globalEnable": "Globális engedélyezés (letiltás az összes szabály szüneteltetéséhez)",
+    "saving": "Mentés...",
+    "save": "Beállítások mentése",
+    "saved": "Beállítások mentve",
+    "maxRulesError": "A szabályok maximális száma 1 és 100 között kell legyen"
+  },
+  "notifications": {
+    "title": "Értesítési beállítások",
+    "ruleTriggered": "Szabály aktiválva",
+    "errorAlerts": "Hibafigyelmeztetések",
+    "successReports": "Sikerjelentések"
+  },
+  "dangerZone": {
+    "title": "Veszélyes zóna",
+    "description": "Visszavonhatatlan romboló műveletek.",
+    "deleteAllRules": "Összes szabály törlése",
+    "deleteAllConfirm": "Biztosan törölni szeretné AZ ÖSSZES szabályt? Ez a művelet nem vonható vissza.",
+    "notImplemented": "Az összes szabály törlése még nincs megvalósítva"
+  }
+}

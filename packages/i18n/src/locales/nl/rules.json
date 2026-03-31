@@ -51,10 +51,10 @@
     "autoRoleDesc": "Wijs automatisch een rol toe wanneer een lid lid wordt",
     "logDeleted": "Verwijderde berichten registreren",
     "logDeletedDesc": "Stuur informatie over verwijderde berichten naar een logkanaal",
-    "boostThankYou": "Boost-bedankt",
+    "boostThankYou": "Boost-bedankje",
     "boostThankYouDesc": "Stuur een DM om gebruikers te bedanken die de server boosten",
-    "banLogger": "Verbannenaarsregistrator",
-    "banLoggerDesc": "Registreer verbanneneringsgebeurtenissen in een moderatiekanaal",
+    "banLogger": "Verbanregistratie",
+    "banLoggerDesc": "Registreer verbanneergebeurtenissen in een moderatiekanaal",
     "autoThread": "Automatische thread",
     "autoThreadDesc": "Maak automatisch een thread aan wanneer een bericht wordt verzonden"
   },
@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Regels inschakelen mislukt",
     "bulkDisableFailed": "Regels uitschakelen mislukt",
     "bulkDeleted": "{{count}} regels verwijderd",
-    "bulkDeleteFailed": "Regels verwijderen mislukt"
+    "bulkDeleteFailed": "Regels verwijderen mislukt",
+    "updated": "Regel bijgewerkt",
+    "created": "Regel aangemaakt"
+  },
+  "form": {
+    "ruleName": "Regelnaam",
+    "ruleNamePlaceholder": "Mijn regel...",
+    "eventType": "Gebeurtenistype",
+    "selectEvent": "Gebeurtenis selecteren...",
+    "priority": "Prioriteit",
+    "actions": "Acties",
+    "addAction": "+ Actie toevoegen",
+    "enabled": "Ingeschakeld",
+    "editRule": "Regel bewerken",
+    "createRule": "Regel aanmaken",
+    "workflowView": "Workflowweergave",
+    "draftRestored": "Concept hersteld van vorige sessie.",
+    "dismiss": "Sluiten",
+    "atLeastOneAction": "Er moet minimaal één actie worden geconfigureerd met een type.",
+    "saving": "Opslaan...",
+    "update": "Regel bijwerken",
+    "create": "Regel aanmaken",
+    "cancel": "Annuleren"
+  },
+  "conditions": {
+    "title": "Voorwaarden",
+    "channels": "Kanalen",
+    "roles": "Rollen",
+    "users": "Gebruikers",
+    "addChannel": "Kanaal toevoegen...",
+    "addRole": "Rol toevoegen...",
+    "excludeChannel": "Kanaal uitsluiten...",
+    "excludeRole": "Rol uitsluiten...",
+    "userId": "Gebruikers-ID...",
+    "addConditions": "Voeg voorwaarden toe om te filteren wanneer deze regel wordt geactiveerd",
+    "active": "actief",
+    "description": "Wanneer ingesteld, wordt deze regel alleen geactiveerd als de gebeurtenis overeenkomt met alle inclusiefilters en geen van de exclusiefilters.",
+    "include": "Insluiten (whitelist)",
+    "exclude": "Uitsluiten (blacklist)",
+    "clearAll": "Alle voorwaarden wissen"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Kan niet verbinden: zou een cyclus creëren"
+    },
+    "labels": {
+      "rules": "Regels",
+      "field": "Veld",
+      "operator": "Operator",
+      "value": "Waarde"
+    },
+    "status": {
+      "ready": "Klaar",
+      "notConfigured": "Niet geconfigureerd"
+    },
+    "shortcuts": {
+      "close": "Sluiten",
+      "save": "Opslaan",
+      "removeNode": "Knooppunt verwijderen",
+      "addAction": "Actie toevoegen",
+      "fitView": "Weergave aanpassen"
+    }
   }
 }

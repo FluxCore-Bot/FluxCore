@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Logy aktivity",
     "events": "Logy událostí"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Míra provádění",
+      "totalFailures": "Celkem selhání",
+      "totalEntries": "Celkem záznamů"
+    },
+    "filter": {
+      "search": "Hledat logy...",
+      "last1h": "Poslední 1 hodina",
+      "last24h": "Posledních 24 hodin",
+      "last7d": "Posledních 7 dní"
+    },
+    "table": {
+      "timestamp": "Časové razítko",
+      "ruleName": "Název pravidla",
+      "eventType": "Typ události",
+      "action": "Akce",
+      "status": "Stav",
+      "details": "Podrobnosti",
+      "success": "Úspěch",
+      "failed": "Selhalo"
+    },
+    "pagination": {
+      "showing": "Zobrazeno {{from}} až {{to}} z {{total}} výsledků",
+      "previous": "Předchozí",
+      "next": "Další"
+    },
+    "empty": {
+      "title": "Nenalezeny žádné logy",
+      "description": "Logy provádění pravidel se zde zobrazí, jakmile začnou fungovat automatizační pravidla."
+    }
+  },
+  "events": {
+    "title": "Prohlížeč protokolu událostí",
+    "filter": {
+      "allCategories": "Všechny kategorie",
+      "byUserId": "Filtrovat podle ID uživatele...",
+      "entries": "{{count}} záznamů"
+    },
+    "categories": {
+      "message": "Zpráva",
+      "member": "Člen",
+      "voice": "Hlas",
+      "channel": "Kanál",
+      "role": "Role",
+      "server": "Server",
+      "moderation": "Moderace"
+    },
+    "categoryEvents": {
+      "message": "Události zpráv",
+      "member": "Události členů",
+      "voice": "Hlasové události",
+      "channel": "Události kanálů",
+      "role": "Události rolí",
+      "server": "Události serveru",
+      "moderation": "Události moderace"
+    },
+    "table": {
+      "timestamp": "Časové razítko",
+      "category": "Kategorie",
+      "event": "Událost",
+      "target": "Cíl",
+      "executor": "Vykonavatel"
+    },
+    "pagination": {
+      "page": "Strana {{page}} z {{total}} (celkem {{count}})",
+      "previous": "Předchozí",
+      "next": "Další"
+    },
+    "empty": {
+      "title": "Nenalezeny žádné logy událostí",
+      "description": "Logy událostí se zde zobrazí, jakmile bude nakonfigurováno protokolování a začnou nastávat události."
+    },
+    "config": {
+      "selectChannel": "Vybrat logovací kanál"
+    }
   }
 }

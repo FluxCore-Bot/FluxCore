@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "활동 로그",
     "events": "이벤트 로그"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "실행률",
+      "totalFailures": "총 실패 수",
+      "totalEntries": "총 항목 수"
+    },
+    "filter": {
+      "search": "로그 검색...",
+      "last1h": "최근 1시간",
+      "last24h": "최근 24시간",
+      "last7d": "최근 7일"
+    },
+    "table": {
+      "timestamp": "타임스탬프",
+      "ruleName": "규칙 이름",
+      "eventType": "이벤트 유형",
+      "action": "액션",
+      "status": "상태",
+      "details": "세부 정보",
+      "success": "성공",
+      "failed": "실패"
+    },
+    "pagination": {
+      "showing": "{{total}}개 중 {{from}}~{{to}} 표시",
+      "previous": "이전",
+      "next": "다음"
+    },
+    "empty": {
+      "title": "로그가 없습니다",
+      "description": "자동화 규칙이 실행되면 규칙 실행 로그가 여기에 표시됩니다."
+    }
+  },
+  "events": {
+    "title": "이벤트 로그 브라우저",
+    "filter": {
+      "allCategories": "모든 카테고리",
+      "byUserId": "사용자 ID로 필터...",
+      "entries": "{{count}}개 항목"
+    },
+    "categories": {
+      "message": "메시지",
+      "member": "멤버",
+      "voice": "음성",
+      "channel": "채널",
+      "role": "역할",
+      "server": "서버",
+      "moderation": "관리"
+    },
+    "categoryEvents": {
+      "message": "메시지 이벤트",
+      "member": "멤버 이벤트",
+      "voice": "음성 이벤트",
+      "channel": "채널 이벤트",
+      "role": "역할 이벤트",
+      "server": "서버 이벤트",
+      "moderation": "관리 이벤트"
+    },
+    "table": {
+      "timestamp": "타임스탬프",
+      "category": "카테고리",
+      "event": "이벤트",
+      "target": "대상",
+      "executor": "실행자"
+    },
+    "pagination": {
+      "page": "{{total}}페이지 중 {{page}}페이지 (총 {{count}}개)",
+      "previous": "이전",
+      "next": "다음"
+    },
+    "empty": {
+      "title": "이벤트 로그가 없습니다",
+      "description": "로그가 구성되고 이벤트가 발생하면 이벤트 로그가 여기에 표시됩니다."
+    },
+    "config": {
+      "selectChannel": "로그 채널 선택"
+    }
   }
 }

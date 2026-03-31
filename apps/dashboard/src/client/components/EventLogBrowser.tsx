@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "@tanstack/react-router";
 import { useLogEntries, type LogFilters } from "../lib/hooks/useLogging";
 import { Icon } from "./Icon";
@@ -18,16 +19,7 @@ import {
 
 const PAGE_SIZE = 25;
 
-const CATEGORY_OPTIONS = [
-  { value: "", label: "All Categories" },
-  { value: "message", label: "Message" },
-  { value: "member", label: "Member" },
-  { value: "voice", label: "Voice" },
-  { value: "channel", label: "Channel" },
-  { value: "role", label: "Role" },
-  { value: "server", label: "Server" },
-  { value: "moderation", label: "Moderation" },
-];
+const CATEGORY_VALUES = ["", "message", "member", "voice", "channel", "role", "server", "moderation"];
 
 const CATEGORY_COLORS: Record<string, string> = {
   message: "text-blue-400",
@@ -40,6 +32,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 export function EventLogBrowser() {
+  const { t } = useTranslation("logs");
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const [category, setCategory] = useState("");
   const [targetId, setTargetId] = useState("");
@@ -60,10 +53,10 @@ export function EventLogBrowser() {
     <div className="space-y-4">
       <div className="flex items-center gap-2">
         <Icon name="list" size={20} className="text-accent" />
-        <h3 className="text-lg font-semibold font-display">Event Log Browser</h3>
+        <h3 className="text-lg font-semibold font-display">{t("events.title")}</h3>
         {data && (
           <Badge variant="outline" className="ml-auto text-xs font-mono">
-            {data.total.toLocaleString()} entries
+            {t("events.filter.entries", { count: data.total.toLocaleString() })}
           </Badge>
         )}
       </div>
@@ -78,12 +71,12 @@ export function EventLogBrowser() {
           }}
         >
           <SelectTrigger className="w-44">
-            <SelectValue placeholder="All Categories" />
+            <SelectValue placeholder={t("events.filter.allCategories")} />
           </SelectTrigger>
           <SelectContent>
-            {CATEGORY_OPTIONS.map((opt) => (
-              <SelectItem key={opt.value} value={opt.value}>
-                {opt.label}
+            {CATEGORY_VALUES.map((val) => (
+              <SelectItem key={val} value={val}>
+                {val === "" ? t("events.filter.allCategories") : t(`events.categories.${val}`)}
               </SelectItem>
             ))}
           </SelectContent>
@@ -102,7 +95,7 @@ export function EventLogBrowser() {
               setTargetId(e.target.value);
               setPage(1);
             }}
-            placeholder="Filter by User ID..."
+            placeholder={t("events.filter.byUserId")}
             className="pl-10 font-mono text-sm"
           />
         </div>
@@ -113,8 +106,8 @@ export function EventLogBrowser() {
       ) : !data || data.entries.length === 0 ? (
         <EmptyState
           icon="shield"
-          title="No event logs found"
-          description="Event logs will appear here once logging is configured and events start occurring."
+          title={t("events.empty.title")}
+          description={t("events.empty.description")}
         />
       ) : (
         <>
@@ -122,11 +115,11 @@ export function EventLogBrowser() {
             <Table className="min-w-160">
               <TableHeader>
                 <TableRow className="hover:bg-transparent">
-                  <TableHead>Timestamp</TableHead>
-                  <TableHead>Category</TableHead>
-                  <TableHead>Event</TableHead>
-                  <TableHead>Target</TableHead>
-                  <TableHead>Executor</TableHead>
+                  <TableHead>{t("events.table.timestamp")}</TableHead>
+                  <TableHead>{t("events.table.category")}</TableHead>
+                  <TableHead>{t("events.table.event")}</TableHead>
+                  <TableHead>{t("events.table.target")}</TableHead>
+                  <TableHead>{t("events.table.executor")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -161,7 +154,7 @@ export function EventLogBrowser() {
           {/* Pagination */}
           <div className="flex flex-col gap-2 text-sm text-text-muted sm:flex-row sm:items-center sm:justify-between">
             <span className="text-xs sm:text-sm">
-              Page {page} of {totalPages} ({data.total.toLocaleString()} total)
+              {t("events.pagination.page", { page, total: totalPages, count: data.total.toLocaleString() })}
             </span>
             <div className="flex gap-1">
               <Button
@@ -170,7 +163,7 @@ export function EventLogBrowser() {
                 disabled={page <= 1}
                 onClick={() => setPage((p) => p - 1)}
               >
-                Previous
+                {t("events.pagination.previous")}
               </Button>
               <Button
                 variant="ghost"
@@ -178,7 +171,7 @@ export function EventLogBrowser() {
                 disabled={page >= totalPages}
                 onClick={() => setPage((p) => p + 1)}
               >
-                Next
+                {t("events.pagination.next")}
               </Button>
             </div>
           </div>

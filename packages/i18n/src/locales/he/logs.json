@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "יומני פעילות",
     "events": "יומני אירועים"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "קצב הרצות",
+      "totalFailures": "סה\"כ כשלונות",
+      "totalEntries": "סה\"כ רשומות"
+    },
+    "filter": {
+      "search": "חפש יומנים...",
+      "last1h": "שעה אחרונה",
+      "last24h": "24 שעות אחרונות",
+      "last7d": "7 ימים אחרונים"
+    },
+    "table": {
+      "timestamp": "חותמת זמן",
+      "ruleName": "שם כלל",
+      "eventType": "סוג אירוע",
+      "action": "פעולה",
+      "status": "מצב",
+      "details": "פרטים",
+      "success": "הצלחה",
+      "failed": "נכשל"
+    },
+    "pagination": {
+      "showing": "מציג {{from}} עד {{to}} מתוך {{total}} תוצאות",
+      "previous": "הקודם",
+      "next": "הבא"
+    },
+    "empty": {
+      "title": "לא נמצאו יומנים",
+      "description": "יומני הרצת כללים יופיעו כאן לאחר שכללי האוטומציה יתחילו לפעול."
+    }
+  },
+  "events": {
+    "title": "דפדפן יומן אירועים",
+    "filter": {
+      "allCategories": "כל הקטגוריות",
+      "byUserId": "סנן לפי מזהה משתמש...",
+      "entries": "{{count}} רשומות"
+    },
+    "categories": {
+      "message": "הודעה",
+      "member": "חבר",
+      "voice": "קול",
+      "channel": "ערוץ",
+      "role": "תפקיד",
+      "server": "שרת",
+      "moderation": "ניהול"
+    },
+    "categoryEvents": {
+      "message": "אירועי הודעות",
+      "member": "אירועי חברים",
+      "voice": "אירועי קול",
+      "channel": "אירועי ערוצים",
+      "role": "אירועי תפקידים",
+      "server": "אירועי שרת",
+      "moderation": "אירועי ניהול"
+    },
+    "table": {
+      "timestamp": "חותמת זמן",
+      "category": "קטגוריה",
+      "event": "אירוע",
+      "target": "יעד",
+      "executor": "מבצע"
+    },
+    "pagination": {
+      "page": "עמוד {{page}} מתוך {{total}} ({{count}} סה\"כ)",
+      "previous": "הקודם",
+      "next": "הבא"
+    },
+    "empty": {
+      "title": "לא נמצאו יומני אירועים",
+      "description": "יומני אירועים יופיעו כאן לאחר שהרישום יוגדר ואירועים יתחילו להתרחש."
+    },
+    "config": {
+      "selectChannel": "בחר ערוץ יומן"
+    }
   }
 }

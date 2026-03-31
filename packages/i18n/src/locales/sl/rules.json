@@ -60,7 +60,7 @@
   },
   "deleteDialog": {
     "title": "Izbriši pravilo",
-    "description": "Ali ste prepričani, da želite izbrisati \"{{name}}\"? Tega dejanja ni mogoče razveljaviti.",
+    "description": "Ali ste prepričani, da želite izbrisati „{{name}}"? Tega dejanja ni mogoče razveljaviti.",
     "confirm": "Izbriši"
   },
   "bulkDeleteDialog": {
@@ -82,6 +82,67 @@
     "bulkEnableFailed": "Omogočanje pravil ni uspelo",
     "bulkDisableFailed": "Onemogočanje pravil ni uspelo",
     "bulkDeleted": "{{count}} pravil izbrisanih",
-    "bulkDeleteFailed": "Brisanje pravil ni uspelo"
+    "bulkDeleteFailed": "Brisanje pravil ni uspelo",
+    "updated": "Pravilo posodobljeno",
+    "created": "Pravilo ustvarjeno"
+  },
+  "form": {
+    "ruleName": "Ime pravila",
+    "ruleNamePlaceholder": "Moje pravilo...",
+    "eventType": "Vrsta dogodka",
+    "selectEvent": "Izberite dogodek...",
+    "priority": "Prednost",
+    "actions": "Dejanja",
+    "addAction": "+ Dodaj dejanje",
+    "enabled": "Omogočeno",
+    "editRule": "Uredi pravilo",
+    "createRule": "Ustvari pravilo",
+    "workflowView": "Pogled delovnega toka",
+    "draftRestored": "Osnutek je bil obnovljen iz prejšnje seje.",
+    "dismiss": "Opusti",
+    "atLeastOneAction": "Vsaj eno dejanje mora biti konfigurirano z vrsto.",
+    "saving": "Shranjevanje...",
+    "update": "Posodobi pravilo",
+    "create": "Ustvari pravilo",
+    "cancel": "Prekliči"
+  },
+  "conditions": {
+    "title": "Pogoji",
+    "channels": "Kanali",
+    "roles": "Vloge",
+    "users": "Uporabniki",
+    "addChannel": "Dodaj kanal...",
+    "addRole": "Dodaj vlogo...",
+    "excludeChannel": "Izključi kanal...",
+    "excludeRole": "Izključi vlogo...",
+    "userId": "ID uporabnika...",
+    "addConditions": "Dodajte pogoje za filtriranje, kdaj se to pravilo sproži",
+    "active": "aktivno",
+    "description": "Ko je nastavljeno, se to pravilo sproži le, če se dogodek ujema z vsemi filtri za vključevanje in nobenim filtrom za izključevanje.",
+    "include": "Vključi (beli seznam)",
+    "exclude": "Izključi (črni seznam)",
+    "clearAll": "Počisti vse pogoje"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Ni mogoče povezati: ustvarilo bi cikel"
+    },
+    "labels": {
+      "rules": "Pravila",
+      "field": "Polje",
+      "operator": "Operator",
+      "value": "Vrednost"
+    },
+    "status": {
+      "ready": "Pripravljeno",
+      "notConfigured": "Ni konfigurirano"
+    },
+    "shortcuts": {
+      "close": "Zapri",
+      "save": "Shrani",
+      "removeNode": "Odstrani vozlišče",
+      "addAction": "Dodaj dejanje",
+      "fitView": "Prilagodi pogled"
+    }
   }
 }

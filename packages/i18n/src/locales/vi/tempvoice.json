@@ -1,5 +1,30 @@
 {
   "label": "Trung Tâm Quản Lý",
   "title": "Kênh Thoại Tạm Thời",
-  "subtitle": "Cấu hình các trung tâm cho phép người dùng tạo kênh thoại tạm thời của riêng họ khi tham gia."
+  "subtitle": "Cấu hình các trung tâm cho phép người dùng tạo kênh thoại tạm thời của riêng họ khi tham gia.",
+  "form": {
+    "sameAsHub": "Giống như kênh hub",
+    "defaultNameTemplate": "Kênh của {user}",
+    "hubChannel": "Kênh Hub",
+    "selectHub": "Chọn kênh thoại...",
+    "category": "Danh Mục (tùy chọn)",
+    "nameTemplate": "Mẫu Tên Kênh",
+    "addConfig": "Thêm Cấu Hình",
+    "editConfig": "Chỉnh Sửa Cấu Hình",
+    "save": "Lưu Cấu Hình",
+    "saving": "Đang lưu...",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "edit": "Chỉnh Sửa"
+  },
+  "empty": {
+    "noConfigs": "Chưa có cấu hình nào",
+    "noConfigsDesc": "Thêm kênh hub để bật kênh thoại tạm thời.",
+    "addFirst": "Thêm Cấu Hình"
+  },
+  "toast": {
+    "updated": "Đã cập nhật cấu hình",
+    "created": "Đã tạo cấu hình",
+    "removed": "Đã xóa cấu hình"
+  }
 }

@@ -10,25 +10,25 @@
     "latency": "{{ms}}ms"
   },
   "nav": {
-    "overview": "Visao geral",
-    "automation": "Automatizacao",
-    "music": "Musica",
+    "overview": "Visão geral",
+    "automation": "Automatização",
+    "music": "Música",
     "tempvoice": "TempVoice",
     "welcome": "Boas-vindas",
-    "moderation": "Moderacao",
+    "moderation": "Moderação",
     "warnings": "Avisos",
-    "rolePanels": "Paineis de cargos",
-    "leveling": "Niveis",
+    "rolePanels": "Painéis de cargos",
+    "leveling": "Níveis",
     "scheduled": "Mensagens agendadas",
     "commands": "Comandos",
-    "security": "Seguranca",
+    "security": "Segurança",
     "tickets": "Tickets",
     "giveaways": "Sorteios",
-    "suggestions": "Sugestoes",
+    "suggestions": "Sugestões",
     "starboard": "Starboard",
     "logs": "Registos",
-    "permissions": "Permissoes",
-    "settings": "Definicoes"
+    "permissions": "Permissões",
+    "settings": "Definições"
   },
   "actions": {
     "save": "Guardar",
@@ -64,35 +64,55 @@
     "all": "Todos",
     "custom": "Personalizado",
     "default": "Predefinido",
-    "required": "Obrigatorio",
+    "required": "Obrigatório",
     "optional": "Opcional",
     "name": "Nome",
-    "description": "Descricao",
+    "description": "Descrição",
     "type": "Tipo",
     "status": "Estado",
     "channel": "Canal",
+    "channels": "Canais",
     "role": "Cargo",
+    "roles": "Cargos",
     "member": "Membro",
-    "duration": "Duracao",
+    "users": "Utilizadores",
+    "conditions": "Condições",
+    "duration": "Duração",
     "reason": "Motivo",
     "language": "Idioma"
   },
+  "form": {
+    "selectChannel": "Selecionar canal...",
+    "selectRole": "Selecionar cargo...",
+    "select": "Selecionar...",
+    "saving": "A guardar...",
+    "saveSettings": "Guardar definições",
+    "previous": "Anterior",
+    "next": "Seguinte"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "page": "Página {{page}} de {{total}}",
+    "showing": "A mostrar {{from}} a {{to}} de {{total}} resultados",
+    "showingPage": "Página {{page}} de {{total}} ({{count}} no total)"
+  },
   "header": {
-    "notifications": "Notificacoes",
-    "settings": "Definicoes",
-    "logout": "Terminar sessao",
+    "notifications": "Notificações",
+    "settings": "Definições",
+    "logout": "Terminar sessão",
     "toggleSidebar": "Alternar barra lateral",
     "refreshData": "Atualizar dados do Discord"
   },
   "sidebar": {
     "closeSidebar": "Fechar barra lateral",
     "addToServer": "Adicionar ao servidor",
-    "docs": "Documentacao",
+    "docs": "Documentação",
     "support": "Suporte",
     "backToServers": "Voltar aos servidores"
   },
   "empty": {
-    "noData": "Nenhum dado disponivel",
+    "noData": "Nenhum dado disponível",
     "noResults": "Nenhum resultado encontrado",
     "noItems": "Ainda sem itens"
   },
@@ -101,21 +121,21 @@
     "minutes": "minutos",
     "hours": "horas",
     "days": "dias",
-    "ago": "ha {{time}}",
+    "ago": "há {{time}}",
     "in": "em {{time}}"
   },
   "confirm": {
     "title": "Tem a certeza?",
-    "deleteTitle": "Confirmar eliminacao",
-    "deleteMessage": "Esta acao nao pode ser desfeita.",
-    "unsavedChanges": "Tem alteracoes por guardar. Tem a certeza de que deseja sair?"
+    "deleteTitle": "Confirmar eliminação",
+    "deleteMessage": "Esta ação não pode ser desfeita.",
+    "unsavedChanges": "Tem alterações por guardar. Tem a certeza de que deseja sair?"
   },
   "accessibility": {
-    "skipToContent": "Ir para o conteudo principal",
-    "loading": "A carregar conteudo",
-    "loaded": "Conteudo carregado",
+    "skipToContent": "Ir para o conteúdo principal",
+    "loading": "A carregar conteúdo",
+    "loaded": "Conteúdo carregado",
     "error": "Ocorreu um erro",
-    "menuOpen": "Menu aberto",
-    "menuClosed": "Menu fechado"
+    "menuOpen": "Menú aberto",
+    "menuClosed": "Menú fechado"
   }
 }

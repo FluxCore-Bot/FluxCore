@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Log Aktivitas",
     "events": "Log Kejadian"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Tingkat Eksekusi",
+      "totalFailures": "Total Kegagalan",
+      "totalEntries": "Total Entri"
+    },
+    "filter": {
+      "search": "Cari log...",
+      "last1h": "1 jam terakhir",
+      "last24h": "24 jam terakhir",
+      "last7d": "7 hari terakhir"
+    },
+    "table": {
+      "timestamp": "Waktu",
+      "ruleName": "Nama Aturan",
+      "eventType": "Tipe Kejadian",
+      "action": "Tindakan",
+      "status": "Status",
+      "details": "Detail",
+      "success": "Berhasil",
+      "failed": "Gagal"
+    },
+    "pagination": {
+      "showing": "Menampilkan {{from}} hingga {{to}} dari {{total}} hasil",
+      "previous": "Sebelumnya",
+      "next": "Berikutnya"
+    },
+    "empty": {
+      "title": "Tidak ada log ditemukan",
+      "description": "Log eksekusi aturan akan muncul di sini setelah aturan otomasi mulai berjalan."
+    }
+  },
+  "events": {
+    "title": "Browser Log Kejadian",
+    "filter": {
+      "allCategories": "Semua Kategori",
+      "byUserId": "Filter berdasarkan ID Pengguna...",
+      "entries": "{{count}} entri"
+    },
+    "categories": {
+      "message": "Pesan",
+      "member": "Anggota",
+      "voice": "Suara",
+      "channel": "Saluran",
+      "role": "Peran",
+      "server": "Server",
+      "moderation": "Moderasi"
+    },
+    "categoryEvents": {
+      "message": "Kejadian Pesan",
+      "member": "Kejadian Anggota",
+      "voice": "Kejadian Suara",
+      "channel": "Kejadian Saluran",
+      "role": "Kejadian Peran",
+      "server": "Kejadian Server",
+      "moderation": "Kejadian Moderasi"
+    },
+    "table": {
+      "timestamp": "Waktu",
+      "category": "Kategori",
+      "event": "Kejadian",
+      "target": "Target",
+      "executor": "Pelaksana"
+    },
+    "pagination": {
+      "page": "Halaman {{page}} dari {{total}} ({{count}} total)",
+      "previous": "Sebelumnya",
+      "next": "Berikutnya"
+    },
+    "empty": {
+      "title": "Tidak ada log kejadian ditemukan",
+      "description": "Log kejadian akan muncul di sini setelah pencatatan dikonfigurasi dan kejadian mulai terjadi."
+    },
+    "config": {
+      "selectChannel": "Pilih saluran log"
+    }
   }
 }

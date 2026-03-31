@@ -1,32 +1,148 @@
 {
-  "breadcrumb": { "guild": "伺服器", "automation": "自動化" },
+  "breadcrumb": {
+    "guild": "伺服器",
+    "automation": "自動化"
+  },
   "title": "自動化規則",
   "subtitle": "為您的伺服器設定事件驅動觸發器和自動回應。",
   "createRule": "建立規則",
-  "stats": { "totalRules": "規則總數", "active": "活躍", "executions7d": "執行次數（7 天）", "successRate": "成功率" },
+  "stats": {
+    "totalRules": "規則總數",
+    "active": "活躍",
+    "executions7d": "執行次數（7 天）",
+    "successRate": "成功率"
+  },
   "filter": {
-    "searchPlaceholder": "搜尋規則...", "eventType": "事件類型", "allEvents": "所有事件", "allStatus": "所有狀態",
-    "enabled": "已啟用", "disabled": "已停用", "sortBy": "排序方式", "priority": "優先級", "name": "名稱",
-    "lastFired": "最後觸發", "status": "狀態", "clear": "清除", "showing": "顯示 {{total}} 中的 {{filtered}} 條規則"
+    "searchPlaceholder": "搜尋規則...",
+    "eventType": "事件類型",
+    "allEvents": "所有事件",
+    "allStatus": "所有狀態",
+    "enabled": "已啟用",
+    "disabled": "已停用",
+    "sortBy": "排序方式",
+    "priority": "優先級",
+    "name": "名稱",
+    "lastFired": "最後觸發",
+    "status": "狀態",
+    "clear": "清除",
+    "showing": "顯示 {{total}} 中的 {{filtered}} 條規則"
   },
-  "bulk": { "selected": "已選擇 {{count}} 條規則", "selected_other": "已選擇 {{count}} 條規則", "enable": "啟用", "disable": "停用", "delete": "刪除", "clear": "清除" },
-  "empty": { "title": "開始使用自動化", "description": "選擇範本快速開始，或從頭建立規則。", "createFromScratch": "從頭建立" },
-  "noResults": { "title": "沒有符合的規則", "description": "嘗試調整搜尋條件或篩選器來找到您要的內容。" },
+  "bulk": {
+    "selected": "已選擇 {{count}} 條規則",
+    "selected_other": "已選擇 {{count}} 條規則",
+    "enable": "啟用",
+    "disable": "停用",
+    "delete": "刪除",
+    "clear": "清除"
+  },
+  "empty": {
+    "title": "開始使用自動化",
+    "description": "選擇範本快速開始，或從頭建立規則。",
+    "createFromScratch": "從頭建立"
+  },
+  "noResults": {
+    "title": "沒有符合的規則",
+    "description": "嘗試調整搜尋條件或篩選器來找到您要的內容。"
+  },
   "templates": {
-    "welcomeMessage": "歡迎訊息", "welcomeMessageDesc": "在頻道中以自訂訊息歡迎新成員",
-    "autoRole": "自動角色", "autoRoleDesc": "成員加入時自動指派角色",
-    "logDeleted": "記錄已刪除訊息", "logDeletedDesc": "將已刪除的訊息資訊傳送到日誌頻道",
-    "boostThankYou": "加成感謝", "boostThankYouDesc": "向加成伺服器的使用者傳送私訊感謝",
-    "banLogger": "封鎖日誌", "banLoggerDesc": "將封鎖事件記錄到管理頻道",
-    "autoThread": "自動討論串", "autoThreadDesc": "訊息傳送時自動建立討論串"
+    "welcomeMessage": "歡迎訊息",
+    "welcomeMessageDesc": "在頻道中以自訂訊息歡迎新成員",
+    "autoRole": "自動角色",
+    "autoRoleDesc": "成員加入時自動指派角色",
+    "logDeleted": "記錄已刪除訊息",
+    "logDeletedDesc": "將已刪除的訊息資訊傳送到日誌頻道",
+    "boostThankYou": "加成感謝",
+    "boostThankYouDesc": "向加成伺服器的使用者傳送私訊感謝",
+    "banLogger": "封鎖日誌",
+    "banLoggerDesc": "將封鎖事件記錄到管理頻道",
+    "autoThread": "自動討論串",
+    "autoThreadDesc": "訊息傳送時自動建立討論串"
   },
-  "deleteDialog": { "title": "刪除規則", "description": "確定要刪除「{{name}}」嗎？此操作無法復原。", "confirm": "刪除" },
-  "bulkDeleteDialog": { "title": "刪除所選規則", "description": "確定要刪除 {{count}} 條規則嗎？此操作無法復原。", "description_other": "確定要刪除 {{count}} 條規則嗎？此操作無法復原。", "confirm": "全部刪除" },
+  "deleteDialog": {
+    "title": "刪除規則",
+    "description": "確定要刪除「{{name}}」嗎？此操作無法復原。",
+    "confirm": "刪除"
+  },
+  "bulkDeleteDialog": {
+    "title": "刪除所選規則",
+    "description": "確定要刪除 {{count}} 條規則嗎？此操作無法復原。",
+    "description_other": "確定要刪除 {{count}} 條規則嗎？此操作無法復原。",
+    "confirm": "全部刪除"
+  },
   "toast": {
-    "deleted": "規則已刪除", "deleteFailed": "刪除規則失敗", "enabled": "規則已啟用", "disabled": "規則已停用",
-    "toggleFailed": "切換規則失敗", "duplicated": "規則已複製", "duplicateFailed": "複製規則失敗",
-    "bulkEnabled": "{{count}} 條規則已啟用", "bulkDisabled": "{{count}} 條規則已停用",
-    "bulkEnableFailed": "批次啟用規則失敗", "bulkDisableFailed": "批次停用規則失敗",
-    "bulkDeleted": "{{count}} 條規則已刪除", "bulkDeleteFailed": "批次刪除規則失敗"
+    "deleted": "規則已刪除",
+    "deleteFailed": "刪除規則失敗",
+    "enabled": "規則已啟用",
+    "disabled": "規則已停用",
+    "toggleFailed": "切換規則失敗",
+    "duplicated": "規則已複製",
+    "duplicateFailed": "複製規則失敗",
+    "bulkEnabled": "{{count}} 條規則已啟用",
+    "bulkDisabled": "{{count}} 條規則已停用",
+    "bulkEnableFailed": "批次啟用規則失敗",
+    "bulkDisableFailed": "批次停用規則失敗",
+    "bulkDeleted": "{{count}} 條規則已刪除",
+    "bulkDeleteFailed": "批次刪除規則失敗",
+    "updated": "規則已更新",
+    "created": "規則已建立"
+  },
+  "form": {
+    "ruleName": "規則名稱",
+    "ruleNamePlaceholder": "我的規則...",
+    "eventType": "事件類型",
+    "selectEvent": "選擇事件...",
+    "priority": "優先級",
+    "actions": "動作",
+    "addAction": "+ 新增動作",
+    "enabled": "已啟用",
+    "editRule": "編輯規則",
+    "createRule": "建立規則",
+    "workflowView": "工作流程檢視",
+    "draftRestored": "已從上次工作階段還原草稿。",
+    "dismiss": "關閉",
+    "atLeastOneAction": "至少需要設定一個具有類型的動作。",
+    "saving": "儲存中...",
+    "update": "更新規則",
+    "create": "建立規則",
+    "cancel": "取消"
+  },
+  "conditions": {
+    "title": "條件",
+    "channels": "頻道",
+    "roles": "角色",
+    "users": "使用者",
+    "addChannel": "新增頻道...",
+    "addRole": "新增角色...",
+    "excludeChannel": "排除頻道...",
+    "excludeRole": "排除角色...",
+    "userId": "使用者ID...",
+    "addConditions": "新增條件以篩選此規則觸發的時機",
+    "active": "活躍",
+    "description": "設定後，僅當事件符合所有包含篩選器且不符合任何排除篩選器時，此規則才會觸發。",
+    "include": "包含（白名單）",
+    "exclude": "排除（黑名單）",
+    "clearAll": "清除所有條件"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "無法連線：將建立循環"
+    },
+    "labels": {
+      "rules": "規則",
+      "field": "欄位",
+      "operator": "運算子",
+      "value": "值"
+    },
+    "status": {
+      "ready": "就緒",
+      "notConfigured": "未設定"
+    },
+    "shortcuts": {
+      "close": "關閉",
+      "save": "儲存",
+      "removeNode": "移除節點",
+      "addAction": "新增動作",
+      "fitView": "符合檢視"
+    }
   }
 }

@@ -1,4 +1,28 @@
 {
   "title": "Mga Setting",
-  "subtitle": "I-configure ang mga global na setting ng sistema ng aksyon para sa iyong server."
+  "subtitle": "I-configure ang mga global na setting ng sistema ng aksyon para sa iyong server.",
+  "actionSystem": {
+    "title": "Mga Setting ng Sistema ng Aksyon",
+    "maxRules": "Maximum na Mga Panuntunan Bawat Guild",
+    "logChannel": "Log Channel (opsyonal)",
+    "noLogChannel": "Walang log channel",
+    "globalEnable": "Global na Pagpapagana (i-disable upang i-pause ang lahat ng panuntunan)",
+    "saving": "Nag-se-save...",
+    "save": "I-save ang Mga Setting",
+    "saved": "Na-save ang mga setting",
+    "maxRulesError": "Ang maximum na mga panuntunan ay dapat nasa pagitan ng 1 at 100"
+  },
+  "notifications": {
+    "title": "Mga Kagustuhan sa Notification",
+    "ruleTriggered": "Na-trigger ang Panuntunan",
+    "errorAlerts": "Mga Alerto sa Error",
+    "successReports": "Mga Ulat ng Tagumpay"
+  },
+  "dangerZone": {
+    "title": "Danger Zone",
+    "description": "Mga mapanirang aksyon na hindi maaaring baguhin.",
+    "deleteAllRules": "Burahin ang Lahat ng Panuntunan",
+    "deleteAllConfirm": "Sigurado ka bang gusto mong burahin ang LAHAT ng panuntunan? Hindi maaaring baguhin ang aksyong ito.",
+    "notImplemented": "Ang pagbura ng lahat ng panuntunan ay hindi pa naisakatuparan"
+  }
 }

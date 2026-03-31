@@ -1,0 +1,141 @@
+{
+  "brand": {
+    "name": "FluxCore",
+    "engine": "FluxCore Engine",
+    "dashboard": "FluxCore irányítópult"
+  },
+  "status": {
+    "online": "Online",
+    "offline": "Offline",
+    "latency": "{{ms}}ms"
+  },
+  "nav": {
+    "overview": "Áttekintés",
+    "automation": "Automatizálás",
+    "music": "Zene",
+    "tempvoice": "TempVoice",
+    "welcome": "Üdvözlés",
+    "moderation": "Moderáció",
+    "warnings": "Figyelmeztetések",
+    "rolePanels": "Szereppanelek",
+    "leveling": "Szintek",
+    "scheduled": "Ütemezett",
+    "commands": "Parancsok",
+    "security": "Biztonság",
+    "tickets": "Jegyek",
+    "giveaways": "Nyereményjátékok",
+    "suggestions": "Javaslatok",
+    "starboard": "Csillagjelző",
+    "logs": "Naplók",
+    "permissions": "Engedélyek",
+    "settings": "Beállítások"
+  },
+  "actions": {
+    "save": "Mentés",
+    "cancel": "Mégse",
+    "delete": "Törlés",
+    "edit": "Szerkesztés",
+    "create": "Létrehozás",
+    "add": "Hozzáadás",
+    "remove": "Eltávolítás",
+    "confirm": "Megerősítés",
+    "close": "Bezárás",
+    "back": "Vissza",
+    "next": "Következő",
+    "search": "Keresés",
+    "filter": "Szűrés",
+    "refresh": "Frissítés",
+    "reset": "Visszaállítás",
+    "enable": "Engedélyezés",
+    "disable": "Letiltás",
+    "copy": "Másolás",
+    "export": "Exportálás",
+    "import": "Importálás",
+    "submit": "Beküldés",
+    "loading": "Betöltés...",
+    "retry": "Újra"
+  },
+  "labels": {
+    "enabled": "Engedélyezett",
+    "disabled": "Letiltott",
+    "active": "Aktív",
+    "inactive": "Inaktív",
+    "none": "Nincs",
+    "all": "Összes",
+    "custom": "Egyéni",
+    "default": "Alapértelmezett",
+    "required": "Kötelező",
+    "optional": "Opcionális",
+    "name": "Név",
+    "description": "Leírás",
+    "type": "Típus",
+    "status": "Állapot",
+    "channel": "Csatorna",
+    "channels": "Csatornák",
+    "role": "Szerep",
+    "roles": "Szerepek",
+    "member": "Tag",
+    "users": "Felhasználók",
+    "conditions": "Feltételek",
+    "duration": "Időtartam",
+    "reason": "Ok",
+    "language": "Nyelv"
+  },
+  "form": {
+    "selectChannel": "Csatorna kiválasztása...",
+    "selectRole": "Szerep kiválasztása...",
+    "select": "Kiválasztás...",
+    "saving": "Mentés...",
+    "saveSettings": "Beállítások mentése",
+    "previous": "Előző",
+    "next": "Következő"
+  },
+  "pagination": {
+    "previous": "Előző",
+    "next": "Következő",
+    "page": "{{page}}. oldal / {{total}}",
+    "showing": "{{from}}–{{to}} megjelenítve {{total}} eredményből",
+    "showingPage": "{{page}}. oldal / {{total}} (összesen {{count}})"
+  },
+  "header": {
+    "notifications": "Értesítések",
+    "settings": "Beállítások",
+    "logout": "Kijelentkezés",
+    "toggleSidebar": "Oldalsáv váltása",
+    "refreshData": "Discord adatok frissítése"
+  },
+  "sidebar": {
+    "closeSidebar": "Oldalsáv bezárása",
+    "addToServer": "Hozzáadás a szerverhez",
+    "docs": "Dokumentáció",
+    "support": "Támogatás",
+    "backToServers": "Vissza a szerverekhez"
+  },
+  "empty": {
+    "noData": "Nincs elérhető adat",
+    "noResults": "Nem található eredmény",
+    "noItems": "Még nincsenek elemek"
+  },
+  "time": {
+    "seconds": "másodperc",
+    "minutes": "perc",
+    "hours": "óra",
+    "days": "nap",
+    "ago": "{{time}} ezelőtt",
+    "in": "{{time}} múlva"
+  },
+  "confirm": {
+    "title": "Biztos benne?",
+    "deleteTitle": "Törlés megerősítése",
+    "deleteMessage": "Ez a művelet nem vonható vissza.",
+    "unsavedChanges": "Mentetlen módosításai vannak. Biztosan el szeretne menni?"
+  },
+  "accessibility": {
+    "skipToContent": "Ugrás a fő tartalomhoz",
+    "loading": "Tartalom betöltése",
+    "loaded": "Tartalom betöltve",
+    "error": "Hiba történt",
+    "menuOpen": "A menü nyitva van",
+    "menuClosed": "A menü zárva van"
+  }
+}

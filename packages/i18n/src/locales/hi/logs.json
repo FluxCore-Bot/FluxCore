@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "गतिविधि लॉग",
     "events": "इवेंट लॉग"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "निष्पादन दर",
+      "totalFailures": "कुल विफलताएं",
+      "totalEntries": "कुल प्रविष्टियां"
+    },
+    "filter": {
+      "search": "लॉग खोजें...",
+      "last1h": "पिछला 1 घंटा",
+      "last24h": "पिछले 24 घंटे",
+      "last7d": "पिछले 7 दिन"
+    },
+    "table": {
+      "timestamp": "टाइमस्टैम्प",
+      "ruleName": "नियम का नाम",
+      "eventType": "इवेंट प्रकार",
+      "action": "क्रिया",
+      "status": "स्थिति",
+      "details": "विवरण",
+      "success": "सफल",
+      "failed": "विफल"
+    },
+    "pagination": {
+      "showing": "{{total}} परिणामों में से {{from}} से {{to}} दिखाए जा रहे हैं",
+      "previous": "पिछला",
+      "next": "अगला"
+    },
+    "empty": {
+      "title": "कोई लॉग नहीं मिला",
+      "description": "ऑटोमेशन नियम चलना शुरू होने के बाद नियम निष्पादन लॉग यहां दिखाई देंगे।"
+    }
+  },
+  "events": {
+    "title": "इवेंट लॉग ब्राउज़र",
+    "filter": {
+      "allCategories": "सभी श्रेणियां",
+      "byUserId": "उपयोगकर्ता ID से फ़िल्टर...",
+      "entries": "{{count}} प्रविष्टियां"
+    },
+    "categories": {
+      "message": "संदेश",
+      "member": "सदस्य",
+      "voice": "वॉइस",
+      "channel": "चैनल",
+      "role": "रोल",
+      "server": "सर्वर",
+      "moderation": "मॉडरेशन"
+    },
+    "categoryEvents": {
+      "message": "संदेश इवेंट",
+      "member": "सदस्य इवेंट",
+      "voice": "वॉइस इवेंट",
+      "channel": "चैनल इवेंट",
+      "role": "रोल इवेंट",
+      "server": "सर्वर इवेंट",
+      "moderation": "मॉडरेशन इवेंट"
+    },
+    "table": {
+      "timestamp": "टाइमस्टैम्प",
+      "category": "श्रेणी",
+      "event": "इवेंट",
+      "target": "लक्ष्य",
+      "executor": "निष्पादक"
+    },
+    "pagination": {
+      "page": "पृष्ठ {{page}} / {{total}} ({{count}} कुल)",
+      "previous": "पिछला",
+      "next": "अगला"
+    },
+    "empty": {
+      "title": "कोई इवेंट लॉग नहीं मिला",
+      "description": "लॉगिंग कॉन्फ़िगर होने और इवेंट शुरू होने के बाद इवेंट लॉग यहां दिखाई देंगे।"
+    },
+    "config": {
+      "selectChannel": "लॉग चैनल चुनें"
+    }
   }
 }

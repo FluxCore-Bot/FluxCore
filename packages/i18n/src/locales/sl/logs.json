@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Dnevniki dejavnosti",
     "events": "Dnevniki dogodkov"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Stopnja izvedbe",
+      "totalFailures": "Skupaj napak",
+      "totalEntries": "Skupaj vnosov"
+    },
+    "filter": {
+      "search": "Iskanje dnevnikov...",
+      "last1h": "Zadnja 1 ura",
+      "last24h": "Zadnjih 24 ur",
+      "last7d": "Zadnjih 7 dni"
+    },
+    "table": {
+      "timestamp": "Časovni žig",
+      "ruleName": "Ime pravila",
+      "eventType": "Vrsta dogodka",
+      "action": "Dejanje",
+      "status": "Stanje",
+      "details": "Podrobnosti",
+      "success": "Uspešno",
+      "failed": "Neuspešno"
+    },
+    "pagination": {
+      "showing": "Prikazano {{from}}–{{to}} od {{total}} rezultatov",
+      "previous": "Prejšnje",
+      "next": "Naslednje"
+    },
+    "empty": {
+      "title": "Dnevniki niso bili najdeni",
+      "description": "Dnevniki izvedbe pravil se bodo prikazali tukaj, ko bodo avtomatizacijska pravila začela delovati."
+    }
+  },
+  "events": {
+    "title": "Brskalnik dnevnikov dogodkov",
+    "filter": {
+      "allCategories": "Vse kategorije",
+      "byUserId": "Filtriraj po ID uporabnika...",
+      "entries": "{{count}} vnosov"
+    },
+    "categories": {
+      "message": "Sporočilo",
+      "member": "Član",
+      "voice": "Glas",
+      "channel": "Kanal",
+      "role": "Vloga",
+      "server": "Strežnik",
+      "moderation": "Moderiranje"
+    },
+    "categoryEvents": {
+      "message": "Dogodki sporočil",
+      "member": "Dogodki članov",
+      "voice": "Glasovni dogodki",
+      "channel": "Dogodki kanalov",
+      "role": "Dogodki vlog",
+      "server": "Dogodki strežnika",
+      "moderation": "Dogodki moderiranja"
+    },
+    "table": {
+      "timestamp": "Časovni žig",
+      "category": "Kategorija",
+      "event": "Dogodek",
+      "target": "Cilj",
+      "executor": "Izvajalec"
+    },
+    "pagination": {
+      "page": "Stran {{page}} od {{total}} (skupaj {{count}})",
+      "previous": "Prejšnje",
+      "next": "Naslednje"
+    },
+    "empty": {
+      "title": "Dnevniki dogodkov niso bili najdeni",
+      "description": "Dnevniki dogodkov se bodo prikazali tukaj, ko bo beleženje konfigurirano in se bodo začeli pojavljati dogodki."
+    },
+    "config": {
+      "selectChannel": "Izberite kanal dnevnika"
+    }
   }
 }

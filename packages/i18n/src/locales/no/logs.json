@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Aktivitetslogger",
     "events": "Hendelseslogger"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Kjøringsfrekvens",
+      "totalFailures": "Totalt antall feil",
+      "totalEntries": "Totalt antall oppføringer"
+    },
+    "filter": {
+      "search": "Søk logger...",
+      "last1h": "Siste 1 time",
+      "last24h": "Siste 24 timer",
+      "last7d": "Siste 7 dager"
+    },
+    "table": {
+      "timestamp": "Tidsstempel",
+      "ruleName": "Regelnavn",
+      "eventType": "Hendelsestype",
+      "action": "Handling",
+      "status": "Status",
+      "details": "Detaljer",
+      "success": "Vellykket",
+      "failed": "Mislyktes"
+    },
+    "pagination": {
+      "showing": "Viser {{from}}–{{to}} av {{total}} resultater",
+      "previous": "Forrige",
+      "next": "Neste"
+    },
+    "empty": {
+      "title": "Ingen logger funnet",
+      "description": "Regelkjøringslogger vil vises her når automatiseringsreglene begynner å kjøre."
+    }
+  },
+  "events": {
+    "title": "Hendelseslogg-nettleser",
+    "filter": {
+      "allCategories": "Alle kategorier",
+      "byUserId": "Filtrer etter bruker-ID...",
+      "entries": "{{count}} oppføringer"
+    },
+    "categories": {
+      "message": "Melding",
+      "member": "Medlem",
+      "voice": "Tale",
+      "channel": "Kanal",
+      "role": "Rolle",
+      "server": "Server",
+      "moderation": "Moderering"
+    },
+    "categoryEvents": {
+      "message": "Meldingshendelser",
+      "member": "Medlemshendelser",
+      "voice": "Talehendelser",
+      "channel": "Kanalhendelser",
+      "role": "Rollehendelser",
+      "server": "Serverhendelser",
+      "moderation": "Modereringshendelser"
+    },
+    "table": {
+      "timestamp": "Tidsstempel",
+      "category": "Kategori",
+      "event": "Hendelse",
+      "target": "Mål",
+      "executor": "Utfører"
+    },
+    "pagination": {
+      "page": "Side {{page}} av {{total}} ({{count}} totalt)",
+      "previous": "Forrige",
+      "next": "Neste"
+    },
+    "empty": {
+      "title": "Ingen hendelseslogger funnet",
+      "description": "Hendelseslogger vil vises her når logging er konfigurert og hendelser begynner å skje."
+    },
+    "config": {
+      "selectChannel": "Velg loggkanal"
+    }
   }
 }

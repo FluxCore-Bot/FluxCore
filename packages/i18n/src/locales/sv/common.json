@@ -71,11 +71,31 @@
     "type": "Typ",
     "status": "Status",
     "channel": "Kanal",
+    "channels": "Kanaler",
     "role": "Roll",
+    "roles": "Roller",
     "member": "Medlem",
+    "users": "Användare",
+    "conditions": "Villkor",
     "duration": "Varaktighet",
     "reason": "Orsak",
     "language": "Språk"
+  },
+  "form": {
+    "selectChannel": "Välj kanal...",
+    "selectRole": "Välj roll...",
+    "select": "Välj...",
+    "saving": "Sparar...",
+    "saveSettings": "Spara inställningar",
+    "previous": "Föregående",
+    "next": "Nästa"
+  },
+  "pagination": {
+    "previous": "Föregående",
+    "next": "Nästa",
+    "page": "Sida {{page}} av {{total}}",
+    "showing": "Visar {{from}}–{{to}} av {{total}} resultat",
+    "showingPage": "Sida {{page}} av {{total}} ({{count}} totalt)"
   },
   "header": {
     "notifications": "Aviseringar",

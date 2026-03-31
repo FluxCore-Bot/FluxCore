@@ -2,7 +2,7 @@
   "brand": {
     "name": "FluxCore",
     "engine": "FluxCore Engine",
-    "dashboard": "FluxCore Dashboard"
+    "dashboard": "Panel de control de FluxCore"
   },
   "status": {
     "online": "En liña",
@@ -71,11 +71,31 @@
     "type": "Tipo",
     "status": "Estado",
     "channel": "Canal",
+    "channels": "Canles",
     "role": "Rol",
+    "roles": "Roles",
     "member": "Membro",
+    "users": "Usuarios",
+    "conditions": "Condicións",
     "duration": "Duración",
     "reason": "Motivo",
     "language": "Idioma"
+  },
+  "form": {
+    "selectChannel": "Seleccionar canal...",
+    "selectRole": "Seleccionar rol...",
+    "select": "Seleccionar...",
+    "saving": "Gardando...",
+    "saveSettings": "Gardar configuración",
+    "previous": "Anterior",
+    "next": "Seguinte"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "page": "Páxina {{page}} de {{total}}",
+    "showing": "Mostrando {{from}}–{{to}} de {{total}} resultados",
+    "showingPage": "Páxina {{page}} de {{total}} ({{count}} total)"
   },
   "header": {
     "notifications": "Notificacións",

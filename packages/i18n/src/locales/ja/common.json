@@ -71,11 +71,31 @@
     "type": "タイプ",
     "status": "ステータス",
     "channel": "チャンネル",
+    "channels": "チャンネル",
     "role": "ロール",
+    "roles": "ロール",
     "member": "メンバー",
+    "users": "ユーザー",
+    "conditions": "条件",
     "duration": "期間",
     "reason": "理由",
     "language": "言語"
+  },
+  "form": {
+    "selectChannel": "チャンネルを選択...",
+    "selectRole": "ロールを選択...",
+    "select": "選択...",
+    "saving": "保存中...",
+    "saveSettings": "設定を保存",
+    "previous": "前へ",
+    "next": "次へ"
+  },
+  "pagination": {
+    "previous": "前へ",
+    "next": "次へ",
+    "page": "{{total}}ページ中{{page}}ページ目",
+    "showing": "{{total}}件中{{from}}〜{{to}}件を表示",
+    "showingPage": "{{total}}ページ中{{page}}ページ目（合計{{count}}件）"
   },
   "header": {
     "notifications": "通知",

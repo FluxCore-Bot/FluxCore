@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "@tanstack/react-router";
 import {
   useMusicLibrary,
@@ -25,6 +26,7 @@ const MAX_ALBUMS = 50;
 const MAX_TRACKS = 100;
 
 function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number }) {
+  const { t } = useTranslation("music");
   const { data: tracks = [], isLoading } = useAlbumTracks(guildId, albumId);
   const addTrack = useAddTrack(guildId, albumId);
   const deleteTrack = useDeleteTrack(guildId, albumId);
@@ -48,13 +50,13 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
     setError("");
 
     if (!title.trim() || !sourceUrl.trim()) {
-      setError("Title and URL are required");
+      setError(t("library.titleRequired"));
       return;
     }
 
     try {
       await addTrack.mutateAsync({ title: title.trim(), sourceUrl: sourceUrl.trim() });
-      toast.success("Track added");
+      toast.success(t("library.trackAdded"));
       setTitle("");
       setSourceUrl("");
       setShowForm(false);
@@ -66,7 +68,7 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
   const handleDeleteTrack = async (trackId: number) => {
     try {
       await deleteTrack.mutateAsync(trackId);
-      toast.success("Track removed");
+      toast.success(t("library.trackRemoved"));
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "An error occurred");
     }
@@ -92,13 +94,13 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
             onClick={() => handleDeleteTrack(track.id)}
             disabled={isPending}
           >
-            Remove
+            {t("library.remove")}
           </Button>
         </div>
       ))}
 
       {tracks.length === 0 && !showForm && (
-        <p className="text-xs text-text-muted">No tracks in this album.</p>
+        <p className="text-xs text-text-muted">{t("library.noTracksInAlbum")}</p>
       )}
 
       {error && (
@@ -110,26 +112,26 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
           <Input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="Track title"
+            placeholder={t("library.trackTitle")}
           />
           <Input
             value={sourceUrl}
             onChange={(e) => setSourceUrl(e.target.value)}
-            placeholder="Source URL (YouTube, etc.)"
+            placeholder={t("library.sourceUrl")}
           />
           <div className="flex gap-2">
             <Button type="submit" size="sm" disabled={isPending}>
-              {addTrack.isPending ? "Adding..." : "Add Track"}
+              {addTrack.isPending ? t("library.adding") : t("library.save")}
             </Button>
             <Button type="button" variant="ghost" size="sm" onClick={() => { setShowForm(false); setError(""); }}>
-              Cancel
+              {t("library.cancel")}
             </Button>
           </div>
         </form>
       ) : (
         tracks.length < MAX_TRACKS && (
           <Button variant="link" size="sm" onClick={() => setShowForm(true)}>
-            + Add Track
+            + {t("library.addTrack")}
           </Button>
         )
       )}
@@ -138,6 +140,7 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
 }
 
 export function MusicLibraryManager() {
+  const { t } = useTranslation("music");
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: albums = [], isLoading } = useMusicLibrary(guildId);
   const createAlbum = useCreateAlbum(guildId);
@@ -154,13 +157,13 @@ export function MusicLibraryManager() {
     setError("");
 
     if (!newAlbumName.trim()) {
-      setError("Album name is required");
+      setError(t("library.albumNameRequired"));
       return;
     }
 
     try {
       await createAlbum.mutateAsync(newAlbumName.trim());
-      toast.success("Album created");
+      toast.success(t("library.albumCreated"));
       setNewAlbumName("");
       setShowCreateForm(false);
     } catch (err) {
@@ -171,7 +174,7 @@ export function MusicLibraryManager() {
   const handleDeleteAlbum = async (albumId: number) => {
     try {
       await deleteAlbum.mutateAsync(albumId);
-      toast.success("Album deleted");
+      toast.success(t("library.albumDeleted"));
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "An error occurred");
     }
@@ -183,14 +186,14 @@ export function MusicLibraryManager() {
     <Card className="p-6">
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h3 className="text-lg font-semibold">Music Library</h3>
+          <h3 className="text-lg font-semibold">{t("library.title")}</h3>
           <p className="text-sm text-text-muted">
-            Manage albums and tracks for library mode.
+            {t("library.description")}
           </p>
         </div>
         {!showCreateForm && albums.length < MAX_ALBUMS && (
           <Button onClick={() => setShowCreateForm(true)}>
-            <Icon name="add" /> Add Album
+            <Icon name="add" /> {t("library.addAlbum")}
           </Button>
         )}
       </div>
@@ -201,19 +204,19 @@ export function MusicLibraryManager() {
 
       {showCreateForm && (
         <form onSubmit={handleCreateAlbum} className="mb-4 rounded-md bg-surface-high p-4">
-          <Label>Album Name</Label>
+          <Label>{t("library.albumName")}</Label>
           <Input
             value={newAlbumName}
             onChange={(e) => setNewAlbumName(e.target.value)}
-            placeholder="My Playlist"
+            placeholder={t("library.albumNamePlaceholder")}
             className="mb-3"
           />
           <div className="flex gap-2">
             <Button type="submit" disabled={isPending}>
-              {createAlbum.isPending ? "Creating..." : "Create"}
+              {createAlbum.isPending ? t("library.creating") : t("library.createAlbum")}
             </Button>
             <Button type="button" variant="ghost" onClick={() => { setShowCreateForm(false); setError(""); }}>
-              Cancel
+              {t("library.cancel")}
             </Button>
           </div>
         </form>
@@ -243,7 +246,7 @@ export function MusicLibraryManager() {
                     onClick={() => handleDeleteAlbum(album.id)}
                     disabled={isPending}
                   >
-                    Delete
+                    {t("library.deleteAlbum")}
                   </Button>
                 </div>
 
@@ -258,11 +261,11 @@ export function MusicLibraryManager() {
         !showCreateForm && (
           <EmptyState
             icon="library_music"
-            title="No albums yet"
-            description="Create your first album to start building your music library."
+            title={t("library.noAlbums")}
+            description={t("library.noAlbumsDesc")}
             action={
               <Button onClick={() => setShowCreateForm(true)}>
-                <Icon name="add" /> Add Album
+                <Icon name="add" /> {t("library.addAlbum")}
               </Button>
             }
           />

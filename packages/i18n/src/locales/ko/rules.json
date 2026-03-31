@@ -82,6 +82,67 @@
     "bulkEnableFailed": "규칙 활성화에 실패했습니다",
     "bulkDisableFailed": "규칙 비활성화에 실패했습니다",
     "bulkDeleted": "{{count}}개 규칙이 삭제되었습니다",
-    "bulkDeleteFailed": "규칙 삭제에 실패했습니다"
+    "bulkDeleteFailed": "규칙 삭제에 실패했습니다",
+    "updated": "규칙이 업데이트되었습니다",
+    "created": "규칙이 생성되었습니다"
+  },
+  "form": {
+    "ruleName": "규칙 이름",
+    "ruleNamePlaceholder": "내 규칙...",
+    "eventType": "이벤트 유형",
+    "selectEvent": "이벤트 선택...",
+    "priority": "우선순위",
+    "actions": "액션",
+    "addAction": "+ 액션 추가",
+    "enabled": "활성화됨",
+    "editRule": "규칙 편집",
+    "createRule": "규칙 만들기",
+    "workflowView": "워크플로 보기",
+    "draftRestored": "이전 세션에서 초안이 복원되었습니다.",
+    "dismiss": "닫기",
+    "atLeastOneAction": "유형이 설정된 액션이 최소 하나 이상 필요합니다.",
+    "saving": "저장 중...",
+    "update": "규칙 업데이트",
+    "create": "규칙 만들기",
+    "cancel": "취소"
+  },
+  "conditions": {
+    "title": "조건",
+    "channels": "채널",
+    "roles": "역할",
+    "users": "사용자",
+    "addChannel": "채널 추가...",
+    "addRole": "역할 추가...",
+    "excludeChannel": "채널 제외...",
+    "excludeRole": "역할 제외...",
+    "userId": "사용자 ID...",
+    "addConditions": "이 규칙이 실행될 조건을 추가합니다",
+    "active": "활성",
+    "description": "설정된 경우, 이벤트가 모든 포함 필터와 일치하고 제외 필터 중 어느 것과도 일치하지 않을 때만 이 규칙이 실행됩니다.",
+    "include": "포함 (화이트리스트)",
+    "exclude": "제외 (블랙리스트)",
+    "clearAll": "모든 조건 초기화"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "연결할 수 없습니다: 순환이 생성됩니다"
+    },
+    "labels": {
+      "rules": "규칙",
+      "field": "필드",
+      "operator": "연산자",
+      "value": "값"
+    },
+    "status": {
+      "ready": "준비됨",
+      "notConfigured": "설정되지 않음"
+    },
+    "shortcuts": {
+      "close": "닫기",
+      "save": "저장",
+      "removeNode": "노드 제거",
+      "addAction": "액션 추가",
+      "fitView": "보기 맞추기"
+    }
   }
 }

@@ -1,0 +1,30 @@
+{
+  "label": "Kezelési központ",
+  "title": "Ideiglenes hangcsatornák",
+  "subtitle": "Konfiguráljon hubokat, amelyek lehetővé teszik a felhasználóknak, hogy saját ideiglenes hangcsatornákat hozzanak létre csatlakozáskor.",
+  "form": {
+    "sameAsHub": "Ugyanaz mint a hub csatorna",
+    "defaultNameTemplate": "{user} csatornája",
+    "hubChannel": "Hub csatorna",
+    "selectHub": "Hangcsatorna kiválasztása...",
+    "category": "Kategória (opcionális)",
+    "nameTemplate": "Csatorna névtemplát",
+    "addConfig": "Konfiguráció hozzáadása",
+    "editConfig": "Konfiguráció szerkesztése",
+    "save": "Konfiguráció mentése",
+    "saving": "Mentés...",
+    "cancel": "Mégse",
+    "delete": "Törlés",
+    "edit": "Szerkesztés"
+  },
+  "empty": {
+    "noConfigs": "Még nincs konfiguráció",
+    "noConfigsDesc": "Adjon hozzá egy hub csatornát az ideiglenes hangcsatornák engedélyezéséhez.",
+    "addFirst": "Konfiguráció hozzáadása"
+  },
+  "toast": {
+    "updated": "Konfiguráció frissítve",
+    "created": "Konfiguráció létrehozva",
+    "removed": "Konfiguráció eltávolítva"
+  }
+}

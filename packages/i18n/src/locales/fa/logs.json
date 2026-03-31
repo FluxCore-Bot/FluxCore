@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "گزارش‌های فعالیت",
     "events": "گزارش‌های رویداد"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "نرخ اجرا",
+      "totalFailures": "کل خرابی‌ها",
+      "totalEntries": "کل ورودی‌ها"
+    },
+    "filter": {
+      "search": "جستجوی گزارش‌ها...",
+      "last1h": "یک ساعت اخیر",
+      "last24h": "۲۴ ساعت اخیر",
+      "last7d": "۷ روز اخیر"
+    },
+    "table": {
+      "timestamp": "زمان",
+      "ruleName": "نام قانون",
+      "eventType": "نوع رویداد",
+      "action": "اقدام",
+      "status": "وضعیت",
+      "details": "جزئیات",
+      "success": "موفق",
+      "failed": "ناموفق"
+    },
+    "pagination": {
+      "showing": "نمایش {{from}} تا {{to}} از {{total}} نتیجه",
+      "previous": "قبلی",
+      "next": "بعدی"
+    },
+    "empty": {
+      "title": "گزارشی یافت نشد",
+      "description": "گزارش‌های اجرای قوانین پس از شروع اجرای قوانین اتوماسیون اینجا نمایش داده می‌شوند."
+    }
+  },
+  "events": {
+    "title": "مرورگر گزارش رویدادها",
+    "filter": {
+      "allCategories": "همه دسته‌ها",
+      "byUserId": "فیلتر بر اساس شناسه کاربر...",
+      "entries": "{{count}} ورودی"
+    },
+    "categories": {
+      "message": "پیام",
+      "member": "عضو",
+      "voice": "صوتی",
+      "channel": "کانال",
+      "role": "نقش",
+      "server": "سرور",
+      "moderation": "مدیریت"
+    },
+    "categoryEvents": {
+      "message": "رویدادهای پیام",
+      "member": "رویدادهای عضو",
+      "voice": "رویدادهای صوتی",
+      "channel": "رویدادهای کانال",
+      "role": "رویدادهای نقش",
+      "server": "رویدادهای سرور",
+      "moderation": "رویدادهای مدیریت"
+    },
+    "table": {
+      "timestamp": "زمان",
+      "category": "دسته",
+      "event": "رویداد",
+      "target": "هدف",
+      "executor": "اجراکننده"
+    },
+    "pagination": {
+      "page": "صفحه {{page}} از {{total}} ({{count}} کل)",
+      "previous": "قبلی",
+      "next": "بعدی"
+    },
+    "empty": {
+      "title": "گزارش رویدادی یافت نشد",
+      "description": "گزارش‌های رویداد پس از پیکربندی ثبت و شروع رویدادها اینجا نمایش داده می‌شوند."
+    },
+    "config": {
+      "selectChannel": "کانال گزارش را انتخاب کنید"
+    }
   }
 }

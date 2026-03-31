@@ -3,17 +3,17 @@
     "guild": "Bediener",
     "automation": "Outomatisering"
   },
-  "title": "Outomatiseringsreels",
+  "title": "Outomatiseringsreëls",
   "subtitle": "Stel gebeurtenisgedrewe snellers en outomatiese antwoorde vir jou bediener op.",
-  "createRule": "Skep Reel",
+  "createRule": "Skep Reël",
   "stats": {
-    "totalRules": "Totale Reels",
+    "totalRules": "Totale Reëls",
     "active": "Aktief",
     "executions7d": "Uitvoerings (7d)",
     "successRate": "Sukseskoers"
   },
   "filter": {
-    "searchPlaceholder": "Soek reels...",
+    "searchPlaceholder": "Soek reëls...",
     "eventType": "Gebeurtenistipe",
     "allEvents": "Alle Gebeurtenisse",
     "allStatus": "Alle Status",
@@ -25,11 +25,11 @@
     "lastFired": "Laaste Geaktiveer",
     "status": "Status",
     "clear": "Maak Skoon",
-    "showing": "Wys {{filtered}} van {{total}} reels"
+    "showing": "Wys {{filtered}} van {{total}} reëls"
   },
   "bulk": {
-    "selected": "{{count}} reel gekies",
-    "selected_other": "{{count}} reels gekies",
+    "selected": "{{count}} reël gekies",
+    "selected_other": "{{count}} reëls gekies",
     "enable": "Aktiveer",
     "disable": "Deaktiveer",
     "delete": "Verwyder",
@@ -37,11 +37,11 @@
   },
   "empty": {
     "title": "Begin met Outomatisering",
-    "description": "Kies 'n sjabloon om vinnig te begin, of skep 'n reel van nuuts af.",
+    "description": "Kies 'n sjabloon om vinnig te begin, of skep 'n reël van nuuts af.",
     "createFromScratch": "Skep van Nuuts Af"
   },
   "noResults": {
-    "title": "Geen ooreenstemmende reels nie",
+    "title": "Geen ooreenstemmende reëls nie",
     "description": "Probeer jou soektog of filters aanpas om te vind waarna jy soek."
   },
   "templates": {
@@ -59,29 +59,90 @@
     "autoThreadDesc": "Skep outomaties 'n draad wanneer 'n boodskap gestuur word"
   },
   "deleteDialog": {
-    "title": "Verwyder Reel",
-    "description": "Is jy seker jy wil \"{{name}}\" verwyder? Hierdie aksie kan nie ongedaan gemaak word nie.",
+    "title": "Verwyder Reël",
+    "description": "Is jy seker jy wil „{{name}}" verwyder? Hierdie aksie kan nie ongedaan gemaak word nie.",
     "confirm": "Verwyder"
   },
   "bulkDeleteDialog": {
-    "title": "Verwyder Geselekteerde Reels",
-    "description": "Is jy seker jy wil {{count}} reel verwyder? Hierdie aksie kan nie ongedaan gemaak word nie.",
-    "description_other": "Is jy seker jy wil {{count}} reels verwyder? Hierdie aksie kan nie ongedaan gemaak word nie.",
+    "title": "Verwyder Geselekteerde Reëls",
+    "description": "Is jy seker jy wil {{count}} reël verwyder? Hierdie aksie kan nie ongedaan gemaak word nie.",
+    "description_other": "Is jy seker jy wil {{count}} reëls verwyder? Hierdie aksie kan nie ongedaan gemaak word nie.",
     "confirm": "Verwyder Almal"
   },
   "toast": {
-    "deleted": "Reel verwyder",
-    "deleteFailed": "Kon nie reel verwyder nie",
-    "enabled": "Reel geaktiveer",
-    "disabled": "Reel gedeaktiveer",
-    "toggleFailed": "Kon nie reel wissel nie",
-    "duplicated": "Reel gedupliseer",
-    "duplicateFailed": "Kon nie reel dupliseer nie",
-    "bulkEnabled": "{{count}} reels geaktiveer",
-    "bulkDisabled": "{{count}} reels gedeaktiveer",
-    "bulkEnableFailed": "Kon nie reels aktiveer nie",
-    "bulkDisableFailed": "Kon nie reels deaktiveer nie",
-    "bulkDeleted": "{{count}} reels verwyder",
-    "bulkDeleteFailed": "Kon nie reels verwyder nie"
+    "deleted": "Reël verwyder",
+    "deleteFailed": "Kon nie reël verwyder nie",
+    "enabled": "Reël geaktiveer",
+    "disabled": "Reël gedeaktiveer",
+    "toggleFailed": "Kon nie reël wissel nie",
+    "duplicated": "Reël gedupliseer",
+    "duplicateFailed": "Kon nie reël dupliseer nie",
+    "bulkEnabled": "{{count}} reëls geaktiveer",
+    "bulkDisabled": "{{count}} reëls gedeaktiveer",
+    "bulkEnableFailed": "Kon nie reëls aktiveer nie",
+    "bulkDisableFailed": "Kon nie reëls deaktiveer nie",
+    "bulkDeleted": "{{count}} reëls verwyder",
+    "bulkDeleteFailed": "Kon nie reëls verwyder nie",
+    "updated": "Reël opgedateer",
+    "created": "Reël geskep"
+  },
+  "form": {
+    "ruleName": "Reëlnaam",
+    "ruleNamePlaceholder": "My reël...",
+    "eventType": "Gebeurtenistipe",
+    "selectEvent": "Kies gebeurtenis...",
+    "priority": "Prioriteit",
+    "actions": "Aksies",
+    "addAction": "+ Voeg Aksie By",
+    "enabled": "Geaktiveer",
+    "editRule": "Wysig Reël",
+    "createRule": "Skep Reël",
+    "workflowView": "Werkstroom-aansig",
+    "draftRestored": "Konsep herstel van vorige sessie.",
+    "dismiss": "Verwerp",
+    "atLeastOneAction": "Ten minste een aksie moet gekonfigureer wees met 'n tipe.",
+    "saving": "Stoor...",
+    "update": "Dateer Reël Op",
+    "create": "Skep Reël",
+    "cancel": "Kanselleer"
+  },
+  "conditions": {
+    "title": "Voorwaardes",
+    "channels": "Kanale",
+    "roles": "Rolle",
+    "users": "Gebruikers",
+    "addChannel": "Voeg kanaal by...",
+    "addRole": "Voeg rol by...",
+    "excludeChannel": "Sluit kanaal uit...",
+    "excludeRole": "Sluit rol uit...",
+    "userId": "Gebruiker-ID...",
+    "addConditions": "Voeg voorwaardes by om te filtreer wanneer hierdie reël geaktiveer word",
+    "active": "aktief",
+    "description": "Wanneer gestel, word hierdie reël slegs geaktiveer as die gebeurtenis aan alle insluitingsfilters voldoen en geen uitsluitingsfilters nie.",
+    "include": "Sluit In (witlys)",
+    "exclude": "Sluit Uit (swartelys)",
+    "clearAll": "Maak alle voorwaardes skoon"
+  },
+  "workflow": {
+    "errors": {
+      "cyclicConnection": "Kan nie koppel nie: sal 'n siklus skep"
+    },
+    "labels": {
+      "rules": "Reëls",
+      "field": "Veld",
+      "operator": "Operateur",
+      "value": "Waarde"
+    },
+    "status": {
+      "ready": "Gereed",
+      "notConfigured": "Nie gekonfigureer nie"
+    },
+    "shortcuts": {
+      "close": "Sluit",
+      "save": "Stoor",
+      "removeNode": "Verwyder knoop",
+      "addAction": "Voeg aksie by",
+      "fitView": "Pas aansig aan"
+    }
   }
 }

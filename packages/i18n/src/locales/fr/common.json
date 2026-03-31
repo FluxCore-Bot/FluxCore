@@ -15,27 +15,27 @@
     "music": "Musique",
     "tempvoice": "TempVoice",
     "welcome": "Bienvenue",
-    "moderation": "Moderation",
+    "moderation": "Modération",
     "warnings": "Avertissements",
-    "rolePanels": "Panneaux de roles",
+    "rolePanels": "Panneaux de rôles",
     "leveling": "Niveaux",
-    "scheduled": "Messages programmes",
+    "scheduled": "Messages programmés",
     "commands": "Commandes",
-    "security": "Securite",
+    "security": "Sécurité",
     "tickets": "Tickets",
     "giveaways": "Concours",
     "suggestions": "Suggestions",
     "starboard": "Starboard",
     "logs": "Journaux",
     "permissions": "Permissions",
-    "settings": "Parametres"
+    "settings": "Paramètres"
   },
   "actions": {
     "save": "Enregistrer",
     "cancel": "Annuler",
     "delete": "Supprimer",
     "edit": "Modifier",
-    "create": "Creer",
+    "create": "Créer",
     "add": "Ajouter",
     "remove": "Retirer",
     "confirm": "Confirmer",
@@ -45,25 +45,25 @@
     "search": "Rechercher",
     "filter": "Filtrer",
     "refresh": "Actualiser",
-    "reset": "Reinitialiser",
+    "reset": "Réinitialiser",
     "enable": "Activer",
-    "disable": "Desactiver",
+    "disable": "Désactiver",
     "copy": "Copier",
     "export": "Exporter",
     "import": "Importer",
     "submit": "Soumettre",
     "loading": "Chargement...",
-    "retry": "Reessayer"
+    "retry": "Réessayer"
   },
   "labels": {
-    "enabled": "Active",
-    "disabled": "Desactive",
+    "enabled": "Activé",
+    "disabled": "Désactivé",
     "active": "Actif",
     "inactive": "Inactif",
     "none": "Aucun",
     "all": "Tous",
-    "custom": "Personnalise",
-    "default": "Par defaut",
+    "custom": "Personnalisé",
+    "default": "Par défaut",
     "required": "Requis",
     "optional": "Optionnel",
     "name": "Nom",
@@ -71,30 +71,50 @@
     "type": "Type",
     "status": "Statut",
     "channel": "Salon",
-    "role": "Role",
+    "channels": "Salons",
+    "role": "Rôle",
+    "roles": "Rôles",
     "member": "Membre",
-    "duration": "Duree",
+    "users": "Utilisateurs",
+    "conditions": "Conditions",
+    "duration": "Durée",
     "reason": "Raison",
     "language": "Langue"
   },
+  "form": {
+    "selectChannel": "Sélectionner un salon...",
+    "selectRole": "Sélectionner un rôle...",
+    "select": "Sélectionner...",
+    "saving": "Enregistrement...",
+    "saveSettings": "Enregistrer les paramètres",
+    "previous": "Précédent",
+    "next": "Suivant"
+  },
+  "pagination": {
+    "previous": "Précédent",
+    "next": "Suivant",
+    "page": "Page {{page}} sur {{total}}",
+    "showing": "Affichage de {{from}} à {{to}} sur {{total}} résultats",
+    "showingPage": "Page {{page}} sur {{total}} ({{count}} au total)"
+  },
   "header": {
     "notifications": "Notifications",
-    "settings": "Parametres",
-    "logout": "Deconnexion",
-    "toggleSidebar": "Afficher/masquer la barre laterale",
-    "refreshData": "Actualiser les donnees Discord"
+    "settings": "Paramètres",
+    "logout": "Déconnexion",
+    "toggleSidebar": "Afficher/masquer la barre latérale",
+    "refreshData": "Actualiser les données Discord"
   },
   "sidebar": {
-    "closeSidebar": "Fermer la barre laterale",
+    "closeSidebar": "Fermer la barre latérale",
     "addToServer": "Ajouter au serveur",
     "docs": "Documentation",
     "support": "Support",
     "backToServers": "Retour aux serveurs"
   },
   "empty": {
-    "noData": "Aucune donnee disponible",
-    "noResults": "Aucun resultat trouve",
-    "noItems": "Aucun element pour l'instant"
+    "noData": "Aucune donnée disponible",
+    "noResults": "Aucun résultat trouvé",
+    "noItems": "Aucun élément pour l'instant"
   },
   "time": {
     "seconds": "secondes",
@@ -105,17 +125,17 @@
     "in": "dans {{time}}"
   },
   "confirm": {
-    "title": "Etes-vous sur ?",
+    "title": "Êtes-vous sûr ?",
     "deleteTitle": "Confirmer la suppression",
-    "deleteMessage": "Cette action est irreversible.",
-    "unsavedChanges": "Vous avez des modifications non enregistrees. Etes-vous sur de vouloir quitter ?"
+    "deleteMessage": "Cette action est irréversible.",
+    "unsavedChanges": "Vous avez des modifications non enregistrées. Êtes-vous sûr de vouloir quitter ?"
   },
   "accessibility": {
     "skipToContent": "Aller au contenu principal",
     "loading": "Chargement du contenu",
-    "loaded": "Contenu charge",
+    "loaded": "Contenu chargé",
     "error": "Une erreur est survenue",
     "menuOpen": "Le menu est ouvert",
-    "menuClosed": "Le menu est ferme"
+    "menuClosed": "Le menu est fermé"
   }
 }

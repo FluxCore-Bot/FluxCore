@@ -1,4 +1,28 @@
 {
   "title": "Tetapan",
-  "subtitle": "Konfigurasikan tetapan sistem tindakan global untuk pelayan anda."
+  "subtitle": "Konfigurasikan tetapan sistem tindakan global untuk pelayan anda.",
+  "actionSystem": {
+    "title": "Tetapan Sistem Tindakan",
+    "maxRules": "Peraturan Maksimum Per Pelayan",
+    "logChannel": "Saluran Log (pilihan)",
+    "noLogChannel": "Tiada saluran log",
+    "globalEnable": "Aktifkan Global (nyahaktifkan untuk menjeda semua peraturan)",
+    "saving": "Menyimpan...",
+    "save": "Simpan Tetapan",
+    "saved": "Tetapan disimpan",
+    "maxRulesError": "Peraturan maksimum mestilah antara 1 dan 100"
+  },
+  "notifications": {
+    "title": "Pilihan Pemberitahuan",
+    "ruleTriggered": "Peraturan Dicetuskan",
+    "errorAlerts": "Amaran Ralat",
+    "successReports": "Laporan Kejayaan"
+  },
+  "dangerZone": {
+    "title": "Zon Berbahaya",
+    "description": "Tindakan merosakkan yang tidak boleh dibuat asal.",
+    "deleteAllRules": "Padam Semua Peraturan",
+    "deleteAllConfirm": "Adakah anda pasti mahu memadam SEMUA peraturan? Tindakan ini tidak boleh dibuat asal.",
+    "notImplemented": "Padam semua peraturan belum dilaksanakan"
+  }
 }

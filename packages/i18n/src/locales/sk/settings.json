@@ -1,0 +1,28 @@
+{
+  "title": "Nastavenia",
+  "subtitle": "Nakonfigurujte globálne nastavenia systému akcií pre váš server.",
+  "actionSystem": {
+    "title": "Nastavenia systému akcií",
+    "maxRules": "Max. pravidiel na server",
+    "logChannel": "Logovací kanál (voliteľné)",
+    "noLogChannel": "Žiadny logovací kanál",
+    "globalEnable": "Globálne povolenie (zakázať pre pozastavenie všetkých pravidiel)",
+    "saving": "Ukladanie...",
+    "save": "Uložiť nastavenia",
+    "saved": "Nastavenia uložené",
+    "maxRulesError": "Maximálny počet pravidiel musí byť medzi 1 a 100"
+  },
+  "notifications": {
+    "title": "Predvoľby oznámení",
+    "ruleTriggered": "Pravidlo spustené",
+    "errorAlerts": "Upozornenia na chyby",
+    "successReports": "Správy o úspechu"
+  },
+  "dangerZone": {
+    "title": "Nebezpečná zóna",
+    "description": "Deštruktívne akcie, ktoré nie je možné vrátiť.",
+    "deleteAllRules": "Odstrániť všetky pravidlá",
+    "deleteAllConfirm": "Naozaj chcete odstrániť VŠETKY pravidlá? Túto akciu nie je možné vrátiť.",
+    "notImplemented": "Odstránenie všetkých pravidiel ešte nie je implementované"
+  }
+}

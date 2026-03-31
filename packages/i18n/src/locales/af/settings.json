@@ -1,4 +1,28 @@
 {
   "title": "Instellings",
-  "subtitle": "Stel globale aksiestelselinstellings vir jou bediener op."
+  "subtitle": "Stel globale aksiestelselinstellings vir jou bediener op.",
+  "actionSystem": {
+    "title": "Aksiestelse-instellings",
+    "maxRules": "Maksimum Reëls Per Bediener",
+    "logChannel": "Logkanaal (opsioneel)",
+    "noLogChannel": "Geen logkanaal nie",
+    "globalEnable": "Globale Aktivering (deaktiveer om alle reëls te laat wag)",
+    "saving": "Stoor...",
+    "save": "Stoor Instellings",
+    "saved": "Instellings gestoor",
+    "maxRulesError": "Maksimum reëls moet tussen 1 en 100 wees"
+  },
+  "notifications": {
+    "title": "Kennisgewing-voorkeure",
+    "ruleTriggered": "Reël Geaktiveer",
+    "errorAlerts": "Foutwaarskuwings",
+    "successReports": "Suksesverslae"
+  },
+  "dangerZone": {
+    "title": "Gevaarlike Sone",
+    "description": "Vernietigende aksies wat nie ongedaan gemaak kan word nie.",
+    "deleteAllRules": "Verwyder Alle Reëls",
+    "deleteAllConfirm": "Is jy seker jy wil ALLE reëls verwyder? Dit kan nie ongedaan gemaak word nie.",
+    "notImplemented": "Verwydering van alle reëls is nog nie geïmplementeer nie"
+  }
 }

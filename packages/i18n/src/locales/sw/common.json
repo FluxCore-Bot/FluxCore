@@ -71,11 +71,31 @@
     "type": "Aina",
     "status": "Hali",
     "channel": "Chaneli",
+    "channels": "Chaneli",
     "role": "Jukumu",
+    "roles": "Majukumu",
     "member": "Mwanachama",
+    "users": "Watumiaji",
+    "conditions": "Masharti",
     "duration": "Muda",
     "reason": "Sababu",
     "language": "Lugha"
+  },
+  "form": {
+    "selectChannel": "Chagua chaneli...",
+    "selectRole": "Chagua jukumu...",
+    "select": "Chagua...",
+    "saving": "Inahifadhi...",
+    "saveSettings": "Hifadhi Mipangilio",
+    "previous": "Iliyotangulia",
+    "next": "Inayofuata"
+  },
+  "pagination": {
+    "previous": "Iliyotangulia",
+    "next": "Inayofuata",
+    "page": "Ukurasa {{page}} kati ya {{total}}",
+    "showing": "Inaonyesha {{from}}–{{to}} kati ya {{total}} matokeo",
+    "showingPage": "Ukurasa {{page}} kati ya {{total}} (jumla {{count}})"
   },
   "header": {
     "notifications": "Arifa",

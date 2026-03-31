@@ -4,5 +4,82 @@
   "tabs": {
     "activity": "Nhật Ký Hoạt Động",
     "events": "Nhật Ký Sự Kiện"
+  },
+  "activity": {
+    "stats": {
+      "executionRate": "Tỷ Lệ Thực Thi",
+      "totalFailures": "Tổng Lần Thất Bại",
+      "totalEntries": "Tổng Số Mục"
+    },
+    "filter": {
+      "search": "Tìm kiếm nhật ký...",
+      "last1h": "1 giờ qua",
+      "last24h": "24 giờ qua",
+      "last7d": "7 ngày qua"
+    },
+    "table": {
+      "timestamp": "Thời Gian",
+      "ruleName": "Tên Quy Tắc",
+      "eventType": "Loại Sự Kiện",
+      "action": "Hành Động",
+      "status": "Trạng Thái",
+      "details": "Chi Tiết",
+      "success": "Thành Công",
+      "failed": "Thất Bại"
+    },
+    "pagination": {
+      "showing": "Hiển thị {{from}} đến {{to}} trong {{total}} kết quả",
+      "previous": "Trước",
+      "next": "Tiếp"
+    },
+    "empty": {
+      "title": "Không tìm thấy nhật ký",
+      "description": "Nhật ký thực thi quy tắc sẽ xuất hiện ở đây khi các quy tắc tự động bắt đầu chạy."
+    }
+  },
+  "events": {
+    "title": "Trình Duyệt Nhật Ký Sự Kiện",
+    "filter": {
+      "allCategories": "Tất Cả Danh Mục",
+      "byUserId": "Lọc theo ID Người Dùng...",
+      "entries": "{{count}} mục"
+    },
+    "categories": {
+      "message": "Tin Nhắn",
+      "member": "Thành Viên",
+      "voice": "Thoại",
+      "channel": "Kênh",
+      "role": "Vai Trò",
+      "server": "Máy Chủ",
+      "moderation": "Kiểm Duyệt"
+    },
+    "categoryEvents": {
+      "message": "Sự Kiện Tin Nhắn",
+      "member": "Sự Kiện Thành Viên",
+      "voice": "Sự Kiện Thoại",
+      "channel": "Sự Kiện Kênh",
+      "role": "Sự Kiện Vai Trò",
+      "server": "Sự Kiện Máy Chủ",
+      "moderation": "Sự Kiện Kiểm Duyệt"
+    },
+    "table": {
+      "timestamp": "Thời Gian",
+      "category": "Danh Mục",
+      "event": "Sự Kiện",
+      "target": "Mục Tiêu",
+      "executor": "Người Thực Thi"
+    },
+    "pagination": {
+      "page": "Trang {{page}} / {{total}} (tổng {{count}})",
+      "previous": "Trước",
+      "next": "Tiếp"
+    },
+    "empty": {
+      "title": "Không tìm thấy nhật ký sự kiện",
+      "description": "Nhật ký sự kiện sẽ xuất hiện ở đây khi ghi nhật ký được cấu hình và sự kiện bắt đầu xảy ra."
+    },
+    "config": {
+      "selectChannel": "Chọn kênh nhật ký"
+    }
   }
 }

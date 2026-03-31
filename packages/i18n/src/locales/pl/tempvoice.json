@@ -1,5 +1,30 @@
 {
   "label": "Centrum zarządzania",
   "title": "Tymczasowe kanały głosowe",
-  "subtitle": "Skonfiguruj huby umożliwiające użytkownikom tworzenie własnych efemerycznych kanałów głosowych po dołączeniu."
+  "subtitle": "Skonfiguruj huby umożliwiające użytkownikom tworzenie własnych efemerycznych kanałów głosowych po dołączeniu.",
+  "form": {
+    "sameAsHub": "Taki sam jak kanał hub",
+    "defaultNameTemplate": "Kanał {user}",
+    "hubChannel": "Kanał hub",
+    "selectHub": "Wybierz kanał głosowy...",
+    "category": "Kategoria (opcjonalnie)",
+    "nameTemplate": "Szablon nazwy kanału",
+    "addConfig": "Dodaj konfigurację",
+    "editConfig": "Edytuj konfigurację",
+    "save": "Zapisz konfigurację",
+    "saving": "Zapisywanie...",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "edit": "Edytuj"
+  },
+  "empty": {
+    "noConfigs": "Brak konfiguracji",
+    "noConfigsDesc": "Dodaj kanał hub, aby włączyć tymczasowe kanały głosowe.",
+    "addFirst": "Dodaj konfigurację"
+  },
+  "toast": {
+    "updated": "Konfiguracja zaktualizowana",
+    "created": "Konfiguracja utworzona",
+    "removed": "Konfiguracja usunięta"
+  }
 }

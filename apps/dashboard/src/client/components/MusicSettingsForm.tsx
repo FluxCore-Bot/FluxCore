@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "@tanstack/react-router";
 import { useRoles } from "../lib/hooks/useRoles";
 import { useChannels } from "../lib/hooks/useChannels";
@@ -22,6 +23,7 @@ import {
 import { PageSkeleton } from "./PageSkeleton";
 
 export function MusicSettingsForm() {
+  const { t } = useTranslation("music");
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: settings, isLoading } = useMusicSettings(guildId);
   const { data: roles = [] } = useRoles(guildId);
@@ -67,7 +69,7 @@ export function MusicSettingsForm() {
         twentyFourSeven,
         lastChannelId: twentyFourSeven ? lastChannelId : null,
       });
-      toast.success("Music settings updated");
+      toast.success(t("settings.updated"));
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "An error occurred");
     }
@@ -75,7 +77,7 @@ export function MusicSettingsForm() {
 
   return (
     <Card className="p-6">
-      <h3 className="mb-6 text-lg font-semibold">Playback Settings</h3>
+      <h3 className="mb-6 text-lg font-semibold">{t("settings.playbackSettings")}</h3>
 
       {error && (
         <Alert variant="destructive" className="mb-4">{error}</Alert>
@@ -83,29 +85,29 @@ export function MusicSettingsForm() {
 
       <form onSubmit={handleSave} className="space-y-5">
         <div>
-          <Label>Music Mode</Label>
+          <Label>{t("settings.musicMode")}</Label>
           <Select value={mode} onValueChange={(v) => setMode(v as "open" | "library")}>
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="open">Open — Anyone can play anything</SelectItem>
-              <SelectItem value="library">Library — Only curated tracks</SelectItem>
+              <SelectItem value="open">{t("settings.open")}</SelectItem>
+              <SelectItem value="library">{t("settings.library")}</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
         <div>
-          <Label>DJ Role</Label>
+          <Label>{t("settings.djRole")}</Label>
           <Select
             value={djRoleId ?? "none"}
             onValueChange={(v) => setDjRoleId(v === "none" ? null : v)}
           >
             <SelectTrigger>
-              <SelectValue placeholder="None — All users can control playback" />
+              <SelectValue placeholder={t("settings.noDjRole")} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="none">None — All users can control playback</SelectItem>
+              <SelectItem value="none">{t("settings.noDjRole")}</SelectItem>
               {roles.map((r) => (
                 <SelectItem key={r.id} value={r.id}>
                   {r.name}
@@ -116,7 +118,7 @@ export function MusicSettingsForm() {
         </div>
 
         <div>
-          <Label>Default Volume: {defaultVolume}%</Label>
+          <Label>{t("settings.defaultVolume", { value: defaultVolume })}</Label>
           <Slider
             value={[defaultVolume]}
             onValueChange={([v]) => setDefaultVolume(v)}
@@ -127,7 +129,7 @@ export function MusicSettingsForm() {
         </div>
 
         <div>
-          <Label>Max Queue Size</Label>
+          <Label>{t("settings.maxQueueSize")}</Label>
           <Input
             type="number"
             min={1}
@@ -138,7 +140,7 @@ export function MusicSettingsForm() {
         </div>
 
         <div>
-          <Label>Auto-Disconnect (seconds, 0 = disabled)</Label>
+          <Label>{t("settings.autoDisconnect")}</Label>
           <Input
             type="number"
             min={0}
@@ -154,22 +156,22 @@ export function MusicSettingsForm() {
             onCheckedChange={setTwentyFourSeven}
           />
           <Label className="mb-0 text-sm">
-            24/7 Mode — Bot stays in voice channel when idle
+            {t("settings.twentyFourSeven")}
           </Label>
         </div>
 
         {twentyFourSeven && (
           <div>
-            <Label>Music Voice Channel</Label>
+            <Label>{t("settings.musicChannel")}</Label>
             <Select
               value={lastChannelId ?? "none"}
               onValueChange={(v) => setLastChannelId(v === "none" ? null : v)}
             >
               <SelectTrigger>
-                <SelectValue placeholder="Select a voice channel..." />
+                <SelectValue placeholder={t("settings.selectVoiceChannel")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="none">None — Select a channel</SelectItem>
+                <SelectItem value="none">{t("settings.noneChannel")}</SelectItem>
                 {voiceChannels.map((c) => (
                   <SelectItem key={c.id} value={c.id}>
                     {c.name}
@@ -178,13 +180,13 @@ export function MusicSettingsForm() {
               </SelectContent>
             </Select>
             <p className="mt-1 text-xs text-muted-foreground">
-              The bot will automatically join this channel on startup.
+              {t("settings.channelHint")}
             </p>
           </div>
         )}
 
         <Button type="submit" disabled={updateSettings.isPending}>
-          {updateSettings.isPending ? "Saving..." : "Save Settings"}
+          {updateSettings.isPending ? t("settings.saving") : t("settings.save")}
         </Button>
       </form>
     </Card>
