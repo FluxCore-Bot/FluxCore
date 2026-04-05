@@ -50,6 +50,7 @@ import {
 } from "../../../components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 import { Icon } from "../../../components/Icon";
+import { StatsCard } from "../../../components/StatsCard";
 
 function emptyAction(): CustomCommandAction {
   return { type: "addRole", roleId: "" };
@@ -290,24 +291,19 @@ export function CommandsPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.totalCommands")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {isLoading ? "..." : commands?.length ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.enabled")}</p>
-          <p className="mt-1 text-2xl font-bold text-success">
-            {isLoading ? "..." : enabledCount}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("common:limit")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {isLoading ? "..." : t("stats.limit", { count: commands?.length ?? 0 })}
-          </p>
-        </Card>
+        <StatsCard
+          label={t("stats.totalCommands")}
+          value={isLoading ? "..." : commands?.length ?? 0}
+        />
+        <StatsCard
+          label={t("stats.enabled")}
+          value={isLoading ? "..." : enabledCount}
+          valueClassName="text-success"
+        />
+        <StatsCard
+          label={t("common:limit")}
+          value={isLoading ? "..." : t("stats.limit", { count: commands?.length ?? 0 })}
+        />
       </div>
 
       <Tabs defaultValue="commands">

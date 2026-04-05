@@ -32,6 +32,7 @@ import {
 } from "../../../components/ui/select";
 import { Separator } from "../../../components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
+import { StatsCard } from "../../../components/StatsCard";
 
 function formatTimeRemaining(endsAt: string): string {
   const end = new Date(endsAt).getTime();
@@ -174,29 +175,18 @@ export function GiveawaysPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.activeGiveaways")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {activeLoading ? "..." : activeData?.total ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.pastGiveaways")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {pastLoading ? "..." : pastData?.total ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.totalEntries")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {activeLoading
-              ? "..."
-              : (activeData?.giveaways ?? []).reduce(
-                  (sum, g) => sum + g.entrantIds.length,
-                  0,
-                )}
-          </p>
-        </Card>
+        <StatsCard
+          label={t("stats.activeGiveaways")}
+          value={activeLoading ? "..." : activeData?.total ?? 0}
+        />
+        <StatsCard
+          label={t("stats.pastGiveaways")}
+          value={pastLoading ? "..." : pastData?.total ?? 0}
+        />
+        <StatsCard
+          label={t("stats.totalEntries")}
+          value={activeLoading ? "..." : (activeData?.giveaways ?? []).reduce((sum, g) => sum + g.entrantIds.length, 0)}
+        />
       </div>
 
       <Tabs defaultValue="active">

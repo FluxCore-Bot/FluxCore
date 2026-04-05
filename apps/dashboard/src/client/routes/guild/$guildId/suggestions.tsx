@@ -35,6 +35,7 @@ import {
 import { Separator } from "../../../components/ui/separator";
 import { Icon } from "../../../components/Icon";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
+import { StatsCard } from "../../../components/StatsCard";
 import {
   Dialog,
   DialogContent,
@@ -156,24 +157,18 @@ export function SuggestionsPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.totalSuggestions")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {suggestionsLoading ? "..." : suggestionsData?.total ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.systemStatus")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {settingsLoading ? "..." : settings?.enabled ? t("common:labels.enabled") : t("common:labels.disabled")}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("common:labels.channel")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {settingsLoading ? "..." : settings?.channelId ? t("stats.channel.configured") : t("stats.channel.notSet")}
-          </p>
-        </Card>
+        <StatsCard
+          label={t("stats.totalSuggestions")}
+          value={suggestionsLoading ? "..." : suggestionsData?.total ?? 0}
+        />
+        <StatsCard
+          label={t("stats.systemStatus")}
+          value={settingsLoading ? "..." : settings?.enabled ? t("common:labels.enabled") : t("common:labels.disabled")}
+        />
+        <StatsCard
+          label={t("common:labels.channel")}
+          value={settingsLoading ? "..." : settings?.channelId ? t("stats.channel.configured") : t("stats.channel.notSet")}
+        />
       </div>
 
       <Tabs defaultValue="suggestions">

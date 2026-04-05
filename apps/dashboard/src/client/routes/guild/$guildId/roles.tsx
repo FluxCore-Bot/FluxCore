@@ -45,6 +45,7 @@ import { Badge } from "../../../components/ui/badge";
 import { Separator } from "../../../components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 import { Icon } from "../../../components/Icon";
+import { StatsCard } from "../../../components/StatsCard";
 
 function EmptyRoleEntry(): RolePanelEntryItem {
   return { roleId: "", label: "", emoji: "", description: "", style: 2 };
@@ -237,24 +238,18 @@ export function RolesPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.totalPanels")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {isLoading ? "..." : panels?.length ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.deployed")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {isLoading ? "..." : panels?.filter((p) => p.messageId).length ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.totalRoles")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {isLoading ? "..." : panels?.reduce((sum, p) => sum + p.roles.length, 0) ?? 0}
-          </p>
-        </Card>
+        <StatsCard
+          label={t("stats.totalPanels")}
+          value={isLoading ? "..." : panels?.length ?? 0}
+        />
+        <StatsCard
+          label={t("stats.deployed")}
+          value={isLoading ? "..." : panels?.filter((p) => p.messageId).length ?? 0}
+        />
+        <StatsCard
+          label={t("stats.totalRoles")}
+          value={isLoading ? "..." : panels?.reduce((sum, p) => sum + p.roles.length, 0) ?? 0}
+        />
       </div>
 
       <Tabs defaultValue="panels">

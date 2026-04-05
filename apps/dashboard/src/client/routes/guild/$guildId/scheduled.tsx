@@ -46,6 +46,7 @@ import { Badge } from "../../../components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 import { Icon } from "../../../components/Icon";
 import type { ScheduledMessageContent } from "../../../lib/schemas";
+import { StatsCard } from "../../../components/StatsCard";
 
 const COMMON_TIMEZONES = [
   "UTC",
@@ -282,28 +283,19 @@ export function ScheduledMessagesPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.totalMessages")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {isLoading ? "..." : data?.total ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.active")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {isLoading
-              ? "..."
-              : data?.messages.filter((m) => m.enabled).length ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.inactive")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {isLoading
-              ? "..."
-              : data?.messages.filter((m) => !m.enabled).length ?? 0}
-          </p>
-        </Card>
+        <StatsCard
+          label={t("stats.totalMessages")}
+          value={isLoading ? "..." : data?.total ?? 0}
+        />
+        <StatsCard
+          label={t("stats.active")}
+          value={isLoading ? "..." : data?.messages.filter((m) => m.enabled).length ?? 0}
+          valueClassName="text-success"
+        />
+        <StatsCard
+          label={t("stats.inactive")}
+          value={isLoading ? "..." : data?.messages.filter((m) => !m.enabled).length ?? 0}
+        />
       </div>
 
       {/* Message List */}

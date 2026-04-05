@@ -30,6 +30,7 @@ import {
 import { Separator } from "../../../components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 import { Icon } from "../../../components/Icon";
+import { StatsCard } from "../../../components/StatsCard";
 
 function statusColor(status: string) {
   switch (status) {
@@ -178,31 +179,23 @@ export function TicketsPage() {
       />
 
       {/* Stats */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.totalTickets")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {ticketsLoading ? "..." : ticketData?.total ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.open")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {ticketsLoading ? "..." : openCount}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.claimed")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {ticketsLoading ? "..." : claimedCount}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.panels")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {panelsLoading ? "..." : panels?.length ?? 0}
-          </p>
-        </Card>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <StatsCard
+          label={t("stats.totalTickets")}
+          value={ticketsLoading ? "..." : ticketData?.total ?? 0}
+        />
+        <StatsCard
+          label={t("stats.open")}
+          value={ticketsLoading ? "..." : openCount}
+        />
+        <StatsCard
+          label={t("stats.claimed")}
+          value={ticketsLoading ? "..." : claimedCount}
+        />
+        <StatsCard
+          label={t("stats.panels")}
+          value={panelsLoading ? "..." : panels?.length ?? 0}
+        />
       </div>
 
       <Tabs defaultValue="tickets">

@@ -36,7 +36,7 @@ import {
 import { Separator } from "../../../components/ui/separator";
 import { Icon } from "../../../components/Icon";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
-
+import { StatsCard } from "../../../components/StatsCard";
 
 function formatVoiceTime(minutes: number, t: (key: string, opts?: Record<string, unknown>) => string): string {
   const hours = Math.floor(minutes / 60);
@@ -244,24 +244,18 @@ export function LevelingPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.rankedMembers")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {leaderboardLoading ? "..." : leaderboardData?.total ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.roleRewards")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {rewardsLoading ? "..." : rewards?.length ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.systemStatus")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {settingsLoading ? "..." : settings?.enabled ? t("stats.enabled") : t("stats.disabled")}
-          </p>
-        </Card>
+        <StatsCard
+          label={t("stats.rankedMembers")}
+          value={leaderboardLoading ? "..." : leaderboardData?.total ?? 0}
+        />
+        <StatsCard
+          label={t("stats.roleRewards")}
+          value={rewardsLoading ? "..." : rewards?.length ?? 0}
+        />
+        <StatsCard
+          label={t("stats.systemStatus")}
+          value={settingsLoading ? "..." : settings?.enabled ? t("stats.enabled") : t("stats.disabled")}
+        />
       </div>
 
       <Tabs defaultValue="leaderboard">
