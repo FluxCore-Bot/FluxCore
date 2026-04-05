@@ -25,7 +25,7 @@ export function GuildLayout() {
 
       <Sidebar guildId={guildId} isOpen={isOpen} onClose={close} />
 
-      <main className="w-full min-h-full lg:ml-60">
+      <main className="w-full min-h-full lg:ms-60">
         <div className="mx-auto max-w-6xl p-4 sm:p-6 lg:p-8">
           <Outlet />
         </div>
