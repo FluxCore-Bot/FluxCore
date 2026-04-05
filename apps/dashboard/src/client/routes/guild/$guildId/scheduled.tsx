@@ -274,7 +274,7 @@ export function ScheduledMessagesPage() {
         subtitle={t("subtitle")}
         actions={
           <Button onClick={openCreate}>
-            <Icon name="add" size={16} className="mr-2" />
+            <Icon name="add" size={16} className="me-2" />
             {t("actions.newMessage")}
           </Button>
         }
@@ -418,7 +418,7 @@ export function ScheduledMessagesPage() {
               </p>
             </div>
             <Button onClick={openCreate}>
-              <Icon name="add" size={16} className="mr-2" />
+              <Icon name="add" size={16} className="me-2" />
               {t("empty.createButton")}
             </Button>
           </div>
@@ -638,9 +638,9 @@ export function ScheduledMessagesPage() {
                 {/* Embed Preview */}
                 {(form.embedTitle || form.embedDescription) && (
                   <div
-                    className="rounded-md border-l-4 bg-surface-high p-4"
+                    className="rounded-md border-s-4 bg-surface-high p-4"
                     style={{
-                      borderLeftColor: form.embedColor || "#a3a6ff",
+                      borderInlineStartColor: form.embedColor || "#a3a6ff",
                     }}
                   >
                     {form.embedTitle && (

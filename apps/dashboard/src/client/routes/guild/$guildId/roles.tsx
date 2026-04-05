@@ -271,7 +271,7 @@ export function RolesPage() {
               <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                 <DialogTrigger asChild>
                   <Button onClick={openCreateDialog}>
-                    <Icon name="add" size={16} className="mr-1" />
+                    <Icon name="add" size={16} className="me-1" />
                     {t("dialog.createPanel")}
                   </Button>
                 </DialogTrigger>
@@ -407,7 +407,7 @@ export function RolesPage() {
                           onClick={handleAddRoleEntry}
                           disabled={formRoles.length >= 25}
                         >
-                          <Icon name="add" size={14} className="mr-1" />
+                          <Icon name="add" size={14} className="me-1" />
                           {t("form.addRole")}
                         </Button>
                       </div>
@@ -614,7 +614,7 @@ export function RolesPage() {
                     </div>
 
                     {/* Embed preview */}
-                    <div className="rounded-md border-l-4 border-accent bg-surface-high p-4">
+                    <div className="rounded-md border-s-4 border-accent bg-surface-high p-4">
                       <p className="font-semibold text-text">
                         {(() => {
                           try {
@@ -664,7 +664,7 @@ export function RolesPage() {
                       <div className="mt-3">
                         <div className="inline-flex items-center rounded border border-[#4f545c] bg-[#2f3136] px-3 py-1.5 text-sm text-[#b9bbbe]">
                           {t("preview.selectRoles")}
-                          <Icon name="expand_more" size={16} className="ml-2" />
+                          <Icon name="expand_more" size={16} className="ms-2" />
                         </div>
                       </div>
                     )}

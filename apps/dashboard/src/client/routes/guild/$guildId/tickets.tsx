@@ -287,7 +287,7 @@ export function TicketsPage() {
                               href={ticket.transcriptUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="ml-1 text-primary hover:underline"
+                              className="ms-1 text-primary hover:underline"
                             >
                               <Icon name="description" size={16} />
                             </a>
@@ -358,7 +358,7 @@ export function TicketsPage() {
                       <TableCell className="font-mono text-xs">{panel.channelId}</TableCell>
                       <TableCell>
                         {panel.categories.map((c) => (
-                          <Badge key={c.name} variant="secondary" className="mr-1">
+                          <Badge key={c.name} variant="secondary" className="me-1">
                             {c.emoji ? `${c.emoji} ` : ""}{c.label}
                           </Badge>
                         ))}

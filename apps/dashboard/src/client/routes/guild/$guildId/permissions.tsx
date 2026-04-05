@@ -75,7 +75,7 @@ export function PermissionsPage() {
         subtitle={t("subtitle")}
         actions={
           <Button onClick={() => setShowCreateDialog(true)} size="sm">
-            <Icon name="add" size={16} className="mr-1" />
+            <Icon name="add" size={16} className="me-1" />
             {t("actions.createRole")}
           </Button>
         }
@@ -115,7 +115,7 @@ export function PermissionsPage() {
 
       {!requirePermissions && (
         <div className="rounded-md border border-warning/30 bg-warning/5 px-4 py-3 text-sm text-warning">
-          <Icon name="info" size={16} className="mr-2 inline-block align-text-bottom" />
+          <Icon name="info" size={16} className="me-2 inline-block align-text-bottom" />
           {t("warning.disabled")}
         </div>
       )}
@@ -136,7 +136,7 @@ export function PermissionsPage() {
                   <button
                     key={role.id}
                     onClick={() => setSelectedRoleId(role.id)}
-                    className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors ${
+                    className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-start text-sm transition-colors ${
                       selectedRoleId === role.id
                         ? "bg-surface-high text-text"
                         : "text-text-muted hover:bg-surface-high/50 hover:text-text"
@@ -148,7 +148,7 @@ export function PermissionsPage() {
                     />
                     <span className="truncate">{role.name}</span>
                     {role.isDefault && (
-                      <Badge variant="secondary" className="ml-auto text-[10px]">
+                      <Badge variant="secondary" className="ms-auto text-[10px]">
                         {t("roleList.default")}
                       </Badge>
                     )}
@@ -358,7 +358,7 @@ function RoleEditor({
                       </Badge>
                     )}
                   </div>
-                  <div className="ml-6 mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+                  <div className="ms-6 mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
                     {mod.permissions.map((perm) => {
                       const checked = hasWildcard || permissions.has(perm.key);
                       return (
@@ -444,7 +444,7 @@ function PresetDropdown({ guildId }: { guildId: string }) {
           key={key}
           onClick={() => handlePreset(key)}
           disabled={createFromPreset.isPending}
-          className="flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-left text-xs text-text-muted transition-colors hover:bg-surface-high/50 hover:text-text"
+          className="flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-start text-xs text-text-muted transition-colors hover:bg-surface-high/50 hover:text-text"
         >
           <span
             className="h-2 w-2 rounded-full"
@@ -571,7 +571,7 @@ function AuditLogTab({ guildId }: { guildId: string }) {
             </span>
             <span className="truncate text-text-muted">
               {entry.targetType && (
-                <Badge variant="outline" className="mr-1 text-[10px]">
+                <Badge variant="outline" className="me-1 text-[10px]">
                   {entry.targetType}
                 </Badge>
               )}

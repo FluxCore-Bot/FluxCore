@@ -331,9 +331,9 @@ export function RulesPage() {
       {/* Breadcrumb */}
       <nav className="flex items-center gap-1.5 text-xs text-text-muted">
         <span className="text-accent">{t("common:brand.name")}</span>
-        <Icon name="chevron_right" size={14} />
+        <Icon name="chevron_right" size={14} className="rtl:rotate-180" />
         <span>{t("breadcrumb.guild")}</span>
-        <Icon name="chevron_right" size={14} />
+        <Icon name="chevron_right" size={14} className="rtl:rotate-180" />
         <span className="text-text">{t("breadcrumb.automation")}</span>
       </nav>
 
@@ -380,14 +380,14 @@ export function RulesPage() {
               <Icon
                 name="search"
                 size={16}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted"
+                className="absolute start-3 top-1/2 -translate-y-1/2 text-text-muted"
               />
               <Input
                 type="text"
                 placeholder={t("filter.searchPlaceholder")}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-9"
+                className="ps-9"
               />
             </div>
 
@@ -460,7 +460,7 @@ export function RulesPage() {
           <span className="text-sm font-medium">
             {t("bulk.selected", { count: selectedRuleIds.size })}
           </span>
-          <div className="flex flex-wrap gap-2 sm:ml-auto">
+          <div className="flex flex-wrap gap-2 sm:ms-auto">
             <Button variant="ghost" size="sm" onClick={handleBulkEnable}>
               <Icon name="check_circle" size={16} />
               {t("bulk.enable")}
@@ -509,7 +509,7 @@ export function RulesPage() {
               <button
                 key={template.labelKey}
                 onClick={() => handleUseTemplate(template)}
-                className="group flex items-start gap-3 rounded-lg border border-border bg-surface-lowest p-4 text-left transition-all hover:border-accent/40 hover:bg-surface-high/50"
+                className="group flex items-start gap-3 rounded-lg border border-border bg-surface-lowest p-4 text-start transition-all hover:border-accent/40 hover:bg-surface-high/50"
               >
                 <div className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-surface-high ${template.color}`}>
                   <Icon name={template.icon} size={20} />

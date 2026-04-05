@@ -89,17 +89,17 @@ function RaidEventRow({ event, t }: { event: RaidEventData; t: (key: string, opt
             <span className="text-text-muted">{event.details.reason}</span>
           )}
           {event.details.action && (
-            <span className="ml-2 text-xs text-text-muted">
+            <span className="ms-2 text-xs text-text-muted">
               {t("events.actionLabel", { action: event.details.action })}
             </span>
           )}
           {event.details.userIds && event.details.userIds.length > 0 && (
-            <span className="ml-2 text-xs text-text-muted">
+            <span className="ms-2 text-xs text-text-muted">
               {t("events.usersLabel", { count: event.details.userIds.length })}
             </span>
           )}
           {event.details.ageDays !== undefined && (
-            <span className="ml-2 text-xs text-text-muted">
+            <span className="ms-2 text-xs text-text-muted">
               {t("events.accountAgeLabel", { days: event.details.ageDays })}
             </span>
           )}

@@ -324,7 +324,7 @@ export function CommandsPage() {
               <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                 <DialogTrigger asChild>
                   <Button onClick={openCreateDialog}>
-                    <Icon name="add" size={16} className="mr-1" />
+                    <Icon name="add" size={16} className="me-1" />
                     {t("dialog.createCommand")}
                   </Button>
                 </DialogTrigger>
@@ -495,7 +495,7 @@ export function CommandsPage() {
                           onClick={handleAddAction}
                           disabled={formActions.length >= 5}
                         >
-                          <Icon name="add" size={14} className="mr-1" />
+                          <Icon name="add" size={14} className="me-1" />
                           {t("actions.addAction")}
                         </Button>
                       </div>
