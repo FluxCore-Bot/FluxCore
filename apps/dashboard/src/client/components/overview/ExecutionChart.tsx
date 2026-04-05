@@ -20,7 +20,7 @@ function CustomTooltip({ active, payload, label }: { active?: boolean; payload?:
       {payload.map((entry) => (
         <p key={entry.dataKey} className="text-text-muted">
           <span
-            className="mr-1.5 inline-block h-2 w-2 rounded-full"
+            className="me-1.5 inline-block h-2 w-2 rounded-full"
             style={{ backgroundColor: entry.dataKey === "success" ? "#57f287" : "#ff6e84" }}
           />
           {entry.dataKey === "success" ? "Success" : "Errors"}: {entry.value}

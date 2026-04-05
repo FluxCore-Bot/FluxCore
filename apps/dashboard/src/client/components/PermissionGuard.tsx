@@ -49,7 +49,7 @@ export function PermissionPageGuard({ permission, children, module }: Permission
       <p className="mt-2 max-w-md text-sm text-text-muted">
         You don't have permission to access <span className="font-semibold text-text">{module}</span>.
       </p>
-      <div className="mt-4 rounded-lg border border-outline-variant/20 bg-surface-high/50 px-4 py-3 text-left text-xs">
+      <div className="mt-4 rounded-lg border border-outline-variant/20 bg-surface-high/50 px-4 py-3 text-start text-xs">
         <p className="font-medium text-text-muted">Required permission:</p>
         <code className="mt-1 block font-mono text-accent">{permission}</code>
         {roles.length > 0 && (

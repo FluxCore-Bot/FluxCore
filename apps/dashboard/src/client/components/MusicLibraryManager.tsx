@@ -38,7 +38,7 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
 
   if (isLoading) {
     return (
-      <div className="mt-2 space-y-2 border-l-2 border-outline-variant/30 pl-4">
+      <div className="mt-2 space-y-2 border-s-2 border-outline-variant/30 ps-4">
         <Skeleton className="h-10 w-full" />
         <Skeleton className="h-10 w-full" />
       </div>
@@ -77,7 +77,7 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
   const isPending = addTrack.isPending || deleteTrack.isPending;
 
   return (
-    <div className="mt-2 space-y-2 border-l-2 border-outline-variant/30 pl-4">
+    <div className="mt-2 space-y-2 border-s-2 border-outline-variant/30 ps-4">
       {tracks.map((track) => (
         <div
           key={track.id}
@@ -90,7 +90,7 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
           <Button
             variant="ghost"
             size="sm"
-            className="ml-2 shrink-0 text-danger hover:text-danger"
+            className="ms-2 shrink-0 text-danger hover:text-danger"
             onClick={() => handleDeleteTrack(track.id)}
             disabled={isPending}
           >

@@ -47,13 +47,13 @@ function ActionNodeComponent({ data, selected }: NodeProps) {
             Action {index + 1}
           </span>
           {validationState === "error" && (
-            <Icon name="error" size={14} className="ml-auto text-danger" />
+            <Icon name="error" size={14} className="ms-auto text-danger" />
           )}
           {validationState === "warning" && (
-            <Icon name="warning" size={14} className="ml-auto text-warning" />
+            <Icon name="warning" size={14} className="ms-auto text-warning" />
           )}
           {!isConfigured && !validationState && (
-            <span className="ml-auto flex h-2 w-2 rounded-full bg-warning/60" title={t("workflow.status.notConfigured")} />
+            <span className="ms-auto flex h-2 w-2 rounded-full bg-warning/60" title={t("workflow.status.notConfigured")} />
           )}
         </div>
         <p className="text-sm font-medium text-text">{label}</p>

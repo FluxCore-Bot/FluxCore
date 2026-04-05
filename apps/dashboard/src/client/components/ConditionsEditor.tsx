@@ -40,13 +40,13 @@ function ChipList({
         <Badge
           key={item.id}
           variant={color}
-          className="gap-1 pr-1 text-[11px]"
+          className="gap-1 pe-1 text-[11px]"
         >
           {item.label}
           <button
             type="button"
             onClick={() => onRemove(item.id)}
-            className="ml-0.5 rounded-full p-0.5 hover:bg-white/10"
+            className="ms-0.5 rounded-full p-0.5 hover:bg-white/10"
           >
             <Icon name="close" size={10} />
           </button>
@@ -203,7 +203,7 @@ export function ConditionsEditor({
         <Icon name="filter_alt" size={14} />
         {t("conditions.addConditions")}
         {hasAnyConditions && (
-          <Badge variant="secondary" className="ml-auto text-xs">
+          <Badge variant="secondary" className="ms-auto text-xs">
             {(conditions.channelIds?.length ?? 0) +
               (conditions.roleIds?.length ?? 0) +
               (conditions.userIds?.length ?? 0) +

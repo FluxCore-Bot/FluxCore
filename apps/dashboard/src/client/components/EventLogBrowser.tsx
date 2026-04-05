@@ -55,7 +55,7 @@ export function EventLogBrowser() {
         <Icon name="list" size={20} className="text-accent" />
         <h3 className="text-lg font-semibold font-display">{t("events.title")}</h3>
         {data && (
-          <Badge variant="outline" className="ml-auto text-xs font-mono">
+          <Badge variant="outline" className="ms-auto text-xs font-mono">
             {t("events.filter.entries", { count: data.total.toLocaleString() })}
           </Badge>
         )}
@@ -86,7 +86,7 @@ export function EventLogBrowser() {
           <Icon
             name="search"
             size={16}
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted"
+            className="absolute inset-s-3 top-1/2 -translate-y-1/2 text-text-muted"
           />
           <Input
             type="text"
@@ -96,7 +96,7 @@ export function EventLogBrowser() {
               setPage(1);
             }}
             placeholder={t("events.filter.byUserId")}
-            className="pl-10 font-mono text-sm"
+            className="ps-10 font-mono text-sm"
           />
         </div>
       </div>

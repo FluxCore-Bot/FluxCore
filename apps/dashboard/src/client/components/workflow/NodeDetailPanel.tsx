@@ -161,23 +161,23 @@ function TriggerPanel({
     <Tabs defaultValue="settings">
       <TabsList className="w-full">
         <TabsTrigger value="settings" className="flex-1">
-          <Icon name="settings" size={14} className="mr-1.5" />
+          <Icon name="settings" size={14} className="me-1.5" />
           Settings
         </TabsTrigger>
         <TabsTrigger value="conditions" className="flex-1">
-          <Icon name="filter_alt" size={14} className="mr-1.5" />
+          <Icon name="filter_alt" size={14} className="me-1.5" />
           Filters
           {conditionCount > 0 && (
-            <Badge variant="secondary" className="ml-1.5 h-4 px-1 text-[10px]">
+            <Badge variant="secondary" className="ms-1.5 h-4 px-1 text-[10px]">
               {conditionCount}
             </Badge>
           )}
         </TabsTrigger>
         <TabsTrigger value="variables" className="flex-1">
-          <Icon name="data_object" size={14} className="mr-1.5" />
+          <Icon name="data_object" size={14} className="me-1.5" />
           Vars
           {variables.length > 0 && (
-            <Badge variant="secondary" className="ml-1.5 h-4 px-1 text-[10px]">
+            <Badge variant="secondary" className="ms-1.5 h-4 px-1 text-[10px]">
               {variables.length}
             </Badge>
           )}
@@ -262,11 +262,11 @@ function ActionPanel({
     <Tabs defaultValue="settings">
       <TabsList className="w-full">
         <TabsTrigger value="settings" className="flex-1">
-          <Icon name="settings" size={14} className="mr-1.5" />
+          <Icon name="settings" size={14} className="me-1.5" />
           Settings
         </TabsTrigger>
         <TabsTrigger value="variables" className="flex-1">
-          <Icon name="data_object" size={14} className="mr-1.5" />
+          <Icon name="data_object" size={14} className="me-1.5" />
           Variables
         </TabsTrigger>
       </TabsList>
