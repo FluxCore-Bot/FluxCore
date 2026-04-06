@@ -1,4 +1,4 @@
-import { cn } from "../../lib/utils";
+import { cn } from "../lib/utils";
 import { Input } from "./input";
 import type { ChangeEvent } from "react";
 

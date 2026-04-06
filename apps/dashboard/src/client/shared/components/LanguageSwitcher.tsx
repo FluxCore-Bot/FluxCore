@@ -5,7 +5,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
 import { ScrollArea } from "../ui/scroll-area";
 import { Check, ChevronDown, Search } from "lucide-react";
-import { useAppDirection } from "../lib/hooks/useDirection";
+import { useAppDirection } from "../hooks/useDirection";
 
 export function LanguageSwitcher() {
   const { i18n } = useTranslation();
