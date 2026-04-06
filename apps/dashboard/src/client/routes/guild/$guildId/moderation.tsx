@@ -80,7 +80,7 @@ export function ModerationPage() {
   const settingsMutation = useUpdateModSettings(guildId);
 
   if (casesLoading || settingsLoading) {
-    return <PageSkeleton />;
+    return <PageSkeleton stats={3} tabCount={3} content="table" />;
   }
 
   const cases = casesData?.cases ?? [];

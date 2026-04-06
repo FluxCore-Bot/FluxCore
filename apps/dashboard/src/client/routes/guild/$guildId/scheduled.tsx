@@ -48,6 +48,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tab
 import { Icon } from "../../../shared/components/Icon";
 import type { ScheduledMessageContent } from "../../../shared/lib/schemas";
 import { StatsCard } from "../../../shared/components/StatsCard";
+import { PageSkeleton, TableSkeleton } from "../../../shared/ui/skeletons";
 import { Calendar, Play, Pause } from "lucide-react";
 
 const COMMON_TIMEZONES = [
@@ -270,6 +271,10 @@ export function ScheduledMessagesPage() {
     setForm((prev) => ({ ...prev, ...updates }));
   }
 
+  if (isLoading) {
+    return <PageSkeleton stats={3} tabs={false} content="table" />;
+  }
+
   return (
     <div className="space-y-8">
       <PageHeader
@@ -312,7 +317,7 @@ export function ScheduledMessagesPage() {
       {/* Message List */}
       <Card className="bg-surface-container p-6 glass-edge">
         {isLoading ? (
-          <p className="text-text-muted">{t("common:loading")}</p>
+          <TableSkeleton columns={6} />
         ) : data && data.messages.length > 0 ? (
           <>
             <div className="overflow-x-auto">

@@ -35,6 +35,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 import { Badge } from "../../../shared/ui/badge";
 import { Icon } from "../../../shared/components/Icon";
+import { PageSkeleton, TableSkeleton } from "../../../shared/ui/skeletons";
 
 export function StarboardPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
@@ -86,15 +87,7 @@ export function StarboardPage() {
   }
 
   if (isLoading) {
-    return (
-      <div className="space-y-8">
-        <PageHeader
-          title={t("title")}
-          subtitle={t("subtitle")}
-        />
-        <p className="text-text-muted">{t("common:actions.loading")}</p>
-      </div>
-    );
+    return <PageSkeleton stats={0} tabCount={2} content="form" />;
   }
 
   const totalPages = entriesData ? Math.ceil(entriesData.total / 20) : 0;
@@ -242,7 +235,7 @@ export function StarboardPage() {
             <Separator className="mb-4" />
 
             {entriesLoading ? (
-              <p className="text-text-muted">{t("common:actions.loading")}</p>
+              <TableSkeleton columns={5} />
             ) : !entriesData?.entries.length ? (
               <div className="flex flex-col items-center justify-center py-12 text-center">
                 <Icon name="star" size={48} className="mb-3 text-text-muted/30" />

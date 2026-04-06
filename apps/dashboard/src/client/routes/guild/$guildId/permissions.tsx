@@ -65,7 +65,7 @@ export function PermissionsPage() {
     }
   }, [roles, selectedRoleId]);
 
-  if (permLoading || rolesLoading || settingsLoading) return <PageSkeleton />;
+  if (permLoading || rolesLoading || settingsLoading) return <PageSkeleton stats={0} tabCount={3} content="form" />;
 
   const requirePermissions = settings?.requirePermissions ?? false;
 
@@ -529,7 +529,7 @@ function AuditLogTab({ guildId }: { guildId: string }) {
   const [page, setPage] = useState(1);
   const { data, isLoading } = useDashboardAuditLog(guildId, { page, limit: 25 });
 
-  if (isLoading) return <PageSkeleton />;
+  if (isLoading) return <PageSkeleton stats={0} tabCount={3} content="form" />;
 
   if (!data?.entries.length) {
     return (

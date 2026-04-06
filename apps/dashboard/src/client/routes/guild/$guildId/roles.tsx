@@ -47,6 +47,7 @@ import { Separator } from "../../../shared/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 import { Icon } from "../../../shared/components/Icon";
 import { StatsCard } from "../../../shared/components/StatsCard";
+import { PageSkeleton, TableSkeleton } from "../../../shared/ui/skeletons";
 import { LayoutGrid, Rocket, Users } from "lucide-react";
 
 function EmptyRoleEntry(): RolePanelEntryItem {
@@ -237,6 +238,10 @@ export function RolesPage() {
   }
 
   const textChannels = channels?.filter((c) => c.type === 0) ?? [];
+
+  if (isLoading) {
+    return <PageSkeleton stats={3} tabCount={2} content="table" />;
+  }
 
   return (
     <div className="space-y-8">
@@ -525,7 +530,7 @@ export function RolesPage() {
             </div>
 
             {isLoading ? (
-              <p className="text-text-muted">{t("loading")}</p>
+              <TableSkeleton columns={5} />
             ) : panels && panels.length > 0 ? (
               <div className="overflow-x-auto">
                 <Table>

@@ -31,6 +31,7 @@ import { Separator } from "../../../shared/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 import { Icon } from "../../../shared/components/Icon";
 import { StatsCard } from "../../../shared/components/StatsCard";
+import { PageSkeleton, TableSkeleton, FormSkeleton } from "../../../shared/ui/skeletons";
 import { DiscordSelect } from "../../../shared/ui/discord-select";
 import { DiscordMultiSelect } from "../../../shared/ui/discord-multi-select";
 import { Ticket, FolderOpen, UserCheck, LayoutGrid } from "lucide-react";
@@ -172,6 +173,10 @@ export function TicketsPage() {
     setTranscriptChannelId(settings.transcriptChannelId ?? null);
   }, [settings]);
 
+  if (ticketsLoading && panelsLoading && settingsLoading) {
+    return <PageSkeleton stats={4} tabCount={3} content="table" />;
+  }
+
   return (
     <div className="space-y-8">
       <PageHeader
@@ -237,7 +242,7 @@ export function TicketsPage() {
             </div>
 
             {ticketsLoading ? (
-              <p className="text-text-muted">{t("loading")}</p>
+              <TableSkeleton />
             ) : ticketData && ticketData.tickets.length > 0 ? (
               <>
                 <div className="overflow-x-auto">
@@ -343,7 +348,7 @@ export function TicketsPage() {
             </p>
 
             {panelsLoading ? (
-              <p className="text-text-muted">{t("loading")}</p>
+              <TableSkeleton />
             ) : panels && panels.length > 0 ? (
               <div className="overflow-x-auto">
                 <Table>
@@ -440,7 +445,7 @@ export function TicketsPage() {
             <h3 className="mb-4 font-label text-lg font-semibold">{t("tabs.settings")}</h3>
 
             {settingsLoading ? (
-              <p className="text-text-muted">{t("common:actions.loading")}</p>
+              <FormSkeleton />
             ) : settings ? (
               <div className="space-y-6">
                 <div>

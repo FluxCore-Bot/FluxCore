@@ -46,6 +46,7 @@ import {
 } from "../../../shared/ui/dialog";
 import { Textarea } from "../../../shared/ui/textarea";
 import { MessageSquare, Power, Hash } from "lucide-react";
+import { PageSkeleton, TableSkeleton, FormSkeleton } from "../../../shared/ui/skeletons";
 
 const STATUS_BADGE_VARIANT: Record<string, "default" | "secondary" | "destructive" | "outline"> = {
   pending: "outline",
@@ -156,6 +157,8 @@ export function SuggestionsPage() {
     setDeleteConfirmId(null);
   }
 
+  if (suggestionsLoading && settingsLoading) return <PageSkeleton stats={3} tabCount={2} content="table" />;
+
   return (
     <div className="space-y-8">
       <PageHeader
@@ -212,7 +215,7 @@ export function SuggestionsPage() {
             </div>
 
             {suggestionsLoading ? (
-              <p className="text-text-muted">{t("loading")}</p>
+              <TableSkeleton columns={6} />
             ) : suggestionsData && suggestionsData.suggestions.length > 0 ? (
               <>
                 <div className="overflow-x-auto">
@@ -337,7 +340,7 @@ export function SuggestionsPage() {
             <h3 className="mb-4 font-label text-lg font-semibold">{t("tabs.settings")}</h3>
 
             {settingsLoading ? (
-              <p className="text-text-muted">{t("common:actions.loading")}</p>
+              <FormSkeleton />
             ) : settings ? (
               <div className="space-y-6">
                 <div className="flex items-center justify-between">

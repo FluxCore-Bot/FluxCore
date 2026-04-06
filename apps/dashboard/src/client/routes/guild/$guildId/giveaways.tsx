@@ -34,6 +34,7 @@ import {
 import { Separator } from "../../../shared/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 import { StatsCard } from "../../../shared/components/StatsCard";
+import { PageSkeleton, TableSkeleton } from "../../../shared/ui/skeletons";
 import { Gift, Archive, Users } from "lucide-react";
 
 function formatTimeRemaining(endsAt: string): string {
@@ -163,6 +164,10 @@ export function GiveawaysPage() {
     });
   }
 
+  if (activeLoading && pastLoading) {
+    return <PageSkeleton stats={3} tabCount={3} content="table" />;
+  }
+
   return (
     <div className="space-y-8">
       <PageHeader
@@ -208,7 +213,7 @@ export function GiveawaysPage() {
         <TabsContent value="active">
           <Card className="bg-surface-container p-6 glass-edge">
             {activeLoading ? (
-              <p className="text-text-muted">{t("loading")}</p>
+              <TableSkeleton columns={6} />
             ) : activeData && activeData.giveaways.length > 0 ? (
               <>
                 <div className="overflow-x-auto">
@@ -291,7 +296,7 @@ export function GiveawaysPage() {
         <TabsContent value="past">
           <Card className="bg-surface-container p-6 glass-edge">
             {pastLoading ? (
-              <p className="text-text-muted">{t("loading")}</p>
+              <TableSkeleton columns={6} />
             ) : pastData && pastData.giveaways.length > 0 ? (
               <>
                 <div className="overflow-x-auto">

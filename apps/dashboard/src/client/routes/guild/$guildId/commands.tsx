@@ -53,6 +53,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 import { Icon } from "../../../shared/components/Icon";
 import { StatsCard } from "../../../shared/components/StatsCard";
+import { PageSkeleton, TableSkeleton } from "../../../shared/ui/skeletons";
 import { Terminal, CheckCircle, Gauge } from "lucide-react";
 
 function emptyAction(): CustomCommandAction {
@@ -291,6 +292,10 @@ export function CommandsPage() {
 
   const textChannels = channels?.filter((c) => c.type === 0) ?? [];
   const enabledCount = commands?.filter((c) => c.enabled).length ?? 0;
+
+  if (isLoading) {
+    return <PageSkeleton stats={3} tabCount={2} content="table" />;
+  }
 
   return (
     <div className="space-y-8">
@@ -789,7 +794,7 @@ export function CommandsPage() {
             </div>
 
             {isLoading ? (
-              <p className="text-text-muted">{t("loading")}</p>
+              <TableSkeleton columns={6} />
             ) : commands && commands.length > 0 ? (
               <div className="overflow-x-auto">
                 <Table>

@@ -20,6 +20,7 @@ import { Switch } from "../../../shared/ui/switch";
 import { Separator } from "../../../shared/ui/separator";
 import { Badge } from "../../../shared/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
+import { PageSkeleton } from "../../../shared/ui/skeletons";
 
 const ACTION_OPTIONS = [
   { value: "kick", labelKey: "joinRate.actions.kick" },
@@ -178,15 +179,7 @@ export function SecurityPage() {
   }
 
   if (isLoading) {
-    return (
-      <div className="space-y-8">
-        <PageHeader
-          title={t("title")}
-          subtitle={t("subtitle")}
-        />
-        <p className="text-text-muted">{t("common:actions.loading")}</p>
-      </div>
-    );
+    return <PageSkeleton stats={0} tabCount={5} content="form" rows={6} />;
   }
 
   return (
