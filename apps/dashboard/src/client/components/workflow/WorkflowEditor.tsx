@@ -22,8 +22,6 @@ import {
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { useConstants } from "../../lib/hooks/useConstants";
-import { useChannels } from "../../lib/hooks/useChannels";
-import { useRoles } from "../../lib/hooks/useRoles";
 import { useCreateRule, useUpdateRule } from "../../lib/hooks/useRules";
 import { useRuleDraft } from "../../lib/hooks/useRuleDraft";
 import {
@@ -90,8 +88,6 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
   const { t } = useTranslation("rules");
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: constants } = useConstants();
-  const { data: channels = [] } = useChannels(guildId);
-  const { data: roles = [] } = useRoles(guildId);
   const createRule = useCreateRule(guildId);
   const updateRule = useUpdateRule(guildId);
   const { saveDraft: saveDraftToStorage, loadDraft, clearDraft } = useRuleDraft(guildId, rule?.id);
@@ -580,8 +576,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             type="trigger"
             eventType={eventType}
             constants={constants}
-            channels={channels}
-            roles={roles}
+            guildId={guildId}
             conditions={conditions}
             onEventTypeChange={setEventType}
             onConditionsChange={setConditions}
@@ -594,8 +589,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             index={selectedNode.index}
             action={actions[selectedNode.index]}
             constants={constants}
-            channels={channels}
-            roles={roles}
+            guildId={guildId}
             totalActions={actions.length}
             onActionChange={rawActionChange}
             onActionRemove={actions.length > 1 ? handleActionRemove : handleActionReset}
@@ -610,8 +604,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             stepId={selectedNode.stepId}
             steps={steps}
             constants={constants}
-            channels={channels}
-            roles={roles}
+            guildId={guildId}
             onStepChange={handleStepChange}
             onStepRemove={handleStepRemove}
             onClose={() => setSelectedNode(null)}

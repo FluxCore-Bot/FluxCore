@@ -13,6 +13,8 @@ import {
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
+import { DiscordSelect } from "../../../components/ui/discord-select";
+import { DiscordMultiSelect } from "../../../components/ui/discord-multi-select";
 import { Card } from "../../../components/ui/card";
 import { Switch } from "../../../components/ui/switch";
 import { Separator } from "../../../components/ui/separator";
@@ -130,8 +132,8 @@ export function SecurityPage() {
   const [antiNukeEnabled, setAntiNukeEnabled] = useState(false);
   const [antiNukeThreshold, setAntiNukeThreshold] = useState("3");
   const [lockdownOnRaid, setLockdownOnRaid] = useState(false);
-  const [whitelistedRoleIds, setWhitelistedRoleIds] = useState("");
-  const [logChannelId, setLogChannelId] = useState("");
+  const [whitelistedRoleIds, setWhitelistedRoleIds] = useState<string[]>([]);
+  const [logChannelId, setLogChannelId] = useState<string | null>(null);
 
   // Sync from server
   useEffect(() => {
@@ -145,17 +147,12 @@ export function SecurityPage() {
       setAntiNukeEnabled(config.antiNukeEnabled);
       setAntiNukeThreshold(String(config.antiNukeThreshold));
       setLockdownOnRaid(config.lockdownOnRaid);
-      setWhitelistedRoleIds(config.whitelistedRoleIds.join(", "));
-      setLogChannelId(config.logChannelId ?? "");
+      setWhitelistedRoleIds(config.whitelistedRoleIds);
+      setLogChannelId(config.logChannelId ?? null);
     }
   }, [config]);
 
   function handleSave() {
-    const roleIds = whitelistedRoleIds
-      .split(",")
-      .map((s) => s.trim())
-      .filter(Boolean);
-
     updateConfig.mutate(
       {
         enabled,
@@ -167,8 +164,8 @@ export function SecurityPage() {
         antiNukeEnabled,
         antiNukeThreshold: parseInt(antiNukeThreshold, 10) || 3,
         lockdownOnRaid,
-        whitelistedRoleIds: roleIds,
-        logChannelId: logChannelId || null,
+        whitelistedRoleIds: whitelistedRoleIds,
+        logChannelId: logChannelId,
       },
       {
         onSuccess: () => toast.success(t("toast.saved")),
@@ -372,12 +369,12 @@ export function SecurityPage() {
             <div className="space-y-6">
               <div>
                 <Label htmlFor="whitelist-roles">{t("lockdown.whitelistedRoles")}</Label>
-                <Input
-                  id="whitelist-roles"
+                <DiscordMultiSelect
+                  guildId={guildId}
+                  type="role"
+                  selectedIds={whitelistedRoleIds}
+                  onChange={setWhitelistedRoleIds}
                   placeholder={t("lockdown.whitelistedRolesPlaceholder")}
-                  value={whitelistedRoleIds}
-                  onChange={(e) => setWhitelistedRoleIds(e.target.value)}
-                  className="mt-1"
                 />
                 <p className="mt-1 text-xs text-text-muted">
                   {t("lockdown.whitelistedRolesHint")}
@@ -386,12 +383,13 @@ export function SecurityPage() {
 
               <div>
                 <Label htmlFor="log-channel">{t("lockdown.logChannel")}</Label>
-                <Input
-                  id="log-channel"
-                  placeholder={t("lockdown.logChannelPlaceholder")}
+                <DiscordSelect
+                  guildId={guildId}
+                  type="text"
                   value={logChannelId}
-                  onChange={(e) => setLogChannelId(e.target.value)}
-                  className="mt-1 w-64"
+                  onValueChange={setLogChannelId}
+                  placeholder={t("lockdown.logChannelPlaceholder")}
+                  allowNone
                 />
               </div>
             </div>

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useChannels } from "../../lib/hooks/useChannels";
+import { useRoles } from "../../lib/hooks/useRoles";
 import { ActionFields } from "../ActionFields";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
@@ -18,9 +20,7 @@ import type {
   ActionConditions,
   ActionConfig,
   ActionFieldDescriptor,
-  Channel,
   Constants,
-  Role,
   RuleStep,
   StepConditionConfig,
 } from "../../lib/schemas";
@@ -29,8 +29,7 @@ interface TriggerPanelProps {
   type: "trigger";
   eventType: string;
   constants: Constants;
-  channels: Channel[];
-  roles: Role[];
+  guildId: string;
   conditions: ActionConditions;
   onEventTypeChange: (eventType: string) => void;
   onConditionsChange: (conditions: ActionConditions) => void;
@@ -42,8 +41,7 @@ interface ActionPanelProps {
   index: number;
   action: ActionConfig;
   constants: Constants;
-  channels: Channel[];
-  roles: Role[];
+  guildId: string;
   totalActions: number;
   onActionChange: (index: number, action: ActionConfig) => void;
   onActionRemove: (index: number) => void;
@@ -57,8 +55,7 @@ interface StepPanelProps {
   stepId: string;
   steps: RuleStep[];
   constants: Constants;
-  channels: Channel[];
-  roles: Role[];
+  guildId: string;
   onStepChange: (stepId: string, step: RuleStep) => void;
   onStepRemove: (stepId: string) => void;
   onClose: () => void;
@@ -141,8 +138,7 @@ export function NodeDetailPanel(props: NodeDetailPanelProps) {
 function TriggerPanel({
   eventType,
   constants,
-  channels,
-  roles,
+  guildId,
   conditions,
   onEventTypeChange,
   onConditionsChange,
@@ -217,8 +213,7 @@ function TriggerPanel({
         <ConditionsEditor
           conditions={conditions}
           onChange={onConditionsChange}
-          channels={channels}
-          roles={roles}
+          guildId={guildId}
           alwaysExpanded
         />
       </TabsContent>
@@ -234,14 +229,15 @@ function ActionPanel({
   index,
   action,
   constants,
-  channels,
-  roles,
+  guildId,
   totalActions,
   onActionChange,
   onActionRemove,
   onActionMove,
   canRemove,
 }: ActionPanelProps) {
+  const { data: channels = [] } = useChannels(guildId);
+  const { data: roles = [] } = useRoles(guildId);
   const fields: ActionFieldDescriptor[] =
     constants.actionTypeFields[action.type] ?? [];
 
@@ -382,11 +378,12 @@ function StepPanel({
   stepId,
   steps,
   constants,
-  channels,
-  roles,
+  guildId,
   onStepChange,
   onStepRemove,
 }: StepPanelProps) {
+  const { data: channels = [] } = useChannels(guildId);
+  const { data: roles = [] } = useRoles(guildId);
   const step = steps.find((s) => s.id === stepId);
   if (!step) return <p className="text-xs text-text-muted">Step not found</p>;
 

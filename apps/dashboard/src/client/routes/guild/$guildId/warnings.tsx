@@ -18,6 +18,7 @@ import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
 import { Card } from "../../../components/ui/card";
+import { StatsCard } from "../../../components/StatsCard";
 import { Switch } from "../../../components/ui/switch";
 import {
   Select,
@@ -155,24 +156,20 @@ export function WarningsPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.totalWarnings")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {warningsLoading ? "..." : warningsData?.total ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.escalationRules")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {punishmentsLoading ? "..." : punishments?.length ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.dmOnWarn")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {settingsLoading ? "..." : settings?.dmOnWarn ? t("common:labels.enabled") : t("common:labels.disabled")}
-          </p>
-        </Card>
+        <StatsCard
+          label={t("stats.totalWarnings")}
+          value={warningsLoading ? "..." : warningsData?.total ?? 0}
+        />
+        <StatsCard
+          label={t("stats.escalationRules")}
+          value={punishmentsLoading ? "..." : punishments?.length ?? 0}
+          accentColor="border-warning"
+        />
+        <StatsCard
+          label={t("stats.dmOnWarn")}
+          value={settingsLoading ? "..." : settings?.dmOnWarn ? t("common:labels.enabled") : t("common:labels.disabled")}
+          accentColor="border-success"
+        />
       </div>
 
       <Tabs defaultValue="warnings">
