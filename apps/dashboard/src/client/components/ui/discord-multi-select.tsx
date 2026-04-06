@@ -79,16 +79,15 @@ export function DiscordMultiSelect({
   return (
     <div className="space-y-1.5">
       {label && <Label className="text-xs">{label}</Label>}
-      {isLoading && <Skeleton className="h-8 w-full" />}
-      {isError && (
+      {isLoading ? (
+        <Skeleton className="h-8 w-full" />
+      ) : isError ? (
         <Select disabled>
           <SelectTrigger className="h-8 text-xs">
             <SelectValue placeholder="Failed to load" />
           </SelectTrigger>
-          <SelectContent />
         </Select>
-      )}
-      {!isLoading && !isError && available.length > 0 && (
+      ) : available.length > 0 ? (
         <Select value="" onValueChange={(v) => v && add(v)}>
           <SelectTrigger className="h-8 text-xs">
             <SelectValue placeholder={placeholder ?? defaultPlaceholder} />
@@ -101,7 +100,7 @@ export function DiscordMultiSelect({
             ))}
           </SelectContent>
         </Select>
-      )}
+      ) : null}
       {chips.length > 0 && (
         <div className="flex flex-wrap gap-1.5">
           {chips.map((chip) => (
@@ -113,6 +112,7 @@ export function DiscordMultiSelect({
               {chip.label}
               <button
                 type="button"
+                aria-label={`Remove ${chip.label}`}
                 onClick={() => remove(chip.id)}
                 className="ms-0.5 rounded-full p-0.5 hover:bg-white/10"
               >
