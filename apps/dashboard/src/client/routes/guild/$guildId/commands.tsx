@@ -53,6 +53,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 import { Icon } from "../../../shared/components/Icon";
 import { StatsCard } from "../../../shared/components/StatsCard";
+import { Terminal, CheckCircle, Gauge } from "lucide-react";
 
 function emptyAction(): CustomCommandAction {
   return { type: "addRole", roleId: "" };
@@ -303,15 +304,20 @@ export function CommandsPage() {
         <StatsCard
           label={t("stats.totalCommands")}
           value={isLoading ? "..." : commands?.length ?? 0}
+          icon={Terminal}
+          accent="primary"
         />
         <StatsCard
           label={t("stats.enabled")}
           value={isLoading ? "..." : enabledCount}
-          valueClassName="text-success"
+          icon={CheckCircle}
+          accent="success"
         />
         <StatsCard
           label={t("common:limit")}
           value={isLoading ? "..." : t("stats.limit", { count: commands?.length ?? 0 })}
+          icon={Gauge}
+          accent="info"
         />
       </div>
 

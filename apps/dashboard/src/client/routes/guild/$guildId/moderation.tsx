@@ -44,6 +44,7 @@ import {
 import { useChannels } from "../../../shared/hooks/useChannels";
 import { ApiError } from "../../../shared/lib/client";
 import type { ModCase } from "../../../shared/lib/schemas";
+import { Shield, Clock, Activity } from "lucide-react";
 
 const ACTION_KEYS = ["ban", "tempban", "kick", "timeout", "softban", "warn", "note"] as const;
 
@@ -133,16 +134,18 @@ export function ModerationPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <StatsCard label={t("stats.totalCases")} value={total} />
+        <StatsCard label={t("stats.totalCases")} value={total} icon={Shield} accent="primary" />
         <StatsCard
           label={t("stats.activeTempbans")}
           value={activeTempbans}
-          accentColor="border-orange-400"
+          icon={Clock}
+          accent="warning"
         />
         <StatsCard
           label={t("stats.last24h")}
           value={recent24h}
-          accentColor="border-success"
+          icon={Activity}
+          accent="success"
         />
       </div>
 

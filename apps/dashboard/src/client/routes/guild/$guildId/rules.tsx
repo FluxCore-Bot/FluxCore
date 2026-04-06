@@ -10,6 +10,7 @@ import {
 } from "../../../features/automation/hooks/useRules";
 import { useConstants } from "../../../shared/hooks/useConstants";
 import { useAnalytics } from "../../../features/overview/hooks/useAnalytics";
+import { Zap, ToggleRight, BarChart3, Target } from "lucide-react";
 import { toast } from "sonner";
 import { RuleList } from "../../../features/automation/components/RuleList";
 import { WorkflowEditor, type RuleDraft } from "../../../features/automation/workflow/WorkflowEditor";
@@ -355,22 +356,24 @@ export function RulesPage() {
         <>
           {/* Stats row */}
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-            <StatsCard label={t("stats.totalRules")} value={rules.length} />
+            <StatsCard label={t("stats.totalRules")} value={rules.length} icon={Zap} accent="primary" />
             <StatsCard
               label={t("stats.active")}
               value={activeRules}
-              accentColor="border-secondary"
+              icon={ToggleRight}
+              accent="success"
             />
             <StatsCard
               label={t("stats.executions7d")}
               value={executions7d}
-              accentColor="border-accent"
+              icon={BarChart3}
+              accent="secondary"
             />
             <StatsCard
               label={t("stats.successRate")}
               value={rules.length > 0 ? `${Math.round(successRate)}%` : "--"}
-              accentColor={successRate >= 90 ? "border-secondary" : "border-warning"}
-              valueClassName={successRate < 90 ? "text-warning" : ""}
+              icon={Target}
+              accent={successRate >= 90 ? "success" : "warning"}
             />
           </div>
 

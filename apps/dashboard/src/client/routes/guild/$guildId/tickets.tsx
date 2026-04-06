@@ -33,6 +33,7 @@ import { Icon } from "../../../shared/components/Icon";
 import { StatsCard } from "../../../shared/components/StatsCard";
 import { DiscordSelect } from "../../../shared/ui/discord-select";
 import { DiscordMultiSelect } from "../../../shared/ui/discord-multi-select";
+import { Ticket, FolderOpen, UserCheck, LayoutGrid } from "lucide-react";
 
 function statusColor(status: string) {
   switch (status) {
@@ -179,22 +180,30 @@ export function TicketsPage() {
       />
 
       {/* Stats */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
         <StatsCard
           label={t("stats.totalTickets")}
           value={ticketsLoading ? "..." : ticketData?.total ?? 0}
+          icon={Ticket}
+          accent="primary"
         />
         <StatsCard
           label={t("stats.open")}
           value={ticketsLoading ? "..." : openCount}
+          icon={FolderOpen}
+          accent="success"
         />
         <StatsCard
           label={t("stats.claimed")}
           value={ticketsLoading ? "..." : claimedCount}
+          icon={UserCheck}
+          accent="warning"
         />
         <StatsCard
           label={t("stats.panels")}
           value={panelsLoading ? "..." : panels?.length ?? 0}
+          icon={LayoutGrid}
+          accent="secondary"
         />
       </div>
 

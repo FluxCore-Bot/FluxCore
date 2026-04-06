@@ -47,6 +47,7 @@ import { Separator } from "../../../shared/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 import { Icon } from "../../../shared/components/Icon";
 import { StatsCard } from "../../../shared/components/StatsCard";
+import { LayoutGrid, Rocket, Users } from "lucide-react";
 
 function EmptyRoleEntry(): RolePanelEntryItem {
   return { roleId: "", label: "", emoji: "", description: "", style: 2 };
@@ -249,14 +250,20 @@ export function RolesPage() {
         <StatsCard
           label={t("stats.totalPanels")}
           value={isLoading ? "..." : panels?.length ?? 0}
+          icon={LayoutGrid}
+          accent="primary"
         />
         <StatsCard
           label={t("stats.deployed")}
           value={isLoading ? "..." : panels?.filter((p) => p.messageId).length ?? 0}
+          icon={Rocket}
+          accent="success"
         />
         <StatsCard
           label={t("stats.totalRoles")}
           value={isLoading ? "..." : panels?.reduce((sum, p) => sum + p.roles.length, 0) ?? 0}
+          icon={Users}
+          accent="secondary"
         />
       </div>
 

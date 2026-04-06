@@ -34,6 +34,7 @@ import {
 import { Separator } from "../../../shared/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 import { StatsCard } from "../../../shared/components/StatsCard";
+import { Gift, Archive, Users } from "lucide-react";
 
 function formatTimeRemaining(endsAt: string): string {
   const end = new Date(endsAt).getTime();
@@ -174,14 +175,25 @@ export function GiveawaysPage() {
         <StatsCard
           label={t("stats.activeGiveaways")}
           value={activeLoading ? "..." : activeData?.total ?? 0}
+          icon={Gift}
+          accent="success"
         />
         <StatsCard
           label={t("stats.pastGiveaways")}
           value={pastLoading ? "..." : pastData?.total ?? 0}
+          icon={Archive}
+          accent="primary"
         />
         <StatsCard
           label={t("stats.totalEntries")}
-          value={activeLoading ? "..." : (activeData?.giveaways ?? []).reduce((sum, g) => sum + g.entrantIds.length, 0)}
+          value={activeLoading
+            ? "..."
+            : (activeData?.giveaways ?? []).reduce(
+                (sum, g) => sum + g.entrantIds.length,
+                0,
+              )}
+          icon={Users}
+          accent="secondary"
         />
       </div>
 

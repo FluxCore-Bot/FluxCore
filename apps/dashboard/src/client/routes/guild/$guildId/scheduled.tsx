@@ -48,6 +48,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tab
 import { Icon } from "../../../shared/components/Icon";
 import type { ScheduledMessageContent } from "../../../shared/lib/schemas";
 import { StatsCard } from "../../../shared/components/StatsCard";
+import { Calendar, Play, Pause } from "lucide-react";
 
 const COMMON_TIMEZONES = [
   "UTC",
@@ -287,15 +288,24 @@ export function ScheduledMessagesPage() {
         <StatsCard
           label={t("stats.totalMessages")}
           value={isLoading ? "..." : data?.total ?? 0}
+          icon={Calendar}
+          accent="primary"
         />
         <StatsCard
           label={t("stats.active")}
-          value={isLoading ? "..." : data?.messages.filter((m) => m.enabled).length ?? 0}
-          valueClassName="text-success"
+          value={isLoading
+            ? "..."
+            : data?.messages.filter((m) => m.enabled).length ?? 0}
+          icon={Play}
+          accent="success"
         />
         <StatsCard
           label={t("stats.inactive")}
-          value={isLoading ? "..." : data?.messages.filter((m) => !m.enabled).length ?? 0}
+          value={isLoading
+            ? "..."
+            : data?.messages.filter((m) => !m.enabled).length ?? 0}
+          icon={Pause}
+          accent="danger"
         />
       </div>
 

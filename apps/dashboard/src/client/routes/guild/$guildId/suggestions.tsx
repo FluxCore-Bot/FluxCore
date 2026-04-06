@@ -45,6 +45,7 @@ import {
   DialogFooter,
 } from "../../../shared/ui/dialog";
 import { Textarea } from "../../../shared/ui/textarea";
+import { MessageSquare, Power, Hash } from "lucide-react";
 
 const STATUS_BADGE_VARIANT: Record<string, "default" | "secondary" | "destructive" | "outline"> = {
   pending: "outline",
@@ -167,14 +168,20 @@ export function SuggestionsPage() {
         <StatsCard
           label={t("stats.totalSuggestions")}
           value={suggestionsLoading ? "..." : suggestionsData?.total ?? 0}
+          icon={MessageSquare}
+          accent="primary"
         />
         <StatsCard
           label={t("stats.systemStatus")}
           value={settingsLoading ? "..." : settings?.enabled ? t("common:labels.enabled") : t("common:labels.disabled")}
+          icon={Power}
+          accent={settings?.enabled ? "success" : "danger"}
         />
         <StatsCard
           label={t("common:labels.channel")}
           value={settingsLoading ? "..." : settings?.channelId ? t("stats.channel.configured") : t("stats.channel.notSet")}
+          icon={Hash}
+          accent={settings?.channelId ? "info" : "warning"}
         />
       </div>
 

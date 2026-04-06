@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "@tanstack/react-router";
+import { CheckCircle, XCircle, List } from "lucide-react";
 import { useLogs } from "../hooks/useLogs";
 import { useConstants } from "../../../shared/hooks/useConstants";
 import { Icon } from "../../../shared/components/Icon";
@@ -60,19 +61,20 @@ export function LogsTable() {
         <StatsCard
           label={t("activity.stats.executionRate")}
           value={`${successRate}%`}
-          accentColor="border-success"
-          valueClassName="text-success"
+          icon={CheckCircle}
+          accent="success"
         />
         <StatsCard
           label={t("activity.stats.totalFailures")}
           value={failureCount}
-          accentColor="border-danger"
-          valueClassName="text-danger"
+          icon={XCircle}
+          accent="danger"
         />
         <StatsCard
           label={t("activity.stats.totalEntries")}
           value={totalLogs.toLocaleString()}
-          accentColor="border-accent"
+          icon={List}
+          accent="primary"
         />
       </div>
 

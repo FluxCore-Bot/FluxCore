@@ -39,6 +39,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tab
 import { StatsCard } from "../../../shared/components/StatsCard";
 import { DiscordSelect } from "../../../shared/ui/discord-select";
 import { DiscordMultiSelect } from "../../../shared/ui/discord-multi-select";
+import { Users, Award, Power } from "lucide-react";
 
 function formatVoiceTime(minutes: number, t: (key: string, opts?: Record<string, unknown>) => string): string {
   const hours = Math.floor(minutes / 60);
@@ -242,14 +243,20 @@ export function LevelingPage() {
         <StatsCard
           label={t("stats.rankedMembers")}
           value={leaderboardLoading ? "..." : leaderboardData?.total ?? 0}
+          icon={Users}
+          accent="primary"
         />
         <StatsCard
           label={t("stats.roleRewards")}
           value={rewardsLoading ? "..." : rewards?.length ?? 0}
+          icon={Award}
+          accent="secondary"
         />
         <StatsCard
           label={t("stats.systemStatus")}
           value={settingsLoading ? "..." : settings?.enabled ? t("stats.enabled") : t("stats.disabled")}
+          icon={Power}
+          accent={settings?.enabled ? "success" : "danger"}
         />
       </div>
 

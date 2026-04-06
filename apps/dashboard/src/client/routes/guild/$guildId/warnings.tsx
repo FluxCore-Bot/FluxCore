@@ -40,6 +40,7 @@ import { Separator } from "../../../shared/ui/separator";
 import { Icon } from "../../../shared/components/Icon";
 import { Search } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
+import { AlertTriangle, TrendingUp, MessageSquare } from "lucide-react";
 
 export function WarningsPage() {
   const { t } = useTranslation("warnings");
@@ -176,16 +177,20 @@ export function WarningsPage() {
         <StatsCard
           label={t("stats.totalWarnings")}
           value={warningsLoading ? "..." : warningsData?.total ?? 0}
+          icon={AlertTriangle}
+          accent="primary"
         />
         <StatsCard
           label={t("stats.escalationRules")}
           value={punishmentsLoading ? "..." : punishments?.length ?? 0}
-          accentColor="border-warning"
+          icon={TrendingUp}
+          accent="warning"
         />
         <StatsCard
           label={t("stats.dmOnWarn")}
           value={settingsLoading ? "..." : settings?.dmOnWarn ? t("common:labels.enabled") : t("common:labels.disabled")}
-          accentColor="border-success"
+          icon={MessageSquare}
+          accent="success"
         />
       </div>
 
