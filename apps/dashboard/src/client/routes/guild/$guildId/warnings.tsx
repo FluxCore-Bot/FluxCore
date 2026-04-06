@@ -3,6 +3,7 @@ import { useParams } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
 import { ApiError } from "../../../lib/client";
+import { ConfirmDialog } from "../../../components/ConfirmDialog";
 import { PageHeader } from "../../../components/PageHeader";
 import {
   useWarnings,
@@ -37,6 +38,7 @@ import {
 } from "../../../components/ui/table";
 import { Separator } from "../../../components/ui/separator";
 import { Icon } from "../../../components/Icon";
+import { Search } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 
 export function WarningsPage() {
@@ -63,6 +65,9 @@ export function WarningsPage() {
   const { data: settings, isLoading: settingsLoading } = useWarnSettings(guildId);
   const updateSettings = useUpdateWarnSettings(guildId);
 
+  const [deleteConfirmId, setDeleteConfirmId] = useState<number | null>(null);
+  const [removePunishmentConfirmId, setRemovePunishmentConfirmId] = useState<number | null>(null);
+
   // Punishment form state
   const [newThreshold, setNewThreshold] = useState("");
   const [newAction, setNewAction] = useState("timeout");
@@ -71,11 +76,17 @@ export function WarningsPage() {
   const totalPages = warningsData ? Math.max(1, Math.ceil(warningsData.total / 10)) : 1;
 
   function handleDeleteWarning(id: number) {
-    deleteWarning.mutate(id, {
+    setDeleteConfirmId(id);
+  }
+
+  function confirmDeleteWarning() {
+    if (deleteConfirmId === null) return;
+    deleteWarning.mutate(deleteConfirmId, {
       onSuccess: () => toast.success(t("toast.warningRemoved")),
       onError: (err) =>
         toast.error(err instanceof ApiError ? err.message : t("toast.warningsFailed")),
     });
+    setDeleteConfirmId(null);
   }
 
   function handleClearUserWarnings() {
@@ -118,11 +129,17 @@ export function WarningsPage() {
   }
 
   function handleRemovePunishment(id: number) {
-    removePunishment.mutate(id, {
+    setRemovePunishmentConfirmId(id);
+  }
+
+  function confirmRemovePunishment() {
+    if (removePunishmentConfirmId === null) return;
+    removePunishment.mutate(removePunishmentConfirmId, {
       onSuccess: () => toast.success(t("toast.thresholdRemoved")),
       onError: (err) =>
         toast.error(err instanceof ApiError ? err.message : t("toast.removeFailed")),
     });
+    setRemovePunishmentConfirmId(null);
   }
 
   function handleToggleSetting(key: "dmOnWarn" | "reasonRequired", value: boolean) {
@@ -181,18 +198,21 @@ export function WarningsPage() {
 
         {/* Warnings Table */}
         <TabsContent value="warnings">
-          <Card className="bg-surface p-6">
+          <Card className="bg-surface-container p-6 glass-edge">
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-2">
-                <Input
-                  placeholder={t("filter.userPlaceholder")}
-                  value={userFilter}
-                  onChange={(e) => {
-                    setUserFilter(e.target.value);
-                    setPage(1);
-                  }}
-                  className="w-64"
-                />
+                <div className="relative">
+                  <Search className="pointer-events-none absolute inset-s-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" strokeWidth={1.5} />
+                  <Input
+                    placeholder={t("filter.userPlaceholder")}
+                    value={userFilter}
+                    onChange={(e) => {
+                      setUserFilter(e.target.value);
+                      setPage(1);
+                    }}
+                    className="w-64 ps-9"
+                  />
+                </div>
                 {userFilter && (
                   <Button
                     variant="destructive"
@@ -207,44 +227,50 @@ export function WarningsPage() {
             </div>
 
             {warningsLoading ? (
-              <p className="text-text-muted">{t("loading")}</p>
+              <div className="space-y-3">
+                <div className="h-4 w-48 animate-pulse rounded bg-surface-high" />
+                <div className="h-4 w-64 animate-pulse rounded bg-surface-high" />
+                <div className="h-4 w-32 animate-pulse rounded bg-surface-high" />
+              </div>
             ) : warningsData && warningsData.warnings.length > 0 ? (
               <>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead className="w-16">{t("table.id")}</TableHead>
-                      <TableHead>{t("table.user")}</TableHead>
-                      <TableHead>{t("table.moderator")}</TableHead>
-                      <TableHead>{t("table.reason")}</TableHead>
-                      <TableHead>{t("table.date")}</TableHead>
-                      <TableHead className="w-16" />
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {warningsData.warnings.map((w) => (
-                      <TableRow key={w.id}>
-                        <TableCell className="font-mono text-xs">#{w.id}</TableCell>
-                        <TableCell className="font-mono text-xs">{w.userId}</TableCell>
-                        <TableCell className="font-mono text-xs">{w.moderatorId}</TableCell>
-                        <TableCell className="max-w-xs truncate">{w.reason}</TableCell>
-                        <TableCell className="text-xs text-text-muted">
-                          {new Date(w.createdAt).toLocaleDateString()}
-                        </TableCell>
-                        <TableCell>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => handleDeleteWarning(w.id)}
-                            disabled={deleteWarning.isPending}
-                          >
-                            <Icon name="delete" size={16} className="text-danger" />
-                          </Button>
-                        </TableCell>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="w-16">{t("table.id")}</TableHead>
+                        <TableHead>{t("table.user")}</TableHead>
+                        <TableHead>{t("table.moderator")}</TableHead>
+                        <TableHead>{t("table.reason")}</TableHead>
+                        <TableHead>{t("table.date")}</TableHead>
+                        <TableHead className="w-16" />
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+                    </TableHeader>
+                    <TableBody>
+                      {warningsData.warnings.map((w) => (
+                        <TableRow key={w.id}>
+                          <TableCell className="font-mono text-xs">#{w.id}</TableCell>
+                          <TableCell className="font-mono text-xs">{w.userId}</TableCell>
+                          <TableCell className="font-mono text-xs">{w.moderatorId}</TableCell>
+                          <TableCell className="max-w-xs truncate">{w.reason}</TableCell>
+                          <TableCell className="text-xs text-text-muted">
+                            {new Date(w.createdAt).toLocaleDateString()}
+                          </TableCell>
+                          <TableCell>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => handleDeleteWarning(w.id)}
+                              disabled={deleteWarning.isPending}
+                            >
+                              <Icon name="delete" size={16} className="text-danger" />
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
 
                 {/* Pagination */}
                 {totalPages > 1 && (
@@ -274,62 +300,74 @@ export function WarningsPage() {
                 )}
               </>
             ) : (
-              <p className="text-text-muted">{t("noWarnings")}</p>
+              <div className="flex flex-col items-center gap-4 py-12 text-center">
+                <Icon name="warning" size={48} className="text-text-muted" />
+                <div>
+                  <p className="font-medium text-text">{t("noWarnings")}</p>
+                  <p className="mt-1 text-sm text-text-muted">{t("noWarningsDesc", { defaultValue: "No warnings have been issued yet" })}</p>
+                </div>
+              </div>
             )}
           </Card>
         </TabsContent>
 
         {/* Escalation Config */}
         <TabsContent value="escalation">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">{t("escalation.title")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-4 font-label text-lg font-semibold">{t("escalation.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
               {t("escalation.description")}
             </p>
 
             {punishmentsLoading ? (
-              <p className="text-text-muted">{t("common:actions.loading")}</p>
+              <div className="space-y-3">
+                <div className="h-4 w-48 animate-pulse rounded bg-surface-high" />
+                <div className="h-4 w-64 animate-pulse rounded bg-surface-high" />
+                <div className="h-4 w-32 animate-pulse rounded bg-surface-high" />
+              </div>
             ) : punishments && punishments.length > 0 ? (
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>{t("escalation.threshold")}</TableHead>
-                    <TableHead>{t("escalation.action")}</TableHead>
-                    <TableHead>{t("escalation.duration")}</TableHead>
-                    <TableHead className="w-16" />
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {punishments.map((p) => (
-                    <TableRow key={p.id}>
-                      <TableCell>{t("escalation.warnings", { count: p.threshold })}</TableCell>
-                      <TableCell className="capitalize">{p.action}</TableCell>
-                      <TableCell>
-                        {p.action === "timeout" && p.duration
-                          ? t("escalation.min", { count: Math.floor(p.duration / 60) })
-                          : "\u2014"}
-                      </TableCell>
-                      <TableCell>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => handleRemovePunishment(p.id)}
-                          disabled={removePunishment.isPending}
-                        >
-                          <Icon name="delete" size={16} className="text-danger" />
-                        </Button>
-                      </TableCell>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>{t("escalation.threshold")}</TableHead>
+                      <TableHead>{t("escalation.action")}</TableHead>
+                      <TableHead>{t("escalation.duration")}</TableHead>
+                      <TableHead className="w-16" />
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  </TableHeader>
+                  <TableBody>
+                    {punishments.map((p) => (
+                      <TableRow key={p.id}>
+                        <TableCell>{t("escalation.warnings", { count: p.threshold })}</TableCell>
+                        <TableCell className="capitalize">{p.action}</TableCell>
+                        <TableCell>
+                          {p.action === "timeout" && p.duration
+                            ? t("escalation.min", { count: Math.floor(p.duration / 60) })
+                            : "\u2014"}
+                        </TableCell>
+                        <TableCell>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleRemovePunishment(p.id)}
+                            disabled={removePunishment.isPending}
+                          >
+                            <Icon name="delete" size={16} className="text-danger" />
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
             ) : (
               <p className="mb-4 text-text-muted">{t("escalation.noRules")}</p>
             )}
 
             <Separator className="my-6" />
 
-            <h4 className="mb-3 text-sm font-semibold">{t("escalation.addRule")}</h4>
+            <h4 className="mb-3 font-label text-sm font-semibold">{t("escalation.addRule")}</h4>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
               <div>
                 <Label htmlFor="threshold">{t("escalation.threshold")}</Label>
@@ -382,11 +420,15 @@ export function WarningsPage() {
 
         {/* Settings */}
         <TabsContent value="settings">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">{t("settings.title")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-4 font-label text-lg font-semibold">{t("settings.title")}</h3>
 
             {settingsLoading ? (
-              <p className="text-text-muted">{t("common:actions.loading")}</p>
+              <div className="space-y-3">
+                <div className="h-4 w-48 animate-pulse rounded bg-surface-high" />
+                <div className="h-4 w-64 animate-pulse rounded bg-surface-high" />
+                <div className="h-4 w-32 animate-pulse rounded bg-surface-high" />
+              </div>
             ) : settings ? (
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
@@ -439,6 +481,27 @@ export function WarningsPage() {
           </Card>
         </TabsContent>
       </Tabs>
+      {/* Delete Warning Confirmation */}
+      <ConfirmDialog
+        open={deleteConfirmId !== null}
+        onOpenChange={(open) => { if (!open) setDeleteConfirmId(null); }}
+        title={t("toast.warningRemoved")}
+        description={t("common:actions.confirmDelete", { defaultValue: "Are you sure you want to delete this item? This action cannot be undone." })}
+        confirmLabel={t("common:actions.delete", { defaultValue: "Delete" })}
+        destructive
+        onConfirm={confirmDeleteWarning}
+      />
+
+      {/* Remove Punishment Confirmation */}
+      <ConfirmDialog
+        open={removePunishmentConfirmId !== null}
+        onOpenChange={(open) => { if (!open) setRemovePunishmentConfirmId(null); }}
+        title={t("toast.thresholdRemoved")}
+        description={t("common:actions.confirmDelete", { defaultValue: "Are you sure you want to remove this escalation rule? This action cannot be undone." })}
+        confirmLabel={t("common:actions.delete", { defaultValue: "Remove" })}
+        destructive
+        onConfirm={confirmRemovePunishment}
+      />
     </div>
   );
 }

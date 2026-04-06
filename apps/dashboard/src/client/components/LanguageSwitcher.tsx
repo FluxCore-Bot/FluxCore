@@ -5,9 +5,11 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
 import { ScrollArea } from "./ui/scroll-area";
 import { Check, ChevronDown, Search } from "lucide-react";
+import { useAppDirection } from "../lib/hooks/useDirection";
 
 export function LanguageSwitcher() {
   const { i18n } = useTranslation();
+  const { setDir } = useAppDirection();
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
 
@@ -25,7 +27,7 @@ export function LanguageSwitcher() {
   const handleSelect = (code: string) => {
     i18n.changeLanguage(code);
     const dir = isRtl(code) ? "rtl" : "ltr";
-    document.documentElement.dir = dir;
+    setDir(dir);
     document.documentElement.lang = code;
     setOpen(false);
     setSearch("");

@@ -123,7 +123,7 @@ export function RuleList({
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <Badge variant="outline" className="text-[10px] px-1.5 py-0">
-                              <Icon name="account_tree" size={10} className="mr-0.5" />
+                              <Icon name="account_tree" size={10} className="me-0.5" />
                               Workflow
                             </Badge>
                           </TooltipTrigger>

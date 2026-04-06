@@ -68,7 +68,7 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
           </span>
           {!isConfigured && (
             <span
-              className="ml-auto flex h-2 w-2 rounded-full bg-warning/60"
+              className="ms-auto flex h-2 w-2 rounded-full bg-warning/60"
               title={t("workflow.status.notConfigured")}
             />
           )}

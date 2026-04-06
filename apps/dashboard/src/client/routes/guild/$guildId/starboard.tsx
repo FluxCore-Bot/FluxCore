@@ -114,10 +114,10 @@ export function StarboardPage() {
 
         {/* Settings Tab */}
         <TabsContent value="settings">
-          <Card className="bg-surface p-6">
+          <Card className="bg-surface-container p-6 glass-edge">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold">{t("settings.title")}</h3>
+                <h3 className="font-label text-lg font-semibold">{t("settings.title")}</h3>
                 <p className="text-sm text-text-muted">
                   {t("settings.description")}
                 </p>
@@ -233,8 +233,8 @@ export function StarboardPage() {
 
         {/* Starred Messages Tab */}
         <TabsContent value="entries">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-2 text-lg font-semibold">{t("tabs.starredMessages")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-2 font-label text-lg font-semibold">{t("tabs.starredMessages")}</h3>
             <p className="mb-4 text-sm text-text-muted">
               {t("settings.description")}
             </p>
@@ -253,38 +253,40 @@ export function StarboardPage() {
               </div>
             ) : (
               <>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>{t("messages.table.original")}</TableHead>
-                      <TableHead>{t("messages.table.channel")}</TableHead>
-                      <TableHead>{t("table.author")}</TableHead>
-                      <TableHead>{t("messages.table.stars")}</TableHead>
-                      <TableHead>{t("messages.table.date")}</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {entriesData.entries.map((entry) => (
-                      <TableRow key={entry.id}>
-                        <TableCell className="font-mono text-xs">
-                          {entry.originalMessageId}
-                        </TableCell>
-                        <TableCell className="font-mono text-xs">
-                          {entry.originalChannelId}
-                        </TableCell>
-                        <TableCell className="font-mono text-xs">{entry.authorId}</TableCell>
-                        <TableCell>
-                          <Badge variant="secondary">
-                            {settings?.emoji ?? "\u2B50"} {entry.starCount}
-                          </Badge>
-                        </TableCell>
-                        <TableCell className="text-xs text-text-muted">
-                          {new Date(entry.createdAt).toLocaleDateString()}
-                        </TableCell>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>{t("messages.table.original")}</TableHead>
+                        <TableHead>{t("messages.table.channel")}</TableHead>
+                        <TableHead>{t("table.author")}</TableHead>
+                        <TableHead>{t("messages.table.stars")}</TableHead>
+                        <TableHead>{t("messages.table.date")}</TableHead>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+                    </TableHeader>
+                    <TableBody>
+                      {entriesData.entries.map((entry) => (
+                        <TableRow key={entry.id}>
+                          <TableCell className="font-mono text-xs">
+                            {entry.originalMessageId}
+                          </TableCell>
+                          <TableCell className="font-mono text-xs">
+                            {entry.originalChannelId}
+                          </TableCell>
+                          <TableCell className="font-mono text-xs">{entry.authorId}</TableCell>
+                          <TableCell>
+                            <Badge variant="secondary">
+                              {settings?.emoji ?? "\u2B50"} {entry.starCount}
+                            </Badge>
+                          </TableCell>
+                          <TableCell className="text-xs text-text-muted">
+                            {new Date(entry.createdAt).toLocaleDateString()}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
 
                 {/* Pagination */}
                 {totalPages > 1 && (

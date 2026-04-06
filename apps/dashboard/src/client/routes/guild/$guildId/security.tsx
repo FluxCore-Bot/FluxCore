@@ -43,7 +43,7 @@ function ActionSelect({
       id={id}
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="flex h-9 w-full rounded-md border border-border bg-surface px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
+      className="flex h-9 w-full rounded-md border border-border bg-surface-container px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
     >
       {ACTION_OPTIONS.map((opt) => (
         <option key={opt.value} value={opt.value}>
@@ -91,17 +91,17 @@ function RaidEventRow({ event, t }: { event: RaidEventData; t: (key: string, opt
             <span className="text-text-muted">{event.details.reason}</span>
           )}
           {event.details.action && (
-            <span className="ml-2 text-xs text-text-muted">
+            <span className="ms-2 text-xs text-text-muted">
               {t("events.actionLabel", { action: event.details.action })}
             </span>
           )}
           {event.details.userIds && event.details.userIds.length > 0 && (
-            <span className="ml-2 text-xs text-text-muted">
+            <span className="ms-2 text-xs text-text-muted">
               {t("events.usersLabel", { count: event.details.userIds.length })}
             </span>
           )}
           {event.details.ageDays !== undefined && (
-            <span className="ml-2 text-xs text-text-muted">
+            <span className="ms-2 text-xs text-text-muted">
               {t("events.accountAgeLabel", { days: event.details.ageDays })}
             </span>
           )}
@@ -197,10 +197,10 @@ export function SecurityPage() {
       />
 
       {/* Master Toggle */}
-      <Card className="bg-surface p-6">
+      <Card className="bg-surface-container p-6 glass-edge">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-semibold">{t("antiRaid.title")}</h3>
+            <h3 className="font-label text-lg font-semibold">{t("antiRaid.title")}</h3>
             <p className="text-sm text-text-muted">
               {t("antiRaid.description")}
             </p>
@@ -220,8 +220,8 @@ export function SecurityPage() {
 
         {/* Join Rate Detection */}
         <TabsContent value="join-rate">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-2 text-lg font-semibold">{t("joinRate.title")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-2 font-label text-lg font-semibold">{t("joinRate.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
               {t("joinRate.description")}
             </p>
@@ -276,8 +276,8 @@ export function SecurityPage() {
 
         {/* Account Age Filter */}
         <TabsContent value="account-age">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-2 text-lg font-semibold">{t("accountAge.title")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-2 font-label text-lg font-semibold">{t("accountAge.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
               {t("accountAge.description")}
             </p>
@@ -318,10 +318,10 @@ export function SecurityPage() {
 
         {/* Anti-Nuke */}
         <TabsContent value="anti-nuke">
-          <Card className="bg-surface p-6">
+          <Card className="bg-surface-container p-6 glass-edge">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold">{t("antiNuke.title")}</h3>
+                <h3 className="font-label text-lg font-semibold">{t("antiNuke.title")}</h3>
                 <p className="text-sm text-text-muted">
                   {t("antiNuke.description")}
                 </p>
@@ -353,10 +353,10 @@ export function SecurityPage() {
 
         {/* Lockdown & Whitelist */}
         <TabsContent value="lockdown">
-          <Card className="bg-surface p-6">
+          <Card className="bg-surface-container p-6 glass-edge">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold">{t("lockdown.title")}</h3>
+                <h3 className="font-label text-lg font-semibold">{t("lockdown.title")}</h3>
                 <p className="text-sm text-text-muted">
                   {t("lockdown.description")}
                 </p>
@@ -398,8 +398,8 @@ export function SecurityPage() {
 
         {/* Recent Events */}
         <TabsContent value="events">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-2 text-lg font-semibold">{t("events.title")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-2 font-label text-lg font-semibold">{t("events.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
               {t("events.description")}
             </p>

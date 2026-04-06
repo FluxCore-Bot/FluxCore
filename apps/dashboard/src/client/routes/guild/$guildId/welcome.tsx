@@ -232,10 +232,10 @@ export function WelcomePage() {
 
         {/* Welcome Message */}
         <TabsContent value="welcome">
-          <Card className="bg-surface p-6">
+          <Card className="bg-surface-container p-6 glass-edge">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold">{t("welcome.title")}</h3>
+                <h3 className="font-label text-lg font-semibold">{t("welcome.title")}</h3>
                 <p className="text-sm text-text-muted">
                   {t("welcome.description")}
                 </p>
@@ -258,17 +258,17 @@ export function WelcomePage() {
               />
             </div>
 
-            <h4 className="mb-3 text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
+            <h4 className="mb-3 font-label text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
             <EmbedEditor value={welcomeMessage} onChange={setWelcomeMessage} t={t} />
           </Card>
         </TabsContent>
 
         {/* Welcome Image */}
         <TabsContent value="welcome-image">
-          <Card className="bg-surface p-6">
+          <Card className="bg-surface-container p-6 glass-edge">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold">{t("welcomeImage.title")}</h3>
+                <h3 className="font-label text-lg font-semibold">{t("welcomeImage.title")}</h3>
                 <p className="text-sm text-text-muted">
                   {t("welcomeImage.description")}
                 </p>
@@ -300,10 +300,10 @@ export function WelcomePage() {
 
         {/* Farewell Message */}
         <TabsContent value="farewell">
-          <Card className="bg-surface p-6">
+          <Card className="bg-surface-container p-6 glass-edge">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold">{t("farewell.title")}</h3>
+                <h3 className="font-label text-lg font-semibold">{t("farewell.title")}</h3>
                 <p className="text-sm text-text-muted">
                   {t("farewell.description")}
                 </p>
@@ -326,17 +326,17 @@ export function WelcomePage() {
               />
             </div>
 
-            <h4 className="mb-3 text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
+            <h4 className="mb-3 font-label text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
             <EmbedEditor value={farewellMessage} onChange={setFarewellMessage} t={t} />
           </Card>
         </TabsContent>
 
         {/* Farewell Image */}
         <TabsContent value="farewell-image">
-          <Card className="bg-surface p-6">
+          <Card className="bg-surface-container p-6 glass-edge">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold">{t("farewellImage.title")}</h3>
+                <h3 className="font-label text-lg font-semibold">{t("farewellImage.title")}</h3>
                 <p className="text-sm text-text-muted">
                   {t("farewellImage.description")}
                 </p>
@@ -368,10 +368,10 @@ export function WelcomePage() {
 
         {/* Welcome DM */}
         <TabsContent value="dm">
-          <Card className="bg-surface p-6">
+          <Card className="bg-surface-container p-6 glass-edge">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold">{t("dm.title")}</h3>
+                <h3 className="font-label text-lg font-semibold">{t("dm.title")}</h3>
                 <p className="text-sm text-text-muted">
                   {t("dm.description")}
                 </p>
@@ -381,15 +381,15 @@ export function WelcomePage() {
 
             <Separator className="mb-6" />
 
-            <h4 className="mb-3 text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
+            <h4 className="mb-3 font-label text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
             <EmbedEditor value={dmMessage} onChange={setDmMessage} t={t} />
           </Card>
         </TabsContent>
 
         {/* Auto-Role */}
         <TabsContent value="autorole">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-2 text-lg font-semibold">{t("autorole.title")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-2 font-label text-lg font-semibold">{t("autorole.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
               {t("autorole.description")}
             </p>

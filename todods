@@ -1,9 +1,0 @@
-[ ] add search in rule events
-[ ] send webhook action has error with object and string
-[X] add permissions system to dashboard settings
-[X] add welcome image template and make it customizable
-[ ] add automated way to migrate config and data from current bots to our bot
-[ ] add docs website to explain everything in bot 
-[ ] add i18n for dashboard
-[ ] we need to test everything in project e2e testing including dashboard bot featres like automation rules .etc
-[ ] make track control panel more featuresitc like jump to second or jump 10 seconds back and forward

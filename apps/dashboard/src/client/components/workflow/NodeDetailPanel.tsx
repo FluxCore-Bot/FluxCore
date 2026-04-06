@@ -105,7 +105,7 @@ export function NodeDetailPanel(props: NodeDetailPanelProps) {
   const header = getHeaderInfo(props);
 
   return (
-    <div className="absolute right-0 top-0 z-20 flex h-full w-full flex-col border-l border-border bg-surface-low shadow-2xl animate-in slide-in-from-right-4 duration-200 sm:w-96">
+    <div className="absolute end-0 top-0 z-20 flex h-full w-full flex-col border-s border-border bg-surface-low animate-in slide-in-from-end-4 duration-200 sm:w-96">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-border px-4 py-3">
         <div className="flex items-center gap-2">
@@ -157,23 +157,23 @@ function TriggerPanel({
     <Tabs defaultValue="settings">
       <TabsList className="w-full">
         <TabsTrigger value="settings" className="flex-1">
-          <Icon name="settings" size={14} className="mr-1.5" />
+          <Icon name="settings" size={14} className="me-1.5" />
           Settings
         </TabsTrigger>
         <TabsTrigger value="conditions" className="flex-1">
-          <Icon name="filter_alt" size={14} className="mr-1.5" />
+          <Icon name="filter_alt" size={14} className="me-1.5" />
           Filters
           {conditionCount > 0 && (
-            <Badge variant="secondary" className="ml-1.5 h-4 px-1 text-[10px]">
+            <Badge variant="secondary" className="ms-1.5 h-4 px-1 text-[10px]">
               {conditionCount}
             </Badge>
           )}
         </TabsTrigger>
         <TabsTrigger value="variables" className="flex-1">
-          <Icon name="data_object" size={14} className="mr-1.5" />
+          <Icon name="data_object" size={14} className="me-1.5" />
           Vars
           {variables.length > 0 && (
-            <Badge variant="secondary" className="ml-1.5 h-4 px-1 text-[10px]">
+            <Badge variant="secondary" className="ms-1.5 h-4 px-1 text-[10px]">
               {variables.length}
             </Badge>
           )}
@@ -258,11 +258,11 @@ function ActionPanel({
     <Tabs defaultValue="settings">
       <TabsList className="w-full">
         <TabsTrigger value="settings" className="flex-1">
-          <Icon name="settings" size={14} className="mr-1.5" />
+          <Icon name="settings" size={14} className="me-1.5" />
           Settings
         </TabsTrigger>
         <TabsTrigger value="variables" className="flex-1">
-          <Icon name="data_object" size={14} className="mr-1.5" />
+          <Icon name="data_object" size={14} className="me-1.5" />
           Variables
         </TabsTrigger>
       </TabsList>

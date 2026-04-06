@@ -77,7 +77,7 @@ export function MusicSettingsForm() {
 
   return (
     <Card className="p-6">
-      <h3 className="mb-6 text-lg font-semibold">{t("settings.playbackSettings")}</h3>
+      <h3 className="mb-6 font-label text-lg font-semibold">{t("settings.playbackSettings")}</h3>
 
       {error && (
         <Alert variant="destructive" className="mb-4">{error}</Alert>

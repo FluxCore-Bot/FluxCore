@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
+import { toast } from "sonner";
+import { Search } from "lucide-react";
+import { ConfirmDialog } from "../../../components/ConfirmDialog";
 import { PageHeader } from "../../../components/PageHeader";
 import { StatsCard } from "../../../components/StatsCard";
 import { PageSkeleton } from "../../../components/PageSkeleton";
@@ -39,17 +42,18 @@ import {
   useUpdateModSettings,
 } from "../../../lib/hooks/useModeration";
 import { useChannels } from "../../../lib/hooks/useChannels";
+import { ApiError } from "../../../lib/client";
 import type { ModCase } from "../../../lib/schemas";
 
 const ACTION_KEYS = ["ban", "tempban", "kick", "timeout", "softban", "warn", "note"] as const;
 
 const ACTION_COLORS: Record<string, string> = {
-  ban: "text-red-400",
-  tempban: "text-orange-400",
-  kick: "text-yellow-400",
-  timeout: "text-amber-400",
-  softban: "text-orange-300",
-  warn: "text-yellow-300",
+  ban: "text-danger",
+  tempban: "text-warning",
+  kick: "text-warning",
+  timeout: "text-warning",
+  softban: "text-warning",
+  warn: "text-warning",
   note: "text-text-muted",
 };
 
@@ -61,6 +65,7 @@ export function ModerationPage() {
   const [userFilter, setUserFilter] = useState("");
   const [editingCase, setEditingCase] = useState<ModCase | null>(null);
   const [editReason, setEditReason] = useState("");
+  const [deleteConfirmId, setDeleteConfirmId] = useState<number | null>(null);
 
   const { data: casesData, isLoading: casesLoading } = useModCases(guildId, {
     page,
@@ -94,9 +99,7 @@ export function ModerationPage() {
   const textChannels = channels?.filter((c) => c.type === 0) ?? [];
 
   const handleDelete = (caseId: number) => {
-    if (confirm(t("deleteConfirm"))) {
-      deleteMutation.mutate(caseId);
-    }
+    setDeleteConfirmId(caseId);
   };
 
   const handleEditStart = (modCase: ModCase) => {
@@ -108,7 +111,15 @@ export function ModerationPage() {
     if (editingCase) {
       updateMutation.mutate(
         { caseId: editingCase.id, reason: editReason },
-        { onSuccess: () => setEditingCase(null) },
+        {
+          onSuccess: () => {
+            setEditingCase(null);
+            toast.success(t("toast.caseUpdated", { defaultValue: "Case updated" }));
+          },
+          onError: (err) => {
+            toast.error(err instanceof ApiError ? err.message : t("toast.updateFailed", { defaultValue: "Failed to update case" }));
+          },
+        },
       );
     }
   };
@@ -141,16 +152,19 @@ export function ModerationPage() {
 
         {/* Filters */}
         <div className="flex flex-wrap gap-3">
-          <Input
-            type="text"
-            placeholder={t("filter.userPlaceholder")}
-            value={userFilter}
-            onChange={(e) => {
-              setUserFilter(e.target.value);
-              setPage(1);
-            }}
-            className="w-auto sm:w-64"
-          />
+          <div className="relative">
+            <Search className="pointer-events-none absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" strokeWidth={1.5} />
+            <Input
+              type="text"
+              placeholder={t("filter.userPlaceholder")}
+              value={userFilter}
+              onChange={(e) => {
+                setUserFilter(e.target.value);
+                setPage(1);
+              }}
+              className="w-auto ps-9 sm:w-64"
+            />
+          </div>
           <Select
             value={actionFilter}
             onValueChange={(value) => {
@@ -173,7 +187,7 @@ export function ModerationPage() {
         </div>
 
         {/* Table */}
-        <div className="rounded-lg border border-border">
+        <div className="overflow-x-auto rounded-lg border border-border glass-edge">
           <Table>
             <TableHeader>
               <TableRow>
@@ -189,8 +203,14 @@ export function ModerationPage() {
             <TableBody>
               {cases.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={7} className="text-center text-text-muted">
-                    {t("table.noCases")}
+                  <TableCell colSpan={7}>
+                    <div className="flex flex-col items-center gap-4 py-12 text-center">
+                      <Icon name="gavel" size={48} className="text-text-muted" />
+                      <div>
+                        <p className="font-medium text-text">{t("table.noCases")}</p>
+                        <p className="mt-1 text-sm text-text-muted">{t("table.noCasesDesc", { defaultValue: "No moderation cases match your filters" })}</p>
+                      </div>
+                    </div>
                   </TableCell>
                 </TableRow>
               ) : (
@@ -224,7 +244,7 @@ export function ModerationPage() {
                           variant="ghost"
                           size="icon"
                           onClick={() => handleDelete(modCase.id)}
-                          className="hover:text-red-400"
+                          className="hover:text-danger"
                           title={t("deleteCase")}
                         >
                           <Icon name="delete" size={16} />
@@ -296,10 +316,33 @@ export function ModerationPage() {
         </DialogContent>
       </Dialog>
 
+      {/* Delete Confirmation */}
+      <ConfirmDialog
+        open={deleteConfirmId !== null}
+        onOpenChange={(open) => { if (!open) setDeleteConfirmId(null); }}
+        title={t("deleteConfirm")}
+        description={t("deleteCase")}
+        confirmLabel={t("common:actions.delete", { defaultValue: "Delete" })}
+        destructive
+        onConfirm={() => {
+          if (deleteConfirmId !== null) {
+            deleteMutation.mutate(deleteConfirmId, {
+              onSuccess: () => {
+                toast.success(t("toast.caseDeleted", { defaultValue: "Case deleted" }));
+              },
+              onError: (err) => {
+                toast.error(err instanceof ApiError ? err.message : t("toast.deleteFailed", { defaultValue: "Failed to delete case" }));
+              },
+            });
+            setDeleteConfirmId(null);
+          }
+        }}
+      />
+
       {/* Settings */}
       <div className="space-y-4">
         <h3 className="font-label text-lg font-semibold">{t("settings.title")}</h3>
-        <div className="rounded-lg border border-border bg-surface-low p-6 glass-edge">
+        <div className="rounded-lg bg-surface-container p-6 glass-edge">
           <div className="space-y-6">
             {/* DM on Punishment */}
             <div className="flex items-center justify-between">

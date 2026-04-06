@@ -79,13 +79,13 @@ export function LogsTable() {
       {/* Filters Row */}
       <div className="flex flex-wrap items-center gap-3">
         <div className="relative w-full sm:w-64">
-          <Icon name="search" size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted" />
+          <Icon name="search" size={16} className="absolute inset-s-3 top-1/2 -translate-y-1/2 text-text-muted" />
           <Input
             type="text"
             value={ruleFilter}
             onChange={(e) => { setRuleFilter(e.target.value); setPage(1); }}
             placeholder={t("activity.filter.search")}
-            className="pl-10 font-mono"
+            className="ps-10 font-mono"
           />
         </div>
         <Select value={dateRange} onValueChange={(v) => { setDateRange(v); setPage(1); }}>

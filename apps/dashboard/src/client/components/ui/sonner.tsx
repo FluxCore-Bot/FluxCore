@@ -10,7 +10,7 @@ function Toaster({ ...props }: ToasterProps) {
       toastOptions={{
         classNames: {
           toast:
-            "group toast group-[.toaster]:bg-surface-low group-[.toaster]:text-text group-[.toaster]:shadow-2xl group-[.toaster]:glass-edge",
+            "group toast group-[.toaster]:bg-surface-low group-[.toaster]:text-text group-[.toaster]:glass-edge",
           description: "group-[.toast]:text-text-muted",
           actionButton:
             "group-[.toast]:bg-accent group-[.toast]:text-accent-hover",

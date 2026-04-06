@@ -30,6 +30,7 @@ import {
 import { Separator } from "../../../components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 import { Icon } from "../../../components/Icon";
+import { StatsCard } from "../../../components/StatsCard";
 import { DiscordSelect } from "../../../components/ui/discord-select";
 import { DiscordMultiSelect } from "../../../components/ui/discord-multi-select";
 
@@ -178,31 +179,23 @@ export function TicketsPage() {
       />
 
       {/* Stats */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.totalTickets")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {ticketsLoading ? "..." : ticketData?.total ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.open")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {ticketsLoading ? "..." : openCount}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.claimed")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {ticketsLoading ? "..." : claimedCount}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.panels")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {panelsLoading ? "..." : panels?.length ?? 0}
-          </p>
-        </Card>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <StatsCard
+          label={t("stats.totalTickets")}
+          value={ticketsLoading ? "..." : ticketData?.total ?? 0}
+        />
+        <StatsCard
+          label={t("stats.open")}
+          value={ticketsLoading ? "..." : openCount}
+        />
+        <StatsCard
+          label={t("stats.claimed")}
+          value={ticketsLoading ? "..." : claimedCount}
+        />
+        <StatsCard
+          label={t("stats.panels")}
+          value={panelsLoading ? "..." : panels?.length ?? 0}
+        />
       </div>
 
       <Tabs defaultValue="tickets">
@@ -214,7 +207,7 @@ export function TicketsPage() {
 
         {/* Active Tickets */}
         <TabsContent value="tickets">
-          <Card className="bg-surface p-6">
+          <Card className="bg-surface-container p-6 glass-edge">
             <div className="mb-4 flex items-center gap-3">
               <Label>{t("common:actions.filter")}:</Label>
               <div className="flex gap-2">
@@ -238,65 +231,67 @@ export function TicketsPage() {
               <p className="text-text-muted">{t("loading")}</p>
             ) : ticketData && ticketData.tickets.length > 0 ? (
               <>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead className="w-16">#</TableHead>
-                      <TableHead>{t("table.user")}</TableHead>
-                      <TableHead>{t("table.subject")}</TableHead>
-                      <TableHead>{t("table.status")}</TableHead>
-                      <TableHead>{t("table.assignee")}</TableHead>
-                      <TableHead>{t("table.created")}</TableHead>
-                      <TableHead className="w-16" />
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {ticketData.tickets.map((ticket) => (
-                      <TableRow key={ticket.id}>
-                        <TableCell className="font-mono text-xs font-bold">
-                          {ticket.id}
-                        </TableCell>
-                        <TableCell className="font-mono text-xs">
-                          {ticket.userId}
-                        </TableCell>
-                        <TableCell>{ticket.categoryName || "--"}</TableCell>
-                        <TableCell>
-                          <Badge variant={statusColor(ticket.status)}>
-                            {ticket.status}
-                          </Badge>
-                        </TableCell>
-                        <TableCell className="font-mono text-xs">
-                          {ticket.claimedBy || "--"}
-                        </TableCell>
-                        <TableCell className="text-xs">
-                          {new Date(ticket.createdAt).toLocaleDateString()}
-                        </TableCell>
-                        <TableCell>
-                          {ticket.status !== "closed" && (
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => handleCloseTicket(ticket.id)}
-                              disabled={closeTicketMutation.isPending}
-                            >
-                              <Icon name="close" size={16} className="text-danger" />
-                            </Button>
-                          )}
-                          {ticket.transcriptUrl && (
-                            <a
-                              href={ticket.transcriptUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="ml-1 text-primary hover:underline"
-                            >
-                              <Icon name="description" size={16} />
-                            </a>
-                          )}
-                        </TableCell>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="w-16">#</TableHead>
+                        <TableHead>{t("table.user")}</TableHead>
+                        <TableHead>{t("table.subject")}</TableHead>
+                        <TableHead>{t("table.status")}</TableHead>
+                        <TableHead>{t("table.assignee")}</TableHead>
+                        <TableHead>{t("table.created")}</TableHead>
+                        <TableHead className="w-16" />
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+                    </TableHeader>
+                    <TableBody>
+                      {ticketData.tickets.map((ticket) => (
+                        <TableRow key={ticket.id}>
+                          <TableCell className="font-mono text-xs font-bold">
+                            {ticket.id}
+                          </TableCell>
+                          <TableCell className="font-mono text-xs">
+                            {ticket.userId}
+                          </TableCell>
+                          <TableCell>{ticket.categoryName || "--"}</TableCell>
+                          <TableCell>
+                            <Badge variant={statusColor(ticket.status)}>
+                              {ticket.status}
+                            </Badge>
+                          </TableCell>
+                          <TableCell className="font-mono text-xs">
+                            {ticket.claimedBy || "--"}
+                          </TableCell>
+                          <TableCell className="text-xs">
+                            {new Date(ticket.createdAt).toLocaleDateString()}
+                          </TableCell>
+                          <TableCell>
+                            {ticket.status !== "closed" && (
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => handleCloseTicket(ticket.id)}
+                                disabled={closeTicketMutation.isPending}
+                              >
+                                <Icon name="close" size={16} className="text-danger" />
+                              </Button>
+                            )}
+                            {ticket.transcriptUrl && (
+                              <a
+                                href={ticket.transcriptUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="ms-1 text-primary hover:underline"
+                              >
+                                <Icon name="description" size={16} />
+                              </a>
+                            )}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
 
                 {totalPages > 1 && (
                   <div className="mt-4 flex items-center justify-between">
@@ -332,8 +327,8 @@ export function TicketsPage() {
 
         {/* Panel Builder */}
         <TabsContent value="panels">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">{t("tabs.panelBuilder")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-4 font-label text-lg font-semibold">{t("tabs.panelBuilder")}</h3>
             <p className="mb-4 text-sm text-text-muted">
               {t("empty.panels")}
             </p>
@@ -341,65 +336,67 @@ export function TicketsPage() {
             {panelsLoading ? (
               <p className="text-text-muted">{t("loading")}</p>
             ) : panels && panels.length > 0 ? (
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>{t("common:labels.name")}</TableHead>
-                    <TableHead>{t("common:labels.channel")}</TableHead>
-                    <TableHead>{t("panelBuilder.category")}</TableHead>
-                    <TableHead>{t("common:labels.status")}</TableHead>
-                    <TableHead className="w-24" />
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {panels.map((panel) => (
-                    <TableRow key={panel.id}>
-                      <TableCell className="font-medium">{panel.name}</TableCell>
-                      <TableCell className="font-mono text-xs">{panel.channelId}</TableCell>
-                      <TableCell>
-                        {panel.categories.map((c) => (
-                          <Badge key={c.name} variant="secondary" className="mr-1">
-                            {c.emoji ? `${c.emoji} ` : ""}{c.label}
-                          </Badge>
-                        ))}
-                      </TableCell>
-                      <TableCell>
-                        {panel.messageId ? (
-                          <Badge variant="default">{t("panelBuilder.deploy")}</Badge>
-                        ) : (
-                          <Badge variant="outline">{t("common:labels.default")}</Badge>
-                        )}
-                      </TableCell>
-                      <TableCell className="flex gap-1">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => handleSendPanel(panel.id)}
-                          disabled={sendPanel.isPending}
-                          title={t("panelBuilder.deploy")}
-                        >
-                          <Icon name="send" size={16} />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => handleDeletePanel(panel.id)}
-                          disabled={deletePanel.isPending}
-                        >
-                          <Icon name="delete" size={16} className="text-danger" />
-                        </Button>
-                      </TableCell>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>{t("common:labels.name")}</TableHead>
+                      <TableHead>{t("common:labels.channel")}</TableHead>
+                      <TableHead>{t("panelBuilder.category")}</TableHead>
+                      <TableHead>{t("common:labels.status")}</TableHead>
+                      <TableHead className="w-24" />
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  </TableHeader>
+                  <TableBody>
+                    {panels.map((panel) => (
+                      <TableRow key={panel.id}>
+                        <TableCell className="font-medium">{panel.name}</TableCell>
+                        <TableCell className="font-mono text-xs">{panel.channelId}</TableCell>
+                        <TableCell>
+                          {panel.categories.map((c) => (
+                            <Badge key={c.name} variant="secondary" className="me-1">
+                              {c.emoji ? `${c.emoji} ` : ""}{c.label}
+                            </Badge>
+                          ))}
+                        </TableCell>
+                        <TableCell>
+                          {panel.messageId ? (
+                            <Badge variant="default">{t("panelBuilder.deploy")}</Badge>
+                          ) : (
+                            <Badge variant="outline">{t("common:labels.default")}</Badge>
+                          )}
+                        </TableCell>
+                        <TableCell className="flex gap-1">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleSendPanel(panel.id)}
+                            disabled={sendPanel.isPending}
+                            title={t("panelBuilder.deploy")}
+                          >
+                            <Icon name="send" size={16} />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleDeletePanel(panel.id)}
+                            disabled={deletePanel.isPending}
+                          >
+                            <Icon name="delete" size={16} className="text-danger" />
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
             ) : (
               <p className="mb-4 text-text-muted">{t("empty.panels")}</p>
             )}
 
             <Separator className="my-6" />
 
-            <h4 className="mb-3 text-sm font-semibold">{t("panelBuilder.create")}</h4>
+            <h4 className="mb-3 font-label text-sm font-semibold">{t("panelBuilder.create")}</h4>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
               <div>
                 <Label htmlFor="panel-name">{t("panelBuilder.title")}</Label>
@@ -430,8 +427,8 @@ export function TicketsPage() {
 
         {/* Settings */}
         <TabsContent value="settings">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">{t("tabs.settings")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-4 font-label text-lg font-semibold">{t("tabs.settings")}</h3>
 
             {settingsLoading ? (
               <p className="text-text-muted">{t("common:actions.loading")}</p>

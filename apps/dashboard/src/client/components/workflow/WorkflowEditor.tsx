@@ -388,7 +388,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
       {/* Floating toolbar */}
       <div className="flex flex-wrap items-center gap-2 border-b border-border bg-surface-low/90 px-3 py-2 backdrop-blur-sm sm:gap-3 sm:px-4 sm:py-2.5">
         <Button variant="ghost" size="sm" onClick={onClose} className="gap-1.5">
-          <Icon name="arrow_back" size={16} />
+          <Icon name="arrow_back" size={16} className="rtl:rotate-180" />
           <span className="hidden text-text-muted sm:inline">Rules</span>
         </Button>
 
@@ -426,7 +426,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
           </span>
         </div>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ms-auto flex items-center gap-2">
           <Button
             variant="ghost"
             size="sm"
@@ -549,7 +549,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             className="!rounded-lg !border-border !bg-surface-low"
             maskColor="rgba(14, 14, 16, 0.8)"
           />
-          <Panel position="bottom-right" className="!mb-2 !mr-2 flex gap-1.5">
+          <Panel position="bottom-right" className="!mb-2 me-2! flex gap-1.5">
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -563,7 +563,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
-                  Fit to view <kbd className="ml-1.5 rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">Ctrl+Shift+F</kbd>
+                  Fit to view <kbd className="ms-1.5 rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">Ctrl+Shift+F</kbd>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -629,7 +629,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
         <span>
           <kbd className="rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">Ctrl+Shift+F</kbd> Fit view
         </span>
-        <span className="ml-auto text-text-muted/50">
+        <span className="ms-auto text-text-muted/50">
           Drag handles to connect — click an edge + Del to disconnect
         </span>
       </div>

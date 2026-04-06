@@ -164,9 +164,9 @@ export function WelcomeImageEditor({
             size="sm"
             onClick={() => generatePreview()}
             disabled={preview.isPending}
-            className="ml-auto"
+            className="ms-auto"
           >
-            <RefreshCw className={`mr-1 h-3 w-3 ${preview.isPending ? "animate-spin" : ""}`} />
+            <RefreshCw className={`me-1 h-3 w-3 ${preview.isPending ? "animate-spin" : ""}`} />
             Refresh
           </Button>
         </div>
@@ -199,7 +199,7 @@ export function WelcomeImageEditor({
               key={t.name}
               type="button"
               onClick={() => update("template", t.name)}
-              className={`rounded-lg border p-3 text-left transition-all ${
+              className={`rounded-lg border p-3 text-start transition-all ${
                 settings.template === t.name
                   ? "border-primary bg-primary/10"
                   : "border-border/50 hover:border-border"

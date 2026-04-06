@@ -33,6 +33,7 @@ import {
 } from "../../../components/ui/select";
 import { Separator } from "../../../components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
+import { StatsCard } from "../../../components/StatsCard";
 
 function formatTimeRemaining(endsAt: string): string {
   const end = new Date(endsAt).getTime();
@@ -170,29 +171,18 @@ export function GiveawaysPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.activeGiveaways")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {activeLoading ? "..." : activeData?.total ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.pastGiveaways")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {pastLoading ? "..." : pastData?.total ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.totalEntries")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {activeLoading
-              ? "..."
-              : (activeData?.giveaways ?? []).reduce(
-                  (sum, g) => sum + g.entrantIds.length,
-                  0,
-                )}
-          </p>
-        </Card>
+        <StatsCard
+          label={t("stats.activeGiveaways")}
+          value={activeLoading ? "..." : activeData?.total ?? 0}
+        />
+        <StatsCard
+          label={t("stats.pastGiveaways")}
+          value={pastLoading ? "..." : pastData?.total ?? 0}
+        />
+        <StatsCard
+          label={t("stats.totalEntries")}
+          value={activeLoading ? "..." : (activeData?.giveaways ?? []).reduce((sum, g) => sum + g.entrantIds.length, 0)}
+        />
       </div>
 
       <Tabs defaultValue="active">
@@ -204,50 +194,52 @@ export function GiveawaysPage() {
 
         {/* Active Giveaways */}
         <TabsContent value="active">
-          <Card className="bg-surface p-6">
+          <Card className="bg-surface-container p-6 glass-edge">
             {activeLoading ? (
               <p className="text-text-muted">{t("loading")}</p>
             ) : activeData && activeData.giveaways.length > 0 ? (
               <>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead className="w-16">{t("table.status")}</TableHead>
-                      <TableHead>{t("table.prize")}</TableHead>
-                      <TableHead>{t("table.winners")}</TableHead>
-                      <TableHead>{t("table.entries")}</TableHead>
-                      <TableHead>{t("table.endsIn")}</TableHead>
-                      <TableHead className="w-24" />
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {activeData.giveaways.map((g) => (
-                      <TableRow key={g.id}>
-                        <TableCell className="font-mono text-xs font-bold">
-                          #{g.id}
-                        </TableCell>
-                        <TableCell className="font-medium">{g.prize}</TableCell>
-                        <TableCell>{g.winners}</TableCell>
-                        <TableCell>{g.entrantIds.length}</TableCell>
-                        <TableCell>
-                          <Badge variant="outline">
-                            {formatTimeRemaining(g.endsAt)}
-                          </Badge>
-                        </TableCell>
-                        <TableCell>
-                          <Button
-                            variant="destructive"
-                            size="sm"
-                            onClick={() => handleEnd(g.id)}
-                            disabled={endGiveaway.isPending}
-                          >
-                            {t("actions.end")}
-                          </Button>
-                        </TableCell>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="w-16">{t("table.status")}</TableHead>
+                        <TableHead>{t("table.prize")}</TableHead>
+                        <TableHead>{t("table.winners")}</TableHead>
+                        <TableHead>{t("table.entries")}</TableHead>
+                        <TableHead>{t("table.endsIn")}</TableHead>
+                        <TableHead className="w-24" />
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+                    </TableHeader>
+                    <TableBody>
+                      {activeData.giveaways.map((g) => (
+                        <TableRow key={g.id}>
+                          <TableCell className="font-mono text-xs font-bold">
+                            #{g.id}
+                          </TableCell>
+                          <TableCell className="font-medium">{g.prize}</TableCell>
+                          <TableCell>{g.winners}</TableCell>
+                          <TableCell>{g.entrantIds.length}</TableCell>
+                          <TableCell>
+                            <Badge variant="outline">
+                              {formatTimeRemaining(g.endsAt)}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <Button
+                              variant="destructive"
+                              size="sm"
+                              onClick={() => handleEnd(g.id)}
+                              disabled={endGiveaway.isPending}
+                            >
+                              {t("actions.end")}
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
 
                 {activeTotalPages > 1 && (
                   <div className="mt-4 flex items-center justify-between">
@@ -285,52 +277,54 @@ export function GiveawaysPage() {
 
         {/* Past Giveaways */}
         <TabsContent value="past">
-          <Card className="bg-surface p-6">
+          <Card className="bg-surface-container p-6 glass-edge">
             {pastLoading ? (
               <p className="text-text-muted">{t("loading")}</p>
             ) : pastData && pastData.giveaways.length > 0 ? (
               <>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead className="w-16">{t("table.status")}</TableHead>
-                      <TableHead>{t("table.prize")}</TableHead>
-                      <TableHead>{t("table.winners")}</TableHead>
-                      <TableHead>{t("table.entries")}</TableHead>
-                      <TableHead>{t("statuses.ended")}</TableHead>
-                      <TableHead className="w-24" />
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {pastData.giveaways.map((g) => (
-                      <TableRow key={g.id}>
-                        <TableCell className="font-mono text-xs font-bold">
-                          #{g.id}
-                        </TableCell>
-                        <TableCell className="font-medium">{g.prize}</TableCell>
-                        <TableCell>
-                          {g.winnerIds.length > 0
-                            ? g.winnerIds.map((id) => id.slice(0, 8)).join(", ")
-                            : t("common:labels.none")}
-                        </TableCell>
-                        <TableCell>{g.entrantIds.length}</TableCell>
-                        <TableCell>
-                          {new Date(g.endsAt).toLocaleDateString()}
-                        </TableCell>
-                        <TableCell>
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => handleReroll(g.id)}
-                            disabled={rerollGiveaway.isPending}
-                          >
-                            {t("actions.reroll")}
-                          </Button>
-                        </TableCell>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="w-16">{t("table.status")}</TableHead>
+                        <TableHead>{t("table.prize")}</TableHead>
+                        <TableHead>{t("table.winners")}</TableHead>
+                        <TableHead>{t("table.entries")}</TableHead>
+                        <TableHead>{t("statuses.ended")}</TableHead>
+                        <TableHead className="w-24" />
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+                    </TableHeader>
+                    <TableBody>
+                      {pastData.giveaways.map((g) => (
+                        <TableRow key={g.id}>
+                          <TableCell className="font-mono text-xs font-bold">
+                            #{g.id}
+                          </TableCell>
+                          <TableCell className="font-medium">{g.prize}</TableCell>
+                          <TableCell>
+                            {g.winnerIds.length > 0
+                              ? g.winnerIds.map((id) => id.slice(0, 8)).join(", ")
+                              : t("common:labels.none")}
+                          </TableCell>
+                          <TableCell>{g.entrantIds.length}</TableCell>
+                          <TableCell>
+                            {new Date(g.endsAt).toLocaleDateString()}
+                          </TableCell>
+                          <TableCell>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => handleReroll(g.id)}
+                              disabled={rerollGiveaway.isPending}
+                            >
+                              {t("actions.reroll")}
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
 
                 {pastTotalPages > 1 && (
                   <div className="mt-4 flex items-center justify-between">
@@ -368,8 +362,8 @@ export function GiveawaysPage() {
 
         {/* Create Giveaway */}
         <TabsContent value="create">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">{t("actions.create")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-4 font-label text-lg font-semibold">{t("actions.create")}</h3>
             <p className="mb-6 text-sm text-text-muted">
               {t("subtitle")}
             </p>
@@ -420,7 +414,7 @@ export function GiveawaysPage() {
                       <SelectItem value="m">{t("common:time.minutes")}</SelectItem>
                       <SelectItem value="h">{t("common:time.hours")}</SelectItem>
                       <SelectItem value="d">{t("common:time.days")}</SelectItem>
-                      <SelectItem value="w">{t("common:time.days")}</SelectItem>
+                      <SelectItem value="w">{t("common:time.weeks")}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

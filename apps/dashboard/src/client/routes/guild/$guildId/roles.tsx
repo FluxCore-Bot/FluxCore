@@ -3,6 +3,7 @@ import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../lib/client";
+import { ConfirmDialog } from "../../../components/ConfirmDialog";
 import { PageHeader } from "../../../components/PageHeader";
 import {
   useRolePanels,
@@ -45,6 +46,7 @@ import { Badge } from "../../../components/ui/badge";
 import { Separator } from "../../../components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 import { Icon } from "../../../components/Icon";
+import { StatsCard } from "../../../components/StatsCard";
 
 function EmptyRoleEntry(): RolePanelEntryItem {
   return { roleId: "", label: "", emoji: "", description: "", style: 2 };
@@ -76,6 +78,7 @@ export function RolesPage() {
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingPanel, setEditingPanel] = useState<RolePanelItem | null>(null);
+  const [deleteConfirmId, setDeleteConfirmId] = useState<number | null>(null);
 
   // Form state
   const [formName, setFormName] = useState("");
@@ -211,11 +214,17 @@ export function RolesPage() {
   }
 
   function handleDelete(panelId: number) {
-    deletePanel.mutate(panelId, {
+    setDeleteConfirmId(panelId);
+  }
+
+  function confirmDelete() {
+    if (deleteConfirmId === null) return;
+    deletePanel.mutate(deleteConfirmId, {
       onSuccess: () => toast.success(t("toast.deleted")),
       onError: (err) =>
         toast.error(err instanceof ApiError ? err.message : t("toast.deleteFailed")),
     });
+    setDeleteConfirmId(null);
   }
 
   function handleSend(panelId: number) {
@@ -237,24 +246,18 @@ export function RolesPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.totalPanels")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {isLoading ? "..." : panels?.length ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.deployed")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {isLoading ? "..." : panels?.filter((p) => p.messageId).length ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.totalRoles")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {isLoading ? "..." : panels?.reduce((sum, p) => sum + p.roles.length, 0) ?? 0}
-          </p>
-        </Card>
+        <StatsCard
+          label={t("stats.totalPanels")}
+          value={isLoading ? "..." : panels?.length ?? 0}
+        />
+        <StatsCard
+          label={t("stats.deployed")}
+          value={isLoading ? "..." : panels?.filter((p) => p.messageId).length ?? 0}
+        />
+        <StatsCard
+          label={t("stats.totalRoles")}
+          value={isLoading ? "..." : panels?.reduce((sum, p) => sum + p.roles.length, 0) ?? 0}
+        />
       </div>
 
       <Tabs defaultValue="panels">
@@ -265,13 +268,13 @@ export function RolesPage() {
 
         {/* Panel List */}
         <TabsContent value="panels">
-          <Card className="bg-surface p-6">
+          <Card className="bg-surface-container p-6 glass-edge">
             <div className="mb-4 flex items-center justify-between">
-              <h3 className="text-lg font-semibold">{t("panelList.title")}</h3>
+              <h3 className="font-label text-lg font-semibold">{t("panelList.title")}</h3>
               <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                 <DialogTrigger asChild>
                   <Button onClick={openCreateDialog}>
-                    <Icon name="add" size={16} className="mr-1" />
+                    <Icon name="add" size={16} className="me-1" />
                     {t("dialog.createPanel")}
                   </Button>
                 </DialogTrigger>
@@ -370,7 +373,7 @@ export function RolesPage() {
 
                     {/* Embed Config */}
                     <div>
-                      <h4 className="mb-3 text-sm font-semibold">{t("form.embedSection")}</h4>
+                      <h4 className="mb-3 font-label text-sm font-semibold">{t("form.embedSection")}</h4>
                       <div className="space-y-3">
                         <div>
                           <Label htmlFor="embed-title">{t("form.embedTitle")}</Label>
@@ -398,7 +401,7 @@ export function RolesPage() {
                     {/* Role Entries */}
                     <div>
                       <div className="mb-3 flex items-center justify-between">
-                        <h4 className="text-sm font-semibold">
+                        <h4 className="font-label text-sm font-semibold">
                           {t("form.rolesCount", { count: formRoles.length })}
                         </h4>
                         <Button
@@ -407,7 +410,7 @@ export function RolesPage() {
                           onClick={handleAddRoleEntry}
                           disabled={formRoles.length >= 25}
                         >
-                          <Icon name="add" size={14} className="mr-1" />
+                          <Icon name="add" size={14} className="me-1" />
                           {t("form.addRole")}
                         </Button>
                       </div>
@@ -517,75 +520,77 @@ export function RolesPage() {
             {isLoading ? (
               <p className="text-text-muted">{t("loading")}</p>
             ) : panels && panels.length > 0 ? (
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>{t("table.name")}</TableHead>
-                    <TableHead>{t("table.type")}</TableHead>
-                    <TableHead>{t("table.mode")}</TableHead>
-                    <TableHead>{t("table.roles")}</TableHead>
-                    <TableHead>{t("table.status")}</TableHead>
-                    <TableHead className="w-32" />
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {panels.map((panel) => (
-                    <TableRow key={panel.id}>
-                      <TableCell className="font-medium">{panel.name}</TableCell>
-                      <TableCell>
-                        <Badge variant="outline">
-                          {PANEL_TYPE_LABELS[panel.type] ?? panel.type}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        <Badge variant="secondary">
-                          {PANEL_MODE_LABELS[panel.mode] ?? panel.mode}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>{panel.roles.length}</TableCell>
-                      <TableCell>
-                        {panel.messageId ? (
-                          <Badge className="bg-success/20 text-success">{t("status.deployed")}</Badge>
-                        ) : (
-                          <Badge variant="outline" className="text-text-muted">
-                            {t("status.draft")}
-                          </Badge>
-                        )}
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex gap-1">
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => openEditDialog(panel)}
-                            title={t("common:actions.edit")}
-                          >
-                            <Icon name="edit" size={16} />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => handleSend(panel.id)}
-                            disabled={sendPanel.isPending || panel.roles.length === 0}
-                            title={t("actions.deploy")}
-                          >
-                            <Icon name="send" size={16} />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => handleDelete(panel.id)}
-                            disabled={deletePanel.isPending}
-                            title={t("common:actions.delete")}
-                          >
-                            <Icon name="delete" size={16} className="text-danger" />
-                          </Button>
-                        </div>
-                      </TableCell>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>{t("table.name")}</TableHead>
+                      <TableHead>{t("table.type")}</TableHead>
+                      <TableHead>{t("table.mode")}</TableHead>
+                      <TableHead>{t("table.roles")}</TableHead>
+                      <TableHead>{t("table.status")}</TableHead>
+                      <TableHead className="w-32" />
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  </TableHeader>
+                  <TableBody>
+                    {panels.map((panel) => (
+                      <TableRow key={panel.id}>
+                        <TableCell className="font-medium">{panel.name}</TableCell>
+                        <TableCell>
+                          <Badge variant="outline">
+                            {PANEL_TYPE_LABELS[panel.type] ?? panel.type}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge variant="secondary">
+                            {PANEL_MODE_LABELS[panel.mode] ?? panel.mode}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>{panel.roles.length}</TableCell>
+                        <TableCell>
+                          {panel.messageId ? (
+                            <Badge className="bg-success/20 text-success">{t("status.deployed")}</Badge>
+                          ) : (
+                            <Badge variant="outline" className="text-text-muted">
+                              {t("status.draft")}
+                            </Badge>
+                          )}
+                        </TableCell>
+                        <TableCell>
+                          <div className="flex gap-1">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => openEditDialog(panel)}
+                              title={t("common:actions.edit")}
+                            >
+                              <Icon name="edit" size={16} />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => handleSend(panel.id)}
+                              disabled={sendPanel.isPending || panel.roles.length === 0}
+                              title={t("actions.deploy")}
+                            >
+                              <Icon name="send" size={16} />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => handleDelete(panel.id)}
+                              disabled={deletePanel.isPending}
+                              title={t("common:actions.delete")}
+                            >
+                              <Icon name="delete" size={16} className="text-danger" />
+                            </Button>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
             ) : (
               <p className="text-text-muted">
                 {t("empty")}
@@ -596,8 +601,8 @@ export function RolesPage() {
 
         {/* Preview */}
         <TabsContent value="preview">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">{t("preview.title")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-4 font-label text-lg font-semibold">{t("preview.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
               {t("preview.description")}
             </p>
@@ -614,7 +619,7 @@ export function RolesPage() {
                     </div>
 
                     {/* Embed preview */}
-                    <div className="rounded-md border-l-4 border-accent bg-surface-high p-4">
+                    <div className="rounded-md border-s-4 border-accent bg-surface-high p-4">
                       <p className="font-semibold text-text">
                         {(() => {
                           try {
@@ -664,7 +669,7 @@ export function RolesPage() {
                       <div className="mt-3">
                         <div className="inline-flex items-center rounded border border-[#4f545c] bg-[#2f3136] px-3 py-1.5 text-sm text-[#b9bbbe]">
                           {t("preview.selectRoles")}
-                          <Icon name="expand_more" size={16} className="ml-2" />
+                          <Icon name="expand_more" size={16} className="ms-2" />
                         </div>
                       </div>
                     )}
@@ -691,6 +696,17 @@ export function RolesPage() {
           </Card>
         </TabsContent>
       </Tabs>
+
+      {/* Delete Panel Confirmation */}
+      <ConfirmDialog
+        open={deleteConfirmId !== null}
+        onOpenChange={(open) => { if (!open) setDeleteConfirmId(null); }}
+        title={t("common:actions.delete", { defaultValue: "Delete Panel" })}
+        description={t("common:actions.confirmDelete", { defaultValue: "Are you sure you want to delete this role panel? This action cannot be undone." })}
+        confirmLabel={t("common:actions.delete", { defaultValue: "Delete" })}
+        destructive
+        onConfirm={confirmDelete}
+      />
     </div>
   );
 }

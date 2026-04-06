@@ -9,7 +9,9 @@ import {
 } from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { I18nextProvider } from "react-i18next";
+import { DirectionProvider } from "@radix-ui/react-direction";
 import { i18nReady } from "./lib/i18n";
+import { AppDirectionContext, useDirectionState } from "./lib/hooks/useDirection";
 import { RootLayout } from "./routes/__root";
 import { IndexPage } from "./routes/index";
 import { GuildLayout } from "./routes/guild/$guildId";
@@ -213,21 +215,34 @@ declare module "@tanstack/react-router" {
   }
 }
 
-// Wait for i18n to load before rendering
-i18nReady.then(async (i18n) => {
-  // Set initial document direction based on detected language
-  const { isRtl } = await import("@fluxcore/i18n");
-  document.documentElement.dir = isRtl(i18n.language) ? "rtl" : "ltr";
-  document.documentElement.lang = i18n.language;
+function App({ initialDir }: { initialDir: "ltr" | "rtl" }) {
+  const direction = useDirectionState(initialDir);
 
-  createRoot(document.getElementById("root")!).render(
-    <StrictMode>
-      <I18nextProvider i18n={i18n}>
+  return (
+    <AppDirectionContext.Provider value={direction}>
+      <DirectionProvider dir={direction.dir}>
         <Suspense fallback={null}>
           <QueryClientProvider client={queryClient}>
             <RouterProvider router={router} />
           </QueryClientProvider>
         </Suspense>
+      </DirectionProvider>
+    </AppDirectionContext.Provider>
+  );
+}
+
+// Wait for i18n to load before rendering
+i18nReady.then(async (i18n) => {
+  // Set initial document direction based on detected language
+  const { isRtl } = await import("@fluxcore/i18n");
+  const initialDir = isRtl(i18n.language) ? "rtl" : "ltr";
+  document.documentElement.dir = initialDir;
+  document.documentElement.lang = i18n.language;
+
+  createRoot(document.getElementById("root")!).render(
+    <StrictMode>
+      <I18nextProvider i18n={i18n}>
+        <App initialDir={initialDir as "ltr" | "rtl"} />
       </I18nextProvider>
     </StrictMode>,
   );

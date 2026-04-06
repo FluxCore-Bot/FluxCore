@@ -66,7 +66,7 @@ export function OverviewPage() {
           </Button>
         ))}
         {summary.recentErrors > 0 && (
-          <span className="ml-auto flex items-center gap-1.5 rounded-full bg-danger/10 px-3 py-1 text-xs font-medium text-danger">
+          <span className="ms-auto flex items-center gap-1.5 rounded-full bg-danger/10 px-3 py-1 text-xs font-medium text-danger">
             {t("errorsInLast24h", { count: summary.recentErrors })}
           </span>
         )}

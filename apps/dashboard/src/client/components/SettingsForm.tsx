@@ -19,6 +19,7 @@ import {
   SelectValue,
 } from "./ui/select";
 import { PageSkeleton } from "./PageSkeleton";
+import { ConfirmDialog } from "./ConfirmDialog";
 
 export function SettingsForm() {
   const { t } = useTranslation("settings");
@@ -34,6 +35,7 @@ export function SettingsForm() {
   const [notifyRuleTriggered, setNotifyRuleTriggered] = useState(true);
   const [notifyErrors, setNotifyErrors] = useState(true);
   const [notifySuccess, setNotifySuccess] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   useEffect(() => {
     if (settings) {
@@ -67,7 +69,7 @@ export function SettingsForm() {
   return (
     <>
     <Card className="p-6">
-      <h3 className="mb-6 text-lg font-semibold">{t("actionSystem.title")}</h3>
+      <h3 className="mb-6 font-label text-lg font-semibold">{t("actionSystem.title")}</h3>
 
       {error && (
         <Alert variant="destructive" className="mb-4">{error}</Alert>
@@ -123,8 +125,8 @@ export function SettingsForm() {
     </Card>
 
     {/* Notification Preferences */}
-    <Card className="mt-6 p-6 glass-panel">
-      <h3 className="mb-6 text-lg font-semibold">{t("notifications.title")}</h3>
+    <Card className="mt-6 p-6">
+      <h3 className="mb-6 font-label text-lg font-semibold">{t("notifications.title")}</h3>
       <div className="space-y-4">
         <div className="flex items-center gap-3">
           <Switch
@@ -152,21 +154,29 @@ export function SettingsForm() {
 
     {/* Danger Zone */}
     <Card className="mt-6 border border-danger/20 p-6">
-      <h3 className="mb-2 text-lg font-semibold text-danger">{t("dangerZone.title")}</h3>
+      <h3 className="mb-2 font-label text-lg font-semibold text-danger">{t("dangerZone.title")}</h3>
       <p className="mb-4 text-sm text-text-muted">
         {t("dangerZone.description")}
       </p>
       <Button
         variant="destructive"
-        onClick={() => {
-          if (window.confirm(t("dangerZone.deleteAllConfirm"))) {
-            toast.info(t("dangerZone.notImplemented"));
-          }
-        }}
+        onClick={() => setShowDeleteConfirm(true)}
       >
         {t("dangerZone.deleteAllRules")}
       </Button>
     </Card>
+
+    <ConfirmDialog
+      open={showDeleteConfirm}
+      onOpenChange={setShowDeleteConfirm}
+      title={t("dangerZone.deleteAllConfirm")}
+      description={t("dangerZone.description")}
+      confirmLabel={t("dangerZone.deleteAllRules")}
+      destructive
+      onConfirm={() => {
+        toast.info(t("dangerZone.notImplemented"));
+      }}
+    />
   </>
   );
 }

@@ -22,3 +22,7 @@ out/
 .claude/settings.local.json
 # Playwright MCP generated data
 .playwright-mcp/
+# E2E test auth session (contains credentials)
+apps/dashboard/tests/e2e/.auth/
+# E2E HTML report
+apps/dashboard/tests/e2e/.report/

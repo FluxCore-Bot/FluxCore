@@ -3,6 +3,7 @@ import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../lib/client";
+import { ConfirmDialog } from "../../../components/ConfirmDialog";
 import { PageHeader } from "../../../components/PageHeader";
 import {
   useSuggestions,
@@ -35,6 +36,7 @@ import {
 import { Separator } from "../../../components/ui/separator";
 import { Icon } from "../../../components/Icon";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
+import { StatsCard } from "../../../components/StatsCard";
 import {
   Dialog,
   DialogContent,
@@ -51,17 +53,17 @@ const STATUS_BADGE_VARIANT: Record<string, "default" | "secondary" | "destructiv
   implemented: "secondary",
 };
 
-function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-}
-
 export function SuggestionsPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
-  const { t } = useTranslation("suggestions");
+  const { t, i18n } = useTranslation("suggestions");
+
+  function formatDate(dateStr: string): string {
+    return new Date(dateStr).toLocaleDateString(i18n.language, {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  }
   const [page, setPage] = useState(1);
   const [statusFilter, setStatusFilter] = useState<string>("all");
 
@@ -87,6 +89,7 @@ export function SuggestionsPage() {
     action: string;
   }>({ open: false, id: 0, action: "" });
   const [statusReason, setStatusReason] = useState("");
+  const [deleteConfirmId, setDeleteConfirmId] = useState<number | null>(null);
 
   const totalPages = suggestionsData
     ? Math.max(1, Math.ceil(suggestionsData.total / 10))
@@ -139,11 +142,17 @@ export function SuggestionsPage() {
   }
 
   function handleDelete(id: number) {
-    deleteSuggestion.mutate(id, {
+    setDeleteConfirmId(id);
+  }
+
+  function confirmDelete() {
+    if (deleteConfirmId === null) return;
+    deleteSuggestion.mutate(deleteConfirmId, {
       onSuccess: () => toast.success(t("toast.deleted")),
       onError: (err) =>
         toast.error(err instanceof ApiError ? err.message : t("toast.actionFailed")),
     });
+    setDeleteConfirmId(null);
   }
 
   return (
@@ -155,24 +164,18 @@ export function SuggestionsPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.totalSuggestions")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {suggestionsLoading ? "..." : suggestionsData?.total ?? 0}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("stats.systemStatus")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {settingsLoading ? "..." : settings?.enabled ? t("common:labels.enabled") : t("common:labels.disabled")}
-          </p>
-        </Card>
-        <Card className="bg-surface p-4">
-          <p className="section-label text-text-muted">{t("common:labels.channel")}</p>
-          <p className="mt-1 text-2xl font-bold text-text">
-            {settingsLoading ? "..." : settings?.channelId ? t("stats.channel.configured") : t("stats.channel.notSet")}
-          </p>
-        </Card>
+        <StatsCard
+          label={t("stats.totalSuggestions")}
+          value={suggestionsLoading ? "..." : suggestionsData?.total ?? 0}
+        />
+        <StatsCard
+          label={t("stats.systemStatus")}
+          value={settingsLoading ? "..." : settings?.enabled ? t("common:labels.enabled") : t("common:labels.disabled")}
+        />
+        <StatsCard
+          label={t("common:labels.channel")}
+          value={settingsLoading ? "..." : settings?.channelId ? t("stats.channel.configured") : t("stats.channel.notSet")}
+        />
       </div>
 
       <Tabs defaultValue="suggestions">
@@ -183,7 +186,7 @@ export function SuggestionsPage() {
 
         {/* Suggestions List */}
         <TabsContent value="suggestions">
-          <Card className="bg-surface p-6">
+          <Card className="bg-surface-container p-6 glass-edge">
             {/* Filter */}
             <div className="mb-4 flex items-center gap-3">
               <Label>{t("filter.filterByStatus")}:</Label>
@@ -205,87 +208,89 @@ export function SuggestionsPage() {
               <p className="text-text-muted">{t("loading")}</p>
             ) : suggestionsData && suggestionsData.suggestions.length > 0 ? (
               <>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead className="w-16">{t("table.id")}</TableHead>
-                      <TableHead>{t("table.content")}</TableHead>
-                      <TableHead className="w-24">{t("table.status")}</TableHead>
-                      <TableHead className="w-20">{t("table.votes")}</TableHead>
-                      <TableHead className="w-28">{t("table.date")}</TableHead>
-                      <TableHead className="w-32">{t("common:labels.status")}</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {suggestionsData.suggestions.map((s) => (
-                      <TableRow key={s.id}>
-                        <TableCell className="font-mono text-xs font-bold">#{s.id}</TableCell>
-                        <TableCell>
-                          <p className="max-w-md truncate text-sm">{s.content}</p>
-                          <p className="mt-0.5 font-mono text-xs text-text-muted">
-                            by {s.userId}
-                          </p>
-                        </TableCell>
-                        <TableCell>
-                          <Badge variant={STATUS_BADGE_VARIANT[s.status] ?? "outline"}>
-                            {s.status}
-                          </Badge>
-                        </TableCell>
-                        <TableCell className="text-xs">
-                          <span className="text-success">+{s.upvotes}</span>
-                          {" / "}
-                          <span className="text-danger">-{s.downvotes}</span>
-                        </TableCell>
-                        <TableCell className="text-xs text-text-muted">
-                          {formatDate(s.createdAt)}
-                        </TableCell>
-                        <TableCell>
-                          <div className="flex gap-1">
-                            {s.status === "pending" && (
-                              <>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="w-16">{t("table.id")}</TableHead>
+                        <TableHead>{t("table.content")}</TableHead>
+                        <TableHead className="w-24">{t("table.status")}</TableHead>
+                        <TableHead className="w-20">{t("table.votes")}</TableHead>
+                        <TableHead className="w-28">{t("table.date")}</TableHead>
+                        <TableHead className="w-32">{t("common:labels.status")}</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {suggestionsData.suggestions.map((s) => (
+                        <TableRow key={s.id}>
+                          <TableCell className="font-mono text-xs font-bold">#{s.id}</TableCell>
+                          <TableCell>
+                            <p className="max-w-md truncate text-sm">{s.content}</p>
+                            <p className="mt-0.5 font-mono text-xs text-text-muted">
+                              by {s.userId}
+                            </p>
+                          </TableCell>
+                          <TableCell>
+                            <Badge variant={STATUS_BADGE_VARIANT[s.status] ?? "outline"}>
+                              {s.status}
+                            </Badge>
+                          </TableCell>
+                          <TableCell className="text-xs">
+                            <span className="text-success">+{s.upvotes}</span>
+                            {" / "}
+                            <span className="text-danger">-{s.downvotes}</span>
+                          </TableCell>
+                          <TableCell className="text-xs text-text-muted">
+                            {formatDate(s.createdAt)}
+                          </TableCell>
+                          <TableCell>
+                            <div className="flex gap-1">
+                              {s.status === "pending" && (
+                                <>
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={() => openStatusDialog(s.id, "approved")}
+                                    title={t("actions.approve")}
+                                  >
+                                    <Icon name="check_circle" size={16} className="text-success" />
+                                  </Button>
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={() => openStatusDialog(s.id, "denied")}
+                                    title={t("actions.reject")}
+                                  >
+                                    <Icon name="cancel" size={16} className="text-danger" />
+                                  </Button>
+                                </>
+                              )}
+                              {(s.status === "approved" || s.status === "pending") && (
                                 <Button
                                   variant="ghost"
                                   size="sm"
-                                  onClick={() => openStatusDialog(s.id, "approved")}
-                                  title={t("actions.approve")}
+                                  onClick={() => openStatusDialog(s.id, "implemented")}
+                                  title={t("actions.implement")}
                                 >
-                                  <Icon name="check_circle" size={16} className="text-success" />
+                                  <Icon name="task_alt" size={16} className="text-accent" />
                                 </Button>
-                                <Button
-                                  variant="ghost"
-                                  size="sm"
-                                  onClick={() => openStatusDialog(s.id, "denied")}
-                                  title={t("actions.reject")}
-                                >
-                                  <Icon name="cancel" size={16} className="text-danger" />
-                                </Button>
-                              </>
-                            )}
-                            {(s.status === "approved" || s.status === "pending") && (
+                              )}
                               <Button
                                 variant="ghost"
                                 size="sm"
-                                onClick={() => openStatusDialog(s.id, "implemented")}
-                                title={t("actions.implement")}
+                                onClick={() => handleDelete(s.id)}
+                                disabled={deleteSuggestion.isPending}
+                                title={t("actions.delete")}
                               >
-                                <Icon name="task_alt" size={16} className="text-accent" />
+                                <Icon name="delete" size={16} className="text-danger" />
                               </Button>
-                            )}
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => handleDelete(s.id)}
-                              disabled={deleteSuggestion.isPending}
-                              title={t("actions.delete")}
-                            >
-                              <Icon name="delete" size={16} className="text-danger" />
-                            </Button>
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
 
                 {totalPages > 1 && (
                   <div className="mt-4 flex items-center justify-between">
@@ -321,8 +326,8 @@ export function SuggestionsPage() {
 
         {/* Settings */}
         <TabsContent value="settings">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">{t("tabs.settings")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-4 font-label text-lg font-semibold">{t("tabs.settings")}</h3>
 
             {settingsLoading ? (
               <p className="text-text-muted">{t("common:actions.loading")}</p>
@@ -409,9 +414,9 @@ export function SuggestionsPage() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">{t("settings.voteEmojis")}</p>
+                    <p className="font-medium">{t("settings.anonymousMode")}</p>
                     <p className="text-sm text-text-muted">
-                      {t("settings.voteEmojisDesc")}
+                      {t("settings.anonymousModeDesc")}
                     </p>
                   </div>
                   <Switch
@@ -471,6 +476,16 @@ export function SuggestionsPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+      {/* Delete Suggestion Confirmation */}
+      <ConfirmDialog
+        open={deleteConfirmId !== null}
+        onOpenChange={(open) => { if (!open) setDeleteConfirmId(null); }}
+        title={t("actions.delete")}
+        description={t("common:actions.confirmDelete", { defaultValue: "Are you sure you want to delete this suggestion? This action cannot be undone." })}
+        confirmLabel={t("common:actions.delete", { defaultValue: "Delete" })}
+        destructive
+        onConfirm={confirmDelete}
+      />
     </div>
   );
 }

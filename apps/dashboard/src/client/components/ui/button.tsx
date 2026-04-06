@@ -13,9 +13,9 @@ const buttonVariants = cva(
         destructive:
           "bg-danger text-white shadow-sm hover:brightness-110",
         outline:
-          "border border-outline-variant/20 bg-transparent text-text hover:bg-surface-high",
+          "border border-outline-variant/20 bg-transparent text-text hover:bg-surface-hover",
         secondary:
-          "bg-surface-high text-text shadow-sm hover:bg-surface-hover",
+          "bg-surface-high text-text hover:bg-surface-hover",
         ghost:
           "text-text-muted hover:bg-surface-high hover:text-text",
         link:

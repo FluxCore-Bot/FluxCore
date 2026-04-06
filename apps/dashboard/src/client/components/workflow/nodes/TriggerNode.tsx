@@ -35,10 +35,10 @@ function TriggerNodeComponent({ data, selected }: NodeProps) {
             Trigger
           </span>
           {validationState === "error" && (
-            <Icon name="error" size={14} className="ml-auto text-danger" />
+            <Icon name="error" size={14} className="ms-auto text-danger" />
           )}
           {validationState === "warning" && (
-            <Icon name="warning" size={14} className="ml-auto text-warning" />
+            <Icon name="warning" size={14} className="ms-auto text-warning" />
           )}
         </div>
         <p className="text-sm font-medium text-text">{label}</p>
