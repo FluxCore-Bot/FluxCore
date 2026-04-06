@@ -272,8 +272,7 @@ export function RuleForm({ rule, draft, onClose, onSwitchView }: RuleFormProps) 
           <ConditionsEditor
             conditions={conditions}
             onChange={setConditions}
-            channels={channels}
-            roles={roles}
+            guildId={guildId}
           />
         </div>
 
