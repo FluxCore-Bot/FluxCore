@@ -3,6 +3,7 @@ import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../lib/client";
+import { ConfirmDialog } from "../../../components/ConfirmDialog";
 import { PageHeader } from "../../../components/PageHeader";
 import {
   useCustomCommands,
@@ -26,6 +27,7 @@ import { Textarea } from "../../../components/ui/textarea";
 import { Switch } from "../../../components/ui/switch";
 import { Badge } from "../../../components/ui/badge";
 import { Separator } from "../../../components/ui/separator";
+import { ColorPicker } from "../../../components/ui/color-picker";
 import {
   Select,
   SelectContent,
@@ -69,6 +71,7 @@ export function CommandsPage() {
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingCommand, setEditingCommand] = useState<CustomCommandItem | null>(null);
+  const [deleteConfirmId, setDeleteConfirmId] = useState<number | null>(null);
 
   // Form state
   const [formName, setFormName] = useState("");
@@ -238,11 +241,17 @@ export function CommandsPage() {
   }
 
   function handleDelete(commandId: number) {
-    deleteCommand.mutate(commandId, {
+    setDeleteConfirmId(commandId);
+  }
+
+  function confirmDelete() {
+    if (deleteConfirmId === null) return;
+    deleteCommand.mutate(deleteConfirmId, {
       onSuccess: () => toast.success(t("toast.deleted")),
       onError: (err) =>
         toast.error(err instanceof ApiError ? err.message : t("toast.deleteFailed")),
     });
+    setDeleteConfirmId(null);
   }
 
   function handleToggleEnabled(cmd: CustomCommandItem) {
@@ -314,9 +323,9 @@ export function CommandsPage() {
 
         {/* Command List */}
         <TabsContent value="commands">
-          <Card className="bg-surface p-6">
+          <Card className="bg-surface-container p-6 glass-edge">
             <div className="mb-4 flex items-center justify-between">
-              <h3 className="text-lg font-semibold">{t("tabs.commands")}</h3>
+              <h3 className="font-label text-lg font-semibold">{t("tabs.commands")}</h3>
               <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                 <DialogTrigger asChild>
                   <Button onClick={openCreateDialog}>
@@ -395,7 +404,7 @@ export function CommandsPage() {
                     {/* Response Config */}
                     <div>
                       <div className="mb-3 flex items-center gap-3">
-                        <h4 className="text-sm font-semibold">{t("form.response")}</h4>
+                        <h4 className="font-label text-sm font-semibold">{t("form.response")}</h4>
                         <Select
                           value={formResponseType}
                           onValueChange={(v) =>
@@ -451,14 +460,9 @@ export function CommandsPage() {
                           <div className="grid grid-cols-2 gap-4">
                             <div>
                               <Label htmlFor="embed-color">{t("form.color")}</Label>
-                              <Input
-                                id="embed-color"
-                                type="color"
+                              <ColorPicker
                                 value={formEmbedColor}
-                                onChange={(e) =>
-                                  setFormEmbedColor(e.target.value)
-                                }
-                                className="h-10 w-full"
+                                onChange={setFormEmbedColor}
                               />
                             </div>
                             <div>
@@ -482,7 +486,7 @@ export function CommandsPage() {
                     {/* Actions */}
                     <div>
                       <div className="mb-3 flex items-center justify-between">
-                        <h4 className="text-sm font-semibold">
+                        <h4 className="font-label text-sm font-semibold">
                           {t("actionsSection.title", { count: formActions.length })}
                         </h4>
                         <Button
@@ -569,7 +573,7 @@ export function CommandsPage() {
 
                     {/* Options */}
                     <div>
-                      <h4 className="mb-3 text-sm font-semibold">{t("common:options")}</h4>
+                      <h4 className="mb-3 font-label text-sm font-semibold">{t("common:options")}</h4>
                       <div className="space-y-4">
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                           <div>
@@ -637,7 +641,7 @@ export function CommandsPage() {
 
                     {/* Permissions */}
                     <div>
-                      <h4 className="mb-3 text-sm font-semibold">
+                      <h4 className="mb-3 font-label text-sm font-semibold">
                         {t("restrictions.title")}
                       </h4>
                       <div className="space-y-3">
@@ -781,97 +785,99 @@ export function CommandsPage() {
             {isLoading ? (
               <p className="text-text-muted">{t("loading")}</p>
             ) : commands && commands.length > 0 ? (
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>{t("table.name")}</TableHead>
-                    <TableHead>{t("table.trigger")}</TableHead>
-                    <TableHead>{t("table.response")}</TableHead>
-                    <TableHead>{t("table.cooldown")}</TableHead>
-                    <TableHead>{t("table.status")}</TableHead>
-                    <TableHead className="w-32" />
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {commands.map((cmd) => (
-                    <TableRow key={cmd.id}>
-                      <TableCell className="font-mono font-medium">
-                        {cmd.triggerType === "command"
-                          ? `!${cmd.name}`
-                          : cmd.name}
-                      </TableCell>
-                      <TableCell>
-                        <Badge variant="outline">
-                          {TRIGGER_TYPE_LABELS[cmd.triggerType] ??
-                            cmd.triggerType}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        <Badge variant="secondary">
-                          {cmd.response.type === "embed" ? t("badge.embed") : t("badge.text")}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        {cmd.cooldown > 0 ? `${cmd.cooldown}s` : "--"}
-                      </TableCell>
-                      <TableCell>
-                        {cmd.enabled ? (
-                          <Badge className="bg-success/20 text-success">
-                            {t("badge.active")}
-                          </Badge>
-                        ) : (
-                          <Badge
-                            variant="outline"
-                            className="text-text-muted"
-                          >
-                            {t("badge.disabled")}
-                          </Badge>
-                        )}
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex gap-1">
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => handleToggleEnabled(cmd)}
-                            title={cmd.enabled ? t("common:disable") : t("common:enable")}
-                          >
-                            <Icon
-                              name={
-                                cmd.enabled
-                                  ? "toggle_on"
-                                  : "toggle_off"
-                              }
-                              size={16}
-                            />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => openEditDialog(cmd)}
-                            title={t("common:edit")}
-                          >
-                            <Icon name="edit" size={16} />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => handleDelete(cmd.id)}
-                            disabled={deleteCommand.isPending}
-                            title={t("common:delete")}
-                          >
-                            <Icon
-                              name="delete"
-                              size={16}
-                              className="text-danger"
-                            />
-                          </Button>
-                        </div>
-                      </TableCell>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>{t("table.name")}</TableHead>
+                      <TableHead>{t("table.trigger")}</TableHead>
+                      <TableHead>{t("table.response")}</TableHead>
+                      <TableHead>{t("table.cooldown")}</TableHead>
+                      <TableHead>{t("table.status")}</TableHead>
+                      <TableHead className="w-32" />
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  </TableHeader>
+                  <TableBody>
+                    {commands.map((cmd) => (
+                      <TableRow key={cmd.id}>
+                        <TableCell className="font-mono font-medium">
+                          {cmd.triggerType === "command"
+                            ? `!${cmd.name}`
+                            : cmd.name}
+                        </TableCell>
+                        <TableCell>
+                          <Badge variant="outline">
+                            {TRIGGER_TYPE_LABELS[cmd.triggerType] ??
+                              cmd.triggerType}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge variant="secondary">
+                            {cmd.response.type === "embed" ? t("badge.embed") : t("badge.text")}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          {cmd.cooldown > 0 ? `${cmd.cooldown}s` : "--"}
+                        </TableCell>
+                        <TableCell>
+                          {cmd.enabled ? (
+                            <Badge className="bg-success/20 text-success">
+                              {t("badge.active")}
+                            </Badge>
+                          ) : (
+                            <Badge
+                              variant="outline"
+                              className="text-text-muted"
+                            >
+                              {t("badge.disabled")}
+                            </Badge>
+                          )}
+                        </TableCell>
+                        <TableCell>
+                          <div className="flex gap-1">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => handleToggleEnabled(cmd)}
+                              title={cmd.enabled ? t("common:disable") : t("common:enable")}
+                            >
+                              <Icon
+                                name={
+                                  cmd.enabled
+                                    ? "toggle_on"
+                                    : "toggle_off"
+                                }
+                                size={16}
+                              />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => openEditDialog(cmd)}
+                              title={t("common:edit")}
+                            >
+                              <Icon name="edit" size={16} />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => handleDelete(cmd.id)}
+                              disabled={deleteCommand.isPending}
+                              title={t("common:delete")}
+                            >
+                              <Icon
+                                name="delete"
+                                size={16}
+                                className="text-danger"
+                              />
+                            </Button>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
             ) : (
               <p className="text-text-muted">
                 {t("empty")}
@@ -882,34 +888,47 @@ export function CommandsPage() {
 
         {/* Variables Reference */}
         <TabsContent value="variables">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">{t("variables.title")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-4 font-label text-lg font-semibold">{t("variables.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
               {t("variables.description")}
             </p>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>{t("variables.table.variable")}</TableHead>
-                  <TableHead>{t("variables.table.description")}</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {VARIABLE_HELP.map((v) => (
-                  <TableRow key={v.variable}>
-                    <TableCell className="font-mono text-accent">
-                      {v.variable}
-                    </TableCell>
-                    <TableCell className="text-text-muted">
-                      {v.description}
-                    </TableCell>
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>{t("variables.table.variable")}</TableHead>
+                    <TableHead>{t("variables.table.description")}</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {VARIABLE_HELP.map((v) => (
+                    <TableRow key={v.variable}>
+                      <TableCell className="font-mono text-accent">
+                        {v.variable}
+                      </TableCell>
+                      <TableCell className="text-text-muted">
+                        {v.description}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
           </Card>
         </TabsContent>
       </Tabs>
+
+      {/* Delete Command Confirmation */}
+      <ConfirmDialog
+        open={deleteConfirmId !== null}
+        onOpenChange={(open) => { if (!open) setDeleteConfirmId(null); }}
+        title={t("common:actions.delete", { defaultValue: "Delete Command" })}
+        description={t("common:actions.confirmDelete", { defaultValue: "Are you sure you want to delete this command? This action cannot be undone." })}
+        confirmLabel={t("common:actions.delete", { defaultValue: "Delete" })}
+        destructive
+        onConfirm={confirmDelete}
+      />
     </div>
   );
 }

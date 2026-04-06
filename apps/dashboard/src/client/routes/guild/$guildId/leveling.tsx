@@ -269,37 +269,39 @@ export function LevelingPage() {
 
         {/* Leaderboard */}
         <TabsContent value="leaderboard">
-          <Card className="bg-surface p-6">
+          <Card className="bg-surface-container p-6 glass-edge">
             {leaderboardLoading ? (
               <p className="text-text-muted">{t("loading")}</p>
             ) : leaderboardData && leaderboardData.entries.length > 0 ? (
               <>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead className="w-16">{t("table.rank")}</TableHead>
-                      <TableHead>{t("table.userId")}</TableHead>
-                      <TableHead>{t("table.level")}</TableHead>
-                      <TableHead>{t("table.xp")}</TableHead>
-                      <TableHead>{t("table.messages")}</TableHead>
-                      <TableHead>{t("table.voiceTime")}</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {leaderboardData.entries.map((entry, i) => (
-                      <TableRow key={entry.userId}>
-                        <TableCell className="font-mono text-xs font-bold">
-                          #{(page - 1) * 10 + i + 1}
-                        </TableCell>
-                        <TableCell className="font-mono text-xs">{entry.userId}</TableCell>
-                        <TableCell className="font-bold">{entry.level}</TableCell>
-                        <TableCell>{entry.xp.toLocaleString()}</TableCell>
-                        <TableCell>{entry.messageCount.toLocaleString()}</TableCell>
-                        <TableCell>{formatVoiceTime(entry.voiceMinutes, t)}</TableCell>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="w-16">{t("table.rank")}</TableHead>
+                        <TableHead>{t("table.userId")}</TableHead>
+                        <TableHead>{t("table.level")}</TableHead>
+                        <TableHead>{t("table.xp")}</TableHead>
+                        <TableHead>{t("table.messages")}</TableHead>
+                        <TableHead>{t("table.voiceTime")}</TableHead>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+                    </TableHeader>
+                    <TableBody>
+                      {leaderboardData.entries.map((entry, i) => (
+                        <TableRow key={entry.userId}>
+                          <TableCell className="font-mono text-xs font-bold">
+                            #{(page - 1) * 10 + i + 1}
+                          </TableCell>
+                          <TableCell className="font-mono text-xs">{entry.userId}</TableCell>
+                          <TableCell className="font-bold">{entry.level}</TableCell>
+                          <TableCell>{entry.xp.toLocaleString()}</TableCell>
+                          <TableCell>{entry.messageCount.toLocaleString()}</TableCell>
+                          <TableCell>{formatVoiceTime(entry.voiceMinutes, t)}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
 
                 {totalPages > 1 && (
                   <div className="mt-4 flex items-center justify-between">
@@ -335,8 +337,8 @@ export function LevelingPage() {
 
         {/* Settings */}
         <TabsContent value="settings">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">{t("settings.title")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-4 font-label text-lg font-semibold">{t("settings.title")}</h3>
 
             {settingsLoading ? (
               <p className="text-text-muted">{t("loadingGeneric")}</p>
@@ -489,8 +491,8 @@ export function LevelingPage() {
 
         {/* Role Rewards */}
         <TabsContent value="rewards">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">{t("roleRewards.title")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-4 font-label text-lg font-semibold">{t("roleRewards.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
               {t("roleRewards.description")}
             </p>
@@ -498,40 +500,42 @@ export function LevelingPage() {
             {rewardsLoading ? (
               <p className="text-text-muted">{t("loadingGeneric")}</p>
             ) : rewards && rewards.length > 0 ? (
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>{t("roleRewards.level")}</TableHead>
-                    <TableHead>{t("roleRewards.roleId")}</TableHead>
-                    <TableHead className="w-16" />
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {rewards.map((r) => (
-                    <TableRow key={r.id}>
-                      <TableCell className="font-bold">{t("roleRewards.levelPrefix", { level: r.level })}</TableCell>
-                      <TableCell className="font-mono text-xs">{r.roleId}</TableCell>
-                      <TableCell>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => handleRemoveReward(r.id)}
-                          disabled={removeReward.isPending}
-                        >
-                          <Icon name="delete" size={16} className="text-danger" />
-                        </Button>
-                      </TableCell>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>{t("roleRewards.level")}</TableHead>
+                      <TableHead>{t("roleRewards.roleId")}</TableHead>
+                      <TableHead className="w-16" />
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  </TableHeader>
+                  <TableBody>
+                    {rewards.map((r) => (
+                      <TableRow key={r.id}>
+                        <TableCell className="font-bold">{t("roleRewards.levelPrefix", { level: r.level })}</TableCell>
+                        <TableCell className="font-mono text-xs">{r.roleId}</TableCell>
+                        <TableCell>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleRemoveReward(r.id)}
+                            disabled={removeReward.isPending}
+                          >
+                            <Icon name="delete" size={16} className="text-danger" />
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
             ) : (
               <p className="mb-4 text-text-muted">{t("roleRewards.noRewards")}</p>
             )}
 
             <Separator className="my-6" />
 
-            <h4 className="mb-3 text-sm font-semibold">{t("roleRewards.addRewardTitle")}</h4>
+            <h4 className="mb-3 font-label text-sm font-semibold">{t("roleRewards.addRewardTitle")}</h4>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
               <div>
                 <Label htmlFor="reward-level">{t("roleRewards.level")}</Label>
@@ -568,8 +572,8 @@ export function LevelingPage() {
 
         {/* Exclusions */}
         <TabsContent value="exclusions">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">{t("exclusions.title")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-4 font-label text-lg font-semibold">{t("exclusions.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
               {t("exclusions.description")}
             </p>
@@ -605,8 +609,8 @@ export function LevelingPage() {
 
         {/* Multipliers */}
         <TabsContent value="multipliers">
-          <Card className="bg-surface p-6">
-            <h3 className="mb-4 text-lg font-semibold">{t("multipliers.title")}</h3>
+          <Card className="bg-surface-container p-6 glass-edge">
+            <h3 className="mb-4 font-label text-lg font-semibold">{t("multipliers.title")}</h3>
             <p className="mb-4 text-sm text-text-muted">
               {t("multipliers.description")}
             </p>
@@ -617,70 +621,74 @@ export function LevelingPage() {
                 {settings.xpMultipliers.channels &&
                   Object.entries(settings.xpMultipliers.channels).length > 0 && (
                     <div>
-                      <h4 className="mb-2 text-sm font-semibold">{t("multipliers.channelMultipliers")}</h4>
-                      <Table>
-                        <TableHeader>
-                          <TableRow>
-                            <TableHead>{t("multipliers.channelId")}</TableHead>
-                            <TableHead>{t("multipliers.multiplier")}</TableHead>
-                            <TableHead className="w-16" />
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                          {Object.entries(settings.xpMultipliers.channels).map(
-                            ([id, value]) => (
-                              <TableRow key={id}>
-                                <TableCell className="font-mono text-xs">{id}</TableCell>
-                                <TableCell>{t("multipliers.multiplierSuffix", { value })}</TableCell>
-                                <TableCell>
-                                  <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    onClick={() => handleRemoveMultiplier("channels", id)}
-                                  >
-                                    <Icon name="delete" size={16} className="text-danger" />
-                                  </Button>
-                                </TableCell>
-                              </TableRow>
-                            ),
-                          )}
-                        </TableBody>
-                      </Table>
+                      <h4 className="mb-2 font-label text-sm font-semibold">{t("multipliers.channelMultipliers")}</h4>
+                      <div className="overflow-x-auto">
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead>{t("multipliers.channelId")}</TableHead>
+                              <TableHead>{t("multipliers.multiplier")}</TableHead>
+                              <TableHead className="w-16" />
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {Object.entries(settings.xpMultipliers.channels).map(
+                              ([id, value]) => (
+                                <TableRow key={id}>
+                                  <TableCell className="font-mono text-xs">{id}</TableCell>
+                                  <TableCell>{t("multipliers.multiplierSuffix", { value })}</TableCell>
+                                  <TableCell>
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      onClick={() => handleRemoveMultiplier("channels", id)}
+                                    >
+                                      <Icon name="delete" size={16} className="text-danger" />
+                                    </Button>
+                                  </TableCell>
+                                </TableRow>
+                              ),
+                            )}
+                          </TableBody>
+                        </Table>
+                      </div>
                     </div>
                   )}
 
                 {settings.xpMultipliers.roles &&
                   Object.entries(settings.xpMultipliers.roles).length > 0 && (
                     <div>
-                      <h4 className="mb-2 text-sm font-semibold">{t("multipliers.roleMultipliers")}</h4>
-                      <Table>
-                        <TableHeader>
-                          <TableRow>
-                            <TableHead>{t("multipliers.roleId")}</TableHead>
-                            <TableHead>{t("multipliers.multiplier")}</TableHead>
-                            <TableHead className="w-16" />
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                          {Object.entries(settings.xpMultipliers.roles).map(
-                            ([id, value]) => (
-                              <TableRow key={id}>
-                                <TableCell className="font-mono text-xs">{id}</TableCell>
-                                <TableCell>{t("multipliers.multiplierSuffix", { value })}</TableCell>
-                                <TableCell>
-                                  <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    onClick={() => handleRemoveMultiplier("roles", id)}
-                                  >
-                                    <Icon name="delete" size={16} className="text-danger" />
-                                  </Button>
-                                </TableCell>
-                              </TableRow>
-                            ),
-                          )}
-                        </TableBody>
-                      </Table>
+                      <h4 className="mb-2 font-label text-sm font-semibold">{t("multipliers.roleMultipliers")}</h4>
+                      <div className="overflow-x-auto">
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead>{t("multipliers.roleId")}</TableHead>
+                              <TableHead>{t("multipliers.multiplier")}</TableHead>
+                              <TableHead className="w-16" />
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {Object.entries(settings.xpMultipliers.roles).map(
+                              ([id, value]) => (
+                                <TableRow key={id}>
+                                  <TableCell className="font-mono text-xs">{id}</TableCell>
+                                  <TableCell>{t("multipliers.multiplierSuffix", { value })}</TableCell>
+                                  <TableCell>
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      onClick={() => handleRemoveMultiplier("roles", id)}
+                                    >
+                                      <Icon name="delete" size={16} className="text-danger" />
+                                    </Button>
+                                  </TableCell>
+                                </TableRow>
+                              ),
+                            )}
+                          </TableBody>
+                        </Table>
+                      </div>
                     </div>
                   )}
               </div>
@@ -688,7 +696,7 @@ export function LevelingPage() {
 
             <Separator className="my-6" />
 
-            <h4 className="mb-3 text-sm font-semibold">{t("multipliers.addTitle")}</h4>
+            <h4 className="mb-3 font-label text-sm font-semibold">{t("multipliers.addTitle")}</h4>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
               <div>
                 <Label>{t("multipliers.type")}</Label>

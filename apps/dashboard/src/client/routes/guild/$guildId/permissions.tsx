@@ -13,6 +13,7 @@ import { Badge } from "../../../components/ui/badge";
 import { Card, CardContent } from "../../../components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 import { Separator } from "../../../components/ui/separator";
+import { ColorPicker } from "../../../components/ui/color-picker";
 import { ScrollArea } from "../../../components/ui/scroll-area";
 import { Checkbox } from "../../../components/ui/checkbox";
 import {
@@ -127,9 +128,9 @@ export function PermissionsPage() {
         </TabsList>
 
         <TabsContent value="roles" className="mt-6">
-          <div className="flex gap-6">
+          <div className="flex flex-col gap-6 md:flex-row">
             {/* Role List */}
-            <div className="w-64 shrink-0 space-y-2">
+            <div className="w-full shrink-0 space-y-2 md:w-64">
               <p className="section-label text-text-muted">{t("roleList.title")}</p>
               <div className="space-y-1">
                 {roles?.map((role) => (
@@ -148,7 +149,7 @@ export function PermissionsPage() {
                     />
                     <span className="truncate">{role.name}</span>
                     {role.isDefault && (
-                      <Badge variant="secondary" className="ms-auto text-[10px]">
+                      <Badge variant="secondary" className="ms-auto text-xs">
                         {t("roleList.default")}
                       </Badge>
                     )}
@@ -290,7 +291,7 @@ function RoleEditor({
             className="h-4 w-4 rounded-full"
             style={{ backgroundColor: color }}
           />
-          <h3 className="text-lg font-semibold">{role.name}</h3>
+          <h3 className="font-label text-lg font-semibold">{role.name}</h3>
           <Badge variant="outline" className="text-xs">
             {t("roleEditor.memberCount", { count: role.memberCount })}
           </Badge>
@@ -317,12 +318,7 @@ function RoleEditor({
         </div>
         <div className="space-y-2">
           <Label>{t("roleEditor.color")}</Label>
-          <input
-            type="color"
-            value={color}
-            onChange={(e) => setColor(e.target.value)}
-            className="h-9 w-14 cursor-pointer rounded-md border border-outline-variant/20 bg-transparent"
-          />
+          <ColorPicker value={color} onChange={setColor} />
         </div>
         <div className="flex items-end gap-2 pb-0.5">
           <Switch checked={isDefault} onCheckedChange={setIsDefault} />
@@ -353,7 +349,7 @@ function RoleEditor({
                       {mod.label}
                     </span>
                     {hasWildcard && (
-                      <Badge variant="secondary" className="text-[10px]">
+                      <Badge variant="secondary" className="text-xs">
                         {t("roleEditor.allBadge")}
                       </Badge>
                     )}
@@ -507,15 +503,7 @@ function CreateRoleDialog({
           </div>
           <div className="space-y-2">
             <Label>{t("createDialog.color")}</Label>
-            <div className="flex items-center gap-3">
-              <input
-                type="color"
-                value={color}
-                onChange={(e) => setColor(e.target.value)}
-                className="h-9 w-14 cursor-pointer rounded-md border border-outline-variant/20 bg-transparent"
-              />
-              <span className="font-mono text-xs text-text-muted">{color}</span>
-            </div>
+            <ColorPicker value={color} onChange={setColor} />
           </div>
         </div>
         <DialogFooter>
@@ -553,8 +541,8 @@ function AuditLogTab({ guildId }: { guildId: string }) {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-md border border-outline-variant/20">
-        <div className="grid grid-cols-[1fr_1fr_1fr_auto] gap-4 border-b border-outline-variant/10 px-4 py-2 text-xs font-medium text-text-muted">
+      <div className="overflow-x-auto rounded-md border border-outline-variant/20">
+        <div className="min-w-[32rem] grid grid-cols-[1fr_1fr_1fr_auto] gap-4 border-b border-outline-variant/10 px-4 py-2 text-xs font-medium text-text-muted">
           <span>{t("audit.table.user")}</span>
           <span>{t("audit.table.action")}</span>
           <span>{t("audit.table.target")}</span>
@@ -563,7 +551,7 @@ function AuditLogTab({ guildId }: { guildId: string }) {
         {data.entries.map((entry) => (
           <div
             key={entry.id}
-            className="grid grid-cols-[1fr_1fr_1fr_auto] gap-4 border-b border-outline-variant/5 px-4 py-2.5 text-sm last:border-0"
+            className="min-w-[32rem] grid grid-cols-[1fr_1fr_1fr_auto] gap-4 border-b border-outline-variant/5 px-4 py-2.5 text-sm last:border-0"
           >
             <span className="truncate text-text">{entry.username}</span>
             <span className="truncate font-mono text-xs text-accent">
@@ -571,7 +559,7 @@ function AuditLogTab({ guildId }: { guildId: string }) {
             </span>
             <span className="truncate text-text-muted">
               {entry.targetType && (
-                <Badge variant="outline" className="me-1 text-[10px]">
+                <Badge variant="outline" className="me-1 text-xs">
                   {entry.targetType}
                 </Badge>
               )}

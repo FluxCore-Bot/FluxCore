@@ -15,6 +15,7 @@ import {
 import { useChannels } from "../../../lib/hooks/useChannels";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
+import { ColorPicker } from "../../../components/ui/color-picker";
 import { Label } from "../../../components/ui/label";
 import { Card } from "../../../components/ui/card";
 import { Switch } from "../../../components/ui/switch";
@@ -299,80 +300,82 @@ export function ScheduledMessagesPage() {
       </div>
 
       {/* Message List */}
-      <Card className="bg-surface p-6">
+      <Card className="bg-surface-container p-6 glass-edge">
         {isLoading ? (
           <p className="text-text-muted">{t("common:loading")}</p>
         ) : data && data.messages.length > 0 ? (
           <>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>{t("table.name")}</TableHead>
-                  <TableHead>{t("table.channel")}</TableHead>
-                  <TableHead>{t("table.schedule")}</TableHead>
-                  <TableHead>{t("table.nextRun")}</TableHead>
-                  <TableHead>{t("table.status")}</TableHead>
-                  <TableHead className="w-32" />
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {data.messages.map((msg) => (
-                  <TableRow key={msg.id}>
-                    <TableCell className="font-medium">{msg.name}</TableCell>
-                    <TableCell className="font-mono text-xs">{msg.channelId}</TableCell>
-                    <TableCell>
-                      <code className="rounded bg-surface-high px-2 py-0.5 font-mono text-xs">
-                        {msg.cronExpr}
-                      </code>
-                    </TableCell>
-                    <TableCell className="text-sm text-text-muted">
-                      {formatDate(msg.nextRunAt)}
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <Switch
-                          checked={msg.enabled}
-                          onCheckedChange={(checked) =>
-                            handleToggleEnabled(msg.id, checked)
-                          }
-                        />
-                        <Badge variant={msg.enabled ? "default" : "secondary"}>
-                          {msg.enabled ? t("stats.active") : t("stats.inactive")}
-                        </Badge>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex gap-1">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => handleTestSend(msg.id)}
-                          title={t("actions.testSend")}
-                        >
-                          <Icon name="play_arrow" size={16} />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => openEdit(msg)}
-                          title={t("actions.edit")}
-                        >
-                          <Icon name="edit" size={16} />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => handleDelete(msg.id)}
-                          title={t("actions.delete")}
-                        >
-                          <Icon name="delete" size={16} className="text-danger" />
-                        </Button>
-                      </div>
-                    </TableCell>
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>{t("table.name")}</TableHead>
+                    <TableHead>{t("table.channel")}</TableHead>
+                    <TableHead>{t("table.schedule")}</TableHead>
+                    <TableHead>{t("table.nextRun")}</TableHead>
+                    <TableHead>{t("table.status")}</TableHead>
+                    <TableHead className="w-32" />
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {data.messages.map((msg) => (
+                    <TableRow key={msg.id}>
+                      <TableCell className="font-medium">{msg.name}</TableCell>
+                      <TableCell className="font-mono text-xs">{msg.channelId}</TableCell>
+                      <TableCell>
+                        <code className="rounded bg-surface-high px-2 py-0.5 font-mono text-xs">
+                          {msg.cronExpr}
+                        </code>
+                      </TableCell>
+                      <TableCell className="text-sm text-text-muted">
+                        {formatDate(msg.nextRunAt)}
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex items-center gap-2">
+                          <Switch
+                            checked={msg.enabled}
+                            onCheckedChange={(checked) =>
+                              handleToggleEnabled(msg.id, checked)
+                            }
+                          />
+                          <Badge variant={msg.enabled ? "default" : "secondary"}>
+                            {msg.enabled ? t("stats.active") : t("stats.inactive")}
+                          </Badge>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex gap-1">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleTestSend(msg.id)}
+                            title={t("actions.testSend")}
+                          >
+                            <Icon name="play_arrow" size={16} />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => openEdit(msg)}
+                            title={t("actions.edit")}
+                          >
+                            <Icon name="edit" size={16} />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleDelete(msg.id)}
+                            title={t("actions.delete")}
+                          >
+                            <Icon name="delete" size={16} className="text-danger" />
+                          </Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
 
             {totalPages > 1 && (
               <div className="mt-4 flex items-center justify-between">
@@ -580,21 +583,10 @@ export function ScheduledMessagesPage() {
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
                     <Label htmlFor="embed-color">{t("embed.color")}</Label>
-                    <div className="flex items-center gap-2">
-                      <input
-                        id="embed-color"
-                        type="color"
-                        value={form.embedColor}
-                        onChange={(e) => updateForm({ embedColor: e.target.value })}
-                        className="h-9 w-12 cursor-pointer rounded border border-border bg-transparent"
-                      />
-                      <Input
-                        value={form.embedColor}
-                        onChange={(e) => updateForm({ embedColor: e.target.value })}
-                        className="font-mono"
-                        placeholder="#a3a6ff"
-                      />
-                    </div>
+                    <ColorPicker
+                      value={form.embedColor}
+                      onChange={(color) => updateForm({ embedColor: color })}
+                    />
                   </div>
                   <div>
                     <Label htmlFor="embed-footer">{t("embed.footer")}</Label>

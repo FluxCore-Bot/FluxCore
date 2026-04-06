@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import { Outlet, Link, useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../lib/hooks/useAuth";
+import { useAppDirection } from "../lib/hooks/useDirection";
 import { Toaster } from "../components/ui/sonner";
 import { Icon } from "../components/Icon";
 import { Button } from "../components/ui/button";
@@ -14,6 +15,7 @@ import { MobileSidebarContext } from "../lib/hooks/useMobileSidebar";
 export function RootLayout() {
   const { t } = useTranslation();
   const { data: user } = useAuth();
+  const { dir } = useAppDirection();
   const params = useParams({ strict: false }) as { guildId?: string };
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -95,7 +97,7 @@ export function RootLayout() {
           <main id="main-content" className="flex-1" role="main">
             <Outlet />
           </main>
-          <Toaster position="bottom-right" />
+          <Toaster position={dir === "rtl" ? "bottom-left" : "bottom-right"} />
         </div>
       </TooltipProvider>
     </MobileSidebarContext.Provider>

@@ -19,6 +19,7 @@ import {
   SelectValue,
 } from "./ui/select";
 import { PageSkeleton } from "./PageSkeleton";
+import { ConfirmDialog } from "./ConfirmDialog";
 
 export function SettingsForm() {
   const { t } = useTranslation("settings");
@@ -34,6 +35,7 @@ export function SettingsForm() {
   const [notifyRuleTriggered, setNotifyRuleTriggered] = useState(true);
   const [notifyErrors, setNotifyErrors] = useState(true);
   const [notifySuccess, setNotifySuccess] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   useEffect(() => {
     if (settings) {
@@ -158,15 +160,23 @@ export function SettingsForm() {
       </p>
       <Button
         variant="destructive"
-        onClick={() => {
-          if (window.confirm(t("dangerZone.deleteAllConfirm"))) {
-            toast.info(t("dangerZone.notImplemented"));
-          }
-        }}
+        onClick={() => setShowDeleteConfirm(true)}
       >
         {t("dangerZone.deleteAllRules")}
       </Button>
     </Card>
+
+    <ConfirmDialog
+      open={showDeleteConfirm}
+      onOpenChange={setShowDeleteConfirm}
+      title={t("dangerZone.deleteAllConfirm")}
+      description={t("dangerZone.description")}
+      confirmLabel={t("dangerZone.deleteAllRules")}
+      destructive
+      onConfirm={() => {
+        toast.info(t("dangerZone.notImplemented"));
+      }}
+    />
   </>
   );
 }
