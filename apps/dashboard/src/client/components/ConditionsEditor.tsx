@@ -5,20 +5,13 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
-import type { ActionConditions, Channel, Role } from "../lib/schemas";
+import { DiscordMultiSelect } from "./ui/discord-multi-select";
+import type { ActionConditions } from "../lib/schemas";
 
 interface ConditionsEditorProps {
+  guildId: string;
   conditions: ActionConditions;
   onChange: (conditions: ActionConditions) => void;
-  channels: Channel[];
-  roles: Role[];
   compact?: boolean;
   /** Always show expanded, no collapse button */
   alwaysExpanded?: boolean;
@@ -45,6 +38,7 @@ function ChipList({
           {item.label}
           <button
             type="button"
+            aria-label={`Remove ${item.label}`}
             onClick={() => onRemove(item.id)}
             className="ms-0.5 rounded-full p-0.5 hover:bg-white/10"
           >
@@ -52,52 +46,6 @@ function ChipList({
           </button>
         </Badge>
       ))}
-    </div>
-  );
-}
-
-function IdSelector({
-  label,
-  placeholder,
-  selectedIds,
-  options,
-  onAdd,
-  onRemove,
-  chipColor = "secondary",
-}: {
-  label: string;
-  placeholder: string;
-  selectedIds: string[];
-  options: { id: string; name: string }[];
-  onAdd: (id: string) => void;
-  onRemove: (id: string) => void;
-  chipColor?: "secondary" | "destructive";
-}) {
-  const available = options.filter((o) => !selectedIds.includes(o.id));
-  const chips = selectedIds
-    .map((id) => {
-      const opt = options.find((o) => o.id === id);
-      return { id, label: opt?.name ?? id };
-    });
-
-  return (
-    <div className="space-y-1.5">
-      <Label className="text-xs">{label}</Label>
-      {available.length > 0 && (
-        <Select value="" onValueChange={(v) => v && onAdd(v)}>
-          <SelectTrigger className="h-8 text-xs">
-            <SelectValue placeholder={placeholder} />
-          </SelectTrigger>
-          <SelectContent>
-            {available.map((opt) => (
-              <SelectItem key={opt.id} value={opt.id}>
-                {opt.name}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      )}
-      <ChipList items={chips} onRemove={onRemove} color={chipColor} />
     </div>
   );
 }
@@ -134,7 +82,9 @@ function UserIdInput({
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), handleAdd())}
+          onKeyDown={(e) =>
+            e.key === "Enter" && (e.preventDefault(), handleAdd())
+          }
           placeholder={t("conditions.userId")}
           className="h-8 flex-1 text-xs"
         />
@@ -159,10 +109,9 @@ function UserIdInput({
 }
 
 export function ConditionsEditor({
+  guildId,
   conditions,
   onChange,
-  channels,
-  roles,
   compact,
   alwaysExpanded,
 }: ConditionsEditorProps) {
@@ -171,27 +120,18 @@ export function ConditionsEditor({
     onChange({ ...conditions, ...patch });
   };
 
-  const addToList = (key: keyof ActionConditions, id: string) => {
-    const current = (conditions[key] ?? []) as string[];
-    if (!current.includes(id)) {
-      update({ [key]: [...current, id] });
-    }
-  };
-
-  const removeFromList = (key: keyof ActionConditions, id: string) => {
-    const current = (conditions[key] ?? []) as string[];
-    update({ [key]: current.filter((v) => v !== id) });
-  };
-
   const hasAnyConditions =
     (conditions.channelIds?.length ?? 0) +
-    (conditions.roleIds?.length ?? 0) +
-    (conditions.userIds?.length ?? 0) +
-    (conditions.excludeChannelIds?.length ?? 0) +
-    (conditions.excludeRoleIds?.length ?? 0) +
-    (conditions.excludeUserIds?.length ?? 0) > 0;
+      (conditions.roleIds?.length ?? 0) +
+      (conditions.userIds?.length ?? 0) +
+      (conditions.excludeChannelIds?.length ?? 0) +
+      (conditions.excludeRoleIds?.length ?? 0) +
+      (conditions.excludeUserIds?.length ?? 0) >
+    0;
 
-  const [expanded, setExpanded] = useState(hasAnyConditions || !!alwaysExpanded);
+  const [expanded, setExpanded] = useState(
+    hasAnyConditions || !!alwaysExpanded,
+  );
 
   if (!expanded && !alwaysExpanded) {
     return (
@@ -218,7 +158,9 @@ export function ConditionsEditor({
   }
 
   return (
-    <div className={`space-y-4 rounded-lg border border-border ${compact ? "p-3" : "p-4"}`}>
+    <div
+      className={`space-y-4 rounded-lg border border-border ${compact ? "p-3" : "p-4"}`}
+    >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Icon name="filter_alt" size={16} className="text-accent" />
@@ -246,27 +188,32 @@ export function ConditionsEditor({
         <span className="section-label text-secondary">
           {t("conditions.include")}
         </span>
-        <IdSelector
-          label={t("conditions.channels")}
-          placeholder={t("conditions.addChannel")}
+        <DiscordMultiSelect
+          guildId={guildId}
+          type="any"
           selectedIds={conditions.channelIds ?? []}
-          options={channels}
-          onAdd={(id) => addToList("channelIds", id)}
-          onRemove={(id) => removeFromList("channelIds", id)}
+          onChange={(ids) => update({ channelIds: ids })}
+          placeholder={t("conditions.addChannel")}
+          label={t("conditions.channels")}
         />
-        <IdSelector
-          label={t("conditions.roles")}
-          placeholder={t("conditions.addRole")}
+        <DiscordMultiSelect
+          guildId={guildId}
+          type="role"
           selectedIds={conditions.roleIds ?? []}
-          options={roles}
-          onAdd={(id) => addToList("roleIds", id)}
-          onRemove={(id) => removeFromList("roleIds", id)}
+          onChange={(ids) => update({ roleIds: ids })}
+          placeholder={t("conditions.addRole")}
+          label={t("conditions.roles")}
         />
         <UserIdInput
           label={t("conditions.users")}
           selectedIds={conditions.userIds ?? []}
-          onAdd={(id) => addToList("userIds", id)}
-          onRemove={(id) => removeFromList("userIds", id)}
+          onAdd={(id) => {
+            const current = conditions.userIds ?? [];
+            if (!current.includes(id)) update({ userIds: [...current, id] });
+          }}
+          onRemove={(id) =>
+            update({ userIds: (conditions.userIds ?? []).filter((v) => v !== id) })
+          }
         />
       </div>
 
@@ -275,29 +222,37 @@ export function ConditionsEditor({
         <span className="section-label text-danger">
           {t("conditions.exclude")}
         </span>
-        <IdSelector
-          label={t("conditions.channels")}
-          placeholder={t("conditions.excludeChannel")}
+        <DiscordMultiSelect
+          guildId={guildId}
+          type="any"
           selectedIds={conditions.excludeChannelIds ?? []}
-          options={channels}
-          onAdd={(id) => addToList("excludeChannelIds", id)}
-          onRemove={(id) => removeFromList("excludeChannelIds", id)}
-          chipColor="destructive"
+          onChange={(ids) => update({ excludeChannelIds: ids })}
+          placeholder={t("conditions.excludeChannel")}
+          label={t("conditions.channels")}
         />
-        <IdSelector
-          label={t("conditions.roles")}
-          placeholder={t("conditions.excludeRole")}
+        <DiscordMultiSelect
+          guildId={guildId}
+          type="role"
           selectedIds={conditions.excludeRoleIds ?? []}
-          options={roles}
-          onAdd={(id) => addToList("excludeRoleIds", id)}
-          onRemove={(id) => removeFromList("excludeRoleIds", id)}
-          chipColor="destructive"
+          onChange={(ids) => update({ excludeRoleIds: ids })}
+          placeholder={t("conditions.excludeRole")}
+          label={t("conditions.roles")}
         />
         <UserIdInput
           label={t("conditions.users")}
           selectedIds={conditions.excludeUserIds ?? []}
-          onAdd={(id) => addToList("excludeUserIds", id)}
-          onRemove={(id) => removeFromList("excludeUserIds", id)}
+          onAdd={(id) => {
+            const current = conditions.excludeUserIds ?? [];
+            if (!current.includes(id))
+              update({ excludeUserIds: [...current, id] });
+          }}
+          onRemove={(id) =>
+            update({
+              excludeUserIds: (conditions.excludeUserIds ?? []).filter(
+                (v) => v !== id,
+              ),
+            })
+          }
           chipColor="destructive"
         />
       </div>

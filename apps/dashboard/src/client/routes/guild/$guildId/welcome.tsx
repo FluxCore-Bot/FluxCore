@@ -14,6 +14,8 @@ import {
 import { WelcomeImageEditor } from "../../../components/WelcomeImageEditor";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
+import { DiscordSelect } from "../../../components/ui/discord-select";
+import { DiscordMultiSelect } from "../../../components/ui/discord-multi-select";
 import { Label } from "../../../components/ui/label";
 import { Card } from "../../../components/ui/card";
 import { Switch } from "../../../components/ui/switch";
@@ -131,14 +133,14 @@ export function WelcomePage() {
 
   // Text message state
   const [welcomeEnabled, setWelcomeEnabled] = useState(false);
-  const [welcomeChannelId, setWelcomeChannelId] = useState("");
+  const [welcomeChannelId, setWelcomeChannelId] = useState<string | null>(null);
   const [welcomeMessage, setWelcomeMessage] = useState<EmbedConfig>({});
   const [farewellEnabled, setFarewellEnabled] = useState(false);
-  const [farewellChannelId, setFarewellChannelId] = useState("");
+  const [farewellChannelId, setFarewellChannelId] = useState<string | null>(null);
   const [farewellMessage, setFarewellMessage] = useState<EmbedConfig>({});
   const [dmEnabled, setDmEnabled] = useState(false);
   const [dmMessage, setDmMessage] = useState<EmbedConfig>({});
-  const [autoRoleIds, setAutoRoleIds] = useState("");
+  const [autoRoleIds, setAutoRoleIds] = useState<string[]>([]);
 
   // Image state
   const [welcomeImageEnabled, setWelcomeImageEnabled] = useState(false);
@@ -150,14 +152,14 @@ export function WelcomePage() {
   useEffect(() => {
     if (config) {
       setWelcomeEnabled(config.welcomeEnabled);
-      setWelcomeChannelId(config.welcomeChannelId ?? "");
+      setWelcomeChannelId(config.welcomeChannelId ?? null);
       setWelcomeMessage(config.welcomeMessage);
       setFarewellEnabled(config.farewellEnabled);
-      setFarewellChannelId(config.farewellChannelId ?? "");
+      setFarewellChannelId(config.farewellChannelId ?? null);
       setFarewellMessage(config.farewellMessage);
       setDmEnabled(config.dmEnabled);
       setDmMessage(config.dmMessage);
-      setAutoRoleIds(config.autoRoleIds.join(", "));
+      setAutoRoleIds(config.autoRoleIds);
       setWelcomeImageEnabled(config.welcomeImageEnabled);
       setWelcomeImageConfig(config.welcomeImageConfig ?? DEFAULT_WELCOME_IMAGE);
       setFarewellImageEnabled(config.farewellImageEnabled);
@@ -166,22 +168,17 @@ export function WelcomePage() {
   }, [config]);
 
   function handleSave() {
-    const roleIds = autoRoleIds
-      .split(",")
-      .map((s) => s.trim())
-      .filter(Boolean);
-
     updateConfig.mutate(
       {
         welcomeEnabled,
-        welcomeChannelId: welcomeChannelId || null,
+        welcomeChannelId: welcomeChannelId,
         welcomeMessage,
         farewellEnabled,
-        farewellChannelId: farewellChannelId || null,
+        farewellChannelId: farewellChannelId,
         farewellMessage,
         dmEnabled,
         dmMessage,
-        autoRoleIds: roleIds,
+        autoRoleIds: autoRoleIds,
         welcomeImageEnabled,
         welcomeImageConfig,
         farewellImageEnabled,
@@ -250,11 +247,13 @@ export function WelcomePage() {
 
             <div className="mb-6">
               <Label htmlFor="welcome-channel">{t("welcome.channelLabel")}</Label>
-              <Input
-                id="welcome-channel"
-                placeholder={t("welcome.channelPlaceholder")}
+              <DiscordSelect
+                guildId={guildId}
+                type="text"
                 value={welcomeChannelId}
-                onChange={(e) => setWelcomeChannelId(e.target.value)}
+                onValueChange={setWelcomeChannelId}
+                placeholder={t("welcome.channelPlaceholder")}
+                allowNone
                 className="mt-1 w-64"
               />
             </div>
@@ -316,11 +315,13 @@ export function WelcomePage() {
 
             <div className="mb-6">
               <Label htmlFor="farewell-channel">{t("farewell.channelLabel")}</Label>
-              <Input
-                id="farewell-channel"
-                placeholder={t("farewell.channelPlaceholder")}
+              <DiscordSelect
+                guildId={guildId}
+                type="text"
                 value={farewellChannelId}
-                onChange={(e) => setFarewellChannelId(e.target.value)}
+                onValueChange={setFarewellChannelId}
+                placeholder={t("farewell.channelPlaceholder")}
+                allowNone
                 className="mt-1 w-64"
               />
             </div>
@@ -397,12 +398,12 @@ export function WelcomePage() {
 
             <div>
               <Label htmlFor="autorole-ids">{t("autorole.label")}</Label>
-              <Input
-                id="autorole-ids"
+              <DiscordMultiSelect
+                guildId={guildId}
+                type="role"
+                selectedIds={autoRoleIds}
+                onChange={setAutoRoleIds}
                 placeholder={t("autorole.placeholder")}
-                value={autoRoleIds}
-                onChange={(e) => setAutoRoleIds(e.target.value)}
-                className="mt-1"
               />
             </div>
           </Card>

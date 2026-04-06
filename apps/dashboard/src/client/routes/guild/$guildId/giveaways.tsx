@@ -12,6 +12,7 @@ import {
 } from "../../../lib/hooks/useGiveaways";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
+import { DiscordSelect } from "../../../components/ui/discord-select";
 import { Label } from "../../../components/ui/label";
 import { Card } from "../../../components/ui/card";
 import { Badge } from "../../../components/ui/badge";
@@ -77,11 +78,11 @@ export function GiveawaysPage() {
 
   // Form state
   const [prize, setPrize] = useState("");
-  const [channelId, setChannelId] = useState("");
+  const [channelId, setChannelId] = useState<string | null>(null);
   const [winnersCount, setWinnersCount] = useState("1");
   const [durationValue, setDurationValue] = useState("1");
   const [durationUnit, setDurationUnit] = useState("h");
-  const [requiredRoleId, setRequiredRoleId] = useState("");
+  const [requiredRoleId, setRequiredRoleId] = useState<string | null>(null);
 
   const activeTotalPages = activeData
     ? Math.max(1, Math.ceil(activeData.total / 10))
@@ -95,7 +96,7 @@ export function GiveawaysPage() {
       toast.error(t("toast.createFailed"));
       return;
     }
-    if (!channelId.trim()) {
+    if (!channelId) {
       toast.error(t("toast.createFailed"));
       return;
     }
@@ -120,16 +121,11 @@ export function GiveawaysPage() {
       return;
     }
 
-    const requiredRoleIds = requiredRoleId.trim()
-      ? requiredRoleId
-          .split(",")
-          .map((s) => s.trim())
-          .filter(Boolean)
-      : undefined;
+    const requiredRoleIds = requiredRoleId ? [requiredRoleId] : undefined;
 
     createGiveaway.mutate(
       {
-        channelId: channelId.trim(),
+        channelId: channelId,
         prize: prize.trim(),
         winners,
         durationMs,
@@ -139,10 +135,10 @@ export function GiveawaysPage() {
         onSuccess: () => {
           toast.success(t("toast.created"));
           setPrize("");
-          setChannelId("");
+          setChannelId(null);
           setWinnersCount("1");
           setDurationValue("1");
-          setRequiredRoleId("");
+          setRequiredRoleId(null);
         },
         onError: (err) =>
           toast.error(err instanceof ApiError ? err.message : t("toast.createFailed")),
@@ -386,11 +382,12 @@ export function GiveawaysPage() {
 
               <div>
                 <Label htmlFor="gw-channel">{t("form.channel")}</Label>
-                <Input
-                  id="gw-channel"
-                  placeholder="e.g. 123456789012345678"
+                <DiscordSelect
+                  guildId={guildId}
+                  type="text"
                   value={channelId}
-                  onChange={(e) => setChannelId(e.target.value)}
+                  onValueChange={setChannelId}
+                  placeholder={t("form.channel")}
                 />
               </div>
 
@@ -438,11 +435,13 @@ export function GiveawaysPage() {
 
               <div>
                 <Label htmlFor="gw-role">{t("form.requiredRole")} ({t("common:labels.optional")})</Label>
-                <Input
-                  id="gw-role"
-                  placeholder="e.g. 123456789012345678"
+                <DiscordSelect
+                  guildId={guildId}
+                  type="role"
                   value={requiredRoleId}
-                  onChange={(e) => setRequiredRoleId(e.target.value)}
+                  onValueChange={setRequiredRoleId}
+                  placeholder={t("form.requiredRole")}
+                  allowNone
                 />
               </div>
 

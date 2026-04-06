@@ -9,6 +9,8 @@ import {
   useUpdateStarboardSettings,
   useStarboardEntries,
 } from "../../../lib/hooks/useStarboard";
+import { DiscordSelect } from "../../../components/ui/discord-select";
+import { DiscordMultiSelect } from "../../../components/ui/discord-multi-select";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
@@ -44,40 +46,35 @@ export function StarboardPage() {
 
   // Local state for form
   const [enabled, setEnabled] = useState(true);
-  const [channelId, setChannelId] = useState("");
+  const [channelId, setChannelId] = useState<string | null>(null);
   const [emoji, setEmoji] = useState("\u2B50");
   const [threshold, setThreshold] = useState(3);
   const [selfStar, setSelfStar] = useState(false);
-  const [ignoredChannels, setIgnoredChannels] = useState("");
+  const [ignoredChannels, setIgnoredChannels] = useState<string[]>([]);
   const [nsfwHandling, setNsfwHandling] = useState<"ignore" | "separate">("ignore");
 
   // Sync from server
   useEffect(() => {
     if (settings) {
       setEnabled(settings.enabled);
-      setChannelId(settings.channelId ?? "");
+      setChannelId(settings.channelId ?? null);
       setEmoji(settings.emoji);
       setThreshold(settings.threshold);
       setSelfStar(settings.selfStar);
-      setIgnoredChannels(settings.ignoredChannels.join(", "));
+      setIgnoredChannels(settings.ignoredChannels);
       setNsfwHandling(settings.nsfwHandling);
     }
   }, [settings]);
 
   function handleSave() {
-    const ignored = ignoredChannels
-      .split(",")
-      .map((s) => s.trim())
-      .filter(Boolean);
-
     updateSettings.mutate(
       {
         enabled,
-        channelId: channelId || null,
+        channelId: channelId,
         emoji,
         threshold,
         selfStar,
-        ignoredChannels: ignored,
+        ignoredChannels: ignoredChannels,
         nsfwHandling,
       },
       {
@@ -134,12 +131,13 @@ export function StarboardPage() {
               {/* Channel */}
               <div>
                 <Label htmlFor="starboard-channel">{t("settings.channelId")}</Label>
-                <Input
-                  id="starboard-channel"
-                  placeholder={t("settings.channelId")}
+                <DiscordSelect
+                  guildId={guildId}
+                  type="text"
                   value={channelId}
-                  onChange={(e) => setChannelId(e.target.value)}
-                  className="mt-1 w-64"
+                  onValueChange={setChannelId}
+                  placeholder={t("settings.channelId")}
+                  allowNone
                 />
                 <p className="mt-1 text-xs text-text-muted">
                   {t("settings.channelIdDesc")}
@@ -195,12 +193,12 @@ export function StarboardPage() {
               {/* Ignored Channels */}
               <div>
                 <Label htmlFor="starboard-ignored">{t("settings.ignoredChannels")}</Label>
-                <Input
-                  id="starboard-ignored"
-                  placeholder="123456789, 987654321"
-                  value={ignoredChannels}
-                  onChange={(e) => setIgnoredChannels(e.target.value)}
-                  className="mt-1"
+                <DiscordMultiSelect
+                  guildId={guildId}
+                  type="text"
+                  selectedIds={ignoredChannels}
+                  onChange={setIgnoredChannels}
+                  placeholder={t("settings.ignoredChannels")}
                 />
                 <p className="mt-1 text-xs text-text-muted">
                   {t("settings.ignoredChannelsDesc")}

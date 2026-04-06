@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
@@ -31,6 +31,8 @@ import { Separator } from "../../../components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 import { Icon } from "../../../components/Icon";
 import { StatsCard } from "../../../components/StatsCard";
+import { DiscordSelect } from "../../../components/ui/discord-select";
+import { DiscordMultiSelect } from "../../../components/ui/discord-multi-select";
 
 function statusColor(status: string) {
   switch (status) {
@@ -71,11 +73,11 @@ export function TicketsPage() {
 
   // Panel form state
   const [newPanelName, setNewPanelName] = useState("");
-  const [newPanelChannel, setNewPanelChannel] = useState("");
+  const [newPanelChannel, setNewPanelChannel] = useState<string | null>(null);
 
   // Settings form state
-  const [staffRolesInput, setStaffRolesInput] = useState("");
-  const [transcriptChannelInput, setTranscriptChannelInput] = useState("");
+  const [staffRoles, setStaffRoles] = useState<string[]>([]);
+  const [transcriptChannelId, setTranscriptChannelId] = useState<string | null>(null);
 
   const totalPages = ticketData ? Math.max(1, Math.ceil(ticketData.total / 20)) : 1;
 
@@ -91,13 +93,13 @@ export function TicketsPage() {
   }
 
   function handleCreatePanel() {
-    if (!newPanelName.trim() || !newPanelChannel.trim()) {
+    if (!newPanelName.trim() || !newPanelChannel) {
       toast.error(t("toast.panelCreateFailed"));
       return;
     }
     createPanel.mutate(
       {
-        channelId: newPanelChannel.trim(),
+        channelId: newPanelChannel,
         name: newPanelName.trim(),
         categories: [{ name: "general", label: "Open Ticket" }],
       },
@@ -105,7 +107,7 @@ export function TicketsPage() {
         onSuccess: () => {
           toast.success(t("toast.panelCreated"));
           setNewPanelName("");
-          setNewPanelChannel("");
+          setNewPanelChannel(null);
         },
         onError: (err) =>
           toast.error(err instanceof ApiError ? err.message : t("toast.panelCreateFailed")),
@@ -130,13 +132,8 @@ export function TicketsPage() {
   }
 
   function handleSaveSettings() {
-    const staffRoleIds = staffRolesInput
-      ? staffRolesInput.split(",").map((s) => s.trim()).filter(Boolean)
-      : settings?.staffRoleIds ?? [];
-    const transcriptChannelId = transcriptChannelInput.trim() || settings?.transcriptChannelId || null;
-
     updateSettings.mutate(
-      { staffRoleIds, transcriptChannelId },
+      { staffRoleIds: staffRoles, transcriptChannelId },
       {
         onSuccess: () => toast.success(t("toast.settingsSaved")),
         onError: (err) =>
@@ -167,9 +164,12 @@ export function TicketsPage() {
     );
   }
 
-  // Initialize settings inputs
-  const staffRolesValue = staffRolesInput || (settings?.staffRoleIds ?? []).join(", ");
-  const transcriptChannelValue = transcriptChannelInput || settings?.transcriptChannelId || "";
+  // Sync settings into form state when loaded
+  useEffect(() => {
+    if (!settings) return;
+    setStaffRoles(settings.staffRoleIds ?? []);
+    setTranscriptChannelId(settings.transcriptChannelId ?? null);
+  }, [settings]);
 
   return (
     <div className="space-y-8">
@@ -410,12 +410,12 @@ export function TicketsPage() {
               </div>
               <div>
                 <Label htmlFor="panel-channel">{t("panelBuilder.channel")}</Label>
-                <Input
-                  id="panel-channel"
-                  placeholder={t("panelBuilder.channel")}
+                <DiscordSelect
+                  guildId={guildId}
+                  type="text"
                   value={newPanelChannel}
-                  onChange={(e) => setNewPanelChannel(e.target.value)}
-                  className="w-48"
+                  onValueChange={setNewPanelChannel}
+                  placeholder={t("panelBuilder.channel")}
                 />
               </div>
               <Button onClick={handleCreatePanel} disabled={createPanel.isPending}>
@@ -436,11 +436,12 @@ export function TicketsPage() {
               <div className="space-y-6">
                 <div>
                   <Label htmlFor="staff-roles">{t("common:labels.role")}</Label>
-                  <Input
-                    id="staff-roles"
-                    placeholder="e.g. 123456789, 987654321"
-                    value={staffRolesValue}
-                    onChange={(e) => setStaffRolesInput(e.target.value)}
+                  <DiscordMultiSelect
+                    guildId={guildId}
+                    type="role"
+                    selectedIds={staffRoles}
+                    onChange={setStaffRoles}
+                    placeholder="Staff roles"
                   />
                   <p className="mt-1 text-xs text-text-muted">
                     {t("settings.transcriptChannelDesc")}
@@ -451,11 +452,13 @@ export function TicketsPage() {
 
                 <div>
                   <Label htmlFor="transcript-channel">{t("settings.transcriptChannel")}</Label>
-                  <Input
-                    id="transcript-channel"
-                    placeholder="e.g. 123456789"
-                    value={transcriptChannelValue}
-                    onChange={(e) => setTranscriptChannelInput(e.target.value)}
+                  <DiscordSelect
+                    guildId={guildId}
+                    type="text"
+                    value={transcriptChannelId}
+                    onValueChange={setTranscriptChannelId}
+                    allowNone
+                    placeholder={t("settings.transcriptChannelDesc")}
                   />
                   <p className="mt-1 text-xs text-text-muted">
                     {t("settings.transcriptChannelDesc")}

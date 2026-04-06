@@ -19,6 +19,7 @@ import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
 import { Card } from "../../../components/ui/card";
+import { StatsCard } from "../../../components/StatsCard";
 import { Switch } from "../../../components/ui/switch";
 import {
   Select,
@@ -39,7 +40,6 @@ import { Separator } from "../../../components/ui/separator";
 import { Icon } from "../../../components/Icon";
 import { Search } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
-import { StatsCard } from "../../../components/StatsCard";
 
 export function WarningsPage() {
   const { t } = useTranslation("warnings");
@@ -180,10 +180,12 @@ export function WarningsPage() {
         <StatsCard
           label={t("stats.escalationRules")}
           value={punishmentsLoading ? "..." : punishments?.length ?? 0}
+          accentColor="border-warning"
         />
         <StatsCard
           label={t("stats.dmOnWarn")}
           value={settingsLoading ? "..." : settings?.dmOnWarn ? t("common:labels.enabled") : t("common:labels.disabled")}
+          accentColor="border-success"
         />
       </div>
 

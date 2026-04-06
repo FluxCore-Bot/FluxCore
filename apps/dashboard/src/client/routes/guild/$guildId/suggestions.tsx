@@ -12,8 +12,8 @@ import {
   useUpdateSuggestionStatus,
   useDeleteSuggestion,
 } from "../../../lib/hooks/useSuggestions";
+import { DiscordSelect } from "../../../components/ui/discord-select";
 import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
 import { Card } from "../../../components/ui/card";
 import { Switch } from "../../../components/ui/switch";
@@ -108,10 +108,9 @@ export function SuggestionsPage() {
     );
   }
 
-  function handleChannelSetting(key: "channelId" | "reviewChannelId", value: string) {
-    const channelId = value.trim() || null;
+  function handleChannelSetting(key: "channelId" | "reviewChannelId", value: string | null) {
     updateSettings.mutate(
-      { [key]: channelId },
+      { [key]: value },
       {
         onError: (err) =>
           toast.error(err instanceof ApiError ? err.message : t("toast.settingsFailed")),
@@ -350,12 +349,14 @@ export function SuggestionsPage() {
                 <Separator />
 
                 <div className="space-y-2">
-                  <Label htmlFor="suggestions-channel">{t("settings.channel")}</Label>
-                  <Input
-                    id="suggestions-channel"
-                    placeholder="e.g. 123456789012345678"
-                    defaultValue={settings.channelId ?? ""}
-                    onBlur={(e) => handleChannelSetting("channelId", e.target.value)}
+                  <Label>{t("settings.channel")}</Label>
+                  <DiscordSelect
+                    guildId={guildId}
+                    type="text"
+                    value={settings.channelId ?? null}
+                    onValueChange={(v) => handleChannelSetting("channelId", v)}
+                    allowNone
+                    placeholder={t("settings.channel")}
                   />
                   <p className="text-xs text-text-muted">
                     {t("settings.channelDesc")}
@@ -365,12 +366,14 @@ export function SuggestionsPage() {
                 <Separator />
 
                 <div className="space-y-2">
-                  <Label htmlFor="review-channel">{t("common:labels.channel")} ({t("common:labels.optional")})</Label>
-                  <Input
-                    id="review-channel"
-                    placeholder="e.g. 123456789012345678"
-                    defaultValue={settings.reviewChannelId ?? ""}
-                    onBlur={(e) => handleChannelSetting("reviewChannelId", e.target.value)}
+                  <Label>{t("common:labels.channel")} ({t("common:labels.optional")})</Label>
+                  <DiscordSelect
+                    guildId={guildId}
+                    type="text"
+                    value={settings.reviewChannelId ?? null}
+                    onValueChange={(v) => handleChannelSetting("reviewChannelId", v)}
+                    allowNone
+                    placeholder={t("common:labels.channel")}
                   />
                   <p className="text-xs text-text-muted">
                     {t("settings.channelDesc")}

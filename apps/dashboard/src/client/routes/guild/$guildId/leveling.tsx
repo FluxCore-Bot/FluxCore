@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
@@ -37,6 +37,8 @@ import { Separator } from "../../../components/ui/separator";
 import { Icon } from "../../../components/Icon";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 import { StatsCard } from "../../../components/StatsCard";
+import { DiscordSelect } from "../../../components/ui/discord-select";
+import { DiscordMultiSelect } from "../../../components/ui/discord-multi-select";
 
 function formatVoiceTime(minutes: number, t: (key: string, opts?: Record<string, unknown>) => string): string {
   const hours = Math.floor(minutes / 60);
@@ -67,16 +69,23 @@ export function LevelingPage() {
 
   // Reward form state
   const [newRewardLevel, setNewRewardLevel] = useState("");
-  const [newRewardRole, setNewRewardRole] = useState("");
+  const [newRewardRole, setNewRewardRole] = useState<string | null>(null);
 
   // Exclusion form state
-  const [noXpChannelsInput, setNoXpChannelsInput] = useState("");
-  const [noXpRolesInput, setNoXpRolesInput] = useState("");
+  const [noXpChannels, setNoXpChannels] = useState<string[]>([]);
+  const [noXpRoles, setNoXpRoles] = useState<string[]>([]);
 
   // Multiplier form state
   const [multiplierType, setMultiplierType] = useState<"channels" | "roles">("channels");
   const [multiplierId, setMultiplierId] = useState("");
   const [multiplierValue, setMultiplierValue] = useState("");
+
+  useEffect(() => {
+    if (settings) {
+      setNoXpChannels(settings.noXpChannels ?? []);
+      setNoXpRoles(settings.noXpRoles ?? []);
+    }
+  }, [settings]);
 
   const totalPages = leaderboardData
     ? Math.max(1, Math.ceil(leaderboardData.total / 10))
@@ -131,17 +140,17 @@ export function LevelingPage() {
       toast.error(t("toast.levelValidation"));
       return;
     }
-    if (!newRewardRole.trim()) {
+    if (!newRewardRole) {
       toast.error(t("toast.roleIdRequired"));
       return;
     }
     addReward.mutate(
-      { level, roleId: newRewardRole.trim() },
+      { level, roleId: newRewardRole },
       {
         onSuccess: () => {
           toast.success(t("toast.rewardAdded"));
           setNewRewardLevel("");
-          setNewRewardRole("");
+          setNewRewardRole(null);
         },
         onError: (err) =>
           toast.error(err instanceof ApiError ? err.message : t("toast.rewardAddFailed")),
@@ -158,16 +167,8 @@ export function LevelingPage() {
   }
 
   function handleSaveExclusions() {
-    const channels = noXpChannelsInput
-      .split(",")
-      .map((s) => s.trim())
-      .filter(Boolean);
-    const roles = noXpRolesInput
-      .split(",")
-      .map((s) => s.trim())
-      .filter(Boolean);
     updateSettings.mutate(
-      { noXpChannels: channels, noXpRoles: roles },
+      { noXpChannels: noXpChannels, noXpRoles: noXpRoles },
       {
         onSuccess: () => toast.success(t("toast.exclusionUpdated")),
         onError: (err) =>
@@ -177,7 +178,7 @@ export function LevelingPage() {
   }
 
   function handleAddMultiplier() {
-    if (!multiplierId.trim() || !multiplierValue.trim()) {
+    if (!multiplierId || !multiplierValue.trim()) {
       toast.error(t("toast.multiplierIdRequired"));
       return;
     }
@@ -192,7 +193,7 @@ export function LevelingPage() {
       ...currentMultipliers,
       [multiplierType]: {
         ...(currentMultipliers[multiplierType] ?? {}),
-        [multiplierId.trim()]: val,
+        [multiplierId]: val,
       },
     };
 
@@ -228,12 +229,6 @@ export function LevelingPage() {
       },
     );
   }
-
-  // Initialize exclusion inputs from settings
-  const noXpChannelsValue =
-    noXpChannelsInput || (settings?.noXpChannels ?? []).join(", ");
-  const noXpRolesValue =
-    noXpRolesInput || (settings?.noXpRoles ?? []).join(", ");
 
   return (
     <div className="space-y-8">
@@ -552,11 +547,12 @@ export function LevelingPage() {
               </div>
               <div>
                 <Label htmlFor="reward-role">{t("roleRewards.roleId")}</Label>
-                <Input
-                  id="reward-role"
-                  placeholder={t("roleRewards.rolePlaceholder")}
+                <DiscordSelect
+                  guildId={guildId}
+                  type="role"
                   value={newRewardRole}
-                  onChange={(e) => setNewRewardRole(e.target.value)}
+                  onValueChange={setNewRewardRole}
+                  placeholder={t("roleRewards.rolePlaceholder")}
                   className="w-48"
                 />
               </div>
@@ -580,21 +576,23 @@ export function LevelingPage() {
 
             <div className="space-y-4">
               <div>
-                <Label htmlFor="no-xp-channels">{t("exclusions.noXpChannels")}</Label>
-                <Input
-                  id="no-xp-channels"
+                <Label>{t("exclusions.noXpChannels")}</Label>
+                <DiscordMultiSelect
+                  guildId={guildId}
+                  type="text"
+                  selectedIds={noXpChannels}
+                  onChange={setNoXpChannels}
                   placeholder={t("exclusions.noXpChannelsPlaceholder")}
-                  value={noXpChannelsValue}
-                  onChange={(e) => setNoXpChannelsInput(e.target.value)}
                 />
               </div>
               <div>
-                <Label htmlFor="no-xp-roles">{t("exclusions.noXpRoles")}</Label>
-                <Input
-                  id="no-xp-roles"
+                <Label>{t("exclusions.noXpRoles")}</Label>
+                <DiscordMultiSelect
+                  guildId={guildId}
+                  type="role"
+                  selectedIds={noXpRoles}
+                  onChange={setNoXpRoles}
                   placeholder={t("exclusions.noXpRolesPlaceholder")}
-                  value={noXpRolesValue}
-                  onChange={(e) => setNoXpRolesInput(e.target.value)}
                 />
               </div>
               <Button
@@ -711,13 +709,13 @@ export function LevelingPage() {
                 </Select>
               </div>
               <div>
-                <Label htmlFor="multiplier-id">{t("multipliers.id")}</Label>
-                <Input
-                  id="multiplier-id"
+                <Label>{t("multipliers.id")}</Label>
+                <DiscordSelect
+                  guildId={guildId}
+                  type={multiplierType === "channels" ? "text" : "role"}
+                  value={multiplierId || null}
+                  onValueChange={(v) => setMultiplierId(v ?? "")}
                   placeholder={t("multipliers.idPlaceholder")}
-                  value={multiplierId}
-                  onChange={(e) => setMultiplierId(e.target.value)}
-                  className="w-48"
                 />
               </div>
               <div>
