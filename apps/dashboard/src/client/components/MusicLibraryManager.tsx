@@ -186,7 +186,7 @@ export function MusicLibraryManager() {
     <Card className="p-6">
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h3 className="text-lg font-semibold">{t("library.title")}</h3>
+          <h3 className="font-label text-lg font-semibold">{t("library.title")}</h3>
           <p className="text-sm text-text-muted">
             {t("library.description")}
           </p>

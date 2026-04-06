@@ -69,7 +69,7 @@ export function SettingsForm() {
   return (
     <>
     <Card className="p-6">
-      <h3 className="mb-6 text-lg font-semibold">{t("actionSystem.title")}</h3>
+      <h3 className="mb-6 font-label text-lg font-semibold">{t("actionSystem.title")}</h3>
 
       {error && (
         <Alert variant="destructive" className="mb-4">{error}</Alert>
@@ -125,8 +125,8 @@ export function SettingsForm() {
     </Card>
 
     {/* Notification Preferences */}
-    <Card className="mt-6 p-6 glass-panel">
-      <h3 className="mb-6 text-lg font-semibold">{t("notifications.title")}</h3>
+    <Card className="mt-6 p-6">
+      <h3 className="mb-6 font-label text-lg font-semibold">{t("notifications.title")}</h3>
       <div className="space-y-4">
         <div className="flex items-center gap-3">
           <Switch
@@ -154,7 +154,7 @@ export function SettingsForm() {
 
     {/* Danger Zone */}
     <Card className="mt-6 border border-danger/20 p-6">
-      <h3 className="mb-2 text-lg font-semibold text-danger">{t("dangerZone.title")}</h3>
+      <h3 className="mb-2 font-label text-lg font-semibold text-danger">{t("dangerZone.title")}</h3>
       <p className="mb-4 text-sm text-text-muted">
         {t("dangerZone.description")}
       </p>

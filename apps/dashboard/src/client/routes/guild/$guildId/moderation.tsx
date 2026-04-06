@@ -342,7 +342,7 @@ export function ModerationPage() {
       {/* Settings */}
       <div className="space-y-4">
         <h3 className="font-label text-lg font-semibold">{t("settings.title")}</h3>
-        <div className="rounded-lg border border-border bg-surface-low p-6 glass-edge">
+        <div className="rounded-lg bg-surface-container p-6 glass-edge">
           <div className="space-y-6">
             {/* DM on Punishment */}
             <div className="flex items-center justify-between">

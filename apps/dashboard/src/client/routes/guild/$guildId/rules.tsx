@@ -493,7 +493,7 @@ export function RulesPage() {
         <WorkflowEditor rule={editingRule} draft={editorDraft} onClose={handleCloseEditor} />
       ) : rules.length === 0 ? (
         /* ── Template gallery (empty state) ── */
-        <div className="rounded-lg border border-border bg-surface-low p-8 glass-edge">
+        <div className="rounded-lg bg-surface-container p-8 glass-edge">
           <div className="mb-6 text-center">
             <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
               <Icon name="bolt" size={24} className="text-accent" />
@@ -535,7 +535,7 @@ export function RulesPage() {
         </div>
       ) : filteredRules.length === 0 ? (
         /* No results from filter */
-        <div className="flex flex-col items-center justify-center rounded-lg bg-surface-low p-12 text-center glass-edge">
+        <div className="flex flex-col items-center justify-center rounded-lg bg-surface-container p-12 text-center glass-edge">
           <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-surface-high">
             <Icon name="search_off" size={24} className="text-text-muted" />
           </div>

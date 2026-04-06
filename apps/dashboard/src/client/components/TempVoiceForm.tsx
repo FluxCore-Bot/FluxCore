@@ -135,7 +135,7 @@ export function TempVoiceForm() {
   return (
     <Card className="p-6">
       <div className="mb-6 flex items-center justify-between">
-        <h3 className="text-lg font-semibold">Configured Hubs</h3>
+        <h3 className="font-label text-lg font-semibold">Configured Hubs</h3>
         {!showForm && configs.length < MAX_CONFIGS && (
           <Button onClick={openCreateForm}>
             <Icon name="add" /> Add Hub

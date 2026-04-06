@@ -117,7 +117,7 @@ function CategoryCard({
   };
 
   return (
-    <div className="rounded-lg bg-surface-low p-4 glass-edge space-y-3">
+    <div className="rounded-lg bg-surface-container p-4 glass-edge space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Icon
