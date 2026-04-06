@@ -44,12 +44,12 @@ export function DiscordSelect({
     data: channels,
     isLoading: chLoading,
     isError: chError,
-  } = useChannels(guildId);
+  } = useChannels(guildId, { enabled: !isRole });
   const {
     data: roles,
     isLoading: roLoading,
     isError: roError,
-  } = useRoles(guildId);
+  } = useRoles(guildId, { enabled: isRole });
 
   const isLoading = isRole ? roLoading : chLoading;
   const isError = isRole ? roError : chError;
@@ -61,7 +61,7 @@ export function DiscordSelect({
           if (type === "text") return c.type === 0;
           if (type === "voice") return c.type === 2;
           if (type === "category") return c.type === 4;
-          return c.type === 0 || c.type === 2; // "any"
+          return c.type === 0 || c.type === 2; // "any" = text + voice (no categories)
         })
         .map((c) => ({ id: c.id, label: channelLabel(c.name, c.type) }));
 
@@ -75,6 +75,7 @@ export function DiscordSelect({
         <SelectTrigger className={className}>
           <SelectValue placeholder="Failed to load" />
         </SelectTrigger>
+        <SelectContent />
       </Select>
     );
   }
@@ -85,7 +86,7 @@ export function DiscordSelect({
     <Select
       value={value ?? ""}
       onValueChange={(v) =>
-        onValueChange(v === "__none__" ? null : v || null)
+        onValueChange(v === "__none__" ? null : v)
       }
       disabled={disabled}
     >

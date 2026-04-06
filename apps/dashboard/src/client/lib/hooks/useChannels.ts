@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { apiFetch } from "../client";
 import { ChannelListSchema, type Channel } from "../schemas";
 
-export function useChannels(guildId: string) {
+export function useChannels(guildId: string, options?: { enabled?: boolean }) {
   return useQuery<Channel[]>({
     queryKey: ["guilds", guildId, "channels"],
     queryFn: async () => {
@@ -12,5 +12,6 @@ export function useChannels(guildId: string) {
       return ChannelListSchema.parse(data);
     },
     staleTime: 2 * 60 * 1000, // 2 minutes (server caches for 60s)
+    enabled: options?.enabled ?? true,
   });
 }
