@@ -41,6 +41,7 @@ import { Icon } from "../../../shared/components/Icon";
 import { Search } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 import { AlertTriangle, TrendingUp, MessageSquare } from "lucide-react";
+import { PageSkeleton, TableSkeleton, FormSkeleton } from "../../../shared/ui/skeletons";
 
 export function WarningsPage() {
   const { t } = useTranslation("warnings");
@@ -165,6 +166,8 @@ export function WarningsPage() {
     );
   }
 
+  if (warningsLoading && punishmentsLoading && settingsLoading) return <PageSkeleton stats={3} tabCount={3} content="table" />;
+
   return (
     <div className="space-y-8">
       <PageHeader
@@ -232,11 +235,7 @@ export function WarningsPage() {
             </div>
 
             {warningsLoading ? (
-              <div className="space-y-3">
-                <div className="h-4 w-48 animate-pulse rounded bg-surface-high" />
-                <div className="h-4 w-64 animate-pulse rounded bg-surface-high" />
-                <div className="h-4 w-32 animate-pulse rounded bg-surface-high" />
-              </div>
+              <TableSkeleton columns={6} />
             ) : warningsData && warningsData.warnings.length > 0 ? (
               <>
                 <div className="overflow-x-auto">
@@ -325,11 +324,7 @@ export function WarningsPage() {
             </p>
 
             {punishmentsLoading ? (
-              <div className="space-y-3">
-                <div className="h-4 w-48 animate-pulse rounded bg-surface-high" />
-                <div className="h-4 w-64 animate-pulse rounded bg-surface-high" />
-                <div className="h-4 w-32 animate-pulse rounded bg-surface-high" />
-              </div>
+              <TableSkeleton columns={4} />
             ) : punishments && punishments.length > 0 ? (
               <div className="overflow-x-auto">
                 <Table>
@@ -429,11 +424,7 @@ export function WarningsPage() {
             <h3 className="mb-4 font-label text-lg font-semibold">{t("settings.title")}</h3>
 
             {settingsLoading ? (
-              <div className="space-y-3">
-                <div className="h-4 w-48 animate-pulse rounded bg-surface-high" />
-                <div className="h-4 w-64 animate-pulse rounded bg-surface-high" />
-                <div className="h-4 w-32 animate-pulse rounded bg-surface-high" />
-              </div>
+              <FormSkeleton />
             ) : settings ? (
               <div className="space-y-6">
                 <div className="flex items-center justify-between">

@@ -1,4 +1,4 @@
-import ContentLoader from "react-content-loader";
+import { Skeleton } from "../skeleton";
 
 interface TableSkeletonProps {
   rows?: number;
@@ -6,52 +6,33 @@ interface TableSkeletonProps {
 }
 
 export function TableSkeleton({ rows = 5, columns = 4 }: TableSkeletonProps) {
-  const rowHeight = 48;
-  const headerHeight = 40;
-  const gap = 4;
-  const totalHeight = headerHeight + gap + rows * (rowHeight + gap) + 16;
-  const colWidth = Math.floor(760 / columns);
+  const colWidths = generateColWidths(columns);
 
   return (
-    <div className="rounded-lg bg-surface-low p-4 shadow-2xl glass-edge">
-      <ContentLoader
-        speed={1.5}
-        width="100%"
-        height={totalHeight}
-        viewBox={`0 0 800 ${totalHeight}`}
-        backgroundColor="#0e0e10"
-        foregroundColor="#252540"
-        style={{ width: "100%" }}
-      >
-        {/* Header row */}
-        {Array.from({ length: columns }).map((_, c) => (
-          <rect
-            key={`h-${c}`}
-            x={20 + c * colWidth}
-            y="8"
-            rx="4"
-            ry="4"
-            width={colWidth - 32}
-            height="20"
-          />
+    <div className="animate-pulse">
+      {/* Header row */}
+      <div className="flex gap-4 border-b border-border/20 pb-3">
+        {colWidths.map((w, i) => (
+          <Skeleton key={i} className={`h-3 ${w}`} />
         ))}
-
-        {/* Data rows */}
-        {Array.from({ length: rows }).map((_, r) => {
-          const y = headerHeight + gap + r * (rowHeight + gap);
-          return Array.from({ length: columns }).map((_, c) => (
-            <rect
-              key={`r${r}-c${c}`}
-              x={20 + c * colWidth}
-              y={y + 14}
-              rx="4"
-              ry="4"
-              width={colWidth - 32}
-              height="20"
-            />
-          ));
-        })}
-      </ContentLoader>
+      </div>
+      {/* Data rows */}
+      {Array.from({ length: rows }).map((_, r) => (
+        <div key={r} className="flex items-center gap-4 border-b border-border/10 py-3.5">
+          {colWidths.map((w, c) => (
+            <Skeleton key={c} className={`h-4 ${w}`} />
+          ))}
+        </div>
+      ))}
     </div>
   );
+}
+
+function generateColWidths(columns: number): string[] {
+  const pool = ["w-16", "w-20", "w-24", "w-32", "flex-1", "w-20", "w-16", "w-28"];
+  return Array.from({ length: columns }, (_, i) => {
+    if (i === 0) return "w-16";
+    if (i === 1) return "flex-1";
+    return pool[i % pool.length];
+  });
 }

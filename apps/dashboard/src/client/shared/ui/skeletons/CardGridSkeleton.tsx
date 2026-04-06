@@ -1,4 +1,4 @@
-import ContentLoader from "react-content-loader";
+import { Skeleton } from "../skeleton";
 
 interface CardGridSkeletonProps {
   cards?: number;
@@ -9,39 +9,24 @@ export function CardGridSkeleton({
   cards = 6,
   columns = 3,
 }: CardGridSkeletonProps) {
-  const cardWidth = Math.floor((800 - (columns - 1) * 16) / columns);
-  const cardHeight = 140;
-  const gap = 16;
-  const rowCount = Math.ceil(cards / columns);
-  const totalHeight = rowCount * (cardHeight + gap);
-
   return (
-    <ContentLoader
-      speed={1.5}
-      width="100%"
-      height={totalHeight}
-      viewBox={`0 0 800 ${totalHeight}`}
-      backgroundColor="#0e0e10"
-      foregroundColor="#252540"
-      style={{ width: "100%" }}
+    <div
+      className="animate-pulse grid grid-cols-1 gap-4"
+      style={{
+        gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
+      }}
     >
-      {Array.from({ length: cards }).map((_, i) => {
-        const col = i % columns;
-        const row = Math.floor(i / columns);
-        const x = col * (cardWidth + gap);
-        const y = row * (cardHeight + gap);
-        return (
-          <rect
-            key={i}
-            x={x}
-            y={y}
-            rx="8"
-            ry="8"
-            width={cardWidth}
-            height={cardHeight}
-          />
-        );
-      })}
-    </ContentLoader>
+      {Array.from({ length: cards }).map((_, i) => (
+        <div
+          key={i}
+          className="rounded-md border border-border/30 bg-surface-low p-5 space-y-3"
+        >
+          <Skeleton className="h-5 w-3/4" />
+          <Skeleton className="h-3 w-full" />
+          <Skeleton className="h-3 w-2/3" />
+          <Skeleton className="mt-2 h-8 w-20 rounded-md" />
+        </div>
+      ))}
+    </div>
   );
 }

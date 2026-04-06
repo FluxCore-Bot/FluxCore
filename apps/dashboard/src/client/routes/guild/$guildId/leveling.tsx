@@ -39,6 +39,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tab
 import { StatsCard } from "../../../shared/components/StatsCard";
 import { DiscordSelect } from "../../../shared/ui/discord-select";
 import { DiscordMultiSelect } from "../../../shared/ui/discord-multi-select";
+import { PageSkeleton, TableSkeleton, FormSkeleton } from "../../../shared/ui/skeletons";
 import { Users, Award, Power } from "lucide-react";
 
 function formatVoiceTime(minutes: number, t: (key: string, opts?: Record<string, unknown>) => string): string {
@@ -231,6 +232,10 @@ export function LevelingPage() {
     );
   }
 
+  if (leaderboardLoading && settingsLoading && rewardsLoading) {
+    return <PageSkeleton stats={3} tabCount={5} content="table" />;
+  }
+
   return (
     <div className="space-y-8">
       <PageHeader
@@ -273,7 +278,7 @@ export function LevelingPage() {
         <TabsContent value="leaderboard">
           <Card className="bg-surface-container p-6 glass-edge">
             {leaderboardLoading ? (
-              <p className="text-text-muted">{t("loading")}</p>
+              <TableSkeleton columns={6} />
             ) : leaderboardData && leaderboardData.entries.length > 0 ? (
               <>
                 <div className="overflow-x-auto">
@@ -343,7 +348,7 @@ export function LevelingPage() {
             <h3 className="mb-4 font-label text-lg font-semibold">{t("settings.title")}</h3>
 
             {settingsLoading ? (
-              <p className="text-text-muted">{t("loadingGeneric")}</p>
+              <FormSkeleton rows={6} />
             ) : settings ? (
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
@@ -500,7 +505,7 @@ export function LevelingPage() {
             </p>
 
             {rewardsLoading ? (
-              <p className="text-text-muted">{t("loadingGeneric")}</p>
+              <TableSkeleton columns={3} />
             ) : rewards && rewards.length > 0 ? (
               <div className="overflow-x-auto">
                 <Table>

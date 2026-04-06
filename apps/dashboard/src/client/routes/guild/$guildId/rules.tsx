@@ -206,7 +206,7 @@ export function RulesPage() {
     return Array.from(set).sort();
   }, [rules]);
 
-  if (isLoading) return <PageSkeleton />;
+  if (isLoading) return <PageSkeleton tabs={false} content="cards" />;
 
   // ── Handlers ──
 
