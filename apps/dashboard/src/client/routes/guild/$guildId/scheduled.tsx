@@ -2,8 +2,8 @@ import { useMemo, useState } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import { ApiError } from "../../../lib/client";
-import { PageHeader } from "../../../components/PageHeader";
+import { ApiError } from "../../../shared/lib/client";
+import { PageHeader } from "../../../shared/components/PageHeader";
 import {
   useScheduledMessages,
   useCreateScheduledMessage,
@@ -11,22 +11,22 @@ import {
   useDeleteScheduledMessage,
   useTestScheduledMessage,
   useCronPreview,
-} from "../../../lib/hooks/useScheduledMessages";
-import { useChannels } from "../../../lib/hooks/useChannels";
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
-import { ColorPicker } from "../../../components/ui/color-picker";
-import { Label } from "../../../components/ui/label";
-import { Card } from "../../../components/ui/card";
-import { Switch } from "../../../components/ui/switch";
-import { Textarea } from "../../../components/ui/textarea";
+} from "../../../features/scheduled/hooks/useScheduledMessages";
+import { useChannels } from "../../../shared/hooks/useChannels";
+import { Button } from "../../../shared/ui/button";
+import { Input } from "../../../shared/ui/input";
+import { ColorPicker } from "../../../shared/ui/color-picker";
+import { Label } from "../../../shared/ui/label";
+import { Card } from "../../../shared/ui/card";
+import { Switch } from "../../../shared/ui/switch";
+import { Textarea } from "../../../shared/ui/textarea";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../components/ui/select";
+} from "../../../shared/ui/select";
 import {
   Table,
   TableBody,
@@ -34,20 +34,20 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../components/ui/table";
+} from "../../../shared/ui/table";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from "../../../components/ui/dialog";
-import { Separator } from "../../../components/ui/separator";
-import { Badge } from "../../../components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
-import { Icon } from "../../../components/Icon";
-import type { ScheduledMessageContent } from "../../../lib/schemas";
-import { StatsCard } from "../../../components/StatsCard";
+} from "../../../shared/ui/dialog";
+import { Separator } from "../../../shared/ui/separator";
+import { Badge } from "../../../shared/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
+import { Icon } from "../../../shared/components/Icon";
+import type { ScheduledMessageContent } from "../../../shared/lib/schemas";
+import { StatsCard } from "../../../shared/components/StatsCard";
 
 const COMMON_TIMEZONES = [
   "UTC",

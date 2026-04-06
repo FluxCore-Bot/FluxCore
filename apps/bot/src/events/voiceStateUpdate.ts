@@ -2,13 +2,13 @@ import type { VoiceState, VoiceChannel, Client } from "discord.js";
 import type { Event } from "@fluxcore/types";
 import { getConfigByHubChannel } from "@fluxcore/systems/tempVoice/config";
 import { getRulesForEvent } from "@fluxcore/systems/actions/cache";
-import { processEvent } from "../systems/actions/executor.js";
-import { buildVoiceContext } from "../systems/actions/eventBridge.js";
+import { processEvent } from "../features/automation/system/executor.js";
+import { buildVoiceContext } from "../features/automation/system/eventBridge.js";
 import {
   createTempChannel,
   isTrackedChannel,
   untrackChannel,
-} from "../systems/tempVoice/manager.js";
+} from "../features/tempvoice/system/manager.js";
 import { getLogConfig, isIgnored } from "@fluxcore/systems/logging/config";
 import { createLogEntry } from "@fluxcore/systems/logging/persistence";
 import { sendLogEmbed } from "@fluxcore/systems/logging/sender";

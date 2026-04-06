@@ -10,8 +10,8 @@ import {
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { I18nextProvider } from "react-i18next";
 import { DirectionProvider } from "@radix-ui/react-direction";
-import { i18nReady } from "./lib/i18n";
-import { AppDirectionContext, useDirectionState } from "./lib/hooks/useDirection";
+import { i18nReady } from "./shared/lib/i18n";
+import { AppDirectionContext, useDirectionState } from "./shared/hooks/useDirection";
 import { RootLayout } from "./routes/__root";
 import { IndexPage } from "./routes/index";
 import { GuildLayout } from "./routes/guild/$guildId";

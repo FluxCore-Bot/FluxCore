@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import { ApiError } from "../../../lib/client";
-import { PageHeader } from "../../../components/PageHeader";
+import { ApiError } from "../../../shared/lib/client";
+import { PageHeader } from "../../../shared/components/PageHeader";
 import {
   useTickets,
   useCloseTicket,
@@ -13,12 +13,12 @@ import {
   useSendTicketPanel,
   useTicketSettings,
   useUpdateTicketSettings,
-} from "../../../lib/hooks/useTickets";
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
-import { Label } from "../../../components/ui/label";
-import { Card } from "../../../components/ui/card";
-import { Badge } from "../../../components/ui/badge";
+} from "../../../features/tickets/hooks/useTickets";
+import { Button } from "../../../shared/ui/button";
+import { Input } from "../../../shared/ui/input";
+import { Label } from "../../../shared/ui/label";
+import { Card } from "../../../shared/ui/card";
+import { Badge } from "../../../shared/ui/badge";
 import {
   Table,
   TableBody,
@@ -26,13 +26,13 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../components/ui/table";
-import { Separator } from "../../../components/ui/separator";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
-import { Icon } from "../../../components/Icon";
-import { StatsCard } from "../../../components/StatsCard";
-import { DiscordSelect } from "../../../components/ui/discord-select";
-import { DiscordMultiSelect } from "../../../components/ui/discord-multi-select";
+} from "../../../shared/ui/table";
+import { Separator } from "../../../shared/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
+import { Icon } from "../../../shared/components/Icon";
+import { StatsCard } from "../../../shared/components/StatsCard";
+import { DiscordSelect } from "../../../shared/ui/discord-select";
+import { DiscordMultiSelect } from "../../../shared/ui/discord-multi-select";
 
 function statusColor(status: string) {
   switch (status) {

@@ -2,27 +2,27 @@ import { useState, useEffect, useMemo } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import { PageHeader } from "../../../components/PageHeader";
-import { PageSkeleton } from "../../../components/PageSkeleton";
-import { Icon } from "../../../components/Icon";
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
-import { Label } from "../../../components/ui/label";
-import { Switch } from "../../../components/ui/switch";
-import { Badge } from "../../../components/ui/badge";
-import { Card, CardContent } from "../../../components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
-import { Separator } from "../../../components/ui/separator";
-import { ColorPicker } from "../../../components/ui/color-picker";
-import { ScrollArea } from "../../../components/ui/scroll-area";
-import { Checkbox } from "../../../components/ui/checkbox";
+import { PageHeader } from "../../../shared/components/PageHeader";
+import { PageSkeleton } from "../../../shared/ui/skeletons";
+import { Icon } from "../../../shared/components/Icon";
+import { Button } from "../../../shared/ui/button";
+import { Input } from "../../../shared/ui/input";
+import { Label } from "../../../shared/ui/label";
+import { Switch } from "../../../shared/ui/switch";
+import { Badge } from "../../../shared/ui/badge";
+import { Card, CardContent } from "../../../shared/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
+import { Separator } from "../../../shared/ui/separator";
+import { ColorPicker } from "../../../shared/ui/color-picker";
+import { ScrollArea } from "../../../shared/ui/scroll-area";
+import { Checkbox } from "../../../shared/ui/checkbox";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from "../../../components/ui/dialog";
+} from "../../../shared/ui/dialog";
 import {
   usePermissions,
   useDashboardRoles,
@@ -33,8 +33,8 @@ import {
   useDashboardSettings,
   useUpdateDashboardSettings,
   useDashboardAuditLog,
-} from "../../../lib/hooks/usePermissions";
-import type { DashboardRole } from "../../../lib/schemas";
+} from "../../../features/permissions/hooks/usePermissions";
+import type { DashboardRole } from "../../../shared/lib/schemas";
 import {
   PERMISSION_REGISTRY,
   ROLE_PRESETS,

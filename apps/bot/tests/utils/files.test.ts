@@ -26,10 +26,10 @@ describe("getFiles", () => {
   });
 
   it("finds files in subdirectories", async () => {
-    const commandsDir = join(dirname, "..", "..", "src", "commands");
-    const files = await getFiles(commandsDir);
+    const featuresDir = join(dirname, "..", "..", "src", "features");
+    const files = await getFiles(featuresDir);
 
-    // Should find files in general/, moderation/, utility/, voice/, admin/
+    // Should find files in general/, moderation/, utility/, tempvoice/, automation/
     expect(files.length).toBeGreaterThanOrEqual(10);
     expect(files.some((f) => f.includes("general"))).toBe(true);
     expect(files.some((f) => f.includes("moderation"))).toBe(true);

@@ -2,20 +2,20 @@ import { useState } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import { ApiError } from "../../../lib/client";
-import { PageHeader } from "../../../components/PageHeader";
+import { ApiError } from "../../../shared/lib/client";
+import { PageHeader } from "../../../shared/components/PageHeader";
 import {
   useGiveaways,
   useCreateGiveaway,
   useEndGiveaway,
   useRerollGiveaway,
-} from "../../../lib/hooks/useGiveaways";
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
-import { DiscordSelect } from "../../../components/ui/discord-select";
-import { Label } from "../../../components/ui/label";
-import { Card } from "../../../components/ui/card";
-import { Badge } from "../../../components/ui/badge";
+} from "../../../features/giveaways/hooks/useGiveaways";
+import { Button } from "../../../shared/ui/button";
+import { Input } from "../../../shared/ui/input";
+import { DiscordSelect } from "../../../shared/ui/discord-select";
+import { Label } from "../../../shared/ui/label";
+import { Card } from "../../../shared/ui/card";
+import { Badge } from "../../../shared/ui/badge";
 import {
   Table,
   TableBody,
@@ -23,17 +23,17 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../components/ui/table";
+} from "../../../shared/ui/table";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../components/ui/select";
-import { Separator } from "../../../components/ui/separator";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
-import { StatsCard } from "../../../components/StatsCard";
+} from "../../../shared/ui/select";
+import { Separator } from "../../../shared/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
+import { StatsCard } from "../../../shared/components/StatsCard";
 
 function formatTimeRemaining(endsAt: string): string {
   const end = new Date(endsAt).getTime();

@@ -2,29 +2,29 @@ import { useState } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import { ApiError } from "../../../lib/client";
-import { ConfirmDialog } from "../../../components/ConfirmDialog";
-import { PageHeader } from "../../../components/PageHeader";
+import { ApiError } from "../../../shared/lib/client";
+import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
+import { PageHeader } from "../../../shared/components/PageHeader";
 import {
   useSuggestions,
   useSuggestionSettings,
   useUpdateSuggestionSettings,
   useUpdateSuggestionStatus,
   useDeleteSuggestion,
-} from "../../../lib/hooks/useSuggestions";
-import { DiscordSelect } from "../../../components/ui/discord-select";
-import { Button } from "../../../components/ui/button";
-import { Label } from "../../../components/ui/label";
-import { Card } from "../../../components/ui/card";
-import { Switch } from "../../../components/ui/switch";
-import { Badge } from "../../../components/ui/badge";
+} from "../../../features/suggestions/hooks/useSuggestions";
+import { DiscordSelect } from "../../../shared/ui/discord-select";
+import { Button } from "../../../shared/ui/button";
+import { Label } from "../../../shared/ui/label";
+import { Card } from "../../../shared/ui/card";
+import { Switch } from "../../../shared/ui/switch";
+import { Badge } from "../../../shared/ui/badge";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../components/ui/select";
+} from "../../../shared/ui/select";
 import {
   Table,
   TableBody,
@@ -32,19 +32,19 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../components/ui/table";
-import { Separator } from "../../../components/ui/separator";
-import { Icon } from "../../../components/Icon";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
-import { StatsCard } from "../../../components/StatsCard";
+} from "../../../shared/ui/table";
+import { Separator } from "../../../shared/ui/separator";
+import { Icon } from "../../../shared/components/Icon";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
+import { StatsCard } from "../../../shared/components/StatsCard";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from "../../../components/ui/dialog";
-import { Textarea } from "../../../components/ui/textarea";
+} from "../../../shared/ui/dialog";
+import { Textarea } from "../../../shared/ui/textarea";
 
 const STATUS_BADGE_VARIANT: Record<string, "default" | "secondary" | "destructive" | "outline"> = {
   pending: "outline",

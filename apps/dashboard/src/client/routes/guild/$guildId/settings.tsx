@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { SettingsForm } from "../../../components/SettingsForm";
-import { PageHeader } from "../../../components/PageHeader";
+import { SettingsForm } from "../../../features/settings/components/SettingsForm";
+import { PageHeader } from "../../../shared/components/PageHeader";
 
 export function SettingsPage() {
   const { t } = useTranslation("settings");

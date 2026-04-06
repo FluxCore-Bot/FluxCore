@@ -1,16 +1,16 @@
 import { useState, useCallback } from "react";
 import { Outlet, Link, useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
-import { useAuth } from "../lib/hooks/useAuth";
-import { useAppDirection } from "../lib/hooks/useDirection";
-import { Toaster } from "../components/ui/sonner";
-import { Icon } from "../components/Icon";
-import { Button } from "../components/ui/button";
-import { Separator } from "../components/ui/separator";
-import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "../components/ui/tooltip";
-import { RefreshDataWidget } from "../components/RefreshDataWidget";
-import { LanguageSwitcher } from "../components/LanguageSwitcher";
-import { MobileSidebarContext } from "../lib/hooks/useMobileSidebar";
+import { useAuth } from "../shared/hooks/useAuth";
+import { useAppDirection } from "../shared/hooks/useDirection";
+import { Toaster } from "../shared/ui/sonner";
+import { Icon } from "../shared/components/Icon";
+import { Button } from "../shared/ui/button";
+import { Separator } from "../shared/ui/separator";
+import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "../shared/ui/tooltip";
+import { RefreshDataWidget } from "../shared/components/RefreshDataWidget";
+import { LanguageSwitcher } from "../shared/components/LanguageSwitcher";
+import { MobileSidebarContext } from "../shared/hooks/useMobileSidebar";
 
 export function RootLayout() {
   const { t } = useTranslation();

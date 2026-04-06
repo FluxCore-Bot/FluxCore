@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { TempVoiceForm } from "../../../components/TempVoiceForm";
-import { PageHeader } from "../../../components/PageHeader";
+import { TempVoiceForm } from "../../../features/tempvoice/components/TempVoiceForm";
+import { PageHeader } from "../../../shared/components/PageHeader";
 
 export function TempVoicePage() {
   const { t } = useTranslation("tempvoice");

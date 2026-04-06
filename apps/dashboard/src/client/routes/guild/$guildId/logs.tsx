@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { LogsTable } from "../../../components/LogsTable";
-import { PageHeader } from "../../../components/PageHeader";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../../components/ui/tabs";
-import { EventLogConfig } from "../../../components/EventLogConfig";
-import { EventLogBrowser } from "../../../components/EventLogBrowser";
+import { LogsTable } from "../../../features/logging/components/LogsTable";
+import { PageHeader } from "../../../shared/components/PageHeader";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../../shared/ui/tabs";
+import { EventLogConfig } from "../../../features/logging/components/EventLogConfig";
+import { EventLogBrowser } from "../../../features/logging/components/EventLogBrowser";
 
 export function LogsPage() {
   const { t } = useTranslation("logs");

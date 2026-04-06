@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useParams } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
-import { ApiError } from "../../../lib/client";
-import { ConfirmDialog } from "../../../components/ConfirmDialog";
-import { PageHeader } from "../../../components/PageHeader";
+import { ApiError } from "../../../shared/lib/client";
+import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
+import { PageHeader } from "../../../shared/components/PageHeader";
 import {
   useWarnings,
   useDeleteWarning,
@@ -14,20 +14,20 @@ import {
   useRemovePunishment,
   useWarnSettings,
   useUpdateWarnSettings,
-} from "../../../lib/hooks/useWarnings";
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
-import { Label } from "../../../components/ui/label";
-import { Card } from "../../../components/ui/card";
-import { StatsCard } from "../../../components/StatsCard";
-import { Switch } from "../../../components/ui/switch";
+} from "../../../features/warnings/hooks/useWarnings";
+import { Button } from "../../../shared/ui/button";
+import { Input } from "../../../shared/ui/input";
+import { Label } from "../../../shared/ui/label";
+import { Card } from "../../../shared/ui/card";
+import { StatsCard } from "../../../shared/components/StatsCard";
+import { Switch } from "../../../shared/ui/switch";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../components/ui/select";
+} from "../../../shared/ui/select";
 import {
   Table,
   TableBody,
@@ -35,11 +35,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../components/ui/table";
-import { Separator } from "../../../components/ui/separator";
-import { Icon } from "../../../components/Icon";
+} from "../../../shared/ui/table";
+import { Separator } from "../../../shared/ui/separator";
+import { Icon } from "../../../shared/components/Icon";
 import { Search } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 
 export function WarningsPage() {
   const { t } = useTranslation("warnings");

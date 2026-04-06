@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { MusicSettingsForm } from "../../../components/MusicSettingsForm";
-import { MusicLibraryManager } from "../../../components/MusicLibraryManager";
-import { PageHeader } from "../../../components/PageHeader";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
+import { MusicSettingsForm } from "../../../features/music/components/MusicSettingsForm";
+import { MusicLibraryManager } from "../../../features/music/components/MusicLibraryManager";
+import { PageHeader } from "../../../shared/components/PageHeader";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 
 export function MusicPage() {
   const { t } = useTranslation("music");

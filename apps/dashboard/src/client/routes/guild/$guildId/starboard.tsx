@@ -2,28 +2,28 @@ import { useState, useEffect } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import { ApiError } from "../../../lib/client";
-import { PageHeader } from "../../../components/PageHeader";
+import { ApiError } from "../../../shared/lib/client";
+import { PageHeader } from "../../../shared/components/PageHeader";
 import {
   useStarboardSettings,
   useUpdateStarboardSettings,
   useStarboardEntries,
-} from "../../../lib/hooks/useStarboard";
-import { DiscordSelect } from "../../../components/ui/discord-select";
-import { DiscordMultiSelect } from "../../../components/ui/discord-multi-select";
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
-import { Label } from "../../../components/ui/label";
-import { Card } from "../../../components/ui/card";
-import { Switch } from "../../../components/ui/switch";
-import { Separator } from "../../../components/ui/separator";
+} from "../../../features/starboard/hooks/useStarboard";
+import { DiscordSelect } from "../../../shared/ui/discord-select";
+import { DiscordMultiSelect } from "../../../shared/ui/discord-multi-select";
+import { Button } from "../../../shared/ui/button";
+import { Input } from "../../../shared/ui/input";
+import { Label } from "../../../shared/ui/label";
+import { Card } from "../../../shared/ui/card";
+import { Switch } from "../../../shared/ui/switch";
+import { Separator } from "../../../shared/ui/separator";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../components/ui/select";
+} from "../../../shared/ui/select";
 import {
   Table,
   TableBody,
@@ -31,10 +31,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../components/ui/table";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
-import { Badge } from "../../../components/ui/badge";
-import { Icon } from "../../../components/Icon";
+} from "../../../shared/ui/table";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
+import { Badge } from "../../../shared/ui/badge";
+import { Icon } from "../../../shared/components/Icon";
 
 export function StarboardPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });

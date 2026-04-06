@@ -1,5 +1,5 @@
 import type { Interaction } from "discord.js";
-import type { ExtendedClient } from "../client/ExtendedClient.js";
+import type { ExtendedClient } from "../shared/client/ExtendedClient.js";
 import type { Event } from "@fluxcore/types";
 import { isOnCooldown, setCooldown } from "@fluxcore/systems/cooldown";
 import {
@@ -7,17 +7,17 @@ import {
   handleTempVoiceModal,
   handleTempVoiceUserSelect,
   handleTempVoiceStringSelect,
-} from "../systems/tempVoice/interactions.js";
-import { handleMusicButton } from "../systems/music/interactions.js";
-import { handleActionsAutocomplete } from "../commands/admin/actions.js";
-import { handlePlayAutocomplete } from "../commands/music/play.js";
-import { handleRolePanelAutocomplete } from "../commands/general/rolepanel.js";
+} from "../features/tempvoice/system/interactions.js";
+import { handleMusicButton } from "../features/music/system/interactions.js";
+import { handleActionsAutocomplete } from "../features/general/commands/actions.js";
+import { handlePlayAutocomplete } from "../features/music/commands/play.js";
+import { handleRolePanelAutocomplete } from "../features/general/commands/rolepanel.js";
 import { MU_PREFIX } from "@fluxcore/systems/music/constants";
 import { GIVEAWAY_BUTTON_PREFIX } from "@fluxcore/systems/giveaways/constants";
 import { handleRolePanelButton, handleRolePanelDropdown } from "@fluxcore/systems/rolePanel/handler";
-import { handleTicketButton, handleTicketModal } from "../systems/tickets/interactions.js";
+import { handleTicketButton, handleTicketModal } from "../features/tickets/system/interactions.js";
 import { TICKET_BUTTON_PREFIX, TICKET_CLAIM_ID, TICKET_CLOSE_ID } from "@fluxcore/systems/tickets/constants";
-import { handleGiveawayButton } from "../systems/giveaways/interactions.js";
+import { handleGiveawayButton } from "../features/giveaways/system/interactions.js";
 import { errorEmbed, warnEmbed, logger } from "@fluxcore/utils";
 
 const event: Event<"interactionCreate"> = {

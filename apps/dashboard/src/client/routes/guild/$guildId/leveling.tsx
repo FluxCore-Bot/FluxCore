@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import { ApiError } from "../../../lib/client";
-import { PageHeader } from "../../../components/PageHeader";
+import { ApiError } from "../../../shared/lib/client";
+import { PageHeader } from "../../../shared/components/PageHeader";
 import {
   useLeaderboard,
   useLevelSettings,
@@ -11,20 +11,20 @@ import {
   useLevelRewards,
   useAddLevelReward,
   useRemoveLevelReward,
-} from "../../../lib/hooks/useLeveling";
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
-import { Label } from "../../../components/ui/label";
-import { Card } from "../../../components/ui/card";
-import { Switch } from "../../../components/ui/switch";
-import { Textarea } from "../../../components/ui/textarea";
+} from "../../../features/leveling/hooks/useLeveling";
+import { Button } from "../../../shared/ui/button";
+import { Input } from "../../../shared/ui/input";
+import { Label } from "../../../shared/ui/label";
+import { Card } from "../../../shared/ui/card";
+import { Switch } from "../../../shared/ui/switch";
+import { Textarea } from "../../../shared/ui/textarea";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../components/ui/select";
+} from "../../../shared/ui/select";
 import {
   Table,
   TableBody,
@@ -32,13 +32,13 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../components/ui/table";
-import { Separator } from "../../../components/ui/separator";
-import { Icon } from "../../../components/Icon";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
-import { StatsCard } from "../../../components/StatsCard";
-import { DiscordSelect } from "../../../components/ui/discord-select";
-import { DiscordMultiSelect } from "../../../components/ui/discord-multi-select";
+} from "../../../shared/ui/table";
+import { Separator } from "../../../shared/ui/separator";
+import { Icon } from "../../../shared/components/Icon";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
+import { StatsCard } from "../../../shared/components/StatsCard";
+import { DiscordSelect } from "../../../shared/ui/discord-select";
+import { DiscordMultiSelect } from "../../../shared/ui/discord-multi-select";
 
 function formatVoiceTime(minutes: number, t: (key: string, opts?: Record<string, unknown>) => string): string {
   const hours = Math.floor(minutes / 60);
