@@ -3,22 +3,22 @@ import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { Search } from "lucide-react";
-import { ConfirmDialog } from "../../../components/ConfirmDialog";
-import { PageHeader } from "../../../components/PageHeader";
-import { StatsCard } from "../../../components/StatsCard";
-import { PageSkeleton } from "../../../components/PageSkeleton";
-import { Icon } from "../../../components/Icon";
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
-import { Textarea } from "../../../components/ui/textarea";
-import { Switch } from "../../../components/ui/switch";
+import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
+import { PageHeader } from "../../../shared/components/PageHeader";
+import { StatsCard } from "../../../shared/components/StatsCard";
+import { PageSkeleton } from "../../../shared/ui/skeletons";
+import { Icon } from "../../../shared/components/Icon";
+import { Button } from "../../../shared/ui/button";
+import { Input } from "../../../shared/ui/input";
+import { Textarea } from "../../../shared/ui/textarea";
+import { Switch } from "../../../shared/ui/switch";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../components/ui/select";
+} from "../../../shared/ui/select";
 import {
   Table,
   TableBody,
@@ -26,24 +26,25 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../components/ui/table";
+} from "../../../shared/ui/table";
 import {
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../../../components/ui/dialog";
+} from "../../../shared/ui/dialog";
 import {
   useModCases,
   useDeleteModCase,
   useUpdateModCase,
   useModSettings,
   useUpdateModSettings,
-} from "../../../lib/hooks/useModeration";
-import { useChannels } from "../../../lib/hooks/useChannels";
-import { ApiError } from "../../../lib/client";
-import type { ModCase } from "../../../lib/schemas";
+} from "../../../features/moderation/hooks/useModeration";
+import { useChannels } from "../../../shared/hooks/useChannels";
+import { ApiError } from "../../../shared/lib/client";
+import type { ModCase } from "../../../shared/lib/schemas";
+import { Shield, Clock, Activity } from "lucide-react";
 
 const ACTION_KEYS = ["ban", "tempban", "kick", "timeout", "softban", "warn", "note"] as const;
 
@@ -133,16 +134,18 @@ export function ModerationPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <StatsCard label={t("stats.totalCases")} value={total} />
+        <StatsCard label={t("stats.totalCases")} value={total} icon={Shield} accent="primary" />
         <StatsCard
           label={t("stats.activeTempbans")}
           value={activeTempbans}
-          accentColor="border-orange-400"
+          icon={Clock}
+          accent="warning"
         />
         <StatsCard
           label={t("stats.last24h")}
           value={recent24h}
-          accentColor="border-success"
+          icon={Activity}
+          accent="success"
         />
       </div>
 

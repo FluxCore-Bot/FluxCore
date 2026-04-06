@@ -2,26 +2,26 @@ import { useState, useEffect } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import { ApiError } from "../../../lib/client";
-import { PageHeader } from "../../../components/PageHeader";
+import { ApiError } from "../../../shared/lib/client";
+import { PageHeader } from "../../../shared/components/PageHeader";
 import {
   useWelcomeConfig,
   useUpdateWelcomeConfig,
   useTestWelcome,
   type EmbedConfig,
   type WelcomeImageSettings,
-} from "../../../lib/hooks/useWelcome";
-import { WelcomeImageEditor } from "../../../components/WelcomeImageEditor";
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
-import { DiscordSelect } from "../../../components/ui/discord-select";
-import { DiscordMultiSelect } from "../../../components/ui/discord-multi-select";
-import { Label } from "../../../components/ui/label";
-import { Card } from "../../../components/ui/card";
-import { Switch } from "../../../components/ui/switch";
-import { Separator } from "../../../components/ui/separator";
-import { Textarea } from "../../../components/ui/textarea";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
+} from "../../../features/welcome/hooks/useWelcome";
+import { WelcomeImageEditor } from "../../../features/welcome/components/WelcomeImageEditor";
+import { Button } from "../../../shared/ui/button";
+import { Input } from "../../../shared/ui/input";
+import { DiscordSelect } from "../../../shared/ui/discord-select";
+import { DiscordMultiSelect } from "../../../shared/ui/discord-multi-select";
+import { Label } from "../../../shared/ui/label";
+import { Card } from "../../../shared/ui/card";
+import { Switch } from "../../../shared/ui/switch";
+import { Separator } from "../../../shared/ui/separator";
+import { Textarea } from "../../../shared/ui/textarea";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 import type { TFunction } from "i18next";
 
 const DEFAULT_WELCOME_IMAGE: WelcomeImageSettings = {

@@ -11,7 +11,7 @@ vi.mock("@fluxcore/config", () => ({
 }));
 
 const mockAuditPermissions = vi.fn();
-vi.mock("../../src/systems/permissionAudit.js", () => ({
+vi.mock("../../src/shared/systems/permissionAudit.js", () => ({
   auditPermissions: (...args: unknown[]) => mockAuditPermissions(...args),
 }));
 
@@ -23,7 +23,7 @@ vi.mock("@fluxcore/systems/tempVoice/config", () => ({
 }));
 
 const mockReconcileOnStartup = vi.fn().mockResolvedValue(undefined);
-vi.mock("../../src/systems/tempVoice/manager.js", () => ({
+vi.mock("../../src/features/tempvoice/system/manager.js", () => ({
   reconcileOnStartup: (...args: unknown[]) => mockReconcileOnStartup(...args),
 }));
 
@@ -47,19 +47,19 @@ vi.mock("@fluxcore/systems/actions/cacheSync", () => ({
 }));
 
 const mockRegisterActionEventListeners = vi.fn();
-vi.mock("../../src/systems/actions/eventBridge.js", () => ({
+vi.mock("../../src/features/automation/system/eventBridge.js", () => ({
   registerActionEventListeners: (...args: unknown[]) =>
     mockRegisterActionEventListeners(...args),
 }));
 
 const mockStartSyncServer = vi.fn();
-vi.mock("../../src/systems/actions/syncServer.js", () => ({
+vi.mock("../../src/features/automation/system/syncServer.js", () => ({
   startSyncServer: () => mockStartSyncServer(),
   stopSyncServer: vi.fn(),
 }));
 
 const mockStartReminderPolling = vi.fn();
-vi.mock("../../src/systems/reminders.js", () => ({
+vi.mock("../../src/shared/systems/reminders.js", () => ({
   startReminderPolling: (...args: unknown[]) =>
     mockStartReminderPolling(...args),
 }));

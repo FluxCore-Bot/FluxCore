@@ -1,24 +1,24 @@
 import type { Client } from "discord.js";
 import type { Event } from "@fluxcore/types";
-import { auditPermissions } from "../systems/permissionAudit.js";
+import { auditPermissions } from "../shared/systems/permissionAudit.js";
 import {
   loadTempVoiceConfig,
   getAllConfiguredGuildIds,
 } from "@fluxcore/systems/tempVoice/config";
-import { reconcileOnStartup } from "../systems/tempVoice/manager.js";
+import { reconcileOnStartup } from "../features/tempvoice/system/manager.js";
 import { loadActionGuildSettings } from "@fluxcore/systems/actions/config";
 import { loadAllRules } from "@fluxcore/systems/actions/cache";
 import { startCacheSyncPolling } from "@fluxcore/systems/actions/cacheSync";
 import { cleanOldLogs } from "@fluxcore/systems/actions/persistence";
-import { registerActionEventListeners } from "../systems/actions/eventBridge.js";
-import { startSyncServer } from "../systems/actions/syncServer.js";
-import { startReminderPolling } from "../systems/reminders.js";
+import { registerActionEventListeners } from "../features/automation/system/eventBridge.js";
+import { startSyncServer } from "../features/automation/system/syncServer.js";
+import { startReminderPolling } from "../shared/systems/reminders.js";
 import { loadMusicSettings, get247Guilds } from "@fluxcore/systems/music/config";
 import { cleanOldLogEntries } from "@fluxcore/systems/logging/persistence";
-import { createQueue } from "../systems/music/queue.js";
-import { setupPlayerEvents } from "../systems/music/events.js";
-import { registerMusicSettingsReactor } from "../systems/music/settingsReactor.js";
-import { waitForNode } from "../systems/music/shoukaku.js";
+import { createQueue } from "../features/music/system/queue.js";
+import { setupPlayerEvents } from "../features/music/system/events.js";
+import { registerMusicSettingsReactor } from "../features/music/system/settingsReactor.js";
+import { waitForNode } from "../features/music/system/shoukaku.js";
 import { logger } from "@fluxcore/utils";
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;

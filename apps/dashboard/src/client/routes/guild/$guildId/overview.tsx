@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
-import { useAnalytics } from "../../../lib/hooks/useAnalytics";
-import { useConstants } from "../../../lib/hooks/useConstants";
-import { PageHeader } from "../../../components/PageHeader";
-import { PageSkeleton } from "../../../components/PageSkeleton";
-import { StatsCard } from "../../../components/StatsCard";
-import { ExecutionChart } from "../../../components/overview/ExecutionChart";
-import { EventDistributionChart } from "../../../components/overview/EventDistributionChart";
-import { RecentActivityFeed } from "../../../components/overview/RecentActivityFeed";
-import { Button } from "../../../components/ui/button";
+import { useAnalytics } from "../../../features/overview/hooks/useAnalytics";
+import { useConstants } from "../../../shared/hooks/useConstants";
+import { PageHeader } from "../../../shared/components/PageHeader";
+import { CardGridSkeleton } from "../../../shared/ui/skeletons";
+import { StatsCard } from "../../../shared/components/StatsCard";
+import { ExecutionChart } from "../../../features/overview/components/ExecutionChart";
+import { EventDistributionChart } from "../../../features/overview/components/EventDistributionChart";
+import { RecentActivityFeed } from "../../../features/overview/components/RecentActivityFeed";
+import { Button } from "../../../shared/ui/button";
+import { Zap, CheckCircle, BarChart3, Target } from "lucide-react";
 
 export function OverviewPage() {
   const { t } = useTranslation("overview");
@@ -18,7 +19,7 @@ export function OverviewPage() {
   const { data: analytics, isLoading } = useAnalytics(guildId, days);
   const { data: constants } = useConstants();
 
-  if (isLoading || !analytics) return <PageSkeleton />;
+  if (isLoading || !analytics) return <CardGridSkeleton />;
 
   const { summary } = analytics;
 
@@ -33,24 +34,26 @@ export function OverviewPage() {
         <StatsCard
           label={t("stats.actionRules")}
           value={summary.totalRules}
-          accentColor="border-accent"
+          icon={Zap}
+          accent="primary"
         />
         <StatsCard
           label={t("stats.activeNow")}
           value={summary.activeRules}
-          accentColor="border-success"
-          valueClassName="text-success"
+          icon={CheckCircle}
+          accent="success"
         />
         <StatsCard
           label={t("stats.executions")}
           value={summary.totalExecutions.toLocaleString()}
-          accentColor="border-secondary"
+          icon={BarChart3}
+          accent="secondary"
         />
         <StatsCard
           label={t("stats.successRate")}
           value={`${summary.successRate}%`}
-          accentColor={summary.successRate >= 90 ? "border-success" : "border-danger"}
-          valueClassName={summary.successRate >= 90 ? "text-success" : "text-danger"}
+          icon={Target}
+          accent={summary.successRate >= 90 ? "success" : "danger"}
         />
       </div>
 

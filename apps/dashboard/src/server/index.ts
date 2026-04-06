@@ -12,28 +12,28 @@ import {
   disconnectDatabase,
   getPrisma,
 } from "@fluxcore/database";
-import { registerAuthRoutes } from "./routes/auth.js";
-import { registerGuildRoutes } from "./routes/guilds.js";
-import { registerTempVoiceRoutes } from "./routes/tempvoice.js";
-import { registerActionRoutes } from "./routes/actions.js";
-import { registerDiscordRoutes } from "./routes/discord.js";
-import { registerMusicRoutes } from "./routes/music.js";
-import { registerLoggingRoutes } from "./routes/logging.js";
-import { registerWarningRoutes } from "./routes/warnings.js";
-import { registerModerationRoutes } from "./routes/moderation.js";
-import { registerWelcomeRoutes } from "./routes/welcome.js";
-import { registerRolePanelRoutes } from "./routes/rolePanel.js";
-import { registerLevelingRoutes } from "./routes/leveling.js";
-import { registerScheduledMessageRoutes } from "./routes/scheduled-messages.js";
-import { registerCustomCommandRoutes } from "./routes/customCommands.js";
-import { registerAntiRaidRoutes } from "./routes/anti-raid.js";
-import { registerTicketRoutes } from "./routes/tickets.js";
-import { registerGiveawayRoutes } from "./routes/giveaways.js";
-import { registerSuggestionRoutes } from "./routes/suggestions.js";
-import { registerStarboardRoutes } from "./routes/starboard.js";
-import { registerDashboardRoleRoutes } from "./routes/dashboardRoles.js";
-import { registerDashboardPermissionRoutes } from "./routes/dashboardPermissions.js";
-import { registerI18n } from "./i18n.js";
+import { registerAuthRoutes } from "./features/auth/routes.js";
+import { registerGuildRoutes } from "./features/guilds/routes.js";
+import { registerTempVoiceRoutes } from "./features/tempvoice/routes.js";
+import { registerActionRoutes } from "./features/actions/routes.js";
+import { registerDiscordRoutes } from "./features/discord/routes.js";
+import { registerMusicRoutes } from "./features/music/routes.js";
+import { registerLoggingRoutes } from "./features/logging/routes.js";
+import { registerWarningRoutes } from "./features/moderation/warnings-routes.js";
+import { registerModerationRoutes } from "./features/moderation/routes.js";
+import { registerWelcomeRoutes } from "./features/welcome/routes.js";
+import { registerRolePanelRoutes } from "./features/roles/routes.js";
+import { registerLevelingRoutes } from "./features/leveling/routes.js";
+import { registerScheduledMessageRoutes } from "./features/scheduled/routes.js";
+import { registerCustomCommandRoutes } from "./features/commands/routes.js";
+import { registerAntiRaidRoutes } from "./features/security/routes.js";
+import { registerTicketRoutes } from "./features/tickets/routes.js";
+import { registerGiveawayRoutes } from "./features/giveaways/routes.js";
+import { registerSuggestionRoutes } from "./features/suggestions/routes.js";
+import { registerStarboardRoutes } from "./features/starboard/routes.js";
+import { registerDashboardRoleRoutes } from "./features/permissions/roles-routes.js";
+import { registerDashboardPermissionRoutes } from "./features/permissions/routes.js";
+import { registerI18n } from "./shared/i18n.js";
 
 async function main(): Promise<void> {
   if (!config.dashboardClientSecret) {

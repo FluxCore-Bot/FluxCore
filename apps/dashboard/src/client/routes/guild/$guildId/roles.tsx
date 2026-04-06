@@ -2,9 +2,9 @@ import { useState, useMemo } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import { ApiError } from "../../../lib/client";
-import { ConfirmDialog } from "../../../components/ConfirmDialog";
-import { PageHeader } from "../../../components/PageHeader";
+import { ApiError } from "../../../shared/lib/client";
+import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
+import { PageHeader } from "../../../shared/components/PageHeader";
 import {
   useRolePanels,
   useCreateRolePanel,
@@ -12,21 +12,21 @@ import {
   useDeleteRolePanel,
   useSendRolePanel,
   type CreateRolePanelData,
-} from "../../../lib/hooks/useRolePanels";
-import { useChannels } from "../../../lib/hooks/useChannels";
-import { useRoles } from "../../../lib/hooks/useRoles";
-import type { RolePanelItem, RolePanelEntryItem } from "../../../lib/schemas";
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
-import { Label } from "../../../components/ui/label";
-import { Card } from "../../../components/ui/card";
+} from "../../../features/roles/hooks/useRolePanels";
+import { useChannels } from "../../../shared/hooks/useChannels";
+import { useRoles } from "../../../shared/hooks/useRoles";
+import type { RolePanelItem, RolePanelEntryItem } from "../../../shared/lib/schemas";
+import { Button } from "../../../shared/ui/button";
+import { Input } from "../../../shared/ui/input";
+import { Label } from "../../../shared/ui/label";
+import { Card } from "../../../shared/ui/card";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../components/ui/select";
+} from "../../../shared/ui/select";
 import {
   Table,
   TableBody,
@@ -34,19 +34,20 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../components/ui/table";
+} from "../../../shared/ui/table";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../../components/ui/dialog";
-import { Badge } from "../../../components/ui/badge";
-import { Separator } from "../../../components/ui/separator";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
-import { Icon } from "../../../components/Icon";
-import { StatsCard } from "../../../components/StatsCard";
+} from "../../../shared/ui/dialog";
+import { Badge } from "../../../shared/ui/badge";
+import { Separator } from "../../../shared/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
+import { Icon } from "../../../shared/components/Icon";
+import { StatsCard } from "../../../shared/components/StatsCard";
+import { LayoutGrid, Rocket, Users } from "lucide-react";
 
 function EmptyRoleEntry(): RolePanelEntryItem {
   return { roleId: "", label: "", emoji: "", description: "", style: 2 };
@@ -249,14 +250,20 @@ export function RolesPage() {
         <StatsCard
           label={t("stats.totalPanels")}
           value={isLoading ? "..." : panels?.length ?? 0}
+          icon={LayoutGrid}
+          accent="primary"
         />
         <StatsCard
           label={t("stats.deployed")}
           value={isLoading ? "..." : panels?.filter((p) => p.messageId).length ?? 0}
+          icon={Rocket}
+          accent="success"
         />
         <StatsCard
           label={t("stats.totalRoles")}
           value={isLoading ? "..." : panels?.reduce((sum, p) => sum + p.roles.length, 0) ?? 0}
+          icon={Users}
+          accent="secondary"
         />
       </div>
 

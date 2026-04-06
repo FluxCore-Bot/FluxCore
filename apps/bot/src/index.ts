@@ -1,13 +1,13 @@
-import { ExtendedClient } from "./client/ExtendedClient.js";
+import { ExtendedClient } from "./shared/client/ExtendedClient.js";
 import { config } from "@fluxcore/config";
 import { connectDatabase, disconnectDatabase } from "@fluxcore/database";
-import { loadCommands, loadEvents } from "./handlers/index.js";
-import { stopReminderPolling } from "./systems/reminders.js";
+import { loadCommands, loadEvents } from "./shared/handlers/index.js";
+import { stopReminderPolling } from "./shared/systems/reminders.js";
 import { stopCacheSyncPolling } from "@fluxcore/systems/actions/cacheSync";
-import { stopSyncServer } from "./systems/actions/syncServer.js";
-import { initShoukaku, getShoukaku } from "./systems/music/shoukaku.js";
-import { getAllQueues } from "./systems/music/queue.js";
-import { stopAllProgressRefresh } from "./systems/music/panel.js";
+import { stopSyncServer } from "./features/automation/system/syncServer.js";
+import { initShoukaku, getShoukaku } from "./features/music/system/shoukaku.js";
+import { getAllQueues } from "./features/music/system/queue.js";
+import { stopAllProgressRefresh } from "./features/music/system/panel.js";
 import { logger } from "@fluxcore/utils";
 
 async function main(): Promise<void> {

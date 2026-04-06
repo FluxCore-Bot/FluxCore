@@ -1,0 +1,276 @@
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useParams } from "@tanstack/react-router";
+import {
+  useMusicLibrary,
+  useCreateAlbum,
+  useDeleteAlbum,
+  useAlbumTracks,
+  useAddTrack,
+  useDeleteTrack,
+} from "../hooks/useMusic";
+import { toast } from "sonner";
+import { ApiError } from "../../../shared/lib/client";
+import { Icon } from "../../../shared/components/Icon";
+import { Button } from "../../../shared/ui/button";
+import { Input } from "../../../shared/ui/input";
+import { Label } from "../../../shared/ui/label";
+import { Alert } from "../../../shared/ui/alert";
+import { Card } from "../../../shared/ui/card";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../../../shared/ui/collapsible";
+import { Skeleton } from "../../../shared/ui/skeleton";
+import { EmptyState } from "../../../shared/components/EmptyState";
+import { TableSkeleton } from "../../../shared/ui/skeletons";
+
+const MAX_ALBUMS = 50;
+const MAX_TRACKS = 100;
+
+function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number }) {
+  const { t } = useTranslation("music");
+  const { data: tracks = [], isLoading } = useAlbumTracks(guildId, albumId);
+  const addTrack = useAddTrack(guildId, albumId);
+  const deleteTrack = useDeleteTrack(guildId, albumId);
+
+  const [showForm, setShowForm] = useState(false);
+  const [title, setTitle] = useState("");
+  const [sourceUrl, setSourceUrl] = useState("");
+  const [error, setError] = useState("");
+
+  if (isLoading) {
+    return (
+      <div className="mt-2 space-y-2 border-s-2 border-outline-variant/30 ps-4">
+        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-10 w-full" />
+      </div>
+    );
+  }
+
+  const handleAddTrack = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+
+    if (!title.trim() || !sourceUrl.trim()) {
+      setError(t("library.titleRequired"));
+      return;
+    }
+
+    try {
+      await addTrack.mutateAsync({ title: title.trim(), sourceUrl: sourceUrl.trim() });
+      toast.success(t("library.trackAdded"));
+      setTitle("");
+      setSourceUrl("");
+      setShowForm(false);
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "An error occurred");
+    }
+  };
+
+  const handleDeleteTrack = async (trackId: number) => {
+    try {
+      await deleteTrack.mutateAsync(trackId);
+      toast.success(t("library.trackRemoved"));
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "An error occurred");
+    }
+  };
+
+  const isPending = addTrack.isPending || deleteTrack.isPending;
+
+  return (
+    <div className="mt-2 space-y-2 border-s-2 border-outline-variant/30 ps-4">
+      {tracks.map((track) => (
+        <div
+          key={track.id}
+          className="flex items-center justify-between rounded-md bg-surface-lowest px-3 py-2"
+        >
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-sm">{track.title}</p>
+            <p className="truncate text-xs text-text-muted">{track.sourceUrl}</p>
+          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="ms-2 shrink-0 text-danger hover:text-danger"
+            onClick={() => handleDeleteTrack(track.id)}
+            disabled={isPending}
+          >
+            {t("library.remove")}
+          </Button>
+        </div>
+      ))}
+
+      {tracks.length === 0 && !showForm && (
+        <p className="text-xs text-text-muted">{t("library.noTracksInAlbum")}</p>
+      )}
+
+      {error && (
+        <Alert variant="destructive" className="text-xs">{error}</Alert>
+      )}
+
+      {showForm ? (
+        <form onSubmit={handleAddTrack} className="space-y-2 rounded-md bg-surface-high p-3">
+          <Input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder={t("library.trackTitle")}
+          />
+          <Input
+            value={sourceUrl}
+            onChange={(e) => setSourceUrl(e.target.value)}
+            placeholder={t("library.sourceUrl")}
+          />
+          <div className="flex gap-2">
+            <Button type="submit" size="sm" disabled={isPending}>
+              {addTrack.isPending ? t("library.adding") : t("library.save")}
+            </Button>
+            <Button type="button" variant="ghost" size="sm" onClick={() => { setShowForm(false); setError(""); }}>
+              {t("library.cancel")}
+            </Button>
+          </div>
+        </form>
+      ) : (
+        tracks.length < MAX_TRACKS && (
+          <Button variant="link" size="sm" onClick={() => setShowForm(true)}>
+            + {t("library.addTrack")}
+          </Button>
+        )
+      )}
+    </div>
+  );
+}
+
+export function MusicLibraryManager() {
+  const { t } = useTranslation("music");
+  const { guildId } = useParams({ from: "/guild/$guildId" });
+  const { data: albums = [], isLoading } = useMusicLibrary(guildId);
+  const createAlbum = useCreateAlbum(guildId);
+  const deleteAlbum = useDeleteAlbum(guildId);
+
+  const [showCreateForm, setShowCreateForm] = useState(false);
+  const [newAlbumName, setNewAlbumName] = useState("");
+  const [error, setError] = useState("");
+
+  if (isLoading) return <TableSkeleton />;
+
+  const handleCreateAlbum = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+
+    if (!newAlbumName.trim()) {
+      setError(t("library.albumNameRequired"));
+      return;
+    }
+
+    try {
+      await createAlbum.mutateAsync(newAlbumName.trim());
+      toast.success(t("library.albumCreated"));
+      setNewAlbumName("");
+      setShowCreateForm(false);
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "An error occurred");
+    }
+  };
+
+  const handleDeleteAlbum = async (albumId: number) => {
+    try {
+      await deleteAlbum.mutateAsync(albumId);
+      toast.success(t("library.albumDeleted"));
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "An error occurred");
+    }
+  };
+
+  const isPending = createAlbum.isPending || deleteAlbum.isPending;
+
+  return (
+    <Card className="p-6">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h3 className="font-label text-lg font-semibold">{t("library.title")}</h3>
+          <p className="text-sm text-text-muted">
+            {t("library.description")}
+          </p>
+        </div>
+        {!showCreateForm && albums.length < MAX_ALBUMS && (
+          <Button onClick={() => setShowCreateForm(true)}>
+            <Icon name="add" /> {t("library.addAlbum")}
+          </Button>
+        )}
+      </div>
+
+      {error && (
+        <Alert variant="destructive" className="mb-4">{error}</Alert>
+      )}
+
+      {showCreateForm && (
+        <form onSubmit={handleCreateAlbum} className="mb-4 rounded-md bg-surface-high p-4">
+          <Label>{t("library.albumName")}</Label>
+          <Input
+            value={newAlbumName}
+            onChange={(e) => setNewAlbumName(e.target.value)}
+            placeholder={t("library.albumNamePlaceholder")}
+            className="mb-3"
+          />
+          <div className="flex gap-2">
+            <Button type="submit" disabled={isPending}>
+              {createAlbum.isPending ? t("library.creating") : t("library.createAlbum")}
+            </Button>
+            <Button type="button" variant="ghost" onClick={() => { setShowCreateForm(false); setError(""); }}>
+              {t("library.cancel")}
+            </Button>
+          </div>
+        </form>
+      )}
+
+      {albums.length > 0 ? (
+        <div className="space-y-3">
+          {albums.map((album) => (
+            <Collapsible key={album.id}>
+              <Card className="bg-surface-high p-4">
+                <div className="flex items-center justify-between">
+                  <CollapsibleTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      aria-label={`Toggle ${album.name}`}
+                      className="gap-2"
+                    >
+                      <Icon name="expand_more" size={16} />
+                      {album.name}
+                    </Button>
+                  </CollapsibleTrigger>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-danger hover:text-danger"
+                    onClick={() => handleDeleteAlbum(album.id)}
+                    disabled={isPending}
+                  >
+                    {t("library.deleteAlbum")}
+                  </Button>
+                </div>
+
+                <CollapsibleContent>
+                  <AlbumTracks guildId={guildId} albumId={album.id} />
+                </CollapsibleContent>
+              </Card>
+            </Collapsible>
+          ))}
+        </div>
+      ) : (
+        !showCreateForm && (
+          <EmptyState
+            icon="library_music"
+            title={t("library.noAlbums")}
+            description={t("library.noAlbumsDesc")}
+            action={
+              <Button onClick={() => setShowCreateForm(true)}>
+                <Icon name="add" /> {t("library.addAlbum")}
+              </Button>
+            }
+          />
+        )
+      )}
+    </Card>
+  );
+}

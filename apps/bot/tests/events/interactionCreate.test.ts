@@ -19,13 +19,13 @@ vi.mock("@fluxcore/systems/cooldown", () => ({
 }));
 
 // Mock local imports that have deep dependency chains
-vi.mock("../../src/systems/tempVoice/interactions.js", () => ({
+vi.mock("../../src/features/tempvoice/system/interactions.js", () => ({
   handleTempVoiceButton: vi.fn(),
   handleTempVoiceModal: vi.fn(),
   handleTempVoiceUserSelect: vi.fn(),
   handleTempVoiceStringSelect: vi.fn(),
 }));
-vi.mock("../../src/commands/admin/actions.js", () => ({
+vi.mock("../../src/features/general/commands/actions.js", () => ({
   handleActionsAutocomplete: vi.fn(),
 }));
 

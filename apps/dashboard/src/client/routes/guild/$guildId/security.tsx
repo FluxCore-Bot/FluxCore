@@ -2,24 +2,24 @@ import { useState, useEffect } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import { ApiError } from "../../../lib/client";
-import { PageHeader } from "../../../components/PageHeader";
+import { ApiError } from "../../../shared/lib/client";
+import { PageHeader } from "../../../shared/components/PageHeader";
 import {
   useAntiRaidConfig,
   useUpdateAntiRaidConfig,
   useRaidEvents,
   type RaidEventData,
-} from "../../../lib/hooks/useAntiRaid";
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
-import { Label } from "../../../components/ui/label";
-import { DiscordSelect } from "../../../components/ui/discord-select";
-import { DiscordMultiSelect } from "../../../components/ui/discord-multi-select";
-import { Card } from "../../../components/ui/card";
-import { Switch } from "../../../components/ui/switch";
-import { Separator } from "../../../components/ui/separator";
-import { Badge } from "../../../components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
+} from "../../../features/security/hooks/useAntiRaid";
+import { Button } from "../../../shared/ui/button";
+import { Input } from "../../../shared/ui/input";
+import { Label } from "../../../shared/ui/label";
+import { DiscordSelect } from "../../../shared/ui/discord-select";
+import { DiscordMultiSelect } from "../../../shared/ui/discord-multi-select";
+import { Card } from "../../../shared/ui/card";
+import { Switch } from "../../../shared/ui/switch";
+import { Separator } from "../../../shared/ui/separator";
+import { Badge } from "../../../shared/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 
 const ACTION_OPTIONS = [
   { value: "kick", labelKey: "joinRate.actions.kick" },

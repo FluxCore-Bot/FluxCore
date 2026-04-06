@@ -37,7 +37,7 @@ vi.mock("@fluxcore/systems", () => ({
   setCooldown: (...args: unknown[]) => mockSetCooldown(...args),
 }));
 
-const eventModule = await import("../../src/events/customCommandHandler.js");
+const eventModule = await import("../../src/shared/systems/customCommandHandler.js");
 const event = eventModule.default;
 
 function makeCommand(overrides: Record<string, unknown> = {}) {

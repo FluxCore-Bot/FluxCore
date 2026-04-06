@@ -1,12 +1,12 @@
 import { useTranslation } from "react-i18next";
-import { useAuth } from "../lib/hooks/useAuth";
-import { useGuilds } from "../lib/hooks/useGuilds";
-import { useBotInfo } from "../lib/hooks/useBotInfo";
-import { GuildCard } from "../components/GuildCard";
-import { EmptyState } from "../components/EmptyState";
-import { Icon } from "../components/Icon";
-import { LandingPage } from "../components/landing/LandingPage";
-import { Skeleton } from "../components/ui/skeleton";
+import { useAuth } from "../shared/hooks/useAuth";
+import { useGuilds } from "../shared/hooks/useGuilds";
+import { useBotInfo } from "../shared/hooks/useBotInfo";
+import { GuildCard } from "../shared/components/GuildCard";
+import { EmptyState } from "../shared/components/EmptyState";
+import { Icon } from "../shared/components/Icon";
+import { LandingPage } from "../features/landing/LandingPage";
+import { CardGridSkeleton } from "../shared/ui/skeletons";
 
 export function IndexPage() {
   const { t } = useTranslation("guilds");
@@ -16,11 +16,8 @@ export function IndexPage() {
 
   if (authLoading) {
     return (
-      <div className="flex items-center justify-center pt-32">
-        <div className="flex items-center gap-3">
-          <Skeleton className="h-8 w-8 rounded-full" />
-          <Skeleton className="h-4 w-32" />
-        </div>
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12">
+        <CardGridSkeleton cards={6} />
       </div>
     );
   }
@@ -34,11 +31,7 @@ export function IndexPage() {
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12">
         <h1 className="mb-2 text-4xl font-semibold tracking-tight">{t("title")}</h1>
         <p className="mb-8 text-lg text-text-muted">{t("loading")}</p>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <Skeleton key={i} className="h-32 w-full rounded-lg" />
-          ))}
-        </div>
+        <CardGridSkeleton cards={6} />
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Outlet, useParams, useLocation } from "@tanstack/react-router";
-import { Sidebar } from "../../components/Sidebar";
-import { useMobileSidebar } from "../../lib/hooks/useMobileSidebar";
+import { Sidebar } from "../../shared/components/Sidebar";
+import { useMobileSidebar } from "../../shared/hooks/useMobileSidebar";
 
 export function GuildLayout() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
