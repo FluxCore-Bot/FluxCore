@@ -220,7 +220,17 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
   // GET preview next run time for a cron expression
   app.get(
     "/api/guilds/:guildId/scheduled-messages/preview-cron",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.view")],
+      config: {
+        rateLimit: {
+          max: 5,
+          timeWindow: "10 seconds",
+          keyGenerator: (req) =>
+            (req as { session?: { userId?: string } }).session?.userId ?? req.ip,
+        },
+      },
+    },
     async (request, reply) => {
       const query = request.query as { cronExpr?: string; timezone?: string };
       if (!query.cronExpr) {
@@ -235,18 +245,34 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
       }
 
       const timezone = query.timezone ?? "UTC";
-      const nextRun = getNextCronRun(query.cronExpr, timezone);
+      const budgetMs = 250;
+      const start = Date.now();
 
-      // Calculate the next 5 run times
-      const nextRuns: string[] = [nextRun.toISOString()];
-      let lastRun = nextRun;
-      for (let i = 0; i < 4; i++) {
-        const next = getNextCronRun(query.cronExpr, timezone, lastRun);
-        nextRuns.push(next.toISOString());
-        lastRun = next;
+      try {
+        const nextRun = getNextCronRun(query.cronExpr, timezone);
+        if (Date.now() - start > budgetMs) {
+          reply
+            .code(400)
+            .send({ error: "Cron expression too slow to evaluate (budget exceeded)" });
+          return;
+        }
+        const nextRuns: string[] = [nextRun.toISOString()];
+        let lastRun = nextRun;
+        for (let i = 0; i < 4; i++) {
+          if (Date.now() - start > budgetMs) {
+            reply
+              .code(400)
+              .send({ error: "Cron expression too slow to evaluate (budget exceeded)" });
+            return;
+          }
+          const next = getNextCronRun(query.cronExpr, timezone, lastRun);
+          nextRuns.push(next.toISOString());
+          lastRun = next;
+        }
+        reply.send({ nextRuns });
+      } catch {
+        reply.code(400).send({ error: "Failed to evaluate cron expression" });
       }
-
-      reply.send({ nextRuns });
     },
   );
 }

@@ -3,7 +3,6 @@ import { getPrisma } from "@fluxcore/database";
 import {
   PERMISSION_REGISTRY,
   ALL_PERMISSION_KEYS,
-  matchPermission,
   resolveEffectivePermissions,
 } from "@fluxcore/types";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
@@ -113,6 +112,12 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
         return;
       }
 
+      // Block self-grant: a user must never grant or modify their own permission set
+      if (session.userId === userId) {
+        reply.code(403).send({ error: "Cannot modify your own permissions" });
+        return;
+      }
+
       // Validate keys
       for (const perm of permissions) {
         if (!isValidPermKey(perm)) {
@@ -121,15 +126,18 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
         }
       }
 
-      // Escalation check
+      // Strict escalation gate: non-owners must literally hold every key they grant.
+      // Wildcards (`*`, `module.*`, `module.feature.*`) may only be granted by the
+      // guild owner — match-by-wildcard is not enough.
       if (!request.resolvedPermissions?.isOwner) {
-        const userPerms = request.resolvedPermissions!.permissions;
+        const literalCallerPerms = request.resolvedPermissions!.permissions;
         for (const perm of permissions) {
-          if (!matchPermission(userPerms, perm)) {
-            reply.code(403).send({
-              error: "Cannot grant permissions you don't have",
-              permission: perm,
-            });
+          if (perm === "*" || perm.includes("*")) {
+            reply.code(403).send({ error: "Insufficient privileges to grant this permission" });
+            return;
+          }
+          if (!literalCallerPerms.has(perm)) {
+            reply.code(403).send({ error: "Insufficient privileges to grant this permission" });
             return;
           }
         }
@@ -298,13 +306,39 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
       const skip = (page - 1) * limit;
 
       const where: Record<string, unknown> = { guildId };
-      if (query.userId) where.userId = query.userId;
-      if (query.action) where.action = { contains: query.action };
+      const isOwner = request.resolvedPermissions?.isOwner === true;
+      if (isOwner) {
+        if (query.userId) where.userId = query.userId;
+      } else {
+        // Non-owners may only view their own audit entries
+        where.userId = request.session!.userId;
+      }
+      if (query.action) {
+        if (!ALLOWED_AUDIT_ACTIONS.has(query.action)) {
+          reply.code(400).send({ error: "Unknown action filter" });
+          return;
+        }
+        where.action = query.action;
+      }
       if (query.targetType) where.targetType = query.targetType;
       if (query.from || query.to) {
         const createdAt: Record<string, Date> = {};
-        if (query.from) createdAt.gte = new Date(query.from);
-        if (query.to) createdAt.lte = new Date(query.to);
+        if (query.from) {
+          const d = new Date(query.from);
+          if (!Number.isFinite(d.getTime())) {
+            reply.code(400).send({ error: "Invalid 'from' date" });
+            return;
+          }
+          createdAt.gte = d;
+        }
+        if (query.to) {
+          const d = new Date(query.to);
+          if (!Number.isFinite(d.getTime())) {
+            reply.code(400).send({ error: "Invalid 'to' date" });
+            return;
+          }
+          createdAt.lte = d;
+        }
         where.createdAt = createdAt;
       }
 
@@ -338,6 +372,17 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
 }
 
 // ─── Helpers ───
+
+const ALLOWED_AUDIT_ACTIONS = new Set([
+  "dashboard.permissions.update",
+  "dashboard.permissions.clear",
+  "dashboard.settings.update",
+  "dashboard.role.create",
+  "dashboard.role.update",
+  "dashboard.role.delete",
+  "dashboard.role.assign",
+  "dashboard.role.unassign",
+]);
 
 function isValidPermKey(key: string): boolean {
   if (ALL_PERMISSION_KEYS.includes(key)) return true;
