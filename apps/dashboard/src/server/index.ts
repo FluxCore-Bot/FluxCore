@@ -4,6 +4,7 @@ import fastifyHelmet from "@fastify/helmet";
 import fastifyRateLimit from "@fastify/rate-limit";
 import fastifyStatic from "@fastify/static";
 import { join, dirname } from "node:path";
+import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { config } from "@fluxcore/config";
 import { logger } from "@fluxcore/utils";
@@ -34,6 +35,7 @@ import { registerStarboardRoutes } from "./features/starboard/routes.js";
 import { registerDashboardRoleRoutes } from "./features/permissions/roles-routes.js";
 import { registerDashboardPermissionRoutes } from "./features/permissions/routes.js";
 import { registerI18n } from "./shared/i18n.js";
+import { requireCsrf } from "./shared/csrf.js";
 
 async function main(): Promise<void> {
   if (!config.dashboardClientSecret) {
@@ -41,10 +43,7 @@ async function main(): Promise<void> {
     process.exit(1);
   }
 
-  if (process.env.NODE_ENV === "production" && !process.env.DASHBOARD_SESSION_SECRET) {
-    logger.error("DASHBOARD_SESSION_SECRET is required in production");
-    process.exit(1);
-  }
+  // DASHBOARD_SESSION_SECRET fail-fast is enforced inside @fluxcore/config
 
   await connectDatabase();
 
@@ -55,11 +54,21 @@ async function main(): Promise<void> {
   });
 
   await app.register(fastifyHelmet, {
+    enableCSPNonces: true,
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'"],
-        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        scriptSrc: [
+          "'self'",
+          (_req, reply) =>
+            `'nonce-${(reply as unknown as { cspNonce: { script: string } }).cspNonce.script}'`,
+        ],
+        styleSrc: [
+          "'self'",
+          "https://fonts.googleapis.com",
+          (_req, reply) =>
+            `'nonce-${(reply as unknown as { cspNonce: { style: string } }).cspNonce.style}'`,
+        ],
         fontSrc: ["'self'", "https://fonts.gstatic.com"],
         imgSrc: ["'self'", "data:", "https://cdn.discordapp.com"],
       },
@@ -69,6 +78,16 @@ async function main(): Promise<void> {
   await app.register(fastifyRateLimit, {
     max: 100,
     timeWindow: "1 minute",
+  });
+
+  // CSRF double-submit enforcement on mutating /api/* routes
+  app.addHook("preHandler", async (request, reply) => {
+    if (
+      request.url.startsWith("/api/") &&
+      !["GET", "HEAD", "OPTIONS"].includes(request.method)
+    ) {
+      await requireCsrf(request, reply);
+    }
   });
 
   const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -128,12 +147,18 @@ async function main(): Promise<void> {
 
   // SPA fallback: serve index.html for non-API/auth routes in production
   if (process.env.NODE_ENV === "production") {
+    const indexHtmlPath = join(__dirname, "../client/index.html");
+    const indexHtmlTemplate = await readFile(indexHtmlPath, "utf8");
+
     app.setNotFoundHandler(async (request, reply) => {
       if (request.url.startsWith("/api/") || request.url.startsWith("/auth/")) {
         reply.code(404).send({ error: "Not found" });
         return;
       }
-      return reply.sendFile("index.html");
+      const nonce = (reply as unknown as { cspNonce: { style: string } })
+        .cspNonce.style;
+      const html = indexHtmlTemplate.replace(/<style/g, `<style nonce="${nonce}"`);
+      reply.type("text/html").send(html);
     });
   }
 

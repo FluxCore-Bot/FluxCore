@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import { config } from "@fluxcore/config";
 import {
   buildCallbackUrl,
   getAuthorizationUrl,
@@ -7,6 +8,7 @@ import {
   fetchGuilds,
 } from "../../shared/auth.js";
 import { createSession, deleteSession, getSession } from "../../shared/session.js";
+import { generateCsrfToken } from "../../shared/csrf.js";
 import { logger } from "@fluxcore/utils";
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -18,17 +20,14 @@ const authRateLimit = {
 };
 
 export function registerAuthRoutes(app: FastifyInstance): void {
-  app.get("/auth/login", { ...authRateLimit }, async (request, reply) => {
-    const proto = (request.headers["x-forwarded-proto"] as string) || request.protocol;
-    const host = request.headers["x-forwarded-host"] as string || request.hostname;
-    const origin = `${proto}://${host}`;
-    const callbackUrl = buildCallbackUrl(origin);
+  app.get("/auth/login", { ...authRateLimit }, async (_request, reply) => {
+    const callbackUrl = buildCallbackUrl(config.dashboardPublicUrl);
     const { url, state } = getAuthorizationUrl(callbackUrl);
     reply
       .setCookie("oauth_state", state, {
         path: "/",
         httpOnly: true,
-        sameSite: "lax",
+        sameSite: "strict",
         secure: isProduction,
         signed: true,
         maxAge: 300, // 5 minutes
@@ -55,15 +54,19 @@ export function registerAuthRoutes(app: FastifyInstance): void {
 
     const unsignedState = request.unsignCookie(stateCookie);
     if (!unsignedState.valid || unsignedState.value !== state) {
-      reply.code(403).send({ error: "Invalid state parameter" });
+      reply
+        .clearCookie("oauth_state", { path: "/" })
+        .code(403)
+        .send({ error: "Invalid state parameter" });
       return;
     }
 
+    // State is valid — burn it immediately so it cannot be replayed
+    // regardless of whether the rest of the flow succeeds.
+    reply.clearCookie("oauth_state", { path: "/" });
+
     try {
-      const proto = (request.headers["x-forwarded-proto"] as string) || request.protocol;
-      const host = request.headers["x-forwarded-host"] as string || request.hostname;
-      const origin = `${proto}://${host}`;
-      const callbackUrl = buildCallbackUrl(origin);
+      const callbackUrl = buildCallbackUrl(config.dashboardPublicUrl);
       const token = await exchangeCode(code, callbackUrl);
       const [user, guilds] = await Promise.all([
         fetchUser(token.access_token),
@@ -79,14 +82,13 @@ export function registerAuthRoutes(app: FastifyInstance): void {
       });
 
       reply
-        .clearCookie("oauth_state", { path: "/" })
         .setCookie("session", sessionId, {
           path: "/",
           httpOnly: true,
           sameSite: "lax",
           secure: isProduction,
           signed: true,
-          maxAge: 604800, // 7 days
+          maxAge: 86400, // 24 hours
         })
         .redirect("/");
     } catch (error) {
@@ -96,6 +98,19 @@ export function registerAuthRoutes(app: FastifyInstance): void {
       );
       reply.code(500).send({ error: "Authentication failed" });
     }
+  });
+
+  app.get("/auth/csrf", async (_request, reply) => {
+    const token = generateCsrfToken();
+    reply
+      .setCookie("csrf_token", token, {
+        path: "/",
+        httpOnly: false, // double-submit: JS must read it
+        sameSite: "lax",
+        secure: isProduction,
+        maxAge: 604800,
+      })
+      .send({ token });
   });
 
   app.get("/auth/logout", async (request, reply) => {
