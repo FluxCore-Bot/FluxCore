@@ -1,0 +1,5 @@
+# Apply with: docker compose -f docker-compose.yml -f docker-compose.no-db-port.yml up
+# Suppresses the host loopback binding for the postgres service.
+services:
+  postgres:
+    ports: !reset []

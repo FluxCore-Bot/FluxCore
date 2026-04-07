@@ -1,8 +1,8 @@
 node_modules
 dist
 .env
-.env.dev
-.env.prod
+.env.*
+!.env.example
 .git
 .gitignore
 *.md

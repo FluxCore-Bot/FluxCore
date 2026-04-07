@@ -1,9 +1,12 @@
 import { randomBytes } from "node:crypto";
 import dotenv from "dotenv";
+import { resolveSecretFiles } from "./secret-files.js";
 
 // In a monorepo, turbo runs each package from its own directory (e.g. apps/bot/).
 // Search for .env at both the local dir and the workspace root (2 levels up).
 dotenv.config({ path: [".env", "../../.env", "../../.env.dev"] });
+
+export { resolveSecretFiles } from "./secret-files.js";
 
 export interface Config {
   token: string;
@@ -23,6 +26,27 @@ export interface Config {
 }
 
 function loadConfig(): Config {
+  // Resolve any Docker-style *_FILE secret references first so the rest of
+  // loadConfig() can read process.env normally.
+  resolveSecretFiles([
+    "DISCORD_TOKEN",
+    "DASHBOARD_CLIENT_SECRET",
+    "DASHBOARD_SESSION_SECRET",
+    "BOT_SYNC_SECRET",
+    "LAVALINK_PASSWORD",
+    "POSTGRES_PASSWORD",
+    "DATABASE_URL",
+  ]);
+
+  // If DATABASE_URL is not set but POSTGRES_PASSWORD is (Docker secrets path),
+  // build it from the standard pieces.
+  if (!process.env.DATABASE_URL && process.env.POSTGRES_PASSWORD) {
+    const host = process.env.POSTGRES_HOST || "postgres";
+    const db = process.env.POSTGRES_DB || "fluxcore";
+    const user = process.env.POSTGRES_USER || "fluxcore";
+    process.env.DATABASE_URL = `postgresql://${user}:${process.env.POSTGRES_PASSWORD}@${host}:5432/${db}`;
+  }
+
   const token = process.env.DISCORD_TOKEN;
   const clientId = process.env.CLIENT_ID;
   const guildId = process.env.GUILD_ID || undefined;
@@ -50,13 +74,30 @@ function loadConfig(): Config {
     dashboardSessionSecret || randomBytes(32).toString("hex");
 
   const botSyncPort = Number(process.env.BOT_SYNC_PORT) || 3001;
+  const isProd = process.env.NODE_ENV === "production";
+  const rawBotSyncSecret = process.env.BOT_SYNC_SECRET;
+  if (isProd) {
+    if (!rawBotSyncSecret) {
+      throw new Error(
+        "BOT_SYNC_SECRET is required in production. Generate with: openssl rand -hex 32",
+      );
+    }
+    if (rawBotSyncSecret.length < 32) {
+      throw new Error(
+        "BOT_SYNC_SECRET must be at least 32 characters in production",
+      );
+    }
+  }
   const botSyncSecret =
-    process.env.BOT_SYNC_SECRET || randomBytes(32).toString("hex");
+    rawBotSyncSecret || randomBytes(32).toString("hex");
   const botSyncUrl = process.env.BOT_SYNC_URL || undefined;
 
   const lavalinkHost = process.env.LAVALINK_HOST || "lavalink";
   const lavalinkPort = Number(process.env.LAVALINK_PORT) || 2333;
-  const lavalinkPassword = process.env.LAVALINK_PASSWORD || "youshallnotpass";
+  const lavalinkPassword = process.env.LAVALINK_PASSWORD;
+  if (!lavalinkPassword) {
+    throw new Error("Missing required environment variable: LAVALINK_PASSWORD");
+  }
 
   return {
     token,

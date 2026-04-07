@@ -20,14 +20,17 @@ COPY apps/bot/package.json ./apps/bot/
 COPY apps/dashboard/package.json ./apps/dashboard/
 COPY packages/database/prisma ./packages/database/prisma/
 COPY packages/database/prisma.config.ts ./packages/database/
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile \
+ && chown -R node:node /app
 
 FROM deps AS development
-COPY . .
+COPY --chown=node:node . .
+USER node
 CMD ["pnpm", "dev"]
 
 FROM deps AS test
-COPY . .
+COPY --chown=node:node . .
+USER node
 CMD ["pnpm", "test"]
 
 # ============================================

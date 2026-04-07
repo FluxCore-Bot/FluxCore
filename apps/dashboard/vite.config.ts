@@ -18,7 +18,7 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    host: "0.0.0.0",
+    host: process.env.VITE_HOST ?? "127.0.0.1",
     proxy: {
       "/auth": {
         target: "http://localhost:3000",

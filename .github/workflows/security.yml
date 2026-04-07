@@ -1,0 +1,143 @@
+name: Security
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1"  # Mondays 06:00 UTC
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  pnpm-audit:
+    name: pnpm audit (high+)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.28.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Audit (fail on high or critical)
+        run: pnpm audit --audit-level=high
+
+  gitleaks:
+    name: gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_ENABLE_UPLOAD_ARTIFACT: true
+
+  trivy-bot:
+    name: trivy (bot image)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build bot image
+        run: docker build --target production-bot -t fluxcore-bot:ci .
+      - name: Trivy scan
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: fluxcore-bot:ci
+          severity: HIGH,CRITICAL
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: os,library
+          format: sarif
+          output: trivy-bot.sarif
+      - name: Upload SARIF
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-bot.sarif
+          category: trivy-bot
+
+  trivy-dashboard:
+    name: trivy (dashboard image)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build dashboard image
+        run: docker build --target production-dashboard -t fluxcore-dashboard:ci .
+      - name: Trivy scan
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: fluxcore-dashboard:ci
+          severity: HIGH,CRITICAL
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: os,library
+          format: sarif
+          output: trivy-dashboard.sarif
+      - name: Upload SARIF
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-dashboard.sarif
+          category: trivy-dashboard
+
+  trivy-fs:
+    name: trivy (filesystem & config)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Trivy filesystem scan (config, IaC, secrets)
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          severity: HIGH,CRITICAL
+          exit-code: "1"
+          ignore-unfixed: true
+          scanners: vuln,secret,config
+
+  forbidden-strings:
+    name: forbidden strings
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Block re-introduction of default lavalink password
+        run: |
+          if grep -RIn --exclude-dir=.git --exclude-dir=node_modules --exclude='*.md' 'youshallnotpass' .; then
+            echo "::error::The literal 'youshallnotpass' must never be committed."
+            exit 1
+          fi
+      - name: Block public postgres exposure
+        run: |
+          if grep -RIn --include='docker-compose*.yml' -E '"(0\.0\.0\.0:)?5432:5432"' .; then
+            echo "::error::Postgres must only bind 127.0.0.1, never 0.0.0.0 or unbound."
+            exit 1
+          fi
+
+  no-env-files:
+    name: no env files in repo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assert no .env files are tracked
+        run: |
+          tracked=$(git ls-files | grep -E '^\.env(\..+)?$' | grep -v '^\.env\.example$' || true)
+          if [ -n "$tracked" ]; then
+            echo "::error::These env files must not be committed:"
+            echo "$tracked"
+            exit 1
+          fi
+      - name: Assert .dockerignore covers env files
+        run: |
+          grep -qE '^\.env\*?$|^\.env\.\*$' .dockerignore || {
+            echo "::error::.dockerignore must include '.env' and '.env.*'"
+            exit 1
+          }
