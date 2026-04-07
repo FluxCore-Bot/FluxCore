@@ -10,6 +10,7 @@ import {
   createDashboardAuditLog,
   invalidatePermissionCache,
 } from "../../shared/permissions.js";
+import { deleteDashboardRoleWithAudit } from "../../shared/dashboardRoleDelete.js";
 
 const MAX_ROLES_PER_GUILD = 25;
 const MAX_PERMISSIONS_PER_ROLE = 100;
@@ -303,8 +304,12 @@ export function registerDashboardRoleRoutes(app: FastifyInstance): void {
         return;
       }
 
-      await prisma.dashboardRole.delete({ where: { id: roleId } });
-      invalidatePermissionCache(guildId);
+      await deleteDashboardRoleWithAudit({
+        guildId,
+        roleId,
+        actorId: session.userId,
+        actorUsername: session.username,
+      });
 
       await createDashboardAuditLog({
         guildId,

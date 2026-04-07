@@ -1,4 +1,4 @@
-export { logger } from "./logger.js";
+export { logger, redactSensitive } from "./logger.js";
 export { successEmbed, errorEmbed, infoEmbed, warnEmbed } from "./embeds.js";
 export {
   checkPermissions,

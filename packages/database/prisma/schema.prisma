@@ -106,6 +106,8 @@ model DashboardSession {
   userId            String
   username          String
   avatar            String?
+  /// Encrypted with AES-256-GCM via apps/dashboard/src/server/shared/crypto.ts
+  /// MUST be written through encryptAccessToken() in session.ts
   accessToken       String
   guilds            String   @default("[]")
   guildsRefreshedAt DateTime @default(now())
@@ -566,7 +568,7 @@ model DashboardRoleAssignment {
   guildId    String
   userId     String
   roleId     String
-  role       DashboardRole @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  role       DashboardRole @relation(fields: [roleId], references: [id], onDelete: Restrict)
   assignedBy String
   createdAt  DateTime @default(now())
 
@@ -594,7 +596,7 @@ model DashboardAuditLog {
   action     String   // Permission key or action descriptor
   targetType String?  // "case", "rule", "role", "user", "settings"
   targetId   String?
-  details    String   @default("{}") // JSON — before/after, metadata
+  details    Json     @default("{}") // JSONB — before/after, metadata
   createdAt  DateTime @default(now())
 
   @@index([guildId, createdAt])

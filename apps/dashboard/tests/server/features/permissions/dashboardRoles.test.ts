@@ -52,6 +52,10 @@ const mockPrisma = {
     create: vi.fn(),
     delete: vi.fn(),
   },
+  dashboardAuditLog: {
+    create: vi.fn().mockResolvedValue(undefined),
+  },
+  $transaction: vi.fn(async (cb: (tx: unknown) => unknown) => cb(mockPrisma)),
 };
 
 vi.mock("@fluxcore/database", () => ({

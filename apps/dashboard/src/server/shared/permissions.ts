@@ -182,7 +182,7 @@ export async function createDashboardAuditLog(
         action: entry.action,
         targetType: entry.targetType ?? null,
         targetId: entry.targetId ?? null,
-        details: JSON.stringify(entry.details ?? {}),
+        details: (entry.details ?? {}) as object,
       },
     });
   } catch (err) {

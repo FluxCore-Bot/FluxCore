@@ -326,7 +326,7 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
           action: e.action,
           targetType: e.targetType,
           targetId: e.targetId,
-          details: JSON.parse(e.details),
+          details: e.details,
           createdAt: e.createdAt,
         })),
         total,
