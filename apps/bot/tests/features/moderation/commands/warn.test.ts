@@ -12,12 +12,14 @@ vi.mock("@fluxcore/config", () => ({
 
 // Mock permissions (keep real embed/logger exports)
 const mockCheckPermissions = vi.fn().mockResolvedValue(true);
+const mockCheckBotPermissions = vi.fn().mockResolvedValue(true);
 const mockIsAboveTarget = vi.fn().mockReturnValue(true);
 vi.mock("@fluxcore/utils", async (importOriginal) => {
   const actual = await importOriginal<typeof import("@fluxcore/utils")>();
   return {
     ...actual,
     checkPermissions: (...args: unknown[]) => mockCheckPermissions(...args),
+    checkBotPermissions: (...args: unknown[]) => mockCheckBotPermissions(...args),
     isAboveTarget: (...args: unknown[]) => mockIsAboveTarget(...args),
   };
 });
@@ -94,6 +96,7 @@ describe("warn command", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mockCheckPermissions.mockResolvedValue(true);
+    mockCheckBotPermissions.mockResolvedValue(true);
     mockIsAboveTarget.mockReturnValue(true);
     mockCreateWarning.mockResolvedValue({ id: 1 });
     mockGetWarningCount.mockResolvedValue(1);
@@ -244,6 +247,27 @@ describe("warn command", () => {
     await command.execute(interaction as never);
 
     expect(target.send).not.toHaveBeenCalled();
+  });
+
+  it("aborts when the bot lacks ManageMessages", async () => {
+    mockCheckPermissions.mockResolvedValueOnce(true);
+    mockCheckBotPermissions.mockResolvedValueOnce(false);
+
+    const interaction = createMockInteraction();
+    await command.execute(interaction as never);
+
+    expect(mockCheckBotPermissions).toHaveBeenCalledTimes(1);
+    expect(mockCreateWarning).not.toHaveBeenCalled();
+  });
+
+  it("calls checkBotPermissions on the happy path", async () => {
+    mockCheckPermissions.mockResolvedValueOnce(true);
+    mockCheckBotPermissions.mockResolvedValueOnce(true);
+
+    const interaction = createMockInteraction();
+    await command.execute(interaction as never);
+
+    expect(mockCheckBotPermissions).toHaveBeenCalledTimes(1);
   });
 
   it("handles DM failure silently", async () => {

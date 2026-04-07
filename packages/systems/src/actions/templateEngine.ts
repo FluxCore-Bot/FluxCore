@@ -28,6 +28,15 @@ function escapeTemplateVars(value: string): string {
   return value.replace(/\{/g, "\u200B{");
 }
 
+/**
+ * SECURITY: resolveTemplate MUST remain a pure literal-replacement function.
+ * It must NEVER call eval, new Function, or any templating library that
+ * evaluates expressions inside braces. User-controlled values from
+ * ctx.extra are passed through escapeTemplateVars so a hostile
+ * `message.content` cannot smuggle `{user.id}` into a second resolver
+ * pass. Both properties are pinned by
+ * tests/unit/templateEngine-injection.test.ts — do not remove that file.
+ */
 export function resolveTemplate(
   template: string,
   context: EventContext,
@@ -45,10 +54,17 @@ export function resolveTemplate(
     }
   }
 
-  // Then resolve core template variables
+  // Then resolve core template variables. Use a negative lookbehind for the
+  // zero-width space sentinel so a user-controlled value that was escaped via
+  // escapeTemplateVars cannot smuggle a core variable into this pass.
   for (const [variable, resolver] of Object.entries(VARIABLE_MAP)) {
-    if (result.includes(variable)) {
-      result = result.replaceAll(variable, resolver(context));
+    const escaped = variable.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const pattern = new RegExp(`(?<!\\u200B)${escaped}`, "g");
+    if (pattern.test(result)) {
+      result = result.replace(
+        new RegExp(`(?<!\\u200B)${escaped}`, "g"),
+        resolver(context),
+      );
     }
   }
 

@@ -44,6 +44,9 @@ export {
   isValidFont,
 } from "./fonts/index.js";
 
+// Sanitization
+export { sanitizeDisplayName } from "./sanitize.js";
+
 // Storage
 export {
   createStorageAdapter,

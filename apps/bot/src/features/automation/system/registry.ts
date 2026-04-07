@@ -11,6 +11,27 @@ type ActionExecutor = (
   config: ActionConfig,
 ) => Promise<void>;
 
+/**
+ * Validates that a moderator-supplied emoji is either a single Unicode
+ * emoji cluster or a Discord custom-emoji literal `<:name:id>` /
+ * `<a:name:id>`. Anything else is rejected to avoid hitting the Discord
+ * API with garbage values.
+ */
+const CUSTOM_EMOJI_REGEX = /^<a?:[A-Za-z0-9_]{2,32}:\d{17,20}>$/;
+// Matches strings whose code points all belong to the Unicode "Emoji"
+// property (single emoji or ZWJ sequence). Length cap of 64 covers
+// flag/family ZWJ sequences while preventing pathological inputs.
+const UNICODE_EMOJI_REGEX =
+  /^(?:\p{Extended_Pictographic}|\p{Emoji_Component})(?:\u200D(?:\p{Extended_Pictographic}|\p{Emoji_Component}))*$/u;
+
+function isValidEmoji(value: string): boolean {
+  if (typeof value !== "string" || value.length === 0 || value.length > 64) {
+    return false;
+  }
+  if (CUSTOM_EMOJI_REGEX.test(value)) return true;
+  return UNICODE_EMOJI_REGEX.test(value);
+}
+
 const executors = new Map<ActionType, ActionExecutor>();
 
 executors.set("sendMessage", async (client, ctx, config) => {
@@ -168,18 +189,33 @@ executors.set("sendWebhook", async (_client, ctx, config) => {
     body = body.slice(0, MAX_TEMPLATE_LENGTH);
   }
 
-  const BLOCKED_HEADERS = new Set([
-    "host", "cookie", "set-cookie", "transfer-encoding",
-    "connection", "proxy-authorization", "te", "trailer",
-    "upgrade",
+  // Strict allowlist: only headers that are safe for the bot to forward on
+  // behalf of a guild admin. Denylists are unsafe — any new sensitive
+  // header (Authorization, X-Api-Key, X-Forwarded-*, Cookie, etc.) would
+  // silently leak. Add to this set only after a security review.
+  const ALLOWED_HEADERS = new Set([
+    "accept",
+    "accept-language",
+    "cache-control",
+    "user-agent",
+    "x-idempotency-key",
+    "x-request-id",
   ]);
+  const ALLOWED_PREFIX = "x-fluxcore-";
+
   const userHeaders = config.webhook.headers ?? {};
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
   };
   for (const [key, value] of Object.entries(userHeaders)) {
-    if (!BLOCKED_HEADERS.has(key.toLowerCase())) {
+    const lower = key.toLowerCase();
+    if (lower === "content-type") continue; // we set this ourselves
+    if (ALLOWED_HEADERS.has(lower) || lower.startsWith(ALLOWED_PREFIX)) {
       headers[key] = value;
+    } else {
+      logger.warn(
+        `sendWebhook: dropped non-allowlisted header "${key}" for guild ${ctx.guildId ?? "unknown"}`,
+      );
     }
   }
 
@@ -235,6 +271,12 @@ executors.set("createThread", async (client, ctx, config) => {
 
 executors.set("addReaction", async (client, ctx, config) => {
   if (!config.emoji || !ctx.extra?.["message.id"] || !ctx.channelId) return;
+  if (!isValidEmoji(config.emoji)) {
+    logger.warn(
+      `addReaction skipped: invalid emoji "${config.emoji}" for guild ${ctx.guildId ?? "unknown"}`,
+    );
+    return;
+  }
   const channel = await client.channels.fetch(ctx.channelId);
   if (!channel?.isTextBased() || !("messages" in channel)) return;
   try {
