@@ -511,6 +511,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
       {/* Canvas — fills remaining space */}
       <div
         className="relative flex-1"
+        dir="ltr"
         role="group"
         aria-label={t("editor.canvasLabel")}
       >
