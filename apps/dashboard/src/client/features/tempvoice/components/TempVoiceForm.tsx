@@ -206,12 +206,12 @@ export function TempVoiceForm() {
           )}
 
           <div>
-            <Label>{t("form.hubChannel")} <span className="text-danger">*</span></Label>
+            <Label htmlFor="tempvoice-hub-channel">{t("form.hubChannel")} <span className="text-danger">*</span></Label>
             <Select
               value={hubChannelId || undefined}
               onValueChange={setHubChannelId}
             >
-              <SelectTrigger>
+              <SelectTrigger id="tempvoice-hub-channel">
                 <SelectValue placeholder={t("form.selectHub")} />
               </SelectTrigger>
               <SelectContent>
@@ -225,12 +225,12 @@ export function TempVoiceForm() {
           </div>
 
           <div>
-            <Label>{t("form.category")}</Label>
+            <Label htmlFor="tempvoice-category">{t("form.category")}</Label>
             <Select
               value={categoryId ?? "none"}
               onValueChange={(v) => setCategoryId(v === "none" ? null : v)}
             >
-              <SelectTrigger>
+              <SelectTrigger id="tempvoice-category">
                 <SelectValue placeholder={t("form.sameAsHub")} />
               </SelectTrigger>
               <SelectContent>
@@ -245,8 +245,9 @@ export function TempVoiceForm() {
           </div>
 
           <div>
-            <Label>{t("form.nameTemplate")}</Label>
+            <Label htmlFor="tempvoice-name-template">{t("form.nameTemplate")}</Label>
             <Input
+              id="tempvoice-name-template"
               type="text"
               value={nameTemplate}
               onChange={(e) => setNameTemplate(e.target.value)}

@@ -22,6 +22,7 @@ import { Switch } from "../../../shared/ui/switch";
 import { Separator } from "../../../shared/ui/separator";
 import { Textarea } from "../../../shared/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
+import { FormSkeleton } from "../../../shared/ui/skeletons";
 import type { TFunction } from "i18next";
 
 const DEFAULT_WELCOME_IMAGE: WelcomeImageSettings = {
@@ -208,7 +209,7 @@ export function WelcomePage() {
           title={t("title")}
           subtitle={t("loadingSubtitle")}
         />
-        <p className="text-text-muted">{t("common:actions.loading")}</p>
+        <FormSkeleton />
       </div>
     );
   }

@@ -11,6 +11,14 @@ import { Label } from "../../../shared/ui/label";
 import { Switch } from "../../../shared/ui/switch";
 import { Badge } from "../../../shared/ui/badge";
 import { Card, CardContent } from "../../../shared/ui/card";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell,
+} from "../../../shared/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 import { Separator } from "../../../shared/ui/separator";
 import { ColorPicker } from "../../../shared/ui/color-picker";
@@ -144,6 +152,7 @@ export function PermissionsPage() {
                     }`}
                   >
                     <span
+                      aria-hidden="true"
                       className="h-2.5 w-2.5 shrink-0 rounded-full"
                       style={{ backgroundColor: role.color ?? "#666" }}
                     />
@@ -288,6 +297,7 @@ function RoleEditor({
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-3">
           <span
+            aria-hidden="true"
             className="h-4 w-4 rounded-full"
             style={{ backgroundColor: color }}
           />
@@ -301,6 +311,8 @@ function RoleEditor({
           size="sm"
           className="text-danger hover:text-danger"
           onClick={() => setConfirmDelete(true)}
+          title={t("roleList.delete")}
+          aria-label={t("roleList.delete")}
         >
           <Icon name="delete" size={16} />
         </Button>
@@ -344,6 +356,7 @@ function RoleEditor({
                     <Checkbox
                       checked={allGranted}
                       onCheckedChange={() => toggleModuleWildcard(mod.key)}
+                      aria-label={`${mod.label} — ${t("roleEditor.allBadge")}`}
                     />
                     <span className="font-label text-sm font-semibold">
                       {mod.label}
@@ -367,6 +380,7 @@ function RoleEditor({
                             disabled={hasWildcard}
                             onCheckedChange={() => togglePermission(perm.key)}
                             className="mt-0.5"
+                            aria-label={`${role.name} — ${perm.label}`}
                           />
                           <div>
                             <span className="text-text">{perm.label}</span>
@@ -542,34 +556,37 @@ function AuditLogTab({ guildId }: { guildId: string }) {
   return (
     <div className="space-y-4">
       <div className="overflow-x-auto rounded-md border border-outline-variant/20">
-        <div className="min-w-[32rem] grid grid-cols-[1fr_1fr_1fr_auto] gap-4 border-b border-outline-variant/10 px-4 py-2 text-xs font-medium text-text-muted">
-          <span>{t("audit.table.user")}</span>
-          <span>{t("audit.table.action")}</span>
-          <span>{t("audit.table.target")}</span>
-          <span>{t("audit.table.timestamp")}</span>
-        </div>
-        {data.entries.map((entry) => (
-          <div
-            key={entry.id}
-            className="min-w-[32rem] grid grid-cols-[1fr_1fr_1fr_auto] gap-4 border-b border-outline-variant/5 px-4 py-2.5 text-sm last:border-0"
-          >
-            <span className="truncate text-text">{entry.username}</span>
-            <span className="truncate font-mono text-xs text-accent">
-              {entry.action}
-            </span>
-            <span className="truncate text-text-muted">
-              {entry.targetType && (
-                <Badge variant="outline" className="me-1 text-xs">
-                  {entry.targetType}
-                </Badge>
-              )}
-              {entry.targetId ?? "—"}
-            </span>
-            <span className="whitespace-nowrap text-xs text-text-muted">
-              {new Date(entry.createdAt).toLocaleDateString()}
-            </span>
-          </div>
-        ))}
+        <Table className="min-w-lg">
+          <TableHeader>
+            <TableRow className="hover:bg-transparent">
+              <TableHead>{t("audit.table.user")}</TableHead>
+              <TableHead>{t("audit.table.action")}</TableHead>
+              <TableHead>{t("audit.table.target")}</TableHead>
+              <TableHead>{t("audit.table.timestamp")}</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {data.entries.map((entry) => (
+              <TableRow key={entry.id}>
+                <TableCell className="truncate text-text">{entry.username}</TableCell>
+                <TableCell className="truncate font-mono text-xs text-accent">
+                  {entry.action}
+                </TableCell>
+                <TableCell className="truncate text-text-muted">
+                  {entry.targetType && (
+                    <Badge variant="outline" className="me-1 text-xs">
+                      {entry.targetType}
+                    </Badge>
+                  )}
+                  {entry.targetId ?? "—"}
+                </TableCell>
+                <TableCell className="whitespace-nowrap text-xs text-text-muted">
+                  {new Date(entry.createdAt).toLocaleDateString()}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </div>
 
       {data.pages > 1 && (

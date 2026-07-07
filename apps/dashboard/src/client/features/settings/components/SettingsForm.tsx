@@ -19,10 +19,9 @@ import {
   SelectValue,
 } from "../../../shared/ui/select";
 import { FormSkeleton } from "../../../shared/ui/skeletons";
-import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
 
 export function SettingsForm() {
-  const { t } = useTranslation("settings");
+  const { t } = useTranslation(["settings", "common"]);
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: settings, isLoading } = useSettings(guildId);
   const { data: channels = [] } = useChannels(guildId);
@@ -32,10 +31,9 @@ export function SettingsForm() {
   const [globalEnabled, setGlobalEnabled] = useState(true);
   const [logChannelId, setLogChannelId] = useState<string | null>(null);
   const [error, setError] = useState("");
-  const [notifyRuleTriggered, setNotifyRuleTriggered] = useState(true);
-  const [notifyErrors, setNotifyErrors] = useState(true);
-  const [notifySuccess, setNotifySuccess] = useState(false);
-  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
+  const maxRulesInvalid =
+    !Number.isFinite(maxRules) || maxRules < 1 || maxRules > 100;
 
   useEffect(() => {
     if (settings) {
@@ -53,8 +51,7 @@ export function SettingsForm() {
     e.preventDefault();
     setError("");
 
-    if (maxRules < 1 || maxRules > 100) {
-      setError(t("actionSystem.maxRulesError"));
+    if (maxRulesInvalid) {
       return;
     }
 
@@ -62,12 +59,11 @@ export function SettingsForm() {
       await updateSettings.mutateAsync({ maxRules, globalEnabled, logChannelId });
       toast.success(t("actionSystem.saved"));
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : t("actionSystem.maxRulesError"));
+      setError(err instanceof ApiError ? err.message : t("common:accessibility.error"));
     }
   };
 
   return (
-    <>
     <Card className="p-6">
       <h3 className="mb-6 font-label text-lg font-semibold">{t("actionSystem.title")}</h3>
 
@@ -85,16 +81,23 @@ export function SettingsForm() {
             onChange={(e) => setMaxRules(Number(e.target.value))}
             min={1}
             max={100}
+            aria-invalid={maxRulesInvalid}
+            aria-describedby={maxRulesInvalid ? "maxRules-error" : undefined}
           />
+          {maxRulesInvalid && (
+            <p id="maxRules-error" className="mt-1 text-xs text-danger">
+              {t("actionSystem.maxRulesError")}
+            </p>
+          )}
         </div>
 
         <div>
-          <Label>{t("actionSystem.logChannel")}</Label>
+          <Label htmlFor="settings-log-channel">{t("actionSystem.logChannel")}</Label>
           <Select
             value={logChannelId ?? "none"}
             onValueChange={(v) => setLogChannelId(v === "none" ? null : v)}
           >
-            <SelectTrigger>
+            <SelectTrigger id="settings-log-channel">
               <SelectValue placeholder={t("actionSystem.noLogChannel")} />
             </SelectTrigger>
             <SelectContent>
@@ -110,73 +113,22 @@ export function SettingsForm() {
 
         <div className="flex items-center gap-3">
           <Switch
+            id="settings-global-enable"
             checked={globalEnabled}
             onCheckedChange={setGlobalEnabled}
           />
-          <Label className="mb-0 text-sm">
+          <Label htmlFor="settings-global-enable" className="mb-0 text-sm">
             {t("actionSystem.globalEnable")}
           </Label>
         </div>
 
-        <Button type="submit" disabled={updateSettings.isPending}>
+        <Button
+          type="submit"
+          disabled={updateSettings.isPending || maxRulesInvalid}
+        >
           {updateSettings.isPending ? t("actionSystem.saving") : t("actionSystem.save")}
         </Button>
       </form>
     </Card>
-
-    {/* Notification Preferences */}
-    <Card className="mt-6 p-6">
-      <h3 className="mb-6 font-label text-lg font-semibold">{t("notifications.title")}</h3>
-      <div className="space-y-4">
-        <div className="flex items-center gap-3">
-          <Switch
-            checked={notifyRuleTriggered}
-            onCheckedChange={setNotifyRuleTriggered}
-          />
-          <Label className="mb-0 text-sm">{t("notifications.ruleTriggered")}</Label>
-        </div>
-        <div className="flex items-center gap-3">
-          <Switch
-            checked={notifyErrors}
-            onCheckedChange={setNotifyErrors}
-          />
-          <Label className="mb-0 text-sm">{t("notifications.errorAlerts")}</Label>
-        </div>
-        <div className="flex items-center gap-3">
-          <Switch
-            checked={notifySuccess}
-            onCheckedChange={setNotifySuccess}
-          />
-          <Label className="mb-0 text-sm">{t("notifications.successReports")}</Label>
-        </div>
-      </div>
-    </Card>
-
-    {/* Danger Zone */}
-    <Card className="mt-6 border border-danger/20 p-6">
-      <h3 className="mb-2 font-label text-lg font-semibold text-danger">{t("dangerZone.title")}</h3>
-      <p className="mb-4 text-sm text-text-muted">
-        {t("dangerZone.description")}
-      </p>
-      <Button
-        variant="destructive"
-        onClick={() => setShowDeleteConfirm(true)}
-      >
-        {t("dangerZone.deleteAllRules")}
-      </Button>
-    </Card>
-
-    <ConfirmDialog
-      open={showDeleteConfirm}
-      onOpenChange={setShowDeleteConfirm}
-      title={t("dangerZone.deleteAllConfirm")}
-      description={t("dangerZone.description")}
-      confirmLabel={t("dangerZone.deleteAllRules")}
-      destructive
-      onConfirm={() => {
-        toast.info(t("dangerZone.notImplemented"));
-      }}
-    />
-  </>
   );
 }

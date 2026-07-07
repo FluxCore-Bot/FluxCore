@@ -87,6 +87,7 @@ export function LogsTable() {
             value={ruleFilter}
             onChange={(e) => { setRuleFilter(e.target.value); setPage(1); }}
             placeholder={t("activity.filter.search")}
+            aria-label={t("activity.filter.search")}
             className="ps-10 font-mono"
           />
         </div>

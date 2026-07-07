@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../shared/lib/client";
 import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
+import { EmptyState } from "../../../shared/components/EmptyState";
 import { PageHeader } from "../../../shared/components/PageHeader";
 import {
   useCustomCommands,
@@ -12,7 +13,6 @@ import {
   useDeleteCustomCommand,
   type CreateCustomCommandData,
 } from "../../../features/commands/hooks/useCustomCommands";
-import { useChannels } from "../../../shared/hooks/useChannels";
 import { useRoles } from "../../../shared/hooks/useRoles";
 import type {
   CustomCommandItem,
@@ -51,6 +51,7 @@ import {
   DialogTrigger,
 } from "../../../shared/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
+import { DiscordMultiSelect } from "../../../shared/ui/discord-multi-select";
 import { Icon } from "../../../shared/components/Icon";
 import { StatsCard } from "../../../shared/components/StatsCard";
 import { PageSkeleton, TableSkeleton } from "../../../shared/ui/skeletons";
@@ -62,18 +63,20 @@ function emptyAction(): CustomCommandAction {
 
 export function CommandsPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
-  const { t } = useTranslation("commands");
+  const { t } = useTranslation(["commands", "common"]);
 
   const { data: commands, isLoading } = useCustomCommands(guildId);
   const createCommand = useCreateCustomCommand(guildId);
   const updateCommand = useUpdateCustomCommand(guildId);
   const deleteCommand = useDeleteCustomCommand(guildId);
-  const { data: channels } = useChannels(guildId);
   const { data: roles } = useRoles(guildId);
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingCommand, setEditingCommand] = useState<CustomCommandItem | null>(null);
   const [deleteConfirmId, setDeleteConfirmId] = useState<number | null>(null);
+  const [nameError, setNameError] = useState(false);
+  const [dirty, setDirty] = useState(false);
+  const [discardConfirmOpen, setDiscardConfirmOpen] = useState(false);
 
   // Form state
   const [formName, setFormName] = useState("");
@@ -134,6 +137,8 @@ export function CommandsPage() {
     setFormDeletesTrigger(false);
     setFormDmResponse(false);
     setEditingCommand(null);
+    setNameError(false);
+    setDirty(false);
   }
 
   function openCreateDialog() {
@@ -162,7 +167,36 @@ export function CommandsPage() {
     setFormAllowedChannels([...cmd.allowedChannels]);
     setFormDeletesTrigger(cmd.deletesTrigger);
     setFormDmResponse(cmd.dmResponse);
+    setNameError(false);
+    setDirty(false);
     setDialogOpen(true);
+  }
+
+  function markDirty() {
+    setDirty(true);
+  }
+
+  function requestCloseDialog() {
+    if (dirty) {
+      setDiscardConfirmOpen(true);
+      return;
+    }
+    setDialogOpen(false);
+    resetForm();
+  }
+
+  function handleDialogOpenChange(open: boolean) {
+    if (open) {
+      setDialogOpen(true);
+      return;
+    }
+    requestCloseDialog();
+  }
+
+  function confirmDiscard() {
+    setDiscardConfirmOpen(false);
+    setDialogOpen(false);
+    resetForm();
   }
 
   function buildResponse(): CustomCommandResponse {
@@ -182,9 +216,11 @@ export function CommandsPage() {
 
   function handleSubmit() {
     if (!formName.trim()) {
+      setNameError(true);
       toast.error(t("validation.nameRequired"));
       return;
     }
+    setNameError(false);
 
     const response = buildResponse();
     const validActions = formActions.filter((a) => a.roleId);
@@ -274,10 +310,12 @@ export function CommandsPage() {
       return;
     }
     setFormActions([...formActions, emptyAction()]);
+    markDirty();
   }
 
   function handleRemoveAction(index: number) {
     setFormActions(formActions.filter((_, i) => i !== index));
+    markDirty();
   }
 
   function handleActionChange(
@@ -288,9 +326,9 @@ export function CommandsPage() {
     const updated = [...formActions];
     updated[index] = { ...updated[index], [field]: value };
     setFormActions(updated);
+    markDirty();
   }
 
-  const textChannels = channels?.filter((c) => c.type === 0) ?? [];
   const enabledCount = commands?.filter((c) => c.enabled).length ?? 0;
 
   if (isLoading) {
@@ -337,7 +375,7 @@ export function CommandsPage() {
           <Card className="bg-surface-container p-6 glass-edge">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="font-label text-lg font-semibold">{t("tabs.commands")}</h3>
-              <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+              <Dialog open={dialogOpen} onOpenChange={handleDialogOpenChange}>
                 <DialogTrigger asChild>
                   <Button onClick={openCreateDialog}>
                     <Icon name="add" size={16} className="me-1" />
@@ -360,11 +398,20 @@ export function CommandsPage() {
                             : formTriggerType === "regex"
                               ? t("form.regexPattern")
                               : t("form.triggerText")}
+                          <span className="ms-0.5 text-danger" aria-hidden="true">
+                            *
+                          </span>
                         </Label>
                         <Input
                           id="cmd-name"
                           value={formName}
-                          onChange={(e) => setFormName(e.target.value)}
+                          onChange={(e) => {
+                            setFormName(e.target.value);
+                            if (e.target.value.trim()) setNameError(false);
+                            markDirty();
+                          }}
+                          aria-invalid={nameError}
+                          aria-describedby={nameError ? "cmd-name-error" : undefined}
                           placeholder={
                             formTriggerType === "command"
                               ? "e.g. rules"
@@ -373,6 +420,14 @@ export function CommandsPage() {
                                 : "e.g. hello"
                           }
                         />
+                        {nameError && (
+                          <p
+                            id="cmd-name-error"
+                            className="mt-1 text-xs text-danger"
+                          >
+                            {t("validation.nameRequired")}
+                          </p>
+                        )}
                         {formTriggerType === "command" && formName && (
                           <p className="mt-1 font-mono text-xs text-text-muted">
                             {t("triggerPrefix", { name: formName })}
@@ -383,13 +438,12 @@ export function CommandsPage() {
                         <Label htmlFor="cmd-trigger">{t("form.triggerType")}</Label>
                         <Select
                           value={formTriggerType}
-                          onValueChange={(v) =>
-                            setFormTriggerType(
-                              v as typeof formTriggerType,
-                            )
-                          }
+                          onValueChange={(v) => {
+                            setFormTriggerType(v as typeof formTriggerType);
+                            markDirty();
+                          }}
                         >
-                          <SelectTrigger>
+                          <SelectTrigger id="cmd-trigger">
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
@@ -415,14 +469,17 @@ export function CommandsPage() {
                     {/* Response Config */}
                     <div>
                       <div className="mb-3 flex items-center gap-3">
-                        <h4 className="font-label text-sm font-semibold">{t("form.response")}</h4>
+                        <Label htmlFor="cmd-response-type" className="font-label text-sm font-semibold">
+                          {t("form.response")}
+                        </Label>
                         <Select
                           value={formResponseType}
-                          onValueChange={(v) =>
-                            setFormResponseType(v as "text" | "embed")
-                          }
+                          onValueChange={(v) => {
+                            setFormResponseType(v as "text" | "embed");
+                            markDirty();
+                          }}
                         >
-                          <SelectTrigger className="w-32">
+                          <SelectTrigger id="cmd-response-type" className="w-32">
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
@@ -438,7 +495,10 @@ export function CommandsPage() {
                           <Textarea
                             id="cmd-content"
                             value={formContent}
-                            onChange={(e) => setFormContent(e.target.value)}
+                            onChange={(e) => {
+                              setFormContent(e.target.value);
+                              markDirty();
+                            }}
                             placeholder={t("form.message")}
                             rows={4}
                           />
@@ -450,7 +510,10 @@ export function CommandsPage() {
                             <Input
                               id="embed-title"
                               value={formEmbedTitle}
-                              onChange={(e) => setFormEmbedTitle(e.target.value)}
+                              onChange={(e) => {
+                                setFormEmbedTitle(e.target.value);
+                                markDirty();
+                              }}
                               placeholder={t("form.embedTitle")}
                             />
                           </div>
@@ -461,29 +524,36 @@ export function CommandsPage() {
                             <Textarea
                               id="embed-desc"
                               value={formEmbedDescription}
-                              onChange={(e) =>
-                                setFormEmbedDescription(e.target.value)
-                              }
+                              onChange={(e) => {
+                                setFormEmbedDescription(e.target.value);
+                                markDirty();
+                              }}
                               placeholder={t("form.embedDescription")}
                               rows={3}
                             />
                           </div>
                           <div className="grid grid-cols-2 gap-4">
                             <div>
-                              <Label htmlFor="embed-color">{t("form.color")}</Label>
-                              <ColorPicker
-                                value={formEmbedColor}
-                                onChange={setFormEmbedColor}
-                              />
+                              <Label>
+                                {t("form.color")}
+                                <ColorPicker
+                                  value={formEmbedColor}
+                                  onChange={(v) => {
+                                    setFormEmbedColor(v);
+                                    markDirty();
+                                  }}
+                                />
+                              </Label>
                             </div>
                             <div>
                               <Label htmlFor="embed-footer">{t("form.footer")}</Label>
                               <Input
                                 id="embed-footer"
                                 value={formEmbedFooter}
-                                onChange={(e) =>
-                                  setFormEmbedFooter(e.target.value)
-                                }
+                                onChange={(e) => {
+                                  setFormEmbedFooter(e.target.value);
+                                  markDirty();
+                                }}
                                 placeholder={t("form.footer")}
                               />
                             </div>
@@ -519,14 +589,16 @@ export function CommandsPage() {
                               className="flex items-end gap-2 rounded-md border border-border p-3"
                             >
                               <div className="w-36">
-                                <Label>{t("common:type")}</Label>
+                                <Label htmlFor={`action-type-${idx}`}>
+                                  {t("common:labels.type")}
+                                </Label>
                                 <Select
                                   value={action.type}
                                   onValueChange={(v) =>
                                     handleActionChange(idx, "type", v)
                                   }
                                 >
-                                  <SelectTrigger>
+                                  <SelectTrigger id={`action-type-${idx}`}>
                                     <SelectValue />
                                   </SelectTrigger>
                                   <SelectContent>
@@ -540,14 +612,16 @@ export function CommandsPage() {
                                 </Select>
                               </div>
                               <div className="flex-1">
-                                <Label>{t("common:role")}</Label>
+                                <Label htmlFor={`action-role-${idx}`}>
+                                  {t("common:labels.role")}
+                                </Label>
                                 <Select
                                   value={action.roleId}
                                   onValueChange={(v) =>
                                     handleActionChange(idx, "roleId", v)
                                   }
                                 >
-                                  <SelectTrigger>
+                                  <SelectTrigger id={`action-role-${idx}`}>
                                     <SelectValue placeholder={t("restrictions.addRole")} />
                                   </SelectTrigger>
                                   <SelectContent>
@@ -563,6 +637,7 @@ export function CommandsPage() {
                                 variant="ghost"
                                 size="sm"
                                 onClick={() => handleRemoveAction(idx)}
+                                aria-label={t("common:actions.remove")}
                               >
                                 <Icon
                                   name="delete"
@@ -597,7 +672,10 @@ export function CommandsPage() {
                               min={0}
                               max={3600}
                               value={formCooldown}
-                              onChange={(e) => setFormCooldown(e.target.value)}
+                              onChange={(e) => {
+                                setFormCooldown(e.target.value);
+                                markDirty();
+                              }}
                               placeholder="0"
                             />
                           </div>
@@ -612,7 +690,10 @@ export function CommandsPage() {
                           </div>
                           <Switch
                             checked={formEnabled}
-                            onCheckedChange={setFormEnabled}
+                            onCheckedChange={(v) => {
+                              setFormEnabled(v);
+                              markDirty();
+                            }}
                           />
                         </div>
 
@@ -627,7 +708,10 @@ export function CommandsPage() {
                           </div>
                           <Switch
                             checked={formDeletesTrigger}
-                            onCheckedChange={setFormDeletesTrigger}
+                            onCheckedChange={(v) => {
+                              setFormDeletesTrigger(v);
+                              markDirty();
+                            }}
                           />
                         </div>
 
@@ -642,7 +726,10 @@ export function CommandsPage() {
                           </div>
                           <Switch
                             checked={formDmResponse}
-                            onCheckedChange={setFormDmResponse}
+                            onCheckedChange={(v) => {
+                              setFormDmResponse(v);
+                              markDirty();
+                            }}
                           />
                         </div>
                       </div>
@@ -656,126 +743,36 @@ export function CommandsPage() {
                         {t("restrictions.title")}
                       </h4>
                       <div className="space-y-3">
-                        <div>
-                          <Label>{t("restrictions.allowedChannels")}</Label>
-                          <Select
-                            value={
-                              formAllowedChannels.length > 0
-                                ? formAllowedChannels[
-                                    formAllowedChannels.length - 1
-                                  ]
-                                : ""
-                            }
-                            onValueChange={(v) => {
-                              if (!formAllowedChannels.includes(v)) {
-                                setFormAllowedChannels([
-                                  ...formAllowedChannels,
-                                  v,
-                                ]);
-                              }
-                            }}
-                          >
-                            <SelectTrigger>
-                              <SelectValue placeholder={t("restrictions.addChannel")} />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {textChannels.map((ch) => (
-                                <SelectItem key={ch.id} value={ch.id}>
-                                  #{ch.name}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                          {formAllowedChannels.length > 0 && (
-                            <div className="mt-2 flex flex-wrap gap-1">
-                              {formAllowedChannels.map((chId) => {
-                                const ch = textChannels.find(
-                                  (c) => c.id === chId,
-                                );
-                                return (
-                                  <Badge
-                                    key={chId}
-                                    variant="secondary"
-                                    className="cursor-pointer"
-                                    onClick={() =>
-                                      setFormAllowedChannels(
-                                        formAllowedChannels.filter(
-                                          (id) => id !== chId,
-                                        ),
-                                      )
-                                    }
-                                  >
-                                    #{ch?.name ?? chId} x
-                                  </Badge>
-                                );
-                              })}
-                            </div>
-                          )}
-                        </div>
+                        <DiscordMultiSelect
+                          guildId={guildId}
+                          type="text"
+                          selectedIds={formAllowedChannels}
+                          onChange={(ids) => {
+                            setFormAllowedChannels(ids);
+                            markDirty();
+                          }}
+                          label={t("restrictions.allowedChannels")}
+                          placeholder={t("restrictions.addChannel")}
+                        />
 
-                        <div>
-                          <Label>{t("restrictions.allowedRoles")}</Label>
-                          <Select
-                            value={
-                              formAllowedRoles.length > 0
-                                ? formAllowedRoles[
-                                    formAllowedRoles.length - 1
-                                  ]
-                                : ""
-                            }
-                            onValueChange={(v) => {
-                              if (!formAllowedRoles.includes(v)) {
-                                setFormAllowedRoles([
-                                  ...formAllowedRoles,
-                                  v,
-                                ]);
-                              }
-                            }}
-                          >
-                            <SelectTrigger>
-                              <SelectValue placeholder={t("restrictions.addRole")} />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {roles?.map((r) => (
-                                <SelectItem key={r.id} value={r.id}>
-                                  {r.name}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                          {formAllowedRoles.length > 0 && (
-                            <div className="mt-2 flex flex-wrap gap-1">
-                              {formAllowedRoles.map((rId) => {
-                                const r = roles?.find(
-                                  (role) => role.id === rId,
-                                );
-                                return (
-                                  <Badge
-                                    key={rId}
-                                    variant="secondary"
-                                    className="cursor-pointer"
-                                    onClick={() =>
-                                      setFormAllowedRoles(
-                                        formAllowedRoles.filter(
-                                          (id) => id !== rId,
-                                        ),
-                                      )
-                                    }
-                                  >
-                                    {r?.name ?? rId} x
-                                  </Badge>
-                                );
-                              })}
-                            </div>
-                          )}
-                        </div>
+                        <DiscordMultiSelect
+                          guildId={guildId}
+                          type="role"
+                          selectedIds={formAllowedRoles}
+                          onChange={(ids) => {
+                            setFormAllowedRoles(ids);
+                            markDirty();
+                          }}
+                          label={t("restrictions.allowedRoles")}
+                          placeholder={t("restrictions.addRole")}
+                        />
                       </div>
                     </div>
 
                     <div className="flex justify-end gap-2">
                       <Button
                         variant="outline"
-                        onClick={() => setDialogOpen(false)}
+                        onClick={requestCloseDialog}
                       >
                         {t("actions.cancel")}
                       </Button>
@@ -785,7 +782,20 @@ export function CommandsPage() {
                           createCommand.isPending || updateCommand.isPending
                         }
                       >
-                        {editingCommand ? t("actions.update") : t("actions.create")}
+                        {createCommand.isPending || updateCommand.isPending ? (
+                          <>
+                            <Icon
+                              name="sync"
+                              size={16}
+                              className="me-1 animate-spin"
+                            />
+                            {t("common:actions.loading")}
+                          </>
+                        ) : editingCommand ? (
+                          t("actions.update")
+                        ) : (
+                          t("actions.create")
+                        )}
                       </Button>
                     </div>
                   </div>
@@ -845,27 +855,23 @@ export function CommandsPage() {
                           )}
                         </TableCell>
                         <TableCell>
-                          <div className="flex gap-1">
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => handleToggleEnabled(cmd)}
-                              title={cmd.enabled ? t("common:disable") : t("common:enable")}
-                            >
-                              <Icon
-                                name={
-                                  cmd.enabled
-                                    ? "toggle_on"
-                                    : "toggle_off"
-                                }
-                                size={16}
-                              />
-                            </Button>
+                          <div className="flex items-center gap-2">
+                            <Switch
+                              checked={cmd.enabled}
+                              onCheckedChange={() => handleToggleEnabled(cmd)}
+                              disabled={updateCommand.isPending}
+                              aria-label={
+                                cmd.enabled
+                                  ? t("common:actions.disable")
+                                  : t("common:actions.enable")
+                              }
+                            />
                             <Button
                               variant="ghost"
                               size="sm"
                               onClick={() => openEditDialog(cmd)}
-                              title={t("common:edit")}
+                              title={t("common:actions.edit")}
+                              aria-label={t("common:actions.edit")}
                             >
                               <Icon name="edit" size={16} />
                             </Button>
@@ -874,7 +880,8 @@ export function CommandsPage() {
                               size="sm"
                               onClick={() => handleDelete(cmd.id)}
                               disabled={deleteCommand.isPending}
-                              title={t("common:delete")}
+                              title={t("common:actions.delete")}
+                              aria-label={t("common:actions.delete")}
                             >
                               <Icon
                                 name="delete"
@@ -890,9 +897,17 @@ export function CommandsPage() {
                 </Table>
               </div>
             ) : (
-              <p className="text-text-muted">
-                {t("empty")}
-              </p>
+              <EmptyState
+                icon="terminal"
+                title={t("empty")}
+                description={t("subtitle")}
+                action={
+                  <Button onClick={openCreateDialog}>
+                    <Icon name="add" size={16} className="me-1" />
+                    {t("dialog.createCommand")}
+                  </Button>
+                }
+              />
             )}
           </Card>
         </TabsContent>
@@ -934,11 +949,22 @@ export function CommandsPage() {
       <ConfirmDialog
         open={deleteConfirmId !== null}
         onOpenChange={(open) => { if (!open) setDeleteConfirmId(null); }}
-        title={t("common:actions.delete", { defaultValue: "Delete Command" })}
+        title={t("common:confirm.deleteTitle")}
         description={t("common:actions.confirmDelete", { defaultValue: "Are you sure you want to delete this command? This action cannot be undone." })}
         confirmLabel={t("common:actions.delete", { defaultValue: "Delete" })}
         destructive
         onConfirm={confirmDelete}
+      />
+
+      {/* Unsaved Changes Confirmation */}
+      <ConfirmDialog
+        open={discardConfirmOpen}
+        onOpenChange={setDiscardConfirmOpen}
+        title={t("common:confirm.title")}
+        description={t("common:confirm.unsavedChanges")}
+        confirmLabel={t("common:actions.confirm")}
+        destructive
+        onConfirm={confirmDiscard}
       />
     </div>
   );

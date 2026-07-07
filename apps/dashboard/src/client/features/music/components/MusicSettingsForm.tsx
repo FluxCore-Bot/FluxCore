@@ -23,7 +23,7 @@ import {
 import { FormSkeleton } from "../../../shared/ui/skeletons";
 
 export function MusicSettingsForm() {
-  const { t } = useTranslation("music");
+  const { t } = useTranslation(["music", "common"]);
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: settings, isLoading } = useMusicSettings(guildId);
   const { data: roles = [] } = useRoles(guildId);
@@ -40,6 +40,13 @@ export function MusicSettingsForm() {
   const [error, setError] = useState("");
 
   const voiceChannels = channels.filter((c) => c.type === 2);
+
+  const maxQueueSizeInvalid =
+    !Number.isFinite(maxQueueSize) || maxQueueSize < 1 || maxQueueSize > 500;
+  const autoDisconnectInvalid =
+    !Number.isFinite(autoDisconnectSecs) ||
+    autoDisconnectSecs < 0 ||
+    autoDisconnectSecs > 3600;
 
   useEffect(() => {
     if (settings) {
@@ -58,6 +65,10 @@ export function MusicSettingsForm() {
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+
+    if (maxQueueSizeInvalid || autoDisconnectInvalid) {
+      return;
+    }
 
     try {
       await updateSettings.mutateAsync({
@@ -85,9 +96,9 @@ export function MusicSettingsForm() {
 
       <form onSubmit={handleSave} className="space-y-5">
         <div>
-          <Label>{t("settings.musicMode")}</Label>
+          <Label htmlFor="music-mode">{t("settings.musicMode")}</Label>
           <Select value={mode} onValueChange={(v) => setMode(v as "open" | "library")}>
-            <SelectTrigger>
+            <SelectTrigger id="music-mode">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -98,12 +109,12 @@ export function MusicSettingsForm() {
         </div>
 
         <div>
-          <Label>{t("settings.djRole")}</Label>
+          <Label htmlFor="music-dj-role">{t("settings.djRole")}</Label>
           <Select
             value={djRoleId ?? "none"}
             onValueChange={(v) => setDjRoleId(v === "none" ? null : v)}
           >
-            <SelectTrigger>
+            <SelectTrigger id="music-dj-role">
               <SelectValue placeholder={t("settings.noDjRole")} />
             </SelectTrigger>
             <SelectContent>
@@ -118,8 +129,11 @@ export function MusicSettingsForm() {
         </div>
 
         <div>
-          <Label>{t("settings.defaultVolume", { value: defaultVolume })}</Label>
+          <Label id="music-default-volume-label">
+            {t("settings.defaultVolume", { value: defaultVolume })}
+          </Label>
           <Slider
+            aria-labelledby="music-default-volume-label"
             value={[defaultVolume]}
             onValueChange={([v]) => setDefaultVolume(v)}
             min={0}
@@ -129,45 +143,72 @@ export function MusicSettingsForm() {
         </div>
 
         <div>
-          <Label>{t("settings.maxQueueSize")}</Label>
+          <Label htmlFor="music-max-queue-size">{t("settings.maxQueueSize")}</Label>
           <Input
+            id="music-max-queue-size"
             type="number"
             min={1}
             max={500}
             value={maxQueueSize}
             onChange={(e) => setMaxQueueSize(Number(e.target.value))}
+            aria-invalid={maxQueueSizeInvalid}
+            aria-describedby={
+              maxQueueSizeInvalid ? "music-max-queue-size-error" : undefined
+            }
           />
+          {maxQueueSizeInvalid && (
+            <p
+              id="music-max-queue-size-error"
+              className="mt-1 text-xs text-danger"
+            >
+              {t("settings.maxQueueSize")} — {t("common:accessibility.error")}
+            </p>
+          )}
         </div>
 
         <div>
-          <Label>{t("settings.autoDisconnect")}</Label>
+          <Label htmlFor="music-auto-disconnect">{t("settings.autoDisconnect")}</Label>
           <Input
+            id="music-auto-disconnect"
             type="number"
             min={0}
             max={3600}
             value={autoDisconnectSecs}
             onChange={(e) => setAutoDisconnectSecs(Number(e.target.value))}
+            aria-invalid={autoDisconnectInvalid}
+            aria-describedby={
+              autoDisconnectInvalid ? "music-auto-disconnect-error" : undefined
+            }
           />
+          {autoDisconnectInvalid && (
+            <p
+              id="music-auto-disconnect-error"
+              className="mt-1 text-xs text-danger"
+            >
+              {t("settings.autoDisconnect")} — {t("common:accessibility.error")}
+            </p>
+          )}
         </div>
 
         <div className="flex items-center gap-3">
           <Switch
+            id="music-24-7"
             checked={twentyFourSeven}
             onCheckedChange={setTwentyFourSeven}
           />
-          <Label className="mb-0 text-sm">
+          <Label htmlFor="music-24-7" className="mb-0 text-sm">
             {t("settings.twentyFourSeven")}
           </Label>
         </div>
 
         {twentyFourSeven && (
           <div>
-            <Label>{t("settings.musicChannel")}</Label>
+            <Label htmlFor="music-channel">{t("settings.musicChannel")}</Label>
             <Select
               value={lastChannelId ?? "none"}
               onValueChange={(v) => setLastChannelId(v === "none" ? null : v)}
             >
-              <SelectTrigger>
+              <SelectTrigger id="music-channel">
                 <SelectValue placeholder={t("settings.selectVoiceChannel")} />
               </SelectTrigger>
               <SelectContent>
@@ -185,7 +226,14 @@ export function MusicSettingsForm() {
           </div>
         )}
 
-        <Button type="submit" disabled={updateSettings.isPending}>
+        <Button
+          type="submit"
+          disabled={
+            updateSettings.isPending ||
+            maxQueueSizeInvalid ||
+            autoDisconnectInvalid
+          }
+        >
           {updateSettings.isPending ? t("settings.saving") : t("settings.save")}
         </Button>
       </form>

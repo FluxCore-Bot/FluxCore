@@ -143,7 +143,7 @@ export function StarboardPage() {
                   <Label htmlFor="starboard-emoji">{t("settings.starEmoji")}</Label>
                   <Input
                     id="starboard-emoji"
-                    placeholder="\u2B50"
+                    placeholder={"\u2B50"}
                     value={emoji}
                     onChange={(e) => setEmoji(e.target.value)}
                     className="mt-1"

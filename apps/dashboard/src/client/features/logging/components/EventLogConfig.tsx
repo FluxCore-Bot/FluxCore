@@ -16,7 +16,7 @@ import {
 import { Badge } from "../../../shared/ui/badge";
 
 
-const CATEGORY_ICONS: Record<string, string> = {
+export const CATEGORY_ICONS: Record<string, string> = {
   message: "message-circle",
   member: "users",
   voice: "mic",
@@ -44,7 +44,7 @@ export function EventLogConfig() {
     <div className="space-y-4">
       <div className="flex items-center gap-2">
         <Icon name="settings" size={20} className="text-accent" />
-        <h3 className="text-lg font-semibold font-display">{t("events.title")}</h3>
+        <h2 className="text-lg font-semibold font-display">{t("events.title")}</h2>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

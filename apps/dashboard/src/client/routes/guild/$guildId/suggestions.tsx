@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../shared/lib/client";
 import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
+import { EmptyState } from "../../../shared/components/EmptyState";
 import { PageHeader } from "../../../shared/components/PageHeader";
 import {
   useSuggestions,
@@ -262,6 +263,7 @@ export function SuggestionsPage() {
                                     size="sm"
                                     onClick={() => openStatusDialog(s.id, "approved")}
                                     title={t("actions.approve")}
+                                    aria-label={t("actions.approve")}
                                   >
                                     <Icon name="check_circle" size={16} className="text-success" />
                                   </Button>
@@ -270,6 +272,7 @@ export function SuggestionsPage() {
                                     size="sm"
                                     onClick={() => openStatusDialog(s.id, "denied")}
                                     title={t("actions.reject")}
+                                    aria-label={t("actions.reject")}
                                   >
                                     <Icon name="cancel" size={16} className="text-danger" />
                                   </Button>
@@ -281,6 +284,7 @@ export function SuggestionsPage() {
                                   size="sm"
                                   onClick={() => openStatusDialog(s.id, "implemented")}
                                   title={t("actions.implement")}
+                                  aria-label={t("actions.implement")}
                                 >
                                   <Icon name="task_alt" size={16} className="text-accent" />
                                 </Button>
@@ -291,6 +295,7 @@ export function SuggestionsPage() {
                                 onClick={() => handleDelete(s.id)}
                                 disabled={deleteSuggestion.isPending}
                                 title={t("actions.delete")}
+                                aria-label={t("actions.delete")}
                               >
                                 <Icon name="delete" size={16} className="text-danger" />
                               </Button>
@@ -329,7 +334,11 @@ export function SuggestionsPage() {
                 )}
               </>
             ) : (
-              <p className="text-text-muted">{t("empty")}</p>
+              <EmptyState
+                icon="lightbulb"
+                title={t("empty")}
+                description={t("subtitle")}
+              />
             )}
           </Card>
         </TabsContent>
