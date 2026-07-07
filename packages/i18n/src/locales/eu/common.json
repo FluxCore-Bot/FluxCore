@@ -98,7 +98,6 @@
     "showingPage": "{{page}}. orrialdea {{total}}tik ({{count}} guztira)"
   },
   "header": {
-    "notifications": "Jakinarazpenak",
     "settings": "Ezarpenak",
     "logout": "Saioa itxi",
     "toggleSidebar": "Albo-barra txandakatu",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Albo-barra itxi",
     "addToServer": "Zerbitzarira gehitu",
-    "docs": "Dokumentazioa",
-    "support": "Laguntza",
     "backToServers": "Zerbitzarietara itzuli"
   },
   "empty": {

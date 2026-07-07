@@ -98,7 +98,6 @@
     "showingPage": "Ukurasa {{page}} kati ya {{total}} (jumla {{count}})"
   },
   "header": {
-    "notifications": "Arifa",
     "settings": "Mipangilio",
     "logout": "Ondoka",
     "toggleSidebar": "Badilisha upau wa pembeni",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Funga upau wa pembeni",
     "addToServer": "Ongeza kwenye Seva",
-    "docs": "Nyaraka",
-    "support": "Msaada",
     "backToServers": "Rudi kwa Seva"
   },
   "empty": {

@@ -98,7 +98,6 @@
     "showingPage": "Page {{page}} of {{total}} ({{count}} total)"
   },
   "header": {
-    "notifications": "Notifications",
     "settings": "Settings",
     "logout": "Logout",
     "toggleSidebar": "Toggle sidebar",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Close sidebar",
     "addToServer": "Add to Server",
-    "docs": "Docs",
-    "support": "Support",
     "backToServers": "Back to Servers"
   },
   "empty": {

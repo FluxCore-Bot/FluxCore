@@ -98,7 +98,6 @@
     "showingPage": "{{total}}페이지 중 {{page}}페이지 (총 {{count}}개)"
   },
   "header": {
-    "notifications": "알림",
     "settings": "설정",
     "logout": "로그아웃",
     "toggleSidebar": "사이드바 전환",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "사이드바 닫기",
     "addToServer": "서버에 추가",
-    "docs": "문서",
-    "support": "지원",
     "backToServers": "서버 목록으로 돌아가기"
   },
   "empty": {

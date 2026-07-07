@@ -98,7 +98,6 @@
     "showingPage": "{{page}} puslapis iš {{total}} (iš viso {{count}})"
   },
   "header": {
-    "notifications": "Pranešimai",
     "settings": "Nustatymai",
     "logout": "Atsijungti",
     "toggleSidebar": "Perjungti šoninę juostą",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Uždaryti šoninę juostą",
     "addToServer": "Pridėti į serverį",
-    "docs": "Dokumentacija",
-    "support": "Palaikymas",
     "backToServers": "Atgal į serverius"
   },
   "empty": {

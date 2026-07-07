@@ -98,7 +98,6 @@
     "showingPage": "صفحہ {{page}} از {{total}} ({{count}} کل)"
   },
   "header": {
-    "notifications": "اطلاعات",
     "settings": "ترتیبات",
     "logout": "لاگ آؤٹ",
     "toggleSidebar": "سائیڈ بار ٹوگل کریں",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "سائیڈ بار بند کریں",
     "addToServer": "سرور میں شامل کریں",
-    "docs": "دستاویزات",
-    "support": "مدد",
     "backToServers": "سرورز پر واپس جائیں"
   },
   "empty": {

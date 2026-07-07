@@ -98,7 +98,6 @@
     "showingPage": "Страна {{page}} од {{total}} ({{count}} укупно)"
   },
   "header": {
-    "notifications": "Обавештења",
     "settings": "Подешавања",
     "logout": "Одјава",
     "toggleSidebar": "Пребаци бочну траку",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Затвори бочну траку",
     "addToServer": "Додај на сервер",
-    "docs": "Документација",
-    "support": "Подршка",
     "backToServers": "Назад на сервере"
   },
   "empty": {

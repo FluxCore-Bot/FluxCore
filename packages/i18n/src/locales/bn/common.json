@@ -98,7 +98,6 @@
     "showingPage": "পৃষ্ঠা {{page}} / {{total}} ({{count}} মোট)"
   },
   "header": {
-    "notifications": "বিজ্ঞপ্তি",
     "settings": "সেটিংস",
     "logout": "লগ আউট",
     "toggleSidebar": "সাইডবার টগল করুন",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "সাইডবার বন্ধ করুন",
     "addToServer": "সার্ভারে যোগ করুন",
-    "docs": "ডকুমেন্টেশন",
-    "support": "সাপোর্ট",
     "backToServers": "সার্ভারে ফিরে যান"
   },
   "empty": {

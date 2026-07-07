@@ -98,7 +98,6 @@
     "showingPage": "第 {{page}} 页，共 {{total}} 页（共 {{count}} 条）"
   },
   "header": {
-    "notifications": "通知",
     "settings": "设置",
     "logout": "退出登录",
     "toggleSidebar": "切换侧边栏",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "关闭侧边栏",
     "addToServer": "添加到服务器",
-    "docs": "文档",
-    "support": "支持",
     "backToServers": "返回服务器列表"
   },
   "empty": {

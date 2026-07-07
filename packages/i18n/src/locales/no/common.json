@@ -98,7 +98,6 @@
     "showingPage": "Side {{page}} av {{total}} ({{count}} totalt)"
   },
   "header": {
-    "notifications": "Varsler",
     "settings": "Innstillinger",
     "logout": "Logg ut",
     "toggleSidebar": "Veksle sidefelt",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Lukk sidefelt",
     "addToServer": "Legg til på server",
-    "docs": "Dokumentasjon",
-    "support": "Støtte",
     "backToServers": "Tilbake til servere"
   },
   "empty": {

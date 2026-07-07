@@ -98,7 +98,6 @@
     "showingPage": "Σελίδα {{page}} από {{total}} ({{count}} συνολικά)"
   },
   "header": {
-    "notifications": "Ειδοποιήσεις",
     "settings": "Ρυθμίσεις",
     "logout": "Αποσύνδεση",
     "toggleSidebar": "Εναλλαγή πλαϊνής γραμμής",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Κλείσιμο πλαϊνής γραμμής",
     "addToServer": "Προσθήκη στον server",
-    "docs": "Τεκμηρίωση",
-    "support": "Υποστήριξη",
     "backToServers": "Επιστροφή στους servers"
   },
   "empty": {

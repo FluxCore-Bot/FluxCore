@@ -98,7 +98,6 @@
     "showingPage": "पृष्ठ {{page}} / {{total}} ({{count}} कुल)"
   },
   "header": {
-    "notifications": "सूचनाएं",
     "settings": "सेटिंग्स",
     "logout": "लॉग आउट",
     "toggleSidebar": "साइडबार टॉगल करें",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "साइडबार बंद करें",
     "addToServer": "सर्वर में जोड़ें",
-    "docs": "दस्तावेज़",
-    "support": "सहायता",
     "backToServers": "सर्वर पर वापस जाएं"
   },
   "empty": {

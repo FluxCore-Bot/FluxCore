@@ -98,7 +98,6 @@
     "showingPage": "Pagina {{page}} din {{total}} ({{count}} total)"
   },
   "header": {
-    "notifications": "Notificări",
     "settings": "Setări",
     "logout": "Deconectare",
     "toggleSidebar": "Comută bara laterală",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Închide bara laterală",
     "addToServer": "Adaugă pe Server",
-    "docs": "Documentație",
-    "support": "Suport",
     "backToServers": "Înapoi la Servere"
   },
   "empty": {

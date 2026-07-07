@@ -98,7 +98,6 @@
     "showingPage": "பக்கம் {{page}} / {{total}} ({{count}} மொத்தம்)"
   },
   "header": {
-    "notifications": "அறிவிப்புகள்",
     "settings": "அமைப்புகள்",
     "logout": "வெளியேறு",
     "toggleSidebar": "பக்கப்பட்டி மாற்று",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "பக்கப்பட்டி மூடு",
     "addToServer": "சேவையகத்தில் சேர்",
-    "docs": "ஆவணங்கள்",
-    "support": "ஆதரவு",
     "backToServers": "சேவையகங்களுக்குத் திரும்பு"
   },
   "empty": {

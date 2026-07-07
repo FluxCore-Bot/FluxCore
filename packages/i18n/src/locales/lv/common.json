@@ -98,7 +98,6 @@
     "showingPage": "{{page}}. lappuse no {{total}} (kopā {{count}})"
   },
   "header": {
-    "notifications": "Paziņojumi",
     "settings": "Iestatījumi",
     "logout": "Iziet",
     "toggleSidebar": "Pārlikt sānu joslu",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Aizvērt sānu joslu",
     "addToServer": "Pievienot serverim",
-    "docs": "Dokumentācija",
-    "support": "Atbalsts",
     "backToServers": "Atpakaļ uz serveriem"
   },
   "empty": {

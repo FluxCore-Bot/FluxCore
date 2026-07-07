@@ -98,7 +98,6 @@
     "showingPage": "Pagina {{page}} van {{total}} ({{count}} totaal)"
   },
   "header": {
-    "notifications": "Meldingen",
     "settings": "Instellingen",
     "logout": "Uitloggen",
     "toggleSidebar": "Zijbalk in-/uitschakelen",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Zijbalk sluiten",
     "addToServer": "Toevoegen aan server",
-    "docs": "Documentatie",
-    "support": "Ondersteuning",
     "backToServers": "Terug naar servers"
   },
   "empty": {

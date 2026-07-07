@@ -98,7 +98,6 @@
     "showingPage": "עמוד {{page}} מתוך {{total}} ({{count}} סה\"כ)"
   },
   "header": {
-    "notifications": "התראות",
     "settings": "הגדרות",
     "logout": "התנתקות",
     "toggleSidebar": "החלפת סרגל צד",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "סגירת סרגל צד",
     "addToServer": "הוספה לשרת",
-    "docs": "מסמכים",
-    "support": "תמיכה",
     "backToServers": "חזרה לשרתים"
   },
   "empty": {

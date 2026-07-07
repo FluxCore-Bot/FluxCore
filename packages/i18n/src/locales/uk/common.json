@@ -98,7 +98,6 @@
     "showingPage": "Сторінка {{page}} з {{total}} (всього {{count}})"
   },
   "header": {
-    "notifications": "Сповіщення",
     "settings": "Налаштування",
     "logout": "Вийти",
     "toggleSidebar": "Перемкнути бічну панель",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Закрити бічну панель",
     "addToServer": "Додати на сервер",
-    "docs": "Документація",
-    "support": "Підтримка",
     "backToServers": "Назад до серверів"
   },
   "empty": {

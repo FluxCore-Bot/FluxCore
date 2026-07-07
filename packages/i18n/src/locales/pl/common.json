@@ -98,7 +98,6 @@
     "showingPage": "Strona {{page}} z {{total}} ({{count}} łącznie)"
   },
   "header": {
-    "notifications": "Powiadomienia",
     "settings": "Ustawienia",
     "logout": "Wyloguj",
     "toggleSidebar": "Przełącz panel boczny",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Zamknij panel boczny",
     "addToServer": "Dodaj do serwera",
-    "docs": "Dokumentacja",
-    "support": "Wsparcie",
     "backToServers": "Wróć do serwerów"
   },
   "empty": {

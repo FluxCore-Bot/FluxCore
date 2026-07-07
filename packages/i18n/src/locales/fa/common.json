@@ -98,7 +98,6 @@
     "showingPage": "صفحه {{page}} از {{total}} ({{count}} کل)"
   },
   "header": {
-    "notifications": "اعلان‌ها",
     "settings": "تنظیمات",
     "logout": "خروج",
     "toggleSidebar": "تغییر نوار کناری",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "بستن نوار کناری",
     "addToServer": "افزودن به سرور",
-    "docs": "مستندات",
-    "support": "پشتیبانی",
     "backToServers": "بازگشت به سرورها"
   },
   "empty": {

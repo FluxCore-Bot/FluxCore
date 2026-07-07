@@ -98,7 +98,6 @@
     "showingPage": "Bladsy {{page}} van {{total}} ({{count}} totaal)"
   },
   "header": {
-    "notifications": "Kennisgewings",
     "settings": "Instellings",
     "logout": "Teken Uit",
     "toggleSidebar": "Wissel sybalk",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Sluit sybalk",
     "addToServer": "Voeg by Bediener",
-    "docs": "Dokumentasie",
-    "support": "Ondersteuning",
     "backToServers": "Terug na Bedieners"
   },
   "empty": {

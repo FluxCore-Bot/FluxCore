@@ -98,7 +98,6 @@
     "showingPage": "Halaman {{page}} dari {{total}} ({{count}} total)"
   },
   "header": {
-    "notifications": "Notifikasi",
     "settings": "Pengaturan",
     "logout": "Keluar",
     "toggleSidebar": "Tampilkan/sembunyikan bilah sisi",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Tutup bilah sisi",
     "addToServer": "Tambahkan ke Server",
-    "docs": "Dokumentasi",
-    "support": "Dukungan",
     "backToServers": "Kembali ke Server"
   },
   "empty": {

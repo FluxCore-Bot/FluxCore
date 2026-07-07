@@ -98,7 +98,6 @@
     "showingPage": "Страница {{page}} от {{total}} (общо {{count}})"
   },
   "header": {
-    "notifications": "Известия",
     "settings": "Настройки",
     "logout": "Изход",
     "toggleSidebar": "Превключи страничната лента",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Затвори страничната лента",
     "addToServer": "Добави към сървъра",
-    "docs": "Документация",
-    "support": "Поддръжка",
     "backToServers": "Назад към сървърите"
   },
   "empty": {

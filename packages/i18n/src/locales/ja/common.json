@@ -98,7 +98,6 @@
     "showingPage": "{{total}}ページ中{{page}}ページ目（合計{{count}}件）"
   },
   "header": {
-    "notifications": "通知",
     "settings": "設定",
     "logout": "ログアウト",
     "toggleSidebar": "サイドバーの切り替え",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "サイドバーを閉じる",
     "addToServer": "サーバーに追加",
-    "docs": "ドキュメント",
-    "support": "サポート",
     "backToServers": "サーバー一覧に戻る"
   },
   "empty": {

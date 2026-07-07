@@ -98,7 +98,6 @@
     "showingPage": "Side {{page}} af {{total}} ({{count}} i alt)"
   },
   "header": {
-    "notifications": "Notifikationer",
     "settings": "Indstillinger",
     "logout": "Log ud",
     "toggleSidebar": "Skift sidepanel",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Luk sidepanel",
     "addToServer": "Tilføj til server",
-    "docs": "Dokumentation",
-    "support": "Support",
     "backToServers": "Tilbage til servere"
   },
   "empty": {

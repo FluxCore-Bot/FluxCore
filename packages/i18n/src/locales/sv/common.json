@@ -98,7 +98,6 @@
     "showingPage": "Sida {{page}} av {{total}} ({{count}} totalt)"
   },
   "header": {
-    "notifications": "Aviseringar",
     "settings": "Inställningar",
     "logout": "Logga ut",
     "toggleSidebar": "Växla sidofält",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Stäng sidofält",
     "addToServer": "Lägg till på server",
-    "docs": "Dokumentation",
-    "support": "Support",
     "backToServers": "Tillbaka till servrar"
   },
   "empty": {

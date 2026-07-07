@@ -98,7 +98,6 @@
     "showingPage": "Pahina {{page}} ng {{total}} ({{count}} kabuuan)"
   },
   "header": {
-    "notifications": "Mga Abiso",
     "settings": "Mga Setting",
     "logout": "Mag-logout",
     "toggleSidebar": "I-toggle ang sidebar",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Isara ang sidebar",
     "addToServer": "Idagdag sa Server",
-    "docs": "Dokumentasyon",
-    "support": "Suporta",
     "backToServers": "Bumalik sa mga Server"
   },
   "empty": {

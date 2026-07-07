@@ -98,7 +98,6 @@
     "showingPage": "Страница {{page}} из {{total}} (всего {{count}})"
   },
   "header": {
-    "notifications": "Уведомления",
     "settings": "Настройки",
     "logout": "Выйти",
     "toggleSidebar": "Переключить боковую панель",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Закрыть боковую панель",
     "addToServer": "Добавить на сервер",
-    "docs": "Документация",
-    "support": "Поддержка",
     "backToServers": "Назад к серверам"
   },
   "empty": {

@@ -98,7 +98,6 @@
     "showingPage": "Lehekülg {{page}} / {{total}} (kokku {{count}})"
   },
   "header": {
-    "notifications": "Teavitused",
     "settings": "Seaded",
     "logout": "Logi välja",
     "toggleSidebar": "Lülita külgriba",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Sulge külgriba",
     "addToServer": "Lisa serverisse",
-    "docs": "Dokumentatsioon",
-    "support": "Tugi",
     "backToServers": "Tagasi serveritesse"
   },
   "empty": {

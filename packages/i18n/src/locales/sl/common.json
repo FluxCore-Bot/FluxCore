@@ -98,7 +98,6 @@
     "showingPage": "Stran {{page}} od {{total}} (skupaj {{count}})"
   },
   "header": {
-    "notifications": "Obvestila",
     "settings": "Nastavitve",
     "logout": "Odjava",
     "toggleSidebar": "Preklopi stransko vrstico",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Zapri stransko vrstico",
     "addToServer": "Dodaj na strežnik",
-    "docs": "Dokumentacija",
-    "support": "Podpora",
     "backToServers": "Nazaj na strežnike"
   },
   "empty": {

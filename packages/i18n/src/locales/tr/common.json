@@ -98,7 +98,6 @@
     "showingPage": "{{total}} sayfalık {{page}}. sayfa (toplam {{count}})"
   },
   "header": {
-    "notifications": "Bildirimler",
     "settings": "Ayarlar",
     "logout": "Çıkış Yap",
     "toggleSidebar": "Kenar çubuğunu aç/kapat",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Kenar çubuğunu kapat",
     "addToServer": "Sunucuya Ekle",
-    "docs": "Belgeler",
-    "support": "Destek",
     "backToServers": "Sunuculara Dön"
   },
   "empty": {

@@ -98,7 +98,6 @@
     "showingPage": "หน้า {{page}} จาก {{total}} (รวม {{count}} รายการ)"
   },
   "header": {
-    "notifications": "การแจ้งเตือน",
     "settings": "ตั้งค่า",
     "logout": "ออกจากระบบ",
     "toggleSidebar": "สลับแถบด้านข้าง",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "ปิดแถบด้านข้าง",
     "addToServer": "เพิ่มไปยังเซิร์ฟเวอร์",
-    "docs": "เอกสาร",
-    "support": "สนับสนุน",
     "backToServers": "กลับไปยังรายการเซิร์ฟเวอร์"
   },
   "empty": {

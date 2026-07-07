@@ -98,7 +98,6 @@
     "showingPage": "Sivu {{page}} / {{total}} ({{count}} yhteensä)"
   },
   "header": {
-    "notifications": "Ilmoitukset",
     "settings": "Asetukset",
     "logout": "Kirjaudu ulos",
     "toggleSidebar": "Vaihda sivupalkkia",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Sulje sivupalkki",
     "addToServer": "Lisää palvelimelle",
-    "docs": "Dokumentaatio",
-    "support": "Tuki",
     "backToServers": "Takaisin palvelimiin"
   },
   "empty": {

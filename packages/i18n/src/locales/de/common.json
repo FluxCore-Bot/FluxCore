@@ -98,7 +98,6 @@
     "showingPage": "Seite {{page}} von {{total}} ({{count}} gesamt)"
   },
   "header": {
-    "notifications": "Benachrichtigungen",
     "settings": "Einstellungen",
     "logout": "Abmelden",
     "toggleSidebar": "Seitenleiste umschalten",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Seitenleiste schließen",
     "addToServer": "Zum Server hinzufügen",
-    "docs": "Dokumentation",
-    "support": "Support",
     "backToServers": "Zurück zu den Servern"
   },
   "empty": {

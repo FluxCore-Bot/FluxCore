@@ -98,7 +98,6 @@
     "showingPage": "{{page}}. oldal / {{total}} (összesen {{count}})"
   },
   "header": {
-    "notifications": "Értesítések",
     "settings": "Beállítások",
     "logout": "Kijelentkezés",
     "toggleSidebar": "Oldalsáv váltása",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Oldalsáv bezárása",
     "addToServer": "Hozzáadás a szerverhez",
-    "docs": "Dokumentáció",
-    "support": "Támogatás",
     "backToServers": "Vissza a szerverekhez"
   },
   "empty": {

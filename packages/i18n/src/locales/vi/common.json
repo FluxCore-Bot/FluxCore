@@ -98,7 +98,6 @@
     "showingPage": "Trang {{page}} / {{total}} (tổng {{count}})"
   },
   "header": {
-    "notifications": "Thông Báo",
     "settings": "Cài Đặt",
     "logout": "Đăng Xuất",
     "toggleSidebar": "Hiện/ẩn thanh bên",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Đóng thanh bên",
     "addToServer": "Thêm Vào Máy Chủ",
-    "docs": "Tài Liệu",
-    "support": "Hỗ Trợ",
     "backToServers": "Quay Lại Danh Sách Máy Chủ"
   },
   "empty": {

@@ -98,7 +98,6 @@
     "showingPage": "الصفحة {{page}} من {{total}} ({{count}} إجمالي)"
   },
   "header": {
-    "notifications": "الإشعارات",
     "settings": "الإعدادات",
     "logout": "تسجيل الخروج",
     "toggleSidebar": "تبديل الشريط الجانبي",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "إغلاق الشريط الجانبي",
     "addToServer": "إضافة إلى السيرفر",
-    "docs": "المستندات",
-    "support": "الدعم",
     "backToServers": "العودة إلى السيرفرات"
   },
   "empty": {

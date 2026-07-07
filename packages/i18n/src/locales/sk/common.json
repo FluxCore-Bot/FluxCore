@@ -98,7 +98,6 @@
     "showingPage": "Strana {{page}} z {{total}} (celkom {{count}})"
   },
   "header": {
-    "notifications": "Oznámenia",
     "settings": "Nastavenia",
     "logout": "Odhlásiť",
     "toggleSidebar": "Prepnúť bočný panel",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Zatvoriť bočný panel",
     "addToServer": "Pridať na server",
-    "docs": "Dokumentácia",
-    "support": "Podpora",
     "backToServers": "Späť na servery"
   },
   "empty": {

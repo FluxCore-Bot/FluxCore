@@ -98,7 +98,6 @@
     "showingPage": "Stranica {{page}} od {{total}} ({{count}} ukupno)"
   },
   "header": {
-    "notifications": "Obavijesti",
     "settings": "Postavke",
     "logout": "Odjava",
     "toggleSidebar": "Prebaci bočnu traku",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Zatvori bočnu traku",
     "addToServer": "Dodaj na poslužitelj",
-    "docs": "Dokumentacija",
-    "support": "Podrška",
     "backToServers": "Natrag na poslužitelje"
   },
   "empty": {

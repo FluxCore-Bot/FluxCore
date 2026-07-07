@@ -98,7 +98,6 @@
     "showingPage": "Page {{page}} sur {{total}} ({{count}} au total)"
   },
   "header": {
-    "notifications": "Notifications",
     "settings": "Paramètres",
     "logout": "Déconnexion",
     "toggleSidebar": "Afficher/masquer la barre latérale",
@@ -107,8 +106,6 @@
   "sidebar": {
     "closeSidebar": "Fermer la barre latérale",
     "addToServer": "Ajouter au serveur",
-    "docs": "Documentation",
-    "support": "Support",
     "backToServers": "Retour aux serveurs"
   },
   "empty": {
