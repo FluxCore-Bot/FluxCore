@@ -67,10 +67,10 @@ export function Sidebar({ guildId, isOpen, onClose }: SidebarProps) {
         <TooltipTrigger asChild>
           <button
             onClick={onClose}
-            className="mb-2 flex items-center justify-end lg:hidden"
+            className="mb-2 -me-2 flex h-11 w-11 items-center justify-center self-end rounded-md text-text-muted transition-colors hover:bg-surface-high hover:text-text lg:hidden"
             aria-label={t("sidebar.closeSidebar")}
           >
-            <Icon name="close" size={20} className="text-text-muted" />
+            <Icon name="close" size={20} />
           </button>
         </TooltipTrigger>
         <TooltipContent>{t("sidebar.closeSidebar")}</TooltipContent>
@@ -82,7 +82,7 @@ export function Sidebar({ guildId, isOpen, onClose }: SidebarProps) {
           <Icon name="bolt" filled />
         </div>
         <div>
-          <h1 className="font-label font-bold leading-none text-accent">{t("brand.engine")}</h1>
+          <p className="font-label font-bold leading-none text-accent">{t("brand.engine")}</p>
           <div className="mt-1 flex items-center gap-2">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-success" aria-hidden="true" />
             <span className="section-label text-text-muted">{t("status.online")}</span>
@@ -147,25 +147,9 @@ export function Sidebar({ guildId, isOpen, onClose }: SidebarProps) {
           </a>
         )}
 
-        <div className="space-y-1">
-          <a
-            href="#"
-            className="flex items-center gap-3 px-3 py-1.5 text-xs text-text-muted transition-colors hover:text-text"
-          >
-            <Icon name="menu_book" size={16} />
-            {t("sidebar.docs")}
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-3 px-3 py-1.5 text-xs text-text-muted transition-colors hover:text-text"
-          >
-            <Icon name="help" size={16} />
-            {t("sidebar.support")}
-          </a>
-        </div>
         <Link
           to="/"
-          className="flex items-center gap-3 px-3 py-1.5 text-xs text-text-muted transition-colors hover:text-text hover:no-underline"
+          className="flex items-center gap-3 px-3 py-2 text-xs text-text-muted transition-colors hover:text-text hover:no-underline"
         >
           <Icon name="arrow_back" size={16} className="rtl:rotate-180" />
           {t("sidebar.backToServers")}

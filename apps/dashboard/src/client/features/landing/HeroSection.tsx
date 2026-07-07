@@ -6,7 +6,7 @@ export function HeroSection() {
   const { t } = useTranslation("landing");
   const { data: botInfo } = useBotInfo();
   return (
-    <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden px-4 py-20 sm:min-h-[90vh] sm:px-6 sm:py-32">
+    <section className="relative flex min-h-[85dvh] items-center justify-center overflow-hidden px-4 py-20 sm:min-h-[90dvh] sm:px-6 sm:py-32">
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/5 blur-[120px]" />
@@ -59,14 +59,16 @@ export function HeroSection() {
             <Icon name="bolt" size={18} />
             {t("cta.openDashboard")}
           </a>
-          <a
-            href="#features"
-            className="inline-flex h-12 items-center gap-2.5 rounded-lg border border-outline-variant/20 bg-surface-low/50 px-8 font-semibold text-text-secondary transition-all duration-200 hover:bg-surface-high active:scale-[0.98]"
-          >
-            <Icon name="explore" size={18} />
-            {t("cta.exploreFeatures")}
-          </a>
         </div>
+
+        {/* Tertiary action — visually subordinate text link */}
+        <a
+          href="#features"
+          className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-text-muted underline-offset-4 transition-colors hover:text-text hover:underline"
+        >
+          <Icon name="explore" size={16} />
+          {t("cta.exploreFeatures")}
+        </a>
 
         {/* Stats strip */}
         <div className="mt-12 grid grid-cols-2 gap-6 text-text-tertiary sm:mt-16 sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-8 md:gap-12">

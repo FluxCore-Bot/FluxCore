@@ -10,13 +10,13 @@ import { ExecutionChart } from "../../../features/overview/components/ExecutionC
 import { EventDistributionChart } from "../../../features/overview/components/EventDistributionChart";
 import { RecentActivityFeed } from "../../../features/overview/components/RecentActivityFeed";
 import { Button } from "../../../shared/ui/button";
-import { Zap, CheckCircle, BarChart3, Target } from "lucide-react";
+import { Zap, CheckCircle, BarChart3, Target, RefreshCw } from "lucide-react";
 
 export function OverviewPage() {
-  const { t } = useTranslation("overview");
+  const { t } = useTranslation(["overview", "common"]);
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const [days, setDays] = useState(7);
-  const { data: analytics, isLoading } = useAnalytics(guildId, days);
+  const { data: analytics, isLoading, isFetching } = useAnalytics(guildId, days);
   const { data: constants } = useConstants();
 
   if (isLoading || !analytics) return <CardGridSkeleton />;
@@ -57,7 +57,7 @@ export function OverviewPage() {
         />
       </div>
 
-      <div className="flex gap-1">
+      <div className="flex items-center gap-1">
         {[7, 30].map((d) => (
           <Button
             key={d}
@@ -68,6 +68,12 @@ export function OverviewPage() {
             {d}d
           </Button>
         ))}
+        {isFetching && (
+          <span role="status" aria-live="polite" className="ms-2 flex items-center text-text-muted">
+            <RefreshCw size={14} strokeWidth={1.5} className="animate-spin" aria-hidden="true" />
+            <span className="sr-only">{t("common:accessibility.loading")}</span>
+          </span>
+        )}
         {summary.recentErrors > 0 && (
           <span className="ms-auto flex items-center gap-1.5 rounded-full bg-danger/10 px-3 py-1 text-xs font-medium text-danger">
             {t("errorsInLast24h", { count: summary.recentErrors })}

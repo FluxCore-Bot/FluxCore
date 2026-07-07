@@ -64,22 +64,24 @@ export function RootLayout() {
                 </Link>
               </div>
               <div className="flex items-center gap-1 sm:gap-2">
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="ghost" size="icon" aria-label={t("header.notifications")}>
-                      <Icon name="notifications" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>{t("header.notifications")}</TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="ghost" size="icon" aria-label={t("header.settings")} className="hidden sm:inline-flex">
-                      <Icon name="settings" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>{t("header.settings")}</TooltipContent>
-                </Tooltip>
+                {params.guildId && (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        asChild
+                        variant="ghost"
+                        size="icon"
+                        aria-label={t("header.settings")}
+                        className="hidden sm:inline-flex"
+                      >
+                        <Link to="/guild/$guildId/settings" params={{ guildId: params.guildId }}>
+                          <Icon name="settings" />
+                        </Link>
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>{t("header.settings")}</TooltipContent>
+                  </Tooltip>
+                )}
                 {params.guildId && <RefreshDataWidget guildId={params.guildId} />}
                 <Separator orientation="vertical" className="mx-1 h-8 hidden sm:block sm:mx-2" />
                 <LanguageSwitcher />
