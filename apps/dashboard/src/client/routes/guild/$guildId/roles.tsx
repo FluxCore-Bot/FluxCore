@@ -679,6 +679,10 @@ export function RolesPage() {
                     {panel.type === "button" && panel.roles.length > 0 && (
                       <div className="mt-3 flex flex-wrap gap-2">
                         {panel.roles.map((entry, idx) => {
+                          // Discord's native button palette — intentionally verbatim so this
+                          // preview matches what Discord actually renders. Do NOT swap for WCAG
+                          // tokens: fidelity to Discord is the point, and the style name is shown
+                          // alongside (below), so meaning never relies on color alone.
                           const styleClasses: Record<number, string> = {
                             1: "bg-[#5865f2] text-white",
                             2: "bg-[#4f545c] text-white",

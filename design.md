@@ -45,7 +45,8 @@ FluxCore is a modular Discord bot framework with an integrated admin dashboard. 
 | `success` | `#57f287` | Success states |
 | `warning` | `#fee75c` | Warnings |
 | `info` | `#60a5fa` | Informational |
-| `discord` | `#5865F2` | Discord brand integration |
+| `discord` | `#5865F2` | Discord brand — **fill only** (4.19:1 as text = fails AA) |
+| `discord-text` | `#8b94ff` | On-dark Discord text/icons (7.14:1, AAA) |
 
 ### Text
 | Token | Hex | Usage |
@@ -73,9 +74,10 @@ FluxCore is a modular Discord bot framework with an integrated admin dashboard. 
 
 ### Scale
 - **Display-LG (3.5rem):** Hero, high-level status
+- **Title-LG (2rem):** Section & card headers — `font-weight: 600`, `letter-spacing: -0.02em`. Bridges the gap between Display and Headline so hierarchy holds on dense pages (e.g. moderation logs). Tailwind: `text-[2rem]` / `text-3xl`–`text-4xl`.
 - **Headline-SM (1.5rem):** Page headers — `font-weight: 600`, `letter-spacing: -0.02em`
 - **Label-MD (0.75rem):** Technical metadata (Space Grotesk)
-- **Body-MD (0.875rem):** Standard UI text
+- **Body-MD (0.875rem):** Standard UI text — but **inputs render at 1rem (16px) below the `md` breakpoint** to prevent iOS Safari auto-zoom on focus (see `styles.css`).
 
 ---
 
