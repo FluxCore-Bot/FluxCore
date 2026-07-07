@@ -33,7 +33,8 @@
     "category": "Kategorya ng Tiket",
     "create": "Gumawa ng Panel",
     "edit": "I-edit ang Panel",
-    "deploy": "I-deploy ang Panel"
+    "deploy": "I-deploy ang Panel",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Channel ng Transcript",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Kumpirmasyon ng Pagsasara",
     "closeConfirmationDesc": "Mangailangan ng kumpirmasyon bago isara ang tiket.",
     "dmTranscript": "DM Transcript",
-    "dmTranscriptDesc": "Magpadala ng kopya ng transcript sa lumikhang user ng tiket sa pamamagitan ng DM."
+    "dmTranscriptDesc": "Magpadala ng kopya ng transcript sa lumikhang user ng tiket sa pamamagitan ng DM.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Kunin",

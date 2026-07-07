@@ -50,7 +50,10 @@
     "footer": "页脚",
     "thumbnail": "缩略图 URL",
     "image": "图片 URL",
-    "variables": "变量："
+    "variables": "变量：",
+    "titlePlaceholder": "欢迎来到 {server}！",
+    "descriptionPlaceholder": "嘿 {user}，欢迎来到 **{server}**！你是第 #{membercount} 位成员。",
+    "footerPlaceholder": "页脚文本……"
   },
   "saveChanges": "保存更改",
   "saving": "保存中...",
@@ -61,5 +64,80 @@
     "saveFailed": "保存配置失败",
     "testSent": "测试消息将发送到 <#{{channelId}}>",
     "testFailed": "发送测试消息失败"
+  },
+  "defaults": {
+    "welcomeSubtitle": "欢迎来到 {server}！",
+    "farewellSubtitle": "再见，{user.name}！"
+  },
+  "imageEditor": {
+    "livePreview": "实时预览",
+    "previewAlt": "{{type}} 图片预览",
+    "generatingPreview": "正在生成预览……",
+    "previewPlaceholder": "预览将显示在此处",
+    "template": "模板",
+    "background": {
+      "title": "背景",
+      "solidColor": "纯色",
+      "gradient": "渐变",
+      "customImage": "自定义图片",
+      "colorPicker": "背景颜色选择器",
+      "colorHex": "背景颜色十六进制值",
+      "uploadImage": "上传背景图片",
+      "upload": "上传图片",
+      "uploading": "正在上传……",
+      "set": "背景已设置",
+      "fileHint": "JPG、PNG 或 WebP。最大 3 MB。"
+    },
+    "overlay": {
+      "title": "叠加变暗",
+      "opacity": "不透明度"
+    },
+    "avatar": {
+      "title": "头像",
+      "shape": "形状",
+      "shapeCircle": "圆形",
+      "shapeRounded": "圆角方形",
+      "shapeSquare": "方形",
+      "borderWidth": "边框宽度",
+      "borderColor": "边框颜色",
+      "borderColorPicker": "头像边框颜色选择器",
+      "borderColorHex": "头像边框颜色十六进制值",
+      "glowEffect": "发光效果",
+      "glowColorPicker": "头像发光颜色选择器",
+      "glowColorHex": "头像发光颜色十六进制值"
+    },
+    "typography": {
+      "title": "排版",
+      "titleSection": "标题（用户名）",
+      "subtitleSection": "副标题（自定义文本）",
+      "font": "字体",
+      "color": "颜色",
+      "size": "大小",
+      "text": "文本",
+      "titleColorPicker": "标题颜色选择器",
+      "titleColorHex": "标题颜色十六进制值",
+      "subtitleColorPicker": "副标题颜色选择器",
+      "subtitleColorHex": "副标题颜色十六进制值",
+      "subtitlePlaceholder": "欢迎来到 {server}！",
+      "subtitleVariables": "变量：{user.name} {server} {membercount}"
+    },
+    "accent": {
+      "title": "强调色",
+      "colorPicker": "强调色选择器",
+      "colorHex": "强调色十六进制值",
+      "hint": "用于装饰、边框和模板强调元素。"
+    },
+    "delivery": {
+      "title": "投放模式",
+      "with": "随嵌入消息一起",
+      "before": "在嵌入消息之前",
+      "only": "仅图片（无嵌入）"
+    },
+    "toast": {
+      "imageTooLarge": "背景图片必须小于 3 MB",
+      "uploaded": "背景已上传",
+      "uploadFailed": "上传背景失败",
+      "previewFailed": "生成预览失败"
+    }
   }
 }

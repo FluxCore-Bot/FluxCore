@@ -26,7 +26,8 @@
       "original": "Originalnachricht",
       "stars": "Sterne",
       "channel": "Kanal",
-      "date": "Datum"
+      "date": "Datum",
+      "author": "Autor"
     },
     "noMessages": "Noch keine markierten Nachrichten."
   },

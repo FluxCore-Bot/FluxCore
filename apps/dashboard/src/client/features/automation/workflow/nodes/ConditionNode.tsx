@@ -13,19 +13,19 @@ export interface ConditionNodeData {
   [key: string]: unknown;
 }
 
-const OPERATOR_LABELS: Record<string, string> = {
-  equals: "=",
-  notEquals: "≠",
-  contains: "contains",
-  notContains: "!contains",
-  startsWith: "starts",
-  endsWith: "ends",
-  greaterThan: ">",
-  lessThan: "<",
-  hasRole: "has role",
-  notHasRole: "!has role",
-  inList: "in",
-  notInList: "not in",
+const OPERATOR_LABEL_KEYS: Record<string, string> = {
+  equals: "operatorShort.equals",
+  notEquals: "operatorShort.notEquals",
+  contains: "operatorShort.contains",
+  notContains: "operatorShort.notContains",
+  startsWith: "operatorShort.startsWith",
+  endsWith: "operatorShort.endsWith",
+  greaterThan: "operatorShort.greaterThan",
+  lessThan: "operatorShort.lessThan",
+  hasRole: "operatorShort.hasRole",
+  notHasRole: "operatorShort.notHasRole",
+  inList: "operatorShort.inList",
+  notInList: "operatorShort.notInList",
 };
 
 function getBorderClass(
@@ -46,7 +46,8 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
   const { field, operator, value, label, validationState } =
     data as ConditionNodeData;
   const isConfigured = field && operator;
-  const opLabel = OPERATOR_LABELS[operator] ?? operator;
+  const opLabelKey = OPERATOR_LABEL_KEYS[operator];
+  const opLabel = opLabelKey ? t(opLabelKey) : operator;
 
   return (
     <>
@@ -58,7 +59,7 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
       />
       <div
         role="group"
-        aria-label={`Condition: ${label}`}
+        aria-label={t("nodes.ariaCondition", { label })}
         className={`min-w-[200px] max-w-[260px] rounded-lg border-2 px-4 py-3 transition-all ${getBorderClass(selected, validationState)}`}
       >
         <div className="mb-1.5 flex items-center gap-2">
@@ -66,7 +67,7 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
             <Icon name="call_split" size={14} className="text-warning" />
           </div>
           <span className="section-label text-warning">
-            Condition
+            {t("nodes.condition")}
           </span>
           {!isConfigured && (
             <span
@@ -87,7 +88,7 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
         type="source"
         position={Position.Right}
         id="then"
-        title="Yes (then)"
+        title={t("nodes.yesThen")}
         className="!h-4 !w-4 !border-2 !border-secondary !bg-surface-high"
         style={{ top: "30%" }}
       />
@@ -96,7 +97,7 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
         type="source"
         position={Position.Right}
         id="else"
-        title="No (else)"
+        title={t("nodes.noElse")}
         className="!h-4 !w-4 !border-2 !border-danger !bg-surface-high"
         style={{ top: "70%" }}
       />

@@ -25,7 +25,8 @@
     "date": "Date",
     "actions": "Actions",
     "noCases": "No cases found.",
-    "noReason": "No reason"
+    "noReason": "No reason",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "Filter by User ID...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Send a DM to users when they are punished (ban, kick, timeout).",
     "modLogChannel": "Mod Log Channel",
     "modLogChannelDesc": "Channel where moderation actions are logged."
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

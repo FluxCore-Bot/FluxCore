@@ -79,7 +79,9 @@
     "conditions": "شرائط",
     "duration": "مدت",
     "reason": "وجہ",
-    "language": "زبان"
+    "language": "زبان",
+    "limit": "حد",
+    "options": "اختیارات"
   },
   "form": {
     "selectChannel": "چینل منتخب کریں...",
@@ -119,7 +121,8 @@
     "hours": "گھنٹے",
     "days": "دن",
     "ago": "{{time}} پہلے",
-    "in": "{{time}} میں"
+    "in": "{{time}} میں",
+    "weeks": "ہفتے"
   },
   "confirm": {
     "title": "کیا آپ یقین رکھتے ہیں؟",
@@ -134,5 +137,9 @@
     "error": "ایک خرابی پیش آئی",
     "menuOpen": "مینو کھلا ہے",
     "menuClosed": "مینو بند ہے"
+  },
+  "language": {
+    "searchPlaceholder": "زبانیں تلاش کریں...",
+    "noResults": "کوئی زبان نہیں ملی"
   }
 }

@@ -108,5 +108,6 @@
     "channelRequired": "Kanal je obvezen",
     "maxRolesReached": "Največ 25 vlog na ploščo"
   },
-  "loading": "Nalaganje plošč..."
+  "loading": "Nalaganje plošč...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

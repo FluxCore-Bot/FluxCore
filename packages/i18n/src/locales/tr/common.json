@@ -79,7 +79,9 @@
     "conditions": "Koşullar",
     "duration": "Süre",
     "reason": "Sebep",
-    "language": "Dil"
+    "language": "Dil",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Kanal seçin...",
@@ -119,7 +121,8 @@
     "hours": "saat",
     "days": "gün",
     "ago": "{{time}} önce",
-    "in": "{{time}} içinde"
+    "in": "{{time}} içinde",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Emin misiniz?",
@@ -134,5 +137,9 @@
     "error": "Bir hata oluştu",
     "menuOpen": "Menü açık",
     "menuClosed": "Menü kapalı"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

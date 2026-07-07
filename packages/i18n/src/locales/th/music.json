@@ -52,6 +52,7 @@
     "albumName": "ชื่ออัลบั้ม",
     "albumNamePlaceholder": "เพลย์ลิสต์ของฉัน",
     "deleteAlbum": "ลบ",
-    "atMax": "คุณถึงจำนวนอัลบั้มสูงสุดแล้ว"
+    "atMax": "คุณถึงจำนวนอัลบั้มสูงสุดแล้ว",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

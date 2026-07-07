@@ -79,7 +79,9 @@
       "description": "로그가 구성되고 이벤트가 발생하면 이벤트 로그가 여기에 표시됩니다."
     },
     "config": {
-      "selectChannel": "로그 채널 선택"
+      "selectChannel": "로그 채널 선택",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

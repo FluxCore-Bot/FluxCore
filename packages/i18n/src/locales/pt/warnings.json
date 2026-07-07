@@ -68,5 +68,8 @@
     "requireReasonDesc": "Os moderadores devem fornecer um motivo ao emitir um aviso.",
     "maxWarnings": "Avisos maximos",
     "maxWarningsDesc": "Maximo de avisos por utilizador (0 = ilimitado)."
-  }
+  },
+  "noWarningsDesc": "Nenhuma advertência foi emitida ainda",
+  "confirmDelete": "Tem certeza de que deseja excluir este item? Esta ação não pode ser desfeita.",
+  "confirmRemoveEscalation": "Tem certeza de que deseja remover esta regra de escalonamento? Esta ação não pode ser desfeita."
 }

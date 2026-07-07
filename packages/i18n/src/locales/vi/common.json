@@ -79,7 +79,9 @@
     "conditions": "Điều Kiện",
     "duration": "Thời Lượng",
     "reason": "Lý Do",
-    "language": "Ngôn Ngữ"
+    "language": "Ngôn Ngữ",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Chọn kênh...",
@@ -119,7 +121,8 @@
     "hours": "giờ",
     "days": "ngày",
     "ago": "{{time}} trước",
-    "in": "trong {{time}}"
+    "in": "trong {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Bạn có chắc không?",
@@ -134,5 +137,9 @@
     "error": "Đã xảy ra lỗi",
     "menuOpen": "Menu đang mở",
     "menuClosed": "Menu đang đóng"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

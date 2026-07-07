@@ -15,7 +15,8 @@
     "saving": "Menyimpan...",
     "cancel": "Batal",
     "delete": "Padam",
-    "edit": "Edit"
+    "edit": "Edit",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Belum ada konfigurasi",
@@ -26,5 +27,12 @@
     "updated": "Konfigurasi dikemas kini",
     "created": "Konfigurasi dicipta",
     "removed": "Konfigurasi dibuang"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

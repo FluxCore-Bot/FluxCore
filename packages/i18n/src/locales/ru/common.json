@@ -79,7 +79,9 @@
     "conditions": "Условия",
     "duration": "Длительность",
     "reason": "Причина",
-    "language": "Язык"
+    "language": "Язык",
+    "limit": "Лимит",
+    "options": "Параметры"
   },
   "form": {
     "selectChannel": "Выберите канал...",
@@ -119,7 +121,8 @@
     "hours": "часы",
     "days": "дни",
     "ago": "{{time}} назад",
-    "in": "через {{time}}"
+    "in": "через {{time}}",
+    "weeks": "нед."
   },
   "confirm": {
     "title": "Вы уверены?",
@@ -134,5 +137,9 @@
     "error": "Произошла ошибка",
     "menuOpen": "Меню открыто",
     "menuClosed": "Меню закрыто"
+  },
+  "language": {
+    "searchPlaceholder": "Поиск языков...",
+    "noResults": "Язык не найден"
   }
 }

@@ -15,7 +15,8 @@
     "saving": "Gemmer...",
     "cancel": "Annuller",
     "delete": "Slet",
-    "edit": "Rediger"
+    "edit": "Rediger",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Ingen konfigurationer endnu",
@@ -26,5 +27,12 @@
     "updated": "Konfiguration opdateret",
     "created": "Konfiguration oprettet",
     "removed": "Konfiguration fjernet"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

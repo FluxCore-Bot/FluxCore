@@ -52,6 +52,7 @@
     "albumName": "Pangalan ng Album",
     "albumNamePlaceholder": "Ang Aking Playlist",
     "deleteAlbum": "Burahin",
-    "atMax": "Naabot mo na ang maximum na bilang ng mga album."
+    "atMax": "Naabot mo na ang maximum na bilang ng mga album.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

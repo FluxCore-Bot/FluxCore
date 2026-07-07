@@ -79,7 +79,9 @@
     "conditions": "Συνθήκες",
     "duration": "Διάρκεια",
     "reason": "Αιτιολογία",
-    "language": "Γλώσσα"
+    "language": "Γλώσσα",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Επιλογή καναλιού...",
@@ -119,7 +121,8 @@
     "hours": "ώρες",
     "days": "ημέρες",
     "ago": "πριν {{time}}",
-    "in": "σε {{time}}"
+    "in": "σε {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Είστε σίγουροι;",
@@ -134,5 +137,9 @@
     "error": "Παρουσιάστηκε σφάλμα",
     "menuOpen": "Το μενού είναι ανοικτό",
     "menuClosed": "Το μενού είναι κλειστό"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

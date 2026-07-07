@@ -116,5 +116,7 @@
   "formatters": {
     "voiceTime": "{{hours}}h {{minutes}}m",
     "voiceTimeMinutesOnly": "{{minutes}}m"
-  }
+  },
+  "confirmRemoveReward": "¿Seguro que quieres quitar esta recompensa de rol? Esta acción no se puede deshacer.",
+  "confirmRemoveMultiplier": "¿Seguro que quieres quitar este multiplicador de XP? Esta acción no se puede deshacer."
 }

@@ -33,7 +33,8 @@
     "category": "Κατηγορία εισιτηρίου",
     "create": "Δημιουργία πάνελ",
     "edit": "Επεξεργασία πάνελ",
-    "deploy": "Ανάπτυξη πάνελ"
+    "deploy": "Ανάπτυξη πάνελ",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Κανάλι αντιγράφων",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Επιβεβαίωση κλεισίματος",
     "closeConfirmationDesc": "Απαίτηση επιβεβαίωσης πριν το κλείσιμο εισιτηρίου.",
     "dmTranscript": "DM αντίγραφο",
-    "dmTranscriptDesc": "Αποστολή αντιγράφου του transcript στον δημιουργό εισιτηρίου μέσω DM."
+    "dmTranscriptDesc": "Αποστολή αντιγράφου του transcript στον δημιουργό εισιτηρίου μέσω DM.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Ανάληψη",

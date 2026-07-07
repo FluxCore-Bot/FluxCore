@@ -25,7 +25,8 @@
     "date": "Дата",
     "actions": "Действия",
     "noCases": "Няма намерени случаи.",
-    "noReason": "Без причина"
+    "noReason": "Без причина",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "Филтрирай по ID на потребител...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Изпращай лично съобщение на потребителите при наказание (бан, изритване, таймаут).",
     "modLogChannel": "Канал за журнал на модерацията",
     "modLogChannelDesc": "Каналът, където се регистрират действията по модерация."
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

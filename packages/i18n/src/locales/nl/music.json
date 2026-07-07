@@ -52,6 +52,7 @@
     "albumName": "Albumnaam",
     "albumNamePlaceholder": "Mijn afspeellijst",
     "deleteAlbum": "Verwijderen",
-    "atMax": "Je hebt het maximale aantal albums bereikt."
+    "atMax": "Je hebt het maximale aantal albums bereikt.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

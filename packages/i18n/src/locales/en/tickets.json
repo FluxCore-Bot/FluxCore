@@ -33,7 +33,8 @@
     "category": "Ticket Category",
     "create": "Create Panel",
     "edit": "Edit Panel",
-    "deploy": "Deploy Panel"
+    "deploy": "Deploy Panel",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Transcript Channel",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Close Confirmation",
     "closeConfirmationDesc": "Require confirmation before closing a ticket.",
     "dmTranscript": "DM Transcript",
-    "dmTranscriptDesc": "Send a copy of the transcript to the ticket creator via DM."
+    "dmTranscriptDesc": "Send a copy of the transcript to the ticket creator via DM.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Claim",

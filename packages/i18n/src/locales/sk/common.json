@@ -79,7 +79,9 @@
     "conditions": "Podmienky",
     "duration": "Trvanie",
     "reason": "Dôvod",
-    "language": "Jazyk"
+    "language": "Jazyk",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Vybrať kanál...",
@@ -119,7 +121,8 @@
     "hours": "hodiny",
     "days": "dni",
     "ago": "pred {{time}}",
-    "in": "o {{time}}"
+    "in": "o {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Ste si istí?",
@@ -134,5 +137,9 @@
     "error": "Vyskytla sa chyba",
     "menuOpen": "Menu je otvorené",
     "menuClosed": "Menu je zatvorené"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

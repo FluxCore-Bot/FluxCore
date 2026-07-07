@@ -108,5 +108,6 @@
     "channelRequired": "Channel is required",
     "maxRolesReached": "Maximum 25 roles per panel"
   },
-  "loading": "Loading panels..."
+  "loading": "Loading panels...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

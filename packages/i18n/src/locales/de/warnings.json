@@ -68,5 +68,8 @@
     "requireReasonDesc": "Moderatoren muessen einen Grund angeben, wenn sie eine Verwarnung aussprechen.",
     "maxWarnings": "Maximale Verwarnungen",
     "maxWarningsDesc": "Maximale Verwarnungen pro Benutzer (0 = unbegrenzt)."
-  }
+  },
+  "noWarningsDesc": "Es wurden noch keine Verwarnungen ausgesprochen",
+  "confirmDelete": "Möchtest du dieses Element wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+  "confirmRemoveEscalation": "Möchtest du diese Eskalationsregel wirklich entfernen? Diese Aktion kann nicht rückgängig gemacht werden."
 }

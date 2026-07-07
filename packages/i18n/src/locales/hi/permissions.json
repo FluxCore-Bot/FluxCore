@@ -114,5 +114,12 @@
     "creating": "बनाया जा रहा है...",
     "create": "बनाएं"
   },
-  "loading": "अनुमतियां लोड हो रही हैं..."
+  "loading": "अनुमतियां लोड हो रही हैं...",
+  "guard": {
+    "deniedTitle": "Permission Denied",
+    "deniedMessage": "You don't have permission to access <1>{{module}}</1>.",
+    "requiredPermission": "Required permission:",
+    "yourRoles": "Your roles:",
+    "contactOwner": "Contact your server owner to request access."
+  }
 }

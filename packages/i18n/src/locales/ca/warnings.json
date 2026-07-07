@@ -67,6 +67,9 @@
     "requireReason": "Requerir motiu",
     "requireReasonDesc": "Els moderadors han de proporcionar un motiu en emetre una advertencia.",
     "maxWarnings": "Maxim d'advertencies",
-    "maxWarningsDesc": "Maxim d'advertencies per usuari (0 = il\u00b7limitat)."
-  }
+    "maxWarningsDesc": "Maxim d'advertencies per usuari (0 = il·limitat)."
+  },
+  "noWarningsDesc": "No warnings have been issued yet",
+  "confirmDelete": "Are you sure you want to delete this item? This action cannot be undone.",
+  "confirmRemoveEscalation": "Are you sure you want to remove this escalation rule? This action cannot be undone."
 }

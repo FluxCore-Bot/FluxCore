@@ -8,5 +8,26 @@
     "successRate": "Onnistumisprosentti"
   },
   "errorsInLast24h": "{{count}} virhe viimeisen 24t aikana",
-  "errorsInLast24h_other": "{{count}} virhettä viimeisen 24t aikana"
+  "errorsInLast24h_other": "{{count}} virhettä viimeisen 24t aikana",
+  "recentActivity": {
+    "title": "Recent Activity",
+    "viewAllLogs": "View all logs",
+    "empty": "No activity recorded yet",
+    "timeAgo": {
+      "justNow": "just now",
+      "minutes": "{{count}}m ago",
+      "hours": "{{count}}h ago",
+      "days": "{{count}}d ago"
+    }
+  },
+  "eventDistribution": {
+    "title": "Top Events",
+    "empty": "No event data yet",
+    "executions": "{{count}} executions"
+  },
+  "executionChart": {
+    "title": "Execution Trend",
+    "success": "Success",
+    "errors": "Errors"
+  }
 }

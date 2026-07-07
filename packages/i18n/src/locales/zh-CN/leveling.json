@@ -116,5 +116,7 @@
   "formatters": {
     "voiceTime": "{{hours}}小时{{minutes}}分钟",
     "voiceTimeMinutesOnly": "{{minutes}}分钟"
-  }
+  },
+  "confirmRemoveReward": "确定要移除此身份组奖励吗？此操作无法撤销。",
+  "confirmRemoveMultiplier": "确定要移除此经验值倍率吗？此操作无法撤销。"
 }

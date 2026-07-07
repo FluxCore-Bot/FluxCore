@@ -33,7 +33,8 @@
     "category": "Категория тикета",
     "create": "Создать панель",
     "edit": "Редактировать панель",
-    "deploy": "Развернуть панель"
+    "deploy": "Развернуть панель",
+    "openTicket": "Открыть тикет"
   },
   "settings": {
     "transcriptChannel": "Канал транскриптов",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Подтверждение закрытия",
     "closeConfirmationDesc": "Требовать подтверждение перед закрытием тикета.",
     "dmTranscript": "Транскрипт в ЛС",
-    "dmTranscriptDesc": "Отправлять копию транскрипта создателю тикета через ЛС."
+    "dmTranscriptDesc": "Отправлять копию транскрипта создателю тикета через ЛС.",
+    "staffRolesPlaceholder": "Роли персонала",
+    "namingFormatHint": "Переменные: {number} (с ведущими нулями), {username}"
   },
   "actions": {
     "claim": "Принять",

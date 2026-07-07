@@ -108,5 +108,6 @@
     "channelRequired": "Kanal ist erforderlich",
     "maxRolesReached": "Maximal 25 Rollen pro Panel"
   },
-  "loading": "Panels werden geladen..."
+  "loading": "Panels werden geladen...",
+  "confirmDeletePanel": "Möchtest du dieses Rollen-Panel wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden."
 }

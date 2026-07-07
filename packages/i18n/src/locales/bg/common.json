@@ -79,7 +79,9 @@
     "conditions": "Условия",
     "duration": "Продължителност",
     "reason": "Причина",
-    "language": "Език"
+    "language": "Език",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Изберете канал...",
@@ -119,7 +121,8 @@
     "hours": "часове",
     "days": "дни",
     "ago": "преди {{time}}",
-    "in": "след {{time}}"
+    "in": "след {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Сигурни ли сте?",
@@ -134,5 +137,9 @@
     "error": "Възникна грешка",
     "menuOpen": "Менюто е отворено",
     "menuClosed": "Менюто е затворено"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

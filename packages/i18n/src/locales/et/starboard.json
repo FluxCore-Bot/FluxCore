@@ -26,7 +26,8 @@
       "original": "Algne sõnum",
       "stars": "Tähti",
       "channel": "Kanal",
-      "date": "Kuupäev"
+      "date": "Kuupäev",
+      "author": "Author"
     },
     "noMessages": "Tähistatud sõnumeid pole veel."
   },

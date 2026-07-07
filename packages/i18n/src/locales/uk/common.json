@@ -79,7 +79,9 @@
     "conditions": "Умови",
     "duration": "Тривалість",
     "reason": "Причина",
-    "language": "Мова"
+    "language": "Мова",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Оберіть канал...",
@@ -119,7 +121,8 @@
     "hours": "години",
     "days": "дні",
     "ago": "{{time}} тому",
-    "in": "через {{time}}"
+    "in": "через {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Ви впевнені?",
@@ -134,5 +137,9 @@
     "error": "Сталася помилка",
     "menuOpen": "Меню відкрите",
     "menuClosed": "Меню закрите"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

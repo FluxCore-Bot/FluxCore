@@ -511,7 +511,7 @@ export function WarningsPage() {
         open={deleteConfirmId !== null}
         onOpenChange={(open) => { if (!open) setDeleteConfirmId(null); }}
         title={t("toast.warningRemoved")}
-        description={t("common:actions.confirmDelete", { defaultValue: "Are you sure you want to delete this item? This action cannot be undone." })}
+        description={t("confirmDelete")}
         confirmLabel={t("common:actions.delete", { defaultValue: "Delete" })}
         destructive
         onConfirm={confirmDeleteWarning}
@@ -522,7 +522,7 @@ export function WarningsPage() {
         open={removePunishmentConfirmId !== null}
         onOpenChange={(open) => { if (!open) setRemovePunishmentConfirmId(null); }}
         title={t("toast.thresholdRemoved")}
-        description={t("common:actions.confirmDelete", { defaultValue: "Are you sure you want to remove this escalation rule? This action cannot be undone." })}
+        description={t("confirmRemoveEscalation")}
         confirmLabel={t("common:actions.delete", { defaultValue: "Remove" })}
         destructive
         onConfirm={confirmRemovePunishment}

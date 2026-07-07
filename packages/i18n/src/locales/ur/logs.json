@@ -79,7 +79,9 @@
       "description": "لاگنگ ترتیب دینے اور واقعات شروع ہونے کے بعد ایونٹ لاگ یہاں نظر آئیں گے۔"
     },
     "config": {
-      "selectChannel": "لاگ چینل منتخب کریں"
+      "selectChannel": "لاگ چینل منتخب کریں",
+      "moreEvents_one": "+{{count}} مزید",
+      "moreEvents_other": "+{{count}} مزید"
     }
   }
 }

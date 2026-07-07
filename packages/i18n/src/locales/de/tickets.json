@@ -33,7 +33,8 @@
     "category": "Ticket-Kategorie",
     "create": "Panel erstellen",
     "edit": "Panel bearbeiten",
-    "deploy": "Panel bereitstellen"
+    "deploy": "Panel bereitstellen",
+    "openTicket": "Ticket öffnen"
   },
   "settings": {
     "transcriptChannel": "Transkript-Kanal",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Schliessbestaetigung",
     "closeConfirmationDesc": "Bestaetigung vor dem Schliessen eines Tickets erfordern.",
     "dmTranscript": "DM-Transkript",
-    "dmTranscriptDesc": "Dem Ticket-Ersteller eine Kopie des Transkripts per DM senden."
+    "dmTranscriptDesc": "Dem Ticket-Ersteller eine Kopie des Transkripts per DM senden.",
+    "staffRolesPlaceholder": "Team-Rollen",
+    "namingFormatHint": "Variablen: {number} (mit Nullen aufgefüllt), {username}"
   },
   "actions": {
     "claim": "Uebernehmen",

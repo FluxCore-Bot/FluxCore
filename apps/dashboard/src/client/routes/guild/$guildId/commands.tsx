@@ -357,7 +357,7 @@ export function CommandsPage() {
           accent="success"
         />
         <StatsCard
-          label={t("common:limit")}
+          label={t("common:labels.limit")}
           value={isLoading ? "..." : t("stats.limit", { count: commands?.length ?? 0 })}
           icon={Gauge}
           accent="info"
@@ -659,7 +659,7 @@ export function CommandsPage() {
 
                     {/* Options */}
                     <div>
-                      <h4 className="mb-3 font-label text-sm font-semibold">{t("common:options")}</h4>
+                      <h4 className="mb-3 font-label text-sm font-semibold">{t("common:labels.options")}</h4>
                       <div className="space-y-4">
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                           <div>
@@ -950,7 +950,7 @@ export function CommandsPage() {
         open={deleteConfirmId !== null}
         onOpenChange={(open) => { if (!open) setDeleteConfirmId(null); }}
         title={t("common:confirm.deleteTitle")}
-        description={t("common:actions.confirmDelete", { defaultValue: "Are you sure you want to delete this command? This action cannot be undone." })}
+        description={t("confirmDelete")}
         confirmLabel={t("common:actions.delete", { defaultValue: "Delete" })}
         destructive
         onConfirm={confirmDelete}

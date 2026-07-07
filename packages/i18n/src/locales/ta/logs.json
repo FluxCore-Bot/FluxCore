@@ -79,7 +79,9 @@
       "description": "பதிவு கட்டமைக்கப்பட்டு நிகழ்வுகள் நடக்கத் தொடங்கியதும் நிகழ்வு பதிவுகள் இங்கே தோன்றும்."
     },
     "config": {
-      "selectChannel": "பதிவு சேனலை தேர்ந்தெடு"
+      "selectChannel": "பதிவு சேனலை தேர்ந்தெடு",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

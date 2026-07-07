@@ -108,5 +108,6 @@
     "channelRequired": "Kanal je obavezan",
     "maxRolesReached": "Maksimalno 25 uloga po panelu"
   },
-  "loading": "Ucitavanje panela..."
+  "loading": "Ucitavanje panela...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

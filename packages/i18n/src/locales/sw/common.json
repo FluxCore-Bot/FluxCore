@@ -79,7 +79,9 @@
     "conditions": "Masharti",
     "duration": "Muda",
     "reason": "Sababu",
-    "language": "Lugha"
+    "language": "Lugha",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Chagua chaneli...",
@@ -119,7 +121,8 @@
     "hours": "masaa",
     "days": "siku",
     "ago": "{{time}} iliyopita",
-    "in": "katika {{time}}"
+    "in": "katika {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Una uhakika?",
@@ -134,5 +137,9 @@
     "error": "Hitilafu imetokea",
     "menuOpen": "Menyu imefunguliwa",
     "menuClosed": "Menyu imefungwa"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

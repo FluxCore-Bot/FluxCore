@@ -79,7 +79,9 @@
       "description": "Les journaux d'événements apparaîtront ici une fois que la journalisation sera configurée et que les événements commenceront à se produire."
     },
     "config": {
-      "selectChannel": "Sélectionner un salon de journalisation"
+      "selectChannel": "Sélectionner un salon de journalisation",
+      "moreEvents_one": "+{{count}} de plus",
+      "moreEvents_other": "+{{count}} de plus"
     }
   }
 }

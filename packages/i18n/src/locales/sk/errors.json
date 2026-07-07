@@ -1,0 +1,40 @@
+{
+  "auth": {
+    "notAuthenticated": "Not authenticated",
+    "sessionExpired": "Session expired",
+    "missingCode": "Missing code parameter",
+    "tokenExchangeFailed": "Token exchange failed",
+    "failedToFetchUser": "Failed to fetch user info"
+  },
+  "permissions": {
+    "noGuildPermission": "No permission for this guild",
+    "botNotInGuild": "Bot is not in this guild",
+    "insufficientPermissions": "Insufficient permissions",
+    "permissionsNotResolved": "Permissions not resolved",
+    "requiresPermission": "This action requires the \"{{permission}}\" permission"
+  },
+  "validation": {
+    "invalidInput": "Invalid input",
+    "missingField": "Missing required field: {{field}}",
+    "invalidFormat": "Invalid format for {{field}}",
+    "tooLong": "{{field}} exceeds maximum length of {{max}} characters",
+    "tooShort": "{{field}} must be at least {{min}} characters",
+    "outOfRange": "{{field}} must be between {{min}} and {{max}}"
+  },
+  "resources": {
+    "notFound": "Not found",
+    "alreadyExists": "{{resource}} already exists",
+    "limitReached": "Maximum of {{max}} {{resource}} per guild",
+    "createFailed": "Failed to create {{resource}}",
+    "updateFailed": "Failed to update {{resource}}",
+    "deleteFailed": "Failed to delete {{resource}}"
+  },
+  "server": {
+    "internalError": "Internal server error",
+    "serviceUnavailable": "Service temporarily unavailable",
+    "rateLimited": "Too many requests. Please try again later."
+  },
+  "csrf": {
+    "invalidToken": "Invalid or missing CSRF token"
+  }
+}

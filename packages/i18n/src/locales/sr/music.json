@@ -52,6 +52,7 @@
     "albumName": "Назив албума",
     "albumNamePlaceholder": "Моја плејлиста",
     "deleteAlbum": "Обриши",
-    "atMax": "Достигли сте максималан број албума."
+    "atMax": "Достигли сте максималан број албума.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

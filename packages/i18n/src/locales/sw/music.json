@@ -52,6 +52,7 @@
     "albumName": "Jina la Album",
     "albumNamePlaceholder": "Orodha Yangu ya Kucheza",
     "deleteAlbum": "Futa",
-    "atMax": "Umefika idadi ya juu ya album."
+    "atMax": "Umefika idadi ya juu ya album.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

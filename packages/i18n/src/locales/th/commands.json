@@ -1,26 +1,114 @@
 {
   "title": "คำสั่งกำหนดเอง",
   "subtitle": "สร้างตอบกลับอัตโนมัติและคำสั่งพรีฟิกซ์ที่ทริกเกอร์โดยข้อความ",
-  "stats": { "totalCommands": "คำสั่งทั้งหมด", "enabled": "เปิดใช้งาน", "limit": "{{count}} / 50" },
-  "tabs": { "commands": "คำสั่ง", "variables": "ตัวแปร" },
-  "table": { "name": "ชื่อ", "trigger": "ทริกเกอร์", "response": "การตอบกลับ", "cooldown": "คูลดาวน์", "status": "สถานะ" },
-  "triggerTypes": { "command": "!command", "keyword": "คีย์เวิร์ด", "startsWith": "ขึ้นต้นด้วย", "regex": "Regex", "prefixCommand": "คำสั่งพรีฟิกซ์ (!name)", "keywordContains": "คีย์เวิร์ด (ประกอบด้วย)" },
-  "dialog": { "createCommand": "สร้างคำสั่ง", "editCommand": "แก้ไขคำสั่ง" },
-  "form": { "commandName": "ชื่อคำสั่ง", "triggerText": "ข้อความทริกเกอร์", "regexPattern": "รูปแบบ Regex", "triggerType": "ประเภททริกเกอร์", "response": "การตอบกลับ", "message": "ข้อความ", "embedTitle": "ชื่อ Embed", "embedDescription": "คำอธิบาย Embed", "color": "สี", "footer": "ส่วนท้าย" },
-  "options": { "cooldown": "คูลดาวน์ (วินาที)", "enabled": "เปิดใช้งาน", "enabledDesc": "คำสั่งนี้เปิดใช้งานอยู่หรือไม่", "deleteTrigger": "ลบข้อความทริกเกอร์", "deleteTriggerDesc": "ลบข้อความที่ทริกเกอร์คำสั่งนี้โดยอัตโนมัติ", "dmResponse": "ตอบกลับทาง DM", "dmResponseDesc": "ส่งการตอบกลับเป็นข้อความส่วนตัวแทนที่จะส่งในแชนเนล" },
-  "restrictions": { "title": "ข้อจำกัด", "allowedChannels": "แชนเนลที่อนุญาต (ว่าง = ทั้งหมด)", "allowedRoles": "บทบาทที่อนุญาต (ว่าง = ทุกคน)", "addChannel": "เพิ่มแชนเนล", "addRole": "เพิ่มบทบาท" },
-  "actions": { "create": "สร้าง", "update": "อัปเดต", "cancel": "ยกเลิก", "addAction": "เพิ่มแอ็กชัน", "addRole": "เพิ่มบทบาท", "removeRole": "ลบบทบาท" },
-  "actionsSection": { "title": "แอ็กชัน ({{count}}/5)", "noActions": "ยังไม่ได้ตั้งค่าแอ็กชัน เพิ่มแอ็กชันเพื่อกำหนดพฤติกรรมของคำสั่งนี้", "maxActions": "สูงสุด 5 แอ็กชันต่อคำสั่ง" },
+  "stats": {
+    "totalCommands": "คำสั่งทั้งหมด",
+    "enabled": "เปิดใช้งาน",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "คำสั่ง",
+    "variables": "ตัวแปร"
+  },
+  "table": {
+    "name": "ชื่อ",
+    "trigger": "ทริกเกอร์",
+    "response": "การตอบกลับ",
+    "cooldown": "คูลดาวน์",
+    "status": "สถานะ"
+  },
+  "triggerTypes": {
+    "command": "!command",
+    "keyword": "คีย์เวิร์ด",
+    "startsWith": "ขึ้นต้นด้วย",
+    "regex": "Regex",
+    "prefixCommand": "คำสั่งพรีฟิกซ์ (!name)",
+    "keywordContains": "คีย์เวิร์ด (ประกอบด้วย)"
+  },
+  "dialog": {
+    "createCommand": "สร้างคำสั่ง",
+    "editCommand": "แก้ไขคำสั่ง"
+  },
+  "form": {
+    "commandName": "ชื่อคำสั่ง",
+    "triggerText": "ข้อความทริกเกอร์",
+    "regexPattern": "รูปแบบ Regex",
+    "triggerType": "ประเภททริกเกอร์",
+    "response": "การตอบกลับ",
+    "message": "ข้อความ",
+    "embedTitle": "ชื่อ Embed",
+    "embedDescription": "คำอธิบาย Embed",
+    "color": "สี",
+    "footer": "ส่วนท้าย"
+  },
+  "options": {
+    "cooldown": "คูลดาวน์ (วินาที)",
+    "enabled": "เปิดใช้งาน",
+    "enabledDesc": "คำสั่งนี้เปิดใช้งานอยู่หรือไม่",
+    "deleteTrigger": "ลบข้อความทริกเกอร์",
+    "deleteTriggerDesc": "ลบข้อความที่ทริกเกอร์คำสั่งนี้โดยอัตโนมัติ",
+    "dmResponse": "ตอบกลับทาง DM",
+    "dmResponseDesc": "ส่งการตอบกลับเป็นข้อความส่วนตัวแทนที่จะส่งในแชนเนล"
+  },
+  "restrictions": {
+    "title": "ข้อจำกัด",
+    "allowedChannels": "แชนเนลที่อนุญาต (ว่าง = ทั้งหมด)",
+    "allowedRoles": "บทบาทที่อนุญาต (ว่าง = ทุกคน)",
+    "addChannel": "เพิ่มแชนเนล",
+    "addRole": "เพิ่มบทบาท"
+  },
+  "actions": {
+    "create": "สร้าง",
+    "update": "อัปเดต",
+    "cancel": "ยกเลิก",
+    "addAction": "เพิ่มแอ็กชัน",
+    "addRole": "เพิ่มบทบาท",
+    "removeRole": "ลบบทบาท"
+  },
+  "actionsSection": {
+    "title": "แอ็กชัน ({{count}}/5)",
+    "noActions": "ยังไม่ได้ตั้งค่าแอ็กชัน เพิ่มแอ็กชันเพื่อกำหนดพฤติกรรมของคำสั่งนี้",
+    "maxActions": "สูงสุด 5 แอ็กชันต่อคำสั่ง"
+  },
   "variables": {
     "title": "ตัวแปรเทมเพลต",
     "description": "ใช้ตัวแปรเหล่านี้ในการตอบกลับคำสั่ง จะถูกแทนที่ด้วยค่าจริงเมื่อคำสั่งถูกทริกเกอร์",
-    "table": { "variable": "ตัวแปร", "description": "คำอธิบาย" },
-    "entries": { "user": "{user} — กล่าวถึงผู้ใช้ที่ทริกเกอร์คำสั่ง", "username": "{username} — ชื่อแสดงของผู้ใช้", "userId": "{userId} — ID ผู้ใช้", "server": "{server} — ชื่อเซิร์ฟเวอร์", "channel": "{channel} — กล่าวถึงแชนเนลปัจจุบัน", "channelName": "{channelName} — ชื่อแชนเนล", "memberCount": "{memberCount} — จำนวนสมาชิกเซิร์ฟเวอร์ทั้งหมด" }
+    "table": {
+      "variable": "ตัวแปร",
+      "description": "คำอธิบาย"
+    },
+    "entries": {
+      "user": "{user} — กล่าวถึงผู้ใช้ที่ทริกเกอร์คำสั่ง",
+      "username": "{username} — ชื่อแสดงของผู้ใช้",
+      "userId": "{userId} — ID ผู้ใช้",
+      "server": "{server} — ชื่อเซิร์ฟเวอร์",
+      "channel": "{channel} — กล่าวถึงแชนเนลปัจจุบัน",
+      "channelName": "{channelName} — ชื่อแชนเนล",
+      "memberCount": "{memberCount} — จำนวนสมาชิกเซิร์ฟเวอร์ทั้งหมด"
+    }
   },
-  "toast": { "created": "สร้างคำสั่งแล้ว", "createFailed": "ไม่สามารถสร้างคำสั่งได้", "updated": "อัปเดตคำสั่งแล้ว", "updateFailed": "ไม่สามารถอัปเดตคำสั่งได้", "deleted": "ลบคำสั่งแล้ว", "deleteFailed": "ไม่สามารถลบคำสั่งได้", "toggleEnabled": "เปิดใช้งานคำสั่งแล้ว", "toggleDisabled": "ปิดใช้งานคำสั่งแล้ว", "toggleFailed": "ไม่สามารถสลับคำสั่งได้" },
+  "toast": {
+    "created": "สร้างคำสั่งแล้ว",
+    "createFailed": "ไม่สามารถสร้างคำสั่งได้",
+    "updated": "อัปเดตคำสั่งแล้ว",
+    "updateFailed": "ไม่สามารถอัปเดตคำสั่งได้",
+    "deleted": "ลบคำสั่งแล้ว",
+    "deleteFailed": "ไม่สามารถลบคำสั่งได้",
+    "toggleEnabled": "เปิดใช้งานคำสั่งแล้ว",
+    "toggleDisabled": "ปิดใช้งานคำสั่งแล้ว",
+    "toggleFailed": "ไม่สามารถสลับคำสั่งได้"
+  },
   "empty": "ยังไม่มีคำสั่งกำหนดเอง",
   "loading": "กำลังโหลดคำสั่ง...",
-  "badge": { "active": "ใช้งาน", "disabled": "ปิดใช้งาน", "text": "ข้อความ", "embed": "Embed" },
-  "validation": { "nameRequired": "ต้องระบุชื่อคำสั่ง" },
-  "triggerPrefix": "ทริกเกอร์: !{{name}}"
+  "badge": {
+    "active": "ใช้งาน",
+    "disabled": "ปิดใช้งาน",
+    "text": "ข้อความ",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "ต้องระบุชื่อคำสั่ง"
+  },
+  "triggerPrefix": "ทริกเกอร์: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
 }

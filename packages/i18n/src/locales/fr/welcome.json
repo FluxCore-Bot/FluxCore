@@ -50,7 +50,10 @@
     "footer": "Pied de page",
     "thumbnail": "URL de la miniature",
     "image": "URL de l'image",
-    "variables": "Variables :"
+    "variables": "Variables :",
+    "titlePlaceholder": "Bienvenue sur {server} !",
+    "descriptionPlaceholder": "Salut {user}, bienvenue sur **{server}** ! Tu es le membre n°{membercount}.",
+    "footerPlaceholder": "Texte du pied de page..."
   },
   "saveChanges": "Enregistrer les modifications",
   "saving": "Enregistrement...",
@@ -61,5 +64,80 @@
     "saveFailed": "Echec de l'enregistrement de la configuration",
     "testSent": "Le message de test sera envoye dans <#{{channelId}}>",
     "testFailed": "Echec de l'envoi du message de test"
+  },
+  "defaults": {
+    "welcomeSubtitle": "Bienvenue sur {server} !",
+    "farewellSubtitle": "Au revoir, {user.name} !"
+  },
+  "imageEditor": {
+    "livePreview": "Aperçu en direct",
+    "previewAlt": "Aperçu de l'image {{type}}",
+    "generatingPreview": "Génération de l'aperçu...",
+    "previewPlaceholder": "L'aperçu apparaîtra ici",
+    "template": "Modèle",
+    "background": {
+      "title": "Arrière-plan",
+      "solidColor": "Couleur unie",
+      "gradient": "Dégradé",
+      "customImage": "Image personnalisée",
+      "colorPicker": "Sélecteur de couleur d'arrière-plan",
+      "colorHex": "Valeur hexadécimale de la couleur d'arrière-plan",
+      "uploadImage": "Téléverser une image d'arrière-plan",
+      "upload": "Téléverser une image",
+      "uploading": "Téléversement...",
+      "set": "Arrière-plan défini",
+      "fileHint": "JPG, PNG ou WebP. 3 Mo max."
+    },
+    "overlay": {
+      "title": "Assombrissement de la superposition",
+      "opacity": "Opacité"
+    },
+    "avatar": {
+      "title": "Avatar",
+      "shape": "Forme",
+      "shapeCircle": "Cercle",
+      "shapeRounded": "Carré arrondi",
+      "shapeSquare": "Carré",
+      "borderWidth": "Épaisseur de la bordure",
+      "borderColor": "Couleur de la bordure",
+      "borderColorPicker": "Sélecteur de couleur de bordure d'avatar",
+      "borderColorHex": "Valeur hexadécimale de la couleur de bordure d'avatar",
+      "glowEffect": "Effet de lueur",
+      "glowColorPicker": "Sélecteur de couleur de lueur d'avatar",
+      "glowColorHex": "Valeur hexadécimale de la couleur de lueur d'avatar"
+    },
+    "typography": {
+      "title": "Typographie",
+      "titleSection": "Titre (nom d'utilisateur)",
+      "subtitleSection": "Sous-titre (texte personnalisé)",
+      "font": "Police",
+      "color": "Couleur",
+      "size": "Taille",
+      "text": "Texte",
+      "titleColorPicker": "Sélecteur de couleur du titre",
+      "titleColorHex": "Valeur hexadécimale de la couleur du titre",
+      "subtitleColorPicker": "Sélecteur de couleur du sous-titre",
+      "subtitleColorHex": "Valeur hexadécimale de la couleur du sous-titre",
+      "subtitlePlaceholder": "Bienvenue sur {server} !",
+      "subtitleVariables": "Variables : {user.name} {server} {membercount}"
+    },
+    "accent": {
+      "title": "Couleur d'accentuation",
+      "colorPicker": "Sélecteur de couleur d'accentuation",
+      "colorHex": "Valeur hexadécimale de la couleur d'accentuation",
+      "hint": "Utilisée pour les décorations, les bordures et les accents des modèles."
+    },
+    "delivery": {
+      "title": "Mode de diffusion",
+      "with": "Avec le message embed",
+      "before": "Avant le message embed",
+      "only": "Image uniquement (sans embed)"
+    },
+    "toast": {
+      "imageTooLarge": "L'image d'arrière-plan doit faire moins de 3 Mo",
+      "uploaded": "Arrière-plan téléversé",
+      "uploadFailed": "Échec du téléversement de l'arrière-plan",
+      "previewFailed": "Échec de la génération de l'aperçu"
+    }
   }
 }

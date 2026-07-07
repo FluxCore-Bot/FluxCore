@@ -79,7 +79,9 @@
     "conditions": "শর্তাবলী",
     "duration": "সময়কাল",
     "reason": "কারণ",
-    "language": "ভাষা"
+    "language": "ভাষা",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "চ্যানেল বেছে নিন...",
@@ -119,7 +121,8 @@
     "hours": "ঘণ্টা",
     "days": "দিন",
     "ago": "{{time}} আগে",
-    "in": "{{time}} এ"
+    "in": "{{time}} এ",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "আপনি কি নিশ্চিত?",
@@ -134,5 +137,9 @@
     "error": "একটি ত্রুটি ঘটেছে",
     "menuOpen": "মেনু খোলা আছে",
     "menuClosed": "মেনু বন্ধ আছে"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

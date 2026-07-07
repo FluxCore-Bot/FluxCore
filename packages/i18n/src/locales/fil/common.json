@@ -79,7 +79,9 @@
     "conditions": "Mga Kondisyon",
     "duration": "Tagal",
     "reason": "Dahilan",
-    "language": "Wika"
+    "language": "Wika",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Pumili ng channel...",
@@ -119,7 +121,8 @@
     "hours": "oras",
     "days": "araw",
     "ago": "{{time}} ang nakalipas",
-    "in": "sa loob ng {{time}}"
+    "in": "sa loob ng {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Sigurado ka ba?",
@@ -134,5 +137,9 @@
     "error": "May naganap na error",
     "menuOpen": "Bukas ang menu",
     "menuClosed": "Sarado ang menu"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

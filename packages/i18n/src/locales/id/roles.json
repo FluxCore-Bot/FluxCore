@@ -108,5 +108,6 @@
     "channelRequired": "Saluran wajib diisi",
     "maxRolesReached": "Maksimum 25 peran per panel"
   },
-  "loading": "Memuat panel..."
+  "loading": "Memuat panel...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

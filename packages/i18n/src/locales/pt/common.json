@@ -79,7 +79,9 @@
     "conditions": "Condições",
     "duration": "Duração",
     "reason": "Motivo",
-    "language": "Idioma"
+    "language": "Idioma",
+    "limit": "Limite",
+    "options": "Opções"
   },
   "form": {
     "selectChannel": "Selecionar canal...",
@@ -119,7 +121,8 @@
     "hours": "horas",
     "days": "dias",
     "ago": "há {{time}}",
-    "in": "em {{time}}"
+    "in": "em {{time}}",
+    "weeks": "semanas"
   },
   "confirm": {
     "title": "Tem a certeza?",
@@ -134,5 +137,9 @@
     "error": "Ocorreu um erro",
     "menuOpen": "Menú aberto",
     "menuClosed": "Menú fechado"
+  },
+  "language": {
+    "searchPlaceholder": "Buscar idiomas...",
+    "noResults": "Nenhum idioma encontrado"
   }
 }

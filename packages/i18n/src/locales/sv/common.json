@@ -79,7 +79,9 @@
     "conditions": "Villkor",
     "duration": "Varaktighet",
     "reason": "Orsak",
-    "language": "Språk"
+    "language": "Språk",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Välj kanal...",
@@ -119,7 +121,8 @@
     "hours": "timmar",
     "days": "dagar",
     "ago": "{{time}} sedan",
-    "in": "om {{time}}"
+    "in": "om {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Är du säker?",
@@ -134,5 +137,9 @@
     "error": "Ett fel uppstod",
     "menuOpen": "Menyn är öppen",
     "menuClosed": "Menyn är stängd"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

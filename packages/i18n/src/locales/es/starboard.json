@@ -26,7 +26,8 @@
       "original": "Mensaje original",
       "stars": "Estrellas",
       "channel": "Canal",
-      "date": "Fecha"
+      "date": "Fecha",
+      "author": "Autor"
     },
     "noMessages": "Aun no hay mensajes destacados."
   },

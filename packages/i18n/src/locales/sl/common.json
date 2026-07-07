@@ -79,7 +79,9 @@
     "conditions": "Pogoji",
     "duration": "Trajanje",
     "reason": "Razlog",
-    "language": "Jezik"
+    "language": "Jezik",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Izberite kanal...",
@@ -119,7 +121,8 @@
     "hours": "ur",
     "days": "dni",
     "ago": "pred {{time}}",
-    "in": "čez {{time}}"
+    "in": "čez {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Ali ste prepričani?",
@@ -134,5 +137,9 @@
     "error": "Prišlo je do napake",
     "menuOpen": "Meni je odprt",
     "menuClosed": "Meni je zaprt"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

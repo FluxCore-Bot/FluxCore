@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "O nome do comando e obrigatorio"
   },
-  "triggerPrefix": "Gatilho: !{{name}}"
+  "triggerPrefix": "Gatilho: !{{name}}",
+  "confirmDelete": "Tem certeza de que deseja excluir este comando? Esta ação não pode ser desfeita."
 }

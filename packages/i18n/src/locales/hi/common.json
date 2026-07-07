@@ -79,7 +79,9 @@
     "conditions": "शर्तें",
     "duration": "अवधि",
     "reason": "कारण",
-    "language": "भाषा"
+    "language": "भाषा",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "चैनल चुनें...",
@@ -119,7 +121,8 @@
     "hours": "घंटे",
     "days": "दिन",
     "ago": "{{time}} पहले",
-    "in": "{{time}} में"
+    "in": "{{time}} में",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "क्या आप सुनिश्चित हैं?",
@@ -134,5 +137,9 @@
     "error": "एक त्रुटि हुई",
     "menuOpen": "मेनू खुला है",
     "menuClosed": "मेनू बंद है"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

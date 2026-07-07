@@ -45,7 +45,9 @@
     "autoThread": "Automatischer Thread",
     "autoThreadDesc": "Automatisch einen Diskussionsthread bei jedem neuen Vorschlag erstellen.",
     "dmOnStatusChange": "DM bei Statusaenderung",
-    "dmOnStatusChangeDesc": "Den Autor per DM benachrichtigen, wenn sich der Status seines Vorschlags aendert."
+    "dmOnStatusChangeDesc": "Den Autor per DM benachrichtigen, wenn sich der Status seines Vorschlags aendert.",
+    "anonymousMode": "Anonymer Modus",
+    "anonymousModeDesc": "Die Identität von Mitgliedern verbergen, die Vorschläge einreichen."
   },
   "toast": {
     "approved": "Vorschlag genehmigt",
@@ -63,5 +65,6 @@
     "previous": "Zurueck",
     "next": "Weiter",
     "page": "Seite {{page}} von {{total}}"
-  }
+  },
+  "confirmDelete": "Möchtest du diesen Vorschlag wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden."
 }

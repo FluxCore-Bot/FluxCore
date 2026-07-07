@@ -25,7 +25,8 @@
     "date": "日付",
     "actions": "操作",
     "noCases": "ケースが見つかりません。",
-    "noReason": "理由なし"
+    "noReason": "理由なし",
+    "noCasesDesc": "フィルターに一致するモデレーションケースはありません"
   },
   "filter": {
     "userPlaceholder": "ユーザーIDでフィルター...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "処罰 (BAN、キック、タイムアウト) 時にユーザーにDMを送信します。",
     "modLogChannel": "モデレーションログチャンネル",
     "modLogChannelDesc": "モデレーションアクションが記録されるチャンネル。"
+  },
+  "toast": {
+    "caseDeleted": "ケースを削除しました",
+    "caseUpdated": "ケースを更新しました",
+    "deleteFailed": "ケースの削除に失敗しました",
+    "updateFailed": "ケースの更新に失敗しました"
   }
 }

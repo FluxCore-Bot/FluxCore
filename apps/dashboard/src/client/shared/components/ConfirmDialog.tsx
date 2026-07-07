@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -24,9 +25,10 @@ export function ConfirmDialog({
   title,
   description,
   onConfirm,
-  confirmLabel = "Confirm",
+  confirmLabel,
   destructive = false,
 }: ConfirmDialogProps) {
+  const { t } = useTranslation();
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
@@ -36,7 +38,7 @@ export function ConfirmDialog({
         </DialogHeader>
         <DialogFooter>
           <Button variant="ghost" onClick={() => onOpenChange(false)}>
-            Cancel
+            {t("actions.cancel")}
           </Button>
           <Button
             variant={destructive ? "destructive" : "default"}
@@ -45,7 +47,7 @@ export function ConfirmDialog({
               onOpenChange(false);
             }}
           >
-            {confirmLabel}
+            {confirmLabel ?? t("actions.confirm")}
           </Button>
         </DialogFooter>
       </DialogContent>

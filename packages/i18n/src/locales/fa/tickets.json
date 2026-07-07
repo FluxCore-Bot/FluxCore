@@ -33,7 +33,8 @@
     "category": "دسته‌بندی تیکت",
     "create": "ایجاد پنل",
     "edit": "ویرایش پنل",
-    "deploy": "استقرار پنل"
+    "deploy": "استقرار پنل",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "کانال رونوشت",
@@ -43,7 +44,9 @@
     "closeConfirmation": "تأیید بستن",
     "closeConfirmationDesc": "نیاز به تأیید قبل از بستن تیکت.",
     "dmTranscript": "رونوشت با پیام خصوصی",
-    "dmTranscriptDesc": "ارسال نسخه‌ای از رونوشت به سازنده تیکت از طریق پیام خصوصی."
+    "dmTranscriptDesc": "ارسال نسخه‌ای از رونوشت به سازنده تیکت از طریق پیام خصوصی.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "دست گرفتن",

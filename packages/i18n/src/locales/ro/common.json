@@ -79,7 +79,9 @@
     "conditions": "Condiții",
     "duration": "Durată",
     "reason": "Motiv",
-    "language": "Limbă"
+    "language": "Limbă",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Selectează canal...",
@@ -119,7 +121,8 @@
     "hours": "ore",
     "days": "zile",
     "ago": "acum {{time}}",
-    "in": "în {{time}}"
+    "in": "în {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Ești sigur?",
@@ -134,5 +137,9 @@
     "error": "A apărut o eroare",
     "menuOpen": "Meniul este deschis",
     "menuClosed": "Meniul este închis"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

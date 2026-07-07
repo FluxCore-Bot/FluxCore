@@ -15,7 +15,8 @@
     "saving": "Se salvează...",
     "cancel": "Anulează",
     "delete": "Șterge",
-    "edit": "Editează"
+    "edit": "Editează",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Nicio configurație încă",
@@ -26,5 +27,12 @@
     "updated": "Configurație actualizată",
     "created": "Configurație creată",
     "removed": "Configurație eliminată"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

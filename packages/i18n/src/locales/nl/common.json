@@ -79,7 +79,9 @@
     "conditions": "Voorwaarden",
     "duration": "Duur",
     "reason": "Reden",
-    "language": "Taal"
+    "language": "Taal",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Kanaal selecteren...",
@@ -119,7 +121,8 @@
     "hours": "uur",
     "days": "dagen",
     "ago": "{{time}} geleden",
-    "in": "over {{time}}"
+    "in": "over {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Weet je het zeker?",
@@ -134,5 +137,9 @@
     "error": "Er is een fout opgetreden",
     "menuOpen": "Menu is open",
     "menuClosed": "Menu is gesloten"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

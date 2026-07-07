@@ -79,7 +79,9 @@
     "conditions": "Ehdot",
     "duration": "Kesto",
     "reason": "Syy",
-    "language": "Kieli"
+    "language": "Kieli",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Valitse kanava...",
@@ -119,7 +121,8 @@
     "hours": "tuntia",
     "days": "päivää",
     "ago": "{{time}} sitten",
-    "in": "{{time}} kuluttua"
+    "in": "{{time}} kuluttua",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Oletko varma?",
@@ -134,5 +137,9 @@
     "error": "Tapahtui virhe",
     "menuOpen": "Valikko on auki",
     "menuClosed": "Valikko on suljettu"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

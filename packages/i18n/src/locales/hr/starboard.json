@@ -26,7 +26,8 @@
       "original": "Originalna poruka",
       "stars": "Zvjezdice",
       "channel": "Kanal",
-      "date": "Datum"
+      "date": "Datum",
+      "author": "Author"
     },
     "noMessages": "Nema zvjezdanih poruka."
   },

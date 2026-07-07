@@ -79,7 +79,9 @@
     "conditions": "Tingimused",
     "duration": "Kestus",
     "reason": "Põhjus",
-    "language": "Keel"
+    "language": "Keel",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Vali kanal...",
@@ -119,7 +121,8 @@
     "hours": "tundi",
     "days": "päeva",
     "ago": "{{time}} tagasi",
-    "in": "{{time}} pärast"
+    "in": "{{time}} pärast",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Kas oled kindel?",
@@ -134,5 +137,9 @@
     "error": "Tekkis viga",
     "menuOpen": "Menüü on avatud",
     "menuClosed": "Menüü on suletud"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

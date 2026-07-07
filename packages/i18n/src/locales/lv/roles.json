@@ -108,5 +108,6 @@
     "channelRequired": "Kanals ir obligats",
     "maxRolesReached": "Maksimali 25 lomas paneli"
   },
-  "loading": "Iellade panelus..."
+  "loading": "Iellade panelus...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

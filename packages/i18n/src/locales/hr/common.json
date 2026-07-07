@@ -79,7 +79,9 @@
     "conditions": "Uvjeti",
     "duration": "Trajanje",
     "reason": "Razlog",
-    "language": "Jezik"
+    "language": "Jezik",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Odaberite kanal...",
@@ -119,7 +121,8 @@
     "hours": "sati",
     "days": "dana",
     "ago": "prije {{time}}",
-    "in": "za {{time}}"
+    "in": "za {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Jeste li sigurni?",
@@ -134,5 +137,9 @@
     "error": "Došlo je do pogreške",
     "menuOpen": "Izbornik je otvoren",
     "menuClosed": "Izbornik je zatvoren"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

@@ -15,7 +15,8 @@
     "saving": "Sparar...",
     "cancel": "Avbryt",
     "delete": "Ta bort",
-    "edit": "Redigera"
+    "edit": "Redigera",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Inga konfigurationer ännu",
@@ -26,5 +27,12 @@
     "updated": "Konfiguration uppdaterad",
     "created": "Konfiguration skapad",
     "removed": "Konfiguration borttagen"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

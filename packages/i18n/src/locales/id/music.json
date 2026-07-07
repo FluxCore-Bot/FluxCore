@@ -52,6 +52,7 @@
     "albumName": "Nama Album",
     "albumNamePlaceholder": "Daftar Putar Saya",
     "deleteAlbum": "Hapus",
-    "atMax": "Anda telah mencapai jumlah album maksimal."
+    "atMax": "Anda telah mencapai jumlah album maksimal.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

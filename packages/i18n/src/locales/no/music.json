@@ -52,6 +52,7 @@
     "albumName": "Albumnavn",
     "albumNamePlaceholder": "Min spilleliste",
     "deleteAlbum": "Slett",
-    "atMax": "Du har nådd maksimalt antall album."
+    "atMax": "Du har nådd maksimalt antall album.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

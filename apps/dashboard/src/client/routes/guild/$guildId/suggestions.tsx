@@ -500,7 +500,7 @@ export function SuggestionsPage() {
         open={deleteConfirmId !== null}
         onOpenChange={(open) => { if (!open) setDeleteConfirmId(null); }}
         title={t("actions.delete")}
-        description={t("common:actions.confirmDelete", { defaultValue: "Are you sure you want to delete this suggestion? This action cannot be undone." })}
+        description={t("confirmDelete")}
         confirmLabel={t("common:actions.delete", { defaultValue: "Delete" })}
         destructive
         onConfirm={confirmDelete}

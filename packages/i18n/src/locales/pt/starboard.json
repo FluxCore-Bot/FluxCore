@@ -26,7 +26,8 @@
       "original": "Mensagem original",
       "stars": "Estrelas",
       "channel": "Canal",
-      "date": "Data"
+      "date": "Data",
+      "author": "Autor"
     },
     "noMessages": "Ainda sem mensagens com estrela."
   },

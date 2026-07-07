@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "اسم الأمر مطلوب"
   },
-  "triggerPrefix": "المشغل: !{{name}}"
+  "triggerPrefix": "المشغل: !{{name}}",
+  "confirmDelete": "هل أنت متأكد من رغبتك في حذف هذا الأمر؟ لا يمكن التراجع عن هذا الإجراء."
 }

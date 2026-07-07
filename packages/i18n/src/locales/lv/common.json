@@ -79,7 +79,9 @@
     "conditions": "Nosacījumi",
     "duration": "Ilgums",
     "reason": "Iemesls",
-    "language": "Valoda"
+    "language": "Valoda",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Atlasiet kanālu...",
@@ -119,7 +121,8 @@
     "hours": "stundas",
     "days": "dienas",
     "ago": "pirms {{time}}",
-    "in": "pēc {{time}}"
+    "in": "pēc {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Vai esat pārliecināts?",
@@ -134,5 +137,9 @@
     "error": "Radusies kļūda",
     "menuOpen": "Izvēlne ir atvērta",
     "menuClosed": "Izvēlne ir aizvērta"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

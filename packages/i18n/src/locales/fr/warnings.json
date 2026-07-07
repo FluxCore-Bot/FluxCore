@@ -68,5 +68,8 @@
     "requireReasonDesc": "Les moderateurs doivent fournir une raison lorsqu'ils emettent un avertissement.",
     "maxWarnings": "Avertissements maximum",
     "maxWarningsDesc": "Nombre maximum d'avertissements par utilisateur (0 = illimite)."
-  }
+  },
+  "noWarningsDesc": "Aucun avertissement n'a encore été émis",
+  "confirmDelete": "Voulez-vous vraiment supprimer cet élément ? Cette action est irréversible.",
+  "confirmRemoveEscalation": "Voulez-vous vraiment retirer cette règle d'escalade ? Cette action est irréversible."
 }

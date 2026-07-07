@@ -33,7 +33,8 @@
     "category": "Kaartjiekategorie",
     "create": "Skep Paneel",
     "edit": "Wysig Paneel",
-    "deploy": "Ontplooi Paneel"
+    "deploy": "Ontplooi Paneel",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Transkripsiekanaal",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Sluitbevestiging",
     "closeConfirmationDesc": "Vereis bevestiging voor die sluiting van 'n kaartjie.",
     "dmTranscript": "DM-transkripsie",
-    "dmTranscriptDesc": "Stuur 'n kopie van die transkripsie na die kaartjieskepper via DM."
+    "dmTranscriptDesc": "Stuur 'n kopie van die transkripsie na die kaartjieskepper via DM.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Eis",

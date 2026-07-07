@@ -153,7 +153,7 @@ function CategoryCard({
         ))}
         {events.length > 4 && (
           <Badge variant="outline" className="text-xs">
-            +{events.length - 4} more
+            {t("events.config.moreEvents", { count: events.length - 4 })}
           </Badge>
         )}
       </div>

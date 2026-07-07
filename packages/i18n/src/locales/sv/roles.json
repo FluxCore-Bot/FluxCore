@@ -108,5 +108,6 @@
     "channelRequired": "Kanal krävs",
     "maxRolesReached": "Maximalt 25 roller per panel"
   },
-  "loading": "Laddar paneler..."
+  "loading": "Laddar paneler...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

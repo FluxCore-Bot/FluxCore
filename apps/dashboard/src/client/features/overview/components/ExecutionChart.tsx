@@ -7,12 +7,14 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { useTranslation } from "react-i18next";
+import type { TFunction } from "i18next";
 
 interface ExecutionChartProps {
   data: Array<{ date: string; total: number; success: number; error: number }>;
 }
 
-function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: Array<{ value: number; dataKey: string }>; label?: string }) {
+function CustomTooltip({ active, payload, label, t }: { active?: boolean; payload?: Array<{ value: number; dataKey: string }>; label?: string; t: TFunction }) {
   if (!active || !payload) return null;
   return (
     <div className="rounded-lg bg-surface-high p-3 text-xs shadow-lg glass-edge">
@@ -23,7 +25,7 @@ function CustomTooltip({ active, payload, label }: { active?: boolean; payload?:
             className="me-1.5 inline-block h-2 w-2 rounded-full"
             style={{ backgroundColor: entry.dataKey === "success" ? "#57f287" : "#ff6e84" }}
           />
-          {entry.dataKey === "success" ? "Success" : "Errors"}: {entry.value}
+          {entry.dataKey === "success" ? t("executionChart.success") : t("executionChart.errors")}: {entry.value}
         </p>
       ))}
     </div>
@@ -31,10 +33,11 @@ function CustomTooltip({ active, payload, label }: { active?: boolean; payload?:
 }
 
 export function ExecutionChart({ data }: ExecutionChartProps) {
+  const { t } = useTranslation("overview");
   return (
     <div className="rounded-lg bg-surface-low p-6 glass-edge">
       <h3 className="mb-5 section-label text-text-muted">
-        Execution Trend
+        {t("executionChart.title")}
       </h3>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
@@ -66,7 +69,7 @@ export function ExecutionChart({ data }: ExecutionChartProps) {
               axisLine={false}
               allowDecimals={false}
             />
-            <Tooltip content={<CustomTooltip />} />
+            <Tooltip content={<CustomTooltip t={t} />} />
             <Area
               type="monotone"
               dataKey="success"

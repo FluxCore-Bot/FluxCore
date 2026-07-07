@@ -45,7 +45,9 @@
     "autoThread": "自動スレッド作成",
     "autoThreadDesc": "新しい提案ごとに自動的にディスカッションスレッドを作成します。",
     "dmOnStatusChange": "ステータス変更時にDM送信",
-    "dmOnStatusChangeDesc": "提案のステータスが変更された時に投稿者にDMで通知します。"
+    "dmOnStatusChangeDesc": "提案のステータスが変更された時に投稿者にDMで通知します。",
+    "anonymousMode": "匿名モード",
+    "anonymousModeDesc": "提案を送信したメンバーの身元を非表示にします。"
   },
   "toast": {
     "approved": "提案を承認しました",
@@ -63,5 +65,6 @@
     "previous": "前へ",
     "next": "次へ",
     "page": "ページ {{page}} / {{total}}"
-  }
+  },
+  "confirmDelete": "この提案を削除してもよろしいですか？この操作は元に戻せません。"
 }

@@ -79,7 +79,9 @@
       "description": "گزارش‌های رویداد پس از پیکربندی ثبت و شروع رویدادها اینجا نمایش داده می‌شوند."
     },
     "config": {
-      "selectChannel": "کانال گزارش را انتخاب کنید"
+      "selectChannel": "کانال گزارش را انتخاب کنید",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

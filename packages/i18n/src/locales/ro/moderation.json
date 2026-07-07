@@ -25,7 +25,8 @@
     "date": "Dată",
     "actions": "Acțiuni",
     "noCases": "Nu s-au găsit cazuri.",
-    "noReason": "Niciun motiv"
+    "noReason": "Niciun motiv",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "Filtrează după ID utilizator...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Trimite un MP utilizatorilor când sunt sancționați (ban, expulzare, timeout).",
     "modLogChannel": "Canal Jurnal Moderare",
     "modLogChannelDesc": "Canalul unde sunt înregistrate acțiunile de moderare."
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

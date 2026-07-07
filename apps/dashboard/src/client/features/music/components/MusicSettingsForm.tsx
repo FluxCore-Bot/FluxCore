@@ -82,7 +82,7 @@ export function MusicSettingsForm() {
       });
       toast.success(t("settings.updated"));
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "An error occurred");
+      setError(err instanceof ApiError ? err.message : t("common:accessibility.error"));
     }
   };
 

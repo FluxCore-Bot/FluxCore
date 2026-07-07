@@ -25,7 +25,8 @@
     "date": "তারিখ",
     "actions": "কার্যকলাপ",
     "noCases": "কোনো কেস পাওয়া যায়নি।",
-    "noReason": "কোনো কারণ নেই"
+    "noReason": "কোনো কারণ নেই",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "ব্যবহারকারী ID দিয়ে ফিল্টার করুন...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "ব্যবহারকারীদের শাস্তি দেওয়া হলে (নিষেধাজ্ঞা, কিক, টাইমআউট) তাদের DM পাঠান।",
     "modLogChannel": "মড লগ চ্যানেল",
     "modLogChannelDesc": "যে চ্যানেলে মডারেশন কার্যকলাপ লগ করা হয়।"
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

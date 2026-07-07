@@ -25,7 +25,8 @@
     "date": "Kuupäev",
     "actions": "Toimingud",
     "noCases": "Juhtumeid ei leitud.",
-    "noReason": "Põhjus puudub"
+    "noReason": "Põhjus puudub",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "Filtreeri kasutaja ID järgi...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Saada kasutajatele DM, kui neid karistatakse (bann, kick, timeout).",
     "modLogChannel": "Modereerimislogi kanal",
     "modLogChannelDesc": "Kanal, kuhu modereerimistoimingud logitakse."
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

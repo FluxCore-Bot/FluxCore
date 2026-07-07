@@ -1,14 +1,75 @@
 {
   "title": "警告",
   "subtitle": "追蹤和管理成員警告，設定自動升級處罰。",
-  "stats": { "totalWarnings": "警告總數", "escalationRules": "升級規則", "dmOnWarn": "警告時私訊" },
-  "tabs": { "warnings": "警告日誌", "escalation": "升級處罰", "settings": "設定" },
-  "table": { "id": "ID", "user": "使用者", "moderator": "管理員", "reason": "原因", "date": "日期" },
-  "filter": { "userPlaceholder": "依使用者 ID 篩選...", "clearAll": "全部清除" },
-  "pagination": { "previous": "上一頁", "next": "下一頁", "page": "第 {{page}} 頁 / 共 {{total}} 頁（共 {{count}} 筆）" },
+  "stats": {
+    "totalWarnings": "警告總數",
+    "escalationRules": "升級規則",
+    "dmOnWarn": "警告時私訊"
+  },
+  "tabs": {
+    "warnings": "警告日誌",
+    "escalation": "升級處罰",
+    "settings": "設定"
+  },
+  "table": {
+    "id": "ID",
+    "user": "使用者",
+    "moderator": "管理員",
+    "reason": "原因",
+    "date": "日期"
+  },
+  "filter": {
+    "userPlaceholder": "依使用者 ID 篩選...",
+    "clearAll": "全部清除"
+  },
+  "pagination": {
+    "previous": "上一頁",
+    "next": "下一頁",
+    "page": "第 {{page}} 頁 / 共 {{total}} 頁（共 {{count}} 筆）"
+  },
   "loading": "正在載入警告...",
   "noWarnings": "找不到警告。",
-  "toast": { "warningRemoved": "警告已移除", "warningsFailed": "刪除警告失敗", "enterUserId": "輸入使用者 ID 以清除該使用者的所有警告", "allCleared": "已清除使用者的所有警告", "clearFailed": "清除警告失敗", "thresholdAdded": "處罰閾值已新增", "thresholdFailed": "新增處罰失敗", "thresholdRemoved": "處罰已移除", "removeFailed": "移除處罰失敗", "settingFailed": "更新設定失敗", "thresholdInvalid": "閾值必須為正數" },
-  "escalation": { "title": "處罰升級", "description": "設定使用者達到特定警告次數時的自動操作。", "threshold": "閾值", "action": "操作", "duration": "時長", "noRules": "未設定升級規則。", "addRule": "新增升級規則", "addButton": "新增規則", "warnings": "{{count}} 次警告", "min": "{{count}} 分鐘", "timeout": "禁言", "kick": "踢出", "ban": "封鎖", "durationLabel": "時長（秒）", "thresholdPlaceholder": "例：3", "durationPlaceholder": "例：3600" },
-  "settings": { "title": "警告設定", "dmOnWarn": "警告時傳送私訊", "dmOnWarnDesc": "使用者收到警告時向其傳送私訊。", "requireReason": "必須填寫原因", "requireReasonDesc": "管理員發出警告時必須提供原因。", "maxWarnings": "最大警告數", "maxWarningsDesc": "每位使用者的最大警告數（0 = 無限制）。" }
+  "toast": {
+    "warningRemoved": "警告已移除",
+    "warningsFailed": "刪除警告失敗",
+    "enterUserId": "輸入使用者 ID 以清除該使用者的所有警告",
+    "allCleared": "已清除使用者的所有警告",
+    "clearFailed": "清除警告失敗",
+    "thresholdAdded": "處罰閾值已新增",
+    "thresholdFailed": "新增處罰失敗",
+    "thresholdRemoved": "處罰已移除",
+    "removeFailed": "移除處罰失敗",
+    "settingFailed": "更新設定失敗",
+    "thresholdInvalid": "閾值必須為正數"
+  },
+  "escalation": {
+    "title": "處罰升級",
+    "description": "設定使用者達到特定警告次數時的自動操作。",
+    "threshold": "閾值",
+    "action": "操作",
+    "duration": "時長",
+    "noRules": "未設定升級規則。",
+    "addRule": "新增升級規則",
+    "addButton": "新增規則",
+    "warnings": "{{count}} 次警告",
+    "min": "{{count}} 分鐘",
+    "timeout": "禁言",
+    "kick": "踢出",
+    "ban": "封鎖",
+    "durationLabel": "時長（秒）",
+    "thresholdPlaceholder": "例：3",
+    "durationPlaceholder": "例：3600"
+  },
+  "settings": {
+    "title": "警告設定",
+    "dmOnWarn": "警告時傳送私訊",
+    "dmOnWarnDesc": "使用者收到警告時向其傳送私訊。",
+    "requireReason": "必須填寫原因",
+    "requireReasonDesc": "管理員發出警告時必須提供原因。",
+    "maxWarnings": "最大警告數",
+    "maxWarningsDesc": "每位使用者的最大警告數（0 = 無限制）。"
+  },
+  "noWarningsDesc": "No warnings have been issued yet",
+  "confirmDelete": "Are you sure you want to delete this item? This action cannot be undone.",
+  "confirmRemoveEscalation": "Are you sure you want to remove this escalation rule? This action cannot be undone."
 }

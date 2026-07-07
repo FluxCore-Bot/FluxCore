@@ -8,5 +8,26 @@
     "successRate": "Процент успеха"
   },
   "errorsInLast24h": "{{count}} ошибка за последние 24ч",
-  "errorsInLast24h_other": "{{count}} ошибок за последние 24ч"
+  "errorsInLast24h_other": "{{count}} ошибок за последние 24ч",
+  "recentActivity": {
+    "title": "Недавняя активность",
+    "viewAllLogs": "Все логи",
+    "empty": "Активность пока не зафиксирована",
+    "timeAgo": {
+      "justNow": "только что",
+      "minutes": "{{count}} мин назад",
+      "hours": "{{count}} ч назад",
+      "days": "{{count}} дн назад"
+    }
+  },
+  "eventDistribution": {
+    "title": "Топ событий",
+    "empty": "Данных о событиях пока нет",
+    "executions": "{{count}} выполнений"
+  },
+  "executionChart": {
+    "title": "Динамика выполнений",
+    "success": "Успешно",
+    "errors": "Ошибки"
+  }
 }

@@ -755,7 +755,7 @@ export function RolesPage() {
         open={deleteConfirmId !== null}
         onOpenChange={(open) => { if (!open) setDeleteConfirmId(null); }}
         title={t("common:actions.delete", { defaultValue: "Delete Panel" })}
-        description={t("common:actions.confirmDelete", { defaultValue: "Are you sure you want to delete this role panel? This action cannot be undone." })}
+        description={t("confirmDeletePanel")}
         confirmLabel={t("common:actions.delete", { defaultValue: "Delete" })}
         destructive
         onConfirm={confirmDelete}

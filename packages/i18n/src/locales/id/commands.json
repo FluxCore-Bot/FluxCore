@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "Nama perintah wajib diisi"
   },
-  "triggerPrefix": "Pemicu: !{{name}}"
+  "triggerPrefix": "Pemicu: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
 }

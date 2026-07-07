@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
+import type { TFunction } from "i18next";
 import {
   useRules,
   useCreateRule,
@@ -37,7 +38,8 @@ interface RuleTemplate {
   labelKey: string;
   descriptionKey: string;
   color: string;
-  draft: RuleDraft;
+  /** Builds the draft with translated, user-facing default name/message values. */
+  buildDraft: (t: TFunction) => RuleDraft;
 }
 
 const RULE_TEMPLATES: RuleTemplate[] = [
@@ -46,84 +48,84 @@ const RULE_TEMPLATES: RuleTemplate[] = [
     labelKey: "templates.welcomeMessage",
     descriptionKey: "templates.welcomeMessageDesc",
     color: "text-secondary",
-    draft: {
-      name: "Welcome Message",
+    buildDraft: (t) => ({
+      name: t("templates.welcomeMessageName"),
       eventType: "memberJoin",
-      actions: [{ type: "sendMessage", message: "Welcome to the server, {user}! We're glad to have you here." }],
+      actions: [{ type: "sendMessage", message: t("templates.welcomeMessageDefault") }],
       conditions: {},
       priority: 0,
       enabled: true,
-    },
+    }),
   },
   {
     icon: "shield_person",
     labelKey: "templates.autoRole",
     descriptionKey: "templates.autoRoleDesc",
     color: "text-accent",
-    draft: {
-      name: "Auto Role",
+    buildDraft: (t) => ({
+      name: t("templates.autoRoleName"),
       eventType: "memberJoin",
       actions: [{ type: "addRole" }],
       conditions: {},
       priority: 0,
       enabled: true,
-    },
+    }),
   },
   {
     icon: "delete_sweep",
     labelKey: "templates.logDeleted",
     descriptionKey: "templates.logDeletedDesc",
     color: "text-warning",
-    draft: {
-      name: "Log Deleted Messages",
+    buildDraft: (t) => ({
+      name: t("templates.logDeletedName"),
       eventType: "messageDeleted",
       actions: [{ type: "logToChannel" }],
       conditions: {},
       priority: 0,
       enabled: true,
-    },
+    }),
   },
   {
     icon: "rocket_launch",
     labelKey: "templates.boostThankYou",
     descriptionKey: "templates.boostThankYouDesc",
     color: "text-[#f47fff]",
-    draft: {
-      name: "Boost Thank You",
+    buildDraft: (t) => ({
+      name: t("templates.boostThankYouName"),
       eventType: "boostStart",
-      actions: [{ type: "sendDM", message: "Thank you for boosting {guild}, {user}! You're awesome!" }],
+      actions: [{ type: "sendDM", message: t("templates.boostThankYouDefault") }],
       conditions: {},
       priority: 0,
       enabled: true,
-    },
+    }),
   },
   {
     icon: "gavel",
     labelKey: "templates.banLogger",
     descriptionKey: "templates.banLoggerDesc",
     color: "text-danger",
-    draft: {
-      name: "Ban Logger",
+    buildDraft: (t) => ({
+      name: t("templates.banLoggerName"),
       eventType: "memberBanned",
       actions: [{ type: "logToChannel" }],
       conditions: {},
       priority: 0,
       enabled: true,
-    },
+    }),
   },
   {
     icon: "forum",
     labelKey: "templates.autoThread",
     descriptionKey: "templates.autoThreadDesc",
     color: "text-secondary",
-    draft: {
-      name: "Auto Thread",
+    buildDraft: (t) => ({
+      name: t("templates.autoThreadName"),
       eventType: "messageCreated",
-      actions: [{ type: "createThread", threadName: "Discussion: {user.name}" }],
+      actions: [{ type: "createThread", threadName: t("templates.autoThreadDefault") }],
       conditions: {},
       priority: 0,
       enabled: true,
-    },
+    }),
   },
 ];
 
@@ -319,7 +321,7 @@ export function RulesPage() {
 
   const handleUseTemplate = (template: RuleTemplate) => {
     setEditingRule(undefined);
-    setEditorDraft(template.draft);
+    setEditorDraft(template.buildDraft(t));
     setShowEditor(true);
   };
 

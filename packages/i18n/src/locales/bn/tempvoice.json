@@ -15,7 +15,8 @@
     "saving": "সংরক্ষণ হচ্ছে...",
     "cancel": "বাতিল",
     "delete": "মুছুন",
-    "edit": "সম্পাদনা"
+    "edit": "সম্পাদনা",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "এখনো কোনো কনফিগারেশন নেই",
@@ -26,5 +27,12 @@
     "updated": "কনফিগারেশন আপডেট হয়েছে",
     "created": "কনফিগারেশন তৈরি হয়েছে",
     "removed": "কনফিগারেশন সরানো হয়েছে"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

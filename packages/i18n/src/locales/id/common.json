@@ -79,7 +79,9 @@
     "conditions": "Kondisi",
     "duration": "Durasi",
     "reason": "Alasan",
-    "language": "Bahasa"
+    "language": "Bahasa",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Pilih saluran...",
@@ -119,7 +121,8 @@
     "hours": "jam",
     "days": "hari",
     "ago": "{{time}} yang lalu",
-    "in": "dalam {{time}}"
+    "in": "dalam {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Apakah Anda yakin?",
@@ -134,5 +137,9 @@
     "error": "Terjadi kesalahan",
     "menuOpen": "Menu terbuka",
     "menuClosed": "Menu tertutup"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

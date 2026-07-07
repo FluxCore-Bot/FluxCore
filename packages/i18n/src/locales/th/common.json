@@ -79,7 +79,9 @@
     "conditions": "เงื่อนไข",
     "duration": "ระยะเวลา",
     "reason": "เหตุผล",
-    "language": "ภาษา"
+    "language": "ภาษา",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "เลือกแชนเนล...",
@@ -119,7 +121,8 @@
     "hours": "ชั่วโมง",
     "days": "วัน",
     "ago": "{{time}}ที่แล้ว",
-    "in": "อีก {{time}}"
+    "in": "อีก {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "คุณแน่ใจหรือไม่?",
@@ -134,5 +137,9 @@
     "error": "เกิดข้อผิดพลาด",
     "menuOpen": "เมนูเปิดอยู่",
     "menuClosed": "เมนูปิดอยู่"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

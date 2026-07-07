@@ -52,6 +52,7 @@
     "albumName": "Album neve",
     "albumNamePlaceholder": "A lejátszásom",
     "deleteAlbum": "Törlés",
-    "atMax": "Elérte az albumok maximális számát."
+    "atMax": "Elérte az albumok maximális számát.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

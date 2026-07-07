@@ -79,7 +79,9 @@
       "description": "Event logs will appear here once logging is configured and events start occurring."
     },
     "config": {
-      "selectChannel": "Select log channel"
+      "selectChannel": "Select log channel",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

@@ -1,113 +1,114 @@
 {
-  "title": "[NEEDS TRANSLATION] Custom Commands",
-  "subtitle": "[NEEDS TRANSLATION] Create auto-responders and prefix commands triggered by messages.",
+  "title": "کسٹم کمانڈز",
+  "subtitle": "پیغامات سے چلنے والے آٹو-ریسپانڈرز اور پریفکس کمانڈز بنائیں۔",
   "stats": {
-    "totalCommands": "[NEEDS TRANSLATION] Total Commands",
-    "enabled": "[NEEDS TRANSLATION] Enabled",
-    "limit": "[NEEDS TRANSLATION] {{count}} / 50"
+    "totalCommands": "کل کمانڈز",
+    "enabled": "فعال",
+    "limit": "{{count}} / 50"
   },
   "tabs": {
-    "commands": "[NEEDS TRANSLATION] Commands",
-    "variables": "[NEEDS TRANSLATION] Variables"
+    "commands": "کمانڈز",
+    "variables": "ویری ایبلز"
   },
   "table": {
-    "name": "[NEEDS TRANSLATION] Name",
-    "trigger": "[NEEDS TRANSLATION] Trigger",
-    "response": "[NEEDS TRANSLATION] Response",
-    "cooldown": "[NEEDS TRANSLATION] Cooldown",
-    "status": "[NEEDS TRANSLATION] Status"
+    "name": "نام",
+    "trigger": "ٹرگر",
+    "response": "جواب",
+    "cooldown": "کول ڈاؤن",
+    "status": "اسٹیٹس"
   },
   "triggerTypes": {
-    "command": "[NEEDS TRANSLATION] !command",
-    "keyword": "[NEEDS TRANSLATION] Keyword",
-    "startsWith": "[NEEDS TRANSLATION] Starts With",
-    "regex": "[NEEDS TRANSLATION] Regex",
-    "prefixCommand": "[NEEDS TRANSLATION] Prefix Command (!name)",
-    "keywordContains": "[NEEDS TRANSLATION] Keyword (contains)"
+    "command": "!command",
+    "keyword": "کلیدی لفظ",
+    "startsWith": "اس سے شروع ہو",
+    "regex": "Regex",
+    "prefixCommand": "پریفکس کمانڈ (!name)",
+    "keywordContains": "کلیدی لفظ (شامل ہو)"
   },
   "dialog": {
-    "createCommand": "[NEEDS TRANSLATION] Create Command",
-    "editCommand": "[NEEDS TRANSLATION] Edit Command"
+    "createCommand": "کمانڈ بنائیں",
+    "editCommand": "کمانڈ میں ترمیم کریں"
   },
   "form": {
-    "commandName": "[NEEDS TRANSLATION] Command Name",
-    "triggerText": "[NEEDS TRANSLATION] Trigger Text",
-    "regexPattern": "[NEEDS TRANSLATION] Regex Pattern",
-    "triggerType": "[NEEDS TRANSLATION] Trigger Type",
-    "response": "[NEEDS TRANSLATION] Response",
-    "message": "[NEEDS TRANSLATION] Message",
-    "embedTitle": "[NEEDS TRANSLATION] Embed Title",
-    "embedDescription": "[NEEDS TRANSLATION] Embed Description",
-    "color": "[NEEDS TRANSLATION] Color",
-    "footer": "[NEEDS TRANSLATION] Footer"
+    "commandName": "کمانڈ کا نام",
+    "triggerText": "ٹرگر ٹیکسٹ",
+    "regexPattern": "Regex پیٹرن",
+    "triggerType": "ٹرگر کی قسم",
+    "response": "جواب",
+    "message": "پیغام",
+    "embedTitle": "Embed کا عنوان",
+    "embedDescription": "Embed کی تفصیل",
+    "color": "رنگ",
+    "footer": "فٹر"
   },
   "options": {
-    "cooldown": "[NEEDS TRANSLATION] Cooldown (seconds)",
-    "enabled": "[NEEDS TRANSLATION] Enabled",
-    "enabledDesc": "[NEEDS TRANSLATION] Whether this command is active",
-    "deleteTrigger": "[NEEDS TRANSLATION] Delete Trigger Message",
-    "deleteTriggerDesc": "[NEEDS TRANSLATION] Automatically delete the message that triggered this command.",
-    "dmResponse": "[NEEDS TRANSLATION] DM Response",
-    "dmResponseDesc": "[NEEDS TRANSLATION] Send the response as a direct message instead of in the channel."
+    "cooldown": "کول ڈاؤن (سیکنڈ)",
+    "enabled": "فعال",
+    "enabledDesc": "آیا یہ کمانڈ فعال ہے",
+    "deleteTrigger": "ٹرگر پیغام حذف کریں",
+    "deleteTriggerDesc": "وہ پیغام خودکار طور پر حذف کریں جس نے یہ کمانڈ چلائی۔",
+    "dmResponse": "DM جواب",
+    "dmResponseDesc": "جواب چینل کے بجائے براہِ راست پیغام کے طور پر بھیجیں۔"
   },
   "restrictions": {
-    "title": "[NEEDS TRANSLATION] Restrictions",
-    "allowedChannels": "[NEEDS TRANSLATION] Allowed Channels (empty = all)",
-    "allowedRoles": "[NEEDS TRANSLATION] Allowed Roles (empty = everyone)",
-    "addChannel": "[NEEDS TRANSLATION] Add Channel",
-    "addRole": "[NEEDS TRANSLATION] Add Role"
+    "title": "پابندیاں",
+    "allowedChannels": "مجاز چینلز (خالی = تمام)",
+    "allowedRoles": "مجاز رولز (خالی = سب)",
+    "addChannel": "چینل شامل کریں",
+    "addRole": "رول شامل کریں"
   },
   "actions": {
-    "create": "[NEEDS TRANSLATION] Create",
-    "update": "[NEEDS TRANSLATION] Update",
-    "cancel": "[NEEDS TRANSLATION] Cancel",
-    "addAction": "[NEEDS TRANSLATION] Add Action",
-    "addRole": "[NEEDS TRANSLATION] Add Role",
-    "removeRole": "[NEEDS TRANSLATION] Remove Role"
+    "create": "بنائیں",
+    "update": "اپ ڈیٹ کریں",
+    "cancel": "منسوخ کریں",
+    "addAction": "ایکشن شامل کریں",
+    "addRole": "رول شامل کریں",
+    "removeRole": "رول ہٹائیں"
   },
   "actionsSection": {
-    "title": "[NEEDS TRANSLATION] Actions ({{count}}/5)",
-    "noActions": "[NEEDS TRANSLATION] No actions configured. Add an action to define what this command does.",
-    "maxActions": "[NEEDS TRANSLATION] Maximum 5 actions per command"
+    "title": "ایکشنز ({{count}}/5)",
+    "noActions": "کوئی ایکشن ترتیب نہیں دیا گیا۔ یہ کمانڈ کیا کرتی ہے، اس کے لیے ایک ایکشن شامل کریں۔",
+    "maxActions": "فی کمانڈ زیادہ سے زیادہ 5 ایکشنز"
   },
   "variables": {
-    "title": "[NEEDS TRANSLATION] Template Variables",
-    "description": "[NEEDS TRANSLATION] Use these variables in your command responses. They will be replaced with the actual values when the command is triggered.",
+    "title": "ٹیمپلیٹ ویری ایبلز",
+    "description": "ان ویری ایبلز کو اپنے کمانڈ جوابات میں استعمال کریں۔ کمانڈ چلنے پر یہ اصل اقدار سے بدل دیے جائیں گے۔",
     "table": {
-      "variable": "[NEEDS TRANSLATION] Variable",
-      "description": "[NEEDS TRANSLATION] Description"
+      "variable": "ویری ایبل",
+      "description": "تفصیل"
     },
     "entries": {
-      "user": "[NEEDS TRANSLATION] {user} — Mentions the user who triggered the command",
-      "username": "[NEEDS TRANSLATION] {username} — The user's display name",
-      "userId": "[NEEDS TRANSLATION] {userId} — The user's ID",
-      "server": "[NEEDS TRANSLATION] {server} — The server name",
-      "channel": "[NEEDS TRANSLATION] {channel} — Mentions the current channel",
-      "channelName": "[NEEDS TRANSLATION] {channelName} — The channel name",
-      "memberCount": "[NEEDS TRANSLATION] {memberCount} — Total number of server members"
+      "user": "{user} — کمانڈ چلانے والے صارف کو مینشن کرتا ہے",
+      "username": "{username} — صارف کا ظاہر ہونے والا نام",
+      "userId": "{userId} — صارف کی ID",
+      "server": "{server} — سرور کا نام",
+      "channel": "{channel} — موجودہ چینل کو مینشن کرتا ہے",
+      "channelName": "{channelName} — چینل کا نام",
+      "memberCount": "{memberCount} — سرور کے کل ممبران کی تعداد"
     }
   },
   "toast": {
-    "created": "[NEEDS TRANSLATION] Command created",
-    "createFailed": "[NEEDS TRANSLATION] Failed to create command",
-    "updated": "[NEEDS TRANSLATION] Command updated",
-    "updateFailed": "[NEEDS TRANSLATION] Failed to update command",
-    "deleted": "[NEEDS TRANSLATION] Command deleted",
-    "deleteFailed": "[NEEDS TRANSLATION] Failed to delete command",
-    "toggleEnabled": "[NEEDS TRANSLATION] Command enabled",
-    "toggleDisabled": "[NEEDS TRANSLATION] Command disabled",
-    "toggleFailed": "[NEEDS TRANSLATION] Failed to toggle command"
+    "created": "کمانڈ بن گئی",
+    "createFailed": "کمانڈ بنانے میں ناکامی",
+    "updated": "کمانڈ اپ ڈیٹ ہو گئی",
+    "updateFailed": "کمانڈ اپ ڈیٹ کرنے میں ناکامی",
+    "deleted": "کمانڈ حذف ہو گئی",
+    "deleteFailed": "کمانڈ حذف کرنے میں ناکامی",
+    "toggleEnabled": "کمانڈ فعال ہو گئی",
+    "toggleDisabled": "کمانڈ غیر فعال ہو گئی",
+    "toggleFailed": "کمانڈ ٹوگل کرنے میں ناکامی"
   },
-  "empty": "[NEEDS TRANSLATION] No custom commands created yet.",
-  "loading": "[NEEDS TRANSLATION] Loading commands...",
+  "empty": "ابھی تک کوئی کسٹم کمانڈ نہیں بنائی گئی۔",
+  "loading": "کمانڈز لوڈ ہو رہی ہیں...",
   "badge": {
-    "active": "[NEEDS TRANSLATION] Active",
-    "disabled": "[NEEDS TRANSLATION] Disabled",
-    "text": "[NEEDS TRANSLATION] Text",
-    "embed": "[NEEDS TRANSLATION] Embed"
+    "active": "فعال",
+    "disabled": "غیر فعال",
+    "text": "ٹیکسٹ",
+    "embed": "Embed"
   },
   "validation": {
-    "nameRequired": "[NEEDS TRANSLATION] Command name is required"
+    "nameRequired": "کمانڈ کا نام ضروری ہے"
   },
-  "triggerPrefix": "[NEEDS TRANSLATION] Trigger: !{{name}}"
+  "triggerPrefix": "ٹرگر: !{{name}}",
+  "confirmDelete": "کیا آپ واقعی یہ کمانڈ حذف کرنا چاہتے ہیں؟ یہ عمل واپس نہیں ہو سکتا۔"
 }

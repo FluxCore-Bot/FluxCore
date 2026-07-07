@@ -79,7 +79,9 @@
     "conditions": "Betingelser",
     "duration": "Varighed",
     "reason": "Årsag",
-    "language": "Sprog"
+    "language": "Sprog",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Vælg kanal...",
@@ -119,7 +121,8 @@
     "hours": "timer",
     "days": "dage",
     "ago": "{{time}} siden",
-    "in": "om {{time}}"
+    "in": "om {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Er du sikker?",
@@ -134,5 +137,9 @@
     "error": "Der opstod en fejl",
     "menuOpen": "Menuen er åben",
     "menuClosed": "Menuen er lukket"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

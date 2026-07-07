@@ -1,14 +1,143 @@
 {
-  "title": "ต้อนรับและอำลา", "subtitle": "ตั้งค่าข้อความต้อนรับ ข้อความอำลา รูปภาพ และบทบาทอัตโนมัติ",
+  "title": "ต้อนรับและอำลา",
+  "subtitle": "ตั้งค่าข้อความต้อนรับ ข้อความอำลา รูปภาพ และบทบาทอัตโนมัติ",
   "loadingSubtitle": "ตั้งค่าข้อความต้อนรับและอำลาสำหรับเซิร์ฟเวอร์ของคุณ",
-  "tabs": { "welcome": "ต้อนรับ", "welcomeImage": "รูปต้อนรับ", "farewell": "อำลา", "farewellImage": "รูปอำลา", "dm": "DM ต้อนรับ", "autorole": "บทบาทอัตโนมัติ" },
-  "welcome": { "title": "ข้อความต้อนรับ", "description": "ส่ง Embed กำหนดเองเมื่อสมาชิกใหม่เข้าร่วม", "channelLabel": "ID แชนเนลต้อนรับ", "channelPlaceholder": "ID แชนเนล...", "embedBuilder": "ตัวสร้าง Embed" },
-  "welcomeImage": { "title": "รูปต้อนรับ", "description": "สร้างการ์ดรูปภาพกำหนดเองพร้อมอวาตาร์สมาชิกเมื่อเข้าร่วม", "disabled": "เปิดสวิตช์ด้านบนเพื่อตั้งค่ารูปต้อนรับ" },
-  "farewell": { "title": "ข้อความอำลา", "description": "ส่งข้อความเมื่อสมาชิกออกจากเซิร์ฟเวอร์", "channelLabel": "ID แชนเนลอำลา", "channelPlaceholder": "ID แชนเนล..." },
-  "farewellImage": { "title": "รูปอำลา", "description": "สร้างการ์ดอำลากำหนดเองเมื่อสมาชิกออก", "disabled": "เปิดสวิตช์ด้านบนเพื่อตั้งค่ารูปอำลา" },
-  "dm": { "title": "DM ต้อนรับ", "description": "ส่งข้อความส่วนตัวถึงสมาชิกใหม่ จะล้มเหลวอย่างเงียบ ๆ หาก DM ถูกปิด" },
-  "autorole": { "title": "บทบาทอัตโนมัติ", "description": "กำหนดบทบาทให้สมาชิกใหม่โดยอัตโนมัติเมื่อเข้าร่วม บอทจะถูกยกเว้น บอทต้องมีบทบาทสูงกว่าบทบาทที่ระบุไว้", "label": "ID บทบาท (คั่นด้วยจุลภาค)", "placeholder": "123456789, 987654321" },
-  "embed": { "title": "ชื่อ", "description": "คำอธิบาย", "color": "สี (เลขฐาน 16)", "footer": "ส่วนท้าย", "thumbnail": "URL รูปขนาดย่อ", "image": "URL รูปภาพ", "variables": "ตัวแปร:" },
-  "saveChanges": "บันทึกการเปลี่ยนแปลง", "saving": "กำลังบันทึก...", "sendTest": "ส่งข้อความทดสอบ", "sending": "กำลังส่ง...",
-  "toast": { "saved": "บันทึกการตั้งค่าต้อนรับแล้ว", "saveFailed": "ไม่สามารถบันทึกการตั้งค่าได้", "testSent": "ข้อความทดสอบจะถูกส่งไปที่ <#{{channelId}}>", "testFailed": "ไม่สามารถส่งข้อความทดสอบได้" }
+  "tabs": {
+    "welcome": "ต้อนรับ",
+    "welcomeImage": "รูปต้อนรับ",
+    "farewell": "อำลา",
+    "farewellImage": "รูปอำลา",
+    "dm": "DM ต้อนรับ",
+    "autorole": "บทบาทอัตโนมัติ"
+  },
+  "welcome": {
+    "title": "ข้อความต้อนรับ",
+    "description": "ส่ง Embed กำหนดเองเมื่อสมาชิกใหม่เข้าร่วม",
+    "channelLabel": "ID แชนเนลต้อนรับ",
+    "channelPlaceholder": "ID แชนเนล...",
+    "embedBuilder": "ตัวสร้าง Embed"
+  },
+  "welcomeImage": {
+    "title": "รูปต้อนรับ",
+    "description": "สร้างการ์ดรูปภาพกำหนดเองพร้อมอวาตาร์สมาชิกเมื่อเข้าร่วม",
+    "disabled": "เปิดสวิตช์ด้านบนเพื่อตั้งค่ารูปต้อนรับ"
+  },
+  "farewell": {
+    "title": "ข้อความอำลา",
+    "description": "ส่งข้อความเมื่อสมาชิกออกจากเซิร์ฟเวอร์",
+    "channelLabel": "ID แชนเนลอำลา",
+    "channelPlaceholder": "ID แชนเนล..."
+  },
+  "farewellImage": {
+    "title": "รูปอำลา",
+    "description": "สร้างการ์ดอำลากำหนดเองเมื่อสมาชิกออก",
+    "disabled": "เปิดสวิตช์ด้านบนเพื่อตั้งค่ารูปอำลา"
+  },
+  "dm": {
+    "title": "DM ต้อนรับ",
+    "description": "ส่งข้อความส่วนตัวถึงสมาชิกใหม่ จะล้มเหลวอย่างเงียบ ๆ หาก DM ถูกปิด"
+  },
+  "autorole": {
+    "title": "บทบาทอัตโนมัติ",
+    "description": "กำหนดบทบาทให้สมาชิกใหม่โดยอัตโนมัติเมื่อเข้าร่วม บอทจะถูกยกเว้น บอทต้องมีบทบาทสูงกว่าบทบาทที่ระบุไว้",
+    "label": "ID บทบาท (คั่นด้วยจุลภาค)",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "ชื่อ",
+    "description": "คำอธิบาย",
+    "color": "สี (เลขฐาน 16)",
+    "footer": "ส่วนท้าย",
+    "thumbnail": "URL รูปขนาดย่อ",
+    "image": "URL รูปภาพ",
+    "variables": "ตัวแปร:",
+    "titlePlaceholder": "Welcome to {server}!",
+    "descriptionPlaceholder": "Hey {user}, welcome to **{server}**! You are member #{membercount}.",
+    "footerPlaceholder": "Footer text..."
+  },
+  "saveChanges": "บันทึกการเปลี่ยนแปลง",
+  "saving": "กำลังบันทึก...",
+  "sendTest": "ส่งข้อความทดสอบ",
+  "sending": "กำลังส่ง...",
+  "toast": {
+    "saved": "บันทึกการตั้งค่าต้อนรับแล้ว",
+    "saveFailed": "ไม่สามารถบันทึกการตั้งค่าได้",
+    "testSent": "ข้อความทดสอบจะถูกส่งไปที่ <#{{channelId}}>",
+    "testFailed": "ไม่สามารถส่งข้อความทดสอบได้"
+  },
+  "defaults": {
+    "welcomeSubtitle": "Welcome to {server}!",
+    "farewellSubtitle": "Goodbye, {user.name}!"
+  },
+  "imageEditor": {
+    "livePreview": "Live Preview",
+    "previewAlt": "{{type}} image preview",
+    "generatingPreview": "Generating preview...",
+    "previewPlaceholder": "Preview will appear here",
+    "template": "Template",
+    "background": {
+      "title": "Background",
+      "solidColor": "Solid Color",
+      "gradient": "Gradient",
+      "customImage": "Custom Image",
+      "colorPicker": "Background color picker",
+      "colorHex": "Background color hex value",
+      "uploadImage": "Upload background image",
+      "upload": "Upload Image",
+      "uploading": "Uploading...",
+      "set": "Background set",
+      "fileHint": "JPG, PNG, or WebP. Max 3 MB."
+    },
+    "overlay": {
+      "title": "Overlay Darkening",
+      "opacity": "Opacity"
+    },
+    "avatar": {
+      "title": "Avatar",
+      "shape": "Shape",
+      "shapeCircle": "Circle",
+      "shapeRounded": "Rounded Square",
+      "shapeSquare": "Square",
+      "borderWidth": "Border Width",
+      "borderColor": "Border Color",
+      "borderColorPicker": "Avatar border color picker",
+      "borderColorHex": "Avatar border color hex value",
+      "glowEffect": "Glow Effect",
+      "glowColorPicker": "Avatar glow color picker",
+      "glowColorHex": "Avatar glow color hex value"
+    },
+    "typography": {
+      "title": "Typography",
+      "titleSection": "Title (Username)",
+      "subtitleSection": "Subtitle (Custom Text)",
+      "font": "Font",
+      "color": "Color",
+      "size": "Size",
+      "text": "Text",
+      "titleColorPicker": "Title color picker",
+      "titleColorHex": "Title color hex value",
+      "subtitleColorPicker": "Subtitle color picker",
+      "subtitleColorHex": "Subtitle color hex value",
+      "subtitlePlaceholder": "Welcome to {server}!",
+      "subtitleVariables": "Variables: {user.name} {server} {membercount}"
+    },
+    "accent": {
+      "title": "Accent Color",
+      "colorPicker": "Accent color picker",
+      "colorHex": "Accent color hex value",
+      "hint": "Used for decorations, borders, and template accents."
+    },
+    "delivery": {
+      "title": "Delivery Mode",
+      "with": "With embed message",
+      "before": "Before embed message",
+      "only": "Image only (no embed)"
+    },
+    "toast": {
+      "imageTooLarge": "Background image must be under 3 MB",
+      "uploaded": "Background uploaded",
+      "uploadFailed": "Failed to upload background",
+      "previewFailed": "Failed to generate preview"
+    }
+  }
 }

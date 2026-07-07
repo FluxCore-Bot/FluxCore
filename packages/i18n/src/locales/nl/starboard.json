@@ -26,7 +26,8 @@
       "original": "Origineel bericht",
       "stars": "Sterren",
       "channel": "Kanaal",
-      "date": "Datum"
+      "date": "Datum",
+      "author": "Author"
     },
     "noMessages": "Nog geen gemarkeerde berichten."
   },

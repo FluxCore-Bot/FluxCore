@@ -108,5 +108,6 @@
     "channelRequired": "Kailangan ng channel",
     "maxRolesReached": "Maximum na 25 role bawat panel"
   },
-  "loading": "Naglo-load ng mga panel..."
+  "loading": "Naglo-load ng mga panel...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

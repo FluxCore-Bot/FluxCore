@@ -79,7 +79,9 @@
     "conditions": "Podmínky",
     "duration": "Doba trvání",
     "reason": "Důvod",
-    "language": "Jazyk"
+    "language": "Jazyk",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Vybrat kanál...",
@@ -119,7 +121,8 @@
     "hours": "hodiny",
     "days": "dny",
     "ago": "před {{time}}",
-    "in": "za {{time}}"
+    "in": "za {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Jste si jisti?",
@@ -134,5 +137,9 @@
     "error": "Došlo k chybě",
     "menuOpen": "Menu je otevřeno",
     "menuClosed": "Menu je zavřeno"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

@@ -114,5 +114,12 @@
     "creating": "생성 중...",
     "create": "만들기"
   },
-  "loading": "권한 불러오는 중..."
+  "loading": "권한 불러오는 중...",
+  "guard": {
+    "deniedTitle": "Permission Denied",
+    "deniedMessage": "You don't have permission to access <1>{{module}}</1>.",
+    "requiredPermission": "Required permission:",
+    "yourRoles": "Your roles:",
+    "contactOwner": "Contact your server owner to request access."
+  }
 }

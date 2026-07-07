@@ -79,7 +79,9 @@
     "conditions": "條件",
     "duration": "時長",
     "reason": "原因",
-    "language": "語言"
+    "language": "語言",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "選擇頻道...",
@@ -119,7 +121,8 @@
     "hours": "小時",
     "days": "天",
     "ago": "{{time}}前",
-    "in": "{{time}}後"
+    "in": "{{time}}後",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "確定要繼續嗎？",
@@ -134,5 +137,9 @@
     "error": "發生錯誤",
     "menuOpen": "選單已開啟",
     "menuClosed": "選單已關閉"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

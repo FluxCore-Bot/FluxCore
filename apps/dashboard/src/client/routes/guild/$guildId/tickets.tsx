@@ -109,7 +109,7 @@ export function TicketsPage() {
       {
         channelId: newPanelChannel,
         name: newPanelName.trim(),
-        categories: [{ name: "general", label: "Open Ticket" }],
+        categories: [{ name: "general", label: t("panelBuilder.openTicket") }],
       },
       {
         onSuccess: () => {
@@ -319,7 +319,7 @@ export function TicketsPage() {
                 {totalPages > 1 && (
                   <div className="mt-4 flex items-center justify-between">
                     <p className="text-sm text-text-muted">
-                      Page {page} of {totalPages} ({ticketData.total} total)
+                      {t("common:pagination.showingPage", { page, total: totalPages, count: ticketData.total })}
                     </p>
                     <div className="flex gap-2">
                       <Button
@@ -474,7 +474,7 @@ export function TicketsPage() {
                     type="role"
                     selectedIds={staffRoles}
                     onChange={setStaffRoles}
-                    placeholder="Staff roles"
+                    placeholder={t("settings.staffRolesPlaceholder")}
                   />
                   <p className="mt-1 text-xs text-text-muted">
                     {t("settings.transcriptChannelDesc")}
@@ -547,7 +547,7 @@ export function TicketsPage() {
                     className="w-64"
                   />
                   <p className="mt-1 text-xs text-text-muted">
-                    Variables: {"{number}"} (zero-padded), {"{username}"}
+                    {t("settings.namingFormatHint")}
                   </p>
                 </div>
 

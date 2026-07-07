@@ -79,7 +79,9 @@
     "conditions": "条件",
     "duration": "时长",
     "reason": "原因",
-    "language": "语言"
+    "language": "语言",
+    "limit": "上限",
+    "options": "选项"
   },
   "form": {
     "selectChannel": "选择频道...",
@@ -119,7 +121,8 @@
     "hours": "小时",
     "days": "天",
     "ago": "{{time}}前",
-    "in": "{{time}}后"
+    "in": "{{time}}后",
+    "weeks": "周"
   },
   "confirm": {
     "title": "确定要继续吗？",
@@ -134,5 +137,9 @@
     "error": "发生错误",
     "menuOpen": "菜单已打开",
     "menuClosed": "菜单已关闭"
+  },
+  "language": {
+    "searchPlaceholder": "搜索语言……",
+    "noResults": "未找到语言"
   }
 }

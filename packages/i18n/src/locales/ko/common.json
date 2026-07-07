@@ -79,7 +79,9 @@
     "conditions": "조건",
     "duration": "기간",
     "reason": "사유",
-    "language": "언어"
+    "language": "언어",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "채널 선택...",
@@ -119,7 +121,8 @@
     "hours": "시간",
     "days": "일",
     "ago": "{{time}} 전",
-    "in": "{{time}} 후"
+    "in": "{{time}} 후",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "정말 진행하시겠습니까?",
@@ -134,5 +137,9 @@
     "error": "오류가 발생했습니다",
     "menuOpen": "메뉴가 열려 있습니다",
     "menuClosed": "메뉴가 닫혀 있습니다"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

@@ -1,12 +1,33 @@
 {
-  "title": "[NEEDS TRANSLATION] Overview",
-  "subtitle": "[NEEDS TRANSLATION] Monitor your automation performance and activity at a glance.",
+  "title": "جائزہ",
+  "subtitle": "اپنی آٹومیشن کارکردگی اور سرگرمی کی ایک نظر میں نگرانی کریں۔",
   "stats": {
-    "actionRules": "[NEEDS TRANSLATION] Action Rules",
-    "activeNow": "[NEEDS TRANSLATION] Active Now",
-    "executions": "[NEEDS TRANSLATION] Executions",
-    "successRate": "[NEEDS TRANSLATION] Success Rate"
+    "actionRules": "ایکشن رولز",
+    "activeNow": "ابھی فعال",
+    "executions": "ایگزیکیوشنز",
+    "successRate": "کامیابی کی شرح"
   },
-  "errorsInLast24h": "[NEEDS TRANSLATION] {{count}} error in last 24h",
-  "errorsInLast24h_other": "[NEEDS TRANSLATION] {{count}} errors in last 24h"
+  "errorsInLast24h": "گزشتہ 24 گھنٹوں میں {{count}} خرابی",
+  "errorsInLast24h_other": "گزشتہ 24 گھنٹوں میں {{count}} خرابیاں",
+  "recentActivity": {
+    "title": "حالیہ سرگرمی",
+    "viewAllLogs": "تمام لاگز دیکھیں",
+    "empty": "ابھی تک کوئی سرگرمی ریکارڈ نہیں ہوئی",
+    "timeAgo": {
+      "justNow": "ابھی ابھی",
+      "minutes": "{{count}} منٹ پہلے",
+      "hours": "{{count}} گھنٹے پہلے",
+      "days": "{{count}} دن پہلے"
+    }
+  },
+  "eventDistribution": {
+    "title": "سرِفہرست ایونٹس",
+    "empty": "ابھی تک کوئی ایونٹ ڈیٹا نہیں",
+    "executions": "{{count}} ایگزیکیوشنز"
+  },
+  "executionChart": {
+    "title": "ایگزیکیوشن رجحان",
+    "success": "کامیابی",
+    "errors": "خرابیاں"
+  }
 }

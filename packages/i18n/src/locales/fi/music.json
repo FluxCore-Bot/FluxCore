@@ -52,6 +52,7 @@
     "albumName": "Albumin nimi",
     "albumNamePlaceholder": "Soittolistani",
     "deleteAlbum": "Poista",
-    "atMax": "Olet saavuttanut albumien enimmäismäärän."
+    "atMax": "Olet saavuttanut albumien enimmäismäärän.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

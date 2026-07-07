@@ -26,7 +26,8 @@
       "original": "মূল বার্তা",
       "stars": "স্টার",
       "channel": "চ্যানেল",
-      "date": "তারিখ"
+      "date": "তারিখ",
+      "author": "Author"
     },
     "noMessages": "এখনো কোনো স্টারড বার্তা নেই।"
   },

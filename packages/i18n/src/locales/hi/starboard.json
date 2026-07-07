@@ -26,7 +26,8 @@
       "original": "मूल संदेश",
       "stars": "स्टार",
       "channel": "चैनल",
-      "date": "तिथि"
+      "date": "तिथि",
+      "author": "Author"
     },
     "noMessages": "अभी तक कोई स्टार किया गया संदेश नहीं।"
   },

@@ -79,7 +79,9 @@
       "description": "Ereignisprotokolle erscheinen hier, sobald die Protokollierung konfiguriert ist und Ereignisse auftreten."
     },
     "config": {
-      "selectChannel": "Protokollkanal auswählen"
+      "selectChannel": "Protokollkanal auswählen",
+      "moreEvents_one": "+{{count}} weiterer",
+      "moreEvents_other": "+{{count}} weitere"
     }
   }
 }

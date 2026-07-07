@@ -26,7 +26,8 @@
       "original": "Oryginalna wiadomość",
       "stars": "Gwiazdy",
       "channel": "Kanał",
-      "date": "Data"
+      "date": "Data",
+      "author": "Author"
     },
     "noMessages": "Brak oznaczonych wiadomości."
   },

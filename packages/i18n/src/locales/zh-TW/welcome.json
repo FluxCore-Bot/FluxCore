@@ -2,17 +2,142 @@
   "title": "歡迎與告別",
   "subtitle": "設定歡迎訊息、告別訊息、圖片和自動角色。",
   "loadingSubtitle": "設定伺服器的歡迎和告別訊息。",
-  "tabs": { "welcome": "歡迎", "welcomeImage": "歡迎圖片", "farewell": "告別", "farewellImage": "告別圖片", "dm": "歡迎私訊", "autorole": "自動角色" },
-  "welcome": { "title": "歡迎訊息", "description": "當新成員加入時傳送自訂嵌入訊息。", "channelLabel": "歡迎頻道 ID", "channelPlaceholder": "頻道 ID...", "embedBuilder": "嵌入建構器" },
-  "welcomeImage": { "title": "歡迎圖片", "description": "當成員加入時產生帶有頭像的自訂圖片卡。", "disabled": "啟用上方的開關以設定歡迎圖片。" },
-  "farewell": { "title": "告別訊息", "description": "當成員離開伺服器時傳送訊息。", "channelLabel": "告別頻道 ID", "channelPlaceholder": "頻道 ID..." },
-  "farewellImage": { "title": "告別圖片", "description": "當成員離開時產生自訂告別卡。", "disabled": "啟用上方的開關以設定告別圖片。" },
-  "dm": { "title": "歡迎私訊", "description": "向新成員傳送私訊。如果對方關閉了私訊，將靜默失敗。" },
-  "autorole": { "title": "自動角色", "description": "新成員加入時自動指派角色。機器人除外。機器人必須擁有比此處列出的角色更高的角色。", "label": "角色 ID（逗號分隔）", "placeholder": "123456789, 987654321" },
-  "embed": { "title": "標題", "description": "描述", "color": "顏色（十六進位）", "footer": "頁尾", "thumbnail": "縮圖 URL", "image": "圖片 URL", "variables": "變數：" },
+  "tabs": {
+    "welcome": "歡迎",
+    "welcomeImage": "歡迎圖片",
+    "farewell": "告別",
+    "farewellImage": "告別圖片",
+    "dm": "歡迎私訊",
+    "autorole": "自動角色"
+  },
+  "welcome": {
+    "title": "歡迎訊息",
+    "description": "當新成員加入時傳送自訂嵌入訊息。",
+    "channelLabel": "歡迎頻道 ID",
+    "channelPlaceholder": "頻道 ID...",
+    "embedBuilder": "嵌入建構器"
+  },
+  "welcomeImage": {
+    "title": "歡迎圖片",
+    "description": "當成員加入時產生帶有頭像的自訂圖片卡。",
+    "disabled": "啟用上方的開關以設定歡迎圖片。"
+  },
+  "farewell": {
+    "title": "告別訊息",
+    "description": "當成員離開伺服器時傳送訊息。",
+    "channelLabel": "告別頻道 ID",
+    "channelPlaceholder": "頻道 ID..."
+  },
+  "farewellImage": {
+    "title": "告別圖片",
+    "description": "當成員離開時產生自訂告別卡。",
+    "disabled": "啟用上方的開關以設定告別圖片。"
+  },
+  "dm": {
+    "title": "歡迎私訊",
+    "description": "向新成員傳送私訊。如果對方關閉了私訊，將靜默失敗。"
+  },
+  "autorole": {
+    "title": "自動角色",
+    "description": "新成員加入時自動指派角色。機器人除外。機器人必須擁有比此處列出的角色更高的角色。",
+    "label": "角色 ID（逗號分隔）",
+    "placeholder": "123456789, 987654321"
+  },
+  "embed": {
+    "title": "標題",
+    "description": "描述",
+    "color": "顏色（十六進位）",
+    "footer": "頁尾",
+    "thumbnail": "縮圖 URL",
+    "image": "圖片 URL",
+    "variables": "變數：",
+    "titlePlaceholder": "Welcome to {server}!",
+    "descriptionPlaceholder": "Hey {user}, welcome to **{server}**! You are member #{membercount}.",
+    "footerPlaceholder": "Footer text..."
+  },
   "saveChanges": "儲存變更",
   "saving": "儲存中...",
   "sendTest": "傳送測試訊息",
   "sending": "傳送中...",
-  "toast": { "saved": "歡迎設定已儲存", "saveFailed": "儲存設定失敗", "testSent": "測試訊息將傳送到 <#{{channelId}}>", "testFailed": "傳送測試訊息失敗" }
+  "toast": {
+    "saved": "歡迎設定已儲存",
+    "saveFailed": "儲存設定失敗",
+    "testSent": "測試訊息將傳送到 <#{{channelId}}>",
+    "testFailed": "傳送測試訊息失敗"
+  },
+  "defaults": {
+    "welcomeSubtitle": "Welcome to {server}!",
+    "farewellSubtitle": "Goodbye, {user.name}!"
+  },
+  "imageEditor": {
+    "livePreview": "Live Preview",
+    "previewAlt": "{{type}} image preview",
+    "generatingPreview": "Generating preview...",
+    "previewPlaceholder": "Preview will appear here",
+    "template": "Template",
+    "background": {
+      "title": "Background",
+      "solidColor": "Solid Color",
+      "gradient": "Gradient",
+      "customImage": "Custom Image",
+      "colorPicker": "Background color picker",
+      "colorHex": "Background color hex value",
+      "uploadImage": "Upload background image",
+      "upload": "Upload Image",
+      "uploading": "Uploading...",
+      "set": "Background set",
+      "fileHint": "JPG, PNG, or WebP. Max 3 MB."
+    },
+    "overlay": {
+      "title": "Overlay Darkening",
+      "opacity": "Opacity"
+    },
+    "avatar": {
+      "title": "Avatar",
+      "shape": "Shape",
+      "shapeCircle": "Circle",
+      "shapeRounded": "Rounded Square",
+      "shapeSquare": "Square",
+      "borderWidth": "Border Width",
+      "borderColor": "Border Color",
+      "borderColorPicker": "Avatar border color picker",
+      "borderColorHex": "Avatar border color hex value",
+      "glowEffect": "Glow Effect",
+      "glowColorPicker": "Avatar glow color picker",
+      "glowColorHex": "Avatar glow color hex value"
+    },
+    "typography": {
+      "title": "Typography",
+      "titleSection": "Title (Username)",
+      "subtitleSection": "Subtitle (Custom Text)",
+      "font": "Font",
+      "color": "Color",
+      "size": "Size",
+      "text": "Text",
+      "titleColorPicker": "Title color picker",
+      "titleColorHex": "Title color hex value",
+      "subtitleColorPicker": "Subtitle color picker",
+      "subtitleColorHex": "Subtitle color hex value",
+      "subtitlePlaceholder": "Welcome to {server}!",
+      "subtitleVariables": "Variables: {user.name} {server} {membercount}"
+    },
+    "accent": {
+      "title": "Accent Color",
+      "colorPicker": "Accent color picker",
+      "colorHex": "Accent color hex value",
+      "hint": "Used for decorations, borders, and template accents."
+    },
+    "delivery": {
+      "title": "Delivery Mode",
+      "with": "With embed message",
+      "before": "Before embed message",
+      "only": "Image only (no embed)"
+    },
+    "toast": {
+      "imageTooLarge": "Background image must be under 3 MB",
+      "uploaded": "Background uploaded",
+      "uploadFailed": "Failed to upload background",
+      "previewFailed": "Failed to generate preview"
+    }
+  }
 }

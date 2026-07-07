@@ -49,7 +49,7 @@
     "permissions": "Permisos",
     "create": "Crear rol",
     "update": "Actualitzar rol",
-    "cancel": "Cancel\u00b7lar"
+    "cancel": "Cancel·lar"
   },
   "createDialog": {
     "title": "Crear rol del panell de control",
@@ -114,5 +114,12 @@
     "creating": "Creant...",
     "create": "Crear"
   },
-  "loading": "Carregant permisos..."
+  "loading": "Carregant permisos...",
+  "guard": {
+    "deniedTitle": "Permission Denied",
+    "deniedMessage": "You don't have permission to access <1>{{module}}</1>.",
+    "requiredPermission": "Required permission:",
+    "yourRoles": "Your roles:",
+    "contactOwner": "Contact your server owner to request access."
+  }
 }

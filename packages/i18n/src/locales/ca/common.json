@@ -79,7 +79,9 @@
     "conditions": "Condicions",
     "duration": "Durada",
     "reason": "Motiu",
-    "language": "Idioma"
+    "language": "Idioma",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Selecciona un canal...",
@@ -119,7 +121,8 @@
     "hours": "hores",
     "days": "dies",
     "ago": "fa {{time}}",
-    "in": "d'aquí a {{time}}"
+    "in": "d'aquí a {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "N'estàs segur?",
@@ -134,5 +137,9 @@
     "error": "S'ha produït un error",
     "menuOpen": "El menú està obert",
     "menuClosed": "El menú està tancat"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

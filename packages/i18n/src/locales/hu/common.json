@@ -79,7 +79,9 @@
     "conditions": "Feltételek",
     "duration": "Időtartam",
     "reason": "Ok",
-    "language": "Nyelv"
+    "language": "Nyelv",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Csatorna kiválasztása...",
@@ -119,7 +121,8 @@
     "hours": "óra",
     "days": "nap",
     "ago": "{{time}} ezelőtt",
-    "in": "{{time}} múlva"
+    "in": "{{time}} múlva",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Biztos benne?",
@@ -134,5 +137,9 @@
     "error": "Hiba történt",
     "menuOpen": "A menü nyitva van",
     "menuClosed": "A menü zárva van"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

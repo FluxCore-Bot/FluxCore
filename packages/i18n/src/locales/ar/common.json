@@ -79,7 +79,9 @@
     "conditions": "الشروط",
     "duration": "المدة",
     "reason": "السبب",
-    "language": "اللغة"
+    "language": "اللغة",
+    "limit": "الحد",
+    "options": "الخيارات"
   },
   "form": {
     "selectChannel": "اختر قناة...",
@@ -119,7 +121,8 @@
     "hours": "ساعات",
     "days": "أيام",
     "ago": "منذ {{time}}",
-    "in": "خلال {{time}}"
+    "in": "خلال {{time}}",
+    "weeks": "أسابيع"
   },
   "confirm": {
     "title": "هل أنت متأكد؟",
@@ -134,5 +137,9 @@
     "error": "حدث خطأ",
     "menuOpen": "القائمة مفتوحة",
     "menuClosed": "القائمة مغلقة"
+  },
+  "language": {
+    "searchPlaceholder": "ابحث عن اللغات...",
+    "noResults": "لم يتم العثور على أي لغة"
   }
 }

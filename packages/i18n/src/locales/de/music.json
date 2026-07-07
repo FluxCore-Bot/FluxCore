@@ -52,6 +52,7 @@
     "albumName": "Albumname",
     "albumNamePlaceholder": "Meine Playlist",
     "deleteAlbum": "Löschen",
-    "atMax": "Sie haben die maximale Anzahl an Alben erreicht."
+    "atMax": "Sie haben die maximale Anzahl an Alben erreicht.",
+    "toggleAlbum": "{{name}} umschalten"
   }
 }

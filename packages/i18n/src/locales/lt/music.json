@@ -52,6 +52,7 @@
     "albumName": "Albumo pavadinimas",
     "albumNamePlaceholder": "Mano grojaraštis",
     "deleteAlbum": "Ištrinti",
-    "atMax": "Pasiektas maksimalus albumų skaičius."
+    "atMax": "Pasiektas maksimalus albumų skaičius.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

@@ -82,7 +82,7 @@
   "actions": {
     "create": "Crear",
     "update": "Actualitzar",
-    "cancel": "Cancel\u00b7lar",
+    "cancel": "Cancel·lar",
     "deploy": "Desplegar",
     "delete": "Eliminar",
     "addEntry": "Afegir entrada",
@@ -108,5 +108,6 @@
     "channelRequired": "El canal es obligatori",
     "maxRolesReached": "Maxim 25 rols per panell"
   },
-  "loading": "Carregant panells..."
+  "loading": "Carregant panells...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

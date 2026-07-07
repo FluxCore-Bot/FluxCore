@@ -33,7 +33,8 @@
     "category": "Categoria do ticket",
     "create": "Criar painel",
     "edit": "Editar painel",
-    "deploy": "Implementar painel"
+    "deploy": "Implementar painel",
+    "openTicket": "Abrir Ticket"
   },
   "settings": {
     "transcriptChannel": "Canal de transcricao",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Confirmacao de fecho",
     "closeConfirmationDesc": "Exigir confirmacao antes de fechar um ticket.",
     "dmTranscript": "Transcricao por MD",
-    "dmTranscriptDesc": "Enviar uma copia da transcricao ao criador do ticket por MD."
+    "dmTranscriptDesc": "Enviar uma copia da transcricao ao criador do ticket por MD.",
+    "staffRolesPlaceholder": "Cargos da equipe",
+    "namingFormatHint": "Variáveis: {number} (com zeros à esquerda), {username}"
   },
   "actions": {
     "claim": "Reivindicar",

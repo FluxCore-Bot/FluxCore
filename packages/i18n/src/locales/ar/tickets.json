@@ -33,7 +33,8 @@
     "category": "فئة التذكرة",
     "create": "إنشاء لوحة",
     "edit": "تعديل اللوحة",
-    "deploy": "نشر اللوحة"
+    "deploy": "نشر اللوحة",
+    "openTicket": "فتح تذكرة"
   },
   "settings": {
     "transcriptChannel": "قناة النسخ",
@@ -43,7 +44,9 @@
     "closeConfirmation": "تأكيد الإغلاق",
     "closeConfirmationDesc": "طلب تأكيد قبل إغلاق التذكرة.",
     "dmTranscript": "إرسال النسخة عبر رسالة خاصة",
-    "dmTranscriptDesc": "إرسال نسخة من المحادثة إلى منشئ التذكرة عبر رسالة خاصة."
+    "dmTranscriptDesc": "إرسال نسخة من المحادثة إلى منشئ التذكرة عبر رسالة خاصة.",
+    "staffRolesPlaceholder": "رتب الطاقم",
+    "namingFormatHint": "المتغيرات: {number} (مضبوط بأصفار)، {username}"
   },
   "actions": {
     "claim": "المطالبة",

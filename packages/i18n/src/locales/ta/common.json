@@ -79,7 +79,9 @@
     "conditions": "நிபந்தனைகள்",
     "duration": "காலம்",
     "reason": "காரணம்",
-    "language": "மொழி"
+    "language": "மொழி",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "சேனலை தேர்ந்தெடு...",
@@ -119,7 +121,8 @@
     "hours": "மணி நேரம்",
     "days": "நாட்கள்",
     "ago": "{{time}} முன்",
-    "in": "{{time}} இல்"
+    "in": "{{time}} இல்",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "நீங்கள் நிச்சயமா?",
@@ -134,5 +137,9 @@
     "error": "பிழை ஏற்பட்டது",
     "menuOpen": "மெனு திறந்துள்ளது",
     "menuClosed": "மெனு மூடப்பட்டுள்ளது"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

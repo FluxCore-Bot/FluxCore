@@ -33,7 +33,8 @@
     "category": "Kategori Tiket",
     "create": "Cipta Panel",
     "edit": "Edit Panel",
-    "deploy": "Gunakan Panel"
+    "deploy": "Gunakan Panel",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Saluran Transkrip",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Pengesahan Tutup",
     "closeConfirmationDesc": "Minta pengesahan sebelum menutup tiket.",
     "dmTranscript": "Transkrip DM",
-    "dmTranscriptDesc": "Hantar salinan transkrip kepada pencipta tiket melalui DM."
+    "dmTranscriptDesc": "Hantar salinan transkrip kepada pencipta tiket melalui DM.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Tuntut",

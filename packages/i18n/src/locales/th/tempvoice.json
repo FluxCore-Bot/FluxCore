@@ -15,7 +15,8 @@
     "saving": "กำลังบันทึก...",
     "cancel": "ยกเลิก",
     "delete": "ลบ",
-    "edit": "แก้ไข"
+    "edit": "แก้ไข",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "ยังไม่มีการกำหนดค่า",
@@ -26,5 +27,12 @@
     "updated": "อัปเดตการกำหนดค่าแล้ว",
     "created": "สร้างการกำหนดค่าแล้ว",
     "removed": "ลบการกำหนดค่าแล้ว"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

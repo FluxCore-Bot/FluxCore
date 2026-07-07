@@ -33,7 +33,8 @@
     "category": "Txartelaren Kategoria",
     "create": "Panel Sortu",
     "edit": "Panel Editatu",
-    "deploy": "Panel Zabaldu"
+    "deploy": "Panel Zabaldu",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Transkripzio Kanala",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Itxiera Berrespena",
     "closeConfirmationDesc": "Txartela ixtean berrespena eskatu.",
     "dmTranscript": "DM Transkripzioa",
-    "dmTranscriptDesc": "Bidali transkripzioaren kopia txartel sortzaileari DM bidez."
+    "dmTranscriptDesc": "Bidali transkripzioaren kopia txartel sortzaileari DM bidez.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Erreklamatu",

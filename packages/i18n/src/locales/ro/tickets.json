@@ -33,7 +33,8 @@
     "category": "Categoria Tichetului",
     "create": "Creează Panou",
     "edit": "Editează Panou",
-    "deploy": "Implementează Panou"
+    "deploy": "Implementează Panou",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Canal Transcrieri",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Confirmare la Închidere",
     "closeConfirmationDesc": "Solicită confirmare înainte de a închide un tichet.",
     "dmTranscript": "Transcriere prin MP",
-    "dmTranscriptDesc": "Trimite o copie a transcrierii creatorului tichetului prin MP."
+    "dmTranscriptDesc": "Trimite o copie a transcrierii creatorului tichetului prin MP.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Revendică",

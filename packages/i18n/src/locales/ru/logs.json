@@ -79,7 +79,9 @@
       "description": "Журнал событий появится здесь после настройки логирования и начала событий."
     },
     "config": {
-      "selectChannel": "Выберите канал логов"
+      "selectChannel": "Выберите канал логов",
+      "moreEvents_one": "+{{count}} ещё",
+      "moreEvents_other": "+{{count}} ещё"
     }
   }
 }

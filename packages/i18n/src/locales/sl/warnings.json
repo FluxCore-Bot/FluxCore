@@ -68,5 +68,8 @@
     "requireReasonDesc": "Moderatorji morajo navesti razlog pri izdaji opozorila.",
     "maxWarnings": "Maks opozoril",
     "maxWarningsDesc": "Največje število opozoril na uporabnika (0 = neomejeno)."
-  }
+  },
+  "noWarningsDesc": "No warnings have been issued yet",
+  "confirmDelete": "Are you sure you want to delete this item? This action cannot be undone.",
+  "confirmRemoveEscalation": "Are you sure you want to remove this escalation rule? This action cannot be undone."
 }

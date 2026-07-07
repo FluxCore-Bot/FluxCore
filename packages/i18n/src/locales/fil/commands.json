@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "Kailangan ng pangalan ng utos"
   },
-  "triggerPrefix": "Trigger: !{{name}}"
+  "triggerPrefix": "Trigger: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
 }

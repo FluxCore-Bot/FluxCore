@@ -15,7 +15,8 @@
     "saving": "Lagrer...",
     "cancel": "Avbryt",
     "delete": "Slett",
-    "edit": "Rediger"
+    "edit": "Rediger",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Ingen konfigurasjoner ennå",
@@ -26,5 +27,12 @@
     "updated": "Konfigurasjon oppdatert",
     "created": "Konfigurasjon opprettet",
     "removed": "Konfigurasjon fjernet"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

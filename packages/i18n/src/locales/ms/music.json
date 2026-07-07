@@ -52,6 +52,7 @@
     "albumName": "Nama Album",
     "albumNamePlaceholder": "Senarai Main Saya",
     "deleteAlbum": "Padam",
-    "atMax": "Anda telah mencapai bilangan album maksimum."
+    "atMax": "Anda telah mencapai bilangan album maksimum.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

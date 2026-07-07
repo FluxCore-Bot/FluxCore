@@ -1,38 +1,113 @@
 {
   "title": "பங்கு பேனல்கள்",
   "subtitle": "பொத்தான்கள், கீழிறங்கிகள் அல்லது எதிர்வினைகளைப் பயன்படுத்தி சுய-ஒதுக்கக்கூடிய பங்கு பேனல்களை உருவாக்கவும்.",
-  "stats": { "totalPanels": "மொத்த பேனல்கள்", "deployed": "நிறுவப்பட்டது", "totalRoles": "மொத்த பங்குகள்" },
-  "tabs": { "panels": "பேனல்கள்", "preview": "முன்னோட்டம்" },
-  "table": { "name": "பெயர்", "type": "வகை", "mode": "முறை", "roles": "பங்குகள்", "status": "நிலை" },
-  "panelTypes": { "reaction": "எதிர்வினை", "button": "பொத்தான்", "dropdown": "கீழிறங்கி" },
-  "panelModes": { "toggle": "மாற்று", "unique": "தனித்துவம்", "verify": "சரிபார்" },
-  "panelModeDescriptions": { "toggle": "மாற்று (சேர்/நீக்கு)", "unique": "தனித்துவம் (ஒரு நேரத்தில் ஒன்று)", "verify": "சரிபார் (சேர் மட்டும்)" },
-  "status": { "deployed": "நிறுவப்பட்டது", "draft": "வரைவு" },
-  "dialog": { "createPanel": "பேனல் உருவாக்கு", "editPanel": "பேனல் திருத்து" },
-  "panelList": { "title": "அனைத்து பேனல்கள்" },
+  "stats": {
+    "totalPanels": "மொத்த பேனல்கள்",
+    "deployed": "நிறுவப்பட்டது",
+    "totalRoles": "மொத்த பங்குகள்"
+  },
+  "tabs": {
+    "panels": "பேனல்கள்",
+    "preview": "முன்னோட்டம்"
+  },
+  "table": {
+    "name": "பெயர்",
+    "type": "வகை",
+    "mode": "முறை",
+    "roles": "பங்குகள்",
+    "status": "நிலை"
+  },
+  "panelTypes": {
+    "reaction": "எதிர்வினை",
+    "button": "பொத்தான்",
+    "dropdown": "கீழிறங்கி"
+  },
+  "panelModes": {
+    "toggle": "மாற்று",
+    "unique": "தனித்துவம்",
+    "verify": "சரிபார்"
+  },
+  "panelModeDescriptions": {
+    "toggle": "மாற்று (சேர்/நீக்கு)",
+    "unique": "தனித்துவம் (ஒரு நேரத்தில் ஒன்று)",
+    "verify": "சரிபார் (சேர் மட்டும்)"
+  },
+  "status": {
+    "deployed": "நிறுவப்பட்டது",
+    "draft": "வரைவு"
+  },
+  "dialog": {
+    "createPanel": "பேனல் உருவாக்கு",
+    "editPanel": "பேனல் திருத்து"
+  },
+  "panelList": {
+    "title": "அனைத்து பேனல்கள்"
+  },
   "form": {
-    "name": "பெயர்", "namePlaceholder": "எ.கா. நிற பங்குகள்", "type": "வகை", "mode": "முறை",
-    "channel": "சேனல்", "channelPlaceholder": "சேனல் தேர்ந்தெடுக்கவும்",
-    "minRoles": "குறைந்தபட்ச பங்குகள்", "minRolesPlaceholder": "0",
-    "maxRoles": "அதிகபட்ச பங்குகள்", "maxRolesPlaceholder": "அனைத்தும்",
-    "embedSection": "Embed", "embedTitle": "தலைப்பு", "embedTitlePlaceholder": "பேனல் தலைப்பு (இயல்புநிலை பேனல் பெயர்)",
-    "embedDescription": "விளக்கம்", "embedDescriptionPlaceholder": "விளக்க உரை",
-    "rolesCount": "பங்குகள் ({{count}}/25)", "addRole": "பங்கு சேர்"
+    "name": "பெயர்",
+    "namePlaceholder": "எ.கா. நிற பங்குகள்",
+    "type": "வகை",
+    "mode": "முறை",
+    "channel": "சேனல்",
+    "channelPlaceholder": "சேனல் தேர்ந்தெடுக்கவும்",
+    "minRoles": "குறைந்தபட்ச பங்குகள்",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "அதிகபட்ச பங்குகள்",
+    "maxRolesPlaceholder": "அனைத்தும்",
+    "embedSection": "Embed",
+    "embedTitle": "தலைப்பு",
+    "embedTitlePlaceholder": "பேனல் தலைப்பு (இயல்புநிலை பேனல் பெயர்)",
+    "embedDescription": "விளக்கம்",
+    "embedDescriptionPlaceholder": "விளக்க உரை",
+    "rolesCount": "பங்குகள் ({{count}}/25)",
+    "addRole": "பங்கு சேர்"
   },
   "entry": {
-    "role": "பங்கு", "rolePlaceholder": "பங்கு தேர்ந்தெடுக்கவும்", "label": "லேபிள்", "labelPlaceholder": "பொத்தான் லேபிள்",
-    "emoji": "எமோஜி", "emojiPlaceholder": "எ.கா. star", "description": "விளக்கம்", "descriptionPlaceholder": "விருப்ப விளக்கம்", "style": "பாணி"
+    "role": "பங்கு",
+    "rolePlaceholder": "பங்கு தேர்ந்தெடுக்கவும்",
+    "label": "லேபிள்",
+    "labelPlaceholder": "பொத்தான் லேபிள்",
+    "emoji": "எமோஜி",
+    "emojiPlaceholder": "எ.கா. star",
+    "description": "விளக்கம்",
+    "descriptionPlaceholder": "விருப்ப விளக்கம்",
+    "style": "பாணி"
   },
-  "buttonStyles": { "primary": "முதன்மை", "secondary": "இரண்டாம்", "success": "வெற்றி", "danger": "ஆபத்து" },
-  "actions": { "create": "உருவாக்கு", "update": "புதுப்பி", "cancel": "ரத்து செய்", "deploy": "நிறுவு", "delete": "நீக்கு", "addEntry": "பதிவு சேர்", "removeEntry": "பதிவு நீக்கு" },
-  "preview": { "title": "நேரடி முன்னோட்டம்", "description": "உங்கள் பேனல்கள் Discord-இல் எப்படி தோன்றும் என்பதைப் பாருங்கள்.", "selectRoles": "பங்குகளைத் தேர்ந்தெடுக்கவும்...", "noPreview": "முன்னோட்டத்திற்கு பேனல்கள் இல்லை." },
+  "buttonStyles": {
+    "primary": "முதன்மை",
+    "secondary": "இரண்டாம்",
+    "success": "வெற்றி",
+    "danger": "ஆபத்து"
+  },
+  "actions": {
+    "create": "உருவாக்கு",
+    "update": "புதுப்பி",
+    "cancel": "ரத்து செய்",
+    "deploy": "நிறுவு",
+    "delete": "நீக்கு",
+    "addEntry": "பதிவு சேர்",
+    "removeEntry": "பதிவு நீக்கு"
+  },
+  "preview": {
+    "title": "நேரடி முன்னோட்டம்",
+    "description": "உங்கள் பேனல்கள் Discord-இல் எப்படி தோன்றும் என்பதைப் பாருங்கள்.",
+    "selectRoles": "பங்குகளைத் தேர்ந்தெடுக்கவும்...",
+    "noPreview": "முன்னோட்டத்திற்கு பேனல்கள் இல்லை."
+  },
   "empty": "இதுவரை பங்கு பேனல்கள் எதுவும் உருவாக்கப்படவில்லை. தொடங்க \"பேனல் உருவாக்கு\" என்பதைக் கிளிக் செய்யவும்.",
   "toast": {
-    "created": "பேனல் உருவாக்கப்பட்டது", "createFailed": "பேனல் உருவாக்கத் தவறியது",
-    "updated": "பேனல் புதுப்பிக்கப்பட்டது", "updateFailed": "பேனல் புதுப்பிக்கத் தவறியது",
-    "deleted": "பேனல் நீக்கப்பட்டது", "deleteFailed": "பேனல் நீக்கத் தவறியது",
-    "deployed": "பங்கு பேனல் சேனலுக்கு நிறுவப்பட்டது", "deployFailed": "பேனல் அனுப்பத் தவறியது",
-    "nameRequired": "பேனல் பெயர் தேவை", "channelRequired": "சேனல் தேவை", "maxRolesReached": "ஒரு பேனலுக்கு அதிகபட்சம் 25 பங்குகள்"
+    "created": "பேனல் உருவாக்கப்பட்டது",
+    "createFailed": "பேனல் உருவாக்கத் தவறியது",
+    "updated": "பேனல் புதுப்பிக்கப்பட்டது",
+    "updateFailed": "பேனல் புதுப்பிக்கத் தவறியது",
+    "deleted": "பேனல் நீக்கப்பட்டது",
+    "deleteFailed": "பேனல் நீக்கத் தவறியது",
+    "deployed": "பங்கு பேனல் சேனலுக்கு நிறுவப்பட்டது",
+    "deployFailed": "பேனல் அனுப்பத் தவறியது",
+    "nameRequired": "பேனல் பெயர் தேவை",
+    "channelRequired": "சேனல் தேவை",
+    "maxRolesReached": "ஒரு பேனலுக்கு அதிகபட்சம் 25 பங்குகள்"
   },
-  "loading": "பேனல்கள் ஏற்றப்படுகின்றன..."
+  "loading": "பேனல்கள் ஏற்றப்படுகின்றன...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

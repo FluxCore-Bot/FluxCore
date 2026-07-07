@@ -15,7 +15,8 @@
     "saving": "Speichern...",
     "cancel": "Abbrechen",
     "delete": "Löschen",
-    "edit": "Bearbeiten"
+    "edit": "Bearbeiten",
+    "nameTemplateHint": "Verwende {user} für den Anzeigenamen des Mitglieds"
   },
   "empty": {
     "noConfigs": "Noch keine Konfigurationen",
@@ -26,5 +27,12 @@
     "updated": "Konfiguration aktualisiert",
     "created": "Konfiguration erstellt",
     "removed": "Konfiguration entfernt"
+  },
+  "hubs": {
+    "configured": "Konfigurierte Hubs",
+    "add": "Hub hinzufügen",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Vorlage: {{template}}",
+    "categorySuffix": " — Kategorie: #{{channel}}"
   }
 }

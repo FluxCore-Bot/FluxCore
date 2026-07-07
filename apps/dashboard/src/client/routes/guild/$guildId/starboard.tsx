@@ -252,7 +252,7 @@ export function StarboardPage() {
                       <TableRow>
                         <TableHead>{t("messages.table.original")}</TableHead>
                         <TableHead>{t("messages.table.channel")}</TableHead>
-                        <TableHead>{t("table.author")}</TableHead>
+                        <TableHead>{t("messages.table.author")}</TableHead>
                         <TableHead>{t("messages.table.stars")}</TableHead>
                         <TableHead>{t("messages.table.date")}</TableHead>
                       </TableRow>

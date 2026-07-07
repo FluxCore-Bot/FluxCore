@@ -26,7 +26,8 @@
       "original": "Mensaxe Orixinal",
       "stars": "Estrelas",
       "channel": "Canal",
-      "date": "Data"
+      "date": "Data",
+      "author": "Author"
     },
     "noMessages": "Aínda non hai mensaxes destacadas."
   },

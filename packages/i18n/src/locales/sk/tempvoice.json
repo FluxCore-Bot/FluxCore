@@ -15,7 +15,8 @@
     "saving": "Ukladanie...",
     "cancel": "Zrušiť",
     "delete": "Odstrániť",
-    "edit": "Upraviť"
+    "edit": "Upraviť",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Zatiaľ žiadne konfigurácie",
@@ -26,5 +27,12 @@
     "updated": "Konfigurácia aktualizovaná",
     "created": "Konfigurácia vytvorená",
     "removed": "Konfigurácia odstránená"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

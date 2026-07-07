@@ -79,7 +79,9 @@
       "description": "Os registos de eventos aparecerão aqui assim que o registo estiver configurado e os eventos começarem a ocorrer."
     },
     "config": {
-      "selectChannel": "Selecionar canal de registo"
+      "selectChannel": "Selecionar canal de registo",
+      "moreEvents_one": "+{{count}} a mais",
+      "moreEvents_other": "+{{count}} a mais"
     }
   }
 }

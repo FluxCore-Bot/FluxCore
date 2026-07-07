@@ -33,7 +33,8 @@
     "category": "Kategori Tiket",
     "create": "Buat Panel",
     "edit": "Edit Panel",
-    "deploy": "Terapkan Panel"
+    "deploy": "Terapkan Panel",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Saluran Transkip",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Konfirmasi Tutup",
     "closeConfirmationDesc": "Minta konfirmasi sebelum menutup tiket.",
     "dmTranscript": "Transkip DM",
-    "dmTranscriptDesc": "Kirim salinan transkip ke pembuat tiket melalui DM."
+    "dmTranscriptDesc": "Kirim salinan transkip ke pembuat tiket melalui DM.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Klaim",

@@ -1,50 +1,50 @@
 {
-  "title": "[NEEDS TRANSLATION] Giveaways",
-  "subtitle": "[NEEDS TRANSLATION] Run giveaways with customizable duration, entry requirements, and winner selection.",
+  "title": "گیو ویز",
+  "subtitle": "حسبِ ضرورت دورانیے، شرکت کی شرائط اور فاتح کے انتخاب کے ساتھ گیو ویز چلائیں۔",
   "stats": {
-    "activeGiveaways": "[NEEDS TRANSLATION] Active Giveaways",
-    "pastGiveaways": "[NEEDS TRANSLATION] Past Giveaways",
-    "totalEntries": "[NEEDS TRANSLATION] Total Entries"
+    "activeGiveaways": "فعال گیو ویز",
+    "pastGiveaways": "گزشتہ گیو ویز",
+    "totalEntries": "کل انٹریز"
   },
   "table": {
-    "prize": "[NEEDS TRANSLATION] Prize",
-    "winners": "[NEEDS TRANSLATION] Winners",
-    "entries": "[NEEDS TRANSLATION] Entries",
-    "endsIn": "[NEEDS TRANSLATION] Ends In",
-    "status": "[NEEDS TRANSLATION] Status"
+    "prize": "انعام",
+    "winners": "فاتحین",
+    "entries": "انٹریز",
+    "endsIn": "ختم ہونے میں",
+    "status": "اسٹیٹس"
   },
   "statuses": {
-    "active": "[NEEDS TRANSLATION] Active",
-    "ended": "[NEEDS TRANSLATION] Ended",
-    "cancelled": "[NEEDS TRANSLATION] Cancelled"
+    "active": "فعال",
+    "ended": "ختم شدہ",
+    "cancelled": "منسوخ شدہ"
   },
   "actions": {
-    "create": "[NEEDS TRANSLATION] Create Giveaway",
-    "edit": "[NEEDS TRANSLATION] Edit",
-    "end": "[NEEDS TRANSLATION] End",
-    "reroll": "[NEEDS TRANSLATION] Reroll",
-    "delete": "[NEEDS TRANSLATION] Delete"
+    "create": "گیو وے بنائیں",
+    "edit": "ترمیم",
+    "end": "ختم کریں",
+    "reroll": "دوبارہ قرعہ",
+    "delete": "حذف کریں"
   },
   "form": {
-    "prize": "[NEEDS TRANSLATION] Prize",
-    "winnersCount": "[NEEDS TRANSLATION] Number of Winners",
-    "duration": "[NEEDS TRANSLATION] Duration",
-    "channel": "[NEEDS TRANSLATION] Channel",
-    "requiredRole": "[NEEDS TRANSLATION] Required Role",
-    "description": "[NEEDS TRANSLATION] Description"
+    "prize": "انعام",
+    "winnersCount": "فاتحین کی تعداد",
+    "duration": "دورانیہ",
+    "channel": "چینل",
+    "requiredRole": "مطلوبہ رول",
+    "description": "تفصیل"
   },
   "toast": {
-    "created": "[NEEDS TRANSLATION] Giveaway created",
-    "createFailed": "[NEEDS TRANSLATION] Failed to create giveaway",
-    "updated": "[NEEDS TRANSLATION] Giveaway updated",
-    "updateFailed": "[NEEDS TRANSLATION] Failed to update giveaway",
-    "ended": "[NEEDS TRANSLATION] Giveaway ended",
-    "endFailed": "[NEEDS TRANSLATION] Failed to end giveaway",
-    "rerolled": "[NEEDS TRANSLATION] Winners rerolled",
-    "rerollFailed": "[NEEDS TRANSLATION] Failed to reroll winners",
-    "deleted": "[NEEDS TRANSLATION] Giveaway deleted",
-    "deleteFailed": "[NEEDS TRANSLATION] Failed to delete giveaway"
+    "created": "گیو وے بن گیا",
+    "createFailed": "گیو وے بنانے میں ناکامی",
+    "updated": "گیو وے اپ ڈیٹ ہو گیا",
+    "updateFailed": "گیو وے اپ ڈیٹ کرنے میں ناکامی",
+    "ended": "گیو وے ختم ہو گیا",
+    "endFailed": "گیو وے ختم کرنے میں ناکامی",
+    "rerolled": "فاتحین کا دوبارہ قرعہ ہو گیا",
+    "rerollFailed": "فاتحین کا دوبارہ قرعہ کرنے میں ناکامی",
+    "deleted": "گیو وے حذف ہو گیا",
+    "deleteFailed": "گیو وے حذف کرنے میں ناکامی"
   },
-  "empty": "[NEEDS TRANSLATION] No giveaways yet. Create one to get started.",
-  "loading": "[NEEDS TRANSLATION] Loading giveaways..."
+  "empty": "ابھی تک کوئی گیو وے نہیں۔ شروع کرنے کے لیے ایک بنائیں۔",
+  "loading": "گیو ویز لوڈ ہو رہے ہیں..."
 }

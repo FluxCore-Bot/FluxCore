@@ -68,5 +68,8 @@
     "requireReasonDesc": "সতর্কতা দেওয়ার সময় মডারেটরদের কারণ দিতে হবে।",
     "maxWarnings": "সর্বোচ্চ সতর্কতা",
     "maxWarningsDesc": "প্রতি ব্যবহারকারী সর্বোচ্চ সতর্কতা (0 = সীমাহীন)।"
-  }
+  },
+  "noWarningsDesc": "No warnings have been issued yet",
+  "confirmDelete": "Are you sure you want to delete this item? This action cannot be undone.",
+  "confirmRemoveEscalation": "Are you sure you want to remove this escalation rule? This action cannot be undone."
 }

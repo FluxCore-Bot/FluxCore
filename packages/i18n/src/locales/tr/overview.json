@@ -8,5 +8,26 @@
     "successRate": "Başarı Oranı"
   },
   "errorsInLast24h": "Son 24 saatte {{count}} hata",
-  "errorsInLast24h_other": "Son 24 saatte {{count}} hata"
+  "errorsInLast24h_other": "Son 24 saatte {{count}} hata",
+  "recentActivity": {
+    "title": "Recent Activity",
+    "viewAllLogs": "View all logs",
+    "empty": "No activity recorded yet",
+    "timeAgo": {
+      "justNow": "just now",
+      "minutes": "{{count}}m ago",
+      "hours": "{{count}}h ago",
+      "days": "{{count}}d ago"
+    }
+  },
+  "eventDistribution": {
+    "title": "Top Events",
+    "empty": "No event data yet",
+    "executions": "{{count}} executions"
+  },
+  "executionChart": {
+    "title": "Execution Trend",
+    "success": "Success",
+    "errors": "Errors"
+  }
 }

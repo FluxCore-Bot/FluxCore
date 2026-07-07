@@ -108,5 +108,6 @@
     "channelRequired": "Kanal on kohustuslik",
     "maxRolesReached": "Maksimaalselt 25 rolli paneeli kohta"
   },
-  "loading": "Laadin paneele..."
+  "loading": "Laadin paneele...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

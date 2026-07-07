@@ -52,6 +52,7 @@
     "albumName": "Albumi nimi",
     "albumNamePlaceholder": "Minu esitusloend",
     "deleteAlbum": "Kustuta",
-    "atMax": "Oled jõudnud albumite maksimaalse arvuni."
+    "atMax": "Oled jõudnud albumite maksimaalse arvuni.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

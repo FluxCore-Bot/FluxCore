@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "Komandas nosaukums ir obligats"
   },
-  "triggerPrefix": "Trigeris: !{{name}}"
+  "triggerPrefix": "Trigeris: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
 }

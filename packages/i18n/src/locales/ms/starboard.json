@@ -26,7 +26,8 @@
       "original": "Mesej Asal",
       "stars": "Bintang",
       "channel": "Saluran",
-      "date": "Tarikh"
+      "date": "Tarikh",
+      "author": "Author"
     },
     "noMessages": "Belum ada mesej berbintang."
   },

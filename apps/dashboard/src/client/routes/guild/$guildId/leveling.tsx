@@ -815,7 +815,7 @@ export function LevelingPage() {
         open={rewardDeleteId !== null}
         onOpenChange={(open) => { if (!open) setRewardDeleteId(null); }}
         title={t("common:actions.remove", { defaultValue: "Remove Reward" })}
-        description={t("common:actions.confirmDelete", { defaultValue: "Are you sure you want to remove this role reward? This action cannot be undone." })}
+        description={t("confirmRemoveReward")}
         confirmLabel={t("common:actions.remove", { defaultValue: "Remove" })}
         destructive
         onConfirm={confirmRemoveReward}
@@ -826,7 +826,7 @@ export function LevelingPage() {
         open={multiplierDeleteTarget !== null}
         onOpenChange={(open) => { if (!open) setMultiplierDeleteTarget(null); }}
         title={t("common:actions.remove", { defaultValue: "Remove Multiplier" })}
-        description={t("common:actions.confirmDelete", { defaultValue: "Are you sure you want to remove this XP multiplier? This action cannot be undone." })}
+        description={t("confirmRemoveMultiplier")}
         confirmLabel={t("common:actions.remove", { defaultValue: "Remove" })}
         destructive
         onConfirm={confirmRemoveMultiplier}

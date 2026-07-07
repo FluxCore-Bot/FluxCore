@@ -15,7 +15,8 @@
     "saving": "Kaydediliyor...",
     "cancel": "İptal",
     "delete": "Sil",
-    "edit": "Düzenle"
+    "edit": "Düzenle",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Henüz yapılandırma yok",
@@ -26,5 +27,12 @@
     "updated": "Yapılandırma güncellendi",
     "created": "Yapılandırma oluşturuldu",
     "removed": "Yapılandırma kaldırıldı"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

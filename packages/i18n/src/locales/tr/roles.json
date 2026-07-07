@@ -108,5 +108,6 @@
     "channelRequired": "Kanal zorunludur",
     "maxRolesReached": "Panel başına en fazla 25 rol"
   },
-  "loading": "Paneller yükleniyor..."
+  "loading": "Paneller yükleniyor...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

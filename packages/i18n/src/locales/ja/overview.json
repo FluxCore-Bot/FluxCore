@@ -8,5 +8,26 @@
     "successRate": "成功率"
   },
   "errorsInLast24h": "過去24時間で{{count}}件のエラー",
-  "errorsInLast24h_other": "過去24時間で{{count}}件のエラー"
+  "errorsInLast24h_other": "過去24時間で{{count}}件のエラー",
+  "recentActivity": {
+    "title": "最近のアクティビティ",
+    "viewAllLogs": "すべてのログを表示",
+    "empty": "まだアクティビティが記録されていません",
+    "timeAgo": {
+      "justNow": "たった今",
+      "minutes": "{{count}}分前",
+      "hours": "{{count}}時間前",
+      "days": "{{count}}日前"
+    }
+  },
+  "eventDistribution": {
+    "title": "トップイベント",
+    "empty": "まだイベントデータがありません",
+    "executions": "{{count}}回の実行"
+  },
+  "executionChart": {
+    "title": "実行トレンド",
+    "success": "成功",
+    "errors": "エラー"
+  }
 }

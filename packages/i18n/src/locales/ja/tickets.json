@@ -33,7 +33,8 @@
     "category": "チケットカテゴリ",
     "create": "パネルを作成",
     "edit": "パネルを編集",
-    "deploy": "パネルをデプロイ"
+    "deploy": "パネルをデプロイ",
+    "openTicket": "チケットを開く"
   },
   "settings": {
     "transcriptChannel": "トランスクリプトチャンネル",
@@ -43,7 +44,9 @@
     "closeConfirmation": "クローズ確認",
     "closeConfirmationDesc": "チケットをクローズする前に確認を求めます。",
     "dmTranscript": "DMトランスクリプト",
-    "dmTranscriptDesc": "チケット作成者にDMでトランスクリプトのコピーを送信します。"
+    "dmTranscriptDesc": "チケット作成者にDMでトランスクリプトのコピーを送信します。",
+    "staffRolesPlaceholder": "スタッフロール",
+    "namingFormatHint": "変数: {number}（ゼロ埋め）、{username}"
   },
   "actions": {
     "claim": "対応する",

@@ -33,7 +33,8 @@
     "category": "Kategoria ya Tiketi",
     "create": "Unda Paneli",
     "edit": "Hariri Paneli",
-    "deploy": "Tuma Paneli"
+    "deploy": "Tuma Paneli",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Chaneli ya Nakala",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Uthibitisho wa Kufunga",
     "closeConfirmationDesc": "Hitaji uthibitisho kabla ya kufunga tiketi.",
     "dmTranscript": "Nakala kwa DM",
-    "dmTranscriptDesc": "Tuma nakala ya tiketi kwa muundaji wa tiketi kupitia DM."
+    "dmTranscriptDesc": "Tuma nakala ya tiketi kwa muundaji wa tiketi kupitia DM.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Chukua",

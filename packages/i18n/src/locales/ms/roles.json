@@ -108,5 +108,6 @@
     "channelRequired": "Saluran diperlukan",
     "maxRolesReached": "Maksimum 25 peranan setiap panel"
   },
-  "loading": "Memuatkan panel..."
+  "loading": "Memuatkan panel...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

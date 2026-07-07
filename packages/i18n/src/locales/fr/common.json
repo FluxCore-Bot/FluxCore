@@ -79,7 +79,9 @@
     "conditions": "Conditions",
     "duration": "Durée",
     "reason": "Raison",
-    "language": "Langue"
+    "language": "Langue",
+    "limit": "Limite",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Sélectionner un salon...",
@@ -119,7 +121,8 @@
     "hours": "heures",
     "days": "jours",
     "ago": "il y a {{time}}",
-    "in": "dans {{time}}"
+    "in": "dans {{time}}",
+    "weeks": "semaines"
   },
   "confirm": {
     "title": "Êtes-vous sûr ?",
@@ -134,5 +137,9 @@
     "error": "Une erreur est survenue",
     "menuOpen": "Le menu est ouvert",
     "menuClosed": "Le menu est fermé"
+  },
+  "language": {
+    "searchPlaceholder": "Rechercher des langues...",
+    "noResults": "Aucune langue trouvée"
   }
 }

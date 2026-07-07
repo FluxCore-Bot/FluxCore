@@ -79,7 +79,9 @@
       "description": "Log kejadian akan muncul di sini setelah pencatatan dikonfigurasi dan kejadian mulai terjadi."
     },
     "config": {
-      "selectChannel": "Pilih saluran log"
+      "selectChannel": "Pilih saluran log",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

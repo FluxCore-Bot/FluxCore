@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "Назва команди обов'язкова"
   },
-  "triggerPrefix": "Тригер: !{{name}}"
+  "triggerPrefix": "Тригер: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
 }

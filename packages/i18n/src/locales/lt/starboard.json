@@ -26,7 +26,8 @@
       "original": "Originali zinute",
       "stars": "Zvaizdutes",
       "channel": "Kanalas",
-      "date": "Data"
+      "date": "Data",
+      "author": "Author"
     },
     "noMessages": "Pazymetu zinuciu nera."
   },

@@ -26,7 +26,8 @@
       "original": "Tin Nhắn Gốc",
       "stars": "Sao",
       "channel": "Kênh",
-      "date": "Ngày"
+      "date": "Ngày",
+      "author": "Author"
     },
     "noMessages": "Chưa có tin nhắn nào được gắn sao."
   },
