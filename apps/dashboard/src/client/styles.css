@@ -151,14 +151,6 @@ input[type="color"] {
   background: #2c2c2f;
 }
 
-/* Material Symbols */
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-  font-size: 20px;
-  line-height: 1;
-  vertical-align: middle;
-}
-
 /* ── Focus visible — enhanced for WCAG AA ── */
 :focus-visible {
   outline: 2px solid var(--color-ring);
