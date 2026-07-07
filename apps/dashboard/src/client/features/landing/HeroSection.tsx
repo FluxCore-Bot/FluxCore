@@ -10,7 +10,7 @@ export function HeroSection() {
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/5 blur-[120px]" />
-        <div className="absolute right-1/4 top-2/3 h-[400px] w-[400px] rounded-full bg-secondary/5 blur-[100px]" />
+        <div className="absolute end-1/4 top-2/3 h-[400px] w-[400px] rounded-full bg-secondary/5 blur-[100px]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-4xl text-center">

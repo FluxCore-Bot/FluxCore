@@ -96,7 +96,7 @@ export function Sidebar({ guildId, isOpen, onClose }: SidebarProps) {
 
       {/* Navigation */}
       <ScrollArea className="flex-1">
-        <nav aria-label={t("nav.overview")} className="pe-2">
+        <nav aria-label={t("nav.overview")} className="px-2">
           <ul className="space-y-1" role="list">
             {visibleNavItems.map((item) => {
               const isActive = !!matchRoute({

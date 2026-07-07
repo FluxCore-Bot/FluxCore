@@ -234,7 +234,7 @@ export function RuleList({
                   {/* Arrow */}
                   <div className="flex shrink-0 items-center">
                     <div className="h-px w-3 bg-accent/30" />
-                    <div className="h-1.5 w-1.5 rotate-45 border-r border-t border-accent/40" />
+                    <div className="h-1.5 w-1.5 rotate-45 border-e border-t border-accent/40" />
                   </div>
 
                   {/* Action chips */}
@@ -267,7 +267,7 @@ export function RuleList({
                         {i < rule.actions.length - 1 && (
                           <div className="flex shrink-0 items-center">
                             <div className="h-px w-2 bg-secondary/30" />
-                            <div className="h-1 w-1 rotate-45 border-r border-t border-secondary/30" />
+                            <div className="h-1 w-1 rotate-45 border-e border-t border-secondary/30" />
                           </div>
                         )}
                       </div>

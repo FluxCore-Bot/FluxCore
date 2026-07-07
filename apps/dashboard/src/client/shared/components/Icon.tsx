@@ -193,7 +193,11 @@ const iconMap: Record<string, LucideIcon> = {
 interface IconProps {
   name: string;
   className?: string;
-  /** Renders a solid (filled) glyph — used for active/selected states. */
+  /**
+   * Emphasizes the glyph with a heavier stroke (2.25 vs 1.5) for active/selected
+   * states. Lucide icons are stroke-based outlines — never `fill` them (it
+   * collapses detailed glyphs like Hand/Shield into solid blobs).
+   */
   filled?: boolean;
   /** Pixel size. Defaults to 20 to match the previous icon baseline. */
   size?: number;
@@ -205,8 +209,8 @@ export function Icon({ name, className = "", filled = false, size = 20 }: IconPr
     <LucideGlyph
       className={className}
       size={size}
-      strokeWidth={1.5}
-      fill={filled ? "currentColor" : "none"}
+      strokeWidth={filled ? 2.25 : 1.5}
+      fill="none"
       aria-hidden="true"
     />
   );
