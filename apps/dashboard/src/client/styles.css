@@ -167,6 +167,17 @@ input[type="color"] {
   background: #2c2c2f;
 }
 
+/*
+ * Radix ScrollArea injects a `display:table; min-width:100%` wrapper (for
+ * horizontal-scroll measurement). We only ever scroll vertically, and that
+ * table wrapper overflows the viewport horizontally — its inline-start padding
+ * falls outside the clip box, producing asymmetric side padding (most visible
+ * in RTL). Force it to a block so it fills the viewport width exactly.
+ */
+[data-radix-scroll-area-viewport] > div {
+  display: block !important;
+}
+
 /* ── Focus visible — enhanced for WCAG AA ── */
 :focus-visible {
   outline: 2px solid var(--color-ring);
