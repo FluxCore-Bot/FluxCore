@@ -109,7 +109,7 @@ export function NodeDetailPanel(props: NodeDetailPanelProps) {
   const header = getHeaderInfo(props, t);
 
   return (
-    <div className="absolute end-0 top-0 z-20 flex h-full w-full flex-col border-s border-border bg-surface-low animate-in slide-in-from-right-4 rtl:slide-in-from-left-4 duration-200 motion-reduce:animate-none sm:w-96">
+    <div className="absolute right-0 top-0 z-20 flex h-full w-full flex-col border-l border-border bg-surface-low animate-in slide-in-from-right-4 duration-200 motion-reduce:animate-none sm:w-96">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-border px-4 py-3">
         <div className="flex items-center gap-2">

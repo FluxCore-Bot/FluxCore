@@ -554,7 +554,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             className="!rounded-lg !border-border !bg-surface-low"
             maskColor="rgba(14, 14, 16, 0.8)"
           />
-          <Panel position="bottom-right" className="!mb-2 me-2! flex gap-1.5">
+          <Panel position="bottom-right" className="!mb-2 mr-2! flex gap-1.5">
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
