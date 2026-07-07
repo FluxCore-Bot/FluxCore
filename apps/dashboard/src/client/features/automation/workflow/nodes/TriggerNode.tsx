@@ -25,6 +25,8 @@ function TriggerNodeComponent({ data, selected }: NodeProps) {
   return (
     <>
       <div
+        role="group"
+        aria-label={`Trigger: ${label}`}
         className={`min-w-[220px] max-w-[260px] rounded-lg border-2 px-4 py-3 transition-all ${getBorderClass(selected, validationState)}`}
       >
         <div className="mb-1.5 flex items-center gap-2">
@@ -52,7 +54,8 @@ function TriggerNodeComponent({ data, selected }: NodeProps) {
         id="source"
         type="source"
         position={Position.Right}
-        className="!h-3 !w-3 !border-2 !border-accent !bg-surface-high"
+        title="Next step"
+        className="!h-4 !w-4 !border-2 !border-accent !bg-surface-high"
       />
     </>
   );

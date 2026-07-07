@@ -41,9 +41,11 @@ function DelayNodeComponent({ data, selected }: NodeProps) {
         id="target"
         type="target"
         position={Position.Left}
-        className="!h-3 !w-3 !border-2 !border-text-muted !bg-surface-high"
+        className="!h-4 !w-4 !border-2 !border-text-muted !bg-surface-high"
       />
       <div
+        role="group"
+        aria-label={`Delay: ${label}`}
         className={`min-w-[160px] max-w-[220px] rounded-lg border-2 px-4 py-3 transition-all ${getBorderClass(selected, validationState)}`}
       >
         <div className="mb-1.5 flex items-center gap-2">
@@ -63,7 +65,7 @@ function DelayNodeComponent({ data, selected }: NodeProps) {
         id="source"
         type="source"
         position={Position.Right}
-        className="!h-3 !w-3 !border-2 !border-text-muted/50 !bg-surface-high"
+        className="!h-4 !w-4 !border-2 !border-text-muted/50 !bg-surface-high"
       />
     </>
   );

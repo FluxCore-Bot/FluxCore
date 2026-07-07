@@ -54,9 +54,11 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
         id="target"
         type="target"
         position={Position.Left}
-        className="!h-3 !w-3 !border-2 !border-warning !bg-surface-high"
+        className="!h-4 !w-4 !border-2 !border-warning !bg-surface-high"
       />
       <div
+        role="group"
+        aria-label={`Condition: ${label}`}
         className={`min-w-[200px] max-w-[260px] rounded-lg border-2 px-4 py-3 transition-all ${getBorderClass(selected, validationState)}`}
       >
         <div className="mb-1.5 flex items-center gap-2">
@@ -85,16 +87,18 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
         type="source"
         position={Position.Right}
         id="then"
-        className="!h-3 !w-3 !border-2 !border-secondary !bg-surface-high"
-        style={{ top: "35%" }}
+        title="Yes (then)"
+        className="!h-4 !w-4 !border-2 !border-secondary !bg-surface-high"
+        style={{ top: "30%" }}
       />
       {/* No/Else branch */}
       <Handle
         type="source"
         position={Position.Right}
         id="else"
-        className="!h-3 !w-3 !border-2 !border-danger !bg-surface-high"
-        style={{ top: "65%" }}
+        title="No (else)"
+        className="!h-4 !w-4 !border-2 !border-danger !bg-surface-high"
+        style={{ top: "70%" }}
       />
     </>
   );

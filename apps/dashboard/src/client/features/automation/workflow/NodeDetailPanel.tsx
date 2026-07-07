@@ -4,6 +4,7 @@ import { useRoles } from "../../../shared/hooks/useRoles";
 import { ActionFields } from "../components/ActionFields";
 import { Button } from "../../../shared/ui/button";
 import { Label } from "../../../shared/ui/label";
+import { Input } from "../../../shared/ui/input";
 import { Badge } from "../../../shared/ui/badge";
 import { Icon } from "../../../shared/components/Icon";
 import { ScrollArea } from "../../../shared/ui/scroll-area";
@@ -105,7 +106,7 @@ export function NodeDetailPanel(props: NodeDetailPanelProps) {
   const header = getHeaderInfo(props);
 
   return (
-    <div className="absolute end-0 top-0 z-20 flex h-full w-full flex-col border-s border-border bg-surface-low animate-in slide-in-from-end-4 duration-200 sm:w-96">
+    <div className="absolute end-0 top-0 z-20 flex h-full w-full flex-col border-s border-border bg-surface-low animate-in slide-in-from-end-4 duration-200 motion-reduce:animate-none sm:w-96">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-border px-4 py-3">
         <div className="flex items-center gap-2">
@@ -184,7 +185,8 @@ function TriggerPanel({
         <div className="space-y-4">
           <div>
             <Label>
-              Event Type <span className="text-danger">*</span>
+              Event Type <span aria-hidden="true" className="text-danger">*</span>
+              <span className="sr-only"> (required)</span>
             </Label>
             <Select value={eventType || undefined} onValueChange={onEventTypeChange}>
               <SelectTrigger>
@@ -271,7 +273,8 @@ function ActionPanel({
         <div className="space-y-4">
           <div>
             <Label>
-              Action Type <span className="text-danger">*</span>
+              Action Type <span aria-hidden="true" className="text-danger">*</span>
+              <span className="sr-only"> (required)</span>
             </Label>
             <Select value={action.type || undefined} onValueChange={handleTypeChange}>
               <SelectTrigger>
@@ -407,7 +410,8 @@ function StepPanel({
       <div className="space-y-4">
         <div>
           <Label>
-            Action Type <span className="text-danger">*</span>
+            Action Type <span aria-hidden="true" className="text-danger">*</span>
+              <span className="sr-only"> (required)</span>
           </Label>
           <Select value={step.action.type || undefined} onValueChange={handleTypeChange}>
             <SelectTrigger>
@@ -491,13 +495,13 @@ function StepPanel({
         </div>
 
         <div>
-          <Label>Value</Label>
-          <input
+          <Label htmlFor="cond-value">Value</Label>
+          <Input
+            id="cond-value"
             type="text"
             value={step.condition.value}
             onChange={(e) => updateCondition({ value: e.target.value })}
             placeholder="Value to compare..."
-            className="flex h-9 w-full rounded-md border border-border bg-surface-lowest px-3 py-1 text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-1 focus:ring-accent"
           />
           {step.condition.operator === "inList" || step.condition.operator === "notInList" ? (
             <p className="mt-1 text-xs text-text-muted">Comma-separated values</p>
@@ -534,8 +538,9 @@ function StepPanel({
     return (
       <div className="space-y-4">
         <div>
-          <Label>Delay (seconds)</Label>
-          <input
+          <Label htmlFor="delay-secs">Delay (seconds)</Label>
+          <Input
+            id="delay-secs"
             type="number"
             value={secs}
             min={1}
@@ -544,7 +549,6 @@ function StepPanel({
               const val = Math.min(300, Math.max(1, Number(e.target.value)));
               onStepChange(stepId, { ...step, delayMs: val * 1000 });
             }}
-            className="flex h-9 w-full rounded-md border border-border bg-surface-lowest px-3 py-1 text-sm text-text focus:outline-none focus:ring-1 focus:ring-accent"
           />
           <p className="mt-1 text-xs text-text-muted">1–300 seconds (5 minutes max)</p>
         </div>

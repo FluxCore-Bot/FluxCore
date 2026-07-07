@@ -508,7 +508,11 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
       )}
 
       {/* Canvas — fills remaining space */}
-      <div className="relative flex-1">
+      <div
+        className="relative flex-1"
+        role="group"
+        aria-label="Workflow editor canvas. Drag node handles to connect steps."
+      >
         <ReactFlow
           nodes={nodes}
           edges={rfEdges}
