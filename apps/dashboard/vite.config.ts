@@ -15,6 +15,23 @@ export default defineConfig({
   build: {
     outDir: resolve(__dirname, "dist/client"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        // Split large third-party libraries into their own long-lived,
+        // cacheable chunks so they aren't re-downloaded on app code changes.
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return undefined;
+          if (id.includes("recharts") || id.includes("d3-") || id.includes("victory-"))
+            return "charts";
+          if (id.includes("react-dom") || id.includes("scheduler")) return "react-vendor";
+          if (id.includes("@tanstack")) return "tanstack";
+          if (id.includes("@radix-ui")) return "radix";
+          if (id.includes("i18next") || id.includes("react-i18next")) return "i18n";
+          if (id.includes("lucide-react")) return "icons";
+          return undefined;
+        },
+      },
+    },
   },
   server: {
     port: 5173,
