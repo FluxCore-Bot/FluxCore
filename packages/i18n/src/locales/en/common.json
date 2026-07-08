@@ -141,5 +141,14 @@
   "language": {
     "searchPlaceholder": "Search languages...",
     "noResults": "No language found"
+  },
+  "variableField": {
+    "insert": "Insert variable",
+    "search": "Search variables…",
+    "noMatches": "No matches",
+    "unknown": "Unknown variable {{token}}",
+    "didYouMean": "did you mean {{suggestion}}?",
+    "preview": "Preview",
+    "notAvailable": "{{token}} isn't available for {{event}}"
   }
 }
