@@ -1,7 +1,9 @@
 import { defineConfig } from "vitest/config";
 import { resolve } from "node:path";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
+  plugins: [react()],
   resolve: {
     extensions: [".ts", ".js", ".tsx", ".jsx", ".json"],
     alias: {
@@ -11,14 +13,13 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    include: ["tests/**/*.test.ts"],
+    include: ["tests/**/*.test.ts", "tests/**/*.test.tsx"],
     alias: {
-      // Map .js extensions to .ts for ESM compat
       "../../src/server/": resolve(__dirname, "src/server") + "/",
     },
     coverage: {
       provider: "v8",
-      include: ["src/server/**/*.ts"],
+      include: ["src/server/**/*.ts", "src/client/shared/ui/variable-field/**/*.ts"],
       exclude: ["src/server/index.ts"],
     },
   },
