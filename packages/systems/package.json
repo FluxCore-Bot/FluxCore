@@ -326,6 +326,10 @@
       "types": "./dist/customCommands/constants.d.ts",
       "import": "./dist/customCommands/constants.js"
     },
+    "./customCommands/variables": {
+      "types": "./dist/customCommands/variables.d.ts",
+      "import": "./dist/customCommands/variables.js"
+    },
     "./customCommands/executor": {
       "types": "./dist/customCommands/executor.d.ts",
       "import": "./dist/customCommands/executor.js"
