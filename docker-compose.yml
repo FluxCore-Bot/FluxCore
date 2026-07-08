@@ -28,8 +28,9 @@ services:
       - ./lavalink/application.yml:/opt/Lavalink/application.yml:ro
     environment:
       - _JAVA_OPTIONS=-Xmx128m
+      - LAVALINK_SERVER_PASSWORD=${LAVALINK_SERVER_PASSWORD:-}
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- --header='Authorization: youshallnotpass' http://localhost:2333/version || exit 1"]
+      test: ["CMD-SHELL", "wget -qO- --header=\"Authorization: $${LAVALINK_SERVER_PASSWORD}\" http://localhost:2333/version || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -121,8 +122,9 @@ services:
       - ./lavalink/application.yml:/opt/Lavalink/application.yml:ro
     environment:
       - _JAVA_OPTIONS=-Xmx128m
+      - LAVALINK_SERVER_PASSWORD=${LAVALINK_SERVER_PASSWORD:-}
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- --header='Authorization: youshallnotpass' http://localhost:2333/version || exit 1"]
+      test: ["CMD-SHELL", "wget -qO- --header=\"Authorization: $${LAVALINK_SERVER_PASSWORD}\" http://localhost:2333/version || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5

@@ -14,7 +14,9 @@ plugins:
       - TVHTML5_SIMPLY
     oauth:
       enabled: true
-      refreshToken: "1//03ZBRjPYrOJjyCgYIARAAGAMSNwF-L9IrxhQ0spy4xQa5oYz9QgV4MIAqjwHjE4-XvYKYckrwBkze-mryRjwwPVQmlOftQWVlGGA"
+      # Provided via env (Lavalink/Spring ${VAR} substitution). Never commit a real token.
+      # ROTATE the previously-committed token in Google Cloud — it is in git history.
+      refreshToken: "${LAVALINK_YOUTUBE_REFRESH_TOKEN:}"
 
 lavalink:
   plugins:
