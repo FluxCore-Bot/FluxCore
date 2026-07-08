@@ -24,8 +24,12 @@ interface VariableEditorProps {
   className?: string;
 }
 
-const SHARED =
-  "w-full rounded-sm border border-transparent bg-surface-lowest px-3 text-sm text-text placeholder:text-outline focus-visible:outline-none focus-visible:border-accent focus-visible:shadow-[0_0_4px_rgba(163,166,255,0.10)] disabled:cursor-not-allowed disabled:opacity-50";
+// Border, background, rounding and the focus ring live on the CONTAINER, so the
+// highlight backdrop and the text field can stack without a doubled border.
+const CONTAINER =
+  "relative w-full rounded-sm border border-transparent bg-surface-lowest text-text transition-colors focus-within:border-accent focus-within:shadow-[0_0_4px_rgba(163,166,255,0.10)]";
+// Padding + typography shared by BOTH layers so glyphs line up exactly.
+const FIELD_BASE = "px-3 text-sm";
 const INPUT_BOX = "h-9 py-1";
 const AREA_BOX = "min-h-[60px] py-2";
 
@@ -137,15 +141,21 @@ export default function VariableEditor(props: VariableEditorProps) {
     <div>
       <Popover open={open && matches.length > 0}>
         <PopoverAnchor asChild>
-          <div className={cn("relative", props.className)}>
+          <div
+            className={cn(
+              CONTAINER,
+              disabled && "cursor-not-allowed opacity-50",
+              props.className,
+            )}
+          >
             {/* Overlay backdrop for token highlighting — aria-hidden, pointer-events-none */}
             <div
               ref={backdropRef}
               aria-hidden="true"
               className={cn(
-                SHARED,
+                "pointer-events-none absolute inset-0 overflow-hidden text-text",
+                FIELD_BASE,
                 multiline ? AREA_BOX : INPUT_BOX,
-                "pointer-events-none absolute inset-0 overflow-hidden border-transparent text-text",
                 multiline ? "whitespace-pre-wrap wrap-break-word" : "whitespace-pre",
               )}
             >
@@ -185,9 +195,10 @@ export default function VariableEditor(props: VariableEditorProps) {
                 aria-autocomplete="list"
                 aria-activedescendant={active >= 0 ? `${listboxId}-opt-${active}` : undefined}
                 className={cn(
-                  SHARED,
+                  "relative block w-full resize-none bg-transparent text-transparent caret-text outline-none placeholder:text-outline",
+                  FIELD_BASE,
                   AREA_BOX,
-                  "relative bg-transparent text-transparent caret-text whitespace-pre-wrap wrap-break-word",
+                  "whitespace-pre-wrap wrap-break-word",
                 )}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
@@ -211,9 +222,9 @@ export default function VariableEditor(props: VariableEditorProps) {
                 aria-autocomplete="list"
                 aria-activedescendant={active >= 0 ? `${listboxId}-opt-${active}` : undefined}
                 className={cn(
-                  SHARED,
+                  "relative block w-full bg-transparent text-transparent caret-text outline-none placeholder:text-outline",
+                  FIELD_BASE,
                   INPUT_BOX,
-                  "relative bg-transparent text-transparent caret-text",
                 )}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
