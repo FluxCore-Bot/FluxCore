@@ -157,7 +157,11 @@ services:
     image: dpage/pgadmin4:latest
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@fluxcore.local}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:?PGADMIN_PASSWORD is required to enable the tools profile}
+      # Default to empty so `pnpm dev/stop` (which don't run pgadmin) parse fine —
+      # Compose interpolates every service regardless of --profile. pgAdmin itself
+      # refuses to start with an empty password, so `--profile tools` still requires
+      # you to set PGADMIN_PASSWORD.
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-}
       PGADMIN_CONFIG_SERVER_MODE: "False"
     ports:
       - "127.0.0.1:5050:80"

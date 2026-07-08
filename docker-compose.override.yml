@@ -1,0 +1,26 @@
+# Local dev override (NOT for commit — consider adding to .gitignore).
+#
+# 1) CI=true: the dashboard/bot dev commands run `pnpm install --frozen-lockfile`
+#    on startup; with no TTY, pnpm aborts when it must purge an inconsistent
+#    node_modules. CI=true lets it purge + reinstall non-interactively.
+# 2) LAVALINK_PASSWORD / LAVALINK_SERVER_PASSWORD: #46 made LAVALINK_PASSWORD a
+#    hard requirement in @fluxcore/config (no default). Set a matched dev value
+#    here (bot/dashboard authenticate to lavalink with the same secret) so the
+#    services boot. Put a real value in .env.dev for your normal workflow.
+services:
+  dashboard:
+    # Skip the startup `pnpm install` (node_modules already installed) — it purges
+    # + reinstalls under CI=true and races with dev:server, leaving it crash-stuck.
+    command: sh -c "pnpm turbo run dev --filter=@fluxcore/dashboard"
+    environment:
+      CI: "true"
+      LAVALINK_PASSWORD: "fluxdevlavalink"
+      LAVALINK_SERVER_PASSWORD: "fluxdevlavalink"
+  bot:
+    environment:
+      CI: "true"
+      LAVALINK_PASSWORD: "fluxdevlavalink"
+      LAVALINK_SERVER_PASSWORD: "fluxdevlavalink"
+  lavalink:
+    environment:
+      LAVALINK_SERVER_PASSWORD: "fluxdevlavalink"
