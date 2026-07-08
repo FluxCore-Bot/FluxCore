@@ -4,6 +4,7 @@ import type { TFunction } from "i18next";
 import { useChannels } from "../../../shared/hooks/useChannels";
 import { useRoles } from "../../../shared/hooks/useRoles";
 import { ActionFields } from "../components/ActionFields";
+import { buildAutomationVariables } from "../../../shared/ui/variable-field";
 import { Button } from "../../../shared/ui/button";
 import { Label } from "../../../shared/ui/label";
 import { Input } from "../../../shared/ui/input";
@@ -45,6 +46,7 @@ interface ActionPanelProps {
   action: ActionConfig;
   constants: Constants;
   guildId: string;
+  eventType: string;
   totalActions: number;
   onActionChange: (index: number, action: ActionConfig) => void;
   onActionRemove: (index: number) => void;
@@ -236,6 +238,7 @@ function ActionPanel({
   action,
   constants,
   guildId,
+  eventType,
   totalActions,
   onActionChange,
   onActionRemove,
@@ -247,6 +250,7 @@ function ActionPanel({
   const { data: roles = [] } = useRoles(guildId);
   const fields: ActionFieldDescriptor[] =
     constants.actionTypeFields[action.type] ?? [];
+  const variables = buildAutomationVariables(constants, eventType);
 
   const handleTypeChange = (newType: string) => {
     onActionChange(index, { type: newType });
@@ -302,6 +306,7 @@ function ActionPanel({
               onChange={handleFieldChange}
               channels={channels}
               roles={roles}
+              variables={variables}
             />
           )}
 
@@ -440,6 +445,7 @@ function StepPanel({
             onChange={handleFieldChange}
             channels={channels}
             roles={roles}
+            variables={[]}
           />
         )}
 
