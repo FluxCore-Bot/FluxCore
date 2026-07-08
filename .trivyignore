@@ -1,0 +1,9 @@
+# Trivy vulnerability ignore list.
+# Each entry must be justified; prefer fixing (pnpm.overrides) over ignoring.
+
+# lodash: Arbitrary code execution via _.template (untrusted templateSettings).
+# Transitive-only (via @sapphire/shapeshift and @mrleebo/prisma-ast>chevrotain);
+# we never call lodash template with untrusted input. The advisory lists a fix
+# in 4.18.0, which lodash has NOT released (latest is 4.17.21) — unfixable.
+# Mirrors pnpm auditConfig.ignoreGhsas (GHSA-r5fr-rjxr-66jc, GHSA-35jh-r3h4-6jhm).
+CVE-2026-4800

@@ -52,6 +52,8 @@ RUN pnpm install --frozen-lockfile
 
 FROM bot-installer AS bot-builder
 COPY --from=prune-bot /app/out/full/ .
+# turbo prune omits root tsconfig files that package tsconfigs extend.
+COPY tsconfig.base.json tsconfig.json ./
 RUN pnpm turbo run build --filter=@fluxcore/bot...
 
 FROM base AS production-bot
@@ -81,6 +83,8 @@ RUN pnpm install --frozen-lockfile
 
 FROM dashboard-installer AS dashboard-builder
 COPY --from=prune-dashboard /app/out/full/ .
+# turbo prune omits root tsconfig files that package tsconfigs extend.
+COPY tsconfig.base.json tsconfig.json ./
 RUN pnpm turbo run build --filter=@fluxcore/dashboard...
 
 FROM base AS production-dashboard
