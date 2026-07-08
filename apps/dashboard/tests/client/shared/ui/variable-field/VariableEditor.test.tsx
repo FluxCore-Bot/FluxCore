@@ -24,16 +24,14 @@ function Harness({ initial = "" }: { initial?: string }) {
 describe("VariableEditor", () => {
   it("opens the suggestion list when typing '{' and inserts on Enter", async () => {
     const user = userEvent.setup();
-    let current = "";
-    const onChange = (val: string) => { current = val; };
-    render(<VariableEditor value="" onChange={onChange} variables={vars} aria-label="field" />);
+    render(<Harness />);
     const input = screen.getByLabelText("field");
     await user.click(input);
     await user.type(input, "{{");
     // listbox appears
     expect(screen.getByRole("listbox")).toBeTruthy();
     await user.keyboard("{ArrowDown}{Enter}");
-    expect(current).toContain("{user}");
+    expect((input as HTMLInputElement).value).toContain("{user}");
   });
 
   it("shows an unknown-variable warning with a suggestion", () => {

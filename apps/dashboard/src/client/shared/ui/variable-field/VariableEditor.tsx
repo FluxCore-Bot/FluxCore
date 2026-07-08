@@ -146,7 +146,7 @@ export default function VariableEditor(props: VariableEditorProps) {
                 SHARED,
                 multiline ? AREA_BOX : INPUT_BOX,
                 "pointer-events-none absolute inset-0 overflow-hidden border-transparent text-text",
-                multiline ? "whitespace-pre-wrap break-words" : "whitespace-pre",
+                multiline ? "whitespace-pre-wrap wrap-break-word" : "whitespace-pre",
               )}
             >
               {segments.map((seg, i) =>
@@ -183,10 +183,11 @@ export default function VariableEditor(props: VariableEditorProps) {
                 aria-expanded={open && matches.length > 0}
                 aria-controls={listboxId}
                 aria-autocomplete="list"
+                aria-activedescendant={active >= 0 ? `${listboxId}-opt-${active}` : undefined}
                 className={cn(
                   SHARED,
                   AREA_BOX,
-                  "relative bg-transparent text-transparent caret-text whitespace-pre-wrap break-words",
+                  "relative bg-transparent text-transparent caret-text whitespace-pre-wrap wrap-break-word",
                 )}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
@@ -208,6 +209,7 @@ export default function VariableEditor(props: VariableEditorProps) {
                 aria-expanded={open && matches.length > 0}
                 aria-controls={listboxId}
                 aria-autocomplete="list"
+                aria-activedescendant={active >= 0 ? `${listboxId}-opt-${active}` : undefined}
                 className={cn(
                   SHARED,
                   INPUT_BOX,
@@ -233,8 +235,9 @@ export default function VariableEditor(props: VariableEditorProps) {
               {matches.map((m, i) => (
                 <li
                   key={m.token}
+                  id={`${listboxId}-opt-${i}`}
                   role="option"
-                  aria-selected={active >= 0 && i === active}
+                  aria-selected={i === active}
                   className={cn(
                     "flex cursor-pointer items-center justify-between gap-3 rounded-sm px-2 py-1.5 text-sm",
                     active >= 0 && i === active
