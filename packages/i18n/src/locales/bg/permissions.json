@@ -31,7 +31,7 @@
   },
   "presets": {
     "title": "Бързо добавяне от шаблон",
-    "createdToast": "Създадена роля „{{name}}""
+    "createdToast": "Създадена роля „{{name}}\""
   },
   "roleEditor": {
     "memberCount": "{{count}} член",
@@ -90,7 +90,7 @@
     "page": "Страница {{current}} от {{total}}"
   },
   "toast": {
-    "roleCreated": "Създадена роля „{{name}}"",
+    "roleCreated": "Създадена роля „{{name}}\"",
     "roleCreateFailed": "Неуспешно създаване на роля",
     "roleUpdated": "Ролята е актуализирана",
     "roleUpdateFailed": "Неуспешно актуализиране на роля",
@@ -98,7 +98,7 @@
     "roleDeleteFailed": "Неуспешно изтриване на роля"
   },
   "confirm": {
-    "deleteTitle": "Изтрий ролята „{{name}}"?",
+    "deleteTitle": "Изтрий ролята „{{name}}\"?",
     "deleteMessage": "Това ще премахне ролята и ще отмени назначението на всички членове. Това действие не може да бъде отменено.",
     "deleteRole": "Сигурни ли сте, че искате да изтриете тази роля? Членовете ще загубят назначените им разрешения."
   },
@@ -114,5 +114,12 @@
     "creating": "Създаване...",
     "create": "Създай"
   },
-  "loading": "Зареждане на разрешения..."
+  "loading": "Зареждане на разрешения...",
+  "guard": {
+    "deniedTitle": "Permission Denied",
+    "deniedMessage": "You don't have permission to access <1>{{module}}</1>.",
+    "requiredPermission": "Required permission:",
+    "yourRoles": "Your roles:",
+    "contactOwner": "Contact your server owner to request access."
+  }
 }

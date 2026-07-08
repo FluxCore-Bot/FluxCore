@@ -52,6 +52,7 @@
     "albumName": "앨범 이름",
     "albumNamePlaceholder": "내 재생목록",
     "deleteAlbum": "삭제",
-    "atMax": "최대 앨범 수에 도달했습니다."
+    "atMax": "최대 앨범 수에 도달했습니다.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

@@ -2,12 +2,14 @@ import { getPrisma } from "@fluxcore/database";
 import { matchPermission } from "@fluxcore/types";
 import { logger } from "@fluxcore/utils";
 import { getGuildOwnerId } from "./discordApi.js";
+import { isUserGuildAdmin } from "./guildAuthz.js";
 
 // ─── Cache ───
 
 interface CachedPermissions {
   permissions: Set<string>;
   isOwner: boolean;
+  isGuildAdmin: boolean;
   expiresAt: number;
 }
 
@@ -31,11 +33,31 @@ setInterval(() => {
 export interface ResolvedPermissions {
   permissions: Set<string>;
   isOwner: boolean;
+  /** Whether the user currently has live Discord admin authority in the guild. */
+  isGuildAdmin: boolean;
+}
+
+function cacheResult(
+  key: string,
+  result: ResolvedPermissions,
+): ResolvedPermissions {
+  permissionCache.set(key, {
+    permissions: result.permissions,
+    isOwner: result.isOwner,
+    isGuildAdmin: result.isGuildAdmin,
+    expiresAt: Date.now() + CACHE_TTL,
+  });
+  return result;
 }
 
 /**
  * Resolve a user's effective permission set for a guild.
  * Returns all granted permission keys (may include wildcards).
+ *
+ * Authorization is anchored to the user's LIVE Discord admin authority (owner,
+ * Administrator, or Manage Server) via {@link isUserGuildAdmin} — NOT the cached
+ * OAuth session snapshot. A user whose admin access was revoked on Discord
+ * resolves to an empty permission set within the short cache window.
  */
 export async function resolveUserPermissions(
   userId: string,
@@ -44,7 +66,11 @@ export async function resolveUserPermissions(
   const key = cacheKey(guildId, userId);
   const cached = permissionCache.get(key);
   if (cached && cached.expiresAt > Date.now()) {
-    return { permissions: cached.permissions, isOwner: cached.isOwner };
+    return {
+      permissions: cached.permissions,
+      isOwner: cached.isOwner,
+      isGuildAdmin: cached.isGuildAdmin,
+    };
   }
   permissionCache.delete(key);
 
@@ -53,15 +79,22 @@ export async function resolveUserPermissions(
   // Check if user is guild owner
   const ownerId = await getGuildOwnerId(guildId);
   if (ownerId === userId) {
-    const result: ResolvedPermissions = {
+    return cacheResult(key, {
       permissions: new Set(["*"]),
       isOwner: true,
-    };
-    permissionCache.set(key, {
-      ...result,
-      expiresAt: Date.now() + CACHE_TTL,
+      isGuildAdmin: true,
     });
-    return result;
+  }
+
+  // Live authority check — revoked Discord admin is honored here, so a stale
+  // OAuth session can no longer grant dashboard access.
+  const isGuildAdmin = await isUserGuildAdmin(guildId, userId);
+  if (!isGuildAdmin) {
+    return cacheResult(key, {
+      permissions: new Set(),
+      isOwner: false,
+      isGuildAdmin: false,
+    });
   }
 
   // Check if permissions are enabled for this guild
@@ -70,16 +103,12 @@ export async function resolveUserPermissions(
   });
 
   if (!guildSettings?.requirePermissions) {
-    // Legacy mode: all MANAGE_GUILD users have full access
-    const result: ResolvedPermissions = {
+    // Legacy mode: all guild admins have full access
+    return cacheResult(key, {
       permissions: new Set(["*"]),
       isOwner: false,
-    };
-    permissionCache.set(key, {
-      ...result,
-      expiresAt: Date.now() + CACHE_TTL,
+      isGuildAdmin: true,
     });
-    return result;
   }
 
   // Gather permissions from roles
@@ -117,12 +146,7 @@ export async function resolveUserPermissions(
     permissions.add(up.permission);
   }
 
-  const result: ResolvedPermissions = { permissions, isOwner: false };
-  permissionCache.set(key, {
-    ...result,
-    expiresAt: Date.now() + CACHE_TTL,
-  });
-  return result;
+  return cacheResult(key, { permissions, isOwner: false, isGuildAdmin: true });
 }
 
 /**
@@ -182,7 +206,7 @@ export async function createDashboardAuditLog(
         action: entry.action,
         targetType: entry.targetType ?? null,
         targetId: entry.targetId ?? null,
-        details: JSON.stringify(entry.details ?? {}),
+        details: (entry.details ?? {}) as object,
       },
     });
   } catch (err) {

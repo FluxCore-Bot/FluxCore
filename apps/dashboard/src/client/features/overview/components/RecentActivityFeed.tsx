@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
+import type { TFunction } from "i18next";
 import { Icon } from "../../../shared/components/Icon";
 import type { Constants } from "../../../shared/lib/schemas";
 
@@ -18,36 +20,37 @@ interface RecentActivityFeedProps {
   constants?: Constants;
 }
 
-function timeAgo(dateStr: string): string {
+function timeAgo(dateStr: string, t: TFunction): string {
   const diff = Date.now() - new Date(dateStr).getTime();
   const mins = Math.floor(diff / 60000);
-  if (mins < 1) return "just now";
-  if (mins < 60) return `${mins}m ago`;
+  if (mins < 1) return t("recentActivity.timeAgo.justNow");
+  if (mins < 60) return t("recentActivity.timeAgo.minutes", { count: mins });
   const hours = Math.floor(mins / 60);
-  if (hours < 24) return `${hours}h ago`;
+  if (hours < 24) return t("recentActivity.timeAgo.hours", { count: hours });
   const days = Math.floor(hours / 24);
-  return `${days}d ago`;
+  return t("recentActivity.timeAgo.days", { count: days });
 }
 
 export function RecentActivityFeed({ data, guildId, constants }: RecentActivityFeedProps) {
+  const { t } = useTranslation("overview");
   return (
     <div className="rounded-lg bg-surface-low p-6 glass-edge">
       <div className="mb-5 flex items-center justify-between">
         <h3 className="section-label text-text-muted">
-          Recent Activity
+          {t("recentActivity.title")}
         </h3>
         <Link
           to="/guild/$guildId/logs"
           params={{ guildId }}
           className="text-xs text-accent hover:underline"
         >
-          View all logs
+          {t("recentActivity.viewAllLogs")}
         </Link>
       </div>
 
       {data.length === 0 ? (
         <div className="py-8 text-center text-sm text-text-muted">
-          No activity recorded yet
+          {t("recentActivity.empty")}
         </div>
       ) : (
         <div className="space-y-1">
@@ -74,7 +77,7 @@ export function RecentActivityFeed({ data, guildId, constants }: RecentActivityF
                 </p>
               </div>
               <span className="shrink-0 font-mono text-[11px] text-text-tertiary">
-                {timeAgo(item.executedAt)}
+                {timeAgo(item.executedAt, t)}
               </span>
             </div>
           ))}

@@ -8,5 +8,26 @@
     "successRate": "Veiksmibas raditajs"
   },
   "errorsInLast24h": "{{count}} kluda pedejass 24h",
-  "errorsInLast24h_other": "{{count}} kludas pedejass 24h"
+  "errorsInLast24h_other": "{{count}} kludas pedejass 24h",
+  "recentActivity": {
+    "title": "Recent Activity",
+    "viewAllLogs": "View all logs",
+    "empty": "No activity recorded yet",
+    "timeAgo": {
+      "justNow": "just now",
+      "minutes": "{{count}}m ago",
+      "hours": "{{count}}h ago",
+      "days": "{{count}}d ago"
+    }
+  },
+  "eventDistribution": {
+    "title": "Top Events",
+    "empty": "No event data yet",
+    "executions": "{{count}} executions"
+  },
+  "executionChart": {
+    "title": "Execution Trend",
+    "success": "Success",
+    "errors": "Errors"
+  }
 }

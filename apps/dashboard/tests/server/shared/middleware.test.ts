@@ -15,14 +15,14 @@ vi.mock("../../../src/server/shared/session.js", () => ({
 }));
 
 const mockIsBotInGuild = vi.fn().mockResolvedValue(true);
-const mockGetGuildOwnerId = vi.fn().mockResolvedValue("owner-1");
 vi.mock("../../../src/server/shared/discordApi.js", () => ({
   isBotInGuild: (...args: unknown[]) => mockIsBotInGuild(...args),
-  getGuildOwnerId: (...args: unknown[]) => mockGetGuildOwnerId(...args),
 }));
 
+const mockResolveUserPermissions = vi.fn();
 vi.mock("../../../src/server/shared/permissions.js", () => ({
-  resolveUserPermissions: vi.fn().mockResolvedValue({ permissions: new Set(["*"]), isOwner: false }),
+  resolveUserPermissions: (...args: unknown[]) =>
+    mockResolveUserPermissions(...args),
   hasPermission: vi.fn().mockReturnValue(true),
   invalidatePermissionCache: vi.fn(),
   createDashboardAuditLog: vi.fn().mockResolvedValue(undefined),
@@ -40,6 +40,7 @@ function createMockRequest({
   return {
     cookies: sessionCookie ? { session: sessionCookie } : {},
     unsignCookie: (value: string) => ({ valid: true, value, renew: false }),
+    t: (key: string) => key,
     session,
     params,
   };
@@ -56,6 +57,13 @@ function createMockReply() {
 describe("middleware", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    mockIsBotInGuild.mockResolvedValue(true);
+    // Default: a current guild admin (legacy full access).
+    mockResolveUserPermissions.mockResolvedValue({
+      permissions: new Set(["*"]),
+      isOwner: false,
+      isGuildAdmin: true,
+    });
   });
 
   describe("requireAuth", () => {
@@ -66,9 +74,9 @@ describe("middleware", () => {
       await requireAuth(request as never, reply as never);
 
       expect(reply.code).toHaveBeenCalledWith(401);
-      expect(reply.send).toHaveBeenCalledWith({
-        error: "Not authenticated",
-      });
+      expect(reply.send).toHaveBeenCalledWith(
+        expect.objectContaining({ errorKey: "errors:auth.notAuthenticated" }),
+      );
     });
 
     it("returns 401 when session is expired/invalid", async () => {
@@ -79,17 +87,13 @@ describe("middleware", () => {
       await requireAuth(request as never, reply as never);
 
       expect(reply.code).toHaveBeenCalledWith(401);
-      expect(reply.send).toHaveBeenCalledWith({
-        error: "Session expired",
-      });
+      expect(reply.send).toHaveBeenCalledWith(
+        expect.objectContaining({ errorKey: "errors:auth.sessionExpired" }),
+      );
     });
 
     it("attaches session to request when valid", async () => {
-      const session = {
-        userId: "user-123",
-        username: "testuser",
-        guilds: [],
-      };
+      const session = { userId: "user-123", username: "testuser", guilds: [] };
       mockGetSession.mockResolvedValueOnce(session);
       const request = createMockRequest({ sessionCookie: "valid-id" });
       const reply = createMockReply();
@@ -102,48 +106,57 @@ describe("middleware", () => {
   });
 
   describe("requireGuildAdmin", () => {
-    const MANAGE_GUILD = BigInt(0x20);
-
-    it("returns 403 when user has no guild permission", async () => {
-      const request = createMockRequest({
-        session: {
-          guilds: [{ id: "guild-1", permissions: "0" }],
-        },
+    function adminRequest() {
+      return createMockRequest({
+        session: { userId: "user-1", guilds: [] },
         params: { guildId: "guild-1" },
       });
-      const reply = createMockReply();
+    }
 
-      await requireGuildAdmin(request as never, reply as never);
-
-      expect(reply.code).toHaveBeenCalledWith(403);
-      expect(reply.send).toHaveBeenCalledWith({
-        error: "No permission for this guild",
-      });
-    });
-
-    it("returns 403 when user is not in the guild", async () => {
-      const request = createMockRequest({
-        session: {
-          guilds: [
-            { id: "other-guild", permissions: MANAGE_GUILD.toString() },
-          ],
-        },
-        params: { guildId: "guild-1" },
-      });
-      const reply = createMockReply();
-
-      await requireGuildAdmin(request as never, reply as never);
-
-      expect(reply.code).toHaveBeenCalledWith(403);
-    });
-
-    it("returns 403 when bot is not in the guild", async () => {
+    it("returns 403 when the bot is not in the guild", async () => {
       mockIsBotInGuild.mockResolvedValueOnce(false);
+      const request = adminRequest();
+      const reply = createMockReply();
+
+      await requireGuildAdmin(request as never, reply as never);
+
+      expect(reply.code).toHaveBeenCalledWith(403);
+      expect(reply.send).toHaveBeenCalledWith(
+        expect.objectContaining({ errorKey: "errors:permissions.botNotInGuild" }),
+      );
+    });
+
+    it("returns 403 when the user is no longer a guild admin (revoked)", async () => {
+      // Live check says the user has no current authority — the security fix.
+      mockResolveUserPermissions.mockResolvedValueOnce({
+        permissions: new Set(),
+        isOwner: false,
+        isGuildAdmin: false,
+      });
+      const request = adminRequest();
+      const reply = createMockReply();
+
+      await requireGuildAdmin(request as never, reply as never);
+
+      expect(reply.code).toHaveBeenCalledWith(403);
+      expect(reply.send).toHaveBeenCalledWith(
+        expect.objectContaining({
+          errorKey: "errors:permissions.noGuildPermission",
+        }),
+      );
+    });
+
+    it("does not trust the session snapshot — denies even if it says admin", async () => {
+      // Session snapshot still claims Manage Server, but the live check revokes.
+      mockResolveUserPermissions.mockResolvedValueOnce({
+        permissions: new Set(),
+        isOwner: false,
+        isGuildAdmin: false,
+      });
       const request = createMockRequest({
         session: {
-          guilds: [
-            { id: "guild-1", permissions: MANAGE_GUILD.toString() },
-          ],
+          userId: "user-1",
+          guilds: [{ id: "guild-1", permissions: BigInt(0x20).toString() }],
         },
         params: { guildId: "guild-1" },
       });
@@ -152,21 +165,41 @@ describe("middleware", () => {
       await requireGuildAdmin(request as never, reply as never);
 
       expect(reply.code).toHaveBeenCalledWith(403);
-      expect(reply.send).toHaveBeenCalledWith({
-        error: "Bot is not in this guild",
-      });
     });
 
-    it("passes when user has MANAGE_GUILD and bot is present", async () => {
-      mockIsBotInGuild.mockResolvedValueOnce(true);
-      const request = createMockRequest({
-        session: {
-          guilds: [
-            { id: "guild-1", permissions: MANAGE_GUILD.toString() },
-          ],
-        },
-        params: { guildId: "guild-1" },
+    it("passes for a live guild admin and attaches resolved permissions", async () => {
+      const request = adminRequest();
+      const reply = createMockReply();
+
+      await requireGuildAdmin(request as never, reply as never);
+
+      expect(reply.code).not.toHaveBeenCalled();
+      expect(
+        (request as Record<string, unknown>).resolvedPermissions,
+      ).toBeDefined();
+    });
+
+    it("passes for the guild owner", async () => {
+      mockResolveUserPermissions.mockResolvedValueOnce({
+        permissions: new Set(["*"]),
+        isOwner: true,
+        isGuildAdmin: true,
       });
+      const request = adminRequest();
+      const reply = createMockReply();
+
+      await requireGuildAdmin(request as never, reply as never);
+
+      expect(reply.code).not.toHaveBeenCalled();
+    });
+
+    it("passes for an RBAC admin with a limited permission set", async () => {
+      mockResolveUserPermissions.mockResolvedValueOnce({
+        permissions: new Set(["actions.rules.manage"]),
+        isOwner: false,
+        isGuildAdmin: true,
+      });
+      const request = adminRequest();
       const reply = createMockReply();
 
       await requireGuildAdmin(request as never, reply as never);

@@ -79,7 +79,9 @@
       "description": "配置日志并开始发生事件后，事件日志将显示在此处。"
     },
     "config": {
-      "selectChannel": "选择日志频道"
+      "selectChannel": "选择日志频道",
+      "moreEvents_one": "还有 +{{count}} 项",
+      "moreEvents_other": "还有 +{{count}} 项"
     }
   }
 }

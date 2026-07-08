@@ -79,7 +79,9 @@
       "description": "Nhật ký sự kiện sẽ xuất hiện ở đây khi ghi nhật ký được cấu hình và sự kiện bắt đầu xảy ra."
     },
     "config": {
-      "selectChannel": "Chọn kênh nhật ký"
+      "selectChannel": "Chọn kênh nhật ký",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

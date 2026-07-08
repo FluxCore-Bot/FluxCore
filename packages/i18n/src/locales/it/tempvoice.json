@@ -15,7 +15,8 @@
     "saving": "Salvataggio...",
     "cancel": "Annulla",
     "delete": "Elimina",
-    "edit": "Modifica"
+    "edit": "Modifica",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Nessuna configurazione ancora",
@@ -26,5 +27,12 @@
     "updated": "Configurazione aggiornata",
     "created": "Configurazione creata",
     "removed": "Configurazione rimossa"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

@@ -26,7 +26,8 @@
       "original": "Alkuperäinen viesti",
       "stars": "Tähdet",
       "channel": "Kanava",
-      "date": "Päivämäärä"
+      "date": "Päivämäärä",
+      "author": "Author"
     },
     "noMessages": "Ei tähditettyj viestejä vielä."
   },

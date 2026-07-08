@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "Jina la amri linahitajika"
   },
-  "triggerPrefix": "Kichocheo: !{{name}}"
+  "triggerPrefix": "Kichocheo: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
 }

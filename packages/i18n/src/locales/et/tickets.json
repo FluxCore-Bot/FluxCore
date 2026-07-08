@@ -33,7 +33,8 @@
     "category": "Pileti kategooria",
     "create": "Loo paneel",
     "edit": "Muuda paneeli",
-    "deploy": "Juuruta paneel"
+    "deploy": "Juuruta paneel",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Transkripti kanal",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Sulgemise kinnitus",
     "closeConfirmationDesc": "Nõua kinnitust enne pileti sulgemist.",
     "dmTranscript": "DM transkript",
-    "dmTranscriptDesc": "Saada transkripti koopia pileti loojale DM-i teel."
+    "dmTranscriptDesc": "Saada transkripti koopia pileti loojale DM-i teel.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Hõiva",

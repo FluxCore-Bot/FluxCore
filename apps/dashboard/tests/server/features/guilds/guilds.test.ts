@@ -10,9 +10,12 @@ vi.mock("@fluxcore/config", () => ({
 }));
 
 const mockGetSession = vi.fn().mockResolvedValue(null);
+const mockForceRefreshSessionGuilds = vi.fn().mockResolvedValue([]);
 vi.mock("../../../../src/server/shared/session.js", () => ({
   getSession: (...args: unknown[]) => mockGetSession(...args),
   touchSession: vi.fn().mockResolvedValue(undefined),
+  forceRefreshSessionGuilds: (...args: unknown[]) =>
+    mockForceRefreshSessionGuilds(...args),
 }));
 
 const mockIsBotInGuild = vi.fn().mockResolvedValue(true);
@@ -38,6 +41,7 @@ import fastifyCookie from "@fastify/cookie";
 import { registerGuildRoutes } from "../../../../src/server/features/guilds/routes.js";
 
 const MANAGE_GUILD = BigInt(0x20);
+const ADMINISTRATOR = BigInt(0x8);
 
 async function buildApp() {
   const app = Fastify();
@@ -86,6 +90,48 @@ describe("guild routes", () => {
       expect(guilds[0].name).toBe("Guild 1");
     });
 
+    it("returns guilds where user has only the Administrator permission", async () => {
+      mockGetSession.mockResolvedValueOnce({
+        userId: "user-1",
+        guilds: [
+          { id: "g1", name: "Admin Guild", icon: null, permissions: ADMINISTRATOR.toString() },
+        ],
+      });
+      mockIsBotInGuild.mockResolvedValueOnce(true);
+
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/guilds",
+        cookies: { session: app.signCookie("valid-id") },
+      });
+
+      expect(res.statusCode).toBe(200);
+      const guilds = res.json();
+      expect(guilds).toHaveLength(1);
+      expect(guilds[0].id).toBe("g1");
+    });
+
+    it("returns guilds the user owns even without a manage permission", async () => {
+      mockGetSession.mockResolvedValueOnce({
+        userId: "user-1",
+        guilds: [
+          { id: "g1", name: "Owned Guild", icon: null, permissions: "0", owner: true },
+        ],
+      });
+      mockIsBotInGuild.mockResolvedValueOnce(true);
+
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/guilds",
+        cookies: { session: app.signCookie("valid-id") },
+      });
+
+      expect(res.statusCode).toBe(200);
+      const guilds = res.json();
+      expect(guilds).toHaveLength(1);
+      expect(guilds[0].id).toBe("g1");
+    });
+
     it("returns empty array when user has no manageable guilds", async () => {
       mockGetSession.mockResolvedValueOnce({
         userId: "user-1",
@@ -100,6 +146,38 @@ describe("guild routes", () => {
 
       expect(res.statusCode).toBe(200);
       expect(res.json()).toEqual([]);
+    });
+  });
+
+  describe("POST /api/guilds/refresh", () => {
+    it("returns 401 when not authenticated", async () => {
+      const res = await app.inject({ method: "POST", url: "/api/guilds/refresh" });
+      expect(res.statusCode).toBe(401);
+      expect(mockForceRefreshSessionGuilds).not.toHaveBeenCalled();
+    });
+
+    it("re-fetches the session guilds and returns the manageable list", async () => {
+      mockGetSession.mockResolvedValueOnce({
+        userId: "user-1",
+        guilds: [],
+      });
+      // Simulate a freshly-granted admin role appearing after the refresh.
+      mockForceRefreshSessionGuilds.mockResolvedValueOnce([
+        { id: "g9", name: "Newly Admin", icon: null, permissions: ADMINISTRATOR.toString() },
+      ]);
+      mockIsBotInGuild.mockResolvedValueOnce(true);
+
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/refresh",
+        cookies: { session: app.signCookie("valid-id") },
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(mockForceRefreshSessionGuilds).toHaveBeenCalledWith("valid-id");
+      const guilds = res.json();
+      expect(guilds).toHaveLength(1);
+      expect(guilds[0].id).toBe("g9");
     });
   });
 });

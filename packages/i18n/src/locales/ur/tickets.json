@@ -1,77 +1,80 @@
 {
-  "title": "[NEEDS TRANSLATION] Ticket System",
-  "subtitle": "[NEEDS TRANSLATION] Create support ticket panels and manage open tickets from the dashboard.",
+  "title": "ٹکٹ سسٹم",
+  "subtitle": "سپورٹ ٹکٹ پینلز بنائیں اور ڈیش بورڈ سے کھلے ٹکٹس کا انتظام کریں۔",
   "stats": {
-    "totalTickets": "[NEEDS TRANSLATION] Total Tickets",
-    "open": "[NEEDS TRANSLATION] Open",
-    "claimed": "[NEEDS TRANSLATION] Claimed",
-    "panels": "[NEEDS TRANSLATION] Panels"
+    "totalTickets": "کل ٹکٹس",
+    "open": "کھلے",
+    "claimed": "دعویٰ شدہ",
+    "panels": "پینلز"
   },
   "tabs": {
-    "activeTickets": "[NEEDS TRANSLATION] Active Tickets",
-    "panelBuilder": "[NEEDS TRANSLATION] Panel Builder",
-    "settings": "[NEEDS TRANSLATION] Settings"
+    "activeTickets": "فعال ٹکٹس",
+    "panelBuilder": "پینل بلڈر",
+    "settings": "ترتیبات"
   },
   "table": {
-    "id": "[NEEDS TRANSLATION] ID",
-    "user": "[NEEDS TRANSLATION] User",
-    "subject": "[NEEDS TRANSLATION] Subject",
-    "status": "[NEEDS TRANSLATION] Status",
-    "assignee": "[NEEDS TRANSLATION] Assignee",
-    "created": "[NEEDS TRANSLATION] Created"
+    "id": "ID",
+    "user": "صارف",
+    "subject": "موضوع",
+    "status": "اسٹیٹس",
+    "assignee": "تفویض کردہ",
+    "created": "بنایا گیا"
   },
   "statuses": {
-    "open": "[NEEDS TRANSLATION] Open",
-    "claimed": "[NEEDS TRANSLATION] Claimed",
-    "closed": "[NEEDS TRANSLATION] Closed"
+    "open": "کھلا",
+    "claimed": "دعویٰ شدہ",
+    "closed": "بند"
   },
   "panelBuilder": {
-    "title": "[NEEDS TRANSLATION] Panel Title",
-    "channel": "[NEEDS TRANSLATION] Channel",
-    "buttonLabel": "[NEEDS TRANSLATION] Button Label",
-    "welcomeMessage": "[NEEDS TRANSLATION] Welcome Message",
-    "category": "[NEEDS TRANSLATION] Ticket Category",
-    "create": "[NEEDS TRANSLATION] Create Panel",
-    "edit": "[NEEDS TRANSLATION] Edit Panel",
-    "deploy": "[NEEDS TRANSLATION] Deploy Panel"
+    "title": "پینل کا عنوان",
+    "channel": "چینل",
+    "buttonLabel": "بٹن لیبل",
+    "welcomeMessage": "ویلکم پیغام",
+    "category": "ٹکٹ کیٹیگری",
+    "create": "پینل بنائیں",
+    "edit": "پینل میں ترمیم کریں",
+    "deploy": "پینل تعینات کریں",
+    "openTicket": "ٹکٹ کھولیں"
   },
   "settings": {
-    "transcriptChannel": "[NEEDS TRANSLATION] Transcript Channel",
-    "transcriptChannelDesc": "[NEEDS TRANSLATION] Channel where ticket transcripts are saved on close.",
-    "maxTicketsPerUser": "[NEEDS TRANSLATION] Max Tickets per User",
-    "maxTicketsPerUserDesc": "[NEEDS TRANSLATION] Maximum number of open tickets a single user can have.",
-    "closeConfirmation": "[NEEDS TRANSLATION] Close Confirmation",
-    "closeConfirmationDesc": "[NEEDS TRANSLATION] Require confirmation before closing a ticket.",
-    "dmTranscript": "[NEEDS TRANSLATION] DM Transcript",
-    "dmTranscriptDesc": "[NEEDS TRANSLATION] Send a copy of the transcript to the ticket creator via DM."
+    "transcriptChannel": "ٹرانسکرپٹ چینل",
+    "transcriptChannelDesc": "وہ چینل جہاں بند ہونے پر ٹکٹ ٹرانسکرپٹس محفوظ ہوتے ہیں۔",
+    "maxTicketsPerUser": "فی صارف زیادہ سے زیادہ ٹکٹس",
+    "maxTicketsPerUserDesc": "ایک صارف کے پاس کھلے ٹکٹس کی زیادہ سے زیادہ تعداد۔",
+    "closeConfirmation": "بند کرنے کی تصدیق",
+    "closeConfirmationDesc": "ٹکٹ بند کرنے سے پہلے تصدیق درکار ہو۔",
+    "dmTranscript": "DM ٹرانسکرپٹ",
+    "dmTranscriptDesc": "ٹکٹ بنانے والے کو ٹرانسکرپٹ کی ایک کاپی DM کے ذریعے بھیجیں۔",
+    "staffRolesPlaceholder": "اسٹاف رولز",
+    "namingFormatHint": "ویری ایبلز: {number} (صفر سے پُر شدہ)، {username}"
   },
   "actions": {
-    "claim": "[NEEDS TRANSLATION] Claim",
-    "close": "[NEEDS TRANSLATION] Close",
-    "delete": "[NEEDS TRANSLATION] Delete",
-    "reopen": "[NEEDS TRANSLATION] Reopen"
+    "claim": "دعویٰ کریں",
+    "close": "بند کریں",
+    "delete": "حذف کریں",
+    "reopen": "دوبارہ کھولیں"
   },
   "toast": {
-    "panelCreated": "[NEEDS TRANSLATION] Ticket panel created",
-    "panelCreateFailed": "[NEEDS TRANSLATION] Failed to create ticket panel",
-    "panelUpdated": "[NEEDS TRANSLATION] Ticket panel updated",
-    "panelUpdateFailed": "[NEEDS TRANSLATION] Failed to update ticket panel",
-    "panelDeployed": "[NEEDS TRANSLATION] Ticket panel deployed",
-    "panelDeployFailed": "[NEEDS TRANSLATION] Failed to deploy ticket panel",
-    "ticketClaimed": "[NEEDS TRANSLATION] Ticket claimed",
-    "ticketClaimFailed": "[NEEDS TRANSLATION] Failed to claim ticket",
-    "ticketClosed": "[NEEDS TRANSLATION] Ticket closed",
-    "ticketCloseFailed": "[NEEDS TRANSLATION] Failed to close ticket",
-    "ticketReopened": "[NEEDS TRANSLATION] Ticket reopened",
-    "ticketReopenFailed": "[NEEDS TRANSLATION] Failed to reopen ticket",
-    "ticketDeleted": "[NEEDS TRANSLATION] Ticket deleted",
-    "ticketDeleteFailed": "[NEEDS TRANSLATION] Failed to delete ticket",
-    "settingsSaved": "[NEEDS TRANSLATION] Ticket settings saved",
-    "settingsFailed": "[NEEDS TRANSLATION] Failed to save ticket settings"
+    "panelCreated": "ٹکٹ پینل بن گیا",
+    "panelCreateFailed": "ٹکٹ پینل بنانے میں ناکامی",
+    "panelUpdated": "ٹکٹ پینل اپ ڈیٹ ہو گیا",
+    "panelUpdateFailed": "ٹکٹ پینل اپ ڈیٹ کرنے میں ناکامی",
+    "panelDeployed": "ٹکٹ پینل تعینات ہو گیا",
+    "panelDeployFailed": "ٹکٹ پینل تعینات کرنے میں ناکامی",
+    "ticketClaimed": "ٹکٹ کا دعویٰ ہو گیا",
+    "ticketClaimFailed": "ٹکٹ کا دعویٰ کرنے میں ناکامی",
+    "ticketClosed": "ٹکٹ بند ہو گیا",
+    "ticketCloseFailed": "ٹکٹ بند کرنے میں ناکامی",
+    "ticketReopened": "ٹکٹ دوبارہ کھل گیا",
+    "ticketReopenFailed": "ٹکٹ دوبارہ کھولنے میں ناکامی",
+    "ticketDeleted": "ٹکٹ حذف ہو گیا",
+    "ticketDeleteFailed": "ٹکٹ حذف کرنے میں ناکامی",
+    "settingsSaved": "ٹکٹ ترتیبات محفوظ ہو گئیں",
+    "settingsFailed": "ٹکٹ ترتیبات محفوظ کرنے میں ناکامی"
   },
   "empty": {
-    "tickets": "[NEEDS TRANSLATION] No active tickets.",
-    "panels": "[NEEDS TRANSLATION] No ticket panels created yet."
+    "tickets": "کوئی فعال ٹکٹ نہیں۔",
+    "panels": "ابھی تک کوئی ٹکٹ پینل نہیں بنایا گیا۔"
   },
-  "loading": "[NEEDS TRANSLATION] Loading tickets..."
+  "loading": "ٹکٹس لوڈ ہو رہے ہیں..."
 }

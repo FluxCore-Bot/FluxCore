@@ -33,7 +33,8 @@
     "category": "티켓 카테고리",
     "create": "패널 만들기",
     "edit": "패널 편집",
-    "deploy": "패널 배포"
+    "deploy": "패널 배포",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "대화 기록 채널",
@@ -43,7 +44,9 @@
     "closeConfirmation": "닫기 확인",
     "closeConfirmationDesc": "티켓을 닫기 전에 확인을 요구합니다.",
     "dmTranscript": "DM 대화 기록",
-    "dmTranscriptDesc": "티켓 작성자에게 DM으로 대화 기록 사본을 보냅니다."
+    "dmTranscriptDesc": "티켓 작성자에게 DM으로 대화 기록 사본을 보냅니다.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "담당",

@@ -45,7 +45,9 @@
     "autoThread": "Automatische thread aanmaken",
     "autoThreadDesc": "Maak automatisch een discussiethread aan bij elke nieuwe suggestie.",
     "dmOnStatusChange": "DM bij statuswijziging",
-    "dmOnStatusChangeDesc": "Informeer de auteur via DM wanneer de status van zijn suggestie verandert."
+    "dmOnStatusChangeDesc": "Informeer de auteur via DM wanneer de status van zijn suggestie verandert.",
+    "anonymousMode": "Anonymous Mode",
+    "anonymousModeDesc": "Hide the identity of members who submit suggestions."
   },
   "toast": {
     "approved": "Suggestie goedgekeurd",
@@ -63,5 +65,6 @@
     "previous": "Vorige",
     "next": "Volgende",
     "page": "Pagina {{page}} van {{total}}"
-  }
+  },
+  "confirmDelete": "Are you sure you want to delete this suggestion? This action cannot be undone."
 }

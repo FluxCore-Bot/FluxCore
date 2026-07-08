@@ -1,9 +1,35 @@
-import { randomUUID } from "node:crypto";
+import { randomUUID, timingSafeEqual } from "node:crypto";
 import type { FastifyReply } from "fastify";
 import { getPrisma } from "@fluxcore/database";
-import { encrypt, decrypt } from "./crypto.js";
+import { encrypt, decrypt, isEncrypted } from "./crypto.js";
 import { fetchGuilds } from "./auth.js";
+import { invalidateGuildCache } from "./discordApi.js";
+import { invalidatePermissionCache } from "./permissions.js";
 import { logger } from "@fluxcore/utils";
+
+/**
+ * Encrypt a Discord OAuth access token for storage.
+ * ALL writes to DashboardSession.accessToken MUST go through this helper.
+ */
+function encryptAccessToken(token: string): string {
+  if (!token) throw new Error("encryptAccessToken: empty token");
+  return encrypt(token);
+}
+
+/**
+ * Decrypt a stored access token, with a defensive fallback for the
+ * (now-illegal) case of legacy plaintext rows: if the value does not
+ * decrypt cleanly, log a security warning and refuse to use it.
+ */
+function decryptAccessToken(stored: string): string {
+  if (!isEncrypted(stored)) {
+    logger.error(
+      "DashboardSession.accessToken is not encrypted; refusing to use. Run scripts/migrate-encrypt-session-tokens.ts",
+    );
+    throw new Error("Session token is not encrypted");
+  }
+  return decrypt(stored);
+}
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -20,6 +46,8 @@ export interface OAuthGuild {
   name: string;
   icon: string | null;
   permissions: string;
+  /** True when the user owns the guild (Discord OAuth sets this directly). */
+  owner: boolean;
 }
 
 export interface Session {
@@ -31,11 +59,11 @@ export interface Session {
   createdAt: number;
 }
 
-const SESSION_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
+const SESSION_TTL = 24 * 60 * 60 * 1000; // 24 hours (sliding-renewed for active users)
 const CACHE_TTL = 30_000; // 30 seconds
 const GUILD_REFRESH_INTERVAL = 30 * 60 * 1000; // 30 minutes
 
-interface CachedSession {
+export interface CachedSession {
   session: Session;
   cacheExpiresAt: number;
   sessionExpiresAt: number;
@@ -52,13 +80,24 @@ export async function createSession(
   const expiresAt = new Date(now.getTime() + SESSION_TTL);
 
   const prisma = getPrisma();
+
+  // Invalidate any prior sessions for this user (session fixation defense
+  // and prevents unbounded session row growth on repeated logins).
+  await prisma.dashboardSession.deleteMany({ where: { userId: data.userId } });
+  // Also drop any cached entries for this user
+  for (const [cacheId, entry] of sessionCache) {
+    if (entry.session.userId === data.userId) {
+      sessionCache.delete(cacheId);
+    }
+  }
+
   await prisma.dashboardSession.create({
     data: {
       id,
       userId: data.userId,
       username: data.username,
       avatar: data.avatar,
-      accessToken: encrypt(data.accessToken),
+      accessToken: encryptAccessToken(data.accessToken),
       guilds: JSON.stringify(data.guilds),
       guildsRefreshedAt: now,
       createdAt: now,
@@ -81,10 +120,30 @@ export async function getSession(id: string): Promise<Session | null> {
     where: { id },
   });
 
-  if (!row) return null;
+  // Defense-in-depth: constant-time compare the supplied cookie id
+  // against the stored row id, and perform a dummy decryption on the
+  // not-found path so the timing of "missing", "tampered", and
+  // "expired" converges.
+  const suppliedBuf = Buffer.from(id, "utf8");
+  const storedBuf = Buffer.from(row?.id ?? id, "utf8");
+  const idsMatch =
+    row !== null &&
+    suppliedBuf.length === storedBuf.length &&
+    timingSafeEqual(suppliedBuf, storedBuf);
+
+  if (!row || !idsMatch) {
+    // Equalise work with the success path: perform a throwaway
+    // decryption so timing does not branch on row presence.
+    try {
+      decrypt(encrypt("dummy"));
+    } catch {
+      /* ignore */
+    }
+    return null;
+  }
 
   if (row.expiresAt < new Date()) {
-    await prisma.dashboardSession.deleteMany({ where: { id } });
+    await prisma.dashboardSession.deleteMany({ where: { id: row.id } });
     return null;
   }
 
@@ -92,7 +151,7 @@ export async function getSession(id: string): Promise<Session | null> {
     userId: row.userId,
     username: row.username,
     avatar: row.avatar,
-    accessToken: decrypt(row.accessToken),
+    accessToken: decryptAccessToken(row.accessToken),
     guilds: safeJsonParse<OAuthGuild[]>(row.guilds, []),
     createdAt: row.createdAt.getTime(),
   };
@@ -146,7 +205,7 @@ export async function touchSession(
     sameSite: "lax",
     secure: isProduction,
     signed: true,
-    maxAge: 604800, // 7 days
+    maxAge: 86400, // 24 hours
   });
 }
 
@@ -175,6 +234,14 @@ async function refreshSessionGuilds(
   cached.guildsRefreshedAt = now.getTime();
   cached.cacheExpiresAt = Date.now() + CACHE_TTL;
 
+  // Drop stale server-side Discord + permission caches for this user's guilds
+  // so the next request recomputes authorization and channel/role data fresh.
+  const userId = cached.session.userId;
+  for (const guild of guilds) {
+    invalidateGuildCache(guild.id);
+    invalidatePermissionCache(guild.id, userId);
+  }
+
   logger.debug(`Refreshed guild data for session ${id}`);
   return guilds;
 }
@@ -195,6 +262,40 @@ export async function forceRefreshSessionGuilds(
     return refreshSessionGuilds(id, session.accessToken, entry);
   }
   return refreshSessionGuilds(id, cached.session.accessToken, cached);
+}
+
+const FRESH_GUILD_THRESHOLD = 5 * 60 * 1000; // 5 minutes
+
+/**
+ * Ensure session.guilds is no older than FRESH_GUILD_THRESHOLD.
+ * Used by requireGuildAdmin to fail closed for revoked admins quickly.
+ */
+export async function ensureFreshGuilds(
+  id: string,
+): Promise<OAuthGuild[] | null> {
+  const cached = sessionCache.get(id);
+  if (!cached) {
+    const session = await getSession(id);
+    if (!session) return null;
+    const reloaded = sessionCache.get(id);
+    if (!reloaded) return session.guilds;
+    if (Date.now() - reloaded.guildsRefreshedAt <= FRESH_GUILD_THRESHOLD) {
+      return reloaded.session.guilds;
+    }
+    return refreshSessionGuilds(id, session.accessToken, reloaded);
+  }
+  if (Date.now() - cached.guildsRefreshedAt <= FRESH_GUILD_THRESHOLD) {
+    return cached.session.guilds;
+  }
+  return refreshSessionGuilds(id, cached.session.accessToken, cached);
+}
+
+// Test-only hook
+export function __setSessionCacheForTest(
+  id: string,
+  entry: CachedSession,
+): void {
+  sessionCache.set(id, entry);
 }
 
 export async function deleteSession(id: string): Promise<void> {

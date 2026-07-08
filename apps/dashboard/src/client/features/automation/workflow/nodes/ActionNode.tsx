@@ -25,7 +25,7 @@ function ActionNodeComponent({ data, selected }: NodeProps) {
   const { t } = useTranslation("rules");
   const { index, action, label, validationState } = data as ActionNodeData;
   const icon = ACTION_ICONS[action.type] ?? "play_arrow";
-  const preview = getActionPreview(action);
+  const preview = getActionPreview(action, t);
   const isConfigured = action.type !== "";
 
   return (
@@ -34,9 +34,11 @@ function ActionNodeComponent({ data, selected }: NodeProps) {
         id="target"
         type="target"
         position={Position.Left}
-        className="!h-3 !w-3 !border-2 !border-secondary !bg-surface-high"
+        className="!h-4 !w-4 !border-2 !border-secondary !bg-surface-high"
       />
       <div
+        role="group"
+        aria-label={t("nodes.ariaAction", { index: index + 1, label })}
         className={`min-w-[220px] max-w-[260px] rounded-lg border px-4 py-3 transition-all glass-edge ${getBorderClass(selected, validationState)}`}
       >
         <div className="mb-1.5 flex items-center gap-2">
@@ -44,7 +46,7 @@ function ActionNodeComponent({ data, selected }: NodeProps) {
             <Icon name={icon} size={14} className="text-secondary" />
           </div>
           <span className="section-label text-text-muted">
-            Action {index + 1}
+            {t("nodes.action", { index: index + 1 })}
           </span>
           {validationState === "error" && (
             <Icon name="error" size={14} className="ms-auto text-danger" />
@@ -67,7 +69,8 @@ function ActionNodeComponent({ data, selected }: NodeProps) {
         id="source"
         type="source"
         position={Position.Right}
-        className="!h-3 !w-3 !border-2 !border-secondary/50 !bg-surface-high"
+        title={t("nodes.nextStep")}
+        className="!h-4 !w-4 !border-2 !border-secondary/50 !bg-surface-high"
       />
     </>
   );

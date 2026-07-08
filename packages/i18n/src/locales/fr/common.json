@@ -79,7 +79,9 @@
     "conditions": "Conditions",
     "duration": "Durée",
     "reason": "Raison",
-    "language": "Langue"
+    "language": "Langue",
+    "limit": "Limite",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Sélectionner un salon...",
@@ -98,7 +100,6 @@
     "showingPage": "Page {{page}} sur {{total}} ({{count}} au total)"
   },
   "header": {
-    "notifications": "Notifications",
     "settings": "Paramètres",
     "logout": "Déconnexion",
     "toggleSidebar": "Afficher/masquer la barre latérale",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "Fermer la barre latérale",
     "addToServer": "Ajouter au serveur",
-    "docs": "Documentation",
-    "support": "Support",
     "backToServers": "Retour aux serveurs"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "heures",
     "days": "jours",
     "ago": "il y a {{time}}",
-    "in": "dans {{time}}"
+    "in": "dans {{time}}",
+    "weeks": "semaines"
   },
   "confirm": {
     "title": "Êtes-vous sûr ?",
@@ -137,5 +137,9 @@
     "error": "Une erreur est survenue",
     "menuOpen": "Le menu est ouvert",
     "menuClosed": "Le menu est fermé"
+  },
+  "language": {
+    "searchPlaceholder": "Rechercher des langues...",
+    "noResults": "Aucune langue trouvée"
   }
 }

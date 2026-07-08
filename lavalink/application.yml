@@ -22,7 +22,7 @@ lavalink:
       snapshot: true
       repository: "https://maven.lavalink.dev/snapshots"
   server:
-    password: "youshallnotpass"
+    password: ${LAVALINK_SERVER_PASSWORD}
     sources:
       youtube: false
       bandcamp: true

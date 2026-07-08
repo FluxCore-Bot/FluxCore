@@ -79,7 +79,9 @@
     "conditions": "شرایط",
     "duration": "مدت",
     "reason": "دلیل",
-    "language": "زبان"
+    "language": "زبان",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "یک کانال انتخاب کنید...",
@@ -98,7 +100,6 @@
     "showingPage": "صفحه {{page}} از {{total}} ({{count}} کل)"
   },
   "header": {
-    "notifications": "اعلان‌ها",
     "settings": "تنظیمات",
     "logout": "خروج",
     "toggleSidebar": "تغییر نوار کناری",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "بستن نوار کناری",
     "addToServer": "افزودن به سرور",
-    "docs": "مستندات",
-    "support": "پشتیبانی",
     "backToServers": "بازگشت به سرورها"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "ساعت",
     "days": "روز",
     "ago": "{{time}} پیش",
-    "in": "در {{time}}"
+    "in": "در {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "آیا مطمئن هستید؟",
@@ -137,5 +137,9 @@
     "error": "خطایی رخ داد",
     "menuOpen": "منو باز است",
     "menuClosed": "منو بسته است"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

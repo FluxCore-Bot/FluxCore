@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "Το όνομα εντολής είναι υποχρεωτικό"
   },
-  "triggerPrefix": "Ενεργοποιητής: !{{name}}"
+  "triggerPrefix": "Ενεργοποιητής: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
 }

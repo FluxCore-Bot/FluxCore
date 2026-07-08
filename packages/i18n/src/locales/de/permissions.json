@@ -114,5 +114,12 @@
     "creating": "Erstellen...",
     "create": "Erstellen"
   },
-  "loading": "Berechtigungen werden geladen..."
+  "loading": "Berechtigungen werden geladen...",
+  "guard": {
+    "deniedTitle": "Zugriff verweigert",
+    "deniedMessage": "Du hast keine Berechtigung, auf <1>{{module}}</1> zuzugreifen.",
+    "requiredPermission": "Erforderliche Berechtigung:",
+    "yourRoles": "Deine Rollen:",
+    "contactOwner": "Wende dich an den Server-Inhaber, um Zugriff anzufordern."
+  }
 }

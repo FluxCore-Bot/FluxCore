@@ -52,6 +52,7 @@
     "albumName": "Nom de l'album",
     "albumNamePlaceholder": "Ma liste de lecture",
     "deleteAlbum": "Supprimer",
-    "atMax": "Vous avez atteint le nombre maximum d'albums."
+    "atMax": "Vous avez atteint le nombre maximum d'albums.",
+    "toggleAlbum": "Basculer {{name}}"
   }
 }

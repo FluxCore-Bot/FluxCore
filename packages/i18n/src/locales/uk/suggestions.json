@@ -45,7 +45,9 @@
     "autoThread": "Автостворення гілки",
     "autoThreadDesc": "Автоматично створювати гілку обговорення для кожної нової пропозиції.",
     "dmOnStatusChange": "ОП при зміні статусу",
-    "dmOnStatusChangeDesc": "Сповіщати автора через ОП при зміні статусу його пропозиції."
+    "dmOnStatusChangeDesc": "Сповіщати автора через ОП при зміні статусу його пропозиції.",
+    "anonymousMode": "Anonymous Mode",
+    "anonymousModeDesc": "Hide the identity of members who submit suggestions."
   },
   "toast": {
     "approved": "Пропозицію схвалено",
@@ -63,5 +65,6 @@
     "previous": "Назад",
     "next": "Далі",
     "page": "Сторінка {{page}} з {{total}}"
-  }
+  },
+  "confirmDelete": "Are you sure you want to delete this suggestion? This action cannot be undone."
 }

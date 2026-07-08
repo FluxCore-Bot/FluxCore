@@ -10,20 +10,34 @@ import type {
   StepsPayload,
 } from "./types.js";
 
-function safeJsonParse<T>(json: string, fallback: T): T {
+function safeJsonParse<T>(json: string, fallback: T, context?: string): T {
   try {
     return JSON.parse(json) as T;
-  } catch {
+  } catch (err) {
+    if (context) {
+      logger.warn(
+        `safeJsonParse fallback for ${context}: ${
+          err instanceof Error ? err.message : String(err)
+        }`,
+      );
+    }
     return fallback;
   }
 }
 
-function parseActionsColumn(raw: string): {
+function parseActionsColumn(
+  raw: string,
+  context?: string,
+): {
   actions: ActionConfig[];
   steps?: RuleStep[];
   entryStepId?: string;
 } {
-  const parsed = safeJsonParse<ActionConfig[] | StepsPayload>(raw, []);
+  const parsed = safeJsonParse<ActionConfig[] | StepsPayload>(
+    raw,
+    [],
+    context,
+  );
   // V2 format: object with _v: 2
   if (parsed && !Array.isArray(parsed) && (parsed as StepsPayload)._v === 2) {
     const payload = parsed as StepsPayload;
@@ -68,7 +82,11 @@ export function rowToRule(row: {
   priority: number;
   createdBy: string;
 }): ActionRule {
-  const { actions, steps, entryStepId } = parseActionsColumn(row.actions);
+  const ctxBase = `ActionRule id=${row.id} guildId=${row.guildId}`;
+  const { actions, steps, entryStepId } = parseActionsColumn(
+    row.actions,
+    `${ctxBase} column=actions`,
+  );
   return {
     id: row.id,
     guildId: row.guildId,
@@ -77,7 +95,11 @@ export function rowToRule(row: {
     eventType: row.eventType as ActionEventType,
     actions,
     ...(steps ? { steps, entryStepId } : {}),
-    conditions: safeJsonParse<ActionConditions>(row.conditions, {}),
+    conditions: safeJsonParse<ActionConditions>(
+      row.conditions,
+      {},
+      `${ctxBase} column=conditions`,
+    ),
     priority: row.priority,
     createdBy: row.createdBy,
   };
@@ -269,6 +291,10 @@ export async function getAnalytics(
     await Promise.all([
       prisma.actionRule.count({ where: { guildId } }),
       prisma.actionRule.count({ where: { guildId, enabled: true } }),
+      // SECURITY: tagged-template `$queryRaw` form. Prisma binds ${guildId}
+      // and ${since} as parameters — DO NOT switch this to $queryRawUnsafe
+      // or string-concatenate values into the SQL. Covered by
+      // tests/integration/actions-persistence-sqli.test.ts.
       prisma.$queryRaw<
         Array<{ date: string; total: bigint; success: bigint; error: bigint }>
       >`
@@ -348,6 +374,9 @@ export async function getLastFiredByGuild(
   guildId: string,
 ): Promise<Map<number, Date>> {
   const prisma = getPrisma();
+  // SECURITY: tagged-template `$queryRaw` form — guildId is bound as a
+  // parameter. DO NOT convert to $queryRawUnsafe. Covered by
+  // tests/integration/actions-persistence-sqli.test.ts.
   const rows = await prisma.$queryRaw<
     Array<{ ruleId: number; lastFired: Date }>
   >`

@@ -3,6 +3,8 @@ import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../shared/lib/client";
+import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
+import { EmptyState } from "../../../shared/components/EmptyState";
 import { PageHeader } from "../../../shared/components/PageHeader";
 import {
   useGiveaways,
@@ -85,6 +87,9 @@ export function GiveawaysPage() {
   const [durationValue, setDurationValue] = useState("1");
   const [durationUnit, setDurationUnit] = useState("h");
   const [requiredRoleId, setRequiredRoleId] = useState<string | null>(null);
+
+  // Confirmation dialog state
+  const [endConfirmId, setEndConfirmId] = useState<number | null>(null);
 
   const activeTotalPages = activeData
     ? Math.max(1, Math.ceil(activeData.total / 10))
@@ -246,7 +251,7 @@ export function GiveawaysPage() {
                             <Button
                               variant="destructive"
                               size="sm"
-                              onClick={() => handleEnd(g.id)}
+                              onClick={() => setEndConfirmId(g.id)}
                               disabled={endGiveaway.isPending}
                             >
                               {t("actions.end")}
@@ -287,7 +292,11 @@ export function GiveawaysPage() {
                 )}
               </>
             ) : (
-              <p className="text-text-muted">{t("empty")}</p>
+              <EmptyState
+                icon="celebration"
+                title={t("empty")}
+                description={t("subtitle")}
+              />
             )}
           </Card>
         </TabsContent>
@@ -372,7 +381,11 @@ export function GiveawaysPage() {
                 )}
               </>
             ) : (
-              <p className="text-text-muted">{t("empty")}</p>
+              <EmptyState
+                icon="celebration"
+                title={t("empty")}
+                description={t("subtitle")}
+              />
             )}
           </Card>
         </TabsContent>
@@ -474,6 +487,20 @@ export function GiveawaysPage() {
           </Card>
         </TabsContent>
       </Tabs>
+
+      {/* End Giveaway Confirmation */}
+      <ConfirmDialog
+        open={endConfirmId !== null}
+        onOpenChange={(open) => { if (!open) setEndConfirmId(null); }}
+        title={t("actions.end")}
+        description={t("common:confirm.deleteMessage")}
+        confirmLabel={t("actions.end")}
+        destructive
+        onConfirm={() => {
+          if (endConfirmId !== null) handleEnd(endConfirmId);
+          setEndConfirmId(null);
+        }}
+      />
     </div>
   );
 }

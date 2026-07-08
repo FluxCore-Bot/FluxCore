@@ -116,5 +116,7 @@
   "formatters": {
     "voiceTime": "{{hours}}ч {{minutes}}м",
     "voiceTimeMinutesOnly": "{{minutes}}м"
-  }
+  },
+  "confirmRemoveReward": "Вы уверены, что хотите удалить эту награду за роль? Это действие нельзя отменить.",
+  "confirmRemoveMultiplier": "Вы уверены, что хотите удалить этот множитель опыта? Это действие нельзя отменить."
 }

@@ -1,4 +1,4 @@
-import { StrictMode, Suspense } from "react";
+import { StrictMode, Suspense, lazy, type ComponentType } from "react";
 import { createRoot } from "react-dom/client";
 import {
   createRouter,
@@ -12,29 +12,87 @@ import { I18nextProvider } from "react-i18next";
 import { DirectionProvider } from "@radix-ui/react-direction";
 import { i18nReady } from "./shared/lib/i18n";
 import { AppDirectionContext, useDirectionState } from "./shared/hooks/useDirection";
+import { PageSkeleton } from "./shared/ui/skeletons";
+// Shell components load eagerly — they are needed for the first paint.
 import { RootLayout } from "./routes/__root";
 import { IndexPage } from "./routes/index";
 import { GuildLayout } from "./routes/guild/$guildId";
-import { RulesPage } from "./routes/guild/$guildId/rules";
-import { TempVoicePage } from "./routes/guild/$guildId/tempvoice";
-import { SettingsPage } from "./routes/guild/$guildId/settings";
-import { LogsPage } from "./routes/guild/$guildId/logs";
-import { MusicPage } from "./routes/guild/$guildId/music";
-import { OverviewPage } from "./routes/guild/$guildId/overview";
-import { WarningsPage } from "./routes/guild/$guildId/warnings";
-import { ModerationPage } from "./routes/guild/$guildId/moderation";
-import { WelcomePage } from "./routes/guild/$guildId/welcome";
-import { RolesPage } from "./routes/guild/$guildId/roles";
-import { LevelingPage } from "./routes/guild/$guildId/leveling";
-import { ScheduledMessagesPage } from "./routes/guild/$guildId/scheduled";
-import { SecurityPage } from "./routes/guild/$guildId/security";
-import { TicketsPage } from "./routes/guild/$guildId/tickets";
-import { GiveawaysPage } from "./routes/guild/$guildId/giveaways";
-import { SuggestionsPage } from "./routes/guild/$guildId/suggestions";
-import { StarboardPage } from "./routes/guild/$guildId/starboard";
-import { CommandsPage } from "./routes/guild/$guildId/commands";
-import { PermissionsPage } from "./routes/guild/$guildId/permissions";
 import "./styles.css";
+
+/**
+ * Wraps a dynamically-imported page in its own Suspense boundary so that only
+ * the content area (inside the guild layout's <Outlet />) shows a skeleton
+ * while the route chunk loads — the sidebar and top bar stay mounted.
+ * Each call becomes a separate Vite chunk, keeping the initial bundle small.
+ */
+function lazyPage(loader: () => Promise<{ default: ComponentType }>) {
+  const LazyComponent = lazy(loader);
+  return function LazyPage() {
+    return (
+      <Suspense fallback={<PageSkeleton />}>
+        <LazyComponent />
+      </Suspense>
+    );
+  };
+}
+
+const OverviewPage = lazyPage(() =>
+  import("./routes/guild/$guildId/overview").then((m) => ({ default: m.OverviewPage })),
+);
+const RulesPage = lazyPage(() =>
+  import("./routes/guild/$guildId/rules").then((m) => ({ default: m.RulesPage })),
+);
+const TempVoicePage = lazyPage(() =>
+  import("./routes/guild/$guildId/tempvoice").then((m) => ({ default: m.TempVoicePage })),
+);
+const SettingsPage = lazyPage(() =>
+  import("./routes/guild/$guildId/settings").then((m) => ({ default: m.SettingsPage })),
+);
+const LogsPage = lazyPage(() =>
+  import("./routes/guild/$guildId/logs").then((m) => ({ default: m.LogsPage })),
+);
+const MusicPage = lazyPage(() =>
+  import("./routes/guild/$guildId/music").then((m) => ({ default: m.MusicPage })),
+);
+const WarningsPage = lazyPage(() =>
+  import("./routes/guild/$guildId/warnings").then((m) => ({ default: m.WarningsPage })),
+);
+const ModerationPage = lazyPage(() =>
+  import("./routes/guild/$guildId/moderation").then((m) => ({ default: m.ModerationPage })),
+);
+const WelcomePage = lazyPage(() =>
+  import("./routes/guild/$guildId/welcome").then((m) => ({ default: m.WelcomePage })),
+);
+const RolesPage = lazyPage(() =>
+  import("./routes/guild/$guildId/roles").then((m) => ({ default: m.RolesPage })),
+);
+const LevelingPage = lazyPage(() =>
+  import("./routes/guild/$guildId/leveling").then((m) => ({ default: m.LevelingPage })),
+);
+const ScheduledMessagesPage = lazyPage(() =>
+  import("./routes/guild/$guildId/scheduled").then((m) => ({ default: m.ScheduledMessagesPage })),
+);
+const SecurityPage = lazyPage(() =>
+  import("./routes/guild/$guildId/security").then((m) => ({ default: m.SecurityPage })),
+);
+const TicketsPage = lazyPage(() =>
+  import("./routes/guild/$guildId/tickets").then((m) => ({ default: m.TicketsPage })),
+);
+const GiveawaysPage = lazyPage(() =>
+  import("./routes/guild/$guildId/giveaways").then((m) => ({ default: m.GiveawaysPage })),
+);
+const SuggestionsPage = lazyPage(() =>
+  import("./routes/guild/$guildId/suggestions").then((m) => ({ default: m.SuggestionsPage })),
+);
+const StarboardPage = lazyPage(() =>
+  import("./routes/guild/$guildId/starboard").then((m) => ({ default: m.StarboardPage })),
+);
+const CommandsPage = lazyPage(() =>
+  import("./routes/guild/$guildId/commands").then((m) => ({ default: m.CommandsPage })),
+);
+const PermissionsPage = lazyPage(() =>
+  import("./routes/guild/$guildId/permissions").then((m) => ({ default: m.PermissionsPage })),
+);
 
 const queryClient = new QueryClient({
   defaultOptions: {

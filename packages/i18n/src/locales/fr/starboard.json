@@ -26,7 +26,8 @@
       "original": "Message original",
       "stars": "Etoiles",
       "channel": "Salon",
-      "date": "Date"
+      "date": "Date",
+      "author": "Auteur"
     },
     "noMessages": "Aucun message etoile pour l'instant."
   },

@@ -44,6 +44,19 @@ test.describe("Guild selection (authenticated)", () => {
     }
   });
 
+  test("refresh button is visible and forces a server-list refresh", async ({ page }) => {
+    const refresh = page.getByTestId("refresh-servers");
+    await expect(refresh).toBeVisible();
+
+    // Clicking forces the server to re-fetch guilds from Discord
+    const refreshRequest = page.waitForRequest(
+      (req) =>
+        req.url().includes("/api/guilds/refresh") && req.method() === "POST",
+    );
+    await refresh.click();
+    await refreshRequest;
+  });
+
   test("direct link to known guild overview works", async ({ page }) => {
     await page.goto(`/guild/${GUILD_ID}/overview`);
     await page.waitForLoadState("networkidle");

@@ -11,6 +11,32 @@ vi.mock("@fluxcore/utils", () => ({
 import { DEFAULT_SETTINGS, DEFAULT_EMOJI, DEFAULT_THRESHOLD, STARBOARD_PAGE_SIZE } from "../../src/starboard/constants.js";
 import type { StarboardGuildSettings } from "../../src/starboard/types.js";
 
+// Hoisted mocks so the vi.mock factories (which vitest hoists above imports)
+// can reference them safely.
+const {
+  mockGetStarboardSettings,
+  mockGetStarboardEntry,
+  mockUpsertStarboardEntry,
+  mockDeleteStarboardEntry,
+} = vi.hoisted(() => ({
+  mockGetStarboardSettings: vi.fn(),
+  mockGetStarboardEntry: vi.fn(),
+  mockUpsertStarboardEntry: vi.fn(),
+  mockDeleteStarboardEntry: vi.fn(),
+}));
+
+vi.mock("../../src/starboard/config.js", () => ({
+  getStarboardSettings: (...args: unknown[]) => mockGetStarboardSettings(...args),
+}));
+
+vi.mock("../../src/starboard/persistence.js", () => ({
+  getStarboardEntry: (...args: unknown[]) => mockGetStarboardEntry(...args),
+  upsertStarboardEntry: (...args: unknown[]) => mockUpsertStarboardEntry(...args),
+  deleteStarboardEntry: (...args: unknown[]) => mockDeleteStarboardEntry(...args),
+}));
+
+import { handleStarboardReaction } from "../../src/starboard/handler.js";
+
 describe("starboard constants", () => {
   it("has correct default emoji", () => {
     expect(DEFAULT_EMOJI).toBe("\u2B50");
@@ -73,26 +99,6 @@ describe("starboard types", () => {
 });
 
 describe("starboard handler", () => {
-  // Mock all dependencies before importing handler
-  const mockGetStarboardSettings = vi.fn();
-  const mockGetStarboardEntry = vi.fn();
-  const mockUpsertStarboardEntry = vi.fn();
-  const mockDeleteStarboardEntry = vi.fn();
-
-  vi.mock("../../src/starboard/config.js", () => ({
-    getStarboardSettings: (...args: unknown[]) => mockGetStarboardSettings(...args),
-  }));
-
-  vi.mock("../../src/starboard/persistence.js", () => ({
-    getStarboardEntry: (...args: unknown[]) => mockGetStarboardEntry(...args),
-    upsertStarboardEntry: (...args: unknown[]) => mockUpsertStarboardEntry(...args),
-    deleteStarboardEntry: (...args: unknown[]) => mockDeleteStarboardEntry(...args),
-  }));
-
-  // Import after mocks
-  const handlerModule = await import("../../src/starboard/handler.js");
-  const { handleStarboardReaction } = handlerModule;
-
   function createMockReaction({
     emojiName = "\u2B50",
     emojiId = null as string | null,
@@ -145,7 +151,7 @@ describe("starboard handler", () => {
         channel: {
           nsfw: isNsfw,
         },
-        attachments: new Map(),
+        attachments: Object.assign(new Map(), { find: () => undefined }),
         embeds: [],
       },
     };

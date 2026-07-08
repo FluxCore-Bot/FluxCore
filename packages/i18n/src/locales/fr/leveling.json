@@ -116,5 +116,7 @@
   "formatters": {
     "voiceTime": "{{hours}}h {{minutes}}m",
     "voiceTimeMinutesOnly": "{{minutes}}m"
-  }
+  },
+  "confirmRemoveReward": "Voulez-vous vraiment retirer cette récompense de rôle ? Cette action est irréversible.",
+  "confirmRemoveMultiplier": "Voulez-vous vraiment retirer ce multiplicateur d'XP ? Cette action est irréversible."
 }

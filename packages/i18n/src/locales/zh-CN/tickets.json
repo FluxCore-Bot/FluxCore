@@ -33,7 +33,8 @@
     "category": "工单分类",
     "create": "创建面板",
     "edit": "编辑面板",
-    "deploy": "部署面板"
+    "deploy": "部署面板",
+    "openTicket": "创建工单"
   },
   "settings": {
     "transcriptChannel": "记录频道",
@@ -43,7 +44,9 @@
     "closeConfirmation": "关闭确认",
     "closeConfirmationDesc": "关闭工单前需要确认。",
     "dmTranscript": "私信发送记录",
-    "dmTranscriptDesc": "通过私信向工单创建者发送记录副本。"
+    "dmTranscriptDesc": "通过私信向工单创建者发送记录副本。",
+    "staffRolesPlaceholder": "员工身份组",
+    "namingFormatHint": "变量：{number}（补零）、{username}"
   },
   "actions": {
     "claim": "认领",

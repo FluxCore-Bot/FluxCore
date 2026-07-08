@@ -15,7 +15,8 @@
     "saving": "Αποθήκευση...",
     "cancel": "Ακύρωση",
     "delete": "Διαγραφή",
-    "edit": "Επεξεργασία"
+    "edit": "Επεξεργασία",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Δεν υπάρχουν ρυθμίσεις ακόμα",
@@ -26,5 +27,12 @@
     "updated": "Η ρύθμιση ενημερώθηκε",
     "created": "Η ρύθμιση δημιουργήθηκε",
     "removed": "Η ρύθμιση αφαιρέθηκε"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

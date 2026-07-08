@@ -68,5 +68,8 @@
     "requireReasonDesc": "Los moderadores deben proporcionar una razon al emitir una advertencia.",
     "maxWarnings": "Advertencias maximas",
     "maxWarningsDesc": "Maximo de advertencias por usuario (0 = ilimitado)."
-  }
+  },
+  "noWarningsDesc": "Aún no se ha emitido ninguna advertencia",
+  "confirmDelete": "¿Seguro que quieres eliminar este elemento? Esta acción no se puede deshacer.",
+  "confirmRemoveEscalation": "¿Seguro que quieres quitar esta regla de escalado? Esta acción no se puede deshacer."
 }

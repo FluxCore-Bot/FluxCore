@@ -79,7 +79,9 @@
       "description": "Dnevniki dogodkov se bodo prikazali tukaj, ko bo beleženje konfigurirano in se bodo začeli pojavljati dogodki."
     },
     "config": {
-      "selectChannel": "Izberite kanal dnevnika"
+      "selectChannel": "Izberite kanal dnevnika",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

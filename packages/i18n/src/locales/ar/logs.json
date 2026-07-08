@@ -79,7 +79,9 @@
       "description": "ستظهر سجلات الأحداث هنا بمجرد تهيئة التسجيل وبدء وقوع الأحداث."
     },
     "config": {
-      "selectChannel": "اختر قناة السجل"
+      "selectChannel": "اختر قناة السجل",
+      "moreEvents_one": "+{{count}} آخر",
+      "moreEvents_other": "+{{count}} أخرى"
     }
   }
 }

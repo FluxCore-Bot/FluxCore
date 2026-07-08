@@ -108,5 +108,6 @@
     "channelRequired": "Le salon est requis",
     "maxRolesReached": "Maximum 25 roles par panneau"
   },
-  "loading": "Chargement des panneaux..."
+  "loading": "Chargement des panneaux...",
+  "confirmDeletePanel": "Voulez-vous vraiment supprimer ce panneau de rôles ? Cette action est irréversible."
 }

@@ -52,6 +52,7 @@
     "albumName": "アルバム名",
     "albumNamePlaceholder": "マイプレイリスト",
     "deleteAlbum": "削除",
-    "atMax": "アルバムの最大数に達しました。"
+    "atMax": "アルバムの最大数に達しました。",
+    "toggleAlbum": "{{name}}を切り替え"
   }
 }

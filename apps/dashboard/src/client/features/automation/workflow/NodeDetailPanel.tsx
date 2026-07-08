@@ -1,9 +1,13 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import type { TFunction } from "i18next";
 import { useChannels } from "../../../shared/hooks/useChannels";
 import { useRoles } from "../../../shared/hooks/useRoles";
 import { ActionFields } from "../components/ActionFields";
+import { buildAutomationVariables, DiscordMessagePreview, usePreviewContext } from "../../../shared/ui/variable-field";
 import { Button } from "../../../shared/ui/button";
 import { Label } from "../../../shared/ui/label";
+import { Input } from "../../../shared/ui/input";
 import { Badge } from "../../../shared/ui/badge";
 import { Icon } from "../../../shared/components/Icon";
 import { ScrollArea } from "../../../shared/ui/scroll-area";
@@ -42,6 +46,7 @@ interface ActionPanelProps {
   action: ActionConfig;
   constants: Constants;
   guildId: string;
+  eventType: string;
   totalActions: number;
   onActionChange: (index: number, action: ActionConfig) => void;
   onActionRemove: (index: number) => void;
@@ -56,6 +61,7 @@ interface StepPanelProps {
   steps: RuleStep[];
   constants: Constants;
   guildId: string;
+  eventType: string;
   onStepChange: (stepId: string, step: RuleStep) => void;
   onStepRemove: (stepId: string) => void;
   onClose: () => void;
@@ -83,29 +89,30 @@ function setNestedValue(
   };
 }
 
-function getHeaderInfo(props: NodeDetailPanelProps) {
+function getHeaderInfo(props: NodeDetailPanelProps, t: TFunction) {
   if (props.type === "trigger") {
-    return { icon: "bolt", color: "bg-accent/20", textColor: "text-accent", label: "Trigger Settings" };
+    return { icon: "bolt", color: "bg-accent/20", textColor: "text-accent", label: t("panel.trigger") };
   }
   if (props.type === "step") {
     const step = props.steps.find((s) => s.id === props.stepId);
     if (step?.type === "condition") {
-      return { icon: "call_split", color: "bg-warning/20", textColor: "text-warning", label: "Condition" };
+      return { icon: "call_split", color: "bg-warning/20", textColor: "text-warning", label: t("panel.condition") };
     }
     if (step?.type === "delay") {
-      return { icon: "schedule", color: "bg-text-muted/15", textColor: "text-text-muted", label: "Delay" };
+      return { icon: "schedule", color: "bg-text-muted/15", textColor: "text-text-muted", label: t("panel.delay") };
     }
-    return { icon: "play_arrow", color: "bg-secondary/15", textColor: "text-secondary", label: "Action Step" };
+    return { icon: "play_arrow", color: "bg-secondary/15", textColor: "text-secondary", label: t("panel.actionStep") };
   }
-  return { icon: "play_arrow", color: "bg-secondary/15", textColor: "text-secondary", label: `Action ${props.index + 1}` };
+  return { icon: "play_arrow", color: "bg-secondary/15", textColor: "text-secondary", label: t("panel.action", { index: props.index + 1 }) };
 }
 
 export function NodeDetailPanel(props: NodeDetailPanelProps) {
   const { onClose } = props;
-  const header = getHeaderInfo(props);
+  const { t } = useTranslation("rules");
+  const header = getHeaderInfo(props, t);
 
   return (
-    <div className="absolute end-0 top-0 z-20 flex h-full w-full flex-col border-s border-border bg-surface-low animate-in slide-in-from-end-4 duration-200 sm:w-96">
+    <div dir="rtl" className="absolute right-0 top-0 z-20 flex h-full w-full flex-col border-l border-border bg-surface-low animate-in slide-in-from-right-4 duration-200 motion-reduce:animate-none sm:w-96">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-border px-4 py-3">
         <div className="flex items-center gap-2">
@@ -143,6 +150,7 @@ function TriggerPanel({
   onEventTypeChange,
   onConditionsChange,
 }: TriggerPanelProps) {
+  const { t } = useTranslation(["rules", "common"]);
   const variables = eventType ? (constants.eventTypeVariables[eventType] ?? []) : [];
 
   const conditionCount =
@@ -158,11 +166,11 @@ function TriggerPanel({
       <TabsList className="w-full">
         <TabsTrigger value="settings" className="flex-1">
           <Icon name="settings" size={14} className="me-1.5" />
-          Settings
+          {t("panel.settings")}
         </TabsTrigger>
         <TabsTrigger value="conditions" className="flex-1">
           <Icon name="filter_alt" size={14} className="me-1.5" />
-          Filters
+          {t("panel.filters")}
           {conditionCount > 0 && (
             <Badge variant="secondary" className="ms-1.5 h-4 px-1 text-[10px]">
               {conditionCount}
@@ -171,7 +179,7 @@ function TriggerPanel({
         </TabsTrigger>
         <TabsTrigger value="variables" className="flex-1">
           <Icon name="data_object" size={14} className="me-1.5" />
-          Vars
+          {t("panel.vars")}
           {variables.length > 0 && (
             <Badge variant="secondary" className="ms-1.5 h-4 px-1 text-[10px]">
               {variables.length}
@@ -184,11 +192,12 @@ function TriggerPanel({
         <div className="space-y-4">
           <div>
             <Label>
-              Event Type <span className="text-danger">*</span>
+              {t("panel.eventType")} <span aria-hidden="true" className="text-danger">*</span>
+              <span className="sr-only"> ({t("common:labels.required")})</span>
             </Label>
             <Select value={eventType || undefined} onValueChange={onEventTypeChange}>
               <SelectTrigger>
-                <SelectValue placeholder="Select event..." />
+                <SelectValue placeholder={t("panel.selectEvent")} />
               </SelectTrigger>
               <SelectContent>
                 {Object.entries(constants.eventTypes).map(([key, info]) => (
@@ -230,16 +239,20 @@ function ActionPanel({
   action,
   constants,
   guildId,
+  eventType,
   totalActions,
   onActionChange,
   onActionRemove,
   onActionMove,
   canRemove,
 }: ActionPanelProps) {
+  const { t } = useTranslation(["rules", "common"]);
   const { data: channels = [] } = useChannels(guildId);
   const { data: roles = [] } = useRoles(guildId);
   const fields: ActionFieldDescriptor[] =
     constants.actionTypeFields[action.type] ?? [];
+  const variables = buildAutomationVariables(constants, eventType);
+  const real = usePreviewContext(guildId);
 
   const handleTypeChange = (newType: string) => {
     onActionChange(index, { type: newType });
@@ -259,11 +272,11 @@ function ActionPanel({
       <TabsList className="w-full">
         <TabsTrigger value="settings" className="flex-1">
           <Icon name="settings" size={14} className="me-1.5" />
-          Settings
+          {t("panel.settings")}
         </TabsTrigger>
         <TabsTrigger value="variables" className="flex-1">
           <Icon name="data_object" size={14} className="me-1.5" />
-          Variables
+          {t("panel.variables")}
         </TabsTrigger>
       </TabsList>
 
@@ -271,11 +284,12 @@ function ActionPanel({
         <div className="space-y-4">
           <div>
             <Label>
-              Action Type <span className="text-danger">*</span>
+              {t("panel.actionType")} <span aria-hidden="true" className="text-danger">*</span>
+              <span className="sr-only"> ({t("common:labels.required")})</span>
             </Label>
             <Select value={action.type || undefined} onValueChange={handleTypeChange}>
               <SelectTrigger>
-                <SelectValue placeholder="Select action..." />
+                <SelectValue placeholder={t("panel.selectAction")} />
               </SelectTrigger>
               <SelectContent>
                 {Object.entries(constants.actionTypes).map(([key, info]) => (
@@ -294,7 +308,32 @@ function ActionPanel({
               onChange={handleFieldChange}
               channels={channels}
               roles={roles}
+              variables={variables}
             />
+          )}
+
+          {(action.type === "sendMessage" || action.type === "sendDM") && (
+            <div className="mt-2">
+              <DiscordMessagePreview
+                variables={variables}
+                real={real}
+                content={action.message ?? ""}
+              />
+            </div>
+          )}
+          {action.type === "sendEmbed" && (
+            <div className="mt-2">
+              <DiscordMessagePreview
+                variables={variables}
+                real={real}
+                embed={{
+                  title: action.embed?.title,
+                  description: action.embed?.description,
+                  footer: action.embed?.footer,
+                  color: action.embed?.color,
+                }}
+              />
+            </div>
           )}
 
           {totalActions > 1 && (
@@ -307,7 +346,7 @@ function ActionPanel({
                 onClick={() => onActionMove(index, "up")}
               >
                 <Icon name="arrow_upward" size={16} />
-                Move Up
+                {t("panel.moveUp")}
               </Button>
               <Button
                 variant="ghost"
@@ -317,7 +356,7 @@ function ActionPanel({
                 onClick={() => onActionMove(index, "down")}
               >
                 <Icon name="arrow_downward" size={16} />
-                Move Down
+                {t("panel.moveDown")}
               </Button>
             </div>
           )}
@@ -331,7 +370,7 @@ function ActionPanel({
                 onClick={() => onActionRemove(index)}
               >
                 <Icon name="delete" size={16} />
-                Remove Action
+                {t("panel.removeAction")}
               </Button>
             </div>
           )}
@@ -348,30 +387,30 @@ function ActionPanel({
   );
 }
 
-const CONDITION_FIELDS: Array<{ value: string; label: string }> = [
-  { value: "channelId", label: "Channel ID" },
-  { value: "channelName", label: "Channel Name" },
-  { value: "userId", label: "User ID" },
-  { value: "userName", label: "User Name" },
-  { value: "roleId", label: "Role ID" },
-  { value: "roleName", label: "Role Name" },
-  { value: "messageContent", label: "Message Content" },
-  { value: "memberCount", label: "Member Count" },
+const CONDITION_FIELDS: Array<{ value: string; labelKey: string }> = [
+  { value: "channelId", labelKey: "conditionFields.channelId" },
+  { value: "channelName", labelKey: "conditionFields.channelName" },
+  { value: "userId", labelKey: "conditionFields.userId" },
+  { value: "userName", labelKey: "conditionFields.userName" },
+  { value: "roleId", labelKey: "conditionFields.roleId" },
+  { value: "roleName", labelKey: "conditionFields.roleName" },
+  { value: "messageContent", labelKey: "conditionFields.messageContent" },
+  { value: "memberCount", labelKey: "conditionFields.memberCount" },
 ];
 
-const CONDITION_OPERATORS: Array<{ value: string; label: string }> = [
-  { value: "equals", label: "Equals" },
-  { value: "notEquals", label: "Not Equals" },
-  { value: "contains", label: "Contains" },
-  { value: "notContains", label: "Not Contains" },
-  { value: "startsWith", label: "Starts With" },
-  { value: "endsWith", label: "Ends With" },
-  { value: "greaterThan", label: "Greater Than" },
-  { value: "lessThan", label: "Less Than" },
-  { value: "hasRole", label: "Has Role" },
-  { value: "notHasRole", label: "Not Has Role" },
-  { value: "inList", label: "In List" },
-  { value: "notInList", label: "Not In List" },
+const CONDITION_OPERATORS: Array<{ value: string; labelKey: string }> = [
+  { value: "equals", labelKey: "conditionOperators.equals" },
+  { value: "notEquals", labelKey: "conditionOperators.notEquals" },
+  { value: "contains", labelKey: "conditionOperators.contains" },
+  { value: "notContains", labelKey: "conditionOperators.notContains" },
+  { value: "startsWith", labelKey: "conditionOperators.startsWith" },
+  { value: "endsWith", labelKey: "conditionOperators.endsWith" },
+  { value: "greaterThan", labelKey: "conditionOperators.greaterThan" },
+  { value: "lessThan", labelKey: "conditionOperators.lessThan" },
+  { value: "hasRole", labelKey: "conditionOperators.hasRole" },
+  { value: "notHasRole", labelKey: "conditionOperators.notHasRole" },
+  { value: "inList", labelKey: "conditionOperators.inList" },
+  { value: "notInList", labelKey: "conditionOperators.notInList" },
 ];
 
 function StepPanel({
@@ -379,13 +418,16 @@ function StepPanel({
   steps,
   constants,
   guildId,
+  eventType,
   onStepChange,
   onStepRemove,
 }: StepPanelProps) {
+  const { t } = useTranslation(["rules", "common"]);
   const { data: channels = [] } = useChannels(guildId);
   const { data: roles = [] } = useRoles(guildId);
+  const variables = buildAutomationVariables(constants, eventType);
   const step = steps.find((s) => s.id === stepId);
-  if (!step) return <p className="text-xs text-text-muted">Step not found</p>;
+  if (!step) return <p className="text-xs text-text-muted">{t("panel.stepNotFound")}</p>;
 
   if (step.type === "action") {
     const fields = constants.actionTypeFields[step.action.type] ?? [];
@@ -407,11 +449,12 @@ function StepPanel({
       <div className="space-y-4">
         <div>
           <Label>
-            Action Type <span className="text-danger">*</span>
+            {t("panel.actionType")} <span aria-hidden="true" className="text-danger">*</span>
+              <span className="sr-only"> ({t("common:labels.required")})</span>
           </Label>
           <Select value={step.action.type || undefined} onValueChange={handleTypeChange}>
             <SelectTrigger>
-              <SelectValue placeholder="Select action..." />
+              <SelectValue placeholder={t("panel.selectAction")} />
             </SelectTrigger>
             <SelectContent>
               {Object.entries(constants.actionTypes).map(([key, info]) => (
@@ -430,6 +473,7 @@ function StepPanel({
             onChange={handleFieldChange}
             channels={channels}
             roles={roles}
+            variables={variables}
           />
         )}
 
@@ -441,7 +485,7 @@ function StepPanel({
             onClick={() => onStepRemove(stepId)}
           >
             <Icon name="delete" size={16} />
-            Remove Step
+            {t("panel.removeStep")}
           </Button>
         </div>
       </div>
@@ -459,15 +503,15 @@ function StepPanel({
     return (
       <div className="space-y-4">
         <div>
-          <Label>Field</Label>
+          <Label>{t("panel.field")}</Label>
           <Select value={step.condition.field} onValueChange={(v) => updateCondition({ field: v as StepConditionConfig["field"] })}>
             <SelectTrigger>
-              <SelectValue placeholder="Select field..." />
+              <SelectValue placeholder={t("panel.selectField")} />
             </SelectTrigger>
             <SelectContent>
               {CONDITION_FIELDS.map((f) => (
                 <SelectItem key={f.value} value={f.value}>
-                  {f.label}
+                  {t(f.labelKey)}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -475,15 +519,15 @@ function StepPanel({
         </div>
 
         <div>
-          <Label>Operator</Label>
+          <Label>{t("panel.operator")}</Label>
           <Select value={step.condition.operator} onValueChange={(v) => updateCondition({ operator: v as StepConditionConfig["operator"] })}>
             <SelectTrigger>
-              <SelectValue placeholder="Select operator..." />
+              <SelectValue placeholder={t("panel.selectOperator")} />
             </SelectTrigger>
             <SelectContent>
               {CONDITION_OPERATORS.map((o) => (
                 <SelectItem key={o.value} value={o.value}>
-                  {o.label}
+                  {t(o.labelKey)}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -491,25 +535,25 @@ function StepPanel({
         </div>
 
         <div>
-          <Label>Value</Label>
-          <input
+          <Label htmlFor="cond-value">{t("panel.value")}</Label>
+          <Input
+            id="cond-value"
             type="text"
             value={step.condition.value}
             onChange={(e) => updateCondition({ value: e.target.value })}
-            placeholder="Value to compare..."
-            className="flex h-9 w-full rounded-md border border-border bg-surface-lowest px-3 py-1 text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-1 focus:ring-accent"
+            placeholder={t("panel.valuePlaceholder")}
           />
           {step.condition.operator === "inList" || step.condition.operator === "notInList" ? (
-            <p className="mt-1 text-xs text-text-muted">Comma-separated values</p>
+            <p className="mt-1 text-xs text-text-muted">{t("panel.commaSeparated")}</p>
           ) : null}
         </div>
 
         <div className="rounded-lg bg-surface-lowest p-3">
           <p className="text-[11px] text-text-muted">
-            <strong className="text-secondary">Yes branch →</strong> continues when condition is true
+            <strong className="text-secondary">{t("panel.yesBranchLabel")}</strong>{t("panel.yesBranchDesc")}
           </p>
           <p className="mt-1 text-[11px] text-text-muted">
-            <strong className="text-danger">No branch →</strong> continues when condition is false
+            <strong className="text-danger">{t("panel.noBranchLabel")}</strong>{t("panel.noBranchDesc")}
           </p>
         </div>
 
@@ -521,7 +565,7 @@ function StepPanel({
             onClick={() => onStepRemove(stepId)}
           >
             <Icon name="delete" size={16} />
-            Remove Condition
+            {t("panel.removeCondition")}
           </Button>
         </div>
       </div>
@@ -534,8 +578,9 @@ function StepPanel({
     return (
       <div className="space-y-4">
         <div>
-          <Label>Delay (seconds)</Label>
-          <input
+          <Label htmlFor="delay-secs">{t("panel.delaySeconds")}</Label>
+          <Input
+            id="delay-secs"
             type="number"
             value={secs}
             min={1}
@@ -544,9 +589,8 @@ function StepPanel({
               const val = Math.min(300, Math.max(1, Number(e.target.value)));
               onStepChange(stepId, { ...step, delayMs: val * 1000 });
             }}
-            className="flex h-9 w-full rounded-md border border-border bg-surface-lowest px-3 py-1 text-sm text-text focus:outline-none focus:ring-1 focus:ring-accent"
           />
-          <p className="mt-1 text-xs text-text-muted">1–300 seconds (5 minutes max)</p>
+          <p className="mt-1 text-xs text-text-muted">{t("panel.delayRange")}</p>
         </div>
 
         <div className="pt-2">
@@ -557,7 +601,7 @@ function StepPanel({
             onClick={() => onStepRemove(stepId)}
           >
             <Icon name="delete" size={16} />
-            Remove Delay
+            {t("panel.removeDelay")}
           </Button>
         </div>
       </div>
@@ -574,6 +618,7 @@ function VariablesTab({
   variables: string[];
   constants: Constants;
 }) {
+  const { t } = useTranslation("rules");
   const [copiedVar, setCopiedVar] = useState<string | null>(null);
 
   const copyVariable = async (variable: string) => {
@@ -587,7 +632,7 @@ function VariablesTab({
       <div className="flex flex-col items-center gap-2 py-8 text-center">
         <Icon name="info" size={20} className="text-text-muted" />
         <p className="text-xs text-text-muted">
-          Select an event type first to see available variables.
+          {t("panel.noVariables")}
         </p>
       </div>
     );
@@ -596,7 +641,7 @@ function VariablesTab({
   return (
     <div className="space-y-3">
       <p className="text-xs text-text-muted">
-        Click a variable to copy it. Use in message and text fields.
+        {t("panel.variablesHint")}
       </p>
       <div className="flex flex-wrap gap-1.5">
         {variables.map((v) => (
@@ -607,7 +652,7 @@ function VariablesTab({
             onClick={() => copyVariable(v)}
             title={constants.templateVariables[v] ?? v}
           >
-            {copiedVar === v ? "Copied!" : v}
+            {copiedVar === v ? t("panel.copied") : v}
           </Badge>
         ))}
       </div>

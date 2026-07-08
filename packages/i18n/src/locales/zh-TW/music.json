@@ -52,6 +52,7 @@
     "albumName": "專輯名稱",
     "albumNamePlaceholder": "我的播放清單",
     "deleteAlbum": "刪除",
-    "atMax": "您已達到最大專輯數量。"
+    "atMax": "您已達到最大專輯數量。",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

@@ -15,7 +15,8 @@
     "saving": "در حال ذخیره...",
     "cancel": "لغو",
     "delete": "حذف",
-    "edit": "ویرایش"
+    "edit": "ویرایش",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "هنوز پیکربندی‌ای وجود ندارد",
@@ -26,5 +27,12 @@
     "updated": "پیکربندی به‌روزرسانی شد",
     "created": "پیکربندی ایجاد شد",
     "removed": "پیکربندی حذف شد"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

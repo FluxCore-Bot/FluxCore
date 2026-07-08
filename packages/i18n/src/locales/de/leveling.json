@@ -116,5 +116,7 @@
   "formatters": {
     "voiceTime": "{{hours}}h {{minutes}}m",
     "voiceTimeMinutesOnly": "{{minutes}}m"
-  }
+  },
+  "confirmRemoveReward": "Möchtest du diese Rollen-Belohnung wirklich entfernen? Diese Aktion kann nicht rückgängig gemacht werden.",
+  "confirmRemoveMultiplier": "Möchtest du diesen XP-Multiplikator wirklich entfernen? Diese Aktion kann nicht rückgängig gemacht werden."
 }

@@ -25,7 +25,8 @@
     "date": "Datum",
     "actions": "Aksies",
     "noCases": "Geen sake gevind nie.",
-    "noReason": "Geen rede"
+    "noReason": "Geen rede",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "Filtreer op Gebruiker-ID...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Stuur 'n DM aan gebruikers wanneer hulle gestraf word (verban, skop, tyduit).",
     "modLogChannel": "Moderering-logkanaal",
     "modLogChannelDesc": "Kanaal waar modereringsaksies gelogboek word."
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

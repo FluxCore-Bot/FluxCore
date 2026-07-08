@@ -108,5 +108,6 @@
     "channelRequired": "Kanala beharrezkoa da",
     "maxRolesReached": "Gehienez 25 rol paneleko"
   },
-  "loading": "Panelak kargatzen..."
+  "loading": "Panelak kargatzen...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

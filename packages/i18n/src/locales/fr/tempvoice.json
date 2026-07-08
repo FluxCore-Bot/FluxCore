@@ -15,7 +15,8 @@
     "saving": "Enregistrement...",
     "cancel": "Annuler",
     "delete": "Supprimer",
-    "edit": "Modifier"
+    "edit": "Modifier",
+    "nameTemplateHint": "Utilisez {user} pour le nom d'affichage du membre"
   },
   "empty": {
     "noConfigs": "Aucune configuration pour l'instant",
@@ -26,5 +27,12 @@
     "updated": "Configuration mise à jour",
     "created": "Configuration créée",
     "removed": "Configuration supprimée"
+  },
+  "hubs": {
+    "configured": "Hubs configurés",
+    "add": "Ajouter un hub",
+    "hubLabel": "Hub : #{{channel}}",
+    "templateLabel": "Modèle : {{template}}",
+    "categorySuffix": " — Catégorie : #{{channel}}"
   }
 }

@@ -3,6 +3,8 @@ import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../shared/lib/client";
+import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
+import { EmptyState } from "../../../shared/components/EmptyState";
 import { PageHeader } from "../../../shared/components/PageHeader";
 import {
   useTickets,
@@ -81,6 +83,10 @@ export function TicketsPage() {
   const [staffRoles, setStaffRoles] = useState<string[]>([]);
   const [transcriptChannelId, setTranscriptChannelId] = useState<string | null>(null);
 
+  // Confirmation dialog state
+  const [closeConfirmId, setCloseConfirmId] = useState<number | null>(null);
+  const [deletePanelConfirmId, setDeletePanelConfirmId] = useState<number | null>(null);
+
   const totalPages = ticketData ? Math.max(1, Math.ceil(ticketData.total / 20)) : 1;
 
   const openCount = ticketData?.tickets.filter((t) => t.status === "open").length ?? 0;
@@ -103,7 +109,7 @@ export function TicketsPage() {
       {
         channelId: newPanelChannel,
         name: newPanelName.trim(),
-        categories: [{ name: "general", label: "Open Ticket" }],
+        categories: [{ name: "general", label: t("panelBuilder.openTicket") }],
       },
       {
         onSuccess: () => {
@@ -230,6 +236,7 @@ export function TicketsPage() {
                     key={s}
                     variant={statusFilter === s ? "default" : "outline"}
                     size="sm"
+                    aria-pressed={statusFilter === s}
                     onClick={() => {
                       setStatusFilter(s);
                       setPage(1);
@@ -284,7 +291,8 @@ export function TicketsPage() {
                               <Button
                                 variant="ghost"
                                 size="sm"
-                                onClick={() => handleCloseTicket(ticket.id)}
+                                aria-label={t("actions.close")}
+                                onClick={() => setCloseConfirmId(ticket.id)}
                                 disabled={closeTicketMutation.isPending}
                               >
                                 <Icon name="close" size={16} className="text-danger" />
@@ -295,6 +303,7 @@ export function TicketsPage() {
                                 href={ticket.transcriptUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                aria-label={t("settings.transcriptChannel")}
                                 className="ms-1 text-primary hover:underline"
                               >
                                 <Icon name="description" size={16} />
@@ -310,7 +319,7 @@ export function TicketsPage() {
                 {totalPages > 1 && (
                   <div className="mt-4 flex items-center justify-between">
                     <p className="text-sm text-text-muted">
-                      Page {page} of {totalPages} ({ticketData.total} total)
+                      {t("common:pagination.showingPage", { page, total: totalPages, count: ticketData.total })}
                     </p>
                     <div className="flex gap-2">
                       <Button
@@ -334,7 +343,11 @@ export function TicketsPage() {
                 )}
               </>
             ) : (
-              <p className="text-text-muted">{t("empty.tickets")}</p>
+              <EmptyState
+                icon="confirmation_number"
+                title={t("empty.tickets")}
+                description={t("subtitle")}
+              />
             )}
           </Card>
         </TabsContent>
@@ -387,13 +400,15 @@ export function TicketsPage() {
                             onClick={() => handleSendPanel(panel.id)}
                             disabled={sendPanel.isPending}
                             title={t("panelBuilder.deploy")}
+                            aria-label={t("panelBuilder.deploy")}
                           >
                             <Icon name="send" size={16} />
                           </Button>
                           <Button
                             variant="ghost"
                             size="sm"
-                            onClick={() => handleDeletePanel(panel.id)}
+                            aria-label={t("actions.delete")}
+                            onClick={() => setDeletePanelConfirmId(panel.id)}
                             disabled={deletePanel.isPending}
                           >
                             <Icon name="delete" size={16} className="text-danger" />
@@ -405,7 +420,11 @@ export function TicketsPage() {
                 </Table>
               </div>
             ) : (
-              <p className="mb-4 text-text-muted">{t("empty.panels")}</p>
+              <EmptyState
+                icon="dashboard"
+                title={t("empty.panels")}
+                description={t("panelBuilder.create")}
+              />
             )}
 
             <Separator className="my-6" />
@@ -455,7 +474,7 @@ export function TicketsPage() {
                     type="role"
                     selectedIds={staffRoles}
                     onChange={setStaffRoles}
-                    placeholder="Staff roles"
+                    placeholder={t("settings.staffRolesPlaceholder")}
                   />
                   <p className="mt-1 text-xs text-text-muted">
                     {t("settings.transcriptChannelDesc")}
@@ -528,7 +547,7 @@ export function TicketsPage() {
                     className="w-64"
                   />
                   <p className="mt-1 text-xs text-text-muted">
-                    Variables: {"{number}"} (zero-padded), {"{username}"}
+                    {t("settings.namingFormatHint")}
                   </p>
                 </div>
 
@@ -542,6 +561,34 @@ export function TicketsPage() {
           </Card>
         </TabsContent>
       </Tabs>
+
+      {/* Close Ticket Confirmation */}
+      <ConfirmDialog
+        open={closeConfirmId !== null}
+        onOpenChange={(open) => { if (!open) setCloseConfirmId(null); }}
+        title={t("actions.close")}
+        description={t("common:confirm.deleteMessage")}
+        confirmLabel={t("actions.close")}
+        destructive
+        onConfirm={() => {
+          if (closeConfirmId !== null) handleCloseTicket(closeConfirmId);
+          setCloseConfirmId(null);
+        }}
+      />
+
+      {/* Delete Panel Confirmation */}
+      <ConfirmDialog
+        open={deletePanelConfirmId !== null}
+        onOpenChange={(open) => { if (!open) setDeletePanelConfirmId(null); }}
+        title={t("common:confirm.deleteTitle")}
+        description={t("common:confirm.deleteMessage")}
+        confirmLabel={t("actions.delete")}
+        destructive
+        onConfirm={() => {
+          if (deletePanelConfirmId !== null) handleDeletePanel(deletePanelConfirmId);
+          setDeletePanelConfirmId(null);
+        }}
+      />
     </div>
   );
 }

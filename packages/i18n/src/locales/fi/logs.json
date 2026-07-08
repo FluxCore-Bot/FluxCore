@@ -79,7 +79,9 @@
       "description": "Tapahtumalokit näkyvät täällä kun kirjaaminen on määritetty ja tapahtumat alkavat tapahtua."
     },
     "config": {
-      "selectChannel": "Valitse lokikanava"
+      "selectChannel": "Valitse lokikanava",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

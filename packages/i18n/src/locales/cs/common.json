@@ -79,7 +79,9 @@
     "conditions": "Podmínky",
     "duration": "Doba trvání",
     "reason": "Důvod",
-    "language": "Jazyk"
+    "language": "Jazyk",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Vybrat kanál...",
@@ -98,7 +100,6 @@
     "showingPage": "Strana {{page}} z {{total}} (celkem {{count}})"
   },
   "header": {
-    "notifications": "Oznámení",
     "settings": "Nastavení",
     "logout": "Odhlásit",
     "toggleSidebar": "Přepnout postranní panel",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "Zavřít postranní panel",
     "addToServer": "Přidat na server",
-    "docs": "Dokumentace",
-    "support": "Podpora",
     "backToServers": "Zpět na servery"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "hodiny",
     "days": "dny",
     "ago": "před {{time}}",
-    "in": "za {{time}}"
+    "in": "za {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Jste si jisti?",
@@ -137,5 +137,9 @@
     "error": "Došlo k chybě",
     "menuOpen": "Menu je otevřeno",
     "menuClosed": "Menu je zavřeno"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

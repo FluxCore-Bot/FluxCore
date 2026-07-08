@@ -50,7 +50,10 @@
     "footer": "フッター",
     "thumbnail": "サムネイルURL",
     "image": "画像URL",
-    "variables": "変数:"
+    "variables": "変数:",
+    "titlePlaceholder": "{server}へようこそ！",
+    "descriptionPlaceholder": "こんにちは {user} さん、**{server}**へようこそ！あなたは#{membercount}人目のメンバーです。",
+    "footerPlaceholder": "フッターテキスト..."
   },
   "saveChanges": "変更を保存",
   "saving": "保存中...",
@@ -61,5 +64,80 @@
     "saveFailed": "設定の保存に失敗しました",
     "testSent": "テストメッセージが<#{{channelId}}>に送信されます",
     "testFailed": "テストメッセージの送信に失敗しました"
+  },
+  "defaults": {
+    "welcomeSubtitle": "{server}へようこそ！",
+    "farewellSubtitle": "さようなら、{user.name} さん！"
+  },
+  "imageEditor": {
+    "livePreview": "ライブプレビュー",
+    "previewAlt": "{{type}}画像のプレビュー",
+    "generatingPreview": "プレビューを生成中...",
+    "previewPlaceholder": "ここにプレビューが表示されます",
+    "template": "テンプレート",
+    "background": {
+      "title": "背景",
+      "solidColor": "単色",
+      "gradient": "グラデーション",
+      "customImage": "カスタム画像",
+      "colorPicker": "背景色ピッカー",
+      "colorHex": "背景色の16進数値",
+      "uploadImage": "背景画像をアップロード",
+      "upload": "画像をアップロード",
+      "uploading": "アップロード中...",
+      "set": "背景を設定しました",
+      "fileHint": "JPG、PNG、またはWebP。最大3 MB。"
+    },
+    "overlay": {
+      "title": "オーバーレイの暗さ",
+      "opacity": "不透明度"
+    },
+    "avatar": {
+      "title": "アバター",
+      "shape": "形状",
+      "shapeCircle": "円形",
+      "shapeRounded": "角丸の正方形",
+      "shapeSquare": "正方形",
+      "borderWidth": "枠線の太さ",
+      "borderColor": "枠線の色",
+      "borderColorPicker": "アバター枠線の色ピッカー",
+      "borderColorHex": "アバター枠線の色の16進数値",
+      "glowEffect": "グロー効果",
+      "glowColorPicker": "アバターグローの色ピッカー",
+      "glowColorHex": "アバターグローの色の16進数値"
+    },
+    "typography": {
+      "title": "タイポグラフィ",
+      "titleSection": "タイトル（ユーザー名）",
+      "subtitleSection": "サブタイトル（カスタムテキスト）",
+      "font": "フォント",
+      "color": "色",
+      "size": "サイズ",
+      "text": "テキスト",
+      "titleColorPicker": "タイトルの色ピッカー",
+      "titleColorHex": "タイトルの色の16進数値",
+      "subtitleColorPicker": "サブタイトルの色ピッカー",
+      "subtitleColorHex": "サブタイトルの色の16進数値",
+      "subtitlePlaceholder": "{server}へようこそ！",
+      "subtitleVariables": "変数: {user.name} {server} {membercount}"
+    },
+    "accent": {
+      "title": "アクセントカラー",
+      "colorPicker": "アクセントカラーピッカー",
+      "colorHex": "アクセントカラーの16進数値",
+      "hint": "装飾、枠線、テンプレートのアクセントに使用されます。"
+    },
+    "delivery": {
+      "title": "配信モード",
+      "with": "埋め込みメッセージと一緒に",
+      "before": "埋め込みメッセージの前に",
+      "only": "画像のみ（埋め込みなし）"
+    },
+    "toast": {
+      "imageTooLarge": "背景画像は3 MB未満である必要があります",
+      "uploaded": "背景をアップロードしました",
+      "uploadFailed": "背景のアップロードに失敗しました",
+      "previewFailed": "プレビューの生成に失敗しました"
+    }
   }
 }

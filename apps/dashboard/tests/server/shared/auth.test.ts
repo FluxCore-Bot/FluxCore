@@ -13,6 +13,8 @@ vi.mock("@fluxcore/config", () => ({
 const { getAuthorizationUrl, exchangeCode, fetchUser, fetchGuilds } =
   await import("../../../src/server/shared/auth.js");
 
+const CALLBACK_URL = "http://localhost:3000/auth/callback";
+
 describe("auth module", () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -21,7 +23,7 @@ describe("auth module", () => {
 
   describe("getAuthorizationUrl", () => {
     it("returns a valid Discord OAuth2 URL", () => {
-      const { url, state } = getAuthorizationUrl();
+      const { url, state } = getAuthorizationUrl(CALLBACK_URL);
       expect(url).toContain("discord.com/api/v10/oauth2/authorize");
       expect(url).toContain("client_id=test-client-id");
       expect(url).toContain("response_type=code");
@@ -31,7 +33,7 @@ describe("auth module", () => {
     });
 
     it("includes the callback URL", () => {
-      const { url } = getAuthorizationUrl();
+      const { url } = getAuthorizationUrl(CALLBACK_URL);
       expect(url).toContain(
         encodeURIComponent("http://localhost:3000/auth/callback"),
       );
@@ -52,7 +54,7 @@ describe("auth module", () => {
         json: () => Promise.resolve(mockResponse),
       } as Response);
 
-      const result = await exchangeCode("test-code");
+      const result = await exchangeCode("test-code", CALLBACK_URL);
       expect(result.access_token).toBe("mock-token");
     });
 
@@ -62,7 +64,7 @@ describe("auth module", () => {
         status: 400,
       } as Response);
 
-      await expect(exchangeCode("bad-code")).rejects.toThrow(
+      await expect(exchangeCode("bad-code", CALLBACK_URL)).rejects.toThrow(
         "Token exchange failed: 400",
       );
     });

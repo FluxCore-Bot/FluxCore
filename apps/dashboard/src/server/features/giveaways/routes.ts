@@ -50,6 +50,14 @@ export function registerGiveawayRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/giveaways",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("giveaways.list.manage")],
+      config: {
+        rateLimit: {
+          max: 10,
+          timeWindow: "1 minute",
+          keyGenerator: (req) =>
+            (req as { session?: { userId?: string } }).session?.userId ?? req.ip,
+        },
+      },
       schema: {
         body: {
           type: "object",

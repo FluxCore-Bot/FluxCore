@@ -1,21 +1,125 @@
 {
-  "title": "บทบาทและสิทธิ์", "subtitle": "ควบคุมการเข้าถึงและจัดการแต่ละโมดูลของแดชบอร์ด",
-  "actions": { "createRole": "สร้างบทบาท" },
-  "permissionSystem": { "title": "ระบบสิทธิ์", "active": "ใช้งาน — ผู้ดูแลจะถูกจำกัดตามสิทธิ์ที่กำหนด", "inactive": "ไม่ใช้งาน — ผู้ดูแลทุกคนที่มี MANAGE_GUILD จะเข้าถึงได้ทั้งหมด", "enabledToast": "เปิดใช้งานระบบสิทธิ์แล้ว", "disabledToast": "ปิดใช้งานระบบสิทธิ์แล้ว — ผู้ดูแลทุกคนเข้าถึงได้ทั้งหมด" },
-  "warning": { "disabled": "ระบบสิทธิ์ถูกปิดใช้งาน ผู้ดูแลแดชบอร์ดทุกคนมีสิทธิ์เข้าถึงทั้งหมด เปิดใช้งานด้านบนเพื่อบังคับใช้สิทธิ์แบบละเอียด" },
-  "tabs": { "roles": "บทบาท", "auditLog": "บันทึกตรวจสอบ" },
-  "roleList": { "title": "บทบาทแดชบอร์ด", "empty": "ยังไม่มีบทบาท", "selectHint": "เลือกบทบาทเพื่อแก้ไข หรือสร้างใหม่", "default": "ค่าเริ่มต้น", "name": "ชื่อ", "members": "สมาชิก", "permissions": "สิทธิ์", "edit": "แก้ไข", "delete": "ลบ" },
-  "presets": { "title": "เพิ่มด่วนจากเทมเพลต", "createdToast": "สร้างบทบาท \"{{name}}\" แล้ว" },
-  "roleEditor": { "memberCount": "{{count}} สมาชิก", "memberCount_plural": "{{count}} สมาชิก", "name": "ชื่อบทบาท", "color": "สี", "defaultRole": "บทบาทเริ่มต้น", "permissions": "สิทธิ์", "allBadge": "ทั้งหมด", "discordRoles": "บทบาท Discord" },
-  "roleForm": { "name": "ชื่อบทบาท", "discordRoles": "บทบาท Discord", "permissions": "สิทธิ์", "create": "สร้างบทบาท", "update": "อัปเดตบทบาท", "cancel": "ยกเลิก" },
-  "createDialog": { "title": "สร้างบทบาทแดชบอร์ด", "name": "ชื่อ", "namePlaceholder": "เช่น ผู้ดูแล", "color": "สี" },
-  "permissionCategories": { "actions": "แอ็กชันและระบบอัตโนมัติ", "music": "เพลง", "tempvoice": "ห้องเสียงชั่วคราว", "welcome": "ต้อนรับและอำลา", "moderation": "การจัดการ", "logging": "การบันทึก", "leveling": "ระบบเลเวล", "roles": "แผงบทบาท", "tickets": "ตั๋ว", "suggestions": "ข้อเสนอแนะ", "starboard": "กระดานดาว", "giveaways": "แจกของรางวัล", "security": "ความปลอดภัย", "scheduled": "ข้อความตั้งเวลา", "commands": "คำสั่งกำหนดเอง", "settings": "การตั้งค่าเซิร์ฟเวอร์" },
-  "audit": { "table": { "user": "ผู้ใช้", "action": "การดำเนินการ", "target": "เป้าหมาย", "timestamp": "เวลา" }, "noEntries": "ยังไม่มีรายการบันทึกตรวจสอบ" },
-  "pagination": { "previous": "ก่อนหน้า", "next": "ถัดไป", "page": "หน้า {{current}} จาก {{total}}" },
-  "toast": { "roleCreated": "สร้างบทบาท \"{{name}}\" แล้ว", "roleCreateFailed": "ไม่สามารถสร้างบทบาทได้", "roleUpdated": "อัปเดตบทบาทแล้ว", "roleUpdateFailed": "ไม่สามารถอัปเดตบทบาทได้", "roleDeleted": "ลบบทบาทแล้ว", "roleDeleteFailed": "ไม่สามารถลบบทบาทได้" },
-  "confirm": { "deleteTitle": "ลบบทบาท \"{{name}}\"?", "deleteMessage": "จะลบบทบาทและยกเลิกการกำหนดสมาชิกทั้งหมด การดำเนินการนี้ไม่สามารถย้อนกลับได้", "deleteRole": "แน่ใจหรือว่าต้องการลบบทบาทนี้? สมาชิกจะสูญเสียสิทธิ์ที่กำหนดไว้" },
-  "saveButton": { "saving": "กำลังบันทึก...", "save": "บันทึกการเปลี่ยนแปลง" },
-  "deleteButton": { "deleting": "กำลังลบ...", "delete": "ลบ" },
-  "createButton": { "creating": "กำลังสร้าง...", "create": "สร้าง" },
-  "loading": "กำลังโหลดสิทธิ์..."
+  "title": "บทบาทและสิทธิ์",
+  "subtitle": "ควบคุมการเข้าถึงและจัดการแต่ละโมดูลของแดชบอร์ด",
+  "actions": {
+    "createRole": "สร้างบทบาท"
+  },
+  "permissionSystem": {
+    "title": "ระบบสิทธิ์",
+    "active": "ใช้งาน — ผู้ดูแลจะถูกจำกัดตามสิทธิ์ที่กำหนด",
+    "inactive": "ไม่ใช้งาน — ผู้ดูแลทุกคนที่มี MANAGE_GUILD จะเข้าถึงได้ทั้งหมด",
+    "enabledToast": "เปิดใช้งานระบบสิทธิ์แล้ว",
+    "disabledToast": "ปิดใช้งานระบบสิทธิ์แล้ว — ผู้ดูแลทุกคนเข้าถึงได้ทั้งหมด"
+  },
+  "warning": {
+    "disabled": "ระบบสิทธิ์ถูกปิดใช้งาน ผู้ดูแลแดชบอร์ดทุกคนมีสิทธิ์เข้าถึงทั้งหมด เปิดใช้งานด้านบนเพื่อบังคับใช้สิทธิ์แบบละเอียด"
+  },
+  "tabs": {
+    "roles": "บทบาท",
+    "auditLog": "บันทึกตรวจสอบ"
+  },
+  "roleList": {
+    "title": "บทบาทแดชบอร์ด",
+    "empty": "ยังไม่มีบทบาท",
+    "selectHint": "เลือกบทบาทเพื่อแก้ไข หรือสร้างใหม่",
+    "default": "ค่าเริ่มต้น",
+    "name": "ชื่อ",
+    "members": "สมาชิก",
+    "permissions": "สิทธิ์",
+    "edit": "แก้ไข",
+    "delete": "ลบ"
+  },
+  "presets": {
+    "title": "เพิ่มด่วนจากเทมเพลต",
+    "createdToast": "สร้างบทบาท \"{{name}}\" แล้ว"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} สมาชิก",
+    "memberCount_plural": "{{count}} สมาชิก",
+    "name": "ชื่อบทบาท",
+    "color": "สี",
+    "defaultRole": "บทบาทเริ่มต้น",
+    "permissions": "สิทธิ์",
+    "allBadge": "ทั้งหมด",
+    "discordRoles": "บทบาท Discord"
+  },
+  "roleForm": {
+    "name": "ชื่อบทบาท",
+    "discordRoles": "บทบาท Discord",
+    "permissions": "สิทธิ์",
+    "create": "สร้างบทบาท",
+    "update": "อัปเดตบทบาท",
+    "cancel": "ยกเลิก"
+  },
+  "createDialog": {
+    "title": "สร้างบทบาทแดชบอร์ด",
+    "name": "ชื่อ",
+    "namePlaceholder": "เช่น ผู้ดูแล",
+    "color": "สี"
+  },
+  "permissionCategories": {
+    "actions": "แอ็กชันและระบบอัตโนมัติ",
+    "music": "เพลง",
+    "tempvoice": "ห้องเสียงชั่วคราว",
+    "welcome": "ต้อนรับและอำลา",
+    "moderation": "การจัดการ",
+    "logging": "การบันทึก",
+    "leveling": "ระบบเลเวล",
+    "roles": "แผงบทบาท",
+    "tickets": "ตั๋ว",
+    "suggestions": "ข้อเสนอแนะ",
+    "starboard": "กระดานดาว",
+    "giveaways": "แจกของรางวัล",
+    "security": "ความปลอดภัย",
+    "scheduled": "ข้อความตั้งเวลา",
+    "commands": "คำสั่งกำหนดเอง",
+    "settings": "การตั้งค่าเซิร์ฟเวอร์"
+  },
+  "audit": {
+    "table": {
+      "user": "ผู้ใช้",
+      "action": "การดำเนินการ",
+      "target": "เป้าหมาย",
+      "timestamp": "เวลา"
+    },
+    "noEntries": "ยังไม่มีรายการบันทึกตรวจสอบ"
+  },
+  "pagination": {
+    "previous": "ก่อนหน้า",
+    "next": "ถัดไป",
+    "page": "หน้า {{current}} จาก {{total}}"
+  },
+  "toast": {
+    "roleCreated": "สร้างบทบาท \"{{name}}\" แล้ว",
+    "roleCreateFailed": "ไม่สามารถสร้างบทบาทได้",
+    "roleUpdated": "อัปเดตบทบาทแล้ว",
+    "roleUpdateFailed": "ไม่สามารถอัปเดตบทบาทได้",
+    "roleDeleted": "ลบบทบาทแล้ว",
+    "roleDeleteFailed": "ไม่สามารถลบบทบาทได้"
+  },
+  "confirm": {
+    "deleteTitle": "ลบบทบาท \"{{name}}\"?",
+    "deleteMessage": "จะลบบทบาทและยกเลิกการกำหนดสมาชิกทั้งหมด การดำเนินการนี้ไม่สามารถย้อนกลับได้",
+    "deleteRole": "แน่ใจหรือว่าต้องการลบบทบาทนี้? สมาชิกจะสูญเสียสิทธิ์ที่กำหนดไว้"
+  },
+  "saveButton": {
+    "saving": "กำลังบันทึก...",
+    "save": "บันทึกการเปลี่ยนแปลง"
+  },
+  "deleteButton": {
+    "deleting": "กำลังลบ...",
+    "delete": "ลบ"
+  },
+  "createButton": {
+    "creating": "กำลังสร้าง...",
+    "create": "สร้าง"
+  },
+  "loading": "กำลังโหลดสิทธิ์...",
+  "guard": {
+    "deniedTitle": "Permission Denied",
+    "deniedMessage": "You don't have permission to access <1>{{module}}</1>.",
+    "requiredPermission": "Required permission:",
+    "yourRoles": "Your roles:",
+    "contactOwner": "Contact your server owner to request access."
+  }
 }

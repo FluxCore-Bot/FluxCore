@@ -15,7 +15,8 @@
     "saving": "جارٍ الحفظ...",
     "cancel": "إلغاء",
     "delete": "حذف",
-    "edit": "تعديل"
+    "edit": "تعديل",
+    "nameTemplateHint": "استخدم {user} للاسم المعروض للعضو"
   },
   "empty": {
     "noConfigs": "لا توجد تكوينات بعد",
@@ -26,5 +27,12 @@
     "updated": "تم تحديث التكوين",
     "created": "تم إنشاء التكوين",
     "removed": "تمت إزالة التكوين"
+  },
+  "hubs": {
+    "configured": "المراكز المُهيّأة",
+    "add": "إضافة مركز",
+    "hubLabel": "المركز: #{{channel}}",
+    "templateLabel": "القالب: {{template}}",
+    "categorySuffix": " — الفئة: #{{channel}}"
   }
 }

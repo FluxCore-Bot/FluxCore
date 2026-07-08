@@ -108,5 +108,6 @@
     "channelRequired": "O canal e obrigatorio",
     "maxRolesReached": "Maximo de 25 cargos por painel"
   },
-  "loading": "A carregar paineis..."
+  "loading": "A carregar paineis...",
+  "confirmDeletePanel": "Tem certeza de que deseja excluir este painel de cargos? Esta ação não pode ser desfeita."
 }

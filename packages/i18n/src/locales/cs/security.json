@@ -1,0 +1,108 @@
+{
+  "title": "Security",
+  "subtitle": "Configure anti-raid protection and server security settings.",
+  "antiRaid": {
+    "title": "Anti-Raid Protection",
+    "description": "Enable automatic detection and response to coordinated raids, suspicious accounts, and destructive actions."
+  },
+  "sections": {
+    "joinRate": "Join Rate",
+    "accountAge": "Account Age",
+    "antiNuke": "Anti-Nuke",
+    "lockdown": "Lockdown",
+    "events": "Events"
+  },
+  "joinRate": {
+    "title": "Join Rate Detection",
+    "description": "Detect mass joins by monitoring the rate of new members joining.",
+    "threshold": "Join Threshold",
+    "thresholdHint": "Number of joins to trigger detection",
+    "window": "Time Window (seconds)",
+    "windowHint": "Window in which joins are counted",
+    "action": "Action on Detection",
+    "actionHint": "Action to take on suspected raid members",
+    "actions": {
+      "ban": "Ban",
+      "kick": "Kick",
+      "timeout": "Timeout",
+      "lockdown": "Lockdown"
+    }
+  },
+  "accountAge": {
+    "title": "Account Age Filter",
+    "description": "Automatically action accounts that are younger than a minimum age. Set to 0 to disable.",
+    "minAge": "Minimum Account Age (days)",
+    "minAgeHint": "0 = disabled. Accounts younger than this will be actioned.",
+    "action": "Action"
+  },
+  "antiNuke": {
+    "title": "Anti-Nuke Protection",
+    "description": "Detect mass channel/role deletions and quarantine the responsible user by removing all their roles.",
+    "threshold": "Deletion Threshold",
+    "thresholdHint": "Number of deletions within 10 seconds to trigger quarantine",
+    "channelDeleteThreshold": "Channel Delete Threshold",
+    "roleDeleteThreshold": "Role Delete Threshold",
+    "massbanThreshold": "Mass Ban Threshold",
+    "interval": "Interval (seconds)",
+    "action": "Action"
+  },
+  "lockdown": {
+    "title": "Auto-Lockdown on Raid",
+    "description": "Automatically lock all channels when a raid is detected.",
+    "whitelistedRoles": "Whitelisted Role IDs (comma-separated)",
+    "whitelistedRolesPlaceholder": "123456789, 987654321",
+    "whitelistedRolesHint": "Members with these roles will be exempt from raid detection.",
+    "logChannel": "Log Channel ID",
+    "logChannelPlaceholder": "Channel ID for raid event logs...",
+    "enableButton": "Enable Lockdown",
+    "disableButton": "Disable Lockdown",
+    "active": "Lockdown Active",
+    "inactive": "Lockdown Inactive"
+  },
+  "events": {
+    "title": "Recent Raid Events",
+    "description": "Timeline of detected raids, account age blocks, and lockdown events.",
+    "empty": "No raid events recorded yet. Events will appear here when raid detection triggers.",
+    "actionLabel": "Action: {{action}}",
+    "usersLabel": "Users: {{count}}",
+    "accountAgeLabel": "Account age: {{days}}d",
+    "table": {
+      "type": "Type",
+      "description": "Description",
+      "time": "Time",
+      "action": "Action Taken"
+    }
+  },
+  "raidEventTypes": {
+    "join_spike": "Join Spike",
+    "account_age": "Account Age",
+    "nuke_attempt": "Nuke Attempt",
+    "lockdown": "Lockdown",
+    "massJoin": "Mass Join",
+    "suspiciousAccounts": "Suspicious Accounts",
+    "channelDeletion": "Channel Deletion",
+    "roleDeletion": "Role Deletion",
+    "massBan": "Mass Ban"
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {{current}} of {{total}}"
+  },
+  "toast": {
+    "saved": "Anti-raid configuration saved",
+    "saveFailed": "Failed to save configuration",
+    "lockdownEnabled": "Server lockdown enabled",
+    "lockdownDisabled": "Server lockdown disabled",
+    "lockdownFailed": "Failed to toggle lockdown"
+  },
+  "saveButton": {
+    "saving": "Saving...",
+    "save": "Save Changes"
+  },
+  "labels": {
+    "seconds": "seconds",
+    "minutes": "minutes",
+    "hours": "hours"
+  }
+}

@@ -52,6 +52,7 @@
     "albumName": "Albumnaam",
     "albumNamePlaceholder": "My Spellys",
     "deleteAlbum": "Verwyder",
-    "atMax": "Jy het die maksimum aantal albums bereik."
+    "atMax": "Jy het die maksimum aantal albums bereik.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

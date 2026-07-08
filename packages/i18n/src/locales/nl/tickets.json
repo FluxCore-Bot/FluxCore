@@ -33,7 +33,8 @@
     "category": "Ticketcategorie",
     "create": "Paneel aanmaken",
     "edit": "Paneel bewerken",
-    "deploy": "Paneel implementeren"
+    "deploy": "Paneel implementeren",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Transcriptiekanaal",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Sluitingsbevestiging",
     "closeConfirmationDesc": "Vereist bevestiging voordat een ticket wordt gesloten.",
     "dmTranscript": "DM-transcriptie",
-    "dmTranscriptDesc": "Stuur een kopie van de transcriptie naar de ticketmaker via DM."
+    "dmTranscriptDesc": "Stuur een kopie van de transcriptie naar de ticketmaker via DM.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Claimen",

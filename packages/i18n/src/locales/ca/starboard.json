@@ -26,7 +26,8 @@
       "original": "Missatge original",
       "stars": "Estrelles",
       "channel": "Canal",
-      "date": "Data"
+      "date": "Data",
+      "author": "Author"
     },
     "noMessages": "Encara no hi ha missatges destacats."
   },

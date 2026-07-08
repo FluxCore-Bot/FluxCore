@@ -1,5 +1,11 @@
 #!/bin/sh
-set -e
+set -eu
+
+: "${PGPASSFILE:?PGPASSFILE must be set}"
+if [ ! -f "$PGPASSFILE" ]; then
+  echo "[$(date)] FATAL: $PGPASSFILE missing — refusing to run backup" >&2
+  exit 2
+fi
 
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 BACKUP_FILE="/backups/fluxcore_${TIMESTAMP}.sql.gz"

@@ -30,8 +30,13 @@ vi.mock("../../../../src/server/shared/discordApi.js", () => ({
   getGuildOwnerId: (...args: unknown[]) => mockGetGuildOwnerId(...args),
 }));
 
+const mockResolveUserPermissions = vi.fn().mockResolvedValue({
+  permissions: new Set(["*"]),
+  isOwner: false,
+  isGuildAdmin: true,
+});
 vi.mock("../../../../src/server/shared/permissions.js", () => ({
-  resolveUserPermissions: vi.fn().mockResolvedValue({ permissions: new Set(["*"]), isOwner: false }),
+  resolveUserPermissions: (...args: unknown[]) => mockResolveUserPermissions(...args),
   hasPermission: vi.fn().mockReturnValue(true),
   invalidatePermissionCache: vi.fn(),
   createDashboardAuditLog: vi.fn().mockResolvedValue(undefined),
@@ -125,6 +130,11 @@ describe("anti-raid routes", () => {
         ...mockSession,
         guilds: [{ id: "guild-1", name: "Test", permissions: "0" }],
       });
+      mockResolveUserPermissions.mockResolvedValueOnce({
+        permissions: new Set(),
+        isOwner: false,
+        isGuildAdmin: false,
+      });
 
       const res = await app.inject({
         method: "GET",
@@ -170,7 +180,7 @@ describe("anti-raid routes", () => {
       );
     });
 
-    it("rejects invalid body fields", async () => {
+    it("strips unknown body fields (additionalProperties: false)", async () => {
       const res = await app.inject({
         method: "PUT",
         url: "/api/guilds/guild-1/antiraid-config",
@@ -180,7 +190,14 @@ describe("anti-raid routes", () => {
         },
       });
 
-      expect(res.statusCode).toBe(400);
+      // Fastify's default AJV config uses `removeAdditional`, so with
+      // `additionalProperties: false` the unknown field is stripped rather than
+      // rejected. The request still succeeds, but the bogus field must never be
+      // forwarded to the persistence layer.
+      expect(res.statusCode).toBe(200);
+      expect(mockUpsertAntiRaidConfig).toHaveBeenCalledTimes(1);
+      const forwarded = mockUpsertAntiRaidConfig.mock.calls[0][1] as Record<string, unknown>;
+      expect(forwarded).not.toHaveProperty("invalidField");
     });
 
     it("rejects invalid action values", async () => {
@@ -200,6 +217,11 @@ describe("anti-raid routes", () => {
       mockGetSession.mockResolvedValueOnce({
         ...mockSession,
         guilds: [{ id: "guild-1", name: "Test", permissions: "0" }],
+      });
+      mockResolveUserPermissions.mockResolvedValueOnce({
+        permissions: new Set(),
+        isOwner: false,
+        isGuildAdmin: false,
       });
 
       const res = await app.inject({

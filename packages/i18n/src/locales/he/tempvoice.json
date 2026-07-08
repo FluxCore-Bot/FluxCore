@@ -15,7 +15,8 @@
     "saving": "שומר...",
     "cancel": "ביטול",
     "delete": "מחק",
-    "edit": "ערוך"
+    "edit": "ערוך",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "אין תצורות עדיין",
@@ -26,5 +27,12 @@
     "updated": "התצורה עודכנה",
     "created": "התצורה נוצרה",
     "removed": "התצורה הוסרה"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

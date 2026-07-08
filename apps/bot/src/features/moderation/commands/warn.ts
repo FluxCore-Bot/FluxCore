@@ -10,6 +10,7 @@ import {
   errorEmbed,
   warnEmbed,
   checkPermissions,
+  checkBotPermissions,
   isAboveTarget,
   logger,
 } from "@fluxcore/utils";
@@ -40,6 +41,9 @@ const command: Command = {
   async execute(interaction: ChatInputCommandInteraction) {
     if (
       !(await checkPermissions(interaction, [
+        PermissionFlagsBits.ManageMessages,
+      ])) ||
+      !(await checkBotPermissions(interaction, [
         PermissionFlagsBits.ManageMessages,
       ]))
     ) {

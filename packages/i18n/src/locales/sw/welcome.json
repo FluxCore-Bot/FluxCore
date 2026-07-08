@@ -50,7 +50,10 @@
     "footer": "Kijachini",
     "thumbnail": "URL ya Kijipicha",
     "image": "URL ya Picha",
-    "variables": "Vigezo:"
+    "variables": "Vigezo:",
+    "titlePlaceholder": "Welcome to {server}!",
+    "descriptionPlaceholder": "Hey {user}, welcome to **{server}**! You are member #{membercount}.",
+    "footerPlaceholder": "Footer text..."
   },
   "saveChanges": "Hifadhi Mabadiliko",
   "saving": "Inahifadhi...",
@@ -61,5 +64,80 @@
     "saveFailed": "Imeshindwa kuhifadhi usanidi",
     "testSent": "Ujumbe wa majaribio utatumwa kwa <#{{channelId}}>",
     "testFailed": "Imeshindwa kutuma ujumbe wa majaribio"
+  },
+  "defaults": {
+    "welcomeSubtitle": "Welcome to {server}!",
+    "farewellSubtitle": "Goodbye, {user.name}!"
+  },
+  "imageEditor": {
+    "livePreview": "Live Preview",
+    "previewAlt": "{{type}} image preview",
+    "generatingPreview": "Generating preview...",
+    "previewPlaceholder": "Preview will appear here",
+    "template": "Template",
+    "background": {
+      "title": "Background",
+      "solidColor": "Solid Color",
+      "gradient": "Gradient",
+      "customImage": "Custom Image",
+      "colorPicker": "Background color picker",
+      "colorHex": "Background color hex value",
+      "uploadImage": "Upload background image",
+      "upload": "Upload Image",
+      "uploading": "Uploading...",
+      "set": "Background set",
+      "fileHint": "JPG, PNG, or WebP. Max 3 MB."
+    },
+    "overlay": {
+      "title": "Overlay Darkening",
+      "opacity": "Opacity"
+    },
+    "avatar": {
+      "title": "Avatar",
+      "shape": "Shape",
+      "shapeCircle": "Circle",
+      "shapeRounded": "Rounded Square",
+      "shapeSquare": "Square",
+      "borderWidth": "Border Width",
+      "borderColor": "Border Color",
+      "borderColorPicker": "Avatar border color picker",
+      "borderColorHex": "Avatar border color hex value",
+      "glowEffect": "Glow Effect",
+      "glowColorPicker": "Avatar glow color picker",
+      "glowColorHex": "Avatar glow color hex value"
+    },
+    "typography": {
+      "title": "Typography",
+      "titleSection": "Title (Username)",
+      "subtitleSection": "Subtitle (Custom Text)",
+      "font": "Font",
+      "color": "Color",
+      "size": "Size",
+      "text": "Text",
+      "titleColorPicker": "Title color picker",
+      "titleColorHex": "Title color hex value",
+      "subtitleColorPicker": "Subtitle color picker",
+      "subtitleColorHex": "Subtitle color hex value",
+      "subtitlePlaceholder": "Welcome to {server}!",
+      "subtitleVariables": "Variables: {user.name} {server} {membercount}"
+    },
+    "accent": {
+      "title": "Accent Color",
+      "colorPicker": "Accent color picker",
+      "colorHex": "Accent color hex value",
+      "hint": "Used for decorations, borders, and template accents."
+    },
+    "delivery": {
+      "title": "Delivery Mode",
+      "with": "With embed message",
+      "before": "Before embed message",
+      "only": "Image only (no embed)"
+    },
+    "toast": {
+      "imageTooLarge": "Background image must be under 3 MB",
+      "uploaded": "Background uploaded",
+      "uploadFailed": "Failed to upload background",
+      "previewFailed": "Failed to generate preview"
+    }
   }
 }

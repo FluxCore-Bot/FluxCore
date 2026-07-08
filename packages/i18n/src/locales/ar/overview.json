@@ -8,5 +8,26 @@
     "successRate": "معدل النجاح"
   },
   "errorsInLast24h": "{{count}} خطأ في آخر 24 ساعة",
-  "errorsInLast24h_other": "{{count}} أخطاء في آخر 24 ساعة"
+  "errorsInLast24h_other": "{{count}} أخطاء في آخر 24 ساعة",
+  "recentActivity": {
+    "title": "النشاط الأخير",
+    "viewAllLogs": "عرض كل السجلات",
+    "empty": "لم يُسجَّل أي نشاط بعد",
+    "timeAgo": {
+      "justNow": "الآن",
+      "minutes": "قبل {{count}} دقيقة",
+      "hours": "قبل {{count}} ساعة",
+      "days": "قبل {{count}} يوم"
+    }
+  },
+  "eventDistribution": {
+    "title": "أبرز الأحداث",
+    "empty": "لا توجد بيانات أحداث بعد",
+    "executions": "{{count}} عملية تنفيذ"
+  },
+  "executionChart": {
+    "title": "اتجاه التنفيذ",
+    "success": "ناجح",
+    "errors": "أخطاء"
+  }
 }

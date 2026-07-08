@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Handle, Position, type NodeProps } from "@xyflow/react";
 import { Icon } from "../../../../shared/components/Icon";
 
@@ -33,6 +34,7 @@ function getBorderClass(
 }
 
 function DelayNodeComponent({ data, selected }: NodeProps) {
+  const { t } = useTranslation("rules");
   const { delayMs, label, validationState } = data as DelayNodeData;
 
   return (
@@ -41,9 +43,11 @@ function DelayNodeComponent({ data, selected }: NodeProps) {
         id="target"
         type="target"
         position={Position.Left}
-        className="!h-3 !w-3 !border-2 !border-text-muted !bg-surface-high"
+        className="!h-4 !w-4 !border-2 !border-text-muted !bg-surface-high"
       />
       <div
+        role="group"
+        aria-label={t("nodes.ariaDelay", { label })}
         className={`min-w-[160px] max-w-[220px] rounded-lg border-2 px-4 py-3 transition-all ${getBorderClass(selected, validationState)}`}
       >
         <div className="mb-1.5 flex items-center gap-2">
@@ -51,19 +55,19 @@ function DelayNodeComponent({ data, selected }: NodeProps) {
             <Icon name="schedule" size={14} className="text-text-muted" />
           </div>
           <span className="section-label text-text-muted">
-            Delay
+            {t("nodes.delay")}
           </span>
         </div>
         <p className="text-sm font-medium text-text">{label}</p>
         <p className="mt-0.5 text-xs text-text-muted">
-          Wait {formatDelay(delayMs)}
+          {t("nodes.wait", { duration: formatDelay(delayMs) })}
         </p>
       </div>
       <Handle
         id="source"
         type="source"
         position={Position.Right}
-        className="!h-3 !w-3 !border-2 !border-text-muted/50 !bg-surface-high"
+        className="!h-4 !w-4 !border-2 !border-text-muted/50 !bg-surface-high"
       />
     </>
   );

@@ -4,9 +4,24 @@ services:
       context: .
       target: production-bot
     environment:
-      DATABASE_URL: postgresql://fluxcore:${POSTGRES_PASSWORD}@postgres:5432/fluxcore
-    env_file:
-      - .env.prod
+      NODE_ENV: production
+      DISCORD_TOKEN_FILE: /run/secrets/discord_token
+      DASHBOARD_SESSION_SECRET_FILE: /run/secrets/dashboard_session_secret
+      BOT_SYNC_SECRET_FILE: /run/secrets/bot_sync_secret
+      LAVALINK_PASSWORD_FILE: /run/secrets/lavalink_password
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      CLIENT_ID: ${CLIENT_ID:?CLIENT_ID required}
+      LAVALINK_HOST: lavalink
+      LAVALINK_PORT: "2333"
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: fluxcore
+      POSTGRES_USER: fluxcore
+    secrets:
+      - discord_token
+      - dashboard_session_secret
+      - bot_sync_secret
+      - lavalink_password
+      - postgres_password
     depends_on:
       postgres:
         condition: service_healthy
@@ -29,9 +44,14 @@ services:
       - ./lavalink/application.yml:/opt/Lavalink/application.yml:ro
     environment:
       - _JAVA_OPTIONS=-Xmx256m
-      - LAVALINK_SERVER_PASSWORD=${LAVALINK_PASSWORD:-youshallnotpass}
+    secrets:
+      - lavalink_password
+    entrypoint:
+      - sh
+      - -c
+      - 'export LAVALINK_SERVER_PASSWORD=$(cat /run/secrets/lavalink_password) && exec /opt/Lavalink/launch.sh'
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- --header='Authorization: youshallnotpass' http://localhost:2333/version || exit 1"]
+      test: ["CMD-SHELL", "wget -qO- --header=\"Authorization: $(cat /run/secrets/lavalink_password)\" http://localhost:2333/version || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -51,9 +71,24 @@ services:
       context: .
       target: production-dashboard
     environment:
-      DATABASE_URL: postgresql://fluxcore:${POSTGRES_PASSWORD}@postgres:5432/fluxcore
-    env_file:
-      - .env.prod
+      NODE_ENV: production
+      DISCORD_TOKEN_FILE: /run/secrets/discord_token
+      DASHBOARD_CLIENT_SECRET_FILE: /run/secrets/dashboard_client_secret
+      DASHBOARD_SESSION_SECRET_FILE: /run/secrets/dashboard_session_secret
+      BOT_SYNC_SECRET_FILE: /run/secrets/bot_sync_secret
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      LAVALINK_PASSWORD_FILE: /run/secrets/lavalink_password
+      CLIENT_ID: ${CLIENT_ID:?CLIENT_ID required}
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: fluxcore
+      POSTGRES_USER: fluxcore
+    secrets:
+      - discord_token
+      - dashboard_client_secret
+      - dashboard_session_secret
+      - bot_sync_secret
+      - postgres_password
+      - lavalink_password
     depends_on:
       postgres:
         condition: service_healthy
@@ -73,8 +108,10 @@ services:
     image: postgres:18-alpine
     environment:
       POSTGRES_USER: fluxcore
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
       POSTGRES_DB: fluxcore
+    secrets:
+      - postgres_password
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -120,16 +157,24 @@ services:
     environment:
       PGHOST: postgres
       PGUSER: fluxcore
-      PGPASSWORD: ${POSTGRES_PASSWORD}
       PGDATABASE: fluxcore
+      PGPASSFILE: /home/postgres/.pgpass
       BACKUP_RETENTION_DAYS: ${BACKUP_RETENTION_DAYS:-7}
+      BACKUP_SCHEDULE: ${BACKUP_SCHEDULE:-0 2 * * *}
     volumes:
       - ./docker/backup.sh:/backup.sh:ro
       - backups:/backups
+    secrets:
+      - postgres_password
     entrypoint: ["/bin/sh", "-c"]
     command:
       - |
-        echo "${BACKUP_SCHEDULE:-0 2 * * *} /backup.sh" | crontab -
+        set -eu
+        # Build .pgpass from the mounted secret (mode 0600 required by libpq)
+        mkdir -p /home/postgres
+        printf '%s:%s:%s:%s:%s\n' "$$PGHOST" 5432 "$$PGDATABASE" "$$PGUSER" "$$(cat /run/secrets/postgres_password)" > "$$PGPASSFILE"
+        chmod 600 "$$PGPASSFILE"
+        echo "$$BACKUP_SCHEDULE /backup.sh" | crontab -
         crond -f -l 2
     depends_on:
       postgres:
@@ -152,3 +197,17 @@ volumes:
   caddy_data:
   caddy_config:
   backups:
+
+secrets:
+  discord_token:
+    file: ./secrets/discord_token
+  dashboard_client_secret:
+    file: ./secrets/dashboard_client_secret
+  dashboard_session_secret:
+    file: ./secrets/dashboard_session_secret
+  bot_sync_secret:
+    file: ./secrets/bot_sync_secret
+  lavalink_password:
+    file: ./secrets/lavalink_password
+  postgres_password:
+    file: ./secrets/postgres_password

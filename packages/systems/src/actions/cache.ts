@@ -63,11 +63,30 @@ export function invalidateGuild(guildId: string): void {
 }
 
 export async function reloadGuild(guildId: string): Promise<void> {
-  // Load new rules first, then swap to minimize the window where cache is empty
   const rules = await getRulesByGuild(guildId);
-  invalidateGuild(guildId);
+
+  // Build the new per-event map locally first; only after it is fully
+  // populated do we atomically swap it into the global cache. This
+  // guarantees that any concurrent getRulesForEvent() call observes
+  // EITHER the complete previous rule set OR the complete new one — never
+  // an empty intermediate state.
+  const newGuildMap = new Map<string, ActionRule[]>();
   for (const rule of rules) {
-    addToInternalCache(rule);
+    let bucket = newGuildMap.get(rule.eventType);
+    if (!bucket) {
+      bucket = [];
+      newGuildMap.set(rule.eventType, bucket);
+    }
+    bucket.push(rule);
+  }
+  for (const bucket of newGuildMap.values()) {
+    bucket.sort((a, b) => b.priority - a.priority);
+  }
+
+  if (newGuildMap.size === 0) {
+    ruleCache.delete(guildId);
+  } else {
+    ruleCache.set(guildId, newGuildMap);
   }
 }
 

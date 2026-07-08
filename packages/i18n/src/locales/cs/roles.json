@@ -1,21 +1,113 @@
 {
   "title": "Panely rolí",
   "subtitle": "Vytvářejte panely pro samopřiřazení rolí pomocí tlačítek, rozbalovacích nabídek nebo reakcí.",
-  "stats": { "totalPanels": "Celkem panelů", "deployed": "Nasazeno", "totalRoles": "Celkem rolí" },
-  "tabs": { "panels": "Panely", "preview": "Náhled" },
-  "table": { "name": "Název", "type": "Typ", "mode": "Režim", "roles": "Role", "status": "Stav" },
-  "panelTypes": { "reaction": "Reakce", "button": "Tlačítko", "dropdown": "Rozbalovací nabídka" },
-  "panelModes": { "toggle": "Přepínání", "unique": "Unikátní", "verify": "Ověření" },
-  "panelModeDescriptions": { "toggle": "Přepínání (přidat/odebrat)", "unique": "Unikátní (jen jedna najednou)", "verify": "Ověření (pouze přidání)" },
-  "status": { "deployed": "Nasazen", "draft": "Koncept" },
-  "dialog": { "createPanel": "Vytvořit panel", "editPanel": "Upravit panel" },
-  "panelList": { "title": "Všechny panely" },
-  "form": { "name": "Název", "namePlaceholder": "např. Barevné role", "type": "Typ", "mode": "Režim", "channel": "Kanál", "channelPlaceholder": "Vyberte kanál", "minRoles": "Min. rolí", "minRolesPlaceholder": "0", "maxRoles": "Max. rolí", "maxRolesPlaceholder": "Vše", "embedSection": "Embed", "embedTitle": "Nadpis", "embedTitlePlaceholder": "Nadpis panelu (výchozí je název panelu)", "embedDescription": "Popis", "embedDescriptionPlaceholder": "Text popisu", "rolesCount": "Role ({{count}}/25)", "addRole": "Přidat roli" },
-  "entry": { "role": "Role", "rolePlaceholder": "Vyberte roli", "label": "Štítek", "labelPlaceholder": "Text tlačítka", "emoji": "Emoji", "emojiPlaceholder": "např. star", "description": "Popis", "descriptionPlaceholder": "Popis možnosti", "style": "Styl" },
-  "buttonStyles": { "primary": "Primární", "secondary": "Sekundární", "success": "Úspěch", "danger": "Nebezpečí" },
-  "actions": { "create": "Vytvořit", "update": "Aktualizovat", "cancel": "Zrušit", "deploy": "Nasadit", "delete": "Smazat", "addEntry": "Přidat položku", "removeEntry": "Odebrat položku" },
-  "preview": { "title": "Živý náhled", "description": "Podívejte se, jak budou vaše panely vypadat v Discordu.", "selectRoles": "Vyberte role...", "noPreview": "Žádné panely k náhledu." },
+  "stats": {
+    "totalPanels": "Celkem panelů",
+    "deployed": "Nasazeno",
+    "totalRoles": "Celkem rolí"
+  },
+  "tabs": {
+    "panels": "Panely",
+    "preview": "Náhled"
+  },
+  "table": {
+    "name": "Název",
+    "type": "Typ",
+    "mode": "Režim",
+    "roles": "Role",
+    "status": "Stav"
+  },
+  "panelTypes": {
+    "reaction": "Reakce",
+    "button": "Tlačítko",
+    "dropdown": "Rozbalovací nabídka"
+  },
+  "panelModes": {
+    "toggle": "Přepínání",
+    "unique": "Unikátní",
+    "verify": "Ověření"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Přepínání (přidat/odebrat)",
+    "unique": "Unikátní (jen jedna najednou)",
+    "verify": "Ověření (pouze přidání)"
+  },
+  "status": {
+    "deployed": "Nasazen",
+    "draft": "Koncept"
+  },
+  "dialog": {
+    "createPanel": "Vytvořit panel",
+    "editPanel": "Upravit panel"
+  },
+  "panelList": {
+    "title": "Všechny panely"
+  },
+  "form": {
+    "name": "Název",
+    "namePlaceholder": "např. Barevné role",
+    "type": "Typ",
+    "mode": "Režim",
+    "channel": "Kanál",
+    "channelPlaceholder": "Vyberte kanál",
+    "minRoles": "Min. rolí",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Max. rolí",
+    "maxRolesPlaceholder": "Vše",
+    "embedSection": "Embed",
+    "embedTitle": "Nadpis",
+    "embedTitlePlaceholder": "Nadpis panelu (výchozí je název panelu)",
+    "embedDescription": "Popis",
+    "embedDescriptionPlaceholder": "Text popisu",
+    "rolesCount": "Role ({{count}}/25)",
+    "addRole": "Přidat roli"
+  },
+  "entry": {
+    "role": "Role",
+    "rolePlaceholder": "Vyberte roli",
+    "label": "Štítek",
+    "labelPlaceholder": "Text tlačítka",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "např. star",
+    "description": "Popis",
+    "descriptionPlaceholder": "Popis možnosti",
+    "style": "Styl"
+  },
+  "buttonStyles": {
+    "primary": "Primární",
+    "secondary": "Sekundární",
+    "success": "Úspěch",
+    "danger": "Nebezpečí"
+  },
+  "actions": {
+    "create": "Vytvořit",
+    "update": "Aktualizovat",
+    "cancel": "Zrušit",
+    "deploy": "Nasadit",
+    "delete": "Smazat",
+    "addEntry": "Přidat položku",
+    "removeEntry": "Odebrat položku"
+  },
+  "preview": {
+    "title": "Živý náhled",
+    "description": "Podívejte se, jak budou vaše panely vypadat v Discordu.",
+    "selectRoles": "Vyberte role...",
+    "noPreview": "Žádné panely k náhledu."
+  },
   "empty": "Zatím nebyly vytvořeny žádné panely rolí. Klikněte na \"Vytvořit panel\" a začněte.",
-  "toast": { "created": "Panel vytvořen", "createFailed": "Nepodařilo se vytvořit panel", "updated": "Panel aktualizován", "updateFailed": "Nepodařilo se aktualizovat panel", "deleted": "Panel smazán", "deleteFailed": "Nepodařilo se smazat panel", "deployed": "Panel rolí nasazen do kanálu", "deployFailed": "Nepodařilo se odeslat panel", "nameRequired": "Název panelu je povinný", "channelRequired": "Kanál je povinný", "maxRolesReached": "Maximálně 25 rolí na panel" },
-  "loading": "Načítání panelů..."
+  "toast": {
+    "created": "Panel vytvořen",
+    "createFailed": "Nepodařilo se vytvořit panel",
+    "updated": "Panel aktualizován",
+    "updateFailed": "Nepodařilo se aktualizovat panel",
+    "deleted": "Panel smazán",
+    "deleteFailed": "Nepodařilo se smazat panel",
+    "deployed": "Panel rolí nasazen do kanálu",
+    "deployFailed": "Nepodařilo se odeslat panel",
+    "nameRequired": "Název panelu je povinný",
+    "channelRequired": "Kanál je povinný",
+    "maxRolesReached": "Maximálně 25 rolí na panel"
+  },
+  "loading": "Načítání panelů...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

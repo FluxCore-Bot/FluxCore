@@ -52,6 +52,7 @@
     "albumName": "एल्बम का नाम",
     "albumNamePlaceholder": "मेरी प्लेलिस्ट",
     "deleteAlbum": "हटाएं",
-    "atMax": "आप एल्बम की अधिकतम संख्या तक पहुंच गए हैं।"
+    "atMax": "आप एल्बम की अधिकतम संख्या तक पहुंच गए हैं।",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

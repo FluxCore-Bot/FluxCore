@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
@@ -20,55 +20,80 @@ import { Label } from "../../../shared/ui/label";
 import { Card } from "../../../shared/ui/card";
 import { Switch } from "../../../shared/ui/switch";
 import { Separator } from "../../../shared/ui/separator";
-import { Textarea } from "../../../shared/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
+import { FormSkeleton } from "../../../shared/ui/skeletons";
+import {
+  VariableEditor,
+  VariableBrowser,
+  DiscordMessagePreview,
+  usePreviewContext,
+  welcomeVariables,
+} from "../../../shared/ui/variable-field";
+import type { PreviewRealData } from "../../../shared/ui/variable-field";
 import type { TFunction } from "i18next";
 
-const DEFAULT_WELCOME_IMAGE: WelcomeImageSettings = {
-  template: "starter",
-  background: { type: "color", color: "#1a1a2e" },
-  overlay: { enabled: true, color: "#000000", opacity: 0.5 },
-  avatar: { shape: "circle", borderColor: "#a3a6ff", borderWidth: 4, glowEnabled: false, glowColor: "#a3a6ff" },
-  title: { font: "SpaceGrotesk", color: "#ffffff", size: 36 },
-  subtitle: { font: "Inter", color: "#a3a6ff", size: 20, text: "Welcome to {server}!" },
-  accentColor: "#a3a6ff",
-  sendMode: "with",
-};
+function createDefaultWelcomeImage(t: TFunction<"welcome">): WelcomeImageSettings {
+  return {
+    template: "starter",
+    background: { type: "color", color: "#1a1a2e" },
+    overlay: { enabled: true, color: "#000000", opacity: 0.5 },
+    avatar: { shape: "circle", borderColor: "#a3a6ff", borderWidth: 4, glowEnabled: false, glowColor: "#a3a6ff" },
+    title: { font: "SpaceGrotesk", color: "#ffffff", size: 36 },
+    subtitle: { font: "Inter", color: "#a3a6ff", size: 20, text: t("defaults.welcomeSubtitle") },
+    accentColor: "#a3a6ff",
+    sendMode: "with",
+  };
+}
 
-const DEFAULT_FAREWELL_IMAGE: WelcomeImageSettings = {
-  ...DEFAULT_WELCOME_IMAGE,
-  subtitle: { font: "Inter", color: "#6b7280", size: 20, text: "Goodbye, {user.name}!" },
-  accentColor: "#6b7280",
-};
+function createDefaultFarewellImage(t: TFunction<"welcome">): WelcomeImageSettings {
+  return {
+    ...createDefaultWelcomeImage(t),
+    subtitle: { font: "Inter", color: "#6b7280", size: 20, text: t("defaults.farewellSubtitle") },
+    accentColor: "#6b7280",
+  };
+}
 
 function EmbedEditor({
   value,
   onChange,
+  real,
   t,
 }: {
   value: EmbedConfig;
   onChange: (config: EmbedConfig) => void;
+  real: PreviewRealData;
   t: TFunction<"welcome">;
 }) {
   return (
     <div className="space-y-4">
       <div>
         <Label htmlFor="embed-title">{t("embed.title")}</Label>
-        <Input
+        <VariableEditor
           id="embed-title"
-          placeholder="Welcome to {server}!"
           value={value.title ?? ""}
-          onChange={(e) => onChange({ ...value, title: e.target.value || undefined })}
+          onChange={(v) => onChange({ ...value, title: v || undefined })}
+          variables={welcomeVariables}
+          placeholder={t("embed.titlePlaceholder")}
+          maxLength={256}
         />
       </div>
       <div>
-        <Label htmlFor="embed-description">{t("embed.description")}</Label>
-        <Textarea
+        <div className="flex items-center justify-between">
+          <Label htmlFor="embed-description">{t("embed.description")}</Label>
+          <VariableBrowser
+            variables={welcomeVariables}
+            onInsert={(tok) => onChange({ ...value, description: (value.description ?? "") + tok })}
+          />
+        </div>
+        <VariableEditor
           id="embed-description"
-          placeholder="Hey {user}, welcome to **{server}**! You are member #{membercount}."
-          value={value.description ?? ""}
-          onChange={(e) => onChange({ ...value, description: e.target.value || undefined })}
+          multiline
           rows={3}
+          value={value.description ?? ""}
+          onChange={(v) => onChange({ ...value, description: v || undefined })}
+          variables={welcomeVariables}
+          placeholder={t("embed.descriptionPlaceholder")}
+          maxLength={4096}
         />
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -88,22 +113,26 @@ function EmbedEditor({
         </div>
         <div>
           <Label htmlFor="embed-footer">{t("embed.footer")}</Label>
-          <Input
+          <VariableEditor
             id="embed-footer"
-            placeholder="Footer text..."
             value={value.footer ?? ""}
-            onChange={(e) => onChange({ ...value, footer: e.target.value || undefined })}
+            onChange={(v) => onChange({ ...value, footer: v || undefined })}
+            variables={welcomeVariables}
+            placeholder={t("embed.footerPlaceholder")}
+            maxLength={2048}
           />
         </div>
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <Label htmlFor="embed-thumbnail">{t("embed.thumbnail")}</Label>
-          <Input
+          <VariableEditor
             id="embed-thumbnail"
-            placeholder="{user.avatar}"
             value={value.thumbnail ?? ""}
-            onChange={(e) => onChange({ ...value, thumbnail: e.target.value || undefined })}
+            onChange={(v) => onChange({ ...value, thumbnail: v || undefined })}
+            variables={welcomeVariables}
+            placeholder="{user.avatar}"
+            maxLength={2048}
           />
         </div>
         <div>
@@ -116,10 +145,17 @@ function EmbedEditor({
           />
         </div>
       </div>
-      <p className="text-xs text-text-muted">
-        {t("embed.variables")} {"{user}"} {"{user.tag}"} {"{user.name}"} {"{user.id}"} {"{user.avatar}"}{" "}
-        {"{server}"} {"{server.id}"} {"{membercount}"} {"{server.icon}"}
-      </p>
+      <DiscordMessagePreview
+        variables={welcomeVariables}
+        real={real}
+        embed={{
+          title: value.title,
+          description: value.description,
+          footer: value.footer,
+          thumbnail: value.thumbnail,
+          color: value.color,
+        }}
+      />
     </div>
   );
 }
@@ -130,6 +166,10 @@ export function WelcomePage() {
   const { data: config, isLoading } = useWelcomeConfig(guildId);
   const updateConfig = useUpdateWelcomeConfig(guildId);
   const testWelcome = useTestWelcome(guildId);
+  const real = usePreviewContext(guildId);
+
+  const defaultWelcomeImage = useMemo(() => createDefaultWelcomeImage(t), [t]);
+  const defaultFarewellImage = useMemo(() => createDefaultFarewellImage(t), [t]);
 
   // Text message state
   const [welcomeEnabled, setWelcomeEnabled] = useState(false);
@@ -144,9 +184,9 @@ export function WelcomePage() {
 
   // Image state
   const [welcomeImageEnabled, setWelcomeImageEnabled] = useState(false);
-  const [welcomeImageConfig, setWelcomeImageConfig] = useState<WelcomeImageSettings>(DEFAULT_WELCOME_IMAGE);
+  const [welcomeImageConfig, setWelcomeImageConfig] = useState<WelcomeImageSettings>(defaultWelcomeImage);
   const [farewellImageEnabled, setFarewellImageEnabled] = useState(false);
-  const [farewellImageConfig, setFarewellImageConfig] = useState<WelcomeImageSettings>(DEFAULT_FAREWELL_IMAGE);
+  const [farewellImageConfig, setFarewellImageConfig] = useState<WelcomeImageSettings>(defaultFarewellImage);
 
   // Sync from server
   useEffect(() => {
@@ -161,11 +201,11 @@ export function WelcomePage() {
       setDmMessage(config.dmMessage);
       setAutoRoleIds(config.autoRoleIds);
       setWelcomeImageEnabled(config.welcomeImageEnabled);
-      setWelcomeImageConfig(config.welcomeImageConfig ?? DEFAULT_WELCOME_IMAGE);
+      setWelcomeImageConfig(config.welcomeImageConfig ?? defaultWelcomeImage);
       setFarewellImageEnabled(config.farewellImageEnabled);
-      setFarewellImageConfig(config.farewellImageConfig ?? DEFAULT_FAREWELL_IMAGE);
+      setFarewellImageConfig(config.farewellImageConfig ?? defaultFarewellImage);
     }
-  }, [config]);
+  }, [config, defaultWelcomeImage, defaultFarewellImage]);
 
   function handleSave() {
     updateConfig.mutate(
@@ -208,7 +248,7 @@ export function WelcomePage() {
           title={t("title")}
           subtitle={t("loadingSubtitle")}
         />
-        <p className="text-text-muted">{t("common:actions.loading")}</p>
+        <FormSkeleton />
       </div>
     );
   }
@@ -259,7 +299,7 @@ export function WelcomePage() {
             </div>
 
             <h4 className="mb-3 font-label text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
-            <EmbedEditor value={welcomeMessage} onChange={setWelcomeMessage} t={t} />
+            <EmbedEditor value={welcomeMessage} onChange={setWelcomeMessage} real={real} t={t} />
           </Card>
         </TabsContent>
 
@@ -327,7 +367,7 @@ export function WelcomePage() {
             </div>
 
             <h4 className="mb-3 font-label text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
-            <EmbedEditor value={farewellMessage} onChange={setFarewellMessage} t={t} />
+            <EmbedEditor value={farewellMessage} onChange={setFarewellMessage} real={real} t={t} />
           </Card>
         </TabsContent>
 
@@ -382,7 +422,7 @@ export function WelcomePage() {
             <Separator className="mb-6" />
 
             <h4 className="mb-3 font-label text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
-            <EmbedEditor value={dmMessage} onChange={setDmMessage} t={t} />
+            <EmbedEditor value={dmMessage} onChange={setDmMessage} real={real} t={t} />
           </Card>
         </TabsContent>
 

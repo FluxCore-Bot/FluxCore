@@ -79,7 +79,9 @@
       "description": "Notikumu žurnāli parādīsies šeit, kad tiks konfigurēta reģistrācija un notikumi sāks parādīties."
     },
     "config": {
-      "selectChannel": "Atlasiet žurnāla kanālu"
+      "selectChannel": "Atlasiet žurnāla kanālu",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

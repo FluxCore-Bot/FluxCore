@@ -79,7 +79,9 @@
     "conditions": "Feltételek",
     "duration": "Időtartam",
     "reason": "Ok",
-    "language": "Nyelv"
+    "language": "Nyelv",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Csatorna kiválasztása...",
@@ -98,7 +100,6 @@
     "showingPage": "{{page}}. oldal / {{total}} (összesen {{count}})"
   },
   "header": {
-    "notifications": "Értesítések",
     "settings": "Beállítások",
     "logout": "Kijelentkezés",
     "toggleSidebar": "Oldalsáv váltása",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "Oldalsáv bezárása",
     "addToServer": "Hozzáadás a szerverhez",
-    "docs": "Dokumentáció",
-    "support": "Támogatás",
     "backToServers": "Vissza a szerverekhez"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "óra",
     "days": "nap",
     "ago": "{{time}} ezelőtt",
-    "in": "{{time}} múlva"
+    "in": "{{time}} múlva",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Biztos benne?",
@@ -137,5 +137,9 @@
     "error": "Hiba történt",
     "menuOpen": "A menü nyitva van",
     "menuClosed": "A menü zárva van"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

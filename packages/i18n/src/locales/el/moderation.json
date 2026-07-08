@@ -25,7 +25,8 @@
     "date": "Ημερομηνία",
     "actions": "Ενέργειες",
     "noCases": "Δεν βρέθηκαν περιπτώσεις.",
-    "noReason": "Χωρίς αιτιολογία"
+    "noReason": "Χωρίς αιτιολογία",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "Φιλτράρισμα κατά ID χρήστη...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Αποστολή προσωπικού μηνύματος στους χρήστες όταν τιμωρούνται (ban, kick, timeout).",
     "modLogChannel": "Κανάλι αρχείου διαχείρισης",
     "modLogChannelDesc": "Το κανάλι όπου καταγράφονται οι ενέργειες διαχείρισης."
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

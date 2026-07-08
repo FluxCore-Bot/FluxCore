@@ -25,7 +25,8 @@
     "date": "Дата",
     "actions": "Дії",
     "noCases": "Випадків не знайдено.",
-    "noReason": "Причина не вказана"
+    "noReason": "Причина не вказана",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "Фільтр за ID користувача...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Надсилати особисте повідомлення користувачам при покаранні (бан, кік, тайм-аут).",
     "modLogChannel": "Канал логу модерації",
     "modLogChannelDesc": "Канал, куди записуються дії модерації."
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

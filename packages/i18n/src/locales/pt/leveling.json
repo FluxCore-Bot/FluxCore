@@ -116,5 +116,7 @@
   "formatters": {
     "voiceTime": "{{hours}}h {{minutes}}m",
     "voiceTimeMinutesOnly": "{{minutes}}m"
-  }
+  },
+  "confirmRemoveReward": "Tem certeza de que deseja remover esta recompensa de cargo? Esta ação não pode ser desfeita.",
+  "confirmRemoveMultiplier": "Tem certeza de que deseja remover este multiplicador de XP? Esta ação não pode ser desfeita."
 }

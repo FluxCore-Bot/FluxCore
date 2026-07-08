@@ -1,72 +1,75 @@
 {
-  "title": "[NEEDS TRANSLATION] Warnings",
-  "subtitle": "[NEEDS TRANSLATION] Track and manage member warnings with automatic escalation.",
+  "title": "وارننگز",
+  "subtitle": "خودکار ایسکیلیشن کے ساتھ ممبر وارننگز کو ٹریک اور منظم کریں۔",
   "stats": {
-    "totalWarnings": "[NEEDS TRANSLATION] Total Warnings",
-    "escalationRules": "[NEEDS TRANSLATION] Escalation Rules",
-    "dmOnWarn": "[NEEDS TRANSLATION] DM on Warn"
+    "totalWarnings": "کل وارننگز",
+    "escalationRules": "ایسکیلیشن رولز",
+    "dmOnWarn": "وارننگ پر DM"
   },
   "tabs": {
-    "warnings": "[NEEDS TRANSLATION] Warning Log",
-    "escalation": "[NEEDS TRANSLATION] Escalation",
-    "settings": "[NEEDS TRANSLATION] Settings"
+    "warnings": "وارننگ لاگ",
+    "escalation": "ایسکیلیشن",
+    "settings": "ترتیبات"
   },
   "table": {
-    "id": "[NEEDS TRANSLATION] ID",
-    "user": "[NEEDS TRANSLATION] User",
-    "moderator": "[NEEDS TRANSLATION] Moderator",
-    "reason": "[NEEDS TRANSLATION] Reason",
-    "date": "[NEEDS TRANSLATION] Date"
+    "id": "ID",
+    "user": "صارف",
+    "moderator": "ماڈریٹر",
+    "reason": "وجہ",
+    "date": "تاریخ"
   },
   "filter": {
-    "userPlaceholder": "[NEEDS TRANSLATION] Filter by User ID...",
-    "clearAll": "[NEEDS TRANSLATION] Clear All"
+    "userPlaceholder": "صارف ID سے فلٹر کریں...",
+    "clearAll": "سب صاف کریں"
   },
   "pagination": {
-    "previous": "[NEEDS TRANSLATION] Previous",
-    "next": "[NEEDS TRANSLATION] Next",
-    "page": "[NEEDS TRANSLATION] Page {{page}} of {{total}} ({{count}} total)"
+    "previous": "پچھلا",
+    "next": "اگلا",
+    "page": "صفحہ {{page}} از {{total}} ({{count}} کل)"
   },
-  "loading": "[NEEDS TRANSLATION] Loading warnings...",
-  "noWarnings": "[NEEDS TRANSLATION] No warnings found.",
+  "loading": "وارننگز لوڈ ہو رہی ہیں...",
+  "noWarnings": "کوئی وارننگ نہیں ملی۔",
   "toast": {
-    "warningRemoved": "[NEEDS TRANSLATION] Warning removed",
-    "warningsFailed": "[NEEDS TRANSLATION] Failed to delete warning",
-    "enterUserId": "[NEEDS TRANSLATION] Enter a user ID to clear all warnings for that user",
-    "allCleared": "[NEEDS TRANSLATION] All warnings cleared for user",
-    "clearFailed": "[NEEDS TRANSLATION] Failed to clear warnings",
-    "thresholdAdded": "[NEEDS TRANSLATION] Punishment threshold added",
-    "thresholdFailed": "[NEEDS TRANSLATION] Failed to add punishment",
-    "thresholdRemoved": "[NEEDS TRANSLATION] Punishment removed",
-    "removeFailed": "[NEEDS TRANSLATION] Failed to remove punishment",
-    "settingFailed": "[NEEDS TRANSLATION] Failed to update setting",
-    "thresholdInvalid": "[NEEDS TRANSLATION] Threshold must be a positive number"
+    "warningRemoved": "وارننگ ہٹا دی گئی",
+    "warningsFailed": "وارننگ حذف کرنے میں ناکامی",
+    "enterUserId": "اس صارف کی تمام وارننگز صاف کرنے کے لیے ایک صارف ID درج کریں",
+    "allCleared": "صارف کی تمام وارننگز صاف ہو گئیں",
+    "clearFailed": "وارننگز صاف کرنے میں ناکامی",
+    "thresholdAdded": "سزا کی حد شامل ہو گئی",
+    "thresholdFailed": "سزا شامل کرنے میں ناکامی",
+    "thresholdRemoved": "سزا ہٹا دی گئی",
+    "removeFailed": "سزا ہٹانے میں ناکامی",
+    "settingFailed": "ترتیب اپ ڈیٹ کرنے میں ناکامی",
+    "thresholdInvalid": "حد ایک مثبت عدد ہونی چاہیے"
   },
   "escalation": {
-    "title": "[NEEDS TRANSLATION] Punishment Escalation",
-    "description": "[NEEDS TRANSLATION] Configure automatic actions when a user reaches a certain number of warnings.",
-    "threshold": "[NEEDS TRANSLATION] Threshold",
-    "action": "[NEEDS TRANSLATION] Action",
-    "duration": "[NEEDS TRANSLATION] Duration",
-    "noRules": "[NEEDS TRANSLATION] No escalation rules configured.",
-    "addRule": "[NEEDS TRANSLATION] Add Escalation Rule",
-    "addButton": "[NEEDS TRANSLATION] Add Rule",
-    "warnings": "[NEEDS TRANSLATION] {{count}} warnings",
-    "min": "[NEEDS TRANSLATION] {{count}} min",
-    "timeout": "[NEEDS TRANSLATION] Timeout",
-    "kick": "[NEEDS TRANSLATION] Kick",
-    "ban": "[NEEDS TRANSLATION] Ban",
-    "durationLabel": "[NEEDS TRANSLATION] Duration (seconds)",
-    "thresholdPlaceholder": "[NEEDS TRANSLATION] e.g. 3",
-    "durationPlaceholder": "[NEEDS TRANSLATION] e.g. 3600"
+    "title": "سزا کی ایسکیلیشن",
+    "description": "جب کوئی صارف مخصوص تعداد میں وارننگز تک پہنچ جائے تو خودکار اعمال ترتیب دیں۔",
+    "threshold": "حد",
+    "action": "ایکشن",
+    "duration": "دورانیہ",
+    "noRules": "کوئی ایسکیلیشن رول ترتیب نہیں دیا گیا۔",
+    "addRule": "ایسکیلیشن رول شامل کریں",
+    "addButton": "رول شامل کریں",
+    "warnings": "{{count}} وارننگز",
+    "min": "{{count}} منٹ",
+    "timeout": "ٹائم آؤٹ",
+    "kick": "کِک",
+    "ban": "بین",
+    "durationLabel": "دورانیہ (سیکنڈ)",
+    "thresholdPlaceholder": "مثلاً 3",
+    "durationPlaceholder": "مثلاً 3600"
   },
   "settings": {
-    "title": "[NEEDS TRANSLATION] Warning Settings",
-    "dmOnWarn": "[NEEDS TRANSLATION] DM on Warn",
-    "dmOnWarnDesc": "[NEEDS TRANSLATION] Send a direct message to the user when they receive a warning.",
-    "requireReason": "[NEEDS TRANSLATION] Require Reason",
-    "requireReasonDesc": "[NEEDS TRANSLATION] Moderators must provide a reason when issuing a warning.",
-    "maxWarnings": "[NEEDS TRANSLATION] Max Warnings",
-    "maxWarningsDesc": "[NEEDS TRANSLATION] Maximum warnings per user (0 = unlimited)."
-  }
+    "title": "وارننگ ترتیبات",
+    "dmOnWarn": "وارننگ پر DM",
+    "dmOnWarnDesc": "صارف کو وارننگ ملنے پر اسے براہِ راست پیغام بھیجیں۔",
+    "requireReason": "وجہ درکار ہو",
+    "requireReasonDesc": "وارننگ جاری کرتے وقت ماڈریٹرز کو وجہ فراہم کرنی ہوگی۔",
+    "maxWarnings": "زیادہ سے زیادہ وارننگز",
+    "maxWarningsDesc": "فی صارف زیادہ سے زیادہ وارننگز (0 = لامحدود)۔"
+  },
+  "noWarningsDesc": "ابھی تک کوئی وارننگ جاری نہیں کی گئی",
+  "confirmDelete": "کیا آپ واقعی یہ آئٹم حذف کرنا چاہتے ہیں؟ یہ عمل واپس نہیں ہو سکتا۔",
+  "confirmRemoveEscalation": "کیا آپ واقعی یہ ایسکیلیشن رول ہٹانا چاہتے ہیں؟ یہ عمل واپس نہیں ہو سکتا۔"
 }

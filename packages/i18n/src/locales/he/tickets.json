@@ -33,7 +33,8 @@
     "category": "קטגוריית פנייה",
     "create": "צור לוח",
     "edit": "ערוך לוח",
-    "deploy": "פרוס לוח"
+    "deploy": "פרוס לוח",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "ערוץ תמלילים",
@@ -43,7 +44,9 @@
     "closeConfirmation": "אישור סגירה",
     "closeConfirmationDesc": "דרוש אישור לפני סגירת פנייה.",
     "dmTranscript": "תמליל בהודעה פרטית",
-    "dmTranscriptDesc": "שלח עותק של התמליל ליוצר הפנייה בהודעה פרטית."
+    "dmTranscriptDesc": "שלח עותק של התמליל ליוצר הפנייה בהודעה פרטית.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "תפוס",

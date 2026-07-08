@@ -79,7 +79,9 @@
       "description": "Gertaera-erregistroak hemen agertuko dira erregistroa konfiguratuta dagoenean eta gertaerak gertatzen hasten direnean."
     },
     "config": {
-      "selectChannel": "Hautatu erregistro-kanala"
+      "selectChannel": "Hautatu erregistro-kanala",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

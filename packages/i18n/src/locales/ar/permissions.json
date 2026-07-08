@@ -114,5 +114,12 @@
     "creating": "جارٍ الإنشاء...",
     "create": "إنشاء"
   },
-  "loading": "جارٍ تحميل الصلاحيات..."
+  "loading": "جارٍ تحميل الصلاحيات...",
+  "guard": {
+    "deniedTitle": "تم رفض الإذن",
+    "deniedMessage": "ليس لديك إذن للوصول إلى <1>{{module}}</1>.",
+    "requiredPermission": "الإذن المطلوب:",
+    "yourRoles": "رتبك:",
+    "contactOwner": "تواصل مع مالك الخادم لطلب الوصول."
+  }
 }

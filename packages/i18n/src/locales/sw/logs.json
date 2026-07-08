@@ -79,7 +79,9 @@
       "description": "Kumbukumbu za matukio zitaonekana hapa baada ya uwekaji wa kumbukumbu kusanidiwa na matukio kuanza kutokea."
     },
     "config": {
-      "selectChannel": "Chagua chaneli ya kumbukumbu"
+      "selectChannel": "Chagua chaneli ya kumbukumbu",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

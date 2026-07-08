@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 
 // Mock config
 vi.mock("@fluxcore/config", () => ({
@@ -71,6 +71,10 @@ function createMockInteraction({
 }
 
 describe("lockdown command", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
   it("has correct command metadata", () => {
     expect(command.data.name).toBe("lockdown");
     expect(command.category).toBe("Admin");

@@ -45,6 +45,11 @@ const mockDeleteRule = vi.fn().mockResolvedValue(true);
 const mockCountRules = vi.fn().mockResolvedValue(0);
 const mockGetRecentLogs = vi.fn().mockResolvedValue([]);
 const mockNotifyCacheInvalidation = vi.fn().mockResolvedValue(undefined);
+const mockGetLastFiredByGuild = vi.fn().mockResolvedValue(new Map());
+const mockGetAnalytics = vi.fn().mockResolvedValue({});
+const mockGetRuleAnalytics = vi.fn().mockResolvedValue({});
+const mockBulkUpdateRules = vi.fn().mockResolvedValue(0);
+const mockBulkDeleteRules = vi.fn().mockResolvedValue(0);
 vi.mock("@fluxcore/systems/actions/persistence", () => ({
   createRule: (...args: unknown[]) => mockCreateRule(...args),
   updateRule: (...args: unknown[]) => mockUpdateRule(...args),
@@ -53,6 +58,11 @@ vi.mock("@fluxcore/systems/actions/persistence", () => ({
   countRules: (...args: unknown[]) => mockCountRules(...args),
   getRecentLogs: (...args: unknown[]) => mockGetRecentLogs(...args),
   notifyCacheInvalidation: (...args: unknown[]) => mockNotifyCacheInvalidation(...args),
+  getLastFiredByGuild: (...args: unknown[]) => mockGetLastFiredByGuild(...args),
+  getAnalytics: (...args: unknown[]) => mockGetAnalytics(...args),
+  getRuleAnalytics: (...args: unknown[]) => mockGetRuleAnalytics(...args),
+  bulkUpdateRules: (...args: unknown[]) => mockBulkUpdateRules(...args),
+  bulkDeleteRules: (...args: unknown[]) => mockBulkDeleteRules(...args),
 }));
 
 const mockGetGuildSettingsOrDefault = vi.fn().mockReturnValue({

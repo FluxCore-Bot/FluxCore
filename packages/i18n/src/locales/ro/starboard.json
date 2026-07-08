@@ -26,7 +26,8 @@
       "original": "Mesaj Original",
       "stars": "Stele",
       "channel": "Canal",
-      "date": "Dată"
+      "date": "Dată",
+      "author": "Author"
     },
     "noMessages": "Nu există mesaje cu stele încă."
   },

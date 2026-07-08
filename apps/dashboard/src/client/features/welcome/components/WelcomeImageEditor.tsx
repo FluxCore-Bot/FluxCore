@@ -9,7 +9,9 @@ import {
   Trash2,
   Sparkles,
   Eye,
+  Check,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { Label } from "../../../shared/ui/label";
 import { Input } from "../../../shared/ui/input";
@@ -57,6 +59,7 @@ export function WelcomeImageEditor({
   onChange,
   type,
 }: WelcomeImageEditorProps) {
+  const { t } = useTranslation(["welcome", "common"]);
   const { data: templateData } = useWelcomeTemplates();
   const { data: fontData } = useWelcomeFonts();
   const { data: presetData } = useWelcomePresets();
@@ -83,10 +86,11 @@ export function WelcomeImageEditor({
             if (previewUrl) URL.revokeObjectURL(previewUrl);
             setPreviewUrl(url);
           },
+          onError: () => toast.error(t("imageEditor.toast.previewFailed")),
         },
       );
     }, 600);
-  }, [settings, type]);
+  }, [settings, type, t]);
 
   useEffect(() => {
     generatePreview();
@@ -124,7 +128,7 @@ export function WelcomeImageEditor({
     if (!file) return;
 
     if (file.size > 3 * 1024 * 1024) {
-      toast.error("Background image must be under 3 MB");
+      toast.error(t("imageEditor.toast.imageTooLarge"));
       return;
     }
 
@@ -135,9 +139,9 @@ export function WelcomeImageEditor({
           type: "image",
           imageKey: result.key,
         });
-        toast.success("Background uploaded");
+        toast.success(t("imageEditor.toast.uploaded"));
       },
-      onError: () => toast.error("Failed to upload background"),
+      onError: () => toast.error(t("imageEditor.toast.uploadFailed")),
     });
   }
 
@@ -158,7 +162,7 @@ export function WelcomeImageEditor({
       <div>
         <div className="mb-2 flex items-center gap-2">
           <Eye className="h-4 w-4 text-text-muted" />
-          <Label className="text-sm font-semibold">Live Preview</Label>
+          <Label className="text-sm font-semibold">{t("imageEditor.livePreview")}</Label>
           <Button
             variant="ghost"
             size="sm"
@@ -167,21 +171,29 @@ export function WelcomeImageEditor({
             className="ms-auto"
           >
             <RefreshCw className={`me-1 h-3 w-3 ${preview.isPending ? "animate-spin" : ""}`} />
-            Refresh
+            {t("common:actions.refresh")}
           </Button>
         </div>
-        <div className="overflow-hidden rounded-lg border border-border/50 bg-background">
+        <div
+          aria-busy={preview.isPending}
+          className="overflow-hidden rounded-lg border border-border/50 bg-background"
+        >
           {previewUrl ? (
             <img
               src={previewUrl}
-              alt={`${type} image preview`}
+              alt={t("imageEditor.previewAlt", { type })}
               className="w-full"
             />
           ) : (
             <div className="flex h-48 items-center justify-center text-sm text-text-muted">
-              {preview.isPending ? "Generating preview..." : "Preview will appear here"}
+              {preview.isPending
+                ? t("imageEditor.generatingPreview")
+                : t("imageEditor.previewPlaceholder")}
             </div>
           )}
+        </div>
+        <div aria-live="polite" className="sr-only">
+          {preview.isPending ? t("imageEditor.generatingPreview") : ""}
         </div>
       </div>
 
@@ -191,26 +203,39 @@ export function WelcomeImageEditor({
       <div>
         <div className="mb-3 flex items-center gap-2">
           <Sparkles className="h-4 w-4 text-primary" />
-          <Label className="text-sm font-semibold">Template</Label>
+          <Label className="text-sm font-semibold">{t("imageEditor.template")}</Label>
         </div>
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-          {templates.map((t) => (
-            <button
-              key={t.name}
-              type="button"
-              onClick={() => update("template", t.name)}
-              className={`rounded-lg border p-3 text-start transition-all ${
-                settings.template === t.name
-                  ? "border-primary bg-primary/10"
-                  : "border-border/50 hover:border-border"
-              }`}
-            >
-              <span className="text-sm font-medium">{t.displayName}</span>
-              <p className="mt-0.5 text-xs text-text-muted line-clamp-2">
-                {t.description}
-              </p>
-            </button>
-          ))}
+          {templates.map((tpl) => {
+            const selected = settings.template === tpl.name;
+            return (
+              <button
+                key={tpl.name}
+                type="button"
+                aria-pressed={selected}
+                onClick={() => update("template", tpl.name)}
+                className={`relative rounded-lg border p-3 text-start transition-all ${
+                  selected
+                    ? "border-primary bg-primary/10 ring-2 ring-primary/30"
+                    : "border-border/50 hover:border-border"
+                }`}
+              >
+                {selected && (
+                  <>
+                    <Check
+                      className="absolute end-2 top-2 h-4 w-4 text-primary"
+                      aria-hidden="true"
+                    />
+                    <span className="sr-only">{t("common:labels.active")}</span>
+                  </>
+                )}
+                <span className="text-sm font-medium">{tpl.displayName}</span>
+                <p className="mt-0.5 text-xs text-text-muted line-clamp-2">
+                  {tpl.description}
+                </p>
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -220,7 +245,7 @@ export function WelcomeImageEditor({
       <div>
         <div className="mb-3 flex items-center gap-2">
           <Image className="h-4 w-4 text-primary" />
-          <Label className="text-sm font-semibold">Background</Label>
+          <Label className="text-sm font-semibold">{t("imageEditor.background.title")}</Label>
         </div>
 
         <div className="mb-4 flex gap-2">
@@ -233,9 +258,9 @@ export function WelcomeImageEditor({
                 update("background", { ...settings.background, type: bgType })
               }
             >
-              {bgType === "color" && "Solid Color"}
-              {bgType === "preset" && "Gradient"}
-              {bgType === "image" && "Custom Image"}
+              {bgType === "color" && t("imageEditor.background.solidColor")}
+              {bgType === "preset" && t("imageEditor.background.gradient")}
+              {bgType === "image" && t("imageEditor.background.customImage")}
             </Button>
           ))}
         </div>
@@ -244,6 +269,7 @@ export function WelcomeImageEditor({
           <div className="flex items-center gap-3">
             <input
               type="color"
+              aria-label={t("imageEditor.background.colorPicker")}
               value={settings.background.color}
               onChange={(e) =>
                 updateNested("background", "color", e.target.value)
@@ -251,6 +277,7 @@ export function WelcomeImageEditor({
               className="h-10 w-10 cursor-pointer rounded border border-border/50"
             />
             <Input
+              aria-label={t("imageEditor.background.colorHex")}
               value={settings.background.color}
               onChange={(e) =>
                 updateNested("background", "color", e.target.value)
@@ -263,30 +290,43 @@ export function WelcomeImageEditor({
 
         {settings.background.type === "preset" && (
           <div className="grid grid-cols-3 gap-2">
-            {presets.map((name) => (
-              <button
-                key={name}
-                type="button"
-                onClick={() =>
-                  update("background", {
-                    ...settings.background,
-                    type: "preset",
-                    preset: name,
-                  })
-                }
-                className={`h-16 rounded-lg border bg-gradient-to-br transition-all ${
-                  PRESET_GRADIENT_COLORS[name] ?? ""
-                } ${
-                  settings.background.preset === name
-                    ? "border-primary ring-2 ring-primary/30"
-                    : "border-border/50 hover:border-border"
-                }`}
-              >
-                <span className="text-xs font-medium capitalize text-white/80">
-                  {name}
-                </span>
-              </button>
-            ))}
+            {presets.map((name) => {
+              const selected = settings.background.preset === name;
+              return (
+                <button
+                  key={name}
+                  type="button"
+                  aria-pressed={selected}
+                  onClick={() =>
+                    update("background", {
+                      ...settings.background,
+                      type: "preset",
+                      preset: name,
+                    })
+                  }
+                  className={`relative flex h-16 items-center justify-center rounded-lg border bg-gradient-to-br transition-all ${
+                    PRESET_GRADIENT_COLORS[name] ?? ""
+                  } ${
+                    selected
+                      ? "border-primary ring-2 ring-primary/30"
+                      : "border-border/50 hover:border-border"
+                  }`}
+                >
+                  {selected && (
+                    <>
+                      <Check
+                        className="absolute end-1.5 top-1.5 h-4 w-4 text-white drop-shadow"
+                        aria-hidden="true"
+                      />
+                      <span className="sr-only">{t("common:labels.active")}</span>
+                    </>
+                  )}
+                  <span className="text-xs font-medium capitalize text-white/80">
+                    {name}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         )}
 
@@ -295,6 +335,7 @@ export function WelcomeImageEditor({
             <input
               ref={fileInputRef}
               type="file"
+              aria-label={t("imageEditor.background.uploadImage")}
               accept="image/jpeg,image/png,image/webp"
               onChange={handleBackgroundUpload}
               className="hidden"
@@ -306,8 +347,10 @@ export function WelcomeImageEditor({
                 onClick={() => fileInputRef.current?.click()}
                 disabled={uploadBg.isPending}
               >
-                <Upload className="mr-1 h-3 w-3" />
-                {uploadBg.isPending ? "Uploading..." : "Upload Image"}
+                <Upload className="me-1 h-3 w-3" />
+                {uploadBg.isPending
+                  ? t("imageEditor.background.uploading")
+                  : t("imageEditor.background.upload")}
               </Button>
               {settings.background.imageKey && (
                 <Button
@@ -315,18 +358,18 @@ export function WelcomeImageEditor({
                   size="sm"
                   onClick={handleRemoveBackground}
                 >
-                  <Trash2 className="mr-1 h-3 w-3" />
-                  Remove
+                  <Trash2 className="me-1 h-3 w-3" />
+                  {t("common:actions.remove")}
                 </Button>
               )}
             </div>
             {settings.background.imageKey && (
               <Badge variant="outline" className="text-xs">
-                Background set
+                {t("imageEditor.background.set")}
               </Badge>
             )}
             <p className="text-xs text-text-muted">
-              JPG, PNG, or WebP. Max 3 MB.
+              {t("imageEditor.background.fileHint")}
             </p>
           </div>
         )}
@@ -335,7 +378,7 @@ export function WelcomeImageEditor({
       {/* Overlay */}
       <div>
         <div className="mb-3 flex items-center justify-between">
-          <Label className="text-sm font-semibold">Overlay Darkening</Label>
+          <Label className="text-sm font-semibold">{t("imageEditor.overlay.title")}</Label>
           <Switch
             checked={settings.overlay.enabled}
             onCheckedChange={(v) => updateNested("overlay", "enabled", v)}
@@ -343,7 +386,7 @@ export function WelcomeImageEditor({
         </div>
         {settings.overlay.enabled && (
           <div className="flex items-center gap-4">
-            <span className="text-xs text-text-muted">Opacity</span>
+            <span className="text-xs text-text-muted">{t("imageEditor.overlay.opacity")}</span>
             <Slider
               value={[settings.overlay.opacity * 100]}
               onValueChange={([v]) =>
@@ -366,29 +409,29 @@ export function WelcomeImageEditor({
       <div>
         <div className="mb-3 flex items-center gap-2">
           <Circle className="h-4 w-4 text-primary" />
-          <Label className="text-sm font-semibold">Avatar</Label>
+          <Label className="text-sm font-semibold">{t("imageEditor.avatar.title")}</Label>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
-            <Label className="text-xs">Shape</Label>
+            <Label htmlFor={`${type}-avatar-shape`} className="text-xs">{t("imageEditor.avatar.shape")}</Label>
             <Select
               value={settings.avatar.shape}
               onValueChange={(v) =>
                 updateNested("avatar", "shape", v as "circle" | "rounded" | "square")
               }
             >
-              <SelectTrigger className="mt-1">
+              <SelectTrigger id={`${type}-avatar-shape`} className="mt-1">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="circle">Circle</SelectItem>
-                <SelectItem value="rounded">Rounded Square</SelectItem>
-                <SelectItem value="square">Square</SelectItem>
+                <SelectItem value="circle">{t("imageEditor.avatar.shapeCircle")}</SelectItem>
+                <SelectItem value="rounded">{t("imageEditor.avatar.shapeRounded")}</SelectItem>
+                <SelectItem value="square">{t("imageEditor.avatar.shapeSquare")}</SelectItem>
               </SelectContent>
             </Select>
           </div>
           <div>
-            <Label className="text-xs">Border Width</Label>
+            <Label className="text-xs">{t("imageEditor.avatar.borderWidth")}</Label>
             <Slider
               value={[settings.avatar.borderWidth]}
               onValueChange={([v]) => updateNested("avatar", "borderWidth", v)}
@@ -398,10 +441,11 @@ export function WelcomeImageEditor({
             />
           </div>
           <div>
-            <Label className="text-xs">Border Color</Label>
+            <Label className="text-xs">{t("imageEditor.avatar.borderColor")}</Label>
             <div className="mt-1 flex items-center gap-2">
               <input
                 type="color"
+                aria-label={t("imageEditor.avatar.borderColorPicker")}
                 value={settings.avatar.borderColor}
                 onChange={(e) =>
                   updateNested("avatar", "borderColor", e.target.value)
@@ -409,6 +453,7 @@ export function WelcomeImageEditor({
                 className="h-8 w-8 cursor-pointer rounded"
               />
               <Input
+                aria-label={t("imageEditor.avatar.borderColorHex")}
                 value={settings.avatar.borderColor}
                 onChange={(e) =>
                   updateNested("avatar", "borderColor", e.target.value)
@@ -419,7 +464,7 @@ export function WelcomeImageEditor({
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <Label className="text-xs">Glow Effect</Label>
+              <Label className="text-xs">{t("imageEditor.avatar.glowEffect")}</Label>
               <Switch
                 checked={settings.avatar.glowEnabled}
                 onCheckedChange={(v) =>
@@ -431,6 +476,7 @@ export function WelcomeImageEditor({
               <div className="mt-2 flex items-center gap-2">
                 <input
                   type="color"
+                  aria-label={t("imageEditor.avatar.glowColorPicker")}
                   value={settings.avatar.glowColor}
                   onChange={(e) =>
                     updateNested("avatar", "glowColor", e.target.value)
@@ -438,6 +484,7 @@ export function WelcomeImageEditor({
                   className="h-8 w-8 cursor-pointer rounded"
                 />
                 <Input
+                  aria-label={t("imageEditor.avatar.glowColorHex")}
                   value={settings.avatar.glowColor}
                   onChange={(e) =>
                     updateNested("avatar", "glowColor", e.target.value)
@@ -456,20 +503,20 @@ export function WelcomeImageEditor({
       <div>
         <div className="mb-3 flex items-center gap-2">
           <Type className="h-4 w-4 text-primary" />
-          <Label className="text-sm font-semibold">Typography</Label>
+          <Label className="text-sm font-semibold">{t("imageEditor.typography.title")}</Label>
         </div>
 
         {/* Title (Username) */}
         <div className="mb-4">
-          <Label className="text-xs text-text-muted">Title (Username)</Label>
+          <Label className="text-xs text-text-muted">{t("imageEditor.typography.titleSection")}</Label>
           <div className="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-3">
             <div>
-              <Label className="text-xs">Font</Label>
+              <Label htmlFor={`${type}-title-font`} className="text-xs">{t("imageEditor.typography.font")}</Label>
               <Select
                 value={settings.title.font}
                 onValueChange={(v) => updateNested("title", "font", v)}
               >
-                <SelectTrigger className="mt-1">
+                <SelectTrigger id={`${type}-title-font`} className="mt-1">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -482,15 +529,17 @@ export function WelcomeImageEditor({
               </Select>
             </div>
             <div>
-              <Label className="text-xs">Color</Label>
+              <Label className="text-xs">{t("imageEditor.typography.color")}</Label>
               <div className="mt-1 flex items-center gap-2">
                 <input
                   type="color"
+                  aria-label={t("imageEditor.typography.titleColorPicker")}
                   value={settings.title.color}
                   onChange={(e) => updateNested("title", "color", e.target.value)}
                   className="h-8 w-8 cursor-pointer rounded"
                 />
                 <Input
+                  aria-label={t("imageEditor.typography.titleColorHex")}
                   value={settings.title.color}
                   onChange={(e) => updateNested("title", "color", e.target.value)}
                   className="w-24"
@@ -498,7 +547,7 @@ export function WelcomeImageEditor({
               </div>
             </div>
             <div>
-              <Label className="text-xs">Size</Label>
+              <Label className="text-xs">{t("imageEditor.typography.size")}</Label>
               <Slider
                 value={[settings.title.size]}
                 onValueChange={([v]) => updateNested("title", "size", v)}
@@ -513,28 +562,29 @@ export function WelcomeImageEditor({
 
         {/* Subtitle (Custom text) */}
         <div>
-          <Label className="text-xs text-text-muted">Subtitle (Custom Text)</Label>
+          <Label className="text-xs text-text-muted">{t("imageEditor.typography.subtitleSection")}</Label>
           <div className="mt-2 space-y-3">
             <div>
-              <Label className="text-xs">Text</Label>
+              <Label htmlFor={`${type}-subtitle-text`} className="text-xs">{t("imageEditor.typography.text")}</Label>
               <Input
+                id={`${type}-subtitle-text`}
                 value={settings.subtitle.text}
                 onChange={(e) => updateNested("subtitle", "text", e.target.value)}
-                placeholder="Welcome to {server}!"
+                placeholder={t("imageEditor.typography.subtitlePlaceholder")}
                 className="mt-1"
               />
               <p className="mt-1 text-xs text-text-muted">
-                Variables: {"{user.name}"} {"{server}"} {"{membercount}"}
+                {t("imageEditor.typography.subtitleVariables")}
               </p>
             </div>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
               <div>
-                <Label className="text-xs">Font</Label>
+                <Label htmlFor={`${type}-subtitle-font`} className="text-xs">{t("imageEditor.typography.font")}</Label>
                 <Select
                   value={settings.subtitle.font}
                   onValueChange={(v) => updateNested("subtitle", "font", v)}
                 >
-                  <SelectTrigger className="mt-1">
+                  <SelectTrigger id={`${type}-subtitle-font`} className="mt-1">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -547,10 +597,11 @@ export function WelcomeImageEditor({
                 </Select>
               </div>
               <div>
-                <Label className="text-xs">Color</Label>
+                <Label className="text-xs">{t("imageEditor.typography.color")}</Label>
                 <div className="mt-1 flex items-center gap-2">
                   <input
                     type="color"
+                    aria-label={t("imageEditor.typography.subtitleColorPicker")}
                     value={settings.subtitle.color}
                     onChange={(e) =>
                       updateNested("subtitle", "color", e.target.value)
@@ -558,6 +609,7 @@ export function WelcomeImageEditor({
                     className="h-8 w-8 cursor-pointer rounded"
                   />
                   <Input
+                    aria-label={t("imageEditor.typography.subtitleColorHex")}
                     value={settings.subtitle.color}
                     onChange={(e) =>
                       updateNested("subtitle", "color", e.target.value)
@@ -567,7 +619,7 @@ export function WelcomeImageEditor({
                 </div>
               </div>
               <div>
-                <Label className="text-xs">Size</Label>
+                <Label className="text-xs">{t("imageEditor.typography.size")}</Label>
                 <Slider
                   value={[settings.subtitle.size]}
                   onValueChange={([v]) => updateNested("subtitle", "size", v)}
@@ -589,41 +641,43 @@ export function WelcomeImageEditor({
         <div>
           <div className="mb-2 flex items-center gap-2">
             <Palette className="h-4 w-4 text-primary" />
-            <Label className="text-sm font-semibold">Accent Color</Label>
+            <Label className="text-sm font-semibold">{t("imageEditor.accent.title")}</Label>
           </div>
           <div className="flex items-center gap-2">
             <input
               type="color"
+              aria-label={t("imageEditor.accent.colorPicker")}
               value={settings.accentColor}
               onChange={(e) => update("accentColor", e.target.value)}
               className="h-10 w-10 cursor-pointer rounded border border-border/50"
             />
             <Input
+              aria-label={t("imageEditor.accent.colorHex")}
               value={settings.accentColor}
               onChange={(e) => update("accentColor", e.target.value)}
               className="w-28"
             />
           </div>
           <p className="mt-1 text-xs text-text-muted">
-            Used for decorations, borders, and template accents.
+            {t("imageEditor.accent.hint")}
           </p>
         </div>
 
         <div>
-          <Label className="mb-2 text-sm font-semibold">Delivery Mode</Label>
+          <Label htmlFor={`${type}-delivery-mode`} className="mb-2 text-sm font-semibold">{t("imageEditor.delivery.title")}</Label>
           <Select
             value={settings.sendMode}
             onValueChange={(v) =>
               update("sendMode", v as "with" | "before" | "only")
             }
           >
-            <SelectTrigger>
+            <SelectTrigger id={`${type}-delivery-mode`}>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="with">With embed message</SelectItem>
-              <SelectItem value="before">Before embed message</SelectItem>
-              <SelectItem value="only">Image only (no embed)</SelectItem>
+              <SelectItem value="with">{t("imageEditor.delivery.with")}</SelectItem>
+              <SelectItem value="before">{t("imageEditor.delivery.before")}</SelectItem>
+              <SelectItem value="only">{t("imageEditor.delivery.only")}</SelectItem>
             </SelectContent>
           </Select>
         </div>

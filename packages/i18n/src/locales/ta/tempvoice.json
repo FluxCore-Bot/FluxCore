@@ -15,7 +15,8 @@
     "saving": "சேமிக்கிறது...",
     "cancel": "ரத்து செய்",
     "delete": "நீக்கு",
-    "edit": "திருத்து"
+    "edit": "திருத்து",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "இதுவரை கட்டமைப்புகள் இல்லை",
@@ -26,5 +27,12 @@
     "updated": "கட்டமைப்பு புதுப்பிக்கப்பட்டது",
     "created": "கட்டமைப்பு உருவாக்கப்பட்டது",
     "removed": "கட்டமைப்பு நீக்கப்பட்டது"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

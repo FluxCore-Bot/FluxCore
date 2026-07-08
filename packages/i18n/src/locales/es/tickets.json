@@ -33,7 +33,8 @@
     "category": "Categoria del ticket",
     "create": "Crear panel",
     "edit": "Editar panel",
-    "deploy": "Desplegar panel"
+    "deploy": "Desplegar panel",
+    "openTicket": "Abrir ticket"
   },
   "settings": {
     "transcriptChannel": "Canal de transcripcion",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Confirmacion de cierre",
     "closeConfirmationDesc": "Requerir confirmacion antes de cerrar un ticket.",
     "dmTranscript": "Transcripcion por MD",
-    "dmTranscriptDesc": "Enviar una copia de la transcripcion al creador del ticket por MD."
+    "dmTranscriptDesc": "Enviar una copia de la transcripcion al creador del ticket por MD.",
+    "staffRolesPlaceholder": "Roles del staff",
+    "namingFormatHint": "Variables: {number} (con ceros), {username}"
   },
   "actions": {
     "claim": "Reclamar",

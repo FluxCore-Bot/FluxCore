@@ -1,0 +1,125 @@
+{
+  "title": "Roles & Permissions",
+  "subtitle": "Control who can access and manage each dashboard module.",
+  "actions": {
+    "createRole": "Create Role"
+  },
+  "permissionSystem": {
+    "title": "Permission System",
+    "active": "Active — admins are restricted to their assigned permissions.",
+    "inactive": "Inactive — all admins with MANAGE_GUILD have full access.",
+    "enabledToast": "Permission system enabled",
+    "disabledToast": "Permission system disabled — all admins have full access"
+  },
+  "warning": {
+    "disabled": "The permission system is disabled. All dashboard admins currently have full access. Enable it above to enforce granular permissions."
+  },
+  "tabs": {
+    "roles": "Roles",
+    "auditLog": "Audit Log"
+  },
+  "roleList": {
+    "title": "Dashboard Roles",
+    "empty": "No roles created yet.",
+    "selectHint": "Select a role to edit, or create a new one.",
+    "default": "Default",
+    "name": "Name",
+    "members": "Members",
+    "permissions": "Permissions",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "presets": {
+    "title": "Quick Add from Preset",
+    "createdToast": "Created \"{{name}}\" role"
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} member",
+    "memberCount_plural": "{{count}} members",
+    "name": "Role Name",
+    "color": "Color",
+    "defaultRole": "Default role",
+    "permissions": "Permissions",
+    "allBadge": "All",
+    "discordRoles": "Discord Roles"
+  },
+  "roleForm": {
+    "name": "Role Name",
+    "discordRoles": "Discord Roles",
+    "permissions": "Permissions",
+    "create": "Create Role",
+    "update": "Update Role",
+    "cancel": "Cancel"
+  },
+  "createDialog": {
+    "title": "Create Dashboard Role",
+    "name": "Name",
+    "namePlaceholder": "e.g. Moderator",
+    "color": "Color"
+  },
+  "permissionCategories": {
+    "actions": "Actions & Automation",
+    "music": "Music",
+    "tempvoice": "TempVoice",
+    "welcome": "Welcome & Farewell",
+    "moderation": "Moderation",
+    "logging": "Logging",
+    "leveling": "Leveling",
+    "roles": "Role Panels",
+    "tickets": "Tickets",
+    "suggestions": "Suggestions",
+    "starboard": "Starboard",
+    "giveaways": "Giveaways",
+    "security": "Security",
+    "scheduled": "Scheduled Messages",
+    "commands": "Custom Commands",
+    "settings": "Server Settings"
+  },
+  "audit": {
+    "table": {
+      "user": "User",
+      "action": "Action",
+      "target": "Target",
+      "timestamp": "When"
+    },
+    "noEntries": "No audit log entries yet."
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {{current}} of {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Created role \"{{name}}\"",
+    "roleCreateFailed": "Failed to create role",
+    "roleUpdated": "Role updated",
+    "roleUpdateFailed": "Failed to update role",
+    "roleDeleted": "Role deleted",
+    "roleDeleteFailed": "Failed to delete role"
+  },
+  "confirm": {
+    "deleteTitle": "Delete role \"{{name}}\"?",
+    "deleteMessage": "This will remove the role and unassign all members. This action cannot be undone.",
+    "deleteRole": "Are you sure you want to delete this role? Members will lose their assigned permissions."
+  },
+  "saveButton": {
+    "saving": "Saving...",
+    "save": "Save Changes"
+  },
+  "deleteButton": {
+    "deleting": "Deleting...",
+    "delete": "Delete"
+  },
+  "createButton": {
+    "creating": "Creating...",
+    "create": "Create"
+  },
+  "loading": "Loading permissions...",
+  "guard": {
+    "deniedTitle": "Permission Denied",
+    "deniedMessage": "You don't have permission to access <1>{{module}}</1>.",
+    "requiredPermission": "Required permission:",
+    "yourRoles": "Your roles:",
+    "contactOwner": "Contact your server owner to request access."
+  }
+}

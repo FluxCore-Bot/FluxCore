@@ -79,7 +79,9 @@
     "conditions": "Betingelser",
     "duration": "Varighet",
     "reason": "Grunn",
-    "language": "Språk"
+    "language": "Språk",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Velg kanal...",
@@ -98,7 +100,6 @@
     "showingPage": "Side {{page}} av {{total}} ({{count}} totalt)"
   },
   "header": {
-    "notifications": "Varsler",
     "settings": "Innstillinger",
     "logout": "Logg ut",
     "toggleSidebar": "Veksle sidefelt",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "Lukk sidefelt",
     "addToServer": "Legg til på server",
-    "docs": "Dokumentasjon",
-    "support": "Støtte",
     "backToServers": "Tilbake til servere"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "timer",
     "days": "dager",
     "ago": "{{time}} siden",
-    "in": "om {{time}}"
+    "in": "om {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Er du sikker?",
@@ -137,5 +137,9 @@
     "error": "En feil oppstod",
     "menuOpen": "Menyen er åpen",
     "menuClosed": "Menyen er lukket"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

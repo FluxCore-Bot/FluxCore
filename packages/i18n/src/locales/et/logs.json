@@ -79,7 +79,9 @@
       "description": "Sündmuselogid ilmuvad siia, kui logimine on seadistatud ja sündmused hakkavad toimuma."
     },
     "config": {
-      "selectChannel": "Vali logikanal"
+      "selectChannel": "Vali logikanal",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

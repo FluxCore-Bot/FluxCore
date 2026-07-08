@@ -108,5 +108,6 @@
     "channelRequired": "Kênh là bắt buộc",
     "maxRolesReached": "Tối đa 25 vai trò mỗi bảng"
   },
-  "loading": "Đang tải bảng..."
+  "loading": "Đang tải bảng...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

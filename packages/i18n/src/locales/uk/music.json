@@ -52,6 +52,7 @@
     "albumName": "Назва альбому",
     "albumNamePlaceholder": "Мій плейлист",
     "deleteAlbum": "Видалити",
-    "atMax": "Досягнуто максимальну кількість альбомів."
+    "atMax": "Досягнуто максимальну кількість альбомів.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

@@ -7,6 +7,8 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
+import { useTranslation } from "react-i18next";
+import type { TFunction } from "i18next";
 import type { Constants } from "../../../shared/lib/schemas";
 
 interface EventDistributionChartProps {
@@ -25,18 +27,19 @@ const BAR_COLORS = [
   "#f5a97f",
 ];
 
-function CustomTooltip({ active, payload }: { active?: boolean; payload?: Array<{ payload: { label: string; count: number } }> }) {
+function CustomTooltip({ active, payload, t }: { active?: boolean; payload?: Array<{ payload: { label: string; count: number } }>; t: TFunction }) {
   if (!active || !payload?.[0]) return null;
   const item = payload[0].payload;
   return (
     <div className="rounded-lg bg-surface-high p-3 text-xs shadow-lg glass-edge">
       <p className="font-label font-semibold text-text">{item.label}</p>
-      <p className="text-text-muted">{item.count} executions</p>
+      <p className="text-text-muted">{t("eventDistribution.executions", { count: item.count })}</p>
     </div>
   );
 }
 
 export function EventDistributionChart({ data, constants }: EventDistributionChartProps) {
+  const { t } = useTranslation("overview");
   const chartData = data.slice(0, 8).map((item) => ({
     ...item,
     label: constants?.eventTypes[item.eventType]?.label ?? item.eventType,
@@ -49,12 +52,12 @@ export function EventDistributionChart({ data, constants }: EventDistributionCha
   return (
     <div className="rounded-lg bg-surface-low p-6 glass-edge">
       <h3 className="mb-5 section-label text-text-muted">
-        Top Events
+        {t("eventDistribution.title")}
       </h3>
       <div className="h-64">
         {chartData.length === 0 ? (
           <div className="flex h-full items-center justify-center text-sm text-text-muted">
-            No event data yet
+            {t("eventDistribution.empty")}
           </div>
         ) : (
           <ResponsiveContainer width="100%" height="100%">
@@ -74,7 +77,7 @@ export function EventDistributionChart({ data, constants }: EventDistributionCha
                 axisLine={false}
                 width={100}
               />
-              <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(255,255,255,0.03)" }} />
+              <Tooltip content={<CustomTooltip t={t} />} cursor={{ fill: "rgba(255,255,255,0.03)" }} />
               <Bar dataKey="count" radius={[0, 4, 4, 0]} maxBarSize={24}>
                 {chartData.map((_, index) => (
                   <Cell key={index} fill={BAR_COLORS[index % BAR_COLORS.length]} fillOpacity={0.8} />

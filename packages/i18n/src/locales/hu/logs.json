@@ -79,7 +79,9 @@
       "description": "Az eseménynaplók itt jelennek meg, ha a naplózás be van állítva és az események bekövetkeznek."
     },
     "config": {
-      "selectChannel": "Naplócsatorna kiválasztása"
+      "selectChannel": "Naplócsatorna kiválasztása",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

@@ -79,7 +79,9 @@
       "description": "लॉगिंग कॉन्फ़िगर होने और इवेंट शुरू होने के बाद इवेंट लॉग यहां दिखाई देंगे।"
     },
     "config": {
-      "selectChannel": "लॉग चैनल चुनें"
+      "selectChannel": "लॉग चैनल चुनें",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

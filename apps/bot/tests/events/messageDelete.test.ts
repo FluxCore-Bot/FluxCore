@@ -53,7 +53,8 @@ function createMockMessage({
     id: "msg-1",
     content,
     member: { roles: { cache: new Map() } },
-    attachments: new Map(),
+    // Discord.js exposes attachments as a Collection (extends Map) which has .map()
+    attachments: Object.assign(new Map(), { map: () => [] }),
   };
 }
 

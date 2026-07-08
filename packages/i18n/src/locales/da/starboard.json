@@ -26,7 +26,8 @@
       "original": "Originalbesked",
       "stars": "Stjerner",
       "channel": "Kanal",
-      "date": "Dato"
+      "date": "Dato",
+      "author": "Author"
     },
     "noMessages": "Ingen stjernemærkede beskeder endnu."
   },

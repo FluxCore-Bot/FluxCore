@@ -79,7 +79,9 @@
       "description": "ログが設定されてイベントが発生すると、イベントログがここに表示されます。"
     },
     "config": {
-      "selectChannel": "ログチャンネルを選択"
+      "selectChannel": "ログチャンネルを選択",
+      "moreEvents_one": "他{{count}}件",
+      "moreEvents_other": "他{{count}}件"
     }
   }
 }

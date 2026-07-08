@@ -79,7 +79,9 @@
       "description": "Logy událostí se zde zobrazí, jakmile bude nakonfigurováno protokolování a začnou nastávat události."
     },
     "config": {
-      "selectChannel": "Vybrat logovací kanál"
+      "selectChannel": "Vybrat logovací kanál",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

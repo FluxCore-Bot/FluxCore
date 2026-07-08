@@ -15,7 +15,8 @@
     "saving": "Nag-se-save...",
     "cancel": "Kanselahin",
     "delete": "Burahin",
-    "edit": "I-edit"
+    "edit": "I-edit",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Wala pang mga configuration",
@@ -26,5 +27,12 @@
     "updated": "Na-update ang configuration",
     "created": "Nagawa ang configuration",
     "removed": "Natanggal ang configuration"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

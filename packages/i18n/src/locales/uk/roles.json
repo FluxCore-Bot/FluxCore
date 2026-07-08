@@ -108,5 +108,6 @@
     "channelRequired": "Канал обов'язковий",
     "maxRolesReached": "Максимум 25 ролей на панель"
   },
-  "loading": "Завантаження панелей..."
+  "loading": "Завантаження панелей...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

@@ -1,65 +1,143 @@
 {
-  "title": "[NEEDS TRANSLATION] Welcome & Farewell",
-  "subtitle": "[NEEDS TRANSLATION] Configure welcome and farewell messages, images, and auto-roles.",
-  "loadingSubtitle": "[NEEDS TRANSLATION] Configure welcome and farewell messages for your server.",
+  "title": "ویلکم اور الوداع",
+  "subtitle": "ویلکم اور الوداعی پیغامات، تصاویر اور آٹو-رولز ترتیب دیں۔",
+  "loadingSubtitle": "اپنے سرور کے لیے ویلکم اور الوداعی پیغامات ترتیب دیں۔",
   "tabs": {
-    "welcome": "[NEEDS TRANSLATION] Welcome",
-    "welcomeImage": "[NEEDS TRANSLATION] Welcome Image",
-    "farewell": "[NEEDS TRANSLATION] Farewell",
-    "farewellImage": "[NEEDS TRANSLATION] Farewell Image",
-    "dm": "[NEEDS TRANSLATION] Welcome DM",
-    "autorole": "[NEEDS TRANSLATION] Auto-Role"
+    "welcome": "ویلکم",
+    "welcomeImage": "ویلکم تصویر",
+    "farewell": "الوداع",
+    "farewellImage": "الوداعی تصویر",
+    "dm": "ویلکم DM",
+    "autorole": "آٹو-رول"
   },
   "welcome": {
-    "title": "[NEEDS TRANSLATION] Welcome Message",
-    "description": "[NEEDS TRANSLATION] Send a custom embed when a new member joins.",
-    "channelLabel": "[NEEDS TRANSLATION] Welcome Channel ID",
-    "channelPlaceholder": "[NEEDS TRANSLATION] Channel ID...",
-    "embedBuilder": "[NEEDS TRANSLATION] Embed Builder"
+    "title": "ویلکم پیغام",
+    "description": "جب کوئی نیا ممبر شامل ہو تو حسبِ ضرورت Embed بھیجیں۔",
+    "channelLabel": "ویلکم چینل ID",
+    "channelPlaceholder": "چینل ID...",
+    "embedBuilder": "Embed بلڈر"
   },
   "welcomeImage": {
-    "title": "[NEEDS TRANSLATION] Welcome Image",
-    "description": "[NEEDS TRANSLATION] Generate a custom image card with the member's avatar when they join.",
-    "disabled": "[NEEDS TRANSLATION] Enable the toggle above to configure welcome images."
+    "title": "ویلکم تصویر",
+    "description": "شامل ہونے پر ممبر کے اوتار کے ساتھ ایک حسبِ ضرورت تصویری کارڈ بنائیں۔",
+    "disabled": "ویلکم تصاویر ترتیب دینے کے لیے اوپر والا ٹوگل فعال کریں۔"
   },
   "farewell": {
-    "title": "[NEEDS TRANSLATION] Farewell Message",
-    "description": "[NEEDS TRANSLATION] Send a message when a member leaves the server.",
-    "channelLabel": "[NEEDS TRANSLATION] Farewell Channel ID",
-    "channelPlaceholder": "[NEEDS TRANSLATION] Channel ID..."
+    "title": "الوداعی پیغام",
+    "description": "جب کوئی ممبر سرور چھوڑے تو ایک پیغام بھیجیں۔",
+    "channelLabel": "الوداعی چینل ID",
+    "channelPlaceholder": "چینل ID..."
   },
   "farewellImage": {
-    "title": "[NEEDS TRANSLATION] Farewell Image",
-    "description": "[NEEDS TRANSLATION] Generate a custom farewell card when a member leaves.",
-    "disabled": "[NEEDS TRANSLATION] Enable the toggle above to configure farewell images."
+    "title": "الوداعی تصویر",
+    "description": "جب کوئی ممبر چھوڑے تو حسبِ ضرورت الوداعی کارڈ بنائیں۔",
+    "disabled": "الوداعی تصاویر ترتیب دینے کے لیے اوپر والا ٹوگل فعال کریں۔"
   },
   "dm": {
-    "title": "[NEEDS TRANSLATION] Welcome DM",
-    "description": "[NEEDS TRANSLATION] Send a direct message to new members. Will silently fail if DMs are disabled."
+    "title": "ویلکم DM",
+    "description": "نئے ممبران کو براہِ راست پیغام بھیجیں۔ اگر DMs غیر فعال ہوں تو خاموشی سے ناکام ہو جائے گا۔"
   },
   "autorole": {
-    "title": "[NEEDS TRANSLATION] Auto-Role",
-    "description": "[NEEDS TRANSLATION] Automatically assign roles to new members when they join. Bots are excluded. The bot must have a role higher than the roles listed here.",
-    "label": "[NEEDS TRANSLATION] Role IDs (comma-separated)",
-    "placeholder": "[NEEDS TRANSLATION] 123456789, 987654321"
+    "title": "آٹو-رول",
+    "description": "شامل ہونے پر نئے ممبران کو خودکار طور پر رولز تفویض کریں۔ بوٹس مستثنیٰ ہیں۔ بوٹ کے پاس یہاں درج رولز سے اونچا رول ہونا چاہیے۔",
+    "label": "رول IDs (کاما سے الگ)",
+    "placeholder": "123456789، 987654321"
   },
   "embed": {
-    "title": "[NEEDS TRANSLATION] Title",
-    "description": "[NEEDS TRANSLATION] Description",
-    "color": "[NEEDS TRANSLATION] Color (hex)",
-    "footer": "[NEEDS TRANSLATION] Footer",
-    "thumbnail": "[NEEDS TRANSLATION] Thumbnail URL",
-    "image": "[NEEDS TRANSLATION] Image URL",
-    "variables": "[NEEDS TRANSLATION] Variables:"
+    "title": "عنوان",
+    "description": "تفصیل",
+    "color": "رنگ (hex)",
+    "footer": "فٹر",
+    "thumbnail": "تھمب نیل URL",
+    "image": "تصویر URL",
+    "variables": "ویری ایبلز:",
+    "titlePlaceholder": "{server} میں خوش آمدید!",
+    "descriptionPlaceholder": "ہیلو {user}، **{server}** میں خوش آمدید! آپ ممبر #{membercount} ہیں۔",
+    "footerPlaceholder": "فٹر متن..."
   },
-  "saveChanges": "[NEEDS TRANSLATION] Save Changes",
-  "saving": "[NEEDS TRANSLATION] Saving...",
-  "sendTest": "[NEEDS TRANSLATION] Send Test Message",
-  "sending": "[NEEDS TRANSLATION] Sending...",
+  "saveChanges": "تبدیلیاں محفوظ کریں",
+  "saving": "محفوظ ہو رہا ہے...",
+  "sendTest": "ٹیسٹ پیغام بھیجیں",
+  "sending": "بھیجا جا رہا ہے...",
   "toast": {
-    "saved": "[NEEDS TRANSLATION] Welcome configuration saved",
-    "saveFailed": "[NEEDS TRANSLATION] Failed to save configuration",
-    "testSent": "[NEEDS TRANSLATION] Test message will be sent to <#{{channelId}}>",
-    "testFailed": "[NEEDS TRANSLATION] Failed to send test message"
+    "saved": "ویلکم ترتیب محفوظ ہو گئی",
+    "saveFailed": "ترتیب محفوظ کرنے میں ناکامی",
+    "testSent": "ٹیسٹ پیغام <#{{channelId}}> کو بھیجا جائے گا",
+    "testFailed": "ٹیسٹ پیغام بھیجنے میں ناکامی"
+  },
+  "defaults": {
+    "welcomeSubtitle": "{server} میں خوش آمدید!",
+    "farewellSubtitle": "الوداع، {user.name}!"
+  },
+  "imageEditor": {
+    "livePreview": "لائیو پیش نظارہ",
+    "previewAlt": "{{type}} تصویر پیش نظارہ",
+    "generatingPreview": "پیش نظارہ بنایا جا رہا ہے...",
+    "previewPlaceholder": "پیش نظارہ یہاں ظاہر ہوگا",
+    "template": "ٹیمپلیٹ",
+    "background": {
+      "title": "پس منظر",
+      "solidColor": "ٹھوس رنگ",
+      "gradient": "گریڈینٹ",
+      "customImage": "حسبِ ضرورت تصویر",
+      "colorPicker": "پس منظر رنگ منتخب کنندہ",
+      "colorHex": "پس منظر رنگ hex قدر",
+      "uploadImage": "پس منظر تصویر اپ لوڈ کریں",
+      "upload": "تصویر اپ لوڈ کریں",
+      "uploading": "اپ لوڈ ہو رہا ہے...",
+      "set": "پس منظر سیٹ ہو گیا",
+      "fileHint": "JPG، PNG، یا WebP۔ زیادہ سے زیادہ 3 MB۔"
+    },
+    "overlay": {
+      "title": "اوورلے تاریک کرنا",
+      "opacity": "شفافیت"
+    },
+    "avatar": {
+      "title": "اوتار",
+      "shape": "شکل",
+      "shapeCircle": "دائرہ",
+      "shapeRounded": "گول کنارے والا مربع",
+      "shapeSquare": "مربع",
+      "borderWidth": "بارڈر چوڑائی",
+      "borderColor": "بارڈر رنگ",
+      "borderColorPicker": "اوتار بارڈر رنگ منتخب کنندہ",
+      "borderColorHex": "اوتار بارڈر رنگ hex قدر",
+      "glowEffect": "گلو ایفیکٹ",
+      "glowColorPicker": "اوتار گلو رنگ منتخب کنندہ",
+      "glowColorHex": "اوتار گلو رنگ hex قدر"
+    },
+    "typography": {
+      "title": "ٹائپوگرافی",
+      "titleSection": "عنوان (صارف نام)",
+      "subtitleSection": "ذیلی عنوان (حسبِ ضرورت متن)",
+      "font": "فونٹ",
+      "color": "رنگ",
+      "size": "سائز",
+      "text": "متن",
+      "titleColorPicker": "عنوان رنگ منتخب کنندہ",
+      "titleColorHex": "عنوان رنگ hex قدر",
+      "subtitleColorPicker": "ذیلی عنوان رنگ منتخب کنندہ",
+      "subtitleColorHex": "ذیلی عنوان رنگ hex قدر",
+      "subtitlePlaceholder": "{server} میں خوش آمدید!",
+      "subtitleVariables": "ویری ایبلز: {user.name} {server} {membercount}"
+    },
+    "accent": {
+      "title": "ایکسنٹ رنگ",
+      "colorPicker": "ایکسنٹ رنگ منتخب کنندہ",
+      "colorHex": "ایکسنٹ رنگ hex قدر",
+      "hint": "سجاوٹ، بارڈرز اور ٹیمپلیٹ ایکسنٹس کے لیے استعمال ہوتا ہے۔"
+    },
+    "delivery": {
+      "title": "ڈیلیوری موڈ",
+      "with": "Embed پیغام کے ساتھ",
+      "before": "Embed پیغام سے پہلے",
+      "only": "صرف تصویر (بغیر Embed)"
+    },
+    "toast": {
+      "imageTooLarge": "پس منظر تصویر 3 MB سے کم ہونی چاہیے",
+      "uploaded": "پس منظر اپ لوڈ ہو گیا",
+      "uploadFailed": "پس منظر اپ لوڈ کرنے میں ناکامی",
+      "previewFailed": "پیش نظارہ بنانے میں ناکامی"
+    }
   }
 }

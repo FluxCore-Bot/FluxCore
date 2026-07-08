@@ -21,6 +21,7 @@ const {
   isBotInGuild,
   getGuildChannels,
   getGuildRoles,
+  getGuildMember,
   channelExistsInGuild,
 } = await import("../../../src/server/shared/discordApi.js");
 
@@ -141,6 +142,58 @@ describe("discordApi module", () => {
 
       const result = await getGuildRoles(guildId);
       expect(result).toEqual([]);
+    });
+  });
+
+  describe("getGuildMember", () => {
+    it("returns the member (role IDs) when present", async () => {
+      const guildId = `member-ok-${testCounter}`;
+      vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
+        ok: true,
+        json: () => Promise.resolve({ roles: ["r1", "r2"], user: { id: "u1" } }),
+      } as Response);
+
+      const member = await getGuildMember(guildId, "u1");
+      expect(member).toEqual({ roles: ["r1", "r2"], user: { id: "u1" } });
+    });
+
+    it("returns null when the user is not a member (404)", async () => {
+      const guildId = `member-404-${testCounter}`;
+      vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
+        ok: false,
+        status: 404,
+      } as Response);
+
+      const member = await getGuildMember(guildId, "u-missing");
+      expect(member).toBeNull();
+    });
+
+    it("caches the result (including null) to avoid repeat calls", async () => {
+      const guildId = `member-cache-${testCounter}`;
+      const fetchSpy = vi.spyOn(globalThis, "fetch").mockResolvedValue({
+        ok: false,
+        status: 404,
+      } as Response);
+
+      await getGuildMember(guildId, "u1");
+      await getGuildMember(guildId, "u1");
+
+      expect(fetchSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it("uses the bot token and the member endpoint", async () => {
+      const guildId = `member-auth-${testCounter}`;
+      const fetchSpy = vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
+        ok: true,
+        json: () => Promise.resolve({ roles: [] }),
+      } as Response);
+
+      await getGuildMember(guildId, "u1");
+
+      const [url, init] = fetchSpy.mock.calls[0];
+      expect(String(url)).toContain(`/guilds/${guildId}/members/u1`);
+      const headers = init?.headers as Record<string, string>;
+      expect(headers.Authorization).toBe("Bot test-bot-token");
     });
   });
 

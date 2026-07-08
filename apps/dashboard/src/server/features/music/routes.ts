@@ -105,6 +105,14 @@ export function registerMusicRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/music/library",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.library.manage")],
+      config: {
+        rateLimit: {
+          max: 10,
+          timeWindow: "1 minute",
+          keyGenerator: (req) =>
+            (req as { session?: { userId?: string } }).session?.userId ?? req.ip,
+        },
+      },
       schema: {
         body: {
           type: "object",

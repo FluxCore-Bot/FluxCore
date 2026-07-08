@@ -108,5 +108,6 @@
     "channelRequired": "চ্যানেল আবশ্যক",
     "maxRolesReached": "প্রতি প্যানেলে সর্বোচ্চ 25টি রোল"
   },
-  "loading": "প্যানেল লোড হচ্ছে..."
+  "loading": "প্যানেল লোড হচ্ছে...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

@@ -37,18 +37,29 @@ function createMockInteraction({
   channelId = "channel-1",
   guildId = "guild-1" as string | null,
 } = {}) {
-  const mockMessages = new Map();
-  mockMessages.set("msg-1", {
-    author: {
-      displayName: "TestUser",
-      username: "testuser",
-      id: "user-1",
-      displayAvatarURL: vi.fn().mockReturnValue("https://example.com/avatar.png"),
+  const messageValues = [
+    {
+      author: {
+        displayName: "TestUser",
+        username: "testuser",
+        id: "user-1",
+        displayAvatarURL: vi.fn().mockReturnValue("https://example.com/avatar.png"),
+      },
+      content: "Hello!",
+      createdAt: new Date(),
+      // Discord.js exposes attachments as a Collection (has .map())
+      attachments: Object.assign(new Map(), { map: () => [] as string[] }),
     },
-    content: "Hello!",
-    createdAt: new Date(),
-    attachments: new Map(),
-  });
+  ];
+
+  // Discord.js fetch() returns a Collection; .reverse() returns a Collection
+  // whose .map() iterates over the message values.
+  const mockCollection = {
+    size: messageValues.length,
+    reverse: vi.fn().mockReturnThis(),
+    map: <T>(fn: (value: (typeof messageValues)[number]) => T): T[] =>
+      messageValues.map(fn),
+  };
 
   return {
     options: {},
@@ -58,10 +69,7 @@ function createMockInteraction({
     channelId,
     channel: {
       messages: {
-        fetch: vi.fn().mockResolvedValue({
-          reverse: vi.fn().mockReturnValue(mockMessages),
-          size: mockMessages.size,
-        }),
+        fetch: vi.fn().mockResolvedValue(mockCollection),
       },
     },
     reply: vi.fn(),

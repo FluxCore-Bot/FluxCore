@@ -26,7 +26,8 @@
       "original": "Originalna poruka",
       "stars": "Zvezdice",
       "channel": "Kanal",
-      "date": "Datum"
+      "date": "Datum",
+      "author": "Author"
     },
     "noMessages": "Nema poruka sa zvezdama."
   },

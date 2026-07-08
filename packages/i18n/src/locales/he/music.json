@@ -52,6 +52,7 @@
     "albumName": "שם האלבום",
     "albumNamePlaceholder": "פלייליסט שלי",
     "deleteAlbum": "מחק",
-    "atMax": "הגעת למספר המקסימלי של אלבומים."
+    "atMax": "הגעת למספר המקסימלי של אלבומים.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

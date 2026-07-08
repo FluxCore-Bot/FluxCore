@@ -79,7 +79,9 @@
       "description": "Ang mga log ng event ay lilitaw dito kapag na-configure na ang pag-log at nagsimulang magkaroon ng mga event."
     },
     "config": {
-      "selectChannel": "Pumili ng log channel"
+      "selectChannel": "Pumili ng log channel",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

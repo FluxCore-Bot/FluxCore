@@ -108,5 +108,6 @@
     "channelRequired": "Canalul este obligatoriu",
     "maxRolesReached": "Maximum 25 roluri per panou"
   },
-  "loading": "Se încarcă panourile..."
+  "loading": "Se încarcă panourile...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

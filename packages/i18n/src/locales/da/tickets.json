@@ -33,7 +33,8 @@
     "category": "Sagskategori",
     "create": "Opret panel",
     "edit": "Rediger panel",
-    "deploy": "Udsend panel"
+    "deploy": "Udsend panel",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Transskriptionskanal",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Lukningsbekræftelse",
     "closeConfirmationDesc": "Kræv bekræftelse før lukning af en sag.",
     "dmTranscript": "DM-transskription",
-    "dmTranscriptDesc": "Send en kopi af transskriptionen til sagsopretter via DM."
+    "dmTranscriptDesc": "Send en kopi af transskriptionen til sagsopretter via DM.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Tildel",

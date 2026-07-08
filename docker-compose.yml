@@ -45,6 +45,8 @@ services:
       context: .
       target: development
     command: sh -c "pnpm install --frozen-lockfile && pnpm turbo run dev --filter=@fluxcore/dashboard"
+    environment:
+      VITE_HOST: "0.0.0.0"
     volumes:
       - ./packages:/app/packages
       - ./apps:/app/apps
@@ -96,6 +98,7 @@ services:
     command: sh -c "cd packages/database && pnpm prisma migrate deploy && cd /app && node apps/dashboard/dist/server/index.js"
     environment:
       - NODE_ENV=production
+      - VITE_HOST=0.0.0.0
     volumes:
       - ./packages:/app/packages
       - ./apps:/app/apps
@@ -132,15 +135,15 @@ services:
   postgres:
     image: postgres:18-alpine
     environment:
-      POSTGRES_USER: fluxcore
-      POSTGRES_PASSWORD: fluxcore
-      POSTGRES_DB: fluxcore
+      POSTGRES_USER: ${POSTGRES_USER:-fluxcore}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-fluxcore}
+      POSTGRES_DB: ${POSTGRES_DB:-fluxcore}
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql
     ports:
       - "127.0.0.1:5432:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U fluxcore"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-fluxcore}"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -151,8 +154,8 @@ services:
   pgadmin:
     image: dpage/pgadmin4:latest
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@fluxcore.dev
-      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@fluxcore.local}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:?PGADMIN_PASSWORD is required to enable the tools profile}
       PGADMIN_CONFIG_SERVER_MODE: "False"
     ports:
       - "127.0.0.1:5050:80"

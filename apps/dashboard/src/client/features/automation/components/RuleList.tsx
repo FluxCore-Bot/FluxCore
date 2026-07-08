@@ -1,4 +1,6 @@
 import { formatDistanceToNow } from "date-fns";
+import { useTranslation } from "react-i18next";
+import type { TFunction } from "i18next";
 import { Icon } from "../../../shared/components/Icon";
 import { Badge } from "../../../shared/ui/badge";
 import { Button } from "../../../shared/ui/button";
@@ -31,12 +33,18 @@ interface RuleListProps {
   onSelectionChange?: (ids: Set<number>) => void;
 }
 
-function formatLastFired(lastFired: string | null | undefined): string {
-  if (!lastFired) return "Never";
+function formatLastFired(
+  lastFired: string | null | undefined,
+  t: TFunction,
+): { text: string; fired: boolean } {
+  if (!lastFired) return { text: t("ruleList.never"), fired: false };
   try {
-    return formatDistanceToNow(new Date(lastFired), { addSuffix: true });
+    return {
+      text: formatDistanceToNow(new Date(lastFired), { addSuffix: true }),
+      fired: true,
+    };
   } catch {
-    return "Never";
+    return { text: t("ruleList.never"), fired: false };
   }
 }
 
@@ -50,6 +58,7 @@ export function RuleList({
   selectedIds,
   onSelectionChange,
 }: RuleListProps) {
+  const { t } = useTranslation(["rules", "common"]);
   const selectable = !!selectedIds && !!onSelectionChange;
 
   const toggleSelection = (ruleId: number) => {
@@ -72,7 +81,7 @@ export function RuleList({
           const eventIcon = EVENT_ICONS[rule.eventType] ?? "bolt";
           const isSelected = selectedIds?.has(rule.id) ?? false;
           const hasSteps = !!(rule.steps?.length && rule.entryStepId);
-          const lastFiredText = formatLastFired(rule.lastFired);
+          const lastFired = formatLastFired(rule.lastFired, t);
 
           return (
             <div
@@ -124,10 +133,10 @@ export function RuleList({
                           <TooltipTrigger asChild>
                             <Badge variant="outline" className="text-[10px] px-1.5 py-0">
                               <Icon name="account_tree" size={10} className="me-0.5" />
-                              Workflow
+                              {t("ruleList.workflowBadge")}
                             </Badge>
                           </TooltipTrigger>
-                          <TooltipContent>Uses step-based workflow with conditions/delays</TooltipContent>
+                          <TooltipContent>{t("ruleList.workflowTooltip")}</TooltipContent>
                         </Tooltip>
                       )}
                     </div>
@@ -137,7 +146,7 @@ export function RuleList({
                       </span>
                       <span className="text-text-muted/30">·</span>
                       <span className="text-xs text-text-muted/60">
-                        {lastFiredText === "Never" ? "Never fired" : `Fired ${lastFiredText}`}
+                        {lastFired.fired ? t("ruleList.firedAgo", { time: lastFired.text }) : t("ruleList.neverFired")}
                       </span>
                       {rule.priority > 0 && (
                         <>
@@ -164,7 +173,7 @@ export function RuleList({
                           />
                         </div>
                       </TooltipTrigger>
-                      <TooltipContent>{rule.enabled ? "Disable rule" : "Enable rule"}</TooltipContent>
+                      <TooltipContent>{rule.enabled ? t("ruleList.disableRule") : t("ruleList.enableRule")}</TooltipContent>
                     </Tooltip>
 
                     <DropdownMenu>
@@ -180,20 +189,20 @@ export function RuleList({
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem onClick={() => onEdit(rule)}>
                           <Icon name="edit" size={16} className="text-text-muted" />
-                          Edit Rule
+                          {t("ruleList.editRule")}
                         </DropdownMenuItem>
                         <DropdownMenuItem onClick={() => onDuplicate(rule)}>
                           <Icon name="content_copy" size={16} className="text-text-muted" />
-                          Duplicate
+                          {t("ruleList.duplicate")}
                         </DropdownMenuItem>
                         <DropdownMenuItem onClick={() => onToggle(rule)}>
                           <Icon name={rule.enabled ? "pause_circle" : "play_circle"} size={16} className="text-text-muted" />
-                          {rule.enabled ? "Disable" : "Enable"}
+                          {rule.enabled ? t("common:actions.disable") : t("common:actions.enable")}
                         </DropdownMenuItem>
                         {selectable && (
                           <DropdownMenuItem onClick={() => toggleSelection(rule.id)}>
                             <Icon name={isSelected ? "deselect" : "select_check_box"} size={16} className="text-text-muted" />
-                            {isSelected ? "Deselect" : "Select"}
+                            {isSelected ? t("ruleList.deselect") : t("ruleList.select")}
                           </DropdownMenuItem>
                         )}
                         <DropdownMenuSeparator />
@@ -202,7 +211,7 @@ export function RuleList({
                           className="text-danger focus:text-danger"
                         >
                           <Icon name="delete" size={16} />
-                          Delete
+                          {t("common:actions.delete")}
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -219,13 +228,13 @@ export function RuleList({
                   {/* Trigger chip */}
                   <div className="flex shrink-0 items-center gap-1.5 rounded-md border border-accent/20 bg-accent/5 px-2.5 py-1">
                     <Icon name={eventIcon} size={13} className="text-accent" />
-                    <span className="text-[11px] font-medium text-accent">Trigger</span>
+                    <span className="text-[11px] font-medium text-accent">{t("nodes.triggerChip")}</span>
                   </div>
 
                   {/* Arrow */}
                   <div className="flex shrink-0 items-center">
                     <div className="h-px w-3 bg-accent/30" />
-                    <div className="h-1.5 w-1.5 rotate-45 border-r border-t border-accent/40" />
+                    <div className="h-1.5 w-1.5 rotate-45 border-e border-t border-accent/40" />
                   </div>
 
                   {/* Action chips */}
@@ -233,7 +242,7 @@ export function RuleList({
                     const actionLabel =
                       constants?.actionTypes[action.type]?.label ?? action.type;
                     const actionIcon = ACTION_ICONS[action.type] ?? "play_arrow";
-                    const preview = getActionPreview(action);
+                    const preview = getActionPreview(action, t);
                     const isConfigured = action.type !== "";
 
                     return (
@@ -243,7 +252,7 @@ export function RuleList({
                             <div className="flex items-center gap-1.5 rounded-md border border-outline-variant/10 bg-surface-high px-2.5 py-1">
                               <Icon name={actionIcon} size={13} className="text-secondary" />
                               <span className="text-[11px] font-medium text-text-muted">
-                                {actionLabel || "Unconfigured"}
+                                {actionLabel || t("nodes.unconfigured")}
                               </span>
                               {!isConfigured && (
                                 <span className="flex h-1.5 w-1.5 rounded-full bg-warning/60" />
@@ -258,7 +267,7 @@ export function RuleList({
                         {i < rule.actions.length - 1 && (
                           <div className="flex shrink-0 items-center">
                             <div className="h-px w-2 bg-secondary/30" />
-                            <div className="h-1 w-1 rotate-45 border-r border-t border-secondary/30" />
+                            <div className="h-1 w-1 rotate-45 border-e border-t border-secondary/30" />
                           </div>
                         )}
                       </div>
@@ -272,7 +281,7 @@ export function RuleList({
                         <div className="h-px w-2 bg-text-muted/20" />
                       </div>
                       <Badge variant="outline" className="text-[10px] shrink-0">
-                        +{rule.steps.filter((s) => s.type === "condition" || s.type === "delay").length} steps
+                        {t("ruleList.steps", { count: rule.steps.filter((s) => s.type === "condition" || s.type === "delay").length })}
                       </Badge>
                     </>
                   )}

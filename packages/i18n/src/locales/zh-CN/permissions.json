@@ -114,5 +114,12 @@
     "creating": "创建中...",
     "create": "创建"
   },
-  "loading": "正在加载权限..."
+  "loading": "正在加载权限...",
+  "guard": {
+    "deniedTitle": "权限被拒绝",
+    "deniedMessage": "你没有访问 <1>{{module}}</1> 的权限。",
+    "requiredPermission": "所需权限：",
+    "yourRoles": "你的身份组：",
+    "contactOwner": "请联系服务器所有者申请访问权限。"
+  }
 }

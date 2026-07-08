@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "Ime ukaza je obvezno"
   },
-  "triggerPrefix": "Sprožilec: !{{name}}"
+  "triggerPrefix": "Sprožilec: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
 }

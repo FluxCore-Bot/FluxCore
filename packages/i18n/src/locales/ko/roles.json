@@ -108,5 +108,6 @@
     "channelRequired": "채널은 필수입니다",
     "maxRolesReached": "패널당 최대 25개 역할"
   },
-  "loading": "패널 불러오는 중..."
+  "loading": "패널 불러오는 중...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

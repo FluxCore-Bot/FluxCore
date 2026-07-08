@@ -25,7 +25,8 @@
     "date": "Datum",
     "actions": "Aktionen",
     "noCases": "Keine Faelle gefunden.",
-    "noReason": "Kein Grund"
+    "noReason": "Kein Grund",
+    "noCasesDesc": "Keine Moderationsfälle entsprechen deinen Filtern"
   },
   "filter": {
     "userPlaceholder": "Nach Benutzer-ID filtern...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Benutzern eine DM senden, wenn sie bestraft werden (Ban, Kick, Timeout).",
     "modLogChannel": "Moderationslog-Kanal",
     "modLogChannelDesc": "Kanal, in dem Moderationsaktionen protokolliert werden."
+  },
+  "toast": {
+    "caseDeleted": "Fall gelöscht",
+    "caseUpdated": "Fall aktualisiert",
+    "deleteFailed": "Fall konnte nicht gelöscht werden",
+    "updateFailed": "Fall konnte nicht aktualisiert werden"
   }
 }

@@ -6,6 +6,7 @@ vi.mock("@fluxcore/config", () => ({
     clientId: "test-client-id",
     dashboardClientSecret: "test-secret",
     dashboardCallbackUrl: "http://localhost:3000/auth/callback",
+    dashboardPublicUrl: "http://localhost:3000",
     dashboardSessionSecret: "session-secret",
     logLevel: "info",
   },
@@ -19,6 +20,7 @@ const mockExchangeCode = vi.fn().mockResolvedValue({ access_token: "test-access-
 const mockFetchUser = vi.fn().mockResolvedValue({ id: "user-1", username: "testuser", avatar: "abc" });
 const mockFetchGuilds = vi.fn().mockResolvedValue([{ id: "g1", name: "Guild", icon: null, permissions: "8" }]);
 vi.mock("../../../../src/server/shared/auth.js", () => ({
+  buildCallbackUrl: () => "http://localhost:3000/auth/callback",
   getAuthorizationUrl: () => mockGetAuthorizationUrl(),
   exchangeCode: (...args: unknown[]) => mockExchangeCode(...args),
   fetchUser: (...args: unknown[]) => mockFetchUser(...args),
@@ -117,7 +119,10 @@ describe("auth routes", () => {
         cookies: { oauth_state: signedStateCookie },
       });
       expect(res.statusCode).toBe(302);
-      expect(mockExchangeCode).toHaveBeenCalledWith("test-code");
+      expect(mockExchangeCode).toHaveBeenCalledWith(
+        "test-code",
+        "http://localhost:3000/auth/callback",
+      );
       expect(mockCreateSession).toHaveBeenCalled();
 
       const sessionCookie = res.cookies.find((c) => c.name === "session");

@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "badge": "Now in Public Beta",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "The All-in-One",
+    "titleLine2": "Discord Bot Framework",
+    "subtitle": "Deploy a professional-grade Discord presence in minutes. Modular, self-hosted, and built for communities that demand more."
+  },
+  "cta": {
+    "addToServer": "Add to Server",
+    "openDashboard": "Open Dashboard",
+    "exploreFeatures": "Explore Features"
+  },
+  "stats": {
+    "servers": "Servers",
+    "latency": "Latency",
+    "uptime": "Uptime",
+    "modules": "Modules",
+    "serversValue": "1,000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99.9%",
+    "modulesValue": "10+"
+  },
+  "features": {
+    "label": "Capabilities",
+    "title": "Everything your server needs",
+    "subtitle": "A modular toolkit designed for communities that demand reliability, flexibility, and control.",
+    "automation": {
+      "title": "Automation Rules",
+      "description": "Create complex event-driven workflows without code. If-this-then-that triggers with 23 event types and 10 action types."
+    },
+    "music": {
+      "title": "Music System",
+      "description": "High-fidelity audio streaming with multi-platform support. Queue management, DJ controls, and library mode."
+    },
+    "tempVoice": {
+      "title": "TempVoice",
+      "description": "Dynamic voice channel management. Auto-creation with custom naming templates, permissions, and cleanup."
+    },
+    "logs": {
+      "title": "Activity Logs",
+      "description": "Full audit trail of every automation execution. Search, filter, and debug your rules with detailed logs."
+    },
+    "webhooks": {
+      "title": "Webhooks & API",
+      "description": "Send data to external services with HTTP webhooks. Custom headers, body templates, and variable interpolation."
+    },
+    "dashboard": {
+      "title": "Real-time Dashboard",
+      "description": "Manage everything from a sleek web dashboard. Analytics, configuration, and monitoring in one place."
+    }
+  },
+  "ctaSection": {
+    "title": "Ready to upgrade your community?",
+    "subtitle": "Get started in minutes with zero configuration. Self-hosted, open-source, and completely free."
+  },
+  "footer": {
+    "brand": "FluxCore",
+    "copyright": "© {{year}} FluxCore Technologies. All rights reserved.",
+    "links": {
+      "documentation": "Documentation",
+      "support": "Support",
+      "privacy": "Privacy Policy",
+      "api": "API",
+      "github": "GitHub"
+    }
+  }
+}

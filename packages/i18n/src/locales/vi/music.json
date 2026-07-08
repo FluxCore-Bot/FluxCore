@@ -52,6 +52,7 @@
     "albumName": "Tên Album",
     "albumNamePlaceholder": "Danh Sách Phát Của Tôi",
     "deleteAlbum": "Xóa",
-    "atMax": "Bạn đã đạt số lượng album tối đa."
+    "atMax": "Bạn đã đạt số lượng album tối đa.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

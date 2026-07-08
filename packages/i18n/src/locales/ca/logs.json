@@ -79,7 +79,9 @@
       "description": "Els registres d'esdeveniments apareixeran aquí una vegada que el registre estigui configurat i els esdeveniments comencin a passar."
     },
     "config": {
-      "selectChannel": "Seleccionar canal de registre"
+      "selectChannel": "Seleccionar canal de registre",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

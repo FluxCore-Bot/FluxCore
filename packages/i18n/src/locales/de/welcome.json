@@ -50,7 +50,10 @@
     "footer": "Fusszeile",
     "thumbnail": "Vorschaubild-URL",
     "image": "Bild-URL",
-    "variables": "Variablen:"
+    "variables": "Variablen:",
+    "titlePlaceholder": "Willkommen auf {server}!",
+    "descriptionPlaceholder": "Hey {user}, willkommen auf **{server}**! Du bist Mitglied #{membercount}.",
+    "footerPlaceholder": "Fußzeilentext..."
   },
   "saveChanges": "Aenderungen speichern",
   "saving": "Speichern...",
@@ -61,5 +64,80 @@
     "saveFailed": "Konfiguration konnte nicht gespeichert werden",
     "testSent": "Testnachricht wird an <#{{channelId}}> gesendet",
     "testFailed": "Testnachricht konnte nicht gesendet werden"
+  },
+  "defaults": {
+    "welcomeSubtitle": "Willkommen auf {server}!",
+    "farewellSubtitle": "Auf Wiedersehen, {user.name}!"
+  },
+  "imageEditor": {
+    "livePreview": "Live-Vorschau",
+    "previewAlt": "Vorschau des {{type}}-Bilds",
+    "generatingPreview": "Vorschau wird erstellt...",
+    "previewPlaceholder": "Die Vorschau erscheint hier",
+    "template": "Vorlage",
+    "background": {
+      "title": "Hintergrund",
+      "solidColor": "Einfarbig",
+      "gradient": "Verlauf",
+      "customImage": "Eigenes Bild",
+      "colorPicker": "Hintergrundfarbwähler",
+      "colorHex": "Hex-Wert der Hintergrundfarbe",
+      "uploadImage": "Hintergrundbild hochladen",
+      "upload": "Bild hochladen",
+      "uploading": "Wird hochgeladen...",
+      "set": "Hintergrund festgelegt",
+      "fileHint": "JPG, PNG oder WebP. Max. 3 MB."
+    },
+    "overlay": {
+      "title": "Overlay-Abdunklung",
+      "opacity": "Deckkraft"
+    },
+    "avatar": {
+      "title": "Avatar",
+      "shape": "Form",
+      "shapeCircle": "Kreis",
+      "shapeRounded": "Abgerundetes Quadrat",
+      "shapeSquare": "Quadrat",
+      "borderWidth": "Rahmenbreite",
+      "borderColor": "Rahmenfarbe",
+      "borderColorPicker": "Farbwähler für Avatar-Rahmen",
+      "borderColorHex": "Hex-Wert der Avatar-Rahmenfarbe",
+      "glowEffect": "Leuchteffekt",
+      "glowColorPicker": "Farbwähler für Avatar-Leuchten",
+      "glowColorHex": "Hex-Wert der Avatar-Leuchtfarbe"
+    },
+    "typography": {
+      "title": "Typografie",
+      "titleSection": "Titel (Benutzername)",
+      "subtitleSection": "Untertitel (Eigener Text)",
+      "font": "Schriftart",
+      "color": "Farbe",
+      "size": "Größe",
+      "text": "Text",
+      "titleColorPicker": "Farbwähler für Titel",
+      "titleColorHex": "Hex-Wert der Titelfarbe",
+      "subtitleColorPicker": "Farbwähler für Untertitel",
+      "subtitleColorHex": "Hex-Wert der Untertitelfarbe",
+      "subtitlePlaceholder": "Willkommen auf {server}!",
+      "subtitleVariables": "Variablen: {user.name} {server} {membercount}"
+    },
+    "accent": {
+      "title": "Akzentfarbe",
+      "colorPicker": "Akzentfarbwähler",
+      "colorHex": "Hex-Wert der Akzentfarbe",
+      "hint": "Wird für Dekorationen, Rahmen und Vorlagenakzente verwendet."
+    },
+    "delivery": {
+      "title": "Zustellungsmodus",
+      "with": "Mit Embed-Nachricht",
+      "before": "Vor Embed-Nachricht",
+      "only": "Nur Bild (kein Embed)"
+    },
+    "toast": {
+      "imageTooLarge": "Das Hintergrundbild muss kleiner als 3 MB sein",
+      "uploaded": "Hintergrund hochgeladen",
+      "uploadFailed": "Hintergrund konnte nicht hochgeladen werden",
+      "previewFailed": "Vorschau konnte nicht erstellt werden"
+    }
   }
 }

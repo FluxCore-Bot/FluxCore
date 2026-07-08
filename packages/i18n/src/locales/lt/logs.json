@@ -79,7 +79,9 @@
       "description": "Įvykių žurnalai pasirodys čia, kai bus sukonfigūruotas registravimas ir pradės vykti įvykiai."
     },
     "config": {
-      "selectChannel": "Pasirinkti žurnalo kanalą"
+      "selectChannel": "Pasirinkti žurnalo kanalą",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

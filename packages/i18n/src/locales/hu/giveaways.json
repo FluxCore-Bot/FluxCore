@@ -1,0 +1,50 @@
+{
+  "title": "Giveaways",
+  "subtitle": "Run giveaways with customizable duration, entry requirements, and winner selection.",
+  "stats": {
+    "activeGiveaways": "Active Giveaways",
+    "pastGiveaways": "Past Giveaways",
+    "totalEntries": "Total Entries"
+  },
+  "table": {
+    "prize": "Prize",
+    "winners": "Winners",
+    "entries": "Entries",
+    "endsIn": "Ends In",
+    "status": "Status"
+  },
+  "statuses": {
+    "active": "Active",
+    "ended": "Ended",
+    "cancelled": "Cancelled"
+  },
+  "actions": {
+    "create": "Create Giveaway",
+    "edit": "Edit",
+    "end": "End",
+    "reroll": "Reroll",
+    "delete": "Delete"
+  },
+  "form": {
+    "prize": "Prize",
+    "winnersCount": "Number of Winners",
+    "duration": "Duration",
+    "channel": "Channel",
+    "requiredRole": "Required Role",
+    "description": "Description"
+  },
+  "toast": {
+    "created": "Giveaway created",
+    "createFailed": "Failed to create giveaway",
+    "updated": "Giveaway updated",
+    "updateFailed": "Failed to update giveaway",
+    "ended": "Giveaway ended",
+    "endFailed": "Failed to end giveaway",
+    "rerolled": "Winners rerolled",
+    "rerollFailed": "Failed to reroll winners",
+    "deleted": "Giveaway deleted",
+    "deleteFailed": "Failed to delete giveaway"
+  },
+  "empty": "No giveaways yet. Create one to get started.",
+  "loading": "Loading giveaways..."
+}

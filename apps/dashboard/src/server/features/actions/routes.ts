@@ -28,6 +28,7 @@ import {
 } from "@fluxcore/systems/actions/constants";
 import type { ActionEventType, ActionType, RuleStep } from "@fluxcore/systems/actions/types";
 import { channelExistsInGuild } from "../../shared/discordApi.js";
+import { logger } from "@fluxcore/utils";
 
 const validEventTypes = new Set(Object.keys(EVENT_TYPES));
 const validActionTypes = new Set(Object.keys(ACTION_TYPES));
@@ -228,8 +229,17 @@ export function registerActionRoutes(app: FastifyInstance): void {
         });
         await notifyCacheInvalidation(guildId);
         reply.send(updated);
-      } catch {
-        reply.code(404).send({ error: "Rule not found" });
+      } catch (err) {
+        const code = (err as { code?: string }).code;
+        if (code === "P2025") {
+          reply.code(404).send({ error: "Rule not found" });
+          return;
+        }
+        logger.error(
+          `Failed to update action rule ${ruleId} in guild ${guildId}`,
+          err instanceof Error ? err : new Error(String(err)),
+        );
+        reply.code(500).send({ error: "Failed to update rule" });
       }
     },
   );

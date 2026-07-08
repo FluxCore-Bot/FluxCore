@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import type { TFunction } from "i18next";
 import type { Node, Edge } from "@xyflow/react";
 import type { ActionConfig, Constants, RuleStep } from "../../../shared/lib/schemas";
 import type { ValidationIssue } from "../lib/workflow-validation";
@@ -16,6 +17,8 @@ interface WorkflowNodesInput {
   selectedNodeId?: string | null;
   onAddAction?: () => void;
   validationIssues?: ValidationIssue[];
+  /** Translator (rules namespace) for node labels built outside React components. */
+  t: TFunction;
 }
 
 export interface TriggerNodeData {
@@ -52,12 +55,12 @@ function buildLinearNodes(
   input: WorkflowNodesInput,
   triggerNode: Node<TriggerNodeData>,
 ): { nodes: Node[]; edges: Edge[] } {
-  const { actions, constants, selectedNodeId, validationIssues = [] } = input;
+  const { actions, constants, selectedNodeId, validationIssues = [], t } = input;
 
   const actionNodes: Node<ActionNodeData>[] = actions.map((action, i) => {
     const nodeId = `action-${i}`;
     const actionLabel =
-      constants?.actionTypes[action.type]?.label ?? (action.type || "Select Action");
+      constants?.actionTypes[action.type]?.label ?? (action.type || t("nodes.selectAction"));
     return {
       id: nodeId,
       type: "actionNode",
@@ -114,7 +117,7 @@ function buildStepNodes(
   input: WorkflowNodesInput,
   triggerNode: Node<TriggerNodeData>,
 ): { nodes: Node[]; edges: Edge[] } {
-  const { steps = [], entryStepId, constants, selectedNodeId, validationIssues = [] } = input;
+  const { steps = [], entryStepId, constants, selectedNodeId, validationIssues = [], t } = input;
 
   const allNodes: Node[] = [triggerNode];
   const allEdges: Edge[] = [];
@@ -150,7 +153,7 @@ function buildStepNodes(
 
     if (step.type === "action") {
       const nodeId = `step-${step.id}`;
-      const label = constants?.actionTypes[step.action.type]?.label ?? (step.action.type || "Select Action");
+      const label = constants?.actionTypes[step.action.type]?.label ?? (step.action.type || t("nodes.selectAction"));
       allNodes.push({
         id: nodeId,
         type: "actionNode",
@@ -174,8 +177,8 @@ function buildStepNodes(
         operator: step.condition.operator,
         value: step.condition.value,
         label: step.condition.field
-          ? `If ${step.condition.field}`
-          : "Configure condition",
+          ? t("nodes.ifField", { field: step.condition.field })
+          : t("nodes.configureCondition"),
         validationState: getNodeValidationState(nodeId, validationIssues),
       };
       allNodes.push({
@@ -195,7 +198,7 @@ function buildStepNodes(
       const delayData: DelayNodeData = {
         index: actionIndex++,
         delayMs: step.delayMs,
-        label: "Delay",
+        label: t("nodes.delayLabel"),
         validationState: getNodeValidationState(nodeId, validationIssues),
       };
       allNodes.push({
@@ -224,7 +227,7 @@ function buildStepNodes(
     const nodeId = `step-${step.id}`;
 
     if (step.type === "action") {
-      const label = constants?.actionTypes[step.action.type]?.label ?? (step.action.type || "Select Action");
+      const label = constants?.actionTypes[step.action.type]?.label ?? (step.action.type || t("nodes.selectAction"));
       allNodes.push({
         id: nodeId,
         type: "actionNode",
@@ -246,8 +249,8 @@ function buildStepNodes(
         operator: step.condition.operator,
         value: step.condition.value,
         label: step.condition.field
-          ? `If ${step.condition.field}`
-          : "Configure condition",
+          ? t("nodes.ifField", { field: step.condition.field })
+          : t("nodes.configureCondition"),
         validationState: getNodeValidationState(nodeId, validationIssues),
       };
       allNodes.push({
@@ -262,7 +265,7 @@ function buildStepNodes(
       const delayData: DelayNodeData = {
         index: actionIndex++,
         delayMs: step.delayMs,
-        label: "Delay",
+        label: t("nodes.delayLabel"),
         validationState: getNodeValidationState(nodeId, validationIssues),
       };
       allNodes.push({
@@ -366,10 +369,11 @@ export function useWorkflowNodes(input: WorkflowNodesInput) {
       constants,
       selectedNodeId,
       validationIssues = [],
+      t,
     } = input;
 
     const triggerLabel =
-      constants?.eventTypes[eventType]?.label ?? (eventType || "Select Trigger");
+      constants?.eventTypes[eventType]?.label ?? (eventType || t("nodes.selectTrigger"));
     const triggerDescription =
       constants?.eventTypes[eventType]?.description ?? "";
 
@@ -409,6 +413,7 @@ export function useWorkflowNodes(input: WorkflowNodesInput) {
     input.selectedNodeId,
     input.onAddAction,
     input.validationIssues,
+    input.t,
   ]);
 
   return { nodes, edges };

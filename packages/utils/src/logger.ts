@@ -22,6 +22,52 @@ const COLORS = {
   red: "\x1b[31m",
 };
 
+const REDACTED = "[REDACTED]";
+
+// Order matters: webhook URLs and structured tokens before generic
+// query-param redaction so we don't double-mangle.
+const REDACTION_PATTERNS: ReadonlyArray<{
+  pattern: RegExp;
+  replacement: string;
+}> = [
+  // Bearer tokens (Authorization header style)
+  {
+    pattern: /(Bearer\s+)[A-Za-z0-9._\-+/=]+/gi,
+    replacement: `$1${REDACTED}`,
+  },
+  // Basic auth headers
+  {
+    pattern: /(Basic\s+)[A-Za-z0-9+/=]+/gi,
+    replacement: `$1${REDACTED}`,
+  },
+  // Discord webhook URLs: keep prefix, drop the id+token suffix
+  {
+    pattern:
+      /https:\/\/(?:[a-z]+\.)?discord(?:app)?\.com\/api(?:\/v\d+)?\/webhooks\/[^\s"'<>]+/gi,
+    replacement: `https://discord.com/api/webhooks/${REDACTED}`,
+  },
+  // Discord bot tokens: 3 base64url segments separated by `.`
+  {
+    pattern: /[MN][A-Za-z\d]{23,28}\.[\w-]{6,7}\.[\w-]{27,}/g,
+    replacement: REDACTED,
+  },
+  // Sensitive query parameters
+  {
+    pattern:
+      /([?&](?:code|token|access_token|refresh_token|client_secret|api[_-]?key|secret|password)=)[^&\s"'<>]+/gi,
+    replacement: `$1${REDACTED}`,
+  },
+];
+
+export function redactSensitive(value: string): string {
+  if (!value) return value;
+  let out = value;
+  for (const { pattern, replacement } of REDACTION_PATTERNS) {
+    out = out.replace(pattern, replacement);
+  }
+  return out;
+}
+
 class Logger {
   private level: LogLevel;
 
@@ -43,9 +89,9 @@ class Logger {
     if (level < this.level) return;
     const ts = `${COLORS.gray}${this.timestamp()}${COLORS.reset}`;
     const tag = `${color}[${label}]${COLORS.reset}`;
-    console.log(`${ts} ${tag} ${message}`);
+    console.log(`${ts} ${tag} ${redactSensitive(message)}`);
     if (error?.stack) {
-      console.log(`${COLORS.gray}${error.stack}${COLORS.reset}`);
+      console.log(`${COLORS.gray}${redactSensitive(error.stack)}${COLORS.reset}`);
     }
   }
 

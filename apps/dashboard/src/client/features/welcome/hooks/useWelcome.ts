@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { apiFetch } from "../../../shared/lib/client";
+import { apiFetch, getCsrfToken } from "../../../shared/lib/client";
 
 export interface EmbedField {
   name: string;
@@ -154,12 +154,16 @@ export function useWelcomePresets() {
 export function useWelcomeImagePreview(guildId: string) {
   return useMutation({
     mutationFn: async (params: { settings: WelcomeImageSettings; type?: "welcome" | "farewell" }) => {
+      const csrf = await getCsrfToken();
       const res = await fetch(`/api/guilds/${guildId}/welcome/image/preview`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...(csrf ? { "x-csrf-token": csrf } : {}),
+        },
         body: JSON.stringify(params),
       });
-      if (!res.ok) throw new Error("Failed to generate preview");
+      if (!res.ok) throw new Error("welcome.imageEditor.toast.previewFailed");
       const blob = await res.blob();
       return URL.createObjectURL(blob);
     },

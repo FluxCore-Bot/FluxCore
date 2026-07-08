@@ -52,6 +52,7 @@
     "albumName": "Albumaren izena",
     "albumNamePlaceholder": "Nire erreprodukzio-zerrenda",
     "deleteAlbum": "Ezabatu",
-    "atMax": "Album kopuru maximora iritsi zara."
+    "atMax": "Album kopuru maximora iritsi zara.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

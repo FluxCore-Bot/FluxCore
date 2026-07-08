@@ -108,5 +108,6 @@
     "channelRequired": "Το κανάλι είναι υποχρεωτικό",
     "maxRolesReached": "Μέγιστο 25 ρόλοι ανά πάνελ"
   },
-  "loading": "Φόρτωση πάνελ..."
+  "loading": "Φόρτωση πάνελ...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

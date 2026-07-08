@@ -1,112 +1,113 @@
 {
-  "title": "[NEEDS TRANSLATION] Role Panels",
-  "subtitle": "[NEEDS TRANSLATION] Create self-assignable role panels using buttons, dropdowns, or reactions.",
+  "title": "رول پینلز",
+  "subtitle": "بٹنز، ڈراپ ڈاؤنز یا ری ایکشنز کا استعمال کرتے ہوئے خود تفویض کے قابل رول پینلز بنائیں۔",
   "stats": {
-    "totalPanels": "[NEEDS TRANSLATION] Total Panels",
-    "deployed": "[NEEDS TRANSLATION] Deployed",
-    "totalRoles": "[NEEDS TRANSLATION] Total Roles"
+    "totalPanels": "کل پینلز",
+    "deployed": "تعینات",
+    "totalRoles": "کل رولز"
   },
   "tabs": {
-    "panels": "[NEEDS TRANSLATION] Panels",
-    "preview": "[NEEDS TRANSLATION] Preview"
+    "panels": "پینلز",
+    "preview": "پیش نظارہ"
   },
   "table": {
-    "name": "[NEEDS TRANSLATION] Name",
-    "type": "[NEEDS TRANSLATION] Type",
-    "mode": "[NEEDS TRANSLATION] Mode",
-    "roles": "[NEEDS TRANSLATION] Roles",
-    "status": "[NEEDS TRANSLATION] Status"
+    "name": "نام",
+    "type": "قسم",
+    "mode": "موڈ",
+    "roles": "رولز",
+    "status": "اسٹیٹس"
   },
   "panelTypes": {
-    "reaction": "[NEEDS TRANSLATION] Reaction",
-    "button": "[NEEDS TRANSLATION] Button",
-    "dropdown": "[NEEDS TRANSLATION] Dropdown"
+    "reaction": "ری ایکشن",
+    "button": "بٹن",
+    "dropdown": "ڈراپ ڈاؤن"
   },
   "panelModes": {
-    "toggle": "[NEEDS TRANSLATION] Toggle",
-    "unique": "[NEEDS TRANSLATION] Unique",
-    "verify": "[NEEDS TRANSLATION] Verify"
+    "toggle": "ٹوگل",
+    "unique": "منفرد",
+    "verify": "توثیق"
   },
   "panelModeDescriptions": {
-    "toggle": "[NEEDS TRANSLATION] Toggle (add/remove)",
-    "unique": "[NEEDS TRANSLATION] Unique (one at a time)",
-    "verify": "[NEEDS TRANSLATION] Verify (add only)"
+    "toggle": "ٹوگل (شامل/ہٹائیں)",
+    "unique": "منفرد (ایک وقت میں ایک)",
+    "verify": "توثیق (صرف شامل کریں)"
   },
   "status": {
-    "deployed": "[NEEDS TRANSLATION] Deployed",
-    "draft": "[NEEDS TRANSLATION] Draft"
+    "deployed": "تعینات",
+    "draft": "مسودہ"
   },
   "dialog": {
-    "createPanel": "[NEEDS TRANSLATION] Create Panel",
-    "editPanel": "[NEEDS TRANSLATION] Edit Panel"
+    "createPanel": "پینل بنائیں",
+    "editPanel": "پینل میں ترمیم کریں"
   },
   "panelList": {
-    "title": "[NEEDS TRANSLATION] All Panels"
+    "title": "تمام پینلز"
   },
   "form": {
-    "name": "[NEEDS TRANSLATION] Name",
-    "namePlaceholder": "[NEEDS TRANSLATION] e.g. Color Roles",
-    "type": "[NEEDS TRANSLATION] Type",
-    "mode": "[NEEDS TRANSLATION] Mode",
-    "channel": "[NEEDS TRANSLATION] Channel",
-    "channelPlaceholder": "[NEEDS TRANSLATION] Select channel",
-    "minRoles": "[NEEDS TRANSLATION] Min Roles",
-    "minRolesPlaceholder": "[NEEDS TRANSLATION] 0",
-    "maxRoles": "[NEEDS TRANSLATION] Max Roles",
-    "maxRolesPlaceholder": "[NEEDS TRANSLATION] All",
-    "embedSection": "[NEEDS TRANSLATION] Embed",
-    "embedTitle": "[NEEDS TRANSLATION] Title",
-    "embedTitlePlaceholder": "[NEEDS TRANSLATION] Panel title (defaults to panel name)",
-    "embedDescription": "[NEEDS TRANSLATION] Description",
-    "embedDescriptionPlaceholder": "[NEEDS TRANSLATION] Description text",
-    "rolesCount": "[NEEDS TRANSLATION] Roles ({{count}}/25)",
-    "addRole": "[NEEDS TRANSLATION] Add Role"
+    "name": "نام",
+    "namePlaceholder": "مثلاً رنگ رولز",
+    "type": "قسم",
+    "mode": "موڈ",
+    "channel": "چینل",
+    "channelPlaceholder": "چینل منتخب کریں",
+    "minRoles": "کم از کم رولز",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "زیادہ سے زیادہ رولز",
+    "maxRolesPlaceholder": "تمام",
+    "embedSection": "Embed",
+    "embedTitle": "عنوان",
+    "embedTitlePlaceholder": "پینل کا عنوان (ڈیفالٹ پینل کا نام)",
+    "embedDescription": "تفصیل",
+    "embedDescriptionPlaceholder": "تفصیلی متن",
+    "rolesCount": "رولز ({{count}}/25)",
+    "addRole": "رول شامل کریں"
   },
   "entry": {
-    "role": "[NEEDS TRANSLATION] Role",
-    "rolePlaceholder": "[NEEDS TRANSLATION] Select role",
-    "label": "[NEEDS TRANSLATION] Label",
-    "labelPlaceholder": "[NEEDS TRANSLATION] Button label",
-    "emoji": "[NEEDS TRANSLATION] Emoji",
-    "emojiPlaceholder": "[NEEDS TRANSLATION] e.g. star",
-    "description": "[NEEDS TRANSLATION] Description",
-    "descriptionPlaceholder": "[NEEDS TRANSLATION] Option description",
-    "style": "[NEEDS TRANSLATION] Style"
+    "role": "رول",
+    "rolePlaceholder": "رول منتخب کریں",
+    "label": "لیبل",
+    "labelPlaceholder": "بٹن لیبل",
+    "emoji": "ایموجی",
+    "emojiPlaceholder": "مثلاً star",
+    "description": "تفصیل",
+    "descriptionPlaceholder": "آپشن کی تفصیل",
+    "style": "انداز"
   },
   "buttonStyles": {
-    "primary": "[NEEDS TRANSLATION] Primary",
-    "secondary": "[NEEDS TRANSLATION] Secondary",
-    "success": "[NEEDS TRANSLATION] Success",
-    "danger": "[NEEDS TRANSLATION] Danger"
+    "primary": "پرائمری",
+    "secondary": "سیکنڈری",
+    "success": "کامیابی",
+    "danger": "خطرہ"
   },
   "actions": {
-    "create": "[NEEDS TRANSLATION] Create",
-    "update": "[NEEDS TRANSLATION] Update",
-    "cancel": "[NEEDS TRANSLATION] Cancel",
-    "deploy": "[NEEDS TRANSLATION] Deploy",
-    "delete": "[NEEDS TRANSLATION] Delete",
-    "addEntry": "[NEEDS TRANSLATION] Add Entry",
-    "removeEntry": "[NEEDS TRANSLATION] Remove Entry"
+    "create": "بنائیں",
+    "update": "اپ ڈیٹ کریں",
+    "cancel": "منسوخ کریں",
+    "deploy": "تعینات کریں",
+    "delete": "حذف کریں",
+    "addEntry": "انٹری شامل کریں",
+    "removeEntry": "انٹری ہٹائیں"
   },
   "preview": {
-    "title": "[NEEDS TRANSLATION] Live Preview",
-    "description": "[NEEDS TRANSLATION] Preview how your panels will appear in Discord.",
-    "selectRoles": "[NEEDS TRANSLATION] Select roles...",
-    "noPreview": "[NEEDS TRANSLATION] No panels to preview."
+    "title": "لائیو پیش نظارہ",
+    "description": "پیش نظارہ کریں کہ آپ کے پینلز Discord میں کیسے نظر آئیں گے۔",
+    "selectRoles": "رولز منتخب کریں...",
+    "noPreview": "پیش نظارے کے لیے کوئی پینل نہیں۔"
   },
-  "empty": "[NEEDS TRANSLATION] No role panels created yet. Click \"Create Panel\" to get started.",
+  "empty": "ابھی تک کوئی رول پینل نہیں بنایا گیا۔ شروع کرنے کے لیے \"پینل بنائیں\" پر کلک کریں۔",
   "toast": {
-    "created": "[NEEDS TRANSLATION] Panel created",
-    "createFailed": "[NEEDS TRANSLATION] Failed to create panel",
-    "updated": "[NEEDS TRANSLATION] Panel updated",
-    "updateFailed": "[NEEDS TRANSLATION] Failed to update panel",
-    "deleted": "[NEEDS TRANSLATION] Panel deleted",
-    "deleteFailed": "[NEEDS TRANSLATION] Failed to delete panel",
-    "deployed": "[NEEDS TRANSLATION] Role panel deployed to channel",
-    "deployFailed": "[NEEDS TRANSLATION] Failed to send panel",
-    "nameRequired": "[NEEDS TRANSLATION] Panel name is required",
-    "channelRequired": "[NEEDS TRANSLATION] Channel is required",
-    "maxRolesReached": "[NEEDS TRANSLATION] Maximum 25 roles per panel"
+    "created": "پینل بن گیا",
+    "createFailed": "پینل بنانے میں ناکامی",
+    "updated": "پینل اپ ڈیٹ ہو گیا",
+    "updateFailed": "پینل اپ ڈیٹ کرنے میں ناکامی",
+    "deleted": "پینل حذف ہو گیا",
+    "deleteFailed": "پینل حذف کرنے میں ناکامی",
+    "deployed": "رول پینل چینل پر تعینات ہو گیا",
+    "deployFailed": "پینل بھیجنے میں ناکامی",
+    "nameRequired": "پینل کا نام ضروری ہے",
+    "channelRequired": "چینل ضروری ہے",
+    "maxRolesReached": "فی پینل زیادہ سے زیادہ 25 رولز"
   },
-  "loading": "[NEEDS TRANSLATION] Loading panels..."
+  "loading": "پینلز لوڈ ہو رہے ہیں...",
+  "confirmDeletePanel": "کیا آپ واقعی یہ رول پینل حذف کرنا چاہتے ہیں؟ یہ عمل واپس نہیں ہو سکتا۔"
 }

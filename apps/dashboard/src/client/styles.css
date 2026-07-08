@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @theme {
   /* ── Surface & Background Colors ── */
@@ -49,7 +50,13 @@
   --color-success: #57f287;
   --color-warning: #fee75c;
   --color-info: #60a5fa;
+  /*
+   * Discord brand blue. FILL ONLY — as text on #0e0e10 it is 4.19:1 (FAILS AA).
+   * Use --color-discord for backgrounds/badges; use --color-discord-text for any
+   * on-dark text or icon that must read as "Discord" (7.14:1 on #0e0e10, AAA).
+   */
   --color-discord: #5865F2;
+  --color-discord-text: #8b94ff;
 
   /* ── Typography ── */
   --font-body: "Inter", sans-serif;
@@ -101,7 +108,16 @@ textarea {
   border: none;
   border-radius: var(--radius-sm);
   color: var(--color-text);
-  font-size: 0.875rem;
+  /* 16px on mobile prevents iOS Safari auto-zoom on focus; 14px from md up. */
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 0.875rem;
+  }
 }
 
 input:focus,
@@ -151,12 +167,15 @@ input[type="color"] {
   background: #2c2c2f;
 }
 
-/* Material Symbols */
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-  font-size: 20px;
-  line-height: 1;
-  vertical-align: middle;
+/*
+ * Radix ScrollArea injects a `display:table; min-width:100%` wrapper (for
+ * horizontal-scroll measurement). We only ever scroll vertically, and that
+ * table wrapper overflows the viewport horizontally — its inline-start padding
+ * falls outside the clip box, producing asymmetric side padding (most visible
+ * in RTL). Force it to a block so it fills the viewport width exactly.
+ */
+[data-radix-scroll-area-viewport] > div {
+  display: block !important;
 }
 
 /* ── Focus visible — enhanced for WCAG AA ── */

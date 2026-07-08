@@ -79,7 +79,9 @@
       "description": "บันทึกเหตุการณ์จะปรากฏที่นี่เมื่อกำหนดค่าการบันทึกและเหตุการณ์เริ่มเกิดขึ้น"
     },
     "config": {
-      "selectChannel": "เลือกแชนเนลบันทึก"
+      "selectChannel": "เลือกแชนเนลบันทึก",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

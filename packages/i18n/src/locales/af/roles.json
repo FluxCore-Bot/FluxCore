@@ -108,5 +108,6 @@
     "channelRequired": "Kanaal is verpligtend",
     "maxRolesReached": "Maksimum 25 rolle per paneel"
   },
-  "loading": "Laai panele..."
+  "loading": "Laai panele...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

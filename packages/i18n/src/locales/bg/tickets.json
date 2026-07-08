@@ -33,7 +33,8 @@
     "category": "Категория за тикети",
     "create": "Създай панел",
     "edit": "Редактирай панел",
-    "deploy": "Разгърни панел"
+    "deploy": "Разгърни панел",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Канал за транскрипти",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Потвърждение за затваряне",
     "closeConfirmationDesc": "Изисквайте потвърждение преди затваряне на тикет.",
     "dmTranscript": "DM транскрипт",
-    "dmTranscriptDesc": "Изпращайте копие на транскрипта на създателя на тикета чрез DM."
+    "dmTranscriptDesc": "Изпращайте копие на транскрипта на създателя на тикета чрез DM.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Поеми",

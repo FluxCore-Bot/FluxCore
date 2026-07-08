@@ -26,7 +26,8 @@
       "original": "Original Message",
       "stars": "Stars",
       "channel": "Channel",
-      "date": "Date"
+      "date": "Date",
+      "author": "Author"
     },
     "noMessages": "No starred messages yet."
   },

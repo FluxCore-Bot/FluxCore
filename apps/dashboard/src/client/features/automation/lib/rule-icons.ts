@@ -1,3 +1,4 @@
+import type { TFunction } from "i18next";
 import type { ActionConfig } from "../../../shared/lib/schemas";
 
 export const ACTION_ICONS: Record<string, string> = {
@@ -35,7 +36,12 @@ export const EVENT_ICONS: Record<string, string> = {
   boostEnd: "rocket",
 };
 
-export function getActionPreview(action: ActionConfig): string | null {
+/**
+ * Build a short preview string for an action. Accepts a translator (rules
+ * namespace) because it is called from multiple components; user-facing
+ * template strings are resolved here rather than hardcoded in English.
+ */
+export function getActionPreview(action: ActionConfig, t: TFunction): string | null {
   switch (action.type) {
     case "sendMessage":
     case "sendDM":
@@ -43,10 +49,10 @@ export function getActionPreview(action: ActionConfig): string | null {
         ? action.message.slice(0, 50) + (action.message.length > 50 ? "..." : "")
         : null;
     case "sendEmbed":
-      return action.embed?.title ? `Embed: ${action.embed.title}` : null;
+      return action.embed?.title ? t("actionPreview.embed", { title: action.embed.title }) : null;
     case "addRole":
     case "removeRole":
-      return action.roleId ? `Role ID: ${action.roleId.slice(0, 12)}...` : null;
+      return action.roleId ? t("actionPreview.roleId", { id: action.roleId.slice(0, 12) }) : null;
     case "setNickname":
       return action.nickname ?? null;
     case "createThread":
@@ -54,9 +60,9 @@ export function getActionPreview(action: ActionConfig): string | null {
     case "addReaction":
       return action.emoji ?? null;
     case "sendWebhook":
-      return action.webhook?.url ? "Webhook configured" : null;
+      return action.webhook?.url ? t("actionPreview.webhookConfigured") : null;
     case "logToChannel":
-      return action.channelId ? "Channel configured" : null;
+      return action.channelId ? t("actionPreview.channelConfigured") : null;
     default:
       return null;
   }

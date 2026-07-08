@@ -52,6 +52,7 @@
     "albumName": "Název alba",
     "albumNamePlaceholder": "Můj playlist",
     "deleteAlbum": "Smazat",
-    "atMax": "Dosáhli jste maximálního počtu alb."
+    "atMax": "Dosáhli jste maximálního počtu alb.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

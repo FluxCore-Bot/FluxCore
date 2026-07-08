@@ -114,5 +114,12 @@
     "creating": "Creation...",
     "create": "Creer"
   },
-  "loading": "Chargement des permissions..."
+  "loading": "Chargement des permissions...",
+  "guard": {
+    "deniedTitle": "Accès refusé",
+    "deniedMessage": "Vous n'avez pas la permission d'accéder à <1>{{module}}</1>.",
+    "requiredPermission": "Permission requise :",
+    "yourRoles": "Vos rôles :",
+    "contactOwner": "Contactez le propriétaire du serveur pour demander l'accès."
+  }
 }

@@ -261,3 +261,14 @@ export const CONDITION_TYPES = [
 ] as const;
 
 export type ConditionType = (typeof CONDITION_TYPES)[number];
+
+/**
+ * Allowed character set for action rule names. Restricts user-supplied
+ * names so they cannot inject markdown, mention syntax, code fences, or
+ * invisible characters into embeds, autocomplete output, or audit logs.
+ */
+export const RULE_NAME_REGEX = /^[a-zA-Z0-9 _-]{1,50}$/;
+
+export function isValidRuleName(name: string): boolean {
+  return typeof name === "string" && RULE_NAME_REGEX.test(name);
+}

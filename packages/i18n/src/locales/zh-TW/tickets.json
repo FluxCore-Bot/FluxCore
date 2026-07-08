@@ -1,14 +1,80 @@
 {
   "title": "工單系統",
   "subtitle": "建立支援工單面板，並從儀表板管理已開啟的工單。",
-  "stats": { "totalTickets": "工單總數", "open": "開啟中", "claimed": "已認領", "panels": "面板" },
-  "tabs": { "activeTickets": "活躍工單", "panelBuilder": "面板建構器", "settings": "設定" },
-  "table": { "id": "ID", "user": "使用者", "subject": "主題", "status": "狀態", "assignee": "負責人", "created": "建立時間" },
-  "statuses": { "open": "開啟中", "claimed": "已認領", "closed": "已關閉" },
-  "panelBuilder": { "title": "面板標題", "channel": "頻道", "buttonLabel": "按鈕標籤", "welcomeMessage": "歡迎訊息", "category": "工單分類", "create": "建立面板", "edit": "編輯面板", "deploy": "部署面板" },
-  "settings": { "transcriptChannel": "記錄頻道", "transcriptChannelDesc": "工單關閉時儲存記錄的頻道。", "maxTicketsPerUser": "每位使用者最大工單數", "maxTicketsPerUserDesc": "單一使用者可擁有的最大開啟工單數。", "closeConfirmation": "關閉確認", "closeConfirmationDesc": "關閉工單前需要確認。", "dmTranscript": "私訊傳送記錄", "dmTranscriptDesc": "透過私訊向工單建立者傳送記錄副本。" },
-  "actions": { "claim": "認領", "close": "關閉", "delete": "刪除", "reopen": "重新開啟" },
-  "toast": { "panelCreated": "工單面板已建立", "panelCreateFailed": "建立工單面板失敗", "panelUpdated": "工單面板已更新", "panelUpdateFailed": "更新工單面板失敗", "panelDeployed": "工單面板已部署", "panelDeployFailed": "部署工單面板失敗", "ticketClaimed": "工單已認領", "ticketClaimFailed": "認領工單失敗", "ticketClosed": "工單已關閉", "ticketCloseFailed": "關閉工單失敗", "ticketReopened": "工單已重新開啟", "ticketReopenFailed": "重新開啟工單失敗", "ticketDeleted": "工單已刪除", "ticketDeleteFailed": "刪除工單失敗", "settingsSaved": "工單設定已儲存", "settingsFailed": "儲存工單設定失敗" },
-  "empty": { "tickets": "沒有活躍工單。", "panels": "尚未建立工單面板。" },
+  "stats": {
+    "totalTickets": "工單總數",
+    "open": "開啟中",
+    "claimed": "已認領",
+    "panels": "面板"
+  },
+  "tabs": {
+    "activeTickets": "活躍工單",
+    "panelBuilder": "面板建構器",
+    "settings": "設定"
+  },
+  "table": {
+    "id": "ID",
+    "user": "使用者",
+    "subject": "主題",
+    "status": "狀態",
+    "assignee": "負責人",
+    "created": "建立時間"
+  },
+  "statuses": {
+    "open": "開啟中",
+    "claimed": "已認領",
+    "closed": "已關閉"
+  },
+  "panelBuilder": {
+    "title": "面板標題",
+    "channel": "頻道",
+    "buttonLabel": "按鈕標籤",
+    "welcomeMessage": "歡迎訊息",
+    "category": "工單分類",
+    "create": "建立面板",
+    "edit": "編輯面板",
+    "deploy": "部署面板",
+    "openTicket": "Open Ticket"
+  },
+  "settings": {
+    "transcriptChannel": "記錄頻道",
+    "transcriptChannelDesc": "工單關閉時儲存記錄的頻道。",
+    "maxTicketsPerUser": "每位使用者最大工單數",
+    "maxTicketsPerUserDesc": "單一使用者可擁有的最大開啟工單數。",
+    "closeConfirmation": "關閉確認",
+    "closeConfirmationDesc": "關閉工單前需要確認。",
+    "dmTranscript": "私訊傳送記錄",
+    "dmTranscriptDesc": "透過私訊向工單建立者傳送記錄副本。",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
+  },
+  "actions": {
+    "claim": "認領",
+    "close": "關閉",
+    "delete": "刪除",
+    "reopen": "重新開啟"
+  },
+  "toast": {
+    "panelCreated": "工單面板已建立",
+    "panelCreateFailed": "建立工單面板失敗",
+    "panelUpdated": "工單面板已更新",
+    "panelUpdateFailed": "更新工單面板失敗",
+    "panelDeployed": "工單面板已部署",
+    "panelDeployFailed": "部署工單面板失敗",
+    "ticketClaimed": "工單已認領",
+    "ticketClaimFailed": "認領工單失敗",
+    "ticketClosed": "工單已關閉",
+    "ticketCloseFailed": "關閉工單失敗",
+    "ticketReopened": "工單已重新開啟",
+    "ticketReopenFailed": "重新開啟工單失敗",
+    "ticketDeleted": "工單已刪除",
+    "ticketDeleteFailed": "刪除工單失敗",
+    "settingsSaved": "工單設定已儲存",
+    "settingsFailed": "儲存工單設定失敗"
+  },
+  "empty": {
+    "tickets": "沒有活躍工單。",
+    "panels": "尚未建立工單面板。"
+  },
   "loading": "正在載入工單..."
 }

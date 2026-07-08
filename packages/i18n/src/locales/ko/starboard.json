@@ -26,7 +26,8 @@
       "original": "원본 메시지",
       "stars": "스타 수",
       "channel": "채널",
-      "date": "날짜"
+      "date": "날짜",
+      "author": "Author"
     },
     "noMessages": "아직 스타 메시지가 없습니다."
   },

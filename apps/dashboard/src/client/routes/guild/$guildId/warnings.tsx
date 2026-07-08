@@ -74,6 +74,8 @@ export function WarningsPage() {
   const [newThreshold, setNewThreshold] = useState("");
   const [newAction, setNewAction] = useState("timeout");
   const [newDuration, setNewDuration] = useState("");
+  const [thresholdError, setThresholdError] = useState<string | null>(null);
+  const [maxWarningsError, setMaxWarningsError] = useState<string | null>(null);
 
   const totalPages = warningsData ? Math.max(1, Math.ceil(warningsData.total / 10)) : 1;
 
@@ -109,9 +111,11 @@ export function WarningsPage() {
   function handleAddPunishment() {
     const threshold = parseInt(newThreshold, 10);
     if (!Number.isFinite(threshold) || threshold < 1) {
+      setThresholdError(t("toast.thresholdInvalid"));
       toast.error(t("toast.thresholdInvalid"));
       return;
     }
+    setThresholdError(null);
     const duration = newAction === "timeout" && newDuration
       ? parseInt(newDuration, 10)
       : undefined;
@@ -156,7 +160,11 @@ export function WarningsPage() {
 
   function handleMaxWarningsChange(value: string) {
     const num = parseInt(value, 10);
-    if (!Number.isFinite(num) || num < 0) return;
+    if (!Number.isFinite(num) || num < 0) {
+      setMaxWarningsError(t("toast.thresholdInvalid"));
+      return;
+    }
+    setMaxWarningsError(null);
     updateSettings.mutate(
       { maxWarnings: num },
       {
@@ -266,6 +274,7 @@ export function WarningsPage() {
                               size="sm"
                               onClick={() => handleDeleteWarning(w.id)}
                               disabled={deleteWarning.isPending}
+                              aria-label={t("common:actions.delete")}
                             >
                               <Icon name="delete" size={16} className="text-danger" />
                             </Button>
@@ -318,7 +327,7 @@ export function WarningsPage() {
         {/* Escalation Config */}
         <TabsContent value="escalation">
           <Card className="bg-surface-container p-6 glass-edge">
-            <h3 className="mb-4 font-label text-lg font-semibold">{t("escalation.title")}</h3>
+            <h2 className="mb-4 font-label text-lg font-semibold">{t("escalation.title")}</h2>
             <p className="mb-4 text-sm text-text-muted">
               {t("escalation.description")}
             </p>
@@ -352,6 +361,7 @@ export function WarningsPage() {
                             size="sm"
                             onClick={() => handleRemovePunishment(p.id)}
                             disabled={removePunishment.isPending}
+                            aria-label={t("common:actions.delete")}
                           >
                             <Icon name="delete" size={16} className="text-danger" />
                           </Button>
@@ -377,9 +387,19 @@ export function WarningsPage() {
                   min={1}
                   placeholder={t("escalation.thresholdPlaceholder")}
                   value={newThreshold}
-                  onChange={(e) => setNewThreshold(e.target.value)}
+                  onChange={(e) => {
+                    setNewThreshold(e.target.value);
+                    if (thresholdError) setThresholdError(null);
+                  }}
                   className="w-24"
+                  aria-invalid={thresholdError ? true : undefined}
+                  aria-describedby={thresholdError ? "threshold-error" : undefined}
                 />
+                {thresholdError && (
+                  <p id="threshold-error" className="mt-1 text-xs text-danger">
+                    {thresholdError}
+                  </p>
+                )}
               </div>
               <div>
                 <Label htmlFor="action">{t("escalation.action")}</Label>
@@ -421,7 +441,7 @@ export function WarningsPage() {
         {/* Settings */}
         <TabsContent value="settings">
           <Card className="bg-surface-container p-6 glass-edge">
-            <h3 className="mb-4 font-label text-lg font-semibold">{t("settings.title")}</h3>
+            <h2 className="mb-4 font-label text-lg font-semibold">{t("settings.title")}</h2>
 
             {settingsLoading ? (
               <FormSkeleton />
@@ -464,13 +484,22 @@ export function WarningsPage() {
                       {t("settings.maxWarningsDesc")}
                     </p>
                   </div>
-                  <Input
-                    type="number"
-                    min={0}
-                    value={settings.maxWarnings}
-                    onChange={(e) => handleMaxWarningsChange(e.target.value)}
-                    className="w-24"
-                  />
+                  <div>
+                    <Input
+                      type="number"
+                      min={0}
+                      value={settings.maxWarnings}
+                      onChange={(e) => handleMaxWarningsChange(e.target.value)}
+                      className="w-24"
+                      aria-invalid={maxWarningsError ? true : undefined}
+                      aria-describedby={maxWarningsError ? "max-warnings-error" : undefined}
+                    />
+                    {maxWarningsError && (
+                      <p id="max-warnings-error" className="mt-1 text-xs text-danger">
+                        {maxWarningsError}
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
             ) : null}
@@ -482,7 +511,7 @@ export function WarningsPage() {
         open={deleteConfirmId !== null}
         onOpenChange={(open) => { if (!open) setDeleteConfirmId(null); }}
         title={t("toast.warningRemoved")}
-        description={t("common:actions.confirmDelete", { defaultValue: "Are you sure you want to delete this item? This action cannot be undone." })}
+        description={t("confirmDelete")}
         confirmLabel={t("common:actions.delete", { defaultValue: "Delete" })}
         destructive
         onConfirm={confirmDeleteWarning}
@@ -493,7 +522,7 @@ export function WarningsPage() {
         open={removePunishmentConfirmId !== null}
         onOpenChange={(open) => { if (!open) setRemovePunishmentConfirmId(null); }}
         title={t("toast.thresholdRemoved")}
-        description={t("common:actions.confirmDelete", { defaultValue: "Are you sure you want to remove this escalation rule? This action cannot be undone." })}
+        description={t("confirmRemoveEscalation")}
         confirmLabel={t("common:actions.delete", { defaultValue: "Remove" })}
         destructive
         onConfirm={confirmRemovePunishment}

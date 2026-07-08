@@ -25,7 +25,8 @@
     "date": "日期",
     "actions": "操作",
     "noCases": "未找到案例。",
-    "noReason": "无原因"
+    "noReason": "无原因",
+    "noCasesDesc": "没有符合筛选条件的管理案件"
   },
   "filter": {
     "userPlaceholder": "按用户 ID 筛选...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "在处罚（封禁、踢出、超时）时向用户发送私信。",
     "modLogChannel": "管理日志频道",
     "modLogChannelDesc": "记录管理操作的频道。"
+  },
+  "toast": {
+    "caseDeleted": "案件已删除",
+    "caseUpdated": "案件已更新",
+    "deleteFailed": "删除案件失败",
+    "updateFailed": "更新案件失败"
   }
 }

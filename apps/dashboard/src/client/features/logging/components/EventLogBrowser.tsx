@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "@tanstack/react-router";
 import { useLogEntries, type LogFilters } from "../hooks/useLogging";
+import { CATEGORY_ICONS } from "./EventLogConfig";
 import { Icon } from "../../../shared/components/Icon";
 import { Input } from "../../../shared/ui/input";
 import { Button } from "../../../shared/ui/button";
@@ -32,7 +33,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 export function EventLogBrowser() {
-  const { t } = useTranslation("logs");
+  const { t } = useTranslation(["logs", "common"]);
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const [category, setCategory] = useState("");
   const [targetId, setTargetId] = useState("");
@@ -53,7 +54,7 @@ export function EventLogBrowser() {
     <div className="space-y-4">
       <div className="flex items-center gap-2">
         <Icon name="list" size={20} className="text-accent" />
-        <h3 className="text-lg font-semibold font-display">{t("events.title")}</h3>
+        <h2 className="text-lg font-semibold font-display">{t("events.title")}</h2>
         {data && (
           <Badge variant="outline" className="ms-auto text-xs font-mono">
             {t("events.filter.entries", { count: data.total.toLocaleString() })}
@@ -96,6 +97,7 @@ export function EventLogBrowser() {
               setPage(1);
             }}
             placeholder={t("events.filter.byUserId")}
+            aria-label={t("events.filter.byUserId")}
             className="ps-10 font-mono text-sm"
           />
         </div>
@@ -131,8 +133,12 @@ export function EventLogBrowser() {
                     <TableCell>
                       <Badge
                         variant="secondary"
-                        className={`text-xs ${CATEGORY_COLORS[entry.category] ?? ""}`}
+                        className={`inline-flex items-center gap-1 text-xs ${CATEGORY_COLORS[entry.category] ?? ""}`}
                       >
+                        <Icon
+                          name={CATEGORY_ICONS[entry.category] ?? "circle"}
+                          size={12}
+                        />
                         {entry.category}
                       </Badge>
                     </TableCell>

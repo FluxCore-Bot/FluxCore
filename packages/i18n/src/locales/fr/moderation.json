@@ -25,7 +25,8 @@
     "date": "Date",
     "actions": "Actions",
     "noCases": "Aucun cas trouve.",
-    "noReason": "Aucune raison"
+    "noReason": "Aucune raison",
+    "noCasesDesc": "Aucun dossier de modération ne correspond à vos filtres"
   },
   "filter": {
     "userPlaceholder": "Filtrer par ID utilisateur...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Envoyer un MP aux utilisateurs lorsqu'ils sont sanctionnes (ban, expulsion, exclusion temporaire).",
     "modLogChannel": "Salon de journal de moderation",
     "modLogChannelDesc": "Salon ou les actions de moderation sont enregistrees."
+  },
+  "toast": {
+    "caseDeleted": "Dossier supprimé",
+    "caseUpdated": "Dossier mis à jour",
+    "deleteFailed": "Échec de la suppression du dossier",
+    "updateFailed": "Échec de la mise à jour du dossier"
   }
 }

@@ -33,7 +33,8 @@
     "category": "Tikettikategoria",
     "create": "Luo paneeli",
     "edit": "Muokkaa paneelia",
-    "deploy": "Julkaise paneeli"
+    "deploy": "Julkaise paneeli",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Käsikirjoituskanava",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Sulkemisvahvistus",
     "closeConfirmationDesc": "Vaadi vahvistus ennen tiketin sulkemista.",
     "dmTranscript": "DM-käsikirjoitus",
-    "dmTranscriptDesc": "Lähetä kopio käsikirjoituksesta tiketin luojalle DM:llä."
+    "dmTranscriptDesc": "Lähetä kopio käsikirjoituksesta tiketin luojalle DM:llä.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Varaa",

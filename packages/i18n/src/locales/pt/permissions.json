@@ -114,5 +114,12 @@
     "creating": "A criar...",
     "create": "Criar"
   },
-  "loading": "A carregar permissoes..."
+  "loading": "A carregar permissoes...",
+  "guard": {
+    "deniedTitle": "Permissão Negada",
+    "deniedMessage": "Você não tem permissão para acessar <1>{{module}}</1>.",
+    "requiredPermission": "Permissão necessária:",
+    "yourRoles": "Seus cargos:",
+    "contactOwner": "Entre em contato com o dono do servidor para solicitar acesso."
+  }
 }

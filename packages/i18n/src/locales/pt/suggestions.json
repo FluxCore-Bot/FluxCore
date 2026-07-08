@@ -45,7 +45,9 @@
     "autoThread": "Criar topico automaticamente",
     "autoThreadDesc": "Criar automaticamente um topico de discussao em cada nova sugestao.",
     "dmOnStatusChange": "MD ao alterar estado",
-    "dmOnStatusChangeDesc": "Notificar o autor por MD quando o estado da sugestao mudar."
+    "dmOnStatusChangeDesc": "Notificar o autor por MD quando o estado da sugestao mudar.",
+    "anonymousMode": "Modo Anônimo",
+    "anonymousModeDesc": "Ocultar a identidade dos membros que enviam sugestões."
   },
   "toast": {
     "approved": "Sugestao aprovada",
@@ -63,5 +65,6 @@
     "previous": "Anterior",
     "next": "Seguinte",
     "page": "Pagina {{page}} de {{total}}"
-  }
+  },
+  "confirmDelete": "Tem certeza de que deseja excluir esta sugestão? Esta ação não pode ser desfeita."
 }

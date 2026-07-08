@@ -19,7 +19,13 @@ import { ColorPicker } from "../../../shared/ui/color-picker";
 import { Label } from "../../../shared/ui/label";
 import { Card } from "../../../shared/ui/card";
 import { Switch } from "../../../shared/ui/switch";
-import { Textarea } from "../../../shared/ui/textarea";
+import {
+  VariableEditor,
+  VariableBrowser,
+  DiscordMessagePreview,
+  usePreviewContext,
+  welcomeVariables,
+} from "../../../shared/ui/variable-field";
 import {
   Select,
   SelectContent,
@@ -46,6 +52,8 @@ import { Separator } from "../../../shared/ui/separator";
 import { Badge } from "../../../shared/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 import { Icon } from "../../../shared/components/Icon";
+import { EmptyState } from "../../../shared/components/EmptyState";
+import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
 import type { ScheduledMessageContent } from "../../../shared/lib/schemas";
 import { StatsCard } from "../../../shared/components/StatsCard";
 import { PageSkeleton, TableSkeleton } from "../../../shared/ui/skeletons";
@@ -82,11 +90,19 @@ interface MessageFormState {
   embedImage: string;
 }
 
+function getBrowserTimezone(): string {
+  try {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+  } catch {
+    return "UTC";
+  }
+}
+
 const emptyForm: MessageFormState = {
   name: "",
   channelId: "",
   cronExpr: "0 9 * * *",
-  timezone: "UTC",
+  timezone: getBrowserTimezone(),
   enabled: true,
   messageType: "text",
   textContent: "",
@@ -117,10 +133,11 @@ function formToContent(form: MessageFormState): ScheduledMessageContent {
 
 export function ScheduledMessagesPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
-  const { t } = useTranslation("scheduled");
+  const { t } = useTranslation(["scheduled", "common", "errors"]);
   const [page, setPage] = useState(1);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
+  const [deleteId, setDeleteId] = useState<number | null>(null);
   const [form, setForm] = useState<MessageFormState>(emptyForm);
 
   const CRON_PRESETS = useMemo<Record<string, string>>(
@@ -135,13 +152,24 @@ export function ScheduledMessagesPage() {
     [t],
   );
 
+  const real = usePreviewContext(guildId);
+
   const { data, isLoading } = useScheduledMessages(guildId, { page, limit: 10 });
   const { data: channels } = useChannels(guildId);
   const createMsg = useCreateScheduledMessage(guildId);
   const updateMsg = useUpdateScheduledMessage(guildId);
   const deleteMsg = useDeleteScheduledMessage(guildId);
   const testMsg = useTestScheduledMessage(guildId);
-  const { data: cronPreview } = useCronPreview(guildId, form.cronExpr, form.timezone);
+  const { data: cronPreview, isLoading: cronPreviewLoading } = useCronPreview(
+    guildId,
+    form.cronExpr,
+    form.timezone,
+  );
+
+  const cronInvalid =
+    form.cronExpr.trim().length > 0 &&
+    !cronPreviewLoading &&
+    (!cronPreview || cronPreview.nextRuns.length === 0);
 
   const totalPages = data ? Math.max(1, Math.ceil(data.total / 10)) : 1;
   const textChannels = channels?.filter((c) => c.type === 0 || c.type === 5) ?? [];
@@ -365,6 +393,7 @@ export function ScheduledMessagesPage() {
                             size="sm"
                             onClick={() => handleTestSend(msg.id)}
                             title={t("actions.testSend")}
+                            aria-label={t("actions.testSend")}
                           >
                             <Icon name="play_arrow" size={16} />
                           </Button>
@@ -373,14 +402,16 @@ export function ScheduledMessagesPage() {
                             size="sm"
                             onClick={() => openEdit(msg)}
                             title={t("actions.edit")}
+                            aria-label={t("actions.edit")}
                           >
                             <Icon name="edit" size={16} />
                           </Button>
                           <Button
                             variant="ghost"
                             size="sm"
-                            onClick={() => handleDelete(msg.id)}
+                            onClick={() => setDeleteId(msg.id)}
                             title={t("actions.delete")}
+                            aria-label={t("actions.delete")}
                           >
                             <Icon name="delete" size={16} className="text-danger" />
                           </Button>
@@ -419,19 +450,17 @@ export function ScheduledMessagesPage() {
             )}
           </>
         ) : (
-          <div className="flex flex-col items-center gap-4 py-12 text-center">
-            <Icon name="schedule" size={48} className="text-text-muted" />
-            <div>
-              <p className="font-medium text-text">{t("empty.title")}</p>
-              <p className="mt-1 text-sm text-text-muted">
-                {t("empty.description")}
-              </p>
-            </div>
-            <Button onClick={openCreate}>
-              <Icon name="add" size={16} className="me-2" />
-              {t("empty.createButton")}
-            </Button>
-          </div>
+          <EmptyState
+            icon="schedule"
+            title={t("empty.title")}
+            description={t("empty.description")}
+            action={
+              <Button onClick={openCreate}>
+                <Icon name="add" size={16} className="me-2" />
+                {t("empty.createButton")}
+              </Button>
+            }
+          />
         )}
       </Card>
 
@@ -511,7 +540,16 @@ export function ScheduledMessagesPage() {
                   value={form.cronExpr}
                   onChange={(e) => updateForm({ cronExpr: e.target.value })}
                   className="font-mono"
+                  aria-invalid={cronInvalid}
+                  aria-describedby={cronInvalid ? "cron-expr-error" : undefined}
                 />
+                {cronInvalid && (
+                  <p id="cron-expr-error" className="mt-1 text-xs text-danger">
+                    {t("errors:validation.invalidFormat", {
+                      field: t("form.cronExpression"),
+                    })}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -523,7 +561,10 @@ export function ScheduledMessagesPage() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  {COMMON_TIMEZONES.map((tz) => (
+                  {(COMMON_TIMEZONES.includes(form.timezone)
+                    ? COMMON_TIMEZONES
+                    : [form.timezone, ...COMMON_TIMEZONES]
+                  ).map((tz) => (
                     <SelectItem key={tz} value={tz}>
                       {tz}
                     </SelectItem>
@@ -560,14 +601,22 @@ export function ScheduledMessagesPage() {
 
               <TabsContent value="text" className="mt-4">
                 <div>
-                  <Label htmlFor="msg-content">{t("form.messageContent")}</Label>
-                  <Textarea
+                  <div className="mb-1 flex items-center justify-between">
+                    <Label htmlFor="msg-content">{t("form.messageContent")}</Label>
+                    <VariableBrowser
+                      variables={welcomeVariables}
+                      onInsert={(tok) => updateForm({ textContent: form.textContent + tok })}
+                    />
+                  </div>
+                  <VariableEditor
                     id="msg-content"
                     placeholder={t("form.messageContent")}
                     value={form.textContent}
-                    onChange={(e) => updateForm({ textContent: e.target.value })}
-                    maxLength={2000}
+                    onChange={(v) => updateForm({ textContent: v })}
+                    variables={welcomeVariables}
+                    multiline
                     rows={5}
+                    maxLength={2000}
                   />
                   <p className="mt-1 text-xs text-text-muted">
                     {t("characters", { count: form.textContent.length })}
@@ -578,20 +627,23 @@ export function ScheduledMessagesPage() {
               <TabsContent value="embed" className="mt-4 space-y-4">
                 <div>
                   <Label htmlFor="embed-title">{t("embed.title")}</Label>
-                  <Input
+                  <VariableEditor
                     id="embed-title"
                     placeholder={t("embed.title")}
                     value={form.embedTitle}
-                    onChange={(e) => updateForm({ embedTitle: e.target.value })}
+                    onChange={(v) => updateForm({ embedTitle: v })}
+                    variables={welcomeVariables}
                   />
                 </div>
                 <div>
                   <Label htmlFor="embed-description">{t("embed.description")}</Label>
-                  <Textarea
+                  <VariableEditor
                     id="embed-description"
                     placeholder={t("embed.description")}
                     value={form.embedDescription}
-                    onChange={(e) => updateForm({ embedDescription: e.target.value })}
+                    onChange={(v) => updateForm({ embedDescription: v })}
+                    variables={welcomeVariables}
+                    multiline
                     rows={4}
                   />
                 </div>
@@ -605,22 +657,24 @@ export function ScheduledMessagesPage() {
                   </div>
                   <div>
                     <Label htmlFor="embed-footer">{t("embed.footer")}</Label>
-                    <Input
+                    <VariableEditor
                       id="embed-footer"
                       placeholder={t("embed.footer")}
                       value={form.embedFooter}
-                      onChange={(e) => updateForm({ embedFooter: e.target.value })}
+                      onChange={(v) => updateForm({ embedFooter: v })}
+                      variables={welcomeVariables}
                     />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
                     <Label htmlFor="embed-thumbnail">{t("embed.thumbnail")}</Label>
-                    <Input
+                    <VariableEditor
                       id="embed-thumbnail"
                       placeholder="https://..."
                       value={form.embedThumbnail}
-                      onChange={(e) => updateForm({ embedThumbnail: e.target.value })}
+                      onChange={(v) => updateForm({ embedThumbnail: v })}
+                      variables={welcomeVariables}
                     />
                   </div>
                   <div>
@@ -634,27 +688,28 @@ export function ScheduledMessagesPage() {
                   </div>
                 </div>
 
-                {/* Embed Preview */}
-                {(form.embedTitle || form.embedDescription) && (
-                  <div
-                    className="rounded-md border-s-4 bg-surface-high p-4"
-                    style={{
-                      borderInlineStartColor: form.embedColor || "#a3a6ff",
-                    }}
-                  >
-                    {form.embedTitle && (
-                      <p className="mb-1 font-semibold text-text">{form.embedTitle}</p>
-                    )}
-                    {form.embedDescription && (
-                      <p className="text-sm text-text-muted">{form.embedDescription}</p>
-                    )}
-                    {form.embedFooter && (
-                      <p className="mt-2 text-xs text-text-muted">{form.embedFooter}</p>
-                    )}
-                  </div>
-                )}
               </TabsContent>
             </Tabs>
+
+            {/* Live Discord-style preview */}
+            <DiscordMessagePreview
+              variables={welcomeVariables}
+              real={real}
+              content={form.messageType === "text" ? form.textContent : undefined}
+              embed={
+                form.messageType === "embed"
+                  ? {
+                      title: form.embedTitle,
+                      description: form.embedDescription,
+                      footer: form.embedFooter,
+                      thumbnail: form.embedThumbnail,
+                      color: form.embedColor
+                        ? parseInt(form.embedColor.replace("#", ""), 16)
+                        : undefined,
+                    }
+                  : undefined
+              }
+            />
 
             {/* Enabled toggle */}
             <div className="flex items-center justify-between">
@@ -684,6 +739,22 @@ export function ScheduledMessagesPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Delete Confirmation */}
+      <ConfirmDialog
+        open={deleteId !== null}
+        onOpenChange={(open) => {
+          if (!open) setDeleteId(null);
+        }}
+        title={t("common:confirm.deleteTitle")}
+        description={t("common:confirm.deleteMessage")}
+        confirmLabel={t("actions.delete")}
+        destructive
+        onConfirm={() => {
+          if (deleteId !== null) handleDelete(deleteId);
+          setDeleteId(null);
+        }}
+      />
     </div>
   );
 }

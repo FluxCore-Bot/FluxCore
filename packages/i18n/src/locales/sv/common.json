@@ -79,7 +79,9 @@
     "conditions": "Villkor",
     "duration": "Varaktighet",
     "reason": "Orsak",
-    "language": "Språk"
+    "language": "Språk",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Välj kanal...",
@@ -98,7 +100,6 @@
     "showingPage": "Sida {{page}} av {{total}} ({{count}} totalt)"
   },
   "header": {
-    "notifications": "Aviseringar",
     "settings": "Inställningar",
     "logout": "Logga ut",
     "toggleSidebar": "Växla sidofält",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "Stäng sidofält",
     "addToServer": "Lägg till på server",
-    "docs": "Dokumentation",
-    "support": "Support",
     "backToServers": "Tillbaka till servrar"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "timmar",
     "days": "dagar",
     "ago": "{{time}} sedan",
-    "in": "om {{time}}"
+    "in": "om {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Är du säker?",
@@ -137,5 +137,9 @@
     "error": "Ett fel uppstod",
     "menuOpen": "Menyn är öppen",
     "menuClosed": "Menyn är stängd"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

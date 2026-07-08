@@ -33,7 +33,8 @@
     "category": "Biletes kategorija",
     "create": "Izveidot paneli",
     "edit": "Rediget paneli",
-    "deploy": "Izvietot paneli"
+    "deploy": "Izvietot paneli",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Transkriptu kanals",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Aizverasanas apstiprinajums",
     "closeConfirmationDesc": "Pieprasit apstiprinajumu pirms biletes aizverassanas.",
     "dmTranscript": "Transkripts privataja zinojuma",
-    "dmTranscriptDesc": "Nosutit transkripta kopiju biletes autoram privataa zinojuma."
+    "dmTranscriptDesc": "Nosutit transkripta kopiju biletes autoram privataa zinojuma.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Piienemt",

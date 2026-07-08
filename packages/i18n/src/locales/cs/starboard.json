@@ -1,0 +1,42 @@
+{
+  "title": "Starboard",
+  "subtitle": "Highlight the best messages by collecting star reactions into a dedicated channel.",
+  "tabs": {
+    "settings": "Settings",
+    "starredMessages": "Starred Messages"
+  },
+  "settings": {
+    "title": "Starboard Configuration",
+    "description": "Configure when and where starred messages are posted.",
+    "channelId": "Starboard Channel",
+    "channelIdDesc": "The channel where starred messages are posted.",
+    "starEmoji": "Star Emoji",
+    "starEmojiDesc": "The emoji used to star messages. Defaults to the star emoji.",
+    "threshold": "Star Threshold",
+    "thresholdDesc": "Minimum number of reactions required to post a message to the starboard.",
+    "selfStar": "Self-Star",
+    "selfStarDesc": "Allow message authors to star their own messages.",
+    "nsfwAllowed": "NSFW Allowed",
+    "nsfwAllowedDesc": "Allow messages from NSFW channels to appear on the starboard.",
+    "ignoredChannels": "Ignored Channels",
+    "ignoredChannelsDesc": "Messages from these channels will never appear on the starboard."
+  },
+  "messages": {
+    "table": {
+      "original": "Original Message",
+      "stars": "Stars",
+      "channel": "Channel",
+      "date": "Date",
+      "author": "Author"
+    },
+    "noMessages": "No starred messages yet."
+  },
+  "toast": {
+    "saved": "Starboard settings saved",
+    "saveFailed": "Failed to save starboard settings"
+  },
+  "actions": {
+    "save": "Save",
+    "saving": "Saving..."
+  }
+}

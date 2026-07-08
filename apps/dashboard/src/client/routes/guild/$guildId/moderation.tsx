@@ -151,7 +151,7 @@ export function ModerationPage() {
 
       {/* Cases Table */}
       <div className="space-y-4">
-        <h3 className="font-label text-lg font-semibold">{t("cases")}</h3>
+        <h2 className="font-label text-lg font-semibold">{t("cases")}</h2>
 
         {/* Filters */}
         <div className="flex flex-wrap gap-3">
@@ -240,6 +240,7 @@ export function ModerationPage() {
                           size="icon"
                           onClick={() => handleEditStart(modCase)}
                           title={t("editReason")}
+                          aria-label={t("editReason")}
                         >
                           <Icon name="edit" size={16} />
                         </Button>
@@ -249,6 +250,7 @@ export function ModerationPage() {
                           onClick={() => handleDelete(modCase.id)}
                           className="hover:text-danger"
                           title={t("deleteCase")}
+                          aria-label={t("deleteCase")}
                         >
                           <Icon name="delete" size={16} />
                         </Button>
@@ -344,7 +346,7 @@ export function ModerationPage() {
 
       {/* Settings */}
       <div className="space-y-4">
-        <h3 className="font-label text-lg font-semibold">{t("settings.title")}</h3>
+        <h2 className="font-label text-lg font-semibold">{t("settings.title")}</h2>
         <div className="rounded-lg bg-surface-container p-6 glass-edge">
           <div className="space-y-6">
             {/* DM on Punishment */}

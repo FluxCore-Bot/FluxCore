@@ -33,7 +33,8 @@
     "category": "Kategorija vstopnice",
     "create": "Ustvari ploščo",
     "edit": "Uredi ploščo",
-    "deploy": "Namesti ploščo"
+    "deploy": "Namesti ploščo",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Kanal prepisov",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Potrditev zaprtja",
     "closeConfirmationDesc": "Zahtevajte potrditev pred zaprtjem vstopnice.",
     "dmTranscript": "DM prepis",
-    "dmTranscriptDesc": "Pošljite kopijo prepisa ustvarjalcu vstopnice prek DM."
+    "dmTranscriptDesc": "Pošljite kopijo prepisa ustvarjalcu vstopnice prek DM.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Prevzemi",

@@ -25,7 +25,8 @@
     "date": "Tanggal",
     "actions": "Aksi",
     "noCases": "Tidak ada kasus ditemukan.",
-    "noReason": "Tidak ada alasan"
+    "noReason": "Tidak ada alasan",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "Filter berdasarkan ID Pengguna...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Kirim DM ke pengguna ketika mereka dihukum (ban, kick, timeout).",
     "modLogChannel": "Saluran Log Moderasi",
     "modLogChannelDesc": "Saluran tempat tindakan moderasi dicatat."
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

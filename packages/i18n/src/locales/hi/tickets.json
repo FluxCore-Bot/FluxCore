@@ -33,7 +33,8 @@
     "category": "टिकट श्रेणी",
     "create": "पैनल बनाएं",
     "edit": "पैनल संपादित करें",
-    "deploy": "पैनल तैनात करें"
+    "deploy": "पैनल तैनात करें",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "ट्रांसक्रिप्ट चैनल",
@@ -43,7 +44,9 @@
     "closeConfirmation": "बंद करने की पुष्टि",
     "closeConfirmationDesc": "टिकट बंद करने से पहले पुष्टि की आवश्यकता रखें।",
     "dmTranscript": "DM ट्रांसक्रिप्ट",
-    "dmTranscriptDesc": "टिकट निर्माता को DM के माध्यम से ट्रांसक्रिप्ट की एक प्रति भेजें।"
+    "dmTranscriptDesc": "टिकट निर्माता को DM के माध्यम से ट्रांसक्रिप्ट की एक प्रति भेजें।",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "क्लेम करें",

@@ -15,7 +15,8 @@
     "saving": "Spremanje...",
     "cancel": "Odustani",
     "delete": "Obriši",
-    "edit": "Uredi"
+    "edit": "Uredi",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Nema konfiguracija",
@@ -26,5 +27,12 @@
     "updated": "Konfiguracija ažurirana",
     "created": "Konfiguracija stvorena",
     "removed": "Konfiguracija uklonjena"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

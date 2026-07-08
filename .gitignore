@@ -1,8 +1,8 @@
 node_modules/
 dist/
 .env
-.env.dev
-.env.prod
+.env.*
+!.env.example
 *.js.map
 *.d.ts
 !src/**/*.d.ts
@@ -26,3 +26,6 @@ out/
 apps/dashboard/tests/e2e/.auth/
 # E2E HTML report
 apps/dashboard/tests/e2e/.report/
+# Production Docker secrets — keep the directory but never commit values
+/secrets/*
+!/secrets/.gitkeep

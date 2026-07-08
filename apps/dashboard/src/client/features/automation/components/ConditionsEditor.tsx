@@ -26,6 +26,7 @@ function ChipList({
   onRemove: (id: string) => void;
   color?: "secondary" | "destructive";
 }) {
+  const { t } = useTranslation("rules");
   if (items.length === 0) return null;
   return (
     <div className="flex flex-wrap gap-1.5">
@@ -38,7 +39,7 @@ function ChipList({
           {item.label}
           <button
             type="button"
-            aria-label={`Remove ${item.label}`}
+            aria-label={t("conditions.removeItem", { label: item.label })}
             onClick={() => onRemove(item.id)}
             className="ms-0.5 rounded-full p-0.5 hover:bg-white/10"
           >

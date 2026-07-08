@@ -1,12 +1,61 @@
 {
-  "title": "การจัดการ", "subtitle": "ดูและจัดการเคสการจัดการ ตั้งค่าการลงโทษ",
-  "stats": { "totalCases": "เคสทั้งหมด", "activeTempbans": "แบนชั่วคราวที่ใช้งาน", "last24h": "24 ชั่วโมงล่าสุด" },
+  "title": "การจัดการ",
+  "subtitle": "ดูและจัดการเคสการจัดการ ตั้งค่าการลงโทษ",
+  "stats": {
+    "totalCases": "เคสทั้งหมด",
+    "activeTempbans": "แบนชั่วคราวที่ใช้งาน",
+    "last24h": "24 ชั่วโมงล่าสุด"
+  },
   "cases": "เคส",
-  "actions": { "ban": "แบน", "tempban": "แบนชั่วคราว", "kick": "เตะ", "timeout": "ไทม์เอาท์", "softban": "ซอฟต์แบน", "warn": "เตือน", "note": "บันทึก" },
-  "table": { "id": "ID", "action": "การดำเนินการ", "target": "เป้าหมาย", "moderator": "ผู้จัดการ", "reason": "เหตุผล", "date": "วันที่", "actions": "การดำเนินการ", "noCases": "ไม่พบเคส", "noReason": "ไม่มีเหตุผล" },
-  "filter": { "userPlaceholder": "กรองตาม ID ผู้ใช้...", "allActions": "การดำเนินการทั้งหมด" },
-  "pagination": { "previous": "ก่อนหน้า", "next": "ถัดไป", "page": "หน้า {{page}} จาก {{total}}" },
-  "editDialog": { "title": "แก้ไขเหตุผลเคส #{{id}}", "placeholder": "ป้อนเหตุผลใหม่...", "saving": "กำลังบันทึก..." },
-  "editReason": "แก้ไขเหตุผล", "deleteCase": "ลบเคส", "deleteConfirm": "แน่ใจหรือว่าต้องการลบเคสนี้?",
-  "settings": { "title": "ตั้งค่า", "dmOnPunishment": "ส่ง DM เมื่อลงโทษ", "dmOnPunishmentDesc": "ส่งข้อความส่วนตัวถึงผู้ใช้เมื่อถูกลงโทษ (แบน, เตะ, ไทม์เอาท์)", "modLogChannel": "แชนเนลบันทึกการจัดการ", "modLogChannelDesc": "แชนเนลที่บันทึกการดำเนินการจัดการ" }
+  "actions": {
+    "ban": "แบน",
+    "tempban": "แบนชั่วคราว",
+    "kick": "เตะ",
+    "timeout": "ไทม์เอาท์",
+    "softban": "ซอฟต์แบน",
+    "warn": "เตือน",
+    "note": "บันทึก"
+  },
+  "table": {
+    "id": "ID",
+    "action": "การดำเนินการ",
+    "target": "เป้าหมาย",
+    "moderator": "ผู้จัดการ",
+    "reason": "เหตุผล",
+    "date": "วันที่",
+    "actions": "การดำเนินการ",
+    "noCases": "ไม่พบเคส",
+    "noReason": "ไม่มีเหตุผล",
+    "noCasesDesc": "No moderation cases match your filters"
+  },
+  "filter": {
+    "userPlaceholder": "กรองตาม ID ผู้ใช้...",
+    "allActions": "การดำเนินการทั้งหมด"
+  },
+  "pagination": {
+    "previous": "ก่อนหน้า",
+    "next": "ถัดไป",
+    "page": "หน้า {{page}} จาก {{total}}"
+  },
+  "editDialog": {
+    "title": "แก้ไขเหตุผลเคส #{{id}}",
+    "placeholder": "ป้อนเหตุผลใหม่...",
+    "saving": "กำลังบันทึก..."
+  },
+  "editReason": "แก้ไขเหตุผล",
+  "deleteCase": "ลบเคส",
+  "deleteConfirm": "แน่ใจหรือว่าต้องการลบเคสนี้?",
+  "settings": {
+    "title": "ตั้งค่า",
+    "dmOnPunishment": "ส่ง DM เมื่อลงโทษ",
+    "dmOnPunishmentDesc": "ส่งข้อความส่วนตัวถึงผู้ใช้เมื่อถูกลงโทษ (แบน, เตะ, ไทม์เอาท์)",
+    "modLogChannel": "แชนเนลบันทึกการจัดการ",
+    "modLogChannelDesc": "แชนเนลที่บันทึกการดำเนินการจัดการ"
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
+  }
 }

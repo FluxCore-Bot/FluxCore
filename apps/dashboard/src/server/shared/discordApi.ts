@@ -64,15 +64,29 @@ export interface DiscordRole {
   id: string;
   name: string;
   color: number;
+  /** Permission bitfield for the role, as a decimal string. */
+  permissions: string;
+}
+
+export interface DiscordGuildMember {
+  /** IDs of the roles assigned to the member. */
+  roles: string[];
 }
 
 /**
- * Clear all cached data for a guild (channels, roles, bot presence).
+ * Clear all cached data for a guild (channels, roles, owner, bot presence,
+ * and every cached member entry for that guild).
  */
 export function invalidateGuildCache(guildId: string): void {
   cache.delete(`guild:${guildId}`);
+  cache.delete(`guild_owner:${guildId}`);
   cache.delete(`channels:${guildId}`);
   cache.delete(`roles:${guildId}`);
+
+  const memberPrefix = `member:${guildId}:`;
+  for (const key of cache.keys()) {
+    if (key.startsWith(memberPrefix)) cache.delete(key);
+  }
 }
 
 interface DiscordGuild {
@@ -126,6 +140,27 @@ export async function getGuildChannels(
   const result = channels ?? [];
   setCache(cacheKey, result);
   return result;
+}
+
+/**
+ * Get a guild member (their assigned role IDs) via the bot token.
+ * Returns null when the user is not a member of the guild (404) — used for
+ * live authorization, so it is authoritative and independent of the user's
+ * cached OAuth session. Caches the result (including "not a member") briefly.
+ */
+export async function getGuildMember(
+  guildId: string,
+  userId: string,
+): Promise<DiscordGuildMember | null> {
+  const cacheKey = `member:${guildId}:${userId}`;
+  const cached = getCached<DiscordGuildMember | null>(cacheKey);
+  if (cached !== undefined) return cached;
+
+  const member = await botFetch<DiscordGuildMember>(
+    `/guilds/${guildId}/members/${userId}`,
+  );
+  setCache(cacheKey, member);
+  return member;
 }
 
 /**

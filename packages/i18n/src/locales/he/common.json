@@ -79,7 +79,9 @@
     "conditions": "תנאים",
     "duration": "משך",
     "reason": "סיבה",
-    "language": "שפה"
+    "language": "שפה",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "בחר ערוץ...",
@@ -98,7 +100,6 @@
     "showingPage": "עמוד {{page}} מתוך {{total}} ({{count}} סה\"כ)"
   },
   "header": {
-    "notifications": "התראות",
     "settings": "הגדרות",
     "logout": "התנתקות",
     "toggleSidebar": "החלפת סרגל צד",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "סגירת סרגל צד",
     "addToServer": "הוספה לשרת",
-    "docs": "מסמכים",
-    "support": "תמיכה",
     "backToServers": "חזרה לשרתים"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "שעות",
     "days": "ימים",
     "ago": "לפני {{time}}",
-    "in": "בעוד {{time}}"
+    "in": "בעוד {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "האם אתה בטוח?",
@@ -137,5 +137,9 @@
     "error": "אירעה שגיאה",
     "menuOpen": "התפריט פתוח",
     "menuClosed": "התפריט סגור"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

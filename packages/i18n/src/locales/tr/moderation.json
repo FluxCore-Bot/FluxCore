@@ -25,7 +25,8 @@
     "date": "Tarih",
     "actions": "İşlemler",
     "noCases": "Vaka bulunamadı.",
-    "noReason": "Sebep yok"
+    "noReason": "Sebep yok",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "Kullanıcı Kimliğine göre filtrele...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Kullanıcılar cezalandırıldığında (yasak, atma, zaman aşımı) DM gönderin.",
     "modLogChannel": "Moderasyon Günlük Kanalı",
     "modLogChannelDesc": "Moderasyon eylemlerinin günlüğe kaydedildiği kanal."
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

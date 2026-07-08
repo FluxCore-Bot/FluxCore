@@ -7,8 +7,6 @@ import {
   type ResolvedPermissions,
 } from "./permissions.js";
 
-const MANAGE_GUILD = BigInt(0x20);
-
 declare module "fastify" {
   interface FastifyRequest {
     session?: Session;
@@ -64,15 +62,6 @@ export async function requireGuildAdmin(
   const { guildId } = request.params as { guildId: string };
   const session = request.session!;
 
-  const userGuild = session.guilds.find((g) => g.id === guildId);
-  if (!userGuild || !(BigInt(userGuild.permissions) & MANAGE_GUILD)) {
-    reply.code(403).send({
-      error: request.t("errors:permissions.noGuildPermission"),
-      errorKey: "errors:permissions.noGuildPermission",
-    });
-    return;
-  }
-
   if (!(await isBotInGuild(guildId))) {
     reply.code(403).send({
       error: request.t("errors:permissions.botNotInGuild"),
@@ -81,11 +70,22 @@ export async function requireGuildAdmin(
     return;
   }
 
-  // Pre-resolve permissions so downstream handlers can use them
-  request.resolvedPermissions = await resolveUserPermissions(
-    session.userId,
-    guildId,
-  );
+  // Authorize from the user's LIVE Discord authority, not the cached OAuth
+  // session snapshot — so admin access revoked on Discord is honored here.
+  // resolveUserPermissions returns an empty set + isGuildAdmin=false when the
+  // user is no longer a guild admin.
+  const resolved = await resolveUserPermissions(session.userId, guildId);
+  const authorized =
+    resolved.isOwner || resolved.isGuildAdmin || resolved.permissions.has("*");
+  if (!authorized) {
+    reply.code(403).send({
+      error: request.t("errors:permissions.noGuildPermission"),
+      errorKey: "errors:permissions.noGuildPermission",
+    });
+    return;
+  }
+
+  request.resolvedPermissions = resolved;
 }
 
 /**

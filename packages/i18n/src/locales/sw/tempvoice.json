@@ -15,7 +15,8 @@
     "saving": "Inahifadhi...",
     "cancel": "Ghairi",
     "delete": "Futa",
-    "edit": "Hariri"
+    "edit": "Hariri",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Hakuna usanidi bado",
@@ -26,5 +27,12 @@
     "updated": "Usanidi umesasishwa",
     "created": "Usanidi umeundwa",
     "removed": "Usanidi umeondolewa"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }
