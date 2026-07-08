@@ -3,9 +3,9 @@ import fastifyCookie from "@fastify/cookie";
 import fastifyHelmet from "@fastify/helmet";
 import fastifyRateLimit from "@fastify/rate-limit";
 import fastifyStatic from "@fastify/static";
+import { fileURLToPath } from "node:url";
 import { join, dirname } from "node:path";
 import { readFile } from "node:fs/promises";
-import { fileURLToPath } from "node:url";
 import { config } from "@fluxcore/config";
 import { logger } from "@fluxcore/utils";
 import {
@@ -102,6 +102,13 @@ async function main(): Promise<void> {
       inviteUrl: `https://discord.com/oauth2/authorize?client_id=${config.clientId}&permissions=8&scope=bot%20applications.commands`,
       latency,
     });
+  });
+
+  // Serve uploaded images (welcome backgrounds, etc.)
+  app.register(fastifyStatic, {
+    root: "/data/uploads",
+    prefix: "/uploads/",
+    decorateReply: false,
   });
 
   registerAuthRoutes(app);

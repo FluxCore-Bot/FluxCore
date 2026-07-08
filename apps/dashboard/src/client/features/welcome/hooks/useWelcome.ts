@@ -170,6 +170,8 @@ export function useWelcomeImagePreview(guildId: string) {
   });
 }
 
+
+
 export function useUploadBackground(guildId: string) {
   return useMutation({
     mutationFn: async (file: File) => {
