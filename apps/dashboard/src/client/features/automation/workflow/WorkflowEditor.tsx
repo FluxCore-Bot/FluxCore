@@ -612,6 +612,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             steps={steps}
             constants={constants}
             guildId={guildId}
+            eventType={eventType}
             onStepChange={handleStepChange}
             onStepRemove={handleStepRemove}
             onClose={() => setSelectedNode(null)}

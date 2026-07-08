@@ -61,6 +61,7 @@ interface StepPanelProps {
   steps: RuleStep[];
   constants: Constants;
   guildId: string;
+  eventType: string;
   onStepChange: (stepId: string, step: RuleStep) => void;
   onStepRemove: (stepId: string) => void;
   onClose: () => void;
@@ -392,12 +393,14 @@ function StepPanel({
   steps,
   constants,
   guildId,
+  eventType,
   onStepChange,
   onStepRemove,
 }: StepPanelProps) {
   const { t } = useTranslation(["rules", "common"]);
   const { data: channels = [] } = useChannels(guildId);
   const { data: roles = [] } = useRoles(guildId);
+  const variables = buildAutomationVariables(constants, eventType);
   const step = steps.find((s) => s.id === stepId);
   if (!step) return <p className="text-xs text-text-muted">{t("panel.stepNotFound")}</p>;
 
@@ -445,7 +448,7 @@ function StepPanel({
             onChange={handleFieldChange}
             channels={channels}
             roles={roles}
-            variables={[]}
+            variables={variables}
           />
         )}
 

@@ -122,7 +122,7 @@ export function ActionFields({
             {field.type === "text" && (
               VARIABLE_FIELD_KEYS.has(field.key) ? (
                 <VariableEditor
-                  id={field.key}
+                  id={fieldId}
                   value={String(value ?? "")}
                   onChange={(v) => onChange(field.key, v)}
                   variables={variables}
@@ -146,7 +146,7 @@ export function ActionFields({
             {field.type === "textarea" && (
               VARIABLE_FIELD_KEYS.has(field.key) ? (
                 <VariableEditor
-                  id={field.key}
+                  id={fieldId}
                   value={String(value ?? "")}
                   onChange={(v) => onChange(field.key, v)}
                   variables={variables}
