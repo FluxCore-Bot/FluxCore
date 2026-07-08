@@ -33,7 +33,8 @@
     "category": "Kategoria tiketu",
     "create": "Utwórz panel",
     "edit": "Edytuj panel",
-    "deploy": "Wdróż panel"
+    "deploy": "Wdróż panel",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Kanał transkrypcji",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Potwierdzenie zamknięcia",
     "closeConfirmationDesc": "Wymagaj potwierdzenia przed zamknięciem tiketu.",
     "dmTranscript": "Transkrypcja w PW",
-    "dmTranscriptDesc": "Wyślij kopię transkrypcji twórcy tiketu przez PW."
+    "dmTranscriptDesc": "Wyślij kopię transkrypcji twórcy tiketu przez PW.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Przypisz",

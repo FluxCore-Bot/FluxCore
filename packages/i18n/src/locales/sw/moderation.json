@@ -25,7 +25,8 @@
     "date": "Tarehe",
     "actions": "Vitendo",
     "noCases": "Hakuna kesi zilizopatikana.",
-    "noReason": "Hakuna sababu"
+    "noReason": "Hakuna sababu",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "Chuja kwa Kitambulisho cha Mtumiaji...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Tuma DM kwa watumiaji wanapoadhibiwa (kuzuia, kufukuza, kusimamishwa kwa muda).",
     "modLogChannel": "Chaneli ya Kumbukumbu za Usimamizi",
     "modLogChannelDesc": "Chaneli ambapo vitendo vya usimamizi vinarekodiwa."
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

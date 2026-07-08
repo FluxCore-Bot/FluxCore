@@ -108,5 +108,6 @@
     "channelRequired": "Chaneli inahitajika",
     "maxRolesReached": "Kiwango cha juu cha majukumu 25 kwa kila paneli"
   },
-  "loading": "Inapakia paneli..."
+  "loading": "Inapakia paneli...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

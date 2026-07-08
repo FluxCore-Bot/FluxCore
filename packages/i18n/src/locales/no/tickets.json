@@ -33,7 +33,8 @@
     "category": "Sakskategori",
     "create": "Opprett panel",
     "edit": "Rediger panel",
-    "deploy": "Publiser panel"
+    "deploy": "Publiser panel",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Transkripsjonkanal",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Lukkebekreftelse",
     "closeConfirmationDesc": "Krev bekreftelse før en sak lukkes.",
     "dmTranscript": "DM-transkripsjon",
-    "dmTranscriptDesc": "Send en kopi av transkripsjonen til saksoppretter via DM."
+    "dmTranscriptDesc": "Send en kopi av transkripsjonen til saksoppretter via DM.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Tildel",

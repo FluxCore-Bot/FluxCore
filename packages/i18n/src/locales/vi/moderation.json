@@ -25,7 +25,8 @@
     "date": "Ngày",
     "actions": "Hành Động",
     "noCases": "Không tìm thấy trường hợp nào.",
-    "noReason": "Không có lý do"
+    "noReason": "Không có lý do",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "Lọc theo ID Người Dùng...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Gửi DM cho người dùng khi họ bị phạt (cấm, đuổi, hết thời gian).",
     "modLogChannel": "Kênh Nhật Ký Kiểm Duyệt",
     "modLogChannelDesc": "Kênh nơi các hành động kiểm duyệt được ghi lại."
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

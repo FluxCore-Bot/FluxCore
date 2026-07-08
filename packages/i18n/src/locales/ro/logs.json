@@ -79,7 +79,9 @@
       "description": "Jurnalele de evenimente vor apărea aici odată ce jurnalizarea este configurată și evenimentele încep să apară."
     },
     "config": {
-      "selectChannel": "Selectează canal de jurnal"
+      "selectChannel": "Selectează canal de jurnal",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

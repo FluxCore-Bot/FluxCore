@@ -85,7 +85,7 @@ type SelectedNode =
   | { type: "step"; stepId: string };
 
 function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
-  const { t } = useTranslation("rules");
+  const { t } = useTranslation(["rules", "common"]);
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: constants } = useConstants();
   const createRule = useCreateRule(guildId);
@@ -158,8 +158,8 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
   }, [name, eventType, actions, steps, entryStepId, conditions, priority, enabled, saveDraftToStorage]);
 
   const validation = useMemo(
-    () => validateWorkflow(eventType, actions, name, constants ?? undefined, steps, entryStepId),
-    [eventType, actions, name, constants, steps, entryStepId],
+    () => validateWorkflow(eventType, actions, name, constants ?? undefined, t, steps, entryStepId),
+    [eventType, actions, name, constants, t, steps, entryStepId],
   );
 
   const selectedNodeId = selectedNode
@@ -180,6 +180,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     selectedNodeId,
     onAddAction: addAction,
     validationIssues: validation.issues,
+    t,
   });
 
   const [nodes, setNodes, onNodesChangeBase] = useNodesState(computedNodes);
@@ -305,7 +306,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
 
     const configuredActions = effectiveActions.filter((a) => a.type);
     if (configuredActions.length === 0) {
-      setError("At least one action must be configured with a type.");
+      setError(t("form.atLeastOneAction"));
       return;
     }
 
@@ -336,10 +337,10 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
       clearDraft();
       onClose();
     } catch (err) {
-      const message = err instanceof ApiError ? err.message : "An error occurred";
+      const message = err instanceof ApiError ? err.message : t("editor.genericError");
       setError(message);
     }
-  }, [name, eventType, actions, steps, entryStepId, isStepMode, conditions, priority, enabled, rule, createRule, updateRule, onClose, clearDraft]);
+  }, [name, eventType, actions, steps, entryStepId, isStepMode, conditions, priority, enabled, rule, createRule, updateRule, onClose, clearDraft, t]);
 
   const handleFitView = useCallback(() => {
     reactFlowInstance.current?.fitView({ padding: 0.3, duration: 300 });
@@ -389,7 +390,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
       <div className="flex flex-wrap items-center gap-2 border-b border-border bg-surface-low/90 px-3 py-2 backdrop-blur-sm sm:gap-3 sm:px-4 sm:py-2.5">
         <Button variant="ghost" size="sm" onClick={onClose} className="gap-1.5">
           <Icon name="arrow_back" size={16} className="rtl:rotate-180" />
-          <span className="hidden text-text-muted sm:inline">Rules</span>
+          <span className="hidden text-text-muted sm:inline">{t("editor.backToRules")}</span>
         </Button>
 
         <div className="h-5 w-px bg-border" />
@@ -398,7 +399,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Rule name..."
+          placeholder={t("editor.ruleNamePlaceholder")}
           maxLength={50}
           className="w-32 sm:w-52"
         />
@@ -415,14 +416,14 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
                 className="w-20"
               />
             </TooltipTrigger>
-            <TooltipContent>Priority (0–100)</TooltipContent>
+            <TooltipContent>{t("editor.priorityTooltip")}</TooltipContent>
           </Tooltip>
         </TooltipProvider>
 
         <div className="flex items-center gap-2">
           <Switch checked={enabled} onCheckedChange={setEnabled} />
           <span className="text-xs text-text-muted">
-            {enabled ? "Enabled" : "Disabled"}
+            {enabled ? t("common:labels.enabled") : t("common:labels.disabled")}
           </span>
         </div>
 
@@ -434,7 +435,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             disabled={!isStepMode && actions.length >= constants.maxActionsPerRule}
           >
             <Icon name="add" size={16} />
-            Action
+            {t("editor.addAction")}
           </Button>
           <Button
             variant="ghost"
@@ -442,7 +443,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             onClick={addConditionStep}
           >
             <Icon name="call_split" size={16} className="text-warning" />
-            Condition
+            {t("editor.addCondition")}
           </Button>
           <Button
             variant="ghost"
@@ -450,7 +451,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             onClick={addDelayStep}
           >
             <Icon name="schedule" size={16} className="text-text-muted" />
-            Delay
+            {t("editor.addDelay")}
           </Button>
           <div className="h-5 w-px bg-border" />
 
@@ -466,7 +467,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
                       className={validation.valid ? "text-warning" : "text-danger"}
                     />
                     <span className={validation.valid ? "text-warning" : "text-danger"}>
-                      {validation.issues.length} issue{validation.issues.length > 1 ? "s" : ""}
+                      {t("editor.issues", { count: validation.issues.length })}
                     </span>
                   </div>
                 </TooltipTrigger>
@@ -489,7 +490,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
           ) : name.trim() && eventType && actions.length > 0 ? (
             <div className="flex items-center gap-1.5 text-xs text-secondary">
               <Icon name="check_circle" size={16} />
-              <span>Ready</span>
+              <span>{t("workflow.status.ready")}</span>
             </div>
           ) : null}
 
@@ -508,7 +509,12 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
       )}
 
       {/* Canvas — fills remaining space */}
-      <div className="relative flex-1">
+      <div
+        className="relative flex-1"
+        dir="ltr"
+        role="group"
+        aria-label={t("editor.canvasLabel")}
+      >
         <ReactFlow
           nodes={nodes}
           edges={rfEdges}
@@ -549,7 +555,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             className="!rounded-lg !border-border !bg-surface-low"
             maskColor="rgba(14, 14, 16, 0.8)"
           />
-          <Panel position="bottom-right" className="!mb-2 me-2! flex gap-1.5">
+          <Panel position="bottom-right" className="!mb-2 mr-2! flex gap-1.5">
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -563,7 +569,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
-                  Fit to view <kbd className="ms-1.5 rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">Ctrl+Shift+F</kbd>
+                  {t("editor.fitToView")} <kbd className="ms-1.5 rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">Ctrl+Shift+F</kbd>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -615,22 +621,22 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
       {/* Keyboard shortcuts hint */}
       <div className="flex items-center gap-4 border-t border-border bg-surface-low/60 px-4 py-1.5 text-[11px] text-text-muted">
         <span>
-          <kbd className="rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">Esc</kbd> Close
+          <kbd className="rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">Esc</kbd> {t("editor.shortcuts.close")}
         </span>
         <span>
-          <kbd className="rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">Ctrl+S</kbd> Save
+          <kbd className="rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">Ctrl+S</kbd> {t("editor.shortcuts.save")}
         </span>
         <span>
-          <kbd className="rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">Del</kbd> Remove node
+          <kbd className="rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">Del</kbd> {t("editor.shortcuts.removeNode")}
         </span>
         <span>
-          <kbd className="rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">A</kbd> Add action
+          <kbd className="rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">A</kbd> {t("editor.shortcuts.addAction")}
         </span>
         <span>
-          <kbd className="rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">Ctrl+Shift+F</kbd> Fit view
+          <kbd className="rounded bg-surface-lowest px-1 py-0.5 font-mono text-[10px]">Ctrl+Shift+F</kbd> {t("editor.shortcuts.fitView")}
         </span>
         <span className="ms-auto text-text-muted/50">
-          Drag handles to connect — click an edge + Del to disconnect
+          {t("editor.disconnectHint")}
         </span>
       </div>
     </div>

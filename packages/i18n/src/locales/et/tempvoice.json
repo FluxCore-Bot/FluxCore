@@ -15,7 +15,8 @@
     "saving": "Salvestamine...",
     "cancel": "Tühista",
     "delete": "Kustuta",
-    "edit": "Muuda"
+    "edit": "Muuda",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Seadistusi pole veel",
@@ -26,5 +27,12 @@
     "updated": "Seadistus uuendatud",
     "created": "Seadistus loodud",
     "removed": "Seadistus eemaldatud"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

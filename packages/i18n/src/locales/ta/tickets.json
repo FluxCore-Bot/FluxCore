@@ -33,7 +33,8 @@
     "category": "டிக்கெட் வகை",
     "create": "பேனல் உருவாக்கு",
     "edit": "பேனல் திருத்து",
-    "deploy": "பேனல் வரிசைப்படுத்து"
+    "deploy": "பேனல் வரிசைப்படுத்து",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "டிரான்ஸ்கிரிப்ட் சேனல்",
@@ -43,7 +44,9 @@
     "closeConfirmation": "மூடல் உறுதிப்படுத்தல்",
     "closeConfirmationDesc": "டிக்கெட் மூடுவதற்கு முன் உறுதிப்படுத்தல் தேவைப்படும்.",
     "dmTranscript": "DM டிரான்ஸ்கிரிப்ட்",
-    "dmTranscriptDesc": "டிக்கெட் உருவாக்கியவருக்கு DM மூலம் டிரான்ஸ்கிரிப்டின் நகல் அனுப்பவும்."
+    "dmTranscriptDesc": "டிக்கெட் உருவாக்கியவருக்கு DM மூலம் டிரான்ஸ்கிரிப்டின் நகல் அனுப்பவும்.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "கோரு",

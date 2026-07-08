@@ -13,6 +13,26 @@ export function useGuilds(enabled = true) {
   });
 }
 
+/**
+ * Force the server to re-fetch the user's guild list from Discord, so newly
+ * granted roles (e.g. a fresh admin role) appear without re-authenticating.
+ */
+export function useRefreshGuilds() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async () => {
+      const data = await apiFetch<unknown>("/api/guilds/refresh", {
+        method: "POST",
+      });
+      return GuildListSchema.parse(data);
+    },
+    onSuccess: (guilds) => {
+      queryClient.setQueryData(["guilds"], guilds);
+    },
+  });
+}
+
 export function useRefreshGuild(guildId: string) {
   const queryClient = useQueryClient();
 

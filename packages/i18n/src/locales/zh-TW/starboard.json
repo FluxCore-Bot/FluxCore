@@ -1,9 +1,42 @@
 {
   "title": "精華訊息",
   "subtitle": "透過收集星標反應將最佳訊息精選到專用頻道。",
-  "tabs": { "settings": "設定", "starredMessages": "星標訊息" },
-  "settings": { "title": "精華訊息設定", "description": "設定星標訊息的發佈時間和位置。", "channelId": "精華頻道", "channelIdDesc": "星標訊息發佈的頻道。", "starEmoji": "星標表情", "starEmojiDesc": "用於給訊息加星的表情。預設為星星表情。", "threshold": "星標閾值", "thresholdDesc": "訊息發佈到精華頻道所需的最少反應數。", "selfStar": "自我加星", "selfStarDesc": "允許訊息作者給自己的訊息加星。", "nsfwAllowed": "允許 NSFW", "nsfwAllowedDesc": "允許 NSFW 頻道的訊息出現在精華頻道。", "ignoredChannels": "忽略的頻道", "ignoredChannelsDesc": "這些頻道的訊息不會出現在精華頻道。" },
-  "messages": { "table": { "original": "原始訊息", "stars": "星標數", "channel": "頻道", "date": "日期" }, "noMessages": "尚無星標訊息。" },
-  "toast": { "saved": "精華訊息設定已儲存", "saveFailed": "儲存精華訊息設定失敗" },
-  "actions": { "save": "儲存", "saving": "儲存中..." }
+  "tabs": {
+    "settings": "設定",
+    "starredMessages": "星標訊息"
+  },
+  "settings": {
+    "title": "精華訊息設定",
+    "description": "設定星標訊息的發佈時間和位置。",
+    "channelId": "精華頻道",
+    "channelIdDesc": "星標訊息發佈的頻道。",
+    "starEmoji": "星標表情",
+    "starEmojiDesc": "用於給訊息加星的表情。預設為星星表情。",
+    "threshold": "星標閾值",
+    "thresholdDesc": "訊息發佈到精華頻道所需的最少反應數。",
+    "selfStar": "自我加星",
+    "selfStarDesc": "允許訊息作者給自己的訊息加星。",
+    "nsfwAllowed": "允許 NSFW",
+    "nsfwAllowedDesc": "允許 NSFW 頻道的訊息出現在精華頻道。",
+    "ignoredChannels": "忽略的頻道",
+    "ignoredChannelsDesc": "這些頻道的訊息不會出現在精華頻道。"
+  },
+  "messages": {
+    "table": {
+      "original": "原始訊息",
+      "stars": "星標數",
+      "channel": "頻道",
+      "date": "日期",
+      "author": "Author"
+    },
+    "noMessages": "尚無星標訊息。"
+  },
+  "toast": {
+    "saved": "精華訊息設定已儲存",
+    "saveFailed": "儲存精華訊息設定失敗"
+  },
+  "actions": {
+    "save": "儲存",
+    "saving": "儲存中..."
+  }
 }

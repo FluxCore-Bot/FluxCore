@@ -139,7 +139,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-fluxcore}
       POSTGRES_DB: ${POSTGRES_DB:-fluxcore}
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql
     ports:
       - "127.0.0.1:5432:5432"
     healthcheck:

@@ -15,7 +15,8 @@
     "saving": "儲存中...",
     "cancel": "取消",
     "delete": "刪除",
-    "edit": "編輯"
+    "edit": "編輯",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "尚無設定",
@@ -26,5 +27,12 @@
     "updated": "設定已更新",
     "created": "設定已建立",
     "removed": "設定已移除"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

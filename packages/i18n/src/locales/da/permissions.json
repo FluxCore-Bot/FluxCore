@@ -114,5 +114,12 @@
     "creating": "Opretter...",
     "create": "Opret"
   },
-  "loading": "Indlæser tilladelser..."
+  "loading": "Indlæser tilladelser...",
+  "guard": {
+    "deniedTitle": "Permission Denied",
+    "deniedMessage": "You don't have permission to access <1>{{module}}</1>.",
+    "requiredPermission": "Required permission:",
+    "yourRoles": "Your roles:",
+    "contactOwner": "Contact your server owner to request access."
+  }
 }

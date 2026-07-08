@@ -159,7 +159,7 @@ export function useWelcomeImagePreview(guildId: string) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(params),
       });
-      if (!res.ok) throw new Error("Failed to generate preview");
+      if (!res.ok) throw new Error("welcome.imageEditor.toast.previewFailed");
       const blob = await res.blob();
       return URL.createObjectURL(blob);
     },

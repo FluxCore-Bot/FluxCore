@@ -33,7 +33,8 @@
     "category": "Talep Kategorisi",
     "create": "Panel Oluştur",
     "edit": "Paneli Düzenle",
-    "deploy": "Paneli Yayınla"
+    "deploy": "Paneli Yayınla",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Transkript Kanalı",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Kapatma Onayı",
     "closeConfirmationDesc": "Talebi kapatmadan önce onay isteyin.",
     "dmTranscript": "DM Transkripti",
-    "dmTranscriptDesc": "Talep oluşturucuya DM ile transkript kopyası gönderin."
+    "dmTranscriptDesc": "Talep oluşturucuya DM ile transkript kopyası gönderin.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Üstlen",

@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "கட்டளை பெயர் தேவை"
   },
-  "triggerPrefix": "தூண்டுதல்: !{{name}}"
+  "triggerPrefix": "தூண்டுதல்: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
 }

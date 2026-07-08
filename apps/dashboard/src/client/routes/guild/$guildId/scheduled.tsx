@@ -46,6 +46,8 @@ import { Separator } from "../../../shared/ui/separator";
 import { Badge } from "../../../shared/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 import { Icon } from "../../../shared/components/Icon";
+import { EmptyState } from "../../../shared/components/EmptyState";
+import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
 import type { ScheduledMessageContent } from "../../../shared/lib/schemas";
 import { StatsCard } from "../../../shared/components/StatsCard";
 import { PageSkeleton, TableSkeleton } from "../../../shared/ui/skeletons";
@@ -82,11 +84,19 @@ interface MessageFormState {
   embedImage: string;
 }
 
+function getBrowserTimezone(): string {
+  try {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+  } catch {
+    return "UTC";
+  }
+}
+
 const emptyForm: MessageFormState = {
   name: "",
   channelId: "",
   cronExpr: "0 9 * * *",
-  timezone: "UTC",
+  timezone: getBrowserTimezone(),
   enabled: true,
   messageType: "text",
   textContent: "",
@@ -117,10 +127,11 @@ function formToContent(form: MessageFormState): ScheduledMessageContent {
 
 export function ScheduledMessagesPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
-  const { t } = useTranslation("scheduled");
+  const { t } = useTranslation(["scheduled", "common", "errors"]);
   const [page, setPage] = useState(1);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
+  const [deleteId, setDeleteId] = useState<number | null>(null);
   const [form, setForm] = useState<MessageFormState>(emptyForm);
 
   const CRON_PRESETS = useMemo<Record<string, string>>(
@@ -141,7 +152,16 @@ export function ScheduledMessagesPage() {
   const updateMsg = useUpdateScheduledMessage(guildId);
   const deleteMsg = useDeleteScheduledMessage(guildId);
   const testMsg = useTestScheduledMessage(guildId);
-  const { data: cronPreview } = useCronPreview(guildId, form.cronExpr, form.timezone);
+  const { data: cronPreview, isLoading: cronPreviewLoading } = useCronPreview(
+    guildId,
+    form.cronExpr,
+    form.timezone,
+  );
+
+  const cronInvalid =
+    form.cronExpr.trim().length > 0 &&
+    !cronPreviewLoading &&
+    (!cronPreview || cronPreview.nextRuns.length === 0);
 
   const totalPages = data ? Math.max(1, Math.ceil(data.total / 10)) : 1;
   const textChannels = channels?.filter((c) => c.type === 0 || c.type === 5) ?? [];
@@ -365,6 +385,7 @@ export function ScheduledMessagesPage() {
                             size="sm"
                             onClick={() => handleTestSend(msg.id)}
                             title={t("actions.testSend")}
+                            aria-label={t("actions.testSend")}
                           >
                             <Icon name="play_arrow" size={16} />
                           </Button>
@@ -373,14 +394,16 @@ export function ScheduledMessagesPage() {
                             size="sm"
                             onClick={() => openEdit(msg)}
                             title={t("actions.edit")}
+                            aria-label={t("actions.edit")}
                           >
                             <Icon name="edit" size={16} />
                           </Button>
                           <Button
                             variant="ghost"
                             size="sm"
-                            onClick={() => handleDelete(msg.id)}
+                            onClick={() => setDeleteId(msg.id)}
                             title={t("actions.delete")}
+                            aria-label={t("actions.delete")}
                           >
                             <Icon name="delete" size={16} className="text-danger" />
                           </Button>
@@ -419,19 +442,17 @@ export function ScheduledMessagesPage() {
             )}
           </>
         ) : (
-          <div className="flex flex-col items-center gap-4 py-12 text-center">
-            <Icon name="schedule" size={48} className="text-text-muted" />
-            <div>
-              <p className="font-medium text-text">{t("empty.title")}</p>
-              <p className="mt-1 text-sm text-text-muted">
-                {t("empty.description")}
-              </p>
-            </div>
-            <Button onClick={openCreate}>
-              <Icon name="add" size={16} className="me-2" />
-              {t("empty.createButton")}
-            </Button>
-          </div>
+          <EmptyState
+            icon="schedule"
+            title={t("empty.title")}
+            description={t("empty.description")}
+            action={
+              <Button onClick={openCreate}>
+                <Icon name="add" size={16} className="me-2" />
+                {t("empty.createButton")}
+              </Button>
+            }
+          />
         )}
       </Card>
 
@@ -511,7 +532,16 @@ export function ScheduledMessagesPage() {
                   value={form.cronExpr}
                   onChange={(e) => updateForm({ cronExpr: e.target.value })}
                   className="font-mono"
+                  aria-invalid={cronInvalid}
+                  aria-describedby={cronInvalid ? "cron-expr-error" : undefined}
                 />
+                {cronInvalid && (
+                  <p id="cron-expr-error" className="mt-1 text-xs text-danger">
+                    {t("errors:validation.invalidFormat", {
+                      field: t("form.cronExpression"),
+                    })}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -523,7 +553,10 @@ export function ScheduledMessagesPage() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  {COMMON_TIMEZONES.map((tz) => (
+                  {(COMMON_TIMEZONES.includes(form.timezone)
+                    ? COMMON_TIMEZONES
+                    : [form.timezone, ...COMMON_TIMEZONES]
+                  ).map((tz) => (
                     <SelectItem key={tz} value={tz}>
                       {tz}
                     </SelectItem>
@@ -684,6 +717,22 @@ export function ScheduledMessagesPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Delete Confirmation */}
+      <ConfirmDialog
+        open={deleteId !== null}
+        onOpenChange={(open) => {
+          if (!open) setDeleteId(null);
+        }}
+        title={t("common:confirm.deleteTitle")}
+        description={t("common:confirm.deleteMessage")}
+        confirmLabel={t("actions.delete")}
+        destructive
+        onConfirm={() => {
+          if (deleteId !== null) handleDelete(deleteId);
+          setDeleteId(null);
+        }}
+      />
     </div>
   );
 }

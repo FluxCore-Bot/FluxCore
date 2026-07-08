@@ -79,7 +79,9 @@
       "description": "Evidencije događaja pojavit će se ovdje kada se konfigurira zapisivanje i počnu se događati eventi."
     },
     "config": {
-      "selectChannel": "Odaberite kanal za zapise"
+      "selectChannel": "Odaberite kanal za zapise",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

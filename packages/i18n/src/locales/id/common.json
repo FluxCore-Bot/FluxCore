@@ -79,7 +79,9 @@
     "conditions": "Kondisi",
     "duration": "Durasi",
     "reason": "Alasan",
-    "language": "Bahasa"
+    "language": "Bahasa",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Pilih saluran...",
@@ -98,7 +100,6 @@
     "showingPage": "Halaman {{page}} dari {{total}} ({{count}} total)"
   },
   "header": {
-    "notifications": "Notifikasi",
     "settings": "Pengaturan",
     "logout": "Keluar",
     "toggleSidebar": "Tampilkan/sembunyikan bilah sisi",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "Tutup bilah sisi",
     "addToServer": "Tambahkan ke Server",
-    "docs": "Dokumentasi",
-    "support": "Dukungan",
     "backToServers": "Kembali ke Server"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "jam",
     "days": "hari",
     "ago": "{{time}} yang lalu",
-    "in": "dalam {{time}}"
+    "in": "dalam {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Apakah Anda yakin?",
@@ -137,5 +137,9 @@
     "error": "Terjadi kesalahan",
     "menuOpen": "Menu terbuka",
     "menuClosed": "Menu tertutup"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

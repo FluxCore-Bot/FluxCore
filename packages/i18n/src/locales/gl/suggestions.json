@@ -45,7 +45,9 @@
     "autoThread": "Crear Fío Automático",
     "autoThreadDesc": "Crear automaticamente un fío de discusión en cada nova suxestión.",
     "dmOnStatusChange": "DM ao Cambiar de Estado",
-    "dmOnStatusChangeDesc": "Notificar ao autor por DM cando cambia o estado da súa suxestión."
+    "dmOnStatusChangeDesc": "Notificar ao autor por DM cando cambia o estado da súa suxestión.",
+    "anonymousMode": "Anonymous Mode",
+    "anonymousModeDesc": "Hide the identity of members who submit suggestions."
   },
   "toast": {
     "approved": "Suxestión aprobada",
@@ -63,5 +65,6 @@
     "previous": "Anterior",
     "next": "Seguinte",
     "page": "Páxina {{page}} de {{total}}"
-  }
+  },
+  "confirmDelete": "Are you sure you want to delete this suggestion? This action cannot be undone."
 }

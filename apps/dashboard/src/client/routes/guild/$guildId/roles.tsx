@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../shared/lib/client";
 import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
+import { EmptyState } from "../../../shared/components/EmptyState";
 import { PageHeader } from "../../../shared/components/PageHeader";
 import {
   useRolePanels,
@@ -48,7 +49,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tab
 import { Icon } from "../../../shared/components/Icon";
 import { StatsCard } from "../../../shared/components/StatsCard";
 import { PageSkeleton, TableSkeleton } from "../../../shared/ui/skeletons";
-import { LayoutGrid, Rocket, Users } from "lucide-react";
+import { LayoutGrid, Loader2, Rocket, Users } from "lucide-react";
 
 function EmptyRoleEntry(): RolePanelEntryItem {
   return { roleId: "", label: "", emoji: "", description: "", style: 2 };
@@ -56,7 +57,7 @@ function EmptyRoleEntry(): RolePanelEntryItem {
 
 export function RolesPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
-  const { t } = useTranslation("roles");
+  const { t } = useTranslation(["roles", "common"]);
 
   const PANEL_TYPE_LABELS: Record<string, string> = useMemo(() => ({
     reaction: t("panelTypes.reaction"),
@@ -521,7 +522,16 @@ export function RolesPage() {
                         onClick={handleSubmit}
                         disabled={createPanel.isPending || updatePanel.isPending}
                       >
-                        {editingPanel ? t("actions.update") : t("actions.create")}
+                        {createPanel.isPending || updatePanel.isPending ? (
+                          <>
+                            <Loader2 size={16} strokeWidth={1.5} className="me-1 animate-spin" aria-hidden="true" />
+                            {t("common:actions.loading")}
+                          </>
+                        ) : editingPanel ? (
+                          t("actions.update")
+                        ) : (
+                          t("actions.create")
+                        )}
                       </Button>
                     </div>
                   </div>
@@ -575,6 +585,7 @@ export function RolesPage() {
                               size="sm"
                               onClick={() => openEditDialog(panel)}
                               title={t("common:actions.edit")}
+                              aria-label={t("common:actions.edit")}
                             >
                               <Icon name="edit" size={16} />
                             </Button>
@@ -584,6 +595,7 @@ export function RolesPage() {
                               onClick={() => handleSend(panel.id)}
                               disabled={sendPanel.isPending || panel.roles.length === 0}
                               title={t("actions.deploy")}
+                              aria-label={t("actions.deploy")}
                             >
                               <Icon name="send" size={16} />
                             </Button>
@@ -593,6 +605,7 @@ export function RolesPage() {
                               onClick={() => handleDelete(panel.id)}
                               disabled={deletePanel.isPending}
                               title={t("common:actions.delete")}
+                              aria-label={t("common:actions.delete")}
                             >
                               <Icon name="delete" size={16} className="text-danger" />
                             </Button>
@@ -604,9 +617,17 @@ export function RolesPage() {
                 </Table>
               </div>
             ) : (
-              <p className="text-text-muted">
-                {t("empty")}
-              </p>
+              <EmptyState
+                icon="dashboard"
+                title={t("panelList.title")}
+                description={t("empty")}
+                action={
+                  <Button onClick={openCreateDialog}>
+                    <Icon name="add" size={16} className="me-1" />
+                    {t("dialog.createPanel")}
+                  </Button>
+                }
+              />
             )}
           </Card>
         </TabsContent>
@@ -658,19 +679,35 @@ export function RolesPage() {
                     {panel.type === "button" && panel.roles.length > 0 && (
                       <div className="mt-3 flex flex-wrap gap-2">
                         {panel.roles.map((entry, idx) => {
+                          // Discord's native button palette — intentionally verbatim so this
+                          // preview matches what Discord actually renders. Do NOT swap for WCAG
+                          // tokens: fidelity to Discord is the point, and the style name is shown
+                          // alongside (below), so meaning never relies on color alone.
                           const styleClasses: Record<number, string> = {
                             1: "bg-[#5865f2] text-white",
                             2: "bg-[#4f545c] text-white",
                             3: "bg-[#3ba55d] text-white",
                             4: "bg-[#ed4245] text-white",
                           };
+                          const styleNames: Record<number, string> = {
+                            1: t("buttonStyles.primary"),
+                            2: t("buttonStyles.secondary"),
+                            3: t("buttonStyles.success"),
+                            4: t("buttonStyles.danger"),
+                          };
+                          const styleValue = entry.style ?? 2;
+                          const styleName = styleNames[styleValue] ?? styleNames[2];
                           return (
                             <span
                               key={idx}
-                              className={`inline-flex items-center gap-1.5 rounded px-3 py-1.5 text-sm font-medium ${styleClasses[entry.style ?? 2] ?? styleClasses[2]}`}
+                              className={`inline-flex items-center gap-1.5 rounded px-3 py-1.5 text-sm font-medium ${styleClasses[styleValue] ?? styleClasses[2]}`}
+                              title={styleName}
                             >
                               {entry.emoji && <span>{entry.emoji}</span>}
                               {entry.label}
+                              <span className="ms-1 text-[10px] uppercase tracking-wide opacity-70">
+                                {styleName}
+                              </span>
                             </span>
                           );
                         })}
@@ -703,7 +740,11 @@ export function RolesPage() {
                 ))}
               </div>
             ) : (
-              <p className="text-text-muted">{t("preview.noPreview")}</p>
+              <EmptyState
+                icon="info"
+                title={t("preview.title")}
+                description={t("preview.noPreview")}
+              />
             )}
           </Card>
         </TabsContent>
@@ -714,7 +755,7 @@ export function RolesPage() {
         open={deleteConfirmId !== null}
         onOpenChange={(open) => { if (!open) setDeleteConfirmId(null); }}
         title={t("common:actions.delete", { defaultValue: "Delete Panel" })}
-        description={t("common:actions.confirmDelete", { defaultValue: "Are you sure you want to delete this role panel? This action cannot be undone." })}
+        description={t("confirmDeletePanel")}
         confirmLabel={t("common:actions.delete", { defaultValue: "Delete" })}
         destructive
         onConfirm={confirmDelete}

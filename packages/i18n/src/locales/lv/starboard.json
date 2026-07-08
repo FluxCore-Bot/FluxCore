@@ -26,7 +26,8 @@
       "original": "Originalais zinojums",
       "stars": "Zvaiagznites",
       "channel": "Kanals",
-      "date": "Datums"
+      "date": "Datums",
+      "author": "Author"
     },
     "noMessages": "Nav atziimetu zinojumu."
   },

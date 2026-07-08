@@ -114,5 +114,12 @@
     "creating": "உருவாக்குகிறது...",
     "create": "உருவாக்கு"
   },
-  "loading": "அனுமதிகள் ஏற்றப்படுகின்றன..."
+  "loading": "அனுமதிகள் ஏற்றப்படுகின்றன...",
+  "guard": {
+    "deniedTitle": "Permission Denied",
+    "deniedMessage": "You don't have permission to access <1>{{module}}</1>.",
+    "requiredPermission": "Required permission:",
+    "yourRoles": "Your roles:",
+    "contactOwner": "Contact your server owner to request access."
+  }
 }

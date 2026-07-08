@@ -25,7 +25,8 @@
     "date": "Dato",
     "actions": "Handlinger",
     "noCases": "Ingen sager fundet.",
-    "noReason": "Ingen årsag"
+    "noReason": "Ingen årsag",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "Filtrer efter bruger-ID...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Send en DM til brugere, når de straffes (udelukkelse, udsmidning, timeout).",
     "modLogChannel": "Modereringslogkanal",
     "modLogChannelDesc": "Kanal, hvor modereringshandlinger logges."
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

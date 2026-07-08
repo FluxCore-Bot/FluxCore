@@ -33,7 +33,8 @@
     "category": "Danh Mục Phiếu",
     "create": "Tạo Bảng",
     "edit": "Chỉnh Sửa Bảng",
-    "deploy": "Triển Khai Bảng"
+    "deploy": "Triển Khai Bảng",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Kênh Lưu Transcript",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Xác Nhận Đóng",
     "closeConfirmationDesc": "Yêu cầu xác nhận trước khi đóng phiếu.",
     "dmTranscript": "DM Transcript",
-    "dmTranscriptDesc": "Gửi bản sao transcript cho người tạo phiếu qua DM."
+    "dmTranscriptDesc": "Gửi bản sao transcript cho người tạo phiếu qua DM.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Nhận",

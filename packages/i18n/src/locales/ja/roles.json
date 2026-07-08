@@ -108,5 +108,6 @@
     "channelRequired": "チャンネルは必須です",
     "maxRolesReached": "パネルあたり最大25ロール"
   },
-  "loading": "パネルを読み込み中..."
+  "loading": "パネルを読み込み中...",
+  "confirmDeletePanel": "このロールパネルを削除してもよろしいですか？この操作は元に戻せません。"
 }

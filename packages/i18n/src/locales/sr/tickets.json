@@ -33,7 +33,8 @@
     "category": "Kategorija tiketa",
     "create": "Kreiraj panel",
     "edit": "Uredi panel",
-    "deploy": "Postavi panel"
+    "deploy": "Postavi panel",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Kanal za transkripte",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Potvrda zatvaranja",
     "closeConfirmationDesc": "Zahtevajte potvrdu pre zatvaranja tiketa.",
     "dmTranscript": "Transkript privatnom porukom",
-    "dmTranscriptDesc": "Posaljite kopiju transkripta autoru tiketa putem privatne poruke."
+    "dmTranscriptDesc": "Posaljite kopiju transkripta autoru tiketa putem privatne poruke.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Preuzmi",

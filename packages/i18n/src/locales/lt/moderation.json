@@ -25,7 +25,8 @@
     "date": "Data",
     "actions": "Veiksmai",
     "noCases": "Atveju nerasta.",
-    "noReason": "Be priezasties"
+    "noReason": "Be priezasties",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "Filtruoti pagal naudotojo ID...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Siusti privatia zinute naudotojams, kai jie yra nubaudziami (draudimas, ismetimas, nutildymas).",
     "modLogChannel": "Moderavimo zurnalas",
     "modLogChannelDesc": "Kanalas, kuriame registruojami moderavimo veiksmai."
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

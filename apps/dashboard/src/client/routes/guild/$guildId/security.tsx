@@ -20,7 +20,14 @@ import { Switch } from "../../../shared/ui/switch";
 import { Separator } from "../../../shared/ui/separator";
 import { Badge } from "../../../shared/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
-import { PageSkeleton } from "../../../shared/ui/skeletons";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../../shared/ui/select";
+import { PageSkeleton, TableSkeleton } from "../../../shared/ui/skeletons";
 
 const ACTION_OPTIONS = [
   { value: "kick", labelKey: "joinRate.actions.kick" },
@@ -40,18 +47,18 @@ function ActionSelect({
   t: (key: string) => string;
 }) {
   return (
-    <select
-      id={id}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className="flex h-9 w-full rounded-md border border-border bg-surface-container px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
-    >
-      {ACTION_OPTIONS.map((opt) => (
-        <option key={opt.value} value={opt.value}>
-          {t(opt.labelKey)}
-        </option>
-      ))}
-    </select>
+    <Select value={value} onValueChange={onChange}>
+      <SelectTrigger id={id} className="w-full">
+        <SelectValue />
+      </SelectTrigger>
+      <SelectContent>
+        {ACTION_OPTIONS.map((opt) => (
+          <SelectItem key={opt.value} value={opt.value}>
+            {t(opt.labelKey)}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   );
 }
 
@@ -121,7 +128,7 @@ export function SecurityPage() {
   const { data: config, isLoading } = useAntiRaidConfig(guildId);
   const updateConfig = useUpdateAntiRaidConfig(guildId);
   const [eventsPage, setEventsPage] = useState(1);
-  const { data: eventsData } = useRaidEvents(guildId, eventsPage);
+  const { data: eventsData, isLoading: eventsLoading } = useRaidEvents(guildId, eventsPage);
 
   // Local form state
   const [enabled, setEnabled] = useState(false);
@@ -193,7 +200,7 @@ export function SecurityPage() {
       <Card className="bg-surface-container p-6 glass-edge">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="font-label text-lg font-semibold">{t("antiRaid.title")}</h3>
+            <h2 className="font-label text-lg font-semibold">{t("antiRaid.title")}</h2>
             <p className="text-sm text-text-muted">
               {t("antiRaid.description")}
             </p>
@@ -214,7 +221,7 @@ export function SecurityPage() {
         {/* Join Rate Detection */}
         <TabsContent value="join-rate">
           <Card className="bg-surface-container p-6 glass-edge">
-            <h3 className="mb-2 font-label text-lg font-semibold">{t("joinRate.title")}</h3>
+            <h2 className="mb-2 font-label text-lg font-semibold">{t("joinRate.title")}</h2>
             <p className="mb-4 text-sm text-text-muted">
               {t("joinRate.description")}
             </p>
@@ -270,7 +277,7 @@ export function SecurityPage() {
         {/* Account Age Filter */}
         <TabsContent value="account-age">
           <Card className="bg-surface-container p-6 glass-edge">
-            <h3 className="mb-2 font-label text-lg font-semibold">{t("accountAge.title")}</h3>
+            <h2 className="mb-2 font-label text-lg font-semibold">{t("accountAge.title")}</h2>
             <p className="mb-4 text-sm text-text-muted">
               {t("accountAge.description")}
             </p>
@@ -314,7 +321,7 @@ export function SecurityPage() {
           <Card className="bg-surface-container p-6 glass-edge">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="font-label text-lg font-semibold">{t("antiNuke.title")}</h3>
+                <h2 className="font-label text-lg font-semibold">{t("antiNuke.title")}</h2>
                 <p className="text-sm text-text-muted">
                   {t("antiNuke.description")}
                 </p>
@@ -349,7 +356,7 @@ export function SecurityPage() {
           <Card className="bg-surface-container p-6 glass-edge">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h3 className="font-label text-lg font-semibold">{t("lockdown.title")}</h3>
+                <h2 className="font-label text-lg font-semibold">{t("lockdown.title")}</h2>
                 <p className="text-sm text-text-muted">
                   {t("lockdown.description")}
                 </p>
@@ -392,14 +399,16 @@ export function SecurityPage() {
         {/* Recent Events */}
         <TabsContent value="events">
           <Card className="bg-surface-container p-6 glass-edge">
-            <h3 className="mb-2 font-label text-lg font-semibold">{t("events.title")}</h3>
+            <h2 className="mb-2 font-label text-lg font-semibold">{t("events.title")}</h2>
             <p className="mb-4 text-sm text-text-muted">
               {t("events.description")}
             </p>
 
             <Separator className="mb-6" />
 
-            {eventsData && eventsData.events.length > 0 ? (
+            {eventsLoading ? (
+              <TableSkeleton columns={2} />
+            ) : eventsData && eventsData.events.length > 0 ? (
               <div className="space-y-2">
                 {eventsData.events.map((event) => (
                   <RaidEventRow key={event.id} event={event} t={t} />
@@ -417,7 +426,7 @@ export function SecurityPage() {
                       {t("pagination.previous")}
                     </Button>
                     <span className="text-xs text-text-muted">
-                      {t("pagination.page", { current: eventsPage, total: Math.ceil(eventsData.total / 20) })}
+                      {t("pagination.page", { page: eventsPage, current: eventsPage, total: Math.ceil(eventsData.total / 20) })}
                     </span>
                     <Button
                       variant="outline"

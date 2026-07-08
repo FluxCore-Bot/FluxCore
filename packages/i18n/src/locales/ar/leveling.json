@@ -116,5 +116,7 @@
   "formatters": {
     "voiceTime": "{{hours}} ساعة {{minutes}} دقيقة",
     "voiceTimeMinutesOnly": "{{minutes}} دقيقة"
-  }
+  },
+  "confirmRemoveReward": "هل أنت متأكد من رغبتك في إزالة مكافأة الرتبة هذه؟ لا يمكن التراجع عن هذا الإجراء.",
+  "confirmRemoveMultiplier": "هل أنت متأكد من رغبتك في إزالة مضاعِف نقاط الخبرة هذا؟ لا يمكن التراجع عن هذا الإجراء."
 }

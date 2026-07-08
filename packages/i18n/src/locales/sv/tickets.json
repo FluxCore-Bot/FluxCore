@@ -33,7 +33,8 @@
     "category": "Ärendekategori",
     "create": "Skapa panel",
     "edit": "Redigera panel",
-    "deploy": "Publicera panel"
+    "deploy": "Publicera panel",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Transkriptkanal",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Stängningsbekräftelse",
     "closeConfirmationDesc": "Kräv bekräftelse innan ett ärende stängs.",
     "dmTranscript": "DM-transkript",
-    "dmTranscriptDesc": "Skicka en kopia av transkriptet till ärendeskaparen via DM."
+    "dmTranscriptDesc": "Skicka en kopia av transkriptet till ärendeskaparen via DM.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Tilldela",

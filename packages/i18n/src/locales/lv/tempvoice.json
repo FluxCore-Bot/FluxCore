@@ -15,7 +15,8 @@
     "saving": "Saglabā...",
     "cancel": "Atcelt",
     "delete": "Dzēst",
-    "edit": "Rediģēt"
+    "edit": "Rediģēt",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Konfigurāciju vēl nav",
@@ -26,5 +27,12 @@
     "updated": "Konfigurācija atjaunināta",
     "created": "Konfigurācija izveidota",
     "removed": "Konfigurācija noņemta"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

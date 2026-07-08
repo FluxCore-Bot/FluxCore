@@ -15,7 +15,8 @@
     "saving": "Gordetzen...",
     "cancel": "Utzi",
     "delete": "Ezabatu",
-    "edit": "Editatu"
+    "edit": "Editatu",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Oraindik ez dago konfigaraziorik",
@@ -26,5 +27,12 @@
     "updated": "Konfigurazioa eguneratuta",
     "created": "Konfigurazioa sortuta",
     "removed": "Konfigurazioa kenduta"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

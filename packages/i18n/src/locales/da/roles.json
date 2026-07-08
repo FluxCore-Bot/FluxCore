@@ -108,5 +108,6 @@
     "channelRequired": "Kanal er påkrævet",
     "maxRolesReached": "Maksimalt 25 roller per panel"
   },
-  "loading": "Indlæser paneler..."
+  "loading": "Indlæser paneler...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

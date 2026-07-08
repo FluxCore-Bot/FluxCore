@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "Tên lệnh là bắt buộc"
   },
-  "triggerPrefix": "Kích hoạt: !{{name}}"
+  "triggerPrefix": "Kích hoạt: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
 }

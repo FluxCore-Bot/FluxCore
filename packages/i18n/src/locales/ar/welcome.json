@@ -50,7 +50,10 @@
     "footer": "التذييل",
     "thumbnail": "رابط الصورة المصغرة",
     "image": "رابط الصورة",
-    "variables": "المتغيرات:"
+    "variables": "المتغيرات:",
+    "titlePlaceholder": "مرحبًا بك في {server}!",
+    "descriptionPlaceholder": "أهلًا {user}، مرحبًا بك في **{server}**! أنت العضو رقم #{membercount}.",
+    "footerPlaceholder": "نص التذييل..."
   },
   "saveChanges": "حفظ التغييرات",
   "saving": "جارٍ الحفظ...",
@@ -61,5 +64,80 @@
     "saveFailed": "فشل في حفظ الإعدادات",
     "testSent": "سيتم إرسال الرسالة التجريبية إلى <#{{channelId}}>",
     "testFailed": "فشل في إرسال الرسالة التجريبية"
+  },
+  "defaults": {
+    "welcomeSubtitle": "مرحبًا بك في {server}!",
+    "farewellSubtitle": "وداعًا، {user.name}!"
+  },
+  "imageEditor": {
+    "livePreview": "معاينة حية",
+    "previewAlt": "معاينة صورة {{type}}",
+    "generatingPreview": "جارٍ إنشاء المعاينة...",
+    "previewPlaceholder": "ستظهر المعاينة هنا",
+    "template": "القالب",
+    "background": {
+      "title": "الخلفية",
+      "solidColor": "لون خالص",
+      "gradient": "تدرّج",
+      "customImage": "صورة مخصصة",
+      "colorPicker": "منتقي لون الخلفية",
+      "colorHex": "قيمة لون الخلفية بنظام Hex",
+      "uploadImage": "رفع صورة الخلفية",
+      "upload": "رفع صورة",
+      "uploading": "جارٍ الرفع...",
+      "set": "تم تعيين الخلفية",
+      "fileHint": "JPG أو PNG أو WebP. بحد أقصى 3 ميغابايت."
+    },
+    "overlay": {
+      "title": "تعتيم التراكب",
+      "opacity": "الشفافية"
+    },
+    "avatar": {
+      "title": "الصورة الرمزية",
+      "shape": "الشكل",
+      "shapeCircle": "دائرة",
+      "shapeRounded": "مربع بزوايا مستديرة",
+      "shapeSquare": "مربع",
+      "borderWidth": "عرض الحدود",
+      "borderColor": "لون الحدود",
+      "borderColorPicker": "منتقي لون حدود الصورة الرمزية",
+      "borderColorHex": "قيمة لون حدود الصورة الرمزية بنظام Hex",
+      "glowEffect": "تأثير التوهّج",
+      "glowColorPicker": "منتقي لون توهّج الصورة الرمزية",
+      "glowColorHex": "قيمة لون توهّج الصورة الرمزية بنظام Hex"
+    },
+    "typography": {
+      "title": "الطباعة",
+      "titleSection": "العنوان (اسم المستخدم)",
+      "subtitleSection": "العنوان الفرعي (نص مخصص)",
+      "font": "الخط",
+      "color": "اللون",
+      "size": "الحجم",
+      "text": "النص",
+      "titleColorPicker": "منتقي لون العنوان",
+      "titleColorHex": "قيمة لون العنوان بنظام Hex",
+      "subtitleColorPicker": "منتقي لون العنوان الفرعي",
+      "subtitleColorHex": "قيمة لون العنوان الفرعي بنظام Hex",
+      "subtitlePlaceholder": "مرحبًا بك في {server}!",
+      "subtitleVariables": "المتغيرات: {user.name} {server} {membercount}"
+    },
+    "accent": {
+      "title": "لون التمييز",
+      "colorPicker": "منتقي لون التمييز",
+      "colorHex": "قيمة لون التمييز بنظام Hex",
+      "hint": "يُستخدم للزخارف والحدود وتمييزات القوالب."
+    },
+    "delivery": {
+      "title": "وضع التسليم",
+      "with": "مع رسالة التضمين",
+      "before": "قبل رسالة التضمين",
+      "only": "صورة فقط (بدون تضمين)"
+    },
+    "toast": {
+      "imageTooLarge": "يجب أن تكون صورة الخلفية أقل من 3 ميغابايت",
+      "uploaded": "تم رفع الخلفية",
+      "uploadFailed": "فشل رفع الخلفية",
+      "previewFailed": "فشل إنشاء المعاينة"
+    }
   }
 }

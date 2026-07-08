@@ -1,41 +1,42 @@
 {
-  "title": "[NEEDS TRANSLATION] Starboard",
-  "subtitle": "[NEEDS TRANSLATION] Highlight the best messages by collecting star reactions into a dedicated channel.",
+  "title": "اسٹار بورڈ",
+  "subtitle": "اسٹار ری ایکشنز کو ایک مخصوص چینل میں جمع کر کے بہترین پیغامات نمایاں کریں۔",
   "tabs": {
-    "settings": "[NEEDS TRANSLATION] Settings",
-    "starredMessages": "[NEEDS TRANSLATION] Starred Messages"
+    "settings": "ترتیبات",
+    "starredMessages": "اسٹار شدہ پیغامات"
   },
   "settings": {
-    "title": "[NEEDS TRANSLATION] Starboard Configuration",
-    "description": "[NEEDS TRANSLATION] Configure when and where starred messages are posted.",
-    "channelId": "[NEEDS TRANSLATION] Starboard Channel",
-    "channelIdDesc": "[NEEDS TRANSLATION] The channel where starred messages are posted.",
-    "starEmoji": "[NEEDS TRANSLATION] Star Emoji",
-    "starEmojiDesc": "[NEEDS TRANSLATION] The emoji used to star messages. Defaults to the star emoji.",
-    "threshold": "[NEEDS TRANSLATION] Star Threshold",
-    "thresholdDesc": "[NEEDS TRANSLATION] Minimum number of reactions required to post a message to the starboard.",
-    "selfStar": "[NEEDS TRANSLATION] Self-Star",
-    "selfStarDesc": "[NEEDS TRANSLATION] Allow message authors to star their own messages.",
-    "nsfwAllowed": "[NEEDS TRANSLATION] NSFW Allowed",
-    "nsfwAllowedDesc": "[NEEDS TRANSLATION] Allow messages from NSFW channels to appear on the starboard.",
-    "ignoredChannels": "[NEEDS TRANSLATION] Ignored Channels",
-    "ignoredChannelsDesc": "[NEEDS TRANSLATION] Messages from these channels will never appear on the starboard."
+    "title": "اسٹار بورڈ ترتیب",
+    "description": "ترتیب دیں کہ اسٹار شدہ پیغامات کب اور کہاں پوسٹ کیے جائیں۔",
+    "channelId": "اسٹار بورڈ چینل",
+    "channelIdDesc": "وہ چینل جہاں اسٹار شدہ پیغامات پوسٹ کیے جاتے ہیں۔",
+    "starEmoji": "اسٹار ایموجی",
+    "starEmojiDesc": "پیغامات کو اسٹار کرنے کے لیے استعمال ہونے والی ایموجی۔ ڈیفالٹ اسٹار ایموجی ہے۔",
+    "threshold": "اسٹار حد",
+    "thresholdDesc": "کسی پیغام کو اسٹار بورڈ پر پوسٹ کرنے کے لیے درکار کم از کم ری ایکشنز کی تعداد۔",
+    "selfStar": "سیلف-اسٹار",
+    "selfStarDesc": "پیغام کے مصنفین کو اپنے ہی پیغامات اسٹار کرنے کی اجازت دیں۔",
+    "nsfwAllowed": "NSFW کی اجازت",
+    "nsfwAllowedDesc": "NSFW چینلز کے پیغامات کو اسٹار بورڈ پر ظاہر ہونے کی اجازت دیں۔",
+    "ignoredChannels": "نظر انداز شدہ چینلز",
+    "ignoredChannelsDesc": "ان چینلز کے پیغامات کبھی اسٹار بورڈ پر ظاہر نہیں ہوں گے۔"
   },
   "messages": {
     "table": {
-      "original": "[NEEDS TRANSLATION] Original Message",
-      "stars": "[NEEDS TRANSLATION] Stars",
-      "channel": "[NEEDS TRANSLATION] Channel",
-      "date": "[NEEDS TRANSLATION] Date"
+      "original": "اصل پیغام",
+      "stars": "اسٹارز",
+      "channel": "چینل",
+      "date": "تاریخ",
+      "author": "مصنف"
     },
-    "noMessages": "[NEEDS TRANSLATION] No starred messages yet."
+    "noMessages": "ابھی تک کوئی اسٹار شدہ پیغام نہیں۔"
   },
   "toast": {
-    "saved": "[NEEDS TRANSLATION] Starboard settings saved",
-    "saveFailed": "[NEEDS TRANSLATION] Failed to save starboard settings"
+    "saved": "اسٹار بورڈ ترتیبات محفوظ ہو گئیں",
+    "saveFailed": "اسٹار بورڈ ترتیبات محفوظ کرنے میں ناکامی"
   },
   "actions": {
-    "save": "[NEEDS TRANSLATION] Save",
-    "saving": "[NEEDS TRANSLATION] Saving..."
+    "save": "محفوظ کریں",
+    "saving": "محفوظ ہو رہا ہے..."
   }
 }

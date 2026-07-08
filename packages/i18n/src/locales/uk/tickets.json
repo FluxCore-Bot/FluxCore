@@ -33,7 +33,8 @@
     "category": "Категорія тікета",
     "create": "Створити панель",
     "edit": "Редагувати панель",
-    "deploy": "Розгорнути панель"
+    "deploy": "Розгорнути панель",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Канал транскриптів",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Підтвердження закриття",
     "closeConfirmationDesc": "Вимагати підтвердження перед закриттям тікета.",
     "dmTranscript": "Транскрипт в ОП",
-    "dmTranscriptDesc": "Надсилати копію транскрипту створювачу тікета через ОП."
+    "dmTranscriptDesc": "Надсилати копію транскрипту створювачу тікета через ОП.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Прийняти",

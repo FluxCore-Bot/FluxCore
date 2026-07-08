@@ -52,6 +52,7 @@
     "albumName": "Ime albuma",
     "albumNamePlaceholder": "Moj seznam predvajanja",
     "deleteAlbum": "Izbriši",
-    "atMax": "Dosegli ste največje dovoljeno število albumov."
+    "atMax": "Dosegli ste največje dovoljeno število albumov.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

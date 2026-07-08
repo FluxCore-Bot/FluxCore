@@ -52,6 +52,7 @@
     "albumName": "Numele Albumului",
     "albumNamePlaceholder": "Lista mea de redare",
     "deleteAlbum": "Șterge",
-    "atMax": "Ai atins numărul maxim de albume."
+    "atMax": "Ai atins numărul maxim de albume.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

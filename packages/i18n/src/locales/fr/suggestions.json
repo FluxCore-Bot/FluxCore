@@ -45,7 +45,9 @@
     "autoThread": "Creation automatique de fil",
     "autoThreadDesc": "Creer automatiquement un fil de discussion pour chaque nouvelle suggestion.",
     "dmOnStatusChange": "MP lors d'un changement de statut",
-    "dmOnStatusChangeDesc": "Notifier l'auteur par MP lorsque le statut de sa suggestion change."
+    "dmOnStatusChangeDesc": "Notifier l'auteur par MP lorsque le statut de sa suggestion change.",
+    "anonymousMode": "Mode anonyme",
+    "anonymousModeDesc": "Masquer l'identité des membres qui soumettent des suggestions."
   },
   "toast": {
     "approved": "Suggestion approuvee",
@@ -63,5 +65,6 @@
     "previous": "Precedent",
     "next": "Suivant",
     "page": "Page {{page}} sur {{total}}"
-  }
+  },
+  "confirmDelete": "Voulez-vous vraiment supprimer cette suggestion ? Cette action est irréversible."
 }

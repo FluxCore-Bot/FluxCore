@@ -1,14 +1,70 @@
 {
   "title": "Suggerimenti",
   "subtitle": "Permetti ai membri di inviare idee e votare. Gestisci stati e feedback.",
-  "stats": { "totalSuggestions": "Suggerimenti totali", "systemStatus": "Stato del sistema", "channel": { "configured": "Canale configurato", "notSet": "Canale non impostato" } },
-  "tabs": { "suggestions": "Suggerimenti", "settings": "Impostazioni" },
-  "filter": { "filterByStatus": "Filtra per stato", "all": "Tutti", "pending": "In attesa", "approved": "Approvati", "rejected": "Rifiutati", "implemented": "Implementati", "considered": "In considerazione" },
-  "table": { "id": "ID", "author": "Autore", "content": "Contenuto", "status": "Stato", "votes": "Voti", "date": "Data" },
-  "actions": { "approve": "Approva", "reject": "Rifiuta", "implement": "Segna come implementato", "consider": "Considera", "delete": "Elimina" },
-  "settings": { "channel": "Canale suggerimenti", "channelDesc": "Il canale dove i suggerimenti vengono pubblicati per la votazione.", "voteEmojis": "Emoji di voto", "voteEmojisDesc": "Emoji usate per le reazioni di voto positivo e negativo.", "autoThread": "Crea thread automaticamente", "autoThreadDesc": "Crea automaticamente un thread di discussione per ogni nuovo suggerimento.", "dmOnStatusChange": "MD al cambio di stato", "dmOnStatusChangeDesc": "Notifica l'autore via MD quando lo stato del suggerimento cambia." },
-  "toast": { "approved": "Suggerimento approvato", "rejected": "Suggerimento rifiutato", "implemented": "Suggerimento segnato come implementato", "considered": "Suggerimento messo in considerazione", "deleted": "Suggerimento eliminato", "actionFailed": "Impossibile aggiornare il suggerimento", "settingsSaved": "Impostazioni suggerimenti salvate", "settingsFailed": "Impossibile salvare le impostazioni dei suggerimenti" },
+  "stats": {
+    "totalSuggestions": "Suggerimenti totali",
+    "systemStatus": "Stato del sistema",
+    "channel": {
+      "configured": "Canale configurato",
+      "notSet": "Canale non impostato"
+    }
+  },
+  "tabs": {
+    "suggestions": "Suggerimenti",
+    "settings": "Impostazioni"
+  },
+  "filter": {
+    "filterByStatus": "Filtra per stato",
+    "all": "Tutti",
+    "pending": "In attesa",
+    "approved": "Approvati",
+    "rejected": "Rifiutati",
+    "implemented": "Implementati",
+    "considered": "In considerazione"
+  },
+  "table": {
+    "id": "ID",
+    "author": "Autore",
+    "content": "Contenuto",
+    "status": "Stato",
+    "votes": "Voti",
+    "date": "Data"
+  },
+  "actions": {
+    "approve": "Approva",
+    "reject": "Rifiuta",
+    "implement": "Segna come implementato",
+    "consider": "Considera",
+    "delete": "Elimina"
+  },
+  "settings": {
+    "channel": "Canale suggerimenti",
+    "channelDesc": "Il canale dove i suggerimenti vengono pubblicati per la votazione.",
+    "voteEmojis": "Emoji di voto",
+    "voteEmojisDesc": "Emoji usate per le reazioni di voto positivo e negativo.",
+    "autoThread": "Crea thread automaticamente",
+    "autoThreadDesc": "Crea automaticamente un thread di discussione per ogni nuovo suggerimento.",
+    "dmOnStatusChange": "MD al cambio di stato",
+    "dmOnStatusChangeDesc": "Notifica l'autore via MD quando lo stato del suggerimento cambia.",
+    "anonymousMode": "Anonymous Mode",
+    "anonymousModeDesc": "Hide the identity of members who submit suggestions."
+  },
+  "toast": {
+    "approved": "Suggerimento approvato",
+    "rejected": "Suggerimento rifiutato",
+    "implemented": "Suggerimento segnato come implementato",
+    "considered": "Suggerimento messo in considerazione",
+    "deleted": "Suggerimento eliminato",
+    "actionFailed": "Impossibile aggiornare il suggerimento",
+    "settingsSaved": "Impostazioni suggerimenti salvate",
+    "settingsFailed": "Impossibile salvare le impostazioni dei suggerimenti"
+  },
   "empty": "Ancora nessun suggerimento.",
   "loading": "Caricamento suggerimenti...",
-  "pagination": { "previous": "Precedente", "next": "Successivo", "page": "Pagina {{page}} di {{total}}" }
+  "pagination": {
+    "previous": "Precedente",
+    "next": "Successivo",
+    "page": "Pagina {{page}} di {{total}}"
+  },
+  "confirmDelete": "Are you sure you want to delete this suggestion? This action cannot be undone."
 }

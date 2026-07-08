@@ -45,7 +45,9 @@
     "autoThread": "Luo lanka automaattisesti",
     "autoThreadDesc": "Luo automaattisesti keskustelulanka jokaiseen uuteen ehdotukseen.",
     "dmOnStatusChange": "DM tilamuutoksesta",
-    "dmOnStatusChangeDesc": "Ilmoita kirjoittajalle DM:llä kun ehdotuksen tila muuttuu."
+    "dmOnStatusChangeDesc": "Ilmoita kirjoittajalle DM:llä kun ehdotuksen tila muuttuu.",
+    "anonymousMode": "Anonymous Mode",
+    "anonymousModeDesc": "Hide the identity of members who submit suggestions."
   },
   "toast": {
     "approved": "Ehdotus hyväksytty",
@@ -63,5 +65,6 @@
     "previous": "Edellinen",
     "next": "Seuraava",
     "page": "Sivu {{page}} / {{total}}"
-  }
+  },
+  "confirmDelete": "Are you sure you want to delete this suggestion? This action cannot be undone."
 }

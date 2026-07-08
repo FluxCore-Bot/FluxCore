@@ -79,7 +79,9 @@
     "conditions": "Условия",
     "duration": "Длительность",
     "reason": "Причина",
-    "language": "Язык"
+    "language": "Язык",
+    "limit": "Лимит",
+    "options": "Параметры"
   },
   "form": {
     "selectChannel": "Выберите канал...",
@@ -98,7 +100,6 @@
     "showingPage": "Страница {{page}} из {{total}} (всего {{count}})"
   },
   "header": {
-    "notifications": "Уведомления",
     "settings": "Настройки",
     "logout": "Выйти",
     "toggleSidebar": "Переключить боковую панель",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "Закрыть боковую панель",
     "addToServer": "Добавить на сервер",
-    "docs": "Документация",
-    "support": "Поддержка",
     "backToServers": "Назад к серверам"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "часы",
     "days": "дни",
     "ago": "{{time}} назад",
-    "in": "через {{time}}"
+    "in": "через {{time}}",
+    "weeks": "нед."
   },
   "confirm": {
     "title": "Вы уверены?",
@@ -137,5 +137,9 @@
     "error": "Произошла ошибка",
     "menuOpen": "Меню открыто",
     "menuClosed": "Меню закрыто"
+  },
+  "language": {
+    "searchPlaceholder": "Поиск языков...",
+    "noResults": "Язык не найден"
   }
 }

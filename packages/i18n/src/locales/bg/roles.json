@@ -94,7 +94,7 @@
     "selectRoles": "Избери роли...",
     "noPreview": "Няма панели за преглед."
   },
-  "empty": "Все още няма създадени панели с роли. Натиснете „Създай панел", за да започнете.",
+  "empty": "Все още няма създадени панели с роли. Натиснете „Създай панел\", за да започнете.",
   "toast": {
     "created": "Панелът е създаден",
     "createFailed": "Неуспешно създаване на панел",
@@ -108,5 +108,6 @@
     "channelRequired": "Каналът е задължителен",
     "maxRolesReached": "Максимум 25 роли на панел"
   },
-  "loading": "Зареждане на панели..."
+  "loading": "Зареждане на панели...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

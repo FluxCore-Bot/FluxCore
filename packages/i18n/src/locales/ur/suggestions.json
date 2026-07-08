@@ -1,67 +1,70 @@
 {
-  "title": "[NEEDS TRANSLATION] Suggestions",
-  "subtitle": "[NEEDS TRANSLATION] Let members submit ideas and vote on them. Manage status and feedback.",
+  "title": "تجاویز",
+  "subtitle": "ممبران کو خیالات پیش کرنے اور ان پر ووٹ دینے دیں۔ اسٹیٹس اور فیڈ بیک کا انتظام کریں۔",
   "stats": {
-    "totalSuggestions": "[NEEDS TRANSLATION] Total Suggestions",
-    "systemStatus": "[NEEDS TRANSLATION] System Status",
+    "totalSuggestions": "کل تجاویز",
+    "systemStatus": "سسٹم اسٹیٹس",
     "channel": {
-      "configured": "[NEEDS TRANSLATION] Channel Configured",
-      "notSet": "[NEEDS TRANSLATION] Channel Not Set"
+      "configured": "چینل ترتیب دیا گیا",
+      "notSet": "چینل مقرر نہیں"
     }
   },
   "tabs": {
-    "suggestions": "[NEEDS TRANSLATION] Suggestions",
-    "settings": "[NEEDS TRANSLATION] Settings"
+    "suggestions": "تجاویز",
+    "settings": "ترتیبات"
   },
   "filter": {
-    "filterByStatus": "[NEEDS TRANSLATION] Filter by Status",
-    "all": "[NEEDS TRANSLATION] All",
-    "pending": "[NEEDS TRANSLATION] Pending",
-    "approved": "[NEEDS TRANSLATION] Approved",
-    "rejected": "[NEEDS TRANSLATION] Rejected",
-    "implemented": "[NEEDS TRANSLATION] Implemented",
-    "considered": "[NEEDS TRANSLATION] Under Consideration"
+    "filterByStatus": "اسٹیٹس سے فلٹر کریں",
+    "all": "تمام",
+    "pending": "زیرِ التوا",
+    "approved": "منظور شدہ",
+    "rejected": "مسترد شدہ",
+    "implemented": "نافذ شدہ",
+    "considered": "زیرِ غور"
   },
   "table": {
-    "id": "[NEEDS TRANSLATION] ID",
-    "author": "[NEEDS TRANSLATION] Author",
-    "content": "[NEEDS TRANSLATION] Content",
-    "status": "[NEEDS TRANSLATION] Status",
-    "votes": "[NEEDS TRANSLATION] Votes",
-    "date": "[NEEDS TRANSLATION] Date"
+    "id": "ID",
+    "author": "مصنف",
+    "content": "مواد",
+    "status": "اسٹیٹس",
+    "votes": "ووٹس",
+    "date": "تاریخ"
   },
   "actions": {
-    "approve": "[NEEDS TRANSLATION] Approve",
-    "reject": "[NEEDS TRANSLATION] Reject",
-    "implement": "[NEEDS TRANSLATION] Mark Implemented",
-    "consider": "[NEEDS TRANSLATION] Consider",
-    "delete": "[NEEDS TRANSLATION] Delete"
+    "approve": "منظور کریں",
+    "reject": "مسترد کریں",
+    "implement": "نافذ شدہ نشان زد کریں",
+    "consider": "زیرِ غور رکھیں",
+    "delete": "حذف کریں"
   },
   "settings": {
-    "channel": "[NEEDS TRANSLATION] Suggestions Channel",
-    "channelDesc": "[NEEDS TRANSLATION] The channel where suggestions are posted for voting.",
-    "voteEmojis": "[NEEDS TRANSLATION] Vote Emojis",
-    "voteEmojisDesc": "[NEEDS TRANSLATION] Emojis used for upvote and downvote reactions.",
-    "autoThread": "[NEEDS TRANSLATION] Auto-Create Thread",
-    "autoThreadDesc": "[NEEDS TRANSLATION] Automatically create a discussion thread on each new suggestion.",
-    "dmOnStatusChange": "[NEEDS TRANSLATION] DM on Status Change",
-    "dmOnStatusChangeDesc": "[NEEDS TRANSLATION] Notify the author via DM when their suggestion status changes."
+    "channel": "تجاویز چینل",
+    "channelDesc": "وہ چینل جہاں تجاویز ووٹنگ کے لیے پوسٹ کی جاتی ہیں۔",
+    "voteEmojis": "ووٹ ایموجیز",
+    "voteEmojisDesc": "اپ ووٹ اور ڈاؤن ووٹ ری ایکشنز کے لیے استعمال ہونے والی ایموجیز۔",
+    "autoThread": "خودکار تھریڈ بنائیں",
+    "autoThreadDesc": "ہر نئی تجویز پر خودکار طور پر ایک گفتگو تھریڈ بنائیں۔",
+    "dmOnStatusChange": "اسٹیٹس تبدیلی پر DM",
+    "dmOnStatusChangeDesc": "جب تجویز کا اسٹیٹس بدلے تو مصنف کو DM کے ذریعے مطلع کریں۔",
+    "anonymousMode": "گمنام موڈ",
+    "anonymousModeDesc": "تجاویز پیش کرنے والے ممبران کی شناخت چھپائیں۔"
   },
   "toast": {
-    "approved": "[NEEDS TRANSLATION] Suggestion approved",
-    "rejected": "[NEEDS TRANSLATION] Suggestion rejected",
-    "implemented": "[NEEDS TRANSLATION] Suggestion marked as implemented",
-    "considered": "[NEEDS TRANSLATION] Suggestion marked as under consideration",
-    "deleted": "[NEEDS TRANSLATION] Suggestion deleted",
-    "actionFailed": "[NEEDS TRANSLATION] Failed to update suggestion",
-    "settingsSaved": "[NEEDS TRANSLATION] Suggestion settings saved",
-    "settingsFailed": "[NEEDS TRANSLATION] Failed to save suggestion settings"
+    "approved": "تجویز منظور ہو گئی",
+    "rejected": "تجویز مسترد ہو گئی",
+    "implemented": "تجویز نافذ شدہ نشان زد ہو گئی",
+    "considered": "تجویز زیرِ غور نشان زد ہو گئی",
+    "deleted": "تجویز حذف ہو گئی",
+    "actionFailed": "تجویز اپ ڈیٹ کرنے میں ناکامی",
+    "settingsSaved": "تجاویز ترتیبات محفوظ ہو گئیں",
+    "settingsFailed": "تجاویز ترتیبات محفوظ کرنے میں ناکامی"
   },
-  "empty": "[NEEDS TRANSLATION] No suggestions yet.",
-  "loading": "[NEEDS TRANSLATION] Loading suggestions...",
+  "empty": "ابھی تک کوئی تجویز نہیں۔",
+  "loading": "تجاویز لوڈ ہو رہی ہیں...",
   "pagination": {
-    "previous": "[NEEDS TRANSLATION] Previous",
-    "next": "[NEEDS TRANSLATION] Next",
-    "page": "[NEEDS TRANSLATION] Page {{page}} of {{total}}"
-  }
+    "previous": "پچھلا",
+    "next": "اگلا",
+    "page": "صفحہ {{page}} از {{total}}"
+  },
+  "confirmDelete": "کیا آپ واقعی یہ تجویز حذف کرنا چاہتے ہیں؟ یہ عمل واپس نہیں ہو سکتا۔"
 }

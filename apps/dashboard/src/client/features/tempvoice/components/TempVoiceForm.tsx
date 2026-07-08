@@ -30,7 +30,7 @@ import { ApiError } from "../../../shared/lib/client";
 const MAX_CONFIGS = 10;
 
 export function TempVoiceForm() {
-  const { t } = useTranslation("tempvoice");
+  const { t } = useTranslation(["tempvoice", "common"]);
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: configs = [], isLoading } = useTempVoiceConfigs(guildId);
   const { data: channels = [] } = useChannels(guildId);
@@ -112,7 +112,7 @@ export function TempVoiceForm() {
       }
       closeForm();
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "An error occurred");
+      setError(err instanceof ApiError ? err.message : t("common:accessibility.error"));
     }
   };
 
@@ -122,7 +122,7 @@ export function TempVoiceForm() {
       toast.success(t("toast.removed"));
       if (editingId === configId) closeForm();
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "An error occurred");
+      setError(err instanceof ApiError ? err.message : t("common:accessibility.error"));
     }
   };
 
@@ -135,10 +135,10 @@ export function TempVoiceForm() {
   return (
     <Card className="p-6">
       <div className="mb-6 flex items-center justify-between">
-        <h3 className="font-label text-lg font-semibold">Configured Hubs</h3>
+        <h3 className="font-label text-lg font-semibold">{t("hubs.configured")}</h3>
         {!showForm && configs.length < MAX_CONFIGS && (
           <Button onClick={openCreateForm}>
-            <Icon name="add" /> Add Hub
+            <Icon name="add" /> {t("hubs.add")}
           </Button>
         )}
       </div>
@@ -157,12 +157,12 @@ export function TempVoiceForm() {
             >
               <div className="space-y-1">
                 <p className="text-sm font-medium">
-                  Hub: #{getChannelName(cfg.hubChannelId)}
+                  {t("hubs.hubLabel", { channel: getChannelName(cfg.hubChannelId) })}
                 </p>
                 <p className="text-xs text-text-muted">
-                  Template: {cfg.nameTemplate}
+                  {t("hubs.templateLabel", { template: cfg.nameTemplate })}
                   {cfg.categoryId &&
-                    ` — Category: #${getChannelName(cfg.categoryId)}`}
+                    t("hubs.categorySuffix", { channel: getChannelName(cfg.categoryId) })}
                 </p>
               </div>
               <div className="flex gap-2">
@@ -206,12 +206,12 @@ export function TempVoiceForm() {
           )}
 
           <div>
-            <Label>{t("form.hubChannel")} <span className="text-danger">*</span></Label>
+            <Label htmlFor="tempvoice-hub-channel">{t("form.hubChannel")} <span className="text-danger">*</span></Label>
             <Select
               value={hubChannelId || undefined}
               onValueChange={setHubChannelId}
             >
-              <SelectTrigger>
+              <SelectTrigger id="tempvoice-hub-channel">
                 <SelectValue placeholder={t("form.selectHub")} />
               </SelectTrigger>
               <SelectContent>
@@ -225,12 +225,12 @@ export function TempVoiceForm() {
           </div>
 
           <div>
-            <Label>{t("form.category")}</Label>
+            <Label htmlFor="tempvoice-category">{t("form.category")}</Label>
             <Select
               value={categoryId ?? "none"}
               onValueChange={(v) => setCategoryId(v === "none" ? null : v)}
             >
-              <SelectTrigger>
+              <SelectTrigger id="tempvoice-category">
                 <SelectValue placeholder={t("form.sameAsHub")} />
               </SelectTrigger>
               <SelectContent>
@@ -245,8 +245,9 @@ export function TempVoiceForm() {
           </div>
 
           <div>
-            <Label>{t("form.nameTemplate")}</Label>
+            <Label htmlFor="tempvoice-name-template">{t("form.nameTemplate")}</Label>
             <Input
+              id="tempvoice-name-template"
               type="text"
               value={nameTemplate}
               onChange={(e) => setNameTemplate(e.target.value)}
@@ -254,7 +255,7 @@ export function TempVoiceForm() {
               maxLength={100}
             />
             <p className="mt-1 text-xs text-text-muted">
-              Use {"{user}"} for the member's display name
+              {t("form.nameTemplateHint")}
             </p>
           </div>
 

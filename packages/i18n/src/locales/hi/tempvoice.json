@@ -15,7 +15,8 @@
     "saving": "सहेजा जा रहा है...",
     "cancel": "रद्द करें",
     "delete": "हटाएं",
-    "edit": "संपादित करें"
+    "edit": "संपादित करें",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "अभी तक कोई कॉन्फ़िगरेशन नहीं",
@@ -26,5 +27,12 @@
     "updated": "कॉन्फ़िगरेशन अपडेट हुई",
     "created": "कॉन्फ़िगरेशन बनाई गई",
     "removed": "कॉन्फ़िगरेशन हटाई गई"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

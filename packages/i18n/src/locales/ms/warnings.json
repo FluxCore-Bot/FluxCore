@@ -68,5 +68,8 @@
     "requireReasonDesc": "Moderator mesti memberikan sebab apabila mengeluarkan amaran.",
     "maxWarnings": "Maks Amaran",
     "maxWarningsDesc": "Amaran maksimum setiap pengguna (0 = tidak terhad)."
-  }
+  },
+  "noWarningsDesc": "No warnings have been issued yet",
+  "confirmDelete": "Are you sure you want to delete this item? This action cannot be undone.",
+  "confirmRemoveEscalation": "Are you sure you want to remove this escalation rule? This action cannot be undone."
 }

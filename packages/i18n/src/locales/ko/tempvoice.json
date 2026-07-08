@@ -15,7 +15,8 @@
     "saving": "저장 중...",
     "cancel": "취소",
     "delete": "삭제",
-    "edit": "편집"
+    "edit": "편집",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "아직 구성이 없습니다",
@@ -26,5 +27,12 @@
     "updated": "구성이 업데이트되었습니다",
     "created": "구성이 생성되었습니다",
     "removed": "구성이 제거되었습니다"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

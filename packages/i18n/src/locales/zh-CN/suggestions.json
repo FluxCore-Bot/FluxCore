@@ -45,7 +45,9 @@
     "autoThread": "自动创建话题",
     "autoThreadDesc": "每条新建议自动创建讨论话题。",
     "dmOnStatusChange": "状态变更时发送私信",
-    "dmOnStatusChangeDesc": "当建议状态变更时通过私信通知作者。"
+    "dmOnStatusChangeDesc": "当建议状态变更时通过私信通知作者。",
+    "anonymousMode": "匿名模式",
+    "anonymousModeDesc": "隐藏提交建议的成员身份。"
   },
   "toast": {
     "approved": "建议已批准",
@@ -63,5 +65,6 @@
     "previous": "上一页",
     "next": "下一页",
     "page": "第 {{page}} 页 / 共 {{total}} 页"
-  }
+  },
+  "confirmDelete": "确定要删除此建议吗？此操作无法撤销。"
 }

@@ -52,6 +52,7 @@
     "albumName": "Naziv albuma",
     "albumNamePlaceholder": "Moja playlista",
     "deleteAlbum": "Obriši",
-    "atMax": "Dosegli ste maksimalan broj albuma."
+    "atMax": "Dosegli ste maksimalan broj albuma.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

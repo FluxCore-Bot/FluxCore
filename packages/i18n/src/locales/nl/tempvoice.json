@@ -15,7 +15,8 @@
     "saving": "Opslaan...",
     "cancel": "Annuleren",
     "delete": "Verwijderen",
-    "edit": "Bewerken"
+    "edit": "Bewerken",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Nog geen configuraties",
@@ -26,5 +27,12 @@
     "updated": "Configuratie bijgewerkt",
     "created": "Configuratie aangemaakt",
     "removed": "Configuratie verwijderd"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

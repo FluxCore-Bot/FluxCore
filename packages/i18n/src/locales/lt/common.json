@@ -79,7 +79,9 @@
     "conditions": "Sąlygos",
     "duration": "Trukmė",
     "reason": "Priežastis",
-    "language": "Kalba"
+    "language": "Kalba",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Pasirinkite kanalą...",
@@ -98,7 +100,6 @@
     "showingPage": "{{page}} puslapis iš {{total}} (iš viso {{count}})"
   },
   "header": {
-    "notifications": "Pranešimai",
     "settings": "Nustatymai",
     "logout": "Atsijungti",
     "toggleSidebar": "Perjungti šoninę juostą",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "Uždaryti šoninę juostą",
     "addToServer": "Pridėti į serverį",
-    "docs": "Dokumentacija",
-    "support": "Palaikymas",
     "backToServers": "Atgal į serverius"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "valandos",
     "days": "dienos",
     "ago": "prieš {{time}}",
-    "in": "po {{time}}"
+    "in": "po {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Ar esate tikri?",
@@ -137,5 +137,9 @@
     "error": "Įvyko klaida",
     "menuOpen": "Meniu atidarytas",
     "menuClosed": "Meniu uždarytas"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

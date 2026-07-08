@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "Komandoaren izena beharrezkoa da"
   },
-  "triggerPrefix": "Aktibatzailea: !{{name}}"
+  "triggerPrefix": "Aktibatzailea: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
 }

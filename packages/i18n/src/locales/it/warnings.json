@@ -1,14 +1,75 @@
 {
   "title": "Avvertimenti",
   "subtitle": "Monitora e gestisci gli avvertimenti dei membri con escalation automatica.",
-  "stats": { "totalWarnings": "Avvertimenti totali", "escalationRules": "Regole di escalation", "dmOnWarn": "MD all'avvertimento" },
-  "tabs": { "warnings": "Registro avvertimenti", "escalation": "Escalation", "settings": "Impostazioni" },
-  "table": { "id": "ID", "user": "Utente", "moderator": "Moderatore", "reason": "Motivo", "date": "Data" },
-  "filter": { "userPlaceholder": "Filtra per ID utente...", "clearAll": "Pulisci tutto" },
-  "pagination": { "previous": "Precedente", "next": "Successivo", "page": "Pagina {{page}} di {{total}} ({{count}} totali)" },
+  "stats": {
+    "totalWarnings": "Avvertimenti totali",
+    "escalationRules": "Regole di escalation",
+    "dmOnWarn": "MD all'avvertimento"
+  },
+  "tabs": {
+    "warnings": "Registro avvertimenti",
+    "escalation": "Escalation",
+    "settings": "Impostazioni"
+  },
+  "table": {
+    "id": "ID",
+    "user": "Utente",
+    "moderator": "Moderatore",
+    "reason": "Motivo",
+    "date": "Data"
+  },
+  "filter": {
+    "userPlaceholder": "Filtra per ID utente...",
+    "clearAll": "Pulisci tutto"
+  },
+  "pagination": {
+    "previous": "Precedente",
+    "next": "Successivo",
+    "page": "Pagina {{page}} di {{total}} ({{count}} totali)"
+  },
   "loading": "Caricamento avvertimenti...",
   "noWarnings": "Nessun avvertimento trovato.",
-  "toast": { "warningRemoved": "Avvertimento rimosso", "warningsFailed": "Impossibile eliminare l'avvertimento", "enterUserId": "Inserisci un ID utente per cancellare tutti gli avvertimenti di quell'utente", "allCleared": "Tutti gli avvertimenti cancellati per l'utente", "clearFailed": "Impossibile cancellare gli avvertimenti", "thresholdAdded": "Soglia di sanzione aggiunta", "thresholdFailed": "Impossibile aggiungere la sanzione", "thresholdRemoved": "Sanzione rimossa", "removeFailed": "Impossibile rimuovere la sanzione", "settingFailed": "Impossibile aggiornare l'impostazione", "thresholdInvalid": "La soglia deve essere un numero positivo" },
-  "escalation": { "title": "Escalation delle sanzioni", "description": "Configura azioni automatiche quando un utente raggiunge un certo numero di avvertimenti.", "threshold": "Soglia", "action": "Azione", "duration": "Durata", "noRules": "Nessuna regola di escalation configurata.", "addRule": "Aggiungi regola di escalation", "addButton": "Aggiungi regola", "warnings": "{{count}} avvertimenti", "min": "{{count}} min", "timeout": "Timeout", "kick": "Espulsione", "ban": "Ban", "durationLabel": "Durata (secondi)", "thresholdPlaceholder": "es. 3", "durationPlaceholder": "es. 3600" },
-  "settings": { "title": "Impostazioni avvertimenti", "dmOnWarn": "MD all'avvertimento", "dmOnWarnDesc": "Inviare un messaggio diretto all'utente quando riceve un avvertimento.", "requireReason": "Motivo obbligatorio", "requireReasonDesc": "I moderatori devono fornire un motivo quando emettono un avvertimento.", "maxWarnings": "Avvertimenti massimi", "maxWarningsDesc": "Massimo avvertimenti per utente (0 = illimitato)." }
+  "toast": {
+    "warningRemoved": "Avvertimento rimosso",
+    "warningsFailed": "Impossibile eliminare l'avvertimento",
+    "enterUserId": "Inserisci un ID utente per cancellare tutti gli avvertimenti di quell'utente",
+    "allCleared": "Tutti gli avvertimenti cancellati per l'utente",
+    "clearFailed": "Impossibile cancellare gli avvertimenti",
+    "thresholdAdded": "Soglia di sanzione aggiunta",
+    "thresholdFailed": "Impossibile aggiungere la sanzione",
+    "thresholdRemoved": "Sanzione rimossa",
+    "removeFailed": "Impossibile rimuovere la sanzione",
+    "settingFailed": "Impossibile aggiornare l'impostazione",
+    "thresholdInvalid": "La soglia deve essere un numero positivo"
+  },
+  "escalation": {
+    "title": "Escalation delle sanzioni",
+    "description": "Configura azioni automatiche quando un utente raggiunge un certo numero di avvertimenti.",
+    "threshold": "Soglia",
+    "action": "Azione",
+    "duration": "Durata",
+    "noRules": "Nessuna regola di escalation configurata.",
+    "addRule": "Aggiungi regola di escalation",
+    "addButton": "Aggiungi regola",
+    "warnings": "{{count}} avvertimenti",
+    "min": "{{count}} min",
+    "timeout": "Timeout",
+    "kick": "Espulsione",
+    "ban": "Ban",
+    "durationLabel": "Durata (secondi)",
+    "thresholdPlaceholder": "es. 3",
+    "durationPlaceholder": "es. 3600"
+  },
+  "settings": {
+    "title": "Impostazioni avvertimenti",
+    "dmOnWarn": "MD all'avvertimento",
+    "dmOnWarnDesc": "Inviare un messaggio diretto all'utente quando riceve un avvertimento.",
+    "requireReason": "Motivo obbligatorio",
+    "requireReasonDesc": "I moderatori devono fornire un motivo quando emettono un avvertimento.",
+    "maxWarnings": "Avvertimenti massimi",
+    "maxWarningsDesc": "Massimo avvertimenti per utente (0 = illimitato)."
+  },
+  "noWarningsDesc": "No warnings have been issued yet",
+  "confirmDelete": "Are you sure you want to delete this item? This action cannot be undone.",
+  "confirmRemoveEscalation": "Are you sure you want to remove this escalation rule? This action cannot be undone."
 }

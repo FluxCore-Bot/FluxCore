@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "コマンド名は必須です"
   },
-  "triggerPrefix": "トリガー: !{{name}}"
+  "triggerPrefix": "トリガー: !{{name}}",
+  "confirmDelete": "このコマンドを削除してもよろしいですか？この操作は元に戻せません。"
 }

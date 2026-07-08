@@ -114,5 +114,12 @@
     "creating": "Loon...",
     "create": "Loo"
   },
-  "loading": "Laadin õiguseid..."
+  "loading": "Laadin õiguseid...",
+  "guard": {
+    "deniedTitle": "Permission Denied",
+    "deniedMessage": "You don't have permission to access <1>{{module}}</1>.",
+    "requiredPermission": "Required permission:",
+    "yourRoles": "Your roles:",
+    "contactOwner": "Contact your server owner to request access."
+  }
 }

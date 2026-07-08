@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "명령어 이름은 필수입니다"
   },
-  "triggerPrefix": "트리거: !{{name}}"
+  "triggerPrefix": "트리거: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
 }

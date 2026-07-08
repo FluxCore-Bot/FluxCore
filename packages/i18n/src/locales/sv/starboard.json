@@ -26,7 +26,8 @@
       "original": "Originalmeddelande",
       "stars": "Stjärnor",
       "channel": "Kanal",
-      "date": "Datum"
+      "date": "Datum",
+      "author": "Author"
     },
     "noMessages": "Inga stjärnmärkta meddelanden ännu."
   },

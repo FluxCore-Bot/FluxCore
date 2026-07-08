@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "שם הפקודה הוא שדה חובה"
   },
-  "triggerPrefix": "טריגר: !{{name}}"
+  "triggerPrefix": "טריגר: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
 }

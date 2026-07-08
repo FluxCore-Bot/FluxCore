@@ -1,0 +1,114 @@
+{
+  "title": "Custom Commands",
+  "subtitle": "Create auto-responders and prefix commands triggered by messages.",
+  "stats": {
+    "totalCommands": "Total Commands",
+    "enabled": "Enabled",
+    "limit": "{{count}} / 50"
+  },
+  "tabs": {
+    "commands": "Commands",
+    "variables": "Variables"
+  },
+  "table": {
+    "name": "Name",
+    "trigger": "Trigger",
+    "response": "Response",
+    "cooldown": "Cooldown",
+    "status": "Status"
+  },
+  "triggerTypes": {
+    "command": "!command",
+    "keyword": "Keyword",
+    "startsWith": "Starts With",
+    "regex": "Regex",
+    "prefixCommand": "Prefix Command (!name)",
+    "keywordContains": "Keyword (contains)"
+  },
+  "dialog": {
+    "createCommand": "Create Command",
+    "editCommand": "Edit Command"
+  },
+  "form": {
+    "commandName": "Command Name",
+    "triggerText": "Trigger Text",
+    "regexPattern": "Regex Pattern",
+    "triggerType": "Trigger Type",
+    "response": "Response",
+    "message": "Message",
+    "embedTitle": "Embed Title",
+    "embedDescription": "Embed Description",
+    "color": "Color",
+    "footer": "Footer"
+  },
+  "options": {
+    "cooldown": "Cooldown (seconds)",
+    "enabled": "Enabled",
+    "enabledDesc": "Whether this command is active",
+    "deleteTrigger": "Delete Trigger Message",
+    "deleteTriggerDesc": "Automatically delete the message that triggered this command.",
+    "dmResponse": "DM Response",
+    "dmResponseDesc": "Send the response as a direct message instead of in the channel."
+  },
+  "restrictions": {
+    "title": "Restrictions",
+    "allowedChannels": "Allowed Channels (empty = all)",
+    "allowedRoles": "Allowed Roles (empty = everyone)",
+    "addChannel": "Add Channel",
+    "addRole": "Add Role"
+  },
+  "actions": {
+    "create": "Create",
+    "update": "Update",
+    "cancel": "Cancel",
+    "addAction": "Add Action",
+    "addRole": "Add Role",
+    "removeRole": "Remove Role"
+  },
+  "actionsSection": {
+    "title": "Actions ({{count}}/5)",
+    "noActions": "No actions configured. Add an action to define what this command does.",
+    "maxActions": "Maximum 5 actions per command"
+  },
+  "variables": {
+    "title": "Template Variables",
+    "description": "Use these variables in your command responses. They will be replaced with the actual values when the command is triggered.",
+    "table": {
+      "variable": "Variable",
+      "description": "Description"
+    },
+    "entries": {
+      "user": "{user} — Mentions the user who triggered the command",
+      "username": "{username} — The user's display name",
+      "userId": "{userId} — The user's ID",
+      "server": "{server} — The server name",
+      "channel": "{channel} — Mentions the current channel",
+      "channelName": "{channelName} — The channel name",
+      "memberCount": "{memberCount} — Total number of server members"
+    }
+  },
+  "toast": {
+    "created": "Command created",
+    "createFailed": "Failed to create command",
+    "updated": "Command updated",
+    "updateFailed": "Failed to update command",
+    "deleted": "Command deleted",
+    "deleteFailed": "Failed to delete command",
+    "toggleEnabled": "Command enabled",
+    "toggleDisabled": "Command disabled",
+    "toggleFailed": "Failed to toggle command"
+  },
+  "empty": "No custom commands created yet.",
+  "loading": "Loading commands...",
+  "badge": {
+    "active": "Active",
+    "disabled": "Disabled",
+    "text": "Text",
+    "embed": "Embed"
+  },
+  "validation": {
+    "nameRequired": "Command name is required"
+  },
+  "triggerPrefix": "Trigger: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
+}

@@ -52,6 +52,7 @@
     "albumName": "Albuma nosaukums",
     "albumNamePlaceholder": "Mans atskaņošanas saraksts",
     "deleteAlbum": "Dzēst",
-    "atMax": "Esat sasniedzis maksimālo albumu skaitu."
+    "atMax": "Esat sasniedzis maksimālo albumu skaitu.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

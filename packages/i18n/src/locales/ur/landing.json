@@ -1,68 +1,68 @@
 {
   "hero": {
-    "badge": "[NEEDS TRANSLATION] Now in Public Beta",
-    "tagline": "[NEEDS TRANSLATION] The Obsidian Engine",
-    "titleLine1": "[NEEDS TRANSLATION] The All-in-One",
-    "titleLine2": "[NEEDS TRANSLATION] Discord Bot Framework",
-    "subtitle": "[NEEDS TRANSLATION] Deploy a professional-grade Discord presence in minutes. Modular, self-hosted, and built for communities that demand more."
+    "badge": "اب پبلک بیٹا میں",
+    "tagline": "The Obsidian Engine",
+    "titleLine1": "آل اِن ون",
+    "titleLine2": "Discord بوٹ فریم ورک",
+    "subtitle": "منٹوں میں پیشہ ورانہ معیار کی Discord موجودگی تعینات کریں۔ ماڈیولر، سیلف-ہوسٹڈ، اور ان کمیونٹیز کے لیے بنایا گیا جو مزید کا مطالبہ کرتی ہیں۔"
   },
   "cta": {
-    "addToServer": "[NEEDS TRANSLATION] Add to Server",
-    "openDashboard": "[NEEDS TRANSLATION] Open Dashboard",
-    "exploreFeatures": "[NEEDS TRANSLATION] Explore Features"
+    "addToServer": "سرور میں شامل کریں",
+    "openDashboard": "ڈیش بورڈ کھولیں",
+    "exploreFeatures": "خصوصیات دیکھیں"
   },
   "stats": {
-    "servers": "[NEEDS TRANSLATION] Servers",
-    "latency": "[NEEDS TRANSLATION] Latency",
-    "uptime": "[NEEDS TRANSLATION] Uptime",
-    "modules": "[NEEDS TRANSLATION] Modules",
-    "serversValue": "[NEEDS TRANSLATION] 1,000+",
-    "latencyValue": "[NEEDS TRANSLATION] <50ms",
-    "uptimeValue": "[NEEDS TRANSLATION] 99.9%",
-    "modulesValue": "[NEEDS TRANSLATION] 10+"
+    "servers": "سرورز",
+    "latency": "لیٹنسی",
+    "uptime": "اپ ٹائم",
+    "modules": "ماڈیولز",
+    "serversValue": "1,000+",
+    "latencyValue": "<50ms",
+    "uptimeValue": "99.9%",
+    "modulesValue": "10+"
   },
   "features": {
-    "label": "[NEEDS TRANSLATION] Capabilities",
-    "title": "[NEEDS TRANSLATION] Everything your server needs",
-    "subtitle": "[NEEDS TRANSLATION] A modular toolkit designed for communities that demand reliability, flexibility, and control.",
+    "label": "صلاحیتیں",
+    "title": "آپ کے سرور کی ہر ضرورت",
+    "subtitle": "ان کمیونٹیز کے لیے تیار کردہ ماڈیولر ٹول کٹ جو قابلِ اعتماد، لچک اور کنٹرول کا مطالبہ کرتی ہیں۔",
     "automation": {
-      "title": "[NEEDS TRANSLATION] Automation Rules",
-      "description": "[NEEDS TRANSLATION] Create complex event-driven workflows without code. If-this-then-that triggers with 23 event types and 10 action types."
+      "title": "آٹومیشن رولز",
+      "description": "بغیر کوڈ کے پیچیدہ ایونٹ پر مبنی ورک فلو بنائیں۔ 23 ایونٹ اقسام اور 10 ایکشن اقسام کے ساتھ اِف-دِس-دین-دیٹ ٹرگرز۔"
     },
     "music": {
-      "title": "[NEEDS TRANSLATION] Music System",
-      "description": "[NEEDS TRANSLATION] High-fidelity audio streaming with multi-platform support. Queue management, DJ controls, and library mode."
+      "title": "میوزک سسٹم",
+      "description": "متعدد پلیٹ فارمز کی سپورٹ کے ساتھ ہائی فیڈیلیٹی آڈیو اسٹریمنگ۔ قطار مینجمنٹ، DJ کنٹرولز، اور لائبریری موڈ۔"
     },
     "tempVoice": {
-      "title": "[NEEDS TRANSLATION] TempVoice",
-      "description": "[NEEDS TRANSLATION] Dynamic voice channel management. Auto-creation with custom naming templates, permissions, and cleanup."
+      "title": "TempVoice",
+      "description": "ڈائنامک وائس چینل مینجمنٹ۔ حسبِ ضرورت نیمنگ ٹیمپلیٹس، اجازتوں اور صفائی کے ساتھ خودکار تخلیق۔"
     },
     "logs": {
-      "title": "[NEEDS TRANSLATION] Activity Logs",
-      "description": "[NEEDS TRANSLATION] Full audit trail of every automation execution. Search, filter, and debug your rules with detailed logs."
+      "title": "سرگرمی لاگز",
+      "description": "ہر آٹومیشن ایگزیکیوشن کا مکمل آڈٹ ٹریل۔ تفصیلی لاگز کے ساتھ اپنے رولز تلاش، فلٹر اور ڈی بگ کریں۔"
     },
     "webhooks": {
-      "title": "[NEEDS TRANSLATION] Webhooks & API",
-      "description": "[NEEDS TRANSLATION] Send data to external services with HTTP webhooks. Custom headers, body templates, and variable interpolation."
+      "title": "Webhooks اور API",
+      "description": "HTTP webhooks کے ذریعے بیرونی سروسز کو ڈیٹا بھیجیں۔ حسبِ ضرورت ہیڈرز، باڈی ٹیمپلیٹس، اور ویری ایبل انٹرپولیشن۔"
     },
     "dashboard": {
-      "title": "[NEEDS TRANSLATION] Real-time Dashboard",
-      "description": "[NEEDS TRANSLATION] Manage everything from a sleek web dashboard. Analytics, configuration, and monitoring in one place."
+      "title": "ریئل ٹائم ڈیش بورڈ",
+      "description": "ایک شاندار ویب ڈیش بورڈ سے ہر چیز کا انتظام کریں۔ اینالیٹکس، ترتیب اور نگرانی سب ایک جگہ۔"
     }
   },
   "ctaSection": {
-    "title": "[NEEDS TRANSLATION] Ready to upgrade your community?",
-    "subtitle": "[NEEDS TRANSLATION] Get started in minutes with zero configuration. Self-hosted, open-source, and completely free."
+    "title": "اپنی کمیونٹی کو اپ گریڈ کرنے کے لیے تیار ہیں؟",
+    "subtitle": "بغیر کسی ترتیب کے منٹوں میں شروع کریں۔ سیلف-ہوسٹڈ، اوپن سورس، اور بالکل مفت۔"
   },
   "footer": {
-    "brand": "[NEEDS TRANSLATION] FluxCore",
-    "copyright": "[NEEDS TRANSLATION] © {{year}} FluxCore Technologies. All rights reserved.",
+    "brand": "FluxCore",
+    "copyright": "© {{year}} FluxCore Technologies. جملہ حقوق محفوظ ہیں۔",
     "links": {
-      "documentation": "[NEEDS TRANSLATION] Documentation",
-      "support": "[NEEDS TRANSLATION] Support",
-      "privacy": "[NEEDS TRANSLATION] Privacy Policy",
-      "api": "[NEEDS TRANSLATION] API",
-      "github": "[NEEDS TRANSLATION] GitHub"
+      "documentation": "دستاویزات",
+      "support": "سپورٹ",
+      "privacy": "رازداری کی پالیسی",
+      "api": "API",
+      "github": "GitHub"
     }
   }
 }

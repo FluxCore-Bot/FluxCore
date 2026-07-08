@@ -26,7 +26,8 @@
       "original": "Pesan Asli",
       "stars": "Bintang",
       "channel": "Saluran",
-      "date": "Tanggal"
+      "date": "Tanggal",
+      "author": "Author"
     },
     "noMessages": "Belum ada pesan berbintang."
   },

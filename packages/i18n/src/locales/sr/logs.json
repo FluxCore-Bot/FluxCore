@@ -79,7 +79,9 @@
       "description": "Евиденције догађаја ће се појавити овде када се конфигурише евидентирање и почну да се дешавају događaji."
     },
     "config": {
-      "selectChannel": "Изаберите канал за записе"
+      "selectChannel": "Изаберите канал за записе",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

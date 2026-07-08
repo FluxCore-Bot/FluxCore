@@ -1,3 +1,4 @@
+import type { TFunction } from "i18next";
 import type { ActionConfig, Constants, RuleStep } from "../../../shared/lib/schemas";
 
 export interface ValidationIssue {
@@ -16,6 +17,7 @@ export function validateWorkflow(
   actions: ActionConfig[],
   name: string,
   constants: Constants | undefined,
+  t: TFunction,
   steps?: RuleStep[],
   entryStepId?: string,
 ): ValidationResult {
@@ -25,7 +27,7 @@ export function validateWorkflow(
     issues.push({
       nodeId: "toolbar",
       level: "error",
-      message: "Rule name is required",
+      message: t("validation.nameRequired"),
     });
   }
 
@@ -33,16 +35,16 @@ export function validateWorkflow(
     issues.push({
       nodeId: "trigger",
       level: "error",
-      message: "No event type selected",
+      message: t("validation.noEventType"),
     });
   }
 
   const isStepMode = !!(steps?.length && entryStepId);
 
   if (isStepMode) {
-    validateSteps(steps!, entryStepId!, constants, issues);
+    validateSteps(steps!, entryStepId!, constants, t, issues);
   } else {
-    validateLinearActions(actions, constants, issues);
+    validateLinearActions(actions, constants, t, issues);
   }
 
   return {
@@ -54,6 +56,7 @@ export function validateWorkflow(
 function validateLinearActions(
   actions: ActionConfig[],
   constants: Constants | undefined,
+  t: TFunction,
   issues: ValidationIssue[],
 ) {
   const configured = actions.filter((a) => a.type);
@@ -61,13 +64,13 @@ function validateLinearActions(
     issues.push({
       nodeId: "trigger",
       level: "error",
-      message: "At least one action must be configured",
+      message: t("validation.atLeastOneAction"),
     });
   }
 
   actions.forEach((action, i) => {
     const nodeId = `action-${i}`;
-    validateAction(action, nodeId, `Action ${i + 1}`, constants, issues);
+    validateAction(action, nodeId, t("validation.actionLabel", { index: i + 1 }), constants, t, issues);
   });
 }
 
@@ -75,6 +78,7 @@ function validateSteps(
   steps: RuleStep[],
   entryStepId: string,
   constants: Constants | undefined,
+  t: TFunction,
   issues: ValidationIssue[],
 ) {
   const configuredActionSteps = steps.filter(
@@ -85,7 +89,7 @@ function validateSteps(
     issues.push({
       nodeId: "trigger",
       level: "error",
-      message: "At least one action must be configured",
+      message: t("validation.atLeastOneAction"),
     });
   }
 
@@ -94,20 +98,20 @@ function validateSteps(
     const nodeId = `step-${step.id}`;
 
     if (step.type === "action") {
-      validateAction(step.action, nodeId, `Action "${step.id}"`, constants, issues);
+      validateAction(step.action, nodeId, t("validation.actionStepLabel", { id: step.id }), constants, t, issues);
     } else if (step.type === "condition") {
       if (!step.condition.value) {
         issues.push({
           nodeId,
           level: "warning",
-          message: `Condition "${step.id}": value is empty`,
+          message: t("validation.conditionValueEmpty", { id: step.id }),
         });
       }
       if (!step.thenNext && !step.elseNext) {
         issues.push({
           nodeId,
           level: "warning",
-          message: `Condition "${step.id}": no branches connected`,
+          message: t("validation.conditionNoBranches", { id: step.id }),
         });
       }
     } else if (step.type === "delay") {
@@ -115,14 +119,14 @@ function validateSteps(
         issues.push({
           nodeId,
           level: "error",
-          message: `Delay "${step.id}": must be 1–300 seconds`,
+          message: t("validation.delayOutOfRange", { id: step.id }),
         });
       }
       if (!step.next) {
         issues.push({
           nodeId,
           level: "warning",
-          message: `Delay "${step.id}": not connected to a next step`,
+          message: t("validation.delayNotConnected", { id: step.id }),
         });
       }
     }
@@ -151,7 +155,7 @@ function validateSteps(
       issues.push({
         nodeId: `step-${step.id}`,
         level: "warning",
-        message: `Step "${step.id}" is not reachable from the trigger`,
+        message: t("validation.stepUnreachable", { id: step.id }),
       });
     }
   }
@@ -162,13 +166,14 @@ function validateAction(
   nodeId: string,
   label: string,
   constants: Constants | undefined,
+  t: TFunction,
   issues: ValidationIssue[],
 ) {
   if (!action.type) {
     issues.push({
       nodeId,
       level: "error",
-      message: `${label}: no action type selected`,
+      message: t("validation.noActionType", { label }),
     });
     return;
   }
@@ -184,7 +189,7 @@ function validateAction(
       issues.push({
         nodeId,
         level: "warning",
-        message: `${label}: ${field.label} is required`,
+        message: t("validation.fieldRequired", { label, field: field.label }),
       });
     }
   }

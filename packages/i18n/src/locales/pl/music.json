@@ -52,6 +52,7 @@
     "albumName": "Nazwa albumu",
     "albumNamePlaceholder": "Moja playlista",
     "deleteAlbum": "Usuń",
-    "atMax": "Osiągnięto maksymalną liczbę albumów."
+    "atMax": "Osiągnięto maksymalną liczbę albumów.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

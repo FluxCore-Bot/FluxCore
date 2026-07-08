@@ -1,18 +1,11 @@
 import type { FastifyRequest, FastifyReply } from "fastify";
-import {
-  getSession,
-  touchSession,
-  ensureFreshGuilds,
-  type Session,
-} from "./session.js";
+import { getSession, touchSession, type Session } from "./session.js";
 import { isBotInGuild } from "./discordApi.js";
 import {
   resolveUserPermissions,
   hasPermission,
   type ResolvedPermissions,
 } from "./permissions.js";
-
-const MANAGE_GUILD = BigInt(0x20);
 
 declare module "fastify" {
   interface FastifyRequest {
@@ -68,31 +61,6 @@ export async function requireGuildAdmin(
 ): Promise<void> {
   const { guildId } = request.params as { guildId: string };
   const session = request.session!;
-  const sessionId = request.sessionId!;
-
-  // Re-validate guild membership against fresh Discord data (max 5 min stale)
-  let guilds = session.guilds;
-  if (sessionId) {
-    try {
-      const fresh = await ensureFreshGuilds(sessionId);
-      if (fresh) {
-        guilds = fresh;
-        session.guilds = fresh;
-      }
-    } catch {
-      // If Discord is unreachable, fall back to cached guilds — this is the
-      // existing behavior. We still re-check permissions below.
-    }
-  }
-
-  const userGuild = guilds.find((g) => g.id === guildId);
-  if (!userGuild || !(BigInt(userGuild.permissions) & MANAGE_GUILD)) {
-    reply.code(403).send({
-      error: request.t("errors:permissions.noGuildPermission"),
-      errorKey: "errors:permissions.noGuildPermission",
-    });
-    return;
-  }
 
   if (!(await isBotInGuild(guildId))) {
     reply.code(403).send({
@@ -102,11 +70,22 @@ export async function requireGuildAdmin(
     return;
   }
 
-  // Pre-resolve permissions so downstream handlers can use them
-  request.resolvedPermissions = await resolveUserPermissions(
-    session.userId,
-    guildId,
-  );
+  // Authorize from the user's LIVE Discord authority, not the cached OAuth
+  // session snapshot — so admin access revoked on Discord is honored here.
+  // resolveUserPermissions returns an empty set + isGuildAdmin=false when the
+  // user is no longer a guild admin.
+  const resolved = await resolveUserPermissions(session.userId, guildId);
+  const authorized =
+    resolved.isOwner || resolved.isGuildAdmin || resolved.permissions.has("*");
+  if (!authorized) {
+    reply.code(403).send({
+      error: request.t("errors:permissions.noGuildPermission"),
+      errorKey: "errors:permissions.noGuildPermission",
+    });
+    return;
+  }
+
+  request.resolvedPermissions = resolved;
 }
 
 /**

@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "Komut adı zorunludur"
   },
-  "triggerPrefix": "Tetikleyici: !{{name}}"
+  "triggerPrefix": "Tetikleyici: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
 }

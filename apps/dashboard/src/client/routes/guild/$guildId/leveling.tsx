@@ -3,6 +3,8 @@ import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { ApiError } from "../../../shared/lib/client";
+import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
+import { EmptyState } from "../../../shared/components/EmptyState";
 import { PageHeader } from "../../../shared/components/PageHeader";
 import {
   useLeaderboard,
@@ -40,7 +42,7 @@ import { StatsCard } from "../../../shared/components/StatsCard";
 import { DiscordSelect } from "../../../shared/ui/discord-select";
 import { DiscordMultiSelect } from "../../../shared/ui/discord-multi-select";
 import { PageSkeleton, TableSkeleton, FormSkeleton } from "../../../shared/ui/skeletons";
-import { Users, Award, Power } from "lucide-react";
+import { Users, Award, Power, Loader2 } from "lucide-react";
 
 function formatVoiceTime(minutes: number, t: (key: string, opts?: Record<string, unknown>) => string): string {
   const hours = Math.floor(minutes / 60);
@@ -51,7 +53,7 @@ function formatVoiceTime(minutes: number, t: (key: string, opts?: Record<string,
 
 export function LevelingPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
-  const { t } = useTranslation("leveling");
+  const { t } = useTranslation(["leveling", "common"]);
   const [page, setPage] = useState(1);
 
   // Leaderboard
@@ -77,15 +79,29 @@ export function LevelingPage() {
   const [noXpChannels, setNoXpChannels] = useState<string[]>([]);
   const [noXpRoles, setNoXpRoles] = useState<string[]>([]);
 
+  // Local number-input state (committed on blur, not per keystroke)
+  const [xpPerMessageInput, setXpPerMessageInput] = useState("");
+  const [xpCooldownInput, setXpCooldownInput] = useState("");
+  const [voiceXpPerMinuteInput, setVoiceXpPerMinuteInput] = useState("");
+
   // Multiplier form state
   const [multiplierType, setMultiplierType] = useState<"channels" | "roles">("channels");
   const [multiplierId, setMultiplierId] = useState("");
   const [multiplierValue, setMultiplierValue] = useState("");
 
+  // Destructive-action confirmation state
+  const [rewardDeleteId, setRewardDeleteId] = useState<number | null>(null);
+  const [multiplierDeleteTarget, setMultiplierDeleteTarget] = useState<
+    { type: "channels" | "roles"; id: string } | null
+  >(null);
+
   useEffect(() => {
     if (settings) {
       setNoXpChannels(settings.noXpChannels ?? []);
       setNoXpRoles(settings.noXpRoles ?? []);
+      setXpPerMessageInput(String(settings.xpPerMessage));
+      setXpCooldownInput(String(settings.xpCooldownSeconds));
+      setVoiceXpPerMinuteInput(String(settings.voiceXpPerMinute));
     }
   }, [settings]);
 
@@ -161,11 +177,17 @@ export function LevelingPage() {
   }
 
   function handleRemoveReward(id: number) {
-    removeReward.mutate(id, {
+    setRewardDeleteId(id);
+  }
+
+  function confirmRemoveReward() {
+    if (rewardDeleteId === null) return;
+    removeReward.mutate(rewardDeleteId, {
       onSuccess: () => toast.success(t("toast.rewardRemoved")),
       onError: (err) =>
         toast.error(err instanceof ApiError ? err.message : t("toast.rewardRemoveFailed")),
     });
+    setRewardDeleteId(null);
   }
 
   function handleSaveExclusions() {
@@ -214,6 +236,12 @@ export function LevelingPage() {
   }
 
   function handleRemoveMultiplier(type: "channels" | "roles", id: string) {
+    setMultiplierDeleteTarget({ type, id });
+  }
+
+  function confirmRemoveMultiplier() {
+    if (!multiplierDeleteTarget) return;
+    const { type, id } = multiplierDeleteTarget;
     const currentMultipliers = settings?.xpMultipliers ?? {};
     const group = { ...(currentMultipliers[type] ?? {}) };
     delete group[id];
@@ -230,6 +258,7 @@ export function LevelingPage() {
           toast.error(err instanceof ApiError ? err.message : t("toast.multiplierRemoveFailed")),
       },
     );
+    setMultiplierDeleteTarget(null);
   }
 
   if (leaderboardLoading && settingsLoading && rewardsLoading) {
@@ -337,7 +366,11 @@ export function LevelingPage() {
                 )}
               </>
             ) : (
-              <p className="text-text-muted">{t("emptyLeaderboard")}</p>
+              <EmptyState
+                icon="star"
+                title={t("tabs.leaderboard")}
+                description={t("emptyLeaderboard")}
+              />
             )}
           </Card>
         </TabsContent>
@@ -377,8 +410,9 @@ export function LevelingPage() {
                     type="number"
                     min={1}
                     max={1000}
-                    value={settings.xpPerMessage}
-                    onChange={(e) => handleNumberSetting("xpPerMessage", e.target.value)}
+                    value={xpPerMessageInput}
+                    onChange={(e) => setXpPerMessageInput(e.target.value)}
+                    onBlur={(e) => handleNumberSetting("xpPerMessage", e.target.value)}
                     className="w-24"
                   />
                 </div>
@@ -396,8 +430,9 @@ export function LevelingPage() {
                     type="number"
                     min={0}
                     max={3600}
-                    value={settings.xpCooldownSeconds}
-                    onChange={(e) => handleNumberSetting("xpCooldownSeconds", e.target.value)}
+                    value={xpCooldownInput}
+                    onChange={(e) => setXpCooldownInput(e.target.value)}
+                    onBlur={(e) => handleNumberSetting("xpCooldownSeconds", e.target.value)}
                     className="w-24"
                   />
                 </div>
@@ -431,8 +466,9 @@ export function LevelingPage() {
                         type="number"
                         min={0}
                         max={100}
-                        value={settings.voiceXpPerMinute}
-                        onChange={(e) => handleNumberSetting("voiceXpPerMinute", e.target.value)}
+                        value={voiceXpPerMinuteInput}
+                        onChange={(e) => setVoiceXpPerMinuteInput(e.target.value)}
+                        onBlur={(e) => handleNumberSetting("voiceXpPerMinute", e.target.value)}
                         className="w-24"
                       />
                     </div>
@@ -527,6 +563,8 @@ export function LevelingPage() {
                             size="sm"
                             onClick={() => handleRemoveReward(r.id)}
                             disabled={removeReward.isPending}
+                            title={t("common:actions.remove")}
+                            aria-label={t("common:actions.remove")}
                           >
                             <Icon name="delete" size={16} className="text-danger" />
                           </Button>
@@ -537,7 +575,11 @@ export function LevelingPage() {
                 </Table>
               </div>
             ) : (
-              <p className="mb-4 text-text-muted">{t("roleRewards.noRewards")}</p>
+              <EmptyState
+                icon="star"
+                title={t("roleRewards.title")}
+                description={t("roleRewards.noRewards")}
+              />
             )}
 
             <Separator className="my-6" />
@@ -572,7 +614,10 @@ export function LevelingPage() {
                 onClick={handleAddReward}
                 disabled={addReward.isPending}
               >
-                {t("roleRewards.addReward")}
+                {addReward.isPending && (
+                  <Loader2 size={16} strokeWidth={1.5} className="me-1 animate-spin" aria-hidden="true" />
+                )}
+                {addReward.isPending ? t("common:actions.loading") : t("roleRewards.addReward")}
               </Button>
             </div>
           </Card>
@@ -611,7 +656,10 @@ export function LevelingPage() {
                 onClick={handleSaveExclusions}
                 disabled={updateSettings.isPending}
               >
-                {t("exclusions.save")}
+                {updateSettings.isPending && (
+                  <Loader2 size={16} strokeWidth={1.5} className="me-1 animate-spin" aria-hidden="true" />
+                )}
+                {updateSettings.isPending ? t("common:actions.loading") : t("exclusions.save")}
               </Button>
             </div>
           </Card>
@@ -652,6 +700,8 @@ export function LevelingPage() {
                                       variant="ghost"
                                       size="sm"
                                       onClick={() => handleRemoveMultiplier("channels", id)}
+                                      title={t("common:actions.remove")}
+                                      aria-label={t("common:actions.remove")}
                                     >
                                       <Icon name="delete" size={16} className="text-danger" />
                                     </Button>
@@ -689,6 +739,8 @@ export function LevelingPage() {
                                       variant="ghost"
                                       size="sm"
                                       onClick={() => handleRemoveMultiplier("roles", id)}
+                                      title={t("common:actions.remove")}
+                                      aria-label={t("common:actions.remove")}
                                     >
                                       <Icon name="delete" size={16} className="text-danger" />
                                     </Button>
@@ -748,12 +800,37 @@ export function LevelingPage() {
                 onClick={handleAddMultiplier}
                 disabled={updateSettings.isPending}
               >
-                {t("multipliers.add")}
+                {updateSettings.isPending && (
+                  <Loader2 size={16} strokeWidth={1.5} className="me-1 animate-spin" aria-hidden="true" />
+                )}
+                {updateSettings.isPending ? t("common:actions.loading") : t("multipliers.add")}
               </Button>
             </div>
           </Card>
         </TabsContent>
       </Tabs>
+
+      {/* Remove Reward Confirmation */}
+      <ConfirmDialog
+        open={rewardDeleteId !== null}
+        onOpenChange={(open) => { if (!open) setRewardDeleteId(null); }}
+        title={t("common:actions.remove", { defaultValue: "Remove Reward" })}
+        description={t("confirmRemoveReward")}
+        confirmLabel={t("common:actions.remove", { defaultValue: "Remove" })}
+        destructive
+        onConfirm={confirmRemoveReward}
+      />
+
+      {/* Remove Multiplier Confirmation */}
+      <ConfirmDialog
+        open={multiplierDeleteTarget !== null}
+        onOpenChange={(open) => { if (!open) setMultiplierDeleteTarget(null); }}
+        title={t("common:actions.remove", { defaultValue: "Remove Multiplier" })}
+        description={t("confirmRemoveMultiplier")}
+        confirmLabel={t("common:actions.remove", { defaultValue: "Remove" })}
+        destructive
+        onConfirm={confirmRemoveMultiplier}
+      />
     </div>
   );
 }

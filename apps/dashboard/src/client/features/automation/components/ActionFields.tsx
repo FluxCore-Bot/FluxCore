@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Icon } from "../../../shared/components/Icon";
 import { Label } from "../../../shared/ui/label";
 import { Input } from "../../../shared/ui/input";
 import { Textarea } from "../../../shared/ui/textarea";
@@ -41,12 +42,22 @@ export function ActionFields({
     <div className="flex flex-col gap-3">
       {fields.map((field) => {
         const value = getNestedValue(values, field.key) ?? "";
+        const fieldId = `af-${field.key.replace(/\./g, "-")}`;
+        const colorHex =
+          typeof value === "number"
+            ? `#${value.toString(16).padStart(6, "0")}`
+            : String(value) || "#5865f2";
 
         return (
           <div key={field.key}>
-            <Label>
+            <Label htmlFor={fieldId}>
               {field.label}
-              {field.required && <span className="text-danger"> *</span>}
+              {field.required && (
+                <>
+                  <span aria-hidden="true" className="text-danger"> *</span>
+                  <span className="sr-only"> ({t("labels.required")})</span>
+                </>
+              )}
             </Label>
 
             {field.type === "channel" && (
@@ -54,7 +65,7 @@ export function ActionFields({
                 value={String(value) || undefined}
                 onValueChange={(v) => onChange(field.key, v)}
               >
-                <SelectTrigger>
+                <SelectTrigger id={fieldId} aria-required={field.required}>
                   <SelectValue placeholder={t("form.selectChannel")} />
                 </SelectTrigger>
                 <SelectContent>
@@ -62,7 +73,14 @@ export function ActionFields({
                     .filter((c) => c.type === 0 || c.type === 2)
                     .map((c) => (
                       <SelectItem key={c.id} value={c.id}>
-                        {c.type === 2 ? `🔊 ${c.name}` : `# ${c.name}`}
+                        <span className="flex items-center gap-1.5">
+                          <Icon
+                            name={c.type === 2 ? "volume_up" : "hash"}
+                            size={14}
+                            className="text-text-muted"
+                          />
+                          {c.name}
+                        </span>
                       </SelectItem>
                     ))}
                 </SelectContent>
@@ -74,7 +92,7 @@ export function ActionFields({
                 value={String(value) || undefined}
                 onValueChange={(v) => onChange(field.key, v)}
               >
-                <SelectTrigger>
+                <SelectTrigger id={fieldId} aria-required={field.required}>
                   <SelectValue placeholder={t("form.selectRole")} />
                 </SelectTrigger>
                 <SelectContent>
@@ -89,7 +107,9 @@ export function ActionFields({
 
             {field.type === "text" && (
               <Input
+                id={fieldId}
                 type="text"
+                aria-required={field.required}
                 value={String(value)}
                 onChange={(e) => onChange(field.key, e.target.value)}
                 placeholder={field.placeholder}
@@ -99,6 +119,8 @@ export function ActionFields({
 
             {field.type === "textarea" && (
               <Textarea
+                id={fieldId}
+                aria-required={field.required}
                 value={String(value)}
                 onChange={(e) => onChange(field.key, e.target.value)}
                 placeholder={field.placeholder}
@@ -107,18 +129,19 @@ export function ActionFields({
             )}
 
             {field.type === "color" && (
-              <input
-                type="color"
-                className="h-9 w-full cursor-pointer rounded-sm bg-surface-lowest p-1"
-                value={
-                  typeof value === "number"
-                    ? `#${value.toString(16).padStart(6, "0")}`
-                    : String(value) || "#5865f2"
-                }
-                onChange={(e) =>
-                  onChange(field.key, parseInt(e.target.value.slice(1), 16))
-                }
-              />
+              <div className="flex items-center gap-2">
+                <input
+                  id={fieldId}
+                  type="color"
+                  aria-label={field.label}
+                  className="h-9 w-14 shrink-0 cursor-pointer rounded-sm bg-surface-lowest p-1"
+                  value={colorHex}
+                  onChange={(e) =>
+                    onChange(field.key, parseInt(e.target.value.slice(1), 16))
+                  }
+                />
+                <span className="font-mono text-xs text-text-muted">{colorHex}</span>
+              </div>
             )}
 
             {field.type === "select" && field.options && (
@@ -126,7 +149,7 @@ export function ActionFields({
                 value={String(value) || undefined}
                 onValueChange={(v) => onChange(field.key, v)}
               >
-                <SelectTrigger>
+                <SelectTrigger id={fieldId} aria-required={field.required}>
                   <SelectValue placeholder={t("form.select")} />
                 </SelectTrigger>
                 <SelectContent>

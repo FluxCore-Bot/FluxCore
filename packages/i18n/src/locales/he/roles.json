@@ -108,5 +108,6 @@
     "channelRequired": "ערוץ הוא שדה חובה",
     "maxRolesReached": "מקסימום 25 תפקידים ללוח"
   },
-  "loading": "טוען לוחות..."
+  "loading": "טוען לוחות...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

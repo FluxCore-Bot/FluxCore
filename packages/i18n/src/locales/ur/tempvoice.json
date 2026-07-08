@@ -15,7 +15,8 @@
     "saving": "محفوظ ہو رہا ہے...",
     "cancel": "منسوخ کریں",
     "delete": "حذف کریں",
-    "edit": "ترمیم کریں"
+    "edit": "ترمیم کریں",
+    "nameTemplateHint": "ممبر کے ظاہر ہونے والے نام کے لیے {user} استعمال کریں"
   },
   "empty": {
     "noConfigs": "ابھی تک کوئی ترتیب نہیں",
@@ -26,5 +27,12 @@
     "updated": "ترتیب اپڈیٹ ہو گئی",
     "created": "ترتیب بن گئی",
     "removed": "ترتیب ہٹا دی گئی"
+  },
+  "hubs": {
+    "configured": "ترتیب شدہ ہبس",
+    "add": "ہب شامل کریں",
+    "hubLabel": "ہب: #{{channel}}",
+    "templateLabel": "ٹیمپلیٹ: {{template}}",
+    "categorySuffix": " — کیٹیگری: #{{channel}}"
   }
 }

@@ -1,21 +1,113 @@
 {
   "title": "Pannelli ruoli",
   "subtitle": "Crea pannelli di ruoli auto-assegnabili usando pulsanti, menu a tendina o reazioni.",
-  "stats": { "totalPanels": "Pannelli totali", "deployed": "Pubblicati", "totalRoles": "Ruoli totali" },
-  "tabs": { "panels": "Pannelli", "preview": "Anteprima" },
-  "table": { "name": "Nome", "type": "Tipo", "mode": "Modalita", "roles": "Ruoli", "status": "Stato" },
-  "panelTypes": { "reaction": "Reazione", "button": "Pulsante", "dropdown": "Menu a tendina" },
-  "panelModes": { "toggle": "Alterna", "unique": "Unico", "verify": "Verifica" },
-  "panelModeDescriptions": { "toggle": "Alterna (aggiungi/rimuovi)", "unique": "Unico (uno alla volta)", "verify": "Verifica (solo aggiunta)" },
-  "status": { "deployed": "Pubblicato", "draft": "Bozza" },
-  "dialog": { "createPanel": "Crea pannello", "editPanel": "Modifica pannello" },
-  "panelList": { "title": "Tutti i pannelli" },
-  "form": { "name": "Nome", "namePlaceholder": "es. Ruoli colore", "type": "Tipo", "mode": "Modalita", "channel": "Canale", "channelPlaceholder": "Seleziona canale", "minRoles": "Ruoli minimi", "minRolesPlaceholder": "0", "maxRoles": "Ruoli massimi", "maxRolesPlaceholder": "Tutti", "embedSection": "Embed", "embedTitle": "Titolo", "embedTitlePlaceholder": "Titolo del pannello (predefinito e il nome del pannello)", "embedDescription": "Descrizione", "embedDescriptionPlaceholder": "Testo di descrizione", "rolesCount": "Ruoli ({{count}}/25)", "addRole": "Aggiungi ruolo" },
-  "entry": { "role": "Ruolo", "rolePlaceholder": "Seleziona ruolo", "label": "Etichetta", "labelPlaceholder": "Etichetta del pulsante", "emoji": "Emoji", "emojiPlaceholder": "es. star", "description": "Descrizione", "descriptionPlaceholder": "Descrizione dell'opzione", "style": "Stile" },
-  "buttonStyles": { "primary": "Primario", "secondary": "Secondario", "success": "Successo", "danger": "Pericolo" },
-  "actions": { "create": "Crea", "update": "Aggiorna", "cancel": "Annulla", "deploy": "Pubblica", "delete": "Elimina", "addEntry": "Aggiungi voce", "removeEntry": "Rimuovi voce" },
-  "preview": { "title": "Anteprima dal vivo", "description": "Anteprima di come appariranno i tuoi pannelli in Discord.", "selectRoles": "Seleziona ruoli...", "noPreview": "Nessun pannello da visualizzare." },
+  "stats": {
+    "totalPanels": "Pannelli totali",
+    "deployed": "Pubblicati",
+    "totalRoles": "Ruoli totali"
+  },
+  "tabs": {
+    "panels": "Pannelli",
+    "preview": "Anteprima"
+  },
+  "table": {
+    "name": "Nome",
+    "type": "Tipo",
+    "mode": "Modalita",
+    "roles": "Ruoli",
+    "status": "Stato"
+  },
+  "panelTypes": {
+    "reaction": "Reazione",
+    "button": "Pulsante",
+    "dropdown": "Menu a tendina"
+  },
+  "panelModes": {
+    "toggle": "Alterna",
+    "unique": "Unico",
+    "verify": "Verifica"
+  },
+  "panelModeDescriptions": {
+    "toggle": "Alterna (aggiungi/rimuovi)",
+    "unique": "Unico (uno alla volta)",
+    "verify": "Verifica (solo aggiunta)"
+  },
+  "status": {
+    "deployed": "Pubblicato",
+    "draft": "Bozza"
+  },
+  "dialog": {
+    "createPanel": "Crea pannello",
+    "editPanel": "Modifica pannello"
+  },
+  "panelList": {
+    "title": "Tutti i pannelli"
+  },
+  "form": {
+    "name": "Nome",
+    "namePlaceholder": "es. Ruoli colore",
+    "type": "Tipo",
+    "mode": "Modalita",
+    "channel": "Canale",
+    "channelPlaceholder": "Seleziona canale",
+    "minRoles": "Ruoli minimi",
+    "minRolesPlaceholder": "0",
+    "maxRoles": "Ruoli massimi",
+    "maxRolesPlaceholder": "Tutti",
+    "embedSection": "Embed",
+    "embedTitle": "Titolo",
+    "embedTitlePlaceholder": "Titolo del pannello (predefinito e il nome del pannello)",
+    "embedDescription": "Descrizione",
+    "embedDescriptionPlaceholder": "Testo di descrizione",
+    "rolesCount": "Ruoli ({{count}}/25)",
+    "addRole": "Aggiungi ruolo"
+  },
+  "entry": {
+    "role": "Ruolo",
+    "rolePlaceholder": "Seleziona ruolo",
+    "label": "Etichetta",
+    "labelPlaceholder": "Etichetta del pulsante",
+    "emoji": "Emoji",
+    "emojiPlaceholder": "es. star",
+    "description": "Descrizione",
+    "descriptionPlaceholder": "Descrizione dell'opzione",
+    "style": "Stile"
+  },
+  "buttonStyles": {
+    "primary": "Primario",
+    "secondary": "Secondario",
+    "success": "Successo",
+    "danger": "Pericolo"
+  },
+  "actions": {
+    "create": "Crea",
+    "update": "Aggiorna",
+    "cancel": "Annulla",
+    "deploy": "Pubblica",
+    "delete": "Elimina",
+    "addEntry": "Aggiungi voce",
+    "removeEntry": "Rimuovi voce"
+  },
+  "preview": {
+    "title": "Anteprima dal vivo",
+    "description": "Anteprima di come appariranno i tuoi pannelli in Discord.",
+    "selectRoles": "Seleziona ruoli...",
+    "noPreview": "Nessun pannello da visualizzare."
+  },
   "empty": "Nessun pannello ruoli creato ancora. Clicca su \"Crea pannello\" per iniziare.",
-  "toast": { "created": "Pannello creato", "createFailed": "Impossibile creare il pannello", "updated": "Pannello aggiornato", "updateFailed": "Impossibile aggiornare il pannello", "deleted": "Pannello eliminato", "deleteFailed": "Impossibile eliminare il pannello", "deployed": "Pannello ruoli pubblicato nel canale", "deployFailed": "Impossibile inviare il pannello", "nameRequired": "Il nome del pannello e obbligatorio", "channelRequired": "Il canale e obbligatorio", "maxRolesReached": "Massimo 25 ruoli per pannello" },
-  "loading": "Caricamento pannelli..."
+  "toast": {
+    "created": "Pannello creato",
+    "createFailed": "Impossibile creare il pannello",
+    "updated": "Pannello aggiornato",
+    "updateFailed": "Impossibile aggiornare il pannello",
+    "deleted": "Pannello eliminato",
+    "deleteFailed": "Impossibile eliminare il pannello",
+    "deployed": "Pannello ruoli pubblicato nel canale",
+    "deployFailed": "Impossibile inviare il pannello",
+    "nameRequired": "Il nome del pannello e obbligatorio",
+    "channelRequired": "Il canale e obbligatorio",
+    "maxRolesReached": "Massimo 25 ruoli per pannello"
+  },
+  "loading": "Caricamento pannelli...",
+  "confirmDeletePanel": "Are you sure you want to delete this role panel? This action cannot be undone."
 }

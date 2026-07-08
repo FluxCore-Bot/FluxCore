@@ -68,5 +68,8 @@
     "requireReasonDesc": "管理员发出警告时必须提供原因。",
     "maxWarnings": "最大警告数",
     "maxWarningsDesc": "每个用户的最大警告数（0 = 无限制）。"
-  }
+  },
+  "noWarningsDesc": "尚未发出任何警告",
+  "confirmDelete": "确定要删除此项吗？此操作无法撤销。",
+  "confirmRemoveEscalation": "确定要移除此升级规则吗？此操作无法撤销。"
 }

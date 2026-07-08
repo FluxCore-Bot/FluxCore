@@ -79,7 +79,9 @@
     "conditions": "Услови",
     "duration": "Трајање",
     "reason": "Разлог",
-    "language": "Језик"
+    "language": "Језик",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Изаберите канал...",
@@ -98,7 +100,6 @@
     "showingPage": "Страна {{page}} од {{total}} ({{count}} укупно)"
   },
   "header": {
-    "notifications": "Обавештења",
     "settings": "Подешавања",
     "logout": "Одјава",
     "toggleSidebar": "Пребаци бочну траку",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "Затвори бочну траку",
     "addToServer": "Додај на сервер",
-    "docs": "Документација",
-    "support": "Подршка",
     "backToServers": "Назад на сервере"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "сати",
     "days": "дана",
     "ago": "пре {{time}}",
-    "in": "за {{time}}"
+    "in": "за {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Да ли сте сигурни?",
@@ -137,5 +137,9 @@
     "error": "Дошло је до грешке",
     "menuOpen": "Мени је отворен",
     "menuClosed": "Мени је затворен"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

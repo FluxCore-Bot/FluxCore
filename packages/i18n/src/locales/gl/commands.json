@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "O nome da orde é obrigatorio"
   },
-  "triggerPrefix": "Disparador: !{{name}}"
+  "triggerPrefix": "Disparador: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
 }

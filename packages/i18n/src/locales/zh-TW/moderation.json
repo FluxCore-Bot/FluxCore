@@ -25,7 +25,8 @@
     "date": "日期",
     "actions": "操作",
     "noCases": "找不到案例。",
-    "noReason": "無原因"
+    "noReason": "無原因",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "依使用者 ID 篩選...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "處罰（封鎖、踢出、禁言）時向使用者傳送私訊。",
     "modLogChannel": "管理日誌頻道",
     "modLogChannelDesc": "記錄管理操作的頻道。"
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

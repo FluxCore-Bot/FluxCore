@@ -79,7 +79,9 @@
       "description": "লগিং কনফিগার হলে এবং ইভেন্ট শুরু হলে ইভেন্ট লগ এখানে দেখাবে।"
     },
     "config": {
-      "selectChannel": "লগ চ্যানেল বেছে নিন"
+      "selectChannel": "লগ চ্যানেল বেছে নিন",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

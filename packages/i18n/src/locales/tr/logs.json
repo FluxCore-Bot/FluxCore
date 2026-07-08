@@ -79,7 +79,9 @@
       "description": "Günlük kaydı yapılandırıldığında ve olaylar gerçekleşmeye başladığında olay günlükleri burada görünecektir."
     },
     "config": {
-      "selectChannel": "Günlük kanalı seçin"
+      "selectChannel": "Günlük kanalı seçin",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

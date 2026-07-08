@@ -79,7 +79,9 @@
     "conditions": "शर्तें",
     "duration": "अवधि",
     "reason": "कारण",
-    "language": "भाषा"
+    "language": "भाषा",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "चैनल चुनें...",
@@ -98,7 +100,6 @@
     "showingPage": "पृष्ठ {{page}} / {{total}} ({{count}} कुल)"
   },
   "header": {
-    "notifications": "सूचनाएं",
     "settings": "सेटिंग्स",
     "logout": "लॉग आउट",
     "toggleSidebar": "साइडबार टॉगल करें",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "साइडबार बंद करें",
     "addToServer": "सर्वर में जोड़ें",
-    "docs": "दस्तावेज़",
-    "support": "सहायता",
     "backToServers": "सर्वर पर वापस जाएं"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "घंटे",
     "days": "दिन",
     "ago": "{{time}} पहले",
-    "in": "{{time}} में"
+    "in": "{{time}} में",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "क्या आप सुनिश्चित हैं?",
@@ -137,5 +137,9 @@
     "error": "एक त्रुटि हुई",
     "menuOpen": "मेनू खुला है",
     "menuClosed": "मेनू बंद है"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

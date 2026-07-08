@@ -79,7 +79,9 @@
       "description": "Gebeurtenislogboeken verschijnen hier zodra logboekregistratie is geconfigureerd en gebeurtenissen beginnen op te treden."
     },
     "config": {
-      "selectChannel": "Logkanaal selecteren"
+      "selectChannel": "Logkanaal selecteren",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

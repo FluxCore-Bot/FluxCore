@@ -1,118 +1,125 @@
 {
-  "title": "[NEEDS TRANSLATION] Roles & Permissions",
-  "subtitle": "[NEEDS TRANSLATION] Control who can access and manage each dashboard module.",
+  "title": "رولز اور اجازتیں",
+  "subtitle": "کنٹرول کریں کہ ہر ڈیش بورڈ ماڈیول تک کون رسائی اور اس کا انتظام کر سکتا ہے۔",
   "actions": {
-    "createRole": "[NEEDS TRANSLATION] Create Role"
+    "createRole": "رول بنائیں"
   },
   "permissionSystem": {
-    "title": "[NEEDS TRANSLATION] Permission System",
-    "active": "[NEEDS TRANSLATION] Active — admins are restricted to their assigned permissions.",
-    "inactive": "[NEEDS TRANSLATION] Inactive — all admins with MANAGE_GUILD have full access.",
-    "enabledToast": "[NEEDS TRANSLATION] Permission system enabled",
-    "disabledToast": "[NEEDS TRANSLATION] Permission system disabled — all admins have full access"
+    "title": "اجازت سسٹم",
+    "active": "فعال — ایڈمنز اپنی تفویض کردہ اجازتوں تک محدود ہیں۔",
+    "inactive": "غیر فعال — MANAGE_GUILD رکھنے والے تمام ایڈمنز کو مکمل رسائی ہے۔",
+    "enabledToast": "اجازت سسٹم فعال ہو گیا",
+    "disabledToast": "اجازت سسٹم غیر فعال ہو گیا — تمام ایڈمنز کو مکمل رسائی ہے"
   },
   "warning": {
-    "disabled": "[NEEDS TRANSLATION] The permission system is disabled. All dashboard admins currently have full access. Enable it above to enforce granular permissions."
+    "disabled": "اجازت سسٹم غیر فعال ہے۔ فی الحال تمام ڈیش بورڈ ایڈمنز کو مکمل رسائی ہے۔ باریک اجازتیں نافذ کرنے کے لیے اسے اوپر فعال کریں۔"
   },
   "tabs": {
-    "roles": "[NEEDS TRANSLATION] Roles",
-    "auditLog": "[NEEDS TRANSLATION] Audit Log"
+    "roles": "رولز",
+    "auditLog": "آڈٹ لاگ"
   },
   "roleList": {
-    "title": "[NEEDS TRANSLATION] Dashboard Roles",
-    "empty": "[NEEDS TRANSLATION] No roles created yet.",
-    "selectHint": "[NEEDS TRANSLATION] Select a role to edit, or create a new one.",
-    "default": "[NEEDS TRANSLATION] Default",
-    "name": "[NEEDS TRANSLATION] Name",
-    "members": "[NEEDS TRANSLATION] Members",
-    "permissions": "[NEEDS TRANSLATION] Permissions",
-    "edit": "[NEEDS TRANSLATION] Edit",
-    "delete": "[NEEDS TRANSLATION] Delete"
+    "title": "ڈیش بورڈ رولز",
+    "empty": "ابھی تک کوئی رول نہیں بنایا گیا۔",
+    "selectHint": "ترمیم کے لیے کوئی رول منتخب کریں، یا نیا بنائیں۔",
+    "default": "ڈیفالٹ",
+    "name": "نام",
+    "members": "ممبران",
+    "permissions": "اجازتیں",
+    "edit": "ترمیم",
+    "delete": "حذف کریں"
   },
   "presets": {
-    "title": "[NEEDS TRANSLATION] Quick Add from Preset",
-    "createdToast": "[NEEDS TRANSLATION] Created \"{{name}}\" role"
+    "title": "پریسیٹ سے فوری اضافہ",
+    "createdToast": "\"{{name}}\" رول بن گیا"
   },
   "roleEditor": {
-    "memberCount": "[NEEDS TRANSLATION] {{count}} member",
-    "memberCount_plural": "[NEEDS TRANSLATION] {{count}} members",
-    "name": "[NEEDS TRANSLATION] Role Name",
-    "color": "[NEEDS TRANSLATION] Color",
-    "defaultRole": "[NEEDS TRANSLATION] Default role",
-    "permissions": "[NEEDS TRANSLATION] Permissions",
-    "allBadge": "[NEEDS TRANSLATION] All",
-    "discordRoles": "[NEEDS TRANSLATION] Discord Roles"
+    "memberCount": "{{count}} ممبر",
+    "memberCount_plural": "{{count}} ممبران",
+    "name": "رول کا نام",
+    "color": "رنگ",
+    "defaultRole": "ڈیفالٹ رول",
+    "permissions": "اجازتیں",
+    "allBadge": "تمام",
+    "discordRoles": "Discord رولز"
   },
   "roleForm": {
-    "name": "[NEEDS TRANSLATION] Role Name",
-    "discordRoles": "[NEEDS TRANSLATION] Discord Roles",
-    "permissions": "[NEEDS TRANSLATION] Permissions",
-    "create": "[NEEDS TRANSLATION] Create Role",
-    "update": "[NEEDS TRANSLATION] Update Role",
-    "cancel": "[NEEDS TRANSLATION] Cancel"
+    "name": "رول کا نام",
+    "discordRoles": "Discord رولز",
+    "permissions": "اجازتیں",
+    "create": "رول بنائیں",
+    "update": "رول اپ ڈیٹ کریں",
+    "cancel": "منسوخ کریں"
   },
   "createDialog": {
-    "title": "[NEEDS TRANSLATION] Create Dashboard Role",
-    "name": "[NEEDS TRANSLATION] Name",
-    "namePlaceholder": "[NEEDS TRANSLATION] e.g. Moderator",
-    "color": "[NEEDS TRANSLATION] Color"
+    "title": "ڈیش بورڈ رول بنائیں",
+    "name": "نام",
+    "namePlaceholder": "مثلاً ماڈریٹر",
+    "color": "رنگ"
   },
   "permissionCategories": {
-    "actions": "[NEEDS TRANSLATION] Actions & Automation",
-    "music": "[NEEDS TRANSLATION] Music",
-    "tempvoice": "[NEEDS TRANSLATION] TempVoice",
-    "welcome": "[NEEDS TRANSLATION] Welcome & Farewell",
-    "moderation": "[NEEDS TRANSLATION] Moderation",
-    "logging": "[NEEDS TRANSLATION] Logging",
-    "leveling": "[NEEDS TRANSLATION] Leveling",
-    "roles": "[NEEDS TRANSLATION] Role Panels",
-    "tickets": "[NEEDS TRANSLATION] Tickets",
-    "suggestions": "[NEEDS TRANSLATION] Suggestions",
-    "starboard": "[NEEDS TRANSLATION] Starboard",
-    "giveaways": "[NEEDS TRANSLATION] Giveaways",
-    "security": "[NEEDS TRANSLATION] Security",
-    "scheduled": "[NEEDS TRANSLATION] Scheduled Messages",
-    "commands": "[NEEDS TRANSLATION] Custom Commands",
-    "settings": "[NEEDS TRANSLATION] Server Settings"
+    "actions": "ایکشنز اور آٹومیشن",
+    "music": "میوزک",
+    "tempvoice": "TempVoice",
+    "welcome": "ویلکم اور الوداع",
+    "moderation": "ماڈریشن",
+    "logging": "لاگنگ",
+    "leveling": "لیولنگ",
+    "roles": "رول پینلز",
+    "tickets": "ٹکٹس",
+    "suggestions": "تجاویز",
+    "starboard": "اسٹار بورڈ",
+    "giveaways": "گیو ویز",
+    "security": "سکیورٹی",
+    "scheduled": "شیڈولڈ پیغامات",
+    "commands": "کسٹم کمانڈز",
+    "settings": "سرور ترتیبات"
   },
   "audit": {
     "table": {
-      "user": "[NEEDS TRANSLATION] User",
-      "action": "[NEEDS TRANSLATION] Action",
-      "target": "[NEEDS TRANSLATION] Target",
-      "timestamp": "[NEEDS TRANSLATION] When"
+      "user": "صارف",
+      "action": "ایکشن",
+      "target": "ہدف",
+      "timestamp": "کب"
     },
-    "noEntries": "[NEEDS TRANSLATION] No audit log entries yet."
+    "noEntries": "ابھی تک کوئی آڈٹ لاگ انٹری نہیں۔"
   },
   "pagination": {
-    "previous": "[NEEDS TRANSLATION] Previous",
-    "next": "[NEEDS TRANSLATION] Next",
-    "page": "[NEEDS TRANSLATION] Page {{current}} of {{total}}"
+    "previous": "پچھلا",
+    "next": "اگلا",
+    "page": "صفحہ {{current}} از {{total}}"
   },
   "toast": {
-    "roleCreated": "[NEEDS TRANSLATION] Created role \"{{name}}\"",
-    "roleCreateFailed": "[NEEDS TRANSLATION] Failed to create role",
-    "roleUpdated": "[NEEDS TRANSLATION] Role updated",
-    "roleUpdateFailed": "[NEEDS TRANSLATION] Failed to update role",
-    "roleDeleted": "[NEEDS TRANSLATION] Role deleted",
-    "roleDeleteFailed": "[NEEDS TRANSLATION] Failed to delete role"
+    "roleCreated": "\"{{name}}\" رول بن گیا",
+    "roleCreateFailed": "رول بنانے میں ناکامی",
+    "roleUpdated": "رول اپ ڈیٹ ہو گیا",
+    "roleUpdateFailed": "رول اپ ڈیٹ کرنے میں ناکامی",
+    "roleDeleted": "رول حذف ہو گیا",
+    "roleDeleteFailed": "رول حذف کرنے میں ناکامی"
   },
   "confirm": {
-    "deleteTitle": "[NEEDS TRANSLATION] Delete role \"{{name}}\"?",
-    "deleteMessage": "[NEEDS TRANSLATION] This will remove the role and unassign all members. This action cannot be undone.",
-    "deleteRole": "[NEEDS TRANSLATION] Are you sure you want to delete this role? Members will lose their assigned permissions."
+    "deleteTitle": "\"{{name}}\" رول حذف کریں؟",
+    "deleteMessage": "اس سے رول ہٹ جائے گا اور تمام ممبران کی تفویض ختم ہو جائے گی۔ یہ عمل واپس نہیں ہو سکتا۔",
+    "deleteRole": "کیا آپ واقعی یہ رول حذف کرنا چاہتے ہیں؟ ممبران اپنی تفویض کردہ اجازتیں کھو دیں گے۔"
   },
   "saveButton": {
-    "saving": "[NEEDS TRANSLATION] Saving...",
-    "save": "[NEEDS TRANSLATION] Save Changes"
+    "saving": "محفوظ ہو رہا ہے...",
+    "save": "تبدیلیاں محفوظ کریں"
   },
   "deleteButton": {
-    "deleting": "[NEEDS TRANSLATION] Deleting...",
-    "delete": "[NEEDS TRANSLATION] Delete"
+    "deleting": "حذف ہو رہا ہے...",
+    "delete": "حذف کریں"
   },
   "createButton": {
-    "creating": "[NEEDS TRANSLATION] Creating...",
-    "create": "[NEEDS TRANSLATION] Create"
+    "creating": "بن رہا ہے...",
+    "create": "بنائیں"
   },
-  "loading": "[NEEDS TRANSLATION] Loading permissions..."
+  "loading": "اجازتیں لوڈ ہو رہی ہیں...",
+  "guard": {
+    "deniedTitle": "اجازت مسترد",
+    "deniedMessage": "آپ کو <1>{{module}}</1> تک رسائی کی اجازت نہیں ہے۔",
+    "requiredPermission": "مطلوبہ اجازت:",
+    "yourRoles": "آپ کے رولز:",
+    "contactOwner": "رسائی کی درخواست کے لیے اپنے سرور مالک سے رابطہ کریں۔"
+  }
 }

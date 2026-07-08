@@ -8,5 +8,26 @@
     "successRate": "성공률"
   },
   "errorsInLast24h": "최근 24시간 동안 {{count}}건의 오류",
-  "errorsInLast24h_other": "최근 24시간 동안 {{count}}건의 오류"
+  "errorsInLast24h_other": "최근 24시간 동안 {{count}}건의 오류",
+  "recentActivity": {
+    "title": "Recent Activity",
+    "viewAllLogs": "View all logs",
+    "empty": "No activity recorded yet",
+    "timeAgo": {
+      "justNow": "just now",
+      "minutes": "{{count}}m ago",
+      "hours": "{{count}}h ago",
+      "days": "{{count}}d ago"
+    }
+  },
+  "eventDistribution": {
+    "title": "Top Events",
+    "empty": "No event data yet",
+    "executions": "{{count}} executions"
+  },
+  "executionChart": {
+    "title": "Execution Trend",
+    "success": "Success",
+    "errors": "Errors"
+  }
 }

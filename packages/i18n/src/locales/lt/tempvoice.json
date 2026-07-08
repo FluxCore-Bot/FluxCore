@@ -15,7 +15,8 @@
     "saving": "Saugoma...",
     "cancel": "Atšaukti",
     "delete": "Ištrinti",
-    "edit": "Redaguoti"
+    "edit": "Redaguoti",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Konfigūracijų dar nėra",
@@ -26,5 +27,12 @@
     "updated": "Konfigūracija atnaujinta",
     "created": "Konfigūracija sukurta",
     "removed": "Konfigūracija pašalinta"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

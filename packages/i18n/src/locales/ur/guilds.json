@@ -1,9 +1,9 @@
 {
-  "title": "[NEEDS TRANSLATION] Your Servers",
-  "subtitle": "[NEEDS TRANSLATION] Choose a server to manage and configure.",
-  "loading": "[NEEDS TRANSLATION] Loading servers...",
+  "title": "آپ کے سرورز",
+  "subtitle": "انتظام اور ترتیب کے لیے ایک سرور منتخب کریں۔",
+  "loading": "سرورز لوڈ ہو رہے ہیں...",
   "empty": {
-    "title": "[NEEDS TRANSLATION] No servers found",
-    "description": "[NEEDS TRANSLATION] Make sure the bot is added to a server where you have the Manage Server permission."
+    "title": "کوئی سرور نہیں ملا",
+    "description": "یقینی بنائیں کہ بوٹ کسی ایسے سرور میں شامل ہے جہاں آپ کے پاس Manage Server کی اجازت ہے۔"
   }
 }

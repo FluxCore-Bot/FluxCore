@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "Befehlsname ist erforderlich"
   },
-  "triggerPrefix": "Ausloeser: !{{name}}"
+  "triggerPrefix": "Ausloeser: !{{name}}",
+  "confirmDelete": "Möchtest du diesen Befehl wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden."
 }

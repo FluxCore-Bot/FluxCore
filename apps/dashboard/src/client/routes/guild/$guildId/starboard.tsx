@@ -143,7 +143,7 @@ export function StarboardPage() {
                   <Label htmlFor="starboard-emoji">{t("settings.starEmoji")}</Label>
                   <Input
                     id="starboard-emoji"
-                    placeholder="\u2B50"
+                    placeholder={"\u2B50"}
                     value={emoji}
                     onChange={(e) => setEmoji(e.target.value)}
                     className="mt-1"
@@ -252,7 +252,7 @@ export function StarboardPage() {
                       <TableRow>
                         <TableHead>{t("messages.table.original")}</TableHead>
                         <TableHead>{t("messages.table.channel")}</TableHead>
-                        <TableHead>{t("table.author")}</TableHead>
+                        <TableHead>{t("messages.table.author")}</TableHead>
                         <TableHead>{t("messages.table.stars")}</TableHead>
                         <TableHead>{t("messages.table.date")}</TableHead>
                       </TableRow>

@@ -1,0 +1,86 @@
+{
+  "title": "Scheduled Messages",
+  "subtitle": "Create recurring auto-posted messages on configurable schedules.",
+  "stats": {
+    "totalMessages": "Total Messages",
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "table": {
+    "name": "Name",
+    "channel": "Channel",
+    "schedule": "Schedule",
+    "nextRun": "Next Run",
+    "status": "Status"
+  },
+  "dialog": {
+    "editTitle": "Edit Scheduled Message",
+    "createTitle": "New Scheduled Message"
+  },
+  "form": {
+    "name": "Name",
+    "channel": "Channel",
+    "schedulePreset": "Schedule Preset",
+    "cronExpression": "Cron Expression",
+    "timezone": "Timezone",
+    "messageContent": "Message Content",
+    "text": "Text",
+    "embed": "Embed",
+    "enabled": "Enabled",
+    "enabledDesc": "Whether this scheduled message is active."
+  },
+  "cronPresets": {
+    "everyHour": "Every Hour",
+    "every6Hours": "Every 6 Hours",
+    "daily9am": "Daily at 9 AM",
+    "dailyMidnight": "Daily at Midnight",
+    "weeklyMonday": "Weekly on Monday",
+    "monthly1st": "Monthly on the 1st",
+    "custom": "Custom"
+  },
+  "embed": {
+    "title": "Title",
+    "description": "Description",
+    "color": "Color (hex)",
+    "footer": "Footer",
+    "thumbnail": "Thumbnail URL",
+    "image": "Image URL"
+  },
+  "toast": {
+    "created": "Scheduled message created",
+    "createFailed": "Failed to create scheduled message",
+    "updated": "Scheduled message updated",
+    "updateFailed": "Failed to update scheduled message",
+    "deleted": "Scheduled message deleted",
+    "deleteFailed": "Failed to delete scheduled message",
+    "testSent": "Test message sent",
+    "testFailed": "Failed to send test message"
+  },
+  "empty": {
+    "title": "No scheduled messages yet",
+    "description": "Create a scheduled message to automatically post content on a recurring basis.",
+    "createButton": "Create Message"
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {{page}} of {{total}}"
+  },
+  "actions": {
+    "newMessage": "New Message",
+    "testSend": "Test Send",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "validation": {
+    "nameRequired": "Message name is required",
+    "channelRequired": "Channel is required"
+  },
+  "cronPreview": {
+    "nextRuns": "Next Runs"
+  },
+  "characters": "{{count}}/2000 characters",
+  "never": "Never"
+}

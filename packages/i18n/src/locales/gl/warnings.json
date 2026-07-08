@@ -68,5 +68,8 @@
     "requireReasonDesc": "Os moderadores deben proporcionar un motivo ao emitir unha advertencia.",
     "maxWarnings": "Máx. Advertencias",
     "maxWarningsDesc": "Máximo de advertencias por usuario (0 = ilimitado)."
-  }
+  },
+  "noWarningsDesc": "No warnings have been issued yet",
+  "confirmDelete": "Are you sure you want to delete this item? This action cannot be undone.",
+  "confirmRemoveEscalation": "Are you sure you want to remove this escalation rule? This action cannot be undone."
 }

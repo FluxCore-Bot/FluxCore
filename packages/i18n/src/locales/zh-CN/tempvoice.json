@@ -15,7 +15,8 @@
     "saving": "保存中...",
     "cancel": "取消",
     "delete": "删除",
-    "edit": "编辑"
+    "edit": "编辑",
+    "nameTemplateHint": "使用 {user} 表示成员的显示名称"
   },
   "empty": {
     "noConfigs": "暂无配置",
@@ -26,5 +27,12 @@
     "updated": "配置已更新",
     "created": "配置已创建",
     "removed": "配置已移除"
+  },
+  "hubs": {
+    "configured": "已配置的中枢",
+    "add": "添加中枢",
+    "hubLabel": "中枢：#{{channel}}",
+    "templateLabel": "模板：{{template}}",
+    "categorySuffix": " — 分类：#{{channel}}"
   }
 }

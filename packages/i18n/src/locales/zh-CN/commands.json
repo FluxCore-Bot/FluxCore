@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "命令名称为必填项"
   },
-  "triggerPrefix": "触发器: !{{name}}"
+  "triggerPrefix": "触发器: !{{name}}",
+  "confirmDelete": "确定要删除此命令吗？此操作无法撤销。"
 }

@@ -1,7 +1,9 @@
 {
   "title": "Role a oprávnění",
   "subtitle": "Řiďte, kdo má přístup ke správě jednotlivých modulů panelu.",
-  "actions": { "createRole": "Vytvořit roli" },
+  "actions": {
+    "createRole": "Vytvořit roli"
+  },
   "permissionSystem": {
     "title": "Systém oprávnění",
     "active": "Aktivní — administrátoři jsou omezeni na přidělená oprávnění.",
@@ -9,20 +11,115 @@
     "enabledToast": "Systém oprávnění povolen",
     "disabledToast": "Systém oprávnění zakázán — všichni administrátoři mají plný přístup"
   },
-  "warning": { "disabled": "Systém oprávnění je zakázán. Všichni administrátoři panelu mají plný přístup. Povolte ho výše pro vynucení podrobných oprávnění." },
-  "tabs": { "roles": "Role", "auditLog": "Auditní log" },
-  "roleList": { "title": "Role panelu", "empty": "Zatím nebyly vytvořeny žádné role.", "selectHint": "Vyberte roli k úpravě nebo vytvořte novou.", "default": "Výchozí", "name": "Název", "members": "Členové", "permissions": "Oprávnění", "edit": "Upravit", "delete": "Smazat" },
-  "presets": { "title": "Rychlé přidání ze šablony", "createdToast": "Vytvořena role \"{{name}}\"" },
-  "roleEditor": { "memberCount": "{{count}} člen", "memberCount_plural": "{{count}} členů", "name": "Název role", "color": "Barva", "defaultRole": "Výchozí role", "permissions": "Oprávnění", "allBadge": "Vše", "discordRoles": "Discord role" },
-  "roleForm": { "name": "Název role", "discordRoles": "Discord role", "permissions": "Oprávnění", "create": "Vytvořit roli", "update": "Aktualizovat roli", "cancel": "Zrušit" },
-  "createDialog": { "title": "Vytvořit roli panelu", "name": "Název", "namePlaceholder": "např. Moderátor", "color": "Barva" },
-  "permissionCategories": { "actions": "Akce a automatizace", "music": "Hudba", "tempvoice": "TempVoice", "welcome": "Uvítání a rozloučení", "moderation": "Moderace", "logging": "Logování", "leveling": "Úrovně", "roles": "Panely rolí", "tickets": "Tikety", "suggestions": "Návrhy", "starboard": "Nástěnka hvězd", "giveaways": "Soutěže", "security": "Zabezpečení", "scheduled": "Naplánované zprávy", "commands": "Vlastní příkazy", "settings": "Nastavení serveru" },
-  "audit": { "table": { "user": "Uživatel", "action": "Akce", "target": "Cíl", "timestamp": "Kdy" }, "noEntries": "Zatím žádné záznamy v auditním logu." },
-  "pagination": { "previous": "Předchozí", "next": "Další", "page": "Stránka {{current}} z {{total}}" },
-  "toast": { "roleCreated": "Vytvořena role \"{{name}}\"", "roleCreateFailed": "Nepodařilo se vytvořit roli", "roleUpdated": "Role aktualizována", "roleUpdateFailed": "Nepodařilo se aktualizovat roli", "roleDeleted": "Role smazána", "roleDeleteFailed": "Nepodařilo se smazat roli" },
-  "confirm": { "deleteTitle": "Smazat roli \"{{name}}\"?", "deleteMessage": "Tímto smažete roli a odeberete přiřazení všem členům. Tuto akci nelze vrátit zpět.", "deleteRole": "Opravdu chcete smazat tuto roli? Členové ztratí přidělená oprávnění." },
-  "saveButton": { "saving": "Ukládání...", "save": "Uložit změny" },
-  "deleteButton": { "deleting": "Mazání...", "delete": "Smazat" },
-  "createButton": { "creating": "Vytváření...", "create": "Vytvořit" },
-  "loading": "Načítání oprávnění..."
+  "warning": {
+    "disabled": "Systém oprávnění je zakázán. Všichni administrátoři panelu mají plný přístup. Povolte ho výše pro vynucení podrobných oprávnění."
+  },
+  "tabs": {
+    "roles": "Role",
+    "auditLog": "Auditní log"
+  },
+  "roleList": {
+    "title": "Role panelu",
+    "empty": "Zatím nebyly vytvořeny žádné role.",
+    "selectHint": "Vyberte roli k úpravě nebo vytvořte novou.",
+    "default": "Výchozí",
+    "name": "Název",
+    "members": "Členové",
+    "permissions": "Oprávnění",
+    "edit": "Upravit",
+    "delete": "Smazat"
+  },
+  "presets": {
+    "title": "Rychlé přidání ze šablony",
+    "createdToast": "Vytvořena role \"{{name}}\""
+  },
+  "roleEditor": {
+    "memberCount": "{{count}} člen",
+    "memberCount_plural": "{{count}} členů",
+    "name": "Název role",
+    "color": "Barva",
+    "defaultRole": "Výchozí role",
+    "permissions": "Oprávnění",
+    "allBadge": "Vše",
+    "discordRoles": "Discord role"
+  },
+  "roleForm": {
+    "name": "Název role",
+    "discordRoles": "Discord role",
+    "permissions": "Oprávnění",
+    "create": "Vytvořit roli",
+    "update": "Aktualizovat roli",
+    "cancel": "Zrušit"
+  },
+  "createDialog": {
+    "title": "Vytvořit roli panelu",
+    "name": "Název",
+    "namePlaceholder": "např. Moderátor",
+    "color": "Barva"
+  },
+  "permissionCategories": {
+    "actions": "Akce a automatizace",
+    "music": "Hudba",
+    "tempvoice": "TempVoice",
+    "welcome": "Uvítání a rozloučení",
+    "moderation": "Moderace",
+    "logging": "Logování",
+    "leveling": "Úrovně",
+    "roles": "Panely rolí",
+    "tickets": "Tikety",
+    "suggestions": "Návrhy",
+    "starboard": "Nástěnka hvězd",
+    "giveaways": "Soutěže",
+    "security": "Zabezpečení",
+    "scheduled": "Naplánované zprávy",
+    "commands": "Vlastní příkazy",
+    "settings": "Nastavení serveru"
+  },
+  "audit": {
+    "table": {
+      "user": "Uživatel",
+      "action": "Akce",
+      "target": "Cíl",
+      "timestamp": "Kdy"
+    },
+    "noEntries": "Zatím žádné záznamy v auditním logu."
+  },
+  "pagination": {
+    "previous": "Předchozí",
+    "next": "Další",
+    "page": "Stránka {{current}} z {{total}}"
+  },
+  "toast": {
+    "roleCreated": "Vytvořena role \"{{name}}\"",
+    "roleCreateFailed": "Nepodařilo se vytvořit roli",
+    "roleUpdated": "Role aktualizována",
+    "roleUpdateFailed": "Nepodařilo se aktualizovat roli",
+    "roleDeleted": "Role smazána",
+    "roleDeleteFailed": "Nepodařilo se smazat roli"
+  },
+  "confirm": {
+    "deleteTitle": "Smazat roli \"{{name}}\"?",
+    "deleteMessage": "Tímto smažete roli a odeberete přiřazení všem členům. Tuto akci nelze vrátit zpět.",
+    "deleteRole": "Opravdu chcete smazat tuto roli? Členové ztratí přidělená oprávnění."
+  },
+  "saveButton": {
+    "saving": "Ukládání...",
+    "save": "Uložit změny"
+  },
+  "deleteButton": {
+    "deleting": "Mazání...",
+    "delete": "Smazat"
+  },
+  "createButton": {
+    "creating": "Vytváření...",
+    "create": "Vytvořit"
+  },
+  "loading": "Načítání oprávnění...",
+  "guard": {
+    "deniedTitle": "Permission Denied",
+    "deniedMessage": "You don't have permission to access <1>{{module}}</1>.",
+    "requiredPermission": "Required permission:",
+    "yourRoles": "Your roles:",
+    "contactOwner": "Contact your server owner to request access."
+  }
 }

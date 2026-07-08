@@ -79,7 +79,9 @@
       "description": "יומני אירועים יופיעו כאן לאחר שהרישום יוגדר ואירועים יתחילו להתרחש."
     },
     "config": {
-      "selectChannel": "בחר ערוץ יומן"
+      "selectChannel": "בחר ערוץ יומן",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

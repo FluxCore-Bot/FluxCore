@@ -114,5 +114,12 @@
     "creating": "作成中...",
     "create": "作成"
   },
-  "loading": "権限を読み込み中..."
+  "loading": "権限を読み込み中...",
+  "guard": {
+    "deniedTitle": "アクセス拒否",
+    "deniedMessage": "<1>{{module}}</1>にアクセスする権限がありません。",
+    "requiredPermission": "必要な権限:",
+    "yourRoles": "あなたのロール:",
+    "contactOwner": "アクセスをリクエストするには、サーバーオーナーにお問い合わせください。"
+  }
 }

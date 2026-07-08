@@ -25,7 +25,8 @@
     "date": "Data",
     "actions": "Azioni",
     "noCases": "Nessun caso trovato.",
-    "noReason": "Nessun motivo"
+    "noReason": "Nessun motivo",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "Filtra per ID utente...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Invia un MD agli utenti quando vengono sanzionati (ban, espulsione, timeout).",
     "modLogChannel": "Canale registro moderazione",
     "modLogChannelDesc": "Canale dove vengono registrate le azioni di moderazione."
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

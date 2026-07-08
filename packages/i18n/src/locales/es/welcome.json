@@ -50,7 +50,10 @@
     "footer": "Pie de pagina",
     "thumbnail": "URL de miniatura",
     "image": "URL de imagen",
-    "variables": "Variables:"
+    "variables": "Variables:",
+    "titlePlaceholder": "¡Bienvenido a {server}!",
+    "descriptionPlaceholder": "¡Hola {user}, bienvenido a **{server}**! Eres el miembro #{membercount}.",
+    "footerPlaceholder": "Texto del pie..."
   },
   "saveChanges": "Guardar cambios",
   "saving": "Guardando...",
@@ -61,5 +64,80 @@
     "saveFailed": "Error al guardar la configuracion",
     "testSent": "El mensaje de prueba se enviara a <#{{channelId}}>",
     "testFailed": "Error al enviar el mensaje de prueba"
+  },
+  "defaults": {
+    "welcomeSubtitle": "¡Bienvenido a {server}!",
+    "farewellSubtitle": "¡Adiós, {user.name}!"
+  },
+  "imageEditor": {
+    "livePreview": "Vista previa en vivo",
+    "previewAlt": "Vista previa de la imagen de {{type}}",
+    "generatingPreview": "Generando vista previa...",
+    "previewPlaceholder": "La vista previa aparecerá aquí",
+    "template": "Plantilla",
+    "background": {
+      "title": "Fondo",
+      "solidColor": "Color sólido",
+      "gradient": "Degradado",
+      "customImage": "Imagen personalizada",
+      "colorPicker": "Selector de color de fondo",
+      "colorHex": "Valor HEX del color de fondo",
+      "uploadImage": "Subir imagen de fondo",
+      "upload": "Subir imagen",
+      "uploading": "Subiendo...",
+      "set": "Fondo establecido",
+      "fileHint": "JPG, PNG o WebP. Máx. 3 MB."
+    },
+    "overlay": {
+      "title": "Oscurecimiento de la superposición",
+      "opacity": "Opacidad"
+    },
+    "avatar": {
+      "title": "Avatar",
+      "shape": "Forma",
+      "shapeCircle": "Círculo",
+      "shapeRounded": "Cuadrado redondeado",
+      "shapeSquare": "Cuadrado",
+      "borderWidth": "Grosor del borde",
+      "borderColor": "Color del borde",
+      "borderColorPicker": "Selector de color del borde del avatar",
+      "borderColorHex": "Valor HEX del color del borde del avatar",
+      "glowEffect": "Efecto de brillo",
+      "glowColorPicker": "Selector de color del brillo del avatar",
+      "glowColorHex": "Valor HEX del color del brillo del avatar"
+    },
+    "typography": {
+      "title": "Tipografía",
+      "titleSection": "Título (nombre de usuario)",
+      "subtitleSection": "Subtítulo (texto personalizado)",
+      "font": "Fuente",
+      "color": "Color",
+      "size": "Tamaño",
+      "text": "Texto",
+      "titleColorPicker": "Selector de color del título",
+      "titleColorHex": "Valor HEX del color del título",
+      "subtitleColorPicker": "Selector de color del subtítulo",
+      "subtitleColorHex": "Valor HEX del color del subtítulo",
+      "subtitlePlaceholder": "¡Bienvenido a {server}!",
+      "subtitleVariables": "Variables: {user.name} {server} {membercount}"
+    },
+    "accent": {
+      "title": "Color de acento",
+      "colorPicker": "Selector de color de acento",
+      "colorHex": "Valor HEX del color de acento",
+      "hint": "Se usa para decoraciones, bordes y acentos de plantilla."
+    },
+    "delivery": {
+      "title": "Modo de entrega",
+      "with": "Con mensaje embed",
+      "before": "Antes del mensaje embed",
+      "only": "Solo imagen (sin embed)"
+    },
+    "toast": {
+      "imageTooLarge": "La imagen de fondo debe pesar menos de 3 MB",
+      "uploaded": "Fondo subido",
+      "uploadFailed": "No se pudo subir el fondo",
+      "previewFailed": "No se pudo generar la vista previa"
+    }
   }
 }

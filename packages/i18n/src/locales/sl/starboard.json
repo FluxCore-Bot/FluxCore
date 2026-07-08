@@ -26,7 +26,8 @@
       "original": "Izvirno sporočilo",
       "stars": "Zvezde",
       "channel": "Kanal",
-      "date": "Datum"
+      "date": "Datum",
+      "author": "Author"
     },
     "noMessages": "Še ni označenih sporočil."
   },

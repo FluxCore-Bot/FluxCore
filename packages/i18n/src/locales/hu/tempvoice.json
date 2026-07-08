@@ -15,7 +15,8 @@
     "saving": "Mentés...",
     "cancel": "Mégse",
     "delete": "Törlés",
-    "edit": "Szerkesztés"
+    "edit": "Szerkesztés",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Még nincs konfiguráció",
@@ -26,5 +27,12 @@
     "updated": "Konfiguráció frissítve",
     "created": "Konfiguráció létrehozva",
     "removed": "Konfiguráció eltávolítva"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

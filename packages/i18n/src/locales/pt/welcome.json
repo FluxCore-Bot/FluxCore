@@ -50,7 +50,10 @@
     "footer": "Rodape",
     "thumbnail": "URL da miniatura",
     "image": "URL da imagem",
-    "variables": "Variaveis:"
+    "variables": "Variaveis:",
+    "titlePlaceholder": "Bem-vindo(a) ao {server}!",
+    "descriptionPlaceholder": "Olá {user}, bem-vindo(a) ao **{server}**! Você é o membro nº {membercount}.",
+    "footerPlaceholder": "Texto do rodapé..."
   },
   "saveChanges": "Guardar alteracoes",
   "saving": "A guardar...",
@@ -61,5 +64,80 @@
     "saveFailed": "Falha ao guardar a configuracao",
     "testSent": "A mensagem de teste sera enviada para <#{{channelId}}>",
     "testFailed": "Falha ao enviar a mensagem de teste"
+  },
+  "defaults": {
+    "welcomeSubtitle": "Bem-vindo(a) ao {server}!",
+    "farewellSubtitle": "Até logo, {user.name}!"
+  },
+  "imageEditor": {
+    "livePreview": "Prévia ao Vivo",
+    "previewAlt": "Prévia da imagem de {{type}}",
+    "generatingPreview": "Gerando prévia...",
+    "previewPlaceholder": "A prévia aparecerá aqui",
+    "template": "Modelo",
+    "background": {
+      "title": "Plano de Fundo",
+      "solidColor": "Cor Sólida",
+      "gradient": "Gradiente",
+      "customImage": "Imagem Personalizada",
+      "colorPicker": "Seletor de cor do plano de fundo",
+      "colorHex": "Valor hex da cor do plano de fundo",
+      "uploadImage": "Enviar imagem de plano de fundo",
+      "upload": "Enviar Imagem",
+      "uploading": "Enviando...",
+      "set": "Plano de fundo definido",
+      "fileHint": "JPG, PNG ou WebP. Máx. 3 MB."
+    },
+    "overlay": {
+      "title": "Escurecimento da Sobreposição",
+      "opacity": "Opacidade"
+    },
+    "avatar": {
+      "title": "Avatar",
+      "shape": "Formato",
+      "shapeCircle": "Círculo",
+      "shapeRounded": "Quadrado Arredondado",
+      "shapeSquare": "Quadrado",
+      "borderWidth": "Largura da Borda",
+      "borderColor": "Cor da Borda",
+      "borderColorPicker": "Seletor de cor da borda do avatar",
+      "borderColorHex": "Valor hex da cor da borda do avatar",
+      "glowEffect": "Efeito de Brilho",
+      "glowColorPicker": "Seletor de cor do brilho do avatar",
+      "glowColorHex": "Valor hex da cor do brilho do avatar"
+    },
+    "typography": {
+      "title": "Tipografia",
+      "titleSection": "Título (Nome de Usuário)",
+      "subtitleSection": "Subtítulo (Texto Personalizado)",
+      "font": "Fonte",
+      "color": "Cor",
+      "size": "Tamanho",
+      "text": "Texto",
+      "titleColorPicker": "Seletor de cor do título",
+      "titleColorHex": "Valor hex da cor do título",
+      "subtitleColorPicker": "Seletor de cor do subtítulo",
+      "subtitleColorHex": "Valor hex da cor do subtítulo",
+      "subtitlePlaceholder": "Bem-vindo(a) ao {server}!",
+      "subtitleVariables": "Variáveis: {user.name} {server} {membercount}"
+    },
+    "accent": {
+      "title": "Cor de Destaque",
+      "colorPicker": "Seletor de cor de destaque",
+      "colorHex": "Valor hex da cor de destaque",
+      "hint": "Usada em decorações, bordas e detalhes dos modelos."
+    },
+    "delivery": {
+      "title": "Modo de Entrega",
+      "with": "Com mensagem de embed",
+      "before": "Antes da mensagem de embed",
+      "only": "Apenas imagem (sem embed)"
+    },
+    "toast": {
+      "imageTooLarge": "A imagem de plano de fundo deve ter menos de 3 MB",
+      "uploaded": "Plano de fundo enviado",
+      "uploadFailed": "Falha ao enviar o plano de fundo",
+      "previewFailed": "Falha ao gerar a prévia"
+    }
   }
 }

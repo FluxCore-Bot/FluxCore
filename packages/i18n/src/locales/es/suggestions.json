@@ -45,7 +45,9 @@
     "autoThread": "Crear hilo automaticamente",
     "autoThreadDesc": "Crear automaticamente un hilo de discusion en cada nueva sugerencia.",
     "dmOnStatusChange": "MD al cambiar estado",
-    "dmOnStatusChangeDesc": "Notificar al autor por MD cuando cambie el estado de su sugerencia."
+    "dmOnStatusChangeDesc": "Notificar al autor por MD cuando cambie el estado de su sugerencia.",
+    "anonymousMode": "Modo anónimo",
+    "anonymousModeDesc": "Oculta la identidad de los miembros que envían sugerencias."
   },
   "toast": {
     "approved": "Sugerencia aprobada",
@@ -63,5 +65,6 @@
     "previous": "Anterior",
     "next": "Siguiente",
     "page": "Pagina {{page}} de {{total}}"
-  }
+  },
+  "confirmDelete": "¿Seguro que quieres eliminar esta sugerencia? Esta acción no se puede deshacer."
 }

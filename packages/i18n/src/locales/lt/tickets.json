@@ -33,7 +33,8 @@
     "category": "Bilieto kategorija",
     "create": "Sukurti paneli",
     "edit": "Redaguoti paneli",
-    "deploy": "Patalpinti paneli"
+    "deploy": "Patalpinti paneli",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Transkripto kanalas",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Uzdarymo patvirtinimas",
     "closeConfirmationDesc": "Reikalauti patvirtinimo pries uzdarant bilieta.",
     "dmTranscript": "Transkriptas privatia zinute",
-    "dmTranscriptDesc": "Siusti transkripto kopija bilieto autoriui privatia zinute."
+    "dmTranscriptDesc": "Siusti transkripto kopija bilieto autoriui privatia zinute.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Paimti",

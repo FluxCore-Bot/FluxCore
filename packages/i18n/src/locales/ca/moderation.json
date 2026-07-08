@@ -25,7 +25,8 @@
     "date": "Data",
     "actions": "Accions",
     "noCases": "No s'han trobat casos.",
-    "noReason": "Sense motiu"
+    "noReason": "Sense motiu",
+    "noCasesDesc": "No moderation cases match your filters"
   },
   "filter": {
     "userPlaceholder": "Filtrar per ID d'usuari...",
@@ -50,5 +51,11 @@
     "dmOnPunishmentDesc": "Envia un DM als usuaris quan son sancionats (ban, expulsió, temps mort).",
     "modLogChannel": "Canal de registre de moderació",
     "modLogChannelDesc": "Canal on es registren les accions de moderació."
+  },
+  "toast": {
+    "caseDeleted": "Case deleted",
+    "caseUpdated": "Case updated",
+    "deleteFailed": "Failed to delete case",
+    "updateFailed": "Failed to update case"
   }
 }

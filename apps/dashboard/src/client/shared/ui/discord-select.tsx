@@ -130,7 +130,7 @@ export function DiscordSelect({
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="ml-2 shrink-0 opacity-50"
+            className="ms-2 shrink-0 opacity-50"
           >
             <path d="m6 9 6 6 6-6" />
           </svg>
@@ -188,7 +188,7 @@ export function DiscordSelect({
                   "flex w-full items-center justify-between rounded-sm px-2 py-1.5 text-sm hover:bg-surface-high",
                   opt.id === value
                     ? "bg-surface-high text-text"
-                    : "text-text/80",
+                    : "text-text",
                 )}
                 onClick={() => {
                   onValueChange(opt.id);

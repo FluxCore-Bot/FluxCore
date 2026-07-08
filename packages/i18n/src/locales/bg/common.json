@@ -79,7 +79,9 @@
     "conditions": "Условия",
     "duration": "Продължителност",
     "reason": "Причина",
-    "language": "Език"
+    "language": "Език",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Изберете канал...",
@@ -98,7 +100,6 @@
     "showingPage": "Страница {{page}} от {{total}} (общо {{count}})"
   },
   "header": {
-    "notifications": "Известия",
     "settings": "Настройки",
     "logout": "Изход",
     "toggleSidebar": "Превключи страничната лента",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "Затвори страничната лента",
     "addToServer": "Добави към сървъра",
-    "docs": "Документация",
-    "support": "Поддръжка",
     "backToServers": "Назад към сървърите"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "часове",
     "days": "дни",
     "ago": "преди {{time}}",
-    "in": "след {{time}}"
+    "in": "след {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Сигурни ли сте?",
@@ -137,5 +137,9 @@
     "error": "Възникна грешка",
     "menuOpen": "Менюто е отворено",
     "menuClosed": "Менюто е затворено"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

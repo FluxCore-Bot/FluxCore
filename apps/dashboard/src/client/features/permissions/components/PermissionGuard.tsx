@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { useParams } from "@tanstack/react-router";
+import { Trans, useTranslation } from "react-i18next";
 import { usePermissions } from "../hooks/usePermissions";
 import { Icon } from "../../../shared/components/Icon";
 
@@ -36,6 +37,7 @@ interface PermissionPageGuardProps {
 export function PermissionPageGuard({ permission, children, module }: PermissionPageGuardProps) {
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { can, isLoading, roles } = usePermissions(guildId);
+  const { t } = useTranslation("permissions");
 
   if (isLoading) return null;
   if (can(permission)) return <>{children}</>;
@@ -45,16 +47,20 @@ export function PermissionPageGuard({ permission, children, module }: Permission
       <div className="flex h-16 w-16 items-center justify-center rounded-full bg-danger/10">
         <Icon name="lock" size={32} className="text-danger" />
       </div>
-      <h2 className="mt-6 text-2xl font-bold tracking-tight">Permission Denied</h2>
+      <h2 className="mt-6 text-2xl font-bold tracking-tight">{t("guard.deniedTitle")}</h2>
       <p className="mt-2 max-w-md text-sm text-text-muted">
-        You don't have permission to access <span className="font-semibold text-text">{module}</span>.
+        <Trans
+          i18nKey="permissions:guard.deniedMessage"
+          values={{ module }}
+          components={{ 1: <span className="font-semibold text-text" /> }}
+        />
       </p>
       <div className="mt-4 rounded-lg border border-outline-variant/20 bg-surface-high/50 px-4 py-3 text-start text-xs">
-        <p className="font-medium text-text-muted">Required permission:</p>
+        <p className="font-medium text-text-muted">{t("guard.requiredPermission")}</p>
         <code className="mt-1 block font-mono text-accent">{permission}</code>
         {roles.length > 0 && (
           <>
-            <p className="mt-3 font-medium text-text-muted">Your roles:</p>
+            <p className="mt-3 font-medium text-text-muted">{t("guard.yourRoles")}</p>
             <div className="mt-1 flex flex-wrap gap-1">
               {roles.map((r) => (
                 <span
@@ -69,7 +75,7 @@ export function PermissionPageGuard({ permission, children, module }: Permission
           </>
         )}
       </div>
-      <p className="mt-6 text-xs text-text-muted">Contact your server owner to request access.</p>
+      <p className="mt-6 text-xs text-text-muted">{t("guard.contactOwner")}</p>
     </div>
   );
 }

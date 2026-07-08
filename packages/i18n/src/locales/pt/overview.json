@@ -8,5 +8,26 @@
     "successRate": "Taxa de sucesso"
   },
   "errorsInLast24h": "{{count}} erro nas ultimas 24h",
-  "errorsInLast24h_other": "{{count}} erros nas ultimas 24h"
+  "errorsInLast24h_other": "{{count}} erros nas ultimas 24h",
+  "recentActivity": {
+    "title": "Atividade Recente",
+    "viewAllLogs": "Ver todos os logs",
+    "empty": "Nenhuma atividade registrada ainda",
+    "timeAgo": {
+      "justNow": "agora mesmo",
+      "minutes": "há {{count}}m",
+      "hours": "há {{count}}h",
+      "days": "há {{count}}d"
+    }
+  },
+  "eventDistribution": {
+    "title": "Principais Eventos",
+    "empty": "Nenhum dado de evento ainda",
+    "executions": "{{count}} execuções"
+  },
+  "executionChart": {
+    "title": "Tendência de Execução",
+    "success": "Sucesso",
+    "errors": "Erros"
+  }
 }

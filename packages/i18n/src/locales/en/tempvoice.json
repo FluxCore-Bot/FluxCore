@@ -9,6 +9,7 @@
     "selectHub": "Select a voice channel...",
     "category": "Category (optional)",
     "nameTemplate": "Channel Name Template",
+    "nameTemplateHint": "Use {user} for the member's display name",
     "addConfig": "Add Configuration",
     "editConfig": "Edit Configuration",
     "save": "Save Configuration",
@@ -16,6 +17,13 @@
     "cancel": "Cancel",
     "delete": "Delete",
     "edit": "Edit"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   },
   "empty": {
     "noConfigs": "No configurations yet",

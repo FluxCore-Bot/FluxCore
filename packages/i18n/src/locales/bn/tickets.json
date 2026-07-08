@@ -33,7 +33,8 @@
     "category": "টিকেট ক্যাটাগরি",
     "create": "প্যানেল তৈরি করুন",
     "edit": "প্যানেল সম্পাদনা করুন",
-    "deploy": "প্যানেল ডিপ্লয় করুন"
+    "deploy": "প্যানেল ডিপ্লয় করুন",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "ট্রান্সক্রিপ্ট চ্যানেল",
@@ -43,7 +44,9 @@
     "closeConfirmation": "বন্ধ করার নিশ্চিতকরণ",
     "closeConfirmationDesc": "টিকেট বন্ধ করার আগে নিশ্চিতকরণ প্রয়োজন।",
     "dmTranscript": "DM ট্রান্সক্রিপ্ট",
-    "dmTranscriptDesc": "টিকেট তৈরিকারীকে DM-এ ট্রান্সক্রিপ্টের একটি কপি পাঠান।"
+    "dmTranscriptDesc": "টিকেট তৈরিকারীকে DM-এ ট্রান্সক্রিপ্টের একটি কপি পাঠান।",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "ক্লেইম",

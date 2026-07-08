@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Handle, Position, type NodeProps } from "@xyflow/react";
 import { Icon } from "../../../../shared/components/Icon";
 import type { TriggerNodeData } from "../useWorkflowNodes";
@@ -20,11 +21,14 @@ function getBorderClass(
 }
 
 function TriggerNodeComponent({ data, selected }: NodeProps) {
+  const { t } = useTranslation("rules");
   const { label, description, validationState } = data as TriggerNodeData;
 
   return (
     <>
       <div
+        role="group"
+        aria-label={t("nodes.ariaTrigger", { label })}
         className={`min-w-[220px] max-w-[260px] rounded-lg border-2 px-4 py-3 transition-all ${getBorderClass(selected, validationState)}`}
       >
         <div className="mb-1.5 flex items-center gap-2">
@@ -32,7 +36,7 @@ function TriggerNodeComponent({ data, selected }: NodeProps) {
             <Icon name="bolt" size={14} className="text-accent" />
           </div>
           <span className="section-label text-accent">
-            Trigger
+            {t("nodes.trigger")}
           </span>
           {validationState === "error" && (
             <Icon name="error" size={14} className="ms-auto text-danger" />
@@ -52,7 +56,8 @@ function TriggerNodeComponent({ data, selected }: NodeProps) {
         id="source"
         type="source"
         position={Position.Right}
-        className="!h-3 !w-3 !border-2 !border-accent !bg-surface-high"
+        title={t("nodes.nextStep")}
+        className="!h-4 !w-4 !border-2 !border-accent !bg-surface-high"
       />
     </>
   );

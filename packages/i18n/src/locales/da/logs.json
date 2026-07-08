@@ -79,7 +79,9 @@
       "description": "Hændelseslogfiler vises her, når logning er konfigureret og hændelser begynder at forekomme."
     },
     "config": {
-      "selectChannel": "Vælg logkanal"
+      "selectChannel": "Vælg logkanal",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

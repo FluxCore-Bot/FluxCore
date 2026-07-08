@@ -1,6 +1,33 @@
 {
-  "title": "ภาพรวม", "subtitle": "ติดตามประสิทธิภาพและกิจกรรมของระบบอัตโนมัติได้ในมุมมองเดียว",
-  "stats": { "actionRules": "กฎแอ็กชัน", "activeNow": "ใช้งานอยู่ตอนนี้", "executions": "การทำงาน", "successRate": "อัตราสำเร็จ" },
+  "title": "ภาพรวม",
+  "subtitle": "ติดตามประสิทธิภาพและกิจกรรมของระบบอัตโนมัติได้ในมุมมองเดียว",
+  "stats": {
+    "actionRules": "กฎแอ็กชัน",
+    "activeNow": "ใช้งานอยู่ตอนนี้",
+    "executions": "การทำงาน",
+    "successRate": "อัตราสำเร็จ"
+  },
   "errorsInLast24h": "{{count}} ข้อผิดพลาดใน 24 ชั่วโมงล่าสุด",
-  "errorsInLast24h_other": "{{count}} ข้อผิดพลาดใน 24 ชั่วโมงล่าสุด"
+  "errorsInLast24h_other": "{{count}} ข้อผิดพลาดใน 24 ชั่วโมงล่าสุด",
+  "recentActivity": {
+    "title": "Recent Activity",
+    "viewAllLogs": "View all logs",
+    "empty": "No activity recorded yet",
+    "timeAgo": {
+      "justNow": "just now",
+      "minutes": "{{count}}m ago",
+      "hours": "{{count}}h ago",
+      "days": "{{count}}d ago"
+    }
+  },
+  "eventDistribution": {
+    "title": "Top Events",
+    "empty": "No event data yet",
+    "executions": "{{count}} executions"
+  },
+  "executionChart": {
+    "title": "Execution Trend",
+    "success": "Success",
+    "errors": "Errors"
+  }
 }

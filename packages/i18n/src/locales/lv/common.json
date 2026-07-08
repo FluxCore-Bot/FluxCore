@@ -79,7 +79,9 @@
     "conditions": "Nosacījumi",
     "duration": "Ilgums",
     "reason": "Iemesls",
-    "language": "Valoda"
+    "language": "Valoda",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Atlasiet kanālu...",
@@ -98,7 +100,6 @@
     "showingPage": "{{page}}. lappuse no {{total}} (kopā {{count}})"
   },
   "header": {
-    "notifications": "Paziņojumi",
     "settings": "Iestatījumi",
     "logout": "Iziet",
     "toggleSidebar": "Pārlikt sānu joslu",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "Aizvērt sānu joslu",
     "addToServer": "Pievienot serverim",
-    "docs": "Dokumentācija",
-    "support": "Atbalsts",
     "backToServers": "Atpakaļ uz serveriem"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "stundas",
     "days": "dienas",
     "ago": "pirms {{time}}",
-    "in": "pēc {{time}}"
+    "in": "pēc {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Vai esat pārliecināts?",
@@ -137,5 +137,9 @@
     "error": "Radusies kļūda",
     "menuOpen": "Izvēlne ir atvērta",
     "menuClosed": "Izvēlne ir aizvērta"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

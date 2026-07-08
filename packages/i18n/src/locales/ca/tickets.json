@@ -33,7 +33,8 @@
     "category": "Categoria del tiquet",
     "create": "Crear panell",
     "edit": "Editar panell",
-    "deploy": "Desplegar panell"
+    "deploy": "Desplegar panell",
+    "openTicket": "Open Ticket"
   },
   "settings": {
     "transcriptChannel": "Canal de transcripcions",
@@ -43,7 +44,9 @@
     "closeConfirmation": "Confirmació de tancament",
     "closeConfirmationDesc": "Requereix confirmació abans de tancar un tiquet.",
     "dmTranscript": "Transcripció per DM",
-    "dmTranscriptDesc": "Envia una copia de la transcripció al creador del tiquet per DM."
+    "dmTranscriptDesc": "Envia una copia de la transcripció al creador del tiquet per DM.",
+    "staffRolesPlaceholder": "Staff roles",
+    "namingFormatHint": "Variables: {number} (zero-padded), {username}"
   },
   "actions": {
     "claim": "Reclamar",

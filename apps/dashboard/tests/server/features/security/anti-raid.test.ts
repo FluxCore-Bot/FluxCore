@@ -30,8 +30,13 @@ vi.mock("../../../../src/server/shared/discordApi.js", () => ({
   getGuildOwnerId: (...args: unknown[]) => mockGetGuildOwnerId(...args),
 }));
 
+const mockResolveUserPermissions = vi.fn().mockResolvedValue({
+  permissions: new Set(["*"]),
+  isOwner: false,
+  isGuildAdmin: true,
+});
 vi.mock("../../../../src/server/shared/permissions.js", () => ({
-  resolveUserPermissions: vi.fn().mockResolvedValue({ permissions: new Set(["*"]), isOwner: false }),
+  resolveUserPermissions: (...args: unknown[]) => mockResolveUserPermissions(...args),
   hasPermission: vi.fn().mockReturnValue(true),
   invalidatePermissionCache: vi.fn(),
   createDashboardAuditLog: vi.fn().mockResolvedValue(undefined),
@@ -125,6 +130,11 @@ describe("anti-raid routes", () => {
         ...mockSession,
         guilds: [{ id: "guild-1", name: "Test", permissions: "0" }],
       });
+      mockResolveUserPermissions.mockResolvedValueOnce({
+        permissions: new Set(),
+        isOwner: false,
+        isGuildAdmin: false,
+      });
 
       const res = await app.inject({
         method: "GET",
@@ -200,6 +210,11 @@ describe("anti-raid routes", () => {
       mockGetSession.mockResolvedValueOnce({
         ...mockSession,
         guilds: [{ id: "guild-1", name: "Test", permissions: "0" }],
+      });
+      mockResolveUserPermissions.mockResolvedValueOnce({
+        permissions: new Set(),
+        isOwner: false,
+        isGuildAdmin: false,
       });
 
       const res = await app.inject({

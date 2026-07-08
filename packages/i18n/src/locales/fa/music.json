@@ -52,6 +52,7 @@
     "albumName": "نام آلبوم",
     "albumNamePlaceholder": "پلی‌لیست من",
     "deleteAlbum": "حذف",
-    "atMax": "به حداکثر تعداد آلبوم‌ها رسیده‌اید."
+    "atMax": "به حداکثر تعداد آلبوم‌ها رسیده‌اید.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

@@ -79,7 +79,9 @@
       "description": "設定日誌並開始發生事件後，事件日誌將顯示於此。"
     },
     "config": {
-      "selectChannel": "選擇日誌頻道"
+      "selectChannel": "選擇日誌頻道",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

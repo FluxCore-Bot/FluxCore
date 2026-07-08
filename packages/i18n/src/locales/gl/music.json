@@ -52,6 +52,7 @@
     "albumName": "Nome do álbum",
     "albumNamePlaceholder": "A miña lista de reprodución",
     "deleteAlbum": "Eliminar",
-    "atMax": "Acadaches o número máximo de álbums."
+    "atMax": "Acadaches o número máximo de álbums.",
+    "toggleAlbum": "Toggle {{name}}"
   }
 }

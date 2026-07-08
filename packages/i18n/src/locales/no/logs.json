@@ -79,7 +79,9 @@
       "description": "Hendelseslogger vil vises her når logging er konfigurert og hendelser begynner å skje."
     },
     "config": {
-      "selectChannel": "Velg loggkanal"
+      "selectChannel": "Velg loggkanal",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

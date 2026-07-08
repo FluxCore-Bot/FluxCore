@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
@@ -22,24 +22,29 @@ import { Switch } from "../../../shared/ui/switch";
 import { Separator } from "../../../shared/ui/separator";
 import { Textarea } from "../../../shared/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
+import { FormSkeleton } from "../../../shared/ui/skeletons";
 import type { TFunction } from "i18next";
 
-const DEFAULT_WELCOME_IMAGE: WelcomeImageSettings = {
-  template: "starter",
-  background: { type: "color", color: "#1a1a2e" },
-  overlay: { enabled: true, color: "#000000", opacity: 0.5 },
-  avatar: { shape: "circle", borderColor: "#a3a6ff", borderWidth: 4, glowEnabled: false, glowColor: "#a3a6ff" },
-  title: { font: "SpaceGrotesk", color: "#ffffff", size: 36 },
-  subtitle: { font: "Inter", color: "#a3a6ff", size: 20, text: "Welcome to {server}!" },
-  accentColor: "#a3a6ff",
-  sendMode: "with",
-};
+function createDefaultWelcomeImage(t: TFunction<"welcome">): WelcomeImageSettings {
+  return {
+    template: "starter",
+    background: { type: "color", color: "#1a1a2e" },
+    overlay: { enabled: true, color: "#000000", opacity: 0.5 },
+    avatar: { shape: "circle", borderColor: "#a3a6ff", borderWidth: 4, glowEnabled: false, glowColor: "#a3a6ff" },
+    title: { font: "SpaceGrotesk", color: "#ffffff", size: 36 },
+    subtitle: { font: "Inter", color: "#a3a6ff", size: 20, text: t("defaults.welcomeSubtitle") },
+    accentColor: "#a3a6ff",
+    sendMode: "with",
+  };
+}
 
-const DEFAULT_FAREWELL_IMAGE: WelcomeImageSettings = {
-  ...DEFAULT_WELCOME_IMAGE,
-  subtitle: { font: "Inter", color: "#6b7280", size: 20, text: "Goodbye, {user.name}!" },
-  accentColor: "#6b7280",
-};
+function createDefaultFarewellImage(t: TFunction<"welcome">): WelcomeImageSettings {
+  return {
+    ...createDefaultWelcomeImage(t),
+    subtitle: { font: "Inter", color: "#6b7280", size: 20, text: t("defaults.farewellSubtitle") },
+    accentColor: "#6b7280",
+  };
+}
 
 function EmbedEditor({
   value,
@@ -56,7 +61,7 @@ function EmbedEditor({
         <Label htmlFor="embed-title">{t("embed.title")}</Label>
         <Input
           id="embed-title"
-          placeholder="Welcome to {server}!"
+          placeholder={t("embed.titlePlaceholder")}
           value={value.title ?? ""}
           onChange={(e) => onChange({ ...value, title: e.target.value || undefined })}
         />
@@ -65,7 +70,7 @@ function EmbedEditor({
         <Label htmlFor="embed-description">{t("embed.description")}</Label>
         <Textarea
           id="embed-description"
-          placeholder="Hey {user}, welcome to **{server}**! You are member #{membercount}."
+          placeholder={t("embed.descriptionPlaceholder")}
           value={value.description ?? ""}
           onChange={(e) => onChange({ ...value, description: e.target.value || undefined })}
           rows={3}
@@ -90,7 +95,7 @@ function EmbedEditor({
           <Label htmlFor="embed-footer">{t("embed.footer")}</Label>
           <Input
             id="embed-footer"
-            placeholder="Footer text..."
+            placeholder={t("embed.footerPlaceholder")}
             value={value.footer ?? ""}
             onChange={(e) => onChange({ ...value, footer: e.target.value || undefined })}
           />
@@ -131,6 +136,9 @@ export function WelcomePage() {
   const updateConfig = useUpdateWelcomeConfig(guildId);
   const testWelcome = useTestWelcome(guildId);
 
+  const defaultWelcomeImage = useMemo(() => createDefaultWelcomeImage(t), [t]);
+  const defaultFarewellImage = useMemo(() => createDefaultFarewellImage(t), [t]);
+
   // Text message state
   const [welcomeEnabled, setWelcomeEnabled] = useState(false);
   const [welcomeChannelId, setWelcomeChannelId] = useState<string | null>(null);
@@ -144,9 +152,9 @@ export function WelcomePage() {
 
   // Image state
   const [welcomeImageEnabled, setWelcomeImageEnabled] = useState(false);
-  const [welcomeImageConfig, setWelcomeImageConfig] = useState<WelcomeImageSettings>(DEFAULT_WELCOME_IMAGE);
+  const [welcomeImageConfig, setWelcomeImageConfig] = useState<WelcomeImageSettings>(defaultWelcomeImage);
   const [farewellImageEnabled, setFarewellImageEnabled] = useState(false);
-  const [farewellImageConfig, setFarewellImageConfig] = useState<WelcomeImageSettings>(DEFAULT_FAREWELL_IMAGE);
+  const [farewellImageConfig, setFarewellImageConfig] = useState<WelcomeImageSettings>(defaultFarewellImage);
 
   // Sync from server
   useEffect(() => {
@@ -161,11 +169,11 @@ export function WelcomePage() {
       setDmMessage(config.dmMessage);
       setAutoRoleIds(config.autoRoleIds);
       setWelcomeImageEnabled(config.welcomeImageEnabled);
-      setWelcomeImageConfig(config.welcomeImageConfig ?? DEFAULT_WELCOME_IMAGE);
+      setWelcomeImageConfig(config.welcomeImageConfig ?? defaultWelcomeImage);
       setFarewellImageEnabled(config.farewellImageEnabled);
-      setFarewellImageConfig(config.farewellImageConfig ?? DEFAULT_FAREWELL_IMAGE);
+      setFarewellImageConfig(config.farewellImageConfig ?? defaultFarewellImage);
     }
-  }, [config]);
+  }, [config, defaultWelcomeImage, defaultFarewellImage]);
 
   function handleSave() {
     updateConfig.mutate(
@@ -208,7 +216,7 @@ export function WelcomePage() {
           title={t("title")}
           subtitle={t("loadingSubtitle")}
         />
-        <p className="text-text-muted">{t("common:actions.loading")}</p>
+        <FormSkeleton />
       </div>
     );
   }

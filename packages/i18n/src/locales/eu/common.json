@@ -79,7 +79,9 @@
     "conditions": "Baldintzak",
     "duration": "Iraupena",
     "reason": "Arrazoia",
-    "language": "Hizkuntza"
+    "language": "Hizkuntza",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Hautatu kanal bat...",
@@ -98,7 +100,6 @@
     "showingPage": "{{page}}. orrialdea {{total}}tik ({{count}} guztira)"
   },
   "header": {
-    "notifications": "Jakinarazpenak",
     "settings": "Ezarpenak",
     "logout": "Saioa itxi",
     "toggleSidebar": "Albo-barra txandakatu",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "Albo-barra itxi",
     "addToServer": "Zerbitzarira gehitu",
-    "docs": "Dokumentazioa",
-    "support": "Laguntza",
     "backToServers": "Zerbitzarietara itzuli"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "orduak",
     "days": "egunak",
     "ago": "duela {{time}}",
-    "in": "{{time}} barru"
+    "in": "{{time}} barru",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Ziur zaude?",
@@ -137,5 +137,9 @@
     "error": "Errore bat gertatu da",
     "menuOpen": "Menua irekita dago",
     "menuClosed": "Menua itxita dago"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

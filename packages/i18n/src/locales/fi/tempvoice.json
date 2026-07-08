@@ -15,7 +15,8 @@
     "saving": "Tallennetaan...",
     "cancel": "Peruuta",
     "delete": "Poista",
-    "edit": "Muokkaa"
+    "edit": "Muokkaa",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Ei konfiguraatioita vielä",
@@ -26,5 +27,12 @@
     "updated": "Konfiguraatio päivitetty",
     "created": "Konfiguraatio luotu",
     "removed": "Konfiguraatio poistettu"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

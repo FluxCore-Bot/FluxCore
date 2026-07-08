@@ -116,5 +116,7 @@
   "formatters": {
     "voiceTime": "{{hours}}時間{{minutes}}分",
     "voiceTimeMinutesOnly": "{{minutes}}分"
-  }
+  },
+  "confirmRemoveReward": "このロール報酬を削除してもよろしいですか？この操作は元に戻せません。",
+  "confirmRemoveMultiplier": "このXP倍率を削除してもよろしいですか？この操作は元に戻せません。"
 }

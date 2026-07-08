@@ -15,7 +15,8 @@
     "saving": "保存中...",
     "cancel": "キャンセル",
     "delete": "削除",
-    "edit": "編集"
+    "edit": "編集",
+    "nameTemplateHint": "メンバーの表示名には {user} を使用します"
   },
   "empty": {
     "noConfigs": "設定がまだありません",
@@ -26,5 +27,12 @@
     "updated": "設定を更新しました",
     "created": "設定を作成しました",
     "removed": "設定を削除しました"
+  },
+  "hubs": {
+    "configured": "設定済みハブ",
+    "add": "ハブを追加",
+    "hubLabel": "ハブ: #{{channel}}",
+    "templateLabel": "テンプレート: {{template}}",
+    "categorySuffix": " — カテゴリ: #{{channel}}"
   }
 }

@@ -15,7 +15,8 @@
     "saving": "Đang lưu...",
     "cancel": "Hủy",
     "delete": "Xóa",
-    "edit": "Chỉnh Sửa"
+    "edit": "Chỉnh Sửa",
+    "nameTemplateHint": "Use {user} for the member's display name"
   },
   "empty": {
     "noConfigs": "Chưa có cấu hình nào",
@@ -26,5 +27,12 @@
     "updated": "Đã cập nhật cấu hình",
     "created": "Đã tạo cấu hình",
     "removed": "Đã xóa cấu hình"
+  },
+  "hubs": {
+    "configured": "Configured Hubs",
+    "add": "Add Hub",
+    "hubLabel": "Hub: #{{channel}}",
+    "templateLabel": "Template: {{template}}",
+    "categorySuffix": " — Category: #{{channel}}"
   }
 }

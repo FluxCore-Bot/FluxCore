@@ -79,7 +79,9 @@
     "conditions": "Conditions",
     "duration": "Duration",
     "reason": "Reason",
-    "language": "Language"
+    "language": "Language",
+    "limit": "Limit",
+    "options": "Options"
   },
   "form": {
     "selectChannel": "Select channel...",
@@ -98,7 +100,6 @@
     "showingPage": "Page {{page}} of {{total}} ({{count}} total)"
   },
   "header": {
-    "notifications": "Notifications",
     "settings": "Settings",
     "logout": "Logout",
     "toggleSidebar": "Toggle sidebar",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "Close sidebar",
     "addToServer": "Add to Server",
-    "docs": "Docs",
-    "support": "Support",
     "backToServers": "Back to Servers"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "hours",
     "days": "days",
     "ago": "{{time}} ago",
-    "in": "in {{time}}"
+    "in": "in {{time}}",
+    "weeks": "weeks"
   },
   "confirm": {
     "title": "Are you sure?",
@@ -137,5 +137,9 @@
     "error": "An error occurred",
     "menuOpen": "Menu is open",
     "menuClosed": "Menu is closed"
+  },
+  "language": {
+    "searchPlaceholder": "Search languages...",
+    "noResults": "No language found"
   }
 }

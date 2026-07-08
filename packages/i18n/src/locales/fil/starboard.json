@@ -26,7 +26,8 @@
       "original": "Orihinal na Mensahe",
       "stars": "Mga Bituin",
       "channel": "Channel",
-      "date": "Petsa"
+      "date": "Petsa",
+      "author": "Author"
     },
     "noMessages": "Wala pang mga bintuhang mensahe."
   },

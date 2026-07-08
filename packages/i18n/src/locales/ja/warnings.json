@@ -68,5 +68,8 @@
     "requireReasonDesc": "モデレーターが警告を出す際に理由を記載することを必須にします。",
     "maxWarnings": "最大警告数",
     "maxWarningsDesc": "ユーザーあたりの最大警告数 (0 = 無制限)。"
-  }
+  },
+  "noWarningsDesc": "まだ警告は発行されていません",
+  "confirmDelete": "この項目を削除してもよろしいですか？この操作は元に戻せません。",
+  "confirmRemoveEscalation": "このエスカレーションルールを削除してもよろしいですか？この操作は元に戻せません。"
 }

@@ -26,7 +26,8 @@
       "original": "原始消息",
       "stars": "星标数",
       "channel": "频道",
-      "date": "日期"
+      "date": "日期",
+      "author": "作者"
     },
     "noMessages": "暂无星标消息。"
   },

@@ -79,7 +79,9 @@
       "description": "I registri degli eventi appariranno qui una volta configurata la registrazione e quando gli eventi inizieranno a verificarsi."
     },
     "config": {
-      "selectChannel": "Seleziona canale di registro"
+      "selectChannel": "Seleziona canale di registro",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

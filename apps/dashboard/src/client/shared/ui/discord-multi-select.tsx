@@ -142,7 +142,7 @@ export function DiscordMultiSelect({
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="ml-2 shrink-0 opacity-50"
+                className="ms-2 shrink-0 opacity-50"
               >
                 <path d="m6 9 6 6 6-6" />
               </svg>
@@ -205,7 +205,7 @@ export function DiscordMultiSelect({
                 <button
                   type="button"
                   key={opt.id}
-                  className="flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-sm text-text/80 hover:bg-surface-high"
+                  className="flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-sm text-text hover:bg-surface-high"
                   onClick={() => toggle(opt.id)}
                 >
                   <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-xs border border-outline-variant/30" />

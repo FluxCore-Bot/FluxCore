@@ -109,5 +109,6 @@
   "validation": {
     "nameRequired": "Numele comenzii este obligatoriu"
   },
-  "triggerPrefix": "Declanșator: !{{name}}"
+  "triggerPrefix": "Declanșator: !{{name}}",
+  "confirmDelete": "Are you sure you want to delete this command? This action cannot be undone."
 }

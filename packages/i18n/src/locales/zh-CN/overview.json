@@ -8,5 +8,26 @@
     "successRate": "成功率"
   },
   "errorsInLast24h": "最近 24 小时内 {{count}} 个错误",
-  "errorsInLast24h_other": "最近 24 小时内 {{count}} 个错误"
+  "errorsInLast24h_other": "最近 24 小时内 {{count}} 个错误",
+  "recentActivity": {
+    "title": "近期动态",
+    "viewAllLogs": "查看全部日志",
+    "empty": "暂无动态记录",
+    "timeAgo": {
+      "justNow": "刚刚",
+      "minutes": "{{count}} 分钟前",
+      "hours": "{{count}} 小时前",
+      "days": "{{count}} 天前"
+    }
+  },
+  "eventDistribution": {
+    "title": "热门事件",
+    "empty": "暂无事件数据",
+    "executions": "{{count}} 次执行"
+  },
+  "executionChart": {
+    "title": "执行趋势",
+    "success": "成功",
+    "errors": "错误"
+  }
 }

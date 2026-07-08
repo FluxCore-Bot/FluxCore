@@ -50,7 +50,10 @@
     "footer": "Нижний колонтитул",
     "thumbnail": "URL миниатюры",
     "image": "URL изображения",
-    "variables": "Переменные:"
+    "variables": "Переменные:",
+    "titlePlaceholder": "Добро пожаловать на {server}!",
+    "descriptionPlaceholder": "Привет, {user}, добро пожаловать на **{server}**! Ты участник №{membercount}.",
+    "footerPlaceholder": "Текст подвала..."
   },
   "saveChanges": "Сохранить изменения",
   "saving": "Сохранение...",
@@ -61,5 +64,80 @@
     "saveFailed": "Не удалось сохранить конфигурацию",
     "testSent": "Тестовое сообщение будет отправлено в <#{{channelId}}>",
     "testFailed": "Не удалось отправить тестовое сообщение"
+  },
+  "defaults": {
+    "welcomeSubtitle": "Добро пожаловать на {server}!",
+    "farewellSubtitle": "До свидания, {user.name}!"
+  },
+  "imageEditor": {
+    "livePreview": "Живой предпросмотр",
+    "previewAlt": "Предпросмотр изображения {{type}}",
+    "generatingPreview": "Создание предпросмотра...",
+    "previewPlaceholder": "Здесь появится предпросмотр",
+    "template": "Шаблон",
+    "background": {
+      "title": "Фон",
+      "solidColor": "Сплошной цвет",
+      "gradient": "Градиент",
+      "customImage": "Своё изображение",
+      "colorPicker": "Выбор цвета фона",
+      "colorHex": "Hex-значение цвета фона",
+      "uploadImage": "Загрузить фоновое изображение",
+      "upload": "Загрузить изображение",
+      "uploading": "Загрузка...",
+      "set": "Фон установлен",
+      "fileHint": "JPG, PNG или WebP. Макс. 3 МБ."
+    },
+    "overlay": {
+      "title": "Затемнение наложения",
+      "opacity": "Непрозрачность"
+    },
+    "avatar": {
+      "title": "Аватар",
+      "shape": "Форма",
+      "shapeCircle": "Круг",
+      "shapeRounded": "Скруглённый квадрат",
+      "shapeSquare": "Квадрат",
+      "borderWidth": "Толщина границы",
+      "borderColor": "Цвет границы",
+      "borderColorPicker": "Выбор цвета границы аватара",
+      "borderColorHex": "Hex-значение цвета границы аватара",
+      "glowEffect": "Эффект свечения",
+      "glowColorPicker": "Выбор цвета свечения аватара",
+      "glowColorHex": "Hex-значение цвета свечения аватара"
+    },
+    "typography": {
+      "title": "Типографика",
+      "titleSection": "Заголовок (имя пользователя)",
+      "subtitleSection": "Подзаголовок (свой текст)",
+      "font": "Шрифт",
+      "color": "Цвет",
+      "size": "Размер",
+      "text": "Текст",
+      "titleColorPicker": "Выбор цвета заголовка",
+      "titleColorHex": "Hex-значение цвета заголовка",
+      "subtitleColorPicker": "Выбор цвета подзаголовка",
+      "subtitleColorHex": "Hex-значение цвета подзаголовка",
+      "subtitlePlaceholder": "Добро пожаловать на {server}!",
+      "subtitleVariables": "Переменные: {user.name} {server} {membercount}"
+    },
+    "accent": {
+      "title": "Акцентный цвет",
+      "colorPicker": "Выбор акцентного цвета",
+      "colorHex": "Hex-значение акцентного цвета",
+      "hint": "Используется для украшений, границ и акцентов шаблонов."
+    },
+    "delivery": {
+      "title": "Режим доставки",
+      "with": "С embed-сообщением",
+      "before": "Перед embed-сообщением",
+      "only": "Только изображение (без embed)"
+    },
+    "toast": {
+      "imageTooLarge": "Фоновое изображение должно быть меньше 3 МБ",
+      "uploaded": "Фон загружен",
+      "uploadFailed": "Не удалось загрузить фон",
+      "previewFailed": "Не удалось создать предпросмотр"
+    }
   }
 }

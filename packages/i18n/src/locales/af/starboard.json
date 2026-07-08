@@ -26,7 +26,8 @@
       "original": "Oorspronklike Boodskap",
       "stars": "Sterre",
       "channel": "Kanaal",
-      "date": "Datum"
+      "date": "Datum",
+      "author": "Author"
     },
     "noMessages": "Nog geen gesterde boodskappe nie."
   },

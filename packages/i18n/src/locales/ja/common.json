@@ -79,7 +79,9 @@
     "conditions": "条件",
     "duration": "期間",
     "reason": "理由",
-    "language": "言語"
+    "language": "言語",
+    "limit": "上限",
+    "options": "オプション"
   },
   "form": {
     "selectChannel": "チャンネルを選択...",
@@ -98,7 +100,6 @@
     "showingPage": "{{total}}ページ中{{page}}ページ目（合計{{count}}件）"
   },
   "header": {
-    "notifications": "通知",
     "settings": "設定",
     "logout": "ログアウト",
     "toggleSidebar": "サイドバーの切り替え",
@@ -107,8 +108,6 @@
   "sidebar": {
     "closeSidebar": "サイドバーを閉じる",
     "addToServer": "サーバーに追加",
-    "docs": "ドキュメント",
-    "support": "サポート",
     "backToServers": "サーバー一覧に戻る"
   },
   "empty": {
@@ -122,7 +121,8 @@
     "hours": "時間",
     "days": "日",
     "ago": "{{time}}前",
-    "in": "{{time}}後"
+    "in": "{{time}}後",
+    "weeks": "週間"
   },
   "confirm": {
     "title": "よろしいですか？",
@@ -137,5 +137,9 @@
     "error": "エラーが発生しました",
     "menuOpen": "メニューが開いています",
     "menuClosed": "メニューが閉じています"
+  },
+  "language": {
+    "searchPlaceholder": "言語を検索...",
+    "noResults": "言語が見つかりません"
   }
 }

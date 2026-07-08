@@ -79,7 +79,9 @@
       "description": "Logi zdarzeń pojawią się tutaj, gdy rejestrowanie zostanie skonfigurowane i zdarzenia zaczną występować."
     },
     "config": {
-      "selectChannel": "Wybierz kanał logów"
+      "selectChannel": "Wybierz kanał logów",
+      "moreEvents_one": "+{{count}} more",
+      "moreEvents_other": "+{{count}} more"
     }
   }
 }

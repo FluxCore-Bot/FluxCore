@@ -116,5 +116,7 @@
   "formatters": {
     "voiceTime": "{{hours}}g {{minutes}}m",
     "voiceTimeMinutesOnly": "{{minutes}}m"
-  }
+  },
+  "confirmRemoveReward": "Are you sure you want to remove this role reward? This action cannot be undone.",
+  "confirmRemoveMultiplier": "Are you sure you want to remove this XP multiplier? This action cannot be undone."
 }

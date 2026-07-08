@@ -26,7 +26,7 @@ const MAX_ALBUMS = 50;
 const MAX_TRACKS = 100;
 
 function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number }) {
-  const { t } = useTranslation("music");
+  const { t } = useTranslation(["music", "common"]);
   const { data: tracks = [], isLoading } = useAlbumTracks(guildId, albumId);
   const addTrack = useAddTrack(guildId, albumId);
   const deleteTrack = useDeleteTrack(guildId, albumId);
@@ -61,7 +61,7 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
       setSourceUrl("");
       setShowForm(false);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "An error occurred");
+      setError(err instanceof ApiError ? err.message : t("common:accessibility.error"));
     }
   };
 
@@ -70,7 +70,7 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
       await deleteTrack.mutateAsync(trackId);
       toast.success(t("library.trackRemoved"));
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "An error occurred");
+      setError(err instanceof ApiError ? err.message : t("common:accessibility.error"));
     }
   };
 
@@ -140,7 +140,7 @@ function AlbumTracks({ guildId, albumId }: { guildId: string; albumId: number })
 }
 
 export function MusicLibraryManager() {
-  const { t } = useTranslation("music");
+  const { t } = useTranslation(["music", "common"]);
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: albums = [], isLoading } = useMusicLibrary(guildId);
   const createAlbum = useCreateAlbum(guildId);
@@ -167,7 +167,7 @@ export function MusicLibraryManager() {
       setNewAlbumName("");
       setShowCreateForm(false);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "An error occurred");
+      setError(err instanceof ApiError ? err.message : t("common:accessibility.error"));
     }
   };
 
@@ -176,7 +176,7 @@ export function MusicLibraryManager() {
       await deleteAlbum.mutateAsync(albumId);
       toast.success(t("library.albumDeleted"));
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "An error occurred");
+      setError(err instanceof ApiError ? err.message : t("common:accessibility.error"));
     }
   };
 
@@ -232,7 +232,7 @@ export function MusicLibraryManager() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      aria-label={`Toggle ${album.name}`}
+                      aria-label={t("library.toggleAlbum", { name: album.name })}
                       className="gap-2"
                     >
                       <Icon name="expand_more" size={16} />

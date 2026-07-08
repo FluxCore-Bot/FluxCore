@@ -94,7 +94,7 @@
     "selectRoles": "选择角色...",
     "noPreview": "没有可预览的面板。"
   },
-  "empty": "尚未创建角色面板。点击"创建面板"开始。",
+  "empty": "尚未创建角色面板。点击\"创建面板\"开始。",
   "toast": {
     "created": "面板已创建",
     "createFailed": "创建面板失败",
@@ -108,5 +108,6 @@
     "channelRequired": "频道为必填项",
     "maxRolesReached": "每个面板最多 25 个角色"
   },
-  "loading": "正在加载面板..."
+  "loading": "正在加载面板...",
+  "confirmDeletePanel": "确定要删除此身份组面板吗？此操作无法撤销。"
 }
