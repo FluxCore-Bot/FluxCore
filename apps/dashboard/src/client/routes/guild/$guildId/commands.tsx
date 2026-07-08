@@ -777,12 +777,8 @@ export function CommandsPage() {
                     <DiscordMessagePreview
                       variables={customCommandVariables}
                       real={real}
-                      content={formContent}
-                      embed={{
-                        title: formEmbedTitle,
-                        description: formEmbedDescription,
-                        footer: formEmbedFooter,
-                      }}
+                      content={formResponseType === "text" ? formContent : undefined}
+                      embed={formResponseType === "embed" ? { title: formEmbedTitle, description: formEmbedDescription, footer: formEmbedFooter } : undefined}
                     />
 
                     <div className="flex justify-end gap-2">

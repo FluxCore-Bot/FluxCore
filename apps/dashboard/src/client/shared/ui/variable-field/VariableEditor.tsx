@@ -21,6 +21,7 @@ interface VariableEditorProps {
   disabled?: boolean;
   id?: string;
   "aria-label"?: string;
+  "aria-required"?: boolean;
   className?: string;
 }
 
@@ -189,6 +190,7 @@ export default function VariableEditor(props: VariableEditorProps) {
                 placeholder={placeholder}
                 disabled={disabled}
                 aria-label={props["aria-label"]}
+                aria-required={props["aria-required"]}
                 role="combobox"
                 aria-expanded={open && matches.length > 0}
                 aria-controls={listboxId}
@@ -216,6 +218,7 @@ export default function VariableEditor(props: VariableEditorProps) {
                 placeholder={placeholder}
                 disabled={disabled}
                 aria-label={props["aria-label"]}
+                aria-required={props["aria-required"]}
                 role="combobox"
                 aria-expanded={open && matches.length > 0}
                 aria-controls={listboxId}

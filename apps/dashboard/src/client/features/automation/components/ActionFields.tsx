@@ -127,6 +127,7 @@ export function ActionFields({
                   onChange={(v) => onChange(field.key, v)}
                   variables={variables}
                   multiline={false}
+                  aria-required={field.required}
                   placeholder={field.placeholder}
                   maxLength={field.maxLength}
                 />
@@ -151,6 +152,7 @@ export function ActionFields({
                   onChange={(v) => onChange(field.key, v)}
                   variables={variables}
                   multiline={true}
+                  aria-required={field.required}
                   placeholder={field.placeholder}
                   maxLength={field.maxLength}
                 />

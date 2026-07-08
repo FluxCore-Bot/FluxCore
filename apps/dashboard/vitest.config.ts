@@ -19,7 +19,7 @@ export default defineConfig({
     },
     coverage: {
       provider: "v8",
-      include: ["src/server/**/*.ts", "src/client/shared/ui/variable-field/**/*.ts"],
+      include: ["src/server/**/*.ts", "src/client/shared/ui/variable-field/**/*.{ts,tsx}"],
       exclude: ["src/server/index.ts"],
     },
   },
