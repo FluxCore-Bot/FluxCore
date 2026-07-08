@@ -55,11 +55,11 @@ export interface Session {
   createdAt: number;
 }
 
-const SESSION_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
+const SESSION_TTL = 24 * 60 * 60 * 1000; // 24 hours (sliding-renewed for active users)
 const CACHE_TTL = 30_000; // 30 seconds
 const GUILD_REFRESH_INTERVAL = 30 * 60 * 1000; // 30 minutes
 
-interface CachedSession {
+export interface CachedSession {
   session: Session;
   cacheExpiresAt: number;
   sessionExpiresAt: number;
@@ -76,6 +76,17 @@ export async function createSession(
   const expiresAt = new Date(now.getTime() + SESSION_TTL);
 
   const prisma = getPrisma();
+
+  // Invalidate any prior sessions for this user (session fixation defense
+  // and prevents unbounded session row growth on repeated logins).
+  await prisma.dashboardSession.deleteMany({ where: { userId: data.userId } });
+  // Also drop any cached entries for this user
+  for (const [cacheId, entry] of sessionCache) {
+    if (entry.session.userId === data.userId) {
+      sessionCache.delete(cacheId);
+    }
+  }
+
   await prisma.dashboardSession.create({
     data: {
       id,
@@ -190,7 +201,7 @@ export async function touchSession(
     sameSite: "lax",
     secure: isProduction,
     signed: true,
-    maxAge: 604800, // 7 days
+    maxAge: 86400, // 24 hours
   });
 }
 
@@ -239,6 +250,40 @@ export async function forceRefreshSessionGuilds(
     return refreshSessionGuilds(id, session.accessToken, entry);
   }
   return refreshSessionGuilds(id, cached.session.accessToken, cached);
+}
+
+const FRESH_GUILD_THRESHOLD = 5 * 60 * 1000; // 5 minutes
+
+/**
+ * Ensure session.guilds is no older than FRESH_GUILD_THRESHOLD.
+ * Used by requireGuildAdmin to fail closed for revoked admins quickly.
+ */
+export async function ensureFreshGuilds(
+  id: string,
+): Promise<OAuthGuild[] | null> {
+  const cached = sessionCache.get(id);
+  if (!cached) {
+    const session = await getSession(id);
+    if (!session) return null;
+    const reloaded = sessionCache.get(id);
+    if (!reloaded) return session.guilds;
+    if (Date.now() - reloaded.guildsRefreshedAt <= FRESH_GUILD_THRESHOLD) {
+      return reloaded.session.guilds;
+    }
+    return refreshSessionGuilds(id, session.accessToken, reloaded);
+  }
+  if (Date.now() - cached.guildsRefreshedAt <= FRESH_GUILD_THRESHOLD) {
+    return cached.session.guilds;
+  }
+  return refreshSessionGuilds(id, cached.session.accessToken, cached);
+}
+
+// Test-only hook
+export function __setSessionCacheForTest(
+  id: string,
+  entry: CachedSession,
+): void {
+  sessionCache.set(id, entry);
 }
 
 export async function deleteSession(id: string): Promise<void> {

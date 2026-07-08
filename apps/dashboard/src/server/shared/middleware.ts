@@ -1,5 +1,10 @@
 import type { FastifyRequest, FastifyReply } from "fastify";
-import { getSession, touchSession, type Session } from "./session.js";
+import {
+  getSession,
+  touchSession,
+  ensureFreshGuilds,
+  type Session,
+} from "./session.js";
 import { isBotInGuild } from "./discordApi.js";
 import {
   resolveUserPermissions,
@@ -63,8 +68,24 @@ export async function requireGuildAdmin(
 ): Promise<void> {
   const { guildId } = request.params as { guildId: string };
   const session = request.session!;
+  const sessionId = request.sessionId!;
 
-  const userGuild = session.guilds.find((g) => g.id === guildId);
+  // Re-validate guild membership against fresh Discord data (max 5 min stale)
+  let guilds = session.guilds;
+  if (sessionId) {
+    try {
+      const fresh = await ensureFreshGuilds(sessionId);
+      if (fresh) {
+        guilds = fresh;
+        session.guilds = fresh;
+      }
+    } catch {
+      // If Discord is unreachable, fall back to cached guilds — this is the
+      // existing behavior. We still re-check permissions below.
+    }
+  }
+
+  const userGuild = guilds.find((g) => g.id === guildId);
   if (!userGuild || !(BigInt(userGuild.permissions) & MANAGE_GUILD)) {
     reply.code(403).send({
       error: request.t("errors:permissions.noGuildPermission"),

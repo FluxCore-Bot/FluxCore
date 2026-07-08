@@ -9,9 +9,11 @@ vi.mock("@fluxcore/config", () => ({
 }));
 
 const mockGetSession = vi.fn().mockResolvedValue(null);
+const mockEnsureFreshGuilds = vi.fn().mockResolvedValue(null);
 vi.mock("../../../src/server/shared/session.js", () => ({
   getSession: (...args: unknown[]) => mockGetSession(...args),
   touchSession: vi.fn().mockResolvedValue(undefined),
+  ensureFreshGuilds: (...args: unknown[]) => mockEnsureFreshGuilds(...args),
 }));
 
 const mockIsBotInGuild = vi.fn().mockResolvedValue(true);
@@ -42,6 +44,7 @@ function createMockRequest({
     unsignCookie: (value: string) => ({ valid: true, value, renew: false }),
     session,
     params,
+    t: (key: string) => key,
   };
 }
 
@@ -155,6 +158,54 @@ describe("middleware", () => {
       expect(reply.send).toHaveBeenCalledWith({
         error: "Bot is not in this guild",
       });
+    });
+
+    it("denies access when fresh guilds no longer include the requested guild", async () => {
+      mockEnsureFreshGuilds.mockResolvedValueOnce([]); // user no longer admin
+      mockIsBotInGuild.mockResolvedValueOnce(true);
+      const request = {
+        cookies: {},
+        unsignCookie: (value: string) => ({ valid: true, value, renew: false }),
+        session: {
+          userId: "u",
+          guilds: [
+            { id: "guild-1", permissions: MANAGE_GUILD.toString() },
+          ],
+        },
+        sessionId: "sid",
+        params: { guildId: "guild-1" },
+        t: (key: string) => key,
+      };
+      const reply = createMockReply();
+
+      await requireGuildAdmin(request as never, reply as never);
+
+      expect(mockEnsureFreshGuilds).toHaveBeenCalledWith("sid");
+      expect(reply.code).toHaveBeenCalledWith(403);
+    });
+
+    it("allows access when fresh guilds still grant MANAGE_GUILD even if cached do not", async () => {
+      mockEnsureFreshGuilds.mockResolvedValueOnce([
+        { id: "guild-1", name: "g", icon: null, permissions: MANAGE_GUILD.toString() },
+      ]);
+      mockIsBotInGuild.mockResolvedValueOnce(true);
+      const request = {
+        cookies: {},
+        unsignCookie: (value: string) => ({ valid: true, value, renew: false }),
+        session: {
+          userId: "u",
+          guilds: [],
+        },
+        sessionId: "sid",
+        params: { guildId: "guild-1" },
+        t: (key: string) => key,
+      };
+      const reply = createMockReply();
+
+      await requireGuildAdmin(request as never, reply as never);
+
+      expect(mockEnsureFreshGuilds).toHaveBeenCalledWith("sid");
+      expect(reply.code).not.toHaveBeenCalledWith(403);
     });
 
     it("passes when user has MANAGE_GUILD and bot is present", async () => {
