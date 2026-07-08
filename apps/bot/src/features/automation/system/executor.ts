@@ -12,20 +12,28 @@ import type {
   StepConditionConfig,
 } from "@fluxcore/systems/actions/types";
 
-// --- Per-guild rate limiting ---
+// --- Per-(guild, eventType) rate limiting ---
+//
+// Each event type gets its own 60/min bucket so a noisy event class
+// (e.g. messageCreate) cannot starve quieter ones (e.g. memberJoin).
 
 const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
-const RATE_LIMIT_MAX_EXECUTIONS = 60; // max 60 action executions per guild per minute
+const RATE_LIMIT_MAX_EXECUTIONS = 60; // max 60 action executions per (guild, eventType) per minute
 
-const guildExecutionCounts = new Map<string, { count: number; resetAt: number }>();
+const eventBuckets = new Map<string, { count: number; resetAt: number }>();
 
-function checkRateLimit(guildId: string): boolean {
+function bucketKey(guildId: string, eventType: string): string {
+  return `${guildId}\u0000${eventType}`;
+}
+
+function checkRateLimit(guildId: string, eventType: string): boolean {
+  const key = bucketKey(guildId, eventType);
   const now = Date.now();
-  let entry = guildExecutionCounts.get(guildId);
+  let entry = eventBuckets.get(key);
 
   if (!entry || now >= entry.resetAt) {
     entry = { count: 0, resetAt: now + RATE_LIMIT_WINDOW_MS };
-    guildExecutionCounts.set(guildId, entry);
+    eventBuckets.set(key, entry);
   }
 
   if (entry.count >= RATE_LIMIT_MAX_EXECUTIONS) {
@@ -173,7 +181,7 @@ async function executeSteps(
 
     switch (step.type) {
       case "action": {
-        if (!checkRateLimit(context.guildId)) {
+        if (!checkRateLimit(context.guildId, context.eventType)) {
           logger.warn(`Rate limit hit for guild ${context.guildId} during rule "${rule.name}"`);
           return;
         }
@@ -271,7 +279,7 @@ export async function processEvent(
     // V1: linear actions
     if (!rule.actions?.length) continue;
     for (const actionConfig of rule.actions) {
-      if (!checkRateLimit(context.guildId)) {
+      if (!checkRateLimit(context.guildId, context.eventType)) {
         logger.warn(`Rate limit hit for guild ${context.guildId} during rule "${rule.name}"`);
         return;
       }

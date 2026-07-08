@@ -42,3 +42,29 @@ export function decrypt(encoded: string): string {
     decipher.final(),
   ]).toString("utf8");
 }
+
+const MIN_ENCRYPTED_BYTES = IV_LENGTH + AUTH_TAG_LENGTH + 1;
+
+/**
+ * Best-effort check whether a stored string was produced by `encrypt()`.
+ * Used to detect legacy plaintext rows during the encryption backfill.
+ */
+export function isEncrypted(value: string): boolean {
+  if (!value) return false;
+  // Base64 alphabet check (allow padding)
+  if (!/^[A-Za-z0-9+/]+={0,2}$/.test(value)) return false;
+  let buf: Buffer;
+  try {
+    buf = Buffer.from(value, "base64");
+  } catch {
+    return false;
+  }
+  if (buf.length < MIN_ENCRYPTED_BYTES) return false;
+  // Verify by attempting decryption with the active key
+  try {
+    decrypt(value);
+    return true;
+  } catch {
+    return false;
+  }
+}

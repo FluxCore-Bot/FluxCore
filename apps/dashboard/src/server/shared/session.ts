@@ -1,9 +1,33 @@
-import { randomUUID } from "node:crypto";
+import { randomUUID, timingSafeEqual } from "node:crypto";
 import type { FastifyReply } from "fastify";
 import { getPrisma } from "@fluxcore/database";
-import { encrypt, decrypt } from "./crypto.js";
+import { encrypt, decrypt, isEncrypted } from "./crypto.js";
 import { fetchGuilds } from "./auth.js";
 import { logger } from "@fluxcore/utils";
+
+/**
+ * Encrypt a Discord OAuth access token for storage.
+ * ALL writes to DashboardSession.accessToken MUST go through this helper.
+ */
+function encryptAccessToken(token: string): string {
+  if (!token) throw new Error("encryptAccessToken: empty token");
+  return encrypt(token);
+}
+
+/**
+ * Decrypt a stored access token, with a defensive fallback for the
+ * (now-illegal) case of legacy plaintext rows: if the value does not
+ * decrypt cleanly, log a security warning and refuse to use it.
+ */
+function decryptAccessToken(stored: string): string {
+  if (!isEncrypted(stored)) {
+    logger.error(
+      "DashboardSession.accessToken is not encrypted; refusing to use. Run scripts/migrate-encrypt-session-tokens.ts",
+    );
+    throw new Error("Session token is not encrypted");
+  }
+  return decrypt(stored);
+}
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -58,7 +82,7 @@ export async function createSession(
       userId: data.userId,
       username: data.username,
       avatar: data.avatar,
-      accessToken: encrypt(data.accessToken),
+      accessToken: encryptAccessToken(data.accessToken),
       guilds: JSON.stringify(data.guilds),
       guildsRefreshedAt: now,
       createdAt: now,
@@ -81,10 +105,30 @@ export async function getSession(id: string): Promise<Session | null> {
     where: { id },
   });
 
-  if (!row) return null;
+  // Defense-in-depth: constant-time compare the supplied cookie id
+  // against the stored row id, and perform a dummy decryption on the
+  // not-found path so the timing of "missing", "tampered", and
+  // "expired" converges.
+  const suppliedBuf = Buffer.from(id, "utf8");
+  const storedBuf = Buffer.from(row?.id ?? id, "utf8");
+  const idsMatch =
+    row !== null &&
+    suppliedBuf.length === storedBuf.length &&
+    timingSafeEqual(suppliedBuf, storedBuf);
+
+  if (!row || !idsMatch) {
+    // Equalise work with the success path: perform a throwaway
+    // decryption so timing does not branch on row presence.
+    try {
+      decrypt(encrypt("dummy"));
+    } catch {
+      /* ignore */
+    }
+    return null;
+  }
 
   if (row.expiresAt < new Date()) {
-    await prisma.dashboardSession.deleteMany({ where: { id } });
+    await prisma.dashboardSession.deleteMany({ where: { id: row.id } });
     return null;
   }
 
@@ -92,7 +136,7 @@ export async function getSession(id: string): Promise<Session | null> {
     userId: row.userId,
     username: row.username,
     avatar: row.avatar,
-    accessToken: decrypt(row.accessToken),
+    accessToken: decryptAccessToken(row.accessToken),
     guilds: safeJsonParse<OAuthGuild[]>(row.guilds, []),
     createdAt: row.createdAt.getTime(),
   };
