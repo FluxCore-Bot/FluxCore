@@ -1,11 +1,14 @@
-title = "FluxCore Gitleaks Configuration"
+title = "FluxCore gitleaks config"
 
 [extend]
 useDefault = true
 
 [allowlist]
-description = "Allow common false positives"
+description = "Test fixtures and example placeholders"
 paths = [
-  '''\.env\.example''',
+  '''.*\.test\.(ts|js)$''',
+  '''packages/systems/tests/.*''',
+  '''docs/.*''',
+  '''\.env\.example$''',
   '''pnpm-lock\.yaml''',
 ]
