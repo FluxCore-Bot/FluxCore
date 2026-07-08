@@ -27,7 +27,7 @@ export function registerAuthRoutes(app: FastifyInstance): void {
       .setCookie("oauth_state", state, {
         path: "/",
         httpOnly: true,
-        sameSite: "strict",
+        sameSite: "lax",
         secure: isProduction,
         signed: true,
         maxAge: 300, // 5 minutes
