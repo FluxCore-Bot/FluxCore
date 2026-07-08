@@ -4,7 +4,7 @@ import type { TFunction } from "i18next";
 import { useChannels } from "../../../shared/hooks/useChannels";
 import { useRoles } from "../../../shared/hooks/useRoles";
 import { ActionFields } from "../components/ActionFields";
-import { buildAutomationVariables } from "../../../shared/ui/variable-field";
+import { buildAutomationVariables, DiscordMessagePreview, usePreviewContext } from "../../../shared/ui/variable-field";
 import { Button } from "../../../shared/ui/button";
 import { Label } from "../../../shared/ui/label";
 import { Input } from "../../../shared/ui/input";
@@ -252,6 +252,7 @@ function ActionPanel({
   const fields: ActionFieldDescriptor[] =
     constants.actionTypeFields[action.type] ?? [];
   const variables = buildAutomationVariables(constants, eventType);
+  const real = usePreviewContext(guildId);
 
   const handleTypeChange = (newType: string) => {
     onActionChange(index, { type: newType });
@@ -309,6 +310,30 @@ function ActionPanel({
               roles={roles}
               variables={variables}
             />
+          )}
+
+          {(action.type === "sendMessage" || action.type === "sendDM") && (
+            <div className="mt-2">
+              <DiscordMessagePreview
+                variables={variables}
+                real={real}
+                content={action.message ?? ""}
+              />
+            </div>
+          )}
+          {action.type === "sendEmbed" && (
+            <div className="mt-2">
+              <DiscordMessagePreview
+                variables={variables}
+                real={real}
+                embed={{
+                  title: action.embed?.title,
+                  description: action.embed?.description,
+                  footer: action.embed?.footer,
+                  color: action.embed?.color,
+                }}
+              />
+            </div>
           )}
 
           {totalActions > 1 && (
