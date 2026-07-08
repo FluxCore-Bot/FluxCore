@@ -58,7 +58,10 @@ jobs:
       - name: Install Trivy
         run: curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
       - name: Scan bot image
-        run: trivy image --severity HIGH,CRITICAL --exit-code 1 --ignore-unfixed --no-progress fluxcore-bot:ci
+        # Skip the base image's package-manager tooling (npm global + corepack pnpm
+        # cache) — not our runtime surface. App deps under /app/node_modules and the
+        # OS layer are still scanned.
+        run: trivy image --severity HIGH,CRITICAL --exit-code 1 --ignore-unfixed --no-progress --skip-dirs /usr/local/lib/node_modules --skip-dirs /root/.cache/node/corepack fluxcore-bot:ci
 
   trivy-dashboard:
     name: trivy (dashboard image)
@@ -70,7 +73,10 @@ jobs:
       - name: Install Trivy
         run: curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
       - name: Scan dashboard image
-        run: trivy image --severity HIGH,CRITICAL --exit-code 1 --ignore-unfixed --no-progress fluxcore-dashboard:ci
+        # Skip the base image's package-manager tooling (npm global + corepack pnpm
+        # cache) — not our runtime surface. App deps under /app/node_modules and the
+        # OS layer are still scanned.
+        run: trivy image --severity HIGH,CRITICAL --exit-code 1 --ignore-unfixed --no-progress --skip-dirs /usr/local/lib/node_modules --skip-dirs /root/.cache/node/corepack fluxcore-dashboard:ci
 
   trivy-fs:
     name: trivy (filesystem & config)
