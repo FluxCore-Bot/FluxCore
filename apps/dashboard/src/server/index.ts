@@ -36,6 +36,7 @@ import { registerDashboardRoleRoutes } from "./features/permissions/roles-routes
 import { registerDashboardPermissionRoutes } from "./features/permissions/routes.js";
 import { registerI18n } from "./shared/i18n.js";
 import { requireCsrf } from "./shared/csrf.js";
+import { helmetOptions } from "./shared/security.js";
 
 async function main(): Promise<void> {
   if (!config.dashboardClientSecret) {
@@ -53,27 +54,7 @@ async function main(): Promise<void> {
     secret: config.dashboardSessionSecret,
   });
 
-  await app.register(fastifyHelmet, {
-    enableCSPNonces: true,
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: [
-          "'self'",
-          (_req, reply) =>
-            `'nonce-${(reply as unknown as { cspNonce: { script: string } }).cspNonce.script}'`,
-        ],
-        styleSrc: [
-          "'self'",
-          "https://fonts.googleapis.com",
-          (_req, reply) =>
-            `'nonce-${(reply as unknown as { cspNonce: { style: string } }).cspNonce.style}'`,
-        ],
-        fontSrc: ["'self'", "https://fonts.gstatic.com"],
-        imgSrc: ["'self'", "data:", "https://cdn.discordapp.com"],
-      },
-    },
-  });
+  await app.register(fastifyHelmet, helmetOptions);
 
   await app.register(fastifyRateLimit, {
     max: 100,
