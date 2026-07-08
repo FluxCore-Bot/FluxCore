@@ -29,7 +29,7 @@ const event = voiceModule.default;
 
 function createMockVoiceState({
   channelId = null as string | null,
-  member = { id: "user-123" },
+  member = { id: "user-123", user: { bot: false } },
   guildId = "guild-789",
   channel = null as { members: { size: number }; id: string; name: string; delete: ReturnType<typeof vi.fn> } | null,
 } = {}) {
@@ -63,7 +63,7 @@ describe("voiceStateUpdate event", () => {
     const oldState = createMockVoiceState({ channelId: null });
     const newState = createMockVoiceState({
       channelId: "hub-channel",
-      member: { id: "user-123" },
+      member: { id: "user-123", user: { bot: false } },
     });
 
     await event.execute(oldState as never, newState as never);

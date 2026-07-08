@@ -86,17 +86,17 @@ describe("session module", () => {
       );
     });
 
-    it("sets expiration to 1 hour from now", async () => {
+    it("sets expiration to 24 hours from now", async () => {
       const before = Date.now();
       await createSession(testSessionData);
       const after = Date.now();
 
       const createCall = mockPrisma.dashboardSession.create.mock.calls[0][0];
       const expiresAt = createCall.data.expiresAt.getTime();
-      const oneHour = 60 * 60 * 1000;
+      const twentyFourHours = 24 * 60 * 60 * 1000;
 
-      expect(expiresAt).toBeGreaterThanOrEqual(before + oneHour - 100);
-      expect(expiresAt).toBeLessThanOrEqual(after + oneHour + 100);
+      expect(expiresAt).toBeGreaterThanOrEqual(before + twentyFourHours - 100);
+      expect(expiresAt).toBeLessThanOrEqual(after + twentyFourHours + 100);
     });
   });
 
@@ -116,6 +116,7 @@ describe("session module", () => {
         avatar: "abc",
         accessToken: encrypt("token-xyz"),
         guilds: JSON.stringify(testSessionData.guilds),
+        guildsRefreshedAt: new Date(),
         createdAt: new Date(),
         expiresAt: new Date(Date.now() + 3600_000), // Not expired
       });

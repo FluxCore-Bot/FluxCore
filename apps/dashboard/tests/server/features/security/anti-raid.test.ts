@@ -180,7 +180,7 @@ describe("anti-raid routes", () => {
       );
     });
 
-    it("rejects invalid body fields", async () => {
+    it("strips unknown body fields (additionalProperties: false)", async () => {
       const res = await app.inject({
         method: "PUT",
         url: "/api/guilds/guild-1/antiraid-config",
@@ -190,7 +190,14 @@ describe("anti-raid routes", () => {
         },
       });
 
-      expect(res.statusCode).toBe(400);
+      // Fastify's default AJV config uses `removeAdditional`, so with
+      // `additionalProperties: false` the unknown field is stripped rather than
+      // rejected. The request still succeeds, but the bogus field must never be
+      // forwarded to the persistence layer.
+      expect(res.statusCode).toBe(200);
+      expect(mockUpsertAntiRaidConfig).toHaveBeenCalledTimes(1);
+      const forwarded = mockUpsertAntiRaidConfig.mock.calls[0][1] as Record<string, unknown>;
+      expect(forwarded).not.toHaveProperty("invalidField");
     });
 
     it("rejects invalid action values", async () => {

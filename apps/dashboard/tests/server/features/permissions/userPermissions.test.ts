@@ -73,6 +73,7 @@ describe("PUT /api/guilds/:guildId/user-permissions/:userId — escalation guard
     mockResolveUserPermissions.mockResolvedValue({
       permissions: new Set(["dashboard.roles.manage"]),
       isOwner: false,
+      isGuildAdmin: true,
     });
     app = await buildApp();
   });
@@ -122,6 +123,7 @@ describe("PUT /api/guilds/:guildId/user-permissions/:userId — escalation guard
     mockResolveUserPermissions.mockResolvedValue({
       permissions: new Set(["*"]),
       isOwner: true,
+      isGuildAdmin: true,
     });
     mockGetSession.mockResolvedValue({ ...callerSession, userId: "owner-1" });
     mockGetGuildOwnerId.mockResolvedValue("owner-2");
@@ -145,6 +147,7 @@ describe("PUT /user-permissions — error response does not leak key", () => {
     mockResolveUserPermissions.mockResolvedValue({
       permissions: new Set(["dashboard.roles.manage"]),
       isOwner: false,
+      isGuildAdmin: true,
     });
     app = await buildApp();
   });

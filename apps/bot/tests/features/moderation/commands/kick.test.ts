@@ -24,6 +24,18 @@ vi.mock("@fluxcore/utils", async (importOriginal) => {
   };
 });
 
+// Mock moderation persistence + DM so the command doesn't hit the real PrismaClient
+const mockGetModSettings = vi.fn().mockResolvedValue({ dmOnPunishment: false });
+const mockCreateModCase = vi.fn().mockResolvedValue({ id: 1, caseNumber: 1 });
+const mockDmOnPunishment = vi.fn().mockResolvedValue(undefined);
+vi.mock("@fluxcore/systems/moderation/persistence", () => ({
+  getModSettings: (...args: unknown[]) => mockGetModSettings(...args),
+  createModCase: (...args: unknown[]) => mockCreateModCase(...args),
+}));
+vi.mock("@fluxcore/systems/moderation/dm", () => ({
+  dmOnPunishment: (...args: unknown[]) => mockDmOnPunishment(...args),
+}));
+
 const kickModule = await import("../../../../src/features/moderation/commands/kick.js");
 const command = kickModule.default;
 

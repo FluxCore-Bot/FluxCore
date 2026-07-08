@@ -68,6 +68,7 @@ describe("GET /api/guilds/:guildId/dashboard-audit — userId filter", () => {
     mockResolveUserPermissions.mockResolvedValue({
       permissions: new Set(["dashboard.audit.view"]),
       isOwner: false,
+      isGuildAdmin: true,
     });
     mockFindMany.mockResolvedValue([]);
     mockCount.mockResolvedValue(0);
@@ -92,6 +93,7 @@ describe("GET /api/guilds/:guildId/dashboard-audit — userId filter", () => {
     mockResolveUserPermissions.mockResolvedValue({
       permissions: new Set(["*"]),
       isOwner: true,
+      isGuildAdmin: true,
     });
     const res = await app.inject({
       method: "GET",
@@ -116,6 +118,7 @@ describe("GET /api/guilds/:guildId/dashboard-audit — date validation", () => {
     mockResolveUserPermissions.mockResolvedValue({
       permissions: new Set(["*"]),
       isOwner: true,
+      isGuildAdmin: true,
     });
     mockFindMany.mockResolvedValue([]);
     mockCount.mockResolvedValue(0);
@@ -161,6 +164,7 @@ describe("GET /dashboard-audit — action filter is exact-match", () => {
     mockResolveUserPermissions.mockResolvedValue({
       permissions: new Set(["*"]),
       isOwner: true,
+      isGuildAdmin: true,
     });
     mockFindMany.mockResolvedValue([]);
     mockCount.mockResolvedValue(0);
