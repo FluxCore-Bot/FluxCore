@@ -12,4 +12,5 @@ export {
   buildTokenValues,
 } from "./registry";
 export { buildAutomationVariables } from "./automationVariables";
+export { resolveTemplatePreview } from "./resolvePreview";
 export type { VariableDescriptor, VariableGroup, PreviewRealData, RealDataKey } from "./types";
