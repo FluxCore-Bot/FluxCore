@@ -3,6 +3,8 @@ import type { FastifyReply } from "fastify";
 import { getPrisma } from "@fluxcore/database";
 import { encrypt, decrypt } from "./crypto.js";
 import { fetchGuilds } from "./auth.js";
+import { invalidateGuildCache } from "./discordApi.js";
+import { invalidatePermissionCache } from "./permissions.js";
 import { logger } from "@fluxcore/utils";
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -20,6 +22,8 @@ export interface OAuthGuild {
   name: string;
   icon: string | null;
   permissions: string;
+  /** True when the user owns the guild (Discord OAuth sets this directly). */
+  owner: boolean;
 }
 
 export interface Session {
@@ -174,6 +178,14 @@ async function refreshSessionGuilds(
   cached.session.guilds = guilds;
   cached.guildsRefreshedAt = now.getTime();
   cached.cacheExpiresAt = Date.now() + CACHE_TTL;
+
+  // Drop stale server-side Discord + permission caches for this user's guilds
+  // so the next request recomputes authorization and channel/role data fresh.
+  const userId = cached.session.userId;
+  for (const guild of guilds) {
+    invalidateGuildCache(guild.id);
+    invalidatePermissionCache(guild.id, userId);
+  }
 
   logger.debug(`Refreshed guild data for session ${id}`);
   return guilds;
