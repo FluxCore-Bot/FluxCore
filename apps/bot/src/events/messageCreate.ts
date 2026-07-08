@@ -29,16 +29,28 @@ async function handleLevelUp(
     .replace("{level}", String(newLevel))
     .replace("{username}", message.author.displayName);
 
+  // Lock allowedMentions so a moderator-configured template cannot ping
+  // @everyone, @here, or arbitrary roles. Only the leveling user
+  // themself is allowed to be mentioned.
+  const allowedMentions = { parse: [], users: [message.author.id] } as const;
+
   try {
     if (settings.announceChannel === "dm") {
-      await message.author.send(text);
+      await message.author.send({ content: text, allowedMentions: { parse: [] } });
     } else if (settings.announceChannel) {
       const channel = message.guild?.channels.cache.get(settings.announceChannel);
       if (channel?.isTextBased()) {
-        await (channel as TextChannel).send(text);
+        await (channel as TextChannel).send({ content: text, allowedMentions });
       }
     } else {
-      await (message.channel as { send: (text: string) => Promise<unknown> }).send(text);
+      await (
+        message.channel as {
+          send: (payload: {
+            content: string;
+            allowedMentions: typeof allowedMentions;
+          }) => Promise<unknown>;
+        }
+      ).send({ content: text, allowedMentions });
     }
   } catch (error) {
     logger.debug(

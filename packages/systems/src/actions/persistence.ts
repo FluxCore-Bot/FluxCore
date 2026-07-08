@@ -291,6 +291,10 @@ export async function getAnalytics(
     await Promise.all([
       prisma.actionRule.count({ where: { guildId } }),
       prisma.actionRule.count({ where: { guildId, enabled: true } }),
+      // SECURITY: tagged-template `$queryRaw` form. Prisma binds ${guildId}
+      // and ${since} as parameters — DO NOT switch this to $queryRawUnsafe
+      // or string-concatenate values into the SQL. Covered by
+      // tests/integration/actions-persistence-sqli.test.ts.
       prisma.$queryRaw<
         Array<{ date: string; total: bigint; success: bigint; error: bigint }>
       >`
@@ -370,6 +374,9 @@ export async function getLastFiredByGuild(
   guildId: string,
 ): Promise<Map<number, Date>> {
   const prisma = getPrisma();
+  // SECURITY: tagged-template `$queryRaw` form — guildId is bound as a
+  // parameter. DO NOT convert to $queryRawUnsafe. Covered by
+  // tests/integration/actions-persistence-sqli.test.ts.
   const rows = await prisma.$queryRaw<
     Array<{ ruleId: number; lastFired: Date }>
   >`

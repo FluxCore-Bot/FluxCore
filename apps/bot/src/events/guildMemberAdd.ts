@@ -7,8 +7,8 @@ import { sendLogEmbed } from "@fluxcore/systems/logging/sender";
 import { formatMemberJoin } from "@fluxcore/systems/logging/formatter";
 import { getWelcomeConfig } from "@fluxcore/systems/welcome/config";
 import { buildWelcomeEmbed } from "@fluxcore/systems/welcome/builder";
-import { generateWelcomeImage, createStorageAdapter } from "@fluxcore/systems/welcome/image";
-import { AttachmentBuilder } from "discord.js";
+import { generateWelcomeImage, createStorageAdapter, sanitizeDisplayName } from "@fluxcore/systems/welcome/image";
+import { AttachmentBuilder, DiscordAPIError } from "discord.js";
 import { getAntiRaidConfig } from "@fluxcore/systems/antiraid/config";
 import { recordJoin } from "@fluxcore/systems/antiraid/tracker";
 import { executeRaidAction, lockdownGuild } from "@fluxcore/systems/antiraid/actions";
@@ -133,7 +133,24 @@ const event: Event<"guildMemberAdd"> = {
       });
       if (rolesToAdd.length > 0) {
         await member.roles.add(rolesToAdd, "Auto-role on join").catch((err) => {
-          logger.error(`Failed to assign auto-roles in guild ${member.guild.id}`, err instanceof Error ? err : new Error(String(err)));
+          if (err instanceof DiscordAPIError) {
+            if (err.code === 50013) {
+              logger.warn(
+                `auto-role: missing permissions in guild ${member.guild.id} (role likely moved above bot between cache check and API call)`,
+              );
+              return;
+            }
+            if (err.code === 10011) {
+              logger.warn(
+                `auto-role: unknown role in guild ${member.guild.id} (role was deleted between cache check and API call)`,
+              );
+              return;
+            }
+          }
+          logger.error(
+            `Failed to assign auto-roles in guild ${member.guild.id}`,
+            err instanceof Error ? err : new Error(String(err)),
+          );
         });
       }
     }
@@ -149,15 +166,18 @@ const event: Event<"guildMemberAdd"> = {
         if (welcomeConfig.welcomeImageEnabled) {
           try {
             const storage = createStorageAdapter();
+            const safeUsername = sanitizeDisplayName(member.user.username, 32);
+            const safeDisplayName = sanitizeDisplayName(member.displayName, 80);
+            const safeGuildName = sanitizeDisplayName(member.guild.name, 80);
             const imageBuffer = await generateWelcomeImage({
               settings: welcomeConfig.welcomeImageConfig,
               member: {
-                username: member.user.username,
-                displayName: member.displayName,
+                username: safeUsername,
+                displayName: safeDisplayName,
                 avatarUrl: member.user.displayAvatarURL({ extension: "png", size: 256 }),
               },
               guild: {
-                name: member.guild.name,
+                name: safeGuildName,
                 iconUrl: member.guild.iconURL({ size: 256 }) ?? undefined,
                 memberCount: member.guild.memberCount,
               },

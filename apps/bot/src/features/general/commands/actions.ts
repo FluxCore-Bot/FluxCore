@@ -19,6 +19,7 @@ import {
   ACTION_TYPES,
   MAX_ACTIONS_PER_RULE,
   CONDITION_TYPES,
+  isValidRuleName,
   type ConditionType,
 } from "@fluxcore/systems/actions/constants";
 import {
@@ -472,6 +473,20 @@ async function handleCreate(
   guildId: string,
 ) {
   const name = interaction.options.getString("name", true);
+
+  if (!isValidRuleName(name)) {
+    await interaction.reply({
+      embeds: [
+        errorEmbed(
+          "Invalid Name",
+          "Rule names must be 1-50 characters using only letters, digits, spaces, underscores, or hyphens.",
+        ),
+      ],
+      ephemeral: true,
+    });
+    return;
+  }
+
   const eventType = interaction.options.getString("event", true) as ActionEventType;
   const actionType = interaction.options.getString("action-type", true) as ActionType;
   const channel = interaction.options.getChannel("channel");
