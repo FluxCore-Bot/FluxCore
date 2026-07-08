@@ -3,8 +3,14 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "@tanstack/react-router";
 import { Icon } from "../../../shared/components/Icon";
 import { Button } from "../../../shared/ui/button";
-import { Input } from "../../../shared/ui/input";
 import { Label } from "../../../shared/ui/label";
+import {
+  VariableEditor,
+  usePreviewContext,
+  tempvoiceVariables,
+  buildTokenValues,
+  resolveTemplatePreview,
+} from "../../../shared/ui/variable-field";
 import { Alert } from "../../../shared/ui/alert";
 import { Card } from "../../../shared/ui/card";
 import {
@@ -37,6 +43,8 @@ export function TempVoiceForm() {
   const createConfig = useCreateTempVoice(guildId);
   const updateConfig = useUpdateTempVoice(guildId);
   const deleteConfig = useDeleteTempVoice(guildId);
+
+  const real = usePreviewContext(guildId);
 
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -246,16 +254,16 @@ export function TempVoiceForm() {
 
           <div>
             <Label htmlFor="tempvoice-name-template">{t("form.nameTemplate")}</Label>
-            <Input
+            <VariableEditor
               id="tempvoice-name-template"
-              type="text"
               value={nameTemplate}
-              onChange={(e) => setNameTemplate(e.target.value)}
+              onChange={setNameTemplate}
+              variables={tempvoiceVariables}
               placeholder={t("form.defaultNameTemplate")}
               maxLength={100}
             />
             <p className="mt-1 text-xs text-text-muted">
-              {t("form.nameTemplateHint")}
+              {t("common:variableField.preview")}: {resolveTemplatePreview(nameTemplate, buildTokenValues(tempvoiceVariables, real))}
             </p>
           </div>
 

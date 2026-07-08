@@ -20,9 +20,16 @@ import { Label } from "../../../shared/ui/label";
 import { Card } from "../../../shared/ui/card";
 import { Switch } from "../../../shared/ui/switch";
 import { Separator } from "../../../shared/ui/separator";
-import { Textarea } from "../../../shared/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
 import { FormSkeleton } from "../../../shared/ui/skeletons";
+import {
+  VariableEditor,
+  VariableBrowser,
+  DiscordMessagePreview,
+  usePreviewContext,
+  welcomeVariables,
+} from "../../../shared/ui/variable-field";
+import type { PreviewRealData } from "../../../shared/ui/variable-field";
 import type { TFunction } from "i18next";
 
 function createDefaultWelcomeImage(t: TFunction<"welcome">): WelcomeImageSettings {
@@ -49,31 +56,44 @@ function createDefaultFarewellImage(t: TFunction<"welcome">): WelcomeImageSettin
 function EmbedEditor({
   value,
   onChange,
+  real,
   t,
 }: {
   value: EmbedConfig;
   onChange: (config: EmbedConfig) => void;
+  real: PreviewRealData;
   t: TFunction<"welcome">;
 }) {
   return (
     <div className="space-y-4">
       <div>
         <Label htmlFor="embed-title">{t("embed.title")}</Label>
-        <Input
+        <VariableEditor
           id="embed-title"
-          placeholder={t("embed.titlePlaceholder")}
           value={value.title ?? ""}
-          onChange={(e) => onChange({ ...value, title: e.target.value || undefined })}
+          onChange={(v) => onChange({ ...value, title: v || undefined })}
+          variables={welcomeVariables}
+          placeholder={t("embed.titlePlaceholder")}
+          maxLength={256}
         />
       </div>
       <div>
-        <Label htmlFor="embed-description">{t("embed.description")}</Label>
-        <Textarea
+        <div className="flex items-center justify-between">
+          <Label htmlFor="embed-description">{t("embed.description")}</Label>
+          <VariableBrowser
+            variables={welcomeVariables}
+            onInsert={(tok) => onChange({ ...value, description: (value.description ?? "") + tok })}
+          />
+        </div>
+        <VariableEditor
           id="embed-description"
-          placeholder={t("embed.descriptionPlaceholder")}
-          value={value.description ?? ""}
-          onChange={(e) => onChange({ ...value, description: e.target.value || undefined })}
+          multiline
           rows={3}
+          value={value.description ?? ""}
+          onChange={(v) => onChange({ ...value, description: v || undefined })}
+          variables={welcomeVariables}
+          placeholder={t("embed.descriptionPlaceholder")}
+          maxLength={4096}
         />
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -93,22 +113,26 @@ function EmbedEditor({
         </div>
         <div>
           <Label htmlFor="embed-footer">{t("embed.footer")}</Label>
-          <Input
+          <VariableEditor
             id="embed-footer"
-            placeholder={t("embed.footerPlaceholder")}
             value={value.footer ?? ""}
-            onChange={(e) => onChange({ ...value, footer: e.target.value || undefined })}
+            onChange={(v) => onChange({ ...value, footer: v || undefined })}
+            variables={welcomeVariables}
+            placeholder={t("embed.footerPlaceholder")}
+            maxLength={2048}
           />
         </div>
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <Label htmlFor="embed-thumbnail">{t("embed.thumbnail")}</Label>
-          <Input
+          <VariableEditor
             id="embed-thumbnail"
-            placeholder="{user.avatar}"
             value={value.thumbnail ?? ""}
-            onChange={(e) => onChange({ ...value, thumbnail: e.target.value || undefined })}
+            onChange={(v) => onChange({ ...value, thumbnail: v || undefined })}
+            variables={welcomeVariables}
+            placeholder="{user.avatar}"
+            maxLength={2048}
           />
         </div>
         <div>
@@ -121,10 +145,17 @@ function EmbedEditor({
           />
         </div>
       </div>
-      <p className="text-xs text-text-muted">
-        {t("embed.variables")} {"{user}"} {"{user.tag}"} {"{user.name}"} {"{user.id}"} {"{user.avatar}"}{" "}
-        {"{server}"} {"{server.id}"} {"{membercount}"} {"{server.icon}"}
-      </p>
+      <DiscordMessagePreview
+        variables={welcomeVariables}
+        real={real}
+        embed={{
+          title: value.title,
+          description: value.description,
+          footer: value.footer,
+          thumbnail: value.thumbnail,
+          color: value.color,
+        }}
+      />
     </div>
   );
 }
@@ -135,6 +166,7 @@ export function WelcomePage() {
   const { data: config, isLoading } = useWelcomeConfig(guildId);
   const updateConfig = useUpdateWelcomeConfig(guildId);
   const testWelcome = useTestWelcome(guildId);
+  const real = usePreviewContext(guildId);
 
   const defaultWelcomeImage = useMemo(() => createDefaultWelcomeImage(t), [t]);
   const defaultFarewellImage = useMemo(() => createDefaultFarewellImage(t), [t]);
@@ -267,7 +299,7 @@ export function WelcomePage() {
             </div>
 
             <h4 className="mb-3 font-label text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
-            <EmbedEditor value={welcomeMessage} onChange={setWelcomeMessage} t={t} />
+            <EmbedEditor value={welcomeMessage} onChange={setWelcomeMessage} real={real} t={t} />
           </Card>
         </TabsContent>
 
@@ -335,7 +367,7 @@ export function WelcomePage() {
             </div>
 
             <h4 className="mb-3 font-label text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
-            <EmbedEditor value={farewellMessage} onChange={setFarewellMessage} t={t} />
+            <EmbedEditor value={farewellMessage} onChange={setFarewellMessage} real={real} t={t} />
           </Card>
         </TabsContent>
 
@@ -390,7 +422,7 @@ export function WelcomePage() {
             <Separator className="mb-6" />
 
             <h4 className="mb-3 font-label text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
-            <EmbedEditor value={dmMessage} onChange={setDmMessage} t={t} />
+            <EmbedEditor value={dmMessage} onChange={setDmMessage} real={real} t={t} />
           </Card>
         </TabsContent>
 

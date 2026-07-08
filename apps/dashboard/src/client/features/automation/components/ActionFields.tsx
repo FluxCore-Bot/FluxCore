@@ -10,7 +10,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../../shared/ui/select";
+import { VariableEditor } from "../../../shared/ui/variable-field";
+import type { VariableDescriptor } from "../../../shared/ui/variable-field";
 import type { ActionFieldDescriptor, Channel, Role } from "../../../shared/lib/schemas";
+
+const VARIABLE_FIELD_KEYS = new Set([
+  "message",
+  "embed.title",
+  "embed.description",
+  "embed.footer",
+  "webhook.bodyTemplate",
+  "nickname",
+  "threadName",
+]);
 
 interface ActionFieldsProps {
   fields: ActionFieldDescriptor[];
@@ -18,6 +30,7 @@ interface ActionFieldsProps {
   onChange: (key: string, value: unknown) => void;
   channels: Channel[];
   roles: Role[];
+  variables: VariableDescriptor[];
 }
 
 function getNestedValue(obj: Record<string, unknown>, path: string): unknown {
@@ -36,6 +49,7 @@ export function ActionFields({
   onChange,
   channels,
   roles,
+  variables,
 }: ActionFieldsProps) {
   const { t } = useTranslation("common");
   return (
@@ -106,26 +120,52 @@ export function ActionFields({
             )}
 
             {field.type === "text" && (
-              <Input
-                id={fieldId}
-                type="text"
-                aria-required={field.required}
-                value={String(value)}
-                onChange={(e) => onChange(field.key, e.target.value)}
-                placeholder={field.placeholder}
-                maxLength={field.maxLength}
-              />
+              VARIABLE_FIELD_KEYS.has(field.key) ? (
+                <VariableEditor
+                  id={fieldId}
+                  value={String(value ?? "")}
+                  onChange={(v) => onChange(field.key, v)}
+                  variables={variables}
+                  multiline={false}
+                  aria-required={field.required}
+                  placeholder={field.placeholder}
+                  maxLength={field.maxLength}
+                />
+              ) : (
+                <Input
+                  id={fieldId}
+                  type="text"
+                  aria-required={field.required}
+                  value={String(value)}
+                  onChange={(e) => onChange(field.key, e.target.value)}
+                  placeholder={field.placeholder}
+                  maxLength={field.maxLength}
+                />
+              )
             )}
 
             {field.type === "textarea" && (
-              <Textarea
-                id={fieldId}
-                aria-required={field.required}
-                value={String(value)}
-                onChange={(e) => onChange(field.key, e.target.value)}
-                placeholder={field.placeholder}
-                maxLength={field.maxLength}
-              />
+              VARIABLE_FIELD_KEYS.has(field.key) ? (
+                <VariableEditor
+                  id={fieldId}
+                  value={String(value ?? "")}
+                  onChange={(v) => onChange(field.key, v)}
+                  variables={variables}
+                  multiline={true}
+                  aria-required={field.required}
+                  placeholder={field.placeholder}
+                  maxLength={field.maxLength}
+                />
+              ) : (
+                <Textarea
+                  id={fieldId}
+                  aria-required={field.required}
+                  value={String(value)}
+                  onChange={(e) => onChange(field.key, e.target.value)}
+                  placeholder={field.placeholder}
+                  maxLength={field.maxLength}
+                />
+              )
             )}
 
             {field.type === "color" && (

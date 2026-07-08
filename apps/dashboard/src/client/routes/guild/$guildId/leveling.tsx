@@ -19,7 +19,6 @@ import { Input } from "../../../shared/ui/input";
 import { Label } from "../../../shared/ui/label";
 import { Card } from "../../../shared/ui/card";
 import { Switch } from "../../../shared/ui/switch";
-import { Textarea } from "../../../shared/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -42,6 +41,7 @@ import { StatsCard } from "../../../shared/components/StatsCard";
 import { DiscordSelect } from "../../../shared/ui/discord-select";
 import { DiscordMultiSelect } from "../../../shared/ui/discord-multi-select";
 import { PageSkeleton, TableSkeleton, FormSkeleton } from "../../../shared/ui/skeletons";
+import { VariableEditor, VariableBrowser, DiscordMessagePreview, usePreviewContext, levelingVariables } from "../../../shared/ui/variable-field";
 import { Users, Award, Power, Loader2 } from "lucide-react";
 
 function formatVoiceTime(minutes: number, t: (key: string, opts?: Record<string, unknown>) => string): string {
@@ -94,6 +94,8 @@ export function LevelingPage() {
   const [multiplierDeleteTarget, setMultiplierDeleteTarget] = useState<
     { type: "channels" | "roles"; id: string } | null
   >(null);
+
+  const real = usePreviewContext(guildId);
 
   useEffect(() => {
     if (settings) {
@@ -512,17 +514,24 @@ export function LevelingPage() {
                           {t("settings.announceDestHint")}
                         </p>
                       </div>
-                      <div>
+                      <div className="space-y-2">
                         <Label>{t("settings.announceMessage")}</Label>
-                        <Textarea
+                        <VariableEditor
+                          multiline
                           value={settings.announceMessage}
-                          onChange={(e) => handleAnnounceMessageChange(e.target.value)}
+                          onChange={(v) => handleAnnounceMessageChange(v)}
+                          variables={levelingVariables}
                           placeholder={t("settings.announceMessagePlaceholder")}
-                          className="mt-1"
                         />
-                        <p className="mt-1 text-xs text-text-muted">
-                          {t("settings.announceMessageVars")}
-                        </p>
+                        <VariableBrowser
+                          variables={levelingVariables}
+                          onInsert={(tok) => handleAnnounceMessageChange(settings.announceMessage + tok)}
+                        />
+                        <DiscordMessagePreview
+                          variables={levelingVariables}
+                          real={real}
+                          content={settings.announceMessage}
+                        />
                       </div>
                     </div>
                   </>

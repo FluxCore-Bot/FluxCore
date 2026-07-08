@@ -23,8 +23,14 @@ import { Button } from "../../../shared/ui/button";
 import { Input } from "../../../shared/ui/input";
 import { Label } from "../../../shared/ui/label";
 import { Card } from "../../../shared/ui/card";
-import { Textarea } from "../../../shared/ui/textarea";
 import { Switch } from "../../../shared/ui/switch";
+import {
+  VariableEditor,
+  VariableBrowser,
+  DiscordMessagePreview,
+  usePreviewContext,
+  customCommandVariables,
+} from "../../../shared/ui/variable-field";
 import { Badge } from "../../../shared/ui/badge";
 import { Separator } from "../../../shared/ui/separator";
 import { ColorPicker } from "../../../shared/ui/color-picker";
@@ -70,6 +76,7 @@ export function CommandsPage() {
   const updateCommand = useUpdateCustomCommand(guildId);
   const deleteCommand = useDeleteCustomCommand(guildId);
   const { data: roles } = useRoles(guildId);
+  const real = usePreviewContext(guildId);
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingCommand, setEditingCommand] = useState<CustomCommandItem | null>(null);
@@ -490,45 +497,45 @@ export function CommandsPage() {
                       </div>
 
                       {formResponseType === "text" ? (
-                        <div>
+                        <div className="space-y-2">
                           <Label htmlFor="cmd-content">{t("form.message")}</Label>
-                          <Textarea
+                          <VariableEditor
                             id="cmd-content"
                             value={formContent}
-                            onChange={(e) => {
-                              setFormContent(e.target.value);
-                              markDirty();
-                            }}
+                            onChange={(v) => { setFormContent(v); markDirty(); }}
                             placeholder={t("form.message")}
+                            variables={customCommandVariables}
+                            multiline
                             rows={4}
+                          />
+                          <VariableBrowser
+                            variables={customCommandVariables}
+                            onInsert={(tok) => { setFormContent(formContent + tok); markDirty(); }}
                           />
                         </div>
                       ) : (
                         <div className="space-y-3">
                           <div>
                             <Label htmlFor="embed-title">{t("form.embedTitle")}</Label>
-                            <Input
+                            <VariableEditor
                               id="embed-title"
                               value={formEmbedTitle}
-                              onChange={(e) => {
-                                setFormEmbedTitle(e.target.value);
-                                markDirty();
-                              }}
+                              onChange={(v) => { setFormEmbedTitle(v); markDirty(); }}
                               placeholder={t("form.embedTitle")}
+                              variables={customCommandVariables}
                             />
                           </div>
                           <div>
                             <Label htmlFor="embed-desc">
                               {t("form.embedDescription")}
                             </Label>
-                            <Textarea
+                            <VariableEditor
                               id="embed-desc"
                               value={formEmbedDescription}
-                              onChange={(e) => {
-                                setFormEmbedDescription(e.target.value);
-                                markDirty();
-                              }}
+                              onChange={(v) => { setFormEmbedDescription(v); markDirty(); }}
                               placeholder={t("form.embedDescription")}
+                              variables={customCommandVariables}
+                              multiline
                               rows={3}
                             />
                           </div>
@@ -547,14 +554,12 @@ export function CommandsPage() {
                             </div>
                             <div>
                               <Label htmlFor="embed-footer">{t("form.footer")}</Label>
-                              <Input
+                              <VariableEditor
                                 id="embed-footer"
                                 value={formEmbedFooter}
-                                onChange={(e) => {
-                                  setFormEmbedFooter(e.target.value);
-                                  markDirty();
-                                }}
+                                onChange={(v) => { setFormEmbedFooter(v); markDirty(); }}
                                 placeholder={t("form.footer")}
+                                variables={customCommandVariables}
                               />
                             </div>
                           </div>
@@ -768,6 +773,13 @@ export function CommandsPage() {
                         />
                       </div>
                     </div>
+
+                    <DiscordMessagePreview
+                      variables={customCommandVariables}
+                      real={real}
+                      content={formResponseType === "text" ? formContent : undefined}
+                      embed={formResponseType === "embed" ? { title: formEmbedTitle, description: formEmbedDescription, footer: formEmbedFooter } : undefined}
+                    />
 
                     <div className="flex justify-end gap-2">
                       <Button

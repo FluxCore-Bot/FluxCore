@@ -596,6 +596,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             action={actions[selectedNode.index]}
             constants={constants}
             guildId={guildId}
+            eventType={eventType}
             totalActions={actions.length}
             onActionChange={rawActionChange}
             onActionRemove={actions.length > 1 ? handleActionRemove : handleActionReset}
@@ -611,6 +612,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             steps={steps}
             constants={constants}
             guildId={guildId}
+            eventType={eventType}
             onStepChange={handleStepChange}
             onStepRemove={handleStepRemove}
             onClose={() => setSelectedNode(null)}

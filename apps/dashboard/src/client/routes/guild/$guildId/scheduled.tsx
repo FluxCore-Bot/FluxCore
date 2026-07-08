@@ -19,7 +19,13 @@ import { ColorPicker } from "../../../shared/ui/color-picker";
 import { Label } from "../../../shared/ui/label";
 import { Card } from "../../../shared/ui/card";
 import { Switch } from "../../../shared/ui/switch";
-import { Textarea } from "../../../shared/ui/textarea";
+import {
+  VariableEditor,
+  VariableBrowser,
+  DiscordMessagePreview,
+  usePreviewContext,
+  welcomeVariables,
+} from "../../../shared/ui/variable-field";
 import {
   Select,
   SelectContent,
@@ -145,6 +151,8 @@ export function ScheduledMessagesPage() {
     }),
     [t],
   );
+
+  const real = usePreviewContext(guildId);
 
   const { data, isLoading } = useScheduledMessages(guildId, { page, limit: 10 });
   const { data: channels } = useChannels(guildId);
@@ -593,14 +601,22 @@ export function ScheduledMessagesPage() {
 
               <TabsContent value="text" className="mt-4">
                 <div>
-                  <Label htmlFor="msg-content">{t("form.messageContent")}</Label>
-                  <Textarea
+                  <div className="mb-1 flex items-center justify-between">
+                    <Label htmlFor="msg-content">{t("form.messageContent")}</Label>
+                    <VariableBrowser
+                      variables={welcomeVariables}
+                      onInsert={(tok) => updateForm({ textContent: form.textContent + tok })}
+                    />
+                  </div>
+                  <VariableEditor
                     id="msg-content"
                     placeholder={t("form.messageContent")}
                     value={form.textContent}
-                    onChange={(e) => updateForm({ textContent: e.target.value })}
-                    maxLength={2000}
+                    onChange={(v) => updateForm({ textContent: v })}
+                    variables={welcomeVariables}
+                    multiline
                     rows={5}
+                    maxLength={2000}
                   />
                   <p className="mt-1 text-xs text-text-muted">
                     {t("characters", { count: form.textContent.length })}
@@ -611,20 +627,23 @@ export function ScheduledMessagesPage() {
               <TabsContent value="embed" className="mt-4 space-y-4">
                 <div>
                   <Label htmlFor="embed-title">{t("embed.title")}</Label>
-                  <Input
+                  <VariableEditor
                     id="embed-title"
                     placeholder={t("embed.title")}
                     value={form.embedTitle}
-                    onChange={(e) => updateForm({ embedTitle: e.target.value })}
+                    onChange={(v) => updateForm({ embedTitle: v })}
+                    variables={welcomeVariables}
                   />
                 </div>
                 <div>
                   <Label htmlFor="embed-description">{t("embed.description")}</Label>
-                  <Textarea
+                  <VariableEditor
                     id="embed-description"
                     placeholder={t("embed.description")}
                     value={form.embedDescription}
-                    onChange={(e) => updateForm({ embedDescription: e.target.value })}
+                    onChange={(v) => updateForm({ embedDescription: v })}
+                    variables={welcomeVariables}
+                    multiline
                     rows={4}
                   />
                 </div>
@@ -638,22 +657,24 @@ export function ScheduledMessagesPage() {
                   </div>
                   <div>
                     <Label htmlFor="embed-footer">{t("embed.footer")}</Label>
-                    <Input
+                    <VariableEditor
                       id="embed-footer"
                       placeholder={t("embed.footer")}
                       value={form.embedFooter}
-                      onChange={(e) => updateForm({ embedFooter: e.target.value })}
+                      onChange={(v) => updateForm({ embedFooter: v })}
+                      variables={welcomeVariables}
                     />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
                     <Label htmlFor="embed-thumbnail">{t("embed.thumbnail")}</Label>
-                    <Input
+                    <VariableEditor
                       id="embed-thumbnail"
                       placeholder="https://..."
                       value={form.embedThumbnail}
-                      onChange={(e) => updateForm({ embedThumbnail: e.target.value })}
+                      onChange={(v) => updateForm({ embedThumbnail: v })}
+                      variables={welcomeVariables}
                     />
                   </div>
                   <div>
@@ -667,27 +688,28 @@ export function ScheduledMessagesPage() {
                   </div>
                 </div>
 
-                {/* Embed Preview */}
-                {(form.embedTitle || form.embedDescription) && (
-                  <div
-                    className="rounded-md border-s-4 bg-surface-high p-4"
-                    style={{
-                      borderInlineStartColor: form.embedColor || "#a3a6ff",
-                    }}
-                  >
-                    {form.embedTitle && (
-                      <p className="mb-1 font-semibold text-text">{form.embedTitle}</p>
-                    )}
-                    {form.embedDescription && (
-                      <p className="text-sm text-text-muted">{form.embedDescription}</p>
-                    )}
-                    {form.embedFooter && (
-                      <p className="mt-2 text-xs text-text-muted">{form.embedFooter}</p>
-                    )}
-                  </div>
-                )}
               </TabsContent>
             </Tabs>
+
+            {/* Live Discord-style preview */}
+            <DiscordMessagePreview
+              variables={welcomeVariables}
+              real={real}
+              content={form.messageType === "text" ? form.textContent : undefined}
+              embed={
+                form.messageType === "embed"
+                  ? {
+                      title: form.embedTitle,
+                      description: form.embedDescription,
+                      footer: form.embedFooter,
+                      thumbnail: form.embedThumbnail,
+                      color: form.embedColor
+                        ? parseInt(form.embedColor.replace("#", ""), 16)
+                        : undefined,
+                    }
+                  : undefined
+              }
+            />
 
             {/* Enabled toggle */}
             <div className="flex items-center justify-between">
