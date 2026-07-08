@@ -13,6 +13,10 @@ if ! echo "$LAST_MESSAGE" | grep -qiE '(created|wrote|added|implemented|built|up
   exit 0
 fi
 
+# git returns repo-root-relative paths, but this hook may run from any CWD, so
+# resolve file existence against the repo root rather than the current dir.
+REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || echo ".")
+
 # Find source files modified in the working tree (staged + unstaged)
 CHANGED_SRC_FILES=$(git diff --name-only HEAD 2>/dev/null || git diff --name-only --cached 2>/dev/null || echo "")
 
@@ -56,7 +60,17 @@ while IFS= read -r file; do
     continue
   fi
 
-  if [ -n "$TEST_FILE" ] && [ ! -f "$TEST_FILE" ]; then
+  if [ -n "$TEST_FILE" ] && [ ! -f "$REPO_ROOT/$TEST_FILE" ]; then
+    # This repo consolidates a feature's tests into <feature>.test.ts within the
+    # mirrored test directory (e.g. features/guilds/routes.ts is covered by
+    # tests/server/features/guilds/guilds.test.ts). Accept that convention —
+    # a <parentDirName>.test.ts alongside the expected path — but nothing broader,
+    # so genuinely untested files elsewhere are still flagged.
+    TEST_DIR=$(dirname "$TEST_FILE")
+    PARENT_DIR=$(basename "$(dirname "$file")")
+    if [ -f "$REPO_ROOT/$TEST_DIR/$PARENT_DIR.test.ts" ]; then
+      continue
+    fi
     MISSING_TESTS="${MISSING_TESTS}\n  - ${file} → missing ${TEST_FILE}"
   fi
 done <<< "$ALL_FILES"
