@@ -373,7 +373,13 @@ describe("welcome routes", () => {
         method: "POST",
         url: "/api/guilds/guild-1/welcome/image/background",
         cookies: { session: app.signCookie("valid") },
-        payload: { data: Buffer.from("fake-png").toString("base64"), contentType: "image/png" },
+        payload: {
+          data: Buffer.concat([
+            Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
+            Buffer.alloc(8),
+          ]).toString("base64"),
+          contentType: "image/png",
+        },
       });
 
       expect(res.statusCode).toBe(200);

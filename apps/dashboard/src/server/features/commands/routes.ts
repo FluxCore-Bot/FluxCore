@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import safeRegex from "safe-regex";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
 import {
   getCustomCommands,
@@ -9,6 +10,23 @@ import {
 } from "@fluxcore/systems/customCommands/persistence";
 import { MAX_COMMANDS_PER_GUILD } from "@fluxcore/systems/customCommands/constants";
 import { TRIGGER_TYPES } from "@fluxcore/systems/customCommands/constants";
+
+const MAX_REGEX_LENGTH = 200;
+
+function validateRegexPattern(pattern: string): string | null {
+  if (pattern.length > MAX_REGEX_LENGTH) {
+    return `Regex pattern too long (max ${MAX_REGEX_LENGTH} chars)`;
+  }
+  try {
+    new RegExp(pattern, "i");
+  } catch {
+    return "Invalid regex pattern";
+  }
+  if (!safeRegex(pattern)) {
+    return "Unsafe regex pattern (catastrophic backtracking risk)";
+  }
+  return null;
+}
 
 function parseIntParam(value: string): number | null {
   const n = parseInt(value, 10);
@@ -32,6 +50,14 @@ export function registerCustomCommandRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/custom-commands",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("commands.list.manage")],
+      config: {
+        rateLimit: {
+          max: 10,
+          timeWindow: "1 minute",
+          keyGenerator: (req) =>
+            (req as { session?: { userId?: string } }).session?.userId ?? req.ip,
+        },
+      },
       schema: {
         body: {
           type: "object",
@@ -109,10 +135,9 @@ export function registerCustomCommandRoutes(app: FastifyInstance): void {
 
       // Validate regex if trigger type is regex
       if (body.triggerType === "regex") {
-        try {
-          new RegExp(body.name, "i");
-        } catch {
-          reply.code(400).send({ error: "Invalid regex pattern" });
+        const err = validateRegexPattern(body.name);
+        if (err) {
+          reply.code(400).send({ error: err });
           return;
         }
       }
@@ -218,10 +243,9 @@ export function registerCustomCommandRoutes(app: FastifyInstance): void {
 
       // Validate regex if trigger type is being changed to regex
       if (body.triggerType === "regex" && body.name) {
-        try {
-          new RegExp(body.name, "i");
-        } catch {
-          reply.code(400).send({ error: "Invalid regex pattern" });
+        const err = validateRegexPattern(body.name);
+        if (err) {
+          reply.code(400).send({ error: err });
           return;
         }
       }
