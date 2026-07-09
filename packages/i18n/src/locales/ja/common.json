@@ -141,5 +141,35 @@
   "language": {
     "searchPlaceholder": "言語を検索...",
     "noResults": "言語が見つかりません"
+  },
+  "variableField": {
+    "insert": "変数を挿入",
+    "search": "変数を検索…",
+    "noMatches": "一致なし",
+    "unknown": "不明な変数 {{token}}",
+    "didYouMean": "もしかして {{suggestion}} ですか？",
+    "preview": "プレビュー",
+    "notAvailable": "{{token}} は {{event}} では使用できません"
+  },
+  "variables": {
+    "user": "ユーザーをメンションします",
+    "userTag": "ユーザーのタグ（例: name#0001）",
+    "userName": "ユーザー名",
+    "userId": "ユーザーID",
+    "userAvatar": "ユーザーのアバターURL",
+    "server": "サーバー名",
+    "serverId": "サーバーID",
+    "memberCount": "サーバーのメンバー数",
+    "serverIcon": "サーバーのアイコンURL",
+    "level": "メンバーが到達したレベル",
+    "entries": {
+      "user": "コマンドを実行したユーザーをメンションします",
+      "username": "ユーザーの表示名",
+      "userId": "ユーザーID",
+      "server": "サーバー名",
+      "channel": "チャンネルのメンション",
+      "channelName": "チャンネル名",
+      "memberCount": "サーバーのメンバー数"
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Image,
   Palette,
@@ -10,6 +10,8 @@ import {
   Sparkles,
   Eye,
   Check,
+  Wifi,
+  WifiOff,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
@@ -36,6 +38,7 @@ import {
   useDeleteBackground,
   type WelcomeImageSettings,
 } from "../hooks/useWelcome";
+import { useAuth } from "../../../shared/hooks/useAuth";
 
 const PRESET_GRADIENT_COLORS: Record<string, string> = {
   midnight: "from-[#0f0c29] via-[#302b63] to-[#24243e]",
@@ -63,46 +66,120 @@ export function WelcomeImageEditor({
   const { data: templateData } = useWelcomeTemplates();
   const { data: fontData } = useWelcomeFonts();
   const { data: presetData } = useWelcomePresets();
-  const preview = useWelcomeImagePreview(guildId);
+  const { data: user } = useAuth();
+  const serverPreview = useWelcomeImagePreview(guildId);
+
   const uploadBg = useUploadBackground(guildId);
   const deleteBg = useDeleteBackground(guildId);
 
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [previewMode, setPreviewMode] = useState<"client" | "server">("client");
+  const [previewError, setPreviewError] = useState(false);
+  const [isPending, setIsPending] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const rafRef = useRef<number>(0);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const prevUrlRef = useRef<string | null>(null);
+  const fontsLoadedRef = useRef(false);
+  const serverUrlRef = useRef<string | null>(null);
 
   const templates = templateData?.templates ?? [];
   const fonts = fontData?.fonts ?? [];
   const presets = presetData?.backgrounds ?? [];
 
-  // Auto-generate preview on settings change (debounced)
-  const generatePreview = useCallback(() => {
-    if (debounceRef.current) clearTimeout(debounceRef.current);
-    debounceRef.current = setTimeout(() => {
-      preview.mutate(
+  const avatarUrl = user?.avatar
+    ? `https://cdn.discordapp.com/avatars/${user.userId}/${user.avatar}.png?size=256`
+    : "https://cdn.discordapp.com/embed/avatars/0.png";
+
+  // Lazy-init offscreen canvas
+  if (!canvasRef.current) {
+    canvasRef.current = document.createElement("canvas");
+  }
+
+  // Load fonts once
+  useEffect(() => {
+    if (fontsLoadedRef.current) return;
+    fontsLoadedRef.current = true;
+    import("../image/renderer").then((m) => m.loadPreviewFonts());
+  }, []);
+
+  // Client-side render — instant, no debounce
+  useEffect(() => {
+    if (previewMode !== "client") return;
+
+    setIsPending(true);
+    setPreviewError(false);
+
+    // Cancel any pending RAF
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+
+    rafRef.current = requestAnimationFrame(async () => {
+      try {
+        const { renderWelcomeImagePreview } = await import("../image/renderer");
+        const result = await renderWelcomeImagePreview({
+          settings: settings as never,
+          member: {
+            username: user?.username ?? "User",
+            displayName: user?.username ?? "User",
+            avatarUrl,
+          },
+          guild: {
+            name: "Your Server",
+            memberCount: 1234,
+          },
+        });
+
+        if (prevUrlRef.current) URL.revokeObjectURL(prevUrlRef.current);
+        prevUrlRef.current = result.url;
+        setPreviewUrl(result.url);
+        setIsPending(false);
+      } catch {
+        setIsPending(false);
+        setPreviewError(true);
+      }
+    });
+
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [settings, previewMode, user, avatarUrl, refreshKey]);
+
+  // Server-side preview — debounced since it's a network request
+  useEffect(() => {
+    if (previewMode !== "server") return;
+
+    const timer = setTimeout(() => {
+      setIsPending(true);
+      setPreviewError(false);
+
+      serverPreview.mutate(
         { settings, type },
         {
           onSuccess: (url) => {
-            if (previewUrl) URL.revokeObjectURL(previewUrl);
+            if (serverUrlRef.current) URL.revokeObjectURL(serverUrlRef.current);
+            serverUrlRef.current = url;
             setPreviewUrl(url);
+            setIsPending(false);
           },
-          onError: () => toast.error(t("imageEditor.toast.previewFailed")),
+          onError: () => {
+            setIsPending(false);
+            setPreviewError(true);
+            toast.error(t("imageEditor.toast.previewFailed"));
+          },
         },
       );
-    }, 600);
-  }, [settings, type, t]);
+    }, 400);
 
-  useEffect(() => {
-    generatePreview();
-    return () => {
-      if (debounceRef.current) clearTimeout(debounceRef.current);
-    };
-  }, [generatePreview]);
+    return () => clearTimeout(timer);
+  }, [settings, type, previewMode, t, refreshKey]);
 
-  // Cleanup object URLs
+  // Cleanup
   useEffect(() => {
     return () => {
-      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (prevUrlRef.current) URL.revokeObjectURL(prevUrlRef.current);
+      if (serverUrlRef.current) URL.revokeObjectURL(serverUrlRef.current);
     };
   }, []);
 
@@ -163,19 +240,52 @@ export function WelcomeImageEditor({
         <div className="mb-2 flex items-center gap-2">
           <Eye className="h-4 w-4 text-text-muted" />
           <Label className="text-sm font-semibold">{t("imageEditor.livePreview")}</Label>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => generatePreview()}
-            disabled={preview.isPending}
-            className="ms-auto"
-          >
-            <RefreshCw className={`me-1 h-3 w-3 ${preview.isPending ? "animate-spin" : ""}`} />
-            {t("common:actions.refresh")}
-          </Button>
+          <div className="flex items-center gap-1 ms-auto">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                const mode = previewMode === "client" ? "server" : "client";
+                setPreviewMode(mode);
+              }}
+              title={previewMode === "client"
+                ? t("imageEditor.switchToServer")
+                : t("imageEditor.switchToClient")}
+            >
+              {previewMode === "client" ? (
+                <Wifi className="h-3 w-3 text-success" />
+              ) : (
+                <WifiOff className="h-3 w-3 text-warning" />
+              )}
+              <span className="ms-1 text-xs">
+                {previewMode === "client" ? t("imageEditor.clientMode") : t("imageEditor.serverMode")}
+              </span>
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                if (prevUrlRef.current) {
+                  URL.revokeObjectURL(prevUrlRef.current);
+                  prevUrlRef.current = null;
+                }
+                if (serverUrlRef.current) {
+                  URL.revokeObjectURL(serverUrlRef.current);
+                  serverUrlRef.current = null;
+                }
+                setPreviewUrl(null);
+                setPreviewError(false);
+                setRefreshKey((k) => k + 1);
+              }}
+              disabled={isPending}
+            >
+              <RefreshCw className={`me-1 h-3 w-3 ${isPending ? "animate-spin" : ""}`} />
+              {t("common:actions.refresh")}
+            </Button>
+          </div>
         </div>
         <div
-          aria-busy={preview.isPending}
+          aria-busy={isPending}
           className="overflow-hidden rounded-lg border border-border/50 bg-background"
         >
           {previewUrl ? (
@@ -186,14 +296,19 @@ export function WelcomeImageEditor({
             />
           ) : (
             <div className="flex h-48 items-center justify-center text-sm text-text-muted">
-              {preview.isPending
+              {isPending
                 ? t("imageEditor.generatingPreview")
                 : t("imageEditor.previewPlaceholder")}
             </div>
           )}
         </div>
+        {previewError && (
+          <p className="mt-1 text-xs text-danger">
+            {t("imageEditor.previewFailedHint")}
+          </p>
+        )}
         <div aria-live="polite" className="sr-only">
-          {preview.isPending ? t("imageEditor.generatingPreview") : ""}
+          {isPending ? t("imageEditor.generatingPreview") : ""}
         </div>
       </div>
 

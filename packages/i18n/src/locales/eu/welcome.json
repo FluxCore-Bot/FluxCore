@@ -138,6 +138,11 @@
       "uploaded": "Background uploaded",
       "uploadFailed": "Failed to upload background",
       "previewFailed": "Failed to generate preview"
-    }
+    },
+    "previewFailedHint": "Preview failed to render. Try refreshing or switching modes.",
+    "clientMode": "Instant",
+    "serverMode": "Server",
+    "switchToServer": "Switch to server preview",
+    "switchToClient": "Switch to instant preview"
   }
 }

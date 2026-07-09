@@ -138,6 +138,11 @@
       "uploaded": "Hintergrund hochgeladen",
       "uploadFailed": "Hintergrund konnte nicht hochgeladen werden",
       "previewFailed": "Vorschau konnte nicht erstellt werden"
-    }
+    },
+    "previewFailedHint": "Vorschau konnte nicht gerendert werden. Aktualisiere oder wechsle den Modus.",
+    "clientMode": "Sofort",
+    "serverMode": "Server",
+    "switchToServer": "Zur Server-Vorschau wechseln",
+    "switchToClient": "Zur Sofort-Vorschau wechseln"
   }
 }

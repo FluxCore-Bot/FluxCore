@@ -5,5 +5,6 @@
   "empty": {
     "title": "Palvelimia ei löytynyt",
     "description": "Varmista, että botti on lisätty palvelimelle, jossa sinulla on Hallitse palvelinta -oikeus."
-  }
+  },
+  "refresh": "Refresh servers"
 }

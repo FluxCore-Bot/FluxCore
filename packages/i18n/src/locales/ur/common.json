@@ -141,5 +141,35 @@
   "language": {
     "searchPlaceholder": "زبانیں تلاش کریں...",
     "noResults": "کوئی زبان نہیں ملی"
+  },
+  "variableField": {
+    "insert": "متغیر داخل کریں",
+    "search": "متغیرات تلاش کریں…",
+    "noMatches": "کوئی مماثلت نہیں",
+    "unknown": "نامعلوم متغیر {{token}}",
+    "didYouMean": "کیا آپ کا مطلب {{suggestion}} تھا؟",
+    "preview": "پیش نظارہ",
+    "notAvailable": "{{token}} {{event}} کے لیے دستیاب نہیں"
+  },
+  "variables": {
+    "user": "صارف کا ذکر کرتا ہے",
+    "userTag": "صارف کا ٹیگ (مثلاً name#0001)",
+    "userName": "صارف کا صارف نام",
+    "userId": "صارف کی شناخت (ID)",
+    "userAvatar": "صارف کی اوتار کی URL",
+    "server": "سرور کا نام",
+    "serverId": "سرور کی شناخت (ID)",
+    "memberCount": "سرور کے اراکین کی تعداد",
+    "serverIcon": "سرور کے آئیکن کی URL",
+    "level": "وہ لیول جو رکن نے حاصل کیا",
+    "entries": {
+      "user": "اُس صارف کا ذکر کریں جس نے کمانڈ چلائی",
+      "username": "صارف کا ظاہر ہونے والا نام",
+      "userId": "صارف کی شناخت (ID)",
+      "server": "سرور کا نام",
+      "channel": "چینل کا ذکر",
+      "channelName": "چینل کا نام",
+      "memberCount": "سرور کے اراکین کی تعداد"
+    }
   }
 }

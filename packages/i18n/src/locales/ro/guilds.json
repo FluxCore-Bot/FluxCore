@@ -5,5 +5,6 @@
   "empty": {
     "title": "Nu s-au găsit servere",
     "description": "Asigură-te că botul este adăugat pe un server unde ai permisiunea de a Gestiona Serverul."
-  }
+  },
+  "refresh": "Refresh servers"
 }

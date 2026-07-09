@@ -141,5 +141,35 @@
   "language": {
     "searchPlaceholder": "Search languages...",
     "noResults": "No language found"
+  },
+  "variableField": {
+    "insert": "Insert variable",
+    "search": "Search variables…",
+    "noMatches": "No matches",
+    "unknown": "Unknown variable {{token}}",
+    "didYouMean": "did you mean {{suggestion}}?",
+    "preview": "Preview",
+    "notAvailable": "{{token}} isn't available for {{event}}"
+  },
+  "variables": {
+    "user": "Mentions the user",
+    "userTag": "The user's tag (e.g. name#0001)",
+    "userName": "The user's username",
+    "userId": "The user's ID",
+    "userAvatar": "The user's avatar URL",
+    "server": "The server name",
+    "serverId": "The server ID",
+    "memberCount": "The server's member count",
+    "serverIcon": "The server icon URL",
+    "level": "The level the member reached",
+    "entries": {
+      "user": "Mention the user who triggered the command",
+      "username": "Display name of the user",
+      "userId": "User ID",
+      "server": "Server name",
+      "channel": "Channel mention",
+      "channelName": "Channel name",
+      "memberCount": "Server member count"
+    }
   }
 }

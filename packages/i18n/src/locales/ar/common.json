@@ -141,5 +141,35 @@
   "language": {
     "searchPlaceholder": "ابحث عن اللغات...",
     "noResults": "لم يتم العثور على أي لغة"
+  },
+  "variableField": {
+    "insert": "إدراج متغيّر",
+    "search": "البحث عن المتغيّرات…",
+    "noMatches": "لا توجد نتائج",
+    "unknown": "متغيّر غير معروف {{token}}",
+    "didYouMean": "هل تقصد {{suggestion}}؟",
+    "preview": "معاينة",
+    "notAvailable": "{{token}} غير متاح لـ {{event}}"
+  },
+  "variables": {
+    "user": "يُشير إلى المستخدم",
+    "userTag": "وسم المستخدم (مثال: name#0001)",
+    "userName": "اسم المستخدم",
+    "userId": "معرّف المستخدم",
+    "userAvatar": "رابط الصورة الرمزية للمستخدم",
+    "server": "اسم الخادم",
+    "serverId": "معرّف الخادم",
+    "memberCount": "عدد أعضاء الخادم",
+    "serverIcon": "رابط أيقونة الخادم",
+    "level": "المستوى الذي وصل إليه العضو",
+    "entries": {
+      "user": "يُشير إلى المستخدم الذي شغّل الأمر",
+      "username": "الاسم المعروض للمستخدم",
+      "userId": "معرّف المستخدم",
+      "server": "اسم الخادم",
+      "channel": "الإشارة إلى القناة",
+      "channelName": "اسم القناة",
+      "memberCount": "عدد أعضاء الخادم"
+    }
   }
 }
