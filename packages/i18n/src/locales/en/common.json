@@ -87,6 +87,8 @@
     "selectChannel": "Select channel...",
     "selectRole": "Select role...",
     "select": "Select...",
+    "search": "Search...",
+    "noResults": "No results",
     "saving": "Saving...",
     "saveSettings": "Save Settings",
     "previous": "Previous",

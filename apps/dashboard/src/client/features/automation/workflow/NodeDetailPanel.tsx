@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
 import { useChannels } from "../../../shared/hooks/useChannels";
@@ -12,13 +12,9 @@ import { Badge } from "../../../shared/ui/badge";
 import { Icon } from "../../../shared/components/Icon";
 import { ScrollArea } from "../../../shared/ui/scroll-area";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../../shared/ui/tabs";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../../../shared/ui/select";
+import { SearchableSelect } from "../../../shared/ui/searchable-select";
+import { EVENT_ICONS } from "../lib/rule-icons";
+import { buildActionTypeOptions } from "../lib/action-options";
 import { ConditionsEditor } from "../components/ConditionsEditor";
 import type {
   ActionConditions,
@@ -153,6 +149,17 @@ function TriggerPanel({
   const { t } = useTranslation(["rules", "common"]);
   const variables = eventType ? (constants.eventTypeVariables[eventType] ?? []) : [];
 
+  const eventOptions = useMemo(
+    () =>
+      Object.entries(constants.eventTypes).map(([value, info]) => ({
+        value,
+        label: info.label,
+        keywords: info.description,
+        icon: <Icon name={EVENT_ICONS[value] ?? "bolt"} size={16} />,
+      })),
+    [constants.eventTypes],
+  );
+
   const conditionCount =
     (conditions.channelIds?.length ?? 0) +
     (conditions.roleIds?.length ?? 0) +
@@ -195,18 +202,14 @@ function TriggerPanel({
               {t("panel.eventType")} <span aria-hidden="true" className="text-danger">*</span>
               <span className="sr-only"> ({t("common:labels.required")})</span>
             </Label>
-            <Select value={eventType || undefined} onValueChange={onEventTypeChange}>
-              <SelectTrigger>
-                <SelectValue placeholder={t("panel.selectEvent")} />
-              </SelectTrigger>
-              <SelectContent>
-                {Object.entries(constants.eventTypes).map(([key, info]) => (
-                  <SelectItem key={key} value={key}>
-                    {info.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <SearchableSelect
+              options={eventOptions}
+              value={eventType || null}
+              onValueChange={(v) => v && onEventTypeChange(v)}
+              placeholder={t("panel.selectEvent")}
+              searchPlaceholder={t("panel.searchEvent")}
+              noResultsLabel={t("panel.noEventResults")}
+            />
           </div>
           {eventType && constants.eventTypes[eventType] && (
             <div className="rounded-lg bg-surface-lowest p-3">
@@ -287,18 +290,14 @@ function ActionPanel({
               {t("panel.actionType")} <span aria-hidden="true" className="text-danger">*</span>
               <span className="sr-only"> ({t("common:labels.required")})</span>
             </Label>
-            <Select value={action.type || undefined} onValueChange={handleTypeChange}>
-              <SelectTrigger>
-                <SelectValue placeholder={t("panel.selectAction")} />
-              </SelectTrigger>
-              <SelectContent>
-                {Object.entries(constants.actionTypes).map(([key, info]) => (
-                  <SelectItem key={key} value={key}>
-                    {info.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <SearchableSelect
+              options={buildActionTypeOptions(constants.actionTypes)}
+              value={action.type || null}
+              onValueChange={(v) => v && handleTypeChange(v)}
+              placeholder={t("panel.selectAction")}
+              searchPlaceholder={t("panel.search")}
+              noResultsLabel={t("panel.noResults")}
+            />
           </div>
 
           {action.type && fields.length > 0 && (
@@ -452,18 +451,14 @@ function StepPanel({
             {t("panel.actionType")} <span aria-hidden="true" className="text-danger">*</span>
               <span className="sr-only"> ({t("common:labels.required")})</span>
           </Label>
-          <Select value={step.action.type || undefined} onValueChange={handleTypeChange}>
-            <SelectTrigger>
-              <SelectValue placeholder={t("panel.selectAction")} />
-            </SelectTrigger>
-            <SelectContent>
-              {Object.entries(constants.actionTypes).map(([key, info]) => (
-                <SelectItem key={key} value={key}>
-                  {info.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <SearchableSelect
+            options={buildActionTypeOptions(constants.actionTypes)}
+            value={step.action.type || null}
+            onValueChange={(v) => v && handleTypeChange(v)}
+            placeholder={t("panel.selectAction")}
+            searchPlaceholder={t("panel.search")}
+            noResultsLabel={t("panel.noResults")}
+          />
         </div>
 
         {step.action.type && fields.length > 0 && (
@@ -504,34 +499,26 @@ function StepPanel({
       <div className="space-y-4">
         <div>
           <Label>{t("panel.field")}</Label>
-          <Select value={step.condition.field} onValueChange={(v) => updateCondition({ field: v as StepConditionConfig["field"] })}>
-            <SelectTrigger>
-              <SelectValue placeholder={t("panel.selectField")} />
-            </SelectTrigger>
-            <SelectContent>
-              {CONDITION_FIELDS.map((f) => (
-                <SelectItem key={f.value} value={f.value}>
-                  {t(f.labelKey)}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <SearchableSelect
+            options={CONDITION_FIELDS.map((f) => ({ value: f.value, label: t(f.labelKey) }))}
+            value={step.condition.field || null}
+            onValueChange={(v) => v && updateCondition({ field: v as StepConditionConfig["field"] })}
+            placeholder={t("panel.selectField")}
+            searchPlaceholder={t("panel.search")}
+            noResultsLabel={t("panel.noResults")}
+          />
         </div>
 
         <div>
           <Label>{t("panel.operator")}</Label>
-          <Select value={step.condition.operator} onValueChange={(v) => updateCondition({ operator: v as StepConditionConfig["operator"] })}>
-            <SelectTrigger>
-              <SelectValue placeholder={t("panel.selectOperator")} />
-            </SelectTrigger>
-            <SelectContent>
-              {CONDITION_OPERATORS.map((o) => (
-                <SelectItem key={o.value} value={o.value}>
-                  {t(o.labelKey)}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <SearchableSelect
+            options={CONDITION_OPERATORS.map((o) => ({ value: o.value, label: t(o.labelKey) }))}
+            value={step.condition.operator || null}
+            onValueChange={(v) => v && updateCondition({ operator: v as StepConditionConfig["operator"] })}
+            placeholder={t("panel.selectOperator")}
+            searchPlaceholder={t("panel.search")}
+            noResultsLabel={t("panel.noResults")}
+          />
         </div>
 
         <div>
