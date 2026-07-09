@@ -5,5 +5,6 @@
   "empty": {
     "title": "Tidak ada server ditemukan",
     "description": "Pastikan bot telah ditambahkan ke server di mana Anda memiliki izin Kelola Server."
-  }
+  },
+  "refresh": "Refresh servers"
 }

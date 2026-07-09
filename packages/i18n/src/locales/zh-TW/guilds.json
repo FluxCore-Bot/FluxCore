@@ -5,5 +5,6 @@
   "empty": {
     "title": "找不到伺服器",
     "description": "請確認機器人已新增至伺服器，且您擁有管理伺服器權限。"
-  }
+  },
+  "refresh": "Refresh servers"
 }

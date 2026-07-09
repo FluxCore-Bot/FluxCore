@@ -141,5 +141,35 @@
   "language": {
     "searchPlaceholder": "搜索语言……",
     "noResults": "未找到语言"
+  },
+  "variableField": {
+    "insert": "插入变量",
+    "search": "搜索变量…",
+    "noMatches": "无匹配项",
+    "unknown": "未知变量 {{token}}",
+    "didYouMean": "你是否想输入 {{suggestion}}？",
+    "preview": "预览",
+    "notAvailable": "{{token}} 不适用于 {{event}}"
+  },
+  "variables": {
+    "user": "提及该用户",
+    "userTag": "用户的标签（例如 name#0001）",
+    "userName": "用户的用户名",
+    "userId": "用户的 ID",
+    "userAvatar": "用户的头像 URL",
+    "server": "服务器名称",
+    "serverId": "服务器 ID",
+    "memberCount": "服务器的成员数量",
+    "serverIcon": "服务器的图标 URL",
+    "level": "成员达到的等级",
+    "entries": {
+      "user": "提及触发该命令的用户",
+      "username": "用户的显示名称",
+      "userId": "用户 ID",
+      "server": "服务器名称",
+      "channel": "频道提及",
+      "channelName": "频道名称",
+      "memberCount": "服务器成员数量"
+    }
   }
 }

@@ -138,6 +138,11 @@
       "uploaded": "Fondo subido",
       "uploadFailed": "No se pudo subir el fondo",
       "previewFailed": "No se pudo generar la vista previa"
-    }
+    },
+    "previewFailedHint": "No se pudo generar la vista previa. Prueba a actualizar o cambiar de modo.",
+    "clientMode": "Instantánea",
+    "serverMode": "Servidor",
+    "switchToServer": "Cambiar a vista previa del servidor",
+    "switchToClient": "Cambiar a vista previa instantánea"
   }
 }

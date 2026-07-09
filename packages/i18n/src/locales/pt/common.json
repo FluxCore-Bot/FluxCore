@@ -141,5 +141,35 @@
   "language": {
     "searchPlaceholder": "Buscar idiomas...",
     "noResults": "Nenhum idioma encontrado"
+  },
+  "variableField": {
+    "insert": "Inserir variável",
+    "search": "Pesquisar variáveis…",
+    "noMatches": "Nenhuma correspondência",
+    "unknown": "Variável desconhecida {{token}}",
+    "didYouMean": "você quis dizer {{suggestion}}?",
+    "preview": "Pré-visualização",
+    "notAvailable": "{{token}} não está disponível para {{event}}"
+  },
+  "variables": {
+    "user": "Menciona o usuário",
+    "userTag": "A tag do usuário (ex.: name#0001)",
+    "userName": "O nome de usuário",
+    "userId": "O ID do usuário",
+    "userAvatar": "A URL do avatar do usuário",
+    "server": "O nome do servidor",
+    "serverId": "O ID do servidor",
+    "memberCount": "A contagem de membros do servidor",
+    "serverIcon": "A URL do ícone do servidor",
+    "level": "O nível que o membro alcançou",
+    "entries": {
+      "user": "Menciona o usuário que acionou o comando",
+      "username": "Nome de exibição do usuário",
+      "userId": "ID do usuário",
+      "server": "Nome do servidor",
+      "channel": "Menção do canal",
+      "channelName": "Nome do canal",
+      "memberCount": "Contagem de membros do servidor"
+    }
   }
 }

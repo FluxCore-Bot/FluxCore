@@ -64,6 +64,11 @@
     "previewAlt": "{{type}} image preview",
     "generatingPreview": "Generating preview...",
     "previewPlaceholder": "Preview will appear here",
+    "previewFailedHint": "Preview failed to render. Try refreshing or switching modes.",
+    "clientMode": "Instant",
+    "serverMode": "Server",
+    "switchToServer": "Switch to server preview",
+    "switchToClient": "Switch to instant preview",
     "template": "Template",
     "background": {
       "title": "Background",

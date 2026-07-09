@@ -138,6 +138,11 @@
       "uploaded": "تم رفع الخلفية",
       "uploadFailed": "فشل رفع الخلفية",
       "previewFailed": "فشل إنشاء المعاينة"
-    }
+    },
+    "previewFailedHint": "فشل عرض المعاينة. حاول التحديث أو تبديل الوضع.",
+    "clientMode": "فورية",
+    "serverMode": "الخادم",
+    "switchToServer": "التبديل إلى معاينة الخادم",
+    "switchToClient": "التبديل إلى المعاينة الفورية"
   }
 }

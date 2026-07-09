@@ -141,5 +141,35 @@
   "language": {
     "searchPlaceholder": "Rechercher des langues...",
     "noResults": "Aucune langue trouvée"
+  },
+  "variableField": {
+    "insert": "Insérer une variable",
+    "search": "Rechercher des variables…",
+    "noMatches": "Aucun résultat",
+    "unknown": "Variable inconnue {{token}}",
+    "didYouMean": "vouliez-vous dire {{suggestion}} ?",
+    "preview": "Aperçu",
+    "notAvailable": "{{token}} n'est pas disponible pour {{event}}"
+  },
+  "variables": {
+    "user": "Mentionne l'utilisateur",
+    "userTag": "Le tag de l'utilisateur (p. ex. name#0001)",
+    "userName": "Le nom d'utilisateur",
+    "userId": "L'identifiant de l'utilisateur",
+    "userAvatar": "L'URL de l'avatar de l'utilisateur",
+    "server": "Le nom du serveur",
+    "serverId": "L'identifiant du serveur",
+    "memberCount": "Le nombre de membres du serveur",
+    "serverIcon": "L'URL de l'icône du serveur",
+    "level": "Le niveau atteint par le membre",
+    "entries": {
+      "user": "Mentionne l'utilisateur qui a exécuté la commande",
+      "username": "Nom d'affichage de l'utilisateur",
+      "userId": "Identifiant de l'utilisateur",
+      "server": "Nom du serveur",
+      "channel": "Mention du salon",
+      "channelName": "Nom du salon",
+      "memberCount": "Nombre de membres du serveur"
+    }
   }
 }

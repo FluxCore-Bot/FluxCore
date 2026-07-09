@@ -5,5 +5,6 @@
   "empty": {
     "title": "Δεν βρέθηκαν servers",
     "description": "Βεβαιωθείτε ότι το bot έχει προστεθεί σε έναν server όπου έχετε δικαίωμα διαχείρισης server."
-  }
+  },
+  "refresh": "Refresh servers"
 }

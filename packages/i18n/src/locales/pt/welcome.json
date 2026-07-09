@@ -138,6 +138,11 @@
       "uploaded": "Plano de fundo enviado",
       "uploadFailed": "Falha ao enviar o plano de fundo",
       "previewFailed": "Falha ao gerar a prévia"
-    }
+    },
+    "previewFailedHint": "Falha ao gerar a pré-visualização. Tente atualizar ou trocar de modo.",
+    "clientMode": "Instantânea",
+    "serverMode": "Servidor",
+    "switchToServer": "Mudar para pré-visualização do servidor",
+    "switchToClient": "Mudar para pré-visualização instantânea"
   }
 }

@@ -138,6 +138,11 @@
       "uploaded": "Arrière-plan téléversé",
       "uploadFailed": "Échec du téléversement de l'arrière-plan",
       "previewFailed": "Échec de la génération de l'aperçu"
-    }
+    },
+    "previewFailedHint": "Échec du rendu de l'aperçu. Essayez d'actualiser ou de changer de mode.",
+    "clientMode": "Instantané",
+    "serverMode": "Serveur",
+    "switchToServer": "Passer à l'aperçu serveur",
+    "switchToClient": "Passer à l'aperçu instantané"
   }
 }

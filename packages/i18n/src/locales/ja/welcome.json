@@ -138,6 +138,11 @@
       "uploaded": "背景をアップロードしました",
       "uploadFailed": "背景のアップロードに失敗しました",
       "previewFailed": "プレビューの生成に失敗しました"
-    }
+    },
+    "previewFailedHint": "プレビューの生成に失敗しました。更新するかモードを切り替えてください。",
+    "clientMode": "即時",
+    "serverMode": "サーバー",
+    "switchToServer": "サーバープレビューに切り替え",
+    "switchToClient": "即時プレビューに切り替え"
   }
 }

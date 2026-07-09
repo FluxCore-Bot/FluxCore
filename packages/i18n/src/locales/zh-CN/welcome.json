@@ -138,6 +138,11 @@
       "uploaded": "背景已上传",
       "uploadFailed": "上传背景失败",
       "previewFailed": "生成预览失败"
-    }
+    },
+    "previewFailedHint": "预览渲染失败。请尝试刷新或切换模式。",
+    "clientMode": "即时",
+    "serverMode": "服务器",
+    "switchToServer": "切换到服务器预览",
+    "switchToClient": "切换到即时预览"
   }
 }

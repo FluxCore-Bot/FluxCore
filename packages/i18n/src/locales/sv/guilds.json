@@ -5,5 +5,6 @@
   "empty": {
     "title": "Inga servrar hittades",
     "description": "Se till att boten är tillagd på en server där du har behörigheten Hantera server."
-  }
+  },
+  "refresh": "Refresh servers"
 }

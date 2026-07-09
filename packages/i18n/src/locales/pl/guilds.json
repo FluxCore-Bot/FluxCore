@@ -5,5 +5,6 @@
   "empty": {
     "title": "Nie znaleziono serwerów",
     "description": "Upewnij się, że bot jest dodany do serwera, na którym masz uprawnienie Zarządzanie serwerem."
-  }
+  },
+  "refresh": "Refresh servers"
 }
