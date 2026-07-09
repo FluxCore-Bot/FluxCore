@@ -727,3 +727,379 @@ git commit -m "feat(rules): searchable event-type picker in the trigger panel"
 **Type consistency:** `SearchableSelectOption`/`SearchableSelectProps` defined in Task 1 are used verbatim in Tasks 2–3. `value: string | null` flows consistently; Task 3 adapts `eventType` (`string`) via `eventType || null` and `(v) => v && onEventTypeChange(v)`. `onValueChange` signature identical everywhere. ✅
 
 **Placeholder scan:** No TBD/TODO; every code step shows complete code. ✅
+
+---
+
+# ADDENDUM — Extend searchable picker to the remaining rule-builder selects
+
+**Added 2026-07-09** after the event picker (Tasks 1–3) shipped. Scope confirmed by the user: convert **action type (×2)**, **condition field + operator**, and **action-field channel + role** to `SearchableSelect`. The generic `field.options` enum select is intentionally left as a plain `<Select>`.
+
+## Addendum Global Constraints (in addition to the ones above)
+- Reuse the existing `SearchableSelect` (Task 1); do not fork it.
+- Preserve each picker's current behavior and a11y: labels, required markers, and (for channel/role fields) the `id`/`aria-required` association between `<Label htmlFor>` and the control.
+- Do NOT add `useMemo` inside `StepPanel`'s `if (step.type === "action" | "condition")` branches — those are conditional code paths and a hook there violates the Rules of Hooks. Map options **inline in the `options` prop** instead. (`ActionPanel` is unbranched, but for uniformity map inline there too.)
+- i18n keys go in BOTH `src` and `dist` locale files (dist is a gitignored build artifact but the running app serves it). NodeDetailPanel pickers use the `rules` namespace → `packages/i18n/{src,dist}/locales/en/rules.json`. ActionFields uses the `common` namespace → `packages/i18n/{src,dist}/locales/en/common.json`.
+- Docker test/typecheck commands (NOT `pnpm --filter`):
+  - Test file: `docker compose --profile bot run --rm --no-deps bot sh -c "pnpm install --no-frozen-lockfile && cd apps/dashboard && node_modules/.bin/vitest run <FILE>"`
+  - Full client regression: same but `node_modules/.bin/vitest run tests/client`
+  - Typecheck: `docker compose --profile bot run --rm --no-deps bot sh -c "pnpm install --no-frozen-lockfile && cd apps/dashboard && node_modules/.bin/tsc -p tsconfig.client.json --noEmit"`
+
+---
+
+## Task 4: Action-type pickers (×2) → SearchableSelect + shared options helper
+
+**Files:**
+- Create: `apps/dashboard/src/client/features/automation/lib/action-options.tsx`
+- Test: `apps/dashboard/tests/client/features/automation/action-options.test.tsx`
+- Modify: `apps/dashboard/src/client/features/automation/workflow/NodeDetailPanel.tsx` (ActionPanel ~L299-310, StepPanel action branch ~L464-475; add import)
+- Modify: `packages/i18n/src/locales/en/rules.json` + `packages/i18n/dist/locales/en/rules.json`
+
+**Interfaces:**
+- Consumes: `SearchableSelectOption` from `../../../shared/ui/searchable-select`; `Icon` from `../../../shared/components/Icon`; `ACTION_ICONS` from `./rule-icons`; `Constants` from `../../../shared/lib/schemas`.
+- Produces: `function buildActionTypeOptions(actionTypes: Constants["actionTypes"]): SearchableSelectOption[]`.
+
+- [ ] **Step 1: Write the failing test**
+
+Create `apps/dashboard/tests/client/features/automation/action-options.test.tsx`:
+
+```tsx
+// @vitest-environment jsdom
+import { describe, it, expect } from "vitest";
+import { isValidElement, type ReactElement } from "react";
+import { buildActionTypeOptions } from "../../../../../src/client/features/automation/lib/action-options";
+
+const actionTypes = {
+  sendMessage: { label: "Send Message", description: "Send a message to a channel" },
+  mysteryAction: { label: "Mystery", description: "Unknown action" },
+};
+
+describe("buildActionTypeOptions", () => {
+  it("maps value, label, and description into keywords", () => {
+    const opts = buildActionTypeOptions(actionTypes);
+    expect(opts).toHaveLength(2);
+    expect(opts[0]).toMatchObject({
+      value: "sendMessage",
+      label: "Send Message",
+      keywords: "Send a message to a channel",
+    });
+  });
+
+  it("uses ACTION_ICONS for known types and falls back to 'bolt' for unknown", () => {
+    const opts = buildActionTypeOptions(actionTypes);
+    const send = opts.find((o) => o.value === "sendMessage")!;
+    const mystery = opts.find((o) => o.value === "mysteryAction")!;
+    expect(isValidElement(send.icon)).toBe(true);
+    expect((send.icon as ReactElement<{ name: string }>).props.name).toBe("chat");
+    expect((mystery.icon as ReactElement<{ name: string }>).props.name).toBe("bolt");
+  });
+});
+```
+
+- [ ] **Step 2: Run test to verify it fails**
+
+Run (Docker): `... vitest run tests/client/features/automation/action-options.test.tsx`
+Expected: FAIL — cannot resolve `action-options`.
+
+- [ ] **Step 3: Write the helper**
+
+Create `apps/dashboard/src/client/features/automation/lib/action-options.tsx`:
+
+```tsx
+import { Icon } from "../../../shared/components/Icon";
+import type { SearchableSelectOption } from "../../../shared/ui/searchable-select";
+import type { Constants } from "../../../shared/lib/schemas";
+import { ACTION_ICONS } from "./rule-icons";
+
+/** Map the action-type constants into SearchableSelect options (icon + description as search keywords). */
+export function buildActionTypeOptions(
+  actionTypes: Constants["actionTypes"],
+): SearchableSelectOption[] {
+  return Object.entries(actionTypes).map(([value, info]) => ({
+    value,
+    label: info.label,
+    keywords: info.description,
+    icon: <Icon name={ACTION_ICONS[value] ?? "bolt"} size={16} />,
+  }));
+}
+```
+
+- [ ] **Step 4: Run test to verify it passes**
+
+Run (Docker): `... vitest run tests/client/features/automation/action-options.test.tsx`
+Expected: PASS (2 tests).
+
+- [ ] **Step 5: Add i18n keys (both src + dist)**
+
+In BOTH `packages/i18n/src/locales/en/rules.json` and `packages/i18n/dist/locales/en/rules.json`, inside the `"panel"` object, add after the `"noEventResults"` line:
+
+```json
+    "noEventResults": "No events found",
+    "search": "Search...",
+    "noResults": "No results",
+```
+
+Verify: `grep -c '"search"\|"noResults"' packages/i18n/dist/locales/en/rules.json` → expect `2`.
+
+- [ ] **Step 6: Wire both action-type pickers**
+
+In `NodeDetailPanel.tsx`, add the import next to the existing `EVENT_ICONS`/rule-icons import block:
+
+```tsx
+import { buildActionTypeOptions } from "../lib/action-options";
+```
+
+In **ActionPanel**, replace the action-type `<Select>` block (the one with `placeholder={t("panel.selectAction")}` and `Object.entries(constants.actionTypes)`):
+
+```tsx
+            <SearchableSelect
+              options={buildActionTypeOptions(constants.actionTypes)}
+              value={action.type || null}
+              onValueChange={(v) => v && handleTypeChange(v)}
+              placeholder={t("panel.selectAction")}
+              searchPlaceholder={t("panel.search")}
+              noResultsLabel={t("panel.noResults")}
+            />
+```
+
+In **StepPanel** (the `if (step.type === "action")` branch), replace its action-type `<Select>` block identically but bound to that branch's `handleTypeChange`:
+
+```tsx
+            <SearchableSelect
+              options={buildActionTypeOptions(constants.actionTypes)}
+              value={step.action.type || null}
+              onValueChange={(v) => v && handleTypeChange(v)}
+              placeholder={t("panel.selectAction")}
+              searchPlaceholder={t("panel.search")}
+              noResultsLabel={t("panel.noResults")}
+            />
+```
+
+(Both `handleTypeChange` handlers already accept `(newType: string)`.) Keep the `Select`/`SelectItem`/etc. import — StepPanel's condition branch and ActionFields' generic enum still use it (until Task 5).
+
+- [ ] **Step 7: Typecheck + regression (Docker)**
+
+Run typecheck → clean. Run `... vitest run tests/client` → all green (adds action-options tests; existing 57 still pass).
+
+- [ ] **Step 8: Commit**
+
+```bash
+git add apps/dashboard/src/client/features/automation/lib/action-options.tsx \
+        apps/dashboard/tests/client/features/automation/action-options.test.tsx \
+        apps/dashboard/src/client/features/automation/workflow/NodeDetailPanel.tsx \
+        packages/i18n/src/locales/en/rules.json
+git commit -m "feat(rules): searchable action-type pickers"
+```
+(`dist` locale is gitignored — do not add it; the key edit there is only for the running app.)
+
+---
+
+## Task 5: Condition field + operator pickers → SearchableSelect
+
+**Files:**
+- Modify: `apps/dashboard/src/client/features/automation/workflow/NodeDetailPanel.tsx` (StepPanel `if (step.type === "condition")` branch — field ~L516-527, operator ~L532-543)
+
+**Interfaces:**
+- Consumes: `SearchableSelect` (already imported); `CONDITION_FIELDS`, `CONDITION_OPERATORS` (module constants already in this file); `t` from the StepPanel `useTranslation(["rules","common"])`.
+- Produces: none (internal UI change). Reuses `panel.search` / `panel.noResults` keys added in Task 4 (no new i18n).
+
+- [ ] **Step 1: Replace the field picker**
+
+In StepPanel's condition branch, replace the field `<Select>` block (`placeholder={t("panel.selectField")}`, mapping `CONDITION_FIELDS`) with:
+
+```tsx
+          <SearchableSelect
+            options={CONDITION_FIELDS.map((f) => ({ value: f.value, label: t(f.labelKey) }))}
+            value={step.condition.field || null}
+            onValueChange={(v) => v && updateCondition({ field: v as StepConditionConfig["field"] })}
+            placeholder={t("panel.selectField")}
+            searchPlaceholder={t("panel.search")}
+            noResultsLabel={t("panel.noResults")}
+          />
+```
+
+- [ ] **Step 2: Replace the operator picker**
+
+Replace the operator `<Select>` block (`placeholder={t("panel.selectOperator")}`, mapping `CONDITION_OPERATORS`) with:
+
+```tsx
+          <SearchableSelect
+            options={CONDITION_OPERATORS.map((o) => ({ value: o.value, label: t(o.labelKey) }))}
+            value={step.condition.operator || null}
+            onValueChange={(v) => v && updateCondition({ operator: v as StepConditionConfig["operator"] })}
+            placeholder={t("panel.selectOperator")}
+            searchPlaceholder={t("panel.search")}
+            noResultsLabel={t("panel.noResults")}
+          />
+```
+
+(Options are mapped inline — no `useMemo`, because these render inside a conditional branch. The lists are 8 and 12 items; recomputing per render is negligible.)
+
+- [ ] **Step 3: Typecheck + regression (Docker)**
+
+Typecheck → clean. `... vitest run tests/client` → all green.
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add apps/dashboard/src/client/features/automation/workflow/NodeDetailPanel.tsx
+git commit -m "feat(rules): searchable condition field & operator pickers"
+```
+
+---
+
+## Task 6: Extend `SearchableSelect` (id/aria-required) + ActionFields channel & role pickers
+
+**Files:**
+- Modify: `apps/dashboard/src/client/shared/ui/searchable-select.tsx` (add `id` + `required` props, forward to trigger)
+- Modify: `apps/dashboard/tests/client/shared/ui/searchable-select.test.tsx` (one test for id/aria-required forwarding)
+- Modify: `apps/dashboard/src/client/features/automation/components/ActionFields.tsx` (channel field ~L77-102, role field ~L104-120; add SearchableSelect import)
+- Modify: `packages/i18n/src/locales/en/common.json` + `packages/i18n/dist/locales/en/common.json`
+
+**Interfaces:**
+- Adds to `SearchableSelectProps`: `id?: string` and `required?: boolean`. The trigger `<button>` gets `id={id}` and `aria-required={required || undefined}`. No behavior change for existing callers (both optional/undefined).
+
+- [ ] **Step 1: Extend SearchableSelect — add the failing test first**
+
+Append to `apps/dashboard/tests/client/shared/ui/searchable-select.test.tsx` (inside the existing `describe`):
+
+```tsx
+  it("forwards id and aria-required to the trigger for label association", () => {
+    render(
+      <SearchableSelect
+        options={options}
+        value={null}
+        onValueChange={vi.fn()}
+        placeholder="Select event"
+        id="my-field"
+        required
+      />,
+    );
+    const trigger = screen.getByRole("button");
+    expect(trigger).toHaveAttribute("id", "my-field");
+    expect(trigger).toHaveAttribute("aria-required", "true");
+  });
+```
+
+- [ ] **Step 2: Run test to verify it fails**
+
+Run (Docker): `... vitest run tests/client/shared/ui/searchable-select.test.tsx`
+Expected: FAIL — trigger has no `id`/`aria-required` (the new props don't exist yet).
+
+- [ ] **Step 3: Add the props and forward them**
+
+In `apps/dashboard/src/client/shared/ui/searchable-select.tsx`, add to `SearchableSelectProps`:
+
+```tsx
+  id?: string;
+  required?: boolean;
+```
+
+Destructure them in the component signature (alongside the other props): add `id,` and `required,`. Then on the main trigger `<button>` (the one inside `PopoverTrigger asChild`), add the two attributes:
+
+```tsx
+        <button
+          type="button"
+          id={id}
+          aria-required={required || undefined}
+          disabled={disabled}
+          className={cn(
+```
+
+(Leave the loading/error branches unchanged — ActionFields never passes `loading`/`error`, so the association always lands on the real trigger.)
+
+- [ ] **Step 4: Run test to verify it passes**
+
+Run (Docker): `... vitest run tests/client/shared/ui/searchable-select.test.tsx`
+Expected: PASS (10 tests — the 9 existing + the new one).
+
+- [ ] **Step 5: Add i18n keys (both src + dist)**
+
+In BOTH `packages/i18n/src/locales/en/common.json` and `packages/i18n/dist/locales/en/common.json`, inside the `"form"` object (the one holding `selectChannel`/`selectRole`/`select`), add:
+
+```json
+    "search": "Search...",
+    "noResults": "No results",
+```
+
+Verify: `grep -c '"search"\|"noResults"' packages/i18n/dist/locales/en/common.json` → expect at least `2` (may be higher if the strings appear elsewhere in the file; confirm the `form` object contains them by reading it).
+
+- [ ] **Step 6: Convert the channel & role fields**
+
+In `apps/dashboard/src/client/features/automation/components/ActionFields.tsx`, add the import near the top:
+
+```tsx
+import { SearchableSelect } from "../../../shared/ui/searchable-select";
+```
+
+Replace the `field.type === "channel"` `<Select>...</Select>` block with:
+
+```tsx
+            {field.type === "channel" && (
+              <SearchableSelect
+                id={fieldId}
+                required={field.required}
+                value={String(value) || null}
+                onValueChange={(v) => v && onChange(field.key, v)}
+                placeholder={t("form.selectChannel")}
+                searchPlaceholder={t("form.search")}
+                noResultsLabel={t("form.noResults")}
+                options={channels
+                  .filter((c) => c.type === 0 || c.type === 2)
+                  .map((c) => ({
+                    value: c.id,
+                    label: c.name,
+                    icon: (
+                      <Icon
+                        name={c.type === 2 ? "volume_up" : "hash"}
+                        size={14}
+                        className="text-text-muted"
+                      />
+                    ),
+                  }))}
+              />
+            )}
+```
+
+Replace the `field.type === "role"` `<Select>...</Select>` block with:
+
+```tsx
+            {field.type === "role" && (
+              <SearchableSelect
+                id={fieldId}
+                required={field.required}
+                value={String(value) || null}
+                onValueChange={(v) => v && onChange(field.key, v)}
+                placeholder={t("form.selectRole")}
+                searchPlaceholder={t("form.search")}
+                noResultsLabel={t("form.noResults")}
+                options={roles.map((r) => ({ value: r.id, label: r.name }))}
+              />
+            )}
+```
+
+Keep the existing `Select`/`SelectContent`/`SelectItem`/`SelectTrigger`/`SelectValue` import — the generic `field.type === "select"` enum block still uses it. (`Icon` is already imported.)
+
+- [ ] **Step 7: Typecheck + regression (Docker)**
+
+Typecheck → clean. `... vitest run tests/client` → all green (searchable-select now 10 tests).
+
+- [ ] **Step 8: Commit**
+
+```bash
+git add apps/dashboard/src/client/shared/ui/searchable-select.tsx \
+        apps/dashboard/tests/client/shared/ui/searchable-select.test.tsx \
+        apps/dashboard/src/client/features/automation/components/ActionFields.tsx \
+        packages/i18n/src/locales/en/common.json
+git commit -m "feat(rules): searchable channel & role action-field pickers"
+```
+
+---
+
+## Addendum Self-Review
+
+**Scope coverage:** action type ×2 → Task 4; condition field + operator → Task 5; action-field channel + role → Task 6. Generic enum select intentionally excluded. ✅
+**A11y:** channel/role `id`+`aria-required` preserved via the SearchableSelect extension (Task 6). ✅
+**Rules of Hooks:** no `useMemo` inside StepPanel conditional branches — options mapped inline. ✅
+**i18n:** `panel.search`/`panel.noResults` (rules) + `form.search`/`form.noResults` (common), both src+dist; dist gitignored, not committed. ✅
+**Type consistency:** `buildActionTypeOptions` returns `SearchableSelectOption[]`; all `value` bindings use `X || null` and `(v) => v && handler(v)`, matching the established pattern. ✅
+**Placeholder scan:** complete code in every step, no TBD. ✅
