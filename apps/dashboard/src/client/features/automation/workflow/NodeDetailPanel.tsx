@@ -12,13 +12,6 @@ import { Badge } from "../../../shared/ui/badge";
 import { Icon } from "../../../shared/components/Icon";
 import { ScrollArea } from "../../../shared/ui/scroll-area";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../../shared/ui/tabs";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../../../shared/ui/select";
 import { SearchableSelect } from "../../../shared/ui/searchable-select";
 import { EVENT_ICONS } from "../lib/rule-icons";
 import { buildActionTypeOptions } from "../lib/action-options";
@@ -506,34 +499,26 @@ function StepPanel({
       <div className="space-y-4">
         <div>
           <Label>{t("panel.field")}</Label>
-          <Select value={step.condition.field} onValueChange={(v) => updateCondition({ field: v as StepConditionConfig["field"] })}>
-            <SelectTrigger>
-              <SelectValue placeholder={t("panel.selectField")} />
-            </SelectTrigger>
-            <SelectContent>
-              {CONDITION_FIELDS.map((f) => (
-                <SelectItem key={f.value} value={f.value}>
-                  {t(f.labelKey)}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <SearchableSelect
+            options={CONDITION_FIELDS.map((f) => ({ value: f.value, label: t(f.labelKey) }))}
+            value={step.condition.field || null}
+            onValueChange={(v) => v && updateCondition({ field: v as StepConditionConfig["field"] })}
+            placeholder={t("panel.selectField")}
+            searchPlaceholder={t("panel.search")}
+            noResultsLabel={t("panel.noResults")}
+          />
         </div>
 
         <div>
           <Label>{t("panel.operator")}</Label>
-          <Select value={step.condition.operator} onValueChange={(v) => updateCondition({ operator: v as StepConditionConfig["operator"] })}>
-            <SelectTrigger>
-              <SelectValue placeholder={t("panel.selectOperator")} />
-            </SelectTrigger>
-            <SelectContent>
-              {CONDITION_OPERATORS.map((o) => (
-                <SelectItem key={o.value} value={o.value}>
-                  {t(o.labelKey)}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <SearchableSelect
+            options={CONDITION_OPERATORS.map((o) => ({ value: o.value, label: t(o.labelKey) }))}
+            value={step.condition.operator || null}
+            onValueChange={(v) => v && updateCondition({ operator: v as StepConditionConfig["operator"] })}
+            placeholder={t("panel.selectOperator")}
+            searchPlaceholder={t("panel.search")}
+            noResultsLabel={t("panel.noResults")}
+          />
         </div>
 
         <div>
