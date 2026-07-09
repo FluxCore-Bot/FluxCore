@@ -13,6 +13,7 @@ export default defineConfig({
   },
   test: {
     globals: true,
+    setupFiles: ["tests/setup.ts"],
     include: ["tests/**/*.test.ts", "tests/**/*.test.tsx"],
     alias: {
       "../../src/server/": resolve(__dirname, "src/server") + "/",
