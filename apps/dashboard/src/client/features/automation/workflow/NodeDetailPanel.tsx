@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
 import { useChannels } from "../../../shared/hooks/useChannels";
@@ -19,6 +19,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../../shared/ui/select";
+import { SearchableSelect } from "../../../shared/ui/searchable-select";
+import { EVENT_ICONS } from "../lib/rule-icons";
 import { ConditionsEditor } from "../components/ConditionsEditor";
 import type {
   ActionConditions,
@@ -153,6 +155,17 @@ function TriggerPanel({
   const { t } = useTranslation(["rules", "common"]);
   const variables = eventType ? (constants.eventTypeVariables[eventType] ?? []) : [];
 
+  const eventOptions = useMemo(
+    () =>
+      Object.entries(constants.eventTypes).map(([value, info]) => ({
+        value,
+        label: info.label,
+        keywords: info.description,
+        icon: <Icon name={EVENT_ICONS[value] ?? "bolt"} size={16} />,
+      })),
+    [constants.eventTypes],
+  );
+
   const conditionCount =
     (conditions.channelIds?.length ?? 0) +
     (conditions.roleIds?.length ?? 0) +
@@ -195,18 +208,14 @@ function TriggerPanel({
               {t("panel.eventType")} <span aria-hidden="true" className="text-danger">*</span>
               <span className="sr-only"> ({t("common:labels.required")})</span>
             </Label>
-            <Select value={eventType || undefined} onValueChange={onEventTypeChange}>
-              <SelectTrigger>
-                <SelectValue placeholder={t("panel.selectEvent")} />
-              </SelectTrigger>
-              <SelectContent>
-                {Object.entries(constants.eventTypes).map(([key, info]) => (
-                  <SelectItem key={key} value={key}>
-                    {info.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <SearchableSelect
+              options={eventOptions}
+              value={eventType || null}
+              onValueChange={(v) => v && onEventTypeChange(v)}
+              placeholder={t("panel.selectEvent")}
+              searchPlaceholder={t("panel.searchEvent")}
+              noResultsLabel={t("panel.noEventResults")}
+            />
           </div>
           {eventType && constants.eventTypes[eventType] && (
             <div className="rounded-lg bg-surface-lowest p-3">
