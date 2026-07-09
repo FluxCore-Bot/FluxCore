@@ -21,6 +21,7 @@ import {
 } from "../../../shared/ui/select";
 import { SearchableSelect } from "../../../shared/ui/searchable-select";
 import { EVENT_ICONS } from "../lib/rule-icons";
+import { buildActionTypeOptions } from "../lib/action-options";
 import { ConditionsEditor } from "../components/ConditionsEditor";
 import type {
   ActionConditions,
@@ -296,18 +297,14 @@ function ActionPanel({
               {t("panel.actionType")} <span aria-hidden="true" className="text-danger">*</span>
               <span className="sr-only"> ({t("common:labels.required")})</span>
             </Label>
-            <Select value={action.type || undefined} onValueChange={handleTypeChange}>
-              <SelectTrigger>
-                <SelectValue placeholder={t("panel.selectAction")} />
-              </SelectTrigger>
-              <SelectContent>
-                {Object.entries(constants.actionTypes).map(([key, info]) => (
-                  <SelectItem key={key} value={key}>
-                    {info.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <SearchableSelect
+              options={buildActionTypeOptions(constants.actionTypes)}
+              value={action.type || null}
+              onValueChange={(v) => v && handleTypeChange(v)}
+              placeholder={t("panel.selectAction")}
+              searchPlaceholder={t("panel.search")}
+              noResultsLabel={t("panel.noResults")}
+            />
           </div>
 
           {action.type && fields.length > 0 && (
@@ -461,18 +458,14 @@ function StepPanel({
             {t("panel.actionType")} <span aria-hidden="true" className="text-danger">*</span>
               <span className="sr-only"> ({t("common:labels.required")})</span>
           </Label>
-          <Select value={step.action.type || undefined} onValueChange={handleTypeChange}>
-            <SelectTrigger>
-              <SelectValue placeholder={t("panel.selectAction")} />
-            </SelectTrigger>
-            <SelectContent>
-              {Object.entries(constants.actionTypes).map(([key, info]) => (
-                <SelectItem key={key} value={key}>
-                  {info.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <SearchableSelect
+            options={buildActionTypeOptions(constants.actionTypes)}
+            value={step.action.type || null}
+            onValueChange={(v) => v && handleTypeChange(v)}
+            placeholder={t("panel.selectAction")}
+            searchPlaceholder={t("panel.search")}
+            noResultsLabel={t("panel.noResults")}
+          />
         </div>
 
         {step.action.type && fields.length > 0 && (
