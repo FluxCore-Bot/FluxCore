@@ -108,4 +108,20 @@ describe("SearchableSelect", () => {
     setup({ loading: true });
     expect(screen.queryByText("Select event")).not.toBeInTheDocument();
   });
+
+  it("forwards id and aria-required to the trigger for label association", () => {
+    render(
+      <SearchableSelect
+        options={options}
+        value={null}
+        onValueChange={vi.fn()}
+        placeholder="Select event"
+        id="my-field"
+        required
+      />,
+    );
+    const trigger = screen.getByRole("button");
+    expect(trigger).toHaveAttribute("id", "my-field");
+    expect(trigger).toHaveAttribute("aria-required", "true");
+  });
 });

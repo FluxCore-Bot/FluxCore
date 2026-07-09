@@ -27,6 +27,8 @@ export interface SearchableSelectProps {
   noResultsLabel?: string;
   searchPlaceholder?: string;
   className?: string;
+  id?: string;
+  required?: boolean;
 }
 
 export function SearchableSelect({
@@ -44,6 +46,8 @@ export function SearchableSelect({
   noResultsLabel = "No results found",
   searchPlaceholder = "Search...",
   className,
+  id,
+  required,
 }: SearchableSelectProps) {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
@@ -91,6 +95,8 @@ export function SearchableSelect({
       <PopoverTrigger asChild>
         <button
           type="button"
+          id={id}
+          aria-required={required || undefined}
           disabled={disabled}
           className={cn(
             "flex h-9 w-full items-center justify-between rounded-sm bg-surface-lowest px-3 py-2 text-sm text-text focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50",

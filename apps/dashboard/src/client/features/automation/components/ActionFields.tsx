@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Icon } from "../../../shared/components/Icon";
+import { SearchableSelect } from "../../../shared/ui/searchable-select";
 import { Label } from "../../../shared/ui/label";
 import { Input } from "../../../shared/ui/input";
 import { Textarea } from "../../../shared/ui/textarea";
@@ -75,48 +76,41 @@ export function ActionFields({
             </Label>
 
             {field.type === "channel" && (
-              <Select
-                value={String(value) || undefined}
-                onValueChange={(v) => onChange(field.key, v)}
-              >
-                <SelectTrigger id={fieldId} aria-required={field.required}>
-                  <SelectValue placeholder={t("form.selectChannel")} />
-                </SelectTrigger>
-                <SelectContent>
-                  {channels
-                    .filter((c) => c.type === 0 || c.type === 2)
-                    .map((c) => (
-                      <SelectItem key={c.id} value={c.id}>
-                        <span className="flex items-center gap-1.5">
-                          <Icon
-                            name={c.type === 2 ? "volume_up" : "hash"}
-                            size={14}
-                            className="text-text-muted"
-                          />
-                          {c.name}
-                        </span>
-                      </SelectItem>
-                    ))}
-                </SelectContent>
-              </Select>
+              <SearchableSelect
+                id={fieldId}
+                required={field.required}
+                value={String(value) || null}
+                onValueChange={(v) => v && onChange(field.key, v)}
+                placeholder={t("form.selectChannel")}
+                searchPlaceholder={t("form.search")}
+                noResultsLabel={t("form.noResults")}
+                options={channels
+                  .filter((c) => c.type === 0 || c.type === 2)
+                  .map((c) => ({
+                    value: c.id,
+                    label: c.name,
+                    icon: (
+                      <Icon
+                        name={c.type === 2 ? "volume_up" : "hash"}
+                        size={14}
+                        className="text-text-muted"
+                      />
+                    ),
+                  }))}
+              />
             )}
 
             {field.type === "role" && (
-              <Select
-                value={String(value) || undefined}
-                onValueChange={(v) => onChange(field.key, v)}
-              >
-                <SelectTrigger id={fieldId} aria-required={field.required}>
-                  <SelectValue placeholder={t("form.selectRole")} />
-                </SelectTrigger>
-                <SelectContent>
-                  {roles.map((r) => (
-                    <SelectItem key={r.id} value={r.id}>
-                      {r.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <SearchableSelect
+                id={fieldId}
+                required={field.required}
+                value={String(value) || null}
+                onValueChange={(v) => v && onChange(field.key, v)}
+                placeholder={t("form.selectRole")}
+                searchPlaceholder={t("form.search")}
+                noResultsLabel={t("form.noResults")}
+                options={roles.map((r) => ({ value: r.id, label: r.name }))}
+              />
             )}
 
             {field.type === "text" && (
