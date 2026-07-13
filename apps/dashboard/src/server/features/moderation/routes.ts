@@ -9,6 +9,7 @@ import {
   upsertModSettings,
 } from "@fluxcore/systems/moderation/persistence";
 import { VALID_MOD_ACTIONS, MAX_REASON_LENGTH } from "@fluxcore/systems/moderation/constants";
+import { withDocs } from "../../shared/openapi-schemas.js";
 
 function parseIntParam(value: string): number | null {
   const n = parseInt(value, 10);
@@ -19,7 +20,13 @@ export function registerModerationRoutes(app: FastifyInstance): void {
   // GET /api/guilds/:guildId/cases — list cases
   app.get(
     "/api/guilds/:guildId/cases",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.cases.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.cases.view")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] }, querystring: { type: "object", properties: { page: { type: "integer", minimum: 1, default: 1 }, limit: { type: "integer", minimum: 1, maximum: 100, default: 20 }, sort: { type: "string" } } } },
+        { tag: "Moderation", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as {
@@ -51,7 +58,13 @@ export function registerModerationRoutes(app: FastifyInstance): void {
   // GET /api/guilds/:guildId/cases/:caseId — get single case
   app.get(
     "/api/guilds/:guildId/cases/:caseId",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.cases.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.cases.view")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        { tag: "Moderation", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+    },
     async (request, reply) => {
       const { guildId, caseId } = request.params as { guildId: string; caseId: string };
       const caseIdNum = parseIntParam(caseId);
@@ -75,16 +88,20 @@ export function registerModerationRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/cases/:caseId",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.cases.manage")],
-      schema: {
-        body: {
-          type: "object",
-          required: ["reason"],
-          properties: {
-            reason: { type: "string", minLength: 1, maxLength: MAX_REASON_LENGTH },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            required: ["reason"],
+            properties: {
+              reason: { type: "string", minLength: 1, maxLength: MAX_REASON_LENGTH },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        { tag: "Moderation", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
     },
     async (request, reply) => {
       const { guildId, caseId } = request.params as { guildId: string; caseId: string };
@@ -110,7 +127,16 @@ export function registerModerationRoutes(app: FastifyInstance): void {
   // DELETE /api/guilds/:guildId/cases/:caseId — delete case
   app.delete(
     "/api/guilds/:guildId/cases/:caseId",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.cases.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.cases.manage")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        {
+          tag: "Moderation",
+          response: { 200: { type: "object", properties: { success: { type: "boolean" } } } },
+        },
+      ),
+    },
     async (request, reply) => {
       const { guildId, caseId } = request.params as { guildId: string; caseId: string };
       const caseIdNum = parseIntParam(caseId);
@@ -133,7 +159,13 @@ export function registerModerationRoutes(app: FastifyInstance): void {
   // GET /api/guilds/:guildId/mod-settings
   app.get(
     "/api/guilds/:guildId/mod-settings",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.settings.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.settings.manage")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        { tag: "Moderation", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const settings = await getModSettings(guildId);
@@ -146,16 +178,20 @@ export function registerModerationRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/mod-settings",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.settings.manage")],
-      schema: {
-        body: {
-          type: "object",
-          properties: {
-            dmOnPunishment: { type: "boolean" },
-            modLogChannelId: { type: ["string", "null"] },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            properties: {
+              dmOnPunishment: { type: "boolean" },
+              modLogChannelId: { type: ["string", "null"] },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        { tag: "Moderation", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };

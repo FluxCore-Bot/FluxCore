@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import { withDocs } from "../../shared/openapi-schemas.js";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
 import {
   getLevelSettings,
@@ -24,7 +25,13 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   // GET leaderboard
   app.get(
     "/api/guilds/:guildId/leaderboard",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.leaderboard.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.leaderboard.view")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] }, querystring: { type: "object", properties: { page: { type: "integer", minimum: 1, default: 1 }, limit: { type: "integer", minimum: 1, maximum: 100, default: 20 }, sort: { type: "string" } } } },
+        { tag: "Leveling", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as { page?: string; limit?: string };
@@ -43,7 +50,10 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   // GET user level info
   app.get(
     "/api/guilds/:guildId/levels/:userId",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.leaderboard.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.leaderboard.view")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Leveling", response: { 200: { type: "object", additionalProperties: true } } }),
+    },
     async (request, reply) => {
       const { guildId, userId } = request.params as { guildId: string; userId: string };
       const userLevel = await getUserLevel(guildId, userId);
@@ -71,16 +81,20 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/levels/:userId",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.users.manage")],
-      schema: {
-        body: {
-          type: "object",
-          required: ["xp"],
-          properties: {
-            xp: { type: "integer", minimum: 0 },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            required: ["xp"],
+            properties: {
+              xp: { type: "integer", minimum: 0 },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        { tag: "Leveling", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
     },
     async (request, reply) => {
       const { guildId, userId } = request.params as { guildId: string; userId: string };
@@ -93,7 +107,10 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   // GET level settings
   app.get(
     "/api/guilds/:guildId/level-settings",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.settings.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.settings.manage")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Leveling", response: { 200: { type: "object", additionalProperties: true } } }),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const settings = await getLevelSettings(guildId);
@@ -106,25 +123,50 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/level-settings",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.settings.manage")],
-      schema: {
-        body: {
-          type: "object",
-          properties: {
-            enabled: { type: "boolean" },
-            xpPerMessage: { type: "integer", minimum: 1, maximum: 1000 },
-            xpCooldownSeconds: { type: "integer", minimum: 0, maximum: 3600 },
-            voiceXpPerMinute: { type: "integer", minimum: 0, maximum: 100 },
-            voiceXpEnabled: { type: "boolean" },
-            announceChannel: { type: ["string", "null"] },
-            announceMessage: { type: "string", minLength: 1, maxLength: 500 },
-            announceEnabled: { type: "boolean" },
-            noXpChannels: { type: "array", items: { type: "string" } },
-            noXpRoles: { type: "array", items: { type: "string" } },
-            xpMultipliers: { type: "object" },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            properties: {
+              enabled: { type: "boolean" },
+              xpPerMessage: { type: "integer", minimum: 1, maximum: 1000 },
+              xpCooldownSeconds: { type: "integer", minimum: 0, maximum: 3600 },
+              voiceXpPerMinute: { type: "integer", minimum: 0, maximum: 100 },
+              voiceXpEnabled: { type: "boolean" },
+              announceChannel: { type: ["string", "null"] },
+              announceMessage: { type: "string", minLength: 1, maxLength: 500 },
+              announceEnabled: { type: "boolean" },
+              noXpChannels: { type: "array", items: { type: "string" } },
+              noXpRoles: { type: "array", items: { type: "string" } },
+              xpMultipliers: { type: "object", additionalProperties: true },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        {
+          tag: "Leveling",
+          response: {
+            200: {
+              type: "object",
+              properties: {
+                guildId: { type: "string" },
+                enabled: { type: "boolean" },
+                xpPerMessage: { type: "integer" },
+                xpCooldownSeconds: { type: "integer" },
+                voiceXpPerMinute: { type: "integer" },
+                voiceXpEnabled: { type: "boolean" },
+                announceChannel: { type: ["string", "null"] },
+                announceMessage: { type: ["string", "null"] },
+                announceEnabled: { type: "boolean" },
+                noXpChannels: { type: "array", items: { type: "string" } },
+                noXpRoles: { type: "array", items: { type: "string" } },
+                xpMultipliers: { type: "object", additionalProperties: true },
+              },
+            },
+          },
+        },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -150,7 +192,10 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   // GET level rewards
   app.get(
     "/api/guilds/:guildId/level-rewards",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.rewards.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.rewards.manage")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Leveling", response: { 200: { type: "array", items: {} } } }),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const rewards = await getLevelRewards(guildId);
@@ -163,17 +208,34 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/level-rewards",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.rewards.manage")],
-      schema: {
-        body: {
-          type: "object",
-          required: ["level", "roleId"],
-          properties: {
-            level: { type: "integer", minimum: 1, maximum: 100 },
-            roleId: { type: "string", minLength: 1 },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            required: ["level", "roleId"],
+            properties: {
+              level: { type: "integer", minimum: 1, maximum: 100 },
+              roleId: { type: "string", minLength: 1 },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        {
+          tag: "Leveling",
+          response: {
+            201: {
+              type: "object",
+              properties: {
+                id: { type: "integer" },
+                guildId: { type: "string" },
+                level: { type: "integer" },
+                roleId: { type: "string" },
+              },
+            },
+          },
+        },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -191,7 +253,10 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   // DELETE level reward
   app.delete(
     "/api/guilds/:guildId/level-rewards/:id",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.rewards.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.rewards.manage")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Leveling", response: { 200: { type: "object", properties: { success: { type: "boolean" } } } } }),
+    },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
       const rewardId = parseIntParam(id);

@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import { withDocs } from "../../shared/openapi-schemas.js";
 import { randomUUID } from "node:crypto";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
 import { getWelcomeConfig, upsertWelcomeConfig } from "@fluxcore/systems/welcome/config";
@@ -21,7 +22,10 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
   // GET full welcome config
   app.get(
     "/api/guilds/:guildId/welcome",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.config.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.config.view")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Welcome", response: { 200: { type: "object", additionalProperties: true } } }),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const config = await getWelcomeConfig(guildId);
@@ -49,27 +53,54 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/welcome",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.config.manage")],
-      schema: {
-        body: {
-          type: "object",
-          properties: {
-            welcomeEnabled: { type: "boolean" },
-            welcomeChannelId: { type: ["string", "null"] },
-            welcomeMessage: { type: "object" },
-            farewellEnabled: { type: "boolean" },
-            farewellChannelId: { type: ["string", "null"] },
-            farewellMessage: { type: "object" },
-            dmEnabled: { type: "boolean" },
-            dmMessage: { type: "object" },
-            autoRoleIds: { type: "array", items: { type: "string" } },
-            welcomeImageEnabled: { type: "boolean" },
-            welcomeImageConfig: { type: "object" },
-            farewellImageEnabled: { type: "boolean" },
-            farewellImageConfig: { type: "object" },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            properties: {
+              welcomeEnabled: { type: "boolean" },
+              welcomeChannelId: { type: ["string", "null"] },
+              welcomeMessage: { type: "object", additionalProperties: true },
+              farewellEnabled: { type: "boolean" },
+              farewellChannelId: { type: ["string", "null"] },
+              farewellMessage: { type: "object", additionalProperties: true },
+              dmEnabled: { type: "boolean" },
+              dmMessage: { type: "object", additionalProperties: true },
+              autoRoleIds: { type: "array", items: { type: "string" } },
+              welcomeImageEnabled: { type: "boolean" },
+              welcomeImageConfig: { type: "object", additionalProperties: true },
+              farewellImageEnabled: { type: "boolean" },
+              farewellImageConfig: { type: "object", additionalProperties: true },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        {
+          tag: "Welcome",
+          response: {
+            200: {
+              type: "object",
+              properties: {
+                guildId: { type: "string" },
+                welcomeEnabled: { type: "boolean" },
+                welcomeChannelId: { type: ["string", "null"] },
+                welcomeMessage: { type: "object", additionalProperties: true },
+                farewellEnabled: { type: "boolean" },
+                farewellChannelId: { type: ["string", "null"] },
+                farewellMessage: { type: "object", additionalProperties: true },
+                dmEnabled: { type: "boolean" },
+                dmMessage: { type: "object", additionalProperties: true },
+                autoRoleIds: { type: "array", items: { type: "string" } },
+                welcomeImageEnabled: { type: "boolean" },
+                welcomeImageConfig: { type: "object", additionalProperties: true },
+                farewellImageEnabled: { type: "boolean" },
+                farewellImageConfig: { type: "object", additionalProperties: true },
+              },
+            },
+          },
+        },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -114,7 +145,24 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
   // POST test welcome message
   app.post(
     "/api/guilds/:guildId/welcome/test",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.test.execute")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.test.execute")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        {
+          tag: "Welcome",
+          response: {
+            200: {
+              type: "object",
+              properties: {
+                success: { type: "boolean" },
+                channelId: { type: "string" },
+              },
+            },
+          },
+        },
+      ),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const config = await getWelcomeConfig(guildId);
@@ -140,16 +188,23 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/welcome/image/preview",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.config.view")],
-      schema: {
-        body: {
-          type: "object",
-          properties: {
-            settings: { type: "object" },
-            type: { type: "string", enum: ["welcome", "farewell"] },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            properties: {
+              settings: { type: "object", additionalProperties: true },
+              type: { type: "string", enum: ["welcome", "farewell"] },
+            },
+            required: ["settings"],
           },
-          required: ["settings"],
         },
-      },
+        {
+          tag: "Welcome",
+          response: { 200: { type: "string", format: "binary" } },
+        },
+      ),
     },
     async (request, reply) => {
       const body = request.body as { settings: unknown; type?: string };
@@ -193,16 +248,28 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/welcome/image/background",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.config.manage")],
-      schema: {
-        body: {
-          type: "object",
-          properties: {
-            data: { type: "string" },
-            contentType: { type: "string" },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            properties: {
+              data: { type: "string" },
+              contentType: { type: "string" },
+            },
+            required: ["data", "contentType"],
           },
-          required: ["data", "contentType"],
         },
-      },
+        {
+          tag: "Welcome",
+          response: {
+            200: {
+              type: "object",
+              properties: { key: { type: "string" } },
+            },
+          },
+        },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -258,15 +325,27 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/welcome/image/background",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.config.manage")],
-      schema: {
-        body: {
-          type: "object",
-          properties: {
-            key: { type: "string" },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            properties: {
+              key: { type: "string" },
+            },
+            required: ["key"],
           },
-          required: ["key"],
         },
-      },
+        {
+          tag: "Welcome",
+          response: {
+            200: {
+              type: "object",
+              properties: { success: { type: "boolean" } },
+            },
+          },
+        },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -286,7 +365,18 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
   // GET available templates
   app.get(
     "/api/welcome/templates",
-    { preHandler: [requireAuth] },
+    {
+      preHandler: [requireAuth],
+      schema: withDocs(undefined, {
+        tag: "Welcome",
+        response: {
+          200: {
+            type: "object",
+            properties: { templates: { type: "array", items: {} } },
+          },
+        },
+      }),
+    },
     async (_request, reply) => {
       reply.send({
         templates: getAllTemplates().map((t) => ({
@@ -302,7 +392,18 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
   // GET available fonts
   app.get(
     "/api/welcome/fonts",
-    { preHandler: [requireAuth] },
+    {
+      preHandler: [requireAuth],
+      schema: withDocs(undefined, {
+        tag: "Welcome",
+        response: {
+          200: {
+            type: "object",
+            properties: { fonts: { type: "array", items: {} } },
+          },
+        },
+      }),
+    },
     async (_request, reply) => {
       reply.send({ fonts: getAvailableFonts() });
     },
@@ -311,7 +412,18 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
   // GET preset backgrounds
   app.get(
     "/api/welcome/presets",
-    { preHandler: [requireAuth] },
+    {
+      preHandler: [requireAuth],
+      schema: withDocs(undefined, {
+        tag: "Welcome",
+        response: {
+          200: {
+            type: "object",
+            properties: { backgrounds: {} },
+          },
+        },
+      }),
+    },
     async (_request, reply) => {
       reply.send({ backgrounds: PRESET_BACKGROUNDS });
     },

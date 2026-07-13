@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import { withDocs } from "../../shared/openapi-schemas.js";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
 import {
   getTicketSettings,
@@ -28,7 +29,10 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   // GET list tickets
   app.get(
     "/api/guilds/:guildId/tickets",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.list.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.list.view")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] }, querystring: { type: "object", properties: { page: { type: "integer", minimum: 1, default: 1 }, limit: { type: "integer", minimum: 1, maximum: 100, default: 20 }, sort: { type: "string" } } } }, { tag: "Tickets", response: { 200: { type: "object", additionalProperties: true } } }),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as {
@@ -62,7 +66,10 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   // GET ticket by ID
   app.get(
     "/api/guilds/:guildId/tickets/:ticketId",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.list.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.list.view")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Tickets", response: { 200: { type: "object", additionalProperties: true } } }),
+    },
     async (request, reply) => {
       const { guildId, ticketId } = request.params as { guildId: string; ticketId: string };
       const id = parseIntParam(ticketId);
@@ -84,7 +91,10 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   // DELETE force-close ticket
   app.delete(
     "/api/guilds/:guildId/tickets/:ticketId",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.list.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.list.manage")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Tickets", response: { 200: { type: "object", properties: { success: { type: "boolean" } } } } }),
+    },
     async (request, reply) => {
       const { guildId, ticketId } = request.params as { guildId: string; ticketId: string };
       const id = parseIntParam(ticketId);
@@ -109,7 +119,10 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   // GET list panels
   app.get(
     "/api/guilds/:guildId/ticket-panels",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.panels.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.panels.manage")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Tickets", response: { 200: { type: "array", items: {} } } }),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const panels = await getTicketPanels(guildId);
@@ -122,7 +135,8 @@ export function registerTicketRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/ticket-panels",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.panels.manage")],
-      schema: {
+      schema: withDocs({
+        params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
         body: {
           type: "object",
           required: ["channelId", "name"],
@@ -163,7 +177,7 @@ export function registerTicketRoutes(app: FastifyInstance): void {
           },
           additionalProperties: false,
         },
-      },
+      }, { tag: "Tickets", response: { 201: { type: "object", additionalProperties: true } } }),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -199,7 +213,8 @@ export function registerTicketRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/ticket-panels/:panelId",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.panels.manage")],
-      schema: {
+      schema: withDocs({
+        params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
         body: {
           type: "object",
           properties: {
@@ -239,7 +254,7 @@ export function registerTicketRoutes(app: FastifyInstance): void {
           },
           additionalProperties: false,
         },
-      },
+      }, { tag: "Tickets", response: { 200: { type: "object", additionalProperties: true } } }),
     },
     async (request, reply) => {
       const { guildId, panelId } = request.params as { guildId: string; panelId: string };
@@ -270,7 +285,10 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   // DELETE panel
   app.delete(
     "/api/guilds/:guildId/ticket-panels/:panelId",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.panels.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.panels.manage")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Tickets", response: { 200: { type: "object", properties: { success: { type: "boolean" } } } } }),
+    },
     async (request, reply) => {
       const { guildId, panelId } = request.params as { guildId: string; panelId: string };
       const id = parseIntParam(panelId);
@@ -287,7 +305,10 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   // POST send panel message (placeholder — actual sending requires bot client)
   app.post(
     "/api/guilds/:guildId/ticket-panels/:panelId/send",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.panels.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.panels.manage")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Tickets", response: { 200: { type: "object", properties: { success: { type: "boolean" }, panelId: { type: "integer" } } } } }),
+    },
     async (request, reply) => {
       const { guildId, panelId } = request.params as { guildId: string; panelId: string };
       const id = parseIntParam(panelId);
@@ -313,7 +334,10 @@ export function registerTicketRoutes(app: FastifyInstance): void {
   // GET settings
   app.get(
     "/api/guilds/:guildId/ticket-settings",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.settings.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.settings.manage")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Tickets", response: { 200: { type: "object", additionalProperties: true } } }),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const settings = await getTicketSettings(guildId);
@@ -326,7 +350,8 @@ export function registerTicketRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/ticket-settings",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("tickets.settings.manage")],
-      schema: {
+      schema: withDocs({
+        params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
         body: {
           type: "object",
           properties: {
@@ -338,7 +363,7 @@ export function registerTicketRoutes(app: FastifyInstance): void {
           },
           additionalProperties: false,
         },
-      },
+      }, { tag: "Tickets", response: { 200: { type: "object", additionalProperties: true } } }),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };

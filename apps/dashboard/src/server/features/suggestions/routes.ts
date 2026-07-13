@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import { withDocs } from "../../shared/openapi-schemas.js";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
 import {
   getSuggestionSettings,
@@ -17,7 +18,16 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
   // GET suggestions list
   app.get(
     "/api/guilds/:guildId/suggestions",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.list.view")] },
+    {
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          querystring: { type: "object", properties: { page: { type: "integer", minimum: 1, default: 1 }, limit: { type: "integer", minimum: 1, maximum: 100, default: 20 }, sort: { type: "string" } } },
+        },
+        { tag: "Suggestions", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.list.view")],
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as { status?: string; page?: string; limit?: string };
@@ -42,17 +52,21 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/suggestions",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.list.manage")],
-      schema: {
-        body: {
-          type: "object",
-          required: ["content", "userId"],
-          properties: {
-            content: { type: "string", minLength: 1, maxLength: 2000 },
-            userId: { type: "string", minLength: 1 },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            required: ["content", "userId"],
+            properties: {
+              content: { type: "string", minLength: 1, maxLength: 2000 },
+              userId: { type: "string", minLength: 1 },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        { tag: "Suggestions", response: { 201: { type: "object", additionalProperties: true } } },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -68,17 +82,21 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/suggestions/:id/status",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.list.manage")],
-      schema: {
-        body: {
-          type: "object",
-          required: ["status"],
-          properties: {
-            status: { type: "string", enum: [...VALID_STATUSES] },
-            reason: { type: "string", maxLength: 500 },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            required: ["status"],
+            properties: {
+              status: { type: "string", enum: [...VALID_STATUSES] },
+              reason: { type: "string", maxLength: 500 },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        { tag: "Suggestions", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
     },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
@@ -111,7 +129,16 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
   // DELETE suggestion
   app.delete(
     "/api/guilds/:guildId/suggestions/:id",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.list.manage")] },
+    {
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        {
+          tag: "Suggestions",
+          response: { 200: { type: "object", properties: { success: { type: "boolean" } } } },
+        },
+      ),
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.list.manage")],
+    },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
       const suggestionId = parseInt(id, 10);
@@ -133,7 +160,13 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
   // GET suggestion settings
   app.get(
     "/api/guilds/:guildId/suggestion-settings",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.settings.manage")] },
+    {
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        { tag: "Suggestions", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.settings.manage")],
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const settings = await getSuggestionSettings(guildId);
@@ -146,20 +179,24 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/suggestion-settings",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.settings.manage")],
-      schema: {
-        body: {
-          type: "object",
-          properties: {
-            enabled: { type: "boolean" },
-            channelId: { type: ["string", "null"] },
-            reviewChannelId: { type: ["string", "null"] },
-            dmOnStatusChange: { type: "boolean" },
-            autoThread: { type: "boolean" },
-            anonymousMode: { type: "boolean" },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            properties: {
+              enabled: { type: "boolean" },
+              channelId: { type: ["string", "null"] },
+              reviewChannelId: { type: ["string", "null"] },
+              dmOnStatusChange: { type: "boolean" },
+              autoThread: { type: "boolean" },
+              anonymousMode: { type: "boolean" },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        { tag: "Suggestions", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };

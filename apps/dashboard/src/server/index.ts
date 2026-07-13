@@ -1,4 +1,4 @@
-import Fastify from "fastify";
+import Fastify, { type FastifyInstance } from "fastify";
 import fastifyCookie from "@fastify/cookie";
 import fastifyHelmet from "@fastify/helmet";
 import fastifyRateLimit from "@fastify/rate-limit";
@@ -37,8 +37,15 @@ import { registerDashboardPermissionRoutes } from "./features/permissions/routes
 import { registerI18n } from "./shared/i18n.js";
 import { requireCsrf } from "./shared/csrf.js";
 import { helmetOptions } from "./shared/security.js";
+import { registerOpenApi } from "./shared/openapi.js";
+import { withDocs } from "./shared/openapi-schemas.js";
 
-async function main(): Promise<void> {
+/**
+ * Build the fully-configured Fastify application (plugins, routes, OpenAPI
+ * docs) without starting the HTTP listener. Exported so tests and the
+ * production entrypoint share one setup path.
+ */
+export async function createApp(): Promise<FastifyInstance> {
   if (!config.dashboardClientSecret) {
     logger.error("DASHBOARD_CLIENT_SECRET is required");
     process.exit(1);
@@ -71,6 +78,10 @@ async function main(): Promise<void> {
     }
   });
 
+  // Register OpenAPI/Swagger BEFORE any routes so every route (including
+  // i18n, bot-info and all feature routes) is captured by the generator.
+  await registerOpenApi(app);
+
   const __dirname = dirname(fileURLToPath(import.meta.url));
 
   // In production, serve the built React SPA
@@ -86,7 +97,25 @@ async function main(): Promise<void> {
   await registerI18n(app);
 
   // Public endpoint — no auth required
-  app.get("/api/bot-info", async (_request, reply) => {
+  app.get(
+    "/api/bot-info",
+    {
+      schema: withDocs(undefined, {
+        tag: "Meta",
+        secure: false,
+        response: {
+          200: {
+            type: "object",
+            properties: {
+              clientId: { type: "string" },
+              inviteUrl: { type: "string" },
+              latency: { type: ["number", "null"] },
+            },
+          },
+        },
+      }),
+    },
+    async (_request, reply) => {
     // Measure round-trip latency to Discord's API
     let latency: number | null = null;
     try {
@@ -150,6 +179,12 @@ async function main(): Promise<void> {
     });
   }
 
+  return app;
+}
+
+async function main(): Promise<void> {
+  const app = await createApp();
+
   // Clean up expired sessions every hour
   const SESSION_CLEANUP_INTERVAL = 60 * 60 * 1000;
   const cleanupTimer = setInterval(async () => {
@@ -184,8 +219,13 @@ async function main(): Promise<void> {
   process.on("SIGTERM", () => void shutdown());
 }
 
-main().catch((error: unknown) => {
-  const err = error instanceof Error ? error : new Error(String(error));
-  logger.error("Failed to start dashboard", err);
-  process.exit(1);
-});
+// Only auto-start when this module is the process entrypoint
+// (e.g. `node dist/server/index.js` or `tsx src/server/index.ts`).
+// When imported (tests, `createApp` reuse) we must NOT call listen().
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+  main().catch((error: unknown) => {
+    const err = error instanceof Error ? error : new Error(String(error));
+    logger.error("Failed to start dashboard", err);
+    process.exit(1);
+  });
+}

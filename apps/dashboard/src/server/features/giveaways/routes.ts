@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import { withDocs } from "../../shared/openapi-schemas.js";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
 import {
   createGiveaway,
@@ -24,7 +25,10 @@ export function registerGiveawayRoutes(app: FastifyInstance): void {
   // GET list giveaways
   app.get(
     "/api/guilds/:guildId/giveaways",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("giveaways.list.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("giveaways.list.view")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] }, querystring: { type: "object", properties: { page: { type: "integer", minimum: 1, default: 1 }, limit: { type: "integer", minimum: 1, maximum: 100, default: 20 }, sort: { type: "string" } } } }, { tag: "Giveaways", response: { 200: { type: "object", additionalProperties: true } } }),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as { active?: string; page?: string; limit?: string };
@@ -58,7 +62,8 @@ export function registerGiveawayRoutes(app: FastifyInstance): void {
             (req as { session?: { userId?: string } }).session?.userId ?? req.ip,
         },
       },
-      schema: {
+      schema: withDocs({
+        params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
         body: {
           type: "object",
           required: ["channelId", "prize", "winners", "durationMs"],
@@ -74,7 +79,7 @@ export function registerGiveawayRoutes(app: FastifyInstance): void {
           },
           additionalProperties: false,
         },
-      },
+      }, { tag: "Giveaways", response: { 201: { type: "object", additionalProperties: true } } }),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -117,7 +122,10 @@ export function registerGiveawayRoutes(app: FastifyInstance): void {
   // PUT end giveaway early
   app.put(
     "/api/guilds/:guildId/giveaways/:id/end",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("giveaways.list.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("giveaways.list.manage")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Giveaways", response: { 200: { type: "object", additionalProperties: true } } }),
+    },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
       const giveawayId = parseIntParam(id);
@@ -146,7 +154,10 @@ export function registerGiveawayRoutes(app: FastifyInstance): void {
   // POST reroll giveaway
   app.post(
     "/api/guilds/:guildId/giveaways/:id/reroll",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("giveaways.list.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("giveaways.list.manage")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Giveaways", response: { 200: { type: "object", additionalProperties: true } } }),
+    },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
       const giveawayId = parseIntParam(id);

@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import { withDocs } from "../../shared/openapi-schemas.js";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
 import {
   getScheduledMessages,
@@ -18,7 +19,13 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
   // GET list scheduled messages
   app.get(
     "/api/guilds/:guildId/scheduled-messages",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.view")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] }, querystring: { type: "object", properties: { page: { type: "integer", minimum: 1, default: 1 }, limit: { type: "integer", minimum: 1, maximum: 100, default: 20 }, sort: { type: "string" } } } },
+        { tag: "ScheduledMessages", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as { page?: string; limit?: string };
@@ -39,29 +46,33 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/scheduled-messages",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.manage")],
-      schema: {
-        body: {
-          type: "object",
-          required: ["channelId", "name", "message", "cronExpr"],
-          properties: {
-            channelId: { type: "string", minLength: 1 },
-            name: { type: "string", minLength: 1, maxLength: 100 },
-            message: {
-              type: "object",
-              required: ["type"],
-              properties: {
-                type: { type: "string", enum: ["text", "embed"] },
-                content: { type: "string", maxLength: 2000 },
-                embed: { type: "object" },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            required: ["channelId", "name", "message", "cronExpr"],
+            properties: {
+              channelId: { type: "string", minLength: 1 },
+              name: { type: "string", minLength: 1, maxLength: 100 },
+              message: {
+                type: "object",
+                required: ["type"],
+                properties: {
+                  type: { type: "string", enum: ["text", "embed"] },
+                  content: { type: "string", maxLength: 2000 },
+                  embed: { type: "object", additionalProperties: true },
+                },
               },
+              cronExpr: { type: "string", minLength: 1 },
+              timezone: { type: "string" },
+              enabled: { type: "boolean" },
             },
-            cronExpr: { type: "string", minLength: 1 },
-            timezone: { type: "string" },
-            enabled: { type: "boolean" },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        { tag: "ScheduledMessages", response: { 201: { type: "object", additionalProperties: true } } },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -112,27 +123,31 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/scheduled-messages/:id",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.manage")],
-      schema: {
-        body: {
-          type: "object",
-          properties: {
-            channelId: { type: "string", minLength: 1 },
-            name: { type: "string", minLength: 1, maxLength: 100 },
-            message: {
-              type: "object",
-              properties: {
-                type: { type: "string", enum: ["text", "embed"] },
-                content: { type: "string", maxLength: 2000 },
-                embed: { type: "object" },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            properties: {
+              channelId: { type: "string", minLength: 1 },
+              name: { type: "string", minLength: 1, maxLength: 100 },
+              message: {
+                type: "object",
+                properties: {
+                  type: { type: "string", enum: ["text", "embed"] },
+                  content: { type: "string", maxLength: 2000 },
+                  embed: { type: "object", additionalProperties: true },
+                },
               },
+              cronExpr: { type: "string", minLength: 1 },
+              timezone: { type: "string" },
+              enabled: { type: "boolean" },
             },
-            cronExpr: { type: "string", minLength: 1 },
-            timezone: { type: "string" },
-            enabled: { type: "boolean" },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        { tag: "ScheduledMessages", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
     },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
@@ -172,7 +187,10 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
   // DELETE scheduled message
   app.delete(
     "/api/guilds/:guildId/scheduled-messages/:id",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.manage")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "ScheduledMessages", response: { 200: { type: "object", properties: { success: { type: "boolean" } } } } }),
+    },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
       const msgId = parseIntParam(id);
@@ -193,7 +211,25 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
   // POST test send a scheduled message
   app.post(
     "/api/guilds/:guildId/scheduled-messages/:id/test",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.execute")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.execute")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        {
+          tag: "ScheduledMessages",
+          response: {
+            200: {
+              type: "object",
+              properties: {
+                success: { type: "boolean" },
+                channelId: { type: "string" },
+                message: {},
+              },
+            },
+          },
+        },
+      ),
+    },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
       const msgId = parseIntParam(id);
@@ -222,6 +258,18 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/scheduled-messages/preview-cron",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.view")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        {
+          tag: "ScheduledMessages",
+          response: {
+            200: {
+              type: "object",
+              properties: { nextRuns: { type: "array", items: { type: "string" } } },
+            },
+          },
+        },
+      ),
       config: {
         rateLimit: {
           max: 5,

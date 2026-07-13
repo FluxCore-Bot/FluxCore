@@ -7,6 +7,7 @@ import {
 } from "../../shared/discordApi.js";
 import { forceRefreshSessionGuilds } from "../../shared/session.js";
 import { logger } from "@fluxcore/utils";
+import { withDocs } from "../../shared/openapi-schemas.js";
 
 // Discord channel type constants
 const GuildText = 0;
@@ -16,7 +17,28 @@ const GuildCategory = 4;
 export function registerDiscordRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/channels",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        {
+          tag: "Discord",
+          response: {
+            200: {
+              type: "array",
+              items: {
+                type: "object",
+                properties: {
+                  id: { type: "string" },
+                  name: { type: "string" },
+                  type: { type: "integer" },
+                },
+              },
+            },
+          },
+        },
+      ),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       try {
@@ -49,7 +71,28 @@ export function registerDiscordRoutes(app: FastifyInstance): void {
 
   app.get(
     "/api/guilds/:guildId/roles",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        {
+          tag: "Discord",
+          response: {
+            200: {
+              type: "array",
+              items: {
+                type: "object",
+                properties: {
+                  id: { type: "string" },
+                  name: { type: "string" },
+                  color: { type: "string" },
+                },
+              },
+            },
+          },
+        },
+      ),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       try {
@@ -80,6 +123,41 @@ export function registerDiscordRoutes(app: FastifyInstance): void {
     {
       preHandler: [requireAuth, requireGuildAdmin],
       config: { rateLimit: { max: 3, timeWindow: "1 minute" } },
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        {
+          tag: "Discord",
+          response: {
+            200: {
+              type: "object",
+              properties: {
+                channels: {
+                  type: "array",
+                  items: {
+                    type: "object",
+                    properties: {
+                      id: { type: "string" },
+                      name: { type: "string" },
+                      type: { type: "integer" },
+                    },
+                  },
+                },
+                roles: {
+                  type: "array",
+                  items: {
+                    type: "object",
+                    properties: {
+                      id: { type: "string" },
+                      name: { type: "string" },
+                      color: { type: "string" },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };

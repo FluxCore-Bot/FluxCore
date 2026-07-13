@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import { withDocs } from "../../shared/openapi-schemas.js";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
 import {
   getAntiRaidConfig,
@@ -12,7 +13,10 @@ export function registerAntiRaidRoutes(app: FastifyInstance): void {
   // GET anti-raid config
   app.get(
     "/api/guilds/:guildId/antiraid-config",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("security.config.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("security.config.view")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "AntiRaid", response: { 200: { type: "object", additionalProperties: true } } }),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const config = await getAntiRaidConfig(guildId);
@@ -25,7 +29,8 @@ export function registerAntiRaidRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/antiraid-config",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("security.config.manage")],
-      schema: {
+      schema: withDocs({
+        params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
         body: {
           type: "object",
           properties: {
@@ -43,7 +48,7 @@ export function registerAntiRaidRoutes(app: FastifyInstance): void {
           },
           additionalProperties: false,
         },
-      },
+      }, { tag: "AntiRaid", response: { 200: { type: "object", additionalProperties: true } } }),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -69,7 +74,10 @@ export function registerAntiRaidRoutes(app: FastifyInstance): void {
   // GET raid events (paginated)
   app.get(
     "/api/guilds/:guildId/raid-events",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("security.events.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("security.events.view")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] }, querystring: { type: "object", properties: { page: { type: "integer", minimum: 1, default: 1 }, limit: { type: "integer", minimum: 1, maximum: 100, default: 20 }, sort: { type: "string" } } } }, { tag: "AntiRaid", response: { 200: { type: "object", additionalProperties: true } } }),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as { page?: string; limit?: string };

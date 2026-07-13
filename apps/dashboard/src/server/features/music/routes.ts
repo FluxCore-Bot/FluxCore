@@ -22,6 +22,7 @@ import {
   MAX_TRACKS_PER_ALBUM,
 } from "@fluxcore/systems/music/constants";
 import { notifyCacheInvalidation } from "@fluxcore/systems/actions/persistence";
+import { withDocs } from "../../shared/openapi-schemas.js";
 
 function parseIntParam(value: string): number | null {
   const n = parseInt(value, 10);
@@ -32,7 +33,13 @@ export function registerMusicRoutes(app: FastifyInstance): void {
   // GET music settings for a guild
   app.get(
     "/api/guilds/:guildId/music/settings",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.settings.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.settings.view")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        { tag: "Music", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const settings = await fetchMusicSettings(guildId);
@@ -45,21 +52,25 @@ export function registerMusicRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/music/settings",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.settings.manage")],
-      schema: {
-        body: {
-          type: "object",
-          properties: {
-            mode: { type: "string", enum: ["open", "library"] },
-            djRoleId: { type: ["string", "null"] },
-            defaultVolume: { type: "integer", minimum: 0, maximum: 100 },
-            maxQueueSize: { type: "integer", minimum: 1, maximum: MAX_QUEUE_SIZE_LIMIT },
-            autoDisconnectSecs: { type: "integer", minimum: 0, maximum: 3600 },
-            twentyFourSeven: { type: "boolean" },
-            lastChannelId: { type: ["string", "null"] },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            properties: {
+              mode: { type: "string", enum: ["open", "library"] },
+              djRoleId: { type: ["string", "null"] },
+              defaultVolume: { type: "integer", minimum: 0, maximum: 100 },
+              maxQueueSize: { type: "integer", minimum: 1, maximum: MAX_QUEUE_SIZE_LIMIT },
+              autoDisconnectSecs: { type: "integer", minimum: 0, maximum: 3600 },
+              twentyFourSeven: { type: "boolean" },
+              lastChannelId: { type: ["string", "null"] },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        { tag: "Music", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -92,7 +103,13 @@ export function registerMusicRoutes(app: FastifyInstance): void {
   // GET all albums for a guild
   app.get(
     "/api/guilds/:guildId/music/library",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.library.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.library.view")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        { tag: "Music", response: { 200: { type: "array", items: { type: "object", additionalProperties: true } } } },
+      ),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const albums = await getAlbums(guildId);
@@ -113,16 +130,20 @@ export function registerMusicRoutes(app: FastifyInstance): void {
             (req as { session?: { userId?: string } }).session?.userId ?? req.ip,
         },
       },
-      schema: {
-        body: {
-          type: "object",
-          required: ["name"],
-          properties: {
-            name: { type: "string", minLength: 1 },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            required: ["name"],
+            properties: {
+              name: { type: "string", minLength: 1 },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        { tag: "Music", response: { 201: { type: "object", additionalProperties: true } } },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -146,7 +167,16 @@ export function registerMusicRoutes(app: FastifyInstance): void {
   // DELETE an album
   app.delete(
     "/api/guilds/:guildId/music/library/:albumId",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.library.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.library.manage")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        {
+          tag: "Music",
+          response: { 200: { type: "object", properties: { success: { type: "boolean" } } } },
+        },
+      ),
+    },
     async (request, reply) => {
       const { guildId, albumId } = request.params as { guildId: string; albumId: string };
       const albumIdNum = parseIntParam(albumId);
@@ -167,7 +197,13 @@ export function registerMusicRoutes(app: FastifyInstance): void {
   // GET tracks in an album
   app.get(
     "/api/guilds/:guildId/music/library/:albumId/tracks",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.library.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.library.view")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        { tag: "Music", response: { 200: { type: "array", items: { type: "object", additionalProperties: true } } } },
+      ),
+    },
     async (request, reply) => {
       const { guildId, albumId } = request.params as { guildId: string; albumId: string };
       const albumIdNum = parseIntParam(albumId);
@@ -190,18 +226,22 @@ export function registerMusicRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/music/library/:albumId/tracks",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.library.manage")],
-      schema: {
-        body: {
-          type: "object",
-          required: ["title", "sourceUrl"],
-          properties: {
-            title: { type: "string", minLength: 1 },
-            sourceUrl: { type: "string", minLength: 1 },
-            duration: { type: ["integer", "null"] },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            required: ["title", "sourceUrl"],
+            properties: {
+              title: { type: "string", minLength: 1 },
+              sourceUrl: { type: "string", minLength: 1 },
+              duration: { type: ["integer", "null"] },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        { tag: "Music", response: { 201: { type: "object", additionalProperties: true } } },
+      ),
     },
     async (request, reply) => {
       const { guildId, albumId } = request.params as { guildId: string; albumId: string };
@@ -250,7 +290,16 @@ export function registerMusicRoutes(app: FastifyInstance): void {
   // DELETE a track
   app.delete(
     "/api/guilds/:guildId/music/library/:albumId/tracks/:trackId",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.library.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.library.manage")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        {
+          tag: "Music",
+          response: { 200: { type: "object", properties: { success: { type: "boolean" } } } },
+        },
+      ),
+    },
     async (request, reply) => {
       const { guildId, albumId, trackId } = request.params as {
         guildId: string;
