@@ -9,6 +9,7 @@ import {
 } from "@fluxcore/i18n/server";
 import { supportedLanguageCodes } from "@fluxcore/i18n";
 import type { TFunction } from "i18next";
+import { withDocs } from "./openapi-schemas.js";
 
 declare module "fastify" {
   interface FastifyRequest {
@@ -35,7 +36,30 @@ export async function registerI18n(app: FastifyInstance): Promise<void> {
   // Serve translation files for the client
   app.get<{
     Params: { lng: string; ns: string };
-  }>("/api/i18n/:lng/:ns", async (request, reply) => {
+  }>(
+    "/api/i18n/:lng/:ns",
+    {
+      schema: withDocs(
+        {
+          params: {
+            type: "object",
+            properties: {
+              lng: { type: "string" },
+              ns: { type: "string" },
+            },
+            required: ["lng", "ns"],
+          },
+        },
+        {
+          tag: "Meta",
+          secure: false,
+          response: {
+            200: { type: "object", additionalProperties: true },
+          },
+        },
+      ),
+    },
+    async (request, reply) => {
     const { lng, ns } = request.params;
 
     // Validate language and namespace

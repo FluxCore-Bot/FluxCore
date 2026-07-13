@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import { withDocs } from "../../shared/openapi-schemas.js";
 import { getPrisma } from "@fluxcore/database";
 import {
   PERMISSION_REGISTRY,
@@ -19,7 +20,13 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
   // GET current user's resolved permissions for this guild
   app.get(
     "/api/guilds/:guildId/my-permissions",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    {
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        { tag: "DashboardPermissions", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+      preHandler: [requireAuth, requireGuildAdmin],
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const resolved = request.resolvedPermissions!;
@@ -42,7 +49,13 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
   // GET permission registry (available permissions)
   app.get(
     "/api/guilds/:guildId/permission-registry",
-    { preHandler: [requireAuth, requireGuildAdmin] },
+    {
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        { tag: "DashboardPermissions", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+      preHandler: [requireAuth, requireGuildAdmin],
+    },
     async (_request, reply) => {
       reply.send(PERMISSION_REGISTRY);
     },
@@ -53,7 +66,13 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
   // GET a user's direct permission overrides
   app.get(
     "/api/guilds/:guildId/user-permissions/:userId",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.manage")] },
+    {
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        { tag: "DashboardPermissions", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.manage")],
+    },
     async (request, reply) => {
       const { guildId, userId } = request.params as { guildId: string; userId: string };
       const prisma = getPrisma();
@@ -84,20 +103,35 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/user-permissions/:userId",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.manage")],
-      schema: {
-        body: {
-          type: "object",
-          required: ["permissions"],
-          properties: {
-            permissions: {
-              type: "array",
-              items: { type: "string" },
-              maxItems: 100,
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            required: ["permissions"],
+            properties: {
+              permissions: {
+                type: "array",
+                items: { type: "string" },
+                maxItems: 100,
+              },
+            },
+            additionalProperties: false,
+          },
+        },
+        {
+          tag: "DashboardPermissions",
+          response: {
+            200: {
+              type: "object",
+              properties: {
+                success: { type: "boolean" },
+                permissions: { type: "array", items: { type: "string" } },
+              },
             },
           },
-          additionalProperties: false,
         },
-      },
+      ),
     },
     async (request, reply) => {
       const { guildId, userId } = request.params as { guildId: string; userId: string };
@@ -177,7 +211,16 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
   // DELETE clear all permission overrides for a user
   app.delete(
     "/api/guilds/:guildId/user-permissions/:userId",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.manage")] },
+    {
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        {
+          tag: "DashboardPermissions",
+          response: { 200: { type: "object", properties: { success: { type: "boolean" } } } },
+        },
+      ),
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.manage")],
+    },
     async (request, reply) => {
       const { guildId, userId } = request.params as { guildId: string; userId: string };
       const session = request.session!;
@@ -204,7 +247,13 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
   // GET dashboard settings
   app.get(
     "/api/guilds/:guildId/dashboard-settings",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.settings.manage")] },
+    {
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        { tag: "DashboardPermissions", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.settings.manage")],
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const prisma = getPrisma();
@@ -228,16 +277,20 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/dashboard-settings",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.settings.manage")],
-      schema: {
-        body: {
-          type: "object",
-          properties: {
-            auditRetentionDays: { type: "integer", minimum: 7, maximum: 365 },
-            requirePermissions: { type: "boolean" },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            properties: {
+              auditRetentionDays: { type: "integer", minimum: 7, maximum: 365 },
+              requirePermissions: { type: "boolean" },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        { tag: "DashboardPermissions", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -287,7 +340,16 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
   // GET audit log entries
   app.get(
     "/api/guilds/:guildId/dashboard-audit",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.audit.view")] },
+    {
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          querystring: { type: "object", properties: { page: { type: "integer", minimum: 1, default: 1 }, limit: { type: "integer", minimum: 1, maximum: 100, default: 20 }, sort: { type: "string" } } },
+        },
+        { tag: "DashboardPermissions", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.audit.view")],
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as {

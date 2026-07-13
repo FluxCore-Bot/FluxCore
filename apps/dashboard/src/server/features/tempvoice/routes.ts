@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import { withDocs } from "../../shared/openapi-schemas.js";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
 import {
   getGuildConfigs,
@@ -15,7 +16,13 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
   // GET all configs for a guild
   app.get(
     "/api/guilds/:guildId/tempvoice",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tempvoice.config.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tempvoice.config.view")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, {
+        tag: "TempVoice",
+        response: { 200: { type: "array", items: { type: "object", additionalProperties: true } } },
+      }),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const configs = getGuildConfigs(guildId);
@@ -26,7 +33,27 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
   // POST create a new config
   app.post(
     "/api/guilds/:guildId/tempvoice",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tempvoice.config.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tempvoice.config.manage")],
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            required: ["hubChannelId"],
+            properties: {
+              hubChannelId: { type: "string" },
+              categoryId: { type: ["string", "null"] },
+              nameTemplate: { type: "string" },
+            },
+          },
+        },
+        {
+          tag: "TempVoice",
+          response: { 201: { type: "object", additionalProperties: true } },
+        },
+      ),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const body = request.body as {
@@ -86,7 +113,26 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
   // PUT update an existing config
   app.put(
     "/api/guilds/:guildId/tempvoice/:configId",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tempvoice.config.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tempvoice.config.manage")],
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            properties: {
+              hubChannelId: { type: "string" },
+              categoryId: { type: ["string", "null"] },
+              nameTemplate: { type: "string" },
+            },
+          },
+        },
+        {
+          tag: "TempVoice",
+          response: { 200: { type: "object", additionalProperties: true } },
+        },
+      ),
+    },
     async (request, reply) => {
       const { guildId, configId } = request.params as {
         guildId: string;
@@ -148,7 +194,13 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
   // DELETE a specific config
   app.delete(
     "/api/guilds/:guildId/tempvoice/:configId",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("tempvoice.config.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tempvoice.config.manage")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, {
+        tag: "TempVoice",
+        response: { 200: { type: "object", properties: { success: { type: "boolean" } } } },
+      }),
+    },
     async (request, reply) => {
       const { guildId, configId } = request.params as {
         guildId: string;

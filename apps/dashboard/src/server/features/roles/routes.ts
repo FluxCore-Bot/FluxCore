@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import { withDocs } from "../../shared/openapi-schemas.js";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
 import {
   getRolePanels,
@@ -22,7 +23,10 @@ export function registerRolePanelRoutes(app: FastifyInstance): void {
   // GET all panels for a guild
   app.get(
     "/api/guilds/:guildId/role-panels",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.view")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "RolePanels", response: { 200: { type: "array", items: {} } } }),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const panels = await getRolePanels(guildId);
@@ -35,38 +39,62 @@ export function registerRolePanelRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/role-panels",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.manage")],
-      schema: {
-        body: {
-          type: "object",
-          required: ["name", "type", "channelId"],
-          properties: {
-            name: { type: "string", minLength: 1, maxLength: 100 },
-            type: { type: "string", enum: [...VALID_PANEL_TYPES] },
-            mode: { type: "string", enum: [...VALID_PANEL_MODES] },
-            channelId: { type: "string", minLength: 1 },
-            embed: { type: "string" },
-            roles: {
-              type: "array",
-              maxItems: MAX_ROLES_PER_PANEL,
-              items: {
-                type: "object",
-                required: ["roleId", "label"],
-                properties: {
-                  roleId: { type: "string", minLength: 1 },
-                  label: { type: "string", minLength: 1, maxLength: 80 },
-                  emoji: { type: "string" },
-                  description: { type: "string", maxLength: 100 },
-                  style: { type: "integer", minimum: 1, maximum: 4 },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            required: ["name", "type", "channelId"],
+            properties: {
+              name: { type: "string", minLength: 1, maxLength: 100 },
+              type: { type: "string", enum: [...VALID_PANEL_TYPES] },
+              mode: { type: "string", enum: [...VALID_PANEL_MODES] },
+              channelId: { type: "string", minLength: 1 },
+              embed: { type: "string" },
+              roles: {
+                type: "array",
+                maxItems: MAX_ROLES_PER_PANEL,
+                items: {
+                  type: "object",
+                  required: ["roleId", "label"],
+                  properties: {
+                    roleId: { type: "string", minLength: 1 },
+                    label: { type: "string", minLength: 1, maxLength: 80 },
+                    emoji: { type: "string" },
+                    description: { type: "string", maxLength: 100 },
+                    style: { type: "integer", minimum: 1, maximum: 4 },
+                  },
+                  additionalProperties: false,
                 },
-                additionalProperties: false,
+              },
+              maxRoles: { type: ["integer", "null"], minimum: 1 },
+              minRoles: { type: ["integer", "null"], minimum: 0 },
+            },
+            additionalProperties: false,
+          },
+        },
+        {
+          tag: "RolePanels",
+          response: {
+            201: {
+              type: "object",
+              properties: {
+                id: { type: "integer" },
+                guildId: { type: "string" },
+                channelId: { type: "string" },
+                name: { type: "string" },
+                type: { type: "string" },
+                mode: { type: "string" },
+                embed: { type: ["string", "null"] },
+                roles: { type: "array", items: {} },
+                maxRoles: { type: ["integer", "null"] },
+                minRoles: { type: ["integer", "null"] },
+                createdBy: { type: "string" },
               },
             },
-            maxRoles: { type: ["integer", "null"], minimum: 1 },
-            minRoles: { type: ["integer", "null"], minimum: 0 },
           },
-          additionalProperties: false,
         },
-      },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -109,37 +137,61 @@ export function registerRolePanelRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/role-panels/:panelId",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.manage")],
-      schema: {
-        body: {
-          type: "object",
-          properties: {
-            name: { type: "string", minLength: 1, maxLength: 100 },
-            type: { type: "string", enum: [...VALID_PANEL_TYPES] },
-            mode: { type: "string", enum: [...VALID_PANEL_MODES] },
-            channelId: { type: "string", minLength: 1 },
-            embed: { type: "string" },
-            roles: {
-              type: "array",
-              maxItems: MAX_ROLES_PER_PANEL,
-              items: {
-                type: "object",
-                required: ["roleId", "label"],
-                properties: {
-                  roleId: { type: "string", minLength: 1 },
-                  label: { type: "string", minLength: 1, maxLength: 80 },
-                  emoji: { type: "string" },
-                  description: { type: "string", maxLength: 100 },
-                  style: { type: "integer", minimum: 1, maximum: 4 },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            properties: {
+              name: { type: "string", minLength: 1, maxLength: 100 },
+              type: { type: "string", enum: [...VALID_PANEL_TYPES] },
+              mode: { type: "string", enum: [...VALID_PANEL_MODES] },
+              channelId: { type: "string", minLength: 1 },
+              embed: { type: "string" },
+              roles: {
+                type: "array",
+                maxItems: MAX_ROLES_PER_PANEL,
+                items: {
+                  type: "object",
+                  required: ["roleId", "label"],
+                  properties: {
+                    roleId: { type: "string", minLength: 1 },
+                    label: { type: "string", minLength: 1, maxLength: 80 },
+                    emoji: { type: "string" },
+                    description: { type: "string", maxLength: 100 },
+                    style: { type: "integer", minimum: 1, maximum: 4 },
+                  },
+                  additionalProperties: false,
                 },
-                additionalProperties: false,
+              },
+              maxRoles: { type: ["integer", "null"], minimum: 1 },
+              minRoles: { type: ["integer", "null"], minimum: 0 },
+            },
+            additionalProperties: false,
+          },
+        },
+        {
+          tag: "RolePanels",
+          response: {
+            200: {
+              type: "object",
+              properties: {
+                id: { type: "integer" },
+                guildId: { type: "string" },
+                channelId: { type: "string" },
+                name: { type: "string" },
+                type: { type: "string" },
+                mode: { type: "string" },
+                embed: { type: ["string", "null"] },
+                roles: { type: "array", items: {} },
+                maxRoles: { type: ["integer", "null"] },
+                minRoles: { type: ["integer", "null"] },
+                createdBy: { type: "string" },
               },
             },
-            maxRoles: { type: ["integer", "null"], minimum: 1 },
-            minRoles: { type: ["integer", "null"], minimum: 0 },
           },
-          additionalProperties: false,
         },
-      },
+      ),
     },
     async (request, reply) => {
       const { guildId, panelId } = request.params as { guildId: string; panelId: string };
@@ -189,7 +241,10 @@ export function registerRolePanelRoutes(app: FastifyInstance): void {
   // DELETE a panel
   app.delete(
     "/api/guilds/:guildId/role-panels/:panelId",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.manage")],
+      schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "RolePanels", response: { 200: { type: "object", properties: { success: { type: "boolean" } } } } }),
+    },
     async (request, reply) => {
       const { guildId, panelId } = request.params as { guildId: string; panelId: string };
       const id = parseIntParam(panelId);
@@ -211,7 +266,25 @@ export function registerRolePanelRoutes(app: FastifyInstance): void {
   // POST send/resend panel message
   app.post(
     "/api/guilds/:guildId/role-panels/:panelId/send",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.manage")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        {
+          tag: "RolePanels",
+          response: {
+            200: {
+              type: "object",
+              properties: {
+                success: { type: "boolean" },
+                message: { type: "string" },
+                panel: {},
+              },
+            },
+          },
+        },
+      ),
+    },
     async (request, reply) => {
       const { guildId, panelId } = request.params as { guildId: string; panelId: string };
       const id = parseIntParam(panelId);

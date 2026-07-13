@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import { withDocs } from "../../shared/openapi-schemas.js";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
 import { getStarboardSettings, upsertStarboardSettings } from "@fluxcore/systems/starboard/config";
 import { getStarboardEntries } from "@fluxcore/systems/starboard/persistence";
@@ -8,7 +9,16 @@ export function registerStarboardRoutes(app: FastifyInstance): void {
   // GET starred messages
   app.get(
     "/api/guilds/:guildId/starboard",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("starboard.entries.view")] },
+    {
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          querystring: { type: "object", properties: { page: { type: "integer", minimum: 1, default: 1 }, limit: { type: "integer", minimum: 1, maximum: 100, default: 20 }, sort: { type: "string" } } },
+        },
+        { tag: "Starboard", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("starboard.entries.view")],
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as { page?: string; limit?: string };
@@ -27,7 +37,13 @@ export function registerStarboardRoutes(app: FastifyInstance): void {
   // GET starboard settings
   app.get(
     "/api/guilds/:guildId/starboard-settings",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("starboard.settings.manage")] },
+    {
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        { tag: "Starboard", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("starboard.settings.manage")],
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const settings = await getStarboardSettings(guildId);
@@ -40,21 +56,25 @@ export function registerStarboardRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/starboard-settings",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("starboard.settings.manage")],
-      schema: {
-        body: {
-          type: "object",
-          properties: {
-            enabled: { type: "boolean" },
-            channelId: { type: ["string", "null"] },
-            emoji: { type: "string", minLength: 1, maxLength: 100 },
-            threshold: { type: "integer", minimum: 1, maximum: 100 },
-            selfStar: { type: "boolean" },
-            ignoredChannels: { type: "array", items: { type: "string" } },
-            nsfwHandling: { type: "string", enum: ["ignore", "separate"] },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            properties: {
+              enabled: { type: "boolean" },
+              channelId: { type: ["string", "null"] },
+              emoji: { type: "string", minLength: 1, maxLength: 100 },
+              threshold: { type: "integer", minimum: 1, maximum: 100 },
+              selfStar: { type: "boolean" },
+              ignoredChannels: { type: "array", items: { type: "string" } },
+              nsfwHandling: { type: "string", enum: ["ignore", "separate"] },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        { tag: "Starboard", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };

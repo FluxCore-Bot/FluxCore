@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import { withDocs } from "../../shared/openapi-schemas.js";
 import { requireAuth } from "../../shared/middleware.js";
 import { isBotInGuild } from "../../shared/discordApi.js";
 import { canManageGuild } from "../../shared/guildPermissions.js";
@@ -33,7 +34,25 @@ async function buildManageableGuilds(guilds: OAuthGuild[]) {
 export function registerGuildRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds",
-    { preHandler: [requireAuth] },
+    {
+      preHandler: [requireAuth],
+      schema: withDocs(undefined, {
+        tag: "Guilds",
+        response: {
+          200: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                id: { type: "string" },
+                name: { type: "string" },
+                icon: { type: ["string", "null"] },
+              },
+            },
+          },
+        },
+      }),
+    },
     async (request, reply) => {
       const session = request.session!;
       reply.send(await buildManageableGuilds(session.guilds));
@@ -48,6 +67,22 @@ export function registerGuildRoutes(app: FastifyInstance): void {
     {
       preHandler: [requireAuth],
       config: { rateLimit: { max: 20, timeWindow: "1 minute" } },
+      schema: withDocs(undefined, {
+        tag: "Guilds",
+        response: {
+          200: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                id: { type: "string" },
+                name: { type: "string" },
+                icon: { type: ["string", "null"] },
+              },
+            },
+          },
+        },
+      }),
     },
     async (request, reply) => {
       const guilds = await forceRefreshSessionGuilds(request.sessionId!);

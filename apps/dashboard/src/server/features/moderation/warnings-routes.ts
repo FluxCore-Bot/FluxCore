@@ -14,6 +14,7 @@ import {
   removePunishment,
 } from "@fluxcore/systems/warnings/config";
 import { MAX_REASON_LENGTH, VALID_ESCALATION_ACTIONS } from "@fluxcore/systems/warnings/constants";
+import { withDocs } from "../../shared/openapi-schemas.js";
 
 function parseIntParam(value: string): number | null {
   const n = parseInt(value, 10);
@@ -24,7 +25,13 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   // GET warnings for a guild (filterable by userId)
   app.get(
     "/api/guilds/:guildId/warnings",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.warnings.view")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.warnings.view")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] }, querystring: { type: "object", properties: { page: { type: "integer", minimum: 1, default: 1 }, limit: { type: "integer", minimum: 1, maximum: 100, default: 20 }, sort: { type: "string" } } } },
+        { tag: "Warnings", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const query = request.query as { userId?: string; page?: string; limit?: string };
@@ -46,17 +53,21 @@ export function registerWarningRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/warnings",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.warnings.manage")],
-      schema: {
-        body: {
-          type: "object",
-          required: ["userId", "reason"],
-          properties: {
-            userId: { type: "string", minLength: 1 },
-            reason: { type: "string", minLength: 1, maxLength: MAX_REASON_LENGTH },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            required: ["userId", "reason"],
+            properties: {
+              userId: { type: "string", minLength: 1 },
+              reason: { type: "string", minLength: 1, maxLength: MAX_REASON_LENGTH },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        { tag: "Warnings", response: { 201: { type: "object", additionalProperties: true } } },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -76,7 +87,16 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   // DELETE a specific warning
   app.delete(
     "/api/guilds/:guildId/warnings/:warningId",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.warnings.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.warnings.manage")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        {
+          tag: "Warnings",
+          response: { 200: { type: "object", properties: { success: { type: "boolean" } } } },
+        },
+      ),
+    },
     async (request, reply) => {
       const { guildId, warningId } = request.params as { guildId: string; warningId: string };
       const id = parseIntParam(warningId);
@@ -92,7 +112,21 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   // DELETE all warnings for a user
   app.delete(
     "/api/guilds/:guildId/warnings/user/:userId",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.warnings.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.warnings.manage")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        {
+          tag: "Warnings",
+          response: {
+            200: {
+              type: "object",
+              properties: { success: { type: "boolean" }, count: { type: "integer" } },
+            },
+          },
+        },
+      ),
+    },
     async (request, reply) => {
       const { guildId, userId } = request.params as { guildId: string; userId: string };
       const count = await deleteAllWarnings(guildId, userId);
@@ -103,7 +137,13 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   // GET punishment config
   app.get(
     "/api/guilds/:guildId/warn-punishments",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        { tag: "Warnings", response: { 200: { type: "array", items: { type: "object", additionalProperties: true } } } },
+      ),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const punishments = await getPunishments(guildId);
@@ -116,18 +156,22 @@ export function registerWarningRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/warn-punishments",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")],
-      schema: {
-        body: {
-          type: "object",
-          required: ["threshold", "action"],
-          properties: {
-            threshold: { type: "integer", minimum: 1 },
-            action: { type: "string", enum: [...VALID_ESCALATION_ACTIONS] },
-            duration: { type: ["integer", "null"], minimum: 1 },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            required: ["threshold", "action"],
+            properties: {
+              threshold: { type: "integer", minimum: 1 },
+              action: { type: "string", enum: [...VALID_ESCALATION_ACTIONS] },
+              duration: { type: ["integer", "null"], minimum: 1 },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        { tag: "Warnings", response: { 201: { type: "object", additionalProperties: true } } },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -145,7 +189,16 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   // DELETE a punishment
   app.delete(
     "/api/guilds/:guildId/warn-punishments/:id",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        {
+          tag: "Warnings",
+          response: { 200: { type: "object", properties: { success: { type: "boolean" } } } },
+        },
+      ),
+    },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
       const punishmentId = parseIntParam(id);
@@ -161,7 +214,13 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   // GET warn settings
   app.get(
     "/api/guilds/:guildId/warn-settings",
-    { preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")] },
+    {
+      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")],
+      schema: withDocs(
+        { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
+        { tag: "Warnings", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
+    },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
       const settings = await getWarnSettings(guildId);
@@ -174,17 +233,21 @@ export function registerWarningRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/warn-settings",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")],
-      schema: {
-        body: {
-          type: "object",
-          properties: {
-            dmOnWarn: { type: "boolean" },
-            reasonRequired: { type: "boolean" },
-            maxWarnings: { type: "integer", minimum: 0 },
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          body: {
+            type: "object",
+            properties: {
+              dmOnWarn: { type: "boolean" },
+              reasonRequired: { type: "boolean" },
+              maxWarnings: { type: "integer", minimum: 0 },
+            },
+            additionalProperties: false,
           },
-          additionalProperties: false,
         },
-      },
+        { tag: "Warnings", response: { 200: { type: "object", additionalProperties: true } } },
+      ),
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };

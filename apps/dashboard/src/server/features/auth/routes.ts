@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import { withDocs } from "../../shared/openapi-schemas.js";
 import { config } from "@fluxcore/config";
 import {
   buildCallbackUrl,
@@ -20,7 +21,7 @@ const authRateLimit = {
 };
 
 export function registerAuthRoutes(app: FastifyInstance): void {
-  app.get("/auth/login", { ...authRateLimit }, async (_request, reply) => {
+  app.get("/auth/login", { ...authRateLimit, schema: withDocs(undefined, { tag: "Auth", secure: false }) }, async (_request, reply) => {
     const callbackUrl = buildCallbackUrl(config.dashboardPublicUrl);
     const { url, state } = getAuthorizationUrl(callbackUrl);
     reply
@@ -35,7 +36,7 @@ export function registerAuthRoutes(app: FastifyInstance): void {
       .redirect(url);
   });
 
-  app.get("/auth/callback", { ...authRateLimit }, async (request, reply) => {
+  app.get("/auth/callback", { ...authRateLimit, schema: withDocs(undefined, { tag: "Auth", secure: false }) }, async (request, reply) => {
     const { code, state } = request.query as {
       code?: string;
       state?: string;
@@ -100,7 +101,7 @@ export function registerAuthRoutes(app: FastifyInstance): void {
     }
   });
 
-  app.get("/auth/csrf", async (_request, reply) => {
+  app.get("/auth/csrf", { schema: withDocs(undefined, { tag: "Auth", secure: false, response: { 200: { type: "object", properties: { token: { type: "string" } } } } }) }, async (_request, reply) => {
     const token = generateCsrfToken();
     reply
       .setCookie("csrf_token", token, {
@@ -113,7 +114,7 @@ export function registerAuthRoutes(app: FastifyInstance): void {
       .send({ token });
   });
 
-  app.get("/auth/logout", async (request, reply) => {
+  app.get("/auth/logout", { schema: withDocs(undefined, { tag: "Auth", secure: false }) }, async (request, reply) => {
     const sessionCookie = request.cookies?.session;
     if (sessionCookie) {
       const unsigned = request.unsignCookie(sessionCookie);
@@ -124,7 +125,7 @@ export function registerAuthRoutes(app: FastifyInstance): void {
     reply.clearCookie("session", { path: "/" }).redirect("/");
   });
 
-  app.get("/auth/me", async (request, reply) => {
+  app.get("/auth/me", { schema: withDocs(undefined, { tag: "Auth", secure: false, response: { 200: { type: "object", properties: { userId: { type: "string" }, username: { type: "string" }, avatar: { type: ["string", "null"] } } } } }) }, async (request, reply) => {
     const sessionCookie = request.cookies?.session;
     if (!sessionCookie) {
       reply.code(401).send({ error: "Not authenticated" });
