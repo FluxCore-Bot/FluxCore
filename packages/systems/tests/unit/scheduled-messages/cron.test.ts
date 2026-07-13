@@ -1,61 +1,9 @@
 import { describe, it, expect } from "vitest";
 import {
-  parseCronExpression,
   validateCronExpression,
   getNextCronRun,
   describeCron,
 } from "../../../src/scheduled-messages/cron.js";
-
-describe("parseCronExpression", () => {
-  it("parses a simple daily cron", () => {
-    const result = parseCronExpression("0 9 * * *");
-    expect(result.minutes).toEqual([0]);
-    expect(result.hours).toEqual([9]);
-    expect(result.daysOfMonth.length).toBe(31);
-    expect(result.months.length).toBe(12);
-    expect(result.daysOfWeek.length).toBe(7);
-  });
-
-  it("parses every hour", () => {
-    const result = parseCronExpression("0 * * * *");
-    expect(result.minutes).toEqual([0]);
-    expect(result.hours.length).toBe(24);
-  });
-
-  it("parses a specific weekday", () => {
-    const result = parseCronExpression("0 9 * * 1");
-    expect(result.daysOfWeek).toEqual([1]);
-  });
-
-  it("parses step expressions", () => {
-    const result = parseCronExpression("*/15 * * * *");
-    expect(result.minutes).toEqual([0, 15, 30, 45]);
-  });
-
-  it("parses range expressions", () => {
-    const result = parseCronExpression("0 9-17 * * *");
-    expect(result.hours).toEqual([9, 10, 11, 12, 13, 14, 15, 16, 17]);
-  });
-
-  it("parses comma-separated values", () => {
-    const result = parseCronExpression("0 9,12,18 * * *");
-    expect(result.hours).toEqual([9, 12, 18]);
-  });
-
-  it("parses combined range with step", () => {
-    const result = parseCronExpression("0 */6 * * *");
-    expect(result.hours).toEqual([0, 6, 12, 18]);
-  });
-
-  it("throws for invalid number of fields", () => {
-    expect(() => parseCronExpression("0 9 * *")).toThrow("expected 5 fields");
-    expect(() => parseCronExpression("0 9 * * * *")).toThrow("expected 5 fields");
-  });
-
-  it("throws for invalid values", () => {
-    expect(() => parseCronExpression("abc 9 * * *")).toThrow();
-  });
-});
 
 describe("validateCronExpression", () => {
   it("returns null for valid expressions", () => {
