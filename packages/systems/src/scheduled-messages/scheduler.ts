@@ -1,11 +1,13 @@
 import type { Client, TextBasedChannel } from "discord.js";
 import { EmbedBuilder } from "discord.js";
 import { logger } from "@fluxcore/utils";
+import { JobQueue } from "../queue/JobQueue.js";
 import { getDueMessages, markMessageExecuted } from "./persistence.js";
 import { SCHEDULER_CHECK_INTERVAL_MS } from "./constants.js";
 import type { ScheduledMessageRow } from "./types.js";
 
-let schedulerTimer: ReturnType<typeof setInterval> | null = null;
+let producerTimer: ReturnType<typeof setInterval> | null = null;
+let queue: JobQueue<ScheduledMessageRow> | null = null;
 
 function buildEmbed(embed: NonNullable<ScheduledMessageRow["message"]["embed"]>): EmbedBuilder {
   const builder = new EmbedBuilder();
@@ -25,19 +27,16 @@ function buildEmbed(embed: NonNullable<ScheduledMessageRow["message"]["embed"]>)
   return builder;
 }
 
-export async function processScheduledMessages(client: Client): Promise<void> {
-  const due = await getDueMessages();
-
-  for (const msg of due) {
+export async function startScheduledMessageScheduler(client: Client): Promise<void> {
+  queue = new JobQueue<ScheduledMessageRow>(async (msg) => {
     try {
       const guild = await client.guilds.fetch(msg.guildId);
       const channel = guild.channels.cache.get(msg.channelId) as TextBasedChannel | undefined;
 
       if (!channel || !("send" in channel)) {
         logger.warn(`Scheduled message ${msg.id}: channel ${msg.channelId} not found or not text-based`);
-        // Still update nextRunAt so we don't retry every tick
         await markMessageExecuted(msg.id, msg.cronExpr, msg.timezone);
-        continue;
+        return;
       }
 
       const response = msg.message;
@@ -56,39 +55,43 @@ export async function processScheduledMessages(client: Client): Promise<void> {
         `Scheduled message ${msg.id} failed`,
         error instanceof Error ? error : new Error(String(error)),
       );
-      // Still advance nextRunAt to prevent retry loops
       try {
         await markMessageExecuted(msg.id, msg.cronExpr, msg.timezone);
       } catch {
         // Ignore secondary failure
       }
     }
-  }
-}
+  });
 
-export function startScheduledMessageScheduler(client: Client): void {
+  queue.start();
+
   // Run immediately on startup
-  processScheduledMessages(client).catch((err: unknown) =>
-    logger.error(
-      "Scheduled message check failed",
-      err instanceof Error ? err : new Error(String(err)),
-    ),
-  );
+  const due = await getDueMessages();
+  queue.enqueue(due);
 
-  schedulerTimer = setInterval(() => {
-    processScheduledMessages(client).catch((err: unknown) =>
+  producerTimer = setInterval(async () => {
+    try {
+      const due = await getDueMessages();
+      queue!.enqueue(due);
+    } catch (error) {
       logger.error(
         "Scheduled message check failed",
-        err instanceof Error ? err : new Error(String(err)),
-      ),
-    );
+        error instanceof Error ? error : new Error(String(error)),
+      );
+    }
   }, SCHEDULER_CHECK_INTERVAL_MS);
-  (schedulerTimer as unknown as { unref: () => void }).unref();
+  (producerTimer as unknown as { unref: () => void }).unref();
+
+  logger.info("Scheduled messages scheduler started");
 }
 
 export function stopScheduledMessageScheduler(): void {
-  if (schedulerTimer) {
-    clearInterval(schedulerTimer);
-    schedulerTimer = null;
+  if (producerTimer) {
+    clearInterval(producerTimer);
+    producerTimer = null;
+  }
+  if (queue) {
+    queue.stop();
+    queue = null;
   }
 }

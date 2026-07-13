@@ -367,6 +367,7 @@
     "@fluxcore/database": "workspace:*",
     "@fluxcore/utils": "workspace:*",
     "@napi-rs/canvas": "^0.1.97",
+    "cron-parser": "^5.6.2",
     "discord.js": "catalog:",
     "zod": "^3.25.76"
   },

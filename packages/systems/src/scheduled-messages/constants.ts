@@ -1,5 +1,5 @@
 /** Interval in milliseconds for checking due scheduled messages */
-export const SCHEDULER_CHECK_INTERVAL_MS = 60_000; // 60 seconds
+export const SCHEDULER_CHECK_INTERVAL_MS = 1_000; // 1 second
 
 /** Maximum number of scheduled messages per guild */
 export const MAX_SCHEDULED_MESSAGES_PER_GUILD = 25;
