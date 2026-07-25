@@ -20,17 +20,16 @@
    - [Moderation](#33-moderation)
    - [Logging](#34-logging)
    - [TempVoice](#35-tempvoice)
-   - [Music](#36-music)
-   - [Welcome & Farewell](#37-welcome--farewell)
-   - [Role Panels](#38-role-panels)
-   - [Leveling / XP](#39-leveling--xp)
-   - [Tickets](#310-tickets)
-   - [Suggestions](#311-suggestions)
-   - [Starboard](#312-starboard)
-   - [Giveaways](#313-giveaways)
-   - [Anti-Raid](#314-anti-raid)
-   - [Custom Commands](#315-custom-commands)
-   - [Scheduled Messages](#316-scheduled-messages)
+   - [Welcome & Farewell](#36-welcome--farewell)
+   - [Role Panels](#37-role-panels)
+   - [Leveling / XP](#38-leveling--xp)
+   - [Tickets](#39-tickets)
+   - [Suggestions](#310-suggestions)
+   - [Starboard](#311-starboard)
+   - [Giveaways](#312-giveaways)
+   - [Anti-Raid](#313-anti-raid)
+   - [Custom Commands](#314-custom-commands)
+   - [Scheduled Messages](#315-scheduled-messages)
 4. [Bot Application](#4-bot-application)
    - [Commands](#42-commands)
    - [Events](#43-events)
@@ -58,7 +57,7 @@ FluxCore is a modular Discord bot framework with an integrated admin dashboard. 
 │  │   apps/bot          │    │   apps/dashboard          │   │
 │  │   Discord Bot       │    │   Admin Dashboard         │   │
 │  │   (discord.js v14)  │    │   (Fastify 5 + React 19)  │   │
-│  │   Shoukaku (Lavalink)│   │   Vite 6, TanStack Router │   │
+│  │                     │    │   Vite 6, TanStack Router │   │
 │  └────────┬────────────┘    └───────────┬───────────────┘   │
 │           │                              │                    │
 │           └──────────┬───────────────────┘                    │
@@ -109,7 +108,6 @@ FluxCore is a modular Discord bot framework with an integrated admin dashboard. 
 | Dashboard | `DASHBOARD_PORT`, `DASHBOARD_CLIENT_SECRET`, `DASHBOARD_SESSION_SECRET`, `DASHBOARD_CALLBACK_URL`, `DASHBOARD_PUBLIC_URL` | OAuth, sessions, CSRF |
 | Bot Sync | `BOT_SYNC_PORT`, `BOT_SYNC_SECRET`, `BOT_SYNC_URL` | Dashboard→bot cache invalidation |
 | Database | `DATABASE_USER`, `DATABASE_PASSWORD`, `DATABASE_HOST`, `DATABASE_PORT`, `DATABASE_NAME` | PostgreSQL connection |
-| Lavalink | `LAVALINK_HOST`, `LAVALINK_PORT`, `LAVALINK_PASSWORD` | Music system |
 | General | `LOG_LEVEL`, `NODE_ENV` | Runtime behavior |
 
 **Key files:**
@@ -132,7 +130,7 @@ FluxCore is a modular Discord bot framework with an integrated admin dashboard. 
 | `src/Event.ts` | Gateway event type definition (`Event` interface with name, once, execute) |
 | `src/anti-raid.ts` | Anti-raid configuration types (join rate, account age, nuke thresholds) |
 | `src/custom-commands.ts` | Custom command trigger types (command/keyword/startsWith/regex) and response types |
-| `src/dashboard-permissions.ts` | Permission registry (49 permissions across 15 modules), `matchPermission()`, `expandWildcard()`, `ROLE_PRESETS` |
+| `src/dashboard-permissions.ts` | Permission registry (48 permissions across 15 modules), `matchPermission()`, `expandWildcard()`, `ROLE_PRESETS` |
 | `src/giveaways.ts` | Giveaway types (prize, winners, requirements) |
 | `src/scheduled-messages.ts` | Scheduled message types + `CRON_PRESETS` |
 | `src/suggestions.ts` | Suggestion types (status, votes) |
@@ -194,7 +192,6 @@ FluxCore is a modular Discord bot framework with an integrated admin dashboard. 
 | Automation | `ActionRule`, `ActionLog`, `ActionGuildSettings`, `ActionCacheInvalidation` |
 | Reminders | `Reminder` |
 | Auth | `DashboardSession` |
-| Music | `MusicGuildSettings`, `MusicLibraryAlbum`, `MusicLibraryTrack` |
 | Logging | `LogGuildConfig`, `LogEntry` |
 | Warnings | `Warning`, `WarnPunishment`, `WarnGuildSettings` |
 | Moderation | `ModCase`, `ModGuildSettings` |
@@ -411,30 +408,7 @@ Temporary voice channels — users join a hub channel and get a private channel 
 
 ---
 
-### 3.6 Music
-
-**Status:** Done | **Spec:** `docs/features/music.md`
-
-Music playback system using Lavalink (via Shoukaku). Supports guild-specific settings and a library system for organizing saved tracks.
-
-**Database models:**
-- `MusicGuildSettings` — guildId, mode (normal/dj-only), djRoleId, defaultVolume, twentyFourSeven (stay in VC when empty)
-- `MusicLibraryAlbum` — guildId, name, coverUrl, createdBy
-- `MusicLibraryTrack` — guildId, albumId, title, url, addedBy
-
-**Bot integration:**
-- `/play <query>` — Search and play from YouTube (via Lavalink)
-- `/queue` — View current queue
-- Buttons: skip, stop, pause/resume, loop, shuffle, volume
-- Panel embed that auto-updates as tracks change
-
-**Dj-only mode:** Only users with the DJ role can control playback.
-
-**24/7 mode:** Bot stays in voice channel even when the queue is empty.
-
----
-
-### 3.7 Welcome & Farewell
+### 3.6 Welcome & Farewell
 
 **Status:** Not Started | **Spec:** `docs/features/welcome-farewell.md`
 
@@ -453,7 +427,7 @@ Customizable welcome messages (channel + DM) and farewell messages when members 
 
 ---
 
-### 3.8 Role Panels
+### 3.7 Role Panels
 
 **Status:** Not Started | **Spec:** `docs/features/reaction-roles.md`
 
@@ -475,7 +449,7 @@ Self-assignable roles via reactions, buttons, or dropdown menus on messages.
 
 ---
 
-### 3.9 Leveling / XP
+### 3.8 Leveling / XP
 
 **Status:** Not Started | **Spec:** `docs/features/leveling.md`
 
@@ -501,7 +475,7 @@ Gamification system — members earn XP for messages and voice activity, gain le
 
 ---
 
-### 3.10 Tickets
+### 3.9 Tickets
 
 **Status:** Not Started | **Spec:** `docs/features/tickets.md`
 
@@ -526,7 +500,7 @@ Private support channel system — users click a panel button to open a private 
 
 ---
 
-### 3.11 Suggestions
+### 3.10 Suggestions
 
 **Status:** Not Started | **Spec:** `docs/features/suggestions.md`
 
@@ -547,7 +521,7 @@ Community suggestion submission system with voting and status management.
 
 ---
 
-### 3.12 Starboard
+### 3.11 Starboard
 
 **Status:** Not Started | **Spec:** `docs/features/starboard.md`
 
@@ -568,7 +542,7 @@ Auto-reposts popular messages to a highlights channel when they reach a configur
 
 ---
 
-### 3.13 Giveaways
+### 3.12 Giveaways
 
 **Status:** Not Started | **Spec:** `docs/features/giveaways.md`
 
@@ -586,7 +560,7 @@ Timed giveaway system with reaction entry, role requirements, multiple winners, 
 
 ---
 
-### 3.14 Anti-Raid
+### 3.13 Anti-Raid
 
 **Status:** Not Started | **Spec:** `docs/features/anti-raid.md`
 
@@ -606,7 +580,7 @@ Protection against raids (mass joins), nuking (mass deletions/changes), and susp
 
 ---
 
-### 3.15 Custom Commands
+### 3.14 Custom Commands
 
 **Status:** Not Started | **Spec:** `docs/features/custom-commands.md`
 
@@ -630,7 +604,7 @@ User-created text commands and auto-responders. Entirely managed via dashboard �
 
 ---
 
-### 3.16 Scheduled Messages
+### 3.15 Scheduled Messages
 
 **Status:** Not Started | **Spec:** `docs/features/scheduled-messages.md`
 
@@ -658,10 +632,9 @@ Recurring auto-posted messages on cron schedules. Dashboard-only management.
 3. Creates `ExtendedClient` (custom Discord.js Client)
 4. Loads commands dynamically from per-module directories
 5. Loads events dynamically from per-module feature directories
-6. Initializes Shoukaku (Lavalink client for music)
-7. Starts the sync HTTP server (for dashboard→bot cache invalidation)
-8. Logs in to Discord
-9. Registers graceful shutdown handlers
+6. Starts the sync HTTP server (for dashboard→bot cache invalidation)
+7. Logs in to Discord
+8. Registers graceful shutdown handlers
 
 ---
 
@@ -674,7 +647,6 @@ commands/
   general/         → General purpose (8 commands)
   moderation/      → Punitive & case management (15 commands)
   utility/         → Misc utilities (3 commands)
-  music/           → Music playback (2 commands)
   tempvoice/       → Temp voice management (1 command)
   tickets/         → Ticket management (5 commands)
   suggestions/     → Suggestion management (2 commands)
@@ -723,7 +695,7 @@ events/
   guildMemberUpdate.ts    → Logging
   guildBanAdd.ts          → Logging, anti-nuke
   guildBanRemove.ts       → Logging
-  voiceStateUpdate.ts     → TempVoice, music, voice XP, logging
+  voiceStateUpdate.ts     → TempVoice, voice XP, logging
   channelCreate.ts        → Logging, anti-nuke
   channelDelete.ts        → Logging, anti-nuke
   channelUpdate.ts        → Logging
@@ -742,7 +714,6 @@ These are bot-specific implementations that consume the shared `@fluxcore/system
 | System | Directory | Purpose |
 |--------|-----------|---------|
 | **Automation** | `features/automation/system/` | Event bridge — listens to all 19 event types, matches against action rules, executes matched actions. Includes sync server (HTTP endpoint for dashboard→bot cache invalidation). |
-| **Music** | `features/music/system/` | Shoukaku node manager, queue controller, track event handlers, now-playing panel (auto-updating embed), settings reactor (applies config changes in real-time). |
 | **TempVoice** | `features/tempvoice/system/` | Voice channel lifecycle manager — creates channels on join, deletes on empty, handles button interactions (rename, limit, lock, hide, claim, ban). |
 | **Tickets** | `features/tickets/system/` | Panel button handlers, ticket modal forms, channel permission management, auto-close scheduler. |
 | **Giveaways** | `features/giveaways/system/` | Reaction entry tracking, winner selection, embed updates. |
@@ -753,7 +724,7 @@ These are bot-specific implementations that consume the shared `@fluxcore/system
 
 | File | Purpose |
 |------|---------|
-| `shared/client/ExtendedClient.ts` | Custom `Client` subclass with database, Shoukaku, sync server references |
+| `shared/client/ExtendedClient.ts` | Custom `Client` subclass with database, sync server references |
 | `shared/handlers/commandHandler.ts` | Dynamic command loading from `commands/<module>/` directories |
 | `shared/handlers/eventHandler.ts` | Dynamic event registration from `events/` and `features/*/events/` |
 | `shared/systems/reminders.ts` | Polling-based reminder delivery system |
@@ -814,7 +785,6 @@ apps/dashboard/src/
 | `features/moderation/warnings-routes.ts` | CRUD `/api/guilds/:id/warnings/` | Warnings, punishments, settings |
 | `features/logging/routes.ts` | `GET /api/guilds/:id/logs` | Log browser, log config |
 | `features/actions/routes.ts` | CRUD `/api/guilds/:id/actions/` | Action rules, reorder, analytics |
-| `features/music/routes.ts` | CRUD `/api/guilds/:id/music/` | Music settings, library |
 | `features/tempvoice/routes.ts` | CRUD `/api/guilds/:id/tempvoice/` | Temp voice config |
 | `features/welcome/routes.ts` | `GET/PUT /api/guilds/:id/welcome` | Welcome/farewell config |
 | `features/roles/routes.ts` | CRUD `/api/guilds/:id/role-panels/` | Role panels |
@@ -842,7 +812,7 @@ apps/dashboard/src/
 
 ### 5.3 Client Pages
 
-The dashboard has 19 main pages under `/guild/$guildId/`:
+The dashboard has 18 main pages under `/guild/$guildId/`:
 
 | Route | Page | Features |
 |-------|------|----------|
@@ -851,7 +821,6 @@ The dashboard has 19 main pages under `/guild/$guildId/`:
 | `/moderation` | Moderation | Cases table (filterable, searchable), settings panel (DM toggle, mod log channel) |
 | `/warnings` | Warnings | Stats bar, warning history table, escalation config (threshold → action), settings |
 | `/logs` | Logs | Per-category config (channel, event toggles), log browser with filters, stats |
-| `/music` | Music | Guild settings (mode, DJ role, volume, 24/7), library management (albums, tracks) |
 | `/tempvoice` | TempVoice | Hub channel, category, name format, bitrate, user limit config |
 | `/welcome` | Welcome | Welcome/farewell toggle + embed builder + auto-role, live preview, test button |
 | `/roles` | Role Panels | Panel list, builder (name, type, mode, embed, role entries with emoji picker) |
@@ -900,9 +869,9 @@ The dashboard has 19 main pages under `/guild/$guildId/`:
 Granular RBAC system for the dashboard. `MANAGE_GUILD` permission is the entry gate; this adds fine-grained control within that gate.
 
 **Permission format:** `<module>.<resource>.<action>`
-Example: `moderation.cases.view`, `music.settings.manage`
+Example: `moderation.cases.view`, `moderation.settings.manage`
 
-**49 permissions across 15 modules**, covering:
+**48 permissions across 15 modules**, covering:
 - View vs Manage access separation
 - Module-level wildcards (`moderation.*`)
 - Resource-level wildcards (`*.settings.manage`)
@@ -912,7 +881,6 @@ Example: `moderation.cases.view`, `music.settings.manage`
 - Full Admin — `*`
 - Moderator — moderation, warnings, logs
 - Content Manager — welcome, roles, suggestions, starboard
-- Music DJ — music only
 - Viewer (Read-Only) — all `.view` permissions
 
 **Resolution order:**
@@ -991,7 +959,7 @@ Profiles for different development scenarios:
 
 | Profile | Services | Usage |
 |---------|----------|-------|
-| `bot` | bot + postgres + lavalink | `pnpm dev:bot` |
+| `bot` | bot + postgres | `pnpm dev:bot` |
 | `dashboard` | dashboard + postgres | `pnpm dev:dashboard` |
 | `full` | all services | `pnpm dev` |
 | `preview` | prebuilt production images | `pnpm preview` |
@@ -1004,7 +972,6 @@ Profiles for different development scenarios:
 | 3000 | Dashboard API (Fastify) |
 | 5173 | Vite HMR (development) |
 | 5432 | PostgreSQL |
-| 2333 | Lavalink |
 | 5050 | pgAdmin |
 
 ### Root Scripts
@@ -1076,11 +1043,7 @@ Profiles for different development scenarios:
      │                                        │
 ┌────▼────────────────────────────────────────▼──┐
 │                 Leveling / XP                    │
-└───────────────────▲─────────────────────────────┘
-                    │
-          ┌─────────┴──────────┐
-          │      Music         │
-          └────────────────────┘
+└────────────────────────────────────────────────┘
 ```
 
 ---
@@ -1093,7 +1056,6 @@ Profiles for different development scenarios:
 | Warnings & Escalation | 1 | P0 | Done |
 | Moderation (Enhanced) | 1 | P0 | Done |
 | Logging | 1 | P0 | Done |
-| Music | 2 | P0 | Done |
 | TempVoice | 2 | P0 | Done |
 | Welcome & Farewell | 2 | P0 | Not Started |
 | Role Panels | 2 | P0 | Not Started |

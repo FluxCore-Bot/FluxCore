@@ -160,7 +160,6 @@ Elevation = surface shift, not shadow.
 |----------|-------|
 | **Navigation** | LayoutDashboard, Home, Settings, Menu, ChevronLeft/Right/Down/Up, ArrowLeft/Right, ExternalLink, PanelLeft |
 | **Bot Core** | Bot, Server, Hash, Terminal, Shield, Key, Webhook, Database, Code, Plug |
-| **Music** | Play, Pause, SkipForward, SkipBack, Shuffle, Repeat, Volume2, VolumeX, ListMusic, Music, Disc, Headphones, Radio, Mic |
 | **Moderation** | Hammer, UserX, Clock, VolumeOff, AlertTriangle, Flag, Lock, Unlock, Eye, EyeOff, Trash2, Filter |
 | **Voice** | Headphones, Mic, MicOff, Phone, PhoneOff, Users, UserPlus, UserMinus, Speaker |
 | **Actions** | Plus, Pencil, Trash, Save, X, Search, SlidersHorizontal, ArrowUpDown, RefreshCw, Download, Upload, Copy, MoreHorizontal |
@@ -171,7 +170,7 @@ Elevation = surface shift, not shadow.
 | **Users** | User, Users, UserPlus, UserMinus, UserCheck, UserX, Crown, BadgeCheck, Shield |
 
 ### Material Symbols Reference (for non-React contexts)
-`dashboard`, `home`, `settings`, `menu`, `smart_toy`, `dns`, `tag`, `terminal`, `extension`, `shield`, `key`, `link`, `api`, `database`, `code`, `play_arrow`, `pause`, `stop`, `skip_next`, `skip_previous`, `shuffle`, `repeat`, `volume_up`, `queue_music`, `graphic_eq`, `mic`, `album`
+`dashboard`, `home`, `settings`, `menu`, `smart_toy`, `dns`, `tag`, `terminal`, `extension`, `shield`, `key`, `link`, `api`, `database`, `code`, `mic`
 
 ---
 

@@ -19,7 +19,7 @@ Granular role-based + per-user permission system for the admin dashboard. Curren
 | Deny rules | No (allow-only) | MANAGE_GUILD already gates entry; simpler mental model |
 | Per-user overrides | Yes | Guild owner can grant specific permissions to individuals beyond their roles |
 | Non-MANAGE_GUILD access | No | Dashboard remains admin-only; permissions control what admins can do |
-| Built-in presets | Yes | Ship "Moderator", "Content Manager", "DJ" templates |
+| Built-in presets | Yes | Ship "Moderator", "Content Manager" templates |
 | Audit retention | 90 days default, configurable per guild | Balance storage vs compliance needs |
 | Wildcard support | Yes (`module.*`, `*`) | Reduces assignment burden for broad access |
 | Owner bypass | Always `*` | Guild owner always has full access, non-revocable |
@@ -29,7 +29,7 @@ Granular role-based + per-user permission system for the admin dashboard. Curren
 ```
 <module>.<resource>.<action>
 
-module   = dashboard feature area (moderation, music, actions, etc.)
+module   = dashboard feature area (moderation, logging, actions, etc.)
 resource = entity type within module (cases, settings, rules, etc.)
 action   = operation (view, create, update, delete, manage, execute)
 ```
@@ -59,12 +59,6 @@ action   = operation (view, create, update, delete, manage, execute)
 │   ├── actions.rules.execute         Bulk enable/disable rules
 │   ├── actions.analytics.view        View rule analytics and logs
 │   └── actions.settings.manage       Configure action system settings
-│
-── music
-│   ├── music.settings.view           View music settings
-│   ├── music.settings.manage         Configure music settings
-│   ├── music.library.view            View music library
-│   └── music.library.manage          Create/delete albums and tracks
 │
 ── logging
 │   ├── logging.entries.view          View log entries
@@ -124,7 +118,7 @@ action   = operation (view, create, update, delete, manage, execute)
 │   └── commands.list.manage          Create/edit/delete custom commands
 ```
 
-**Total: 49 individual permissions across 15 modules.**
+**Total: 48 individual permissions across 15 modules.**
 
 ### Wildcard Rules
 
@@ -161,12 +155,6 @@ suggestions.*
 roles.panels.*
 scheduled.messages.*
 commands.list.*
-```
-
-### Music DJ
-
-```
-music.*
 ```
 
 ### Full Admin
@@ -358,7 +346,7 @@ Note: Only guild owner can toggle requirePermissions and manage dashboard settin
 
 ```
 GET  /api/guilds/:guildId/dashboard-roles/presets
-POST /api/guilds/:guildId/dashboard-roles/from-preset   { preset: "moderator" | "content-manager" | "dj" | "full-admin" | "viewer" }
+POST /api/guilds/:guildId/dashboard-roles/from-preset   { preset: "moderator" | "content-manager" | "full-admin" | "viewer" }
 Permission: dashboard.roles.manage
 ```
 
@@ -398,7 +386,7 @@ export function requirePermission(...keys: string[]) {
 { preHandler: [requireAuth, requireGuildAdmin] }
 
 // After (each route gets specific permission):
-{ preHandler: [requireAuth, requireGuildAdmin, requirePermission("music.settings.manage")] }
+{ preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.cases.view")] }
 ```
 
 ### Audit Logging Middleware
@@ -457,7 +445,7 @@ const { can } = usePermissions();
 {can("moderation.cases.manage") && <DeleteCaseButton />}
 
 // Disable element with tooltip
-<Button disabled={!can("music.settings.manage")} title="You don't have permission">
+<Button disabled={!can("moderation.settings.manage")} title="You don't have permission">
   Save Settings
 </Button>
 ```
@@ -606,7 +594,7 @@ export function expandWildcard(pattern: string, registry: PermissionModule[]): s
 
 **Permission matcher** (`packages/types/tests/`):
 - Exact key match
-- Single-level wildcard (`music.*`)
+- Single-level wildcard (`moderation.*`)
 - Multi-level wildcard (`*.settings.manage`, `*.*.view`)
 - Full wildcard (`*`)
 - No match → denied

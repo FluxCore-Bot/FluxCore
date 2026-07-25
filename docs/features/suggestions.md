@@ -54,8 +54,8 @@ Fast in-context actions only. All configuration is managed through the dashboard
 
 ## Flow
 
-1. User runs `/suggest "Add a music channel"`
-2. Bot posts embed to suggestions channel: `Suggestion #42 by @user — "Add a music channel"`
+1. User runs `/suggest "Add a suggestions leaderboard"`
+2. Bot posts embed to suggestions channel: `Suggestion #42 by @user — "Add a suggestions leaderboard"`
 3. Bot adds 👍 and 👎 reactions
 4. Optionally creates discussion thread
 5. Mod runs `/suggestion approve 42 "Great idea, adding next week"`
