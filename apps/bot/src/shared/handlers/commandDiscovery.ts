@@ -17,8 +17,13 @@ export async function collectCommandFiles(featuresDir: string): Promise<string[]
     if (!entry.isDirectory()) continue;
     try {
       files.push(...(await getFiles(join(featuresDir, entry.name, "commands"))));
-    } catch {
-      // Feature has no commands/ directory — skip
+    } catch (err) {
+      // Only a missing commands/ directory (ENOENT) is a legitimate skip — that
+      // just means the feature has no commands. Any other error (e.g. EACCES,
+      // EMFILE/ENFILE, ELOOP) must propagate: this helper also feeds deploy.ts,
+      // whose rest.put is a full replace, and silently skipping a feature there
+      // would deregister its commands instead of just under-loading them at runtime.
+      if ((err as NodeJS.ErrnoException).code !== "ENOENT") throw err;
     }
   }
 

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeAll, afterAll } from "vitest";
-import { mkdtemp, mkdir, writeFile, rm } from "node:fs/promises";
+import { mkdtemp, mkdir, writeFile, rm, chmod } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -71,4 +71,30 @@ describe("collectCommandFiles", () => {
       await rm(empty, { recursive: true, force: true });
     }
   });
+
+  // chmod(0o000) only produces EACCES for a non-root process — root bypasses
+  // permission bits entirely, which would make this test pass for the wrong
+  // reason (or not exercise the failure at all). Skip rather than lie.
+  const isRoot = process.getuid?.() === 0;
+
+  it.skipIf(isRoot)(
+    "propagates non-ENOENT errors instead of silently skipping the feature",
+    async () => {
+      const restrictedRoot = await mkdtemp(join(tmpdir(), "fluxcore-cmd-restricted-"));
+      const commandsDir = join(restrictedRoot, "broken", "commands");
+      try {
+        await mkdir(commandsDir, { recursive: true });
+        await writeFile(join(commandsDir, "cmd.ts"), "export default {};");
+        await chmod(commandsDir, 0o000);
+
+        await expect(collectCommandFiles(restrictedRoot)).rejects.toMatchObject({
+          code: "EACCES",
+        });
+      } finally {
+        // Restore permissions before rm, or the recursive removal itself fails.
+        await chmod(commandsDir, 0o755).catch(() => {});
+        await rm(restrictedRoot, { recursive: true, force: true });
+      }
+    },
+  );
 });
