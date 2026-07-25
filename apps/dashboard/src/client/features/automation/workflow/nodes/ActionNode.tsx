@@ -34,7 +34,7 @@ function ActionNodeComponent({ data, selected }: NodeProps) {
         id="target"
         type="target"
         position={Position.Left}
-        className="!h-4 !w-4 !border-2 !border-secondary !bg-surface-high"
+        className="h-4! w-4! border-2! border-secondary! bg-surface-high! after:absolute after:-inset-3.5 after:rounded-full after:content-['']"
       />
       <div
         role="group"
@@ -55,7 +55,12 @@ function ActionNodeComponent({ data, selected }: NodeProps) {
             <Icon name="warning" size={14} className="ms-auto text-warning" />
           )}
           {!isConfigured && !validationState && (
-            <span className="ms-auto flex h-2 w-2 rounded-full bg-warning/60" title={t("workflow.status.notConfigured")} />
+            <span
+              role="img"
+              aria-label={t("workflow.status.notConfigured")}
+              className="ms-auto flex h-2 w-2 rounded-full bg-warning/60"
+              title={t("workflow.status.notConfigured")}
+            />
           )}
         </div>
         <p className="text-sm font-medium text-text">{label}</p>
@@ -70,7 +75,7 @@ function ActionNodeComponent({ data, selected }: NodeProps) {
         type="source"
         position={Position.Right}
         title={t("nodes.nextStep")}
-        className="!h-4 !w-4 !border-2 !border-secondary/50 !bg-surface-high"
+        className="h-4! w-4! border-2! border-secondary/50! bg-surface-high! after:absolute after:-inset-3.5 after:rounded-full after:content-['']"
       />
     </>
   );

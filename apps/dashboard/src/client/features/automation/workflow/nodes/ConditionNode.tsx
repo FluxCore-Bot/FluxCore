@@ -55,7 +55,7 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
         id="target"
         type="target"
         position={Position.Left}
-        className="!h-4 !w-4 !border-2 !border-warning !bg-surface-high"
+        className="h-4! w-4! border-2! border-warning! bg-surface-high! after:absolute after:-inset-3.5 after:rounded-full after:content-['']"
       />
       <div
         role="group"
@@ -71,6 +71,8 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
           </span>
           {!isConfigured && (
             <span
+              role="img"
+              aria-label={t("workflow.status.notConfigured")}
               className="ms-auto flex h-2 w-2 rounded-full bg-warning/60"
               title={t("workflow.status.notConfigured")}
             />
@@ -89,7 +91,7 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
         position={Position.Right}
         id="then"
         title={t("nodes.yesThen")}
-        className="!h-4 !w-4 !border-2 !border-secondary !bg-surface-high"
+        className="h-4! w-4! border-2! border-secondary! bg-surface-high! after:absolute after:-inset-2.5 after:rounded-full after:content-['']"
         style={{ top: "30%" }}
       />
       {/* No/Else branch */}
@@ -98,7 +100,7 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
         position={Position.Right}
         id="else"
         title={t("nodes.noElse")}
-        className="!h-4 !w-4 !border-2 !border-danger !bg-surface-high"
+        className="h-4! w-4! border-2! border-danger! bg-surface-high! after:absolute after:-inset-2.5 after:rounded-full after:content-['']"
         style={{ top: "70%" }}
       />
     </>

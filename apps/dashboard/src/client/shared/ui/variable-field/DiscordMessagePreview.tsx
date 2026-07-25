@@ -18,7 +18,7 @@ interface DiscordMessagePreviewProps {
 }
 
 function hexColor(color: number | undefined): string {
-  if (color === undefined) return "#a3a6ff";
+  if (color === undefined) return "var(--color-accent)";
   return "#" + color.toString(16).padStart(6, "0");
 }
 
@@ -37,7 +37,7 @@ export default function DiscordMessagePreview({ variables, real, content, embed 
         <div className="min-w-0 flex-1">
           <div className="flex items-baseline gap-2">
             <span className="font-medium text-text">{real.userName}</span>
-            <span className="text-[10px] text-text-muted">today</span>
+            <span className="text-[11px] text-text-muted">today</span>
           </div>
           {resolvedContent && <p className="whitespace-pre-wrap wrap-break-word text-text">{resolvedContent}</p>}
           {hasEmbed && (
@@ -50,7 +50,7 @@ export default function DiscordMessagePreview({ variables, real, content, embed 
                 {embed?.description && (
                   <div className="whitespace-pre-wrap wrap-break-word text-text-muted">{resolve(embed.description)}</div>
                 )}
-                {embed?.footer && <div className="mt-2 text-[10px] text-text-muted">{resolve(embed.footer)}</div>}
+                {embed?.footer && <div className="mt-2 text-[11px] text-text-muted">{resolve(embed.footer)}</div>}
               </div>
               {thumb && /^https?:\/\//.test(thumb) && <img src={thumb} alt="" className="size-16 rounded-sm object-cover" />}
             </div>

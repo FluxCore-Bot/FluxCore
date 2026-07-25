@@ -38,4 +38,33 @@ describe("VariableEditor", () => {
     render(<VariableEditor value="hi {membercont}" onChange={() => {}} variables={[{ token: "{membercount}", example: "1,234", group: "server" }]} aria-label="field" />);
     expect(screen.getByText(/variableField\.didYouMean/)).toBeTruthy();
   });
+
+  it("associates a screen-reader hint with the field via aria-describedby", () => {
+    render(<Harness />);
+    const input = screen.getByLabelText("field");
+    expect(input.getAttribute("aria-describedby")).toContain("vf-hint");
+    expect(screen.getByText("variableField.hintSr")).toBeInTheDocument();
+  });
+
+  it("announces the autocomplete result count in a live region", async () => {
+    const user = userEvent.setup();
+    render(<Harness />);
+    const input = screen.getByLabelText("field");
+    await user.click(input);
+    await user.type(input, "{{");
+    const status = screen.getByRole("status");
+    expect(status.textContent).toContain("variableField.results");
+  });
+
+  it("marks the unknown-token list as an assertive error region", () => {
+    render(
+      <VariableEditor
+        value="hi {nope}"
+        onChange={() => {}}
+        variables={[{ token: "{user}", example: "@Ada", group: "user" }]}
+        aria-label="field"
+      />,
+    );
+    expect(screen.getByRole("alert")).toBeInTheDocument();
+  });
 });

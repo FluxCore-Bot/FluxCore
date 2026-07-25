@@ -93,7 +93,8 @@
     "bulkDeleted": "{{count}} rules deleted",
     "bulkDeleteFailed": "Failed to delete rules",
     "updated": "Rule updated",
-    "created": "Rule created"
+    "created": "Rule created",
+    "ruleRestored": "Rule restored"
   },
   "form": {
     "ruleName": "Rule Name",
@@ -131,7 +132,10 @@
     "include": "Include (whitelist)",
     "exclude": "Exclude (blacklist)",
     "clearAll": "Clear all conditions",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Collapse conditions",
+    "userIdInvalid": "Enter a valid Discord user ID (17–20 digits)",
+    "addUserId": "Add user ID"
   },
   "editor": {
     "backToRules": "Rules",
@@ -152,7 +156,12 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardTitle": "Discard changes?",
+    "discardDescription": "You have unsaved changes. Your draft is saved locally, but you'll leave the editor.",
+    "discardConfirm": "Discard & close",
+    "draftRestored": "Draft restored from a previous session",
+    "discardDraftAction": "Discard draft"
   },
   "panel": {
     "trigger": "Trigger Settings",
@@ -194,7 +203,18 @@
     "delayRange": "1–300 seconds (5 minutes max)",
     "noVariables": "Select an event type first to see available variables.",
     "variablesHint": "Click a variable to copy it. Use in message and text fields.",
-    "copied": "Copied!"
+    "copied": "Copied!",
+    "copyVariable": "Copy {{name}}",
+    "detailRegion": "{{label}} settings",
+    "connections": "Connections",
+    "thenTarget": "If true, go to",
+    "elseTarget": "If false, go to",
+    "nextTarget": "Next step",
+    "endStop": "End (stop here)",
+    "selectStep": "Select a step",
+    "valueInvalid": "Enter a value for this condition",
+    "delayInvalid": "Enter a delay between 1 and 300 seconds",
+    "removeConfirmDescription": "This will be removed from the workflow. You can still cancel before saving."
   },
   "conditionFields": {
     "channelId": "Channel ID",
@@ -253,7 +273,9 @@
     "ariaTrigger": "Trigger: {{label}}",
     "ariaAction": "Action {{index}}: {{label}}",
     "ariaCondition": "Condition: {{label}}",
-    "ariaDelay": "Delay: {{label}}"
+    "ariaDelay": "Delay: {{label}}",
+    "branchYes": "Yes",
+    "branchNo": "No"
   },
   "ruleList": {
     "never": "Never",
@@ -267,7 +289,14 @@
     "duplicate": "Duplicate",
     "select": "Select",
     "deselect": "Deselect",
-    "steps": "+{{count}} steps"
+    "steps": "+{{count}} steps",
+    "moreActions": "More actions for {{name}}",
+    "selectRule": "Select {{name}}",
+    "enableRuleNamed": "Enable {{name}}",
+    "disableRuleNamed": "Disable {{name}}",
+    "openRule": "Edit {{name}}",
+    "disabledBadge": "Disabled",
+    "actionNotConfigured": "Not configured"
   },
   "actionPreview": {
     "embed": "Embed: {{title}}",

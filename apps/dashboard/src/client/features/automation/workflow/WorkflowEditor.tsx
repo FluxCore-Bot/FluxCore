@@ -17,6 +17,7 @@ import {
   type ReactFlowInstance,
   type OnEdgesChange,
   type OnNodesChange,
+  type Node,
   type Edge,
   type Connection,
 } from "@xyflow/react";
@@ -46,6 +47,7 @@ import { Button } from "../../../shared/ui/button";
 import { Input } from "../../../shared/ui/input";
 import { Switch } from "../../../shared/ui/switch";
 import { Alert } from "../../../shared/ui/alert";
+import { Separator } from "../../../shared/ui/separator";
 import { Icon } from "../../../shared/components/Icon";
 import {
   Tooltip,
@@ -106,6 +108,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
   const [enabled, setEnabled] = useState(initialDraft?.enabled ?? rule?.enabled ?? true);
   const [error, setError] = useState("");
   const [selectedNode, setSelectedNode] = useState<SelectedNode | null>(null);
+  const [draftRestored, setDraftRestored] = useState(!!savedDraft);
 
   const emptyAction: ActionConfig = { type: "" };
 
@@ -279,6 +282,25 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     setSelectedNode(null);
   }, []);
 
+  // Open the detail panel when a node is activated by the keyboard (Tab to focus,
+  // then Enter/Space to select). Mouse clicks are handled by onNodeClick; this
+  // only reacts to single-node selection so multi-select drags are ignored.
+  const handleSelectionChange = useCallback(
+    ({ nodes: selectedNodes }: { nodes: Node[]; edges: Edge[] }) => {
+      if (selectedNodes.length !== 1) return;
+      const node = selectedNodes[0];
+      if (node.id === "trigger") {
+        setSelectedNode({ type: "trigger" });
+      } else if (node.id.startsWith("step-")) {
+        setSelectedNode({ type: "step", stepId: node.id.replace("step-", "") });
+      } else if (node.id.startsWith("action-")) {
+        const index = parseInt(node.id.split("-")[1], 10);
+        if (!isNaN(index)) setSelectedNode({ type: "action", index });
+      }
+    },
+    [],
+  );
+
   /** Validate whether a proposed connection is allowed */
   const isValidConnection = useCallback((connection: Edge | Connection): boolean => {
     let { source, target, sourceHandle, targetHandle } = connection;
@@ -393,13 +415,14 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
           <span className="hidden text-text-muted sm:inline">{t("editor.backToRules")}</span>
         </Button>
 
-        <div className="h-5 w-px bg-border" />
+        <Separator orientation="vertical" className="h-5" />
 
         <Input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder={t("editor.ruleNamePlaceholder")}
+          aria-label={t("editor.ruleNamePlaceholder")}
           maxLength={50}
           className="w-32 sm:w-52"
         />
@@ -413,6 +436,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
                 onChange={(e) => setPriority(Number(e.target.value))}
                 min={0}
                 max={100}
+                aria-label={t("editor.priorityTooltip")}
                 className="w-20"
               />
             </TooltipTrigger>
@@ -453,7 +477,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             <Icon name="schedule" size={16} className="text-text-muted" />
             {t("editor.addDelay")}
           </Button>
-          <div className="h-5 w-px bg-border" />
+          <Separator orientation="vertical" className="h-5" />
 
           {/* Validation status */}
           {validation.issues.length > 0 ? (
@@ -501,6 +525,38 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
         </div>
       </div>
 
+      {/* Draft restored notice */}
+      {draftRestored && (
+        <div className="mx-4 mt-3 flex items-center justify-between gap-3 rounded-lg border border-accent/30 bg-accent/5 px-3 py-2 text-xs text-text-muted">
+          <span className="flex items-center gap-1.5">
+            <Icon name="history" size={14} className="text-accent" />
+            {t("editor.draftRestored")}
+          </span>
+          <div className="flex items-center gap-1">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                clearDraft();
+                setDraftRestored(false);
+                onClose();
+              }}
+            >
+              {t("editor.discardDraftAction")}
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label={t("common:actions.close")}
+              className="h-8 w-8"
+              onClick={() => setDraftRestored(false)}
+            >
+              <Icon name="close" size={14} />
+            </Button>
+          </div>
+        </div>
+      )}
+
       {/* Error banner */}
       {error && (
         <Alert variant="destructive" className="mx-4 mt-3 mb-0">
@@ -525,11 +581,14 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
 
           isValidConnection={isValidConnection}
           connectionMode={ConnectionMode.Loose}
+          connectionRadius={40}
+          nodesFocusable={true}
           edgesFocusable={true}
           edgesReconnectable={true}
           elementsSelectable={true}
           onNodeClick={onNodeClick}
           onPaneClick={handlePaneClick}
+          onSelectionChange={handleSelectionChange}
           onInit={(instance) => {
             reactFlowInstance.current = instance;
           }}

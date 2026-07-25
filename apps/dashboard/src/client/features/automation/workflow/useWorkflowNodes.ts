@@ -48,6 +48,14 @@ const NODE_Y_START = 60;
 const NODE_Y_GAP = 130;
 const EDGE_INTERACTION_WIDTH = 20; // wider click area for selecting edges
 
+/** Respect the user's reduced-motion preference for the flowing edge animation. */
+function edgesAnimated(): boolean {
+  return !(
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches === true
+  );
+}
+
 /**
  * Build nodes/edges from a flat linear actions array (v1 legacy).
  */
@@ -85,7 +93,7 @@ function buildLinearNodes(
       source: "trigger",
       target: "action-0",
       type: "smoothstep",
-      animated: true,
+      animated: edgesAnimated(),
       deletable: true,
       focusable: true,
       interactionWidth: EDGE_INTERACTION_WIDTH,
@@ -99,7 +107,7 @@ function buildLinearNodes(
       source: `action-${i}`,
       target: `action-${i + 1}`,
       type: "smoothstep",
-      animated: true,
+      animated: edgesAnimated(),
       deletable: true,
       focusable: true,
       interactionWidth: EDGE_INTERACTION_WIDTH,
@@ -286,7 +294,7 @@ function buildStepNodes(
       source: "trigger",
       target: `step-${entryStepId}`,
       type: "smoothstep",
-      animated: true,
+      animated: edgesAnimated(),
       deletable: true,
       focusable: true,
       interactionWidth: EDGE_INTERACTION_WIDTH,
@@ -306,7 +314,7 @@ function buildStepNodes(
           source: sourceId,
           target: `step-${step.next}`,
           type: "smoothstep",
-          animated: true,
+          animated: edgesAnimated(),
           deletable: true,
           focusable: true,
           interactionWidth: EDGE_INTERACTION_WIDTH,
@@ -321,12 +329,15 @@ function buildStepNodes(
           sourceHandle: "then",
           target: `step-${step.thenNext}`,
           type: "smoothstep",
-          animated: true,
+          animated: edgesAnimated(),
           deletable: true,
           focusable: true,
           interactionWidth: EDGE_INTERACTION_WIDTH,
-          label: "Yes",
-          labelStyle: { fontSize: 10, fontWeight: 600, fill: "rgba(172,138,255,0.8)" },
+          label: t("nodes.branchYes"),
+          labelStyle: { fontSize: 11, fontWeight: 600, fill: "#dac9ff" },
+          labelBgStyle: { fill: "rgba(20,20,24,0.9)" },
+          labelBgPadding: [4, 2],
+          labelBgBorderRadius: 4,
           style: { stroke: "rgba(172, 138, 255, 0.4)", strokeWidth: 2 },
         });
       }
@@ -337,12 +348,15 @@ function buildStepNodes(
           sourceHandle: "else",
           target: `step-${step.elseNext}`,
           type: "smoothstep",
-          animated: true,
+          animated: edgesAnimated(),
           deletable: true,
           focusable: true,
           interactionWidth: EDGE_INTERACTION_WIDTH,
-          label: "No",
-          labelStyle: { fontSize: 10, fontWeight: 600, fill: "rgba(255,100,100,0.8)" },
+          label: t("nodes.branchNo"),
+          labelStyle: { fontSize: 11, fontWeight: 600, fill: "#ffb2b9" },
+          labelBgStyle: { fill: "rgba(20,20,24,0.9)" },
+          labelBgPadding: [4, 2],
+          labelBgBorderRadius: 4,
           style: { stroke: "rgba(255, 100, 100, 0.3)", strokeWidth: 2 },
         });
       }
