@@ -53,17 +53,6 @@ export const PERMISSION_REGISTRY: PermissionModule[] = [
     ],
   },
   {
-    key: "music",
-    label: "Music",
-    icon: "Music",
-    permissions: [
-      { key: "music.settings.view", label: "View Settings", description: "View music settings" },
-      { key: "music.settings.manage", label: "Manage Settings", description: "Configure music settings" },
-      { key: "music.library.view", label: "View Library", description: "View music library" },
-      { key: "music.library.manage", label: "Manage Library", description: "Create/delete albums and tracks" },
-    ],
-  },
-  {
     key: "logging",
     label: "Logging",
     icon: "ScrollText",
@@ -223,11 +212,6 @@ export const ROLE_PRESETS: Record<string, RolePreset> = {
       "commands.list.*",
     ],
   },
-  dj: {
-    name: "DJ",
-    color: "#ac8aff",
-    permissions: ["music.*"],
-  },
   "full-admin": {
     name: "Full Admin",
     color: "#fee75c",
@@ -254,7 +238,7 @@ export function matchPermission(granted: Set<string>, required: string): boolean
 
   const parts = required.split(".");
 
-  // Check module-level wildcard: "music.*" matches "music.settings.view"
+  // Check module-level wildcard: "moderation.*" matches "moderation.cases.view"
   if (parts.length >= 2) {
     for (let i = parts.length - 1; i >= 1; i--) {
       const wildcard = parts.slice(0, i).join(".") + ".*";
@@ -277,7 +261,7 @@ export function matchPermission(granted: Set<string>, required: string): boolean
  * A trailing ".*" matches all sub-segments.
  */
 function wildcardMatch(pattern: string, key: string): boolean {
-  // Trailing wildcard: "music.*" matches "music.library.manage"
+  // Trailing wildcard: "moderation.*" matches "moderation.warnings.manage"
   if (pattern.endsWith(".*")) {
     const prefix = pattern.slice(0, -2);
     if (prefix === "*") return true; // "*.*" matches everything
@@ -290,7 +274,7 @@ function wildcardMatch(pattern: string, key: string): boolean {
     );
   }
 
-  // Segment-by-segment match: "*.settings.manage" matches "music.settings.manage"
+  // Segment-by-segment match: "*.settings.manage" matches "moderation.settings.manage"
   const patternParts = pattern.split(".");
   const keyParts = key.split(".");
   if (patternParts.length !== keyParts.length) return false;
