@@ -21,9 +21,6 @@ export interface Config {
   botSyncPort: number;
   botSyncSecret: string;
   botSyncUrl: string | undefined;
-  lavalinkHost: string;
-  lavalinkPort: number;
-  lavalinkPassword: string;
 }
 
 function loadConfig(): Config {
@@ -34,7 +31,6 @@ function loadConfig(): Config {
     "DASHBOARD_CLIENT_SECRET",
     "DASHBOARD_SESSION_SECRET",
     "BOT_SYNC_SECRET",
-    "LAVALINK_PASSWORD",
     "POSTGRES_PASSWORD",
     "DATABASE_URL",
   ]);
@@ -133,13 +129,6 @@ function loadConfig(): Config {
     rawBotSyncSecret || randomBytes(32).toString("hex");
   const botSyncUrl = process.env.BOT_SYNC_URL || undefined;
 
-  const lavalinkHost = process.env.LAVALINK_HOST || "lavalink";
-  const lavalinkPort = Number(process.env.LAVALINK_PORT) || 2333;
-  const lavalinkPassword = process.env.LAVALINK_PASSWORD;
-  if (!lavalinkPassword) {
-    throw new Error("Missing required environment variable: LAVALINK_PASSWORD");
-  }
-
   return {
     token,
     clientId,
@@ -153,9 +142,6 @@ function loadConfig(): Config {
     botSyncPort,
     botSyncSecret,
     botSyncUrl,
-    lavalinkHost,
-    lavalinkPort,
-    lavalinkPassword,
   };
 }
 

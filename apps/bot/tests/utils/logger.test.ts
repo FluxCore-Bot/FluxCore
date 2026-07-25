@@ -10,7 +10,6 @@ describe("logger", () => {
     vi.stubEnv("DISCORD_TOKEN", "test-token");
     vi.stubEnv("CLIENT_ID", "test-client-id");
     vi.stubEnv("LOG_LEVEL", "debug");
-    vi.stubEnv("LAVALINK_PASSWORD", "test-lavalink-pw");
 
     const { logger } = await import("@fluxcore/utils");
     expect(logger).toBeDefined();
@@ -24,7 +23,6 @@ describe("logger", () => {
     vi.stubEnv("DISCORD_TOKEN", "test-token");
     vi.stubEnv("CLIENT_ID", "test-client-id");
     vi.stubEnv("LOG_LEVEL", "error");
-    vi.stubEnv("LAVALINK_PASSWORD", "test-lavalink-pw");
 
     // Import first (dotenv may log during import)
     const { logger } = await import("@fluxcore/utils");
@@ -47,7 +45,6 @@ describe("logger", () => {
     vi.stubEnv("DISCORD_TOKEN", "test-token");
     vi.stubEnv("CLIENT_ID", "test-client-id");
     vi.stubEnv("LOG_LEVEL", "error");
-    vi.stubEnv("LAVALINK_PASSWORD", "test-lavalink-pw");
 
     // Import first (dotenv may log during import)
     const { logger } = await import("@fluxcore/utils");
