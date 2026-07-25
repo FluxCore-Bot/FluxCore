@@ -1,8 +1,12 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterAll } from "vitest";
 
 describe("config", () => {
   beforeEach(() => {
     vi.resetModules();
+    vi.unstubAllEnvs();
+  });
+
+  afterAll(() => {
     vi.unstubAllEnvs();
   });
 
