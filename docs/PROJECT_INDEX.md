@@ -345,7 +345,7 @@ Resource limits: bot 512M, dashboard 256M, postgres 512M, caddy 128M, backup 256
 | Dashboard API routes | 18 |
 | Dashboard pages | 20 |
 | Dashboard UI components | 23 (shadcn) |
-| System packages | 87 |
+| System packages | 82 |
 | Database migrations | 11 |
 | Test files | 90 |
 | Feature specs | 13 |
