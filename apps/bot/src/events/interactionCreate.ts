@@ -8,11 +8,8 @@ import {
   handleTempVoiceUserSelect,
   handleTempVoiceStringSelect,
 } from "../features/tempvoice/system/interactions.js";
-import { handleMusicButton } from "../features/music/system/interactions.js";
 import { handleActionsAutocomplete } from "../features/general/commands/actions.js";
-import { handlePlayAutocomplete } from "../features/music/commands/play.js";
 import { handleRolePanelAutocomplete } from "../features/general/commands/rolepanel.js";
-import { MU_PREFIX } from "@fluxcore/systems/music/constants";
 import { GIVEAWAY_BUTTON_PREFIX } from "@fluxcore/systems/giveaways/constants";
 import { handleRolePanelButton, handleRolePanelDropdown } from "@fluxcore/systems/rolePanel/handler";
 import { handleTicketButton, handleTicketModal } from "../features/tickets/system/interactions.js";
@@ -26,8 +23,6 @@ const event: Event<"interactionCreate"> = {
     if (interaction.isAutocomplete()) {
       if (interaction.commandName === "actions") {
         await handleActionsAutocomplete(interaction);
-      } else if (interaction.commandName === "play") {
-        await handlePlayAutocomplete(interaction);
       } else if (interaction.commandName === "rolepanel") {
         await handleRolePanelAutocomplete(interaction);
       }
@@ -54,11 +49,7 @@ const event: Event<"interactionCreate"> = {
         await handleTicketButton(interaction);
         return;
       }
-      if (interaction.customId.startsWith(MU_PREFIX)) {
-        await handleMusicButton(interaction);
-      } else {
-        await handleTempVoiceButton(interaction);
-      }
+      await handleTempVoiceButton(interaction);
       return;
     }
 
