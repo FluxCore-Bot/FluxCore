@@ -1160,7 +1160,22 @@ committed YouTube refresh-token plumbing that lived in application.yml."
 
 - [ ] **Step 1: Delete the music namespace files and strip the music keys**
 
-All locale JSON uses 2-space indent and a trailing newline, so re-serialising with `JSON.stringify(obj, null, 2) + "\n"` preserves formatting and keeps the diff to the removed keys.
+**Do not blanket re-serialise.** The obvious approach — parse every file and write it back with `JSON.stringify(obj, null, 2) + "\n"` — is wrong here. This was caught at Step 3's gate during execution and corrected. Two locale shapes defeat it:
+
+- `th/landing.json` is semi-compact: pretty-printed at depth 1, but with nested objects inline on one line. A blanket re-serialise reformats the whole file.
+- 17 `landing.json` files contain `\u00xx` escapes, which `JSON.parse` → `JSON.stringify` silently normalises to literal characters (`©` → `©`) — a cosmetic change in every one of them.
+
+Use **round-trip only where it is provably a no-op**, and a byte-preserving text excision everywhere else:
+
+1. Read the original text as `orig` and compute `roundTrip = JSON.stringify(JSON.parse(orig), null, 2) + "\n"`.
+2. If `roundTrip === orig`, the round-trip cannot change anything except the key you delete — take the JSON path below.
+3. Otherwise excise the key textually. `"music"` occurs **exactly once** in every `landing.json` (verified across all 48), so locating it is unambiguous. Brace-match forward from the value while tracking string literals and backslash escapes, so a `}` inside a translated string cannot end the match early. Absorb the trailing comma — or the preceding one if the key was last in its object — plus the key's own indentation and newline.
+
+The rule is self-verifying: no file is ever reformatted, because only already-conforming files are re-serialised. In practice the split was 126 files via round-trip, 18 via excision.
+
+Gate the result two ways before committing. **Semantically**, assert each modified file parses to exactly its original object minus the music key. **Textually**, check `git diff --numstat`: a correct run yields **zero insertions** across the locale tree, since reformatting necessarily inserts lines. Verified end state: 192 files, 0 insertions, 3069 deletions.
+
+The script below shows the JSON path (step 2). Wrap it with the `roundTrip === orig` test and the excision fallback described above.
 
 ```bash
 node -e '
