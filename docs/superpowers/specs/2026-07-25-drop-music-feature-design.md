@@ -235,7 +235,7 @@ Additional manual checks:
 
 | Risk | Severity | Handling |
 | --- | --- | --- |
-| Removing `LAVALINK_PASSWORD` breaks config import for both apps | High | Existing tests at `packages/config/tests/index.test.ts` assert the throw; delete that block and keep the rest green. Verify with a real boot. |
+| Removing `LAVALINK_PASSWORD` breaks config import for both apps | High | Verify with a real boot — see below. Do **not** rely on `packages/config/tests/index.test.ts`: the package declares no `test` script and has no vitest config, so those tests never execute. Typecheck is the only static signal for surviving `config.lavalink*` readers. |
 | Permission matcher coverage silently drops | Medium | Rewrite against `moderation` rather than delete — see above |
 | Leftover `reloadMusic` rows in `ActionCacheInvalidation` | Low | With the branch removed they fall through to the generic `guildsToReload` path — a harmless action-rule reload, not a crash. Rows are purged after one hour. No migration needed. |
 | Locale deletions appear not to work | Low | `dist/locales` is what is served and is gitignored; rebuild required |
