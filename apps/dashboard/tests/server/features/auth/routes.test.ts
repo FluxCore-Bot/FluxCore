@@ -79,7 +79,11 @@ describe("/auth/login redirect_uri", () => {
 });
 
 describe("/auth/login oauth_state cookie attributes", () => {
-  it("sets SameSite=Strict on the oauth_state cookie", async () => {
+  // Must be Lax, not Strict. Browsers withhold SameSite=Strict cookies on
+  // cross-site navigations — including the top-level redirect from discord.com
+  // back to /auth/callback — which made the callback 403 with "Missing state
+  // parameter". Do not tighten this back to Strict without re-breaking login.
+  it("sets SameSite=Lax on the oauth_state cookie", async () => {
     const app = await buildApp();
     const res = await app.inject({ method: "GET", url: "/auth/login" });
     const setCookies = res.headers["set-cookie"];
@@ -88,7 +92,7 @@ describe("/auth/login oauth_state cookie attributes", () => {
       : [setCookies ?? ""];
     const stateCookie = cookieList.find((c) => c.startsWith("oauth_state="));
     expect(stateCookie).toBeDefined();
-    expect(stateCookie!.toLowerCase()).toContain("samesite=strict");
+    expect(stateCookie!.toLowerCase()).toContain("samesite=lax");
     await app.close();
   });
 });
