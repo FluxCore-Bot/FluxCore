@@ -93,13 +93,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Block re-introduction of default lavalink password
-        # Exclude .github so this gate's own grep pattern doesn't self-match.
-        run: |
-          if grep -RIn --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=.github --exclude='*.md' 'youshallnotpass' .; then
-            echo "::error::The literal 'youshallnotpass' must never be committed."
-            exit 1
-          fi
       - name: Block public postgres exposure
         run: |
           if grep -RIn --include='docker-compose*.yml' -E '"(0\.0\.0\.0:)?5432:5432"' .; then

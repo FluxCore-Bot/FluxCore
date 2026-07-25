@@ -8,11 +8,8 @@ services:
       DISCORD_TOKEN_FILE: /run/secrets/discord_token
       DASHBOARD_SESSION_SECRET_FILE: /run/secrets/dashboard_session_secret
       BOT_SYNC_SECRET_FILE: /run/secrets/bot_sync_secret
-      LAVALINK_PASSWORD_FILE: /run/secrets/lavalink_password
       POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
       CLIENT_ID: ${CLIENT_ID:?CLIENT_ID required}
-      LAVALINK_HOST: lavalink
-      LAVALINK_PORT: "2333"
       POSTGRES_HOST: postgres
       POSTGRES_DB: fluxcore
       POSTGRES_USER: fluxcore
@@ -20,41 +17,10 @@ services:
       - discord_token
       - dashboard_session_secret
       - bot_sync_secret
-      - lavalink_password
       - postgres_password
     depends_on:
       postgres:
         condition: service_healthy
-      lavalink:
-        condition: service_healthy
-    networks:
-      - backend
-    restart: always
-    deploy:
-      resources:
-        limits:
-          memory: 512M
-    profiles:
-      - bot
-      - full
-
-  lavalink:
-    image: ghcr.io/lavalink-devs/lavalink:4
-    volumes:
-      - ./lavalink/application.yml:/opt/Lavalink/application.yml:ro
-    environment:
-      - _JAVA_OPTIONS=-Xmx256m
-    secrets:
-      - lavalink_password
-    entrypoint:
-      - sh
-      - -c
-      - 'export LAVALINK_SERVER_PASSWORD=$(cat /run/secrets/lavalink_password) && exec /opt/Lavalink/launch.sh'
-    healthcheck:
-      test: ["CMD-SHELL", "wget -qO- --header=\"Authorization: $(cat /run/secrets/lavalink_password)\" http://localhost:2333/version || exit 1"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
     networks:
       - backend
     restart: always
@@ -77,7 +43,6 @@ services:
       DASHBOARD_SESSION_SECRET_FILE: /run/secrets/dashboard_session_secret
       BOT_SYNC_SECRET_FILE: /run/secrets/bot_sync_secret
       POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
-      LAVALINK_PASSWORD_FILE: /run/secrets/lavalink_password
       CLIENT_ID: ${CLIENT_ID:?CLIENT_ID required}
       POSTGRES_HOST: postgres
       POSTGRES_DB: fluxcore
@@ -88,7 +53,6 @@ services:
       - dashboard_session_secret
       - bot_sync_secret
       - postgres_password
-      - lavalink_password
     depends_on:
       postgres:
         condition: service_healthy
@@ -207,7 +171,5 @@ secrets:
     file: ./secrets/dashboard_session_secret
   bot_sync_secret:
     file: ./secrets/bot_sync_secret
-  lavalink_password:
-    file: ./secrets/lavalink_password
   postgres_password:
     file: ./secrets/postgres_password
