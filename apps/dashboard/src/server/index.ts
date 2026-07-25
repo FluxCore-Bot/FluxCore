@@ -18,7 +18,6 @@ import { registerGuildRoutes } from "./features/guilds/routes.js";
 import { registerTempVoiceRoutes } from "./features/tempvoice/routes.js";
 import { registerActionRoutes } from "./features/actions/routes.js";
 import { registerDiscordRoutes } from "./features/discord/routes.js";
-import { registerMusicRoutes } from "./features/music/routes.js";
 import { registerLoggingRoutes } from "./features/logging/routes.js";
 import { registerWarningRoutes } from "./features/moderation/warnings-routes.js";
 import { registerModerationRoutes } from "./features/moderation/routes.js";
@@ -145,7 +144,6 @@ export async function createApp(): Promise<FastifyInstance> {
   registerTempVoiceRoutes(app);
   registerActionRoutes(app);
   registerDiscordRoutes(app);
-  registerMusicRoutes(app);
   registerLoggingRoutes(app);
   registerWarningRoutes(app);
   registerModerationRoutes(app);
