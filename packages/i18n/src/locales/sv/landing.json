@@ -29,10 +29,6 @@
       "title": "Automatiseringsregler",
       "description": "Skapa komplexa händelsestyrda arbetsflöden utan kod. Om-detta-så-det-utlösare med 23 händelsetyper och 10 åtgärdstyper."
     },
-    "music": {
-      "title": "Musiksystem",
-      "description": "Högkvalitativ ljudströmning med stöd för flera plattformar. Köhantering, DJ-kontroller och biblioteksläge."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Dynamisk röstkanalshantering. Automatiskt skapande med anpassade namnmallar, behörigheter och uppstädning."

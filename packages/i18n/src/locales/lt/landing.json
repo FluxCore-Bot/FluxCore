@@ -29,10 +29,6 @@
       "title": "Automatizavimo taisykles",
       "description": "Kurkite sudtingus ivykiais grindziamus darbo eigos procesus be kodo. Jei-si-tai-tai trigeriai su 23 ivykiu tipais ir 10 veiksmu tipu."
     },
-    "music": {
-      "title": "Muzikos sistema",
-      "description": "Aukštos kokybes garso transliavimas su keliu platformu palaikymu. Eiles valdymas, DJ kontrole ir bibliotekos rezimas."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Dinaminis balso kanalu valdymas. Automatinis kurimas su pasirinktiniais pavadinimu sablonais, teisemis ir valymu."

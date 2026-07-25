@@ -29,10 +29,6 @@
       "title": "Reguły automatyzacji",
       "description": "Twórz złożone przepływy pracy oparte na zdarzeniach bez kodu. Wyzwalacze if-this-then-that z 23 typami zdarzeń i 10 typami akcji."
     },
-    "music": {
-      "title": "System muzyczny",
-      "description": "Wysokiej jakości strumieniowanie audio z obsługą wielu platform. Zarządzanie kolejką, tryb DJ i biblioteka."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Dynamiczne zarządzanie kanałami głosowymi. Automatyczne tworzenie z szablonami nazw, uprawnieniami i czyszczeniem."

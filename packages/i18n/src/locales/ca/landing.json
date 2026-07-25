@@ -29,10 +29,6 @@
       "title": "Regles d'automatització",
       "description": "Crea fluxos de treball complexos basats en esdeveniments sense codi. Activadors si-aixo-llavors-allo amb 23 tipus d'esdeveniments i 10 tipus d'accions."
     },
-    "music": {
-      "title": "Sistema de música",
-      "description": "Transmissió d'audio d'alta fidelitat amb suport multiplataforma. Gestió de cua, controls de DJ i mode biblioteca."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Gestió dinamica de canals de veu. Creació automatica amb plantilles de noms personalitzats, permisos i neteja."

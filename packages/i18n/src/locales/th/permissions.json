@@ -59,7 +59,6 @@
   },
   "permissionCategories": {
     "actions": "แอ็กชันและระบบอัตโนมัติ",
-    "music": "เพลง",
     "tempvoice": "ห้องเสียงชั่วคราว",
     "welcome": "ต้อนรับและอำลา",
     "moderation": "การจัดการ",

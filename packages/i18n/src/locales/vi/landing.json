@@ -29,10 +29,6 @@
       "title": "Quy Tắc Tự Động Hóa",
       "description": "Tạo quy trình làm việc phức tạp dựa trên sự kiện mà không cần lập trình. Kích hoạt nếu-thì với 23 loại sự kiện và 10 loại hành động."
     },
-    "music": {
-      "title": "Hệ Thống Âm Nhạc",
-      "description": "Phát nhạc chất lượng cao với hỗ trợ đa nền tảng. Quản lý hàng đợi, điều khiển DJ và chế độ thư viện."
-    },
     "tempVoice": {
       "title": "Kênh Thoại Tạm Thời",
       "description": "Quản lý kênh thoại động. Tự tạo với mẫu đặt tên tùy chỉnh, quyền hạn và dọn dẹp tự động."

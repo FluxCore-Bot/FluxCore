@@ -29,10 +29,6 @@
       "title": "Pravila avtomatizacije",
       "description": "Ustvarite zapletene delovne tokove na osnovi dogodkov brez kode. Sprožilci če-potem s 23 vrstami dogodkov in 10 vrstami dejanj."
     },
-    "music": {
-      "title": "Glasbeni sistem",
-      "description": "Visokokakovostno zvočno pretakanje z večplatformno podporo. Upravljanje čakalne vrste, kontrolniki DJ in knjižnični način."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Dinamično upravljanje glasovnih kanalov. Samodejno ustvarjanje z lastnimi predlogami imen, dovoljenji in čiščenjem."

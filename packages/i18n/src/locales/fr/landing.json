@@ -29,10 +29,6 @@
       "title": "Regles d'automatisation",
       "description": "Creez des workflows complexes bases sur les evenements sans coder. Des declencheurs si-ceci-alors-cela avec 23 types d'evenements et 10 types d'actions."
     },
-    "music": {
-      "title": "Systeme musical",
-      "description": "Streaming audio haute fidelite avec support multi-plateforme. Gestion de file d'attente, controles DJ et mode bibliotheque."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Gestion dynamique des salons vocaux. Creation automatique avec modeles de noms personnalises, permissions et nettoyage."

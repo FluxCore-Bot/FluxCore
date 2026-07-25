@@ -29,10 +29,6 @@
       "title": "Reguli de Automatizare",
       "description": "Creează fluxuri de lucru complexe bazate pe evenimente fără cod. Declanșatoare dacă-asta-atunci-aceea cu 23 tipuri de evenimente și 10 tipuri de acțiuni."
     },
-    "music": {
-      "title": "Sistem de Muzică",
-      "description": "Streaming audio de înaltă fidelitate cu suport multi-platformă. Gestionarea cozii, controale DJ și mod bibliotecă."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Gestionarea dinamică a canalelor vocale. Auto-creare cu șabloane de denumire personalizate, permisiuni și curățare automată."

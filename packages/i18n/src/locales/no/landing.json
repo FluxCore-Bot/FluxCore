@@ -29,10 +29,6 @@
       "title": "Automatiseringsregler",
       "description": "Opprett komplekse hendelsesdrevne arbeidsflyter uten kode. Hvis-dette-så-det-utløsere med 23 hendelsestyper og 10 handlingstyper."
     },
-    "music": {
-      "title": "Musikksystem",
-      "description": "Høykvalitets lydstrømming med støtte for flere plattformer. Køhåndtering, DJ-kontroller og bibliotekmodus."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Dynamisk talekanalhåndtering. Automatisk opprettelse med tilpassede navnemaler, tillatelser og opprydding."

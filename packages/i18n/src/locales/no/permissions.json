@@ -59,7 +59,6 @@
   },
   "permissionCategories": {
     "actions": "Handlinger og automatisering",
-    "music": "Musikk",
     "tempvoice": "TempVoice",
     "welcome": "Velkommen og farvel",
     "moderation": "Moderering",

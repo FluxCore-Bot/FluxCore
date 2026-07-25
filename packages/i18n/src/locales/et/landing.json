@@ -29,10 +29,6 @@
       "title": "Automatiseerimisreeglid",
       "description": "Loo keerukaid sündmuspõhiseid töövoogusid ilma koodita. Kui-siis käivitajad 23 sündmusetüübi ja 10 toiminguliigiga."
     },
-    "music": {
-      "title": "Muusikasüsteem",
-      "description": "Kõrgkvaliteediline helivoogesitus mitme platvormi toega. Järjehaldus, DJ-juhtelemendid ja raamatukogurežiim."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Dünaamiline häälkanalite haldus. Automaatne loomine kohandatud nimemallide, õiguste ja puhastamisega."

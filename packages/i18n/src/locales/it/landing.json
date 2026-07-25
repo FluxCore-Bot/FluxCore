@@ -29,10 +29,6 @@
       "title": "Regole di automazione",
       "description": "Crea workflow complessi basati su eventi senza codice. Trigger se-questo-allora-quello con 23 tipi di eventi e 10 tipi di azioni."
     },
-    "music": {
-      "title": "Sistema musicale",
-      "description": "Streaming audio ad alta fedelta con supporto multi-piattaforma. Gestione code, controlli DJ e modalita libreria."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Gestione dinamica dei canali vocali. Creazione automatica con modelli di nomi personalizzati, permessi e pulizia."

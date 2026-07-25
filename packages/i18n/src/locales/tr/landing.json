@@ -29,10 +29,6 @@
       "title": "Otomasyon Kuralları",
       "description": "Kod yazmadan karmaşık olay güdümlü iş akışları oluşturun. 23 olay türü ve 10 eylem türüyle bunu-yap-sonra-şunu-yap tetikleyicileri."
     },
-    "music": {
-      "title": "Müzik Sistemi",
-      "description": "Çok platformlu destek ile yüksek kaliteli ses akışı. Kuyruk yönetimi, DJ kontrolleri ve kütüphane modu."
-    },
     "tempVoice": {
       "title": "Geçici Ses Kanalları",
       "description": "Dinamik ses kanalı yönetimi. Özel adlandırma şablonları, izinler ve otomatik temizlik ile otomatik oluşturma."

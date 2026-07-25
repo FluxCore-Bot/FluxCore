@@ -29,10 +29,6 @@
       "title": "Peraturan Automasi",
       "description": "Cipta aliran kerja berasaskan peristiwa yang kompleks tanpa kod. Pencetus jika-ini-maka-itu dengan 23 jenis peristiwa dan 10 jenis tindakan."
     },
-    "music": {
-      "title": "Sistem Muzik",
-      "description": "Penstriman audio berkualiti tinggi dengan sokongan pelbagai platform. Pengurusan baris gilir, kawalan DJ, dan mod perpustakaan."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Pengurusan saluran suara dinamik. Penciptaan automatik dengan templat penamaan tersuai, kebenaran, dan pembersihan."

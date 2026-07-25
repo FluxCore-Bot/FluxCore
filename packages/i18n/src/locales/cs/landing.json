@@ -29,10 +29,6 @@
       "title": "Pravidla automatizace",
       "description": "Vytvářejte složité pracovní postupy řízené událostmi bez kódu. Spouštěče if-this-then-that s 23 typy událostí a 10 typy akcí."
     },
-    "music": {
-      "title": "Hudební systém",
-      "description": "Vysoká kvalita audio streamování s podporou více platforem. Správa fronty, DJ režim a knihovna."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Dynamická správa hlasových kanálů. Automatické vytváření se šablonami názvů, oprávněními a čištěním."

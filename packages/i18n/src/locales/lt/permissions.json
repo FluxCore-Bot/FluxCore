@@ -59,7 +59,6 @@
   },
   "permissionCategories": {
     "actions": "Veiksmai ir automatizavimas",
-    "music": "Muzika",
     "tempvoice": "TempVoice",
     "welcome": "Pasisveikinimas ir atsisveikinimas",
     "moderation": "Moderavimas",

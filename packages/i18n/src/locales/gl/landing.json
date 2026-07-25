@@ -29,10 +29,6 @@
       "title": "Regras de Automatización",
       "description": "Crea fluxos de traballo complexos orientados a eventos sen código. Disparadores se-isto-entón-aquilo con 23 tipos de eventos e 10 tipos de accións."
     },
-    "music": {
-      "title": "Sistema de Música",
-      "description": "Transmisión de audio de alta fidelidade con soporte multiplataforma. Xestión de cola, controis de DJ e modo de biblioteca."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Xestión dinámica de canles de voz. Creación automática con modelos de nomenclatura personalizados, permisos e limpeza."

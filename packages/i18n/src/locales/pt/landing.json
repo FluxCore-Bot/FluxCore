@@ -29,10 +29,6 @@
       "title": "Regras de automatizacao",
       "description": "Crie workflows complexos baseados em eventos sem codigo. Gatilhos se-isto-entao-aquilo com 23 tipos de eventos e 10 tipos de acoes."
     },
-    "music": {
-      "title": "Sistema de musica",
-      "description": "Streaming de audio de alta fidelidade com suporte multi-plataforma. Gestao de fila, controlos de DJ e modo biblioteca."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Gestao dinamica de canais de voz. Criacao automatica com modelos de nomes personalizados, permissoes e limpeza."
