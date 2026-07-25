@@ -15,7 +15,7 @@ services:
       timeout: 3s
       retries: 10
     tmpfs:
-      - /var/lib/postgresql/data  # RAM-backed for speed
+      - /var/lib/postgresql  # RAM-backed for speed
     networks:
       - fluxcore-test
 
