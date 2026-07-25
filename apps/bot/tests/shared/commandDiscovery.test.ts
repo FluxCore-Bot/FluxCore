@@ -1,12 +1,21 @@
-import { describe, it, expect, beforeAll, afterAll } from "vitest";
+import { describe, it, expect, vi, beforeAll, afterAll } from "vitest";
 import { mkdtemp, mkdir, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { collectCommandFiles } from "../../src/shared/handlers/commandDiscovery.js";
 
 let root: string;
+let collectCommandFiles: (featuresDir: string) => Promise<string[]>;
 
 beforeAll(async () => {
+  // commandDiscovery.js transitively imports @fluxcore/config (via @fluxcore/utils's
+  // logger), which eager-loads and requires DISCORD_TOKEN/CLIENT_ID at import time.
+  // Stub fake values here so this file doesn't rely on env leaked from other test
+  // files — turbo.json intentionally does not pass real credentials to the test task.
+  vi.stubEnv("DISCORD_TOKEN", "test-token");
+  vi.stubEnv("CLIENT_ID", "test-client-id");
+
+  ({ collectCommandFiles } = await import("../../src/shared/handlers/commandDiscovery.js"));
+
   root = await mkdtemp(join(tmpdir(), "fluxcore-cmd-"));
 
   // A feature with a flat commands/ directory
@@ -27,6 +36,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await rm(root, { recursive: true, force: true });
+  vi.unstubAllEnvs();
 });
 
 describe("collectCommandFiles", () => {
