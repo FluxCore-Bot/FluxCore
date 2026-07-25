@@ -4,6 +4,7 @@ import { SearchableSelect } from "../../../shared/ui/searchable-select";
 import { Label } from "../../../shared/ui/label";
 import { Input } from "../../../shared/ui/input";
 import { Textarea } from "../../../shared/ui/textarea";
+import { ColorPicker } from "../../../shared/ui/color-picker";
 import {
   Select,
   SelectContent,
@@ -163,19 +164,16 @@ export function ActionFields({
             )}
 
             {field.type === "color" && (
-              <div className="flex items-center gap-2">
-                <input
-                  id={fieldId}
-                  type="color"
-                  aria-label={field.label}
-                  className="h-9 w-14 shrink-0 cursor-pointer rounded-sm bg-surface-lowest p-1"
-                  value={colorHex}
-                  onChange={(e) =>
-                    onChange(field.key, parseInt(e.target.value.slice(1), 16))
-                  }
-                />
-                <span className="font-mono text-xs text-text-muted">{colorHex}</span>
-              </div>
+              <ColorPicker
+                id={fieldId}
+                aria-label={field.label}
+                value={colorHex}
+                onChange={(hex) => {
+                  const normalized = hex.startsWith("#") ? hex.slice(1) : hex;
+                  const parsed = parseInt(normalized, 16);
+                  if (!Number.isNaN(parsed)) onChange(field.key, parsed);
+                }}
+              />
             )}
 
             {field.type === "select" && field.options && (

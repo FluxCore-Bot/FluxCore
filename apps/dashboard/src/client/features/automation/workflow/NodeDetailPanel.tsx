@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect, useId } from "react";
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
 import { useChannels } from "../../../shared/hooks/useChannels";
@@ -16,6 +16,7 @@ import { SearchableSelect } from "../../../shared/ui/searchable-select";
 import { EVENT_ICONS } from "../lib/rule-icons";
 import { buildActionTypeOptions } from "../lib/action-options";
 import { ConditionsEditor } from "../components/ConditionsEditor";
+import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
 import type {
   ActionConditions,
   ActionConfig,
@@ -102,22 +103,81 @@ function getHeaderInfo(props: NodeDetailPanelProps, t: TFunction) {
   return { icon: "play_arrow", color: "bg-secondary/15", textColor: "text-secondary", label: t("panel.action", { index: props.index + 1 }) };
 }
 
+/** Danger button that confirms before running a destructive node/step removal. */
+function RemoveButton({
+  label,
+  onConfirm,
+}: {
+  label: string;
+  onConfirm: () => void;
+}) {
+  const { t } = useTranslation(["rules", "common"]);
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="pt-2">
+      <Button
+        variant="ghost"
+        size="sm"
+        className="w-full text-danger hover:bg-danger/10 hover:text-danger"
+        onClick={() => setOpen(true)}
+      >
+        <Icon name="delete" size={16} />
+        {label}
+      </Button>
+      <ConfirmDialog
+        open={open}
+        onOpenChange={setOpen}
+        title={label}
+        description={t("panel.removeConfirmDescription")}
+        onConfirm={onConfirm}
+        confirmLabel={t("common:actions.remove")}
+        destructive
+      />
+    </div>
+  );
+}
+
 export function NodeDetailPanel(props: NodeDetailPanelProps) {
   const { onClose } = props;
-  const { t } = useTranslation("rules");
+  const { t, i18n } = useTranslation(["rules", "common"]);
   const header = getHeaderInfo(props, t);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const headingId = useId();
+
+  // Move focus into the panel when it opens and restore it to the element that
+  // was focused before (the originating node) when it closes.
+  useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    panelRef.current?.focus();
+    return () => previouslyFocused?.focus?.();
+  }, []);
 
   return (
-    <div dir="rtl" className="absolute right-0 top-0 z-20 flex h-full w-full flex-col border-l border-border bg-surface-low animate-in slide-in-from-right-4 duration-200 motion-reduce:animate-none sm:w-96">
+    <div
+      ref={panelRef}
+      dir={i18n.dir()}
+      role="dialog"
+      aria-labelledby={headingId}
+      tabIndex={-1}
+      className="absolute right-0 top-0 z-20 flex h-full w-full flex-col border-l border-border bg-surface-low outline-none animate-in slide-in-from-right-4 duration-200 motion-reduce:animate-none sm:w-96"
+    >
       {/* Header */}
       <div className="flex items-center justify-between border-b border-border px-4 py-3">
         <div className="flex items-center gap-2">
           <div className={`flex h-6 w-6 items-center justify-center rounded ${header.color}`}>
             <Icon name={header.icon} size={14} className={header.textColor} />
           </div>
-          <span className="text-sm font-semibold text-text">{header.label}</span>
+          <h2 id={headingId} className="text-sm font-semibold text-text">
+            {header.label}
+          </h2>
         </div>
-        <Button variant="ghost" size="icon" onClick={onClose} className="h-7 w-7">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onClose}
+          aria-label={t("common:actions.close")}
+          className="h-9 w-9"
+        >
           <Icon name="close" size={16} />
         </Button>
       </div>
@@ -361,17 +421,10 @@ function ActionPanel({
           )}
 
           {canRemove && (
-            <div className="pt-2">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="w-full text-danger hover:bg-danger/10 hover:text-danger"
-                onClick={() => onActionRemove(index)}
-              >
-                <Icon name="delete" size={16} />
-                {t("panel.removeAction")}
-              </Button>
-            </div>
+            <RemoveButton
+              label={t("panel.removeAction")}
+              onConfirm={() => onActionRemove(index)}
+            />
           )}
         </div>
       </TabsContent>
@@ -411,6 +464,66 @@ const CONDITION_OPERATORS: Array<{ value: string; labelKey: string }> = [
   { value: "inList", labelKey: "conditionOperators.inList" },
   { value: "notInList", labelKey: "conditionOperators.notInList" },
 ];
+
+const END_TARGET = "__end__";
+
+/** Short human label for a step, used in the keyboard-accessible target pickers. */
+function stepShortLabel(step: RuleStep, constants: Constants, t: TFunction): string {
+  if (step.type === "action") {
+    return (
+      constants.actionTypes[step.action.type]?.label ??
+      (step.action.type || t("nodes.selectAction"))
+    );
+  }
+  if (step.type === "condition") {
+    return step.condition.field
+      ? t("nodes.ifField", { field: step.condition.field })
+      : t("nodes.configureCondition");
+  }
+  return t("nodes.delayLabel");
+}
+
+/**
+ * Keyboard-accessible alternative to dragging an edge: pick the step a branch
+ * should connect to (or "End" to stop the flow). Sets the same next/thenNext/
+ * elseNext fields that a drag connection would.
+ */
+function StepTargetSelect({
+  label,
+  value,
+  steps,
+  selfId,
+  constants,
+  onChange,
+}: {
+  label: string;
+  value: string | null | undefined;
+  steps: RuleStep[];
+  selfId: string;
+  constants: Constants;
+  onChange: (next: string | null) => void;
+}) {
+  const { t } = useTranslation("rules");
+  const options = [
+    { value: END_TARGET, label: t("panel.endStop") },
+    ...steps
+      .filter((s) => s.id !== selfId)
+      .map((s) => ({ value: s.id, label: stepShortLabel(s, constants, t) })),
+  ];
+  return (
+    <div>
+      <Label>{label}</Label>
+      <SearchableSelect
+        options={options}
+        value={value ?? END_TARGET}
+        onValueChange={(v) => onChange(!v || v === END_TARGET ? null : v)}
+        placeholder={t("panel.selectStep")}
+        searchPlaceholder={t("panel.search")}
+        noResultsLabel={t("panel.noResults")}
+      />
+    </div>
+  );
+}
 
 function StepPanel({
   stepId,
@@ -472,17 +585,22 @@ function StepPanel({
           />
         )}
 
-        <div className="pt-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="w-full text-danger hover:bg-danger/10 hover:text-danger"
-            onClick={() => onStepRemove(stepId)}
-          >
-            <Icon name="delete" size={16} />
-            {t("panel.removeStep")}
-          </Button>
+        <div className="space-y-3 border-t border-border pt-3">
+          <span className="section-label text-text-muted">{t("panel.connections")}</span>
+          <StepTargetSelect
+            label={t("panel.nextTarget")}
+            value={step.next}
+            steps={steps}
+            selfId={stepId}
+            constants={constants}
+            onChange={(v) => onStepChange(stepId, { ...step, next: v })}
+          />
         </div>
+
+        <RemoveButton
+          label={t("panel.removeStep")}
+          onConfirm={() => onStepRemove(stepId)}
+        />
       </div>
     );
   }
@@ -498,8 +616,9 @@ function StepPanel({
     return (
       <div className="space-y-4">
         <div>
-          <Label>{t("panel.field")}</Label>
+          <Label htmlFor="cond-field">{t("panel.field")}</Label>
           <SearchableSelect
+            id="cond-field"
             options={CONDITION_FIELDS.map((f) => ({ value: f.value, label: t(f.labelKey) }))}
             value={step.condition.field || null}
             onValueChange={(v) => v && updateCondition({ field: v as StepConditionConfig["field"] })}
@@ -510,8 +629,9 @@ function StepPanel({
         </div>
 
         <div>
-          <Label>{t("panel.operator")}</Label>
+          <Label htmlFor="cond-operator">{t("panel.operator")}</Label>
           <SearchableSelect
+            id="cond-operator"
             options={CONDITION_OPERATORS.map((o) => ({ value: o.value, label: t(o.labelKey) }))}
             value={step.condition.operator || null}
             onValueChange={(v) => v && updateCondition({ operator: v as StepConditionConfig["operator"] })}
@@ -544,17 +664,30 @@ function StepPanel({
           </p>
         </div>
 
-        <div className="pt-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="w-full text-danger hover:bg-danger/10 hover:text-danger"
-            onClick={() => onStepRemove(stepId)}
-          >
-            <Icon name="delete" size={16} />
-            {t("panel.removeCondition")}
-          </Button>
+        <div className="space-y-3 border-t border-border pt-3">
+          <span className="section-label text-text-muted">{t("panel.connections")}</span>
+          <StepTargetSelect
+            label={t("panel.thenTarget")}
+            value={step.thenNext}
+            steps={steps}
+            selfId={stepId}
+            constants={constants}
+            onChange={(v) => onStepChange(stepId, { ...step, thenNext: v })}
+          />
+          <StepTargetSelect
+            label={t("panel.elseTarget")}
+            value={step.elseNext}
+            steps={steps}
+            selfId={stepId}
+            constants={constants}
+            onChange={(v) => onStepChange(stepId, { ...step, elseNext: v })}
+          />
         </div>
+
+        <RemoveButton
+          label={t("panel.removeCondition")}
+          onConfirm={() => onStepRemove(stepId)}
+        />
       </div>
     );
   }
@@ -580,17 +713,22 @@ function StepPanel({
           <p className="mt-1 text-xs text-text-muted">{t("panel.delayRange")}</p>
         </div>
 
-        <div className="pt-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="w-full text-danger hover:bg-danger/10 hover:text-danger"
-            onClick={() => onStepRemove(stepId)}
-          >
-            <Icon name="delete" size={16} />
-            {t("panel.removeDelay")}
-          </Button>
+        <div className="space-y-3 border-t border-border pt-3">
+          <span className="section-label text-text-muted">{t("panel.connections")}</span>
+          <StepTargetSelect
+            label={t("panel.nextTarget")}
+            value={step.next}
+            steps={steps}
+            selfId={stepId}
+            constants={constants}
+            onChange={(v) => onStepChange(stepId, { ...step, next: v })}
+          />
         </div>
+
+        <RemoveButton
+          label={t("panel.removeDelay")}
+          onConfirm={() => onStepRemove(stepId)}
+        />
       </div>
     );
   }
@@ -635,14 +773,26 @@ function VariablesTab({
           <Badge
             key={v}
             variant={copiedVar === v ? "success" : "secondary"}
-            className="cursor-pointer font-mono text-[11px] transition hover:bg-accent/15 hover:text-accent"
+            role="button"
+            tabIndex={0}
+            aria-label={t("panel.copyVariable", { name: v })}
+            className="cursor-pointer font-mono text-[11px] transition hover:bg-accent/15 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             onClick={() => copyVariable(v)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                copyVariable(v);
+              }
+            }}
             title={constants.templateVariables[v] ?? v}
           >
             {copiedVar === v ? t("panel.copied") : v}
           </Badge>
         ))}
       </div>
+      <span className="sr-only" role="status" aria-live="polite">
+        {copiedVar ? t("panel.copied") : ""}
+      </span>
     </div>
   );
 }

@@ -89,7 +89,7 @@ const RULE_TEMPLATES: RuleTemplate[] = [
     icon: "rocket_launch",
     labelKey: "templates.boostThankYou",
     descriptionKey: "templates.boostThankYouDesc",
-    color: "text-[#f47fff]",
+    color: "text-tertiary",
     buildDraft: (t) => ({
       name: t("templates.boostThankYouName"),
       eventType: "boostStart",
@@ -224,9 +224,30 @@ export function RulesPage() {
 
   const confirmDelete = async () => {
     if (!deleteTarget) return;
+    const removed = deleteTarget;
     try {
-      await deleteRule.mutateAsync(deleteTarget.id);
-      toast.success(t("toast.deleted"));
+      await deleteRule.mutateAsync(removed.id);
+      toast.success(t("toast.deleted"), {
+        action: {
+          label: t("common:actions.undo"),
+          onClick: () => {
+            createRule
+              .mutateAsync({
+                name: removed.name,
+                eventType: removed.eventType,
+                actions: removed.actions,
+                ...(removed.steps?.length && removed.entryStepId
+                  ? { steps: removed.steps, entryStepId: removed.entryStepId }
+                  : {}),
+                conditions: removed.conditions,
+                priority: removed.priority,
+                enabled: removed.enabled,
+              })
+              .then(() => toast.success(t("toast.ruleRestored")))
+              .catch(() => toast.error(t("toast.deleteFailed")));
+          },
+        },
+      });
     } catch {
       toast.error(t("toast.deleteFailed"));
     }
@@ -514,7 +535,7 @@ export function RulesPage() {
               <button
                 key={template.labelKey}
                 onClick={() => handleUseTemplate(template)}
-                className="group flex items-start gap-3 rounded-lg border border-border bg-surface-lowest p-4 text-start transition-all hover:border-accent/40 hover:bg-surface-high/50"
+                className="group flex items-start gap-3 rounded-lg border border-border bg-surface-lowest p-4 text-start transition-all hover:border-accent/40 hover:bg-surface-high/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <div className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-surface-high ${template.color}`}>
                   <Icon name={template.icon} size={20} />

@@ -55,7 +55,7 @@ export default function VariableBrowser({ variables, onInsert, label }: Variable
                 <button
                   type="button"
                   onClick={() => pick(m.token)}
-                  className="flex w-full items-center justify-between gap-3 rounded-sm px-2 py-1.5 text-left text-sm hover:bg-accent/10"
+                  className="flex min-h-11 w-full items-center justify-between gap-3 rounded-sm px-2 py-1.5 text-left text-sm hover:bg-accent/10 focus-visible:bg-accent/10 focus-visible:outline-none active:bg-accent/20"
                 >
                   <span className="font-mono text-accent">{m.token}</span>
                   <span className="truncate text-xs text-text-muted">

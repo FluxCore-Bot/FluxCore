@@ -112,6 +112,7 @@ export function RuleList({
                     >
                       <Checkbox
                         checked={isSelected}
+                        aria-label={t("ruleList.selectRule", { name: rule.name })}
                         onCheckedChange={() => toggleSelection(rule.id)}
                       />
                     </div>
@@ -125,9 +126,25 @@ export function RuleList({
                   {/* Name + event label */}
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
-                      <span className={`text-sm font-semibold truncate ${!rule.enabled ? "text-text-muted" : ""}`}>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onEdit(rule);
+                        }}
+                        className={`min-w-0 truncate rounded-sm text-start text-sm font-semibold outline-none focus-visible:ring-2 focus-visible:ring-ring ${!rule.enabled ? "text-text-muted" : ""}`}
+                      >
                         {rule.name}
-                      </span>
+                      </button>
+                      {!rule.enabled && (
+                        <Badge
+                          variant="outline"
+                          className="gap-0.5 border-text-muted/40 px-1.5 py-0 text-[11px] text-text-muted"
+                        >
+                          <Icon name="pause_circle" size={10} />
+                          {t("ruleList.disabledBadge")}
+                        </Badge>
+                      )}
                       {hasSteps && (
                         <Tooltip>
                           <TooltipTrigger asChild>
@@ -144,14 +161,14 @@ export function RuleList({
                       <span className="text-xs text-text-muted">
                         {eventLabel}
                       </span>
-                      <span className="text-text-muted/30">·</span>
-                      <span className="text-xs text-text-muted/60">
+                      <span className="text-text-muted/40">·</span>
+                      <span className="text-xs text-text-secondary">
                         {lastFired.fired ? t("ruleList.firedAgo", { time: lastFired.text }) : t("ruleList.neverFired")}
                       </span>
                       {rule.priority > 0 && (
                         <>
-                          <span className="text-text-muted/30">·</span>
-                          <span className="font-mono text-[10px] text-text-muted/50">
+                          <span className="text-text-muted/40">·</span>
+                          <span className="font-mono text-[11px] text-text-secondary">
                             P{rule.priority}
                           </span>
                         </>
@@ -169,6 +186,11 @@ export function RuleList({
                         <div className="flex items-center">
                           <Switch
                             checked={rule.enabled}
+                            aria-label={
+                              rule.enabled
+                                ? t("ruleList.disableRuleNamed", { name: rule.name })
+                                : t("ruleList.enableRuleNamed", { name: rule.name })
+                            }
                             onCheckedChange={() => onToggle(rule)}
                           />
                         </div>
@@ -181,7 +203,8 @@ export function RuleList({
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="h-8 w-8 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
+                          aria-label={t("ruleList.moreActions", { name: rule.name })}
+                          className="h-9 w-9 opacity-100 transition-opacity sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100"
                         >
                           <Icon name="more_vert" size={16} className="text-text-muted" />
                         </Button>
@@ -255,7 +278,12 @@ export function RuleList({
                                 {actionLabel || t("nodes.unconfigured")}
                               </span>
                               {!isConfigured && (
-                                <span className="flex h-1.5 w-1.5 rounded-full bg-warning/60" />
+                                <span
+                                  role="img"
+                                  aria-label={t("ruleList.actionNotConfigured")}
+                                  title={t("ruleList.actionNotConfigured")}
+                                  className="flex h-1.5 w-1.5 rounded-full bg-warning/60"
+                                />
                               )}
                             </div>
                           </TooltipTrigger>

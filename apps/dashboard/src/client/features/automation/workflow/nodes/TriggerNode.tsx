@@ -57,7 +57,7 @@ function TriggerNodeComponent({ data, selected }: NodeProps) {
         type="source"
         position={Position.Right}
         title={t("nodes.nextStep")}
-        className="!h-4 !w-4 !border-2 !border-accent !bg-surface-high"
+        className="h-4! w-4! border-2! border-accent! bg-surface-high! after:absolute after:-inset-3.5 after:rounded-full after:content-['']"
       />
     </>
   );

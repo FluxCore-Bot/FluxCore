@@ -30,7 +30,9 @@ interface VariableEditorProps {
 const CONTAINER =
   "relative w-full rounded-sm border border-transparent bg-surface-lowest text-text transition-colors focus-within:border-accent focus-within:shadow-[0_0_4px_rgba(163,166,255,0.10)]";
 // Padding + typography shared by BOTH layers so glyphs line up exactly.
-const FIELD_BASE = "px-3 text-sm";
+// font-family, letter-spacing and tab-size are pinned so the mirror can never
+// drift out of alignment with the field's caret.
+const FIELD_BASE = "px-3 text-sm font-sans tracking-normal [tab-size:2]";
 const INPUT_BOX = "h-9 py-1";
 const AREA_BOX = "min-h-[60px] py-2";
 
@@ -61,9 +63,34 @@ export default function VariableEditor(props: VariableEditorProps) {
     () => (open ? filterByQuery(variables, query) : []),
     [open, query, variables],
   );
-  // Use value prop for overlay rendering; unknown tokens computed from prop
-  const unknowns = React.useMemo(() => detectUnknownTokens(value, known), [value, known]);
+
+  // Debounce the expensive unknown-token analysis (Levenshtein suggestions) so it
+  // doesn't run on every keystroke. The live mirror tokenization below stays
+  // synchronous so caret alignment is never delayed.
+  const [debouncedValue, setDebouncedValue] = React.useState(value);
+  React.useEffect(() => {
+    const timer = setTimeout(() => setDebouncedValue(value), 200);
+    return () => clearTimeout(timer);
+  }, [value]);
+  const unknowns = React.useMemo(
+    () => detectUnknownTokens(debouncedValue, known),
+    [debouncedValue, known],
+  );
   const segments = React.useMemo(() => tokenize(value, known), [value, known]);
+
+  // Keep the highlight backdrop pixel-aligned with the field when it resizes
+  // (container width change, textarea auto-grow, zoom, late font load).
+  React.useEffect(() => {
+    const el = fieldRef.current;
+    const bd = backdropRef.current;
+    if (!el || !bd || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(() => {
+      bd.scrollTop = el.scrollTop;
+      bd.scrollLeft = el.scrollLeft;
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   React.useEffect(() => {
     // Reset to -1 (nothing highlighted) whenever the match list changes
@@ -137,6 +164,11 @@ export default function VariableEditor(props: VariableEditorProps) {
   }
 
   const listboxId = id ? `${id}-listbox` : "vf-listbox";
+  const errorsId = id ? `${id}-errors` : "vf-errors";
+  const hintId = id ? `${id}-hint` : "vf-hint";
+  const describedBy =
+    [unknowns.length > 0 ? errorsId : null, hintId].filter(Boolean).join(" ") ||
+    undefined;
 
   return (
     <div>
@@ -196,6 +228,7 @@ export default function VariableEditor(props: VariableEditorProps) {
                 aria-controls={listboxId}
                 aria-autocomplete="list"
                 aria-activedescendant={active >= 0 ? `${listboxId}-opt-${active}` : undefined}
+                aria-describedby={describedBy}
                 className={cn(
                   "relative block w-full resize-none bg-transparent text-transparent caret-text outline-none placeholder:text-outline",
                   FIELD_BASE,
@@ -224,6 +257,7 @@ export default function VariableEditor(props: VariableEditorProps) {
                 aria-controls={listboxId}
                 aria-autocomplete="list"
                 aria-activedescendant={active >= 0 ? `${listboxId}-opt-${active}` : undefined}
+                aria-describedby={describedBy}
                 className={cn(
                   "relative block w-full bg-transparent text-transparent caret-text outline-none placeholder:text-outline",
                   FIELD_BASE,
@@ -253,7 +287,7 @@ export default function VariableEditor(props: VariableEditorProps) {
                   role="option"
                   aria-selected={i === active}
                   className={cn(
-                    "flex cursor-pointer items-center justify-between gap-3 rounded-sm px-2 py-1.5 text-sm",
+                    "flex min-h-11 cursor-pointer items-center justify-between gap-3 rounded-sm px-2 py-1.5 text-sm",
                     active >= 0 && i === active
                       ? "bg-accent/15 text-text"
                       : "text-text-muted",
@@ -275,8 +309,26 @@ export default function VariableEditor(props: VariableEditorProps) {
         </PopoverContent>
       </Popover>
 
+      {/* SR-only hint describing how to insert variables (referenced by the field). */}
+      <span id={hintId} className="sr-only">
+        {t("variableField.hintSr")}
+      </span>
+
+      {/* Live announcement of autocomplete result count for screen readers. */}
+      <span className="sr-only" role="status" aria-live="polite">
+        {open && matches.length > 0
+          ? t("variableField.results", { count: matches.length })
+          : ""}
+      </span>
+
       {unknowns.length > 0 && (
-        <ul className="mt-1 space-y-0.5">
+        <ul
+          id={errorsId}
+          role="alert"
+          aria-live="polite"
+          aria-label={t("variableField.errorsLabel")}
+          className="mt-1 space-y-0.5"
+        >
           {unknowns.map((u) => (
             <li key={u.token} className="text-xs text-danger">
               {t("variableField.unknown", { token: u.token })}

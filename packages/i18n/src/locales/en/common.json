@@ -53,7 +53,8 @@
     "import": "Import",
     "submit": "Submit",
     "loading": "Loading...",
-    "retry": "Retry"
+    "retry": "Retry",
+    "undo": "Undo"
   },
   "labels": {
     "enabled": "Enabled",
@@ -151,7 +152,11 @@
     "unknown": "Unknown variable {{token}}",
     "didYouMean": "did you mean {{suggestion}}?",
     "preview": "Preview",
-    "notAvailable": "{{token}} isn't available for {{event}}"
+    "notAvailable": "{{token}} isn't available for {{event}}",
+    "results_one": "{{count}} variable available",
+    "results_other": "{{count}} variables available",
+    "hintSr": "Type an opening brace to browse available variables",
+    "errorsLabel": "Variable errors"
   },
   "variables": {
     "user": "Mentions the user",

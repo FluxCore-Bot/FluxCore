@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useId } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "../../../shared/components/Icon";
 import { Badge } from "../../../shared/ui/badge";
@@ -41,7 +41,7 @@ function ChipList({
             type="button"
             aria-label={t("conditions.removeItem", { label: item.label })}
             onClick={() => onRemove(item.id)}
-            className="ms-0.5 rounded-full p-0.5 hover:bg-white/10"
+            className="ms-0.5 rounded-full p-1 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <Icon name="close" size={10} />
           </button>
@@ -64,25 +64,38 @@ function UserIdInput({
   onRemove: (id: string) => void;
   chipColor?: "secondary" | "destructive";
 }) {
-  const { t } = useTranslation("rules");
+  const { t } = useTranslation(["rules", "common"]);
   const [input, setInput] = useState("");
+  const [touched, setTouched] = useState(false);
+  const fieldId = useId();
+  const errorId = `${fieldId}-error`;
+  const trimmed = input.trim();
+  const isValid = /^\d{17,20}$/.test(trimmed);
+  const showError = touched && trimmed.length > 0 && !isValid;
 
   const handleAdd = () => {
-    const id = input.trim();
-    if (id && /^\d{17,20}$/.test(id) && !selectedIds.includes(id)) {
-      onAdd(id);
+    if (isValid && !selectedIds.includes(trimmed)) {
+      onAdd(trimmed);
       setInput("");
+      setTouched(false);
+    } else {
+      setTouched(true);
     }
   };
 
   return (
     <div className="space-y-1.5">
-      <Label className="text-xs">{label}</Label>
+      <Label htmlFor={fieldId} className="text-xs">{label}</Label>
       <div className="flex gap-1.5">
         <Input
+          id={fieldId}
           type="text"
+          inputMode="numeric"
           value={input}
+          aria-invalid={showError || undefined}
+          aria-describedby={showError ? errorId : undefined}
           onChange={(e) => setInput(e.target.value)}
+          onBlur={() => setTouched(true)}
           onKeyDown={(e) =>
             e.key === "Enter" && (e.preventDefault(), handleAdd())
           }
@@ -93,13 +106,19 @@ function UserIdInput({
           type="button"
           variant="ghost"
           size="sm"
+          aria-label={t("conditions.addUserId")}
           className="h-8 px-2"
           onClick={handleAdd}
-          disabled={!input.trim() || !/^\d{17,20}$/.test(input.trim())}
+          disabled={!trimmed || !isValid}
         >
           <Icon name="add" size={14} />
         </Button>
       </div>
+      {showError && (
+        <p id={errorId} role="alert" className="text-xs text-danger">
+          {t("conditions.userIdInvalid")}
+        </p>
+      )}
       <ChipList
         items={selectedIds.map((id) => ({ id, label: id }))}
         onRemove={onRemove}
@@ -139,7 +158,7 @@ export function ConditionsEditor({
       <button
         type="button"
         onClick={() => setExpanded(true)}
-        className="flex w-full items-center gap-2 rounded-lg border border-dashed border-border px-3 py-2 text-xs text-text-muted transition-colors hover:border-accent/30 hover:text-accent"
+        className="flex w-full items-center gap-2 rounded-lg border border-dashed border-border px-3 py-2 text-xs text-text-muted transition-colors hover:border-accent/30 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
         <Icon name="filter_alt" size={14} />
         {t("conditions.addConditions")}
@@ -172,7 +191,8 @@ export function ConditionsEditor({
             type="button"
             variant="ghost"
             size="icon"
-            className="h-6 w-6"
+            aria-label={t("conditions.collapse")}
+            className="h-8 w-8"
             onClick={() => setExpanded(false)}
           >
             <Icon name="expand_less" size={14} />

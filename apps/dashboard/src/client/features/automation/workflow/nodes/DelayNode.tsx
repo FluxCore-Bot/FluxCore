@@ -43,7 +43,7 @@ function DelayNodeComponent({ data, selected }: NodeProps) {
         id="target"
         type="target"
         position={Position.Left}
-        className="!h-4 !w-4 !border-2 !border-text-muted !bg-surface-high"
+        className="h-4! w-4! border-2! border-text-muted! bg-surface-high! after:absolute after:-inset-3.5 after:rounded-full after:content-['']"
       />
       <div
         role="group"
@@ -67,7 +67,7 @@ function DelayNodeComponent({ data, selected }: NodeProps) {
         id="source"
         type="source"
         position={Position.Right}
-        className="!h-4 !w-4 !border-2 !border-text-muted/50 !bg-surface-high"
+        className="h-4! w-4! border-2! border-text-muted/50! bg-surface-high! after:absolute after:-inset-3.5 after:rounded-full after:content-['']"
       />
     </>
   );
