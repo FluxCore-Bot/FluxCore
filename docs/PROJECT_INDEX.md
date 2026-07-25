@@ -34,7 +34,7 @@ FluxCore/
 ├── packages/
 │   ├── config/                 # Environment & configuration
 │   ├── database/               # Prisma ORM + PostgreSQL
-│   ├── systems/                # Shared stateful systems (16 modules)
+│   ├── systems/                # Shared stateful systems (15 modules)
 │   ├── types/                  # Shared TypeScript interfaces
 │   └── utils/                  # Logger, embeds, permissions, time
 ├── docs/                       # Feature specs & planning docs
@@ -186,7 +186,7 @@ FluxCore/
 
 ---
 
-### `packages/systems/` (@fluxcore/systems) — 16 modules, 87 files
+### `packages/systems/` (@fluxcore/systems) — 15 modules, 82 files
 
 Shared stateful logic consumed by both bot and dashboard.
 

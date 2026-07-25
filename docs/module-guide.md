@@ -65,7 +65,7 @@ FluxCore is a modular Discord bot framework with an integrated admin dashboard. 
 │  ┌────────────────────────────────────────────────────────┐   │
 │  │                    Shared Packages                       │   │
 │  │                                                          │   │
-│  │  @fluxcore/systems    → Business logic (16 modules)     │   │
+│  │  @fluxcore/systems    → Business logic (15 modules)     │   │
 │  │  @fluxcore/database   → Prisma ORM + PostgreSQL         │   │
 │  │  @fluxcore/config     → Environment & configuration     │   │
 │  │  @fluxcore/types      → Shared TypeScript interfaces    │   │
@@ -245,7 +245,7 @@ packages/i18n/
 
 **Package:** `@fluxcore/systems` | **Location:** `packages/systems/`
 
-This is the core business logic layer — 16 modules of shared stateful logic consumed by both the bot and the dashboard. Each module follows a consistent structure:
+This is the core business logic layer — 15 modules of shared stateful logic consumed by both the bot and the dashboard. Each module follows a consistent structure:
 
 ```
 {module}/
