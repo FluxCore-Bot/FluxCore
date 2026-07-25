@@ -18,7 +18,6 @@ interface NavItem {
 const navItems: NavItem[] = [
   { path: "/guild/$guildId/overview", i18nKey: "nav.overview", icon: "dashboard" },
   { path: "/guild/$guildId/rules", i18nKey: "nav.automation", icon: "bolt", permission: "actions.rules.view" },
-  { path: "/guild/$guildId/music", i18nKey: "nav.music", icon: "library_music", permission: "music.settings.view" },
   { path: "/guild/$guildId/tempvoice", i18nKey: "nav.tempvoice", icon: "settings_voice", permission: "tempvoice.config.view" },
   { path: "/guild/$guildId/welcome", i18nKey: "nav.welcome", icon: "waving_hand", permission: "welcome.config.view" },
   { path: "/guild/$guildId/moderation", i18nKey: "nav.moderation", icon: "shield", permission: "moderation.cases.view" },

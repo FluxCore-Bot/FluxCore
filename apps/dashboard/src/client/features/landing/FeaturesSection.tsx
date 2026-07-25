@@ -3,7 +3,6 @@ import { Icon } from "../../shared/components/Icon";
 
 const featureKeys = [
   { icon: "bolt", key: "automation" },
-  { icon: "library_music", key: "music" },
   { icon: "settings_voice", key: "tempVoice" },
   { icon: "description", key: "logs" },
   { icon: "webhook", key: "webhooks" },

@@ -51,9 +51,6 @@ const SettingsPage = lazyPage(() =>
 const LogsPage = lazyPage(() =>
   import("./routes/guild/$guildId/logs").then((m) => ({ default: m.LogsPage })),
 );
-const MusicPage = lazyPage(() =>
-  import("./routes/guild/$guildId/music").then((m) => ({ default: m.MusicPage })),
-);
 const WarningsPage = lazyPage(() =>
   import("./routes/guild/$guildId/warnings").then((m) => ({ default: m.WarningsPage })),
 );
@@ -155,12 +152,6 @@ const logsRoute = createRoute({
   component: LogsPage,
 });
 
-const musicRoute = createRoute({
-  getParentRoute: () => guildRoute,
-  path: "/music",
-  component: MusicPage,
-});
-
 const warningsRoute = createRoute({
   getParentRoute: () => guildRoute,
   path: "/warnings",
@@ -246,7 +237,6 @@ const routeTree = rootRoute.addChildren([
     overviewRoute,
     rulesRoute,
     tempvoiceRoute,
-    musicRoute,
     warningsRoute,
     moderationRoute,
     welcomeRoute,
