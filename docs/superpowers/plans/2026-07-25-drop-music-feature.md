@@ -1357,10 +1357,12 @@ Expected: `BASE_OK`, `PROD_OK`.
 
 - [ ] **Step 5: Boot both apps with no Lavalink variables present**
 
+**`--build` is mandatory here.** The `dashboard` service runs `pnpm install --frozen-lockfile` and mounts `./apps` and `./packages` but *not* the root `pnpm-lock.yaml` — so it compares the host's `apps/bot/package.json` (shoukaku removed in Task 2) against the **image's** baked lockfile (shoukaku still present) and dies with `ERR_PNPM_OUTDATED_LOCKFILE`. Rebuilding bakes in the regenerated lockfile. Running this step without `--build` will fail for a reason that has nothing to do with Lavalink and will send you chasing the wrong bug.
+
 ```bash
 env -u LAVALINK_PASSWORD -u LAVALINK_HOST -u LAVALINK_PORT \
-  PGADMIN_PASSWORD=ci-dummy docker compose --profile full up -d
-sleep 20
+  PGADMIN_PASSWORD=ci-dummy docker compose --profile full up -d --build
+sleep 30
 PGADMIN_PASSWORD=ci-dummy docker compose --profile full logs bot dashboard | grep -iE "lavalink|shoukaku|error" | head -20
 ```
 
