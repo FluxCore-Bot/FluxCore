@@ -143,10 +143,35 @@ describe("POST /api/guilds/:guildId/welcome/image/background — body limit", ()
     expect(res.statusCode).toBe(200);
   });
 
-  it("still rejects a payload beyond the configured maximum", async () => {
-    // Above the mocked 5MB MAX_BACKGROUND_SIZE — must be refused, either by the
-    // handler's own check (400) or by the transport limit (413).
-    const tooBig = Buffer.concat([PNG_HEADER, Buffer.alloc(6 * 1024 * 1024)]);
+  it("rejects a payload over the maximum with the handler's own 400, not a transport 413", async () => {
+    // 5MB + 4KB: just over the mocked 5MB MAX_BACKGROUND_SIZE, but its base64
+    // form (~6.67MB of JSON) still fits inside BACKGROUND_BODY_LIMIT
+    // (ceil(MAX * 4/3) + 8KB), so the request must reach the handler and get
+    // the friendly, size-naming 400.
+    //
+    // Accepting "400 or 413" here would pass with bodyLimit deleted — Fastify's
+    // 1MB default would 413 this long before the handler ran. Pinning the exact
+    // status AND the handler's message is what makes this test protect the fix.
+    const overMax = Buffer.concat([
+      PNG_HEADER,
+      Buffer.alloc(5 * 1024 * 1024 + 4096 - PNG_HEADER.length),
+    ]);
+    const res = await app.inject({
+      method: "POST",
+      url: "/api/guilds/guild-1/welcome/image/background",
+      cookies: { session: app.signCookie("valid") },
+      payload: { data: overMax.toString("base64"), contentType: "image/png" },
+    });
+
+    expect(res.statusCode).toBe(400);
+    expect(res.json<{ error: string }>().error).toMatch(/Maximum size: 5 MB/);
+    expect(mockUpload).not.toHaveBeenCalled();
+  });
+
+  it("rejects a payload beyond the body limit at the transport layer", async () => {
+    // Far past BACKGROUND_BODY_LIMIT — raising the limit must not mean removing
+    // the ceiling, so an absurd body is still refused before it is buffered.
+    const tooBig = Buffer.concat([PNG_HEADER, Buffer.alloc(16 * 1024 * 1024)]);
     const res = await app.inject({
       method: "POST",
       url: "/api/guilds/guild-1/welcome/image/background",
@@ -154,6 +179,7 @@ describe("POST /api/guilds/:guildId/welcome/image/background — body limit", ()
       payload: { data: tooBig.toString("base64"), contentType: "image/png" },
     });
 
-    expect([400, 413]).toContain(res.statusCode);
+    expect(res.statusCode).toBe(413);
+    expect(mockUpload).not.toHaveBeenCalled();
   });
 });
