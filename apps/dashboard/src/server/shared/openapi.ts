@@ -9,7 +9,6 @@ const MODULE_TAGS: { name: string; description: string }[] = [
   { name: "TempVoice", description: "Temporary voice channel configuration." },
   { name: "Actions", description: "Event-driven automation rules and actions." },
   { name: "Discord", description: "Discord-side lookups (channels, roles, guild state)." },
-  { name: "Music", description: "Music player settings and queue management." },
   { name: "Logging", description: "Audit/event logging configuration." },
   { name: "Moderation", description: "Moderation settings and case management." },
   { name: "Warnings", description: "Warning issuance, listing and removal." },

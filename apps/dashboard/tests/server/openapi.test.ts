@@ -23,7 +23,6 @@ import { registerGuildRoutes } from "../../src/server/features/guilds/routes.js"
 import { registerTempVoiceRoutes } from "../../src/server/features/tempvoice/routes.js";
 import { registerActionRoutes } from "../../src/server/features/actions/routes.js";
 import { registerDiscordRoutes } from "../../src/server/features/discord/routes.js";
-import { registerMusicRoutes } from "../../src/server/features/music/routes.js";
 import { registerLoggingRoutes } from "../../src/server/features/logging/routes.js";
 import { registerWarningRoutes } from "../../src/server/features/moderation/warnings-routes.js";
 import { registerModerationRoutes } from "../../src/server/features/moderation/routes.js";
@@ -41,7 +40,7 @@ import { registerDashboardRoleRoutes } from "../../src/server/features/permissio
 import { registerDashboardPermissionRoutes } from "../../src/server/features/permissions/routes.js";
 
 const EXPECTED_TAGS = [
-  "Meta", "Auth", "Guilds", "TempVoice", "Actions", "Discord", "Music",
+  "Meta", "Auth", "Guilds", "TempVoice", "Actions", "Discord",
   "Logging", "Moderation", "Warnings", "Welcome", "RolePanels", "Leveling",
   "ScheduledMessages", "CustomCommands", "AntiRaid", "Tickets", "Giveaways",
   "Suggestions", "Starboard", "DashboardPermissions", "DashboardRoles",
@@ -57,7 +56,6 @@ beforeAll(async () => {
   registerTempVoiceRoutes(app);
   registerActionRoutes(app);
   registerDiscordRoutes(app);
-  registerMusicRoutes(app);
   registerLoggingRoutes(app);
   registerWarningRoutes(app);
   registerModerationRoutes(app);

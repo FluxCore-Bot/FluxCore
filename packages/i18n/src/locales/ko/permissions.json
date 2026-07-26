@@ -59,7 +59,6 @@
   },
   "permissionCategories": {
     "actions": "액션 및 자동화",
-    "music": "음악",
     "tempvoice": "임시 음성",
     "welcome": "환영 및 작별",
     "moderation": "관리",

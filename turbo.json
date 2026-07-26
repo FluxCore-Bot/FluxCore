@@ -3,10 +3,7 @@
   "globalPassThroughEnv": [
     "DATABASE_URL",
     "NODE_ENV",
-    "LOG_LEVEL",
-    "LAVALINK_HOST",
-    "LAVALINK_PORT",
-    "LAVALINK_PASSWORD"
+    "LOG_LEVEL"
   ],
   "tasks": {
     "build": {

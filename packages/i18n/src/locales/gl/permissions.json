@@ -59,7 +59,6 @@
   },
   "permissionCategories": {
     "actions": "Accións e Automatización",
-    "music": "Música",
     "tempvoice": "TempVoice",
     "welcome": "Benvida e Despedida",
     "moderation": "Moderación",

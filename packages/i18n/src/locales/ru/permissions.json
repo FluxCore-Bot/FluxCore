@@ -59,7 +59,6 @@
   },
   "permissionCategories": {
     "actions": "Действия и автоматизация",
-    "music": "Музыка",
     "tempvoice": "TempVoice",
     "welcome": "Приветствие и прощание",
     "moderation": "Модерация",

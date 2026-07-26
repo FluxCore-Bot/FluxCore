@@ -29,10 +29,6 @@
       "title": "Pravila automatizacije",
       "description": "Kreirajte slozene radne tokove zasnovane na dogadajima bez koda. Okidaci tipa ako-ovo-onda-to sa 23 tipa dogadaja i 10 tipova radnji."
     },
-    "music": {
-      "title": "Muzicki sistem",
-      "description": "Audio striming visokog kvaliteta sa podrskom za vise platformi. Upravljanje redom cekanja, DJ kontrole i rezim biblioteke."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Dinamicko upravljanje glasovnim kanalima. Automatsko kreiranje sa prilagodenim sablonima naziva, dozvolama i ciscenjem."

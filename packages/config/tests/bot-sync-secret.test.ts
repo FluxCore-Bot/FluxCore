@@ -5,7 +5,6 @@ describe("BOT_SYNC_SECRET", () => {
     vi.resetModules();
     process.env.DISCORD_TOKEN = "x";
     process.env.CLIENT_ID = "y";
-    process.env.LAVALINK_PASSWORD = "z";
     delete process.env.BOT_SYNC_SECRET;
   });
 

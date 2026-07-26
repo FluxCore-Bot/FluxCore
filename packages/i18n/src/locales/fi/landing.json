@@ -29,10 +29,6 @@
       "title": "Automaatiosäännöt",
       "description": "Luo monimutkaisia tapahtumapohjaisia työnkulkuja ilman koodia. Jos-tämä-niin-tuo-laukaisimet 23 tapahtumatyypillä ja 10 toimintotyypillä."
     },
-    "music": {
-      "title": "Musiikkijärjestelmä",
-      "description": "Korkealaatuinen äänisuoratoisto usean alustan tuella. Jononhallinta, DJ-ohjaimet ja kirjastotila."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Dynaaminen äänikanavien hallinta. Automaattinen luonti mukautetuilla nimimalleilla, oikeuksilla ja siivouksella."

@@ -59,7 +59,6 @@
   },
   "permissionCategories": {
     "actions": "動作與自動化",
-    "music": "音樂",
     "tempvoice": "臨時語音",
     "welcome": "歡迎與告別",
     "moderation": "管理",

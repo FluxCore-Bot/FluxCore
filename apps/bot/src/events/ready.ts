@@ -13,12 +13,7 @@ import { cleanOldLogs } from "@fluxcore/systems/actions/persistence";
 import { registerActionEventListeners } from "../features/automation/system/eventBridge.js";
 import { startSyncServer } from "../features/automation/system/syncServer.js";
 import { startReminderPolling } from "../shared/systems/reminders.js";
-import { loadMusicSettings, get247Guilds } from "@fluxcore/systems/music/config";
 import { cleanOldLogEntries } from "@fluxcore/systems/logging/persistence";
-import { createQueue } from "../features/music/system/queue.js";
-import { setupPlayerEvents } from "../features/music/system/events.js";
-import { registerMusicSettingsReactor } from "../features/music/system/settingsReactor.js";
-import { waitForNode } from "../features/music/system/shoukaku.js";
 import { logger } from "@fluxcore/utils";
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
@@ -59,48 +54,6 @@ const event: Event<"ready"> = {
     }
 
     startReminderPolling(client);
-
-    // Music system initialization
-    try {
-      await loadMusicSettings();
-      registerMusicSettingsReactor(client);
-
-      // Wait for Lavalink node before attempting to rejoin voice channels
-      const guilds247 = get247Guilds();
-      if (guilds247.length > 0) {
-        await waitForNode();
-        logger.info(`Rejoining ${guilds247.length} 24/7 channel(s)`);
-      }
-
-      // Rejoin 24/7 channels
-      for (const settings of guilds247) {
-        try {
-          const guild = client.guilds.cache.get(settings.guildId);
-          if (!guild || !settings.lastChannelId) continue;
-          const channel = guild.channels.cache.get(settings.lastChannelId);
-          if (!channel?.isVoiceBased()) continue;
-
-          await createQueue(
-            settings.guildId,
-            settings.lastChannelId,
-            settings.lastChannelId,
-            client,
-          );
-          setupPlayerEvents(settings.guildId, client);
-          logger.debug(`Rejoined 24/7 channel in guild ${settings.guildId}`);
-        } catch (err) {
-          logger.error(
-            `Failed to rejoin 24/7 channel in guild ${settings.guildId}`,
-            err instanceof Error ? err : new Error(String(err)),
-          );
-        }
-      }
-    } catch (error) {
-      logger.error(
-        "Failed to initialize music system",
-        error instanceof Error ? error : new Error(String(error)),
-      );
-    }
 
     // Logging system — load guild configs on-demand, schedule retention cleanup
     try {

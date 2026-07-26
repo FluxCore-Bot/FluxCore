@@ -59,7 +59,6 @@
   },
   "permissionCategories": {
     "actions": "Akce a automatizace",
-    "music": "Hudba",
     "tempvoice": "TempVoice",
     "welcome": "Uvítání a rozloučení",
     "moderation": "Moderace",

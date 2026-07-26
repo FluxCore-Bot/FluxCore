@@ -3,13 +3,14 @@ import { join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { config } from "@fluxcore/config";
 import type { Command } from "@fluxcore/types";
-import { getFiles, logger } from "@fluxcore/utils";
+import { logger } from "@fluxcore/utils";
+import { collectCommandFiles } from "../shared/handlers/commandDiscovery.js";
 
 async function deploy(): Promise<void> {
   const dirname = fileURLToPath(new URL(".", import.meta.url));
-  const commandsDir = join(dirname, "..", "commands");
+  const featuresDir = join(dirname, "..", "features");
 
-  const files = await getFiles(commandsDir);
+  const files = await collectCommandFiles(featuresDir);
   const commands: ReturnType<Command["data"]["toJSON"]>[] = [];
 
   for (const file of files) {
@@ -20,6 +21,14 @@ async function deploy(): Promise<void> {
     if (command?.data) {
       commands.push(command.data.toJSON());
     }
+  }
+
+  // rest.put is a full replace — deploying an empty array would silently
+  // deregister every command. Fail loudly instead.
+  if (commands.length === 0) {
+    throw new Error(
+      `No commands discovered under ${featuresDir} — refusing to deploy an empty command set.`,
+    );
   }
 
   const rest = new REST().setToken(config.token);

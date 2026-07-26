@@ -71,42 +71,11 @@ export async function createActionGuildSettings(
 
 export async function createCacheInvalidation(
   guildId: string = "test-guild-1",
-  action: "reload" | "reloadSettings" | "reloadTempVoice" | "reloadMusic" = "reload",
+  action: "reload" | "reloadSettings" | "reloadTempVoice" = "reload",
 ) {
   const prisma = getPrisma();
   return prisma.actionCacheInvalidation.create({
     data: { guildId, action },
-  });
-}
-
-// ─── Music Guild Settings ──────────────────────────────────
-
-export interface CreateMusicSettingsInput {
-  guildId?: string;
-  mode?: string;
-  djRoleId?: string | null;
-  defaultVolume?: number;
-  maxQueueSize?: number;
-  autoDisconnectSecs?: number;
-  twentyFourSeven?: boolean;
-  lastChannelId?: string | null;
-}
-
-export async function createMusicSettings(
-  overrides: CreateMusicSettingsInput = {},
-) {
-  const prisma = getPrisma();
-  return prisma.musicGuildSettings.create({
-    data: {
-      guildId: overrides.guildId ?? "test-guild-1",
-      mode: overrides.mode ?? "open",
-      djRoleId: overrides.djRoleId ?? null,
-      defaultVolume: overrides.defaultVolume ?? 50,
-      maxQueueSize: overrides.maxQueueSize ?? 100,
-      autoDisconnectSecs: overrides.autoDisconnectSecs ?? 300,
-      twentyFourSeven: overrides.twentyFourSeven ?? false,
-      lastChannelId: overrides.lastChannelId ?? null,
-    },
   });
 }
 

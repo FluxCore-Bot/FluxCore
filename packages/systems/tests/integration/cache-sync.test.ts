@@ -12,11 +12,10 @@
 
 import { describe, it, expect, vi, beforeAll, beforeEach, afterAll } from "vitest";
 import { setupTestDatabase, cleanTestData, teardownTestDatabase } from "../helpers/db.js";
-import { createActionRule, createCacheInvalidation, createMusicSettings } from "../helpers/factories.js";
+import { createActionRule, createCacheInvalidation } from "../helpers/factories.js";
 import { getPrisma } from "@fluxcore/database";
 import { getRulesForEvent, reloadGuild, invalidateGuild } from "../../src/actions/cache.js";
 import { notifyCacheInvalidation } from "../../src/actions/persistence.js";
-import { getMusicSettings, loadMusicSettingsForGuild } from "../../src/music/config.js";
 
 const GUILD_ID = "test-guild-1";
 
@@ -50,17 +49,6 @@ describe("Cache invalidation pipeline", () => {
       expect(records[0].action).toBe("reload");
     });
 
-    it("writes correct action type for music reload", async () => {
-      await notifyCacheInvalidation(GUILD_ID, "reloadMusic");
-
-      const prisma = getPrisma();
-      const records = await prisma.actionCacheInvalidation.findMany({
-        where: { guildId: GUILD_ID },
-      });
-
-      expect(records[0].action).toBe("reloadMusic");
-    });
-
     it("writes correct action type for settings reload", async () => {
       await notifyCacheInvalidation(GUILD_ID, "reloadSettings");
 
@@ -85,7 +73,7 @@ describe("Cache invalidation pipeline", () => {
 
     it("creates multiple records for multiple invalidations", async () => {
       await notifyCacheInvalidation(GUILD_ID, "reload");
-      await notifyCacheInvalidation(GUILD_ID, "reloadMusic");
+      await notifyCacheInvalidation(GUILD_ID, "reloadTempVoice");
       await notifyCacheInvalidation("test-guild-2", "reload");
 
       const prisma = getPrisma();
@@ -123,27 +111,6 @@ describe("Cache invalidation pipeline", () => {
       const cached = getRulesForEvent(GUILD_ID, "memberJoin");
       expect(cached).toHaveLength(1);
       expect(cached[0].id).toBe(rule.id);
-    });
-
-    it("music settings: dashboard write → invalidation record → bot reload", async () => {
-      // Step 1: Dashboard creates music settings
-      await createMusicSettings({
-        guildId: GUILD_ID,
-        defaultVolume: 80,
-        twentyFourSeven: true,
-        lastChannelId: "vc-1",
-      });
-
-      // Step 2: Dashboard writes invalidation
-      await notifyCacheInvalidation(GUILD_ID, "reloadMusic");
-
-      // Step 3: Bot reloads music for this guild
-      await loadMusicSettingsForGuild(GUILD_ID);
-
-      // Step 4: Verify bot cache has the settings
-      const cached = getMusicSettings(GUILD_ID);
-      expect(cached.defaultVolume).toBe(80);
-      expect(cached.twentyFourSeven).toBe(true);
     });
   });
 

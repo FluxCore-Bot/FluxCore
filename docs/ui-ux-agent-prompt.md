@@ -8,11 +8,11 @@
 
 ### What is FluxCore?
 
-FluxCore is a **modular, self-hosted Discord bot framework** — an all-in-one platform for Discord server administrators to manage moderation, music playback, temporary voice channels, event-driven automation, and more — all through a sleek web dashboard and interactive Discord commands.
+FluxCore is a **modular, self-hosted Discord bot framework** — an all-in-one platform for Discord server administrators to manage moderation, temporary voice channels, event-driven automation, and more — all through a sleek web dashboard and interactive Discord commands.
 
 ### Core Value Proposition
 
-- **All-in-One:** Moderation, Music, Voice, Automation, Utilities — one bot, one dashboard.
+- **All-in-One:** Moderation, Voice, Automation, Utilities — one bot, one dashboard.
 - **Deep Customization:** Per-guild configuration for every feature with granular controls.
 - **Self-Hosted & Open Source:** MIT licensed, Docker-ready, full control over data and infrastructure.
 - **Developer-Friendly:** TypeScript monorepo, modular architecture, extensible system design.
@@ -294,40 +294,36 @@ Design a single-page marketing website with the following sections in order:
 
 **Features to highlight (in order of impact):**
 
-1. **Interactive Music Player**
-   - Visual: Mock of the Discord music player embed with buttons
-   - Points: Two play modes (open + library), DJ roles, 24/7 mode, queue management, volume control
-
-2. **Temporary Voice Channels**
+1. **Temporary Voice Channels**
    - Visual: Mock of the TempVoice control panel with button grid
    - Points: Auto-creation, user controls, settings persistence, ownership transfer
 
-3. **Event-Driven Automation**
+2. **Event-Driven Automation**
    - Visual: Flow diagram or rule builder mock showing event → condition → action
    - Points: 23 event types, 10 action types, template variables, conditional execution
 
-4. **Smart Moderation**
+3. **Smart Moderation**
    - Visual: Mock of moderation commands or audit log
    - Points: Ban, kick, timeout, clear, role hierarchy checks, reason tracking
 
-5. **Web Dashboard**
+4. **Web Dashboard**
    - Visual: Dashboard screenshot/mock showing guild management
    - Points: Discord OAuth, per-guild config, real-time sync, mobile responsive
 
-6. **Self-Hosted & Open Source**
+5. **Self-Hosted & Open Source**
    - Visual: Docker/terminal illustration
    - Points: MIT license, Docker-ready, full data ownership, extensible architecture
 
 #### Section 3: Dashboard Preview
 - **Layout:** Full-width section with browser frame mockup
 - **Content:** High-fidelity screenshot or interactive preview of the dashboard
-- **Tabs or carousel** showing different dashboard pages: Guild selection → Rules → Music → TempVoice → Logs
+- **Tabs or carousel** showing different dashboard pages: Guild selection → Rules → TempVoice → Logs
 - **Caption** for each view explaining the functionality
 
 #### Section 4: Tech Stack / Architecture
 - **Layout:** Horizontal icon strip or bento grid
 - **Content:** Show the technology logos with labels:
-  - TypeScript, React 19, Fastify, Discord.js v14, PostgreSQL, Prisma, Lavalink, Docker, Tailwind CSS, TanStack, Turborepo
+  - TypeScript, React 19, Fastify, Discord.js v14, PostgreSQL, Prisma, Docker, Tailwind CSS, TanStack, Turborepo
 - **Optional:** Brief architecture diagram showing monorepo structure (Bot ↔ Database ↔ Dashboard)
 
 #### Section 5: Feature Comparison Table (Optional but impactful)
@@ -336,7 +332,6 @@ Design a single-page marketing website with the following sections in order:
   - Open Source ✓ vs ✗
   - No paywalled features ✓ vs ✗
   - Custom automation rules ✓ vs Limited
-  - Music library mode ✓ vs ✗
   - TempVoice with persistence ✓ vs Basic
 
 #### Section 6: Getting Started / Quick Setup
@@ -392,7 +387,7 @@ Design a single-page marketing website with the following sections in order:
 │  (fixed)   │  (scrollable)                           │
 │            │                                         │
 │  [Home]    │  ┌─────────────────────────────────┐   │
-│  [Music]   │  │  Page Header                     │   │
+│            │  │  Page Header                     │   │
 │  [Voice]   │  │  Title + Description + Actions   │   │
 │  [Actions] │  ├─────────────────────────────────┤   │
 │  [Logs]    │  │                                  │   │
@@ -465,10 +460,10 @@ Design a single-page marketing website with the following sections in order:
 
 ```
 ┌─────────────────┬─────────────────┬─────────────────┐
-│   Music System   │  TempVoice      │  Action Rules    │
+│   Warnings       │  TempVoice      │  Action Rules    │
 │   ● Active       │  ● 3 Hubs       │  ● 12 Rules      │
-│   Mode: Library  │  Active Channels │  7 Active         │
-│   Now Playing:.. │  ────           │  ────              │
+│   12 Active      │  Active Channels │  7 Active         │
+│   [View →]       │  ────           │  ────              │
 │   [Manage →]     │  [Manage →]     │  [Manage →]       │
 ├─────────────────┼─────────────────┼─────────────────┤
 │  Moderation      │  Recent Logs     │  Quick Actions    │
@@ -491,61 +486,7 @@ Each card shows:
 
 ---
 
-#### 5.2.4 Music Management Page (`/guild/:id/music`)
-
-**Page Header:**
-- "Music System" title
-- Status badge (Active/Inactive)
-- Description: "Configure music playback settings and manage your library"
-
-**Tab Bar:** `Settings` | `Library`
-
-**Settings Tab:**
-
-Form layout with sections:
-
-**Section: Playback Mode**
-- Radio group: "Open Mode" (anyone can search & play) vs "Library Mode" (curated albums only)
-- Info banner explaining each mode
-
-**Section: Permissions**
-- DJ Role selector (role dropdown with colored indicators)
-- Helper text: "Only users with this role can use DJ commands. Leave empty to allow everyone."
-
-**Section: Playback Settings**
-- Default Volume: Slider (0–100%) with real-time value display
-- Max Queue Size: Number input (1–500) with stepper buttons
-- Auto-Disconnect Timeout: Duration input (number + unit selector: seconds/minutes)
-- 24/7 Mode: Toggle switch with description "Keep the bot connected even when no one is listening"
-
-**Section: Save**
-- "Save Changes" primary button (disabled when no changes, loading state on submit)
-- "Reset to Defaults" ghost button
-
-**Library Tab (visible in Library Mode):**
-
-**Album Grid:**
-- Header: "Music Library" + "Create Album" button
-- Grid of album cards (2–3 columns)
-- Each album card:
-  - Album name (editable inline)
-  - Track count badge
-  - Expand/collapse chevron
-  - Delete button (with confirm dialog)
-
-**Expanded Album → Track List:**
-- Table: # | Title | Duration | Source | Actions
-- "Add Track" row at bottom with URL/search input
-- Each track: play preview (if possible), delete button
-- Drag-to-reorder (optional)
-
-**Empty State:**
-- "No albums yet" + illustration
-- "Create your first album to get started" + CTA button
-
----
-
-#### 5.2.5 TempVoice Management Page (`/guild/:id/tempvoice`)
+#### 5.2.4 TempVoice Management Page (`/guild/:id/tempvoice`)
 
 **Page Header:**
 - "Temporary Voice Channels" title
@@ -576,7 +517,7 @@ Form layout with sections:
 
 ---
 
-#### 5.2.6 Action Rules Page (`/guild/:id/actions`)
+#### 5.2.5 Action Rules Page (`/guild/:id/actions`)
 
 **Page Header:**
 - "Automation Rules" title
@@ -646,7 +587,7 @@ Form layout with sections:
 
 ---
 
-#### 5.2.7 Action Logs Page (`/guild/:id/logs`)
+#### 5.2.6 Action Logs Page (`/guild/:id/logs`)
 
 **Page Header:**
 - "Execution Logs" title
@@ -677,7 +618,7 @@ Form layout with sections:
 
 ---
 
-#### 5.2.8 Guild Settings Page (`/guild/:id/settings`)
+#### 5.2.7 Guild Settings Page (`/guild/:id/settings`)
 
 **Page Header:**
 - "Server Settings" title
@@ -702,7 +643,7 @@ Form layout with sections:
 
 ---
 
-#### 5.2.9 User Profile / Account Page (Global, not per-guild)
+#### 5.2.8 User Profile / Account Page (Global, not per-guild)
 
 **Accessible from user avatar dropdown in navbar**
 
@@ -810,7 +751,7 @@ Design these pages even though they are not yet built — the design should be r
 | Wide | 1536px | Full + extra content padding | Max-width content |
 
 ### Mobile-Specific Patterns
-- **Bottom Navigation Bar:** 5 icons for primary sections (Home, Music, Voice, Rules, Settings)
+- **Bottom Navigation Bar:** 4 icons for primary sections (Home, Voice, Rules, Settings)
 - **Cards stack vertically** instead of grid
 - **Tables convert to card lists** with key data visible, details on tap
 - **Forms go full-width** with larger touch targets (min 44×44px)

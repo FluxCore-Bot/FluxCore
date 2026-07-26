@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterAll } from "vitest";
 
 describe("config", () => {
   beforeEach(() => {
@@ -6,11 +6,14 @@ describe("config", () => {
     vi.unstubAllEnvs();
   });
 
+  afterAll(() => {
+    vi.unstubAllEnvs();
+  });
+
   it("loads config from environment variables", async () => {
     vi.stubEnv("DISCORD_TOKEN", "test-token");
     vi.stubEnv("CLIENT_ID", "test-client-id");
     vi.stubEnv("LOG_LEVEL", "debug");
-    vi.stubEnv("LAVALINK_PASSWORD", "test-lavalink-pw");
 
     const { config } = await import("@fluxcore/config");
 
@@ -41,7 +44,6 @@ describe("config", () => {
     vi.stubEnv("DISCORD_TOKEN", "test-token");
     vi.stubEnv("CLIENT_ID", "test-client-id");
     vi.stubEnv("LOG_LEVEL", "");
-    vi.stubEnv("LAVALINK_PASSWORD", "test-lavalink-pw");
 
     const { config } = await import("@fluxcore/config");
     expect(config.logLevel).toBe("info");
@@ -51,7 +53,6 @@ describe("config", () => {
     vi.stubEnv("DISCORD_TOKEN", "test-token");
     vi.stubEnv("CLIENT_ID", "test-client-id");
     vi.stubEnv("GUILD_ID", "");
-    vi.stubEnv("LAVALINK_PASSWORD", "test-lavalink-pw");
 
     const { config } = await import("@fluxcore/config");
     expect(config.guildId).toBeUndefined();

@@ -11,27 +11,27 @@ import {
 describe("matchPermission", () => {
   it("grants access for full wildcard (*)", () => {
     expect(matchPermission(new Set(["*"]), "moderation.cases.view")).toBe(true);
-    expect(matchPermission(new Set(["*"]), "music.settings.manage")).toBe(true);
+    expect(matchPermission(new Set(["*"]), "moderation.settings.manage")).toBe(true);
   });
 
   it("grants access for exact match", () => {
-    expect(matchPermission(new Set(["music.settings.view"]), "music.settings.view")).toBe(true);
+    expect(matchPermission(new Set(["moderation.cases.view"]), "moderation.cases.view")).toBe(true);
   });
 
   it("denies access when permission not granted", () => {
-    expect(matchPermission(new Set(["music.settings.view"]), "music.settings.manage")).toBe(false);
+    expect(matchPermission(new Set(["moderation.cases.view"]), "moderation.cases.manage")).toBe(false);
   });
 
   it("denies access for empty set", () => {
     expect(matchPermission(new Set(), "moderation.cases.view")).toBe(false);
   });
 
-  it("grants access for module-level wildcard (music.*)", () => {
-    const granted = new Set(["music.*"]);
-    expect(matchPermission(granted, "music.settings.view")).toBe(true);
-    expect(matchPermission(granted, "music.settings.manage")).toBe(true);
-    expect(matchPermission(granted, "music.library.view")).toBe(true);
-    expect(matchPermission(granted, "moderation.cases.view")).toBe(false);
+  it("grants access for module-level wildcard (moderation.*)", () => {
+    const granted = new Set(["moderation.*"]);
+    expect(matchPermission(granted, "moderation.cases.view")).toBe(true);
+    expect(matchPermission(granted, "moderation.cases.manage")).toBe(true);
+    expect(matchPermission(granted, "moderation.warnings.view")).toBe(true);
+    expect(matchPermission(granted, "actions.rules.view")).toBe(false);
   });
 
   it("grants access for resource-level wildcard (moderation.cases.*)", () => {
@@ -43,29 +43,29 @@ describe("matchPermission", () => {
 
   it("handles cross-module wildcard (*.settings.manage)", () => {
     const granted = new Set(["*.settings.manage"]);
-    expect(matchPermission(granted, "music.settings.manage")).toBe(true);
     expect(matchPermission(granted, "moderation.settings.manage")).toBe(true);
-    expect(matchPermission(granted, "music.settings.view")).toBe(false);
-    expect(matchPermission(granted, "music.library.manage")).toBe(false);
+    expect(matchPermission(granted, "actions.settings.manage")).toBe(true);
+    expect(matchPermission(granted, "moderation.cases.view")).toBe(false);
+    expect(matchPermission(granted, "moderation.warnings.manage")).toBe(false);
   });
 
   it("handles *.*.view wildcard", () => {
     const granted = new Set(["*.*.view"]);
-    expect(matchPermission(granted, "music.settings.view")).toBe(true);
     expect(matchPermission(granted, "moderation.cases.view")).toBe(true);
-    expect(matchPermission(granted, "music.settings.manage")).toBe(false);
-  });
-
-  it("handles multiple granted permissions", () => {
-    const granted = new Set(["music.*", "moderation.cases.view"]);
-    expect(matchPermission(granted, "music.settings.manage")).toBe(true);
-    expect(matchPermission(granted, "moderation.cases.view")).toBe(true);
+    expect(matchPermission(granted, "actions.rules.view")).toBe(true);
     expect(matchPermission(granted, "moderation.cases.manage")).toBe(false);
   });
 
+  it("handles multiple granted permissions", () => {
+    const granted = new Set(["moderation.*", "actions.rules.view"]);
+    expect(matchPermission(granted, "moderation.cases.manage")).toBe(true);
+    expect(matchPermission(granted, "actions.rules.view")).toBe(true);
+    expect(matchPermission(granted, "actions.rules.manage")).toBe(false);
+  });
+
   it("does not partially match non-wildcard keys", () => {
-    const granted = new Set(["music.settings"]);
-    expect(matchPermission(granted, "music.settings.view")).toBe(false);
+    const granted = new Set(["moderation.cases"]);
+    expect(matchPermission(granted, "moderation.cases.view")).toBe(false);
   });
 });
 
@@ -77,12 +77,12 @@ describe("expandWildcard", () => {
   });
 
   it("expands module.* to all permissions in that module", () => {
-    const expanded = expandWildcard("music.*");
-    expect(expanded).toContain("music.settings.view");
-    expect(expanded).toContain("music.settings.manage");
-    expect(expanded).toContain("music.library.view");
-    expect(expanded).toContain("music.library.manage");
-    expect(expanded).not.toContain("moderation.cases.view");
+    const expanded = expandWildcard("moderation.*");
+    expect(expanded).toContain("moderation.cases.view");
+    expect(expanded).toContain("moderation.cases.manage");
+    expect(expanded).toContain("moderation.warnings.view");
+    expect(expanded).toContain("moderation.warnings.manage");
+    expect(expanded).not.toContain("actions.rules.view");
   });
 
   it("expands *.*.view to all view permissions", () => {
@@ -94,10 +94,10 @@ describe("expandWildcard", () => {
 
 describe("resolveEffectivePermissions", () => {
   it("resolves wildcard to concrete keys", () => {
-    const effective = resolveEffectivePermissions(["music.*"]);
-    expect(effective).toContain("music.settings.view");
-    expect(effective).toContain("music.library.manage");
-    expect(effective).not.toContain("moderation.cases.view");
+    const effective = resolveEffectivePermissions(["moderation.*"]);
+    expect(effective).toContain("moderation.cases.view");
+    expect(effective).toContain("moderation.warnings.manage");
+    expect(effective).not.toContain("actions.rules.view");
   });
 
   it("resolves full wildcard to all keys", () => {
@@ -106,10 +106,10 @@ describe("resolveEffectivePermissions", () => {
   });
 
   it("merges multiple grants", () => {
-    const effective = resolveEffectivePermissions(["music.*", "moderation.cases.view"]);
-    expect(effective).toContain("music.settings.view");
+    const effective = resolveEffectivePermissions(["moderation.*", "actions.rules.view"]);
     expect(effective).toContain("moderation.cases.view");
-    expect(effective).not.toContain("moderation.cases.manage");
+    expect(effective).toContain("actions.rules.view");
+    expect(effective).not.toContain("actions.rules.manage");
   });
 
   it("returns empty for empty input", () => {
@@ -122,7 +122,6 @@ describe("PERMISSION_REGISTRY", () => {
     const moduleKeys = PERMISSION_REGISTRY.map((m) => m.key);
     expect(moduleKeys).toContain("dashboard");
     expect(moduleKeys).toContain("moderation");
-    expect(moduleKeys).toContain("music");
     expect(moduleKeys).toContain("actions");
     expect(moduleKeys).toContain("logging");
     expect(moduleKeys).toContain("security");
@@ -143,18 +142,13 @@ describe("PERMISSION_REGISTRY", () => {
 describe("ROLE_PRESETS", () => {
   it("has expected presets", () => {
     expect(Object.keys(ROLE_PRESETS)).toEqual(
-      expect.arrayContaining(["moderator", "content-manager", "dj", "full-admin", "viewer"]),
+      expect.arrayContaining(["moderator", "content-manager", "full-admin", "viewer"]),
     );
   });
 
   it("moderator preset has moderation permissions", () => {
     const mod = ROLE_PRESETS.moderator;
     expect(mod.permissions).toContain("moderation.*");
-  });
-
-  it("dj preset only has music permissions", () => {
-    const dj = ROLE_PRESETS.dj;
-    expect(dj.permissions).toEqual(["music.*"]);
   });
 
   it("full-admin has full wildcard", () => {

@@ -69,7 +69,7 @@ export async function registerI18n(app: FastifyInstance): Promise<void> {
     }
 
     const allowedNamespaces = [
-      "common", "errors", "guilds", "overview", "logs", "music", "settings",
+      "common", "errors", "guilds", "overview", "logs", "settings",
       "tempvoice", "moderation", "warnings", "rules", "welcome", "scheduled",
       "commands", "leveling", "roles", "security", "permissions", "tickets",
       "suggestions", "starboard", "giveaways", "landing",

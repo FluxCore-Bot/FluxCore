@@ -59,7 +59,6 @@
   },
   "permissionCategories": {
     "actions": "Toimingud ja automatiseerimine",
-    "music": "Muusika",
     "tempvoice": "TempVoice",
     "welcome": "Tervitus ja hüvastijätt",
     "moderation": "Modereerimine",

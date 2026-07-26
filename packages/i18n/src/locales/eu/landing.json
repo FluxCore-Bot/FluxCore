@@ -29,10 +29,6 @@
       "title": "Automatizazio-arauak",
       "description": "Sortu gertaeretan oinarritutako lan-fluxu konplexuak koderik gabe. Hau-bada-hura aktibatzaileak 23 gertaera mota eta 10 ekintza motarekin."
     },
-    "music": {
-      "title": "Musika sistema",
-      "description": "Fidelitate handiko audio streaming-a plataforma anitzeko laguntzarekin. Ilararen kudeaketa, DJ kontrolak eta liburutegi modua."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Ahots-kanalen kudeaketa dinamikoa. Sorrera automatikoa izen-txantiloi pertsonalizatuekin, baimenak eta garbiketa."

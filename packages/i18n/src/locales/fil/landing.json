@@ -29,10 +29,6 @@
       "title": "Mga Panuntunan ng Automation",
       "description": "Gumawa ng mga kumplikadong event-driven na workflow nang walang code. Mga if-this-then-that trigger na may 23 uri ng event at 10 uri ng aksyon."
     },
-    "music": {
-      "title": "Sistema ng Musika",
-      "description": "High-fidelity na audio streaming na may suporta sa maraming platform. Pamamahala ng queue, mga kontrol ng DJ, at library mode."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Dynamic na pamamahala ng voice channel. Auto-creation na may mga custom na template ng pangalan, mga pahintulot, at paglilinis."

@@ -59,7 +59,6 @@
   },
   "permissionCategories": {
     "actions": "Dejanja in avtomatizacija",
-    "music": "Glasba",
     "tempvoice": "TempVoice",
     "welcome": "Dobrodošlica in poslovitev",
     "moderation": "Moderiranje",

@@ -9,13 +9,13 @@ FluxCore is a modular Discord bot framework with an integrated admin dashboard. 
 ## Architecture
 
 ```
-apps/bot/          → Discord bot (discord.js v14, Shoukaku for music)
+apps/bot/          → Discord bot (discord.js v14)
 apps/dashboard/    → Admin UI (Fastify 5 API + React 19 SPA, Vite 6, TanStack Router)
 packages/config/   → Environment & configuration
 packages/types/    → Shared TypeScript interfaces
 packages/utils/    → Logger, embeds, permissions, time helpers
 packages/database/ → Prisma 7 ORM + PostgreSQL 18
-packages/systems/  → Shared stateful systems (actions, music, tempVoice)
+packages/systems/  → Shared stateful systems (actions, tempVoice)
 ```
 
 **Orchestration:** Turborepo 2.5 for task running and caching.
@@ -48,7 +48,7 @@ pnpm deploy:commands  # Register Discord slash commands
 - **Events** live in `apps/bot/src/events/` — one file per gateway event
 - **Dashboard routes** live in `apps/dashboard/src/server/routes/`
 - **Dashboard pages** live in `apps/dashboard/src/client/pages/`
-- **Systems** (tempVoice, music, actions) live in `packages/systems/src/`
+- **Systems** (tempVoice, actions) live in `packages/systems/src/`
 - **Database schema** is at `packages/database/prisma/schema.prisma`
 
 ## Styling (Dashboard)
@@ -62,7 +62,7 @@ pnpm deploy:commands  # Register Discord slash commands
 
 ## Active Modules
 
-Moderation (basic), Utility, TempVoice, Music, Actions/Automation
+Moderation (basic), Utility, TempVoice, Actions/Automation
 
 ## Implementation Plan
 
@@ -147,7 +147,7 @@ Test files mirror the source structure:
 ```
 src/commands/moderation/warn.ts    → tests/commands/moderation/warn.test.ts
 src/server/routes/logging.ts       → tests/server/routes/logging.test.ts
-packages/systems/src/music/config.ts → packages/systems/tests/integration/music-sync.test.ts
+packages/systems/src/actions/config.ts → packages/systems/tests/integration/actions-sync.test.ts
 ```
 
 ### What to Test Per Feature Type
@@ -165,12 +165,12 @@ packages/systems/src/music/config.ts → packages/systems/tests/integration/musi
 - Validation: bad input → 400
 - Use `buildApp()` pattern with real Fastify + mocked session/DB
 
-**System with cache sync** (actions, music, tempVoice) — integration tests:
+**System with cache sync** (actions, tempVoice) — integration tests:
 - Dashboard writes to DB → bot cache reload → cache has correct data
 - Updates propagate correctly
 - Deletes remove from cache
 - Cache invalidation records are created
-- Use real test DB, `createActionRule()` / `createMusicSettings()` factories
+- Use real test DB, `createActionRule()` / `createStarboardSettings()` factories
 
 **Shared package functions** (utils, types) — unit tests:
 - Pure function: input → expected output
@@ -193,7 +193,7 @@ Located at `packages/systems/tests/helpers/`:
 // DB factories (for integration tests — write to real DB)
 createActionRule({ guildId, eventType, actions, ... })
 createActionGuildSettings({ guildId, maxRules, ... })
-createMusicSettings({ guildId, defaultVolume, twentyFourSeven, ... })
+createStarboardSettings({ guildId, channelId, threshold, ... })
 createCacheInvalidation(guildId, action)
 
 // Mock factories (for unit tests — no DB)
@@ -231,7 +231,7 @@ Persistent memory lives at: `~/.claude/projects/-home-abdulkhalek-Projects-FluxC
 
 **ALWAYS save to memory when:**
 - An architectural decision is made (e.g. "chose Zustand over Redux because...")
-- A new constraint is discovered (e.g. "Lavalink requires Java 17+")
+- A new constraint is discovered (e.g. "Postgres 18 needs a specific volume mount path")
 - User corrects your approach or confirms a non-obvious choice
 - Project phase or priorities change
 - You learn about external references (Linear boards, Figma links, etc.)
@@ -299,4 +299,3 @@ Active hooks (configured in `.claude/settings.json`):
 - `/design.md` — Full design system specification
 - `/docs/ui-ux-agent-prompt.md` — UI/UX design brief
 - `/docs/automation-improvement-workflow.md` — Automation workflow docs
-- `/docs/music-setup.md` — Music system setup guide

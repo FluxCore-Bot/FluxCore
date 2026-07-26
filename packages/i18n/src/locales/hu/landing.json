@@ -29,10 +29,6 @@
       "title": "Automation Rules",
       "description": "Create complex event-driven workflows without code. If-this-then-that triggers with 23 event types and 10 action types."
     },
-    "music": {
-      "title": "Music System",
-      "description": "High-fidelity audio streaming with multi-platform support. Queue management, DJ controls, and library mode."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Dynamic voice channel management. Auto-creation with custom naming templates, permissions, and cleanup."

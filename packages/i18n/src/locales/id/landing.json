@@ -29,10 +29,6 @@
       "title": "Aturan Otomasi",
       "description": "Buat alur kerja berbasis kejadian yang kompleks tanpa kode. Pemicu jika-ini-maka-itu dengan 23 jenis kejadian dan 10 jenis aksi."
     },
-    "music": {
-      "title": "Sistem Musik",
-      "description": "Streaming audio berkualitas tinggi dengan dukungan multi-platform. Manajemen antrean, kontrol DJ, dan mode perpustakaan."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Manajemen saluran suara dinamis. Pembuatan otomatis dengan template penamaan kustom, izin, dan pembersihan."

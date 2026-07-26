@@ -29,10 +29,6 @@
       "title": "Automatisierungsregeln",
       "description": "Erstellen Sie komplexe ereignisgesteuerte Workflows ohne Code. Wenn-dann-Ausloeser mit 23 Ereignistypen und 10 Aktionstypen."
     },
-    "music": {
-      "title": "Musiksystem",
-      "description": "High-Fidelity-Audio-Streaming mit Multi-Plattform-Unterstuetzung. Warteschlangenverwaltung, DJ-Steuerung und Bibliotheksmodus."
-    },
     "tempVoice": {
       "title": "TempVoice",
       "description": "Dynamische Sprachkanalverwaltung. Automatische Erstellung mit benutzerdefinierten Namensvorlagen, Berechtigungen und Bereinigung."

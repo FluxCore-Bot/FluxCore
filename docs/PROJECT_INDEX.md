@@ -17,7 +17,6 @@
 | UI | Tailwind CSS 4 + Radix UI + shadcn/ui |
 | Charts | Recharts 3 |
 | Workflow | @xyflow/react 12 |
-| Music | Shoukaku (Lavalink) |
 | Testing | Vitest 4 + v8 coverage |
 | Build | Turborepo 2.5 + pnpm 10.28 |
 | Container | Docker + Docker Compose |
@@ -35,7 +34,7 @@ FluxCore/
 ├── packages/
 │   ├── config/                 # Environment & configuration
 │   ├── database/               # Prisma ORM + PostgreSQL
-│   ├── systems/                # Shared stateful systems (16 modules)
+│   ├── systems/                # Shared stateful systems (15 modules)
 │   ├── types/                  # Shared TypeScript interfaces
 │   └── utils/                  # Logger, embeds, permissions, time
 ├── docs/                       # Feature specs & planning docs
@@ -58,14 +57,13 @@ FluxCore/
 
 **Entry:** `src/index.ts` → `src/client/ExtendedClient.ts`
 
-#### Commands (40 across 10 modules)
+#### Commands (38 across 9 modules)
 
 | Module | Count | Commands |
 |--------|-------|----------|
 | **Admin** | 2 | `actions`, `lockdown` |
 | **General** | 6 | `help`, `ping`, `rolepanel`, `server-info`, `user-info`, `welcome` |
 | **Moderation** | 15 | `ban`, `case`, `cases`, `clear`, `clearwarnings`, `kick`, `lock`, `note`, `purge`, `softban`, `tempban`, `timeout`, `unlock`, `warn`, `warnings` |
-| **Music** | 2 | `play`, `queue` |
 | **Utility** | 3 | `avatar`, `embed-builder`, `remind` |
 | **Voice** | 1 | `tempvoice` |
 | **Tickets** | 5 | `add`, `claim`, `close`, `remove`, `transcript` |
@@ -83,7 +81,6 @@ FluxCore/
 |--------|-----------|---------|
 | Actions | `systems/actions/` | Event bridge, executor, registry, sync |
 | Giveaways | `systems/giveaways/` | Giveaway lifecycle management |
-| Music | `systems/music/` | Lavalink integration, queue, panel, events, settings |
 | TempVoice | `systems/tempVoice/` | Temporary voice channel lifecycle |
 | Tickets | `systems/tickets/` | Ticket system management |
 
@@ -101,7 +98,7 @@ FluxCore/
 **Server:** Fastify 5 API
 **Client:** React 19 SPA (Vite 6, TanStack Router)
 
-#### API Routes (19)
+#### API Routes (18)
 
 | Route | Purpose |
 |-------|---------|
@@ -115,7 +112,6 @@ FluxCore/
 | `leveling.ts` | Leveling/XP configuration |
 | `logging.ts` | Logging configuration |
 | `moderation.ts` | Moderation data |
-| `music.ts` | Music settings |
 | `rolePanel.ts` | Role panel management |
 | `scheduled-messages.ts` | Scheduled message CRUD |
 | `starboard.ts` | Starboard configuration |
@@ -125,7 +121,7 @@ FluxCore/
 | `warnings.ts` | Warning management |
 | `welcome.ts` | Welcome/farewell settings |
 
-#### Client Routes (21)
+#### Client Routes (20)
 
 ```
 / (root)
@@ -137,7 +133,6 @@ FluxCore/
     ├── /leveling               → Leveling/XP settings
     ├── /logs                   → Event log browser
     ├── /moderation             → Moderation cases
-    ├── /music                  → Music settings & library
     ├── /roles                  → Role panel management
     ├── /rules                  → Automation rules
     ├── /scheduled              → Scheduled messages
@@ -175,7 +170,6 @@ FluxCore/
 | Actions/Automation | `ActionRule`, `ActionLog`, `ActionGuildSettings`, `ActionCacheInvalidation` |
 | Reminders | `Reminder` |
 | Auth | `DashboardSession` |
-| Music | `MusicGuildSettings`, `MusicLibraryAlbum`, `MusicLibraryTrack` |
 | Logging | `LogGuildConfig`, `LogEntry` |
 | Warnings | `Warning`, `WarnPunishment`, `WarnGuildSettings` |
 | Moderation | `ModCase`, `ModGuildSettings` |
@@ -192,7 +186,7 @@ FluxCore/
 
 ---
 
-### `packages/systems/` (@fluxcore/systems) — 16 modules, 87 files
+### `packages/systems/` (@fluxcore/systems) — 15 modules, 82 files
 
 Shared stateful logic consumed by both bot and dashboard.
 
@@ -205,7 +199,6 @@ Shared stateful logic consumed by both bot and dashboard.
 | **Leveling** | 6 | XP calculation, config, rewards |
 | **Logging** | 6 | Event logging pipeline, formatter, sender |
 | **Moderation** | 5 | Case management, tempban scheduler, DM notifications |
-| **Music** | 4 | Settings, library management |
 | **Role Panel** | 5 | Panel builder, handler, persistence |
 | **Scheduled Messages** | 5 | Cron scheduler, persistence |
 | **Starboard** | 5 | Star handler, config, persistence |
@@ -247,7 +240,7 @@ Shared stateful logic consumed by both bot and dashboard.
 
 ### `packages/config/` (@fluxcore/config)
 
-Single `src/index.ts` — environment variable loading for Discord, dashboard, Lavalink, and bot sync configuration.
+Single `src/index.ts` — environment variable loading for Discord, dashboard, and bot sync configuration.
 
 ---
 
@@ -276,7 +269,7 @@ Single `src/index.ts` — environment variable loading for Discord, dashboard, L
 
 | Category | Count | Location |
 |----------|-------|----------|
-| Integration tests | 6 | `packages/systems/tests/integration/` (actions, cache, music, scheduled-messages, starboard, tickets sync) |
+| Integration tests | 5 | `packages/systems/tests/integration/` (actions, cache, scheduled-messages, starboard, tickets sync) |
 | Unit tests | 8 | `packages/systems/tests/unit/` (welcome, leveling, rolePanel, antiraid, customCommands, giveaways, starboard, suggestions) |
 | Test helpers | 4 | `packages/systems/tests/helpers/` (setup, db, factories, cron) |
 
@@ -290,7 +283,6 @@ Single `src/index.ts` — environment variable loading for Discord, dashboard, L
 | `docs/implementation-plan.md` | Master 5-phase roadmap with decision log |
 | `docs/phase2-implementation.md` | Phase 2 detailed planning |
 | `docs/automation-improvement-workflow.md` | Automation workflow specs |
-| `docs/music-setup.md` | Lavalink/music setup guide |
 | `docs/ui-ux-agent-prompt.md` | UI/UX design brief |
 | `docs/discord-bots-features-by-category.md` | Feature category analysis |
 | `docs/discord-management-bots-feature-analysis.md` | Competitive analysis |
@@ -321,15 +313,15 @@ Single `src/index.ts` — environment variable loading for Discord, dashboard, L
 
 | Profile | Services |
 |---------|----------|
-| `bot` | bot + postgres + lavalink |
+| `bot` | bot + postgres |
 | `dashboard` | dashboard + postgres |
-| `full` | bot + dashboard + postgres + lavalink |
-| `preview` | preview-bot + preview-dashboard + postgres + lavalink |
+| `full` | bot + dashboard + postgres |
+| `preview` | preview-bot + preview-dashboard + postgres |
 | `tools` | pgadmin |
 
 ### Production Stack
 
-bot, dashboard, postgres, lavalink, caddy (reverse proxy), backup (cron)
+bot, dashboard, postgres, caddy (reverse proxy), backup (cron)
 Resource limits: bot 512M, dashboard 256M, postgres 512M, caddy 128M, backup 256M
 
 ### Key Ports
@@ -339,7 +331,6 @@ Resource limits: bot 512M, dashboard 256M, postgres 512M, caddy 128M, backup 256
 | 3000 | Dashboard API |
 | 5173 | Vite HMR |
 | 5432 | PostgreSQL |
-| 2333 | Lavalink |
 | 5050 | pgAdmin |
 
 ---
@@ -348,13 +339,13 @@ Resource limits: bot 512M, dashboard 256M, postgres 512M, caddy 128M, backup 256
 
 | Area | Files |
 |------|-------|
-| Bot commands | 40 |
+| Bot commands | 38 |
 | Bot events | 22 |
-| Bot systems | 5 dirs |
-| Dashboard API routes | 19 |
-| Dashboard pages | 21 |
+| Bot systems | 4 dirs |
+| Dashboard API routes | 18 |
+| Dashboard pages | 20 |
 | Dashboard UI components | 23 (shadcn) |
-| System packages | 87 |
+| System packages | 82 |
 | Database migrations | 11 |
 | Test files | 90 |
 | Feature specs | 13 |
