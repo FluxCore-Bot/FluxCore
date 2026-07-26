@@ -1,21 +1,20 @@
 {
   "title": "Seva Zako",
-  "subtitle": "Chagua seva ya kusimamia na kusanidi.",
+  "subtitle": "Chagua seva ya kudhibiti na kusanidi.",
   "loading": "Inapakia seva...",
+  "refresh": "Onyesha upya seva",
   "empty": {
     "title": "Hakuna seva zilizopatikana",
-    "description": "Hakikisha bot imeongezwa kwenye seva ambayo una ruhusa ya Kusimamia Seva."
+    "description": "Hakikisha una ruhusa ya Kudhibiti Seva katika angalau seva moja ya Discord, kisha onyesha upya."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Boti haijaongezwa"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Ongeza FluxCore",
+  "addBotTo": "Ongeza FluxCore kwenye {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Tafuta seva...",
+    "noResults": "Hakuna seva zinazolingana na \"{{query}}\".",
+    "resultCount": "Seva zilizopatikana: {{total}}"
   }
 }

@@ -1,21 +1,20 @@
 {
-  "title": "Os teus Servidores",
+  "title": "Os teus servidores",
   "subtitle": "Escolle un servidor para xestionar e configurar.",
   "loading": "Cargando servidores...",
+  "refresh": "Actualizar servidores",
   "empty": {
     "title": "Non se atoparon servidores",
-    "description": "Asegúrate de que o bot está engadido a un servidor onde tes o permiso de Xestionar Servidor."
+    "description": "Asegúrate de ter o permiso Xestionar o servidor en polo menos un servidor de Discord e despois actualiza."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Bot non engadido"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Engadir FluxCore",
+  "addBotTo": "Engadir FluxCore a {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Buscar servidores...",
+    "noResults": "Ningún servidor coincide con «{{query}}».",
+    "resultCount": "Servidores atopados: {{total}}"
   }
 }

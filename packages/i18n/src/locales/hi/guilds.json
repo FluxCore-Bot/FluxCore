@@ -1,21 +1,20 @@
 {
   "title": "आपके सर्वर",
-  "subtitle": "प्रबंधन और कॉन्फ़िगर करने के लिए एक सर्वर चुनें।",
+  "subtitle": "प्रबंधित और कॉन्फ़िगर करने के लिए एक सर्वर चुनें।",
   "loading": "सर्वर लोड हो रहे हैं...",
+  "refresh": "सर्वर रीफ़्रेश करें",
   "empty": {
     "title": "कोई सर्वर नहीं मिला",
-    "description": "सुनिश्चित करें कि बॉट उस सर्वर में जोड़ा गया है जहां आपके पास सर्वर प्रबंधन की अनुमति है।"
+    "description": "सुनिश्चित करें कि कम से कम एक Discord सर्वर पर आपके पास सर्वर प्रबंधित करने की अनुमति है, फिर रीफ़्रेश करें।"
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "बॉट नहीं जोड़ा गया"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "FluxCore जोड़ें",
+  "addBotTo": "{{name}} में FluxCore जोड़ें",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "सर्वर खोजें...",
+    "noResults": "\"{{query}}\" से मेल खाने वाला कोई सर्वर नहीं मिला।",
+    "resultCount": "मिले सर्वर: {{total}}"
   }
 }

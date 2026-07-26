@@ -15,7 +15,6 @@
   "search": {
     "placeholder": "Search servers...",
     "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "resultCount": "Servers found: {{total}}"
   }
 }

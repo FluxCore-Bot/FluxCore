@@ -2,20 +2,19 @@
   "title": "Jou Bedieners",
   "subtitle": "Kies 'n bediener om te bestuur en op te stel.",
   "loading": "Laai bedieners...",
+  "refresh": "Herlaai bedieners",
   "empty": {
     "title": "Geen bedieners gevind nie",
-    "description": "Maak seker die bot is bygevoeg by 'n bediener waar jy die Bestuur Bediener-toestemming het."
+    "description": "Maak seker jy het die Bestuur Bediener-toestemming in ten minste een Discord-bediener, en herlaai dan."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Bot nie bygevoeg nie"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Voeg FluxCore by",
+  "addBotTo": "Voeg FluxCore by {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Soek bedieners...",
+    "noResults": "Geen bedieners pas by \"{{query}}\" nie.",
+    "resultCount": "Bedieners gevind: {{total}}"
   }
 }

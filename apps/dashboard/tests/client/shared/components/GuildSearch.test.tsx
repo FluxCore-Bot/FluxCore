@@ -8,10 +8,12 @@ import {
 } from "../../../../src/client/shared/components/GuildSearch";
 import type { Guild } from "../../../../src/client/shared/lib/schemas";
 
+// Echoes the interpolation payload verbatim, so tests can assert exactly which
+// variables the component passes to i18next.
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
     t: (k: string, o?: Record<string, unknown>) =>
-      o && o.count !== undefined ? `${k}:${o.count}` : k,
+      o ? `${k}:${JSON.stringify(o)}` : k,
   }),
 }));
 
@@ -68,8 +70,11 @@ describe("GuildSearch", () => {
     render(<GuildSearch value="al" onChange={() => {}} resultCount={2} />);
 
     const status = screen.getByRole("status");
-    expect(status).toHaveTextContent("search.resultCount:2");
     expect(status).toHaveAttribute("aria-live", "polite");
+    // Interpolated as `total`, never `count`: passing `count` would make
+    // i18next resolve plural suffixes, which all 48 locales would then have to
+    // supply correctly (_few/_many/... vary per language).
+    expect(status).toHaveTextContent('search.resultCount:{"total":2}');
   });
 
   it("labels the input for screen readers", () => {

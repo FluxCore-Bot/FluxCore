@@ -1,21 +1,20 @@
 {
-  "title": "Vaši strežniki",
-  "subtitle": "Izberite strežnik za upravljanje in konfiguracijo.",
+  "title": "Tvoji strežniki",
+  "subtitle": "Izberi strežnik za upravljanje in nastavitev.",
   "loading": "Nalaganje strežnikov...",
+  "refresh": "Osveži strežnike",
   "empty": {
     "title": "Ni najdenih strežnikov",
-    "description": "Prepričajte se, da je bot dodan strežniku, na katerem imate dovoljenje Upravljanje strežnika."
+    "description": "Prepričaj se, da imaš dovoljenje Upravljanje strežnika vsaj na enem strežniku Discord, nato osveži."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Bot ni dodan"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Dodaj FluxCore",
+  "addBotTo": "Dodaj FluxCore na {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Iskanje strežnikov...",
+    "noResults": "Noben strežnik se ne ujema z »{{query}}«.",
+    "resultCount": "Najdeni strežniki: {{total}}"
   }
 }

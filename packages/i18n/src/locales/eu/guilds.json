@@ -1,21 +1,20 @@
 {
   "title": "Zure zerbitzariak",
-  "subtitle": "Hautatu kudeatu eta konfiguratzeko zerbitzari bat.",
+  "subtitle": "Aukeratu zerbitzari bat kudeatzeko eta konfiguratzeko.",
   "loading": "Zerbitzariak kargatzen...",
+  "refresh": "Freskatu zerbitzariak",
   "empty": {
     "title": "Ez da zerbitzaririk aurkitu",
-    "description": "Ziurtatu bot-a gehituta dagoela Zerbitzaria Kudeatu baimena duzun zerbitzari batean."
+    "description": "Ziurtatu Discord zerbitzari batean gutxienez Zerbitzaria kudeatzeko baimena duzula, eta gero freskatu."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Bota ez da gehitu"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Gehitu FluxCore",
+  "addBotTo": "Gehitu FluxCore {{name}} zerbitzarira",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Bilatu zerbitzariak...",
+    "noResults": "Ez dago «{{query}}» bilaketarekin bat datorren zerbitzaririk.",
+    "resultCount": "Aurkitutako zerbitzariak: {{total}}"
   }
 }

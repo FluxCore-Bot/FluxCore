@@ -1,12 +1,12 @@
 {
-  "title": "Os seus servidores",
-  "subtitle": "Escolha um servidor para gerir e configurar.",
+  "title": "Os teus servidores",
+  "subtitle": "Escolhe um servidor para gerir e configurar.",
   "loading": "A carregar servidores...",
+  "refresh": "Atualizar servidores",
   "empty": {
     "title": "Nenhum servidor encontrado",
-    "description": "Certifique-se de que o bot esta adicionado a um servidor onde tem a permissao Gerir servidor."
+    "description": "Certifica-te de que tens a permissão Gerir servidor em pelo menos um servidor do Discord e depois atualiza."
   },
-  "refresh": "Atualizar servidores",
   "badge": {
     "botNotAdded": "Bot não adicionado"
   },
@@ -14,8 +14,7 @@
   "addBotTo": "Adicionar FluxCore a {{name}}",
   "search": {
     "placeholder": "Pesquisar servidores...",
-    "noResults": "Nenhum servidor corresponde a \"{{query}}\".",
-    "resultCount_one": "{{count}} servidor encontrado",
-    "resultCount_other": "{{count}} servidores encontrados"
+    "noResults": "Nenhum servidor corresponde a «{{query}}».",
+    "resultCount": "Servidores encontrados: {{total}}"
   }
 }

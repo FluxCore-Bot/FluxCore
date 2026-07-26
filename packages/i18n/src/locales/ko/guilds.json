@@ -2,20 +2,19 @@
   "title": "내 서버",
   "subtitle": "관리하고 설정할 서버를 선택하세요.",
   "loading": "서버 불러오는 중...",
+  "refresh": "서버 새로고침",
   "empty": {
     "title": "서버를 찾을 수 없습니다",
-    "description": "봇이 추가되어 있고 서버 관리 권한이 있는 서버가 있는지 확인하세요."
+    "description": "최소 한 개의 Discord 서버에서 서버 관리 권한이 있는지 확인한 후 새로고침하세요."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "봇이 추가되지 않음"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "FluxCore 추가",
+  "addBotTo": "{{name}}에 FluxCore 추가",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "서버 검색...",
+    "noResults": "\"{{query}}\"와(과) 일치하는 서버가 없습니다.",
+    "resultCount": "찾은 서버: {{total}}"
   }
 }

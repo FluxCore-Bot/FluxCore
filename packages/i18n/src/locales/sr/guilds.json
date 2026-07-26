@@ -1,21 +1,20 @@
 {
-  "title": "Vasi serveri",
+  "title": "Vaši serveri",
   "subtitle": "Izaberite server za upravljanje i konfiguraciju.",
-  "loading": "Ucitavanje servera...",
+  "loading": "Učitavanje servera...",
+  "refresh": "Osveži servere",
   "empty": {
-    "title": "Nisu pronadeni serveri",
-    "description": "Proverite da li je bot dodat na server na kojem imate dozvolu za upravljanje serverom."
+    "title": "Nisu pronađeni serveri",
+    "description": "Uverite se da imate dozvolu Upravljanje serverom na bar jednom Discord serveru, a zatim osvežite."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Bot nije dodat"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Dodaj FluxCore",
+  "addBotTo": "Dodaj FluxCore na {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Pretraži servere...",
+    "noResults": "Nijedan server ne odgovara upitu „{{query}}”.",
+    "resultCount": "Pronađeni serveri: {{total}}"
   }
 }

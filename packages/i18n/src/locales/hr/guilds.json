@@ -1,21 +1,20 @@
 {
-  "title": "Vasi posluzitelji",
-  "subtitle": "Odaberite posluzitelj za upravljanje i konfiguraciju.",
-  "loading": "Ucitavanje posluzitelja...",
+  "title": "Tvoji poslužitelji",
+  "subtitle": "Odaberi poslužitelj za upravljanje i konfiguraciju.",
+  "loading": "Učitavanje poslužitelja...",
+  "refresh": "Osvježi poslužitelje",
   "empty": {
-    "title": "Nisu pronadeni posluzitelji",
-    "description": "Provjerite je li bot dodan na posluzitelj na kojem imate dozvolu Upravljanje posluziteljem."
+    "title": "Nije pronađen nijedan poslužitelj",
+    "description": "Provjeri imaš li dozvolu Upravljanje poslužiteljem na barem jednom Discord poslužitelju, a zatim osvježi."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Bot nije dodan"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Dodaj FluxCore",
+  "addBotTo": "Dodaj FluxCore na {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Pretraži poslužitelje...",
+    "noResults": "Nijedan poslužitelj ne odgovara upitu „{{query}}”.",
+    "resultCount": "Pronađeni poslužitelji: {{total}}"
   }
 }

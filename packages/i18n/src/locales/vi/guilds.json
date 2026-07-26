@@ -1,21 +1,20 @@
 {
-  "title": "Máy Chủ Của Bạn",
+  "title": "Máy chủ của bạn",
   "subtitle": "Chọn một máy chủ để quản lý và cấu hình.",
   "loading": "Đang tải máy chủ...",
+  "refresh": "Làm mới máy chủ",
   "empty": {
-    "title": "Không tìm thấy máy chủ",
-    "description": "Hãy đảm bảo bot đã được thêm vào máy chủ mà bạn có quyền Quản Lý Máy Chủ."
+    "title": "Không tìm thấy máy chủ nào",
+    "description": "Hãy đảm bảo bạn có quyền Quản lý máy chủ trên ít nhất một máy chủ Discord, sau đó làm mới."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Chưa thêm bot"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Thêm FluxCore",
+  "addBotTo": "Thêm FluxCore vào {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Tìm kiếm máy chủ...",
+    "noResults": "Không có máy chủ nào khớp với \"{{query}}\".",
+    "resultCount": "Máy chủ tìm thấy: {{total}}"
   }
 }

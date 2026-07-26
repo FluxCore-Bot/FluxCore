@@ -1,21 +1,20 @@
 {
   "title": "Pelayan Anda",
-  "subtitle": "Pilih pelayan untuk diurus dan dikonfigurasi.",
+  "subtitle": "Pilih pelayan untuk diurus dan dikonfigurasikan.",
   "loading": "Memuatkan pelayan...",
+  "refresh": "Segar semula pelayan",
   "empty": {
-    "title": "Tiada pelayan ditemui",
-    "description": "Pastikan bot telah ditambahkan ke pelayan di mana anda mempunyai kebenaran Urus Pelayan."
+    "title": "Tiada pelayan dijumpai",
+    "description": "Pastikan anda mempunyai kebenaran Urus Pelayan pada sekurang-kurangnya satu pelayan Discord, kemudian segar semula."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Bot belum ditambah"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Tambah FluxCore",
+  "addBotTo": "Tambah FluxCore ke {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Cari pelayan...",
+    "noResults": "Tiada pelayan sepadan dengan \"{{query}}\".",
+    "resultCount": "Pelayan dijumpai: {{total}}"
   }
 }

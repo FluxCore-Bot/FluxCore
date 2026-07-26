@@ -128,17 +128,29 @@ New keys in `guilds.json`:
 - `badge.botNotAdded` — "Bot not added"
 - `addBot` — "Add FluxCore"
 - `addBotTo` — "Add FluxCore to {{name}}" (accessible name for the invite link)
-- `search.placeholder`, `search.noResults`, and the
-  `search.resultCount_one` / `_other` plural pair
+- `search.placeholder`, `search.noResults`, `search.resultCount`
 
-Appended to all 48 locale files under
-[packages/i18n/src/locales](../../../packages/i18n/src/locales), in English
-where no translation exists — the precedent set by the `refresh` key. Keys are
-inserted as **text**, not via a `JSON.stringify` round-trip, which is not
-format-preserving across this locale set.
+The whole `guilds` namespace is **fully translated in all 48 locales** — not
+English-filled for the untranslated ones, which had been the prior precedent.
+That also clears the debt already sitting in this namespace: `refresh` was
+English in 39 locales, `hu` and `sk` were entirely untranslated, and `fr`/`sr`
+had their diacritics stripped by an earlier pass.
 
-`empty.description` is corrected in `en` only; other locales keep their existing
-translation rather than being clobbered with English.
+`empty.description` is retranslated everywhere rather than just corrected in
+`en`, because its meaning changed: an empty list now means "you administer no
+servers", not "the bot isn't anywhere".
+
+**`search.resultCount` is deliberately not pluralized.** Interpolating a
+variable named `count` makes i18next resolve plural suffixes, which would
+require the correct categories per language (`_few`/`_many` for ru/pl/cs,
+`_zero`/`_two` for ar, and so on) — supplying only `_one`/`_other` silently
+breaks those locales. The string is phrased "Servers found: {{total}}" and the
+component interpolates `total`, so no plural machinery runs at all.
+
+Because every value is authored, the locale files are written as normalized
+JSON rather than surgically text-patched — there is no original formatting left
+to preserve. Two guards run per locale before writing: the key shape must match
+`en` exactly, and no `{{placeholder}}` may be dropped in translation.
 
 ## Testing
 

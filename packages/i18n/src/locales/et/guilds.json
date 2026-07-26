@@ -1,21 +1,20 @@
 {
   "title": "Sinu serverid",
   "subtitle": "Vali server, mida hallata ja seadistada.",
-  "loading": "Laadin servereid...",
+  "loading": "Serverite laadimine...",
+  "refresh": "Värskenda servereid",
   "empty": {
     "title": "Servereid ei leitud",
-    "description": "Veendu, et bot on lisatud serverile, kus sul on serveri haldamise õigus."
+    "description": "Veendu, et sul on vähemalt ühes Discordi serveris õigus Halda serverit, ja seejärel värskenda."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Bot pole lisatud"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Lisa FluxCore",
+  "addBotTo": "Lisa FluxCore serverisse {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Otsi servereid...",
+    "noResults": "Ükski server ei vasta päringule „{{query}}“.",
+    "resultCount": "Leitud servereid: {{total}}"
   }
 }

@@ -1,21 +1,20 @@
 {
   "title": "Dina servrar",
   "subtitle": "Välj en server att hantera och konfigurera.",
-  "loading": "Laddar servrar...",
+  "loading": "Läser in servrar...",
+  "refresh": "Uppdatera servrar",
   "empty": {
     "title": "Inga servrar hittades",
-    "description": "Se till att boten är tillagd på en server där du har behörigheten Hantera server."
+    "description": "Se till att du har behörigheten Hantera server på minst en Discord-server och uppdatera sedan."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Bot inte tillagd"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Lägg till FluxCore",
+  "addBotTo": "Lägg till FluxCore på {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Sök servrar...",
+    "noResults": "Inga servrar matchar ”{{query}}”.",
+    "resultCount": "Hittade servrar: {{total}}"
   }
 }

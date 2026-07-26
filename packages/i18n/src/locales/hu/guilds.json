@@ -1,21 +1,20 @@
 {
-  "title": "Your Servers",
-  "subtitle": "Choose a server to manage and configure.",
-  "loading": "Loading servers...",
+  "title": "A szervereid",
+  "subtitle": "Válassz egy szervert a kezeléshez és a beállításhoz.",
+  "loading": "Szerverek betöltése...",
+  "refresh": "Szerverek frissítése",
   "empty": {
-    "title": "No servers found",
-    "description": "Make sure the bot is added to a server where you have the Manage Server permission."
+    "title": "Nem található szerver",
+    "description": "Győződj meg róla, hogy legalább egy Discord szerveren rendelkezel a Szerver kezelése jogosultsággal, majd frissíts."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "A bot nincs hozzáadva"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "FluxCore hozzáadása",
+  "addBotTo": "FluxCore hozzáadása ehhez: {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Szerverek keresése...",
+    "noResults": "Egyetlen szerver sem egyezik ezzel: „{{query}}”.",
+    "resultCount": "Talált szerverek: {{total}}"
   }
 }

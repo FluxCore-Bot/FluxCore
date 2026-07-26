@@ -1,12 +1,12 @@
 {
-  "title": "サーバー一覧",
+  "title": "あなたのサーバー",
   "subtitle": "管理・設定するサーバーを選択してください。",
   "loading": "サーバーを読み込み中...",
+  "refresh": "サーバーを更新",
   "empty": {
     "title": "サーバーが見つかりません",
-    "description": "Botが追加されており、サーバー管理権限を持つサーバーがあることを確認してください。"
+    "description": "少なくとも1つのDiscordサーバーで「サーバー管理」権限を持っていることを確認してから、更新してください。"
   },
-  "refresh": "サーバーを更新",
   "badge": {
     "botNotAdded": "Bot未追加"
   },
@@ -15,7 +15,6 @@
   "search": {
     "placeholder": "サーバーを検索...",
     "noResults": "「{{query}}」に一致するサーバーはありません。",
-    "resultCount_one": "{{count}} 件のサーバーが見つかりました",
-    "resultCount_other": "{{count}} 件のサーバーが見つかりました"
+    "resultCount": "見つかったサーバー: {{total}}"
   }
 }

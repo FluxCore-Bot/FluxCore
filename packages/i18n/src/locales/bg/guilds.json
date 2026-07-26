@@ -1,21 +1,20 @@
 {
   "title": "Вашите сървъри",
-  "subtitle": "Изберете сървър за управление и конфигуриране.",
-  "loading": "Зареждане на сървъри...",
+  "subtitle": "Изберете сървър за управление и настройка.",
+  "loading": "Зареждане на сървърите...",
+  "refresh": "Обнови сървърите",
   "empty": {
-    "title": "Не са намерени сървъри",
-    "description": "Уверете се, че ботът е добавен към сървър, в който имате разрешение за управление на сървъра."
+    "title": "Няма намерени сървъри",
+    "description": "Уверете се, че имате разрешение „Управление на сървъра“ поне в един Discord сървър, след което обновете."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Ботът не е добавен"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Добави FluxCore",
+  "addBotTo": "Добави FluxCore към {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Търсене на сървъри...",
+    "noResults": "Няма сървъри, съвпадащи с „{{query}}“.",
+    "resultCount": "Намерени сървъри: {{total}}"
   }
 }

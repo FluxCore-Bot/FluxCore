@@ -1,21 +1,20 @@
 {
-  "title": "Jusu serveriai",
-  "subtitle": "Pasirinkite serveri valdymui ir konfiguracijai.",
-  "loading": "Kraunami serveriai...",
+  "title": "Tavo serveriai",
+  "subtitle": "Pasirink serverį, kurį nori tvarkyti ir konfigūruoti.",
+  "loading": "Įkeliami serveriai...",
+  "refresh": "Atnaujinti serverius",
   "empty": {
-    "title": "Serveriu nerasta",
-    "description": "Isitikinkite, kad botas pridetas prie serverio, kuriame turite Serverio valdymo leidima."
+    "title": "Serverių nerasta",
+    "description": "Įsitikink, kad bent viename Discord serveryje turi leidimą Tvarkyti serverį, tada atnaujink."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Botas nepridėtas"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Pridėti FluxCore",
+  "addBotTo": "Pridėti FluxCore į {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Ieškoti serverių...",
+    "noResults": "Nėra serverių, atitinkančių „{{query}}“.",
+    "resultCount": "Rasta serverių: {{total}}"
   }
 }

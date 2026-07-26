@@ -1,21 +1,20 @@
 {
-  "title": "Your Servers",
-  "subtitle": "Choose a server to manage and configure.",
-  "loading": "Loading servers...",
+  "title": "Tvoje servery",
+  "subtitle": "Vyber si server na správu a nastavenie.",
+  "loading": "Načítavanie serverov...",
+  "refresh": "Obnoviť servery",
   "empty": {
-    "title": "No servers found",
-    "description": "Make sure the bot is added to a server where you have the Manage Server permission."
+    "title": "Nenašli sa žiadne servery",
+    "description": "Uisti sa, že máš oprávnenie Spravovať server aspoň na jednom Discord serveri, a potom obnov."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Bot nie je pridaný"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Pridať FluxCore",
+  "addBotTo": "Pridať FluxCore na {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Hľadať servery...",
+    "noResults": "Žiadne servery nezodpovedajú „{{query}}“.",
+    "resultCount": "Nájdené servery: {{total}}"
   }
 }

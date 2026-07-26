@@ -1,21 +1,20 @@
 {
-  "title": "Sunucularınız",
-  "subtitle": "Yönetmek ve yapılandırmak için bir sunucu seçin.",
+  "title": "Sunucuların",
+  "subtitle": "Yönetmek ve yapılandırmak için bir sunucu seç.",
   "loading": "Sunucular yükleniyor...",
+  "refresh": "Sunucuları yenile",
   "empty": {
     "title": "Sunucu bulunamadı",
-    "description": "Botun, Sunucuyu Yönet iznine sahip olduğunuz bir sunucuya eklendiğinden emin olun."
+    "description": "En az bir Discord sunucusunda Sunucuyu Yönet iznine sahip olduğundan emin ol, ardından yenile."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Bot eklenmedi"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "FluxCore ekle",
+  "addBotTo": "{{name}} sunucusuna FluxCore ekle",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Sunucularda ara...",
+    "noResults": "\"{{query}}\" ile eşleşen sunucu yok.",
+    "resultCount": "Bulunan sunucular: {{total}}"
   }
 }

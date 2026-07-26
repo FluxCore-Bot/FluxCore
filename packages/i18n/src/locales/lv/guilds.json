@@ -1,21 +1,20 @@
 {
-  "title": "Jusu serveri",
-  "subtitle": "Izvelieties serveri parvaldisanai un konfigurecijai.",
-  "loading": "Iellade serverus...",
+  "title": "Tavi serveri",
+  "subtitle": "Izvēlies serveri, ko pārvaldīt un konfigurēt.",
+  "loading": "Ielādē serverus...",
+  "refresh": "Atsvaidzināt serverus",
   "empty": {
     "title": "Serveri nav atrasti",
-    "description": "Parliecinieties, ka bots ir pievienots serverim, kura jums ir Servera parvaldibas atlauja."
+    "description": "Pārliecinies, ka vismaz vienā Discord serverī tev ir atļauja Pārvaldīt serveri, un pēc tam atsvaidzini."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Bots nav pievienots"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Pievienot FluxCore",
+  "addBotTo": "Pievienot FluxCore serverim {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Meklēt serverus...",
+    "noResults": "Neviens serveris neatbilst vaicājumam “{{query}}”.",
+    "resultCount": "Atrastie serveri: {{total}}"
   }
 }

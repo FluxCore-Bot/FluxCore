@@ -1,21 +1,20 @@
 {
-  "title": "Server Anda",
+  "title": "Server Kamu",
   "subtitle": "Pilih server untuk dikelola dan dikonfigurasi.",
   "loading": "Memuat server...",
+  "refresh": "Segarkan server",
   "empty": {
-    "title": "Tidak ada server ditemukan",
-    "description": "Pastikan bot telah ditambahkan ke server di mana Anda memiliki izin Kelola Server."
+    "title": "Tidak ada server yang ditemukan",
+    "description": "Pastikan kamu memiliki izin Kelola Server di setidaknya satu server Discord, lalu segarkan."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Bot belum ditambahkan"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Tambahkan FluxCore",
+  "addBotTo": "Tambahkan FluxCore ke {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Cari server...",
+    "noResults": "Tidak ada server yang cocok dengan \"{{query}}\".",
+    "resultCount": "Server ditemukan: {{total}}"
   }
 }

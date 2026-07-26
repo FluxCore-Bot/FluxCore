@@ -1,21 +1,20 @@
 {
-  "title": "আপনার সার্ভার",
-  "subtitle": "পরিচালনা ও কনফিগার করতে একটি সার্ভার বেছে নিন।",
+  "title": "আপনার সার্ভারসমূহ",
+  "subtitle": "পরিচালনা ও কনফিগার করার জন্য একটি সার্ভার বেছে নিন।",
   "loading": "সার্ভার লোড হচ্ছে...",
+  "refresh": "সার্ভার রিফ্রেশ করুন",
   "empty": {
     "title": "কোনো সার্ভার পাওয়া যায়নি",
-    "description": "নিশ্চিত করুন যে বটটি এমন একটি সার্ভারে যোগ করা হয়েছে যেখানে আপনার সার্ভার পরিচালনার অনুমতি আছে।"
+    "description": "নিশ্চিত করুন যে অন্তত একটি Discord সার্ভারে আপনার সার্ভার পরিচালনার অনুমতি আছে, তারপর রিফ্রেশ করুন।"
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "বট যোগ করা হয়নি"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "FluxCore যোগ করুন",
+  "addBotTo": "{{name}}-এ FluxCore যোগ করুন",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "সার্ভার খুঁজুন...",
+    "noResults": "\"{{query}}\" এর সাথে কোনো সার্ভার মেলেনি।",
+    "resultCount": "সার্ভার পাওয়া গেছে: {{total}}"
   }
 }

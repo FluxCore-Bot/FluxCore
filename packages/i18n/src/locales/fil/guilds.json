@@ -1,21 +1,20 @@
 {
-  "title": "Iyong mga Server",
-  "subtitle": "Pumili ng server upang pamahalaan at i-configure.",
-  "loading": "Naglo-load ng mga server...",
+  "title": "Ang Iyong mga Server",
+  "subtitle": "Pumili ng server na pamamahalaan at ikokonpigura.",
+  "loading": "Nilo-load ang mga server...",
+  "refresh": "I-refresh ang mga server",
   "empty": {
-    "title": "Walang nahanap na mga server",
-    "description": "Siguraduhing naidagdag na ang bot sa isang server kung saan mayroon kang pahintulot na Pamahalaan ang Server."
+    "title": "Walang nakitang server",
+    "description": "Siguraduhing mayroon kang pahintulot na Manage Server sa kahit isang Discord server, pagkatapos ay i-refresh."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Hindi pa naidaragdag ang bot"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Idagdag ang FluxCore",
+  "addBotTo": "Idagdag ang FluxCore sa {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Maghanap ng mga server...",
+    "noResults": "Walang server na tumutugma sa \"{{query}}\".",
+    "resultCount": "Mga server na natagpuan: {{total}}"
   }
 }

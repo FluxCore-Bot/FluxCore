@@ -1,21 +1,20 @@
 {
   "title": "سرورهای شما",
-  "subtitle": "یک سرور را برای مدیریت و پیکربندی انتخاب کنید.",
+  "subtitle": "یک سرور برای مدیریت و پیکربندی انتخاب کنید.",
   "loading": "در حال بارگذاری سرورها...",
+  "refresh": "به‌روزرسانی سرورها",
   "empty": {
-    "title": "سروری یافت نشد",
-    "description": "مطمئن شوید ربات به سروری اضافه شده که در آن دسترسی مدیریت سرور را دارید."
+    "title": "هیچ سروری یافت نشد",
+    "description": "مطمئن شوید که در حداقل یک سرور Discord دسترسی مدیریت سرور دارید، سپس به‌روزرسانی کنید."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "ربات اضافه نشده است"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "افزودن FluxCore",
+  "addBotTo": "افزودن FluxCore به {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "جستجوی سرورها...",
+    "noResults": "هیچ سروری با «{{query}}» مطابقت ندارد.",
+    "resultCount": "سرورهای یافت‌شده: {{total}}"
   }
 }

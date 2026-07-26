@@ -1,21 +1,20 @@
 {
-  "title": "您的伺服器",
-  "subtitle": "選擇要管理和設定的伺服器。",
+  "title": "你的伺服器",
+  "subtitle": "選擇一個要管理和設定的伺服器。",
   "loading": "正在載入伺服器...",
+  "refresh": "重新整理伺服器",
   "empty": {
     "title": "找不到伺服器",
-    "description": "請確認機器人已新增至伺服器，且您擁有管理伺服器權限。"
+    "description": "請確認你在至少一個 Discord 伺服器中擁有「管理伺服器」權限，然後重新整理。"
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "尚未新增機器人"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "新增 FluxCore",
+  "addBotTo": "將 FluxCore 新增至 {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "搜尋伺服器...",
+    "noResults": "沒有符合「{{query}}」的伺服器。",
+    "resultCount": "找到的伺服器：{{total}}"
   }
 }

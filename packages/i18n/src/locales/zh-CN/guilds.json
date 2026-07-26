@@ -1,12 +1,12 @@
 {
-  "title": "您的服务器",
-  "subtitle": "选择要管理和配置的服务器。",
+  "title": "你的服务器",
+  "subtitle": "选择一个要管理和配置的服务器。",
   "loading": "正在加载服务器...",
+  "refresh": "刷新服务器",
   "empty": {
     "title": "未找到服务器",
-    "description": "请确保机器人已添加到服务器，且您在该服务器拥有管理服务器权限。"
+    "description": "请确认你在至少一个 Discord 服务器中拥有“管理服务器”权限，然后刷新。"
   },
-  "refresh": "刷新服务器",
   "badge": {
     "botNotAdded": "机器人未添加"
   },
@@ -15,7 +15,6 @@
   "search": {
     "placeholder": "搜索服务器...",
     "noResults": "没有与“{{query}}”匹配的服务器。",
-    "resultCount_one": "找到 {{count}} 个服务器",
-    "resultCount_other": "找到 {{count}} 个服务器"
+    "resultCount": "找到的服务器：{{total}}"
   }
 }

@@ -42,9 +42,15 @@ export function GuildSearch({
           className="h-10 ps-9"
         />
       </div>
-      {/* Announce the filtered count to screen readers as the user types. */}
+      {/*
+        Announce the filtered count to screen readers as the user types.
+        The interpolation is deliberately named `total`, not `count`: passing
+        `count` makes i18next resolve plural suffixes, which would require the
+        right categories (_few/_many/...) in all 48 locales. This phrasing needs
+        none.
+      */}
       <p aria-live="polite" role="status" className="sr-only">
-        {t("search.resultCount", { count: resultCount })}
+        {t("search.resultCount", { total: resultCount })}
       </p>
     </div>
   );

@@ -1,21 +1,20 @@
 {
   "title": "Ваші сервери",
-  "subtitle": "Оберіть сервер для керування та налаштування.",
+  "subtitle": "Виберіть сервер для керування та налаштування.",
   "loading": "Завантаження серверів...",
+  "refresh": "Оновити сервери",
   "empty": {
-    "title": "Серверів не знайдено",
-    "description": "Переконайтеся, що бот додано на сервер, де у вас є право «Керування сервером»."
+    "title": "Сервери не знайдено",
+    "description": "Переконайтеся, що ви маєте право «Керування сервером» щонайменше на одному сервері Discord, а потім оновіть."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Бот не доданий"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Додати FluxCore",
+  "addBotTo": "Додати FluxCore на {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Пошук серверів...",
+    "noResults": "Немає серверів, що відповідають «{{query}}».",
+    "resultCount": "Знайдено серверів: {{total}}"
   }
 }

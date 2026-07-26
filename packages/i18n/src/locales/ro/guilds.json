@@ -1,21 +1,20 @@
 {
-  "title": "Serverele Tale",
-  "subtitle": "Alege un server de gestionat și configurat.",
+  "title": "Serverele tale",
+  "subtitle": "Alege un server pe care să îl gestionezi și să îl configurezi.",
   "loading": "Se încarcă serverele...",
+  "refresh": "Reîmprospătează serverele",
   "empty": {
-    "title": "Nu s-au găsit servere",
-    "description": "Asigură-te că botul este adăugat pe un server unde ai permisiunea de a Gestiona Serverul."
+    "title": "Nu au fost găsite servere",
+    "description": "Asigură-te că ai permisiunea Gestionare server pe cel puțin un server Discord, apoi reîmprospătează."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Botul nu este adăugat"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Adaugă FluxCore",
+  "addBotTo": "Adaugă FluxCore pe {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Caută servere...",
+    "noResults": "Niciun server nu corespunde cu „{{query}}”.",
+    "resultCount": "Servere găsite: {{total}}"
   }
 }

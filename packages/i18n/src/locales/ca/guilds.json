@@ -1,21 +1,20 @@
 {
   "title": "Els teus servidors",
   "subtitle": "Tria un servidor per gestionar i configurar.",
-  "loading": "Carregant servidors...",
+  "loading": "S'estan carregant els servidors...",
+  "refresh": "Actualitza els servidors",
   "empty": {
-    "title": "No s'han trobat servidors",
-    "description": "Assegura't que el bot s'ha afegit a un servidor on tinguis el permis de Gestionar Servidor."
+    "title": "No s'ha trobat cap servidor",
+    "description": "Assegura't que tens el permís Gestionar el servidor en almenys un servidor de Discord i després actualitza."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Bot no afegit"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Afegeix FluxCore",
+  "addBotTo": "Afegeix FluxCore a {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Cerca servidors...",
+    "noResults": "Cap servidor coincideix amb «{{query}}».",
+    "resultCount": "Servidors trobats: {{total}}"
   }
 }

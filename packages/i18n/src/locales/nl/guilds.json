@@ -1,21 +1,20 @@
 {
-  "title": "Je Servers",
-  "subtitle": "Kies een server om te beheren en configureren.",
+  "title": "Jouw servers",
+  "subtitle": "Kies een server om te beheren en te configureren.",
   "loading": "Servers laden...",
+  "refresh": "Servers vernieuwen",
   "empty": {
     "title": "Geen servers gevonden",
-    "description": "Zorg ervoor dat de bot is toegevoegd aan een server waar je de toestemming Server beheren hebt."
+    "description": "Zorg dat je op minstens één Discord-server het recht Server beheren hebt en vernieuw daarna."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Bot niet toegevoegd"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "FluxCore toevoegen",
+  "addBotTo": "FluxCore toevoegen aan {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Servers zoeken...",
+    "noResults": "Geen servers komen overeen met \"{{query}}\".",
+    "resultCount": "Gevonden servers: {{total}}"
   }
 }

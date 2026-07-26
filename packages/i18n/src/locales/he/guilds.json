@@ -2,20 +2,19 @@
   "title": "השרתים שלך",
   "subtitle": "בחר שרת לניהול ולהגדרה.",
   "loading": "טוען שרתים...",
+  "refresh": "רענן שרתים",
   "empty": {
     "title": "לא נמצאו שרתים",
-    "description": "ודא שהבוט הוסף לשרת שבו יש לך הרשאת ניהול שרת."
+    "description": "ודא שיש לך הרשאת ניהול שרת בשרת Discord אחד לפחות, ולאחר מכן רענן."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "הבוט לא נוסף"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "הוסף את FluxCore",
+  "addBotTo": "הוסף את FluxCore לשרת {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "חיפוש שרתים...",
+    "noResults": "אין שרתים התואמים ל-\"{{query}}\".",
+    "resultCount": "שרתים שנמצאו: {{total}}"
   }
 }

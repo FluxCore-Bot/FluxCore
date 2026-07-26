@@ -2,20 +2,19 @@
   "title": "เซิร์ฟเวอร์ของคุณ",
   "subtitle": "เลือกเซิร์ฟเวอร์ที่ต้องการจัดการและตั้งค่า",
   "loading": "กำลังโหลดเซิร์ฟเวอร์...",
+  "refresh": "รีเฟรชเซิร์ฟเวอร์",
   "empty": {
     "title": "ไม่พบเซิร์ฟเวอร์",
-    "description": "ตรวจสอบว่าบอทถูกเพิ่มในเซิร์ฟเวอร์ที่คุณมีสิทธิ์จัดการเซิร์ฟเวอร์"
+    "description": "ตรวจสอบว่าคุณมีสิทธิ์จัดการเซิร์ฟเวอร์ในเซิร์ฟเวอร์ Discord อย่างน้อยหนึ่งแห่ง จากนั้นรีเฟรช"
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "ยังไม่ได้เพิ่มบอท"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "เพิ่ม FluxCore",
+  "addBotTo": "เพิ่ม FluxCore ไปยัง {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "ค้นหาเซิร์ฟเวอร์...",
+    "noResults": "ไม่มีเซิร์ฟเวอร์ที่ตรงกับ \"{{query}}\"",
+    "resultCount": "เซิร์ฟเวอร์ที่พบ: {{total}}"
   }
 }

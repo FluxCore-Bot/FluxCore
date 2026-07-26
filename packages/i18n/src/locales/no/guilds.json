@@ -1,21 +1,20 @@
 {
-  "title": "Dine servere",
-  "subtitle": "Velg en server å administrere og konfigurere.",
+  "title": "Serverne dine",
+  "subtitle": "Velg en server du vil administrere og konfigurere.",
   "loading": "Laster servere...",
+  "refresh": "Oppdater servere",
   "empty": {
     "title": "Ingen servere funnet",
-    "description": "Sørg for at boten er lagt til på en server der du har tillatelsen Administrer server."
+    "description": "Sørg for at du har tillatelsen Administrer server på minst én Discord-server, og oppdater deretter."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "Bot ikke lagt til"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "Legg til FluxCore",
+  "addBotTo": "Legg til FluxCore på {{name}}",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "Søk etter servere...",
+    "noResults": "Ingen servere samsvarer med «{{query}}».",
+    "resultCount": "Servere funnet: {{total}}"
   }
 }

@@ -2,20 +2,19 @@
   "title": "உங்கள் சேவையகங்கள்",
   "subtitle": "நிர்வகிக்க மற்றும் கட்டமைக்க ஒரு சேவையகத்தைத் தேர்ந்தெடுக்கவும்.",
   "loading": "சேவையகங்கள் ஏற்றப்படுகின்றன...",
+  "refresh": "சேவையகங்களைப் புதுப்பி",
   "empty": {
     "title": "சேவையகங்கள் எதுவும் கிடைக்கவில்லை",
-    "description": "சேவையக நிர்வாகிப்பு அனுமதி உங்களிடம் உள்ள சேவையகத்தில் பாட் சேர்க்கப்பட்டுள்ளதை உறுதிப்படுத்தவும்."
+    "description": "குறைந்தது ஒரு Discord சேவையகத்தில் சேவையகத்தை நிர்வகிக்கும் அனுமதி உங்களிடம் உள்ளதா என்பதை உறுதிசெய்து, பிறகு புதுப்பிக்கவும்."
   },
-  "refresh": "Refresh servers",
   "badge": {
-    "botNotAdded": "Bot not added"
+    "botNotAdded": "பாட் சேர்க்கப்படவில்லை"
   },
-  "addBot": "Add FluxCore",
-  "addBotTo": "Add FluxCore to {{name}}",
+  "addBot": "FluxCore ஐச் சேர்",
+  "addBotTo": "{{name}} இல் FluxCore ஐச் சேர்",
   "search": {
-    "placeholder": "Search servers...",
-    "noResults": "No servers match \"{{query}}\".",
-    "resultCount_one": "{{count}} server found",
-    "resultCount_other": "{{count}} servers found"
+    "placeholder": "சேவையகங்களைத் தேடு...",
+    "noResults": "\"{{query}}\" உடன் பொருந்தும் சேவையகங்கள் இல்லை.",
+    "resultCount": "கண்டறியப்பட்ட சேவையகங்கள்: {{total}}"
   }
 }
