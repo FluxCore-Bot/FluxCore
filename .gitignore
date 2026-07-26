@@ -29,3 +29,6 @@ apps/dashboard/tests/e2e/.report/
 # Production Docker secrets — keep the directory but never commit values
 /secrets/*
 !/secrets/.gitkeep
+
+# Subagent-driven-development scratch workspace (ledger, briefs, review packages)
+.superpowers/
