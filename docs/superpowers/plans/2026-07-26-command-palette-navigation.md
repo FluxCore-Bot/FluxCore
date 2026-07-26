@@ -459,8 +459,12 @@ describe("normalize", () => {
     expect(normalize("Añadir")).toBe("anadir");
   });
 
-  it("leaves non-Latin scripts intact", () => {
+  it("round-trips precomposed non-Latin scripts", () => {
+    // Both decompose under NFD into marks that are NOT \p{Diacritic}, so the
+    // NFC recomposition is what keeps them equal to their input. Without it,
+    // segment() stops highlighting these scripts entirely.
     expect(normalize("إشراف")).toBe("إشراف");
+    expect(normalize("한글")).toBe("한글");
   });
 });
 
@@ -519,6 +523,18 @@ describe("segment", () => {
     expect(segment("Logs", "zzz")).toEqual([{ text: "Logs", match: false }]);
   });
 
+  it("highlights precomposed non-Latin scripts", () => {
+    expect(segment("관리", "관리")).toEqual([{ text: "관리", match: true }]);
+  });
+
+  it("skips highlighting when stripping accents changed the length", () => {
+    // Offsets from the normalized string would no longer map onto the
+    // original, so the whole title renders unmatched. score() still matches.
+    expect(segment("Modération", "moderation")).toEqual([
+      { text: "Modération", match: false },
+    ]);
+  });
+
   it("returns a single unmatched segment for an empty query", () => {
     expect(segment("Logs", "")).toEqual([{ text: "Logs", match: false }]);
   });
@@ -555,12 +571,25 @@ export interface Segment {
 }
 
 /**
- * Casefold and strip diacritics so "moderation" finds "Modération". NFD splits
- * a letter into base + combining mark; removing the marks leaves the base.
- * Scripts without combining marks (Arabic, CJK, Hebrew) pass through unchanged.
+ * Casefold and strip diacritics so "moderation" finds "Modération".
+ *
+ * NFD splits a letter into base + combining marks; removing the marks leaves
+ * the base. The trailing NFC recomposition is load-bearing, not cosmetic:
+ * NFD also decomposes characters whose marks are NOT `\p{Diacritic}` — every
+ * Hangul syllable becomes three jamo, and Arabic إ becomes ALEF + HAMZA_BELOW.
+ * Without recomposing, those strings come back longer than they went in, and
+ * `segment()`'s length guard would then skip highlighting for all Korean and
+ * for common Arabic words (إعدادات, أوامر).
+ *
+ * Latin accented text and Devanagari with matras still change length, because
+ * marks genuinely were removed. Those correctly skip highlighting.
  */
 export function normalize(s: string): string {
-  return s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
+  return s
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .normalize("NFC")
+    .toLowerCase();
 }
 
 export function score(query: string, c: Scorable): number | null {
