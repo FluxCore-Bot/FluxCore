@@ -170,5 +170,36 @@
       "channelName": "Nom du salon",
       "memberCount": "Nombre de membres du serveur"
     }
+  },
+  "palette": {
+    "open": "Rechercher",
+    "placeholder": "Rechercher des pages, des serveurs et des actions…",
+    "dialogTitle": "Palette de commandes",
+    "dialogDescription": "Recherchez une page, un serveur ou une action. Utilisez les flèches pour vous déplacer et Entrée pour ouvrir.",
+    "hint": {
+      "navigate": "naviguer",
+      "select": "ouvrir",
+      "close": "fermer"
+    },
+    "group": {
+      "recent": "Récents",
+      "pages": "Pages",
+      "actions": "Actions",
+      "servers": "Serveurs"
+    },
+    "keywords": {
+      "automation": "règles automatisation déclencheurs flux de travail",
+      "moderation": "dossiers bannissements expulsions mises en sourdine sanctions"
+    },
+    "action": {
+      "refreshGuild": "Actualiser les données de ce serveur",
+      "refreshGuildList": "Actualiser ma liste de serveurs",
+      "backToServers": "Retour à tous les serveurs",
+      "addToServer": "Ajouter le bot à un serveur",
+      "logout": "Déconnexion"
+    },
+    "more": "{{total}} de plus",
+    "empty": "Aucun résultat pour « {{query}} »",
+    "resultCount": "{{total}} résultats"
   }
 }

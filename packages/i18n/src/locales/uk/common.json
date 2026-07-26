@@ -170,5 +170,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Пошук",
+    "placeholder": "Пошук сторінок, серверів і дій…",
+    "dialogTitle": "Палітра команд",
+    "dialogDescription": "Знайдіть сторінку, сервер або дію. Переміщуйтеся стрілками, відкривайте клавішею Enter.",
+    "hint": {
+      "navigate": "переміщення",
+      "select": "відкрити",
+      "close": "закрити"
+    },
+    "group": {
+      "recent": "Нещодавні",
+      "pages": "Сторінки",
+      "actions": "Дії",
+      "servers": "Сервери"
+    },
+    "keywords": {
+      "automation": "правила автоматизація тригери робочий процес",
+      "moderation": "справи блокування виключення заглушення покарання"
+    },
+    "action": {
+      "refreshGuild": "Оновити дані цього сервера",
+      "refreshGuildList": "Оновити мій список серверів",
+      "backToServers": "Назад до всіх серверів",
+      "addToServer": "Додати бота на сервер",
+      "logout": "Вийти"
+    },
+    "more": "Ще: {{total}}",
+    "empty": "Немає результатів за запитом «{{query}}»",
+    "resultCount": "Результати: {{total}}"
   }
 }

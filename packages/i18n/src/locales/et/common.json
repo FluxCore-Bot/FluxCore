@@ -170,5 +170,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Otsi",
+    "placeholder": "Otsi lehti, servereid ja tegevusi…",
+    "dialogTitle": "Käskude palett",
+    "dialogDescription": "Otsi lehte, serverit või tegevust. Liikumiseks kasuta nooleklahve ja avamiseks klahvi Enter.",
+    "hint": {
+      "navigate": "liigu",
+      "select": "ava",
+      "close": "sulge"
+    },
+    "group": {
+      "recent": "Hiljutised",
+      "pages": "Lehed",
+      "actions": "Tegevused",
+      "servers": "Serverid"
+    },
+    "keywords": {
+      "automation": "reeglid automatiseerimine päästikud töövoog",
+      "moderation": "juhtumid keelud väljaviskamised vaigistused karistused"
+    },
+    "action": {
+      "refreshGuild": "Värskenda selle serveri andmeid",
+      "refreshGuildList": "Värskenda minu serverite loendit",
+      "backToServers": "Tagasi kõigi serverite juurde",
+      "addToServer": "Lisa bot serverisse",
+      "logout": "Logi välja"
+    },
+    "more": "Veel {{total}}",
+    "empty": "Päringule „{{query}}“ ei leitud tulemusi",
+    "resultCount": "Tulemusi: {{total}}"
   }
 }

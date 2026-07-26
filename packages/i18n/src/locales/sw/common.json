@@ -170,5 +170,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Tafuta",
+    "placeholder": "Tafuta kurasa, seva na vitendo…",
+    "dialogTitle": "Paleti ya amri",
+    "dialogDescription": "Tafuta ukurasa, seva au kitendo. Tumia vitufe vya mishale kusogea na Enter kufungua.",
+    "hint": {
+      "navigate": "sogea",
+      "select": "fungua",
+      "close": "funga"
+    },
+    "group": {
+      "recent": "Za hivi karibuni",
+      "pages": "Kurasa",
+      "actions": "Vitendo",
+      "servers": "Seva"
+    },
+    "keywords": {
+      "automation": "kanuni otomatiki vianzishi mtiririko wa kazi",
+      "moderation": "kesi marufuku kufukuza kunyamazisha adhabu"
+    },
+    "action": {
+      "refreshGuild": "Onyesha upya data ya seva hii",
+      "refreshGuildList": "Onyesha upya orodha yangu ya seva",
+      "backToServers": "Rudi kwa seva zote",
+      "addToServer": "Ongeza boti kwenye seva",
+      "logout": "Ondoka"
+    },
+    "more": "Nyingine {{total}}",
+    "empty": "Hakuna matokeo ya \"{{query}}\"",
+    "resultCount": "Matokeo: {{total}}"
   }
 }

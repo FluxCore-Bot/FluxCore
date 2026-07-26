@@ -170,5 +170,36 @@
       "channelName": "Nome do canal",
       "memberCount": "Contagem de membros do servidor"
     }
+  },
+  "palette": {
+    "open": "Pesquisar",
+    "placeholder": "Pesquisar páginas, servidores e ações…",
+    "dialogTitle": "Paleta de comandos",
+    "dialogDescription": "Pesquisa uma página, um servidor ou uma ação. Usa as setas para te moveres e Enter para abrir.",
+    "hint": {
+      "navigate": "navegar",
+      "select": "abrir",
+      "close": "fechar"
+    },
+    "group": {
+      "recent": "Recentes",
+      "pages": "Páginas",
+      "actions": "Ações",
+      "servers": "Servidores"
+    },
+    "keywords": {
+      "automation": "regras automatização acionadores fluxo de trabalho",
+      "moderation": "casos banimentos expulsões silenciamentos sanções"
+    },
+    "action": {
+      "refreshGuild": "Atualizar os dados deste servidor",
+      "refreshGuildList": "Atualizar a minha lista de servidores",
+      "backToServers": "Voltar a todos os servidores",
+      "addToServer": "Adicionar o bot a um servidor",
+      "logout": "Terminar sessão"
+    },
+    "more": "Mais {{total}}",
+    "empty": "Sem resultados para «{{query}}»",
+    "resultCount": "{{total}} resultados"
   }
 }

@@ -170,5 +170,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Soek",
+    "placeholder": "Soek bladsye, bedieners en aksies…",
+    "dialogTitle": "Opdragpaneel",
+    "dialogDescription": "Soek na 'n bladsy, bediener of aksie. Gebruik die pyltjiesleutels om te beweeg en Enter om oop te maak.",
+    "hint": {
+      "navigate": "beweeg",
+      "select": "maak oop",
+      "close": "sluit"
+    },
+    "group": {
+      "recent": "Onlangs",
+      "pages": "Bladsye",
+      "actions": "Aksies",
+      "servers": "Bedieners"
+    },
+    "keywords": {
+      "automation": "reëls outomatisering snellers werkvloei",
+      "moderation": "sake verbanne skoppe dempings strawwe"
+    },
+    "action": {
+      "refreshGuild": "Herlaai hierdie bediener se data",
+      "refreshGuildList": "Herlaai my bedienerlys",
+      "backToServers": "Terug na alle bedieners",
+      "addToServer": "Voeg die bot by 'n bediener",
+      "logout": "Teken uit"
+    },
+    "more": "Nog {{total}}",
+    "empty": "Geen resultate vir \"{{query}}\" nie",
+    "resultCount": "{{total}} resultate"
   }
 }
