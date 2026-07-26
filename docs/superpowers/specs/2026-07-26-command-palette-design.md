@@ -427,7 +427,9 @@ Per `CLAUDE.md`, every feature ships with tests. Three tiers:
 | `shared/command-palette/CommandPalette.test.tsx` | Hotkey opens/closes; `Ctrl+P` prevents default; arrow/Home/End cursor movement with wrap; `Enter` navigates; combobox/listbox roles and `aria-activedescendant` wiring; static results render before remote resolves |
 | `shared/lib/navigation.test.ts` | Registry and `Sidebar` agree — guards the extraction refactor |
 
-### Route — `apps/dashboard/tests/server/routes/search.test.ts`
+### Route — `apps/dashboard/tests/server/features/search/search.test.ts`
+
+> Path note: `CLAUDE.md` says dashboard route tests live in `tests/server/routes/`, but every existing one is under `tests/server/features/<module>/`. The repo wins.
 
 - Unauthenticated → 401
 - Authenticated non-admin → 403
