@@ -87,7 +87,15 @@ export function CommandPalette({
         </DialogDescription>
 
         <div className="flex items-center gap-3 border-b border-border/50 px-4">
-          <Icon name="search" size={18} className="shrink-0 text-text-muted" />
+          <Icon name="search" size={18} className="shrink-0 text-text-secondary" />
+          {/*
+            Transparent, borderless and glow-less: this input spans the full
+            width of a glass panel, so the default recessed black fill would
+            punch an opaque hole through the frost, and the focus border would
+            trace a box around the whole dialog head. The caret plus the
+            highlighted row carry focus instead — it is auto-focused and the
+            only input here.
+          */}
           <input
             autoFocus
             role="combobox"
@@ -99,7 +107,7 @@ export function CommandPalette({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={onKeyDown}
-            className="h-12 w-full bg-transparent text-sm text-text placeholder:text-outline focus:outline-none"
+            className="command-palette-input h-14 w-full bg-transparent text-base text-text placeholder:text-text-secondary focus:border-transparent focus:shadow-none focus:outline-none"
           />
         </div>
 
@@ -142,10 +150,24 @@ export function CommandPalette({
           {t("palette.resultCount", { total: flat.length })}
         </p>
 
-        <div className="flex items-center gap-4 border-t border-border/50 px-4 py-2 text-[0.625rem] text-text-muted">
-          <span><kbd className="font-mono">↑↓</kbd> {t("palette.hint.navigate")}</span>
-          <span><kbd className="font-mono">⏎</kbd> {t("palette.hint.select")}</span>
-          <span><kbd className="font-mono">esc</kbd> {t("palette.hint.close")}</span>
+        {/*
+          12px floor, not 10px: the codebase's own `.section-label` records
+          12px as the WCAG minimum, and these hints were below it. The chips
+          are bordered so they read as keys rather than as dimmed prose.
+        */}
+        <div className="flex items-center gap-4 border-t border-border/50 px-4 py-2.5 text-xs text-text-secondary">
+          <span className="flex items-center gap-1.5">
+            <kbd className="rounded border border-border bg-surface-high px-1.5 py-0.5 font-mono">↑↓</kbd>
+            {t("palette.hint.navigate")}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <kbd className="rounded border border-border bg-surface-high px-1.5 py-0.5 font-mono">⏎</kbd>
+            {t("palette.hint.select")}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <kbd className="rounded border border-border bg-surface-high px-1.5 py-0.5 font-mono">esc</kbd>
+            {t("palette.hint.close")}
+          </span>
         </div>
       </DialogContent>
     </Dialog>

@@ -30,7 +30,7 @@ export function CommandGroup({
           {t(`palette.group.${group.key}`)}
         </span>
         {hidden > 0 && (
-          <span className="text-[0.625rem] text-text-muted">
+          <span className="text-xs text-text-secondary">
             {t("palette.more", { total: hidden })}
           </span>
         )}
