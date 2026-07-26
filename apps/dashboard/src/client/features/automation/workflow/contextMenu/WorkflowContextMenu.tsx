@@ -18,12 +18,19 @@ export interface WorkflowContextMenuProps {
   ariaLabel: string;
   sections: ContextMenuSection[];
   onClose: () => void;
+  /**
+   * Send focus back where the menu was opened from. The caller owns which
+   * element that is (and whether it still exists); this component only decides
+   * when to ask, so it never has to reach into the DOM itself.
+   */
+  onRestoreFocus: () => void;
 }
 
 /**
  * A context menu for the workflow canvas, built on the shared DropdownMenu and
  * anchored to a zero-size element at the cursor. Radix owns keyboard
- * navigation, dismissal, and focus restoration.
+ * navigation, typeahead, and dismissal. Focus restoration is ours — see
+ * `onCloseAutoFocus` below for why Radix's cannot work with this anchor.
  */
 export function WorkflowContextMenu({
   open,
@@ -32,6 +39,7 @@ export function WorkflowContextMenu({
   ariaLabel,
   sections,
   onClose,
+  onRestoreFocus,
 }: WorkflowContextMenuProps) {
   const { t, i18n } = useTranslation(["rules", "common"]);
 
@@ -62,6 +70,17 @@ export function WorkflowContextMenu({
         // aria-hidden anchor span, so that default resolves to no name at
         // all — clear it so aria-label is the sole name source.
         aria-labelledby={undefined}
+        // Radix's DropdownMenu restores focus to its trigger on close. Ours is
+        // the zero-size, aria-hidden, non-focusable anchor span above, so that
+        // restore is a no-op and focus falls to <body> — a keyboard user who
+        // opened this with Shift+F10 would lose their place in the canvas.
+        // Preventing the default suppresses both that trigger focus and
+        // FocusScope's own restore, leaving the caller's handler in sole
+        // charge (composeEventHandlers skips Radix's once we preventDefault).
+        onCloseAutoFocus={(event) => {
+          event.preventDefault();
+          onRestoreFocus();
+        }}
         className="min-w-52"
       >
         {sections.map((section, sectionIndex) => (

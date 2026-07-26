@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import {
   useReactFlow,
   type EdgeMouseHandler,
@@ -23,28 +23,60 @@ export function useWorkflowContextMenu() {
   const [menu, setMenu] = useState<OpenContextMenu | null>(null);
   const { screenToFlowPosition, getNode } = useReactFlow();
 
+  /**
+   * Whatever had focus when the menu opened — normally the `.react-flow__node`
+   * a keyboard user was standing on. Radix's DropdownMenu returns focus to its
+   * trigger on close, but ours is a zero-size, aria-hidden span that cannot
+   * take focus, so without this the caller's place in the canvas is lost to
+   * `<body>`. Held in a ref: it is read once, on close, and must never
+   * re-render the editor.
+   */
+  const originRef = useRef<HTMLElement | null>(null);
+
+  const captureOrigin = useCallback(() => {
+    const active = document.activeElement;
+    // A right-click usually leaves `<body>` focused; there is no place to
+    // return to, and focusing the body is not a restoration.
+    originRef.current =
+      active instanceof HTMLElement && active !== document.body ? active : null;
+  }, []);
+
+  /**
+   * Hand focus back to the opener. Called from the menu's `onCloseAutoFocus`.
+   */
+  const restoreFocus = useCallback(() => {
+    const origin = originRef.current;
+    originRef.current = null;
+    // Gone from the document when the menu's own verb deleted that node — the
+    // detached element would silently swallow the focus call.
+    if (origin?.isConnected) origin.focus();
+  }, []);
+
   const openNodeMenu = useCallback<NodeMouseHandler>((event, node) => {
     event.preventDefault();
+    captureOrigin();
     setMenu({
       target: { kind: "node", nodeId: node.id },
       x: event.clientX,
       y: event.clientY,
       label: typeof node.data?.label === "string" ? node.data.label : undefined,
     });
-  }, []);
+  }, [captureOrigin]);
 
   const openEdgeMenu = useCallback<EdgeMouseHandler>((event, edge) => {
     event.preventDefault();
+    captureOrigin();
     setMenu({
       target: { kind: "edge", edgeId: edge.id },
       x: event.clientX,
       y: event.clientY,
     });
-  }, []);
+  }, [captureOrigin]);
 
   const openPaneMenu = useCallback(
     (event: React.MouseEvent | MouseEvent) => {
       event.preventDefault();
+      captureOrigin();
       setMenu({
         target: {
           kind: "pane",
@@ -54,12 +86,13 @@ export function useWorkflowContextMenu() {
         y: event.clientY,
       });
     },
-    [screenToFlowPosition],
+    [screenToFlowPosition, captureOrigin],
   );
 
   /** Shift+F10 / the Menu key: anchor to the focused node, else to the canvas centre. */
   const openFromKeyboard = useCallback(() => {
     const active = document.activeElement as HTMLElement | null;
+    captureOrigin();
     const nodeEl = active?.closest?.(".react-flow__node") as HTMLElement | null;
     if (nodeEl?.dataset.id) {
       const rect = nodeEl.getBoundingClientRect();
@@ -81,7 +114,7 @@ export function useWorkflowContextMenu() {
       x,
       y,
     });
-  }, [screenToFlowPosition, getNode]);
+  }, [screenToFlowPosition, getNode, captureOrigin]);
 
   const close = useCallback(() => setMenu(null), []);
 
@@ -93,5 +126,6 @@ export function useWorkflowContextMenu() {
     openPaneMenu,
     openFromKeyboard,
     close,
+    restoreFocus,
   };
 }

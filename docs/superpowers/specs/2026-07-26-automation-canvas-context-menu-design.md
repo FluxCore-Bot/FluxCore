@@ -199,8 +199,28 @@ for whatever currently has focus.
   derived through `screenToFlowPosition`.
 - The existing `INPUT` / `TEXTAREA` / `SELECT` guard applies unchanged.
 
-Radix then owns arrow-key navigation, typeahead, `Esc`, and focus restoration; none of that is
-hand-rolled.
+Radix then owns arrow-key navigation, typeahead, and `Esc` dismissal; none of that is hand-rolled.
+
+**Focus restoration is ours, not Radix's.** The zero-size anchor this spec chose is exactly what
+breaks the restoration Radix would otherwise provide: `DropdownMenu` returns focus to its *trigger*
+on close (and `preventDefault`s `FocusScope`'s own restore to do it), but our trigger is a
+`position: fixed`, 0×0, `aria-hidden` span that cannot hold focus. The call is a silent no-op and
+focus lands on `<body>` — so a keyboard user who opened the menu with `Shift+F10` on a node and
+pressed `Esc` would lose their place in the canvas entirely.
+
+Instead:
+
+- `useWorkflowContextMenu` captures `document.activeElement` on every open path (ignoring `<body>`,
+  which is what a right-click usually leaves focused) and exposes a `restoreFocus` callback.
+- `WorkflowContextMenu` takes that callback as an `onRestoreFocus` prop and wires it to
+  `onCloseAutoFocus`, preempting Radix's trigger focus with `event.preventDefault()`. The menu
+  component decides *when* to restore; the hook owns *what* to restore to, so the presentational
+  component never reaches into the DOM.
+- The restore is skipped when the captured element is no longer `isConnected` — the case where the
+  menu's own verb deleted that node.
+
+Note that `FocusScope` dispatches its unmount event from a `setTimeout(0)`, so the restoration is
+asynchronous; tests must await it rather than asserting synchronously after `Esc`.
 
 Additional a11y details:
 

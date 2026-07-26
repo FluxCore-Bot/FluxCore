@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
+import { useState } from "react";
 import { describe, it, expect, vi, beforeAll, afterEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { WorkflowContextMenu } from "../../../../../src/client/features/automation/workflow/contextMenu/WorkflowContextMenu";
 import type { ContextMenuSection } from "../../../../../src/client/features/automation/workflow/contextMenu/types";
@@ -60,6 +61,7 @@ function makeSections(onSelect = vi.fn(), disabledSelect = vi.fn()): ContextMenu
 
 function setup(over: Partial<React.ComponentProps<typeof WorkflowContextMenu>> = {}) {
   const onClose = vi.fn();
+  const onRestoreFocus = vi.fn();
   const sections = over.sections ?? makeSections();
   render(
     <WorkflowContextMenu
@@ -69,10 +71,11 @@ function setup(over: Partial<React.ComponentProps<typeof WorkflowContextMenu>> =
       ariaLabel="contextMenu.menuLabel:Send message"
       sections={sections}
       onClose={onClose}
+      onRestoreFocus={onRestoreFocus}
       {...over}
     />,
   );
-  return { onClose, sections };
+  return { onClose, onRestoreFocus, sections };
 }
 
 describe("WorkflowContextMenu", () => {
@@ -126,6 +129,37 @@ describe("WorkflowContextMenu", () => {
     await screen.findByRole("menu");
     await user.keyboard("{Escape}");
     expect(onClose).toHaveBeenCalled();
+  });
+
+  it("hands focus restoration to its caller instead of the dead anchor", async () => {
+    const user = userEvent.setup();
+    const onRestoreFocus = vi.fn();
+
+    // `setup()` holds `open` at true, so Escape would never tear the menu
+    // down and the close-auto-focus event would never fire. This harness
+    // unmounts the menu on close, exactly as WorkflowEditor does.
+    function Harness() {
+      const [open, setOpen] = useState(true);
+      return open ? (
+        <WorkflowContextMenu
+          open
+          x={120}
+          y={80}
+          ariaLabel="contextMenu.menuLabel:Send message"
+          sections={makeSections()}
+          onClose={() => setOpen(false)}
+          onRestoreFocus={onRestoreFocus}
+        />
+      ) : null;
+    }
+    render(<Harness />);
+    await screen.findByRole("menu");
+    await user.keyboard("{Escape}");
+
+    // Radix's own close-auto-focus targets the trigger — the 0×0 aria-hidden
+    // anchor — so the component must preempt it and delegate. FocusScope
+    // dispatches the unmount event from a setTimeout(0).
+    await waitFor(() => expect(onRestoreFocus).toHaveBeenCalledTimes(1));
   });
 
   it("separates sections", async () => {

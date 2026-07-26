@@ -166,9 +166,17 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     setSelectedNode((prev) => {
       if (prev?.type !== "action") return prev;
       const target = direction === "up" ? index - 1 : index + 1;
-      return { type: "action", index: target };
+      // rawActionMove refuses an out-of-range swap, so the selection must not
+      // move either — following it would point the panel at actions[-1].
+      if (target < 0 || target >= actions.length) return prev;
+      // The context menu can move an action other than the open one. Only the
+      // two actions that actually swap change index; everything else is
+      // untouched, and the panel must keep editing the record the user opened.
+      if (prev.index === index) return { type: "action", index: target };
+      if (prev.index === target) return { type: "action", index };
+      return prev;
     });
-  }, [rawActionMove]);
+  }, [rawActionMove, actions.length]);
 
   // Auto-save draft on changes
   useEffect(() => {
@@ -458,7 +466,16 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     toast.success(t("contextMenu.nodeDeleted"), {
       action: {
         label: t("common:actions.undo"),
-        onClick: () => restore(snap),
+        // Clearing the selection is not cosmetic: `restore` swaps `actions`
+        // wholesale, and anything the user selected in between (an action
+        // added after the delete, say) can index past the restored array.
+        // NodeDetailPanel's action branch would then render `undefined` and
+        // throw — with no error boundary above this portal, that white-screens
+        // the editor and takes the unsaved rule with it.
+        onClick: () => {
+          restore(snap);
+          setSelectedNode(null);
+        },
       },
     });
   }, [snapshot, restore, actions.length, handleActionRemove, handleActionReset, handleStepRemove, t]);
@@ -779,6 +796,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             ariaLabel={contextMenuAriaLabel}
             sections={contextSections}
             onClose={contextMenu.close}
+            onRestoreFocus={contextMenu.restoreFocus}
           />
         )}
 
