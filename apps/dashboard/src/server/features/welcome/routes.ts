@@ -19,6 +19,15 @@ import {
 
 const storage = createStorageAdapter();
 
+/**
+ * Fastify's default bodyLimit is 1MB, which rejects a legitimate
+ * MAX_BACKGROUND_SIZE upload with a bare 413 before the handler's own size
+ * check — and that check is what returns the specific, friendly error naming
+ * the real limit. Derived rather than hardcoded so it cannot drift from
+ * MAX_BACKGROUND_SIZE. Base64 inflates by 4/3; 8KB covers the JSON envelope.
+ */
+const BACKGROUND_BODY_LIMIT = Math.ceil((MAX_BACKGROUND_SIZE * 4) / 3) + 8 * 1024;
+
 export function registerWelcomeRoutes(app: FastifyInstance): void {
   // GET full welcome config
   app.get(
@@ -255,6 +264,7 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.config.manage")],
       // Decodes up to 3MB of base64 and writes it to storage.
       config: rateLimits.upload,
+      bodyLimit: BACKGROUND_BODY_LIMIT,
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
