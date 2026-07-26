@@ -1,0 +1,129 @@
+import { AttachmentBuilder, type GuildMember, type SendableChannels } from "discord.js";
+import { logger } from "@fluxcore/utils";
+import { buildWelcomeEmbed, replaceWelcomeVariables } from "./builder.js";
+import { generateWelcomeImage, createStorageAdapter, sanitizeDisplayName } from "./image/index.js";
+import type { EmbedConfig, MessageStyle, WelcomeImageSettings } from "./types.js";
+
+/** Discord's hard limit on message content length. */
+const MAX_CONTENT_LENGTH = 2000;
+
+export interface SendPayload<TEmbed, TFile> {
+  content?: string;
+  embeds?: TEmbed[];
+  files?: TFile[];
+}
+
+export interface SendPayloadInput<TEmbed, TFile> {
+  style: MessageStyle;
+  /** Plain-mode message text, variables already substituted. */
+  content: string;
+  embed: TEmbed;
+  files: TFile[];
+  /** Embed-mode only. Ignored when style is "plain". */
+  sendMode: "with" | "before" | "only";
+}
+
+/**
+ * Decide what to post for a welcome/farewell event.
+ *
+ * Returns one payload per message to send, in order. An empty array means
+ * there is nothing worth posting.
+ *
+ * Plain style posts the image as a native full-width attachment rather than
+ * boxed inside an embed, so `sendMode` does not apply to it.
+ */
+export function buildSendPayloads<TEmbed, TFile>(
+  input: SendPayloadInput<TEmbed, TFile>,
+): Array<SendPayload<TEmbed, TFile>> {
+  const { style, content, embed, files, sendMode } = input;
+
+  if (style === "plain") {
+    const payload: SendPayload<TEmbed, TFile> = {};
+    const trimmed = content.slice(0, MAX_CONTENT_LENGTH);
+    if (trimmed.trim()) payload.content = trimmed;
+    if (files.length > 0) payload.files = files;
+    return payload.content || payload.files ? [payload] : [];
+  }
+
+  if (files.length > 0 && sendMode === "only") return [{ files }];
+  if (files.length > 0 && sendMode === "before") return [{ files }, { embeds: [embed] }];
+  return [{ embeds: [embed], files }];
+}
+
+export interface DeliverOptions {
+  channel: SendableChannels;
+  member: GuildMember;
+  style: MessageStyle;
+  /** Plain-mode text, variables NOT yet substituted. */
+  content: string;
+  embedConfig: EmbedConfig;
+  imageEnabled: boolean;
+  imageSettings: WelcomeImageSettings;
+  /** "welcome.png" or "farewell.png". */
+  attachmentName: string;
+  /** "welcome" or "farewell" — used in log messages only. */
+  label: string;
+}
+
+/**
+ * Render the card (if enabled) and post the message.
+ *
+ * Shared by guildMemberAdd and guildMemberRemove so the two paths cannot
+ * drift — notably in name sanitisation, which the farewell path previously
+ * skipped entirely.
+ */
+export async function deliverWelcomeMessage(options: DeliverOptions): Promise<void> {
+  const {
+    channel, member, style, content, embedConfig,
+    imageEnabled, imageSettings, attachmentName, label,
+  } = options;
+
+  const files: AttachmentBuilder[] = [];
+
+  if (imageEnabled) {
+    try {
+      const imageBuffer = await generateWelcomeImage({
+        settings: imageSettings,
+        member: {
+          username: sanitizeDisplayName(member.user.username, 32),
+          displayName: sanitizeDisplayName(member.displayName, 80),
+          avatarUrl: member.user.displayAvatarURL({ extension: "png", size: 256 }),
+        },
+        guild: {
+          name: sanitizeDisplayName(member.guild.name, 80),
+          iconUrl: member.guild.iconURL({ size: 256 }) ?? undefined,
+          memberCount: member.guild.memberCount,
+        },
+        storage: createStorageAdapter(),
+      });
+      files.push(new AttachmentBuilder(imageBuffer, { name: attachmentName }));
+    } catch (err) {
+      logger.error(
+        `Failed to generate ${label} image in guild ${member.guild.id}`,
+        err instanceof Error ? err : new Error(String(err)),
+      );
+    }
+  }
+
+  const embed = buildWelcomeEmbed(embedConfig, member);
+  if (files.length > 0 && style === "embed") {
+    embed.setImage(`attachment://${attachmentName}`);
+  }
+
+  const payloads = buildSendPayloads({
+    style,
+    content: replaceWelcomeVariables(content, member),
+    embed,
+    files,
+    sendMode: imageSettings.sendMode ?? "with",
+  });
+
+  for (const payload of payloads) {
+    await channel.send(payload).catch((err) =>
+      logger.error(
+        `Failed to send ${label} message in guild ${member.guild.id}`,
+        err instanceof Error ? err : new Error(String(err)),
+      ),
+    );
+  }
+}
