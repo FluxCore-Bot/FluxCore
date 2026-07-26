@@ -1661,8 +1661,12 @@ describe("CommandPalette", () => {
     await open(user);
     await user.keyboard("{ArrowDown}");
     await user.keyboard("{Enter}");
+    // Render order is alphabetical, not insertion order: an empty query scores
+    // every command 0, so buildGroups falls through to localeCompare. The
+    // pages group renders Moderation (p2) then Overview (p1), so one ArrowDown
+    // from the top lands on p1.
     expect(onNavigate).toHaveBeenCalledWith(
-      expect.objectContaining({ id: "p2" }),
+      expect.objectContaining({ id: "p1", title: "Overview" }),
     );
   });
 
