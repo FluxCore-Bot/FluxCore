@@ -311,7 +311,6 @@ Add this top-level `"palette"` key to `packages/i18n/src/locales/en/common.json`
   "placeholder": "Search pages, servers, and actions…",
   "dialogTitle": "Command palette",
   "dialogDescription": "Search for a page, server, or action. Use the arrow keys to move and Enter to open.",
-  "shortcutHint": "Press {{keys}} to open",
   "hint": {
     "navigate": "navigate",
     "select": "open",
@@ -332,12 +331,11 @@ Add this top-level `"palette"` key to `packages/i18n/src/locales/en/common.json`
     "refreshGuildList": "Refresh my server list",
     "backToServers": "Back to all servers",
     "addToServer": "Add the bot to a server",
-    "logout": "Log out",
-    "language": "Switch language to {{language}}"
+    "logout": "Log out"
   },
+  "more": "{{total}} more",
   "empty": "No results for \"{{query}}\"",
-  "resultCount": "{{total}} results",
-  "botMissing": "Bot not added"
+  "resultCount": "{{total}} results"
 }
 ```
 
@@ -720,20 +718,20 @@ describe("serverCommands", () => {
   ];
 
   it("offers only servers the bot is actually in", () => {
-    const cmds = serverCommands({ guilds, t });
+    const cmds = serverCommands({ guilds });
     expect(cmds).toHaveLength(1);
     expect(cmds[0].title).toBe("Etqan");
   });
 
   it("routes to the guild overview", () => {
-    const [first] = serverCommands({ guilds, t });
+    const [first] = serverCommands({ guilds });
     expect(first.to).toBe("/guild/$guildId/overview");
     expect(first.params).toEqual({ guildId: "g1" });
     expect(first.group).toBe("servers");
   });
 
   it("tolerates an empty list", () => {
-    expect(serverCommands({ guilds: [], t })).toEqual([]);
+    expect(serverCommands({ guilds: [] })).toEqual([]);
   });
 });
 
@@ -885,14 +883,10 @@ export function pageCommands(opts: {
 `sources/servers.ts`:
 
 ```ts
-import type { TFunction } from "i18next";
 import type { Guild } from "../../lib/schemas";
 import type { Command } from "../types";
 
-export function serverCommands(opts: {
-  guilds: Guild[];
-  t: TFunction;
-}): Command[] {
+export function serverCommands(opts: { guilds: Guild[] }): Command[] {
   const { guilds } = opts;
 
   // Bot-less guilds are deliberately excluded: every dashboard page for such a
@@ -2144,7 +2138,7 @@ function AppCommandPalette({ guildId }: { guildId: string | undefined }) {
         onRefreshGuildList: () => refreshGuilds.mutate(),
         inviteUrl: botInfo?.inviteUrl ?? null,
       }),
-      ...serverCommands({ guilds: guilds ?? [], t }),
+      ...serverCommands({ guilds: guilds ?? [] }),
     ],
     [guildId, t, can, guilds, botInfo, refreshGuild, refreshGuilds],
   );
