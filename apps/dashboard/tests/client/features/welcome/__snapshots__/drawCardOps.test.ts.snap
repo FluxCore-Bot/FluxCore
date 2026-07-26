@@ -1,0 +1,1975 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`drawCard op-log (browser-safety + draw-order pin) > renders a stable op sequence for "aurora" 1`] = `
+[
+  {
+    "args": [
+      "background",
+      "bg-123.png",
+      0,
+      -159,
+      1024,
+      768,
+    ],
+    "op": "drawImage",
+  },
+  {
+    "args": [
+      "rgba(0, 0, 0, 0.5)",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      0,
+      0,
+      1024,
+      450,
+    ],
+    "op": "fillRect",
+  },
+  {
+    "args": [
+      512,
+      145,
+      0,
+      512,
+      145,
+      100,
+      "radialGradient#0",
+    ],
+    "op": "createRadialGradient",
+  },
+  {
+    "args": [
+      0,
+      "rgba(163, 166, 255, 0.12)",
+    ],
+    "op": "radialGradient#0.addColorStop",
+  },
+  {
+    "args": [
+      1,
+      "rgba(163, 166, 255, 0)",
+    ],
+    "op": "radialGradient#0.addColorStop",
+  },
+  {
+    "args": [
+      "radialGradient#0",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      512,
+      145,
+      100,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [],
+    "op": "fill",
+  },
+  {
+    "args": [
+      262,
+      260,
+      762,
+      260,
+      "linearGradient#1",
+    ],
+    "op": "createLinearGradient",
+  },
+  {
+    "args": [
+      0,
+      "rgba(163, 166, 255, 0)",
+    ],
+    "op": "linearGradient#1.addColorStop",
+  },
+  {
+    "args": [
+      0.5,
+      "rgba(163, 166, 255, 0.4)",
+    ],
+    "op": "linearGradient#1.addColorStop",
+  },
+  {
+    "args": [
+      1,
+      "rgba(163, 166, 255, 0)",
+    ],
+    "op": "linearGradient#1.addColorStop",
+  },
+  {
+    "args": [
+      "linearGradient#1",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      262,
+      260,
+      500,
+      3,
+    ],
+    "op": "fillRect",
+  },
+  {
+    "args": [
+      512,
+      262,
+      0,
+      512,
+      262,
+      250,
+      "radialGradient#2",
+    ],
+    "op": "createRadialGradient",
+  },
+  {
+    "args": [
+      0,
+      "rgba(163, 166, 255, 0.06)",
+    ],
+    "op": "radialGradient#2.addColorStop",
+  },
+  {
+    "args": [
+      1,
+      "rgba(163, 166, 255, 0)",
+    ],
+    "op": "radialGradient#2.addColorStop",
+  },
+  {
+    "args": [
+      "radialGradient#2",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      512,
+      262,
+      250,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [],
+    "op": "fill",
+  },
+  {
+    "args": [
+      512,
+      145,
+      65,
+      512,
+      145,
+      85,
+      "radialGradient#3",
+    ],
+    "op": "createRadialGradient",
+  },
+  {
+    "args": [
+      0,
+      "rgba(163, 166, 255, 0.3)",
+    ],
+    "op": "radialGradient#3.addColorStop",
+  },
+  {
+    "args": [
+      1,
+      "rgba(163, 166, 255, 0)",
+    ],
+    "op": "radialGradient#3.addColorStop",
+  },
+  {
+    "args": [
+      "radialGradient#3",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      512,
+      145,
+      85,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [],
+    "op": "fill",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      512,
+      145,
+      68,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [
+      "#a3a6ff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [],
+    "op": "fill",
+  },
+  {
+    "args": [],
+    "op": "save",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      512,
+      145,
+      65,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [],
+    "op": "clip",
+  },
+  {
+    "args": [
+      "avatar",
+      "https://cdn.example.test/avatar.png",
+      447,
+      80,
+      130,
+      130,
+    ],
+    "op": "drawImage",
+  },
+  {
+    "args": [],
+    "op": "restore",
+  },
+  {
+    "args": [
+      "700 36px "PlayfairDisplay", "Amiri", "NotoColorEmoji"",
+    ],
+    "op": "set font",
+  },
+  {
+    "args": [
+      "#ffffff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      "center",
+    ],
+    "op": "set textAlign",
+  },
+  {
+    "args": [
+      "middle",
+    ],
+    "op": "set textBaseline",
+  },
+  {
+    "args": [
+      "rtl",
+    ],
+    "op": "set direction",
+  },
+  {
+    "args": [
+      "أحمد",
+    ],
+    "op": "measureText",
+  },
+  {
+    "args": [
+      "أحمد",
+      512,
+      295,
+    ],
+    "op": "fillText",
+  },
+  {
+    "args": [
+      "700 18px "Orbitron", "NotoKufiArabic", "NotoColorEmoji"",
+    ],
+    "op": "set font",
+  },
+  {
+    "args": [
+      "#a3a6ff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      "center",
+    ],
+    "op": "set textAlign",
+  },
+  {
+    "args": [
+      "middle",
+    ],
+    "op": "set textBaseline",
+  },
+  {
+    "args": [
+      "rtl",
+    ],
+    "op": "set direction",
+  },
+  {
+    "args": [
+      "أهلاً ahmed في سيرفر الاختبار",
+    ],
+    "op": "measureText",
+  },
+  {
+    "args": [
+      "أهلاً ahmed في سيرفر الاختبار",
+      512,
+      340,
+    ],
+    "op": "fillText",
+  },
+]
+`;
+
+exports[`drawCard op-log (browser-safety + draw-order pin) > renders a stable op sequence for "elegant" 1`] = `
+[
+  {
+    "args": [
+      "background",
+      "bg-123.png",
+      0,
+      -184,
+      1024,
+      768,
+    ],
+    "op": "drawImage",
+  },
+  {
+    "args": [
+      "rgba(0, 0, 0, 0.5)",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      0,
+      0,
+      1024,
+      400,
+    ],
+    "op": "fillRect",
+  },
+  {
+    "args": [
+      "rgba(163, 166, 255, 0.25)",
+    ],
+    "op": "set strokeStyle",
+  },
+  {
+    "args": [
+      1,
+    ],
+    "op": "set lineWidth",
+  },
+  {
+    "args": [
+      30,
+      30,
+      964,
+      340,
+    ],
+    "op": "strokeRect",
+  },
+  {
+    "args": [
+      "rgba(163, 166, 255, 0.3)",
+    ],
+    "op": "set strokeStyle",
+  },
+  {
+    "args": [
+      1,
+    ],
+    "op": "set lineWidth",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      412,
+      205,
+    ],
+    "op": "moveTo",
+  },
+  {
+    "args": [
+      612,
+      205,
+    ],
+    "op": "lineTo",
+  },
+  {
+    "args": [],
+    "op": "stroke",
+  },
+  {
+    "args": [
+      "rgba(163, 166, 255, 0.2)",
+    ],
+    "op": "set strokeStyle",
+  },
+  {
+    "args": [
+      1,
+    ],
+    "op": "set lineWidth",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      362,
+      310,
+    ],
+    "op": "moveTo",
+  },
+  {
+    "args": [
+      662,
+      310,
+    ],
+    "op": "lineTo",
+  },
+  {
+    "args": [],
+    "op": "stroke",
+  },
+  {
+    "args": [
+      512,
+      130,
+      48,
+      512,
+      130,
+      68,
+      "radialGradient#0",
+    ],
+    "op": "createRadialGradient",
+  },
+  {
+    "args": [
+      0,
+      "rgba(163, 166, 255, 0.3)",
+    ],
+    "op": "radialGradient#0.addColorStop",
+  },
+  {
+    "args": [
+      1,
+      "rgba(163, 166, 255, 0)",
+    ],
+    "op": "radialGradient#0.addColorStop",
+  },
+  {
+    "args": [
+      "radialGradient#0",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      512,
+      130,
+      68,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [],
+    "op": "fill",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      512,
+      130,
+      51,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [
+      "#a3a6ff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [],
+    "op": "fill",
+  },
+  {
+    "args": [],
+    "op": "save",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      512,
+      130,
+      48,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [],
+    "op": "clip",
+  },
+  {
+    "args": [
+      "avatar",
+      "https://cdn.example.test/avatar.png",
+      464,
+      82,
+      96,
+      96,
+    ],
+    "op": "drawImage",
+  },
+  {
+    "args": [],
+    "op": "restore",
+  },
+  {
+    "args": [
+      "700 32px "PlayfairDisplay", "Amiri", "NotoColorEmoji"",
+    ],
+    "op": "set font",
+  },
+  {
+    "args": [
+      "#ffffff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      "center",
+    ],
+    "op": "set textAlign",
+  },
+  {
+    "args": [
+      "middle",
+    ],
+    "op": "set textBaseline",
+  },
+  {
+    "args": [
+      "rtl",
+    ],
+    "op": "set direction",
+  },
+  {
+    "args": [
+      "أحمد",
+    ],
+    "op": "measureText",
+  },
+  {
+    "args": [
+      "أحمد",
+      512,
+      240,
+    ],
+    "op": "fillText",
+  },
+  {
+    "args": [
+      "700 16px "Orbitron", "NotoKufiArabic", "NotoColorEmoji"",
+    ],
+    "op": "set font",
+  },
+  {
+    "args": [
+      "#a3a6ff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      "center",
+    ],
+    "op": "set textAlign",
+  },
+  {
+    "args": [
+      "middle",
+    ],
+    "op": "set textBaseline",
+  },
+  {
+    "args": [
+      "rtl",
+    ],
+    "op": "set direction",
+  },
+  {
+    "args": [
+      "أهلاً ahmed في سيرفر الاختبار",
+    ],
+    "op": "measureText",
+  },
+  {
+    "args": [
+      "أهلاً ahmed في سيرفر الاختبار",
+      512,
+      280,
+    ],
+    "op": "fillText",
+  },
+]
+`;
+
+exports[`drawCard op-log (browser-safety + draw-order pin) > renders a stable op sequence for "horizon" 1`] = `
+[
+  {
+    "args": [
+      "background",
+      "bg-123.png",
+      0,
+      -159,
+      1024,
+      768,
+    ],
+    "op": "drawImage",
+  },
+  {
+    "args": [
+      "rgba(0, 0, 0, 0.5)",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      0,
+      0,
+      1024,
+      450,
+    ],
+    "op": "fillRect",
+  },
+  {
+    "args": [
+      380,
+      140,
+      380,
+      310,
+      "linearGradient#0",
+    ],
+    "op": "createLinearGradient",
+  },
+  {
+    "args": [
+      0,
+      "rgba(163, 166, 255, 0)",
+    ],
+    "op": "linearGradient#0.addColorStop",
+  },
+  {
+    "args": [
+      0.5,
+      "rgba(163, 166, 255, 0.6)",
+    ],
+    "op": "linearGradient#0.addColorStop",
+  },
+  {
+    "args": [
+      1,
+      "rgba(163, 166, 255, 0)",
+    ],
+    "op": "linearGradient#0.addColorStop",
+  },
+  {
+    "args": [
+      "linearGradient#0",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      380,
+      140,
+      3,
+      170,
+    ],
+    "op": "fillRect",
+  },
+  {
+    "args": [
+      "rgba(163, 166, 255, 0.3)",
+    ],
+    "op": "set strokeStyle",
+  },
+  {
+    "args": [
+      1,
+    ],
+    "op": "set lineWidth",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      620,
+      270,
+    ],
+    "op": "moveTo",
+  },
+  {
+    "args": [
+      950,
+      270,
+    ],
+    "op": "lineTo",
+  },
+  {
+    "args": [],
+    "op": "stroke",
+  },
+  {
+    "args": [
+      180,
+      225,
+      70,
+      180,
+      225,
+      90,
+      "radialGradient#1",
+    ],
+    "op": "createRadialGradient",
+  },
+  {
+    "args": [
+      0,
+      "rgba(163, 166, 255, 0.3)",
+    ],
+    "op": "radialGradient#1.addColorStop",
+  },
+  {
+    "args": [
+      1,
+      "rgba(163, 166, 255, 0)",
+    ],
+    "op": "radialGradient#1.addColorStop",
+  },
+  {
+    "args": [
+      "radialGradient#1",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      180,
+      225,
+      90,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [],
+    "op": "fill",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      180,
+      225,
+      73,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [
+      "#a3a6ff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [],
+    "op": "fill",
+  },
+  {
+    "args": [],
+    "op": "save",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      180,
+      225,
+      70,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [],
+    "op": "clip",
+  },
+  {
+    "args": [
+      "avatar",
+      "https://cdn.example.test/avatar.png",
+      110,
+      155,
+      140,
+      140,
+    ],
+    "op": "drawImage",
+  },
+  {
+    "args": [],
+    "op": "restore",
+  },
+  {
+    "args": [
+      "700 34px "PlayfairDisplay", "Amiri", "NotoColorEmoji"",
+    ],
+    "op": "set font",
+  },
+  {
+    "args": [
+      "#ffffff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      "left",
+    ],
+    "op": "set textAlign",
+  },
+  {
+    "args": [
+      "middle",
+    ],
+    "op": "set textBaseline",
+  },
+  {
+    "args": [
+      "rtl",
+    ],
+    "op": "set direction",
+  },
+  {
+    "args": [
+      "أحمد",
+    ],
+    "op": "measureText",
+  },
+  {
+    "args": [
+      "أحمد",
+      620,
+      195,
+    ],
+    "op": "fillText",
+  },
+  {
+    "args": [
+      "700 18px "Orbitron", "NotoKufiArabic", "NotoColorEmoji"",
+    ],
+    "op": "set font",
+  },
+  {
+    "args": [
+      "#a3a6ff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      "left",
+    ],
+    "op": "set textAlign",
+  },
+  {
+    "args": [
+      "middle",
+    ],
+    "op": "set textBaseline",
+  },
+  {
+    "args": [
+      "rtl",
+    ],
+    "op": "set direction",
+  },
+  {
+    "args": [
+      "أهلاً ahmed في سيرفر الاختبار",
+    ],
+    "op": "measureText",
+  },
+  {
+    "args": [
+      "أهلاً ahmed في سيرفر الاختبار",
+      620,
+      240,
+    ],
+    "op": "fillText",
+  },
+]
+`;
+
+exports[`drawCard op-log (browser-safety + draw-order pin) > renders a stable op sequence for "minimal" 1`] = `
+[
+  {
+    "args": [
+      "background",
+      "bg-123.png",
+      0,
+      -209,
+      1024,
+      768,
+    ],
+    "op": "drawImage",
+  },
+  {
+    "args": [
+      "rgba(0, 0, 0, 0.5)",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      0,
+      0,
+      1024,
+      350,
+    ],
+    "op": "fillRect",
+  },
+  {
+    "args": [
+      "rgba(163, 166, 255, 0.15)",
+    ],
+    "op": "set strokeStyle",
+  },
+  {
+    "args": [
+      1,
+    ],
+    "op": "set lineWidth",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      210,
+      225,
+    ],
+    "op": "moveTo",
+  },
+  {
+    "args": [
+      900,
+      225,
+    ],
+    "op": "lineTo",
+  },
+  {
+    "args": [],
+    "op": "stroke",
+  },
+  {
+    "args": [
+      120,
+      175,
+      40,
+      120,
+      175,
+      60,
+      "radialGradient#0",
+    ],
+    "op": "createRadialGradient",
+  },
+  {
+    "args": [
+      0,
+      "rgba(163, 166, 255, 0.3)",
+    ],
+    "op": "radialGradient#0.addColorStop",
+  },
+  {
+    "args": [
+      1,
+      "rgba(163, 166, 255, 0)",
+    ],
+    "op": "radialGradient#0.addColorStop",
+  },
+  {
+    "args": [
+      "radialGradient#0",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      120,
+      175,
+      60,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [],
+    "op": "fill",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      120,
+      175,
+      43,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [
+      "#a3a6ff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [],
+    "op": "fill",
+  },
+  {
+    "args": [],
+    "op": "save",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      120,
+      175,
+      40,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [],
+    "op": "clip",
+  },
+  {
+    "args": [
+      "avatar",
+      "https://cdn.example.test/avatar.png",
+      80,
+      135,
+      80,
+      80,
+    ],
+    "op": "drawImage",
+  },
+  {
+    "args": [],
+    "op": "restore",
+  },
+  {
+    "args": [
+      "700 28px "PlayfairDisplay", "Amiri", "NotoColorEmoji"",
+    ],
+    "op": "set font",
+  },
+  {
+    "args": [
+      "#ffffff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      "left",
+    ],
+    "op": "set textAlign",
+  },
+  {
+    "args": [
+      "middle",
+    ],
+    "op": "set textBaseline",
+  },
+  {
+    "args": [
+      "rtl",
+    ],
+    "op": "set direction",
+  },
+  {
+    "args": [
+      "أحمد",
+    ],
+    "op": "measureText",
+  },
+  {
+    "args": [
+      "أحمد",
+      210,
+      155,
+    ],
+    "op": "fillText",
+  },
+  {
+    "args": [
+      "700 16px "Orbitron", "NotoKufiArabic", "NotoColorEmoji"",
+    ],
+    "op": "set font",
+  },
+  {
+    "args": [
+      "#a3a6ff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      "left",
+    ],
+    "op": "set textAlign",
+  },
+  {
+    "args": [
+      "middle",
+    ],
+    "op": "set textBaseline",
+  },
+  {
+    "args": [
+      "rtl",
+    ],
+    "op": "set direction",
+  },
+  {
+    "args": [
+      "أهلاً ahmed في سيرفر الاختبار",
+    ],
+    "op": "measureText",
+  },
+  {
+    "args": [
+      "أهلاً ahmed في سيرفر الاختبار",
+      210,
+      195,
+    ],
+    "op": "fillText",
+  },
+]
+`;
+
+exports[`drawCard op-log (browser-safety + draw-order pin) > renders a stable op sequence for "neon" 1`] = `
+[
+  {
+    "args": [
+      "background",
+      "bg-123.png",
+      0,
+      -159,
+      1024,
+      768,
+    ],
+    "op": "drawImage",
+  },
+  {
+    "args": [
+      "rgba(0, 0, 0, 0.5)",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      0,
+      0,
+      1024,
+      450,
+    ],
+    "op": "fillRect",
+  },
+  {
+    "args": [
+      "rgba(163, 166, 255, 0.5)",
+    ],
+    "op": "set strokeStyle",
+  },
+  {
+    "args": [
+      2,
+    ],
+    "op": "set lineWidth",
+  },
+  {
+    "args": [
+      20,
+      20,
+      984,
+      410,
+    ],
+    "op": "strokeRect",
+  },
+  {
+    "args": [
+      "rgba(163, 166, 255, 0.8)",
+    ],
+    "op": "set strokeStyle",
+  },
+  {
+    "args": [
+      3,
+    ],
+    "op": "set lineWidth",
+  },
+  {
+    "args": [
+      "round",
+    ],
+    "op": "set lineCap",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      15,
+      55,
+    ],
+    "op": "moveTo",
+  },
+  {
+    "args": [
+      15,
+      15,
+    ],
+    "op": "lineTo",
+  },
+  {
+    "args": [
+      55,
+      15,
+    ],
+    "op": "lineTo",
+  },
+  {
+    "args": [],
+    "op": "stroke",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      969,
+      15,
+    ],
+    "op": "moveTo",
+  },
+  {
+    "args": [
+      1009,
+      15,
+    ],
+    "op": "lineTo",
+  },
+  {
+    "args": [
+      1009,
+      55,
+    ],
+    "op": "lineTo",
+  },
+  {
+    "args": [],
+    "op": "stroke",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      15,
+      395,
+    ],
+    "op": "moveTo",
+  },
+  {
+    "args": [
+      15,
+      435,
+    ],
+    "op": "lineTo",
+  },
+  {
+    "args": [
+      55,
+      435,
+    ],
+    "op": "lineTo",
+  },
+  {
+    "args": [],
+    "op": "stroke",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      969,
+      435,
+    ],
+    "op": "moveTo",
+  },
+  {
+    "args": [
+      1009,
+      435,
+    ],
+    "op": "lineTo",
+  },
+  {
+    "args": [
+      1009,
+      395,
+    ],
+    "op": "lineTo",
+  },
+  {
+    "args": [],
+    "op": "stroke",
+  },
+  {
+    "args": [
+      "butt",
+    ],
+    "op": "set lineCap",
+  },
+  {
+    "args": [
+      512,
+      155,
+      0,
+      512,
+      155,
+      80,
+      "radialGradient#0",
+    ],
+    "op": "createRadialGradient",
+  },
+  {
+    "args": [
+      0,
+      "rgba(163, 166, 255, 0.15)",
+    ],
+    "op": "radialGradient#0.addColorStop",
+  },
+  {
+    "args": [
+      1,
+      "rgba(163, 166, 255, 0)",
+    ],
+    "op": "radialGradient#0.addColorStop",
+  },
+  {
+    "args": [
+      "radialGradient#0",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      512,
+      155,
+      80,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [],
+    "op": "fill",
+  },
+  {
+    "args": [
+      512,
+      155,
+      60,
+      512,
+      155,
+      80,
+      "radialGradient#1",
+    ],
+    "op": "createRadialGradient",
+  },
+  {
+    "args": [
+      0,
+      "rgba(163, 166, 255, 0.3)",
+    ],
+    "op": "radialGradient#1.addColorStop",
+  },
+  {
+    "args": [
+      1,
+      "rgba(163, 166, 255, 0)",
+    ],
+    "op": "radialGradient#1.addColorStop",
+  },
+  {
+    "args": [
+      "radialGradient#1",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      512,
+      155,
+      80,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [],
+    "op": "fill",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      512,
+      155,
+      63,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [
+      "#a3a6ff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [],
+    "op": "fill",
+  },
+  {
+    "args": [],
+    "op": "save",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      512,
+      155,
+      60,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [],
+    "op": "clip",
+  },
+  {
+    "args": [
+      "avatar",
+      "https://cdn.example.test/avatar.png",
+      452,
+      95,
+      120,
+      120,
+    ],
+    "op": "drawImage",
+  },
+  {
+    "args": [],
+    "op": "restore",
+  },
+  {
+    "args": [
+      "700 40px "PlayfairDisplay", "Amiri", "NotoColorEmoji"",
+    ],
+    "op": "set font",
+  },
+  {
+    "args": [
+      "#ffffff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      "center",
+    ],
+    "op": "set textAlign",
+  },
+  {
+    "args": [
+      "middle",
+    ],
+    "op": "set textBaseline",
+  },
+  {
+    "args": [
+      "rtl",
+    ],
+    "op": "set direction",
+  },
+  {
+    "args": [
+      "أحمد",
+    ],
+    "op": "measureText",
+  },
+  {
+    "args": [
+      "أحمد",
+      512,
+      300,
+    ],
+    "op": "fillText",
+  },
+  {
+    "args": [
+      "700 18px "Orbitron", "NotoKufiArabic", "NotoColorEmoji"",
+    ],
+    "op": "set font",
+  },
+  {
+    "args": [
+      "#a3a6ff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      "center",
+    ],
+    "op": "set textAlign",
+  },
+  {
+    "args": [
+      "middle",
+    ],
+    "op": "set textBaseline",
+  },
+  {
+    "args": [
+      "rtl",
+    ],
+    "op": "set direction",
+  },
+  {
+    "args": [
+      "أهلاً ahmed في سيرفر الاختبار",
+    ],
+    "op": "measureText",
+  },
+  {
+    "args": [
+      "أهلاً ahmed في سيرفر الاختبار",
+      512,
+      350,
+    ],
+    "op": "fillText",
+  },
+]
+`;
+
+exports[`drawCard op-log (browser-safety + draw-order pin) > renders a stable op sequence for "starter" 1`] = `
+[
+  {
+    "args": [
+      "background",
+      "bg-123.png",
+      0,
+      -159,
+      1024,
+      768,
+    ],
+    "op": "drawImage",
+  },
+  {
+    "args": [
+      "rgba(0, 0, 0, 0.5)",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      0,
+      0,
+      1024,
+      450,
+    ],
+    "op": "fillRect",
+  },
+  {
+    "args": [
+      "rgba(163, 166, 255, 0.4)",
+    ],
+    "op": "set strokeStyle",
+  },
+  {
+    "args": [
+      2,
+    ],
+    "op": "set lineWidth",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      312,
+      258,
+    ],
+    "op": "moveTo",
+  },
+  {
+    "args": [
+      712,
+      258,
+    ],
+    "op": "lineTo",
+  },
+  {
+    "args": [],
+    "op": "stroke",
+  },
+  {
+    "args": [
+      512,
+      150,
+      64,
+      512,
+      150,
+      84,
+      "radialGradient#0",
+    ],
+    "op": "createRadialGradient",
+  },
+  {
+    "args": [
+      0,
+      "rgba(163, 166, 255, 0.3)",
+    ],
+    "op": "radialGradient#0.addColorStop",
+  },
+  {
+    "args": [
+      1,
+      "rgba(163, 166, 255, 0)",
+    ],
+    "op": "radialGradient#0.addColorStop",
+  },
+  {
+    "args": [
+      "radialGradient#0",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      512,
+      150,
+      84,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [],
+    "op": "fill",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      512,
+      150,
+      67,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [
+      "#a3a6ff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [],
+    "op": "fill",
+  },
+  {
+    "args": [],
+    "op": "save",
+  },
+  {
+    "args": [],
+    "op": "beginPath",
+  },
+  {
+    "args": [
+      512,
+      150,
+      64,
+      0,
+      6.283185307179586,
+    ],
+    "op": "arc",
+  },
+  {
+    "args": [],
+    "op": "clip",
+  },
+  {
+    "args": [
+      "avatar",
+      "https://cdn.example.test/avatar.png",
+      448,
+      86,
+      128,
+      128,
+    ],
+    "op": "drawImage",
+  },
+  {
+    "args": [],
+    "op": "restore",
+  },
+  {
+    "args": [
+      "700 36px "PlayfairDisplay", "Amiri", "NotoColorEmoji"",
+    ],
+    "op": "set font",
+  },
+  {
+    "args": [
+      "#ffffff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      "center",
+    ],
+    "op": "set textAlign",
+  },
+  {
+    "args": [
+      "middle",
+    ],
+    "op": "set textBaseline",
+  },
+  {
+    "args": [
+      "rtl",
+    ],
+    "op": "set direction",
+  },
+  {
+    "args": [
+      "أحمد",
+    ],
+    "op": "measureText",
+  },
+  {
+    "args": [
+      "أحمد",
+      512,
+      290,
+    ],
+    "op": "fillText",
+  },
+  {
+    "args": [
+      "700 20px "Orbitron", "NotoKufiArabic", "NotoColorEmoji"",
+    ],
+    "op": "set font",
+  },
+  {
+    "args": [
+      "#a3a6ff",
+    ],
+    "op": "set fillStyle",
+  },
+  {
+    "args": [
+      "center",
+    ],
+    "op": "set textAlign",
+  },
+  {
+    "args": [
+      "middle",
+    ],
+    "op": "set textBaseline",
+  },
+  {
+    "args": [
+      "rtl",
+    ],
+    "op": "set direction",
+  },
+  {
+    "args": [
+      "أهلاً ahmed في سيرفر الاختبار",
+    ],
+    "op": "measureText",
+  },
+  {
+    "args": [
+      "أهلاً ahmed في سيرفر الاختبار",
+      512,
+      335,
+    ],
+    "op": "fillText",
+  },
+]
+`;
