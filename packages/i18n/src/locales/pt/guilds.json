@@ -6,5 +6,16 @@
     "title": "Nenhum servidor encontrado",
     "description": "Certifique-se de que o bot esta adicionado a um servidor onde tem a permissao Gerir servidor."
   },
-  "refresh": "Atualizar servidores"
+  "refresh": "Atualizar servidores",
+  "badge": {
+    "botNotAdded": "Bot não adicionado"
+  },
+  "addBot": "Adicionar FluxCore",
+  "addBotTo": "Adicionar FluxCore a {{name}}",
+  "search": {
+    "placeholder": "Pesquisar servidores...",
+    "noResults": "Nenhum servidor corresponde a \"{{query}}\".",
+    "resultCount_one": "{{count}} servidor encontrado",
+    "resultCount_other": "{{count}} servidores encontrados"
+  }
 }

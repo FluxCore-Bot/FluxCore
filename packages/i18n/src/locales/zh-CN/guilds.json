@@ -6,5 +6,16 @@
     "title": "未找到服务器",
     "description": "请确保机器人已添加到服务器，且您在该服务器拥有管理服务器权限。"
   },
-  "refresh": "刷新服务器"
+  "refresh": "刷新服务器",
+  "badge": {
+    "botNotAdded": "机器人未添加"
+  },
+  "addBot": "添加 FluxCore",
+  "addBotTo": "将 FluxCore 添加到 {{name}}",
+  "search": {
+    "placeholder": "搜索服务器...",
+    "noResults": "没有与“{{query}}”匹配的服务器。",
+    "resultCount_one": "找到 {{count}} 个服务器",
+    "resultCount_other": "找到 {{count}} 个服务器"
+  }
 }

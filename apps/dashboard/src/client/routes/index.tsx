@@ -1,8 +1,10 @@
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../shared/hooks/useAuth";
 import { useGuilds, useRefreshGuilds } from "../shared/hooks/useGuilds";
 import { useBotInfo } from "../shared/hooks/useBotInfo";
 import { GuildCard } from "../shared/components/GuildCard";
+import { GuildSearch, filterGuilds } from "../shared/components/GuildSearch";
 import { EmptyState } from "../shared/components/EmptyState";
 import { Icon } from "../shared/components/Icon";
 import { LandingPage } from "../features/landing/LandingPage";
@@ -47,6 +49,12 @@ export function IndexPage() {
   const { data: guilds, isLoading: guildsLoading } = useGuilds(!!user);
   const refreshGuilds = useRefreshGuilds();
   const { data: botInfo } = useBotInfo();
+  const [query, setQuery] = useState("");
+
+  const filtered = useMemo(
+    () => filterGuilds(guilds ?? [], query),
+    [guilds, query],
+  );
 
   if (authLoading) {
     return (
@@ -131,11 +139,27 @@ export function IndexPage() {
         </div>
       </header>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {guilds.map((guild) => (
-          <GuildCard key={guild.id} guild={guild} />
-        ))}
-      </div>
+      <GuildSearch
+        value={query}
+        onChange={setQuery}
+        resultCount={filtered.length}
+      />
+
+      {filtered.length === 0 ? (
+        <p className="py-12 text-center text-text-muted" data-testid="guild-search-empty">
+          {t("search.noResults", { query: query.trim() })}
+        </p>
+      ) : (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {filtered.map((guild) => (
+            <GuildCard
+              key={guild.id}
+              guild={guild}
+              inviteUrl={botInfo?.inviteUrl}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

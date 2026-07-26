@@ -6,5 +6,16 @@
     "title": "কোনো সার্ভার পাওয়া যায়নি",
     "description": "নিশ্চিত করুন যে বটটি এমন একটি সার্ভারে যোগ করা হয়েছে যেখানে আপনার সার্ভার পরিচালনার অনুমতি আছে।"
   },
-  "refresh": "Refresh servers"
+  "refresh": "Refresh servers",
+  "badge": {
+    "botNotAdded": "Bot not added"
+  },
+  "addBot": "Add FluxCore",
+  "addBotTo": "Add FluxCore to {{name}}",
+  "search": {
+    "placeholder": "Search servers...",
+    "noResults": "No servers match \"{{query}}\".",
+    "resultCount_one": "{{count}} server found",
+    "resultCount_other": "{{count}} servers found"
+  }
 }

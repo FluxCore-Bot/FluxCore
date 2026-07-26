@@ -6,5 +6,16 @@
     "title": "Geen servers gevonden",
     "description": "Zorg ervoor dat de bot is toegevoegd aan een server waar je de toestemming Server beheren hebt."
   },
-  "refresh": "Refresh servers"
+  "refresh": "Refresh servers",
+  "badge": {
+    "botNotAdded": "Bot not added"
+  },
+  "addBot": "Add FluxCore",
+  "addBotTo": "Add FluxCore to {{name}}",
+  "search": {
+    "placeholder": "Search servers...",
+    "noResults": "No servers match \"{{query}}\".",
+    "resultCount_one": "{{count}} server found",
+    "resultCount_other": "{{count}} servers found"
+  }
 }

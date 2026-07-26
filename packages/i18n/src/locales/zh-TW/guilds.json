@@ -6,5 +6,16 @@
     "title": "找不到伺服器",
     "description": "請確認機器人已新增至伺服器，且您擁有管理伺服器權限。"
   },
-  "refresh": "Refresh servers"
+  "refresh": "Refresh servers",
+  "badge": {
+    "botNotAdded": "Bot not added"
+  },
+  "addBot": "Add FluxCore",
+  "addBotTo": "Add FluxCore to {{name}}",
+  "search": {
+    "placeholder": "Search servers...",
+    "noResults": "No servers match \"{{query}}\".",
+    "resultCount_one": "{{count}} server found",
+    "resultCount_other": "{{count}} servers found"
+  }
 }

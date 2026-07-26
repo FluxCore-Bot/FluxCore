@@ -56,6 +56,9 @@ describe("guild routes", () => {
 
   beforeEach(async () => {
     vi.clearAllMocks();
+    // clearAllMocks does not drop implementations, so restore the default
+    // explicitly — otherwise a per-test mockImplementation leaks forward.
+    mockIsBotInGuild.mockResolvedValue(true);
     app = await buildApp();
   });
 
@@ -65,17 +68,17 @@ describe("guild routes", () => {
       expect(res.statusCode).toBe(401);
     });
 
-    it("returns guilds where user has MANAGE_GUILD and bot is present", async () => {
+    it("excludes guilds the user cannot manage, whether or not the bot is there", async () => {
       mockGetSession.mockResolvedValueOnce({
         userId: "user-1",
         username: "testuser",
         guilds: [
           { id: "g1", name: "Guild 1", icon: "abc", permissions: MANAGE_GUILD.toString() },
           { id: "g2", name: "Guild 2", icon: null, permissions: "0" },
-          { id: "g3", name: "Guild 3", icon: "def", permissions: MANAGE_GUILD.toString() },
+          { id: "g3", name: "Guild 3", icon: "def", permissions: "0" },
         ],
       });
-      mockIsBotInGuild.mockResolvedValueOnce(true).mockResolvedValueOnce(false);
+      mockIsBotInGuild.mockResolvedValue(true);
 
       const res = await app.inject({
         method: "GET",
@@ -88,6 +91,59 @@ describe("guild routes", () => {
       expect(guilds).toHaveLength(1);
       expect(guilds[0].id).toBe("g1");
       expect(guilds[0].name).toBe("Guild 1");
+    });
+
+    it("includes manageable guilds the bot is NOT in, flagged botPresent:false", async () => {
+      mockGetSession.mockResolvedValueOnce({
+        userId: "user-1",
+        guilds: [
+          { id: "g1", name: "Has Bot", icon: "abc", permissions: MANAGE_GUILD.toString() },
+          { id: "g2", name: "No Bot", icon: null, permissions: MANAGE_GUILD.toString() },
+        ],
+      });
+      mockIsBotInGuild.mockImplementation(async (id: string) => id === "g1");
+
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/guilds",
+        cookies: { session: app.signCookie("valid-id") },
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(res.json()).toEqual([
+        { id: "g1", name: "Has Bot", icon: "abc", botPresent: true },
+        { id: "g2", name: "No Bot", icon: null, botPresent: false },
+      ]);
+    });
+
+    it("sorts bot-present guilds first, then alphabetically", async () => {
+      mockGetSession.mockResolvedValueOnce({
+        userId: "user-1",
+        guilds: [
+          { id: "g1", name: "Zulu", icon: null, permissions: MANAGE_GUILD.toString() },
+          { id: "g2", name: "Bravo", icon: null, permissions: MANAGE_GUILD.toString() },
+          { id: "g3", name: "Alpha", icon: null, permissions: MANAGE_GUILD.toString() },
+          { id: "g4", name: "Yankee", icon: null, permissions: MANAGE_GUILD.toString() },
+        ],
+      });
+      // Bot is only in Zulu and Yankee.
+      mockIsBotInGuild.mockImplementation(
+        async (id: string) => id === "g1" || id === "g4",
+      );
+
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/guilds",
+        cookies: { session: app.signCookie("valid-id") },
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(res.json().map((g: { name: string }) => g.name)).toEqual([
+        "Yankee",
+        "Zulu",
+        "Alpha",
+        "Bravo",
+      ]);
     });
 
     it("returns guilds where user has only the Administrator permission", async () => {
@@ -178,6 +234,26 @@ describe("guild routes", () => {
       const guilds = res.json();
       expect(guilds).toHaveLength(1);
       expect(guilds[0].id).toBe("g9");
+      expect(guilds[0].botPresent).toBe(true);
+    });
+
+    it("also returns manageable guilds the bot is not in", async () => {
+      mockGetSession.mockResolvedValueOnce({ userId: "user-1", guilds: [] });
+      mockForceRefreshSessionGuilds.mockResolvedValueOnce([
+        { id: "g9", name: "Newly Admin", icon: null, permissions: ADMINISTRATOR.toString() },
+      ]);
+      mockIsBotInGuild.mockResolvedValue(false);
+
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/refresh",
+        cookies: { session: app.signCookie("valid-id") },
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(res.json()).toEqual([
+        { id: "g9", name: "Newly Admin", icon: null, botPresent: false },
+      ]);
     });
   });
 });

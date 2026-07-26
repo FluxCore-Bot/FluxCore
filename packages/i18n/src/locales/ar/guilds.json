@@ -6,5 +6,16 @@
     "title": "لم يتم العثور على سيرفرات",
     "description": "تأكد من إضافة البوت إلى سيرفر لديك فيه صلاحية إدارة السيرفر."
   },
-  "refresh": "تحديث الخوادم"
+  "refresh": "تحديث الخوادم",
+  "badge": {
+    "botNotAdded": "البوت غير مُضاف"
+  },
+  "addBot": "أضف FluxCore",
+  "addBotTo": "أضف FluxCore إلى {{name}}",
+  "search": {
+    "placeholder": "ابحث عن الخوادم...",
+    "noResults": "لا توجد خوادم تطابق \"{{query}}\".",
+    "resultCount_one": "تم العثور على خادم واحد",
+    "resultCount_other": "تم العثور على {{count}} خادم"
+  }
 }

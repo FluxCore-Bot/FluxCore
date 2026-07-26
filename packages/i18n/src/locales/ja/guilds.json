@@ -6,5 +6,16 @@
     "title": "サーバーが見つかりません",
     "description": "Botが追加されており、サーバー管理権限を持つサーバーがあることを確認してください。"
   },
-  "refresh": "サーバーを更新"
+  "refresh": "サーバーを更新",
+  "badge": {
+    "botNotAdded": "Bot未追加"
+  },
+  "addBot": "FluxCoreを追加",
+  "addBotTo": "{{name}} にFluxCoreを追加",
+  "search": {
+    "placeholder": "サーバーを検索...",
+    "noResults": "「{{query}}」に一致するサーバーはありません。",
+    "resultCount_one": "{{count}} 件のサーバーが見つかりました",
+    "resultCount_other": "{{count}} 件のサーバーが見つかりました"
+  }
 }

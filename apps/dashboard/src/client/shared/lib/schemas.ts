@@ -13,6 +13,8 @@ export const GuildSchema = z.object({
   id: z.string(),
   name: z.string(),
   icon: z.string().nullable(),
+  /** False when the user administers the guild but the bot has not been added. */
+  botPresent: z.boolean(),
 });
 export type Guild = z.infer<typeof GuildSchema>;
 

@@ -6,5 +6,16 @@
     "title": "Walang nahanap na mga server",
     "description": "Siguraduhing naidagdag na ang bot sa isang server kung saan mayroon kang pahintulot na Pamahalaan ang Server."
   },
-  "refresh": "Refresh servers"
+  "refresh": "Refresh servers",
+  "badge": {
+    "botNotAdded": "Bot not added"
+  },
+  "addBot": "Add FluxCore",
+  "addBotTo": "Add FluxCore to {{name}}",
+  "search": {
+    "placeholder": "Search servers...",
+    "noResults": "No servers match \"{{query}}\".",
+    "resultCount_one": "{{count}} server found",
+    "resultCount_other": "{{count}} servers found"
+  }
 }

@@ -6,5 +6,16 @@
     "title": "Ez da zerbitzaririk aurkitu",
     "description": "Ziurtatu bot-a gehituta dagoela Zerbitzaria Kudeatu baimena duzun zerbitzari batean."
   },
-  "refresh": "Refresh servers"
+  "refresh": "Refresh servers",
+  "badge": {
+    "botNotAdded": "Bot not added"
+  },
+  "addBot": "Add FluxCore",
+  "addBotTo": "Add FluxCore to {{name}}",
+  "search": {
+    "placeholder": "Search servers...",
+    "noResults": "No servers match \"{{query}}\".",
+    "resultCount_one": "{{count}} server found",
+    "resultCount_other": "{{count}} servers found"
+  }
 }

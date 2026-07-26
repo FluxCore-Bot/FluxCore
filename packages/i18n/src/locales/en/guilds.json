@@ -5,6 +5,17 @@
   "refresh": "Refresh servers",
   "empty": {
     "title": "No servers found",
-    "description": "Make sure the bot is added to a server where you have the Manage Server permission."
+    "description": "Make sure you have the Manage Server permission in at least one Discord server, then refresh."
+  },
+  "badge": {
+    "botNotAdded": "Bot not added"
+  },
+  "addBot": "Add FluxCore",
+  "addBotTo": "Add FluxCore to {{name}}",
+  "search": {
+    "placeholder": "Search servers...",
+    "noResults": "No servers match \"{{query}}\".",
+    "resultCount_one": "{{count}} server found",
+    "resultCount_other": "{{count}} servers found"
   }
 }

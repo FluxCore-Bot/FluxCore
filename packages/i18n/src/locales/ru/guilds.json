@@ -6,5 +6,16 @@
     "title": "Серверы не найдены",
     "description": "Убедитесь, что бот добавлен на сервер, где у вас есть право «Управление сервером»."
   },
-  "refresh": "Обновить серверы"
+  "refresh": "Обновить серверы",
+  "badge": {
+    "botNotAdded": "Бот не добавлен"
+  },
+  "addBot": "Добавить FluxCore",
+  "addBotTo": "Добавить FluxCore в {{name}}",
+  "search": {
+    "placeholder": "Поиск серверов...",
+    "noResults": "Нет серверов, соответствующих \"{{query}}\".",
+    "resultCount_one": "Найден {{count}} сервер",
+    "resultCount_other": "Найдено серверов: {{count}}"
+  }
 }

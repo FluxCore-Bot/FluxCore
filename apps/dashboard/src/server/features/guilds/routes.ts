@@ -7,8 +7,14 @@ import { forceRefreshSessionGuilds, type OAuthGuild } from "../../shared/session
 
 /**
  * Filter the user's OAuth guilds down to the ones they can manage from the
- * dashboard: they own it or have Administrator/Manage Server, AND the bot is
- * present.
+ * dashboard: they own it or have Administrator/Manage Server.
+ *
+ * Guilds the bot has NOT been added to are included, flagged with
+ * `botPresent: false`, so the dashboard can offer a preselected invite for them
+ * instead of hiding them. This grants no access on its own — `requireGuildAdmin`
+ * still rejects guild-scoped requests with `botNotInGuild`.
+ *
+ * Bot-present guilds sort first so the actionable cards lead the grid.
  */
 async function buildManageableGuilds(guilds: OAuthGuild[]) {
   const manageable = guilds.filter(
@@ -23,13 +29,33 @@ async function buildManageableGuilds(guilds: OAuthGuild[]) {
   );
 
   return checks
-    .filter((c) => c.botPresent)
     .map((c) => ({
       id: c.guild.id,
       name: c.guild.name,
       icon: c.guild.icon,
-    }));
+      botPresent: c.botPresent,
+    }))
+    .sort(
+      (a, b) =>
+        Number(b.botPresent) - Number(a.botPresent) ||
+        a.name.localeCompare(b.name),
+    );
 }
+
+const guildListResponseSchema = {
+  200: {
+    type: "array",
+    items: {
+      type: "object",
+      properties: {
+        id: { type: "string" },
+        name: { type: "string" },
+        icon: { type: ["string", "null"] },
+        botPresent: { type: "boolean" },
+      },
+    },
+  },
+};
 
 export function registerGuildRoutes(app: FastifyInstance): void {
   app.get(
@@ -38,19 +64,7 @@ export function registerGuildRoutes(app: FastifyInstance): void {
       preHandler: [requireAuth],
       schema: withDocs(undefined, {
         tag: "Guilds",
-        response: {
-          200: {
-            type: "array",
-            items: {
-              type: "object",
-              properties: {
-                id: { type: "string" },
-                name: { type: "string" },
-                icon: { type: ["string", "null"] },
-              },
-            },
-          },
-        },
+        response: guildListResponseSchema,
       }),
     },
     async (request, reply) => {
@@ -69,19 +83,7 @@ export function registerGuildRoutes(app: FastifyInstance): void {
       config: { rateLimit: { max: 20, timeWindow: "1 minute" } },
       schema: withDocs(undefined, {
         tag: "Guilds",
-        response: {
-          200: {
-            type: "array",
-            items: {
-              type: "object",
-              properties: {
-                id: { type: "string" },
-                name: { type: "string" },
-                icon: { type: ["string", "null"] },
-              },
-            },
-          },
-        },
+        response: guildListResponseSchema,
       }),
     },
     async (request, reply) => {

@@ -6,5 +6,16 @@
     "title": "Keine Server gefunden",
     "description": "Stellen Sie sicher, dass der Bot einem Server hinzugefuegt wurde, auf dem Sie die Berechtigung Server verwalten haben."
   },
-  "refresh": "Server aktualisieren"
+  "refresh": "Server aktualisieren",
+  "badge": {
+    "botNotAdded": "Bot nicht hinzugefügt"
+  },
+  "addBot": "FluxCore hinzufügen",
+  "addBotTo": "FluxCore zu {{name}} hinzufügen",
+  "search": {
+    "placeholder": "Server suchen...",
+    "noResults": "Keine Server gefunden für \"{{query}}\".",
+    "resultCount_one": "{{count}} Server gefunden",
+    "resultCount_other": "{{count}} Server gefunden"
+  }
 }

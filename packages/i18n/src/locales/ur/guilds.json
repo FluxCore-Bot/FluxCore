@@ -6,5 +6,16 @@
     "title": "کوئی سرور نہیں ملا",
     "description": "یقینی بنائیں کہ بوٹ کسی ایسے سرور میں شامل ہے جہاں آپ کے پاس Manage Server کی اجازت ہے۔"
   },
-  "refresh": "سرورز کو تازہ کریں"
+  "refresh": "سرورز کو تازہ کریں",
+  "badge": {
+    "botNotAdded": "بوٹ شامل نہیں ہے"
+  },
+  "addBot": "FluxCore شامل کریں",
+  "addBotTo": "{{name}} میں FluxCore شامل کریں",
+  "search": {
+    "placeholder": "سرورز تلاش کریں...",
+    "noResults": "\"{{query}}\" سے کوئی سرور مماثل نہیں۔",
+    "resultCount_one": "{{count}} سرور ملا",
+    "resultCount_other": "{{count}} سرورز ملے"
+  }
 }
