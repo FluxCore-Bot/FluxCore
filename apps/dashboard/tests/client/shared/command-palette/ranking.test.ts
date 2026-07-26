@@ -15,8 +15,10 @@ describe("normalize", () => {
     expect(normalize("Añadir")).toBe("anadir");
   });
 
-  it("leaves non-Latin scripts intact", () => {
+  it("recomposes precomposed scripts so they round-trip when they have no diacritics", () => {
+    expect(normalize("إشراف")).toBe("إشراف");
     expect(normalize("مرحبا")).toBe("مرحبا");
+    expect(normalize("관리")).toBe("관리");
   });
 });
 
@@ -68,6 +70,18 @@ describe("segment", () => {
       { text: "Role ", match: false },
       { text: "Pan", match: true },
       { text: "els", match: false },
+    ]);
+  });
+
+  it("highlights precomposed scripts on exact match", () => {
+    expect(segment("관리", "관리")).toEqual([
+      { text: "관리", match: true },
+    ]);
+  });
+
+  it("highlights Arabic with precomposed hamza on exact match", () => {
+    expect(segment("إشراف", "إشراف")).toEqual([
+      { text: "إشراف", match: true },
     ]);
   });
 

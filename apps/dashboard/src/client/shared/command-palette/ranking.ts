@@ -16,11 +16,13 @@ export interface Segment {
 
 /**
  * Casefold and strip diacritics so "moderation" finds "Modération". NFD splits
- * a letter into base + combining mark; removing the marks leaves the base.
- * Scripts without combining marks (Arabic, CJK, Hebrew) pass through unchanged.
+ * a letter into base + combining mark; removing the marks leaves the base. NFC
+ * recomposes so precomposed scripts like Korean and Arabic round-trip unchanged
+ * when they have no diacritics. Diacritics (like Latin accents or Arabic matras)
+ * are stripped, and if stripping changed the length, segment() skips highlighting.
  */
 export function normalize(s: string): string {
-  return s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
+  return s.normalize("NFD").replace(/\p{Diacritic}/gu, "").normalize("NFC").toLowerCase();
 }
 
 export function score(query: string, c: Scorable): number | null {
