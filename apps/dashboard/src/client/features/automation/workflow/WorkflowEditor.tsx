@@ -313,6 +313,15 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
   // only reacts to single-node selection so multi-select drags are ignored.
   const handleSelectionChange = useCallback(
     ({ nodes: selectedNodes }: { nodes: Node[]; edges: Edge[] }) => {
+      // The context-menu ring is rendered via `selected: true` too (see the
+      // `selectedNodeId` fallback fed into useWorkflowNodes), so React Flow's
+      // own SelectionListener fires here on a plain right-click. Without this
+      // guard that would open NodeDetailPanel underneath the menu and leave
+      // it open after the menu closes — exactly what subtlety #2 forbids.
+      // Once the menu closes, contextMenuNodeId -> null, the node recomputes
+      // to selected:false, and this fires again with an empty selection,
+      // which the length !== 1 guard below already ignores.
+      if (contextMenu.contextMenuNodeId) return;
       if (selectedNodes.length !== 1) return;
       const node = selectedNodes[0];
       if (node.id === "trigger") {
@@ -324,7 +333,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
         if (!isNaN(index)) setSelectedNode({ type: "action", index });
       }
     },
-    [],
+    [contextMenu.contextMenuNodeId],
   );
 
   /** Validate whether a proposed connection is allowed */
@@ -345,6 +354,12 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
 
   const handleSubmit = useCallback(async () => {
     setError("");
+
+    // The Save button is disabled while `!validation.valid`, but keyboard
+    // submit (Ctrl+S) calls this directly — without this guard it would walk
+    // straight past every validation error, including an entry-less step
+    // graph, and persist it anyway.
+    if (!validation.valid) return;
 
     const effectiveActions = isStepMode
       ? (steps ?? [])
@@ -388,7 +403,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
       const message = err instanceof ApiError ? err.message : t("editor.genericError");
       setError(message);
     }
-  }, [name, eventType, actions, steps, entryStepId, isStepMode, conditions, priority, enabled, rule, createRule, updateRule, onClose, clearDraft, t]);
+  }, [name, eventType, actions, steps, entryStepId, isStepMode, conditions, priority, enabled, rule, createRule, updateRule, onClose, clearDraft, t, validation.valid]);
 
   const handleFitView = useCallback(() => {
     reactFlowInstance.current?.fitView({ padding: 0.3, duration: 300 });
