@@ -80,7 +80,7 @@ Throughout this plan, `pnpm --filter @fluxcore/dashboard test -- <pattern>` is s
 | `apps/dashboard/src/client/shared/command-palette/sources/pages.ts` | Nav registry → page commands |
 | `apps/dashboard/src/client/shared/command-palette/sources/servers.ts` | Guild list → server commands |
 | `apps/dashboard/src/client/shared/command-palette/sources/actions.ts` | Static app-level action commands |
-| `apps/dashboard/src/client/shared/command-palette/useCommandPalette.ts` | Context + global hotkey |
+| `apps/dashboard/src/client/shared/command-palette/useCommandPalette.tsx` | Context + global hotkey |
 | `apps/dashboard/src/client/shared/command-palette/useRecentCommands.ts` | localStorage-backed recents |
 | `apps/dashboard/src/client/shared/command-palette/useCommandSources.ts` | Assembles + ranks + caps groups |
 | `apps/dashboard/src/client/shared/command-palette/CommandRow.tsx` | One result row |
@@ -1061,7 +1061,7 @@ EOF
 ## Task 5: Palette context and global hotkey
 
 **Files:**
-- Create: `apps/dashboard/src/client/shared/command-palette/useCommandPalette.ts`
+- Create: `apps/dashboard/src/client/shared/command-palette/useCommandPalette.tsx`
 - Test: `apps/dashboard/tests/client/shared/command-palette/useCommandPalette.test.tsx`
 
 **Interfaces:**
@@ -1183,7 +1183,7 @@ Expected: FAIL — module not found.
 
 - [ ] **Step 3: Implement**
 
-Create `apps/dashboard/src/client/shared/command-palette/useCommandPalette.ts`:
+Create `apps/dashboard/src/client/shared/command-palette/useCommandPalette.tsx`:
 
 ```ts
 import {
@@ -1259,7 +1259,7 @@ Expected: PASS.
 - [ ] **Step 5: Commit**
 
 ```bash
-git add apps/dashboard/src/client/shared/command-palette/useCommandPalette.ts \
+git add apps/dashboard/src/client/shared/command-palette/useCommandPalette.tsx \
         apps/dashboard/tests/client/shared/command-palette/useCommandPalette.test.tsx
 git commit -m "$(cat <<'EOF'
 feat(palette): add the palette context and global hotkey
