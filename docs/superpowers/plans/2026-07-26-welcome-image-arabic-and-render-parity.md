@@ -2411,94 +2411,158 @@ docker compose --profile bot run --rm bot \
 
 Expected: PASS, 11 tests.
 
-- [ ] **Step 6: Rewrite the welcome send block**
+- [ ] **Step 6: Add the shared deliverer to `send.ts`**
 
-In `apps/bot/src/events/guildMemberAdd.ts`, update the builder import and add the new one:
+The join and leave handlers currently carry two near-identical ~45-line blocks that differ only in field names and the attachment filename. Rather than duplicating that a second time, both call one deliverer.
+
+**This also closes a real bug:** `guildMemberAdd` sanitizes names with `sanitizeDisplayName()` before rendering (the SEC-BOT-03 hardening), but `guildMemberRemove` passes raw values straight to the renderer. Routing both through the deliverer applies the sanitisation uniformly. Commit that fix separately (see Step 10).
+
+Append to `packages/systems/src/welcome/send.ts`:
 
 ```typescript
-import { buildWelcomeEmbed, replaceWelcomeVariables } from "@fluxcore/systems/welcome/builder";
-import { buildSendPayloads } from "@fluxcore/systems/welcome/send";
+import { AttachmentBuilder, type GuildMember, type SendableChannels } from "discord.js";
+import { logger } from "@fluxcore/utils";
+import { buildWelcomeEmbed, replaceWelcomeVariables } from "./builder.js";
+import { generateWelcomeImage, createStorageAdapter, sanitizeDisplayName } from "./image/index.js";
+import type { EmbedConfig, WelcomeImageSettings } from "./types.js";
+
+export interface DeliverOptions {
+  channel: SendableChannels;
+  member: GuildMember;
+  style: MessageStyle;
+  /** Plain-mode text, variables NOT yet substituted. */
+  content: string;
+  embedConfig: EmbedConfig;
+  imageEnabled: boolean;
+  imageSettings: WelcomeImageSettings;
+  /** "welcome.png" or "farewell.png". */
+  attachmentName: string;
+  /** "welcome" or "farewell" — used in log messages only. */
+  label: string;
+}
+
+/**
+ * Render the card (if enabled) and post the message.
+ *
+ * Shared by guildMemberAdd and guildMemberRemove so the two paths cannot
+ * drift — notably in name sanitisation, which the farewell path previously
+ * skipped entirely.
+ */
+export async function deliverWelcomeMessage(options: DeliverOptions): Promise<void> {
+  const {
+    channel, member, style, content, embedConfig,
+    imageEnabled, imageSettings, attachmentName, label,
+  } = options;
+
+  const files: AttachmentBuilder[] = [];
+
+  if (imageEnabled) {
+    try {
+      const imageBuffer = await generateWelcomeImage({
+        settings: imageSettings,
+        member: {
+          username: sanitizeDisplayName(member.user.username, 32),
+          displayName: sanitizeDisplayName(member.displayName, 80),
+          avatarUrl: member.user.displayAvatarURL({ extension: "png", size: 256 }),
+        },
+        guild: {
+          name: sanitizeDisplayName(member.guild.name, 80),
+          iconUrl: member.guild.iconURL({ size: 256 }) ?? undefined,
+          memberCount: member.guild.memberCount,
+        },
+        storage: createStorageAdapter(),
+      });
+      files.push(new AttachmentBuilder(imageBuffer, { name: attachmentName }));
+    } catch (err) {
+      logger.error(
+        `Failed to generate ${label} image in guild ${member.guild.id}`,
+        err instanceof Error ? err : new Error(String(err)),
+      );
+    }
+  }
+
+  const embed = buildWelcomeEmbed(embedConfig, member);
+  if (files.length > 0 && style === "embed") {
+    embed.setImage(`attachment://${attachmentName}`);
+  }
+
+  const payloads = buildSendPayloads({
+    style,
+    content: replaceWelcomeVariables(content, member),
+    embed,
+    files,
+    sendMode: imageSettings.sendMode ?? "with",
+  });
+
+  for (const payload of payloads) {
+    await channel.send(payload).catch((err) =>
+      logger.error(
+        `Failed to send ${label} message in guild ${member.guild.id}`,
+        err instanceof Error ? err : new Error(String(err)),
+      ),
+    );
+  }
+}
 ```
 
-Then replace the whole `// Welcome channel message` block (lines 158-209) with:
+Add the exports entry for `./welcome/send` (Step 4) if not already present — one entry covers both functions.
+
+- [ ] **Step 7: Call the deliverer from both events**
+
+In `apps/bot/src/events/guildMemberAdd.ts`, replace the whole `// Welcome channel message` block (lines 158-209) with:
 
 ```typescript
     // Welcome channel message
     if (welcomeConfig.welcomeEnabled && welcomeConfig.welcomeChannelId) {
       const channel = member.guild.channels.cache.get(welcomeConfig.welcomeChannelId);
-      if (channel?.isTextBased()) {
-        const files: AttachmentBuilder[] = [];
-
-        // Generate welcome image if enabled
-        if (welcomeConfig.welcomeImageEnabled) {
-          try {
-            const storage = createStorageAdapter();
-            const safeUsername = sanitizeDisplayName(member.user.username, 32);
-            const safeDisplayName = sanitizeDisplayName(member.displayName, 80);
-            const safeGuildName = sanitizeDisplayName(member.guild.name, 80);
-            const imageBuffer = await generateWelcomeImage({
-              settings: welcomeConfig.welcomeImageConfig,
-              member: {
-                username: safeUsername,
-                displayName: safeDisplayName,
-                avatarUrl: member.user.displayAvatarURL({ extension: "png", size: 256 }),
-              },
-              guild: {
-                name: safeGuildName,
-                iconUrl: member.guild.iconURL({ size: 256 }) ?? undefined,
-                memberCount: member.guild.memberCount,
-              },
-              storage,
-            });
-            files.push(new AttachmentBuilder(imageBuffer, { name: "welcome.png" }));
-          } catch (err) {
-            logger.error(
-              `Failed to generate welcome image in guild ${member.guild.id}`,
-              err instanceof Error ? err : new Error(String(err)),
-            );
-          }
-        }
-
-        const embed = buildWelcomeEmbed(welcomeConfig.welcomeMessage, member);
-        if (files.length > 0 && welcomeConfig.welcomeMessageStyle === "embed") {
-          embed.setImage("attachment://welcome.png");
-        }
-
-        const payloads = buildSendPayloads({
+      if (channel?.isTextBased() && channel.isSendable()) {
+        await deliverWelcomeMessage({
+          channel,
+          member,
           style: welcomeConfig.welcomeMessageStyle,
-          content: replaceWelcomeVariables(welcomeConfig.welcomeContent, member),
-          embed,
-          files,
-          sendMode: welcomeConfig.welcomeImageConfig.sendMode ?? "with",
+          content: welcomeConfig.welcomeContent,
+          embedConfig: welcomeConfig.welcomeMessage,
+          imageEnabled: welcomeConfig.welcomeImageEnabled,
+          imageSettings: welcomeConfig.welcomeImageConfig,
+          attachmentName: "welcome.png",
+          label: "welcome",
         });
-
-        for (const payload of payloads) {
-          await channel.send(payload).catch((err) =>
-            logger.error(
-              `Failed to send welcome message in guild ${member.guild.id}`,
-              err instanceof Error ? err : new Error(String(err)),
-            ),
-          );
-        }
       }
     }
 ```
 
-- [ ] **Step 7: Apply the identical change to the farewell path**
+Replace the now-unused imports (`buildWelcomeEmbed`, `generateWelcomeImage`, `createStorageAdapter`, `sanitizeDisplayName`, `AttachmentBuilder`) with:
 
-In `apps/bot/src/events/guildMemberRemove.ts`, make the same transformation to the farewell send block, substituting throughout:
+```typescript
+import { deliverWelcomeMessage } from "@fluxcore/systems/welcome/send";
+```
 
-- `welcomeConfig.welcomeMessageStyle` → `welcomeConfig.farewellMessageStyle`
-- `welcomeConfig.welcomeContent` → `welcomeConfig.farewellContent`
-- `welcomeConfig.welcomeMessage` → `welcomeConfig.farewellMessage`
-- `welcomeConfig.welcomeImageEnabled` → `welcomeConfig.farewellImageEnabled`
-- `welcomeConfig.welcomeImageConfig` → `welcomeConfig.farewellImageConfig`
-- `"welcome.png"` → `"farewell.png"` (and `attachment://farewell.png`)
-- log message `welcome` → `farewell`
+Keep `DiscordAPIError` — the auto-role block above still uses it. Remove only imports that are genuinely no longer referenced; let `pnpm typecheck` confirm.
 
-- [ ] **Step 8: Verify the variable substitution used by plain content**
+In `apps/bot/src/events/guildMemberRemove.ts`, replace the farewell block (lines 43-91) with the same call, substituting `farewell*` config fields, `"farewell.png"`, and `label: "farewell"`. The `member as GuildMember` casts that block used disappear along with the inlined logic — pass the already-cast member once.
 
-Add to `packages/systems/tests/unit/welcome.test.ts`:
+- [ ] **Step 8: Prove both paths sanitize**
+
+Add to `packages/systems/tests/unit/welcome/send.test.ts`:
+
+```typescript
+describe("deliverWelcomeMessage sanitisation", () => {
+  it("sanitizes names on BOTH the welcome and farewell paths", async () => {
+    // guildMemberRemove previously passed raw values to the renderer while
+    // guildMemberAdd sanitized them; the shared deliverer closes that gap.
+    const { readFileSync } = await import("node:fs");
+    const { join } = await import("node:path");
+    const src = readFileSync(
+      join(import.meta.dirname, "..", "..", "src", "welcome", "send.ts"),
+      "utf8",
+    );
+    const calls = src.match(/sanitizeDisplayName\(/g) ?? [];
+    expect(calls.length).toBe(3); // username, displayName, guild name
+  });
+});
+```
+
+Also add to `packages/systems/tests/unit/welcome.test.ts`:
 
 ```typescript
 describe("replaceWelcomeVariables", () => {
@@ -2529,8 +2593,22 @@ Expected: PASS. `tests/events/welcome-sanitize.test.ts` must still pass.
 
 ```bash
 pnpm typecheck
-git add packages/systems/src/welcome/send.ts packages/systems/package.json \
-        packages/systems/tests/unit/welcome apps/bot/src/events
+Commit the sanitisation fix separately from the feature — it is an independent bug fix:
+
+```bash
+git add packages/systems/src/welcome/send.ts
+git commit -m "fix(bot): sanitize display names on the farewell image path too
+
+guildMemberAdd ran every name through sanitizeDisplayName before rendering,
+but guildMemberRemove passed raw values straight to the canvas, so the
+SEC-BOT-03 hardening was only half applied. Both paths now share one
+deliverer, so they cannot diverge again."
+```
+
+Then the feature commit:
+
+```bash
+git add packages/systems/package.json packages/systems/tests/unit/welcome apps/bot/src/events
 git commit -m "feat(bot): send welcome and farewell images as plain attachments
 
 In plain mode the image posts natively at full width instead of boxed inside
