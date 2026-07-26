@@ -10,6 +10,28 @@ import {
 /** Deterministic stand-in for a canvas: every char is 10px wide. */
 const measurer = { measureText: (t: string) => ({ width: [...t].length * 10 }) };
 
+/**
+ * Same idea, but costed by raw UTF-16 code unit instead of code point. Under
+ * `measurer` above, a lone surrogate and its complete pair cost the same (the
+ * spread iterator counts either as "one item"), so a code-unit-slicing bug can
+ * never be caught landing mid-pair — the width math coincidentally always
+ * lands back on a clean boundary. Costing by `.length` makes a lone surrogate
+ * strictly cheaper than its pair, which is what actually exposes the bug.
+ */
+const unitMeasurer = { measureText: (t: string) => ({ width: t.length * 10 }) };
+
+/** Every grapheme-boundary prefix of `text` — the only cut points `fitText` may land on. */
+function graphemeBoundaryPrefixes(text: string): string[] {
+  const segmenter = new Intl.Segmenter(undefined, { granularity: "grapheme" });
+  const prefixes = [""];
+  let acc = "";
+  for (const { segment } of segmenter.segment(text)) {
+    acc += segment;
+    prefixes.push(acc);
+  }
+  return prefixes;
+}
+
 describe("buildFontSpec", () => {
   it("emits weight, Latin family, Arabic pair, then emoji", () => {
     expect(buildFontSpec("Orbitron", 40)).toBe(
@@ -49,6 +71,21 @@ describe("baseDirection", () => {
   it("treats Hebrew as rtl", () => {
     expect(baseDirection("שלום")).toBe("rtl");
   });
+
+  // Greek/Cyrillic/Armenian sit directly below the RTL block (U+0370-U+058F vs.
+  // RTL's U+0590 start). An RTL range that crept even slightly too wide would
+  // swallow these scripts and misreport them as rtl without any test noticing.
+  it("treats Greek as ltr", () => {
+    expect(baseDirection("Ελληνικά")).toBe("ltr");
+  });
+
+  it("treats Cyrillic as ltr", () => {
+    expect(baseDirection("Привет")).toBe("ltr");
+  });
+
+  it("treats Armenian as ltr", () => {
+    expect(baseDirection("Բարև")).toBe("ltr");
+  });
 });
 
 describe("fitText", () => {
@@ -63,25 +100,44 @@ describe("fitText", () => {
   });
 
   it("never splits a surrogate pair", () => {
-    // Each emoji is one grapheme but two UTF-16 code units.
-    const out = fitText(measurer, "🎉🎉🎉🎉🎉🎉", 40);
+    // Each emoji is one grapheme but two UTF-16 code units. Under `unitMeasurer`
+    // a lone surrogate costs one unit — less than its complete pair — so a
+    // code-unit-slicing bug lands mid-pair here and is actually observable;
+    // at this width the correct, grapheme-safe answer is exactly one emoji.
+    const text = "🎉🎉🎉🎉🎉🎉";
+    const out = fitText(unitMeasurer, text, 45);
+    expect(out).toBe("🎉…");
     expect([...out].every((ch) => ch.codePointAt(0) !== 0xfffd)).toBe(true);
     // Truncation must land on a grapheme boundary, so no lone surrogates.
     expect(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])/.test(out)).toBe(false);
+    expect(graphemeBoundaryPrefixes(text)).toContain(out.slice(0, -1));
   });
 
   it("never splits a ZWJ emoji sequence", () => {
     const family = "👨‍👩‍👧‍👦";
-    const out = fitText(measurer, family + family, 40);
-    expect(out.endsWith("…")).toBe(true);
+    const text = family + family;
+    // At width 40 the whole first family (7 codepoints under `measurer`) never
+    // fits, so both a correct and a broken implementation trivially collapse
+    // to a bare "…" — the assertions below would pass either way. Width 100
+    // lets exactly one family through, which is where a code-unit-slicing bug
+    // actually dangles a bare ZWJ (or a partial second family) before the
+    // ellipsis instead of stopping at the first family's boundary.
+    const out = fitText(measurer, text, 100);
+    expect(out).toBe(family + "…");
     expect(out.includes("‍…")).toBe(false);
+    expect(graphemeBoundaryPrefixes(text)).toContain(out.slice(0, -1));
   });
 
   it("never splits an Arabic combining mark from its base", () => {
-    // Arabic letter + fatha (U+064E) is one grapheme.
-    const out = fitText(measurer, "مَرْحَبَا مَرْحَبَا", 50);
-    expect(out.startsWith("َ")).toBe(false);
-    expect(/^[ً-ْ]/.test(out)).toBe(false);
+    // Arabic letter + fatha/sukun (e.g. U+064E) is one grapheme. At width 63
+    // the third grapheme's base consonant ("ح") fits alone but its mark does
+    // not — a code-unit-slicing bug keeps the bare base ("مَرْح…"), while a
+    // grapheme-safe cut must stop before it ("مَرْ…"). (At width 50 the two
+    // implementations are byte-identical and this test cannot tell them apart.)
+    const text = "مَرْحَبَا مَرْحَبَا";
+    const out = fitText(measurer, text, 63);
+    expect(out).toBe("مَرْ…");
+    expect(graphemeBoundaryPrefixes(text)).toContain(out.slice(0, -1));
   });
 
   it("returns just an ellipsis when nothing fits", () => {
@@ -111,5 +167,20 @@ describe("replaceImageVariables", () => {
     expect(
       replaceImageVariables("{user} {user.displayname} {server} {membercount}", member, guild),
     ).toBe("ahmed Ahmed FluxCore 1,234");
+  });
+
+  // {user.name} is one of the five supported placeholders (per the username,
+  // not the display name) and was never exercised above — a typo in its
+  // literal would go undetected. Included alongside {user} and
+  // {user.displayname} in one string so a regression in match specificity
+  // between them would also surface here.
+  it("substitutes {user.name} distinctly from {user} and {user.displayname}", () => {
+    expect(
+      replaceImageVariables(
+        "{user.name} {user} {user.displayname} {server} {membercount}",
+        member,
+        guild,
+      ),
+    ).toBe("ahmed ahmed Ahmed FluxCore 1,234");
   });
 });
