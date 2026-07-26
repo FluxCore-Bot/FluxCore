@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { apiFetch, getCsrfToken } from "../../../shared/lib/client";
+import { apiFetch, getCsrfToken, ApiError } from "../../../shared/lib/client";
 
 export interface EmbedField {
   name: string;
@@ -163,7 +163,18 @@ export function useWelcomeImagePreview(guildId: string) {
         },
         body: JSON.stringify(params),
       });
-      if (!res.ok) throw new Error("welcome.imageEditor.toast.previewFailed");
+      if (!res.ok) {
+        const body = (await res.json().catch(() => null)) as
+          | { error?: string; errorKey?: string }
+          | null;
+        const retryAfter = Number(res.headers.get("retry-after"));
+        throw new ApiError(
+          res.status,
+          body?.error || "welcome.imageEditor.toast.previewFailed",
+          body?.errorKey,
+          Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : undefined,
+        );
+      }
       const blob = await res.blob();
       return URL.createObjectURL(blob);
     },
