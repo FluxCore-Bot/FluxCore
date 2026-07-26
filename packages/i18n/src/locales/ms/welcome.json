@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Gaya Mesej",
+    "plain": "Mesej Biasa",
+    "embed": "Embed",
+    "plainHint": "Imej disiarkan pada lebar penuh dengan teks pilihan di atasnya.",
+    "embedHint": "Imej dipaparkan di dalam kotak embed.",
+    "contentLabel": "Teks Mesej",
+    "contentPlaceholder": "Selamat datang {user} ke {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

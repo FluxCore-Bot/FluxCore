@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "סגנון הודעה",
+    "plain": "הודעה רגילה",
+    "embed": "הטמעה",
+    "plainHint": "התמונה מפורסמת ברוחב מלא עם טקסט אופציונלי מעליה.",
+    "embedHint": "התמונה מוצגת בתוך תיבת הטמעה.",
+    "contentLabel": "טקסט ההודעה",
+    "contentPlaceholder": "ברוכים הבאים {user} אל {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

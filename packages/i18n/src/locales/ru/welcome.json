@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Добро пожаловать на {server}!",
     "farewellSubtitle": "До свидания, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Стиль сообщения",
+    "plain": "Обычное сообщение",
+    "embed": "Встроенное сообщение",
+    "plainHint": "Изображение публикуется на всю ширину с необязательным текстом над ним.",
+    "embedHint": "Изображение отображается внутри блока встроенного сообщения.",
+    "contentLabel": "Текст сообщения",
+    "contentPlaceholder": "Добро пожаловать, {user}, на {server}!"
+  },
   "imageEditor": {
     "livePreview": "Живой предпросмотр",
     "previewAlt": "Предпросмотр изображения {{type}}",

@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Slog sporočila",
+    "plain": "Navadno sporočilo",
+    "embed": "Vdelano sporočilo",
+    "plainHint": "Slika je objavljena v polni širini z neobveznim besedilom nad njo.",
+    "embedHint": "Slika je prikazana znotraj polja vdelanega sporočila.",
+    "contentLabel": "Besedilo sporočila",
+    "contentPlaceholder": "Dobrodošli {user} na {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

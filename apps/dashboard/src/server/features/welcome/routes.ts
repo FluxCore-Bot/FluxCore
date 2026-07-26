@@ -34,9 +34,13 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
         welcomeEnabled: false,
         welcomeChannelId: null,
         welcomeMessage: {},
+        welcomeMessageStyle: "plain",
+        welcomeContent: "",
         farewellEnabled: false,
         farewellChannelId: null,
         farewellMessage: {},
+        farewellMessageStyle: "plain",
+        farewellContent: "",
         dmEnabled: false,
         dmMessage: {},
         autoRoleIds: [],
@@ -62,9 +66,13 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
               welcomeEnabled: { type: "boolean" },
               welcomeChannelId: { type: ["string", "null"] },
               welcomeMessage: { type: "object", additionalProperties: true },
+              welcomeMessageStyle: { type: "string", enum: ["plain", "embed"] },
+              welcomeContent: { type: "string", maxLength: 2000 },
               farewellEnabled: { type: "boolean" },
               farewellChannelId: { type: ["string", "null"] },
               farewellMessage: { type: "object", additionalProperties: true },
+              farewellMessageStyle: { type: "string", enum: ["plain", "embed"] },
+              farewellContent: { type: "string", maxLength: 2000 },
               dmEnabled: { type: "boolean" },
               dmMessage: { type: "object", additionalProperties: true },
               autoRoleIds: { type: "array", items: { type: "string" } },
@@ -86,9 +94,13 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
                 welcomeEnabled: { type: "boolean" },
                 welcomeChannelId: { type: ["string", "null"] },
                 welcomeMessage: { type: "object", additionalProperties: true },
+                welcomeMessageStyle: { type: "string", enum: ["plain", "embed"] },
+                welcomeContent: { type: "string", maxLength: 2000 },
                 farewellEnabled: { type: "boolean" },
                 farewellChannelId: { type: ["string", "null"] },
                 farewellMessage: { type: "object", additionalProperties: true },
+                farewellMessageStyle: { type: "string", enum: ["plain", "embed"] },
+                farewellContent: { type: "string", maxLength: 2000 },
                 dmEnabled: { type: "boolean" },
                 dmMessage: { type: "object", additionalProperties: true },
                 autoRoleIds: { type: "array", items: { type: "string" } },
@@ -110,9 +122,13 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
       if (body.welcomeEnabled !== undefined) update.welcomeEnabled = body.welcomeEnabled;
       if (body.welcomeChannelId !== undefined) update.welcomeChannelId = body.welcomeChannelId;
       if (body.welcomeMessage !== undefined) update.welcomeMessage = body.welcomeMessage;
+      if (body.welcomeMessageStyle !== undefined) update.welcomeMessageStyle = body.welcomeMessageStyle;
+      if (body.welcomeContent !== undefined) update.welcomeContent = body.welcomeContent;
       if (body.farewellEnabled !== undefined) update.farewellEnabled = body.farewellEnabled;
       if (body.farewellChannelId !== undefined) update.farewellChannelId = body.farewellChannelId;
       if (body.farewellMessage !== undefined) update.farewellMessage = body.farewellMessage;
+      if (body.farewellMessageStyle !== undefined) update.farewellMessageStyle = body.farewellMessageStyle;
+      if (body.farewellContent !== undefined) update.farewellContent = body.farewellContent;
       if (body.dmEnabled !== undefined) update.dmEnabled = body.dmEnabled;
       if (body.dmMessage !== undefined) update.dmMessage = body.dmMessage;
       if (body.autoRoleIds !== undefined) update.autoRoleIds = body.autoRoleIds;

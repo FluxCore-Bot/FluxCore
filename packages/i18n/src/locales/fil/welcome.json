@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Estilo ng Mensahe",
+    "plain": "Payak na Mensahe",
+    "embed": "Embed",
+    "plainHint": "Ang larawan ay nai-post sa buong lapad na may opsyonal na teksto sa itaas nito.",
+    "embedHint": "Ang larawan ay ipinapakita sa loob ng isang embed box.",
+    "contentLabel": "Teksto ng Mensahe",
+    "contentPlaceholder": "Maligayang pagdating {user} sa {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

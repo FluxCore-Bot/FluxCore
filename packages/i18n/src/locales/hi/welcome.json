@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "संदेश शैली",
+    "plain": "सादा संदेश",
+    "embed": "एम्बेड",
+    "plainHint": "छवि पूरी चौड़ाई में पोस्ट की जाती है, ऊपर वैकल्पिक टेक्स्ट के साथ।",
+    "embedHint": "छवि एक एम्बेड बॉक्स के अंदर दिखाई जाती है।",
+    "contentLabel": "संदेश टेक्स्ट",
+    "contentPlaceholder": "{user}, {server} में आपका स्वागत है!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

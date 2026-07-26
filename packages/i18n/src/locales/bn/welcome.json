@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "বার্তার ধরন",
+    "plain": "সাধারণ বার্তা",
+    "embed": "এমবেড",
+    "plainHint": "ছবিটি পূর্ণ প্রস্থে পোস্ট করা হয়, উপরে ঐচ্ছিক টেক্সট সহ।",
+    "embedHint": "ছবিটি একটি এমবেড বক্সের ভিতরে দেখানো হয়।",
+    "contentLabel": "বার্তার টেক্সট",
+    "contentPlaceholder": "{user}, {server}-এ স্বাগতম!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Žinutės stilius",
+    "plain": "Paprasta žinutė",
+    "embed": "Įterptas pranešimas",
+    "plainHint": "Paveikslėlis skelbiamas per visą plotį su neprivalomu tekstu virš jo.",
+    "embedHint": "Paveikslėlis rodomas įterpto pranešimo lange.",
+    "contentLabel": "Žinutės tekstas",
+    "contentPlaceholder": "Sveiki atvykę, {user}, į {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

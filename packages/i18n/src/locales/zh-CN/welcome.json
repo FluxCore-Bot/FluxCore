@@ -69,6 +69,15 @@
     "welcomeSubtitle": "欢迎来到 {server}！",
     "farewellSubtitle": "再见，{user.name}！"
   },
+  "messageStyle": {
+    "label": "消息样式",
+    "plain": "纯文本消息",
+    "embed": "嵌入",
+    "plainHint": "图片将以完整宽度发布,上方可添加可选文字。",
+    "embedHint": "图片将显示在嵌入框内。",
+    "contentLabel": "消息文本",
+    "contentPlaceholder": "欢迎 {user} 加入 {server}!"
+  },
   "imageEditor": {
     "livePreview": "实时预览",
     "previewAlt": "{{type}} 图片预览",

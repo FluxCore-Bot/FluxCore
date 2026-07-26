@@ -59,6 +59,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Štýl správy",
+    "plain": "Obyčajná správa",
+    "embed": "Vložená správa",
+    "plainHint": "Obrázok sa zverejní v plnej šírke s voliteľným textom nad ním.",
+    "embedHint": "Obrázok sa zobrazí vo vnútri rámca vloženej správy.",
+    "contentLabel": "Text správy",
+    "contentPlaceholder": "Vitaj {user} na {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

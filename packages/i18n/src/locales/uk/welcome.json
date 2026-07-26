@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Стиль повідомлення",
+    "plain": "Звичайне повідомлення",
+    "embed": "Вбудоване повідомлення",
+    "plainHint": "Зображення публікується на всю ширину з необов'язковим текстом над ним.",
+    "embedHint": "Зображення відображається всередині блоку вбудованого повідомлення.",
+    "contentLabel": "Текст повідомлення",
+    "contentPlaceholder": "Ласкаво просимо, {user}, на {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Meddelandestil",
+    "plain": "Vanligt meddelande",
+    "embed": "Inbäddning",
+    "plainHint": "Bilden publiceras i full bredd med valfri text ovanför.",
+    "embedHint": "Bilden visas inuti en inbäddningsruta.",
+    "contentLabel": "Meddelandetext",
+    "contentPlaceholder": "Välkommen {user} till {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

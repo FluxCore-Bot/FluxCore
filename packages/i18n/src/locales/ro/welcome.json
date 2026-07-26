@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Stil mesaj",
+    "plain": "Mesaj simplu",
+    "embed": "Mesaj încorporat",
+    "plainHint": "Imaginea este publicată la lățime completă, cu text opțional deasupra.",
+    "embedHint": "Imaginea este afișată într-o casetă de tip mesaj încorporat.",
+    "contentLabel": "Textul mesajului",
+    "contentPlaceholder": "Bine ai venit {user} pe {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

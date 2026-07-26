@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Mtindo wa Ujumbe",
+    "plain": "Ujumbe wa Kawaida",
+    "embed": "Embed",
+    "plainHint": "Picha inachapishwa kwa upana kamili ikiwa na maandishi ya hiari juu yake.",
+    "embedHint": "Picha inaonyeshwa ndani ya kisanduku cha embed.",
+    "contentLabel": "Maandishi ya Ujumbe",
+    "contentPlaceholder": "Karibu {user} kwenye {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

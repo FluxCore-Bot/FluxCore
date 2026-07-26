@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "செய்தி பாணி",
+    "plain": "எளிய செய்தி",
+    "embed": "உட்பொதிவு",
+    "plainHint": "படம் முழு அகலத்தில் விருப்ப உரையுடன் மேலே வெளியிடப்படும்.",
+    "embedHint": "படம் ஒரு உட்பொதிவு பெட்டிக்குள் காட்டப்படும்.",
+    "contentLabel": "செய்தி உரை",
+    "contentPlaceholder": "{user}, {server}க்கு வரவேற்கிறோம்!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

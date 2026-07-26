@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Στυλ μηνύματος",
+    "plain": "Απλό μήνυμα",
+    "embed": "Ενσωματωμένο μήνυμα",
+    "plainHint": "Η εικόνα δημοσιεύεται σε πλήρες πλάτος με προαιρετικό κείμενο από πάνω της.",
+    "embedHint": "Η εικόνα εμφανίζεται μέσα σε ένα πλαίσιο ενσωματωμένου μηνύματος.",
+    "contentLabel": "Κείμενο μηνύματος",
+    "contentPlaceholder": "Καλώς όρισες, {user}, στο {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

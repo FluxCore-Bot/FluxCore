@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Styl wiadomości",
+    "plain": "Zwykła wiadomość",
+    "embed": "Osadzona wiadomość",
+    "plainHint": "Obraz jest publikowany w pełnej szerokości z opcjonalnym tekstem nad nim.",
+    "embedHint": "Obraz jest wyświetlany wewnątrz ramki osadzonej wiadomości.",
+    "contentLabel": "Tekst wiadomości",
+    "contentPlaceholder": "Witaj {user} na {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

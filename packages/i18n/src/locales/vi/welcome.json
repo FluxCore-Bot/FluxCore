@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Kiểu Tin Nhắn",
+    "plain": "Tin Nhắn Thường",
+    "embed": "Nhúng",
+    "plainHint": "Hình ảnh được đăng ở chiều rộng đầy đủ với văn bản tùy chọn phía trên.",
+    "embedHint": "Hình ảnh được hiển thị bên trong khung nhúng.",
+    "contentLabel": "Nội Dung Tin Nhắn",
+    "contentPlaceholder": "Chào mừng {user} đến với {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

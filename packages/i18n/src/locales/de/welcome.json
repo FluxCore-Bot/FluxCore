@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Willkommen auf {server}!",
     "farewellSubtitle": "Auf Wiedersehen, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Nachrichtenstil",
+    "plain": "Einfache Nachricht",
+    "embed": "Embed",
+    "plainHint": "Das Bild wird in voller Breite gepostet, mit optionalem Text darüber.",
+    "embedHint": "Das Bild wird innerhalb eines Embeds angezeigt.",
+    "contentLabel": "Nachrichtentext",
+    "contentPlaceholder": "Willkommen {user} auf {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live-Vorschau",
     "previewAlt": "Vorschau des {{type}}-Bilds",

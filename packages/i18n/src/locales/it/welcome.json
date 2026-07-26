@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Stile del messaggio",
+    "plain": "Messaggio semplice",
+    "embed": "Embed",
+    "plainHint": "L'immagine viene pubblicata a larghezza intera con testo facoltativo sopra.",
+    "embedHint": "L'immagine viene mostrata all'interno di un riquadro embed.",
+    "contentLabel": "Testo del messaggio",
+    "contentPlaceholder": "Benvenuto {user} su {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

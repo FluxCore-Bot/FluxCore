@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Mezu estiloa",
+    "plain": "Testu soileko mezua",
+    "embed": "Txertaketa",
+    "plainHint": "Irudia zabalera osoan argitaratzen da, gainean aukerako testuarekin.",
+    "embedHint": "Irudia txertaketa-koadro baten barruan erakusten da.",
+    "contentLabel": "Mezuaren testua",
+    "contentPlaceholder": "Ongi etorri {user}, {server} zerbitzarira!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

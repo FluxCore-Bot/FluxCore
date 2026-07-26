@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Estil del missatge",
+    "plain": "Missatge pla",
+    "embed": "Incrustació",
+    "plainHint": "La imatge es publica a mida completa amb text opcional a sobre.",
+    "embedHint": "La imatge es mostra dins d'un requadre incrustat.",
+    "contentLabel": "Text del missatge",
+    "contentPlaceholder": "Benvingut {user} a {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",
