@@ -120,7 +120,12 @@ import {
 async function buildApp() {
   const app = Fastify();
   await app.register(fastifyCookie, { secret: "test-secret" });
+  // Probe routes let both functions run against a genuine FastifyRequest,
+  // so no part of this file needs a hand-rolled fake or a cast.
   app.get("/probe", async (request) => ({ key: rateLimitKey(request) }));
+  app.get("/error-body", async (request) =>
+    rateLimitErrorResponse(request, { after: "30 seconds" }),
+  );
   await app.ready();
   return app;
 }
@@ -173,16 +178,33 @@ describe("rateLimitKey", () => {
 });
 
 describe("rateLimitErrorResponse", () => {
-  beforeEach(() => vi.clearAllMocks());
+  let app: Awaited<ReturnType<typeof buildApp>>;
 
-  function fakeRequest(acceptLanguage?: string) {
-    return { headers: { "accept-language": acceptLanguage } } as never;
+  beforeEach(async () => {
+    vi.clearAllMocks();
+    app = await buildApp();
+  });
+
+  // Exercised through a real route so the function receives a genuine
+  // FastifyRequest. No hand-rolled fake, and therefore no cast — an
+  // unnecessary cast is what hid the bug this whole change exists to fix.
+  async function bodyFor(acceptLanguage: string) {
+    const res = await app.inject({
+      method: "GET",
+      url: "/error-body",
+      headers: { "accept-language": acceptLanguage },
+    });
+    return res.json() as {
+      statusCode: number;
+      error: string;
+      errorKey: string;
+      retryAfter: string;
+    };
   }
 
-  it("returns a 429 body carrying the translation key and retry hint", () => {
+  it("returns a 429 body carrying the translation key and retry hint", async () => {
     mockGetTranslation.mockReturnValue(() => "Trop de requetes.");
-    const body = rateLimitErrorResponse(fakeRequest("fr"), { after: "30 seconds" });
-    expect(body).toEqual({
+    expect(await bodyFor("fr")).toEqual({
       statusCode: 429,
       error: "Trop de requetes.",
       errorKey: RATE_LIMITED_ERROR_KEY,
@@ -190,32 +212,31 @@ describe("rateLimitErrorResponse", () => {
     });
   });
 
-  it("translates using the Accept-Language header", () => {
+  it("translates using the Accept-Language header", async () => {
     mockGetTranslation.mockReturnValue(() => "translated");
-    rateLimitErrorResponse(fakeRequest("de-DE,de;q=0.9"), { after: "1 minute" });
+    await bodyFor("de-DE,de;q=0.9");
     expect(mockDetectLanguage).toHaveBeenCalledWith("de-DE,de;q=0.9");
     expect(mockGetTranslation).toHaveBeenCalledWith("de-DE");
   });
 
-  it("falls back to English when i18n is not initialized", () => {
+  it("falls back to English when i18n is not initialized", async () => {
     mockGetTranslation.mockImplementation(() => {
       throw new TypeError("Cannot read properties of undefined (reading 'getFixedT')");
     });
-    const body = rateLimitErrorResponse(fakeRequest("en"), { after: "1 minute" }) as {
-      error: string;
-    };
-    expect(body.error).toBe("Too many requests. Please try again later.");
+    expect((await bodyFor("en")).error).toBe("Too many requests. Please try again later.");
   });
 
-  it("falls back to English when the key resolves to itself (namespace not loaded)", () => {
+  it("falls back to English when the key resolves to itself (namespace not loaded)", async () => {
     mockGetTranslation.mockReturnValue(() => RATE_LIMITED_ERROR_KEY);
-    const body = rateLimitErrorResponse(fakeRequest("en"), { after: "1 minute" }) as {
-      error: string;
-    };
-    expect(body.error).toBe("Too many requests. Please try again later.");
+    expect((await bodyFor("en")).error).toBe("Too many requests. Please try again later.");
   });
 });
 
+// These four numbers are a product decision, not an implementation detail:
+// they were chosen against measured client behaviour (a slider drag produces
+// ~25 preview requests/min, so `heavy` must sit above it). Pinning them makes
+// an accidental edit fail loudly and documents the agreed ceilings in one
+// place. Intentionally a value assertion, not a tautology to delete.
 describe("rateLimits tiers", () => {
   it("defines the agreed ceilings", () => {
     expect(rateLimits.heavy.rateLimit.max).toBe(40);
@@ -1066,11 +1087,14 @@ with:
             setIsPending(false);
             setPreviewError(true);
             // A rate limit is not a failed render — say so, or it reads as a bug.
-            const key =
-              error instanceof ApiError && error.status === 429
-                ? error.errorKey ?? "errors:server.rateLimited"
-                : "imageEditor.toast.previewFailed";
-            toast.error(t(key));
+            // Two literal t() calls rather than one dynamic key: i18next type-checks
+            // literals, so this needs no cast.
+            const isRateLimited = error instanceof ApiError && error.status === 429;
+            toast.error(
+              isRateLimited
+                ? t("errors:server.rateLimited")
+                : t("imageEditor.toast.previewFailed"),
+            );
           },
 ```
 
@@ -1088,7 +1112,7 @@ docker compose -f docker-compose.yml -f docker-compose.override.yml \
   pnpm turbo run typecheck --filter=@fluxcore/dashboard
 ```
 
-Expected: no errors. If `t(key)` complains that a dynamic string is not a known key, cast the argument at the call site with `t(key as never)` — the keys are validated by the two literals above it.
+Expected: no errors. If i18next rejects `t("errors:server.rateLimited")` because the `errors` namespace is not in this component's `useTranslation(...)` call, add it to that call's namespace list rather than casting — casts are forbidden by the Global Constraints.
 
 - [ ] **Step 6: Run the full dashboard suite**
 
