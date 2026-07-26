@@ -43,6 +43,9 @@ import { NodeDetailPanel } from "./NodeDetailPanel";
 import { useWorkflowNodes } from "./useWorkflowNodes";
 import { useWorkflowSteps } from "./useWorkflowSteps";
 import { useWorkflowKeyboard } from "./useWorkflowKeyboard";
+import { useWorkflowContextMenu } from "./contextMenu/useWorkflowContextMenu";
+import { WorkflowContextMenu } from "./contextMenu/WorkflowContextMenu";
+import { buildContextMenuItems, parseNodeId } from "./contextMenu/buildItems";
 import { Button } from "../../../shared/ui/button";
 import { Input } from "../../../shared/ui/input";
 import { Switch } from "../../../shared/ui/switch";
@@ -95,6 +98,13 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
   const { saveDraft: saveDraftToStorage, loadDraft, clearDraft } = useRuleDraft(guildId, rule?.id);
   const reactFlowInstance = useRef<ReactFlowInstance | null>(null);
 
+  /**
+   * Positions for nodes the user created at a specific spot (context-menu adds
+   * and duplicates). Consumed by the node-sync effect the first time the node
+   * appears, then cleaned up once it is part of `nodes`.
+   */
+  const pendingPositionsRef = useRef(new Map<string, { x: number; y: number }>());
+
   // Load saved draft on mount (only for new rules without an explicit draft)
   const savedDraft = !draft && !rule ? loadDraft() : null;
   const initialDraft = draft ?? savedDraft;
@@ -128,6 +138,11 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     handleActionRemove: rawActionRemove,
     handleActionMove: rawActionMove,
     convertAndSeverEdges,
+    duplicateNode,
+    disconnectNode,
+    setAsStart,
+    snapshot,
+    restore,
   } = useWorkflowSteps({
     initialSteps: initialDraft?.steps ?? rule?.steps,
     initialEntryStepId: initialDraft?.entryStepId ?? rule?.entryStepId,
@@ -173,6 +188,11 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
         : `action-${selectedNode.index}`
     : null;
 
+  // Declared here (rather than beside the rest of the context-menu handlers
+  // below) because the ring highlight it drives into `useWorkflowNodes` needs
+  // `contextMenu.contextMenuNodeId` before that call.
+  const contextMenu = useWorkflowContextMenu();
+
   const { nodes: computedNodes, edges: computedEdges } = useWorkflowNodes({
     eventType,
     actions,
@@ -180,7 +200,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     entryStepId,
     constants: constants ?? undefined,
     maxActions: constants?.maxActionsPerRule,
-    selectedNodeId,
+    selectedNodeId: selectedNodeId ?? contextMenu.contextMenuNodeId,
     onAddAction: addAction,
     validationIssues: validation.issues,
     t,
@@ -257,10 +277,16 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
       const posMap = new Map(prev.map((n) => [n.id, n.position]));
       return computedNodes.map((n) => ({
         ...n,
-        position: posMap.get(n.id) ?? n.position,
+        position: posMap.get(n.id) ?? pendingPositionsRef.current.get(n.id) ?? n.position,
       }));
     });
   }, [computedNodes, setNodes]);
+
+  // Once a pending position has been applied, the node carries it in `nodes`;
+  // drop the entry so a recycled node id cannot inherit a stale position.
+  useEffect(() => {
+    for (const node of nodes) pendingPositionsRef.current.delete(node.id);
+  }, [nodes]);
 
   useEffect(() => {
     setEdges(computedEdges);
@@ -374,6 +400,97 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     setSelectedNode(null);
   }, [rawActionChange]);
 
+  const addAt = useCallback(
+    (add: () => string | null, position?: { x: number; y: number }) => {
+      const nodeId = add();
+      // No position (the trigger menu's plain "Add action") → auto-layout decides.
+      if (nodeId && position) pendingPositionsRef.current.set(nodeId, position);
+    },
+    [],
+  );
+
+  const handleContextConfigure = useCallback((nodeId: string) => {
+    const parsed = parseNodeId(nodeId);
+    if (!parsed) return;
+    if (parsed.kind === "trigger") setSelectedNode({ type: "trigger" });
+    else if (parsed.kind === "action") setSelectedNode({ type: "action", index: parsed.index });
+    else setSelectedNode({ type: "step", stepId: parsed.stepId });
+  }, []);
+
+  const handleContextDuplicate = useCallback((nodeId: string) => {
+    const origin = nodes.find((n) => n.id === nodeId)?.position;
+    const newNodeId = duplicateNode(nodeId);
+    if (newNodeId && origin) {
+      pendingPositionsRef.current.set(newNodeId, { x: origin.x + 40, y: origin.y + 60 });
+    }
+  }, [nodes, duplicateNode]);
+
+  const handleContextMove = useCallback((nodeId: string, direction: "up" | "down") => {
+    const parsed = parseNodeId(nodeId);
+    if (parsed?.kind === "action") handleActionMove(parsed.index, direction);
+  }, [handleActionMove]);
+
+  const handleContextDelete = useCallback((nodeId: string) => {
+    const parsed = parseNodeId(nodeId);
+    if (!parsed || parsed.kind === "trigger") return;
+    const snap = snapshot();
+    if (parsed.kind === "action") {
+      if (actions.length > 1) handleActionRemove(parsed.index);
+      else handleActionReset(parsed.index);
+    } else {
+      handleStepRemove(parsed.stepId);
+    }
+    toast.success(t("contextMenu.nodeDeleted"), {
+      action: {
+        label: t("common:actions.undo"),
+        onClick: () => restore(snap),
+      },
+    });
+  }, [snapshot, restore, actions.length, handleActionRemove, handleActionReset, handleStepRemove, t]);
+
+  const handleContextDeleteEdge = useCallback((edgeId: string) => {
+    onEdgesChange([{ id: edgeId, type: "remove" }]);
+  }, [onEdgesChange]);
+
+  const contextSections = useMemo(() => {
+    if (!contextMenu.menu || !constants) return [];
+    return buildContextMenuItems(contextMenu.menu.target, {
+      isStepMode,
+      actions,
+      maxActions: constants.maxActionsPerRule,
+      steps,
+      entryStepId,
+      handlers: {
+        onConfigure: handleContextConfigure,
+        onDuplicate: handleContextDuplicate,
+        onMove: handleContextMove,
+        onSetAsStart: setAsStart,
+        onDisconnect: disconnectNode,
+        onDelete: handleContextDelete,
+        onDeleteEdge: handleContextDeleteEdge,
+        onAddAction: (position) => addAt(addAction, position),
+        onAddCondition: (position) => addAt(addConditionStep, position),
+        onAddDelay: (position) => addAt(addDelayStep, position),
+        onFitView: handleFitView,
+      },
+    });
+  }, [
+    contextMenu.menu, constants, isStepMode, actions, steps, entryStepId,
+    handleContextConfigure, handleContextDuplicate, handleContextMove,
+    setAsStart, disconnectNode, handleContextDelete, handleContextDeleteEdge,
+    addAt, addAction, addConditionStep, addDelayStep, handleFitView,
+  ]);
+
+  const contextMenuAriaLabel = useMemo(() => {
+    const menu = contextMenu.menu;
+    if (!menu) return "";
+    if (menu.target.kind === "node") {
+      return t("contextMenu.menuLabel", { label: menu.label ?? "" });
+    }
+    if (menu.target.kind === "edge") return t("contextMenu.edgeMenuLabel");
+    return t("contextMenu.paneMenuLabel");
+  }, [contextMenu.menu, t]);
+
   useWorkflowKeyboard({
     selectedNode,
     isStepMode,
@@ -387,6 +504,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     onActionReset: handleActionReset,
     onActionMove: handleActionMove,
     onStepRemove: handleStepRemove,
+    onOpenContextMenu: contextMenu.openFromKeyboard,
   });
 
   const isPending = createRule.isPending || updateRule.isPending;
@@ -589,6 +707,9 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
           onNodeClick={onNodeClick}
           onPaneClick={handlePaneClick}
           onSelectionChange={handleSelectionChange}
+          onNodeContextMenu={contextMenu.openNodeMenu}
+          onEdgeContextMenu={contextMenu.openEdgeMenu}
+          onPaneContextMenu={contextMenu.openPaneMenu}
           onInit={(instance) => {
             reactFlowInstance.current = instance;
           }}
@@ -634,6 +755,17 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             </TooltipProvider>
           </Panel>
         </ReactFlow>
+
+        {contextMenu.menu && (
+          <WorkflowContextMenu
+            open
+            x={contextMenu.menu.x}
+            y={contextMenu.menu.y}
+            ariaLabel={contextMenuAriaLabel}
+            sections={contextSections}
+            onClose={contextMenu.close}
+          />
+        )}
 
         {/* Detail panel — slides in from right */}
         {selectedNode?.type === "trigger" && (
