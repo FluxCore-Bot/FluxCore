@@ -15,7 +15,7 @@
 - **No new npm dependencies.** `@radix-ui/react-context-menu` is explicitly rejected; build on the existing `shared/ui/dropdown-menu`.
 - **All commands run inside Docker.** Host `node_modules` is root-owned and this worktree has none. Never run bare `pnpm` on the host.
 - **Strict TypeScript** — no `any`.
-- **Every task ends green.** Tests and typecheck must pass before the commit step.
+- **Every task ends green.** Tests and typecheck must pass before the commit step. **One sanctioned exception:** Task 4 makes `onOpenContextMenu` a required option and therefore leaves `WorkflowEditor.tsx` failing typecheck until Task 5 wires it. That break is deliberate — it is what forces Task 5 to pass the opener — and Task 4's own tests must still pass. No other task may commit red.
 - **i18n:** new keys go in `packages/i18n/src/locales/<lang>/rules.json` **and** `packages/i18n/dist/locales/<lang>/rules.json` for **all 48 locales**, with real translations. English placeholders are treated as unfinished work.
 - **Never rewrite a locale file with `json.dump`.** Locale files have inconsistent formatting (`th` is semi-compact, 17 files use `\u` escapes). Insert text; gate on zero deleted lines.
 - **Reuse existing i18n keys** where they already exist and are already translated (listed in Task 6).
