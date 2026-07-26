@@ -140,6 +140,15 @@ Pairings, chosen so each Latin face keeps its character in Arabic:
 All are OFL-licensed; licence files are vendored alongside them. Total added weight is roughly
 6 MB, dominated by the 4.8 MB emoji font; the four Arabic faces are ~200-400 KB each.
 
+**Static instances only — never variable fonts.** Measured: `@napi-rs/canvas@0.1.97` ignores the
+`wght` axis entirely (`NotoSansArabic[wdth,wght].ttf` produced byte-identical measured widths at
+`400` and `700`), while browsers honour it correctly. Shipping the variable builds that
+`google/fonts` publishes for Noto Sans Arabic and Noto Kufi Arabic would therefore render bold
+Arabic in the preview and regular Arabic in the bot — silently reintroducing exactly the
+client/server divergence this work removes. Static Bold TTFs come from the `notofonts/arabic`
+GitHub *release archives* (the repo tree itself contains no font binaries); Tajawal and Amiri
+have static Bold builds directly in `google/fonts`.
+
 The dashboard serves the **exact bytes the bot renders with** via `@fastify/static` at
 `/fonts/welcome/`, with `Cache-Control: public, max-age=31536000, immutable`. The client loads
 them with the `FontFace` API:
