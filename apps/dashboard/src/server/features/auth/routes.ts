@@ -10,6 +10,7 @@ import {
 } from "../../shared/auth.js";
 import { createSession, deleteSession, getSession } from "../../shared/session.js";
 import { generateCsrfToken } from "../../shared/csrf.js";
+import { signOAuthState, verifyOAuthState } from "./oauthState.js";
 import { logger } from "@fluxcore/utils";
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -25,12 +26,14 @@ export function registerAuthRoutes(app: FastifyInstance): void {
     const callbackUrl = buildCallbackUrl(config.dashboardPublicUrl);
     const { url, state } = getAuthorizationUrl(callbackUrl);
     reply
-      .setCookie("oauth_state", state, {
+      // Signed with its own key (see oauthState.ts), NOT `signed: true`. This
+      // endpoint is public, so a cookie signed with the session secret here is
+      // a free, unauthenticated mint of "validly signed" values.
+      .setCookie("oauth_state", signOAuthState(state), {
         path: "/",
         httpOnly: true,
         sameSite: "lax",
         secure: isProduction,
-        signed: true,
         maxAge: 300, // 5 minutes
       })
       .redirect(url);
@@ -53,8 +56,9 @@ export function registerAuthRoutes(app: FastifyInstance): void {
       return;
     }
 
-    const unsignedState = request.unsignCookie(stateCookie);
-    if (!unsignedState.valid || unsignedState.value !== state) {
+    // Verifies the state-specific signature and constant-time compares the
+    // cookie's state against the one Discord echoed back.
+    if (!verifyOAuthState(stateCookie, state)) {
       reply
         .clearCookie("oauth_state", { path: "/" })
         .code(403)

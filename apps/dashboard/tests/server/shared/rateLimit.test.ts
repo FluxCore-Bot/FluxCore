@@ -1,10 +1,31 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
+// In production index.ts hands config.dashboardSessionSecret to @fastify/cookie,
+// so the cookie signing key and the session secret are one value. The
+// oauth_state regression test below only means anything if the test app mirrors
+// that, hence one constant feeding both.
+const { SESSION_SECRET } = vi.hoisted(() => ({ SESSION_SECRET: "x".repeat(64) }));
+
+// The three mocks below are load-bearing for the oauth_state regression test,
+// which registers the real auth routes: @fluxcore/config is eagerly evaluated at
+// import, routes.ts imports the logger, and session.ts drags in @fluxcore/database.
 vi.mock("@fluxcore/config", () => ({
-  config: { token: "t", clientId: "c", dashboardSessionSecret: "s", logLevel: "info" },
+  config: {
+    token: "t",
+    clientId: "c",
+    dashboardCallbackUrl: "",
+    dashboardPublicUrl: "https://dash.example.com",
+    dashboardSessionSecret: SESSION_SECRET,
+    logLevel: "info",
+  },
 }));
 vi.mock("@fluxcore/utils", () => ({
   logger: { debug: vi.fn(), info: vi.fn(), warn: vi.fn(), error: vi.fn() },
+}));
+vi.mock("../../../src/server/shared/session.js", () => ({
+  createSession: vi.fn().mockResolvedValue("session-id"),
+  deleteSession: vi.fn().mockResolvedValue(undefined),
+  getSession: vi.fn().mockResolvedValue(null),
 }));
 
 const { mockGetTranslation, mockDetectLanguage } = vi.hoisted(() => ({
@@ -25,16 +46,20 @@ import {
   globalRateLimitOptions,
   RATE_LIMITED_ERROR_KEY,
 } from "../../../src/server/shared/rateLimit.js";
+import { registerAuthRoutes } from "../../../src/server/features/auth/routes.js";
 
 async function buildApp() {
   const app = Fastify();
-  await app.register(fastifyCookie, { secret: "test-secret" });
+  await app.register(fastifyCookie, { secret: SESSION_SECRET });
   // Probe routes let both functions run against a genuine FastifyRequest,
   // so no part of this file needs a hand-rolled fake or a cast.
   app.get("/probe", async (request) => ({ key: rateLimitKey(request) }));
   app.get("/error-body", async (request) =>
     rateLimitErrorResponse(request, { after: "30 seconds" }),
   );
+  // The real, public /auth/login — so the regression test mints its cookie the
+  // exact way an unauthenticated attacker would, not through a stand-in.
+  registerAuthRoutes(app);
   await app.ready();
   return app;
 }
@@ -83,6 +108,21 @@ describe("rateLimitKey", () => {
 
   it("falls back to the IP key when no cookie is present", async () => {
     expect(await keyFor(app)).toMatch(/^ip:/);
+  });
+
+  // Regression: /auth/login is public and unauthenticated. Its oauth_state
+  // cookie used to be `signed: true`, i.e. signed with the very secret this
+  // generator unsigns against — and @fastify/cookie signs only the value, never
+  // the name. So anyone could GET /auth/login, replay the returned value as
+  // `Cookie: session=...`, and be handed a brand new bucket. Because
+  // /auth/login is itself keyed by this generator, each minted key bought 10
+  // more logins per minute: unlimited buckets from a standing start.
+  it("does not accept an oauth_state cookie minted by /auth/login as a session", async () => {
+    const login = await app.inject({ method: "GET", url: "/auth/login" });
+    const minted = login.cookies.find((c) => c.name === "oauth_state");
+    expect(minted).toBeDefined();
+
+    expect(await keyFor(app, { session: minted!.value })).toMatch(/^ip:/);
   });
 });
 
