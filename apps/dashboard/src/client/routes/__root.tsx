@@ -20,6 +20,7 @@ import { actionCommands } from "../shared/command-palette/sources/actions";
 import { useGuilds, useRefreshGuilds, useRefreshGuild } from "../shared/hooks/useGuilds";
 import { useBotInfo } from "../shared/hooks/useBotInfo";
 import { usePermissions } from "../features/permissions/hooks/usePermissions";
+import { useRecentCommands } from "../shared/command-palette/useRecentCommands";
 import type { Command } from "../shared/command-palette/types";
 
 function AppCommandPalette({ guildId }: { guildId: string | undefined }) {
@@ -38,7 +39,7 @@ function AppCommandPalette({ guildId }: { guildId: string | undefined }) {
   // spread on every render regardless of whether anything changed, so
   // depending on them would rebuild `commands` — and therefore re-render the
   // palette — on every render while it's open, defeating the memo.
-  const commands: Command[] = useMemo(
+  const staticCommands: Command[] = useMemo(
     () => [
       ...pageCommands({ guildId, t, can }),
       ...actionCommands({
@@ -53,7 +54,19 @@ function AppCommandPalette({ guildId }: { guildId: string | undefined }) {
     [guildId, t, can, guilds, botInfo, refreshGuild.mutate, refreshGuilds.mutate],
   );
 
+  // Recents are resolved against the static list, so they carry live titles and
+  // drop out entirely once a destination stops being available. They are copies
+  // re-grouped as "recent", so each one still appears in its own group too — a
+  // page you visit often should be reachable from both.
+  const { recent, remember } = useRecentCommands(staticCommands);
+  const commands: Command[] = useMemo(
+    () => [...recent, ...staticCommands],
+    [recent, staticCommands],
+  );
+
   function onNavigate(command: Command) {
+    // Recorded under the underlying id, which the re-grouped copy preserves.
+    remember(command);
     if (command.href) {
       window.location.href = command.href;
       return;
