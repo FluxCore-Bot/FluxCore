@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Konfigurera",
+    "configureTrigger": "Konfigurera utlösare",
+    "addAction": "Lägg till åtgärd",
+    "addActionHere": "Lägg till åtgärd här",
+    "addConditionHere": "Lägg till villkor här",
+    "addDelayHere": "Lägg till fördröjning här",
+    "setAsStart": "Ange som start",
+    "disconnect": "Koppla från",
+    "deleteConnection": "Ta bort kopplingen",
+    "nodeDeleted": "Steg borttaget",
+    "menuLabel": "Åtgärder för {{label}}",
+    "paneMenuLabel": "Åtgärder på arbetsytan",
+    "edgeMenuLabel": "Åtgärder på kopplingen"
+  },
   "breadcrumb": {
     "guild": "Server",
     "automation": "Automatisering"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Koppla utlösaren till ett steg — det här arbetsflödet saknar startpunkt",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

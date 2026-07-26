@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Konfigurovat",
+    "configureTrigger": "Konfigurovat spouštěč",
+    "addAction": "Přidat akci",
+    "addActionHere": "Přidat akci sem",
+    "addConditionHere": "Přidat podmínku sem",
+    "addDelayHere": "Přidat prodlevu sem",
+    "setAsStart": "Nastavit jako začátek",
+    "disconnect": "Odpojit",
+    "deleteConnection": "Smazat spojení",
+    "nodeDeleted": "Krok smazán",
+    "menuLabel": "Akce pro {{label}}",
+    "paneMenuLabel": "Akce plátna",
+    "edgeMenuLabel": "Akce spojení"
+  },
   "breadcrumb": {
     "guild": "Server",
     "automation": "Automatizace"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Připojte spouštěč ke kroku — tento pracovní postup nemá počáteční bod",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

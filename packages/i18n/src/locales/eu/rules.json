@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Konfiguratu",
+    "configureTrigger": "Konfiguratu abiarazlea",
+    "addAction": "Gehitu ekintza",
+    "addActionHere": "Gehitu ekintza hemen",
+    "addConditionHere": "Gehitu baldintza hemen",
+    "addDelayHere": "Gehitu atzerapena hemen",
+    "setAsStart": "Ezarri hasiera gisa",
+    "disconnect": "Deskonektatu",
+    "deleteConnection": "Ezabatu konexioa",
+    "nodeDeleted": "Urratsa ezabatuta",
+    "menuLabel": "Ekintzak: {{label}}",
+    "paneMenuLabel": "Oihalaren ekintzak",
+    "edgeMenuLabel": "Konexioaren ekintzak"
+  },
   "breadcrumb": {
     "guild": "Zerbitzaria",
     "automation": "Automatizazioa"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Lotu abiarazlea urrats batekin — lan-fluxu honek ez du hasiera-punturik",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Configurar",
+    "configureTrigger": "Configurar o activador",
+    "addAction": "Engadir acción",
+    "addActionHere": "Engadir acción aquí",
+    "addConditionHere": "Engadir condición aquí",
+    "addDelayHere": "Engadir atraso aquí",
+    "setAsStart": "Definir como inicio",
+    "disconnect": "Desconectar",
+    "deleteConnection": "Eliminar a conexión",
+    "nodeDeleted": "Paso eliminado",
+    "menuLabel": "Accións para {{label}}",
+    "paneMenuLabel": "Accións do lenzo",
+    "edgeMenuLabel": "Accións da conexión"
+  },
   "breadcrumb": {
     "guild": "Servidor",
     "automation": "Automatización"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Conecta o activador cun paso — este fluxo de traballo non ten punto de inicio",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

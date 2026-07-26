@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Налаштувати",
+    "configureTrigger": "Налаштувати тригер",
+    "addAction": "Додати дію",
+    "addActionHere": "Додати дію тут",
+    "addConditionHere": "Додати умову тут",
+    "addDelayHere": "Додати затримку тут",
+    "setAsStart": "Зробити початковим кроком",
+    "disconnect": "Роз'єднати",
+    "deleteConnection": "Видалити зв'язок",
+    "nodeDeleted": "Крок видалено",
+    "menuLabel": "Дії для «{{label}}»",
+    "paneMenuLabel": "Дії з полотном",
+    "edgeMenuLabel": "Дії зі зв'язком"
+  },
   "breadcrumb": {
     "guild": "Сервер",
     "automation": "Автоматизація"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "З'єднайте тригер із кроком — цей робочий процес не має початкової точки",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

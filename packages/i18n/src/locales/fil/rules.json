@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "I-configure",
+    "configureTrigger": "I-configure ang trigger",
+    "addAction": "Magdagdag ng aksyon",
+    "addActionHere": "Magdagdag ng aksyon dito",
+    "addConditionHere": "Magdagdag ng kondisyon dito",
+    "addDelayHere": "Magdagdag ng pagkaantala dito",
+    "setAsStart": "Itakda bilang simula",
+    "disconnect": "Idiskonekta",
+    "deleteConnection": "Burahin ang koneksyon",
+    "nodeDeleted": "Nabura ang hakbang",
+    "menuLabel": "Mga aksyon para sa {{label}}",
+    "paneMenuLabel": "Mga aksyon sa canvas",
+    "edgeMenuLabel": "Mga aksyon sa koneksyon"
+  },
   "breadcrumb": {
     "guild": "Guild",
     "automation": "Automation"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Ikonekta ang trigger sa isang hakbang — walang simulang punto ang workflow na ito",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

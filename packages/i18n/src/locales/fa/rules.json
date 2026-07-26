@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "پیکربندی",
+    "configureTrigger": "پیکربندی محرک",
+    "addAction": "افزودن اقدام",
+    "addActionHere": "افزودن اقدام در اینجا",
+    "addConditionHere": "افزودن شرط در اینجا",
+    "addDelayHere": "افزودن تأخیر در اینجا",
+    "setAsStart": "تنظیم به‌عنوان شروع",
+    "disconnect": "قطع اتصال",
+    "deleteConnection": "حذف اتصال",
+    "nodeDeleted": "مرحله حذف شد",
+    "menuLabel": "اقدامات برای {{label}}",
+    "paneMenuLabel": "اقدامات بوم",
+    "edgeMenuLabel": "اقدامات اتصال"
+  },
   "breadcrumb": {
     "guild": "سرور",
     "automation": "اتوماسیون"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "محرک را به یک مرحله متصل کنید — این گردش کار نقطه شروع ندارد",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

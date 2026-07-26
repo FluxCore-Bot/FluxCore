@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "設定",
+    "configureTrigger": "設定觸發器",
+    "addAction": "新增動作",
+    "addActionHere": "在此新增動作",
+    "addConditionHere": "在此新增條件",
+    "addDelayHere": "在此新增延遲",
+    "setAsStart": "設為起始步驟",
+    "disconnect": "中斷連線",
+    "deleteConnection": "刪除連線",
+    "nodeDeleted": "已刪除步驟",
+    "menuLabel": "{{label}} 的動作",
+    "paneMenuLabel": "畫布動作",
+    "edgeMenuLabel": "連線動作"
+  },
   "breadcrumb": {
     "guild": "伺服器",
     "automation": "自動化"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "請將觸發器連接到某個步驟——此工作流程沒有起點",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "ترتیب دیں",
+    "configureTrigger": "ٹرگر ترتیب دیں",
+    "addAction": "ایکشن شامل کریں",
+    "addActionHere": "یہاں ایکشن شامل کریں",
+    "addConditionHere": "یہاں شرط شامل کریں",
+    "addDelayHere": "یہاں تاخیر شامل کریں",
+    "setAsStart": "بطور آغاز مقرر کریں",
+    "disconnect": "منقطع کریں",
+    "deleteConnection": "کنکشن حذف کریں",
+    "nodeDeleted": "مرحلہ حذف ہو گیا",
+    "menuLabel": "{{label}} کے لیے ایکشنز",
+    "paneMenuLabel": "کینوس کے ایکشنز",
+    "edgeMenuLabel": "کنکشن کے ایکشنز"
+  },
   "breadcrumb": {
     "guild": "سرور",
     "automation": "آٹومیشن"
@@ -294,6 +309,7 @@
     "channelConfigured": "چینل ترتیب دیا گیا"
   },
   "validation": {
+    "noEntryStep": "ٹرگر کو کسی مرحلے سے جوڑیں — اس ورک فلو کا کوئی نقطۂ آغاز نہیں",
     "nameRequired": "رول کا نام ضروری ہے",
     "noEventType": "کوئی ایونٹ قسم منتخب نہیں کی گئی",
     "atLeastOneAction": "کم از کم ایک ایکشن ترتیب دیا جانا چاہیے",

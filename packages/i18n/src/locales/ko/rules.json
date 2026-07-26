@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "설정",
+    "configureTrigger": "트리거 설정",
+    "addAction": "작업 추가",
+    "addActionHere": "여기에 작업 추가",
+    "addConditionHere": "여기에 조건 추가",
+    "addDelayHere": "여기에 지연 추가",
+    "setAsStart": "시작 단계로 설정",
+    "disconnect": "연결 해제",
+    "deleteConnection": "연결 삭제",
+    "nodeDeleted": "단계가 삭제되었습니다",
+    "menuLabel": "{{label}} 작업",
+    "paneMenuLabel": "캔버스 작업",
+    "edgeMenuLabel": "연결 작업"
+  },
   "breadcrumb": {
     "guild": "서버",
     "automation": "자동화"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "트리거를 단계에 연결하세요. 이 워크플로에는 시작 지점이 없습니다",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

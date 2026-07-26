@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "تهيئة",
+    "configureTrigger": "تهيئة المُشغِّل",
+    "addAction": "إضافة إجراء",
+    "addActionHere": "إضافة إجراء هنا",
+    "addConditionHere": "إضافة شرط هنا",
+    "addDelayHere": "إضافة تأخير هنا",
+    "setAsStart": "تعيين كبداية",
+    "disconnect": "فصل الاتصال",
+    "deleteConnection": "حذف الاتصال",
+    "nodeDeleted": "تم حذف الخطوة",
+    "menuLabel": "إجراءات {{label}}",
+    "paneMenuLabel": "إجراءات اللوحة",
+    "edgeMenuLabel": "إجراءات الاتصال"
+  },
   "breadcrumb": {
     "guild": "السيرفر",
     "automation": "الأتمتة"
@@ -294,6 +309,7 @@
     "channelConfigured": "تم تهيئة القناة"
   },
   "validation": {
+    "noEntryStep": "اربط المُشغِّل بخطوة — سير العمل هذا ليس له نقطة بداية",
     "nameRequired": "اسم القاعدة مطلوب",
     "noEventType": "لم يتم اختيار نوع حدث",
     "atLeastOneAction": "يجب تهيئة إجراء واحد على الأقل",

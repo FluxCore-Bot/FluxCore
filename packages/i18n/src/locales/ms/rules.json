@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Konfigurasikan",
+    "configureTrigger": "Konfigurasikan pencetus",
+    "addAction": "Tambah tindakan",
+    "addActionHere": "Tambah tindakan di sini",
+    "addConditionHere": "Tambah syarat di sini",
+    "addDelayHere": "Tambah kelewatan di sini",
+    "setAsStart": "Tetapkan sebagai permulaan",
+    "disconnect": "Putuskan sambungan",
+    "deleteConnection": "Padam sambungan",
+    "nodeDeleted": "Langkah dipadam",
+    "menuLabel": "Tindakan untuk {{label}}",
+    "paneMenuLabel": "Tindakan kanvas",
+    "edgeMenuLabel": "Tindakan sambungan"
+  },
   "breadcrumb": {
     "guild": "Pelayan",
     "automation": "Automasi"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Sambungkan pencetus ke satu langkah — aliran kerja ini tiada titik permulaan",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

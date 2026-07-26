@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Подеси",
+    "configureTrigger": "Подеси окидач",
+    "addAction": "Додај радњу",
+    "addActionHere": "Додај радњу овде",
+    "addConditionHere": "Додај услов овде",
+    "addDelayHere": "Додај одлагање овде",
+    "setAsStart": "Постави као почетак",
+    "disconnect": "Прекини везу",
+    "deleteConnection": "Обриши везу",
+    "nodeDeleted": "Корак обрисан",
+    "menuLabel": "Радње за {{label}}",
+    "paneMenuLabel": "Радње платна",
+    "edgeMenuLabel": "Радње везе"
+  },
   "breadcrumb": {
     "guild": "Сервер",
     "automation": "Аутоматизација"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Повежи окидач са кораком — овај ток рада нема почетну тачку",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

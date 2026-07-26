@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Konfigurovať",
+    "configureTrigger": "Konfigurovať spúšťač",
+    "addAction": "Pridať akciu",
+    "addActionHere": "Pridať akciu sem",
+    "addConditionHere": "Pridať podmienku sem",
+    "addDelayHere": "Pridať oneskorenie sem",
+    "setAsStart": "Nastaviť ako začiatok",
+    "disconnect": "Odpojiť",
+    "deleteConnection": "Odstrániť spojenie",
+    "nodeDeleted": "Krok odstránený",
+    "menuLabel": "Akcie pre {{label}}",
+    "paneMenuLabel": "Akcie plátna",
+    "edgeMenuLabel": "Akcie spojenia"
+  },
   "breadcrumb": {
     "guild": "Server",
     "automation": "Automatizácia"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Pripojte spúšťač ku kroku — tento pracovný postup nemá počiatočný bod",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

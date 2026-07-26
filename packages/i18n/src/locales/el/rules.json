@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Διαμόρφωση",
+    "configureTrigger": "Διαμόρφωση εναύσματος",
+    "addAction": "Προσθήκη ενέργειας",
+    "addActionHere": "Προσθήκη ενέργειας εδώ",
+    "addConditionHere": "Προσθήκη συνθήκης εδώ",
+    "addDelayHere": "Προσθήκη καθυστέρησης εδώ",
+    "setAsStart": "Ορισμός ως αρχή",
+    "disconnect": "Αποσύνδεση",
+    "deleteConnection": "Διαγραφή σύνδεσης",
+    "nodeDeleted": "Το βήμα διαγράφηκε",
+    "menuLabel": "Ενέργειες για {{label}}",
+    "paneMenuLabel": "Ενέργειες καμβά",
+    "edgeMenuLabel": "Ενέργειες σύνδεσης"
+  },
   "breadcrumb": {
     "guild": "Server",
     "automation": "Αυτοματισμός"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Συνδέστε το έναυσμα με ένα βήμα — αυτή η ροή εργασίας δεν έχει σημείο εκκίνησης",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

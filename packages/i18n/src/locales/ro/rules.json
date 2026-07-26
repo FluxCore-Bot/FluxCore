@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Configurează",
+    "configureTrigger": "Configurează declanșatorul",
+    "addAction": "Adaugă acțiune",
+    "addActionHere": "Adaugă acțiune aici",
+    "addConditionHere": "Adaugă condiție aici",
+    "addDelayHere": "Adaugă întârziere aici",
+    "setAsStart": "Setează ca început",
+    "disconnect": "Deconectează",
+    "deleteConnection": "Șterge conexiunea",
+    "nodeDeleted": "Pas șters",
+    "menuLabel": "Acțiuni pentru {{label}}",
+    "paneMenuLabel": "Acțiuni pe pânză",
+    "edgeMenuLabel": "Acțiuni pe conexiune"
+  },
   "breadcrumb": {
     "guild": "Server",
     "automation": "Automatizare"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Conectează declanșatorul la un pas — acest flux de lucru nu are punct de pornire",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Nastavi",
+    "configureTrigger": "Nastavi sprožilec",
+    "addAction": "Dodaj dejanje",
+    "addActionHere": "Dodaj dejanje sem",
+    "addConditionHere": "Dodaj pogoj sem",
+    "addDelayHere": "Dodaj zakasnitev sem",
+    "setAsStart": "Nastavi kot začetek",
+    "disconnect": "Prekini povezavo",
+    "deleteConnection": "Izbriši povezavo",
+    "nodeDeleted": "Korak izbrisan",
+    "menuLabel": "Dejanja za {{label}}",
+    "paneMenuLabel": "Dejanja platna",
+    "edgeMenuLabel": "Dejanja povezave"
+  },
   "breadcrumb": {
     "guild": "Strežnik",
     "automation": "Avtomatizacija"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Poveži sprožilec s korakom — ta potek dela nima začetne točke",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

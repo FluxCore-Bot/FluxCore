@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Seadista",
+    "configureTrigger": "Seadista päästik",
+    "addAction": "Lisa tegevus",
+    "addActionHere": "Lisa tegevus siia",
+    "addConditionHere": "Lisa tingimus siia",
+    "addDelayHere": "Lisa viivitus siia",
+    "setAsStart": "Määra alguseks",
+    "disconnect": "Ühenda lahti",
+    "deleteConnection": "Kustuta ühendus",
+    "nodeDeleted": "Samm kustutatud",
+    "menuLabel": "Tegevused: {{label}}",
+    "paneMenuLabel": "Lõuendi tegevused",
+    "edgeMenuLabel": "Ühenduse tegevused"
+  },
   "breadcrumb": {
     "guild": "Server",
     "automation": "Automatiseerimine"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Ühenda päästik sammuga — sellel töövool puudub alguspunkt",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

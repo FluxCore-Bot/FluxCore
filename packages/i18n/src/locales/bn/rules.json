@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "কনফিগার করুন",
+    "configureTrigger": "ট্রিগার কনফিগার করুন",
+    "addAction": "অ্যাকশন যোগ করুন",
+    "addActionHere": "এখানে অ্যাকশন যোগ করুন",
+    "addConditionHere": "এখানে শর্ত যোগ করুন",
+    "addDelayHere": "এখানে বিলম্ব যোগ করুন",
+    "setAsStart": "শুরু হিসেবে সেট করুন",
+    "disconnect": "সংযোগ বিচ্ছিন্ন করুন",
+    "deleteConnection": "সংযোগ মুছুন",
+    "nodeDeleted": "ধাপ মুছে ফেলা হয়েছে",
+    "menuLabel": "{{label}}-এর জন্য অ্যাকশন",
+    "paneMenuLabel": "ক্যানভাসের অ্যাকশন",
+    "edgeMenuLabel": "সংযোগের অ্যাকশন"
+  },
   "breadcrumb": {
     "guild": "গিল্ড",
     "automation": "অটোমেশন"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "ট্রিগারটিকে একটি ধাপের সঙ্গে যুক্ত করুন — এই ওয়ার্কফ্লোর কোনো শুরুর বিন্দু নেই",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

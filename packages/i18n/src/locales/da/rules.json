@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Konfigurer",
+    "configureTrigger": "Konfigurer udløser",
+    "addAction": "Tilføj handling",
+    "addActionHere": "Tilføj handling her",
+    "addConditionHere": "Tilføj betingelse her",
+    "addDelayHere": "Tilføj forsinkelse her",
+    "setAsStart": "Angiv som start",
+    "disconnect": "Afbryd forbindelsen",
+    "deleteConnection": "Slet forbindelsen",
+    "nodeDeleted": "Trin slettet",
+    "menuLabel": "Handlinger for {{label}}",
+    "paneMenuLabel": "Lærredshandlinger",
+    "edgeMenuLabel": "Forbindelseshandlinger"
+  },
   "breadcrumb": {
     "guild": "Server",
     "automation": "Automatisering"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Forbind udløseren med et trin — dette workflow har intet startpunkt",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

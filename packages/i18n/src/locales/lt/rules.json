@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Konfigūruoti",
+    "configureTrigger": "Konfigūruoti aktyviklį",
+    "addAction": "Pridėti veiksmą",
+    "addActionHere": "Pridėti veiksmą čia",
+    "addConditionHere": "Pridėti sąlygą čia",
+    "addDelayHere": "Pridėti delsą čia",
+    "setAsStart": "Nustatyti kaip pradžią",
+    "disconnect": "Atjungti",
+    "deleteConnection": "Ištrinti jungtį",
+    "nodeDeleted": "Žingsnis ištrintas",
+    "menuLabel": "Veiksmai su {{label}}",
+    "paneMenuLabel": "Drobės veiksmai",
+    "edgeMenuLabel": "Jungties veiksmai"
+  },
   "breadcrumb": {
     "guild": "Serveris",
     "automation": "Automatizavimas"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Sujunkite aktyviklį su žingsniu — ši darbo eiga neturi pradžios taško",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

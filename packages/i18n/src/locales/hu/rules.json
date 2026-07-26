@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Beállítás",
+    "configureTrigger": "Eseményindító beállítása",
+    "addAction": "Művelet hozzáadása",
+    "addActionHere": "Művelet hozzáadása ide",
+    "addConditionHere": "Feltétel hozzáadása ide",
+    "addDelayHere": "Késleltetés hozzáadása ide",
+    "setAsStart": "Beállítás kezdőlépésként",
+    "disconnect": "Kapcsolat bontása",
+    "deleteConnection": "Kapcsolat törlése",
+    "nodeDeleted": "Lépés törölve",
+    "menuLabel": "{{label}} műveletei",
+    "paneMenuLabel": "Vászon műveletei",
+    "edgeMenuLabel": "Kapcsolat műveletei"
+  },
   "breadcrumb": {
     "guild": "Szerver",
     "automation": "Automatizálás"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Kösse az eseményindítót egy lépéshez — ennek a munkafolyamatnak nincs kezdőpontja",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",
