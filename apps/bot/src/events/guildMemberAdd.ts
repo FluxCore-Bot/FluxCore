@@ -7,8 +7,8 @@ import { sendLogEmbed } from "@fluxcore/systems/logging/sender";
 import { formatMemberJoin } from "@fluxcore/systems/logging/formatter";
 import { getWelcomeConfig } from "@fluxcore/systems/welcome/config";
 import { buildWelcomeEmbed } from "@fluxcore/systems/welcome/builder";
-import { generateWelcomeImage, createStorageAdapter, sanitizeDisplayName } from "@fluxcore/systems/welcome/image";
-import { AttachmentBuilder, DiscordAPIError } from "discord.js";
+import { deliverWelcomeMessage } from "@fluxcore/systems/welcome/send";
+import { DiscordAPIError } from "discord.js";
 import { getAntiRaidConfig } from "@fluxcore/systems/antiraid/config";
 import { recordJoin } from "@fluxcore/systems/antiraid/tracker";
 import { executeRaidAction, lockdownGuild } from "@fluxcore/systems/antiraid/actions";
@@ -158,53 +158,18 @@ const event: Event<"guildMemberAdd"> = {
     // Welcome channel message
     if (welcomeConfig.welcomeEnabled && welcomeConfig.welcomeChannelId) {
       const channel = member.guild.channels.cache.get(welcomeConfig.welcomeChannelId);
-      if (channel?.isTextBased()) {
-        const embed = buildWelcomeEmbed(welcomeConfig.welcomeMessage, member);
-        const files: AttachmentBuilder[] = [];
-
-        // Generate welcome image if enabled
-        if (welcomeConfig.welcomeImageEnabled) {
-          try {
-            const storage = createStorageAdapter();
-            const safeUsername = sanitizeDisplayName(member.user.username, 32);
-            const safeDisplayName = sanitizeDisplayName(member.displayName, 80);
-            const safeGuildName = sanitizeDisplayName(member.guild.name, 80);
-            const imageBuffer = await generateWelcomeImage({
-              settings: welcomeConfig.welcomeImageConfig,
-              member: {
-                username: safeUsername,
-                displayName: safeDisplayName,
-                avatarUrl: member.user.displayAvatarURL({ extension: "png", size: 256 }),
-              },
-              guild: {
-                name: safeGuildName,
-                iconUrl: member.guild.iconURL({ size: 256 }) ?? undefined,
-                memberCount: member.guild.memberCount,
-              },
-              storage,
-            });
-            files.push(new AttachmentBuilder(imageBuffer, { name: "welcome.png" }));
-            embed.setImage("attachment://welcome.png");
-          } catch (err) {
-            logger.error(`Failed to generate welcome image in guild ${member.guild.id}`, err instanceof Error ? err : new Error(String(err)));
-          }
-        }
-
-        const sendMode = welcomeConfig.welcomeImageConfig.sendMode ?? "with";
-        if (sendMode === "only" && files.length > 0) {
-          await channel.send({ files }).catch((err) => {
-            logger.error(`Failed to send welcome image in guild ${member.guild.id}`, err instanceof Error ? err : new Error(String(err)));
-          });
-        } else if (sendMode === "before" && files.length > 0) {
-          await channel.send({ files }).catch(() => {});
-          await channel.send({ embeds: [embed] }).catch((err) => {
-            logger.error(`Failed to send welcome message in guild ${member.guild.id}`, err instanceof Error ? err : new Error(String(err)));
-          });
-        } else {
-          await channel.send({ embeds: [embed], files }).catch((err) => {
-            logger.error(`Failed to send welcome message in guild ${member.guild.id}`, err instanceof Error ? err : new Error(String(err)));
-          });
-        }
+      if (channel?.isTextBased() && channel.isSendable()) {
+        await deliverWelcomeMessage({
+          channel,
+          member,
+          style: welcomeConfig.welcomeMessageStyle,
+          content: welcomeConfig.welcomeContent,
+          embedConfig: welcomeConfig.welcomeMessage,
+          imageEnabled: welcomeConfig.welcomeImageEnabled,
+          imageSettings: welcomeConfig.welcomeImageConfig,
+          attachmentName: "welcome.png",
+          label: "welcome",
+        });
       }
     }
 

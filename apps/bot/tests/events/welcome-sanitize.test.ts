@@ -43,6 +43,8 @@ vi.mock("@fluxcore/systems/welcome/config", () => ({
     welcomeEnabled: true,
     welcomeChannelId: "ch-welcome",
     welcomeMessage: "hi",
+    welcomeMessageStyle: "embed",
+    welcomeContent: "",
     welcomeImageEnabled: true,
     welcomeImageConfig: { sendMode: "with" },
     dmEnabled: false,
@@ -54,6 +56,7 @@ vi.mock("@fluxcore/systems/welcome/builder", () => ({
   buildWelcomeEmbed: vi.fn().mockReturnValue({
     setImage: vi.fn().mockReturnThis(),
   }),
+  replaceWelcomeVariables: vi.fn((text: string) => text),
 }));
 
 const generateWelcomeImage = vi
@@ -93,6 +96,7 @@ describe("guildMemberAdd: sanitizes hostile names before canvas render", () => {
   it("strips RTL override and zero-width from username/displayName/guild.name", async () => {
     const sentChannel = {
       isTextBased: () => true,
+      isSendable: () => true,
       send: vi.fn().mockResolvedValue(undefined),
     };
     const member = {

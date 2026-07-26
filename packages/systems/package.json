@@ -138,6 +138,10 @@
       "types": "./dist/welcome/builder.d.ts",
       "import": "./dist/welcome/builder.js"
     },
+    "./welcome/send": {
+      "types": "./dist/welcome/send.d.ts",
+      "import": "./dist/welcome/send.js"
+    },
     "./welcome/image": {
       "types": "./dist/welcome/image/index.d.ts",
       "import": "./dist/welcome/image/index.js"
