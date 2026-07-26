@@ -135,7 +135,9 @@ async function keyFor(
   cookies?: Record<string, string>,
 ): Promise<string> {
   const res = await app.inject({ method: "GET", url: "/probe", cookies });
-  return res.json().key as string;
+  // res.json<T>() is generic — pass the shape rather than asserting it onto
+  // the default `any` return, which would be a cast.
+  return res.json<{ key: string }>().key;
 }
 
 describe("rateLimitKey", () => {
@@ -194,12 +196,12 @@ describe("rateLimitErrorResponse", () => {
       url: "/error-body",
       headers: { "accept-language": acceptLanguage },
     });
-    return res.json() as {
+    return res.json<{
       statusCode: number;
       error: string;
       errorKey: string;
       retryAfter: string;
-    };
+    }>();
   }
 
   it("returns a 429 body carrying the translation key and retry hint", async () => {
