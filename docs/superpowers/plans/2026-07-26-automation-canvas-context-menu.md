@@ -1897,7 +1897,7 @@ git commit -m "feat(automation): right-click menus on canvas nodes, edges, and p
 
 **Already translated — reused as-is, do not duplicate:** `rules:ruleList.duplicate`, `rules:panel.moveUp`, `rules:panel.moveDown`, `rules:panel.removeAction`, `rules:panel.removeStep`, `rules:editor.fitToView`, `common:actions.undo`.
 
-**The 13 new keys.** English source of truth:
+**The 13 new `contextMenu` keys.** English source of truth:
 
 ```json
 {
@@ -1918,6 +1918,16 @@ git commit -m "feat(automation): right-click menus on canvas nodes, edges, and p
 ```
 
 `menuLabel` interpolates a node label, not a count, so no plural categories are involved.
+
+**Plus one key in the existing `validation` object** (not in the `contextMenu` block — it belongs with the other validator messages):
+
+```json
+{
+  "noEntryStep": "Connect the trigger to a step — this workflow has no starting point"
+}
+```
+
+Task 5 added `t("validation.noEntryStep")` to `workflow-validation.ts`, which blocks saving a workflow whose step graph has no entry point. Until this task runs, that message renders as the raw key.
 
 - [ ] **Step 1: Write the insertion script**
 
@@ -1947,10 +1957,23 @@ for root in roots:
         if block is None:
             missing.append(f"no translations for {lang}")
             continue
-        body = json.dumps(block, ensure_ascii=False, indent=2).replace("\n", "\n  ")
+        cm = {k: v for k, v in block.items() if k != "noEntryStep"}
+        body = json.dumps(cm, ensure_ascii=False, indent=2).replace("\n", "\n  ")
         insert = f'\n  "contextMenu": {body},'
         brace = raw.index("{")
-        path.write_text(raw[: brace + 1] + insert + raw[brace + 1 :], encoding="utf-8")
+        raw = raw[: brace + 1] + insert + raw[brace + 1 :]
+
+        # validation.noEntryStep goes into the EXISTING validation object, not
+        # the new contextMenu one — insert after its opening brace.
+        marker = '"validation":'
+        if raw.count(marker) != 1:
+            missing.append(f"{path}: expected exactly one {marker}, found {raw.count(marker)}")
+            continue
+        at = raw.index("{", raw.index(marker) + len(marker))
+        entry = json.dumps(block["noEntryStep"], ensure_ascii=False)
+        raw = raw[: at + 1] + f'\n    "noEntryStep": {entry},' + raw[at + 1 :]
+
+        path.write_text(raw, encoding="utf-8")
         json.loads(path.read_text(encoding="utf-8"))  # fail loudly on malformed output
 
 if missing:
@@ -1961,7 +1984,7 @@ print("done")
 
 - [ ] **Step 2: Write the translations file**
 
-Create `/tmp/context-menu-translations.json`: an object keyed by each of the 48 locale directory names under `packages/i18n/src/locales`, each mapping to all 13 keys.
+Create `/tmp/context-menu-translations.json`: an object keyed by each of the 48 locale directory names under `packages/i18n/src/locales`, each mapping to all 14 keys — the 13 `contextMenu` strings plus `noEntryStep`. The insertion script splits them: `noEntryStep` goes into the existing `validation` object, the other 13 into a new `contextMenu` object.
 
 Rules:
 - Every locale gets a real translation. English strings in a non-English locale are a defect, not a fallback.
@@ -2000,7 +2023,9 @@ import json, pathlib, sys
 KEYS = {"configure","configureTrigger","addAction","addActionHere","addConditionHere",
         "addDelayHere","setAsStart","disconnect","deleteConnection","nodeDeleted",
         "menuLabel","paneMenuLabel","edgeMenuLabel"}
-en = json.load(open("packages/i18n/src/locales/en/rules.json", encoding="utf-8"))["contextMenu"]
+_en_rules = json.load(open("packages/i18n/src/locales/en/rules.json", encoding="utf-8"))
+en = _en_rules["contextMenu"]
+en_entry = _en_rules["validation"]["noEntryStep"]
 bad = []
 for root in ("src", "dist"):
     base = pathlib.Path(f"packages/i18n/{root}/locales")
@@ -2015,6 +2040,11 @@ for root in ("src", "dist"):
             bad.append(f"{root}/{lang_dir.name}: menuLabel lost its placeholder")
         if lang_dir.name != "en" and cm == en:
             bad.append(f"{root}/{lang_dir.name}: untranslated (identical to English)")
+        entry = data.get("validation", {}).get("noEntryStep")
+        if not entry:
+            bad.append(f"{root}/{lang_dir.name}: missing validation.noEntryStep")
+        elif lang_dir.name != "en" and entry == en_entry:
+            bad.append(f"{root}/{lang_dir.name}: validation.noEntryStep untranslated")
 print("\n".join(bad) if bad else "all 48 locales OK in src and dist")
 sys.exit(1 if bad else 0)
 PY
