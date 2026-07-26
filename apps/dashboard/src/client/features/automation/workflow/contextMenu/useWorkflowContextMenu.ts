@@ -21,7 +21,7 @@ export interface OpenContextMenu {
  */
 export function useWorkflowContextMenu() {
   const [menu, setMenu] = useState<OpenContextMenu | null>(null);
-  const { screenToFlowPosition } = useReactFlow();
+  const { screenToFlowPosition, getNode } = useReactFlow();
 
   const openNodeMenu = useCallback<NodeMouseHandler>((event, node) => {
     event.preventDefault();
@@ -63,12 +63,12 @@ export function useWorkflowContextMenu() {
     const nodeEl = active?.closest?.(".react-flow__node") as HTMLElement | null;
     if (nodeEl?.dataset.id) {
       const rect = nodeEl.getBoundingClientRect();
-      const labelled = nodeEl.querySelector("[role='group']");
+      const node = getNode(nodeEl.dataset.id);
       setMenu({
         target: { kind: "node", nodeId: nodeEl.dataset.id },
         x: rect.left + rect.width / 2,
         y: rect.top + rect.height / 2,
-        label: labelled?.getAttribute("aria-label") ?? undefined,
+        label: typeof node?.data?.label === "string" ? node.data.label : undefined,
       });
       return;
     }
@@ -81,7 +81,7 @@ export function useWorkflowContextMenu() {
       x,
       y,
     });
-  }, [screenToFlowPosition]);
+  }, [screenToFlowPosition, getNode]);
 
   const close = useCallback(() => setMenu(null), []);
 
