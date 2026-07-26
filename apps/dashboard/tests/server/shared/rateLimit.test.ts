@@ -44,7 +44,7 @@ async function keyFor(
   cookies?: Record<string, string>,
 ): Promise<string> {
   const res = await app.inject({ method: "GET", url: "/probe", cookies });
-  return res.json().key as string;
+  return res.json<{ key: string }>().key;
 }
 
 describe("rateLimitKey", () => {
@@ -95,7 +95,8 @@ describe("rateLimitErrorResponse", () => {
   });
 
   // Exercised through a real route so the function receives a genuine
-  // FastifyRequest. No hand-rolled fake, and therefore no cast — an
+  // FastifyRequest. No hand-rolled fake. The response body shape is supplied
+  // as a type argument to `res.json`, not asserted onto it with `as` — an
   // unnecessary cast is what hid the bug this whole change exists to fix.
   async function bodyFor(acceptLanguage: string) {
     const res = await app.inject({
@@ -103,12 +104,12 @@ describe("rateLimitErrorResponse", () => {
       url: "/error-body",
       headers: { "accept-language": acceptLanguage },
     });
-    return res.json() as {
+    return res.json<{
       statusCode: number;
       error: string;
       errorKey: string;
       retryAfter: string;
-    };
+    }>();
   }
 
   it("returns a 429 body carrying the translation key and retry hint", async () => {
