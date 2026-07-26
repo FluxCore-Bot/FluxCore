@@ -650,7 +650,7 @@ export function replaceImageVariables(
 }
 ```
 
-Note the replacement order: `{user.displayname}` and `{user.name}` are substituted before `{user}`, otherwise `{user}` matches their prefix and leaves `.displayname` stranded.
+The longer placeholders are substituted first as a defensive habit, but note that it is **not** load-bearing here: `{user}` is not a substring of `{user.name}` or `{user.displayname}`, because a `.` follows `user` rather than the closing brace. Both orders produce identical output. Do not write a test that asserts order-sensitivity as fact — it would assert something false.
 
 - [ ] **Step 4: Run the test to verify it passes**
 
