@@ -2182,7 +2182,11 @@ function AppCommandPalette({ guildId }: { guildId: string | undefined }) {
       }),
       ...serverCommands({ guilds: guilds ?? [] }),
     ],
-    [guildId, t, can, guilds, botInfo, refreshGuild, refreshGuilds],
+    // Depend on the `.mutate` callbacks, NOT the mutation objects: useMutation
+    // returns a fresh object every render, so depending on the objects rebuilds
+    // this memo every time and the commands array identity churns — which
+    // re-renders the palette continuously while it is open. `.mutate` is stable.
+    [guildId, t, can, guilds, botInfo, refreshGuild.mutate, refreshGuilds.mutate],
   );
 
   function onNavigate(command: Command) {
