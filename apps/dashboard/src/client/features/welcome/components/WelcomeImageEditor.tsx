@@ -84,6 +84,7 @@ export function WelcomeImageEditor({
   const prevUrlRef = useRef<string | null>(null);
   const serverUrlRef = useRef<string | null>(null);
   const clientRender = useLatestOnly();
+  const serverRender = useLatestOnly();
 
   const templates = templateData?.templates ?? [];
   const fonts = fontData?.fonts ?? [];
@@ -154,6 +155,8 @@ export function WelcomeImageEditor({
     if (previewMode !== "server") return;
 
     const timer = setTimeout(() => {
+      const token = serverRender.begin();
+
       setIsPending(true);
       setPreviewError(false);
 
@@ -161,12 +164,19 @@ export function WelcomeImageEditor({
         { settings, type },
         {
           onSuccess: (url) => {
+            if (!serverRender.isCurrent(token)) {
+              // Superseded while the request was in flight — drop our own
+              // result rather than revoking the newer render's live URL.
+              URL.revokeObjectURL(url);
+              return;
+            }
             if (serverUrlRef.current) URL.revokeObjectURL(serverUrlRef.current);
             serverUrlRef.current = url;
             setPreviewUrl(url);
             setIsPending(false);
           },
           onError: () => {
+            if (!serverRender.isCurrent(token)) return;
             setIsPending(false);
             setPreviewError(true);
             toast.error(t("imageEditor.toast.previewFailed"));
@@ -176,7 +186,7 @@ export function WelcomeImageEditor({
     }, 400);
 
     return () => clearTimeout(timer);
-  }, [settings, type, previewMode, t, refreshKey]);
+  }, [settings, type, previewMode, t, refreshKey, serverRender]);
 
   // Cleanup
   useEffect(() => {
