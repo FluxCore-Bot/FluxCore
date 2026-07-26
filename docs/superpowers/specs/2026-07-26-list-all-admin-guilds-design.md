@@ -25,7 +25,8 @@ picker, where they must re-find the server themselves.
 ## Goal
 
 List **every** server the user can manage, and mark the ones the bot has not
-been added to — turning each such card into a direct, preselected invite.
+been added to — turning each such card into a direct, preselected invite. Since
+that makes the list longer, add a client-side search over it.
 
 ## Non-goals
 
@@ -84,7 +85,7 @@ fails loudly in dev rather than rendering every card as bot-less.
 Takes a new `inviteUrl?: string` prop and branches on `guild.botPresent`:
 
 | `botPresent` | Renders |
-|---|---|
+| --- | --- |
 | `true` | Today's `<Link to="/guild/$guildId/overview">`, unchanged |
 | `false` + `inviteUrl` | `<a target="_blank" rel="noopener noreferrer">` to the invite, icon/name dimmed, "Bot not added" `Badge`, hover affordance reads "Add FluxCore" |
 | `false`, no `inviteUrl` | Same card, non-interactive (no anchor) — never a dead link |
@@ -101,12 +102,34 @@ Passes `inviteUrl={botInfo?.inviteUrl}` to each `GuildCard`. It already calls
 The empty state now means "you administer no servers at all" rather than "the
 bot is nowhere", so `empty.description` is corrected accordingly.
 
-### 5. i18n
+### 5. Client — search (`GuildSearch`)
 
-Two new keys in `guilds.json`:
+Listing every admin server makes the grid longer, so the page gains a
+client-side filter. `GuildSearch.tsx` exports two things:
+
+- `filterGuilds(guilds, query)` — a pure, case-insensitive substring match on
+  the guild name, trimming the query and preserving the server's ordering. Unit
+  tested directly, with no rendering.
+- `<GuildSearch>` — a controlled `Input` (`type="search"`, leading search icon)
+  plus an `aria-live="polite"` region announcing the result count as the user
+  types.
+
+The whole list is already in memory, so there is nothing to debounce or refetch.
+The field renders whenever the user has at least one server, rather than
+appearing past a magic threshold. When a query matches nothing, the grid is
+replaced by a `search.noResults` message quoting the query.
+
+Matching is on name only — not guild ID — to keep behaviour predictable.
+
+### 6. i18n
+
+New keys in `guilds.json`:
 
 - `badge.botNotAdded` — "Bot not added"
 - `addBot` — "Add FluxCore"
+- `addBotTo` — "Add FluxCore to {{name}}" (accessible name for the invite link)
+- `search.placeholder`, `search.noResults`, and the
+  `search.resultCount_one` / `_other` plural pair
 
 Appended to all 48 locale files under
 [packages/i18n/src/locales](../../../packages/i18n/src/locales), in English
@@ -134,6 +157,14 @@ assert bot-less guilds are *absent*; those invert:
 - `botPresent: false` → renders an external invite anchor carrying
   `guild_id=<id>`, plus the "Bot not added" badge
 - `botPresent: false` with no `inviteUrl` → renders no anchor
+
+**`apps/dashboard/tests/client/shared/components/GuildSearch.test.tsx`** (new) —
+
+- `filterGuilds`: empty/whitespace query returns everything; case-insensitive
+  substring match; query is trimmed; no match returns `[]`; server ordering is
+  preserved; bot-less guilds filter like installed ones
+- `GuildSearch`: reports each keystroke to the caller, announces the result
+  count in an `aria-live` region, and exposes a labelled `searchbox` role
 
 ## Risks
 
