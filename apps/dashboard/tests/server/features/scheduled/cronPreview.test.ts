@@ -72,18 +72,20 @@ describe("GET /scheduled-messages/preview-cron — DoS guards", () => {
     app = await buildApp();
   });
 
-  it("returns 429 after exceeding 5 requests per 10 seconds", async () => {
+  it("returns 429 after exceeding 40 requests per minute", async () => {
     const cookie = { session: app.signCookie("valid") };
-    let lastStatus = 0;
-    for (let i = 0; i < 7; i++) {
-      const res = await app.inject({
-        method: "GET",
-        url: "/api/guilds/guild-1/scheduled-messages/preview-cron?cronExpr=*+*+*+*+*",
-        cookies: cookie,
-      });
-      lastStatus = res.statusCode;
+    const url = "/api/guilds/guild-1/scheduled-messages/preview-cron?cronExpr=*+*+*+*+*";
+
+    // Assert the allowed requests succeed, not just that the last one fails —
+    // the old 5-per-10s limit would also leave a 429 at the end, so a
+    // last-status-only check would pass against the unchanged route.
+    for (let i = 0; i < 40; i++) {
+      const res = await app.inject({ method: "GET", url, cookies: cookie });
+      expect(res.statusCode).toBe(200);
     }
-    expect(lastStatus).toBe(429);
+
+    const blocked = await app.inject({ method: "GET", url, cookies: cookie });
+    expect(blocked.statusCode).toBe(429);
   });
 
   it("returns 400 when cron evaluation exceeds time budget", async () => {

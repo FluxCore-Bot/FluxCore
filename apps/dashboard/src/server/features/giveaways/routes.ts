@@ -1,6 +1,7 @@
 import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { rateLimits } from "../../shared/rateLimit.js";
 import {
   createGiveaway,
   getGiveaway,
@@ -54,14 +55,7 @@ export function registerGiveawayRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/giveaways",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("giveaways.list.manage")],
-      config: {
-        rateLimit: {
-          max: 10,
-          timeWindow: "1 minute",
-          keyGenerator: (req) =>
-            (req as { session?: { userId?: string } }).session?.userId ?? req.ip,
-        },
-      },
+      config: rateLimits.create,
       schema: withDocs({
         params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
         body: {

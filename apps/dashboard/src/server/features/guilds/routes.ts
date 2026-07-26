@@ -4,6 +4,7 @@ import { requireAuth } from "../../shared/middleware.js";
 import { isBotInGuild } from "../../shared/discordApi.js";
 import { canManageGuild } from "../../shared/guildPermissions.js";
 import { forceRefreshSessionGuilds, type OAuthGuild } from "../../shared/session.js";
+import { rateLimits } from "../../shared/rateLimit.js";
 
 /**
  * Filter the user's OAuth guilds down to the ones they can manage from the
@@ -80,7 +81,8 @@ export function registerGuildRoutes(app: FastifyInstance): void {
     "/api/guilds/refresh",
     {
       preHandler: [requireAuth],
-      config: { rateLimit: { max: 20, timeWindow: "1 minute" } },
+      // Re-fetches the user's guild list from the Discord OAuth API.
+      config: rateLimits.external,
       schema: withDocs(undefined, {
         tag: "Guilds",
         response: guildListResponseSchema,
