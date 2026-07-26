@@ -30,6 +30,7 @@
     "settings": "Definições"
   },
   "actions": {
+    "undo": "Desfazer",
     "save": "Guardar",
     "cancel": "Cancelar",
     "delete": "Eliminar",

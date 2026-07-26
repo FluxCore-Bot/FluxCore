@@ -30,6 +30,7 @@
     "settings": "Paramètres"
   },
   "actions": {
+    "undo": "Annuler",
     "save": "Enregistrer",
     "cancel": "Annuler",
     "delete": "Supprimer",

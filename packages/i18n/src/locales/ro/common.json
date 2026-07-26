@@ -30,6 +30,7 @@
     "settings": "Setări"
   },
   "actions": {
+    "undo": "Anulează",
     "save": "Salvează",
     "cancel": "Anulează",
     "delete": "Șterge",

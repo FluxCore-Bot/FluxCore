@@ -30,6 +30,7 @@
     "settings": "Seaded"
   },
   "actions": {
+    "undo": "Võta tagasi",
     "save": "Salvesta",
     "cancel": "Tühista",
     "delete": "Kustuta",

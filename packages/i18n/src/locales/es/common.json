@@ -30,6 +30,7 @@
     "settings": "Configuración"
   },
   "actions": {
+    "undo": "Deshacer",
     "save": "Guardar",
     "cancel": "Cancelar",
     "delete": "Eliminar",

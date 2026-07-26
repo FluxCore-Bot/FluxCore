@@ -30,6 +30,7 @@
     "settings": "Mga Setting"
   },
   "actions": {
+    "undo": "I-undo",
     "save": "I-save",
     "cancel": "Kanselahin",
     "delete": "Burahin",

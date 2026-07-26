@@ -30,6 +30,7 @@
     "settings": "設定"
   },
   "actions": {
+    "undo": "元に戻す",
     "save": "保存",
     "cancel": "キャンセル",
     "delete": "削除",

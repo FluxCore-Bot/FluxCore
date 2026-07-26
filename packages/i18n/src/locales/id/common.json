@@ -30,6 +30,7 @@
     "settings": "Pengaturan"
   },
   "actions": {
+    "undo": "Urungkan",
     "save": "Simpan",
     "cancel": "Batal",
     "delete": "Hapus",

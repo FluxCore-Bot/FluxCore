@@ -30,6 +30,7 @@
     "settings": "Innstillinger"
   },
   "actions": {
+    "undo": "Angre",
     "save": "Lagre",
     "cancel": "Avbryt",
     "delete": "Slett",

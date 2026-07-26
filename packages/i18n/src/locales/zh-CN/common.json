@@ -30,6 +30,7 @@
     "settings": "设置"
   },
   "actions": {
+    "undo": "撤销",
     "save": "保存",
     "cancel": "取消",
     "delete": "删除",

@@ -30,6 +30,7 @@
     "settings": "Ustawienia"
   },
   "actions": {
+    "undo": "Cofnij",
     "save": "Zapisz",
     "cancel": "Anuluj",
     "delete": "Usuń",

@@ -30,6 +30,7 @@
     "settings": "Ayarlar"
   },
   "actions": {
+    "undo": "Geri Al",
     "save": "Kaydet",
     "cancel": "İptal",
     "delete": "Sil",

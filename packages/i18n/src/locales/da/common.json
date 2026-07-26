@@ -30,6 +30,7 @@
     "settings": "Indstillinger"
   },
   "actions": {
+    "undo": "Fortryd",
     "save": "Gem",
     "cancel": "Annuller",
     "delete": "Slet",
