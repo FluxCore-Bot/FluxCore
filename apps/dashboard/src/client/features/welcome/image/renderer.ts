@@ -49,6 +49,11 @@ export async function renderWelcomeImagePreview(input: RenderInput): Promise<Gen
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("2d canvas context unavailable");
 
+  // The `unknown` hop is narrow: compiling the real DOM
+  // CanvasRenderingContext2D against Ctx2D<HTMLImageElement> shows it
+  // suppresses exactly one error — fillStyle's CanvasPattern member isn't in
+  // our narrower `string | GradientLike` union. Every method, `roundRect(...,
+  // radii: number)`, `direction`, `textAlign`, and `drawImage` all check out.
   await drawCard(
     ctx as unknown as Ctx2D<HTMLImageElement>,
     settings,

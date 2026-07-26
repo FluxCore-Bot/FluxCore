@@ -9,7 +9,17 @@ const FONT_BASE = "/fonts/welcome";
 /** Faces already loaded (or in flight), keyed by family+weight. */
 const inFlight = new Map<string, Promise<void>>();
 
-const HAS_EMOJI = /\p{Extended_Pictographic}/u;
+/**
+ * Extended_Pictographic alone misses two whole emoji classes that don't carry
+ * that Unicode property: regional-indicator flag pairs (e.g. "🇸🇦", each half
+ * is \p{Regional_Indicator}, U+1F1E6-U+1F1FF) and keycap sequences (e.g.
+ * "1️⃣", "#️⃣" — digit/hash + optional VS16 + U+20E3 COMBINING ENCLOSING
+ * KEYCAP). Both need NotoColorEmoji just as much as "🎉" does, and missing
+ * them means a flag in a welcome line renders correctly in the bot's PNG
+ * (which registers the emoji font unconditionally) but as tofu in this
+ * preview — exactly the client/server drift this plan exists to remove.
+ */
+const HAS_EMOJI = /\p{Extended_Pictographic}|\p{Regional_Indicator}|\u20E3/u;
 
 function loadFace(family: string, file: string, weight: number): Promise<void> {
   const key = `${family}:${weight}`;
