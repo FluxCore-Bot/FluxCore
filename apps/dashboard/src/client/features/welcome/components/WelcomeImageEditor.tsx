@@ -227,7 +227,16 @@ export function WelcomeImageEditor({
         });
         toast.success(t("imageEditor.toast.uploaded"));
       },
-      onError: () => toast.error(t("imageEditor.toast.uploadFailed")),
+      onError: (error) => {
+        // Same branch as the preview mutation: a 429 is not a failed upload,
+        // and saying "upload failed" makes a throttle read as a bug.
+        const isRateLimited = error instanceof ApiError && error.status === 429;
+        toast.error(
+          isRateLimited
+            ? t("errors:server.rateLimited")
+            : t("imageEditor.toast.uploadFailed"),
+        );
+      },
     });
   }
 
