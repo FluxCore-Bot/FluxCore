@@ -1,14 +1,19 @@
 // @vitest-environment jsdom
-import { describe, it, expect, vi, beforeAll } from "vitest";
+import { describe, it, expect, vi, beforeAll, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { WorkflowContextMenu } from "../../../../../src/client/features/automation/workflow/contextMenu/WorkflowContextMenu";
 import type { ContextMenuSection } from "../../../../../src/client/features/automation/workflow/contextMenu/types";
 
+// `vi.mock` factories are hoisted above these imports, so the mutable "current
+// direction" has to live in a `vi.hoisted` cell rather than a plain module
+// variable — that lets individual tests flip it (ltr/rtl) between renders.
+const mockDirection = vi.hoisted(() => ({ current: "ltr" as "ltr" | "rtl" }));
+
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
     t: (k: string, o?: Record<string, unknown>) => (o?.label ? `${k}:${o.label}` : k),
-    i18n: { dir: () => "ltr" },
+    i18n: { dir: () => mockDirection.current },
   }),
 }));
 
@@ -71,6 +76,10 @@ function setup(over: Partial<React.ComponentProps<typeof WorkflowContextMenu>> =
 }
 
 describe("WorkflowContextMenu", () => {
+  afterEach(() => {
+    mockDirection.current = "ltr";
+  });
+
   it("renders every item, translated, when open", async () => {
     setup();
     expect(await screen.findByRole("menuitem", { name: /contextMenu.configure/ })).toBeInTheDocument();
@@ -143,4 +152,13 @@ describe("WorkflowContextMenu", () => {
     expect(editorOverlay.compareDocumentPosition(menu) & Node.DOCUMENT_POSITION_FOLLOWING)
       .toBeTruthy();
   });
+
+  it.each(["ltr", "rtl"] as const)(
+    "applies the document's %s direction to the rendered menu",
+    async (direction) => {
+      mockDirection.current = direction;
+      setup();
+      expect(await screen.findByRole("menu")).toHaveAttribute("dir", direction);
+    },
+  );
 });
