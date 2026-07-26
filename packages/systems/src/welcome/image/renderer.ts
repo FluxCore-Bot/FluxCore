@@ -1,5 +1,6 @@
 import { createCanvas, loadImage, type SKRSContext2D, type Canvas } from "@napi-rs/canvas";
-import { registerFonts, getFontFamily } from "./fonts/index.js";
+import { registerFonts } from "./fonts/index.js";
+import { getLatinFont } from "./fonts/manifest.js";
 import { getTemplate } from "./templates/index.js";
 import { PRESET_GRADIENTS, type PresetBackground } from "./constants.js";
 import type {
@@ -167,6 +168,16 @@ function drawAvatarShape(
 }
 
 // ── Text Rendering ──
+
+/**
+ * Minimal local shim — Task 1 deliberately removed `getFontFamily` from
+ * fonts/index.ts (a bare family name without Arabic/emoji fallbacks is the
+ * bug being fixed). This keeps renderer.ts compiling until Task 3 rewrites
+ * this call site to use `buildFontSpec()` instead.
+ */
+function getFontFamily(name: string): string {
+  return getLatinFont(name).family;
+}
 
 function drawText(
   ctx: SKRSContext2D,

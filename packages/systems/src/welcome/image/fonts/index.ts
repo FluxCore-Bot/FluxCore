@@ -2,6 +2,7 @@ import { join, dirname } from "node:path";
 import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { GlobalFonts } from "@napi-rs/canvas";
+import { LATIN_FONTS, ARABIC_FONTS, EMOJI_FONT } from "./manifest.js";
 import { AVAILABLE_FONTS } from "../constants.js";
 import type { FontDefinition } from "../types.js";
 
@@ -13,55 +14,46 @@ let fontsRegistered = false;
  * Resolve the fonts/files directory.
  * In dev (tsx): src/welcome/image/fonts/ → files/ is a sibling
  * In dist:     dist/welcome/image/fonts/ → files/ is a sibling (copied by build script)
+ *
+ * Exported so the dashboard can serve the exact same bytes the bot renders with.
  */
-function getFontsDir(): string {
+export function getFontsDir(): string {
   const candidate = join(__dirname, "files");
   if (existsSync(candidate)) return candidate;
 
-  // Fallback: walk up to find src/welcome/image/fonts/files
-  const srcCandidate = join(__dirname, "..", "..", "..", "..", "src", "welcome", "image", "fonts", "files");
+  const srcCandidate = join(
+    __dirname, "..", "..", "..", "..", "src", "welcome", "image", "fonts", "files",
+  );
   if (existsSync(srcCandidate)) return srcCandidate;
 
-  return candidate; // Will fail at registration time with a clear error
+  return candidate;
 }
 
-/**
- * Register all bundled fonts with the canvas engine.
- * Safe to call multiple times — only registers once.
- */
+/** Register every bundled font. Safe to call repeatedly — registers once. */
 export function registerFonts(): void {
   if (fontsRegistered) return;
 
-  const fontsDir = getFontsDir();
-  for (const font of AVAILABLE_FONTS) {
-    const fontPath = join(fontsDir, font.file);
-    if (existsSync(fontPath)) {
-      GlobalFonts.registerFromPath(fontPath, font.name);
-    }
+  const dir = getFontsDir();
+  const all = [
+    ...LATIN_FONTS.map((f) => ({ family: f.family, file: f.file })),
+    ...Object.values(ARABIC_FONTS).map((f) => ({ family: f.family, file: f.file })),
+    { family: EMOJI_FONT.family, file: EMOJI_FONT.file },
+  ];
+
+  for (const font of all) {
+    const path = join(dir, font.file);
+    if (existsSync(path)) GlobalFonts.registerFromPath(path, font.family);
   }
 
   fontsRegistered = true;
 }
 
-/**
- * Get a font family string for canvas context.
- * Falls back to "Inter" if the requested font is not found.
- */
-export function getFontFamily(name: string): string {
-  const font = AVAILABLE_FONTS.find((f) => f.name === name);
-  return font ? font.name : "Inter";
-}
-
-/**
- * Get all available fonts for the dashboard UI.
- */
+/** All picker-selectable fonts for the dashboard UI. */
 export function getAvailableFonts(): FontDefinition[] {
   return [...AVAILABLE_FONTS];
 }
 
-/**
- * Check if a font name is valid/registered.
- */
+/** Whether a stored font id is known. */
 export function isValidFont(name: string): boolean {
   return AVAILABLE_FONTS.some((f) => f.name === name);
 }
