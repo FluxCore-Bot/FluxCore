@@ -2,6 +2,7 @@ import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
 import { randomUUID } from "node:crypto";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { rateLimits } from "../../shared/rateLimit.js";
 import { getWelcomeConfig, upsertWelcomeConfig } from "@fluxcore/systems/welcome/config";
 import {
   generateWelcomeImage,
@@ -188,6 +189,10 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/welcome/image/preview",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.config.view")],
+      // Full canvas render with a synchronous PNG encode plus a Discord CDN
+      // avatar fetch. The editor re-fires this on every settings change behind
+      // a 400ms debounce, so the ceiling sits above a slider drag's ~25/min.
+      config: rateLimits.heavy,
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -248,6 +253,8 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/welcome/image/background",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.config.manage")],
+      // Decodes up to 3MB of base64 and writes it to storage.
+      config: rateLimits.upload,
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -325,6 +332,8 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/welcome/image/background",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.config.manage")],
+      // Storage mutation; pairs with the upload route.
+      config: rateLimits.upload,
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
