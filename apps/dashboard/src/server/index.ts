@@ -8,6 +8,7 @@ import { join, dirname } from "node:path";
 import { readFile } from "node:fs/promises";
 import { config } from "@fluxcore/config";
 import { logger } from "@fluxcore/utils";
+import { getFontsDir } from "@fluxcore/systems/welcome/image";
 import {
   connectDatabase,
   disconnectDatabase,
@@ -137,6 +138,16 @@ export async function createApp(): Promise<FastifyInstance> {
     root: "/data/uploads",
     prefix: "/uploads/",
     decorateReply: false,
+  });
+
+  // Serve the exact font files the bot renders with, so the browser preview
+  // and the generated image resolve identical glyphs and metrics.
+  app.register(fastifyStatic, {
+    root: getFontsDir(),
+    prefix: "/fonts/welcome/",
+    decorateReply: false,
+    immutable: true,
+    maxAge: 31_536_000_000,
   });
 
   registerAuthRoutes(app);

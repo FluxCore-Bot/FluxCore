@@ -158,6 +158,22 @@
       "types": "./dist/welcome/image/fonts/index.d.ts",
       "import": "./dist/welcome/image/fonts/index.js"
     },
+    "./welcome/image/fonts/manifest": {
+      "types": "./dist/welcome/image/fonts/manifest.d.ts",
+      "import": "./dist/welcome/image/fonts/manifest.js"
+    },
+    "./welcome/image/core/draw": {
+      "types": "./dist/welcome/image/core/draw.d.ts",
+      "import": "./dist/welcome/image/core/draw.js"
+    },
+    "./welcome/image/core/text": {
+      "types": "./dist/welcome/image/core/text.d.ts",
+      "import": "./dist/welcome/image/core/text.js"
+    },
+    "./welcome/image/core/types": {
+      "types": "./dist/welcome/image/core/types.d.ts",
+      "import": "./dist/welcome/image/core/types.js"
+    },
     "./welcome/image/types": {
       "types": "./dist/welcome/image/types.d.ts",
       "import": "./dist/welcome/image/types.js"
