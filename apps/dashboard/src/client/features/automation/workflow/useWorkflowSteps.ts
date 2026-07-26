@@ -3,8 +3,52 @@ import { useTranslation } from "react-i18next";
 import type { Connection } from "@xyflow/react";
 import { toast } from "sonner";
 import type { ActionConfig, RuleStep, Constants } from "../../../shared/lib/schemas";
+import { parseNodeId } from "./contextMenu/buildItems";
 
 const emptyAction: ActionConfig = { type: "" };
+
+export interface WorkflowSnapshot {
+  actions: ActionConfig[];
+  steps?: RuleStep[];
+  entryStepId?: string;
+}
+
+/** Structured copy of a step under a new id, with every outgoing link cleared. */
+function cloneStep(step: RuleStep, newId: string): RuleStep {
+  if (step.type === "action") {
+    return { id: newId, type: "action", action: { ...step.action }, next: null };
+  }
+  if (step.type === "condition") {
+    return {
+      id: newId,
+      type: "condition",
+      condition: { ...step.condition },
+      thenNext: null,
+      elseNext: null,
+    };
+  }
+  return { id: newId, type: "delay", delayMs: step.delayMs, next: null };
+}
+
+/** Clear every link into and out of a step within a step list. */
+function severStep(list: RuleStep[], stepId: string): RuleStep[] {
+  return list.map((s) => {
+    const self =
+      s.id === stepId
+        ? s.type === "condition"
+          ? { ...s, thenNext: null, elseNext: null }
+          : { ...s, next: null }
+        : s;
+    if (self.type === "condition") {
+      return {
+        ...self,
+        thenNext: self.thenNext === stepId ? null : self.thenNext,
+        elseNext: self.elseNext === stepId ? null : self.elseNext,
+      };
+    }
+    return { ...self, next: self.next === stepId ? null : self.next };
+  });
+}
 
 export interface UseWorkflowStepsOptions {
   initialSteps?: RuleStep[];
@@ -66,8 +110,8 @@ export function useWorkflowSteps({
     setEntryStepId(triggerSevered ? undefined : (entry || undefined));
   }, [convertToStepMode]);
 
-  const addAction = useCallback(() => {
-    if (!constants) return;
+  const addAction = useCallback((): string | null => {
+    if (!constants) return null;
     if (isStepMode) {
       const newId = nextStepId();
       setSteps((prev) => [
@@ -75,12 +119,16 @@ export function useWorkflowSteps({
         { id: newId, type: "action" as const, action: { ...emptyAction }, next: null },
       ]);
       if (!entryStepId) setEntryStepId(newId);
-    } else if (actions.length < constants.maxActionsPerRule) {
-      setActions((prev) => [...prev, { ...emptyAction }]);
+      return `step-${newId}`;
     }
+    if (actions.length < constants.maxActionsPerRule) {
+      setActions((prev) => [...prev, { ...emptyAction }]);
+      return `action-${actions.length}`;
+    }
+    return null;
   }, [constants, actions.length, isStepMode, nextStepId, entryStepId]);
 
-  const addConditionStep = useCallback(() => {
+  const addConditionStep = useCallback((): string | null => {
     if (!isStepMode) {
       const { converted, entry, nextIdx } = convertToStepMode();
       const condId = `step_${nextIdx}`;
@@ -93,21 +141,22 @@ export function useWorkflowSteps({
       };
       setSteps([...converted, condStep]);
       setEntryStepId(entry || condId);
-    } else {
-      const newId = nextStepId();
-      const condStep: RuleStep = {
-        id: newId,
-        type: "condition",
-        condition: { field: "channelId", operator: "equals", value: "" },
-        thenNext: null,
-        elseNext: null,
-      };
-      setSteps((prev) => [...(prev ?? []), condStep]);
-      if (!entryStepId) setEntryStepId(newId);
+      return `step-${condId}`;
     }
+    const newId = nextStepId();
+    const condStep: RuleStep = {
+      id: newId,
+      type: "condition",
+      condition: { field: "channelId", operator: "equals", value: "" },
+      thenNext: null,
+      elseNext: null,
+    };
+    setSteps((prev) => [...(prev ?? []), condStep]);
+    if (!entryStepId) setEntryStepId(newId);
+    return `step-${newId}`;
   }, [isStepMode, convertToStepMode, nextStepId, entryStepId]);
 
-  const addDelayStep = useCallback(() => {
+  const addDelayStep = useCallback((): string | null => {
     if (!isStepMode) {
       const { converted, entry, nextIdx } = convertToStepMode();
       const delayId = `step_${nextIdx}`;
@@ -119,17 +168,18 @@ export function useWorkflowSteps({
       };
       setSteps([...converted, delayStep]);
       setEntryStepId(entry || delayId);
-    } else {
-      const newId = nextStepId();
-      const newStep: RuleStep = {
-        id: newId,
-        type: "delay",
-        delayMs: 5000,
-        next: null,
-      };
-      setSteps((prev) => [...(prev ?? []), newStep]);
-      if (!entryStepId) setEntryStepId(newId);
+      return `step-${delayId}`;
     }
+    const newId = nextStepId();
+    const newStep: RuleStep = {
+      id: newId,
+      type: "delay",
+      delayMs: 5000,
+      next: null,
+    };
+    setSteps((prev) => [...(prev ?? []), newStep]);
+    if (!entryStepId) setEntryStepId(newId);
+    return `step-${newId}`;
   }, [isStepMode, convertToStepMode, nextStepId, entryStepId]);
 
   const handleStepChange = useCallback((stepId: string, updatedStep: RuleStep) => {
@@ -164,6 +214,95 @@ export function useWorkflowSteps({
       setEntryStepId(nextId ?? undefined);
     }
   }, [steps, entryStepId]);
+
+  /**
+   * Index of a linear action inside the converted step list. `convertToStepMode`
+   * drops unconfigured actions, so the two indexes only line up when every
+   * earlier action has a type.
+   */
+  const convertedIndexOf = useCallback((actionIndex: number): number => {
+    if (!actions[actionIndex]?.type) return -1;
+    return actions.slice(0, actionIndex).filter((a) => a.type).length;
+  }, [actions]);
+
+  const duplicateNode = useCallback((nodeId: string): string | null => {
+    const parsed = parseNodeId(nodeId);
+    if (!parsed) return null;
+
+    if (parsed.kind === "action") {
+      if (!constants || actions.length >= constants.maxActionsPerRule) return null;
+      const source = actions[parsed.index];
+      if (!source) return null;
+      setActions((prev) => [
+        ...prev.slice(0, parsed.index + 1),
+        { ...source },
+        ...prev.slice(parsed.index + 1),
+      ]);
+      return `action-${parsed.index + 1}`;
+    }
+
+    if (parsed.kind === "step") {
+      const source = steps?.find((s) => s.id === parsed.stepId);
+      if (!source) return null;
+      const newId = nextStepId();
+      setSteps((prev) => [...(prev ?? []), cloneStep(source, newId)]);
+      return `step-${newId}`;
+    }
+
+    return null;
+  }, [actions, constants, steps, nextStepId]);
+
+  const disconnectNode = useCallback((nodeId: string) => {
+    const parsed = parseNodeId(nodeId);
+    if (!parsed) return;
+
+    if (parsed.kind === "step") {
+      setSteps((prev) => (prev ? severStep(prev, parsed.stepId) : prev));
+      if (entryStepId === parsed.stepId) setEntryStepId(undefined);
+      return;
+    }
+
+    if (parsed.kind === "action") {
+      const convertedIndex = convertedIndexOf(parsed.index);
+      if (convertedIndex < 0) return;
+      const { converted, entry } = convertToStepMode();
+      const targetId = converted[convertedIndex]?.id;
+      if (!targetId) return;
+      setSteps(severStep(converted, targetId));
+      setEntryStepId(entry === targetId ? undefined : entry || undefined);
+    }
+  }, [entryStepId, convertedIndexOf, convertToStepMode]);
+
+  const setAsStart = useCallback((nodeId: string) => {
+    const parsed = parseNodeId(nodeId);
+    if (!parsed) return;
+
+    if (parsed.kind === "step") {
+      setEntryStepId(parsed.stepId);
+      return;
+    }
+
+    if (parsed.kind === "action") {
+      const convertedIndex = convertedIndexOf(parsed.index);
+      if (convertedIndex < 0) return;
+      const { converted } = convertToStepMode();
+      const targetId = converted[convertedIndex]?.id;
+      if (!targetId) return;
+      setSteps(converted);
+      setEntryStepId(targetId);
+    }
+  }, [convertedIndexOf, convertToStepMode]);
+
+  const snapshot = useCallback(
+    (): WorkflowSnapshot => ({ actions, steps, entryStepId }),
+    [actions, steps, entryStepId],
+  );
+
+  const restore = useCallback((snap: WorkflowSnapshot) => {
+    setActions(snap.actions);
+    setSteps(snap.steps);
+    setEntryStepId(snap.entryStepId);
+  }, []);
 
   // --- Connection helpers ---
 
@@ -321,5 +460,10 @@ export function useWorkflowSteps({
     convertAndSeverEdges,
     nodeIdToStepId,
     setEntryStepId,
+    duplicateNode,
+    disconnectNode,
+    setAsStart,
+    snapshot,
+    restore,
   };
 }
