@@ -13,6 +13,7 @@ interface UseWorkflowKeyboardOptions {
   onActionReset: (index: number) => void;
   onActionMove: (index: number, direction: "up" | "down") => void;
   onStepRemove: (stepId: string) => void;
+  onOpenContextMenu: () => void;
 }
 
 export function useWorkflowKeyboard({
@@ -28,6 +29,7 @@ export function useWorkflowKeyboard({
   onActionReset,
   onActionMove,
   onStepRemove,
+  onOpenContextMenu,
 }: UseWorkflowKeyboardOptions) {
   const handler = useCallback(
     (e: KeyboardEvent) => {
@@ -42,6 +44,11 @@ export function useWorkflowKeyboard({
         } else {
           onClose();
         }
+        return;
+      }
+      if (e.key === "ContextMenu" || (e.key === "F10" && e.shiftKey)) {
+        e.preventDefault();
+        onOpenContextMenu();
         return;
       }
       if (e.key === "s" && (e.metaKey || e.ctrlKey)) {
@@ -82,7 +89,7 @@ export function useWorkflowKeyboard({
         return;
       }
     },
-    [selectedNode, isStepMode, actionsLength, onClose, onDeselectNode, onSubmit, onFitView, onAddAction, onActionRemove, onActionReset, onActionMove, onStepRemove],
+    [selectedNode, isStepMode, actionsLength, onClose, onDeselectNode, onSubmit, onFitView, onAddAction, onActionRemove, onActionReset, onActionMove, onStepRemove, onOpenContextMenu],
   );
 
   useEffect(() => {
