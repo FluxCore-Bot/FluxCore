@@ -53,11 +53,15 @@ import Fastify from "fastify";
 import fastifyCookie from "@fastify/cookie";
 import fastifyRateLimit from "@fastify/rate-limit";
 import { registerScheduledMessageRoutes } from "../../../../src/server/features/scheduled/routes.js";
+import { globalRateLimitOptions } from "../../../../src/server/shared/rateLimit.js";
 
 async function buildApp() {
   const app = Fastify();
   await app.register(fastifyCookie, { secret: "test-secret" });
-  await app.register(fastifyRateLimit, { global: false });
+  // Mirror index.ts. Registering `{ global: false }` instead would skip the
+  // shared keyGenerator entirely, so the session cookie below would do nothing
+  // and every request would silently share one IP-derived bucket.
+  await app.register(fastifyRateLimit, globalRateLimitOptions);
   registerScheduledMessageRoutes(app);
   await app.ready();
   return app;
