@@ -137,8 +137,9 @@ assumed.
 | Add action here / Duplicate | linear mode and `actions.length >= constants.maxActionsPerRule` |
 | Move up | linear mode and `index === 0` |
 | Move down | linear mode and `index === actions.length - 1` |
-| Set as start | the node is already `entryStepId` |
+| Set as start | the node is already the entry (`entryStepId`, or `action-0` in linear mode) |
 | Disconnect | the node has no incoming and no outgoing connection |
+| Set as start / Disconnect | linear mode and the action has no type — `convertToStepMode()` drops unconfigured actions, so there is no step for these verbs to point at |
 
 Disabled items stay visible and are rendered through `DropdownMenuItem`'s `disabled` prop, which
 Radix already styles at 50% opacity and skips during arrow-key navigation.
