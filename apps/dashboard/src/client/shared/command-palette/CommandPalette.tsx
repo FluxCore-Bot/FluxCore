@@ -22,7 +22,13 @@ export function CommandPalette({
   const groups = useMemo(() => buildGroups(commands, query), [commands, query]);
   const flat = useMemo(() => flatten(groups), [groups]);
 
-  const optionId = (command: Command) => `${baseId}-opt-${command.id}`;
+  /**
+   * Keyed on group AND id: recent destinations are re-grouped copies that keep
+   * the original's id, so the same id appears twice in `flat`. Keying on id
+   * alone would emit duplicate DOM ids, mark both rows aria-selected, and make
+   * `aria-activedescendant` resolve to whichever came first.
+   */
+  const optionId = (command: Command) => `${baseId}-opt-${command.group}-${command.id}`;
   const activeId = flat[cursor] ? optionId(flat[cursor]) : null;
 
   // A fresh query means a fresh list; leaving the cursor where it was would
@@ -112,7 +118,11 @@ export function CommandPalette({
               optionId={optionId}
               onActivate={activate}
               onHover={(command) =>
-                setCursor(flat.findIndex((c) => c.id === command.id))
+                setCursor(
+                  flat.findIndex(
+                    (c) => c.group === command.group && c.id === command.id,
+                  ),
+                )
               }
             />
           ))}

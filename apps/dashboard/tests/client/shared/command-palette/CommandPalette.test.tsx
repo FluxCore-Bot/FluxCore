@@ -225,4 +225,63 @@ describe("CommandPalette", () => {
     await user.keyboard("{Enter}");
     expect(onNavigate).not.toHaveBeenCalled();
   });
+
+  /**
+   * Recent destinations are re-grouped COPIES that keep the original's `id`, so
+   * the same id legitimately appears twice in the flattened list. A row's
+   * identity is therefore (group, id), not id alone. Keying option ids or cursor
+   * lookups on `id` by itself makes the copy and its original indistinguishable.
+   */
+  describe("duplicate ids across groups", () => {
+    const withRecent: Command[] = [
+      { id: "p1", group: "recent", title: "Overview", icon: "dashboard", to: "/a" },
+      ...commands,
+    ];
+
+    function setupDuped(onNavigate = vi.fn()) {
+      const user = userEvent.setup();
+      render(
+        <CommandPaletteProvider>
+          <CommandPalette commands={withRecent} onNavigate={onNavigate} />
+        </CommandPaletteProvider>,
+      );
+      return { user, onNavigate };
+    }
+
+    it("gives every row a unique DOM id", async () => {
+      const { user } = setupDuped();
+      await open(user);
+      const ids = screen.getAllByRole("option").map((el) => el.id);
+      expect(new Set(ids).size).toBe(ids.length);
+    });
+
+    it("marks exactly one row selected when a copy shares an id", async () => {
+      const { user } = setupDuped();
+      await open(user);
+      const selected = screen
+        .getAllByRole("option")
+        .filter((el) => el.getAttribute("aria-selected") === "true");
+      expect(selected).toHaveLength(1);
+    });
+
+    it("moves the cursor to the hovered row, not its same-id twin", async () => {
+      const { user } = setupDuped();
+      await open(user);
+      // "Overview" renders twice: once under Recent (first group) and once
+      // under Pages. Hovering the second must not select the first.
+      const overviews = screen
+        .getAllByRole("option")
+        .filter((el) => el.textContent?.includes("Overview"));
+      expect(overviews).toHaveLength(2);
+      const pagesCopy = overviews[1];
+
+      await user.hover(pagesCopy);
+      expect(screen.getByRole("combobox")).toHaveAttribute(
+        "aria-activedescendant",
+        pagesCopy.id,
+      );
+      expect(pagesCopy).toHaveAttribute("aria-selected", "true");
+      expect(overviews[0]).toHaveAttribute("aria-selected", "false");
+    });
+  });
 });
