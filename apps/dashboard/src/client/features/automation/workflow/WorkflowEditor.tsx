@@ -316,6 +316,13 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     setSelectedNode(null);
   }, []);
 
+  /**
+   * Read by `handleSelectionChange` at call time so that callback can keep a
+   * stable identity — see the comment there for why that matters.
+   */
+  const contextMenuNodeIdRef = useRef(contextMenu.contextMenuNodeId);
+  contextMenuNodeIdRef.current = contextMenu.contextMenuNodeId;
+
   // Open the detail panel when a node is activated by the keyboard (Tab to focus,
   // then Enter/Space to select). Mouse clicks are handled by onNodeClick; this
   // only reacts to single-node selection so multi-select drags are ignored.
@@ -324,12 +331,20 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
       // The context-menu ring is rendered via `selected: true` too (see the
       // `selectedNodeId` fallback fed into useWorkflowNodes), so React Flow's
       // own SelectionListener fires here on a plain right-click. Without this
-      // guard that would open NodeDetailPanel underneath the menu and leave
-      // it open after the menu closes — exactly what subtlety #2 forbids.
-      // Once the menu closes, contextMenuNodeId -> null, the node recomputes
-      // to selected:false, and this fires again with an empty selection,
-      // which the length !== 1 guard below already ignores.
-      if (contextMenu.contextMenuNodeId) return;
+      // guard that would open NodeDetailPanel underneath the menu.
+      //
+      // The guard reads a ref rather than the value itself, and this callback
+      // takes no dependencies, both deliberately. React Flow's
+      // SelectionListener keeps `onSelectionChange` in its own effect deps, so
+      // any change of identity here re-runs that effect and re-delivers the
+      // *current* selection. Depending on `contextMenuNodeId` therefore fired
+      // this callback again the moment the menu closed — unguarded by then,
+      // and while the node's `selected` flag was still stale, because the sync
+      // effect that clears it had not run yet. The result was a panel opening
+      // on every menu close, by any path. A stable identity leaves that effect
+      // keyed on `[selectedNodes, edges]` alone, so it now runs only when the
+      // selection genuinely changes.
+      if (contextMenuNodeIdRef.current) return;
       if (selectedNodes.length !== 1) return;
       const node = selectedNodes[0];
       if (node.id === "trigger") {
@@ -341,7 +356,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
         if (!isNaN(index)) setSelectedNode({ type: "action", index });
       }
     },
-    [contextMenu.contextMenuNodeId],
+    [],
   );
 
   /** Validate whether a proposed connection is allowed */

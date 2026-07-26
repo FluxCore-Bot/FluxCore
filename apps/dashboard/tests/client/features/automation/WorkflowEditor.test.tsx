@@ -249,6 +249,65 @@ describe("WorkflowEditor — a context-menu move and the open panel", () => {
   });
 });
 
+describe("WorkflowEditor — the detail panel after the menu closes", () => {
+  // The suite's first test covers the panel while the menu is *open*. These
+  // cover after it closes, which is where the guard actually failed: React
+  // Flow's SelectionListener re-delivers the current selection whenever
+  // `onSelectionChange` changes identity, so a callback that depended on
+  // `contextMenuNodeId` re-fired unguarded on close, against a `selected`
+  // flag that was still stale.
+
+  it("stays closed after Escape dismisses the menu", async () => {
+    const user = userEvent.setup();
+    renderEditor(threeActions);
+
+    fireEvent.contextMenu(await findActionNode(1), { clientX: 120, clientY: 80 });
+    await screen.findByRole("menu");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+    await user.keyboard("{Escape}");
+    await waitFor(() => expect(screen.queryByRole("menu")).not.toBeInTheDocument());
+
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
+
+  it("stays closed after an ordinary menu item runs", async () => {
+    renderEditor(threeActions);
+
+    // Duplicate is representative of the verbs that act on the graph without
+    // any claim on the panel. Configure is the one item that *should* open it,
+    // and is covered separately below.
+    await chooseFromNodeMenu(await findActionNode(1), "ruleList.duplicate");
+    await waitFor(() => expect(screen.queryByRole("menu")).not.toBeInTheDocument());
+
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
+
+  it("still opens when the menu's Configure item asks for it", async () => {
+    renderEditor(threeActions);
+
+    await chooseFromNodeMenu(await findActionNode(1), "contextMenu.configure");
+
+    expect(await screen.findByRole("dialog")).toBeInTheDocument();
+    expect(panelHeading()).toContain('panel.action:{"index":1}');
+  });
+
+  it("still opens when a node is activated from the keyboard", async () => {
+    // The guard must not suppress a genuine selection change. Mouse clicks
+    // reach the panel through onNodeClick and would pass regardless, so this
+    // drives the path that goes through the selection listener itself:
+    // React Flow selects a focused node on Enter.
+    renderEditor(threeActions);
+
+    const node = await findActionNode(2);
+    node.focus();
+    fireEvent.keyDown(node, { key: "Enter" });
+
+    expect(await screen.findByRole("dialog")).toBeInTheDocument();
+    expect(panelHeading()).toContain('panel.action:{"index":2}');
+  });
+});
+
 describe("WorkflowEditor — context menu focus restoration", () => {
   it("returns focus to the node after Escape closes a keyboard-opened menu", async () => {
     const user = userEvent.setup();
