@@ -39,6 +39,7 @@ import {
   type WelcomeImageSettings,
 } from "../hooks/useWelcome";
 import { useAuth } from "../../../shared/hooks/useAuth";
+import { useLatestOnly } from "../image/useLatestOnly";
 
 const PRESET_GRADIENT_COLORS: Record<string, string> = {
   midnight: "from-[#0f0c29] via-[#302b63] to-[#24243e]",
@@ -82,6 +83,7 @@ export function WelcomeImageEditor({
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const prevUrlRef = useRef<string | null>(null);
   const serverUrlRef = useRef<string | null>(null);
+  const clientRender = useLatestOnly();
 
   const templates = templateData?.templates ?? [];
   const fonts = fontData?.fonts ?? [];
@@ -99,6 +101,8 @@ export function WelcomeImageEditor({
   // Client-side render — instant, no debounce
   useEffect(() => {
     if (previewMode !== "client") return;
+
+    const token = clientRender.begin();
 
     setIsPending(true);
     setPreviewError(false);
@@ -122,11 +126,19 @@ export function WelcomeImageEditor({
           },
         });
 
+        if (!clientRender.isCurrent(token)) {
+          // Superseded while we were rendering — drop our own result rather
+          // than revoking the newer render's live URL.
+          URL.revokeObjectURL(result.url);
+          return;
+        }
+
         if (prevUrlRef.current) URL.revokeObjectURL(prevUrlRef.current);
         prevUrlRef.current = result.url;
         setPreviewUrl(result.url);
         setIsPending(false);
       } catch {
+        if (!clientRender.isCurrent(token)) return;
         setIsPending(false);
         setPreviewError(true);
       }
@@ -135,7 +147,7 @@ export function WelcomeImageEditor({
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [settings, previewMode, user, avatarUrl, refreshKey]);
+  }, [settings, previewMode, user, avatarUrl, refreshKey, clientRender]);
 
   // Server-side preview — debounced since it's a network request
   useEffect(() => {
