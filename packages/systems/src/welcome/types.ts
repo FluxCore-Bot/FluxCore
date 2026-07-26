@@ -25,14 +25,21 @@ export interface WelcomeImageSettings {
   sendMode: "with" | "before" | "only";
 }
 
+/** How a welcome/farewell message is delivered. */
+export type MessageStyle = "plain" | "embed";
+
 export interface WelcomeConfig {
   guildId: string;
   welcomeEnabled: boolean;
   welcomeChannelId: string | null;
   welcomeMessage: EmbedConfig;
+  welcomeMessageStyle: MessageStyle;
+  welcomeContent: string;
   farewellEnabled: boolean;
   farewellChannelId: string | null;
   farewellMessage: EmbedConfig;
+  farewellMessageStyle: MessageStyle;
+  farewellContent: string;
   dmEnabled: boolean;
   dmMessage: EmbedConfig;
   autoRoleIds: string[];
