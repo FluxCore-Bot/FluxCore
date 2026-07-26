@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import type { GuildMember, SendableChannels } from "discord.js";
+import type { WelcomeMember } from "../../../src/welcome/types.js";
 
 vi.mock("@fluxcore/utils", () => ({
   logger: { debug: vi.fn(), info: vi.fn(), warn: vi.fn(), error: vi.fn() },
@@ -105,49 +105,39 @@ describe("embed message style is unchanged", () => {
   });
 });
 
-// --- deliverWelcomeMessage: proves the shared deliverer sanitizes both paths ---
+// --- deliverWelcomeMessage test doubles ---
 //
-// guildMemberRemove previously passed raw display names straight to the
-// canvas renderer while guildMemberAdd sanitized them first (SEC-BOT-03).
-// Now both events call this one function, so there is only one code path to
-// prove correct. Rather than grep the source for call counts (which breaks
-// the moment the implementation is legitimately restructured), this drives
-// deliverWelcomeMessage end-to-end with a hostile display name and asserts
-// on what actually reaches the renderer — real behaviour, not source text.
-//
-// discord.js's GuildMember/SendableChannels are large classes with dozens
-// of unrelated methods (kick, ban, timeout, ...); building a literal that
-// structurally satisfies them without `as` is impractical, and the
-// project's own committed tests (e.g. welcome.test.ts's createMockMember)
-// already use this exact cast for the same reason. It is confined to test
-// doubles only — no cast appears anywhere in send.ts or the event handlers.
-function mockMember(hostileText: string): GuildMember {
+// WelcomeMember (types.ts) and the private MessageSink interface (send.ts)
+// are narrow structural types — exactly the fields deliverWelcomeMessage's
+// dependencies read, not discord.js's GuildMember/SendableChannels (each a
+// large class/union with dozens of members nothing here touches). A real
+// GuildMember/channel satisfies them for free in production, and here a
+// bare object literal satisfies them for free too — no `as` cast needed at
+// either end.
+function mockMember(
+  overrides: Partial<{ username: string; displayName: string; guildName: string }> = {},
+): WelcomeMember {
+  const { username = "Alice", displayName = username, guildName = "Test Server" } = overrides;
   return {
     id: "member-1",
-    displayName: hostileText,
+    displayName,
     user: {
-      id: "member-1",
-      tag: "Hostile#0001",
-      username: hostileText,
+      tag: "Alice#0001",
+      username,
       displayAvatarURL: () => "https://cdn.example.com/avatar.png",
     },
     guild: {
       id: "guild-1",
-      name: hostileText,
+      name: guildName,
       memberCount: 10,
       iconURL: () => null,
     },
-  } as unknown as GuildMember;
+  };
 }
 
 function mockChannel() {
   const send = vi.fn().mockResolvedValue(undefined);
-  const channel = {
-    isTextBased: () => true,
-    isSendable: () => true,
-    send,
-  } as unknown as SendableChannels;
-  return { channel, send };
+  return { channel: { send }, send };
 }
 
 describe("deliverWelcomeMessage sanitisation", () => {
@@ -165,7 +155,7 @@ describe("deliverWelcomeMessage sanitisation", () => {
     const { channel } = mockChannel();
     await deliverWelcomeMessage({
       channel,
-      member: mockMember(HOSTILE),
+      member: mockMember({ username: HOSTILE, displayName: HOSTILE, guildName: HOSTILE }),
       style: "embed",
       content: "",
       embedConfig: {},
@@ -187,7 +177,7 @@ describe("deliverWelcomeMessage sanitisation", () => {
     const { channel } = mockChannel();
     await deliverWelcomeMessage({
       channel,
-      member: mockMember(HOSTILE),
+      member: mockMember({ username: HOSTILE, displayName: HOSTILE, guildName: HOSTILE }),
       style: "embed",
       content: "",
       embedConfig: {},
@@ -209,7 +199,7 @@ describe("deliverWelcomeMessage sanitisation", () => {
     const { channel, send } = mockChannel();
     await deliverWelcomeMessage({
       channel,
-      member: mockMember("Alice"),
+      member: mockMember(),
       style: "embed",
       content: "",
       embedConfig: { title: "Bye" },
@@ -221,5 +211,60 @@ describe("deliverWelcomeMessage sanitisation", () => {
 
     expect(mockGenerateWelcomeImage).not.toHaveBeenCalled();
     expect(send).toHaveBeenCalledTimes(1);
+  });
+});
+
+// --- deliverWelcomeMessage: the plain-style feature, proven end to end ---
+//
+// The three tests above all use style: "embed" with content: "" — none of
+// them exercise the headline feature of this task (plain-mode variable
+// substitution into the message actually posted). These drive
+// deliverWelcomeMessage in plain style and assert on the literal object
+// handed to channel.send, not just a call count.
+describe("deliverWelcomeMessage plain style end-to-end", () => {
+  beforeEach(() => {
+    mockGenerateWelcomeImage.mockClear();
+  });
+
+  it("substitutes {user} into a real mention, carries files, and omits embeds", async () => {
+    const { channel, send } = mockChannel();
+    await deliverWelcomeMessage({
+      channel,
+      member: mockMember(),
+      style: "plain",
+      content: "Welcome {user} to {server}!",
+      embedConfig: { title: "never built in plain style" },
+      imageEnabled: true,
+      imageSettings: DEFAULT_WELCOME_IMAGE_SETTINGS,
+      attachmentName: "welcome.png",
+      label: "welcome",
+    });
+
+    expect(send).toHaveBeenCalledTimes(1);
+    const payload = send.mock.calls[0]![0];
+    expect(payload.content).toBe("Welcome <@member-1> to Test Server!");
+    expect(payload.files).toHaveLength(1);
+    expect(payload).not.toHaveProperty("embeds");
+  });
+
+  it("posts text only, with no files key, when the image is disabled", async () => {
+    const { channel, send } = mockChannel();
+    await deliverWelcomeMessage({
+      channel,
+      member: mockMember(),
+      style: "plain",
+      content: "Bye {user}, {server} will miss you.",
+      embedConfig: {},
+      imageEnabled: false,
+      imageSettings: DEFAULT_WELCOME_IMAGE_SETTINGS,
+      attachmentName: "farewell.png",
+      label: "farewell",
+    });
+
+    expect(send).toHaveBeenCalledTimes(1);
+    const payload = send.mock.calls[0]![0];
+    expect(payload.content).toBe("Bye <@member-1>, Test Server will miss you.");
+    expect(payload).not.toHaveProperty("files");
+    expect(payload).not.toHaveProperty("embeds");
   });
 });

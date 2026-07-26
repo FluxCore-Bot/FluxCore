@@ -1,8 +1,8 @@
-import { EmbedBuilder, type GuildMember } from "discord.js";
-import type { EmbedConfig } from "./types.js";
+import { EmbedBuilder } from "discord.js";
+import type { EmbedConfig, WelcomeMember } from "./types.js";
 import { WELCOME_VARIABLES } from "./constants.js";
 
-export function replaceWelcomeVariables(text: string, member: GuildMember): string {
+export function replaceWelcomeVariables(text: string, member: WelcomeMember): string {
   let result = text;
   for (const [variable, resolver] of Object.entries(WELCOME_VARIABLES)) {
     if (result.includes(variable)) {
@@ -12,7 +12,7 @@ export function replaceWelcomeVariables(text: string, member: GuildMember): stri
   return result;
 }
 
-export function buildWelcomeEmbed(embedConfig: EmbedConfig, member: GuildMember): EmbedBuilder {
+export function buildWelcomeEmbed(embedConfig: EmbedConfig, member: WelcomeMember): EmbedBuilder {
   const embed = new EmbedBuilder();
 
   if (embedConfig.title) {

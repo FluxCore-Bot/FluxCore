@@ -1,8 +1,8 @@
-import { AttachmentBuilder, type GuildMember, type SendableChannels } from "discord.js";
+import { AttachmentBuilder, EmbedBuilder } from "discord.js";
 import { logger } from "@fluxcore/utils";
 import { buildWelcomeEmbed, replaceWelcomeVariables } from "./builder.js";
 import { generateWelcomeImage, createStorageAdapter, sanitizeDisplayName } from "./image/index.js";
-import type { EmbedConfig, MessageStyle, WelcomeImageSettings } from "./types.js";
+import type { EmbedConfig, MessageStyle, WelcomeImageSettings, WelcomeMember } from "./types.js";
 
 /** Discord's hard limit on message content length. */
 const MAX_CONTENT_LENGTH = 2000;
@@ -50,9 +50,19 @@ export function buildSendPayloads<TEmbed, TFile>(
   return [{ embeds: [embed], files }];
 }
 
+/**
+ * The subset of a Discord channel that welcome/farewell delivery actually
+ * uses. A real `SendableChannels` satisfies this for free; unit tests can
+ * pass a bare `{ send: vi.fn() }` with no `as` cast, since `SendableChannels`
+ * is itself a large discord.js union that nothing here needs beyond `send`.
+ */
+interface MessageSink {
+  send(payload: SendPayload<EmbedBuilder, AttachmentBuilder>): Promise<unknown>;
+}
+
 export interface DeliverOptions {
-  channel: SendableChannels;
-  member: GuildMember;
+  channel: MessageSink;
+  member: WelcomeMember;
   style: MessageStyle;
   /** Plain-mode text, variables NOT yet substituted. */
   content: string;
@@ -105,7 +115,11 @@ export async function deliverWelcomeMessage(options: DeliverOptions): Promise<vo
     }
   }
 
-  const embed = buildWelcomeEmbed(embedConfig, member);
+  // Plain style never shows the embed (buildSendPayloads discards it below),
+  // so it must not be exposed to a guild's stored embedConfig at all — e.g.
+  // an out-of-range stored color throws inside EmbedBuilder.setColor, which
+  // would otherwise take down the whole plain-mode send for no reason.
+  const embed = style === "embed" ? buildWelcomeEmbed(embedConfig, member) : new EmbedBuilder();
   if (files.length > 0 && style === "embed") {
     embed.setImage(`attachment://${attachmentName}`);
   }

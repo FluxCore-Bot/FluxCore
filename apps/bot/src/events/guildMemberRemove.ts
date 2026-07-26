@@ -38,9 +38,14 @@ const event: Event<"guildMemberRemove"> = {
     // === Farewell ===
     const welcomeConfig = await getWelcomeConfig(member.guild.id);
     if (!welcomeConfig?.farewellEnabled || !welcomeConfig.farewellChannelId) return;
-    // `member` is partial when Discord couldn't supply a full cache entry
-    // (only possible if the client opts into GuildMember partials, which
-    // this bot does not — kept as a type-safe guard rather than a cast).
+    // Runtime safety check, NOT a type-checker requirement — deliverWelcomeMessage's
+    // `member` parameter is the narrow structural `WelcomeMember` interface, which
+    // both GuildMember and PartialGuildMember already satisfy, so removing this
+    // guard would not produce a compile error. `member` is partial only when the
+    // client opts into GuildMember partials, which this bot does not (see
+    // ExtendedClient.ts's intents), so this never fires in production today. Kept
+    // so a farewell card is never rendered from a cache-incomplete member if that
+    // ever changes — do not delete this as "dead code" just because tsc allows it.
     if (member.partial) return;
 
     const channel = member.guild.channels.cache.get(welcomeConfig.farewellChannelId);
