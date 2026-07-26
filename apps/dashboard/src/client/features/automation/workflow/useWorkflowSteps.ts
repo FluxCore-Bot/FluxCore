@@ -69,7 +69,9 @@ export function useWorkflowSteps({
   const [entryStepId, setEntryStepId] = useState<string | undefined>(initialEntryStepId);
   const pendingConnectionRef = useRef<Connection | null>(null);
 
-  const isStepMode = !!(steps?.length && entryStepId);
+  // A step graph exists whenever there are steps; having an entry point is a
+  // separate question (validation flags unreachable/disconnected steps).
+  const isStepMode = !!steps?.length;
 
   const nextStepId = useCallback(() => {
     const existing = steps ?? [];
