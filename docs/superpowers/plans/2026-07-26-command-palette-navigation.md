@@ -527,11 +527,20 @@ describe("segment", () => {
     expect(segment("관리", "관리")).toEqual([{ text: "관리", match: true }]);
   });
 
-  it("skips highlighting when stripping accents changed the length", () => {
-    // Offsets from the normalized string would no longer map onto the
-    // original, so the whole title renders unmatched. score() still matches.
+  it("highlights accented Latin, since é→e preserves length", () => {
     expect(segment("Modération", "moderation")).toEqual([
-      { text: "Modération", match: false },
+      { text: "Modération", match: true },
+    ]);
+  });
+
+  it("skips highlighting when stripping marks actually shortened the title", () => {
+    // Devanagari matras ARE \p{Diacritic} and are removed outright: this title
+    // normalises 6 chars -> 5. The query still matches, so this exercises the
+    // length guard specifically — offsets from the normalised string would no
+    // longer map onto the original, so the whole title renders unmatched.
+    // score() still matches; only the visual highlight is dropped.
+    expect(segment("हिन्दी", "हिन्दी")).toEqual([
+      { text: "हिन्दी", match: false },
     ]);
   });
 
