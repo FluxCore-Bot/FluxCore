@@ -81,7 +81,6 @@ export function WelcomeImageEditor({
   const rafRef = useRef<number>(0);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const prevUrlRef = useRef<string | null>(null);
-  const fontsLoadedRef = useRef(false);
   const serverUrlRef = useRef<string | null>(null);
 
   const templates = templateData?.templates ?? [];
@@ -97,13 +96,6 @@ export function WelcomeImageEditor({
     canvasRef.current = document.createElement("canvas");
   }
 
-  // Load fonts once
-  useEffect(() => {
-    if (fontsLoadedRef.current) return;
-    fontsLoadedRef.current = true;
-    import("../image/renderer").then((m) => m.loadPreviewFonts());
-  }, []);
-
   // Client-side render — instant, no debounce
   useEffect(() => {
     if (previewMode !== "client") return;
@@ -118,7 +110,7 @@ export function WelcomeImageEditor({
       try {
         const { renderWelcomeImagePreview } = await import("../image/renderer");
         const result = await renderWelcomeImagePreview({
-          settings: settings as never,
+          settings,
           member: {
             username: user?.username ?? "User",
             displayName: user?.username ?? "User",
