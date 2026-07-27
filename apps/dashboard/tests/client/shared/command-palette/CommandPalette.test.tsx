@@ -40,8 +40,14 @@ async function open(user: ReturnType<typeof userEvent.setup>) {
   await user.keyboard("{Control>}k{/Control}");
 }
 
+// jsdom has no scrollIntoView, and the palette calls it on every cursor move.
+const scrollIntoView = vi.fn<(options?: boolean | ScrollIntoViewOptions) => void>();
+
 describe("CommandPalette", () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => {
+    vi.clearAllMocks();
+    window.HTMLElement.prototype.scrollIntoView = scrollIntoView;
+  });
 
   it("renders nothing until opened", () => {
     setup();
@@ -83,6 +89,17 @@ describe("CommandPalette", () => {
 
     await user.keyboard("{ArrowDown}");
     expect(input).toHaveAttribute("aria-activedescendant", options[0].id);
+  });
+
+  it("scrolls the active option into view as the cursor moves", async () => {
+    const { user } = setup();
+    await open(user);
+    scrollIntoView.mockClear();
+
+    await user.keyboard("{End}");
+    expect(scrollIntoView).toHaveBeenCalledWith({ block: "nearest" });
+    const options = screen.getAllByRole("option");
+    expect(scrollIntoView.mock.contexts.at(-1)).toBe(options.at(-1));
   });
 
   it("jumps to first and last with Home and End", async () => {

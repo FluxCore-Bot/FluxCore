@@ -43,6 +43,14 @@ export function CommandPalette({
     }
   }, [isOpen]);
 
+  // DOM focus stays in the input, so the browser never scrolls the listbox to
+  // follow the aria-activedescendant cursor on its own.
+  useEffect(() => {
+    if (activeId) {
+      document.getElementById(activeId)?.scrollIntoView({ block: "nearest" });
+    }
+  }, [activeId]);
+
   function activate(command: Command) {
     onNavigate(command);
     close();
