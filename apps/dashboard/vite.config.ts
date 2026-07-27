@@ -45,6 +45,17 @@ export default defineConfig({
         target: "http://localhost:3000",
         changeOrigin: true,
       },
+      // Fastify serves the welcome-preview fonts and uploaded backgrounds;
+      // without these the dev preview silently falls back to OS fonts and
+      // blank backgrounds (loadFace/loadImage swallow the 404s).
+      "/fonts": {
+        target: "http://localhost:3000",
+        changeOrigin: true,
+      },
+      "/uploads": {
+        target: "http://localhost:3000",
+        changeOrigin: true,
+      },
     },
   },
 });
