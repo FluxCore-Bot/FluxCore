@@ -186,6 +186,10 @@
       "types": "./dist/welcome/image/constants.d.ts",
       "import": "./dist/welcome/image/constants.js"
     },
+    "./welcome/image/sanitize": {
+      "types": "./dist/welcome/image/sanitize.d.ts",
+      "import": "./dist/welcome/image/sanitize.js"
+    },
     "./leveling/types": {
       "types": "./dist/leveling/types.d.ts",
       "import": "./dist/leveling/types.js"

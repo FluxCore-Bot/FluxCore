@@ -1,5 +1,6 @@
 import { drawCard } from "@fluxcore/systems/welcome/image/core/draw";
 import { replaceImageVariables } from "@fluxcore/systems/welcome/image/core/text";
+import { sanitizeDisplayName } from "@fluxcore/systems/welcome/image/sanitize";
 import { getTemplate } from "@fluxcore/systems/welcome/image/templates";
 import type { Ctx2D, RenderBackend } from "@fluxcore/systems/welcome/image/core/types";
 import type { RenderInput } from "@fluxcore/systems/welcome/image/types";
@@ -33,7 +34,16 @@ const browserBackend: RenderBackend<HTMLImageElement> = {
  * files as the bot, so the preview is not an approximation of the output.
  */
 export async function renderWelcomeImagePreview(input: RenderInput): Promise<GenerateResult> {
-  const { settings, member, guild } = input;
+  const { settings, guild } = input;
+  // Match the bot's deliverWelcomeMessage: sanitize before rendering so the
+  // preview can't diverge from production on a hostile/malformed name (this
+  // is the sole call site for browser preview rendering, so fixing it here
+  // covers every caller rather than requiring each one to remember).
+  const member = {
+    ...input.member,
+    username: sanitizeDisplayName(input.member.username, 32),
+    displayName: sanitizeDisplayName(input.member.displayName, 80),
+  };
   const { width, height } = getTemplate(settings.template).canvas;
 
   const subtitle = replaceImageVariables(settings.subtitle.text, member, guild);

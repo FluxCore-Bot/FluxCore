@@ -67,6 +67,10 @@ vi.mock("@fluxcore/systems/welcome/config", () => ({
 const mockGenerateWelcomeImage = vi.fn().mockResolvedValue(Buffer.from("fake-png"));
 vi.mock("@fluxcore/systems/welcome/image", () => ({
   generateWelcomeImage: (...args: unknown[]) => mockGenerateWelcomeImage(...args),
+  // Identity stub — this file doesn't exercise sanitization behavior, it
+  // just needs the route handler's call to sanitizeDisplayName() to not
+  // throw on an unmocked import.
+  sanitizeDisplayName: (raw: string) => raw,
   getAllTemplates: () => [
     { name: "starter", displayName: "Starter", description: "Classic", canvas: { width: 1024, height: 450 } },
   ],

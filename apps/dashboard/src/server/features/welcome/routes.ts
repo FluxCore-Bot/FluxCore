@@ -8,6 +8,7 @@ import {
   getAllTemplates,
   getAvailableFonts,
   createStorageAdapter,
+  sanitizeDisplayName,
   welcomeImageSettingsSchema,
   DEFAULT_WELCOME_IMAGE_SETTINGS,
   DEFAULT_FAREWELL_IMAGE_SETTINGS,
@@ -235,11 +236,16 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
       }
 
       const session = request.session!;
+      const displayName = session.username ?? "User";
       const imageBuffer = await generateWelcomeImage({
         settings: parsed.data,
         member: {
-          username: session.username ?? "User",
-          displayName: session.username ?? "User",
+          // Match the bot's deliverWelcomeMessage: sanitize before
+          // rendering. Practical impact is small (Discord already
+          // restricts usernames to [a-z0-9._]), but this is the dashboard
+          // preview path and the whole point of this branch is parity.
+          username: sanitizeDisplayName(displayName, 32),
+          displayName: sanitizeDisplayName(displayName, 80),
           avatarUrl: session.avatar
             ? `https://cdn.discordapp.com/avatars/${session.userId}/${session.avatar}.png?size=256`
             : `https://cdn.discordapp.com/embed/avatars/${Number(BigInt(session.userId) >> 22n) % 6}.png`,
