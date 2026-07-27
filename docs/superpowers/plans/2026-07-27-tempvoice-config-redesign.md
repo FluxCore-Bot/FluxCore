@@ -95,7 +95,23 @@ Lets the hub picker hide channels already claimed by another config. Convenience
 
 - [ ] **Step 1: Write the failing tests**
 
-Append to `apps/dashboard/tests/client/shared/ui/discord-select.test.tsx` (the file already mocks `useChannels` with `{id:"1",name:"general",type:0}` and `{id:"2",name:"voice-chat",type:2}`, and stubs `ResizeObserver` in `beforeAll` — reuse both):
+First, replace the existing `beforeAll` block in `apps/dashboard/tests/client/shared/ui/discord-select.test.tsx` — it currently ends in `as unknown as typeof ResizeObserver`, which violates the no-`as` Global Constraint. Since this task is already editing the file, fix it here rather than leaving a documented exception:
+
+```tsx
+// Radix popover/scroll-area need ResizeObserver, which jsdom lacks.
+// Typed against the DOM lib interface so no cast is needed (Global Constraints).
+class ResizeObserverStub implements ResizeObserver {
+  observe(): void {}
+  unobserve(): void {}
+  disconnect(): void {}
+}
+
+beforeAll(() => {
+  globalThis.ResizeObserver ??= ResizeObserverStub;
+});
+```
+
+Then append the new cases (the file already mocks `useChannels` with `{id:"1",name:"general",type:0}` and `{id:"2",name:"voice-chat",type:2}` — reuse that):
 
 ```tsx
 it("omits channels listed in excludeIds", async () => {
@@ -620,14 +636,16 @@ vi.mock("../../../../src/client/shared/hooks/useGuilds", () => ({
 
 import { HubCard } from "../../../../src/client/features/tempvoice/components/HubCard";
 
+// Radix popover/scroll-area need ResizeObserver, which jsdom lacks.
+// Typed against the DOM lib interface so no cast is needed (Global Constraints).
+class ResizeObserverStub implements ResizeObserver {
+  observe(): void {}
+  unobserve(): void {}
+  disconnect(): void {}
+}
+
 beforeAll(() => {
-  if (typeof globalThis.ResizeObserver === "undefined") {
-    globalThis.ResizeObserver = class {
-      observe() {}
-      unobserve() {}
-      disconnect() {}
-    } as unknown as typeof ResizeObserver;
-  }
+  globalThis.ResizeObserver ??= ResizeObserverStub;
 });
 
 const config = { id: 1, hubChannelId: "hub1", categoryId: "cat1", nameTemplate: "{user}'s Channel" };
@@ -1004,14 +1022,16 @@ vi.mock("../../../../src/client/shared/hooks/useGuilds", () => ({
 
 import { TempVoiceHubList } from "../../../../src/client/features/tempvoice/components/TempVoiceHubList";
 
+// Radix popover/scroll-area need ResizeObserver, which jsdom lacks.
+// Typed against the DOM lib interface so no cast is needed (Global Constraints).
+class ResizeObserverStub implements ResizeObserver {
+  observe(): void {}
+  unobserve(): void {}
+  disconnect(): void {}
+}
+
 beforeAll(() => {
-  if (typeof globalThis.ResizeObserver === "undefined") {
-    globalThis.ResizeObserver = class {
-      observe() {}
-      unobserve() {}
-      disconnect() {}
-    } as unknown as typeof ResizeObserver;
-  }
+  globalThis.ResizeObserver ??= ResizeObserverStub;
 });
 
 describe("TempVoiceHubList", () => {
