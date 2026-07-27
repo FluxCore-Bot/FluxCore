@@ -43,6 +43,21 @@ const englishKeys = flatten(namespace("en")).sort();
  *  so the two can never drift apart. */
 const TEMPLATE_KEY = "fields.templatePlaceholder";
 
+/** i18next interpolation, INCLUDING its formatted variant `{{value, number}}`.
+ *  A bare /\{\{(\w+)\}\}/ misses the formatted form entirely, which meant a
+ *  translator could add `{{count, number}}` and walk straight past both the
+ *  placeholder-parity check and the count ban below — the ban that exists
+ *  precisely because interpolating a variable named `count` switches i18next
+ *  into plural mode, and a locale missing one of its CLDR plural categories
+ *  then renders nothing. No locale uses the formatted form today, so widening
+ *  the pattern is inert against the current files and load-bearing against the
+ *  next translator. Optional whitespace is allowed on both sides because
+ *  i18next trims it.
+ *  Declared with the `g` flag for matchAll; every use re-runs from scratch via
+ *  matchAll, which does not mutate lastIndex on the source regex. */
+const PLACEHOLDER = /\{\{\s*(\w+)\s*(?:,[^}]*)?\}\}/g;
+const COUNT_VARIABLE = /\{\{\s*count\s*(?:,[^}]*)?\}\}/;
+
 describe("tempvoice i18n", () => {
   it("covers all 48 locales", () => {
     expect(langs).toHaveLength(48);
@@ -82,13 +97,13 @@ describe("tempvoice i18n", () => {
     const tree = namespace(lang);
     const en = namespace("en");
     for (const key of englishKeys) {
-      const expected = [...valueAt(en, key).matchAll(/\{\{(\w+)\}\}/g)].map((m) => m[1]).sort();
-      const actual = [...valueAt(tree, key).matchAll(/\{\{(\w+)\}\}/g)].map((m) => m[1]).sort();
+      const expected = [...valueAt(en, key).matchAll(PLACEHOLDER)].map((m) => m[1]).sort();
+      const actual = [...valueAt(tree, key).matchAll(PLACEHOLDER)].map((m) => m[1]).sort();
       expect(actual, `${lang} ${key}`).toEqual(expected);
     }
   });
 
   it.each(langs)("%s never interpolates a variable named count", (lang) => {
-    expect(JSON.stringify(namespace(lang))).not.toMatch(/\{\{\s*count\s*\}\}/);
+    expect(JSON.stringify(namespace(lang))).not.toMatch(COUNT_VARIABLE);
   });
 });
