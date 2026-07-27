@@ -78,7 +78,9 @@ export function rateLimitErrorResponse(
     statusCode: 429,
     error: message,
     errorKey: RATE_LIMITED_ERROR_KEY,
-    retryAfter: context.after,
+    // Human-readable ("1 minute"), unlike the numeric-seconds Retry-After
+    // header — named apart from it so the two are never conflated.
+    retryAfterHuman: context.after,
   };
 }
 

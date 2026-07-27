@@ -148,7 +148,7 @@ describe("rateLimitErrorResponse", () => {
       statusCode: number;
       error: string;
       errorKey: string;
-      retryAfter: string;
+      retryAfterHuman: string;
     }>();
   }
 
@@ -158,7 +158,7 @@ describe("rateLimitErrorResponse", () => {
       statusCode: 429,
       error: "Trop de requetes.",
       errorKey: RATE_LIMITED_ERROR_KEY,
-      retryAfter: "30 seconds",
+      retryAfterHuman: "30 seconds",
     });
   });
 
