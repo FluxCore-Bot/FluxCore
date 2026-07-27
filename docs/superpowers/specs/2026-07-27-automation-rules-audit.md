@@ -31,7 +31,7 @@ The three reported problems are all real and all have narrow, well-understood ro
 
 1. The action panel's **Variables tab** ignores the trigger entirely: [`NodeDetailPanel.tsx:432-437`](../../apps/dashboard/src/client/features/automation/workflow/NodeDetailPanel.tsx#L432-L437) renders `Object.keys(constants.templateVariables)` — all 27 tokens — while the trigger panel's tab renders the scoped set. So the reference list contradicts the autocomplete, and contradicts the editor's own unknown-token validator.
 2. The **step-mode action editor has no Variables tab and no message preview at all** ([`NodeDetailPanel.tsx:544-605`](../../apps/dashboard/src/client/features/automation/workflow/NodeDetailPanel.tsx#L544-L605)). Adding one condition or delay converts the rule to step mode and strips both from every action in it.
-3. **Some fields never get the editor.** `ActionFields.tsx:19-27` gates the `VariableEditor` on a hardcoded `VARIABLE_FIELD_KEYS` set, so template-bearing fields outside it fall back to a plain input with no autocomplete and no highlighting.
+3. ~~Some fields never get the editor.~~ **Withdrawn on implementation.** `ActionFields.tsx:19-27` does gate the `VariableEditor` on a hardcoded `VARIABLE_FIELD_KEYS` set, but enumerating every `text`/`textarea` field in `ACTION_TYPE_FIELDS` shows the set is already complete: the only three outside it are `webhook.url`, `webhook.headers` (JSON) and `emoji` — none of which should accept templates. No change needed.
 
 Underneath, `EVENT_TYPE_VARIABLES` also **over-promises**: it advertises `{channel*}` on member/ban/role events and `{user*}` on channel events that `eventBridge` never populates, so the preview renders `#general`/`@Ada` where the bot will post `Unknown Channel`/`Unknown User`.
 
