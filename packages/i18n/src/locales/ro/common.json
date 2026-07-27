@@ -90,7 +90,9 @@
     "saving": "Se salvează...",
     "saveSettings": "Salvează Setările",
     "previous": "Anterior",
-    "next": "Următor"
+    "next": "Următor",
+    "invalidJson": "JSON invalid — se așteaptă un obiect cu valori text",
+    "fieldRequired": "{{field}} este obligatoriu"
   },
   "pagination": {
     "previous": "Anterior",

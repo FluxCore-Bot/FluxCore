@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "../../../shared/components/Icon";
 import { SearchableSelect } from "../../../shared/ui/searchable-select";
@@ -34,6 +35,12 @@ interface ActionFieldsProps {
   channels: Channel[];
   roles: Role[];
   variables: VariableDescriptor[];
+  /**
+   * Mark empty required fields invalid with a linked message. A red asterisk
+   * was the only signal, so a screen-reader user got no feedback at all about
+   * why Save was disabled.
+   */
+  showErrors?: boolean;
 }
 
 function getNestedValue(obj: Record<string, unknown>, path: string): unknown {
@@ -46,6 +53,86 @@ function getNestedValue(obj: Record<string, unknown>, path: string): unknown {
   return current;
 }
 
+/**
+ * A textarea backed by a JSON value.
+ *
+ * The raw text lives in local state so a half-typed object does not have to be
+ * valid to be typeable; only a successful parse is committed upward. The model
+ * types `webhook.headers` as Record<string,string>, and writing the raw string
+ * there made the rule permanently unsavable ("Expected object, received
+ * string" — English-only, naming no field).
+ */
+function JsonField({
+  id,
+  value,
+  onChange,
+  placeholder,
+  maxLength,
+  invalidLabel,
+}: {
+  id: string;
+  value: unknown;
+  onChange: (value: unknown) => void;
+  placeholder?: string;
+  maxLength?: number;
+  invalidLabel: string;
+}) {
+  const serialised =
+    value === undefined || value === null || value === ""
+      ? ""
+      : typeof value === "string"
+        ? value
+        : JSON.stringify(value, null, 2);
+  const [text, setText] = useState(serialised);
+  const [error, setError] = useState(false);
+  const errorId = `${id}-json-error`;
+
+  const handle = (next: string) => {
+    setText(next);
+    if (next.trim() === "") {
+      setError(false);
+      onChange(undefined);
+      return;
+    }
+    try {
+      const parsed: unknown = JSON.parse(next);
+      const isStringRecord =
+        typeof parsed === "object" &&
+        parsed !== null &&
+        !Array.isArray(parsed) &&
+        Object.values(parsed as Record<string, unknown>).every((v) => typeof v === "string");
+      if (!isStringRecord) {
+        setError(true);
+        return;
+      }
+      setError(false);
+      onChange(parsed);
+    } catch {
+      setError(true);
+    }
+  };
+
+  return (
+    <>
+      <Textarea
+        id={id}
+        value={text}
+        onChange={(e) => handle(e.target.value)}
+        placeholder={placeholder}
+        maxLength={maxLength}
+        aria-invalid={error || undefined}
+        aria-describedby={error ? errorId : undefined}
+        className="font-mono text-xs"
+      />
+      {error && (
+        <p id={errorId} role="alert" className="mt-1 text-xs text-danger">
+          {invalidLabel}
+        </p>
+      )}
+    </>
+  );
+}
+
 export function ActionFields({
   fields,
   values,
@@ -53,6 +140,7 @@ export function ActionFields({
   channels,
   roles,
   variables,
+  showErrors,
 }: ActionFieldsProps) {
   const { t } = useTranslation("common");
   return (
@@ -60,6 +148,11 @@ export function ActionFields({
       {fields.map((field) => {
         const value = getNestedValue(values, field.key) ?? "";
         const fieldId = `af-${field.key.replace(/\./g, "-")}`;
+        const missing = !!showErrors && !!field.required && (value === "" || value === undefined || value === null);
+        const errorId = `${fieldId}-error`;
+        const invalidProps = missing
+          ? { "aria-invalid": true as const, "aria-describedby": errorId }
+          : {};
         const colorHex =
           typeof value === "number"
             ? `#${value.toString(16).padStart(6, "0")}`
@@ -132,6 +225,7 @@ export function ActionFields({
                   id={fieldId}
                   type="text"
                   aria-required={field.required}
+                  {...invalidProps}
                   value={String(value)}
                   onChange={(e) => onChange(field.key, e.target.value)}
                   placeholder={field.placeholder}
@@ -156,6 +250,7 @@ export function ActionFields({
                 <Textarea
                   id={fieldId}
                   aria-required={field.required}
+                  {...invalidProps}
                   value={String(value)}
                   onChange={(e) => onChange(field.key, e.target.value)}
                   placeholder={field.placeholder}
@@ -177,6 +272,17 @@ export function ActionFields({
               />
             )}
 
+            {field.type === "json" && (
+              <JsonField
+                id={fieldId}
+                value={getNestedValue(values, field.key)}
+                onChange={(v) => onChange(field.key, v)}
+                placeholder={field.placeholder}
+                maxLength={field.maxLength}
+                invalidLabel={t("form.invalidJson")}
+              />
+            )}
+
             {field.type === "select" && field.options && (
               <Select
                 value={String(value) || undefined}
@@ -193,6 +299,11 @@ export function ActionFields({
                   ))}
                 </SelectContent>
               </Select>
+            )}
+            {missing && (
+              <p id={errorId} role="alert" className="mt-1 text-xs text-danger">
+                {t("form.fieldRequired", { field: field.label })}
+              </p>
             )}
           </div>
         );

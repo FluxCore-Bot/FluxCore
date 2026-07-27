@@ -90,7 +90,9 @@
     "saving": "Nag-se-save...",
     "saveSettings": "I-save ang Mga Setting",
     "previous": "Nakaraan",
-    "next": "Susunod"
+    "next": "Susunod",
+    "invalidJson": "Hindi wastong JSON — inaasahan ang isang object ng mga text value",
+    "fieldRequired": "Kailangan ang {{field}}"
   },
   "pagination": {
     "previous": "Nakaraan",

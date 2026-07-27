@@ -90,7 +90,9 @@
     "saving": "सहेजा जा रहा है...",
     "saveSettings": "सेटिंग्स सहेजें",
     "previous": "पिछला",
-    "next": "अगला"
+    "next": "अगला",
+    "invalidJson": "मान्य JSON नहीं — टेक्स्ट मानों वाला ऑब्जेक्ट अपेक्षित",
+    "fieldRequired": "{{field}} आवश्यक है"
   },
   "pagination": {
     "previous": "पिछला",

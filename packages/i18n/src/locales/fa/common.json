@@ -90,7 +90,9 @@
     "saving": "در حال ذخیره...",
     "saveSettings": "ذخیره تنظیمات",
     "previous": "قبلی",
-    "next": "بعدی"
+    "next": "بعدی",
+    "invalidJson": "JSON معتبر نیست — یک شیء از مقادیر متنی انتظار می‌رود",
+    "fieldRequired": "{{field}} الزامی است"
   },
   "pagination": {
     "previous": "قبلی",

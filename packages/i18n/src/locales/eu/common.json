@@ -90,7 +90,9 @@
     "saving": "Gordetzen...",
     "saveSettings": "Ezarpenak gorde",
     "previous": "Aurrekoa",
-    "next": "Hurrengoa"
+    "next": "Hurrengoa",
+    "invalidJson": "JSON baliogabea — testu-balioen objektu bat espero da",
+    "fieldRequired": "{{field}} beharrezkoa da"
   },
   "pagination": {
     "previous": "Aurrekoa",

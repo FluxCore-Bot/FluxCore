@@ -394,6 +394,10 @@ function ActionSettings({
           channels={channels}
           roles={roles}
           variables={variables}
+          // Required fields block Save, so the panel has to say which one is
+          // empty — a red asterisk alone left screen-reader users with no way
+          // to tell why the button was disabled.
+          showErrors
         />
       )}
 

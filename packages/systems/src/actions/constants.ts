@@ -171,7 +171,7 @@ export const TEMPLATE_VARIABLES: Record<string, string> = {
 export interface ActionFieldDescriptor {
   key: string;
   label: string;
-  type: "channel" | "role" | "text" | "textarea" | "color" | "select";
+  type: "channel" | "role" | "text" | "textarea" | "color" | "select" | "json";
   placeholder?: string;
   required?: boolean;
   options?: { value: string; label: string }[];
@@ -206,7 +206,9 @@ export const ACTION_TYPE_FIELDS: Record<ActionType, ActionFieldDescriptor[]> = {
   sendWebhook: [
     { key: "webhook.url", label: "Webhook URL", type: "text", placeholder: "https://...", required: true },
     { key: "webhook.method", label: "HTTP Method", type: "select", options: [{ value: "POST", label: "POST" }, { value: "PUT", label: "PUT" }] },
-    { key: "webhook.headers", label: "Headers (JSON)", type: "textarea", placeholder: '{"Authorization": "Bearer ..."}', maxLength: 1000 },
+    // "json", not "textarea": the model types this as Record<string,string>,
+    // so a raw textarea wrote a string into it and the rule became unsavable.
+    { key: "webhook.headers", label: "Headers (JSON)", type: "json", placeholder: '{"X-Request-Id": "abc"}', maxLength: 1000 },
     { key: "webhook.bodyTemplate", label: "Body Template", type: "textarea", placeholder: "JSON body... supports {user}, {channel}, etc.", maxLength: 2000 },
   ],
   setNickname: [

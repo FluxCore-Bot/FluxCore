@@ -90,7 +90,9 @@
     "saving": "กำลังบันทึก...",
     "saveSettings": "บันทึกการตั้งค่า",
     "previous": "ก่อนหน้า",
-    "next": "ถัดไป"
+    "next": "ถัดไป",
+    "invalidJson": "JSON ไม่ถูกต้อง — ต้องเป็นออบเจ็กต์ของค่าข้อความ",
+    "fieldRequired": "ต้องระบุ {{field}}"
   },
   "pagination": {
     "previous": "ก่อนหน้า",

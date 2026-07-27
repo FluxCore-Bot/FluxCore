@@ -54,7 +54,7 @@ export const ActionTypeInfoSchema = z.object({
 export const ActionFieldDescriptorSchema = z.object({
   key: z.string(),
   label: z.string(),
-  type: z.enum(["channel", "role", "text", "textarea", "color", "select"]),
+  type: z.enum(["channel", "role", "text", "textarea", "color", "select", "json"]),
   placeholder: z.string().optional(),
   required: z.boolean().optional(),
   options: z

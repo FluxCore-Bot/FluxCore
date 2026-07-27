@@ -90,7 +90,9 @@
     "saving": "محفوظ ہو رہا ہے...",
     "saveSettings": "ترتیبات محفوظ کریں",
     "previous": "پچھلا",
-    "next": "اگلا"
+    "next": "اگلا",
+    "invalidJson": "درست JSON نہیں — متنی اقدار پر مشتمل آبجیکٹ متوقع ہے",
+    "fieldRequired": "{{field}} درکار ہے"
   },
   "pagination": {
     "previous": "پچھلا",

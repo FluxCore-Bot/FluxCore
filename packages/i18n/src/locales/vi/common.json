@@ -90,7 +90,9 @@
     "saving": "Đang lưu...",
     "saveSettings": "Lưu Cài Đặt",
     "previous": "Trước",
-    "next": "Tiếp"
+    "next": "Tiếp",
+    "invalidJson": "JSON không hợp lệ — cần một đối tượng gồm các giá trị văn bản",
+    "fieldRequired": "{{field}} là bắt buộc"
   },
   "pagination": {
     "previous": "Trước",

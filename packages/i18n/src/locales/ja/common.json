@@ -90,7 +90,9 @@
     "saving": "保存中...",
     "saveSettings": "設定を保存",
     "previous": "前へ",
-    "next": "次へ"
+    "next": "次へ",
+    "invalidJson": "有効な JSON ではありません — 文字列値のオブジェクトが必要です",
+    "fieldRequired": "{{field}} は必須です"
   },
   "pagination": {
     "previous": "前へ",

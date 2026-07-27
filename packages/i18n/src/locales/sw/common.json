@@ -90,7 +90,9 @@
     "saving": "Inahifadhi...",
     "saveSettings": "Hifadhi Mipangilio",
     "previous": "Iliyotangulia",
-    "next": "Inayofuata"
+    "next": "Inayofuata",
+    "invalidJson": "Si JSON halali — kitu chenye thamani za maandishi kinatarajiwa",
+    "fieldRequired": "{{field}} inahitajika"
   },
   "pagination": {
     "previous": "Iliyotangulia",

@@ -90,7 +90,9 @@
     "saving": "Запазване...",
     "saveSettings": "Запази настройките",
     "previous": "Предишна",
-    "next": "Следваща"
+    "next": "Следваща",
+    "invalidJson": "Невалиден JSON — очаква се обект с текстови стойности",
+    "fieldRequired": "{{field}} е задължително"
   },
   "pagination": {
     "previous": "Предишна",

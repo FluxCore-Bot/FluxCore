@@ -92,7 +92,9 @@
     "saving": "Saving...",
     "saveSettings": "Save Settings",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "invalidJson": "Not valid JSON — expected an object of text values",
+    "fieldRequired": "{{field}} is required"
   },
   "pagination": {
     "previous": "Previous",
