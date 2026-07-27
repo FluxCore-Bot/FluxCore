@@ -74,6 +74,15 @@ export const ConstantsSchema = z.object({
   ),
   eventTypeVariables: z.record(z.string(), z.array(z.string())),
   templateVariables: z.record(z.string(), z.string()),
+  /**
+   * Which filter subjects each event type can evaluate. Trigger filters fail
+   * closed in the bot, so the editor uses this to avoid offering a filter that
+   * would silently stop the rule from firing.
+   */
+  eventConditionSupport: z.record(
+    z.string(),
+    z.array(z.enum(["channel", "role", "user"])),
+  ),
 });
 export type Constants = z.infer<typeof ConstantsSchema>;
 

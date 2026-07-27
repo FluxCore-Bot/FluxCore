@@ -26,6 +26,7 @@ import {
   ACTION_TYPE_FIELDS,
   EVENT_TYPE_VARIABLES,
   TEMPLATE_VARIABLES,
+  EVENT_CONDITION_SUPPORT,
 } from "@fluxcore/systems/actions/constants";
 import type { ActionEventType, ActionType, RuleStep } from "@fluxcore/systems/actions/types";
 import { channelExistsInGuild } from "../../shared/discordApi.js";
@@ -227,6 +228,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
               actionTypeFields: { type: "object", additionalProperties: true },
               eventTypeVariables: { type: "object", additionalProperties: true },
               templateVariables: { type: "object", additionalProperties: true },
+              eventConditionSupport: { type: "object", additionalProperties: true },
             },
           },
         },
@@ -240,6 +242,9 @@ export function registerActionRoutes(app: FastifyInstance): void {
         actionTypeFields: ACTION_TYPE_FIELDS,
         eventTypeVariables: EVENT_TYPE_VARIABLES,
         templateVariables: TEMPLATE_VARIABLES,
+        // Trigger filters fail closed, so the editor only offers the filters a
+        // given trigger can actually satisfy.
+        eventConditionSupport: EVENT_CONDITION_SUPPORT,
       });
     },
   );

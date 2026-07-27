@@ -150,7 +150,15 @@
     "removeItem": "Remove {{label}}",
     "collapse": "Collapse conditions",
     "userIdInvalid": "Enter a valid Discord user ID (17–20 digits)",
-    "addUserId": "Add user ID"
+    "addUserId": "Add user ID",
+    "includeChannels": "Only in these channels",
+    "includeRoles": "Only members with these roles",
+    "includeUsers": "Only these members",
+    "excludeChannels": "Never in these channels",
+    "excludeRoles": "Never members with these roles",
+    "excludeUsers": "Never these members",
+    "unsupportedWarning": "This trigger cannot evaluate these filters ({{filters}}), so the rule will never fire while they are set.",
+    "removeUnsupported": "Remove filters that cannot apply"
   },
   "editor": {
     "backToRules": "Rules",

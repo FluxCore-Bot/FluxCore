@@ -122,6 +122,25 @@ describe("action routes", () => {
       expect(body.actionTypes).toBeDefined();
       expect(body.maxActionsPerRule).toBe(5);
     });
+
+    // Filters fail closed, so the editor must know which of them a given
+    // trigger can actually satisfy — otherwise it lets users build a rule that
+    // silently never fires.
+    it("exposes which filter subjects each event type supports", async () => {
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/actions/constants",
+        cookies: { session: app.signCookie("valid") },
+      });
+      const body = res.json();
+
+      expect(body.eventConditionSupport).toBeDefined();
+      expect(body.eventConditionSupport.memberJoin).toEqual(
+        expect.arrayContaining(["user", "role"]),
+      );
+      expect(body.eventConditionSupport.memberJoin).not.toContain("channel");
+      expect(body.eventConditionSupport.memberBanned).not.toContain("role");
+    });
   });
 
   describe("GET /api/guilds/:guildId/actions/rules", () => {

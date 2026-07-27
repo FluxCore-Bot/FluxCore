@@ -8,6 +8,18 @@ import { Label } from "../../../shared/ui/label";
 import { DiscordMultiSelect } from "../../../shared/ui/discord-multi-select";
 import type { ActionConditions } from "../../../shared/lib/schemas";
 
+/** The three data a trigger filter can key on. Mirrors ConditionSubject. */
+export type ConditionSubject = "channel" | "role" | "user";
+
+/** Which condition keys belong to which subject. */
+const SUBJECT_KEYS: Record<ConditionSubject, (keyof ActionConditions)[]> = {
+  channel: ["channelIds", "excludeChannelIds"],
+  role: ["roleIds", "excludeRoleIds"],
+  user: ["userIds", "excludeUserIds"],
+};
+
+const ALL_SUBJECTS: ConditionSubject[] = ["channel", "role", "user"];
+
 interface ConditionsEditorProps {
   guildId: string;
   conditions: ActionConditions;
@@ -15,6 +27,16 @@ interface ConditionsEditorProps {
   compact?: boolean;
   /** Always show expanded, no collapse button */
   alwaysExpanded?: boolean;
+  /**
+   * Which filter subjects the selected trigger can actually evaluate, from
+   * EVENT_CONDITION_SUPPORT. Filters fail closed in the bot, so offering one
+   * the event context can never answer would silently stop the rule from
+   * firing rather than simply doing nothing.
+   *
+   * Undefined means no trigger is chosen yet — offer everything rather than
+   * an empty panel, since the user is about to pick one.
+   */
+  supported?: ConditionSubject[];
 }
 
 function ChipList({
@@ -134,10 +156,31 @@ export function ConditionsEditor({
   onChange,
   compact,
   alwaysExpanded,
+  supported,
 }: ConditionsEditorProps) {
   const { t } = useTranslation("rules");
   const update = (patch: Partial<ActionConditions>) => {
     onChange({ ...conditions, ...patch });
+  };
+
+  const subjects = supported ?? ALL_SUBJECTS;
+  const shows = (subject: ConditionSubject) => subjects.includes(subject);
+
+  // A rule can carry filters from before its trigger was changed. The runtime
+  // now refuses to fire such a rule, so the editor has to surface them rather
+  // than just hiding the controls that would reveal them.
+  const strandedSubjects = ALL_SUBJECTS.filter(
+    (subject) =>
+      !shows(subject) &&
+      SUBJECT_KEYS[subject].some((key) => (conditions[key]?.length ?? 0) > 0),
+  );
+
+  const clearStranded = () => {
+    const next = { ...conditions };
+    for (const subject of strandedSubjects) {
+      for (const key of SUBJECT_KEYS[subject]) delete next[key];
+    }
+    onChange(next);
   };
 
   const hasAnyConditions =
@@ -204,38 +247,69 @@ export function ConditionsEditor({
         {t("conditions.description")}
       </p>
 
+      {strandedSubjects.length > 0 && (
+        <div
+          role="alert"
+          className="space-y-2 rounded-md border border-warning/30 bg-warning/5 p-3"
+        >
+          <p className="flex items-start gap-1.5 text-[11px] leading-relaxed text-text-secondary">
+            <Icon name="warning" size={14} className="mt-px shrink-0 text-warning" />
+            {t("conditions.unsupportedWarning", {
+              filters: strandedSubjects
+                .map((s) => t(`conditions.${s === "channel" ? "channels" : s === "role" ? "roles" : "users"}`))
+                .join(", "),
+            })}
+          </p>
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            className="w-full text-xs"
+            onClick={clearStranded}
+          >
+            {t("conditions.removeUnsupported")}
+          </Button>
+        </div>
+      )}
+
       {/* Include filters */}
       <div className="space-y-3">
         <span className="section-label text-secondary">
           {t("conditions.include")}
         </span>
-        <DiscordMultiSelect
-          guildId={guildId}
-          type="any"
-          selectedIds={conditions.channelIds ?? []}
-          onChange={(ids) => update({ channelIds: ids })}
-          placeholder={t("conditions.addChannel")}
-          label={t("conditions.channels")}
-        />
-        <DiscordMultiSelect
-          guildId={guildId}
-          type="role"
-          selectedIds={conditions.roleIds ?? []}
-          onChange={(ids) => update({ roleIds: ids })}
-          placeholder={t("conditions.addRole")}
-          label={t("conditions.roles")}
-        />
-        <UserIdInput
-          label={t("conditions.users")}
-          selectedIds={conditions.userIds ?? []}
-          onAdd={(id) => {
-            const current = conditions.userIds ?? [];
-            if (!current.includes(id)) update({ userIds: [...current, id] });
-          }}
-          onRemove={(id) =>
-            update({ userIds: (conditions.userIds ?? []).filter((v) => v !== id) })
-          }
-        />
+        {shows("channel") && (
+          <DiscordMultiSelect
+            guildId={guildId}
+            type="any"
+            selectedIds={conditions.channelIds ?? []}
+            onChange={(ids) => update({ channelIds: ids })}
+            placeholder={t("conditions.addChannel")}
+            label={t("conditions.includeChannels")}
+          />
+        )}
+        {shows("role") && (
+          <DiscordMultiSelect
+            guildId={guildId}
+            type="role"
+            selectedIds={conditions.roleIds ?? []}
+            onChange={(ids) => update({ roleIds: ids })}
+            placeholder={t("conditions.addRole")}
+            label={t("conditions.includeRoles")}
+          />
+        )}
+        {shows("user") && (
+          <UserIdInput
+            label={t("conditions.includeUsers")}
+            selectedIds={conditions.userIds ?? []}
+            onAdd={(id) => {
+              const current = conditions.userIds ?? [];
+              if (!current.includes(id)) update({ userIds: [...current, id] });
+            }}
+            onRemove={(id) =>
+              update({ userIds: (conditions.userIds ?? []).filter((v) => v !== id) })
+            }
+          />
+        )}
       </div>
 
       {/* Exclude filters */}
@@ -243,39 +317,45 @@ export function ConditionsEditor({
         <span className="section-label text-danger">
           {t("conditions.exclude")}
         </span>
-        <DiscordMultiSelect
-          guildId={guildId}
-          type="any"
-          selectedIds={conditions.excludeChannelIds ?? []}
-          onChange={(ids) => update({ excludeChannelIds: ids })}
-          placeholder={t("conditions.excludeChannel")}
-          label={t("conditions.channels")}
-        />
-        <DiscordMultiSelect
-          guildId={guildId}
-          type="role"
-          selectedIds={conditions.excludeRoleIds ?? []}
-          onChange={(ids) => update({ excludeRoleIds: ids })}
-          placeholder={t("conditions.excludeRole")}
-          label={t("conditions.roles")}
-        />
-        <UserIdInput
-          label={t("conditions.users")}
-          selectedIds={conditions.excludeUserIds ?? []}
-          onAdd={(id) => {
-            const current = conditions.excludeUserIds ?? [];
-            if (!current.includes(id))
-              update({ excludeUserIds: [...current, id] });
-          }}
-          onRemove={(id) =>
-            update({
-              excludeUserIds: (conditions.excludeUserIds ?? []).filter(
-                (v) => v !== id,
-              ),
-            })
-          }
-          chipColor="destructive"
-        />
+        {shows("channel") && (
+          <DiscordMultiSelect
+            guildId={guildId}
+            type="any"
+            selectedIds={conditions.excludeChannelIds ?? []}
+            onChange={(ids) => update({ excludeChannelIds: ids })}
+            placeholder={t("conditions.excludeChannel")}
+            label={t("conditions.excludeChannels")}
+          />
+        )}
+        {shows("role") && (
+          <DiscordMultiSelect
+            guildId={guildId}
+            type="role"
+            selectedIds={conditions.excludeRoleIds ?? []}
+            onChange={(ids) => update({ excludeRoleIds: ids })}
+            placeholder={t("conditions.excludeRole")}
+            label={t("conditions.excludeRoles")}
+          />
+        )}
+        {shows("user") && (
+          <UserIdInput
+            label={t("conditions.excludeUsers")}
+            selectedIds={conditions.excludeUserIds ?? []}
+            onAdd={(id) => {
+              const current = conditions.excludeUserIds ?? [];
+              if (!current.includes(id))
+                update({ excludeUserIds: [...current, id] });
+            }}
+            onRemove={(id) =>
+              update({
+                excludeUserIds: (conditions.excludeUserIds ?? []).filter(
+                  (v) => v !== id,
+                ),
+              })
+            }
+            chipColor="destructive"
+          />
+        )}
       </div>
 
       {hasAnyConditions && (

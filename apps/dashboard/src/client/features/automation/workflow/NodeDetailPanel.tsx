@@ -287,6 +287,9 @@ function TriggerPanel({
           conditions={conditions}
           onChange={onConditionsChange}
           guildId={guildId}
+          // Undefined until a trigger is picked — ConditionsEditor then offers
+          // everything rather than rendering an empty panel.
+          supported={eventType ? constants.eventConditionSupport[eventType] : undefined}
           alwaysExpanded
         />
       </TabsContent>
