@@ -120,9 +120,9 @@ describe("rateLimitKey", () => {
   it("does not accept an oauth_state cookie minted by /auth/login as a session", async () => {
     const login = await app.inject({ method: "GET", url: "/auth/login" });
     const minted = login.cookies.find((c) => c.name === "oauth_state");
-    expect(minted).toBeDefined();
+    if (!minted) throw new Error("expected /auth/login to set an oauth_state cookie");
 
-    expect(await keyFor(app, { session: minted!.value })).toMatch(/^ip:/);
+    expect(await keyFor(app, { session: minted.value })).toMatch(/^ip:/);
   });
 });
 
