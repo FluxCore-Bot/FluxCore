@@ -1,9 +1,10 @@
 import { describe, it, expect } from "vitest";
-import type { TFunction } from "i18next";
 import { validateWorkflow } from "../../../../src/client/features/automation/lib/workflow-validation";
 import type { RuleStep } from "../../../../src/client/shared/lib/schemas";
 
-const t = ((key: string) => key) as unknown as TFunction;
+// validateWorkflow takes the structural TranslateFn, so a plain passthrough
+// needs no cast.
+const t = (key: string) => key;
 
 const graph: RuleStep[] = [
   { id: "step_0", type: "action", action: { type: "sendMessage", message: "hi" }, next: "step_1" },

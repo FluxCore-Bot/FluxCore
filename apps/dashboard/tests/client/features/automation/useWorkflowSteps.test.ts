@@ -2,14 +2,16 @@
 import { describe, it, expect, vi } from "vitest";
 import { act, renderHook } from "@testing-library/react";
 import { useWorkflowSteps } from "../../../../src/client/features/automation/workflow/useWorkflowSteps";
-import type { ActionConfig, Constants, RuleStep } from "../../../../src/client/shared/lib/schemas";
+import type { ActionConfig, RuleStep } from "../../../../src/client/shared/lib/schemas";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (k: string) => k }),
 }));
 vi.mock("sonner", () => ({ toast: { error: vi.fn(), success: vi.fn() } }));
 
-const constants = { maxActionsPerRule: 5 } as unknown as Constants;
+// The hook's option is structurally Pick<Constants, "maxActionsPerRule">, so
+// the one field it reads is all the test has to provide — no cast.
+const constants = { maxActionsPerRule: 5 };
 
 function setup(over: {
   initialActions?: ActionConfig[];
@@ -102,9 +104,12 @@ describe("duplicateNode", () => {
     const { result } = setup({ initialSteps: graph, initialEntryStepId: "step_0" });
     act(() => { result.current.duplicateNode("step-step_0"); });
     const copy = result.current.steps!.find((s) => s.id === "step_3")!;
+    // Discriminant check instead of a cast: narrows `copy` for the spread
+    // below, and fails loudly if the clone ever changes shape.
+    if (copy.type !== "action") throw new Error(`expected an action step, got "${copy.type}"`);
     act(() => {
       result.current.handleStepChange("step_3", {
-        ...(copy as Extract<RuleStep, { type: "action" }>),
+        ...copy,
         action: { type: "sendMessage", message: "changed" },
       });
     });

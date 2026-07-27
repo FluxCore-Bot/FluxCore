@@ -1,11 +1,12 @@
 // @vitest-environment jsdom
 import { describe, it, expect } from "vitest";
 import { renderHook } from "@testing-library/react";
-import type { TFunction } from "i18next";
 import { useWorkflowNodes } from "../../../../src/client/features/automation/workflow/useWorkflowNodes";
 import type { ActionConfig, RuleStep } from "../../../../src/client/shared/lib/schemas";
 
-const t = ((key: string) => key) as unknown as TFunction;
+// useWorkflowNodes takes the structural TranslateFn, so a plain passthrough
+// needs no cast.
+const t = (key: string) => key;
 
 const graph: RuleStep[] = [
   { id: "step_0", type: "action", action: { type: "sendMessage", message: "hi" }, next: "step_1" },

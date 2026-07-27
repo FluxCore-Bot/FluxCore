@@ -1,8 +1,7 @@
 import { useMemo } from "react";
-import type { TFunction } from "i18next";
 import type { Node, Edge } from "@xyflow/react";
 import type { ActionConfig, Constants, RuleStep } from "../../../shared/lib/schemas";
-import type { ValidationIssue } from "../lib/workflow-validation";
+import type { TranslateFn, ValidationIssue } from "../lib/workflow-validation";
 import { getNodeValidationState } from "../lib/workflow-validation";
 import type { ConditionNodeData } from "./nodes/ConditionNode";
 import type { DelayNodeData } from "./nodes/DelayNode";
@@ -18,7 +17,7 @@ interface WorkflowNodesInput {
   onAddAction?: () => void;
   validationIssues?: ValidationIssue[];
   /** Translator (rules namespace) for node labels built outside React components. */
-  t: TFunction;
+  t: TranslateFn;
 }
 
 export interface TriggerNodeData {

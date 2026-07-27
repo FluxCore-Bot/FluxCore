@@ -54,7 +54,11 @@ export interface UseWorkflowStepsOptions {
   initialSteps?: RuleStep[];
   initialEntryStepId?: string;
   initialActions: ActionConfig[];
-  constants: Constants | undefined;
+  /**
+   * Only the linear-mode ceiling is read — structural (`Pick`) so tests can
+   * pass exactly that field without casting up to the full Constants.
+   */
+  constants: Pick<Constants, "maxActionsPerRule"> | undefined;
 }
 
 export function useWorkflowSteps({

@@ -1,5 +1,11 @@
-import type { TFunction } from "i18next";
 import type { ActionConfig, Constants, RuleStep } from "../../../shared/lib/schemas";
+
+/**
+ * The translator shape workflow helpers actually call — structural rather
+ * than i18next's TFunction, so callers pass the real `t` unchanged while
+ * tests can hand in a plain `(key) => key` without any cast.
+ */
+export type TranslateFn = (key: string, params?: Record<string, unknown>) => string;
 
 export interface ValidationIssue {
   nodeId: string;
@@ -17,7 +23,7 @@ export function validateWorkflow(
   actions: ActionConfig[],
   name: string,
   constants: Constants | undefined,
-  t: TFunction,
+  t: TranslateFn,
   steps?: RuleStep[],
   entryStepId?: string,
 ): ValidationResult {
@@ -60,7 +66,7 @@ export function validateWorkflow(
 function validateLinearActions(
   actions: ActionConfig[],
   constants: Constants | undefined,
-  t: TFunction,
+  t: TranslateFn,
   issues: ValidationIssue[],
 ) {
   const configured = actions.filter((a) => a.type);
@@ -82,7 +88,7 @@ function validateSteps(
   steps: RuleStep[],
   entryStepId: string | undefined,
   constants: Constants | undefined,
-  t: TFunction,
+  t: TranslateFn,
   issues: ValidationIssue[],
 ) {
   const configuredActionSteps = steps.filter(
@@ -183,7 +189,7 @@ function validateAction(
   nodeId: string,
   label: string,
   constants: Constants | undefined,
-  t: TFunction,
+  t: TranslateFn,
   issues: ValidationIssue[],
 ) {
   if (!action.type) {

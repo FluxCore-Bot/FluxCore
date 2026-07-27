@@ -9,7 +9,7 @@ import type { ContextMenuSection } from "../../../../../src/client/features/auto
 // `vi.mock` factories are hoisted above these imports, so the mutable "current
 // direction" has to live in a `vi.hoisted` cell rather than a plain module
 // variable — that lets individual tests flip it (ltr/rtl) between renders.
-const mockDirection = vi.hoisted(() => ({ current: "ltr" as "ltr" | "rtl" }));
+const mockDirection = vi.hoisted((): { current: "ltr" | "rtl" } => ({ current: "ltr" }));
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
@@ -18,20 +18,24 @@ vi.mock("react-i18next", () => ({
   }),
 }));
 
-// Radix's popper and menu need these; jsdom ships none of them.
+// Radix's popper and menu need these; jsdom ships none of them. The stub
+// class implements the real ResizeObserver interface, so the assignment
+// typechecks without any cast; the Element.prototype methods are declared in
+// lib.dom and simply missing from jsdom at runtime, so `??=` fills each one
+// with a compatible function.
+class ResizeObserverStub implements ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
 beforeAll(() => {
   if (typeof globalThis.ResizeObserver === "undefined") {
-    globalThis.ResizeObserver = class {
-      observe() {}
-      unobserve() {}
-      disconnect() {}
-    } as unknown as typeof ResizeObserver;
+    globalThis.ResizeObserver = ResizeObserverStub;
   }
-  const proto = Element.prototype as unknown as Record<string, unknown>;
-  proto.scrollIntoView ??= () => {};
-  proto.hasPointerCapture ??= () => false;
-  proto.setPointerCapture ??= () => {};
-  proto.releasePointerCapture ??= () => {};
+  Element.prototype.scrollIntoView ??= () => {};
+  Element.prototype.hasPointerCapture ??= () => false;
+  Element.prototype.setPointerCapture ??= () => {};
+  Element.prototype.releasePointerCapture ??= () => {};
 });
 
 function makeSections(onSelect = vi.fn(), disabledSelect = vi.fn()): ContextMenuSection[] {
