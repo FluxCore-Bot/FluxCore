@@ -1,4 +1,5 @@
 import { AttachmentBuilder, EmbedBuilder } from "discord.js";
+import type { MessageMentionOptions } from "discord.js";
 import { logger } from "@fluxcore/utils";
 import { buildWelcomeEmbed, replaceWelcomeVariables } from "./builder.js";
 import { generateWelcomeImage, createStorageAdapter, sanitizeDisplayName } from "./image/index.js";
@@ -11,6 +12,7 @@ export interface SendPayload<TEmbed, TFile> {
   content?: string;
   embeds?: TEmbed[];
   files?: TFile[];
+  allowedMentions?: MessageMentionOptions;
 }
 
 export interface SendPayloadInput<TEmbed, TFile> {
@@ -21,6 +23,8 @@ export interface SendPayloadInput<TEmbed, TFile> {
   files: TFile[];
   /** Embed-mode only. Ignored when style is "plain". */
   sendMode: "with" | "before" | "only";
+  /** The joining/leaving member's id — scopes the plain-mode mention lock. */
+  memberId: string;
 }
 
 /**
@@ -35,12 +39,21 @@ export interface SendPayloadInput<TEmbed, TFile> {
 export function buildSendPayloads<TEmbed, TFile>(
   input: SendPayloadInput<TEmbed, TFile>,
 ): Array<SendPayload<TEmbed, TFile>> {
-  const { style, content, embed, files, sendMode } = input;
+  const { style, content, embed, files, sendMode, memberId } = input;
 
   if (style === "plain") {
     const payload: SendPayload<TEmbed, TFile> = {};
     const trimmed = content.slice(0, MAX_CONTENT_LENGTH);
-    if (trimmed.trim()) payload.content = trimmed;
+    if (trimmed.trim()) {
+      payload.content = trimmed;
+      // Lock allowedMentions so a moderator-configured plain-mode template
+      // cannot ping @everyone/@here/roles. Embed mode never had this risk —
+      // Discord doesn't parse mentions out of embeds — but plain mode's raw
+      // content string does, and plain is the default style for new guilds.
+      // {user} still resolves to a real mention (see replaceWelcomeVariables),
+      // so the joining/leaving member themself stays pingable.
+      payload.allowedMentions = { parse: [], users: [memberId] };
+    }
     if (files.length > 0) payload.files = files;
     return payload.content || payload.files ? [payload] : [];
   }
@@ -130,6 +143,7 @@ export async function deliverWelcomeMessage(options: DeliverOptions): Promise<vo
     embed,
     files,
     sendMode: imageSettings.sendMode ?? "with",
+    memberId: member.id,
   });
 
   for (const payload of payloads) {

@@ -24,82 +24,110 @@ const { DEFAULT_WELCOME_IMAGE_SETTINGS } = await import("../../../src/welcome/im
 
 const EMBED = { title: "Welcome" };
 
+const MEMBER_ID = "member-1";
+const LOCK = { parse: [], users: [MEMBER_ID] };
+
 describe("plain message style", () => {
   it("sends content and files with no embeds key", () => {
     const msgs = buildSendPayloads({
-      style: "plain", content: "Welcome <@1>!", embed: EMBED, files: ["img"], sendMode: "with",
+      style: "plain", content: "Welcome <@1>!", embed: EMBED, files: ["img"], sendMode: "with", memberId: MEMBER_ID,
     });
-    expect(msgs).toEqual([{ content: "Welcome <@1>!", files: ["img"] }]);
+    expect(msgs).toEqual([{ content: "Welcome <@1>!", files: ["img"], allowedMentions: LOCK }]);
     expect(msgs[0]).not.toHaveProperty("embeds");
   });
 
   it("sends the image alone when content is whitespace only", () => {
     const msgs = buildSendPayloads({
-      style: "plain", content: "   ", embed: EMBED, files: ["img"], sendMode: "with",
+      style: "plain", content: "   ", embed: EMBED, files: ["img"], sendMode: "with", memberId: MEMBER_ID,
     });
     expect(msgs).toEqual([{ files: ["img"] }]);
   });
 
   it("sends text alone when image generation produced nothing", () => {
     const msgs = buildSendPayloads({
-      style: "plain", content: "Welcome!", embed: EMBED, files: [], sendMode: "with",
+      style: "plain", content: "Welcome!", embed: EMBED, files: [], sendMode: "with", memberId: MEMBER_ID,
     });
-    expect(msgs).toEqual([{ content: "Welcome!" }]);
+    expect(msgs).toEqual([{ content: "Welcome!", allowedMentions: LOCK }]);
   });
 
   it("sends nothing when both content and files are empty", () => {
     expect(buildSendPayloads({
-      style: "plain", content: "", embed: EMBED, files: [], sendMode: "with",
+      style: "plain", content: "", embed: EMBED, files: [], sendMode: "with", memberId: MEMBER_ID,
     })).toEqual([]);
   });
 
   it("ignores sendMode entirely", () => {
     for (const sendMode of ["with", "before", "only"] as const) {
       const msgs = buildSendPayloads({
-        style: "plain", content: "Hi", embed: EMBED, files: ["img"], sendMode,
+        style: "plain", content: "Hi", embed: EMBED, files: ["img"], sendMode, memberId: MEMBER_ID,
       });
-      expect(msgs, sendMode).toEqual([{ content: "Hi", files: ["img"] }]);
+      expect(msgs, sendMode).toEqual([{ content: "Hi", files: ["img"], allowedMentions: LOCK }]);
     }
   });
 
   it("truncates content to Discord's 2000-character limit", () => {
     const msgs = buildSendPayloads({
-      style: "plain", content: "x".repeat(2500), embed: EMBED, files: [], sendMode: "with",
+      style: "plain", content: "x".repeat(2500), embed: EMBED, files: [], sendMode: "with", memberId: MEMBER_ID,
     });
     expect(msgs[0]!.content).toHaveLength(2000);
+  });
+
+  // Finding 2 — plain-mode content used to be sent with no allowedMentions
+  // restriction at all. Every other moderator-authored template path in
+  // this codebase locks it (see messageCreate.ts's level-up announcement);
+  // plain welcome/farewell content was the one gap, and it's now the
+  // default style for new guilds. An admin writing "@everyone welcome
+  // {user}!" must not be able to ping the whole server on every join.
+  it("locks allowedMentions to just the member, blocking @everyone/@here/roles", () => {
+    const msgs = buildSendPayloads({
+      style: "plain",
+      content: "@everyone welcome <@member-1>!",
+      embed: EMBED,
+      files: [],
+      sendMode: "with",
+      memberId: MEMBER_ID,
+    });
+    expect(msgs[0]!.allowedMentions).toEqual({ parse: [], users: [MEMBER_ID] });
+  });
+
+  it("scopes the mention lock to the specific member id passed in", () => {
+    const msgs = buildSendPayloads({
+      style: "plain", content: "hi", embed: EMBED, files: [], sendMode: "with", memberId: "some-other-id",
+    });
+    expect(msgs[0]!.allowedMentions).toEqual({ parse: [], users: ["some-other-id"] });
   });
 });
 
 describe("embed message style is unchanged", () => {
   it("sends embed and files together for sendMode=with", () => {
     expect(buildSendPayloads({
-      style: "embed", content: "", embed: EMBED, files: ["img"], sendMode: "with",
+      style: "embed", content: "", embed: EMBED, files: ["img"], sendMode: "with", memberId: MEMBER_ID,
     })).toEqual([{ embeds: [EMBED], files: ["img"] }]);
   });
 
   it("sends only the image for sendMode=only", () => {
     expect(buildSendPayloads({
-      style: "embed", content: "", embed: EMBED, files: ["img"], sendMode: "only",
+      style: "embed", content: "", embed: EMBED, files: ["img"], sendMode: "only", memberId: MEMBER_ID,
     })).toEqual([{ files: ["img"] }]);
   });
 
   it("sends image then embed for sendMode=before", () => {
     expect(buildSendPayloads({
-      style: "embed", content: "", embed: EMBED, files: ["img"], sendMode: "before",
+      style: "embed", content: "", embed: EMBED, files: ["img"], sendMode: "before", memberId: MEMBER_ID,
     })).toEqual([{ files: ["img"] }, { embeds: [EMBED] }]);
   });
 
   it("falls back to the embed alone when there is no image", () => {
     for (const sendMode of ["with", "before", "only"] as const) {
       expect(buildSendPayloads({
-        style: "embed", content: "", embed: EMBED, files: [], sendMode,
+        style: "embed", content: "", embed: EMBED, files: [], sendMode, memberId: MEMBER_ID,
       }), sendMode).toEqual([{ embeds: [EMBED], files: [] }]);
     }
   });
 
   it("ignores content in embed mode", () => {
     const msgs = buildSendPayloads({
-      style: "embed", content: "ignored", embed: EMBED, files: [], sendMode: "with",
+      style: "embed", content: "ignored", embed: EMBED, files: [], sendMode: "with", memberId: MEMBER_ID,
     });
     expect(msgs[0]).not.toHaveProperty("content");
   });
@@ -245,6 +273,9 @@ describe("deliverWelcomeMessage plain style end-to-end", () => {
     expect(payload.content).toBe("Welcome <@member-1> to Test Server!");
     expect(payload.files).toHaveLength(1);
     expect(payload).not.toHaveProperty("embeds");
+    // Finding 2 end-to-end: the joining member's real id drives the lock,
+    // taken from `member.id` inside deliverWelcomeMessage itself.
+    expect(payload.allowedMentions).toEqual({ parse: [], users: ["member-1"] });
   });
 
   it("posts text only, with no files key, when the image is disabled", async () => {
@@ -266,5 +297,6 @@ describe("deliverWelcomeMessage plain style end-to-end", () => {
     expect(payload.content).toBe("Bye <@member-1>, Test Server will miss you.");
     expect(payload).not.toHaveProperty("files");
     expect(payload).not.toHaveProperty("embeds");
+    expect(payload.allowedMentions).toEqual({ parse: [], users: ["member-1"] });
   });
 });
