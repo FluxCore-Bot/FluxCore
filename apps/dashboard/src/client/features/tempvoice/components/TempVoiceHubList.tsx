@@ -129,13 +129,13 @@ export function TempVoiceHubList() {
           <p className="text-sm text-text-muted">{t("empty.exampleCaption")}</p>
           <HubFlow example>
             <HubFlowStep n={1} label={t("flow.step1")}>
-              <ChannelChip kind="voice" name="Join to Create" />
+              <ChannelChip kind="voice" name="Join to Create" variant="example" />
             </HubFlowStep>
             <HubFlowStep n={2} label={t("flow.step2")}>
-              <ChannelChip kind="voice" name="Ahmad's Channel" />
+              <ChannelChip kind="voice" name="Ahmad's Channel" variant="example" />
             </HubFlowStep>
             <HubFlowStep n={3} label={t("flow.step3")}>
-              <ChannelChip kind="category" name="Voice Channels" />
+              <ChannelChip kind="category" name="Voice Channels" variant="example" />
             </HubFlowStep>
             <HubFlowStep n={4} label={t("flow.step4")} last />
           </HubFlow>

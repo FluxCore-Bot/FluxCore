@@ -70,11 +70,28 @@ beforeAll(() => {
 });
 
 describe("TempVoiceHubList empty state", () => {
-  it("teaches the mechanic with an inert worked example", () => {
+  it("teaches the mechanic with a worked example that assistive tech can read", () => {
     render(<TempVoiceHubList />);
-    expect(screen.getByRole("list")).toHaveAttribute("inert");
+    // `inert` would have removed the entire example from the accessibility
+    // tree — and the example holds zero focusable nodes, so it guarded nothing.
+    // A screen-reader user would get the caption, which ends in a colon, and
+    // then nothing at all: the branch's whole teaching payload, missing.
+    expect(screen.getByRole("list")).not.toHaveAttribute("inert");
     expect(screen.getByText("empty.exampleCaption")).toBeInTheDocument();
+    // All four lifecycle steps are announced, not just the caption.
+    expect(screen.getAllByRole("listitem")).toHaveLength(4);
+    expect(screen.getByText("flow.step1")).toBeInTheDocument();
+    expect(screen.getByText("flow.step4")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /empty.cta/ })).toBeInTheDocument();
+  });
+
+  it("marks the example's chips as an illustration rather than saved channels", () => {
+    render(<TempVoiceHubList />);
+    expect(screen.getByRole("list")).toHaveAttribute("data-example", "true");
+    // Steps 1-3 each carry a chip; step 4 has no control. All three must read
+    // as dashed illustrations — solid chips are what a real saved hub renders,
+    // so identical styling would tell a sighted admin a hub already exists.
+    expect(screen.getByRole("list").querySelectorAll(".border-dashed")).toHaveLength(3);
   });
 
   it("shows only the one CTA, not a redundant header Add button alongside it", () => {

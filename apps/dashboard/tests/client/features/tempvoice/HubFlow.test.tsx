@@ -38,12 +38,28 @@ describe("HubFlow", () => {
     expect(screen.getByText("Deleted when empty").tagName).toBe("P");
   });
 
-  it("marks the example variant inert", () => {
+  it("keeps the worked example in the accessibility tree", () => {
     render(
       <HubFlow example>
         <HubFlowStep n={1} label="Example" last />
       </HubFlow>,
     );
-    expect(screen.getByRole("list")).toHaveAttribute("inert");
+    // `inert` would strip the entire example from the accessibility tree while
+    // guarding nothing: the example has no focusable node to keep out of the
+    // tab order. Screen-reader users would hear the caption ("Example — this
+    // is how a voice hub works:") followed by silence.
+    expect(screen.getByRole("list")).not.toHaveAttribute("inert");
+    expect(screen.getByText("Example")).toBeInTheDocument();
+    // The example is still flagged, for example-scoped styling.
+    expect(screen.getByRole("list")).toHaveAttribute("data-example", "true");
+  });
+
+  it("does not flag an ordinary flow as an example", () => {
+    render(
+      <HubFlow>
+        <HubFlowStep n={1} label="Real" last />
+      </HubFlow>,
+    );
+    expect(screen.getByRole("list")).not.toHaveAttribute("data-example");
   });
 });
