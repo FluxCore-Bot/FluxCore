@@ -1,12 +1,12 @@
 import { useCallback, useMemo, useState } from "react";
 import type { Command } from "./types";
 
-const STORAGE_KEY = "fluxcore.palette.recent";
+const STORAGE_PREFIX = "fluxcore.palette.recent";
 const MAX_RECENT = 5;
 
-function read(): string[] {
+function read(key: string): string[] {
   try {
-    const parsed: unknown = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "[]");
+    const parsed: unknown = JSON.parse(localStorage.getItem(key) ?? "[]");
     if (!Array.isArray(parsed)) return [];
     return parsed.filter((v): v is string => typeof v === "string");
   } catch {
@@ -15,9 +15,9 @@ function read(): string[] {
   }
 }
 
-function write(ids: string[]): void {
+function write(key: string, ids: string[]): void {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(ids));
+    localStorage.setItem(key, JSON.stringify(ids));
   } catch {
     // Private mode / quota exceeded — recents are a convenience, not a feature
     // worth failing over.
@@ -30,8 +30,12 @@ function write(ids: string[]): void {
  * route that no longer exists, silently drops out instead of lingering as a
  * dead entry.
  */
-export function useRecentCommands(all: Command[]) {
-  const [ids, setIds] = useState<string[]>(read);
+export function useRecentCommands(all: Command[], userId: string) {
+  // Keyed per user: on a shared browser one account's trail must not leak
+  // into another's palette. The hook remounts on login, so the key is stable
+  // for the lifetime of the state below.
+  const key = `${STORAGE_PREFIX}.${userId}`;
+  const [ids, setIds] = useState<string[]>(() => read(key));
 
   const recent = useMemo(
     () =>
@@ -46,10 +50,10 @@ export function useRecentCommands(all: Command[]) {
     setIds((prev) => {
       const next = [command.id, ...prev.filter((id) => id !== command.id)]
         .slice(0, MAX_RECENT);
-      write(next);
+      write(key, next);
       return next;
     });
-  }, []);
+  }, [key]);
 
   return { recent, remember };
 }

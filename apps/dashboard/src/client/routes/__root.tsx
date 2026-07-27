@@ -23,7 +23,12 @@ import { usePermissions } from "../features/permissions/hooks/usePermissions";
 import { useRecentCommands } from "../shared/command-palette/useRecentCommands";
 import type { Command } from "../shared/command-palette/types";
 
-function AppCommandPalette({ guildId }: { guildId: string | undefined }) {
+function AppCommandPalette({
+  guildId, userId,
+}: {
+  guildId: string | undefined;
+  userId: string;
+}) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { data: guilds } = useGuilds();
@@ -58,7 +63,7 @@ function AppCommandPalette({ guildId }: { guildId: string | undefined }) {
   // drop out entirely once a destination stops being available. They are copies
   // re-grouped as "recent", so each one still appears in its own group too — a
   // page you visit often should be reachable from both.
-  const { recent, remember } = useRecentCommands(staticCommands);
+  const { recent, remember } = useRecentCommands(staticCommands, userId);
   const commands: Command[] = useMemo(
     () => [...recent, ...staticCommands],
     [recent, staticCommands],
@@ -169,7 +174,7 @@ export function RootLayout() {
                 </div>
               </nav>
             )}
-            {user && <AppCommandPalette guildId={params.guildId} />}
+            {user && <AppCommandPalette guildId={params.guildId} userId={user.userId} />}
             <main id="main-content" className="flex-1" role="main">
               <Outlet />
             </main>
