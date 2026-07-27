@@ -40,7 +40,11 @@ Full gate (what CI runs):
 docker compose --profile bot run --rm bot pnpm turbo run test
 ```
 
-⚠️ **`pnpm test` is currently RED on `main`** — `guildMemberAdd`/`ready` bot tests reach a real Postgres instead of mocking, failing 5 tests on any fresh checkout. This is pre-existing and unrelated. Before claiming a regression, compare against merge-base:
+⚠️ **CORRECTED 2026-07-27 — the full gate is GREEN in this repo.** Measured on this branch: dashboard 903/903, bot 372/372, systems 328/328, typecheck 14/14. **Treat any failure as a regression.**
+
+An earlier draft of this plan said to expect ~5 pre-existing `guildMemberAdd`/`ready` bot failures. That is conditional, not universal: those tests reach a real Postgres instead of mocking, so they fail only where the reachable DB has **no migrations applied** — a fresh worktree or fresh checkout. The main repo's dev DB is migrated, so they pass. Do not wave away failures on the strength of the old claim.
+
+If you do hit failures and suspect they predate the branch, verify rather than assume:
 
 ```bash
 git stash && docker compose --profile bot run --rm bot pnpm turbo run test 2>&1 | tail -30 && git stash pop
