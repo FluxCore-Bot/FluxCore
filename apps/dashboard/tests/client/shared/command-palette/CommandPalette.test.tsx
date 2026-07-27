@@ -59,6 +59,7 @@ describe("CommandPalette", () => {
     await open(user);
     const input = screen.getByRole("combobox");
     expect(input).toHaveAttribute("aria-expanded", "true");
+    expect(input).toHaveAttribute("aria-autocomplete", "list");
     expect(input).toHaveAttribute("aria-controls", screen.getByRole("listbox").id);
   });
 

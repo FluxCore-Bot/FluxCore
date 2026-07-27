@@ -117,6 +117,7 @@ export function CommandPalette({
           <input
             autoFocus
             role="combobox"
+            aria-autocomplete="list"
             aria-expanded="true"
             aria-controls={`${baseId}-listbox`}
             aria-activedescendant={activeId ?? undefined}
