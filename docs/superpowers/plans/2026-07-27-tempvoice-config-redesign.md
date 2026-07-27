@@ -1349,10 +1349,19 @@ Replace `packages/i18n/src/locales/en/tempvoice.json` entirely:
     "created": "Hub created",
     "updated": "Hub updated",
     "removed": "Hub removed",
-    "undo": "Undo"
+    "undo": "Undo",
+    "restored": "Hub restored",
+    "deleteFailed": "Couldn't remove that hub. Please try again.",
+    "undoFailed": "Couldn't restore that hub. It may no longer fit within the hub limit."
   }
 }
 ```
+
+⚠️ The last three keys were added after Task 6's review: its error handling calls
+`toast.restored` on the ordinary Undo success path, plus `toast.deleteFailed` / `toast.undoFailed`
+on rejection. Without them an admin sees the literal string `toast.restored` after every
+successful Undo. Nothing catches this automatically — Task 8's parity test compares each locale
+against `en`, so a key missing from `en` too is invisible to it.
 
 - [ ] **Step 2: Point the route at the new component**
 
