@@ -9,6 +9,12 @@ import { helmetOptions } from "../../../src/server/shared/security.js";
 // raw Node ServerResponse (no `cspNonce`). Reading `.script` off `undefined`
 // threw and turned EVERY helmeted response into a 500 — /api/i18n/:lng/:ns was
 // simply the first API the SPA hit on load, so it was the visible symptom.
+function cspOf(res: { headers: Record<string, unknown> }): string {
+  const csp = res.headers["content-security-policy"];
+  if (typeof csp !== "string") throw new Error("content-security-policy header missing");
+  return csp;
+}
+
 async function buildApp() {
   const app = Fastify({ logger: false });
   await app.register(fastifyHelmet, helmetOptions);
@@ -43,7 +49,7 @@ describe("dashboard helmet CSP nonces", () => {
 
   it("auto-appends a nonce to script-src and style-src", async () => {
     const res = await app.inject({ method: "GET", url: "/api/i18n/en/common" });
-    const csp = res.headers["content-security-policy"] as string;
+    const csp = cspOf(res);
     expect(csp).toMatch(/script-src [^;]*'nonce-[a-f0-9]{32}'/);
     expect(csp).toMatch(/style-src [^;]*'nonce-[a-f0-9]{32}'/);
   });
@@ -53,14 +59,14 @@ describe("dashboard helmet CSP nonces", () => {
     expect(res.statusCode).toBe(200);
     const bodyNonce = /nonce=([a-f0-9]{32})/.exec(res.body)?.[1];
     expect(bodyNonce).toBeTruthy();
-    const csp = res.headers["content-security-policy"] as string;
+    const csp = cspOf(res);
     // The nonce injected into <style> must match the one advertised in the header.
     expect(csp).toContain(`style-src 'self' https://fonts.googleapis.com 'nonce-${bodyNonce}'`);
   });
 
   it("keeps CSP hardened (no unsafe-inline / unsafe-eval)", async () => {
     const res = await app.inject({ method: "GET", url: "/api/i18n/en/common" });
-    const csp = res.headers["content-security-policy"] as string;
+    const csp = cspOf(res);
     expect(csp).not.toContain("unsafe-inline");
     expect(csp).not.toContain("unsafe-eval");
   });
@@ -72,7 +78,7 @@ describe("dashboard helmet CSP nonces", () => {
   // locally) while the browser console logs a CSP violation.
   it("allows blob: in img-src for the welcome image preview", async () => {
     const res = await app.inject({ method: "GET", url: "/api/i18n/en/common" });
-    const csp = res.headers["content-security-policy"] as string;
+    const csp = cspOf(res);
     expect(csp).toMatch(/img-src [^;]*\bblob:/);
   });
 });

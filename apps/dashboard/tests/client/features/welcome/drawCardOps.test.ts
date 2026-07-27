@@ -37,7 +37,11 @@ interface StubImage {
 }
 
 function labelStyle(style: string | GradientLike): string {
-  return typeof style === "string" ? style : (style as { label: string }).label;
+  if (typeof style === "string") return style;
+  // Every gradient reaching here came from the recorder's own makeGradient,
+  // so it always carries a label — but prove it instead of casting.
+  if ("label" in style && typeof style.label === "string") return style.label;
+  throw new Error("style is not a recorder-created gradient");
 }
 
 /**
