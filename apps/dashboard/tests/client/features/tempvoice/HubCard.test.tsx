@@ -53,7 +53,8 @@ beforeAll(() => {
 
 // Deliberately distinct from HubCard's own DEFAULT_TEMPLATE ("{user}'s Channel")
 // so the "seeds from config" test can't pass merely because the seeded value
-// happens to match the unseeded default.
+// happens to match the unseeded default. With the "Ahmad" username mock above,
+// this resolves to "Ahmad's Lounge".
 const config = { id: 1, hubChannelId: "hub1", categoryId: "cat1", nameTemplate: "{user}'s Lounge" };
 
 function props(over: Partial<ComponentProps<typeof HubCard>> = {}) {
@@ -103,6 +104,20 @@ describe("HubCard editor mode", () => {
   it("seeds the controls from the config", () => {
     render(<HubCard {...props({ mode: "editor" })} />);
     expect(screen.getByDisplayValue("{user}'s Lounge")).toBeInTheDocument();
+    // categoryId — the picker's trigger shows the resolved, selected option label.
+    expect(screen.getByText("📁 Voice Channels")).toBeInTheDocument();
+    // The step-2 live preview — resolved from the seeded template, not left blank.
+    expect(screen.getByText("Ahmad's Lounge")).toBeInTheDocument();
+  });
+
+  it("excludes hub channels claimed by other configs while keeping its own selection visible", async () => {
+    const user = userEvent.setup();
+    render(<HubCard {...props({ mode: "editor", excludeHubIds: ["hub2"] })} />);
+    // The card's own current value is always shown on the trigger...
+    expect(screen.getByText("🔊 Join to Create")).toBeInTheDocument();
+    // ...but a channel claimed by another hub is missing from the option list.
+    await user.click(screen.getByRole("button", { name: "flow.step1" }));
+    expect(screen.queryByText("🔊 Gaming Lobby")).not.toBeInTheDocument();
   });
 
   it("blocks submit, reports an error, and focuses the offending control", async () => {
@@ -111,11 +126,16 @@ describe("HubCard editor mode", () => {
     render(<HubCard {...p} />);
     await user.click(screen.getByRole("button", { name: /editor.save/ }));
     expect(p.onSubmit).not.toHaveBeenCalled();
-    expect(screen.getByText(/errors.hubRequired/)).toBeInTheDocument();
+    const errorText = screen.getByText(/errors.hubRequired/);
     // The trigger is a labelable <button> explicitly associated with step 1's
     // <label htmlFor>, so its accessible name comes from that label ("flow.step1"),
     // not its own placeholder text — that's how ARIA name computation resolves it.
-    expect(document.activeElement).toBe(screen.getByRole("button", { name: "flow.step1" }));
+    const trigger = screen.getByRole("button", { name: "flow.step1" });
+    expect(document.activeElement).toBe(trigger);
+    // Assistive tech needs more than focus landing on the button: it must be
+    // described by, and marked invalid because of, the error text.
+    expect(trigger).toHaveAttribute("aria-invalid", "true");
+    expect(trigger).toHaveAttribute("aria-describedby", errorText.id);
   });
 
   it("surfaces a submit failure inside the card and stays open", async () => {
@@ -132,5 +152,70 @@ describe("HubCard editor mode", () => {
       "This channel is already a temp voice hub",
     );
     expect(screen.getByRole("button", { name: /editor.save/ })).toBeInTheDocument();
+  });
+});
+
+describe("HubCard mode transitions", () => {
+  // The Task 6 orchestrator toggles `mode` on one long-lived card instance
+  // (collapse() only clears which hub id is expanded — it never unmounts the
+  // card), so these tests simulate that with `rerender`, not a fresh `render`.
+
+  it("keeps the summary reading the saved config after the editor's own draft changes", async () => {
+    const user = userEvent.setup();
+    const p = props({ mode: "editor" });
+    const { rerender } = render(<HubCard {...p} />);
+
+    const nameField = screen.getByDisplayValue("{user}'s Lounge");
+    await user.clear(nameField);
+    await user.type(nameField, "Totally Different Name");
+
+    // Cancel: the parent flips `mode` back without ever calling onSubmit.
+    rerender(<HubCard {...p} mode="summary" />);
+
+    expect(screen.getByText("Ahmad's Lounge")).toBeInTheDocument();
+    expect(screen.queryByText("Totally Different Name")).not.toBeInTheDocument();
+  });
+
+  it("resets the draft and clears a stale submit error when the card re-enters editor mode", async () => {
+    const user = userEvent.setup();
+    const p = props({
+      mode: "editor",
+      onSubmit: vi.fn(async () => {
+        throw new Error("This channel is already a temp voice hub");
+      }),
+    });
+    const { rerender } = render(<HubCard {...p} />);
+
+    await user.click(screen.getByRole("button", { name: /editor.save/ }));
+    expect(await screen.findByRole("alert")).toBeInTheDocument();
+
+    const nameField = screen.getByDisplayValue("{user}'s Lounge");
+    await user.clear(nameField);
+    await user.type(nameField, "Abandoned Draft");
+
+    rerender(<HubCard {...p} mode="summary" />);
+    rerender(<HubCard {...p} mode="editor" />);
+
+    expect(screen.getByDisplayValue("{user}'s Lounge")).toBeInTheDocument();
+    expect(screen.queryByDisplayValue("Abandoned Draft")).not.toBeInTheDocument();
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+  });
+
+  it("clears a stale field error when the card re-enters editor mode", async () => {
+    // config stays null throughout: the hub picker has no "clear" affordance
+    // (no `allowNone`), so a field error is only reachable from an empty,
+    // unsaved draft — this pins the reset mechanism itself, even though a
+    // config-with-value card wouldn't reach a field error via real interaction.
+    const user = userEvent.setup();
+    const p = props({ mode: "editor", config: null });
+    const { rerender } = render(<HubCard {...p} />);
+
+    await user.click(screen.getByRole("button", { name: /editor.save/ }));
+    expect(screen.getByText(/errors.hubRequired/)).toBeInTheDocument();
+
+    rerender(<HubCard {...p} mode="summary" />);
+    rerender(<HubCard {...p} mode="editor" />);
+
+    expect(screen.queryByText(/errors.hubRequired/)).not.toBeInTheDocument();
   });
 });

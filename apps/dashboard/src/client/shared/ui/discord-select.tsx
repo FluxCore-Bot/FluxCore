@@ -22,6 +22,10 @@ export interface DiscordSelectProps {
   excludeIds?: string[];
   /** Id applied to the trigger button, for `<label htmlFor>` association. */
   id?: string;
+  /** Id of an element describing a validation error on this field. */
+  describedBy?: string;
+  /** Marks the trigger as invalid, alongside `describedBy`, for assistive tech. */
+  invalid?: boolean;
   /** Forwarded to the trigger button so callers can move focus to it (e.g. after a validation error). */
   ref?: Ref<HTMLButtonElement>;
 }
@@ -44,6 +48,8 @@ export function DiscordSelect({
   className,
   excludeIds,
   id,
+  describedBy,
+  invalid,
   ref,
 }: DiscordSelectProps) {
   const isRole = type === "role";
@@ -83,6 +89,8 @@ export function DiscordSelect({
     <SearchableSelect
       ref={ref}
       id={id}
+      describedBy={describedBy}
+      invalid={invalid}
       options={options}
       value={value}
       onValueChange={onValueChange}

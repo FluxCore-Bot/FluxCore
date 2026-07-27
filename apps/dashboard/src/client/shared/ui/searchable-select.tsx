@@ -29,6 +29,10 @@ export interface SearchableSelectProps {
   className?: string;
   id?: string;
   required?: boolean;
+  /** Id of an element describing a validation error; mirrors `required` → `aria-required`. */
+  describedBy?: string;
+  /** Marks the trigger as invalid, alongside `describedBy`, for assistive tech. */
+  invalid?: boolean;
   /** Forwarded to the trigger button so callers can move focus to it (e.g. after a validation error). */
   ref?: Ref<HTMLButtonElement>;
 }
@@ -50,6 +54,8 @@ export function SearchableSelect({
   className,
   id,
   required,
+  describedBy,
+  invalid,
   ref,
 }: SearchableSelectProps) {
   const [open, setOpen] = useState(false);
@@ -103,6 +109,8 @@ export function SearchableSelect({
           type="button"
           id={id}
           aria-required={required || undefined}
+          aria-describedby={describedBy}
+          aria-invalid={invalid || undefined}
           disabled={disabled}
           className={cn(
             "flex h-9 w-full items-center justify-between rounded-sm bg-surface-lowest px-3 py-2 text-sm text-text focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50",

@@ -54,22 +54,47 @@ export function HubCard({
   const hubId = `${ids}-hub`;
   const catId = `${ids}-cat`;
   const nameId = `${ids}-name`;
+  const hubErrorId = `${ids}-hub-error`;
 
   const hubRef = useRef<HTMLButtonElement>(null);
 
+  const [renderedMode, setRenderedMode] = useState(mode);
   const [hubChannelId, setHubChannelId] = useState(config?.hubChannelId ?? "");
   const [categoryId, setCategoryId] = useState<string | null>(config?.categoryId ?? null);
   const [nameTemplate, setNameTemplate] = useState(config?.nameTemplate ?? DEFAULT_TEMPLATE);
   const [fieldError, setFieldError] = useState("");
   const [submitError, setSubmitError] = useState("");
 
+  // The orchestrator toggles `mode` on a long-lived card instance rather than
+  // unmounting it (collapse() only clears which id is expanded), so a useState
+  // initializer alone would leave a previously-typed, possibly-abandoned draft —
+  // and a stale failure banner — behind the next time this card re-enters editor
+  // mode. Re-seed from the saved config whenever we transition INTO editor mode.
+  // (React's documented "adjusting state when a prop changes" pattern: updating
+  // state mid-render avoids both an extra effect-driven render and a flash of
+  // stale content.)
+  if (mode !== renderedMode) {
+    setRenderedMode(mode);
+    if (mode === "editor") {
+      setHubChannelId(config?.hubChannelId ?? "");
+      setCategoryId(config?.categoryId ?? null);
+      setNameTemplate(config?.nameTemplate ?? DEFAULT_TEMPLATE);
+      setFieldError("");
+      setSubmitError("");
+    }
+  }
+
   const preview = usePreviewContext(guildId);
-  const resolvedName = resolveTemplatePreview(
-    nameTemplate,
-    buildTokenValues(tempvoiceVariables, preview),
-  );
 
   if (mode === "summary" && config) {
+    // Always read from the saved `config`, never from the editor's draft state —
+    // the draft can outlive a Cancel (this card never unmounts), so deriving the
+    // summary from anything but the prop would let an abandoned, unsaved edit
+    // "leak" into the collapsed view while the bot keeps using the real saved name.
+    const summaryResolvedName = resolveTemplatePreview(
+      config.nameTemplate,
+      buildTokenValues(tempvoiceVariables, preview),
+    );
     return (
       <div className="rounded-lg border border-border bg-surface p-3">
         <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
@@ -98,12 +123,18 @@ export function HubCard({
           </div>
         </div>
         <HubSummary
-          resolvedName={resolvedName}
+          resolvedName={summaryResolvedName}
           categoryName={config.categoryId ? resolveChannelName(config.categoryId) : null}
         />
       </div>
     );
   }
+
+  // The editor's own live preview, driven by the in-progress draft (not `config`).
+  const resolvedName = resolveTemplatePreview(
+    nameTemplate,
+    buildTokenValues(tempvoiceVariables, preview),
+  );
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -148,8 +179,14 @@ export function HubCard({
             placeholder={t("fields.hubPlaceholder")}
             excludeIds={excludeHubIds}
             disabled={busy}
+            describedBy={fieldError ? hubErrorId : undefined}
+            invalid={!!fieldError}
           />
-          {fieldError && <p className="mt-1 text-xs text-danger">{fieldError}</p>}
+          {fieldError && (
+            <p id={hubErrorId} className="mt-1 text-xs text-danger">
+              {fieldError}
+            </p>
+          )}
         </HubFlowStep>
 
         <HubFlowStep n={2} label={t("flow.step2")} htmlFor={nameId}>
@@ -185,10 +222,16 @@ export function HubCard({
       </HubFlow>
 
       <div className="mt-5 flex items-center gap-3">
-        <Button type="submit" disabled={busy}>
+        <Button type="submit" className="min-h-11" disabled={busy}>
           {busy ? t("editor.saving") : t("editor.save")}
         </Button>
-        <Button type="button" variant="ghost" onClick={onCancel} disabled={busy}>
+        <Button
+          type="button"
+          variant="ghost"
+          className="min-h-11"
+          onClick={onCancel}
+          disabled={busy}
+        >
           {t("editor.cancel")}
         </Button>
       </div>
