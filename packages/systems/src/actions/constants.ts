@@ -262,6 +262,69 @@ export const CONDITION_TYPES = [
 
 export type ConditionType = (typeof CONDITION_TYPES)[number];
 
+/** The three data a trigger filter can key on. */
+export type ConditionSubject = "channel" | "role" | "user";
+
+/**
+ * Which filter subjects each event type can actually be filtered by — i.e.
+ * which of `channelId`, `member` and `userId` the bot populates on that
+ * event's EventContext (see apps/bot/.../eventBridge.ts).
+ *
+ * Trigger filters fail closed: a configured filter the context cannot answer
+ * stops the rule from firing. So offering a filter the trigger can never
+ * satisfy does not merely do nothing — it silently disables the rule. The
+ * dashboard reads this map to only offer filters that can work, and to flag
+ * rules that already carry one that cannot.
+ *
+ * - `channel` — context.channelId is set
+ * - `role`    — context.member is set (role filters read member.roles)
+ * - `user`    — context.userId is set
+ */
+export const EVENT_CONDITION_SUPPORT: Record<ActionEventType, ConditionSubject[]> = {
+  // buildMemberContext — member present unless the gateway sent a partial
+  memberJoin: ["user", "role"],
+  memberLeave: ["user", "role"],
+  nicknameChanged: ["user", "role"],
+  memberTimeout: ["user", "role"],
+  boostStart: ["user", "role"],
+  boostEnd: ["user", "role"],
+
+  // buildBanContext — the user is no longer a member, so there is no member
+  // object to read roles from, on either ban or unban
+  memberBanned: ["user"],
+  memberUnbanned: ["user"],
+
+  // buildMessageContext / buildReactionContext — full context
+  messageCreated: ["user", "role", "channel"],
+  messageDeleted: ["user", "role", "channel"],
+  reactionAdded: ["user", "role", "channel"],
+  reactionRemoved: ["user", "role", "channel"],
+
+  // buildRoleContext — member present, but no channel
+  roleAdded: ["user", "role"],
+  roleRemoved: ["user", "role"],
+
+  // buildChannelContext — no acting user is available on the gateway event
+  channelCreated: ["channel"],
+  channelDeleted: ["channel"],
+
+  // buildVoiceContext — full context
+  voiceJoin: ["user", "role", "channel"],
+  voiceLeave: ["user", "role", "channel"],
+
+  // threadCreate — channelId is the NEW thread, and the owner is a bare id
+  threadCreated: ["user", "channel"],
+};
+
+/** Whether `eventType` can be filtered by `subject`. */
+export function supportsCondition(
+  eventType: string,
+  subject: ConditionSubject,
+): boolean {
+  const supported = EVENT_CONDITION_SUPPORT[eventType as ActionEventType];
+  return supported ? supported.includes(subject) : false;
+}
+
 /**
  * Allowed character set for action rule names. Restricts user-supplied
  * names so they cannot inject markdown, mention syntax, code fences, or

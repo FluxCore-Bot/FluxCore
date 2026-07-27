@@ -214,3 +214,119 @@ describe("action executor - processEvent", () => {
     expect(mockSendMessageExecutor).toHaveBeenCalledTimes(2);
   });
 });
+
+/**
+ * Filters used to be guarded on the presence of their own datum
+ * (`conditions.excludeRoleIds?.length && context.member`), so a filter the
+ * event context could not answer was skipped rather than failed. The rule then
+ * fired on exactly the users and channels it had been configured to skip, while
+ * the dashboard showed the filter as active. Every case below is a rule that
+ * must NOT fire.
+ */
+describe("action executor - filters fail closed", () => {
+  const memberlessContext = {
+    eventType: "memberBanned" as const,
+    guildId: "guild-123",
+    guildName: "Test Guild",
+    userId: "user-456",
+    userName: "TestUser",
+    userTag: "TestUser#0001",
+    userMention: "<@user-456>",
+    memberCount: 100,
+    timestamp: new Date().toISOString(),
+  };
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockGetGuildSettingsOrDefault.mockReturnValue({
+      globalEnabled: true,
+      maxRules: 25,
+      logChannelId: null,
+    });
+  });
+
+  function ruleWith(conditions: Record<string, string[]>) {
+    return [
+      { name: "filtered", enabled: true, conditions, actions: [{ type: "sendMessage" }] },
+    ];
+  }
+
+  it("does not fire an exclude-role filter when the event carries no member", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ excludeRoleIds: ["staff"] }));
+
+    await processEvent({} as never, memberlessContext);
+
+    expect(mockSendMessageExecutor).not.toHaveBeenCalled();
+  });
+
+  it("does not fire an include-role filter when the event carries no member", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ roleIds: ["verified"] }));
+
+    await processEvent({} as never, memberlessContext);
+
+    expect(mockSendMessageExecutor).not.toHaveBeenCalled();
+  });
+
+  it("does not fire a channel filter when the event carries no channel", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ channelIds: ["general"] }));
+
+    await processEvent({} as never, memberlessContext);
+
+    expect(mockSendMessageExecutor).not.toHaveBeenCalled();
+  });
+
+  it("does not fire an exclude-channel filter when the event carries no channel", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ excludeChannelIds: ["general"] }));
+
+    await processEvent({} as never, memberlessContext);
+
+    expect(mockSendMessageExecutor).not.toHaveBeenCalled();
+  });
+
+  it("does not fire a user filter when the event carries no user", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ userIds: ["someone"] }));
+
+    await processEvent({} as never, {
+      eventType: "channelCreated" as const,
+      guildId: "guild-123",
+      guildName: "Test Guild",
+      channelId: "channel-789",
+      memberCount: 100,
+      timestamp: new Date().toISOString(),
+    });
+
+    expect(mockSendMessageExecutor).not.toHaveBeenCalled();
+  });
+
+  it("still fires when the filter is satisfiable and matches", async () => {
+    const withMember = {
+      ...memberlessContext,
+      member: { roles: { cache: new Map([["verified", {}]]) } },
+    };
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ roleIds: ["verified"] }));
+
+    await processEvent({} as never, withMember as never);
+
+    expect(mockSendMessageExecutor).toHaveBeenCalled();
+  });
+
+  it("still skips when the filter is satisfiable and does not match", async () => {
+    const withMember = {
+      ...memberlessContext,
+      member: { roles: { cache: new Map([["other", {}]]) } },
+    };
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ roleIds: ["verified"] }));
+
+    await processEvent({} as never, withMember as never);
+
+    expect(mockSendMessageExecutor).not.toHaveBeenCalled();
+  });
+
+  it("leaves unfiltered rules alone", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({}));
+
+    await processEvent({} as never, memberlessContext);
+
+    expect(mockSendMessageExecutor).toHaveBeenCalled();
+  });
+});

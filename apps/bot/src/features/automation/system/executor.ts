@@ -46,32 +46,53 @@ function checkRateLimit(guildId: string, eventType: string): boolean {
 
 // --- Condition matching ---
 
+/**
+ * Trigger filters FAIL CLOSED: a configured filter the event context cannot
+ * answer means the rule does not fire.
+ *
+ * These guards used to read `conditions.excludeRoleIds?.length &&
+ * context.member`, which silently *skipped* an unanswerable filter. The rule
+ * then fired on exactly the users and channels it was configured to exclude —
+ * "exclude @Staff" on a Member Banned rule announced every staff ban, because
+ * a ban context carries no member — while the dashboard counted the filter as
+ * active. An exclusion that cannot be evaluated is not a permission to
+ * proceed; it is a reason to stop.
+ *
+ * The editor is event-aware (EVENT_CONDITION_SUPPORT) so new rules cannot be
+ * built with a filter their trigger can never evaluate.
+ */
 function matchesConditions(
   conditions: ActionConditions,
   context: EventContext,
 ): boolean {
-  // Include filters: if specified, context must match
-  if (conditions.channelIds?.length && context.channelId) {
+  // Include filters: the context must carry the datum AND match it.
+  if (conditions.channelIds?.length) {
+    if (!context.channelId) return false;
     if (!conditions.channelIds.includes(context.channelId)) return false;
   }
-  if (conditions.userIds?.length && context.userId) {
+  if (conditions.userIds?.length) {
+    if (!context.userId) return false;
     if (!conditions.userIds.includes(context.userId)) return false;
   }
-  if (conditions.roleIds?.length && context.member) {
+  if (conditions.roleIds?.length) {
+    if (!context.member) return false;
     const hasMatchingRole = conditions.roleIds.some((id) =>
       context.member!.roles.cache.has(id),
     );
     if (!hasMatchingRole) return false;
   }
 
-  // Exclude filters: if matched, skip
-  if (conditions.excludeChannelIds?.length && context.channelId) {
+  // Exclude filters: an unanswerable exclusion cannot be cleared, so it blocks.
+  if (conditions.excludeChannelIds?.length) {
+    if (!context.channelId) return false;
     if (conditions.excludeChannelIds.includes(context.channelId)) return false;
   }
-  if (conditions.excludeUserIds?.length && context.userId) {
+  if (conditions.excludeUserIds?.length) {
+    if (!context.userId) return false;
     if (conditions.excludeUserIds.includes(context.userId)) return false;
   }
-  if (conditions.excludeRoleIds?.length && context.member) {
+  if (conditions.excludeRoleIds?.length) {
+    if (!context.member) return false;
     const hasExcludedRole = conditions.excludeRoleIds.some((id) =>
       context.member!.roles.cache.has(id),
     );
