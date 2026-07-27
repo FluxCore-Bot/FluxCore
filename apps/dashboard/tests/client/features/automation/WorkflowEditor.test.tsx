@@ -210,6 +210,27 @@ describe("WorkflowEditor — undo after a node delete", () => {
   });
 });
 
+describe("WorkflowEditor — pending positions from a context-menu duplicate", () => {
+  it("places the duplicate of a NON-last action at its +40/+60 offset despite the id collision", async () => {
+    // Duplicating action-0 in a three-action rule hands the copy id
+    // "action-1" — an id an existing node already holds. The sync effect's
+    // posMap therefore has an entry for it, and before the fix that entry
+    // won: the pending +40/+60 cursor offset was dropped unapplied (and then
+    // deleted by the cleanup), so the copy landed on its neighbour's spot.
+    renderEditor(threeActions);
+
+    // action-0 sits at (420, 60); the old action-1 at (420, 190).
+    await chooseFromNodeMenu(await findActionNode(1), "ruleList.duplicate");
+
+    // The copy renders as display index 2 (id "action-1") and must sit at
+    // the recorded pending position, source + (40, 60) — not at (420, 190).
+    const copy = await findActionNode(2);
+    await waitFor(() =>
+      expect(copy.style.transform).toContain("translate(460px,120px)"),
+    );
+  });
+});
+
 describe("WorkflowEditor — a context-menu move and the open panel", () => {
   it("leaves the selection alone when some other action moves", async () => {
     renderEditor(threeActions);

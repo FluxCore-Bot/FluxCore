@@ -279,22 +279,25 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     }
   }, [isStepMode, rfEdges, handleEdgeRemoval, convertAndSeverEdges, onEdgesChangeBase]);
 
-  // Sync computed nodes/edges when data changes, preserving user-dragged positions
+  // Sync computed nodes/edges when data changes, preserving user-dragged
+  // positions. A pending position must win over the previous position for
+  // its id: duplicating a non-last linear action hands out an id
+  // (`action-N+1`) an existing node already holds, and the cursor-relative
+  // spot the user chose has to beat the position that id happened to carry.
   useEffect(() => {
+    // Snapshot for the updater (which React may invoke later, or twice) and
+    // drop the applied entries from the live ref right here, so a recycled
+    // node id cannot inherit a stale position on a later sync.
+    const pending = new Map(pendingPositionsRef.current);
     setNodes((prev) => {
       const posMap = new Map(prev.map((n) => [n.id, n.position]));
       return computedNodes.map((n) => ({
         ...n,
-        position: posMap.get(n.id) ?? pendingPositionsRef.current.get(n.id) ?? n.position,
+        position: pending.get(n.id) ?? posMap.get(n.id) ?? n.position,
       }));
     });
+    for (const n of computedNodes) pendingPositionsRef.current.delete(n.id);
   }, [computedNodes, setNodes]);
-
-  // Once a pending position has been applied, the node carries it in `nodes`;
-  // drop the entry so a recycled node id cannot inherit a stale position.
-  useEffect(() => {
-    for (const node of nodes) pendingPositionsRef.current.delete(node.id);
-  }, [nodes]);
 
   useEffect(() => {
     setEdges(computedEdges);
