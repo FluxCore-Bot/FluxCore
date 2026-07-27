@@ -341,5 +341,83 @@
     "stepUnreachable": "Step \"{{id}}\" is not reachable from the trigger",
     "noActionType": "{{label}}: no action type selected",
     "fieldRequired": "{{label}}: {{field}} is required"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Είσοδος μέλους",
+      "description": "Όταν ένα νέο μέλος μπαίνει στον διακομιστή"
+    },
+    "memberLeave": {
+      "label": "Αποχώρηση μέλους",
+      "description": "Όταν ένα μέλος φεύγει από τον διακομιστή"
+    },
+    "memberBanned": {
+      "label": "Αποκλεισμός μέλους",
+      "description": "Όταν ένα μέλος αποκλείεται"
+    },
+    "memberUnbanned": {
+      "label": "Άρση αποκλεισμού",
+      "description": "Όταν αίρεται ο αποκλεισμός ενός μέλους"
+    },
+    "messageDeleted": {
+      "label": "Διαγραφή μηνύματος",
+      "description": "Όταν διαγράφεται ένα μήνυμα"
+    },
+    "roleAdded": {
+      "label": "Προσθήκη ρόλου",
+      "description": "Όταν προστίθεται ρόλος σε ένα μέλος"
+    },
+    "roleRemoved": {
+      "label": "Αφαίρεση ρόλου",
+      "description": "Όταν αφαιρείται ρόλος από ένα μέλος"
+    },
+    "channelCreated": {
+      "label": "Δημιουργία καναλιού",
+      "description": "Όταν δημιουργείται νέο κανάλι"
+    },
+    "channelDeleted": {
+      "label": "Διαγραφή καναλιού",
+      "description": "Όταν διαγράφεται ένα κανάλι"
+    },
+    "voiceJoin": {
+      "label": "Είσοδος σε φωνή",
+      "description": "Όταν ένα μέλος μπαίνει σε φωνητικό κανάλι"
+    },
+    "voiceLeave": {
+      "label": "Αποχώρηση από φωνή",
+      "description": "Όταν ένα μέλος φεύγει από φωνητικό κανάλι"
+    },
+    "messageCreated": {
+      "label": "Αποστολή μηνύματος",
+      "description": "Όταν στέλνεται μήνυμα σε ένα κανάλι"
+    },
+    "reactionAdded": {
+      "label": "Προσθήκη αντίδρασης",
+      "description": "Όταν προστίθεται αντίδραση σε ένα μήνυμα"
+    },
+    "reactionRemoved": {
+      "label": "Αφαίρεση αντίδρασης",
+      "description": "Όταν αφαιρείται αντίδραση από ένα μήνυμα"
+    },
+    "nicknameChanged": {
+      "label": "Αλλαγή ψευδωνύμου",
+      "description": "Όταν αλλάζει το ψευδώνυμο ενός μέλους"
+    },
+    "memberTimeout": {
+      "label": "Σίγαση μέλους",
+      "description": "Όταν ένα μέλος τίθεται σε σίγαση"
+    },
+    "threadCreated": {
+      "label": "Δημιουργία νήματος",
+      "description": "Όταν δημιουργείται νέο νήμα"
+    },
+    "boostStart": {
+      "label": "Έναρξη ενίσχυσης",
+      "description": "Όταν ένα μέλος αρχίζει να ενισχύει τον διακομιστή"
+    },
+    "boostEnd": {
+      "label": "Λήξη ενίσχυσης",
+      "description": "Όταν ένα μέλος σταματά να ενισχύει τον διακομιστή"
+    }
   }
 }

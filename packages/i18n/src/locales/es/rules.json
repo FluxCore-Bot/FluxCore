@@ -341,5 +341,83 @@
     "stepUnreachable": "El paso \"{{id}}\" no es accesible desde el disparador",
     "noActionType": "{{label}}: no se seleccionó ningún tipo de acción",
     "fieldRequired": "{{label}}: {{field}} es obligatorio"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Entrada de miembro",
+      "description": "Cuando un nuevo miembro entra al servidor"
+    },
+    "memberLeave": {
+      "label": "Salida de miembro",
+      "description": "Cuando un miembro sale del servidor"
+    },
+    "memberBanned": {
+      "label": "Miembro baneado",
+      "description": "Cuando se banea a un miembro"
+    },
+    "memberUnbanned": {
+      "label": "Miembro desbaneado",
+      "description": "Cuando se desbanea a un miembro"
+    },
+    "messageDeleted": {
+      "label": "Mensaje eliminado",
+      "description": "Cuando se elimina un mensaje"
+    },
+    "roleAdded": {
+      "label": "Rol añadido",
+      "description": "Cuando se añade un rol a un miembro"
+    },
+    "roleRemoved": {
+      "label": "Rol eliminado",
+      "description": "Cuando se quita un rol a un miembro"
+    },
+    "channelCreated": {
+      "label": "Canal creado",
+      "description": "Cuando se crea un canal nuevo"
+    },
+    "channelDeleted": {
+      "label": "Canal eliminado",
+      "description": "Cuando se elimina un canal"
+    },
+    "voiceJoin": {
+      "label": "Entrada a voz",
+      "description": "Cuando un miembro entra a un canal de voz"
+    },
+    "voiceLeave": {
+      "label": "Salida de voz",
+      "description": "Cuando un miembro sale de un canal de voz"
+    },
+    "messageCreated": {
+      "label": "Mensaje enviado",
+      "description": "Cuando se envía un mensaje en un canal"
+    },
+    "reactionAdded": {
+      "label": "Reacción añadida",
+      "description": "Cuando se añade una reacción a un mensaje"
+    },
+    "reactionRemoved": {
+      "label": "Reacción eliminada",
+      "description": "Cuando se quita una reacción de un mensaje"
+    },
+    "nicknameChanged": {
+      "label": "Apodo cambiado",
+      "description": "Cuando cambia el apodo de un miembro"
+    },
+    "memberTimeout": {
+      "label": "Miembro silenciado",
+      "description": "Cuando se silencia a un miembro"
+    },
+    "threadCreated": {
+      "label": "Hilo creado",
+      "description": "Cuando se crea un hilo nuevo"
+    },
+    "boostStart": {
+      "label": "Inicio de mejora",
+      "description": "Cuando un miembro empieza a mejorar el servidor"
+    },
+    "boostEnd": {
+      "label": "Fin de mejora",
+      "description": "Cuando un miembro deja de mejorar el servidor"
+    }
   }
 }

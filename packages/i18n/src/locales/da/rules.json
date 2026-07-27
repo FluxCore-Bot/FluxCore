@@ -341,5 +341,83 @@
     "stepUnreachable": "Step \"{{id}}\" is not reachable from the trigger",
     "noActionType": "{{label}}: no action type selected",
     "fieldRequired": "{{label}}: {{field}} is required"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Medlem tilsluttet",
+      "description": "Når et nyt medlem tilslutter sig serveren"
+    },
+    "memberLeave": {
+      "label": "Medlem forladt",
+      "description": "Når et medlem forlader serveren"
+    },
+    "memberBanned": {
+      "label": "Medlem bortvist",
+      "description": "Når et medlem bortvises"
+    },
+    "memberUnbanned": {
+      "label": "Medlem genindsat",
+      "description": "Når et medlems bortvisning ophæves"
+    },
+    "messageDeleted": {
+      "label": "Besked slettet",
+      "description": "Når en besked slettes"
+    },
+    "roleAdded": {
+      "label": "Rolle tilføjet",
+      "description": "Når et medlem får tildelt en rolle"
+    },
+    "roleRemoved": {
+      "label": "Rolle fjernet",
+      "description": "Når en rolle fjernes fra et medlem"
+    },
+    "channelCreated": {
+      "label": "Kanal oprettet",
+      "description": "Når en ny kanal oprettes"
+    },
+    "channelDeleted": {
+      "label": "Kanal slettet",
+      "description": "Når en kanal slettes"
+    },
+    "voiceJoin": {
+      "label": "Tilslutter tale",
+      "description": "Når et medlem tilslutter sig en talekanal"
+    },
+    "voiceLeave": {
+      "label": "Forlader tale",
+      "description": "Når et medlem forlader en talekanal"
+    },
+    "messageCreated": {
+      "label": "Besked sendt",
+      "description": "Når der sendes en besked i en kanal"
+    },
+    "reactionAdded": {
+      "label": "Reaktion tilføjet",
+      "description": "Når der tilføjes en reaktion til en besked"
+    },
+    "reactionRemoved": {
+      "label": "Reaktion fjernet",
+      "description": "Når en reaktion fjernes fra en besked"
+    },
+    "nicknameChanged": {
+      "label": "Kaldenavn ændret",
+      "description": "Når et medlems kaldenavn ændres"
+    },
+    "memberTimeout": {
+      "label": "Medlem tavsgjort",
+      "description": "Når et medlem gøres tavs"
+    },
+    "threadCreated": {
+      "label": "Tråd oprettet",
+      "description": "Når en ny tråd oprettes"
+    },
+    "boostStart": {
+      "label": "Boost startet",
+      "description": "Når et medlem begynder at booste serveren"
+    },
+    "boostEnd": {
+      "label": "Boost afsluttet",
+      "description": "Når et medlem holder op med at booste serveren"
+    }
   }
 }

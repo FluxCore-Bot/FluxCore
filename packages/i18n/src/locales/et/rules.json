@@ -341,5 +341,83 @@
     "stepUnreachable": "Step \"{{id}}\" is not reachable from the trigger",
     "noActionType": "{{label}}: no action type selected",
     "fieldRequired": "{{label}}: {{field}} is required"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Liige liitus",
+      "description": "Kui uus liige liitub serveriga"
+    },
+    "memberLeave": {
+      "label": "Liige lahkus",
+      "description": "Kui liige lahkub serverist"
+    },
+    "memberBanned": {
+      "label": "Liige bännitud",
+      "description": "Kui liige bännitakse"
+    },
+    "memberUnbanned": {
+      "label": "Bänn eemaldatud",
+      "description": "Kui liikme bänn eemaldatakse"
+    },
+    "messageDeleted": {
+      "label": "Sõnum kustutatud",
+      "description": "Kui sõnum kustutatakse"
+    },
+    "roleAdded": {
+      "label": "Roll lisatud",
+      "description": "Kui liikmele lisatakse roll"
+    },
+    "roleRemoved": {
+      "label": "Roll eemaldatud",
+      "description": "Kui liikmelt eemaldatakse roll"
+    },
+    "channelCreated": {
+      "label": "Kanal loodud",
+      "description": "Kui luuakse uus kanal"
+    },
+    "channelDeleted": {
+      "label": "Kanal kustutatud",
+      "description": "Kui kanal kustutatakse"
+    },
+    "voiceJoin": {
+      "label": "Liitus häälkanaliga",
+      "description": "Kui liige liitub häälkanaliga"
+    },
+    "voiceLeave": {
+      "label": "Lahkus häälkanalist",
+      "description": "Kui liige lahkub häälkanalist"
+    },
+    "messageCreated": {
+      "label": "Sõnum saadetud",
+      "description": "Kui kanalisse saadetakse sõnum"
+    },
+    "reactionAdded": {
+      "label": "Reaktsioon lisatud",
+      "description": "Kui sõnumile lisatakse reaktsioon"
+    },
+    "reactionRemoved": {
+      "label": "Reaktsioon eemaldatud",
+      "description": "Kui sõnumilt eemaldatakse reaktsioon"
+    },
+    "nicknameChanged": {
+      "label": "Hüüdnimi muudetud",
+      "description": "Kui liikme hüüdnime muudetakse"
+    },
+    "memberTimeout": {
+      "label": "Liige vaigistatud",
+      "description": "Kui liige vaigistatakse"
+    },
+    "threadCreated": {
+      "label": "Lõim loodud",
+      "description": "Kui luuakse uus lõim"
+    },
+    "boostStart": {
+      "label": "Boost algas",
+      "description": "Kui liige hakkab serverit boostima"
+    },
+    "boostEnd": {
+      "label": "Boost lõppes",
+      "description": "Kui liige lõpetab serveri boostimise"
+    }
   }
 }

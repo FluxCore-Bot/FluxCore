@@ -341,5 +341,83 @@
     "stepUnreachable": "Schritt \"{{id}}\" ist vom Auslöser aus nicht erreichbar",
     "noActionType": "{{label}}: kein Aktionstyp ausgewählt",
     "fieldRequired": "{{label}}: {{field}} ist erforderlich"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Mitglied beigetreten",
+      "description": "Wenn ein neues Mitglied dem Server beitritt"
+    },
+    "memberLeave": {
+      "label": "Mitglied verlassen",
+      "description": "Wenn ein Mitglied den Server verlässt"
+    },
+    "memberBanned": {
+      "label": "Mitglied gebannt",
+      "description": "Wenn ein Mitglied gebannt wird"
+    },
+    "memberUnbanned": {
+      "label": "Bann aufgehoben",
+      "description": "Wenn der Bann eines Mitglieds aufgehoben wird"
+    },
+    "messageDeleted": {
+      "label": "Nachricht gelöscht",
+      "description": "Wenn eine Nachricht gelöscht wird"
+    },
+    "roleAdded": {
+      "label": "Rolle hinzugefügt",
+      "description": "Wenn einem Mitglied eine Rolle hinzugefügt wird"
+    },
+    "roleRemoved": {
+      "label": "Rolle entfernt",
+      "description": "Wenn einem Mitglied eine Rolle entzogen wird"
+    },
+    "channelCreated": {
+      "label": "Kanal erstellt",
+      "description": "Wenn ein neuer Kanal erstellt wird"
+    },
+    "channelDeleted": {
+      "label": "Kanal gelöscht",
+      "description": "Wenn ein Kanal gelöscht wird"
+    },
+    "voiceJoin": {
+      "label": "Sprachkanal betreten",
+      "description": "Wenn ein Mitglied einen Sprachkanal betritt"
+    },
+    "voiceLeave": {
+      "label": "Sprachkanal verlassen",
+      "description": "Wenn ein Mitglied einen Sprachkanal verlässt"
+    },
+    "messageCreated": {
+      "label": "Nachricht gesendet",
+      "description": "Wenn in einem Kanal eine Nachricht gesendet wird"
+    },
+    "reactionAdded": {
+      "label": "Reaktion hinzugefügt",
+      "description": "Wenn einer Nachricht eine Reaktion hinzugefügt wird"
+    },
+    "reactionRemoved": {
+      "label": "Reaktion entfernt",
+      "description": "Wenn eine Reaktion von einer Nachricht entfernt wird"
+    },
+    "nicknameChanged": {
+      "label": "Spitzname geändert",
+      "description": "Wenn der Spitzname eines Mitglieds geändert wird"
+    },
+    "memberTimeout": {
+      "label": "Mitglied stummgeschaltet",
+      "description": "Wenn ein Mitglied stummgeschaltet wird"
+    },
+    "threadCreated": {
+      "label": "Thread erstellt",
+      "description": "Wenn ein neuer Thread erstellt wird"
+    },
+    "boostStart": {
+      "label": "Boost gestartet",
+      "description": "Wenn ein Mitglied beginnt, den Server zu boosten"
+    },
+    "boostEnd": {
+      "label": "Boost beendet",
+      "description": "Wenn ein Mitglied aufhört, den Server zu boosten"
+    }
   }
 }

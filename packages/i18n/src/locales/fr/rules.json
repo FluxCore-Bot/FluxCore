@@ -341,5 +341,83 @@
     "stepUnreachable": "L'étape « {{id}} » n'est pas accessible depuis le déclencheur",
     "noActionType": "{{label}} : aucun type d'action sélectionné",
     "fieldRequired": "{{label}} : {{field}} est requis"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Arrivée d'un membre",
+      "description": "Lorsqu'un nouveau membre rejoint le serveur"
+    },
+    "memberLeave": {
+      "label": "Départ d'un membre",
+      "description": "Lorsqu'un membre quitte le serveur"
+    },
+    "memberBanned": {
+      "label": "Membre banni",
+      "description": "Lorsqu'un membre est banni"
+    },
+    "memberUnbanned": {
+      "label": "Membre débanni",
+      "description": "Lorsqu'un membre est débanni"
+    },
+    "messageDeleted": {
+      "label": "Message supprimé",
+      "description": "Lorsqu'un message est supprimé"
+    },
+    "roleAdded": {
+      "label": "Rôle ajouté",
+      "description": "Lorsqu'un rôle est ajouté à un membre"
+    },
+    "roleRemoved": {
+      "label": "Rôle retiré",
+      "description": "Lorsqu'un rôle est retiré à un membre"
+    },
+    "channelCreated": {
+      "label": "Salon créé",
+      "description": "Lorsqu'un nouveau salon est créé"
+    },
+    "channelDeleted": {
+      "label": "Salon supprimé",
+      "description": "Lorsqu'un salon est supprimé"
+    },
+    "voiceJoin": {
+      "label": "Connexion vocale",
+      "description": "Lorsqu'un membre rejoint un salon vocal"
+    },
+    "voiceLeave": {
+      "label": "Déconnexion vocale",
+      "description": "Lorsqu'un membre quitte un salon vocal"
+    },
+    "messageCreated": {
+      "label": "Message envoyé",
+      "description": "Lorsqu'un message est envoyé dans un salon"
+    },
+    "reactionAdded": {
+      "label": "Réaction ajoutée",
+      "description": "Lorsqu'une réaction est ajoutée à un message"
+    },
+    "reactionRemoved": {
+      "label": "Réaction retirée",
+      "description": "Lorsqu'une réaction est retirée d'un message"
+    },
+    "nicknameChanged": {
+      "label": "Surnom modifié",
+      "description": "Lorsque le surnom d'un membre est modifié"
+    },
+    "memberTimeout": {
+      "label": "Membre exclu temporairement",
+      "description": "Lorsqu'un membre est exclu temporairement"
+    },
+    "threadCreated": {
+      "label": "Fil créé",
+      "description": "Lorsqu'un nouveau fil est créé"
+    },
+    "boostStart": {
+      "label": "Début de boost",
+      "description": "Lorsqu'un membre commence à booster le serveur"
+    },
+    "boostEnd": {
+      "label": "Fin de boost",
+      "description": "Lorsqu'un membre arrête de booster le serveur"
+    }
   }
 }

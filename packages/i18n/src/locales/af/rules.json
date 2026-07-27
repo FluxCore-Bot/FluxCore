@@ -341,5 +341,83 @@
     "stepUnreachable": "Step \"{{id}}\" is not reachable from the trigger",
     "noActionType": "{{label}}: no action type selected",
     "fieldRequired": "{{label}}: {{field}} is required"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Lid sluit aan",
+      "description": "Wanneer 'n nuwe lid by die bediener aansluit"
+    },
+    "memberLeave": {
+      "label": "Lid vertrek",
+      "description": "Wanneer 'n lid die bediener verlaat"
+    },
+    "memberBanned": {
+      "label": "Lid verban",
+      "description": "Wanneer 'n lid verban word"
+    },
+    "memberUnbanned": {
+      "label": "Lid ontban",
+      "description": "Wanneer 'n lid se verbanning opgehef word"
+    },
+    "messageDeleted": {
+      "label": "Boodskap verwyder",
+      "description": "Wanneer 'n boodskap verwyder word"
+    },
+    "roleAdded": {
+      "label": "Rol bygevoeg",
+      "description": "Wanneer 'n rol by 'n lid gevoeg word"
+    },
+    "roleRemoved": {
+      "label": "Rol verwyder",
+      "description": "Wanneer 'n rol van 'n lid verwyder word"
+    },
+    "channelCreated": {
+      "label": "Kanaal geskep",
+      "description": "Wanneer 'n nuwe kanaal geskep word"
+    },
+    "channelDeleted": {
+      "label": "Kanaal verwyder",
+      "description": "Wanneer 'n kanaal verwyder word"
+    },
+    "voiceJoin": {
+      "label": "Sluit by stem aan",
+      "description": "Wanneer 'n lid by 'n stemkanaal aansluit"
+    },
+    "voiceLeave": {
+      "label": "Verlaat stem",
+      "description": "Wanneer 'n lid 'n stemkanaal verlaat"
+    },
+    "messageCreated": {
+      "label": "Boodskap gestuur",
+      "description": "Wanneer 'n boodskap in 'n kanaal gestuur word"
+    },
+    "reactionAdded": {
+      "label": "Reaksie bygevoeg",
+      "description": "Wanneer 'n reaksie by 'n boodskap gevoeg word"
+    },
+    "reactionRemoved": {
+      "label": "Reaksie verwyder",
+      "description": "Wanneer 'n reaksie van 'n boodskap verwyder word"
+    },
+    "nicknameChanged": {
+      "label": "Bynaam verander",
+      "description": "Wanneer 'n lid se bynaam verander word"
+    },
+    "memberTimeout": {
+      "label": "Lid uitgetel",
+      "description": "Wanneer 'n lid uitgetel word"
+    },
+    "threadCreated": {
+      "label": "Draad geskep",
+      "description": "Wanneer 'n nuwe draad geskep word"
+    },
+    "boostStart": {
+      "label": "Versterking begin",
+      "description": "Wanneer 'n lid die bediener begin versterk"
+    },
+    "boostEnd": {
+      "label": "Versterking eindig",
+      "description": "Wanneer 'n lid ophou om die bediener te versterk"
+    }
   }
 }

@@ -341,5 +341,83 @@
     "stepUnreachable": "Step \"{{id}}\" is not reachable from the trigger",
     "noActionType": "{{label}}: no action type selected",
     "fieldRequired": "{{label}}: {{field}} is required"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Entrada de membre",
+      "description": "Quan un membre nou entra al servidor"
+    },
+    "memberLeave": {
+      "label": "Sortida de membre",
+      "description": "Quan un membre surt del servidor"
+    },
+    "memberBanned": {
+      "label": "Membre expulsat",
+      "description": "Quan s'expulsa un membre"
+    },
+    "memberUnbanned": {
+      "label": "Membre readmès",
+      "description": "Quan es readmet un membre"
+    },
+    "messageDeleted": {
+      "label": "Missatge suprimit",
+      "description": "Quan se suprimeix un missatge"
+    },
+    "roleAdded": {
+      "label": "Rol afegit",
+      "description": "Quan s'afegeix un rol a un membre"
+    },
+    "roleRemoved": {
+      "label": "Rol suprimit",
+      "description": "Quan es lleva un rol a un membre"
+    },
+    "channelCreated": {
+      "label": "Canal creat",
+      "description": "Quan es crea un canal nou"
+    },
+    "channelDeleted": {
+      "label": "Canal suprimit",
+      "description": "Quan se suprimeix un canal"
+    },
+    "voiceJoin": {
+      "label": "Entrada a veu",
+      "description": "Quan un membre entra a un canal de veu"
+    },
+    "voiceLeave": {
+      "label": "Sortida de veu",
+      "description": "Quan un membre surt d'un canal de veu"
+    },
+    "messageCreated": {
+      "label": "Missatge enviat",
+      "description": "Quan s'envia un missatge a un canal"
+    },
+    "reactionAdded": {
+      "label": "Reacció afegida",
+      "description": "Quan s'afegeix una reacció a un missatge"
+    },
+    "reactionRemoved": {
+      "label": "Reacció suprimida",
+      "description": "Quan es lleva una reacció d'un missatge"
+    },
+    "nicknameChanged": {
+      "label": "Sobrenom canviat",
+      "description": "Quan es canvia el sobrenom d'un membre"
+    },
+    "memberTimeout": {
+      "label": "Membre silenciat",
+      "description": "Quan es silencia un membre"
+    },
+    "threadCreated": {
+      "label": "Fil creat",
+      "description": "Quan es crea un fil nou"
+    },
+    "boostStart": {
+      "label": "Inici de millora",
+      "description": "Quan un membre comença a millorar el servidor"
+    },
+    "boostEnd": {
+      "label": "Fi de millora",
+      "description": "Quan un membre deixa de millorar el servidor"
+    }
   }
 }

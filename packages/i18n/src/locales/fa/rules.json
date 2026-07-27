@@ -341,5 +341,83 @@
     "stepUnreachable": "Step \"{{id}}\" is not reachable from the trigger",
     "noActionType": "{{label}}: no action type selected",
     "fieldRequired": "{{label}}: {{field}} is required"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "پیوستن عضو",
+      "description": "وقتی عضو جدیدی به سرور می‌پیوندد"
+    },
+    "memberLeave": {
+      "label": "خروج عضو",
+      "description": "وقتی عضوی سرور را ترک می‌کند"
+    },
+    "memberBanned": {
+      "label": "مسدود شدن عضو",
+      "description": "وقتی عضوی مسدود می‌شود"
+    },
+    "memberUnbanned": {
+      "label": "رفع مسدودیت عضو",
+      "description": "وقتی مسدودیت عضوی برداشته می‌شود"
+    },
+    "messageDeleted": {
+      "label": "حذف پیام",
+      "description": "وقتی پیامی حذف می‌شود"
+    },
+    "roleAdded": {
+      "label": "افزودن نقش",
+      "description": "وقتی نقشی به عضوی افزوده می‌شود"
+    },
+    "roleRemoved": {
+      "label": "حذف نقش",
+      "description": "وقتی نقشی از عضوی حذف می‌شود"
+    },
+    "channelCreated": {
+      "label": "ایجاد کانال",
+      "description": "وقتی کانال جدیدی ایجاد می‌شود"
+    },
+    "channelDeleted": {
+      "label": "حذف کانال",
+      "description": "وقتی کانالی حذف می‌شود"
+    },
+    "voiceJoin": {
+      "label": "پیوستن به صوتی",
+      "description": "وقتی عضوی به کانال صوتی می‌پیوندد"
+    },
+    "voiceLeave": {
+      "label": "خروج از صوتی",
+      "description": "وقتی عضوی کانال صوتی را ترک می‌کند"
+    },
+    "messageCreated": {
+      "label": "ارسال پیام",
+      "description": "وقتی پیامی در کانالی ارسال می‌شود"
+    },
+    "reactionAdded": {
+      "label": "افزودن واکنش",
+      "description": "وقتی واکنشی به پیامی افزوده می‌شود"
+    },
+    "reactionRemoved": {
+      "label": "حذف واکنش",
+      "description": "وقتی واکنشی از پیامی حذف می‌شود"
+    },
+    "nicknameChanged": {
+      "label": "تغییر نام مستعار",
+      "description": "وقتی نام مستعار عضوی تغییر می‌کند"
+    },
+    "memberTimeout": {
+      "label": "سکوت عضو",
+      "description": "وقتی عضوی ساکت می‌شود"
+    },
+    "threadCreated": {
+      "label": "ایجاد رشته",
+      "description": "وقتی رشته جدیدی ایجاد می‌شود"
+    },
+    "boostStart": {
+      "label": "شروع بوست",
+      "description": "وقتی عضوی شروع به بوست کردن سرور می‌کند"
+    },
+    "boostEnd": {
+      "label": "پایان بوست",
+      "description": "وقتی عضوی بوست کردن سرور را متوقف می‌کند"
+    }
   }
 }

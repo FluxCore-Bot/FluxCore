@@ -341,5 +341,83 @@
     "stepUnreachable": "Step \"{{id}}\" is not reachable from the trigger",
     "noActionType": "{{label}}: no action type selected",
     "fieldRequired": "{{label}}: {{field}} is required"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Kidea sartu da",
+      "description": "Kide berri bat zerbitzarira sartzen denean"
+    },
+    "memberLeave": {
+      "label": "Kidea atera da",
+      "description": "Kide bat zerbitzaritik ateratzen denean"
+    },
+    "memberBanned": {
+      "label": "Kidea debekatuta",
+      "description": "Kide bat debekatzen denean"
+    },
+    "memberUnbanned": {
+      "label": "Debekua kenduta",
+      "description": "Kide baten debekua kentzen denean"
+    },
+    "messageDeleted": {
+      "label": "Mezua ezabatuta",
+      "description": "Mezu bat ezabatzen denean"
+    },
+    "roleAdded": {
+      "label": "Rola gehituta",
+      "description": "Kide bati rol bat gehitzen zaionean"
+    },
+    "roleRemoved": {
+      "label": "Rola kenduta",
+      "description": "Kide bati rol bat kentzen zaionean"
+    },
+    "channelCreated": {
+      "label": "Kanala sortuta",
+      "description": "Kanal berri bat sortzen denean"
+    },
+    "channelDeleted": {
+      "label": "Kanala ezabatuta",
+      "description": "Kanal bat ezabatzen denean"
+    },
+    "voiceJoin": {
+      "label": "Ahotsera sartu",
+      "description": "Kide bat ahots-kanal batera sartzen denean"
+    },
+    "voiceLeave": {
+      "label": "Ahotsetik atera",
+      "description": "Kide bat ahots-kanal batetik ateratzen denean"
+    },
+    "messageCreated": {
+      "label": "Mezua bidalita",
+      "description": "Kanal batean mezu bat bidaltzen denean"
+    },
+    "reactionAdded": {
+      "label": "Erreakzioa gehituta",
+      "description": "Mezu bati erreakzio bat gehitzen zaionean"
+    },
+    "reactionRemoved": {
+      "label": "Erreakzioa kenduta",
+      "description": "Mezu bati erreakzio bat kentzen zaionean"
+    },
+    "nicknameChanged": {
+      "label": "Ezizena aldatuta",
+      "description": "Kide baten ezizena aldatzen denean"
+    },
+    "memberTimeout": {
+      "label": "Kidea isilarazita",
+      "description": "Kide bat isilarazten denean"
+    },
+    "threadCreated": {
+      "label": "Haria sortuta",
+      "description": "Hari berri bat sortzen denean"
+    },
+    "boostStart": {
+      "label": "Bultzada hasi da",
+      "description": "Kide batek zerbitzaria bultzatzen hasten denean"
+    },
+    "boostEnd": {
+      "label": "Bultzada amaitu da",
+      "description": "Kide batek zerbitzaria bultzatzeari uzten dionean"
+    }
   }
 }
