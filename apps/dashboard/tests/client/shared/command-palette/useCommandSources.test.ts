@@ -64,6 +64,17 @@ describe("buildGroups", () => {
     ]);
   });
 
+  it("keeps the recent group most-recent-first instead of ranking it", () => {
+    const groups = buildGroups(
+      [
+        cmd({ id: "z", group: "recent", title: "Zebra" }),
+        cmd({ id: "a", group: "recent", title: "Aardvark" }),
+      ],
+      "",
+    );
+    expect(groups[0].commands.map((c) => c.id)).toEqual(["z", "a"]);
+  });
+
   it("drops non-matching commands entirely", () => {
     const groups = buildGroups(
       [cmd({ id: "1", title: "Logs" }), cmd({ id: "2", title: "Tickets" })],

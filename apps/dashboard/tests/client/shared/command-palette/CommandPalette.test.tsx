@@ -98,6 +98,24 @@ describe("CommandPalette", () => {
     expect(input).toHaveAttribute("aria-activedescendant", options[0].id);
   });
 
+  it("renders recents most-recent-first, not alphabetically", async () => {
+    const user = userEvent.setup();
+    // Overview was used last, so it must render above Moderation even though
+    // "M" sorts before "O".
+    const recents: Command[] = [
+      { id: "p1", group: "recent", title: "Overview", icon: "dashboard", to: "/a" },
+      { id: "p2", group: "recent", title: "Moderation", icon: "shield", to: "/b" },
+    ];
+    render(
+      <CommandPaletteProvider>
+        <CommandPalette commands={[...recents, ...commands]} onNavigate={vi.fn()} />
+      </CommandPaletteProvider>,
+    );
+    await open(user);
+    const titles = screen.getAllByRole("option").slice(0, 2).map((el) => el.textContent);
+    expect(titles).toEqual(["Overview", "Moderation"]);
+  });
+
   it("groups results under translated headers in a fixed order", async () => {
     const { user } = setup();
     await open(user);

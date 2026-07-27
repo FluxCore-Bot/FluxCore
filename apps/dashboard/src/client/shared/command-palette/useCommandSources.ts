@@ -20,9 +20,14 @@ export function buildGroups(commands: Command[], query: string): CommandGroup[] 
     const bucket = scored.get(key);
     if (!bucket || bucket.length === 0) continue;
 
-    bucket.sort((a, b) =>
-      b.s - a.s || a.cmd.title.localeCompare(b.cmd.title),
-    );
+    // Recents arrive most-recent-first and must stay that way — ranking them
+    // would alphabetize the group whenever scores tie, i.e. on every empty
+    // query, which is exactly when recents matter.
+    if (key !== "recent") {
+      bucket.sort((a, b) =>
+        b.s - a.s || a.cmd.title.localeCompare(b.cmd.title),
+      );
+    }
 
     groups.push({
       key,
