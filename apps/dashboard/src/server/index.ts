@@ -38,6 +38,7 @@ import { requireCsrf } from "./shared/csrf.js";
 import { helmetOptions } from "./shared/security.js";
 import { registerOpenApi } from "./shared/openapi.js";
 import { withDocs } from "./shared/openapi-schemas.js";
+import { globalRateLimitOptions } from "./shared/rateLimit.js";
 
 /**
  * Build the fully-configured Fastify application (plugins, routes, OpenAPI
@@ -54,7 +55,13 @@ export async function createApp(): Promise<FastifyInstance> {
 
   await connectDatabase();
 
-  const app = Fastify({ logger: false });
+  // Production terminates TLS at Caddy (docker/Caddyfile: reverse_proxy
+  // dashboard:3000), so request.ip is Caddy's container address unless we trust
+  // the forwarded header. Without this every client shares one rate limit
+  // bucket. A fixed hop count rather than `true`: `true` trusts the whole
+  // X-Forwarded-For chain, letting a client spoof its own address. Raise this
+  // if another proxy (a CDN, say) is ever put in front of Caddy.
+  const app = Fastify({ logger: false, trustProxy: 1 });
 
   await app.register(fastifyCookie, {
     secret: config.dashboardSessionSecret,
@@ -62,10 +69,7 @@ export async function createApp(): Promise<FastifyInstance> {
 
   await app.register(fastifyHelmet, helmetOptions);
 
-  await app.register(fastifyRateLimit, {
-    max: 100,
-    timeWindow: "1 minute",
-  });
+  await app.register(fastifyRateLimit, globalRateLimitOptions);
 
   // CSRF double-submit enforcement on mutating /api/* routes
   app.addHook("preHandler", async (request, reply) => {

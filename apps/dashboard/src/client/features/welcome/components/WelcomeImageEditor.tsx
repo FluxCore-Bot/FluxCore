@@ -39,6 +39,7 @@ import {
   type WelcomeImageSettings,
 } from "../hooks/useWelcome";
 import { useAuth } from "../../../shared/hooks/useAuth";
+import { ApiError } from "../../../shared/lib/client";
 
 const PRESET_GRADIENT_COLORS: Record<string, string> = {
   midnight: "from-[#0f0c29] via-[#302b63] to-[#24243e]",
@@ -62,7 +63,7 @@ export function WelcomeImageEditor({
   onChange,
   type,
 }: WelcomeImageEditorProps) {
-  const { t } = useTranslation(["welcome", "common"]);
+  const { t } = useTranslation(["welcome", "common", "errors"]);
   const { data: templateData } = useWelcomeTemplates();
   const { data: fontData } = useWelcomeFonts();
   const { data: presetData } = useWelcomePresets();
@@ -162,10 +163,18 @@ export function WelcomeImageEditor({
             setPreviewUrl(url);
             setIsPending(false);
           },
-          onError: () => {
+          onError: (error) => {
             setIsPending(false);
             setPreviewError(true);
-            toast.error(t("imageEditor.toast.previewFailed"));
+            // A rate limit is not a failed render — say so, or it reads as a bug.
+            // Two literal t() calls rather than one dynamic key: i18next type-checks
+            // literals, so this needs no cast.
+            const isRateLimited = error instanceof ApiError && error.status === 429;
+            toast.error(
+              isRateLimited
+                ? t("errors:server.rateLimited")
+                : t("imageEditor.toast.previewFailed"),
+            );
           },
         },
       );
@@ -218,7 +227,16 @@ export function WelcomeImageEditor({
         });
         toast.success(t("imageEditor.toast.uploaded"));
       },
-      onError: () => toast.error(t("imageEditor.toast.uploadFailed")),
+      onError: (error) => {
+        // Same branch as the preview mutation: a 429 is not a failed upload,
+        // and saying "upload failed" makes a throttle read as a bug.
+        const isRateLimited = error instanceof ApiError && error.status === 429;
+        toast.error(
+          isRateLimited
+            ? t("errors:server.rateLimited")
+            : t("imageEditor.toast.uploadFailed"),
+        );
+      },
     });
   }
 

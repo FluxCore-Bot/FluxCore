@@ -6,6 +6,7 @@ import {
   invalidateGuildCache,
 } from "../../shared/discordApi.js";
 import { forceRefreshSessionGuilds } from "../../shared/session.js";
+import { rateLimits } from "../../shared/rateLimit.js";
 import { logger } from "@fluxcore/utils";
 import { withDocs } from "../../shared/openapi-schemas.js";
 
@@ -122,7 +123,8 @@ export function registerDiscordRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/refresh",
     {
       preHandler: [requireAuth, requireGuildAdmin],
-      config: { rateLimit: { max: 3, timeWindow: "1 minute" } },
+      // Busts the 60s Discord API cache in shared/discordApi.ts.
+      config: rateLimits.external,
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         {

@@ -2,6 +2,7 @@ import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
 import { randomUUID } from "node:crypto";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { rateLimits } from "../../shared/rateLimit.js";
 import { getWelcomeConfig, upsertWelcomeConfig } from "@fluxcore/systems/welcome/config";
 import {
   generateWelcomeImage,
@@ -17,6 +18,15 @@ import {
 } from "@fluxcore/systems/welcome/image";
 
 const storage = createStorageAdapter();
+
+/**
+ * Fastify's default bodyLimit is 1MB, which rejects a legitimate
+ * MAX_BACKGROUND_SIZE upload with a bare 413 before the handler's own size
+ * check — and that check is what returns the specific, friendly error naming
+ * the real limit. Derived rather than hardcoded so it cannot drift from
+ * MAX_BACKGROUND_SIZE. Base64 inflates by 4/3; 8KB covers the JSON envelope.
+ */
+const BACKGROUND_BODY_LIMIT = Math.ceil((MAX_BACKGROUND_SIZE * 4) / 3) + 8 * 1024;
 
 export function registerWelcomeRoutes(app: FastifyInstance): void {
   // GET full welcome config
@@ -188,6 +198,10 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/welcome/image/preview",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.config.view")],
+      // Full canvas render with a synchronous PNG encode plus a Discord CDN
+      // avatar fetch. The editor re-fires this on every settings change behind
+      // a 400ms debounce, so the ceiling sits above a slider drag's ~25/min.
+      config: rateLimits.heavy,
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -248,6 +262,9 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/welcome/image/background",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.config.manage")],
+      // Decodes up to 3MB of base64 and writes it to storage.
+      config: rateLimits.upload,
+      bodyLimit: BACKGROUND_BODY_LIMIT,
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -325,6 +342,8 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
     "/api/guilds/:guildId/welcome/image/background",
     {
       preHandler: [requireAuth, requireGuildAdmin, requirePermission("welcome.config.manage")],
+      // Storage mutation; pairs with the upload route.
+      config: rateLimits.upload,
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
