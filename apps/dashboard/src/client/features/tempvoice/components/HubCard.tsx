@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { useTranslation } from "react-i18next";
+import { DEFAULT_NAME_TEMPLATE } from "@fluxcore/systems/tempVoice/constants";
 import { Button } from "../../../shared/ui/button";
 import { Alert } from "../../../shared/ui/alert";
 import { DiscordSelect } from "../../../shared/ui/discord-select";
@@ -18,8 +19,6 @@ import {
 import { HubFlow, HubFlowStep } from "./HubFlow";
 import { HubSummary } from "./HubSummary";
 import { ChannelChip } from "./ChannelChip";
-
-const DEFAULT_TEMPLATE = "{user}'s Channel";
 
 export interface HubCardProps {
   /** null = an unsaved new hub. */
@@ -61,7 +60,7 @@ export function HubCard({
   const [renderedMode, setRenderedMode] = useState(mode);
   const [hubChannelId, setHubChannelId] = useState(config?.hubChannelId ?? "");
   const [categoryId, setCategoryId] = useState<string | null>(config?.categoryId ?? null);
-  const [nameTemplate, setNameTemplate] = useState(config?.nameTemplate ?? DEFAULT_TEMPLATE);
+  const [nameTemplate, setNameTemplate] = useState(config?.nameTemplate ?? DEFAULT_NAME_TEMPLATE);
   const [fieldError, setFieldError] = useState("");
   const [submitError, setSubmitError] = useState("");
 
@@ -78,7 +77,7 @@ export function HubCard({
     if (mode === "editor") {
       setHubChannelId(config?.hubChannelId ?? "");
       setCategoryId(config?.categoryId ?? null);
-      setNameTemplate(config?.nameTemplate ?? DEFAULT_TEMPLATE);
+      setNameTemplate(config?.nameTemplate ?? DEFAULT_NAME_TEMPLATE);
       setFieldError("");
       setSubmitError("");
     }
@@ -105,8 +104,15 @@ export function HubCard({
     // the draft can outlive a Cancel (this card never unmounts), so deriving the
     // summary from anything but the prop would let an abandoned, unsaved edit
     // "leak" into the collapsed view while the bot keeps using the real saved name.
+    //
+    // `|| DEFAULT_NAME_TEMPLATE` mirrors the bot's resolveChannelName exactly.
+    // An empty template is a reachable saved value — the PUT route passes
+    // nameTemplate straight through and the schema has no .min(1), so
+    // create -> Edit -> clear the field -> Save persists "" — and the bot then
+    // creates "<name>'s Channel" from its own fallback. Without this the chip
+    // would render blank while the real channel gets a name.
     const summaryResolvedName = resolveTemplatePreview(
-      config.nameTemplate,
+      config.nameTemplate || DEFAULT_NAME_TEMPLATE,
       buildTokenValues(tempvoiceVariables, preview),
     );
     return (
@@ -145,8 +151,11 @@ export function HubCard({
   }
 
   // The editor's own live preview, driven by the in-progress draft (not `config`).
+  // Same bot-matching fallback as the summary above: with the field cleared the
+  // preview shows what would really be created, which is also what the
+  // placeholder promises — not a blank chip.
   const resolvedName = resolveTemplatePreview(
-    nameTemplate,
+    nameTemplate || DEFAULT_NAME_TEMPLATE,
     buildTokenValues(tempvoiceVariables, preview),
   );
 

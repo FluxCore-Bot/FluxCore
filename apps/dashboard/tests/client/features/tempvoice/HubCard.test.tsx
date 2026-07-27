@@ -51,10 +51,10 @@ beforeAll(() => {
   globalThis.ResizeObserver ??= ResizeObserverStub;
 });
 
-// Deliberately distinct from HubCard's own DEFAULT_TEMPLATE ("{user}'s Channel")
-// so the "seeds from config" test can't pass merely because the seeded value
-// happens to match the unseeded default. With the "Ahmad" username mock above,
-// this resolves to "Ahmad's Lounge".
+// Deliberately distinct from DEFAULT_NAME_TEMPLATE ("{user}'s Channel") so the
+// "seeds from config" test can't pass merely because the seeded value happens
+// to match the unseeded default. With the "Ahmad" username mock above, this
+// resolves to "Ahmad's Lounge".
 const config = { id: 1, hubChannelId: "hub1", categoryId: "cat1", nameTemplate: "{user}'s Lounge" };
 
 function props(over: Partial<ComponentProps<typeof HubCard>> = {}) {
@@ -91,6 +91,16 @@ describe("HubCard summary mode", () => {
     expect(screen.queryByText("Voice Channels")).not.toBeInTheDocument();
   });
 
+  it("shows the bot's default name when the saved template is empty", () => {
+    // "" is a reachable saved value: the PUT route forwards nameTemplate
+    // untouched and TempVoiceFormSchema has no .min(1), so create -> Edit ->
+    // clear -> Save persists it. The bot falls back to DEFAULT_NAME_TEMPLATE
+    // and really creates "Ahmad's Channel", so a blank chip here would be the
+    // dashboard lying about what exists in Discord.
+    render(<HubCard {...props({ config: { ...config, nameTemplate: "" } })} />);
+    expect(screen.getByText("Ahmad's Channel")).toBeInTheDocument();
+  });
+
   it("calls onEdit when Edit is pressed", async () => {
     const user = userEvent.setup();
     const p = props();
@@ -108,6 +118,16 @@ describe("HubCard editor mode", () => {
     expect(screen.getByText("📁 Voice Channels")).toBeInTheDocument();
     // The step-2 live preview — resolved from the seeded template, not left blank.
     expect(screen.getByText("Ahmad's Lounge")).toBeInTheDocument();
+  });
+
+  it("previews the bot's default name once the template field is cleared", async () => {
+    const user = userEvent.setup();
+    render(<HubCard {...props({ mode: "editor" })} />);
+    await user.clear(screen.getByDisplayValue("{user}'s Lounge"));
+    // Empty field, but the bot would still create "Ahmad's Channel" from its
+    // own fallback — and that is exactly what the placeholder promises. A
+    // blank preview chip here would mispredict the outcome of Save.
+    expect(screen.getByText("Ahmad's Channel")).toBeInTheDocument();
   });
 
   it("excludes hub channels claimed by other configs while keeping its own selection visible", async () => {

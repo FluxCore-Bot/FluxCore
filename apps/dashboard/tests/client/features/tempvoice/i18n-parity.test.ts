@@ -37,7 +37,8 @@ const langs = readdirSync(LOCALES_DIR);
 const englishKeys = flatten(namespace("en")).sort();
 
 /** The one key that must NOT be translated: it is a literal template value the
- *  admin saves, and it has to keep matching DEFAULT_TEMPLATE in HubCard.tsx.
+ *  admin saves, and it has to keep matching DEFAULT_NAME_TEMPLATE in
+ *  @fluxcore/systems/tempVoice/constants (which the bot and HubCard both use).
  *  Shared between the must-differ exemption and the must-match assertion below
  *  so the two can never drift apart. */
 const TEMPLATE_KEY = "fields.templatePlaceholder";
