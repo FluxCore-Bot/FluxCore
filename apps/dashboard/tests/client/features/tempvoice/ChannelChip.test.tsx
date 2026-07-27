@@ -9,8 +9,11 @@ describe("ChannelChip", () => {
     expect(screen.getByText("Join to Create")).toBeInTheDocument();
   });
 
-  it("hides its icon from assistive tech", () => {
-    const { container } = render(<ChannelChip kind="category" name="Voice Channels" />);
-    expect(container.querySelector("[aria-hidden='true']")).not.toBeNull();
+  it("renders a different glyph for voice and category", () => {
+    const { container: voice } = render(<ChannelChip kind="voice" name="x" />);
+    const { container: category } = render(<ChannelChip kind="category" name="x" />);
+    expect(voice.querySelector("svg")?.innerHTML).not.toBe(
+      category.querySelector("svg")?.innerHTML,
+    );
   });
 });

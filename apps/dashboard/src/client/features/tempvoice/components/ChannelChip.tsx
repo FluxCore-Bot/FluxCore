@@ -13,7 +13,6 @@ export function ChannelChip({ kind, name }: ChannelChipProps) {
       <Icon
         name={kind === "voice" ? "volume_up" : "folder"}
         className="size-3.5 shrink-0"
-        aria-hidden="true"
       />
       <span className="truncate">{name}</span>
     </span>
