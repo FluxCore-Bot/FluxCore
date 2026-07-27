@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Skonfiguruj",
+    "configureTrigger": "Skonfiguruj wyzwalacz",
+    "addAction": "Dodaj akcję",
+    "addActionHere": "Dodaj akcję tutaj",
+    "addConditionHere": "Dodaj warunek tutaj",
+    "addDelayHere": "Dodaj opóźnienie tutaj",
+    "setAsStart": "Ustaw jako początek",
+    "disconnect": "Rozłącz",
+    "deleteConnection": "Usuń połączenie",
+    "nodeDeleted": "Krok usunięty",
+    "menuLabel": "Akcje dla {{label}}",
+    "paneMenuLabel": "Akcje kanwy",
+    "edgeMenuLabel": "Akcje połączenia"
+  },
   "breadcrumb": {
     "guild": "Serwer",
     "automation": "Automatyzacja"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Dopasuj do widoku",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Przenieś w górę",
+    "moveDown": "Przenieś w dół",
+    "removeAction": "Usuń akcję",
+    "removeStep": "Usuń krok",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "Duplikuj",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Połącz wyzwalacz z krokiem — ten przepływ pracy nie ma punktu początkowego",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

@@ -30,6 +30,7 @@
     "settings": "Impostazioni"
   },
   "actions": {
+    "undo": "Annulla",
     "save": "Salva",
     "cancel": "Annulla",
     "delete": "Elimina",
@@ -170,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Cerca",
+    "placeholder": "Cerca pagine, server e azioni…",
+    "dialogTitle": "Palette dei comandi",
+    "dialogDescription": "Cerca una pagina, un server o un'azione. Usa le frecce per spostarti e Invio per aprire.",
+    "hint": {
+      "navigate": "spostati",
+      "select": "apri",
+      "close": "chiudi"
+    },
+    "group": {
+      "recent": "Recenti",
+      "pages": "Pagine",
+      "actions": "Azioni",
+      "servers": "Server"
+    },
+    "keywords": {
+      "automation": "regole automazione trigger flusso di lavoro",
+      "moderation": "casi ban espulsioni silenziamenti sanzioni"
+    },
+    "action": {
+      "refreshGuild": "Aggiorna i dati di questo server",
+      "refreshGuildList": "Aggiorna il mio elenco di server",
+      "backToServers": "Torna a tutti i server",
+      "addToServer": "Aggiungi il bot a un server",
+      "logout": "Esci"
+    },
+    "more": "Altri {{total}}",
+    "empty": "Nessun risultato per «{{query}}»",
+    "resultCount": "{{total}} risultati"
   }
 }

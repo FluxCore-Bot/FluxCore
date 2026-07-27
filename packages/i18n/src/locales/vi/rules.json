@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Cấu hình",
+    "configureTrigger": "Cấu hình trình kích hoạt",
+    "addAction": "Thêm hành động",
+    "addActionHere": "Thêm hành động tại đây",
+    "addConditionHere": "Thêm điều kiện tại đây",
+    "addDelayHere": "Thêm độ trễ tại đây",
+    "setAsStart": "Đặt làm bước bắt đầu",
+    "disconnect": "Ngắt kết nối",
+    "deleteConnection": "Xóa kết nối",
+    "nodeDeleted": "Đã xóa bước",
+    "menuLabel": "Hành động cho {{label}}",
+    "paneMenuLabel": "Hành động trên canvas",
+    "edgeMenuLabel": "Hành động với kết nối"
+  },
   "breadcrumb": {
     "guild": "Máy Chủ",
     "automation": "Tự Động Hóa"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Vừa với khung nhìn",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Di chuyển lên",
+    "moveDown": "Di chuyển xuống",
+    "removeAction": "Xóa hành động",
+    "removeStep": "Xóa bước",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "Nhân bản",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Hãy nối trình kích hoạt với một bước — quy trình này chưa có điểm bắt đầu",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

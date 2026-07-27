@@ -30,6 +30,7 @@
     "settings": "설정"
   },
   "actions": {
+    "undo": "실행 취소",
     "save": "저장",
     "cancel": "취소",
     "delete": "삭제",
@@ -170,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "검색",
+    "placeholder": "페이지, 서버, 작업 검색…",
+    "dialogTitle": "명령 팔레트",
+    "dialogDescription": "페이지, 서버 또는 작업을 검색하세요. 화살표 키로 이동하고 Enter 키로 엽니다.",
+    "hint": {
+      "navigate": "이동",
+      "select": "열기",
+      "close": "닫기"
+    },
+    "group": {
+      "recent": "최근",
+      "pages": "페이지",
+      "actions": "작업",
+      "servers": "서버"
+    },
+    "keywords": {
+      "automation": "규칙 자동화 트리거 워크플로",
+      "moderation": "사건 차단 추방 음소거 처벌"
+    },
+    "action": {
+      "refreshGuild": "이 서버의 데이터 새로고침",
+      "refreshGuildList": "내 서버 목록 새로고침",
+      "backToServers": "모든 서버로 돌아가기",
+      "addToServer": "봇을 서버에 추가",
+      "logout": "로그아웃"
+    },
+    "more": "{{total}}개 더",
+    "empty": "\"{{query}}\"에 대한 결과가 없습니다",
+    "resultCount": "결과 {{total}}개"
   }
 }

@@ -119,3 +119,67 @@ describe("POST /api/guilds/:guildId/welcome/image/background — magic byte vali
     expect(mockUpload).toHaveBeenCalled();
   });
 });
+
+describe("POST /api/guilds/:guildId/welcome/image/background — body limit", () => {
+  let app: Awaited<ReturnType<typeof buildApp>>;
+
+  beforeEach(async () => {
+    vi.clearAllMocks();
+    app = await buildApp();
+  });
+
+  it("accepts a 2MB image rather than rejecting it at the transport layer", async () => {
+    // Well under the mocked 5MB MAX_BACKGROUND_SIZE, but its base64 form is
+    // ~2.7MB — over Fastify's 1MB default bodyLimit, which would 413 before
+    // the handler ever runs.
+    const twoMb = Buffer.concat([PNG_HEADER, Buffer.alloc(2 * 1024 * 1024)]);
+    const res = await app.inject({
+      method: "POST",
+      url: "/api/guilds/guild-1/welcome/image/background",
+      cookies: { session: app.signCookie("valid") },
+      payload: { data: twoMb.toString("base64"), contentType: "image/png" },
+    });
+
+    expect(res.statusCode).toBe(200);
+  });
+
+  it("rejects a payload over the maximum with the handler's own 400, not a transport 413", async () => {
+    // 5MB + 4KB: just over the mocked 5MB MAX_BACKGROUND_SIZE, but its base64
+    // form (~6.67MB of JSON) still fits inside BACKGROUND_BODY_LIMIT
+    // (ceil(MAX * 4/3) + 8KB), so the request must reach the handler and get
+    // the friendly, size-naming 400.
+    //
+    // Accepting "400 or 413" here would pass with bodyLimit deleted — Fastify's
+    // 1MB default would 413 this long before the handler ran. Pinning the exact
+    // status AND the handler's message is what makes this test protect the fix.
+    const overMax = Buffer.concat([
+      PNG_HEADER,
+      Buffer.alloc(5 * 1024 * 1024 + 4096 - PNG_HEADER.length),
+    ]);
+    const res = await app.inject({
+      method: "POST",
+      url: "/api/guilds/guild-1/welcome/image/background",
+      cookies: { session: app.signCookie("valid") },
+      payload: { data: overMax.toString("base64"), contentType: "image/png" },
+    });
+
+    expect(res.statusCode).toBe(400);
+    expect(res.json<{ error: string }>().error).toMatch(/Maximum size: 5 MB/);
+    expect(mockUpload).not.toHaveBeenCalled();
+  });
+
+  it("rejects a payload beyond the body limit at the transport layer", async () => {
+    // Far past BACKGROUND_BODY_LIMIT — raising the limit must not mean removing
+    // the ceiling, so an absurd body is still refused before it is buffered.
+    const tooBig = Buffer.concat([PNG_HEADER, Buffer.alloc(16 * 1024 * 1024)]);
+    const res = await app.inject({
+      method: "POST",
+      url: "/api/guilds/guild-1/welcome/image/background",
+      cookies: { session: app.signCookie("valid") },
+      payload: { data: tooBig.toString("base64"), contentType: "image/png" },
+    });
+
+    expect(res.statusCode).toBe(413);
+    expect(mockUpload).not.toHaveBeenCalled();
+  });
+});

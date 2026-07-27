@@ -30,6 +30,7 @@
     "settings": "Nastavenia"
   },
   "actions": {
+    "undo": "Vrátiť späť",
     "save": "Uložiť",
     "cancel": "Zrušiť",
     "delete": "Odstrániť",
@@ -170,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Hľadať",
+    "placeholder": "Hľadať stránky, servery a akcie…",
+    "dialogTitle": "Paleta príkazov",
+    "dialogDescription": "Nájdi stránku, server alebo akciu. Šípkami sa pohybuj a klávesom Enter otvor.",
+    "hint": {
+      "navigate": "pohyb",
+      "select": "otvoriť",
+      "close": "zavrieť"
+    },
+    "group": {
+      "recent": "Nedávne",
+      "pages": "Stránky",
+      "actions": "Akcie",
+      "servers": "Servery"
+    },
+    "keywords": {
+      "automation": "pravidlá automatizácia spúšťače pracovný postup",
+      "moderation": "prípady bany vyhodenia stlmenia tresty"
+    },
+    "action": {
+      "refreshGuild": "Obnoviť údaje tohto servera",
+      "refreshGuildList": "Obnoviť môj zoznam serverov",
+      "backToServers": "Späť na všetky servery",
+      "addToServer": "Pridať bota na server",
+      "logout": "Odhlásiť"
+    },
+    "more": "Ďalšie: {{total}}",
+    "empty": "Žiadne výsledky pre „{{query}}“",
+    "resultCount": "Výsledky: {{total}}"
   }
 }

@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "कॉन्फ़िगर करें",
+    "configureTrigger": "ट्रिगर कॉन्फ़िगर करें",
+    "addAction": "क्रिया जोड़ें",
+    "addActionHere": "यहाँ क्रिया जोड़ें",
+    "addConditionHere": "यहाँ शर्त जोड़ें",
+    "addDelayHere": "यहाँ विलंब जोड़ें",
+    "setAsStart": "प्रारंभ के रूप में सेट करें",
+    "disconnect": "डिस्कनेक्ट करें",
+    "deleteConnection": "कनेक्शन हटाएं",
+    "nodeDeleted": "चरण हटाया गया",
+    "menuLabel": "{{label}} के लिए क्रियाएँ",
+    "paneMenuLabel": "कैनवास की क्रियाएँ",
+    "edgeMenuLabel": "कनेक्शन की क्रियाएँ"
+  },
   "breadcrumb": {
     "guild": "गिल्ड",
     "automation": "ऑटोमेशन"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "दृश्य में फ़िट करें",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "ऊपर ले जाएं",
+    "moveDown": "नीचे ले जाएं",
+    "removeAction": "क्रिया हटाएं",
+    "removeStep": "चरण हटाएं",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "प्रतिलिपि बनाएं",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "ट्रिगर को किसी चरण से जोड़ें — इस वर्कफ़्लो का कोई प्रारंभ बिंदु नहीं है",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

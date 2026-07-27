@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Konfigurer",
+    "configureTrigger": "Konfigurer utløser",
+    "addAction": "Legg til handling",
+    "addActionHere": "Legg til handling her",
+    "addConditionHere": "Legg til betingelse her",
+    "addDelayHere": "Legg til forsinkelse her",
+    "setAsStart": "Angi som start",
+    "disconnect": "Koble fra",
+    "deleteConnection": "Slett forbindelsen",
+    "nodeDeleted": "Trinn slettet",
+    "menuLabel": "Handlinger for {{label}}",
+    "paneMenuLabel": "Lerretshandlinger",
+    "edgeMenuLabel": "Forbindelseshandlinger"
+  },
   "breadcrumb": {
     "guild": "Server",
     "automation": "Automatisering"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Tilpass til visningen",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Flytt opp",
+    "moveDown": "Flytt ned",
+    "removeAction": "Fjern handling",
+    "removeStep": "Fjern trinn",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "Dupliser",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Koble utløseren til et trinn — denne arbeidsflyten har ikke noe startpunkt",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

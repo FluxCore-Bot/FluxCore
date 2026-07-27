@@ -30,6 +30,7 @@
     "settings": "Подешавања"
   },
   "actions": {
+    "undo": "Опозови",
     "save": "Сачувај",
     "cancel": "Откажи",
     "delete": "Обриши",
@@ -170,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Претражи",
+    "placeholder": "Претражите странице, сервере и радње…",
+    "dialogTitle": "Палета команди",
+    "dialogDescription": "Потражите страницу, сервер или радњу. Крећите се стрелицама, а отворите тастером Enter.",
+    "hint": {
+      "navigate": "кретање",
+      "select": "отвори",
+      "close": "затвори"
+    },
+    "group": {
+      "recent": "Недавно",
+      "pages": "Странице",
+      "actions": "Радње",
+      "servers": "Сервери"
+    },
+    "keywords": {
+      "automation": "правила аутоматизација окидачи ток рада",
+      "moderation": "случајеви забране избацивања утишавања казне"
+    },
+    "action": {
+      "refreshGuild": "Освежи податке овог сервера",
+      "refreshGuildList": "Освежи моју листу сервера",
+      "backToServers": "Назад на све сервере",
+      "addToServer": "Додај бота на сервер",
+      "logout": "Одјава"
+    },
+    "more": "Још {{total}}",
+    "empty": "Нема резултата за „{{query}}”",
+    "resultCount": "Резултати: {{total}}"
   }
 }

@@ -30,6 +30,7 @@
     "settings": "Настройки"
   },
   "actions": {
+    "undo": "Отмени",
     "save": "Запази",
     "cancel": "Отказ",
     "delete": "Изтрий",
@@ -170,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Търси",
+    "placeholder": "Търсене на страници, сървъри и действия…",
+    "dialogTitle": "Команден панел",
+    "dialogDescription": "Потърсете страница, сървър или действие. Използвайте клавишите със стрелки за придвижване и Enter за отваряне.",
+    "hint": {
+      "navigate": "навигация",
+      "select": "отваряне",
+      "close": "затваряне"
+    },
+    "group": {
+      "recent": "Скорошни",
+      "pages": "Страници",
+      "actions": "Действия",
+      "servers": "Сървъри"
+    },
+    "keywords": {
+      "automation": "правила автоматизация тригери работен процес",
+      "moderation": "случаи банове изритвания заглушавания наказания"
+    },
+    "action": {
+      "refreshGuild": "Обнови данните на този сървър",
+      "refreshGuildList": "Обнови списъка ми със сървъри",
+      "backToServers": "Назад към всички сървъри",
+      "addToServer": "Добави бота към сървър",
+      "logout": "Изход"
+    },
+    "more": "Още {{total}}",
+    "empty": "Няма резултати за „{{query}}“",
+    "resultCount": "Резултати: {{total}}"
   }
 }

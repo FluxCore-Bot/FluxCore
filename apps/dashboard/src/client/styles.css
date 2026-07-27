@@ -100,43 +100,58 @@ body {
   letter-spacing: 0.1em;
 }
 
-/* Form element base styling */
-input,
-select,
-textarea {
-  background-color: var(--color-surface-lowest);
-  border: none;
-  border-radius: var(--radius-sm);
-  color: var(--color-text);
-  /* 16px on mobile prevents iOS Safari auto-zoom on focus; 14px from md up. */
-  font-size: 1rem;
-}
-
-@media (min-width: 768px) {
+/*
+ * Form element base styling.
+ *
+ * Inside `@layer base` so Tailwind utilities win. Bare element selectors sit
+ * outside Tailwind's layers and therefore beat every utility, which silently
+ * broke any `bg-transparent` / `border-0` applied to an input — the component
+ * looked correct in the markup and rendered black anyway.
+ */
+@layer base {
   input,
   select,
   textarea {
-    font-size: 0.875rem;
+    background-color: var(--color-surface-lowest);
+    /*
+     * Transparent rather than `none`: the focus rule below only swaps the
+     * COLOR in, so the 1px is always reserved. Going none -> 1px on focus grew
+     * the element by 2px and nudged surrounding layout on every click.
+     * Still "no border" visually, per design.md.
+     */
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    /* 16px on mobile prevents iOS Safari auto-zoom on focus; 14px from md up. */
+    font-size: 1rem;
   }
-}
 
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none;
-  border: 1px solid var(--color-accent);
-  box-shadow: 0 0 4px rgba(163, 166, 255, 0.10);
-}
+  @media (min-width: 768px) {
+    input,
+    select,
+    textarea {
+      font-size: 0.875rem;
+    }
+  }
 
-textarea {
-  resize: vertical;
-  min-height: 3.75rem;
-}
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 4px rgba(163, 166, 255, 0.10);
+  }
 
-input[type="color"] {
-  height: 2.375rem;
-  padding: 0.25rem;
-  cursor: pointer;
+  textarea {
+    resize: vertical;
+    min-height: 3.75rem;
+  }
+
+  input[type="color"] {
+    height: 2.375rem;
+    padding: 0.25rem;
+    cursor: pointer;
+  }
 }
 
 /* Glass edge effect */
@@ -182,6 +197,23 @@ input[type="color"] {
 :focus-visible {
   outline: 2px solid var(--color-ring);
   outline-offset: 2px;
+}
+
+/*
+ * The command palette's search field opts out of that ring.
+ *
+ * It is auto-focused the moment the dialog opens and is the only input in it,
+ * so the caret already marks focus; a 2px offset ring on a full-bleed field
+ * instead reads as an error box drawn around the dialog head. Keyboard users
+ * lose nothing — every other focusable element, palette rows included, keeps
+ * its ring.
+ *
+ * This needs a real rule rather than a `focus-visible:outline-none` utility:
+ * the `:focus-visible` above is unlayered and so outranks every utility class.
+ * A class + pseudo-class beats it on specificity regardless of source order.
+ */
+.command-palette-input:focus-visible {
+  outline: none;
 }
 
 /* ── Reduced motion preference ── */

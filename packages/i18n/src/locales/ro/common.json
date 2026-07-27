@@ -30,6 +30,7 @@
     "settings": "Setări"
   },
   "actions": {
+    "undo": "Anulează",
     "save": "Salvează",
     "cancel": "Anulează",
     "delete": "Șterge",
@@ -170,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Caută",
+    "placeholder": "Caută pagini, servere și acțiuni…",
+    "dialogTitle": "Paleta de comenzi",
+    "dialogDescription": "Caută o pagină, un server sau o acțiune. Folosește tastele săgeți pentru a te deplasa și Enter pentru a deschide.",
+    "hint": {
+      "navigate": "deplasare",
+      "select": "deschide",
+      "close": "închide"
+    },
+    "group": {
+      "recent": "Recente",
+      "pages": "Pagini",
+      "actions": "Acțiuni",
+      "servers": "Servere"
+    },
+    "keywords": {
+      "automation": "reguli automatizare declanșatoare flux de lucru",
+      "moderation": "cazuri interdicții excluderi amuțiri sancțiuni"
+    },
+    "action": {
+      "refreshGuild": "Reîmprospătează datele acestui server",
+      "refreshGuildList": "Reîmprospătează lista mea de servere",
+      "backToServers": "Înapoi la toate serverele",
+      "addToServer": "Adaugă botul pe un server",
+      "logout": "Deconectare"
+    },
+    "more": "Încă {{total}}",
+    "empty": "Niciun rezultat pentru „{{query}}”",
+    "resultCount": "Rezultate: {{total}}"
   }
 }

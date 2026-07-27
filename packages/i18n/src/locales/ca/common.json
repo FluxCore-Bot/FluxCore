@@ -30,6 +30,7 @@
     "settings": "Configuració"
   },
   "actions": {
+    "undo": "Desfer",
     "save": "Desar",
     "cancel": "Cancel·lar",
     "delete": "Eliminar",
@@ -170,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Cercar",
+    "placeholder": "Cerca pàgines, servidors i accions…",
+    "dialogTitle": "Paleta d'ordres",
+    "dialogDescription": "Cerca una pàgina, un servidor o una acció. Fes servir les fletxes per moure't i Retorn per obrir.",
+    "hint": {
+      "navigate": "navegar",
+      "select": "obrir",
+      "close": "tancar"
+    },
+    "group": {
+      "recent": "Recents",
+      "pages": "Pàgines",
+      "actions": "Accions",
+      "servers": "Servidors"
+    },
+    "keywords": {
+      "automation": "regles automatització activadors flux de treball",
+      "moderation": "casos expulsions bans silencis sancions"
+    },
+    "action": {
+      "refreshGuild": "Actualitza les dades d'aquest servidor",
+      "refreshGuildList": "Actualitza la meva llista de servidors",
+      "backToServers": "Torna a tots els servidors",
+      "addToServer": "Afegeix el bot a un servidor",
+      "logout": "Tancar sessió"
+    },
+    "more": "{{total}} més",
+    "empty": "Cap resultat per a «{{query}}»",
+    "resultCount": "{{total}} resultats"
   }
 }

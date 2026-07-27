@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { apiFetch, getCsrfToken } from "../../../shared/lib/client";
+import { apiFetch, getCsrfToken, ApiError } from "../../../shared/lib/client";
 
 /** How a welcome/farewell message is delivered. Mirrors `MessageStyle` in `packages/systems/src/welcome/types.ts`. */
 export type MessageStyle = "plain" | "embed";
@@ -170,7 +170,18 @@ export function useWelcomeImagePreview(guildId: string) {
         },
         body: JSON.stringify(params),
       });
-      if (!res.ok) throw new Error("welcome.imageEditor.toast.previewFailed");
+      if (!res.ok) {
+        const body: { error?: string; errorKey?: string } | null = await res
+          .json()
+          .catch(() => null);
+        const retryAfter = Number(res.headers.get("retry-after"));
+        throw new ApiError(
+          res.status,
+          body?.error || "welcome.imageEditor.toast.previewFailed",
+          body?.errorKey,
+          Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : undefined,
+        );
+      }
       const blob = await res.blob();
       return URL.createObjectURL(blob);
     },

@@ -43,6 +43,9 @@ import { NodeDetailPanel } from "./NodeDetailPanel";
 import { useWorkflowNodes } from "./useWorkflowNodes";
 import { useWorkflowSteps } from "./useWorkflowSteps";
 import { useWorkflowKeyboard } from "./useWorkflowKeyboard";
+import { useWorkflowContextMenu } from "./contextMenu/useWorkflowContextMenu";
+import { WorkflowContextMenu } from "./contextMenu/WorkflowContextMenu";
+import { buildContextMenuItems, parseNodeId } from "./contextMenu/buildItems";
 import { Button } from "../../../shared/ui/button";
 import { Input } from "../../../shared/ui/input";
 import { Switch } from "../../../shared/ui/switch";
@@ -95,6 +98,13 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
   const { saveDraft: saveDraftToStorage, loadDraft, clearDraft } = useRuleDraft(guildId, rule?.id);
   const reactFlowInstance = useRef<ReactFlowInstance | null>(null);
 
+  /**
+   * Positions for nodes the user created at a specific spot (context-menu adds
+   * and duplicates). Consumed by the node-sync effect the first time the node
+   * appears, then cleaned up once it is part of `nodes`.
+   */
+  const pendingPositionsRef = useRef(new Map<string, { x: number; y: number }>());
+
   // Load saved draft on mount (only for new rules without an explicit draft)
   const savedDraft = !draft && !rule ? loadDraft() : null;
   const initialDraft = draft ?? savedDraft;
@@ -128,6 +138,11 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     handleActionRemove: rawActionRemove,
     handleActionMove: rawActionMove,
     convertAndSeverEdges,
+    duplicateNode,
+    disconnectNode,
+    setAsStart,
+    snapshot,
+    restore,
   } = useWorkflowSteps({
     initialSteps: initialDraft?.steps ?? rule?.steps,
     initialEntryStepId: initialDraft?.entryStepId ?? rule?.entryStepId,
@@ -151,9 +166,17 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     setSelectedNode((prev) => {
       if (prev?.type !== "action") return prev;
       const target = direction === "up" ? index - 1 : index + 1;
-      return { type: "action", index: target };
+      // rawActionMove refuses an out-of-range swap, so the selection must not
+      // move either — following it would point the panel at actions[-1].
+      if (target < 0 || target >= actions.length) return prev;
+      // The context menu can move an action other than the open one. Only the
+      // two actions that actually swap change index; everything else is
+      // untouched, and the panel must keep editing the record the user opened.
+      if (prev.index === index) return { type: "action", index: target };
+      if (prev.index === target) return { type: "action", index };
+      return prev;
     });
-  }, [rawActionMove]);
+  }, [rawActionMove, actions.length]);
 
   // Auto-save draft on changes
   useEffect(() => {
@@ -173,6 +196,11 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
         : `action-${selectedNode.index}`
     : null;
 
+  // Declared here (rather than beside the rest of the context-menu handlers
+  // below) because the ring highlight it drives into `useWorkflowNodes` needs
+  // `contextMenu.contextMenuNodeId` before that call.
+  const contextMenu = useWorkflowContextMenu();
+
   const { nodes: computedNodes, edges: computedEdges } = useWorkflowNodes({
     eventType,
     actions,
@@ -180,7 +208,11 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     entryStepId,
     constants: constants ?? undefined,
     maxActions: constants?.maxActionsPerRule,
-    selectedNodeId,
+    // The menu target owns the ring while the menu is open: with a panel
+    // already open on node A, right-clicking node B must highlight B (the
+    // node the menu's verbs will act on), not keep the ring on A. The panel
+    // selection gets the ring back the moment the menu closes.
+    selectedNodeId: contextMenu.contextMenuNodeId ?? selectedNodeId,
     onAddAction: addAction,
     validationIssues: validation.issues,
     t,
@@ -251,15 +283,24 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     }
   }, [isStepMode, rfEdges, handleEdgeRemoval, convertAndSeverEdges, onEdgesChangeBase]);
 
-  // Sync computed nodes/edges when data changes, preserving user-dragged positions
+  // Sync computed nodes/edges when data changes, preserving user-dragged
+  // positions. A pending position must win over the previous position for
+  // its id: duplicating a non-last linear action hands out an id
+  // (`action-N+1`) an existing node already holds, and the cursor-relative
+  // spot the user chose has to beat the position that id happened to carry.
   useEffect(() => {
+    // Snapshot for the updater (which React may invoke later, or twice) and
+    // drop the applied entries from the live ref right here, so a recycled
+    // node id cannot inherit a stale position on a later sync.
+    const pending = new Map(pendingPositionsRef.current);
     setNodes((prev) => {
       const posMap = new Map(prev.map((n) => [n.id, n.position]));
       return computedNodes.map((n) => ({
         ...n,
-        position: posMap.get(n.id) ?? n.position,
+        position: pending.get(n.id) ?? posMap.get(n.id) ?? n.position,
       }));
     });
+    for (const n of computedNodes) pendingPositionsRef.current.delete(n.id);
   }, [computedNodes, setNodes]);
 
   useEffect(() => {
@@ -282,11 +323,35 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     setSelectedNode(null);
   }, []);
 
+  /**
+   * Read by `handleSelectionChange` at call time so that callback can keep a
+   * stable identity — see the comment there for why that matters.
+   */
+  const contextMenuNodeIdRef = useRef(contextMenu.contextMenuNodeId);
+  contextMenuNodeIdRef.current = contextMenu.contextMenuNodeId;
+
   // Open the detail panel when a node is activated by the keyboard (Tab to focus,
   // then Enter/Space to select). Mouse clicks are handled by onNodeClick; this
   // only reacts to single-node selection so multi-select drags are ignored.
   const handleSelectionChange = useCallback(
     ({ nodes: selectedNodes }: { nodes: Node[]; edges: Edge[] }) => {
+      // The context-menu ring is rendered via `selected: true` too (see the
+      // `selectedNodeId` fallback fed into useWorkflowNodes), so React Flow's
+      // own SelectionListener fires here on a plain right-click. Without this
+      // guard that would open NodeDetailPanel underneath the menu.
+      //
+      // The guard reads a ref rather than the value itself, and this callback
+      // takes no dependencies, both deliberately. React Flow's
+      // SelectionListener keeps `onSelectionChange` in its own effect deps, so
+      // any change of identity here re-runs that effect and re-delivers the
+      // *current* selection. Depending on `contextMenuNodeId` therefore fired
+      // this callback again the moment the menu closed — unguarded by then,
+      // and while the node's `selected` flag was still stale, because the sync
+      // effect that clears it had not run yet. The result was a panel opening
+      // on every menu close, by any path. A stable identity leaves that effect
+      // keyed on `[selectedNodes, edges]` alone, so it now runs only when the
+      // selection genuinely changes.
+      if (contextMenuNodeIdRef.current) return;
       if (selectedNodes.length !== 1) return;
       const node = selectedNodes[0];
       if (node.id === "trigger") {
@@ -319,6 +384,12 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
 
   const handleSubmit = useCallback(async () => {
     setError("");
+
+    // The Save button is disabled while `!validation.valid`, but keyboard
+    // submit (Ctrl+S) calls this directly — without this guard it would walk
+    // straight past every validation error, including an entry-less step
+    // graph, and persist it anyway.
+    if (!validation.valid) return;
 
     const effectiveActions = isStepMode
       ? (steps ?? [])
@@ -362,7 +433,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
       const message = err instanceof ApiError ? err.message : t("editor.genericError");
       setError(message);
     }
-  }, [name, eventType, actions, steps, entryStepId, isStepMode, conditions, priority, enabled, rule, createRule, updateRule, onClose, clearDraft, t]);
+  }, [name, eventType, actions, steps, entryStepId, isStepMode, conditions, priority, enabled, rule, createRule, updateRule, onClose, clearDraft, t, validation.valid]);
 
   const handleFitView = useCallback(() => {
     reactFlowInstance.current?.fitView({ padding: 0.3, duration: 300 });
@@ -374,10 +445,111 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     setSelectedNode(null);
   }, [rawActionChange]);
 
+  const addAt = useCallback(
+    (add: () => string | null, position?: { x: number; y: number }) => {
+      const nodeId = add();
+      // No position (the trigger menu's plain "Add action") → auto-layout decides.
+      if (nodeId && position) pendingPositionsRef.current.set(nodeId, position);
+    },
+    [],
+  );
+
+  const handleContextConfigure = useCallback((nodeId: string) => {
+    const parsed = parseNodeId(nodeId);
+    if (!parsed) return;
+    if (parsed.kind === "trigger") setSelectedNode({ type: "trigger" });
+    else if (parsed.kind === "action") setSelectedNode({ type: "action", index: parsed.index });
+    else setSelectedNode({ type: "step", stepId: parsed.stepId });
+  }, []);
+
+  const handleContextDuplicate = useCallback((nodeId: string) => {
+    const origin = nodes.find((n) => n.id === nodeId)?.position;
+    const newNodeId = duplicateNode(nodeId);
+    if (newNodeId && origin) {
+      pendingPositionsRef.current.set(newNodeId, { x: origin.x + 40, y: origin.y + 60 });
+    }
+  }, [nodes, duplicateNode]);
+
+  const handleContextMove = useCallback((nodeId: string, direction: "up" | "down") => {
+    const parsed = parseNodeId(nodeId);
+    if (parsed?.kind === "action") handleActionMove(parsed.index, direction);
+  }, [handleActionMove]);
+
+  const handleContextDelete = useCallback((nodeId: string) => {
+    const parsed = parseNodeId(nodeId);
+    if (!parsed || parsed.kind === "trigger") return;
+    const snap = snapshot();
+    if (parsed.kind === "action") {
+      if (actions.length > 1) handleActionRemove(parsed.index);
+      else handleActionReset(parsed.index);
+    } else {
+      handleStepRemove(parsed.stepId);
+    }
+    toast.success(t("contextMenu.nodeDeleted"), {
+      action: {
+        label: t("common:actions.undo"),
+        // Clearing the selection is not cosmetic: `restore` swaps `actions`
+        // wholesale, and anything the user selected in between (an action
+        // added after the delete, say) can index past the restored array.
+        // NodeDetailPanel's action branch would then render `undefined` and
+        // throw — with no error boundary above this portal, that white-screens
+        // the editor and takes the unsaved rule with it.
+        onClick: () => {
+          restore(snap);
+          setSelectedNode(null);
+        },
+      },
+    });
+  }, [snapshot, restore, actions.length, handleActionRemove, handleActionReset, handleStepRemove, t]);
+
+  const handleContextDeleteEdge = useCallback((edgeId: string) => {
+    onEdgesChange([{ id: edgeId, type: "remove" }]);
+  }, [onEdgesChange]);
+
+  const contextSections = useMemo(() => {
+    if (!contextMenu.menu || !constants) return [];
+    return buildContextMenuItems(contextMenu.menu.target, {
+      isStepMode,
+      actions,
+      maxActions: constants.maxActionsPerRule,
+      steps,
+      entryStepId,
+      handlers: {
+        onConfigure: handleContextConfigure,
+        onDuplicate: handleContextDuplicate,
+        onMove: handleContextMove,
+        onSetAsStart: setAsStart,
+        onDisconnect: disconnectNode,
+        onDelete: handleContextDelete,
+        onDeleteEdge: handleContextDeleteEdge,
+        onAddAction: (position) => addAt(addAction, position),
+        onAddCondition: (position) => addAt(addConditionStep, position),
+        onAddDelay: (position) => addAt(addDelayStep, position),
+        onFitView: handleFitView,
+      },
+    });
+  }, [
+    contextMenu.menu, constants, isStepMode, actions, steps, entryStepId,
+    handleContextConfigure, handleContextDuplicate, handleContextMove,
+    setAsStart, disconnectNode, handleContextDelete, handleContextDeleteEdge,
+    addAt, addAction, addConditionStep, addDelayStep, handleFitView,
+  ]);
+
+  const contextMenuAriaLabel = useMemo(() => {
+    const menu = contextMenu.menu;
+    if (!menu) return "";
+    if (menu.target.kind === "node") {
+      return t("contextMenu.menuLabel", { label: menu.label ?? "" });
+    }
+    if (menu.target.kind === "edge") return t("contextMenu.edgeMenuLabel");
+    return t("contextMenu.paneMenuLabel");
+  }, [contextMenu.menu, t]);
+
   useWorkflowKeyboard({
     selectedNode,
     isStepMode,
     actionsLength: actions.length,
+    contextMenuOpen: contextMenu.menu !== null,
     onClose,
     onDeselectNode: () => setSelectedNode(null),
     onSubmit: handleSubmit,
@@ -387,6 +559,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     onActionReset: handleActionReset,
     onActionMove: handleActionMove,
     onStepRemove: handleStepRemove,
+    onOpenContextMenu: contextMenu.openFromKeyboard,
   });
 
   const isPending = createRule.isPending || updateRule.isPending;
@@ -589,6 +762,9 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
           onNodeClick={onNodeClick}
           onPaneClick={handlePaneClick}
           onSelectionChange={handleSelectionChange}
+          onNodeContextMenu={contextMenu.openNodeMenu}
+          onEdgeContextMenu={contextMenu.openEdgeMenu}
+          onPaneContextMenu={contextMenu.openPaneMenu}
           onInit={(instance) => {
             reactFlowInstance.current = instance;
           }}
@@ -634,6 +810,18 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             </TooltipProvider>
           </Panel>
         </ReactFlow>
+
+        {contextMenu.menu && (
+          <WorkflowContextMenu
+            open
+            x={contextMenu.menu.x}
+            y={contextMenu.menu.y}
+            ariaLabel={contextMenuAriaLabel}
+            sections={contextSections}
+            onClose={contextMenu.close}
+            onRestoreFocus={contextMenu.restoreFocus}
+          />
+        )}
 
         {/* Detail panel — slides in from right */}
         {selectedNode?.type === "trigger" && (

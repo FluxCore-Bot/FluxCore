@@ -30,6 +30,7 @@
     "settings": "Ezarpenak"
   },
   "actions": {
+    "undo": "Desegin",
     "save": "Gorde",
     "cancel": "Utzi",
     "delete": "Ezabatu",
@@ -170,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Bilatu",
+    "placeholder": "Bilatu orriak, zerbitzariak eta ekintzak…",
+    "dialogTitle": "Komando-paleta",
+    "dialogDescription": "Bilatu orri bat, zerbitzari bat edo ekintza bat. Erabili gezi-teklak mugitzeko eta Enter irekitzeko.",
+    "hint": {
+      "navigate": "mugitu",
+      "select": "ireki",
+      "close": "itxi"
+    },
+    "group": {
+      "recent": "Azkenak",
+      "pages": "Orriak",
+      "actions": "Ekintzak",
+      "servers": "Zerbitzariak"
+    },
+    "keywords": {
+      "automation": "arauak automatizazioa abiarazleak lan-fluxua",
+      "moderation": "kasuak debekuak kanporatzeak isilarazteak zigorrak"
+    },
+    "action": {
+      "refreshGuild": "Freskatu zerbitzari honen datuak",
+      "refreshGuildList": "Freskatu nire zerbitzarien zerrenda",
+      "backToServers": "Itzuli zerbitzari guztietara",
+      "addToServer": "Gehitu bota zerbitzari batera",
+      "logout": "Saioa itxi"
+    },
+    "more": "Beste {{total}}",
+    "empty": "Ez dago emaitzarik «{{query}}» bilaketarako",
+    "resultCount": "{{total}} emaitza"
   }
 }

@@ -30,6 +30,7 @@
     "settings": "Nustatymai"
   },
   "actions": {
+    "undo": "Anuliuoti",
     "save": "Išsaugoti",
     "cancel": "Atšaukti",
     "delete": "Ištrinti",
@@ -170,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Ieškoti",
+    "placeholder": "Ieškoti puslapių, serverių ir veiksmų…",
+    "dialogTitle": "Komandų paletė",
+    "dialogDescription": "Ieškok puslapio, serverio ar veiksmo. Judėk rodyklių klavišais, o atidaryk klavišu Enter.",
+    "hint": {
+      "navigate": "judėti",
+      "select": "atidaryti",
+      "close": "uždaryti"
+    },
+    "group": {
+      "recent": "Naujausi",
+      "pages": "Puslapiai",
+      "actions": "Veiksmai",
+      "servers": "Serveriai"
+    },
+    "keywords": {
+      "automation": "taisyklės automatizavimas paleidikliai darbo eiga",
+      "moderation": "atvejai blokavimai išmetimai nutildymai nuobaudos"
+    },
+    "action": {
+      "refreshGuild": "Atnaujinti šio serverio duomenis",
+      "refreshGuildList": "Atnaujinti mano serverių sąrašą",
+      "backToServers": "Atgal į visus serverius",
+      "addToServer": "Pridėti botą į serverį",
+      "logout": "Atsijungti"
+    },
+    "more": "Dar {{total}}",
+    "empty": "Nėra rezultatų pagal „{{query}}“",
+    "resultCount": "Rezultatai: {{total}}"
   }
 }

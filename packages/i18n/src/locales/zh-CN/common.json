@@ -30,6 +30,7 @@
     "settings": "设置"
   },
   "actions": {
+    "undo": "撤销",
     "save": "保存",
     "cancel": "取消",
     "delete": "删除",
@@ -170,5 +171,36 @@
       "channelName": "频道名称",
       "memberCount": "服务器成员数量"
     }
+  },
+  "palette": {
+    "open": "搜索",
+    "placeholder": "搜索页面、服务器和操作…",
+    "dialogTitle": "命令面板",
+    "dialogDescription": "搜索页面、服务器或操作。使用方向键移动，按 Enter 键打开。",
+    "hint": {
+      "navigate": "移动",
+      "select": "打开",
+      "close": "关闭"
+    },
+    "group": {
+      "recent": "最近",
+      "pages": "页面",
+      "actions": "操作",
+      "servers": "服务器"
+    },
+    "keywords": {
+      "automation": "规则 自动化 触发器 工作流",
+      "moderation": "案件 封禁 踢出 禁言 处罚"
+    },
+    "action": {
+      "refreshGuild": "刷新此服务器的数据",
+      "refreshGuildList": "刷新我的服务器列表",
+      "backToServers": "返回所有服务器",
+      "addToServer": "将机器人添加到服务器",
+      "logout": "退出登录"
+    },
+    "more": "还有 {{total}} 项",
+    "empty": "没有与“{{query}}”匹配的结果",
+    "resultCount": "{{total}} 条结果"
   }
 }

@@ -30,6 +30,7 @@
     "settings": "الإعدادات"
   },
   "actions": {
+    "undo": "تراجع",
     "save": "حفظ",
     "cancel": "إلغاء",
     "delete": "حذف",
@@ -170,5 +171,36 @@
       "channelName": "اسم القناة",
       "memberCount": "عدد أعضاء الخادم"
     }
+  },
+  "palette": {
+    "open": "بحث",
+    "placeholder": "ابحث في الصفحات والخوادم والإجراءات…",
+    "dialogTitle": "لوحة الأوامر",
+    "dialogDescription": "ابحث عن صفحة أو خادم أو إجراء. استخدم مفاتيح الأسهم للتنقل ومفتاح Enter للفتح.",
+    "hint": {
+      "navigate": "تنقّل",
+      "select": "فتح",
+      "close": "إغلاق"
+    },
+    "group": {
+      "recent": "الأخيرة",
+      "pages": "الصفحات",
+      "actions": "الإجراءات",
+      "servers": "الخوادم"
+    },
+    "keywords": {
+      "automation": "قواعد أتمتة مشغّلات سير العمل",
+      "moderation": "قضايا حظر طرد كتم عقوبات"
+    },
+    "action": {
+      "refreshGuild": "تحديث بيانات هذا الخادم",
+      "refreshGuildList": "تحديث قائمة خوادمي",
+      "backToServers": "العودة إلى جميع الخوادم",
+      "addToServer": "إضافة البوت إلى خادم",
+      "logout": "تسجيل الخروج"
+    },
+    "more": "{{total}} أخرى",
+    "empty": "لا توجد نتائج لـ \"{{query}}\"",
+    "resultCount": "النتائج: {{total}}"
   }
 }

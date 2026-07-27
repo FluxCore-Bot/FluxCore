@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Конфигурирай",
+    "configureTrigger": "Конфигурирай тригера",
+    "addAction": "Добави действие",
+    "addActionHere": "Добави действие тук",
+    "addConditionHere": "Добави условие тук",
+    "addDelayHere": "Добави забавяне тук",
+    "setAsStart": "Задай като начало",
+    "disconnect": "Разкачи",
+    "deleteConnection": "Изтрий връзката",
+    "nodeDeleted": "Стъпката е изтрита",
+    "menuLabel": "Действия за {{label}}",
+    "paneMenuLabel": "Действия върху платното",
+    "edgeMenuLabel": "Действия върху връзката"
+  },
   "breadcrumb": {
     "guild": "Сървър",
     "automation": "Автоматизация"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Побери в изгледа",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Премести нагоре",
+    "moveDown": "Премести надолу",
+    "removeAction": "Премахни действието",
+    "removeStep": "Премахни стъпката",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "Дублирай",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Свържете тригера със стъпка — този работен процес няма начална точка",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

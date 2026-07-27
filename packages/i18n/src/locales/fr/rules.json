@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Configurer",
+    "configureTrigger": "Configurer le déclencheur",
+    "addAction": "Ajouter une action",
+    "addActionHere": "Ajouter une action ici",
+    "addConditionHere": "Ajouter une condition ici",
+    "addDelayHere": "Ajouter un délai ici",
+    "setAsStart": "Définir comme départ",
+    "disconnect": "Déconnecter",
+    "deleteConnection": "Supprimer la liaison",
+    "nodeDeleted": "Étape supprimée",
+    "menuLabel": "Actions pour {{label}}",
+    "paneMenuLabel": "Actions du canevas",
+    "edgeMenuLabel": "Actions de la liaison"
+  },
   "breadcrumb": {
     "guild": "Serveur",
     "automation": "Automatisation"
@@ -294,6 +309,7 @@
     "channelConfigured": "Salon configuré"
   },
   "validation": {
+    "noEntryStep": "Connectez le déclencheur à une étape — ce workflow n'a pas de point de départ",
     "nameRequired": "Le nom de la règle est requis",
     "noEventType": "Aucun type d'événement sélectionné",
     "atLeastOneAction": "Au moins une action doit être configurée",

@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Konfiguriraj",
+    "configureTrigger": "Konfiguriraj okidač",
+    "addAction": "Dodaj radnju",
+    "addActionHere": "Dodaj radnju ovdje",
+    "addConditionHere": "Dodaj uvjet ovdje",
+    "addDelayHere": "Dodaj odgodu ovdje",
+    "setAsStart": "Postavi kao početak",
+    "disconnect": "Odspoji",
+    "deleteConnection": "Obriši vezu",
+    "nodeDeleted": "Korak obrisan",
+    "menuLabel": "Radnje za {{label}}",
+    "paneMenuLabel": "Radnje platna",
+    "edgeMenuLabel": "Radnje veze"
+  },
   "breadcrumb": {
     "guild": "Poslužitelj",
     "automation": "Automatizacija"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Prilagodi prikazu",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Pomakni gore",
+    "moveDown": "Pomakni dolje",
+    "removeAction": "Ukloni radnju",
+    "removeStep": "Ukloni korak",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "Dupliciraj",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Poveži okidač s korakom — ovaj tijek rada nema početnu točku",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

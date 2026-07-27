@@ -30,6 +30,7 @@
     "settings": "ترتیبات"
   },
   "actions": {
+    "undo": "واپس لیں",
     "save": "محفوظ کریں",
     "cancel": "منسوخ کریں",
     "delete": "حذف کریں",
@@ -170,5 +171,36 @@
       "channelName": "چینل کا نام",
       "memberCount": "سرور کے اراکین کی تعداد"
     }
+  },
+  "palette": {
+    "open": "تلاش کریں",
+    "placeholder": "صفحات، سرورز اور اعمال تلاش کریں…",
+    "dialogTitle": "کمانڈ پیلیٹ",
+    "dialogDescription": "کوئی صفحہ، سرور یا عمل تلاش کریں۔ حرکت کے لیے تیر والی کلیدیں اور کھولنے کے لیے Enter استعمال کریں۔",
+    "hint": {
+      "navigate": "حرکت",
+      "select": "کھولیں",
+      "close": "بند کریں"
+    },
+    "group": {
+      "recent": "حالیہ",
+      "pages": "صفحات",
+      "actions": "اعمال",
+      "servers": "سرورز"
+    },
+    "keywords": {
+      "automation": "قواعد آٹومیشن ٹرگرز ورک فلو",
+      "moderation": "مقدمات پابندیاں اخراج خاموشی سزائیں"
+    },
+    "action": {
+      "refreshGuild": "اس سرور کا ڈیٹا تازہ کریں",
+      "refreshGuildList": "میری سرور فہرست تازہ کریں",
+      "backToServers": "تمام سرورز پر واپس جائیں",
+      "addToServer": "بوٹ کو کسی سرور میں شامل کریں",
+      "logout": "لاگ آؤٹ"
+    },
+    "more": "{{total}} مزید",
+    "empty": "\"{{query}}\" کے لیے کوئی نتائج نہیں",
+    "resultCount": "{{total}} نتائج"
   }
 }

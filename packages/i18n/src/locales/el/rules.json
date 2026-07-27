@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Διαμόρφωση",
+    "configureTrigger": "Διαμόρφωση εναύσματος",
+    "addAction": "Προσθήκη ενέργειας",
+    "addActionHere": "Προσθήκη ενέργειας εδώ",
+    "addConditionHere": "Προσθήκη συνθήκης εδώ",
+    "addDelayHere": "Προσθήκη καθυστέρησης εδώ",
+    "setAsStart": "Ορισμός ως αρχή",
+    "disconnect": "Αποσύνδεση",
+    "deleteConnection": "Διαγραφή σύνδεσης",
+    "nodeDeleted": "Το βήμα διαγράφηκε",
+    "menuLabel": "Ενέργειες για {{label}}",
+    "paneMenuLabel": "Ενέργειες καμβά",
+    "edgeMenuLabel": "Ενέργειες σύνδεσης"
+  },
   "breadcrumb": {
     "guild": "Server",
     "automation": "Αυτοματισμός"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Προσαρμογή στην προβολή",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Μετακίνηση επάνω",
+    "moveDown": "Μετακίνηση κάτω",
+    "removeAction": "Αφαίρεση ενέργειας",
+    "removeStep": "Αφαίρεση βήματος",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "Διπλότυπο",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Συνδέστε το έναυσμα με ένα βήμα — αυτή η ροή εργασίας δεν έχει σημείο εκκίνησης",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

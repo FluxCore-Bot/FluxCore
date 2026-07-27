@@ -30,6 +30,7 @@
     "settings": "設定"
   },
   "actions": {
+    "undo": "元に戻す",
     "save": "保存",
     "cancel": "キャンセル",
     "delete": "削除",
@@ -170,5 +171,36 @@
       "channelName": "チャンネル名",
       "memberCount": "サーバーのメンバー数"
     }
+  },
+  "palette": {
+    "open": "検索",
+    "placeholder": "ページ、サーバー、アクションを検索…",
+    "dialogTitle": "コマンドパレット",
+    "dialogDescription": "ページ、サーバー、アクションを検索します。矢印キーで移動し、Enter キーで開きます。",
+    "hint": {
+      "navigate": "移動",
+      "select": "開く",
+      "close": "閉じる"
+    },
+    "group": {
+      "recent": "最近",
+      "pages": "ページ",
+      "actions": "アクション",
+      "servers": "サーバー"
+    },
+    "keywords": {
+      "automation": "ルール 自動化 トリガー ワークフロー",
+      "moderation": "ケース BAN キック ミュート 処罰"
+    },
+    "action": {
+      "refreshGuild": "このサーバーのデータを更新",
+      "refreshGuildList": "サーバー一覧を更新",
+      "backToServers": "すべてのサーバーに戻る",
+      "addToServer": "ボットをサーバーに追加",
+      "logout": "ログアウト"
+    },
+    "more": "他 {{total}} 件",
+    "empty": "「{{query}}」に一致する結果はありません",
+    "resultCount": "{{total}} 件の結果"
   }
 }

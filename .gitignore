@@ -29,6 +29,7 @@ apps/dashboard/tests/e2e/.report/
 # Production Docker secrets — keep the directory but never commit values
 /secrets/*
 !/secrets/.gitkeep
-
-# Subagent-driven-development scratch workspace (ledger, briefs, review packages)
+# Subagent-driven-development scratch (ledgers, briefs, review packages)
 .superpowers/
+# Claude Code worktrees — isolated checkouts, never part of the tree
+.claude/worktrees/

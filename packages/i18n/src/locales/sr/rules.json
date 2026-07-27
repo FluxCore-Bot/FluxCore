@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Подеси",
+    "configureTrigger": "Подеси окидач",
+    "addAction": "Додај радњу",
+    "addActionHere": "Додај радњу овде",
+    "addConditionHere": "Додај услов овде",
+    "addDelayHere": "Додај одлагање овде",
+    "setAsStart": "Постави као почетак",
+    "disconnect": "Прекини везу",
+    "deleteConnection": "Обриши везу",
+    "nodeDeleted": "Корак обрисан",
+    "menuLabel": "Радње за {{label}}",
+    "paneMenuLabel": "Радње платна",
+    "edgeMenuLabel": "Радње везе"
+  },
   "breadcrumb": {
     "guild": "Сервер",
     "automation": "Аутоматизација"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Уклопи у приказ",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Помери нагоре",
+    "moveDown": "Помери надоле",
+    "removeAction": "Уклони радњу",
+    "removeStep": "Уклони корак",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "Дуплирај",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Повежи окидач са кораком — овај ток рада нема почетну тачку",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "I-configure",
+    "configureTrigger": "I-configure ang trigger",
+    "addAction": "Magdagdag ng aksyon",
+    "addActionHere": "Magdagdag ng aksyon dito",
+    "addConditionHere": "Magdagdag ng kondisyon dito",
+    "addDelayHere": "Magdagdag ng pagkaantala dito",
+    "setAsStart": "Itakda bilang simula",
+    "disconnect": "Idiskonekta",
+    "deleteConnection": "Burahin ang koneksyon",
+    "nodeDeleted": "Nabura ang hakbang",
+    "menuLabel": "Mga aksyon para sa {{label}}",
+    "paneMenuLabel": "Mga aksyon sa canvas",
+    "edgeMenuLabel": "Mga aksyon sa koneksyon"
+  },
   "breadcrumb": {
     "guild": "Guild",
     "automation": "Automation"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Iakma sa view",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Ilipat pataas",
+    "moveDown": "Ilipat pababa",
+    "removeAction": "Alisin ang aksyon",
+    "removeStep": "Alisin ang hakbang",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "I-duplicate",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Ikonekta ang trigger sa isang hakbang — walang simulang punto ang workflow na ito",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

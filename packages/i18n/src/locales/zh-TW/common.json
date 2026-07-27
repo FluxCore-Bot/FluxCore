@@ -30,6 +30,7 @@
     "settings": "設定"
   },
   "actions": {
+    "undo": "復原",
     "save": "儲存",
     "cancel": "取消",
     "delete": "刪除",
@@ -170,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "搜尋",
+    "placeholder": "搜尋頁面、伺服器與操作…",
+    "dialogTitle": "命令面板",
+    "dialogDescription": "搜尋頁面、伺服器或操作。使用方向鍵移動，按 Enter 鍵開啟。",
+    "hint": {
+      "navigate": "移動",
+      "select": "開啟",
+      "close": "關閉"
+    },
+    "group": {
+      "recent": "最近",
+      "pages": "頁面",
+      "actions": "操作",
+      "servers": "伺服器"
+    },
+    "keywords": {
+      "automation": "規則 自動化 觸發器 工作流程",
+      "moderation": "案件 封鎖 踢出 禁言 處罰"
+    },
+    "action": {
+      "refreshGuild": "重新整理此伺服器的資料",
+      "refreshGuildList": "重新整理我的伺服器清單",
+      "backToServers": "返回所有伺服器",
+      "addToServer": "將機器人新增至伺服器",
+      "logout": "登出"
+    },
+    "more": "還有 {{total}} 項",
+    "empty": "沒有符合「{{query}}」的結果",
+    "resultCount": "{{total}} 筆結果"
   }
 }

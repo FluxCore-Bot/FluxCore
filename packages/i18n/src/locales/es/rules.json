@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Configurar",
+    "configureTrigger": "Configurar disparador",
+    "addAction": "Agregar acción",
+    "addActionHere": "Agregar acción aquí",
+    "addConditionHere": "Agregar condición aquí",
+    "addDelayHere": "Agregar retraso aquí",
+    "setAsStart": "Establecer como inicio",
+    "disconnect": "Desconectar",
+    "deleteConnection": "Eliminar conexión",
+    "nodeDeleted": "Paso eliminado",
+    "menuLabel": "Acciones para {{label}}",
+    "paneMenuLabel": "Acciones del lienzo",
+    "edgeMenuLabel": "Acciones de la conexión"
+  },
   "breadcrumb": {
     "guild": "Servidor",
     "automation": "Automatización"
@@ -294,6 +309,7 @@
     "channelConfigured": "Canal configurado"
   },
   "validation": {
+    "noEntryStep": "Conecta el disparador con un paso — este flujo de trabajo no tiene punto de inicio",
     "nameRequired": "El nombre de la regla es obligatorio",
     "noEventType": "No se seleccionó ningún tipo de evento",
     "atLeastOneAction": "Debe configurarse al menos una acción",

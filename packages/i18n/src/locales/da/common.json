@@ -30,6 +30,7 @@
     "settings": "Indstillinger"
   },
   "actions": {
+    "undo": "Fortryd",
     "save": "Gem",
     "cancel": "Annuller",
     "delete": "Slet",
@@ -170,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Søg",
+    "placeholder": "Søg efter sider, servere og handlinger…",
+    "dialogTitle": "Kommandopalet",
+    "dialogDescription": "Søg efter en side, en server eller en handling. Brug piletasterne til at navigere og Enter for at åbne.",
+    "hint": {
+      "navigate": "naviger",
+      "select": "åbn",
+      "close": "luk"
+    },
+    "group": {
+      "recent": "Seneste",
+      "pages": "Sider",
+      "actions": "Handlinger",
+      "servers": "Servere"
+    },
+    "keywords": {
+      "automation": "regler automatisering udløsere arbejdsgang",
+      "moderation": "sager udelukkelser spark mutes straffe"
+    },
+    "action": {
+      "refreshGuild": "Opdater denne servers data",
+      "refreshGuildList": "Opdater min serverliste",
+      "backToServers": "Tilbage til alle servere",
+      "addToServer": "Tilføj botten til en server",
+      "logout": "Log ud"
+    },
+    "more": "{{total}} mere",
+    "empty": "Ingen resultater for \"{{query}}\"",
+    "resultCount": "{{total}} resultater"
   }
 }

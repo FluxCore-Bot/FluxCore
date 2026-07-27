@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Määritä",
+    "configureTrigger": "Määritä käynnistin",
+    "addAction": "Lisää toiminto",
+    "addActionHere": "Lisää toiminto tähän",
+    "addConditionHere": "Lisää ehto tähän",
+    "addDelayHere": "Lisää viive tähän",
+    "setAsStart": "Aseta aloitukseksi",
+    "disconnect": "Katkaise yhteys",
+    "deleteConnection": "Poista yhteys",
+    "nodeDeleted": "Vaihe poistettu",
+    "menuLabel": "Toiminnot kohteelle {{label}}",
+    "paneMenuLabel": "Piirtoalueen toiminnot",
+    "edgeMenuLabel": "Yhteyden toiminnot"
+  },
   "breadcrumb": {
     "guild": "Palvelin",
     "automation": "Automaatio"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Sovita näkymään",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Siirrä ylös",
+    "moveDown": "Siirrä alas",
+    "removeAction": "Poista toiminto",
+    "removeStep": "Poista vaihe",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "Monista",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Yhdistä käynnistin vaiheeseen — tällä työnkululla ei ole aloituskohtaa",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

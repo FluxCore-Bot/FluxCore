@@ -30,6 +30,7 @@
     "settings": "Beállítások"
   },
   "actions": {
+    "undo": "Visszavonás",
     "save": "Mentés",
     "cancel": "Mégse",
     "delete": "Törlés",
@@ -170,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Keresés",
+    "placeholder": "Oldalak, szerverek és műveletek keresése…",
+    "dialogTitle": "Parancspaletta",
+    "dialogDescription": "Keress oldalt, szervert vagy műveletet. A nyílbillentyűkkel mozoghatsz, az Enterrel nyithatsz meg.",
+    "hint": {
+      "navigate": "mozgás",
+      "select": "megnyitás",
+      "close": "bezárás"
+    },
+    "group": {
+      "recent": "Legutóbbiak",
+      "pages": "Oldalak",
+      "actions": "Műveletek",
+      "servers": "Szerverek"
+    },
+    "keywords": {
+      "automation": "szabályok automatizálás eseményindítók munkafolyamat",
+      "moderation": "ügyek kitiltások kirúgások némítások büntetések"
+    },
+    "action": {
+      "refreshGuild": "A szerver adatainak frissítése",
+      "refreshGuildList": "A szerverlistám frissítése",
+      "backToServers": "Vissza az összes szerverhez",
+      "addToServer": "A bot hozzáadása egy szerverhez",
+      "logout": "Kijelentkezés"
+    },
+    "more": "Még {{total}}",
+    "empty": "Nincs találat erre: „{{query}}”",
+    "resultCount": "Találatok: {{total}}"
   }
 }

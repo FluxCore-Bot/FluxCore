@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Konfigurasi",
+    "configureTrigger": "Konfigurasi pemicu",
+    "addAction": "Tambah tindakan",
+    "addActionHere": "Tambah tindakan di sini",
+    "addConditionHere": "Tambah kondisi di sini",
+    "addDelayHere": "Tambah jeda di sini",
+    "setAsStart": "Jadikan sebagai awal",
+    "disconnect": "Putuskan koneksi",
+    "deleteConnection": "Hapus koneksi",
+    "nodeDeleted": "Langkah dihapus",
+    "menuLabel": "Tindakan untuk {{label}}",
+    "paneMenuLabel": "Tindakan kanvas",
+    "edgeMenuLabel": "Tindakan koneksi"
+  },
   "breadcrumb": {
     "guild": "Server",
     "automation": "Otomasi"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Sesuaikan dengan tampilan",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Pindah ke atas",
+    "moveDown": "Pindah ke bawah",
+    "removeAction": "Hapus tindakan",
+    "removeStep": "Hapus langkah",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "Duplikat",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Hubungkan pemicu ke sebuah langkah — alur kerja ini tidak memiliki titik awal",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

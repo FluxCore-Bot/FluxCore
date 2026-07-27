@@ -1,5 +1,11 @@
-import type { TFunction } from "i18next";
 import type { ActionConfig, Constants, RuleStep } from "../../../shared/lib/schemas";
+
+/**
+ * The translator shape workflow helpers actually call — structural rather
+ * than i18next's TFunction, so callers pass the real `t` unchanged while
+ * tests can hand in a plain `(key) => key` without any cast.
+ */
+export type TranslateFn = (key: string, params?: Record<string, unknown>) => string;
 
 export interface ValidationIssue {
   nodeId: string;
@@ -17,7 +23,7 @@ export function validateWorkflow(
   actions: ActionConfig[],
   name: string,
   constants: Constants | undefined,
-  t: TFunction,
+  t: TranslateFn,
   steps?: RuleStep[],
   entryStepId?: string,
 ): ValidationResult {
@@ -39,10 +45,14 @@ export function validateWorkflow(
     });
   }
 
-  const isStepMode = !!(steps?.length && entryStepId);
+  // A step graph exists whenever there are steps; having an entry point is a
+  // separate question, validated inside validateSteps (matches the canvas:
+  // useWorkflowSteps/useWorkflowNodes render the step graph on `steps.length`
+  // alone, independent of `entryStepId`).
+  const isStepMode = !!steps?.length;
 
   if (isStepMode) {
-    validateSteps(steps!, entryStepId!, constants, t, issues);
+    validateSteps(steps!, entryStepId, constants, t, issues);
   } else {
     validateLinearActions(actions, constants, t, issues);
   }
@@ -56,7 +66,7 @@ export function validateWorkflow(
 function validateLinearActions(
   actions: ActionConfig[],
   constants: Constants | undefined,
-  t: TFunction,
+  t: TranslateFn,
   issues: ValidationIssue[],
 ) {
   const configured = actions.filter((a) => a.type);
@@ -76,9 +86,9 @@ function validateLinearActions(
 
 function validateSteps(
   steps: RuleStep[],
-  entryStepId: string,
+  entryStepId: string | undefined,
   constants: Constants | undefined,
-  t: TFunction,
+  t: TranslateFn,
   issues: ValidationIssue[],
 ) {
   const configuredActionSteps = steps.filter(
@@ -90,6 +100,14 @@ function validateSteps(
       nodeId: "trigger",
       level: "error",
       message: t("validation.atLeastOneAction"),
+    });
+  }
+
+  if (!entryStepId) {
+    issues.push({
+      nodeId: "trigger",
+      level: "error",
+      message: t("validation.noEntryStep"),
     });
   }
 
@@ -132,31 +150,36 @@ function validateSteps(
     }
   }
 
-  // Check for unreachable steps (not connected from entry)
-  const reachable = new Set<string>();
-  const queue = [entryStepId];
-  const stepMap = new Map(steps.map((s) => [s.id, s]));
-  while (queue.length > 0) {
-    const id = queue.shift()!;
-    if (reachable.has(id)) continue;
-    reachable.add(id);
-    const step = stepMap.get(id);
-    if (!step) continue;
-    if (step.type === "condition") {
-      if (step.thenNext) queue.push(step.thenNext);
-      if (step.elseNext) queue.push(step.elseNext);
-    } else if ((step.type === "action" || step.type === "delay") && step.next) {
-      queue.push(step.next);
+  // Check for unreachable steps (not connected from entry). Only meaningful
+  // once there is an entry point — without one, every step would otherwise
+  // be flagged unreachable, burying the one error (noEntryStep) that
+  // actually matters.
+  if (entryStepId) {
+    const reachable = new Set<string>();
+    const queue = [entryStepId];
+    const stepMap = new Map(steps.map((s) => [s.id, s]));
+    while (queue.length > 0) {
+      const id = queue.shift()!;
+      if (reachable.has(id)) continue;
+      reachable.add(id);
+      const step = stepMap.get(id);
+      if (!step) continue;
+      if (step.type === "condition") {
+        if (step.thenNext) queue.push(step.thenNext);
+        if (step.elseNext) queue.push(step.elseNext);
+      } else if ((step.type === "action" || step.type === "delay") && step.next) {
+        queue.push(step.next);
+      }
     }
-  }
 
-  for (const step of steps) {
-    if (!reachable.has(step.id)) {
-      issues.push({
-        nodeId: `step-${step.id}`,
-        level: "warning",
-        message: t("validation.stepUnreachable", { id: step.id }),
-      });
+    for (const step of steps) {
+      if (!reachable.has(step.id)) {
+        issues.push({
+          nodeId: `step-${step.id}`,
+          level: "warning",
+          message: t("validation.stepUnreachable", { id: step.id }),
+        });
+      }
     }
   }
 }
@@ -166,7 +189,7 @@ function validateAction(
   nodeId: string,
   label: string,
   constants: Constants | undefined,
-  t: TFunction,
+  t: TranslateFn,
   issues: ValidationIssue[],
 ) {
   if (!action.type) {

@@ -30,6 +30,7 @@
     "settings": "הגדרות"
   },
   "actions": {
+    "undo": "ביטול פעולה",
     "save": "שמירה",
     "cancel": "ביטול",
     "delete": "מחיקה",
@@ -170,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "חיפוש",
+    "placeholder": "חיפוש דפים, שרתים ופעולות…",
+    "dialogTitle": "לוח הפקודות",
+    "dialogDescription": "חפש דף, שרת או פעולה. השתמש במקשי החיצים כדי לנוע ובמקש Enter כדי לפתוח.",
+    "hint": {
+      "navigate": "ניווט",
+      "select": "פתיחה",
+      "close": "סגירה"
+    },
+    "group": {
+      "recent": "אחרונים",
+      "pages": "דפים",
+      "actions": "פעולות",
+      "servers": "שרתים"
+    },
+    "keywords": {
+      "automation": "כללים אוטומציה טריגרים תהליך עבודה",
+      "moderation": "תיקים חסימות הרחקות השתקות עונשים"
+    },
+    "action": {
+      "refreshGuild": "רענון הנתונים של השרת הזה",
+      "refreshGuildList": "רענון רשימת השרתים שלי",
+      "backToServers": "חזרה לכל השרתים",
+      "addToServer": "הוספת הבוט לשרת",
+      "logout": "התנתקות"
+    },
+    "more": "עוד {{total}}",
+    "empty": "אין תוצאות עבור \"{{query}}\"",
+    "resultCount": "{{total}} תוצאות"
   }
 }

@@ -30,6 +30,7 @@
     "settings": "Einstellungen"
   },
   "actions": {
+    "undo": "Rückgängig",
     "save": "Speichern",
     "cancel": "Abbrechen",
     "delete": "Löschen",
@@ -170,5 +171,36 @@
       "channelName": "Kanalname",
       "memberCount": "Mitgliederzahl des Servers"
     }
+  },
+  "palette": {
+    "open": "Suchen",
+    "placeholder": "Seiten, Server und Aktionen durchsuchen…",
+    "dialogTitle": "Befehlspalette",
+    "dialogDescription": "Suche nach einer Seite, einem Server oder einer Aktion. Mit den Pfeiltasten navigierst du, mit Enter öffnest du.",
+    "hint": {
+      "navigate": "navigieren",
+      "select": "öffnen",
+      "close": "schließen"
+    },
+    "group": {
+      "recent": "Zuletzt verwendet",
+      "pages": "Seiten",
+      "actions": "Aktionen",
+      "servers": "Server"
+    },
+    "keywords": {
+      "automation": "Regeln Automatisierung Auslöser Workflow",
+      "moderation": "Fälle Banns Kicks Stummschaltungen Strafen"
+    },
+    "action": {
+      "refreshGuild": "Daten dieses Servers aktualisieren",
+      "refreshGuildList": "Meine Serverliste aktualisieren",
+      "backToServers": "Zurück zu allen Servern",
+      "addToServer": "Den Bot zu einem Server hinzufügen",
+      "logout": "Abmelden"
+    },
+    "more": "{{total}} weitere",
+    "empty": "Keine Ergebnisse für „{{query}}“",
+    "resultCount": "{{total}} Ergebnisse"
   }
 }

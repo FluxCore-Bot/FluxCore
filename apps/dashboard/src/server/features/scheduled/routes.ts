@@ -1,6 +1,7 @@
 import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { rateLimits } from "../../shared/rateLimit.js";
 import {
   getScheduledMessages,
   getScheduledMessageById,
@@ -270,14 +271,8 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
           },
         },
       ),
-      config: {
-        rateLimit: {
-          max: 5,
-          timeWindow: "10 seconds",
-          keyGenerator: (req) =>
-            (req as { session?: { userId?: string } }).session?.userId ?? req.ip,
-        },
-      },
+      // Fires on every keystroke in the cron field.
+      config: rateLimits.heavy,
     },
     async (request, reply) => {
       const query = request.query as { cronExpr?: string; timezone?: string };

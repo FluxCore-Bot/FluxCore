@@ -30,6 +30,7 @@
     "settings": "ตั้งค่า"
   },
   "actions": {
+    "undo": "เลิกทำ",
     "save": "บันทึก",
     "cancel": "ยกเลิก",
     "delete": "ลบ",
@@ -170,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "ค้นหา",
+    "placeholder": "ค้นหาหน้า เซิร์ฟเวอร์ และการกระทำ…",
+    "dialogTitle": "แผงคำสั่ง",
+    "dialogDescription": "ค้นหาหน้า เซิร์ฟเวอร์ หรือการกระทำ ใช้ปุ่มลูกศรเพื่อเลื่อนและปุ่ม Enter เพื่อเปิด",
+    "hint": {
+      "navigate": "เลื่อน",
+      "select": "เปิด",
+      "close": "ปิด"
+    },
+    "group": {
+      "recent": "ล่าสุด",
+      "pages": "หน้า",
+      "actions": "การกระทำ",
+      "servers": "เซิร์ฟเวอร์"
+    },
+    "keywords": {
+      "automation": "กฎ ระบบอัตโนมัติ ทริกเกอร์ เวิร์กโฟลว์",
+      "moderation": "เคส แบน เตะ ปิดเสียง บทลงโทษ"
+    },
+    "action": {
+      "refreshGuild": "รีเฟรชข้อมูลของเซิร์ฟเวอร์นี้",
+      "refreshGuildList": "รีเฟรชรายการเซิร์ฟเวอร์ของฉัน",
+      "backToServers": "กลับไปยังเซิร์ฟเวอร์ทั้งหมด",
+      "addToServer": "เพิ่มบอทไปยังเซิร์ฟเวอร์",
+      "logout": "ออกจากระบบ"
+    },
+    "more": "อีก {{total}} รายการ",
+    "empty": "ไม่พบผลลัพธ์สำหรับ \"{{query}}\"",
+    "resultCount": "{{total}} ผลลัพธ์"
   }
 }

@@ -30,6 +30,7 @@
     "settings": "Postavke"
   },
   "actions": {
+    "undo": "Poništi",
     "save": "Spremi",
     "cancel": "Odustani",
     "delete": "Obriši",
@@ -170,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Pretraži",
+    "placeholder": "Pretraži stranice, poslužitelje i radnje…",
+    "dialogTitle": "Paleta naredbi",
+    "dialogDescription": "Potraži stranicu, poslužitelj ili radnju. Tipkama sa strelicama kreći se, a tipkom Enter otvori.",
+    "hint": {
+      "navigate": "kretanje",
+      "select": "otvori",
+      "close": "zatvori"
+    },
+    "group": {
+      "recent": "Nedavno",
+      "pages": "Stranice",
+      "actions": "Radnje",
+      "servers": "Poslužitelji"
+    },
+    "keywords": {
+      "automation": "pravila automatizacija okidači tijek rada",
+      "moderation": "slučajevi zabrane izbacivanja utišavanja kazne"
+    },
+    "action": {
+      "refreshGuild": "Osvježi podatke ovog poslužitelja",
+      "refreshGuildList": "Osvježi moj popis poslužitelja",
+      "backToServers": "Natrag na sve poslužitelje",
+      "addToServer": "Dodaj bota na poslužitelj",
+      "logout": "Odjava"
+    },
+    "more": "Još {{total}}",
+    "empty": "Nema rezultata za „{{query}}”",
+    "resultCount": "Rezultati: {{total}}"
   }
 }

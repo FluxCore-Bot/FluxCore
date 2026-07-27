@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Configureren",
+    "configureTrigger": "Trigger configureren",
+    "addAction": "Actie toevoegen",
+    "addActionHere": "Actie hier toevoegen",
+    "addConditionHere": "Voorwaarde hier toevoegen",
+    "addDelayHere": "Vertraging hier toevoegen",
+    "setAsStart": "Instellen als start",
+    "disconnect": "Verbinding verbreken",
+    "deleteConnection": "Verbinding verwijderen",
+    "nodeDeleted": "Stap verwijderd",
+    "menuLabel": "Acties voor {{label}}",
+    "paneMenuLabel": "Canvasacties",
+    "edgeMenuLabel": "Verbindingsacties"
+  },
   "breadcrumb": {
     "guild": "Server",
     "automation": "Automatisering"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Aanpassen aan weergave",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Omhoog verplaatsen",
+    "moveDown": "Omlaag verplaatsen",
+    "removeAction": "Actie verwijderen",
+    "removeStep": "Stap verwijderen",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "Dupliceren",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Verbind de trigger met een stap — deze workflow heeft geen startpunt",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Настроить",
+    "configureTrigger": "Настроить триггер",
+    "addAction": "Добавить действие",
+    "addActionHere": "Добавить действие здесь",
+    "addConditionHere": "Добавить условие здесь",
+    "addDelayHere": "Добавить задержку здесь",
+    "setAsStart": "Сделать начальным шагом",
+    "disconnect": "Разъединить",
+    "deleteConnection": "Удалить связь",
+    "nodeDeleted": "Шаг удалён",
+    "menuLabel": "Действия для «{{label}}»",
+    "paneMenuLabel": "Действия с холстом",
+    "edgeMenuLabel": "Действия со связью"
+  },
   "breadcrumb": {
     "guild": "Сервер",
     "automation": "Автоматизация"
@@ -294,6 +309,7 @@
     "channelConfigured": "Канал настроен"
   },
   "validation": {
+    "noEntryStep": "Соедините триггер с шагом — у этого рабочего процесса нет начальной точки",
     "nameRequired": "Название правила обязательно",
     "noEventType": "Тип события не выбран",
     "atLeastOneAction": "Должно быть настроено хотя бы одно действие",
