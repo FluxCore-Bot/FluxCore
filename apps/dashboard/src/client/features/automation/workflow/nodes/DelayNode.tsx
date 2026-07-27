@@ -33,6 +33,32 @@ function getBorderClass(
   return "border-text-muted/20 bg-surface-low";
 }
 
+/**
+ * Non-colour signal for a node's validation state.
+ *
+ * Colour alone cannot carry this: a condition node's brand colour already IS
+ * amber, so a "warning" border is indistinguishable from its normal styling —
+ * and colour-only status fails WCAG 1.4.1 regardless. The data attribute also
+ * gives the toolbar's issue list something to scroll to.
+ */
+function ValidationBadge({
+  state,
+}: {
+  state: "valid" | "warning" | "error" | null | undefined;
+}) {
+  const { t } = useTranslation("rules");
+  if (state !== "warning" && state !== "error") return null;
+  return (
+    <span
+      role="img"
+      aria-label={t(state === "error" ? "nodes.hasError" : "nodes.hasWarning")}
+      className={`ms-auto ${state === "error" ? "text-danger" : "text-warning"}`}
+    >
+      <Icon name={state === "error" ? "error" : "warning"} size={14} />
+    </span>
+  );
+}
+
 function DelayNodeComponent({ data, selected }: NodeProps) {
   const { t } = useTranslation("rules");
   const { delayMs, label, validationState } = data as DelayNodeData;
@@ -47,6 +73,7 @@ function DelayNodeComponent({ data, selected }: NodeProps) {
       />
       <div
         role="group"
+        data-validation={validationState ?? undefined}
         aria-label={t("nodes.ariaDelay", { label })}
         className={`min-w-[160px] max-w-[220px] rounded-lg border-2 px-4 py-3 transition-all ${getBorderClass(selected, validationState)}`}
       >
@@ -57,6 +84,7 @@ function DelayNodeComponent({ data, selected }: NodeProps) {
           <span className="section-label text-text-muted">
             {t("nodes.delay")}
           </span>
+          <ValidationBadge state={validationState} />
         </div>
         <p className="text-sm font-medium text-text">{label}</p>
         <p className="mt-0.5 text-xs text-text-muted">

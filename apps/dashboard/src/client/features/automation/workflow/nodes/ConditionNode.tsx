@@ -41,6 +41,32 @@ function getBorderClass(
   return "border-warning/30 bg-warning/5";
 }
 
+/**
+ * Non-colour signal for a node's validation state.
+ *
+ * Colour alone cannot carry this: a condition node's brand colour already IS
+ * amber, so a "warning" border is indistinguishable from its normal styling —
+ * and colour-only status fails WCAG 1.4.1 regardless. The data attribute also
+ * gives the toolbar's issue list something to scroll to.
+ */
+function ValidationBadge({
+  state,
+}: {
+  state: "valid" | "warning" | "error" | null | undefined;
+}) {
+  const { t } = useTranslation("rules");
+  if (state !== "warning" && state !== "error") return null;
+  return (
+    <span
+      role="img"
+      aria-label={t(state === "error" ? "nodes.hasError" : "nodes.hasWarning")}
+      className={`ms-auto ${state === "error" ? "text-danger" : "text-warning"}`}
+    >
+      <Icon name={state === "error" ? "error" : "warning"} size={14} />
+    </span>
+  );
+}
+
 function ConditionNodeComponent({ data, selected }: NodeProps) {
   const { t } = useTranslation("rules");
   const { field, operator, value, label, validationState } =
@@ -59,6 +85,7 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
       />
       <div
         role="group"
+        data-validation={validationState ?? undefined}
         aria-label={t("nodes.ariaCondition", { label })}
         className={`min-w-[200px] max-w-[260px] rounded-lg border-2 px-4 py-3 transition-all ${getBorderClass(selected, validationState)}`}
       >
@@ -69,6 +96,7 @@ function ConditionNodeComponent({ data, selected }: NodeProps) {
           <span className="section-label text-warning">
             {t("nodes.condition")}
           </span>
+          <ValidationBadge state={validationState} />
           {!isConfigured && (
             <span
               role="img"

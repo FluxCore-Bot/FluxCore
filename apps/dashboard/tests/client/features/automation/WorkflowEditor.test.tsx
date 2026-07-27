@@ -535,3 +535,70 @@ describe("WorkflowEditor — closing with unsaved changes", () => {
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 });
+
+/**
+ * The only aggregate validation signal used to be a tooltip on a
+ * non-focusable div: keyboard and screen-reader users could not read it, the
+ * disabled Save button gave no reason at all, and with several actions there
+ * was no way to tell WHICH one was incomplete without opening each in turn.
+ */
+describe("WorkflowEditor — validation is reachable", () => {
+  // An action with no type chosen. That is an error anchored to `action-0`,
+  // and it needs no actionTypeFields entry — which this suite's shared
+  // constants deliberately leave empty.
+  const incomplete: RuleDraft = {
+    name: "Test Rule",
+    eventType: "messageCreate",
+    actions: [{ type: "" }],
+    conditions: {},
+    priority: 0,
+    enabled: true,
+  };
+
+  it("puts the issue count on a real button, not a bare div", async () => {
+    renderEditor(incomplete);
+
+    const trigger = await screen.findByRole("button", { name: /editor\.issues/ });
+    expect(trigger).toBeEnabled();
+  });
+
+  it("lists each issue when opened", async () => {
+    const user = userEvent.setup();
+    renderEditor(incomplete);
+
+    await user.click(await screen.findByRole("button", { name: /editor\.issues/ }));
+
+    const issues = await screen.findAllByText(/validation\.noActionType/);
+    expect(issues.length).toBeGreaterThan(0);
+  });
+
+  it("selects the offending node when an issue is chosen", async () => {
+    const user = userEvent.setup();
+    renderEditor(incomplete);
+
+    await user.click(await screen.findByRole("button", { name: /editor\.issues/ }));
+    const issue = (await screen.findAllByText(/validation\.noActionType/))[0];
+    await user.click(issue);
+
+    // The detail panel opens on the action the issue belongs to.
+    await waitFor(() => expect(panelHeading()).toContain("panel.action"));
+  });
+
+  it("explains why Save is disabled", async () => {
+    renderEditor(incomplete);
+
+    const save = await screen.findByRole("button", { name: /form\.create/ });
+    expect(save).toBeDisabled();
+    const describedBy = save.getAttribute("aria-describedby");
+    expect(describedBy).toBeTruthy();
+    expect(document.getElementById(describedBy!)).toHaveTextContent(/editor\.saveBlocked/);
+  });
+
+  it("says nothing about being blocked once the rule is valid", async () => {
+    renderEditor({ ...incomplete, actions: [{ type: "sendMessage", message: "hi" }] });
+
+    const save = await screen.findByRole("button", { name: /form\.create/ });
+    expect(save).toBeEnabled();
+    expect(save).not.toHaveAttribute("aria-describedby");
+  });
+});

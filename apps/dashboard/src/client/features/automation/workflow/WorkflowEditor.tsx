@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useEffect, useRef } from "react";
+import { useState, useCallback, useMemo, useEffect, useRef, useId } from "react";
 import { useTranslation } from "react-i18next";
 import { createPortal } from "react-dom";
 import { useParams } from "@tanstack/react-router";
@@ -59,6 +59,7 @@ import {
   TooltipProvider,
 } from "../../../shared/ui/tooltip";
 import { PageSkeleton } from "../../../shared/ui/skeletons";
+import { Popover, PopoverContent, PopoverTrigger } from "../../../shared/ui/popover";
 import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
 
 export interface RuleDraft {
@@ -253,6 +254,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     // node the menu's verbs will act on), not keep the ring on A. The panel
     // selection gets the ring back the moment the menu closes.
     selectedNodeId: contextMenu.contextMenuNodeId ?? selectedNodeId,
+    conditions,
     onAddAction: addAction,
     validationIssues: validation.issues,
     t,
@@ -477,6 +479,27 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     }
   }, [name, eventType, actions, steps, entryStepId, isStepMode, conditions, priority, enabled, rule, createRule, updateRule, onClose, clearDraft, t, validation.valid]);
 
+  const saveBlockedId = useId();
+
+  /**
+   * Selects and centres the node an issue belongs to, so the issue list is a
+   * way to reach the problem rather than just a description of it.
+   */
+  const focusIssueNode = useCallback((nodeId: string) => {
+    const parsed = parseNodeId(nodeId);
+    if (parsed?.kind === "trigger") setSelectedNode({ type: "trigger" });
+    else if (parsed?.kind === "action") setSelectedNode({ type: "action", index: parsed.index });
+    else if (parsed?.kind === "step") setSelectedNode({ type: "step", stepId: parsed.stepId });
+    else return; // "toolbar" issues (e.g. the rule name) have no node
+    const node = reactFlowInstance.current?.getNode(nodeId);
+    if (node) {
+      reactFlowInstance.current?.setCenter(node.position.x + 110, node.position.y + 40, {
+        zoom: 1,
+        duration: 300,
+      });
+    }
+  }, []);
+
   const handleFitView = useCallback(() => {
     reactFlowInstance.current?.fitView({ padding: 0.3, duration: 300 });
   }, []);
@@ -694,38 +717,50 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
           </Button>
           <Separator orientation="vertical" className="h-5" />
 
-          {/* Validation status */}
+          {/* Validation status.
+              Previously a tooltip on a non-focusable div: keyboard and screen
+              reader users had no way to read it, the disabled Save button gave
+              no reason at all, and with five actions there was no way to tell
+              WHICH one was incomplete without opening each. Now a popover on a
+              real button, with each issue a link that selects its node. */}
           {validation.issues.length > 0 ? (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <div className="flex items-center gap-1.5 text-xs">
-                    <Icon
-                      name={validation.valid ? "warning" : "error"}
-                      size={16}
-                      className={validation.valid ? "text-warning" : "text-danger"}
-                    />
-                    <span className={validation.valid ? "text-warning" : "text-danger"}>
-                      {t("editor.issues", { count: validation.issues.length })}
-                    </span>
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent side="bottom" className="max-w-72">
-                  <ul className="space-y-1 text-xs">
-                    {validation.issues.map((issue, i) => (
-                      <li key={i} className="flex items-start gap-1.5">
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={`gap-1.5 ${validation.valid ? "text-warning" : "text-danger"}`}
+                >
+                  <Icon name={validation.valid ? "warning" : "error"} size={16} />
+                  {t("editor.issues", { count: validation.issues.length })}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent align="end" className="w-80 p-2">
+                <p className="px-2 pb-2 text-xs text-text-secondary">
+                  {validation.valid
+                    ? t("editor.issuesWarningHint")
+                    : t("editor.issuesErrorHint")}
+                </p>
+                <ul className="space-y-0.5">
+                  {validation.issues.map((issue, i) => (
+                    <li key={i}>
+                      <button
+                        type="button"
+                        onClick={() => focusIssueNode(issue.nodeId)}
+                        className="flex w-full items-start gap-1.5 rounded px-2 py-1.5 text-start text-xs hover:bg-surface-high focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      >
                         <Icon
                           name={issue.level === "error" ? "error" : "warning"}
                           size={12}
-                          className={issue.level === "error" ? "text-danger" : "text-warning"}
+                          className={`mt-0.5 shrink-0 ${issue.level === "error" ? "text-danger" : "text-warning"}`}
                         />
                         {issue.message}
-                      </li>
-                    ))}
-                  </ul>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </PopoverContent>
+            </Popover>
           ) : name.trim() && eventType && actions.length > 0 ? (
             <div className="flex items-center gap-1.5 text-xs text-secondary">
               <Icon name="check_circle" size={16} />
@@ -733,10 +768,24 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             </div>
           ) : null}
 
-          <Button size="sm" onClick={handleSubmit} disabled={isPending || !validation.valid}>
+          <Button
+            size="sm"
+            onClick={handleSubmit}
+            disabled={isPending || !validation.valid}
+            // A disabled control with no announced reason is a dead end for
+            // anyone who cannot see the issue count beside it.
+            aria-describedby={!validation.valid ? saveBlockedId : undefined}
+          >
             <Icon name={rule ? "save" : "check"} size={16} />
             {isPending ? t("form.saving") : rule ? t("form.update") : t("form.create")}
           </Button>
+          {!validation.valid && (
+            <span id={saveBlockedId} className="sr-only">
+              {t("editor.saveBlocked", {
+                count: validation.issues.filter((i) => i.level === "error").length,
+              })}
+            </span>
+          )}
         </div>
       </div>
 

@@ -80,7 +80,8 @@
     "boostThankYouDefault": "Thank you for boosting {guild}, {user}! You're awesome!",
     "banLoggerName": "Ban Logger",
     "autoThreadName": "Auto Thread",
-    "autoThreadDefault": "Discussion: {user.name}"
+    "autoThreadDefault": "Discussion: {user.name}",
+    "browse": "Browse templates"
   },
   "deleteDialog": {
     "title": "Delete Rule",
@@ -187,7 +188,11 @@
     "discardDraftAction": "Discard draft",
     "discardChangesTitle": "Discard unsaved changes?",
     "discardChangesDescription": "This rule has edits that have not been saved. Closing the editor will lose them.",
-    "discardChanges": "Discard changes"
+    "discardChanges": "Discard changes",
+    "issuesErrorHint": "Fix these before the rule can be saved. Select one to jump to it.",
+    "issuesWarningHint": "These will not block saving, but the rule may not behave as you expect.",
+    "saveBlocked_one": "Cannot save: {{count}} problem must be fixed first",
+    "saveBlocked_other": "Cannot save: {{count}} problems must be fixed first"
   },
   "panel": {
     "trigger": "Trigger Settings",
@@ -301,7 +306,11 @@
     "ariaCondition": "Condition: {{label}}",
     "ariaDelay": "Delay: {{label}}",
     "branchYes": "Yes",
-    "branchNo": "No"
+    "branchNo": "No",
+    "hasError": "Has an error",
+    "hasWarning": "Has a warning",
+    "activeFilters_one": "{{count}} active filter",
+    "activeFilters_other": "{{count}} active filters"
   },
   "ruleList": {
     "never": "Never",
