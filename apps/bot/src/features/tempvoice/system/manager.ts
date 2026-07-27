@@ -23,6 +23,12 @@ import { logger } from "@fluxcore/utils";
 
 const activeChannels = new Map<string, ActiveTempChannel>();
 
+// ── Name Resolution ──
+
+export function resolveChannelName(template: string, displayName: string): string {
+  return (template || DEFAULT_NAME_TEMPLATE).replaceAll("{user}", displayName);
+}
+
 // ── Queries ──
 
 export function isTrackedChannel(channelId: string): boolean {
@@ -46,8 +52,7 @@ export async function createTempChannel(
 ): Promise<VoiceChannel | null> {
   const saved = await loadUserSettings(guild.id, member.id, config.id);
 
-  const template = config.nameTemplate || DEFAULT_NAME_TEMPLATE;
-  const defaultName = template.replace("{user}", member.displayName);
+  const defaultName = resolveChannelName(config.nameTemplate, member.displayName);
   const name = saved?.channelName ?? defaultName;
 
   const permissionOverwrites: OverwriteResolvable[] = [
