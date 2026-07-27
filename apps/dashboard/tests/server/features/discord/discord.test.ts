@@ -26,11 +26,15 @@ const mockIsBotInGuild = vi.fn().mockResolvedValue(true);
 const mockGetGuildChannels = vi.fn().mockResolvedValue([]);
 const mockGetGuildRoles = vi.fn().mockResolvedValue([]);
 const mockGetGuildOwnerId = vi.fn().mockResolvedValue("owner-1");
+const mockSearchGuildMembers = vi.fn().mockResolvedValue([]);
+const mockGetGuildMembersByIds = vi.fn().mockResolvedValue([]);
 vi.mock("../../../../src/server/shared/discordApi.js", () => ({
   isBotInGuild: (...args: unknown[]) => mockIsBotInGuild(...args),
   getGuildChannels: (...args: unknown[]) => mockGetGuildChannels(...args),
   getGuildRoles: (...args: unknown[]) => mockGetGuildRoles(...args),
   getGuildOwnerId: (...args: unknown[]) => mockGetGuildOwnerId(...args),
+  searchGuildMembers: (...args: unknown[]) => mockSearchGuildMembers(...args),
+  getGuildMembersByIds: (...args: unknown[]) => mockGetGuildMembersByIds(...args),
   invalidateGuildCache: vi.fn(),
 }));
 
@@ -140,4 +144,66 @@ describe("discord routes", () => {
       expect(res.json()).toEqual([]);
     });
   });
+
+  /**
+   * Trigger filters had no member picker because the dashboard had no members
+   * endpoint at all — the only way to filter by member was to paste a raw
+   * 17-20 digit snowflake, and saved filters rendered as those digits.
+   */
+  describe("GET /api/guilds/:guildId/members", () => {
+    it("searches by name", async () => {
+      mockSearchGuildMembers.mockResolvedValueOnce([
+        { id: "1", username: "ada", displayName: "Ada", avatar: null },
+      ]);
+
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/guilds/guild-1/members?q=ad",
+        cookies: { session: app.signCookie("valid") },
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(res.json()).toEqual([
+        { id: "1", username: "ada", displayName: "Ada", avatar: null },
+      ]);
+      expect(mockSearchGuildMembers).toHaveBeenCalledWith("guild-1", "ad");
+    });
+
+    it("resolves saved ids back to names", async () => {
+      mockGetGuildMembersByIds.mockResolvedValueOnce([
+        { id: "1", username: "ada", displayName: "Ada", avatar: null },
+      ]);
+
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/guilds/guild-1/members?ids=1,2",
+        cookies: { session: app.signCookie("valid") },
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(mockGetGuildMembersByIds).toHaveBeenCalledWith("guild-1", ["1", "2"]);
+    });
+
+    it("returns an empty list rather than failing when Discord errors", async () => {
+      mockSearchGuildMembers.mockRejectedValueOnce(new Error("Discord down"));
+
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/guilds/guild-1/members?q=ad",
+        cookies: { session: app.signCookie("valid") },
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(res.json()).toEqual([]);
+    });
+
+    it("requires authentication", async () => {
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/guilds/guild-1/members?q=ad",
+      });
+      expect(res.statusCode).toBe(401);
+    });
+  });
+
 });

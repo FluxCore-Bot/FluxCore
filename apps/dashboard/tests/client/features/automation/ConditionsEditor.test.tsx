@@ -19,6 +19,14 @@ vi.mock("../../../../src/client/shared/ui/discord-multi-select", () => ({
   ),
 }));
 
+// The member picker queries the new /members endpoint; its own behaviour is
+// covered separately. Here only its presence per trigger matters.
+vi.mock("../../../../src/client/shared/ui/member-multi-select", () => ({
+  MemberMultiSelect: ({ label }: { label: string }) => (
+    <div data-testid={`memberselect-${label}`}>{label}</div>
+  ),
+}));
+
 global.ResizeObserver = class {
   observe() {}
   unobserve() {}
@@ -72,9 +80,7 @@ describe("ConditionsEditor — only offers filters the trigger can satisfy", () 
       />,
     );
 
-    // `conditions.userId` is only the input's placeholder — assert on the
-    // group's visible label, which is what actually disappears.
-    expect(screen.queryByText("conditions.users")).not.toBeInTheDocument();
+    expect(screen.queryByTestId(/memberselect-/)).not.toBeInTheDocument();
   });
 
   it("offers everything when the trigger supports everything", () => {

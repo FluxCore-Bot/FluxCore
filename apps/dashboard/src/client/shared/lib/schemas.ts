@@ -40,6 +40,17 @@ export type Role = z.infer<typeof RoleSchema>;
 
 export const RoleListSchema = z.array(RoleSchema);
 
+/** A guild member, as returned by /api/guilds/:guildId/members. */
+export const GuildMemberSchema = z.object({
+  id: z.string(),
+  username: z.string(),
+  displayName: z.string(),
+  avatar: z.string().nullable(),
+});
+export type GuildMember = z.infer<typeof GuildMemberSchema>;
+
+export const GuildMemberListSchema = z.array(GuildMemberSchema);
+
 // --- Action Constants ---
 export const EventTypeInfoSchema = z.object({
   label: z.string(),

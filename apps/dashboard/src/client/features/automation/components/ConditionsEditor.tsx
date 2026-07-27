@@ -1,11 +1,10 @@
-import { useState, useId } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "../../../shared/components/Icon";
 import { Badge } from "../../../shared/ui/badge";
 import { Button } from "../../../shared/ui/button";
-import { Input } from "../../../shared/ui/input";
-import { Label } from "../../../shared/ui/label";
 import { DiscordMultiSelect } from "../../../shared/ui/discord-multi-select";
+import { MemberMultiSelect } from "../../../shared/ui/member-multi-select";
 import type { ActionConditions } from "../../../shared/lib/schemas";
 
 /** The three data a trigger filter can key on. Mirrors ConditionSubject. */
@@ -37,117 +36,6 @@ interface ConditionsEditorProps {
    * an empty panel, since the user is about to pick one.
    */
   supported?: ConditionSubject[];
-}
-
-function ChipList({
-  items,
-  onRemove,
-  color = "secondary",
-}: {
-  items: { id: string; label: string }[];
-  onRemove: (id: string) => void;
-  color?: "secondary" | "destructive";
-}) {
-  const { t } = useTranslation("rules");
-  if (items.length === 0) return null;
-  return (
-    <div className="flex flex-wrap gap-1.5">
-      {items.map((item) => (
-        <Badge
-          key={item.id}
-          variant={color}
-          className="gap-1 pe-1 text-[11px]"
-        >
-          {item.label}
-          <button
-            type="button"
-            aria-label={t("conditions.removeItem", { label: item.label })}
-            onClick={() => onRemove(item.id)}
-            className="ms-0.5 rounded-full p-1 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            <Icon name="close" size={10} />
-          </button>
-        </Badge>
-      ))}
-    </div>
-  );
-}
-
-function UserIdInput({
-  label,
-  selectedIds,
-  onAdd,
-  onRemove,
-  chipColor = "secondary",
-}: {
-  label: string;
-  selectedIds: string[];
-  onAdd: (id: string) => void;
-  onRemove: (id: string) => void;
-  chipColor?: "secondary" | "destructive";
-}) {
-  const { t } = useTranslation(["rules", "common"]);
-  const [input, setInput] = useState("");
-  const [touched, setTouched] = useState(false);
-  const fieldId = useId();
-  const errorId = `${fieldId}-error`;
-  const trimmed = input.trim();
-  const isValid = /^\d{17,20}$/.test(trimmed);
-  const showError = touched && trimmed.length > 0 && !isValid;
-
-  const handleAdd = () => {
-    if (isValid && !selectedIds.includes(trimmed)) {
-      onAdd(trimmed);
-      setInput("");
-      setTouched(false);
-    } else {
-      setTouched(true);
-    }
-  };
-
-  return (
-    <div className="space-y-1.5">
-      <Label htmlFor={fieldId} className="text-xs">{label}</Label>
-      <div className="flex gap-1.5">
-        <Input
-          id={fieldId}
-          type="text"
-          inputMode="numeric"
-          value={input}
-          aria-invalid={showError || undefined}
-          aria-describedby={showError ? errorId : undefined}
-          onChange={(e) => setInput(e.target.value)}
-          onBlur={() => setTouched(true)}
-          onKeyDown={(e) =>
-            e.key === "Enter" && (e.preventDefault(), handleAdd())
-          }
-          placeholder={t("conditions.userId")}
-          className="h-8 flex-1 text-xs"
-        />
-        <Button
-          type="button"
-          variant="ghost"
-          size="sm"
-          aria-label={t("conditions.addUserId")}
-          className="h-8 px-2"
-          onClick={handleAdd}
-          disabled={!trimmed || !isValid}
-        >
-          <Icon name="add" size={14} />
-        </Button>
-      </div>
-      {showError && (
-        <p id={errorId} role="alert" className="text-xs text-danger">
-          {t("conditions.userIdInvalid")}
-        </p>
-      )}
-      <ChipList
-        items={selectedIds.map((id) => ({ id, label: id }))}
-        onRemove={onRemove}
-        color={chipColor}
-      />
-    </div>
-  );
 }
 
 export function ConditionsEditor({
@@ -298,16 +186,12 @@ export function ConditionsEditor({
           />
         )}
         {shows("user") && (
-          <UserIdInput
+          <MemberMultiSelect
+            guildId={guildId}
             label={t("conditions.includeUsers")}
+            placeholder={t("conditions.addMember")}
             selectedIds={conditions.userIds ?? []}
-            onAdd={(id) => {
-              const current = conditions.userIds ?? [];
-              if (!current.includes(id)) update({ userIds: [...current, id] });
-            }}
-            onRemove={(id) =>
-              update({ userIds: (conditions.userIds ?? []).filter((v) => v !== id) })
-            }
+            onChange={(ids) => update({ userIds: ids })}
           />
         )}
       </div>
@@ -338,21 +222,12 @@ export function ConditionsEditor({
           />
         )}
         {shows("user") && (
-          <UserIdInput
+          <MemberMultiSelect
+            guildId={guildId}
             label={t("conditions.excludeUsers")}
+            placeholder={t("conditions.addMember")}
             selectedIds={conditions.excludeUserIds ?? []}
-            onAdd={(id) => {
-              const current = conditions.excludeUserIds ?? [];
-              if (!current.includes(id))
-                update({ excludeUserIds: [...current, id] });
-            }}
-            onRemove={(id) =>
-              update({
-                excludeUserIds: (conditions.excludeUserIds ?? []).filter(
-                  (v) => v !== id,
-                ),
-              })
-            }
+            onChange={(ids) => update({ excludeUserIds: ids })}
             chipColor="destructive"
           />
         )}

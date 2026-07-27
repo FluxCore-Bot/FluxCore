@@ -97,7 +97,8 @@
     "fieldRequired": "{{field}} is required",
     "removeItem": "Remove {{label}}",
     "selectedCount_one": "{{count}} selected",
-    "selectedCount_other": "{{count}} selected"
+    "selectedCount_other": "{{count}} selected",
+    "loading": "Loading..."
   },
   "pagination": {
     "previous": "Previous",

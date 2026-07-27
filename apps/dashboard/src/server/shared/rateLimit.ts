@@ -105,6 +105,12 @@ export const rateLimits = {
   external: { rateLimit: { max: 5, timeWindow: "1 minute" } },
   /** Resource creation. */
   create: { rateLimit: { max: 10, timeWindow: "1 minute" } },
+  /**
+   * Read-only passthroughs to the Discord API that a user can trigger while
+   * typing (member search). Generous enough not to interrupt a search, tight
+   * enough that it cannot be used to hammer Discord on our bot token.
+   */
+  discordRead: { rateLimit: { max: 60, timeWindow: "1 minute" } },
 } as const;
 
 /**

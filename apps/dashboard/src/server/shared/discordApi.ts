@@ -71,6 +71,18 @@ export interface DiscordRole {
 export interface DiscordGuildMember {
   /** IDs of the roles assigned to the member. */
   roles: string[];
+  /** Guild-specific nickname, when set. */
+  nick?: string | null;
+  /**
+   * The underlying user. Present on the real payload; typed optional because
+   * this shape is also used for live authorization, where only `roles` is read.
+   */
+  user?: {
+    id: string;
+    username: string;
+    global_name?: string | null;
+    avatar?: string | null;
+  };
 }
 
 /**
@@ -175,6 +187,81 @@ export async function getGuildRoles(guildId: string): Promise<DiscordRole[]> {
   const result = roles ?? [];
   setCache(cacheKey, result);
   return result;
+}
+
+export interface DiscordGuildMemberSummary {
+  id: string;
+  username: string;
+  displayName: string;
+  avatar: string | null;
+}
+
+/**
+ * Search a guild's members by name prefix, via the bot token.
+ *
+ * Exists so trigger filters can offer a real member picker: before this there
+ * was no members endpoint anywhere in the dashboard, so the only way to filter
+ * by member was to paste a raw 17-20 digit snowflake, and saved filters
+ * rendered as bare digits.
+ *
+ * Uses Discord's `members/search`, which needs the GUILD_MEMBERS intent (the
+ * bot already declares it). Results are cached per (guild, query) on the same
+ * short TTL as the channel and role lookups.
+ */
+export async function searchGuildMembers(
+  guildId: string,
+  query: string,
+  limit = 25,
+): Promise<DiscordGuildMemberSummary[]> {
+  const trimmed = query.trim().slice(0, 100);
+  if (trimmed.length === 0) return [];
+
+  const cacheKey = `members:${guildId}:${trimmed.toLowerCase()}:${limit}`;
+  const cached = getCached<DiscordGuildMemberSummary[]>(cacheKey);
+  if (cached !== undefined) return cached;
+
+  const raw = await botFetch<
+    Array<{
+      nick?: string | null;
+      user: { id: string; username: string; global_name?: string | null; avatar: string | null };
+    }>
+  >(
+    `/guilds/${guildId}/members/search?query=${encodeURIComponent(trimmed)}&limit=${limit}`,
+  );
+
+  const members: DiscordGuildMemberSummary[] = (raw ?? []).map((m) => ({
+    id: m.user.id,
+    username: m.user.username,
+    displayName: m.nick ?? m.user.global_name ?? m.user.username,
+    avatar: m.user.avatar,
+  }));
+  setCache(cacheKey, members);
+  return members;
+}
+
+/**
+ * Resolve specific member ids to names, so a saved filter can render as
+ * "Ada" rather than "123456789012345678". Missing members (left the guild,
+ * deleted account) are simply absent from the result.
+ */
+export async function getGuildMembersByIds(
+  guildId: string,
+  ids: string[],
+): Promise<DiscordGuildMemberSummary[]> {
+  const unique = Array.from(new Set(ids)).slice(0, 50);
+  const results = await Promise.all(
+    unique.map(async (id) => {
+      const member = await getGuildMember(guildId, id);
+      if (!member?.user) return null;
+      return {
+        id: member.user.id,
+        username: member.user.username,
+        displayName: member.nick ?? member.user.global_name ?? member.user.username,
+        avatar: member.user.avatar ?? null,
+      } satisfies DiscordGuildMemberSummary;
+    }),
+  );
+  return results.filter((m): m is DiscordGuildMemberSummary => m !== null);
 }
 
 /**

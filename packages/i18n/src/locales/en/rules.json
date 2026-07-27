@@ -159,7 +159,9 @@
     "excludeRoles": "Never members with these roles",
     "excludeUsers": "Never these members",
     "unsupportedWarning": "This trigger cannot evaluate these filters ({{filters}}), so the rule will never fire while they are set.",
-    "removeUnsupported": "Remove filters that cannot apply"
+    "removeUnsupported": "Remove filters that cannot apply",
+    "addMember": "Add member...",
+    "memberSearchHint": "Type a name to search members"
   },
   "editor": {
     "backToRules": "Rules",
