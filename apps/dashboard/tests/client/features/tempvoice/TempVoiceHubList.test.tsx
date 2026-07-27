@@ -108,6 +108,33 @@ describe("TempVoiceHubList", () => {
     expect(screen.getByRole("button", { name: /editor.save/ })).toBeInTheDocument();
   });
 
+  it("moves focus into step 1's picker when an existing card expands", async () => {
+    const user = userEvent.setup();
+    render(<TempVoiceHubList />);
+    await user.click(screen.getByRole("button", { name: /list.edit/ }));
+    // Clicking Edit swaps the card from its summary branch to its form branch,
+    // unmounting the very button that was just activated — so without an
+    // explicit move, focus falls to <body> and a keyboard user's tab position
+    // resets to the top of the document. The picker's accessible name comes
+    // from step 1's <label htmlFor>, hence "flow.step1".
+    await waitFor(() =>
+      expect(screen.getByRole("button", { name: "flow.step1" })).toHaveFocus(),
+    );
+  });
+
+  it("moves focus into step 1's picker when the new-hub card is added", async () => {
+    const user = userEvent.setup();
+    render(<TempVoiceHubList />);
+    await user.click(screen.getByRole("button", { name: /list.add/ }));
+    // Same hole from the other direction: the header Add button is suppressed
+    // while any card is expanded, so it unmounts on click too. This card is
+    // freshly mounted in editor mode rather than transitioned into it, which
+    // is a different code path from the test above.
+    await waitFor(() =>
+      expect(screen.getByRole("button", { name: "flow.step1" })).toHaveFocus(),
+    );
+  });
+
   it("returns focus to the Edit button after cancelling", async () => {
     const user = userEvent.setup();
     render(<TempVoiceHubList />);

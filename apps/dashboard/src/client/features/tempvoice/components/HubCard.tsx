@@ -1,4 +1,4 @@
-import { useId, useRef, useState, type FormEvent } from "react";
+import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "../../../shared/ui/button";
 import { Alert } from "../../../shared/ui/alert";
@@ -83,6 +83,20 @@ export function HubCard({
       setSubmitError("");
     }
   }
+
+  // Entering editor mode destroys the control the user just activated: Edit
+  // lives in the summary branch (which this render replaces), and Add is
+  // suppressed while any card is expanded. Either way the activating button
+  // unmounts and focus falls to <body>, resetting a keyboard user's tab
+  // position to the top of the document. Move focus into step 1's picker
+  // instead — the mirror image of the orchestrator's collapse(), which
+  // restores focus to whatever opened the card. Scheduled as an effect, not
+  // called from the render-phase re-seed above: `hubRef` is only attached
+  // after commit, and .focus() is a DOM side effect that must not run during
+  // render. Runs on mount too, which is exactly the "new" card's case.
+  useEffect(() => {
+    if (mode === "editor") hubRef.current?.focus();
+  }, [mode]);
 
   const preview = usePreviewContext(guildId);
 
