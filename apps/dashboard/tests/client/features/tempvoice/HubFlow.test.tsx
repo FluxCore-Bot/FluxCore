@@ -15,6 +15,7 @@ describe("HubFlow", () => {
     );
     expect(screen.getByRole("list").tagName).toBe("OL");
     expect(screen.getAllByRole("listitem")).toHaveLength(2);
+    expect(screen.getByRole("list")).not.toHaveAttribute("inert");
   });
 
   it("associates the label with its control when htmlFor is given", () => {
