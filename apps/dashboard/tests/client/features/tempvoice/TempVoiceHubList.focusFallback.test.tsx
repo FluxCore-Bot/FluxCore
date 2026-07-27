@@ -11,6 +11,18 @@ vi.mock("react-i18next", () => ({
 vi.mock("@tanstack/react-router", () => ({ useParams: () => ({ guildId: "g1" }) }));
 vi.mock("sonner", () => ({ toast: { success: vi.fn(), error: vi.fn() } }));
 
+// Shared shape for the seeded rows and the ones the "create" mock appends.
+// A type-only declaration is erased entirely at runtime, so referencing it
+// inside `vi.hoisted`'s callback below carries none of the TDZ hazard a real
+// (value) import or top-level const would — see the constants-import comment
+// further down for the case where that hazard is real.
+type SeedConfig = {
+  id: number;
+  hubChannelId: string;
+  categoryId: string | null;
+  nameTemplate: string;
+};
+
 // A stateful configs list, mutated by the "create" mock, so this test can
 // reproduce the real "submit -> cache invalidation -> one more row" cycle
 // without a real QueryClient. Starts one short of the cap (9 — the same
@@ -19,20 +31,21 @@ vi.mock("sonner", () => ({ toast: { success: vi.fn(), error: vi.fn() } }));
 // in this file resolves, same TDZ hazard as the vi.mock factories) so the
 // Add button is available at first; the mutation below fills the last slot.
 const state = vi.hoisted(() => ({
-  configs: Array.from({ length: 9 }, (_, i) => ({
-    id: i + 1,
-    hubChannelId: `hub${i + 1}`,
-    categoryId: null as string | null,
-    nameTemplate: "{user}'s Channel",
-  })),
+  configs: Array.from(
+    { length: 9 },
+    (_, i): SeedConfig => ({
+      id: i + 1,
+      hubChannelId: `hub${i + 1}`,
+      categoryId: null,
+      nameTemplate: "{user}'s Channel",
+    }),
+  ),
 }));
 
 const createMutate = vi.hoisted(() =>
-  vi.fn(
-    async (data: { hubChannelId: string; categoryId: string | null; nameTemplate: string }) => {
-      state.configs = [...state.configs, { id: state.configs.length + 1, ...data }];
-    },
-  ),
+  vi.fn(async (data: Omit<SeedConfig, "id">) => {
+    state.configs = [...state.configs, { id: state.configs.length + 1, ...data }];
+  }),
 );
 
 vi.mock("../../../../src/client/features/tempvoice/hooks/useTempVoice", () => ({
