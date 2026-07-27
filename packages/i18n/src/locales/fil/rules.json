@@ -146,7 +146,18 @@
     "include": "Isama (whitelist)",
     "exclude": "I-exclude (blacklist)",
     "clearAll": "I-clear ang lahat ng kondisyon",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "I-collapse ang mga kundisyon",
+    "userIdInvalid": "Maglagay ng wastong Discord user ID (17–20 digit)",
+    "addUserId": "Magdagdag ng user ID",
+    "includeChannels": "Sa mga channel na ito lamang",
+    "includeRoles": "Mga miyembro lamang na may ganitong role",
+    "includeUsers": "Ang mga miyembrong ito lamang",
+    "excludeChannels": "Hindi kailanman sa mga channel na ito",
+    "excludeRoles": "Hindi kailanman ang mga miyembrong may ganitong role",
+    "excludeUsers": "Hindi kailanman ang mga miyembrong ito",
+    "unsupportedWarning": "Hindi masusuri ng trigger na ito ang mga filter na ito ({{filters}}), kaya hindi kailanman tatakbo ang panuntunan habang nakatakda ang mga ito.",
+    "removeUnsupported": "Alisin ang mga filter na hindi maaaring ilapat"
   },
   "workflow": {
     "errors": {

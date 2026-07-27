@@ -146,7 +146,18 @@
     "include": "Jumuisha (orodha nyeupe)",
     "exclude": "Tenga (orodha nyeusi)",
     "clearAll": "Futa masharti yote",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Kunja masharti",
+    "userIdInvalid": "Weka kitambulisho halali cha mtumiaji wa Discord (tarakimu 17–20)",
+    "addUserId": "Ongeza kitambulisho cha mtumiaji",
+    "includeChannels": "Katika chaneli hizi pekee",
+    "includeRoles": "Wanachama wenye majukumu haya pekee",
+    "includeUsers": "Wanachama hawa pekee",
+    "excludeChannels": "Kamwe katika chaneli hizi",
+    "excludeRoles": "Kamwe wanachama wenye majukumu haya",
+    "excludeUsers": "Kamwe wanachama hawa",
+    "unsupportedWarning": "Kianzishi hiki hakiwezi kutathmini vichujio hivi ({{filters}}), kwa hivyo sheria haitatekelezwa kamwe vikiwa vimewekwa.",
+    "removeUnsupported": "Ondoa vichujio visivyoweza kutumika"
   },
   "workflow": {
     "errors": {

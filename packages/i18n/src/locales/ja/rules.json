@@ -146,7 +146,18 @@
     "include": "含める（ホワイトリスト）",
     "exclude": "除外する（ブラックリスト）",
     "clearAll": "すべての条件をクリア",
-    "removeItem": "{{label}}を削除"
+    "removeItem": "{{label}}を削除",
+    "collapse": "条件を折りたたむ",
+    "userIdInvalid": "有効な Discord ユーザー ID を入力してください（17〜20 桁）",
+    "addUserId": "ユーザー ID を追加",
+    "includeChannels": "これらのチャンネルのみ",
+    "includeRoles": "これらのロールを持つメンバーのみ",
+    "includeUsers": "これらのメンバーのみ",
+    "excludeChannels": "これらのチャンネルでは実行しない",
+    "excludeRoles": "これらのロールを持つメンバーでは実行しない",
+    "excludeUsers": "これらのメンバーでは実行しない",
+    "unsupportedWarning": "このトリガーはこれらのフィルター（{{filters}}）を評価できないため、設定されている間ルールは実行されません。",
+    "removeUnsupported": "適用できないフィルターを削除"
   },
   "workflow": {
     "errors": {

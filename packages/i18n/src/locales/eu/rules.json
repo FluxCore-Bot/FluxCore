@@ -146,7 +146,18 @@
     "include": "Barne hartu (zerrenda zuria)",
     "exclude": "Baztertu (zerrenda beltza)",
     "clearAll": "Baldintza guztiak garbitu",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Tolestu baldintzak",
+    "userIdInvalid": "Sartu baliozko Discord erabiltzaile ID bat (17–20 digitu)",
+    "addUserId": "Gehitu erabiltzaile IDa",
+    "includeChannels": "Kanal hauetan bakarrik",
+    "includeRoles": "Rol hauek dituzten kideak bakarrik",
+    "includeUsers": "Kide hauek bakarrik",
+    "excludeChannels": "Inoiz ez kanal hauetan",
+    "excludeRoles": "Inoiz ez rol hauek dituzten kideak",
+    "excludeUsers": "Inoiz ez kide hauek",
+    "unsupportedWarning": "Abiarazle honek ezin ditu iragazki hauek ({{filters}}) ebaluatu, beraz araua ez da inoiz exekutatuko ezarrita dauden bitartean.",
+    "removeUnsupported": "Kendu aplikatu ezin diren iragazkiak"
   },
   "workflow": {
     "errors": {

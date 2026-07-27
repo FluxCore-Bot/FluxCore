@@ -146,7 +146,18 @@
     "include": "شامل کریں (سفید فہرست)",
     "exclude": "خارج کریں (کالی فہرست)",
     "clearAll": "تمام شرائط صاف کریں",
-    "removeItem": "{{label}} ہٹائیں"
+    "removeItem": "{{label}} ہٹائیں",
+    "collapse": "شرائط سمیٹیں",
+    "userIdInvalid": "درست Discord صارف شناخت درج کریں (17–20 ہندسے)",
+    "addUserId": "صارف شناخت شامل کریں",
+    "includeChannels": "صرف ان چینلز میں",
+    "includeRoles": "صرف ان کرداروں والے اراکین",
+    "includeUsers": "صرف یہ اراکین",
+    "excludeChannels": "ان چینلز میں کبھی نہیں",
+    "excludeRoles": "ان کرداروں والے اراکین کبھی نہیں",
+    "excludeUsers": "یہ اراکین کبھی نہیں",
+    "unsupportedWarning": "یہ ٹریگر ان فلٹرز ({{filters}}) کا جائزہ نہیں لے سکتا، اس لیے جب تک یہ مقرر ہیں قاعدہ کبھی نہیں چلے گا۔",
+    "removeUnsupported": "وہ فلٹرز ہٹائیں جو لاگو نہیں ہو سکتے"
   },
   "workflow": {
     "errors": {

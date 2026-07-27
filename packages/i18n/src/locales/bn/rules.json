@@ -146,7 +146,18 @@
     "include": "অন্তর্ভুক্ত (হোয়াইটলিস্ট)",
     "exclude": "বর্জন (ব্ল্যাকলিস্ট)",
     "clearAll": "সমস্ত শর্ত সাফ করুন",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "শর্তগুলি সংকুচিত করুন",
+    "userIdInvalid": "একটি বৈধ Discord ব্যবহারকারী আইডি লিখুন (১৭–২০ সংখ্যা)",
+    "addUserId": "ব্যবহারকারী আইডি যোগ করুন",
+    "includeChannels": "শুধু এই চ্যানেলগুলিতে",
+    "includeRoles": "শুধু এই ভূমিকাগুলির সদস্যরা",
+    "includeUsers": "শুধু এই সদস্যরা",
+    "excludeChannels": "কখনও এই চ্যানেলগুলিতে নয়",
+    "excludeRoles": "কখনও এই ভূমিকাগুলির সদস্যরা নয়",
+    "excludeUsers": "কখনও এই সদস্যরা নয়",
+    "unsupportedWarning": "এই ট্রিগারটি এই ফিল্টারগুলি ({{filters}}) মূল্যায়ন করতে পারে না, তাই সেগুলি সেট থাকা অবস্থায় নিয়মটি কখনও চলবে না।",
+    "removeUnsupported": "যে ফিল্টারগুলি প্রযোজ্য নয় সেগুলি সরান"
   },
   "workflow": {
     "errors": {

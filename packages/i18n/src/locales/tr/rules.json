@@ -146,7 +146,18 @@
     "include": "Dahil Et (beyaz liste)",
     "exclude": "Hariç Tut (kara liste)",
     "clearAll": "Tüm koşulları temizle",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Koşulları daralt",
+    "userIdInvalid": "Geçerli bir Discord kullanıcı kimliği girin (17–20 hane)",
+    "addUserId": "Kullanıcı kimliği ekle",
+    "includeChannels": "Yalnızca bu kanallarda",
+    "includeRoles": "Yalnızca bu rollere sahip üyeler",
+    "includeUsers": "Yalnızca bu üyeler",
+    "excludeChannels": "Bu kanallarda asla",
+    "excludeRoles": "Bu rollere sahip üyelerde asla",
+    "excludeUsers": "Bu üyelerde asla",
+    "unsupportedWarning": "Bu tetikleyici bu filtreleri ({{filters}}) değerlendiremez, bu nedenle filtreler ayarlı olduğu sürece kural asla çalışmaz.",
+    "removeUnsupported": "Uygulanamayan filtreleri kaldır"
   },
   "workflow": {
     "errors": {

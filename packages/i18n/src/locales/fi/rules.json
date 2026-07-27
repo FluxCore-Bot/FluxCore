@@ -146,7 +146,18 @@
     "include": "Sisällytä (valkolista)",
     "exclude": "Sulje pois (mustat lista)",
     "clearAll": "Tyhjennä kaikki ehdot",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Tiivistä ehdot",
+    "userIdInvalid": "Anna kelvollinen Discord-käyttäjätunnus (17–20 numeroa)",
+    "addUserId": "Lisää käyttäjätunnus",
+    "includeChannels": "Vain näissä kanavissa",
+    "includeRoles": "Vain jäsenet, joilla on nämä roolit",
+    "includeUsers": "Vain nämä jäsenet",
+    "excludeChannels": "Ei koskaan näissä kanavissa",
+    "excludeRoles": "Ei koskaan jäsenet, joilla on nämä roolit",
+    "excludeUsers": "Ei koskaan nämä jäsenet",
+    "unsupportedWarning": "Tämä liipaisin ei voi arvioida näitä suodattimia ({{filters}}), joten sääntö ei koskaan laukea niin kauan kuin ne on asetettu.",
+    "removeUnsupported": "Poista suodattimet, joita ei voi soveltaa"
   },
   "workflow": {
     "errors": {

@@ -146,7 +146,18 @@
     "include": "포함 (화이트리스트)",
     "exclude": "제외 (블랙리스트)",
     "clearAll": "모든 조건 초기화",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "조건 접기",
+    "userIdInvalid": "유효한 Discord 사용자 ID를 입력하세요 (17~20자리)",
+    "addUserId": "사용자 ID 추가",
+    "includeChannels": "이 채널에서만",
+    "includeRoles": "이 역할을 가진 멤버만",
+    "includeUsers": "이 멤버만",
+    "excludeChannels": "이 채널에서는 제외",
+    "excludeRoles": "이 역할을 가진 멤버 제외",
+    "excludeUsers": "이 멤버 제외",
+    "unsupportedWarning": "이 트리거는 이 필터({{filters}})를 평가할 수 없으므로 필터가 설정되어 있는 동안 규칙이 실행되지 않습니다.",
+    "removeUnsupported": "적용할 수 없는 필터 제거"
   },
   "workflow": {
     "errors": {

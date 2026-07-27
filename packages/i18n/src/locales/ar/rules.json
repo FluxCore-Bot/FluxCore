@@ -146,7 +146,18 @@
     "include": "تضمين (قائمة بيضاء)",
     "exclude": "استثناء (قائمة سوداء)",
     "clearAll": "مسح جميع الشروط",
-    "removeItem": "إزالة {{label}}"
+    "removeItem": "إزالة {{label}}",
+    "collapse": "طيّ الشروط",
+    "userIdInvalid": "أدخل معرّف مستخدم Discord صالحًا (17–20 رقمًا)",
+    "addUserId": "إضافة معرّف مستخدم",
+    "includeChannels": "في هذه القنوات فقط",
+    "includeRoles": "الأعضاء الحاصلون على هذه الأدوار فقط",
+    "includeUsers": "هؤلاء الأعضاء فقط",
+    "excludeChannels": "لا في هذه القنوات أبدًا",
+    "excludeRoles": "لا الأعضاء الحاصلون على هذه الأدوار أبدًا",
+    "excludeUsers": "لا هؤلاء الأعضاء أبدًا",
+    "unsupportedWarning": "لا يستطيع هذا المشغّل تقييم هذه المرشّحات ({{filters}})، لذا لن تُنفَّذ القاعدة ما دامت مضبوطة.",
+    "removeUnsupported": "إزالة المرشّحات التي لا يمكن تطبيقها"
   },
   "workflow": {
     "errors": {

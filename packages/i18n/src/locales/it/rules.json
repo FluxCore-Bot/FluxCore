@@ -146,7 +146,18 @@
     "include": "Includi (whitelist)",
     "exclude": "Escludi (blacklist)",
     "clearAll": "Cancella tutte le condizioni",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Comprimi condizioni",
+    "userIdInvalid": "Inserisci un ID utente Discord valido (17–20 cifre)",
+    "addUserId": "Aggiungi ID utente",
+    "includeChannels": "Solo in questi canali",
+    "includeRoles": "Solo membri con questi ruoli",
+    "includeUsers": "Solo questi membri",
+    "excludeChannels": "Mai in questi canali",
+    "excludeRoles": "Mai membri con questi ruoli",
+    "excludeUsers": "Mai questi membri",
+    "unsupportedWarning": "Questo trigger non può valutare questi filtri ({{filters}}), quindi la regola non verrà mai eseguita finché sono impostati.",
+    "removeUnsupported": "Rimuovi i filtri non applicabili"
   },
   "workflow": {
     "errors": {

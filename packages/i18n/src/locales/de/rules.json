@@ -146,7 +146,18 @@
     "include": "Einschließen (Whitelist)",
     "exclude": "Ausschließen (Blacklist)",
     "clearAll": "Alle Bedingungen löschen",
-    "removeItem": "{{label}} entfernen"
+    "removeItem": "{{label}} entfernen",
+    "collapse": "Bedingungen einklappen",
+    "userIdInvalid": "Gib eine gültige Discord-Benutzer-ID ein (17–20 Ziffern)",
+    "addUserId": "Benutzer-ID hinzufügen",
+    "includeChannels": "Nur in diesen Kanälen",
+    "includeRoles": "Nur Mitglieder mit diesen Rollen",
+    "includeUsers": "Nur diese Mitglieder",
+    "excludeChannels": "Nie in diesen Kanälen",
+    "excludeRoles": "Nie Mitglieder mit diesen Rollen",
+    "excludeUsers": "Nie diese Mitglieder",
+    "unsupportedWarning": "Dieser Auslöser kann diese Filter ({{filters}}) nicht auswerten, daher wird die Regel nie ausgelöst, solange sie gesetzt sind.",
+    "removeUnsupported": "Filter entfernen, die nicht greifen können"
   },
   "workflow": {
     "errors": {

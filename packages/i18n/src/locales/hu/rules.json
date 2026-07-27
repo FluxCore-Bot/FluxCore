@@ -146,7 +146,18 @@
     "include": "Belefoglalás (fehérlista)",
     "exclude": "Kizárás (feketelista)",
     "clearAll": "Összes feltétel törlése",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Feltételek összecsukása",
+    "userIdInvalid": "Adjon meg érvényes Discord felhasználói azonosítót (17–20 számjegy)",
+    "addUserId": "Felhasználói azonosító hozzáadása",
+    "includeChannels": "Csak ezekben a csatornákban",
+    "includeRoles": "Csak az ilyen szerepkörű tagok",
+    "includeUsers": "Csak ezek a tagok",
+    "excludeChannels": "Soha ezekben a csatornákban",
+    "excludeRoles": "Soha az ilyen szerepkörű tagok",
+    "excludeUsers": "Soha ezek a tagok",
+    "unsupportedWarning": "Ez az eseményindító nem tudja kiértékelni ezeket a szűrőket ({{filters}}), ezért a szabály soha nem fut le, amíg be vannak állítva.",
+    "removeUnsupported": "Nem alkalmazható szűrők eltávolítása"
   },
   "workflow": {
     "errors": {

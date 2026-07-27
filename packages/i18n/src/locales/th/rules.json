@@ -146,7 +146,18 @@
     "include": "รวม (ไวท์ลิสต์)",
     "exclude": "ยกเว้น (แบล็กลิสต์)",
     "clearAll": "ล้างเงื่อนไขทั้งหมด",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "ยุบเงื่อนไข",
+    "userIdInvalid": "ป้อนรหัสผู้ใช้ Discord ที่ถูกต้อง (17–20 หลัก)",
+    "addUserId": "เพิ่มรหัสผู้ใช้",
+    "includeChannels": "เฉพาะในช่องเหล่านี้",
+    "includeRoles": "เฉพาะสมาชิกที่มีบทบาทเหล่านี้",
+    "includeUsers": "เฉพาะสมาชิกเหล่านี้",
+    "excludeChannels": "ไม่เคยในช่องเหล่านี้",
+    "excludeRoles": "ไม่เคยสมาชิกที่มีบทบาทเหล่านี้",
+    "excludeUsers": "ไม่เคยสมาชิกเหล่านี้",
+    "unsupportedWarning": "ทริกเกอร์นี้ไม่สามารถประเมินตัวกรองเหล่านี้ ({{filters}}) ได้ กฎจึงจะไม่ทำงานตราบใดที่ยังตั้งค่าไว้",
+    "removeUnsupported": "ลบตัวกรองที่ใช้ไม่ได้"
   },
   "workflow": {
     "errors": {

@@ -146,7 +146,18 @@
     "include": "Sertakan (daftar putih)",
     "exclude": "Kecualikan (daftar hitam)",
     "clearAll": "Hapus semua kondisi",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Ciutkan kondisi",
+    "userIdInvalid": "Masukkan ID pengguna Discord yang valid (17–20 digit)",
+    "addUserId": "Tambahkan ID pengguna",
+    "includeChannels": "Hanya di kanal ini",
+    "includeRoles": "Hanya anggota dengan peran ini",
+    "includeUsers": "Hanya anggota ini",
+    "excludeChannels": "Tidak pernah di kanal ini",
+    "excludeRoles": "Tidak pernah anggota dengan peran ini",
+    "excludeUsers": "Tidak pernah anggota ini",
+    "unsupportedWarning": "Pemicu ini tidak dapat mengevaluasi filter ini ({{filters}}), sehingga aturan tidak akan pernah berjalan selama filter tersebut disetel.",
+    "removeUnsupported": "Hapus filter yang tidak dapat diterapkan"
   },
   "workflow": {
     "errors": {

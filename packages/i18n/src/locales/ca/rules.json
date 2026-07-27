@@ -146,7 +146,18 @@
     "include": "Incloure (llista blanca)",
     "exclude": "Excloure (llista negra)",
     "clearAll": "Netejar totes les condicions",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Replega les condicions",
+    "userIdInvalid": "Introdueix un ID d'usuari de Discord vàlid (17–20 dígits)",
+    "addUserId": "Afegeix un ID d'usuari",
+    "includeChannels": "Només en aquests canals",
+    "includeRoles": "Només membres amb aquests rols",
+    "includeUsers": "Només aquests membres",
+    "excludeChannels": "Mai en aquests canals",
+    "excludeRoles": "Mai membres amb aquests rols",
+    "excludeUsers": "Mai aquests membres",
+    "unsupportedWarning": "Aquest activador no pot avaluar aquests filtres ({{filters}}), de manera que la regla no s'executarà mai mentre estiguin definits.",
+    "removeUnsupported": "Elimina els filtres que no es poden aplicar"
   },
   "workflow": {
     "errors": {

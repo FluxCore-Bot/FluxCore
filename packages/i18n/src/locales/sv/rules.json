@@ -146,7 +146,18 @@
     "include": "Inkludera (vitlista)",
     "exclude": "Exkludera (svartlista)",
     "clearAll": "Rensa alla villkor",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Dölj villkor",
+    "userIdInvalid": "Ange ett giltigt Discord-användar-ID (17–20 siffror)",
+    "addUserId": "Lägg till användar-ID",
+    "includeChannels": "Endast i dessa kanaler",
+    "includeRoles": "Endast medlemmar med dessa roller",
+    "includeUsers": "Endast dessa medlemmar",
+    "excludeChannels": "Aldrig i dessa kanaler",
+    "excludeRoles": "Aldrig medlemmar med dessa roller",
+    "excludeUsers": "Aldrig dessa medlemmar",
+    "unsupportedWarning": "Den här utlösaren kan inte utvärdera dessa filter ({{filters}}), så regeln körs aldrig så länge de är angivna.",
+    "removeUnsupported": "Ta bort filter som inte kan tillämpas"
   },
   "workflow": {
     "errors": {

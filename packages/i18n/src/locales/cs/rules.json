@@ -146,7 +146,18 @@
     "include": "Zahrnout (bílá listina)",
     "exclude": "Vyloučit (černá listina)",
     "clearAll": "Vymazat všechny podmínky",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Sbalit podmínky",
+    "userIdInvalid": "Zadejte platné Discord ID uživatele (17–20 číslic)",
+    "addUserId": "Přidat ID uživatele",
+    "includeChannels": "Pouze v těchto kanálech",
+    "includeRoles": "Pouze členové s těmito rolemi",
+    "includeUsers": "Pouze tito členové",
+    "excludeChannels": "Nikdy v těchto kanálech",
+    "excludeRoles": "Nikdy členové s těmito rolemi",
+    "excludeUsers": "Nikdy tito členové",
+    "unsupportedWarning": "Tato spouštěč nedokáže vyhodnotit tyto filtry ({{filters}}), takže se pravidlo nikdy nespustí, dokud jsou nastavené.",
+    "removeUnsupported": "Odebrat filtry, které nelze použít"
   },
   "workflow": {
     "errors": {

@@ -146,7 +146,18 @@
     "include": "Kaasa (valge nimekiri)",
     "exclude": "Välista (must nimekiri)",
     "clearAll": "Tühjenda kõik tingimused",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Ahenda tingimused",
+    "userIdInvalid": "Sisesta kehtiv Discordi kasutaja ID (17–20 numbrit)",
+    "addUserId": "Lisa kasutaja ID",
+    "includeChannels": "Ainult nendes kanalites",
+    "includeRoles": "Ainult nende rollidega liikmed",
+    "includeUsers": "Ainult need liikmed",
+    "excludeChannels": "Mitte kunagi nendes kanalites",
+    "excludeRoles": "Mitte kunagi nende rollidega liikmed",
+    "excludeUsers": "Mitte kunagi need liikmed",
+    "unsupportedWarning": "See päästik ei suuda neid filtreid ({{filters}}) hinnata, seega reegel ei käivitu kunagi, kuni need on määratud.",
+    "removeUnsupported": "Eemalda filtrid, mida ei saa rakendada"
   },
   "workflow": {
     "errors": {

@@ -146,7 +146,18 @@
     "include": "Включити (білий список)",
     "exclude": "Виключити (чорний список)",
     "clearAll": "Очистити всі умови",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Згорнути умови",
+    "userIdInvalid": "Введіть дійсний ідентифікатор користувача Discord (17–20 цифр)",
+    "addUserId": "Додати ідентифікатор користувача",
+    "includeChannels": "Лише в цих каналах",
+    "includeRoles": "Лише учасники з цими ролями",
+    "includeUsers": "Лише ці учасники",
+    "excludeChannels": "Ніколи в цих каналах",
+    "excludeRoles": "Ніколи учасники з цими ролями",
+    "excludeUsers": "Ніколи ці учасники",
+    "unsupportedWarning": "Цей тригер не може обчислити ці фільтри ({{filters}}), тому правило ніколи не спрацює, доки їх задано.",
+    "removeUnsupported": "Видалити фільтри, які неможливо застосувати"
   },
   "workflow": {
     "errors": {

@@ -146,7 +146,18 @@
     "include": "Inkluder (hvitliste)",
     "exclude": "Ekskluder (svarteliste)",
     "clearAll": "Tøm alle betingelser",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Skjul betingelser",
+    "userIdInvalid": "Skriv inn en gyldig Discord-bruker-ID (17–20 sifre)",
+    "addUserId": "Legg til bruker-ID",
+    "includeChannels": "Bare i disse kanalene",
+    "includeRoles": "Bare medlemmer med disse rollene",
+    "includeUsers": "Bare disse medlemmene",
+    "excludeChannels": "Aldri i disse kanalene",
+    "excludeRoles": "Aldri medlemmer med disse rollene",
+    "excludeUsers": "Aldri disse medlemmene",
+    "unsupportedWarning": "Denne utløseren kan ikke evaluere disse filtrene ({{filters}}), så regelen vil aldri kjøre så lenge de er angitt.",
+    "removeUnsupported": "Fjern filtre som ikke kan brukes"
   },
   "workflow": {
     "errors": {

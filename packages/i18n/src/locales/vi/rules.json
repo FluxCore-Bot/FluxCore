@@ -146,7 +146,18 @@
     "include": "Bao Gồm (danh sách trắng)",
     "exclude": "Loại Trừ (danh sách đen)",
     "clearAll": "Xóa tất cả điều kiện",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Thu gọn điều kiện",
+    "userIdInvalid": "Nhập ID người dùng Discord hợp lệ (17–20 chữ số)",
+    "addUserId": "Thêm ID người dùng",
+    "includeChannels": "Chỉ trong các kênh này",
+    "includeRoles": "Chỉ thành viên có các vai trò này",
+    "includeUsers": "Chỉ những thành viên này",
+    "excludeChannels": "Không bao giờ trong các kênh này",
+    "excludeRoles": "Không bao giờ thành viên có các vai trò này",
+    "excludeUsers": "Không bao giờ những thành viên này",
+    "unsupportedWarning": "Trình kích hoạt này không thể đánh giá các bộ lọc này ({{filters}}), nên quy tắc sẽ không bao giờ chạy khi chúng còn được đặt.",
+    "removeUnsupported": "Xóa các bộ lọc không thể áp dụng"
   },
   "workflow": {
     "errors": {

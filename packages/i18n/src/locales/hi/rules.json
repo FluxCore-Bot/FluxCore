@@ -146,7 +146,18 @@
     "include": "शामिल करें (व्हाइटलिस्ट)",
     "exclude": "बाहर करें (ब्लैकलिस्ट)",
     "clearAll": "सभी शर्तें साफ़ करें",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "शर्तें संक्षिप्त करें",
+    "userIdInvalid": "मान्य Discord उपयोगकर्ता आईडी दर्ज करें (17–20 अंक)",
+    "addUserId": "उपयोगकर्ता आईडी जोड़ें",
+    "includeChannels": "केवल इन चैनलों में",
+    "includeRoles": "केवल इन भूमिकाओं वाले सदस्य",
+    "includeUsers": "केवल ये सदस्य",
+    "excludeChannels": "कभी भी इन चैनलों में नहीं",
+    "excludeRoles": "कभी भी इन भूमिकाओं वाले सदस्य नहीं",
+    "excludeUsers": "कभी भी ये सदस्य नहीं",
+    "unsupportedWarning": "यह ट्रिगर इन फ़िल्टर ({{filters}}) का मूल्यांकन नहीं कर सकता, इसलिए जब तक वे सेट हैं नियम कभी नहीं चलेगा।",
+    "removeUnsupported": "जो फ़िल्टर लागू नहीं हो सकते उन्हें हटाएँ"
   },
   "workflow": {
     "errors": {

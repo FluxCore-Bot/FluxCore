@@ -146,7 +146,18 @@
     "include": "Iekļaut (baltais saraksts)",
     "exclude": "Izslēgt (melnais saraksts)",
     "clearAll": "Notīrīt visus nosacījumus",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Sakļaut nosacījumus",
+    "userIdInvalid": "Ievadiet derīgu Discord lietotāja ID (17–20 cipari)",
+    "addUserId": "Pievienot lietotāja ID",
+    "includeChannels": "Tikai šajos kanālos",
+    "includeRoles": "Tikai dalībnieki ar šīm lomām",
+    "includeUsers": "Tikai šie dalībnieki",
+    "excludeChannels": "Nekad šajos kanālos",
+    "excludeRoles": "Nekad dalībnieki ar šīm lomām",
+    "excludeUsers": "Nekad šie dalībnieki",
+    "unsupportedWarning": "Šis aktivizētājs nevar novērtēt šos filtrus ({{filters}}), tāpēc noteikums nekad netiks izpildīts, kamēr tie ir iestatīti.",
+    "removeUnsupported": "Noņemt filtrus, kurus nevar piemērot"
   },
   "workflow": {
     "errors": {

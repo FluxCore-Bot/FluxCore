@@ -146,7 +146,18 @@
     "include": "Sluit In (witlys)",
     "exclude": "Sluit Uit (swartelys)",
     "clearAll": "Maak alle voorwaardes skoon",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Vou voorwaardes in",
+    "userIdInvalid": "Voer 'n geldige Discord-gebruiker-ID in (17–20 syfers)",
+    "addUserId": "Voeg gebruiker-ID by",
+    "includeChannels": "Slegs in hierdie kanale",
+    "includeRoles": "Slegs lede met hierdie rolle",
+    "includeUsers": "Slegs hierdie lede",
+    "excludeChannels": "Nooit in hierdie kanale nie",
+    "excludeRoles": "Nooit lede met hierdie rolle nie",
+    "excludeUsers": "Nooit hierdie lede nie",
+    "unsupportedWarning": "Hierdie sneller kan nie hierdie filters ({{filters}}) evalueer nie, dus sal die reël nooit afgaan solank hulle gestel is nie.",
+    "removeUnsupported": "Verwyder filters wat nie kan geld nie"
   },
   "workflow": {
     "errors": {

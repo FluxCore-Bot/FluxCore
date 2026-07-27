@@ -146,7 +146,18 @@
     "include": "شامل‌کردن (فهرست سفید)",
     "exclude": "حذف (فهرست سیاه)",
     "clearAll": "پاک کردن همه شرایط",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "جمع کردن شرط‌ها",
+    "userIdInvalid": "یک شناسه کاربری معتبر Discord وارد کنید (۱۷ تا ۲۰ رقم)",
+    "addUserId": "افزودن شناسه کاربر",
+    "includeChannels": "فقط در این کانال‌ها",
+    "includeRoles": "فقط اعضای دارای این نقش‌ها",
+    "includeUsers": "فقط این اعضا",
+    "excludeChannels": "هرگز در این کانال‌ها",
+    "excludeRoles": "هرگز اعضای دارای این نقش‌ها",
+    "excludeUsers": "هرگز این اعضا",
+    "unsupportedWarning": "این راه‌انداز نمی‌تواند این فیلترها ({{filters}}) را ارزیابی کند، بنابراین تا زمانی که تنظیم شده باشند قانون هرگز اجرا نمی‌شود.",
+    "removeUnsupported": "حذف فیلترهایی که قابل اعمال نیستند"
   },
   "workflow": {
     "errors": {

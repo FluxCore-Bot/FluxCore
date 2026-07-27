@@ -146,7 +146,18 @@
     "include": "Dołącz (biała lista)",
     "exclude": "Wyklucz (czarna lista)",
     "clearAll": "Wyczyść wszystkie warunki",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Zwiń warunki",
+    "userIdInvalid": "Wprowadź prawidłowy identyfikator użytkownika Discord (17–20 cyfr)",
+    "addUserId": "Dodaj identyfikator użytkownika",
+    "includeChannels": "Tylko na tych kanałach",
+    "includeRoles": "Tylko członkowie z tymi rolami",
+    "includeUsers": "Tylko ci członkowie",
+    "excludeChannels": "Nigdy na tych kanałach",
+    "excludeRoles": "Nigdy członkowie z tymi rolami",
+    "excludeUsers": "Nigdy ci członkowie",
+    "unsupportedWarning": "Ten wyzwalacz nie może ocenić tych filtrów ({{filters}}), więc reguła nigdy się nie uruchomi, dopóki są ustawione.",
+    "removeUnsupported": "Usuń filtry, których nie można zastosować"
   },
   "workflow": {
     "errors": {

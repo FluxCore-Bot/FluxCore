@@ -146,7 +146,18 @@
     "include": "Sertakan (senarai putih)",
     "exclude": "Kecualikan (senarai hitam)",
     "clearAll": "Kosongkan semua syarat",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Kuncupkan syarat",
+    "userIdInvalid": "Masukkan ID pengguna Discord yang sah (17–20 digit)",
+    "addUserId": "Tambah ID pengguna",
+    "includeChannels": "Hanya dalam saluran ini",
+    "includeRoles": "Hanya ahli dengan peranan ini",
+    "includeUsers": "Hanya ahli ini",
+    "excludeChannels": "Tidak pernah dalam saluran ini",
+    "excludeRoles": "Tidak pernah ahli dengan peranan ini",
+    "excludeUsers": "Tidak pernah ahli ini",
+    "unsupportedWarning": "Pencetus ini tidak dapat menilai penapis ini ({{filters}}), jadi peraturan tidak akan berjalan selagi ia ditetapkan.",
+    "removeUnsupported": "Buang penapis yang tidak boleh digunakan"
   },
   "workflow": {
     "errors": {

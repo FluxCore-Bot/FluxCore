@@ -146,7 +146,18 @@
     "include": "כלול (רשימה לבנה)",
     "exclude": "אל תכלול (רשימה שחורה)",
     "clearAll": "נקה את כל התנאים",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "כווץ תנאים",
+    "userIdInvalid": "הזן מזהה משתמש Discord תקין (17–20 ספרות)",
+    "addUserId": "הוסף מזהה משתמש",
+    "includeChannels": "רק בערוצים אלה",
+    "includeRoles": "רק חברים עם תפקידים אלה",
+    "includeUsers": "רק חברים אלה",
+    "excludeChannels": "אף פעם בערוצים אלה",
+    "excludeRoles": "אף פעם חברים עם תפקידים אלה",
+    "excludeUsers": "אף פעם חברים אלה",
+    "unsupportedWarning": "טריגר זה אינו יכול להעריך את המסננים האלה ({{filters}}), ולכן הכלל לעולם לא יופעל כל עוד הם מוגדרים.",
+    "removeUnsupported": "הסר מסננים שאינם ישימים"
   },
   "workflow": {
     "errors": {

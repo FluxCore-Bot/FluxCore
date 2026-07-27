@@ -146,7 +146,18 @@
     "include": "Insluiten (whitelist)",
     "exclude": "Uitsluiten (blacklist)",
     "clearAll": "Alle voorwaarden wissen",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Remove {{label}}",
+    "collapse": "Voorwaarden inklappen",
+    "userIdInvalid": "Voer een geldige Discord-gebruikers-ID in (17–20 cijfers)",
+    "addUserId": "Gebruikers-ID toevoegen",
+    "includeChannels": "Alleen in deze kanalen",
+    "includeRoles": "Alleen leden met deze rollen",
+    "includeUsers": "Alleen deze leden",
+    "excludeChannels": "Nooit in deze kanalen",
+    "excludeRoles": "Nooit leden met deze rollen",
+    "excludeUsers": "Nooit deze leden",
+    "unsupportedWarning": "Deze trigger kan deze filters ({{filters}}) niet evalueren, dus de regel wordt nooit uitgevoerd zolang ze zijn ingesteld.",
+    "removeUnsupported": "Filters verwijderen die niet van toepassing kunnen zijn"
   },
   "workflow": {
     "errors": {

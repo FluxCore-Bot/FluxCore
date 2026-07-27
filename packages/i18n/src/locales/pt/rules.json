@@ -146,7 +146,18 @@
     "include": "Incluir (lista branca)",
     "exclude": "Excluir (lista negra)",
     "clearAll": "Limpar todas as condições",
-    "removeItem": "Remover {{label}}"
+    "removeItem": "Remover {{label}}",
+    "collapse": "Recolher condições",
+    "userIdInvalid": "Introduza um ID de utilizador do Discord válido (17–20 dígitos)",
+    "addUserId": "Adicionar ID de utilizador",
+    "includeChannels": "Apenas nestes canais",
+    "includeRoles": "Apenas membros com estas funções",
+    "includeUsers": "Apenas estes membros",
+    "excludeChannels": "Nunca nestes canais",
+    "excludeRoles": "Nunca membros com estas funções",
+    "excludeUsers": "Nunca estes membros",
+    "unsupportedWarning": "Este acionador não consegue avaliar estes filtros ({{filters}}), pelo que a regra nunca será executada enquanto estiverem definidos.",
+    "removeUnsupported": "Remover filtros que não podem ser aplicados"
   },
   "workflow": {
     "errors": {

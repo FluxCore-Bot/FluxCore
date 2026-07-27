@@ -146,7 +146,18 @@
     "include": "Inclure (liste blanche)",
     "exclude": "Exclure (liste noire)",
     "clearAll": "Effacer toutes les conditions",
-    "removeItem": "Retirer {{label}}"
+    "removeItem": "Retirer {{label}}",
+    "collapse": "Réduire les conditions",
+    "userIdInvalid": "Saisissez un identifiant utilisateur Discord valide (17 à 20 chiffres)",
+    "addUserId": "Ajouter un identifiant utilisateur",
+    "includeChannels": "Uniquement dans ces salons",
+    "includeRoles": "Uniquement les membres ayant ces rôles",
+    "includeUsers": "Uniquement ces membres",
+    "excludeChannels": "Jamais dans ces salons",
+    "excludeRoles": "Jamais les membres ayant ces rôles",
+    "excludeUsers": "Jamais ces membres",
+    "unsupportedWarning": "Ce déclencheur ne peut pas évaluer ces filtres ({{filters}}) ; la règle ne se déclenchera donc jamais tant qu'ils sont définis.",
+    "removeUnsupported": "Supprimer les filtres inapplicables"
   },
   "workflow": {
     "errors": {
