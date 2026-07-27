@@ -91,9 +91,11 @@ export function useWorkflowContextMenu() {
 
   /** Shift+F10 / the Menu key: anchor to the focused node, else to the canvas centre. */
   const openFromKeyboard = useCallback(() => {
-    const active = document.activeElement as HTMLElement | null;
+    const active = document.activeElement;
     captureOrigin();
-    const nodeEl = active?.closest?.(".react-flow__node") as HTMLElement | null;
+    const closest =
+      active instanceof HTMLElement ? active.closest(".react-flow__node") : null;
+    const nodeEl = closest instanceof HTMLElement ? closest : null;
     if (nodeEl?.dataset.id) {
       const rect = nodeEl.getBoundingClientRect();
       const node = getNode(nodeEl.dataset.id);

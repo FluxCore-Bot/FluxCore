@@ -50,7 +50,7 @@ export function useWorkflowKeyboard({
       // Defence in depth: a key an overlay already handled (and cancelled)
       // must not be re-interpreted as an editor hotkey.
       if (e.defaultPrevented) return;
-      const tag = (e.target as HTMLElement)?.tagName;
+      const tag = e.target instanceof HTMLElement ? e.target.tagName : undefined;
       if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") {
         if (e.key !== "Escape" && !(e.key === "s" && (e.metaKey || e.ctrlKey))) return;
       }
