@@ -16,6 +16,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../../shared/ui/tab
 import { SearchableSelect } from "../../../shared/ui/searchable-select";
 import { EVENT_ICONS } from "../lib/rule-icons";
 import { buildActionTypeOptions } from "../lib/action-options";
+import { useAutomationLabels, makeAutomationLabels, type TranslateFn } from "../lib/labels";
 import { ConditionsEditor } from "../components/ConditionsEditor";
 import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
 import type {
@@ -243,6 +244,7 @@ function TriggerPanel({
   onConditionsChange,
 }: TriggerPanelProps) {
   const { t } = useTranslation(["rules", "common"]);
+  const labels = useAutomationLabels(constants);
   const variables = eventType ? (constants.eventTypeVariables[eventType] ?? []) : [];
 
   const eventOptions = useMemo(
@@ -310,7 +312,7 @@ function TriggerPanel({
           {eventType && constants.eventTypes[eventType] && (
             <div className="rounded-lg bg-surface-lowest p-3">
               <p className="text-xs leading-relaxed text-text-muted">
-                {constants.eventTypes[eventType].description}
+                {labels.eventDescription(eventType)}
               </p>
             </div>
           )}
@@ -394,6 +396,7 @@ function ActionSettings({
           channels={channels}
           roles={roles}
           variables={variables}
+          actionType={action.type}
           // Required fields block Save, so the panel has to say which one is
           // empty — a red asterisk alone left screen-reader users with no way
           // to tell why the button was disabled.
@@ -583,8 +586,9 @@ const END_TARGET = "__end__";
 function stepShortLabel(step: RuleStep, constants: Constants, t: TFunction): string {
   if (step.type === "action") {
     return (
-      constants.actionTypes[step.action.type]?.label ??
-      (step.action.type || t("nodes.selectAction"))
+      (step.action.type
+        ? makeAutomationLabels(t as unknown as TranslateFn, constants).actionLabel(step.action.type)
+        : t("nodes.selectAction"))
     );
   }
   if (step.type === "condition") {

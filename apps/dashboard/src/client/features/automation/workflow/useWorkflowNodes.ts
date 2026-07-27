@@ -3,6 +3,7 @@ import type { Node, Edge } from "@xyflow/react";
 import type { ActionConfig, Constants, RuleStep } from "../../../shared/lib/schemas";
 import type { TranslateFn, ValidationIssue } from "../lib/workflow-validation";
 import { getNodeValidationState } from "../lib/workflow-validation";
+import { makeAutomationLabels } from "../lib/labels";
 import type { ActionConditions } from "../../../shared/lib/schemas";
 import type { ConditionNodeData } from "./nodes/ConditionNode";
 import type { DelayNodeData } from "./nodes/DelayNode";
@@ -68,11 +69,12 @@ function buildLinearNodes(
   triggerNode: Node<TriggerNodeData>,
 ): { nodes: Node[]; edges: Edge[] } {
   const { actions, constants, selectedNodeId, validationIssues = [], t } = input;
+  const labels = makeAutomationLabels(t, constants);
 
   const actionNodes: Node<ActionNodeData>[] = actions.map((action, i) => {
     const nodeId = `action-${i}`;
     const actionLabel =
-      constants?.actionTypes[action.type]?.label ?? (action.type || t("nodes.selectAction"));
+      action.type ? labels.actionLabel(action.type) : t("nodes.selectAction");
     return {
       id: nodeId,
       type: "actionNode",
@@ -130,6 +132,7 @@ function buildStepNodes(
   triggerNode: Node<TriggerNodeData>,
 ): { nodes: Node[]; edges: Edge[] } {
   const { steps = [], entryStepId, constants, selectedNodeId, validationIssues = [], t } = input;
+  const labels = makeAutomationLabels(t, constants);
 
   const allNodes: Node[] = [triggerNode];
   const allEdges: Edge[] = [];
@@ -165,7 +168,7 @@ function buildStepNodes(
 
     if (step.type === "action") {
       const nodeId = `step-${step.id}`;
-      const label = constants?.actionTypes[step.action.type]?.label ?? (step.action.type || t("nodes.selectAction"));
+      const label = step.action.type ? labels.actionLabel(step.action.type) : t("nodes.selectAction");
       allNodes.push({
         id: nodeId,
         type: "actionNode",
@@ -239,7 +242,7 @@ function buildStepNodes(
     const nodeId = `step-${step.id}`;
 
     if (step.type === "action") {
-      const label = constants?.actionTypes[step.action.type]?.label ?? (step.action.type || t("nodes.selectAction"));
+      const label = step.action.type ? labels.actionLabel(step.action.type) : t("nodes.selectAction");
       allNodes.push({
         id: nodeId,
         type: "actionNode",
@@ -388,11 +391,12 @@ export function useWorkflowNodes(input: WorkflowNodesInput) {
       validationIssues = [],
       t,
     } = input;
+    const labels = makeAutomationLabels(t, constants);
 
     const triggerLabel =
-      constants?.eventTypes[eventType]?.label ?? (eventType || t("nodes.selectTrigger"));
+      eventType ? labels.eventLabel(eventType) : t("nodes.selectTrigger");
     const triggerDescription =
-      constants?.eventTypes[eventType]?.description ?? "";
+      eventType ? labels.eventDescription(eventType) : "";
 
     const triggerNode: Node<TriggerNodeData> = {
       id: "trigger",

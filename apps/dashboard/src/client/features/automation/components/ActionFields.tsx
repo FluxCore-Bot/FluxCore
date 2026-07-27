@@ -17,6 +17,7 @@ import { VariableEditor } from "../../../shared/ui/variable-field";
 import type { VariableDescriptor } from "../../../shared/ui/variable-field";
 import type { ActionFieldDescriptor, Channel, Role } from "../../../shared/lib/schemas";
 import { channelIconName, isMessageableChannel } from "../../../shared/lib/channelTypes";
+import { useAutomationLabels } from "../lib/labels";
 
 const VARIABLE_FIELD_KEYS = new Set([
   "message",
@@ -35,6 +36,8 @@ interface ActionFieldsProps {
   channels: Channel[];
   roles: Role[];
   variables: VariableDescriptor[];
+  /** The action type these fields belong to, so labels can be translated. */
+  actionType?: string;
   /**
    * Mark empty required fields invalid with a linked message. A red asterisk
    * was the only signal, so a screen-reader user got no feedback at all about
@@ -141,12 +144,22 @@ export function ActionFields({
   roles,
   variables,
   showErrors,
+  actionType,
 }: ActionFieldsProps) {
   const { t } = useTranslation("common");
+  const labels = useAutomationLabels(undefined);
   return (
     <div className="flex flex-col gap-3">
       {fields.map((field) => {
         const value = getNestedValue(values, field.key) ?? "";
+        // ACTION_TYPE_FIELDS is hardcoded English (the bot needs it too), so
+        // the label and placeholder are translated on the way out.
+        const fieldLabel = actionType
+          ? labels.fieldLabel(actionType, field.key, field.label)
+          : field.label;
+        const fieldPlaceholder = actionType
+          ? labels.fieldPlaceholder(actionType, field.key, field.placeholder)
+          : field.placeholder;
         const fieldId = `af-${field.key.replace(/\./g, "-")}`;
         const missing = !!showErrors && !!field.required && (value === "" || value === undefined || value === null);
         const errorId = `${fieldId}-error`;
@@ -161,7 +174,7 @@ export function ActionFields({
         return (
           <div key={field.key}>
             <Label htmlFor={fieldId}>
-              {field.label}
+              {fieldLabel}
               {field.required && (
                 <>
                   <span aria-hidden="true" className="text-danger"> *</span>
@@ -217,7 +230,7 @@ export function ActionFields({
                   variables={variables}
                   multiline={false}
                   aria-required={field.required}
-                  placeholder={field.placeholder}
+                  placeholder={fieldPlaceholder}
                   maxLength={field.maxLength}
                 />
               ) : (
@@ -228,7 +241,7 @@ export function ActionFields({
                   {...invalidProps}
                   value={String(value)}
                   onChange={(e) => onChange(field.key, e.target.value)}
-                  placeholder={field.placeholder}
+                  placeholder={fieldPlaceholder}
                   maxLength={field.maxLength}
                 />
               )
@@ -243,7 +256,7 @@ export function ActionFields({
                   variables={variables}
                   multiline={true}
                   aria-required={field.required}
-                  placeholder={field.placeholder}
+                  placeholder={fieldPlaceholder}
                   maxLength={field.maxLength}
                 />
               ) : (
@@ -253,7 +266,7 @@ export function ActionFields({
                   {...invalidProps}
                   value={String(value)}
                   onChange={(e) => onChange(field.key, e.target.value)}
-                  placeholder={field.placeholder}
+                  placeholder={fieldPlaceholder}
                   maxLength={field.maxLength}
                 />
               )
@@ -262,7 +275,7 @@ export function ActionFields({
             {field.type === "color" && (
               <ColorPicker
                 id={fieldId}
-                aria-label={field.label}
+                aria-label={fieldLabel}
                 value={colorHex}
                 onChange={(hex) => {
                   const normalized = hex.startsWith("#") ? hex.slice(1) : hex;
@@ -277,7 +290,7 @@ export function ActionFields({
                 id={fieldId}
                 value={getNestedValue(values, field.key)}
                 onChange={(v) => onChange(field.key, v)}
-                placeholder={field.placeholder}
+                placeholder={fieldPlaceholder}
                 maxLength={field.maxLength}
                 invalidLabel={t("form.invalidJson")}
               />
@@ -302,7 +315,7 @@ export function ActionFields({
             )}
             {missing && (
               <p id={errorId} role="alert" className="mt-1 text-xs text-danger">
-                {t("form.fieldRequired", { field: field.label })}
+                {t("form.fieldRequired", { field: fieldLabel })}
               </p>
             )}
           </div>

@@ -20,6 +20,7 @@ import {
   TooltipProvider,
 } from "../../../shared/ui/tooltip";
 import { ACTION_ICONS, EVENT_ICONS, getActionPreview } from "../lib/rule-icons";
+import { useAutomationLabels } from "../lib/labels";
 import type { ActionRule, Constants } from "../../../shared/lib/schemas";
 
 interface RuleListProps {
@@ -59,6 +60,7 @@ export function RuleList({
   onSelectionChange,
 }: RuleListProps) {
   const { t } = useTranslation(["rules", "common"]);
+  const labels = useAutomationLabels(constants);
   const selectable = !!selectedIds && !!onSelectionChange;
 
   const toggleSelection = (ruleId: number) => {
@@ -107,7 +109,7 @@ export function RuleList({
       <div className="flex flex-col gap-3">
         {rules.map((rule) => {
           const eventLabel =
-            constants?.eventTypes[rule.eventType]?.label ?? rule.eventType;
+            labels.eventLabel(rule.eventType);
           const eventIcon = EVENT_ICONS[rule.eventType] ?? "bolt";
           const isSelected = selectedIds?.has(rule.id) ?? false;
           const hasSteps = !!(rule.steps?.length && rule.entryStepId);
@@ -310,7 +312,7 @@ export function RuleList({
                   {/* Action chips */}
                   {rule.actions.map((action, i) => {
                     const actionLabel =
-                      constants?.actionTypes[action.type]?.label ?? action.type;
+                      labels.actionLabel(action.type);
                     const actionIcon = ACTION_ICONS[action.type] ?? "play_arrow";
                     const preview = getActionPreview(action, t);
                     const isConfigured = action.type !== "";

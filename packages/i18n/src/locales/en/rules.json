@@ -379,5 +379,195 @@
       "addAction": "Add action",
       "fitView": "Fit view"
     }
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Member Join",
+      "description": "When a new member joins the server"
+    },
+    "memberLeave": {
+      "label": "Member Leave",
+      "description": "When a member leaves the server"
+    },
+    "memberBanned": {
+      "label": "Member Banned",
+      "description": "When a member is banned"
+    },
+    "memberUnbanned": {
+      "label": "Member Unbanned",
+      "description": "When a member is unbanned"
+    },
+    "messageDeleted": {
+      "label": "Message Deleted",
+      "description": "When a message is deleted"
+    },
+    "roleAdded": {
+      "label": "Role Added",
+      "description": "When a role is added to a member"
+    },
+    "roleRemoved": {
+      "label": "Role Removed",
+      "description": "When a role is removed from a member"
+    },
+    "channelCreated": {
+      "label": "Channel Created",
+      "description": "When a new channel is created"
+    },
+    "channelDeleted": {
+      "label": "Channel Deleted",
+      "description": "When a channel is deleted"
+    },
+    "voiceJoin": {
+      "label": "Voice Join",
+      "description": "When a member joins a voice channel"
+    },
+    "voiceLeave": {
+      "label": "Voice Leave",
+      "description": "When a member leaves a voice channel"
+    },
+    "messageCreated": {
+      "label": "Message Created",
+      "description": "When a message is sent in a channel"
+    },
+    "reactionAdded": {
+      "label": "Reaction Added",
+      "description": "When a reaction is added to a message"
+    },
+    "reactionRemoved": {
+      "label": "Reaction Removed",
+      "description": "When a reaction is removed from a message"
+    },
+    "nicknameChanged": {
+      "label": "Nickname Changed",
+      "description": "When a member's nickname is changed"
+    },
+    "memberTimeout": {
+      "label": "Member Timeout",
+      "description": "When a member is timed out"
+    },
+    "threadCreated": {
+      "label": "Thread Created",
+      "description": "When a new thread is created"
+    },
+    "boostStart": {
+      "label": "Boost Start",
+      "description": "When a member starts boosting the server"
+    },
+    "boostEnd": {
+      "label": "Boost End",
+      "description": "When a member stops boosting the server"
+    }
+  },
+  "actionTypes": {
+    "sendMessage": {
+      "label": "Send Message",
+      "description": "Send a message to a channel"
+    },
+    "sendEmbed": {
+      "label": "Send Embed",
+      "description": "Send an embed to a channel"
+    },
+    "sendDM": {
+      "label": "Send DM",
+      "description": "Send a direct message to the user"
+    },
+    "addRole": {
+      "label": "Add Role",
+      "description": "Add a role to the member"
+    },
+    "removeRole": {
+      "label": "Remove Role",
+      "description": "Remove a role from the member"
+    },
+    "logToChannel": {
+      "label": "Log to Channel",
+      "description": "Log event details to a channel"
+    },
+    "sendWebhook": {
+      "label": "Send Webhook",
+      "description": "Send an HTTP request to an external URL"
+    },
+    "setNickname": {
+      "label": "Set Nickname",
+      "description": "Set the member's nickname"
+    },
+    "createThread": {
+      "label": "Create Thread",
+      "description": "Create a new thread in the channel"
+    },
+    "addReaction": {
+      "label": "Add Reaction",
+      "description": "Add a reaction to the triggering message"
+    }
+  },
+  "actionFields": {
+    "sendMessage_channelId": {
+      "label": "Channel"
+    },
+    "sendMessage_message": {
+      "label": "Message",
+      "placeholder": "Use {user}, {channel}, etc."
+    },
+    "sendEmbed_channelId": {
+      "label": "Channel"
+    },
+    "sendEmbed_embed_title": {
+      "label": "Embed Title",
+      "placeholder": "Embed title..."
+    },
+    "sendEmbed_embed_description": {
+      "label": "Embed Description",
+      "placeholder": "Embed description... supports {user}, {channel}, etc."
+    },
+    "sendEmbed_embed_color": {
+      "label": "Embed Color"
+    },
+    "sendEmbed_embed_footer": {
+      "label": "Embed Footer",
+      "placeholder": "Footer text..."
+    },
+    "sendDM_message": {
+      "label": "Message",
+      "placeholder": "DM message... supports {user}, {guild}, etc."
+    },
+    "addRole_roleId": {
+      "label": "Role"
+    },
+    "removeRole_roleId": {
+      "label": "Role"
+    },
+    "logToChannel_channelId": {
+      "label": "Channel"
+    },
+    "sendWebhook_webhook_url": {
+      "label": "Webhook URL",
+      "placeholder": "https://..."
+    },
+    "sendWebhook_webhook_method": {
+      "label": "HTTP Method"
+    },
+    "sendWebhook_webhook_headers": {
+      "label": "Headers (JSON)",
+      "placeholder": "{\"X-Request-Id\": \"abc\"}"
+    },
+    "sendWebhook_webhook_bodyTemplate": {
+      "label": "Body Template",
+      "placeholder": "JSON body... supports {user}, {channel}, etc."
+    },
+    "setNickname_nickname": {
+      "label": "Nickname",
+      "placeholder": "New nickname... supports {user.name}"
+    },
+    "createThread_channelId": {
+      "label": "Channel"
+    },
+    "createThread_threadName": {
+      "label": "Thread Name",
+      "placeholder": "Thread name... supports {user.name}, etc."
+    },
+    "addReaction_emoji": {
+      "label": "Emoji",
+      "placeholder": "Unicode emoji or custom emoji ID"
+    }
   }
 }

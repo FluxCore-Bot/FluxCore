@@ -30,6 +30,7 @@ import {
   SelectValue,
 } from "../../../shared/ui/select";
 import type { ActionRule } from "../../../shared/lib/schemas";
+import { useAutomationLabels } from "../../../features/automation/lib/labels";
 
 // ── Preset templates ──────────────────────────────────────────────────
 
@@ -160,6 +161,7 @@ export function RulesPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: rules = [], isLoading } = useRules(guildId);
   const { data: constants } = useConstants();
+  const labels = useAutomationLabels(constants);
   const { data: analytics } = useAnalytics(guildId, 7);
   const createRule = useCreateRule(guildId);
   const updateRule = useUpdateRule(guildId);
@@ -210,9 +212,7 @@ export function RulesPage() {
   const usedEventTypes = useMemo(() => {
     const set = new Set(rules.map((r) => r.eventType));
     return Array.from(set).sort((a, b) =>
-      (constants?.eventTypes[a]?.label ?? a).localeCompare(
-        constants?.eventTypes[b]?.label ?? b,
-      ),
+      labels.eventLabel(a).localeCompare(labels.eventLabel(b)),
     );
   }, [rules, constants]);
 
@@ -448,7 +448,7 @@ export function RulesPage() {
                 <SelectItem value="all">{t("filter.allEvents")}</SelectItem>
                 {usedEventTypes.map((et) => (
                   <SelectItem key={et} value={et}>
-                    {constants?.eventTypes[et]?.label ?? et}
+                    {labels.eventLabel(et)}
                   </SelectItem>
                 ))}
               </SelectContent>
