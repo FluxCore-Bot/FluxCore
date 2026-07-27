@@ -1,38 +1,49 @@
 {
   "label": "Management Hub",
   "title": "Temporary Voice Channels",
-  "subtitle": "Configure hubs that allow users to create their own ephemeral voice channels upon joining.",
-  "form": {
-    "sameAsHub": "Same as hub channel",
-    "defaultNameTemplate": "{user}'s Channel",
-    "hubChannel": "Hub Channel",
-    "selectHub": "Select a voice channel...",
-    "category": "Category (optional)",
-    "nameTemplate": "Channel Name Template",
-    "nameTemplateHint": "Use {user} for the member's display name",
-    "addConfig": "Add Configuration",
-    "editConfig": "Edit Configuration",
-    "save": "Save Configuration",
-    "saving": "Saving...",
-    "cancel": "Cancel",
-    "delete": "Delete",
-    "edit": "Edit"
+  "subtitle": "Configure hubs that let members create their own voice channels by joining.",
+  "flow": {
+    "step1": "When someone joins this voice channel…",
+    "step2": "…FluxCore makes them a channel named…",
+    "step3": "…placed in…",
+    "step4": "…and it's deleted automatically once everyone leaves."
   },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+  "fields": {
+    "hubPlaceholder": "Choose a voice channel",
+    "categoryNone": "Same category as the hub",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Voice hubs",
+    "counter": "{{used}} of {{max}}",
+    "add": "Add hub",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "summary": {
+    "sameCategory": "same category as hub",
+    "deletedWhenEmpty": "deleted when empty"
   },
   "empty": {
-    "noConfigs": "No configurations yet",
-    "noConfigsDesc": "Add a hub channel to enable temporary voice channels.",
-    "addFirst": "Add Configuration"
+    "exampleCaption": "Example — this is how a voice hub works:",
+    "cta": "Create your first hub"
+  },
+  "editor": {
+    "save": "Save hub",
+    "saving": "Saving…",
+    "cancel": "Cancel"
+  },
+  "errors": {
+    "hubRequired": "Choose the voice channel members will join.",
+    "generic": "Something went wrong. Please try again."
   },
   "toast": {
-    "updated": "Configuration updated",
-    "created": "Configuration created",
-    "removed": "Configuration removed"
+    "created": "Hub created",
+    "updated": "Hub updated",
+    "removed": "Hub removed",
+    "undo": "Undo",
+    "restored": "Hub restored",
+    "deleteFailed": "Couldn't remove that hub. Please try again.",
+    "undoFailed": "Couldn't restore that hub. It may no longer fit within the hub limit."
   }
 }
