@@ -5,6 +5,8 @@ export interface LatestOnly {
   begin(): number;
   /** Whether `token` is still the most recently claimed one. */
   isCurrent(token: number): boolean;
+  /** Invalidate every outstanding token without claiming a new one. */
+  invalidate(): void;
 }
 
 /**
@@ -21,6 +23,9 @@ export function useLatestOnly(): LatestOnly {
     () => ({
       begin: () => ++generation.current,
       isCurrent: (token: number) => token === generation.current,
+      invalidate: () => {
+        ++generation.current;
+      },
     }),
     [],
   );

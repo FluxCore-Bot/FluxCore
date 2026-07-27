@@ -103,6 +103,9 @@ export function WelcomeImageEditor({
   useEffect(() => {
     if (previewMode !== "client") return;
 
+    // A server preview still in flight from before the mode switch passes its
+    // own guard when it resolves — strand it so it can't overwrite this render.
+    serverRender.invalidate();
     const token = clientRender.begin();
 
     setIsPending(true);
@@ -148,11 +151,15 @@ export function WelcomeImageEditor({
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [settings, previewMode, user, avatarUrl, refreshKey, clientRender]);
+  }, [settings, previewMode, user, avatarUrl, refreshKey, clientRender, serverRender]);
 
   // Server-side preview — debounced since it's a network request
   useEffect(() => {
     if (previewMode !== "server") return;
+
+    // Mirror of the client effect: a client render past its RAF cannot be
+    // cancelled, so strand it before this preview starts.
+    clientRender.invalidate();
 
     const timer = setTimeout(() => {
       const token = serverRender.begin();
@@ -186,16 +193,21 @@ export function WelcomeImageEditor({
     }, 400);
 
     return () => clearTimeout(timer);
-  }, [settings, type, previewMode, t, refreshKey, serverRender]);
+  }, [settings, type, previewMode, t, refreshKey, serverRender, clientRender]);
 
   // Cleanup
   useEffect(() => {
     return () => {
+      // Strand in-flight renders first: a completion arriving after this
+      // cleanup must drop (and revoke) its own URL instead of committing a
+      // fresh object URL into refs nothing will ever revoke again.
+      clientRender.invalidate();
+      serverRender.invalidate();
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       if (prevUrlRef.current) URL.revokeObjectURL(prevUrlRef.current);
       if (serverUrlRef.current) URL.revokeObjectURL(serverUrlRef.current);
     };
-  }, []);
+  }, [clientRender, serverRender]);
 
   function update<K extends keyof WelcomeImageSettings>(
     key: K,

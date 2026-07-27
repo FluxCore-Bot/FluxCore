@@ -28,6 +28,18 @@ describe("useLatestOnly", () => {
     expect(result.current).toBe(first);
   });
 
+  it("invalidate() strands every outstanding token without claiming one", () => {
+    const { result } = renderHook(() => useLatestOnly());
+    const token = result.current.begin();
+
+    result.current.invalidate();
+
+    expect(result.current.isCurrent(token)).toBe(false);
+    // The guard still works afterwards: a fresh begin() is current again.
+    const next = result.current.begin();
+    expect(result.current.isCurrent(next)).toBe(true);
+  });
+
   it("lets a slow older async render detect that it was superseded", async () => {
     const { result } = renderHook(() => useLatestOnly());
     const committed: string[] = [];
@@ -109,5 +121,36 @@ describe("useLatestOnly (server-preview usage pattern)", () => {
     expect(live).toBe("blob:new");
     expect(revoked).toContain("blob:old"); // its own stale response, revoked
     expect(revoked).not.toContain("blob:new"); // the live url is never revoked
+  });
+
+  it("cross-invalidating on a mode switch drops the other mode's in-flight render", async () => {
+    // WelcomeImageEditor keeps one guard per preview mode. The guards are
+    // independent, so a server response that resolves AFTER the user switched
+    // to client mode still passes its own guard — each mode's effect must
+    // therefore invalidate() the OTHER guard when it takes over.
+    const { result: clientGuard } = renderHook(() => useLatestOnly());
+    const { result: serverGuard } = renderHook(() => useLatestOnly());
+    let live: string | null = null;
+    const dropped: string[] = [];
+
+    async function render(guard: typeof clientGuard, url: string, delayMs: number) {
+      const token = guard.current.begin();
+      await sleep(delayMs);
+      if (!guard.current.isCurrent(token)) {
+        dropped.push(url);
+        return;
+      }
+      live = url;
+    }
+
+    // A slow server preview is in flight when the user switches to client
+    // mode; the client effect invalidates the server guard, then renders.
+    const slowServer = render(serverGuard, "blob:server-stale", 40);
+    serverGuard.current.invalidate();
+    await render(clientGuard, "blob:client-fresh", 5);
+    await slowServer;
+
+    expect(live).toBe("blob:client-fresh");
+    expect(dropped).toEqual(["blob:server-stale"]);
   });
 });
