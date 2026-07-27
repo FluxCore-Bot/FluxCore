@@ -13,6 +13,15 @@ function parseJson<T>(value: string, fallback: T): T {
   }
 }
 
+/** Narrow a raw DB value to a MessageStyle, defaulting unknowns to "plain". */
+function toMessageStyle(value: unknown): MessageStyle {
+  return value === "embed" ? "embed" : "plain";
+}
+
+function toStringOr(value: unknown, fallback: string): string {
+  return typeof value === "string" ? value : fallback;
+}
+
 // Use Record to accept Prisma row without tight coupling to generated types
 function rowToConfig(row: Record<string, unknown>): WelcomeConfig {
   return {
@@ -20,13 +29,13 @@ function rowToConfig(row: Record<string, unknown>): WelcomeConfig {
     welcomeEnabled: row.welcomeEnabled as boolean,
     welcomeChannelId: (row.welcomeChannelId as string | null) ?? null,
     welcomeMessage: parseJson<EmbedConfig>(row.welcomeMessage as string, {}),
-    welcomeMessageStyle: ((row.welcomeMessageStyle as string) ?? "plain") as MessageStyle,
-    welcomeContent: (row.welcomeContent as string) ?? "",
+    welcomeMessageStyle: toMessageStyle(row.welcomeMessageStyle),
+    welcomeContent: toStringOr(row.welcomeContent, ""),
     farewellEnabled: row.farewellEnabled as boolean,
     farewellChannelId: (row.farewellChannelId as string | null) ?? null,
     farewellMessage: parseJson<EmbedConfig>(row.farewellMessage as string, {}),
-    farewellMessageStyle: ((row.farewellMessageStyle as string) ?? "plain") as MessageStyle,
-    farewellContent: (row.farewellContent as string) ?? "",
+    farewellMessageStyle: toMessageStyle(row.farewellMessageStyle),
+    farewellContent: toStringOr(row.farewellContent, ""),
     dmEnabled: row.dmEnabled as boolean,
     dmMessage: parseJson<EmbedConfig>(row.dmMessage as string, {}),
     autoRoleIds: parseJson<string[]>(row.autoRoleIds as string, []),
