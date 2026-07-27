@@ -32,13 +32,60 @@ function isValidEmoji(value: string): boolean {
   return UNICODE_EMOJI_REGEX.test(value);
 }
 
+/**
+ * Every executor THROWS rather than returning when it cannot do its job.
+ *
+ * processEvent cannot distinguish "returned because there was nothing to do"
+ * from "succeeded", so a silent return was written to the ActionLog as
+ * `success: true`. A moderator whose auto-role rule never fired saw
+ * "214 executions, 100% success" and had nothing to debug with. Throwing lets
+ * the caller's existing catch record the real reason.
+ */
+function required<T>(value: T | undefined | null, actionType: string, field: string): T {
+  if (value === undefined || value === null || value === "") {
+    throw new Error(`${actionType}: ${field} is required`);
+  }
+  return value;
+}
+
+/** Fetches a sendable text channel, or throws explaining which one failed. */
+async function sendableChannel(client: Client, channelId: string, actionType: string) {
+  const channel = await client.channels.fetch(channelId).catch(() => null);
+  if (!channel?.isTextBased() || !("send" in channel)) {
+    throw new Error(
+      `${actionType}: channel ${channelId} is missing, not a text channel, or not visible to the bot`,
+    );
+  }
+  return channel;
+}
+
+/**
+ * Resolves the member to act on. Reaction, ban and message contexts often
+ * carry no member object, which is why addRole/removeRole silently did nothing
+ * on the single most common automation people build ("react here, get a role").
+ */
+async function resolveMember(client: Client, ctx: EventContext, actionType: string) {
+  if (ctx.member) return ctx.member;
+  if (!ctx.userId || !ctx.guildId) {
+    throw new Error(`${actionType}: no member in context and no user/guild to resolve one from`);
+  }
+  try {
+    const guild = await client.guilds.fetch(ctx.guildId);
+    return await guild.members.fetch(ctx.userId);
+  } catch (err) {
+    throw new Error(
+      `${actionType}: could not resolve member ${ctx.userId} in guild ${ctx.guildId} (${err instanceof Error ? err.message : String(err)})`,
+    );
+  }
+}
+
 const executors = new Map<ActionType, ActionExecutor>();
 
 executors.set("sendMessage", async (client, ctx, config) => {
-  if (!config.channelId || !config.message) return;
-  const channel = await client.channels.fetch(config.channelId);
-  if (!channel?.isTextBased() || !("send" in channel)) return;
-  const resolved = resolveTemplate(config.message, ctx);
+  const channelId = required(config.channelId, "sendMessage", "channelId");
+  const message = required(config.message, "sendMessage", "message");
+  const channel = await sendableChannel(client, channelId, "sendMessage");
+  const resolved = resolveTemplate(message, ctx);
   await channel.send({
     content: resolved,
     allowedMentions: { users: ctx.userId ? [ctx.userId] : [] },
@@ -46,56 +93,55 @@ executors.set("sendMessage", async (client, ctx, config) => {
 });
 
 executors.set("sendEmbed", async (client, ctx, config) => {
-  if (!config.channelId || !config.embed) return;
-  const channel = await client.channels.fetch(config.channelId);
-  if (!channel?.isTextBased() || !("send" in channel)) return;
+  const channelId = required(config.channelId, "sendEmbed", "channelId");
+  const embedConfig = required(config.embed, "sendEmbed", "embed");
+  const channel = await sendableChannel(client, channelId, "sendEmbed");
 
   const embed = new EmbedBuilder().setTimestamp();
-  if (config.embed.title) {
-    embed.setTitle(resolveTemplate(config.embed.title, ctx));
+  if (embedConfig.title) {
+    embed.setTitle(resolveTemplate(embedConfig.title, ctx));
   }
-  if (config.embed.description) {
-    embed.setDescription(resolveTemplate(config.embed.description, ctx));
+  if (embedConfig.description) {
+    embed.setDescription(resolveTemplate(embedConfig.description, ctx));
   }
-  if (config.embed.color !== undefined) {
-    embed.setColor(config.embed.color);
+  if (embedConfig.color !== undefined) {
+    embed.setColor(embedConfig.color);
   }
-  if (config.embed.footer) {
-    embed.setFooter({ text: resolveTemplate(config.embed.footer, ctx) });
+  if (embedConfig.footer) {
+    embed.setFooter({ text: resolveTemplate(embedConfig.footer, ctx) });
   }
   await channel.send({ embeds: [embed] });
 });
 
 executors.set("sendDM", async (client, ctx, config) => {
-  if (!config.message) return;
-  const resolved = resolveTemplate(config.message, ctx);
-  try {
-    // Prefer ctx.member.user if available, otherwise fetch the user directly
-    if (ctx.member) {
-      await ctx.member.user.send(resolved);
-    } else if (ctx.userId) {
-      const user = await client.users.fetch(ctx.userId);
-      await user.send(resolved);
-    }
-  } catch (err) {
-    logger.warn(`sendDM failed for user ${ctx.userId ?? "unknown"}: ${err instanceof Error ? err.message : String(err)}`);
+  const message = required(config.message, "sendDM", "message");
+  const resolved = resolveTemplate(message, ctx);
+  // A closed DM is a real, reportable failure — the moderator needs to know
+  // their welcome DM is not arriving, not see it logged as a success.
+  if (ctx.member) {
+    await ctx.member.user.send(resolved);
+    return;
   }
+  const userId = required(ctx.userId, "sendDM", "a user to DM");
+  const user = await client.users.fetch(userId);
+  await user.send(resolved);
 });
 
-executors.set("addRole", async (_client, ctx, config) => {
-  if (!ctx.member || !config.roleId) return;
-  await ctx.member.roles.add(config.roleId);
+executors.set("addRole", async (client, ctx, config) => {
+  const roleId = required(config.roleId, "addRole", "roleId");
+  const member = await resolveMember(client, ctx, "addRole");
+  await member.roles.add(roleId);
 });
 
-executors.set("removeRole", async (_client, ctx, config) => {
-  if (!ctx.member || !config.roleId) return;
-  await ctx.member.roles.remove(config.roleId);
+executors.set("removeRole", async (client, ctx, config) => {
+  const roleId = required(config.roleId, "removeRole", "roleId");
+  const member = await resolveMember(client, ctx, "removeRole");
+  await member.roles.remove(roleId);
 });
 
 executors.set("logToChannel", async (client, ctx, config) => {
-  if (!config.channelId) return;
-  const channel = await client.channels.fetch(config.channelId);
-  if (!channel?.isTextBased() || !("send" in channel)) return;
+  const channelId = required(config.channelId, "logToChannel", "channelId");
+  const channel = await sendableChannel(client, channelId, "logToChannel");
 
   const eventInfo = EVENT_TYPES[ctx.eventType];
   const embed = new EmbedBuilder()
@@ -155,28 +201,60 @@ async function isPrivateHost(hostname: string): Promise<boolean> {
   }
 }
 
-executors.set("sendWebhook", async (_client, ctx, config) => {
-  if (!config.webhook?.url) return;
+const MAX_WEBHOOK_REDIRECTS = 3;
+const MAX_WEBHOOK_RESPONSE_BYTES = 64 * 1024;
 
+/** Throws unless the URL is https and does not resolve to a private address. */
+async function assertSafeWebhookTarget(raw: string): Promise<URL> {
   let url: URL;
   try {
-    url = new URL(config.webhook.url);
+    url = new URL(raw);
   } catch {
-    logger.warn(`Invalid webhook URL in action config: ${config.webhook.url}`);
-    return;
+    throw new Error(`sendWebhook: "${raw}" is not a valid URL`);
   }
-
   if (url.protocol !== "https:") {
-    logger.warn(`Webhook URL must use HTTPS: ${config.webhook.url}`);
-    return;
+    throw new Error(`sendWebhook: URL must use HTTPS, got ${url.protocol.replace(":", "")}`);
   }
-
   if (await isPrivateHost(url.hostname)) {
-    logger.warn(`Webhook URL points to private/internal host: ${url.hostname}`);
+    throw new Error(`sendWebhook: ${url.hostname} resolves to a private/internal address`);
+  }
+  return url;
+}
+
+/**
+ * Reads at most `MAX_WEBHOOK_RESPONSE_BYTES` and then cancels the stream.
+ * `await response.text()` buffers whatever the remote chooses to send, so a
+ * hostile or broken endpoint could stream until the bot ran out of memory. We
+ * only read at all to release the connection; the content is never used.
+ */
+async function drainCapped(response: { body?: unknown; text?: () => Promise<string> }): Promise<void> {
+  const body = response.body as
+    | { getReader(): { read(): Promise<{ done: boolean; value?: { length: number } }>; cancel(): unknown } }
+    | null
+    | undefined;
+  if (!body?.getReader) {
+    await response.text?.();
     return;
   }
+  const reader = body.getReader();
+  let read = 0;
+  try {
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      read += value?.length ?? 0;
+      if (read >= MAX_WEBHOOK_RESPONSE_BYTES) break;
+    }
+  } finally {
+    await reader.cancel();
+  }
+}
 
-  let body = config.webhook.bodyTemplate ?? JSON.stringify({
+executors.set("sendWebhook", async (_client, ctx, config) => {
+  const rawUrl = required(config.webhook?.url, "sendWebhook", "webhook.url");
+  let url = await assertSafeWebhookTarget(rawUrl);
+
+  let body = config.webhook?.bodyTemplate ?? JSON.stringify({
     event: ctx.eventType,
     guild: ctx.guildName,
     user: ctx.userName,
@@ -203,7 +281,7 @@ executors.set("sendWebhook", async (_client, ctx, config) => {
   ]);
   const ALLOWED_PREFIX = "x-fluxcore-";
 
-  const userHeaders = config.webhook.headers ?? {};
+  const userHeaders = config.webhook?.headers ?? {};
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
   };
@@ -219,49 +297,69 @@ executors.set("sendWebhook", async (_client, ctx, config) => {
     }
   }
 
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 5000);
+  // Redirects are followed BY HAND so every hop is re-checked against the
+  // private-address rules. With fetch's automatic following, the SSRF guard ran
+  // once against the original hostname and a public host answering
+  // "302 -> http://169.254.169.254/" walked straight into the cloud metadata
+  // service.
+  for (let hop = 0; ; hop++) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
+    let response: Response;
+    try {
+      response = await fetch(url.toString(), {
+        method: config.webhook?.method ?? "POST",
+        headers,
+        body,
+        signal: controller.signal,
+        redirect: "manual",
+      });
+    } finally {
+      clearTimeout(timeout);
+    }
 
-  try {
-    const response = await fetch(config.webhook.url, {
-      method: config.webhook.method ?? "POST",
-      headers,
-      body,
-      signal: controller.signal,
-    });
-    // Consume response body to release the connection
-    await response.text();
-  } finally {
-    clearTimeout(timeout);
+    if (response.status >= 300 && response.status < 400) {
+      const location = response.headers.get("location");
+      await drainCapped(response);
+      if (!location) {
+        throw new Error(`sendWebhook: ${response.status} redirect with no Location header`);
+      }
+      if (hop >= MAX_WEBHOOK_REDIRECTS) {
+        throw new Error(`sendWebhook: too many redirects (>${MAX_WEBHOOK_REDIRECTS})`);
+      }
+      url = await assertSafeWebhookTarget(new URL(location, url).toString());
+      continue;
+    }
+
+    await drainCapped(response);
+    if (response.status < 200 || response.status >= 300) {
+      throw new Error(`sendWebhook: ${url.hostname} responded ${response.status}`);
+    }
+    return;
   }
 });
 
 // --- Set Nickname ---
 
 executors.set("setNickname", async (client, ctx, config) => {
-  if (!config.nickname) return;
-  try {
-    // Fetch member from guild if not in context
-    let member = ctx.member;
-    if (!member && ctx.userId && ctx.guildId) {
-      const guild = await client.guilds.fetch(ctx.guildId);
-      member = await guild.members.fetch(ctx.userId);
-    }
-    if (!member) return;
-    const resolved = resolveTemplate(config.nickname, ctx);
-    await member.setNickname(resolved.slice(0, 32));
-  } catch (err) {
-    logger.warn(`setNickname failed for user ${ctx.userId ?? "unknown"}: ${err instanceof Error ? err.message : String(err)}`);
-  }
+  const nickname = required(config.nickname, "setNickname", "nickname");
+  const member = await resolveMember(client, ctx, "setNickname");
+  const resolved = resolveTemplate(nickname, ctx);
+  await member.setNickname(resolved.slice(0, 32));
 });
 
 // --- Create Thread ---
 
 executors.set("createThread", async (client, ctx, config) => {
-  if (!config.channelId || !config.threadName) return;
-  const channel = await client.channels.fetch(config.channelId);
-  if (!channel?.isTextBased() || !("threads" in channel)) return;
-  const resolved = resolveTemplate(config.threadName, ctx);
+  const channelId = required(config.channelId, "createThread", "channelId");
+  const threadName = required(config.threadName, "createThread", "threadName");
+  const channel = await client.channels.fetch(channelId).catch(() => null);
+  if (!channel?.isTextBased() || !("threads" in channel)) {
+    throw new Error(
+      `createThread: channel ${channelId} is missing, not visible to the bot, or does not support threads`,
+    );
+  }
+  const resolved = resolveTemplate(threadName, ctx);
   await (channel as TextChannel).threads.create({
     name: resolved.slice(0, 100),
   });
@@ -270,23 +368,18 @@ executors.set("createThread", async (client, ctx, config) => {
 // --- Add Reaction ---
 
 executors.set("addReaction", async (client, ctx, config) => {
-  if (!config.emoji || !ctx.extra?.["message.id"] || !ctx.channelId) return;
-  if (!isValidEmoji(config.emoji)) {
-    logger.warn(
-      `addReaction skipped: invalid emoji "${config.emoji}" for guild ${ctx.guildId ?? "unknown"}`,
-    );
-    return;
+  const emoji = required(config.emoji, "addReaction", "emoji");
+  if (!isValidEmoji(emoji)) {
+    throw new Error(`addReaction: "${emoji}" is not a valid unicode or custom emoji`);
   }
-  const channel = await client.channels.fetch(ctx.channelId);
-  if (!channel?.isTextBased() || !("messages" in channel)) return;
-  try {
-    const message = await (channel as TextChannel).messages.fetch(
-      ctx.extra["message.id"],
-    );
-    await message.react(config.emoji);
-  } catch (err) {
-    logger.warn(`addReaction failed (emoji: ${config.emoji}, message: ${ctx.extra?.["message.id"] ?? "unknown"}): ${err instanceof Error ? err.message : String(err)}`);
+  const messageId = required(ctx.extra?.["message.id"], "addReaction", "a triggering message");
+  const channelId = required(ctx.channelId, "addReaction", "a channel in the event context");
+  const channel = await client.channels.fetch(channelId).catch(() => null);
+  if (!channel?.isTextBased() || !("messages" in channel)) {
+    throw new Error(`addReaction: channel ${channelId} is missing or not visible to the bot`);
   }
+  const message = await (channel as TextChannel).messages.fetch(messageId);
+  await message.react(emoji);
 });
 
 export function getExecutor(actionType: ActionType): ActionExecutor | undefined {

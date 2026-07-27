@@ -132,9 +132,21 @@ function evaluateCondition(
   condition: StepConditionConfig,
   context: EventContext,
 ): boolean {
-  const actual = getContextValue(condition.field, context);
   const expected = condition.value;
 
+  // Role operators are answered entirely by the member's roles — they never
+  // consume `condition.field`. Checking the field first meant the canonical
+  // "if member has @Verified" branch always took the else path, because the
+  // field defaults to channelId and memberJoin never populates one.
+  if (condition.operator === "hasRole") {
+    return context.member?.roles.cache.has(expected) ?? false;
+  }
+  if (condition.operator === "notHasRole") {
+    if (!context.member) return false;
+    return !context.member.roles.cache.has(expected);
+  }
+
+  const actual = getContextValue(condition.field, context);
   if (actual === undefined || actual === null) return false;
 
   const actualStr = String(actual);
@@ -158,10 +170,6 @@ function evaluateCondition(
       return Number(actual) > Number(expected);
     case "lessThan":
       return Number(actual) < Number(expected);
-    case "hasRole":
-      return context.member?.roles.cache.has(expected) ?? false;
-    case "notHasRole":
-      return !(context.member?.roles.cache.has(expected) ?? true);
     case "inList":
       return expected
         .split(",")
@@ -209,12 +217,12 @@ async function executeSteps(
         try {
           const executor = getExecutor(step.action.type as ActionType);
           if (!executor) {
-            logger.warn(
-              `Unknown action type: ${step.action.type} in rule "${rule.name}"`,
-            );
-          } else {
-            await executor(client, context, step.action);
+            // Must not fall through to the success log below: a rule
+            // referencing a removed action type would report a clean 100%
+            // success rate while doing nothing at all.
+            throw new Error(`Unknown action type: ${step.action.type}`);
           }
+          await executor(client, context, step.action);
           logExecution(rule, step.action.type, true, null).catch(() => {});
         } catch (error) {
           const err =

@@ -54,15 +54,17 @@ describe("addReaction emoji validation", () => {
     const client = mkClient(fetchSpy);
 
     const executor = getExecutor("addReaction")!;
-    await executor(client, baseCtx as never, {
-      type: "addReaction",
-      emoji: "not-an-emoji-at-all",
-    } as never);
+    // A bad emoji is now a thrown failure rather than a warn-and-return, so
+    // processEvent records it as `success: false` instead of logging a
+    // successful execution for an action that never ran.
+    await expect(
+      executor(client, baseCtx as never, {
+        type: "addReaction",
+        emoji: "not-an-emoji-at-all",
+      } as never),
+    ).rejects.toThrow(/not a valid unicode or custom emoji/);
 
     expect(fetchSpy).not.toHaveBeenCalled();
-    expect(warn).toHaveBeenCalledWith(
-      expect.stringContaining("invalid emoji"),
-    );
   });
 
   it("accepts a unicode emoji", async () => {
@@ -102,10 +104,12 @@ describe("addReaction emoji validation", () => {
     const fetchSpy = vi.fn();
     const client = mkClient(fetchSpy);
     const executor = getExecutor("addReaction")!;
-    await executor(client, baseCtx as never, {
-      type: "addReaction",
-      emoji: ":smile:",
-    } as never);
+    await expect(
+      executor(client, baseCtx as never, {
+        type: "addReaction",
+        emoji: ":smile:",
+      } as never),
+    ).rejects.toThrow(/not a valid unicode or custom emoji/);
     expect(fetchSpy).not.toHaveBeenCalled();
   });
 });

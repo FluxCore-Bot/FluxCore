@@ -330,3 +330,137 @@ describe("action executor - filters fail closed", () => {
     expect(mockSendMessageExecutor).toHaveBeenCalled();
   });
 });
+
+describe("action executor - the log tells the truth", () => {
+  const ctx = {
+    eventType: "memberJoin" as const,
+    guildId: "guild-123",
+    guildName: "Test Guild",
+    userId: "user-456",
+    memberCount: 100,
+    timestamp: new Date().toISOString(),
+  };
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockGetGuildSettingsOrDefault.mockReturnValue({ globalEnabled: true, maxRules: 25 });
+  });
+
+  // The step-mode branch warned about an unknown action type and then fell
+  // through to the success log, so a rule referencing a removed action type
+  // reported a clean 100% success rate forever.
+  it("does not log success for an unknown action type in step mode", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce([
+      {
+        name: "unknown-step",
+        enabled: true,
+        conditions: {},
+        actions: [],
+        entryStepId: "s0",
+        steps: [{ id: "s0", type: "action", action: { type: "unknownAction" }, next: null }],
+      },
+    ]);
+
+    await processEvent({} as never, ctx);
+
+    expect(mockLogExecution).not.toHaveBeenCalledWith(
+      expect.anything(), expect.anything(), true, expect.anything(),
+    );
+  });
+
+  it("logs a failure for an unknown action type in step mode", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce([
+      {
+        name: "unknown-step",
+        enabled: true,
+        conditions: {},
+        actions: [],
+        entryStepId: "s0",
+        steps: [{ id: "s0", type: "action", action: { type: "unknownAction" }, next: null }],
+      },
+    ]);
+
+    await processEvent({} as never, ctx);
+
+    expect(mockLogExecution).toHaveBeenCalledWith(
+      expect.anything(), "unknownAction", false, expect.stringMatching(/unknown action type/i),
+    );
+  });
+});
+
+/**
+ * Condition steps read `getContextValue(condition.field)` and bail when it is
+ * undefined — BEFORE looking at the operator. hasRole/notHasRole do not consume
+ * the field at all, so the canonical "if member has @Verified" branch always
+ * took the else path on memberJoin (whose context has no channelId, the
+ * default field).
+ */
+describe("action executor - role operators ignore the unrelated field", () => {
+  const memberWithRole = {
+    eventType: "memberJoin" as const,
+    guildId: "guild-123",
+    guildName: "Test Guild",
+    userId: "user-456",
+    memberCount: 100,
+    timestamp: new Date().toISOString(),
+    member: { roles: { cache: new Map([["verified", {}]]) } },
+  };
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockGetGuildSettingsOrDefault.mockReturnValue({ globalEnabled: true, maxRules: 25 });
+  });
+
+  function branchRule(operator: string) {
+    return [
+      {
+        name: "branch",
+        enabled: true,
+        conditions: {},
+        actions: [],
+        entryStepId: "cond",
+        steps: [
+          {
+            id: "cond",
+            type: "condition",
+            // channelId is the default field and memberJoin never populates it.
+            condition: { field: "channelId", operator, value: "verified" },
+            thenNext: "yes",
+            elseNext: null,
+          },
+          { id: "yes", type: "action", action: { type: "sendMessage" }, next: null },
+        ],
+      },
+    ];
+  }
+
+  it("takes the then-branch when the member has the role", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(branchRule("hasRole"));
+
+    await processEvent({} as never, memberWithRole as never);
+
+    expect(mockSendMessageExecutor).toHaveBeenCalled();
+  });
+
+  it("takes the else-branch when the member lacks the role", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(branchRule("hasRole"));
+
+    await processEvent({} as never, {
+      ...memberWithRole,
+      member: { roles: { cache: new Map() } },
+    } as never);
+
+    expect(mockSendMessageExecutor).not.toHaveBeenCalled();
+  });
+
+  it("notHasRole takes the then-branch when the member lacks the role", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(branchRule("notHasRole"));
+
+    await processEvent({} as never, {
+      ...memberWithRole,
+      member: { roles: { cache: new Map() } },
+    } as never);
+
+    expect(mockSendMessageExecutor).toHaveBeenCalled();
+  });
+});
