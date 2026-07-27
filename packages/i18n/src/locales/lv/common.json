@@ -170,5 +170,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Meklēt",
+    "placeholder": "Meklēt lapas, serverus un darbības…",
+    "dialogTitle": "Komandu palete",
+    "dialogDescription": "Meklē lapu, serveri vai darbību. Pārvietojies ar bultiņu taustiņiem un atver ar taustiņu Enter.",
+    "hint": {
+      "navigate": "pārvietoties",
+      "select": "atvērt",
+      "close": "aizvērt"
+    },
+    "group": {
+      "recent": "Nesenie",
+      "pages": "Lapas",
+      "actions": "Darbības",
+      "servers": "Serveri"
+    },
+    "keywords": {
+      "automation": "noteikumi automatizācija aktivizētāji darbplūsma",
+      "moderation": "lietas bloķēšanas izmešanas apklusināšanas sodi"
+    },
+    "action": {
+      "refreshGuild": "Atsvaidzināt šī servera datus",
+      "refreshGuildList": "Atsvaidzināt manu serveru sarakstu",
+      "backToServers": "Atpakaļ uz visiem serveriem",
+      "addToServer": "Pievienot botu serverim",
+      "logout": "Iziet"
+    },
+    "more": "Vēl {{total}}",
+    "empty": "Nav rezultātu vaicājumam “{{query}}”",
+    "resultCount": "Rezultāti: {{total}}"
   }
 }

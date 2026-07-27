@@ -170,5 +170,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Cari",
+    "placeholder": "Cari halaman, server, dan tindakan…",
+    "dialogTitle": "Palet perintah",
+    "dialogDescription": "Cari halaman, server, atau tindakan. Gunakan tombol panah untuk berpindah dan Enter untuk membuka.",
+    "hint": {
+      "navigate": "berpindah",
+      "select": "buka",
+      "close": "tutup"
+    },
+    "group": {
+      "recent": "Terbaru",
+      "pages": "Halaman",
+      "actions": "Tindakan",
+      "servers": "Server"
+    },
+    "keywords": {
+      "automation": "aturan otomasi pemicu alur kerja",
+      "moderation": "kasus ban tendang bisukan hukuman"
+    },
+    "action": {
+      "refreshGuild": "Segarkan data server ini",
+      "refreshGuildList": "Segarkan daftar server saya",
+      "backToServers": "Kembali ke semua server",
+      "addToServer": "Tambahkan bot ke sebuah server",
+      "logout": "Keluar"
+    },
+    "more": "{{total}} lainnya",
+    "empty": "Tidak ada hasil untuk \"{{query}}\"",
+    "resultCount": "{{total}} hasil"
   }
 }

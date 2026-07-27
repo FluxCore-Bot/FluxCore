@@ -170,5 +170,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Zoeken",
+    "placeholder": "Zoek pagina's, servers en acties…",
+    "dialogTitle": "Opdrachtenpalet",
+    "dialogDescription": "Zoek een pagina, server of actie. Gebruik de pijltoetsen om te navigeren en Enter om te openen.",
+    "hint": {
+      "navigate": "navigeren",
+      "select": "openen",
+      "close": "sluiten"
+    },
+    "group": {
+      "recent": "Recent",
+      "pages": "Pagina's",
+      "actions": "Acties",
+      "servers": "Servers"
+    },
+    "keywords": {
+      "automation": "regels automatisering triggers workflow",
+      "moderation": "zaken bans kicks mutes straffen"
+    },
+    "action": {
+      "refreshGuild": "Gegevens van deze server vernieuwen",
+      "refreshGuildList": "Mijn serverlijst vernieuwen",
+      "backToServers": "Terug naar alle servers",
+      "addToServer": "De bot aan een server toevoegen",
+      "logout": "Uitloggen"
+    },
+    "more": "Nog {{total}}",
+    "empty": "Geen resultaten voor \"{{query}}\"",
+    "resultCount": "{{total}} resultaten"
   }
 }

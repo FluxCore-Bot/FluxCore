@@ -170,5 +170,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Ara",
+    "placeholder": "Sayfalarda, sunucularda ve eylemlerde ara…",
+    "dialogTitle": "Komut paleti",
+    "dialogDescription": "Bir sayfa, sunucu veya eylem arayın. Hareket etmek için ok tuşlarını, açmak için Enter tuşunu kullanın.",
+    "hint": {
+      "navigate": "gezin",
+      "select": "aç",
+      "close": "kapat"
+    },
+    "group": {
+      "recent": "Son kullanılanlar",
+      "pages": "Sayfalar",
+      "actions": "Eylemler",
+      "servers": "Sunucular"
+    },
+    "keywords": {
+      "automation": "kurallar otomasyon tetikleyiciler iş akışı",
+      "moderation": "vakalar yasaklamalar atmalar susturmalar cezalar"
+    },
+    "action": {
+      "refreshGuild": "Bu sunucunun verilerini yenile",
+      "refreshGuildList": "Sunucu listemi yenile",
+      "backToServers": "Tüm sunuculara dön",
+      "addToServer": "Botu bir sunucuya ekle",
+      "logout": "Çıkış Yap"
+    },
+    "more": "{{total}} tane daha",
+    "empty": "\"{{query}}\" için sonuç yok",
+    "resultCount": "{{total}} sonuç"
   }
 }

@@ -170,5 +170,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Sök",
+    "placeholder": "Sök sidor, servrar och åtgärder…",
+    "dialogTitle": "Kommandopalett",
+    "dialogDescription": "Sök efter en sida, en server eller en åtgärd. Använd piltangenterna för att flytta och Enter för att öppna.",
+    "hint": {
+      "navigate": "navigera",
+      "select": "öppna",
+      "close": "stäng"
+    },
+    "group": {
+      "recent": "Senaste",
+      "pages": "Sidor",
+      "actions": "Åtgärder",
+      "servers": "Servrar"
+    },
+    "keywords": {
+      "automation": "regler automatisering utlösare arbetsflöde",
+      "moderation": "ärenden bannlysningar utsparkningar tystningar straff"
+    },
+    "action": {
+      "refreshGuild": "Uppdatera den här serverns data",
+      "refreshGuildList": "Uppdatera min serverlista",
+      "backToServers": "Tillbaka till alla servrar",
+      "addToServer": "Lägg till boten på en server",
+      "logout": "Logga ut"
+    },
+    "more": "{{total}} till",
+    "empty": "Inga resultat för ”{{query}}”",
+    "resultCount": "{{total}} resultat"
   }
 }

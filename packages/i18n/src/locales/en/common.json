@@ -177,5 +177,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Search",
+    "placeholder": "Search pages, servers, and actions…",
+    "dialogTitle": "Command palette",
+    "dialogDescription": "Search for a page, server, or action. Use the arrow keys to move and Enter to open.",
+    "hint": {
+      "navigate": "navigate",
+      "select": "open",
+      "close": "close"
+    },
+    "group": {
+      "recent": "Recent",
+      "pages": "Pages",
+      "actions": "Actions",
+      "servers": "Servers"
+    },
+    "keywords": {
+      "automation": "rules automation triggers workflow",
+      "moderation": "cases bans kicks mutes punishments"
+    },
+    "action": {
+      "refreshGuild": "Refresh this server's data",
+      "refreshGuildList": "Refresh my server list",
+      "backToServers": "Back to all servers",
+      "addToServer": "Add the bot to a server",
+      "logout": "Log out"
+    },
+    "more": "{{total}} more",
+    "empty": "No results for \"{{query}}\"",
+    "resultCount": "{{total}} results"
   }
 }
