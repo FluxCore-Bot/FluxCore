@@ -221,34 +221,72 @@ export const ACTION_TYPE_FIELDS: Record<ActionType, ActionFieldDescriptor[]> = {
   ],
 };
 
-const GENERAL_VARIABLES = [
-  "{user}", "{user.name}", "{user.tag}", "{user.id}",
-  "{channel}", "{channel.name}", "{channel.id}",
-  "{guild}", "{guild.memberCount}",
-  "{timestamp}",
-];
+/**
+ * Tokens every event context populates: the acting guild and the timestamp.
+ *
+ * Deliberately does NOT include {user*} or {channel*}. Those are only
+ * available on the events whose context actually carries them — see
+ * eventBridge.ts. Promising a token the bot never populates is worse than
+ * omitting it: the dashboard preview renders "#general" while the bot posts
+ * "Unknown Channel", and the editor's unknown-token warning stays silent
+ * because the token looks legitimate.
+ */
+const GUILD_VARIABLES = ["{guild}", "{guild.memberCount}", "{timestamp}"];
 
-/** Maps each event type to its available template variables */
+/** Populated wherever the event has an acting user. */
+const USER_VARIABLES = ["{user}", "{user.name}", "{user.tag}", "{user.id}"];
+
+/** Populated wherever the event happened in a channel. */
+const CHANNEL_VARIABLES = ["{channel}", "{channel.name}", "{channel.id}"];
+
+const MEMBER_EVENT = [...USER_VARIABLES, ...GUILD_VARIABLES];
+const MESSAGE_EVENT = [...USER_VARIABLES, ...CHANNEL_VARIABLES, ...GUILD_VARIABLES];
+
+/**
+ * Maps each event type to the template variables its context ACTUALLY
+ * populates. Pinned against eventBridge.ts by
+ * packages/systems/tests/unit/actions-event-variables.test.ts.
+ */
 export const EVENT_TYPE_VARIABLES: Record<ActionEventType, string[]> = {
-  memberJoin: [...GENERAL_VARIABLES],
-  memberLeave: [...GENERAL_VARIABLES],
-  memberBanned: [...GENERAL_VARIABLES, "{ban.reason}"],
-  memberUnbanned: [...GENERAL_VARIABLES, "{ban.reason}"],
-  messageCreated: [...GENERAL_VARIABLES, "{message.content}", "{message.id}", "{message.url}"],
-  messageDeleted: [...GENERAL_VARIABLES, "{message.content}", "{message.id}", "{message.url}"],
-  reactionAdded: [...GENERAL_VARIABLES, "{emoji}", "{emoji.name}", "{message.id}", "{message.url}"],
-  reactionRemoved: [...GENERAL_VARIABLES, "{emoji}", "{emoji.name}", "{message.id}", "{message.url}"],
-  roleAdded: [...GENERAL_VARIABLES, "{role}", "{role.name}", "{role.id}"],
-  roleRemoved: [...GENERAL_VARIABLES, "{role}", "{role.name}", "{role.id}"],
-  channelCreated: [...GENERAL_VARIABLES],
-  channelDeleted: [...GENERAL_VARIABLES],
-  voiceJoin: [...GENERAL_VARIABLES, "{voice.channel}", "{voice.channel.name}"],
-  voiceLeave: [...GENERAL_VARIABLES, "{voice.channel}", "{voice.channel.name}"],
-  nicknameChanged: [...GENERAL_VARIABLES, "{old.nickname}", "{new.nickname}"],
-  memberTimeout: [...GENERAL_VARIABLES, "{timeout.until}"],
-  threadCreated: [...GENERAL_VARIABLES, "{thread.name}", "{thread.id}"],
-  boostStart: [...GENERAL_VARIABLES, "{boost.since}"],
-  boostEnd: [...GENERAL_VARIABLES],
+  // buildMemberContext — a member, no channel
+  memberJoin: [...MEMBER_EVENT],
+  memberLeave: [...MEMBER_EVENT],
+  nicknameChanged: [...MEMBER_EVENT, "{old.nickname}", "{new.nickname}"],
+  memberTimeout: [...MEMBER_EVENT, "{timeout.until}"],
+  boostStart: [...MEMBER_EVENT, "{boost.since}"],
+  boostEnd: [...MEMBER_EVENT],
+
+  // buildBanContext — a user, no channel
+  memberBanned: [...MEMBER_EVENT, "{ban.reason}"],
+  memberUnbanned: [...MEMBER_EVENT, "{ban.reason}"],
+
+  // buildRoleContext — a member and a role, no channel
+  roleAdded: [...MEMBER_EVENT, "{role}", "{role.name}", "{role.id}"],
+  roleRemoved: [...MEMBER_EVENT, "{role}", "{role.name}", "{role.id}"],
+
+  // buildMessageContext / buildReactionContext — user and channel
+  messageCreated: [...MESSAGE_EVENT, "{message.content}", "{message.id}", "{message.url}"],
+  messageDeleted: [...MESSAGE_EVENT, "{message.content}", "{message.id}", "{message.url}"],
+  reactionAdded: [...MESSAGE_EVENT, "{emoji}", "{emoji.name}", "{message.id}", "{message.url}"],
+  reactionRemoved: [...MESSAGE_EVENT, "{emoji}", "{emoji.name}", "{message.id}", "{message.url}"],
+
+  // buildVoiceContext — user and channel
+  voiceJoin: [...MESSAGE_EVENT, "{voice.channel}", "{voice.channel.name}"],
+  voiceLeave: [...MESSAGE_EVENT, "{voice.channel}", "{voice.channel.name}"],
+
+  // buildChannelContext — a channel, and NO acting user on the gateway event
+  channelCreated: [...CHANNEL_VARIABLES, ...GUILD_VARIABLES],
+  channelDeleted: [...CHANNEL_VARIABLES, ...GUILD_VARIABLES],
+
+  // threadCreate — the owner is a bare id, so no username or tag is resolved
+  threadCreated: [
+    "{user}",
+    "{user.id}",
+    ...CHANNEL_VARIABLES,
+    ...GUILD_VARIABLES,
+    "{thread.name}",
+    "{thread.id}",
+  ],
 };
 
 export const CONDITION_TYPES = [
