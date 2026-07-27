@@ -14,7 +14,6 @@ function Arrow() {
     <Icon
       name="chevron_right"
       className="size-3.5 shrink-0 text-text-muted rtl:-scale-x-100"
-      aria-hidden="true"
     />
   );
 }

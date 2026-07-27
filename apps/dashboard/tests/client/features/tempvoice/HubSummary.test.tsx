@@ -15,6 +15,7 @@ describe("HubSummary", () => {
     render(<HubSummary resolvedName="Ahmad's Channel" categoryName="Voice Channels" />);
     expect(screen.getByText("Ahmad's Channel")).toBeInTheDocument();
     expect(screen.getByText("Voice Channels")).toBeInTheDocument();
+    expect(screen.getByText("summary.deletedWhenEmpty")).toBeInTheDocument();
   });
 
   it("falls back to the same-category wording when no category is set", () => {
