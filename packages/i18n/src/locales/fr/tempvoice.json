@@ -1,38 +1,49 @@
 {
   "label": "Hub de gestion",
   "title": "Salons vocaux temporaires",
-  "subtitle": "Configurez des hubs permettant aux utilisateurs de créer leurs propres salons vocaux éphémères en les rejoignant.",
-  "form": {
-    "sameAsHub": "Même que le salon hub",
-    "defaultNameTemplate": "Salon de {user}",
-    "hubChannel": "Salon hub",
-    "selectHub": "Sélectionner un salon vocal...",
-    "category": "Catégorie (optionnel)",
-    "nameTemplate": "Modèle de nom de salon",
-    "addConfig": "Ajouter une configuration",
-    "editConfig": "Modifier la configuration",
-    "save": "Enregistrer la configuration",
-    "saving": "Enregistrement...",
-    "cancel": "Annuler",
-    "delete": "Supprimer",
+  "subtitle": "Configurez des hubs qui permettent aux membres de créer leur propre salon vocal simplement en le rejoignant.",
+  "flow": {
+    "step1": "Quand quelqu'un rejoint ce salon vocal…",
+    "step2": "…FluxCore lui crée un salon nommé…",
+    "step3": "…placé dans…",
+    "step4": "…et il est supprimé automatiquement dès que tout le monde le quitte."
+  },
+  "fields": {
+    "hubPlaceholder": "Choisissez un salon vocal",
+    "categoryNone": "Même catégorie que le hub",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Hubs vocaux",
+    "counter": "{{used}} sur {{max}}",
+    "add": "Ajouter un hub",
     "edit": "Modifier",
-    "nameTemplateHint": "Utilisez {user} pour le nom d'affichage du membre"
+    "delete": "Supprimer"
+  },
+  "summary": {
+    "sameCategory": "même catégorie que le hub",
+    "deletedWhenEmpty": "supprimé quand il est vide"
   },
   "empty": {
-    "noConfigs": "Aucune configuration pour l'instant",
-    "noConfigsDesc": "Ajoutez un salon hub pour activer les salons vocaux temporaires.",
-    "addFirst": "Ajouter une configuration"
+    "exampleCaption": "Exemple — voici comment fonctionne un hub vocal :",
+    "cta": "Créez votre premier hub"
+  },
+  "editor": {
+    "save": "Enregistrer le hub",
+    "saving": "Enregistrement…",
+    "cancel": "Annuler"
+  },
+  "errors": {
+    "hubRequired": "Choisissez le salon vocal que les membres rejoindront.",
+    "generic": "Une erreur est survenue. Veuillez réessayer."
   },
   "toast": {
-    "updated": "Configuration mise à jour",
-    "created": "Configuration créée",
-    "removed": "Configuration supprimée"
-  },
-  "hubs": {
-    "configured": "Hubs configurés",
-    "add": "Ajouter un hub",
-    "hubLabel": "Hub : #{{channel}}",
-    "templateLabel": "Modèle : {{template}}",
-    "categorySuffix": " — Catégorie : #{{channel}}"
+    "created": "Hub créé",
+    "updated": "Hub mis à jour",
+    "removed": "Hub supprimé",
+    "undo": "Annuler",
+    "restored": "Hub restauré",
+    "deleteFailed": "Impossible de supprimer ce hub. Veuillez réessayer.",
+    "undoFailed": "Impossible de restaurer ce hub. Il ne rentre peut-être plus dans la limite de hubs."
   }
 }

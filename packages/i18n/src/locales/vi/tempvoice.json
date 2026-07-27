@@ -1,38 +1,49 @@
 {
   "label": "Trung Tâm Quản Lý",
   "title": "Kênh Thoại Tạm Thời",
-  "subtitle": "Cấu hình các trung tâm cho phép người dùng tạo kênh thoại tạm thời của riêng họ khi tham gia.",
-  "form": {
-    "sameAsHub": "Giống như kênh hub",
-    "defaultNameTemplate": "Kênh của {user}",
-    "hubChannel": "Kênh Hub",
-    "selectHub": "Chọn kênh thoại...",
-    "category": "Danh Mục (tùy chọn)",
-    "nameTemplate": "Mẫu Tên Kênh",
-    "addConfig": "Thêm Cấu Hình",
-    "editConfig": "Chỉnh Sửa Cấu Hình",
-    "save": "Lưu Cấu Hình",
-    "saving": "Đang lưu...",
-    "cancel": "Hủy",
-    "delete": "Xóa",
-    "edit": "Chỉnh Sửa",
-    "nameTemplateHint": "Use {user} for the member's display name"
+  "subtitle": "Thiết lập các hub cho phép thành viên tự tạo kênh thoại riêng chỉ bằng cách tham gia.",
+  "flow": {
+    "step1": "Khi ai đó tham gia kênh thoại này…",
+    "step2": "…FluxCore tạo cho họ một kênh có tên…",
+    "step3": "…đặt trong…",
+    "step4": "…và kênh tự động bị xóa ngay khi mọi người rời đi."
+  },
+  "fields": {
+    "hubPlaceholder": "Chọn một kênh thoại",
+    "categoryNone": "Cùng danh mục với hub",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Hub thoại",
+    "counter": "{{used}} trên {{max}}",
+    "add": "Thêm hub",
+    "edit": "Chỉnh sửa",
+    "delete": "Xóa"
+  },
+  "summary": {
+    "sameCategory": "cùng danh mục với hub",
+    "deletedWhenEmpty": "xóa khi trống"
   },
   "empty": {
-    "noConfigs": "Chưa có cấu hình nào",
-    "noConfigsDesc": "Thêm kênh hub để bật kênh thoại tạm thời.",
-    "addFirst": "Thêm Cấu Hình"
+    "exampleCaption": "Ví dụ — hub thoại hoạt động như sau:",
+    "cta": "Tạo hub đầu tiên của bạn"
+  },
+  "editor": {
+    "save": "Lưu hub",
+    "saving": "Đang lưu…",
+    "cancel": "Hủy"
+  },
+  "errors": {
+    "hubRequired": "Chọn kênh thoại mà thành viên sẽ tham gia.",
+    "generic": "Đã xảy ra lỗi. Vui lòng thử lại."
   },
   "toast": {
-    "updated": "Đã cập nhật cấu hình",
-    "created": "Đã tạo cấu hình",
-    "removed": "Đã xóa cấu hình"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Đã tạo hub",
+    "updated": "Đã cập nhật hub",
+    "removed": "Đã xóa hub",
+    "undo": "Hoàn tác",
+    "restored": "Đã khôi phục hub",
+    "deleteFailed": "Không thể xóa hub đó. Vui lòng thử lại.",
+    "undoFailed": "Không thể khôi phục hub đó. Có thể nó không còn nằm trong giới hạn số hub."
   }
 }

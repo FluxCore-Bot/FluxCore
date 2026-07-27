@@ -1,38 +1,49 @@
 {
   "label": "Kudeaketa Gunea",
   "title": "Aldi Baterako Ahots Kanalak",
-  "subtitle": "Konfiguratu erabiltzaileei biltegi bat sartuz beren behin-behineko ahots kanalak sortzeko aukera ematen dieten guneak.",
-  "form": {
-    "sameAsHub": "Biltegi-kanalaren berdina",
-    "defaultNameTemplate": "{user}ren Kanala",
-    "hubChannel": "Biltegi-kanala",
-    "selectHub": "Hautatu ahots-kanal bat...",
-    "category": "Kategoria (aukerakoa)",
-    "nameTemplate": "Kanalaren izen txantiloia",
-    "addConfig": "Konfigurazioa gehitu",
-    "editConfig": "Konfigurazioa editatu",
-    "save": "Konfigurazioa gorde",
-    "saving": "Gordetzen...",
-    "cancel": "Utzi",
-    "delete": "Ezabatu",
+  "subtitle": "Konfiguratu guneak, kideek beren ahots kanalak sor ditzaten sartze hutsarekin.",
+  "flow": {
+    "step1": "Norbait ahots kanal honetara sartzen denean…",
+    "step2": "…FluxCorek kanal bat sortuko dio izen honekin…",
+    "step3": "…hemen kokatuta…",
+    "step4": "…eta automatikoki ezabatuko da denak irten bezain laster."
+  },
+  "fields": {
+    "hubPlaceholder": "Aukeratu ahots kanal bat",
+    "categoryNone": "Gunearen kategoria bera",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Ahots guneak",
+    "counter": "{{used}} / {{max}}",
+    "add": "Gehitu gunea",
     "edit": "Editatu",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Ezabatu"
+  },
+  "summary": {
+    "sameCategory": "gunearen kategoria bera",
+    "deletedWhenEmpty": "hutsik geratzean ezabatzen da"
   },
   "empty": {
-    "noConfigs": "Oraindik ez dago konfigaraziorik",
-    "noConfigsDesc": "Gehitu biltegi-kanal bat aldi baterako ahots kanalak gaitzeko.",
-    "addFirst": "Konfigurazioa gehitu"
+    "exampleCaption": "Adibidea — honela funtzionatzen du ahots gune batek:",
+    "cta": "Sortu zure lehen gunea"
+  },
+  "editor": {
+    "save": "Gorde gunea",
+    "saving": "Gordetzen…",
+    "cancel": "Utzi"
+  },
+  "errors": {
+    "hubRequired": "Aukeratu kideak sartuko diren ahots kanala.",
+    "generic": "Zerbait gaizki joan da. Saiatu berriro."
   },
   "toast": {
-    "updated": "Konfigurazioa eguneratuta",
-    "created": "Konfigurazioa sortuta",
-    "removed": "Konfigurazioa kenduta"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Gunea sortuta",
+    "updated": "Gunea eguneratuta",
+    "removed": "Gunea kenduta",
+    "undo": "Desegin",
+    "restored": "Gunea leheneratuta",
+    "deleteFailed": "Ezin izan da gune hori kendu. Saiatu berriro.",
+    "undoFailed": "Ezin izan da gune hori leheneratu. Baliteke jada ez sartzea guneen mugan."
   }
 }

@@ -1,38 +1,49 @@
 {
   "label": "Administrasjonshub",
   "title": "Midlertidige talekanaler",
-  "subtitle": "Konfigurer huber som lar brukere opprette sine egne midlertidige talekanaler ved å bli med.",
-  "form": {
-    "sameAsHub": "Samme som hubkanalen",
-    "defaultNameTemplate": "{user}s kanal",
-    "hubChannel": "Hubkanal",
-    "selectHub": "Velg en talekanal...",
-    "category": "Kategori (valgfritt)",
-    "nameTemplate": "Kanalnavn-mal",
-    "addConfig": "Legg til konfigurasjon",
-    "editConfig": "Rediger konfigurasjon",
-    "save": "Lagre konfigurasjon",
-    "saving": "Lagrer...",
-    "cancel": "Avbryt",
-    "delete": "Slett",
+  "subtitle": "Sett opp hubber som lar medlemmer opprette sin egen talekanal bare ved å bli med.",
+  "flow": {
+    "step1": "Når noen blir med i denne talekanalen…",
+    "step2": "…oppretter FluxCore en kanal til dem med navnet…",
+    "step3": "…plassert i…",
+    "step4": "…og den slettes automatisk når alle har forlatt den."
+  },
+  "fields": {
+    "hubPlaceholder": "Velg en talekanal",
+    "categoryNone": "Samme kategori som hubben",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Talehubber",
+    "counter": "{{used}} av {{max}}",
+    "add": "Legg til hub",
     "edit": "Rediger",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Slett"
+  },
+  "summary": {
+    "sameCategory": "samme kategori som hubben",
+    "deletedWhenEmpty": "slettes når den er tom"
   },
   "empty": {
-    "noConfigs": "Ingen konfigurasjoner ennå",
-    "noConfigsDesc": "Legg til en hubkanal for å aktivere midlertidige talekanaler.",
-    "addFirst": "Legg til konfigurasjon"
+    "exampleCaption": "Eksempel — slik fungerer en talehub:",
+    "cta": "Opprett din første hub"
+  },
+  "editor": {
+    "save": "Lagre hub",
+    "saving": "Lagrer…",
+    "cancel": "Avbryt"
+  },
+  "errors": {
+    "hubRequired": "Velg talekanalen medlemmene skal bli med i.",
+    "generic": "Noe gikk galt. Prøv igjen."
   },
   "toast": {
-    "updated": "Konfigurasjon oppdatert",
-    "created": "Konfigurasjon opprettet",
-    "removed": "Konfigurasjon fjernet"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Hub opprettet",
+    "updated": "Hub oppdatert",
+    "removed": "Hub fjernet",
+    "undo": "Angre",
+    "restored": "Hub gjenopprettet",
+    "deleteFailed": "Kunne ikke fjerne den hubben. Prøv igjen.",
+    "undoFailed": "Kunne ikke gjenopprette den hubben. Den passer kanskje ikke lenger innenfor hub-grensen."
   }
 }

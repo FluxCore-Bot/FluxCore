@@ -1,38 +1,49 @@
 {
   "label": "Vozlišče upravljanja",
   "title": "Začasni glasovni kanali",
-  "subtitle": "Konfigurirajte vozlišča, ki uporabnikom ob pridružitvi omogočajo ustvarjanje lastnih kratkotrajnih glasovnih kanalov.",
-  "form": {
-    "sameAsHub": "Enako kot kanal vozlišča",
-    "defaultNameTemplate": "Kanal {user}",
-    "hubChannel": "Kanal vozlišča",
-    "selectHub": "Izberite glasovni kanal...",
-    "category": "Kategorija (neobvezno)",
-    "nameTemplate": "Predloga za ime kanala",
-    "addConfig": "Dodaj konfiguracijo",
-    "editConfig": "Uredi konfiguracijo",
-    "save": "Shrani konfiguracijo",
-    "saving": "Shranjevanje...",
-    "cancel": "Prekliči",
-    "delete": "Izbriši",
+  "subtitle": "Nastavite vozlišča, ki članom omogočijo, da si že s pridružitvijo ustvarijo svoj glasovni kanal.",
+  "flow": {
+    "step1": "Ko se nekdo pridruži temu glasovnemu kanalu…",
+    "step2": "…mu FluxCore ustvari kanal z imenom…",
+    "step3": "…umeščen v…",
+    "step4": "…in ko vsi odidejo, se samodejno izbriše."
+  },
+  "fields": {
+    "hubPlaceholder": "Izberite glasovni kanal",
+    "categoryNone": "Ista kategorija kot vozlišče",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Glasovna vozlišča",
+    "counter": "{{used}} od {{max}}",
+    "add": "Dodaj vozlišče",
     "edit": "Uredi",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Izbriši"
+  },
+  "summary": {
+    "sameCategory": "ista kategorija kot vozlišče",
+    "deletedWhenEmpty": "izbriše se, ko je prazen"
   },
   "empty": {
-    "noConfigs": "Konfiguracij še ni",
-    "noConfigsDesc": "Dodajte kanal vozlišča, da omogočite začasne glasovne kanale.",
-    "addFirst": "Dodaj konfiguracijo"
+    "exampleCaption": "Primer — tako deluje glasovno vozlišče:",
+    "cta": "Ustvarite svoje prvo vozlišče"
+  },
+  "editor": {
+    "save": "Shrani vozlišče",
+    "saving": "Shranjevanje…",
+    "cancel": "Prekliči"
+  },
+  "errors": {
+    "hubRequired": "Izberite glasovni kanal, ki se mu bodo člani pridružili.",
+    "generic": "Nekaj je šlo narobe. Poskusite znova."
   },
   "toast": {
-    "updated": "Konfiguracija posodobljena",
-    "created": "Konfiguracija ustvarjena",
-    "removed": "Konfiguracija odstranjena"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Vozlišče ustvarjeno",
+    "updated": "Vozlišče posodobljeno",
+    "removed": "Vozlišče odstranjeno",
+    "undo": "Razveljavi",
+    "restored": "Vozlišče obnovljeno",
+    "deleteFailed": "Tega vozlišča ni bilo mogoče odstraniti. Poskusite znova.",
+    "undoFailed": "Tega vozlišča ni bilo mogoče obnoviti. Morda ne sodi več v omejitev vozlišč."
   }
 }

@@ -1,38 +1,49 @@
 {
   "label": "Verwaltungs-Hub",
   "title": "Temporäre Sprachkanäle",
-  "subtitle": "Konfigurieren Sie Hubs, die es Benutzern ermöglichen, beim Beitreten eigene temporäre Sprachkanäle zu erstellen.",
-  "form": {
-    "sameAsHub": "Gleich wie Hub-Kanal",
-    "defaultNameTemplate": "Kanal von {user}",
-    "hubChannel": "Hub-Kanal",
-    "selectHub": "Sprachkanal auswählen...",
-    "category": "Kategorie (optional)",
-    "nameTemplate": "Kanalname-Vorlage",
-    "addConfig": "Konfiguration hinzufügen",
-    "editConfig": "Konfiguration bearbeiten",
-    "save": "Konfiguration speichern",
-    "saving": "Speichern...",
-    "cancel": "Abbrechen",
-    "delete": "Löschen",
+  "subtitle": "Richten Sie Hubs ein, mit denen Mitglieder allein durch Beitreten ihren eigenen Sprachkanal erstellen.",
+  "flow": {
+    "step1": "Wenn jemand diesem Sprachkanal beitritt…",
+    "step2": "…erstellt FluxCore für ihn einen Kanal mit dem Namen…",
+    "step3": "…platziert in…",
+    "step4": "…und er wird automatisch gelöscht, sobald alle ihn verlassen haben."
+  },
+  "fields": {
+    "hubPlaceholder": "Sprachkanal auswählen",
+    "categoryNone": "Gleiche Kategorie wie der Hub",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Sprach-Hubs",
+    "counter": "{{used}} von {{max}}",
+    "add": "Hub hinzufügen",
     "edit": "Bearbeiten",
-    "nameTemplateHint": "Verwende {user} für den Anzeigenamen des Mitglieds"
+    "delete": "Löschen"
+  },
+  "summary": {
+    "sameCategory": "gleiche Kategorie wie der Hub",
+    "deletedWhenEmpty": "wird gelöscht, wenn leer"
   },
   "empty": {
-    "noConfigs": "Noch keine Konfigurationen",
-    "noConfigsDesc": "Fügen Sie einen Hub-Kanal hinzu, um temporäre Sprachkanäle zu aktivieren.",
-    "addFirst": "Konfiguration hinzufügen"
+    "exampleCaption": "Beispiel — so funktioniert ein Sprach-Hub:",
+    "cta": "Erstellen Sie Ihren ersten Hub"
+  },
+  "editor": {
+    "save": "Hub speichern",
+    "saving": "Speichern…",
+    "cancel": "Abbrechen"
+  },
+  "errors": {
+    "hubRequired": "Wählen Sie den Sprachkanal aus, dem Mitglieder beitreten werden.",
+    "generic": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
   },
   "toast": {
-    "updated": "Konfiguration aktualisiert",
-    "created": "Konfiguration erstellt",
-    "removed": "Konfiguration entfernt"
-  },
-  "hubs": {
-    "configured": "Konfigurierte Hubs",
-    "add": "Hub hinzufügen",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Vorlage: {{template}}",
-    "categorySuffix": " — Kategorie: #{{channel}}"
+    "created": "Hub erstellt",
+    "updated": "Hub aktualisiert",
+    "removed": "Hub entfernt",
+    "undo": "Rückgängig",
+    "restored": "Hub wiederhergestellt",
+    "deleteFailed": "Dieser Hub konnte nicht entfernt werden. Bitte versuchen Sie es erneut.",
+    "undoFailed": "Dieser Hub konnte nicht wiederhergestellt werden. Möglicherweise passt er nicht mehr in das Hub-Limit."
   }
 }

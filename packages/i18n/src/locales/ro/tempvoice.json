@@ -1,38 +1,49 @@
 {
   "label": "Hub de Gestionare",
   "title": "Canale Vocale Temporare",
-  "subtitle": "Configurează hub-uri care permit utilizatorilor să creeze propriile canale vocale efemere la intrare.",
-  "form": {
-    "sameAsHub": "Același ca și canalul hub",
-    "defaultNameTemplate": "Canalul lui {user}",
-    "hubChannel": "Canal Hub",
-    "selectHub": "Selectează un canal vocal...",
-    "category": "Categorie (opțional)",
-    "nameTemplate": "Șablon Nume Canal",
-    "addConfig": "Adaugă Configurație",
-    "editConfig": "Editează Configurație",
-    "save": "Salvează Configurația",
-    "saving": "Se salvează...",
-    "cancel": "Anulează",
-    "delete": "Șterge",
+  "subtitle": "Configurează hub-uri care le permit membrilor să își creeze propriul canal vocal doar intrând în ele.",
+  "flow": {
+    "step1": "Când cineva intră în acest canal vocal…",
+    "step2": "…FluxCore îi creează un canal numit…",
+    "step3": "…plasat în…",
+    "step4": "…iar canalul se șterge automat imediat ce pleacă toată lumea."
+  },
+  "fields": {
+    "hubPlaceholder": "Alege un canal vocal",
+    "categoryNone": "Aceeași categorie ca hub-ul",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Hub-uri vocale",
+    "counter": "{{used}} din {{max}}",
+    "add": "Adaugă hub",
     "edit": "Editează",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Șterge"
+  },
+  "summary": {
+    "sameCategory": "aceeași categorie ca hub-ul",
+    "deletedWhenEmpty": "se șterge când rămâne gol"
   },
   "empty": {
-    "noConfigs": "Nicio configurație încă",
-    "noConfigsDesc": "Adaugă un canal hub pentru a activa canalele vocale temporare.",
-    "addFirst": "Adaugă Configurație"
+    "exampleCaption": "Exemplu — așa funcționează un hub vocal:",
+    "cta": "Creează primul tău hub"
+  },
+  "editor": {
+    "save": "Salvează hub-ul",
+    "saving": "Se salvează…",
+    "cancel": "Anulează"
+  },
+  "errors": {
+    "hubRequired": "Alege canalul vocal în care vor intra membrii.",
+    "generic": "Ceva nu a mers bine. Încearcă din nou."
   },
   "toast": {
-    "updated": "Configurație actualizată",
-    "created": "Configurație creată",
-    "removed": "Configurație eliminată"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Hub creat",
+    "updated": "Hub actualizat",
+    "removed": "Hub eliminat",
+    "undo": "Anulează acțiunea",
+    "restored": "Hub restaurat",
+    "deleteFailed": "Hub-ul nu a putut fi eliminat. Încearcă din nou.",
+    "undoFailed": "Hub-ul nu a putut fi restaurat. S-ar putea să nu mai încapă în limita de hub-uri."
   }
 }

@@ -1,38 +1,49 @@
 {
   "label": "Centrum správy",
   "title": "Dočasné hlasové kanály",
-  "subtitle": "Nakonfigurujte rozbočovače, ktoré umožňujú používateľom vytvárať vlastné dočasné hlasové kanály po pripojení.",
-  "form": {
-    "sameAsHub": "Rovnaký ako rozbočovač",
-    "defaultNameTemplate": "Kanál {user}",
-    "hubChannel": "Kanál rozbočovača",
-    "selectHub": "Vybrať hlasový kanál...",
-    "category": "Kategória (voliteľné)",
-    "nameTemplate": "Šablóna názvu kanálu",
-    "addConfig": "Pridať konfiguráciu",
-    "editConfig": "Upraviť konfiguráciu",
-    "save": "Uložiť konfiguráciu",
-    "saving": "Ukladanie...",
-    "cancel": "Zrušiť",
-    "delete": "Odstrániť",
+  "subtitle": "Nastavte huby, vďaka ktorým si členovia vytvoria vlastný hlasový kanál už len pripojením.",
+  "flow": {
+    "step1": "Keď sa niekto pripojí k tomuto hlasovému kanálu…",
+    "step2": "…FluxCore mu vytvorí kanál s názvom…",
+    "step3": "…umiestnený v…",
+    "step4": "…a hneď ako všetci odídu, kanál sa automaticky zmaže."
+  },
+  "fields": {
+    "hubPlaceholder": "Vyberte hlasový kanál",
+    "categoryNone": "Rovnaká kategória ako hub",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Hlasové huby",
+    "counter": "{{used}} z {{max}}",
+    "add": "Pridať hub",
     "edit": "Upraviť",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Odstrániť"
+  },
+  "summary": {
+    "sameCategory": "rovnaká kategória ako hub",
+    "deletedWhenEmpty": "zmaže sa, keď je prázdny"
   },
   "empty": {
-    "noConfigs": "Zatiaľ žiadne konfigurácie",
-    "noConfigsDesc": "Pridajte kanál rozbočovača pre povolenie dočasných hlasových kanálov.",
-    "addFirst": "Pridať konfiguráciu"
+    "exampleCaption": "Príklad — takto hlasový hub funguje:",
+    "cta": "Vytvorte svoj prvý hub"
+  },
+  "editor": {
+    "save": "Uložiť hub",
+    "saving": "Ukladanie…",
+    "cancel": "Zrušiť"
+  },
+  "errors": {
+    "hubRequired": "Vyberte hlasový kanál, ku ktorému sa budú členovia pripájať.",
+    "generic": "Niečo sa pokazilo. Skúste to znova."
   },
   "toast": {
-    "updated": "Konfigurácia aktualizovaná",
-    "created": "Konfigurácia vytvorená",
-    "removed": "Konfigurácia odstránená"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Hub vytvorený",
+    "updated": "Hub aktualizovaný",
+    "removed": "Hub odstránený",
+    "undo": "Späť",
+    "restored": "Hub obnovený",
+    "deleteFailed": "Tento hub sa nepodarilo odstrániť. Skúste to znova.",
+    "undoFailed": "Tento hub sa nepodarilo obnoviť. Možno sa už nezmestí do limitu hubov."
   }
 }

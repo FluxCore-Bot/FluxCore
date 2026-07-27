@@ -1,38 +1,49 @@
 {
   "label": "Pusat Manajemen",
   "title": "Saluran Suara Sementara",
-  "subtitle": "Konfigurasikan hub yang memungkinkan pengguna membuat saluran suara sementara milik mereka sendiri saat bergabung.",
-  "form": {
-    "sameAsHub": "Sama dengan saluran hub",
-    "defaultNameTemplate": "Saluran {user}",
-    "hubChannel": "Saluran Hub",
-    "selectHub": "Pilih saluran suara...",
-    "category": "Kategori (opsional)",
-    "nameTemplate": "Template Nama Saluran",
-    "addConfig": "Tambah Konfigurasi",
-    "editConfig": "Edit Konfigurasi",
-    "save": "Simpan Konfigurasi",
-    "saving": "Menyimpan...",
-    "cancel": "Batal",
-    "delete": "Hapus",
-    "edit": "Edit",
-    "nameTemplateHint": "Use {user} for the member's display name"
+  "subtitle": "Siapkan hub agar anggota bisa membuat saluran suara mereka sendiri cukup dengan bergabung.",
+  "flow": {
+    "step1": "Saat seseorang bergabung ke saluran suara ini…",
+    "step2": "…FluxCore membuatkan saluran bernama…",
+    "step3": "…yang ditempatkan di…",
+    "step4": "…dan saluran itu terhapus otomatis begitu semua orang keluar."
+  },
+  "fields": {
+    "hubPlaceholder": "Pilih saluran suara",
+    "categoryNone": "Kategori yang sama dengan hub",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Hub suara",
+    "counter": "{{used}} dari {{max}}",
+    "add": "Tambah hub",
+    "edit": "Ubah",
+    "delete": "Hapus"
+  },
+  "summary": {
+    "sameCategory": "kategori yang sama dengan hub",
+    "deletedWhenEmpty": "terhapus saat kosong"
   },
   "empty": {
-    "noConfigs": "Belum ada konfigurasi",
-    "noConfigsDesc": "Tambahkan saluran hub untuk mengaktifkan saluran suara sementara.",
-    "addFirst": "Tambah Konfigurasi"
+    "exampleCaption": "Contoh — beginilah cara kerja hub suara:",
+    "cta": "Buat hub pertama Anda"
+  },
+  "editor": {
+    "save": "Simpan hub",
+    "saving": "Menyimpan…",
+    "cancel": "Batal"
+  },
+  "errors": {
+    "hubRequired": "Pilih saluran suara yang akan dimasuki anggota.",
+    "generic": "Terjadi kesalahan. Silakan coba lagi."
   },
   "toast": {
-    "updated": "Konfigurasi diperbarui",
-    "created": "Konfigurasi dibuat",
-    "removed": "Konfigurasi dihapus"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Hub dibuat",
+    "updated": "Hub diperbarui",
+    "removed": "Hub dihapus",
+    "undo": "Urungkan",
+    "restored": "Hub dipulihkan",
+    "deleteFailed": "Hub itu tidak bisa dihapus. Silakan coba lagi.",
+    "undoFailed": "Hub itu tidak bisa dipulihkan. Mungkin sudah tidak muat dalam batas jumlah hub."
   }
 }

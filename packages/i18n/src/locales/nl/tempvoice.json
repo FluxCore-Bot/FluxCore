@@ -1,38 +1,49 @@
 {
   "label": "Beheerhub",
   "title": "Tijdelijke spraakkanalen",
-  "subtitle": "Configureer hubs waarmee gebruikers hun eigen tijdelijke spraakkanalen kunnen aanmaken wanneer ze deelnemen.",
-  "form": {
-    "sameAsHub": "Hetzelfde als hubkanaal",
-    "defaultNameTemplate": "Kanaal van {user}",
-    "hubChannel": "Hubkanaal",
-    "selectHub": "Selecteer een spraakkanaal...",
-    "category": "Categorie (optioneel)",
-    "nameTemplate": "Kanaalnaamsjabloon",
-    "addConfig": "Configuratie toevoegen",
-    "editConfig": "Configuratie bewerken",
-    "save": "Configuratie opslaan",
-    "saving": "Opslaan...",
-    "cancel": "Annuleren",
-    "delete": "Verwijderen",
+  "subtitle": "Stel hubs in waarmee leden hun eigen spraakkanaal maken door er simpelweg aan deel te nemen.",
+  "flow": {
+    "step1": "Wanneer iemand dit spraakkanaal binnenkomt…",
+    "step2": "…maakt FluxCore voor diegene een kanaal met de naam…",
+    "step3": "…geplaatst in…",
+    "step4": "…en het wordt automatisch verwijderd zodra iedereen weg is."
+  },
+  "fields": {
+    "hubPlaceholder": "Kies een spraakkanaal",
+    "categoryNone": "Zelfde categorie als de hub",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Spraakhubs",
+    "counter": "{{used}} van {{max}}",
+    "add": "Hub toevoegen",
     "edit": "Bewerken",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Verwijderen"
+  },
+  "summary": {
+    "sameCategory": "zelfde categorie als de hub",
+    "deletedWhenEmpty": "wordt verwijderd als het leeg is"
   },
   "empty": {
-    "noConfigs": "Nog geen configuraties",
-    "noConfigsDesc": "Voeg een hubkanaal toe om tijdelijke spraakkanalen in te schakelen.",
-    "addFirst": "Configuratie toevoegen"
+    "exampleCaption": "Voorbeeld — zo werkt een spraakhub:",
+    "cta": "Maak je eerste hub"
+  },
+  "editor": {
+    "save": "Hub opslaan",
+    "saving": "Opslaan…",
+    "cancel": "Annuleren"
+  },
+  "errors": {
+    "hubRequired": "Kies het spraakkanaal waar leden binnenkomen.",
+    "generic": "Er is iets misgegaan. Probeer het opnieuw."
   },
   "toast": {
-    "updated": "Configuratie bijgewerkt",
-    "created": "Configuratie aangemaakt",
-    "removed": "Configuratie verwijderd"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Hub aangemaakt",
+    "updated": "Hub bijgewerkt",
+    "removed": "Hub verwijderd",
+    "undo": "Ongedaan maken",
+    "restored": "Hub hersteld",
+    "deleteFailed": "Kon die hub niet verwijderen. Probeer het opnieuw.",
+    "undoFailed": "Kon die hub niet herstellen. Mogelijk past hij niet meer binnen de hublimiet."
   }
 }

@@ -1,38 +1,49 @@
 {
   "label": "Valdymo centras",
   "title": "Laikini balso kanalai",
-  "subtitle": "Konfigūruokite centrus, kurie leidžia vartotojams kurti savo laikinus balso kanalus prisijungus.",
-  "form": {
-    "sameAsHub": "Tas pats kaip centras kanalas",
-    "defaultNameTemplate": "{user} kanalas",
-    "hubChannel": "Centro kanalas",
-    "selectHub": "Pasirinkite balso kanalą...",
-    "category": "Kategorija (neprivaloma)",
-    "nameTemplate": "Kanalo pavadinimo šablonas",
-    "addConfig": "Pridėti konfigūraciją",
-    "editConfig": "Redaguoti konfigūraciją",
-    "save": "Išsaugoti konfigūraciją",
-    "saving": "Saugoma...",
-    "cancel": "Atšaukti",
-    "delete": "Ištrinti",
+  "subtitle": "Sukurkite centrus, kuriuose nariai vien prisijungę susikuria savo balso kanalą.",
+  "flow": {
+    "step1": "Kai kas nors prisijungia prie šio balso kanalo…",
+    "step2": "…FluxCore sukuria jam kanalą pavadinimu…",
+    "step3": "…patalpintą kategorijoje…",
+    "step4": "…ir kanalas automatiškai ištrinamas, kai visi išeina."
+  },
+  "fields": {
+    "hubPlaceholder": "Pasirinkite balso kanalą",
+    "categoryNone": "Ta pati kategorija kaip centro",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Balso centrai",
+    "counter": "{{used}} iš {{max}}",
+    "add": "Pridėti centrą",
     "edit": "Redaguoti",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Ištrinti"
+  },
+  "summary": {
+    "sameCategory": "ta pati kategorija kaip centro",
+    "deletedWhenEmpty": "ištrinamas, kai tuščias"
   },
   "empty": {
-    "noConfigs": "Konfigūracijų dar nėra",
-    "noConfigsDesc": "Pridėkite centro kanalą, kad įgalintumėte laikinus balso kanalus.",
-    "addFirst": "Pridėti konfigūraciją"
+    "exampleCaption": "Pavyzdys — štai kaip veikia balso centras:",
+    "cta": "Sukurkite savo pirmąjį centrą"
+  },
+  "editor": {
+    "save": "Išsaugoti centrą",
+    "saving": "Saugoma…",
+    "cancel": "Atšaukti"
+  },
+  "errors": {
+    "hubRequired": "Pasirinkite balso kanalą, prie kurio jungsis nariai.",
+    "generic": "Kažkas nepavyko. Bandykite dar kartą."
   },
   "toast": {
-    "updated": "Konfigūracija atnaujinta",
-    "created": "Konfigūracija sukurta",
-    "removed": "Konfigūracija pašalinta"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Centras sukurtas",
+    "updated": "Centras atnaujintas",
+    "removed": "Centras pašalintas",
+    "undo": "Anuliuoti",
+    "restored": "Centras atkurtas",
+    "deleteFailed": "Nepavyko pašalinti šio centro. Bandykite dar kartą.",
+    "undoFailed": "Nepavyko atkurti šio centro. Jis gali nebetilpti į centrų limitą."
   }
 }

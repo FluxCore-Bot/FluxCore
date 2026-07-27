@@ -1,38 +1,49 @@
 {
   "label": "Centre de gestió",
   "title": "Canals de veu temporals",
-  "subtitle": "Configura centres que permeten als usuaris crear els seus propis canals de veu efímers en unir-se.",
-  "form": {
-    "sameAsHub": "Igual que el canal centre",
-    "defaultNameTemplate": "Canal d'{user}",
-    "hubChannel": "Canal centre",
-    "selectHub": "Selecciona un canal de veu...",
-    "category": "Categoria (opcional)",
-    "nameTemplate": "Plantilla del nom del canal",
-    "addConfig": "Afegir configuració",
-    "editConfig": "Editar configuració",
-    "save": "Desar configuració",
-    "saving": "Desant...",
-    "cancel": "Cancel·lar",
-    "delete": "Eliminar",
+  "subtitle": "Configura hubs que permetin als membres crear els seus propis canals de veu només entrant-hi.",
+  "flow": {
+    "step1": "Quan algú entra en aquest canal de veu…",
+    "step2": "…FluxCore li crea un canal anomenat…",
+    "step3": "…col·locat dins de…",
+    "step4": "…i s'elimina automàticament quan tothom en surt."
+  },
+  "fields": {
+    "hubPlaceholder": "Tria un canal de veu",
+    "categoryNone": "La mateixa categoria que el hub",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Hubs de veu",
+    "counter": "{{used}} de {{max}}",
+    "add": "Afegir hub",
     "edit": "Editar",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Eliminar"
+  },
+  "summary": {
+    "sameCategory": "la mateixa categoria que el hub",
+    "deletedWhenEmpty": "s'elimina quan queda buit"
   },
   "empty": {
-    "noConfigs": "Encara no hi ha configuracions",
-    "noConfigsDesc": "Afegeix un canal centre per activar els canals de veu temporals.",
-    "addFirst": "Afegir configuració"
+    "exampleCaption": "Exemple — així funciona un hub de veu:",
+    "cta": "Crea el teu primer hub"
+  },
+  "editor": {
+    "save": "Desar el hub",
+    "saving": "S'està desant…",
+    "cancel": "Cancel·lar"
+  },
+  "errors": {
+    "hubRequired": "Tria el canal de veu on entraran els membres.",
+    "generic": "Alguna cosa ha anat malament. Torna-ho a provar."
   },
   "toast": {
-    "updated": "Configuració actualitzada",
-    "created": "Configuració creada",
-    "removed": "Configuració eliminada"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Hub creat",
+    "updated": "Hub actualitzat",
+    "removed": "Hub eliminat",
+    "undo": "Desfés",
+    "restored": "Hub restaurat",
+    "deleteFailed": "No s'ha pogut eliminar aquest hub. Torna-ho a provar.",
+    "undoFailed": "No s'ha pogut restaurar aquest hub. Potser ja no hi cap dins del límit de hubs."
   }
 }

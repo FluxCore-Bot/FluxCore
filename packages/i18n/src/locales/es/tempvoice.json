@@ -1,38 +1,49 @@
 {
   "label": "Hub de gestión",
   "title": "Canales de voz temporales",
-  "subtitle": "Configure hubs que permiten a los usuarios crear sus propios canales de voz efímeros al unirse.",
-  "form": {
-    "sameAsHub": "Igual que el canal hub",
-    "defaultNameTemplate": "Canal de {user}",
-    "hubChannel": "Canal hub",
-    "selectHub": "Seleccionar un canal de voz...",
-    "category": "Categoría (opcional)",
-    "nameTemplate": "Plantilla de nombre de canal",
-    "addConfig": "Agregar configuración",
-    "editConfig": "Editar configuración",
-    "save": "Guardar configuración",
-    "saving": "Guardando...",
-    "cancel": "Cancelar",
-    "delete": "Eliminar",
+  "subtitle": "Configura hubs que permitan a los miembros crear sus propios canales de voz con solo unirse.",
+  "flow": {
+    "step1": "Cuando alguien entra en este canal de voz…",
+    "step2": "…FluxCore le crea un canal llamado…",
+    "step3": "…ubicado en…",
+    "step4": "…y se elimina automáticamente en cuanto todos salen."
+  },
+  "fields": {
+    "hubPlaceholder": "Elige un canal de voz",
+    "categoryNone": "La misma categoría que el hub",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Hubs de voz",
+    "counter": "{{used}} de {{max}}",
+    "add": "Añadir hub",
     "edit": "Editar",
-    "nameTemplateHint": "Usa {user} para el nombre visible del miembro"
+    "delete": "Eliminar"
+  },
+  "summary": {
+    "sameCategory": "la misma categoría que el hub",
+    "deletedWhenEmpty": "se elimina al quedar vacío"
   },
   "empty": {
-    "noConfigs": "Aún no hay configuraciones",
-    "noConfigsDesc": "Agregue un canal hub para habilitar los canales de voz temporales.",
-    "addFirst": "Agregar configuración"
+    "exampleCaption": "Ejemplo — así funciona un hub de voz:",
+    "cta": "Crea tu primer hub"
+  },
+  "editor": {
+    "save": "Guardar hub",
+    "saving": "Guardando…",
+    "cancel": "Cancelar"
+  },
+  "errors": {
+    "hubRequired": "Elige el canal de voz al que se unirán los miembros.",
+    "generic": "Algo salió mal. Inténtalo de nuevo."
   },
   "toast": {
-    "updated": "Configuración actualizada",
-    "created": "Configuración creada",
-    "removed": "Configuración eliminada"
-  },
-  "hubs": {
-    "configured": "Hubs configurados",
-    "add": "Añadir hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Plantilla: {{template}}",
-    "categorySuffix": " — Categoría: #{{channel}}"
+    "created": "Hub creado",
+    "updated": "Hub actualizado",
+    "removed": "Hub eliminado",
+    "undo": "Deshacer",
+    "restored": "Hub restaurado",
+    "deleteFailed": "No se pudo eliminar ese hub. Inténtalo de nuevo.",
+    "undoFailed": "No se pudo restaurar ese hub. Puede que ya no quepa dentro del límite de hubs."
   }
 }
