@@ -13,13 +13,16 @@ export function CommandPalette({
   commands: Command[];
   onNavigate: (command: Command) => void;
 }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { isOpen, close } = useCommandPalette();
   const [query, setQuery] = useState("");
   const [cursor, setCursor] = useState(0);
   const baseId = useId();
 
-  const groups = useMemo(() => buildGroups(commands, query), [commands, query]);
+  const groups = useMemo(
+    () => buildGroups(commands, query, i18n.language),
+    [commands, query, i18n.language],
+  );
   const flat = useMemo(() => flatten(groups), [groups]);
 
   /**

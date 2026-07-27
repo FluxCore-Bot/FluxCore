@@ -64,6 +64,16 @@ describe("buildGroups", () => {
     ]);
   });
 
+  it("breaks ties in the caller's locale, not the OS locale", () => {
+    // Swedish collates "ä" after "z"; English would put it with "a".
+    const groups = buildGroups(
+      [cmd({ id: "1", title: "ärlig" }), cmd({ id: "2", title: "zebra" })],
+      "",
+      "sv",
+    );
+    expect(groups[0].commands.map((c) => c.title)).toEqual(["zebra", "ärlig"]);
+  });
+
   it("keeps the recent group most-recent-first instead of ranking it", () => {
     const groups = buildGroups(
       [

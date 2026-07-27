@@ -4,7 +4,10 @@ import {
   type Command, type CommandGroup, type CommandGroupKey,
 } from "./types";
 
-export function buildGroups(commands: Command[], query: string): CommandGroup[] {
+/** `locale` is the UI language; ties must not sort by whatever the OS is. */
+export function buildGroups(
+  commands: Command[], query: string, locale?: string,
+): CommandGroup[] {
   const scored = new Map<CommandGroupKey, Array<{ cmd: Command; s: number }>>();
 
   for (const cmd of commands) {
@@ -25,7 +28,7 @@ export function buildGroups(commands: Command[], query: string): CommandGroup[] 
     // query, which is exactly when recents matter.
     if (key !== "recent") {
       bucket.sort((a, b) =>
-        b.s - a.s || a.cmd.title.localeCompare(b.cmd.title),
+        b.s - a.s || a.cmd.title.localeCompare(b.cmd.title, locale),
       );
     }
 
