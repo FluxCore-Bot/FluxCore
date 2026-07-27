@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 import { describe, it, expect, vi, beforeAll } from "vitest";
+import { createRef } from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {
@@ -107,6 +108,20 @@ describe("SearchableSelect", () => {
   it("renders neither trigger text nor options when loading", () => {
     setup({ loading: true });
     expect(screen.queryByText("Select event")).not.toBeInTheDocument();
+  });
+
+  it("forwards a ref to the trigger button so callers can move focus to it", () => {
+    const ref = createRef<HTMLButtonElement>();
+    render(
+      <SearchableSelect
+        ref={ref}
+        options={options}
+        value={null}
+        onValueChange={vi.fn()}
+        placeholder="Select event"
+      />,
+    );
+    expect(ref.current).toBe(screen.getByRole("button"));
   });
 
   it("forwards id and aria-required to the trigger for label association", () => {

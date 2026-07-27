@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 import { describe, it, expect, vi, beforeAll } from "vitest";
+import { createRef } from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
@@ -80,5 +81,22 @@ describe("DiscordSelect", () => {
     );
     await user.click(screen.getByRole("button"));
     expect(screen.queryAllByText("🔊 voice-chat").length).toBeGreaterThan(0);
+  });
+
+  it("applies id to, and forwards ref onto, the trigger button", () => {
+    const ref = createRef<HTMLButtonElement>();
+    render(
+      <DiscordSelect
+        id="my-hub-picker"
+        ref={ref}
+        guildId="g1"
+        type="voice"
+        value={null}
+        onValueChange={vi.fn()}
+      />,
+    );
+    const trigger = screen.getByRole("button");
+    expect(trigger).toHaveAttribute("id", "my-hub-picker");
+    expect(ref.current).toBe(trigger);
   });
 });

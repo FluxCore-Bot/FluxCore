@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, type Ref } from "react";
 import { useChannels } from "../hooks/useChannels";
 import { useRoles } from "../hooks/useRoles";
 import { SearchableSelect, type SearchableSelectOption } from "./searchable-select";
@@ -13,11 +13,17 @@ export interface DiscordSelectProps {
   placeholder?: string;
   /** Adds a "None" option that passes null to onValueChange */
   allowNone?: boolean;
+  /** Label for the "None" option; defaults to SearchableSelect's own default. */
+  noneLabel?: string;
   disabled?: boolean;
   className?: string;
   /** Option values to omit — e.g. hub channels already claimed by another config.
    *  The current `value` is always kept so an editing form can show its own selection. */
   excludeIds?: string[];
+  /** Id applied to the trigger button, for `<label htmlFor>` association. */
+  id?: string;
+  /** Forwarded to the trigger button so callers can move focus to it (e.g. after a validation error). */
+  ref?: Ref<HTMLButtonElement>;
 }
 
 function channelLabel(name: string, channelType: number): string {
@@ -33,9 +39,12 @@ export function DiscordSelect({
   onValueChange,
   placeholder,
   allowNone,
+  noneLabel,
   disabled,
   className,
   excludeIds,
+  id,
+  ref,
 }: DiscordSelectProps) {
   const isRole = type === "role";
   const {
@@ -72,11 +81,14 @@ export function DiscordSelect({
 
   return (
     <SearchableSelect
+      ref={ref}
+      id={id}
       options={options}
       value={value}
       onValueChange={onValueChange}
       placeholder={placeholder ?? (isRole ? "Select a role" : "Select a channel")}
       allowNone={allowNone}
+      noneLabel={noneLabel}
       disabled={disabled}
       loading={isLoading}
       error={isError}
