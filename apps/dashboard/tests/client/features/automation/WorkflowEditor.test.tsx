@@ -270,6 +270,45 @@ describe("WorkflowEditor — a context-menu move and the open panel", () => {
   });
 });
 
+describe("WorkflowEditor — the highlight ring while the menu is open", () => {
+  it("moves the ring to the right-clicked node even when a panel is open elsewhere", async () => {
+    const user = userEvent.setup();
+    renderEditor(threeActions);
+
+    // Open the panel on the first action: it owns the ring.
+    fireEvent.click(await findActionNode(1));
+    expect(panelHeading()).toContain('panel.action:{"index":1}');
+    await waitFor(() => expect(findRing(1)).toBe(true));
+
+    // Right-click the third action. Its menu's verbs act on IT, so the ring
+    // must follow the menu target — before the fix `selectedNodeId ??
+    // contextMenuNodeId` let the panel selection win and node 3 never
+    // highlighted.
+    fireEvent.contextMenu(await findActionNode(3), { clientX: 120, clientY: 80 });
+    await screen.findByRole("menu");
+    await waitFor(() => expect(findRing(3)).toBe(true));
+    expect(findRing(1)).toBe(false);
+
+    // The panel selection takes the ring back once the menu closes, and the
+    // panel itself never moved off the node the user opened.
+    await user.keyboard("{Escape}");
+    await waitFor(() => expect(screen.queryByRole("menu")).not.toBeInTheDocument());
+    await waitFor(() => expect(findRing(1)).toBe(true));
+    expect(findRing(3)).toBe(false);
+    expect(panelHeading()).toContain('panel.action:{"index":1}');
+  });
+
+  /** Whether the action node at the 1-based display index carries the ring. */
+  function findRing(displayIndex: number): boolean {
+    const inner = screen.getByLabelText(
+      new RegExp(`nodes\\.ariaAction:\\{"index":${displayIndex},`),
+    );
+    const wrapper = inner.closest<HTMLElement>(".react-flow__node");
+    if (!wrapper) throw new Error(`action node ${displayIndex} has no wrapper`);
+    return wrapper.classList.contains("selected");
+  }
+});
+
 describe("WorkflowEditor — the detail panel after the menu closes", () => {
   // The suite's first test covers the panel while the menu is *open*. These
   // cover after it closes, which is where the guard actually failed: React

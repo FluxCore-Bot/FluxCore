@@ -208,7 +208,11 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     entryStepId,
     constants: constants ?? undefined,
     maxActions: constants?.maxActionsPerRule,
-    selectedNodeId: selectedNodeId ?? contextMenu.contextMenuNodeId,
+    // The menu target owns the ring while the menu is open: with a panel
+    // already open on node A, right-clicking node B must highlight B (the
+    // node the menu's verbs will act on), not keep the ring on A. The panel
+    // selection gets the ring back the moment the menu closes.
+    selectedNodeId: contextMenu.contextMenuNodeId ?? selectedNodeId,
     onAddAction: addAction,
     validationIssues: validation.issues,
     t,
