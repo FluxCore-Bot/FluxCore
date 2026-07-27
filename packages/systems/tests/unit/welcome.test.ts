@@ -11,21 +11,21 @@ vi.mock("@fluxcore/utils", () => ({
 // Test builder and constants (no DB needed)
 import { buildWelcomeEmbed } from "../../src/welcome/builder.js";
 import { WELCOME_VARIABLES, DEFAULT_WELCOME_EMBED, DEFAULT_FAREWELL_EMBED } from "../../src/welcome/constants.js";
-import type { EmbedConfig } from "../../src/welcome/types.js";
-import type { GuildMember } from "discord.js";
+import type { EmbedConfig, WelcomeMember } from "../../src/welcome/types.js";
 
 function createMockMember({
   id = "user-123",
   tag = "TestUser#0001",
   username = "TestUser",
+  displayName = username,
   guildName = "Test Server",
   guildId = "guild-456",
   memberCount = 42,
-} = {}): GuildMember {
+} = {}): WelcomeMember {
   return {
     id,
+    displayName,
     user: {
-      id,
       tag,
       username,
       displayAvatarURL: () => "https://cdn.example.com/avatar.png",
@@ -36,7 +36,7 @@ function createMockMember({
       memberCount,
       iconURL: () => "https://cdn.example.com/icon.png",
     },
-  } as unknown as GuildMember;
+  };
 }
 
 describe("welcome builder", () => {
@@ -205,10 +205,10 @@ describe("welcome builder", () => {
 
   it("skips thumbnail when URL resolves to empty string", () => {
     // Create a member with guild that has no icon
-    const member = {
+    const member: WelcomeMember = {
       id: "user-1",
+      displayName: "User",
       user: {
-        id: "user-1",
         tag: "User#0001",
         username: "User",
         displayAvatarURL: () => "https://cdn.example.com/avatar.png",
@@ -219,7 +219,7 @@ describe("welcome builder", () => {
         memberCount: 10,
         iconURL: () => null,
       },
-    } as unknown as GuildMember;
+    };
 
     const config: EmbedConfig = {
       thumbnail: "{server.icon}",
