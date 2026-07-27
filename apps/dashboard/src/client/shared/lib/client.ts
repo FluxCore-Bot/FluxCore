@@ -80,7 +80,7 @@ export async function apiFetch<T>(
   const data = await res.json();
 
   if (!res.ok) {
-    const body = data as { error?: string; errorKey?: string };
+    const body: { error?: string; errorKey?: string } = data;
     const retryAfter = Number(res.headers.get("retry-after"));
     throw new ApiError(
       res.status,

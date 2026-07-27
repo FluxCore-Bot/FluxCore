@@ -164,9 +164,9 @@ export function useWelcomeImagePreview(guildId: string) {
         body: JSON.stringify(params),
       });
       if (!res.ok) {
-        const body = (await res.json().catch(() => null)) as
-          | { error?: string; errorKey?: string }
-          | null;
+        const body: { error?: string; errorKey?: string } | null = await res
+          .json()
+          .catch(() => null);
         const retryAfter = Number(res.headers.get("retry-after"));
         throw new ApiError(
           res.status,
