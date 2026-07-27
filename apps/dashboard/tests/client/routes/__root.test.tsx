@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { describe, it, expect, vi, beforeAll, beforeEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { User } from "../../../src/client/shared/lib/schemas";
 
@@ -98,6 +98,28 @@ describe("RootLayout - command palette guard", () => {
 
     await user.keyboard("{Control>}k{/Control}");
     expect(screen.queryByRole("combobox")).not.toBeInTheDocument();
+  });
+
+  it("unauthenticated: Ctrl+P stays with the browser and Ctrl+K never latches", async () => {
+    const user = userEvent.setup();
+    const view = renderAs(undefined);
+
+    // On the login page the hotkey buys nothing, so the browser keeps print.
+    const print = new KeyboardEvent("keydown", {
+      key: "p", ctrlKey: true, bubbles: true, cancelable: true,
+    });
+    act(() => { window.dispatchEvent(print); });
+    expect(print.defaultPrevented).toBe(false);
+
+    // A Ctrl+K pressed before auth resolves must not latch the palette open
+    // so that it pops up uninvited once the user lands.
+    await user.keyboard("{Control>}k{/Control}");
+    auth.data = { userId: "1", username: "someone", avatar: null };
+    view.rerender(<RootLayout />);
+    // By name: the LanguageSwitcher in the now-visible nav is also a combobox.
+    expect(
+      screen.queryByRole("combobox", { name: "palette.placeholder" }),
+    ).not.toBeInTheDocument();
   });
 
   it("authenticated: shows a labelled trigger and Ctrl+K opens the palette", async () => {

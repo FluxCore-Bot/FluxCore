@@ -71,6 +71,30 @@ describe("useCommandPalette", () => {
     expect(event.defaultPrevented).toBe(true);
   });
 
+  it("ignores the hotkey while disabled", async () => {
+    const user = userEvent.setup();
+    render(
+      <CommandPaletteProvider enabled={false}>
+        <Probe />
+      </CommandPaletteProvider>,
+    );
+    await user.keyboard("{Control>}k{/Control}");
+    expect(screen.getByTestId("state")).toHaveTextContent("closed");
+  });
+
+  it("leaves Ctrl+P to the browser while disabled", () => {
+    render(
+      <CommandPaletteProvider enabled={false}>
+        <Probe />
+      </CommandPaletteProvider>,
+    );
+    const event = new KeyboardEvent("keydown", {
+      key: "p", ctrlKey: true, bubbles: true, cancelable: true,
+    });
+    act(() => { window.dispatchEvent(event); });
+    expect(event.defaultPrevented).toBe(false);
+  });
+
   it("still opens while a text field has focus", async () => {
     const user = userEvent.setup();
     renderProbe();

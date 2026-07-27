@@ -95,7 +95,7 @@ export function RootLayout() {
 
   return (
     <MobileSidebarContext.Provider value={{ isOpen: sidebarOpen, toggle, close }}>
-      <CommandPaletteProvider>
+      <CommandPaletteProvider enabled={!!user}>
         <TooltipProvider>
           <div className="min-h-screen flex flex-col">
             {/* Skip to content — WCAG AA */}
