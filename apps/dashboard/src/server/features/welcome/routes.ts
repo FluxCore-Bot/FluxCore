@@ -9,6 +9,7 @@ import {
   getAllTemplates,
   getAvailableFonts,
   createStorageAdapter,
+  sanitizeDisplayName,
   welcomeImageSettingsSchema,
   DEFAULT_WELCOME_IMAGE_SETTINGS,
   DEFAULT_FAREWELL_IMAGE_SETTINGS,
@@ -44,9 +45,13 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
         welcomeEnabled: false,
         welcomeChannelId: null,
         welcomeMessage: {},
+        welcomeMessageStyle: "plain",
+        welcomeContent: "",
         farewellEnabled: false,
         farewellChannelId: null,
         farewellMessage: {},
+        farewellMessageStyle: "plain",
+        farewellContent: "",
         dmEnabled: false,
         dmMessage: {},
         autoRoleIds: [],
@@ -72,9 +77,13 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
               welcomeEnabled: { type: "boolean" },
               welcomeChannelId: { type: ["string", "null"] },
               welcomeMessage: { type: "object", additionalProperties: true },
+              welcomeMessageStyle: { type: "string", enum: ["plain", "embed"] },
+              welcomeContent: { type: "string", maxLength: 2000 },
               farewellEnabled: { type: "boolean" },
               farewellChannelId: { type: ["string", "null"] },
               farewellMessage: { type: "object", additionalProperties: true },
+              farewellMessageStyle: { type: "string", enum: ["plain", "embed"] },
+              farewellContent: { type: "string", maxLength: 2000 },
               dmEnabled: { type: "boolean" },
               dmMessage: { type: "object", additionalProperties: true },
               autoRoleIds: { type: "array", items: { type: "string" } },
@@ -96,9 +105,13 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
                 welcomeEnabled: { type: "boolean" },
                 welcomeChannelId: { type: ["string", "null"] },
                 welcomeMessage: { type: "object", additionalProperties: true },
+                welcomeMessageStyle: { type: "string", enum: ["plain", "embed"] },
+                welcomeContent: { type: "string", maxLength: 2000 },
                 farewellEnabled: { type: "boolean" },
                 farewellChannelId: { type: ["string", "null"] },
                 farewellMessage: { type: "object", additionalProperties: true },
+                farewellMessageStyle: { type: "string", enum: ["plain", "embed"] },
+                farewellContent: { type: "string", maxLength: 2000 },
                 dmEnabled: { type: "boolean" },
                 dmMessage: { type: "object", additionalProperties: true },
                 autoRoleIds: { type: "array", items: { type: "string" } },
@@ -120,9 +133,13 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
       if (body.welcomeEnabled !== undefined) update.welcomeEnabled = body.welcomeEnabled;
       if (body.welcomeChannelId !== undefined) update.welcomeChannelId = body.welcomeChannelId;
       if (body.welcomeMessage !== undefined) update.welcomeMessage = body.welcomeMessage;
+      if (body.welcomeMessageStyle !== undefined) update.welcomeMessageStyle = body.welcomeMessageStyle;
+      if (body.welcomeContent !== undefined) update.welcomeContent = body.welcomeContent;
       if (body.farewellEnabled !== undefined) update.farewellEnabled = body.farewellEnabled;
       if (body.farewellChannelId !== undefined) update.farewellChannelId = body.farewellChannelId;
       if (body.farewellMessage !== undefined) update.farewellMessage = body.farewellMessage;
+      if (body.farewellMessageStyle !== undefined) update.farewellMessageStyle = body.farewellMessageStyle;
+      if (body.farewellContent !== undefined) update.farewellContent = body.farewellContent;
       if (body.dmEnabled !== undefined) update.dmEnabled = body.dmEnabled;
       if (body.dmMessage !== undefined) update.dmMessage = body.dmMessage;
       if (body.autoRoleIds !== undefined) update.autoRoleIds = body.autoRoleIds;
@@ -233,11 +250,16 @@ export function registerWelcomeRoutes(app: FastifyInstance): void {
       }
 
       const session = request.session!;
+      const displayName = session.username ?? "User";
       const imageBuffer = await generateWelcomeImage({
         settings: parsed.data,
         member: {
-          username: session.username ?? "User",
-          displayName: session.username ?? "User",
+          // Match the bot's deliverWelcomeMessage: sanitize before
+          // rendering. Practical impact is small (Discord already
+          // restricts usernames to [a-z0-9._]), but this is the dashboard
+          // preview path and the whole point of this branch is parity.
+          username: sanitizeDisplayName(displayName, 32),
+          displayName: sanitizeDisplayName(displayName, 80),
           avatarUrl: session.avatar
             ? `https://cdn.discordapp.com/avatars/${session.userId}/${session.avatar}.png?size=256`
             : `https://cdn.discordapp.com/embed/avatars/${Number(BigInt(session.userId) >> 22n) % 6}.png`,

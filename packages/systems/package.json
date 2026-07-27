@@ -138,6 +138,10 @@
       "types": "./dist/welcome/builder.d.ts",
       "import": "./dist/welcome/builder.js"
     },
+    "./welcome/send": {
+      "types": "./dist/welcome/send.d.ts",
+      "import": "./dist/welcome/send.js"
+    },
     "./welcome/image": {
       "types": "./dist/welcome/image/index.d.ts",
       "import": "./dist/welcome/image/index.js"
@@ -158,6 +162,22 @@
       "types": "./dist/welcome/image/fonts/index.d.ts",
       "import": "./dist/welcome/image/fonts/index.js"
     },
+    "./welcome/image/fonts/manifest": {
+      "types": "./dist/welcome/image/fonts/manifest.d.ts",
+      "import": "./dist/welcome/image/fonts/manifest.js"
+    },
+    "./welcome/image/core/draw": {
+      "types": "./dist/welcome/image/core/draw.d.ts",
+      "import": "./dist/welcome/image/core/draw.js"
+    },
+    "./welcome/image/core/text": {
+      "types": "./dist/welcome/image/core/text.d.ts",
+      "import": "./dist/welcome/image/core/text.js"
+    },
+    "./welcome/image/core/types": {
+      "types": "./dist/welcome/image/core/types.d.ts",
+      "import": "./dist/welcome/image/core/types.js"
+    },
     "./welcome/image/types": {
       "types": "./dist/welcome/image/types.d.ts",
       "import": "./dist/welcome/image/types.js"
@@ -165,6 +185,10 @@
     "./welcome/image/constants": {
       "types": "./dist/welcome/image/constants.d.ts",
       "import": "./dist/welcome/image/constants.js"
+    },
+    "./welcome/image/sanitize": {
+      "types": "./dist/welcome/image/sanitize.d.ts",
+      "import": "./dist/welcome/image/sanitize.js"
     },
     "./leveling/types": {
       "types": "./dist/leveling/types.d.ts",

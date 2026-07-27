@@ -69,6 +69,15 @@
     "welcomeSubtitle": "{server} میں خوش آمدید!",
     "farewellSubtitle": "الوداع، {user.name}!"
   },
+  "messageStyle": {
+    "label": "پیغام کا انداز",
+    "plain": "سادہ پیغام",
+    "embed": "ایمبیڈ",
+    "plainHint": "تصویر مکمل چوڑائی میں پوسٹ کی جاتی ہے، جس کے اوپر اختیاری متن ہو سکتا ہے۔",
+    "embedHint": "تصویر ایمبیڈ باکس کے اندر دکھائی جاتی ہے۔",
+    "contentLabel": "پیغام کا متن",
+    "contentPlaceholder": "{user}، {server} میں خوش آمدید!"
+  },
   "imageEditor": {
     "livePreview": "لائیو پیش نظارہ",
     "previewAlt": "{{type}} تصویر پیش نظارہ",

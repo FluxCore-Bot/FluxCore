@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "메시지 스타일",
+    "plain": "일반 메시지",
+    "embed": "임베드",
+    "plainHint": "이미지는 전체 너비로 게시되며 위에 선택적 텍스트를 추가할 수 있습니다.",
+    "embedHint": "이미지는 임베드 상자 안에 표시됩니다.",
+    "contentLabel": "메시지 텍스트",
+    "contentPlaceholder": "{server}에 오신 것을 환영합니다, {user}님!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

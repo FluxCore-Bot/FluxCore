@@ -1,4 +1,5 @@
 import type { WelcomeImageSettings, FontDefinition } from "./types.js";
+import { LATIN_FONTS } from "./fonts/manifest.js";
 
 /** Default welcome image settings (used when first enabling images) */
 export const DEFAULT_WELCOME_IMAGE_SETTINGS: WelcomeImageSettings = {
@@ -46,65 +47,14 @@ export const DEFAULT_FAREWELL_IMAGE_SETTINGS: WelcomeImageSettings = {
   accentColor: "#6b7280",
 };
 
-/** Available fonts shipped with the system */
-export const AVAILABLE_FONTS: FontDefinition[] = [
-  {
-    name: "Inter",
-    displayName: "Inter",
-    category: "sans-serif",
-    file: "Inter-SemiBold.ttf",
-    weight: 600,
-  },
-  {
-    name: "SpaceGrotesk",
-    displayName: "Space Grotesk",
-    category: "sans-serif",
-    file: "SpaceGrotesk-Bold.ttf",
-    weight: 700,
-  },
-  {
-    name: "JetBrainsMono",
-    displayName: "JetBrains Mono",
-    category: "monospace",
-    file: "JetBrainsMono-Bold.ttf",
-    weight: 700,
-  },
-  {
-    name: "Poppins",
-    displayName: "Poppins",
-    category: "rounded",
-    file: "Poppins-SemiBold.ttf",
-    weight: 600,
-  },
-  {
-    name: "PlayfairDisplay",
-    displayName: "Playfair Display",
-    category: "serif",
-    file: "PlayfairDisplay-Bold.ttf",
-    weight: 700,
-  },
-  {
-    name: "Outfit",
-    displayName: "Outfit",
-    category: "sans-serif",
-    file: "Outfit-SemiBold.ttf",
-    weight: 600,
-  },
-  {
-    name: "Orbitron",
-    displayName: "Orbitron",
-    category: "display",
-    file: "Orbitron-Bold.ttf",
-    weight: 700,
-  },
-  {
-    name: "BebasNeue",
-    displayName: "Bebas Neue",
-    category: "display",
-    file: "BebasNeue-Regular.ttf",
-    weight: 400,
-  },
-];
+/** Available fonts shipped with the system (derived from the font manifest). */
+export const AVAILABLE_FONTS: FontDefinition[] = LATIN_FONTS.map((f) => ({
+  name: f.name,
+  displayName: f.displayName,
+  category: f.category,
+  file: f.file,
+  weight: f.weight,
+}));
 
 /** Max background image upload size (3 MB) */
 export const MAX_BACKGROUND_SIZE = 3 * 1024 * 1024;

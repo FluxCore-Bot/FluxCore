@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Sõnumi stiil",
+    "plain": "Lihtne sõnum",
+    "embed": "Manus",
+    "plainHint": "Pilt postitatakse täislaiuses, valikulise tekstiga selle kohal.",
+    "embedHint": "Pilt kuvatakse manuse kastis.",
+    "contentLabel": "Sõnumi tekst",
+    "contentPlaceholder": "Tere tulemast, {user}, serverisse {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

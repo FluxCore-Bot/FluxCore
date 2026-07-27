@@ -21,7 +21,11 @@ export const helmetOptions: FastifyHelmetOptions = {
       scriptSrc: ["'self'"],
       styleSrc: ["'self'", "https://fonts.googleapis.com"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      imgSrc: ["'self'", "data:", "https://cdn.discordapp.com"],
+      // "blob:" is required for the welcome/farewell image preview, which
+      // renders into <img src> via URL.createObjectURL. Without it, Helmet's
+      // CSP silently blocks the preview in production (Vite's dev server
+      // sends no CSP at all, so this only surfaces once deployed).
+      imgSrc: ["'self'", "data:", "blob:", "https://cdn.discordapp.com"],
     },
   },
 };

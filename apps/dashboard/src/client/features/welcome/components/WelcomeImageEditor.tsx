@@ -40,6 +40,7 @@ import {
 } from "../hooks/useWelcome";
 import { useAuth } from "../../../shared/hooks/useAuth";
 import { ApiError } from "../../../shared/lib/client";
+import { useLatestOnly } from "../image/useLatestOnly";
 
 const PRESET_GRADIENT_COLORS: Record<string, string> = {
   midnight: "from-[#0f0c29] via-[#302b63] to-[#24243e]",
@@ -82,8 +83,9 @@ export function WelcomeImageEditor({
   const rafRef = useRef<number>(0);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const prevUrlRef = useRef<string | null>(null);
-  const fontsLoadedRef = useRef(false);
   const serverUrlRef = useRef<string | null>(null);
+  const clientRender = useLatestOnly();
+  const serverRender = useLatestOnly();
 
   const templates = templateData?.templates ?? [];
   const fonts = fontData?.fonts ?? [];
@@ -98,16 +100,14 @@ export function WelcomeImageEditor({
     canvasRef.current = document.createElement("canvas");
   }
 
-  // Load fonts once
-  useEffect(() => {
-    if (fontsLoadedRef.current) return;
-    fontsLoadedRef.current = true;
-    import("../image/renderer").then((m) => m.loadPreviewFonts());
-  }, []);
-
   // Client-side render — instant, no debounce
   useEffect(() => {
     if (previewMode !== "client") return;
+
+    // A server preview still in flight from before the mode switch passes its
+    // own guard when it resolves — strand it so it can't overwrite this render.
+    serverRender.invalidate();
+    const token = clientRender.begin();
 
     setIsPending(true);
     setPreviewError(false);
@@ -119,7 +119,7 @@ export function WelcomeImageEditor({
       try {
         const { renderWelcomeImagePreview } = await import("../image/renderer");
         const result = await renderWelcomeImagePreview({
-          settings: settings as never,
+          settings,
           member: {
             username: user?.username ?? "User",
             displayName: user?.username ?? "User",
@@ -131,11 +131,19 @@ export function WelcomeImageEditor({
           },
         });
 
+        if (!clientRender.isCurrent(token)) {
+          // Superseded while we were rendering — drop our own result rather
+          // than revoking the newer render's live URL.
+          URL.revokeObjectURL(result.url);
+          return;
+        }
+
         if (prevUrlRef.current) URL.revokeObjectURL(prevUrlRef.current);
         prevUrlRef.current = result.url;
         setPreviewUrl(result.url);
         setIsPending(false);
       } catch {
+        if (!clientRender.isCurrent(token)) return;
         setIsPending(false);
         setPreviewError(true);
       }
@@ -144,13 +152,19 @@ export function WelcomeImageEditor({
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [settings, previewMode, user, avatarUrl, refreshKey]);
+  }, [settings, previewMode, user, avatarUrl, refreshKey, clientRender, serverRender]);
 
   // Server-side preview — debounced since it's a network request
   useEffect(() => {
     if (previewMode !== "server") return;
 
+    // Mirror of the client effect: a client render past its RAF cannot be
+    // cancelled, so strand it before this preview starts.
+    clientRender.invalidate();
+
     const timer = setTimeout(() => {
+      const token = serverRender.begin();
+
       setIsPending(true);
       setPreviewError(false);
 
@@ -158,12 +172,19 @@ export function WelcomeImageEditor({
         { settings, type },
         {
           onSuccess: (url) => {
+            if (!serverRender.isCurrent(token)) {
+              // Superseded while the request was in flight — drop our own
+              // result rather than revoking the newer render's live URL.
+              URL.revokeObjectURL(url);
+              return;
+            }
             if (serverUrlRef.current) URL.revokeObjectURL(serverUrlRef.current);
             serverUrlRef.current = url;
             setPreviewUrl(url);
             setIsPending(false);
           },
           onError: (error) => {
+            if (!serverRender.isCurrent(token)) return;
             setIsPending(false);
             setPreviewError(true);
             // A rate limit is not a failed render — say so, or it reads as a bug.
@@ -181,16 +202,21 @@ export function WelcomeImageEditor({
     }, 400);
 
     return () => clearTimeout(timer);
-  }, [settings, type, previewMode, t, refreshKey]);
+  }, [settings, type, previewMode, t, refreshKey, serverRender, clientRender]);
 
   // Cleanup
   useEffect(() => {
     return () => {
+      // Strand in-flight renders first: a completion arriving after this
+      // cleanup must drop (and revoke) its own URL instead of committing a
+      // fresh object URL into refs nothing will ever revoke again.
+      clientRender.invalidate();
+      serverRender.invalidate();
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       if (prevUrlRef.current) URL.revokeObjectURL(prevUrlRef.current);
       if (serverUrlRef.current) URL.revokeObjectURL(serverUrlRef.current);
     };
-  }, []);
+  }, [clientRender, serverRender]);
 
   function update<K extends keyof WelcomeImageSettings>(
     key: K,

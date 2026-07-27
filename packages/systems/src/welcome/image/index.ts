@@ -44,6 +44,27 @@ export {
   isValidFont,
 } from "./fonts/index.js";
 
+// Shared render core (browser-safe — no @napi-rs/canvas import)
+export { drawCard } from "./core/draw.js";
+export type { Ctx2D, GradientLike, RenderBackend } from "./core/types.js";
+export {
+  buildFontSpec,
+  baseDirection,
+  fitText,
+  hexToRgba,
+  replaceImageVariables,
+} from "./core/text.js";
+export {
+  LATIN_FONTS,
+  ARABIC_FONTS,
+  EMOJI_FONT,
+  getLatinFont,
+  type LatinFont,
+  type ArabicFont,
+  type ArabicFontKey,
+} from "./fonts/manifest.js";
+export { getFontsDir } from "./fonts/index.js";
+
 // Sanitization
 export { sanitizeDisplayName } from "./sanitize.js";
 

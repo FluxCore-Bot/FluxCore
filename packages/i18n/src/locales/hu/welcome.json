@@ -59,6 +59,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Üzenet stílusa",
+    "plain": "Egyszerű üzenet",
+    "embed": "Beágyazás",
+    "plainHint": "A kép teljes szélességben jelenik meg, felette opcionális szöveggel.",
+    "embedHint": "A kép egy beágyazott dobozban jelenik meg.",
+    "contentLabel": "Üzenet szövege",
+    "contentPlaceholder": "Üdvözlünk {user} a {server} szerveren!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

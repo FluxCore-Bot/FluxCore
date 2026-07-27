@@ -69,6 +69,15 @@
     "welcomeSubtitle": "{server}へようこそ！",
     "farewellSubtitle": "さようなら、{user.name} さん！"
   },
+  "messageStyle": {
+    "label": "メッセージ形式",
+    "plain": "プレーンメッセージ",
+    "embed": "埋め込み",
+    "plainHint": "画像は全幅で投稿され、上部に任意のテキストを追加できます。",
+    "embedHint": "画像は埋め込みボックス内に表示されます。",
+    "contentLabel": "メッセージテキスト",
+    "contentPlaceholder": "{user}さん、{server}へようこそ!"
+  },
   "imageEditor": {
     "livePreview": "ライブプレビュー",
     "previewAlt": "{{type}}画像のプレビュー",

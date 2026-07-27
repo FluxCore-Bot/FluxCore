@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Mesaj Stili",
+    "plain": "Düz Mesaj",
+    "embed": "Gömülü Mesaj",
+    "plainHint": "Görsel, üzerinde isteğe bağlı metinle birlikte tam genişlikte paylaşılır.",
+    "embedHint": "Görsel, gömülü mesaj kutusu içinde gösterilir.",
+    "contentLabel": "Mesaj Metni",
+    "contentPlaceholder": "{user}, {server} sunucusuna hoş geldin!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

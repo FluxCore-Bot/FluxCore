@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Berichtstijl",
+    "plain": "Gewoon bericht",
+    "embed": "Embed",
+    "plainHint": "De afbeelding wordt op volledige breedte geplaatst, met optionele tekst erboven.",
+    "embedHint": "De afbeelding wordt weergegeven in een embed-kader.",
+    "contentLabel": "Berichttekst",
+    "contentPlaceholder": "Welkom {user} bij {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

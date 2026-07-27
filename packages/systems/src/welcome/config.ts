@@ -1,5 +1,5 @@
 import { getPrisma } from "@fluxcore/database";
-import type { WelcomeConfig, EmbedConfig, WelcomeImageSettings } from "./types.js";
+import type { WelcomeConfig, EmbedConfig, WelcomeImageSettings, MessageStyle } from "./types.js";
 import {
   DEFAULT_WELCOME_IMAGE_SETTINGS,
   DEFAULT_FAREWELL_IMAGE_SETTINGS,
@@ -13,6 +13,15 @@ function parseJson<T>(value: string, fallback: T): T {
   }
 }
 
+/** Narrow a raw DB value to a MessageStyle, defaulting unknowns to "plain". */
+function toMessageStyle(value: unknown): MessageStyle {
+  return value === "embed" ? "embed" : "plain";
+}
+
+function toStringOr(value: unknown, fallback: string): string {
+  return typeof value === "string" ? value : fallback;
+}
+
 // Use Record to accept Prisma row without tight coupling to generated types
 function rowToConfig(row: Record<string, unknown>): WelcomeConfig {
   return {
@@ -20,9 +29,13 @@ function rowToConfig(row: Record<string, unknown>): WelcomeConfig {
     welcomeEnabled: row.welcomeEnabled as boolean,
     welcomeChannelId: (row.welcomeChannelId as string | null) ?? null,
     welcomeMessage: parseJson<EmbedConfig>(row.welcomeMessage as string, {}),
+    welcomeMessageStyle: toMessageStyle(row.welcomeMessageStyle),
+    welcomeContent: toStringOr(row.welcomeContent, ""),
     farewellEnabled: row.farewellEnabled as boolean,
     farewellChannelId: (row.farewellChannelId as string | null) ?? null,
     farewellMessage: parseJson<EmbedConfig>(row.farewellMessage as string, {}),
+    farewellMessageStyle: toMessageStyle(row.farewellMessageStyle),
+    farewellContent: toStringOr(row.farewellContent, ""),
     dmEnabled: row.dmEnabled as boolean,
     dmMessage: parseJson<EmbedConfig>(row.dmMessage as string, {}),
     autoRoleIds: parseJson<string[]>(row.autoRoleIds as string, []),
@@ -56,9 +69,13 @@ export async function upsertWelcomeConfig(
   if (data.welcomeEnabled !== undefined) dbData.welcomeEnabled = data.welcomeEnabled;
   if (data.welcomeChannelId !== undefined) dbData.welcomeChannelId = data.welcomeChannelId;
   if (data.welcomeMessage !== undefined) dbData.welcomeMessage = JSON.stringify(data.welcomeMessage);
+  if (data.welcomeMessageStyle !== undefined) dbData.welcomeMessageStyle = data.welcomeMessageStyle;
+  if (data.welcomeContent !== undefined) dbData.welcomeContent = data.welcomeContent;
   if (data.farewellEnabled !== undefined) dbData.farewellEnabled = data.farewellEnabled;
   if (data.farewellChannelId !== undefined) dbData.farewellChannelId = data.farewellChannelId;
   if (data.farewellMessage !== undefined) dbData.farewellMessage = JSON.stringify(data.farewellMessage);
+  if (data.farewellMessageStyle !== undefined) dbData.farewellMessageStyle = data.farewellMessageStyle;
+  if (data.farewellContent !== undefined) dbData.farewellContent = data.farewellContent;
   if (data.dmEnabled !== undefined) dbData.dmEnabled = data.dmEnabled;
   if (data.dmMessage !== undefined) dbData.dmMessage = JSON.stringify(data.dmMessage);
   if (data.autoRoleIds !== undefined) dbData.autoRoleIds = JSON.stringify(data.autoRoleIds);

@@ -1,6 +1,9 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiFetch, getCsrfToken, ApiError } from "../../../shared/lib/client";
 
+/** How a welcome/farewell message is delivered. Mirrors `MessageStyle` in `packages/systems/src/welcome/types.ts`. */
+export type MessageStyle = "plain" | "embed";
+
 export interface EmbedField {
   name: string;
   value: string;
@@ -76,9 +79,13 @@ export interface WelcomeConfigData {
   welcomeEnabled: boolean;
   welcomeChannelId: string | null;
   welcomeMessage: EmbedConfig;
+  welcomeMessageStyle: MessageStyle;
+  welcomeContent: string;
   farewellEnabled: boolean;
   farewellChannelId: string | null;
   farewellMessage: EmbedConfig;
+  farewellMessageStyle: MessageStyle;
+  farewellContent: string;
   dmEnabled: boolean;
   dmMessage: EmbedConfig;
   autoRoleIds: string[];

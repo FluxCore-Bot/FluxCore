@@ -10,6 +10,7 @@ import {
   useTestWelcome,
   type EmbedConfig,
   type WelcomeImageSettings,
+  type MessageStyle,
 } from "../../../features/welcome/hooks/useWelcome";
 import { WelcomeImageEditor } from "../../../features/welcome/components/WelcomeImageEditor";
 import { Button } from "../../../shared/ui/button";
@@ -21,6 +22,7 @@ import { Card } from "../../../shared/ui/card";
 import { Switch } from "../../../shared/ui/switch";
 import { Separator } from "../../../shared/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../shared/ui/tabs";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../shared/ui/select";
 import { FormSkeleton } from "../../../shared/ui/skeletons";
 import {
   VariableEditor,
@@ -31,6 +33,12 @@ import {
 } from "../../../shared/ui/variable-field";
 import type { PreviewRealData } from "../../../shared/ui/variable-field";
 import type { TFunction } from "i18next";
+
+// Radix's onValueChange hands back a plain string; narrow it to MessageStyle
+// with a type guard instead of an `as` cast.
+function isMessageStyle(value: string): value is MessageStyle {
+  return value === "plain" || value === "embed";
+}
 
 function createDefaultWelcomeImage(t: TFunction<"welcome">): WelcomeImageSettings {
   return {
@@ -160,6 +168,79 @@ function EmbedEditor({
   );
 }
 
+/**
+ * Message-style selector shared by the welcome and farewell tabs: a
+ * plain/embed dropdown above either a variable-aware plain-text field or
+ * the existing embed builder, depending on the selected style.
+ */
+function MessageStyleSection({
+  idPrefix,
+  style,
+  onStyleChange,
+  content,
+  onContentChange,
+  embedValue,
+  onEmbedChange,
+  real,
+  t,
+}: {
+  idPrefix: string;
+  style: MessageStyle;
+  onStyleChange: (style: MessageStyle) => void;
+  content: string;
+  onContentChange: (value: string) => void;
+  embedValue: EmbedConfig;
+  onEmbedChange: (config: EmbedConfig) => void;
+  real: PreviewRealData;
+  t: TFunction<"welcome">;
+}) {
+  return (
+    <div className="space-y-4">
+      <div className="space-y-2">
+        <Label htmlFor={`${idPrefix}-message-style`}>{t("messageStyle.label")}</Label>
+        <Select
+          value={style}
+          onValueChange={(v) => {
+            if (isMessageStyle(v)) onStyleChange(v);
+          }}
+        >
+          <SelectTrigger id={`${idPrefix}-message-style`} className="w-64">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="plain">{t("messageStyle.plain")}</SelectItem>
+            <SelectItem value="embed">{t("messageStyle.embed")}</SelectItem>
+          </SelectContent>
+        </Select>
+        <p className="text-sm text-text-muted">
+          {style === "plain" ? t("messageStyle.plainHint") : t("messageStyle.embedHint")}
+        </p>
+      </div>
+
+      {style === "plain" ? (
+        <div>
+          <Label htmlFor={`${idPrefix}-content`}>{t("messageStyle.contentLabel")}</Label>
+          <VariableEditor
+            id={`${idPrefix}-content`}
+            multiline
+            rows={3}
+            value={content}
+            onChange={onContentChange}
+            variables={welcomeVariables}
+            placeholder={t("messageStyle.contentPlaceholder")}
+            maxLength={2000}
+          />
+        </div>
+      ) : (
+        <>
+          <h4 className="mb-3 font-label text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
+          <EmbedEditor value={embedValue} onChange={onEmbedChange} real={real} t={t} />
+        </>
+      )}
+    </div>
+  );
+}
+
 export function WelcomePage() {
   const { t } = useTranslation("welcome");
   const { guildId } = useParams({ from: "/guild/$guildId" });
@@ -175,9 +256,13 @@ export function WelcomePage() {
   const [welcomeEnabled, setWelcomeEnabled] = useState(false);
   const [welcomeChannelId, setWelcomeChannelId] = useState<string | null>(null);
   const [welcomeMessage, setWelcomeMessage] = useState<EmbedConfig>({});
+  const [welcomeMessageStyle, setWelcomeMessageStyle] = useState<MessageStyle>("plain");
+  const [welcomeContent, setWelcomeContent] = useState("");
   const [farewellEnabled, setFarewellEnabled] = useState(false);
   const [farewellChannelId, setFarewellChannelId] = useState<string | null>(null);
   const [farewellMessage, setFarewellMessage] = useState<EmbedConfig>({});
+  const [farewellMessageStyle, setFarewellMessageStyle] = useState<MessageStyle>("plain");
+  const [farewellContent, setFarewellContent] = useState("");
   const [dmEnabled, setDmEnabled] = useState(false);
   const [dmMessage, setDmMessage] = useState<EmbedConfig>({});
   const [autoRoleIds, setAutoRoleIds] = useState<string[]>([]);
@@ -194,9 +279,13 @@ export function WelcomePage() {
       setWelcomeEnabled(config.welcomeEnabled);
       setWelcomeChannelId(config.welcomeChannelId ?? null);
       setWelcomeMessage(config.welcomeMessage);
+      setWelcomeMessageStyle(config.welcomeMessageStyle);
+      setWelcomeContent(config.welcomeContent);
       setFarewellEnabled(config.farewellEnabled);
       setFarewellChannelId(config.farewellChannelId ?? null);
       setFarewellMessage(config.farewellMessage);
+      setFarewellMessageStyle(config.farewellMessageStyle);
+      setFarewellContent(config.farewellContent);
       setDmEnabled(config.dmEnabled);
       setDmMessage(config.dmMessage);
       setAutoRoleIds(config.autoRoleIds);
@@ -213,9 +302,13 @@ export function WelcomePage() {
         welcomeEnabled,
         welcomeChannelId: welcomeChannelId,
         welcomeMessage,
+        welcomeMessageStyle,
+        welcomeContent,
         farewellEnabled,
         farewellChannelId: farewellChannelId,
         farewellMessage,
+        farewellMessageStyle,
+        farewellContent,
         dmEnabled,
         dmMessage,
         autoRoleIds: autoRoleIds,
@@ -298,8 +391,17 @@ export function WelcomePage() {
               />
             </div>
 
-            <h4 className="mb-3 font-label text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
-            <EmbedEditor value={welcomeMessage} onChange={setWelcomeMessage} real={real} t={t} />
+            <MessageStyleSection
+              idPrefix="welcome"
+              style={welcomeMessageStyle}
+              onStyleChange={setWelcomeMessageStyle}
+              content={welcomeContent}
+              onContentChange={setWelcomeContent}
+              embedValue={welcomeMessage}
+              onEmbedChange={setWelcomeMessage}
+              real={real}
+              t={t}
+            />
           </Card>
         </TabsContent>
 
@@ -366,8 +468,17 @@ export function WelcomePage() {
               />
             </div>
 
-            <h4 className="mb-3 font-label text-sm font-semibold">{t("welcome.embedBuilder")}</h4>
-            <EmbedEditor value={farewellMessage} onChange={setFarewellMessage} real={real} t={t} />
+            <MessageStyleSection
+              idPrefix="farewell"
+              style={farewellMessageStyle}
+              onStyleChange={setFarewellMessageStyle}
+              content={farewellContent}
+              onContentChange={setFarewellContent}
+              embedValue={farewellMessage}
+              onEmbedChange={setFarewellMessage}
+              real={real}
+              t={t}
+            />
           </Card>
         </TabsContent>
 

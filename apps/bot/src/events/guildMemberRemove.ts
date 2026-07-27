@@ -1,14 +1,11 @@
 import type { Event } from "@fluxcore/types";
 import type { GuildMember, PartialGuildMember } from "discord.js";
-import { logger } from "@fluxcore/utils";
 import { getLogConfig } from "@fluxcore/systems/logging/config";
 import { createLogEntry } from "@fluxcore/systems/logging/persistence";
 import { sendLogEmbed } from "@fluxcore/systems/logging/sender";
 import { formatMemberLeave } from "@fluxcore/systems/logging/formatter";
 import { getWelcomeConfig } from "@fluxcore/systems/welcome/config";
-import { buildWelcomeEmbed } from "@fluxcore/systems/welcome/builder";
-import { generateWelcomeImage, createStorageAdapter } from "@fluxcore/systems/welcome/image";
-import { AttachmentBuilder } from "discord.js";
+import { deliverWelcomeMessage } from "@fluxcore/systems/welcome/send";
 
 const event: Event<"guildMemberRemove"> = {
   name: "guildMemberRemove",
@@ -41,53 +38,29 @@ const event: Event<"guildMemberRemove"> = {
     // === Farewell ===
     const welcomeConfig = await getWelcomeConfig(member.guild.id);
     if (!welcomeConfig?.farewellEnabled || !welcomeConfig.farewellChannelId) return;
+    // Runtime safety check, NOT a type-checker requirement — deliverWelcomeMessage's
+    // `member` parameter is the narrow structural `WelcomeMember` interface, which
+    // both GuildMember and PartialGuildMember already satisfy, so removing this
+    // guard would not produce a compile error. `member` is partial only when the
+    // client opts into GuildMember partials, which this bot does not (see
+    // ExtendedClient.ts's intents), so this never fires in production today. Kept
+    // so a farewell card is never rendered from a cache-incomplete member if that
+    // ever changes — do not delete this as "dead code" just because tsc allows it.
+    if (member.partial) return;
 
     const channel = member.guild.channels.cache.get(welcomeConfig.farewellChannelId);
-    if (channel?.isTextBased()) {
-      const embed = buildWelcomeEmbed(welcomeConfig.farewellMessage, member as GuildMember);
-      const files: AttachmentBuilder[] = [];
-
-      // Generate farewell image if enabled
-      if (welcomeConfig.farewellImageEnabled) {
-        try {
-          const storage = createStorageAdapter();
-          const m = member as GuildMember;
-          const imageBuffer = await generateWelcomeImage({
-            settings: welcomeConfig.farewellImageConfig,
-            member: {
-              username: m.user.username,
-              displayName: m.displayName,
-              avatarUrl: m.user.displayAvatarURL({ extension: "png", size: 256 }),
-            },
-            guild: {
-              name: m.guild.name,
-              iconUrl: m.guild.iconURL({ size: 256 }) ?? undefined,
-              memberCount: m.guild.memberCount,
-            },
-            storage,
-          });
-          files.push(new AttachmentBuilder(imageBuffer, { name: "farewell.png" }));
-          embed.setImage("attachment://farewell.png");
-        } catch (err) {
-          logger.error(`Failed to generate farewell image in guild ${member.guild.id}`, err instanceof Error ? err : new Error(String(err)));
-        }
-      }
-
-      const sendMode = welcomeConfig.farewellImageConfig.sendMode ?? "with";
-      if (sendMode === "only" && files.length > 0) {
-        await channel.send({ files }).catch((err) => {
-          logger.error(`Failed to send farewell image in guild ${member.guild.id}`, err instanceof Error ? err : new Error(String(err)));
-        });
-      } else if (sendMode === "before" && files.length > 0) {
-        await channel.send({ files }).catch(() => {});
-        await channel.send({ embeds: [embed] }).catch((err) => {
-          logger.error(`Failed to send farewell message in guild ${member.guild.id}`, err instanceof Error ? err : new Error(String(err)));
-        });
-      } else {
-        await channel.send({ embeds: [embed], files }).catch((err) => {
-          logger.error(`Failed to send farewell message in guild ${member.guild.id}`, err instanceof Error ? err : new Error(String(err)));
-        });
-      }
+    if (channel?.isTextBased() && channel.isSendable()) {
+      await deliverWelcomeMessage({
+        channel,
+        member,
+        style: welcomeConfig.farewellMessageStyle,
+        content: welcomeConfig.farewellContent,
+        embedConfig: welcomeConfig.farewellMessage,
+        imageEnabled: welcomeConfig.farewellImageEnabled,
+        imageSettings: welcomeConfig.farewellImageConfig,
+        attachmentName: "farewell.png",
+        label: "farewell",
+      });
     }
   },
 };

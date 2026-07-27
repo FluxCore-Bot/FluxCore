@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Ziņas stils",
+    "plain": "Vienkārša ziņa",
+    "embed": "Iegultā ziņa",
+    "plainHint": "Attēls tiek publicēts pilnā platumā ar neobligātu tekstu virs tā.",
+    "embedHint": "Attēls tiek rādīts iegultās ziņas lodziņā.",
+    "contentLabel": "Ziņas teksts",
+    "contentPlaceholder": "Laipni lūdzam {user} serverī {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

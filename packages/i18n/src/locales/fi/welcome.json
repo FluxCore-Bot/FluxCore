@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Viestin tyyli",
+    "plain": "Tavallinen viesti",
+    "embed": "Upotus",
+    "plainHint": "Kuva julkaistaan täydessä leveydessä, valinnaisen tekstin kanssa sen yläpuolella.",
+    "embedHint": "Kuva näytetään upotuslaatikon sisällä.",
+    "contentLabel": "Viestin teksti",
+    "contentPlaceholder": "Tervetuloa {user} palvelimelle {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

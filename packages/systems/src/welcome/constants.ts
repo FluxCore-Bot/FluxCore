@@ -1,7 +1,6 @@
-import type { GuildMember } from "discord.js";
-import type { EmbedConfig } from "./types.js";
+import type { EmbedConfig, WelcomeMember } from "./types.js";
 
-export const WELCOME_VARIABLES: Record<string, (member: GuildMember) => string> = {
+export const WELCOME_VARIABLES: Record<string, (member: WelcomeMember) => string> = {
   "{user}": (m) => `<@${m.id}>`,
   "{user.tag}": (m) => m.user.tag,
   "{user.name}": (m) => m.user.username,

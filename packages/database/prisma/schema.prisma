@@ -253,9 +253,13 @@ model WelcomeConfig {
   welcomeEnabled        Boolean @default(false)
   welcomeChannelId      String?
   welcomeMessage        String  @default("{}") // JSON embed config
+  welcomeMessageStyle   String  @default("plain") // "plain" | "embed"
+  welcomeContent        String  @default("") // plain-mode message text
   farewellEnabled       Boolean @default(false)
   farewellChannelId     String?
   farewellMessage       String  @default("{}") // JSON embed config
+  farewellMessageStyle  String  @default("plain") // "plain" | "embed"
+  farewellContent       String  @default("") // plain-mode message text
   dmEnabled             Boolean @default(false)
   dmMessage             String  @default("{}") // JSON embed config
   autoRoleIds           String  @default("[]") // JSON array of role IDs

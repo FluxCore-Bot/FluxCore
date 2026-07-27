@@ -69,6 +69,15 @@
     "welcomeSubtitle": "Welcome to {server}!",
     "farewellSubtitle": "Goodbye, {user.name}!"
   },
+  "messageStyle": {
+    "label": "Boodskapstyl",
+    "plain": "Gewone boodskap",
+    "embed": "Inbedding",
+    "plainHint": "Die prent word in volle breedte geplaas, met opsionele teks daarbo.",
+    "embedHint": "Die prent word binne-in 'n inbedding-boks gewys.",
+    "contentLabel": "Boodskapteks",
+    "contentPlaceholder": "Welkom {user} by {server}!"
+  },
   "imageEditor": {
     "livePreview": "Live Preview",
     "previewAlt": "{{type}} image preview",

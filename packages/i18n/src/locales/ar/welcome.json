@@ -69,6 +69,15 @@
     "welcomeSubtitle": "مرحبًا بك في {server}!",
     "farewellSubtitle": "وداعًا، {user.name}!"
   },
+  "messageStyle": {
+    "label": "نمط الرسالة",
+    "plain": "رسالة عادية",
+    "embed": "تضمين",
+    "plainHint": "يتم نشر الصورة بعرض كامل مع نص اختياري فوقها.",
+    "embedHint": "يتم عرض الصورة داخل مربع التضمين.",
+    "contentLabel": "نص الرسالة",
+    "contentPlaceholder": "مرحبًا {user} في {server}!"
+  },
   "imageEditor": {
     "livePreview": "معاينة حية",
     "previewAlt": "معاينة صورة {{type}}",
