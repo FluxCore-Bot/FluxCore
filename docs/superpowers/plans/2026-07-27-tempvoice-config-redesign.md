@@ -606,6 +606,18 @@ vi.mock("../../../../src/client/shared/hooks/useRoles", () => ({
   useRoles: () => ({ data: [], isLoading: false, isError: false }),
 }));
 
+// HubCard → usePreviewContext → useAuth/useGuilds are react-query hooks and
+// throw without a QueryClientProvider. Mock them rather than wrapping, so the
+// real VariableEditor and real preview resolver stay under test.
+vi.mock("../../../../src/client/shared/hooks/useAuth", () => ({
+  useAuth: () => ({ data: { userId: "u1", username: "Ahmad", avatar: null } }),
+}));
+vi.mock("../../../../src/client/shared/hooks/useGuilds", () => ({
+  useGuilds: () => ({
+    data: [{ id: "g1", name: "Test Guild", icon: null, botPresent: true }],
+  }),
+}));
+
 import { HubCard } from "../../../../src/client/features/tempvoice/components/HubCard";
 
 beforeAll(() => {
@@ -977,6 +989,17 @@ vi.mock("../../../../src/client/shared/hooks/useChannels", () => ({
 }));
 vi.mock("../../../../src/client/shared/hooks/useRoles", () => ({
   useRoles: () => ({ data: [], isLoading: false, isError: false }),
+}));
+
+// Each HubCard reaches usePreviewContext → useAuth/useGuilds, which are
+// react-query hooks and throw without a QueryClientProvider.
+vi.mock("../../../../src/client/shared/hooks/useAuth", () => ({
+  useAuth: () => ({ data: { userId: "u1", username: "Ahmad", avatar: null } }),
+}));
+vi.mock("../../../../src/client/shared/hooks/useGuilds", () => ({
+  useGuilds: () => ({
+    data: [{ id: "g1", name: "Test Guild", icon: null, botPresent: true }],
+  }),
 }));
 
 import { TempVoiceHubList } from "../../../../src/client/features/tempvoice/components/TempVoiceHubList";
