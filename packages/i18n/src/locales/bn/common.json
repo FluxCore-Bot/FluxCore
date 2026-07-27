@@ -171,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "অনুসন্ধান",
+    "placeholder": "পৃষ্ঠা, সার্ভার ও কার্যক্রম খুঁজুন…",
+    "dialogTitle": "কমান্ড প্যালেট",
+    "dialogDescription": "একটি পৃষ্ঠা, সার্ভার বা কার্যক্রম খুঁজুন। চলাচলের জন্য তীর চিহ্নের কী এবং খোলার জন্য Enter ব্যবহার করুন।",
+    "hint": {
+      "navigate": "চলাচল",
+      "select": "খুলুন",
+      "close": "বন্ধ করুন"
+    },
+    "group": {
+      "recent": "সাম্প্রতিক",
+      "pages": "পৃষ্ঠাসমূহ",
+      "actions": "কার্যক্রম",
+      "servers": "সার্ভারসমূহ"
+    },
+    "keywords": {
+      "automation": "নিয়ম অটোমেশন ট্রিগার ওয়ার্কফ্লো",
+      "moderation": "কেস ব্যান কিক মিউট শাস্তি"
+    },
+    "action": {
+      "refreshGuild": "এই সার্ভারের ডেটা রিফ্রেশ করুন",
+      "refreshGuildList": "আমার সার্ভার তালিকা রিফ্রেশ করুন",
+      "backToServers": "সব সার্ভারে ফিরে যান",
+      "addToServer": "একটি সার্ভারে বটটি যোগ করুন",
+      "logout": "লগ আউট"
+    },
+    "more": "আরও {{total}}টি",
+    "empty": "\"{{query}}\" এর জন্য কোনো ফলাফল নেই",
+    "resultCount": "{{total}}টি ফলাফল"
   }
 }

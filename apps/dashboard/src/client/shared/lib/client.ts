@@ -2,6 +2,10 @@ export class ApiError extends Error {
   constructor(
     public status: number,
     message: string,
+    /** i18n key for the message, so the client can translate in the user's own language. */
+    public errorKey?: string,
+    /** Seconds to wait before retrying, from the Retry-After header. */
+    public retryAfter?: number,
   ) {
     super(message);
     this.name = "ApiError";
@@ -76,9 +80,13 @@ export async function apiFetch<T>(
   const data = await res.json();
 
   if (!res.ok) {
+    const body: { error?: string; errorKey?: string } = data;
+    const retryAfter = Number(res.headers.get("retry-after"));
     throw new ApiError(
       res.status,
-      (data as { error?: string }).error || "Request failed",
+      body.error || "Request failed",
+      body.errorKey,
+      Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : undefined,
     );
   }
 

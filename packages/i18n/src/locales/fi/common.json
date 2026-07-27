@@ -171,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Hae",
+    "placeholder": "Hae sivuja, palvelimia ja toimintoja…",
+    "dialogTitle": "Komentopaletti",
+    "dialogDescription": "Hae sivua, palvelinta tai toimintoa. Siirry nuolinäppäimillä ja avaa Enter-näppäimellä.",
+    "hint": {
+      "navigate": "siirry",
+      "select": "avaa",
+      "close": "sulje"
+    },
+    "group": {
+      "recent": "Viimeisimmät",
+      "pages": "Sivut",
+      "actions": "Toiminnot",
+      "servers": "Palvelimet"
+    },
+    "keywords": {
+      "automation": "säännöt automaatio liipaisimet työnkulku",
+      "moderation": "tapaukset porttikiellot potkut mykistykset rangaistukset"
+    },
+    "action": {
+      "refreshGuild": "Päivitä tämän palvelimen tiedot",
+      "refreshGuildList": "Päivitä palvelinluetteloni",
+      "backToServers": "Takaisin kaikkiin palvelimiin",
+      "addToServer": "Lisää botti palvelimelle",
+      "logout": "Kirjaudu ulos"
+    },
+    "more": "{{total}} lisää",
+    "empty": "Ei tuloksia haulle ”{{query}}”",
+    "resultCount": "Tuloksia: {{total}}"
   }
 }

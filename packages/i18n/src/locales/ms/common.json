@@ -171,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Cari",
+    "placeholder": "Cari halaman, pelayan dan tindakan…",
+    "dialogTitle": "Palet perintah",
+    "dialogDescription": "Cari halaman, pelayan atau tindakan. Gunakan kekunci anak panah untuk bergerak dan Enter untuk membuka.",
+    "hint": {
+      "navigate": "bergerak",
+      "select": "buka",
+      "close": "tutup"
+    },
+    "group": {
+      "recent": "Terkini",
+      "pages": "Halaman",
+      "actions": "Tindakan",
+      "servers": "Pelayan"
+    },
+    "keywords": {
+      "automation": "peraturan automasi pencetus aliran kerja",
+      "moderation": "kes larangan tendangan bisu hukuman"
+    },
+    "action": {
+      "refreshGuild": "Segar semula data pelayan ini",
+      "refreshGuildList": "Segar semula senarai pelayan saya",
+      "backToServers": "Kembali ke semua pelayan",
+      "addToServer": "Tambah bot ke sebuah pelayan",
+      "logout": "Log Keluar"
+    },
+    "more": "{{total}} lagi",
+    "empty": "Tiada hasil untuk \"{{query}}\"",
+    "resultCount": "{{total}} hasil"
   }
 }

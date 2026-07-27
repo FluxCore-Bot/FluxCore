@@ -842,7 +842,7 @@ The dashboard has 18 main pages under `/guild/$guildId/`:
 
 **Authentication flow:**
 1. User clicks "Login with Discord" → redirected to `/auth/login`
-2. Server generates a random `state` value, stores it as a signed `oauth_state` cookie (`SameSite=Lax`, 5-minute expiry), and redirects to Discord's OAuth authorization URL
+2. Server generates a random `state` value, stores it as an `oauth_state` cookie (`SameSite=Lax`, 5-minute expiry) signed with a key of its own — HMAC(session secret, `"oauth_state"`), see `features/auth/oauthState.ts` — and redirects to Discord's OAuth authorization URL. It deliberately does not use `@fastify/cookie`'s `signed: true`: this endpoint is public, so a cookie signed with the session secret would be a free mint of values that `unsignCookie` reports as valid session cookies
 3. Discord redirects to `/auth/callback?code=...&state=...`
 4. Server validates the `state` parameter against the cookie, then burns the cookie (prevents replay)
 5. Server exchanges the `code` for an access token via Discord's token endpoint

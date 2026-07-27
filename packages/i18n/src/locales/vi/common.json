@@ -171,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Tìm kiếm",
+    "placeholder": "Tìm trang, máy chủ và hành động…",
+    "dialogTitle": "Bảng lệnh",
+    "dialogDescription": "Tìm một trang, máy chủ hoặc hành động. Dùng phím mũi tên để di chuyển và Enter để mở.",
+    "hint": {
+      "navigate": "di chuyển",
+      "select": "mở",
+      "close": "đóng"
+    },
+    "group": {
+      "recent": "Gần đây",
+      "pages": "Trang",
+      "actions": "Hành động",
+      "servers": "Máy chủ"
+    },
+    "keywords": {
+      "automation": "quy tắc tự động hóa trình kích hoạt quy trình",
+      "moderation": "hồ sơ cấm đá câm hình phạt"
+    },
+    "action": {
+      "refreshGuild": "Làm mới dữ liệu của máy chủ này",
+      "refreshGuildList": "Làm mới danh sách máy chủ của tôi",
+      "backToServers": "Quay lại tất cả máy chủ",
+      "addToServer": "Thêm bot vào một máy chủ",
+      "logout": "Đăng Xuất"
+    },
+    "more": "{{total}} nữa",
+    "empty": "Không có kết quả cho \"{{query}}\"",
+    "resultCount": "{{total}} kết quả"
   }
 }

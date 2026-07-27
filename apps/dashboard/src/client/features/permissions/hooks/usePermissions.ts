@@ -61,6 +61,7 @@ export function usePermissions(guildId: string) {
       return MyPermissionsSchema.parse(raw);
     },
     staleTime: 60_000,
+    enabled: Boolean(guildId),
   });
 
   const can = useCallback(

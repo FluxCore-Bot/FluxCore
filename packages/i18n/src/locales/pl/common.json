@@ -171,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Szukaj",
+    "placeholder": "Szukaj stron, serwerów i akcji…",
+    "dialogTitle": "Paleta poleceń",
+    "dialogDescription": "Wyszukaj stronę, serwer lub akcję. Poruszaj się strzałkami, a otwieraj klawiszem Enter.",
+    "hint": {
+      "navigate": "poruszanie",
+      "select": "otwórz",
+      "close": "zamknij"
+    },
+    "group": {
+      "recent": "Ostatnie",
+      "pages": "Strony",
+      "actions": "Akcje",
+      "servers": "Serwery"
+    },
+    "keywords": {
+      "automation": "reguły automatyzacja wyzwalacze przepływ pracy",
+      "moderation": "sprawy bany wyrzucenia wyciszenia kary"
+    },
+    "action": {
+      "refreshGuild": "Odśwież dane tego serwera",
+      "refreshGuildList": "Odśwież moją listę serwerów",
+      "backToServers": "Wróć do wszystkich serwerów",
+      "addToServer": "Dodaj bota do serwera",
+      "logout": "Wyloguj"
+    },
+    "more": "Więcej: {{total}}",
+    "empty": "Brak wyników dla „{{query}}”",
+    "resultCount": "Wyniki: {{total}}"
   }
 }

@@ -171,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "جستجو",
+    "placeholder": "جستجوی صفحه‌ها، سرورها و کنش‌ها…",
+    "dialogTitle": "پالت فرمان",
+    "dialogDescription": "یک صفحه، سرور یا کنش را جستجو کنید. برای جابه‌جایی از کلیدهای جهت‌دار و برای باز کردن از Enter استفاده کنید.",
+    "hint": {
+      "navigate": "جابه‌جایی",
+      "select": "باز کردن",
+      "close": "بستن"
+    },
+    "group": {
+      "recent": "اخیر",
+      "pages": "صفحه‌ها",
+      "actions": "کنش‌ها",
+      "servers": "سرورها"
+    },
+    "keywords": {
+      "automation": "قوانین اتوماسیون راه‌اندازها گردش کار",
+      "moderation": "پرونده‌ها مسدودسازی اخراج بی‌صدا کردن تنبیه‌ها"
+    },
+    "action": {
+      "refreshGuild": "به‌روزرسانی داده‌های این سرور",
+      "refreshGuildList": "به‌روزرسانی فهرست سرورهای من",
+      "backToServers": "بازگشت به همه سرورها",
+      "addToServer": "افزودن ربات به یک سرور",
+      "logout": "خروج"
+    },
+    "more": "{{total}} مورد دیگر",
+    "empty": "نتیجه‌ای برای «{{query}}» یافت نشد",
+    "resultCount": "{{total}} نتیجه"
   }
 }

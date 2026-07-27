@@ -171,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "खोजें",
+    "placeholder": "पेज, सर्वर और क्रियाएँ खोजें…",
+    "dialogTitle": "कमांड पैलेट",
+    "dialogDescription": "कोई पेज, सर्वर या क्रिया खोजें। चलने के लिए तीर कुंजियों और खोलने के लिए Enter का उपयोग करें।",
+    "hint": {
+      "navigate": "नेविगेट करें",
+      "select": "खोलें",
+      "close": "बंद करें"
+    },
+    "group": {
+      "recent": "हाल के",
+      "pages": "पेज",
+      "actions": "क्रियाएँ",
+      "servers": "सर्वर"
+    },
+    "keywords": {
+      "automation": "नियम ऑटोमेशन ट्रिगर वर्कफ़्लो",
+      "moderation": "केस बैन किक म्यूट दंड"
+    },
+    "action": {
+      "refreshGuild": "इस सर्वर का डेटा रीफ़्रेश करें",
+      "refreshGuildList": "मेरी सर्वर सूची रीफ़्रेश करें",
+      "backToServers": "सभी सर्वर पर वापस जाएं",
+      "addToServer": "बॉट को किसी सर्वर में जोड़ें",
+      "logout": "लॉग आउट"
+    },
+    "more": "{{total}} और",
+    "empty": "\"{{query}}\" के लिए कोई परिणाम नहीं",
+    "resultCount": "{{total}} परिणाम"
   }
 }

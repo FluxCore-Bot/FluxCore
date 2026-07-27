@@ -171,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Maghanap",
+    "placeholder": "Maghanap ng mga pahina, server, at aksyon…",
+    "dialogTitle": "Palette ng mga utos",
+    "dialogDescription": "Maghanap ng pahina, server, o aksyon. Gamitin ang mga arrow key para gumalaw at ang Enter para buksan.",
+    "hint": {
+      "navigate": "gumalaw",
+      "select": "buksan",
+      "close": "isara"
+    },
+    "group": {
+      "recent": "Kamakailan",
+      "pages": "Mga pahina",
+      "actions": "Mga aksyon",
+      "servers": "Mga server"
+    },
+    "keywords": {
+      "automation": "mga panuntunan automation trigger daloy ng trabaho",
+      "moderation": "mga kaso ban kick mute parusa"
+    },
+    "action": {
+      "refreshGuild": "I-refresh ang datos ng server na ito",
+      "refreshGuildList": "I-refresh ang listahan ng aking mga server",
+      "backToServers": "Bumalik sa lahat ng server",
+      "addToServer": "Idagdag ang bot sa isang server",
+      "logout": "Mag-logout"
+    },
+    "more": "{{total}} pa",
+    "empty": "Walang resulta para sa \"{{query}}\"",
+    "resultCount": "{{total}} na resulta"
   }
 }

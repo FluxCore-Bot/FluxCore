@@ -32,6 +32,13 @@ export function GuildSearch({
           size={16}
           className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-text-muted"
         />
+        {/*
+          Overrides the default recessed `surface-lowest` fill. At field width
+          on a page of raised cards, a pure-black rectangle with no border reads
+          as a hole punched through the layout rather than as an input. The
+          tonal lift plus a visible edge matches the command palette trigger, so
+          the two search affordances look like the same control.
+        */}
         <Input
           type="search"
           value={value}
@@ -39,7 +46,7 @@ export function GuildSearch({
           placeholder={t("search.placeholder")}
           aria-label={t("search.placeholder")}
           data-testid="guild-search"
-          className="h-10 ps-9"
+          className="h-10 rounded-lg border-border bg-surface-low ps-9 placeholder:text-text-secondary"
         />
       </div>
       {/*

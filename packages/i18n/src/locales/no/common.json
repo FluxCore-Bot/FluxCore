@@ -171,5 +171,36 @@
       "channelName": "Channel name",
       "memberCount": "Server member count"
     }
+  },
+  "palette": {
+    "open": "Søk",
+    "placeholder": "Søk etter sider, servere og handlinger…",
+    "dialogTitle": "Kommandopalett",
+    "dialogDescription": "Søk etter en side, en server eller en handling. Bruk piltastene for å bevege deg og Enter for å åpne.",
+    "hint": {
+      "navigate": "naviger",
+      "select": "åpne",
+      "close": "lukk"
+    },
+    "group": {
+      "recent": "Nylige",
+      "pages": "Sider",
+      "actions": "Handlinger",
+      "servers": "Servere"
+    },
+    "keywords": {
+      "automation": "regler automatisering utløsere arbeidsflyt",
+      "moderation": "saker utestengelser utkastelser dempinger straffer"
+    },
+    "action": {
+      "refreshGuild": "Oppdater dataene til denne serveren",
+      "refreshGuildList": "Oppdater serverlisten min",
+      "backToServers": "Tilbake til alle servere",
+      "addToServer": "Legg boten til på en server",
+      "logout": "Logg ut"
+    },
+    "more": "{{total}} til",
+    "empty": "Ingen resultater for «{{query}}»",
+    "resultCount": "{{total}} resultater"
   }
 }
