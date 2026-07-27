@@ -54,14 +54,10 @@ vi.mock("@fluxcore/systems/actions/config", () => ({
   setGuildSettings: vi.fn().mockResolvedValue(undefined),
 }));
 
-vi.mock("@fluxcore/systems/actions/constants", () => ({
-  EVENT_TYPES: { memberJoin: { label: "Member Join" } },
-  ACTION_TYPES: { sendMessage: { label: "Send Message" } },
-  MAX_ACTIONS_PER_RULE: 5,
-  ACTION_TYPE_FIELDS: {},
-  EVENT_TYPE_VARIABLES: {},
-  TEMPLATE_VARIABLES: [],
-}));
+// Not mocked, for the same reason as in actions.test.ts: this module is pure
+// data and is the contract the route validates against. A stub silently drops
+// whatever the route starts importing next (it dropped isSafeRuleName), and
+// the route then fails for a reason the test was never written to check.
 
 const { mockLogger } = vi.hoisted(() => ({
   mockLogger: { debug: vi.fn(), info: vi.fn(), warn: vi.fn(), error: vi.fn() },

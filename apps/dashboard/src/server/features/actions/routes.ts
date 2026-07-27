@@ -27,6 +27,7 @@ import {
   EVENT_TYPE_VARIABLES,
   TEMPLATE_VARIABLES,
   EVENT_CONDITION_SUPPORT,
+  isSafeRuleName,
 } from "@fluxcore/systems/actions/constants";
 import type { ActionEventType, ActionType, RuleStep } from "@fluxcore/systems/actions/types";
 import { channelExistsInGuild } from "../../shared/discordApi.js";
@@ -105,6 +106,33 @@ function validateActionConfig(action: { type: string; [key: string]: unknown }):
   return null;
 }
 
+const CONDITION_KEYS = new Set([
+  "channelIds", "roleIds", "userIds",
+  "excludeChannelIds", "excludeRoleIds", "excludeUserIds",
+]);
+const SNOWFLAKE = /^\d{17,20}$/;
+
+/**
+ * Trigger conditions were stored verbatim — any key, any value. A malformed id
+ * can never match anything, so the rule silently never fires, and unknown keys
+ * accumulate in the database forever.
+ */
+function validateConditions(conditions: RuleRequestBody["conditions"]): string | null {
+  if (conditions === undefined) return null;
+  if (typeof conditions !== "object" || conditions === null || Array.isArray(conditions)) {
+    return "Conditions must be an object";
+  }
+  for (const [key, value] of Object.entries(conditions)) {
+    if (!CONDITION_KEYS.has(key)) {
+      return `Unknown condition: ${key}`;
+    }
+    if (!Array.isArray(value) || value.some((v) => typeof v !== "string" || !SNOWFLAKE.test(v))) {
+      return `${key} must be a list of Discord IDs (17-20 digits)`;
+    }
+  }
+  return null;
+}
+
 /**
  * Validates rule request body fields shared between create and update.
  * Returns an error string if validation fails, or null if valid.
@@ -114,14 +142,20 @@ function validateRuleBody(
   options: { requireName: boolean; requireActions: boolean },
 ): string | null {
   if (options.requireName) {
-    if (!body.name || typeof body.name !== "string" || body.name.length > 50) {
+    if (!body.name || typeof body.name !== "string") {
       return "Name is required (max 50 chars)";
     }
+    if (!isSafeRuleName(body.name)) {
+      return "Name must be 1-50 characters and cannot contain markdown, mention syntax, or invisible characters";
+    }
   } else if (body.name !== undefined) {
-    if (typeof body.name !== "string" || body.name.length > 50) {
-      return "Name must be a string (max 50 chars)";
+    if (typeof body.name !== "string" || !isSafeRuleName(body.name)) {
+      return "Name must be 1-50 characters and cannot contain markdown, mention syntax, or invisible characters";
     }
   }
+
+  const conditionsError = validateConditions(body.conditions);
+  if (conditionsError) return conditionsError;
 
   if (options.requireActions) {
     if (!body.eventType || !validEventTypes.has(body.eventType)) {
@@ -305,7 +339,9 @@ export function registerActionRoutes(app: FastifyInstance): void {
         return;
       }
 
-      const rule = await createRule({
+      let rule;
+      try {
+        rule = await createRule({
         guildId,
         name: body.name!,
         eventType: body.eventType as ActionEventType,
@@ -320,7 +356,17 @@ export function registerActionRoutes(app: FastifyInstance): void {
         priority: body.priority ?? 0,
         enabled: body.enabled ?? true,
         createdBy: request.session!.userId,
-      });
+        });
+      } catch (err) {
+        // Prisma's unique-constraint violation surfaced unhandled as a 500
+        // with a generic client message that told the user nothing they could
+        // act on.
+        if (typeof err === "object" && err !== null && "code" in err && err.code === "P2002") {
+          reply.code(409).send({ error: "A rule with that name already exists" });
+          return;
+        }
+        throw err;
+      }
 
       await notifyCacheInvalidation(guildId);
       reply.code(201).send(rule);

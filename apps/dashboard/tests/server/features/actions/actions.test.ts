@@ -453,4 +453,104 @@ describe("action routes", () => {
       });
     });
   });
+
+/**
+ * The rule name reaches Discord embeds, `/actions` autocomplete and audit
+ * logs. The bot command guards it with RULE_NAME_REGEX; the dashboard API
+ * guarded it only for length, so the stated injection protection was
+ * bypassable by anything that did not go through Discord.
+ *
+ * The API cannot simply reuse that regex — it is ASCII-only, and our own
+ * preset templates produce non-ASCII names in 47 of 48 locales.
+ */
+describe("POST /api/guilds/:guildId/actions/rules — rule name safety", () => {
+  function post(name: string) {
+    return app.inject({
+      method: "POST",
+      url: "/api/guilds/guild-1/actions/rules",
+      cookies: { session: app.signCookie("valid") },
+      payload: {
+        name,
+        eventType: "memberJoin",
+        actions: [{ type: "sendMessage", channelId: "1", message: "hi" }],
+      },
+    });
+  }
+
+  it.each([
+    ["@everyone", "@everyone ping"],
+    ["a backtick code fence", "rule ``` here"],
+    ["a zero-width character", "rule​name"],
+    ["a right-to-left override", "rule\u202Ename"],
+    ["a mention", "<@123456789012345678>"],
+    ["a newline", "line one\nline two"],
+  ])("rejects %s", async (_label, name) => {
+    const res = await post(name);
+    expect(res.statusCode).toBe(400);
+  });
+
+  it.each([
+    ["plain ASCII", "Welcome Rule"],
+    ["Arabic", "قاعدة الترحيب"],
+    ["Japanese", "ようこそルール"],
+    ["accented Latin", "Règle de bienvenue"],
+  ])("accepts %s", async (_label, name) => {
+    const res = await post(name);
+    expect(res.statusCode).toBe(201);
+  });
+});
+
+describe("POST /api/guilds/:guildId/actions/rules — trigger conditions", () => {
+  function postConditions(conditions: unknown) {
+    return app.inject({
+      method: "POST",
+      url: "/api/guilds/guild-1/actions/rules",
+      cookies: { session: app.signCookie("valid") },
+      payload: {
+        name: "test",
+        eventType: "memberJoin",
+        actions: [{ type: "sendMessage", channelId: "1", message: "hi" }],
+        conditions,
+      },
+    });
+  }
+
+  it("rejects a condition value that is not a snowflake", async () => {
+    const res = await postConditions({ roleIds: ["not-an-id"] });
+    expect(res.statusCode).toBe(400);
+  });
+
+  it("rejects an unknown condition key", async () => {
+    const res = await postConditions({ nonsenseIds: ["123456789012345678"] });
+    expect(res.statusCode).toBe(400);
+  });
+
+  it("accepts well-formed snowflakes", async () => {
+    const res = await postConditions({ roleIds: ["123456789012345678"] });
+    expect(res.statusCode).toBe(201);
+  });
+});
+
+describe("POST /api/guilds/:guildId/actions/rules — duplicate names", () => {
+  // A duplicate name hit Prisma's P2002 unhandled, surfacing as a 500 with a
+  // generic client message that told the user nothing actionable.
+  it("returns 409 with a readable message, not a 500", async () => {
+    const conflict = Object.assign(new Error("Unique constraint failed"), { code: "P2002" });
+    mockCreateRule.mockRejectedValueOnce(conflict);
+
+    const res = await app.inject({
+      method: "POST",
+      url: "/api/guilds/guild-1/actions/rules",
+      cookies: { session: app.signCookie("valid") },
+      payload: {
+        name: "duplicate",
+        eventType: "memberJoin",
+        actions: [{ type: "sendMessage", channelId: "1", message: "hi" }],
+      },
+    });
+
+    expect(res.statusCode).toBe(409);
+    expect(res.json().error).toMatch(/name/i);
+  });
+});
 });

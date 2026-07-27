@@ -375,3 +375,28 @@ export const RULE_NAME_REGEX = /^[a-zA-Z0-9 _-]{1,50}$/;
 export function isValidRuleName(name: string): boolean {
   return typeof name === "string" && RULE_NAME_REGEX.test(name);
 }
+
+/**
+ * Characters that must never reach a rule name, because the name is rendered
+ * into Discord embeds, `/actions` autocomplete and audit logs:
+ * markdown/code-fence syntax, mention syntax, and any control, zero-width or
+ * bidirectional-override character (which can hide or reverse the visible
+ * text entirely).
+ */
+const UNSAFE_NAME_CHARS =
+  /[`*_~|\\<>@#\u0000-\u001F\u007F\u200B-\u200F\u202A-\u202E\u2066-\u2069\uFEFF]/u;
+
+/**
+ * The dashboard's rule-name guard.
+ *
+ * Deliberately NOT `isValidRuleName`: that one is ASCII-only, and the preset
+ * rule templates produce non-ASCII names in 47 of the 48 locales, so applying
+ * it to the API would reject the product's own onboarding path. This keeps the
+ * same injection protection while allowing any script.
+ */
+export function isSafeRuleName(name: string): boolean {
+  if (typeof name !== "string") return false;
+  const trimmed = name.trim();
+  if (trimmed.length < 1 || trimmed.length > 50) return false;
+  return !UNSAFE_NAME_CHARS.test(trimmed);
+}
