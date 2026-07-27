@@ -2,7 +2,7 @@ import { drawCard } from "@fluxcore/systems/welcome/image/core/draw";
 import { replaceImageVariables } from "@fluxcore/systems/welcome/image/core/text";
 import { sanitizeDisplayName } from "@fluxcore/systems/welcome/image/sanitize";
 import { getTemplate } from "@fluxcore/systems/welcome/image/templates";
-import type { Ctx2D, RenderBackend } from "@fluxcore/systems/welcome/image/core/types";
+import type { RenderBackend } from "@fluxcore/systems/welcome/image/core/types";
 import type { RenderInput } from "@fluxcore/systems/welcome/image/types";
 import { ensureFontsFor } from "./fonts";
 
@@ -59,18 +59,7 @@ export async function renderWelcomeImagePreview(input: RenderInput): Promise<Gen
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("2d canvas context unavailable");
 
-  // The `unknown` hop is narrow: compiling the real DOM
-  // CanvasRenderingContext2D against Ctx2D<HTMLImageElement> shows it
-  // suppresses exactly one error — fillStyle's CanvasPattern member isn't in
-  // our narrower `string | GradientLike` union. Every method, `roundRect(...,
-  // radii: number)`, `direction`, `textAlign`, and `drawImage` all check out.
-  await drawCard(
-    ctx as unknown as Ctx2D<HTMLImageElement>,
-    settings,
-    member,
-    guild,
-    browserBackend,
-  );
+  await drawCard(ctx, settings, member, guild, browserBackend);
 
   const blob = await new Promise<Blob>((resolve, reject) => {
     canvas.toBlob(

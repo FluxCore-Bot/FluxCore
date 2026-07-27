@@ -9,8 +9,15 @@ export interface GradientLike {
  * `CanvasRenderingContext2D` satisfy this structurally.
  */
 export interface Ctx2D<TImage = unknown> {
-  fillStyle: string | GradientLike;
-  strokeStyle: string | GradientLike;
+  // fillStyle/strokeStyle split read and write types (TS 5.1+): the concrete
+  // contexts type reads as string | CanvasGradient | CanvasPattern, and
+  // CanvasPattern is not a GradientLike — a plain mutable property would
+  // therefore reject both real contexts. The renderer only ever writes
+  // styles, so the read side can stay `unknown`.
+  get fillStyle(): unknown;
+  set fillStyle(v: string | GradientLike);
+  get strokeStyle(): unknown;
+  set strokeStyle(v: string | GradientLike);
   lineWidth: number;
   lineCap: "butt" | "round" | "square";
   font: string;

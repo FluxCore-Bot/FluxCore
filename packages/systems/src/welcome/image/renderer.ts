@@ -2,7 +2,7 @@ import { createCanvas, loadImage, type Image } from "@napi-rs/canvas";
 import { registerFonts } from "./fonts/index.js";
 import { getTemplate } from "./templates/index.js";
 import { drawCard } from "./core/draw.js";
-import type { Ctx2D, RenderBackend } from "./core/types.js";
+import type { RenderBackend } from "./core/types.js";
 import type { RenderInput, StorageAdapter } from "./types.js";
 
 export interface GenerateImageOptions extends RenderInput {
@@ -36,13 +36,7 @@ export async function generateWelcomeImage(options: GenerateImageOptions): Promi
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext("2d");
 
-  await drawCard(
-    ctx as unknown as Ctx2D<Image>,
-    settings,
-    member,
-    guild,
-    nodeBackend(storage),
-  );
+  await drawCard(ctx, settings, member, guild, nodeBackend(storage));
 
   return canvas.toBuffer("image/png");
 }
