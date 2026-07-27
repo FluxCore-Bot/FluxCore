@@ -96,6 +96,35 @@ describe("plain message style", () => {
     });
     expect(msgs[0]!.allowedMentions).toEqual({ parse: [], users: ["some-other-id"] });
   });
+
+  // Finding 3 — content.slice(0, 2000) is a raw UTF-16 code-unit cut. When
+  // variable substitution (which runs AFTER the dashboard's 2000-char
+  // stored-template cap) pushes the result past 2000 and the cut point
+  // lands inside a surrogate pair, Discord gets handed a lone surrogate.
+  // "😀" (U+1F600) is a two-code-unit grapheme; place it straddling the
+  // boundary so a naive slice(0, 2000) would bisect it.
+  it("truncates on a grapheme boundary instead of splitting a surrogate pair", () => {
+    const emoji = "\u{1F600}"; // 😀 — one grapheme, two UTF-16 code units
+    const content = "x".repeat(1999) + emoji + "y".repeat(10);
+
+    // Sanity check on the fixture itself: a naive code-unit slice does
+    // exactly what this test guards against — it cuts the emoji in half.
+    const naiveSlice = content.slice(0, 2000);
+    expect(naiveSlice.charCodeAt(naiveSlice.length - 1)).toBeGreaterThanOrEqual(0xd800);
+    expect(naiveSlice.charCodeAt(naiveSlice.length - 1)).toBeLessThanOrEqual(0xdbff);
+
+    const msgs = buildSendPayloads({
+      style: "plain", content, embed: EMBED, files: [], sendMode: "with", memberId: MEMBER_ID,
+    });
+    const result = msgs[0]!.content!;
+
+    expect(result.length).toBeLessThanOrEqual(2000);
+    // The whole emoji must be dropped rather than bisected — including it
+    // would push the result to 2001 code units.
+    expect(result).toBe("x".repeat(1999));
+    const LONE_SURROGATE = /[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/;
+    expect(LONE_SURROGATE.test(result)).toBe(false);
+  });
 });
 
 describe("embed message style is unchanged", () => {

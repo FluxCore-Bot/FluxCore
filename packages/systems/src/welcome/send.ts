@@ -8,6 +8,33 @@ import type { EmbedConfig, MessageStyle, WelcomeImageSettings, WelcomeMember } f
 /** Discord's hard limit on message content length. */
 const MAX_CONTENT_LENGTH = 2000;
 
+let contentSegmenter: Intl.Segmenter | undefined;
+
+/**
+ * Cut `text` to at most `maxLength` UTF-16 code units without splitting a
+ * grapheme cluster — surrogate pairs (emoji), ZWJ sequences, and combining
+ * marks all stay intact.
+ *
+ * A raw `text.slice(0, maxLength)` can land inside one of these, handing
+ * Discord a lone surrogate that renders as U+FFFD or gets the send rejected
+ * outright. This mirrors what `image/core/text.ts`'s `fitText` does for
+ * canvas text, but that helper measures pixel width against a canvas
+ * context and appends an ellipsis — neither applies here, so this is a
+ * small local variant rather than a shared import (keeps image-rendering
+ * concerns out of the send path).
+ */
+function truncateToGraphemes(text: string, maxLength: number): string {
+  if (text.length <= maxLength) return text;
+
+  contentSegmenter ??= new Intl.Segmenter(undefined, { granularity: "grapheme" });
+  let result = "";
+  for (const { segment } of contentSegmenter.segment(text)) {
+    if (result.length + segment.length > maxLength) break;
+    result += segment;
+  }
+  return result;
+}
+
 export interface SendPayload<TEmbed, TFile> {
   content?: string;
   embeds?: TEmbed[];
@@ -43,7 +70,7 @@ export function buildSendPayloads<TEmbed, TFile>(
 
   if (style === "plain") {
     const payload: SendPayload<TEmbed, TFile> = {};
-    const trimmed = content.slice(0, MAX_CONTENT_LENGTH);
+    const trimmed = truncateToGraphemes(content, MAX_CONTENT_LENGTH);
     if (trimmed.trim()) {
       payload.content = trimmed;
       // Lock allowedMentions so a moderator-configured plain-mode template
