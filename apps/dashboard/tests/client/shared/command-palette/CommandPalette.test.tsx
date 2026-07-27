@@ -253,6 +253,30 @@ describe("CommandPalette", () => {
     expect(live).toHaveTextContent("palette.resultCount:4");
   });
 
+  it("clamps the cursor when the command list shrinks while open", async () => {
+    const user = userEvent.setup();
+    const onNavigate = vi.fn();
+    const { rerender } = render(
+      <CommandPaletteProvider>
+        <CommandPalette commands={commands} onNavigate={onNavigate} />
+      </CommandPaletteProvider>,
+    );
+    await open(user);
+    await user.keyboard("{End}");
+
+    // A background refetch shrinks the list to a single command while the
+    // cursor sits on the last row of the old, longer list.
+    rerender(
+      <CommandPaletteProvider>
+        <CommandPalette commands={commands.slice(0, 1)} onNavigate={onNavigate} />
+      </CommandPaletteProvider>,
+    );
+    await user.keyboard("{Enter}");
+    expect(onNavigate).toHaveBeenCalledWith(
+      expect.objectContaining({ id: "p1", title: "Overview" }),
+    );
+  });
+
   it("does not activate anything on Enter with no results", async () => {
     const { user, onNavigate } = setup();
     await open(user);

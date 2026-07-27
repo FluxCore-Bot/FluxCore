@@ -35,6 +35,12 @@ export function CommandPalette({
   // point at an unrelated row.
   useEffect(() => setCursor(0), [query]);
 
+  // A background refetch can shrink the list while the palette is open; an
+  // out-of-range cursor would hand Enter an undefined command.
+  useEffect(() => {
+    setCursor((c) => Math.min(c, Math.max(flat.length - 1, 0)));
+  }, [flat.length]);
+
   // Reset between openings so the palette never reopens mid-search.
   useEffect(() => {
     if (!isOpen) {
@@ -78,10 +84,14 @@ export function CommandPalette({
         e.preventDefault();
         setCursor(flat.length - 1);
         break;
-      case "Enter":
+      case "Enter": {
         e.preventDefault();
-        activate(flat[cursor]);
+        // The clamp effect runs after render; a keydown racing it can still
+        // see a stale cursor, so never trust the index blindly.
+        const target = flat[cursor];
+        if (target) activate(target);
         break;
+      }
     }
   }
 
