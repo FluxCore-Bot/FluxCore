@@ -34,11 +34,20 @@ export function TempVoiceHubList() {
 
   /** Collapses the open card and returns focus to whatever opened it.
    *  Without this, cancelling drops focus to <body> and a keyboard user
-   *  loses their place in the list. */
+   *  loses their place in the list. The header Add button and the
+   *  empty-state CTA share the id "tv-add-hub" (they're mutually exclusive —
+   *  see the render below), so this resolves correctly no matter which one
+   *  opened the "new" card. If neither is in the DOM — e.g. this save just
+   *  filled the last cap slot, so the Add affordance no longer renders at
+   *  all — fall back to the section heading rather than silently dropping
+   *  focus to <body>. */
   const collapse = (openedBy: number | "new") => {
     setExpanded(null);
     const id = openedBy === "new" ? "tv-add-hub" : `tv-edit-hub-${openedBy}`;
-    requestAnimationFrame(() => document.getElementById(id)?.focus());
+    requestAnimationFrame(() => {
+      const target = document.getElementById(id) ?? document.getElementById("tv-hub-list-heading");
+      target?.focus();
+    });
   };
 
   if (isLoading) return <FormSkeleton />;
@@ -66,17 +75,27 @@ export function TempVoiceHubList() {
   const handleDelete = async (id: number) => {
     const removed = configs.find((c) => c.id === id);
     if (!removed) return;
-    await deleteConfig.mutateAsync(id);
+    try {
+      await deleteConfig.mutateAsync(id);
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : t("toast.deleteFailed"));
+      return;
+    }
     if (expanded === id) setExpanded(null);
     toast.success(t("toast.removed"), {
       action: {
         label: t("toast.undo"),
         onClick: () => {
-          void createConfig.mutateAsync({
-            hubChannelId: removed.hubChannelId,
-            categoryId: removed.categoryId,
-            nameTemplate: removed.nameTemplate,
-          });
+          createConfig
+            .mutateAsync({
+              hubChannelId: removed.hubChannelId,
+              categoryId: removed.categoryId,
+              nameTemplate: removed.nameTemplate,
+            })
+            .then(() => toast.success(t("toast.restored")))
+            .catch((err: unknown) =>
+              toast.error(err instanceof Error ? err.message : t("toast.undoFailed")),
+            );
         },
       },
     });
@@ -85,13 +104,20 @@ export function TempVoiceHubList() {
   return (
     <Card className="p-6">
       <div className="mb-6 flex items-center justify-between gap-3">
-        <h3 className="font-label text-lg font-semibold">
+        <h3
+          id="tv-hub-list-heading"
+          tabIndex={-1}
+          className="rounded-sm font-label text-lg font-semibold focus:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+        >
           {t("list.heading")}{" "}
           <span className="text-sm font-normal text-text-muted">
             {t("list.counter", { used: configs.length, max: MAX_TEMPVOICE_CONFIGS_PER_GUILD })}
           </span>
         </h3>
-        {expanded === null && !atCap && (
+        {/* Suppressed while the empty-state CTA below is showing (configs.length === 0) —
+            the two are mutually exclusive and share the id "tv-add-hub" so collapse()'s
+            focus restoration works regardless of which one opened the "new" card. */}
+        {expanded === null && !atCap && configs.length > 0 && (
           <Button id="tv-add-hub" className="min-h-11" onClick={() => setExpanded("new")}>
             <Icon name="add" /> {t("list.add")}
           </Button>
@@ -113,7 +139,7 @@ export function TempVoiceHubList() {
             </HubFlowStep>
             <HubFlowStep n={4} label={t("flow.step4")} last />
           </HubFlow>
-          <Button className="min-h-11" onClick={() => setExpanded("new")}>
+          <Button id="tv-add-hub" className="min-h-11" onClick={() => setExpanded("new")}>
             {t("empty.cta")}
           </Button>
         </div>

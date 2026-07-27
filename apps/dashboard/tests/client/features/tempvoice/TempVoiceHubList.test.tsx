@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { describe, it, expect, vi, beforeAll } from "vitest";
+import { describe, it, expect, vi, beforeAll, beforeEach } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
@@ -16,19 +16,25 @@ vi.mock("@tanstack/react-router", () => ({ useParams: () => ({ guildId: "g1" }) 
 // TempVoiceHubList, which itself imports "sonner" and the hooks module) —
 // so any variable a factory closes over must come from `vi.hoisted`, or the
 // factory runs while that binding is still in the temporal dead zone.
-const { toastSuccess, configs, deleteMutate } = vi.hoisted(() => ({
+//
+// `deleteMutate`/`createMutate` are plain `vi.fn(async () => {})` by default
+// (resolve) — individual tests override one call with `.mockRejectedValueOnce`
+// to exercise the failure paths, then it reverts to resolving.
+const { toastSuccess, toastError, configs, deleteMutate, createMutate } = vi.hoisted(() => ({
   toastSuccess:
     vi.fn<(message: string, options?: { action?: { label: string; onClick: () => void } }) => void>(),
+  toastError: vi.fn<(message: string) => void>(),
   configs: [
     { id: 1, hubChannelId: "hub1", categoryId: "cat1", nameTemplate: "{user}'s Channel" },
   ],
   deleteMutate: vi.fn(async () => {}),
+  createMutate: vi.fn(async () => {}),
 }));
-vi.mock("sonner", () => ({ toast: { success: toastSuccess } }));
+vi.mock("sonner", () => ({ toast: { success: toastSuccess, error: toastError } }));
 
 vi.mock("../../../../src/client/features/tempvoice/hooks/useTempVoice", () => ({
   useTempVoiceConfigs: () => ({ data: configs, isLoading: false }),
-  useCreateTempVoice: () => ({ mutateAsync: vi.fn(async () => {}), isPending: false }),
+  useCreateTempVoice: () => ({ mutateAsync: createMutate, isPending: false }),
   useUpdateTempVoice: () => ({ mutateAsync: vi.fn(async () => {}), isPending: false }),
   useDeleteTempVoice: () => ({ mutateAsync: deleteMutate, isPending: false }),
 }));
@@ -71,6 +77,16 @@ beforeAll(() => {
   globalThis.ResizeObserver ??= ResizeObserverStub;
 });
 
+// Call histories on the shared hoisted mocks would otherwise bleed across
+// tests (they're the same vi.fn() instances for the whole file) — clear
+// counts before each test so "not called with X" and "called once" style
+// assertions are meaningful in isolation. This does not remove the base
+// `async () => {}` implementations, only queued call records — a test that
+// needs a one-shot rejection sets it up itself via `mockRejectedValueOnce`.
+beforeEach(() => {
+  vi.clearAllMocks();
+});
+
 describe("TempVoiceHubList", () => {
   it("lists saved hubs in summary mode", () => {
     render(<TempVoiceHubList />);
@@ -102,12 +118,58 @@ describe("TempVoiceHubList", () => {
     );
   });
 
-  it("offers Undo after a delete", async () => {
+  it("offers Undo after a delete, and Undo recreates the exact deleted hub", async () => {
     const user = userEvent.setup();
     render(<TempVoiceHubList />);
     await user.click(screen.getByRole("button", { name: /list.delete/ }));
     expect(deleteMutate).toHaveBeenCalledWith(1);
     const [, options] = toastSuccess.mock.calls.at(-1) ?? [];
     expect(options?.action?.label).toBe("toast.undo");
+
+    // Invoke the captured handler — the label assertion above only proves the
+    // toast offers an Undo button, not that pressing it does anything. This
+    // is the deleted row's own data, read straight from the pre-delete
+    // snapshot, so a bug that sends the wrong (or empty) payload would show
+    // up here even though it can't show up in the label check.
+    options?.action?.onClick();
+    await waitFor(() =>
+      expect(createMutate).toHaveBeenCalledWith({
+        hubChannelId: "hub1",
+        categoryId: "cat1",
+        nameTemplate: "{user}'s Channel",
+      }),
+    );
+    await waitFor(() =>
+      expect(toastSuccess).toHaveBeenCalledWith("toast.restored"),
+    );
+  });
+
+  it("surfaces an error and leaves the row in place when delete fails", async () => {
+    const user = userEvent.setup();
+    deleteMutate.mockRejectedValueOnce(new Error("Missing permissions"));
+    render(<TempVoiceHubList />);
+    await user.click(screen.getByRole("button", { name: /list.delete/ }));
+
+    await waitFor(() =>
+      expect(toastError).toHaveBeenCalledWith("Missing permissions"),
+    );
+    // No "removed" success toast, and no Undo was ever offered for a delete
+    // that never actually happened.
+    expect(toastSuccess).not.toHaveBeenCalled();
+    // The row is still there — a failed delete must not vanish from the list.
+    expect(screen.getByText("Join to Create")).toBeInTheDocument();
+  });
+
+  it("surfaces an error when Undo fails to recreate the hub", async () => {
+    const user = userEvent.setup();
+    createMutate.mockRejectedValueOnce(new Error("Config limit reached"));
+    render(<TempVoiceHubList />);
+    await user.click(screen.getByRole("button", { name: /list.delete/ }));
+    const [, options] = toastSuccess.mock.calls.at(-1) ?? [];
+
+    options?.action?.onClick();
+    await waitFor(() => expect(toastError).toHaveBeenCalledWith("Config limit reached"));
+    // The restore failure must not be reported as a success.
+    expect(toastSuccess).not.toHaveBeenCalledWith("toast.restored");
   });
 });
