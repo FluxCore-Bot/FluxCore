@@ -30,6 +30,7 @@
     "settings": "تنظیمات"
   },
   "actions": {
+    "undo": "واگرد",
     "save": "ذخیره",
     "cancel": "لغو",
     "delete": "حذف",

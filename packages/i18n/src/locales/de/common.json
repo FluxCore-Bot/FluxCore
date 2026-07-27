@@ -30,6 +30,7 @@
     "settings": "Einstellungen"
   },
   "actions": {
+    "undo": "Rückgängig",
     "save": "Speichern",
     "cancel": "Abbrechen",
     "delete": "Löschen",

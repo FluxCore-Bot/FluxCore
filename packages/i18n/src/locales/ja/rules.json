@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "設定",
+    "configureTrigger": "トリガーを設定",
+    "addAction": "アクションを追加",
+    "addActionHere": "ここにアクションを追加",
+    "addConditionHere": "ここに条件を追加",
+    "addDelayHere": "ここに遅延を追加",
+    "setAsStart": "開始ステップに設定",
+    "disconnect": "接続を解除",
+    "deleteConnection": "接続を削除",
+    "nodeDeleted": "ステップを削除しました",
+    "menuLabel": "{{label}} のアクション",
+    "paneMenuLabel": "キャンバスのアクション",
+    "edgeMenuLabel": "接続のアクション"
+  },
   "breadcrumb": {
     "guild": "サーバー",
     "automation": "自動化"
@@ -294,6 +309,7 @@
     "channelConfigured": "チャンネルを設定済み"
   },
   "validation": {
+    "noEntryStep": "トリガーをステップに接続してください。このワークフローには開始点がありません",
     "nameRequired": "ルール名は必須です",
     "noEventType": "イベントタイプが選択されていません",
     "atLeastOneAction": "少なくとも1つのアクションを設定する必要があります",

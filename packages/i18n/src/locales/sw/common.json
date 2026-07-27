@@ -30,6 +30,7 @@
     "settings": "Mipangilio"
   },
   "actions": {
+    "undo": "Tendua",
     "save": "Hifadhi",
     "cancel": "Ghairi",
     "delete": "Futa",

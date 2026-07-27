@@ -30,6 +30,7 @@
     "settings": "ตั้งค่า"
   },
   "actions": {
+    "undo": "เลิกทำ",
     "save": "บันทึก",
     "cancel": "ยกเลิก",
     "delete": "ลบ",

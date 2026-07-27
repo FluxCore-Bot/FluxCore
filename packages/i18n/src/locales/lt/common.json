@@ -30,6 +30,7 @@
     "settings": "Nustatymai"
   },
   "actions": {
+    "undo": "Anuliuoti",
     "save": "Išsaugoti",
     "cancel": "Atšaukti",
     "delete": "Ištrinti",

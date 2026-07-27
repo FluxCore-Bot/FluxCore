@@ -30,6 +30,7 @@
     "settings": "Beállítások"
   },
   "actions": {
+    "undo": "Visszavonás",
     "save": "Mentés",
     "cancel": "Mégse",
     "delete": "Törlés",

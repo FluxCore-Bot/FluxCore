@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Configura",
+    "configureTrigger": "Configura il trigger",
+    "addAction": "Aggiungi azione",
+    "addActionHere": "Aggiungi azione qui",
+    "addConditionHere": "Aggiungi condizione qui",
+    "addDelayHere": "Aggiungi ritardo qui",
+    "setAsStart": "Imposta come inizio",
+    "disconnect": "Disconnetti",
+    "deleteConnection": "Elimina collegamento",
+    "nodeDeleted": "Passaggio eliminato",
+    "menuLabel": "Azioni per {{label}}",
+    "paneMenuLabel": "Azioni dell'area di lavoro",
+    "edgeMenuLabel": "Azioni del collegamento"
+  },
   "breadcrumb": {
     "guild": "Server",
     "automation": "Automazione"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Adatta alla vista",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Sposta su",
+    "moveDown": "Sposta giù",
+    "removeAction": "Rimuovi azione",
+    "removeStep": "Rimuovi passaggio",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "Duplica",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Collega il trigger a un passaggio — questo flusso di lavoro non ha un punto di partenza",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

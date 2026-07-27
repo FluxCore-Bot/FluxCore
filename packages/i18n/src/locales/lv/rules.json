@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Konfigurēt",
+    "configureTrigger": "Konfigurēt aktivizētāju",
+    "addAction": "Pievienot darbību",
+    "addActionHere": "Pievienot darbību šeit",
+    "addConditionHere": "Pievienot nosacījumu šeit",
+    "addDelayHere": "Pievienot aizkavi šeit",
+    "setAsStart": "Iestatīt kā sākumu",
+    "disconnect": "Atvienot",
+    "deleteConnection": "Dzēst savienojumu",
+    "nodeDeleted": "Solis dzēsts",
+    "menuLabel": "Darbības ar {{label}}",
+    "paneMenuLabel": "Audekla darbības",
+    "edgeMenuLabel": "Savienojuma darbības"
+  },
   "breadcrumb": {
     "guild": "Serveris",
     "automation": "Automatizācija"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Pielāgot skatam",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Pārvietot uz augšu",
+    "moveDown": "Pārvietot uz leju",
+    "removeAction": "Noņemt darbību",
+    "removeStep": "Noņemt soli",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "Dublēt",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Savienojiet aktivizētāju ar soli — šai darbplūsmai nav sākuma punkta",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

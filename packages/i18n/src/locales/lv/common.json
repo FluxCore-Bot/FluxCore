@@ -30,6 +30,7 @@
     "settings": "Iestatījumi"
   },
   "actions": {
+    "undo": "Atsaukt",
     "save": "Saglabāt",
     "cancel": "Atcelt",
     "delete": "Dzēst",

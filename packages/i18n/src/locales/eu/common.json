@@ -30,6 +30,7 @@
     "settings": "Ezarpenak"
   },
   "actions": {
+    "undo": "Desegin",
     "save": "Gorde",
     "cancel": "Utzi",
     "delete": "Ezabatu",

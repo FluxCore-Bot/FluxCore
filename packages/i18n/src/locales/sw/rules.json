@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Sanidi",
+    "configureTrigger": "Sanidi kichochezi",
+    "addAction": "Ongeza kitendo",
+    "addActionHere": "Ongeza kitendo hapa",
+    "addConditionHere": "Ongeza sharti hapa",
+    "addDelayHere": "Ongeza ucheleweshaji hapa",
+    "setAsStart": "Weka kama mwanzo",
+    "disconnect": "Tenganisha",
+    "deleteConnection": "Futa muunganisho",
+    "nodeDeleted": "Hatua imefutwa",
+    "menuLabel": "Vitendo vya {{label}}",
+    "paneMenuLabel": "Vitendo vya turubai",
+    "edgeMenuLabel": "Vitendo vya muunganisho"
+  },
   "breadcrumb": {
     "guild": "Seva",
     "automation": "Otomatiki"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Rekebisha kulingana na muonekano",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Sogeza juu",
+    "moveDown": "Sogeza chini",
+    "removeAction": "Ondoa kitendo",
+    "removeStep": "Ondoa hatua",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "Nakili",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Unganisha kichochezi na hatua — mtiririko huu wa kazi hauna mahali pa kuanzia",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

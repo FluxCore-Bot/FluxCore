@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Beállítás",
+    "configureTrigger": "Eseményindító beállítása",
+    "addAction": "Művelet hozzáadása",
+    "addActionHere": "Művelet hozzáadása ide",
+    "addConditionHere": "Feltétel hozzáadása ide",
+    "addDelayHere": "Késleltetés hozzáadása ide",
+    "setAsStart": "Beállítás kezdőlépésként",
+    "disconnect": "Kapcsolat bontása",
+    "deleteConnection": "Kapcsolat törlése",
+    "nodeDeleted": "Lépés törölve",
+    "menuLabel": "{{label}} műveletei",
+    "paneMenuLabel": "Vászon műveletei",
+    "edgeMenuLabel": "Kapcsolat műveletei"
+  },
   "breadcrumb": {
     "guild": "Szerver",
     "automation": "Automatizálás"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Illesztés a nézethez",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Mozgatás felfelé",
+    "moveDown": "Mozgatás lefelé",
+    "removeAction": "Művelet eltávolítása",
+    "removeStep": "Lépés eltávolítása",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "Duplikálás",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Kösse az eseményindítót egy lépéshez — ennek a munkafolyamatnak nincs kezdőpontja",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

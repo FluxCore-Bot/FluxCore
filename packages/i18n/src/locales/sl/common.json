@@ -30,6 +30,7 @@
     "settings": "Nastavitve"
   },
   "actions": {
+    "undo": "Razveljavi",
     "save": "Shrani",
     "cancel": "Prekliči",
     "delete": "Izbriši",

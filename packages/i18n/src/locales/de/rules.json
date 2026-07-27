@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Konfigurieren",
+    "configureTrigger": "Auslöser konfigurieren",
+    "addAction": "Aktion hinzufügen",
+    "addActionHere": "Aktion hier hinzufügen",
+    "addConditionHere": "Bedingung hier hinzufügen",
+    "addDelayHere": "Verzögerung hier hinzufügen",
+    "setAsStart": "Als Start festlegen",
+    "disconnect": "Verbindung trennen",
+    "deleteConnection": "Verbindung löschen",
+    "nodeDeleted": "Schritt gelöscht",
+    "menuLabel": "Aktionen für {{label}}",
+    "paneMenuLabel": "Aktionen für die Fläche",
+    "edgeMenuLabel": "Aktionen für die Verbindung"
+  },
   "breadcrumb": {
     "guild": "Server",
     "automation": "Automatisierung"
@@ -294,6 +309,7 @@
     "channelConfigured": "Kanal konfiguriert"
   },
   "validation": {
+    "noEntryStep": "Verbinde den Auslöser mit einem Schritt — dieser Workflow hat keinen Startpunkt",
     "nameRequired": "Regelname ist erforderlich",
     "noEventType": "Kein Ereignistyp ausgewählt",
     "atLeastOneAction": "Mindestens eine Aktion muss konfiguriert werden",

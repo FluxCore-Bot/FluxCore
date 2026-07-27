@@ -30,6 +30,7 @@
     "settings": "Nastavení"
   },
   "actions": {
+    "undo": "Vrátit zpět",
     "save": "Uložit",
     "cancel": "Zrušit",
     "delete": "Smazat",

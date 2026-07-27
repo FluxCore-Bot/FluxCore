@@ -30,6 +30,7 @@
     "settings": "Tetapan"
   },
   "actions": {
+    "undo": "Buat Asal",
     "save": "Simpan",
     "cancel": "Batal",
     "delete": "Padam",

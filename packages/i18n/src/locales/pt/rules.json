@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Configurar",
+    "configureTrigger": "Configurar gatilho",
+    "addAction": "Adicionar ação",
+    "addActionHere": "Adicionar ação aqui",
+    "addConditionHere": "Adicionar condição aqui",
+    "addDelayHere": "Adicionar atraso aqui",
+    "setAsStart": "Definir como início",
+    "disconnect": "Desconectar",
+    "deleteConnection": "Eliminar ligação",
+    "nodeDeleted": "Etapa eliminada",
+    "menuLabel": "Ações para {{label}}",
+    "paneMenuLabel": "Ações da área de trabalho",
+    "edgeMenuLabel": "Ações da ligação"
+  },
   "breadcrumb": {
     "guild": "Servidor",
     "automation": "Automatização"
@@ -294,6 +309,7 @@
     "channelConfigured": "Canal configurado"
   },
   "validation": {
+    "noEntryStep": "Ligue o gatilho a uma etapa — este fluxo de trabalho não tem ponto de partida",
     "nameRequired": "O nome da regra é obrigatório",
     "noEventType": "Nenhum tipo de evento selecionado",
     "atLeastOneAction": "Pelo menos uma ação deve ser configurada",

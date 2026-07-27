@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Configurar",
+    "configureTrigger": "Configurar o activador",
+    "addAction": "Engadir acción",
+    "addActionHere": "Engadir acción aquí",
+    "addConditionHere": "Engadir condición aquí",
+    "addDelayHere": "Engadir atraso aquí",
+    "setAsStart": "Definir como inicio",
+    "disconnect": "Desconectar",
+    "deleteConnection": "Eliminar a conexión",
+    "nodeDeleted": "Paso eliminado",
+    "menuLabel": "Accións para {{label}}",
+    "paneMenuLabel": "Accións do lenzo",
+    "edgeMenuLabel": "Accións da conexión"
+  },
   "breadcrumb": {
     "guild": "Servidor",
     "automation": "Automatización"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Axustar á vista",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Subir",
+    "moveDown": "Baixar",
+    "removeAction": "Eliminar a acción",
+    "removeStep": "Eliminar o paso",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "Duplicar",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Conecta o activador cun paso — este fluxo de traballo non ten punto de inicio",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

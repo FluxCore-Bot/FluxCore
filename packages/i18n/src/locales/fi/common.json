@@ -30,6 +30,7 @@
     "settings": "Asetukset"
   },
   "actions": {
+    "undo": "Kumoa",
     "save": "Tallenna",
     "cancel": "Peruuta",
     "delete": "Poista",

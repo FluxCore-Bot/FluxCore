@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "கட்டமை",
+    "configureTrigger": "தூண்டியைக் கட்டமை",
+    "addAction": "செயலைச் சேர்",
+    "addActionHere": "இங்கே செயலைச் சேர்",
+    "addConditionHere": "இங்கே நிபந்தனையைச் சேர்",
+    "addDelayHere": "இங்கே தாமதத்தைச் சேர்",
+    "setAsStart": "தொடக்கமாக அமை",
+    "disconnect": "இணைப்பைத் துண்டி",
+    "deleteConnection": "இணைப்பை நீக்கு",
+    "nodeDeleted": "படி நீக்கப்பட்டது",
+    "menuLabel": "{{label}} இன் செயல்கள்",
+    "paneMenuLabel": "பணித்தளச் செயல்கள்",
+    "edgeMenuLabel": "இணைப்புச் செயல்கள்"
+  },
   "breadcrumb": {
     "guild": "கில்டு",
     "automation": "தன்னியக்கம்"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "காட்சிக்கு பொருத்து",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "மேலே நகர்த்து",
+    "moveDown": "கீழே நகர்த்து",
+    "removeAction": "செயலை நீக்கு",
+    "removeStep": "படியை நீக்கு",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "நகலெடு",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "தூண்டியை ஒரு படியுடன் இணைக்கவும் — இந்தப் பணிப்பாய்வுக்குத் தொடக்கப் புள்ளி இல்லை",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

@@ -30,6 +30,7 @@
     "settings": "Configuración"
   },
   "actions": {
+    "undo": "Desfacer",
     "save": "Gardar",
     "cancel": "Cancelar",
     "delete": "Eliminar",

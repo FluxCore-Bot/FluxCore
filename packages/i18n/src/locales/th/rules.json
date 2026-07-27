@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "กำหนดค่า",
+    "configureTrigger": "กำหนดค่าทริกเกอร์",
+    "addAction": "เพิ่มการดำเนินการ",
+    "addActionHere": "เพิ่มการดำเนินการที่นี่",
+    "addConditionHere": "เพิ่มเงื่อนไขที่นี่",
+    "addDelayHere": "เพิ่มการหน่วงเวลาที่นี่",
+    "setAsStart": "ตั้งเป็นจุดเริ่มต้น",
+    "disconnect": "ยกเลิกการเชื่อมต่อ",
+    "deleteConnection": "ลบการเชื่อมต่อ",
+    "nodeDeleted": "ลบขั้นตอนแล้ว",
+    "menuLabel": "การดำเนินการสำหรับ {{label}}",
+    "paneMenuLabel": "การดำเนินการบนพื้นที่ทำงาน",
+    "edgeMenuLabel": "การดำเนินการกับการเชื่อมต่อ"
+  },
   "breadcrumb": {
     "guild": "เซิร์ฟเวอร์",
     "automation": "ระบบอัตโนมัติ"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "พอดีกับมุมมอง",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "เลื่อนขึ้น",
+    "moveDown": "เลื่อนลง",
+    "removeAction": "ลบการดำเนินการ",
+    "removeStep": "ลบขั้นตอน",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "ทำสำเนา",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "เชื่อมต่อทริกเกอร์เข้ากับขั้นตอน — เวิร์กโฟลว์นี้ยังไม่มีจุดเริ่มต้น",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",

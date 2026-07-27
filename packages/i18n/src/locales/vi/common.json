@@ -30,6 +30,7 @@
     "settings": "Cài Đặt"
   },
   "actions": {
+    "undo": "Hoàn Tác",
     "save": "Lưu",
     "cancel": "Hủy",
     "delete": "Xóa",

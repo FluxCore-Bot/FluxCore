@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "配置",
+    "configureTrigger": "配置触发器",
+    "addAction": "添加操作",
+    "addActionHere": "在此添加操作",
+    "addConditionHere": "在此添加条件",
+    "addDelayHere": "在此添加延迟",
+    "setAsStart": "设为起始步骤",
+    "disconnect": "断开连接",
+    "deleteConnection": "删除连接",
+    "nodeDeleted": "步骤已删除",
+    "menuLabel": "{{label}} 的操作",
+    "paneMenuLabel": "画布操作",
+    "edgeMenuLabel": "连接操作"
+  },
   "breadcrumb": {
     "guild": "服务器",
     "automation": "自动化"
@@ -294,6 +309,7 @@
     "channelConfigured": "已配置频道"
   },
   "validation": {
+    "noEntryStep": "请将触发器连接到某个步骤——此工作流没有起点",
     "nameRequired": "必须填写规则名称",
     "noEventType": "未选择事件类型",
     "atLeastOneAction": "必须至少配置一个操作",

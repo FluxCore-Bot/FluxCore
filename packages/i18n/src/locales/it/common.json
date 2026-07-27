@@ -30,6 +30,7 @@
     "settings": "Impostazioni"
   },
   "actions": {
+    "undo": "Annulla",
     "save": "Salva",
     "cancel": "Annulla",
     "delete": "Elimina",

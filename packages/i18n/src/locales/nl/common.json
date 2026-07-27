@@ -30,6 +30,7 @@
     "settings": "Instellingen"
   },
   "actions": {
+    "undo": "Ongedaan maken",
     "save": "Opslaan",
     "cancel": "Annuleren",
     "delete": "Verwijderen",

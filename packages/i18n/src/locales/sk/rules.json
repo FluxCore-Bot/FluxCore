@@ -1,4 +1,19 @@
 {
+  "contextMenu": {
+    "configure": "Konfigurovať",
+    "configureTrigger": "Konfigurovať spúšťač",
+    "addAction": "Pridať akciu",
+    "addActionHere": "Pridať akciu sem",
+    "addConditionHere": "Pridať podmienku sem",
+    "addDelayHere": "Pridať oneskorenie sem",
+    "setAsStart": "Nastaviť ako začiatok",
+    "disconnect": "Odpojiť",
+    "deleteConnection": "Odstrániť spojenie",
+    "nodeDeleted": "Krok odstránený",
+    "menuLabel": "Akcie pre {{label}}",
+    "paneMenuLabel": "Akcie plátna",
+    "edgeMenuLabel": "Akcie spojenia"
+  },
   "breadcrumb": {
     "guild": "Server",
     "automation": "Automatizácia"
@@ -164,7 +179,7 @@
     "addDelay": "Delay",
     "genericError": "An error occurred",
     "canvasLabel": "Workflow editor canvas. Drag node handles to connect steps.",
-    "fitToView": "Fit to view",
+    "fitToView": "Prispôsobiť zobrazeniu",
     "disconnectHint": "Drag handles to connect — click an edge + Del to disconnect",
     "shortcuts": {
       "close": "Close",
@@ -190,10 +205,10 @@
     "selectEvent": "Select event...",
     "actionType": "Action Type",
     "selectAction": "Select action...",
-    "moveUp": "Move Up",
-    "moveDown": "Move Down",
-    "removeAction": "Remove Action",
-    "removeStep": "Remove Step",
+    "moveUp": "Posunúť nahor",
+    "moveDown": "Posunúť nadol",
+    "removeAction": "Odstrániť akciu",
+    "removeStep": "Odstrániť krok",
     "removeCondition": "Remove Condition",
     "removeDelay": "Remove Delay",
     "stepNotFound": "Step not found",
@@ -282,7 +297,7 @@
     "disableRule": "Disable rule",
     "enableRule": "Enable rule",
     "editRule": "Edit Rule",
-    "duplicate": "Duplicate",
+    "duplicate": "Duplikovať",
     "select": "Select",
     "deselect": "Deselect",
     "steps": "+{{count}} steps"
@@ -294,6 +309,7 @@
     "channelConfigured": "Channel configured"
   },
   "validation": {
+    "noEntryStep": "Pripojte spúšťač ku kroku — tento pracovný postup nemá počiatočný bod",
     "nameRequired": "Rule name is required",
     "noEventType": "No event type selected",
     "atLeastOneAction": "At least one action must be configured",
