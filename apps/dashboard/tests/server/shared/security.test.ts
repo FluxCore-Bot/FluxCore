@@ -64,4 +64,15 @@ describe("dashboard helmet CSP nonces", () => {
     expect(csp).not.toContain("unsafe-inline");
     expect(csp).not.toContain("unsafe-eval");
   });
+
+  // Regression guard: the welcome/farewell image preview renders a
+  // URL.createObjectURL blob into <img src>. "'self'" does not match the
+  // blob: scheme, so without this the preview silently fails to paint in
+  // production (Vite's dev server sends no CSP, so this never surfaced
+  // locally) while the browser console logs a CSP violation.
+  it("allows blob: in img-src for the welcome image preview", async () => {
+    const res = await app.inject({ method: "GET", url: "/api/i18n/en/common" });
+    const csp = res.headers["content-security-policy"] as string;
+    expect(csp).toMatch(/img-src [^;]*\bblob:/);
+  });
 });
