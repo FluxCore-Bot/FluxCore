@@ -36,6 +36,12 @@ function valueAt(tree: LocaleTree, path: string): string {
 const langs = readdirSync(LOCALES_DIR);
 const englishKeys = flatten(namespace("en")).sort();
 
+/** The one key that must NOT be translated: it is a literal template value the
+ *  admin saves, and it has to keep matching DEFAULT_TEMPLATE in HubCard.tsx.
+ *  Shared between the must-differ exemption and the must-match assertion below
+ *  so the two can never drift apart. */
+const TEMPLATE_KEY = "fields.templatePlaceholder";
+
 describe("tempvoice i18n", () => {
   it("covers all 48 locales", () => {
     expect(langs).toHaveLength(48);
@@ -48,13 +54,27 @@ describe("tempvoice i18n", () => {
   it.each(langs.filter((l) => l !== "en"))("%s is actually translated", (lang) => {
     const tree = namespace(lang);
     const en = namespace("en");
-    // Placeholders and the default template are legitimately identical across
-    // locales; every other string must differ from English.
-    const allowed = new Set(["fields.templatePlaceholder", "list.counter"]);
+    // Only the literal default template may match English. Everything else —
+    // including list.counter, whose connecting word ("of") is real display copy —
+    // must differ, or the locale has English leaking through.
     const untranslated = englishKeys.filter(
-      (k) => !allowed.has(k) && valueAt(tree, k) === valueAt(en, k),
+      (k) => k !== TEMPLATE_KEY && valueAt(tree, k) === valueAt(en, k),
     );
     expect(untranslated).toEqual([]);
+  });
+
+  it.each(langs)("%s keeps the default template byte-identical to English", (lang) => {
+    // Asserted positively, not merely exempted above: a translator seeing an
+    // English-looking string in an otherwise translated file would reasonably
+    // "fix" it, silently desyncing the placeholder from the value the bot
+    // actually defaults to.
+    expect(valueAt(namespace(lang), TEMPLATE_KEY)).toBe(valueAt(namespace("en"), TEMPLATE_KEY));
+  });
+
+  it.each(langs)("%s has no empty values", (lang) => {
+    const tree = namespace(lang);
+    const empties = englishKeys.filter((k) => valueAt(tree, k).trim() === "");
+    expect(empties).toEqual([]);
   });
 
   it.each(langs)("%s keeps every interpolation placeholder", (lang) => {
