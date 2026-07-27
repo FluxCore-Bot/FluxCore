@@ -146,7 +146,7 @@
     "include": "Bao Gồm (danh sách trắng)",
     "exclude": "Loại Trừ (danh sách đen)",
     "clearAll": "Xóa tất cả điều kiện",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "Xóa {{label}}",
     "collapse": "Thu gọn điều kiện",
     "userIdInvalid": "Nhập ID người dùng Discord hợp lệ (17–20 chữ số)",
     "addUserId": "Thêm ID người dùng",

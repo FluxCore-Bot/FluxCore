@@ -146,7 +146,7 @@
     "include": "Isama (whitelist)",
     "exclude": "I-exclude (blacklist)",
     "clearAll": "I-clear ang lahat ng kondisyon",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "Alisin ang {{label}}",
     "collapse": "I-collapse ang mga kundisyon",
     "userIdInvalid": "Maglagay ng wastong Discord user ID (17–20 digit)",
     "addUserId": "Magdagdag ng user ID",

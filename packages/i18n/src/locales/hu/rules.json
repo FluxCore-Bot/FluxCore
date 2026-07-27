@@ -146,7 +146,7 @@
     "include": "Belefoglalás (fehérlista)",
     "exclude": "Kizárás (feketelista)",
     "clearAll": "Összes feltétel törlése",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "{{label}} eltávolítása",
     "collapse": "Feltételek összecsukása",
     "userIdInvalid": "Adjon meg érvényes Discord felhasználói azonosítót (17–20 számjegy)",
     "addUserId": "Felhasználói azonosító hozzáadása",

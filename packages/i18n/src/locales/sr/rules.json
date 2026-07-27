@@ -146,7 +146,7 @@
     "include": "Укључи (бела листа)",
     "exclude": "Искључи (црна листа)",
     "clearAll": "Обриши све услове",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "Уклони {{label}}",
     "collapse": "Скупи услове",
     "userIdInvalid": "Унесите важећи Discord кориснички ИД (17–20 цифара)",
     "addUserId": "Додај кориснички ИД",

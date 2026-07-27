@@ -146,7 +146,7 @@
     "include": "Inkluder (hvitliste)",
     "exclude": "Ekskluder (svarteliste)",
     "clearAll": "Tøm alle betingelser",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "Fjern {{label}}",
     "collapse": "Skjul betingelser",
     "userIdInvalid": "Skriv inn en gyldig Discord-bruker-ID (17–20 sifre)",
     "addUserId": "Legg til bruker-ID",

@@ -146,7 +146,7 @@
     "include": "Includi (whitelist)",
     "exclude": "Escludi (blacklist)",
     "clearAll": "Cancella tutte le condizioni",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "Rimuovi {{label}}",
     "collapse": "Comprimi condizioni",
     "userIdInvalid": "Inserisci un ID utente Discord valido (17–20 cifre)",
     "addUserId": "Aggiungi ID utente",

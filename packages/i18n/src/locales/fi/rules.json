@@ -146,7 +146,7 @@
     "include": "Sisällytä (valkolista)",
     "exclude": "Sulje pois (mustat lista)",
     "clearAll": "Tyhjennä kaikki ehdot",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "Poista {{label}}",
     "collapse": "Tiivistä ehdot",
     "userIdInvalid": "Anna kelvollinen Discord-käyttäjätunnus (17–20 numeroa)",
     "addUserId": "Lisää käyttäjätunnus",

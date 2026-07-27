@@ -146,7 +146,7 @@
     "include": "Iekļaut (baltais saraksts)",
     "exclude": "Izslēgt (melnais saraksts)",
     "clearAll": "Notīrīt visus nosacījumus",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "Noņemt {{label}}",
     "collapse": "Sakļaut nosacījumus",
     "userIdInvalid": "Ievadiet derīgu Discord lietotāja ID (17–20 cipari)",
     "addUserId": "Pievienot lietotāja ID",

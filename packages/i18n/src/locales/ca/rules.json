@@ -146,7 +146,7 @@
     "include": "Incloure (llista blanca)",
     "exclude": "Excloure (llista negra)",
     "clearAll": "Netejar totes les condicions",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "Elimina {{label}}",
     "collapse": "Replega les condicions",
     "userIdInvalid": "Introdueix un ID d'usuari de Discord vàlid (17–20 dígits)",
     "addUserId": "Afegeix un ID d'usuari",

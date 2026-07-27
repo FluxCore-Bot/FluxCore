@@ -146,7 +146,7 @@
     "include": "รวม (ไวท์ลิสต์)",
     "exclude": "ยกเว้น (แบล็กลิสต์)",
     "clearAll": "ล้างเงื่อนไขทั้งหมด",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "ลบ {{label}}",
     "collapse": "ยุบเงื่อนไข",
     "userIdInvalid": "ป้อนรหัสผู้ใช้ Discord ที่ถูกต้อง (17–20 หลัก)",
     "addUserId": "เพิ่มรหัสผู้ใช้",

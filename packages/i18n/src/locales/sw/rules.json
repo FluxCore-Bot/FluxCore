@@ -146,7 +146,7 @@
     "include": "Jumuisha (orodha nyeupe)",
     "exclude": "Tenga (orodha nyeusi)",
     "clearAll": "Futa masharti yote",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "Ondoa {{label}}",
     "collapse": "Kunja masharti",
     "userIdInvalid": "Weka kitambulisho halali cha mtumiaji wa Discord (tarakimu 17–20)",
     "addUserId": "Ongeza kitambulisho cha mtumiaji",

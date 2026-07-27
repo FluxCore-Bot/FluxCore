@@ -146,7 +146,7 @@
     "include": "Sluit In (witlys)",
     "exclude": "Sluit Uit (swartelys)",
     "clearAll": "Maak alle voorwaardes skoon",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "Verwyder {{label}}",
     "collapse": "Vou voorwaardes in",
     "userIdInvalid": "Voer 'n geldige Discord-gebruiker-ID in (17–20 syfers)",
     "addUserId": "Voeg gebruiker-ID by",

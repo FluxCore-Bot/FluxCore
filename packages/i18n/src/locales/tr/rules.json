@@ -146,7 +146,7 @@
     "include": "Dahil Et (beyaz liste)",
     "exclude": "Hariç Tut (kara liste)",
     "clearAll": "Tüm koşulları temizle",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "{{label}} öğesini kaldır",
     "collapse": "Koşulları daralt",
     "userIdInvalid": "Geçerli bir Discord kullanıcı kimliği girin (17–20 hane)",
     "addUserId": "Kullanıcı kimliği ekle",

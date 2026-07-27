@@ -146,7 +146,7 @@
     "include": "包含（白名單）",
     "exclude": "排除（黑名單）",
     "clearAll": "清除所有條件",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "移除 {{label}}",
     "collapse": "收合條件",
     "userIdInvalid": "請輸入有效的 Discord 使用者 ID（17–20 位數字）",
     "addUserId": "新增使用者 ID",

@@ -146,7 +146,7 @@
     "include": "অন্তর্ভুক্ত (হোয়াইটলিস্ট)",
     "exclude": "বর্জন (ব্ল্যাকলিস্ট)",
     "clearAll": "সমস্ত শর্ত সাফ করুন",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "{{label}} সরান",
     "collapse": "শর্তগুলি সংকুচিত করুন",
     "userIdInvalid": "একটি বৈধ Discord ব্যবহারকারী আইডি লিখুন (১৭–২০ সংখ্যা)",
     "addUserId": "ব্যবহারকারী আইডি যোগ করুন",

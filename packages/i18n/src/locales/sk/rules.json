@@ -146,7 +146,7 @@
     "include": "Zahrnúť (biela listina)",
     "exclude": "Vylúčiť (čierna listina)",
     "clearAll": "Vymazať všetky podmienky",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "Odstrániť {{label}}",
     "collapse": "Zbaliť podmienky",
     "userIdInvalid": "Zadajte platné ID používateľa Discord (17 – 20 číslic)",
     "addUserId": "Pridať ID používateľa",

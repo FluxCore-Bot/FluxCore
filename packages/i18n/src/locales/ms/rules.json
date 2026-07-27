@@ -146,7 +146,7 @@
     "include": "Sertakan (senarai putih)",
     "exclude": "Kecualikan (senarai hitam)",
     "clearAll": "Kosongkan semua syarat",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "Buang {{label}}",
     "collapse": "Kuncupkan syarat",
     "userIdInvalid": "Masukkan ID pengguna Discord yang sah (17–20 digit)",
     "addUserId": "Tambah ID pengguna",

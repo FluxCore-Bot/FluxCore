@@ -146,7 +146,7 @@
     "include": "Barne hartu (zerrenda zuria)",
     "exclude": "Baztertu (zerrenda beltza)",
     "clearAll": "Baldintza guztiak garbitu",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "Kendu {{label}}",
     "collapse": "Tolestu baldintzak",
     "userIdInvalid": "Sartu baliozko Discord erabiltzaile ID bat (17–20 digitu)",
     "addUserId": "Gehitu erabiltzaile IDa",

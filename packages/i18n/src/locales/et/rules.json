@@ -146,7 +146,7 @@
     "include": "Kaasa (valge nimekiri)",
     "exclude": "Välista (must nimekiri)",
     "clearAll": "Tühjenda kõik tingimused",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "Eemalda {{label}}",
     "collapse": "Ahenda tingimused",
     "userIdInvalid": "Sisesta kehtiv Discordi kasutaja ID (17–20 numbrit)",
     "addUserId": "Lisa kasutaja ID",

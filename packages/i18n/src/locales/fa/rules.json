@@ -146,7 +146,7 @@
     "include": "شامل‌کردن (فهرست سفید)",
     "exclude": "حذف (فهرست سیاه)",
     "clearAll": "پاک کردن همه شرایط",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "حذف {{label}}",
     "collapse": "جمع کردن شرط‌ها",
     "userIdInvalid": "یک شناسه کاربری معتبر Discord وارد کنید (۱۷ تا ۲۰ رقم)",
     "addUserId": "افزودن شناسه کاربر",

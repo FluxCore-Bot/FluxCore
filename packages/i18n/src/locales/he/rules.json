@@ -146,7 +146,7 @@
     "include": "כלול (רשימה לבנה)",
     "exclude": "אל תכלול (רשימה שחורה)",
     "clearAll": "נקה את כל התנאים",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "הסר את {{label}}",
     "collapse": "כווץ תנאים",
     "userIdInvalid": "הזן מזהה משתמש Discord תקין (17–20 ספרות)",
     "addUserId": "הוסף מזהה משתמש",

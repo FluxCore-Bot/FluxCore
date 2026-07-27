@@ -146,7 +146,7 @@
     "include": "शामिल करें (व्हाइटलिस्ट)",
     "exclude": "बाहर करें (ब्लैकलिस्ट)",
     "clearAll": "सभी शर्तें साफ़ करें",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "{{label}} हटाएँ",
     "collapse": "शर्तें संक्षिप्त करें",
     "userIdInvalid": "मान्य Discord उपयोगकर्ता आईडी दर्ज करें (17–20 अंक)",
     "addUserId": "उपयोगकर्ता आईडी जोड़ें",

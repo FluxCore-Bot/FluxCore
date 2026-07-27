@@ -146,7 +146,7 @@
     "include": "Includeți (lista albă)",
     "exclude": "Excludeți (lista neagră)",
     "clearAll": "Șterge toate condițiile",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "Elimină {{label}}",
     "collapse": "Restrânge condițiile",
     "userIdInvalid": "Introduceți un ID de utilizator Discord valid (17–20 cifre)",
     "addUserId": "Adăugați ID-ul utilizatorului",

@@ -146,7 +146,7 @@
     "include": "포함 (화이트리스트)",
     "exclude": "제외 (블랙리스트)",
     "clearAll": "모든 조건 초기화",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "{{label}} 제거",
     "collapse": "조건 접기",
     "userIdInvalid": "유효한 Discord 사용자 ID를 입력하세요 (17~20자리)",
     "addUserId": "사용자 ID 추가",

@@ -146,7 +146,7 @@
     "include": "Uključi (bijela lista)",
     "exclude": "Isključi (crna lista)",
     "clearAll": "Obriši sve uvjete",
-    "removeItem": "Remove {{label}}",
+    "removeItem": "Ukloni {{label}}",
     "collapse": "Sažmi uvjete",
     "userIdInvalid": "Unesite valjani Discord korisnički ID (17–20 znamenki)",
     "addUserId": "Dodaj korisnički ID",
