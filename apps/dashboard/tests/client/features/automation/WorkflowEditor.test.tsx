@@ -484,3 +484,54 @@ describe("WorkflowEditor — Ctrl+S does not bypass validation", () => {
     expect(updateMutateAsync).not.toHaveBeenCalled();
   });
 });
+
+
+/**
+ * The autosave effect wrote a draft for EVERY editor session, including one
+ * opened on an existing rule — but `loadDraft` is only consulted for new
+ * rules. So editing a rule and closing lost the edits outright, while the
+ * unread draft sat in localStorage until it expired.
+ */
+describe("WorkflowEditor — closing with unsaved changes", () => {
+  it("asks before discarding edits", async () => {
+    const user = userEvent.setup();
+    const onClose = vi.fn();
+    renderEditor(threeActions, onClose);
+
+    const nameField = await screen.findByLabelText(/editor\.ruleNamePlaceholder/);
+    await user.type(nameField, "X");
+
+    await user.click(screen.getByRole("button", { name: /editor\.backToRules/ }));
+
+    // A confirmation stands between the click and the close. ConfirmDialog is
+    // a Radix Dialog (role="dialog"), same as NodeDetailPanel, so assert on
+    // its title rather than the role.
+    expect(onClose).not.toHaveBeenCalled();
+    expect(await screen.findByText("editor.discardChangesTitle")).toBeInTheDocument();
+  });
+
+  it("closes once discarding is confirmed", async () => {
+    const user = userEvent.setup();
+    const onClose = vi.fn();
+    renderEditor(threeActions, onClose);
+
+    const nameField = await screen.findByLabelText(/editor\.ruleNamePlaceholder/);
+    await user.type(nameField, "X");
+    await user.click(screen.getByRole("button", { name: /editor\.backToRules/ }));
+    await user.click(await screen.findByRole("button", { name: /editor\.discardChanges/ }));
+
+    await waitFor(() => expect(onClose).toHaveBeenCalledTimes(1));
+  });
+
+  it("closes straight away when nothing has been touched", async () => {
+    const user = userEvent.setup();
+    const onClose = vi.fn();
+    renderEditor(threeActions, onClose);
+
+    await screen.findByLabelText(/editor\.ruleNamePlaceholder/);
+    await user.click(screen.getByRole("button", { name: /editor\.backToRules/ }));
+
+    expect(screen.queryByText("editor.discardChangesTitle")).not.toBeInTheDocument();
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+});

@@ -200,7 +200,15 @@
       "fitView": "适应视图"
     },
     "issues_one": "{{count}} 个问题",
-    "issues_other": "{{count}} 个问题"
+    "issues_other": "{{count}} 个问题",
+    "discardChangesTitle": "放弃未保存的更改？",
+    "discardChangesDescription": "此规则有尚未保存的更改。关闭编辑器将会丢失它们。",
+    "discardChanges": "放弃更改",
+    "draftRestored": "已从上一次会话恢复草稿",
+    "discardDraftAction": "放弃草稿",
+    "discardTitle": "放弃更改？",
+    "discardDescription": "你有未保存的更改。草稿会保存在本地，但你将离开编辑器。",
+    "discardConfirm": "放弃并关闭"
   },
   "panel": {
     "trigger": "触发器设置",

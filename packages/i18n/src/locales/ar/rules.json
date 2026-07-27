@@ -200,7 +200,15 @@
       "fitView": "ملاءمة العرض"
     },
     "issues_one": "{{count}} مشكلة",
-    "issues_other": "{{count}} مشكلة"
+    "issues_other": "{{count}} مشكلة",
+    "discardChangesTitle": "تجاهل التغييرات غير المحفوظة؟",
+    "discardChangesDescription": "تحتوي هذه القاعدة على تعديلات لم تُحفظ. إغلاق المحرر سيؤدي إلى فقدانها.",
+    "discardChanges": "تجاهل التغييرات",
+    "draftRestored": "تمت استعادة مسودة من جلسة سابقة",
+    "discardDraftAction": "تجاهل المسودة",
+    "discardTitle": "تجاهل التغييرات؟",
+    "discardDescription": "لديك تغييرات غير محفوظة. تُحفظ مسودتك محليًا، لكنك ستغادر المحرر.",
+    "discardConfirm": "تجاهل وإغلاق"
   },
   "panel": {
     "trigger": "إعدادات المُشغِّل",

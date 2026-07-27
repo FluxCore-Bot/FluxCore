@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Elveti a nem mentett módosításokat?",
+    "discardChangesDescription": "Ez a szabály nem mentett módosításokat tartalmaz. A szerkesztő bezárásával elvesznek.",
+    "discardChanges": "Módosítások elvetése",
+    "draftRestored": "Piszkozat visszaállítva egy korábbi munkamenetből",
+    "discardDraftAction": "Piszkozat elvetése",
+    "discardTitle": "Elveti a módosításokat?",
+    "discardDescription": "Nem mentett módosításai vannak. A piszkozat helyben mentve marad, de elhagyja a szerkesztőt.",
+    "discardConfirm": "Elvetés és bezárás"
   },
   "panel": {
     "trigger": "Trigger Settings",

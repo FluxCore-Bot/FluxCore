@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "सहेजे न गए बदलाव छोड़ें?",
+    "discardChangesDescription": "इस नियम में ऐसे बदलाव हैं जो सहेजे नहीं गए। संपादक बंद करने पर वे खो जाएँगे।",
+    "discardChanges": "बदलाव छोड़ें",
+    "draftRestored": "पिछले सत्र से ड्राफ़्ट पुनर्स्थापित किया गया",
+    "discardDraftAction": "ड्राफ़्ट छोड़ें",
+    "discardTitle": "बदलाव छोड़ें?",
+    "discardDescription": "आपके पास सहेजे न गए बदलाव हैं। आपका ड्राफ़्ट स्थानीय रूप से सहेजा गया है, पर आप संपादक छोड़ देंगे।",
+    "discardConfirm": "छोड़ें और बंद करें"
   },
   "panel": {
     "trigger": "Trigger Settings",

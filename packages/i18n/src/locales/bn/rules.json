@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "অসংরক্ষিত পরিবর্তন বাতিল করবেন?",
+    "discardChangesDescription": "এই নিয়মে এমন পরিবর্তন আছে যা সংরক্ষণ করা হয়নি। সম্পাদক বন্ধ করলে সেগুলি হারিয়ে যাবে।",
+    "discardChanges": "পরিবর্তন বাতিল করুন",
+    "draftRestored": "আগের সেশন থেকে খসড়া পুনরুদ্ধার করা হয়েছে",
+    "discardDraftAction": "খসড়া বাতিল করুন",
+    "discardTitle": "পরিবর্তন বাতিল করবেন?",
+    "discardDescription": "আপনার অসংরক্ষিত পরিবর্তন আছে। খসড়া স্থানীয়ভাবে সংরক্ষিত থাকবে, তবে আপনি সম্পাদক ছেড়ে যাবেন।",
+    "discardConfirm": "বাতিল করে বন্ধ করুন"
   },
   "panel": {
     "trigger": "Trigger Settings",

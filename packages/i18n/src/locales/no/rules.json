@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Forkaste ulagrede endringer?",
+    "discardChangesDescription": "Denne regelen har endringer som ikke er lagret. Hvis du lukker redigeringsprogrammet, går de tapt.",
+    "discardChanges": "Forkast endringer",
+    "draftRestored": "Utkast gjenopprettet fra en tidligere økt",
+    "discardDraftAction": "Forkast utkast",
+    "discardTitle": "Forkaste endringer?",
+    "discardDescription": "Du har ulagrede endringer. Utkastet lagres lokalt, men du forlater redigeringsprogrammet.",
+    "discardConfirm": "Forkast og lukk"
   },
   "panel": {
     "trigger": "Trigger Settings",

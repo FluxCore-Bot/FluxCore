@@ -67,6 +67,41 @@ interface StepPanelProps {
 
 type NodeDetailPanelProps = TriggerPanelProps | ActionPanelProps | StepPanelProps;
 
+/**
+ * Builds the config for a newly chosen action type, carrying over any value
+ * whose key the new type also declares.
+ *
+ * Resetting to `{ type }` erased everything the user had typed the instant the
+ * dropdown closed — with no warning, no undo, and the draft autosave
+ * immediately persisting the emptied action. sendMessage -> sendDM is the
+ * common case: both have a `message`, and a long composed message vanished.
+ */
+export function carryOverActionFields(
+  previous: Record<string, unknown>,
+  newType: string,
+  actionTypeFields: Record<string, { key: string }[]>,
+): Record<string, unknown> {
+  const next: Record<string, unknown> = { type: newType };
+  for (const field of actionTypeFields[newType] ?? []) {
+    const value = getNestedValue(previous, field.key);
+    if (value !== undefined && value !== null && value !== "") {
+      Object.assign(next, setNestedValue(next, field.key, value));
+    }
+  }
+  return next;
+}
+
+function getNestedValue(obj: Record<string, unknown>, path: string): unknown {
+  let current: unknown = obj;
+  for (const part of path.split(".")) {
+    if (current === null || current === undefined || typeof current !== "object") {
+      return undefined;
+    }
+    current = (current as Record<string, unknown>)[part];
+  }
+  return current;
+}
+
 function setNestedValue(
   obj: Record<string, unknown>,
   path: string,
@@ -328,17 +363,20 @@ function ActionSettings({
   const { data: channels = [] } = useChannels(guildId);
   const { data: roles = [] } = useRoles(guildId);
   const real = usePreviewContext(guildId);
+  const actionTypeId = useId();
   const fields: ActionFieldDescriptor[] =
     constants.actionTypeFields[action.type] ?? [];
 
   return (
     <>
       <div>
-        <Label>
+        <Label htmlFor={actionTypeId}>
           {t("panel.actionType")} <span aria-hidden="true" className="text-danger">*</span>
           <span className="sr-only"> ({t("common:labels.required")})</span>
         </Label>
         <SearchableSelect
+          id={actionTypeId}
+          required
           options={buildActionTypeOptions(constants.actionTypes)}
           value={action.type || null}
           onValueChange={(v) => v && onTypeChange(v)}
@@ -444,7 +482,14 @@ function ActionPanel({
   const variables = buildAutomationVariables(constants, eventType);
 
   const handleTypeChange = (newType: string) => {
-    onActionChange(index, { type: newType });
+    onActionChange(
+      index,
+      carryOverActionFields(
+        action as unknown as Record<string, unknown>,
+        newType,
+        constants.actionTypeFields,
+      ) as unknown as ActionConfig,
+    );
   };
 
   const handleFieldChange = (key: string, value: unknown) => {
@@ -604,7 +649,14 @@ function StepPanel({
 
   if (step.type === "action") {
     const handleTypeChange = (newType: string) => {
-      onStepChange(stepId, { ...step, action: { type: newType } });
+      onStepChange(stepId, {
+        ...step,
+        action: carryOverActionFields(
+          step.action as unknown as Record<string, unknown>,
+          newType,
+          constants.actionTypeFields,
+        ) as unknown as typeof step.action,
+      });
     };
 
     const handleFieldChange = (key: string, value: unknown) => {

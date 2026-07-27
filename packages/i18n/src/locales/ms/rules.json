@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Buang perubahan yang belum disimpan?",
+    "discardChangesDescription": "Peraturan ini mempunyai perubahan yang belum disimpan. Menutup editor akan menghilangkannya.",
+    "discardChanges": "Buang perubahan",
+    "draftRestored": "Draf dipulihkan daripada sesi sebelumnya",
+    "discardDraftAction": "Buang draf",
+    "discardTitle": "Buang perubahan?",
+    "discardDescription": "Anda mempunyai perubahan yang belum disimpan. Draf disimpan secara setempat, tetapi anda akan meninggalkan editor.",
+    "discardConfirm": "Buang & tutup"
   },
   "panel": {
     "trigger": "Trigger Settings",

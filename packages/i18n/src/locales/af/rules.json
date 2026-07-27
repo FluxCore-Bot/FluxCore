@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Onopgeslane veranderinge weggooi?",
+    "discardChangesDescription": "Hierdie reël het veranderinge wat nie gestoor is nie. As jy die redigeerder toemaak, gaan hulle verlore.",
+    "discardChanges": "Gooi veranderinge weg",
+    "draftRestored": "Konsep herstel uit 'n vorige sessie",
+    "discardDraftAction": "Gooi konsep weg",
+    "discardTitle": "Veranderinge weggooi?",
+    "discardDescription": "Jy het onopgeslane veranderinge. Jou konsep word plaaslik gestoor, maar jy verlaat die redigeerder.",
+    "discardConfirm": "Gooi weg en maak toe"
   },
   "panel": {
     "trigger": "Trigger Settings",

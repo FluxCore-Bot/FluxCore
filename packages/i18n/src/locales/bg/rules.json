@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Отхвърляне на незапазените промени?",
+    "discardChangesDescription": "Това правило има незапазени промени. Затварянето на редактора ще ги загуби.",
+    "discardChanges": "Отхвърляне на промените",
+    "draftRestored": "Черновата е възстановена от предишна сесия",
+    "discardDraftAction": "Отхвърляне на черновата",
+    "discardTitle": "Отхвърляне на промените?",
+    "discardDescription": "Имате незапазени промени. Черновата се запазва локално, но ще напуснете редактора.",
+    "discardConfirm": "Отхвърляне и затваряне"
   },
   "panel": {
     "trigger": "Trigger Settings",

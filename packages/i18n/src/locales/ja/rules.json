@@ -200,7 +200,15 @@
       "fitView": "画面に合わせる"
     },
     "issues_one": "{{count}}件の問題",
-    "issues_other": "{{count}}件の問題"
+    "issues_other": "{{count}}件の問題",
+    "discardChangesTitle": "保存していない変更を破棄しますか？",
+    "discardChangesDescription": "このルールには保存されていない変更があります。エディターを閉じると失われます。",
+    "discardChanges": "変更を破棄",
+    "draftRestored": "前回のセッションから下書きを復元しました",
+    "discardDraftAction": "下書きを破棄",
+    "discardTitle": "変更を破棄しますか？",
+    "discardDescription": "保存していない変更があります。下書きはローカルに保存されますが、エディターを離れます。",
+    "discardConfirm": "破棄して閉じる"
   },
   "panel": {
     "trigger": "トリガー設定",

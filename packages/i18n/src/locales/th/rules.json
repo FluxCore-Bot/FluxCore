@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "ละทิ้งการเปลี่ยนแปลงที่ยังไม่ได้บันทึกหรือไม่",
+    "discardChangesDescription": "กฎนี้มีการเปลี่ยนแปลงที่ยังไม่ได้บันทึก การปิดตัวแก้ไขจะทำให้สูญหาย",
+    "discardChanges": "ละทิ้งการเปลี่ยนแปลง",
+    "draftRestored": "กู้คืนฉบับร่างจากเซสชันก่อนหน้าแล้ว",
+    "discardDraftAction": "ละทิ้งฉบับร่าง",
+    "discardTitle": "ละทิ้งการเปลี่ยนแปลงหรือไม่",
+    "discardDescription": "คุณมีการเปลี่ยนแปลงที่ยังไม่ได้บันทึก ฉบับร่างถูกบันทึกไว้ในเครื่อง แต่คุณจะออกจากตัวแก้ไข",
+    "discardConfirm": "ละทิ้งและปิด"
   },
   "panel": {
     "trigger": "Trigger Settings",

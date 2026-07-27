@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "放棄未儲存的變更？",
+    "discardChangesDescription": "此規則有尚未儲存的變更。關閉編輯器將會遺失它們。",
+    "discardChanges": "放棄變更",
+    "draftRestored": "已從上一次工作階段還原草稿",
+    "discardDraftAction": "放棄草稿",
+    "discardTitle": "放棄變更？",
+    "discardDescription": "你有未儲存的變更。草稿會儲存在本機，但你將離開編輯器。",
+    "discardConfirm": "放棄並關閉"
   },
   "panel": {
     "trigger": "Trigger Settings",

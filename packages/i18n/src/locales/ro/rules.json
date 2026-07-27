@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Renunțați la modificările nesalvate?",
+    "discardChangesDescription": "Această regulă are modificări nesalvate. Închiderea editorului le va pierde.",
+    "discardChanges": "Renunță la modificări",
+    "draftRestored": "Ciornă restaurată dintr-o sesiune anterioară",
+    "discardDraftAction": "Renunță la ciornă",
+    "discardTitle": "Renunțați la modificări?",
+    "discardDescription": "Aveți modificări nesalvate. Ciorna este salvată local, dar veți părăsi editorul.",
+    "discardConfirm": "Renunță și închide"
   },
   "panel": {
     "trigger": "Trigger Settings",

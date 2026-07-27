@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Gorde gabeko aldaketak baztertu?",
+    "discardChangesDescription": "Arau honek gorde gabeko aldaketak ditu. Editorea ixten baduzu, galdu egingo dira.",
+    "discardChanges": "Baztertu aldaketak",
+    "draftRestored": "Zirriborroa aurreko saio batetik berreskuratu da",
+    "discardDraftAction": "Baztertu zirriborroa",
+    "discardTitle": "Aldaketak baztertu?",
+    "discardDescription": "Gorde gabeko aldaketak dituzu. Zirriborroa lokalean gordetzen da, baina editoretik aterako zara.",
+    "discardConfirm": "Baztertu eta itxi"
   },
   "panel": {
     "trigger": "Trigger Settings",

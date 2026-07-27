@@ -437,6 +437,25 @@ export function useWorkflowSteps({
     setActions((prev) => prev.filter((_, i) => i !== index));
   }, []);
 
+  /**
+   * Removes a whole set of actions in one pass.
+   *
+   * React Flow delivers one `remove` change per node in a multi-select Delete.
+   * Applying them by index in a loop is wrong: every removal splices the
+   * array, so from the second onward the index refers to a different action —
+   * deleting nodes 0 and 2 removed actions 0 and 3.
+   *
+   * The canvas always shows at least one action node, so an empty result is
+   * reset to a single blank action rather than leaving nothing to click.
+   */
+  const handleActionsRemove = useCallback((indices: number[]) => {
+    const doomed = new Set(indices);
+    setActions((prev) => {
+      const kept = prev.filter((_, i) => !doomed.has(i));
+      return kept.length > 0 ? kept : [{ type: "" }];
+    });
+  }, []);
+
   const handleActionMove = useCallback((index: number, direction: "up" | "down") => {
     setActions((prev) => {
       const next = [...prev];
@@ -461,6 +480,7 @@ export function useWorkflowSteps({
     handleEdgeRemoval,
     handleActionChange,
     handleActionRemove,
+    handleActionsRemove,
     handleActionMove,
     convertToStepMode,
     convertAndSeverEdges,

@@ -200,7 +200,15 @@
       "fitView": "Ajustar à tela"
     },
     "issues_one": "{{count}} problema",
-    "issues_other": "{{count}} problemas"
+    "issues_other": "{{count}} problemas",
+    "discardChangesTitle": "Descartar as alterações não guardadas?",
+    "discardChangesDescription": "Esta regra tem alterações que não foram guardadas. Fechar o editor irá perdê-las.",
+    "discardChanges": "Descartar alterações",
+    "draftRestored": "Rascunho restaurado de uma sessão anterior",
+    "discardDraftAction": "Descartar rascunho",
+    "discardTitle": "Descartar as alterações?",
+    "discardDescription": "Tem alterações não guardadas. O rascunho é guardado localmente, mas vai sair do editor.",
+    "discardConfirm": "Descartar e fechar"
   },
   "panel": {
     "trigger": "Configurações do Gatilho",

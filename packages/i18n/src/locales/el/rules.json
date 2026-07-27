@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Απόρριψη μη αποθηκευμένων αλλαγών;",
+    "discardChangesDescription": "Αυτός ο κανόνας έχει αλλαγές που δεν έχουν αποθηκευτεί. Αν κλείσετε το πρόγραμμα επεξεργασίας, θα χαθούν.",
+    "discardChanges": "Απόρριψη αλλαγών",
+    "draftRestored": "Το πρόχειρο αποκαταστάθηκε από προηγούμενη συνεδρία",
+    "discardDraftAction": "Απόρριψη προχείρου",
+    "discardTitle": "Απόρριψη αλλαγών;",
+    "discardDescription": "Έχετε μη αποθηκευμένες αλλαγές. Το πρόχειρο αποθηκεύεται τοπικά, αλλά θα φύγετε από το πρόγραμμα επεξεργασίας.",
+    "discardConfirm": "Απόρριψη και κλείσιμο"
   },
   "panel": {
     "trigger": "Trigger Settings",

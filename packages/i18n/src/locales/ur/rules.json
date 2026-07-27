@@ -200,7 +200,15 @@
       "fitView": "نظارے کے مطابق کریں"
     },
     "issues_one": "{{count}} مسئلہ",
-    "issues_other": "{{count}} مسائل"
+    "issues_other": "{{count}} مسائل",
+    "discardChangesTitle": "غیر محفوظ تبدیلیاں رد کریں؟",
+    "discardChangesDescription": "اس قاعدے میں ایسی تبدیلیاں ہیں جو محفوظ نہیں ہوئیں۔ ایڈیٹر بند کرنے پر وہ ضائع ہو جائیں گی۔",
+    "discardChanges": "تبدیلیاں رد کریں",
+    "draftRestored": "پچھلے سیشن سے مسودہ بحال کر دیا گیا",
+    "discardDraftAction": "مسودہ رد کریں",
+    "discardTitle": "تبدیلیاں رد کریں؟",
+    "discardDescription": "آپ کے پاس غیر محفوظ تبدیلیاں ہیں۔ مسودہ مقامی طور پر محفوظ ہے، لیکن آپ ایڈیٹر سے نکل جائیں گے۔",
+    "discardConfirm": "رد کریں اور بند کریں"
   },
   "panel": {
     "trigger": "ٹرگر ترتیبات",

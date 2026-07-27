@@ -184,7 +184,10 @@
     "discardDescription": "You have unsaved changes. Your draft is saved locally, but you'll leave the editor.",
     "discardConfirm": "Discard & close",
     "draftRestored": "Draft restored from a previous session",
-    "discardDraftAction": "Discard draft"
+    "discardDraftAction": "Discard draft",
+    "discardChangesTitle": "Discard unsaved changes?",
+    "discardChangesDescription": "This rule has edits that have not been saved. Closing the editor will lose them.",
+    "discardChanges": "Discard changes"
   },
   "panel": {
     "trigger": "Trigger Settings",

@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Kas loobuda salvestamata muudatustest?",
+    "discardChangesDescription": "Sellel reeglil on salvestamata muudatusi. Redaktori sulgemisel lähevad need kaotsi.",
+    "discardChanges": "Loobu muudatustest",
+    "draftRestored": "Mustand taastati eelmisest seansist",
+    "discardDraftAction": "Loobu mustandist",
+    "discardTitle": "Kas loobuda muudatustest?",
+    "discardDescription": "Sul on salvestamata muudatusi. Mustand salvestatakse kohalikult, kuid lahkud redaktorist.",
+    "discardConfirm": "Loobu ja sulge"
   },
   "panel": {
     "trigger": "Trigger Settings",

@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Zavržem neshranjene spremembe?",
+    "discardChangesDescription": "To pravilo ima neshranjene spremembe. Če zaprete urejevalnik, bodo izgubljene.",
+    "discardChanges": "Zavrzi spremembe",
+    "draftRestored": "Osnutek obnovljen iz prejšnje seje",
+    "discardDraftAction": "Zavrzi osnutek",
+    "discardTitle": "Zavržem spremembe?",
+    "discardDescription": "Imate neshranjene spremembe. Osnutek se shrani lokalno, vendar boste zapustili urejevalnik.",
+    "discardConfirm": "Zavrzi in zapri"
   },
   "panel": {
     "trigger": "Trigger Settings",

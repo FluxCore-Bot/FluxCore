@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Bỏ các thay đổi chưa lưu?",
+    "discardChangesDescription": "Quy tắc này có các thay đổi chưa được lưu. Đóng trình chỉnh sửa sẽ làm mất chúng.",
+    "discardChanges": "Bỏ thay đổi",
+    "draftRestored": "Đã khôi phục bản nháp từ phiên trước",
+    "discardDraftAction": "Bỏ bản nháp",
+    "discardTitle": "Bỏ các thay đổi?",
+    "discardDescription": "Bạn có thay đổi chưa lưu. Bản nháp được lưu cục bộ, nhưng bạn sẽ rời trình chỉnh sửa.",
+    "discardConfirm": "Bỏ và đóng"
   },
   "panel": {
     "trigger": "Trigger Settings",

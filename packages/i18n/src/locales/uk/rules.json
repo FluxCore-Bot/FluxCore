@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Скасувати незбережені зміни?",
+    "discardChangesDescription": "У цьому правилі є незбережені зміни. Закриття редактора призведе до їх втрати.",
+    "discardChanges": "Скасувати зміни",
+    "draftRestored": "Чернетку відновлено з попереднього сеансу",
+    "discardDraftAction": "Скасувати чернетку",
+    "discardTitle": "Скасувати зміни?",
+    "discardDescription": "Є незбережені зміни. Чернетка зберігається локально, але ви залишите редактор.",
+    "discardConfirm": "Скасувати й закрити"
   },
   "panel": {
     "trigger": "Trigger Settings",

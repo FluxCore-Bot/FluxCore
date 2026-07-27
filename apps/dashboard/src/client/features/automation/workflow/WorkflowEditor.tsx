@@ -59,6 +59,7 @@ import {
   TooltipProvider,
 } from "../../../shared/ui/tooltip";
 import { PageSkeleton } from "../../../shared/ui/skeletons";
+import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
 
 export interface RuleDraft {
   name: string;
@@ -119,6 +120,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
   const [error, setError] = useState("");
   const [selectedNode, setSelectedNode] = useState<SelectedNode | null>(null);
   const [draftRestored, setDraftRestored] = useState(!!savedDraft);
+  const [confirmDiscard, setConfirmDiscard] = useState(false);
 
   const emptyAction: ActionConfig = { type: "" };
 
@@ -136,6 +138,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     handleEdgeRemoval,
     handleActionChange: rawActionChange,
     handleActionRemove: rawActionRemove,
+    handleActionsRemove: rawActionsRemove,
     handleActionMove: rawActionMove,
     convertAndSeverEdges,
     duplicateNode,
@@ -178,10 +181,47 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     });
   }, [rawActionMove, actions.length]);
 
-  // Auto-save draft on changes
+  /**
+   * Snapshot of the state the editor opened with, for the dirty check below.
+   * Captured once — a ref, not state, so it never re-renders and never drifts.
+   */
+  const openedWithRef = useRef(
+    JSON.stringify({ name, eventType, actions, steps, entryStepId, conditions, priority, enabled }),
+  );
+
+  const isDirty =
+    JSON.stringify({ name, eventType, actions, steps, entryStepId, conditions, priority, enabled }) !==
+    openedWithRef.current;
+
+  // Auto-save draft on changes.
+  //
+  // Only for NEW rules: `loadDraft` is consulted solely when there is no
+  // `rule`, so writing one while editing an existing rule produced an unread
+  // draft that sat in localStorage until it expired — and gave the false
+  // impression the edits were recoverable. They were not; the guard on close
+  // is what actually protects them.
   useEffect(() => {
+    if (rule) return;
     saveDraftToStorage({ name, eventType, actions, steps, entryStepId, conditions, priority, enabled });
-  }, [name, eventType, actions, steps, entryStepId, conditions, priority, enabled, saveDraftToStorage]);
+  }, [rule, name, eventType, actions, steps, entryStepId, conditions, priority, enabled, saveDraftToStorage]);
+
+  // Browser-level guard for a tab close or reload, which no in-app dialog can
+  // intercept.
+  useEffect(() => {
+    if (!isDirty) return;
+    const onBeforeUnload = (e: BeforeUnloadEvent) => e.preventDefault();
+    window.addEventListener("beforeunload", onBeforeUnload);
+    return () => window.removeEventListener("beforeunload", onBeforeUnload);
+  }, [isDirty]);
+
+  /** Close, but never silently drop unsaved work. */
+  const requestClose = useCallback(() => {
+    if (isDirty) {
+      setConfirmDiscard(true);
+      return;
+    }
+    onClose();
+  }, [isDirty, onClose]);
 
   const validation = useMemo(
     () => validateWorkflow(eventType, actions, name, constants ?? undefined, t, steps, entryStepId),
@@ -228,26 +268,28 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
   const onNodesChange: OnNodesChange = useCallback((changes) => {
     const removals = changes.filter((c) => c.type === "remove");
     if (removals.length > 0) {
+      // A multi-select Delete arrives as several `remove` changes at once.
+      // Applying them one at a time by index was wrong: each removal splices
+      // the array, so from the second onward the index pointed at a different
+      // action and the wrong nodes disappeared. Collect first, remove once.
+      const actionIndices: number[] = [];
+      const stepIds: string[] = [];
       for (const change of removals) {
         if (change.type !== "remove") continue;
         const nodeId = change.id;
         if (nodeId.startsWith("action-") && !isStepMode) {
           const index = parseInt(nodeId.split("-")[1], 10);
-          if (!isNaN(index)) {
-            if (actions.length > 1) {
-              handleActionRemove(index);
-            } else {
-              // Last action — reset to empty instead of removing
-              rawActionChange(index, { type: "" });
-              setSelectedNode(null);
-            }
-          }
+          if (!isNaN(index)) actionIndices.push(index);
         } else if (nodeId.startsWith("step-")) {
-          const stepId = nodeId.slice(5);
-          handleStepRemove(stepId);
+          stepIds.push(nodeId.slice(5));
         }
         // Ignore trigger/add-action node removals
       }
+      if (actionIndices.length > 0) {
+        rawActionsRemove(actionIndices);
+        setSelectedNode(null);
+      }
+      for (const stepId of stepIds) handleStepRemove(stepId);
       // Don't pass removals to React Flow — our sync effect handles the visual update
       const nonRemovals = changes.filter((c) => c.type !== "remove");
       if (nonRemovals.length > 0) {
@@ -256,7 +298,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
       return;
     }
     onNodesChangeBase(changes);
-  }, [isStepMode, actions.length, handleActionRemove, rawActionChange, handleStepRemove, onNodesChangeBase]);
+  }, [isStepMode, rawActionsRemove, handleStepRemove, onNodesChangeBase]);
 
   // Custom edge change handler: intercept edge removals and update step data
   const onEdgesChange: OnEdgesChange = useCallback((changes) => {
@@ -550,7 +592,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     isStepMode,
     actionsLength: actions.length,
     contextMenuOpen: contextMenu.menu !== null,
-    onClose,
+    onClose: requestClose,
     onDeselectNode: () => setSelectedNode(null),
     onSubmit: handleSubmit,
     onFitView: handleFitView,
@@ -583,7 +625,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
       `}</style>
       {/* Floating toolbar */}
       <div className="flex flex-wrap items-center gap-2 border-b border-border bg-surface-low/90 px-3 py-2 backdrop-blur-sm sm:gap-3 sm:px-4 sm:py-2.5">
-        <Button variant="ghost" size="sm" onClick={onClose} className="gap-1.5">
+        <Button variant="ghost" size="sm" onClick={requestClose} className="gap-1.5">
           <Icon name="arrow_back" size={16} className="rtl:rotate-180" />
           <span className="hidden text-text-muted sm:inline">{t("editor.backToRules")}</span>
         </Button>
@@ -810,6 +852,19 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             </TooltipProvider>
           </Panel>
         </ReactFlow>
+
+        <ConfirmDialog
+          open={confirmDiscard}
+          onOpenChange={setConfirmDiscard}
+          title={t("editor.discardChangesTitle")}
+          description={t("editor.discardChangesDescription")}
+          confirmLabel={t("editor.discardChanges")}
+          onConfirm={() => {
+            clearDraft();
+            onClose();
+          }}
+          destructive
+        />
 
         {contextMenu.menu && (
           <WorkflowContextMenu

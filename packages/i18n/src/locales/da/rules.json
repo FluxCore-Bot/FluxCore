@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Kassér ikke-gemte ændringer?",
+    "discardChangesDescription": "Denne regel har ændringer, der ikke er gemt. Hvis du lukker editoren, går de tabt.",
+    "discardChanges": "Kassér ændringer",
+    "draftRestored": "Kladde gendannet fra en tidligere session",
+    "discardDraftAction": "Kassér kladde",
+    "discardTitle": "Kassér ændringer?",
+    "discardDescription": "Du har ikke-gemte ændringer. Din kladde gemmes lokalt, men du forlader editoren.",
+    "discardConfirm": "Kassér og luk"
   },
   "panel": {
     "trigger": "Trigger Settings",

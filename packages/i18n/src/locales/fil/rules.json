@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Itapon ang mga hindi na-save na pagbabago?",
+    "discardChangesDescription": "May mga pagbabago ang panuntunang ito na hindi pa na-save. Mawawala ang mga ito kapag isinara ang editor.",
+    "discardChanges": "Itapon ang mga pagbabago",
+    "draftRestored": "Naibalik ang draft mula sa nakaraang session",
+    "discardDraftAction": "Itapon ang draft",
+    "discardTitle": "Itapon ang mga pagbabago?",
+    "discardDescription": "May mga hindi na-save na pagbabago ka. Naka-save nang lokal ang draft mo, pero aalis ka sa editor.",
+    "discardConfirm": "Itapon at isara"
   },
   "panel": {
     "trigger": "Trigger Settings",

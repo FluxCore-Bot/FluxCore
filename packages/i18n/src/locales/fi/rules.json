@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Hylätäänkö tallentamattomat muutokset?",
+    "discardChangesDescription": "Tässä säännössä on tallentamattomia muutoksia. Editorin sulkeminen hävittää ne.",
+    "discardChanges": "Hylkää muutokset",
+    "draftRestored": "Luonnos palautettu aiemmasta istunnosta",
+    "discardDraftAction": "Hylkää luonnos",
+    "discardTitle": "Hylätäänkö muutokset?",
+    "discardDescription": "Sinulla on tallentamattomia muutoksia. Luonnos tallennetaan paikallisesti, mutta poistut editorista.",
+    "discardConfirm": "Hylkää ja sulje"
   },
   "panel": {
     "trigger": "Trigger Settings",

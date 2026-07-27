@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Odrzucić niezapisane zmiany?",
+    "discardChangesDescription": "Ta reguła ma niezapisane zmiany. Zamknięcie edytora spowoduje ich utratę.",
+    "discardChanges": "Odrzuć zmiany",
+    "draftRestored": "Przywrócono wersję roboczą z poprzedniej sesji",
+    "discardDraftAction": "Odrzuć wersję roboczą",
+    "discardTitle": "Odrzucić zmiany?",
+    "discardDescription": "Masz niezapisane zmiany. Wersja robocza jest zapisywana lokalnie, ale opuścisz edytor.",
+    "discardConfirm": "Odrzuć i zamknij"
   },
   "panel": {
     "trigger": "Trigger Settings",

@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Tupa mabadiliko ambayo hayajahifadhiwa?",
+    "discardChangesDescription": "Sheria hii ina mabadiliko ambayo hayajahifadhiwa. Kufunga kihariri kutayapoteza.",
+    "discardChanges": "Tupa mabadiliko",
+    "draftRestored": "Rasimu imerejeshwa kutoka kipindi kilichopita",
+    "discardDraftAction": "Tupa rasimu",
+    "discardTitle": "Tupa mabadiliko?",
+    "discardDescription": "Una mabadiliko ambayo hayajahifadhiwa. Rasimu yako imehifadhiwa ndani, lakini utaondoka kwenye kihariri.",
+    "discardConfirm": "Tupa na ufunge"
   },
   "panel": {
     "trigger": "Trigger Settings",

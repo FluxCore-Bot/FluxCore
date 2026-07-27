@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Kasta ogesparade ändringar?",
+    "discardChangesDescription": "Den här regeln har ändringar som inte sparats. Om du stänger redigeraren går de förlorade.",
+    "discardChanges": "Kasta ändringar",
+    "draftRestored": "Utkast återställt från en tidigare session",
+    "discardDraftAction": "Kasta utkast",
+    "discardTitle": "Kasta ändringar?",
+    "discardDescription": "Du har osparade ändringar. Ditt utkast sparas lokalt, men du lämnar redigeraren.",
+    "discardConfirm": "Kasta och stäng"
   },
   "panel": {
     "trigger": "Trigger Settings",

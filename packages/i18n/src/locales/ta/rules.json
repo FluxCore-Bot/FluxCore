@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "சேமிக்கப்படாத மாற்றங்களை நிராகரிக்கவா?",
+    "discardChangesDescription": "இந்த விதியில் சேமிக்கப்படாத மாற்றங்கள் உள்ளன. திருத்தியை மூடினால் அவை இழக்கப்படும்.",
+    "discardChanges": "மாற்றங்களை நிராகரி",
+    "draftRestored": "முந்தைய அமர்விலிருந்து வரைவு மீட்டெடுக்கப்பட்டது",
+    "discardDraftAction": "வரைவை நிராகரி",
+    "discardTitle": "மாற்றங்களை நிராகரிக்கவா?",
+    "discardDescription": "சேமிக்கப்படாத மாற்றங்கள் உள்ளன. வரைவு அக்கணினியில் சேமிக்கப்படும், ஆனால் திருத்தியை விட்டு வெளியேறுவீர்கள்.",
+    "discardConfirm": "நிராகரித்து மூடு"
   },
   "panel": {
     "trigger": "Trigger Settings",

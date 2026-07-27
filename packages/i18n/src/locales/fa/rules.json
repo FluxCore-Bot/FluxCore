@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "تغییرات ذخیره‌نشده کنار گذاشته شود؟",
+    "discardChangesDescription": "این قانون تغییراتی دارد که ذخیره نشده‌اند. با بستن ویرایشگر از بین می‌روند.",
+    "discardChanges": "کنار گذاشتن تغییرات",
+    "draftRestored": "پیش‌نویس از جلسه قبلی بازیابی شد",
+    "discardDraftAction": "کنار گذاشتن پیش‌نویس",
+    "discardTitle": "تغییرات کنار گذاشته شود؟",
+    "discardDescription": "تغییرات ذخیره‌نشده دارید. پیش‌نویس شما به‌صورت محلی ذخیره می‌شود، اما از ویرایشگر خارج می‌شوید.",
+    "discardConfirm": "کنار گذاشتن و بستن"
   },
   "panel": {
     "trigger": "Trigger Settings",

@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Odbaciti nespremljene promjene?",
+    "discardChangesDescription": "Ovo pravilo ima promjene koje nisu spremljene. Zatvaranjem uređivača bit će izgubljene.",
+    "discardChanges": "Odbaci promjene",
+    "draftRestored": "Skica vraćena iz prethodne sesije",
+    "discardDraftAction": "Odbaci skicu",
+    "discardTitle": "Odbaciti promjene?",
+    "discardDescription": "Imate nespremljene promjene. Skica se sprema lokalno, ali napustit ćete uređivač.",
+    "discardConfirm": "Odbaci i zatvori"
   },
   "panel": {
     "trigger": "Trigger Settings",

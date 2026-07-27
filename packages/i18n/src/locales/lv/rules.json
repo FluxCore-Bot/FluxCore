@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Vai atmest nesaglabātās izmaiņas?",
+    "discardChangesDescription": "Šim noteikumam ir nesaglabātas izmaiņas. Aizverot redaktoru, tās tiks zaudētas.",
+    "discardChanges": "Atmest izmaiņas",
+    "draftRestored": "Melnraksts atjaunots no iepriekšējās sesijas",
+    "discardDraftAction": "Atmest melnrakstu",
+    "discardTitle": "Vai atmest izmaiņas?",
+    "discardDescription": "Jums ir nesaglabātas izmaiņas. Melnraksts tiek saglabāts lokāli, bet jūs pametīsiet redaktoru.",
+    "discardConfirm": "Atmest un aizvērt"
   },
   "panel": {
     "trigger": "Trigger Settings",

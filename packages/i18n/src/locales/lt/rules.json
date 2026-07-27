@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Atmesti neįrašytus pakeitimus?",
+    "discardChangesDescription": "Ši taisyklė turi neįrašytų pakeitimų. Uždarius rengyklę jie bus prarasti.",
+    "discardChanges": "Atmesti pakeitimus",
+    "draftRestored": "Juodraštis atkurtas iš ankstesnės sesijos",
+    "discardDraftAction": "Atmesti juodraštį",
+    "discardTitle": "Atmesti pakeitimus?",
+    "discardDescription": "Turite neįrašytų pakeitimų. Juodraštis įrašomas vietoje, bet paliksite rengyklę.",
+    "discardConfirm": "Atmesti ir uždaryti"
   },
   "panel": {
     "trigger": "Trigger Settings",

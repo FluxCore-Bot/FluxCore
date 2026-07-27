@@ -200,7 +200,15 @@
       "fitView": "Ansicht anpassen"
     },
     "issues_one": "{{count}} Problem",
-    "issues_other": "{{count}} Probleme"
+    "issues_other": "{{count}} Probleme",
+    "discardChangesTitle": "Nicht gespeicherte Änderungen verwerfen?",
+    "discardChangesDescription": "Diese Regel enthält nicht gespeicherte Änderungen. Beim Schließen des Editors gehen sie verloren.",
+    "discardChanges": "Änderungen verwerfen",
+    "draftRestored": "Entwurf aus einer früheren Sitzung wiederhergestellt",
+    "discardDraftAction": "Entwurf verwerfen",
+    "discardTitle": "Änderungen verwerfen?",
+    "discardDescription": "Du hast nicht gespeicherte Änderungen. Dein Entwurf wird lokal gespeichert, aber du verlässt den Editor.",
+    "discardConfirm": "Verwerfen & schließen"
   },
   "panel": {
     "trigger": "Auslöser-Einstellungen",

@@ -127,6 +127,83 @@ describe("NodeDetailPanel — action variables are scoped to the trigger", () =>
   });
 });
 
+describe("NodeDetailPanel — changing action type keeps what still applies", () => {
+  const shared: Constants = {
+    ...constants,
+    actionTypes: {
+      ...constants.actionTypes,
+      sendDM: { label: "Send DM", description: "" },
+      addRole: { label: "Add Role", description: "" },
+    },
+    actionTypeFields: {
+      ...constants.actionTypeFields,
+      // Both carry `message`; only sendMessage carries `channelId`.
+      sendDM: [{ key: "message", label: "Message", type: "textarea", required: true }],
+      addRole: [{ key: "roleId", label: "Role", type: "role", required: true }],
+    },
+  };
+
+  function renderAction(onActionChange: (i: number, a: unknown) => void) {
+    render(
+      <NodeDetailPanel
+        type="action"
+        index={0}
+        action={{ type: "sendMessage", channelId: "c1", message: "a long welcome" }}
+        constants={shared}
+        guildId="g1"
+        eventType="memberJoin"
+        totalActions={1}
+        onActionChange={onActionChange}
+        onActionRemove={noop}
+        onActionMove={noop}
+        canRemove={false}
+        onClose={noop}
+      />,
+    );
+  }
+
+  async function switchTo(label: string) {
+    // SearchableSelect's trigger is a plain <button id>, named by the <Label
+    // htmlFor> this change added — it had no accessible name at all before.
+    await userEvent.click(await screen.findByRole("button", { name: /panel\.actionType/i }));
+    await userEvent.click(await screen.findByText(label));
+  }
+
+  // Composing a 400-character welcome message under Send Message, realising it
+  // should be a DM, and switching type erased the message instantly — with no
+  // warning, no undo, and the draft autosave immediately persisting the empty
+  // action.
+  it("carries a field the new type also declares", async () => {
+    const onActionChange = vi.fn();
+    renderAction(onActionChange);
+
+    await switchTo("Send DM");
+
+    expect(onActionChange).toHaveBeenCalledWith(0, expect.objectContaining({
+      type: "sendDM",
+      message: "a long welcome",
+    }));
+  });
+
+  it("drops a field the new type does not declare", async () => {
+    const onActionChange = vi.fn();
+    renderAction(onActionChange);
+
+    await switchTo("Send DM");
+
+    expect(onActionChange.mock.calls[0][1]).not.toHaveProperty("channelId");
+  });
+
+  it("keeps nothing when the new type shares no fields", async () => {
+    const onActionChange = vi.fn();
+    renderAction(onActionChange);
+
+    await switchTo("Add Role");
+
+    expect(onActionChange).toHaveBeenCalledWith(0, { type: "addRole" });
+  });
+});
+
 describe("NodeDetailPanel — step-mode actions keep variables and preview", () => {
   const steps: RuleStep[] = [
     {

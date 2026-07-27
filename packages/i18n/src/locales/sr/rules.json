@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Одбацити несачуване измене?",
+    "discardChangesDescription": "Ово правило има измене које нису сачуване. Затварањем уређивача биће изгубљене.",
+    "discardChanges": "Одбаци измене",
+    "draftRestored": "Нацрт враћен из претходне сесије",
+    "discardDraftAction": "Одбаци нацрт",
+    "discardTitle": "Одбацити измене?",
+    "discardDescription": "Имате несачуване измене. Нацрт се чува локално, али ћете напустити уређивач.",
+    "discardConfirm": "Одбаци и затвори"
   },
   "panel": {
     "trigger": "Trigger Settings",

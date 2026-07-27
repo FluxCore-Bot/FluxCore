@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Kaydedilmemiş değişiklikler atılsın mı?",
+    "discardChangesDescription": "Bu kuralda kaydedilmemiş değişiklikler var. Düzenleyiciyi kapatmak bunları kaybeder.",
+    "discardChanges": "Değişiklikleri at",
+    "draftRestored": "Taslak önceki oturumdan geri yüklendi",
+    "discardDraftAction": "Taslağı at",
+    "discardTitle": "Değişiklikler atılsın mı?",
+    "discardDescription": "Kaydedilmemiş değişiklikleriniz var. Taslağınız yerel olarak saklanır, ancak düzenleyiciden çıkacaksınız.",
+    "discardConfirm": "At ve kapat"
   },
   "panel": {
     "trigger": "Trigger Settings",

@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Niet-opgeslagen wijzigingen verwijderen?",
+    "discardChangesDescription": "Deze regel heeft wijzigingen die niet zijn opgeslagen. Als je de editor sluit, gaan ze verloren.",
+    "discardChanges": "Wijzigingen verwijderen",
+    "draftRestored": "Concept hersteld uit een eerdere sessie",
+    "discardDraftAction": "Concept verwijderen",
+    "discardTitle": "Wijzigingen verwijderen?",
+    "discardDescription": "Je hebt niet-opgeslagen wijzigingen. Je concept wordt lokaal bewaard, maar je verlaat de editor.",
+    "discardConfirm": "Verwijderen en sluiten"
   },
   "panel": {
     "trigger": "Trigger Settings",

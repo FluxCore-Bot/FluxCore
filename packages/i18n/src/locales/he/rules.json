@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "לבטל שינויים שלא נשמרו?",
+    "discardChangesDescription": "לכלל הזה יש שינויים שלא נשמרו. סגירת העורך תמחק אותם.",
+    "discardChanges": "בטל שינויים",
+    "draftRestored": "טיוטה שוחזרה מהפעלה קודמת",
+    "discardDraftAction": "בטל טיוטה",
+    "discardTitle": "לבטל שינויים?",
+    "discardDescription": "יש לך שינויים שלא נשמרו. הטיוטה נשמרת מקומית, אך תצא מהעורך.",
+    "discardConfirm": "בטל וסגור"
   },
   "panel": {
     "trigger": "Trigger Settings",

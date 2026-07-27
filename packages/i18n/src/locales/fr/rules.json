@@ -200,7 +200,15 @@
       "fitView": "Ajuster la vue"
     },
     "issues_one": "{{count}} problème",
-    "issues_other": "{{count}} problèmes"
+    "issues_other": "{{count}} problèmes",
+    "discardChangesTitle": "Abandonner les modifications non enregistrées ?",
+    "discardChangesDescription": "Cette règle comporte des modifications non enregistrées. Fermer l'éditeur les perdra.",
+    "discardChanges": "Abandonner les modifications",
+    "draftRestored": "Brouillon restauré d'une session précédente",
+    "discardDraftAction": "Abandonner le brouillon",
+    "discardTitle": "Abandonner les modifications ?",
+    "discardDescription": "Vous avez des modifications non enregistrées. Votre brouillon est enregistré localement, mais vous quitterez l'éditeur.",
+    "discardConfirm": "Abandonner et fermer"
   },
   "panel": {
     "trigger": "Paramètres du déclencheur",

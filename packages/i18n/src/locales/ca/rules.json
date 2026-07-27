@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Voleu descartar els canvis no desats?",
+    "discardChangesDescription": "Aquesta regla té canvis que no s'han desat. Si tanqueu l'editor, es perdran.",
+    "discardChanges": "Descarta els canvis",
+    "draftRestored": "Esborrany restaurat d'una sessió anterior",
+    "discardDraftAction": "Descarta l'esborrany",
+    "discardTitle": "Voleu descartar els canvis?",
+    "discardDescription": "Teniu canvis sense desar. L'esborrany es desa localment, però sortireu de l'editor.",
+    "discardConfirm": "Descarta i tanca"
   },
   "panel": {
     "trigger": "Trigger Settings",

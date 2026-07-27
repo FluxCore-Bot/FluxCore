@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Zahodit neuložené změny?",
+    "discardChangesDescription": "Toto pravidlo obsahuje neuložené úpravy. Zavřením editoru o ně přijdete.",
+    "discardChanges": "Zahodit změny",
+    "draftRestored": "Koncept obnoven z předchozí relace",
+    "discardDraftAction": "Zahodit koncept",
+    "discardTitle": "Zahodit změny?",
+    "discardDescription": "Máte neuložené změny. Koncept se ukládá lokálně, ale opustíte editor.",
+    "discardConfirm": "Zahodit a zavřít"
   },
   "panel": {
     "trigger": "Trigger Settings",

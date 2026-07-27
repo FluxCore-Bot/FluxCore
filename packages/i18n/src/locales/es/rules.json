@@ -200,7 +200,15 @@
       "fitView": "Ajustar vista"
     },
     "issues_one": "{{count}} problema",
-    "issues_other": "{{count}} problemas"
+    "issues_other": "{{count}} problemas",
+    "discardChangesTitle": "¿Descartar los cambios sin guardar?",
+    "discardChangesDescription": "Esta regla tiene cambios que no se han guardado. Si cierras el editor, se perderán.",
+    "discardChanges": "Descartar cambios",
+    "draftRestored": "Borrador restaurado de una sesión anterior",
+    "discardDraftAction": "Descartar borrador",
+    "discardTitle": "¿Descartar los cambios?",
+    "discardDescription": "Tienes cambios sin guardar. Tu borrador se guarda localmente, pero saldrás del editor.",
+    "discardConfirm": "Descartar y cerrar"
   },
   "panel": {
     "trigger": "Ajustes del disparador",

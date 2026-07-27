@@ -200,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Descartar os cambios sen gardar?",
+    "discardChangesDescription": "Esta regra ten cambios que non se gardaron. Se pechas o editor, perderanse.",
+    "discardChanges": "Descartar cambios",
+    "draftRestored": "Borrador restaurado dunha sesión anterior",
+    "discardDraftAction": "Descartar borrador",
+    "discardTitle": "Descartar os cambios?",
+    "discardDescription": "Tes cambios sen gardar. O teu borrador gárdase localmente, pero sairás do editor.",
+    "discardConfirm": "Descartar e pechar"
   },
   "panel": {
     "trigger": "Trigger Settings",
