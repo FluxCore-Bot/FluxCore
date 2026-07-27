@@ -329,6 +329,43 @@ describe("action executor - filters fail closed", () => {
 
     expect(mockSendMessageExecutor).toHaveBeenCalled();
   });
+
+  // On threadCreated the context channel is the brand-new thread, so a channel
+  // filter could only ever match an id the user has no way to know. The parent
+  // is what they actually picked in the editor.
+  it("matches a channel filter against the parent channel", async () => {
+    const threadCtx = {
+      eventType: "threadCreated" as const,
+      guildId: "guild-123",
+      guildName: "Test Guild",
+      channelId: "thread-new",
+      parentChannelId: "support",
+      memberCount: 100,
+      timestamp: new Date().toISOString(),
+    };
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ channelIds: ["support"] }));
+
+    await processEvent({} as never, threadCtx);
+
+    expect(mockSendMessageExecutor).toHaveBeenCalled();
+  });
+
+  it("excludes on the parent channel too", async () => {
+    const threadCtx = {
+      eventType: "threadCreated" as const,
+      guildId: "guild-123",
+      guildName: "Test Guild",
+      channelId: "thread-new",
+      parentChannelId: "support",
+      memberCount: 100,
+      timestamp: new Date().toISOString(),
+    };
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ excludeChannelIds: ["support"] }));
+
+    await processEvent({} as never, threadCtx);
+
+    expect(mockSendMessageExecutor).not.toHaveBeenCalled();
+  });
 });
 
 describe("action executor - the log tells the truth", () => {

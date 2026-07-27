@@ -5,6 +5,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { SelectSkeleton } from "./skeletons";
 import { Label } from "./label";
 import { cn } from "../lib/utils";
+import { CHANNEL_TYPE, channelLabelPrefix, isMessageableChannel } from "../lib/channelTypes";
 
 export type DiscordMultiSelectType = "text" | "voice" | "any" | "role";
 
@@ -18,7 +19,7 @@ export interface DiscordMultiSelectProps {
 }
 
 function channelLabel(name: string, channelType: number): string {
-  return channelType === 2 ? `🔊 ${name}` : `# ${name}`;
+  return `${channelLabelPrefix(channelType)} ${name}`;
 }
 
 export function DiscordMultiSelect({
@@ -54,9 +55,12 @@ export function DiscordMultiSelect({
         ? (roles ?? []).map((r) => ({ id: r.id, name: `● ${r.name}` }))
         : (channels ?? [])
             .filter((c) => {
-              if (type === "text") return c.type === 0;
-              if (type === "voice") return c.type === 2;
-              return c.type === 0 || c.type === 2;
+              if (type === "text") return c.type === CHANNEL_TYPE.GuildText;
+              if (type === "voice") return c.type === CHANNEL_TYPE.GuildVoice;
+              // "any" means any channel a message or a filter can target —
+              // including announcement, stage, forum and media, which a
+              // hardcoded `type === 0 || type === 2` silently excluded.
+              return isMessageableChannel(c.type);
             })
             .map((c) => ({ id: c.id, name: channelLabel(c.name, c.type) })),
     [isRole, roles, channels, type],

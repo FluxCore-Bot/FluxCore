@@ -15,6 +15,7 @@ import {
 import { VariableEditor } from "../../../shared/ui/variable-field";
 import type { VariableDescriptor } from "../../../shared/ui/variable-field";
 import type { ActionFieldDescriptor, Channel, Role } from "../../../shared/lib/schemas";
+import { channelIconName, isMessageableChannel } from "../../../shared/lib/channelTypes";
 
 const VARIABLE_FIELD_KEYS = new Set([
   "message",
@@ -86,13 +87,13 @@ export function ActionFields({
                 searchPlaceholder={t("form.search")}
                 noResultsLabel={t("form.noResults")}
                 options={channels
-                  .filter((c) => c.type === 0 || c.type === 2)
+                  .filter((c) => isMessageableChannel(c.type))
                   .map((c) => ({
                     value: c.id,
                     label: c.name,
                     icon: (
                       <Icon
-                        name={c.type === 2 ? "volume_up" : "hash"}
+                        name={channelIconName(c.type)}
                         size={14}
                         className="text-text-muted"
                       />

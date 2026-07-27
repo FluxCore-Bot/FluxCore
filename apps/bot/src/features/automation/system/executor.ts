@@ -65,10 +65,17 @@ function matchesConditions(
   conditions: ActionConditions,
   context: EventContext,
 ): boolean {
+  // Channel filters test the parent too. On threadCreated the context channel
+  // is the brand-new thread, whose id the user cannot possibly have picked in
+  // the editor; the parent is the channel they actually chose.
+  const channelIds = [context.channelId, context.parentChannelId].filter(
+    (id): id is string => !!id,
+  );
+
   // Include filters: the context must carry the datum AND match it.
   if (conditions.channelIds?.length) {
-    if (!context.channelId) return false;
-    if (!conditions.channelIds.includes(context.channelId)) return false;
+    if (channelIds.length === 0) return false;
+    if (!channelIds.some((id) => conditions.channelIds!.includes(id))) return false;
   }
   if (conditions.userIds?.length) {
     if (!context.userId) return false;
@@ -84,8 +91,8 @@ function matchesConditions(
 
   // Exclude filters: an unanswerable exclusion cannot be cleared, so it blocks.
   if (conditions.excludeChannelIds?.length) {
-    if (!context.channelId) return false;
-    if (conditions.excludeChannelIds.includes(context.channelId)) return false;
+    if (channelIds.length === 0) return false;
+    if (channelIds.some((id) => conditions.excludeChannelIds!.includes(id))) return false;
   }
   if (conditions.excludeUserIds?.length) {
     if (!context.userId) return false;
