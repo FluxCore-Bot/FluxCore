@@ -542,6 +542,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     selectedNode,
     isStepMode,
     actionsLength: actions.length,
+    contextMenuOpen: contextMenu.menu !== null,
     onClose,
     onDeselectNode: () => setSelectedNode(null),
     onSubmit: handleSubmit,

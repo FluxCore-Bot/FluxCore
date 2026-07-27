@@ -146,7 +146,7 @@ const threeActions: RuleDraft = {
   enabled: true,
 };
 
-function renderEditor(draft?: RuleDraft) {
+function renderEditor(draft?: RuleDraft, onClose: () => void = () => {}) {
   // A real QueryClient, not a mock: if the regression under test reappears
   // and NodeDetailPanel does mount, its ActionPanel calls useChannels/useRoles
   // (real react-query hooks) — without a provider that crashes with "No
@@ -157,7 +157,7 @@ function renderEditor(draft?: RuleDraft) {
   });
   return render(
     <QueryClientProvider client={queryClient}>
-      <WorkflowEditor draft={draft} onClose={() => {}} />
+      <WorkflowEditor draft={draft} onClose={onClose} />
     </QueryClientProvider>,
   );
 }
@@ -308,6 +308,63 @@ describe("WorkflowEditor — the detail panel after the menu closes", () => {
   });
 });
 
+describe("WorkflowEditor — hotkeys while the context menu is open", () => {
+  // Radix's dismissable layer preventDefault()s the keys it handles but does
+  // not stop their propagation, so they still reach the editor's window
+  // keydown listener. The hotkey layer must stand down for as long as the
+  // menu is open — a keyboard user pressing Escape over the menu would
+  // otherwise close the whole editor and lose unsaved edits (drafts only
+  // reload for new rules).
+
+  it("Escape closes only the menu, never the editor — and works again after", async () => {
+    const user = userEvent.setup();
+    const onClose = vi.fn();
+    renderEditor(threeActions, onClose);
+
+    const node = await findActionNode(1);
+    node.focus();
+    fireEvent.keyDown(window, { key: "F10", shiftKey: true });
+    await screen.findByRole("menu");
+
+    await user.keyboard("{Escape}");
+    await waitFor(() => expect(screen.queryByRole("menu")).not.toBeInTheDocument());
+    expect(onClose).not.toHaveBeenCalled();
+
+    // Once the menu is gone the layer resumes: the next Escape (nothing
+    // selected, no panel) is the editor's own close binding again.
+    await waitFor(() => expect(document.activeElement).toBe(node));
+    await user.keyboard("{Escape}");
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it("a bare \"a\" is Radix typeahead, not the add-action hotkey", async () => {
+    renderEditor(threeActions);
+
+    fireEvent.contextMenu(await findActionNode(1), { clientX: 120, clientY: 80 });
+    await screen.findByRole("menu");
+
+    fireEvent.keyDown(window, { key: "a" });
+
+    // Still exactly three action nodes — nothing was added behind the menu.
+    expect(screen.getAllByLabelText(/nodes\.ariaAction:/)).toHaveLength(3);
+  });
+
+  it("a second Shift+F10 while open leaves the single menu in place", async () => {
+    renderEditor(threeActions);
+
+    const node = await findActionNode(1);
+    node.focus();
+    fireEvent.keyDown(window, { key: "F10", shiftKey: true });
+    await screen.findByRole("menu");
+
+    // Were this to re-fire openFromKeyboard, captureOrigin would re-capture
+    // whatever Radix has focused — a menu item that unmounts on close —
+    // silently losing focus restoration to the node.
+    fireEvent.keyDown(window, { key: "F10", shiftKey: true });
+    expect(screen.getAllByRole("menu")).toHaveLength(1);
+  });
+});
+
 describe("WorkflowEditor — context menu focus restoration", () => {
   it("returns focus to the node after Escape closes a keyboard-opened menu", async () => {
     const user = userEvent.setup();
@@ -325,18 +382,19 @@ describe("WorkflowEditor — context menu focus restoration", () => {
 
     await user.keyboard("{Escape}");
 
-    // NB: closing the menu also opens NodeDetailPanel — a separate, pre-existing
-    // defect, reproduced on this branch's HEAD before any of these fixes and on
-    // both the mouse and keyboard paths. This test deliberately says nothing
-    // about the panel: the assertion below is about focus alone and holds
-    // either way. Do not read the panel's presence here as intended behaviour.
-    //
     // Radix's DropdownMenu returns focus to its trigger, which here is the 0×0
     // aria-hidden anchor span — it cannot hold focus, so without our
     // onCloseAutoFocus this lands on <body> and the keyboard user loses their
     // place. FocusScope dispatches the restoration from a setTimeout(0), hence
     // waitFor rather than a bare assertion.
     await waitFor(() => expect(document.activeElement).toBe(node));
+
+    // And the dismissal stayed a dismissal: NodeDetailPanel must not slide
+    // open uninvited on the keyboard path either — the mouse path is covered
+    // above ("stays closed after Escape dismisses the menu"). Asserted after
+    // the focus restoration has settled so a late-arriving panel can't sneak
+    // past the check.
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
 });
 

@@ -4,6 +4,16 @@ interface UseWorkflowKeyboardOptions {
   selectedNode: { type: string; index?: number; stepId?: string } | null;
   isStepMode: boolean;
   actionsLength: number;
+  /**
+   * True while the canvas context menu is open. Radix owns the keyboard
+   * entirely then — navigation, typeahead, dismissal — and its dismissable
+   * layer preventDefault()s Escape without stopping propagation, so the key
+   * still bubbles to window. Without standing down, that Escape would fall
+   * through to `onClose` (closing the whole editor underneath the menu), a
+   * bare "a" would add an action behind the menu, and a second Shift+F10
+   * would re-capture a focus origin that is about to unmount.
+   */
+  contextMenuOpen: boolean;
   onClose: () => void;
   onDeselectNode: () => void;
   onSubmit: () => void;
@@ -20,6 +30,7 @@ export function useWorkflowKeyboard({
   selectedNode,
   isStepMode,
   actionsLength,
+  contextMenuOpen,
   onClose,
   onDeselectNode,
   onSubmit,
@@ -33,6 +44,12 @@ export function useWorkflowKeyboard({
 }: UseWorkflowKeyboardOptions) {
   const handler = useCallback(
     (e: KeyboardEvent) => {
+      // See the option's doc comment: the menu suspends the whole hotkey
+      // layer rather than each binding guarding itself.
+      if (contextMenuOpen) return;
+      // Defence in depth: a key an overlay already handled (and cancelled)
+      // must not be re-interpreted as an editor hotkey.
+      if (e.defaultPrevented) return;
       const tag = (e.target as HTMLElement)?.tagName;
       if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") {
         if (e.key !== "Escape" && !(e.key === "s" && (e.metaKey || e.ctrlKey))) return;
@@ -89,7 +106,7 @@ export function useWorkflowKeyboard({
         return;
       }
     },
-    [selectedNode, isStepMode, actionsLength, onClose, onDeselectNode, onSubmit, onFitView, onAddAction, onActionRemove, onActionReset, onActionMove, onStepRemove, onOpenContextMenu],
+    [selectedNode, isStepMode, actionsLength, contextMenuOpen, onClose, onDeselectNode, onSubmit, onFitView, onAddAction, onActionRemove, onActionReset, onActionMove, onStepRemove, onOpenContextMenu],
   );
 
   useEffect(() => {
