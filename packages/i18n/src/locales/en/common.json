@@ -94,7 +94,10 @@
     "previous": "Previous",
     "next": "Next",
     "invalidJson": "Not valid JSON — expected an object of text values",
-    "fieldRequired": "{{field}} is required"
+    "fieldRequired": "{{field}} is required",
+    "removeItem": "Remove {{label}}",
+    "selectedCount_one": "{{count}} selected",
+    "selectedCount_other": "{{count}} selected"
   },
   "pagination": {
     "previous": "Previous",

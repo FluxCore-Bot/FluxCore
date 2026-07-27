@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect, useMemo, useId } from "react";
+import { useTranslation } from "react-i18next";
 import { useChannels } from "../hooks/useChannels";
 import { useRoles } from "../hooks/useRoles";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
@@ -30,9 +31,14 @@ export function DiscordMultiSelect({
   placeholder,
   label,
 }: DiscordMultiSelectProps) {
+  const { t } = useTranslation("common");
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const searchRef = useRef<HTMLInputElement>(null);
+  // The rendered <Label> was never associated with the trigger, so the four
+  // include/exclude comboboxes in the trigger-filter panel had no accessible
+  // name and were indistinguishable from one another.
+  const triggerId = useId();
 
   const isRole = type === "role";
   const {
@@ -109,7 +115,11 @@ export function DiscordMultiSelect({
 
   return (
     <div className="space-y-2">
-      {label && <Label className="text-xs">{label}</Label>}
+      {label && (
+        <Label htmlFor={triggerId} className="text-xs">
+          {label}
+        </Label>
+      )}
 
       {isLoading ? (
         <SelectSkeleton />
@@ -126,6 +136,7 @@ export function DiscordMultiSelect({
           <PopoverTrigger asChild>
             <button
               type="button"
+              id={triggerId}
               className={cn(
                 "flex h-9 w-full items-center justify-between rounded-sm bg-surface-lowest px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-ring",
                 chips.length > 0 ? "text-text" : "text-outline",
@@ -133,7 +144,7 @@ export function DiscordMultiSelect({
             >
               <span className="truncate">
                 {chips.length > 0
-                  ? `${chips.length} selected`
+                  ? t("form.selectedCount", { count: chips.length })
                   : placeholder ?? defaultPlaceholder}
               </span>
               <svg
@@ -164,7 +175,7 @@ export function DiscordMultiSelect({
                 ref={searchRef}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search..."
+                placeholder={t("form.search")}
                 className="w-full rounded-sm bg-surface-lowest px-2.5 py-1.5 text-sm text-text placeholder:text-outline focus:outline-none"
               />
             </div>
@@ -244,7 +255,7 @@ export function DiscordMultiSelect({
               <span className="max-w-32 truncate">{chip.label}</span>
               <button
                 type="button"
-                aria-label={`Remove ${chip.label}`}
+                aria-label={t("form.removeItem", { label: chip.label })}
                 onClick={() => remove(chip.id)}
                 className="rounded-xs p-0.5 transition-colors hover:bg-accent/20 hover:text-text"
               >

@@ -331,7 +331,9 @@
     "disableRuleNamed": "Disable {{name}}",
     "openRule": "Edit {{name}}",
     "disabledBadge": "Disabled",
-    "actionNotConfigured": "Not configured"
+    "actionNotConfigured": "Not configured",
+    "misconfiguredBadge": "Incomplete",
+    "misconfiguredHint": "An action is missing a required setting, so this rule cannot run. Open it to finish setting it up."
   },
   "actionPreview": {
     "embed": "Embed: {{title}}",

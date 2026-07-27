@@ -72,6 +72,36 @@ export function RuleList({
     onSelectionChange(next);
   };
 
+  /**
+   * A saved rule can be dead: an action missing a required field never
+   * executes, and the list showed it as perfectly healthy. Older rules
+   * predate the save-time guard, and the `/actions` command and the API can
+   * still produce them.
+   */
+  const isMisconfigured = (rule: ActionRule): boolean => {
+    if (!constants) return false;
+    const effective = rule.steps?.length
+      ? rule.steps.filter((s) => s.type === "action").map((s) => s.action)
+      : rule.actions;
+    if (effective.length === 0) return true;
+    return effective.some((action) => {
+      if (!action.type) return true;
+      return (constants.actionTypeFields?.[action.type] ?? []).some((field) => {
+        if (!field.required) return false;
+        const value = field.key
+          .split(".")
+          .reduce<unknown>(
+            (acc, part) =>
+              acc && typeof acc === "object"
+                ? (acc as Record<string, unknown>)[part]
+                : undefined,
+            action as unknown as Record<string, unknown>,
+          );
+        return value === undefined || value === null || value === "";
+      });
+    });
+  };
+
   return (
     <TooltipProvider>
       <div className="flex flex-col gap-3">
@@ -82,6 +112,7 @@ export function RuleList({
           const isSelected = selectedIds?.has(rule.id) ?? false;
           const hasSteps = !!(rule.steps?.length && rule.entryStepId);
           const lastFired = formatLastFired(rule.lastFired, t);
+          const misconfigured = isMisconfigured(rule);
 
           return (
             <div
@@ -144,6 +175,22 @@ export function RuleList({
                           <Icon name="pause_circle" size={10} />
                           {t("ruleList.disabledBadge")}
                         </Badge>
+                      )}
+                      {misconfigured && (
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Badge
+                              variant="outline"
+                              className="gap-0.5 border-warning/50 px-1.5 py-0 text-[11px] text-warning"
+                            >
+                              <Icon name="warning" size={10} />
+                              {t("ruleList.misconfiguredBadge")}
+                            </Badge>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            {t("ruleList.misconfiguredHint")}
+                          </TooltipContent>
+                        </Tooltip>
                       )}
                       {hasSteps && (
                         <Tooltip>

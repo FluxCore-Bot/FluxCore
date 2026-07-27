@@ -203,8 +203,12 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
   // is what actually protects them.
   useEffect(() => {
     if (rule) return;
+    // Nothing worth restoring yet: the autosave otherwise fired 500ms after
+    // mount with the untouched initial state, so the next "Create Rule" was
+    // greeted by a "draft restored" banner for an empty draft.
+    if (!isDirty) return;
     saveDraftToStorage({ name, eventType, actions, steps, entryStepId, conditions, priority, enabled });
-  }, [rule, name, eventType, actions, steps, entryStepId, conditions, priority, enabled, saveDraftToStorage]);
+  }, [rule, isDirty, name, eventType, actions, steps, entryStepId, conditions, priority, enabled, saveDraftToStorage]);
 
   // Browser-level guard for a tab close or reload, which no in-app dialog can
   // intercept.
@@ -694,7 +698,12 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             variant="ghost"
             size="sm"
             onClick={addAction}
-            disabled={!isStepMode && actions.length >= constants.maxActionsPerRule}
+            disabled={
+              isStepMode
+                ? (steps?.filter((s) => s.type === "action").length ?? 0) >=
+                  constants.maxActionsPerRule
+                : actions.length >= constants.maxActionsPerRule
+            }
           >
             <Icon name="add" size={16} />
             {t("editor.addAction")}
@@ -703,6 +712,13 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             variant="ghost"
             size="sm"
             onClick={addConditionStep}
+            // The server caps conditions at 3 and total steps at 10; without
+            // the same ceiling here the rule was only rejected at save time,
+            // in raw untranslated English, after the work was done.
+            disabled={
+              (steps?.filter((s) => s.type === "condition").length ?? 0) >= 3 ||
+              (steps?.length ?? 0) >= 10
+            }
           >
             <Icon name="call_split" size={16} className="text-warning" />
             {t("editor.addCondition")}
@@ -711,6 +727,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             variant="ghost"
             size="sm"
             onClick={addDelayStep}
+            disabled={(steps?.length ?? 0) >= 10}
           >
             <Icon name="schedule" size={16} className="text-text-muted" />
             {t("editor.addDelay")}
