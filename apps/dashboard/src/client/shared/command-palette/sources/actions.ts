@@ -1,9 +1,8 @@
-import type { TFunction } from "i18next";
-import type { Command } from "../types";
+import type { Command, Translate } from "../types";
 
 export function actionCommands(opts: {
   guildId: string | undefined;
-  t: TFunction;
+  t: Translate;
   onRefreshGuild: () => void;
   onRefreshGuildList: () => void;
   inviteUrl: string | null;

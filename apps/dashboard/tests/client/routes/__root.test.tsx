@@ -6,16 +6,25 @@ import type { User } from "../../../src/client/shared/lib/schemas";
 
 // jsdom lacks ResizeObserver (used by Radix Popover/Tooltip positioning); stub
 // it so mounting the always-rendered Popover-based LanguageSwitcher does not
-// throw when the nav renders for an authenticated user.
+// throw when the nav renders for an authenticated user. The no-arg methods
+// satisfy the real signatures structurally, so no cast is needed.
 beforeAll(() => {
   if (typeof globalThis.ResizeObserver === "undefined") {
     globalThis.ResizeObserver = class {
-      observe() {}
-      unobserve() {}
-      disconnect() {}
-    } as unknown as typeof ResizeObserver;
+      observe(): void {}
+      unobserve(): void {}
+      disconnect(): void {}
+    };
   }
 });
+
+// RootLayout consumes only `.data` from useAuth, so the mock returns just that
+// slice — impersonating the full UseQueryResult union would need a cast.
+const auth = vi.hoisted((): { data: User | undefined } => ({ data: undefined }));
+
+vi.mock("../../../src/client/shared/hooks/useAuth", () => ({
+  useAuth: () => ({ data: auth.data }),
+}));
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
@@ -44,9 +53,6 @@ vi.mock("@tanstack/react-router", () => ({
   useNavigate: () => vi.fn(),
 }));
 
-vi.mock("../../../src/client/shared/hooks/useAuth", () => ({
-  useAuth: vi.fn(),
-}));
 vi.mock("../../../src/client/shared/hooks/useGuilds", () => ({
   useGuilds: () => ({ data: [] }),
   useRefreshGuilds: () => ({ mutate: vi.fn() }),
@@ -59,13 +65,10 @@ vi.mock("../../../src/client/features/permissions/hooks/usePermissions", () => (
   usePermissions: () => ({ can: () => false }),
 }));
 
-import { useAuth } from "../../../src/client/shared/hooks/useAuth";
 import { RootLayout } from "../../../src/client/routes/__root";
 
-const mockedUseAuth = vi.mocked(useAuth);
-
 function renderAs(user: User | undefined) {
-  mockedUseAuth.mockReturnValue({ data: user } as unknown as ReturnType<typeof useAuth>);
+  auth.data = user;
   return render(<RootLayout />);
 }
 
@@ -82,7 +85,7 @@ function renderAs(user: User | undefined) {
  */
 describe("RootLayout - command palette guard", () => {
   beforeEach(() => {
-    mockedUseAuth.mockReset();
+    auth.data = undefined;
   });
 
   it("unauthenticated: hides the trigger and Ctrl+K opens nothing", async () => {

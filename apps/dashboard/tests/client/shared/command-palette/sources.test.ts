@@ -4,7 +4,7 @@ import { serverCommands } from "../../../../src/client/shared/command-palette/so
 import { actionCommands } from "../../../../src/client/shared/command-palette/sources/actions";
 import type { Guild } from "../../../../src/client/shared/lib/schemas";
 
-const t = ((key: string) => key) as unknown as Parameters<typeof pageCommands>[0]["t"];
+const t = (key: string) => key;
 
 describe("pageCommands", () => {
   it("returns nothing outside a guild", () => {

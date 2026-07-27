@@ -1,5 +1,12 @@
 export type CommandGroupKey = "recent" | "pages" | "actions" | "servers";
 
+/**
+ * The slice of i18next's TFunction the command sources actually call. Keeping
+ * the parameter structural lets tests hand in a plain `(key) => key` without
+ * impersonating the full TFunction type.
+ */
+export type Translate = (key: string) => string;
+
 /** Fixed render order. Groups not listed here never render. */
 export const GROUP_ORDER: CommandGroupKey[] = ["recent", "pages", "actions", "servers"];
 

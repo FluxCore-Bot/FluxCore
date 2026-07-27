@@ -1,10 +1,9 @@
-import type { TFunction } from "i18next";
 import { navItems } from "../../lib/navigation";
-import type { Command } from "../types";
+import type { Command, Translate } from "../types";
 
 export function pageCommands(opts: {
   guildId: string | undefined;
-  t: TFunction;
+  t: Translate;
   can: (permission: string) => boolean;
 }): Command[] {
   const { guildId, t, can } = opts;

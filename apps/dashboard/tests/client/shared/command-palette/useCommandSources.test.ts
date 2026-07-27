@@ -2,8 +2,8 @@ import { describe, it, expect } from "vitest";
 import { buildGroups, flatten } from "../../../../src/client/shared/command-palette/useCommandSources";
 import type { Command } from "../../../../src/client/shared/command-palette/types";
 
-function cmd(over: Partial<Command> & { id: string }): Command {
-  return { group: "pages", title: over.id, icon: "dashboard", ...over } as Command;
+function cmd(over: Partial<Command> & Pick<Command, "id">): Command {
+  return { group: "pages", title: over.id, icon: "dashboard", ...over };
 }
 
 describe("buildGroups", () => {
