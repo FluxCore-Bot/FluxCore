@@ -47,6 +47,63 @@ interface RuleRequestBody {
   enabled?: boolean;
 }
 
+/** Walks a dotted descriptor key (e.g. `webhook.url`) into an action config. */
+function getNestedValue(obj: Record<string, unknown>, path: string): unknown {
+  let current: unknown = obj;
+  for (const part of path.split(".")) {
+    if (current === null || current === undefined || typeof current !== "object") {
+      return undefined;
+    }
+    current = (current as Record<string, unknown>)[part];
+  }
+  return current;
+}
+
+/**
+ * Checks one action against ACTION_TYPE_FIELDS — the same descriptor list the
+ * dashboard renders its form from, so the client and the API cannot drift.
+ *
+ * An action missing a required field can never execute: the bot has no channel
+ * to post to, no role to add. Letting it through produces a rule that looks
+ * healthy in the list and silently never fires. The client blocks this too, but
+ * the client is not the gate — `rules.tsx` re-POSTs stored action lists on the
+ * Undo-delete and Duplicate paths without revalidating, and the API is reachable
+ * by any script.
+ *
+ * Returns an error string, or null when the action is valid.
+ */
+function validateActionConfig(action: { type: string; [key: string]: unknown }): string | null {
+  if (!validActionTypes.has(action.type)) {
+    return `Invalid action type: ${action.type}`;
+  }
+
+  for (const field of ACTION_TYPE_FIELDS[action.type as ActionType] ?? []) {
+    if (!field.required) continue;
+    const value = getNestedValue(action, field.key);
+    if (
+      value === undefined ||
+      value === null ||
+      (typeof value === "string" && value.trim() === "")
+    ) {
+      return `${action.type}: ${field.label} is required`;
+    }
+  }
+
+  if (action.type === "sendWebhook") {
+    const webhook = action.webhook as { url?: string } | undefined;
+    try {
+      const url = new URL(webhook!.url!);
+      if (url.protocol !== "https:") {
+        return "Webhook URL must use HTTPS";
+      }
+    } catch {
+      return "Invalid webhook URL";
+    }
+  }
+
+  return null;
+}
+
 /**
  * Validates rule request body fields shared between create and update.
  * Returns an error string if validation fails, or null if valid.
@@ -83,23 +140,8 @@ function validateRuleBody(
       return `Max ${MAX_ACTIONS_PER_RULE} actions per rule`;
     }
     for (const action of body.actions) {
-      if (!validActionTypes.has(action.type)) {
-        return `Invalid action type: ${action.type}`;
-      }
-      if (action.type === "sendWebhook") {
-        const webhook = action.webhook as { url?: string } | undefined;
-        if (!webhook?.url) {
-          return "sendWebhook requires a webhook URL";
-        }
-        try {
-          const url = new URL(webhook.url);
-          if (url.protocol !== "https:") {
-            return "Webhook URL must use HTTPS";
-          }
-        } catch {
-          return "Invalid webhook URL";
-        }
-      }
+      const actionError = validateActionConfig(action);
+      if (actionError) return actionError;
     }
   }
 
@@ -110,6 +152,18 @@ function validateRuleBody(
     const conditionCount = body.steps.filter((s) => s.type === "condition").length;
     if (conditionCount > 3) {
       return "Max 3 condition steps per rule";
+    }
+    // The bot runs the step graph in preference to the flat action list
+    // (executor.ts), so validating only `actions` would leave the path that
+    // actually executes unchecked.
+    for (const step of body.steps) {
+      if (step.type !== "action") continue;
+      const action = step.action as { type: string; [key: string]: unknown } | undefined;
+      if (!action || typeof action.type !== "string") {
+        return `Step ${step.id} is missing an action`;
+      }
+      const actionError = validateActionConfig(action);
+      if (actionError) return actionError;
     }
   }
 

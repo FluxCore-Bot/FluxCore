@@ -76,14 +76,11 @@ vi.mock("@fluxcore/systems/actions/config", () => ({
   setGuildSettings: (...args: unknown[]) => mockSetGuildSettings(...args),
 }));
 
-vi.mock("@fluxcore/systems/actions/constants", () => ({
-  EVENT_TYPES: { memberJoin: { label: "Member Join" }, memberLeave: { label: "Member Leave" } },
-  ACTION_TYPES: { sendMessage: { label: "Send Message" }, addRole: { label: "Add Role" } },
-  MAX_ACTIONS_PER_RULE: 5,
-  ACTION_TYPE_FIELDS: {},
-  EVENT_TYPE_VARIABLES: {},
-  TEMPLATE_VARIABLES: [],
-}));
+// `@fluxcore/systems/actions/constants` is deliberately NOT mocked. It is pure
+// data with no I/O, and it is the single source of truth the route validates
+// against — a stubbed ACTION_TYPE_FIELDS would make these tests assert a
+// fiction (it previously did: the required-field contract was invisible, and
+// half the action types read as "invalid action type").
 
 vi.mock("@fluxcore/utils", () => ({
   logger: { debug: vi.fn(), info: vi.fn(), warn: vi.fn(), error: vi.fn() },
@@ -219,14 +216,14 @@ describe("action routes", () => {
         payload: {
           name: "test",
           eventType: "memberJoin",
-          actions: [{ type: "sendMessage" }],
+          actions: [{ type: "sendMessage", channelId: "1", message: "hi" }],
         },
       });
       expect(res.statusCode).toBe(400);
       expect(res.json().error).toContain("Rule limit reached");
     });
 
-    it("validates sendWebhook requires HTTPS URL", async () => {
+    it("rejects sendWebhook over plain HTTP", async () => {
       const res = await app.inject({
         method: "POST",
         url: "/api/guilds/guild-1/actions/rules",
@@ -234,10 +231,128 @@ describe("action routes", () => {
         payload: {
           name: "test",
           eventType: "memberJoin",
-          actions: [{ type: "sendMessage" }, { type: "sendMessage" }],
+          actions: [{ type: "sendWebhook", webhook: { url: "http://example.com/hook" } }],
         },
       });
-      // Should pass as sendMessage doesn't need webhook
+      expect(res.statusCode).toBe(400);
+      expect(res.json().error).toContain("HTTPS");
+    });
+
+    it("accepts sendWebhook over HTTPS", async () => {
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/actions/rules",
+        cookies: { session: app.signCookie("valid") },
+        payload: {
+          name: "test",
+          eventType: "memberJoin",
+          actions: [{ type: "sendWebhook", webhook: { url: "https://example.com/hook" } }],
+        },
+      });
+      expect(res.statusCode).toBe(201);
+    });
+  });
+
+  // The client's Save button is only one gate, and it is not the one that
+  // matters: the Undo-delete and Duplicate paths in rules.tsx re-POST a stored
+  // action list without revalidating, and the API is public to any script. A
+  // rule missing a required field can never execute, so the server must be the
+  // one that refuses it.
+  describe("POST /api/guilds/:guildId/actions/rules — required action fields", () => {
+    it.each([
+      ["sendMessage without a channel", { type: "sendMessage", message: "hi" }, "Channel"],
+      ["sendMessage without a message", { type: "sendMessage", channelId: "1" }, "Message"],
+      ["addRole without a role", { type: "addRole" }, "Role"],
+      ["setNickname without a nickname", { type: "setNickname" }, "Nickname"],
+      ["createThread without a thread name", { type: "createThread", channelId: "1" }, "Thread Name"],
+      ["addReaction without an emoji", { type: "addReaction" }, "Emoji"],
+    ])("rejects %s", async (_label, action, expectedField) => {
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/actions/rules",
+        cookies: { session: app.signCookie("valid") },
+        payload: { name: "test", eventType: "memberJoin", actions: [action] },
+      });
+      expect(res.statusCode).toBe(400);
+      expect(res.json().error).toContain(expectedField);
+    });
+
+    it("accepts an action with every required field filled", async () => {
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/actions/rules",
+        cookies: { session: app.signCookie("valid") },
+        payload: {
+          name: "test",
+          eventType: "memberJoin",
+          actions: [{ type: "sendMessage", channelId: "1", message: "hi" }],
+        },
+      });
+      expect(res.statusCode).toBe(201);
+    });
+
+    it("treats a whitespace-only required field as missing", async () => {
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/actions/rules",
+        cookies: { session: app.signCookie("valid") },
+        payload: {
+          name: "test",
+          eventType: "memberJoin",
+          actions: [{ type: "sendMessage", channelId: "1", message: "   " }],
+        },
+      });
+      expect(res.statusCode).toBe(400);
+    });
+
+    // The bot executes `steps` in preference to `actions` (executor.ts:274),
+    // so validating only `actions` leaves the path that actually runs unchecked.
+    it("rejects an action step whose required field is empty", async () => {
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/actions/rules",
+        cookies: { session: app.signCookie("valid") },
+        payload: {
+          name: "test",
+          eventType: "memberJoin",
+          actions: [{ type: "sendMessage", channelId: "1", message: "hi" }],
+          entryStepId: "step_0",
+          steps: [{ id: "step_0", type: "action", action: { type: "addRole" }, next: null }],
+        },
+      });
+      expect(res.statusCode).toBe(400);
+      expect(res.json().error).toContain("Role");
+    });
+
+    it("rejects an unknown action type inside a step", async () => {
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/actions/rules",
+        cookies: { session: app.signCookie("valid") },
+        payload: {
+          name: "test",
+          eventType: "memberJoin",
+          actions: [{ type: "sendMessage", channelId: "1", message: "hi" }],
+          entryStepId: "step_0",
+          steps: [{ id: "step_0", type: "action", action: { type: "nope" }, next: null }],
+        },
+      });
+      expect(res.statusCode).toBe(400);
+    });
+
+    it("accepts a valid step graph", async () => {
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/actions/rules",
+        cookies: { session: app.signCookie("valid") },
+        payload: {
+          name: "test",
+          eventType: "memberJoin",
+          actions: [{ type: "addRole", roleId: "7" }],
+          entryStepId: "step_0",
+          steps: [{ id: "step_0", type: "action", action: { type: "addRole", roleId: "7" }, next: null }],
+        },
+      });
       expect(res.statusCode).toBe(201);
     });
   });
