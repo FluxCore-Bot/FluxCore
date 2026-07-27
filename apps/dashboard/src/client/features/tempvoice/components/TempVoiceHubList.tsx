@@ -68,6 +68,14 @@ export function TempVoiceHubList() {
   const busy = createConfig.isPending || updateConfig.isPending || deleteConfig.isPending;
   const atCap = configs.length >= MAX_TEMPVOICE_CONFIGS_PER_GUILD;
 
+  // `expanded` holds an id, and that id can go stale: another admin — or this
+  // admin in another tab — deletes the hub being edited, and the next
+  // background refetch drops it from `configs` while `expanded` still names it.
+  // Read literally, `expanded !== null` then hides the Add button forever even
+  // though no card is expanded, leaving no way to add a hub short of a reload.
+  // Ask the list, not the id.
+  const anyExpanded = expanded === "new" || configs.some((c) => c.id === expanded);
+
   // The worked example's step-2 chip is derived, not written: it runs the real
   // default template through the same resolver the editor preview and the
   // summary use, so the example shows the signed-in admin's own display name
@@ -138,14 +146,17 @@ export function TempVoiceHubList() {
         {/* Suppressed while the empty-state CTA below is showing (configs.length === 0) —
             the two are mutually exclusive and share the id "tv-add-hub" so collapse()'s
             focus restoration works regardless of which one opened the "new" card. */}
-        {expanded === null && !atCap && configs.length > 0 && (
+        {!anyExpanded && !atCap && configs.length > 0 && (
           <Button id="tv-add-hub" className="min-h-11" onClick={() => setExpanded("new")}>
             <Icon name="add" /> {t("list.add")}
           </Button>
         )}
       </div>
 
-      {configs.length === 0 && expanded === null ? (
+      {/* Same reconciliation as the Add button above: with a stale `expanded`
+          and every hub gone, `expanded === null` would take the else branch and
+          render an empty <div> — no example, no CTA, nothing at all. */}
+      {configs.length === 0 && !anyExpanded ? (
         <div className="space-y-4">
           <p className="text-sm text-text-muted">{t("empty.exampleCaption")}</p>
           <HubFlow example>
