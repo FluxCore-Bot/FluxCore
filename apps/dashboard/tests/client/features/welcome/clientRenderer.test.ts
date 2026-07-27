@@ -118,7 +118,7 @@ describe("ensureFontsFor", () => {
     expect(added).not.toContain("NotoColorEmoji");
   });
 
-  it("requests fonts from the local /fonts/welcome route", async () => {
+  it("requests fonts from the local versioned font route", async () => {
     const sources: string[] = [];
     vi.stubGlobal(
       "FontFace",
@@ -130,11 +130,14 @@ describe("ensureFontsFor", () => {
     const { ensureFontsFor } = await import(
       "../../../../src/client/features/welcome/image/fonts"
     );
+    const { FONT_URL_PREFIX } = await import(
+      "@fluxcore/systems/welcome/image/fonts/manifest"
+    );
     await ensureFontsFor(["Inter"], "Ahmed");
     // Guards against the assertion below passing vacuously on an empty
     // array (which is exactly how this test shipped broken — see the
     // vi.resetModules() comment in beforeEach for the full story).
     expect(sources.length).toBeGreaterThan(0);
-    expect(sources.every((s) => s.startsWith("url(/fonts/welcome/"))).toBe(true);
+    expect(sources.every((s) => s.startsWith(`url(${FONT_URL_PREFIX}`))).toBe(true);
   });
 });

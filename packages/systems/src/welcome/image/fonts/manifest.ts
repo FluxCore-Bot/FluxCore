@@ -1,3 +1,12 @@
+/**
+ * URL prefix the dashboard serves the font files under, shared by the
+ * Fastify static route and the browser's FontFace loader. The files are
+ * cached immutable for a year at stable filenames, so replacing a TTF in
+ * place would strand returning browsers on the old font — bump the version
+ * segment instead whenever a font file changes.
+ */
+export const FONT_URL_PREFIX = "/fonts/welcome/v1/";
+
 export type FontCategory = "sans-serif" | "serif" | "display" | "monospace" | "rounded";
 
 export type ArabicFontKey = "NotoSansArabic" | "Tajawal" | "Amiri" | "NotoKufiArabic";

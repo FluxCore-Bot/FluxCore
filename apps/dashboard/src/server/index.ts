@@ -9,6 +9,7 @@ import { readFile } from "node:fs/promises";
 import { config } from "@fluxcore/config";
 import { logger } from "@fluxcore/utils";
 import { getFontsDir } from "@fluxcore/systems/welcome/image";
+import { FONT_URL_PREFIX } from "@fluxcore/systems/welcome/image/fonts/manifest";
 import {
   connectDatabase,
   disconnectDatabase,
@@ -141,10 +142,12 @@ export async function createApp(): Promise<FastifyInstance> {
   });
 
   // Serve the exact font files the bot renders with, so the browser preview
-  // and the generated image resolve identical glyphs and metrics.
+  // and the generated image resolve identical glyphs and metrics. The prefix
+  // carries a version segment because these responses are immutable/1y-cached
+  // at stable filenames (see FONT_URL_PREFIX).
   app.register(fastifyStatic, {
     root: getFontsDir(),
-    prefix: "/fonts/welcome/",
+    prefix: FONT_URL_PREFIX,
     decorateReply: false,
     immutable: true,
     maxAge: 31_536_000_000,

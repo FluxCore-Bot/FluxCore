@@ -1,10 +1,9 @@
 import {
   ARABIC_FONTS,
   EMOJI_FONT,
+  FONT_URL_PREFIX,
   getLatinFont,
 } from "@fluxcore/systems/welcome/image/fonts/manifest";
-
-const FONT_BASE = "/fonts/welcome";
 
 /** Faces already loaded (or in flight), keyed by family+weight. */
 const inFlight = new Map<string, Promise<void>>();
@@ -27,7 +26,7 @@ function loadFace(family: string, file: string, weight: number): Promise<void> {
   if (existing) return existing;
 
   const job = (async () => {
-    const face = new FontFace(family, `url(${FONT_BASE}/${file})`, { weight: String(weight) });
+    const face = new FontFace(family, `url(${FONT_URL_PREFIX}${file})`, { weight: String(weight) });
     await face.load();
     document.fonts.add(face);
   })().catch(() => {
