@@ -17,25 +17,34 @@ vi.mock("@tanstack/react-router", () => ({ useParams: () => ({ guildId: "g1" }) 
 // so any variable a factory closes over must come from `vi.hoisted`, or the
 // factory runs while that binding is still in the temporal dead zone.
 //
-// `deleteMutate`/`createMutate` are plain `vi.fn(async () => {})` by default
-// (resolve) — individual tests override one call with `.mockRejectedValueOnce`
-// to exercise the failure paths, then it reverts to resolving.
-const { toastSuccess, toastError, configs, deleteMutate, createMutate } = vi.hoisted(() => ({
-  toastSuccess:
-    vi.fn<(message: string, options?: { action?: { label: string; onClick: () => void } }) => void>(),
-  toastError: vi.fn<(message: string) => void>(),
-  configs: [
-    { id: 1, hubChannelId: "hub1", categoryId: "cat1", nameTemplate: "{user}'s Channel" },
-  ],
-  deleteMutate: vi.fn(async () => {}),
-  createMutate: vi.fn(async () => {}),
-}));
+// `deleteMutate`/`createMutate`/`updateMutate` are plain `vi.fn(async () => {})`
+// by default (resolve) — individual tests override one call with
+// `.mockRejectedValueOnce` to exercise the failure paths, then it reverts to
+// resolving. `updateMutate` is captured (rather than declared inline in the
+// mock factory, as it was) so the Edit -> Save path can be asserted at all:
+// an anonymous vi.fn() nobody holds a reference to can never be checked, and
+// swapping handleSubmit's create/update branches would ship green.
+const { toastSuccess, toastError, configs, deleteMutate, createMutate, updateMutate } = vi.hoisted(
+  () => ({
+    toastSuccess:
+      vi.fn<
+        (message: string, options?: { action?: { label: string; onClick: () => void } }) => void
+      >(),
+    toastError: vi.fn<(message: string) => void>(),
+    configs: [
+      { id: 1, hubChannelId: "hub1", categoryId: "cat1", nameTemplate: "{user}'s Channel" },
+    ],
+    deleteMutate: vi.fn(async () => {}),
+    createMutate: vi.fn(async () => {}),
+    updateMutate: vi.fn(async () => {}),
+  }),
+);
 vi.mock("sonner", () => ({ toast: { success: toastSuccess, error: toastError } }));
 
 vi.mock("../../../../src/client/features/tempvoice/hooks/useTempVoice", () => ({
   useTempVoiceConfigs: () => ({ data: configs, isLoading: false }),
   useCreateTempVoice: () => ({ mutateAsync: createMutate, isPending: false }),
-  useUpdateTempVoice: () => ({ mutateAsync: vi.fn(async () => {}), isPending: false }),
+  useUpdateTempVoice: () => ({ mutateAsync: updateMutate, isPending: false }),
   useDeleteTempVoice: () => ({ mutateAsync: deleteMutate, isPending: false }),
 }));
 vi.mock("../../../../src/client/shared/hooks/useChannels", () => ({
@@ -143,6 +152,64 @@ describe("TempVoiceHubList", () => {
     await waitFor(() =>
       expect(screen.getByRole("button", { name: /list.edit/ })).toHaveFocus(),
     );
+  });
+
+  it("saves an edited hub through the update mutation, not create", async () => {
+    const user = userEvent.setup();
+    render(<TempVoiceHubList />);
+    await user.click(screen.getByRole("button", { name: /list.edit/ }));
+
+    const nameField = screen.getByDisplayValue("{user}'s Channel");
+    await user.clear(nameField);
+    // No braces: user-event treats "{" as the start of a key descriptor.
+    await user.type(nameField, "Squad Room");
+    await user.click(screen.getByRole("button", { name: /editor.save/ }));
+
+    // The argument SHAPE is the contract, not just "some mutation ran":
+    // useUpdateTempVoice's mutationFn destructures { configId, data } and puts
+    // configId in the PUT path, so a positional or flattened payload would
+    // silently PUT to the wrong URL with the wrong body.
+    await waitFor(() =>
+      expect(updateMutate).toHaveBeenCalledWith({
+        configId: 1,
+        data: { hubChannelId: "hub1", categoryId: "cat1", nameTemplate: "Squad Room" },
+      }),
+    );
+    // Editing an existing hub must never take the create branch — that would
+    // POST a duplicate hub on the same channel instead of amending this one.
+    expect(createMutate).not.toHaveBeenCalled();
+    expect(toastSuccess).toHaveBeenCalledWith("toast.updated");
+    // ...and the card collapses on success, unlike the failure case below.
+    await waitFor(() =>
+      expect(screen.queryByRole("button", { name: /editor.save/ })).not.toBeInTheDocument(),
+    );
+  });
+
+  it("keeps the card expanded, with the draft intact, when the save fails", async () => {
+    // The sibling assertion in HubCard.test.tsx renders HubCard directly with
+    // mode="editor" hardcoded, so that card is structurally incapable of
+    // collapsing and the assertion cannot fail. The real contract lives here:
+    // handleSubmit must let the rejection propagate so HubCard's catch runs
+    // and collapse() is never reached. Swallowing it — one `.catch(() => {})`
+    // on the mutateAsync call — would discard the admin's typing on every
+    // failed save, with every existing test still green.
+    const user = userEvent.setup();
+    updateMutate.mockRejectedValueOnce(new Error("This channel is already a temp voice hub"));
+    render(<TempVoiceHubList />);
+    await user.click(screen.getByRole("button", { name: /list.edit/ }));
+
+    const nameField = screen.getByDisplayValue("{user}'s Channel");
+    await user.clear(nameField);
+    await user.type(nameField, "Squad Room");
+    await user.click(screen.getByRole("button", { name: /editor.save/ }));
+
+    expect(await screen.findByRole("alert")).toHaveTextContent(
+      "This channel is already a temp voice hub",
+    );
+    expect(screen.getByRole("button", { name: /editor.save/ })).toBeInTheDocument();
+    expect(screen.getByDisplayValue("Squad Room")).toBeInTheDocument();
+    // A failed save must not be announced as a successful one.
+    expect(toastSuccess).not.toHaveBeenCalled();
   });
 
   it("offers Undo after a delete, and Undo recreates the exact deleted hub", async () => {
