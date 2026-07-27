@@ -3,12 +3,29 @@ import { Icon } from "./Icon";
 import { useCommandPalette } from "../command-palette/useCommandPalette";
 
 /**
+ * `navigator.userAgentData` (User-Agent Client Hints) has not landed in
+ * lib.dom, and the repo gitignores *.d.ts, so the slice read below is merged
+ * here. Delete once TypeScript ships the real types.
+ */
+declare global {
+  interface NavigatorUAData {
+    readonly platform: string;
+  }
+  interface Navigator {
+    readonly userAgentData?: NavigatorUAData;
+  }
+}
+
+/**
  * Apple platforms render ⌘; everything else renders Ctrl. Read once at module
  * scope — the platform cannot change during a session, and `navigator` is
- * absent under SSR/node, so it falls back to the Ctrl label.
+ * absent under SSR/node, so it falls back to the Ctrl label. Client Hints
+ * reports "macOS" while the deprecated `navigator.platform` fallback (still
+ * needed on Safari and Firefox) reports "MacIntel", hence the /i flag.
  */
 const IS_APPLE =
-  typeof navigator !== "undefined" && /Mac|iPhone|iPad/.test(navigator.platform);
+  typeof navigator !== "undefined" &&
+  /mac|iphone|ipad/i.test(navigator.userAgentData?.platform ?? navigator.platform);
 
 export function CommandPaletteTrigger() {
   const { t } = useTranslation();
