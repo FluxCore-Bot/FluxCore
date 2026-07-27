@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Exemplu — așa funcționează un hub vocal:",
+    "exampleHub": "Intră ca să creezi",
+    "exampleCategory": "Canale vocale",
     "cta": "Creează primul tău hub"
   },
   "editor": {

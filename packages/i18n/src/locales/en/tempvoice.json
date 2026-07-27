@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Example — this is how a voice hub works:",
+    "exampleHub": "Join to Create",
+    "exampleCategory": "Voice Channels",
     "cta": "Create your first hub"
   },
   "editor": {

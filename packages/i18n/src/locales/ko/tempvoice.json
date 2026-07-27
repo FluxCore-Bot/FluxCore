@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "예시 — 음성 허브는 이렇게 작동합니다:",
+    "exampleHub": "참여해서 만들기",
+    "exampleCategory": "음성 채널",
     "cta": "첫 허브 만들기"
   },
   "editor": {

@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Piemērs — lūk, kā darbojas balss centrs:",
+    "exampleHub": "Pievienojies, lai izveidotu",
+    "exampleCategory": "Balss kanāli",
     "cta": "Izveidojiet savu pirmo centru"
   },
   "editor": {

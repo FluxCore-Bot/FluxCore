@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "مثال — هكذا يعمل المركز الصوتي:",
+    "exampleHub": "انضم لإنشاء قناة",
+    "exampleCategory": "القنوات الصوتية",
     "cta": "أنشئ أول مركز لك"
   },
   "editor": {

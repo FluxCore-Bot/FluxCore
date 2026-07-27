@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Pavyzdys — štai kaip veikia balso centras:",
+    "exampleHub": "Prisijunk ir sukurk",
+    "exampleCategory": "Balso kanalai",
     "cta": "Sukurkite savo pirmąjį centrą"
   },
   "editor": {

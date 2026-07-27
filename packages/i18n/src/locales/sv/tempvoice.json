@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Exempel — så här fungerar en rösthubb:",
+    "exampleHub": "Gå med för att skapa",
+    "exampleCategory": "Röstkanaler",
     "cta": "Skapa din första hubb"
   },
   "editor": {

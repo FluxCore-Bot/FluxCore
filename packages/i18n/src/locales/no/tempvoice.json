@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Eksempel — slik fungerer en talehub:",
+    "exampleHub": "Bli med for å opprette",
+    "exampleCategory": "Talekanaler",
     "cta": "Opprett din første hub"
   },
   "editor": {

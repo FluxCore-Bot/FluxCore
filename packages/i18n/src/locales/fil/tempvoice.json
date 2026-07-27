@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Halimbawa — ganito gumagana ang voice hub:",
+    "exampleHub": "Sumali para gumawa",
+    "exampleCategory": "Mga voice channel",
     "cta": "Gawin ang iyong unang hub"
   },
   "editor": {

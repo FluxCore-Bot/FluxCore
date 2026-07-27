@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Beispiel — so funktioniert ein Sprach-Hub:",
+    "exampleHub": "Beitreten zum Erstellen",
+    "exampleCategory": "Sprachkanäle",
     "cta": "Erstellen Sie Ihren ersten Hub"
   },
   "editor": {

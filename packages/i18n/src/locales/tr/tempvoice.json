@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Örnek — bir ses merkezi şöyle çalışır:",
+    "exampleHub": "Katıl ve oluştur",
+    "exampleCategory": "Sesli kanallar",
     "cta": "İlk merkezinizi oluşturun"
   },
   "editor": {

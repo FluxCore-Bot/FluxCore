@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "उदाहरण — वॉइस हब इस तरह काम करता है:",
+    "exampleHub": "बनाने के लिए जुड़ें",
+    "exampleCategory": "वॉइस चैनल",
     "cta": "अपना पहला हब बनाएं"
   },
   "editor": {

@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "例 — ボイスハブはこのように動作します:",
+    "exampleHub": "参加して作成",
+    "exampleCategory": "ボイスチャンネル",
     "cta": "最初のハブを作成"
   },
   "editor": {

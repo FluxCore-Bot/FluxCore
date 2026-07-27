@@ -2,12 +2,21 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "@tanstack/react-router";
 import { toast } from "sonner";
-import { MAX_TEMPVOICE_CONFIGS_PER_GUILD } from "@fluxcore/systems/tempVoice/constants";
+import {
+  DEFAULT_NAME_TEMPLATE,
+  MAX_TEMPVOICE_CONFIGS_PER_GUILD,
+} from "@fluxcore/systems/tempVoice/constants";
 import { Card } from "../../../shared/ui/card";
 import { Button } from "../../../shared/ui/button";
 import { Icon } from "../../../shared/components/Icon";
 import { FormSkeleton } from "../../../shared/ui/skeletons";
 import { useChannels } from "../../../shared/hooks/useChannels";
+import {
+  usePreviewContext,
+  tempvoiceVariables,
+  buildTokenValues,
+  resolveTemplatePreview,
+} from "../../../shared/ui/variable-field";
 import type { TempVoiceFormData } from "../../../shared/lib/schemas";
 import {
   useTempVoiceConfigs,
@@ -29,6 +38,7 @@ export function TempVoiceHubList() {
   const createConfig = useCreateTempVoice(guildId);
   const updateConfig = useUpdateTempVoice(guildId);
   const deleteConfig = useDeleteTempVoice(guildId);
+  const preview = usePreviewContext(guildId);
 
   const [expanded, setExpanded] = useState<Expanded>(null);
 
@@ -57,6 +67,17 @@ export function TempVoiceHubList() {
 
   const busy = createConfig.isPending || updateConfig.isPending || deleteConfig.isPending;
   const atCap = configs.length >= MAX_TEMPVOICE_CONFIGS_PER_GUILD;
+
+  // The worked example's step-2 chip is derived, not written: it runs the real
+  // default template through the same resolver the editor preview and the
+  // summary use, so the example shows the signed-in admin's own display name
+  // and stays exactly what creating a hub with the defaults would produce.
+  // Deriving also sidesteps translating a possessive ("Ahmad's Channel"), which
+  // no locale file could get right for an arbitrary name anyway.
+  const exampleChannelName = resolveTemplatePreview(
+    DEFAULT_NAME_TEMPLATE,
+    buildTokenValues(tempvoiceVariables, preview),
+  );
 
   const otherHubIds = (selfId: number | "new") =>
     configs.filter((c) => c.id !== selfId).map((c) => c.hubChannelId);
@@ -129,13 +150,13 @@ export function TempVoiceHubList() {
           <p className="text-sm text-text-muted">{t("empty.exampleCaption")}</p>
           <HubFlow example>
             <HubFlowStep n={1} label={t("flow.step1")}>
-              <ChannelChip kind="voice" name="Join to Create" variant="example" />
+              <ChannelChip kind="voice" name={t("empty.exampleHub")} variant="example" />
             </HubFlowStep>
             <HubFlowStep n={2} label={t("flow.step2")}>
-              <ChannelChip kind="voice" name="Ahmad's Channel" variant="example" />
+              <ChannelChip kind="voice" name={exampleChannelName} variant="example" />
             </HubFlowStep>
             <HubFlowStep n={3} label={t("flow.step3")}>
-              <ChannelChip kind="category" name="Voice Channels" variant="example" />
+              <ChannelChip kind="category" name={t("empty.exampleCategory")} variant="example" />
             </HubFlowStep>
             <HubFlowStep n={4} label={t("flow.step4")} last />
           </HubFlow>

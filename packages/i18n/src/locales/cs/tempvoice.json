@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Příklad — takto hlasový hub funguje:",
+    "exampleHub": "Připoj se a vytvoř",
+    "exampleCategory": "Hlasové kanály",
     "cta": "Vytvořte svůj první hub"
   },
   "editor": {

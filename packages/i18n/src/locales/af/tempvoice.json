@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Voorbeeld — so werk 'n stemhub:",
+    "exampleHub": "Sluit aan om te skep",
+    "exampleCategory": "Stemkanale",
     "cta": "Skep jou eerste hub"
   },
   "editor": {

@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Näide — nii häälekeskus töötab:",
+    "exampleHub": "Liitu, et luua",
+    "exampleCategory": "Häälekanalid",
     "cta": "Loo oma esimene keskus"
   },
   "editor": {

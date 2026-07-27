@@ -45,9 +45,15 @@ vi.mock("../../../../src/client/shared/hooks/useRoles", () => ({
 }));
 
 // Each HubCard reaches usePreviewContext → useAuth/useGuilds, which are
-// react-query hooks and throw without a QueryClientProvider.
+// react-query hooks and throw without a QueryClientProvider. The empty state
+// reaches them too, for the worked example's derived channel name.
+//
+// The username here is deliberately NOT the "Ahmad" the sibling test files
+// use: the worked example's step-2 chip used to be the hardcoded literal
+// "Ahmad's Channel", so an assertion against that string would pass whether
+// the name is derived from the signed-in admin or still hardcoded.
 vi.mock("../../../../src/client/shared/hooks/useAuth", () => ({
-  useAuth: () => ({ data: { userId: "u1", username: "Ahmad", avatar: null } }),
+  useAuth: () => ({ data: { userId: "u1", username: "Rania", avatar: null } }),
 }));
 vi.mock("../../../../src/client/shared/hooks/useGuilds", () => ({
   useGuilds: () => ({
@@ -92,6 +98,19 @@ describe("TempVoiceHubList empty state", () => {
     // as dashed illustrations — solid chips are what a real saved hub renders,
     // so identical styling would tell a sighted admin a hub already exists.
     expect(screen.getByRole("list").querySelectorAll(".border-dashed")).toHaveLength(3);
+  });
+
+  it("translates the example's channel names and derives the created one", () => {
+    render(<TempVoiceHubList />);
+    // The `t` mock echoes keys, so seeing the keys proves these went through
+    // i18n. As .tsx literals they were English in all 48 locales and the parity
+    // test structurally could not see them.
+    expect(screen.getByText("empty.exampleHub")).toBeInTheDocument();
+    expect(screen.getByText("empty.exampleCategory")).toBeInTheDocument();
+    // Step 2's chip is derived from the real default template and the real
+    // preview context, not translated and not written down — so it shows the
+    // signed-in admin's own name and matches what creating a hub would do.
+    expect(screen.getByText("Rania's Channel")).toBeInTheDocument();
   });
 
   it("shows only the one CTA, not a redundant header Add button alongside it", () => {

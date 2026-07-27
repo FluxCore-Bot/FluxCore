@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Esimerkki — näin äänikeskus toimii:",
+    "exampleHub": "Liity luodaksesi",
+    "exampleCategory": "Äänikanavat",
     "cta": "Luo ensimmäinen keskuksesi"
   },
   "editor": {

@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "範例 — 語音中樞的運作方式如下：",
+    "exampleHub": "加入即建立",
+    "exampleCategory": "語音頻道",
     "cta": "建立你的第一個中樞"
   },
   "editor": {

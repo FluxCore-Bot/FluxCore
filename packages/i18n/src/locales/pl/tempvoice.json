@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Przykład — tak działa centrum głosowe:",
+    "exampleHub": "Dołącz, aby utworzyć",
+    "exampleCategory": "Kanały głosowe",
     "cta": "Utwórz swoje pierwsze centrum"
   },
   "editor": {

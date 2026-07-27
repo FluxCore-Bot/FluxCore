@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Exemple — així funciona un hub de veu:",
+    "exampleHub": "Entra per crear",
+    "exampleCategory": "Canals de veu",
     "cta": "Crea el teu primer hub"
   },
   "editor": {

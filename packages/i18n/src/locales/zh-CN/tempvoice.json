@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "示例 — 语音中枢的工作方式如下：",
+    "exampleHub": "加入即创建",
+    "exampleCategory": "语音频道",
     "cta": "创建你的第一个中枢"
   },
   "editor": {

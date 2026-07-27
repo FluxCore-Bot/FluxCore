@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Ví dụ — hub thoại hoạt động như sau:",
+    "exampleHub": "Tham gia để tạo",
+    "exampleCategory": "Kênh thoại",
     "cta": "Tạo hub đầu tiên của bạn"
   },
   "editor": {

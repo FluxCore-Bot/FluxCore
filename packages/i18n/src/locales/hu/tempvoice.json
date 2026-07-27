@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Példa — így működik egy hangközpont:",
+    "exampleHub": "Csatlakozz a létrehozáshoz",
+    "exampleCategory": "Hangcsatornák",
     "cta": "Hozd létre az első központodat"
   },
   "editor": {

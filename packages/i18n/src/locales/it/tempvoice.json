@@ -26,6 +26,8 @@
   },
   "empty": {
     "exampleCaption": "Esempio — ecco come funziona un hub vocale:",
+    "exampleHub": "Entra per creare",
+    "exampleCategory": "Canali vocali",
     "cta": "Crea il tuo primo hub"
   },
   "editor": {
