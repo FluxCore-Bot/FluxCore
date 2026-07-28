@@ -277,6 +277,24 @@ export function registerDashboardRoleRoutes(app: FastifyInstance): void {
         }
       }
 
+      // Promoting a role to the guild default grants its permissions to every
+      // live Discord admin, so it is equivalent to granting those permissions
+      // to the caller: gate it the same way, against the role's *existing*
+      // persisted permissions (the request body may not even touch `permissions`).
+      if (body.isDefault === true && !request.resolvedPermissions?.isOwner) {
+        const userPerms = request.resolvedPermissions!.permissions;
+        const existingPerms = safeParsePermissions(existing.permissions);
+        for (const perm of existingPerms) {
+          if (!matchPermission(userPerms, perm)) {
+            reply.code(403).send({
+              error: "Cannot make a role default unless you hold all of its permissions",
+              permission: perm,
+            });
+            return;
+          }
+        }
+      }
+
       const update: Record<string, unknown> = {};
       if (body.name !== undefined) update.name = body.name.trim();
       if (body.color !== undefined) update.color = body.color;
