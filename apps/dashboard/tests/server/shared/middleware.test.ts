@@ -63,6 +63,7 @@ describe("middleware", () => {
       permissions: new Set(["*"]),
       isOwner: false,
       isGuildAdmin: true,
+      isGuildMember: true,
     });
   });
 
@@ -132,6 +133,7 @@ describe("middleware", () => {
         permissions: new Set(),
         isOwner: false,
         isGuildAdmin: false,
+        isGuildMember: true,
       });
       const request = adminRequest();
       const reply = createMockReply();
@@ -152,6 +154,7 @@ describe("middleware", () => {
         permissions: new Set(),
         isOwner: false,
         isGuildAdmin: false,
+        isGuildMember: true,
       });
       const request = createMockRequest({
         session: {
@@ -184,6 +187,7 @@ describe("middleware", () => {
         permissions: new Set(["*"]),
         isOwner: true,
         isGuildAdmin: true,
+        isGuildMember: true,
       });
       const request = adminRequest();
       const reply = createMockReply();
@@ -198,6 +202,7 @@ describe("middleware", () => {
         permissions: new Set(["actions.rules.manage"]),
         isOwner: false,
         isGuildAdmin: true,
+        isGuildMember: true,
       });
       const request = adminRequest();
       const reply = createMockReply();

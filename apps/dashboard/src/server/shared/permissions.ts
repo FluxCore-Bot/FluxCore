@@ -1,8 +1,7 @@
 import { getPrisma } from "@fluxcore/database";
 import { matchPermission } from "@fluxcore/types";
 import { logger } from "@fluxcore/utils";
-import { getGuildOwnerId } from "./discordApi.js";
-import { isUserGuildAdmin } from "./guildAuthz.js";
+import { getGuildAuthority } from "./guildAuthz.js";
 
 // ─── Cache ───
 
@@ -10,6 +9,7 @@ interface CachedPermissions {
   permissions: Set<string>;
   isOwner: boolean;
   isGuildAdmin: boolean;
+  isGuildMember: boolean;
   expiresAt: number;
 }
 
@@ -35,6 +35,8 @@ export interface ResolvedPermissions {
   isOwner: boolean;
   /** Whether the user currently has live Discord admin authority in the guild. */
   isGuildAdmin: boolean;
+  /** Whether the user is currently in the guild at all. */
+  isGuildMember: boolean;
 }
 
 function cacheResult(
@@ -45,6 +47,7 @@ function cacheResult(
     permissions: result.permissions,
     isOwner: result.isOwner,
     isGuildAdmin: result.isGuildAdmin,
+    isGuildMember: result.isGuildMember,
     expiresAt: Date.now() + CACHE_TTL,
   });
   return result;
@@ -54,10 +57,17 @@ function cacheResult(
  * Resolve a user's effective permission set for a guild.
  * Returns all granted permission keys (may include wildcards).
  *
- * Authorization is anchored to the user's LIVE Discord admin authority (owner,
- * Administrator, or Manage Server) via {@link isUserGuildAdmin} — NOT the cached
- * OAuth session snapshot. A user whose admin access was revoked on Discord
- * resolves to an empty permission set within the short cache window.
+ * Authorization is anchored to the user's LIVE Discord authority (owner,
+ * admin, or plain membership) via {@link getGuildAuthority} — NOT the cached
+ * OAuth session snapshot. A user whose admin access was revoked on Discord,
+ * or who has left the guild, resolves to an empty permission set within the
+ * short cache window.
+ *
+ * `requirePermissions` governs whether ADMINS are constrained to explicit
+ * role/user grants. It never gates a non-admin member's explicit grants —
+ * those resolve the same way regardless of the setting. `isDefault` roles
+ * are merged only on the admin path; applying them to every member would
+ * turn the toggle into a server-wide grant.
  */
 export async function resolveUserPermissions(
   userId: string,
@@ -70,75 +80,95 @@ export async function resolveUserPermissions(
       permissions: cached.permissions,
       isOwner: cached.isOwner,
       isGuildAdmin: cached.isGuildAdmin,
+      isGuildMember: cached.isGuildMember,
     };
   }
   permissionCache.delete(key);
 
-  const prisma = getPrisma();
+  const authority = await getGuildAuthority(guildId, userId);
 
-  // Check if user is guild owner
-  const ownerId = await getGuildOwnerId(guildId);
-  if (ownerId === userId) {
+  if (authority.isOwner) {
     return cacheResult(key, {
       permissions: new Set(["*"]),
       isOwner: true,
       isGuildAdmin: true,
+      isGuildMember: true,
     });
   }
 
-  // Live authority check — revoked Discord admin is honored here, so a stale
-  // OAuth session can no longer grant dashboard access.
-  const isGuildAdmin = await isUserGuildAdmin(guildId, userId);
-  if (!isGuildAdmin) {
+  // Not in the guild → no authority, and no reason to read grant rows.
+  if (!authority.isMember) {
     return cacheResult(key, {
       permissions: new Set(),
       isOwner: false,
       isGuildAdmin: false,
+      isGuildMember: false,
     });
   }
 
-  // Check if permissions are enabled for this guild
-  const guildSettings = await prisma.dashboardGuildSettings.findUnique({
-    where: { guildId },
+  const prisma = getPrisma();
+
+  // `requirePermissions` governs whether ADMINS are constrained. It never gates
+  // explicit grants, which resolve the same way in both modes.
+  if (authority.isAdmin) {
+    const guildSettings = await prisma.dashboardGuildSettings.findUnique({
+      where: { guildId },
+    });
+    if (!guildSettings?.requirePermissions) {
+      return cacheResult(key, {
+        permissions: new Set(["*"]),
+        isOwner: false,
+        isGuildAdmin: true,
+        isGuildMember: true,
+      });
+    }
+  }
+
+  const permissions = await loadGrantedPermissions(guildId, userId, {
+    // Default roles are an admin baseline only. Applying them to every member
+    // would turn the requirePermissions toggle into a server-wide grant.
+    includeDefaultRoles: authority.isAdmin,
   });
 
-  if (!guildSettings?.requirePermissions) {
-    // Legacy mode: all guild admins have full access
-    return cacheResult(key, {
-      permissions: new Set(["*"]),
-      isOwner: false,
-      isGuildAdmin: true,
-    });
-  }
+  return cacheResult(key, {
+    permissions,
+    isOwner: false,
+    isGuildAdmin: authority.isAdmin,
+    isGuildMember: true,
+  });
+}
 
-  // Gather permissions from roles
+/**
+ * Merge a user's dashboard role permissions and per-user overrides into one set.
+ */
+async function loadGrantedPermissions(
+  guildId: string,
+  userId: string,
+  options: { includeDefaultRoles: boolean },
+): Promise<Set<string>> {
+  const prisma = getPrisma();
+
   const assignments = await prisma.dashboardRoleAssignment.findMany({
     where: { guildId, userId },
     include: { role: true },
   });
 
-  // Also include default roles
-  const defaultRoles = await prisma.dashboardRole.findMany({
-    where: { guildId, isDefault: true },
-  });
+  const defaultRoles = options.includeDefaultRoles
+    ? await prisma.dashboardRole.findMany({ where: { guildId, isDefault: true } })
+    : [];
 
   const allRoles = [
     ...assignments.map((a) => a.role),
-    ...defaultRoles.filter(
-      (dr) => !assignments.some((a) => a.roleId === dr.id),
-    ),
+    ...defaultRoles.filter((dr) => !assignments.some((a) => a.roleId === dr.id)),
   ];
 
   const permissions = new Set<string>();
-
   for (const role of allRoles) {
-    const rolePerms = safeJsonParse<string[]>(role.permissions, []);
-    for (const perm of rolePerms) {
+    for (const perm of safeJsonParse<string[]>(role.permissions, [])) {
       permissions.add(perm);
     }
   }
 
-  // Add per-user permission overrides
   const userPerms = await prisma.dashboardUserPermission.findMany({
     where: { guildId, userId },
   });
@@ -146,7 +176,7 @@ export async function resolveUserPermissions(
     permissions.add(up.permission);
   }
 
-  return cacheResult(key, { permissions, isOwner: false, isGuildAdmin: true });
+  return permissions;
 }
 
 /**
