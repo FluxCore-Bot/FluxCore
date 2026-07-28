@@ -20,7 +20,20 @@ import {
 
 const PAGE_SIZE = 25;
 
-const CATEGORY_VALUES = ["", "message", "member", "voice", "channel", "role", "server", "moderation"];
+// Radix Select forbids an empty-string item value, so "all" is the sentinel for
+// "no category filter" — matching the convention used by the other filter pages.
+const ALL_CATEGORIES = "all";
+
+const CATEGORY_VALUES = [
+  ALL_CATEGORIES,
+  "message",
+  "member",
+  "voice",
+  "channel",
+  "role",
+  "server",
+  "moderation",
+];
 
 const CATEGORY_COLORS: Record<string, string> = {
   message: "text-blue-400",
@@ -35,7 +48,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 export function EventLogBrowser() {
   const { t } = useTranslation(["logs", "common"]);
   const { guildId } = useParams({ from: "/guild/$guildId" });
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(ALL_CATEGORIES);
   const [targetId, setTargetId] = useState("");
   const [page, setPage] = useState(1);
 
@@ -43,7 +56,7 @@ export function EventLogBrowser() {
     page,
     limit: PAGE_SIZE,
   };
-  if (category) filters.category = category;
+  if (category !== ALL_CATEGORIES) filters.category = category;
   if (targetId.trim()) filters.targetId = targetId.trim();
 
   const { data, isLoading } = useLogEntries(guildId, filters);
@@ -77,7 +90,9 @@ export function EventLogBrowser() {
           <SelectContent>
             {CATEGORY_VALUES.map((val) => (
               <SelectItem key={val} value={val}>
-                {val === "" ? t("events.filter.allCategories") : t(`events.categories.${val}`)}
+                {val === ALL_CATEGORIES
+                  ? t("events.filter.allCategories")
+                  : t(`events.categories.${val}`)}
               </SelectItem>
             ))}
           </SelectContent>
