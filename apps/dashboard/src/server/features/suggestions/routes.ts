@@ -1,6 +1,6 @@
 import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
-import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { requireAuth, requireGuildAccess, requirePermission } from "../../shared/middleware.js";
 import {
   getSuggestionSettings,
   upsertSuggestionSettings,
@@ -26,7 +26,7 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
         },
         { tag: "Suggestions", response: { 200: { type: "object", additionalProperties: true } } },
       ),
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.list.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("suggestions.list.view")],
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -51,7 +51,7 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/suggestions",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.list.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("suggestions.list.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -81,7 +81,7 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/suggestions/:id/status",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.list.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("suggestions.list.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -137,7 +137,7 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
           response: { 200: { type: "object", properties: { success: { type: "boolean" } } } },
         },
       ),
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.list.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("suggestions.list.manage")],
     },
     async (request, reply) => {
       const { guildId, id } = request.params as { guildId: string; id: string };
@@ -165,7 +165,7 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         { tag: "Suggestions", response: { 200: { type: "object", additionalProperties: true } } },
       ),
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.settings.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("suggestions.settings.manage")],
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -178,7 +178,7 @@ export function registerSuggestionRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/suggestion-settings",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("suggestions.settings.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("suggestions.settings.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },

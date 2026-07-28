@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { requireAuth, requireGuildAccess, requirePermission } from "../../shared/middleware.js";
 import {
   createWarning,
   getWarnings,
@@ -26,7 +26,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/warnings",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.warnings.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("moderation.warnings.view")],
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] }, querystring: { type: "object", properties: { page: { type: "integer", minimum: 1, default: 1 }, limit: { type: "integer", minimum: 1, maximum: 100, default: 20 }, sort: { type: "string" } } } },
         { tag: "Warnings", response: { 200: { type: "object", additionalProperties: true } } },
@@ -52,7 +52,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/warnings",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.warnings.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("moderation.warnings.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -88,7 +88,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   app.delete(
     "/api/guilds/:guildId/warnings/:warningId",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.warnings.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("moderation.warnings.manage")],
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         {
@@ -113,7 +113,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   app.delete(
     "/api/guilds/:guildId/warnings/user/:userId",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.warnings.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("moderation.warnings.manage")],
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         {
@@ -138,7 +138,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/warn-punishments",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("moderation.punishments.manage")],
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         { tag: "Warnings", response: { 200: { type: "array", items: { type: "object", additionalProperties: true } } } },
@@ -155,7 +155,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/warn-punishments",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("moderation.punishments.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -190,7 +190,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   app.delete(
     "/api/guilds/:guildId/warn-punishments/:id",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("moderation.punishments.manage")],
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         {
@@ -215,7 +215,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/warn-settings",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("moderation.punishments.manage")],
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         { tag: "Warnings", response: { 200: { type: "object", additionalProperties: true } } },
@@ -232,7 +232,7 @@ export function registerWarningRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/warn-settings",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("moderation.punishments.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("moderation.punishments.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },

@@ -6,7 +6,7 @@ import {
   ROLE_PRESETS,
   matchPermission,
 } from "@fluxcore/types";
-import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { requireAuth, requireGuildAccess, requirePermission } from "../../shared/middleware.js";
 import {
   createDashboardAuditLog,
   invalidatePermissionCache,
@@ -39,7 +39,7 @@ export function registerDashboardRoleRoutes(app: FastifyInstance): void {
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         { tag: "DashboardRoles", response: { 200: { type: "array", items: { type: "object", additionalProperties: true } } } },
       ),
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.roles.view")],
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -71,7 +71,7 @@ export function registerDashboardRoleRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/dashboard-roles",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.roles.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -193,7 +193,7 @@ export function registerDashboardRoleRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/dashboard-roles/:roleId",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.roles.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -315,7 +315,7 @@ export function registerDashboardRoleRoutes(app: FastifyInstance): void {
           response: { 200: { type: "object", properties: { success: { type: "boolean" } } } },
         },
       ),
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.roles.manage")],
     },
     async (request, reply) => {
       const { guildId, roleId } = request.params as { guildId: string; roleId: string };
@@ -357,7 +357,7 @@ export function registerDashboardRoleRoutes(app: FastifyInstance): void {
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         { tag: "DashboardRoles", response: { 200: { type: "array", items: { type: "object", additionalProperties: true } } } },
       ),
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.roles.view")],
     },
     async (request, reply) => {
       const { guildId, roleId } = request.params as { guildId: string; roleId: string };
@@ -389,7 +389,7 @@ export function registerDashboardRoleRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/dashboard-roles/:roleId/members",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.roles.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -462,7 +462,7 @@ export function registerDashboardRoleRoutes(app: FastifyInstance): void {
           response: { 200: { type: "object", properties: { success: { type: "boolean" } } } },
         },
       ),
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.roles.manage")],
     },
     async (request, reply) => {
       const { guildId, roleId, userId } = request.params as {
@@ -507,7 +507,7 @@ export function registerDashboardRoleRoutes(app: FastifyInstance): void {
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         { tag: "DashboardRoles", response: { 200: { type: "object", additionalProperties: true } } },
       ),
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.roles.manage")],
     },
     async (_request, reply) => {
       reply.send(ROLE_PRESETS);
@@ -518,7 +518,7 @@ export function registerDashboardRoleRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/dashboard-roles/from-preset",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.roles.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },

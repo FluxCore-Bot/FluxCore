@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { requireAuth, requireGuildAccess, requirePermission } from "../../shared/middleware.js";
 import { loadLogConfigs, upsertLogConfig } from "@fluxcore/systems/logging/config";
 import { getLogEntries, cleanOldLogEntries } from "@fluxcore/systems/logging/persistence";
 import { LOG_CATEGORIES, EVENT_TYPES_BY_CATEGORY } from "@fluxcore/systems/logging/constants";
@@ -11,7 +11,7 @@ export function registerLoggingRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/logs",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("logging.entries.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("logging.entries.view")],
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] }, querystring: { type: "object", properties: { page: { type: "integer", minimum: 1, default: 1 }, limit: { type: "integer", minimum: 1, maximum: 100, default: 20 }, sort: { type: "string" } } } },
         { tag: "Logging", response: { 200: { type: "object", additionalProperties: true } } },
@@ -52,7 +52,7 @@ export function registerLoggingRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/log-config",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("logging.config.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("logging.config.manage")],
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         {
@@ -81,7 +81,7 @@ export function registerLoggingRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/log-config/:category",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("logging.config.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("logging.config.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -133,7 +133,7 @@ export function registerLoggingRoutes(app: FastifyInstance): void {
   app.delete(
     "/api/guilds/:guildId/logs",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("logging.entries.purge")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("logging.entries.purge")],
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         {

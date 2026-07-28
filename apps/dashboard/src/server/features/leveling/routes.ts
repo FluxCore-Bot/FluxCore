@@ -1,6 +1,6 @@
 import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
-import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { requireAuth, requireGuildAccess, requirePermission } from "../../shared/middleware.js";
 import {
   getLevelSettings,
   upsertLevelSettings,
@@ -26,7 +26,7 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/leaderboard",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.leaderboard.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("leveling.leaderboard.view")],
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] }, querystring: { type: "object", properties: { page: { type: "integer", minimum: 1, default: 1 }, limit: { type: "integer", minimum: 1, maximum: 100, default: 20 }, sort: { type: "string" } } } },
         { tag: "Leveling", response: { 200: { type: "object", additionalProperties: true } } },
@@ -51,7 +51,7 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/levels/:userId",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.leaderboard.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("leveling.leaderboard.view")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Leveling", response: { 200: { type: "object", additionalProperties: true } } }),
     },
     async (request, reply) => {
@@ -80,7 +80,7 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/levels/:userId",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.users.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("leveling.users.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -108,7 +108,7 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/level-settings",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.settings.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("leveling.settings.manage")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Leveling", response: { 200: { type: "object", additionalProperties: true } } }),
     },
     async (request, reply) => {
@@ -122,7 +122,7 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/level-settings",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.settings.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("leveling.settings.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -193,7 +193,7 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/level-rewards",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.rewards.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("leveling.rewards.manage")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Leveling", response: { 200: { type: "array", items: {} } } }),
     },
     async (request, reply) => {
@@ -207,7 +207,7 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/level-rewards",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.rewards.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("leveling.rewards.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -254,7 +254,7 @@ export function registerLevelingRoutes(app: FastifyInstance): void {
   app.delete(
     "/api/guilds/:guildId/level-rewards/:id",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("leveling.rewards.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("leveling.rewards.manage")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Leveling", response: { 200: { type: "object", properties: { success: { type: "boolean" } } } } }),
     },
     async (request, reply) => {

@@ -1,6 +1,6 @@
 import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
-import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { requireAuth, requireGuildAccess, requirePermission } from "../../shared/middleware.js";
 import { rateLimits } from "../../shared/rateLimit.js";
 import {
   getScheduledMessages,
@@ -21,7 +21,7 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/scheduled-messages",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("scheduled.messages.view")],
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] }, querystring: { type: "object", properties: { page: { type: "integer", minimum: 1, default: 1 }, limit: { type: "integer", minimum: 1, maximum: 100, default: 20 }, sort: { type: "string" } } } },
         { tag: "ScheduledMessages", response: { 200: { type: "object", additionalProperties: true } } },
@@ -46,7 +46,7 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/scheduled-messages",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("scheduled.messages.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -123,7 +123,7 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/scheduled-messages/:id",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("scheduled.messages.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -189,7 +189,7 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
   app.delete(
     "/api/guilds/:guildId/scheduled-messages/:id",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("scheduled.messages.manage")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "ScheduledMessages", response: { 200: { type: "object", properties: { success: { type: "boolean" } } } } }),
     },
     async (request, reply) => {
@@ -213,7 +213,7 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/scheduled-messages/:id/test",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.execute")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("scheduled.messages.execute")],
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         {
@@ -258,7 +258,7 @@ export function registerScheduledMessageRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/scheduled-messages/preview-cron",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("scheduled.messages.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("scheduled.messages.view")],
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         {

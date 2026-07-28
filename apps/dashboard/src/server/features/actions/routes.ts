@@ -1,6 +1,6 @@
 import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
-import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { requireAuth, requireGuildAccess, requirePermission } from "../../shared/middleware.js";
 import {
   createRule,
   updateRule,
@@ -287,7 +287,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/actions/rules",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.rules.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("actions.rules.view")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, {
         tag: "Actions",
         response: { 200: { type: "array", items: { type: "object", additionalProperties: true } } },
@@ -310,7 +310,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/actions/rules",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.rules.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("actions.rules.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -376,7 +376,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/actions/rules/:ruleId",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.rules.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("actions.rules.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -440,7 +440,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
   app.delete(
     "/api/guilds/:guildId/actions/rules/:ruleId",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.rules.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("actions.rules.manage")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, {
         tag: "Actions",
         response: { 200: { type: "object", properties: { success: { type: "boolean" } } } },
@@ -463,7 +463,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
   app.patch(
     "/api/guilds/:guildId/actions/rules/bulk",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.rules.execute")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("actions.rules.execute")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -538,7 +538,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/actions/rules/:ruleId/analytics",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.analytics.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("actions.analytics.view")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -569,7 +569,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/actions/settings",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.settings.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("actions.settings.manage")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, {
         tag: "Actions",
         response: {
@@ -593,7 +593,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/actions/settings",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.settings.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("actions.settings.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -653,7 +653,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/actions/analytics",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.analytics.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("actions.analytics.view")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -681,7 +681,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/actions/logs",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("actions.analytics.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("actions.analytics.view")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },

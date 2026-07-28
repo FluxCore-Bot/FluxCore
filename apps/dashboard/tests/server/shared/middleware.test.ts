@@ -28,7 +28,7 @@ vi.mock("../../../src/server/shared/permissions.js", () => ({
   createDashboardAuditLog: vi.fn().mockResolvedValue(undefined),
 }));
 
-const { requireAuth, requireGuildAdmin } = await import(
+const { requireAuth, requireGuildAccess } = await import(
   "../../../src/server/shared/middleware.js"
 );
 
@@ -106,7 +106,7 @@ describe("middleware", () => {
     });
   });
 
-  describe("requireGuildAdmin", () => {
+  describe("requireGuildAccess", () => {
     function adminRequest() {
       return createMockRequest({
         session: { userId: "user-1", guilds: [] },
@@ -119,7 +119,7 @@ describe("middleware", () => {
       const request = adminRequest();
       const reply = createMockReply();
 
-      await requireGuildAdmin(request as never, reply as never);
+      await requireGuildAccess(request as never, reply as never);
 
       expect(reply.code).toHaveBeenCalledWith(403);
       expect(reply.send).toHaveBeenCalledWith(
@@ -138,7 +138,7 @@ describe("middleware", () => {
       const request = adminRequest();
       const reply = createMockReply();
 
-      await requireGuildAdmin(request as never, reply as never);
+      await requireGuildAccess(request as never, reply as never);
 
       expect(reply.code).toHaveBeenCalledWith(403);
       expect(reply.send).toHaveBeenCalledWith(
@@ -165,7 +165,7 @@ describe("middleware", () => {
       });
       const reply = createMockReply();
 
-      await requireGuildAdmin(request as never, reply as never);
+      await requireGuildAccess(request as never, reply as never);
 
       expect(reply.code).toHaveBeenCalledWith(403);
     });
@@ -174,7 +174,7 @@ describe("middleware", () => {
       const request = adminRequest();
       const reply = createMockReply();
 
-      await requireGuildAdmin(request as never, reply as never);
+      await requireGuildAccess(request as never, reply as never);
 
       expect(reply.code).not.toHaveBeenCalled();
       expect(
@@ -192,7 +192,7 @@ describe("middleware", () => {
       const request = adminRequest();
       const reply = createMockReply();
 
-      await requireGuildAdmin(request as never, reply as never);
+      await requireGuildAccess(request as never, reply as never);
 
       expect(reply.code).not.toHaveBeenCalled();
     });
@@ -207,9 +207,67 @@ describe("middleware", () => {
       const request = adminRequest();
       const reply = createMockReply();
 
-      await requireGuildAdmin(request as never, reply as never);
+      await requireGuildAccess(request as never, reply as never);
 
       expect(reply.code).not.toHaveBeenCalled();
+    });
+
+    it("allows a non-admin member holding explicit grants", async () => {
+      mockResolveUserPermissions.mockResolvedValue({
+        permissions: new Set(["tickets.list.view"]),
+        isOwner: false,
+        isGuildAdmin: false,
+        isGuildMember: true,
+      });
+      const request = createMockRequest({
+        session: { userId: "user-1" },
+        params: { guildId: "guild-1" },
+      });
+      const reply = createMockReply();
+
+      await requireGuildAccess(request as never, reply as never);
+
+      expect(reply.code).not.toHaveBeenCalled();
+      expect(
+        (request as { resolvedPermissions?: { permissions: Set<string> } })
+          .resolvedPermissions?.permissions.has("tickets.list.view"),
+      ).toBe(true);
+    });
+
+    it("rejects a member holding no grants", async () => {
+      mockResolveUserPermissions.mockResolvedValue({
+        permissions: new Set(),
+        isOwner: false,
+        isGuildAdmin: false,
+        isGuildMember: true,
+      });
+      const request = createMockRequest({
+        session: { userId: "user-1" },
+        params: { guildId: "guild-1" },
+      });
+      const reply = createMockReply();
+
+      await requireGuildAccess(request as never, reply as never);
+
+      expect(reply.code).toHaveBeenCalledWith(403);
+    });
+
+    it("rejects a non-member", async () => {
+      mockResolveUserPermissions.mockResolvedValue({
+        permissions: new Set(),
+        isOwner: false,
+        isGuildAdmin: false,
+        isGuildMember: false,
+      });
+      const request = createMockRequest({
+        session: { userId: "user-1" },
+        params: { guildId: "guild-1" },
+      });
+      const reply = createMockReply();
+
+      await requireGuildAccess(request as never, reply as never);
+
+      expect(reply.code).toHaveBeenCalledWith(403);
     });
   });
 });

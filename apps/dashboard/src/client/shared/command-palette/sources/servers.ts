@@ -5,7 +5,7 @@ export function serverCommands(opts: { guilds: Guild[] }): Command[] {
   const { guilds } = opts;
 
   // Bot-less guilds are deliberately excluded: every dashboard page for such a
-  // guild 403s (requireGuildAdmin checks isBotInGuild first), so offering them
+  // guild 403s (requireGuildAccess checks isBotInGuild first), so offering them
   // here would be offering a dead end. They remain visible on the server list,
   // where the invite affordance lives.
   return guilds

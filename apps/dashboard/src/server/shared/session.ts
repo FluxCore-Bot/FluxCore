@@ -268,7 +268,7 @@ const FRESH_GUILD_THRESHOLD = 5 * 60 * 1000; // 5 minutes
 
 /**
  * Ensure session.guilds is no older than FRESH_GUILD_THRESHOLD.
- * Used by requireGuildAdmin to fail closed for revoked admins quickly.
+ * Used by requireGuildAccess to fail closed for revoked admins quickly.
  */
 export async function ensureFreshGuilds(
   id: string,

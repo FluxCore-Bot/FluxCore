@@ -12,7 +12,7 @@ import { rateLimits } from "../../shared/rateLimit.js";
  *
  * Guilds the bot has NOT been added to are included, flagged with
  * `botPresent: false`, so the dashboard can offer a preselected invite for them
- * instead of hiding them. This grants no access on its own — `requireGuildAdmin`
+ * instead of hiding them. This grants no access on its own — `requireGuildAccess`
  * still rejects guild-scoped requests with `botNotInGuild`.
  *
  * Bot-present guilds sort first so the actionable cards lead the grid.
