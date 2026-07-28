@@ -8,6 +8,7 @@
     "description": "Pārliecinies, ka vismaz vienā Discord serverī tev ir atļauja Pārvaldīt serveri, un pēc tam atsvaidzini."
   },
   "badge": {
+    "delegated": "Deleģēta piekļuve",
     "botNotAdded": "Bots nav pievienots"
   },
   "addBot": "Pievienot FluxCore",

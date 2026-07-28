@@ -41,7 +41,26 @@
     "defaultRole": "Vai trò mặc định",
     "permissions": "Quyền Hạn",
     "allBadge": "Tất Cả",
-    "discordRoles": "Vai Trò Discord"
+    "discordRoles": "Vai Trò Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Không thể tải danh sách quyền. Hãy thử làm mới trang.",
+    "registryEmpty": "Hiện chưa có quyền nào khả dụng để gán.",
+    "lookupsWarning": "Vai trò này có thể cấu hình các mô-đun nhưng không thể tra cứu kênh, vai trò hoặc thành viên — các bộ chọn của nó sẽ trống.",
+    "grantLookups": "Cấp quyền truy cập bộ chọn",
+    "admissionNote": "Cũng cho phép người giữ vai trò cấp quyền truy cập bảng điều khiển cho các thành viên khác.",
+    "cannotGrantTooltip": "Bạn không thể cấp một quyền mà chính bạn không có.",
+    "membersSection": {
+      "title": "Thành Viên",
+      "empty": "Chưa có thành viên nào được gán vai trò này.",
+      "error": "Không thể tải thành viên của vai trò này. Hãy thử làm mới trang.",
+      "addPlaceholder": "Thêm thành viên",
+      "searchPlaceholder": "Tìm kiếm thành viên...",
+      "searchHint": "Nhập tên để tìm kiếm thành viên",
+      "searchLoading": "Đang tải...",
+      "searchNoResults": "Không có kết quả",
+      "assignedBy": "Được thêm bởi {{name}} vào {{date}}",
+      "removeAria": "Xóa {{name}} khỏi vai trò này"
+    }
   },
   "roleForm": {
     "name": "Tên Vai Trò",
@@ -58,6 +77,7 @@
     "color": "Màu Sắc"
   },
   "permissionCategories": {
+    "dashboard": "Bảng Điều Khiển",
     "actions": "Hành Động & Tự Động Hóa",
     "tempvoice": "Kênh Thoại Tạm",
     "welcome": "Chào Mừng & Tạm Biệt",
@@ -73,6 +93,33 @@
     "scheduled": "Tin Nhắn Lịch Trình",
     "commands": "Lệnh Tùy Chỉnh",
     "settings": "Cài Đặt Máy Chủ"
+  },
+  "resources": {
+    "roles": "Vai Trò",
+    "audit": "Nhật Ký Kiểm Toán",
+    "settings": "Cài Đặt",
+    "lookups": "Bộ Chọn",
+    "cases": "Trường Hợp",
+    "warnings": "Cảnh Báo",
+    "punishments": "Hình Phạt",
+    "rules": "Quy Tắc",
+    "analytics": "Phân Tích",
+    "entries": "Mục",
+    "config": "Cấu Hình",
+    "test": "Tin Nhắn Thử Nghiệm",
+    "leaderboard": "Bảng Xếp Hạng",
+    "users": "Người Dùng",
+    "rewards": "Phần Thưởng",
+    "list": "Danh Sách",
+    "panels": "Bảng",
+    "messages": "Tin Nhắn",
+    "events": "Sự Kiện"
+  },
+  "permissionActions": {
+    "view": "Xem",
+    "manage": "Quản Lý",
+    "execute": "Thực Thi",
+    "purge": "Xóa Sạch"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Đã cập nhật vai trò",
     "roleUpdateFailed": "Cập nhật vai trò thất bại",
     "roleDeleted": "Đã xóa vai trò",
-    "roleDeleteFailed": "Xóa vai trò thất bại"
+    "roleDeleteFailed": "Xóa vai trò thất bại",
+    "memberAdded": "Đã thêm {{name}} vào vai trò",
+    "memberRemoved": "Đã xóa {{name}} khỏi vai trò",
+    "memberRestored": "Đã khôi phục {{name}} vào vai trò"
   },
   "confirm": {
     "deleteTitle": "Xóa vai trò \"{{name}}\"?",

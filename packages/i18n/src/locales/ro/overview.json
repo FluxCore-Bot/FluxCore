@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Accesul tău",
+    "subtitle": "Ți s-a acordat acces la părți din panoul acestui server.",
+    "empty": "Încă nu ai acces la niciun modul."
+  },
+  "errors": { "analyticsUnavailable": "Analizele nu au putut fi încărcate." }
 }

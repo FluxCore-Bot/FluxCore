@@ -8,6 +8,7 @@
     "description": "Veendu, et sul on vähemalt ühes Discordi serveris õigus Halda serverit, ja seejärel värskenda."
   },
   "badge": {
+    "delegated": "Delegeeritud juurdepääs",
     "botNotAdded": "Bot pole lisatud"
   },
   "addBot": "Lisa FluxCore",

@@ -41,7 +41,26 @@
     "defaultRole": "Default role",
     "permissions": "Permissions",
     "allBadge": "All",
-    "discordRoles": "Discord Roles"
+    "discordRoles": "Discord Roles",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Zoznam oprávnení sa nepodarilo načítať. Skúste stránku obnoviť.",
+    "registryEmpty": "Zatiaľ nie sú k dispozícii žiadne oprávnenia na priradenie.",
+    "lookupsWarning": "Táto rola môže konfigurovať moduly, ale nemôže vyhľadávať kanály, role ani členov — jej výbery budú prázdne.",
+    "grantLookups": "Udeliť prístup k výberom",
+    "admissionNote": "Tiež umožňuje držiteľom udeliť ostatným členom prístup k nástenke.",
+    "cannotGrantTooltip": "Nemôžete udeliť oprávnenie, ktoré sami nemáte.",
+    "membersSection": {
+      "title": "Členovia",
+      "empty": "Tejto roli zatiaľ neboli priradení žiadni členovia.",
+      "error": "Členov tejto role sa nepodarilo načítať. Skúste stránku obnoviť.",
+      "addPlaceholder": "Pridať člena",
+      "searchPlaceholder": "Hľadať členov...",
+      "searchHint": "Zadajte meno na vyhľadanie členov",
+      "searchLoading": "Načítava sa...",
+      "searchNoResults": "Žiadne výsledky",
+      "assignedBy": "Pridal(a) {{name}} dňa {{date}}",
+      "removeAria": "Odstrániť {{name}} z tejto role"
+    }
   },
   "roleForm": {
     "name": "Role Name",
@@ -58,6 +77,7 @@
     "color": "Color"
   },
   "permissionCategories": {
+    "dashboard": "Ovládací panel",
     "actions": "Actions & Automation",
     "tempvoice": "TempVoice",
     "welcome": "Welcome & Farewell",
@@ -73,6 +93,33 @@
     "scheduled": "Scheduled Messages",
     "commands": "Custom Commands",
     "settings": "Server Settings"
+  },
+  "resources": {
+    "roles": "Role",
+    "audit": "Denník auditu",
+    "settings": "Nastavenia",
+    "lookups": "Výbery",
+    "cases": "Prípady",
+    "warnings": "Varovania",
+    "punishments": "Tresty",
+    "rules": "Pravidlá",
+    "analytics": "Analytika",
+    "entries": "Záznamy",
+    "config": "Konfigurácia",
+    "test": "Testovacie správy",
+    "leaderboard": "Rebríček",
+    "users": "Používatelia",
+    "rewards": "Odmeny",
+    "list": "Zoznam",
+    "panels": "Panely",
+    "messages": "Správy",
+    "events": "Udalosti"
+  },
+  "permissionActions": {
+    "view": "Zobraziť",
+    "manage": "Spravovať",
+    "execute": "Spustiť",
+    "purge": "Vymazať"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Role updated",
     "roleUpdateFailed": "Failed to update role",
     "roleDeleted": "Role deleted",
-    "roleDeleteFailed": "Failed to delete role"
+    "roleDeleteFailed": "Failed to delete role",
+    "memberAdded": "{{name}} pridaný(á) do role",
+    "memberRemoved": "{{name}} odstránený(á) z role",
+    "memberRestored": "{{name}} obnovený(á) v role"
   },
   "confirm": {
     "deleteTitle": "Delete role \"{{name}}\"?",

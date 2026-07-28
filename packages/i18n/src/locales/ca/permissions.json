@@ -41,7 +41,26 @@
     "defaultRole": "Rol per defecte",
     "permissions": "Permisos",
     "allBadge": "Tots",
-    "discordRoles": "Rols de Discord"
+    "discordRoles": "Rols de Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "No s'ha pogut carregar la llista de permisos. Torna a carregar la pàgina.",
+    "registryEmpty": "Encara no hi ha permisos disponibles per assignar.",
+    "lookupsWarning": "Aquest rol pot configurar mòduls però no pot cercar canals, rols o membres — els seus selectors estaran buits.",
+    "grantLookups": "Concedeix accés als selectors",
+    "admissionNote": "També permet als titulars donar accés al tauler a altres membres.",
+    "cannotGrantTooltip": "No pots concedir un permís que tu mateix no tens.",
+    "membersSection": {
+      "title": "Membres",
+      "empty": "Encara no s'ha assignat cap membre a aquest rol.",
+      "error": "No s'han pogut carregar els membres d'aquest rol. Torna a carregar la pàgina.",
+      "addPlaceholder": "Afegeix un membre",
+      "searchPlaceholder": "Cerca membres...",
+      "searchHint": "Escriu un nom per cercar membres",
+      "searchLoading": "Carregant...",
+      "searchNoResults": "Sense resultats",
+      "assignedBy": "Afegit per {{name}} el {{date}}",
+      "removeAria": "Elimina {{name}} d'aquest rol"
+    }
   },
   "roleForm": {
     "name": "Nom del rol",
@@ -58,6 +77,7 @@
     "color": "Color"
   },
   "permissionCategories": {
+    "dashboard": "Tauler de control",
     "actions": "Accions i automatització",
     "tempvoice": "TempVoice",
     "welcome": "Benvinguda i comiat",
@@ -73,6 +93,33 @@
     "scheduled": "Missatges programats",
     "commands": "Comandes personalitzades",
     "settings": "Configuració del servidor"
+  },
+  "resources": {
+    "roles": "Rols",
+    "audit": "Registre d'auditoria",
+    "settings": "Configuració",
+    "lookups": "Selectors",
+    "cases": "Casos",
+    "warnings": "Advertències",
+    "punishments": "Sancions",
+    "rules": "Regles",
+    "analytics": "Analítica",
+    "entries": "Entrades",
+    "config": "Configuració",
+    "test": "Missatges de prova",
+    "leaderboard": "Classificació",
+    "users": "Usuaris",
+    "rewards": "Recompenses",
+    "list": "Llista",
+    "panels": "Panells",
+    "messages": "Missatges",
+    "events": "Esdeveniments"
+  },
+  "permissionActions": {
+    "view": "Veure",
+    "manage": "Gestionar",
+    "execute": "Executar",
+    "purge": "Purgar"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Rol actualitzat",
     "roleUpdateFailed": "No s'ha pogut actualitzar el rol",
     "roleDeleted": "Rol eliminat",
-    "roleDeleteFailed": "No s'ha pogut eliminar el rol"
+    "roleDeleteFailed": "No s'ha pogut eliminar el rol",
+    "memberAdded": "S'ha afegit {{name}} al rol",
+    "memberRemoved": "S'ha eliminat {{name}} del rol",
+    "memberRestored": "S'ha restaurat {{name}} al rol"
   },
   "confirm": {
     "deleteTitle": "Eliminar el rol \"{{name}}\"?",

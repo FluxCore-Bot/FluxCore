@@ -8,6 +8,7 @@
     "description": "Assurez-vous d'avoir la permission Gérer le serveur sur au moins un serveur Discord, puis actualisez."
   },
   "badge": {
+    "delegated": "Accès délégué",
     "botNotAdded": "Bot non ajouté"
   },
   "addBot": "Ajouter FluxCore",

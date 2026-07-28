@@ -41,7 +41,26 @@
     "defaultRole": "Jukumu la chaguo-msingi",
     "permissions": "Ruhusa",
     "allBadge": "Zote",
-    "discordRoles": "Majukumu ya Discord"
+    "discordRoles": "Majukumu ya Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Orodha ya ruhusa haikuweza kupakiwa. Jaribu kuonyesha upya ukurasa.",
+    "registryEmpty": "Hakuna ruhusa zinazopatikana kugawiwa bado.",
+    "lookupsWarning": "Jukumu hili linaweza kusanidi moduli lakini haliwezi kutafuta chaneli, majukumu, au wanachama — vichaguzi vyake vitakuwa tupu.",
+    "grantLookups": "Toa ufikiaji wa vichaguzi",
+    "admissionNote": "Pia huwaruhusu wamiliki kuwapa wanachama wengine ufikiaji wa dashibodi.",
+    "cannotGrantTooltip": "Huwezi kutoa idhini ambayo wewe mwenyewe huna.",
+    "membersSection": {
+      "title": "Wanachama",
+      "empty": "Hakuna wanachama waliopewa jukumu hili bado.",
+      "error": "Wanachama wa jukumu hili hawakuweza kupakiwa. Jaribu kuonyesha upya ukurasa.",
+      "addPlaceholder": "Ongeza mwanachama",
+      "searchPlaceholder": "Tafuta wanachama...",
+      "searchHint": "Andika jina ili kutafuta wanachama",
+      "searchLoading": "Inapakia...",
+      "searchNoResults": "Hakuna matokeo",
+      "assignedBy": "Imeongezwa na {{name}} tarehe {{date}}",
+      "removeAria": "Ondoa {{name}} kutoka jukumu hili"
+    }
   },
   "roleForm": {
     "name": "Jina la Jukumu",
@@ -58,6 +77,7 @@
     "color": "Rangi"
   },
   "permissionCategories": {
+    "dashboard": "Dashibodi",
     "actions": "Vitendo na Otomatiki",
     "tempvoice": "TempVoice",
     "welcome": "Karibu na Kuaga",
@@ -73,6 +93,33 @@
     "scheduled": "Ujumbe Uliopangwa",
     "commands": "Amri Maalum",
     "settings": "Mipangilio ya Seva"
+  },
+  "resources": {
+    "roles": "Majukumu",
+    "audit": "Kumbukumbu ya Ukaguzi",
+    "settings": "Mipangilio",
+    "lookups": "Vichaguzi",
+    "cases": "Kesi",
+    "warnings": "Maonyo",
+    "punishments": "Adhabu",
+    "rules": "Kanuni",
+    "analytics": "Uchambuzi",
+    "entries": "Kumbukumbu",
+    "config": "Usanidi",
+    "test": "Ujumbe wa Majaribio",
+    "leaderboard": "Orodha ya Washindi",
+    "users": "Watumiaji",
+    "rewards": "Tuzo",
+    "list": "Orodha",
+    "panels": "Paneli",
+    "messages": "Ujumbe",
+    "events": "Matukio"
+  },
+  "permissionActions": {
+    "view": "Angalia",
+    "manage": "Simamia",
+    "execute": "Tekeleza",
+    "purge": "Futa"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Jukumu limesasishwa",
     "roleUpdateFailed": "Imeshindwa kusasisha jukumu",
     "roleDeleted": "Jukumu limefutwa",
-    "roleDeleteFailed": "Imeshindwa kufuta jukumu"
+    "roleDeleteFailed": "Imeshindwa kufuta jukumu",
+    "memberAdded": "{{name}} ameongezwa kwenye jukumu",
+    "memberRemoved": "{{name}} ameondolewa kwenye jukumu",
+    "memberRestored": "{{name}} amerejeshwa kwenye jukumu"
   },
   "confirm": {
     "deleteTitle": "Futa jukumu \"{{name}}\"?",

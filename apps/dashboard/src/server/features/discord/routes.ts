@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { requireAuth, requireGuildAdmin } from "../../shared/middleware.js";
+import { requireAuth, requireGuildAccess, requirePermission } from "../../shared/middleware.js";
 import {
   getGuildChannels,
   getGuildRoles,
@@ -42,7 +42,7 @@ export function registerDiscordRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/members",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.lookups.view")],
       config: rateLimits.discordRead,
       schema: withDocs(
         {
@@ -78,7 +78,7 @@ export function registerDiscordRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/channels",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.lookups.view")],
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         {
@@ -132,7 +132,7 @@ export function registerDiscordRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/roles",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.lookups.view")],
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         {
@@ -181,7 +181,7 @@ export function registerDiscordRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/refresh",
     {
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.lookups.view")],
       // Busts the 60s Discord API cache in shared/discordApi.ts.
       config: rateLimits.external,
       schema: withDocs(

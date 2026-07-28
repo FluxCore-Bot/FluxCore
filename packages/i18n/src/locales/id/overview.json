@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Akses Anda",
+    "subtitle": "Anda telah diberi akses ke bagian dasbor server ini.",
+    "empty": "Anda belum memiliki akses ke modul apa pun."
+  },
+  "errors": { "analyticsUnavailable": "Analitik tidak dapat dimuat." }
 }

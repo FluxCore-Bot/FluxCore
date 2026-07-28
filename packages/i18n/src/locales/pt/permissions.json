@@ -41,7 +41,26 @@
     "defaultRole": "Cargo predefinido",
     "permissions": "Permissoes",
     "allBadge": "Todas",
-    "discordRoles": "Cargos do Discord"
+    "discordRoles": "Cargos do Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Não foi possível carregar a lista de permissões. Tente atualizar a página.",
+    "registryEmpty": "Ainda não há permissões disponíveis para atribuir.",
+    "lookupsWarning": "Este cargo pode configurar módulos, mas não pode pesquisar canais, cargos ou membros — os seus seletores ficarão vazios.",
+    "grantLookups": "Conceder acesso aos seletores",
+    "admissionNote": "Também permite que os titulares deem a outros membros acesso ao painel.",
+    "cannotGrantTooltip": "Você não pode conceder uma permissão que não possui.",
+    "membersSection": {
+      "title": "Membros",
+      "empty": "Ainda não há membros atribuídos a este cargo.",
+      "error": "Não foi possível carregar os membros deste cargo. Tente atualizar a página.",
+      "addPlaceholder": "Adicionar um membro",
+      "searchPlaceholder": "Pesquisar membros...",
+      "searchHint": "Digite um nome para pesquisar membros",
+      "searchLoading": "Carregando...",
+      "searchNoResults": "Nenhum resultado",
+      "assignedBy": "Adicionado por {{name}} em {{date}}",
+      "removeAria": "Remover {{name}} deste cargo"
+    }
   },
   "roleForm": {
     "name": "Nome do cargo",
@@ -58,6 +77,7 @@
     "color": "Cor"
   },
   "permissionCategories": {
+    "dashboard": "Painel de controlo",
     "actions": "Acoes e automatizacao",
     "tempvoice": "TempVoice",
     "welcome": "Boas-vindas e despedida",
@@ -73,6 +93,33 @@
     "scheduled": "Mensagens agendadas",
     "commands": "Comandos personalizados",
     "settings": "Definicoes do servidor"
+  },
+  "resources": {
+    "roles": "Cargos",
+    "audit": "Registo de auditoria",
+    "settings": "Definições",
+    "lookups": "Seletores",
+    "cases": "Casos",
+    "warnings": "Avisos",
+    "punishments": "Punições",
+    "rules": "Regras",
+    "analytics": "Análises",
+    "entries": "Entradas",
+    "config": "Configuração",
+    "test": "Mensagens de teste",
+    "leaderboard": "Classificação",
+    "users": "Utilizadores",
+    "rewards": "Recompensas",
+    "list": "Lista",
+    "panels": "Painéis",
+    "messages": "Mensagens",
+    "events": "Eventos"
+  },
+  "permissionActions": {
+    "view": "Ver",
+    "manage": "Gerir",
+    "execute": "Executar",
+    "purge": "Limpar"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Cargo atualizado",
     "roleUpdateFailed": "Falha ao atualizar o cargo",
     "roleDeleted": "Cargo eliminado",
-    "roleDeleteFailed": "Falha ao eliminar o cargo"
+    "roleDeleteFailed": "Falha ao eliminar o cargo",
+    "memberAdded": "{{name}} adicionado ao cargo",
+    "memberRemoved": "{{name}} removido do cargo",
+    "memberRestored": "{{name}} restaurado ao cargo"
   },
   "confirm": {
     "deleteTitle": "Eliminar cargo \"{{name}}\"?",

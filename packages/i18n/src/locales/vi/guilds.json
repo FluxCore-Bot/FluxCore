@@ -8,6 +8,7 @@
     "description": "Hãy đảm bảo bạn có quyền Quản lý máy chủ trên ít nhất một máy chủ Discord, sau đó làm mới."
   },
   "badge": {
+    "delegated": "Quyền truy cập được ủy quyền",
     "botNotAdded": "Chưa thêm bot"
   },
   "addBot": "Thêm FluxCore",

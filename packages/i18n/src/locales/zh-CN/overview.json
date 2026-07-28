@@ -29,5 +29,11 @@
     "title": "执行趋势",
     "success": "成功",
     "errors": "错误"
-  }
+  },
+  "access": {
+    "title": "您的权限",
+    "subtitle": "您已获得此服务器仪表盘部分内容的访问权限。",
+    "empty": "您目前还没有任何模块的访问权限。"
+  },
+  "errors": { "analyticsUnavailable": "无法加载分析数据。" }
 }

@@ -41,7 +41,26 @@
     "defaultRole": "デフォルトロール",
     "permissions": "権限",
     "allBadge": "すべて",
-    "discordRoles": "Discordロール"
+    "discordRoles": "Discordロール",
+    "permissionLabel": "{{resource}}{{action}}",
+    "registryError": "権限リストを読み込めませんでした。ページを更新してください。",
+    "registryEmpty": "割り当てられる権限はまだありません。",
+    "lookupsWarning": "このロールはモジュールを設定できますが、チャンネル、ロール、メンバーを検索できません — ピッカーは空になります。",
+    "grantLookups": "ピッカーへのアクセスを許可",
+    "admissionNote": "保持者が他のメンバーにダッシュボードへのアクセスを付与できるようにもなります。",
+    "cannotGrantTooltip": "自分が持っていない権限を付与することはできません。",
+    "membersSection": {
+      "title": "メンバー",
+      "empty": "このロールにはまだメンバーが割り当てられていません。",
+      "error": "このロールのメンバーを読み込めませんでした。ページを更新してください。",
+      "addPlaceholder": "メンバーを追加",
+      "searchPlaceholder": "メンバーを検索...",
+      "searchHint": "メンバーを検索するには名前を入力してください",
+      "searchLoading": "読み込み中...",
+      "searchNoResults": "結果がありません",
+      "assignedBy": "{{date}}に{{name}}が追加しました",
+      "removeAria": "このロールから{{name}}を削除"
+    }
   },
   "roleForm": {
     "name": "ロール名",
@@ -58,6 +77,7 @@
     "color": "色"
   },
   "permissionCategories": {
+    "dashboard": "ダッシュボード",
     "actions": "アクション＆自動化",
     "tempvoice": "テンポラリボイス",
     "welcome": "ウェルカム＆お別れ",
@@ -73,6 +93,33 @@
     "scheduled": "予約メッセージ",
     "commands": "カスタムコマンド",
     "settings": "サーバー設定"
+  },
+  "resources": {
+    "roles": "ロール",
+    "audit": "監査ログ",
+    "settings": "設定",
+    "lookups": "セレクター",
+    "cases": "ケース",
+    "warnings": "警告",
+    "punishments": "処罰",
+    "rules": "ルール",
+    "analytics": "分析",
+    "entries": "項目",
+    "config": "コンフィグ",
+    "test": "テストメッセージ",
+    "leaderboard": "リーダーボード",
+    "users": "ユーザー",
+    "rewards": "報酬",
+    "list": "リスト",
+    "panels": "パネル",
+    "messages": "メッセージ",
+    "events": "イベント"
+  },
+  "permissionActions": {
+    "view": "表示",
+    "manage": "管理",
+    "execute": "実行",
+    "purge": "消去"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "ロールを更新しました",
     "roleUpdateFailed": "ロールの更新に失敗しました",
     "roleDeleted": "ロールを削除しました",
-    "roleDeleteFailed": "ロールの削除に失敗しました"
+    "roleDeleteFailed": "ロールの削除に失敗しました",
+    "memberAdded": "{{name}}をロールに追加しました",
+    "memberRemoved": "{{name}}をロールから削除しました",
+    "memberRestored": "{{name}}をロールに復元しました"
   },
   "confirm": {
     "deleteTitle": "ロール「{{name}}」を削除しますか？",

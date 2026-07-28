@@ -41,7 +41,26 @@
     "defaultRole": "Rol predeterminado",
     "permissions": "Permisos",
     "allBadge": "Todos",
-    "discordRoles": "Roles de Discord"
+    "discordRoles": "Roles de Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Non se puido cargar a lista de permisos. Proba a actualizar a páxina.",
+    "registryEmpty": "Aínda non hai permisos dispoñibles para asignar.",
+    "lookupsWarning": "Este rol pode configurar módulos, pero non pode buscar canles, roles ou membros — os seus selectores estarán baleiros.",
+    "grantLookups": "Conceder acceso aos selectores",
+    "admissionNote": "Tamén permite aos titulares dar acceso ao panel a outros membros.",
+    "cannotGrantTooltip": "Non podes conceder un permiso que ti mesmo non tes.",
+    "membersSection": {
+      "title": "Membros",
+      "empty": "Aínda non se asignou ningún membro a este rol.",
+      "error": "Non se puideron cargar os membros deste rol. Proba a actualizar a páxina.",
+      "addPlaceholder": "Engadir un membro",
+      "searchPlaceholder": "Buscar membros...",
+      "searchHint": "Escribe un nome para buscar membros",
+      "searchLoading": "Cargando...",
+      "searchNoResults": "Sen resultados",
+      "assignedBy": "Engadido por {{name}} o {{date}}",
+      "removeAria": "Eliminar {{name}} deste rol"
+    }
   },
   "roleForm": {
     "name": "Nome do Rol",
@@ -58,6 +77,7 @@
     "color": "Cor"
   },
   "permissionCategories": {
+    "dashboard": "Panel de control",
     "actions": "Accións e Automatización",
     "tempvoice": "TempVoice",
     "welcome": "Benvida e Despedida",
@@ -73,6 +93,33 @@
     "scheduled": "Mensaxes Programadas",
     "commands": "Ordes Personalizadas",
     "settings": "Configuración do Servidor"
+  },
+  "resources": {
+    "roles": "Roles",
+    "audit": "Rexistro de Auditoría",
+    "settings": "Configuración",
+    "lookups": "Selectores",
+    "cases": "Casos",
+    "warnings": "Advertencias",
+    "punishments": "Sancións",
+    "rules": "Regras",
+    "analytics": "Analítica",
+    "entries": "Entradas",
+    "config": "Configuración",
+    "test": "Mensaxes de proba",
+    "leaderboard": "Clasificación",
+    "users": "Usuarios",
+    "rewards": "Recompensas",
+    "list": "Lista",
+    "panels": "Paneis",
+    "messages": "Mensaxes",
+    "events": "Eventos"
+  },
+  "permissionActions": {
+    "view": "Ver",
+    "manage": "Xestionar",
+    "execute": "Executar",
+    "purge": "Purgar"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Rol actualizado",
     "roleUpdateFailed": "Non se puido actualizar o rol",
     "roleDeleted": "Rol eliminado",
-    "roleDeleteFailed": "Non se puido eliminar o rol"
+    "roleDeleteFailed": "Non se puido eliminar o rol",
+    "memberAdded": "Engadiuse {{name}} ao rol",
+    "memberRemoved": "Eliminouse {{name}} do rol",
+    "memberRestored": "Restaurouse {{name}} ao rol"
   },
   "confirm": {
     "deleteTitle": "Eliminar o rol \"{{name}}\"?",

@@ -41,7 +41,26 @@
     "defaultRole": "डिफ़ॉल्ट रोल",
     "permissions": "अनुमतियां",
     "allBadge": "सभी",
-    "discordRoles": "Discord रोल"
+    "discordRoles": "Discord रोल",
+    "permissionLabel": "{{resource}} {{action}}",
+    "registryError": "अनुमति सूची लोड नहीं हो सकी। पृष्ठ को रीफ्रेश करने का प्रयास करें।",
+    "registryEmpty": "अभी तक असाइन करने के लिए कोई अनुमति उपलब्ध नहीं है।",
+    "lookupsWarning": "यह भूमिका मॉड्यूल कॉन्फ़िगर कर सकती है लेकिन चैनल, भूमिकाएँ या सदस्य खोज नहीं सकती — इसके पिकर खाली रहेंगे।",
+    "grantLookups": "पिकर एक्सेस दें",
+    "admissionNote": "यह धारकों को अन्य सदस्यों को डैशबोर्ड एक्सेस देने की भी अनुमति देता है।",
+    "cannotGrantTooltip": "आप ऐसी अनुमति नहीं दे सकते जो आपके पास खुद नहीं है।",
+    "membersSection": {
+      "title": "सदस्य",
+      "empty": "इस रोल को अभी तक कोई सदस्य नहीं सौंपा गया है।",
+      "error": "इस रोल के सदस्यों को लोड नहीं किया जा सका। पृष्ठ को रीफ्रेश करने का प्रयास करें।",
+      "addPlaceholder": "सदस्य जोड़ें",
+      "searchPlaceholder": "सदस्य खोजें...",
+      "searchHint": "सदस्यों को खोजने के लिए एक नाम टाइप करें",
+      "searchLoading": "लोड हो रहा है...",
+      "searchNoResults": "कोई परिणाम नहीं",
+      "assignedBy": "{{name}} द्वारा {{date}} को जोड़ा गया",
+      "removeAria": "{{name}} को इस रोल से हटाएं"
+    }
   },
   "roleForm": {
     "name": "रोल का नाम",
@@ -58,6 +77,7 @@
     "color": "रंग"
   },
   "permissionCategories": {
+    "dashboard": "डैशबोर्ड",
     "actions": "एक्शन और ऑटोमेशन",
     "tempvoice": "TempVoice",
     "welcome": "स्वागत और विदाई",
@@ -73,6 +93,33 @@
     "scheduled": "शेड्यूल्ड संदेश",
     "commands": "कस्टम कमांड",
     "settings": "सर्वर सेटिंग्स"
+  },
+  "resources": {
+    "roles": "रोल",
+    "audit": "ऑडिट लॉग",
+    "settings": "सेटिंग्स",
+    "lookups": "चयनकर्ता",
+    "cases": "मामले",
+    "warnings": "चेतावनियाँ",
+    "punishments": "दंड",
+    "rules": "नियम",
+    "analytics": "विश्लेषण",
+    "entries": "प्रविष्टियां",
+    "config": "कॉन्फ़िगरेशन",
+    "test": "परीक्षण संदेश",
+    "leaderboard": "लीडरबोर्ड",
+    "users": "उपयोगकर्ता",
+    "rewards": "पुरस्कार",
+    "list": "सूची",
+    "panels": "पैनल",
+    "messages": "संदेश",
+    "events": "इवेंट"
+  },
+  "permissionActions": {
+    "view": "देखें",
+    "manage": "प्रबंधित करें",
+    "execute": "निष्पादित करें",
+    "purge": "हटाएं"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "रोल अपडेट किया गया",
     "roleUpdateFailed": "रोल अपडेट करने में विफल",
     "roleDeleted": "रोल हटाया गया",
-    "roleDeleteFailed": "रोल हटाने में विफल"
+    "roleDeleteFailed": "रोल हटाने में विफल",
+    "memberAdded": "{{name}} को रोल में जोड़ा गया",
+    "memberRemoved": "{{name}} को रोल से हटाया गया",
+    "memberRestored": "{{name}} को रोल में पुनर्स्थापित किया गया"
   },
   "confirm": {
     "deleteTitle": "\"{{name}}\" रोल हटाएं?",

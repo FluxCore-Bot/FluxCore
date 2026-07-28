@@ -55,7 +55,15 @@ export async function requireAuth(
   });
 }
 
-export async function requireGuildAdmin(
+/**
+ * Gate for every guild-scoped route: does this user have ANY authority here?
+ *
+ * Authority comes from three places — guild ownership, live Discord admin
+ * authority, or explicit dashboard grants (a dashboard role assignment or a
+ * per-user override). A member with grants but no MANAGE_GUILD passes here and
+ * is then narrowed by `requirePermission` on each route.
+ */
+export async function requireGuildAccess(
   request: FastifyRequest,
   reply: FastifyReply,
 ): Promise<void> {
@@ -70,13 +78,11 @@ export async function requireGuildAdmin(
     return;
   }
 
-  // Authorize from the user's LIVE Discord authority, not the cached OAuth
-  // session snapshot — so admin access revoked on Discord is honored here.
-  // resolveUserPermissions returns an empty set + isGuildAdmin=false when the
-  // user is no longer a guild admin.
+  // Authorize from LIVE Discord authority + DB grants, not the cached OAuth
+  // session snapshot — so access revoked on Discord is honored here.
   const resolved = await resolveUserPermissions(session.userId, guildId);
   const authorized =
-    resolved.isOwner || resolved.isGuildAdmin || resolved.permissions.has("*");
+    resolved.isOwner || resolved.isGuildAdmin || resolved.permissions.size > 0;
   if (!authorized) {
     reply.code(403).send({
       error: request.t("errors:permissions.noGuildPermission"),
@@ -89,11 +95,24 @@ export async function requireGuildAdmin(
 }
 
 /**
+ * Every permission key any route enforces. Populated when `requirePermission`
+ * runs at route-registration time, which makes the route table — not a
+ * hand-maintained list — the source of truth for what permissions exist.
+ */
+const declaredPermissions = new Set<string>();
+
+export function getDeclaredPermissions(): ReadonlySet<string> {
+  return declaredPermissions;
+}
+
+/**
  * Require specific dashboard permissions.
- * Must be used AFTER requireGuildAdmin (which resolves permissions).
+ * Must be used AFTER requireGuildAccess (which resolves permissions).
  * Accepts one or more permission keys — ALL must be granted.
  */
 export function requirePermission(...keys: string[]) {
+  for (const key of keys) declaredPermissions.add(key);
+
   return async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
     const resolved = request.resolvedPermissions;
     if (!resolved) {

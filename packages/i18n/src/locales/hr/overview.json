@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Vaš pristup",
+    "subtitle": "Dobili ste pristup dijelovima nadzorne ploče ovog poslužitelja.",
+    "empty": "Još nemate pristup nijednom modulu."
+  },
+  "errors": { "analyticsUnavailable": "Analitiku nije bilo moguće učitati." }
 }

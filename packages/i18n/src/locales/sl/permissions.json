@@ -41,7 +41,26 @@
     "defaultRole": "Privzeta vloga",
     "permissions": "Dovoljenja",
     "allBadge": "Vse",
-    "discordRoles": "Discord vloge"
+    "discordRoles": "Discord vloge",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Seznama dovoljenj ni bilo mogoče naložiti. Poskusite osvežiti stran.",
+    "registryEmpty": "Trenutno ni na voljo nobenih dovoljenj za dodelitev.",
+    "lookupsWarning": "Ta vloga lahko konfigurira module, vendar ne more iskati kanalov, vlog ali članov — njeni izbirniki bodo prazni.",
+    "grantLookups": "Dodeli dostop do izbirnikov",
+    "admissionNote": "Prav tako imetnikom omogoča, da drugim članom dodelijo dostop do nadzorne plošče.",
+    "cannotGrantTooltip": "Ne morete podeliti dovoljenja, ki ga sami nimate.",
+    "membersSection": {
+      "title": "Člani",
+      "empty": "Tej vlogi še ni dodeljen noben član.",
+      "error": "Članov te vloge ni bilo mogoče naložiti. Poskusite osvežiti stran.",
+      "addPlaceholder": "Dodaj člana",
+      "searchPlaceholder": "Iskanje članov...",
+      "searchHint": "Vnesite ime za iskanje članov",
+      "searchLoading": "Nalaganje...",
+      "searchNoResults": "Ni rezultatov",
+      "assignedBy": "Dodal(a) {{name}} dne {{date}}",
+      "removeAria": "Odstrani {{name}} iz te vloge"
+    }
   },
   "roleForm": {
     "name": "Ime vloge",
@@ -58,6 +77,7 @@
     "color": "Barva"
   },
   "permissionCategories": {
+    "dashboard": "Nadzorna plošča",
     "actions": "Dejanja in avtomatizacija",
     "tempvoice": "TempVoice",
     "welcome": "Dobrodošlica in poslovitev",
@@ -73,6 +93,33 @@
     "scheduled": "Načrtovana sporočila",
     "commands": "Lastni ukazi",
     "settings": "Nastavitve strežnika"
+  },
+  "resources": {
+    "roles": "Vloge",
+    "audit": "Revizijski dnevnik",
+    "settings": "Nastavitve",
+    "lookups": "Izbirniki",
+    "cases": "Primeri",
+    "warnings": "Opozorila",
+    "punishments": "Kazni",
+    "rules": "Pravila",
+    "analytics": "Analitika",
+    "entries": "Vnosi",
+    "config": "Konfiguracija",
+    "test": "Testna sporočila",
+    "leaderboard": "Lestvica",
+    "users": "Uporabniki",
+    "rewards": "Nagrade",
+    "list": "Seznam",
+    "panels": "Plošče",
+    "messages": "Sporočila",
+    "events": "Dogodki"
+  },
+  "permissionActions": {
+    "view": "Ogled",
+    "manage": "Upravljanje",
+    "execute": "Izvedba",
+    "purge": "Čiščenje"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Vloga posodobljena",
     "roleUpdateFailed": "Posodabljanje vloge ni uspelo",
     "roleDeleted": "Vloga izbrisana",
-    "roleDeleteFailed": "Brisanje vloge ni uspelo"
+    "roleDeleteFailed": "Brisanje vloge ni uspelo",
+    "memberAdded": "{{name}} dodan(a) v vlogo",
+    "memberRemoved": "{{name}} odstranjen(a) iz vloge",
+    "memberRestored": "{{name}} obnovljen(a) v vlogi"
   },
   "confirm": {
     "deleteTitle": "Izbriši vlogo \"{{name}}\"?",

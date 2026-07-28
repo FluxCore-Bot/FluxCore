@@ -41,7 +41,26 @@
     "defaultRole": "Standardrolle",
     "permissions": "Tillatelser",
     "allBadge": "Alle",
-    "discordRoles": "Discord-roller"
+    "discordRoles": "Discord-roller",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Kunne ikke laste inn tillatelseslisten. Prøv å oppdatere siden.",
+    "registryEmpty": "Det finnes ingen tillatelser å tildele ennå.",
+    "lookupsWarning": "Denne rollen kan konfigurere moduler, men kan ikke slå opp kanaler, roller eller medlemmer — velgerne vil være tomme.",
+    "grantLookups": "Gi tilgang til velgere",
+    "admissionNote": "Lar også innehavere gi andre medlemmer tilgang til dashbordet.",
+    "cannotGrantTooltip": "Du kan ikke gi en tillatelse du ikke selv har.",
+    "membersSection": {
+      "title": "Medlemmer",
+      "empty": "Ingen medlemmer er tildelt denne rollen ennå.",
+      "error": "Kunne ikke laste inn medlemmene av denne rollen. Prøv å oppdatere siden.",
+      "addPlaceholder": "Legg til et medlem",
+      "searchPlaceholder": "Søk etter medlemmer...",
+      "searchHint": "Skriv et navn for å søke etter medlemmer",
+      "searchLoading": "Laster...",
+      "searchNoResults": "Ingen resultater",
+      "assignedBy": "Lagt til av {{name}} den {{date}}",
+      "removeAria": "Fjern {{name}} fra denne rollen"
+    }
   },
   "roleForm": {
     "name": "Rollenavn",
@@ -58,6 +77,7 @@
     "color": "Farge"
   },
   "permissionCategories": {
+    "dashboard": "Kontrollpanel",
     "actions": "Handlinger og automatisering",
     "tempvoice": "TempVoice",
     "welcome": "Velkommen og farvel",
@@ -73,6 +93,33 @@
     "scheduled": "Planlagte meldinger",
     "commands": "Egendefinerte kommandoer",
     "settings": "Serverinnstillinger"
+  },
+  "resources": {
+    "roles": "Roller",
+    "audit": "Revisjonslogg",
+    "settings": "Innstillinger",
+    "lookups": "Velgere",
+    "cases": "Saker",
+    "warnings": "Advarsler",
+    "punishments": "Straffer",
+    "rules": "Regler",
+    "analytics": "Analyser",
+    "entries": "Oppføringer",
+    "config": "Konfigurasjon",
+    "test": "Testmeldinger",
+    "leaderboard": "Ledertavle",
+    "users": "Brukere",
+    "rewards": "Belønninger",
+    "list": "Liste",
+    "panels": "Paneler",
+    "messages": "Meldinger",
+    "events": "Hendelser"
+  },
+  "permissionActions": {
+    "view": "Vis",
+    "manage": "Administrer",
+    "execute": "Kjør",
+    "purge": "Tøm"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Rolle oppdatert",
     "roleUpdateFailed": "Kunne ikke oppdatere rolle",
     "roleDeleted": "Rolle slettet",
-    "roleDeleteFailed": "Kunne ikke slette rolle"
+    "roleDeleteFailed": "Kunne ikke slette rolle",
+    "memberAdded": "La til {{name}} i rollen",
+    "memberRemoved": "Fjernet {{name}} fra rollen",
+    "memberRestored": "Gjenopprettet {{name}} til rollen"
   },
   "confirm": {
     "deleteTitle": "Slette rollen \"{{name}}\"?",

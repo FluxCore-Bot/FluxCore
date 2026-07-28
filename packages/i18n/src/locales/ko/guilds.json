@@ -8,6 +8,7 @@
     "description": "최소 한 개의 Discord 서버에서 서버 관리 권한이 있는지 확인한 후 새로고침하세요."
   },
   "badge": {
+    "delegated": "위임된 액세스",
     "botNotAdded": "봇이 추가되지 않음"
   },
   "addBot": "FluxCore 추가",

@@ -1,6 +1,6 @@
 import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
-import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { requireAuth, requireGuildAccess, requirePermission } from "../../shared/middleware.js";
 import { getStarboardSettings, upsertStarboardSettings } from "@fluxcore/systems/starboard/config";
 import { getStarboardEntries } from "@fluxcore/systems/starboard/persistence";
 import { STARBOARD_PAGE_SIZE } from "@fluxcore/systems/starboard/constants";
@@ -17,7 +17,7 @@ export function registerStarboardRoutes(app: FastifyInstance): void {
         },
         { tag: "Starboard", response: { 200: { type: "object", additionalProperties: true } } },
       ),
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("starboard.entries.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("starboard.entries.view")],
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -42,7 +42,7 @@ export function registerStarboardRoutes(app: FastifyInstance): void {
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         { tag: "Starboard", response: { 200: { type: "object", additionalProperties: true } } },
       ),
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("starboard.settings.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("starboard.settings.manage")],
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -55,7 +55,7 @@ export function registerStarboardRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/starboard-settings",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("starboard.settings.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("starboard.settings.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },

@@ -8,6 +8,7 @@
     "description": "Ziurtatu Discord zerbitzari batean gutxienez Zerbitzaria kudeatzeko baimena duzula, eta gero freskatu."
   },
   "badge": {
+    "delegated": "Delegatutako sarbidea",
     "botNotAdded": "Bota ez da gehitu"
   },
   "addBot": "Gehitu FluxCore",

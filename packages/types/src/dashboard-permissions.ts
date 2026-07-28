@@ -1,182 +1,3 @@
-// ─── Permission Key Types ───
-
-export interface PermissionDefinition {
-  key: string;
-  label: string;
-  description: string;
-}
-
-export interface PermissionModule {
-  key: string;
-  label: string;
-  icon: string; // Lucide icon name
-  permissions: PermissionDefinition[];
-}
-
-// ─── Permission Registry ───
-
-export const PERMISSION_REGISTRY: PermissionModule[] = [
-  {
-    key: "dashboard",
-    label: "Dashboard",
-    icon: "LayoutDashboard",
-    permissions: [
-      { key: "dashboard.roles.view", label: "View Roles", description: "View dashboard roles and assignments" },
-      { key: "dashboard.roles.manage", label: "Manage Roles", description: "Create/edit/delete dashboard roles" },
-      { key: "dashboard.audit.view", label: "View Audit Log", description: "View dashboard audit log" },
-      { key: "dashboard.settings.manage", label: "Manage Settings", description: "Manage guild-wide dashboard settings" },
-    ],
-  },
-  {
-    key: "moderation",
-    label: "Moderation",
-    icon: "Shield",
-    permissions: [
-      { key: "moderation.cases.view", label: "View Cases", description: "View moderation case history" },
-      { key: "moderation.cases.manage", label: "Manage Cases", description: "Edit/delete moderation cases" },
-      { key: "moderation.settings.manage", label: "Manage Settings", description: "Configure moderation settings" },
-      { key: "moderation.warnings.view", label: "View Warnings", description: "View warning history" },
-      { key: "moderation.warnings.manage", label: "Manage Warnings", description: "Create/delete warnings" },
-      { key: "moderation.punishments.manage", label: "Manage Punishments", description: "Configure warning punishment escalations" },
-    ],
-  },
-  {
-    key: "actions",
-    label: "Actions",
-    icon: "Zap",
-    permissions: [
-      { key: "actions.rules.view", label: "View Rules", description: "View automation rules" },
-      { key: "actions.rules.manage", label: "Manage Rules", description: "Create/edit/delete automation rules" },
-      { key: "actions.rules.execute", label: "Execute Rules", description: "Bulk enable/disable rules" },
-      { key: "actions.analytics.view", label: "View Analytics", description: "View rule analytics and logs" },
-      { key: "actions.settings.manage", label: "Manage Settings", description: "Configure action system settings" },
-    ],
-  },
-  {
-    key: "logging",
-    label: "Logging",
-    icon: "ScrollText",
-    permissions: [
-      { key: "logging.entries.view", label: "View Logs", description: "View log entries" },
-      { key: "logging.entries.purge", label: "Purge Logs", description: "Purge old log entries" },
-      { key: "logging.config.manage", label: "Manage Config", description: "Configure log channels and events" },
-    ],
-  },
-  {
-    key: "welcome",
-    label: "Welcome",
-    icon: "HandMetal",
-    permissions: [
-      { key: "welcome.config.view", label: "View Config", description: "View welcome/farewell config" },
-      { key: "welcome.config.manage", label: "Manage Config", description: "Update welcome/farewell settings" },
-      { key: "welcome.test.execute", label: "Test Messages", description: "Send test welcome/farewell messages" },
-    ],
-  },
-  {
-    key: "leveling",
-    label: "Leveling",
-    icon: "TrendingUp",
-    permissions: [
-      { key: "leveling.leaderboard.view", label: "View Leaderboard", description: "View leaderboard" },
-      { key: "leveling.users.manage", label: "Manage Users", description: "Set user XP manually" },
-      { key: "leveling.rewards.manage", label: "Manage Rewards", description: "Add/remove level rewards" },
-      { key: "leveling.settings.manage", label: "Manage Settings", description: "Configure leveling settings" },
-    ],
-  },
-  {
-    key: "tickets",
-    label: "Tickets",
-    icon: "Ticket",
-    permissions: [
-      { key: "tickets.list.view", label: "View Tickets", description: "View tickets" },
-      { key: "tickets.list.manage", label: "Manage Tickets", description: "Force close tickets" },
-      { key: "tickets.panels.manage", label: "Manage Panels", description: "Create/edit/delete ticket panels" },
-      { key: "tickets.settings.manage", label: "Manage Settings", description: "Configure ticket settings" },
-    ],
-  },
-  {
-    key: "giveaways",
-    label: "Giveaways",
-    icon: "Gift",
-    permissions: [
-      { key: "giveaways.list.view", label: "View Giveaways", description: "View giveaways" },
-      { key: "giveaways.list.manage", label: "Manage Giveaways", description: "Create/end/reroll giveaways" },
-    ],
-  },
-  {
-    key: "starboard",
-    label: "Starboard",
-    icon: "Star",
-    permissions: [
-      { key: "starboard.entries.view", label: "View Entries", description: "View starred messages" },
-      { key: "starboard.settings.manage", label: "Manage Settings", description: "Configure starboard settings" },
-    ],
-  },
-  {
-    key: "suggestions",
-    label: "Suggestions",
-    icon: "Lightbulb",
-    permissions: [
-      { key: "suggestions.list.view", label: "View Suggestions", description: "View suggestions" },
-      { key: "suggestions.list.manage", label: "Manage Suggestions", description: "Create/update status/delete suggestions" },
-      { key: "suggestions.settings.manage", label: "Manage Settings", description: "Configure suggestion settings" },
-    ],
-  },
-  {
-    key: "roles",
-    label: "Role Panels",
-    icon: "UserCog",
-    permissions: [
-      { key: "roles.panels.view", label: "View Panels", description: "View role panels" },
-      { key: "roles.panels.manage", label: "Manage Panels", description: "Create/edit/delete/send role panels" },
-    ],
-  },
-  {
-    key: "tempvoice",
-    label: "Temp Voice",
-    icon: "Mic",
-    permissions: [
-      { key: "tempvoice.config.view", label: "View Config", description: "View temp voice configs" },
-      { key: "tempvoice.config.manage", label: "Manage Config", description: "Create/edit/delete temp voice configs" },
-    ],
-  },
-  {
-    key: "security",
-    label: "Security",
-    icon: "ShieldAlert",
-    permissions: [
-      { key: "security.config.view", label: "View Config", description: "View anti-raid configuration" },
-      { key: "security.config.manage", label: "Manage Config", description: "Update anti-raid settings" },
-      { key: "security.events.view", label: "View Events", description: "View raid event history" },
-    ],
-  },
-  {
-    key: "scheduled",
-    label: "Scheduled Messages",
-    icon: "Clock",
-    permissions: [
-      { key: "scheduled.messages.view", label: "View Messages", description: "View scheduled messages" },
-      { key: "scheduled.messages.manage", label: "Manage Messages", description: "Create/edit/delete scheduled messages" },
-      { key: "scheduled.messages.execute", label: "Test Messages", description: "Test send scheduled messages" },
-    ],
-  },
-  {
-    key: "commands",
-    label: "Custom Commands",
-    icon: "Terminal",
-    permissions: [
-      { key: "commands.list.view", label: "View Commands", description: "View custom commands" },
-      { key: "commands.list.manage", label: "Manage Commands", description: "Create/edit/delete custom commands" },
-    ],
-  },
-];
-
-// ─── All permission keys as a flat array ───
-
-export const ALL_PERMISSION_KEYS: string[] = PERMISSION_REGISTRY.flatMap(
-  (mod) => mod.permissions.map((p) => p.key),
-);
-
 // ─── Role Presets ───
 
 export interface RolePreset {
@@ -197,6 +18,7 @@ export const ROLE_PRESETS: Record<string, RolePreset> = {
       "tickets.list.manage",
       "suggestions.list.manage",
       "security.events.view",
+      "dashboard.lookups.view",
     ],
   },
   "content-manager": {
@@ -210,6 +32,7 @@ export const ROLE_PRESETS: Record<string, RolePreset> = {
       "roles.panels.*",
       "scheduled.messages.*",
       "commands.list.*",
+      "dashboard.lookups.view",
     ],
   },
   "full-admin": {
@@ -284,22 +107,26 @@ function wildcardMatch(pattern: string, key: string): boolean {
 }
 
 /**
- * Expand a wildcard pattern to all matching concrete permission keys.
- * Useful for UI display of effective permissions.
+ * Expand a wildcard pattern to the concrete keys it covers.
+ * `allKeys` is the caller's vocabulary — the dashboard passes the keys declared
+ * by its route table, so this module never has to know what permissions exist.
  */
-export function expandWildcard(pattern: string): string[] {
-  if (pattern === "*") return [...ALL_PERMISSION_KEYS];
-
-  return ALL_PERMISSION_KEYS.filter((key) =>
-    matchPermission(new Set([pattern]), key),
-  );
+export function expandWildcard(
+  pattern: string,
+  allKeys: readonly string[],
+): string[] {
+  if (pattern === "*") return [...allKeys];
+  return allKeys.filter((key) => matchPermission(new Set([pattern]), key));
 }
 
 /**
- * Given a set of granted permissions (may include wildcards),
- * return all concrete permission keys the user has.
+ * Given granted permissions (possibly wildcards), return every concrete key
+ * they cover, out of `allKeys`.
  */
-export function resolveEffectivePermissions(granted: string[]): string[] {
+export function resolveEffectivePermissions(
+  granted: string[],
+  allKeys: readonly string[],
+): string[] {
   const grantedSet = new Set(granted);
-  return ALL_PERMISSION_KEYS.filter((key) => matchPermission(grantedSet, key));
+  return allKeys.filter((key) => matchPermission(grantedSet, key));
 }

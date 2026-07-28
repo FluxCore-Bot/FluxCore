@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Jou toegang",
+    "subtitle": "Jy is toegang gegee tot dele van hierdie bediener se paneelbord.",
+    "empty": "Jy het nog nie toegang tot enige modules nie."
+  },
+  "errors": { "analyticsUnavailable": "Analise kon nie gelaai word nie." }
 }

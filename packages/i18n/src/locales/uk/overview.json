@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Ваш доступ",
+    "subtitle": "Вам надано доступ до частин панелі керування цього сервера.",
+    "empty": "У вас поки немає доступу до жодного модуля."
+  },
+  "errors": { "analyticsUnavailable": "Не вдалося завантажити аналітику." }
 }

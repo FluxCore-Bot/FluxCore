@@ -38,9 +38,10 @@ vi.mock("../../../../src/server/shared/discordApi.js", () => ({
   invalidateGuildCache: vi.fn(),
 }));
 
+const mockHasPermission = vi.fn().mockReturnValue(true);
 vi.mock("../../../../src/server/shared/permissions.js", () => ({
   resolveUserPermissions: vi.fn().mockResolvedValue({ permissions: new Set(["*"]), isOwner: false }),
-  hasPermission: vi.fn().mockReturnValue(true),
+  hasPermission: (...args: unknown[]) => mockHasPermission(...args),
   invalidatePermissionCache: vi.fn(),
   createDashboardAuditLog: vi.fn().mockResolvedValue(undefined),
 }));
@@ -68,6 +69,7 @@ describe("discord routes", () => {
     vi.clearAllMocks();
     mockGetSession.mockResolvedValue(mockSession);
     mockIsBotInGuild.mockResolvedValue(true);
+    mockHasPermission.mockReturnValue(true);
     app = await buildApp();
   });
 
@@ -203,6 +205,29 @@ describe("discord routes", () => {
         url: "/api/guilds/guild-1/members?q=ad",
       });
       expect(res.statusCode).toBe(401);
+    });
+  });
+
+  describe("dashboard.lookups.view enforcement", () => {
+    it.each<{ label: string; method: "GET" | "POST"; url: string }>([
+      { label: "GET /members", method: "GET", url: "/api/guilds/guild-1/members" },
+      { label: "GET /channels", method: "GET", url: "/api/guilds/guild-1/channels" },
+      { label: "GET /roles", method: "GET", url: "/api/guilds/guild-1/roles" },
+      { label: "POST /refresh", method: "POST", url: "/api/guilds/guild-1/refresh" },
+    ])("returns 403 and checks dashboard.lookups.view for $label", async ({ method, url }) => {
+      mockHasPermission.mockReturnValue(false);
+
+      const res = await app.inject({
+        method,
+        url,
+        cookies: { session: app.signCookie("sid") },
+      });
+
+      expect(res.statusCode).toBe(403);
+      expect(mockHasPermission).toHaveBeenCalledWith(
+        expect.anything(),
+        "dashboard.lookups.view",
+      );
     });
   });
 

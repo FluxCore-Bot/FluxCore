@@ -8,6 +8,7 @@
     "description": "Se till att du har behörigheten Hantera server på minst en Discord-server och uppdatera sedan."
   },
   "badge": {
+    "delegated": "Delegerad åtkomst",
     "botNotAdded": "Bot inte tillagd"
   },
   "addBot": "Lägg till FluxCore",

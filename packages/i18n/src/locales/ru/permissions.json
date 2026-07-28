@@ -41,7 +41,26 @@
     "defaultRole": "Роль по умолчанию",
     "permissions": "Права",
     "allBadge": "Все",
-    "discordRoles": "Роли Discord"
+    "discordRoles": "Роли Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Не удалось загрузить список разрешений. Попробуйте обновить страницу.",
+    "registryEmpty": "Пока нет доступных разрешений для назначения.",
+    "lookupsWarning": "Эта роль может настраивать модули, но не может искать каналы, роли или участников — её списки выбора будут пустыми.",
+    "grantLookups": "Предоставить доступ к спискам выбора",
+    "admissionNote": "Также позволяет обладателям предоставлять другим участникам доступ к панели управления.",
+    "cannotGrantTooltip": "Вы не можете предоставить право, которого у вас самих нет.",
+    "membersSection": {
+      "title": "Участники",
+      "empty": "Этой роли пока не назначены участники.",
+      "error": "Не удалось загрузить участников этой роли. Попробуйте обновить страницу.",
+      "addPlaceholder": "Добавить участника",
+      "searchPlaceholder": "Поиск участников...",
+      "searchHint": "Введите имя для поиска участников",
+      "searchLoading": "Загрузка...",
+      "searchNoResults": "Нет результатов",
+      "assignedBy": "Добавил(а) {{name}}, {{date}}",
+      "removeAria": "Удалить {{name}} из этой роли"
+    }
   },
   "roleForm": {
     "name": "Название роли",
@@ -58,6 +77,7 @@
     "color": "Цвет"
   },
   "permissionCategories": {
+    "dashboard": "Панель управления",
     "actions": "Действия и автоматизация",
     "tempvoice": "TempVoice",
     "welcome": "Приветствие и прощание",
@@ -73,6 +93,33 @@
     "scheduled": "Отложенные сообщения",
     "commands": "Пользовательские команды",
     "settings": "Настройки сервера"
+  },
+  "resources": {
+    "roles": "Роли",
+    "audit": "Журнал аудита",
+    "settings": "Настройки",
+    "lookups": "Селекторы",
+    "cases": "Случаи",
+    "warnings": "Предупреждения",
+    "punishments": "Наказания",
+    "rules": "Правила",
+    "analytics": "Аналитика",
+    "entries": "Записи",
+    "config": "Конфигурация",
+    "test": "Тестовые сообщения",
+    "leaderboard": "Таблица лидеров",
+    "users": "Пользователи",
+    "rewards": "Награды",
+    "list": "Список",
+    "panels": "Панели",
+    "messages": "Сообщения",
+    "events": "События"
+  },
+  "permissionActions": {
+    "view": "Просмотр",
+    "manage": "Управление",
+    "execute": "Выполнение",
+    "purge": "Очистка"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Роль обновлена",
     "roleUpdateFailed": "Не удалось обновить роль",
     "roleDeleted": "Роль удалена",
-    "roleDeleteFailed": "Не удалось удалить роль"
+    "roleDeleteFailed": "Не удалось удалить роль",
+    "memberAdded": "{{name}} добавлен(а) в роль",
+    "memberRemoved": "{{name}} удалён(а) из роли",
+    "memberRestored": "{{name}} восстановлен(а) в роли"
   },
   "confirm": {
     "deleteTitle": "Удалить роль \"{{name}}\"?",

@@ -8,6 +8,7 @@
     "description": "En az bir Discord sunucusunda Sunucuyu Yönet iznine sahip olduğundan emin ol, ardından yenile."
   },
   "badge": {
+    "delegated": "Devredilmiş erişim",
     "botNotAdded": "Bot eklenmedi"
   },
   "addBot": "FluxCore ekle",

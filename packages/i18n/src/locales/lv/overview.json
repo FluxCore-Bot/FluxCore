@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Jūsu piekļuve",
+    "subtitle": "Jums ir piešķirta piekļuve šī servera paneļa daļām.",
+    "empty": "Jums vēl nav piekļuves nevienam modulim."
+  },
+  "errors": { "analyticsUnavailable": "Neizdevās ielādēt analītiku." }
 }

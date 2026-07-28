@@ -41,7 +41,26 @@
     "defaultRole": "Standardrolle",
     "permissions": "Berechtigungen",
     "allBadge": "Alle",
-    "discordRoles": "Discord-Rollen"
+    "discordRoles": "Discord-Rollen",
+    "permissionLabel": "{{resource}} {{action}}",
+    "registryError": "Die Berechtigungsliste konnte nicht geladen werden. Versuche, die Seite neu zu laden.",
+    "registryEmpty": "Es sind noch keine Berechtigungen zum Zuweisen verfügbar.",
+    "lookupsWarning": "Diese Rolle kann Module konfigurieren, aber keine Kanäle, Rollen oder Mitglieder nachschlagen — ihre Auswahlfelder bleiben leer.",
+    "grantLookups": "Auswahlzugriff gewähren",
+    "admissionNote": "Erlaubt Inhabern außerdem, anderen Mitgliedern Dashboard-Zugriff zu gewähren.",
+    "cannotGrantTooltip": "Du kannst keine Berechtigung vergeben, die du selbst nicht besitzt.",
+    "membersSection": {
+      "title": "Mitglieder",
+      "empty": "Dieser Rolle wurden noch keine Mitglieder zugewiesen.",
+      "error": "Die Mitglieder dieser Rolle konnten nicht geladen werden. Versuche, die Seite neu zu laden.",
+      "addPlaceholder": "Mitglied hinzufügen",
+      "searchPlaceholder": "Mitglieder suchen...",
+      "searchHint": "Gib einen Namen ein, um Mitglieder zu suchen",
+      "searchLoading": "Wird geladen...",
+      "searchNoResults": "Keine Ergebnisse",
+      "assignedBy": "Hinzugefügt von {{name}} am {{date}}",
+      "removeAria": "{{name}} aus dieser Rolle entfernen"
+    }
   },
   "roleForm": {
     "name": "Rollenname",
@@ -58,6 +77,7 @@
     "color": "Farbe"
   },
   "permissionCategories": {
+    "dashboard": "Dashboard",
     "actions": "Aktionen & Automatisierung",
     "tempvoice": "TempVoice",
     "welcome": "Willkommen & Abschied",
@@ -73,6 +93,33 @@
     "scheduled": "Geplante Nachrichten",
     "commands": "Benutzerdefinierte Befehle",
     "settings": "Servereinstellungen"
+  },
+  "resources": {
+    "roles": "Rollen",
+    "audit": "Audit-Protokoll",
+    "settings": "Einstellungen",
+    "lookups": "Auswahlfelder",
+    "cases": "Fälle",
+    "warnings": "Verwarnungen",
+    "punishments": "Bestrafungen",
+    "rules": "Regeln",
+    "analytics": "Analysen",
+    "entries": "Einträge",
+    "config": "Konfiguration",
+    "test": "Testnachrichten",
+    "leaderboard": "Rangliste",
+    "users": "Benutzer",
+    "rewards": "Belohnungen",
+    "list": "Liste",
+    "panels": "Panels",
+    "messages": "Nachrichten",
+    "events": "Ereignisse"
+  },
+  "permissionActions": {
+    "view": "Anzeigen",
+    "manage": "Verwalten",
+    "execute": "Ausführen",
+    "purge": "Bereinigen"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Rolle aktualisiert",
     "roleUpdateFailed": "Rolle konnte nicht aktualisiert werden",
     "roleDeleted": "Rolle geloescht",
-    "roleDeleteFailed": "Rolle konnte nicht geloescht werden"
+    "roleDeleteFailed": "Rolle konnte nicht geloescht werden",
+    "memberAdded": "{{name}} zur Rolle hinzugefügt",
+    "memberRemoved": "{{name}} aus der Rolle entfernt",
+    "memberRestored": "{{name}} zur Rolle wiederhergestellt"
   },
   "confirm": {
     "deleteTitle": "Rolle \"{{name}}\" loeschen?",

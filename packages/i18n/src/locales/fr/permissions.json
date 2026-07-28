@@ -41,7 +41,26 @@
     "defaultRole": "Role par defaut",
     "permissions": "Permissions",
     "allBadge": "Toutes",
-    "discordRoles": "Roles Discord"
+    "discordRoles": "Roles Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Impossible de charger la liste des permissions. Essayez d'actualiser la page.",
+    "registryEmpty": "Aucune permission n'est encore disponible à attribuer.",
+    "lookupsWarning": "Ce rôle peut configurer des modules mais ne peut pas rechercher de salons, rôles ou membres — ses sélecteurs seront vides.",
+    "grantLookups": "Accorder l'accès aux sélecteurs",
+    "admissionNote": "Permet également aux détenteurs de donner à d'autres membres l'accès au tableau de bord.",
+    "cannotGrantTooltip": "Vous ne pouvez pas accorder une permission que vous ne possédez pas vous-même.",
+    "membersSection": {
+      "title": "Membres",
+      "empty": "Aucun membre n'a encore été assigné à ce rôle.",
+      "error": "Impossible de charger les membres de ce rôle. Essayez d'actualiser la page.",
+      "addPlaceholder": "Ajouter un membre",
+      "searchPlaceholder": "Rechercher des membres...",
+      "searchHint": "Tapez un nom pour rechercher des membres",
+      "searchLoading": "Chargement...",
+      "searchNoResults": "Aucun résultat",
+      "assignedBy": "Ajouté par {{name}} le {{date}}",
+      "removeAria": "Retirer {{name}} de ce rôle"
+    }
   },
   "roleForm": {
     "name": "Nom du role",
@@ -58,6 +77,7 @@
     "color": "Couleur"
   },
   "permissionCategories": {
+    "dashboard": "Tableau de bord",
     "actions": "Actions et automatisation",
     "tempvoice": "TempVoice",
     "welcome": "Bienvenue et adieu",
@@ -73,6 +93,33 @@
     "scheduled": "Messages programmes",
     "commands": "Commandes personnalisees",
     "settings": "Parametres du serveur"
+  },
+  "resources": {
+    "roles": "Rôles",
+    "audit": "Journal d'audit",
+    "settings": "Paramètres",
+    "lookups": "Sélecteurs",
+    "cases": "Cas",
+    "warnings": "Avertissements",
+    "punishments": "Sanctions",
+    "rules": "Règles",
+    "analytics": "Analytique",
+    "entries": "Entrées",
+    "config": "Configuration",
+    "test": "Messages de test",
+    "leaderboard": "Classement",
+    "users": "Utilisateurs",
+    "rewards": "Récompenses",
+    "list": "Liste",
+    "panels": "Panneaux",
+    "messages": "Messages",
+    "events": "Événements"
+  },
+  "permissionActions": {
+    "view": "Voir",
+    "manage": "Gérer",
+    "execute": "Exécuter",
+    "purge": "Purger"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Role mis a jour",
     "roleUpdateFailed": "Echec de la mise a jour du role",
     "roleDeleted": "Role supprime",
-    "roleDeleteFailed": "Echec de la suppression du role"
+    "roleDeleteFailed": "Echec de la suppression du role",
+    "memberAdded": "{{name}} ajoute au role",
+    "memberRemoved": "{{name}} retire du role",
+    "memberRestored": "{{name}} restaure dans le role"
   },
   "confirm": {
     "deleteTitle": "Supprimer le role \"{{name}}\" ?",

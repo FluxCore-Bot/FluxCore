@@ -41,7 +41,26 @@
     "defaultRole": "الدور الافتراضي",
     "permissions": "الصلاحيات",
     "allBadge": "الكل",
-    "discordRoles": "أدوار Discord"
+    "discordRoles": "أدوار Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "تعذر تحميل قائمة الأذونات. حاول تحديث الصفحة.",
+    "registryEmpty": "لا توجد أذونات متاحة للتخصيص بعد.",
+    "lookupsWarning": "يمكن لهذا الدور إعداد الوحدات، لكن لا يمكنه البحث عن القنوات أو الأدوار أو الأعضاء — ستكون قوائمه فارغة.",
+    "grantLookups": "منح إمكانية الوصول إلى أدوات البحث",
+    "admissionNote": "كما يتيح لحامليه منح أعضاء آخرين إمكانية الوصول إلى لوحة التحكم.",
+    "cannotGrantTooltip": "لا يمكنك منح صلاحية لا تملكها بنفسك.",
+    "membersSection": {
+      "title": "الأعضاء",
+      "empty": "لم يتم تعيين أي أعضاء لهذا الدور بعد.",
+      "error": "تعذر تحميل أعضاء هذا الدور. حاول تحديث الصفحة.",
+      "addPlaceholder": "إضافة عضو",
+      "searchPlaceholder": "ابحث عن الأعضاء...",
+      "searchHint": "اكتب اسمًا للبحث عن الأعضاء",
+      "searchLoading": "جارٍ التحميل...",
+      "searchNoResults": "لا توجد نتائج",
+      "assignedBy": "أضافه {{name}} في {{date}}",
+      "removeAria": "إزالة {{name}} من هذا الدور"
+    }
   },
   "roleForm": {
     "name": "اسم الدور",
@@ -58,6 +77,7 @@
     "color": "اللون"
   },
   "permissionCategories": {
+    "dashboard": "لوحة التحكم",
     "actions": "الإجراءات والأتمتة",
     "tempvoice": "القنوات الصوتية المؤقتة",
     "welcome": "الترحيب والتوديع",
@@ -73,6 +93,33 @@
     "scheduled": "الرسائل المجدولة",
     "commands": "الأوامر المخصصة",
     "settings": "إعدادات السيرفر"
+  },
+  "resources": {
+    "roles": "الأدوار",
+    "audit": "سجل التدقيق",
+    "settings": "الإعدادات",
+    "lookups": "أدوات الاختيار",
+    "cases": "الحالات",
+    "warnings": "التحذيرات",
+    "punishments": "العقوبات",
+    "rules": "القواعد",
+    "analytics": "التحليلات",
+    "entries": "الإدخالات",
+    "config": "التكوين",
+    "test": "رسائل الاختبار",
+    "leaderboard": "لوحة الصدارة",
+    "users": "المستخدمون",
+    "rewards": "المكافآت",
+    "list": "القائمة",
+    "panels": "اللوحات",
+    "messages": "الرسائل",
+    "events": "الأحداث"
+  },
+  "permissionActions": {
+    "view": "عرض",
+    "manage": "إدارة",
+    "execute": "تنفيذ",
+    "purge": "مسح"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "تم تحديث الدور",
     "roleUpdateFailed": "فشل في تحديث الدور",
     "roleDeleted": "تم حذف الدور",
-    "roleDeleteFailed": "فشل في حذف الدور"
+    "roleDeleteFailed": "فشل في حذف الدور",
+    "memberAdded": "تمت إضافة {{name}} إلى الدور",
+    "memberRemoved": "تمت إزالة {{name}} من الدور",
+    "memberRestored": "تمت استعادة {{name}} إلى الدور"
   },
   "confirm": {
     "deleteTitle": "حذف دور \"{{name}}\"؟",

@@ -41,7 +41,26 @@
     "defaultRole": "Peranan lalai",
     "permissions": "Kebenaran",
     "allBadge": "Semua",
-    "discordRoles": "Peranan Discord"
+    "discordRoles": "Peranan Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Senarai kebenaran tidak dapat dimuatkan. Cuba muat semula halaman.",
+    "registryEmpty": "Belum ada kebenaran tersedia untuk diberikan.",
+    "lookupsWarning": "Peranan ini boleh mengkonfigurasi modul tetapi tidak boleh mencari saluran, peranan atau ahli — pemilihnya akan kosong.",
+    "grantLookups": "Berikan akses pemilih",
+    "admissionNote": "Juga membolehkan pemegangnya memberikan akses papan pemuka kepada ahli lain.",
+    "cannotGrantTooltip": "Anda tidak boleh memberikan kebenaran yang anda sendiri tidak miliki.",
+    "membersSection": {
+      "title": "Ahli",
+      "empty": "Belum ada ahli yang diberikan peranan ini.",
+      "error": "Ahli peranan ini tidak dapat dimuatkan. Cuba muat semula halaman.",
+      "addPlaceholder": "Tambah ahli",
+      "searchPlaceholder": "Cari ahli...",
+      "searchHint": "Taip nama untuk mencari ahli",
+      "searchLoading": "Memuatkan...",
+      "searchNoResults": "Tiada hasil",
+      "assignedBy": "Ditambah oleh {{name}} pada {{date}}",
+      "removeAria": "Buang {{name}} daripada peranan ini"
+    }
   },
   "roleForm": {
     "name": "Nama Peranan",
@@ -58,6 +77,7 @@
     "color": "Warna"
   },
   "permissionCategories": {
+    "dashboard": "Papan Pemuka",
     "actions": "Tindakan & Automasi",
     "tempvoice": "TempVoice",
     "welcome": "Selamat Datang & Selamat Tinggal",
@@ -73,6 +93,33 @@
     "scheduled": "Mesej Berjadual",
     "commands": "Arahan Tersuai",
     "settings": "Tetapan Pelayan"
+  },
+  "resources": {
+    "roles": "Peranan",
+    "audit": "Log Audit",
+    "settings": "Tetapan",
+    "lookups": "Pemilih",
+    "cases": "Kes",
+    "warnings": "Amaran",
+    "punishments": "Hukuman",
+    "rules": "Peraturan",
+    "analytics": "Analitik",
+    "entries": "Entri",
+    "config": "Konfigurasi",
+    "test": "Mesej Ujian",
+    "leaderboard": "Papan Pendahulu",
+    "users": "Pengguna",
+    "rewards": "Ganjaran",
+    "list": "Senarai",
+    "panels": "Panel",
+    "messages": "Mesej",
+    "events": "Peristiwa"
+  },
+  "permissionActions": {
+    "view": "Lihat",
+    "manage": "Urus",
+    "execute": "Laksana",
+    "purge": "Bersihkan"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Peranan dikemaskini",
     "roleUpdateFailed": "Gagal mengemaskini peranan",
     "roleDeleted": "Peranan dipadam",
-    "roleDeleteFailed": "Gagal memadam peranan"
+    "roleDeleteFailed": "Gagal memadam peranan",
+    "memberAdded": "{{name}} ditambah ke peranan",
+    "memberRemoved": "{{name}} dibuang daripada peranan",
+    "memberRestored": "{{name}} dipulihkan ke peranan"
   },
   "confirm": {
     "deleteTitle": "Padam peranan \"{{name}}\"?",

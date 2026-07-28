@@ -41,7 +41,26 @@
     "defaultRole": "תפקיד ברירת מחדל",
     "permissions": "הרשאות",
     "allBadge": "הכל",
-    "discordRoles": "תפקידי Discord"
+    "discordRoles": "תפקידי Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "לא ניתן היה לטעון את רשימת ההרשאות. נסה לרענן את הדף.",
+    "registryEmpty": "אין עדיין הרשאות זמינות להקצאה.",
+    "lookupsWarning": "תפקיד זה יכול להגדיר מודולים אך אינו יכול לחפש ערוצים, תפקידים או חברים — הבוררים שלו יהיו ריקים.",
+    "grantLookups": "הענק גישה לבוררים",
+    "admissionNote": "מאפשר גם למחזיקים בו להעניק לחברים אחרים גישה ללוח הבקרה.",
+    "cannotGrantTooltip": "אינך יכול להעניק הרשאה שאין לך בעצמך.",
+    "membersSection": {
+      "title": "חברים",
+      "empty": "עדיין לא הוקצו חברים לתפקיד זה.",
+      "error": "לא ניתן היה לטעון את חברי התפקיד. נסה לרענן את הדף.",
+      "addPlaceholder": "הוסף חבר",
+      "searchPlaceholder": "חיפוש חברים...",
+      "searchHint": "הקלד שם כדי לחפש חברים",
+      "searchLoading": "טוען...",
+      "searchNoResults": "אין תוצאות",
+      "assignedBy": "נוסף על ידי {{name}} בתאריך {{date}}",
+      "removeAria": "הסר את {{name}} מתפקיד זה"
+    }
   },
   "roleForm": {
     "name": "שם תפקיד",
@@ -58,6 +77,7 @@
     "color": "צבע"
   },
   "permissionCategories": {
+    "dashboard": "לוח בקרה",
     "actions": "פעולות ואוטומציה",
     "tempvoice": "קול זמני",
     "welcome": "ברוכים הבאים ופרידה",
@@ -73,6 +93,33 @@
     "scheduled": "הודעות מתוזמנות",
     "commands": "פקודות מותאמות",
     "settings": "הגדרות שרת"
+  },
+  "resources": {
+    "roles": "תפקידים",
+    "audit": "יומן ביקורת",
+    "settings": "הגדרות",
+    "lookups": "בוררים",
+    "cases": "תיקים",
+    "warnings": "אזהרות",
+    "punishments": "ענישה",
+    "rules": "חוקים",
+    "analytics": "ניתוחים",
+    "entries": "רשומות",
+    "config": "תצורה",
+    "test": "הודעות בדיקה",
+    "leaderboard": "טבלת מובילים",
+    "users": "משתמשים",
+    "rewards": "תגמולים",
+    "list": "רשימה",
+    "panels": "לוחות",
+    "messages": "הודעות",
+    "events": "אירועים"
+  },
+  "permissionActions": {
+    "view": "הצגה",
+    "manage": "ניהול",
+    "execute": "הרצה",
+    "purge": "ניקוי"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "התפקיד עודכן",
     "roleUpdateFailed": "עדכון התפקיד נכשל",
     "roleDeleted": "התפקיד נמחק",
-    "roleDeleteFailed": "מחיקת התפקיד נכשלה"
+    "roleDeleteFailed": "מחיקת התפקיד נכשלה",
+    "memberAdded": "{{name}} נוסף לתפקיד",
+    "memberRemoved": "{{name}} הוסר מהתפקיד",
+    "memberRestored": "{{name}} שוחזר לתפקיד"
   },
   "confirm": {
     "deleteTitle": "למחוק תפקיד \"{{name}}\"?",

@@ -8,6 +8,7 @@
     "description": "Pastikan kamu memiliki izin Kelola Server di setidaknya satu server Discord, lalu segarkan."
   },
   "badge": {
+    "delegated": "Akses yang didelegasikan",
     "botNotAdded": "Bot belum ditambahkan"
   },
   "addBot": "Tambahkan FluxCore",

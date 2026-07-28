@@ -8,6 +8,7 @@
     "description": "Hakikisha una ruhusa ya Kudhibiti Seva katika angalau seva moja ya Discord, kisha onyesha upya."
   },
   "badge": {
+    "delegated": "Ufikiaji uliokabidhiwa",
     "botNotAdded": "Boti haijaongezwa"
   },
   "addBot": "Ongeza FluxCore",

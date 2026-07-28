@@ -1,6 +1,6 @@
 import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
-import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { requireAuth, requireGuildAccess, requirePermission } from "../../shared/middleware.js";
 import { rateLimits } from "../../shared/rateLimit.js";
 import {
   createGiveaway,
@@ -27,7 +27,7 @@ export function registerGiveawayRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/giveaways",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("giveaways.list.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("giveaways.list.view")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] }, querystring: { type: "object", properties: { page: { type: "integer", minimum: 1, default: 1 }, limit: { type: "integer", minimum: 1, maximum: 100, default: 20 }, sort: { type: "string" } } } }, { tag: "Giveaways", response: { 200: { type: "object", additionalProperties: true } } }),
     },
     async (request, reply) => {
@@ -54,7 +54,7 @@ export function registerGiveawayRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/giveaways",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("giveaways.list.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("giveaways.list.manage")],
       config: rateLimits.create,
       schema: withDocs({
         params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -117,7 +117,7 @@ export function registerGiveawayRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/giveaways/:id/end",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("giveaways.list.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("giveaways.list.manage")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Giveaways", response: { 200: { type: "object", additionalProperties: true } } }),
     },
     async (request, reply) => {
@@ -149,7 +149,7 @@ export function registerGiveawayRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/giveaways/:id/reroll",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("giveaways.list.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("giveaways.list.manage")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "Giveaways", response: { 200: { type: "object", additionalProperties: true } } }),
     },
     async (request, reply) => {

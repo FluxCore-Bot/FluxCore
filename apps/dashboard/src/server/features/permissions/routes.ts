@@ -1,12 +1,14 @@
 import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
 import { getPrisma } from "@fluxcore/database";
+import { resolveEffectivePermissions } from "@fluxcore/types";
 import {
-  PERMISSION_REGISTRY,
-  ALL_PERMISSION_KEYS,
-  resolveEffectivePermissions,
-} from "@fluxcore/types";
-import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+  requireAuth,
+  requireGuildAccess,
+  requirePermission,
+  getDeclaredPermissions,
+} from "../../shared/middleware.js";
+import { buildPermissionRegistry } from "../../shared/permissionRegistry.js";
 import {
   resolveUserPermissions,
   createDashboardAuditLog,
@@ -25,7 +27,7 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         { tag: "DashboardPermissions", response: { 200: { type: "object", additionalProperties: true } } },
       ),
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAccess],
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -39,7 +41,10 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
 
       reply.send({
         permissions: [...resolved.permissions],
-        effectivePermissions: resolveEffectivePermissions([...resolved.permissions]),
+        effectivePermissions: resolveEffectivePermissions(
+          [...resolved.permissions],
+          [...getDeclaredPermissions()],
+        ),
         roles: assignments.map((a) => a.role),
         isOwner: resolved.isOwner,
       });
@@ -52,12 +57,12 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
     {
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
-        { tag: "DashboardPermissions", response: { 200: { type: "object", additionalProperties: true } } },
+        { tag: "DashboardPermissions", response: { 200: { type: "array", items: { type: "object", additionalProperties: true } } } },
       ),
-      preHandler: [requireAuth, requireGuildAdmin],
+      preHandler: [requireAuth, requireGuildAccess],
     },
     async (_request, reply) => {
-      reply.send(PERMISSION_REGISTRY);
+      reply.send(buildPermissionRegistry(getDeclaredPermissions()));
     },
   );
 
@@ -71,7 +76,7 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         { tag: "DashboardPermissions", response: { 200: { type: "object", additionalProperties: true } } },
       ),
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.roles.manage")],
     },
     async (request, reply) => {
       const { guildId, userId } = request.params as { guildId: string; userId: string };
@@ -92,7 +97,10 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
           grantedBy: p.grantedBy,
           createdAt: p.createdAt,
         })),
-        effectivePermissions: resolveEffectivePermissions([...resolved.permissions]),
+        effectivePermissions: resolveEffectivePermissions(
+          [...resolved.permissions],
+          [...getDeclaredPermissions()],
+        ),
         isOwner: resolved.isOwner,
       });
     },
@@ -102,7 +110,7 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/user-permissions/:userId",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.roles.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -219,7 +227,7 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
           response: { 200: { type: "object", properties: { success: { type: "boolean" } } } },
         },
       ),
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.roles.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.roles.manage")],
     },
     async (request, reply) => {
       const { guildId, userId } = request.params as { guildId: string; userId: string };
@@ -252,7 +260,7 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         { tag: "DashboardPermissions", response: { 200: { type: "object", additionalProperties: true } } },
       ),
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.settings.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.settings.manage")],
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -276,7 +284,7 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/dashboard-settings",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.settings.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.settings.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -348,7 +356,7 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
         },
         { tag: "DashboardPermissions", response: { 200: { type: "object", additionalProperties: true } } },
       ),
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("dashboard.audit.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("dashboard.audit.view")],
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
@@ -447,7 +455,7 @@ const ALLOWED_AUDIT_ACTIONS = new Set([
 ]);
 
 function isValidPermKey(key: string): boolean {
-  if (ALL_PERMISSION_KEYS.includes(key)) return true;
+  if (getDeclaredPermissions().has(key)) return true;
   if (key === "*") return true;
   if (key.includes("*")) {
     const parts = key.split(".");

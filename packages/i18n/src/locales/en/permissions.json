@@ -41,7 +41,26 @@
     "defaultRole": "Default role",
     "permissions": "Permissions",
     "allBadge": "All",
-    "discordRoles": "Discord Roles"
+    "discordRoles": "Discord Roles",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "The permission list could not be loaded. Try refreshing the page.",
+    "registryEmpty": "No permissions are available to assign yet.",
+    "lookupsWarning": "This role can configure modules but cannot look up channels, roles, or members — its pickers will be empty.",
+    "grantLookups": "Grant picker access",
+    "admissionNote": "Also lets holders give other members dashboard access.",
+    "cannotGrantTooltip": "You can't grant a permission you don't have yourself.",
+    "membersSection": {
+      "title": "Members",
+      "empty": "No members have been assigned this role yet.",
+      "error": "Could not load this role's members. Try refreshing the page.",
+      "addPlaceholder": "Add a member",
+      "searchPlaceholder": "Search members...",
+      "searchHint": "Type a name to search members",
+      "searchLoading": "Loading...",
+      "searchNoResults": "No results",
+      "assignedBy": "Added by {{name}} on {{date}}",
+      "removeAria": "Remove {{name}} from this role"
+    }
   },
   "roleForm": {
     "name": "Role Name",
@@ -58,6 +77,7 @@
     "color": "Color"
   },
   "permissionCategories": {
+    "dashboard": "Dashboard",
     "actions": "Actions & Automation",
     "tempvoice": "TempVoice",
     "welcome": "Welcome & Farewell",
@@ -73,6 +93,33 @@
     "scheduled": "Scheduled Messages",
     "commands": "Custom Commands",
     "settings": "Server Settings"
+  },
+  "resources": {
+    "roles": "Roles",
+    "audit": "Audit Log",
+    "settings": "Settings",
+    "lookups": "Pickers",
+    "cases": "Cases",
+    "warnings": "Warnings",
+    "punishments": "Punishments",
+    "rules": "Rules",
+    "analytics": "Analytics",
+    "entries": "Entries",
+    "config": "Configuration",
+    "test": "Test Messages",
+    "leaderboard": "Leaderboard",
+    "users": "Users",
+    "rewards": "Rewards",
+    "list": "List",
+    "panels": "Panels",
+    "messages": "Messages",
+    "events": "Events"
+  },
+  "permissionActions": {
+    "view": "View",
+    "manage": "Manage",
+    "execute": "Execute",
+    "purge": "Purge"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Role updated",
     "roleUpdateFailed": "Failed to update role",
     "roleDeleted": "Role deleted",
-    "roleDeleteFailed": "Failed to delete role"
+    "roleDeleteFailed": "Failed to delete role",
+    "memberAdded": "Added {{name}} to the role",
+    "memberRemoved": "Removed {{name}} from the role",
+    "memberRestored": "{{name}} restored to the role"
   },
   "confirm": {
     "deleteTitle": "Delete role \"{{name}}\"?",

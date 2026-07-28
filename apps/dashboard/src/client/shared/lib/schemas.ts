@@ -15,6 +15,8 @@ export const GuildSchema = z.object({
   icon: z.string().nullable(),
   /** False when the user administers the guild but the bot has not been added. */
   botPresent: z.boolean(),
+  /** "delegated" = access comes from dashboard grants, not Discord admin rights. */
+  access: z.enum(["admin", "delegated"]),
 });
 export type Guild = z.infer<typeof GuildSchema>;
 
@@ -790,3 +792,20 @@ export const DashboardAuditResponseSchema = z.object({
   pages: z.number(),
 });
 export type DashboardAuditResponse = z.infer<typeof DashboardAuditResponseSchema>;
+
+// --- Permission Registry ---
+export const PermissionViewSchema = z.object({
+  key: z.string(),
+  resourceKey: z.string(),
+  actionKey: z.string(),
+});
+
+export const PermissionModuleViewSchema = z.object({
+  key: z.string(),
+  icon: z.string(),
+  labelKey: z.string(),
+  permissions: z.array(PermissionViewSchema),
+});
+
+export const PermissionRegistrySchema = z.array(PermissionModuleViewSchema);
+export type PermissionModuleView = z.infer<typeof PermissionModuleViewSchema>;

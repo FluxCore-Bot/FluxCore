@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "สิทธิ์การเข้าถึงของคุณ",
+    "subtitle": "คุณได้รับสิทธิ์เข้าถึงบางส่วนของแดชบอร์ดเซิร์ฟเวอร์นี้",
+    "empty": "คุณยังไม่มีสิทธิ์เข้าถึงโมดูลใด ๆ"
+  },
+  "errors": { "analyticsUnavailable": "ไม่สามารถโหลดข้อมูลวิเคราะห์ได้" }
 }

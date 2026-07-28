@@ -8,6 +8,7 @@
     "description": "Pastikan anda mempunyai kebenaran Urus Pelayan pada sekurang-kurangnya satu pelayan Discord, kemudian segar semula."
   },
   "badge": {
+    "delegated": "Akses yang didelegasikan",
     "botNotAdded": "Bot belum ditambah"
   },
   "addBot": "Tambah FluxCore",

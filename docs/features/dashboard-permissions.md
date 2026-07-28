@@ -9,7 +9,12 @@
 
 Granular role-based + per-user permission system for the admin dashboard. Currently, any user with Discord's `MANAGE_GUILD` permission has **full access** to every dashboard feature. This system adds fine-grained control so guild owners can delegate specific modules/actions to specific administrators.
 
-**Gate model:** `MANAGE_GUILD` remains the entry gate — only users with that Discord permission can access the dashboard at all. The permission system adds granularity *within* that gate.
+**Gate model:** authority comes from three sources — guild ownership, live Discord admin rights (Administrator or Manage Server), or an explicit dashboard grant (a `DashboardRoleAssignment` or `DashboardUserPermission` row). A guild member holding a grant reaches the dashboard without `MANAGE_GUILD` and is then narrowed by each route's required permission.
+
+`requirePermissions` governs whether **admins** are constrained; it never gates explicit grants, which resolve the same way in both modes. `isDefault` roles apply to admins only — otherwise enabling the toggle would admit every member of the server at once.
+
+> Superseded 2026-07-28. This replaces the original admin-only gate model. See
+> `docs/superpowers/specs/2026-07-28-delegated-dashboard-access-design.md`.
 
 ## Design Decisions
 
@@ -18,7 +23,7 @@ Granular role-based + per-user permission system for the admin dashboard. Curren
 | Permission format | String keys (`module.resource.action`) | Self-documenting, unlimited scalability, easy to add new modules |
 | Deny rules | No (allow-only) | MANAGE_GUILD already gates entry; simpler mental model |
 | Per-user overrides | Yes | Guild owner can grant specific permissions to individuals beyond their roles |
-| Non-MANAGE_GUILD access | No | Dashboard remains admin-only; permissions control what admins can do |
+| Non-MANAGE_GUILD access | Yes, via explicit grants (revised 2026-07-28) | Delegation is inert if only Discord admins can reach the dashboard. A member with a role assignment or user override gets in; `isDefault` roles never apply to them |
 | Built-in presets | Yes | Ship "Moderator", "Content Manager" templates |
 | Audit retention | 90 days default, configurable per guild | Balance storage vs compliance needs |
 | Wildcard support | Yes (`module.*`, `*`) | Reduces assignment burden for broad access |
@@ -507,31 +512,41 @@ Shown when a user navigates to a module they can't access. Displays:
 packages/types/src/dashboard-permissions.ts
 ```
 
-Contains the permission registry, wildcard matcher, and preset definitions. Shared between bot (if needed), dashboard API, and dashboard client.
+Contains the wildcard matcher and preset definitions, shared between the dashboard API and client:
 
 ```typescript
-export interface PermissionDefinition {
-  key: string;
-  label: string;
-  description: string;
-  module: string;
-}
-
-export interface PermissionModule {
-  key: string;
-  label: string;
-  icon: string; // Lucide icon name
-  permissions: PermissionDefinition[];
-}
-
-export const PERMISSION_REGISTRY: PermissionModule[] = [/* ... */];
-
 export const ROLE_PRESETS: Record<string, { name: string; color: string; permissions: string[] }> = {/* ... */};
 
 export function matchPermission(granted: Set<string>, required: string): boolean {/* ... */}
 
-export function expandWildcard(pattern: string, registry: PermissionModule[]): string[] {/* ... */}
+export function expandWildcard(pattern: string, registry: PermissionModuleView[]): string[] {/* ... */}
 ```
+
+There is no hand-maintained permission list. A `PERMISSION_REGISTRY` constant was the original
+design, but it drifted from the route table in practice — a route could enforce a key the list
+never declared, or vice versa. The registry is now **derived at runtime from the route table
+itself**:
+
+```
+apps/dashboard/src/server/shared/middleware.ts       — getDeclaredPermissions()
+apps/dashboard/src/server/shared/permissionRegistry.ts — buildPermissionRegistry(), validatePermissionRegistry()
+```
+
+- `requirePermission(...keys)` records every key it is called with, at route-registration time,
+  into a module-level `Set`. `getDeclaredPermissions()` returns that set — the complete list of
+  permission keys any route actually enforces, with no possibility of drift.
+- `buildPermissionRegistry(keys)` turns the flat key set into the module → permission tree the
+  dashboard renders, using a small `MODULE_META` map for icon/order and i18n keys
+  (`permissions:permissionCategories.<module>`, `permissions:resources.<resource>`,
+  `permissions:permissionActions.<action>`) rather than a stored English label or description —
+  the client translates from the dotted key alone.
+- `validatePermissionRegistry(keys)` runs once at boot (`apps/dashboard/src/server/index.ts`) and
+  **throws** if any declared key is malformed, names an unknown module, or uses an unknown action
+  verb. This is deliberately fail-fast in every environment, including production: a permission
+  key the UI cannot render is a boot-time bug, not something to log and continue past.
+- `GET /api/guilds/:guildId/permission-registry` (`apps/dashboard/src/server/features/permissions/routes.ts`)
+  serves `buildPermissionRegistry(getDeclaredPermissions())` to the client, which renders the role
+  editor's permission grid from it.
 
 ## Security Considerations
 

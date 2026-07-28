@@ -24,6 +24,8 @@ import { Separator } from "../../../shared/ui/separator";
 import { ColorPicker } from "../../../shared/ui/color-picker";
 import { ScrollArea } from "../../../shared/ui/scroll-area";
 import { Checkbox } from "../../../shared/ui/checkbox";
+import { Skeleton } from "../../../shared/ui/skeleton";
+import { Alert } from "../../../shared/ui/alert";
 import {
   Dialog,
   DialogContent,
@@ -33,6 +35,7 @@ import {
 } from "../../../shared/ui/dialog";
 import {
   usePermissions,
+  matchPermission,
   useDashboardRoles,
   useCreateDashboardRole,
   useUpdateDashboardRole,
@@ -41,22 +44,34 @@ import {
   useDashboardSettings,
   useUpdateDashboardSettings,
   useDashboardAuditLog,
+  usePermissionRegistry,
+  useRoleMembers,
+  useAssignRoleMember,
+  useRemoveRoleMember,
 } from "../../../features/permissions/hooks/usePermissions";
-import type { DashboardRole } from "../../../shared/lib/schemas";
 import {
-  PERMISSION_REGISTRY,
-  ROLE_PRESETS,
-} from "@fluxcore/types";
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "../../../shared/ui/tooltip";
+import { needsLookupsPermission } from "../../../features/permissions/lookupsWarning";
+import { RoleMemberPicker } from "../../../features/permissions/components/RoleMemberPicker";
+import { useAuth } from "../../../shared/hooks/useAuth";
+import { useMembersByIds } from "../../../shared/hooks/useMembers";
+import type { DashboardRole, GuildMember } from "../../../shared/lib/schemas";
+import { ROLE_PRESETS } from "@fluxcore/types";
 
 // ─── Main Page ───
 
 export function PermissionsPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { t } = useTranslation("permissions");
-  const { isOwner, isLoading: permLoading } = usePermissions(guildId);
+  const { isOwner, can, isLoading: permLoading } = usePermissions(guildId);
   const { data: roles, isLoading: rolesLoading } = useDashboardRoles(guildId);
   const { data: settings, isLoading: settingsLoading } = useDashboardSettings(guildId);
   const updateSettings = useUpdateDashboardSettings(guildId);
+  const canManageRoles = can("dashboard.roles.manage");
+  const canViewAudit = can("dashboard.audit.view");
 
   const [selectedRoleId, setSelectedRoleId] = useState<string | null>(null);
   const [showCreateDialog, setShowCreateDialog] = useState(false);
@@ -75,6 +90,13 @@ export function PermissionsPage() {
 
   if (permLoading || rolesLoading || settingsLoading) return <PageSkeleton stats={0} tabCount={3} content="form" />;
 
+  // `settings` requires dashboard.settings.manage, which the nav gate
+  // (dashboard.roles.view) does not guarantee — e.g. the built-in Viewer
+  // preset. When the fetch 403s, `settings` is undefined; don't guess at
+  // requirePermissions in that case, since the "system disabled" banner is a
+  // security claim about the guild and rendering it here would be false for
+  // guilds where it's actually enabled.
+  const settingsLoaded = settings !== undefined;
   const requirePermissions = settings?.requirePermissions ?? false;
 
   return (
@@ -83,46 +105,50 @@ export function PermissionsPage() {
         title={t("title")}
         subtitle={t("subtitle")}
         actions={
-          <Button onClick={() => setShowCreateDialog(true)} size="sm">
-            <Icon name="add" size={16} className="me-1" />
-            {t("actions.createRole")}
-          </Button>
+          canManageRoles ? (
+            <Button onClick={() => setShowCreateDialog(true)} size="sm">
+              <Icon name="add" size={16} className="me-1" />
+              {t("actions.createRole")}
+            </Button>
+          ) : undefined
         }
       />
 
       {/* Enable/Disable Toggle */}
-      <Card>
-        <CardContent className="flex items-center justify-between py-4">
-          <div>
-            <p className="font-medium">{t("permissionSystem.title")}</p>
-            <p className="text-sm text-text-muted">
-              {requirePermissions
-                ? t("permissionSystem.active")
-                : t("permissionSystem.inactive")}
-            </p>
-          </div>
-          <Switch
-            checked={requirePermissions}
-            disabled={!isOwner || updateSettings.isPending}
-            onCheckedChange={(checked) => {
-              updateSettings.mutate(
-                { requirePermissions: checked },
-                {
-                  onSuccess: () =>
-                    toast.success(
-                      checked
-                        ? t("permissionSystem.enabledToast")
-                        : t("permissionSystem.disabledToast"),
-                    ),
-                  onError: (err) => toast.error(err.message),
-                },
-              );
-            }}
-          />
-        </CardContent>
-      </Card>
+      {settingsLoaded && (
+        <Card>
+          <CardContent className="flex items-center justify-between py-4">
+            <div>
+              <p className="font-medium">{t("permissionSystem.title")}</p>
+              <p className="text-sm text-text-muted">
+                {requirePermissions
+                  ? t("permissionSystem.active")
+                  : t("permissionSystem.inactive")}
+              </p>
+            </div>
+            <Switch
+              checked={requirePermissions}
+              disabled={!isOwner || updateSettings.isPending}
+              onCheckedChange={(checked) => {
+                updateSettings.mutate(
+                  { requirePermissions: checked },
+                  {
+                    onSuccess: () =>
+                      toast.success(
+                        checked
+                          ? t("permissionSystem.enabledToast")
+                          : t("permissionSystem.disabledToast"),
+                      ),
+                    onError: (err) => toast.error(err.message),
+                  },
+                );
+              }}
+            />
+          </CardContent>
+        </Card>
+      )}
 
-      {!requirePermissions && (
+      {settingsLoaded && !requirePermissions && (
         <div className="rounded-md border border-warning/30 bg-warning/5 px-4 py-3 text-sm text-warning">
           <Icon name="info" size={16} className="me-2 inline-block align-text-bottom" />
           {t("warning.disabled")}
@@ -132,7 +158,7 @@ export function PermissionsPage() {
       <Tabs defaultValue="roles">
         <TabsList>
           <TabsTrigger value="roles">{t("tabs.roles")}</TabsTrigger>
-          <TabsTrigger value="audit">{t("tabs.auditLog")}</TabsTrigger>
+          {canViewAudit && <TabsTrigger value="audit">{t("tabs.auditLog")}</TabsTrigger>}
         </TabsList>
 
         <TabsContent value="roles" className="mt-6">
@@ -192,9 +218,11 @@ export function PermissionsPage() {
           </div>
         </TabsContent>
 
-        <TabsContent value="audit" className="mt-6">
-          <AuditLogTab guildId={guildId} />
-        </TabsContent>
+        {canViewAudit && (
+          <TabsContent value="audit" className="mt-6">
+            <AuditLogTab guildId={guildId} />
+          </TabsContent>
+        )}
       </Tabs>
 
       <CreateRoleDialog
@@ -222,8 +250,19 @@ function RoleEditor({
   onDelete: () => void;
 }) {
   const { t } = useTranslation("permissions");
+  const { isOwner: currentUserIsOwner, permissions: myPermissions } = usePermissions(guildId);
+  const myPermissionSet = useMemo(() => new Set(myPermissions), [myPermissions]);
+  const { data: registry = [], isLoading: registryLoading, isError: registryError } = usePermissionRegistry(guildId);
   const updateRole = useUpdateDashboardRole(guildId);
   const deleteRole = useDeleteDashboardRole(guildId);
+  const { data: currentUser } = useAuth();
+  const {
+    data: roleMembers = [],
+    isLoading: roleMembersLoading,
+    isError: roleMembersError,
+  } = useRoleMembers(guildId, role.id);
+  const assignMember = useAssignRoleMember(guildId);
+  const removeMember = useRemoveRoleMember(guildId);
   const [name, setName] = useState(role.name);
   const [color, setColor] = useState(role.color ?? "#a3a6ff");
   const [isDefault, setIsDefault] = useState(role.isDefault);
@@ -264,6 +303,94 @@ function RoleEditor({
     });
   }
 
+  // A "confirmed identity" is either owner status (self-assignment is a
+  // non-issue for the owner — the server never checks it) or a resolved
+  // currentUser.userId. `useAuth` is an independent query with no route
+  // loader forcing it to resolve before RoleEditor mounts, and — per review
+  // — a plain `useQuery` with `retry: false` settles at `isLoading: false,
+  // data: undefined` on a non-401 fetch error, same shape as "never fetched
+  // yet". So the gate below is NOT "loading vs. not" (that left the errored
+  // case open); it is "do we have an id or not" — loading, errored, and a
+  // null/undefined body all fail closed identically. Both the disable check
+  // and the self-exclusion list derive from this one flag so they cannot
+  // drift apart.
+  const callerIdKnown = currentUserIsOwner || Boolean(currentUser?.userId);
+
+  // Mirrors the server's assignment gate exactly: against `role.permissions`
+  // (the persisted grant), not the locally-edited `permissions` state above —
+  // assigning applies immediately and independently of the pending Save.
+  const cannotAssignRole =
+    !currentUserIsOwner &&
+    (!callerIdKnown || !role.permissions.every((p) => matchPermission(myPermissionSet, p)));
+
+  const assignedMemberIds = useMemo(() => roleMembers.map((m) => m.userId), [roleMembers]);
+
+  // Already-assigned members are never offered again; a non-owner caller's
+  // own id is excluded too, so the server's self-assign 403 is unreachable
+  // here rather than merely explained.
+  const addExcludeIds = useMemo(() => {
+    const ids = new Set(assignedMemberIds);
+    if (!currentUserIsOwner && callerIdKnown && currentUser?.userId) ids.add(currentUser.userId);
+    return [...ids];
+  }, [assignedMemberIds, currentUserIsOwner, callerIdKnown, currentUser]);
+
+  // assignedBy ids resolve alongside member ids in the same batched lookup —
+  // a member and their assigner are both just Discord user ids to resolve.
+  const resolveIds = useMemo(() => {
+    const ids = new Set<string>();
+    for (const m of roleMembers) {
+      ids.add(m.userId);
+      ids.add(m.assignedBy);
+    }
+    return [...ids];
+  }, [roleMembers]);
+  const { data: resolvedMembers = [] } = useMembersByIds(guildId, resolveIds);
+  const resolvedById = useMemo(() => {
+    const map = new Map<string, GuildMember>();
+    for (const m of resolvedMembers) map.set(m.id, m);
+    return map;
+  }, [resolvedMembers]);
+
+  function handleAddMember(member: GuildMember) {
+    assignMember.mutate(
+      { roleId: role.id, userId: member.id },
+      {
+        onSuccess: () =>
+          toast.success(t("toast.memberAdded", { name: member.displayName })),
+        onError: (err) => toast.error(err.message),
+      },
+    );
+  }
+
+  // Matches the automation rule-delete pattern (rules.tsx confirmDelete):
+  // the removal itself is not deferred — it fires immediately, like every
+  // other action in this section — but the success toast offers Undo, which
+  // re-assigns the same role/user pair rather than holding the request back.
+  function handleRemoveMember(userId: string, displayName: string) {
+    removeMember.mutate(
+      { roleId: role.id, userId },
+      {
+        onSuccess: () =>
+          toast.success(t("toast.memberRemoved", { name: displayName }), {
+            action: {
+              label: t("common:actions.undo"),
+              onClick: () => {
+                assignMember.mutate(
+                  { roleId: role.id, userId },
+                  {
+                    onSuccess: () =>
+                      toast.success(t("toast.memberRestored", { name: displayName })),
+                    onError: (err) => toast.error(err.message),
+                  },
+                );
+              },
+            },
+          }),
+        onError: (err) => toast.error(err.message),
+      },
+    );
+  }
+
   function togglePermission(key: string) {
     setPermissions((prev) => {
       const next = new Set(prev);
@@ -273,6 +400,8 @@ function RoleEditor({
     });
   }
 
+  const needsLookups = needsLookupsPermission(permissions);
+
   function toggleModuleWildcard(moduleKey: string) {
     const wildcard = `${moduleKey}.*`;
     setPermissions((prev) => {
@@ -281,7 +410,7 @@ function RoleEditor({
         next.delete(wildcard);
       } else {
         // Remove individual permissions for this module, add wildcard
-        const modulePerms = PERMISSION_REGISTRY.find((m) => m.key === moduleKey);
+        const modulePerms = registry.find((m) => m.key === moduleKey);
         if (modulePerms) {
           for (const p of modulePerms.permissions) next.delete(p.key);
         }
@@ -338,65 +467,245 @@ function RoleEditor({
         </div>
       </div>
 
+      {needsLookups && (
+        <Alert variant="warning" data-testid="lookups-warning" className="mt-2">
+          <Icon name="warning" size={16} />
+          <div className="flex flex-wrap items-center gap-2">
+            <span>{t("roleEditor.lookupsWarning")}</span>
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => togglePermission("dashboard.lookups.view")}
+            >
+              {t("roleEditor.grantLookups")}
+            </Button>
+          </div>
+        </Alert>
+      )}
+
       {/* Permission Grid */}
       <div className="space-y-2">
         <Label>{t("roleEditor.permissions")}</Label>
         <ScrollArea className="h-[400px] rounded-md border border-outline-variant/20 bg-surface-low p-4">
-          <div className="space-y-6">
-            {PERMISSION_REGISTRY.map((mod) => {
-              const wildcard = `${mod.key}.*`;
-              const hasWildcard = permissions.has(wildcard);
-              const allGranted =
-                hasWildcard ||
-                mod.permissions.every((p) => permissions.has(p.key));
-
-              return (
-                <div key={mod.key}>
-                  <div className="flex items-center gap-2">
-                    <Checkbox
-                      checked={allGranted}
-                      onCheckedChange={() => toggleModuleWildcard(mod.key)}
-                      aria-label={`${mod.label} — ${t("roleEditor.allBadge")}`}
-                    />
-                    <span className="font-label text-sm font-semibold">
-                      {mod.label}
-                    </span>
-                    {hasWildcard && (
-                      <Badge variant="secondary" className="text-xs">
-                        {t("roleEditor.allBadge")}
-                      </Badge>
-                    )}
-                  </div>
-                  <div className="ms-6 mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
-                    {mod.permissions.map((perm) => {
-                      const checked = hasWildcard || permissions.has(perm.key);
-                      return (
-                        <label
-                          key={perm.key}
-                          className="flex cursor-pointer items-start gap-2 rounded px-2 py-1.5 text-sm hover:bg-surface-high/50"
-                        >
-                          <Checkbox
-                            checked={checked}
-                            disabled={hasWildcard}
-                            onCheckedChange={() => togglePermission(perm.key)}
-                            className="mt-0.5"
-                            aria-label={`${role.name} — ${perm.label}`}
-                          />
-                          <div>
-                            <span className="text-text">{perm.label}</span>
-                            <p className="text-xs text-text-muted">
-                              {perm.description}
-                            </p>
-                          </div>
-                        </label>
-                      );
-                    })}
+          {registryLoading ? (
+            <div className="space-y-6" data-testid="permission-registry-loading">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <div key={i} className="space-y-2">
+                  <Skeleton className="h-5 w-40" />
+                  <div className="ms-6 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+                    <Skeleton className="h-8 w-full" />
+                    <Skeleton className="h-8 w-full" />
                   </div>
                 </div>
+              ))}
+            </div>
+          ) : registryError ? (
+            <Alert variant="destructive" data-testid="permission-registry-error">
+              {t("roleEditor.registryError")}
+            </Alert>
+          ) : registry.length === 0 ? (
+            <p
+              className="text-sm text-text-muted"
+              data-testid="permission-registry-empty"
+            >
+              {t("roleEditor.registryEmpty")}
+            </p>
+          ) : (
+            <div className="space-y-6">
+              {registry.map((mod) => {
+                const wildcard = `${mod.key}.*`;
+                const hasWildcard = permissions.has(wildcard);
+                const allGranted =
+                  hasWildcard ||
+                  mod.permissions.every((p) => permissions.has(p.key));
+                const modLabel = t(mod.labelKey);
+                // toggleModuleWildcard only ever ADDS a new key (the wildcard
+                // itself) when the wildcard isn't already present — even when
+                // `allGranted` is already true via every individual permission,
+                // clicking still swaps those for the wildcard key, which the
+                // server validates as its own permission. So the only state
+                // that matters here is `hasWildcard`, not `allGranted`: mirror
+                // the server's exact check (matchPermission against the
+                // wildcard key `toggleModuleWildcard` adds), and only block the
+                // add direction — removing the wildcard is de-escalation and
+                // must stay allowed, same as isDefault: false in Fix 1.
+                const cannotAddWildcard =
+                  !currentUserIsOwner && !hasWildcard && !matchPermission(myPermissionSet, wildcard);
+                const moduleCheckbox = (
+                  <Checkbox
+                    checked={allGranted}
+                    disabled={cannotAddWildcard}
+                    onCheckedChange={() => toggleModuleWildcard(mod.key)}
+                    aria-label={`${modLabel} — ${t("roleEditor.allBadge")}`}
+                  />
+                );
+
+                return (
+                  <div key={mod.key}>
+                    <div className="flex items-center gap-2">
+                      {cannotAddWildcard ? (
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <span tabIndex={0} className="inline-flex">
+                              {moduleCheckbox}
+                            </span>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            {t("roleEditor.cannotGrantTooltip")}
+                          </TooltipContent>
+                        </Tooltip>
+                      ) : (
+                        moduleCheckbox
+                      )}
+                      <span className="font-label text-sm font-semibold">
+                        {modLabel}
+                      </span>
+                      {hasWildcard && (
+                        <Badge variant="secondary" className="text-xs">
+                          {t("roleEditor.allBadge")}
+                        </Badge>
+                      )}
+                    </div>
+                    <div className="ms-6 mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+                      {mod.permissions.map((perm) => {
+                        const checked = hasWildcard || permissions.has(perm.key);
+                        const cannotGrant =
+                          !currentUserIsOwner && !matchPermission(myPermissionSet, perm.key);
+                        const permLabel = t("roleEditor.permissionLabel", {
+                          action: t(perm.actionKey),
+                          resource: t(perm.resourceKey),
+                        });
+                        const checkbox = (
+                          <Checkbox
+                            checked={checked}
+                            disabled={hasWildcard || cannotGrant}
+                            onCheckedChange={() => togglePermission(perm.key)}
+                            className="mt-0.5"
+                            aria-label={`${role.name} — ${permLabel}`}
+                          />
+                        );
+                        return (
+                          <label
+                            key={perm.key}
+                            className="flex cursor-pointer items-start gap-2 rounded px-2 py-1.5 text-sm hover:bg-surface-high/50"
+                          >
+                            {cannotGrant ? (
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <span tabIndex={0} className="inline-flex">
+                                    {checkbox}
+                                  </span>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  {t("roleEditor.cannotGrantTooltip")}
+                                </TooltipContent>
+                              </Tooltip>
+                            ) : (
+                              checkbox
+                            )}
+                            <div>
+                              <span className="text-text">{permLabel}</span>
+                              <p className="font-mono text-xs text-text-muted">{perm.key}</p>
+                              {perm.key === "dashboard.roles.manage" && (
+                                <p className="text-xs text-warning">
+                                  {t("roleEditor.admissionNote")}
+                                </p>
+                              )}
+                            </div>
+                          </label>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </ScrollArea>
+      </div>
+
+      {/* Members — grants/revokes access immediately, independent of Save */}
+      <div className="space-y-2">
+        <Label>{t("roleEditor.membersSection.title")}</Label>
+        {cannotAssignRole ? (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <span tabIndex={0} className="inline-flex">
+                <RoleMemberPicker
+                  guildId={guildId}
+                  excludeIds={addExcludeIds}
+                  disabled
+                  onSelect={handleAddMember}
+                />
+              </span>
+            </TooltipTrigger>
+            <TooltipContent>{t("roleEditor.cannotGrantTooltip")}</TooltipContent>
+          </Tooltip>
+        ) : (
+          <RoleMemberPicker
+            guildId={guildId}
+            excludeIds={addExcludeIds}
+            disabled={assignMember.isPending}
+            onSelect={handleAddMember}
+          />
+        )}
+
+        {roleMembersLoading ? (
+          <div className="space-y-2" data-testid="role-members-loading">
+            <Skeleton className="h-10 w-full" />
+            <Skeleton className="h-10 w-full" />
+          </div>
+        ) : roleMembersError ? (
+          <Alert variant="destructive" data-testid="role-members-error">
+            {t("roleEditor.membersSection.error")}
+          </Alert>
+        ) : roleMembers.length === 0 ? (
+          <p className="text-sm text-text-muted" data-testid="role-members-empty">
+            {t("roleEditor.membersSection.empty")}
+          </p>
+        ) : (
+          <ul className="space-y-1.5" data-testid="role-members-list">
+            {roleMembers.map((m) => {
+              const member = resolvedById.get(m.userId);
+              const displayName = member?.displayName ?? m.userId;
+              const assignedByName = resolvedById.get(m.assignedBy)?.displayName ?? m.assignedBy;
+              const isRemoving =
+                removeMember.isPending && removeMember.variables?.userId === m.userId;
+              return (
+                <li
+                  key={m.id}
+                  className="flex items-center justify-between gap-3 rounded-md border border-outline-variant/20 bg-surface-low px-3 py-2"
+                >
+                  <div className="flex min-w-0 items-center gap-2.5">
+                    <img
+                      src={memberAvatarUrl(m.userId, member?.avatar ?? null)}
+                      alt={displayName}
+                      className="h-7 w-7 shrink-0 rounded-full"
+                    />
+                    <div className="min-w-0">
+                      <p className="truncate text-sm text-text">{displayName}</p>
+                      <p className="truncate text-xs text-text-muted">
+                        {t("roleEditor.membersSection.assignedBy", {
+                          name: assignedByName,
+                          date: new Date(m.createdAt).toLocaleDateString(),
+                        })}
+                      </p>
+                    </div>
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    disabled={isRemoving}
+                    onClick={() => handleRemoveMember(m.userId, displayName)}
+                    aria-label={t("roleEditor.membersSection.removeAria", { name: displayName })}
+                  >
+                    <Icon name="person_remove" size={16} />
+                  </Button>
+                </li>
               );
             })}
-          </div>
-        </ScrollArea>
+          </ul>
+        )}
       </div>
 
       {/* Actions */}
@@ -622,4 +931,10 @@ function setsEqual(a: Set<string>, b: Set<string>): boolean {
   if (a.size !== b.size) return false;
   for (const v of a) if (!b.has(v)) return false;
   return true;
+}
+
+function memberAvatarUrl(userId: string, avatar: string | null): string {
+  return avatar
+    ? `https://cdn.discordapp.com/avatars/${userId}/${avatar}.png?size=64`
+    : "https://cdn.discordapp.com/embed/avatars/0.png";
 }

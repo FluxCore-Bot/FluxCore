@@ -41,7 +41,26 @@
     "defaultRole": "Rola domyślna",
     "permissions": "Uprawnienia",
     "allBadge": "Wszystkie",
-    "discordRoles": "Role Discord"
+    "discordRoles": "Role Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Nie udało się wczytać listy uprawnień. Spróbuj odświeżyć stronę.",
+    "registryEmpty": "Nie ma jeszcze żadnych uprawnień do przypisania.",
+    "lookupsWarning": "Ta rola może konfigurować moduły, ale nie może wyszukiwać kanałów, ról ani członków — jej selektory będą puste.",
+    "grantLookups": "Przyznaj dostęp do selektorów",
+    "admissionNote": "Pozwala też posiadaczom nadawać innym członkom dostęp do panelu.",
+    "cannotGrantTooltip": "Nie możesz nadać uprawnienia, którego sam nie posiadasz.",
+    "membersSection": {
+      "title": "Członkowie",
+      "empty": "Do tej roli nie przypisano jeszcze żadnych członków.",
+      "error": "Nie udało się wczytać członków tej roli. Spróbuj odświeżyć stronę.",
+      "addPlaceholder": "Dodaj członka",
+      "searchPlaceholder": "Szukaj członków...",
+      "searchHint": "Wpisz imię, aby wyszukać członków",
+      "searchLoading": "Wczytywanie...",
+      "searchNoResults": "Brak wyników",
+      "assignedBy": "Dodano przez {{name}} dnia {{date}}",
+      "removeAria": "Usuń {{name}} z tej roli"
+    }
   },
   "roleForm": {
     "name": "Nazwa roli",
@@ -58,6 +77,7 @@
     "color": "Kolor"
   },
   "permissionCategories": {
+    "dashboard": "Pulpit nawigacyjny",
     "actions": "Akcje i automatyzacja",
     "tempvoice": "TempVoice",
     "welcome": "Powitanie i pożegnanie",
@@ -73,6 +93,33 @@
     "scheduled": "Zaplanowane wiadomości",
     "commands": "Komendy niestandardowe",
     "settings": "Ustawienia serwera"
+  },
+  "resources": {
+    "roles": "Role",
+    "audit": "Dziennik audytu",
+    "settings": "Ustawienia",
+    "lookups": "Selektory",
+    "cases": "Sprawy",
+    "warnings": "Ostrzeżenia",
+    "punishments": "Kary",
+    "rules": "Reguły",
+    "analytics": "Analityka",
+    "entries": "Wpisy",
+    "config": "Konfiguracja",
+    "test": "Wiadomości testowe",
+    "leaderboard": "Ranking",
+    "users": "Użytkownicy",
+    "rewards": "Nagrody",
+    "list": "Lista",
+    "panels": "Panele",
+    "messages": "Wiadomości",
+    "events": "Zdarzenia"
+  },
+  "permissionActions": {
+    "view": "Wyświetl",
+    "manage": "Zarządzaj",
+    "execute": "Wykonaj",
+    "purge": "Wyczyść"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Rola zaktualizowana",
     "roleUpdateFailed": "Nie udało się zaktualizować roli",
     "roleDeleted": "Rola usunięta",
-    "roleDeleteFailed": "Nie udało się usunąć roli"
+    "roleDeleteFailed": "Nie udało się usunąć roli",
+    "memberAdded": "Dodano {{name}} do roli",
+    "memberRemoved": "Usunięto {{name}} z roli",
+    "memberRestored": "Przywrócono {{name}} do roli"
   },
   "confirm": {
     "deleteTitle": "Usunąć rolę \"{{name}}\"?",

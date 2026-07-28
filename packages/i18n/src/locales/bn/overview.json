@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "আপনার অ্যাক্সেস",
+    "subtitle": "এই সার্ভারের ড্যাশবোর্ডের কিছু অংশে আপনাকে অ্যাক্সেস দেওয়া হয়েছে।",
+    "empty": "আপনার এখনও কোনো মডিউলে অ্যাক্সেস নেই।"
+  },
+  "errors": { "analyticsUnavailable": "অ্যানালিটিক্স লোড করা যায়নি।" }
 }

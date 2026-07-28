@@ -54,7 +54,7 @@ vi.mock("../../../../src/server/shared/middleware.js", () => ({
   requireAuth: vi.fn(async (request: { session: typeof mockSession }) => {
     request.session = mockSession;
   }),
-  requireGuildAdmin: vi.fn(async () => {}),
+  requireGuildAccess: vi.fn(async () => {}),
   requirePermission: vi.fn((..._keys: string[]) => async () => {}),
 }));
 

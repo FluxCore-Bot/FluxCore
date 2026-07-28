@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Il tuo accesso",
+    "subtitle": "Ti è stato concesso l'accesso ad alcune parti della dashboard di questo server.",
+    "empty": "Non hai ancora accesso a nessun modulo."
+  },
+  "errors": { "analyticsUnavailable": "Impossibile caricare le analisi." }
 }

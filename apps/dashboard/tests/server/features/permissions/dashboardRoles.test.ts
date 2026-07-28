@@ -29,12 +29,22 @@ vi.mock("../../../../src/server/shared/discordApi.js", () => ({
   getGuildOwnerId: (...args: unknown[]) => mockGetGuildOwnerId(...args),
 }));
 
-vi.mock("../../../../src/server/shared/permissions.js", () => ({
-  resolveUserPermissions: vi.fn().mockResolvedValue({ permissions: new Set(["*"]), isOwner: true }),
-  hasPermission: vi.fn().mockReturnValue(true),
-  invalidatePermissionCache: vi.fn(),
-  createDashboardAuditLog: vi.fn().mockResolvedValue(undefined),
-}));
+const mockResolveUserPermissions = vi.fn();
+vi.mock("../../../../src/server/shared/permissions.js", async (importOriginal) => {
+  // safeParsePermissions is kept real (rather than re-stubbed) so the
+  // isDefault-promotion and role-assignment escalation guards — which parse
+  // a role's persisted `permissions` column via this helper — behave exactly
+  // as they do outside tests.
+  const actual =
+    await importOriginal<typeof import("../../../../src/server/shared/permissions.js")>();
+  return {
+    safeParsePermissions: actual.safeParsePermissions,
+    resolveUserPermissions: (...args: unknown[]) => mockResolveUserPermissions(...args),
+    hasPermission: vi.fn().mockReturnValue(true),
+    invalidatePermissionCache: vi.fn(),
+    createDashboardAuditLog: vi.fn().mockResolvedValue(undefined),
+  };
+});
 
 const mockPrisma = {
   dashboardRole: {
@@ -85,6 +95,12 @@ describe("dashboard role routes", () => {
     vi.clearAllMocks();
     mockGetSession.mockResolvedValue(mockSession);
     mockIsBotInGuild.mockResolvedValue(true);
+    mockResolveUserPermissions.mockResolvedValue({
+      permissions: new Set(["*"]),
+      isOwner: true,
+      isGuildAdmin: true,
+      isGuildMember: true,
+    });
     mockPrisma.dashboardRole.count.mockResolvedValue(0);
     mockPrisma.dashboardRole.aggregate.mockResolvedValue({ _max: { position: 0 } });
     app = await buildApp();
@@ -244,6 +260,256 @@ describe("dashboard role routes", () => {
         payload: { preset: "nonexistent" },
       });
       expect(res.statusCode).toBe(400);
+    });
+  });
+
+  describe("PUT /api/guilds/:guildId/dashboard-roles/:roleId", () => {
+    it("refuses to promote a role to default when the caller lacks the role's permissions", async () => {
+      mockResolveUserPermissions.mockResolvedValue({
+        permissions: new Set(["dashboard.roles.manage", "tickets.list.view"]),
+        isOwner: false,
+        isGuildAdmin: false,
+        isGuildMember: true,
+      });
+      mockPrisma.dashboardRole.findUnique.mockResolvedValue({
+        id: "role-1",
+        guildId: "guild-1",
+        name: "Full Admin",
+        permissions: JSON.stringify(["*"]),
+        isDefault: false,
+      });
+
+      const res = await app.inject({
+        method: "PUT",
+        url: "/api/guilds/guild-1/dashboard-roles/role-1",
+        cookies: { session: app.signCookie("valid") },
+        payload: { isDefault: true },
+      });
+
+      expect(res.statusCode).toBe(403);
+      expect(mockPrisma.dashboardRole.update).not.toHaveBeenCalled();
+    });
+
+    it("lets the owner promote any role to default", async () => {
+      mockResolveUserPermissions.mockResolvedValue({
+        permissions: new Set(["*"]),
+        isOwner: true,
+        isGuildAdmin: true,
+        isGuildMember: true,
+      });
+      mockPrisma.dashboardRole.findUnique.mockResolvedValue({
+        id: "role-1",
+        guildId: "guild-1",
+        name: "Full Admin",
+        permissions: JSON.stringify(["*"]),
+        isDefault: false,
+      });
+      mockPrisma.dashboardRole.update.mockResolvedValue({
+        id: "role-1",
+        guildId: "guild-1",
+        name: "Full Admin",
+        color: null,
+        position: 1,
+        isDefault: true,
+        permissions: JSON.stringify(["*"]),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+
+      const res = await app.inject({
+        method: "PUT",
+        url: "/api/guilds/guild-1/dashboard-roles/role-1",
+        cookies: { session: app.signCookie("valid") },
+        payload: { isDefault: true },
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(mockPrisma.dashboardRole.update).toHaveBeenCalled();
+    });
+
+    it("lets a caller holding the role's permissions promote it to default", async () => {
+      mockResolveUserPermissions.mockResolvedValue({
+        permissions: new Set(["dashboard.roles.manage", "tickets.*"]),
+        isOwner: false,
+        isGuildAdmin: false,
+        isGuildMember: true,
+      });
+      mockPrisma.dashboardRole.findUnique.mockResolvedValue({
+        id: "role-1",
+        guildId: "guild-1",
+        name: "Ticket Staff",
+        permissions: JSON.stringify(["tickets.list.view"]),
+        isDefault: false,
+      });
+      mockPrisma.dashboardRole.update.mockResolvedValue({
+        id: "role-1",
+        guildId: "guild-1",
+        name: "Ticket Staff",
+        color: null,
+        position: 1,
+        isDefault: true,
+        permissions: JSON.stringify(["tickets.list.view"]),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+
+      const res = await app.inject({
+        method: "PUT",
+        url: "/api/guilds/guild-1/dashboard-roles/role-1",
+        cookies: { session: app.signCookie("valid") },
+        payload: { isDefault: true },
+      });
+
+      expect(res.statusCode).toBe(200);
+    });
+
+    it("does not block demoting a role from default (isDefault: false)", async () => {
+      mockResolveUserPermissions.mockResolvedValue({
+        permissions: new Set(["dashboard.roles.manage", "tickets.list.view"]),
+        isOwner: false,
+        isGuildAdmin: false,
+        isGuildMember: true,
+      });
+      mockPrisma.dashboardRole.findUnique.mockResolvedValue({
+        id: "role-1",
+        guildId: "guild-1",
+        name: "Full Admin",
+        permissions: JSON.stringify(["*"]),
+        isDefault: true,
+      });
+      mockPrisma.dashboardRole.update.mockResolvedValue({
+        id: "role-1",
+        guildId: "guild-1",
+        name: "Full Admin",
+        color: null,
+        position: 1,
+        isDefault: false,
+        permissions: JSON.stringify(["*"]),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+
+      const res = await app.inject({
+        method: "PUT",
+        url: "/api/guilds/guild-1/dashboard-roles/role-1",
+        cookies: { session: app.signCookie("valid") },
+        payload: { isDefault: false },
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(mockPrisma.dashboardRole.update).toHaveBeenCalled();
+    });
+  });
+
+  describe("POST /api/guilds/:guildId/dashboard-roles/:roleId/members", () => {
+    it("refuses to assign a role holding permissions the caller lacks", async () => {
+      mockResolveUserPermissions.mockResolvedValue({
+        permissions: new Set(["dashboard.roles.manage"]),
+        isOwner: false,
+        isGuildAdmin: false,
+        isGuildMember: true,
+      });
+      mockPrisma.dashboardRole.findUnique.mockResolvedValue({
+        id: "role-1",
+        guildId: "guild-1",
+        name: "Full Admin",
+        permissions: JSON.stringify(["*"]),
+      });
+
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/dashboard-roles/role-1/members",
+        cookies: { session: app.signCookie("valid") },
+        payload: { userId: "user-2" },
+      });
+
+      expect(res.statusCode).toBe(403);
+      expect(mockPrisma.dashboardRoleAssignment.create).not.toHaveBeenCalled();
+    });
+
+    it("refuses to assign any role to yourself", async () => {
+      mockResolveUserPermissions.mockResolvedValue({
+        permissions: new Set(["dashboard.roles.manage", "tickets.list.view"]),
+        isOwner: false,
+        isGuildAdmin: false,
+        isGuildMember: true,
+      });
+      mockPrisma.dashboardRole.findUnique.mockResolvedValue({
+        id: "role-1",
+        guildId: "guild-1",
+        name: "Ticket Staff",
+        permissions: JSON.stringify(["tickets.list.view"]),
+      });
+
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/dashboard-roles/role-1/members",
+        cookies: { session: app.signCookie("valid") },
+        payload: { userId: "user-1" },
+      });
+
+      expect(res.statusCode).toBe(403);
+      expect(mockPrisma.dashboardRoleAssignment.create).not.toHaveBeenCalled();
+    });
+
+    it("lets the owner assign anything, including to themselves", async () => {
+      mockResolveUserPermissions.mockResolvedValue({
+        permissions: new Set(["*"]),
+        isOwner: true,
+        isGuildAdmin: true,
+        isGuildMember: true,
+      });
+      mockPrisma.dashboardRole.findUnique.mockResolvedValue({
+        id: "role-1",
+        guildId: "guild-1",
+        name: "Full Admin",
+        permissions: JSON.stringify(["*"]),
+      });
+      mockPrisma.dashboardRoleAssignment.create.mockResolvedValue({
+        id: "assignment-1",
+        userId: "user-1",
+        assignedBy: "user-1",
+        createdAt: new Date(),
+      });
+
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/dashboard-roles/role-1/members",
+        cookies: { session: app.signCookie("valid") },
+        payload: { userId: "user-1" },
+      });
+
+      expect(res.statusCode).toBe(201);
+    });
+
+    it("allows assigning a role whose permissions the caller holds", async () => {
+      mockResolveUserPermissions.mockResolvedValue({
+        permissions: new Set(["dashboard.roles.manage", "tickets.*"]),
+        isOwner: false,
+        isGuildAdmin: false,
+        isGuildMember: true,
+      });
+      mockPrisma.dashboardRole.findUnique.mockResolvedValue({
+        id: "role-1",
+        guildId: "guild-1",
+        name: "Ticket Staff",
+        permissions: JSON.stringify(["tickets.list.view"]),
+      });
+      mockPrisma.dashboardRoleAssignment.create.mockResolvedValue({
+        id: "assignment-2",
+        userId: "user-2",
+        assignedBy: "user-1",
+        createdAt: new Date(),
+      });
+
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/dashboard-roles/role-1/members",
+        cookies: { session: app.signCookie("valid") },
+        payload: { userId: "user-2" },
+      });
+
+      expect(res.statusCode).toBe(201);
     });
   });
 });

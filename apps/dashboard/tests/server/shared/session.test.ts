@@ -44,8 +44,6 @@ const {
   createSession,
   getSession,
   deleteSession,
-  ensureFreshGuilds,
-  __setSessionCacheForTest,
 } = await import("../../../src/server/shared/session.js");
 
 describe("session module", () => {
@@ -174,56 +172,6 @@ describe("session module", () => {
       const firstCreateOrder =
         mockPrisma.dashboardSession.create.mock.invocationCallOrder[0];
       expect(firstDeleteOrder).toBeLessThan(firstCreateOrder);
-    });
-  });
-
-  describe("ensureFreshGuilds", () => {
-    it("re-fetches when cached entry is older than 5 minutes", async () => {
-      const sixMinAgo = Date.now() - 6 * 60 * 1000;
-      const session = {
-        userId: "u",
-        username: "u",
-        avatar: null,
-        accessToken: "tok",
-        guilds: [],
-        createdAt: Date.now(),
-      };
-      __setSessionCacheForTest("sid-stale", {
-        session,
-        cacheExpiresAt: Date.now() + 30_000,
-        sessionExpiresAt: Date.now() + 1_000_000,
-        guildsRefreshedAt: sixMinAgo,
-      });
-      mockFetchGuilds.mockResolvedValueOnce([
-        { id: "g1", name: "g", icon: null, permissions: "32" },
-      ]);
-
-      const result = await ensureFreshGuilds("sid-stale");
-      expect(mockFetchGuilds).toHaveBeenCalledOnce();
-      expect(result).not.toBeNull();
-      expect(result![0]?.id).toBe("g1");
-    });
-
-    it("does not re-fetch when cached entry is fresh", async () => {
-      mockFetchGuilds.mockClear();
-      __setSessionCacheForTest("sid-fresh", {
-        session: {
-          userId: "u",
-          username: "u",
-          avatar: null,
-          accessToken: "tok",
-          guilds: [{ id: "g0", name: "g", icon: null, permissions: "32" }],
-          createdAt: Date.now(),
-        },
-        cacheExpiresAt: Date.now() + 30_000,
-        sessionExpiresAt: Date.now() + 1_000_000,
-        guildsRefreshedAt: Date.now() - 1_000,
-      });
-
-      const result = await ensureFreshGuilds("sid-fresh");
-      expect(mockFetchGuilds).not.toHaveBeenCalled();
-      expect(result).not.toBeNull();
-      expect(result![0]?.id).toBe("g0");
     });
   });
 

@@ -41,7 +41,26 @@
     "defaultRole": "Verstekrol",
     "permissions": "Toestemmings",
     "allBadge": "Almal",
-    "discordRoles": "Discord-rolle"
+    "discordRoles": "Discord-rolle",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Die toestemminglys kon nie gelaai word nie. Probeer om die bladsy te herlaai.",
+    "registryEmpty": "Daar is nog geen toestemmings beskikbaar om toe te ken nie.",
+    "lookupsWarning": "Hierdie rol kan modules opstel, maar kan nie kanale, rolle of lede opsoek nie — sy kiesers sal leeg wees.",
+    "grantLookups": "Verleen kieser-toegang",
+    "admissionNote": "Laat houers ook toe om ander lede dashboard-toegang te gee.",
+    "cannotGrantTooltip": "Jy kan nie 'n toestemming toeken wat jy nie self het nie.",
+    "membersSection": {
+      "title": "Lede",
+      "empty": "Nog geen lede is aan hierdie rol toegewys nie.",
+      "error": "Kon nie hierdie rol se lede laai nie. Probeer om die bladsy te herlaai.",
+      "addPlaceholder": "Voeg 'n lid by",
+      "searchPlaceholder": "Soek lede...",
+      "searchHint": "Tik 'n naam om lede te soek",
+      "searchLoading": "Laai tans...",
+      "searchNoResults": "Geen resultate nie",
+      "assignedBy": "Bygevoeg deur {{name}} op {{date}}",
+      "removeAria": "Verwyder {{name}} uit hierdie rol"
+    }
   },
   "roleForm": {
     "name": "Rolnaam",
@@ -58,6 +77,7 @@
     "color": "Kleur"
   },
   "permissionCategories": {
+    "dashboard": "Kontrolepaneel",
     "actions": "Aksies & Outomatisering",
     "tempvoice": "TempVoice",
     "welcome": "Welkom & Afskeid",
@@ -73,6 +93,33 @@
     "scheduled": "Geskeduleerde Boodskappe",
     "commands": "Pasgemaakte Opdragte",
     "settings": "Bedienerinstellings"
+  },
+  "resources": {
+    "roles": "Rolle",
+    "audit": "Ouditlogboek",
+    "settings": "Instellings",
+    "lookups": "Kiesers",
+    "cases": "Sake",
+    "warnings": "Waarskuwings",
+    "punishments": "Strawwe",
+    "rules": "Reëls",
+    "analytics": "Analise",
+    "entries": "Inskrywings",
+    "config": "Konfigurasie",
+    "test": "Toetsboodskappe",
+    "leaderboard": "Ranglys",
+    "users": "Gebruikers",
+    "rewards": "Belonings",
+    "list": "Lys",
+    "panels": "Panele",
+    "messages": "Boodskappe",
+    "events": "Gebeurtenisse"
+  },
+  "permissionActions": {
+    "view": "Bekyk",
+    "manage": "Bestuur",
+    "execute": "Voer uit",
+    "purge": "Vee uit"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Rol bygewerk",
     "roleUpdateFailed": "Kon nie rol bywerk nie",
     "roleDeleted": "Rol verwyder",
-    "roleDeleteFailed": "Kon nie rol verwyder nie"
+    "roleDeleteFailed": "Kon nie rol verwyder nie",
+    "memberAdded": "{{name}} by die rol gevoeg",
+    "memberRemoved": "{{name}} van die rol verwyder",
+    "memberRestored": "{{name}} in die rol herstel"
   },
   "confirm": {
     "deleteTitle": "Verwyder rol \"{{name}}\"?",

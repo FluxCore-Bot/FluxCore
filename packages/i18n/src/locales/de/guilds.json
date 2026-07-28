@@ -8,6 +8,7 @@
     "description": "Stelle sicher, dass du auf mindestens einem Discord-Server die Berechtigung „Server verwalten“ hast, und aktualisiere dann."
   },
   "badge": {
+    "delegated": "Delegierter Zugriff",
     "botNotAdded": "Bot nicht hinzugefügt"
   },
   "addBot": "FluxCore hinzufügen",

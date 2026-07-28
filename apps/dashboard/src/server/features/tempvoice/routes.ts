@@ -1,6 +1,6 @@
 import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
-import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { requireAuth, requireGuildAccess, requirePermission } from "../../shared/middleware.js";
 import {
   fetchGuildConfigs,
   addGuildConfig,
@@ -31,7 +31,7 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/tempvoice",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tempvoice.config.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("tempvoice.config.view")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, {
         tag: "TempVoice",
         response: { 200: { type: "array", items: { type: "object", additionalProperties: true } } },
@@ -48,7 +48,7 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/tempvoice",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tempvoice.config.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("tempvoice.config.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -139,7 +139,7 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/tempvoice/:configId",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tempvoice.config.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("tempvoice.config.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -226,7 +226,7 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
   app.delete(
     "/api/guilds/:guildId/tempvoice/:configId",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("tempvoice.config.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("tempvoice.config.manage")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, {
         tag: "TempVoice",
         response: { 200: { type: "object", properties: { success: { type: "boolean" } } } },

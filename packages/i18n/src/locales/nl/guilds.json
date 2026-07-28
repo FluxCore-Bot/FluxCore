@@ -8,6 +8,7 @@
     "description": "Zorg dat je op minstens één Discord-server het recht Server beheren hebt en vernieuw daarna."
   },
   "badge": {
+    "delegated": "Gedelegeerde toegang",
     "botNotAdded": "Bot niet toegevoegd"
   },
   "addBot": "FluxCore toevoegen",

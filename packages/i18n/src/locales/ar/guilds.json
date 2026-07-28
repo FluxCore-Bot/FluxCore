@@ -8,6 +8,7 @@
     "description": "تأكد من امتلاكك صلاحية إدارة الخادم في خادم Discord واحد على الأقل، ثم قم بالتحديث."
   },
   "badge": {
+    "delegated": "وصول مفوَّض",
     "botNotAdded": "البوت غير مُضاف"
   },
   "addBot": "أضف FluxCore",

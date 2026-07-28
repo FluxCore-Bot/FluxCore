@@ -1,6 +1,6 @@
 import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
-import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { requireAuth, requireGuildAccess, requirePermission } from "../../shared/middleware.js";
 import {
   getRolePanels,
   getRolePanel,
@@ -24,7 +24,7 @@ export function registerRolePanelRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/role-panels",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("roles.panels.view")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "RolePanels", response: { 200: { type: "array", items: {} } } }),
     },
     async (request, reply) => {
@@ -38,7 +38,7 @@ export function registerRolePanelRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/role-panels",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("roles.panels.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -136,7 +136,7 @@ export function registerRolePanelRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/role-panels/:panelId",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("roles.panels.manage")],
       schema: withDocs(
         {
           params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -242,7 +242,7 @@ export function registerRolePanelRoutes(app: FastifyInstance): void {
   app.delete(
     "/api/guilds/:guildId/role-panels/:panelId",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("roles.panels.manage")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "RolePanels", response: { 200: { type: "object", properties: { success: { type: "boolean" } } } } }),
     },
     async (request, reply) => {
@@ -267,7 +267,7 @@ export function registerRolePanelRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/role-panels/:panelId/send",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("roles.panels.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("roles.panels.manage")],
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
         {

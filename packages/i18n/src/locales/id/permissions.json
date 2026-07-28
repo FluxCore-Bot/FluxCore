@@ -41,7 +41,26 @@
     "defaultRole": "Peran bawaan",
     "permissions": "Izin",
     "allBadge": "Semua",
-    "discordRoles": "Peran Discord"
+    "discordRoles": "Peran Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Daftar izin tidak dapat dimuat. Coba segarkan halaman.",
+    "registryEmpty": "Belum ada izin yang tersedia untuk diberikan.",
+    "lookupsWarning": "Peran ini dapat mengonfigurasi modul tetapi tidak dapat mencari saluran, peran, atau anggota — pemilihnya akan kosong.",
+    "grantLookups": "Berikan akses pemilih",
+    "admissionNote": "Juga memungkinkan pemegangnya memberikan akses dasbor kepada anggota lain.",
+    "cannotGrantTooltip": "Anda tidak dapat memberikan izin yang tidak Anda miliki sendiri.",
+    "membersSection": {
+      "title": "Anggota",
+      "empty": "Belum ada anggota yang diberi peran ini.",
+      "error": "Anggota peran ini tidak dapat dimuat. Coba segarkan halaman.",
+      "addPlaceholder": "Tambahkan anggota",
+      "searchPlaceholder": "Cari anggota...",
+      "searchHint": "Ketik nama untuk mencari anggota",
+      "searchLoading": "Memuat...",
+      "searchNoResults": "Tidak ada hasil",
+      "assignedBy": "Ditambahkan oleh {{name}} pada {{date}}",
+      "removeAria": "Hapus {{name}} dari peran ini"
+    }
   },
   "roleForm": {
     "name": "Nama Peran",
@@ -58,6 +77,7 @@
     "color": "Warna"
   },
   "permissionCategories": {
+    "dashboard": "Dasbor",
     "actions": "Aksi & Otomasi",
     "tempvoice": "TempVoice",
     "welcome": "Sambutan & Perpisahan",
@@ -73,6 +93,33 @@
     "scheduled": "Pesan Terjadwal",
     "commands": "Perintah Kustom",
     "settings": "Pengaturan Server"
+  },
+  "resources": {
+    "roles": "Peran",
+    "audit": "Log Audit",
+    "settings": "Pengaturan",
+    "lookups": "Pemilih",
+    "cases": "Kasus",
+    "warnings": "Peringatan",
+    "punishments": "Hukuman",
+    "rules": "Aturan",
+    "analytics": "Analitik",
+    "entries": "Entri",
+    "config": "Konfigurasi",
+    "test": "Pesan Uji Coba",
+    "leaderboard": "Papan Peringkat",
+    "users": "Pengguna",
+    "rewards": "Hadiah",
+    "list": "Daftar",
+    "panels": "Panel",
+    "messages": "Pesan",
+    "events": "Kejadian"
+  },
+  "permissionActions": {
+    "view": "Lihat",
+    "manage": "Kelola",
+    "execute": "Jalankan",
+    "purge": "Bersihkan"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Peran diperbarui",
     "roleUpdateFailed": "Gagal memperbarui peran",
     "roleDeleted": "Peran dihapus",
-    "roleDeleteFailed": "Gagal menghapus peran"
+    "roleDeleteFailed": "Gagal menghapus peran",
+    "memberAdded": "{{name}} ditambahkan ke peran",
+    "memberRemoved": "{{name}} dihapus dari peran",
+    "memberRestored": "{{name}} dipulihkan ke peran"
   },
   "confirm": {
     "deleteTitle": "Hapus peran \"{{name}}\"?",

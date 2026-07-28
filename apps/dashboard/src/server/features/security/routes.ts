@@ -1,6 +1,6 @@
 import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
-import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { requireAuth, requireGuildAccess, requirePermission } from "../../shared/middleware.js";
 import {
   getAntiRaidConfig,
   upsertAntiRaidConfig,
@@ -14,7 +14,7 @@ export function registerAntiRaidRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/antiraid-config",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("security.config.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("security.config.view")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "AntiRaid", response: { 200: { type: "object", additionalProperties: true } } }),
     },
     async (request, reply) => {
@@ -28,7 +28,7 @@ export function registerAntiRaidRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/antiraid-config",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("security.config.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("security.config.manage")],
       schema: withDocs({
         params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
         body: {
@@ -75,7 +75,7 @@ export function registerAntiRaidRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/raid-events",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("security.events.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("security.events.view")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] }, querystring: { type: "object", properties: { page: { type: "integer", minimum: 1, default: 1 }, limit: { type: "integer", minimum: 1, maximum: 100, default: 20 }, sort: { type: "string" } } } }, { tag: "AntiRaid", response: { 200: { type: "object", additionalProperties: true } } }),
     },
     async (request, reply) => {

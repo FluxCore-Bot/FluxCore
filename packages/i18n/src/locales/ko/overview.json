@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "내 액세스 권한",
+    "subtitle": "이 서버 대시보드의 일부에 대한 액세스 권한이 부여되었습니다.",
+    "empty": "아직 접근 가능한 모듈이 없습니다."
+  },
+  "errors": { "analyticsUnavailable": "분석 데이터를 불러올 수 없습니다." }
 }

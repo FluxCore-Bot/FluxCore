@@ -29,5 +29,11 @@
     "title": "Tendance des exécutions",
     "success": "Réussite",
     "errors": "Erreurs"
-  }
+  },
+  "access": {
+    "title": "Votre accès",
+    "subtitle": "Vous avez reçu l'accès à certaines parties du tableau de bord de ce serveur.",
+    "empty": "Vous n'avez encore accès à aucun module."
+  },
+  "errors": { "analyticsUnavailable": "Impossible de charger les analyses." }
 }

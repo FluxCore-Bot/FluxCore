@@ -41,7 +41,26 @@
     "defaultRole": "نقش پیش‌فرض",
     "permissions": "دسترسی‌ها",
     "allBadge": "همه",
-    "discordRoles": "نقش‌های Discord"
+    "discordRoles": "نقش‌های Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "فهرست دسترسی‌ها بارگذاری نشد. صفحه را دوباره بارگذاری کنید.",
+    "registryEmpty": "هنوز هیچ دسترسی‌ای برای اختصاص دادن وجود ندارد.",
+    "lookupsWarning": "این نقش می‌تواند ماژول‌ها را پیکربندی کند اما نمی‌تواند کانال‌ها، نقش‌ها یا اعضا را جستجو کند — انتخابگرهای آن خالی خواهند بود.",
+    "grantLookups": "اعطای دسترسی به انتخابگرها",
+    "admissionNote": "همچنین به دارندگان اجازه می‌دهد به اعضای دیگر دسترسی به داشبورد بدهند.",
+    "cannotGrantTooltip": "شما نمی‌توانید مجوزی را که خودتان ندارید، اعطا کنید.",
+    "membersSection": {
+      "title": "اعضا",
+      "empty": "هنوز هیچ عضوی به این نقش اختصاص داده نشده است.",
+      "error": "اعضای این نقش بارگذاری نشدند. صفحه را دوباره بارگذاری کنید.",
+      "addPlaceholder": "افزودن عضو",
+      "searchPlaceholder": "جستجوی اعضا...",
+      "searchHint": "برای جستجوی اعضا نامی تایپ کنید",
+      "searchLoading": "در حال بارگذاری...",
+      "searchNoResults": "نتیجه‌ای یافت نشد",
+      "assignedBy": "افزوده‌شده توسط {{name}} در {{date}}",
+      "removeAria": "حذف {{name}} از این نقش"
+    }
   },
   "roleForm": {
     "name": "نام نقش",
@@ -58,6 +77,7 @@
     "color": "رنگ"
   },
   "permissionCategories": {
+    "dashboard": "داشبورد",
     "actions": "عملیات و اتوماسیون",
     "tempvoice": "کانال‌های صوتی موقت",
     "welcome": "خوش‌آمدگویی و بدرقه",
@@ -73,6 +93,33 @@
     "scheduled": "پیام‌های زمان‌بندی شده",
     "commands": "دستورات سفارشی",
     "settings": "تنظیمات سرور"
+  },
+  "resources": {
+    "roles": "نقش‌ها",
+    "audit": "گزارش بازرسی",
+    "settings": "تنظیمات",
+    "lookups": "انتخابگرها",
+    "cases": "پرونده‌ها",
+    "warnings": "هشدارها",
+    "punishments": "تنبیهات",
+    "rules": "قوانین",
+    "analytics": "تحلیل‌ها",
+    "entries": "ورودی‌ها",
+    "config": "پیکربندی",
+    "test": "پیام‌های آزمایشی",
+    "leaderboard": "جدول رتبه‌بندی",
+    "users": "کاربران",
+    "rewards": "پاداش‌ها",
+    "list": "فهرست",
+    "panels": "پنل‌ها",
+    "messages": "پیام‌ها",
+    "events": "رویدادها"
+  },
+  "permissionActions": {
+    "view": "مشاهده",
+    "manage": "مدیریت",
+    "execute": "اجرا",
+    "purge": "پاک‌سازی"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "نقش به‌روزرسانی شد",
     "roleUpdateFailed": "به‌روزرسانی نقش ناموفق بود",
     "roleDeleted": "نقش حذف شد",
-    "roleDeleteFailed": "حذف نقش ناموفق بود"
+    "roleDeleteFailed": "حذف نقش ناموفق بود",
+    "memberAdded": "{{name}} به نقش افزوده شد",
+    "memberRemoved": "{{name}} از نقش حذف شد",
+    "memberRestored": "{{name}} به نقش بازگردانده شد"
   },
   "confirm": {
     "deleteTitle": "حذف نقش \"{{name}}\"؟",

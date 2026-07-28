@@ -41,7 +41,26 @@
     "defaultRole": "預設角色",
     "permissions": "權限",
     "allBadge": "全部",
-    "discordRoles": "Discord 角色"
+    "discordRoles": "Discord 角色",
+    "permissionLabel": "{{action}}{{resource}}",
+    "registryError": "無法載入權限清單。請嘗試重新整理頁面。",
+    "registryEmpty": "目前沒有可指派的權限。",
+    "lookupsWarning": "此身分組可以設定模組，但無法查詢頻道、身分組或成員 — 其選擇器將是空的。",
+    "grantLookups": "授予選擇器存取權",
+    "admissionNote": "也允許持有者授予其他成員儀表板存取權。",
+    "cannotGrantTooltip": "你不能授予自己都沒有的權限。",
+    "membersSection": {
+      "title": "成員",
+      "empty": "此身分組尚未指派任何成員。",
+      "error": "無法載入此身分組的成員。請嘗試重新整理頁面。",
+      "addPlaceholder": "新增成員",
+      "searchPlaceholder": "搜尋成員...",
+      "searchHint": "輸入姓名以搜尋成員",
+      "searchLoading": "載入中...",
+      "searchNoResults": "沒有結果",
+      "assignedBy": "由 {{name}} 於 {{date}} 新增",
+      "removeAria": "將 {{name}} 從此身分組移除"
+    }
   },
   "roleForm": {
     "name": "角色名稱",
@@ -58,6 +77,7 @@
     "color": "顏色"
   },
   "permissionCategories": {
+    "dashboard": "儀表板",
     "actions": "動作與自動化",
     "tempvoice": "臨時語音",
     "welcome": "歡迎與告別",
@@ -73,6 +93,33 @@
     "scheduled": "排程訊息",
     "commands": "自訂指令",
     "settings": "伺服器設定"
+  },
+  "resources": {
+    "roles": "角色",
+    "audit": "稽核日誌",
+    "settings": "設定",
+    "lookups": "選擇器",
+    "cases": "案例",
+    "warnings": "警告",
+    "punishments": "處罰",
+    "rules": "規則",
+    "analytics": "分析",
+    "entries": "項目",
+    "config": "組態",
+    "test": "測試訊息",
+    "leaderboard": "排行榜",
+    "users": "使用者",
+    "rewards": "獎勵",
+    "list": "清單",
+    "panels": "面板",
+    "messages": "訊息",
+    "events": "事件"
+  },
+  "permissionActions": {
+    "view": "檢視",
+    "manage": "管理",
+    "execute": "執行",
+    "purge": "清除"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "角色已更新",
     "roleUpdateFailed": "更新角色失敗",
     "roleDeleted": "角色已刪除",
-    "roleDeleteFailed": "刪除角色失敗"
+    "roleDeleteFailed": "刪除角色失敗",
+    "memberAdded": "已將 {{name}} 新增至身分組",
+    "memberRemoved": "已將 {{name}} 從身分組移除",
+    "memberRestored": "已將 {{name}} 復原至身分組"
   },
   "confirm": {
     "deleteTitle": "刪除角色「{{name}}」？",

@@ -41,7 +41,26 @@
     "defaultRole": "Numatytoji role",
     "permissions": "Leidimai",
     "allBadge": "Visi",
-    "discordRoles": "Discord roles"
+    "discordRoles": "Discord roles",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Nepavyko įkelti leidimų sąrašo. Pabandykite iš naujo įkelti puslapį.",
+    "registryEmpty": "Kol kas nėra priskirtinų leidimų.",
+    "lookupsWarning": "Šis vaidmuo gali konfigūruoti modulius, bet negali ieškoti kanalų, vaidmenų ar narių — jo rinkikliai bus tušti.",
+    "grantLookups": "Suteikti prieigą prie rinkiklių",
+    "admissionNote": "Taip pat leidžia turėtojams suteikti kitiems nariams prieigą prie skydelio.",
+    "cannotGrantTooltip": "Negalite suteikti leidimo, kurio patys neturite.",
+    "membersSection": {
+      "title": "Nariai",
+      "empty": "Šiam vaidmeniui dar nepriskirta narių.",
+      "error": "Nepavyko įkelti šio vaidmens narių. Pabandykite iš naujo įkelti puslapį.",
+      "addPlaceholder": "Pridėti narį",
+      "searchPlaceholder": "Ieškoti narių...",
+      "searchHint": "Įveskite vardą, kad ieškotumėte narių",
+      "searchLoading": "Kraunama...",
+      "searchNoResults": "Rezultatų nėra",
+      "assignedBy": "Pridėjo {{name}}, {{date}}",
+      "removeAria": "Pašalinti {{name}} iš šio vaidmens"
+    }
   },
   "roleForm": {
     "name": "Roles pavadinimas",
@@ -58,6 +77,7 @@
     "color": "Spalva"
   },
   "permissionCategories": {
+    "dashboard": "Valdymo skydelis",
     "actions": "Veiksmai ir automatizavimas",
     "tempvoice": "TempVoice",
     "welcome": "Pasisveikinimas ir atsisveikinimas",
@@ -73,6 +93,33 @@
     "scheduled": "Suplanuotos zinutes",
     "commands": "Pasirinktines komandos",
     "settings": "Serverio nustatymai"
+  },
+  "resources": {
+    "roles": "Rolės",
+    "audit": "Audito žurnalas",
+    "settings": "Nustatymai",
+    "lookups": "Parinkikliai",
+    "cases": "Atvejai",
+    "warnings": "Įspėjimai",
+    "punishments": "Bausmės",
+    "rules": "Taisyklės",
+    "analytics": "Analitika",
+    "entries": "Įrašai",
+    "config": "Konfigūracija",
+    "test": "Bandomieji pranešimai",
+    "leaderboard": "Lyderių lentelė",
+    "users": "Naudotojai",
+    "rewards": "Apdovanojimai",
+    "list": "Sąrašas",
+    "panels": "Paneliai",
+    "messages": "Žinutės",
+    "events": "Įvykiai"
+  },
+  "permissionActions": {
+    "view": "Peržiūrėti",
+    "manage": "Valdyti",
+    "execute": "Vykdyti",
+    "purge": "Išvalyti"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Role atnaujinta",
     "roleUpdateFailed": "Nepavyko atnaujinti roles",
     "roleDeleted": "Role istrinta",
-    "roleDeleteFailed": "Nepavyko istrinti roles"
+    "roleDeleteFailed": "Nepavyko istrinti roles",
+    "memberAdded": "{{name}} pridėtas prie vaidmens",
+    "memberRemoved": "{{name}} pašalintas iš vaidmens",
+    "memberRestored": "{{name}} atkurtas vaidmenyje"
   },
   "confirm": {
     "deleteTitle": "Istrinti role \"{{name}}\"?",

@@ -41,7 +41,26 @@
     "defaultRole": "기본 역할",
     "permissions": "권한",
     "allBadge": "전체",
-    "discordRoles": "Discord 역할"
+    "discordRoles": "Discord 역할",
+    "permissionLabel": "{{resource}} {{action}}",
+    "registryError": "권한 목록을 불러올 수 없습니다. 페이지를 새로고침해 보세요.",
+    "registryEmpty": "아직 할당할 수 있는 권한이 없습니다.",
+    "lookupsWarning": "이 역할은 모듈을 구성할 수 있지만 채널, 역할 또는 멤버를 조회할 수 없습니다 — 선택기가 비어 있게 됩니다.",
+    "grantLookups": "선택기 접근 권한 부여",
+    "admissionNote": "보유자가 다른 멤버에게 대시보드 접근 권한을 부여할 수도 있게 합니다.",
+    "cannotGrantTooltip": "본인이 가지고 있지 않은 권한은 부여할 수 없습니다.",
+    "membersSection": {
+      "title": "멤버",
+      "empty": "아직 이 역할에 할당된 멤버가 없습니다.",
+      "error": "이 역할의 멤버를 불러올 수 없습니다. 페이지를 새로고침해 보세요.",
+      "addPlaceholder": "멤버 추가",
+      "searchPlaceholder": "멤버 검색...",
+      "searchHint": "멤버를 검색하려면 이름을 입력하세요",
+      "searchLoading": "불러오는 중...",
+      "searchNoResults": "결과 없음",
+      "assignedBy": "{{name}}님이 {{date}}에 추가함",
+      "removeAria": "{{name}}님을 이 역할에서 제거"
+    }
   },
   "roleForm": {
     "name": "역할 이름",
@@ -58,6 +77,7 @@
     "color": "색상"
   },
   "permissionCategories": {
+    "dashboard": "대시보드",
     "actions": "액션 및 자동화",
     "tempvoice": "임시 음성",
     "welcome": "환영 및 작별",
@@ -73,6 +93,33 @@
     "scheduled": "예약 메시지",
     "commands": "커스텀 명령어",
     "settings": "서버 설정"
+  },
+  "resources": {
+    "roles": "역할",
+    "audit": "감사 로그",
+    "settings": "설정",
+    "lookups": "선택기",
+    "cases": "케이스",
+    "warnings": "경고",
+    "punishments": "처벌",
+    "rules": "규칙",
+    "analytics": "분석",
+    "entries": "항목",
+    "config": "구성",
+    "test": "테스트 메시지",
+    "leaderboard": "리더보드",
+    "users": "사용자",
+    "rewards": "보상",
+    "list": "목록",
+    "panels": "패널",
+    "messages": "메시지",
+    "events": "이벤트"
+  },
+  "permissionActions": {
+    "view": "보기",
+    "manage": "관리",
+    "execute": "실행",
+    "purge": "삭제"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "역할이 업데이트되었습니다",
     "roleUpdateFailed": "역할 업데이트에 실패했습니다",
     "roleDeleted": "역할이 삭제되었습니다",
-    "roleDeleteFailed": "역할 삭제에 실패했습니다"
+    "roleDeleteFailed": "역할 삭제에 실패했습니다",
+    "memberAdded": "{{name}}님이 역할에 추가되었습니다",
+    "memberRemoved": "{{name}}님이 역할에서 제거되었습니다",
+    "memberRestored": "{{name}}님이 역할로 복원되었습니다"
   },
   "confirm": {
     "deleteTitle": "역할 \"{{name}}\"을(를) 삭제하시겠습니까?",

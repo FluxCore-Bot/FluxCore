@@ -41,7 +41,26 @@
     "defaultRole": "Výchozí role",
     "permissions": "Oprávnění",
     "allBadge": "Vše",
-    "discordRoles": "Discord role"
+    "discordRoles": "Discord role",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Seznam oprávnění se nepodařilo načíst. Zkuste stránku obnovit.",
+    "registryEmpty": "Zatím nejsou k dispozici žádná oprávnění k přiřazení.",
+    "lookupsWarning": "Tato role může konfigurovat moduly, ale nemůže vyhledávat kanály, role ani členy — její výběry budou prázdné.",
+    "grantLookups": "Udělit přístup k výběrům",
+    "admissionNote": "Také umožňuje držitelům udělit ostatním členům přístup k nástěnce.",
+    "cannotGrantTooltip": "Nemůžete udělit oprávnění, které sami nemáte.",
+    "membersSection": {
+      "title": "Členové",
+      "empty": "Této roli zatím nebyli přiřazeni žádní členové.",
+      "error": "Členy této role se nepodařilo načíst. Zkuste stránku obnovit.",
+      "addPlaceholder": "Přidat člena",
+      "searchPlaceholder": "Hledat členy...",
+      "searchHint": "Zadejte jméno pro vyhledání členů",
+      "searchLoading": "Načítání...",
+      "searchNoResults": "Žádné výsledky",
+      "assignedBy": "Přidal(a) {{name}} dne {{date}}",
+      "removeAria": "Odebrat {{name}} z této role"
+    }
   },
   "roleForm": {
     "name": "Název role",
@@ -58,6 +77,7 @@
     "color": "Barva"
   },
   "permissionCategories": {
+    "dashboard": "Řídicí panel",
     "actions": "Akce a automatizace",
     "tempvoice": "TempVoice",
     "welcome": "Uvítání a rozloučení",
@@ -73,6 +93,33 @@
     "scheduled": "Naplánované zprávy",
     "commands": "Vlastní příkazy",
     "settings": "Nastavení serveru"
+  },
+  "resources": {
+    "roles": "Role",
+    "audit": "Auditní log",
+    "settings": "Nastavení",
+    "lookups": "Výběry",
+    "cases": "Případy",
+    "warnings": "Varování",
+    "punishments": "Tresty",
+    "rules": "Pravidla",
+    "analytics": "Analytika",
+    "entries": "Záznamy",
+    "config": "Konfigurace",
+    "test": "Testovací zprávy",
+    "leaderboard": "Žebříček",
+    "users": "Uživatelé",
+    "rewards": "Odměny",
+    "list": "Seznam",
+    "panels": "Panely",
+    "messages": "Zprávy",
+    "events": "Události"
+  },
+  "permissionActions": {
+    "view": "Zobrazit",
+    "manage": "Spravovat",
+    "execute": "Spustit",
+    "purge": "Vymazat"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Role aktualizována",
     "roleUpdateFailed": "Nepodařilo se aktualizovat roli",
     "roleDeleted": "Role smazána",
-    "roleDeleteFailed": "Nepodařilo se smazat roli"
+    "roleDeleteFailed": "Nepodařilo se smazat roli",
+    "memberAdded": "{{name}} přidán(a) do role",
+    "memberRemoved": "{{name}} odebrán(a) z role",
+    "memberRestored": "{{name}} obnoven(a) v roli"
   },
   "confirm": {
     "deleteTitle": "Smazat roli \"{{name}}\"?",

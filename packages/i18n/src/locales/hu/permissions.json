@@ -41,7 +41,26 @@
     "defaultRole": "Default role",
     "permissions": "Permissions",
     "allBadge": "All",
-    "discordRoles": "Discord Roles"
+    "discordRoles": "Discord Roles",
+    "permissionLabel": "{{resource}} {{action}}",
+    "registryError": "A jogosultságlistát nem sikerült betölteni. Próbáld frissíteni az oldalt.",
+    "registryEmpty": "Még nincsenek kiosztható jogosultságok.",
+    "lookupsWarning": "Ez a szerepkör képes modulokat konfigurálni, de nem tud csatornákat, szerepköröket vagy tagokat keresni — a választói üresek lesznek.",
+    "grantLookups": "Választói hozzáférés megadása",
+    "admissionNote": "A birtokosok más tagoknak is hozzáférést adhatnak az irányítópulthoz.",
+    "cannotGrantTooltip": "Nem adhatsz olyan jogosultságot, amellyel te magad nem rendelkezel.",
+    "membersSection": {
+      "title": "Tagok",
+      "empty": "Ehhez a szerepkörhöz még nincsenek hozzárendelve tagok.",
+      "error": "Nem sikerült betölteni a szerepkör tagjait. Próbáld frissíteni az oldalt.",
+      "addPlaceholder": "Tag hozzáadása",
+      "searchPlaceholder": "Tagok keresése...",
+      "searchHint": "Írj be egy nevet a tagok kereséséhez",
+      "searchLoading": "Betöltés...",
+      "searchNoResults": "Nincs találat",
+      "assignedBy": "Hozzáadta: {{name}}, {{date}}",
+      "removeAria": "{{name}} eltávolítása ebből a szerepkörből"
+    }
   },
   "roleForm": {
     "name": "Role Name",
@@ -58,6 +77,7 @@
     "color": "Color"
   },
   "permissionCategories": {
+    "dashboard": "Irányítópult",
     "actions": "Actions & Automation",
     "tempvoice": "TempVoice",
     "welcome": "Welcome & Farewell",
@@ -73,6 +93,33 @@
     "scheduled": "Scheduled Messages",
     "commands": "Custom Commands",
     "settings": "Server Settings"
+  },
+  "resources": {
+    "roles": "Szerepek",
+    "audit": "Auditnapló",
+    "settings": "Beállítások",
+    "lookups": "Választók",
+    "cases": "Esetek",
+    "warnings": "Figyelmeztetések",
+    "punishments": "Büntetések",
+    "rules": "Szabályok",
+    "analytics": "Elemzések",
+    "entries": "Bejegyzések",
+    "config": "Konfiguráció",
+    "test": "Tesztüzenetek",
+    "leaderboard": "Ranglista",
+    "users": "Felhasználók",
+    "rewards": "Jutalmak",
+    "list": "Lista",
+    "panels": "Panelek",
+    "messages": "Üzenetek",
+    "events": "Események"
+  },
+  "permissionActions": {
+    "view": "Megtekintés",
+    "manage": "Kezelés",
+    "execute": "Végrehajtás",
+    "purge": "Törlés"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Role updated",
     "roleUpdateFailed": "Failed to update role",
     "roleDeleted": "Role deleted",
-    "roleDeleteFailed": "Failed to delete role"
+    "roleDeleteFailed": "Failed to delete role",
+    "memberAdded": "{{name}} hozzáadva a szerepkörhöz",
+    "memberRemoved": "{{name}} eltávolítva a szerepkörből",
+    "memberRestored": "{{name}} visszaállítva a szerepkörbe"
   },
   "confirm": {
     "deleteTitle": "Delete role \"{{name}}\"?",

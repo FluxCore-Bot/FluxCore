@@ -8,6 +8,7 @@
     "description": "Győződj meg róla, hogy legalább egy Discord szerveren rendelkezel a Szerver kezelése jogosultsággal, majd frissíts."
   },
   "badge": {
+    "delegated": "Átruházott hozzáférés",
     "botNotAdded": "A bot nincs hozzáadva"
   },
   "addBot": "FluxCore hozzáadása",

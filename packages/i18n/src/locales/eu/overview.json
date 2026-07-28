@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Zure sarbidea",
+    "subtitle": "Zerbitzari honen panelaren zati batzuetarako sarbidea eman zaizu.",
+    "empty": "Oraindik ez duzu modulurik erabiltzeko sarbiderik."
+  },
+  "errors": { "analyticsUnavailable": "Ezin izan dira analitikak kargatu." }
 }

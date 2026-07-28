@@ -41,7 +41,26 @@
     "defaultRole": "Oletusrooli",
     "permissions": "Oikeudet",
     "allBadge": "Kaikki",
-    "discordRoles": "Discord-roolit"
+    "discordRoles": "Discord-roolit",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Käyttöoikeusluetteloa ei voitu ladata. Yritä päivittää sivu.",
+    "registryEmpty": "Jaettavia käyttöoikeuksia ei ole vielä saatavilla.",
+    "lookupsWarning": "Tämä rooli voi määrittää moduuleja, mutta ei voi hakea kanavia, rooleja tai jäseniä — sen valitsimet jäävät tyhjiksi.",
+    "grantLookups": "Myönnä pääsy valitsimiin",
+    "admissionNote": "Antaa haltijoille myös mahdollisuuden myöntää muille jäsenille pääsyn hallintapaneeliin.",
+    "cannotGrantTooltip": "Et voi myöntää oikeutta, joka ei ole sinulla itselläsi.",
+    "membersSection": {
+      "title": "Jäsenet",
+      "empty": "Tälle roolille ei ole vielä määritetty jäseniä.",
+      "error": "Tämän roolin jäseniä ei voitu ladata. Yritä päivittää sivu.",
+      "addPlaceholder": "Lisää jäsen",
+      "searchPlaceholder": "Hae jäseniä...",
+      "searchHint": "Kirjoita nimi hakeaksesi jäseniä",
+      "searchLoading": "Ladataan...",
+      "searchNoResults": "Ei tuloksia",
+      "assignedBy": "Lisäsi {{name}}, {{date}}",
+      "removeAria": "Poista {{name}} tästä roolista"
+    }
   },
   "roleForm": {
     "name": "Roolin nimi",
@@ -58,6 +77,7 @@
     "color": "Väri"
   },
   "permissionCategories": {
+    "dashboard": "Hallintapaneeli",
     "actions": "Toiminnot ja automaatio",
     "tempvoice": "TempVoice",
     "welcome": "Tervetuloa ja hyvästit",
@@ -73,6 +93,33 @@
     "scheduled": "Ajastetut viestit",
     "commands": "Mukautetut komennot",
     "settings": "Palvelinasetukset"
+  },
+  "resources": {
+    "roles": "Roolit",
+    "audit": "Tarkastusloki",
+    "settings": "Asetukset",
+    "lookups": "Valitsimet",
+    "cases": "Tapaukset",
+    "warnings": "Varoitukset",
+    "punishments": "Rangaistukset",
+    "rules": "Säännöt",
+    "analytics": "Analytiikka",
+    "entries": "Merkinnät",
+    "config": "Kokoonpano",
+    "test": "Testiviestit",
+    "leaderboard": "Tulostaulukko",
+    "users": "Käyttäjät",
+    "rewards": "Palkinnot",
+    "list": "Luettelo",
+    "panels": "Paneelit",
+    "messages": "Viestit",
+    "events": "Tapahtumat"
+  },
+  "permissionActions": {
+    "view": "Näytä",
+    "manage": "Hallinnoi",
+    "execute": "Suorita",
+    "purge": "Tyhjennä"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Rooli päivitetty",
     "roleUpdateFailed": "Roolin päivittäminen epäonnistui",
     "roleDeleted": "Rooli poistettu",
-    "roleDeleteFailed": "Roolin poistaminen epäonnistui"
+    "roleDeleteFailed": "Roolin poistaminen epäonnistui",
+    "memberAdded": "{{name}} lisättiin rooliin",
+    "memberRemoved": "{{name}} poistettiin roolista",
+    "memberRestored": "{{name}} palautettiin rooliin"
   },
   "confirm": {
     "deleteTitle": "Poista rooli \"{{name}}\"?",

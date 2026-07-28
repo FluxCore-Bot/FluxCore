@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Sinu juurdepääs",
+    "subtitle": "Sulle on antud juurdepääs selle serveri juhtpaneeli osadele.",
+    "empty": "Sul ei ole veel juurdepääsu ühelegi moodulile."
+  },
+  "errors": { "analyticsUnavailable": "Analüütikat ei õnnestunud laadida." }
 }

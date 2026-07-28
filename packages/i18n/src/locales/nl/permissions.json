@@ -41,7 +41,26 @@
     "defaultRole": "Standaardrol",
     "permissions": "Rechten",
     "allBadge": "Alle",
-    "discordRoles": "Discord-rollen"
+    "discordRoles": "Discord-rollen",
+    "permissionLabel": "{{resource}} {{action}}",
+    "registryError": "De machtigingenlijst kon niet worden geladen. Probeer de pagina te vernieuwen.",
+    "registryEmpty": "Er zijn nog geen machtigingen beschikbaar om toe te wijzen.",
+    "lookupsWarning": "Deze rol kan modules configureren, maar kan geen kanalen, rollen of leden opzoeken — de kiezers ervan blijven leeg.",
+    "grantLookups": "Kiezertoegang verlenen",
+    "admissionNote": "Stelt houders ook in staat om andere leden dashboardtoegang te geven.",
+    "cannotGrantTooltip": "Je kunt geen rechten toekennen die je zelf niet hebt.",
+    "membersSection": {
+      "title": "Leden",
+      "empty": "Er zijn nog geen leden aan deze rol toegewezen.",
+      "error": "De leden van deze rol konden niet worden geladen. Probeer de pagina te vernieuwen.",
+      "addPlaceholder": "Lid toevoegen",
+      "searchPlaceholder": "Leden zoeken...",
+      "searchHint": "Typ een naam om leden te zoeken",
+      "searchLoading": "Laden...",
+      "searchNoResults": "Geen resultaten",
+      "assignedBy": "Toegevoegd door {{name}} op {{date}}",
+      "removeAria": "Verwijder {{name}} uit deze rol"
+    }
   },
   "roleForm": {
     "name": "Rolnaam",
@@ -58,6 +77,7 @@
     "color": "Kleur"
   },
   "permissionCategories": {
+    "dashboard": "Dashboard",
     "actions": "Acties & Automatisering",
     "tempvoice": "TempVoice",
     "welcome": "Welkom & Afscheid",
@@ -73,6 +93,33 @@
     "scheduled": "Geplande berichten",
     "commands": "Aangepaste commando's",
     "settings": "Serverinstellingen"
+  },
+  "resources": {
+    "roles": "Rollen",
+    "audit": "Auditlogboek",
+    "settings": "Instellingen",
+    "lookups": "Kiezers",
+    "cases": "Zaken",
+    "warnings": "Waarschuwingen",
+    "punishments": "Straffen",
+    "rules": "Regels",
+    "analytics": "Analyses",
+    "entries": "Items",
+    "config": "Configuratie",
+    "test": "Testberichten",
+    "leaderboard": "Klassement",
+    "users": "Gebruikers",
+    "rewards": "Beloningen",
+    "list": "Lijst",
+    "panels": "Panelen",
+    "messages": "Berichten",
+    "events": "Gebeurtenissen"
+  },
+  "permissionActions": {
+    "view": "Weergeven",
+    "manage": "Beheren",
+    "execute": "Uitvoeren",
+    "purge": "Wissen"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Rol bijgewerkt",
     "roleUpdateFailed": "Rol bijwerken mislukt",
     "roleDeleted": "Rol verwijderd",
-    "roleDeleteFailed": "Rol verwijderen mislukt"
+    "roleDeleteFailed": "Rol verwijderen mislukt",
+    "memberAdded": "{{name}} toegevoegd aan de rol",
+    "memberRemoved": "{{name}} verwijderd uit de rol",
+    "memberRestored": "{{name}} hersteld in de rol"
   },
   "confirm": {
     "deleteTitle": "Rol \"{{name}}\" verwijderen?",

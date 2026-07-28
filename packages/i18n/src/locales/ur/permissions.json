@@ -41,7 +41,26 @@
     "defaultRole": "ڈیفالٹ رول",
     "permissions": "اجازتیں",
     "allBadge": "تمام",
-    "discordRoles": "Discord رولز"
+    "discordRoles": "Discord رولز",
+    "permissionLabel": "{{resource}} {{action}}",
+    "registryError": "اجازتوں کی فہرست لوڈ نہیں ہو سکی۔ صفحہ ریفریش کرنے کی کوشش کریں۔",
+    "registryEmpty": "ابھی تفویض کرنے کے لیے کوئی اجازت دستیاب نہیں ہے۔",
+    "lookupsWarning": "یہ کردار ماڈیولز کنفیگر کر سکتا ہے لیکن چینلز، کردار، یا اراکین تلاش نہیں کر سکتا — اس کے پکرز خالی ہوں گے۔",
+    "grantLookups": "پکر تک رسائی دیں",
+    "admissionNote": "یہ حاملین کو دوسرے اراکین کو ڈیش بورڈ تک رسائی دینے کی بھی اجازت دیتا ہے۔",
+    "cannotGrantTooltip": "آپ ایسی اجازت نہیں دے سکتے جو خود آپ کے پاس نہیں ہے۔",
+    "membersSection": {
+      "title": "اراکین",
+      "empty": "ابھی تک اس کردار کو کوئی رکن تفویض نہیں کیا گیا۔",
+      "error": "اس کردار کے اراکین لوڈ نہیں ہو سکے۔ صفحہ ریفریش کرنے کی کوشش کریں۔",
+      "addPlaceholder": "رکن شامل کریں",
+      "searchPlaceholder": "اراکین تلاش کریں...",
+      "searchHint": "اراکین تلاش کرنے کے لیے ایک نام ٹائپ کریں",
+      "searchLoading": "لوڈ ہو رہا ہے...",
+      "searchNoResults": "کوئی نتیجہ نہیں",
+      "assignedBy": "{{name}} نے {{date}} کو شامل کیا",
+      "removeAria": "{{name}} کو اس کردار سے ہٹائیں"
+    }
   },
   "roleForm": {
     "name": "رول کا نام",
@@ -58,6 +77,7 @@
     "color": "رنگ"
   },
   "permissionCategories": {
+    "dashboard": "ڈیش بورڈ",
     "actions": "ایکشنز اور آٹومیشن",
     "tempvoice": "TempVoice",
     "welcome": "ویلکم اور الوداع",
@@ -73,6 +93,33 @@
     "scheduled": "شیڈولڈ پیغامات",
     "commands": "کسٹم کمانڈز",
     "settings": "سرور ترتیبات"
+  },
+  "resources": {
+    "roles": "کردار",
+    "audit": "آڈٹ لاگ",
+    "settings": "ترتیبات",
+    "lookups": "منتخب کنندگان",
+    "cases": "کیسز",
+    "warnings": "انتباہات",
+    "punishments": "سزائیں",
+    "rules": "قواعد",
+    "analytics": "تجزیات",
+    "entries": "اندراجات",
+    "config": "تشکیل",
+    "test": "ٹیسٹ پیغامات",
+    "leaderboard": "لیڈر بورڈ",
+    "users": "صارفین",
+    "rewards": "انعامات",
+    "list": "فہرست",
+    "panels": "پینلز",
+    "messages": "پیغامات",
+    "events": "ایونٹس"
+  },
+  "permissionActions": {
+    "view": "دیکھیں",
+    "manage": "انتظام کریں",
+    "execute": "عمل درآمد کریں",
+    "purge": "صاف کریں"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "رول اپ ڈیٹ ہو گیا",
     "roleUpdateFailed": "رول اپ ڈیٹ کرنے میں ناکامی",
     "roleDeleted": "رول حذف ہو گیا",
-    "roleDeleteFailed": "رول حذف کرنے میں ناکامی"
+    "roleDeleteFailed": "رول حذف کرنے میں ناکامی",
+    "memberAdded": "{{name}} کو کردار میں شامل کر دیا گیا",
+    "memberRemoved": "{{name}} کو کردار سے ہٹا دیا گیا",
+    "memberRestored": "{{name}} کو کردار میں بحال کر دیا گیا"
   },
   "confirm": {
     "deleteTitle": "\"{{name}}\" رول حذف کریں؟",

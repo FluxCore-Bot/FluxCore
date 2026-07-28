@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Käyttöoikeutesi",
+    "subtitle": "Sinulle on myönnetty pääsy osaan tämän palvelimen hallintapaneelia.",
+    "empty": "Sinulla ei ole vielä pääsyä mihinkään moduuliin."
+  },
+  "errors": { "analyticsUnavailable": "Analytiikkaa ei voitu ladata." }
 }

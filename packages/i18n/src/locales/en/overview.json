@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Your access",
+    "subtitle": "You have been given access to parts of this server's dashboard.",
+    "empty": "You don't have access to any modules yet."
+  },
+  "errors": { "analyticsUnavailable": "Analytics could not be loaded." }
 }

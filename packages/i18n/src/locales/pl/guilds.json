@@ -8,6 +8,7 @@
     "description": "Upewnij się, że masz uprawnienie Zarządzanie serwerem na co najmniej jednym serwerze Discord, a następnie odśwież."
   },
   "badge": {
+    "delegated": "Delegowany dostęp",
     "botNotAdded": "Bot nie został dodany"
   },
   "addBot": "Dodaj FluxCore",

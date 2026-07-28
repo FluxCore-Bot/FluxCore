@@ -41,7 +41,26 @@
     "defaultRole": "Zadana uloga",
     "permissions": "Dozvole",
     "allBadge": "Sve",
-    "discordRoles": "Discord uloge"
+    "discordRoles": "Discord uloge",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Popis dozvola nije uspio učitati. Pokušajte osvježiti stranicu.",
+    "registryEmpty": "Trenutno nema dostupnih dozvola za dodjelu.",
+    "lookupsWarning": "Ova uloga može konfigurirati module, ali ne može pretraživati kanale, uloge ili članove — njezini birači bit će prazni.",
+    "grantLookups": "Dodijeli pristup biračima",
+    "admissionNote": "Također omogućuje nositeljima da drugim članovima dodijele pristup nadzornoj ploči.",
+    "cannotGrantTooltip": "Ne možete dodijeliti dopuštenje koje sami nemate.",
+    "membersSection": {
+      "title": "Članovi",
+      "empty": "Ovoj ulozi još nisu dodijeljeni članovi.",
+      "error": "Nije moguće učitati članove ove uloge. Pokušajte osvježiti stranicu.",
+      "addPlaceholder": "Dodaj člana",
+      "searchPlaceholder": "Pretraži članove...",
+      "searchHint": "Upišite ime za pretraživanje članova",
+      "searchLoading": "Učitavanje...",
+      "searchNoResults": "Nema rezultata",
+      "assignedBy": "Dodao/la {{name}} dana {{date}}",
+      "removeAria": "Ukloni {{name}} iz ove uloge"
+    }
   },
   "roleForm": {
     "name": "Naziv uloge",
@@ -58,6 +77,7 @@
     "color": "Boja"
   },
   "permissionCategories": {
+    "dashboard": "Nadzorna ploča",
     "actions": "Radnje i automatizacija",
     "tempvoice": "TempVoice",
     "welcome": "Dobrodoslica i oprostaj",
@@ -73,6 +93,33 @@
     "scheduled": "Zakazane poruke",
     "commands": "Prilagodene naredbe",
     "settings": "Postavke posluzitelja"
+  },
+  "resources": {
+    "roles": "Uloge",
+    "audit": "Revizijski zapis",
+    "settings": "Postavke",
+    "lookups": "Birači",
+    "cases": "Slučajevi",
+    "warnings": "Upozorenja",
+    "punishments": "Kazne",
+    "rules": "Pravila",
+    "analytics": "Analitika",
+    "entries": "Unosi",
+    "config": "Konfiguracija",
+    "test": "Testne poruke",
+    "leaderboard": "Ljestvica",
+    "users": "Korisnici",
+    "rewards": "Nagrade",
+    "list": "Popis",
+    "panels": "Paneli",
+    "messages": "Poruke",
+    "events": "Događaji"
+  },
+  "permissionActions": {
+    "view": "Pregled",
+    "manage": "Upravljanje",
+    "execute": "Izvršavanje",
+    "purge": "Brisanje"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Uloga azurirana",
     "roleUpdateFailed": "Azuriranje uloge nije uspjelo",
     "roleDeleted": "Uloga obrisana",
-    "roleDeleteFailed": "Brisanje uloge nije uspjelo"
+    "roleDeleteFailed": "Brisanje uloge nije uspjelo",
+    "memberAdded": "{{name}} dodan u ulogu",
+    "memberRemoved": "{{name}} uklonjen iz uloge",
+    "memberRestored": "{{name}} vraćen u ulogu"
   },
   "confirm": {
     "deleteTitle": "Obrisati ulogu \"{{name}}\"?",

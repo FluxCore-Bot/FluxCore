@@ -41,7 +41,26 @@
     "defaultRole": "บทบาทเริ่มต้น",
     "permissions": "สิทธิ์",
     "allBadge": "ทั้งหมด",
-    "discordRoles": "บทบาท Discord"
+    "discordRoles": "บทบาท Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "ไม่สามารถโหลดรายการสิทธิ์ได้ ลองรีเฟรชหน้านี้",
+    "registryEmpty": "ยังไม่มีสิทธิ์ที่สามารถกำหนดได้",
+    "lookupsWarning": "บทบาทนี้สามารถกำหนดค่าโมดูลได้ แต่ไม่สามารถค้นหาช่อง บทบาท หรือสมาชิกได้ — ตัวเลือกของมันจะว่างเปล่า",
+    "grantLookups": "ให้สิทธิ์เข้าถึงตัวเลือก",
+    "admissionNote": "ยังอนุญาตให้ผู้ถือสิทธิ์มอบสิทธิ์เข้าถึงแดชบอร์ดให้สมาชิกคนอื่นได้ด้วย",
+    "cannotGrantTooltip": "คุณไม่สามารถให้สิทธิ์ที่คุณเองไม่มีได้",
+    "membersSection": {
+      "title": "สมาชิก",
+      "empty": "ยังไม่มีสมาชิกที่ได้รับมอบหมายบทบาทนี้",
+      "error": "ไม่สามารถโหลดสมาชิกของบทบาทนี้ได้ ลองรีเฟรชหน้านี้",
+      "addPlaceholder": "เพิ่มสมาชิก",
+      "searchPlaceholder": "ค้นหาสมาชิก...",
+      "searchHint": "พิมพ์ชื่อเพื่อค้นหาสมาชิก",
+      "searchLoading": "กำลังโหลด...",
+      "searchNoResults": "ไม่มีผลลัพธ์",
+      "assignedBy": "เพิ่มโดย {{name}} เมื่อ {{date}}",
+      "removeAria": "นำ {{name}} ออกจากบทบาทนี้"
+    }
   },
   "roleForm": {
     "name": "ชื่อบทบาท",
@@ -58,6 +77,7 @@
     "color": "สี"
   },
   "permissionCategories": {
+    "dashboard": "แดชบอร์ด",
     "actions": "แอ็กชันและระบบอัตโนมัติ",
     "tempvoice": "ห้องเสียงชั่วคราว",
     "welcome": "ต้อนรับและอำลา",
@@ -73,6 +93,33 @@
     "scheduled": "ข้อความตั้งเวลา",
     "commands": "คำสั่งกำหนดเอง",
     "settings": "การตั้งค่าเซิร์ฟเวอร์"
+  },
+  "resources": {
+    "roles": "บทบาท",
+    "audit": "บันทึกตรวจสอบ",
+    "settings": "การตั้งค่า",
+    "lookups": "ตัวเลือก",
+    "cases": "เคส",
+    "warnings": "คำเตือน",
+    "punishments": "การลงโทษ",
+    "rules": "กฎ",
+    "analytics": "การวิเคราะห์",
+    "entries": "รายการ",
+    "config": "การกำหนดค่า",
+    "test": "ข้อความทดสอบ",
+    "leaderboard": "ลีดเดอร์บอร์ด",
+    "users": "ผู้ใช้",
+    "rewards": "รางวัล",
+    "list": "รายชื่อ",
+    "panels": "แผง",
+    "messages": "ข้อความ",
+    "events": "เหตุการณ์"
+  },
+  "permissionActions": {
+    "view": "ดู",
+    "manage": "จัดการ",
+    "execute": "ดำเนินการ",
+    "purge": "ล้างข้อมูล"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "อัปเดตบทบาทแล้ว",
     "roleUpdateFailed": "ไม่สามารถอัปเดตบทบาทได้",
     "roleDeleted": "ลบบทบาทแล้ว",
-    "roleDeleteFailed": "ไม่สามารถลบบทบาทได้"
+    "roleDeleteFailed": "ไม่สามารถลบบทบาทได้",
+    "memberAdded": "เพิ่ม {{name}} ในบทบาทแล้ว",
+    "memberRemoved": "นำ {{name}} ออกจากบทบาทแล้ว",
+    "memberRestored": "กู้คืน {{name}} กลับสู่บทบาทแล้ว"
   },
   "confirm": {
     "deleteTitle": "ลบบทบาท \"{{name}}\"?",

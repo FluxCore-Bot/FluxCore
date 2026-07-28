@@ -41,7 +41,26 @@
     "defaultRole": "Rol implicit",
     "permissions": "Permisiuni",
     "allBadge": "Toate",
-    "discordRoles": "Roluri Discord"
+    "discordRoles": "Roluri Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Lista de permisiuni nu a putut fi încărcată. Încearcă să reîmprospătezi pagina.",
+    "registryEmpty": "Nu există încă permisiuni disponibile pentru alocare.",
+    "lookupsWarning": "Acest rol poate configura module, dar nu poate căuta canale, roluri sau membri — selectoarele sale vor fi goale.",
+    "grantLookups": "Acordă acces la selectoare",
+    "admissionNote": "De asemenea, le permite deținătorilor să acorde altor membri acces la panou.",
+    "cannotGrantTooltip": "Nu poți acorda o permisiune pe care nu o ai tu însuți.",
+    "membersSection": {
+      "title": "Membri",
+      "empty": "Niciun membru nu a fost încă alocat acestui rol.",
+      "error": "Membrii acestui rol nu au putut fi încărcați. Încearcă să reîmprospătezi pagina.",
+      "addPlaceholder": "Adaugă un membru",
+      "searchPlaceholder": "Caută membri...",
+      "searchHint": "Introdu un nume pentru a căuta membri",
+      "searchLoading": "Se încarcă...",
+      "searchNoResults": "Niciun rezultat",
+      "assignedBy": "Adăugat de {{name}} pe {{date}}",
+      "removeAria": "Elimină {{name}} din acest rol"
+    }
   },
   "roleForm": {
     "name": "Numele Rolului",
@@ -58,6 +77,7 @@
     "color": "Culoare"
   },
   "permissionCategories": {
+    "dashboard": "Tablou de bord",
     "actions": "Acțiuni & Automatizare",
     "tempvoice": "TempVoice",
     "welcome": "Bun venit & La revedere",
@@ -73,6 +93,33 @@
     "scheduled": "Mesaje Programate",
     "commands": "Comenzi Personalizate",
     "settings": "Setări Server"
+  },
+  "resources": {
+    "roles": "Roluri",
+    "audit": "Jurnal de Audit",
+    "settings": "Setări",
+    "lookups": "Selectoare",
+    "cases": "Cazuri",
+    "warnings": "Avertismente",
+    "punishments": "Sancțiuni",
+    "rules": "Reguli",
+    "analytics": "Analitică",
+    "entries": "Intrări",
+    "config": "Configurare",
+    "test": "Mesaje de test",
+    "leaderboard": "Clasament",
+    "users": "Utilizatori",
+    "rewards": "Recompense",
+    "list": "Listă",
+    "panels": "Panouri",
+    "messages": "Mesaje",
+    "events": "Evenimente"
+  },
+  "permissionActions": {
+    "view": "Vizualizare",
+    "manage": "Gestionare",
+    "execute": "Executare",
+    "purge": "Curățare"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Rol actualizat",
     "roleUpdateFailed": "Actualizarea rolului a eșuat",
     "roleDeleted": "Rol șters",
-    "roleDeleteFailed": "Ștergerea rolului a eșuat"
+    "roleDeleteFailed": "Ștergerea rolului a eșuat",
+    "memberAdded": "{{name}} a fost adăugat la rol",
+    "memberRemoved": "{{name}} a fost eliminat din rol",
+    "memberRestored": "{{name}} a fost restaurat în rol"
   },
   "confirm": {
     "deleteTitle": "Ștergi rolul \"{{name}}\"?",

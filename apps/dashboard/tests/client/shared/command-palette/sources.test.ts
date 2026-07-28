@@ -43,8 +43,8 @@ describe("pageCommands", () => {
 
 describe("serverCommands", () => {
   const guilds: Guild[] = [
-    { id: "g1", name: "Etqan", icon: null, botPresent: true },
-    { id: "g2", name: "No Bot", icon: null, botPresent: false },
+    { id: "g1", name: "Etqan", icon: null, botPresent: true, access: "admin" },
+    { id: "g2", name: "No Bot", icon: null, botPresent: false, access: "admin" },
   ];
 
   it("offers only servers the bot is actually in", () => {

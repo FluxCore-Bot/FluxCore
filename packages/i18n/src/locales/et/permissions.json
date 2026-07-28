@@ -41,7 +41,26 @@
     "defaultRole": "Vaikimisi roll",
     "permissions": "Õigused",
     "allBadge": "Kõik",
-    "discordRoles": "Discord rollid"
+    "discordRoles": "Discord rollid",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Õiguste loendit ei õnnestunud laadida. Proovi lehte värskendada.",
+    "registryEmpty": "Määramiseks pole veel ühtegi õigust saadaval.",
+    "lookupsWarning": "See roll saab mooduleid seadistada, kuid ei saa otsida kanaleid, rolle ega liikmeid — selle valikuloendid jäävad tühjaks.",
+    "grantLookups": "Anna juurdepääs valikuloenditele",
+    "admissionNote": "Lubab omanikel anda ka teistele liikmetele juhtpaneelile juurdepääsu.",
+    "cannotGrantTooltip": "Sa ei saa anda õigust, mida sul endal ei ole.",
+    "membersSection": {
+      "title": "Liikmed",
+      "empty": "Sellele rollile ei ole veel liikmeid määratud.",
+      "error": "Selle rolli liikmeid ei õnnestunud laadida. Proovi lehte värskendada.",
+      "addPlaceholder": "Lisa liige",
+      "searchPlaceholder": "Otsi liikmeid...",
+      "searchHint": "Sisesta nimi liikmete otsimiseks",
+      "searchLoading": "Laadimine...",
+      "searchNoResults": "Tulemused puuduvad",
+      "assignedBy": "Lisas {{name}}, {{date}}",
+      "removeAria": "Eemalda {{name}} sellelt rollilt"
+    }
   },
   "roleForm": {
     "name": "Rolli nimi",
@@ -58,6 +77,7 @@
     "color": "Värv"
   },
   "permissionCategories": {
+    "dashboard": "Juhtpaneel",
     "actions": "Toimingud ja automatiseerimine",
     "tempvoice": "TempVoice",
     "welcome": "Tervitus ja hüvastijätt",
@@ -73,6 +93,33 @@
     "scheduled": "Ajastatud sõnumid",
     "commands": "Kohandatud käsud",
     "settings": "Serveri seaded"
+  },
+  "resources": {
+    "roles": "Rollid",
+    "audit": "Auditilogi",
+    "settings": "Seaded",
+    "lookups": "Valijad",
+    "cases": "Juhtumid",
+    "warnings": "Hoiatused",
+    "punishments": "Karistused",
+    "rules": "Reeglid",
+    "analytics": "Analüütika",
+    "entries": "Kirjed",
+    "config": "Konfiguratsioon",
+    "test": "Testsõnumid",
+    "leaderboard": "Edetabel",
+    "users": "Kasutajad",
+    "rewards": "Auhinnad",
+    "list": "Loend",
+    "panels": "Paneelid",
+    "messages": "Sõnumid",
+    "events": "Sündmused"
+  },
+  "permissionActions": {
+    "view": "Vaata",
+    "manage": "Halda",
+    "execute": "Käivita",
+    "purge": "Kustuta"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Roll uuendatud",
     "roleUpdateFailed": "Rolli uuendamine ebaõnnestus",
     "roleDeleted": "Roll kustutatud",
-    "roleDeleteFailed": "Rolli kustutamine ebaõnnestus"
+    "roleDeleteFailed": "Rolli kustutamine ebaõnnestus",
+    "memberAdded": "{{name}} lisati rollile",
+    "memberRemoved": "{{name}} eemaldati rollilt",
+    "memberRestored": "{{name}} taastati rollile"
   },
   "confirm": {
     "deleteTitle": "Kustuta roll \"{{name}}\"?",

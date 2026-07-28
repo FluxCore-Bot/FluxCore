@@ -1,7 +1,7 @@
 import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
 import safeRegex from "safe-regex";
-import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
+import { requireAuth, requireGuildAccess, requirePermission } from "../../shared/middleware.js";
 import { rateLimits } from "../../shared/rateLimit.js";
 import {
   getCustomCommands,
@@ -40,7 +40,7 @@ export function registerCustomCommandRoutes(app: FastifyInstance): void {
   app.get(
     "/api/guilds/:guildId/custom-commands",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("commands.list.view")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("commands.list.view")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "CustomCommands", response: { 200: { type: "array", items: {} } } }),
     },
     async (request, reply) => {
@@ -54,7 +54,7 @@ export function registerCustomCommandRoutes(app: FastifyInstance): void {
   app.post(
     "/api/guilds/:guildId/custom-commands",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("commands.list.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("commands.list.manage")],
       config: rateLimits.create,
       schema: withDocs({
         params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
@@ -168,7 +168,7 @@ export function registerCustomCommandRoutes(app: FastifyInstance): void {
   app.put(
     "/api/guilds/:guildId/custom-commands/:id",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("commands.list.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("commands.list.manage")],
       schema: withDocs({
         params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
         body: {
@@ -264,7 +264,7 @@ export function registerCustomCommandRoutes(app: FastifyInstance): void {
   app.delete(
     "/api/guilds/:guildId/custom-commands/:id",
     {
-      preHandler: [requireAuth, requireGuildAdmin, requirePermission("commands.list.manage")],
+      preHandler: [requireAuth, requireGuildAccess, requirePermission("commands.list.manage")],
       schema: withDocs({ params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } }, { tag: "CustomCommands", response: { 200: { type: "object", properties: { success: { type: "boolean" } } } } }),
     },
     async (request, reply) => {

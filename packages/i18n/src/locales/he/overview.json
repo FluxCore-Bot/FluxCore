@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "הגישה שלך",
+    "subtitle": "ניתנה לך גישה לחלקים מלוח הבקרה של שרת זה.",
+    "empty": "עדיין אין לך גישה לאף מודול."
+  },
+  "errors": { "analyticsUnavailable": "לא ניתן היה לטעון את הנתונים האנליטיים." }
 }

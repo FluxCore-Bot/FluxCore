@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Váš přístup",
+    "subtitle": "Byl vám udělen přístup k částem řídicího panelu tohoto serveru.",
+    "empty": "Zatím nemáte přístup k žádným modulům."
+  },
+  "errors": { "analyticsUnavailable": "Analytiku se nepodařilo načíst." }
 }

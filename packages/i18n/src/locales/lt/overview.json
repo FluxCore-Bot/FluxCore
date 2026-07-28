@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Jūsų prieiga",
+    "subtitle": "Jums suteikta prieiga prie šio serverio skydelio dalių.",
+    "empty": "Kol kas neturite prieigos prie jokių modulių."
+  },
+  "errors": { "analyticsUnavailable": "Nepavyko įkelti analitikos." }
 }

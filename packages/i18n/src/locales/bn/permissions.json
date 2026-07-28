@@ -41,7 +41,26 @@
     "defaultRole": "ডিফল্ট রোল",
     "permissions": "অনুমতি",
     "allBadge": "সব",
-    "discordRoles": "Discord রোল"
+    "discordRoles": "Discord রোল",
+    "permissionLabel": "{{resource}} {{action}}",
+    "registryError": "অনুমতির তালিকা লোড করা যায়নি। পৃষ্ঠাটি রিফ্রেশ করার চেষ্টা করুন।",
+    "registryEmpty": "এখনও বরাদ্দ করার জন্য কোনো অনুমতি উপলব্ধ নেই।",
+    "lookupsWarning": "এই ভূমিকা মডিউল কনফিগার করতে পারে কিন্তু চ্যানেল, ভূমিকা বা সদস্যদের খুঁজে বের করতে পারে না — এর পিকারগুলি খালি থাকবে।",
+    "grantLookups": "পিকার অ্যাক্সেস দিন",
+    "admissionNote": "এটি ধারকদের অন্যান্য সদস্যদের ড্যাশবোর্ড অ্যাক্সেস দেওয়ারও অনুমতি দেয়।",
+    "cannotGrantTooltip": "আপনি নিজে যে অনুমতি রাখেন না, তা প্রদান করতে পারবেন না।",
+    "membersSection": {
+      "title": "সদস্যরা",
+      "empty": "এই রোলে এখনও কোনো সদস্য নিয়োগ করা হয়নি।",
+      "error": "এই রোলের সদস্যদের লোড করা যায়নি। পৃষ্ঠাটি রিফ্রেশ করার চেষ্টা করুন।",
+      "addPlaceholder": "একজন সদস্য যোগ করুন",
+      "searchPlaceholder": "সদস্য খুঁজুন...",
+      "searchHint": "সদস্য খুঁজতে একটি নাম লিখুন",
+      "searchLoading": "লোড হচ্ছে...",
+      "searchNoResults": "কোনো ফলাফল নেই",
+      "assignedBy": "{{name}} দ্বারা {{date}} তারিখে যোগ করা হয়েছে",
+      "removeAria": "{{name}}-কে এই রোল থেকে সরান"
+    }
   },
   "roleForm": {
     "name": "রোলের নাম",
@@ -58,6 +77,7 @@
     "color": "রঙ"
   },
   "permissionCategories": {
+    "dashboard": "ড্যাশবোর্ড",
     "actions": "অ্যাকশন ও অটোমেশন",
     "tempvoice": "TempVoice",
     "welcome": "স্বাগতম ও বিদায়",
@@ -73,6 +93,33 @@
     "scheduled": "শিডিউলড বার্তা",
     "commands": "কাস্টম কমান্ড",
     "settings": "সার্ভার সেটিংস"
+  },
+  "resources": {
+    "roles": "রোল",
+    "audit": "অডিট লগ",
+    "settings": "সেটিংস",
+    "lookups": "নির্বাচক",
+    "cases": "কেস",
+    "warnings": "সতর্কতা",
+    "punishments": "শাস্তি",
+    "rules": "নিয়ম",
+    "analytics": "বিশ্লেষণ",
+    "entries": "এন্ট্রি",
+    "config": "কনফিগারেশন",
+    "test": "টেস্ট বার্তা",
+    "leaderboard": "লিডারবোর্ড",
+    "users": "ব্যবহারকারী",
+    "rewards": "পুরস্কার",
+    "list": "তালিকা",
+    "panels": "প্যানেল",
+    "messages": "বার্তা",
+    "events": "ইভেন্ট"
+  },
+  "permissionActions": {
+    "view": "দেখুন",
+    "manage": "পরিচালনা করুন",
+    "execute": "সম্পাদন করুন",
+    "purge": "মুছে ফেলুন"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "রোল আপডেট হয়েছে",
     "roleUpdateFailed": "রোল আপডেট ব্যর্থ",
     "roleDeleted": "রোল মুছে ফেলা হয়েছে",
-    "roleDeleteFailed": "রোল মুছতে ব্যর্থ"
+    "roleDeleteFailed": "রোল মুছতে ব্যর্থ",
+    "memberAdded": "{{name}}-কে রোলে যোগ করা হয়েছে",
+    "memberRemoved": "{{name}}-কে রোল থেকে সরানো হয়েছে",
+    "memberRestored": "{{name}}-কে রোলে ফিরিয়ে আনা হয়েছে"
   },
   "confirm": {
     "deleteTitle": "\"{{name}}\" রোল মুছবেন?",

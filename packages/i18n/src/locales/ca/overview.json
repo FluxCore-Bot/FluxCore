@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "El teu accés",
+    "subtitle": "Se t'ha concedit accés a parts del tauler d'aquest servidor.",
+    "empty": "Encara no tens accés a cap mòdul."
+  },
+  "errors": { "analyticsUnavailable": "No s'han pogut carregar les analítiques." }
 }

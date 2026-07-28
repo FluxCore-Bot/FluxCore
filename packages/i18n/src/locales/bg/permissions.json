@@ -41,7 +41,26 @@
     "defaultRole": "Роля по подразбиране",
     "permissions": "Разрешения",
     "allBadge": "Всички",
-    "discordRoles": "Discord роли"
+    "discordRoles": "Discord роли",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Списъкът с разрешения не можа да се зареди. Опитайте да презаредите страницата.",
+    "registryEmpty": "Все още няма налични разрешения за присвояване.",
+    "lookupsWarning": "Тази роля може да конфигурира модули, но не може да търси канали, роли или членове — нейните падащи менюта ще бъдат празни.",
+    "grantLookups": "Предоставяне на достъп до търсене",
+    "admissionNote": "Позволява на притежателите също да предоставят на други членове достъп до таблото.",
+    "cannotGrantTooltip": "Не можете да предоставите разрешение, което самите вие нямате.",
+    "membersSection": {
+      "title": "Членове",
+      "empty": "На тази роля все още не са присвоени членове.",
+      "error": "Членовете на тази роля не можаха да се заредят. Опитайте да презаредите страницата.",
+      "addPlaceholder": "Добавяне на член",
+      "searchPlaceholder": "Търсене на членове...",
+      "searchHint": "Въведете име, за да търсите членове",
+      "searchLoading": "Зареждане...",
+      "searchNoResults": "Няма резултати",
+      "assignedBy": "Добавено от {{name}} на {{date}}",
+      "removeAria": "Премахване на {{name}} от тази роля"
+    }
   },
   "roleForm": {
     "name": "Име на ролята",
@@ -58,6 +77,7 @@
     "color": "Цвят"
   },
   "permissionCategories": {
+    "dashboard": "Табло",
     "actions": "Действия и автоматизация",
     "tempvoice": "TempVoice",
     "welcome": "Добре дошли и сбогом",
@@ -73,6 +93,33 @@
     "scheduled": "Планирани съобщения",
     "commands": "Персонализирани команди",
     "settings": "Настройки на сървъра"
+  },
+  "resources": {
+    "roles": "Роли",
+    "audit": "Одитен журнал",
+    "settings": "Настройки",
+    "lookups": "Избирачи",
+    "cases": "Случаи",
+    "warnings": "Предупреждения",
+    "punishments": "Наказания",
+    "rules": "Правила",
+    "analytics": "Анализи",
+    "entries": "Записи",
+    "config": "Конфигурация",
+    "test": "Тестови съобщения",
+    "leaderboard": "Класация",
+    "users": "Потребители",
+    "rewards": "Награди",
+    "list": "Списък",
+    "panels": "Панели",
+    "messages": "Съобщения",
+    "events": "Събития"
+  },
+  "permissionActions": {
+    "view": "Преглед",
+    "manage": "Управление",
+    "execute": "Изпълнение",
+    "purge": "Изчистване"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Ролята е актуализирана",
     "roleUpdateFailed": "Неуспешно актуализиране на роля",
     "roleDeleted": "Ролята е изтрита",
-    "roleDeleteFailed": "Неуспешно изтриване на роля"
+    "roleDeleteFailed": "Неуспешно изтриване на роля",
+    "memberAdded": "{{name}} беше добавен към ролята",
+    "memberRemoved": "{{name}} беше премахнат от ролята",
+    "memberRestored": "{{name}} беше възстановен в ролята"
   },
   "confirm": {
     "deleteTitle": "Изтрий ролята „{{name}}\"?",

@@ -8,6 +8,7 @@
     "description": "Make sure you have the Manage Server permission in at least one Discord server, then refresh."
   },
   "badge": {
+    "delegated": "Delegated access",
     "botNotAdded": "Bot not added"
   },
   "addBot": "Add FluxCore",

@@ -29,5 +29,11 @@
     "title": "Ausführungstrend",
     "success": "Erfolg",
     "errors": "Fehler"
-  }
+  },
+  "access": {
+    "title": "Dein Zugriff",
+    "subtitle": "Dir wurde Zugriff auf Teile des Dashboards dieses Servers gewährt.",
+    "empty": "Du hast noch keinen Zugriff auf Module."
+  },
+  "errors": { "analyticsUnavailable": "Analysen konnten nicht geladen werden." }
 }

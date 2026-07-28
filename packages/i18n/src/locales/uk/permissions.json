@@ -41,7 +41,26 @@
     "defaultRole": "Роль за замовчуванням",
     "permissions": "Права",
     "allBadge": "Всі",
-    "discordRoles": "Ролі Discord"
+    "discordRoles": "Ролі Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Не вдалося завантажити список дозволів. Спробуйте оновити сторінку.",
+    "registryEmpty": "Поки що немає дозволів, доступних для призначення.",
+    "lookupsWarning": "Ця роль може налаштовувати модулі, але не може шукати канали, ролі чи учасників — її списки вибору будуть порожніми.",
+    "grantLookups": "Надати доступ до списків вибору",
+    "admissionNote": "Також дозволяє власникам надавати іншим учасникам доступ до панелі керування.",
+    "cannotGrantTooltip": "Ви не можете надати право, якого немає у вас самих.",
+    "membersSection": {
+      "title": "Учасники",
+      "empty": "Цій ролі ще не призначено учасників.",
+      "error": "Не вдалося завантажити учасників цієї ролі. Спробуйте оновити сторінку.",
+      "addPlaceholder": "Додати учасника",
+      "searchPlaceholder": "Пошук учасників...",
+      "searchHint": "Введіть ім'я, щоб знайти учасників",
+      "searchLoading": "Завантаження...",
+      "searchNoResults": "Немає результатів",
+      "assignedBy": "Додав(ла) {{name}}, {{date}}",
+      "removeAria": "Видалити {{name}} з цієї ролі"
+    }
   },
   "roleForm": {
     "name": "Назва ролі",
@@ -58,6 +77,7 @@
     "color": "Колір"
   },
   "permissionCategories": {
+    "dashboard": "Панель керування",
     "actions": "Дії та автоматизація",
     "tempvoice": "TempVoice",
     "welcome": "Привітання та прощання",
@@ -73,6 +93,33 @@
     "scheduled": "Заплановані повідомлення",
     "commands": "Користувацькі команди",
     "settings": "Налаштування сервера"
+  },
+  "resources": {
+    "roles": "Ролі",
+    "audit": "Журнал аудиту",
+    "settings": "Налаштування",
+    "lookups": "Селектори",
+    "cases": "Випадки",
+    "warnings": "Попередження",
+    "punishments": "Покарання",
+    "rules": "Правила",
+    "analytics": "Аналітика",
+    "entries": "Записи",
+    "config": "Конфігурація",
+    "test": "Тестові повідомлення",
+    "leaderboard": "Таблиця лідерів",
+    "users": "Користувачі",
+    "rewards": "Нагороди",
+    "list": "Список",
+    "panels": "Панелі",
+    "messages": "Повідомлення",
+    "events": "Події"
+  },
+  "permissionActions": {
+    "view": "Перегляд",
+    "manage": "Керування",
+    "execute": "Виконання",
+    "purge": "Очищення"
   },
   "audit": {
     "table": {
@@ -94,7 +141,10 @@
     "roleUpdated": "Роль оновлено",
     "roleUpdateFailed": "Не вдалося оновити роль",
     "roleDeleted": "Роль видалено",
-    "roleDeleteFailed": "Не вдалося видалити роль"
+    "roleDeleteFailed": "Не вдалося видалити роль",
+    "memberAdded": "{{name}} додано до ролі",
+    "memberRemoved": "{{name}} видалено з ролі",
+    "memberRestored": "{{name}} відновлено в ролі"
   },
   "confirm": {
     "deleteTitle": "Видалити роль \"{{name}}\"?",
