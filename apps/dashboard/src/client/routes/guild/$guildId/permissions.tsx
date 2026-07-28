@@ -367,63 +367,63 @@ function RoleEditor({
               {t("roleEditor.registryEmpty")}
             </p>
           ) : (
-          <div className="space-y-6">
-            {registry.map((mod) => {
-              const wildcard = `${mod.key}.*`;
-              const hasWildcard = permissions.has(wildcard);
-              const allGranted =
-                hasWildcard ||
-                mod.permissions.every((p) => permissions.has(p.key));
-              const modLabel = t(mod.labelKey);
+            <div className="space-y-6">
+              {registry.map((mod) => {
+                const wildcard = `${mod.key}.*`;
+                const hasWildcard = permissions.has(wildcard);
+                const allGranted =
+                  hasWildcard ||
+                  mod.permissions.every((p) => permissions.has(p.key));
+                const modLabel = t(mod.labelKey);
 
-              return (
-                <div key={mod.key}>
-                  <div className="flex items-center gap-2">
-                    <Checkbox
-                      checked={allGranted}
-                      onCheckedChange={() => toggleModuleWildcard(mod.key)}
-                      aria-label={`${modLabel} — ${t("roleEditor.allBadge")}`}
-                    />
-                    <span className="font-label text-sm font-semibold">
-                      {modLabel}
-                    </span>
-                    {hasWildcard && (
-                      <Badge variant="secondary" className="text-xs">
-                        {t("roleEditor.allBadge")}
-                      </Badge>
-                    )}
+                return (
+                  <div key={mod.key}>
+                    <div className="flex items-center gap-2">
+                      <Checkbox
+                        checked={allGranted}
+                        onCheckedChange={() => toggleModuleWildcard(mod.key)}
+                        aria-label={`${modLabel} — ${t("roleEditor.allBadge")}`}
+                      />
+                      <span className="font-label text-sm font-semibold">
+                        {modLabel}
+                      </span>
+                      {hasWildcard && (
+                        <Badge variant="secondary" className="text-xs">
+                          {t("roleEditor.allBadge")}
+                        </Badge>
+                      )}
+                    </div>
+                    <div className="ms-6 mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+                      {mod.permissions.map((perm) => {
+                        const checked = hasWildcard || permissions.has(perm.key);
+                        const permLabel = t("roleEditor.permissionLabel", {
+                          action: t(perm.actionKey),
+                          resource: t(perm.resourceKey),
+                        });
+                        return (
+                          <label
+                            key={perm.key}
+                            className="flex cursor-pointer items-start gap-2 rounded px-2 py-1.5 text-sm hover:bg-surface-high/50"
+                          >
+                            <Checkbox
+                              checked={checked}
+                              disabled={hasWildcard}
+                              onCheckedChange={() => togglePermission(perm.key)}
+                              className="mt-0.5"
+                              aria-label={`${role.name} — ${permLabel}`}
+                            />
+                            <div>
+                              <span className="text-text">{permLabel}</span>
+                              <p className="font-mono text-xs text-text-muted">{perm.key}</p>
+                            </div>
+                          </label>
+                        );
+                      })}
+                    </div>
                   </div>
-                  <div className="ms-6 mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
-                    {mod.permissions.map((perm) => {
-                      const checked = hasWildcard || permissions.has(perm.key);
-                      const permLabel = t("roleEditor.permissionLabel", {
-                        action: t(perm.actionKey),
-                        resource: t(perm.resourceKey),
-                      });
-                      return (
-                        <label
-                          key={perm.key}
-                          className="flex cursor-pointer items-start gap-2 rounded px-2 py-1.5 text-sm hover:bg-surface-high/50"
-                        >
-                          <Checkbox
-                            checked={checked}
-                            disabled={hasWildcard}
-                            onCheckedChange={() => togglePermission(perm.key)}
-                            className="mt-0.5"
-                            aria-label={`${role.name} — ${permLabel}`}
-                          />
-                          <div>
-                            <span className="text-text">{permLabel}</span>
-                            <p className="font-mono text-xs text-text-muted">{perm.key}</p>
-                          </div>
-                        </label>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
           )}
         </ScrollArea>
       </div>

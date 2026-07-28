@@ -20,9 +20,15 @@ vi.mock("sonner", () => ({ toast: { success: vi.fn(), error: vi.fn() } }));
 // steady "everything else already loaded" shape. Mocking the whole module
 // (rather than wrapping in QueryClientProvider) keeps this a pure render
 // test of the loading/error/empty/loaded branching added around the grid.
-const registryState = vi.hoisted(() => ({
+interface RegistryQueryState {
+  data: unknown;
+  isLoading: boolean;
+  isError: boolean;
+}
+
+const registryState = vi.hoisted((): { box: RegistryQueryState } => ({
   box: {
-    data: undefined as unknown,
+    data: undefined,
     isLoading: false,
     isError: false,
   },
