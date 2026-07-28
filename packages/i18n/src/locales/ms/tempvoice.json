@@ -1,38 +1,51 @@
 {
   "label": "Pusat Pengurusan",
   "title": "Saluran Suara Sementara",
-  "subtitle": "Konfigurasikan hab yang membenarkan pengguna mencipta saluran suara sementara milik mereka sendiri semasa menyertai.",
-  "form": {
-    "sameAsHub": "Sama dengan saluran hab",
-    "defaultNameTemplate": "Saluran {user}",
-    "hubChannel": "Saluran Hab",
-    "selectHub": "Pilih saluran suara...",
-    "category": "Kategori (pilihan)",
-    "nameTemplate": "Templat Nama Saluran",
-    "addConfig": "Tambah Konfigurasi",
-    "editConfig": "Edit Konfigurasi",
-    "save": "Simpan Konfigurasi",
-    "saving": "Menyimpan...",
-    "cancel": "Batal",
-    "delete": "Padam",
-    "edit": "Edit",
-    "nameTemplateHint": "Use {user} for the member's display name"
+  "subtitle": "Sediakan hab supaya ahli boleh mencipta saluran suara mereka sendiri hanya dengan menyertainya.",
+  "flow": {
+    "step1": "Apabila seseorang menyertai saluran suara ini…",
+    "step2": "…FluxCore menciptakan saluran bernama…",
+    "step3": "…yang diletakkan dalam…",
+    "step4": "…dan saluran itu dipadam secara automatik sebaik sahaja semua orang keluar."
+  },
+  "fields": {
+    "hubPlaceholder": "Pilih saluran suara",
+    "categoryNone": "Kategori yang sama dengan hab",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Hab suara",
+    "counter": "{{used}} daripada {{max}}",
+    "add": "Tambah hab",
+    "edit": "Sunting",
+    "delete": "Padam"
+  },
+  "summary": {
+    "sameCategory": "kategori yang sama dengan hab",
+    "deletedWhenEmpty": "dipadam apabila kosong"
   },
   "empty": {
-    "noConfigs": "Belum ada konfigurasi",
-    "noConfigsDesc": "Tambahkan saluran hab untuk mengaktifkan saluran suara sementara.",
-    "addFirst": "Tambah Konfigurasi"
+    "exampleCaption": "Contoh — beginilah hab suara berfungsi:",
+    "exampleHub": "Sertai untuk cipta",
+    "exampleCategory": "Saluran suara",
+    "cta": "Cipta hab pertama anda"
+  },
+  "editor": {
+    "save": "Simpan hab",
+    "saving": "Menyimpan…",
+    "cancel": "Batal"
+  },
+  "errors": {
+    "hubRequired": "Pilih saluran suara yang akan disertai oleh ahli.",
+    "generic": "Sesuatu tidak kena. Sila cuba lagi."
   },
   "toast": {
-    "updated": "Konfigurasi dikemas kini",
-    "created": "Konfigurasi dicipta",
-    "removed": "Konfigurasi dibuang"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Hab dicipta",
+    "updated": "Hab dikemas kini",
+    "removed": "Hab dibuang",
+    "undo": "Buat asal",
+    "restored": "Hab dipulihkan",
+    "deleteFailed": "Hab itu tidak dapat dibuang. Sila cuba lagi.",
+    "undoFailed": "Hab itu tidak dapat dipulihkan. Mungkin ia tidak lagi muat dalam had hab."
   }
 }

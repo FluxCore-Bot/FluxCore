@@ -1,38 +1,51 @@
 {
   "label": "Hub ng Pamamahala",
   "title": "Mga Pansamantalang Voice Channel",
-  "subtitle": "I-configure ang mga hub na nagpapahintulot sa mga user na lumikha ng kanilang sariling mga ephemeral na voice channel kapag sumali.",
-  "form": {
-    "sameAsHub": "Katulad ng hub channel",
-    "defaultNameTemplate": "Channel ni {user}",
-    "hubChannel": "Hub Channel",
-    "selectHub": "Pumili ng voice channel...",
-    "category": "Kategorya (opsyonal)",
-    "nameTemplate": "Template ng Pangalan ng Channel",
-    "addConfig": "Magdagdag ng Configuration",
-    "editConfig": "I-edit ang Configuration",
-    "save": "I-save ang Configuration",
-    "saving": "Nag-se-save...",
-    "cancel": "Kanselahin",
-    "delete": "Burahin",
+  "subtitle": "Mag-set up ng mga hub para makagawa ang mga miyembro ng sarili nilang voice channel sa pamamagitan lang ng pagsali.",
+  "flow": {
+    "step1": "Kapag may sumali sa voice channel na ito…",
+    "step2": "…gagawan sila ng FluxCore ng channel na may pangalang…",
+    "step3": "…na ilalagay sa…",
+    "step4": "…at awtomatiko itong buburahin kapag umalis na ang lahat."
+  },
+  "fields": {
+    "hubPlaceholder": "Pumili ng voice channel",
+    "categoryNone": "Kaparehong kategorya ng hub",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Mga voice hub",
+    "counter": "{{used}} sa {{max}}",
+    "add": "Magdagdag ng hub",
     "edit": "I-edit",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Burahin"
+  },
+  "summary": {
+    "sameCategory": "kaparehong kategorya ng hub",
+    "deletedWhenEmpty": "buburahin kapag walang laman"
   },
   "empty": {
-    "noConfigs": "Wala pang mga configuration",
-    "noConfigsDesc": "Magdagdag ng hub channel upang paganahin ang mga pansamantalang voice channel.",
-    "addFirst": "Magdagdag ng Configuration"
+    "exampleCaption": "Halimbawa — ganito gumagana ang voice hub:",
+    "exampleHub": "Sumali para gumawa",
+    "exampleCategory": "Mga voice channel",
+    "cta": "Gawin ang iyong unang hub"
+  },
+  "editor": {
+    "save": "I-save ang hub",
+    "saving": "Nag-se-save…",
+    "cancel": "Kanselahin"
+  },
+  "errors": {
+    "hubRequired": "Piliin ang voice channel na sasalihan ng mga miyembro.",
+    "generic": "May nangyaring mali. Pakisubukan ulit."
   },
   "toast": {
-    "updated": "Na-update ang configuration",
-    "created": "Nagawa ang configuration",
-    "removed": "Natanggal ang configuration"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Nagawa ang hub",
+    "updated": "Na-update ang hub",
+    "removed": "Naalis ang hub",
+    "undo": "I-undo",
+    "restored": "Naibalik ang hub",
+    "deleteFailed": "Hindi maalis ang hub na iyon. Pakisubukan ulit.",
+    "undoFailed": "Hindi maibalik ang hub na iyon. Baka hindi na ito kasya sa limitasyon ng hub."
   }
 }

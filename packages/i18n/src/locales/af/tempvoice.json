@@ -1,38 +1,51 @@
 {
   "label": "Bestuursentrum",
   "title": "Tydelike Stemkanale",
-  "subtitle": "Stel sentrums op wat gebruikers toelaat om hul eie kortstondige stemkanale te skep wanneer hulle aansluit.",
-  "form": {
-    "sameAsHub": "Dieselfde as sentrum-kanaal",
-    "defaultNameTemplate": "{user} se Kanaal",
-    "hubChannel": "Sentrum-kanaal",
-    "selectHub": "Kies 'n stemkanaal...",
-    "category": "Kategorie (opsioneel)",
-    "nameTemplate": "Kanaalnaam-sjabloon",
-    "addConfig": "Voeg Konfigurasie By",
-    "editConfig": "Wysig Konfigurasie",
-    "save": "Stoor Konfigurasie",
-    "saving": "Stoor...",
-    "cancel": "Kanselleer",
-    "delete": "Verwyder",
+  "subtitle": "Stel hubs op waarmee lede hul eie stemkanale kan skep deur net aan te sluit.",
+  "flow": {
+    "step1": "Wanneer iemand by hierdie stemkanaal aansluit…",
+    "step2": "…skep FluxCore vir hulle 'n kanaal genaamd…",
+    "step3": "…geplaas in…",
+    "step4": "…en dit word outomaties uitgevee sodra almal vertrek."
+  },
+  "fields": {
+    "hubPlaceholder": "Kies 'n stemkanaal",
+    "categoryNone": "Dieselfde kategorie as die hub",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Stemhubs",
+    "counter": "{{used}} van {{max}}",
+    "add": "Voeg hub by",
     "edit": "Wysig",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Verwyder"
+  },
+  "summary": {
+    "sameCategory": "dieselfde kategorie as die hub",
+    "deletedWhenEmpty": "word uitgevee wanneer leeg"
   },
   "empty": {
-    "noConfigs": "Nog geen konfigurasies nie",
-    "noConfigsDesc": "Voeg 'n sentrum-kanaal by om tydelike stemkanale te aktiveer.",
-    "addFirst": "Voeg Konfigurasie By"
+    "exampleCaption": "Voorbeeld — so werk 'n stemhub:",
+    "exampleHub": "Sluit aan om te skep",
+    "exampleCategory": "Stemkanale",
+    "cta": "Skep jou eerste hub"
+  },
+  "editor": {
+    "save": "Stoor hub",
+    "saving": "Stoor…",
+    "cancel": "Kanselleer"
+  },
+  "errors": {
+    "hubRequired": "Kies die stemkanaal waarby lede sal aansluit.",
+    "generic": "Iets het verkeerd geloop. Probeer asseblief weer."
   },
   "toast": {
-    "updated": "Konfigurasie opgedateer",
-    "created": "Konfigurasie geskep",
-    "removed": "Konfigurasie verwyder"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Hub geskep",
+    "updated": "Hub opgedateer",
+    "removed": "Hub verwyder",
+    "undo": "Ontdoen",
+    "restored": "Hub herstel",
+    "deleteFailed": "Kon nie daardie hub verwyder nie. Probeer asseblief weer.",
+    "undoFailed": "Kon nie daardie hub herstel nie. Dit pas dalk nie meer binne die hubperk nie."
   }
 }

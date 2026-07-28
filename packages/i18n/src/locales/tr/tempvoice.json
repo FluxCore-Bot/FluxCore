@@ -1,38 +1,51 @@
 {
   "label": "Yönetim Merkezi",
   "title": "Geçici Ses Kanalları",
-  "subtitle": "Kullanıcıların katılarak kendi geçici ses kanallarını oluşturmalarına olanak tanıyan merkez noktaları yapılandırın.",
-  "form": {
-    "sameAsHub": "Merkez kanalıyla aynı",
-    "defaultNameTemplate": "{user}'in Kanalı",
-    "hubChannel": "Merkez Kanalı",
-    "selectHub": "Ses kanalı seçin...",
-    "category": "Kategori (isteğe bağlı)",
-    "nameTemplate": "Kanal Adı Şablonu",
-    "addConfig": "Yapılandırma Ekle",
-    "editConfig": "Yapılandırmayı Düzenle",
-    "save": "Yapılandırmayı Kaydet",
-    "saving": "Kaydediliyor...",
-    "cancel": "İptal",
-    "delete": "Sil",
+  "subtitle": "Üyelerin yalnızca katılarak kendi ses kanallarını oluşturabileceği merkezler ayarlayın.",
+  "flow": {
+    "step1": "Biri bu ses kanalına katıldığında…",
+    "step2": "…FluxCore ona şu adla bir kanal oluşturur…",
+    "step3": "…ve kanalı şuraya yerleştirir…",
+    "step4": "…herkes ayrıldığında kanal otomatik olarak silinir."
+  },
+  "fields": {
+    "hubPlaceholder": "Bir ses kanalı seçin",
+    "categoryNone": "Merkezle aynı kategori",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Ses merkezleri",
+    "counter": "{{max}} üzerinden {{used}}",
+    "add": "Merkez ekle",
     "edit": "Düzenle",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Sil"
+  },
+  "summary": {
+    "sameCategory": "merkezle aynı kategoride",
+    "deletedWhenEmpty": "boşalınca silinir"
   },
   "empty": {
-    "noConfigs": "Henüz yapılandırma yok",
-    "noConfigsDesc": "Geçici ses kanallarını etkinleştirmek için bir merkez kanalı ekleyin.",
-    "addFirst": "Yapılandırma Ekle"
+    "exampleCaption": "Örnek — bir ses merkezi şöyle çalışır:",
+    "exampleHub": "Katıl ve oluştur",
+    "exampleCategory": "Sesli kanallar",
+    "cta": "İlk merkezinizi oluşturun"
+  },
+  "editor": {
+    "save": "Merkezi kaydet",
+    "saving": "Kaydediliyor…",
+    "cancel": "İptal"
+  },
+  "errors": {
+    "hubRequired": "Üyelerin katılacağı ses kanalını seçin.",
+    "generic": "Bir şeyler ters gitti. Lütfen tekrar deneyin."
   },
   "toast": {
-    "updated": "Yapılandırma güncellendi",
-    "created": "Yapılandırma oluşturuldu",
-    "removed": "Yapılandırma kaldırıldı"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Merkez oluşturuldu",
+    "updated": "Merkez güncellendi",
+    "removed": "Merkez kaldırıldı",
+    "undo": "Geri al",
+    "restored": "Merkez geri yüklendi",
+    "deleteFailed": "Bu merkez kaldırılamadı. Lütfen tekrar deneyin.",
+    "undoFailed": "Bu merkez geri yüklenemedi. Artık merkez sınırına sığmıyor olabilir."
   }
 }

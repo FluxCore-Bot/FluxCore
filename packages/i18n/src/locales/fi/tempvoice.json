@@ -1,38 +1,51 @@
 {
   "label": "Hallintakeskus",
   "title": "Väliaikaiset äänikanavat",
-  "subtitle": "Määritä keskukset, jotka antavat käyttäjien luoda omia lyhytaikaisia äänikanavia liittyessään.",
-  "form": {
-    "sameAsHub": "Sama kuin keskuskanava",
-    "defaultNameTemplate": "{user}n kanava",
-    "hubChannel": "Keskuskanava",
-    "selectHub": "Valitse äänikanava...",
-    "category": "Kategoria (valinnainen)",
-    "nameTemplate": "Kanavan nimipohja",
-    "addConfig": "Lisää konfiguraatio",
-    "editConfig": "Muokkaa konfiguraatiota",
-    "save": "Tallenna konfiguraatio",
-    "saving": "Tallennetaan...",
-    "cancel": "Peruuta",
-    "delete": "Poista",
+  "subtitle": "Määritä keskuskanavia, joiden kautta jäsenet luovat oman äänikanavansa pelkästään liittymällä.",
+  "flow": {
+    "step1": "Kun joku liittyy tähän äänikanavaan…",
+    "step2": "…FluxCore luo hänelle kanavan nimellä…",
+    "step3": "…sijoitettuna kategoriaan…",
+    "step4": "…ja kanava poistetaan automaattisesti, kun kaikki ovat poistuneet."
+  },
+  "fields": {
+    "hubPlaceholder": "Valitse äänikanava",
+    "categoryNone": "Sama kategoria kuin keskuskanavalla",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Äänikeskukset",
+    "counter": "{{used}} / {{max}}",
+    "add": "Lisää keskus",
     "edit": "Muokkaa",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Poista"
+  },
+  "summary": {
+    "sameCategory": "sama kategoria kuin keskuskanavalla",
+    "deletedWhenEmpty": "poistetaan, kun tyhjenee"
   },
   "empty": {
-    "noConfigs": "Ei konfiguraatioita vielä",
-    "noConfigsDesc": "Lisää keskuskanava ottaaksesi väliaikaiset äänikanavat käyttöön.",
-    "addFirst": "Lisää konfiguraatio"
+    "exampleCaption": "Esimerkki — näin äänikeskus toimii:",
+    "exampleHub": "Liity luodaksesi",
+    "exampleCategory": "Äänikanavat",
+    "cta": "Luo ensimmäinen keskuksesi"
+  },
+  "editor": {
+    "save": "Tallenna keskus",
+    "saving": "Tallennetaan…",
+    "cancel": "Peruuta"
+  },
+  "errors": {
+    "hubRequired": "Valitse äänikanava, johon jäsenet liittyvät.",
+    "generic": "Jokin meni pieleen. Yritä uudelleen."
   },
   "toast": {
-    "updated": "Konfiguraatio päivitetty",
-    "created": "Konfiguraatio luotu",
-    "removed": "Konfiguraatio poistettu"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Keskus luotu",
+    "updated": "Keskus päivitetty",
+    "removed": "Keskus poistettu",
+    "undo": "Kumoa",
+    "restored": "Keskus palautettu",
+    "deleteFailed": "Keskuksen poistaminen epäonnistui. Yritä uudelleen.",
+    "undoFailed": "Keskuksen palauttaminen epäonnistui. Se ei ehkä enää mahdu keskusten rajaan."
   }
 }

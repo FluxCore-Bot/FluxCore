@@ -1,38 +1,51 @@
 {
   "label": "Kituo cha Usimamizi",
   "title": "Chaneli za Sauti za Muda",
-  "subtitle": "Sanidi vituo vinavyoruhusu watumiaji kuunda chaneli zao za sauti za muda wanapojiunga.",
-  "form": {
-    "sameAsHub": "Sawa na chaneli ya kituo",
-    "defaultNameTemplate": "Chaneli ya {user}",
-    "hubChannel": "Chaneli ya Kituo",
-    "selectHub": "Chagua chaneli ya sauti...",
-    "category": "Kategoria (si lazima)",
-    "nameTemplate": "Kiolezo cha Jina la Chaneli",
-    "addConfig": "Ongeza Usanidi",
-    "editConfig": "Hariri Usanidi",
-    "save": "Hifadhi Usanidi",
-    "saving": "Inahifadhi...",
-    "cancel": "Ghairi",
-    "delete": "Futa",
+  "subtitle": "Sanidi vituo vinavyowawezesha wanachama kuunda chaneli zao za sauti kwa kujiunga tu.",
+  "flow": {
+    "step1": "Mtu anapojiunga na chaneli hii ya sauti…",
+    "step2": "…FluxCore humtengenezea chaneli yenye jina…",
+    "step3": "…iliyowekwa katika…",
+    "step4": "…na hufutwa kiotomatiki mara tu kila mtu anapoondoka."
+  },
+  "fields": {
+    "hubPlaceholder": "Chagua chaneli ya sauti",
+    "categoryNone": "Kategoria ile ile ya kituo",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Vituo vya sauti",
+    "counter": "{{used}} kati ya {{max}}",
+    "add": "Ongeza kituo",
     "edit": "Hariri",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Futa"
+  },
+  "summary": {
+    "sameCategory": "kategoria ile ile ya kituo",
+    "deletedWhenEmpty": "hufutwa ikiwa tupu"
   },
   "empty": {
-    "noConfigs": "Hakuna usanidi bado",
-    "noConfigsDesc": "Ongeza chaneli ya kituo ili kuwezesha chaneli za sauti za muda.",
-    "addFirst": "Ongeza Usanidi"
+    "exampleCaption": "Mfano — hivi ndivyo kituo cha sauti kinavyofanya kazi:",
+    "exampleHub": "Jiunge ili kuunda",
+    "exampleCategory": "Chaneli za sauti",
+    "cta": "Unda kituo chako cha kwanza"
+  },
+  "editor": {
+    "save": "Hifadhi kituo",
+    "saving": "Inahifadhi…",
+    "cancel": "Ghairi"
+  },
+  "errors": {
+    "hubRequired": "Chagua chaneli ya sauti ambayo wanachama watajiunga nayo.",
+    "generic": "Hitilafu imetokea. Tafadhali jaribu tena."
   },
   "toast": {
-    "updated": "Usanidi umesasishwa",
-    "created": "Usanidi umeundwa",
-    "removed": "Usanidi umeondolewa"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Kituo kimeundwa",
+    "updated": "Kituo kimesasishwa",
+    "removed": "Kituo kimeondolewa",
+    "undo": "Tendua",
+    "restored": "Kituo kimerejeshwa",
+    "deleteFailed": "Imeshindwa kuondoa kituo hicho. Tafadhali jaribu tena.",
+    "undoFailed": "Imeshindwa kurejesha kituo hicho. Huenda hakitoshi tena ndani ya kikomo cha vituo."
   }
 }

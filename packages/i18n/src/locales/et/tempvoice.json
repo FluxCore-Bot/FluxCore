@@ -1,38 +1,51 @@
 {
   "label": "Halduskeskus",
   "title": "Ajutised häälekanalid",
-  "subtitle": "Seadista jaoturid, mis võimaldavad kasutajatel liitumise korral oma efemeerseid häälekanaleid luua.",
-  "form": {
-    "sameAsHub": "Sama mis jaoturkanal",
-    "defaultNameTemplate": "{user} kanal",
-    "hubChannel": "Jaoturkanal",
-    "selectHub": "Vali häälekanal...",
-    "category": "Kategooria (valikuline)",
-    "nameTemplate": "Kanali nime mall",
-    "addConfig": "Lisa seadistus",
-    "editConfig": "Muuda seadistust",
-    "save": "Salvesta seadistus",
-    "saving": "Salvestamine...",
-    "cancel": "Tühista",
-    "delete": "Kustuta",
+  "subtitle": "Seadista keskused, mis lasevad liikmetel luua endale oma häälekanal lihtsalt liitudes.",
+  "flow": {
+    "step1": "Kui keegi liitub selle häälekanaliga…",
+    "step2": "…loob FluxCore talle kanali nimega…",
+    "step3": "…mis paigutatakse kategooriasse…",
+    "step4": "…ja see kustutatakse automaatselt, kui kõik on lahkunud."
+  },
+  "fields": {
+    "hubPlaceholder": "Vali häälekanal",
+    "categoryNone": "Sama kategooria mis keskusel",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Häälekeskused",
+    "counter": "{{used}} / {{max}}",
+    "add": "Lisa keskus",
     "edit": "Muuda",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Kustuta"
+  },
+  "summary": {
+    "sameCategory": "sama kategooria mis keskusel",
+    "deletedWhenEmpty": "kustutatakse, kui tühjeneb"
   },
   "empty": {
-    "noConfigs": "Seadistusi pole veel",
-    "noConfigsDesc": "Lisa jaoturkanal, et lubada ajutised häälekanalid.",
-    "addFirst": "Lisa seadistus"
+    "exampleCaption": "Näide — nii häälekeskus töötab:",
+    "exampleHub": "Liitu, et luua",
+    "exampleCategory": "Häälekanalid",
+    "cta": "Loo oma esimene keskus"
+  },
+  "editor": {
+    "save": "Salvesta keskus",
+    "saving": "Salvestamine…",
+    "cancel": "Tühista"
+  },
+  "errors": {
+    "hubRequired": "Vali häälekanal, millega liikmed liituvad.",
+    "generic": "Midagi läks valesti. Palun proovi uuesti."
   },
   "toast": {
-    "updated": "Seadistus uuendatud",
-    "created": "Seadistus loodud",
-    "removed": "Seadistus eemaldatud"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Keskus loodud",
+    "updated": "Keskus uuendatud",
+    "removed": "Keskus eemaldatud",
+    "undo": "Võta tagasi",
+    "restored": "Keskus taastatud",
+    "deleteFailed": "Selle keskuse eemaldamine ebaõnnestus. Palun proovi uuesti.",
+    "undoFailed": "Selle keskuse taastamine ebaõnnestus. Võimalik, et see ei mahu enam keskuste piirangu sisse."
   }
 }

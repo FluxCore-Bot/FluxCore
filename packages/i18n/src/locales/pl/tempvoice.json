@@ -1,38 +1,51 @@
 {
   "label": "Centrum zarządzania",
   "title": "Tymczasowe kanały głosowe",
-  "subtitle": "Skonfiguruj huby umożliwiające użytkownikom tworzenie własnych efemerycznych kanałów głosowych po dołączeniu.",
-  "form": {
-    "sameAsHub": "Taki sam jak kanał hub",
-    "defaultNameTemplate": "Kanał {user}",
-    "hubChannel": "Kanał hub",
-    "selectHub": "Wybierz kanał głosowy...",
-    "category": "Kategoria (opcjonalnie)",
-    "nameTemplate": "Szablon nazwy kanału",
-    "addConfig": "Dodaj konfigurację",
-    "editConfig": "Edytuj konfigurację",
-    "save": "Zapisz konfigurację",
-    "saving": "Zapisywanie...",
-    "cancel": "Anuluj",
-    "delete": "Usuń",
+  "subtitle": "Skonfiguruj centra, dzięki którym członkowie tworzą własny kanał głosowy samym dołączeniem.",
+  "flow": {
+    "step1": "Gdy ktoś dołącza do tego kanału głosowego…",
+    "step2": "…FluxCore tworzy dla niego kanał o nazwie…",
+    "step3": "…umieszczony w…",
+    "step4": "…i kanał jest usuwany automatycznie, gdy wszyscy go opuszczą."
+  },
+  "fields": {
+    "hubPlaceholder": "Wybierz kanał głosowy",
+    "categoryNone": "Ta sama kategoria co centrum",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Centra głosowe",
+    "counter": "{{used}} z {{max}}",
+    "add": "Dodaj centrum",
     "edit": "Edytuj",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Usuń"
+  },
+  "summary": {
+    "sameCategory": "ta sama kategoria co centrum",
+    "deletedWhenEmpty": "usuwany, gdy pusty"
   },
   "empty": {
-    "noConfigs": "Brak konfiguracji",
-    "noConfigsDesc": "Dodaj kanał hub, aby włączyć tymczasowe kanały głosowe.",
-    "addFirst": "Dodaj konfigurację"
+    "exampleCaption": "Przykład — tak działa centrum głosowe:",
+    "exampleHub": "Dołącz, aby utworzyć",
+    "exampleCategory": "Kanały głosowe",
+    "cta": "Utwórz swoje pierwsze centrum"
+  },
+  "editor": {
+    "save": "Zapisz centrum",
+    "saving": "Zapisywanie…",
+    "cancel": "Anuluj"
+  },
+  "errors": {
+    "hubRequired": "Wybierz kanał głosowy, do którego będą dołączać członkowie.",
+    "generic": "Coś poszło nie tak. Spróbuj ponownie."
   },
   "toast": {
-    "updated": "Konfiguracja zaktualizowana",
-    "created": "Konfiguracja utworzona",
-    "removed": "Konfiguracja usunięta"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Centrum utworzone",
+    "updated": "Centrum zaktualizowane",
+    "removed": "Centrum usunięte",
+    "undo": "Cofnij",
+    "restored": "Centrum przywrócone",
+    "deleteFailed": "Nie udało się usunąć tego centrum. Spróbuj ponownie.",
+    "undoFailed": "Nie udało się przywrócić tego centrum. Może już nie mieścić się w limicie centrów."
   }
 }

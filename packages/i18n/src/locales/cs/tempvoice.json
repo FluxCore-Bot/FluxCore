@@ -1,38 +1,51 @@
 {
   "label": "Centrum správy",
   "title": "Dočasné hlasové kanály",
-  "subtitle": "Nakonfigurujte rozbočovače, které umožňují uživatelům vytvářet vlastní dočasné hlasové kanály po připojení.",
-  "form": {
-    "sameAsHub": "Stejný jako rozbočovač",
-    "defaultNameTemplate": "Kanál {user}",
-    "hubChannel": "Kanál rozbočovače",
-    "selectHub": "Vybrat hlasový kanál...",
-    "category": "Kategorie (volitelné)",
-    "nameTemplate": "Šablona názvu kanálu",
-    "addConfig": "Přidat konfiguraci",
-    "editConfig": "Upravit konfiguraci",
-    "save": "Uložit konfiguraci",
-    "saving": "Ukládání...",
-    "cancel": "Zrušit",
-    "delete": "Smazat",
+  "subtitle": "Nastavte huby, díky nimž si členové vytvoří vlastní hlasový kanál pouhým připojením.",
+  "flow": {
+    "step1": "Když se někdo připojí k tomuto hlasovému kanálu…",
+    "step2": "…FluxCore mu vytvoří kanál s názvem…",
+    "step3": "…umístěný v…",
+    "step4": "…a jakmile všichni odejdou, kanál se automaticky smaže."
+  },
+  "fields": {
+    "hubPlaceholder": "Vyberte hlasový kanál",
+    "categoryNone": "Stejná kategorie jako hub",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Hlasové huby",
+    "counter": "{{used}} z {{max}}",
+    "add": "Přidat hub",
     "edit": "Upravit",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Smazat"
+  },
+  "summary": {
+    "sameCategory": "stejná kategorie jako hub",
+    "deletedWhenEmpty": "smaže se, když je prázdný"
   },
   "empty": {
-    "noConfigs": "Zatím žádné konfigurace",
-    "noConfigsDesc": "Přidejte kanál rozbočovače pro povolení dočasných hlasových kanálů.",
-    "addFirst": "Přidat konfiguraci"
+    "exampleCaption": "Příklad — takto hlasový hub funguje:",
+    "exampleHub": "Připoj se a vytvoř",
+    "exampleCategory": "Hlasové kanály",
+    "cta": "Vytvořte svůj první hub"
+  },
+  "editor": {
+    "save": "Uložit hub",
+    "saving": "Ukládání…",
+    "cancel": "Zrušit"
+  },
+  "errors": {
+    "hubRequired": "Vyberte hlasový kanál, ke kterému se budou členové připojovat.",
+    "generic": "Něco se pokazilo. Zkuste to prosím znovu."
   },
   "toast": {
-    "updated": "Konfigurace aktualizována",
-    "created": "Konfigurace vytvořena",
-    "removed": "Konfigurace odebrána"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Hub vytvořen",
+    "updated": "Hub aktualizován",
+    "removed": "Hub odebrán",
+    "undo": "Zpět",
+    "restored": "Hub obnoven",
+    "deleteFailed": "Tento hub se nepodařilo odebrat. Zkuste to prosím znovu.",
+    "undoFailed": "Tento hub se nepodařilo obnovit. Možná se už nevejde do limitu hubů."
   }
 }

@@ -1,38 +1,51 @@
 {
   "label": "관리 허브",
   "title": "임시 음성 채널",
-  "subtitle": "참여 시 사용자가 자신만의 임시 음성 채널을 생성할 수 있는 허브를 구성합니다.",
-  "form": {
-    "sameAsHub": "허브 채널과 동일",
-    "defaultNameTemplate": "{user}의 채널",
-    "hubChannel": "허브 채널",
-    "selectHub": "음성 채널 선택...",
-    "category": "카테고리 (선택사항)",
-    "nameTemplate": "채널 이름 템플릿",
-    "addConfig": "구성 추가",
-    "editConfig": "구성 편집",
-    "save": "구성 저장",
-    "saving": "저장 중...",
-    "cancel": "취소",
-    "delete": "삭제",
+  "subtitle": "참여하기만 하면 멤버가 자신의 음성 채널을 만들 수 있는 허브를 설정하세요.",
+  "flow": {
+    "step1": "누군가 이 음성 채널에 참여하면",
+    "step2": "FluxCore가 이 이름으로 채널을 만들어",
+    "step3": "이 카테고리에 배치합니다",
+    "step4": "모두가 나가면 채널은 자동으로 삭제됩니다."
+  },
+  "fields": {
+    "hubPlaceholder": "음성 채널 선택",
+    "categoryNone": "허브와 같은 카테고리",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "음성 허브",
+    "counter": "{{max}}개 중 {{used}}개",
+    "add": "허브 추가",
     "edit": "편집",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "삭제"
+  },
+  "summary": {
+    "sameCategory": "허브와 같은 카테고리에",
+    "deletedWhenEmpty": "비면 삭제됨"
   },
   "empty": {
-    "noConfigs": "아직 구성이 없습니다",
-    "noConfigsDesc": "허브 채널을 추가하여 임시 음성 채널을 활성화하세요.",
-    "addFirst": "구성 추가"
+    "exampleCaption": "예시 — 음성 허브는 이렇게 작동합니다:",
+    "exampleHub": "참여해서 만들기",
+    "exampleCategory": "음성 채널",
+    "cta": "첫 허브 만들기"
+  },
+  "editor": {
+    "save": "허브 저장",
+    "saving": "저장 중…",
+    "cancel": "취소"
+  },
+  "errors": {
+    "hubRequired": "멤버가 참여할 음성 채널을 선택하세요.",
+    "generic": "문제가 발생했습니다. 다시 시도해 주세요."
   },
   "toast": {
-    "updated": "구성이 업데이트되었습니다",
-    "created": "구성이 생성되었습니다",
-    "removed": "구성이 제거되었습니다"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "허브가 생성되었습니다",
+    "updated": "허브가 업데이트되었습니다",
+    "removed": "허브가 삭제되었습니다",
+    "undo": "실행 취소",
+    "restored": "허브가 복원되었습니다",
+    "deleteFailed": "해당 허브를 삭제하지 못했습니다. 다시 시도해 주세요.",
+    "undoFailed": "해당 허브를 복원하지 못했습니다. 허브 개수 제한을 초과했을 수 있습니다."
   }
 }

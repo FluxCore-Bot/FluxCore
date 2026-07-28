@@ -1,38 +1,51 @@
 {
   "label": "Pārvaldības centrs",
   "title": "Pagaidu balss kanāli",
-  "subtitle": "Konfigurējiet centrmezglus, kas lietotājiem ļauj izveidot savus pagaidu balss kanālus pievienošanās brīdī.",
-  "form": {
-    "sameAsHub": "Tāds pats kā centrmezgla kanāls",
-    "defaultNameTemplate": "{user} kanāls",
-    "hubChannel": "Centrmezgla kanāls",
-    "selectHub": "Atlasiet balss kanālu...",
-    "category": "Kategorija (neobligāta)",
-    "nameTemplate": "Kanāla nosaukuma veidne",
-    "addConfig": "Pievienot konfigurāciju",
-    "editConfig": "Rediģēt konfigurāciju",
-    "save": "Saglabāt konfigurāciju",
-    "saving": "Saglabā...",
-    "cancel": "Atcelt",
-    "delete": "Dzēst",
+  "subtitle": "Iestatiet centrus, kuros dalībnieki, vienkārši pievienojoties, izveido savu balss kanālu.",
+  "flow": {
+    "step1": "Kad kāds pievienojas šim balss kanālam…",
+    "step2": "…FluxCore izveido viņam kanālu ar nosaukumu…",
+    "step3": "…kas novietots kategorijā…",
+    "step4": "…un tas tiek automātiski dzēsts, tiklīdz visi ir aizgājuši."
+  },
+  "fields": {
+    "hubPlaceholder": "Izvēlieties balss kanālu",
+    "categoryNone": "Tā pati kategorija kā centram",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Balss centri",
+    "counter": "{{used}} no {{max}}",
+    "add": "Pievienot centru",
     "edit": "Rediģēt",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Dzēst"
+  },
+  "summary": {
+    "sameCategory": "tā pati kategorija kā centram",
+    "deletedWhenEmpty": "tiek dzēsts, kad tukšs"
   },
   "empty": {
-    "noConfigs": "Konfigurāciju vēl nav",
-    "noConfigsDesc": "Pievienojiet centrmezgla kanālu, lai iespējotu pagaidu balss kanālus.",
-    "addFirst": "Pievienot konfigurāciju"
+    "exampleCaption": "Piemērs — lūk, kā darbojas balss centrs:",
+    "exampleHub": "Pievienojies, lai izveidotu",
+    "exampleCategory": "Balss kanāli",
+    "cta": "Izveidojiet savu pirmo centru"
+  },
+  "editor": {
+    "save": "Saglabāt centru",
+    "saving": "Saglabā…",
+    "cancel": "Atcelt"
+  },
+  "errors": {
+    "hubRequired": "Izvēlieties balss kanālu, kuram dalībnieki pievienosies.",
+    "generic": "Kaut kas nogāja greizi. Lūdzu, mēģiniet vēlreiz."
   },
   "toast": {
-    "updated": "Konfigurācija atjaunināta",
-    "created": "Konfigurācija izveidota",
-    "removed": "Konfigurācija noņemta"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Centrs izveidots",
+    "updated": "Centrs atjaunināts",
+    "removed": "Centrs noņemts",
+    "undo": "Atsaukt",
+    "restored": "Centrs atjaunots",
+    "deleteFailed": "Neizdevās noņemt šo centru. Lūdzu, mēģiniet vēlreiz.",
+    "undoFailed": "Neizdevās atjaunot šo centru. Iespējams, tas vairs neietilpst centru ierobežojumā."
   }
 }

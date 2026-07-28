@@ -1,38 +1,51 @@
 {
   "label": "Kezelési központ",
   "title": "Ideiglenes hangcsatornák",
-  "subtitle": "Konfiguráljon hubokat, amelyek lehetővé teszik a felhasználóknak, hogy saját ideiglenes hangcsatornákat hozzanak létre csatlakozáskor.",
-  "form": {
-    "sameAsHub": "Ugyanaz mint a hub csatorna",
-    "defaultNameTemplate": "{user} csatornája",
-    "hubChannel": "Hub csatorna",
-    "selectHub": "Hangcsatorna kiválasztása...",
-    "category": "Kategória (opcionális)",
-    "nameTemplate": "Csatorna névtemplát",
-    "addConfig": "Konfiguráció hozzáadása",
-    "editConfig": "Konfiguráció szerkesztése",
-    "save": "Konfiguráció mentése",
-    "saving": "Mentés...",
-    "cancel": "Mégse",
-    "delete": "Törlés",
+  "subtitle": "Állíts be központokat, amelyekhez csatlakozva a tagok saját hangcsatornát hozhatnak létre.",
+  "flow": {
+    "step1": "Amikor valaki csatlakozik ehhez a hangcsatornához…",
+    "step2": "…a FluxCore létrehoz neki egy csatornát ezzel a névvel…",
+    "step3": "…ebbe a kategóriába helyezve…",
+    "step4": "…és a csatorna automatikusan törlődik, amint mindenki kilépett."
+  },
+  "fields": {
+    "hubPlaceholder": "Válassz hangcsatornát",
+    "categoryNone": "Ugyanaz a kategória, mint a központé",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Hangközpontok",
+    "counter": "{{used}} / {{max}}",
+    "add": "Központ hozzáadása",
     "edit": "Szerkesztés",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Törlés"
+  },
+  "summary": {
+    "sameCategory": "ugyanaz a kategória, mint a központé",
+    "deletedWhenEmpty": "törlődik, ha kiürül"
   },
   "empty": {
-    "noConfigs": "Még nincs konfiguráció",
-    "noConfigsDesc": "Adjon hozzá egy hub csatornát az ideiglenes hangcsatornák engedélyezéséhez.",
-    "addFirst": "Konfiguráció hozzáadása"
+    "exampleCaption": "Példa — így működik egy hangközpont:",
+    "exampleHub": "Csatlakozz a létrehozáshoz",
+    "exampleCategory": "Hangcsatornák",
+    "cta": "Hozd létre az első központodat"
+  },
+  "editor": {
+    "save": "Központ mentése",
+    "saving": "Mentés…",
+    "cancel": "Mégse"
+  },
+  "errors": {
+    "hubRequired": "Válaszd ki azt a hangcsatornát, amelyhez a tagok csatlakozni fognak.",
+    "generic": "Valami hiba történt. Kérlek, próbáld újra."
   },
   "toast": {
-    "updated": "Konfiguráció frissítve",
-    "created": "Konfiguráció létrehozva",
-    "removed": "Konfiguráció eltávolítva"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Központ létrehozva",
+    "updated": "Központ frissítve",
+    "removed": "Központ eltávolítva",
+    "undo": "Visszavonás",
+    "restored": "Központ visszaállítva",
+    "deleteFailed": "Nem sikerült eltávolítani ezt a központot. Kérlek, próbáld újra.",
+    "undoFailed": "Nem sikerült visszaállítani ezt a központot. Lehet, hogy már nem fér bele a központok korlátjába."
   }
 }

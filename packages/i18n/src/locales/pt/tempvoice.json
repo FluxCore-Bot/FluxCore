@@ -1,38 +1,51 @@
 {
   "label": "Hub de gestão",
   "title": "Canais de voz temporários",
-  "subtitle": "Configure hubs que permitem aos utilizadores criar os seus próprios canais de voz efémeros ao entrar.",
-  "form": {
-    "sameAsHub": "Igual ao canal hub",
-    "defaultNameTemplate": "Canal de {user}",
-    "hubChannel": "Canal hub",
-    "selectHub": "Selecionar um canal de voz...",
-    "category": "Categoria (opcional)",
-    "nameTemplate": "Modelo de nome do canal",
-    "addConfig": "Adicionar configuração",
-    "editConfig": "Editar configuração",
-    "save": "Guardar configuração",
-    "saving": "A guardar...",
-    "cancel": "Cancelar",
-    "delete": "Eliminar",
+  "subtitle": "Configura hubs que permitem aos membros criar o seu próprio canal de voz apenas ao entrar.",
+  "flow": {
+    "step1": "Quando alguém entra neste canal de voz…",
+    "step2": "…o FluxCore cria-lhe um canal com o nome…",
+    "step3": "…colocado em…",
+    "step4": "…e é eliminado automaticamente assim que todos saem."
+  },
+  "fields": {
+    "hubPlaceholder": "Escolhe um canal de voz",
+    "categoryNone": "A mesma categoria do hub",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Hubs de voz",
+    "counter": "{{used}} de {{max}}",
+    "add": "Adicionar hub",
     "edit": "Editar",
-    "nameTemplateHint": "Use {user} para o nome de exibição do membro"
+    "delete": "Eliminar"
+  },
+  "summary": {
+    "sameCategory": "a mesma categoria do hub",
+    "deletedWhenEmpty": "eliminado quando fica vazio"
   },
   "empty": {
-    "noConfigs": "Ainda sem configurações",
-    "noConfigsDesc": "Adicione um canal hub para ativar os canais de voz temporários.",
-    "addFirst": "Adicionar configuração"
+    "exampleCaption": "Exemplo — é assim que um hub de voz funciona:",
+    "exampleHub": "Entra para criar",
+    "exampleCategory": "Canais de voz",
+    "cta": "Cria o teu primeiro hub"
+  },
+  "editor": {
+    "save": "Guardar hub",
+    "saving": "A guardar…",
+    "cancel": "Cancelar"
+  },
+  "errors": {
+    "hubRequired": "Escolhe o canal de voz onde os membros vão entrar.",
+    "generic": "Algo correu mal. Tenta novamente."
   },
   "toast": {
-    "updated": "Configuração atualizada",
-    "created": "Configuração criada",
-    "removed": "Configuração removida"
-  },
-  "hubs": {
-    "configured": "Hubs Configurados",
-    "add": "Adicionar Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Modelo: {{template}}",
-    "categorySuffix": " — Categoria: #{{channel}}"
+    "created": "Hub criado",
+    "updated": "Hub atualizado",
+    "removed": "Hub removido",
+    "undo": "Anular",
+    "restored": "Hub restaurado",
+    "deleteFailed": "Não foi possível remover esse hub. Tenta novamente.",
+    "undoFailed": "Não foi possível restaurar esse hub. Talvez já não caiba dentro do limite de hubs."
   }
 }

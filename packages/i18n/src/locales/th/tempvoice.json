@@ -1,38 +1,51 @@
 {
   "label": "ศูนย์จัดการ",
   "title": "ห้องเสียงชั่วคราว",
-  "subtitle": "ตั้งค่าฮับที่อนุญาตให้ผู้ใช้สร้างห้องเสียงชั่วคราวของตัวเองเมื่อเข้าร่วม",
-  "form": {
-    "sameAsHub": "เหมือนกับแชนเนลฮับ",
-    "defaultNameTemplate": "ห้องของ {user}",
-    "hubChannel": "แชนเนลฮับ",
-    "selectHub": "เลือกแชนเนลเสียง...",
-    "category": "หมวดหมู่ (ไม่บังคับ)",
-    "nameTemplate": "เทมเพลตชื่อแชนเนล",
-    "addConfig": "เพิ่มการกำหนดค่า",
-    "editConfig": "แก้ไขการกำหนดค่า",
-    "save": "บันทึกการกำหนดค่า",
-    "saving": "กำลังบันทึก...",
-    "cancel": "ยกเลิก",
-    "delete": "ลบ",
+  "subtitle": "ตั้งค่าฮับที่ให้สมาชิกสร้างห้องเสียงของตัวเองได้เพียงแค่เข้าร่วม",
+  "flow": {
+    "step1": "เมื่อมีคนเข้าร่วมห้องเสียงนี้…",
+    "step2": "…FluxCore จะสร้างห้องให้เขาโดยใช้ชื่อ…",
+    "step3": "…และวางไว้ใน…",
+    "step4": "…ห้องจะถูกลบอัตโนมัติเมื่อทุกคนออกไปหมด"
+  },
+  "fields": {
+    "hubPlaceholder": "เลือกห้องเสียง",
+    "categoryNone": "หมวดหมู่เดียวกับฮับ",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "ฮับเสียง",
+    "counter": "{{used}} จาก {{max}}",
+    "add": "เพิ่มฮับ",
     "edit": "แก้ไข",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "ลบ"
+  },
+  "summary": {
+    "sameCategory": "ในหมวดหมู่เดียวกับฮับ",
+    "deletedWhenEmpty": "ลบเมื่อว่าง"
   },
   "empty": {
-    "noConfigs": "ยังไม่มีการกำหนดค่า",
-    "noConfigsDesc": "เพิ่มแชนเนลฮับเพื่อเปิดใช้งานห้องเสียงชั่วคราว",
-    "addFirst": "เพิ่มการกำหนดค่า"
+    "exampleCaption": "ตัวอย่าง — ฮับเสียงทำงานแบบนี้:",
+    "exampleHub": "เข้าร่วมเพื่อสร้าง",
+    "exampleCategory": "ห้องเสียง",
+    "cta": "สร้างฮับแรกของคุณ"
+  },
+  "editor": {
+    "save": "บันทึกฮับ",
+    "saving": "กำลังบันทึก…",
+    "cancel": "ยกเลิก"
+  },
+  "errors": {
+    "hubRequired": "เลือกห้องเสียงที่สมาชิกจะเข้าร่วม",
+    "generic": "เกิดข้อผิดพลาด กรุณาลองอีกครั้ง"
   },
   "toast": {
-    "updated": "อัปเดตการกำหนดค่าแล้ว",
-    "created": "สร้างการกำหนดค่าแล้ว",
-    "removed": "ลบการกำหนดค่าแล้ว"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "สร้างฮับแล้ว",
+    "updated": "อัปเดตฮับแล้ว",
+    "removed": "ลบฮับแล้ว",
+    "undo": "เลิกทำ",
+    "restored": "กู้คืนฮับแล้ว",
+    "deleteFailed": "ลบฮับนั้นไม่สำเร็จ กรุณาลองอีกครั้ง",
+    "undoFailed": "กู้คืนฮับนั้นไม่สำเร็จ อาจเกินจำนวนฮับสูงสุดแล้ว"
   }
 }

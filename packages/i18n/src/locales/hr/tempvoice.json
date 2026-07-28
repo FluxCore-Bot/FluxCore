@@ -1,38 +1,51 @@
 {
   "label": "Upravljačko središte",
   "title": "Privremeni glasovni kanali",
-  "subtitle": "Konfigurirajte središta koja korisnicima omogućuju stvaranje vlastitih privremenih glasovnih kanala pri pridruživanju.",
-  "form": {
-    "sameAsHub": "Isto kao hub kanal",
-    "defaultNameTemplate": "Kanal korisnika {user}",
-    "hubChannel": "Hub kanal",
-    "selectHub": "Odaberite glasovni kanal...",
-    "category": "Kategorija (neobavezno)",
-    "nameTemplate": "Predložak naziva kanala",
-    "addConfig": "Dodaj konfiguraciju",
-    "editConfig": "Uredi konfiguraciju",
-    "save": "Spremi konfiguraciju",
-    "saving": "Spremanje...",
-    "cancel": "Odustani",
-    "delete": "Obriši",
+  "subtitle": "Postavite čvorišta koja članovima omogućuju da samim pridruživanjem stvore vlastiti glasovni kanal.",
+  "flow": {
+    "step1": "Kad se netko pridruži ovom glasovnom kanalu…",
+    "step2": "…FluxCore mu stvara kanal pod nazivom…",
+    "step3": "…smješten u…",
+    "step4": "…i briše se automatski čim svi izađu."
+  },
+  "fields": {
+    "hubPlaceholder": "Odaberite glasovni kanal",
+    "categoryNone": "Ista kategorija kao čvorište",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "Glasovna čvorišta",
+    "counter": "{{used}} od {{max}}",
+    "add": "Dodaj čvorište",
     "edit": "Uredi",
-    "nameTemplateHint": "Use {user} for the member's display name"
+    "delete": "Obriši"
+  },
+  "summary": {
+    "sameCategory": "ista kategorija kao čvorište",
+    "deletedWhenEmpty": "briše se kad ostane prazan"
   },
   "empty": {
-    "noConfigs": "Nema konfiguracija",
-    "noConfigsDesc": "Dodajte hub kanal kako biste omogućili privremene glasovne kanale.",
-    "addFirst": "Dodaj konfiguraciju"
+    "exampleCaption": "Primjer — ovako radi glasovno čvorište:",
+    "exampleHub": "Pridruži se za stvaranje",
+    "exampleCategory": "Glasovni kanali",
+    "cta": "Stvorite svoje prvo čvorište"
+  },
+  "editor": {
+    "save": "Spremi čvorište",
+    "saving": "Spremanje…",
+    "cancel": "Odustani"
+  },
+  "errors": {
+    "hubRequired": "Odaberite glasovni kanal kojem će se članovi pridružiti.",
+    "generic": "Nešto je pošlo po zlu. Pokušajte ponovno."
   },
   "toast": {
-    "updated": "Konfiguracija ažurirana",
-    "created": "Konfiguracija stvorena",
-    "removed": "Konfiguracija uklonjena"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "Čvorište je stvoreno",
+    "updated": "Čvorište je ažurirano",
+    "removed": "Čvorište je uklonjeno",
+    "undo": "Poništi",
+    "restored": "Čvorište je vraćeno",
+    "deleteFailed": "Nije bilo moguće ukloniti to čvorište. Pokušajte ponovno.",
+    "undoFailed": "Nije bilo moguće vratiti to čvorište. Možda više ne stane u ograničenje broja čvorišta."
   }
 }

@@ -1,38 +1,51 @@
 {
   "label": "מרכז ניהול",
   "title": "ערוצי קול זמניים",
-  "subtitle": "הגדר מרכזים שמאפשרים למשתמשים ליצור ערוצי קול זמניים משלהם בעת הצטרפות.",
-  "form": {
-    "sameAsHub": "זהה לערוץ המרכז",
-    "defaultNameTemplate": "הערוץ של {user}",
-    "hubChannel": "ערוץ מרכז",
-    "selectHub": "בחר ערוץ קולי...",
-    "category": "קטגוריה (אופציונלי)",
-    "nameTemplate": "תבנית שם ערוץ",
-    "addConfig": "הוסף תצורה",
-    "editConfig": "ערוך תצורה",
-    "save": "שמור תצורה",
-    "saving": "שומר...",
-    "cancel": "ביטול",
-    "delete": "מחק",
-    "edit": "ערוך",
-    "nameTemplateHint": "Use {user} for the member's display name"
+  "subtitle": "הגדר מרכזים שמאפשרים לחברים ליצור ערוץ קולי משלהם בעצם ההצטרפות אליהם.",
+  "flow": {
+    "step1": "כשמישהו מצטרף לערוץ הקולי הזה…",
+    "step2": "…FluxCore יוצר עבורו ערוץ בשם…",
+    "step3": "…שממוקם בתוך…",
+    "step4": "…והוא נמחק אוטומטית ברגע שכולם יוצאים."
+  },
+  "fields": {
+    "hubPlaceholder": "בחר ערוץ קולי",
+    "categoryNone": "אותה קטגוריה כמו המרכז",
+    "templatePlaceholder": "{user}'s Channel"
+  },
+  "list": {
+    "heading": "מרכזים קוליים",
+    "counter": "{{used}} מתוך {{max}}",
+    "add": "הוספת מרכז",
+    "edit": "עריכה",
+    "delete": "מחיקה"
+  },
+  "summary": {
+    "sameCategory": "באותה קטגוריה של המרכז",
+    "deletedWhenEmpty": "נמחק כשהוא ריק"
   },
   "empty": {
-    "noConfigs": "אין תצורות עדיין",
-    "noConfigsDesc": "הוסף ערוץ מרכז כדי לאפשר ערוצי קול זמניים.",
-    "addFirst": "הוסף תצורה"
+    "exampleCaption": "דוגמה — כך פועל מרכז קולי:",
+    "exampleHub": "הצטרפו כדי ליצור",
+    "exampleCategory": "ערוצים קוליים",
+    "cta": "צור את המרכז הראשון שלך"
+  },
+  "editor": {
+    "save": "שמירת המרכז",
+    "saving": "שומר…",
+    "cancel": "ביטול"
+  },
+  "errors": {
+    "hubRequired": "בחר את הערוץ הקולי שאליו יצטרפו החברים.",
+    "generic": "משהו השתבש. נסה שוב."
   },
   "toast": {
-    "updated": "התצורה עודכנה",
-    "created": "התצורה נוצרה",
-    "removed": "התצורה הוסרה"
-  },
-  "hubs": {
-    "configured": "Configured Hubs",
-    "add": "Add Hub",
-    "hubLabel": "Hub: #{{channel}}",
-    "templateLabel": "Template: {{template}}",
-    "categorySuffix": " — Category: #{{channel}}"
+    "created": "המרכז נוצר",
+    "updated": "המרכז עודכן",
+    "removed": "המרכז הוסר",
+    "undo": "ביטול פעולה",
+    "restored": "המרכז שוחזר",
+    "deleteFailed": "לא ניתן היה להסיר את המרכז הזה. נסה שוב.",
+    "undoFailed": "לא ניתן היה לשחזר את המרכז הזה. ייתכן שהוא כבר לא נכנס במגבלת המרכזים."
   }
 }
