@@ -826,6 +826,22 @@ describe("PermissionsPage — role member assignment", () => {
     expect(await addMemberButton()).not.toBeDisabled();
   });
 
+  it("disables the add control for a non-owner caller whose identity fetch settled with no identity (errored), even if they hold every permission the role grants", async () => {
+    // Regression: useAuth is a plain useQuery with retry:false, so a non-401
+    // fetch error settles at isLoading:false, data:undefined — the same
+    // shape as "never fetched yet". Gating on isLoading alone (the previous
+    // fix) left this state open: not loading, so the disable check fell
+    // through to the pure permission check, and a non-owner who held every
+    // permission the role grants got a usable, unfiltered add control. The
+    // gate must be "do we have a confirmed id", not "are we loading".
+    permissionsState.box = { isOwner: false, isLoading: false, permissions: ["tickets.*"] };
+    roleState.box = { ...ROLE_BASE, permissions: ["tickets.list.view"] };
+    authState.box = { data: null, isLoading: false };
+    renderPage();
+
+    expect(await addMemberButton()).toBeDisabled();
+  });
+
   it("excludes the current user from the add control's options for a non-owner caller", async () => {
     permissionsState.box = { isOwner: false, isLoading: false, permissions: ["tickets.*"] };
     roleState.box = { ...ROLE_BASE, permissions: ["tickets.list.view"] };

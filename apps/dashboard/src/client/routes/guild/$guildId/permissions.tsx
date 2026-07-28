@@ -255,7 +255,7 @@ function RoleEditor({
   const { data: registry = [], isLoading: registryLoading, isError: registryError } = usePermissionRegistry(guildId);
   const updateRole = useUpdateDashboardRole(guildId);
   const deleteRole = useDeleteDashboardRole(guildId);
-  const { data: currentUser, isLoading: currentUserLoading } = useAuth();
+  const { data: currentUser } = useAuth();
   const {
     data: roleMembers = [],
     isLoading: roleMembersLoading,
@@ -303,20 +303,25 @@ function RoleEditor({
     });
   }
 
+  // A "confirmed identity" is either owner status (self-assignment is a
+  // non-issue for the owner — the server never checks it) or a resolved
+  // currentUser.userId. `useAuth` is an independent query with no route
+  // loader forcing it to resolve before RoleEditor mounts, and — per review
+  // — a plain `useQuery` with `retry: false` settles at `isLoading: false,
+  // data: undefined` on a non-401 fetch error, same shape as "never fetched
+  // yet". So the gate below is NOT "loading vs. not" (that left the errored
+  // case open); it is "do we have an id or not" — loading, errored, and a
+  // null/undefined body all fail closed identically. Both the disable check
+  // and the self-exclusion list derive from this one flag so they cannot
+  // drift apart.
+  const callerIdKnown = currentUserIsOwner || Boolean(currentUser?.userId);
+
   // Mirrors the server's assignment gate exactly: against `role.permissions`
   // (the persisted grant), not the locally-edited `permissions` state above —
   // assigning applies immediately and independently of the pending Save.
-  //
-  // Fails closed on identity, not just on permissions: `usePermissions` is
-  // covered by the page-level loading gate above, but `useAuth` is an
-  // independent query with no route loader forcing it to resolve first, so
-  // a hard reload or a deep link can render this with `currentUser` still
-  // `undefined`. A non-owner caller whose identity isn't known yet must not
-  // get a usable add control — an unknown-non-owner is treated the same as
-  // "cannot assign" rather than assumed to be the owner.
   const cannotAssignRole =
     !currentUserIsOwner &&
-    (currentUserLoading || !role.permissions.every((p) => matchPermission(myPermissionSet, p)));
+    (!callerIdKnown || !role.permissions.every((p) => matchPermission(myPermissionSet, p)));
 
   const assignedMemberIds = useMemo(() => roleMembers.map((m) => m.userId), [roleMembers]);
 
@@ -325,9 +330,9 @@ function RoleEditor({
   // here rather than merely explained.
   const addExcludeIds = useMemo(() => {
     const ids = new Set(assignedMemberIds);
-    if (!currentUserIsOwner && currentUser?.userId) ids.add(currentUser.userId);
+    if (!currentUserIsOwner && callerIdKnown && currentUser?.userId) ids.add(currentUser.userId);
     return [...ids];
-  }, [assignedMemberIds, currentUserIsOwner, currentUser]);
+  }, [assignedMemberIds, currentUserIsOwner, callerIdKnown, currentUser]);
 
   // assignedBy ids resolve alongside member ids in the same batched lookup —
   // a member and their assigner are both just Discord user ids to resolve.
