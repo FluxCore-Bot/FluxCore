@@ -8,6 +8,48 @@ let guildConfigsCache: Map<string, TempVoiceGuildConfig[]> = new Map();
 /** hubChannelId → the config that owns that hub channel (for fast event lookups) */
 let hubChannelIndex: Map<string, TempVoiceGuildConfig> = new Map();
 
+/** Database row → the shape the rest of the codebase passes around */
+function toConfig(row: {
+  id: number;
+  hubChannelId: string;
+  categoryId: string | null;
+  nameTemplate: string;
+}): TempVoiceGuildConfig {
+  return {
+    id: row.id,
+    hubChannelId: row.hubChannelId,
+    categoryId: row.categoryId,
+    nameTemplate: row.nameTemplate,
+  };
+}
+
+/**
+ * Read a guild's configs straight from the database.
+ *
+ * The in-memory cache below is only populated by the bot process (ready.ts calls
+ * loadTempVoiceConfig). Any other process — the dashboard API — must read through
+ * to Postgres, which is the single source of truth.
+ */
+export async function fetchGuildConfigs(
+  guildId: string,
+): Promise<TempVoiceGuildConfig[]> {
+  const rows = await getPrisma().tempVoiceGuildConfig.findMany({
+    where: { guildId },
+    orderBy: { id: "asc" },
+  });
+  return rows.map(toConfig);
+}
+
+/** Look up the config owning a hub channel, straight from the database. */
+export async function fetchConfigByHubChannel(
+  hubChannelId: string,
+): Promise<TempVoiceGuildConfig | null> {
+  const row = await getPrisma().tempVoiceGuildConfig.findUnique({
+    where: { hubChannelId },
+  });
+  return row ? toConfig(row) : null;
+}
+
 export async function loadTempVoiceConfig(): Promise<void> {
   try {
     const prisma = getPrisma();
@@ -88,7 +130,7 @@ export async function updateGuildConfig(
 ): Promise<TempVoiceGuildConfig> {
   const prisma = getPrisma();
   const row = await prisma.tempVoiceGuildConfig.update({
-    where: { id: configId },
+    where: { id: configId, guildId },
     data: {
       ...(updates.hubChannelId !== undefined && {
         hubChannelId: updates.hubChannelId,
@@ -122,16 +164,24 @@ export async function removeGuildConfig(
   guildId: string,
   configId: number,
 ): Promise<boolean> {
-  const configs = guildConfigsCache.get(guildId);
-  if (!configs) return false;
-  const idx = configs.findIndex((c) => c.id === configId);
-  if (idx === -1) return false;
+  // Delete against the database, not the cache: only the bot process has a
+  // populated cache, and the row is what actually has to go.
   const prisma = getPrisma();
-  await prisma.tempVoiceGuildConfig.delete({ where: { id: configId } });
-  hubChannelIndex.delete(configs[idx].hubChannelId);
-  configs.splice(idx, 1);
-  if (configs.length === 0) {
-    guildConfigsCache.delete(guildId);
+  const { count } = await prisma.tempVoiceGuildConfig.deleteMany({
+    where: { id: configId, guildId },
+  });
+  if (count === 0) return false;
+
+  const configs = guildConfigsCache.get(guildId);
+  if (configs) {
+    const idx = configs.findIndex((c) => c.id === configId);
+    if (idx !== -1) {
+      hubChannelIndex.delete(configs[idx].hubChannelId);
+      configs.splice(idx, 1);
+      if (configs.length === 0) {
+        guildConfigsCache.delete(guildId);
+      }
+    }
   }
   return true;
 }

@@ -38,7 +38,7 @@ vi.mock("../../../../src/server/shared/permissions.js", () => ({
   createDashboardAuditLog: vi.fn().mockResolvedValue(undefined),
 }));
 
-const mockGetGuildConfigs = vi.fn().mockReturnValue([]);
+const mockFetchGuildConfigs = vi.fn().mockResolvedValue([]);
 const mockAddGuildConfig = vi.fn().mockResolvedValue({
   id: 1,
   hubChannelId: "ch-1",
@@ -52,13 +52,13 @@ const mockUpdateGuildConfig = vi.fn().mockResolvedValue({
   nameTemplate: "{user}'s Room",
 });
 const mockRemoveGuildConfig = vi.fn().mockResolvedValue(true);
-const mockGetConfigByHubChannel = vi.fn().mockReturnValue(undefined);
+const mockFetchConfigByHubChannel = vi.fn().mockResolvedValue(null);
 vi.mock("@fluxcore/systems/tempVoice/config", () => ({
-  getGuildConfigs: (...args: unknown[]) => mockGetGuildConfigs(...args),
+  fetchGuildConfigs: (...args: unknown[]) => mockFetchGuildConfigs(...args),
   addGuildConfig: (...args: unknown[]) => mockAddGuildConfig(...args),
   updateGuildConfig: (...args: unknown[]) => mockUpdateGuildConfig(...args),
   removeGuildConfig: (...args: unknown[]) => mockRemoveGuildConfig(...args),
-  getConfigByHubChannel: (...args: unknown[]) => mockGetConfigByHubChannel(...args),
+  fetchConfigByHubChannel: (...args: unknown[]) => mockFetchConfigByHubChannel(...args),
 }));
 
 vi.mock("@fluxcore/systems/tempVoice/constants", () => ({
@@ -94,8 +94,8 @@ describe("tempvoice routes", () => {
     vi.clearAllMocks();
     mockGetSession.mockResolvedValue(mockSession);
     mockIsBotInGuild.mockResolvedValue(true);
-    mockGetGuildConfigs.mockReturnValue([]);
-    mockGetConfigByHubChannel.mockReturnValue(undefined);
+    mockFetchGuildConfigs.mockResolvedValue([]);
+    mockFetchConfigByHubChannel.mockResolvedValue(null);
     app = await buildApp();
   });
 
@@ -111,7 +111,7 @@ describe("tempvoice routes", () => {
     });
 
     it("returns array of configs when they exist", async () => {
-      mockGetGuildConfigs.mockReturnValueOnce([
+      mockFetchGuildConfigs.mockResolvedValueOnce([
         { id: 1, hubChannelId: "ch-1", nameTemplate: "{user}'s Room", categoryId: null },
         { id: 2, hubChannelId: "ch-2", nameTemplate: "{user}'s Gaming", categoryId: "cat-1" },
       ]);
@@ -168,7 +168,7 @@ describe("tempvoice routes", () => {
     });
 
     it("returns 400 when hub channel already configured", async () => {
-      mockGetConfigByHubChannel.mockReturnValueOnce({
+      mockFetchConfigByHubChannel.mockResolvedValueOnce({
         id: 1,
         hubChannelId: "ch-1",
         categoryId: null,
@@ -185,7 +185,7 @@ describe("tempvoice routes", () => {
     });
 
     it("returns 400 when config limit reached", async () => {
-      mockGetGuildConfigs.mockReturnValueOnce(
+      mockFetchGuildConfigs.mockResolvedValueOnce(
         Array.from({ length: 10 }, (_, i) => ({
           id: i + 1,
           hubChannelId: `hub-${i}`,
@@ -213,6 +213,34 @@ describe("tempvoice routes", () => {
       expect(res.statusCode).toBe(400);
       expect(res.json().error).toContain("too long");
     });
+
+    it("reads the existing hub from the database, not an in-process cache", async () => {
+      await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/tempvoice",
+        cookies: { session: app.signCookie("valid") },
+        payload: { hubChannelId: "ch-1" },
+      });
+      expect(mockFetchConfigByHubChannel).toHaveBeenCalledWith("ch-1");
+      expect(mockFetchGuildConfigs).toHaveBeenCalledWith("guild-1");
+    });
+
+    it("returns 400, not 500, when the unique constraint rejects the insert", async () => {
+      const conflict: Error & { code?: string } = new Error(
+        "Unique constraint failed",
+      );
+      conflict.code = "P2002";
+      mockAddGuildConfig.mockRejectedValueOnce(conflict);
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/tempvoice",
+        cookies: { session: app.signCookie("valid") },
+        payload: { hubChannelId: "ch-1" },
+      });
+      expect(res.statusCode).toBe(400);
+      expect(res.json().error).toContain("already a temp voice hub");
+      expect(mockNotifyCacheInvalidation).not.toHaveBeenCalled();
+    });
   });
 
   describe("PUT /api/guilds/:guildId/tempvoice/:configId", () => {
@@ -234,7 +262,7 @@ describe("tempvoice routes", () => {
     });
 
     it("returns 400 when changing hub to already-used channel", async () => {
-      mockGetConfigByHubChannel.mockReturnValueOnce({
+      mockFetchConfigByHubChannel.mockResolvedValueOnce({
         id: 2,
         hubChannelId: "ch-other",
         categoryId: null,
@@ -245,6 +273,22 @@ describe("tempvoice routes", () => {
         url: "/api/guilds/guild-1/tempvoice/1",
         cookies: { session: app.signCookie("valid") },
         payload: { hubChannelId: "ch-other" },
+      });
+      expect(res.statusCode).toBe(400);
+      expect(res.json().error).toContain("already a temp voice hub");
+    });
+
+    it("returns 400, not 404, when the unique constraint rejects the update", async () => {
+      const conflict: Error & { code?: string } = new Error(
+        "Unique constraint failed",
+      );
+      conflict.code = "P2002";
+      mockUpdateGuildConfig.mockRejectedValueOnce(conflict);
+      const res = await app.inject({
+        method: "PUT",
+        url: "/api/guilds/guild-1/tempvoice/1",
+        cookies: { session: app.signCookie("valid") },
+        payload: { hubChannelId: "ch-9" },
       });
       expect(res.statusCode).toBe(400);
       expect(res.json().error).toContain("already a temp voice hub");
