@@ -90,7 +90,9 @@
     "saving": "Kaydediliyor...",
     "saveSettings": "Ayarları Kaydet",
     "previous": "Önceki",
-    "next": "İleri"
+    "next": "İleri",
+    "invalidJson": "Geçerli JSON değil — metin değerlerinden oluşan bir nesne bekleniyor",
+    "fieldRequired": "{{field}} gerekli"
   },
   "pagination": {
     "previous": "Önceki",

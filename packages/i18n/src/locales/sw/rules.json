@@ -146,7 +146,18 @@
     "include": "Jumuisha (orodha nyeupe)",
     "exclude": "Tenga (orodha nyeusi)",
     "clearAll": "Futa masharti yote",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Ondoa {{label}}",
+    "collapse": "Kunja masharti",
+    "userIdInvalid": "Weka kitambulisho halali cha mtumiaji wa Discord (tarakimu 17–20)",
+    "addUserId": "Ongeza kitambulisho cha mtumiaji",
+    "includeChannels": "Katika chaneli hizi pekee",
+    "includeRoles": "Wanachama wenye majukumu haya pekee",
+    "includeUsers": "Wanachama hawa pekee",
+    "excludeChannels": "Kamwe katika chaneli hizi",
+    "excludeRoles": "Kamwe wanachama wenye majukumu haya",
+    "excludeUsers": "Kamwe wanachama hawa",
+    "unsupportedWarning": "Kianzishi hiki hakiwezi kutathmini vichujio hivi ({{filters}}), kwa hivyo sheria haitatekelezwa kamwe vikiwa vimewekwa.",
+    "removeUnsupported": "Ondoa vichujio visivyoweza kutumika"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Tupa mabadiliko ambayo hayajahifadhiwa?",
+    "discardChangesDescription": "Sheria hii ina mabadiliko ambayo hayajahifadhiwa. Kufunga kihariri kutayapoteza.",
+    "discardChanges": "Tupa mabadiliko",
+    "draftRestored": "Rasimu imerejeshwa kutoka kipindi kilichopita",
+    "discardDraftAction": "Tupa rasimu",
+    "discardTitle": "Tupa mabadiliko?",
+    "discardDescription": "Una mabadiliko ambayo hayajahifadhiwa. Rasimu yako imehifadhiwa ndani, lakini utaondoka kwenye kihariri.",
+    "discardConfirm": "Tupa na ufunge"
   },
   "panel": {
     "trigger": "Trigger Settings",

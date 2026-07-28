@@ -146,7 +146,18 @@
     "include": "Uključi (bijela lista)",
     "exclude": "Isključi (crna lista)",
     "clearAll": "Obriši sve uvjete",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Ukloni {{label}}",
+    "collapse": "Sažmi uvjete",
+    "userIdInvalid": "Unesite valjani Discord korisnički ID (17–20 znamenki)",
+    "addUserId": "Dodaj korisnički ID",
+    "includeChannels": "Samo u ovim kanalima",
+    "includeRoles": "Samo članovi s ovim ulogama",
+    "includeUsers": "Samo ovi članovi",
+    "excludeChannels": "Nikada u ovim kanalima",
+    "excludeRoles": "Nikada članovi s ovim ulogama",
+    "excludeUsers": "Nikada ovi članovi",
+    "unsupportedWarning": "Ovaj okidač ne može procijeniti ove filtre ({{filters}}), pa se pravilo nikada neće pokrenuti dok su postavljeni.",
+    "removeUnsupported": "Ukloni filtre koji se ne mogu primijeniti"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Odbaciti nespremljene promjene?",
+    "discardChangesDescription": "Ovo pravilo ima promjene koje nisu spremljene. Zatvaranjem uređivača bit će izgubljene.",
+    "discardChanges": "Odbaci promjene",
+    "draftRestored": "Skica vraćena iz prethodne sesije",
+    "discardDraftAction": "Odbaci skicu",
+    "discardTitle": "Odbaciti promjene?",
+    "discardDescription": "Imate nespremljene promjene. Skica se sprema lokalno, ali napustit ćete uređivač.",
+    "discardConfirm": "Odbaci i zatvori"
   },
   "panel": {
     "trigger": "Trigger Settings",

@@ -146,7 +146,18 @@
     "include": "Einschließen (Whitelist)",
     "exclude": "Ausschließen (Blacklist)",
     "clearAll": "Alle Bedingungen löschen",
-    "removeItem": "{{label}} entfernen"
+    "removeItem": "{{label}} entfernen",
+    "collapse": "Bedingungen einklappen",
+    "userIdInvalid": "Gib eine gültige Discord-Benutzer-ID ein (17–20 Ziffern)",
+    "addUserId": "Benutzer-ID hinzufügen",
+    "includeChannels": "Nur in diesen Kanälen",
+    "includeRoles": "Nur Mitglieder mit diesen Rollen",
+    "includeUsers": "Nur diese Mitglieder",
+    "excludeChannels": "Nie in diesen Kanälen",
+    "excludeRoles": "Nie Mitglieder mit diesen Rollen",
+    "excludeUsers": "Nie diese Mitglieder",
+    "unsupportedWarning": "Dieser Auslöser kann diese Filter ({{filters}}) nicht auswerten, daher wird die Regel nie ausgelöst, solange sie gesetzt sind.",
+    "removeUnsupported": "Filter entfernen, die nicht greifen können"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Ansicht anpassen"
     },
     "issues_one": "{{count}} Problem",
-    "issues_other": "{{count}} Probleme"
+    "issues_other": "{{count}} Probleme",
+    "discardChangesTitle": "Nicht gespeicherte Änderungen verwerfen?",
+    "discardChangesDescription": "Diese Regel enthält nicht gespeicherte Änderungen. Beim Schließen des Editors gehen sie verloren.",
+    "discardChanges": "Änderungen verwerfen",
+    "draftRestored": "Entwurf aus einer früheren Sitzung wiederhergestellt",
+    "discardDraftAction": "Entwurf verwerfen",
+    "discardTitle": "Änderungen verwerfen?",
+    "discardDescription": "Du hast nicht gespeicherte Änderungen. Dein Entwurf wird lokal gespeichert, aber du verlässt den Editor.",
+    "discardConfirm": "Verwerfen & schließen"
   },
   "panel": {
     "trigger": "Auslöser-Einstellungen",
@@ -322,5 +341,83 @@
     "stepUnreachable": "Schritt \"{{id}}\" ist vom Auslöser aus nicht erreichbar",
     "noActionType": "{{label}}: kein Aktionstyp ausgewählt",
     "fieldRequired": "{{label}}: {{field}} ist erforderlich"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Mitglied beigetreten",
+      "description": "Wenn ein neues Mitglied dem Server beitritt"
+    },
+    "memberLeave": {
+      "label": "Mitglied verlassen",
+      "description": "Wenn ein Mitglied den Server verlässt"
+    },
+    "memberBanned": {
+      "label": "Mitglied gebannt",
+      "description": "Wenn ein Mitglied gebannt wird"
+    },
+    "memberUnbanned": {
+      "label": "Bann aufgehoben",
+      "description": "Wenn der Bann eines Mitglieds aufgehoben wird"
+    },
+    "messageDeleted": {
+      "label": "Nachricht gelöscht",
+      "description": "Wenn eine Nachricht gelöscht wird"
+    },
+    "roleAdded": {
+      "label": "Rolle hinzugefügt",
+      "description": "Wenn einem Mitglied eine Rolle hinzugefügt wird"
+    },
+    "roleRemoved": {
+      "label": "Rolle entfernt",
+      "description": "Wenn einem Mitglied eine Rolle entzogen wird"
+    },
+    "channelCreated": {
+      "label": "Kanal erstellt",
+      "description": "Wenn ein neuer Kanal erstellt wird"
+    },
+    "channelDeleted": {
+      "label": "Kanal gelöscht",
+      "description": "Wenn ein Kanal gelöscht wird"
+    },
+    "voiceJoin": {
+      "label": "Sprachkanal betreten",
+      "description": "Wenn ein Mitglied einen Sprachkanal betritt"
+    },
+    "voiceLeave": {
+      "label": "Sprachkanal verlassen",
+      "description": "Wenn ein Mitglied einen Sprachkanal verlässt"
+    },
+    "messageCreated": {
+      "label": "Nachricht gesendet",
+      "description": "Wenn in einem Kanal eine Nachricht gesendet wird"
+    },
+    "reactionAdded": {
+      "label": "Reaktion hinzugefügt",
+      "description": "Wenn einer Nachricht eine Reaktion hinzugefügt wird"
+    },
+    "reactionRemoved": {
+      "label": "Reaktion entfernt",
+      "description": "Wenn eine Reaktion von einer Nachricht entfernt wird"
+    },
+    "nicknameChanged": {
+      "label": "Spitzname geändert",
+      "description": "Wenn der Spitzname eines Mitglieds geändert wird"
+    },
+    "memberTimeout": {
+      "label": "Mitglied stummgeschaltet",
+      "description": "Wenn ein Mitglied stummgeschaltet wird"
+    },
+    "threadCreated": {
+      "label": "Thread erstellt",
+      "description": "Wenn ein neuer Thread erstellt wird"
+    },
+    "boostStart": {
+      "label": "Boost gestartet",
+      "description": "Wenn ein Mitglied beginnt, den Server zu boosten"
+    },
+    "boostEnd": {
+      "label": "Boost beendet",
+      "description": "Wenn ein Mitglied aufhört, den Server zu boosten"
+    }
   }
 }

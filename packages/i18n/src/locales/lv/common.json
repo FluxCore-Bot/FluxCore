@@ -90,7 +90,9 @@
     "saving": "Saglabā...",
     "saveSettings": "Saglabāt iestatījumus",
     "previous": "Iepriekšējā",
-    "next": "Nākamā"
+    "next": "Nākamā",
+    "invalidJson": "Nederīgs JSON — gaidīts teksta vērtību objekts",
+    "fieldRequired": "{{field}} ir obligāts"
   },
   "pagination": {
     "previous": "Iepriekšējā",

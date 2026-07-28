@@ -90,7 +90,9 @@
     "saving": "저장 중...",
     "saveSettings": "설정 저장",
     "previous": "이전",
-    "next": "다음"
+    "next": "다음",
+    "invalidJson": "유효한 JSON이 아닙니다 — 문자열 값 객체가 필요합니다",
+    "fieldRequired": "{{field}}은(는) 필수입니다"
   },
   "pagination": {
     "previous": "이전",

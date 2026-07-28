@@ -146,7 +146,18 @@
     "include": "Includeți (lista albă)",
     "exclude": "Excludeți (lista neagră)",
     "clearAll": "Șterge toate condițiile",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Elimină {{label}}",
+    "collapse": "Restrânge condițiile",
+    "userIdInvalid": "Introduceți un ID de utilizator Discord valid (17–20 cifre)",
+    "addUserId": "Adăugați ID-ul utilizatorului",
+    "includeChannels": "Doar în aceste canale",
+    "includeRoles": "Doar membrii cu aceste roluri",
+    "includeUsers": "Doar acești membri",
+    "excludeChannels": "Niciodată în aceste canale",
+    "excludeRoles": "Niciodată membrii cu aceste roluri",
+    "excludeUsers": "Niciodată acești membri",
+    "unsupportedWarning": "Acest declanșator nu poate evalua aceste filtre ({{filters}}), așa că regula nu se va executa niciodată cât timp sunt setate.",
+    "removeUnsupported": "Eliminați filtrele care nu se pot aplica"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Renunțați la modificările nesalvate?",
+    "discardChangesDescription": "Această regulă are modificări nesalvate. Închiderea editorului le va pierde.",
+    "discardChanges": "Renunță la modificări",
+    "draftRestored": "Ciornă restaurată dintr-o sesiune anterioară",
+    "discardDraftAction": "Renunță la ciornă",
+    "discardTitle": "Renunțați la modificări?",
+    "discardDescription": "Aveți modificări nesalvate. Ciorna este salvată local, dar veți părăsi editorul.",
+    "discardConfirm": "Renunță și închide"
   },
   "panel": {
     "trigger": "Trigger Settings",

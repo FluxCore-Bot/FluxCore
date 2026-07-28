@@ -90,7 +90,9 @@
     "saving": "Salvataggio...",
     "saveSettings": "Salva impostazioni",
     "previous": "Precedente",
-    "next": "Successivo"
+    "next": "Successivo",
+    "invalidJson": "JSON non valido: è previsto un oggetto di valori di testo",
+    "fieldRequired": "{{field}} è obbligatorio"
   },
   "pagination": {
     "previous": "Precedente",

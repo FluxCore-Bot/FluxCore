@@ -146,7 +146,18 @@
     "include": "অন্তর্ভুক্ত (হোয়াইটলিস্ট)",
     "exclude": "বর্জন (ব্ল্যাকলিস্ট)",
     "clearAll": "সমস্ত শর্ত সাফ করুন",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "{{label}} সরান",
+    "collapse": "শর্তগুলি সংকুচিত করুন",
+    "userIdInvalid": "একটি বৈধ Discord ব্যবহারকারী আইডি লিখুন (১৭–২০ সংখ্যা)",
+    "addUserId": "ব্যবহারকারী আইডি যোগ করুন",
+    "includeChannels": "শুধু এই চ্যানেলগুলিতে",
+    "includeRoles": "শুধু এই ভূমিকাগুলির সদস্যরা",
+    "includeUsers": "শুধু এই সদস্যরা",
+    "excludeChannels": "কখনও এই চ্যানেলগুলিতে নয়",
+    "excludeRoles": "কখনও এই ভূমিকাগুলির সদস্যরা নয়",
+    "excludeUsers": "কখনও এই সদস্যরা নয়",
+    "unsupportedWarning": "এই ট্রিগারটি এই ফিল্টারগুলি ({{filters}}) মূল্যায়ন করতে পারে না, তাই সেগুলি সেট থাকা অবস্থায় নিয়মটি কখনও চলবে না।",
+    "removeUnsupported": "যে ফিল্টারগুলি প্রযোজ্য নয় সেগুলি সরান"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "অসংরক্ষিত পরিবর্তন বাতিল করবেন?",
+    "discardChangesDescription": "এই নিয়মে এমন পরিবর্তন আছে যা সংরক্ষণ করা হয়নি। সম্পাদক বন্ধ করলে সেগুলি হারিয়ে যাবে।",
+    "discardChanges": "পরিবর্তন বাতিল করুন",
+    "draftRestored": "আগের সেশন থেকে খসড়া পুনরুদ্ধার করা হয়েছে",
+    "discardDraftAction": "খসড়া বাতিল করুন",
+    "discardTitle": "পরিবর্তন বাতিল করবেন?",
+    "discardDescription": "আপনার অসংরক্ষিত পরিবর্তন আছে। খসড়া স্থানীয়ভাবে সংরক্ষিত থাকবে, তবে আপনি সম্পাদক ছেড়ে যাবেন।",
+    "discardConfirm": "বাতিল করে বন্ধ করুন"
   },
   "panel": {
     "trigger": "Trigger Settings",
@@ -322,5 +341,83 @@
     "stepUnreachable": "Step \"{{id}}\" is not reachable from the trigger",
     "noActionType": "{{label}}: no action type selected",
     "fieldRequired": "{{label}}: {{field}} is required"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "সদস্য যোগদান",
+      "description": "যখন একজন নতুন সদস্য সার্ভারে যোগ দেয়"
+    },
+    "memberLeave": {
+      "label": "সদস্য প্রস্থান",
+      "description": "যখন একজন সদস্য সার্ভার ছেড়ে যায়"
+    },
+    "memberBanned": {
+      "label": "সদস্য নিষিদ্ধ",
+      "description": "যখন একজন সদস্যকে নিষিদ্ধ করা হয়"
+    },
+    "memberUnbanned": {
+      "label": "সদস্যের নিষেধাজ্ঞা প্রত্যাহার",
+      "description": "যখন একজন সদস্যের নিষেধাজ্ঞা তুলে নেওয়া হয়"
+    },
+    "messageDeleted": {
+      "label": "বার্তা মুছে ফেলা",
+      "description": "যখন একটি বার্তা মুছে ফেলা হয়"
+    },
+    "roleAdded": {
+      "label": "ভূমিকা যোগ",
+      "description": "যখন একজন সদস্যের ভূমিকা যোগ করা হয়"
+    },
+    "roleRemoved": {
+      "label": "ভূমিকা অপসারণ",
+      "description": "যখন একজন সদস্যের ভূমিকা সরানো হয়"
+    },
+    "channelCreated": {
+      "label": "চ্যানেল তৈরি",
+      "description": "যখন একটি নতুন চ্যানেল তৈরি হয়"
+    },
+    "channelDeleted": {
+      "label": "চ্যানেল মুছে ফেলা",
+      "description": "যখন একটি চ্যানেল মুছে ফেলা হয়"
+    },
+    "voiceJoin": {
+      "label": "ভয়েসে যোগদান",
+      "description": "যখন একজন সদস্য ভয়েস চ্যানেলে যোগ দেয়"
+    },
+    "voiceLeave": {
+      "label": "ভয়েস ত্যাগ",
+      "description": "যখন একজন সদস্য ভয়েস চ্যানেল ছাড়ে"
+    },
+    "messageCreated": {
+      "label": "বার্তা পাঠানো",
+      "description": "যখন একটি চ্যানেলে বার্তা পাঠানো হয়"
+    },
+    "reactionAdded": {
+      "label": "প্রতিক্রিয়া যোগ",
+      "description": "যখন একটি বার্তায় প্রতিক্রিয়া যোগ করা হয়"
+    },
+    "reactionRemoved": {
+      "label": "প্রতিক্রিয়া অপসারণ",
+      "description": "যখন একটি বার্তা থেকে প্রতিক্রিয়া সরানো হয়"
+    },
+    "nicknameChanged": {
+      "label": "ডাকনাম পরিবর্তন",
+      "description": "যখন একজন সদস্যের ডাকনাম পরিবর্তন হয়"
+    },
+    "memberTimeout": {
+      "label": "সদস্য টাইমআউট",
+      "description": "যখন একজন সদস্যকে টাইমআউট করা হয়"
+    },
+    "threadCreated": {
+      "label": "থ্রেড তৈরি",
+      "description": "যখন একটি নতুন থ্রেড তৈরি হয়"
+    },
+    "boostStart": {
+      "label": "বুস্ট শুরু",
+      "description": "যখন একজন সদস্য সার্ভার বুস্ট করা শুরু করে"
+    },
+    "boostEnd": {
+      "label": "বুস্ট শেষ",
+      "description": "যখন একজন সদস্য সার্ভার বুস্ট করা বন্ধ করে"
+    }
   }
 }

@@ -90,7 +90,9 @@
     "saving": "Чување...",
     "saveSettings": "Сачувај подешавања",
     "previous": "Претходна",
-    "next": "Следећа"
+    "next": "Следећа",
+    "invalidJson": "Неважећи JSON — очекује се објекат текстуалних вредности",
+    "fieldRequired": "{{field}} је обавезно"
   },
   "pagination": {
     "previous": "Претходна",

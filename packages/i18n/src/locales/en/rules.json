@@ -80,7 +80,8 @@
     "boostThankYouDefault": "Thank you for boosting {guild}, {user}! You're awesome!",
     "banLoggerName": "Ban Logger",
     "autoThreadName": "Auto Thread",
-    "autoThreadDefault": "Discussion: {user.name}"
+    "autoThreadDefault": "Discussion: {user.name}",
+    "browse": "Browse templates"
   },
   "deleteDialog": {
     "title": "Delete Rule",
@@ -150,7 +151,17 @@
     "removeItem": "Remove {{label}}",
     "collapse": "Collapse conditions",
     "userIdInvalid": "Enter a valid Discord user ID (17–20 digits)",
-    "addUserId": "Add user ID"
+    "addUserId": "Add user ID",
+    "includeChannels": "Only in these channels",
+    "includeRoles": "Only members with these roles",
+    "includeUsers": "Only these members",
+    "excludeChannels": "Never in these channels",
+    "excludeRoles": "Never members with these roles",
+    "excludeUsers": "Never these members",
+    "unsupportedWarning": "This trigger cannot evaluate these filters ({{filters}}), so the rule will never fire while they are set.",
+    "removeUnsupported": "Remove filters that cannot apply",
+    "addMember": "Add member...",
+    "memberSearchHint": "Type a name to search members"
   },
   "editor": {
     "backToRules": "Rules",
@@ -176,7 +187,14 @@
     "discardDescription": "You have unsaved changes. Your draft is saved locally, but you'll leave the editor.",
     "discardConfirm": "Discard & close",
     "draftRestored": "Draft restored from a previous session",
-    "discardDraftAction": "Discard draft"
+    "discardDraftAction": "Discard draft",
+    "discardChangesTitle": "Discard unsaved changes?",
+    "discardChangesDescription": "This rule has edits that have not been saved. Closing the editor will lose them.",
+    "discardChanges": "Discard changes",
+    "issuesErrorHint": "Fix these before the rule can be saved. Select one to jump to it.",
+    "issuesWarningHint": "These will not block saving, but the rule may not behave as you expect.",
+    "saveBlocked_one": "Cannot save: {{count}} problem must be fixed first",
+    "saveBlocked_other": "Cannot save: {{count}} problems must be fixed first"
   },
   "panel": {
     "trigger": "Trigger Settings",
@@ -290,7 +308,11 @@
     "ariaCondition": "Condition: {{label}}",
     "ariaDelay": "Delay: {{label}}",
     "branchYes": "Yes",
-    "branchNo": "No"
+    "branchNo": "No",
+    "hasError": "Has an error",
+    "hasWarning": "Has a warning",
+    "activeFilters_one": "{{count}} active filter",
+    "activeFilters_other": "{{count}} active filters"
   },
   "ruleList": {
     "never": "Never",
@@ -311,7 +333,9 @@
     "disableRuleNamed": "Disable {{name}}",
     "openRule": "Edit {{name}}",
     "disabledBadge": "Disabled",
-    "actionNotConfigured": "Not configured"
+    "actionNotConfigured": "Not configured",
+    "misconfiguredBadge": "Incomplete",
+    "misconfiguredHint": "An action is missing a required setting, so this rule cannot run. Open it to finish setting it up."
   },
   "actionPreview": {
     "embed": "Embed: {{title}}",
@@ -354,6 +378,196 @@
       "removeNode": "Remove node",
       "addAction": "Add action",
       "fitView": "Fit view"
+    }
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Member Join",
+      "description": "When a new member joins the server"
+    },
+    "memberLeave": {
+      "label": "Member Leave",
+      "description": "When a member leaves the server"
+    },
+    "memberBanned": {
+      "label": "Member Banned",
+      "description": "When a member is banned"
+    },
+    "memberUnbanned": {
+      "label": "Member Unbanned",
+      "description": "When a member is unbanned"
+    },
+    "messageDeleted": {
+      "label": "Message Deleted",
+      "description": "When a message is deleted"
+    },
+    "roleAdded": {
+      "label": "Role Added",
+      "description": "When a role is added to a member"
+    },
+    "roleRemoved": {
+      "label": "Role Removed",
+      "description": "When a role is removed from a member"
+    },
+    "channelCreated": {
+      "label": "Channel Created",
+      "description": "When a new channel is created"
+    },
+    "channelDeleted": {
+      "label": "Channel Deleted",
+      "description": "When a channel is deleted"
+    },
+    "voiceJoin": {
+      "label": "Voice Join",
+      "description": "When a member joins a voice channel"
+    },
+    "voiceLeave": {
+      "label": "Voice Leave",
+      "description": "When a member leaves a voice channel"
+    },
+    "messageCreated": {
+      "label": "Message Created",
+      "description": "When a message is sent in a channel"
+    },
+    "reactionAdded": {
+      "label": "Reaction Added",
+      "description": "When a reaction is added to a message"
+    },
+    "reactionRemoved": {
+      "label": "Reaction Removed",
+      "description": "When a reaction is removed from a message"
+    },
+    "nicknameChanged": {
+      "label": "Nickname Changed",
+      "description": "When a member's nickname is changed"
+    },
+    "memberTimeout": {
+      "label": "Member Timeout",
+      "description": "When a member is timed out"
+    },
+    "threadCreated": {
+      "label": "Thread Created",
+      "description": "When a new thread is created"
+    },
+    "boostStart": {
+      "label": "Boost Start",
+      "description": "When a member starts boosting the server"
+    },
+    "boostEnd": {
+      "label": "Boost End",
+      "description": "When a member stops boosting the server"
+    }
+  },
+  "actionTypes": {
+    "sendMessage": {
+      "label": "Send Message",
+      "description": "Send a message to a channel"
+    },
+    "sendEmbed": {
+      "label": "Send Embed",
+      "description": "Send an embed to a channel"
+    },
+    "sendDM": {
+      "label": "Send DM",
+      "description": "Send a direct message to the user"
+    },
+    "addRole": {
+      "label": "Add Role",
+      "description": "Add a role to the member"
+    },
+    "removeRole": {
+      "label": "Remove Role",
+      "description": "Remove a role from the member"
+    },
+    "logToChannel": {
+      "label": "Log to Channel",
+      "description": "Log event details to a channel"
+    },
+    "sendWebhook": {
+      "label": "Send Webhook",
+      "description": "Send an HTTP request to an external URL"
+    },
+    "setNickname": {
+      "label": "Set Nickname",
+      "description": "Set the member's nickname"
+    },
+    "createThread": {
+      "label": "Create Thread",
+      "description": "Create a new thread in the channel"
+    },
+    "addReaction": {
+      "label": "Add Reaction",
+      "description": "Add a reaction to the triggering message"
+    }
+  },
+  "actionFields": {
+    "sendMessage_channelId": {
+      "label": "Channel"
+    },
+    "sendMessage_message": {
+      "label": "Message",
+      "placeholder": "Use {user}, {channel}, etc."
+    },
+    "sendEmbed_channelId": {
+      "label": "Channel"
+    },
+    "sendEmbed_embed_title": {
+      "label": "Embed Title",
+      "placeholder": "Embed title..."
+    },
+    "sendEmbed_embed_description": {
+      "label": "Embed Description",
+      "placeholder": "Embed description... supports {user}, {channel}, etc."
+    },
+    "sendEmbed_embed_color": {
+      "label": "Embed Color"
+    },
+    "sendEmbed_embed_footer": {
+      "label": "Embed Footer",
+      "placeholder": "Footer text..."
+    },
+    "sendDM_message": {
+      "label": "Message",
+      "placeholder": "DM message... supports {user}, {guild}, etc."
+    },
+    "addRole_roleId": {
+      "label": "Role"
+    },
+    "removeRole_roleId": {
+      "label": "Role"
+    },
+    "logToChannel_channelId": {
+      "label": "Channel"
+    },
+    "sendWebhook_webhook_url": {
+      "label": "Webhook URL",
+      "placeholder": "https://..."
+    },
+    "sendWebhook_webhook_method": {
+      "label": "HTTP Method"
+    },
+    "sendWebhook_webhook_headers": {
+      "label": "Headers (JSON)",
+      "placeholder": "{\"X-Request-Id\": \"abc\"}"
+    },
+    "sendWebhook_webhook_bodyTemplate": {
+      "label": "Body Template",
+      "placeholder": "JSON body... supports {user}, {channel}, etc."
+    },
+    "setNickname_nickname": {
+      "label": "Nickname",
+      "placeholder": "New nickname... supports {user.name}"
+    },
+    "createThread_channelId": {
+      "label": "Channel"
+    },
+    "createThread_threadName": {
+      "label": "Thread Name",
+      "placeholder": "Thread name... supports {user.name}, etc."
+    },
+    "addReaction_emoji": {
+      "label": "Emoji",
+      "placeholder": "Unicode emoji or custom emoji ID"
     }
   }
 }

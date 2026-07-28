@@ -146,7 +146,18 @@
     "include": "شامل کریں (سفید فہرست)",
     "exclude": "خارج کریں (کالی فہرست)",
     "clearAll": "تمام شرائط صاف کریں",
-    "removeItem": "{{label}} ہٹائیں"
+    "removeItem": "{{label}} ہٹائیں",
+    "collapse": "شرائط سمیٹیں",
+    "userIdInvalid": "درست Discord صارف شناخت درج کریں (17–20 ہندسے)",
+    "addUserId": "صارف شناخت شامل کریں",
+    "includeChannels": "صرف ان چینلز میں",
+    "includeRoles": "صرف ان کرداروں والے اراکین",
+    "includeUsers": "صرف یہ اراکین",
+    "excludeChannels": "ان چینلز میں کبھی نہیں",
+    "excludeRoles": "ان کرداروں والے اراکین کبھی نہیں",
+    "excludeUsers": "یہ اراکین کبھی نہیں",
+    "unsupportedWarning": "یہ ٹریگر ان فلٹرز ({{filters}}) کا جائزہ نہیں لے سکتا، اس لیے جب تک یہ مقرر ہیں قاعدہ کبھی نہیں چلے گا۔",
+    "removeUnsupported": "وہ فلٹرز ہٹائیں جو لاگو نہیں ہو سکتے"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "نظارے کے مطابق کریں"
     },
     "issues_one": "{{count}} مسئلہ",
-    "issues_other": "{{count}} مسائل"
+    "issues_other": "{{count}} مسائل",
+    "discardChangesTitle": "غیر محفوظ تبدیلیاں رد کریں؟",
+    "discardChangesDescription": "اس قاعدے میں ایسی تبدیلیاں ہیں جو محفوظ نہیں ہوئیں۔ ایڈیٹر بند کرنے پر وہ ضائع ہو جائیں گی۔",
+    "discardChanges": "تبدیلیاں رد کریں",
+    "draftRestored": "پچھلے سیشن سے مسودہ بحال کر دیا گیا",
+    "discardDraftAction": "مسودہ رد کریں",
+    "discardTitle": "تبدیلیاں رد کریں؟",
+    "discardDescription": "آپ کے پاس غیر محفوظ تبدیلیاں ہیں۔ مسودہ مقامی طور پر محفوظ ہے، لیکن آپ ایڈیٹر سے نکل جائیں گے۔",
+    "discardConfirm": "رد کریں اور بند کریں"
   },
   "panel": {
     "trigger": "ٹرگر ترتیبات",

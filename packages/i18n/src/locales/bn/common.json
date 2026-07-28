@@ -90,7 +90,9 @@
     "saving": "সংরক্ষণ হচ্ছে...",
     "saveSettings": "সেটিংস সংরক্ষণ করুন",
     "previous": "পূর্ববর্তী",
-    "next": "পরবর্তী"
+    "next": "পরবর্তী",
+    "invalidJson": "বৈধ JSON নয় — টেক্সট মানের একটি অবজেক্ট প্রত্যাশিত",
+    "fieldRequired": "{{field}} আবশ্যক"
   },
   "pagination": {
     "previous": "পূর্ববর্তী",

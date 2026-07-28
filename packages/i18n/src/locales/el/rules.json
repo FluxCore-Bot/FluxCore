@@ -146,7 +146,18 @@
     "include": "Συμπερίληψη (λευκή λίστα)",
     "exclude": "Εξαίρεση (μαύρη λίστα)",
     "clearAll": "Εκκαθάριση όλων των συνθηκών",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Κατάργηση {{label}}",
+    "collapse": "Σύμπτυξη συνθηκών",
+    "userIdInvalid": "Εισαγάγετε έγκυρο αναγνωριστικό χρήστη Discord (17–20 ψηφία)",
+    "addUserId": "Προσθήκη αναγνωριστικού χρήστη",
+    "includeChannels": "Μόνο σε αυτά τα κανάλια",
+    "includeRoles": "Μόνο μέλη με αυτούς τους ρόλους",
+    "includeUsers": "Μόνο αυτά τα μέλη",
+    "excludeChannels": "Ποτέ σε αυτά τα κανάλια",
+    "excludeRoles": "Ποτέ μέλη με αυτούς τους ρόλους",
+    "excludeUsers": "Ποτέ αυτά τα μέλη",
+    "unsupportedWarning": "Αυτή η ενεργοποίηση δεν μπορεί να αξιολογήσει αυτά τα φίλτρα ({{filters}}), οπότε ο κανόνας δεν θα εκτελεστεί ποτέ όσο είναι ορισμένα.",
+    "removeUnsupported": "Κατάργηση φίλτρων που δεν μπορούν να εφαρμοστούν"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Απόρριψη μη αποθηκευμένων αλλαγών;",
+    "discardChangesDescription": "Αυτός ο κανόνας έχει αλλαγές που δεν έχουν αποθηκευτεί. Αν κλείσετε το πρόγραμμα επεξεργασίας, θα χαθούν.",
+    "discardChanges": "Απόρριψη αλλαγών",
+    "draftRestored": "Το πρόχειρο αποκαταστάθηκε από προηγούμενη συνεδρία",
+    "discardDraftAction": "Απόρριψη προχείρου",
+    "discardTitle": "Απόρριψη αλλαγών;",
+    "discardDescription": "Έχετε μη αποθηκευμένες αλλαγές. Το πρόχειρο αποθηκεύεται τοπικά, αλλά θα φύγετε από το πρόγραμμα επεξεργασίας.",
+    "discardConfirm": "Απόρριψη και κλείσιμο"
   },
   "panel": {
     "trigger": "Trigger Settings",
@@ -322,5 +341,83 @@
     "stepUnreachable": "Step \"{{id}}\" is not reachable from the trigger",
     "noActionType": "{{label}}: no action type selected",
     "fieldRequired": "{{label}}: {{field}} is required"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Είσοδος μέλους",
+      "description": "Όταν ένα νέο μέλος μπαίνει στον διακομιστή"
+    },
+    "memberLeave": {
+      "label": "Αποχώρηση μέλους",
+      "description": "Όταν ένα μέλος φεύγει από τον διακομιστή"
+    },
+    "memberBanned": {
+      "label": "Αποκλεισμός μέλους",
+      "description": "Όταν ένα μέλος αποκλείεται"
+    },
+    "memberUnbanned": {
+      "label": "Άρση αποκλεισμού",
+      "description": "Όταν αίρεται ο αποκλεισμός ενός μέλους"
+    },
+    "messageDeleted": {
+      "label": "Διαγραφή μηνύματος",
+      "description": "Όταν διαγράφεται ένα μήνυμα"
+    },
+    "roleAdded": {
+      "label": "Προσθήκη ρόλου",
+      "description": "Όταν προστίθεται ρόλος σε ένα μέλος"
+    },
+    "roleRemoved": {
+      "label": "Αφαίρεση ρόλου",
+      "description": "Όταν αφαιρείται ρόλος από ένα μέλος"
+    },
+    "channelCreated": {
+      "label": "Δημιουργία καναλιού",
+      "description": "Όταν δημιουργείται νέο κανάλι"
+    },
+    "channelDeleted": {
+      "label": "Διαγραφή καναλιού",
+      "description": "Όταν διαγράφεται ένα κανάλι"
+    },
+    "voiceJoin": {
+      "label": "Είσοδος σε φωνή",
+      "description": "Όταν ένα μέλος μπαίνει σε φωνητικό κανάλι"
+    },
+    "voiceLeave": {
+      "label": "Αποχώρηση από φωνή",
+      "description": "Όταν ένα μέλος φεύγει από φωνητικό κανάλι"
+    },
+    "messageCreated": {
+      "label": "Αποστολή μηνύματος",
+      "description": "Όταν στέλνεται μήνυμα σε ένα κανάλι"
+    },
+    "reactionAdded": {
+      "label": "Προσθήκη αντίδρασης",
+      "description": "Όταν προστίθεται αντίδραση σε ένα μήνυμα"
+    },
+    "reactionRemoved": {
+      "label": "Αφαίρεση αντίδρασης",
+      "description": "Όταν αφαιρείται αντίδραση από ένα μήνυμα"
+    },
+    "nicknameChanged": {
+      "label": "Αλλαγή ψευδωνύμου",
+      "description": "Όταν αλλάζει το ψευδώνυμο ενός μέλους"
+    },
+    "memberTimeout": {
+      "label": "Σίγαση μέλους",
+      "description": "Όταν ένα μέλος τίθεται σε σίγαση"
+    },
+    "threadCreated": {
+      "label": "Δημιουργία νήματος",
+      "description": "Όταν δημιουργείται νέο νήμα"
+    },
+    "boostStart": {
+      "label": "Έναρξη ενίσχυσης",
+      "description": "Όταν ένα μέλος αρχίζει να ενισχύει τον διακομιστή"
+    },
+    "boostEnd": {
+      "label": "Λήξη ενίσχυσης",
+      "description": "Όταν ένα μέλος σταματά να ενισχύει τον διακομιστή"
+    }
   }
 }

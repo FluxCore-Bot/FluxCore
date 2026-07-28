@@ -146,7 +146,18 @@
     "include": "Zahrnout (bílá listina)",
     "exclude": "Vyloučit (černá listina)",
     "clearAll": "Vymazat všechny podmínky",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Odebrat {{label}}",
+    "collapse": "Sbalit podmínky",
+    "userIdInvalid": "Zadejte platné Discord ID uživatele (17–20 číslic)",
+    "addUserId": "Přidat ID uživatele",
+    "includeChannels": "Pouze v těchto kanálech",
+    "includeRoles": "Pouze členové s těmito rolemi",
+    "includeUsers": "Pouze tito členové",
+    "excludeChannels": "Nikdy v těchto kanálech",
+    "excludeRoles": "Nikdy členové s těmito rolemi",
+    "excludeUsers": "Nikdy tito členové",
+    "unsupportedWarning": "Tato spouštěč nedokáže vyhodnotit tyto filtry ({{filters}}), takže se pravidlo nikdy nespustí, dokud jsou nastavené.",
+    "removeUnsupported": "Odebrat filtry, které nelze použít"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Zahodit neuložené změny?",
+    "discardChangesDescription": "Toto pravidlo obsahuje neuložené úpravy. Zavřením editoru o ně přijdete.",
+    "discardChanges": "Zahodit změny",
+    "draftRestored": "Koncept obnoven z předchozí relace",
+    "discardDraftAction": "Zahodit koncept",
+    "discardTitle": "Zahodit změny?",
+    "discardDescription": "Máte neuložené změny. Koncept se ukládá lokálně, ale opustíte editor.",
+    "discardConfirm": "Zahodit a zavřít"
   },
   "panel": {
     "trigger": "Trigger Settings",
@@ -322,5 +341,83 @@
     "stepUnreachable": "Step \"{{id}}\" is not reachable from the trigger",
     "noActionType": "{{label}}: no action type selected",
     "fieldRequired": "{{label}}: {{field}} is required"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Připojení člena",
+      "description": "Když se k serveru připojí nový člen"
+    },
+    "memberLeave": {
+      "label": "Odchod člena",
+      "description": "Když člen opustí server"
+    },
+    "memberBanned": {
+      "label": "Zabanování člena",
+      "description": "Když je člen zabanován"
+    },
+    "memberUnbanned": {
+      "label": "Odbanování člena",
+      "description": "Když je členovi zrušen ban"
+    },
+    "messageDeleted": {
+      "label": "Smazaná zpráva",
+      "description": "Když je smazána zpráva"
+    },
+    "roleAdded": {
+      "label": "Přidaná role",
+      "description": "Když je členovi přidána role"
+    },
+    "roleRemoved": {
+      "label": "Odebraná role",
+      "description": "Když je členovi odebrána role"
+    },
+    "channelCreated": {
+      "label": "Vytvořený kanál",
+      "description": "Když je vytvořen nový kanál"
+    },
+    "channelDeleted": {
+      "label": "Smazaný kanál",
+      "description": "Když je smazán kanál"
+    },
+    "voiceJoin": {
+      "label": "Připojení k hlasu",
+      "description": "Když se člen připojí k hlasovému kanálu"
+    },
+    "voiceLeave": {
+      "label": "Opuštění hlasu",
+      "description": "Když člen opustí hlasový kanál"
+    },
+    "messageCreated": {
+      "label": "Odeslaná zpráva",
+      "description": "Když je v kanálu odeslána zpráva"
+    },
+    "reactionAdded": {
+      "label": "Přidaná reakce",
+      "description": "Když je ke zprávě přidána reakce"
+    },
+    "reactionRemoved": {
+      "label": "Odebraná reakce",
+      "description": "Když je ze zprávy odebrána reakce"
+    },
+    "nicknameChanged": {
+      "label": "Změna přezdívky",
+      "description": "Když je změněna přezdívka člena"
+    },
+    "memberTimeout": {
+      "label": "Umlčení člena",
+      "description": "Když je člen umlčen"
+    },
+    "threadCreated": {
+      "label": "Vytvořené vlákno",
+      "description": "Když je vytvořeno nové vlákno"
+    },
+    "boostStart": {
+      "label": "Začátek boostu",
+      "description": "Když člen začne boostovat server"
+    },
+    "boostEnd": {
+      "label": "Konec boostu",
+      "description": "Když člen přestane boostovat server"
+    }
   }
 }

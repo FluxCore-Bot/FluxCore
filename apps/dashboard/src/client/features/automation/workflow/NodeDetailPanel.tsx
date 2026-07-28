@@ -5,6 +5,7 @@ import { useChannels } from "../../../shared/hooks/useChannels";
 import { useRoles } from "../../../shared/hooks/useRoles";
 import { ActionFields } from "../components/ActionFields";
 import { buildAutomationVariables, DiscordMessagePreview, usePreviewContext } from "../../../shared/ui/variable-field";
+import type { VariableDescriptor } from "../../../shared/ui/variable-field";
 import { Button } from "../../../shared/ui/button";
 import { Label } from "../../../shared/ui/label";
 import { Input } from "../../../shared/ui/input";
@@ -15,6 +16,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../../shared/ui/tab
 import { SearchableSelect } from "../../../shared/ui/searchable-select";
 import { EVENT_ICONS } from "../lib/rule-icons";
 import { buildActionTypeOptions } from "../lib/action-options";
+import { useAutomationLabels, makeAutomationLabels, type TranslateFn } from "../lib/labels";
 import { ConditionsEditor } from "../components/ConditionsEditor";
 import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
 import type {
@@ -65,6 +67,41 @@ interface StepPanelProps {
 }
 
 type NodeDetailPanelProps = TriggerPanelProps | ActionPanelProps | StepPanelProps;
+
+/**
+ * Builds the config for a newly chosen action type, carrying over any value
+ * whose key the new type also declares.
+ *
+ * Resetting to `{ type }` erased everything the user had typed the instant the
+ * dropdown closed — with no warning, no undo, and the draft autosave
+ * immediately persisting the emptied action. sendMessage -> sendDM is the
+ * common case: both have a `message`, and a long composed message vanished.
+ */
+export function carryOverActionFields(
+  previous: Record<string, unknown>,
+  newType: string,
+  actionTypeFields: Record<string, { key: string }[]>,
+): Record<string, unknown> {
+  const next: Record<string, unknown> = { type: newType };
+  for (const field of actionTypeFields[newType] ?? []) {
+    const value = getNestedValue(previous, field.key);
+    if (value !== undefined && value !== null && value !== "") {
+      Object.assign(next, setNestedValue(next, field.key, value));
+    }
+  }
+  return next;
+}
+
+function getNestedValue(obj: Record<string, unknown>, path: string): unknown {
+  let current: unknown = obj;
+  for (const part of path.split(".")) {
+    if (current === null || current === undefined || typeof current !== "object") {
+      return undefined;
+    }
+    current = (current as Record<string, unknown>)[part];
+  }
+  return current;
+}
 
 function setNestedValue(
   obj: Record<string, unknown>,
@@ -207,6 +244,7 @@ function TriggerPanel({
   onConditionsChange,
 }: TriggerPanelProps) {
   const { t } = useTranslation(["rules", "common"]);
+  const labels = useAutomationLabels(constants);
   const variables = eventType ? (constants.eventTypeVariables[eventType] ?? []) : [];
 
   const eventOptions = useMemo(
@@ -274,7 +312,7 @@ function TriggerPanel({
           {eventType && constants.eventTypes[eventType] && (
             <div className="rounded-lg bg-surface-lowest p-3">
               <p className="text-xs leading-relaxed text-text-muted">
-                {constants.eventTypes[eventType].description}
+                {labels.eventDescription(eventType)}
               </p>
             </div>
           )}
@@ -286,12 +324,150 @@ function TriggerPanel({
           conditions={conditions}
           onChange={onConditionsChange}
           guildId={guildId}
+          // Undefined until a trigger is picked — ConditionsEditor then offers
+          // everything rather than rendering an empty panel.
+          supported={eventType ? constants.eventConditionSupport[eventType] : undefined}
           alwaysExpanded
         />
       </TabsContent>
 
       <TabsContent value="variables">
         <VariablesTab variables={variables} constants={constants} />
+      </TabsContent>
+    </Tabs>
+  );
+}
+
+/**
+ * The action type picker, its fields and its message preview.
+ *
+ * Shared by the linear ActionPanel and the step-mode StepPanel so the two can
+ * never diverge again — step mode previously rendered a stripped-down copy with
+ * no preview, so adding a single condition or delay to a rule silently removed
+ * the preview from every action in it.
+ */
+function ActionSettings({
+  action,
+  constants,
+  guildId,
+  variables,
+  onTypeChange,
+  onFieldChange,
+}: {
+  action: ActionConfig;
+  constants: Constants;
+  guildId: string;
+  variables: VariableDescriptor[];
+  onTypeChange: (type: string) => void;
+  onFieldChange: (key: string, value: unknown) => void;
+}) {
+  const { t } = useTranslation(["rules", "common"]);
+  const { data: channels = [] } = useChannels(guildId);
+  const { data: roles = [] } = useRoles(guildId);
+  const real = usePreviewContext(guildId);
+  const actionTypeId = useId();
+  const fields: ActionFieldDescriptor[] =
+    constants.actionTypeFields[action.type] ?? [];
+
+  return (
+    <>
+      <div>
+        <Label htmlFor={actionTypeId}>
+          {t("panel.actionType")} <span aria-hidden="true" className="text-danger">*</span>
+          <span className="sr-only"> ({t("common:labels.required")})</span>
+        </Label>
+        <SearchableSelect
+          id={actionTypeId}
+          required
+          options={buildActionTypeOptions(constants.actionTypes)}
+          value={action.type || null}
+          onValueChange={(v) => v && onTypeChange(v)}
+          placeholder={t("panel.selectAction")}
+          searchPlaceholder={t("panel.search")}
+          noResultsLabel={t("panel.noResults")}
+        />
+      </div>
+
+      {action.type && fields.length > 0 && (
+        <ActionFields
+          fields={fields}
+          values={action as unknown as Record<string, unknown>}
+          onChange={onFieldChange}
+          channels={channels}
+          roles={roles}
+          variables={variables}
+          actionType={action.type}
+          // Required fields block Save, so the panel has to say which one is
+          // empty — a red asterisk alone left screen-reader users with no way
+          // to tell why the button was disabled.
+          showErrors
+        />
+      )}
+
+      {(action.type === "sendMessage" || action.type === "sendDM") && (
+        <div className="mt-2">
+          <DiscordMessagePreview
+            variables={variables}
+            real={real}
+            content={action.message ?? ""}
+          />
+        </div>
+      )}
+      {action.type === "sendEmbed" && (
+        <div className="mt-2">
+          <DiscordMessagePreview
+            variables={variables}
+            real={real}
+            embed={{
+              title: action.embed?.title,
+              description: action.embed?.description,
+              footer: action.embed?.footer,
+              color: action.embed?.color,
+            }}
+          />
+        </div>
+      )}
+    </>
+  );
+}
+
+/** Settings/Variables tab shell shared by both action editors. */
+function ActionTabs({
+  eventType,
+  constants,
+  children,
+}: {
+  eventType: string;
+  constants: Constants;
+  children: React.ReactNode;
+}) {
+  const { t } = useTranslation(["rules", "common"]);
+  return (
+    <Tabs defaultValue="settings">
+      <TabsList className="w-full">
+        <TabsTrigger value="settings" className="flex-1">
+          <Icon name="settings" size={14} className="me-1.5" />
+          {t("panel.settings")}
+        </TabsTrigger>
+        <TabsTrigger value="variables" className="flex-1">
+          <Icon name="data_object" size={14} className="me-1.5" />
+          {t("panel.variables")}
+        </TabsTrigger>
+      </TabsList>
+
+      <TabsContent value="settings">
+        <div className="space-y-4">{children}</div>
+      </TabsContent>
+
+      <TabsContent value="variables">
+        {/* Scoped to the selected trigger, exactly like the trigger panel's own
+            tab. Listing every token in the system contradicted both the
+            autocomplete beside it and the editor's unknown-token validator,
+            and invited templates the bot renders as "Unknown". */}
+        <VariablesTab
+          variables={eventType ? (constants.eventTypeVariables[eventType] ?? []) : []}
+          constants={constants}
+        />
       </TabsContent>
     </Tabs>
   );
@@ -310,15 +486,17 @@ function ActionPanel({
   canRemove,
 }: ActionPanelProps) {
   const { t } = useTranslation(["rules", "common"]);
-  const { data: channels = [] } = useChannels(guildId);
-  const { data: roles = [] } = useRoles(guildId);
-  const fields: ActionFieldDescriptor[] =
-    constants.actionTypeFields[action.type] ?? [];
   const variables = buildAutomationVariables(constants, eventType);
-  const real = usePreviewContext(guildId);
 
   const handleTypeChange = (newType: string) => {
-    onActionChange(index, { type: newType });
+    onActionChange(
+      index,
+      carryOverActionFields(
+        action as unknown as Record<string, unknown>,
+        newType,
+        constants.actionTypeFields,
+      ) as unknown as ActionConfig,
+    );
   };
 
   const handleFieldChange = (key: string, value: unknown) => {
@@ -331,111 +509,48 @@ function ActionPanel({
   };
 
   return (
-    <Tabs defaultValue="settings">
-      <TabsList className="w-full">
-        <TabsTrigger value="settings" className="flex-1">
-          <Icon name="settings" size={14} className="me-1.5" />
-          {t("panel.settings")}
-        </TabsTrigger>
-        <TabsTrigger value="variables" className="flex-1">
-          <Icon name="data_object" size={14} className="me-1.5" />
-          {t("panel.variables")}
-        </TabsTrigger>
-      </TabsList>
+    <ActionTabs eventType={eventType} constants={constants}>
+      <ActionSettings
+        action={action}
+        constants={constants}
+        guildId={guildId}
+        variables={variables}
+        onTypeChange={handleTypeChange}
+        onFieldChange={handleFieldChange}
+      />
 
-      <TabsContent value="settings">
-        <div className="space-y-4">
-          <div>
-            <Label>
-              {t("panel.actionType")} <span aria-hidden="true" className="text-danger">*</span>
-              <span className="sr-only"> ({t("common:labels.required")})</span>
-            </Label>
-            <SearchableSelect
-              options={buildActionTypeOptions(constants.actionTypes)}
-              value={action.type || null}
-              onValueChange={(v) => v && handleTypeChange(v)}
-              placeholder={t("panel.selectAction")}
-              searchPlaceholder={t("panel.search")}
-              noResultsLabel={t("panel.noResults")}
-            />
-          </div>
-
-          {action.type && fields.length > 0 && (
-            <ActionFields
-              fields={fields}
-              values={action as unknown as Record<string, unknown>}
-              onChange={handleFieldChange}
-              channels={channels}
-              roles={roles}
-              variables={variables}
-            />
-          )}
-
-          {(action.type === "sendMessage" || action.type === "sendDM") && (
-            <div className="mt-2">
-              <DiscordMessagePreview
-                variables={variables}
-                real={real}
-                content={action.message ?? ""}
-              />
-            </div>
-          )}
-          {action.type === "sendEmbed" && (
-            <div className="mt-2">
-              <DiscordMessagePreview
-                variables={variables}
-                real={real}
-                embed={{
-                  title: action.embed?.title,
-                  description: action.embed?.description,
-                  footer: action.embed?.footer,
-                  color: action.embed?.color,
-                }}
-              />
-            </div>
-          )}
-
-          {totalActions > 1 && (
-            <div className="flex gap-2 border-t border-border pt-3">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="flex-1"
-                disabled={index === 0}
-                onClick={() => onActionMove(index, "up")}
-              >
-                <Icon name="arrow_upward" size={16} />
-                {t("panel.moveUp")}
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="flex-1"
-                disabled={index === totalActions - 1}
-                onClick={() => onActionMove(index, "down")}
-              >
-                <Icon name="arrow_downward" size={16} />
-                {t("panel.moveDown")}
-              </Button>
-            </div>
-          )}
-
-          {canRemove && (
-            <RemoveButton
-              label={t("panel.removeAction")}
-              onConfirm={() => onActionRemove(index)}
-            />
-          )}
+      {totalActions > 1 && (
+        <div className="flex gap-2 border-t border-border pt-3">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="flex-1"
+            disabled={index === 0}
+            onClick={() => onActionMove(index, "up")}
+          >
+            <Icon name="arrow_upward" size={16} />
+            {t("panel.moveUp")}
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="flex-1"
+            disabled={index === totalActions - 1}
+            onClick={() => onActionMove(index, "down")}
+          >
+            <Icon name="arrow_downward" size={16} />
+            {t("panel.moveDown")}
+          </Button>
         </div>
-      </TabsContent>
+      )}
 
-      <TabsContent value="variables">
-        <VariablesTab
-          variables={Object.keys(constants.templateVariables)}
-          constants={constants}
+      {canRemove && (
+        <RemoveButton
+          label={t("panel.removeAction")}
+          onConfirm={() => onActionRemove(index)}
         />
-      </TabsContent>
-    </Tabs>
+      )}
+    </ActionTabs>
   );
 }
 
@@ -471,8 +586,9 @@ const END_TARGET = "__end__";
 function stepShortLabel(step: RuleStep, constants: Constants, t: TFunction): string {
   if (step.type === "action") {
     return (
-      constants.actionTypes[step.action.type]?.label ??
-      (step.action.type || t("nodes.selectAction"))
+      (step.action.type
+        ? makeAutomationLabels(t as unknown as TranslateFn, constants).actionLabel(step.action.type)
+        : t("nodes.selectAction"))
     );
   }
   if (step.type === "condition") {
@@ -535,17 +651,20 @@ function StepPanel({
   onStepRemove,
 }: StepPanelProps) {
   const { t } = useTranslation(["rules", "common"]);
-  const { data: channels = [] } = useChannels(guildId);
-  const { data: roles = [] } = useRoles(guildId);
   const variables = buildAutomationVariables(constants, eventType);
   const step = steps.find((s) => s.id === stepId);
   if (!step) return <p className="text-xs text-text-muted">{t("panel.stepNotFound")}</p>;
 
   if (step.type === "action") {
-    const fields = constants.actionTypeFields[step.action.type] ?? [];
-
     const handleTypeChange = (newType: string) => {
-      onStepChange(stepId, { ...step, action: { type: newType } });
+      onStepChange(stepId, {
+        ...step,
+        action: carryOverActionFields(
+          step.action as unknown as Record<string, unknown>,
+          newType,
+          constants.actionTypeFields,
+        ) as unknown as typeof step.action,
+      });
     };
 
     const handleFieldChange = (key: string, value: unknown) => {
@@ -558,32 +677,15 @@ function StepPanel({
     };
 
     return (
-      <div className="space-y-4">
-        <div>
-          <Label>
-            {t("panel.actionType")} <span aria-hidden="true" className="text-danger">*</span>
-              <span className="sr-only"> ({t("common:labels.required")})</span>
-          </Label>
-          <SearchableSelect
-            options={buildActionTypeOptions(constants.actionTypes)}
-            value={step.action.type || null}
-            onValueChange={(v) => v && handleTypeChange(v)}
-            placeholder={t("panel.selectAction")}
-            searchPlaceholder={t("panel.search")}
-            noResultsLabel={t("panel.noResults")}
-          />
-        </div>
-
-        {step.action.type && fields.length > 0 && (
-          <ActionFields
-            fields={fields}
-            values={step.action as unknown as Record<string, unknown>}
-            onChange={handleFieldChange}
-            channels={channels}
-            roles={roles}
-            variables={variables}
-          />
-        )}
+      <ActionTabs eventType={eventType} constants={constants}>
+        <ActionSettings
+          action={step.action}
+          constants={constants}
+          guildId={guildId}
+          variables={variables}
+          onTypeChange={handleTypeChange}
+          onFieldChange={handleFieldChange}
+        />
 
         <div className="space-y-3 border-t border-border pt-3">
           <span className="section-label text-text-muted">{t("panel.connections")}</span>
@@ -601,7 +703,7 @@ function StepPanel({
           label={t("panel.removeStep")}
           onConfirm={() => onStepRemove(stepId)}
         />
-      </div>
+      </ActionTabs>
     );
   }
 

@@ -90,7 +90,9 @@
     "saving": "Lagrer...",
     "saveSettings": "Lagre innstillinger",
     "previous": "Forrige",
-    "next": "Neste"
+    "next": "Neste",
+    "invalidJson": "Ikke gyldig JSON — forventet et objekt med tekstverdier",
+    "fieldRequired": "{{field}} er påkrevd"
   },
   "pagination": {
     "previous": "Forrige",

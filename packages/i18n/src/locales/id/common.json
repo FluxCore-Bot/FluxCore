@@ -90,7 +90,9 @@
     "saving": "Menyimpan...",
     "saveSettings": "Simpan Pengaturan",
     "previous": "Sebelumnya",
-    "next": "Berikutnya"
+    "next": "Berikutnya",
+    "invalidJson": "JSON tidak valid — diharapkan objek berisi nilai teks",
+    "fieldRequired": "{{field}} wajib diisi"
   },
   "pagination": {
     "previous": "Sebelumnya",

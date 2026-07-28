@@ -146,7 +146,18 @@
     "include": "Vključi (beli seznam)",
     "exclude": "Izključi (črni seznam)",
     "clearAll": "Počisti vse pogoje",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Odstrani {{label}}",
+    "collapse": "Strni pogoje",
+    "userIdInvalid": "Vnesite veljaven Discord ID uporabnika (17–20 števk)",
+    "addUserId": "Dodaj ID uporabnika",
+    "includeChannels": "Samo v teh kanalih",
+    "includeRoles": "Samo člani s temi vlogami",
+    "includeUsers": "Samo ti člani",
+    "excludeChannels": "Nikoli v teh kanalih",
+    "excludeRoles": "Nikoli člani s temi vlogami",
+    "excludeUsers": "Nikoli ti člani",
+    "unsupportedWarning": "Ta sprožilec ne more oceniti teh filtrov ({{filters}}), zato se pravilo nikoli ne bo izvedlo, dokler so nastavljeni.",
+    "removeUnsupported": "Odstrani filtre, ki jih ni mogoče uporabiti"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Zavržem neshranjene spremembe?",
+    "discardChangesDescription": "To pravilo ima neshranjene spremembe. Če zaprete urejevalnik, bodo izgubljene.",
+    "discardChanges": "Zavrzi spremembe",
+    "draftRestored": "Osnutek obnovljen iz prejšnje seje",
+    "discardDraftAction": "Zavrzi osnutek",
+    "discardTitle": "Zavržem spremembe?",
+    "discardDescription": "Imate neshranjene spremembe. Osnutek se shrani lokalno, vendar boste zapustili urejevalnik.",
+    "discardConfirm": "Zavrzi in zapri"
   },
   "panel": {
     "trigger": "Trigger Settings",

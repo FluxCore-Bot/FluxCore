@@ -90,7 +90,9 @@
     "saving": "Stoor...",
     "saveSettings": "Stoor Instellings",
     "previous": "Vorige",
-    "next": "Volgende"
+    "next": "Volgende",
+    "invalidJson": "Nie geldige JSON nie — 'n objek van tekswaardes word verwag",
+    "fieldRequired": "{{field}} is verpligtend"
   },
   "pagination": {
     "previous": "Vorige",

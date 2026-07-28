@@ -90,7 +90,9 @@
     "saving": "Sparar...",
     "saveSettings": "Spara inställningar",
     "previous": "Föregående",
-    "next": "Nästa"
+    "next": "Nästa",
+    "invalidJson": "Ogiltig JSON — ett objekt med textvärden förväntas",
+    "fieldRequired": "{{field}} är obligatoriskt"
   },
   "pagination": {
     "previous": "Föregående",

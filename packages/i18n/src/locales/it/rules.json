@@ -146,7 +146,18 @@
     "include": "Includi (whitelist)",
     "exclude": "Escludi (blacklist)",
     "clearAll": "Cancella tutte le condizioni",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Rimuovi {{label}}",
+    "collapse": "Comprimi condizioni",
+    "userIdInvalid": "Inserisci un ID utente Discord valido (17–20 cifre)",
+    "addUserId": "Aggiungi ID utente",
+    "includeChannels": "Solo in questi canali",
+    "includeRoles": "Solo membri con questi ruoli",
+    "includeUsers": "Solo questi membri",
+    "excludeChannels": "Mai in questi canali",
+    "excludeRoles": "Mai membri con questi ruoli",
+    "excludeUsers": "Mai questi membri",
+    "unsupportedWarning": "Questo trigger non può valutare questi filtri ({{filters}}), quindi la regola non verrà mai eseguita finché sono impostati.",
+    "removeUnsupported": "Rimuovi i filtri non applicabili"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Ignorare le modifiche non salvate?",
+    "discardChangesDescription": "Questa regola ha modifiche non salvate. Chiudendo l'editor andranno perse.",
+    "discardChanges": "Ignora le modifiche",
+    "draftRestored": "Bozza ripristinata da una sessione precedente",
+    "discardDraftAction": "Ignora bozza",
+    "discardTitle": "Ignorare le modifiche?",
+    "discardDescription": "Hai modifiche non salvate. La bozza viene salvata localmente, ma uscirai dall'editor.",
+    "discardConfirm": "Ignora e chiudi"
   },
   "panel": {
     "trigger": "Trigger Settings",

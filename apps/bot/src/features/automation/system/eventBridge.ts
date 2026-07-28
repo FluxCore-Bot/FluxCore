@@ -211,7 +211,7 @@ export function registerActionEventListeners(client: Client): void {
 
   // Message created
   client.on("messageCreate", (message) => {
-    if (!message.guildId || message.author.bot) return;
+    if (!message.guildId || message.author?.bot) return;
     if (getRulesForEvent(message.guildId, "messageCreated").length === 0) return;
     const ctx = buildMessageContext("messageCreated", message);
     processEvent(client, ctx).catch((e) =>
@@ -229,24 +229,35 @@ export function registerActionEventListeners(client: Client): void {
     );
   });
 
-  // Reaction added/removed
-  client.on("messageReactionAdd", (reaction, user) => {
-    if (!reaction.message.guildId || user.bot) return;
-    if (getRulesForEvent(reaction.message.guildId, "reactionAdded").length === 0) return;
-    const ctx = buildReactionContext("reactionAdded", reaction, user);
-    processEvent(client, ctx).catch((e) =>
-      handleError("reactionAdded", e),
-    );
-  });
+  // Reaction added/removed.
+  //
+  // Partials are enabled on the client, so these fire for messages the bot has
+  // never cached — which is the normal case for a pinned rules message. Both
+  // the reaction and the user must be resolved before the context is built, or
+  // every reaction automation on an older message stays silently broken.
+  const onReaction = (
+    eventType: "reactionAdded" | "reactionRemoved",
+  ) => async (
+    reaction: MessageReaction | PartialMessageReaction,
+    user: User | PartialUser,
+  ) => {
+    try {
+      if (user.bot) return;
+      if (reaction.partial) await reaction.fetch();
+      if (user.partial) user = await user.fetch();
+      const guildId = reaction.message.guildId;
+      if (!guildId) return;
+      if (getRulesForEvent(guildId, eventType).length === 0) return;
+      await processEvent(client, buildReactionContext(eventType, reaction, user));
+    } catch (e) {
+      // A deleted message cannot be fetched back; that is not an error worth
+      // surfacing, but anything else is.
+      handleError(eventType, e);
+    }
+  };
 
-  client.on("messageReactionRemove", (reaction, user) => {
-    if (!reaction.message.guildId || user.bot) return;
-    if (getRulesForEvent(reaction.message.guildId, "reactionRemoved").length === 0) return;
-    const ctx = buildReactionContext("reactionRemoved", reaction, user);
-    processEvent(client, ctx).catch((e) =>
-      handleError("reactionRemoved", e),
-    );
-  });
+  client.on("messageReactionAdd", onReaction("reactionAdded"));
+  client.on("messageReactionRemove", onReaction("reactionRemoved"));
 
   // Role added/removed + nickname/timeout/boost (all via guildMemberUpdate)
   client.on("guildMemberUpdate", (oldMember, newMember) => {
@@ -379,6 +390,10 @@ export function registerActionEventListeners(client: Client): void {
       channelId: thread.id,
       channelName: thread.name,
       channelMention: `<#${thread.id}>`,
+      // The thread IS the context channel, so a channel filter would never
+      // match anything a user could pick. Carry the parent so
+      // "only threads under #support" is expressible.
+      parentChannelId: thread.parentId ?? undefined,
       memberCount: thread.guild.memberCount,
       timestamp: new Date().toISOString(),
       extra: {

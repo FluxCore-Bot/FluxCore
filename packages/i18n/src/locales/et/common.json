@@ -90,7 +90,9 @@
     "saving": "Salvestamine...",
     "saveSettings": "Salvesta seaded",
     "previous": "Eelmine",
-    "next": "Järgmine"
+    "next": "Järgmine",
+    "invalidJson": "Vigane JSON — oodati tekstiväärtuste objekti",
+    "fieldRequired": "{{field}} on kohustuslik"
   },
   "pagination": {
     "previous": "Eelmine",

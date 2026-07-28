@@ -146,7 +146,18 @@
     "include": "含める（ホワイトリスト）",
     "exclude": "除外する（ブラックリスト）",
     "clearAll": "すべての条件をクリア",
-    "removeItem": "{{label}}を削除"
+    "removeItem": "{{label}}を削除",
+    "collapse": "条件を折りたたむ",
+    "userIdInvalid": "有効な Discord ユーザー ID を入力してください（17〜20 桁）",
+    "addUserId": "ユーザー ID を追加",
+    "includeChannels": "これらのチャンネルのみ",
+    "includeRoles": "これらのロールを持つメンバーのみ",
+    "includeUsers": "これらのメンバーのみ",
+    "excludeChannels": "これらのチャンネルでは実行しない",
+    "excludeRoles": "これらのロールを持つメンバーでは実行しない",
+    "excludeUsers": "これらのメンバーでは実行しない",
+    "unsupportedWarning": "このトリガーはこれらのフィルター（{{filters}}）を評価できないため、設定されている間ルールは実行されません。",
+    "removeUnsupported": "適用できないフィルターを削除"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "画面に合わせる"
     },
     "issues_one": "{{count}}件の問題",
-    "issues_other": "{{count}}件の問題"
+    "issues_other": "{{count}}件の問題",
+    "discardChangesTitle": "保存していない変更を破棄しますか？",
+    "discardChangesDescription": "このルールには保存されていない変更があります。エディターを閉じると失われます。",
+    "discardChanges": "変更を破棄",
+    "draftRestored": "前回のセッションから下書きを復元しました",
+    "discardDraftAction": "下書きを破棄",
+    "discardTitle": "変更を破棄しますか？",
+    "discardDescription": "保存していない変更があります。下書きはローカルに保存されますが、エディターを離れます。",
+    "discardConfirm": "破棄して閉じる"
   },
   "panel": {
     "trigger": "トリガー設定",

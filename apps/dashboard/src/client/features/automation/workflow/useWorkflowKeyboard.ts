@@ -50,9 +50,26 @@ export function useWorkflowKeyboard({
       // Defence in depth: a key an overlay already handled (and cancelled)
       // must not be re-interpreted as an editor hotkey.
       if (e.defaultPrevented) return;
-      const tag = e.target instanceof HTMLElement ? e.target.tagName : undefined;
-      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") {
-        if (e.key !== "Escape" && !(e.key === "s" && (e.metaKey || e.ctrlKey))) return;
+      const target = e.target instanceof HTMLElement ? e.target : null;
+      const tag = target?.tagName;
+      const inField =
+        tag === "INPUT" ||
+        tag === "TEXTAREA" ||
+        tag === "SELECT" ||
+        target?.isContentEditable === true;
+
+      if (inField) {
+        // Escape belongs to the field, not the editor. It used to fall through
+        // to the editor-level binding below, so typing a rule name and hitting
+        // Escape out of habit tore down the whole full-screen editor — and for
+        // an existing rule that discarded every unsaved edit, because the
+        // per-rule draft is never read back. Blur and stop.
+        if (e.key === "Escape") {
+          target?.blur();
+          return;
+        }
+        // Everything else stays typeable; only the save shortcut passes through.
+        if (!(e.key === "s" && (e.metaKey || e.ctrlKey))) return;
       }
 
       if (e.key === "Escape") {

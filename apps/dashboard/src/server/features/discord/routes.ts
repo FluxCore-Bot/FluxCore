@@ -3,6 +3,8 @@ import { requireAuth, requireGuildAdmin } from "../../shared/middleware.js";
 import {
   getGuildChannels,
   getGuildRoles,
+  searchGuildMembers,
+  getGuildMembersByIds,
   invalidateGuildCache,
 } from "../../shared/discordApi.js";
 import { forceRefreshSessionGuilds } from "../../shared/session.js";
@@ -15,7 +17,64 @@ const GuildText = 0;
 const GuildVoice = 2;
 const GuildCategory = 4;
 
+const MEMBER_RESULT_SHAPE = {
+  type: "array",
+  items: {
+    type: "object",
+    properties: {
+      id: { type: "string" },
+      username: { type: "string" },
+      displayName: { type: "string" },
+      avatar: { type: "string", nullable: true },
+    },
+  },
+} as const;
+
 export function registerDiscordRoutes(app: FastifyInstance): void {
+  /**
+   * Member lookup for trigger filters.
+   *
+   * `?q=` searches by name prefix; `?ids=` resolves saved ids back to names so
+   * a stored filter renders as "Ada" rather than "123456789012345678".
+   * Rate-limited like the other Discord passthroughs — it fans out to the
+   * Discord API and is reachable per keystroke.
+   */
+  app.get(
+    "/api/guilds/:guildId/members",
+    {
+      preHandler: [requireAuth, requireGuildAdmin],
+      config: rateLimits.discordRead,
+      schema: withDocs(
+        {
+          params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] },
+          querystring: {
+            type: "object",
+            properties: { q: { type: "string" }, ids: { type: "string" } },
+          },
+        },
+        { tag: "Discord", response: { 200: MEMBER_RESULT_SHAPE } },
+      ),
+    },
+    async (request, reply) => {
+      const { guildId } = request.params as { guildId: string };
+      const { q, ids } = request.query as { q?: string; ids?: string };
+      try {
+        if (ids) {
+          const list = ids.split(",").map((s) => s.trim()).filter(Boolean);
+          reply.send(await getGuildMembersByIds(guildId, list));
+          return;
+        }
+        reply.send(await searchGuildMembers(guildId, q ?? ""));
+      } catch (err) {
+        logger.error(
+          `Failed to look up members for guild ${guildId}`,
+          err instanceof Error ? err : new Error(String(err)),
+        );
+        reply.send([]);
+      }
+    },
+  );
+
   app.get(
     "/api/guilds/:guildId/channels",
     {

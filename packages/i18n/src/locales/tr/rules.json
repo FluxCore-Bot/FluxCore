@@ -146,7 +146,18 @@
     "include": "Dahil Et (beyaz liste)",
     "exclude": "Hariç Tut (kara liste)",
     "clearAll": "Tüm koşulları temizle",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "{{label}} öğesini kaldır",
+    "collapse": "Koşulları daralt",
+    "userIdInvalid": "Geçerli bir Discord kullanıcı kimliği girin (17–20 hane)",
+    "addUserId": "Kullanıcı kimliği ekle",
+    "includeChannels": "Yalnızca bu kanallarda",
+    "includeRoles": "Yalnızca bu rollere sahip üyeler",
+    "includeUsers": "Yalnızca bu üyeler",
+    "excludeChannels": "Bu kanallarda asla",
+    "excludeRoles": "Bu rollere sahip üyelerde asla",
+    "excludeUsers": "Bu üyelerde asla",
+    "unsupportedWarning": "Bu tetikleyici bu filtreleri ({{filters}}) değerlendiremez, bu nedenle filtreler ayarlı olduğu sürece kural asla çalışmaz.",
+    "removeUnsupported": "Uygulanamayan filtreleri kaldır"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Kaydedilmemiş değişiklikler atılsın mı?",
+    "discardChangesDescription": "Bu kuralda kaydedilmemiş değişiklikler var. Düzenleyiciyi kapatmak bunları kaybeder.",
+    "discardChanges": "Değişiklikleri at",
+    "draftRestored": "Taslak önceki oturumdan geri yüklendi",
+    "discardDraftAction": "Taslağı at",
+    "discardTitle": "Değişiklikler atılsın mı?",
+    "discardDescription": "Kaydedilmemiş değişiklikleriniz var. Taslağınız yerel olarak saklanır, ancak düzenleyiciden çıkacaksınız.",
+    "discardConfirm": "At ve kapat"
   },
   "panel": {
     "trigger": "Trigger Settings",

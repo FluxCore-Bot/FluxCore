@@ -82,3 +82,61 @@ describe("RuleList accessibility", () => {
     ).toBeInTheDocument();
   });
 });
+
+/**
+ * A saved rule can be dead: an action missing a required field never executes,
+ * and the list showed it as perfectly healthy — "Never fired" with no
+ * explanation. Rules created before the save-time guard, or through the API
+ * and the /actions command, can still be in this state.
+ */
+describe("RuleList — incomplete rules are flagged", () => {
+  const constants = {
+    eventTypes: { memberJoin: { label: "Member Join", description: "" } },
+    actionTypes: { sendMessage: { label: "Send Message", description: "" } },
+    maxActionsPerRule: 5,
+    actionTypeFields: {
+      sendMessage: [
+        { key: "channelId", label: "Channel", type: "channel" as const, required: true },
+        { key: "message", label: "Message", type: "textarea" as const, required: true },
+      ],
+    },
+    eventTypeVariables: { memberJoin: [] },
+    templateVariables: {},
+    eventConditionSupport: { memberJoin: ["user" as const, "role" as const] },
+  };
+
+  function ruleWith(actions: unknown[]) {
+    return [{
+      id: 1, guildId: "g1", name: "R", enabled: true, eventType: "memberJoin",
+      actions, conditions: {}, priority: 0, createdBy: "u1", lastFired: null,
+    }];
+  }
+
+  function renderList(actions: unknown[]) {
+    render(
+      <RuleList
+        rules={ruleWith(actions) as never}
+        constants={constants as never}
+        onEdit={vi.fn()}
+        onDelete={vi.fn()}
+        onToggle={vi.fn()}
+        onDuplicate={vi.fn()}
+      />,
+    );
+  }
+
+  it("flags a rule whose action is missing a required field", () => {
+    renderList([{ type: "sendMessage", message: "hi" }]);
+    expect(screen.getByText("ruleList.misconfiguredBadge")).toBeInTheDocument();
+  });
+
+  it("flags a rule whose action has no type at all", () => {
+    renderList([{ type: "" }]);
+    expect(screen.getByText("ruleList.misconfiguredBadge")).toBeInTheDocument();
+  });
+
+  it("says nothing about a fully configured rule", () => {
+    renderList([{ type: "sendMessage", channelId: "c1", message: "hi" }]);
+    expect(screen.queryByText("ruleList.misconfiguredBadge")).not.toBeInTheDocument();
+  });
+});

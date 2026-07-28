@@ -90,7 +90,9 @@
     "saving": "சேமிக்கிறது...",
     "saveSettings": "அமைப்புகளை சேமி",
     "previous": "முந்தைய",
-    "next": "அடுத்து"
+    "next": "அடுத்து",
+    "invalidJson": "சரியான JSON அல்ல — உரை மதிப்புகளின் ஒரு பொருள் எதிர்பார்க்கப்படுகிறது",
+    "fieldRequired": "{{field}} தேவை"
   },
   "pagination": {
     "previous": "முந்தைய",

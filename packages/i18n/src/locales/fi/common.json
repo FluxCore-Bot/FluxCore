@@ -90,7 +90,9 @@
     "saving": "Tallennetaan...",
     "saveSettings": "Tallenna asetukset",
     "previous": "Edellinen",
-    "next": "Seuraava"
+    "next": "Seuraava",
+    "invalidJson": "Virheellinen JSON — odotettiin objektia, jossa on tekstiarvoja",
+    "fieldRequired": "{{field}} on pakollinen"
   },
   "pagination": {
     "previous": "Edellinen",

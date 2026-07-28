@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
 import { Icon } from "../../../shared/components/Icon";
 import type { Constants } from "../../../shared/lib/schemas";
+import { useAutomationLabels } from "../../automation/lib/labels";
 
 interface ActivityItem {
   id: number;
@@ -33,6 +34,7 @@ function timeAgo(dateStr: string, t: TFunction): string {
 
 export function RecentActivityFeed({ data, guildId, constants }: RecentActivityFeedProps) {
   const { t } = useTranslation("overview");
+  const labels = useAutomationLabels(constants);
   return (
     <div className="rounded-lg bg-surface-low p-6 glass-edge">
       <div className="mb-5 flex items-center justify-between">
@@ -71,9 +73,9 @@ export function RecentActivityFeed({ data, guildId, constants }: RecentActivityF
                   {item.ruleName}
                 </p>
                 <p className="truncate text-xs text-text-muted">
-                  {constants?.eventTypes[item.eventType]?.label ?? item.eventType}
+                  {labels.eventLabel(item.eventType)}
                   {" → "}
-                  {constants?.actionTypes[item.actionType]?.label ?? item.actionType}
+                  {labels.actionLabel(item.actionType)}
                 </p>
               </div>
               <span className="shrink-0 font-mono text-[11px] text-text-tertiary">

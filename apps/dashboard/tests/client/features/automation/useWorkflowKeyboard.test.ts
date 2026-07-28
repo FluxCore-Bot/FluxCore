@@ -104,3 +104,73 @@ describe("useWorkflowKeyboard while the context menu is open", () => {
     expect(opts.onClose).not.toHaveBeenCalled();
   });
 });
+
+/**
+ * Escape was explicitly allowed through from form controls, and Escape with
+ * no node selected closes the whole editor. So typing a rule name and
+ * pressing Escape out of habit to revert the field tore down the full-screen
+ * editor — and for an existing rule that discarded every unsaved edit, since
+ * the per-rule draft is never read back.
+ */
+describe("useWorkflowKeyboard — Escape inside a form control", () => {
+  function withFocusedInput(tag: "input" | "textarea" | "select") {
+    const el = document.createElement(tag);
+    document.body.appendChild(el);
+    el.focus();
+    return el;
+  }
+
+  it("blurs the field instead of closing the editor", () => {
+    const opts = setup();
+    const input = withFocusedInput("input");
+
+    press("Escape", {}, input);
+
+    expect(opts.onClose).not.toHaveBeenCalled();
+    expect(document.activeElement).not.toBe(input);
+  });
+
+  it("does not deselect the open node either", () => {
+    const opts = setup({ selectedNode: { type: "action", index: 0 } });
+    const input = withFocusedInput("input");
+
+    press("Escape", {}, input);
+
+    expect(opts.onDeselectNode).not.toHaveBeenCalled();
+    expect(opts.onClose).not.toHaveBeenCalled();
+  });
+
+  it("applies to textareas and selects too", () => {
+    const opts = setup();
+    for (const tag of ["textarea", "select"] as const) {
+      press("Escape", {}, withFocusedInput(tag));
+    }
+    expect(opts.onClose).not.toHaveBeenCalled();
+  });
+
+  it("still closes the editor when Escape comes from the canvas", () => {
+    const opts = setup();
+
+    press("Escape");
+
+    expect(opts.onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it("still deselects an open node when Escape comes from the canvas", () => {
+    const opts = setup({ selectedNode: { type: "action", index: 0 } });
+
+    press("Escape");
+
+    expect(opts.onDeselectNode).toHaveBeenCalledTimes(1);
+    expect(opts.onClose).not.toHaveBeenCalled();
+  });
+
+  it("keeps Ctrl+S working from inside a field", () => {
+    const opts = setup();
+    const input = withFocusedInput("input");
+
+    press("s", { ctrlKey: true }, input);
+
+    expect(opts.onSubmit).toHaveBeenCalledTimes(1);
+  });
+});

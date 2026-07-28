@@ -90,7 +90,9 @@
     "saving": "Збереження...",
     "saveSettings": "Зберегти налаштування",
     "previous": "Назад",
-    "next": "Далі"
+    "next": "Далі",
+    "invalidJson": "Некоректний JSON — очікується об'єкт текстових значень",
+    "fieldRequired": "Поле «{{field}}» обов'язкове"
   },
   "pagination": {
     "previous": "Назад",

@@ -146,7 +146,18 @@
     "include": "Sisällytä (valkolista)",
     "exclude": "Sulje pois (mustat lista)",
     "clearAll": "Tyhjennä kaikki ehdot",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Poista {{label}}",
+    "collapse": "Tiivistä ehdot",
+    "userIdInvalid": "Anna kelvollinen Discord-käyttäjätunnus (17–20 numeroa)",
+    "addUserId": "Lisää käyttäjätunnus",
+    "includeChannels": "Vain näissä kanavissa",
+    "includeRoles": "Vain jäsenet, joilla on nämä roolit",
+    "includeUsers": "Vain nämä jäsenet",
+    "excludeChannels": "Ei koskaan näissä kanavissa",
+    "excludeRoles": "Ei koskaan jäsenet, joilla on nämä roolit",
+    "excludeUsers": "Ei koskaan nämä jäsenet",
+    "unsupportedWarning": "Tämä liipaisin ei voi arvioida näitä suodattimia ({{filters}}), joten sääntö ei koskaan laukea niin kauan kuin ne on asetettu.",
+    "removeUnsupported": "Poista suodattimet, joita ei voi soveltaa"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Hylätäänkö tallentamattomat muutokset?",
+    "discardChangesDescription": "Tässä säännössä on tallentamattomia muutoksia. Editorin sulkeminen hävittää ne.",
+    "discardChanges": "Hylkää muutokset",
+    "draftRestored": "Luonnos palautettu aiemmasta istunnosta",
+    "discardDraftAction": "Hylkää luonnos",
+    "discardTitle": "Hylätäänkö muutokset?",
+    "discardDescription": "Sinulla on tallentamattomia muutoksia. Luonnos tallennetaan paikallisesti, mutta poistut editorista.",
+    "discardConfirm": "Hylkää ja sulje"
   },
   "panel": {
     "trigger": "Trigger Settings",
@@ -322,5 +341,83 @@
     "stepUnreachable": "Step \"{{id}}\" is not reachable from the trigger",
     "noActionType": "{{label}}: no action type selected",
     "fieldRequired": "{{label}}: {{field}} is required"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Jäsen liittyi",
+      "description": "Kun uusi jäsen liittyy palvelimelle"
+    },
+    "memberLeave": {
+      "label": "Jäsen poistui",
+      "description": "Kun jäsen poistuu palvelimelta"
+    },
+    "memberBanned": {
+      "label": "Jäsen porttikiellossa",
+      "description": "Kun jäsen asetetaan porttikieltoon"
+    },
+    "memberUnbanned": {
+      "label": "Porttikielto poistettu",
+      "description": "Kun jäsenen porttikielto poistetaan"
+    },
+    "messageDeleted": {
+      "label": "Viesti poistettu",
+      "description": "Kun viesti poistetaan"
+    },
+    "roleAdded": {
+      "label": "Rooli lisätty",
+      "description": "Kun jäsenelle lisätään rooli"
+    },
+    "roleRemoved": {
+      "label": "Rooli poistettu",
+      "description": "Kun jäseneltä poistetaan rooli"
+    },
+    "channelCreated": {
+      "label": "Kanava luotu",
+      "description": "Kun luodaan uusi kanava"
+    },
+    "channelDeleted": {
+      "label": "Kanava poistettu",
+      "description": "Kun kanava poistetaan"
+    },
+    "voiceJoin": {
+      "label": "Liittyi puhekanavaan",
+      "description": "Kun jäsen liittyy puhekanavalle"
+    },
+    "voiceLeave": {
+      "label": "Poistui puhekanavalta",
+      "description": "Kun jäsen poistuu puhekanavalta"
+    },
+    "messageCreated": {
+      "label": "Viesti lähetetty",
+      "description": "Kun kanavalle lähetetään viesti"
+    },
+    "reactionAdded": {
+      "label": "Reaktio lisätty",
+      "description": "Kun viestiin lisätään reaktio"
+    },
+    "reactionRemoved": {
+      "label": "Reaktio poistettu",
+      "description": "Kun viestistä poistetaan reaktio"
+    },
+    "nicknameChanged": {
+      "label": "Kutsumanimi vaihdettu",
+      "description": "Kun jäsenen kutsumanimi vaihdetaan"
+    },
+    "memberTimeout": {
+      "label": "Jäsen hiljennetty",
+      "description": "Kun jäsen hiljennetään"
+    },
+    "threadCreated": {
+      "label": "Ketju luotu",
+      "description": "Kun luodaan uusi ketju"
+    },
+    "boostStart": {
+      "label": "Tehostus alkoi",
+      "description": "Kun jäsen alkaa tehostaa palvelinta"
+    },
+    "boostEnd": {
+      "label": "Tehostus päättyi",
+      "description": "Kun jäsen lopettaa palvelimen tehostamisen"
+    }
   }
 }

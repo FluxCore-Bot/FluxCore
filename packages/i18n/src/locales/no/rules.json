@@ -146,7 +146,18 @@
     "include": "Inkluder (hvitliste)",
     "exclude": "Ekskluder (svarteliste)",
     "clearAll": "Tøm alle betingelser",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Fjern {{label}}",
+    "collapse": "Skjul betingelser",
+    "userIdInvalid": "Skriv inn en gyldig Discord-bruker-ID (17–20 sifre)",
+    "addUserId": "Legg til bruker-ID",
+    "includeChannels": "Bare i disse kanalene",
+    "includeRoles": "Bare medlemmer med disse rollene",
+    "includeUsers": "Bare disse medlemmene",
+    "excludeChannels": "Aldri i disse kanalene",
+    "excludeRoles": "Aldri medlemmer med disse rollene",
+    "excludeUsers": "Aldri disse medlemmene",
+    "unsupportedWarning": "Denne utløseren kan ikke evaluere disse filtrene ({{filters}}), så regelen vil aldri kjøre så lenge de er angitt.",
+    "removeUnsupported": "Fjern filtre som ikke kan brukes"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Forkaste ulagrede endringer?",
+    "discardChangesDescription": "Denne regelen har endringer som ikke er lagret. Hvis du lukker redigeringsprogrammet, går de tapt.",
+    "discardChanges": "Forkast endringer",
+    "draftRestored": "Utkast gjenopprettet fra en tidligere økt",
+    "discardDraftAction": "Forkast utkast",
+    "discardTitle": "Forkaste endringer?",
+    "discardDescription": "Du har ulagrede endringer. Utkastet lagres lokalt, men du forlater redigeringsprogrammet.",
+    "discardConfirm": "Forkast og lukk"
   },
   "panel": {
     "trigger": "Trigger Settings",

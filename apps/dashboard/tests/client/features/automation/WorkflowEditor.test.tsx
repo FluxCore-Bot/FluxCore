@@ -484,3 +484,121 @@ describe("WorkflowEditor — Ctrl+S does not bypass validation", () => {
     expect(updateMutateAsync).not.toHaveBeenCalled();
   });
 });
+
+
+/**
+ * The autosave effect wrote a draft for EVERY editor session, including one
+ * opened on an existing rule — but `loadDraft` is only consulted for new
+ * rules. So editing a rule and closing lost the edits outright, while the
+ * unread draft sat in localStorage until it expired.
+ */
+describe("WorkflowEditor — closing with unsaved changes", () => {
+  it("asks before discarding edits", async () => {
+    const user = userEvent.setup();
+    const onClose = vi.fn();
+    renderEditor(threeActions, onClose);
+
+    const nameField = await screen.findByLabelText(/editor\.ruleNamePlaceholder/);
+    await user.type(nameField, "X");
+
+    await user.click(screen.getByRole("button", { name: /editor\.backToRules/ }));
+
+    // A confirmation stands between the click and the close. ConfirmDialog is
+    // a Radix Dialog (role="dialog"), same as NodeDetailPanel, so assert on
+    // its title rather than the role.
+    expect(onClose).not.toHaveBeenCalled();
+    expect(await screen.findByText("editor.discardChangesTitle")).toBeInTheDocument();
+  });
+
+  it("closes once discarding is confirmed", async () => {
+    const user = userEvent.setup();
+    const onClose = vi.fn();
+    renderEditor(threeActions, onClose);
+
+    const nameField = await screen.findByLabelText(/editor\.ruleNamePlaceholder/);
+    await user.type(nameField, "X");
+    await user.click(screen.getByRole("button", { name: /editor\.backToRules/ }));
+    await user.click(await screen.findByRole("button", { name: /editor\.discardChanges/ }));
+
+    await waitFor(() => expect(onClose).toHaveBeenCalledTimes(1));
+  });
+
+  it("closes straight away when nothing has been touched", async () => {
+    const user = userEvent.setup();
+    const onClose = vi.fn();
+    renderEditor(threeActions, onClose);
+
+    await screen.findByLabelText(/editor\.ruleNamePlaceholder/);
+    await user.click(screen.getByRole("button", { name: /editor\.backToRules/ }));
+
+    expect(screen.queryByText("editor.discardChangesTitle")).not.toBeInTheDocument();
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+});
+
+/**
+ * The only aggregate validation signal used to be a tooltip on a
+ * non-focusable div: keyboard and screen-reader users could not read it, the
+ * disabled Save button gave no reason at all, and with several actions there
+ * was no way to tell WHICH one was incomplete without opening each in turn.
+ */
+describe("WorkflowEditor — validation is reachable", () => {
+  // An action with no type chosen. That is an error anchored to `action-0`,
+  // and it needs no actionTypeFields entry — which this suite's shared
+  // constants deliberately leave empty.
+  const incomplete: RuleDraft = {
+    name: "Test Rule",
+    eventType: "messageCreate",
+    actions: [{ type: "" }],
+    conditions: {},
+    priority: 0,
+    enabled: true,
+  };
+
+  it("puts the issue count on a real button, not a bare div", async () => {
+    renderEditor(incomplete);
+
+    const trigger = await screen.findByRole("button", { name: /editor\.issues/ });
+    expect(trigger).toBeEnabled();
+  });
+
+  it("lists each issue when opened", async () => {
+    const user = userEvent.setup();
+    renderEditor(incomplete);
+
+    await user.click(await screen.findByRole("button", { name: /editor\.issues/ }));
+
+    const issues = await screen.findAllByText(/validation\.noActionType/);
+    expect(issues.length).toBeGreaterThan(0);
+  });
+
+  it("selects the offending node when an issue is chosen", async () => {
+    const user = userEvent.setup();
+    renderEditor(incomplete);
+
+    await user.click(await screen.findByRole("button", { name: /editor\.issues/ }));
+    const issue = (await screen.findAllByText(/validation\.noActionType/))[0];
+    await user.click(issue);
+
+    // The detail panel opens on the action the issue belongs to.
+    await waitFor(() => expect(panelHeading()).toContain("panel.action"));
+  });
+
+  it("explains why Save is disabled", async () => {
+    renderEditor(incomplete);
+
+    const save = await screen.findByRole("button", { name: /form\.create/ });
+    expect(save).toBeDisabled();
+    const describedBy = save.getAttribute("aria-describedby");
+    expect(describedBy).toBeTruthy();
+    expect(document.getElementById(describedBy!)).toHaveTextContent(/editor\.saveBlocked/);
+  });
+
+  it("says nothing about being blocked once the rule is valid", async () => {
+    renderEditor({ ...incomplete, actions: [{ type: "sendMessage", message: "hi" }] });
+
+    const save = await screen.findByRole("button", { name: /form\.create/ });
+    expect(save).toBeEnabled();
+    expect(save).not.toHaveAttribute("aria-describedby");
+  });
+});

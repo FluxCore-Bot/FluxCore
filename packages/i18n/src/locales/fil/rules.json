@@ -146,7 +146,18 @@
     "include": "Isama (whitelist)",
     "exclude": "I-exclude (blacklist)",
     "clearAll": "I-clear ang lahat ng kondisyon",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Alisin ang {{label}}",
+    "collapse": "I-collapse ang mga kundisyon",
+    "userIdInvalid": "Maglagay ng wastong Discord user ID (17–20 digit)",
+    "addUserId": "Magdagdag ng user ID",
+    "includeChannels": "Sa mga channel na ito lamang",
+    "includeRoles": "Mga miyembro lamang na may ganitong role",
+    "includeUsers": "Ang mga miyembrong ito lamang",
+    "excludeChannels": "Hindi kailanman sa mga channel na ito",
+    "excludeRoles": "Hindi kailanman ang mga miyembrong may ganitong role",
+    "excludeUsers": "Hindi kailanman ang mga miyembrong ito",
+    "unsupportedWarning": "Hindi masusuri ng trigger na ito ang mga filter na ito ({{filters}}), kaya hindi kailanman tatakbo ang panuntunan habang nakatakda ang mga ito.",
+    "removeUnsupported": "Alisin ang mga filter na hindi maaaring ilapat"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Itapon ang mga hindi na-save na pagbabago?",
+    "discardChangesDescription": "May mga pagbabago ang panuntunang ito na hindi pa na-save. Mawawala ang mga ito kapag isinara ang editor.",
+    "discardChanges": "Itapon ang mga pagbabago",
+    "draftRestored": "Naibalik ang draft mula sa nakaraang session",
+    "discardDraftAction": "Itapon ang draft",
+    "discardTitle": "Itapon ang mga pagbabago?",
+    "discardDescription": "May mga hindi na-save na pagbabago ka. Naka-save nang lokal ang draft mo, pero aalis ka sa editor.",
+    "discardConfirm": "Itapon at isara"
   },
   "panel": {
     "trigger": "Trigger Settings",
@@ -322,5 +341,83 @@
     "stepUnreachable": "Step \"{{id}}\" is not reachable from the trigger",
     "noActionType": "{{label}}: no action type selected",
     "fieldRequired": "{{label}}: {{field}} is required"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Sumali ang miyembro",
+      "description": "Kapag sumali ang bagong miyembro sa server"
+    },
+    "memberLeave": {
+      "label": "Umalis ang miyembro",
+      "description": "Kapag umalis ang miyembro sa server"
+    },
+    "memberBanned": {
+      "label": "Na-ban ang miyembro",
+      "description": "Kapag na-ban ang miyembro"
+    },
+    "memberUnbanned": {
+      "label": "Na-unban ang miyembro",
+      "description": "Kapag na-unban ang miyembro"
+    },
+    "messageDeleted": {
+      "label": "Natanggal na mensahe",
+      "description": "Kapag natanggal ang mensahe"
+    },
+    "roleAdded": {
+      "label": "Naidagdag na role",
+      "description": "Kapag naidagdag ang role sa miyembro"
+    },
+    "roleRemoved": {
+      "label": "Natanggal na role",
+      "description": "Kapag natanggal ang role sa miyembro"
+    },
+    "channelCreated": {
+      "label": "Nagawang channel",
+      "description": "Kapag nagawa ang bagong channel"
+    },
+    "channelDeleted": {
+      "label": "Natanggal na channel",
+      "description": "Kapag natanggal ang channel"
+    },
+    "voiceJoin": {
+      "label": "Sumali sa voice",
+      "description": "Kapag sumali ang miyembro sa voice channel"
+    },
+    "voiceLeave": {
+      "label": "Umalis sa voice",
+      "description": "Kapag umalis ang miyembro sa voice channel"
+    },
+    "messageCreated": {
+      "label": "Naipadalang mensahe",
+      "description": "Kapag may naipadalang mensahe sa channel"
+    },
+    "reactionAdded": {
+      "label": "Naidagdag na reaction",
+      "description": "Kapag naidagdag ang reaction sa mensahe"
+    },
+    "reactionRemoved": {
+      "label": "Natanggal na reaction",
+      "description": "Kapag natanggal ang reaction sa mensahe"
+    },
+    "nicknameChanged": {
+      "label": "Nabagong palayaw",
+      "description": "Kapag nabago ang palayaw ng miyembro"
+    },
+    "memberTimeout": {
+      "label": "Na-timeout na miyembro",
+      "description": "Kapag na-timeout ang miyembro"
+    },
+    "threadCreated": {
+      "label": "Nagawang thread",
+      "description": "Kapag nagawa ang bagong thread"
+    },
+    "boostStart": {
+      "label": "Nagsimula ang boost",
+      "description": "Kapag sinimulan ng miyembro ang pag-boost sa server"
+    },
+    "boostEnd": {
+      "label": "Natapos ang boost",
+      "description": "Kapag itinigil ng miyembro ang pag-boost sa server"
+    }
   }
 }

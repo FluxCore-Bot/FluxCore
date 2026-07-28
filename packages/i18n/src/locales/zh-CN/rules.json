@@ -146,7 +146,18 @@
     "include": "包含（白名单）",
     "exclude": "排除（黑名单）",
     "clearAll": "清除所有条件",
-    "removeItem": "移除 {{label}}"
+    "removeItem": "移除 {{label}}",
+    "collapse": "收起条件",
+    "userIdInvalid": "请输入有效的 Discord 用户 ID（17–20 位数字）",
+    "addUserId": "添加用户 ID",
+    "includeChannels": "仅在这些频道",
+    "includeRoles": "仅拥有这些身份组的成员",
+    "includeUsers": "仅这些成员",
+    "excludeChannels": "从不在这些频道",
+    "excludeRoles": "从不对拥有这些身份组的成员",
+    "excludeUsers": "从不对这些成员",
+    "unsupportedWarning": "此触发器无法评估这些筛选条件（{{filters}}），因此只要它们处于设置状态，规则将永远不会触发。",
+    "removeUnsupported": "移除无法生效的筛选条件"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "适应视图"
     },
     "issues_one": "{{count}} 个问题",
-    "issues_other": "{{count}} 个问题"
+    "issues_other": "{{count}} 个问题",
+    "discardChangesTitle": "放弃未保存的更改？",
+    "discardChangesDescription": "此规则有尚未保存的更改。关闭编辑器将会丢失它们。",
+    "discardChanges": "放弃更改",
+    "draftRestored": "已从上一次会话恢复草稿",
+    "discardDraftAction": "放弃草稿",
+    "discardTitle": "放弃更改？",
+    "discardDescription": "你有未保存的更改。草稿会保存在本地，但你将离开编辑器。",
+    "discardConfirm": "放弃并关闭"
   },
   "panel": {
     "trigger": "触发器设置",
