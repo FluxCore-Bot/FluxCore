@@ -208,17 +208,27 @@ describe("discord routes", () => {
     });
   });
 
-  it("returns 403 when the caller lacks dashboard.lookups.view", async () => {
-    mockHasPermission.mockReturnValue(false);
-    mockGetSession.mockResolvedValue({ userId: "user-1", username: "u", guilds: [] });
+  describe("dashboard.lookups.view enforcement", () => {
+    it.each<{ label: string; method: "GET" | "POST"; url: string }>([
+      { label: "GET /members", method: "GET", url: "/api/guilds/guild-1/members" },
+      { label: "GET /channels", method: "GET", url: "/api/guilds/guild-1/channels" },
+      { label: "GET /roles", method: "GET", url: "/api/guilds/guild-1/roles" },
+      { label: "POST /refresh", method: "POST", url: "/api/guilds/guild-1/refresh" },
+    ])("returns 403 and checks dashboard.lookups.view for $label", async ({ method, url }) => {
+      mockHasPermission.mockReturnValue(false);
 
-    const res = await app.inject({
-      method: "GET",
-      url: "/api/guilds/guild-1/channels",
-      cookies: { session: app.signCookie("sid") },
+      const res = await app.inject({
+        method,
+        url,
+        cookies: { session: app.signCookie("sid") },
+      });
+
+      expect(res.statusCode).toBe(403);
+      expect(mockHasPermission).toHaveBeenCalledWith(
+        expect.anything(),
+        "dashboard.lookups.view",
+      );
     });
-
-    expect(res.statusCode).toBe(403);
   });
 
 });
