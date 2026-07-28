@@ -32,6 +32,12 @@
 
   /* ── Accent & Brand ── */
   --color-accent: #a3a6ff;
+  /*
+   * Despite the name, this is the ON-ACCENT foreground — the text/icon colour
+   * that sits on a --color-accent fill (6.08:1, AA). It is not a hover state.
+   * Any accent fill it is paired with must stay at or above --color-primary-
+   * container's lightness, or it drops below 4.5:1 — see the button gradient.
+   */
   --color-accent-hover: #0f00a4;
   --color-accent-dim: #6063ee;
   --color-secondary: #ac8aff;
@@ -40,6 +46,8 @@
   --color-secondary-dim: #8455ef;
   --color-tertiary: #ffa5d9;
   --color-tertiary-container: #ff8ed2;
+  /* Darkest accent fill that still carries --color-accent-hover text at AA
+   * (5.17:1). The end stop of the primary button gradient. */
   --color-primary-container: #9396ff;
 
   /* ── Semantic ── */

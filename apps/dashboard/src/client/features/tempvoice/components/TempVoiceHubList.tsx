@@ -157,8 +157,8 @@ export function TempVoiceHubList() {
           and every hub gone, `expanded === null` would take the else branch and
           render an empty <div> — no example, no CTA, nothing at all. */}
       {configs.length === 0 && !anyExpanded ? (
-        <div className="space-y-4">
-          <p className="text-sm text-text-muted">{t("empty.exampleCaption")}</p>
+        <div>
+          <p className="mb-4 text-sm text-text-muted">{t("empty.exampleCaption")}</p>
           <HubFlow example>
             <HubFlowStep n={1} label={t("flow.step1")}>
               <ChannelChip kind="voice" name={t("empty.exampleHub")} variant="example" />
@@ -171,9 +171,17 @@ export function TempVoiceHubList() {
             </HubFlowStep>
             <HubFlowStep n={4} label={t("flow.step4")} last />
           </HubFlow>
-          <Button id="tv-add-hub" className="min-h-11" onClick={() => setExpanded("new")}>
-            {t("empty.cta")}
-          </Button>
+          {/* Spacing tier, not decoration: the steps are 20px apart (pb-5) and
+              the caption sits 16px above the list, so a 16px gap here let the
+              CTA read as an unnumbered fifth step — it also left-aligns with
+              the step markers, which reinforced the misread. 32px puts it a
+              clear tier above the flow's internal rhythm, marking it as the
+              action that follows the illustration rather than part of it. */}
+          <div className="mt-8">
+            <Button id="tv-add-hub" className="min-h-11" onClick={() => setExpanded("new")}>
+              {t("empty.cta")}
+            </Button>
+          </div>
         </div>
       ) : (
         <div className="space-y-3">
