@@ -26,27 +26,54 @@ function computeBasePermissions(
   return perms;
 }
 
+/** A user's live authority in a guild, from the bot's view of Discord. */
+export interface GuildAuthority {
+  isOwner: boolean;
+  /** Owner, Administrator, or Manage Server. */
+  isAdmin: boolean;
+  /** Currently in the guild at all. */
+  isMember: boolean;
+}
+
 /**
- * Authoritative, LIVE check of whether a user currently has admin authority
- * (owner, Administrator, or Manage Server) in a guild, computed from the bot's
- * view of Discord.
+ * Authoritative, LIVE authority check, computed from the bot's view of Discord
+ * rather than the OAuth session snapshot, so access revoked on Discord is
+ * honored — subject only to the short discordApi cache TTL.
  *
- * Unlike the OAuth session snapshot (captured at login and refreshed lazily),
- * this reflects Discord's current state, so revoked access is honored — subject
- * only to the short discordApi cache TTL. This is the source of truth for the
- * dashboard's guild-admin gate.
+ * Answers owner / admin / member in one member fetch, because the delegated
+ * (non-admin) permission path needs membership and the admin path needs both.
+ */
+export async function getGuildAuthority(
+  guildId: string,
+  userId: string,
+): Promise<GuildAuthority> {
+  const ownerId = await getGuildOwnerId(guildId);
+  if (ownerId === userId) {
+    return { isOwner: true, isAdmin: true, isMember: true };
+  }
+
+  const member = await getGuildMember(guildId, userId);
+  if (!member) {
+    return { isOwner: false, isAdmin: false, isMember: false };
+  }
+
+  const roles = await getGuildRoles(guildId);
+  const perms = computeBasePermissions(guildId, member.roles, roles);
+  return {
+    isOwner: false,
+    isAdmin: canManageGuild(perms.toString()),
+    isMember: true,
+  };
+}
+
+/**
+ * True when the user currently has admin authority (owner, Administrator, or
+ * Manage Server) in the guild. Thin wrapper over {@link getGuildAuthority}.
  */
 export async function isUserGuildAdmin(
   guildId: string,
   userId: string,
 ): Promise<boolean> {
-  const ownerId = await getGuildOwnerId(guildId);
-  if (ownerId === userId) return true;
-
-  const member = await getGuildMember(guildId, userId);
-  if (!member) return false; // left/kicked → no authority
-
-  const roles = await getGuildRoles(guildId);
-  const perms = computeBasePermissions(guildId, member.roles, roles);
-  return canManageGuild(perms.toString());
+  const { isAdmin } = await getGuildAuthority(guildId, userId);
+  return isAdmin;
 }
