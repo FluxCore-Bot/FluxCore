@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import type { ResolvedPermissions } from "../../../src/server/shared/permissions.js";
 
 vi.mock("@fluxcore/config", () => ({
   config: {
@@ -32,11 +33,22 @@ const { requireAuth, requireGuildAccess } = await import(
   "../../../src/server/shared/middleware.js"
 );
 
+interface MockRequest {
+  cookies: Record<string, string>;
+  unsignCookie: (value: string) => { valid: boolean; value: string; renew: boolean };
+  t: (key: string) => string;
+  session: unknown;
+  params: Record<string, string>;
+  // Populated by requireGuildAccess on success — declared here (rather than
+  // read back via a cast) so assertions can access it directly.
+  resolvedPermissions?: ResolvedPermissions;
+}
+
 function createMockRequest({
   sessionCookie = undefined as string | undefined,
   session = undefined as unknown,
   params = {} as Record<string, string>,
-} = {}) {
+} = {}): MockRequest {
   return {
     cookies: sessionCookie ? { session: sessionCookie } : {},
     unsignCookie: (value: string) => ({ valid: true, value, renew: false }),
@@ -101,7 +113,7 @@ describe("middleware", () => {
 
       await requireAuth(request as never, reply as never);
 
-      expect((request as Record<string, unknown>).session).toEqual(session);
+      expect(request.session).toEqual(session);
       expect(reply.code).not.toHaveBeenCalled();
     });
   });
@@ -177,9 +189,7 @@ describe("middleware", () => {
       await requireGuildAccess(request as never, reply as never);
 
       expect(reply.code).not.toHaveBeenCalled();
-      expect(
-        (request as Record<string, unknown>).resolvedPermissions,
-      ).toBeDefined();
+      expect(request.resolvedPermissions).toBeDefined();
     });
 
     it("passes for the guild owner", async () => {
@@ -212,7 +222,14 @@ describe("middleware", () => {
       expect(reply.code).not.toHaveBeenCalled();
     });
 
-    it("allows a non-admin member holding explicit grants", async () => {
+    // This is the discriminator for the `permissions.size > 0` rewrite: the
+    // set below is non-empty but contains no "*", so the OLD gate
+    // (isOwner || isGuildAdmin || permissions.has("*")) would 403 this
+    // request, while the NEW gate allows it. The "rejects a member holding
+    // no grants" / "rejects a non-member" cases below both use an empty set,
+    // which fails identically under old and new — they're regression guards,
+    // not discriminators. This is the one that actually proves the rewrite.
+    it("allows a non-admin member holding explicit grants (size>0 discriminator)", async () => {
       mockResolveUserPermissions.mockResolvedValue({
         permissions: new Set(["tickets.list.view"]),
         isOwner: false,
@@ -229,8 +246,7 @@ describe("middleware", () => {
 
       expect(reply.code).not.toHaveBeenCalled();
       expect(
-        (request as { resolvedPermissions?: { permissions: Set<string> } })
-          .resolvedPermissions?.permissions.has("tickets.list.view"),
+        request.resolvedPermissions?.permissions.has("tickets.list.view"),
       ).toBe(true);
     });
 
