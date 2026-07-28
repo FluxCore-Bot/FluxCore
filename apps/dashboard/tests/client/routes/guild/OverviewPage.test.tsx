@@ -46,6 +46,7 @@ describe("OverviewPage", () => {
 
     expect(screen.getByTestId("access-summary")).toBeInTheDocument();
     expect(screen.queryByTestId("analytics-stats")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("analytics-error")).not.toBeInTheDocument();
   });
 
   it("does not fetch analytics the user cannot see", () => {
@@ -62,8 +63,8 @@ describe("OverviewPage", () => {
     render(<OverviewPage />);
 
     const summary = screen.getByTestId("access-summary");
-    expect(within(summary).getByText("nav.tickets")).toBeInTheDocument();
-    expect(within(summary).queryByText("nav.moderation")).not.toBeInTheDocument();
+    expect(within(summary).getByText("common:nav.tickets")).toBeInTheDocument();
+    expect(within(summary).queryByText("common:nav.moderation")).not.toBeInTheDocument();
   });
 
   it("renders an error state rather than an endless skeleton when analytics fails", () => {
@@ -78,6 +79,8 @@ describe("OverviewPage", () => {
     render(<OverviewPage />);
 
     expect(screen.getByTestId("analytics-error")).toBeInTheDocument();
+    expect(screen.queryByTestId("access-summary")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("analytics-stats")).not.toBeInTheDocument();
   });
 
   it("renders the analytics dashboard, not the access summary or an error, once permitted data has loaded", () => {

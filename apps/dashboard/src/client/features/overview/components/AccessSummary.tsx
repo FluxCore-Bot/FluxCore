@@ -46,7 +46,7 @@ export function AccessSummary({ guildId }: { guildId: string }) {
                 className="flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-surface-high"
               >
                 <Icon name={item.icon} size={18} />
-                {t(item.i18nKey)}
+                {t(`common:${item.i18nKey}`)}
               </Link>
             </li>
           ))}
