@@ -792,3 +792,20 @@ export const DashboardAuditResponseSchema = z.object({
   pages: z.number(),
 });
 export type DashboardAuditResponse = z.infer<typeof DashboardAuditResponseSchema>;
+
+// --- Permission Registry ---
+export const PermissionViewSchema = z.object({
+  key: z.string(),
+  resourceKey: z.string(),
+  actionKey: z.string(),
+});
+
+export const PermissionModuleViewSchema = z.object({
+  key: z.string(),
+  icon: z.string(),
+  labelKey: z.string(),
+  permissions: z.array(PermissionViewSchema),
+});
+
+export const PermissionRegistrySchema = z.array(PermissionModuleViewSchema);
+export type PermissionModuleView = z.infer<typeof PermissionModuleViewSchema>;

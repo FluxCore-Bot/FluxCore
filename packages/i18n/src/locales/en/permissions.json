@@ -41,7 +41,8 @@
     "defaultRole": "Default role",
     "permissions": "Permissions",
     "allBadge": "All",
-    "discordRoles": "Discord Roles"
+    "discordRoles": "Discord Roles",
+    "permissionLabel": "{{action}} {{resource}}"
   },
   "roleForm": {
     "name": "Role Name",

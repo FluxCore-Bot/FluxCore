@@ -6,11 +6,13 @@ import {
   DashboardRoleListSchema,
   DashboardGuildSettingsSchema,
   DashboardAuditResponseSchema,
+  PermissionRegistrySchema,
   type MyPermissions,
   type DashboardRole,
   type DashboardGuildSettings,
   type DashboardAuditResponse,
   type DashboardRoleMember,
+  type PermissionModuleView,
 } from "../../../shared/lib/schemas";
 
 // ─── Permission Matching (client-side mirror of server logic) ───
@@ -81,6 +83,26 @@ export function usePermissions(guildId: string) {
     isOwner: data?.isOwner ?? false,
     isLoading,
   };
+}
+
+// ─── Permission Registry ───
+
+/**
+ * The permission vocabulary, served from the route table rather than a static
+ * list, so the grid can never offer a permission no route enforces.
+ */
+export function usePermissionRegistry(guildId: string) {
+  return useQuery<PermissionModuleView[]>({
+    queryKey: ["guilds", guildId, "permission-registry"],
+    queryFn: async () => {
+      const raw = await apiFetch<unknown>(
+        `/api/guilds/${guildId}/permission-registry`,
+      );
+      return PermissionRegistrySchema.parse(raw);
+    },
+    staleTime: Infinity,
+    enabled: Boolean(guildId),
+  });
 }
 
 // ─── Dashboard Roles ───

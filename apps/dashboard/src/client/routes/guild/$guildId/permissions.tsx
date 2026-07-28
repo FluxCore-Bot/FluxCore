@@ -41,12 +41,10 @@ import {
   useDashboardSettings,
   useUpdateDashboardSettings,
   useDashboardAuditLog,
+  usePermissionRegistry,
 } from "../../../features/permissions/hooks/usePermissions";
 import type { DashboardRole } from "../../../shared/lib/schemas";
-import {
-  PERMISSION_REGISTRY,
-  ROLE_PRESETS,
-} from "@fluxcore/types";
+import { ROLE_PRESETS } from "@fluxcore/types";
 
 // ─── Main Page ───
 
@@ -222,6 +220,7 @@ function RoleEditor({
   onDelete: () => void;
 }) {
   const { t } = useTranslation("permissions");
+  const { data: registry = [] } = usePermissionRegistry(guildId);
   const updateRole = useUpdateDashboardRole(guildId);
   const deleteRole = useDeleteDashboardRole(guildId);
   const [name, setName] = useState(role.name);
@@ -281,7 +280,7 @@ function RoleEditor({
         next.delete(wildcard);
       } else {
         // Remove individual permissions for this module, add wildcard
-        const modulePerms = PERMISSION_REGISTRY.find((m) => m.key === moduleKey);
+        const modulePerms = registry.find((m) => m.key === moduleKey);
         if (modulePerms) {
           for (const p of modulePerms.permissions) next.delete(p.key);
         }
@@ -343,12 +342,13 @@ function RoleEditor({
         <Label>{t("roleEditor.permissions")}</Label>
         <ScrollArea className="h-[400px] rounded-md border border-outline-variant/20 bg-surface-low p-4">
           <div className="space-y-6">
-            {PERMISSION_REGISTRY.map((mod) => {
+            {registry.map((mod) => {
               const wildcard = `${mod.key}.*`;
               const hasWildcard = permissions.has(wildcard);
               const allGranted =
                 hasWildcard ||
                 mod.permissions.every((p) => permissions.has(p.key));
+              const modLabel = t(mod.labelKey);
 
               return (
                 <div key={mod.key}>
@@ -356,10 +356,10 @@ function RoleEditor({
                     <Checkbox
                       checked={allGranted}
                       onCheckedChange={() => toggleModuleWildcard(mod.key)}
-                      aria-label={`${mod.label} — ${t("roleEditor.allBadge")}`}
+                      aria-label={`${modLabel} — ${t("roleEditor.allBadge")}`}
                     />
                     <span className="font-label text-sm font-semibold">
-                      {mod.label}
+                      {modLabel}
                     </span>
                     {hasWildcard && (
                       <Badge variant="secondary" className="text-xs">
@@ -370,6 +370,10 @@ function RoleEditor({
                   <div className="ms-6 mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
                     {mod.permissions.map((perm) => {
                       const checked = hasWildcard || permissions.has(perm.key);
+                      const permLabel = t("roleEditor.permissionLabel", {
+                        action: t(perm.actionKey),
+                        resource: t(perm.resourceKey),
+                      });
                       return (
                         <label
                           key={perm.key}
@@ -380,13 +384,11 @@ function RoleEditor({
                             disabled={hasWildcard}
                             onCheckedChange={() => togglePermission(perm.key)}
                             className="mt-0.5"
-                            aria-label={`${role.name} — ${perm.label}`}
+                            aria-label={`${role.name} — ${permLabel}`}
                           />
                           <div>
-                            <span className="text-text">{perm.label}</span>
-                            <p className="text-xs text-text-muted">
-                              {perm.description}
-                            </p>
+                            <span className="text-text">{permLabel}</span>
+                            <p className="font-mono text-xs text-text-muted">{perm.key}</p>
                           </div>
                         </label>
                       );
