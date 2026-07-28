@@ -343,7 +343,7 @@ function RoleEditor({
       </div>
 
       {needsLookups && (
-        <Alert data-testid="lookups-warning" className="mt-2">
+        <Alert variant="warning" data-testid="lookups-warning" className="mt-2">
           <Icon name="warning" size={16} />
           <div className="flex flex-wrap items-center gap-2">
             <span>{t("roleEditor.lookupsWarning")}</span>
