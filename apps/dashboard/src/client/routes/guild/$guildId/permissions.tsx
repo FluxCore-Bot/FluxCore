@@ -417,15 +417,44 @@ function RoleEditor({
                   hasWildcard ||
                   mod.permissions.every((p) => permissions.has(p.key));
                 const modLabel = t(mod.labelKey);
+                // toggleModuleWildcard only ever ADDS a new key (the wildcard
+                // itself) when the wildcard isn't already present — even when
+                // `allGranted` is already true via every individual permission,
+                // clicking still swaps those for the wildcard key, which the
+                // server validates as its own permission. So the only state
+                // that matters here is `hasWildcard`, not `allGranted`: mirror
+                // the server's exact check (matchPermission against the
+                // wildcard key `toggleModuleWildcard` adds), and only block the
+                // add direction — removing the wildcard is de-escalation and
+                // must stay allowed, same as isDefault: false in Fix 1.
+                const cannotAddWildcard =
+                  !currentUserIsOwner && !hasWildcard && !matchPermission(myPermissionSet, wildcard);
+                const moduleCheckbox = (
+                  <Checkbox
+                    checked={allGranted}
+                    disabled={cannotAddWildcard}
+                    onCheckedChange={() => toggleModuleWildcard(mod.key)}
+                    aria-label={`${modLabel} — ${t("roleEditor.allBadge")}`}
+                  />
+                );
 
                 return (
                   <div key={mod.key}>
                     <div className="flex items-center gap-2">
-                      <Checkbox
-                        checked={allGranted}
-                        onCheckedChange={() => toggleModuleWildcard(mod.key)}
-                        aria-label={`${modLabel} — ${t("roleEditor.allBadge")}`}
-                      />
+                      {cannotAddWildcard ? (
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <span tabIndex={0} className="inline-flex">
+                              {moduleCheckbox}
+                            </span>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            {t("roleEditor.cannotGrantTooltip")}
+                          </TooltipContent>
+                        </Tooltip>
+                      ) : (
+                        moduleCheckbox
+                      )}
                       <span className="font-label text-sm font-semibold">
                         {modLabel}
                       </span>

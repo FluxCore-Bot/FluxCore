@@ -419,6 +419,13 @@ function checkboxForPermissionKey(keyText: string): HTMLElement {
   return within(label).getByRole("checkbox");
 }
 
+// The module "select all" checkbox's aria-label is `${modLabel} — ${allBadge}`;
+// under the identity t() mock, t(mod.labelKey) and t("roleEditor.allBadge")
+// each return their key verbatim (no options object is passed to either call).
+function moduleSelectAllCheckbox(moduleLabelKey: string): HTMLElement {
+  return screen.getByRole("checkbox", { name: `${moduleLabelKey} — roleEditor.allBadge` });
+}
+
 describe("PermissionsPage — RoleEditor disables permissions the current user cannot grant", () => {
   it("enables checkboxes within the caller's own grant and disables the rest, with a delegated (non-owner) caller", async () => {
     permissionsState.box = { isOwner: false, isLoading: false, permissions: ["tickets.*"] };
@@ -450,5 +457,56 @@ describe("PermissionsPage — RoleEditor disables permissions the current user c
     await screen.findByText("permissions:permissionCategories.tickets");
     expect(checkboxForPermissionKey("tickets.list.view")).not.toBeDisabled();
     expect(checkboxForPermissionKey("moderation.cases.view")).not.toBeDisabled();
+  });
+
+  it("disables the module select-all checkbox for a module the delegated caller cannot grant the wildcard for, and enables it for one they can", async () => {
+    permissionsState.box = { isOwner: false, isLoading: false, permissions: ["tickets.*"] };
+    settingsState.box = {
+      data: { guildId: "g1", auditRetentionDays: 30, requirePermissions: true },
+      isLoading: false,
+      isError: false,
+    };
+    roleState.box = { ...ROLE_BASE, permissions: [] };
+    registryState.box = { data: REGISTRY_MULTI_MODULE, isLoading: false, isError: false };
+    renderPage();
+
+    await screen.findByText("permissions:permissionCategories.tickets");
+    expect(moduleSelectAllCheckbox("permissions:permissionCategories.tickets")).not.toBeDisabled();
+    expect(moduleSelectAllCheckbox("permissions:permissionCategories.moderation")).toBeDisabled();
+  });
+
+  it("enables every module select-all checkbox for the owner", async () => {
+    permissionsState.box = { isOwner: true, isLoading: false, permissions: [] };
+    settingsState.box = {
+      data: { guildId: "g1", auditRetentionDays: 30, requirePermissions: true },
+      isLoading: false,
+      isError: false,
+    };
+    roleState.box = { ...ROLE_BASE, permissions: [] };
+    registryState.box = { data: REGISTRY_MULTI_MODULE, isLoading: false, isError: false };
+    renderPage();
+
+    await screen.findByText("permissions:permissionCategories.tickets");
+    expect(moduleSelectAllCheckbox("permissions:permissionCategories.tickets")).not.toBeDisabled();
+    expect(moduleSelectAllCheckbox("permissions:permissionCategories.moderation")).not.toBeDisabled();
+  });
+
+  it("does not disable the select-all checkbox for a module whose wildcard is already granted, so de-escalation (un-ticking it) stays possible", async () => {
+    // The role already holds the tickets.* wildcard, and the caller holds it
+    // too — this is the "already fully granted" case. hasWildcard is true, so
+    // the click would REMOVE the wildcard, not add it; that must stay enabled
+    // even though the check only ever inspects `hasWildcard`, not `allGranted`.
+    permissionsState.box = { isOwner: false, isLoading: false, permissions: ["tickets.*"] };
+    settingsState.box = {
+      data: { guildId: "g1", auditRetentionDays: 30, requirePermissions: true },
+      isLoading: false,
+      isError: false,
+    };
+    roleState.box = { ...ROLE_BASE, permissions: ["tickets.*"] };
+    registryState.box = { data: REGISTRY_MULTI_MODULE, isLoading: false, isError: false };
+    renderPage();
+
+    await screen.findByText("permissions:permissionCategories.tickets");
+    expect(moduleSelectAllCheckbox("permissions:permissionCategories.tickets")).not.toBeDisabled();
   });
 });
