@@ -44,7 +44,10 @@
     "discordRoles": "Discord uloge",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Popis dozvola nije uspio učitati. Pokušajte osvježiti stranicu.",
-    "registryEmpty": "Trenutno nema dostupnih dozvola za dodjelu."
+    "registryEmpty": "Trenutno nema dostupnih dozvola za dodjelu.",
+    "lookupsWarning": "Ova uloga može konfigurirati module, ali ne može pretraživati kanale, uloge ili članove — njezini birači bit će prazni.",
+    "grantLookups": "Dodijeli pristup biračima",
+    "admissionNote": "Također omogućuje nositeljima da drugim članovima dodijele pristup nadzornoj ploči."
   },
   "roleForm": {
     "name": "Naziv uloge",

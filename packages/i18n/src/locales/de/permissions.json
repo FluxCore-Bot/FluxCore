@@ -44,7 +44,10 @@
     "discordRoles": "Discord-Rollen",
     "permissionLabel": "{{resource}} {{action}}",
     "registryError": "Die Berechtigungsliste konnte nicht geladen werden. Versuche, die Seite neu zu laden.",
-    "registryEmpty": "Es sind noch keine Berechtigungen zum Zuweisen verfügbar."
+    "registryEmpty": "Es sind noch keine Berechtigungen zum Zuweisen verfügbar.",
+    "lookupsWarning": "Diese Rolle kann Module konfigurieren, aber keine Kanäle, Rollen oder Mitglieder nachschlagen — ihre Auswahlfelder bleiben leer.",
+    "grantLookups": "Auswahlzugriff gewähren",
+    "admissionNote": "Erlaubt Inhabern außerdem, anderen Mitgliedern Dashboard-Zugriff zu gewähren."
   },
   "roleForm": {
     "name": "Rollenname",

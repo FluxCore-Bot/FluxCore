@@ -44,7 +44,10 @@
     "discordRoles": "Cargos do Discord",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Não foi possível carregar a lista de permissões. Tente atualizar a página.",
-    "registryEmpty": "Ainda não há permissões disponíveis para atribuir."
+    "registryEmpty": "Ainda não há permissões disponíveis para atribuir.",
+    "lookupsWarning": "Este cargo pode configurar módulos, mas não pode pesquisar canais, cargos ou membros — os seus seletores ficarão vazios.",
+    "grantLookups": "Conceder acesso aos seletores",
+    "admissionNote": "Também permite que os titulares deem a outros membros acesso ao painel."
   },
   "roleForm": {
     "name": "Nome do cargo",

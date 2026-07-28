@@ -44,7 +44,10 @@
     "discordRoles": "Ruoli Discord",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Impossibile caricare l'elenco dei permessi. Prova ad aggiornare la pagina.",
-    "registryEmpty": "Non ci sono ancora permessi disponibili da assegnare."
+    "registryEmpty": "Non ci sono ancora permessi disponibili da assegnare.",
+    "lookupsWarning": "Questo ruolo può configurare i moduli ma non può cercare canali, ruoli o membri — i suoi selettori saranno vuoti.",
+    "grantLookups": "Concedi accesso ai selettori",
+    "admissionNote": "Consente inoltre ai titolari di concedere ad altri membri l'accesso alla dashboard."
   },
   "roleForm": {
     "name": "Nome del ruolo",

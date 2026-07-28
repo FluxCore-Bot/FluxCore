@@ -44,7 +44,10 @@
     "discordRoles": "Vai Trò Discord",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Không thể tải danh sách quyền. Hãy thử làm mới trang.",
-    "registryEmpty": "Hiện chưa có quyền nào khả dụng để gán."
+    "registryEmpty": "Hiện chưa có quyền nào khả dụng để gán.",
+    "lookupsWarning": "Vai trò này có thể cấu hình các mô-đun nhưng không thể tra cứu kênh, vai trò hoặc thành viên — các bộ chọn của nó sẽ trống.",
+    "grantLookups": "Cấp quyền truy cập bộ chọn",
+    "admissionNote": "Cũng cho phép người giữ vai trò cấp quyền truy cập bảng điều khiển cho các thành viên khác."
   },
   "roleForm": {
     "name": "Tên Vai Trò",

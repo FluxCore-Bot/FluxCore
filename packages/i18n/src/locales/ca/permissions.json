@@ -44,7 +44,10 @@
     "discordRoles": "Rols de Discord",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "No s'ha pogut carregar la llista de permisos. Torna a carregar la pàgina.",
-    "registryEmpty": "Encara no hi ha permisos disponibles per assignar."
+    "registryEmpty": "Encara no hi ha permisos disponibles per assignar.",
+    "lookupsWarning": "Aquest rol pot configurar mòduls però no pot cercar canals, rols o membres — els seus selectors estaran buits.",
+    "grantLookups": "Concedeix accés als selectors",
+    "admissionNote": "També permet als titulars donar accés al tauler a altres membres."
   },
   "roleForm": {
     "name": "Nom del rol",

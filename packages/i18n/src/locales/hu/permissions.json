@@ -44,7 +44,10 @@
     "discordRoles": "Discord Roles",
     "permissionLabel": "{{resource}} {{action}}",
     "registryError": "A jogosultságlistát nem sikerült betölteni. Próbáld frissíteni az oldalt.",
-    "registryEmpty": "Még nincsenek kiosztható jogosultságok."
+    "registryEmpty": "Még nincsenek kiosztható jogosultságok.",
+    "lookupsWarning": "Ez a szerepkör képes modulokat konfigurálni, de nem tud csatornákat, szerepköröket vagy tagokat keresni — a választói üresek lesznek.",
+    "grantLookups": "Választói hozzáférés megadása",
+    "admissionNote": "A birtokosok más tagoknak is hozzáférést adhatnak az irányítópulthoz."
   },
   "roleForm": {
     "name": "Role Name",

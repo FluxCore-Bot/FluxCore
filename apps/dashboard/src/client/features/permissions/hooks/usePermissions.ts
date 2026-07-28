@@ -17,7 +17,7 @@ import {
 
 // ─── Permission Matching (client-side mirror of server logic) ───
 
-function matchPermission(granted: Set<string>, required: string): boolean {
+export function matchPermission(granted: Set<string>, required: string): boolean {
   if (granted.has("*")) return true;
   if (granted.has(required)) return true;
 

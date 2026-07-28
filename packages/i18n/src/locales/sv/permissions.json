@@ -44,7 +44,10 @@
     "discordRoles": "Discord-roller",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Behörighetslistan kunde inte läsas in. Försök uppdatera sidan.",
-    "registryEmpty": "Det finns inga behörigheter att tilldela än."
+    "registryEmpty": "Det finns inga behörigheter att tilldela än.",
+    "lookupsWarning": "Denna roll kan konfigurera moduler men kan inte slå upp kanaler, roller eller medlemmar — dess väljare kommer att vara tomma.",
+    "grantLookups": "Ge åtkomst till väljare",
+    "admissionNote": "Låter även innehavare ge andra medlemmar åtkomst till instrumentpanelen."
   },
   "roleForm": {
     "name": "Rollnamn",

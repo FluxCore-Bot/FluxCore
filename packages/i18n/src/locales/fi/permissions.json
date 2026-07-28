@@ -44,7 +44,10 @@
     "discordRoles": "Discord-roolit",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Käyttöoikeusluetteloa ei voitu ladata. Yritä päivittää sivu.",
-    "registryEmpty": "Jaettavia käyttöoikeuksia ei ole vielä saatavilla."
+    "registryEmpty": "Jaettavia käyttöoikeuksia ei ole vielä saatavilla.",
+    "lookupsWarning": "Tämä rooli voi määrittää moduuleja, mutta ei voi hakea kanavia, rooleja tai jäseniä — sen valitsimet jäävät tyhjiksi.",
+    "grantLookups": "Myönnä pääsy valitsimiin",
+    "admissionNote": "Antaa haltijoille myös mahdollisuuden myöntää muille jäsenille pääsyn hallintapaneeliin."
   },
   "roleForm": {
     "name": "Roolin nimi",

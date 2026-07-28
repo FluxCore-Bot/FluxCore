@@ -44,7 +44,10 @@
     "discordRoles": "Discord role",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Seznam oprávnění se nepodařilo načíst. Zkuste stránku obnovit.",
-    "registryEmpty": "Zatím nejsou k dispozici žádná oprávnění k přiřazení."
+    "registryEmpty": "Zatím nejsou k dispozici žádná oprávnění k přiřazení.",
+    "lookupsWarning": "Tato role může konfigurovat moduly, ale nemůže vyhledávat kanály, role ani členy — její výběry budou prázdné.",
+    "grantLookups": "Udělit přístup k výběrům",
+    "admissionNote": "Také umožňuje držitelům udělit ostatním členům přístup k nástěnce."
   },
   "roleForm": {
     "name": "Název role",

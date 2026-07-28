@@ -44,7 +44,10 @@
     "discordRoles": "Discordロール",
     "permissionLabel": "{{resource}}{{action}}",
     "registryError": "権限リストを読み込めませんでした。ページを更新してください。",
-    "registryEmpty": "割り当てられる権限はまだありません。"
+    "registryEmpty": "割り当てられる権限はまだありません。",
+    "lookupsWarning": "このロールはモジュールを設定できますが、チャンネル、ロール、メンバーを検索できません — ピッカーは空になります。",
+    "grantLookups": "ピッカーへのアクセスを許可",
+    "admissionNote": "保持者が他のメンバーにダッシュボードへのアクセスを付与できるようにもなります。"
   },
   "roleForm": {
     "name": "ロール名",

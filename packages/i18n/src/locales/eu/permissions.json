@@ -44,7 +44,10 @@
     "discordRoles": "Discord rolak",
     "permissionLabel": "{{resource}} {{action}}",
     "registryError": "Baimen-zerrenda ezin izan da kargatu. Saiatu orria freskatzen.",
-    "registryEmpty": "Oraindik ez dago esleitzeko baimenik erabilgarri."
+    "registryEmpty": "Oraindik ez dago esleitzeko baimenik erabilgarri.",
+    "lookupsWarning": "Rol honek moduluak konfiguratu ditzake, baina ezin ditu kanalak, rolak edo kideak bilatu — bere hautatzaileak hutsik egongo dira.",
+    "grantLookups": "Eman hautatzaileetarako sarbidea",
+    "admissionNote": "Titularrei beste kideei kontrol-paneleko sarbidea emateko ere aukera ematen die."
   },
   "roleForm": {
     "name": "Rol-izena",

@@ -44,7 +44,10 @@
     "discordRoles": "Discord vloge",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Seznama dovoljenj ni bilo mogoče naložiti. Poskusite osvežiti stran.",
-    "registryEmpty": "Trenutno ni na voljo nobenih dovoljenj za dodelitev."
+    "registryEmpty": "Trenutno ni na voljo nobenih dovoljenj za dodelitev.",
+    "lookupsWarning": "Ta vloga lahko konfigurira module, vendar ne more iskati kanalov, vlog ali članov — njeni izbirniki bodo prazni.",
+    "grantLookups": "Dodeli dostop do izbirnikov",
+    "admissionNote": "Prav tako imetnikom omogoča, da drugim članom dodelijo dostop do nadzorne plošče."
   },
   "roleForm": {
     "name": "Ime vloge",

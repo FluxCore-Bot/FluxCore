@@ -44,7 +44,10 @@
     "discordRoles": "Roles de Discord",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Non se puido cargar a lista de permisos. Proba a actualizar a páxina.",
-    "registryEmpty": "Aínda non hai permisos dispoñibles para asignar."
+    "registryEmpty": "Aínda non hai permisos dispoñibles para asignar.",
+    "lookupsWarning": "Este rol pode configurar módulos, pero non pode buscar canles, roles ou membros — os seus selectores estarán baleiros.",
+    "grantLookups": "Conceder acceso aos selectores",
+    "admissionNote": "Tamén permite aos titulares dar acceso ao panel a outros membros."
   },
   "roleForm": {
     "name": "Nome do Rol",

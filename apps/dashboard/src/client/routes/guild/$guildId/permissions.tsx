@@ -45,6 +45,7 @@ import {
   useDashboardAuditLog,
   usePermissionRegistry,
 } from "../../../features/permissions/hooks/usePermissions";
+import { needsLookupsPermission } from "../../../features/permissions/lookupsWarning";
 import type { DashboardRole } from "../../../shared/lib/schemas";
 import { ROLE_PRESETS } from "@fluxcore/types";
 
@@ -274,6 +275,8 @@ function RoleEditor({
     });
   }
 
+  const needsLookups = needsLookupsPermission(permissions);
+
   function toggleModuleWildcard(moduleKey: string) {
     const wildcard = `${moduleKey}.*`;
     setPermissions((prev) => {
@@ -338,6 +341,22 @@ function RoleEditor({
           <Label className="text-sm text-text-muted">{t("roleEditor.defaultRole")}</Label>
         </div>
       </div>
+
+      {needsLookups && (
+        <Alert data-testid="lookups-warning" className="mt-2">
+          <Icon name="warning" size={16} />
+          <div className="flex flex-wrap items-center gap-2">
+            <span>{t("roleEditor.lookupsWarning")}</span>
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => togglePermission("dashboard.lookups.view")}
+            >
+              {t("roleEditor.grantLookups")}
+            </Button>
+          </div>
+        </Alert>
+      )}
 
       {/* Permission Grid */}
       <div className="space-y-2">
@@ -415,6 +434,11 @@ function RoleEditor({
                             <div>
                               <span className="text-text">{permLabel}</span>
                               <p className="font-mono text-xs text-text-muted">{perm.key}</p>
+                              {perm.key === "dashboard.roles.manage" && (
+                                <p className="text-xs text-warning">
+                                  {t("roleEditor.admissionNote")}
+                                </p>
+                              )}
                             </div>
                           </label>
                         );

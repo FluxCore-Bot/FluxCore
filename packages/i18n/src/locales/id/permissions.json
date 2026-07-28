@@ -44,7 +44,10 @@
     "discordRoles": "Peran Discord",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Daftar izin tidak dapat dimuat. Coba segarkan halaman.",
-    "registryEmpty": "Belum ada izin yang tersedia untuk diberikan."
+    "registryEmpty": "Belum ada izin yang tersedia untuk diberikan.",
+    "lookupsWarning": "Peran ini dapat mengonfigurasi modul tetapi tidak dapat mencari saluran, peran, atau anggota — pemilihnya akan kosong.",
+    "grantLookups": "Berikan akses pemilih",
+    "admissionNote": "Juga memungkinkan pemegangnya memberikan akses dasbor kepada anggota lain."
   },
   "roleForm": {
     "name": "Nama Peran",

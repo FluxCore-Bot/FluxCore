@@ -44,7 +44,10 @@
     "discordRoles": "Discord roles",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Nepavyko įkelti leidimų sąrašo. Pabandykite iš naujo įkelti puslapį.",
-    "registryEmpty": "Kol kas nėra priskirtinų leidimų."
+    "registryEmpty": "Kol kas nėra priskirtinų leidimų.",
+    "lookupsWarning": "Šis vaidmuo gali konfigūruoti modulius, bet negali ieškoti kanalų, vaidmenų ar narių — jo rinkikliai bus tušti.",
+    "grantLookups": "Suteikti prieigą prie rinkiklių",
+    "admissionNote": "Taip pat leidžia turėtojams suteikti kitiems nariams prieigą prie skydelio."
   },
   "roleForm": {
     "name": "Roles pavadinimas",

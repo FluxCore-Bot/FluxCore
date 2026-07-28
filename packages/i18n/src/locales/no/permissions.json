@@ -44,7 +44,10 @@
     "discordRoles": "Discord-roller",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Kunne ikke laste inn tillatelseslisten. Prøv å oppdatere siden.",
-    "registryEmpty": "Det finnes ingen tillatelser å tildele ennå."
+    "registryEmpty": "Det finnes ingen tillatelser å tildele ennå.",
+    "lookupsWarning": "Denne rollen kan konfigurere moduler, men kan ikke slå opp kanaler, roller eller medlemmer — velgerne vil være tomme.",
+    "grantLookups": "Gi tilgang til velgere",
+    "admissionNote": "Lar også innehavere gi andre medlemmer tilgang til dashbordet."
   },
   "roleForm": {
     "name": "Rollenavn",

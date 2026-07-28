@@ -44,7 +44,10 @@
     "discordRoles": "Discord rollid",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Õiguste loendit ei õnnestunud laadida. Proovi lehte värskendada.",
-    "registryEmpty": "Määramiseks pole veel ühtegi õigust saadaval."
+    "registryEmpty": "Määramiseks pole veel ühtegi õigust saadaval.",
+    "lookupsWarning": "See roll saab mooduleid seadistada, kuid ei saa otsida kanaleid, rolle ega liikmeid — selle valikuloendid jäävad tühjaks.",
+    "grantLookups": "Anna juurdepääs valikuloenditele",
+    "admissionNote": "Lubab omanikel anda ka teistele liikmetele juhtpaneelile juurdepääsu."
   },
   "roleForm": {
     "name": "Rolli nimi",

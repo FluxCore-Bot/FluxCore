@@ -44,7 +44,10 @@
     "discordRoles": "Discord-rolle",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Die toestemminglys kon nie gelaai word nie. Probeer om die bladsy te herlaai.",
-    "registryEmpty": "Daar is nog geen toestemmings beskikbaar om toe te ken nie."
+    "registryEmpty": "Daar is nog geen toestemmings beskikbaar om toe te ken nie.",
+    "lookupsWarning": "Hierdie rol kan modules opstel, maar kan nie kanale, rolle of lede opsoek nie — sy kiesers sal leeg wees.",
+    "grantLookups": "Verleen kieser-toegang",
+    "admissionNote": "Laat houers ook toe om ander lede dashboard-toegang te gee."
   },
   "roleForm": {
     "name": "Rolnaam",

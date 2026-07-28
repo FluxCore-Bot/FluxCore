@@ -44,7 +44,10 @@
     "discordRoles": "Peranan Discord",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Senarai kebenaran tidak dapat dimuatkan. Cuba muat semula halaman.",
-    "registryEmpty": "Belum ada kebenaran tersedia untuk diberikan."
+    "registryEmpty": "Belum ada kebenaran tersedia untuk diberikan.",
+    "lookupsWarning": "Peranan ini boleh mengkonfigurasi modul tetapi tidak boleh mencari saluran, peranan atau ahli — pemilihnya akan kosong.",
+    "grantLookups": "Berikan akses pemilih",
+    "admissionNote": "Juga membolehkan pemegangnya memberikan akses papan pemuka kepada ahli lain."
   },
   "roleForm": {
     "name": "Nama Peranan",

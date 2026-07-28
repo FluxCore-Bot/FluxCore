@@ -46,21 +46,29 @@ const ROLE = {
   updatedAt: "2026-01-01T00:00:00.000Z",
 };
 
-vi.mock("../../../../../src/client/features/permissions/hooks/usePermissions", () => ({
-  usePermissions: () => ({ isOwner: true, isLoading: false }),
-  useDashboardRoles: () => ({ data: [ROLE], isLoading: false }),
-  useCreateDashboardRole: () => ({ mutate: vi.fn(), isPending: false }),
-  useUpdateDashboardRole: () => ({ mutate: vi.fn(), isPending: false }),
-  useDeleteDashboardRole: () => ({ mutate: vi.fn(), isPending: false }),
-  useCreateRoleFromPreset: () => ({ mutate: vi.fn(), isPending: false }),
-  useDashboardSettings: () => ({
-    data: { guildId: "g1", auditRetentionDays: 30, requirePermissions: true },
-    isLoading: false,
-  }),
-  useUpdateDashboardSettings: () => ({ mutate: vi.fn(), isPending: false }),
-  useDashboardAuditLog: () => ({ data: { entries: [], total: 0, page: 1, pages: 1 }, isLoading: false }),
-  usePermissionRegistry: () => registryState.box,
-}));
+vi.mock("../../../../../src/client/features/permissions/hooks/usePermissions", async (importOriginal) => {
+  // matchPermission is kept real (rather than re-stubbed) so RoleEditor's
+  // lookups-warning check — which imports it via lookupsWarning.ts — behaves
+  // exactly as it does outside tests; everything else here is a fixed mock.
+  const actual =
+    await importOriginal<typeof import("../../../../../src/client/features/permissions/hooks/usePermissions")>();
+  return {
+    matchPermission: actual.matchPermission,
+    usePermissions: () => ({ isOwner: true, isLoading: false }),
+    useDashboardRoles: () => ({ data: [ROLE], isLoading: false }),
+    useCreateDashboardRole: () => ({ mutate: vi.fn(), isPending: false }),
+    useUpdateDashboardRole: () => ({ mutate: vi.fn(), isPending: false }),
+    useDeleteDashboardRole: () => ({ mutate: vi.fn(), isPending: false }),
+    useCreateRoleFromPreset: () => ({ mutate: vi.fn(), isPending: false }),
+    useDashboardSettings: () => ({
+      data: { guildId: "g1", auditRetentionDays: 30, requirePermissions: true },
+      isLoading: false,
+    }),
+    useUpdateDashboardSettings: () => ({ mutate: vi.fn(), isPending: false }),
+    useDashboardAuditLog: () => ({ data: { entries: [], total: 0, page: 1, pages: 1 }, isLoading: false }),
+    usePermissionRegistry: () => registryState.box,
+  };
+});
 
 import { PermissionsPage } from "../../../../../src/client/routes/guild/$guildId/permissions";
 

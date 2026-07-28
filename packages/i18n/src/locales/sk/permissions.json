@@ -44,7 +44,10 @@
     "discordRoles": "Discord Roles",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Zoznam oprávnení sa nepodarilo načítať. Skúste stránku obnoviť.",
-    "registryEmpty": "Zatiaľ nie sú k dispozícii žiadne oprávnenia na priradenie."
+    "registryEmpty": "Zatiaľ nie sú k dispozícii žiadne oprávnenia na priradenie.",
+    "lookupsWarning": "Táto rola môže konfigurovať moduly, ale nemôže vyhľadávať kanály, role ani členov — jej výbery budú prázdne.",
+    "grantLookups": "Udeliť prístup k výberom",
+    "admissionNote": "Tiež umožňuje držiteľom udeliť ostatným členom prístup k nástenke."
   },
   "roleForm": {
     "name": "Role Name",

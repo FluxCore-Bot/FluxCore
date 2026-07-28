@@ -44,7 +44,10 @@
     "discordRoles": "Roluri Discord",
     "permissionLabel": "{{action}} {{resource}}",
     "registryError": "Lista de permisiuni nu a putut fi încărcată. Încearcă să reîmprospătezi pagina.",
-    "registryEmpty": "Nu există încă permisiuni disponibile pentru alocare."
+    "registryEmpty": "Nu există încă permisiuni disponibile pentru alocare.",
+    "lookupsWarning": "Acest rol poate configura module, dar nu poate căuta canale, roluri sau membri — selectoarele sale vor fi goale.",
+    "grantLookups": "Acordă acces la selectoare",
+    "admissionNote": "De asemenea, le permite deținătorilor să acorde altor membri acces la panou."
   },
   "roleForm": {
     "name": "Numele Rolului",
