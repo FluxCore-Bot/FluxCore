@@ -29,9 +29,8 @@ vi.mock("../../../src/server/shared/permissions.js", () => ({
   createDashboardAuditLog: vi.fn().mockResolvedValue(undefined),
 }));
 
-const { requireAuth, requireGuildAccess } = await import(
-  "../../../src/server/shared/middleware.js"
-);
+const { requireAuth, requireGuildAccess, requirePermission, getDeclaredPermissions } =
+  await import("../../../src/server/shared/middleware.js");
 
 interface MockRequest {
   cookies: Record<string, string>;
@@ -284,6 +283,17 @@ describe("middleware", () => {
       await requireGuildAccess(request as never, reply as never);
 
       expect(reply.code).toHaveBeenCalledWith(403);
+    });
+  });
+
+  describe("getDeclaredPermissions", () => {
+    it("records every key passed to requirePermission", () => {
+      requirePermission("tickets.list.view", "tickets.list.manage");
+
+      const declared = getDeclaredPermissions();
+
+      expect(declared.has("tickets.list.view")).toBe(true);
+      expect(declared.has("tickets.list.manage")).toBe(true);
     });
   });
 });

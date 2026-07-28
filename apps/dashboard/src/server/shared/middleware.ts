@@ -95,11 +95,24 @@ export async function requireGuildAccess(
 }
 
 /**
+ * Every permission key any route enforces. Populated when `requirePermission`
+ * runs at route-registration time, which makes the route table — not a
+ * hand-maintained list — the source of truth for what permissions exist.
+ */
+const declaredPermissions = new Set<string>();
+
+export function getDeclaredPermissions(): ReadonlySet<string> {
+  return declaredPermissions;
+}
+
+/**
  * Require specific dashboard permissions.
  * Must be used AFTER requireGuildAccess (which resolves permissions).
  * Accepts one or more permission keys — ALL must be granted.
  */
 export function requirePermission(...keys: string[]) {
+  for (const key of keys) declaredPermissions.add(key);
+
   return async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
     const resolved = request.resolvedPermissions;
     if (!resolved) {

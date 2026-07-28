@@ -41,6 +41,8 @@ import { helmetOptions } from "./shared/security.js";
 import { registerOpenApi } from "./shared/openapi.js";
 import { withDocs } from "./shared/openapi-schemas.js";
 import { globalRateLimitOptions } from "./shared/rateLimit.js";
+import { getDeclaredPermissions } from "./shared/middleware.js";
+import { validatePermissionRegistry } from "./shared/permissionRegistry.js";
 
 /**
  * Build the fully-configured Fastify application (plugins, routes, OpenAPI
@@ -177,6 +179,10 @@ export async function createApp(): Promise<FastifyInstance> {
   registerStarboardRoutes(app);
   registerDashboardRoleRoutes(app);
   registerDashboardPermissionRoutes(app);
+
+  // Routes are registered, so every requirePermission() has run — the declared
+  // key set is now complete and can be checked.
+  validatePermissionRegistry(getDeclaredPermissions());
 
   // SPA fallback: serve index.html for non-API/auth routes in production
   if (process.env.NODE_ENV === "production") {
