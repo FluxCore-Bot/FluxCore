@@ -2,15 +2,29 @@ import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
 import { requireAuth, requireGuildAdmin, requirePermission } from "../../shared/middleware.js";
 import {
-  getGuildConfigs,
+  fetchGuildConfigs,
   addGuildConfig,
   updateGuildConfig,
   removeGuildConfig,
-  getConfigByHubChannel,
+  fetchConfigByHubChannel,
 } from "@fluxcore/systems/tempVoice/config";
 import { MAX_TEMPVOICE_CONFIGS_PER_GUILD } from "@fluxcore/systems/tempVoice/constants";
 import { channelExistsInGuild } from "../../shared/discordApi.js";
 import { notifyCacheInvalidation } from "@fluxcore/systems/actions/persistence";
+
+/**
+ * Prisma unique-constraint violation. The hub-already-in-use checks below read
+ * the database first, but two concurrent requests can still both pass them, so
+ * the constraint stays the last line of defence.
+ */
+function isUniqueViolation(error: unknown): boolean {
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    "code" in error &&
+    (error as { code: unknown }).code === "P2002"
+  );
+}
 
 export function registerTempVoiceRoutes(app: FastifyInstance): void {
   // GET all configs for a guild
@@ -25,7 +39,7 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
     },
     async (request, reply) => {
       const { guildId } = request.params as { guildId: string };
-      const configs = getGuildConfigs(guildId);
+      const configs = await fetchGuildConfigs(guildId);
       reply.send(configs);
     },
   );
@@ -72,12 +86,12 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
         return;
       }
 
-      if (getConfigByHubChannel(body.hubChannelId)) {
+      if (await fetchConfigByHubChannel(body.hubChannelId)) {
         reply.code(400).send({ error: "This channel is already a temp voice hub" });
         return;
       }
 
-      const existing = getGuildConfigs(guildId);
+      const existing = await fetchGuildConfigs(guildId);
       if (existing.length >= MAX_TEMPVOICE_CONFIGS_PER_GUILD) {
         reply.code(400).send({
           error: `Config limit reached (max ${MAX_TEMPVOICE_CONFIGS_PER_GUILD})`,
@@ -99,11 +113,22 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
         return;
       }
 
-      const config = await addGuildConfig(guildId, {
-        hubChannelId: body.hubChannelId,
-        categoryId: body.categoryId ?? null,
-        nameTemplate,
-      });
+      let config;
+      try {
+        config = await addGuildConfig(guildId, {
+          hubChannelId: body.hubChannelId,
+          categoryId: body.categoryId ?? null,
+          nameTemplate,
+        });
+      } catch (error) {
+        if (isUniqueViolation(error)) {
+          reply
+            .code(400)
+            .send({ error: "This channel is already a temp voice hub" });
+          return;
+        }
+        throw error;
+      }
 
       await notifyCacheInvalidation(guildId, "reloadTempVoice");
       reply.code(201).send(config);
@@ -149,7 +174,7 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
           reply.code(400).send({ error: "Invalid hub channel" });
           return;
         }
-        const existingHub = getConfigByHubChannel(body.hubChannelId);
+        const existingHub = await fetchConfigByHubChannel(body.hubChannelId);
         if (existingHub && existingHub.id !== Number(configId)) {
           reply
             .code(400)
@@ -185,7 +210,13 @@ export function registerTempVoiceRoutes(app: FastifyInstance): void {
         });
         await notifyCacheInvalidation(guildId, "reloadTempVoice");
         reply.send(updated);
-      } catch {
+      } catch (error) {
+        if (isUniqueViolation(error)) {
+          reply
+            .code(400)
+            .send({ error: "This channel is already a temp voice hub" });
+          return;
+        }
         reply.code(404).send({ error: "Config not found" });
       }
     },
