@@ -8,8 +8,14 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        // The gradient ends on primary-container, not accent-dim. accent-dim
+        // (#6063ee) carries the accent-hover label at only 2.90:1 — the sweep
+        // was wide enough that the bottom-right of every primary button failed
+        // AA while the top-left passed at 6.08:1. primary-container (#9396ff)
+        // is the darkest fill that still clears 4.5:1 (5.17:1), so the label
+        // now passes across the whole sweep.
         default:
-          "bg-gradient-to-br from-accent to-accent-dim text-accent-hover shadow-[0_4px_20px_rgba(163,166,255,0.3)] hover:brightness-110",
+          "bg-gradient-to-br from-accent to-primary-container text-accent-hover shadow-[0_4px_20px_rgba(163,166,255,0.3)] hover:brightness-110",
         destructive:
           "bg-danger text-white shadow-sm hover:brightness-110",
         outline:
