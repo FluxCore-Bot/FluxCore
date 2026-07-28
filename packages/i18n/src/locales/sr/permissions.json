@@ -43,8 +43,8 @@
     "allBadge": "Sve",
     "discordRoles": "Discord uloge",
     "permissionLabel": "{{action}} {{resource}}",
-    "registryError": "Листа дозвола није могла да се учита. Покушајте да освежите страницу.",
-    "registryEmpty": "Тренутно нема доступних дозвола за доделу."
+    "registryError": "Lista dozvola nije mogla da se ucita. Pokusajte da osvezite stranicu.",
+    "registryEmpty": "Trenutno nema dostupnih dozvola za dodelu."
   },
   "roleForm": {
     "name": "Naziv uloge",
@@ -61,7 +61,7 @@
     "color": "Boja"
   },
   "permissionCategories": {
-    "dashboard": "Контролна табла",
+    "dashboard": "Kontrolna tabla",
     "actions": "Radnje i automatizacija",
     "tempvoice": "TempVoice",
     "welcome": "Dobrodoslica i oprostaj",
@@ -79,31 +79,31 @@
     "settings": "Podesavanja servera"
   },
   "resources": {
-    "roles": "Улоге",
-    "audit": "Дневник ревизије",
-    "settings": "Подешавања",
-    "lookups": "Селектори",
-    "cases": "Случајеви",
-    "warnings": "Упозорења",
-    "punishments": "Казне",
-    "rules": "Правила",
-    "analytics": "Аналитика",
-    "entries": "Уноси",
-    "config": "Конфигурација",
-    "test": "Тест поруке",
-    "leaderboard": "Ранг листа",
-    "users": "Корисници",
-    "rewards": "Награде",
-    "list": "Листа",
-    "panels": "Панели",
-    "messages": "Поруке",
-    "events": "Догађаји"
+    "roles": "Uloge",
+    "audit": "Revizijski zapis",
+    "settings": "Podesavanja",
+    "lookups": "Selektori",
+    "cases": "Slucajevi",
+    "warnings": "Upozorenja",
+    "punishments": "Kazne",
+    "rules": "Pravila",
+    "analytics": "Analitika",
+    "entries": "Zapisi",
+    "config": "Konfiguracija",
+    "test": "Test poruke",
+    "leaderboard": "Rang lista",
+    "users": "Korisnici",
+    "rewards": "Nagrade",
+    "list": "Lista",
+    "panels": "Paneli",
+    "messages": "Poruke",
+    "events": "Dogadaji"
   },
   "permissionActions": {
-    "view": "Преглед",
-    "manage": "Управљање",
-    "execute": "Извршавање",
-    "purge": "Брисање"
+    "view": "Pregled",
+    "manage": "Upravljanje",
+    "execute": "Izvrsavanje",
+    "purge": "Brisanje"
   },
   "audit": {
     "table": {
