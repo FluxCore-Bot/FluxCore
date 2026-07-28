@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
-const LOCALES_DIR = join(__dirname, "../src/locales");
+const LOCALES_DIR = join(__dirname, "../../../../packages/i18n/src/locales");
 
 const REQUIRED_MODULES = [
   "dashboard", "moderation", "actions", "logging", "welcome", "leveling",
