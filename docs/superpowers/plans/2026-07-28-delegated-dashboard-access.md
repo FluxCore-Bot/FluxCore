@@ -20,7 +20,9 @@
 - `JSON.stringify(obj, null, 2)` is **not** format-preserving for these locale files (some are semi-compact; 17 contain `\u` escapes). Only round-trip a file when a no-op round-trip is byte-identical; otherwise splice text.
 - Dashboard UI uses existing shadcn/ui wrappers in `apps/dashboard/src/client/shared/ui/`. Lucide icons via the `Icon` component. Never fill Lucide icons.
 - Commit after every task. Branch: `feat/delegated-dashboard-access`.
-- Verification commands: `pnpm typecheck`, `pnpm test`, `pnpm test:integration`. Note `pnpm typecheck` does **not** cover `apps/dashboard/tests/**` — a green typecheck says nothing about test files; run the tests.
+- Verification commands: `pnpm typecheck`, `pnpm test`, `pnpm test:integration` — all three already run inside Docker via docker-compose. Note `pnpm typecheck` does **not** cover `apps/dashboard/tests/**` — a green typecheck says nothing about test files; run the tests.
+- To run one package's suite, use the Docker form: `docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test`. Never run bare `pnpm` on the host — `node_modules` is root-owned. A trailing vitest file filter is **not** honored through the workspace filter, so this runs the package's whole suite (~18s for the dashboard, 107 files / 1314 tests).
+- Baseline before this branch: dashboard suite fully green (107 files, 1314 tests). Any failure you see is yours.
 
 ---
 
@@ -107,7 +109,7 @@ Add `getGuildAuthority` to the existing import from `../../../src/server/shared/
 - [ ] **Step 2: Run the tests to verify they fail**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/server/shared/guildAuthz.test.ts
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 ```
 
 Expected: FAIL — `getGuildAuthority is not a function`.
@@ -173,7 +175,7 @@ export async function isUserGuildAdmin(
 - [ ] **Step 4: Run the tests to verify they pass**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/server/shared/guildAuthz.test.ts
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 pnpm typecheck
 ```
 
@@ -193,7 +195,7 @@ git commit -m "refactor(dashboard): answer owner/admin/member in one authority l
 **Files:**
 
 - Modify: `apps/dashboard/src/server/shared/permissions.ts:33-150`
-- Test: `apps/dashboard/tests/server/shared/permissions-resolve.test.ts` (create)
+- Test: `apps/dashboard/tests/server/shared/resolveUserPermissions.test.ts` (**exists** — update it; do not create a second file)
 
 **Interfaces:**
 
@@ -214,7 +216,18 @@ Resolution table (from the spec):
 
 - [ ] **Step 1: Write the failing tests**
 
-Create `apps/dashboard/tests/server/shared/permissions-resolve.test.ts`:
+`apps/dashboard/tests/server/shared/resolveUserPermissions.test.ts` already covers this function
+with four tests. Rework **that** file rather than adding a parallel one:
+
+- Its mock of `../../../src/server/shared/guildAuthz.js` currently exposes `isUserGuildAdmin`;
+  replace that with `getGuildAuthority` (returning `{ isOwner, isAdmin, isMember }`) and update the
+  four existing tests to drive the new mock. Its `getGuildOwnerId` mock can go — ownership now comes
+  from `getGuildAuthority`.
+- Keep its "unique guild per test" counter pattern, which is how it avoids the 60s permission cache
+  leaking between cases. Use it for the new tests too instead of calling `invalidatePermissionCache`.
+
+The cases to end up with (existing four, reworked, plus the new ones) are below; the mock names
+follow that file's existing style:
 
 ```typescript
 import { describe, it, expect, vi, beforeEach } from "vitest";
@@ -371,7 +384,7 @@ describe("resolveUserPermissions", () => {
 - [ ] **Step 2: Run the tests to verify they fail**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/server/shared/permissions-resolve.test.ts
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 ```
 
 Expected: FAIL — `getGuildAuthority` is not called (the module still imports `isUserGuildAdmin`), and `isGuildMember` is undefined.
@@ -512,7 +525,7 @@ async function loadGrantedPermissions(
 - [ ] **Step 4: Run the tests to verify they pass**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/server/shared/permissions-resolve.test.ts
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 pnpm typecheck
 ```
 
@@ -606,7 +619,7 @@ The existing cases (bot not in guild → 403 `botNotInGuild`; admin → pass) st
 - [ ] **Step 2: Run the tests to verify they fail**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/server/shared/middleware.test.ts
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 ```
 
 Expected: FAIL — `requireGuildAccess` is not exported.
@@ -667,7 +680,7 @@ grep -rn "requireGuildAdmin" apps/dashboard || echo "no references left"
 - [ ] **Step 4: Run the full dashboard suite**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 pnpm typecheck
 ```
 
@@ -719,7 +732,7 @@ Add to `apps/dashboard/tests/server/features/discord/discord.test.ts` (follow th
 - [ ] **Step 2: Run it to verify it fails**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/server/features/discord/discord.test.ts
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 ```
 
 Expected: FAIL — returns 200 because no permission is required.
@@ -743,8 +756,7 @@ and add `"dashboard.lookups.view"` to the `permissions` array of the `moderator`
 - [ ] **Step 4: Run the tests**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/server/features/discord/discord.test.ts
-pnpm --filter @fluxcore/dashboard test
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 ```
 
 Expected: PASS.
@@ -881,7 +893,7 @@ Use whatever mock names that file already defines for `prisma.dashboardRole.find
 - [ ] **Step 2: Run them to verify they fail**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/server/features/permissions/dashboardRoles.test.ts
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 ```
 
 Expected: FAIL — assignment returns 201 in the first two cases.
@@ -932,7 +944,7 @@ function safeParsePermissions(json: string): string[] {
 - [ ] **Step 4: Run the tests**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/server/features/permissions/dashboardRoles.test.ts
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 pnpm typecheck
 ```
 
@@ -1055,7 +1067,7 @@ Use `res.json<T>()` with the generic — never a cast.
 - [ ] **Step 2: Run them to verify they fail**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/server/features/guilds/guilds.test.ts
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 ```
 
 Expected: FAIL — delegated guilds are filtered out; `access` is undefined.
@@ -1153,7 +1165,7 @@ Add `access: { type: "string" }` to `guildListResponseSchema`'s item properties,
 - [ ] **Step 4: Run the tests**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/server/features/guilds/
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 pnpm typecheck
 ```
 
@@ -1219,7 +1231,7 @@ describe("GuildCard", () => {
 - [ ] **Step 2: Run it to verify it fails**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/client/GuildCard.test.tsx
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 ```
 
 Expected: FAIL — no badge rendered, and a type error on `access`.
@@ -1263,7 +1275,7 @@ Translate that one key in the other 47 locales (see the i18n procedure in Task 1
 - [ ] **Step 4: Run the tests**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 pnpm typecheck
 ```
 
@@ -1384,7 +1396,7 @@ Add to `apps/dashboard/tests/server/shared/middleware.test.ts`:
 - [ ] **Step 2: Run them to verify they fail**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/server/shared/permissionRegistry.test.ts tests/server/shared/middleware.test.ts
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 ```
 
 Expected: FAIL — module not found / `getDeclaredPermissions` not exported.
@@ -1538,8 +1550,7 @@ with imports from `./shared/permissionRegistry.js` and `./shared/middleware.js`.
 - [ ] **Step 4: Run the tests**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/server/shared/
-pnpm --filter @fluxcore/dashboard test
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 pnpm typecheck
 ```
 
@@ -1701,7 +1712,7 @@ nothing would otherwise make both pass vacuously.
 - [ ] **Step 2: Run to verify they fail**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/server/shared/permissions.test.ts tests/server/shared/permissionDrift.test.ts
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 ```
 
 Expected: FAIL — the helpers take one argument.
@@ -1779,7 +1790,7 @@ and drop the `ALL_PERMISSION_KEYS` import.
 - [ ] **Step 4: Run everything**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 pnpm typecheck
 ```
 
@@ -1870,7 +1881,7 @@ describe("usePermissionRegistry", () => {
 - [ ] **Step 2: Run it to verify it fails**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/client/usePermissionRegistry.test.tsx
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 ```
 
 Expected: FAIL — `usePermissionRegistry` is not exported.
@@ -1958,7 +1969,7 @@ The component's `useTranslation` call must include the `permissions` namespace s
 - [ ] **Step 4: Run the tests**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 pnpm typecheck
 ```
 
@@ -2043,7 +2054,7 @@ Also add `roleEditor.permissionLabel` (used in Task 10) to the required set for 
 - [ ] **Step 2: Run it to verify it fails**
 
 ```bash
-pnpm --filter @fluxcore/i18n test -- tests/permission-keys.test.ts
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/i18n test
 ```
 
 Expected: FAIL for all 48 locales — `resources` and `permissionActions` do not exist.
@@ -2093,8 +2104,8 @@ Translate all of them per locale — no English placeholders. RTL locales need n
 - [ ] **Step 4: Run the tests**
 
 ```bash
-pnpm --filter @fluxcore/i18n test
-pnpm --filter @fluxcore/dashboard test
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/i18n test
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 ```
 
 Expected: PASS in all 48 locales.
@@ -2217,7 +2228,7 @@ describe("OverviewPage", () => {
 - [ ] **Step 2: Run to verify they fail**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/client/OverviewPage.test.tsx
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 ```
 
 Expected: FAIL — the page renders a skeleton in all three cases.
@@ -2343,8 +2354,8 @@ Add to `overview.json` (all 48 locales, same procedure as Task 11):
 - [ ] **Step 4: Run the tests**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test
-pnpm --filter @fluxcore/i18n test
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/i18n test
 pnpm typecheck
 ```
 
@@ -2409,7 +2420,7 @@ describe("needsLookupsPermission", () => {
 - [ ] **Step 2: Run to verify it fails**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test -- tests/client/RoleEditorLookupsWarning.test.tsx
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
 ```
 
 Expected: FAIL — no warning element exists.
@@ -2477,8 +2488,8 @@ Add to `permissions.json` (48 locales, same procedure as Task 11):
 - [ ] **Step 4: Run the tests**
 
 ```bash
-pnpm --filter @fluxcore/dashboard test
-pnpm --filter @fluxcore/i18n test
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/dashboard test
+docker compose --profile bot run --rm --no-deps bot pnpm --filter @fluxcore/i18n test
 ```
 
 Expected: PASS.
