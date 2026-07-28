@@ -11,7 +11,6 @@ vi.mock("@fluxcore/utils", () => ({
 const mockGetGuildAuthority = vi.fn();
 vi.mock("../../../src/server/shared/guildAuthz.js", () => ({
   getGuildAuthority: (...args: unknown[]) => mockGetGuildAuthority(...args),
-  isUserGuildAdmin: vi.fn(),
 }));
 
 const mockFindGuildSettings = vi.fn();

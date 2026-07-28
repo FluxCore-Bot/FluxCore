@@ -282,3 +282,21 @@ until someone assigns a dashboard role or user override to a non-admin. Recommen
   this change).
 - Bot-side permission checks; this is dashboard-only.
 - Audit log retention/cleanup work.
+
+## Deviations from this Spec
+
+Recorded during final review so the spec matches what actually shipped:
+
+- **i18n key shapes.** Part E's `modules.*` / `actions.*` namespacing was not used. The generated
+  registry (`buildPermissionRegistry` in `server/shared/permissionRegistry.ts`) emits
+  `permissions:permissionCategories.<module>` and `permissions:permissionActions.<action>`
+  instead — reusing the namespaces the static `PERMISSION_REGISTRY` constant already used, so
+  existing translations for module/action names carried over rather than needing a second parallel
+  set of keys. Per-permission descriptions (present on the old `PermissionDefinition.description`
+  field) were dropped rather than translated: the role editor shows the raw dotted permission key
+  (e.g. `moderation.cases.manage`) under the translated action+resource label instead of prose.
+- **`validatePermissionRegistry` always throws.** The spec did not specify environment-dependent
+  behavior, and none was added: an invalid declared permission key throws unconditionally at boot,
+  in every environment including production, rather than logging and continuing. This was a
+  deliberate fail-fast choice — a key the UI cannot render is a boot-time programming bug, and
+  serving a dashboard with a silently-broken permission grid is worse than refusing to start.

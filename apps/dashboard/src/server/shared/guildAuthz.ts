@@ -65,15 +65,3 @@ export async function getGuildAuthority(
     isMember: true,
   };
 }
-
-/**
- * True when the user currently has admin authority (owner, Administrator, or
- * Manage Server) in the guild. Thin wrapper over {@link getGuildAuthority}.
- */
-export async function isUserGuildAdmin(
-  guildId: string,
-  userId: string,
-): Promise<boolean> {
-  const { isAdmin } = await getGuildAuthority(guildId, userId);
-  return isAdmin;
-}

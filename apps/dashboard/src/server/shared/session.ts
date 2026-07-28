@@ -264,32 +264,6 @@ export async function forceRefreshSessionGuilds(
   return refreshSessionGuilds(id, cached.session.accessToken, cached);
 }
 
-const FRESH_GUILD_THRESHOLD = 5 * 60 * 1000; // 5 minutes
-
-/**
- * Ensure session.guilds is no older than FRESH_GUILD_THRESHOLD.
- * Used by requireGuildAccess to fail closed for revoked admins quickly.
- */
-export async function ensureFreshGuilds(
-  id: string,
-): Promise<OAuthGuild[] | null> {
-  const cached = sessionCache.get(id);
-  if (!cached) {
-    const session = await getSession(id);
-    if (!session) return null;
-    const reloaded = sessionCache.get(id);
-    if (!reloaded) return session.guilds;
-    if (Date.now() - reloaded.guildsRefreshedAt <= FRESH_GUILD_THRESHOLD) {
-      return reloaded.session.guilds;
-    }
-    return refreshSessionGuilds(id, session.accessToken, reloaded);
-  }
-  if (Date.now() - cached.guildsRefreshedAt <= FRESH_GUILD_THRESHOLD) {
-    return cached.session.guilds;
-  }
-  return refreshSessionGuilds(id, cached.session.accessToken, cached);
-}
-
 // Test-only hook
 export function __setSessionCacheForTest(
   id: string,
