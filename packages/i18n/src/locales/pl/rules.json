@@ -146,7 +146,18 @@
     "include": "Dołącz (biała lista)",
     "exclude": "Wyklucz (czarna lista)",
     "clearAll": "Wyczyść wszystkie warunki",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Usuń {{label}}",
+    "collapse": "Zwiń warunki",
+    "userIdInvalid": "Wprowadź prawidłowy identyfikator użytkownika Discord (17–20 cyfr)",
+    "addUserId": "Dodaj identyfikator użytkownika",
+    "includeChannels": "Tylko na tych kanałach",
+    "includeRoles": "Tylko członkowie z tymi rolami",
+    "includeUsers": "Tylko ci członkowie",
+    "excludeChannels": "Nigdy na tych kanałach",
+    "excludeRoles": "Nigdy członkowie z tymi rolami",
+    "excludeUsers": "Nigdy ci członkowie",
+    "unsupportedWarning": "Ten wyzwalacz nie może ocenić tych filtrów ({{filters}}), więc reguła nigdy się nie uruchomi, dopóki są ustawione.",
+    "removeUnsupported": "Usuń filtry, których nie można zastosować"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Odrzucić niezapisane zmiany?",
+    "discardChangesDescription": "Ta reguła ma niezapisane zmiany. Zamknięcie edytora spowoduje ich utratę.",
+    "discardChanges": "Odrzuć zmiany",
+    "draftRestored": "Przywrócono wersję roboczą z poprzedniej sesji",
+    "discardDraftAction": "Odrzuć wersję roboczą",
+    "discardTitle": "Odrzucić zmiany?",
+    "discardDescription": "Masz niezapisane zmiany. Wersja robocza jest zapisywana lokalnie, ale opuścisz edytor.",
+    "discardConfirm": "Odrzuć i zamknij"
   },
   "panel": {
     "trigger": "Trigger Settings",

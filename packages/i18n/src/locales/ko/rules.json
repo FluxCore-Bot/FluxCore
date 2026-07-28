@@ -146,7 +146,18 @@
     "include": "포함 (화이트리스트)",
     "exclude": "제외 (블랙리스트)",
     "clearAll": "모든 조건 초기화",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "{{label}} 제거",
+    "collapse": "조건 접기",
+    "userIdInvalid": "유효한 Discord 사용자 ID를 입력하세요 (17~20자리)",
+    "addUserId": "사용자 ID 추가",
+    "includeChannels": "이 채널에서만",
+    "includeRoles": "이 역할을 가진 멤버만",
+    "includeUsers": "이 멤버만",
+    "excludeChannels": "이 채널에서는 제외",
+    "excludeRoles": "이 역할을 가진 멤버 제외",
+    "excludeUsers": "이 멤버 제외",
+    "unsupportedWarning": "이 트리거는 이 필터({{filters}})를 평가할 수 없으므로 필터가 설정되어 있는 동안 규칙이 실행되지 않습니다.",
+    "removeUnsupported": "적용할 수 없는 필터 제거"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "저장하지 않은 변경사항을 삭제할까요?",
+    "discardChangesDescription": "이 규칙에는 저장되지 않은 변경사항이 있습니다. 편집기를 닫으면 사라집니다.",
+    "discardChanges": "변경사항 삭제",
+    "draftRestored": "이전 세션의 임시 저장본을 복원했습니다",
+    "discardDraftAction": "임시 저장본 삭제",
+    "discardTitle": "변경사항을 삭제할까요?",
+    "discardDescription": "저장하지 않은 변경사항이 있습니다. 임시 저장본은 로컬에 남지만 편집기를 벗어납니다.",
+    "discardConfirm": "삭제하고 닫기"
   },
   "panel": {
     "trigger": "Trigger Settings",

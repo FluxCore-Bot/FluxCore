@@ -90,7 +90,9 @@
     "saving": "Ukladanie...",
     "saveSettings": "Uložiť nastavenia",
     "previous": "Predchádzajúca",
-    "next": "Ďalšia"
+    "next": "Ďalšia",
+    "invalidJson": "Neplatný JSON — očakáva sa objekt textových hodnôt",
+    "fieldRequired": "{{field}} je povinné"
   },
   "pagination": {
     "previous": "Predchádzajúca",

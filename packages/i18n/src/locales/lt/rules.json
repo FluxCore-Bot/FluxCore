@@ -146,7 +146,18 @@
     "include": "Įtraukti (baltasis sąrašas)",
     "exclude": "Neįtraukti (juodasis sąrašas)",
     "clearAll": "Išvalyti visas sąlygas",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Pašalinti {{label}}",
+    "collapse": "Suskleisti sąlygas",
+    "userIdInvalid": "Įveskite galiojantį Discord naudotojo ID (17–20 skaitmenų)",
+    "addUserId": "Pridėti naudotojo ID",
+    "includeChannels": "Tik šiuose kanaluose",
+    "includeRoles": "Tik nariai su šiais vaidmenimis",
+    "includeUsers": "Tik šie nariai",
+    "excludeChannels": "Niekada šiuose kanaluose",
+    "excludeRoles": "Niekada nariai su šiais vaidmenimis",
+    "excludeUsers": "Niekada šie nariai",
+    "unsupportedWarning": "Šis paleidiklis negali įvertinti šių filtrų ({{filters}}), todėl taisyklė niekada nebus vykdoma, kol jie nustatyti.",
+    "removeUnsupported": "Pašalinti filtrus, kurių negalima pritaikyti"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Atmesti neįrašytus pakeitimus?",
+    "discardChangesDescription": "Ši taisyklė turi neįrašytų pakeitimų. Uždarius rengyklę jie bus prarasti.",
+    "discardChanges": "Atmesti pakeitimus",
+    "draftRestored": "Juodraštis atkurtas iš ankstesnės sesijos",
+    "discardDraftAction": "Atmesti juodraštį",
+    "discardTitle": "Atmesti pakeitimus?",
+    "discardDescription": "Turite neįrašytų pakeitimų. Juodraštis įrašomas vietoje, bet paliksite rengyklę.",
+    "discardConfirm": "Atmesti ir uždaryti"
   },
   "panel": {
     "trigger": "Trigger Settings",

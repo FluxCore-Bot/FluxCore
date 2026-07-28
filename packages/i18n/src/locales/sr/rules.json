@@ -146,7 +146,18 @@
     "include": "Укључи (бела листа)",
     "exclude": "Искључи (црна листа)",
     "clearAll": "Обриши све услове",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Уклони {{label}}",
+    "collapse": "Скупи услове",
+    "userIdInvalid": "Унесите важећи Discord кориснички ИД (17–20 цифара)",
+    "addUserId": "Додај кориснички ИД",
+    "includeChannels": "Само у овим каналима",
+    "includeRoles": "Само чланови са овим улогама",
+    "includeUsers": "Само ови чланови",
+    "excludeChannels": "Никада у овим каналима",
+    "excludeRoles": "Никада чланови са овим улогама",
+    "excludeUsers": "Никада ови чланови",
+    "unsupportedWarning": "Овај окидач не може да процени ове филтере ({{filters}}), па се правило никада неће покренути док су подешени.",
+    "removeUnsupported": "Уклони филтере који се не могу применити"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Одбацити несачуване измене?",
+    "discardChangesDescription": "Ово правило има измене које нису сачуване. Затварањем уређивача биће изгубљене.",
+    "discardChanges": "Одбаци измене",
+    "draftRestored": "Нацрт враћен из претходне сесије",
+    "discardDraftAction": "Одбаци нацрт",
+    "discardTitle": "Одбацити измене?",
+    "discardDescription": "Имате несачуване измене. Нацрт се чува локално, али ћете напустити уређивач.",
+    "discardConfirm": "Одбаци и затвори"
   },
   "panel": {
     "trigger": "Trigger Settings",

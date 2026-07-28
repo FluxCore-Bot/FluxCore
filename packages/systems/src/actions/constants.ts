@@ -171,7 +171,7 @@ export const TEMPLATE_VARIABLES: Record<string, string> = {
 export interface ActionFieldDescriptor {
   key: string;
   label: string;
-  type: "channel" | "role" | "text" | "textarea" | "color" | "select";
+  type: "channel" | "role" | "text" | "textarea" | "color" | "select" | "json";
   placeholder?: string;
   required?: boolean;
   options?: { value: string; label: string }[];
@@ -206,7 +206,9 @@ export const ACTION_TYPE_FIELDS: Record<ActionType, ActionFieldDescriptor[]> = {
   sendWebhook: [
     { key: "webhook.url", label: "Webhook URL", type: "text", placeholder: "https://...", required: true },
     { key: "webhook.method", label: "HTTP Method", type: "select", options: [{ value: "POST", label: "POST" }, { value: "PUT", label: "PUT" }] },
-    { key: "webhook.headers", label: "Headers (JSON)", type: "textarea", placeholder: '{"Authorization": "Bearer ..."}', maxLength: 1000 },
+    // "json", not "textarea": the model types this as Record<string,string>,
+    // so a raw textarea wrote a string into it and the rule became unsavable.
+    { key: "webhook.headers", label: "Headers (JSON)", type: "json", placeholder: '{"X-Request-Id": "abc"}', maxLength: 1000 },
     { key: "webhook.bodyTemplate", label: "Body Template", type: "textarea", placeholder: "JSON body... supports {user}, {channel}, etc.", maxLength: 2000 },
   ],
   setNickname: [
@@ -221,34 +223,72 @@ export const ACTION_TYPE_FIELDS: Record<ActionType, ActionFieldDescriptor[]> = {
   ],
 };
 
-const GENERAL_VARIABLES = [
-  "{user}", "{user.name}", "{user.tag}", "{user.id}",
-  "{channel}", "{channel.name}", "{channel.id}",
-  "{guild}", "{guild.memberCount}",
-  "{timestamp}",
-];
+/**
+ * Tokens every event context populates: the acting guild and the timestamp.
+ *
+ * Deliberately does NOT include {user*} or {channel*}. Those are only
+ * available on the events whose context actually carries them — see
+ * eventBridge.ts. Promising a token the bot never populates is worse than
+ * omitting it: the dashboard preview renders "#general" while the bot posts
+ * "Unknown Channel", and the editor's unknown-token warning stays silent
+ * because the token looks legitimate.
+ */
+const GUILD_VARIABLES = ["{guild}", "{guild.memberCount}", "{timestamp}"];
 
-/** Maps each event type to its available template variables */
+/** Populated wherever the event has an acting user. */
+const USER_VARIABLES = ["{user}", "{user.name}", "{user.tag}", "{user.id}"];
+
+/** Populated wherever the event happened in a channel. */
+const CHANNEL_VARIABLES = ["{channel}", "{channel.name}", "{channel.id}"];
+
+const MEMBER_EVENT = [...USER_VARIABLES, ...GUILD_VARIABLES];
+const MESSAGE_EVENT = [...USER_VARIABLES, ...CHANNEL_VARIABLES, ...GUILD_VARIABLES];
+
+/**
+ * Maps each event type to the template variables its context ACTUALLY
+ * populates. Pinned against eventBridge.ts by
+ * packages/systems/tests/unit/actions-event-variables.test.ts.
+ */
 export const EVENT_TYPE_VARIABLES: Record<ActionEventType, string[]> = {
-  memberJoin: [...GENERAL_VARIABLES],
-  memberLeave: [...GENERAL_VARIABLES],
-  memberBanned: [...GENERAL_VARIABLES, "{ban.reason}"],
-  memberUnbanned: [...GENERAL_VARIABLES, "{ban.reason}"],
-  messageCreated: [...GENERAL_VARIABLES, "{message.content}", "{message.id}", "{message.url}"],
-  messageDeleted: [...GENERAL_VARIABLES, "{message.content}", "{message.id}", "{message.url}"],
-  reactionAdded: [...GENERAL_VARIABLES, "{emoji}", "{emoji.name}", "{message.id}", "{message.url}"],
-  reactionRemoved: [...GENERAL_VARIABLES, "{emoji}", "{emoji.name}", "{message.id}", "{message.url}"],
-  roleAdded: [...GENERAL_VARIABLES, "{role}", "{role.name}", "{role.id}"],
-  roleRemoved: [...GENERAL_VARIABLES, "{role}", "{role.name}", "{role.id}"],
-  channelCreated: [...GENERAL_VARIABLES],
-  channelDeleted: [...GENERAL_VARIABLES],
-  voiceJoin: [...GENERAL_VARIABLES, "{voice.channel}", "{voice.channel.name}"],
-  voiceLeave: [...GENERAL_VARIABLES, "{voice.channel}", "{voice.channel.name}"],
-  nicknameChanged: [...GENERAL_VARIABLES, "{old.nickname}", "{new.nickname}"],
-  memberTimeout: [...GENERAL_VARIABLES, "{timeout.until}"],
-  threadCreated: [...GENERAL_VARIABLES, "{thread.name}", "{thread.id}"],
-  boostStart: [...GENERAL_VARIABLES, "{boost.since}"],
-  boostEnd: [...GENERAL_VARIABLES],
+  // buildMemberContext — a member, no channel
+  memberJoin: [...MEMBER_EVENT],
+  memberLeave: [...MEMBER_EVENT],
+  nicknameChanged: [...MEMBER_EVENT, "{old.nickname}", "{new.nickname}"],
+  memberTimeout: [...MEMBER_EVENT, "{timeout.until}"],
+  boostStart: [...MEMBER_EVENT, "{boost.since}"],
+  boostEnd: [...MEMBER_EVENT],
+
+  // buildBanContext — a user, no channel
+  memberBanned: [...MEMBER_EVENT, "{ban.reason}"],
+  memberUnbanned: [...MEMBER_EVENT, "{ban.reason}"],
+
+  // buildRoleContext — a member and a role, no channel
+  roleAdded: [...MEMBER_EVENT, "{role}", "{role.name}", "{role.id}"],
+  roleRemoved: [...MEMBER_EVENT, "{role}", "{role.name}", "{role.id}"],
+
+  // buildMessageContext / buildReactionContext — user and channel
+  messageCreated: [...MESSAGE_EVENT, "{message.content}", "{message.id}", "{message.url}"],
+  messageDeleted: [...MESSAGE_EVENT, "{message.content}", "{message.id}", "{message.url}"],
+  reactionAdded: [...MESSAGE_EVENT, "{emoji}", "{emoji.name}", "{message.id}", "{message.url}"],
+  reactionRemoved: [...MESSAGE_EVENT, "{emoji}", "{emoji.name}", "{message.id}", "{message.url}"],
+
+  // buildVoiceContext — user and channel
+  voiceJoin: [...MESSAGE_EVENT, "{voice.channel}", "{voice.channel.name}"],
+  voiceLeave: [...MESSAGE_EVENT, "{voice.channel}", "{voice.channel.name}"],
+
+  // buildChannelContext — a channel, and NO acting user on the gateway event
+  channelCreated: [...CHANNEL_VARIABLES, ...GUILD_VARIABLES],
+  channelDeleted: [...CHANNEL_VARIABLES, ...GUILD_VARIABLES],
+
+  // threadCreate — the owner is a bare id, so no username or tag is resolved
+  threadCreated: [
+    "{user}",
+    "{user.id}",
+    ...CHANNEL_VARIABLES,
+    ...GUILD_VARIABLES,
+    "{thread.name}",
+    "{thread.id}",
+  ],
 };
 
 export const CONDITION_TYPES = [
@@ -262,6 +302,69 @@ export const CONDITION_TYPES = [
 
 export type ConditionType = (typeof CONDITION_TYPES)[number];
 
+/** The three data a trigger filter can key on. */
+export type ConditionSubject = "channel" | "role" | "user";
+
+/**
+ * Which filter subjects each event type can actually be filtered by — i.e.
+ * which of `channelId`, `member` and `userId` the bot populates on that
+ * event's EventContext (see apps/bot/.../eventBridge.ts).
+ *
+ * Trigger filters fail closed: a configured filter the context cannot answer
+ * stops the rule from firing. So offering a filter the trigger can never
+ * satisfy does not merely do nothing — it silently disables the rule. The
+ * dashboard reads this map to only offer filters that can work, and to flag
+ * rules that already carry one that cannot.
+ *
+ * - `channel` — context.channelId is set
+ * - `role`    — context.member is set (role filters read member.roles)
+ * - `user`    — context.userId is set
+ */
+export const EVENT_CONDITION_SUPPORT: Record<ActionEventType, ConditionSubject[]> = {
+  // buildMemberContext — member present unless the gateway sent a partial
+  memberJoin: ["user", "role"],
+  memberLeave: ["user", "role"],
+  nicknameChanged: ["user", "role"],
+  memberTimeout: ["user", "role"],
+  boostStart: ["user", "role"],
+  boostEnd: ["user", "role"],
+
+  // buildBanContext — the user is no longer a member, so there is no member
+  // object to read roles from, on either ban or unban
+  memberBanned: ["user"],
+  memberUnbanned: ["user"],
+
+  // buildMessageContext / buildReactionContext — full context
+  messageCreated: ["user", "role", "channel"],
+  messageDeleted: ["user", "role", "channel"],
+  reactionAdded: ["user", "role", "channel"],
+  reactionRemoved: ["user", "role", "channel"],
+
+  // buildRoleContext — member present, but no channel
+  roleAdded: ["user", "role"],
+  roleRemoved: ["user", "role"],
+
+  // buildChannelContext — no acting user is available on the gateway event
+  channelCreated: ["channel"],
+  channelDeleted: ["channel"],
+
+  // buildVoiceContext — full context
+  voiceJoin: ["user", "role", "channel"],
+  voiceLeave: ["user", "role", "channel"],
+
+  // threadCreate — channelId is the NEW thread, and the owner is a bare id
+  threadCreated: ["user", "channel"],
+};
+
+/** Whether `eventType` can be filtered by `subject`. */
+export function supportsCondition(
+  eventType: string,
+  subject: ConditionSubject,
+): boolean {
+  const supported = EVENT_CONDITION_SUPPORT[eventType as ActionEventType];
+  return supported ? supported.includes(subject) : false;
+}
+
 /**
  * Allowed character set for action rule names. Restricts user-supplied
  * names so they cannot inject markdown, mention syntax, code fences, or
@@ -271,4 +374,29 @@ export const RULE_NAME_REGEX = /^[a-zA-Z0-9 _-]{1,50}$/;
 
 export function isValidRuleName(name: string): boolean {
   return typeof name === "string" && RULE_NAME_REGEX.test(name);
+}
+
+/**
+ * Characters that must never reach a rule name, because the name is rendered
+ * into Discord embeds, `/actions` autocomplete and audit logs:
+ * markdown/code-fence syntax, mention syntax, and any control, zero-width or
+ * bidirectional-override character (which can hide or reverse the visible
+ * text entirely).
+ */
+const UNSAFE_NAME_CHARS =
+  /[`*_~|\\<>@#\u0000-\u001F\u007F\u200B-\u200F\u202A-\u202E\u2066-\u2069\uFEFF]/u;
+
+/**
+ * The dashboard's rule-name guard.
+ *
+ * Deliberately NOT `isValidRuleName`: that one is ASCII-only, and the preset
+ * rule templates produce non-ASCII names in 47 of the 48 locales, so applying
+ * it to the API would reject the product's own onboarding path. This keeps the
+ * same injection protection while allowing any script.
+ */
+export function isSafeRuleName(name: string): boolean {
+  if (typeof name !== "string") return false;
+  const trimmed = name.trim();
+  if (trimmed.length < 1 || trimmed.length > 50) return false;
+  return !UNSAFE_NAME_CHARS.test(trimmed);
 }

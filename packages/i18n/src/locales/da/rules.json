@@ -146,7 +146,18 @@
     "include": "Inkluder (hvidliste)",
     "exclude": "Ekskluder (sortliste)",
     "clearAll": "Ryd alle betingelser",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Fjern {{label}}",
+    "collapse": "Skjul betingelser",
+    "userIdInvalid": "Indtast et gyldigt Discord-bruger-id (17–20 cifre)",
+    "addUserId": "Tilføj bruger-id",
+    "includeChannels": "Kun i disse kanaler",
+    "includeRoles": "Kun medlemmer med disse roller",
+    "includeUsers": "Kun disse medlemmer",
+    "excludeChannels": "Aldrig i disse kanaler",
+    "excludeRoles": "Aldrig medlemmer med disse roller",
+    "excludeUsers": "Aldrig disse medlemmer",
+    "unsupportedWarning": "Denne udløser kan ikke evaluere disse filtre ({{filters}}), så reglen udløses aldrig, så længe de er angivet.",
+    "removeUnsupported": "Fjern filtre, der ikke kan anvendes"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Kassér ikke-gemte ændringer?",
+    "discardChangesDescription": "Denne regel har ændringer, der ikke er gemt. Hvis du lukker editoren, går de tabt.",
+    "discardChanges": "Kassér ændringer",
+    "draftRestored": "Kladde gendannet fra en tidligere session",
+    "discardDraftAction": "Kassér kladde",
+    "discardTitle": "Kassér ændringer?",
+    "discardDescription": "Du har ikke-gemte ændringer. Din kladde gemmes lokalt, men du forlader editoren.",
+    "discardConfirm": "Kassér og luk"
   },
   "panel": {
     "trigger": "Trigger Settings",
@@ -322,5 +341,83 @@
     "stepUnreachable": "Step \"{{id}}\" is not reachable from the trigger",
     "noActionType": "{{label}}: no action type selected",
     "fieldRequired": "{{label}}: {{field}} is required"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Medlem tilsluttet",
+      "description": "Når et nyt medlem tilslutter sig serveren"
+    },
+    "memberLeave": {
+      "label": "Medlem forladt",
+      "description": "Når et medlem forlader serveren"
+    },
+    "memberBanned": {
+      "label": "Medlem bortvist",
+      "description": "Når et medlem bortvises"
+    },
+    "memberUnbanned": {
+      "label": "Medlem genindsat",
+      "description": "Når et medlems bortvisning ophæves"
+    },
+    "messageDeleted": {
+      "label": "Besked slettet",
+      "description": "Når en besked slettes"
+    },
+    "roleAdded": {
+      "label": "Rolle tilføjet",
+      "description": "Når et medlem får tildelt en rolle"
+    },
+    "roleRemoved": {
+      "label": "Rolle fjernet",
+      "description": "Når en rolle fjernes fra et medlem"
+    },
+    "channelCreated": {
+      "label": "Kanal oprettet",
+      "description": "Når en ny kanal oprettes"
+    },
+    "channelDeleted": {
+      "label": "Kanal slettet",
+      "description": "Når en kanal slettes"
+    },
+    "voiceJoin": {
+      "label": "Tilslutter tale",
+      "description": "Når et medlem tilslutter sig en talekanal"
+    },
+    "voiceLeave": {
+      "label": "Forlader tale",
+      "description": "Når et medlem forlader en talekanal"
+    },
+    "messageCreated": {
+      "label": "Besked sendt",
+      "description": "Når der sendes en besked i en kanal"
+    },
+    "reactionAdded": {
+      "label": "Reaktion tilføjet",
+      "description": "Når der tilføjes en reaktion til en besked"
+    },
+    "reactionRemoved": {
+      "label": "Reaktion fjernet",
+      "description": "Når en reaktion fjernes fra en besked"
+    },
+    "nicknameChanged": {
+      "label": "Kaldenavn ændret",
+      "description": "Når et medlems kaldenavn ændres"
+    },
+    "memberTimeout": {
+      "label": "Medlem tavsgjort",
+      "description": "Når et medlem gøres tavs"
+    },
+    "threadCreated": {
+      "label": "Tråd oprettet",
+      "description": "Når en ny tråd oprettes"
+    },
+    "boostStart": {
+      "label": "Boost startet",
+      "description": "Når et medlem begynder at booste serveren"
+    },
+    "boostEnd": {
+      "label": "Boost afsluttet",
+      "description": "Når et medlem holder op med at booste serveren"
+    }
   }
 }

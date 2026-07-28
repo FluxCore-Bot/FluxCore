@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useEffect, useRef } from "react";
+import { useState, useCallback, useMemo, useEffect, useRef, useId } from "react";
 import { useTranslation } from "react-i18next";
 import { createPortal } from "react-dom";
 import { useParams } from "@tanstack/react-router";
@@ -59,6 +59,8 @@ import {
   TooltipProvider,
 } from "../../../shared/ui/tooltip";
 import { PageSkeleton } from "../../../shared/ui/skeletons";
+import { Popover, PopoverContent, PopoverTrigger } from "../../../shared/ui/popover";
+import { ConfirmDialog } from "../../../shared/components/ConfirmDialog";
 
 export interface RuleDraft {
   name: string;
@@ -119,6 +121,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
   const [error, setError] = useState("");
   const [selectedNode, setSelectedNode] = useState<SelectedNode | null>(null);
   const [draftRestored, setDraftRestored] = useState(!!savedDraft);
+  const [confirmDiscard, setConfirmDiscard] = useState(false);
 
   const emptyAction: ActionConfig = { type: "" };
 
@@ -136,6 +139,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     handleEdgeRemoval,
     handleActionChange: rawActionChange,
     handleActionRemove: rawActionRemove,
+    handleActionsRemove: rawActionsRemove,
     handleActionMove: rawActionMove,
     convertAndSeverEdges,
     duplicateNode,
@@ -178,10 +182,51 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     });
   }, [rawActionMove, actions.length]);
 
-  // Auto-save draft on changes
+  /**
+   * Snapshot of the state the editor opened with, for the dirty check below.
+   * Captured once — a ref, not state, so it never re-renders and never drifts.
+   */
+  const openedWithRef = useRef(
+    JSON.stringify({ name, eventType, actions, steps, entryStepId, conditions, priority, enabled }),
+  );
+
+  const isDirty =
+    JSON.stringify({ name, eventType, actions, steps, entryStepId, conditions, priority, enabled }) !==
+    openedWithRef.current;
+
+  // Auto-save draft on changes.
+  //
+  // Only for NEW rules: `loadDraft` is consulted solely when there is no
+  // `rule`, so writing one while editing an existing rule produced an unread
+  // draft that sat in localStorage until it expired — and gave the false
+  // impression the edits were recoverable. They were not; the guard on close
+  // is what actually protects them.
   useEffect(() => {
+    if (rule) return;
+    // Nothing worth restoring yet: the autosave otherwise fired 500ms after
+    // mount with the untouched initial state, so the next "Create Rule" was
+    // greeted by a "draft restored" banner for an empty draft.
+    if (!isDirty) return;
     saveDraftToStorage({ name, eventType, actions, steps, entryStepId, conditions, priority, enabled });
-  }, [name, eventType, actions, steps, entryStepId, conditions, priority, enabled, saveDraftToStorage]);
+  }, [rule, isDirty, name, eventType, actions, steps, entryStepId, conditions, priority, enabled, saveDraftToStorage]);
+
+  // Browser-level guard for a tab close or reload, which no in-app dialog can
+  // intercept.
+  useEffect(() => {
+    if (!isDirty) return;
+    const onBeforeUnload = (e: BeforeUnloadEvent) => e.preventDefault();
+    window.addEventListener("beforeunload", onBeforeUnload);
+    return () => window.removeEventListener("beforeunload", onBeforeUnload);
+  }, [isDirty]);
+
+  /** Close, but never silently drop unsaved work. */
+  const requestClose = useCallback(() => {
+    if (isDirty) {
+      setConfirmDiscard(true);
+      return;
+    }
+    onClose();
+  }, [isDirty, onClose]);
 
   const validation = useMemo(
     () => validateWorkflow(eventType, actions, name, constants ?? undefined, t, steps, entryStepId),
@@ -213,6 +258,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     // node the menu's verbs will act on), not keep the ring on A. The panel
     // selection gets the ring back the moment the menu closes.
     selectedNodeId: contextMenu.contextMenuNodeId ?? selectedNodeId,
+    conditions,
     onAddAction: addAction,
     validationIssues: validation.issues,
     t,
@@ -228,26 +274,28 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
   const onNodesChange: OnNodesChange = useCallback((changes) => {
     const removals = changes.filter((c) => c.type === "remove");
     if (removals.length > 0) {
+      // A multi-select Delete arrives as several `remove` changes at once.
+      // Applying them one at a time by index was wrong: each removal splices
+      // the array, so from the second onward the index pointed at a different
+      // action and the wrong nodes disappeared. Collect first, remove once.
+      const actionIndices: number[] = [];
+      const stepIds: string[] = [];
       for (const change of removals) {
         if (change.type !== "remove") continue;
         const nodeId = change.id;
         if (nodeId.startsWith("action-") && !isStepMode) {
           const index = parseInt(nodeId.split("-")[1], 10);
-          if (!isNaN(index)) {
-            if (actions.length > 1) {
-              handleActionRemove(index);
-            } else {
-              // Last action — reset to empty instead of removing
-              rawActionChange(index, { type: "" });
-              setSelectedNode(null);
-            }
-          }
+          if (!isNaN(index)) actionIndices.push(index);
         } else if (nodeId.startsWith("step-")) {
-          const stepId = nodeId.slice(5);
-          handleStepRemove(stepId);
+          stepIds.push(nodeId.slice(5));
         }
         // Ignore trigger/add-action node removals
       }
+      if (actionIndices.length > 0) {
+        rawActionsRemove(actionIndices);
+        setSelectedNode(null);
+      }
+      for (const stepId of stepIds) handleStepRemove(stepId);
       // Don't pass removals to React Flow — our sync effect handles the visual update
       const nonRemovals = changes.filter((c) => c.type !== "remove");
       if (nonRemovals.length > 0) {
@@ -256,7 +304,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
       return;
     }
     onNodesChangeBase(changes);
-  }, [isStepMode, actions.length, handleActionRemove, rawActionChange, handleStepRemove, onNodesChangeBase]);
+  }, [isStepMode, rawActionsRemove, handleStepRemove, onNodesChangeBase]);
 
   // Custom edge change handler: intercept edge removals and update step data
   const onEdgesChange: OnEdgesChange = useCallback((changes) => {
@@ -435,6 +483,27 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     }
   }, [name, eventType, actions, steps, entryStepId, isStepMode, conditions, priority, enabled, rule, createRule, updateRule, onClose, clearDraft, t, validation.valid]);
 
+  const saveBlockedId = useId();
+
+  /**
+   * Selects and centres the node an issue belongs to, so the issue list is a
+   * way to reach the problem rather than just a description of it.
+   */
+  const focusIssueNode = useCallback((nodeId: string) => {
+    const parsed = parseNodeId(nodeId);
+    if (parsed?.kind === "trigger") setSelectedNode({ type: "trigger" });
+    else if (parsed?.kind === "action") setSelectedNode({ type: "action", index: parsed.index });
+    else if (parsed?.kind === "step") setSelectedNode({ type: "step", stepId: parsed.stepId });
+    else return; // "toolbar" issues (e.g. the rule name) have no node
+    const node = reactFlowInstance.current?.getNode(nodeId);
+    if (node) {
+      reactFlowInstance.current?.setCenter(node.position.x + 110, node.position.y + 40, {
+        zoom: 1,
+        duration: 300,
+      });
+    }
+  }, []);
+
   const handleFitView = useCallback(() => {
     reactFlowInstance.current?.fitView({ padding: 0.3, duration: 300 });
   }, []);
@@ -550,7 +619,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
     isStepMode,
     actionsLength: actions.length,
     contextMenuOpen: contextMenu.menu !== null,
-    onClose,
+    onClose: requestClose,
     onDeselectNode: () => setSelectedNode(null),
     onSubmit: handleSubmit,
     onFitView: handleFitView,
@@ -583,7 +652,7 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
       `}</style>
       {/* Floating toolbar */}
       <div className="flex flex-wrap items-center gap-2 border-b border-border bg-surface-low/90 px-3 py-2 backdrop-blur-sm sm:gap-3 sm:px-4 sm:py-2.5">
-        <Button variant="ghost" size="sm" onClick={onClose} className="gap-1.5">
+        <Button variant="ghost" size="sm" onClick={requestClose} className="gap-1.5">
           <Icon name="arrow_back" size={16} className="rtl:rotate-180" />
           <span className="hidden text-text-muted sm:inline">{t("editor.backToRules")}</span>
         </Button>
@@ -629,7 +698,12 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             variant="ghost"
             size="sm"
             onClick={addAction}
-            disabled={!isStepMode && actions.length >= constants.maxActionsPerRule}
+            disabled={
+              isStepMode
+                ? (steps?.filter((s) => s.type === "action").length ?? 0) >=
+                  constants.maxActionsPerRule
+                : actions.length >= constants.maxActionsPerRule
+            }
           >
             <Icon name="add" size={16} />
             {t("editor.addAction")}
@@ -638,6 +712,13 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             variant="ghost"
             size="sm"
             onClick={addConditionStep}
+            // The server caps conditions at 3 and total steps at 10; without
+            // the same ceiling here the rule was only rejected at save time,
+            // in raw untranslated English, after the work was done.
+            disabled={
+              (steps?.filter((s) => s.type === "condition").length ?? 0) >= 3 ||
+              (steps?.length ?? 0) >= 10
+            }
           >
             <Icon name="call_split" size={16} className="text-warning" />
             {t("editor.addCondition")}
@@ -646,44 +727,57 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             variant="ghost"
             size="sm"
             onClick={addDelayStep}
+            disabled={(steps?.length ?? 0) >= 10}
           >
             <Icon name="schedule" size={16} className="text-text-muted" />
             {t("editor.addDelay")}
           </Button>
           <Separator orientation="vertical" className="h-5" />
 
-          {/* Validation status */}
+          {/* Validation status.
+              Previously a tooltip on a non-focusable div: keyboard and screen
+              reader users had no way to read it, the disabled Save button gave
+              no reason at all, and with five actions there was no way to tell
+              WHICH one was incomplete without opening each. Now a popover on a
+              real button, with each issue a link that selects its node. */}
           {validation.issues.length > 0 ? (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <div className="flex items-center gap-1.5 text-xs">
-                    <Icon
-                      name={validation.valid ? "warning" : "error"}
-                      size={16}
-                      className={validation.valid ? "text-warning" : "text-danger"}
-                    />
-                    <span className={validation.valid ? "text-warning" : "text-danger"}>
-                      {t("editor.issues", { count: validation.issues.length })}
-                    </span>
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent side="bottom" className="max-w-72">
-                  <ul className="space-y-1 text-xs">
-                    {validation.issues.map((issue, i) => (
-                      <li key={i} className="flex items-start gap-1.5">
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={`gap-1.5 ${validation.valid ? "text-warning" : "text-danger"}`}
+                >
+                  <Icon name={validation.valid ? "warning" : "error"} size={16} />
+                  {t("editor.issues", { count: validation.issues.length })}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent align="end" className="w-80 p-2">
+                <p className="px-2 pb-2 text-xs text-text-secondary">
+                  {validation.valid
+                    ? t("editor.issuesWarningHint")
+                    : t("editor.issuesErrorHint")}
+                </p>
+                <ul className="space-y-0.5">
+                  {validation.issues.map((issue, i) => (
+                    <li key={i}>
+                      <button
+                        type="button"
+                        onClick={() => focusIssueNode(issue.nodeId)}
+                        className="flex w-full items-start gap-1.5 rounded px-2 py-1.5 text-start text-xs hover:bg-surface-high focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      >
                         <Icon
                           name={issue.level === "error" ? "error" : "warning"}
                           size={12}
-                          className={issue.level === "error" ? "text-danger" : "text-warning"}
+                          className={`mt-0.5 shrink-0 ${issue.level === "error" ? "text-danger" : "text-warning"}`}
                         />
                         {issue.message}
-                      </li>
-                    ))}
-                  </ul>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </PopoverContent>
+            </Popover>
           ) : name.trim() && eventType && actions.length > 0 ? (
             <div className="flex items-center gap-1.5 text-xs text-secondary">
               <Icon name="check_circle" size={16} />
@@ -691,10 +785,24 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             </div>
           ) : null}
 
-          <Button size="sm" onClick={handleSubmit} disabled={isPending || !validation.valid}>
+          <Button
+            size="sm"
+            onClick={handleSubmit}
+            disabled={isPending || !validation.valid}
+            // A disabled control with no announced reason is a dead end for
+            // anyone who cannot see the issue count beside it.
+            aria-describedby={!validation.valid ? saveBlockedId : undefined}
+          >
             <Icon name={rule ? "save" : "check"} size={16} />
             {isPending ? t("form.saving") : rule ? t("form.update") : t("form.create")}
           </Button>
+          {!validation.valid && (
+            <span id={saveBlockedId} className="sr-only">
+              {t("editor.saveBlocked", {
+                count: validation.issues.filter((i) => i.level === "error").length,
+              })}
+            </span>
+          )}
         </div>
       </div>
 
@@ -810,6 +918,19 @@ function WorkflowEditorInner({ rule, draft, onClose }: WorkflowEditorProps) {
             </TooltipProvider>
           </Panel>
         </ReactFlow>
+
+        <ConfirmDialog
+          open={confirmDiscard}
+          onOpenChange={setConfirmDiscard}
+          title={t("editor.discardChangesTitle")}
+          description={t("editor.discardChangesDescription")}
+          confirmLabel={t("editor.discardChanges")}
+          onConfirm={() => {
+            clearDraft();
+            onClose();
+          }}
+          destructive
+        />
 
         {contextMenu.menu && (
           <WorkflowContextMenu

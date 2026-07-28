@@ -146,7 +146,18 @@
     "include": "Включи (бял списък)",
     "exclude": "Изключи (черен списък)",
     "clearAll": "Изчисти всички условия",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Премахване на {{label}}",
+    "collapse": "Свиване на условията",
+    "userIdInvalid": "Въведете валиден Discord потребителски идентификатор (17–20 цифри)",
+    "addUserId": "Добавяне на потребителски идентификатор",
+    "includeChannels": "Само в тези канали",
+    "includeRoles": "Само членове с тези роли",
+    "includeUsers": "Само тези членове",
+    "excludeChannels": "Никога в тези канали",
+    "excludeRoles": "Никога членове с тези роли",
+    "excludeUsers": "Никога тези членове",
+    "unsupportedWarning": "Този тригер не може да оцени тези филтри ({{filters}}), затова правилото никога няма да се задейства, докато са зададени.",
+    "removeUnsupported": "Премахване на филтрите, които не могат да се приложат"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Отхвърляне на незапазените промени?",
+    "discardChangesDescription": "Това правило има незапазени промени. Затварянето на редактора ще ги загуби.",
+    "discardChanges": "Отхвърляне на промените",
+    "draftRestored": "Черновата е възстановена от предишна сесия",
+    "discardDraftAction": "Отхвърляне на черновата",
+    "discardTitle": "Отхвърляне на промените?",
+    "discardDescription": "Имате незапазени промени. Черновата се запазва локално, но ще напуснете редактора.",
+    "discardConfirm": "Отхвърляне и затваряне"
   },
   "panel": {
     "trigger": "Trigger Settings",
@@ -322,5 +341,83 @@
     "stepUnreachable": "Step \"{{id}}\" is not reachable from the trigger",
     "noActionType": "{{label}}: no action type selected",
     "fieldRequired": "{{label}}: {{field}} is required"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "Присъединяване на член",
+      "description": "Когато нов член се присъедини към сървъра"
+    },
+    "memberLeave": {
+      "label": "Напускане на член",
+      "description": "Когато член напусне сървъра"
+    },
+    "memberBanned": {
+      "label": "Блокиран член",
+      "description": "Когато член бъде блокиран"
+    },
+    "memberUnbanned": {
+      "label": "Отблокиран член",
+      "description": "Когато блокирането на член бъде отменено"
+    },
+    "messageDeleted": {
+      "label": "Изтрито съобщение",
+      "description": "Когато съобщение бъде изтрито"
+    },
+    "roleAdded": {
+      "label": "Добавена роля",
+      "description": "Когато на член бъде добавена роля"
+    },
+    "roleRemoved": {
+      "label": "Премахната роля",
+      "description": "Когато от член бъде премахната роля"
+    },
+    "channelCreated": {
+      "label": "Създаден канал",
+      "description": "Когато бъде създаден нов канал"
+    },
+    "channelDeleted": {
+      "label": "Изтрит канал",
+      "description": "Когато канал бъде изтрит"
+    },
+    "voiceJoin": {
+      "label": "Влизане в гласов канал",
+      "description": "Когато член влезе в гласов канал"
+    },
+    "voiceLeave": {
+      "label": "Излизане от гласов канал",
+      "description": "Когато член излезе от гласов канал"
+    },
+    "messageCreated": {
+      "label": "Изпратено съобщение",
+      "description": "Когато в канал бъде изпратено съобщение"
+    },
+    "reactionAdded": {
+      "label": "Добавена реакция",
+      "description": "Когато към съобщение бъде добавена реакция"
+    },
+    "reactionRemoved": {
+      "label": "Премахната реакция",
+      "description": "Когато от съобщение бъде премахната реакция"
+    },
+    "nicknameChanged": {
+      "label": "Променен псевдоним",
+      "description": "Когато псевдонимът на член бъде променен"
+    },
+    "memberTimeout": {
+      "label": "Заглушен член",
+      "description": "Когато член бъде заглушен"
+    },
+    "threadCreated": {
+      "label": "Създадена тема",
+      "description": "Когато бъде създадена нова тема"
+    },
+    "boostStart": {
+      "label": "Начало на буст",
+      "description": "Когато член започне да бустиба сървъра"
+    },
+    "boostEnd": {
+      "label": "Край на буст",
+      "description": "Когато член спре да бустиба сървъра"
+    }
   }
 }

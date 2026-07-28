@@ -146,7 +146,18 @@
     "include": "Zahrnúť (biela listina)",
     "exclude": "Vylúčiť (čierna listina)",
     "clearAll": "Vymazať všetky podmienky",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Odstrániť {{label}}",
+    "collapse": "Zbaliť podmienky",
+    "userIdInvalid": "Zadajte platné ID používateľa Discord (17 – 20 číslic)",
+    "addUserId": "Pridať ID používateľa",
+    "includeChannels": "Len v týchto kanáloch",
+    "includeRoles": "Len členovia s týmito rolami",
+    "includeUsers": "Len títo členovia",
+    "excludeChannels": "Nikdy v týchto kanáloch",
+    "excludeRoles": "Nikdy členovia s týmito rolami",
+    "excludeUsers": "Nikdy títo členovia",
+    "unsupportedWarning": "Tento spúšťač nedokáže vyhodnotiť tieto filtre ({{filters}}), takže pravidlo sa nikdy nespustí, kým sú nastavené.",
+    "removeUnsupported": "Odstrániť filtre, ktoré nemožno použiť"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Zahodiť neuložené zmeny?",
+    "discardChangesDescription": "Toto pravidlo obsahuje neuložené zmeny. Zatvorením editora o ne prídete.",
+    "discardChanges": "Zahodiť zmeny",
+    "draftRestored": "Koncept obnovený z predchádzajúcej relácie",
+    "discardDraftAction": "Zahodiť koncept",
+    "discardTitle": "Zahodiť zmeny?",
+    "discardDescription": "Máte neuložené zmeny. Koncept sa ukladá lokálne, ale opustíte editor.",
+    "discardConfirm": "Zahodiť a zavrieť"
   },
   "panel": {
     "trigger": "Trigger Settings",

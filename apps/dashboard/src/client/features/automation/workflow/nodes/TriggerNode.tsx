@@ -20,14 +20,41 @@ function getBorderClass(
   return "border-accent/40 bg-accent/5";
 }
 
+/**
+ * Non-colour signal for a node's validation state.
+ *
+ * Colour alone cannot carry this: a condition node's brand colour already IS
+ * amber, so a "warning" border is indistinguishable from its normal styling —
+ * and colour-only status fails WCAG 1.4.1 regardless. The data attribute also
+ * gives the toolbar's issue list something to scroll to.
+ */
+function ValidationBadge({
+  state,
+}: {
+  state: "valid" | "warning" | "error" | null | undefined;
+}) {
+  const { t } = useTranslation("rules");
+  if (state !== "warning" && state !== "error") return null;
+  return (
+    <span
+      role="img"
+      aria-label={t(state === "error" ? "nodes.hasError" : "nodes.hasWarning")}
+      className={`ms-auto ${state === "error" ? "text-danger" : "text-warning"}`}
+    >
+      <Icon name={state === "error" ? "error" : "warning"} size={14} />
+    </span>
+  );
+}
+
 function TriggerNodeComponent({ data, selected }: NodeProps) {
   const { t } = useTranslation("rules");
-  const { label, description, validationState } = data as TriggerNodeData;
+  const { label, description, validationState, filterCount } = data as TriggerNodeData;
 
   return (
     <>
       <div
         role="group"
+        data-validation={validationState ?? undefined}
         aria-label={t("nodes.ariaTrigger", { label })}
         className={`min-w-[220px] max-w-[260px] rounded-lg border-2 px-4 py-3 transition-all ${getBorderClass(selected, validationState)}`}
       >
@@ -38,11 +65,15 @@ function TriggerNodeComponent({ data, selected }: NodeProps) {
           <span className="section-label text-accent">
             {t("nodes.trigger")}
           </span>
-          {validationState === "error" && (
-            <Icon name="error" size={14} className="ms-auto text-danger" />
-          )}
-          {validationState === "warning" && (
-            <Icon name="warning" size={14} className="ms-auto text-warning" />
+          <ValidationBadge state={validationState} />
+          {!!filterCount && (
+            <span
+              className="ms-auto flex items-center gap-1 rounded bg-surface-high px-1.5 py-0.5 text-[10px] text-text-secondary"
+              aria-label={t("nodes.activeFilters", { count: filterCount })}
+            >
+              <Icon name="filter_alt" size={11} />
+              {filterCount}
+            </span>
           )}
         </div>
         <p className="text-sm font-medium text-text">{label}</p>

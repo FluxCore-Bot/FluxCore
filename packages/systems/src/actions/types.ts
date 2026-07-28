@@ -99,6 +99,14 @@ export interface EventContext {
   channelId?: string;
   channelName?: string;
   channelMention?: string;
+  /**
+   * The parent of `channelId`, when the event's channel is itself nested —
+   * currently only threadCreated, where `channelId` is the brand-new thread.
+   * Channel filters test this too, so "only threads under #support" is
+   * expressible; without it a channel filter on threadCreated could never
+   * match anything the user is able to pick.
+   */
+  parentChannelId?: string;
   roleId?: string;
   roleName?: string;
   roleMention?: string;

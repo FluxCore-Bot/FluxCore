@@ -146,7 +146,18 @@
     "include": "تضمين (قائمة بيضاء)",
     "exclude": "استثناء (قائمة سوداء)",
     "clearAll": "مسح جميع الشروط",
-    "removeItem": "إزالة {{label}}"
+    "removeItem": "إزالة {{label}}",
+    "collapse": "طيّ الشروط",
+    "userIdInvalid": "أدخل معرّف مستخدم Discord صالحًا (17–20 رقمًا)",
+    "addUserId": "إضافة معرّف مستخدم",
+    "includeChannels": "في هذه القنوات فقط",
+    "includeRoles": "الأعضاء الحاصلون على هذه الأدوار فقط",
+    "includeUsers": "هؤلاء الأعضاء فقط",
+    "excludeChannels": "لا في هذه القنوات أبدًا",
+    "excludeRoles": "لا الأعضاء الحاصلون على هذه الأدوار أبدًا",
+    "excludeUsers": "لا هؤلاء الأعضاء أبدًا",
+    "unsupportedWarning": "لا يستطيع هذا المشغّل تقييم هذه المرشّحات ({{filters}})، لذا لن تُنفَّذ القاعدة ما دامت مضبوطة.",
+    "removeUnsupported": "إزالة المرشّحات التي لا يمكن تطبيقها"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "ملاءمة العرض"
     },
     "issues_one": "{{count}} مشكلة",
-    "issues_other": "{{count}} مشكلة"
+    "issues_other": "{{count}} مشكلة",
+    "discardChangesTitle": "تجاهل التغييرات غير المحفوظة؟",
+    "discardChangesDescription": "تحتوي هذه القاعدة على تعديلات لم تُحفظ. إغلاق المحرر سيؤدي إلى فقدانها.",
+    "discardChanges": "تجاهل التغييرات",
+    "draftRestored": "تمت استعادة مسودة من جلسة سابقة",
+    "discardDraftAction": "تجاهل المسودة",
+    "discardTitle": "تجاهل التغييرات؟",
+    "discardDescription": "لديك تغييرات غير محفوظة. تُحفظ مسودتك محليًا، لكنك ستغادر المحرر.",
+    "discardConfirm": "تجاهل وإغلاق"
   },
   "panel": {
     "trigger": "إعدادات المُشغِّل",
@@ -322,5 +341,83 @@
     "stepUnreachable": "الخطوة \"{{id}}\" غير قابلة للوصول من المُشغِّل",
     "noActionType": "{{label}}: لم يتم اختيار نوع إجراء",
     "fieldRequired": "{{label}}: {{field}} مطلوب"
+  },
+  "eventTypes": {
+    "memberJoin": {
+      "label": "انضمام عضو",
+      "description": "عند انضمام عضو جديد إلى الخادم"
+    },
+    "memberLeave": {
+      "label": "مغادرة عضو",
+      "description": "عند مغادرة عضو للخادم"
+    },
+    "memberBanned": {
+      "label": "حظر عضو",
+      "description": "عند حظر عضو"
+    },
+    "memberUnbanned": {
+      "label": "رفع حظر عضو",
+      "description": "عند رفع الحظر عن عضو"
+    },
+    "messageDeleted": {
+      "label": "حذف رسالة",
+      "description": "عند حذف رسالة"
+    },
+    "roleAdded": {
+      "label": "إضافة دور",
+      "description": "عند إضافة دور إلى عضو"
+    },
+    "roleRemoved": {
+      "label": "إزالة دور",
+      "description": "عند إزالة دور من عضو"
+    },
+    "channelCreated": {
+      "label": "إنشاء قناة",
+      "description": "عند إنشاء قناة جديدة"
+    },
+    "channelDeleted": {
+      "label": "حذف قناة",
+      "description": "عند حذف قناة"
+    },
+    "voiceJoin": {
+      "label": "دخول قناة صوتية",
+      "description": "عند دخول عضو إلى قناة صوتية"
+    },
+    "voiceLeave": {
+      "label": "مغادرة قناة صوتية",
+      "description": "عند مغادرة عضو لقناة صوتية"
+    },
+    "messageCreated": {
+      "label": "إرسال رسالة",
+      "description": "عند إرسال رسالة في قناة"
+    },
+    "reactionAdded": {
+      "label": "إضافة تفاعل",
+      "description": "عند إضافة تفاعل إلى رسالة"
+    },
+    "reactionRemoved": {
+      "label": "إزالة تفاعل",
+      "description": "عند إزالة تفاعل من رسالة"
+    },
+    "nicknameChanged": {
+      "label": "تغيير الاسم المستعار",
+      "description": "عند تغيير الاسم المستعار لعضو"
+    },
+    "memberTimeout": {
+      "label": "إسكات عضو",
+      "description": "عند إسكات عضو مؤقتًا"
+    },
+    "threadCreated": {
+      "label": "إنشاء موضوع",
+      "description": "عند إنشاء موضوع جديد"
+    },
+    "boostStart": {
+      "label": "بدء الدعم",
+      "description": "عند بدء عضو في دعم الخادم"
+    },
+    "boostEnd": {
+      "label": "انتهاء الدعم",
+      "description": "عند توقف عضو عن دعم الخادم"
+    }
   }
 }

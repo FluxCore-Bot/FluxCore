@@ -146,7 +146,18 @@
     "include": "รวม (ไวท์ลิสต์)",
     "exclude": "ยกเว้น (แบล็กลิสต์)",
     "clearAll": "ล้างเงื่อนไขทั้งหมด",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "ลบ {{label}}",
+    "collapse": "ยุบเงื่อนไข",
+    "userIdInvalid": "ป้อนรหัสผู้ใช้ Discord ที่ถูกต้อง (17–20 หลัก)",
+    "addUserId": "เพิ่มรหัสผู้ใช้",
+    "includeChannels": "เฉพาะในช่องเหล่านี้",
+    "includeRoles": "เฉพาะสมาชิกที่มีบทบาทเหล่านี้",
+    "includeUsers": "เฉพาะสมาชิกเหล่านี้",
+    "excludeChannels": "ไม่เคยในช่องเหล่านี้",
+    "excludeRoles": "ไม่เคยสมาชิกที่มีบทบาทเหล่านี้",
+    "excludeUsers": "ไม่เคยสมาชิกเหล่านี้",
+    "unsupportedWarning": "ทริกเกอร์นี้ไม่สามารถประเมินตัวกรองเหล่านี้ ({{filters}}) ได้ กฎจึงจะไม่ทำงานตราบใดที่ยังตั้งค่าไว้",
+    "removeUnsupported": "ลบตัวกรองที่ใช้ไม่ได้"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "ละทิ้งการเปลี่ยนแปลงที่ยังไม่ได้บันทึกหรือไม่",
+    "discardChangesDescription": "กฎนี้มีการเปลี่ยนแปลงที่ยังไม่ได้บันทึก การปิดตัวแก้ไขจะทำให้สูญหาย",
+    "discardChanges": "ละทิ้งการเปลี่ยนแปลง",
+    "draftRestored": "กู้คืนฉบับร่างจากเซสชันก่อนหน้าแล้ว",
+    "discardDraftAction": "ละทิ้งฉบับร่าง",
+    "discardTitle": "ละทิ้งการเปลี่ยนแปลงหรือไม่",
+    "discardDescription": "คุณมีการเปลี่ยนแปลงที่ยังไม่ได้บันทึก ฉบับร่างถูกบันทึกไว้ในเครื่อง แต่คุณจะออกจากตัวแก้ไข",
+    "discardConfirm": "ละทิ้งและปิด"
   },
   "panel": {
     "trigger": "Trigger Settings",

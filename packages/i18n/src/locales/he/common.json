@@ -90,7 +90,9 @@
     "saving": "שומר...",
     "saveSettings": "שמור הגדרות",
     "previous": "הקודם",
-    "next": "הבא"
+    "next": "הבא",
+    "invalidJson": "JSON לא תקין — נדרש אובייקט של ערכי טקסט",
+    "fieldRequired": "{{field}} הוא שדה חובה"
   },
   "pagination": {
     "previous": "הקודם",

@@ -26,6 +26,8 @@ import {
   ACTION_TYPE_FIELDS,
   EVENT_TYPE_VARIABLES,
   TEMPLATE_VARIABLES,
+  EVENT_CONDITION_SUPPORT,
+  isSafeRuleName,
 } from "@fluxcore/systems/actions/constants";
 import type { ActionEventType, ActionType, RuleStep } from "@fluxcore/systems/actions/types";
 import { channelExistsInGuild } from "../../shared/discordApi.js";
@@ -47,6 +49,90 @@ interface RuleRequestBody {
   enabled?: boolean;
 }
 
+/** Walks a dotted descriptor key (e.g. `webhook.url`) into an action config. */
+function getNestedValue(obj: Record<string, unknown>, path: string): unknown {
+  let current: unknown = obj;
+  for (const part of path.split(".")) {
+    if (current === null || current === undefined || typeof current !== "object") {
+      return undefined;
+    }
+    current = (current as Record<string, unknown>)[part];
+  }
+  return current;
+}
+
+/**
+ * Checks one action against ACTION_TYPE_FIELDS — the same descriptor list the
+ * dashboard renders its form from, so the client and the API cannot drift.
+ *
+ * An action missing a required field can never execute: the bot has no channel
+ * to post to, no role to add. Letting it through produces a rule that looks
+ * healthy in the list and silently never fires. The client blocks this too, but
+ * the client is not the gate — `rules.tsx` re-POSTs stored action lists on the
+ * Undo-delete and Duplicate paths without revalidating, and the API is reachable
+ * by any script.
+ *
+ * Returns an error string, or null when the action is valid.
+ */
+function validateActionConfig(action: { type: string; [key: string]: unknown }): string | null {
+  if (!validActionTypes.has(action.type)) {
+    return `Invalid action type: ${action.type}`;
+  }
+
+  for (const field of ACTION_TYPE_FIELDS[action.type as ActionType] ?? []) {
+    if (!field.required) continue;
+    const value = getNestedValue(action, field.key);
+    if (
+      value === undefined ||
+      value === null ||
+      (typeof value === "string" && value.trim() === "")
+    ) {
+      return `${action.type}: ${field.label} is required`;
+    }
+  }
+
+  if (action.type === "sendWebhook") {
+    const webhook = action.webhook as { url?: string } | undefined;
+    try {
+      const url = new URL(webhook!.url!);
+      if (url.protocol !== "https:") {
+        return "Webhook URL must use HTTPS";
+      }
+    } catch {
+      return "Invalid webhook URL";
+    }
+  }
+
+  return null;
+}
+
+const CONDITION_KEYS = new Set([
+  "channelIds", "roleIds", "userIds",
+  "excludeChannelIds", "excludeRoleIds", "excludeUserIds",
+]);
+const SNOWFLAKE = /^\d{17,20}$/;
+
+/**
+ * Trigger conditions were stored verbatim — any key, any value. A malformed id
+ * can never match anything, so the rule silently never fires, and unknown keys
+ * accumulate in the database forever.
+ */
+function validateConditions(conditions: RuleRequestBody["conditions"]): string | null {
+  if (conditions === undefined) return null;
+  if (typeof conditions !== "object" || conditions === null || Array.isArray(conditions)) {
+    return "Conditions must be an object";
+  }
+  for (const [key, value] of Object.entries(conditions)) {
+    if (!CONDITION_KEYS.has(key)) {
+      return `Unknown condition: ${key}`;
+    }
+    if (!Array.isArray(value) || value.some((v) => typeof v !== "string" || !SNOWFLAKE.test(v))) {
+      return `${key} must be a list of Discord IDs (17-20 digits)`;
+    }
+  }
+  return null;
+}
+
 /**
  * Validates rule request body fields shared between create and update.
  * Returns an error string if validation fails, or null if valid.
@@ -56,14 +142,20 @@ function validateRuleBody(
   options: { requireName: boolean; requireActions: boolean },
 ): string | null {
   if (options.requireName) {
-    if (!body.name || typeof body.name !== "string" || body.name.length > 50) {
+    if (!body.name || typeof body.name !== "string") {
       return "Name is required (max 50 chars)";
     }
+    if (!isSafeRuleName(body.name)) {
+      return "Name must be 1-50 characters and cannot contain markdown, mention syntax, or invisible characters";
+    }
   } else if (body.name !== undefined) {
-    if (typeof body.name !== "string" || body.name.length > 50) {
-      return "Name must be a string (max 50 chars)";
+    if (typeof body.name !== "string" || !isSafeRuleName(body.name)) {
+      return "Name must be 1-50 characters and cannot contain markdown, mention syntax, or invisible characters";
     }
   }
+
+  const conditionsError = validateConditions(body.conditions);
+  if (conditionsError) return conditionsError;
 
   if (options.requireActions) {
     if (!body.eventType || !validEventTypes.has(body.eventType)) {
@@ -83,23 +175,8 @@ function validateRuleBody(
       return `Max ${MAX_ACTIONS_PER_RULE} actions per rule`;
     }
     for (const action of body.actions) {
-      if (!validActionTypes.has(action.type)) {
-        return `Invalid action type: ${action.type}`;
-      }
-      if (action.type === "sendWebhook") {
-        const webhook = action.webhook as { url?: string } | undefined;
-        if (!webhook?.url) {
-          return "sendWebhook requires a webhook URL";
-        }
-        try {
-          const url = new URL(webhook.url);
-          if (url.protocol !== "https:") {
-            return "Webhook URL must use HTTPS";
-          }
-        } catch {
-          return "Invalid webhook URL";
-        }
-      }
+      const actionError = validateActionConfig(action);
+      if (actionError) return actionError;
     }
   }
 
@@ -110,6 +187,18 @@ function validateRuleBody(
     const conditionCount = body.steps.filter((s) => s.type === "condition").length;
     if (conditionCount > 3) {
       return "Max 3 condition steps per rule";
+    }
+    // The bot runs the step graph in preference to the flat action list
+    // (executor.ts), so validating only `actions` would leave the path that
+    // actually executes unchecked.
+    for (const step of body.steps) {
+      if (step.type !== "action") continue;
+      const action = step.action as { type: string; [key: string]: unknown } | undefined;
+      if (!action || typeof action.type !== "string") {
+        return `Step ${step.id} is missing an action`;
+      }
+      const actionError = validateActionConfig(action);
+      if (actionError) return actionError;
     }
   }
 
@@ -173,6 +262,7 @@ export function registerActionRoutes(app: FastifyInstance): void {
               actionTypeFields: { type: "object", additionalProperties: true },
               eventTypeVariables: { type: "object", additionalProperties: true },
               templateVariables: { type: "object", additionalProperties: true },
+              eventConditionSupport: { type: "object", additionalProperties: true },
             },
           },
         },
@@ -186,6 +276,9 @@ export function registerActionRoutes(app: FastifyInstance): void {
         actionTypeFields: ACTION_TYPE_FIELDS,
         eventTypeVariables: EVENT_TYPE_VARIABLES,
         templateVariables: TEMPLATE_VARIABLES,
+        // Trigger filters fail closed, so the editor only offers the filters a
+        // given trigger can actually satisfy.
+        eventConditionSupport: EVENT_CONDITION_SUPPORT,
       });
     },
   );
@@ -246,7 +339,9 @@ export function registerActionRoutes(app: FastifyInstance): void {
         return;
       }
 
-      const rule = await createRule({
+      let rule;
+      try {
+        rule = await createRule({
         guildId,
         name: body.name!,
         eventType: body.eventType as ActionEventType,
@@ -261,7 +356,17 @@ export function registerActionRoutes(app: FastifyInstance): void {
         priority: body.priority ?? 0,
         enabled: body.enabled ?? true,
         createdBy: request.session!.userId,
-      });
+        });
+      } catch (err) {
+        // Prisma's unique-constraint violation surfaced unhandled as a 500
+        // with a generic client message that told the user nothing they could
+        // act on.
+        if (typeof err === "object" && err !== null && "code" in err && err.code === "P2002") {
+          reply.code(409).send({ error: "A rule with that name already exists" });
+          return;
+        }
+        throw err;
+      }
 
       await notifyCacheInvalidation(guildId);
       reply.code(201).send(rule);

@@ -214,3 +214,290 @@ describe("action executor - processEvent", () => {
     expect(mockSendMessageExecutor).toHaveBeenCalledTimes(2);
   });
 });
+
+/**
+ * Filters used to be guarded on the presence of their own datum
+ * (`conditions.excludeRoleIds?.length && context.member`), so a filter the
+ * event context could not answer was skipped rather than failed. The rule then
+ * fired on exactly the users and channels it had been configured to skip, while
+ * the dashboard showed the filter as active. Every case below is a rule that
+ * must NOT fire.
+ */
+describe("action executor - filters fail closed", () => {
+  const memberlessContext = {
+    eventType: "memberBanned" as const,
+    guildId: "guild-123",
+    guildName: "Test Guild",
+    userId: "user-456",
+    userName: "TestUser",
+    userTag: "TestUser#0001",
+    userMention: "<@user-456>",
+    memberCount: 100,
+    timestamp: new Date().toISOString(),
+  };
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockGetGuildSettingsOrDefault.mockReturnValue({
+      globalEnabled: true,
+      maxRules: 25,
+      logChannelId: null,
+    });
+  });
+
+  function ruleWith(conditions: Record<string, string[]>) {
+    return [
+      { name: "filtered", enabled: true, conditions, actions: [{ type: "sendMessage" }] },
+    ];
+  }
+
+  it("does not fire an exclude-role filter when the event carries no member", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ excludeRoleIds: ["staff"] }));
+
+    await processEvent({} as never, memberlessContext);
+
+    expect(mockSendMessageExecutor).not.toHaveBeenCalled();
+  });
+
+  it("does not fire an include-role filter when the event carries no member", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ roleIds: ["verified"] }));
+
+    await processEvent({} as never, memberlessContext);
+
+    expect(mockSendMessageExecutor).not.toHaveBeenCalled();
+  });
+
+  it("does not fire a channel filter when the event carries no channel", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ channelIds: ["general"] }));
+
+    await processEvent({} as never, memberlessContext);
+
+    expect(mockSendMessageExecutor).not.toHaveBeenCalled();
+  });
+
+  it("does not fire an exclude-channel filter when the event carries no channel", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ excludeChannelIds: ["general"] }));
+
+    await processEvent({} as never, memberlessContext);
+
+    expect(mockSendMessageExecutor).not.toHaveBeenCalled();
+  });
+
+  it("does not fire a user filter when the event carries no user", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ userIds: ["someone"] }));
+
+    await processEvent({} as never, {
+      eventType: "channelCreated" as const,
+      guildId: "guild-123",
+      guildName: "Test Guild",
+      channelId: "channel-789",
+      memberCount: 100,
+      timestamp: new Date().toISOString(),
+    });
+
+    expect(mockSendMessageExecutor).not.toHaveBeenCalled();
+  });
+
+  it("still fires when the filter is satisfiable and matches", async () => {
+    const withMember = {
+      ...memberlessContext,
+      member: { roles: { cache: new Map([["verified", {}]]) } },
+    };
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ roleIds: ["verified"] }));
+
+    await processEvent({} as never, withMember as never);
+
+    expect(mockSendMessageExecutor).toHaveBeenCalled();
+  });
+
+  it("still skips when the filter is satisfiable and does not match", async () => {
+    const withMember = {
+      ...memberlessContext,
+      member: { roles: { cache: new Map([["other", {}]]) } },
+    };
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ roleIds: ["verified"] }));
+
+    await processEvent({} as never, withMember as never);
+
+    expect(mockSendMessageExecutor).not.toHaveBeenCalled();
+  });
+
+  it("leaves unfiltered rules alone", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({}));
+
+    await processEvent({} as never, memberlessContext);
+
+    expect(mockSendMessageExecutor).toHaveBeenCalled();
+  });
+
+  // On threadCreated the context channel is the brand-new thread, so a channel
+  // filter could only ever match an id the user has no way to know. The parent
+  // is what they actually picked in the editor.
+  it("matches a channel filter against the parent channel", async () => {
+    const threadCtx = {
+      eventType: "threadCreated" as const,
+      guildId: "guild-123",
+      guildName: "Test Guild",
+      channelId: "thread-new",
+      parentChannelId: "support",
+      memberCount: 100,
+      timestamp: new Date().toISOString(),
+    };
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ channelIds: ["support"] }));
+
+    await processEvent({} as never, threadCtx);
+
+    expect(mockSendMessageExecutor).toHaveBeenCalled();
+  });
+
+  it("excludes on the parent channel too", async () => {
+    const threadCtx = {
+      eventType: "threadCreated" as const,
+      guildId: "guild-123",
+      guildName: "Test Guild",
+      channelId: "thread-new",
+      parentChannelId: "support",
+      memberCount: 100,
+      timestamp: new Date().toISOString(),
+    };
+    mockGetRulesForEvent.mockReturnValueOnce(ruleWith({ excludeChannelIds: ["support"] }));
+
+    await processEvent({} as never, threadCtx);
+
+    expect(mockSendMessageExecutor).not.toHaveBeenCalled();
+  });
+});
+
+describe("action executor - the log tells the truth", () => {
+  const ctx = {
+    eventType: "memberJoin" as const,
+    guildId: "guild-123",
+    guildName: "Test Guild",
+    userId: "user-456",
+    memberCount: 100,
+    timestamp: new Date().toISOString(),
+  };
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockGetGuildSettingsOrDefault.mockReturnValue({ globalEnabled: true, maxRules: 25 });
+  });
+
+  // The step-mode branch warned about an unknown action type and then fell
+  // through to the success log, so a rule referencing a removed action type
+  // reported a clean 100% success rate forever.
+  it("does not log success for an unknown action type in step mode", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce([
+      {
+        name: "unknown-step",
+        enabled: true,
+        conditions: {},
+        actions: [],
+        entryStepId: "s0",
+        steps: [{ id: "s0", type: "action", action: { type: "unknownAction" }, next: null }],
+      },
+    ]);
+
+    await processEvent({} as never, ctx);
+
+    expect(mockLogExecution).not.toHaveBeenCalledWith(
+      expect.anything(), expect.anything(), true, expect.anything(),
+    );
+  });
+
+  it("logs a failure for an unknown action type in step mode", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce([
+      {
+        name: "unknown-step",
+        enabled: true,
+        conditions: {},
+        actions: [],
+        entryStepId: "s0",
+        steps: [{ id: "s0", type: "action", action: { type: "unknownAction" }, next: null }],
+      },
+    ]);
+
+    await processEvent({} as never, ctx);
+
+    expect(mockLogExecution).toHaveBeenCalledWith(
+      expect.anything(), "unknownAction", false, expect.stringMatching(/unknown action type/i),
+    );
+  });
+});
+
+/**
+ * Condition steps read `getContextValue(condition.field)` and bail when it is
+ * undefined — BEFORE looking at the operator. hasRole/notHasRole do not consume
+ * the field at all, so the canonical "if member has @Verified" branch always
+ * took the else path on memberJoin (whose context has no channelId, the
+ * default field).
+ */
+describe("action executor - role operators ignore the unrelated field", () => {
+  const memberWithRole = {
+    eventType: "memberJoin" as const,
+    guildId: "guild-123",
+    guildName: "Test Guild",
+    userId: "user-456",
+    memberCount: 100,
+    timestamp: new Date().toISOString(),
+    member: { roles: { cache: new Map([["verified", {}]]) } },
+  };
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockGetGuildSettingsOrDefault.mockReturnValue({ globalEnabled: true, maxRules: 25 });
+  });
+
+  function branchRule(operator: string) {
+    return [
+      {
+        name: "branch",
+        enabled: true,
+        conditions: {},
+        actions: [],
+        entryStepId: "cond",
+        steps: [
+          {
+            id: "cond",
+            type: "condition",
+            // channelId is the default field and memberJoin never populates it.
+            condition: { field: "channelId", operator, value: "verified" },
+            thenNext: "yes",
+            elseNext: null,
+          },
+          { id: "yes", type: "action", action: { type: "sendMessage" }, next: null },
+        ],
+      },
+    ];
+  }
+
+  it("takes the then-branch when the member has the role", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(branchRule("hasRole"));
+
+    await processEvent({} as never, memberWithRole as never);
+
+    expect(mockSendMessageExecutor).toHaveBeenCalled();
+  });
+
+  it("takes the else-branch when the member lacks the role", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(branchRule("hasRole"));
+
+    await processEvent({} as never, {
+      ...memberWithRole,
+      member: { roles: { cache: new Map() } },
+    } as never);
+
+    expect(mockSendMessageExecutor).not.toHaveBeenCalled();
+  });
+
+  it("notHasRole takes the then-branch when the member lacks the role", async () => {
+    mockGetRulesForEvent.mockReturnValueOnce(branchRule("notHasRole"));
+
+    await processEvent({} as never, {
+      ...memberWithRole,
+      member: { roles: { cache: new Map() } },
+    } as never);
+
+    expect(mockSendMessageExecutor).toHaveBeenCalled();
+  });
+});

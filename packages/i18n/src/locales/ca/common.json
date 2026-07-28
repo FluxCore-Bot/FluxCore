@@ -90,7 +90,9 @@
     "saving": "Desant...",
     "saveSettings": "Desar configuració",
     "previous": "Anterior",
-    "next": "Següent"
+    "next": "Següent",
+    "invalidJson": "JSON no vàlid: s'espera un objecte de valors de text",
+    "fieldRequired": "{{field}} és obligatori"
   },
   "pagination": {
     "previous": "Anterior",

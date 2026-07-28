@@ -209,9 +209,15 @@ function validateAction(
 
     const value = getNestedValue(action, field.key);
     if (value === undefined || value === null || value === "") {
+      // An action missing a required field cannot execute — the bot has no
+      // channel to post to, no role to add. Saving it produces a rule that
+      // looks healthy in the list and silently never fires, so this is an
+      // error (blocks Save), not advice. Genuinely advisory graph issues
+      // (empty condition value, unconnected delay, unreachable step) stay
+      // warnings so the error/warning split keeps meaning something.
       issues.push({
         nodeId,
-        level: "warning",
+        level: "error",
         message: t("validation.fieldRequired", { label, field: field.label }),
       });
     }

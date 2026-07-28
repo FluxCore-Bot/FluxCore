@@ -90,7 +90,9 @@
     "saving": "Mentés...",
     "saveSettings": "Beállítások mentése",
     "previous": "Előző",
-    "next": "Következő"
+    "next": "Következő",
+    "invalidJson": "Érvénytelen JSON — szöveges értékekből álló objektum szükséges",
+    "fieldRequired": "A(z) {{field}} megadása kötelező"
   },
   "pagination": {
     "previous": "Előző",

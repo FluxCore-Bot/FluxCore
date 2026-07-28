@@ -90,7 +90,9 @@
     "saving": "Opslaan...",
     "saveSettings": "Instellingen opslaan",
     "previous": "Vorige",
-    "next": "Volgende"
+    "next": "Volgende",
+    "invalidJson": "Geen geldige JSON — een object met tekstwaarden wordt verwacht",
+    "fieldRequired": "{{field}} is verplicht"
   },
   "pagination": {
     "previous": "Vorige",

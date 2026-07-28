@@ -19,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../../shared/ui/select";
+import { useAutomationLabels } from "../../automation/lib/labels";
 
 const PAGE_SIZE = 10;
 
@@ -26,6 +27,7 @@ export function LogsTable() {
   const { t } = useTranslation("logs");
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: constants } = useConstants();
+  const labels = useAutomationLabels(constants);
   const [ruleFilter, setRuleFilter] = useState("");
   const [dateRange, setDateRange] = useState("7d");
   const [page, setPage] = useState(1);
@@ -131,10 +133,10 @@ export function LogsTable() {
                     </TableCell>
                     <TableCell className="text-sm font-semibold">{log.ruleName}</TableCell>
                     <TableCell className="text-sm text-text-muted">
-                      {constants?.eventTypes[log.eventType]?.label ?? log.eventType}
+                      {labels.eventLabel(log.eventType)}
                     </TableCell>
                     <TableCell className="text-sm text-text-muted">
-                      {constants?.actionTypes[log.actionType]?.label ?? log.actionType}
+                      {labels.actionLabel(log.actionType)}
                     </TableCell>
                     <TableCell className="text-center">
                       <Badge variant={log.success ? "success" : "destructive"}>

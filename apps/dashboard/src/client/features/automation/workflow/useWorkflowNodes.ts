@@ -3,6 +3,8 @@ import type { Node, Edge } from "@xyflow/react";
 import type { ActionConfig, Constants, RuleStep } from "../../../shared/lib/schemas";
 import type { TranslateFn, ValidationIssue } from "../lib/workflow-validation";
 import { getNodeValidationState } from "../lib/workflow-validation";
+import { makeAutomationLabels } from "../lib/labels";
+import type { ActionConditions } from "../../../shared/lib/schemas";
 import type { ConditionNodeData } from "./nodes/ConditionNode";
 import type { DelayNodeData } from "./nodes/DelayNode";
 
@@ -16,6 +18,8 @@ interface WorkflowNodesInput {
   selectedNodeId?: string | null;
   onAddAction?: () => void;
   validationIssues?: ValidationIssue[];
+  /** Trigger filters, so the trigger node can show how many are active. */
+  conditions?: ActionConditions;
   /** Translator (rules namespace) for node labels built outside React components. */
   t: TranslateFn;
 }
@@ -25,6 +29,8 @@ export interface TriggerNodeData {
   label: string;
   description: string;
   validationState?: "valid" | "warning" | "error" | null;
+  /** Number of active trigger filters, surfaced as a badge on the node. */
+  filterCount?: number;
   [key: string]: unknown;
 }
 
@@ -63,11 +69,12 @@ function buildLinearNodes(
   triggerNode: Node<TriggerNodeData>,
 ): { nodes: Node[]; edges: Edge[] } {
   const { actions, constants, selectedNodeId, validationIssues = [], t } = input;
+  const labels = makeAutomationLabels(t, constants);
 
   const actionNodes: Node<ActionNodeData>[] = actions.map((action, i) => {
     const nodeId = `action-${i}`;
     const actionLabel =
-      constants?.actionTypes[action.type]?.label ?? (action.type || t("nodes.selectAction"));
+      action.type ? labels.actionLabel(action.type) : t("nodes.selectAction");
     return {
       id: nodeId,
       type: "actionNode",
@@ -125,6 +132,7 @@ function buildStepNodes(
   triggerNode: Node<TriggerNodeData>,
 ): { nodes: Node[]; edges: Edge[] } {
   const { steps = [], entryStepId, constants, selectedNodeId, validationIssues = [], t } = input;
+  const labels = makeAutomationLabels(t, constants);
 
   const allNodes: Node[] = [triggerNode];
   const allEdges: Edge[] = [];
@@ -160,7 +168,7 @@ function buildStepNodes(
 
     if (step.type === "action") {
       const nodeId = `step-${step.id}`;
-      const label = constants?.actionTypes[step.action.type]?.label ?? (step.action.type || t("nodes.selectAction"));
+      const label = step.action.type ? labels.actionLabel(step.action.type) : t("nodes.selectAction");
       allNodes.push({
         id: nodeId,
         type: "actionNode",
@@ -234,7 +242,7 @@ function buildStepNodes(
     const nodeId = `step-${step.id}`;
 
     if (step.type === "action") {
-      const label = constants?.actionTypes[step.action.type]?.label ?? (step.action.type || t("nodes.selectAction"));
+      const label = step.action.type ? labels.actionLabel(step.action.type) : t("nodes.selectAction");
       allNodes.push({
         id: nodeId,
         type: "actionNode",
@@ -383,11 +391,12 @@ export function useWorkflowNodes(input: WorkflowNodesInput) {
       validationIssues = [],
       t,
     } = input;
+    const labels = makeAutomationLabels(t, constants);
 
     const triggerLabel =
-      constants?.eventTypes[eventType]?.label ?? (eventType || t("nodes.selectTrigger"));
+      eventType ? labels.eventLabel(eventType) : t("nodes.selectTrigger");
     const triggerDescription =
-      constants?.eventTypes[eventType]?.description ?? "";
+      eventType ? labels.eventDescription(eventType) : "";
 
     const triggerNode: Node<TriggerNodeData> = {
       id: "trigger",
@@ -398,6 +407,16 @@ export function useWorkflowNodes(input: WorkflowNodesInput) {
         label: triggerLabel,
         description: triggerDescription,
         validationState: getNodeValidationState("trigger", validationIssues),
+      // Active filters were invisible outside the open detail panel, so a rule
+      // scoped to two channels looked identical to an unscoped one.
+      filterCount: input.conditions
+        ? (input.conditions.channelIds?.length ?? 0) +
+          (input.conditions.roleIds?.length ?? 0) +
+          (input.conditions.userIds?.length ?? 0) +
+          (input.conditions.excludeChannelIds?.length ?? 0) +
+          (input.conditions.excludeRoleIds?.length ?? 0) +
+          (input.conditions.excludeUserIds?.length ?? 0)
+        : 0,
       },
       draggable: true,
       selected: selectedNodeId === "trigger",
@@ -427,6 +446,7 @@ export function useWorkflowNodes(input: WorkflowNodesInput) {
     input.selectedNodeId,
     input.onAddAction,
     input.validationIssues,
+    input.conditions,
     input.t,
   ]);
 

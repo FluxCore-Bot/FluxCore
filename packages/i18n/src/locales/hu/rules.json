@@ -146,7 +146,18 @@
     "include": "Belefoglalás (fehérlista)",
     "exclude": "Kizárás (feketelista)",
     "clearAll": "Összes feltétel törlése",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "{{label}} eltávolítása",
+    "collapse": "Feltételek összecsukása",
+    "userIdInvalid": "Adjon meg érvényes Discord felhasználói azonosítót (17–20 számjegy)",
+    "addUserId": "Felhasználói azonosító hozzáadása",
+    "includeChannels": "Csak ezekben a csatornákban",
+    "includeRoles": "Csak az ilyen szerepkörű tagok",
+    "includeUsers": "Csak ezek a tagok",
+    "excludeChannels": "Soha ezekben a csatornákban",
+    "excludeRoles": "Soha az ilyen szerepkörű tagok",
+    "excludeUsers": "Soha ezek a tagok",
+    "unsupportedWarning": "Ez az eseményindító nem tudja kiértékelni ezeket a szűrőket ({{filters}}), ezért a szabály soha nem fut le, amíg be vannak állítva.",
+    "removeUnsupported": "Nem alkalmazható szűrők eltávolítása"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Elveti a nem mentett módosításokat?",
+    "discardChangesDescription": "Ez a szabály nem mentett módosításokat tartalmaz. A szerkesztő bezárásával elvesznek.",
+    "discardChanges": "Módosítások elvetése",
+    "draftRestored": "Piszkozat visszaállítva egy korábbi munkamenetből",
+    "discardDraftAction": "Piszkozat elvetése",
+    "discardTitle": "Elveti a módosításokat?",
+    "discardDescription": "Nem mentett módosításai vannak. A piszkozat helyben mentve marad, de elhagyja a szerkesztőt.",
+    "discardConfirm": "Elvetés és bezárás"
   },
   "panel": {
     "trigger": "Trigger Settings",

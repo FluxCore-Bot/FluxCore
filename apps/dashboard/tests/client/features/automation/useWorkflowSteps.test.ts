@@ -187,3 +187,52 @@ describe("snapshot and restore", () => {
     expect(result.current.actions[0]).toMatchObject({ type: "sendMessage", message: "hi" });
   });
 });
+
+/**
+ * React Flow delivers one `remove` change per node in a multi-select Delete,
+ * and WorkflowEditor applied each by index in a loop. Every removal splices
+ * the array, so from the second one onward the index referred to a different
+ * action — deleting nodes 0 and 2 removed actions 0 and 3. Removing the whole
+ * set in one pass is the only way indices stay meaningful.
+ */
+describe("useWorkflowSteps — removing several actions at once", () => {
+  const four: ActionConfig[] = [
+    { type: "sendMessage", message: "zero" },
+    { type: "sendMessage", message: "one" },
+    { type: "sendMessage", message: "two" },
+    { type: "sendMessage", message: "three" },
+  ];
+
+  it("removes exactly the given indices, not their post-splice neighbours", () => {
+    const { result } = setup({ initialActions: four });
+
+    act(() => { result.current.handleActionsRemove([0, 2]); });
+
+    expect(result.current.actions.map((a) => a.message)).toEqual(["one", "three"]);
+  });
+
+  it("is order-independent", () => {
+    const { result } = setup({ initialActions: four });
+
+    act(() => { result.current.handleActionsRemove([2, 0]); });
+
+    expect(result.current.actions.map((a) => a.message)).toEqual(["one", "three"]);
+  });
+
+  it("ignores indices that do not exist", () => {
+    const { result } = setup({ initialActions: four });
+
+    act(() => { result.current.handleActionsRemove([1, 99]); });
+
+    expect(result.current.actions.map((a) => a.message)).toEqual(["zero", "two", "three"]);
+  });
+
+  it("never empties the list — the last surviving action is reset instead", () => {
+    const { result } = setup({ initialActions: four });
+
+    act(() => { result.current.handleActionsRemove([0, 1, 2, 3]); });
+
+    expect(result.current.actions).toHaveLength(1);
+    expect(result.current.actions[0]).toEqual({ type: "" });
+  });
+});

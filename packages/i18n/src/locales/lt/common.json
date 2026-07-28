@@ -90,7 +90,9 @@
     "saving": "Saugoma...",
     "saveSettings": "Išsaugoti nustatymus",
     "previous": "Ankstesnis",
-    "next": "Kitas"
+    "next": "Kitas",
+    "invalidJson": "Netinkamas JSON — tikimasi teksto reikšmių objekto",
+    "fieldRequired": "{{field}} yra privalomas"
   },
   "pagination": {
     "previous": "Ankstesnis",

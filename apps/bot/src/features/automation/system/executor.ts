@@ -46,32 +46,60 @@ function checkRateLimit(guildId: string, eventType: string): boolean {
 
 // --- Condition matching ---
 
+/**
+ * Trigger filters FAIL CLOSED: a configured filter the event context cannot
+ * answer means the rule does not fire.
+ *
+ * These guards used to read `conditions.excludeRoleIds?.length &&
+ * context.member`, which silently *skipped* an unanswerable filter. The rule
+ * then fired on exactly the users and channels it was configured to exclude —
+ * "exclude @Staff" on a Member Banned rule announced every staff ban, because
+ * a ban context carries no member — while the dashboard counted the filter as
+ * active. An exclusion that cannot be evaluated is not a permission to
+ * proceed; it is a reason to stop.
+ *
+ * The editor is event-aware (EVENT_CONDITION_SUPPORT) so new rules cannot be
+ * built with a filter their trigger can never evaluate.
+ */
 function matchesConditions(
   conditions: ActionConditions,
   context: EventContext,
 ): boolean {
-  // Include filters: if specified, context must match
-  if (conditions.channelIds?.length && context.channelId) {
-    if (!conditions.channelIds.includes(context.channelId)) return false;
+  // Channel filters test the parent too. On threadCreated the context channel
+  // is the brand-new thread, whose id the user cannot possibly have picked in
+  // the editor; the parent is the channel they actually chose.
+  const channelIds = [context.channelId, context.parentChannelId].filter(
+    (id): id is string => !!id,
+  );
+
+  // Include filters: the context must carry the datum AND match it.
+  if (conditions.channelIds?.length) {
+    if (channelIds.length === 0) return false;
+    if (!channelIds.some((id) => conditions.channelIds!.includes(id))) return false;
   }
-  if (conditions.userIds?.length && context.userId) {
+  if (conditions.userIds?.length) {
+    if (!context.userId) return false;
     if (!conditions.userIds.includes(context.userId)) return false;
   }
-  if (conditions.roleIds?.length && context.member) {
+  if (conditions.roleIds?.length) {
+    if (!context.member) return false;
     const hasMatchingRole = conditions.roleIds.some((id) =>
       context.member!.roles.cache.has(id),
     );
     if (!hasMatchingRole) return false;
   }
 
-  // Exclude filters: if matched, skip
-  if (conditions.excludeChannelIds?.length && context.channelId) {
-    if (conditions.excludeChannelIds.includes(context.channelId)) return false;
+  // Exclude filters: an unanswerable exclusion cannot be cleared, so it blocks.
+  if (conditions.excludeChannelIds?.length) {
+    if (channelIds.length === 0) return false;
+    if (channelIds.some((id) => conditions.excludeChannelIds!.includes(id))) return false;
   }
-  if (conditions.excludeUserIds?.length && context.userId) {
+  if (conditions.excludeUserIds?.length) {
+    if (!context.userId) return false;
     if (conditions.excludeUserIds.includes(context.userId)) return false;
   }
-  if (conditions.excludeRoleIds?.length && context.member) {
+  if (conditions.excludeRoleIds?.length) {
+    if (!context.member) return false;
     const hasExcludedRole = conditions.excludeRoleIds.some((id) =>
       context.member!.roles.cache.has(id),
     );
@@ -111,9 +139,21 @@ function evaluateCondition(
   condition: StepConditionConfig,
   context: EventContext,
 ): boolean {
-  const actual = getContextValue(condition.field, context);
   const expected = condition.value;
 
+  // Role operators are answered entirely by the member's roles — they never
+  // consume `condition.field`. Checking the field first meant the canonical
+  // "if member has @Verified" branch always took the else path, because the
+  // field defaults to channelId and memberJoin never populates one.
+  if (condition.operator === "hasRole") {
+    return context.member?.roles.cache.has(expected) ?? false;
+  }
+  if (condition.operator === "notHasRole") {
+    if (!context.member) return false;
+    return !context.member.roles.cache.has(expected);
+  }
+
+  const actual = getContextValue(condition.field, context);
   if (actual === undefined || actual === null) return false;
 
   const actualStr = String(actual);
@@ -137,10 +177,6 @@ function evaluateCondition(
       return Number(actual) > Number(expected);
     case "lessThan":
       return Number(actual) < Number(expected);
-    case "hasRole":
-      return context.member?.roles.cache.has(expected) ?? false;
-    case "notHasRole":
-      return !(context.member?.roles.cache.has(expected) ?? true);
     case "inList":
       return expected
         .split(",")
@@ -188,12 +224,12 @@ async function executeSteps(
         try {
           const executor = getExecutor(step.action.type as ActionType);
           if (!executor) {
-            logger.warn(
-              `Unknown action type: ${step.action.type} in rule "${rule.name}"`,
-            );
-          } else {
-            await executor(client, context, step.action);
+            // Must not fall through to the success log below: a rule
+            // referencing a removed action type would report a clean 100%
+            // success rate while doing nothing at all.
+            throw new Error(`Unknown action type: ${step.action.type}`);
           }
+          await executor(client, context, step.action);
           logExecution(rule, step.action.type, true, null).catch(() => {});
         } catch (error) {
           const err =

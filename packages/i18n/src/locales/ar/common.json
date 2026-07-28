@@ -90,7 +90,9 @@
     "saving": "جارٍ الحفظ...",
     "saveSettings": "حفظ الإعدادات",
     "previous": "السابق",
-    "next": "التالي"
+    "next": "التالي",
+    "invalidJson": "ليست JSON صالحة — المتوقع كائن من القيم النصية",
+    "fieldRequired": "{{field}} مطلوب"
   },
   "pagination": {
     "previous": "السابق",

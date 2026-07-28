@@ -40,6 +40,17 @@ export type Role = z.infer<typeof RoleSchema>;
 
 export const RoleListSchema = z.array(RoleSchema);
 
+/** A guild member, as returned by /api/guilds/:guildId/members. */
+export const GuildMemberSchema = z.object({
+  id: z.string(),
+  username: z.string(),
+  displayName: z.string(),
+  avatar: z.string().nullable(),
+});
+export type GuildMember = z.infer<typeof GuildMemberSchema>;
+
+export const GuildMemberListSchema = z.array(GuildMemberSchema);
+
 // --- Action Constants ---
 export const EventTypeInfoSchema = z.object({
   label: z.string(),
@@ -54,7 +65,7 @@ export const ActionTypeInfoSchema = z.object({
 export const ActionFieldDescriptorSchema = z.object({
   key: z.string(),
   label: z.string(),
-  type: z.enum(["channel", "role", "text", "textarea", "color", "select"]),
+  type: z.enum(["channel", "role", "text", "textarea", "color", "select", "json"]),
   placeholder: z.string().optional(),
   required: z.boolean().optional(),
   options: z
@@ -74,6 +85,15 @@ export const ConstantsSchema = z.object({
   ),
   eventTypeVariables: z.record(z.string(), z.array(z.string())),
   templateVariables: z.record(z.string(), z.string()),
+  /**
+   * Which filter subjects each event type can evaluate. Trigger filters fail
+   * closed in the bot, so the editor uses this to avoid offering a filter that
+   * would silently stop the rule from firing.
+   */
+  eventConditionSupport: z.record(
+    z.string(),
+    z.array(z.enum(["channel", "role", "user"])),
+  ),
 });
 export type Constants = z.infer<typeof ConstantsSchema>;
 

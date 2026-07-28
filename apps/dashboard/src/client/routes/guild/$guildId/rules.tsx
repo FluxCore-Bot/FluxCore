@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
@@ -30,6 +30,7 @@ import {
   SelectValue,
 } from "../../../shared/ui/select";
 import type { ActionRule } from "../../../shared/lib/schemas";
+import { useAutomationLabels } from "../../../features/automation/lib/labels";
 
 // ── Preset templates ──────────────────────────────────────────────────
 
@@ -160,6 +161,7 @@ export function RulesPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { data: rules = [], isLoading } = useRules(guildId);
   const { data: constants } = useConstants();
+  const labels = useAutomationLabels(constants);
   const { data: analytics } = useAnalytics(guildId, 7);
   const createRule = useCreateRule(guildId);
   const updateRule = useUpdateRule(guildId);
@@ -172,6 +174,9 @@ export function RulesPage() {
   const [deleteTarget, setDeleteTarget] = useState<ActionRule | null>(null);
   const [selectedRuleIds, setSelectedRuleIds] = useState<Set<number>>(new Set());
   const [bulkDeleteConfirm, setBulkDeleteConfirm] = useState(false);
+  // The template gallery used to render only while `rules.length === 0`, so a
+  // user with one existing rule could never see the presets again.
+  const [showTemplates, setShowTemplates] = useState(false);
 
   // Filters
   const [search, setSearch] = useState("");
@@ -202,11 +207,23 @@ export function RulesPage() {
     return sortRules(result, sortBy);
   }, [rules, search, eventFilter, statusFilter, sortBy]);
 
-  // Unique event types used across rules (for filter dropdown)
+  // Unique event types used across rules, ordered by their translated label
+  // rather than by raw key so the dropdown reads alphabetically to the user.
   const usedEventTypes = useMemo(() => {
     const set = new Set(rules.map((r) => r.eventType));
-    return Array.from(set).sort();
-  }, [rules]);
+    return Array.from(set).sort((a, b) =>
+      labels.eventLabel(a).localeCompare(labels.eventLabel(b)),
+    );
+  }, [rules, constants]);
+
+  // Deleting the last rule of a type removes its option, but the filter kept
+  // its now-invisible value — leaving a control with no readable label and a
+  // permanently empty list.
+  useEffect(() => {
+    if (eventFilter !== "all" && !usedEventTypes.includes(eventFilter)) {
+      setEventFilter("all");
+    }
+  }, [eventFilter, usedEventTypes]);
 
   if (isLoading) return <PageSkeleton tabs={false} content="cards" />;
 
@@ -341,6 +358,7 @@ export function RulesPage() {
   };
 
   const handleUseTemplate = (template: RuleTemplate) => {
+    setShowTemplates(false);
     setEditingRule(undefined);
     setEditorDraft(template.buildDraft(t));
     setShowEditor(true);
@@ -366,6 +384,11 @@ export function RulesPage() {
         subtitle={t("subtitle")}
         actions={
           <div className="flex items-center gap-3">
+            {!showEditor && rules.length > 0 && (
+              <Button variant="ghost" onClick={() => setShowTemplates((v) => !v)}>
+                <Icon name="auto_awesome" /> {t("templates.browse")}
+              </Button>
+            )}
             {!showEditor && (
               <Button onClick={() => setShowEditor(true)}>
                 <Icon name="add" /> {t("createRule")}
@@ -425,7 +448,7 @@ export function RulesPage() {
                 <SelectItem value="all">{t("filter.allEvents")}</SelectItem>
                 {usedEventTypes.map((et) => (
                   <SelectItem key={et} value={et}>
-                    {constants?.eventTypes[et]?.label ?? et}
+                    {labels.eventLabel(et)}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -517,7 +540,7 @@ export function RulesPage() {
 
       {showEditor ? (
         <WorkflowEditor rule={editingRule} draft={editorDraft} onClose={handleCloseEditor} />
-      ) : rules.length === 0 ? (
+      ) : rules.length === 0 || showTemplates ? (
         /* ── Template gallery (empty state) ── */
         <div className="rounded-lg bg-surface-container p-8 glass-edge">
           <div className="mb-6 text-center">

@@ -146,7 +146,18 @@
     "include": "包含（白名單）",
     "exclude": "排除（黑名單）",
     "clearAll": "清除所有條件",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "移除 {{label}}",
+    "collapse": "收合條件",
+    "userIdInvalid": "請輸入有效的 Discord 使用者 ID（17–20 位數字）",
+    "addUserId": "新增使用者 ID",
+    "includeChannels": "僅在這些頻道",
+    "includeRoles": "僅擁有這些身分組的成員",
+    "includeUsers": "僅這些成員",
+    "excludeChannels": "從不在這些頻道",
+    "excludeRoles": "從不對擁有這些身分組的成員",
+    "excludeUsers": "從不對這些成員",
+    "unsupportedWarning": "此觸發器無法評估這些篩選條件（{{filters}}），因此只要它們處於設定狀態，規則將永遠不會觸發。",
+    "removeUnsupported": "移除無法生效的篩選條件"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "放棄未儲存的變更？",
+    "discardChangesDescription": "此規則有尚未儲存的變更。關閉編輯器將會遺失它們。",
+    "discardChanges": "放棄變更",
+    "draftRestored": "已從上一次工作階段還原草稿",
+    "discardDraftAction": "放棄草稿",
+    "discardTitle": "放棄變更？",
+    "discardDescription": "你有未儲存的變更。草稿會儲存在本機，但你將離開編輯器。",
+    "discardConfirm": "放棄並關閉"
   },
   "panel": {
     "trigger": "Trigger Settings",

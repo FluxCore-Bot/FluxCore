@@ -146,7 +146,18 @@
     "include": "Bao Gồm (danh sách trắng)",
     "exclude": "Loại Trừ (danh sách đen)",
     "clearAll": "Xóa tất cả điều kiện",
-    "removeItem": "Remove {{label}}"
+    "removeItem": "Xóa {{label}}",
+    "collapse": "Thu gọn điều kiện",
+    "userIdInvalid": "Nhập ID người dùng Discord hợp lệ (17–20 chữ số)",
+    "addUserId": "Thêm ID người dùng",
+    "includeChannels": "Chỉ trong các kênh này",
+    "includeRoles": "Chỉ thành viên có các vai trò này",
+    "includeUsers": "Chỉ những thành viên này",
+    "excludeChannels": "Không bao giờ trong các kênh này",
+    "excludeRoles": "Không bao giờ thành viên có các vai trò này",
+    "excludeUsers": "Không bao giờ những thành viên này",
+    "unsupportedWarning": "Trình kích hoạt này không thể đánh giá các bộ lọc này ({{filters}}), nên quy tắc sẽ không bao giờ chạy khi chúng còn được đặt.",
+    "removeUnsupported": "Xóa các bộ lọc không thể áp dụng"
   },
   "workflow": {
     "errors": {
@@ -189,7 +200,15 @@
       "fitView": "Fit view"
     },
     "issues_one": "{{count}} issue",
-    "issues_other": "{{count}} issues"
+    "issues_other": "{{count}} issues",
+    "discardChangesTitle": "Bỏ các thay đổi chưa lưu?",
+    "discardChangesDescription": "Quy tắc này có các thay đổi chưa được lưu. Đóng trình chỉnh sửa sẽ làm mất chúng.",
+    "discardChanges": "Bỏ thay đổi",
+    "draftRestored": "Đã khôi phục bản nháp từ phiên trước",
+    "discardDraftAction": "Bỏ bản nháp",
+    "discardTitle": "Bỏ các thay đổi?",
+    "discardDescription": "Bạn có thay đổi chưa lưu. Bản nháp được lưu cục bộ, nhưng bạn sẽ rời trình chỉnh sửa.",
+    "discardConfirm": "Bỏ và đóng"
   },
   "panel": {
     "trigger": "Trigger Settings",
