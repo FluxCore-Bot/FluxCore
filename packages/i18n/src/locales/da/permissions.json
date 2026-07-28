@@ -47,7 +47,8 @@
     "registryEmpty": "Der er endnu ingen tilladelser tilgængelige at tildele.",
     "lookupsWarning": "Denne rolle kan konfigurere moduler, men kan ikke slå kanaler, roller eller medlemmer op — dens vælgere vil være tomme.",
     "grantLookups": "Giv adgang til vælgere",
-    "admissionNote": "Giver også indehavere mulighed for at give andre medlemmer adgang til dashboardet."
+    "admissionNote": "Giver også indehavere mulighed for at give andre medlemmer adgang til dashboardet.",
+    "cannotGrantTooltip": "Du kan ikke give en tilladelse, du ikke selv har."
   },
   "roleForm": {
     "name": "Rollenavn",

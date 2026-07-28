@@ -47,7 +47,8 @@
     "registryEmpty": "Ainda não há permissões disponíveis para atribuir.",
     "lookupsWarning": "Este cargo pode configurar módulos, mas não pode pesquisar canais, cargos ou membros — os seus seletores ficarão vazios.",
     "grantLookups": "Conceder acesso aos seletores",
-    "admissionNote": "Também permite que os titulares deem a outros membros acesso ao painel."
+    "admissionNote": "Também permite que os titulares deem a outros membros acesso ao painel.",
+    "cannotGrantTooltip": "Você não pode conceder uma permissão que não possui."
   },
   "roleForm": {
     "name": "Nome do cargo",

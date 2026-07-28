@@ -47,7 +47,8 @@
     "registryEmpty": "Jaettavia käyttöoikeuksia ei ole vielä saatavilla.",
     "lookupsWarning": "Tämä rooli voi määrittää moduuleja, mutta ei voi hakea kanavia, rooleja tai jäseniä — sen valitsimet jäävät tyhjiksi.",
     "grantLookups": "Myönnä pääsy valitsimiin",
-    "admissionNote": "Antaa haltijoille myös mahdollisuuden myöntää muille jäsenille pääsyn hallintapaneeliin."
+    "admissionNote": "Antaa haltijoille myös mahdollisuuden myöntää muille jäsenille pääsyn hallintapaneeliin.",
+    "cannotGrantTooltip": "Et voi myöntää oikeutta, joka ei ole sinulla itselläsi."
   },
   "roleForm": {
     "name": "Roolin nimi",

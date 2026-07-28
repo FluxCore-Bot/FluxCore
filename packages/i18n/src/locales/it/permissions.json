@@ -47,7 +47,8 @@
     "registryEmpty": "Non ci sono ancora permessi disponibili da assegnare.",
     "lookupsWarning": "Questo ruolo può configurare i moduli ma non può cercare canali, ruoli o membri — i suoi selettori saranno vuoti.",
     "grantLookups": "Concedi accesso ai selettori",
-    "admissionNote": "Consente inoltre ai titolari di concedere ad altri membri l'accesso alla dashboard."
+    "admissionNote": "Consente inoltre ai titolari di concedere ad altri membri l'accesso alla dashboard.",
+    "cannotGrantTooltip": "Non puoi concedere un permesso che tu stesso non possiedi."
   },
   "roleForm": {
     "name": "Nome del ruolo",

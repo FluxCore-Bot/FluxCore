@@ -47,7 +47,8 @@
     "registryEmpty": "Er zijn nog geen machtigingen beschikbaar om toe te wijzen.",
     "lookupsWarning": "Deze rol kan modules configureren, maar kan geen kanalen, rollen of leden opzoeken — de kiezers ervan blijven leeg.",
     "grantLookups": "Kiezertoegang verlenen",
-    "admissionNote": "Stelt houders ook in staat om andere leden dashboardtoegang te geven."
+    "admissionNote": "Stelt houders ook in staat om andere leden dashboardtoegang te geven.",
+    "cannotGrantTooltip": "Je kunt geen rechten toekennen die je zelf niet hebt."
   },
   "roleForm": {
     "name": "Rolnaam",

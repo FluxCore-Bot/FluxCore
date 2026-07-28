@@ -47,7 +47,8 @@
     "registryEmpty": "Encara no hi ha permisos disponibles per assignar.",
     "lookupsWarning": "Aquest rol pot configurar mòduls però no pot cercar canals, rols o membres — els seus selectors estaran buits.",
     "grantLookups": "Concedeix accés als selectors",
-    "admissionNote": "També permet als titulars donar accés al tauler a altres membres."
+    "admissionNote": "També permet als titulars donar accés al tauler a altres membres.",
+    "cannotGrantTooltip": "No pots concedir un permís que tu mateix no tens."
   },
   "roleForm": {
     "name": "Nom del rol",

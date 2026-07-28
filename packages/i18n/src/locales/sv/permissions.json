@@ -47,7 +47,8 @@
     "registryEmpty": "Det finns inga behörigheter att tilldela än.",
     "lookupsWarning": "Denna roll kan konfigurera moduler men kan inte slå upp kanaler, roller eller medlemmar — dess väljare kommer att vara tomma.",
     "grantLookups": "Ge åtkomst till väljare",
-    "admissionNote": "Låter även innehavare ge andra medlemmar åtkomst till instrumentpanelen."
+    "admissionNote": "Låter även innehavare ge andra medlemmar åtkomst till instrumentpanelen.",
+    "cannotGrantTooltip": "Du kan inte bevilja en behörighet som du själv inte har."
   },
   "roleForm": {
     "name": "Rollnamn",

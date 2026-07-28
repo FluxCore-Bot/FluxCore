@@ -47,7 +47,8 @@
     "registryEmpty": "Kol kas nėra priskirtinų leidimų.",
     "lookupsWarning": "Šis vaidmuo gali konfigūruoti modulius, bet negali ieškoti kanalų, vaidmenų ar narių — jo rinkikliai bus tušti.",
     "grantLookups": "Suteikti prieigą prie rinkiklių",
-    "admissionNote": "Taip pat leidžia turėtojams suteikti kitiems nariams prieigą prie skydelio."
+    "admissionNote": "Taip pat leidžia turėtojams suteikti kitiems nariams prieigą prie skydelio.",
+    "cannotGrantTooltip": "Negalite suteikti leidimo, kurio patys neturite."
   },
   "roleForm": {
     "name": "Roles pavadinimas",

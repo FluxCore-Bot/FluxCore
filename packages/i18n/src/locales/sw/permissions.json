@@ -47,7 +47,8 @@
     "registryEmpty": "Hakuna ruhusa zinazopatikana kugawiwa bado.",
     "lookupsWarning": "Jukumu hili linaweza kusanidi moduli lakini haliwezi kutafuta chaneli, majukumu, au wanachama — vichaguzi vyake vitakuwa tupu.",
     "grantLookups": "Toa ufikiaji wa vichaguzi",
-    "admissionNote": "Pia huwaruhusu wamiliki kuwapa wanachama wengine ufikiaji wa dashibodi."
+    "admissionNote": "Pia huwaruhusu wamiliki kuwapa wanachama wengine ufikiaji wa dashibodi.",
+    "cannotGrantTooltip": "Huwezi kutoa idhini ambayo wewe mwenyewe huna."
   },
   "roleForm": {
     "name": "Jina la Jukumu",

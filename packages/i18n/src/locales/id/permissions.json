@@ -47,7 +47,8 @@
     "registryEmpty": "Belum ada izin yang tersedia untuk diberikan.",
     "lookupsWarning": "Peran ini dapat mengonfigurasi modul tetapi tidak dapat mencari saluran, peran, atau anggota — pemilihnya akan kosong.",
     "grantLookups": "Berikan akses pemilih",
-    "admissionNote": "Juga memungkinkan pemegangnya memberikan akses dasbor kepada anggota lain."
+    "admissionNote": "Juga memungkinkan pemegangnya memberikan akses dasbor kepada anggota lain.",
+    "cannotGrantTooltip": "Anda tidak dapat memberikan izin yang tidak Anda miliki sendiri."
   },
   "roleForm": {
     "name": "Nama Peran",

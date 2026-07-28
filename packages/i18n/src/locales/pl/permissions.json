@@ -47,7 +47,8 @@
     "registryEmpty": "Nie ma jeszcze żadnych uprawnień do przypisania.",
     "lookupsWarning": "Ta rola może konfigurować moduły, ale nie może wyszukiwać kanałów, ról ani członków — jej selektory będą puste.",
     "grantLookups": "Przyznaj dostęp do selektorów",
-    "admissionNote": "Pozwala też posiadaczom nadawać innym członkom dostęp do panelu."
+    "admissionNote": "Pozwala też posiadaczom nadawać innym członkom dostęp do panelu.",
+    "cannotGrantTooltip": "Nie możesz nadać uprawnienia, którego sam nie posiadasz."
   },
   "roleForm": {
     "name": "Nazwa roli",

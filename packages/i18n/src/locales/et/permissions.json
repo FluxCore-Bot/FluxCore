@@ -47,7 +47,8 @@
     "registryEmpty": "Määramiseks pole veel ühtegi õigust saadaval.",
     "lookupsWarning": "See roll saab mooduleid seadistada, kuid ei saa otsida kanaleid, rolle ega liikmeid — selle valikuloendid jäävad tühjaks.",
     "grantLookups": "Anna juurdepääs valikuloenditele",
-    "admissionNote": "Lubab omanikel anda ka teistele liikmetele juhtpaneelile juurdepääsu."
+    "admissionNote": "Lubab omanikel anda ka teistele liikmetele juhtpaneelile juurdepääsu.",
+    "cannotGrantTooltip": "Sa ei saa anda õigust, mida sul endal ei ole."
   },
   "roleForm": {
     "name": "Rolli nimi",

@@ -47,7 +47,8 @@
     "registryEmpty": "Es sind noch keine Berechtigungen zum Zuweisen verfügbar.",
     "lookupsWarning": "Diese Rolle kann Module konfigurieren, aber keine Kanäle, Rollen oder Mitglieder nachschlagen — ihre Auswahlfelder bleiben leer.",
     "grantLookups": "Auswahlzugriff gewähren",
-    "admissionNote": "Erlaubt Inhabern außerdem, anderen Mitgliedern Dashboard-Zugriff zu gewähren."
+    "admissionNote": "Erlaubt Inhabern außerdem, anderen Mitgliedern Dashboard-Zugriff zu gewähren.",
+    "cannotGrantTooltip": "Du kannst keine Berechtigung vergeben, die du selbst nicht besitzt."
   },
   "roleForm": {
     "name": "Rollenname",

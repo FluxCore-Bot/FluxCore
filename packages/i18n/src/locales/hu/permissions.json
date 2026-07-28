@@ -47,7 +47,8 @@
     "registryEmpty": "Még nincsenek kiosztható jogosultságok.",
     "lookupsWarning": "Ez a szerepkör képes modulokat konfigurálni, de nem tud csatornákat, szerepköröket vagy tagokat keresni — a választói üresek lesznek.",
     "grantLookups": "Választói hozzáférés megadása",
-    "admissionNote": "A birtokosok más tagoknak is hozzáférést adhatnak az irányítópulthoz."
+    "admissionNote": "A birtokosok más tagoknak is hozzáférést adhatnak az irányítópulthoz.",
+    "cannotGrantTooltip": "Nem adhatsz olyan jogosultságot, amellyel te magad nem rendelkezel."
   },
   "roleForm": {
     "name": "Role Name",

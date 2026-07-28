@@ -47,7 +47,8 @@
     "registryEmpty": "Nu există încă permisiuni disponibile pentru alocare.",
     "lookupsWarning": "Acest rol poate configura module, dar nu poate căuta canale, roluri sau membri — selectoarele sale vor fi goale.",
     "grantLookups": "Acordă acces la selectoare",
-    "admissionNote": "De asemenea, le permite deținătorilor să acorde altor membri acces la panou."
+    "admissionNote": "De asemenea, le permite deținătorilor să acorde altor membri acces la panou.",
+    "cannotGrantTooltip": "Nu poți acorda o permisiune pe care nu o ai tu însuți."
   },
   "roleForm": {
     "name": "Numele Rolului",

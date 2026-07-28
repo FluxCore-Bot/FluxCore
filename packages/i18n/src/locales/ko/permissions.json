@@ -47,7 +47,8 @@
     "registryEmpty": "아직 할당할 수 있는 권한이 없습니다.",
     "lookupsWarning": "이 역할은 모듈을 구성할 수 있지만 채널, 역할 또는 멤버를 조회할 수 없습니다 — 선택기가 비어 있게 됩니다.",
     "grantLookups": "선택기 접근 권한 부여",
-    "admissionNote": "보유자가 다른 멤버에게 대시보드 접근 권한을 부여할 수도 있게 합니다."
+    "admissionNote": "보유자가 다른 멤버에게 대시보드 접근 권한을 부여할 수도 있게 합니다.",
+    "cannotGrantTooltip": "본인이 가지고 있지 않은 권한은 부여할 수 없습니다."
   },
   "roleForm": {
     "name": "역할 이름",

@@ -47,7 +47,8 @@
     "registryEmpty": "Belum ada kebenaran tersedia untuk diberikan.",
     "lookupsWarning": "Peranan ini boleh mengkonfigurasi modul tetapi tidak boleh mencari saluran, peranan atau ahli — pemilihnya akan kosong.",
     "grantLookups": "Berikan akses pemilih",
-    "admissionNote": "Juga membolehkan pemegangnya memberikan akses papan pemuka kepada ahli lain."
+    "admissionNote": "Juga membolehkan pemegangnya memberikan akses papan pemuka kepada ahli lain.",
+    "cannotGrantTooltip": "Anda tidak boleh memberikan kebenaran yang anda sendiri tidak miliki."
   },
   "roleForm": {
     "name": "Nama Peranan",

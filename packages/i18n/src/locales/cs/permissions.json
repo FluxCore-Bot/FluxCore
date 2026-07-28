@@ -47,7 +47,8 @@
     "registryEmpty": "Zatím nejsou k dispozici žádná oprávnění k přiřazení.",
     "lookupsWarning": "Tato role může konfigurovat moduly, ale nemůže vyhledávat kanály, role ani členy — její výběry budou prázdné.",
     "grantLookups": "Udělit přístup k výběrům",
-    "admissionNote": "Také umožňuje držitelům udělit ostatním členům přístup k nástěnce."
+    "admissionNote": "Také umožňuje držitelům udělit ostatním členům přístup k nástěnce.",
+    "cannotGrantTooltip": "Nemůžete udělit oprávnění, které sami nemáte."
   },
   "roleForm": {
     "name": "Název role",

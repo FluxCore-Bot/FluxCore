@@ -47,7 +47,8 @@
     "registryEmpty": "Aucune permission n'est encore disponible à attribuer.",
     "lookupsWarning": "Ce rôle peut configurer des modules mais ne peut pas rechercher de salons, rôles ou membres — ses sélecteurs seront vides.",
     "grantLookups": "Accorder l'accès aux sélecteurs",
-    "admissionNote": "Permet également aux détenteurs de donner à d'autres membres l'accès au tableau de bord."
+    "admissionNote": "Permet également aux détenteurs de donner à d'autres membres l'accès au tableau de bord.",
+    "cannotGrantTooltip": "Vous ne pouvez pas accorder une permission que vous ne possédez pas vous-même."
   },
   "roleForm": {
     "name": "Nom du role",

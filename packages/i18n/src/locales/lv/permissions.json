@@ -47,7 +47,8 @@
     "registryEmpty": "Pagaidām nav pieejamu atļauju piešķiršanai.",
     "lookupsWarning": "Šī loma var konfigurēt moduļus, bet nevar meklēt kanālus, lomas vai dalībniekus — tās atlasītāji būs tukši.",
     "grantLookups": "Piešķirt piekļuvi atlasītājiem",
-    "admissionNote": "Ļauj turētājiem arī piešķirt citiem dalībniekiem piekļuvi vadības panelim."
+    "admissionNote": "Ļauj turētājiem arī piešķirt citiem dalībniekiem piekļuvi vadības panelim.",
+    "cannotGrantTooltip": "Jūs nevarat piešķirt atļauju, kuras jums pašam nav."
   },
   "roleForm": {
     "name": "Lomas nosaukums",

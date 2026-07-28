@@ -47,7 +47,8 @@
     "registryEmpty": "Trenutno nema dostupnih dozvola za dodelu.",
     "lookupsWarning": "Ova uloga moze da konfigurise module, ali ne moze da pretrazuje kanale, uloge ili clanove — njeni biraci ce biti prazni.",
     "grantLookups": "Dodeli pristup biracima",
-    "admissionNote": "Takodje omogucava nosiocima da dodele drugim clanovima pristup kontrolnoj tabli."
+    "admissionNote": "Takodje omogucava nosiocima da dodele drugim clanovima pristup kontrolnoj tabli.",
+    "cannotGrantTooltip": "Ne mozete dodeliti dozvolu koju sami nemate."
   },
   "roleForm": {
     "name": "Naziv uloge",

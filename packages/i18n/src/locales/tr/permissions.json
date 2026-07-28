@@ -47,7 +47,8 @@
     "registryEmpty": "Henüz atanabilecek izin yok.",
     "lookupsWarning": "Bu rol modülleri yapılandırabilir ancak kanalları, rolleri veya üyeleri arayamaz — seçicileri boş kalacaktır.",
     "grantLookups": "Seçici erişimi ver",
-    "admissionNote": "Ayrıca sahiplerinin diğer üyelere pano erişimi vermesine de olanak tanır."
+    "admissionNote": "Ayrıca sahiplerinin diğer üyelere pano erişimi vermesine de olanak tanır.",
+    "cannotGrantTooltip": "Kendinizde olmayan bir izni veremezsiniz."
   },
   "roleForm": {
     "name": "Rol Adı",

@@ -35,6 +35,7 @@ import {
 } from "../../../shared/ui/dialog";
 import {
   usePermissions,
+  matchPermission,
   useDashboardRoles,
   useCreateDashboardRole,
   useUpdateDashboardRole,
@@ -45,6 +46,11 @@ import {
   useDashboardAuditLog,
   usePermissionRegistry,
 } from "../../../features/permissions/hooks/usePermissions";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "../../../shared/ui/tooltip";
 import { needsLookupsPermission } from "../../../features/permissions/lookupsWarning";
 import type { DashboardRole } from "../../../shared/lib/schemas";
 import { ROLE_PRESETS } from "@fluxcore/types";
@@ -54,10 +60,12 @@ import { ROLE_PRESETS } from "@fluxcore/types";
 export function PermissionsPage() {
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const { t } = useTranslation("permissions");
-  const { isOwner, isLoading: permLoading } = usePermissions(guildId);
+  const { isOwner, can, isLoading: permLoading } = usePermissions(guildId);
   const { data: roles, isLoading: rolesLoading } = useDashboardRoles(guildId);
   const { data: settings, isLoading: settingsLoading } = useDashboardSettings(guildId);
   const updateSettings = useUpdateDashboardSettings(guildId);
+  const canManageRoles = can("dashboard.roles.manage");
+  const canViewAudit = can("dashboard.audit.view");
 
   const [selectedRoleId, setSelectedRoleId] = useState<string | null>(null);
   const [showCreateDialog, setShowCreateDialog] = useState(false);
@@ -76,6 +84,13 @@ export function PermissionsPage() {
 
   if (permLoading || rolesLoading || settingsLoading) return <PageSkeleton stats={0} tabCount={3} content="form" />;
 
+  // `settings` requires dashboard.settings.manage, which the nav gate
+  // (dashboard.roles.view) does not guarantee — e.g. the built-in Viewer
+  // preset. When the fetch 403s, `settings` is undefined; don't guess at
+  // requirePermissions in that case, since the "system disabled" banner is a
+  // security claim about the guild and rendering it here would be false for
+  // guilds where it's actually enabled.
+  const settingsLoaded = settings !== undefined;
   const requirePermissions = settings?.requirePermissions ?? false;
 
   return (
@@ -84,46 +99,50 @@ export function PermissionsPage() {
         title={t("title")}
         subtitle={t("subtitle")}
         actions={
-          <Button onClick={() => setShowCreateDialog(true)} size="sm">
-            <Icon name="add" size={16} className="me-1" />
-            {t("actions.createRole")}
-          </Button>
+          canManageRoles ? (
+            <Button onClick={() => setShowCreateDialog(true)} size="sm">
+              <Icon name="add" size={16} className="me-1" />
+              {t("actions.createRole")}
+            </Button>
+          ) : undefined
         }
       />
 
       {/* Enable/Disable Toggle */}
-      <Card>
-        <CardContent className="flex items-center justify-between py-4">
-          <div>
-            <p className="font-medium">{t("permissionSystem.title")}</p>
-            <p className="text-sm text-text-muted">
-              {requirePermissions
-                ? t("permissionSystem.active")
-                : t("permissionSystem.inactive")}
-            </p>
-          </div>
-          <Switch
-            checked={requirePermissions}
-            disabled={!isOwner || updateSettings.isPending}
-            onCheckedChange={(checked) => {
-              updateSettings.mutate(
-                { requirePermissions: checked },
-                {
-                  onSuccess: () =>
-                    toast.success(
-                      checked
-                        ? t("permissionSystem.enabledToast")
-                        : t("permissionSystem.disabledToast"),
-                    ),
-                  onError: (err) => toast.error(err.message),
-                },
-              );
-            }}
-          />
-        </CardContent>
-      </Card>
+      {settingsLoaded && (
+        <Card>
+          <CardContent className="flex items-center justify-between py-4">
+            <div>
+              <p className="font-medium">{t("permissionSystem.title")}</p>
+              <p className="text-sm text-text-muted">
+                {requirePermissions
+                  ? t("permissionSystem.active")
+                  : t("permissionSystem.inactive")}
+              </p>
+            </div>
+            <Switch
+              checked={requirePermissions}
+              disabled={!isOwner || updateSettings.isPending}
+              onCheckedChange={(checked) => {
+                updateSettings.mutate(
+                  { requirePermissions: checked },
+                  {
+                    onSuccess: () =>
+                      toast.success(
+                        checked
+                          ? t("permissionSystem.enabledToast")
+                          : t("permissionSystem.disabledToast"),
+                      ),
+                    onError: (err) => toast.error(err.message),
+                  },
+                );
+              }}
+            />
+          </CardContent>
+        </Card>
+      )}
 
-      {!requirePermissions && (
+      {settingsLoaded && !requirePermissions && (
         <div className="rounded-md border border-warning/30 bg-warning/5 px-4 py-3 text-sm text-warning">
           <Icon name="info" size={16} className="me-2 inline-block align-text-bottom" />
           {t("warning.disabled")}
@@ -133,7 +152,7 @@ export function PermissionsPage() {
       <Tabs defaultValue="roles">
         <TabsList>
           <TabsTrigger value="roles">{t("tabs.roles")}</TabsTrigger>
-          <TabsTrigger value="audit">{t("tabs.auditLog")}</TabsTrigger>
+          {canViewAudit && <TabsTrigger value="audit">{t("tabs.auditLog")}</TabsTrigger>}
         </TabsList>
 
         <TabsContent value="roles" className="mt-6">
@@ -193,9 +212,11 @@ export function PermissionsPage() {
           </div>
         </TabsContent>
 
-        <TabsContent value="audit" className="mt-6">
-          <AuditLogTab guildId={guildId} />
-        </TabsContent>
+        {canViewAudit && (
+          <TabsContent value="audit" className="mt-6">
+            <AuditLogTab guildId={guildId} />
+          </TabsContent>
+        )}
       </Tabs>
 
       <CreateRoleDialog
@@ -223,6 +244,8 @@ function RoleEditor({
   onDelete: () => void;
 }) {
   const { t } = useTranslation("permissions");
+  const { isOwner: currentUserIsOwner, permissions: myPermissions } = usePermissions(guildId);
+  const myPermissionSet = useMemo(() => new Set(myPermissions), [myPermissions]);
   const { data: registry = [], isLoading: registryLoading, isError: registryError } = usePermissionRegistry(guildId);
   const updateRole = useUpdateDashboardRole(guildId);
   const deleteRole = useDeleteDashboardRole(guildId);
@@ -415,22 +438,40 @@ function RoleEditor({
                     <div className="ms-6 mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
                       {mod.permissions.map((perm) => {
                         const checked = hasWildcard || permissions.has(perm.key);
+                        const cannotGrant =
+                          !currentUserIsOwner && !matchPermission(myPermissionSet, perm.key);
                         const permLabel = t("roleEditor.permissionLabel", {
                           action: t(perm.actionKey),
                           resource: t(perm.resourceKey),
                         });
+                        const checkbox = (
+                          <Checkbox
+                            checked={checked}
+                            disabled={hasWildcard || cannotGrant}
+                            onCheckedChange={() => togglePermission(perm.key)}
+                            className="mt-0.5"
+                            aria-label={`${role.name} — ${permLabel}`}
+                          />
+                        );
                         return (
                           <label
                             key={perm.key}
                             className="flex cursor-pointer items-start gap-2 rounded px-2 py-1.5 text-sm hover:bg-surface-high/50"
                           >
-                            <Checkbox
-                              checked={checked}
-                              disabled={hasWildcard}
-                              onCheckedChange={() => togglePermission(perm.key)}
-                              className="mt-0.5"
-                              aria-label={`${role.name} — ${permLabel}`}
-                            />
+                            {cannotGrant ? (
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <span tabIndex={0} className="inline-flex">
+                                    {checkbox}
+                                  </span>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  {t("roleEditor.cannotGrantTooltip")}
+                                </TooltipContent>
+                              </Tooltip>
+                            ) : (
+                              checkbox
+                            )}
                             <div>
                               <span className="text-text">{permLabel}</span>
                               <p className="font-mono text-xs text-text-muted">{perm.key}</p>

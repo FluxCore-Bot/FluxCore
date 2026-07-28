@@ -47,7 +47,8 @@
     "registryEmpty": "Wala pang mga pahintulot na available na itatalaga.",
     "lookupsWarning": "Puwedeng i-configure ng role na ito ang mga module pero hindi puwedeng maghanap ng mga channel, role, o miyembro — magiging walang laman ang mga picker nito.",
     "grantLookups": "Bigyan ng access sa picker",
-    "admissionNote": "Nagbibigay-daan din sa may hawak nitong bigyan ang ibang miyembro ng access sa dashboard."
+    "admissionNote": "Nagbibigay-daan din sa may hawak nitong bigyan ang ibang miyembro ng access sa dashboard.",
+    "cannotGrantTooltip": "Hindi mo maibibigay ang isang pahintulot na wala ka mismo."
   },
   "roleForm": {
     "name": "Pangalan ng Role",

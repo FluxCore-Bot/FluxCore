@@ -47,7 +47,8 @@
     "registryEmpty": "No permissions are available to assign yet.",
     "lookupsWarning": "This role can configure modules but cannot look up channels, roles, or members — its pickers will be empty.",
     "grantLookups": "Grant picker access",
-    "admissionNote": "Also lets holders give other members dashboard access."
+    "admissionNote": "Also lets holders give other members dashboard access.",
+    "cannotGrantTooltip": "You can't grant a permission you don't have yourself."
   },
   "roleForm": {
     "name": "Role Name",

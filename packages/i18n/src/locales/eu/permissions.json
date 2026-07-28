@@ -47,7 +47,8 @@
     "registryEmpty": "Oraindik ez dago esleitzeko baimenik erabilgarri.",
     "lookupsWarning": "Rol honek moduluak konfiguratu ditzake, baina ezin ditu kanalak, rolak edo kideak bilatu — bere hautatzaileak hutsik egongo dira.",
     "grantLookups": "Eman hautatzaileetarako sarbidea",
-    "admissionNote": "Titularrei beste kideei kontrol-paneleko sarbidea emateko ere aukera ematen die."
+    "admissionNote": "Titularrei beste kideei kontrol-paneleko sarbidea emateko ere aukera ematen die.",
+    "cannotGrantTooltip": "Ezin duzu zeuk ez duzun baimen bat eman."
   },
   "roleForm": {
     "name": "Rol-izena",

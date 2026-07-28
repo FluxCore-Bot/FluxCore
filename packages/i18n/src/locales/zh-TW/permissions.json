@@ -47,7 +47,8 @@
     "registryEmpty": "目前沒有可指派的權限。",
     "lookupsWarning": "此身分組可以設定模組，但無法查詢頻道、身分組或成員 — 其選擇器將是空的。",
     "grantLookups": "授予選擇器存取權",
-    "admissionNote": "也允許持有者授予其他成員儀表板存取權。"
+    "admissionNote": "也允許持有者授予其他成員儀表板存取權。",
+    "cannotGrantTooltip": "你不能授予自己都沒有的權限。"
   },
   "roleForm": {
     "name": "角色名稱",
