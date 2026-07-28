@@ -36,6 +36,15 @@ vi.mock("@fluxcore/utils", () => ({
   logger: { debug: vi.fn(), info: vi.fn(), warn: vi.fn(), error: vi.fn() },
 }));
 
+const mockAssignmentFindMany = vi.fn().mockResolvedValue([]);
+const mockUserPermissionFindMany = vi.fn().mockResolvedValue([]);
+vi.mock("@fluxcore/database", () => ({
+  getPrisma: () => ({
+    dashboardRoleAssignment: { findMany: mockAssignmentFindMany },
+    dashboardUserPermission: { findMany: mockUserPermissionFindMany },
+  }),
+}));
+
 import Fastify from "fastify";
 import fastifyCookie from "@fastify/cookie";
 import { registerGuildRoutes } from "../../../../src/server/features/guilds/routes.js";
@@ -111,8 +120,8 @@ describe("guild routes", () => {
 
       expect(res.statusCode).toBe(200);
       expect(res.json()).toEqual([
-        { id: "g1", name: "Has Bot", icon: "abc", botPresent: true },
-        { id: "g2", name: "No Bot", icon: null, botPresent: false },
+        { id: "g1", name: "Has Bot", icon: "abc", botPresent: true, access: "admin" },
+        { id: "g2", name: "No Bot", icon: null, botPresent: false, access: "admin" },
       ]);
     });
 
@@ -203,6 +212,98 @@ describe("guild routes", () => {
       expect(res.statusCode).toBe(200);
       expect(res.json()).toEqual([]);
     });
+
+    it("includes a guild the user cannot manage but holds a dashboard grant in", async () => {
+      mockGetSession.mockResolvedValueOnce({
+        userId: "user-1",
+        username: "testuser",
+        guilds: [
+          { id: "g1", name: "Guild 1", icon: null, permissions: "0" },
+          { id: "g2", name: "Guild 2", icon: null, permissions: "0" },
+        ],
+      });
+      mockAssignmentFindMany.mockResolvedValueOnce([{ guildId: "g1" }]);
+
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/guilds",
+        cookies: { session: app.signCookie("valid-id") },
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(res.json<Array<{ id: string; access: string }>>()).toEqual([
+        expect.objectContaining({ id: "g1", access: "delegated" }),
+      ]);
+    });
+
+    it("includes a guild granted only through a per-user override", async () => {
+      mockGetSession.mockResolvedValueOnce({
+        userId: "user-1",
+        username: "testuser",
+        guilds: [{ id: "g1", name: "Guild 1", icon: null, permissions: "0" }],
+      });
+      mockUserPermissionFindMany.mockResolvedValueOnce([{ guildId: "g1" }]);
+
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/guilds",
+        cookies: { session: app.signCookie("valid-id") },
+      });
+
+      expect(res.json<Array<{ id: string }>>()).toHaveLength(1);
+    });
+
+    it("marks manageable guilds as admin access", async () => {
+      mockGetSession.mockResolvedValueOnce({
+        userId: "user-1",
+        username: "testuser",
+        guilds: [{ id: "g1", name: "Guild 1", icon: null, permissions: MANAGE_GUILD.toString() }],
+      });
+
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/guilds",
+        cookies: { session: app.signCookie("valid-id") },
+      });
+
+      expect(res.json<Array<{ access: string }>>()[0].access).toBe("admin");
+    });
+
+    it("ignores a grant for a guild the user is no longer in", async () => {
+      mockGetSession.mockResolvedValueOnce({
+        userId: "user-1",
+        username: "testuser",
+        guilds: [{ id: "g1", name: "Guild 1", icon: null, permissions: "0" }],
+      });
+      mockAssignmentFindMany.mockResolvedValueOnce([{ guildId: "g-gone" }]);
+
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/guilds",
+        cookies: { session: app.signCookie("valid-id") },
+      });
+
+      expect(res.json<Array<unknown>>()).toEqual([]);
+    });
+
+    it("counts a guild once when the user is both an admin and a grantee", async () => {
+      mockGetSession.mockResolvedValueOnce({
+        userId: "user-1",
+        username: "testuser",
+        guilds: [{ id: "g1", name: "Guild 1", icon: null, permissions: MANAGE_GUILD.toString() }],
+      });
+      mockAssignmentFindMany.mockResolvedValueOnce([{ guildId: "g1" }]);
+
+      const res = await app.inject({
+        method: "GET",
+        url: "/api/guilds",
+        cookies: { session: app.signCookie("valid-id") },
+      });
+
+      expect(res.json<Array<{ access: string }>>()).toEqual([
+        expect.objectContaining({ id: "g1", access: "admin" }),
+      ]);
+    });
   });
 
   describe("POST /api/guilds/refresh", () => {
@@ -252,7 +353,7 @@ describe("guild routes", () => {
 
       expect(res.statusCode).toBe(200);
       expect(res.json()).toEqual([
-        { id: "g9", name: "Newly Admin", icon: null, botPresent: false },
+        { id: "g9", name: "Newly Admin", icon: null, botPresent: false, access: "admin" },
       ]);
     });
   });
