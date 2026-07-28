@@ -9,7 +9,12 @@
 
 Granular role-based + per-user permission system for the admin dashboard. Currently, any user with Discord's `MANAGE_GUILD` permission has **full access** to every dashboard feature. This system adds fine-grained control so guild owners can delegate specific modules/actions to specific administrators.
 
-**Gate model:** `MANAGE_GUILD` remains the entry gate — only users with that Discord permission can access the dashboard at all. The permission system adds granularity *within* that gate.
+**Gate model:** authority comes from three sources — guild ownership, live Discord admin rights (Administrator or Manage Server), or an explicit dashboard grant (a `DashboardRoleAssignment` or `DashboardUserPermission` row). A guild member holding a grant reaches the dashboard without `MANAGE_GUILD` and is then narrowed by each route's required permission.
+
+`requirePermissions` governs whether **admins** are constrained; it never gates explicit grants, which resolve the same way in both modes. `isDefault` roles apply to admins only — otherwise enabling the toggle would admit every member of the server at once.
+
+> Superseded 2026-07-28. This replaces the original admin-only gate model. See
+> `docs/superpowers/specs/2026-07-28-delegated-dashboard-access-design.md`.
 
 ## Design Decisions
 
@@ -18,7 +23,7 @@ Granular role-based + per-user permission system for the admin dashboard. Curren
 | Permission format | String keys (`module.resource.action`) | Self-documenting, unlimited scalability, easy to add new modules |
 | Deny rules | No (allow-only) | MANAGE_GUILD already gates entry; simpler mental model |
 | Per-user overrides | Yes | Guild owner can grant specific permissions to individuals beyond their roles |
-| Non-MANAGE_GUILD access | No | Dashboard remains admin-only; permissions control what admins can do |
+| Non-MANAGE_GUILD access | Yes, via explicit grants (revised 2026-07-28) | Delegation is inert if only Discord admins can reach the dashboard. A member with a role assignment or user override gets in; `isDefault` roles never apply to them |
 | Built-in presets | Yes | Ship "Moderator", "Content Manager" templates |
 | Audit retention | 90 days default, configurable per guild | Balance storage vs compliance needs |
 | Wildcard support | Yes (`module.*`, `*`) | Reduces assignment burden for broad access |
