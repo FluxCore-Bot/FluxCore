@@ -1,12 +1,14 @@
 import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
 import { getPrisma } from "@fluxcore/database";
+import { resolveEffectivePermissions } from "@fluxcore/types";
 import {
-  PERMISSION_REGISTRY,
-  ALL_PERMISSION_KEYS,
-  resolveEffectivePermissions,
-} from "@fluxcore/types";
-import { requireAuth, requireGuildAccess, requirePermission } from "../../shared/middleware.js";
+  requireAuth,
+  requireGuildAccess,
+  requirePermission,
+  getDeclaredPermissions,
+} from "../../shared/middleware.js";
+import { buildPermissionRegistry } from "../../shared/permissionRegistry.js";
 import {
   resolveUserPermissions,
   createDashboardAuditLog,
@@ -39,7 +41,10 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
 
       reply.send({
         permissions: [...resolved.permissions],
-        effectivePermissions: resolveEffectivePermissions([...resolved.permissions]),
+        effectivePermissions: resolveEffectivePermissions(
+          [...resolved.permissions],
+          [...getDeclaredPermissions()],
+        ),
         roles: assignments.map((a) => a.role),
         isOwner: resolved.isOwner,
       });
@@ -52,12 +57,12 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
     {
       schema: withDocs(
         { params: { type: "object", properties: { guildId: { type: "string" } }, required: ["guildId"] } },
-        { tag: "DashboardPermissions", response: { 200: { type: "object", additionalProperties: true } } },
+        { tag: "DashboardPermissions", response: { 200: { type: "array", items: { type: "object", additionalProperties: true } } } },
       ),
       preHandler: [requireAuth, requireGuildAccess],
     },
     async (_request, reply) => {
-      reply.send(PERMISSION_REGISTRY);
+      reply.send(buildPermissionRegistry(getDeclaredPermissions()));
     },
   );
 
@@ -92,7 +97,10 @@ export function registerDashboardPermissionRoutes(app: FastifyInstance): void {
           grantedBy: p.grantedBy,
           createdAt: p.createdAt,
         })),
-        effectivePermissions: resolveEffectivePermissions([...resolved.permissions]),
+        effectivePermissions: resolveEffectivePermissions(
+          [...resolved.permissions],
+          [...getDeclaredPermissions()],
+        ),
         isOwner: resolved.isOwner,
       });
     },
@@ -447,7 +455,7 @@ const ALLOWED_AUDIT_ACTIONS = new Set([
 ]);
 
 function isValidPermKey(key: string): boolean {
-  if (ALL_PERMISSION_KEYS.includes(key)) return true;
+  if (getDeclaredPermissions().has(key)) return true;
   if (key === "*") return true;
   if (key.includes("*")) {
     const parts = key.split(".");

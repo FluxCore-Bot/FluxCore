@@ -26,10 +26,8 @@ export type {
 } from "./tickets.js";
 export type { Giveaway, CreateGiveawayData } from "./giveaways.js";
 export type { Suggestion, SuggestionGuildSettings, SuggestionStatus } from "./suggestions.js";
-export type { PermissionDefinition, PermissionModule, RolePreset } from "./dashboard-permissions.js";
+export type { RolePreset } from "./dashboard-permissions.js";
 export {
-  PERMISSION_REGISTRY,
-  ALL_PERMISSION_KEYS,
   ROLE_PRESETS,
   matchPermission,
   expandWildcard,

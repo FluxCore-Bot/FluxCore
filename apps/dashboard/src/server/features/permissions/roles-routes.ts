@@ -2,11 +2,15 @@ import type { FastifyInstance } from "fastify";
 import { withDocs } from "../../shared/openapi-schemas.js";
 import { getPrisma } from "@fluxcore/database";
 import {
-  ALL_PERMISSION_KEYS,
   ROLE_PRESETS,
   matchPermission,
 } from "@fluxcore/types";
-import { requireAuth, requireGuildAccess, requirePermission } from "../../shared/middleware.js";
+import {
+  requireAuth,
+  requireGuildAccess,
+  requirePermission,
+  getDeclaredPermissions,
+} from "../../shared/middleware.js";
 import {
   createDashboardAuditLog,
   invalidatePermissionCache,
@@ -20,7 +24,7 @@ const COLOR_REGEX = /^#[0-9a-fA-F]{6}$/;
 
 function isValidPermissionKey(key: string): boolean {
   // Allow exact keys and wildcard patterns
-  if (ALL_PERMISSION_KEYS.includes(key)) return true;
+  if (getDeclaredPermissions().has(key)) return true;
   if (key === "*") return true;
   // Wildcard patterns: "module.*", "*.resource.action", "*.*.view"
   if (key.includes("*")) {

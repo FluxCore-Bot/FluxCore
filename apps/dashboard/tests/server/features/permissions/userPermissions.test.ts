@@ -114,7 +114,7 @@ describe("PUT /api/guilds/:guildId/user-permissions/:userId — escalation guard
       method: "PUT",
       url: "/api/guilds/guild-1/user-permissions/target-1",
       cookies: { session: app.signCookie("valid") },
-      payload: { permissions: ["actions.rules.manage"] },
+      payload: { permissions: ["dashboard.settings.manage"] },
     });
     expect(res.statusCode).toBe(403);
   });
@@ -131,7 +131,7 @@ describe("PUT /api/guilds/:guildId/user-permissions/:userId — escalation guard
       method: "PUT",
       url: "/api/guilds/guild-1/user-permissions/target-1",
       cookies: { session: app.signCookie("valid") },
-      payload: { permissions: ["actions.rules.manage"] },
+      payload: { permissions: ["dashboard.settings.manage"] },
     });
     expect(res.statusCode).toBe(200);
   });
@@ -157,11 +157,11 @@ describe("PUT /user-permissions — error response does not leak key", () => {
       method: "PUT",
       url: "/api/guilds/guild-1/user-permissions/target-1",
       cookies: { session: app.signCookie("valid") },
-      payload: { permissions: ["actions.rules.manage"] },
+      payload: { permissions: ["dashboard.settings.manage"] },
     });
     expect(res.statusCode).toBe(403);
     const body = res.json();
     expect(body).not.toHaveProperty("permission");
-    expect(JSON.stringify(body)).not.toContain("actions.rules.manage");
+    expect(JSON.stringify(body)).not.toContain("dashboard.settings.manage");
   });
 });
