@@ -143,7 +143,8 @@
     "roleDeleted": "Roll kustutatud",
     "roleDeleteFailed": "Rolli kustutamine ebaõnnestus",
     "memberAdded": "{{name}} lisati rollile",
-    "memberRemoved": "{{name}} eemaldati rollilt"
+    "memberRemoved": "{{name}} eemaldati rollilt",
+    "memberRestored": "{{name}} taastati rollile"
   },
   "confirm": {
     "deleteTitle": "Kustuta roll \"{{name}}\"?",

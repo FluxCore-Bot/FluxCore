@@ -143,7 +143,8 @@
     "roleDeleted": "رول حذف ہو گیا",
     "roleDeleteFailed": "رول حذف کرنے میں ناکامی",
     "memberAdded": "{{name}} کو کردار میں شامل کر دیا گیا",
-    "memberRemoved": "{{name}} کو کردار سے ہٹا دیا گیا"
+    "memberRemoved": "{{name}} کو کردار سے ہٹا دیا گیا",
+    "memberRestored": "{{name}} کو کردار میں بحال کر دیا گیا"
   },
   "confirm": {
     "deleteTitle": "\"{{name}}\" رول حذف کریں؟",

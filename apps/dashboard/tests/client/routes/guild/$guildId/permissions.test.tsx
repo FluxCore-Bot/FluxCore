@@ -13,7 +13,19 @@ vi.mock("@tanstack/react-router", () => ({
   useParams: () => ({ guildId: "g1" }),
 }));
 
-vi.mock("sonner", () => ({ toast: { success: vi.fn(), error: vi.fn() } }));
+// Typed via the implementation passed to vi.fn() (not `any`/`as`) so a test
+// that inspects a toast's `action` (the Undo affordance) gets a real,
+// narrow structural type back instead of falling through to implicit any.
+interface ToastActionOptions {
+  action?: { label: string; onClick: () => void };
+}
+
+vi.mock("sonner", () => ({
+  toast: {
+    success: vi.fn((_message: string, _options?: ToastActionOptions) => {}),
+    error: vi.fn((_message: string) => {}),
+  },
+}));
 
 // PermissionsPage/RoleEditor consume several hooks from this module; only
 // `usePermissionRegistry` is what this fix touches, so its result is driven
@@ -212,20 +224,28 @@ vi.mock("../../../../../src/client/shared/hooks/useMembers", () => ({
   useMembersByIds: () => ({ data: memberDirectoryState.box, isLoading: false }),
 }));
 
-// Drives useAuth() — only `.data.userId` is consumed (RoleEditor's self-id
-// for excluding the caller from their own add-control results).
+// Drives useAuth() — `.data.userId` (RoleEditor's self-id, for excluding the
+// caller from their own add-control results) and `.isLoading` (there is no
+// route loader forcing this independent query to resolve before RoleEditor
+// mounts, so a non-owner caller's identity can still be unknown on render —
+// the add control must fail closed in that window, not assume ownership).
 interface AuthFixture {
   userId: string;
   username: string;
   avatar: string | null;
 }
 
-const authState = vi.hoisted((): { box: AuthFixture | null } => ({
-  box: { userId: "u-current", username: "current", avatar: null },
+interface AuthQueryState {
+  data: AuthFixture | null;
+  isLoading: boolean;
+}
+
+const authState = vi.hoisted((): { box: AuthQueryState } => ({
+  box: { data: { userId: "u-current", username: "current", avatar: null }, isLoading: false },
 }));
 
 vi.mock("../../../../../src/client/shared/hooks/useAuth", () => ({
-  useAuth: () => ({ data: authState.box }),
+  useAuth: () => authState.box,
 }));
 
 import { PermissionsPage } from "../../../../../src/client/routes/guild/$guildId/permissions";
@@ -622,7 +642,7 @@ describe("PermissionsPage — role member assignment", () => {
     assignMemberState.box = freshMutationFixture();
     removeMemberState.box = freshMutationFixture();
     memberDirectoryState.box = [ALICE, BOB, CURRENT];
-    authState.box = { userId: "u-current", username: "current", avatar: null };
+    authState.box = { data: { userId: "u-current", username: "current", avatar: null }, isLoading: false };
     permissionsState.box = { isOwner: true, isLoading: false, permissions: ["*"] };
     settingsState.box = {
       data: { guildId: "g1", auditRetentionDays: 30, requirePermissions: true },
@@ -730,6 +750,36 @@ describe("PermissionsPage — role member assignment", () => {
     expect(removeMemberState.box.calls).toEqual([{ roleId: "role-1", userId: "u-alice" }]);
   });
 
+  it("offers Undo on the removal toast, which re-adds the same member to the role", async () => {
+    roleMembersState.box = {
+      data: [{ id: "a1", userId: "u-alice", assignedBy: "u-bob", createdAt: "2026-01-05T00:00:00.000Z" }],
+      isLoading: false,
+      isError: false,
+    };
+    const user = userEvent.setup();
+    renderPage();
+    await screen.findByText("Alice");
+
+    const removeButton = screen.getByRole("button", {
+      name: `roleEditor.membersSection.removeAria:${JSON.stringify({ name: "Alice" })}`,
+    });
+    await user.click(removeButton);
+
+    const removalToastCall = vi
+      .mocked(toast.success)
+      .mock.calls.find(
+        ([message]) => message === `toast.memberRemoved:${JSON.stringify({ name: "Alice" })}`,
+      );
+    if (!removalToastCall) throw new Error("expected a toast.success call for the removal");
+    const [, options] = removalToastCall;
+    if (!options?.action) throw new Error("expected the removal toast to include an Undo action");
+    expect(options.action.label).toBe("common:actions.undo");
+
+    options.action.onClick();
+
+    expect(assignMemberState.box.calls).toEqual([{ roleId: "role-1", userId: "u-alice" }]);
+  });
+
   it("disables the add control for a delegated caller who cannot grant every permission the role holds", async () => {
     permissionsState.box = { isOwner: false, isLoading: false, permissions: ["tickets.list.view"] };
     roleState.box = { ...ROLE_BASE, permissions: ["moderation.cases.view"] };
@@ -749,6 +799,28 @@ describe("PermissionsPage — role member assignment", () => {
   it("does not disable the add control for a delegated caller who holds every permission the role grants", async () => {
     permissionsState.box = { isOwner: false, isLoading: false, permissions: ["tickets.*"] };
     roleState.box = { ...ROLE_BASE, permissions: ["tickets.list.view"] };
+    renderPage();
+
+    expect(await addMemberButton()).not.toBeDisabled();
+  });
+
+  it("disables the add control for a non-owner caller while their identity is still loading, even if they hold every permission the role grants", async () => {
+    // Regression for the auth-load race: useAuth is an independent query with
+    // no route loader forcing it to resolve before RoleEditor mounts, so a
+    // hard reload / deep link can render with currentUser still unknown.
+    // Excluding self from *results* is not enough on its own in that window
+    // — the control itself must fail closed rather than assume ownership.
+    permissionsState.box = { isOwner: false, isLoading: false, permissions: ["tickets.*"] };
+    roleState.box = { ...ROLE_BASE, permissions: ["tickets.list.view"] };
+    authState.box = { data: null, isLoading: true };
+    renderPage();
+
+    expect(await addMemberButton()).toBeDisabled();
+  });
+
+  it("does not disable the add control for the owner while identity is still loading, since ownership alone clears the server's self-assign check", async () => {
+    permissionsState.box = { isOwner: true, isLoading: false, permissions: [] };
+    authState.box = { data: null, isLoading: true };
     renderPage();
 
     expect(await addMemberButton()).not.toBeDisabled();

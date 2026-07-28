@@ -143,7 +143,8 @@
     "roleDeleted": "பங்கு நீக்கப்பட்டது",
     "roleDeleteFailed": "பங்கு நீக்கத் தவறியது",
     "memberAdded": "{{name}} பங்கில் சேர்க்கப்பட்டார்",
-    "memberRemoved": "{{name}} பங்கிலிருந்து அகற்றப்பட்டார்"
+    "memberRemoved": "{{name}} பங்கிலிருந்து அகற்றப்பட்டார்",
+    "memberRestored": "{{name}} பங்கிற்கு மீட்டமைக்கப்பட்டார்"
   },
   "confirm": {
     "deleteTitle": "\"{{name}}\" பங்கை நீக்கவா?",

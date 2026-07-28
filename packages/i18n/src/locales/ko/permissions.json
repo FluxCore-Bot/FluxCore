@@ -143,7 +143,8 @@
     "roleDeleted": "역할이 삭제되었습니다",
     "roleDeleteFailed": "역할 삭제에 실패했습니다",
     "memberAdded": "{{name}}님이 역할에 추가되었습니다",
-    "memberRemoved": "{{name}}님이 역할에서 제거되었습니다"
+    "memberRemoved": "{{name}}님이 역할에서 제거되었습니다",
+    "memberRestored": "{{name}}님이 역할로 복원되었습니다"
   },
   "confirm": {
     "deleteTitle": "역할 \"{{name}}\"을(를) 삭제하시겠습니까?",

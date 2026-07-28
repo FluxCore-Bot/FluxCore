@@ -143,7 +143,8 @@
     "roleDeleted": "Uloga obrisana",
     "roleDeleteFailed": "Brisanje uloge nije uspelo",
     "memberAdded": "{{name}} je dodat/a u ulogu",
-    "memberRemoved": "{{name}} je uklonjen/a iz uloge"
+    "memberRemoved": "{{name}} je uklonjen/a iz uloge",
+    "memberRestored": "{{name}} je vracen/a u ulogu"
   },
   "confirm": {
     "deleteTitle": "Obrisati ulogu \"{{name}}\"?",

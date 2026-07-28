@@ -143,7 +143,8 @@
     "roleDeleted": "Rola ezabatuta",
     "roleDeleteFailed": "Ezin izan da rola ezabatu",
     "memberAdded": "{{name}} rolera gehitu da",
-    "memberRemoved": "{{name}} roletik kendu da"
+    "memberRemoved": "{{name}} roletik kendu da",
+    "memberRestored": "{{name}} rolera leheneratu da"
   },
   "confirm": {
     "deleteTitle": "\"{{name}}\" rola ezabatu?",

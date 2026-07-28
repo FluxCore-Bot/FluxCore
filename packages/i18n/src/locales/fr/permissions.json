@@ -143,7 +143,8 @@
     "roleDeleted": "Role supprime",
     "roleDeleteFailed": "Echec de la suppression du role",
     "memberAdded": "{{name}} ajoute au role",
-    "memberRemoved": "{{name}} retire du role"
+    "memberRemoved": "{{name}} retire du role",
+    "memberRestored": "{{name}} restaure dans le role"
   },
   "confirm": {
     "deleteTitle": "Supprimer le role \"{{name}}\" ?",

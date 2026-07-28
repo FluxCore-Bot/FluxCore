@@ -143,7 +143,8 @@
     "roleDeleted": "Jukumu limefutwa",
     "roleDeleteFailed": "Imeshindwa kufuta jukumu",
     "memberAdded": "{{name}} ameongezwa kwenye jukumu",
-    "memberRemoved": "{{name}} ameondolewa kwenye jukumu"
+    "memberRemoved": "{{name}} ameondolewa kwenye jukumu",
+    "memberRestored": "{{name}} amerejeshwa kwenye jukumu"
   },
   "confirm": {
     "deleteTitle": "Futa jukumu \"{{name}}\"?",

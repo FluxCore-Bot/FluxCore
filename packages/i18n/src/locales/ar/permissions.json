@@ -143,7 +143,8 @@
     "roleDeleted": "تم حذف الدور",
     "roleDeleteFailed": "فشل في حذف الدور",
     "memberAdded": "تمت إضافة {{name}} إلى الدور",
-    "memberRemoved": "تمت إزالة {{name}} من الدور"
+    "memberRemoved": "تمت إزالة {{name}} من الدور",
+    "memberRestored": "تمت استعادة {{name}} إلى الدور"
   },
   "confirm": {
     "deleteTitle": "حذف دور \"{{name}}\"؟",

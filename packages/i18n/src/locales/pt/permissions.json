@@ -143,7 +143,8 @@
     "roleDeleted": "Cargo eliminado",
     "roleDeleteFailed": "Falha ao eliminar o cargo",
     "memberAdded": "{{name}} adicionado ao cargo",
-    "memberRemoved": "{{name}} removido do cargo"
+    "memberRemoved": "{{name}} removido do cargo",
+    "memberRestored": "{{name}} restaurado ao cargo"
   },
   "confirm": {
     "deleteTitle": "Eliminar cargo \"{{name}}\"?",

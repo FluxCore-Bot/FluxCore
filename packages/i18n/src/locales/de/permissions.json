@@ -143,7 +143,8 @@
     "roleDeleted": "Rolle geloescht",
     "roleDeleteFailed": "Rolle konnte nicht geloescht werden",
     "memberAdded": "{{name}} zur Rolle hinzugefügt",
-    "memberRemoved": "{{name}} aus der Rolle entfernt"
+    "memberRemoved": "{{name}} aus der Rolle entfernt",
+    "memberRestored": "{{name}} zur Rolle wiederhergestellt"
   },
   "confirm": {
     "deleteTitle": "Rolle \"{{name}}\" loeschen?",

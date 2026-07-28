@@ -143,7 +143,8 @@
     "roleDeleted": "Rooli poistettu",
     "roleDeleteFailed": "Roolin poistaminen epäonnistui",
     "memberAdded": "{{name}} lisättiin rooliin",
-    "memberRemoved": "{{name}} poistettiin roolista"
+    "memberRemoved": "{{name}} poistettiin roolista",
+    "memberRestored": "{{name}} palautettiin rooliin"
   },
   "confirm": {
     "deleteTitle": "Poista rooli \"{{name}}\"?",

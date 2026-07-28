@@ -143,7 +143,8 @@
     "roleDeleted": "Roll borttagen",
     "roleDeleteFailed": "Misslyckades med att ta bort roll",
     "memberAdded": "{{name}} lades till i rollen",
-    "memberRemoved": "{{name}} togs bort från rollen"
+    "memberRemoved": "{{name}} togs bort från rollen",
+    "memberRestored": "{{name}} återställdes till rollen"
   },
   "confirm": {
     "deleteTitle": "Ta bort rollen \"{{name}}\"?",

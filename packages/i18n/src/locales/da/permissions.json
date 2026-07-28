@@ -143,7 +143,8 @@
     "roleDeleted": "Rolle slettet",
     "roleDeleteFailed": "Kunne ikke slette rolle",
     "memberAdded": "Tilføjede {{name}} til rollen",
-    "memberRemoved": "Fjernede {{name}} fra rollen"
+    "memberRemoved": "Fjernede {{name}} fra rollen",
+    "memberRestored": "Gendannede {{name}} til rollen"
   },
   "confirm": {
     "deleteTitle": "Slet rollen \"{{name}}\"?",

@@ -143,7 +143,8 @@
     "roleDeleted": "角色已刪除",
     "roleDeleteFailed": "刪除角色失敗",
     "memberAdded": "已將 {{name}} 新增至身分組",
-    "memberRemoved": "已將 {{name}} 從身分組移除"
+    "memberRemoved": "已將 {{name}} 從身分組移除",
+    "memberRestored": "已將 {{name}} 復原至身分組"
   },
   "confirm": {
     "deleteTitle": "刪除角色「{{name}}」？",

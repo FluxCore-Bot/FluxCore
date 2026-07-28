@@ -143,7 +143,8 @@
     "roleDeleted": "Rol eliminat",
     "roleDeleteFailed": "No s'ha pogut eliminar el rol",
     "memberAdded": "S'ha afegit {{name}} al rol",
-    "memberRemoved": "S'ha eliminat {{name}} del rol"
+    "memberRemoved": "S'ha eliminat {{name}} del rol",
+    "memberRestored": "S'ha restaurat {{name}} al rol"
   },
   "confirm": {
     "deleteTitle": "Eliminar el rol \"{{name}}\"?",

@@ -255,7 +255,7 @@ function RoleEditor({
   const { data: registry = [], isLoading: registryLoading, isError: registryError } = usePermissionRegistry(guildId);
   const updateRole = useUpdateDashboardRole(guildId);
   const deleteRole = useDeleteDashboardRole(guildId);
-  const { data: currentUser } = useAuth();
+  const { data: currentUser, isLoading: currentUserLoading } = useAuth();
   const {
     data: roleMembers = [],
     isLoading: roleMembersLoading,
@@ -306,8 +306,17 @@ function RoleEditor({
   // Mirrors the server's assignment gate exactly: against `role.permissions`
   // (the persisted grant), not the locally-edited `permissions` state above —
   // assigning applies immediately and independently of the pending Save.
+  //
+  // Fails closed on identity, not just on permissions: `usePermissions` is
+  // covered by the page-level loading gate above, but `useAuth` is an
+  // independent query with no route loader forcing it to resolve first, so
+  // a hard reload or a deep link can render this with `currentUser` still
+  // `undefined`. A non-owner caller whose identity isn't known yet must not
+  // get a usable add control — an unknown-non-owner is treated the same as
+  // "cannot assign" rather than assumed to be the owner.
   const cannotAssignRole =
-    !currentUserIsOwner && !role.permissions.every((p) => matchPermission(myPermissionSet, p));
+    !currentUserIsOwner &&
+    (currentUserLoading || !role.permissions.every((p) => matchPermission(myPermissionSet, p)));
 
   const assignedMemberIds = useMemo(() => roleMembers.map((m) => m.userId), [roleMembers]);
 
@@ -348,11 +357,30 @@ function RoleEditor({
     );
   }
 
+  // Matches the automation rule-delete pattern (rules.tsx confirmDelete):
+  // the removal itself is not deferred — it fires immediately, like every
+  // other action in this section — but the success toast offers Undo, which
+  // re-assigns the same role/user pair rather than holding the request back.
   function handleRemoveMember(userId: string, displayName: string) {
     removeMember.mutate(
       { roleId: role.id, userId },
       {
-        onSuccess: () => toast.success(t("toast.memberRemoved", { name: displayName })),
+        onSuccess: () =>
+          toast.success(t("toast.memberRemoved", { name: displayName }), {
+            action: {
+              label: t("common:actions.undo"),
+              onClick: () => {
+                assignMember.mutate(
+                  { roleId: role.id, userId },
+                  {
+                    onSuccess: () =>
+                      toast.success(t("toast.memberRestored", { name: displayName })),
+                    onError: (err) => toast.error(err.message),
+                  },
+                );
+              },
+            },
+          }),
         onError: (err) => toast.error(err.message),
       },
     );

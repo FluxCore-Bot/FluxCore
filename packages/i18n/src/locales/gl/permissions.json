@@ -143,7 +143,8 @@
     "roleDeleted": "Rol eliminado",
     "roleDeleteFailed": "Non se puido eliminar o rol",
     "memberAdded": "Engadiuse {{name}} ao rol",
-    "memberRemoved": "Eliminouse {{name}} do rol"
+    "memberRemoved": "Eliminouse {{name}} do rol",
+    "memberRestored": "Restaurouse {{name}} ao rol"
   },
   "confirm": {
     "deleteTitle": "Eliminar o rol \"{{name}}\"?",

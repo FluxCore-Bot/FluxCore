@@ -143,7 +143,8 @@
     "roleDeleted": "Rol verwijderd",
     "roleDeleteFailed": "Rol verwijderen mislukt",
     "memberAdded": "{{name}} toegevoegd aan de rol",
-    "memberRemoved": "{{name}} verwijderd uit de rol"
+    "memberRemoved": "{{name}} verwijderd uit de rol",
+    "memberRestored": "{{name}} hersteld in de rol"
   },
   "confirm": {
     "deleteTitle": "Rol \"{{name}}\" verwijderen?",

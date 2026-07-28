@@ -143,7 +143,8 @@
     "roleDeleted": "Role smazána",
     "roleDeleteFailed": "Nepodařilo se smazat roli",
     "memberAdded": "{{name}} přidán(a) do role",
-    "memberRemoved": "{{name}} odebrán(a) z role"
+    "memberRemoved": "{{name}} odebrán(a) z role",
+    "memberRestored": "{{name}} obnoven(a) v roli"
   },
   "confirm": {
     "deleteTitle": "Smazat roli \"{{name}}\"?",

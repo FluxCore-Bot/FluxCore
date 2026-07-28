@@ -143,7 +143,8 @@
     "roleDeleted": "Role deleted",
     "roleDeleteFailed": "Failed to delete role",
     "memberAdded": "Added {{name}} to the role",
-    "memberRemoved": "Removed {{name}} from the role"
+    "memberRemoved": "Removed {{name}} from the role",
+    "memberRestored": "{{name}} restored to the role"
   },
   "confirm": {
     "deleteTitle": "Delete role \"{{name}}\"?",

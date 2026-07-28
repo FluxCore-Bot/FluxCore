@@ -143,7 +143,8 @@
     "roleDeleted": "Role deleted",
     "roleDeleteFailed": "Failed to delete role",
     "memberAdded": "{{name}} hozzáadva a szerepkörhöz",
-    "memberRemoved": "{{name}} eltávolítva a szerepkörből"
+    "memberRemoved": "{{name}} eltávolítva a szerepkörből",
+    "memberRestored": "{{name}} visszaállítva a szerepkörbe"
   },
   "confirm": {
     "deleteTitle": "Delete role \"{{name}}\"?",

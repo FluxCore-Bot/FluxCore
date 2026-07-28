@@ -143,7 +143,8 @@
     "roleDeleted": "Роль удалена",
     "roleDeleteFailed": "Не удалось удалить роль",
     "memberAdded": "{{name}} добавлен(а) в роль",
-    "memberRemoved": "{{name}} удалён(а) из роли"
+    "memberRemoved": "{{name}} удалён(а) из роли",
+    "memberRestored": "{{name}} восстановлен(а) в роли"
   },
   "confirm": {
     "deleteTitle": "Удалить роль \"{{name}}\"?",

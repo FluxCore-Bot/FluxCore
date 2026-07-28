@@ -143,7 +143,8 @@
     "roleDeleted": "ロールを削除しました",
     "roleDeleteFailed": "ロールの削除に失敗しました",
     "memberAdded": "{{name}}をロールに追加しました",
-    "memberRemoved": "{{name}}をロールから削除しました"
+    "memberRemoved": "{{name}}をロールから削除しました",
+    "memberRestored": "{{name}}をロールに復元しました"
   },
   "confirm": {
     "deleteTitle": "ロール「{{name}}」を削除しますか？",

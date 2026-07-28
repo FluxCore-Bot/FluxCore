@@ -143,7 +143,8 @@
     "roleDeleted": "Role istrinta",
     "roleDeleteFailed": "Nepavyko istrinti roles",
     "memberAdded": "{{name}} pridėtas prie vaidmens",
-    "memberRemoved": "{{name}} pašalintas iš vaidmens"
+    "memberRemoved": "{{name}} pašalintas iš vaidmens",
+    "memberRestored": "{{name}} atkurtas vaidmenyje"
   },
   "confirm": {
     "deleteTitle": "Istrinti role \"{{name}}\"?",
