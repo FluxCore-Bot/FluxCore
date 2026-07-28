@@ -38,9 +38,10 @@ vi.mock("../../../../src/server/shared/discordApi.js", () => ({
   invalidateGuildCache: vi.fn(),
 }));
 
+const mockHasPermission = vi.fn().mockReturnValue(true);
 vi.mock("../../../../src/server/shared/permissions.js", () => ({
   resolveUserPermissions: vi.fn().mockResolvedValue({ permissions: new Set(["*"]), isOwner: false }),
-  hasPermission: vi.fn().mockReturnValue(true),
+  hasPermission: (...args: unknown[]) => mockHasPermission(...args),
   invalidatePermissionCache: vi.fn(),
   createDashboardAuditLog: vi.fn().mockResolvedValue(undefined),
 }));
@@ -68,6 +69,7 @@ describe("discord routes", () => {
     vi.clearAllMocks();
     mockGetSession.mockResolvedValue(mockSession);
     mockIsBotInGuild.mockResolvedValue(true);
+    mockHasPermission.mockReturnValue(true);
     app = await buildApp();
   });
 
@@ -204,6 +206,19 @@ describe("discord routes", () => {
       });
       expect(res.statusCode).toBe(401);
     });
+  });
+
+  it("returns 403 when the caller lacks dashboard.lookups.view", async () => {
+    mockHasPermission.mockReturnValue(false);
+    mockGetSession.mockResolvedValue({ userId: "user-1", username: "u", guilds: [] });
+
+    const res = await app.inject({
+      method: "GET",
+      url: "/api/guilds/guild-1/channels",
+      cookies: { session: app.signCookie("sid") },
+    });
+
+    expect(res.statusCode).toBe(403);
   });
 
 });

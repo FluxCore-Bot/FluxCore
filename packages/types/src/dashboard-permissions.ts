@@ -25,6 +25,7 @@ export const PERMISSION_REGISTRY: PermissionModule[] = [
       { key: "dashboard.roles.manage", label: "Manage Roles", description: "Create/edit/delete dashboard roles" },
       { key: "dashboard.audit.view", label: "View Audit Log", description: "View dashboard audit log" },
       { key: "dashboard.settings.manage", label: "Manage Settings", description: "Manage guild-wide dashboard settings" },
+      { key: "dashboard.lookups.view", label: "Use Pickers", description: "Look up channels, roles, and members for pickers" },
     ],
   },
   {
@@ -197,6 +198,7 @@ export const ROLE_PRESETS: Record<string, RolePreset> = {
       "tickets.list.manage",
       "suggestions.list.manage",
       "security.events.view",
+      "dashboard.lookups.view",
     ],
   },
   "content-manager": {
@@ -210,6 +212,7 @@ export const ROLE_PRESETS: Record<string, RolePreset> = {
       "roles.panels.*",
       "scheduled.messages.*",
       "commands.list.*",
+      "dashboard.lookups.view",
     ],
   },
   "full-admin": {
