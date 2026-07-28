@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Din åtkomst",
+    "subtitle": "Du har fått åtkomst till delar av den här serverns instrumentpanel.",
+    "empty": "Du har ännu inte åtkomst till några moduler."
+  },
+  "errors": { "analyticsUnavailable": "Analyser kunde inte läsas in." }
 }

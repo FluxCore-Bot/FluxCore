@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Quyền truy cập của bạn",
+    "subtitle": "Bạn đã được cấp quyền truy cập vào một số phần trong bảng điều khiển của máy chủ này.",
+    "empty": "Bạn chưa có quyền truy cập vào bất kỳ mô-đun nào."
+  },
+  "errors": { "analyticsUnavailable": "Không thể tải dữ liệu phân tích." }
 }

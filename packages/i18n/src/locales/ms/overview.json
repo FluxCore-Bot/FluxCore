@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Akses anda",
+    "subtitle": "Anda telah diberikan akses kepada sebahagian papan pemuka pelayan ini.",
+    "empty": "Anda belum mempunyai akses kepada mana-mana modul."
+  },
+  "errors": { "analyticsUnavailable": "Analitik tidak dapat dimuatkan." }
 }

@@ -3,12 +3,15 @@ import { useParams } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { useAnalytics } from "../../../features/overview/hooks/useAnalytics";
 import { useConstants } from "../../../shared/hooks/useConstants";
+import { usePermissions } from "../../../features/permissions/hooks/usePermissions";
 import { PageHeader } from "../../../shared/components/PageHeader";
 import { CardGridSkeleton } from "../../../shared/ui/skeletons";
+import { Card } from "../../../shared/ui/card";
 import { StatsCard } from "../../../shared/components/StatsCard";
 import { ExecutionChart } from "../../../features/overview/components/ExecutionChart";
 import { EventDistributionChart } from "../../../features/overview/components/EventDistributionChart";
 import { RecentActivityFeed } from "../../../features/overview/components/RecentActivityFeed";
+import { AccessSummary } from "../../../features/overview/components/AccessSummary";
 import { Button } from "../../../shared/ui/button";
 import { Zap, CheckCircle, BarChart3, Target, RefreshCw } from "lucide-react";
 
@@ -16,10 +19,34 @@ export function OverviewPage() {
   const { t } = useTranslation(["overview", "common"]);
   const { guildId } = useParams({ from: "/guild/$guildId" });
   const [days, setDays] = useState(7);
-  const { data: analytics, isLoading, isFetching } = useAnalytics(guildId, days);
+  const { can, isLoading: permissionsLoading } = usePermissions(guildId);
+  const canViewAnalytics = can("actions.analytics.view");
+  const { data: analytics, isLoading, isError, isFetching } = useAnalytics(guildId, days, canViewAnalytics);
   const { data: constants } = useConstants();
 
-  if (isLoading || !analytics) return <CardGridSkeleton />;
+  if (permissionsLoading) return <CardGridSkeleton />;
+
+  if (!canViewAnalytics) {
+    return (
+      <div className="space-y-8">
+        <PageHeader title={t("title")} subtitle={t("subtitle")} />
+        <AccessSummary guildId={guildId} />
+      </div>
+    );
+  }
+
+  if (isLoading) return <CardGridSkeleton />;
+
+  if (isError || !analytics) {
+    return (
+      <div className="space-y-8">
+        <PageHeader title={t("title")} subtitle={t("subtitle")} />
+        <Card className="p-6 text-sm text-text-muted" data-testid="analytics-error">
+          {t("errors.analyticsUnavailable")}
+        </Card>
+      </div>
+    );
+  }
 
   const { summary } = analytics;
 
@@ -30,7 +57,7 @@ export function OverviewPage() {
         subtitle={t("subtitle")}
       />
 
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4" data-testid="analytics-stats">
         <StatsCard
           label={t("stats.actionRules")}
           value={summary.totalRules}

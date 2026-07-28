@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Erişiminiz",
+    "subtitle": "Bu sunucunun panosunun bazı bölümlerine erişim izni verildi.",
+    "empty": "Henüz hiçbir modüle erişiminiz yok."
+  },
+  "errors": { "analyticsUnavailable": "Analizler yüklenemedi." }
 }

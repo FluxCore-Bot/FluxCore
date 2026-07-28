@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { apiFetch } from "../../../shared/lib/client";
 import { AnalyticsResponseSchema, type AnalyticsResponse } from "../../../shared/lib/schemas";
 
-export function useAnalytics(guildId: string, days: number = 7) {
+export function useAnalytics(guildId: string, days: number = 7, enabled = true) {
   return useQuery<AnalyticsResponse>({
     queryKey: ["guilds", guildId, "actions", "analytics", { days }],
     queryFn: async () => {
@@ -11,5 +11,6 @@ export function useAnalytics(guildId: string, days: number = 7) {
       );
       return AnalyticsResponseSchema.parse(data);
     },
+    enabled: enabled && Boolean(guildId),
   });
 }

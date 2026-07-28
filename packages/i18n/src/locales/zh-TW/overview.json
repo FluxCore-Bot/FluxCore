@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "您的權限",
+    "subtitle": "您已獲得此伺服器儀表板部分內容的存取權限。",
+    "empty": "您目前尚未擁有任何模組的存取權限。"
+  },
+  "errors": { "analyticsUnavailable": "無法載入分析資料。" }
 }

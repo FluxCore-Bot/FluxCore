@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Az Ön hozzáférése",
+    "subtitle": "Hozzáférést kapott ennek a szervernek az irányítópultja egyes részeihez.",
+    "empty": "Még egyetlen modulhoz sem fér hozzá."
+  },
+  "errors": { "analyticsUnavailable": "Az elemzéseket nem sikerült betölteni." }
 }

@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Ufikiaji wako",
+    "subtitle": "Umepewa ufikiaji wa sehemu za dashibodi ya seva hii.",
+    "empty": "Bado huna ufikiaji wa moduli yoyote."
+  },
+  "errors": { "analyticsUnavailable": "Takwimu hazikuweza kupakiwa." }
 }

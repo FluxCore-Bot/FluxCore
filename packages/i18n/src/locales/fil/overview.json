@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Ang iyong access",
+    "subtitle": "Binigyan ka ng access sa ilang bahagi ng dashboard ng server na ito.",
+    "empty": "Wala ka pang access sa anumang module."
+  },
+  "errors": { "analyticsUnavailable": "Hindi ma-load ang analytics." }
 }

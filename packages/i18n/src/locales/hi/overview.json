@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "आपकी पहुँच",
+    "subtitle": "आपको इस सर्वर के डैशबोर्ड के कुछ हिस्सों तक पहुँच दी गई है।",
+    "empty": "आपके पास अभी तक किसी भी मॉड्यूल तक पहुँच नहीं है।"
+  },
+  "errors": { "analyticsUnavailable": "एनालिटिक्स लोड नहीं हो सका।" }
 }

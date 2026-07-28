@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Din tilgang",
+    "subtitle": "Du har fått tilgang til deler av dashbordet for denne serveren.",
+    "empty": "Du har ikke tilgang til noen moduler ennå."
+  },
+  "errors": { "analyticsUnavailable": "Kunne ikke laste inn analyser." }
 }

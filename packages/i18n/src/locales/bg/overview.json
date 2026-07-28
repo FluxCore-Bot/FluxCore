@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Вашият достъп",
+    "subtitle": "Предоставен ви е достъп до части от таблото на този сървър.",
+    "empty": "Все още нямате достъп до никакви модули."
+  },
+  "errors": { "analyticsUnavailable": "Анализите не можаха да бъдат заредени." }
 }

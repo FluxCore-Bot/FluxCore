@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "دسترسی شما",
+    "subtitle": "به شما دسترسی به بخش‌هایی از داشبورد این سرور داده شده است.",
+    "empty": "شما هنوز به هیچ ماژولی دسترسی ندارید."
+  },
+  "errors": { "analyticsUnavailable": "تحلیل‌ها بارگذاری نشدند." }
 }

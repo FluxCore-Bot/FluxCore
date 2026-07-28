@@ -29,5 +29,11 @@
     "title": "Execution Trend",
     "success": "Success",
     "errors": "Errors"
-  }
+  },
+  "access": {
+    "title": "Jouw toegang",
+    "subtitle": "Je hebt toegang gekregen tot delen van het dashboard van deze server.",
+    "empty": "Je hebt nog geen toegang tot modules."
+  },
+  "errors": { "analyticsUnavailable": "Analyses konden niet worden geladen." }
 }
