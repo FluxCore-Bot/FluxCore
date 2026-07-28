@@ -24,6 +24,8 @@ import { Separator } from "../../../shared/ui/separator";
 import { ColorPicker } from "../../../shared/ui/color-picker";
 import { ScrollArea } from "../../../shared/ui/scroll-area";
 import { Checkbox } from "../../../shared/ui/checkbox";
+import { Skeleton } from "../../../shared/ui/skeleton";
+import { Alert } from "../../../shared/ui/alert";
 import {
   Dialog,
   DialogContent,
@@ -220,7 +222,7 @@ function RoleEditor({
   onDelete: () => void;
 }) {
   const { t } = useTranslation("permissions");
-  const { data: registry = [] } = usePermissionRegistry(guildId);
+  const { data: registry = [], isLoading: registryLoading, isError: registryError } = usePermissionRegistry(guildId);
   const updateRole = useUpdateDashboardRole(guildId);
   const deleteRole = useDeleteDashboardRole(guildId);
   const [name, setName] = useState(role.name);
@@ -341,6 +343,30 @@ function RoleEditor({
       <div className="space-y-2">
         <Label>{t("roleEditor.permissions")}</Label>
         <ScrollArea className="h-[400px] rounded-md border border-outline-variant/20 bg-surface-low p-4">
+          {registryLoading ? (
+            <div className="space-y-6" data-testid="permission-registry-loading">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <div key={i} className="space-y-2">
+                  <Skeleton className="h-5 w-40" />
+                  <div className="ms-6 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+                    <Skeleton className="h-8 w-full" />
+                    <Skeleton className="h-8 w-full" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : registryError ? (
+            <Alert variant="destructive" data-testid="permission-registry-error">
+              {t("roleEditor.registryError")}
+            </Alert>
+          ) : registry.length === 0 ? (
+            <p
+              className="text-sm text-text-muted"
+              data-testid="permission-registry-empty"
+            >
+              {t("roleEditor.registryEmpty")}
+            </p>
+          ) : (
           <div className="space-y-6">
             {registry.map((mod) => {
               const wildcard = `${mod.key}.*`;
@@ -398,6 +424,7 @@ function RoleEditor({
               );
             })}
           </div>
+          )}
         </ScrollArea>
       </div>
 

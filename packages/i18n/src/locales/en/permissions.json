@@ -42,7 +42,9 @@
     "permissions": "Permissions",
     "allBadge": "All",
     "discordRoles": "Discord Roles",
-    "permissionLabel": "{{action}} {{resource}}"
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "The permission list could not be loaded. Try refreshing the page.",
+    "registryEmpty": "No permissions are available to assign yet."
   },
   "roleForm": {
     "name": "Role Name",
