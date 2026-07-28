@@ -27,7 +27,7 @@ vi.mock("@fluxcore/database", () => ({
   }),
 }));
 
-const { resolveUserPermissions } = await import(
+const { resolveUserPermissions, safeParsePermissions } = await import(
   "../../../src/server/shared/permissions.js"
 );
 
@@ -58,6 +58,19 @@ describe("resolveUserPermissions", () => {
     expect([...resolved.permissions]).toEqual(["*"]);
     expect(resolved.isOwner).toBe(true);
     expect(resolved.isGuildMember).toBe(true);
+  });
+
+  it("calls getGuildAuthority with (guildId, userId) — the reverse of its own argument order", async () => {
+    // resolveUserPermissions(userId, guildId) and getGuildAuthority(guildId, userId)
+    // have inverted parameter orders, both string, so a swap would type-check
+    // silently. This pins the call so a future swap fails a test instead of
+    // silently authorizing (or denying) the wrong guild/user pair.
+    const guild = `g-arg-order-${counter}`;
+    mockGetGuildAuthority.mockResolvedValue({ isOwner: true, isAdmin: true, isMember: true });
+
+    await resolveUserPermissions("user-1", guild);
+
+    expect(mockGetGuildAuthority).toHaveBeenCalledWith(guild, "user-1");
   });
 
   it("grants an admin everything in legacy mode", async () => {
@@ -156,5 +169,46 @@ describe("resolveUserPermissions", () => {
     const resolved = await resolveUserPermissions("user-1", guild);
 
     expect(resolved.permissions.size).toBe(0);
+  });
+
+  it("tolerates a role whose permissions column is syntactically valid JSON but not an array", async () => {
+    // The bug this guards: JSON.parse('"5"') succeeds (returns the string "5"),
+    // and an unchecked `as string[]` cast would hand that back to a caller that
+    // iterates it — a string iterates per character, a number would throw a
+    // TypeError, either way turning a bad DB row into a 500 that locks the
+    // requesting user out of the guild instead of resolving to no permissions.
+    const guild = `g-non-array-json-${counter}`;
+    mockGetGuildAuthority.mockResolvedValue({ isOwner: false, isAdmin: false, isMember: true });
+    mockFindAssignments.mockResolvedValue([
+      { roleId: "role-1", role: { id: "role-1", permissions: "5" } },
+    ]);
+
+    const resolved = await resolveUserPermissions("user-1", guild);
+
+    expect(resolved.permissions.size).toBe(0);
+  });
+});
+
+describe("safeParsePermissions", () => {
+  it("returns the array for valid JSON string arrays", () => {
+    expect(safeParsePermissions('["moderation.*", "tickets.list.view"]')).toEqual([
+      "moderation.*",
+      "tickets.list.view",
+    ]);
+  });
+
+  it("falls back to an empty array for malformed JSON", () => {
+    expect(safeParsePermissions("not json")).toEqual([]);
+  });
+
+  it("falls back to an empty array for syntactically valid JSON that is not an array", () => {
+    expect(safeParsePermissions("5")).toEqual([]);
+    expect(safeParsePermissions('"a string"')).toEqual([]);
+    expect(safeParsePermissions('{"a": 1}')).toEqual([]);
+    expect(safeParsePermissions("null")).toEqual([]);
+  });
+
+  it("filters out non-string elements rather than returning them uncast", () => {
+    expect(safeParsePermissions('["moderation.*", 5, null, {"a":1}]')).toEqual(["moderation.*"]);
   });
 });

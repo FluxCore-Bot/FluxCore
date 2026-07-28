@@ -30,12 +30,21 @@ vi.mock("../../../../src/server/shared/discordApi.js", () => ({
 }));
 
 const mockResolveUserPermissions = vi.fn();
-vi.mock("../../../../src/server/shared/permissions.js", () => ({
-  resolveUserPermissions: (...args: unknown[]) => mockResolveUserPermissions(...args),
-  hasPermission: vi.fn().mockReturnValue(true),
-  invalidatePermissionCache: vi.fn(),
-  createDashboardAuditLog: vi.fn().mockResolvedValue(undefined),
-}));
+vi.mock("../../../../src/server/shared/permissions.js", async (importOriginal) => {
+  // safeParsePermissions is kept real (rather than re-stubbed) so the
+  // isDefault-promotion and role-assignment escalation guards — which parse
+  // a role's persisted `permissions` column via this helper — behave exactly
+  // as they do outside tests.
+  const actual =
+    await importOriginal<typeof import("../../../../src/server/shared/permissions.js")>();
+  return {
+    safeParsePermissions: actual.safeParsePermissions,
+    resolveUserPermissions: (...args: unknown[]) => mockResolveUserPermissions(...args),
+    hasPermission: vi.fn().mockReturnValue(true),
+    invalidatePermissionCache: vi.fn(),
+    createDashboardAuditLog: vi.fn().mockResolvedValue(undefined),
+  };
+});
 
 const mockPrisma = {
   dashboardRole: {

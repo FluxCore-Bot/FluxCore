@@ -164,7 +164,7 @@ async function loadGrantedPermissions(
 
   const permissions = new Set<string>();
   for (const role of allRoles) {
-    for (const perm of safeJsonParse<string[]>(role.permissions, [])) {
+    for (const perm of safeParsePermissions(role.permissions)) {
       permissions.add(perm);
     }
   }
@@ -246,10 +246,21 @@ export async function createDashboardAuditLog(
 
 // ─── Helpers ───
 
-function safeJsonParse<T>(json: string, fallback: T): T {
+/**
+ * Parse a `DashboardRole.permissions` (or similar) JSON column into a string
+ * array, tolerating both malformed JSON and syntactically-valid-but-wrong-shaped
+ * JSON (e.g. `"5"` parses to the number 5, not an array). Callers on the auth
+ * path iterate the result directly, so returning anything other than a real
+ * string[] — a number, a string that indexes to individual characters — would
+ * throw or silently misbehave instead of failing safe to no permissions.
+ */
+export function safeParsePermissions(json: string): string[] {
   try {
-    return JSON.parse(json) as T;
+    const parsed: unknown = JSON.parse(json);
+    return Array.isArray(parsed)
+      ? parsed.filter((p): p is string => typeof p === "string")
+      : [];
   } catch {
-    return fallback;
+    return [];
   }
 }

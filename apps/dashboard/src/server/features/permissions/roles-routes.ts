@@ -14,6 +14,7 @@ import {
 import {
   createDashboardAuditLog,
   invalidatePermissionCache,
+  safeParsePermissions,
 } from "../../shared/permissions.js";
 import { deleteDashboardRoleWithAudit } from "../../shared/dashboardRoleDelete.js";
 
@@ -32,17 +33,6 @@ function isValidPermissionKey(key: string): boolean {
     return parts.length >= 2 && parts.length <= 3;
   }
   return false;
-}
-
-function safeParsePermissions(json: string): string[] {
-  try {
-    const parsed: unknown = JSON.parse(json);
-    return Array.isArray(parsed)
-      ? parsed.filter((p): p is string => typeof p === "string")
-      : [];
-  } catch {
-    return [];
-  }
 }
 
 export function registerDashboardRoleRoutes(app: FastifyInstance): void {
