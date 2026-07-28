@@ -118,13 +118,21 @@ role pickers. Mitigations, both required:
 
 ### Security gaps closed in this work
 
-**Privilege escalation.** `permissions/roles-routes.ts` has no escalation guard today, despite the
-feature spec calling for one. With non-admins in scope this is a path from "delegated moderator" to
-full control. Add: when creating or updating a dashboard role, or writing a user permission
-override, every key in the payload must be one the actor already holds (`matchPermission` against
-the actor's resolved set). The guild owner bypasses this. The same check applies to assigning a
-role — you cannot assign a role holding permissions you lack. Violations return 403 with the
-offending key.
+**Privilege escalation via role assignment.** Escalation guards already exist on role create
+(`roles-routes.ts:129`), role update (`:250`), preset create (`:555`), and user permission
+overrides (`routes.ts:161`, which additionally blocks self-grants and refuses wildcards from
+non-owners). `POST /dashboard-roles/:roleId/members` has **no check at all** — a
+`dashboard.roles.manage` holder can assign themselves, or anyone, an existing role that holds
+permissions they lack. Today that is contained because only `MANAGE_GUILD` admins reach it; once
+delegated users can, it is a direct path from "delegated moderator" to `*`.
+
+Fix, matching the strictness already used for user overrides:
+
+- Non-owners cannot assign a role holding any permission they do not themselves hold
+  (`matchPermission` against the actor's resolved set), → 403 with the offending key.
+- Non-owners cannot assign a role to themselves at all, mirroring the existing self-grant block.
+- `DELETE .../members/:userId` is deliberately left open to any `dashboard.roles.manage` holder —
+  removing an assignment reduces privilege and cannot escalate.
 
 **Admission power.** `dashboard.roles.manage` now means "can admit people to the dashboard". It
 stays a single key, but the permissions page labels it that way so an owner delegating it
