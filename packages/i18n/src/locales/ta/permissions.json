@@ -41,7 +41,10 @@
     "defaultRole": "இயல்புநிலை பங்கு",
     "permissions": "அனுமதிகள்",
     "allBadge": "அனைத்தும்",
-    "discordRoles": "Discord பங்குகள்"
+    "discordRoles": "Discord பங்குகள்",
+    "permissionLabel": "{{resource}} {{action}}",
+    "registryError": "அனுமதிப் பட்டியலை ஏற்ற முடியவில்லை. பக்கத்தை புதுப்பிக்க முயற்சிக்கவும்.",
+    "registryEmpty": "இதுவரை ஒதுக்க அனுமதிகள் எதுவும் இல்லை."
   },
   "roleForm": {
     "name": "பங்கு பெயர்",
@@ -58,6 +61,7 @@
     "color": "நிறம்"
   },
   "permissionCategories": {
+    "dashboard": "டாஷ்போர்டு",
     "actions": "செயல்கள் & தன்னியக்கம்",
     "tempvoice": "TempVoice",
     "welcome": "வரவேற்பு & விடைபெறுதல்",
@@ -73,6 +77,33 @@
     "scheduled": "திட்டமிடப்பட்ட செய்திகள்",
     "commands": "தனிப்பயன் கட்டளைகள்",
     "settings": "சேவையக அமைப்புகள்"
+  },
+  "resources": {
+    "roles": "பங்குகள்",
+    "audit": "தணிக்கை பதிவு",
+    "settings": "அமைப்புகள்",
+    "lookups": "தேர்வாளர்கள்",
+    "cases": "வழக்குகள்",
+    "warnings": "எச்சரிக்கைகள்",
+    "punishments": "தண்டனைகள்",
+    "rules": "விதிகள்",
+    "analytics": "பகுப்பாய்வு",
+    "entries": "பதிவுகள்",
+    "config": "கட்டமைப்பு",
+    "test": "சோதனை செய்திகள்",
+    "leaderboard": "தலைவர் பட்டியல்",
+    "users": "பயனர்கள்",
+    "rewards": "வெகுமதிகள்",
+    "list": "பட்டியல்",
+    "panels": "பேனல்கள்",
+    "messages": "செய்திகள்",
+    "events": "நிகழ்வுகள்"
+  },
+  "permissionActions": {
+    "view": "காண்க",
+    "manage": "நிர்வகி",
+    "execute": "இயக்கு",
+    "purge": "அழி"
   },
   "audit": {
     "table": {

@@ -41,7 +41,10 @@
     "defaultRole": "Standaardrol",
     "permissions": "Rechten",
     "allBadge": "Alle",
-    "discordRoles": "Discord-rollen"
+    "discordRoles": "Discord-rollen",
+    "permissionLabel": "{{resource}} {{action}}",
+    "registryError": "De machtigingenlijst kon niet worden geladen. Probeer de pagina te vernieuwen.",
+    "registryEmpty": "Er zijn nog geen machtigingen beschikbaar om toe te wijzen."
   },
   "roleForm": {
     "name": "Rolnaam",
@@ -58,6 +61,7 @@
     "color": "Kleur"
   },
   "permissionCategories": {
+    "dashboard": "Dashboard",
     "actions": "Acties & Automatisering",
     "tempvoice": "TempVoice",
     "welcome": "Welkom & Afscheid",
@@ -73,6 +77,33 @@
     "scheduled": "Geplande berichten",
     "commands": "Aangepaste commando's",
     "settings": "Serverinstellingen"
+  },
+  "resources": {
+    "roles": "Rollen",
+    "audit": "Auditlogboek",
+    "settings": "Instellingen",
+    "lookups": "Kiezers",
+    "cases": "Zaken",
+    "warnings": "Waarschuwingen",
+    "punishments": "Straffen",
+    "rules": "Regels",
+    "analytics": "Analyses",
+    "entries": "Items",
+    "config": "Configuratie",
+    "test": "Testberichten",
+    "leaderboard": "Klassement",
+    "users": "Gebruikers",
+    "rewards": "Beloningen",
+    "list": "Lijst",
+    "panels": "Panelen",
+    "messages": "Berichten",
+    "events": "Gebeurtenissen"
+  },
+  "permissionActions": {
+    "view": "Weergeven",
+    "manage": "Beheren",
+    "execute": "Uitvoeren",
+    "purge": "Wissen"
   },
   "audit": {
     "table": {

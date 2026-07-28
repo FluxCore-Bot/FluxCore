@@ -41,7 +41,10 @@
     "defaultRole": "Роль за замовчуванням",
     "permissions": "Права",
     "allBadge": "Всі",
-    "discordRoles": "Ролі Discord"
+    "discordRoles": "Ролі Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Не вдалося завантажити список дозволів. Спробуйте оновити сторінку.",
+    "registryEmpty": "Поки що немає дозволів, доступних для призначення."
   },
   "roleForm": {
     "name": "Назва ролі",
@@ -58,6 +61,7 @@
     "color": "Колір"
   },
   "permissionCategories": {
+    "dashboard": "Панель керування",
     "actions": "Дії та автоматизація",
     "tempvoice": "TempVoice",
     "welcome": "Привітання та прощання",
@@ -73,6 +77,33 @@
     "scheduled": "Заплановані повідомлення",
     "commands": "Користувацькі команди",
     "settings": "Налаштування сервера"
+  },
+  "resources": {
+    "roles": "Ролі",
+    "audit": "Журнал аудиту",
+    "settings": "Налаштування",
+    "lookups": "Селектори",
+    "cases": "Випадки",
+    "warnings": "Попередження",
+    "punishments": "Покарання",
+    "rules": "Правила",
+    "analytics": "Аналітика",
+    "entries": "Записи",
+    "config": "Конфігурація",
+    "test": "Тестові повідомлення",
+    "leaderboard": "Таблиця лідерів",
+    "users": "Користувачі",
+    "rewards": "Нагороди",
+    "list": "Список",
+    "panels": "Панелі",
+    "messages": "Повідомлення",
+    "events": "Події"
+  },
+  "permissionActions": {
+    "view": "Перегляд",
+    "manage": "Керування",
+    "execute": "Виконання",
+    "purge": "Очищення"
   },
   "audit": {
     "table": {

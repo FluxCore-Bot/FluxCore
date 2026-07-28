@@ -41,7 +41,10 @@
     "defaultRole": "Lehenetsitako rola",
     "permissions": "Baimenak",
     "allBadge": "Denak",
-    "discordRoles": "Discord rolak"
+    "discordRoles": "Discord rolak",
+    "permissionLabel": "{{resource}} {{action}}",
+    "registryError": "Baimen-zerrenda ezin izan da kargatu. Saiatu orria freskatzen.",
+    "registryEmpty": "Oraindik ez dago esleitzeko baimenik erabilgarri."
   },
   "roleForm": {
     "name": "Rol-izena",
@@ -58,6 +61,7 @@
     "color": "Kolorea"
   },
   "permissionCategories": {
+    "dashboard": "Kontrol-panela",
     "actions": "Ekintzak eta automatizazioa",
     "tempvoice": "TempVoice",
     "welcome": "Ongi etorria eta agurra",
@@ -73,6 +77,33 @@
     "scheduled": "Programatutako mezuak",
     "commands": "Komando pertsonalizatuak",
     "settings": "Zerbitzariaren ezarpenak"
+  },
+  "resources": {
+    "roles": "Rolak",
+    "audit": "Auditoretza-erregistroa",
+    "settings": "Ezarpenak",
+    "lookups": "Hautatzaileak",
+    "cases": "Kasuak",
+    "warnings": "Abisuak",
+    "punishments": "Zigorrak",
+    "rules": "Arauak",
+    "analytics": "Analitika",
+    "entries": "Sarrerak",
+    "config": "Konfigurazioa",
+    "test": "Proba-mezuak",
+    "leaderboard": "Sailkapena",
+    "users": "Erabiltzaileak",
+    "rewards": "Sariak",
+    "list": "Zerrenda",
+    "panels": "Panelak",
+    "messages": "Mezuak",
+    "events": "Gertaerak"
+  },
+  "permissionActions": {
+    "view": "Ikusi",
+    "manage": "Kudeatu",
+    "execute": "Exekutatu",
+    "purge": "Garbitu"
   },
   "audit": {
     "table": {

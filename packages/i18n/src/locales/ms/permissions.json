@@ -41,7 +41,10 @@
     "defaultRole": "Peranan lalai",
     "permissions": "Kebenaran",
     "allBadge": "Semua",
-    "discordRoles": "Peranan Discord"
+    "discordRoles": "Peranan Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Senarai kebenaran tidak dapat dimuatkan. Cuba muat semula halaman.",
+    "registryEmpty": "Belum ada kebenaran tersedia untuk diberikan."
   },
   "roleForm": {
     "name": "Nama Peranan",
@@ -58,6 +61,7 @@
     "color": "Warna"
   },
   "permissionCategories": {
+    "dashboard": "Papan Pemuka",
     "actions": "Tindakan & Automasi",
     "tempvoice": "TempVoice",
     "welcome": "Selamat Datang & Selamat Tinggal",
@@ -73,6 +77,33 @@
     "scheduled": "Mesej Berjadual",
     "commands": "Arahan Tersuai",
     "settings": "Tetapan Pelayan"
+  },
+  "resources": {
+    "roles": "Peranan",
+    "audit": "Log Audit",
+    "settings": "Tetapan",
+    "lookups": "Pemilih",
+    "cases": "Kes",
+    "warnings": "Amaran",
+    "punishments": "Hukuman",
+    "rules": "Peraturan",
+    "analytics": "Analitik",
+    "entries": "Entri",
+    "config": "Konfigurasi",
+    "test": "Mesej Ujian",
+    "leaderboard": "Papan Pendahulu",
+    "users": "Pengguna",
+    "rewards": "Ganjaran",
+    "list": "Senarai",
+    "panels": "Panel",
+    "messages": "Mesej",
+    "events": "Peristiwa"
+  },
+  "permissionActions": {
+    "view": "Lihat",
+    "manage": "Urus",
+    "execute": "Laksana",
+    "purge": "Bersihkan"
   },
   "audit": {
     "table": {

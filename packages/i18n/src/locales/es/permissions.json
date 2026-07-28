@@ -41,7 +41,10 @@
     "defaultRole": "Rol predeterminado",
     "permissions": "Permisos",
     "allBadge": "Todos",
-    "discordRoles": "Roles de Discord"
+    "discordRoles": "Roles de Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "No se pudo cargar la lista de permisos. Intenta actualizar la página.",
+    "registryEmpty": "Aún no hay permisos disponibles para asignar."
   },
   "roleForm": {
     "name": "Nombre del rol",
@@ -58,6 +61,7 @@
     "color": "Color"
   },
   "permissionCategories": {
+    "dashboard": "Panel de control",
     "actions": "Acciones y automatizacion",
     "tempvoice": "TempVoice",
     "welcome": "Bienvenida y despedida",
@@ -73,6 +77,33 @@
     "scheduled": "Mensajes programados",
     "commands": "Comandos personalizados",
     "settings": "Configuracion del servidor"
+  },
+  "resources": {
+    "roles": "Roles",
+    "audit": "Registro de auditoría",
+    "settings": "Configuración",
+    "lookups": "Selectores",
+    "cases": "Casos",
+    "warnings": "Advertencias",
+    "punishments": "Sanciones",
+    "rules": "Reglas",
+    "analytics": "Analíticas",
+    "entries": "Entradas",
+    "config": "Configuración",
+    "test": "Mensajes de prueba",
+    "leaderboard": "Clasificación",
+    "users": "Usuarios",
+    "rewards": "Recompensas",
+    "list": "Lista",
+    "panels": "Paneles",
+    "messages": "Mensajes",
+    "events": "Eventos"
+  },
+  "permissionActions": {
+    "view": "Ver",
+    "manage": "Gestionar",
+    "execute": "Ejecutar",
+    "purge": "Purgar"
   },
   "audit": {
     "table": {

@@ -41,7 +41,10 @@
     "defaultRole": "Standardroll",
     "permissions": "Behörigheter",
     "allBadge": "Alla",
-    "discordRoles": "Discord-roller"
+    "discordRoles": "Discord-roller",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Behörighetslistan kunde inte läsas in. Försök uppdatera sidan.",
+    "registryEmpty": "Det finns inga behörigheter att tilldela än."
   },
   "roleForm": {
     "name": "Rollnamn",
@@ -58,6 +61,7 @@
     "color": "Färg"
   },
   "permissionCategories": {
+    "dashboard": "Instrumentpanel",
     "actions": "Åtgärder & automatisering",
     "tempvoice": "TempVoice",
     "welcome": "Välkommen & farväl",
@@ -73,6 +77,33 @@
     "scheduled": "Schemalagda meddelanden",
     "commands": "Anpassade kommandon",
     "settings": "Serverinställningar"
+  },
+  "resources": {
+    "roles": "Roller",
+    "audit": "Revisionslogg",
+    "settings": "Inställningar",
+    "lookups": "Väljare",
+    "cases": "Ärenden",
+    "warnings": "Varningar",
+    "punishments": "Bestraffningar",
+    "rules": "Regler",
+    "analytics": "Analys",
+    "entries": "Poster",
+    "config": "Konfiguration",
+    "test": "Testmeddelanden",
+    "leaderboard": "Topplista",
+    "users": "Användare",
+    "rewards": "Belöningar",
+    "list": "Lista",
+    "panels": "Paneler",
+    "messages": "Meddelanden",
+    "events": "Händelser"
+  },
+  "permissionActions": {
+    "view": "Visa",
+    "manage": "Hantera",
+    "execute": "Kör",
+    "purge": "Rensa"
   },
   "audit": {
     "table": {

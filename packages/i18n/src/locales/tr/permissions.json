@@ -41,7 +41,10 @@
     "defaultRole": "Varsayılan rol",
     "permissions": "İzinler",
     "allBadge": "Tümü",
-    "discordRoles": "Discord Rolleri"
+    "discordRoles": "Discord Rolleri",
+    "permissionLabel": "{{resource}} {{action}}",
+    "registryError": "İzin listesi yüklenemedi. Sayfayı yenilemeyi deneyin.",
+    "registryEmpty": "Henüz atanabilecek izin yok."
   },
   "roleForm": {
     "name": "Rol Adı",
@@ -58,6 +61,7 @@
     "color": "Renk"
   },
   "permissionCategories": {
+    "dashboard": "Kontrol Paneli",
     "actions": "Eylemler ve Otomasyon",
     "tempvoice": "Geçici Ses",
     "welcome": "Hoş Geldin ve Güle Güle",
@@ -73,6 +77,33 @@
     "scheduled": "Zamanlanmış Mesajlar",
     "commands": "Özel Komutlar",
     "settings": "Sunucu Ayarları"
+  },
+  "resources": {
+    "roles": "Roller",
+    "audit": "Denetim Günlüğü",
+    "settings": "Ayarlar",
+    "lookups": "Seçiciler",
+    "cases": "Vakalar",
+    "warnings": "Uyarılar",
+    "punishments": "Cezalar",
+    "rules": "Kurallar",
+    "analytics": "Analitik",
+    "entries": "Kayıtlar",
+    "config": "Yapılandırma",
+    "test": "Test Mesajları",
+    "leaderboard": "Lider Tablosu",
+    "users": "Kullanıcılar",
+    "rewards": "Ödüller",
+    "list": "Liste",
+    "panels": "Paneller",
+    "messages": "Mesajlar",
+    "events": "Olaylar"
+  },
+  "permissionActions": {
+    "view": "Görüntüle",
+    "manage": "Yönet",
+    "execute": "Çalıştır",
+    "purge": "Temizle"
   },
   "audit": {
     "table": {

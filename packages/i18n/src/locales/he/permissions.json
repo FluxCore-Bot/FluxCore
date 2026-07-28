@@ -41,7 +41,10 @@
     "defaultRole": "תפקיד ברירת מחדל",
     "permissions": "הרשאות",
     "allBadge": "הכל",
-    "discordRoles": "תפקידי Discord"
+    "discordRoles": "תפקידי Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "לא ניתן היה לטעון את רשימת ההרשאות. נסה לרענן את הדף.",
+    "registryEmpty": "אין עדיין הרשאות זמינות להקצאה."
   },
   "roleForm": {
     "name": "שם תפקיד",
@@ -58,6 +61,7 @@
     "color": "צבע"
   },
   "permissionCategories": {
+    "dashboard": "לוח בקרה",
     "actions": "פעולות ואוטומציה",
     "tempvoice": "קול זמני",
     "welcome": "ברוכים הבאים ופרידה",
@@ -73,6 +77,33 @@
     "scheduled": "הודעות מתוזמנות",
     "commands": "פקודות מותאמות",
     "settings": "הגדרות שרת"
+  },
+  "resources": {
+    "roles": "תפקידים",
+    "audit": "יומן ביקורת",
+    "settings": "הגדרות",
+    "lookups": "בוררים",
+    "cases": "תיקים",
+    "warnings": "אזהרות",
+    "punishments": "ענישה",
+    "rules": "חוקים",
+    "analytics": "ניתוחים",
+    "entries": "רשומות",
+    "config": "תצורה",
+    "test": "הודעות בדיקה",
+    "leaderboard": "טבלת מובילים",
+    "users": "משתמשים",
+    "rewards": "תגמולים",
+    "list": "רשימה",
+    "panels": "לוחות",
+    "messages": "הודעות",
+    "events": "אירועים"
+  },
+  "permissionActions": {
+    "view": "הצגה",
+    "manage": "ניהול",
+    "execute": "הרצה",
+    "purge": "ניקוי"
   },
   "audit": {
     "table": {

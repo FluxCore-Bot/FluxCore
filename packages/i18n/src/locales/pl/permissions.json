@@ -41,7 +41,10 @@
     "defaultRole": "Rola domyślna",
     "permissions": "Uprawnienia",
     "allBadge": "Wszystkie",
-    "discordRoles": "Role Discord"
+    "discordRoles": "Role Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Nie udało się wczytać listy uprawnień. Spróbuj odświeżyć stronę.",
+    "registryEmpty": "Nie ma jeszcze żadnych uprawnień do przypisania."
   },
   "roleForm": {
     "name": "Nazwa roli",
@@ -58,6 +61,7 @@
     "color": "Kolor"
   },
   "permissionCategories": {
+    "dashboard": "Pulpit nawigacyjny",
     "actions": "Akcje i automatyzacja",
     "tempvoice": "TempVoice",
     "welcome": "Powitanie i pożegnanie",
@@ -73,6 +77,33 @@
     "scheduled": "Zaplanowane wiadomości",
     "commands": "Komendy niestandardowe",
     "settings": "Ustawienia serwera"
+  },
+  "resources": {
+    "roles": "Role",
+    "audit": "Dziennik audytu",
+    "settings": "Ustawienia",
+    "lookups": "Selektory",
+    "cases": "Sprawy",
+    "warnings": "Ostrzeżenia",
+    "punishments": "Kary",
+    "rules": "Reguły",
+    "analytics": "Analityka",
+    "entries": "Wpisy",
+    "config": "Konfiguracja",
+    "test": "Wiadomości testowe",
+    "leaderboard": "Ranking",
+    "users": "Użytkownicy",
+    "rewards": "Nagrody",
+    "list": "Lista",
+    "panels": "Panele",
+    "messages": "Wiadomości",
+    "events": "Zdarzenia"
+  },
+  "permissionActions": {
+    "view": "Wyświetl",
+    "manage": "Zarządzaj",
+    "execute": "Wykonaj",
+    "purge": "Wyczyść"
   },
   "audit": {
     "table": {

@@ -41,7 +41,10 @@
     "defaultRole": "Vai trò mặc định",
     "permissions": "Quyền Hạn",
     "allBadge": "Tất Cả",
-    "discordRoles": "Vai Trò Discord"
+    "discordRoles": "Vai Trò Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Không thể tải danh sách quyền. Hãy thử làm mới trang.",
+    "registryEmpty": "Hiện chưa có quyền nào khả dụng để gán."
   },
   "roleForm": {
     "name": "Tên Vai Trò",
@@ -58,6 +61,7 @@
     "color": "Màu Sắc"
   },
   "permissionCategories": {
+    "dashboard": "Bảng Điều Khiển",
     "actions": "Hành Động & Tự Động Hóa",
     "tempvoice": "Kênh Thoại Tạm",
     "welcome": "Chào Mừng & Tạm Biệt",
@@ -73,6 +77,33 @@
     "scheduled": "Tin Nhắn Lịch Trình",
     "commands": "Lệnh Tùy Chỉnh",
     "settings": "Cài Đặt Máy Chủ"
+  },
+  "resources": {
+    "roles": "Vai Trò",
+    "audit": "Nhật Ký Kiểm Toán",
+    "settings": "Cài Đặt",
+    "lookups": "Bộ Chọn",
+    "cases": "Trường Hợp",
+    "warnings": "Cảnh Báo",
+    "punishments": "Hình Phạt",
+    "rules": "Quy Tắc",
+    "analytics": "Phân Tích",
+    "entries": "Mục",
+    "config": "Cấu Hình",
+    "test": "Tin Nhắn Thử Nghiệm",
+    "leaderboard": "Bảng Xếp Hạng",
+    "users": "Người Dùng",
+    "rewards": "Phần Thưởng",
+    "list": "Danh Sách",
+    "panels": "Bảng",
+    "messages": "Tin Nhắn",
+    "events": "Sự Kiện"
+  },
+  "permissionActions": {
+    "view": "Xem",
+    "manage": "Quản Lý",
+    "execute": "Thực Thi",
+    "purge": "Xóa Sạch"
   },
   "audit": {
     "table": {

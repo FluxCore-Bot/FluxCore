@@ -41,7 +41,10 @@
     "defaultRole": "Zadana uloga",
     "permissions": "Dozvole",
     "allBadge": "Sve",
-    "discordRoles": "Discord uloge"
+    "discordRoles": "Discord uloge",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Popis dozvola nije uspio učitati. Pokušajte osvježiti stranicu.",
+    "registryEmpty": "Trenutno nema dostupnih dozvola za dodjelu."
   },
   "roleForm": {
     "name": "Naziv uloge",
@@ -58,6 +61,7 @@
     "color": "Boja"
   },
   "permissionCategories": {
+    "dashboard": "Nadzorna ploča",
     "actions": "Radnje i automatizacija",
     "tempvoice": "TempVoice",
     "welcome": "Dobrodoslica i oprostaj",
@@ -73,6 +77,33 @@
     "scheduled": "Zakazane poruke",
     "commands": "Prilagodene naredbe",
     "settings": "Postavke posluzitelja"
+  },
+  "resources": {
+    "roles": "Uloge",
+    "audit": "Revizijski zapis",
+    "settings": "Postavke",
+    "lookups": "Birači",
+    "cases": "Slučajevi",
+    "warnings": "Upozorenja",
+    "punishments": "Kazne",
+    "rules": "Pravila",
+    "analytics": "Analitika",
+    "entries": "Unosi",
+    "config": "Konfiguracija",
+    "test": "Testne poruke",
+    "leaderboard": "Ljestvica",
+    "users": "Korisnici",
+    "rewards": "Nagrade",
+    "list": "Popis",
+    "panels": "Paneli",
+    "messages": "Poruke",
+    "events": "Događaji"
+  },
+  "permissionActions": {
+    "view": "Pregled",
+    "manage": "Upravljanje",
+    "execute": "Izvršavanje",
+    "purge": "Brisanje"
   },
   "audit": {
     "table": {

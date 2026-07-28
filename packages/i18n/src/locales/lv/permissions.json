@@ -41,7 +41,10 @@
     "defaultRole": "Noklusetaa loma",
     "permissions": "Atlaujas",
     "allBadge": "Visas",
-    "discordRoles": "Discord lomas"
+    "discordRoles": "Discord lomas",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Neizdevās ielādēt atļauju sarakstu. Mēģiniet atsvaidzināt lapu.",
+    "registryEmpty": "Pagaidām nav pieejamu atļauju piešķiršanai."
   },
   "roleForm": {
     "name": "Lomas nosaukums",
@@ -58,6 +61,7 @@
     "color": "Krasa"
   },
   "permissionCategories": {
+    "dashboard": "Vadības panelis",
     "actions": "Darbibas un automatizacija",
     "tempvoice": "TempVoice",
     "welcome": "Sveiciens un atvadas",
@@ -73,6 +77,33 @@
     "scheduled": "Ieplanotie zinojumi",
     "commands": "Pieelagotas komandas",
     "settings": "Servera iestatijumi"
+  },
+  "resources": {
+    "roles": "Lomas",
+    "audit": "Audita žurnāls",
+    "settings": "Iestatījumi",
+    "lookups": "Atlasītāji",
+    "cases": "Gadījumi",
+    "warnings": "Brīdinājumi",
+    "punishments": "Sodi",
+    "rules": "Noteikumi",
+    "analytics": "Analītika",
+    "entries": "Ieraksti",
+    "config": "Konfigurācija",
+    "test": "Testa ziņojumi",
+    "leaderboard": "Līderu tabula",
+    "users": "Lietotāji",
+    "rewards": "Balvas",
+    "list": "Saraksts",
+    "panels": "Paneļi",
+    "messages": "Ziņojumi",
+    "events": "Notikumi"
+  },
+  "permissionActions": {
+    "view": "Skatīt",
+    "manage": "Pārvaldīt",
+    "execute": "Izpildīt",
+    "purge": "Notīrīt"
   },
   "audit": {
     "table": {

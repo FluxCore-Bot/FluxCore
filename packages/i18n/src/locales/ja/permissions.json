@@ -41,7 +41,10 @@
     "defaultRole": "デフォルトロール",
     "permissions": "権限",
     "allBadge": "すべて",
-    "discordRoles": "Discordロール"
+    "discordRoles": "Discordロール",
+    "permissionLabel": "{{resource}}{{action}}",
+    "registryError": "権限リストを読み込めませんでした。ページを更新してください。",
+    "registryEmpty": "割り当てられる権限はまだありません。"
   },
   "roleForm": {
     "name": "ロール名",
@@ -58,6 +61,7 @@
     "color": "色"
   },
   "permissionCategories": {
+    "dashboard": "ダッシュボード",
     "actions": "アクション＆自動化",
     "tempvoice": "テンポラリボイス",
     "welcome": "ウェルカム＆お別れ",
@@ -73,6 +77,33 @@
     "scheduled": "予約メッセージ",
     "commands": "カスタムコマンド",
     "settings": "サーバー設定"
+  },
+  "resources": {
+    "roles": "ロール",
+    "audit": "監査ログ",
+    "settings": "設定",
+    "lookups": "セレクター",
+    "cases": "ケース",
+    "warnings": "警告",
+    "punishments": "処罰",
+    "rules": "ルール",
+    "analytics": "分析",
+    "entries": "項目",
+    "config": "コンフィグ",
+    "test": "テストメッセージ",
+    "leaderboard": "リーダーボード",
+    "users": "ユーザー",
+    "rewards": "報酬",
+    "list": "リスト",
+    "panels": "パネル",
+    "messages": "メッセージ",
+    "events": "イベント"
+  },
+  "permissionActions": {
+    "view": "表示",
+    "manage": "管理",
+    "execute": "実行",
+    "purge": "消去"
   },
   "audit": {
     "table": {

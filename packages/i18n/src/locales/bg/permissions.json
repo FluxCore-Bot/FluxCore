@@ -41,7 +41,10 @@
     "defaultRole": "Роля по подразбиране",
     "permissions": "Разрешения",
     "allBadge": "Всички",
-    "discordRoles": "Discord роли"
+    "discordRoles": "Discord роли",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Списъкът с разрешения не можа да се зареди. Опитайте да презаредите страницата.",
+    "registryEmpty": "Все още няма налични разрешения за присвояване."
   },
   "roleForm": {
     "name": "Име на ролята",
@@ -58,6 +61,7 @@
     "color": "Цвят"
   },
   "permissionCategories": {
+    "dashboard": "Табло",
     "actions": "Действия и автоматизация",
     "tempvoice": "TempVoice",
     "welcome": "Добре дошли и сбогом",
@@ -73,6 +77,33 @@
     "scheduled": "Планирани съобщения",
     "commands": "Персонализирани команди",
     "settings": "Настройки на сървъра"
+  },
+  "resources": {
+    "roles": "Роли",
+    "audit": "Одитен журнал",
+    "settings": "Настройки",
+    "lookups": "Избирачи",
+    "cases": "Случаи",
+    "warnings": "Предупреждения",
+    "punishments": "Наказания",
+    "rules": "Правила",
+    "analytics": "Анализи",
+    "entries": "Записи",
+    "config": "Конфигурация",
+    "test": "Тестови съобщения",
+    "leaderboard": "Класация",
+    "users": "Потребители",
+    "rewards": "Награди",
+    "list": "Списък",
+    "panels": "Панели",
+    "messages": "Съобщения",
+    "events": "Събития"
+  },
+  "permissionActions": {
+    "view": "Преглед",
+    "manage": "Управление",
+    "execute": "Изпълнение",
+    "purge": "Изчистване"
   },
   "audit": {
     "table": {

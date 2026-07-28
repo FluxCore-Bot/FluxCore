@@ -41,7 +41,10 @@
     "defaultRole": "Rol per defecte",
     "permissions": "Permisos",
     "allBadge": "Tots",
-    "discordRoles": "Rols de Discord"
+    "discordRoles": "Rols de Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "No s'ha pogut carregar la llista de permisos. Torna a carregar la pàgina.",
+    "registryEmpty": "Encara no hi ha permisos disponibles per assignar."
   },
   "roleForm": {
     "name": "Nom del rol",
@@ -58,6 +61,7 @@
     "color": "Color"
   },
   "permissionCategories": {
+    "dashboard": "Tauler de control",
     "actions": "Accions i automatització",
     "tempvoice": "TempVoice",
     "welcome": "Benvinguda i comiat",
@@ -73,6 +77,33 @@
     "scheduled": "Missatges programats",
     "commands": "Comandes personalitzades",
     "settings": "Configuració del servidor"
+  },
+  "resources": {
+    "roles": "Rols",
+    "audit": "Registre d'auditoria",
+    "settings": "Configuració",
+    "lookups": "Selectors",
+    "cases": "Casos",
+    "warnings": "Advertències",
+    "punishments": "Sancions",
+    "rules": "Regles",
+    "analytics": "Analítica",
+    "entries": "Entrades",
+    "config": "Configuració",
+    "test": "Missatges de prova",
+    "leaderboard": "Classificació",
+    "users": "Usuaris",
+    "rewards": "Recompenses",
+    "list": "Llista",
+    "panels": "Panells",
+    "messages": "Missatges",
+    "events": "Esdeveniments"
+  },
+  "permissionActions": {
+    "view": "Veure",
+    "manage": "Gestionar",
+    "execute": "Executar",
+    "purge": "Purgar"
   },
   "audit": {
     "table": {

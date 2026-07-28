@@ -41,7 +41,10 @@
     "defaultRole": "Verstekrol",
     "permissions": "Toestemmings",
     "allBadge": "Almal",
-    "discordRoles": "Discord-rolle"
+    "discordRoles": "Discord-rolle",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Die toestemminglys kon nie gelaai word nie. Probeer om die bladsy te herlaai.",
+    "registryEmpty": "Daar is nog geen toestemmings beskikbaar om toe te ken nie."
   },
   "roleForm": {
     "name": "Rolnaam",
@@ -58,6 +61,7 @@
     "color": "Kleur"
   },
   "permissionCategories": {
+    "dashboard": "Kontrolepaneel",
     "actions": "Aksies & Outomatisering",
     "tempvoice": "TempVoice",
     "welcome": "Welkom & Afskeid",
@@ -73,6 +77,33 @@
     "scheduled": "Geskeduleerde Boodskappe",
     "commands": "Pasgemaakte Opdragte",
     "settings": "Bedienerinstellings"
+  },
+  "resources": {
+    "roles": "Rolle",
+    "audit": "Ouditlogboek",
+    "settings": "Instellings",
+    "lookups": "Kiesers",
+    "cases": "Sake",
+    "warnings": "Waarskuwings",
+    "punishments": "Strawwe",
+    "rules": "Reëls",
+    "analytics": "Analise",
+    "entries": "Inskrywings",
+    "config": "Konfigurasie",
+    "test": "Toetsboodskappe",
+    "leaderboard": "Ranglys",
+    "users": "Gebruikers",
+    "rewards": "Belonings",
+    "list": "Lys",
+    "panels": "Panele",
+    "messages": "Boodskappe",
+    "events": "Gebeurtenisse"
+  },
+  "permissionActions": {
+    "view": "Bekyk",
+    "manage": "Bestuur",
+    "execute": "Voer uit",
+    "purge": "Vee uit"
   },
   "audit": {
     "table": {

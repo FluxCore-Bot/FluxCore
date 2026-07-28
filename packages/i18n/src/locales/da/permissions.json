@@ -41,7 +41,10 @@
     "defaultRole": "Standardrolle",
     "permissions": "Tilladelser",
     "allBadge": "Alle",
-    "discordRoles": "Discord-roller"
+    "discordRoles": "Discord-roller",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Tilladelseslisten kunne ikke indlæses. Prøv at genindlæse siden.",
+    "registryEmpty": "Der er endnu ingen tilladelser tilgængelige at tildele."
   },
   "roleForm": {
     "name": "Rollenavn",
@@ -58,6 +61,7 @@
     "color": "Farve"
   },
   "permissionCategories": {
+    "dashboard": "Kontrolpanel",
     "actions": "Handlinger og automatisering",
     "tempvoice": "TempVoice",
     "welcome": "Velkommen og farvel",
@@ -73,6 +77,33 @@
     "scheduled": "Planlagte beskeder",
     "commands": "Brugerdefinerede kommandoer",
     "settings": "Serverindstillinger"
+  },
+  "resources": {
+    "roles": "Roller",
+    "audit": "Revisionslog",
+    "settings": "Indstillinger",
+    "lookups": "Vælgere",
+    "cases": "Sager",
+    "warnings": "Advarsler",
+    "punishments": "Straffe",
+    "rules": "Regler",
+    "analytics": "Analyser",
+    "entries": "Poster",
+    "config": "Konfiguration",
+    "test": "Testbeskeder",
+    "leaderboard": "Rangliste",
+    "users": "Brugere",
+    "rewards": "Belønninger",
+    "list": "Liste",
+    "panels": "Paneler",
+    "messages": "Beskeder",
+    "events": "Hændelser"
+  },
+  "permissionActions": {
+    "view": "Vis",
+    "manage": "Administrer",
+    "execute": "Udfør",
+    "purge": "Ryd"
   },
   "audit": {
     "table": {

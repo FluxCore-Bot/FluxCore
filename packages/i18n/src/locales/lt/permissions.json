@@ -41,7 +41,10 @@
     "defaultRole": "Numatytoji role",
     "permissions": "Leidimai",
     "allBadge": "Visi",
-    "discordRoles": "Discord roles"
+    "discordRoles": "Discord roles",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Nepavyko įkelti leidimų sąrašo. Pabandykite iš naujo įkelti puslapį.",
+    "registryEmpty": "Kol kas nėra priskirtinų leidimų."
   },
   "roleForm": {
     "name": "Roles pavadinimas",
@@ -58,6 +61,7 @@
     "color": "Spalva"
   },
   "permissionCategories": {
+    "dashboard": "Valdymo skydelis",
     "actions": "Veiksmai ir automatizavimas",
     "tempvoice": "TempVoice",
     "welcome": "Pasisveikinimas ir atsisveikinimas",
@@ -73,6 +77,33 @@
     "scheduled": "Suplanuotos zinutes",
     "commands": "Pasirinktines komandos",
     "settings": "Serverio nustatymai"
+  },
+  "resources": {
+    "roles": "Rolės",
+    "audit": "Audito žurnalas",
+    "settings": "Nustatymai",
+    "lookups": "Parinkikliai",
+    "cases": "Atvejai",
+    "warnings": "Įspėjimai",
+    "punishments": "Bausmės",
+    "rules": "Taisyklės",
+    "analytics": "Analitika",
+    "entries": "Įrašai",
+    "config": "Konfigūracija",
+    "test": "Bandomieji pranešimai",
+    "leaderboard": "Lyderių lentelė",
+    "users": "Naudotojai",
+    "rewards": "Apdovanojimai",
+    "list": "Sąrašas",
+    "panels": "Paneliai",
+    "messages": "Žinutės",
+    "events": "Įvykiai"
+  },
+  "permissionActions": {
+    "view": "Peržiūrėti",
+    "manage": "Valdyti",
+    "execute": "Vykdyti",
+    "purge": "Išvalyti"
   },
   "audit": {
     "table": {

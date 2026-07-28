@@ -41,7 +41,10 @@
     "defaultRole": "บทบาทเริ่มต้น",
     "permissions": "สิทธิ์",
     "allBadge": "ทั้งหมด",
-    "discordRoles": "บทบาท Discord"
+    "discordRoles": "บทบาท Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "ไม่สามารถโหลดรายการสิทธิ์ได้ ลองรีเฟรชหน้านี้",
+    "registryEmpty": "ยังไม่มีสิทธิ์ที่สามารถกำหนดได้"
   },
   "roleForm": {
     "name": "ชื่อบทบาท",
@@ -58,6 +61,7 @@
     "color": "สี"
   },
   "permissionCategories": {
+    "dashboard": "แดชบอร์ด",
     "actions": "แอ็กชันและระบบอัตโนมัติ",
     "tempvoice": "ห้องเสียงชั่วคราว",
     "welcome": "ต้อนรับและอำลา",
@@ -73,6 +77,33 @@
     "scheduled": "ข้อความตั้งเวลา",
     "commands": "คำสั่งกำหนดเอง",
     "settings": "การตั้งค่าเซิร์ฟเวอร์"
+  },
+  "resources": {
+    "roles": "บทบาท",
+    "audit": "บันทึกตรวจสอบ",
+    "settings": "การตั้งค่า",
+    "lookups": "ตัวเลือก",
+    "cases": "เคส",
+    "warnings": "คำเตือน",
+    "punishments": "การลงโทษ",
+    "rules": "กฎ",
+    "analytics": "การวิเคราะห์",
+    "entries": "รายการ",
+    "config": "การกำหนดค่า",
+    "test": "ข้อความทดสอบ",
+    "leaderboard": "ลีดเดอร์บอร์ด",
+    "users": "ผู้ใช้",
+    "rewards": "รางวัล",
+    "list": "รายชื่อ",
+    "panels": "แผง",
+    "messages": "ข้อความ",
+    "events": "เหตุการณ์"
+  },
+  "permissionActions": {
+    "view": "ดู",
+    "manage": "จัดการ",
+    "execute": "ดำเนินการ",
+    "purge": "ล้างข้อมูล"
   },
   "audit": {
     "table": {

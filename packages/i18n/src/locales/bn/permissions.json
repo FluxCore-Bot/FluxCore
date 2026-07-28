@@ -41,7 +41,10 @@
     "defaultRole": "ডিফল্ট রোল",
     "permissions": "অনুমতি",
     "allBadge": "সব",
-    "discordRoles": "Discord রোল"
+    "discordRoles": "Discord রোল",
+    "permissionLabel": "{{resource}} {{action}}",
+    "registryError": "অনুমতির তালিকা লোড করা যায়নি। পৃষ্ঠাটি রিফ্রেশ করার চেষ্টা করুন।",
+    "registryEmpty": "এখনও বরাদ্দ করার জন্য কোনো অনুমতি উপলব্ধ নেই।"
   },
   "roleForm": {
     "name": "রোলের নাম",
@@ -58,6 +61,7 @@
     "color": "রঙ"
   },
   "permissionCategories": {
+    "dashboard": "ড্যাশবোর্ড",
     "actions": "অ্যাকশন ও অটোমেশন",
     "tempvoice": "TempVoice",
     "welcome": "স্বাগতম ও বিদায়",
@@ -73,6 +77,33 @@
     "scheduled": "শিডিউলড বার্তা",
     "commands": "কাস্টম কমান্ড",
     "settings": "সার্ভার সেটিংস"
+  },
+  "resources": {
+    "roles": "রোল",
+    "audit": "অডিট লগ",
+    "settings": "সেটিংস",
+    "lookups": "নির্বাচক",
+    "cases": "কেস",
+    "warnings": "সতর্কতা",
+    "punishments": "শাস্তি",
+    "rules": "নিয়ম",
+    "analytics": "বিশ্লেষণ",
+    "entries": "এন্ট্রি",
+    "config": "কনফিগারেশন",
+    "test": "টেস্ট বার্তা",
+    "leaderboard": "লিডারবোর্ড",
+    "users": "ব্যবহারকারী",
+    "rewards": "পুরস্কার",
+    "list": "তালিকা",
+    "panels": "প্যানেল",
+    "messages": "বার্তা",
+    "events": "ইভেন্ট"
+  },
+  "permissionActions": {
+    "view": "দেখুন",
+    "manage": "পরিচালনা করুন",
+    "execute": "সম্পাদন করুন",
+    "purge": "মুছে ফেলুন"
   },
   "audit": {
     "table": {

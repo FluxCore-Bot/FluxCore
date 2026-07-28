@@ -41,7 +41,10 @@
     "defaultRole": "Роль по умолчанию",
     "permissions": "Права",
     "allBadge": "Все",
-    "discordRoles": "Роли Discord"
+    "discordRoles": "Роли Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Не удалось загрузить список разрешений. Попробуйте обновить страницу.",
+    "registryEmpty": "Пока нет доступных разрешений для назначения."
   },
   "roleForm": {
     "name": "Название роли",
@@ -58,6 +61,7 @@
     "color": "Цвет"
   },
   "permissionCategories": {
+    "dashboard": "Панель управления",
     "actions": "Действия и автоматизация",
     "tempvoice": "TempVoice",
     "welcome": "Приветствие и прощание",
@@ -73,6 +77,33 @@
     "scheduled": "Отложенные сообщения",
     "commands": "Пользовательские команды",
     "settings": "Настройки сервера"
+  },
+  "resources": {
+    "roles": "Роли",
+    "audit": "Журнал аудита",
+    "settings": "Настройки",
+    "lookups": "Селекторы",
+    "cases": "Случаи",
+    "warnings": "Предупреждения",
+    "punishments": "Наказания",
+    "rules": "Правила",
+    "analytics": "Аналитика",
+    "entries": "Записи",
+    "config": "Конфигурация",
+    "test": "Тестовые сообщения",
+    "leaderboard": "Таблица лидеров",
+    "users": "Пользователи",
+    "rewards": "Награды",
+    "list": "Список",
+    "panels": "Панели",
+    "messages": "Сообщения",
+    "events": "События"
+  },
+  "permissionActions": {
+    "view": "Просмотр",
+    "manage": "Управление",
+    "execute": "Выполнение",
+    "purge": "Очистка"
   },
   "audit": {
     "table": {

@@ -41,7 +41,10 @@
     "defaultRole": "Privzeta vloga",
     "permissions": "Dovoljenja",
     "allBadge": "Vse",
-    "discordRoles": "Discord vloge"
+    "discordRoles": "Discord vloge",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Seznama dovoljenj ni bilo mogoče naložiti. Poskusite osvežiti stran.",
+    "registryEmpty": "Trenutno ni na voljo nobenih dovoljenj za dodelitev."
   },
   "roleForm": {
     "name": "Ime vloge",
@@ -58,6 +61,7 @@
     "color": "Barva"
   },
   "permissionCategories": {
+    "dashboard": "Nadzorna plošča",
     "actions": "Dejanja in avtomatizacija",
     "tempvoice": "TempVoice",
     "welcome": "Dobrodošlica in poslovitev",
@@ -73,6 +77,33 @@
     "scheduled": "Načrtovana sporočila",
     "commands": "Lastni ukazi",
     "settings": "Nastavitve strežnika"
+  },
+  "resources": {
+    "roles": "Vloge",
+    "audit": "Revizijski dnevnik",
+    "settings": "Nastavitve",
+    "lookups": "Izbirniki",
+    "cases": "Primeri",
+    "warnings": "Opozorila",
+    "punishments": "Kazni",
+    "rules": "Pravila",
+    "analytics": "Analitika",
+    "entries": "Vnosi",
+    "config": "Konfiguracija",
+    "test": "Testna sporočila",
+    "leaderboard": "Lestvica",
+    "users": "Uporabniki",
+    "rewards": "Nagrade",
+    "list": "Seznam",
+    "panels": "Plošče",
+    "messages": "Sporočila",
+    "events": "Dogodki"
+  },
+  "permissionActions": {
+    "view": "Ogled",
+    "manage": "Upravljanje",
+    "execute": "Izvedba",
+    "purge": "Čiščenje"
   },
   "audit": {
     "table": {

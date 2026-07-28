@@ -41,7 +41,10 @@
     "defaultRole": "ڈیفالٹ رول",
     "permissions": "اجازتیں",
     "allBadge": "تمام",
-    "discordRoles": "Discord رولز"
+    "discordRoles": "Discord رولز",
+    "permissionLabel": "{{resource}} {{action}}",
+    "registryError": "اجازتوں کی فہرست لوڈ نہیں ہو سکی۔ صفحہ ریفریش کرنے کی کوشش کریں۔",
+    "registryEmpty": "ابھی تفویض کرنے کے لیے کوئی اجازت دستیاب نہیں ہے۔"
   },
   "roleForm": {
     "name": "رول کا نام",
@@ -58,6 +61,7 @@
     "color": "رنگ"
   },
   "permissionCategories": {
+    "dashboard": "ڈیش بورڈ",
     "actions": "ایکشنز اور آٹومیشن",
     "tempvoice": "TempVoice",
     "welcome": "ویلکم اور الوداع",
@@ -73,6 +77,33 @@
     "scheduled": "شیڈولڈ پیغامات",
     "commands": "کسٹم کمانڈز",
     "settings": "سرور ترتیبات"
+  },
+  "resources": {
+    "roles": "کردار",
+    "audit": "آڈٹ لاگ",
+    "settings": "ترتیبات",
+    "lookups": "منتخب کنندگان",
+    "cases": "کیسز",
+    "warnings": "انتباہات",
+    "punishments": "سزائیں",
+    "rules": "قواعد",
+    "analytics": "تجزیات",
+    "entries": "اندراجات",
+    "config": "تشکیل",
+    "test": "ٹیسٹ پیغامات",
+    "leaderboard": "لیڈر بورڈ",
+    "users": "صارفین",
+    "rewards": "انعامات",
+    "list": "فہرست",
+    "panels": "پینلز",
+    "messages": "پیغامات",
+    "events": "ایونٹس"
+  },
+  "permissionActions": {
+    "view": "دیکھیں",
+    "manage": "انتظام کریں",
+    "execute": "عمل درآمد کریں",
+    "purge": "صاف کریں"
   },
   "audit": {
     "table": {

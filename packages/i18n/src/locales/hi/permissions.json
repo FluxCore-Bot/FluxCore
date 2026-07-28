@@ -41,7 +41,10 @@
     "defaultRole": "डिफ़ॉल्ट रोल",
     "permissions": "अनुमतियां",
     "allBadge": "सभी",
-    "discordRoles": "Discord रोल"
+    "discordRoles": "Discord रोल",
+    "permissionLabel": "{{resource}} {{action}}",
+    "registryError": "अनुमति सूची लोड नहीं हो सकी। पृष्ठ को रीफ्रेश करने का प्रयास करें।",
+    "registryEmpty": "अभी तक असाइन करने के लिए कोई अनुमति उपलब्ध नहीं है।"
   },
   "roleForm": {
     "name": "रोल का नाम",
@@ -58,6 +61,7 @@
     "color": "रंग"
   },
   "permissionCategories": {
+    "dashboard": "डैशबोर्ड",
     "actions": "एक्शन और ऑटोमेशन",
     "tempvoice": "TempVoice",
     "welcome": "स्वागत और विदाई",
@@ -73,6 +77,33 @@
     "scheduled": "शेड्यूल्ड संदेश",
     "commands": "कस्टम कमांड",
     "settings": "सर्वर सेटिंग्स"
+  },
+  "resources": {
+    "roles": "रोल",
+    "audit": "ऑडिट लॉग",
+    "settings": "सेटिंग्स",
+    "lookups": "चयनकर्ता",
+    "cases": "मामले",
+    "warnings": "चेतावनियाँ",
+    "punishments": "दंड",
+    "rules": "नियम",
+    "analytics": "विश्लेषण",
+    "entries": "प्रविष्टियां",
+    "config": "कॉन्फ़िगरेशन",
+    "test": "परीक्षण संदेश",
+    "leaderboard": "लीडरबोर्ड",
+    "users": "उपयोगकर्ता",
+    "rewards": "पुरस्कार",
+    "list": "सूची",
+    "panels": "पैनल",
+    "messages": "संदेश",
+    "events": "इवेंट"
+  },
+  "permissionActions": {
+    "view": "देखें",
+    "manage": "प्रबंधित करें",
+    "execute": "निष्पादित करें",
+    "purge": "हटाएं"
   },
   "audit": {
     "table": {

@@ -41,7 +41,10 @@
     "defaultRole": "Standardrolle",
     "permissions": "Berechtigungen",
     "allBadge": "Alle",
-    "discordRoles": "Discord-Rollen"
+    "discordRoles": "Discord-Rollen",
+    "permissionLabel": "{{resource}} {{action}}",
+    "registryError": "Die Berechtigungsliste konnte nicht geladen werden. Versuche, die Seite neu zu laden.",
+    "registryEmpty": "Es sind noch keine Berechtigungen zum Zuweisen verfügbar."
   },
   "roleForm": {
     "name": "Rollenname",
@@ -58,6 +61,7 @@
     "color": "Farbe"
   },
   "permissionCategories": {
+    "dashboard": "Dashboard",
     "actions": "Aktionen & Automatisierung",
     "tempvoice": "TempVoice",
     "welcome": "Willkommen & Abschied",
@@ -73,6 +77,33 @@
     "scheduled": "Geplante Nachrichten",
     "commands": "Benutzerdefinierte Befehle",
     "settings": "Servereinstellungen"
+  },
+  "resources": {
+    "roles": "Rollen",
+    "audit": "Audit-Protokoll",
+    "settings": "Einstellungen",
+    "lookups": "Auswahlfelder",
+    "cases": "Fälle",
+    "warnings": "Verwarnungen",
+    "punishments": "Bestrafungen",
+    "rules": "Regeln",
+    "analytics": "Analysen",
+    "entries": "Einträge",
+    "config": "Konfiguration",
+    "test": "Testnachrichten",
+    "leaderboard": "Rangliste",
+    "users": "Benutzer",
+    "rewards": "Belohnungen",
+    "list": "Liste",
+    "panels": "Panels",
+    "messages": "Nachrichten",
+    "events": "Ereignisse"
+  },
+  "permissionActions": {
+    "view": "Anzeigen",
+    "manage": "Verwalten",
+    "execute": "Ausführen",
+    "purge": "Bereinigen"
   },
   "audit": {
     "table": {

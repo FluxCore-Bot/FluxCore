@@ -41,7 +41,10 @@
     "defaultRole": "نقش پیش‌فرض",
     "permissions": "دسترسی‌ها",
     "allBadge": "همه",
-    "discordRoles": "نقش‌های Discord"
+    "discordRoles": "نقش‌های Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "فهرست دسترسی‌ها بارگذاری نشد. صفحه را دوباره بارگذاری کنید.",
+    "registryEmpty": "هنوز هیچ دسترسی‌ای برای اختصاص دادن وجود ندارد."
   },
   "roleForm": {
     "name": "نام نقش",
@@ -58,6 +61,7 @@
     "color": "رنگ"
   },
   "permissionCategories": {
+    "dashboard": "داشبورد",
     "actions": "عملیات و اتوماسیون",
     "tempvoice": "کانال‌های صوتی موقت",
     "welcome": "خوش‌آمدگویی و بدرقه",
@@ -73,6 +77,33 @@
     "scheduled": "پیام‌های زمان‌بندی شده",
     "commands": "دستورات سفارشی",
     "settings": "تنظیمات سرور"
+  },
+  "resources": {
+    "roles": "نقش‌ها",
+    "audit": "گزارش بازرسی",
+    "settings": "تنظیمات",
+    "lookups": "انتخابگرها",
+    "cases": "پرونده‌ها",
+    "warnings": "هشدارها",
+    "punishments": "تنبیهات",
+    "rules": "قوانین",
+    "analytics": "تحلیل‌ها",
+    "entries": "ورودی‌ها",
+    "config": "پیکربندی",
+    "test": "پیام‌های آزمایشی",
+    "leaderboard": "جدول رتبه‌بندی",
+    "users": "کاربران",
+    "rewards": "پاداش‌ها",
+    "list": "فهرست",
+    "panels": "پنل‌ها",
+    "messages": "پیام‌ها",
+    "events": "رویدادها"
+  },
+  "permissionActions": {
+    "view": "مشاهده",
+    "manage": "مدیریت",
+    "execute": "اجرا",
+    "purge": "پاک‌سازی"
   },
   "audit": {
     "table": {

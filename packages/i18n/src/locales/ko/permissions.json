@@ -41,7 +41,10 @@
     "defaultRole": "기본 역할",
     "permissions": "권한",
     "allBadge": "전체",
-    "discordRoles": "Discord 역할"
+    "discordRoles": "Discord 역할",
+    "permissionLabel": "{{resource}} {{action}}",
+    "registryError": "권한 목록을 불러올 수 없습니다. 페이지를 새로고침해 보세요.",
+    "registryEmpty": "아직 할당할 수 있는 권한이 없습니다."
   },
   "roleForm": {
     "name": "역할 이름",
@@ -58,6 +61,7 @@
     "color": "색상"
   },
   "permissionCategories": {
+    "dashboard": "대시보드",
     "actions": "액션 및 자동화",
     "tempvoice": "임시 음성",
     "welcome": "환영 및 작별",
@@ -73,6 +77,33 @@
     "scheduled": "예약 메시지",
     "commands": "커스텀 명령어",
     "settings": "서버 설정"
+  },
+  "resources": {
+    "roles": "역할",
+    "audit": "감사 로그",
+    "settings": "설정",
+    "lookups": "선택기",
+    "cases": "케이스",
+    "warnings": "경고",
+    "punishments": "처벌",
+    "rules": "규칙",
+    "analytics": "분석",
+    "entries": "항목",
+    "config": "구성",
+    "test": "테스트 메시지",
+    "leaderboard": "리더보드",
+    "users": "사용자",
+    "rewards": "보상",
+    "list": "목록",
+    "panels": "패널",
+    "messages": "메시지",
+    "events": "이벤트"
+  },
+  "permissionActions": {
+    "view": "보기",
+    "manage": "관리",
+    "execute": "실행",
+    "purge": "삭제"
   },
   "audit": {
     "table": {

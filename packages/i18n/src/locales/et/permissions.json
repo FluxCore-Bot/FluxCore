@@ -41,7 +41,10 @@
     "defaultRole": "Vaikimisi roll",
     "permissions": "Õigused",
     "allBadge": "Kõik",
-    "discordRoles": "Discord rollid"
+    "discordRoles": "Discord rollid",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Õiguste loendit ei õnnestunud laadida. Proovi lehte värskendada.",
+    "registryEmpty": "Määramiseks pole veel ühtegi õigust saadaval."
   },
   "roleForm": {
     "name": "Rolli nimi",
@@ -58,6 +61,7 @@
     "color": "Värv"
   },
   "permissionCategories": {
+    "dashboard": "Juhtpaneel",
     "actions": "Toimingud ja automatiseerimine",
     "tempvoice": "TempVoice",
     "welcome": "Tervitus ja hüvastijätt",
@@ -73,6 +77,33 @@
     "scheduled": "Ajastatud sõnumid",
     "commands": "Kohandatud käsud",
     "settings": "Serveri seaded"
+  },
+  "resources": {
+    "roles": "Rollid",
+    "audit": "Auditilogi",
+    "settings": "Seaded",
+    "lookups": "Valijad",
+    "cases": "Juhtumid",
+    "warnings": "Hoiatused",
+    "punishments": "Karistused",
+    "rules": "Reeglid",
+    "analytics": "Analüütika",
+    "entries": "Kirjed",
+    "config": "Konfiguratsioon",
+    "test": "Testsõnumid",
+    "leaderboard": "Edetabel",
+    "users": "Kasutajad",
+    "rewards": "Auhinnad",
+    "list": "Loend",
+    "panels": "Paneelid",
+    "messages": "Sõnumid",
+    "events": "Sündmused"
+  },
+  "permissionActions": {
+    "view": "Vaata",
+    "manage": "Halda",
+    "execute": "Käivita",
+    "purge": "Kustuta"
   },
   "audit": {
     "table": {

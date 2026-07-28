@@ -41,7 +41,10 @@
     "defaultRole": "Προεπιλεγμένος ρόλος",
     "permissions": "Δικαιώματα",
     "allBadge": "Όλα",
-    "discordRoles": "Ρόλοι Discord"
+    "discordRoles": "Ρόλοι Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Δεν ήταν δυνατή η φόρτωση της λίστας δικαιωμάτων. Δοκιμάστε να ανανεώσετε τη σελίδα.",
+    "registryEmpty": "Δεν υπάρχουν ακόμη διαθέσιμα δικαιώματα για ανάθεση."
   },
   "roleForm": {
     "name": "Όνομα ρόλου",
@@ -58,6 +61,7 @@
     "color": "Χρώμα"
   },
   "permissionCategories": {
+    "dashboard": "Πίνακας ελέγχου",
     "actions": "Ενέργειες & Αυτοματισμός",
     "tempvoice": "TempVoice",
     "welcome": "Καλωσόρισμα & Αποχαιρετισμός",
@@ -73,6 +77,33 @@
     "scheduled": "Προγραμματισμένα μηνύματα",
     "commands": "Προσαρμοσμένες εντολές",
     "settings": "Ρυθμίσεις server"
+  },
+  "resources": {
+    "roles": "Ρόλοι",
+    "audit": "Αρχείο ελέγχου",
+    "settings": "Ρυθμίσεις",
+    "lookups": "Επιλογείς",
+    "cases": "Περιπτώσεις",
+    "warnings": "Προειδοποιήσεις",
+    "punishments": "Ποινές",
+    "rules": "Κανόνες",
+    "analytics": "Αναλυτικά στοιχεία",
+    "entries": "Καταχωρίσεις",
+    "config": "Διαμόρφωση",
+    "test": "Δοκιμαστικά μηνύματα",
+    "leaderboard": "Κατάταξη",
+    "users": "Χρήστες",
+    "rewards": "Ανταμοιβές",
+    "list": "Λίστα",
+    "panels": "Πάνελ",
+    "messages": "Μηνύματα",
+    "events": "Γεγονότα"
+  },
+  "permissionActions": {
+    "view": "Προβολή",
+    "manage": "Διαχείριση",
+    "execute": "Εκτέλεση",
+    "purge": "Εκκαθάριση"
   },
   "audit": {
     "table": {

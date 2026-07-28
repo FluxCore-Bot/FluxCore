@@ -41,7 +41,10 @@
     "defaultRole": "الدور الافتراضي",
     "permissions": "الصلاحيات",
     "allBadge": "الكل",
-    "discordRoles": "أدوار Discord"
+    "discordRoles": "أدوار Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "تعذر تحميل قائمة الأذونات. حاول تحديث الصفحة.",
+    "registryEmpty": "لا توجد أذونات متاحة للتخصيص بعد."
   },
   "roleForm": {
     "name": "اسم الدور",
@@ -58,6 +61,7 @@
     "color": "اللون"
   },
   "permissionCategories": {
+    "dashboard": "لوحة التحكم",
     "actions": "الإجراءات والأتمتة",
     "tempvoice": "القنوات الصوتية المؤقتة",
     "welcome": "الترحيب والتوديع",
@@ -73,6 +77,33 @@
     "scheduled": "الرسائل المجدولة",
     "commands": "الأوامر المخصصة",
     "settings": "إعدادات السيرفر"
+  },
+  "resources": {
+    "roles": "الأدوار",
+    "audit": "سجل التدقيق",
+    "settings": "الإعدادات",
+    "lookups": "أدوات الاختيار",
+    "cases": "الحالات",
+    "warnings": "التحذيرات",
+    "punishments": "العقوبات",
+    "rules": "القواعد",
+    "analytics": "التحليلات",
+    "entries": "الإدخالات",
+    "config": "التكوين",
+    "test": "رسائل الاختبار",
+    "leaderboard": "لوحة الصدارة",
+    "users": "المستخدمون",
+    "rewards": "المكافآت",
+    "list": "القائمة",
+    "panels": "اللوحات",
+    "messages": "الرسائل",
+    "events": "الأحداث"
+  },
+  "permissionActions": {
+    "view": "عرض",
+    "manage": "إدارة",
+    "execute": "تنفيذ",
+    "purge": "مسح"
   },
   "audit": {
     "table": {

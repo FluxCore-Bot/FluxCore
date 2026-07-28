@@ -28,7 +28,9 @@
     "build": "tsc && rm -rf dist/locales && cp -r src/locales dist/locales",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",
-    "translate": "tsx src/scripts/translate.ts"
+    "translate": "tsx src/scripts/translate.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "i18next": "^25.1.3",
@@ -43,6 +45,7 @@
   "devDependencies": {
     "@types/node": "^25.3.0",
     "tsx": "^4.21.0",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "^4.0.18"
   }
 }

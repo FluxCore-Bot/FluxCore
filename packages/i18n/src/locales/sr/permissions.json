@@ -41,7 +41,10 @@
     "defaultRole": "Podrazumevana uloga",
     "permissions": "Dozvole",
     "allBadge": "Sve",
-    "discordRoles": "Discord uloge"
+    "discordRoles": "Discord uloge",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Листа дозвола није могла да се учита. Покушајте да освежите страницу.",
+    "registryEmpty": "Тренутно нема доступних дозвола за доделу."
   },
   "roleForm": {
     "name": "Naziv uloge",
@@ -58,6 +61,7 @@
     "color": "Boja"
   },
   "permissionCategories": {
+    "dashboard": "Контролна табла",
     "actions": "Radnje i automatizacija",
     "tempvoice": "TempVoice",
     "welcome": "Dobrodoslica i oprostaj",
@@ -73,6 +77,33 @@
     "scheduled": "Zakazane poruke",
     "commands": "Prilagodene komande",
     "settings": "Podesavanja servera"
+  },
+  "resources": {
+    "roles": "Улоге",
+    "audit": "Дневник ревизије",
+    "settings": "Подешавања",
+    "lookups": "Селектори",
+    "cases": "Случајеви",
+    "warnings": "Упозорења",
+    "punishments": "Казне",
+    "rules": "Правила",
+    "analytics": "Аналитика",
+    "entries": "Уноси",
+    "config": "Конфигурација",
+    "test": "Тест поруке",
+    "leaderboard": "Ранг листа",
+    "users": "Корисници",
+    "rewards": "Награде",
+    "list": "Листа",
+    "panels": "Панели",
+    "messages": "Поруке",
+    "events": "Догађаји"
+  },
+  "permissionActions": {
+    "view": "Преглед",
+    "manage": "Управљање",
+    "execute": "Извршавање",
+    "purge": "Брисање"
   },
   "audit": {
     "table": {

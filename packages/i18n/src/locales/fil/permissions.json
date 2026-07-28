@@ -41,7 +41,10 @@
     "defaultRole": "Default na role",
     "permissions": "Mga Pahintulot",
     "allBadge": "Lahat",
-    "discordRoles": "Mga Discord Role"
+    "discordRoles": "Mga Discord Role",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Hindi ma-load ang listahan ng pahintulot. Subukang i-refresh ang pahina.",
+    "registryEmpty": "Wala pang mga pahintulot na available na itatalaga."
   },
   "roleForm": {
     "name": "Pangalan ng Role",
@@ -58,6 +61,7 @@
     "color": "Kulay"
   },
   "permissionCategories": {
+    "dashboard": "Dashboard",
     "actions": "Mga Aksyon at Automation",
     "tempvoice": "TempVoice",
     "welcome": "Maligayang Pagdating at Paalam",
@@ -73,6 +77,33 @@
     "scheduled": "Mga Nakatakdang Mensahe",
     "commands": "Mga Custom na Utos",
     "settings": "Mga Setting ng Server"
+  },
+  "resources": {
+    "roles": "Mga Role",
+    "audit": "Talaan ng Pag-audit",
+    "settings": "Mga Setting",
+    "lookups": "Mga Pipili",
+    "cases": "Mga Kaso",
+    "warnings": "Mga Babala",
+    "punishments": "Mga Parusa",
+    "rules": "Mga Panuntunan",
+    "analytics": "Analitika",
+    "entries": "Mga Entry",
+    "config": "Konpigurasyon",
+    "test": "Mga Pagsubok na Mensahe",
+    "leaderboard": "Leaderboard",
+    "users": "Mga User",
+    "rewards": "Mga Gantimpala",
+    "list": "Listahan",
+    "panels": "Mga Panel",
+    "messages": "Mga Mensahe",
+    "events": "Mga Event"
+  },
+  "permissionActions": {
+    "view": "Tingnan",
+    "manage": "Pamahalaan",
+    "execute": "Isagawa",
+    "purge": "Linisin"
   },
   "audit": {
     "table": {

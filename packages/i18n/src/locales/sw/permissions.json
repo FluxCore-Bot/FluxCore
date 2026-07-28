@@ -41,7 +41,10 @@
     "defaultRole": "Jukumu la chaguo-msingi",
     "permissions": "Ruhusa",
     "allBadge": "Zote",
-    "discordRoles": "Majukumu ya Discord"
+    "discordRoles": "Majukumu ya Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Orodha ya ruhusa haikuweza kupakiwa. Jaribu kuonyesha upya ukurasa.",
+    "registryEmpty": "Hakuna ruhusa zinazopatikana kugawiwa bado."
   },
   "roleForm": {
     "name": "Jina la Jukumu",
@@ -58,6 +61,7 @@
     "color": "Rangi"
   },
   "permissionCategories": {
+    "dashboard": "Dashibodi",
     "actions": "Vitendo na Otomatiki",
     "tempvoice": "TempVoice",
     "welcome": "Karibu na Kuaga",
@@ -73,6 +77,33 @@
     "scheduled": "Ujumbe Uliopangwa",
     "commands": "Amri Maalum",
     "settings": "Mipangilio ya Seva"
+  },
+  "resources": {
+    "roles": "Majukumu",
+    "audit": "Kumbukumbu ya Ukaguzi",
+    "settings": "Mipangilio",
+    "lookups": "Vichaguzi",
+    "cases": "Kesi",
+    "warnings": "Maonyo",
+    "punishments": "Adhabu",
+    "rules": "Kanuni",
+    "analytics": "Uchambuzi",
+    "entries": "Kumbukumbu",
+    "config": "Usanidi",
+    "test": "Ujumbe wa Majaribio",
+    "leaderboard": "Orodha ya Washindi",
+    "users": "Watumiaji",
+    "rewards": "Tuzo",
+    "list": "Orodha",
+    "panels": "Paneli",
+    "messages": "Ujumbe",
+    "events": "Matukio"
+  },
+  "permissionActions": {
+    "view": "Angalia",
+    "manage": "Simamia",
+    "execute": "Tekeleza",
+    "purge": "Futa"
   },
   "audit": {
     "table": {

@@ -41,7 +41,10 @@
     "defaultRole": "默认角色",
     "permissions": "权限",
     "allBadge": "全部",
-    "discordRoles": "Discord 角色"
+    "discordRoles": "Discord 角色",
+    "permissionLabel": "{{action}}{{resource}}",
+    "registryError": "无法加载权限列表。请尝试刷新页面。",
+    "registryEmpty": "暂无可分配的权限。"
   },
   "roleForm": {
     "name": "角色名称",
@@ -58,6 +61,7 @@
     "color": "颜色"
   },
   "permissionCategories": {
+    "dashboard": "仪表盘",
     "actions": "动作与自动化",
     "tempvoice": "临时语音",
     "welcome": "欢迎与告别",
@@ -73,6 +77,33 @@
     "scheduled": "定时消息",
     "commands": "自定义命令",
     "settings": "服务器设置"
+  },
+  "resources": {
+    "roles": "角色",
+    "audit": "审计日志",
+    "settings": "设置",
+    "lookups": "选择器",
+    "cases": "案例",
+    "warnings": "警告",
+    "punishments": "处罚",
+    "rules": "规则",
+    "analytics": "分析",
+    "entries": "条目",
+    "config": "配置",
+    "test": "测试消息",
+    "leaderboard": "排行榜",
+    "users": "用户",
+    "rewards": "奖励",
+    "list": "列表",
+    "panels": "面板",
+    "messages": "消息",
+    "events": "事件"
+  },
+  "permissionActions": {
+    "view": "查看",
+    "manage": "管理",
+    "execute": "执行",
+    "purge": "清除"
   },
   "audit": {
     "table": {

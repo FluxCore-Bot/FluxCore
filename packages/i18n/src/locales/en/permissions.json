@@ -61,6 +61,7 @@
     "color": "Color"
   },
   "permissionCategories": {
+    "dashboard": "Dashboard",
     "actions": "Actions & Automation",
     "tempvoice": "TempVoice",
     "welcome": "Welcome & Farewell",
@@ -76,6 +77,33 @@
     "scheduled": "Scheduled Messages",
     "commands": "Custom Commands",
     "settings": "Server Settings"
+  },
+  "resources": {
+    "roles": "Roles",
+    "audit": "Audit Log",
+    "settings": "Settings",
+    "lookups": "Pickers",
+    "cases": "Cases",
+    "warnings": "Warnings",
+    "punishments": "Punishments",
+    "rules": "Rules",
+    "analytics": "Analytics",
+    "entries": "Entries",
+    "config": "Configuration",
+    "test": "Test Messages",
+    "leaderboard": "Leaderboard",
+    "users": "Users",
+    "rewards": "Rewards",
+    "list": "List",
+    "panels": "Panels",
+    "messages": "Messages",
+    "events": "Events"
+  },
+  "permissionActions": {
+    "view": "View",
+    "manage": "Manage",
+    "execute": "Execute",
+    "purge": "Purge"
   },
   "audit": {
     "table": {

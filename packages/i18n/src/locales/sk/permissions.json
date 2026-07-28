@@ -41,7 +41,10 @@
     "defaultRole": "Default role",
     "permissions": "Permissions",
     "allBadge": "All",
-    "discordRoles": "Discord Roles"
+    "discordRoles": "Discord Roles",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Zoznam oprávnení sa nepodarilo načítať. Skúste stránku obnoviť.",
+    "registryEmpty": "Zatiaľ nie sú k dispozícii žiadne oprávnenia na priradenie."
   },
   "roleForm": {
     "name": "Role Name",
@@ -58,6 +61,7 @@
     "color": "Color"
   },
   "permissionCategories": {
+    "dashboard": "Ovládací panel",
     "actions": "Actions & Automation",
     "tempvoice": "TempVoice",
     "welcome": "Welcome & Farewell",
@@ -73,6 +77,33 @@
     "scheduled": "Scheduled Messages",
     "commands": "Custom Commands",
     "settings": "Server Settings"
+  },
+  "resources": {
+    "roles": "Role",
+    "audit": "Denník auditu",
+    "settings": "Nastavenia",
+    "lookups": "Výbery",
+    "cases": "Prípady",
+    "warnings": "Varovania",
+    "punishments": "Tresty",
+    "rules": "Pravidlá",
+    "analytics": "Analytika",
+    "entries": "Záznamy",
+    "config": "Konfigurácia",
+    "test": "Testovacie správy",
+    "leaderboard": "Rebríček",
+    "users": "Používatelia",
+    "rewards": "Odmeny",
+    "list": "Zoznam",
+    "panels": "Panely",
+    "messages": "Správy",
+    "events": "Udalosti"
+  },
+  "permissionActions": {
+    "view": "Zobraziť",
+    "manage": "Spravovať",
+    "execute": "Spustiť",
+    "purge": "Vymazať"
   },
   "audit": {
     "table": {

@@ -41,7 +41,10 @@
     "defaultRole": "Rol implicit",
     "permissions": "Permisiuni",
     "allBadge": "Toate",
-    "discordRoles": "Roluri Discord"
+    "discordRoles": "Roluri Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Lista de permisiuni nu a putut fi încărcată. Încearcă să reîmprospătezi pagina.",
+    "registryEmpty": "Nu există încă permisiuni disponibile pentru alocare."
   },
   "roleForm": {
     "name": "Numele Rolului",
@@ -58,6 +61,7 @@
     "color": "Culoare"
   },
   "permissionCategories": {
+    "dashboard": "Tablou de bord",
     "actions": "Acțiuni & Automatizare",
     "tempvoice": "TempVoice",
     "welcome": "Bun venit & La revedere",
@@ -73,6 +77,33 @@
     "scheduled": "Mesaje Programate",
     "commands": "Comenzi Personalizate",
     "settings": "Setări Server"
+  },
+  "resources": {
+    "roles": "Roluri",
+    "audit": "Jurnal de Audit",
+    "settings": "Setări",
+    "lookups": "Selectoare",
+    "cases": "Cazuri",
+    "warnings": "Avertismente",
+    "punishments": "Sancțiuni",
+    "rules": "Reguli",
+    "analytics": "Analitică",
+    "entries": "Intrări",
+    "config": "Configurare",
+    "test": "Mesaje de test",
+    "leaderboard": "Clasament",
+    "users": "Utilizatori",
+    "rewards": "Recompense",
+    "list": "Listă",
+    "panels": "Panouri",
+    "messages": "Mesaje",
+    "events": "Evenimente"
+  },
+  "permissionActions": {
+    "view": "Vizualizare",
+    "manage": "Gestionare",
+    "execute": "Executare",
+    "purge": "Curățare"
   },
   "audit": {
     "table": {

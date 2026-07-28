@@ -41,7 +41,10 @@
     "defaultRole": "Peran bawaan",
     "permissions": "Izin",
     "allBadge": "Semua",
-    "discordRoles": "Peran Discord"
+    "discordRoles": "Peran Discord",
+    "permissionLabel": "{{action}} {{resource}}",
+    "registryError": "Daftar izin tidak dapat dimuat. Coba segarkan halaman.",
+    "registryEmpty": "Belum ada izin yang tersedia untuk diberikan."
   },
   "roleForm": {
     "name": "Nama Peran",
@@ -58,6 +61,7 @@
     "color": "Warna"
   },
   "permissionCategories": {
+    "dashboard": "Dasbor",
     "actions": "Aksi & Otomasi",
     "tempvoice": "TempVoice",
     "welcome": "Sambutan & Perpisahan",
@@ -73,6 +77,33 @@
     "scheduled": "Pesan Terjadwal",
     "commands": "Perintah Kustom",
     "settings": "Pengaturan Server"
+  },
+  "resources": {
+    "roles": "Peran",
+    "audit": "Log Audit",
+    "settings": "Pengaturan",
+    "lookups": "Pemilih",
+    "cases": "Kasus",
+    "warnings": "Peringatan",
+    "punishments": "Hukuman",
+    "rules": "Aturan",
+    "analytics": "Analitik",
+    "entries": "Entri",
+    "config": "Konfigurasi",
+    "test": "Pesan Uji Coba",
+    "leaderboard": "Papan Peringkat",
+    "users": "Pengguna",
+    "rewards": "Hadiah",
+    "list": "Daftar",
+    "panels": "Panel",
+    "messages": "Pesan",
+    "events": "Kejadian"
+  },
+  "permissionActions": {
+    "view": "Lihat",
+    "manage": "Kelola",
+    "execute": "Jalankan",
+    "purge": "Bersihkan"
   },
   "audit": {
     "table": {
