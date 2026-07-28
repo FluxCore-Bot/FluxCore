@@ -29,8 +29,9 @@ vi.mock("../../../../src/server/shared/discordApi.js", () => ({
   getGuildOwnerId: (...args: unknown[]) => mockGetGuildOwnerId(...args),
 }));
 
+const mockResolveUserPermissions = vi.fn();
 vi.mock("../../../../src/server/shared/permissions.js", () => ({
-  resolveUserPermissions: vi.fn().mockResolvedValue({ permissions: new Set(["*"]), isOwner: true }),
+  resolveUserPermissions: (...args: unknown[]) => mockResolveUserPermissions(...args),
   hasPermission: vi.fn().mockReturnValue(true),
   invalidatePermissionCache: vi.fn(),
   createDashboardAuditLog: vi.fn().mockResolvedValue(undefined),
@@ -85,6 +86,12 @@ describe("dashboard role routes", () => {
     vi.clearAllMocks();
     mockGetSession.mockResolvedValue(mockSession);
     mockIsBotInGuild.mockResolvedValue(true);
+    mockResolveUserPermissions.mockResolvedValue({
+      permissions: new Set(["*"]),
+      isOwner: true,
+      isGuildAdmin: true,
+      isGuildMember: true,
+    });
     mockPrisma.dashboardRole.count.mockResolvedValue(0);
     mockPrisma.dashboardRole.aggregate.mockResolvedValue({ _max: { position: 0 } });
     app = await buildApp();
@@ -244,6 +251,118 @@ describe("dashboard role routes", () => {
         payload: { preset: "nonexistent" },
       });
       expect(res.statusCode).toBe(400);
+    });
+  });
+
+  describe("POST /api/guilds/:guildId/dashboard-roles/:roleId/members", () => {
+    it("refuses to assign a role holding permissions the caller lacks", async () => {
+      mockResolveUserPermissions.mockResolvedValue({
+        permissions: new Set(["dashboard.roles.manage"]),
+        isOwner: false,
+        isGuildAdmin: false,
+        isGuildMember: true,
+      });
+      mockPrisma.dashboardRole.findUnique.mockResolvedValue({
+        id: "role-1",
+        guildId: "guild-1",
+        name: "Full Admin",
+        permissions: JSON.stringify(["*"]),
+      });
+
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/dashboard-roles/role-1/members",
+        cookies: { session: app.signCookie("valid") },
+        payload: { userId: "user-2" },
+      });
+
+      expect(res.statusCode).toBe(403);
+      expect(mockPrisma.dashboardRoleAssignment.create).not.toHaveBeenCalled();
+    });
+
+    it("refuses to assign any role to yourself", async () => {
+      mockResolveUserPermissions.mockResolvedValue({
+        permissions: new Set(["dashboard.roles.manage", "tickets.list.view"]),
+        isOwner: false,
+        isGuildAdmin: false,
+        isGuildMember: true,
+      });
+      mockPrisma.dashboardRole.findUnique.mockResolvedValue({
+        id: "role-1",
+        guildId: "guild-1",
+        name: "Ticket Staff",
+        permissions: JSON.stringify(["tickets.list.view"]),
+      });
+
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/dashboard-roles/role-1/members",
+        cookies: { session: app.signCookie("valid") },
+        payload: { userId: "user-1" },
+      });
+
+      expect(res.statusCode).toBe(403);
+      expect(mockPrisma.dashboardRoleAssignment.create).not.toHaveBeenCalled();
+    });
+
+    it("lets the owner assign anything, including to themselves", async () => {
+      mockResolveUserPermissions.mockResolvedValue({
+        permissions: new Set(["*"]),
+        isOwner: true,
+        isGuildAdmin: true,
+        isGuildMember: true,
+      });
+      mockPrisma.dashboardRole.findUnique.mockResolvedValue({
+        id: "role-1",
+        guildId: "guild-1",
+        name: "Full Admin",
+        permissions: JSON.stringify(["*"]),
+      });
+      mockPrisma.dashboardRoleAssignment.create.mockResolvedValue({
+        id: "assignment-1",
+        userId: "user-1",
+        assignedBy: "user-1",
+        createdAt: new Date(),
+      });
+
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/dashboard-roles/role-1/members",
+        cookies: { session: app.signCookie("valid") },
+        payload: { userId: "user-1" },
+      });
+
+      expect(res.statusCode).toBe(201);
+    });
+
+    it("allows assigning a role whose permissions the caller holds", async () => {
+      mockResolveUserPermissions.mockResolvedValue({
+        permissions: new Set(["dashboard.roles.manage", "tickets.*"]),
+        isOwner: false,
+        isGuildAdmin: false,
+        isGuildMember: true,
+      });
+      mockPrisma.dashboardRole.findUnique.mockResolvedValue({
+        id: "role-1",
+        guildId: "guild-1",
+        name: "Ticket Staff",
+        permissions: JSON.stringify(["tickets.list.view"]),
+      });
+      mockPrisma.dashboardRoleAssignment.create.mockResolvedValue({
+        id: "assignment-2",
+        userId: "user-2",
+        assignedBy: "user-1",
+        createdAt: new Date(),
+      });
+
+      const res = await app.inject({
+        method: "POST",
+        url: "/api/guilds/guild-1/dashboard-roles/role-1/members",
+        cookies: { session: app.signCookie("valid") },
+        payload: { userId: "user-2" },
+      });
+
+      expect(res.statusCode).toBe(201);
     });
   });
 });

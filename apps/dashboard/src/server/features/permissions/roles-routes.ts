@@ -30,6 +30,17 @@ function isValidPermissionKey(key: string): boolean {
   return false;
 }
 
+function safeParsePermissions(json: string): string[] {
+  try {
+    const parsed: unknown = JSON.parse(json);
+    return Array.isArray(parsed)
+      ? parsed.filter((p): p is string => typeof p === "string")
+      : [];
+  } catch {
+    return [];
+  }
+}
+
 export function registerDashboardRoleRoutes(app: FastifyInstance): void {
   // GET all dashboard roles for a guild
   app.get(
@@ -415,6 +426,28 @@ export function registerDashboardRoleRoutes(app: FastifyInstance): void {
       if (!role || role.guildId !== guildId) {
         reply.code(404).send({ error: "Role not found" });
         return;
+      }
+
+      // Assignment grants everything the role holds, so it is an escalation
+      // vector in its own right: without this a `dashboard.roles.manage` holder
+      // could hand themselves an existing Full Admin role.
+      if (!request.resolvedPermissions?.isOwner) {
+        if (userId === session.userId) {
+          reply.code(403).send({ error: "Cannot assign a role to yourself" });
+          return;
+        }
+
+        const callerPerms = request.resolvedPermissions!.permissions;
+        const rolePerms = safeParsePermissions(role.permissions);
+        for (const perm of rolePerms) {
+          if (!matchPermission(callerPerms, perm)) {
+            reply.code(403).send({
+              error: "Cannot grant permissions you don't have",
+              permission: perm,
+            });
+            return;
+          }
+        }
       }
 
       try {
