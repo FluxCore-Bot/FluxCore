@@ -48,7 +48,19 @@
     "lookupsWarning": "Peranan ini boleh mengkonfigurasi modul tetapi tidak boleh mencari saluran, peranan atau ahli — pemilihnya akan kosong.",
     "grantLookups": "Berikan akses pemilih",
     "admissionNote": "Juga membolehkan pemegangnya memberikan akses papan pemuka kepada ahli lain.",
-    "cannotGrantTooltip": "Anda tidak boleh memberikan kebenaran yang anda sendiri tidak miliki."
+    "cannotGrantTooltip": "Anda tidak boleh memberikan kebenaran yang anda sendiri tidak miliki.",
+    "membersSection": {
+      "title": "Ahli",
+      "empty": "Belum ada ahli yang diberikan peranan ini.",
+      "error": "Ahli peranan ini tidak dapat dimuatkan. Cuba muat semula halaman.",
+      "addPlaceholder": "Tambah ahli",
+      "searchPlaceholder": "Cari ahli...",
+      "searchHint": "Taip nama untuk mencari ahli",
+      "searchLoading": "Memuatkan...",
+      "searchNoResults": "Tiada hasil",
+      "assignedBy": "Ditambah oleh {{name}} pada {{date}}",
+      "removeAria": "Buang {{name}} daripada peranan ini"
+    }
   },
   "roleForm": {
     "name": "Nama Peranan",
@@ -129,7 +141,9 @@
     "roleUpdated": "Peranan dikemaskini",
     "roleUpdateFailed": "Gagal mengemaskini peranan",
     "roleDeleted": "Peranan dipadam",
-    "roleDeleteFailed": "Gagal memadam peranan"
+    "roleDeleteFailed": "Gagal memadam peranan",
+    "memberAdded": "{{name}} ditambah ke peranan",
+    "memberRemoved": "{{name}} dibuang daripada peranan"
   },
   "confirm": {
     "deleteTitle": "Padam peranan \"{{name}}\"?",

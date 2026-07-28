@@ -48,7 +48,19 @@
     "lookupsWarning": "Bu rol modülleri yapılandırabilir ancak kanalları, rolleri veya üyeleri arayamaz — seçicileri boş kalacaktır.",
     "grantLookups": "Seçici erişimi ver",
     "admissionNote": "Ayrıca sahiplerinin diğer üyelere pano erişimi vermesine de olanak tanır.",
-    "cannotGrantTooltip": "Kendinizde olmayan bir izni veremezsiniz."
+    "cannotGrantTooltip": "Kendinizde olmayan bir izni veremezsiniz.",
+    "membersSection": {
+      "title": "Üyeler",
+      "empty": "Bu role henüz üye atanmadı.",
+      "error": "Bu rolün üyeleri yüklenemedi. Sayfayı yenilemeyi deneyin.",
+      "addPlaceholder": "Üye ekle",
+      "searchPlaceholder": "Üye ara...",
+      "searchHint": "Üye aramak için bir isim yazın",
+      "searchLoading": "Yükleniyor...",
+      "searchNoResults": "Sonuç yok",
+      "assignedBy": "{{name}} tarafından {{date}} tarihinde eklendi",
+      "removeAria": "{{name}} kullanıcısını bu rolden kaldır"
+    }
   },
   "roleForm": {
     "name": "Rol Adı",
@@ -129,7 +141,9 @@
     "roleUpdated": "Rol güncellendi",
     "roleUpdateFailed": "Rol güncellenemedi",
     "roleDeleted": "Rol silindi",
-    "roleDeleteFailed": "Rol silinemedi"
+    "roleDeleteFailed": "Rol silinemedi",
+    "memberAdded": "{{name}} role eklendi",
+    "memberRemoved": "{{name}} rolden kaldırıldı"
   },
   "confirm": {
     "deleteTitle": "\"{{name}}\" rolü silinsin mi?",

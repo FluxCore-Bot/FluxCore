@@ -48,7 +48,19 @@
     "lookupsWarning": "Ta rola może konfigurować moduły, ale nie może wyszukiwać kanałów, ról ani członków — jej selektory będą puste.",
     "grantLookups": "Przyznaj dostęp do selektorów",
     "admissionNote": "Pozwala też posiadaczom nadawać innym członkom dostęp do panelu.",
-    "cannotGrantTooltip": "Nie możesz nadać uprawnienia, którego sam nie posiadasz."
+    "cannotGrantTooltip": "Nie możesz nadać uprawnienia, którego sam nie posiadasz.",
+    "membersSection": {
+      "title": "Członkowie",
+      "empty": "Do tej roli nie przypisano jeszcze żadnych członków.",
+      "error": "Nie udało się wczytać członków tej roli. Spróbuj odświeżyć stronę.",
+      "addPlaceholder": "Dodaj członka",
+      "searchPlaceholder": "Szukaj członków...",
+      "searchHint": "Wpisz imię, aby wyszukać członków",
+      "searchLoading": "Wczytywanie...",
+      "searchNoResults": "Brak wyników",
+      "assignedBy": "Dodano przez {{name}} dnia {{date}}",
+      "removeAria": "Usuń {{name}} z tej roli"
+    }
   },
   "roleForm": {
     "name": "Nazwa roli",
@@ -129,7 +141,9 @@
     "roleUpdated": "Rola zaktualizowana",
     "roleUpdateFailed": "Nie udało się zaktualizować roli",
     "roleDeleted": "Rola usunięta",
-    "roleDeleteFailed": "Nie udało się usunąć roli"
+    "roleDeleteFailed": "Nie udało się usunąć roli",
+    "memberAdded": "Dodano {{name}} do roli",
+    "memberRemoved": "Usunięto {{name}} z roli"
   },
   "confirm": {
     "deleteTitle": "Usunąć rolę \"{{name}}\"?",

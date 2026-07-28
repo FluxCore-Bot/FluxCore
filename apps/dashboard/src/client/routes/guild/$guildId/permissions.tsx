@@ -45,6 +45,9 @@ import {
   useUpdateDashboardSettings,
   useDashboardAuditLog,
   usePermissionRegistry,
+  useRoleMembers,
+  useAssignRoleMember,
+  useRemoveRoleMember,
 } from "../../../features/permissions/hooks/usePermissions";
 import {
   Tooltip,
@@ -52,7 +55,10 @@ import {
   TooltipContent,
 } from "../../../shared/ui/tooltip";
 import { needsLookupsPermission } from "../../../features/permissions/lookupsWarning";
-import type { DashboardRole } from "../../../shared/lib/schemas";
+import { RoleMemberPicker } from "../../../features/permissions/components/RoleMemberPicker";
+import { useAuth } from "../../../shared/hooks/useAuth";
+import { useMembersByIds } from "../../../shared/hooks/useMembers";
+import type { DashboardRole, GuildMember } from "../../../shared/lib/schemas";
 import { ROLE_PRESETS } from "@fluxcore/types";
 
 // ─── Main Page ───
@@ -249,6 +255,14 @@ function RoleEditor({
   const { data: registry = [], isLoading: registryLoading, isError: registryError } = usePermissionRegistry(guildId);
   const updateRole = useUpdateDashboardRole(guildId);
   const deleteRole = useDeleteDashboardRole(guildId);
+  const { data: currentUser } = useAuth();
+  const {
+    data: roleMembers = [],
+    isLoading: roleMembersLoading,
+    isError: roleMembersError,
+  } = useRoleMembers(guildId, role.id);
+  const assignMember = useAssignRoleMember(guildId);
+  const removeMember = useRemoveRoleMember(guildId);
   const [name, setName] = useState(role.name);
   const [color, setColor] = useState(role.color ?? "#a3a6ff");
   const [isDefault, setIsDefault] = useState(role.isDefault);
@@ -287,6 +301,61 @@ function RoleEditor({
       },
       onError: (err) => toast.error(err.message),
     });
+  }
+
+  // Mirrors the server's assignment gate exactly: against `role.permissions`
+  // (the persisted grant), not the locally-edited `permissions` state above —
+  // assigning applies immediately and independently of the pending Save.
+  const cannotAssignRole =
+    !currentUserIsOwner && !role.permissions.every((p) => matchPermission(myPermissionSet, p));
+
+  const assignedMemberIds = useMemo(() => roleMembers.map((m) => m.userId), [roleMembers]);
+
+  // Already-assigned members are never offered again; a non-owner caller's
+  // own id is excluded too, so the server's self-assign 403 is unreachable
+  // here rather than merely explained.
+  const addExcludeIds = useMemo(() => {
+    const ids = new Set(assignedMemberIds);
+    if (!currentUserIsOwner && currentUser?.userId) ids.add(currentUser.userId);
+    return [...ids];
+  }, [assignedMemberIds, currentUserIsOwner, currentUser]);
+
+  // assignedBy ids resolve alongside member ids in the same batched lookup —
+  // a member and their assigner are both just Discord user ids to resolve.
+  const resolveIds = useMemo(() => {
+    const ids = new Set<string>();
+    for (const m of roleMembers) {
+      ids.add(m.userId);
+      ids.add(m.assignedBy);
+    }
+    return [...ids];
+  }, [roleMembers]);
+  const { data: resolvedMembers = [] } = useMembersByIds(guildId, resolveIds);
+  const resolvedById = useMemo(() => {
+    const map = new Map<string, GuildMember>();
+    for (const m of resolvedMembers) map.set(m.id, m);
+    return map;
+  }, [resolvedMembers]);
+
+  function handleAddMember(member: GuildMember) {
+    assignMember.mutate(
+      { roleId: role.id, userId: member.id },
+      {
+        onSuccess: () =>
+          toast.success(t("toast.memberAdded", { name: member.displayName })),
+        onError: (err) => toast.error(err.message),
+      },
+    );
+  }
+
+  function handleRemoveMember(userId: string, displayName: string) {
+    removeMember.mutate(
+      { roleId: role.id, userId },
+      {
+        onSuccess: () => toast.success(t("toast.memberRemoved", { name: displayName })),
+        onError: (err) => toast.error(err.message),
+      },
+    );
   }
 
   function togglePermission(key: string) {
@@ -522,6 +591,90 @@ function RoleEditor({
         </ScrollArea>
       </div>
 
+      {/* Members — grants/revokes access immediately, independent of Save */}
+      <div className="space-y-2">
+        <Label>{t("roleEditor.membersSection.title")}</Label>
+        {cannotAssignRole ? (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <span tabIndex={0} className="inline-flex">
+                <RoleMemberPicker
+                  guildId={guildId}
+                  excludeIds={addExcludeIds}
+                  disabled
+                  onSelect={handleAddMember}
+                />
+              </span>
+            </TooltipTrigger>
+            <TooltipContent>{t("roleEditor.cannotGrantTooltip")}</TooltipContent>
+          </Tooltip>
+        ) : (
+          <RoleMemberPicker
+            guildId={guildId}
+            excludeIds={addExcludeIds}
+            disabled={assignMember.isPending}
+            onSelect={handleAddMember}
+          />
+        )}
+
+        {roleMembersLoading ? (
+          <div className="space-y-2" data-testid="role-members-loading">
+            <Skeleton className="h-10 w-full" />
+            <Skeleton className="h-10 w-full" />
+          </div>
+        ) : roleMembersError ? (
+          <Alert variant="destructive" data-testid="role-members-error">
+            {t("roleEditor.membersSection.error")}
+          </Alert>
+        ) : roleMembers.length === 0 ? (
+          <p className="text-sm text-text-muted" data-testid="role-members-empty">
+            {t("roleEditor.membersSection.empty")}
+          </p>
+        ) : (
+          <ul className="space-y-1.5" data-testid="role-members-list">
+            {roleMembers.map((m) => {
+              const member = resolvedById.get(m.userId);
+              const displayName = member?.displayName ?? m.userId;
+              const assignedByName = resolvedById.get(m.assignedBy)?.displayName ?? m.assignedBy;
+              const isRemoving =
+                removeMember.isPending && removeMember.variables?.userId === m.userId;
+              return (
+                <li
+                  key={m.id}
+                  className="flex items-center justify-between gap-3 rounded-md border border-outline-variant/20 bg-surface-low px-3 py-2"
+                >
+                  <div className="flex min-w-0 items-center gap-2.5">
+                    <img
+                      src={memberAvatarUrl(m.userId, member?.avatar ?? null)}
+                      alt={displayName}
+                      className="h-7 w-7 shrink-0 rounded-full"
+                    />
+                    <div className="min-w-0">
+                      <p className="truncate text-sm text-text">{displayName}</p>
+                      <p className="truncate text-xs text-text-muted">
+                        {t("roleEditor.membersSection.assignedBy", {
+                          name: assignedByName,
+                          date: new Date(m.createdAt).toLocaleDateString(),
+                        })}
+                      </p>
+                    </div>
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    disabled={isRemoving}
+                    onClick={() => handleRemoveMember(m.userId, displayName)}
+                    aria-label={t("roleEditor.membersSection.removeAria", { name: displayName })}
+                  >
+                    <Icon name="person_remove" size={16} />
+                  </Button>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
+
       {/* Actions */}
       <div className="flex gap-3">
         <Button onClick={handleSave} disabled={!dirty || updateRole.isPending}>
@@ -745,4 +898,10 @@ function setsEqual(a: Set<string>, b: Set<string>): boolean {
   if (a.size !== b.size) return false;
   for (const v of a) if (!b.has(v)) return false;
   return true;
+}
+
+function memberAvatarUrl(userId: string, avatar: string | null): string {
+  return avatar
+    ? `https://cdn.discordapp.com/avatars/${userId}/${avatar}.png?size=64`
+    : "https://cdn.discordapp.com/embed/avatars/0.png";
 }

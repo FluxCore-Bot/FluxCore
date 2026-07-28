@@ -48,7 +48,19 @@
     "lookupsWarning": "Deze rol kan modules configureren, maar kan geen kanalen, rollen of leden opzoeken — de kiezers ervan blijven leeg.",
     "grantLookups": "Kiezertoegang verlenen",
     "admissionNote": "Stelt houders ook in staat om andere leden dashboardtoegang te geven.",
-    "cannotGrantTooltip": "Je kunt geen rechten toekennen die je zelf niet hebt."
+    "cannotGrantTooltip": "Je kunt geen rechten toekennen die je zelf niet hebt.",
+    "membersSection": {
+      "title": "Leden",
+      "empty": "Er zijn nog geen leden aan deze rol toegewezen.",
+      "error": "De leden van deze rol konden niet worden geladen. Probeer de pagina te vernieuwen.",
+      "addPlaceholder": "Lid toevoegen",
+      "searchPlaceholder": "Leden zoeken...",
+      "searchHint": "Typ een naam om leden te zoeken",
+      "searchLoading": "Laden...",
+      "searchNoResults": "Geen resultaten",
+      "assignedBy": "Toegevoegd door {{name}} op {{date}}",
+      "removeAria": "Verwijder {{name}} uit deze rol"
+    }
   },
   "roleForm": {
     "name": "Rolnaam",
@@ -129,7 +141,9 @@
     "roleUpdated": "Rol bijgewerkt",
     "roleUpdateFailed": "Rol bijwerken mislukt",
     "roleDeleted": "Rol verwijderd",
-    "roleDeleteFailed": "Rol verwijderen mislukt"
+    "roleDeleteFailed": "Rol verwijderen mislukt",
+    "memberAdded": "{{name}} toegevoegd aan de rol",
+    "memberRemoved": "{{name}} verwijderd uit de rol"
   },
   "confirm": {
     "deleteTitle": "Rol \"{{name}}\" verwijderen?",

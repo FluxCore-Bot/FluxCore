@@ -48,7 +48,19 @@
     "lookupsWarning": "يمكن لهذا الدور إعداد الوحدات، لكن لا يمكنه البحث عن القنوات أو الأدوار أو الأعضاء — ستكون قوائمه فارغة.",
     "grantLookups": "منح إمكانية الوصول إلى أدوات البحث",
     "admissionNote": "كما يتيح لحامليه منح أعضاء آخرين إمكانية الوصول إلى لوحة التحكم.",
-    "cannotGrantTooltip": "لا يمكنك منح صلاحية لا تملكها بنفسك."
+    "cannotGrantTooltip": "لا يمكنك منح صلاحية لا تملكها بنفسك.",
+    "membersSection": {
+      "title": "الأعضاء",
+      "empty": "لم يتم تعيين أي أعضاء لهذا الدور بعد.",
+      "error": "تعذر تحميل أعضاء هذا الدور. حاول تحديث الصفحة.",
+      "addPlaceholder": "إضافة عضو",
+      "searchPlaceholder": "ابحث عن الأعضاء...",
+      "searchHint": "اكتب اسمًا للبحث عن الأعضاء",
+      "searchLoading": "جارٍ التحميل...",
+      "searchNoResults": "لا توجد نتائج",
+      "assignedBy": "أضافه {{name}} في {{date}}",
+      "removeAria": "إزالة {{name}} من هذا الدور"
+    }
   },
   "roleForm": {
     "name": "اسم الدور",
@@ -129,7 +141,9 @@
     "roleUpdated": "تم تحديث الدور",
     "roleUpdateFailed": "فشل في تحديث الدور",
     "roleDeleted": "تم حذف الدور",
-    "roleDeleteFailed": "فشل في حذف الدور"
+    "roleDeleteFailed": "فشل في حذف الدور",
+    "memberAdded": "تمت إضافة {{name}} إلى الدور",
+    "memberRemoved": "تمت إزالة {{name}} من الدور"
   },
   "confirm": {
     "deleteTitle": "حذف دور \"{{name}}\"؟",

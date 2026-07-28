@@ -1,10 +1,11 @@
-import { useState, useMemo, useId, useEffect } from "react";
+import { useState, useMemo, useId } from "react";
 import { useTranslation } from "react-i18next";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { Label } from "./label";
 import { Badge } from "./badge";
 import { Icon } from "../components/Icon";
 import { useMemberSearch, useMembersByIds } from "../hooks/useMembers";
+import { useDebounced } from "../hooks/useDebounced";
 
 interface MemberMultiSelectProps {
   guildId: string;
@@ -13,16 +14,6 @@ interface MemberMultiSelectProps {
   label: string;
   placeholder: string;
   chipColor?: "secondary" | "destructive";
-}
-
-/** Debounces a value so typing does not fire one request per keystroke. */
-function useDebounced<T>(value: T, ms: number): T {
-  const [debounced, setDebounced] = useState(value);
-  useEffect(() => {
-    const id = setTimeout(() => setDebounced(value), ms);
-    return () => clearTimeout(id);
-  }, [value, ms]);
-  return debounced;
 }
 
 /**

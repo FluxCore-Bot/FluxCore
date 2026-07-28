@@ -48,7 +48,19 @@
     "lookupsWarning": "Ce rôle peut configurer des modules mais ne peut pas rechercher de salons, rôles ou membres — ses sélecteurs seront vides.",
     "grantLookups": "Accorder l'accès aux sélecteurs",
     "admissionNote": "Permet également aux détenteurs de donner à d'autres membres l'accès au tableau de bord.",
-    "cannotGrantTooltip": "Vous ne pouvez pas accorder une permission que vous ne possédez pas vous-même."
+    "cannotGrantTooltip": "Vous ne pouvez pas accorder une permission que vous ne possédez pas vous-même.",
+    "membersSection": {
+      "title": "Membres",
+      "empty": "Aucun membre n'a encore été assigné à ce rôle.",
+      "error": "Impossible de charger les membres de ce rôle. Essayez d'actualiser la page.",
+      "addPlaceholder": "Ajouter un membre",
+      "searchPlaceholder": "Rechercher des membres...",
+      "searchHint": "Tapez un nom pour rechercher des membres",
+      "searchLoading": "Chargement...",
+      "searchNoResults": "Aucun résultat",
+      "assignedBy": "Ajouté par {{name}} le {{date}}",
+      "removeAria": "Retirer {{name}} de ce rôle"
+    }
   },
   "roleForm": {
     "name": "Nom du role",
@@ -129,7 +141,9 @@
     "roleUpdated": "Role mis a jour",
     "roleUpdateFailed": "Echec de la mise a jour du role",
     "roleDeleted": "Role supprime",
-    "roleDeleteFailed": "Echec de la suppression du role"
+    "roleDeleteFailed": "Echec de la suppression du role",
+    "memberAdded": "{{name}} ajoute au role",
+    "memberRemoved": "{{name}} retire du role"
   },
   "confirm": {
     "deleteTitle": "Supprimer le role \"{{name}}\" ?",

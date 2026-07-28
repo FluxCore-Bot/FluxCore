@@ -48,7 +48,19 @@
     "lookupsWarning": "Tato role může konfigurovat moduly, ale nemůže vyhledávat kanály, role ani členy — její výběry budou prázdné.",
     "grantLookups": "Udělit přístup k výběrům",
     "admissionNote": "Také umožňuje držitelům udělit ostatním členům přístup k nástěnce.",
-    "cannotGrantTooltip": "Nemůžete udělit oprávnění, které sami nemáte."
+    "cannotGrantTooltip": "Nemůžete udělit oprávnění, které sami nemáte.",
+    "membersSection": {
+      "title": "Členové",
+      "empty": "Této roli zatím nebyli přiřazeni žádní členové.",
+      "error": "Členy této role se nepodařilo načíst. Zkuste stránku obnovit.",
+      "addPlaceholder": "Přidat člena",
+      "searchPlaceholder": "Hledat členy...",
+      "searchHint": "Zadejte jméno pro vyhledání členů",
+      "searchLoading": "Načítání...",
+      "searchNoResults": "Žádné výsledky",
+      "assignedBy": "Přidal(a) {{name}} dne {{date}}",
+      "removeAria": "Odebrat {{name}} z této role"
+    }
   },
   "roleForm": {
     "name": "Název role",
@@ -129,7 +141,9 @@
     "roleUpdated": "Role aktualizována",
     "roleUpdateFailed": "Nepodařilo se aktualizovat roli",
     "roleDeleted": "Role smazána",
-    "roleDeleteFailed": "Nepodařilo se smazat roli"
+    "roleDeleteFailed": "Nepodařilo se smazat roli",
+    "memberAdded": "{{name}} přidán(a) do role",
+    "memberRemoved": "{{name}} odebrán(a) z role"
   },
   "confirm": {
     "deleteTitle": "Smazat roli \"{{name}}\"?",

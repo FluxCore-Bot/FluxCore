@@ -48,7 +48,19 @@
     "lookupsWarning": "This role can configure modules but cannot look up channels, roles, or members — its pickers will be empty.",
     "grantLookups": "Grant picker access",
     "admissionNote": "Also lets holders give other members dashboard access.",
-    "cannotGrantTooltip": "You can't grant a permission you don't have yourself."
+    "cannotGrantTooltip": "You can't grant a permission you don't have yourself.",
+    "membersSection": {
+      "title": "Members",
+      "empty": "No members have been assigned this role yet.",
+      "error": "Could not load this role's members. Try refreshing the page.",
+      "addPlaceholder": "Add a member",
+      "searchPlaceholder": "Search members...",
+      "searchHint": "Type a name to search members",
+      "searchLoading": "Loading...",
+      "searchNoResults": "No results",
+      "assignedBy": "Added by {{name}} on {{date}}",
+      "removeAria": "Remove {{name}} from this role"
+    }
   },
   "roleForm": {
     "name": "Role Name",
@@ -129,7 +141,9 @@
     "roleUpdated": "Role updated",
     "roleUpdateFailed": "Failed to update role",
     "roleDeleted": "Role deleted",
-    "roleDeleteFailed": "Failed to delete role"
+    "roleDeleteFailed": "Failed to delete role",
+    "memberAdded": "Added {{name}} to the role",
+    "memberRemoved": "Removed {{name}} from the role"
   },
   "confirm": {
     "deleteTitle": "Delete role \"{{name}}\"?",

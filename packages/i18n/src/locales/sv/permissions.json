@@ -48,7 +48,19 @@
     "lookupsWarning": "Denna roll kan konfigurera moduler men kan inte slå upp kanaler, roller eller medlemmar — dess väljare kommer att vara tomma.",
     "grantLookups": "Ge åtkomst till väljare",
     "admissionNote": "Låter även innehavare ge andra medlemmar åtkomst till instrumentpanelen.",
-    "cannotGrantTooltip": "Du kan inte bevilja en behörighet som du själv inte har."
+    "cannotGrantTooltip": "Du kan inte bevilja en behörighet som du själv inte har.",
+    "membersSection": {
+      "title": "Medlemmar",
+      "empty": "Inga medlemmar har tilldelats denna roll än.",
+      "error": "Det gick inte att läsa in medlemmarna för denna roll. Försök uppdatera sidan.",
+      "addPlaceholder": "Lägg till en medlem",
+      "searchPlaceholder": "Sök medlemmar...",
+      "searchHint": "Skriv ett namn för att söka medlemmar",
+      "searchLoading": "Läser in...",
+      "searchNoResults": "Inga resultat",
+      "assignedBy": "Tillagd av {{name}} den {{date}}",
+      "removeAria": "Ta bort {{name}} från denna roll"
+    }
   },
   "roleForm": {
     "name": "Rollnamn",
@@ -129,7 +141,9 @@
     "roleUpdated": "Roll uppdaterad",
     "roleUpdateFailed": "Misslyckades med att uppdatera roll",
     "roleDeleted": "Roll borttagen",
-    "roleDeleteFailed": "Misslyckades med att ta bort roll"
+    "roleDeleteFailed": "Misslyckades med att ta bort roll",
+    "memberAdded": "{{name}} lades till i rollen",
+    "memberRemoved": "{{name}} togs bort från rollen"
   },
   "confirm": {
     "deleteTitle": "Ta bort rollen \"{{name}}\"?",

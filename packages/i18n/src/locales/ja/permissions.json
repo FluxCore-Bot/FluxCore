@@ -48,7 +48,19 @@
     "lookupsWarning": "このロールはモジュールを設定できますが、チャンネル、ロール、メンバーを検索できません — ピッカーは空になります。",
     "grantLookups": "ピッカーへのアクセスを許可",
     "admissionNote": "保持者が他のメンバーにダッシュボードへのアクセスを付与できるようにもなります。",
-    "cannotGrantTooltip": "自分が持っていない権限を付与することはできません。"
+    "cannotGrantTooltip": "自分が持っていない権限を付与することはできません。",
+    "membersSection": {
+      "title": "メンバー",
+      "empty": "このロールにはまだメンバーが割り当てられていません。",
+      "error": "このロールのメンバーを読み込めませんでした。ページを更新してください。",
+      "addPlaceholder": "メンバーを追加",
+      "searchPlaceholder": "メンバーを検索...",
+      "searchHint": "メンバーを検索するには名前を入力してください",
+      "searchLoading": "読み込み中...",
+      "searchNoResults": "結果がありません",
+      "assignedBy": "{{date}}に{{name}}が追加しました",
+      "removeAria": "このロールから{{name}}を削除"
+    }
   },
   "roleForm": {
     "name": "ロール名",
@@ -129,7 +141,9 @@
     "roleUpdated": "ロールを更新しました",
     "roleUpdateFailed": "ロールの更新に失敗しました",
     "roleDeleted": "ロールを削除しました",
-    "roleDeleteFailed": "ロールの削除に失敗しました"
+    "roleDeleteFailed": "ロールの削除に失敗しました",
+    "memberAdded": "{{name}}をロールに追加しました",
+    "memberRemoved": "{{name}}をロールから削除しました"
   },
   "confirm": {
     "deleteTitle": "ロール「{{name}}」を削除しますか？",

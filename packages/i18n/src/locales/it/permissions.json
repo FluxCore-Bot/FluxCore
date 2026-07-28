@@ -48,7 +48,19 @@
     "lookupsWarning": "Questo ruolo può configurare i moduli ma non può cercare canali, ruoli o membri — i suoi selettori saranno vuoti.",
     "grantLookups": "Concedi accesso ai selettori",
     "admissionNote": "Consente inoltre ai titolari di concedere ad altri membri l'accesso alla dashboard.",
-    "cannotGrantTooltip": "Non puoi concedere un permesso che tu stesso non possiedi."
+    "cannotGrantTooltip": "Non puoi concedere un permesso che tu stesso non possiedi.",
+    "membersSection": {
+      "title": "Membri",
+      "empty": "Nessun membro è ancora stato assegnato a questo ruolo.",
+      "error": "Impossibile caricare i membri di questo ruolo. Prova ad aggiornare la pagina.",
+      "addPlaceholder": "Aggiungi un membro",
+      "searchPlaceholder": "Cerca membri...",
+      "searchHint": "Digita un nome per cercare i membri",
+      "searchLoading": "Caricamento...",
+      "searchNoResults": "Nessun risultato",
+      "assignedBy": "Aggiunto da {{name}} il {{date}}",
+      "removeAria": "Rimuovi {{name}} da questo ruolo"
+    }
   },
   "roleForm": {
     "name": "Nome del ruolo",
@@ -129,7 +141,9 @@
     "roleUpdated": "Ruolo aggiornato",
     "roleUpdateFailed": "Impossibile aggiornare il ruolo",
     "roleDeleted": "Ruolo eliminato",
-    "roleDeleteFailed": "Impossibile eliminare il ruolo"
+    "roleDeleteFailed": "Impossibile eliminare il ruolo",
+    "memberAdded": "{{name}} aggiunto al ruolo",
+    "memberRemoved": "{{name}} rimosso dal ruolo"
   },
   "confirm": {
     "deleteTitle": "Eliminare il ruolo \"{{name}}\"?",

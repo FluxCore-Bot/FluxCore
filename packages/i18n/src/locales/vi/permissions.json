@@ -48,7 +48,19 @@
     "lookupsWarning": "Vai trò này có thể cấu hình các mô-đun nhưng không thể tra cứu kênh, vai trò hoặc thành viên — các bộ chọn của nó sẽ trống.",
     "grantLookups": "Cấp quyền truy cập bộ chọn",
     "admissionNote": "Cũng cho phép người giữ vai trò cấp quyền truy cập bảng điều khiển cho các thành viên khác.",
-    "cannotGrantTooltip": "Bạn không thể cấp một quyền mà chính bạn không có."
+    "cannotGrantTooltip": "Bạn không thể cấp một quyền mà chính bạn không có.",
+    "membersSection": {
+      "title": "Thành Viên",
+      "empty": "Chưa có thành viên nào được gán vai trò này.",
+      "error": "Không thể tải thành viên của vai trò này. Hãy thử làm mới trang.",
+      "addPlaceholder": "Thêm thành viên",
+      "searchPlaceholder": "Tìm kiếm thành viên...",
+      "searchHint": "Nhập tên để tìm kiếm thành viên",
+      "searchLoading": "Đang tải...",
+      "searchNoResults": "Không có kết quả",
+      "assignedBy": "Được thêm bởi {{name}} vào {{date}}",
+      "removeAria": "Xóa {{name}} khỏi vai trò này"
+    }
   },
   "roleForm": {
     "name": "Tên Vai Trò",
@@ -129,7 +141,9 @@
     "roleUpdated": "Đã cập nhật vai trò",
     "roleUpdateFailed": "Cập nhật vai trò thất bại",
     "roleDeleted": "Đã xóa vai trò",
-    "roleDeleteFailed": "Xóa vai trò thất bại"
+    "roleDeleteFailed": "Xóa vai trò thất bại",
+    "memberAdded": "Đã thêm {{name}} vào vai trò",
+    "memberRemoved": "Đã xóa {{name}} khỏi vai trò"
   },
   "confirm": {
     "deleteTitle": "Xóa vai trò \"{{name}}\"?",

@@ -48,7 +48,19 @@
     "lookupsWarning": "Hierdie rol kan modules opstel, maar kan nie kanale, rolle of lede opsoek nie — sy kiesers sal leeg wees.",
     "grantLookups": "Verleen kieser-toegang",
     "admissionNote": "Laat houers ook toe om ander lede dashboard-toegang te gee.",
-    "cannotGrantTooltip": "Jy kan nie 'n toestemming toeken wat jy nie self het nie."
+    "cannotGrantTooltip": "Jy kan nie 'n toestemming toeken wat jy nie self het nie.",
+    "membersSection": {
+      "title": "Lede",
+      "empty": "Nog geen lede is aan hierdie rol toegewys nie.",
+      "error": "Kon nie hierdie rol se lede laai nie. Probeer om die bladsy te herlaai.",
+      "addPlaceholder": "Voeg 'n lid by",
+      "searchPlaceholder": "Soek lede...",
+      "searchHint": "Tik 'n naam om lede te soek",
+      "searchLoading": "Laai tans...",
+      "searchNoResults": "Geen resultate nie",
+      "assignedBy": "Bygevoeg deur {{name}} op {{date}}",
+      "removeAria": "Verwyder {{name}} uit hierdie rol"
+    }
   },
   "roleForm": {
     "name": "Rolnaam",
@@ -129,7 +141,9 @@
     "roleUpdated": "Rol bygewerk",
     "roleUpdateFailed": "Kon nie rol bywerk nie",
     "roleDeleted": "Rol verwyder",
-    "roleDeleteFailed": "Kon nie rol verwyder nie"
+    "roleDeleteFailed": "Kon nie rol verwyder nie",
+    "memberAdded": "{{name}} by die rol gevoeg",
+    "memberRemoved": "{{name}} van die rol verwyder"
   },
   "confirm": {
     "deleteTitle": "Verwyder rol \"{{name}}\"?",

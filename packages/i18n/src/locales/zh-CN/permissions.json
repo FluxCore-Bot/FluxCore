@@ -48,7 +48,19 @@
     "lookupsWarning": "此角色可以配置模块，但无法查找频道、角色或成员 — 其选择器将为空。",
     "grantLookups": "授予选择器访问权限",
     "admissionNote": "还允许持有者授予其他成员仪表盘访问权限。",
-    "cannotGrantTooltip": "你不能授予自己都没有的权限。"
+    "cannotGrantTooltip": "你不能授予自己都没有的权限。",
+    "membersSection": {
+      "title": "成员",
+      "empty": "此角色尚未分配任何成员。",
+      "error": "无法加载此角色的成员。请尝试刷新页面。",
+      "addPlaceholder": "添加成员",
+      "searchPlaceholder": "搜索成员...",
+      "searchHint": "输入姓名以搜索成员",
+      "searchLoading": "加载中...",
+      "searchNoResults": "无结果",
+      "assignedBy": "由 {{name}} 于 {{date}} 添加",
+      "removeAria": "将 {{name}} 从此角色移除"
+    }
   },
   "roleForm": {
     "name": "角色名称",
@@ -129,7 +141,9 @@
     "roleUpdated": "角色已更新",
     "roleUpdateFailed": "更新角色失败",
     "roleDeleted": "角色已删除",
-    "roleDeleteFailed": "删除角色失败"
+    "roleDeleteFailed": "删除角色失败",
+    "memberAdded": "已将 {{name}} 添加到角色",
+    "memberRemoved": "已将 {{name}} 从角色移除"
   },
   "confirm": {
     "deleteTitle": "删除角色「{{name}}」？",

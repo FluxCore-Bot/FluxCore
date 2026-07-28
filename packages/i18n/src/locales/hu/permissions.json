@@ -48,7 +48,19 @@
     "lookupsWarning": "Ez a szerepkör képes modulokat konfigurálni, de nem tud csatornákat, szerepköröket vagy tagokat keresni — a választói üresek lesznek.",
     "grantLookups": "Választói hozzáférés megadása",
     "admissionNote": "A birtokosok más tagoknak is hozzáférést adhatnak az irányítópulthoz.",
-    "cannotGrantTooltip": "Nem adhatsz olyan jogosultságot, amellyel te magad nem rendelkezel."
+    "cannotGrantTooltip": "Nem adhatsz olyan jogosultságot, amellyel te magad nem rendelkezel.",
+    "membersSection": {
+      "title": "Tagok",
+      "empty": "Ehhez a szerepkörhöz még nincsenek hozzárendelve tagok.",
+      "error": "Nem sikerült betölteni a szerepkör tagjait. Próbáld frissíteni az oldalt.",
+      "addPlaceholder": "Tag hozzáadása",
+      "searchPlaceholder": "Tagok keresése...",
+      "searchHint": "Írj be egy nevet a tagok kereséséhez",
+      "searchLoading": "Betöltés...",
+      "searchNoResults": "Nincs találat",
+      "assignedBy": "Hozzáadta: {{name}}, {{date}}",
+      "removeAria": "{{name}} eltávolítása ebből a szerepkörből"
+    }
   },
   "roleForm": {
     "name": "Role Name",
@@ -129,7 +141,9 @@
     "roleUpdated": "Role updated",
     "roleUpdateFailed": "Failed to update role",
     "roleDeleted": "Role deleted",
-    "roleDeleteFailed": "Failed to delete role"
+    "roleDeleteFailed": "Failed to delete role",
+    "memberAdded": "{{name}} hozzáadva a szerepkörhöz",
+    "memberRemoved": "{{name}} eltávolítva a szerepkörből"
   },
   "confirm": {
     "deleteTitle": "Delete role \"{{name}}\"?",

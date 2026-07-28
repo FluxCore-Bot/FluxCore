@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
-import { describe, it, expect, vi, beforeAll } from "vitest";
+import { describe, it, expect, vi, beforeAll, beforeEach } from "vitest";
 import { render, screen, within, fireEvent } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
@@ -104,6 +105,65 @@ const settingsState = vi.hoisted((): { box: SettingsFixture } => ({
   },
 }));
 
+// Drives useRoleMembers(guildId, roleId) — the assigned-member list rendered
+// with provenance below the permission grid.
+interface RoleMemberFixture {
+  id: string;
+  userId: string;
+  assignedBy: string;
+  createdAt: string;
+}
+
+interface RoleMembersQueryState {
+  data: RoleMemberFixture[] | undefined;
+  isLoading: boolean;
+  isError: boolean;
+}
+
+const roleMembersState = vi.hoisted((): { box: RoleMembersQueryState } => ({
+  box: { data: [], isLoading: false, isError: false },
+}));
+
+// Drives useAssignRoleMember/useRemoveRoleMember. `mutate` records every call
+// so tests can assert the exact {roleId, userId} sent, and synchronously
+// invokes the caller's onSuccess/onError (mirroring RoleEditor's own
+// success/error toast handling) so a `shouldFail` fixture can prove a failed
+// mutation surfaces an error rather than looking like a success.
+interface RoleMemberMutationFixture {
+  isPending: boolean;
+  shouldFail: boolean;
+  calls: Array<{ roleId: string; userId: string }>;
+  variables: { roleId: string; userId: string } | undefined;
+}
+
+function freshMutationFixture(): RoleMemberMutationFixture {
+  return { isPending: false, shouldFail: false, calls: [], variables: undefined };
+}
+
+const assignMemberState = vi.hoisted((): { box: RoleMemberMutationFixture } => ({
+  box: { isPending: false, shouldFail: false, calls: [], variables: undefined },
+}));
+
+const removeMemberState = vi.hoisted((): { box: RoleMemberMutationFixture } => ({
+  box: { isPending: false, shouldFail: false, calls: [], variables: undefined },
+}));
+
+function mutationMock(state: { box: RoleMemberMutationFixture }) {
+  return {
+    isPending: state.box.isPending,
+    variables: state.box.variables,
+    mutate: (
+      vars: { roleId: string; userId: string },
+      opts?: { onSuccess?: () => void; onError?: (err: Error) => void },
+    ) => {
+      state.box.calls.push(vars);
+      state.box.variables = vars;
+      if (state.box.shouldFail) opts?.onError?.(new Error("Request failed"));
+      else opts?.onSuccess?.();
+    },
+  };
+}
+
 vi.mock("../../../../../src/client/features/permissions/hooks/usePermissions", async (importOriginal) => {
   // matchPermission is kept real (rather than re-stubbed) so RoleEditor's
   // lookups-warning check — which imports it via lookupsWarning.ts — behaves
@@ -129,11 +189,48 @@ vi.mock("../../../../../src/client/features/permissions/hooks/usePermissions", a
     useUpdateDashboardSettings: () => ({ mutate: vi.fn(), isPending: false }),
     useDashboardAuditLog: () => ({ data: { entries: [], total: 0, page: 1, pages: 1 }, isLoading: false }),
     usePermissionRegistry: () => registryState.box,
+    useRoleMembers: () => roleMembersState.box,
+    useAssignRoleMember: () => mutationMock(assignMemberState),
+    useRemoveRoleMember: () => mutationMock(removeMemberState),
   };
 });
 
+// Drives useMemberSearch/useMembersByIds — both return the same fixed roster
+// regardless of the query/ids passed in, since filtering (excludeIds) is the
+// component's own job, not the mocked hook's.
+interface MemberFixture {
+  id: string;
+  username: string;
+  displayName: string;
+  avatar: string | null;
+}
+
+const memberDirectoryState = vi.hoisted((): { box: MemberFixture[] } => ({ box: [] }));
+
+vi.mock("../../../../../src/client/shared/hooks/useMembers", () => ({
+  useMemberSearch: () => ({ data: memberDirectoryState.box, isLoading: false }),
+  useMembersByIds: () => ({ data: memberDirectoryState.box, isLoading: false }),
+}));
+
+// Drives useAuth() — only `.data.userId` is consumed (RoleEditor's self-id
+// for excluding the caller from their own add-control results).
+interface AuthFixture {
+  userId: string;
+  username: string;
+  avatar: string | null;
+}
+
+const authState = vi.hoisted((): { box: AuthFixture | null } => ({
+  box: { userId: "u-current", username: "current", avatar: null },
+}));
+
+vi.mock("../../../../../src/client/shared/hooks/useAuth", () => ({
+  useAuth: () => ({ data: authState.box }),
+}));
+
 import { PermissionsPage } from "../../../../../src/client/routes/guild/$guildId/permissions";
 import { TooltipProvider } from "../../../../../src/client/shared/ui/tooltip";
+import { toast } from "sonner";
 
 // Radix ScrollArea (wrapping the permission grid) needs ResizeObserver, which
 // jsdom lacks. Typed against the DOM lib interface so no cast is needed.
@@ -508,5 +605,223 @@ describe("PermissionsPage — RoleEditor disables permissions the current user c
 
     await screen.findByText("permissions:permissionCategories.tickets");
     expect(moduleSelectAllCheckbox("permissions:permissionCategories.tickets")).not.toBeDisabled();
+  });
+});
+
+const ALICE: MemberFixture = { id: "u-alice", username: "alice", displayName: "Alice", avatar: null };
+const BOB: MemberFixture = { id: "u-bob", username: "bob", displayName: "Bob", avatar: null };
+const CURRENT: MemberFixture = { id: "u-current", username: "current", displayName: "Current", avatar: null };
+
+function addMemberButton(): Promise<HTMLElement> {
+  return screen.findByRole("button", { name: "roleEditor.membersSection.addPlaceholder" });
+}
+
+describe("PermissionsPage — role member assignment", () => {
+  beforeEach(() => {
+    roleMembersState.box = { data: [], isLoading: false, isError: false };
+    assignMemberState.box = freshMutationFixture();
+    removeMemberState.box = freshMutationFixture();
+    memberDirectoryState.box = [ALICE, BOB, CURRENT];
+    authState.box = { userId: "u-current", username: "current", avatar: null };
+    permissionsState.box = { isOwner: true, isLoading: false, permissions: ["*"] };
+    settingsState.box = {
+      data: { guildId: "g1", auditRetentionDays: 30, requirePermissions: true },
+      isLoading: false,
+      isError: false,
+    };
+    roleState.box = { ...ROLE_BASE, permissions: [] };
+    registryState.box = { data: REGISTRY, isLoading: false, isError: false };
+    vi.mocked(toast.success).mockClear();
+    vi.mocked(toast.error).mockClear();
+  });
+
+  it("renders an assigned member's resolved display name plus who assigned them and when", async () => {
+    roleMembersState.box = {
+      data: [{ id: "a1", userId: "u-alice", assignedBy: "u-bob", createdAt: "2026-01-05T00:00:00.000Z" }],
+      isLoading: false,
+      isError: false,
+    };
+    renderPage();
+
+    expect(await screen.findByTestId("role-members-list")).toBeInTheDocument();
+    expect(screen.getByText("Alice")).toBeInTheDocument();
+    const expectedDate = new Date("2026-01-05T00:00:00.000Z").toLocaleDateString();
+    expect(
+      screen.getByText(
+        `roleEditor.membersSection.assignedBy:${JSON.stringify({ name: "Bob", date: expectedDate })}`,
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("falls back to the raw assigner id when the assigner no longer resolves (left the guild)", async () => {
+    roleMembersState.box = {
+      data: [{ id: "a1", userId: "u-alice", assignedBy: "u-ghost", createdAt: "2026-01-05T00:00:00.000Z" }],
+      isLoading: false,
+      isError: false,
+    };
+    renderPage();
+
+    expect(await screen.findByText("Alice")).toBeInTheDocument();
+    const expectedDate = new Date("2026-01-05T00:00:00.000Z").toLocaleDateString();
+    expect(
+      screen.getByText(
+        `roleEditor.membersSection.assignedBy:${JSON.stringify({ name: "u-ghost", date: expectedDate })}`,
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("shows a skeleton while members are loading, with no empty/error/list rendered", async () => {
+    roleMembersState.box = { data: undefined, isLoading: true, isError: false };
+    renderPage();
+
+    expect(await screen.findByTestId("role-members-loading")).toBeInTheDocument();
+    expect(screen.queryByTestId("role-members-empty")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("role-members-error")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("role-members-list")).not.toBeInTheDocument();
+  });
+
+  it("shows an explicit empty state, distinct from the error state, when the role has no members", async () => {
+    roleMembersState.box = { data: [], isLoading: false, isError: false };
+    renderPage();
+
+    const empty = await screen.findByTestId("role-members-empty");
+    expect(empty).toBeInTheDocument();
+    expect(screen.queryByTestId("role-members-error")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("role-members-loading")).not.toBeInTheDocument();
+  });
+
+  it("shows an error state, not the empty state, when the member fetch fails", async () => {
+    roleMembersState.box = { data: undefined, isLoading: false, isError: true };
+    renderPage();
+
+    const error = await screen.findByTestId("role-members-error");
+    expect(error).toBeInTheDocument();
+    expect(screen.queryByTestId("role-members-empty")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("role-members-loading")).not.toBeInTheDocument();
+  });
+
+  it("calls the assign mutation with the selected role and user id when a member is picked", async () => {
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.click(await addMemberButton());
+    await user.click(await screen.findByText("Alice"));
+
+    expect(assignMemberState.box.calls).toEqual([{ roleId: "role-1", userId: "u-alice" }]);
+    expect(toast.success).toHaveBeenCalled();
+    expect(toast.error).not.toHaveBeenCalled();
+  });
+
+  it("calls the remove mutation with the right role and user id", async () => {
+    roleMembersState.box = {
+      data: [{ id: "a1", userId: "u-alice", assignedBy: "u-bob", createdAt: "2026-01-05T00:00:00.000Z" }],
+      isLoading: false,
+      isError: false,
+    };
+    const user = userEvent.setup();
+    renderPage();
+    await screen.findByText("Alice");
+
+    const removeButton = screen.getByRole("button", {
+      name: `roleEditor.membersSection.removeAria:${JSON.stringify({ name: "Alice" })}`,
+    });
+    await user.click(removeButton);
+
+    expect(removeMemberState.box.calls).toEqual([{ roleId: "role-1", userId: "u-alice" }]);
+  });
+
+  it("disables the add control for a delegated caller who cannot grant every permission the role holds", async () => {
+    permissionsState.box = { isOwner: false, isLoading: false, permissions: ["tickets.list.view"] };
+    roleState.box = { ...ROLE_BASE, permissions: ["moderation.cases.view"] };
+    renderPage();
+
+    expect(await addMemberButton()).toBeDisabled();
+  });
+
+  it("does not disable the add control for the owner, regardless of their own resolved permissions", async () => {
+    permissionsState.box = { isOwner: true, isLoading: false, permissions: [] };
+    roleState.box = { ...ROLE_BASE, permissions: ["moderation.cases.view"] };
+    renderPage();
+
+    expect(await addMemberButton()).not.toBeDisabled();
+  });
+
+  it("does not disable the add control for a delegated caller who holds every permission the role grants", async () => {
+    permissionsState.box = { isOwner: false, isLoading: false, permissions: ["tickets.*"] };
+    roleState.box = { ...ROLE_BASE, permissions: ["tickets.list.view"] };
+    renderPage();
+
+    expect(await addMemberButton()).not.toBeDisabled();
+  });
+
+  it("excludes the current user from the add control's options for a non-owner caller", async () => {
+    permissionsState.box = { isOwner: false, isLoading: false, permissions: ["tickets.*"] };
+    roleState.box = { ...ROLE_BASE, permissions: ["tickets.list.view"] };
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.click(await addMemberButton());
+
+    expect(await screen.findByText("Alice")).toBeInTheDocument();
+    expect(screen.queryByText("Current")).not.toBeInTheDocument();
+  });
+
+  it("includes the current user in the add control's options for the owner", async () => {
+    permissionsState.box = { isOwner: true, isLoading: false, permissions: [] };
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.click(await addMemberButton());
+
+    expect(await screen.findByText("Current")).toBeInTheDocument();
+  });
+
+  it("does not offer a member who is already assigned the role again", async () => {
+    roleMembersState.box = {
+      data: [{ id: "a1", userId: "u-alice", assignedBy: "u-bob", createdAt: "2026-01-05T00:00:00.000Z" }],
+      isLoading: false,
+      isError: false,
+    };
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.click(await addMemberButton());
+
+    expect(await screen.findByText("Bob")).toBeInTheDocument();
+    // "Alice" the provenance row still renders once; assert it never shows up
+    // a second time inside the picker's option list.
+    expect(screen.getAllByText("Alice")).toHaveLength(1);
+  });
+
+  it("surfaces an error toast, not a success toast, when the assignment fails", async () => {
+    assignMemberState.box = { ...freshMutationFixture(), shouldFail: true };
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.click(await addMemberButton());
+    await user.click(await screen.findByText("Alice"));
+
+    expect(toast.error).toHaveBeenCalled();
+    expect(toast.success).not.toHaveBeenCalled();
+  });
+
+  it("surfaces an error toast, not a success toast, when removal fails", async () => {
+    roleMembersState.box = {
+      data: [{ id: "a1", userId: "u-alice", assignedBy: "u-bob", createdAt: "2026-01-05T00:00:00.000Z" }],
+      isLoading: false,
+      isError: false,
+    };
+    removeMemberState.box = { ...freshMutationFixture(), shouldFail: true };
+    const user = userEvent.setup();
+    renderPage();
+    await screen.findByText("Alice");
+
+    const removeButton = screen.getByRole("button", {
+      name: `roleEditor.membersSection.removeAria:${JSON.stringify({ name: "Alice" })}`,
+    });
+    await user.click(removeButton);
+
+    expect(toast.error).toHaveBeenCalled();
+    expect(toast.success).not.toHaveBeenCalled();
   });
 });

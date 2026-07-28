@@ -48,7 +48,19 @@
     "lookupsWarning": "Jukumu hili linaweza kusanidi moduli lakini haliwezi kutafuta chaneli, majukumu, au wanachama — vichaguzi vyake vitakuwa tupu.",
     "grantLookups": "Toa ufikiaji wa vichaguzi",
     "admissionNote": "Pia huwaruhusu wamiliki kuwapa wanachama wengine ufikiaji wa dashibodi.",
-    "cannotGrantTooltip": "Huwezi kutoa idhini ambayo wewe mwenyewe huna."
+    "cannotGrantTooltip": "Huwezi kutoa idhini ambayo wewe mwenyewe huna.",
+    "membersSection": {
+      "title": "Wanachama",
+      "empty": "Hakuna wanachama waliopewa jukumu hili bado.",
+      "error": "Wanachama wa jukumu hili hawakuweza kupakiwa. Jaribu kuonyesha upya ukurasa.",
+      "addPlaceholder": "Ongeza mwanachama",
+      "searchPlaceholder": "Tafuta wanachama...",
+      "searchHint": "Andika jina ili kutafuta wanachama",
+      "searchLoading": "Inapakia...",
+      "searchNoResults": "Hakuna matokeo",
+      "assignedBy": "Imeongezwa na {{name}} tarehe {{date}}",
+      "removeAria": "Ondoa {{name}} kutoka jukumu hili"
+    }
   },
   "roleForm": {
     "name": "Jina la Jukumu",
@@ -129,7 +141,9 @@
     "roleUpdated": "Jukumu limesasishwa",
     "roleUpdateFailed": "Imeshindwa kusasisha jukumu",
     "roleDeleted": "Jukumu limefutwa",
-    "roleDeleteFailed": "Imeshindwa kufuta jukumu"
+    "roleDeleteFailed": "Imeshindwa kufuta jukumu",
+    "memberAdded": "{{name}} ameongezwa kwenye jukumu",
+    "memberRemoved": "{{name}} ameondolewa kwenye jukumu"
   },
   "confirm": {
     "deleteTitle": "Futa jukumu \"{{name}}\"?",

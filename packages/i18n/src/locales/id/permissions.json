@@ -48,7 +48,19 @@
     "lookupsWarning": "Peran ini dapat mengonfigurasi modul tetapi tidak dapat mencari saluran, peran, atau anggota — pemilihnya akan kosong.",
     "grantLookups": "Berikan akses pemilih",
     "admissionNote": "Juga memungkinkan pemegangnya memberikan akses dasbor kepada anggota lain.",
-    "cannotGrantTooltip": "Anda tidak dapat memberikan izin yang tidak Anda miliki sendiri."
+    "cannotGrantTooltip": "Anda tidak dapat memberikan izin yang tidak Anda miliki sendiri.",
+    "membersSection": {
+      "title": "Anggota",
+      "empty": "Belum ada anggota yang diberi peran ini.",
+      "error": "Anggota peran ini tidak dapat dimuat. Coba segarkan halaman.",
+      "addPlaceholder": "Tambahkan anggota",
+      "searchPlaceholder": "Cari anggota...",
+      "searchHint": "Ketik nama untuk mencari anggota",
+      "searchLoading": "Memuat...",
+      "searchNoResults": "Tidak ada hasil",
+      "assignedBy": "Ditambahkan oleh {{name}} pada {{date}}",
+      "removeAria": "Hapus {{name}} dari peran ini"
+    }
   },
   "roleForm": {
     "name": "Nama Peran",
@@ -129,7 +141,9 @@
     "roleUpdated": "Peran diperbarui",
     "roleUpdateFailed": "Gagal memperbarui peran",
     "roleDeleted": "Peran dihapus",
-    "roleDeleteFailed": "Gagal menghapus peran"
+    "roleDeleteFailed": "Gagal menghapus peran",
+    "memberAdded": "{{name}} ditambahkan ke peran",
+    "memberRemoved": "{{name}} dihapus dari peran"
   },
   "confirm": {
     "deleteTitle": "Hapus peran \"{{name}}\"?",

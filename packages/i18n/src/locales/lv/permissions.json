@@ -48,7 +48,19 @@
     "lookupsWarning": "Šī loma var konfigurēt moduļus, bet nevar meklēt kanālus, lomas vai dalībniekus — tās atlasītāji būs tukši.",
     "grantLookups": "Piešķirt piekļuvi atlasītājiem",
     "admissionNote": "Ļauj turētājiem arī piešķirt citiem dalībniekiem piekļuvi vadības panelim.",
-    "cannotGrantTooltip": "Jūs nevarat piešķirt atļauju, kuras jums pašam nav."
+    "cannotGrantTooltip": "Jūs nevarat piešķirt atļauju, kuras jums pašam nav.",
+    "membersSection": {
+      "title": "Dalībnieki",
+      "empty": "Šai lomai vēl nav piešķirti dalībnieki.",
+      "error": "Neizdevās ielādēt šīs lomas dalībniekus. Mēģiniet atsvaidzināt lapu.",
+      "addPlaceholder": "Pievienot dalībnieku",
+      "searchPlaceholder": "Meklēt dalībniekus...",
+      "searchHint": "Ierakstiet vārdu, lai meklētu dalībniekus",
+      "searchLoading": "Ielādē...",
+      "searchNoResults": "Nav rezultātu",
+      "assignedBy": "Pievienoja {{name}}, {{date}}",
+      "removeAria": "Noņemt {{name}} no šīs lomas"
+    }
   },
   "roleForm": {
     "name": "Lomas nosaukums",
@@ -129,7 +141,9 @@
     "roleUpdated": "Loma atjaunota",
     "roleUpdateFailed": "Neizdevas atjaunot lomu",
     "roleDeleted": "Loma dzesta",
-    "roleDeleteFailed": "Neizdevas dzest lomu"
+    "roleDeleteFailed": "Neizdevas dzest lomu",
+    "memberAdded": "{{name}} pievienots lomai",
+    "memberRemoved": "{{name}} noņemts no lomas"
   },
   "confirm": {
     "deleteTitle": "Dzest lomu \"{{name}}\"?",

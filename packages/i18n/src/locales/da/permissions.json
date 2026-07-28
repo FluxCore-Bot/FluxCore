@@ -48,7 +48,19 @@
     "lookupsWarning": "Denne rolle kan konfigurere moduler, men kan ikke slå kanaler, roller eller medlemmer op — dens vælgere vil være tomme.",
     "grantLookups": "Giv adgang til vælgere",
     "admissionNote": "Giver også indehavere mulighed for at give andre medlemmer adgang til dashboardet.",
-    "cannotGrantTooltip": "Du kan ikke give en tilladelse, du ikke selv har."
+    "cannotGrantTooltip": "Du kan ikke give en tilladelse, du ikke selv har.",
+    "membersSection": {
+      "title": "Medlemmer",
+      "empty": "Der er endnu ikke tildelt medlemmer til denne rolle.",
+      "error": "Kunne ikke indlæse medlemmerne af denne rolle. Prøv at genindlæse siden.",
+      "addPlaceholder": "Tilføj et medlem",
+      "searchPlaceholder": "Søg efter medlemmer...",
+      "searchHint": "Skriv et navn for at søge efter medlemmer",
+      "searchLoading": "Indlæser...",
+      "searchNoResults": "Ingen resultater",
+      "assignedBy": "Tilføjet af {{name}} den {{date}}",
+      "removeAria": "Fjern {{name}} fra denne rolle"
+    }
   },
   "roleForm": {
     "name": "Rollenavn",
@@ -129,7 +141,9 @@
     "roleUpdated": "Rolle opdateret",
     "roleUpdateFailed": "Kunne ikke opdatere rolle",
     "roleDeleted": "Rolle slettet",
-    "roleDeleteFailed": "Kunne ikke slette rolle"
+    "roleDeleteFailed": "Kunne ikke slette rolle",
+    "memberAdded": "Tilføjede {{name}} til rollen",
+    "memberRemoved": "Fjernede {{name}} fra rollen"
   },
   "confirm": {
     "deleteTitle": "Slet rollen \"{{name}}\"?",

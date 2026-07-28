@@ -48,7 +48,19 @@
     "lookupsWarning": "Ta vloga lahko konfigurira module, vendar ne more iskati kanalov, vlog ali članov — njeni izbirniki bodo prazni.",
     "grantLookups": "Dodeli dostop do izbirnikov",
     "admissionNote": "Prav tako imetnikom omogoča, da drugim članom dodelijo dostop do nadzorne plošče.",
-    "cannotGrantTooltip": "Ne morete podeliti dovoljenja, ki ga sami nimate."
+    "cannotGrantTooltip": "Ne morete podeliti dovoljenja, ki ga sami nimate.",
+    "membersSection": {
+      "title": "Člani",
+      "empty": "Tej vlogi še ni dodeljen noben član.",
+      "error": "Članov te vloge ni bilo mogoče naložiti. Poskusite osvežiti stran.",
+      "addPlaceholder": "Dodaj člana",
+      "searchPlaceholder": "Iskanje članov...",
+      "searchHint": "Vnesite ime za iskanje članov",
+      "searchLoading": "Nalaganje...",
+      "searchNoResults": "Ni rezultatov",
+      "assignedBy": "Dodal(a) {{name}} dne {{date}}",
+      "removeAria": "Odstrani {{name}} iz te vloge"
+    }
   },
   "roleForm": {
     "name": "Ime vloge",
@@ -129,7 +141,9 @@
     "roleUpdated": "Vloga posodobljena",
     "roleUpdateFailed": "Posodabljanje vloge ni uspelo",
     "roleDeleted": "Vloga izbrisana",
-    "roleDeleteFailed": "Brisanje vloge ni uspelo"
+    "roleDeleteFailed": "Brisanje vloge ni uspelo",
+    "memberAdded": "{{name}} dodan(a) v vlogo",
+    "memberRemoved": "{{name}} odstranjen(a) iz vloge"
   },
   "confirm": {
     "deleteTitle": "Izbriši vlogo \"{{name}}\"?",

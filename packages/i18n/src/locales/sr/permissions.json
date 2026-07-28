@@ -48,7 +48,19 @@
     "lookupsWarning": "Ova uloga moze da konfigurise module, ali ne moze da pretrazuje kanale, uloge ili clanove — njeni biraci ce biti prazni.",
     "grantLookups": "Dodeli pristup biracima",
     "admissionNote": "Takodje omogucava nosiocima da dodele drugim clanovima pristup kontrolnoj tabli.",
-    "cannotGrantTooltip": "Ne mozete dodeliti dozvolu koju sami nemate."
+    "cannotGrantTooltip": "Ne mozete dodeliti dozvolu koju sami nemate.",
+    "membersSection": {
+      "title": "Clanovi",
+      "empty": "Ovoj ulozi jos nisu dodeljeni clanovi.",
+      "error": "Clanovi ove uloge nisu mogli da se ucitaju. Pokusajte da osvezite stranicu.",
+      "addPlaceholder": "Dodaj clana",
+      "searchPlaceholder": "Pretrazi clanove...",
+      "searchHint": "Unesite ime da biste pretrazili clanove",
+      "searchLoading": "Ucitavanje...",
+      "searchNoResults": "Nema rezultata",
+      "assignedBy": "Dodao/la {{name}} dana {{date}}",
+      "removeAria": "Ukloni {{name}} iz ove uloge"
+    }
   },
   "roleForm": {
     "name": "Naziv uloge",
@@ -129,7 +141,9 @@
     "roleUpdated": "Uloga azurirana",
     "roleUpdateFailed": "Azuriranje uloge nije uspelo",
     "roleDeleted": "Uloga obrisana",
-    "roleDeleteFailed": "Brisanje uloge nije uspelo"
+    "roleDeleteFailed": "Brisanje uloge nije uspelo",
+    "memberAdded": "{{name}} je dodat/a u ulogu",
+    "memberRemoved": "{{name}} je uklonjen/a iz uloge"
   },
   "confirm": {
     "deleteTitle": "Obrisati ulogu \"{{name}}\"?",

@@ -48,7 +48,19 @@
     "lookupsWarning": "Este rol puede configurar módulos, pero no puede buscar canales, roles ni miembros — sus selectores estarán vacíos.",
     "grantLookups": "Conceder acceso a los selectores",
     "admissionNote": "También permite a sus titulares dar acceso al panel a otros miembros.",
-    "cannotGrantTooltip": "No puedes conceder un permiso que tú mismo no tienes."
+    "cannotGrantTooltip": "No puedes conceder un permiso que tú mismo no tienes.",
+    "membersSection": {
+      "title": "Miembros",
+      "empty": "Todavía no se ha asignado ningún miembro a este rol.",
+      "error": "No se pudieron cargar los miembros de este rol. Intenta actualizar la página.",
+      "addPlaceholder": "Añadir un miembro",
+      "searchPlaceholder": "Buscar miembros...",
+      "searchHint": "Escribe un nombre para buscar miembros",
+      "searchLoading": "Cargando...",
+      "searchNoResults": "Sin resultados",
+      "assignedBy": "Añadido por {{name}} el {{date}}",
+      "removeAria": "Quitar a {{name}} de este rol"
+    }
   },
   "roleForm": {
     "name": "Nombre del rol",
@@ -129,7 +141,9 @@
     "roleUpdated": "Rol actualizado",
     "roleUpdateFailed": "Error al actualizar el rol",
     "roleDeleted": "Rol eliminado",
-    "roleDeleteFailed": "Error al eliminar el rol"
+    "roleDeleteFailed": "Error al eliminar el rol",
+    "memberAdded": "Se añadió a {{name}} al rol",
+    "memberRemoved": "Se quitó a {{name}} del rol"
   },
   "confirm": {
     "deleteTitle": "Eliminar rol \"{{name}}\"?",

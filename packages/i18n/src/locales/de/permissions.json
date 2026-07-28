@@ -48,7 +48,19 @@
     "lookupsWarning": "Diese Rolle kann Module konfigurieren, aber keine Kanäle, Rollen oder Mitglieder nachschlagen — ihre Auswahlfelder bleiben leer.",
     "grantLookups": "Auswahlzugriff gewähren",
     "admissionNote": "Erlaubt Inhabern außerdem, anderen Mitgliedern Dashboard-Zugriff zu gewähren.",
-    "cannotGrantTooltip": "Du kannst keine Berechtigung vergeben, die du selbst nicht besitzt."
+    "cannotGrantTooltip": "Du kannst keine Berechtigung vergeben, die du selbst nicht besitzt.",
+    "membersSection": {
+      "title": "Mitglieder",
+      "empty": "Dieser Rolle wurden noch keine Mitglieder zugewiesen.",
+      "error": "Die Mitglieder dieser Rolle konnten nicht geladen werden. Versuche, die Seite neu zu laden.",
+      "addPlaceholder": "Mitglied hinzufügen",
+      "searchPlaceholder": "Mitglieder suchen...",
+      "searchHint": "Gib einen Namen ein, um Mitglieder zu suchen",
+      "searchLoading": "Wird geladen...",
+      "searchNoResults": "Keine Ergebnisse",
+      "assignedBy": "Hinzugefügt von {{name}} am {{date}}",
+      "removeAria": "{{name}} aus dieser Rolle entfernen"
+    }
   },
   "roleForm": {
     "name": "Rollenname",
@@ -129,7 +141,9 @@
     "roleUpdated": "Rolle aktualisiert",
     "roleUpdateFailed": "Rolle konnte nicht aktualisiert werden",
     "roleDeleted": "Rolle geloescht",
-    "roleDeleteFailed": "Rolle konnte nicht geloescht werden"
+    "roleDeleteFailed": "Rolle konnte nicht geloescht werden",
+    "memberAdded": "{{name}} zur Rolle hinzugefügt",
+    "memberRemoved": "{{name}} aus der Rolle entfernt"
   },
   "confirm": {
     "deleteTitle": "Rolle \"{{name}}\" loeschen?",

@@ -48,7 +48,19 @@
     "lookupsWarning": "See roll saab mooduleid seadistada, kuid ei saa otsida kanaleid, rolle ega liikmeid — selle valikuloendid jäävad tühjaks.",
     "grantLookups": "Anna juurdepääs valikuloenditele",
     "admissionNote": "Lubab omanikel anda ka teistele liikmetele juhtpaneelile juurdepääsu.",
-    "cannotGrantTooltip": "Sa ei saa anda õigust, mida sul endal ei ole."
+    "cannotGrantTooltip": "Sa ei saa anda õigust, mida sul endal ei ole.",
+    "membersSection": {
+      "title": "Liikmed",
+      "empty": "Sellele rollile ei ole veel liikmeid määratud.",
+      "error": "Selle rolli liikmeid ei õnnestunud laadida. Proovi lehte värskendada.",
+      "addPlaceholder": "Lisa liige",
+      "searchPlaceholder": "Otsi liikmeid...",
+      "searchHint": "Sisesta nimi liikmete otsimiseks",
+      "searchLoading": "Laadimine...",
+      "searchNoResults": "Tulemused puuduvad",
+      "assignedBy": "Lisas {{name}}, {{date}}",
+      "removeAria": "Eemalda {{name}} sellelt rollilt"
+    }
   },
   "roleForm": {
     "name": "Rolli nimi",
@@ -129,7 +141,9 @@
     "roleUpdated": "Roll uuendatud",
     "roleUpdateFailed": "Rolli uuendamine ebaõnnestus",
     "roleDeleted": "Roll kustutatud",
-    "roleDeleteFailed": "Rolli kustutamine ebaõnnestus"
+    "roleDeleteFailed": "Rolli kustutamine ebaõnnestus",
+    "memberAdded": "{{name}} lisati rollile",
+    "memberRemoved": "{{name}} eemaldati rollilt"
   },
   "confirm": {
     "deleteTitle": "Kustuta roll \"{{name}}\"?",

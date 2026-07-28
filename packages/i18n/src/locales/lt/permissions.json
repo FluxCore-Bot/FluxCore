@@ -48,7 +48,19 @@
     "lookupsWarning": "Šis vaidmuo gali konfigūruoti modulius, bet negali ieškoti kanalų, vaidmenų ar narių — jo rinkikliai bus tušti.",
     "grantLookups": "Suteikti prieigą prie rinkiklių",
     "admissionNote": "Taip pat leidžia turėtojams suteikti kitiems nariams prieigą prie skydelio.",
-    "cannotGrantTooltip": "Negalite suteikti leidimo, kurio patys neturite."
+    "cannotGrantTooltip": "Negalite suteikti leidimo, kurio patys neturite.",
+    "membersSection": {
+      "title": "Nariai",
+      "empty": "Šiam vaidmeniui dar nepriskirta narių.",
+      "error": "Nepavyko įkelti šio vaidmens narių. Pabandykite iš naujo įkelti puslapį.",
+      "addPlaceholder": "Pridėti narį",
+      "searchPlaceholder": "Ieškoti narių...",
+      "searchHint": "Įveskite vardą, kad ieškotumėte narių",
+      "searchLoading": "Kraunama...",
+      "searchNoResults": "Rezultatų nėra",
+      "assignedBy": "Pridėjo {{name}}, {{date}}",
+      "removeAria": "Pašalinti {{name}} iš šio vaidmens"
+    }
   },
   "roleForm": {
     "name": "Roles pavadinimas",
@@ -129,7 +141,9 @@
     "roleUpdated": "Role atnaujinta",
     "roleUpdateFailed": "Nepavyko atnaujinti roles",
     "roleDeleted": "Role istrinta",
-    "roleDeleteFailed": "Nepavyko istrinti roles"
+    "roleDeleteFailed": "Nepavyko istrinti roles",
+    "memberAdded": "{{name}} pridėtas prie vaidmens",
+    "memberRemoved": "{{name}} pašalintas iš vaidmens"
   },
   "confirm": {
     "deleteTitle": "Istrinti role \"{{name}}\"?",

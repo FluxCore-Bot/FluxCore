@@ -48,7 +48,19 @@
     "lookupsWarning": "Puwedeng i-configure ng role na ito ang mga module pero hindi puwedeng maghanap ng mga channel, role, o miyembro — magiging walang laman ang mga picker nito.",
     "grantLookups": "Bigyan ng access sa picker",
     "admissionNote": "Nagbibigay-daan din sa may hawak nitong bigyan ang ibang miyembro ng access sa dashboard.",
-    "cannotGrantTooltip": "Hindi mo maibibigay ang isang pahintulot na wala ka mismo."
+    "cannotGrantTooltip": "Hindi mo maibibigay ang isang pahintulot na wala ka mismo.",
+    "membersSection": {
+      "title": "Mga Miyembro",
+      "empty": "Wala pang miyembrong itinalaga sa role na ito.",
+      "error": "Hindi ma-load ang mga miyembro ng role na ito. Subukang i-refresh ang pahina.",
+      "addPlaceholder": "Magdagdag ng miyembro",
+      "searchPlaceholder": "Maghanap ng mga miyembro...",
+      "searchHint": "Mag-type ng pangalan para maghanap ng mga miyembro",
+      "searchLoading": "Naglo-load...",
+      "searchNoResults": "Walang resulta",
+      "assignedBy": "Idinagdag ni {{name}} noong {{date}}",
+      "removeAria": "Alisin si {{name}} sa role na ito"
+    }
   },
   "roleForm": {
     "name": "Pangalan ng Role",
@@ -129,7 +141,9 @@
     "roleUpdated": "Role na na-update",
     "roleUpdateFailed": "Hindi na-update ang role",
     "roleDeleted": "Role na nabura",
-    "roleDeleteFailed": "Hindi nabura ang role"
+    "roleDeleteFailed": "Hindi nabura ang role",
+    "memberAdded": "Naidagdag si {{name}} sa role",
+    "memberRemoved": "Naalis si {{name}} sa role"
   },
   "confirm": {
     "deleteTitle": "Burahin ang role na \"{{name}}\"?",

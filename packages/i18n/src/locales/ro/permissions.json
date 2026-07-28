@@ -48,7 +48,19 @@
     "lookupsWarning": "Acest rol poate configura module, dar nu poate căuta canale, roluri sau membri — selectoarele sale vor fi goale.",
     "grantLookups": "Acordă acces la selectoare",
     "admissionNote": "De asemenea, le permite deținătorilor să acorde altor membri acces la panou.",
-    "cannotGrantTooltip": "Nu poți acorda o permisiune pe care nu o ai tu însuți."
+    "cannotGrantTooltip": "Nu poți acorda o permisiune pe care nu o ai tu însuți.",
+    "membersSection": {
+      "title": "Membri",
+      "empty": "Niciun membru nu a fost încă alocat acestui rol.",
+      "error": "Membrii acestui rol nu au putut fi încărcați. Încearcă să reîmprospătezi pagina.",
+      "addPlaceholder": "Adaugă un membru",
+      "searchPlaceholder": "Caută membri...",
+      "searchHint": "Introdu un nume pentru a căuta membri",
+      "searchLoading": "Se încarcă...",
+      "searchNoResults": "Niciun rezultat",
+      "assignedBy": "Adăugat de {{name}} pe {{date}}",
+      "removeAria": "Elimină {{name}} din acest rol"
+    }
   },
   "roleForm": {
     "name": "Numele Rolului",
@@ -129,7 +141,9 @@
     "roleUpdated": "Rol actualizat",
     "roleUpdateFailed": "Actualizarea rolului a eșuat",
     "roleDeleted": "Rol șters",
-    "roleDeleteFailed": "Ștergerea rolului a eșuat"
+    "roleDeleteFailed": "Ștergerea rolului a eșuat",
+    "memberAdded": "{{name}} a fost adăugat la rol",
+    "memberRemoved": "{{name}} a fost eliminat din rol"
   },
   "confirm": {
     "deleteTitle": "Ștergi rolul \"{{name}}\"?",

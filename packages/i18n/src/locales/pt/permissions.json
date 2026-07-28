@@ -48,7 +48,19 @@
     "lookupsWarning": "Este cargo pode configurar módulos, mas não pode pesquisar canais, cargos ou membros — os seus seletores ficarão vazios.",
     "grantLookups": "Conceder acesso aos seletores",
     "admissionNote": "Também permite que os titulares deem a outros membros acesso ao painel.",
-    "cannotGrantTooltip": "Você não pode conceder uma permissão que não possui."
+    "cannotGrantTooltip": "Você não pode conceder uma permissão que não possui.",
+    "membersSection": {
+      "title": "Membros",
+      "empty": "Ainda não há membros atribuídos a este cargo.",
+      "error": "Não foi possível carregar os membros deste cargo. Tente atualizar a página.",
+      "addPlaceholder": "Adicionar um membro",
+      "searchPlaceholder": "Pesquisar membros...",
+      "searchHint": "Digite um nome para pesquisar membros",
+      "searchLoading": "Carregando...",
+      "searchNoResults": "Nenhum resultado",
+      "assignedBy": "Adicionado por {{name}} em {{date}}",
+      "removeAria": "Remover {{name}} deste cargo"
+    }
   },
   "roleForm": {
     "name": "Nome do cargo",
@@ -129,7 +141,9 @@
     "roleUpdated": "Cargo atualizado",
     "roleUpdateFailed": "Falha ao atualizar o cargo",
     "roleDeleted": "Cargo eliminado",
-    "roleDeleteFailed": "Falha ao eliminar o cargo"
+    "roleDeleteFailed": "Falha ao eliminar o cargo",
+    "memberAdded": "{{name}} adicionado ao cargo",
+    "memberRemoved": "{{name}} removido do cargo"
   },
   "confirm": {
     "deleteTitle": "Eliminar cargo \"{{name}}\"?",

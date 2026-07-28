@@ -48,7 +48,19 @@
     "lookupsWarning": "Tämä rooli voi määrittää moduuleja, mutta ei voi hakea kanavia, rooleja tai jäseniä — sen valitsimet jäävät tyhjiksi.",
     "grantLookups": "Myönnä pääsy valitsimiin",
     "admissionNote": "Antaa haltijoille myös mahdollisuuden myöntää muille jäsenille pääsyn hallintapaneeliin.",
-    "cannotGrantTooltip": "Et voi myöntää oikeutta, joka ei ole sinulla itselläsi."
+    "cannotGrantTooltip": "Et voi myöntää oikeutta, joka ei ole sinulla itselläsi.",
+    "membersSection": {
+      "title": "Jäsenet",
+      "empty": "Tälle roolille ei ole vielä määritetty jäseniä.",
+      "error": "Tämän roolin jäseniä ei voitu ladata. Yritä päivittää sivu.",
+      "addPlaceholder": "Lisää jäsen",
+      "searchPlaceholder": "Hae jäseniä...",
+      "searchHint": "Kirjoita nimi hakeaksesi jäseniä",
+      "searchLoading": "Ladataan...",
+      "searchNoResults": "Ei tuloksia",
+      "assignedBy": "Lisäsi {{name}}, {{date}}",
+      "removeAria": "Poista {{name}} tästä roolista"
+    }
   },
   "roleForm": {
     "name": "Roolin nimi",
@@ -129,7 +141,9 @@
     "roleUpdated": "Rooli päivitetty",
     "roleUpdateFailed": "Roolin päivittäminen epäonnistui",
     "roleDeleted": "Rooli poistettu",
-    "roleDeleteFailed": "Roolin poistaminen epäonnistui"
+    "roleDeleteFailed": "Roolin poistaminen epäonnistui",
+    "memberAdded": "{{name}} lisättiin rooliin",
+    "memberRemoved": "{{name}} poistettiin roolista"
   },
   "confirm": {
     "deleteTitle": "Poista rooli \"{{name}}\"?",

@@ -48,7 +48,19 @@
     "lookupsWarning": "תפקיד זה יכול להגדיר מודולים אך אינו יכול לחפש ערוצים, תפקידים או חברים — הבוררים שלו יהיו ריקים.",
     "grantLookups": "הענק גישה לבוררים",
     "admissionNote": "מאפשר גם למחזיקים בו להעניק לחברים אחרים גישה ללוח הבקרה.",
-    "cannotGrantTooltip": "אינך יכול להעניק הרשאה שאין לך בעצמך."
+    "cannotGrantTooltip": "אינך יכול להעניק הרשאה שאין לך בעצמך.",
+    "membersSection": {
+      "title": "חברים",
+      "empty": "עדיין לא הוקצו חברים לתפקיד זה.",
+      "error": "לא ניתן היה לטעון את חברי התפקיד. נסה לרענן את הדף.",
+      "addPlaceholder": "הוסף חבר",
+      "searchPlaceholder": "חיפוש חברים...",
+      "searchHint": "הקלד שם כדי לחפש חברים",
+      "searchLoading": "טוען...",
+      "searchNoResults": "אין תוצאות",
+      "assignedBy": "נוסף על ידי {{name}} בתאריך {{date}}",
+      "removeAria": "הסר את {{name}} מתפקיד זה"
+    }
   },
   "roleForm": {
     "name": "שם תפקיד",
@@ -129,7 +141,9 @@
     "roleUpdated": "התפקיד עודכן",
     "roleUpdateFailed": "עדכון התפקיד נכשל",
     "roleDeleted": "התפקיד נמחק",
-    "roleDeleteFailed": "מחיקת התפקיד נכשלה"
+    "roleDeleteFailed": "מחיקת התפקיד נכשלה",
+    "memberAdded": "{{name}} נוסף לתפקיד",
+    "memberRemoved": "{{name}} הוסר מהתפקיד"
   },
   "confirm": {
     "deleteTitle": "למחוק תפקיד \"{{name}}\"?",
