@@ -8,6 +8,7 @@
     "description": "Įsitikink, kad bent viename Discord serveryje turi leidimą Tvarkyti serverį, tada atnaujink."
   },
   "badge": {
+    "delegated": "Deleguota prieiga",
     "botNotAdded": "Botas nepridėtas"
   },
   "addBot": "Pridėti FluxCore",

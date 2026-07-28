@@ -8,6 +8,7 @@
     "description": "Maak seker jy het die Bestuur Bediener-toestemming in ten minste een Discord-bediener, en herlaai dan."
   },
   "badge": {
+    "delegated": "Gedelegeerde toegang",
     "botNotAdded": "Bot nie bygevoeg nie"
   },
   "addBot": "Voeg FluxCore by",

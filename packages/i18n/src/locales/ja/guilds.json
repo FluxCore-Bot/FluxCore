@@ -8,6 +8,7 @@
     "description": "少なくとも1つのDiscordサーバーで「サーバー管理」権限を持っていることを確認してから、更新してください。"
   },
   "badge": {
+    "delegated": "委任されたアクセス",
     "botNotAdded": "Bot未追加"
   },
   "addBot": "FluxCoreを追加",

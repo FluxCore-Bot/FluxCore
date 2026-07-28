@@ -8,6 +8,7 @@
     "description": "Provjeri imaš li dozvolu Upravljanje poslužiteljem na barem jednom Discord poslužitelju, a zatim osvježi."
   },
   "badge": {
+    "delegated": "Delegirani pristup",
     "botNotAdded": "Bot nije dodan"
   },
   "addBot": "Dodaj FluxCore",

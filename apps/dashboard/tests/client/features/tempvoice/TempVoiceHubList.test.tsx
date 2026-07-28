@@ -68,7 +68,7 @@ vi.mock("../../../../src/client/shared/hooks/useAuth", () => ({
 }));
 vi.mock("../../../../src/client/shared/hooks/useGuilds", () => ({
   useGuilds: () => ({
-    data: [{ id: "g1", name: "Test Guild", icon: null, botPresent: true }],
+    data: [{ id: "g1", name: "Test Guild", icon: null, botPresent: true, access: "admin" }],
   }),
 }));
 

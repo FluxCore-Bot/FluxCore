@@ -104,6 +104,8 @@ export function GuildCard({
   guild: Guild;
   inviteUrl?: string;
 }) {
+  const { t } = useTranslation("guilds");
+
   if (!guild.botPresent) {
     return <UninstalledGuildCard guild={guild} inviteUrl={inviteUrl} />;
   }
@@ -122,6 +124,11 @@ export function GuildCard({
         <h3 className="text-lg font-bold tracking-tight text-text transition-colors group-hover:text-accent">
           {guild.name}
         </h3>
+        {guild.access === "delegated" && (
+          <div className="mt-3">
+            <Badge variant="outline">{t("badge.delegated")}</Badge>
+          </div>
+        )}
       </Card>
     </Link>
   );

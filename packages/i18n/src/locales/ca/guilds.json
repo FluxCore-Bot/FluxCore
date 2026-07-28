@@ -8,6 +8,7 @@
     "description": "Assegura't que tens el permís Gestionar el servidor en almenys un servidor de Discord i després actualitza."
   },
   "badge": {
+    "delegated": "Accés delegat",
     "botNotAdded": "Bot no afegit"
   },
   "addBot": "Afegeix FluxCore",

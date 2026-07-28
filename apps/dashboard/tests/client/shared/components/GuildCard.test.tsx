@@ -41,7 +41,14 @@ const INVITE =
   "https://discord.com/oauth2/authorize?client_id=abc&permissions=8&scope=bot%20applications.commands";
 
 function makeGuild(over: Partial<Guild> = {}): Guild {
-  return { id: "123", name: "Test Guild", icon: null, botPresent: true, ...over };
+  return {
+    id: "123",
+    name: "Test Guild",
+    icon: null,
+    botPresent: true,
+    access: "admin",
+    ...over,
+  };
 }
 
 describe("GuildCard", () => {
@@ -79,5 +86,15 @@ describe("GuildCard", () => {
     expect(screen.queryByRole("link")).not.toBeInTheDocument();
     expect(screen.getByText("badge.botNotAdded")).toBeInTheDocument();
     expect(screen.getByText("Test Guild")).toBeInTheDocument();
+  });
+
+  it("badges a delegated guild", () => {
+    render(<GuildCard guild={makeGuild({ access: "delegated" })} />);
+    expect(screen.getByText("badge.delegated")).toBeInTheDocument();
+  });
+
+  it("does not badge an admin guild", () => {
+    render(<GuildCard guild={makeGuild({ access: "admin" })} />);
+    expect(screen.queryByText("badge.delegated")).not.toBeInTheDocument();
   });
 });

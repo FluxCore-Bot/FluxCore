@@ -15,6 +15,8 @@ export const GuildSchema = z.object({
   icon: z.string().nullable(),
   /** False when the user administers the guild but the bot has not been added. */
   botPresent: z.boolean(),
+  /** "delegated" = access comes from dashboard grants, not Discord admin rights. */
+  access: z.enum(["admin", "delegated"]),
 });
 export type Guild = z.infer<typeof GuildSchema>;
 

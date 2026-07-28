@@ -8,6 +8,7 @@
     "description": "Certifica-te de que tens a permissão Gerir servidor em pelo menos um servidor do Discord e depois atualiza."
   },
   "badge": {
+    "delegated": "Acesso delegado",
     "botNotAdded": "Bot não adicionado"
   },
   "addBot": "Adicionar FluxCore",

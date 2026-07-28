@@ -8,6 +8,7 @@
     "description": "Siguraduhing mayroon kang pahintulot na Manage Server sa kahit isang Discord server, pagkatapos ay i-refresh."
   },
   "badge": {
+    "delegated": "Delegadong access",
     "botNotAdded": "Hindi pa naidaragdag ang bot"
   },
   "addBot": "Idagdag ang FluxCore",

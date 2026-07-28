@@ -8,6 +8,7 @@
     "description": "請確認你在至少一個 Discord 伺服器中擁有「管理伺服器」權限，然後重新整理。"
   },
   "badge": {
+    "delegated": "委派存取權限",
     "botNotAdded": "尚未新增機器人"
   },
   "addBot": "新增 FluxCore",

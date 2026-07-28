@@ -8,6 +8,7 @@
     "description": "Sørg for at du har tillatelsen Administrer server på minst én Discord-server, og oppdater deretter."
   },
   "badge": {
+    "delegated": "Delegert tilgang",
     "botNotAdded": "Bot ikke lagt til"
   },
   "addBot": "Legg til FluxCore",

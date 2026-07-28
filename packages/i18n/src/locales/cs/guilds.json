@@ -8,6 +8,7 @@
     "description": "Ujisti se, že máš oprávnění Spravovat server alespoň na jednom Discord serveru, a poté obnov."
   },
   "badge": {
+    "delegated": "Delegovaný přístup",
     "botNotAdded": "Bot není přidán"
   },
   "addBot": "Přidat FluxCore",

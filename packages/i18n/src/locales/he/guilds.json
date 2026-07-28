@@ -8,6 +8,7 @@
     "description": "ודא שיש לך הרשאת ניהול שרת בשרת Discord אחד לפחות, ולאחר מכן רענן."
   },
   "badge": {
+    "delegated": "גישה מואצלת",
     "botNotAdded": "הבוט לא נוסף"
   },
   "addBot": "הוסף את FluxCore",

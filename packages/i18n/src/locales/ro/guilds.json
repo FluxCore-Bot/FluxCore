@@ -8,6 +8,7 @@
     "description": "Asigură-te că ai permisiunea Gestionare server pe cel puțin un server Discord, apoi reîmprospătează."
   },
   "badge": {
+    "delegated": "Acces delegat",
     "botNotAdded": "Botul nu este adăugat"
   },
   "addBot": "Adaugă FluxCore",

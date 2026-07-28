@@ -8,6 +8,7 @@
     "description": "请确认你在至少一个 Discord 服务器中拥有“管理服务器”权限，然后刷新。"
   },
   "badge": {
+    "delegated": "委派访问权限",
     "botNotAdded": "机器人未添加"
   },
   "addBot": "添加 FluxCore",

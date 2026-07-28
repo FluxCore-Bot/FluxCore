@@ -18,7 +18,7 @@ vi.mock("react-i18next", () => ({
 }));
 
 function g(name: string, over: Partial<Guild> = {}): Guild {
-  return { id: name, name, icon: null, botPresent: true, ...over };
+  return { id: name, name, icon: null, botPresent: true, access: "admin", ...over };
 }
 
 describe("filterGuilds", () => {

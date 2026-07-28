@@ -8,6 +8,7 @@
     "description": "Asegúrate de ter o permiso Xestionar o servidor en polo menos un servidor de Discord e despois actualiza."
   },
   "badge": {
+    "delegated": "Acceso delegado",
     "botNotAdded": "Bot non engadido"
   },
   "addBot": "Engadir FluxCore",

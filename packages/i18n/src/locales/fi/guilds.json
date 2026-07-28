@@ -8,6 +8,7 @@
     "description": "Varmista, että sinulla on Hallitse palvelinta -oikeus vähintään yhdellä Discord-palvelimella, ja päivitä sitten."
   },
   "badge": {
+    "delegated": "Delegoitu käyttöoikeus",
     "botNotAdded": "Bottia ei ole lisätty"
   },
   "addBot": "Lisää FluxCore",
