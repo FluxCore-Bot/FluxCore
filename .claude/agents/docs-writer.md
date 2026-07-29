@@ -92,6 +92,14 @@ names) against the top-level `commands[]` array to find each command's own
 object (it carries `file`, `defaultMemberPermissions`, `options`,
 `subcommands`).
 
+**If the lookup finds no matching entry, stop.** A syntactically valid
+feature id with no `features[]` entry — stale, renamed, or typo'd — is not
+a smaller version of your task; it is the exact failure you exist to
+prevent, one step earlier: writing about a feature whose source you never
+opened, because you never located what to open. Report that the id wasn't
+found (list the ids that *are* present, so the caller can see the likely
+correction) and do not proceed to Step 3 on the strength of the id alone.
+
 **Do not read or use any other feature's entry.** If while reading source
 for your feature you notice something interesting about a different one,
 that's out of scope for this invocation — do not add it to your page, and
