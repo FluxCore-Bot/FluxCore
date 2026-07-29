@@ -192,6 +192,27 @@ specific `docs-writer` call has returned. Use `run_in_background: false` on
 every dispatch below so each step's result is in hand before the next one
 launches.
 
+**Batch ceiling: at most 5 features in flight at once.** As of this
+manifest, 20 of its 25 features are `audience: "user"` (re-count from the
+manifest each run — this is a snapshot, not a fixed number), so a first
+full run's work list can be that large before any page exists; nothing
+about "MAY parallelize" above implies firing all of it as one batch. Cap
+concurrent sub-flows at 5. The reasoning to weigh
+if this number ever needs retuning: each sub-flow's `docs-writer` call
+alone reads the full standing rules plus every source file its evidence
+points to and writes a full page, and `docs-verifier` independently repeats
+a comparable read pass over the same page and sources — holding many of
+those reports live at once, before any of them can be folded into the
+Step-4 outcome table, is exactly the context spike and concurrency risk
+being capped against, and it compounds further for any sub-flow mid
+correction-loop. 5 keeps a meaningful parallelism win over strictly serial
+dispatch while keeping that live-report count small. **When the work list
+exceeds 5, split it into successive batches of at most 5 and run them one
+at a time: every feature in a batch must reach its Step-4 outcome (written
+& verified clean, written & unresolved, or a Step-3 disposition) and be
+recorded before the next batch's dispatches begin.** Do not open a new
+batch while a previous one still has an unresolved sub-flow in flight.
+
 1. **Dispatch `docs-writer`.** Invoke the `Agent` tool with
    `subagent_type: "docs-writer"`. The prompt must state, as explicit,
    unambiguous fields — these are the three required inputs the agent will
@@ -265,10 +286,32 @@ Report, in this order:
 5. **Final coverage check output** — the literal output from Step 5, quoted.
 6. **Orphan pages** — carried through unmodified from Step 2/5, flagged for
    human action; this command does not delete pages.
-7. **Overall verdict** — state plainly whether the run is fully clean (Step
-   5's output is the `✓` line and every Step-4 id resolved
-   "verified clean") or not. **Do not report the run as a success if any
-   page is in the "written & unresolved" state, if Step 5's final output is
-   still the `✗` block, or if an `Agent type ... not found` error stopped
-   the run early** — any of those is a partial or failed run, and must be
-   labeled as such, not rounded up.
+7. **Overall verdict** — judged against *this run's own scope*, not against
+   whole-repo coverage unless this run's scope was the whole repo:
+   - **Full run:** fully clean iff Step 5's output is the `✓` line and
+     every id in the work list resolved "verified clean". Otherwise, state
+     plainly which ids are still outstanding (unresolved, or Step 5 still
+     shows the `✗` block) — a partial or failed run, labeled as such, not
+     rounded up.
+   - **Scoped run (`$ARGUMENTS` named one id):** fully clean iff that one
+     id's disposition is "verified clean", "already covered", or
+     "excluded (developer-audience, as designed)" — a correct exclusion is
+     a successful scoped run, not a failure. Judge the verdict on that
+     disposition alone. Report Step 5's whole-repo `check-coverage` output
+     underneath as separate context ("repo-wide coverage, for reference —
+     not part of this run's pass/fail, since this run was scoped to
+     `<id>`"), never folded into the scoped verdict: mid-project, other
+     features' legitimate, unrelated gaps must not turn a successful
+     scoped run into a reported failure.
+   - Either way: **do not report the run as a success if any page is in
+     the "written & unresolved" state within this run's own scope, or if
+     an `Agent type ... not found` error stopped the run early** — those
+     always fail the verdict, scoped or not.
+
+**Resumability is implicit, not something to add a checkpoint for.** Steps
+1 and 2 re-derive the manifest and the gap list from disk on every
+invocation, so an interrupted run (crash, cancellation, hitting the batch
+boundary and stopping) loses no state — the next `/document-system`
+invocation just finds fewer gaps than before and continues from there. Do
+not build a separate progress-tracking mechanism for this; the coverage
+check already is one.
