@@ -4,7 +4,9 @@
  * @property {string | null} botFeature
  * @property {string | null} serverFeature
  * @property {string | null} clientRoute
- * @property {string[]} commands
+ * @property {string[] | undefined} [commands] - Callers assembling
+ *   Evidence piecemeal from independent source scans may omit this key
+ *   entirely when a scan finds no commands; treat that the same as [].
  * @property {string | null} spec
  */
 
@@ -20,7 +22,7 @@
 export function deriveStatus(evidence) {
   const hasSource = Boolean(evidence.system || evidence.botFeature);
   const isReachable =
-    evidence.commands.length > 0 || Boolean(evidence.clientRoute);
+    (evidence.commands ?? []).length > 0 || Boolean(evidence.clientRoute);
 
   if (hasSource && isReachable) return "shipped";
   if (!hasSource) return "planned";

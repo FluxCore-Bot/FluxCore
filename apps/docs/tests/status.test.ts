@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { deriveStatus } from "../scripts/manifest/status.mjs";
 
+type Evidence = import("../scripts/manifest/status.mjs").Evidence;
+
 const empty = {
   system: null,
   botFeature: null,
@@ -58,6 +60,35 @@ describe("deriveStatus", () => {
         botFeature: "apps/bot/src/features/leveling",
         commands: ["rank"],
         spec: "docs/features/leveling.md",
+      }),
+    ).toBe("shipped");
+  });
+
+  it("does not throw when commands is omitted entirely, and classifies correctly", () => {
+    // Regression guard: Task 4's manifest builder assembles Evidence
+    // piecemeal from independent source scans. A scan that finds no
+    // slash commands may leave the key unset rather than writing `[]` —
+    // that must not crash the whole manifest build.
+    const withoutCommandsKey: Evidence = {
+      system: "packages/systems/src/queue",
+      botFeature: null,
+      serverFeature: null,
+      clientRoute: null,
+      spec: null,
+    };
+
+    expect(() => deriveStatus(withoutCommandsKey)).not.toThrow();
+    expect(deriveStatus(withoutCommandsKey)).toBe("partial");
+  });
+
+  it("returns shipped when only botFeature (no system) proves source exists", () => {
+    // Mutant guard: without the `|| evidence.botFeature` fallback in
+    // hasSource, this would incorrectly fall through to "planned".
+    expect(
+      deriveStatus({
+        ...empty,
+        botFeature: "apps/bot/src/features/tickets",
+        commands: ["ticket"],
       }),
     ).toBe("shipped");
   });
