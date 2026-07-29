@@ -21,6 +21,8 @@
     "test:all": "pnpm test && pnpm test:integration",
     "test:watch": "docker compose --profile bot run --rm bot pnpm --filter @fluxcore/bot test:watch",
     "test:coverage": "docker compose --profile bot run --rm bot pnpm --filter @fluxcore/bot test:coverage",
+    "docs:build": "docker compose --profile bot run --rm --no-deps -e NODE_ENV=production bot pnpm turbo run docs:build --filter=@fluxcore/docs",
+    "docs:dev": "docker compose --profile bot run --rm --no-deps -p 3001:3001 bot pnpm --filter @fluxcore/docs dev",
     "deploy:commands": "docker compose --profile bot run --rm --no-deps bot pnpm turbo run deploy:commands --filter=@fluxcore/bot",
     "db:generate": "docker compose --profile bot run --rm --no-deps bot pnpm turbo run db:generate --filter=@fluxcore/database",
     "db:migrate": "docker compose --profile bot run --rm bot pnpm --filter @fluxcore/database db:migrate",

@@ -18,6 +18,7 @@ COPY packages/systems/package.json ./packages/systems/
 COPY packages/i18n/package.json ./packages/i18n/
 COPY apps/bot/package.json ./apps/bot/
 COPY apps/dashboard/package.json ./apps/dashboard/
+COPY apps/docs/package.json ./apps/docs/
 COPY packages/database/prisma ./packages/database/prisma/
 COPY packages/database/prisma.config.ts ./packages/database/
 RUN pnpm install --frozen-lockfile \

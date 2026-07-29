@@ -54,6 +54,14 @@
         "BOT_SYNC_URL"
       ]
     },
+    "docs:build": {
+      "dependsOn": ["^build"],
+      "outputs": ["out/**", ".next/**"]
+    },
+    "docs:dev": {
+      "cache": false,
+      "persistent": true
+    },
     "db:generate": {
       "cache": false
     },
