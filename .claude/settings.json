@@ -97,6 +97,12 @@
             "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/test-reminder.sh",
             "timeout": 10,
             "statusMessage": "Checking for missing tests..."
+          },
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/docs-freshness.sh",
+            "timeout": 10,
+            "statusMessage": "Checking documentation freshness..."
           }
         ]
       }
