@@ -42,7 +42,10 @@ const defaultRepoRoot = resolve(__dirname, "../../../..");
 // docs/implementation-plan.md, which are the documents this manifest
 // exists to correct.
 
-/** packages/systems/src/<dir> -> canonical id */
+/**
+ * packages/systems/src/<dir> -> canonical id
+ * @type {Record<string, string>}
+ */
 const SYSTEM_ID_ALIASES = {
   "scheduled-messages": "scheduled",
   actions: "automation",
@@ -61,6 +64,7 @@ const SYSTEM_ID_ALIASES = {
  *    cross-cutting infrastructure consumed by every feature, not evidence
  *    for any single one, so they are deliberately absent from this table —
  *    see task-4-report.md for the audit that ruled each one out.
+ * @type {Record<string, string>}
  */
 const SHARED_PACKAGE_ALIASES = {
   i18n: "i18n-accessibility",
@@ -74,6 +78,7 @@ const SHARED_PACKAGE_ALIASES = {
  * rules->automation / logs->logging). These four sources share one naming
  * space, so one table covers all of them — including the `tempvoice` ->
  * `tempVoice` casing mismatch against packages/systems/src/tempVoice.
+ * @type {Record<string, string>}
  */
 const FEATURE_DIR_ALIASES = {
   actions: "automation",
@@ -83,7 +88,10 @@ const FEATURE_DIR_ALIASES = {
   tempvoice: "tempVoice",
 };
 
-/** docs/features/<file>.md (id = filename without extension) -> canonical id */
+/**
+ * docs/features/<file>.md (id = filename without extension) -> canonical id
+ * @type {Record<string, string>}
+ */
 const SPEC_ID_ALIASES = {
   "anti-raid": "antiraid",
   "custom-commands": "customCommands",
@@ -98,6 +106,7 @@ const SPEC_ID_ALIASES = {
  * Commands that live inside a shared/catch-all bot module (general,
  * moderation) but drive a different canonical feature than their module.
  * Verified per-command against source — see task-4-report.md.
+ * @type {Record<string, string>}
  */
 const COMMAND_FEATURE_OVERRIDES = {
   actions: "automation", // apps/bot/src/features/general/commands/actions.ts drives the automation/actions system
@@ -255,9 +264,22 @@ export function buildManifest(repoRoot) {
 
   /** @type {Map<string, ReturnType<typeof makeEmptyEvidence>>} */
   const registry = new Map();
+  /**
+   * Get the evidence record for `id`, creating it on first use.
+   *
+   * Written as get-then-create rather than has-then-get because `Map.has`
+   * does not narrow the type of a later `Map.get`: the has/get form returns
+   * `Evidence | undefined` and every caller below then mutates a value the
+   * compiler cannot prove is present.
+   * @param {string} id
+   * @returns {ReturnType<typeof makeEmptyEvidence>}
+   */
   const entryFor = (id) => {
-    if (!registry.has(id)) registry.set(id, makeEmptyEvidence());
-    return registry.get(id);
+    const existing = registry.get(id);
+    if (existing) return existing;
+    const created = makeEmptyEvidence();
+    registry.set(id, created);
+    return created;
   };
 
   for (const system of systems) {

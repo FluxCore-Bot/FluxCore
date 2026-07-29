@@ -50,9 +50,12 @@ import { join, relative, basename } from "node:path";
  * @property {string} file - repo-relative path
  */
 
-// Client route filenames do not always match feature directory names.
-// This is not derivable from the filename alone — encode the known
-// mismatches explicitly. (Verified against source 2026-07-29; only these two.)
+/**
+ * Client route filenames do not always match feature directory names.
+ * This is not derivable from the filename alone — encode the known
+ * mismatches explicitly. (Verified against source 2026-07-29; only these two.)
+ * @type {Record<string, string>}
+ */
 const ROUTE_FEATURE_OVERRIDES = {
   rules: "automation",
   logs: "logging",
@@ -60,7 +63,14 @@ const ROUTE_FEATURE_OVERRIDES = {
 
 const OPTION_METHOD_PATTERN = /^add([A-Za-z]+)Option$/;
 
-/** Recursively list files under `dir` matching `predicate`, skipping node_modules/.git. */
+/**
+ * Recursively list files under `dir` matching `predicate`, skipping
+ * node_modules/.git.
+ * @param {string} dir
+ * @param {(file: string) => boolean} predicate
+ * @param {string[]} [out]
+ * @returns {string[]}
+ */
 function walk(dir, predicate, out = []) {
   let entries;
   try {
@@ -80,6 +90,12 @@ function walk(dir, predicate, out = []) {
   return out;
 }
 
+/**
+ * List the immediate subdirectory names of `dir`, or nothing if it is
+ * unreadable.
+ * @param {string} dir
+ * @returns {string[]}
+ */
 function listDirs(dir) {
   let entries;
   try {
@@ -155,7 +171,11 @@ function parseChain(text, pos) {
   return calls;
 }
 
-/** Extract the first quoted string literal from `text`, or null. */
+/**
+ * Extract the first quoted string literal from `text`, or null.
+ * @param {string} text
+ * @returns {string | null}
+ */
 function firstStringLiteral(text) {
   const match = /["'`]((?:\\.|[^"'`\\])*)["'`]/.exec(text);
   return match ? match[1] : null;
@@ -175,7 +195,11 @@ function parseArrowBodyChain(argsText) {
   return parseChain(argsText, chainStart);
 }
 
-/** @param {{ method: string, argsText: string }[]} calls */
+/**
+ * Parse one `addXOption(...)` call into a described option.
+ * @param {string} method - the builder method name, e.g. `addStringOption`
+ * @param {string} argsText - the text between that call's parens
+ */
 function parseOption(method, argsText) {
   const typeMatch = OPTION_METHOD_PATTERN.exec(method);
   const type = typeMatch ? typeMatch[1].charAt(0).toLowerCase() + typeMatch[1].slice(1) : method;
@@ -191,7 +215,10 @@ function parseOption(method, argsText) {
   };
 }
 
-/** @param {{ method: string, argsText: string }[]} calls */
+/**
+ * Parse one `addSubcommand(...)` call into a described subcommand.
+ * @param {string} argsText - the text between that call's parens
+ */
 function parseSubcommand(argsText) {
   const inner = parseArrowBodyChain(argsText);
   const nameCall = inner.find((c) => c.method === "setName");
