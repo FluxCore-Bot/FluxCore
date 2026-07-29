@@ -1,0 +1,2201 @@
+{
+  "generatedFromCommit": "8dc81f88d080b0a2c43f40d87d0a12dbb3b38619",
+  "generatedAt": "2026-07-29T01:11:15.496Z",
+  "features": [
+    {
+      "id": "antiraid",
+      "status": "shipped",
+      "evidence": {
+        "system": "packages/systems/src/antiraid",
+        "botFeature": null,
+        "serverFeature": "apps/dashboard/src/server/features/security",
+        "clientRoute": "/guild/$guildId/security",
+        "commands": [],
+        "spec": "docs/features/anti-raid.md"
+      }
+    },
+    {
+      "id": "auth",
+      "status": "planned",
+      "evidence": {
+        "system": null,
+        "botFeature": null,
+        "serverFeature": "apps/dashboard/src/server/features/auth",
+        "clientRoute": null,
+        "commands": [],
+        "spec": null
+      }
+    },
+    {
+      "id": "automation",
+      "status": "shipped",
+      "evidence": {
+        "system": "packages/systems/src/actions",
+        "botFeature": "apps/bot/src/features/automation",
+        "serverFeature": "apps/dashboard/src/server/features/actions",
+        "clientRoute": "/guild/$guildId/rules",
+        "commands": [
+          "actions"
+        ],
+        "spec": null
+      }
+    },
+    {
+      "id": "customCommands",
+      "status": "shipped",
+      "evidence": {
+        "system": "packages/systems/src/customCommands",
+        "botFeature": null,
+        "serverFeature": "apps/dashboard/src/server/features/commands",
+        "clientRoute": "/guild/$guildId/commands",
+        "commands": [],
+        "spec": "docs/features/custom-commands.md"
+      }
+    },
+    {
+      "id": "discord",
+      "status": "planned",
+      "evidence": {
+        "system": null,
+        "botFeature": null,
+        "serverFeature": "apps/dashboard/src/server/features/discord",
+        "clientRoute": null,
+        "commands": [],
+        "spec": null
+      }
+    },
+    {
+      "id": "general",
+      "status": "shipped",
+      "evidence": {
+        "system": null,
+        "botFeature": "apps/bot/src/features/general",
+        "serverFeature": null,
+        "clientRoute": null,
+        "commands": [
+          "help",
+          "lockdown",
+          "ping",
+          "server-info",
+          "user-info"
+        ],
+        "spec": null
+      }
+    },
+    {
+      "id": "giveaways",
+      "status": "shipped",
+      "evidence": {
+        "system": "packages/systems/src/giveaways",
+        "botFeature": "apps/bot/src/features/giveaways",
+        "serverFeature": "apps/dashboard/src/server/features/giveaways",
+        "clientRoute": "/guild/$guildId/giveaways",
+        "commands": [
+          "giveaway"
+        ],
+        "spec": "docs/features/giveaways.md"
+      }
+    },
+    {
+      "id": "guilds",
+      "status": "planned",
+      "evidence": {
+        "system": null,
+        "botFeature": null,
+        "serverFeature": "apps/dashboard/src/server/features/guilds",
+        "clientRoute": null,
+        "commands": [],
+        "spec": null
+      }
+    },
+    {
+      "id": "i18n-accessibility",
+      "status": "planned",
+      "evidence": {
+        "system": null,
+        "botFeature": null,
+        "serverFeature": null,
+        "clientRoute": null,
+        "commands": [],
+        "spec": "docs/features/i18n-accessibility.md"
+      }
+    },
+    {
+      "id": "leveling",
+      "status": "shipped",
+      "evidence": {
+        "system": "packages/systems/src/leveling",
+        "botFeature": "apps/bot/src/features/leveling",
+        "serverFeature": "apps/dashboard/src/server/features/leveling",
+        "clientRoute": "/guild/$guildId/leveling",
+        "commands": [
+          "leaderboard",
+          "rank",
+          "xp"
+        ],
+        "spec": "docs/features/leveling.md"
+      }
+    },
+    {
+      "id": "logging",
+      "status": "shipped",
+      "evidence": {
+        "system": "packages/systems/src/logging",
+        "botFeature": null,
+        "serverFeature": "apps/dashboard/src/server/features/logging",
+        "clientRoute": "/guild/$guildId/logs",
+        "commands": [],
+        "spec": "docs/features/logging.md"
+      }
+    },
+    {
+      "id": "moderation",
+      "status": "shipped",
+      "evidence": {
+        "system": "packages/systems/src/moderation",
+        "botFeature": "apps/bot/src/features/moderation",
+        "serverFeature": "apps/dashboard/src/server/features/moderation",
+        "clientRoute": "/guild/$guildId/moderation",
+        "commands": [
+          "ban",
+          "case",
+          "cases",
+          "clear",
+          "kick",
+          "lock",
+          "note",
+          "purge",
+          "softban",
+          "tempban",
+          "timeout",
+          "unlock"
+        ],
+        "spec": "docs/features/moderation.md"
+      }
+    },
+    {
+      "id": "overview",
+      "status": "planned",
+      "evidence": {
+        "system": null,
+        "botFeature": null,
+        "serverFeature": null,
+        "clientRoute": "/guild/$guildId/overview",
+        "commands": [],
+        "spec": null
+      }
+    },
+    {
+      "id": "permissions",
+      "status": "planned",
+      "evidence": {
+        "system": null,
+        "botFeature": null,
+        "serverFeature": "apps/dashboard/src/server/features/permissions",
+        "clientRoute": "/guild/$guildId/permissions",
+        "commands": [],
+        "spec": "docs/features/dashboard-permissions.md"
+      }
+    },
+    {
+      "id": "queue",
+      "status": "partial",
+      "evidence": {
+        "system": "packages/systems/src/queue",
+        "botFeature": null,
+        "serverFeature": null,
+        "clientRoute": null,
+        "commands": [],
+        "spec": null
+      }
+    },
+    {
+      "id": "rolePanel",
+      "status": "shipped",
+      "evidence": {
+        "system": "packages/systems/src/rolePanel",
+        "botFeature": null,
+        "serverFeature": "apps/dashboard/src/server/features/roles",
+        "clientRoute": "/guild/$guildId/roles",
+        "commands": [
+          "rolepanel"
+        ],
+        "spec": "docs/features/reaction-roles.md"
+      }
+    },
+    {
+      "id": "scheduled",
+      "status": "shipped",
+      "evidence": {
+        "system": "packages/systems/src/scheduled-messages",
+        "botFeature": null,
+        "serverFeature": "apps/dashboard/src/server/features/scheduled",
+        "clientRoute": "/guild/$guildId/scheduled",
+        "commands": [],
+        "spec": "docs/features/scheduled-messages.md"
+      }
+    },
+    {
+      "id": "settings",
+      "status": "planned",
+      "evidence": {
+        "system": null,
+        "botFeature": null,
+        "serverFeature": null,
+        "clientRoute": "/guild/$guildId/settings",
+        "commands": [],
+        "spec": null
+      }
+    },
+    {
+      "id": "starboard",
+      "status": "shipped",
+      "evidence": {
+        "system": "packages/systems/src/starboard",
+        "botFeature": null,
+        "serverFeature": "apps/dashboard/src/server/features/starboard",
+        "clientRoute": "/guild/$guildId/starboard",
+        "commands": [],
+        "spec": "docs/features/starboard.md"
+      }
+    },
+    {
+      "id": "suggestions",
+      "status": "shipped",
+      "evidence": {
+        "system": "packages/systems/src/suggestions",
+        "botFeature": "apps/bot/src/features/suggestions",
+        "serverFeature": "apps/dashboard/src/server/features/suggestions",
+        "clientRoute": "/guild/$guildId/suggestions",
+        "commands": [
+          "suggest",
+          "suggestion"
+        ],
+        "spec": "docs/features/suggestions.md"
+      }
+    },
+    {
+      "id": "tempVoice",
+      "status": "shipped",
+      "evidence": {
+        "system": "packages/systems/src/tempVoice",
+        "botFeature": "apps/bot/src/features/tempvoice",
+        "serverFeature": "apps/dashboard/src/server/features/tempvoice",
+        "clientRoute": "/guild/$guildId/tempvoice",
+        "commands": [
+          "tempvoice"
+        ],
+        "spec": null
+      }
+    },
+    {
+      "id": "tickets",
+      "status": "shipped",
+      "evidence": {
+        "system": "packages/systems/src/tickets",
+        "botFeature": "apps/bot/src/features/tickets",
+        "serverFeature": "apps/dashboard/src/server/features/tickets",
+        "clientRoute": "/guild/$guildId/tickets",
+        "commands": [
+          "ticket-add",
+          "ticket-claim",
+          "ticket-close",
+          "ticket-remove",
+          "ticket-transcript"
+        ],
+        "spec": "docs/features/tickets.md"
+      }
+    },
+    {
+      "id": "utility",
+      "status": "shipped",
+      "evidence": {
+        "system": null,
+        "botFeature": "apps/bot/src/features/utility",
+        "serverFeature": null,
+        "clientRoute": null,
+        "commands": [
+          "avatar",
+          "embed",
+          "remind"
+        ],
+        "spec": null
+      }
+    },
+    {
+      "id": "warnings",
+      "status": "shipped",
+      "evidence": {
+        "system": "packages/systems/src/warnings",
+        "botFeature": null,
+        "serverFeature": null,
+        "clientRoute": "/guild/$guildId/warnings",
+        "commands": [
+          "clearwarnings",
+          "warn",
+          "warnings"
+        ],
+        "spec": "docs/features/warn-system.md"
+      }
+    },
+    {
+      "id": "welcome",
+      "status": "shipped",
+      "evidence": {
+        "system": "packages/systems/src/welcome",
+        "botFeature": null,
+        "serverFeature": "apps/dashboard/src/server/features/welcome",
+        "clientRoute": "/guild/$guildId/welcome",
+        "commands": [
+          "welcome"
+        ],
+        "spec": "docs/features/welcome-farewell.md"
+      }
+    }
+  ],
+  "commands": [
+    {
+      "name": "actions",
+      "description": "Configure event-driven automated actions",
+      "module": "general",
+      "file": "apps/bot/src/features/general/commands/actions.ts",
+      "defaultMemberPermissions": "ManageGuild",
+      "options": [],
+      "subcommands": [
+        {
+          "name": "create",
+          "description": "Create a new action rule",
+          "options": [
+            {
+              "type": "string",
+              "name": "name",
+              "description": "Unique name for this rule",
+              "required": true
+            },
+            {
+              "type": "string",
+              "name": "event",
+              "description": "The event to listen for",
+              "required": true
+            },
+            {
+              "type": "string",
+              "name": "action-type",
+              "description": "The action to perform",
+              "required": true
+            },
+            {
+              "type": "channel",
+              "name": "channel",
+              "description": "Target channel (for sendMessage/sendEmbed/logToChannel)",
+              "required": false
+            },
+            {
+              "type": "role",
+              "name": "role",
+              "description": "Target role (for addRole/removeRole)",
+              "required": false
+            },
+            {
+              "type": "string",
+              "name": "message",
+              "description": "Message template (supports {user}, {channel}, {guild}, etc.)",
+              "required": false
+            },
+            {
+              "type": "string",
+              "name": "webhook-url",
+              "description": "Webhook URL for sendWebhook (HTTPS only)",
+              "required": false
+            },
+            {
+              "type": "string",
+              "name": "nickname",
+              "description": "Nickname template for setNickname",
+              "required": false
+            },
+            {
+              "type": "string",
+              "name": "thread-name",
+              "description": "Thread name template for createThread",
+              "required": false
+            },
+            {
+              "type": "string",
+              "name": "emoji",
+              "description": "Emoji for addReaction",
+              "required": false
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Delete an action rule",
+          "options": [
+            {
+              "type": "string",
+              "name": "name",
+              "description": "Rule name",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "enable",
+          "description": "Enable a disabled rule",
+          "options": [
+            {
+              "type": "string",
+              "name": "name",
+              "description": "Rule name",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "disable",
+          "description": "Disable a rule without deleting it",
+          "options": [
+            {
+              "type": "string",
+              "name": "name",
+              "description": "Rule name",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "List all action rules",
+          "options": []
+        },
+        {
+          "name": "view",
+          "description": "View detailed configuration of a rule",
+          "options": [
+            {
+              "type": "string",
+              "name": "name",
+              "description": "Rule name",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "edit",
+          "description": "Edit properties of a rule",
+          "options": [
+            {
+              "type": "string",
+              "name": "name",
+              "description": "Rule name",
+              "required": true
+            },
+            {
+              "type": "string",
+              "name": "event",
+              "description": "New event type",
+              "required": false
+            },
+            {
+              "type": "string",
+              "name": "message",
+              "description": "New message template",
+              "required": false
+            },
+            {
+              "type": "channel",
+              "name": "channel",
+              "description": "New target channel",
+              "required": false
+            },
+            {
+              "type": "role",
+              "name": "role",
+              "description": "New target role",
+              "required": false
+            },
+            {
+              "type": "integer",
+              "name": "priority",
+              "description": "Rule priority (higher = runs first)",
+              "required": false
+            }
+          ]
+        },
+        {
+          "name": "add-condition",
+          "description": "Add a filter condition to a rule",
+          "options": [
+            {
+              "type": "string",
+              "name": "name",
+              "description": "Rule name",
+              "required": true
+            },
+            {
+              "type": "string",
+              "name": "type",
+              "description": "Condition type",
+              "required": true
+            },
+            {
+              "type": "string",
+              "name": "value",
+              "description": "Channel/role/user ID to filter on",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "remove-condition",
+          "description": "Remove a filter condition from a rule",
+          "options": [
+            {
+              "type": "string",
+              "name": "name",
+              "description": "Rule name",
+              "required": true
+            },
+            {
+              "type": "string",
+              "name": "type",
+              "description": "Condition type",
+              "required": true
+            },
+            {
+              "type": "string",
+              "name": "value",
+              "description": "Channel/role/user ID to remove",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "add-action",
+          "description": "Add another action to a rule",
+          "options": [
+            {
+              "type": "string",
+              "name": "name",
+              "description": "Rule name",
+              "required": true
+            },
+            {
+              "type": "string",
+              "name": "action-type",
+              "description": "The action to add",
+              "required": true
+            },
+            {
+              "type": "channel",
+              "name": "channel",
+              "description": "Target channel",
+              "required": false
+            },
+            {
+              "type": "role",
+              "name": "role",
+              "description": "Target role",
+              "required": false
+            },
+            {
+              "type": "string",
+              "name": "message",
+              "description": "Message template",
+              "required": false
+            },
+            {
+              "type": "string",
+              "name": "webhook-url",
+              "description": "Webhook URL for sendWebhook (HTTPS only)",
+              "required": false
+            },
+            {
+              "type": "string",
+              "name": "nickname",
+              "description": "Nickname template for setNickname",
+              "required": false
+            },
+            {
+              "type": "string",
+              "name": "thread-name",
+              "description": "Thread name template for createThread",
+              "required": false
+            },
+            {
+              "type": "string",
+              "name": "emoji",
+              "description": "Emoji for addReaction",
+              "required": false
+            }
+          ]
+        },
+        {
+          "name": "remove-action",
+          "description": "Remove an action from a rule by index",
+          "options": [
+            {
+              "type": "string",
+              "name": "name",
+              "description": "Rule name",
+              "required": true
+            },
+            {
+              "type": "integer",
+              "name": "index",
+              "description": "Action index (1-based, see /actions view)",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "settings",
+          "description": "View or update guild action settings",
+          "options": [
+            {
+              "type": "channel",
+              "name": "log-channel",
+              "description": "Channel to log action executions",
+              "required": false
+            },
+            {
+              "type": "integer",
+              "name": "max-rules",
+              "description": "Maximum rules per guild",
+              "required": false
+            },
+            {
+              "type": "boolean",
+              "name": "enabled",
+              "description": "Enable or disable the action system globally",
+              "required": false
+            }
+          ]
+        },
+        {
+          "name": "logs",
+          "description": "View recent action execution logs",
+          "options": [
+            {
+              "type": "string",
+              "name": "name",
+              "description": "Filter by rule name",
+              "required": false
+            },
+            {
+              "type": "integer",
+              "name": "limit",
+              "description": "Number of logs to show (default 10)",
+              "required": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "description": "Shows all available commands",
+      "module": "general",
+      "file": "apps/bot/src/features/general/commands/help.ts",
+      "defaultMemberPermissions": null,
+      "options": [],
+      "subcommands": []
+    },
+    {
+      "name": "lockdown",
+      "description": "Manage server lockdown mode",
+      "module": "general",
+      "file": "apps/bot/src/features/general/commands/lockdown.ts",
+      "defaultMemberPermissions": "ManageGuild",
+      "options": [],
+      "subcommands": [
+        {
+          "name": "activate",
+          "description": "Lock all channels to prevent @everyone from sending messages",
+          "options": [
+            {
+              "type": "string",
+              "name": "reason",
+              "description": "Reason for lockdown",
+              "required": false
+            }
+          ]
+        },
+        {
+          "name": "lift",
+          "description": "Lift an active server lockdown",
+          "options": []
+        }
+      ]
+    },
+    {
+      "name": "ping",
+      "description": "Shows the bot",
+      "module": "general",
+      "file": "apps/bot/src/features/general/commands/ping.ts",
+      "defaultMemberPermissions": null,
+      "options": [],
+      "subcommands": []
+    },
+    {
+      "name": "rolepanel",
+      "description": "Manage role panels",
+      "module": "general",
+      "file": "apps/bot/src/features/general/commands/rolepanel.ts",
+      "defaultMemberPermissions": "ManageRoles",
+      "options": [],
+      "subcommands": [
+        {
+          "name": "send",
+          "description": "Send a role panel to a channel",
+          "options": [
+            {
+              "type": "string",
+              "name": "panel_name",
+              "description": "Name of the panel to send",
+              "required": true
+            },
+            {
+              "type": "channel",
+              "name": "channel",
+              "description": "Channel to send the panel to (overrides default)",
+              "required": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "server-info",
+      "description": "Displays information about the server",
+      "module": "general",
+      "file": "apps/bot/src/features/general/commands/server-info.ts",
+      "defaultMemberPermissions": null,
+      "options": [],
+      "subcommands": []
+    },
+    {
+      "name": "user-info",
+      "description": "Displays information about a user",
+      "module": "general",
+      "file": "apps/bot/src/features/general/commands/user-info.ts",
+      "defaultMemberPermissions": null,
+      "options": [
+        {
+          "type": "user",
+          "name": "user",
+          "description": "The user to get info about (defaults to you)",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "welcome",
+      "description": "Welcome system commands",
+      "module": "general",
+      "file": "apps/bot/src/features/general/commands/welcome.ts",
+      "defaultMemberPermissions": "ManageGuild",
+      "options": [],
+      "subcommands": [
+        {
+          "name": "test",
+          "description": "Send a test welcome message using the current config",
+          "options": []
+        }
+      ]
+    },
+    {
+      "name": "giveaway",
+      "description": "Manage giveaways",
+      "module": "giveaways",
+      "file": "apps/bot/src/features/giveaways/commands/giveaway.ts",
+      "defaultMemberPermissions": "ManageGuild",
+      "options": [],
+      "subcommands": [
+        {
+          "name": "start",
+          "description": "Start a new giveaway",
+          "options": [
+            {
+              "type": "string",
+              "name": "prize",
+              "description": "What are you giving away?",
+              "required": true
+            },
+            {
+              "type": "string",
+              "name": "duration",
+              "description": "How long the giveaway lasts (e.g. 1h, 2d, 30m)",
+              "required": true
+            },
+            {
+              "type": "integer",
+              "name": "winners",
+              "description": "Number of winners (default: 1)",
+              "required": false
+            },
+            {
+              "type": "role",
+              "name": "required_role",
+              "description": "Role required to enter",
+              "required": false
+            }
+          ]
+        },
+        {
+          "name": "end",
+          "description": "End a giveaway early",
+          "options": [
+            {
+              "type": "integer",
+              "name": "id",
+              "description": "Giveaway ID",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "reroll",
+          "description": "Re-select winners for a giveaway",
+          "options": [
+            {
+              "type": "integer",
+              "name": "id",
+              "description": "Giveaway ID",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "List active giveaways",
+          "options": []
+        }
+      ]
+    },
+    {
+      "name": "leaderboard",
+      "description": "View the server XP leaderboard",
+      "module": "leveling",
+      "file": "apps/bot/src/features/leveling/commands/leaderboard.ts",
+      "defaultMemberPermissions": null,
+      "options": [
+        {
+          "type": "integer",
+          "name": "page",
+          "description": "Page number (default: 1)",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "rank",
+      "description": "View your rank or another member",
+      "module": "leveling",
+      "file": "apps/bot/src/features/leveling/commands/rank.ts",
+      "defaultMemberPermissions": null,
+      "options": [
+        {
+          "type": "user",
+          "name": "user",
+          "description": "The member to view (defaults to yourself)",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "xp",
+      "description": "Manage user XP",
+      "module": "leveling",
+      "file": "apps/bot/src/features/leveling/commands/xp.ts",
+      "defaultMemberPermissions": "ManageGuild",
+      "options": [],
+      "subcommands": [
+        {
+          "name": "set",
+          "description": "Set a user",
+          "options": [
+            {
+              "type": "user",
+              "name": "user",
+              "description": "The target user",
+              "required": true
+            },
+            {
+              "type": "integer",
+              "name": "amount",
+              "description": "XP amount to set",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "add",
+          "description": "Add XP to a user",
+          "options": [
+            {
+              "type": "user",
+              "name": "user",
+              "description": "The target user",
+              "required": true
+            },
+            {
+              "type": "integer",
+              "name": "amount",
+              "description": "XP amount to add",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "remove",
+          "description": "Remove XP from a user",
+          "options": [
+            {
+              "type": "user",
+              "name": "user",
+              "description": "The target user",
+              "required": true
+            },
+            {
+              "type": "integer",
+              "name": "amount",
+              "description": "XP amount to remove",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ban",
+      "description": "Ban a member from the server",
+      "module": "moderation",
+      "file": "apps/bot/src/features/moderation/commands/ban.ts",
+      "defaultMemberPermissions": "BanMembers",
+      "options": [
+        {
+          "type": "user",
+          "name": "user",
+          "description": "The member to ban",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "reason",
+          "description": "Reason for the ban",
+          "required": false
+        },
+        {
+          "type": "integer",
+          "name": "delete-days",
+          "description": "Days of messages to delete (0-7)",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "case",
+      "description": "View a moderation case by ID",
+      "module": "moderation",
+      "file": "apps/bot/src/features/moderation/commands/case.ts",
+      "defaultMemberPermissions": "ManageMessages",
+      "options": [
+        {
+          "type": "integer",
+          "name": "id",
+          "description": "The case ID to look up",
+          "required": true
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "cases",
+      "description": "List moderation cases for a user",
+      "module": "moderation",
+      "file": "apps/bot/src/features/moderation/commands/cases.ts",
+      "defaultMemberPermissions": "ManageMessages",
+      "options": [
+        {
+          "type": "user",
+          "name": "user",
+          "description": "The user to look up",
+          "required": true
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "clear",
+      "description": "Delete multiple messages from a channel",
+      "module": "moderation",
+      "file": "apps/bot/src/features/moderation/commands/clear.ts",
+      "defaultMemberPermissions": "ManageMessages",
+      "options": [
+        {
+          "type": "integer",
+          "name": "amount",
+          "description": "Number of messages to delete (1-100)",
+          "required": true
+        },
+        {
+          "type": "user",
+          "name": "user",
+          "description": "Only delete messages from this user",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "clearwarnings",
+      "description": "Clear warnings for a member",
+      "module": "moderation",
+      "file": "apps/bot/src/features/moderation/commands/clearwarnings.ts",
+      "defaultMemberPermissions": "ManageMessages",
+      "options": [
+        {
+          "type": "user",
+          "name": "user",
+          "description": "The member to clear warnings for",
+          "required": true
+        },
+        {
+          "type": "integer",
+          "name": "id",
+          "description": "Specific warning ID to remove (omit to clear all)",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "kick",
+      "description": "Kick a member from the server",
+      "module": "moderation",
+      "file": "apps/bot/src/features/moderation/commands/kick.ts",
+      "defaultMemberPermissions": "KickMembers",
+      "options": [
+        {
+          "type": "user",
+          "name": "user",
+          "description": "The member to kick",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "reason",
+          "description": "Reason for the kick",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "lock",
+      "description": "Lock a channel to prevent @everyone from sending messages",
+      "module": "moderation",
+      "file": "apps/bot/src/features/moderation/commands/lock.ts",
+      "defaultMemberPermissions": "ManageChannels",
+      "options": [
+        {
+          "type": "channel",
+          "name": "channel",
+          "description": "The channel to lock (defaults to current)",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "reason",
+          "description": "Reason for locking",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "note",
+      "description": "Add an internal moderator note to a user",
+      "module": "moderation",
+      "file": "apps/bot/src/features/moderation/commands/note.ts",
+      "defaultMemberPermissions": "ManageMessages",
+      "options": [
+        {
+          "type": "user",
+          "name": "user",
+          "description": "The user to add a note for",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "text",
+          "description": "The note text",
+          "required": true
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "purge",
+      "description": "Bulk delete messages with optional filters",
+      "module": "moderation",
+      "file": "apps/bot/src/features/moderation/commands/purge.ts",
+      "defaultMemberPermissions": "ManageMessages",
+      "options": [
+        {
+          "type": "integer",
+          "name": "amount",
+          "description": "Number of messages to delete (1-100)",
+          "required": true
+        },
+        {
+          "type": "user",
+          "name": "user",
+          "description": "Filter by user",
+          "required": false
+        },
+        {
+          "type": "boolean",
+          "name": "bots",
+          "description": "Only delete bot messages",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "contains",
+          "description": "Only messages containing this text",
+          "required": false
+        },
+        {
+          "type": "string",
+          "name": "has",
+          "description": "Filter by content type",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "softban",
+      "description": "Softban a member (ban + unban to purge messages)",
+      "module": "moderation",
+      "file": "apps/bot/src/features/moderation/commands/softban.ts",
+      "defaultMemberPermissions": "BanMembers",
+      "options": [
+        {
+          "type": "user",
+          "name": "user",
+          "description": "The member to softban",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "reason",
+          "description": "Reason for the softban",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "tempban",
+      "description": "Temporarily ban a member from the server",
+      "module": "moderation",
+      "file": "apps/bot/src/features/moderation/commands/tempban.ts",
+      "defaultMemberPermissions": "BanMembers",
+      "options": [
+        {
+          "type": "user",
+          "name": "user",
+          "description": "The member to tempban",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "duration",
+          "description": "Duration (1h, 6h, 12h, 1d, 3d, 7d, 14d, 30d)",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "reason",
+          "description": "Reason for the tempban",
+          "required": false
+        },
+        {
+          "type": "integer",
+          "name": "delete-days",
+          "description": "Days of messages to delete (0-7)",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "timeout",
+      "description": "Timeout a member",
+      "module": "moderation",
+      "file": "apps/bot/src/features/moderation/commands/timeout.ts",
+      "defaultMemberPermissions": "ModerateMembers",
+      "options": [
+        {
+          "type": "user",
+          "name": "user",
+          "description": "The member to timeout",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "duration",
+          "description": "Duration (e.g., 10m, 2h, 1d)",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "reason",
+          "description": "Reason for the timeout",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "unlock",
+      "description": "Unlock a channel to allow @everyone to send messages",
+      "module": "moderation",
+      "file": "apps/bot/src/features/moderation/commands/unlock.ts",
+      "defaultMemberPermissions": "ManageChannels",
+      "options": [
+        {
+          "type": "channel",
+          "name": "channel",
+          "description": "The channel to unlock (defaults to current)",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "warn",
+      "description": "Issue a warning to a member",
+      "module": "moderation",
+      "file": "apps/bot/src/features/moderation/commands/warn.ts",
+      "defaultMemberPermissions": "ManageMessages",
+      "options": [
+        {
+          "type": "user",
+          "name": "user",
+          "description": "The member to warn",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "reason",
+          "description": "Reason for the warning",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "warnings",
+      "description": "View warning history for a member",
+      "module": "moderation",
+      "file": "apps/bot/src/features/moderation/commands/warnings.ts",
+      "defaultMemberPermissions": "ManageMessages",
+      "options": [
+        {
+          "type": "user",
+          "name": "user",
+          "description": "The member to view warnings for",
+          "required": true
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "suggest",
+      "description": "Submit a suggestion",
+      "module": "suggestions",
+      "file": "apps/bot/src/features/suggestions/commands/suggest.ts",
+      "defaultMemberPermissions": null,
+      "options": [
+        {
+          "type": "string",
+          "name": "text",
+          "description": "Your suggestion (max 2000 characters)",
+          "required": true
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "suggestion",
+      "description": "Manage suggestions",
+      "module": "suggestions",
+      "file": "apps/bot/src/features/suggestions/commands/suggestion.ts",
+      "defaultMemberPermissions": "ManageGuild",
+      "options": [],
+      "subcommands": [
+        {
+          "name": "approve",
+          "description": "Approve a suggestion",
+          "options": [
+            {
+              "type": "integer",
+              "name": "id",
+              "description": "Suggestion ID",
+              "required": true
+            },
+            {
+              "type": "string",
+              "name": "reason",
+              "description": "Reason for approval",
+              "required": false
+            }
+          ]
+        },
+        {
+          "name": "deny",
+          "description": "Deny a suggestion",
+          "options": [
+            {
+              "type": "integer",
+              "name": "id",
+              "description": "Suggestion ID",
+              "required": true
+            },
+            {
+              "type": "string",
+              "name": "reason",
+              "description": "Reason for denial",
+              "required": false
+            }
+          ]
+        },
+        {
+          "name": "implement",
+          "description": "Mark a suggestion as implemented",
+          "options": [
+            {
+              "type": "integer",
+              "name": "id",
+              "description": "Suggestion ID",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tempvoice",
+      "description": "Configure temporary voice channels",
+      "module": "tempvoice",
+      "file": "apps/bot/src/features/tempvoice/commands/tempvoice.ts",
+      "defaultMemberPermissions": "ManageChannels",
+      "options": [],
+      "subcommands": [
+        {
+          "name": "setup",
+          "description": "Add a new temp voice hub channel",
+          "options": [
+            {
+              "type": "channel",
+              "name": "channel",
+              "description": "The hub voice channel (joining it creates a temp channel)",
+              "required": true
+            },
+            {
+              "type": "string",
+              "name": "name-template",
+              "description": "Channel name template. Use {user} for the creator\\'s name. Default: ",
+              "required": false
+            }
+          ]
+        },
+        {
+          "name": "remove",
+          "description": "Remove a temp voice hub configuration",
+          "options": [
+            {
+              "type": "channel",
+              "name": "channel",
+              "description": "The hub channel to remove",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "List all temp voice hub configurations",
+          "options": []
+        }
+      ]
+    },
+    {
+      "name": "ticket-add",
+      "description": "Add a user to the current ticket",
+      "module": "tickets",
+      "file": "apps/bot/src/features/tickets/commands/add.ts",
+      "defaultMemberPermissions": null,
+      "options": [
+        {
+          "type": "user",
+          "name": "user",
+          "description": "The user to add to the ticket",
+          "required": true
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "ticket-claim",
+      "description": "Claim the current ticket",
+      "module": "tickets",
+      "file": "apps/bot/src/features/tickets/commands/claim.ts",
+      "defaultMemberPermissions": null,
+      "options": [],
+      "subcommands": []
+    },
+    {
+      "name": "ticket-close",
+      "description": "Close the current ticket",
+      "module": "tickets",
+      "file": "apps/bot/src/features/tickets/commands/close.ts",
+      "defaultMemberPermissions": null,
+      "options": [
+        {
+          "type": "string",
+          "name": "reason",
+          "description": "Reason for closing the ticket",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "ticket-remove",
+      "description": "Remove a user from the current ticket",
+      "module": "tickets",
+      "file": "apps/bot/src/features/tickets/commands/remove.ts",
+      "defaultMemberPermissions": null,
+      "options": [
+        {
+          "type": "user",
+          "name": "user",
+          "description": "The user to remove from the ticket",
+          "required": true
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "ticket-transcript",
+      "description": "Generate and post a transcript of the current ticket",
+      "module": "tickets",
+      "file": "apps/bot/src/features/tickets/commands/transcript.ts",
+      "defaultMemberPermissions": null,
+      "options": [],
+      "subcommands": []
+    },
+    {
+      "name": "avatar",
+      "description": "Get a user",
+      "module": "utility",
+      "file": "apps/bot/src/features/utility/commands/avatar.ts",
+      "defaultMemberPermissions": null,
+      "options": [
+        {
+          "type": "user",
+          "name": "user",
+          "description": "The user (defaults to you)",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "embed",
+      "description": "Create a custom embed message",
+      "module": "utility",
+      "file": "apps/bot/src/features/utility/commands/embed-builder.ts",
+      "defaultMemberPermissions": "ManageMessages",
+      "options": [
+        {
+          "type": "string",
+          "name": "title",
+          "description": "Embed title",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "description": "Embed description",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "color",
+          "description": "Embed color",
+          "required": false
+        },
+        {
+          "type": "channel",
+          "name": "channel",
+          "description": "Channel to send the embed to (defaults to current)",
+          "required": false
+        }
+      ],
+      "subcommands": []
+    },
+    {
+      "name": "remind",
+      "description": "Set a reminder",
+      "module": "utility",
+      "file": "apps/bot/src/features/utility/commands/remind.ts",
+      "defaultMemberPermissions": null,
+      "options": [
+        {
+          "type": "string",
+          "name": "duration",
+          "description": "When to remind you (e.g., 10m, 2h, 1d)",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "description": "What to remind you about",
+          "required": true
+        }
+      ],
+      "subcommands": []
+    }
+  ],
+  "envVars": [
+    {
+      "name": "DISCORD_TOKEN",
+      "defaultValue": null,
+      "description": "Bot token from Discord Developer Portal"
+    },
+    {
+      "name": "CLIENT_ID",
+      "defaultValue": null,
+      "description": "Application (client) ID from Discord Developer Portal"
+    },
+    {
+      "name": "LOG_LEVEL",
+      "defaultValue": "info",
+      "description": "Log level: debug | info | warn | error"
+    },
+    {
+      "name": "DATABASE_URL",
+      "defaultValue": "postgresql://fluxcore:fluxcore@postgres:5432/fluxcore",
+      "description": "Database (PostgreSQL) - points to Docker container hostname"
+    },
+    {
+      "name": "GUILD_ID",
+      "defaultValue": null,
+      "description": "(Optional) Guild ID for development - commands deploy instantly to a specific guild"
+    },
+    {
+      "name": "BOT_SYNC_PORT",
+      "defaultValue": "3001",
+      "description": "Port for the bot's internal HTTP cache sync server"
+    },
+    {
+      "name": "BOT_SYNC_SECRET",
+      "defaultValue": null,
+      "description": "Must be at least 32 characters. Generate with: openssl rand -hex 32"
+    },
+    {
+      "name": "BOT_SYNC_URL",
+      "defaultValue": "http://bot:3001",
+      "description": "URL the dashboard uses to reach the bot's sync server (Docker service name)"
+    },
+    {
+      "name": "DASHBOARD_PORT",
+      "defaultValue": "3000",
+      "description": "Dashboard is disabled if DASHBOARD_CLIENT_SECRET is not set"
+    },
+    {
+      "name": "DASHBOARD_CLIENT_SECRET",
+      "defaultValue": null,
+      "description": null
+    },
+    {
+      "name": "DASHBOARD_CALLBACK_URL",
+      "defaultValue": "http://localhost:3000/auth/callback",
+      "description": null
+    },
+    {
+      "name": "DASHBOARD_SESSION_SECRET",
+      "defaultValue": null,
+      "description": null
+    },
+    {
+      "name": "POSTGRES_PASSWORD",
+      "defaultValue": null,
+      "description": "PostgreSQL password (used by docker-compose.prod.yml)"
+    },
+    {
+      "name": "DASHBOARD_DOMAIN",
+      "defaultValue": "localhost",
+      "description": "Caddy reverse proxy domain - set to your domain for automatic TLS"
+    },
+    {
+      "name": "BACKUP_SCHEDULE",
+      "defaultValue": "0 2 * * *",
+      "description": "Backup schedule (cron expression, default: daily at 2am)"
+    },
+    {
+      "name": "BACKUP_RETENTION_DAYS",
+      "defaultValue": "7",
+      "description": null
+    }
+  ],
+  "dashboardPages": [
+    {
+      "route": "/guild/$guildId/commands",
+      "featureId": "commands",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/commands.tsx"
+    },
+    {
+      "route": "/guild/$guildId/giveaways",
+      "featureId": "giveaways",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/giveaways.tsx"
+    },
+    {
+      "route": "/guild/$guildId/leveling",
+      "featureId": "leveling",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/leveling.tsx"
+    },
+    {
+      "route": "/guild/$guildId/logs",
+      "featureId": "logging",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/logs.tsx"
+    },
+    {
+      "route": "/guild/$guildId/moderation",
+      "featureId": "moderation",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/moderation.tsx"
+    },
+    {
+      "route": "/guild/$guildId/overview",
+      "featureId": "overview",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/overview.tsx"
+    },
+    {
+      "route": "/guild/$guildId/permissions",
+      "featureId": "permissions",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/permissions.tsx"
+    },
+    {
+      "route": "/guild/$guildId/roles",
+      "featureId": "roles",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/roles.tsx"
+    },
+    {
+      "route": "/guild/$guildId/rules",
+      "featureId": "automation",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/rules.tsx"
+    },
+    {
+      "route": "/guild/$guildId/scheduled",
+      "featureId": "scheduled",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/scheduled.tsx"
+    },
+    {
+      "route": "/guild/$guildId/security",
+      "featureId": "security",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/security.tsx"
+    },
+    {
+      "route": "/guild/$guildId/settings",
+      "featureId": "settings",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/settings.tsx"
+    },
+    {
+      "route": "/guild/$guildId/starboard",
+      "featureId": "starboard",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/starboard.tsx"
+    },
+    {
+      "route": "/guild/$guildId/suggestions",
+      "featureId": "suggestions",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/suggestions.tsx"
+    },
+    {
+      "route": "/guild/$guildId/tempvoice",
+      "featureId": "tempvoice",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/tempvoice.tsx"
+    },
+    {
+      "route": "/guild/$guildId/tickets",
+      "featureId": "tickets",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/tickets.tsx"
+    },
+    {
+      "route": "/guild/$guildId/warnings",
+      "featureId": "warnings",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/warnings.tsx"
+    },
+    {
+      "route": "/guild/$guildId/welcome",
+      "featureId": "welcome",
+      "file": "apps/dashboard/src/client/routes/guild/$guildId/welcome.tsx"
+    }
+  ],
+  "botFeatures": [
+    {
+      "id": "automation",
+      "dir": "apps/bot/src/features/automation"
+    },
+    {
+      "id": "general",
+      "dir": "apps/bot/src/features/general"
+    },
+    {
+      "id": "giveaways",
+      "dir": "apps/bot/src/features/giveaways"
+    },
+    {
+      "id": "leveling",
+      "dir": "apps/bot/src/features/leveling"
+    },
+    {
+      "id": "moderation",
+      "dir": "apps/bot/src/features/moderation"
+    },
+    {
+      "id": "suggestions",
+      "dir": "apps/bot/src/features/suggestions"
+    },
+    {
+      "id": "tempvoice",
+      "dir": "apps/bot/src/features/tempvoice"
+    },
+    {
+      "id": "tickets",
+      "dir": "apps/bot/src/features/tickets"
+    },
+    {
+      "id": "utility",
+      "dir": "apps/bot/src/features/utility"
+    }
+  ],
+  "events": [
+    {
+      "name": "channelCreate",
+      "file": "apps/bot/src/events/channelCreate.ts"
+    },
+    {
+      "name": "channelDelete",
+      "file": "apps/bot/src/events/channelDelete.ts"
+    },
+    {
+      "name": "channelUpdate",
+      "file": "apps/bot/src/events/channelUpdate.ts"
+    },
+    {
+      "name": "guildBanAdd",
+      "file": "apps/bot/src/events/guildBanAdd.ts"
+    },
+    {
+      "name": "guildBanRemove",
+      "file": "apps/bot/src/events/guildBanRemove.ts"
+    },
+    {
+      "name": "guildMemberAdd",
+      "file": "apps/bot/src/events/guildMemberAdd.ts"
+    },
+    {
+      "name": "guildMemberRemove",
+      "file": "apps/bot/src/events/guildMemberRemove.ts"
+    },
+    {
+      "name": "guildMemberUpdate",
+      "file": "apps/bot/src/events/guildMemberUpdate.ts"
+    },
+    {
+      "name": "guildUpdate",
+      "file": "apps/bot/src/events/guildUpdate.ts"
+    },
+    {
+      "name": "interactionCreate",
+      "file": "apps/bot/src/events/interactionCreate.ts"
+    },
+    {
+      "name": "messageBulkDelete",
+      "file": "apps/bot/src/events/messageBulkDelete.ts"
+    },
+    {
+      "name": "messageCreate",
+      "file": "apps/bot/src/events/messageCreate.ts"
+    },
+    {
+      "name": "messageDelete",
+      "file": "apps/bot/src/events/messageDelete.ts"
+    },
+    {
+      "name": "messageReactionAdd",
+      "file": "apps/bot/src/events/messageReactionAdd.ts"
+    },
+    {
+      "name": "messageReactionRemove",
+      "file": "apps/bot/src/events/messageReactionRemove.ts"
+    },
+    {
+      "name": "messageUpdate",
+      "file": "apps/bot/src/events/messageUpdate.ts"
+    },
+    {
+      "name": "ready",
+      "file": "apps/bot/src/events/ready.ts"
+    },
+    {
+      "name": "roleCreate",
+      "file": "apps/bot/src/events/roleCreate.ts"
+    },
+    {
+      "name": "roleDelete",
+      "file": "apps/bot/src/events/roleDelete.ts"
+    },
+    {
+      "name": "roleUpdate",
+      "file": "apps/bot/src/events/roleUpdate.ts"
+    },
+    {
+      "name": "voiceStateUpdate",
+      "file": "apps/bot/src/events/voiceStateUpdate.ts"
+    }
+  ],
+  "serverFeatures": [
+    {
+      "id": "actions",
+      "dir": "apps/dashboard/src/server/features/actions"
+    },
+    {
+      "id": "auth",
+      "dir": "apps/dashboard/src/server/features/auth"
+    },
+    {
+      "id": "commands",
+      "dir": "apps/dashboard/src/server/features/commands"
+    },
+    {
+      "id": "discord",
+      "dir": "apps/dashboard/src/server/features/discord"
+    },
+    {
+      "id": "giveaways",
+      "dir": "apps/dashboard/src/server/features/giveaways"
+    },
+    {
+      "id": "guilds",
+      "dir": "apps/dashboard/src/server/features/guilds"
+    },
+    {
+      "id": "leveling",
+      "dir": "apps/dashboard/src/server/features/leveling"
+    },
+    {
+      "id": "logging",
+      "dir": "apps/dashboard/src/server/features/logging"
+    },
+    {
+      "id": "moderation",
+      "dir": "apps/dashboard/src/server/features/moderation"
+    },
+    {
+      "id": "permissions",
+      "dir": "apps/dashboard/src/server/features/permissions"
+    },
+    {
+      "id": "roles",
+      "dir": "apps/dashboard/src/server/features/roles"
+    },
+    {
+      "id": "scheduled",
+      "dir": "apps/dashboard/src/server/features/scheduled"
+    },
+    {
+      "id": "security",
+      "dir": "apps/dashboard/src/server/features/security"
+    },
+    {
+      "id": "starboard",
+      "dir": "apps/dashboard/src/server/features/starboard"
+    },
+    {
+      "id": "suggestions",
+      "dir": "apps/dashboard/src/server/features/suggestions"
+    },
+    {
+      "id": "tempvoice",
+      "dir": "apps/dashboard/src/server/features/tempvoice"
+    },
+    {
+      "id": "tickets",
+      "dir": "apps/dashboard/src/server/features/tickets"
+    },
+    {
+      "id": "welcome",
+      "dir": "apps/dashboard/src/server/features/welcome"
+    }
+  ],
+  "clientFeatures": [
+    {
+      "id": "automation",
+      "dir": "apps/dashboard/src/client/features/automation"
+    },
+    {
+      "id": "commands",
+      "dir": "apps/dashboard/src/client/features/commands"
+    },
+    {
+      "id": "giveaways",
+      "dir": "apps/dashboard/src/client/features/giveaways"
+    },
+    {
+      "id": "landing",
+      "dir": "apps/dashboard/src/client/features/landing"
+    },
+    {
+      "id": "leveling",
+      "dir": "apps/dashboard/src/client/features/leveling"
+    },
+    {
+      "id": "logging",
+      "dir": "apps/dashboard/src/client/features/logging"
+    },
+    {
+      "id": "moderation",
+      "dir": "apps/dashboard/src/client/features/moderation"
+    },
+    {
+      "id": "overview",
+      "dir": "apps/dashboard/src/client/features/overview"
+    },
+    {
+      "id": "permissions",
+      "dir": "apps/dashboard/src/client/features/permissions"
+    },
+    {
+      "id": "roles",
+      "dir": "apps/dashboard/src/client/features/roles"
+    },
+    {
+      "id": "scheduled",
+      "dir": "apps/dashboard/src/client/features/scheduled"
+    },
+    {
+      "id": "security",
+      "dir": "apps/dashboard/src/client/features/security"
+    },
+    {
+      "id": "settings",
+      "dir": "apps/dashboard/src/client/features/settings"
+    },
+    {
+      "id": "starboard",
+      "dir": "apps/dashboard/src/client/features/starboard"
+    },
+    {
+      "id": "suggestions",
+      "dir": "apps/dashboard/src/client/features/suggestions"
+    },
+    {
+      "id": "tempvoice",
+      "dir": "apps/dashboard/src/client/features/tempvoice"
+    },
+    {
+      "id": "tickets",
+      "dir": "apps/dashboard/src/client/features/tickets"
+    },
+    {
+      "id": "warnings",
+      "dir": "apps/dashboard/src/client/features/warnings"
+    },
+    {
+      "id": "welcome",
+      "dir": "apps/dashboard/src/client/features/welcome"
+    }
+  ],
+  "systems": [
+    {
+      "id": "actions",
+      "dir": "packages/systems/src/actions"
+    },
+    {
+      "id": "antiraid",
+      "dir": "packages/systems/src/antiraid"
+    },
+    {
+      "id": "customCommands",
+      "dir": "packages/systems/src/customCommands"
+    },
+    {
+      "id": "giveaways",
+      "dir": "packages/systems/src/giveaways"
+    },
+    {
+      "id": "leveling",
+      "dir": "packages/systems/src/leveling"
+    },
+    {
+      "id": "logging",
+      "dir": "packages/systems/src/logging"
+    },
+    {
+      "id": "moderation",
+      "dir": "packages/systems/src/moderation"
+    },
+    {
+      "id": "queue",
+      "dir": "packages/systems/src/queue"
+    },
+    {
+      "id": "rolePanel",
+      "dir": "packages/systems/src/rolePanel"
+    },
+    {
+      "id": "scheduled-messages",
+      "dir": "packages/systems/src/scheduled-messages"
+    },
+    {
+      "id": "starboard",
+      "dir": "packages/systems/src/starboard"
+    },
+    {
+      "id": "suggestions",
+      "dir": "packages/systems/src/suggestions"
+    },
+    {
+      "id": "tempVoice",
+      "dir": "packages/systems/src/tempVoice"
+    },
+    {
+      "id": "tickets",
+      "dir": "packages/systems/src/tickets"
+    },
+    {
+      "id": "warnings",
+      "dir": "packages/systems/src/warnings"
+    },
+    {
+      "id": "welcome",
+      "dir": "packages/systems/src/welcome"
+    }
+  ],
+  "prismaModels": [
+    "TempVoiceGuildConfig",
+    "TempVoiceUserSettings",
+    "ActionRule",
+    "ActionLog",
+    "ActionGuildSettings",
+    "ActionCacheInvalidation",
+    "Reminder",
+    "DashboardSession",
+    "MusicGuildSettings",
+    "MusicLibraryAlbum",
+    "MusicLibraryTrack",
+    "LogGuildConfig",
+    "LogEntry",
+    "Warning",
+    "WarnPunishment",
+    "WarnGuildSettings",
+    "ModCase",
+    "ModGuildSettings",
+    "WelcomeConfig",
+    "RolePanel",
+    "UserLevel",
+    "LevelReward",
+    "LevelGuildSettings",
+    "ScheduledMessage",
+    "CustomCommand",
+    "AntiRaidConfig",
+    "RaidEvent",
+    "TicketPanel",
+    "Ticket",
+    "TicketGuildSettings",
+    "Giveaway",
+    "GiveawayCacheInvalidation",
+    "Suggestion",
+    "SuggestionGuildSettings",
+    "StarboardEntry",
+    "StarboardGuildSettings",
+    "DashboardGuildSettings",
+    "DashboardRole",
+    "DashboardRoleAssignment",
+    "DashboardUserPermission",
+    "DashboardAuditLog"
+  ],
+  "specs": [
+    {
+      "id": "anti-raid",
+      "file": "docs/features/anti-raid.md"
+    },
+    {
+      "id": "custom-commands",
+      "file": "docs/features/custom-commands.md"
+    },
+    {
+      "id": "dashboard-permissions",
+      "file": "docs/features/dashboard-permissions.md"
+    },
+    {
+      "id": "giveaways",
+      "file": "docs/features/giveaways.md"
+    },
+    {
+      "id": "i18n-accessibility",
+      "file": "docs/features/i18n-accessibility.md"
+    },
+    {
+      "id": "leveling",
+      "file": "docs/features/leveling.md"
+    },
+    {
+      "id": "logging",
+      "file": "docs/features/logging.md"
+    },
+    {
+      "id": "moderation",
+      "file": "docs/features/moderation.md"
+    },
+    {
+      "id": "reaction-roles",
+      "file": "docs/features/reaction-roles.md"
+    },
+    {
+      "id": "scheduled-messages",
+      "file": "docs/features/scheduled-messages.md"
+    },
+    {
+      "id": "starboard",
+      "file": "docs/features/starboard.md"
+    },
+    {
+      "id": "suggestions",
+      "file": "docs/features/suggestions.md"
+    },
+    {
+      "id": "tickets",
+      "file": "docs/features/tickets.md"
+    },
+    {
+      "id": "warn-system",
+      "file": "docs/features/warn-system.md"
+    },
+    {
+      "id": "welcome-farewell",
+      "file": "docs/features/welcome-farewell.md"
+    }
+  ]
+}
