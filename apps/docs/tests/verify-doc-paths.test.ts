@@ -1,11 +1,19 @@
 import { describe, expect, it } from "vitest";
-import { resolve } from "node:path";
+import { dirname, resolve } from "node:path";
 import { execFileSync } from "node:child_process";
 import {
   extractRepoPaths,
   findMissingPaths,
   extractAllowedPaths,
 } from "../scripts/verify-doc-paths.mjs";
+
+// This suite is the path guard's own fixture set, so it deliberately cites
+// paths that are not real (fabricated app names, truncated template
+// fragments, ./ and ../ forms quoted in prose) plus two bare paths that exist
+// only under apps/docs and are the exact laundering case under test. They are
+// exempted explicitly, via the guard's own escape hatch, rather than by
+// contorting the fixtures into something that no longer reproduces the bugs:
+// <!-- docs-path-guard: allow apps/docs/content/guide/features/, apps/nonexistent-app, ./x, ../x, ./-prefixed, ../-prefixed, ./scripts/check-coverage.mjs, ./check-coverage.mjs, ./scripts/totally-fake-nonexistent-file.mjs, ../bot/src/index.ts, apps/bot/src/commands/moderation/ban.ts, scripts/check-coverage.mjs, scripts/manifest/build.mjs reason: "deliberately unreal, or intentionally repo-root-absent, fixture paths for the path guard's own test suite" -->
 
 const repoRoot = resolve(__dirname, "../../..");
 const cliScript = resolve(__dirname, "../scripts/verify-doc-paths.mjs");
@@ -103,9 +111,7 @@ describe("extractRepoPaths", () => {
 
     it("still extracts a real path elsewhere in the same content, alongside a templated path's static prefix", () => {
       expect(
-        extractRepoPaths(
-          "see `apps/bot/src/index.ts` and `apps/docs/content/guide/<feature>.mdx`",
-        ),
+        extractRepoPaths("see `apps/bot/src/index.ts` and `apps/docs/content/guide/<feature>.mdx`"),
       ).toEqual(["apps/bot/src/index.ts", "apps/docs"]);
     });
   });
@@ -168,8 +174,8 @@ describe("findMissingPaths", () => {
     });
 
     it("passes a real ./-prefixed path resolved against the edited file's directory", () => {
-      // apps/docs/scripts/check-coverage.mjs is real; apps/docs is repoRoot's
-      // idea of "scripts/check-coverage.mjs" is NOT (that's the whole bug).
+      // apps/docs/scripts/check-coverage.mjs is real; repoRoot's idea of
+      // "scripts/check-coverage.mjs" is NOT (that's the whole bug).
       expect(findMissingPaths(["./scripts/check-coverage.mjs"], repoRoot, docsDir)).toEqual([]);
     });
 
@@ -194,18 +200,90 @@ describe("findMissingPaths", () => {
       const escaping = "../".repeat(20) + "etc/passwd";
       expect(findMissingPaths([escaping], repoRoot, docsDir)).toEqual([escaping]);
     });
+
+    it("resolves an explicit ./ against docDir no matter which file is being edited", () => {
+      // The bare-path convention below is file-shaped; the ./ convention is
+      // not. An explicit ./ means "next to me" in a package.json and in a
+      // prose page alike.
+      expect(
+        findMissingPaths(["./scripts/check-coverage.mjs"], repoRoot, docsDir, "package.json"),
+      ).toEqual([]);
+      expect(
+        findMissingPaths(["./scripts/check-coverage.mjs"], repoRoot, docsDir, "index.mdx"),
+      ).toEqual([]);
+    });
   });
 
-  describe("bare relative paths (no ./ prefix)", () => {
+  // A bare path (no ./ prefix) is a REPO-ROOT claim everywhere except inside
+  // a package.json, where npm/pnpm resolve a script's arguments against the
+  // package directory. The earlier "try docDir first, everywhere" rule was
+  // wrong in only one direction, but wrong badly: a page could write
+  // `scripts/manifest/build.mjs` — a claim about the repo root, where only
+  // migrate-encrypt-session-tokens.ts lives — and have it silently pass
+  // because apps/docs/scripts/manifest/build.mjs happens to exist. A false
+  // repo-root claim laundering through a name collision with a local file is
+  // exactly the fabrication this guard exists to catch.
+  describe("bare paths (no ./ prefix)", () => {
     const docsDir = resolve(repoRoot, "apps/docs");
 
-    it("resolves a bare path against docDir first, honestly matching how pnpm scripts actually run", () => {
-      // "scripts" is also a recognized repo-root top-level directory, so
-      // this path is ambiguous on its face. Package.json "scripts" entries
-      // are always shell-CWD-relative (the package directory), never
-      // repo-root-relative, so checking the local directory first is the
-      // behavior that matches reality.
-      expect(findMissingPaths(["scripts/check-coverage.mjs"], repoRoot, docsDir)).toEqual([]);
+    it("treats a bare path in a prose page as a repo-root claim, even when a same-named file sits beside the page", () => {
+      // apps/docs/scripts/manifest/build.mjs exists; <repo-root>/scripts does
+      // not contain manifest/build.mjs. The page is making a repo-root claim
+      // and the claim is false.
+      expect(
+        findMissingPaths(["scripts/manifest/build.mjs"], repoRoot, docsDir, "index.mdx"),
+      ).toEqual(["scripts/manifest/build.mjs"]);
+    });
+
+    it("resolves a bare path against docDir first inside a package.json (npm/pnpm script semantics)", () => {
+      // "check-coverage": "node scripts/check-coverage.mjs" runs with the
+      // package directory as CWD, so this is an honest local reference.
+      expect(
+        findMissingPaths(["scripts/check-coverage.mjs"], repoRoot, docsDir, "package.json"),
+      ).toEqual([]);
+    });
+
+    it("accepts a full path as docFileName, not just a basename", () => {
+      expect(
+        findMissingPaths(
+          ["scripts/check-coverage.mjs"],
+          repoRoot,
+          docsDir,
+          resolve(docsDir, "package.json"),
+        ),
+      ).toEqual([]);
+    });
+
+    it("does not extend package.json semantics to a file merely named like one", () => {
+      expect(
+        findMissingPaths(["scripts/check-coverage.mjs"], repoRoot, docsDir, "my-package.json"),
+      ).toEqual(["scripts/check-coverage.mjs"]);
+    });
+
+    it("still falls back to repoRoot inside a package.json when there is no local match", () => {
+      expect(findMissingPaths(["apps/bot/src/index.ts"], repoRoot, docsDir, "package.json")).toEqual(
+        [],
+      );
+    });
+
+    it("flags a fabricated repo-root path cited from a package.json too", () => {
+      expect(
+        findMissingPaths(
+          ["apps/bot/src/commands/moderation/ban.ts"],
+          repoRoot,
+          docsDir,
+          "package.json",
+        ),
+      ).toEqual(["apps/bot/src/commands/moderation/ban.ts"]);
+    });
+
+    it("treats a bare path as a repo-root claim when the edited file is unknown", () => {
+      // No docFileName means no evidence that package.json semantics apply,
+      // and the guard's default must be the strict reading, never the
+      // permissive one.
+      expect(findMissingPaths(["scripts/check-coverage.mjs"], repoRoot, docsDir)).toEqual([
+        "scripts/check-coverage.mjs",
+      ]);
     });
 
     it("falls back to repoRoot when there is no local match, unchanged from the original behavior", () => {
@@ -278,9 +356,18 @@ function runCli(content: string): { stdout: string; status: number } {
   return runCliRaw(["--stdin"], content);
 }
 
-/** Run the real CLI with a --doc-dir flag, exactly as the hook invokes it. */
+/** Run the real CLI with only the resolution anchor, and no edited-file identity. */
 function runCliWithDocDir(content: string, docDir: string): { stdout: string; status: number } {
   return runCliRaw(["--stdin", "--doc-dir", docDir], content);
+}
+
+/**
+ * Run the real CLI exactly as `.claude/hooks/docs-path-guard.sh` invokes it:
+ * the anchor directory AND the edited file, since the two answer different
+ * questions (where a ./ path points, and whose bare-path convention applies).
+ */
+function runCliAsFile(content: string, docFile: string): { stdout: string; status: number } {
+  return runCliRaw(["--stdin", "--doc-dir", dirname(docFile), "--doc-file", docFile], content);
 }
 
 describe("CLI (--stdin)", () => {
@@ -298,7 +385,7 @@ describe("CLI (--stdin)", () => {
 
   it("honors an allow marker end to end, excluding the exempted path from the report", () => {
     const content =
-      'see `apps/bot/src/commands/moderation/ban.ts` and `apps/docs/.env.local`\n' +
+      "see `apps/bot/src/commands/moderation/ban.ts` and `apps/docs/.env.local`\n" +
       '<!-- docs-path-guard: allow apps/docs/.env.local reason: "reader creates this file" -->';
     const result = runCli(content);
     expect(result.stdout.trim().split("\n")).toEqual(["apps/bot/src/commands/moderation/ban.ts"]);
@@ -318,28 +405,54 @@ describe("CLI (--stdin)", () => {
     const docsDir = resolve(repoRoot, "apps/docs");
 
     it("flags a fabricated ./-prefixed path", () => {
-      const result = runCliWithDocDir(
-        "run `./scripts/totally-fake-nonexistent-file.mjs`",
-        docsDir,
-      );
+      const result = runCliWithDocDir("run `./scripts/totally-fake-nonexistent-file.mjs`", docsDir);
       expect(result.stdout.trim().split("\n")).toEqual([
         "./scripts/totally-fake-nonexistent-file.mjs",
       ]);
     });
 
-    it("passes the real workspace-relative path that motivated this fix", () => {
-      // This is the exact content that used to force the ./ workaround:
-      // "scripts/check-coverage.mjs" bare, checked against apps/docs.
-      const result = runCliWithDocDir('"check-coverage": "node scripts/check-coverage.mjs"', docsDir);
-      expect(result.stdout.trim()).toBe("");
-    });
-
-    it("passes the ./ form of the same real path", () => {
+    it("passes the ./ form of a real workspace-relative path", () => {
       const result = runCliWithDocDir(
         '"check-coverage": "node ./scripts/check-coverage.mjs"',
         docsDir,
       );
       expect(result.stdout.trim()).toBe("");
+    });
+  });
+
+  describe("--doc-file (whose bare-path convention applies, end to end)", () => {
+    const docsDir = resolve(repoRoot, "apps/docs");
+
+    it("passes a bare pnpm script path cited from a package.json", () => {
+      // Verbatim from the real apps/docs/package.json.
+      const result = runCliAsFile(
+        '"check-coverage": "node scripts/check-coverage.mjs"',
+        resolve(docsDir, "package.json"),
+      );
+      expect(result.stdout.trim()).toBe("");
+    });
+
+    it("flags a false repo-root claim in a prose page that collides with a local file name", () => {
+      // The reviewer's repro, verbatim: a page sitting directly in apps/docs,
+      // whose sibling apps/docs/scripts/manifest/build.mjs exists, while the
+      // repo-root path the page actually claims does not. The page need not
+      // exist yet — this is a Write of a new page, which is precisely when
+      // fabricated paths get introduced.
+      const result = runCliAsFile(
+        "see `scripts/manifest/build.mjs` at the repo root",
+        resolve(docsDir, "some-top-level-page.mdx"),
+      );
+      expect(result.stdout.trim().split("\n")).toEqual(["scripts/manifest/build.mjs"]);
+    });
+
+    it("anchors ./ at the edited file's own directory, not at the package root", () => {
+      const result = runCliAsFile(
+        "run `./check-coverage.mjs` from here",
+        resolve(docsDir, "scripts/manifest/build.mjs"),
+      );
+      // apps/docs/scripts/check-coverage.mjs is real, but ./ from
+      // apps/docs/scripts/manifest is not it.
+      expect(result.stdout.trim()).toBe("./check-coverage.mjs");
     });
   });
 });
