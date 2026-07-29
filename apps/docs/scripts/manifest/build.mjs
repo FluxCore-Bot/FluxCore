@@ -108,6 +108,57 @@ const COMMAND_FEATURE_OVERRIDES = {
   clearwarnings: "warnings",
 };
 
+/**
+ * Feature ids with a spec doc but genuinely no discoverable source, after
+ * someone has actually searched and can say so. This must stay empty
+ * unless a real search happened — it is not a place to silence the guard
+ * below. See task-4-report.md for the audit trail behind any entry added
+ * here.
+ *
+ * Why this exists: a feature with a spec and NO evidence at all is
+ * ambiguous between two very different explanations — "genuinely
+ * unbuilt" and "the evidence-gathering scanners never looked in the
+ * right place" (packages/i18n was the latter: real source, zero
+ * evidence, silently reported "planned"). Defaulting to "planned" for
+ * that ambiguous case is exactly the failure this manifest exists to
+ * eliminate. Requiring an explicit declaration here turns "nobody looked"
+ * into a fact someone has to assert, instead of a silent default.
+ * @type {string[]}
+ */
+export const KNOWN_UNBUILT = [];
+
+/**
+ * True if `evidence` has nothing beyond (at most) a spec doc — no system,
+ * bot feature, server feature, dashboard route, or command was found for
+ * it by any scanner.
+ * @param {ReturnType<typeof makeEmptyEvidence>} evidence
+ */
+function hasNoSourceEvidence(evidence) {
+  return !(
+    evidence.system ||
+    evidence.botFeature ||
+    evidence.serverFeature ||
+    evidence.clientRoute ||
+    (evidence.commands ?? []).length > 0
+  );
+}
+
+/**
+ * The guard for the class of bug this file exists to prevent: a feature
+ * with a spec doc and zero source evidence, not declared in
+ * `KNOWN_UNBUILT`. Exported as a pure function (rather than inlined in
+ * `buildManifest`) so it can be unit-tested against synthetic input,
+ * independent of the real repo's current scan results.
+ * @param {{ id: string, evidence: ReturnType<typeof makeEmptyEvidence> }[]} features
+ * @param {string[]} knownUnbuilt
+ */
+export function findUnexplainedPlanned(features, knownUnbuilt) {
+  return features.filter(
+    (f) => Boolean(f.evidence.spec) && hasNoSourceEvidence(f.evidence) && !knownUnbuilt.includes(f.id),
+  );
+}
+
+/** @returns {import("./status.mjs").Evidence} */
 function makeEmptyEvidence() {
   return {
     system: null,
@@ -196,11 +247,32 @@ export function buildManifest(repoRoot) {
     })
     .sort((a, b) => a.id.localeCompare(b.id));
 
+  // Hard-fail rather than silently write a manifest that reports "planned"
+  // for a feature nobody actually confirmed is unbuilt. See KNOWN_UNBUILT
+  // and findUnexplainedPlanned above.
+  const unexplainedPlanned = findUnexplainedPlanned(features, KNOWN_UNBUILT);
+  if (unexplainedPlanned.length > 0) {
+    const ids = unexplainedPlanned.map((f) => f.id).join(", ");
+    throw new Error(
+      `buildManifest: ${unexplainedPlanned.length} feature(s) have a spec doc but zero source ` +
+        `evidence (no system, botFeature, serverFeature, clientRoute, or commands found), and ` +
+        `are not declared in KNOWN_UNBUILT: ${ids}. Either a scanner failed to find real source ` +
+        `for this feature (fix the scanner — this is what happened with packages/i18n), or it is ` +
+        `genuinely unbuilt, in which case add it to KNOWN_UNBUILT in build.mjs after you've ` +
+        `actually searched and can say so.`,
+    );
+  }
+
   // Best-effort: some environments this runs in (e.g. the Docker test
   // container used by `pnpm --filter @fluxcore/docs test`) have neither a
   // git binary nor a mounted .git directory. Losing the commit stamp
   // shouldn't crash the whole manifest build — every other field is still
-  // valid and worth having.
+  // valid and worth having. But losing it silently is its own hazard: a
+  // later freshness/staleness check reads this field, and a null value
+  // must not look like "nothing to compare" — so warn loudly on stderr
+  // every time the lookup fails, in every environment, so a real
+  // generation run where git genuinely should have worked doesn't rot
+  // undetected.
   let generatedFromCommit = null;
   try {
     generatedFromCommit = execSync("git rev-parse HEAD", {
@@ -209,8 +281,14 @@ export function buildManifest(repoRoot) {
     })
       .toString()
       .trim();
-  } catch {
+  } catch (error) {
     generatedFromCommit = null;
+    process.stderr.write(
+      `[manifest] WARNING: could not determine generatedFromCommit via "git rev-parse HEAD" in ` +
+        `${repoRoot} (${error instanceof Error ? error.message : String(error)}). Writing the ` +
+        `manifest with generatedFromCommit: null. Any freshness/staleness check reading this ` +
+        `field must treat null as "always stale", never as "nothing to compare".\n`,
+    );
   }
 
   return {
