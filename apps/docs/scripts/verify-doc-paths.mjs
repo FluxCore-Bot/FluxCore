@@ -3,18 +3,24 @@
  * Guard: documentation must never cite a repo path that does not exist.
  *
  * Fabricated paths are the primary failure mode of generated documentation —
- * CLAUDE.md itself still cites `apps/bot/src/commands/moderation/ban.ts`,
- * a path that hasn't existed since the move to a feature-sliced layout.
- * This script extracts every repo-relative path a doc page cites (backticked
- * inline code and markdown link targets) and checks each one against the
- * real filesystem, never against another doc file.
+ * CLAUDE.md itself still cites a stale pre-refactor command path that has
+ * not existed since the move to a feature-sliced layout. This script
+ * extracts every repo-relative path a doc page cites (backticked inline
+ * code and markdown link targets) and checks each one against the real
+ * filesystem, never against another doc file.
  *
  * Used two ways:
- *   - As a module: `extractRepoPaths` / `findMissingPaths` are imported
- *     directly by tests and by any other script that wants to verify paths.
+ *   - As a module: `extractRepoPaths` / `findMissingPaths` / `extractAllowedPaths`
+ *     are imported directly by tests and by any other script that wants to
+ *     verify paths.
  *   - As a CLI: `node verify-doc-paths.mjs --stdin` reads content from
  *     stdin and prints one missing path per line (used by the
- *     docs-path-guard.sh PreToolUse hook).
+ *     docs-path-guard.sh PreToolUse hook). Exits non-zero — and prints
+ *     nothing to stdout — if it cannot run as expected (wrong invocation,
+ *     an uncaught exception). The caller must treat a non-zero exit as
+ *     "verification did not happen," never as "nothing missing": the two
+ *     are not the same thing, and conflating them is how a guard fails
+ *     open silently.
  */
 
 import { existsSync } from "node:fs";
@@ -27,15 +33,30 @@ import { fileURLToPath } from "node:url";
 // code and markdown link targets). Excludes trailing punctuation that closes
 // a markdown construct or ends a sentence (`)`, `]`, `.`, `,`, backtick are
 // not in the character class), so ``` `apps/bot/src/index.ts`. ``` and
-// `[text](apps/foo/bar.ts)` don't pull in the closer.
+// `[text](apps/foo/bar.ts)` don't pull in the closer. It also can't include
+// `<`, `[`, or `{` (also markdown/link/template delimiters) — see
+// `isTemplatePlaceholder` below for why a match immediately followed by one
+// of those is discarded rather than truncated and checked.
 const PATH_PATTERN = /(?:^|[\s`("[])((?:apps|packages|docs|scripts)\/[\w.$/-]+)/g;
+
+// Characters that open a template placeholder segment (`<feature>`,
+// `[locale]`, `{slug}`). None of them are in PATH_PATTERN's character
+// class, so a templated path like
+// `apps/docs/content/guide/features/<feature>.mdx` doesn't fail to match —
+// it matches short, truncated at the boundary, producing a directory-shaped
+// fragment (`apps/docs/content/guide/features/`) that looks like a real,
+// checkable path but isn't the thing the author actually wrote.
+const TEMPLATE_PLACEHOLDER_LEAD = new Set(["<", "[", "{"]);
 
 /**
  * Extract every repo-relative path cited in `content` (backticked inline
  * code, markdown link targets), deduplicated and in first-seen order. URLs
  * are stripped first so a path-shaped URL segment (e.g.
  * `https://example.com/apps/bot/src/x.ts`) is never mistaken for a repo
- * path.
+ * path. A path immediately followed by a template placeholder delimiter
+ * (`<`, `[`, `{`) is a templated path, not a concrete one, and is skipped
+ * entirely rather than checked as the truncated fragment the regex was
+ * able to match.
  * @param {string} content
  * @returns {string[]}
  */
@@ -43,7 +64,13 @@ export function extractRepoPaths(content) {
   const withoutUrls = content.replace(/https?:\/\/\S+/g, "");
   const found = new Set();
   for (const match of withoutUrls.matchAll(PATH_PATTERN)) {
-    found.add(trimTrailingPunctuation(match[1]));
+    const raw = match[1];
+    const pathStart = match.index + match[0].length - raw.length;
+    const nextChar = withoutUrls[pathStart + raw.length];
+    if (nextChar !== undefined && TEMPLATE_PLACEHOLDER_LEAD.has(nextChar)) {
+      continue;
+    }
+    found.add(trimTrailingPunctuation(raw));
   }
   return [...found];
 }
@@ -75,6 +102,39 @@ export function findMissingPaths(paths, repoRoot) {
   return paths.filter((p) => !existsSync(join(repoRoot, p)));
 }
 
+// Matches `<!-- docs-path-guard: allow <path>[, <path>...] reason: "<why>" -->`.
+// Deliberately requires the `reason:` field to be present with a quoted
+// value — an empty reason ("") exempts nothing (see extractAllowedPaths).
+const ALLOW_MARKER_PATTERN =
+  /<!--\s*docs-path-guard:\s*allow\s+([^\n]*?)\s+reason:\s*"([^"]*)"\s*-->/g;
+
+/**
+ * Parse `<!-- docs-path-guard: allow <path>[, <path>...] reason: "<why>" -->`
+ * markers out of `content`. Each marker names one or more repo-relative
+ * paths that are deliberately not real (a self-hosting instruction to
+ * create a file, an illustrative example) and exempts them from the
+ * missing-path check.
+ *
+ * A reason is mandatory: a marker with an empty reason exempts nothing.
+ * The point of the marker is that skipping the check is a visible,
+ * reviewable, justified choice recorded directly in the page — not a
+ * silent escape hatch a future edit can widen by accident.
+ * @param {string} content
+ * @returns {Set<string>}
+ */
+export function extractAllowedPaths(content) {
+  const allowed = new Set();
+  for (const match of content.matchAll(ALLOW_MARKER_PATTERN)) {
+    const reason = match[2].trim();
+    if (!reason) continue;
+    for (const rawPath of match[1].split(",")) {
+      const trimmed = rawPath.trim();
+      if (trimmed) allowed.add(trimmed);
+    }
+  }
+  return allowed;
+}
+
 async function readStdin() {
   const chunks = [];
   for await (const chunk of process.stdin) {
@@ -88,7 +148,9 @@ async function main() {
     const content = await readStdin();
     const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
     const paths = extractRepoPaths(content);
-    const missing = findMissingPaths(paths, repoRoot);
+    const allowed = extractAllowedPaths(content);
+    const toCheck = paths.filter((p) => !allowed.has(p));
+    const missing = findMissingPaths(toCheck, repoRoot);
     for (const path of missing) {
       console.log(path);
     }
