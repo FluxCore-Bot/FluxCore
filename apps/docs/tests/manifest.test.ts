@@ -1,7 +1,12 @@
 import { describe, expect, it, vi } from "vitest";
 import { resolve } from "node:path";
-import { buildManifest, findUnexplainedPlanned, KNOWN_UNBUILT } from "../scripts/manifest/build.mjs";
-import { scanSpecs } from "../scripts/manifest/scan.mjs";
+import {
+  buildManifest,
+  buildScreenshotChecklist,
+  findUnexplainedPlanned,
+  KNOWN_UNBUILT,
+} from "../scripts/manifest/build.mjs";
+import { scanDashboardPages, scanSpecs } from "../scripts/manifest/scan.mjs";
 
 const repoRoot = resolve(__dirname, "../../..");
 
@@ -104,5 +109,52 @@ describe("buildManifest — evidence-gathering regression guards", () => {
       const matches = manifest.features.filter((f) => f.evidence.spec === spec.file);
       expect(matches.length).toBe(1);
     }
+  });
+});
+
+describe("buildScreenshotChecklist", () => {
+  const samplePages = [
+    {
+      route: "/guild/$guildId/commands",
+      featureId: "commands",
+      file: "apps/dashboard/src/client/routes/guild/$guildId/commands.tsx",
+    },
+    {
+      route: "/guild/$guildId/giveaways",
+      featureId: "giveaways",
+      file: "apps/dashboard/src/client/routes/guild/$guildId/giveaways.tsx",
+    },
+  ];
+
+  it("opens with the privacy warning, before anything else", () => {
+    const checklist = buildScreenshotChecklist(samplePages);
+    expect(checklist.startsWith("> **Before capturing:**")).toBe(true);
+    expect(checklist).toContain(
+      "Real member data must never reach `apps/docs/public/`.",
+    );
+  });
+
+  it("emits exactly one row per dashboard page, naming its route", () => {
+    const checklist = buildScreenshotChecklist(samplePages);
+    const rowLines = checklist.split("\n").filter((line) => line.startsWith("| `"));
+    expect(rowLines.length).toBe(samplePages.length);
+    for (const page of samplePages) {
+      expect(checklist).toContain(page.route);
+    }
+  });
+
+  it("names the viewport and theme every capture should use", () => {
+    const checklist = buildScreenshotChecklist(samplePages);
+    expect(checklist).toContain("1440");
+    expect(checklist).toContain("900");
+    expect(checklist).toContain("dark");
+  });
+
+  it("emits one row per page for the real manifest's 18 dashboard pages", () => {
+    const pages = scanDashboardPages(repoRoot);
+    expect(pages.length).toBe(18);
+    const checklist = buildScreenshotChecklist(pages);
+    const rowLines = checklist.split("\n").filter((line) => line.startsWith("| `"));
+    expect(rowLines.length).toBe(18);
   });
 });

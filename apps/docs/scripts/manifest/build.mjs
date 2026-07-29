@@ -158,6 +158,72 @@ export function findUnexplainedPlanned(features, knownUnbuilt) {
   );
 }
 
+// --- Screenshot capture checklist --------------------------------------
+//
+// Deliberately no Playwright capture pipeline: a real dashboard capture
+// contains real guild names, member names, avatars, and moderation case
+// details, and this is a public site. Placeholders (see
+// `../../components/ScreenshotPlaceholder.tsx`) remove any dependency on a
+// running stack or a real Discord guild from documentation generation.
+// Instead, this emits a checklist a human works through manually, later,
+// against a demo guild.
+
+/**
+ * The line this whole file exists to guarantee gets read: it must be the
+ * very first thing in `SCREENSHOTS.md`, before any heading or preamble.
+ */
+const SCREENSHOT_PRIVACY_WARNING =
+  "> **Before capturing:** these screenshots go on a public site. Capture " +
+  "against a demo guild with synthetic members, or scrub guild names, " +
+  "member names, avatars, and moderation case details before committing. " +
+  "Real member data must never reach `apps/docs/public/`.";
+
+/**
+ * Derive a target screenshot filename from a dashboard route's final path
+ * segment, e.g. `/guild/$guildId/commands` -> `commands.png`. Routes are
+ * already unique per dashboard page (one file per `.tsx` route), so this
+ * is collision-free by construction.
+ * @param {string} route
+ */
+function screenshotFilename(route) {
+  const stem = route.split("/").filter(Boolean).pop() ?? route;
+  return `${stem}.png`;
+}
+
+/**
+ * Build the manual capture checklist for every dashboard page as Markdown,
+ * opening with `SCREENSHOT_PRIVACY_WARNING`. One row per page: target
+ * filename, route to visit, what the frame should show, viewport, theme,
+ * and the source route file for reference.
+ * @param {{ route: string, featureId: string, file: string }[]} dashboardPages
+ * @returns {string}
+ */
+export function buildScreenshotChecklist(dashboardPages) {
+  const rows = dashboardPages.map((page) => {
+    const filename = screenshotFilename(page.route);
+    const frame =
+      `Full ${page.featureId} page — sidebar expanded, populated with ` +
+      "realistic but synthetic demo data (no real member names, avatars, or case details).";
+    return `| \`${filename}\` | \`${page.route}\` | ${frame} | 1440×900 | dark | \`${page.file}\` |`;
+  });
+
+  return [
+    SCREENSHOT_PRIVACY_WARNING,
+    "",
+    "# Screenshot Capture Checklist",
+    "",
+    "One row per dashboard page. Save each capture to " +
+      "`apps/docs/public/screenshots/` under the target filename in the " +
+      "first column, then reference it from a `<ScreenshotPlaceholder>` " +
+      "with a matching `src`.",
+    "",
+    "| Target filename | Route | What the frame should show | Viewport | Theme | Source |",
+    "|---|---|---|---|---|---|",
+    ...rows,
+    "",
+  ].join("\n");
+}
+
 /** @returns {import("./status.mjs").Evidence} */
 function makeEmptyEvidence() {
   return {
@@ -322,4 +388,12 @@ if (isMainModule) {
   console.log(`  features: ${manifest.features.length}`);
   // eslint-disable-next-line no-console
   console.log(`  commands: ${manifest.commands.length}`);
+
+  const screenshotsChecklist = buildScreenshotChecklist(manifest.dashboardPages);
+  const screenshotsPath = join(defaultRepoRoot, "apps/docs/SCREENSHOTS.md");
+  writeFileSync(screenshotsPath, screenshotsChecklist);
+  // eslint-disable-next-line no-console
+  console.log(`Wrote ${screenshotsPath}`);
+  // eslint-disable-next-line no-console
+  console.log(`  dashboard pages: ${manifest.dashboardPages.length}`);
 }
