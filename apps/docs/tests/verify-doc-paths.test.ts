@@ -894,3 +894,273 @@ describe("repo top-level files and directories", () => {
     expect(extractRepoPaths("run `docker-compose` from the repo root")).toEqual([]);
   });
 });
+
+// ---------------------------------------------------------------------------
+// Second fix wave, R1 — an Edit hunk is not a whole document.
+// ---------------------------------------------------------------------------
+// The hook hands the verifier only `new_string`. Read on its own, a hunk that
+// BEGINS inside a fenced code block has inverted fence parity, and the guard
+// then breaks in both directions at once: the fenced lines it should exempt
+// are extracted and flagged, while the prose after the hunk's closing fence —
+// real citations, the ones that actually matter — is treated as fenced and
+// never checked. Ordinary editing reaches this; no adversarial input needed.
+//
+// The fix seeds the scanner's state from the file on disk, which the verifier
+// already reads for `--allow-from`. Where in that file the hunk starts is
+// answered by `old_string`, passed through `--hunk-anchor-file`, because Edit
+// requires old_string to appear in the file; the piped content is tried as a
+// second locator (a Write, or an Edit whose new text is already present).
+// When neither can be located the scanner falls back to the whole-document
+// assumption — which over-checks rather than under-checks, and is never a
+// silent skip.
+//
+// <!-- docs-path-guard: allow apps/FAKE-inside/x.ts, apps/FAKE-after/y.ts, docker-compose.NOPE.yml, apps/FAKE-quoted/z.ts reason: "fixtures for the hunk-fence-parity repro: one fenced path that must stay exempt and three fabricated prose citations that must be flagged" -->
+describe("fence state seeded from the on-disk file (Edit hunks)", () => {
+  let scratchDir = "";
+  let pageFile = "";
+
+  // Line indices matter here: the fence opens on line 2 and closes on line 5,
+  // so a hunk starting at line 4 begins INSIDE it.
+  const onDiskPage = [
+    "Intro prose.",
+    "",
+    "```ts",
+    'import { foo } from "./helpers";',
+    "`apps/FAKE-inside/x.ts`",
+    "```",
+    "",
+    "Then prose citing `apps/FAKE-after/y.ts` and `docker-compose.NOPE.yml`.",
+    "",
+  ].join("\n");
+
+  beforeAll(() => {
+    scratchDir = mkdtempSync(join(tmpdir(), "docs-hunk-fence-"));
+    pageFile = join(scratchDir, "page.mdx");
+    writeFileSync(pageFile, onDiskPage, "utf-8");
+  });
+
+  afterAll(() => {
+    rmSync(scratchDir, { recursive: true, force: true });
+  });
+
+  it("locates an unchanged hunk in the file and inherits the fence it starts inside", () => {
+    // The reviewer's live repro. Without seeding this reports the fenced
+    // apps/FAKE-inside/x.ts and stays silent on both prose citations.
+    const hunk = [
+      "`apps/FAKE-inside/x.ts`",
+      "```",
+      "",
+      "Then prose citing `apps/FAKE-after/y.ts` and `docker-compose.NOPE.yml`.",
+    ].join("\n");
+    const result = runCliRaw(
+      ["--stdin", "--doc-dir", scratchDir, "--doc-file", pageFile, "--allow-from", pageFile],
+      hunk,
+    );
+    expect(result.status).toBe(0);
+    expect(result.stdout.trim().split("\n").sort()).toEqual([
+      "apps/FAKE-after/y.ts",
+      "docker-compose.NOPE.yml",
+    ]);
+  });
+
+  it("uses old_string as the anchor when the new text is not in the file yet", () => {
+    // The shape every real Edit has: new_string differs from what is on disk,
+    // so only old_string can say where the hunk begins.
+    const anchorFile = join(scratchDir, "anchor.txt");
+    writeFileSync(anchorFile, 'import { foo } from "./helpers";', "utf-8");
+    const hunk = [
+      'import { bar } from "./helpers";',
+      "`apps/FAKE-inside/x.ts`",
+      "```",
+      "",
+      "Then prose citing `apps/FAKE-after/y.ts` and `docker-compose.NOPE.yml`.",
+    ].join("\n");
+    const result = runCliRaw(
+      [
+        "--stdin",
+        "--doc-dir",
+        scratchDir,
+        "--doc-file",
+        pageFile,
+        "--allow-from",
+        pageFile,
+        "--hunk-anchor-file",
+        anchorFile,
+      ],
+      hunk,
+    );
+    expect(result.status).toBe(0);
+    expect(result.stdout.trim().split("\n").sort()).toEqual([
+      "apps/FAKE-after/y.ts",
+      "docker-compose.NOPE.yml",
+    ]);
+  });
+
+  it("keeps checking a hunk that begins in prose, outside any fence", () => {
+    const hunk = ["Intro prose.", "", "```ts", "`apps/FAKE-inside/x.ts`"].join("\n");
+    const result = runCliRaw(
+      ["--stdin", "--doc-dir", scratchDir, "--doc-file", pageFile, "--allow-from", pageFile],
+      hunk,
+    );
+    expect(result.status).toBe(0);
+    // The hunk opens its own fence at line 2, so the path after it is fenced.
+    expect(result.stdout.trim()).toBe("");
+  });
+
+  it("falls back to the whole-document assumption when the hunk cannot be located, and still checks", () => {
+    // A Write of a brand-new page. "Could not locate" must never become
+    // "skip the check" — the fallback over-checks, which is the safe error.
+    const result = runCliRaw(
+      [
+        "--stdin",
+        "--doc-dir",
+        scratchDir,
+        "--doc-file",
+        join(scratchDir, "brand-new.mdx"),
+        "--allow-from",
+        join(scratchDir, "brand-new.mdx"),
+      ],
+      "prose citing `apps/FAKE-quoted/z.ts`",
+    );
+    expect(result.status).toBe(0);
+    expect(result.stdout.trim()).toBe("apps/FAKE-quoted/z.ts");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Second fix wave, R2 — a fence is not always at the left margin.
+// ---------------------------------------------------------------------------
+// Two shapes were not recognised as fence openers, so F1's exemption did not
+// reach them and their example source was still extracted and still blocked:
+// a fence inside a blockquote (`> ```ts`) and a fence indented four or more
+// spaces, which is how every fenced block nested in a list step is written.
+//
+// CommonMark treats up to three spaces of indentation as part of the fence and
+// four or more as an INDENTED code block — also example source, also not a
+// claim about this repository, and so also exempt. The paragraph-interruption
+// rule keeps that narrow: an indented line can only start a code block after a
+// blank line, so an indented continuation of a prose paragraph is still read
+// as prose and still checked.
+describe("fences that are not at the left margin", () => {
+  it("treats a blockquoted fence as a fence", () => {
+    const content = ["> ```ts", '> import { foo } from "../lib/foo";', "> ```"].join("\n");
+    expect(extractRepoPaths(content)).toEqual([]);
+  });
+
+  it("resumes checking prose after a blockquoted fence closes", () => {
+    const content = [
+      "> ```ts",
+      '> import { foo } from "../lib/foo";',
+      "> ```",
+      "",
+      "Back in prose: `apps/bot/src/index.ts`.",
+    ].join("\n");
+    expect(extractRepoPaths(content)).toEqual(["apps/bot/src/index.ts"]);
+  });
+
+  it("treats a fence indented four spaces (a nested list step) as a fence", () => {
+    const content = [
+      "1. Run the importer:",
+      "",
+      "    ```ts",
+      '    import { foo } from "../lib/foo";',
+      "    ```",
+      "",
+      "Back in prose: `apps/bot/src/index.ts`.",
+    ].join("\n");
+    expect(extractRepoPaths(content)).toEqual(["apps/bot/src/index.ts"]);
+  });
+
+  it("exempts an indented code block, which is example source too", () => {
+    const content = [
+      "For example:",
+      "",
+      '    import { foo } from "../lib/foo";',
+      "",
+      "Back in prose: `apps/bot/src/index.ts`.",
+    ].join("\n");
+    expect(extractRepoPaths(content)).toEqual(["apps/bot/src/index.ts"]);
+  });
+
+  it("still checks an indented line that merely continues a paragraph", () => {
+    // No blank line before it, so per CommonMark it cannot open an indented
+    // code block — it is wrapped prose, and a citation in it is a real claim.
+    const content = [
+      "This paragraph wraps onto a second, deeply indented line",
+      "        which still cites `apps/nonexistent-app/FAKE.ts` as prose.",
+    ].join("\n");
+    expect(extractRepoPaths(content)).toEqual(["apps/nonexistent-app/FAKE.ts"]);
+  });
+
+  it("ends an indented code block at the first non-blank line back at the margin", () => {
+    const content = [
+      "Example:",
+      "",
+      '    import { foo } from "../lib/foo";',
+      "",
+      "    still code, after a blank line",
+      "",
+      "Prose again: `apps/nonexistent-app/FAKE.ts`.",
+    ].join("\n");
+    expect(extractRepoPaths(content)).toEqual(["apps/nonexistent-app/FAKE.ts"]);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Second fix wave, R3 — an allow marker inside a fenced example is not live.
+// ---------------------------------------------------------------------------
+// Markers were parsed from RAW content while paths were extracted from
+// fence-stripped content, so the two disagreed about what a fence means. A
+// page that documents the marker syntax — this system's own reference page
+// will — silently exempted whatever paths its example named, for the whole
+// page, with no reviewer able to see that it had. The marker parse now
+// ignores the same code regions the path extraction does.
+describe("allow markers inside code regions", () => {
+  it("ignores a marker shown inside a fenced example", () => {
+    const content = [
+      "To exempt a path, write:",
+      "",
+      "```md",
+      '<!-- docs-path-guard: allow apps/nonexistent-app/FAKE.ts reason: "illustrative" -->',
+      "```",
+    ].join("\n");
+    expect(extractAllowedPaths(content).size).toBe(0);
+  });
+
+  it("ignores a marker shown inside an indented code block", () => {
+    const content = [
+      "To exempt a path, write:",
+      "",
+      '    <!-- docs-path-guard: allow apps/nonexistent-app/FAKE.ts reason: "illustrative" -->',
+    ].join("\n");
+    expect(extractAllowedPaths(content).size).toBe(0);
+  });
+
+  it("still honours a marker written in prose", () => {
+    const content = [
+      "```md",
+      '<!-- docs-path-guard: allow apps/nonexistent-app/FAKE.ts reason: "illustrative" -->',
+      "```",
+      "",
+      '<!-- docs-path-guard: allow apps/FAKE-quoted/z.ts reason: "really exempt" -->',
+    ].join("\n");
+    const allowed = extractAllowedPaths(content);
+    expect(allowed.has("apps/FAKE-quoted/z.ts")).toBe(true);
+    expect(allowed.has("apps/nonexistent-app/FAKE.ts")).toBe(false);
+  });
+
+  it("does not exempt a path a fenced example names, end to end", () => {
+    const content = [
+      "Write the marker like this:",
+      "",
+      "```md",
+      '<!-- docs-path-guard: allow apps/FAKE-quoted/z.ts reason: "illustrative" -->',
+      "```",
+      "",
+      "The page itself really cites `apps/FAKE-quoted/z.ts`.",
+    ].join("\n");
+    const result = runCli(content);
+    expect(result.status).toBe(0);
+    expect(result.stdout.trim()).toBe("apps/FAKE-quoted/z.ts");
+  });
+});

@@ -35,17 +35,23 @@
  *     are imported directly by tests and by any other script that wants to
  *     verify paths.
  *   - As a CLI: `node verify-doc-paths.mjs --stdin [--doc-dir <dir>]
- *     [--doc-file <path>] [--allow-from <path>]` reads content from stdin
- *     and prints one missing path per line (used by the docs-path-guard.sh
- *     PreToolUse hook). `--doc-dir` is the anchor a
+ *     [--doc-file <path>] [--allow-from <path>] [--hunk-anchor-file <path>]`
+ *     reads content from stdin and prints one missing path per line (used by
+ *     the docs-path-guard.sh PreToolUse hook). `--doc-dir` is the anchor a
  *     file-relative path resolves against; `--doc-file` is the file being
  *     edited, whose identity decides which bare-path convention applies.
  *     They are separate flags because they answer separate questions, and
  *     either can be supplied alone (`--doc-dir` is derived from `--doc-file`
- *     when only the latter is given). `--allow-from` names a file whose
- *     allow markers are unioned with the ones in the piped content, so a
- *     marker written elsewhere in a page still exempts a path in an edit
- *     hunk that does not itself contain it. Exits non-zero — and prints nothing to
+ *     when only the latter is given). `--allow-from` names the file being
+ *     written AS IT STANDS ON DISK, and it does two jobs: its allow markers
+ *     are unioned with the ones in the piped content, so a marker written
+ *     elsewhere in a page still exempts a path in an edit hunk that does not
+ *     itself contain it; and its text supplies the code-fence state the hunk
+ *     begins in, because the piped content is only a HUNK and reading it as
+ *     a whole document inverts fence parity for any hunk that starts inside
+ *     a fence. `--hunk-anchor-file` names a file holding the edit's
+ *     `old_string`, which is where in the on-disk file the hunk begins; see
+ *     `seedScanStateFor`. Exits non-zero — and prints nothing to
  *     stdout — if it cannot run as expected (wrong invocation, an uncaught
  *     exception). The caller must treat a non-zero exit as "verification did
  *     not happen," never as "nothing missing": the two are not the same
@@ -178,68 +184,249 @@ const PATH_PATTERN = new RegExp(
   "g",
 );
 
-// A fenced code block opener: up to three spaces of indentation, then a run
-// of at least three backticks or tildes, then an info string. Per CommonMark,
-// a BACKTICK fence's info string may not itself contain a backtick — that is
-// exactly what stops an inline ``code`` span from being read as a block
-// opener — while a tilde fence's may.
-const FENCE_OPEN_PATTERN = /^ {0,3}(`{3,}|~{3,})(.*)$/;
+// One level of blockquote marker: up to three spaces, `>`, and an optional
+// single space of padding. Applied repeatedly, so a nested `> > ` quote
+// reduces too. A fence written inside a blockquote — which is how a callout
+// or an admonition quotes a command — is a fence, and its contents are the
+// example's source exactly as they would be at the margin.
+const BLOCKQUOTE_PREFIX_PATTERN = /^ {0,3}>[ \t]?/;
+
+// A fenced code block opener: indentation, then a run of at least three
+// backticks or tildes, then an info string. Per CommonMark, a BACKTICK
+// fence's info string may not itself contain a backtick — that is exactly
+// what stops an inline ``code`` span from being read as a block opener —
+// while a tilde fence's may.
+//
+// CommonMark permits at most three spaces of indentation before a fence at
+// the top level; a fence nested inside a list step is indented to the list's
+// content column, four or more, and is still a fence there. Rather than
+// track list contexts, this accepts any indentation: over-recognising a
+// fence only ever exempts more example source, never admits a false claim,
+// and an indented run of backticks is not a shape prose produces by
+// accident.
+const FENCE_OPEN_PATTERN = /^[ \t]*(`{3,}|~{3,})(.*)$/;
 
 // A closer is a run of the same character, at least as long as the opener,
 // with nothing after it but whitespace.
-const FENCE_CLOSE_PATTERN = /^ {0,3}(`{3,}|~{3,})[ \t]*$/;
+const FENCE_CLOSE_PATTERN = /^[ \t]*(`{3,}|~{3,})[ \t]*$/;
+
+// The indentation, in columns, at which a line becomes an INDENTED code
+// block — CommonMark's other way of writing example source, and the reason
+// the fence rule above cannot simply reject four-space indentation.
+const INDENTED_CODE_COLUMNS = 4;
 
 /**
- * Blank out every fenced code block in `content`, preserving line structure.
+ * How the line scanner reads a document. `fence` is the fence currently open
+ * (null when none is); `inIndentedCode` is whether an indented code block is
+ * running; `prevBlank` is whether the previous line was blank, which is what
+ * decides whether an indented line may OPEN a code block — per CommonMark an
+ * indented code block cannot interrupt a paragraph, so a wrapped prose line
+ * that happens to sit past column four is still prose, and a citation in it
+ * is still a real claim.
+ * @typedef {{ char: string, length: number }} OpenFence
+ * @typedef {{ fence: OpenFence | null, inIndentedCode: boolean, prevBlank: boolean }} ScanState
+ */
+
+/**
+ * The state a whole document starts in: nothing open, and "the previous line
+ * was blank", since a document may open with an indented code block.
+ * @returns {ScanState}
+ */
+function freshScanState() {
+  return { fence: null, inIndentedCode: false, prevBlank: true };
+}
+
+/**
+ * @param {ScanState} state
+ * @returns {ScanState}
+ */
+function cloneScanState(state) {
+  return {
+    fence: state.fence === null ? null : { char: state.fence.char, length: state.fence.length },
+    inIndentedCode: state.inIndentedCode,
+    prevBlank: state.prevBlank,
+  };
+}
+
+/**
+ * @param {ScanState} a
+ * @param {ScanState} b
+ * @returns {boolean}
+ */
+function sameScanState(a, b) {
+  if (a.inIndentedCode !== b.inIndentedCode || a.prevBlank !== b.prevBlank) return false;
+  if (a.fence === null || b.fence === null) return a.fence === b.fence;
+  return a.fence.char === b.fence.char && a.fence.length === b.fence.length;
+}
+
+/**
+ * Remove every leading blockquote marker from `line`.
+ * @param {string} line
+ * @returns {string}
+ */
+function stripBlockquoteMarkers(line) {
+  let out = line;
+  for (;;) {
+    const next = out.replace(BLOCKQUOTE_PREFIX_PATTERN, "");
+    if (next === out) return out;
+    out = next;
+  }
+}
+
+/**
+ * The indentation of `line` in columns, counting a tab as four.
+ * @param {string} line
+ * @returns {number}
+ */
+function indentColumns(line) {
+  let columns = 0;
+  for (const ch of line) {
+    if (ch === " ") columns += 1;
+    else if (ch === "\t") columns += 4;
+    else break;
+  }
+  return columns;
+}
+
+/**
+ * Advance `state` across one line, mutating it. Returns true when the line
+ * belongs to a code region and must therefore not be scanned — neither for
+ * cited paths nor for allow markers.
+ * @param {ScanState} state
+ * @param {string} rawLine
+ * @returns {boolean}
+ */
+function stepScanState(state, rawLine) {
+  const line = stripBlockquoteMarkers(rawLine);
+
+  if (state.fence !== null) {
+    const closer = FENCE_CLOSE_PATTERN.exec(line);
+    if (closer && closer[1][0] === state.fence.char && closer[1].length >= state.fence.length) {
+      state.fence = null;
+    }
+    state.prevBlank = false;
+    return true;
+  }
+
+  if (line.trim() === "") {
+    state.prevBlank = true;
+    return true;
+  }
+
+  // Checked before the fence opener so that a run of backticks appearing
+  // INSIDE an already-running indented code block cannot open a fence and
+  // swallow the prose that follows the block.
+  if (state.inIndentedCode) {
+    if (indentColumns(line) >= INDENTED_CODE_COLUMNS) {
+      state.prevBlank = false;
+      return true;
+    }
+    state.inIndentedCode = false;
+  }
+
+  const opener = FENCE_OPEN_PATTERN.exec(line);
+  if (opener && !(opener[1].startsWith("`") && opener[2].includes("`"))) {
+    state.fence = { char: opener[1][0], length: opener[1].length };
+    state.prevBlank = false;
+    return true;
+  }
+
+  if (state.prevBlank && indentColumns(line) >= INDENTED_CODE_COLUMNS) {
+    state.inIndentedCode = true;
+    state.prevBlank = false;
+    return true;
+  }
+
+  state.prevBlank = false;
+  return false;
+}
+
+/**
+ * Blank out every code region in `content` — fenced blocks and indented code
+ * blocks alike — preserving line structure.
  *
- * A fence holds the EXAMPLE's source, not a claim about this repository's
- * layout. A relative import specifier inside a fenced TypeScript block
- * resolves against the example's own directory, and a bare module path
- * inside it is a module specifier rather than a repo path; checking either
- * against this tree answers a question the page never asked. Before this,
- * every developer page and most self-hosting pages — anything that shows
- * code — was blocked on content it had every right to write.
+ * A code region holds the EXAMPLE's source, not a claim about this
+ * repository's layout. A relative import specifier inside a fenced
+ * TypeScript block resolves against the example's own directory, and a bare
+ * module path inside it is a module specifier rather than a repo path;
+ * checking either against this tree answers a question the page never asked.
+ * Before this, every developer page and most self-hosting pages — anything
+ * that shows code — was blocked on content it had every right to write.
  *
- * This NARROWS the guard on purpose: a fabricated path written inside a
- * fence is no longer checked at all. That is the accepted trade. Inline
+ * This NARROWS the guard on purpose: a fabricated path written inside a code
+ * region is no longer checked at all. That is the accepted trade. Inline
  * `code` spans, which is how a real citation is written in these pages, are
  * untouched and still checked.
  *
+ * `seed` is the state the scan starts in. It is null for a whole document,
+ * and non-null only when the caller has established where a partial hunk sits
+ * inside the file on disk — see `seedScanStateFor`.
+ *
  * Lines are replaced with empty strings rather than removed so that text on
- * either side of a fence can never be joined into a single line and made to
- * match across the gap.
+ * either side of a code region can never be joined into a single line and
+ * made to match across the gap.
  * @param {string} content
+ * @param {ScanState | null} [seed]
  * @returns {string}
  */
-function stripFencedCodeBlocks(content) {
-  const lines = content.split("\n");
-  /** @type {string[]} */
-  const out = [];
-  /** @type {{ char: string, length: number } | null} */
-  let openFence = null;
-
-  for (const line of lines) {
-    if (openFence === null) {
-      const opener = FENCE_OPEN_PATTERN.exec(line);
-      if (opener && !(opener[1].startsWith("`") && opener[2].includes("`"))) {
-        openFence = { char: opener[1][0], length: opener[1].length };
-        out.push("");
-        continue;
-      }
-      out.push(line);
-      continue;
-    }
-
-    const closer = FENCE_CLOSE_PATTERN.exec(line);
-    if (closer && closer[1][0] === openFence.char && closer[1].length >= openFence.length) {
-      openFence = null;
-    }
-    out.push("");
-  }
-
+function stripCodeRegions(content, seed) {
+  const state = seed ? cloneScanState(seed) : freshScanState();
   // An unterminated fence runs to the end of the document, per CommonMark.
-  return out.join("\n");
+  return content
+    .split("\n")
+    .map((line) => (stepScanState(state, line) ? "" : line))
+    .join("\n");
 }
+
+/**
+ * The state a whole-document scan of `fileContent` would be in at the start
+ * of the line where `needle` begins — or null when that cannot be answered
+ * unambiguously.
+ *
+ * This is what makes an Edit hunk readable at all. The hook hands the
+ * verifier only the new text, and a hunk that begins inside a fenced block
+ * has inverted fence parity read on its own: the guard then flags the fenced
+ * lines it should exempt AND falls silent on the prose after the hunk's
+ * closing fence, which is where the real citations are. Seeding the scan with
+ * the state the file is actually in at that point fixes both directions.
+ *
+ * Returns null — meaning "fall back to the whole-document assumption" — when
+ * the needle is absent, or occurs at several places whose states disagree, or
+ * occurs implausibly often. That fallback OVER-checks (it reads fenced lines
+ * as prose) rather than under-checking, so an unlocatable hunk is noisy, never
+ * silently unchecked.
+ * @param {string} fileContent
+ * @param {string} needle
+ * @returns {ScanState | null}
+ */
+function seedScanStateFor(fileContent, needle) {
+  if (!needle) return null;
+  const lines = fileContent.split("\n");
+  /** @type {ScanState | null} */
+  let agreed = null;
+  let occurrences = 0;
+  let from = 0;
+  for (;;) {
+    const at = fileContent.indexOf(needle, from);
+    if (at === -1) break;
+    occurrences += 1;
+    if (occurrences > MAX_ANCHOR_OCCURRENCES) return null;
+    const state = freshScanState();
+    const lineIndex = countCharacter(fileContent.slice(0, at), "\n");
+    for (let i = 0; i < lineIndex && i < lines.length; i += 1) {
+      stepScanState(state, lines[i]);
+    }
+    if (agreed === null) agreed = state;
+    else if (!sameScanState(agreed, state)) return null;
+    from = at + 1;
+  }
+  return agreed;
+}
+
+// A needle that matches this many times is not identifying a position; it is
+// boilerplate. Give up and use the whole-document fallback rather than pay to
+// rescan the file once per hit.
+const MAX_ANCHOR_OCCURRENCES = 8;
 
 // Characters that open a template placeholder segment (`<feature>`,
 // `[locale]`, `{slug}`). None of them are in PATH_PATTERN's character
@@ -288,8 +475,8 @@ function usesPackageCwdSemantics(repoRoot, docFile) {
 /**
  * Extract every path cited in `content` (backticked inline code, markdown
  * link targets) — both repo-root-relative and file-relative — deduplicated
- * and in first-seen order. Fenced code blocks are removed first (see
- * `stripFencedCodeBlocks`: their contents belong to the example, not to this
+ * and in first-seen order. Code regions are removed first (see
+ * `stripCodeRegions`: their contents belong to the example, not to this
  * repo), then URLs, so a path-shaped URL segment (e.g.
  * `https://example.com/apps/bot/src/x.ts`) is never mistaken for a repo
  * path.
@@ -302,11 +489,16 @@ function usesPackageCwdSemantics(repoRoot, docFile) {
  * templated path is reduced to its two-segment static prefix — see
  * `shallowTemplatePrefix` — and that prefix is checked instead of the full
  * path.
+ *
+ * `seed` is the scan state `content` begins in. It is non-null only when
+ * `content` is a partial edit hunk whose position in the file on disk has
+ * been established; omitting it reads `content` as a whole document.
  * @param {string} content
+ * @param {ScanState | null} [seed]
  * @returns {string[]}
  */
-export function extractRepoPaths(content) {
-  const withoutUrls = stripFencedCodeBlocks(content).replace(/https?:\/\/\S+/g, "");
+export function extractRepoPaths(content, seed) {
+  const withoutUrls = stripCodeRegions(content, seed).replace(/https?:\/\/\S+/g, "");
   const found = new Set();
   for (const match of withoutUrls.matchAll(PATH_PATTERN)) {
     const raw = match[1];
@@ -483,12 +675,25 @@ const ALLOW_MARKER_PATTERN =
  * The point of the marker is that skipping the check is a visible,
  * reviewable, justified choice recorded directly in the page — not a
  * silent escape hatch a future edit can widen by accident.
+ *
+ * Markers are read from the SAME fence-stripped text the paths are, and for
+ * the same reason. Parsing them from raw content instead made the two halves
+ * of the guard disagree about what a code fence means: a page documenting
+ * this very syntax — the reference page for this system will — would have
+ * turned its own illustrative example into a live exemption covering the
+ * whole page, invisibly, with nothing in review to show that it had. An
+ * example of a marker is not a marker.
+ *
+ * `seed` carries the same meaning as in `extractRepoPaths`, and must be the
+ * same value, or a hunk's markers and its paths would be read against
+ * different notions of where the code regions are.
  * @param {string} content
+ * @param {ScanState | null} [seed]
  * @returns {Set<string>}
  */
-export function extractAllowedPaths(content) {
+export function extractAllowedPaths(content, seed) {
   const allowed = new Set();
-  for (const match of content.matchAll(ALLOW_MARKER_PATTERN)) {
+  for (const match of stripCodeRegions(content, seed).matchAll(ALLOW_MARKER_PATTERN)) {
     const reason = match[2].trim();
     if (!reason) continue;
     for (const rawPath of match[1].split(",")) {
@@ -500,25 +705,29 @@ export function extractAllowedPaths(content) {
 }
 
 /**
- * Allow markers already present in the file at `filePath` on disk.
+ * The contents of `filePath`, or undefined when it does not exist.
  *
- * The PreToolUse hook only ever sees the EDIT HUNK, so a marker written
- * anywhere else in the same page was invisible and the edit was blocked —
- * which would have recurred on every page whose marker sits at the top and
- * whose later sections are edited one at a time. The caller passes the file
- * being written here, and its markers are unioned with the hunk's.
+ * The file on disk answers two questions the edit hunk cannot. It holds the
+ * allow markers written elsewhere in the same page — the PreToolUse hook only
+ * ever sees the hunk, so a marker at the top of a page was invisible while a
+ * later section was being edited, and the edit was blocked even though the
+ * exemption was already there, with a reason. And it holds the surrounding
+ * text that says whether the hunk begins inside a code fence, which decides
+ * whether the hunk's own lines are prose or example source.
  *
  * A file that does not exist yet — the Write of a brand-new page — simply
- * contributes no markers. That is "there were none", not "verification could
- * not run", and it must not be confused with the non-zero exit that means
- * the latter. A file that exists but cannot be read still throws, and so
- * still lands on the fail-closed path.
- * @param {string} filePath
- * @returns {Set<string>}
+ * contributes neither. That is "there was nothing to read", not "verification
+ * could not run", and it must not be confused with the non-zero exit that
+ * means the latter. A file that exists but cannot be read still throws, and
+ * so still lands on the fail-closed path.
+ * @param {string | undefined} filePath
+ * @returns {string | undefined}
  */
-function readAllowMarkersOnDisk(filePath) {
-  if (!existsSync(filePath)) return new Set();
-  return extractAllowedPaths(readFileSync(filePath, "utf-8"));
+function readFileIfPresent(filePath) {
+  if (filePath === undefined) return undefined;
+  const abs = resolve(filePath);
+  if (!existsSync(abs)) return undefined;
+  return readFileSync(abs, "utf-8");
 }
 
 async function readStdin() {
@@ -552,11 +761,29 @@ async function main() {
         ? dirname(resolve(docFileArg))
         : undefined;
     const docFile = docFileArg ? resolve(docFileArg) : undefined;
-    const allowFromArg = getFlagValue(process.argv, "--allow-from");
-    const paths = extractRepoPaths(content);
-    const allowed = extractAllowedPaths(content);
-    if (allowFromArg) {
-      for (const allowedPath of readAllowMarkersOnDisk(resolve(allowFromArg))) {
+
+    // The file as it stands on disk, and where in it this hunk begins.
+    //
+    // `old_string` is the better locator and is tried first: Edit requires it
+    // to appear in the file, whereas the NEW text usually does not yet. The
+    // piped content is the fallback locator, which covers a Write and an Edit
+    // whose new text is already present. If neither can be placed
+    // unambiguously the seed stays null and the hunk is read as a whole
+    // document — the pre-existing behaviour, which over-checks rather than
+    // under-checks, so nothing is ever silently skipped.
+    const onDiskContent = readFileIfPresent(getFlagValue(process.argv, "--allow-from"));
+    const anchorContent = readFileIfPresent(getFlagValue(process.argv, "--hunk-anchor-file"));
+    /** @type {ScanState | null} */
+    let seed = null;
+    if (onDiskContent !== undefined) {
+      if (anchorContent !== undefined) seed = seedScanStateFor(onDiskContent, anchorContent);
+      if (seed === null) seed = seedScanStateFor(onDiskContent, content);
+    }
+
+    const paths = extractRepoPaths(content, seed);
+    const allowed = extractAllowedPaths(content, seed);
+    if (onDiskContent !== undefined) {
+      for (const allowedPath of extractAllowedPaths(onDiskContent)) {
         allowed.add(allowedPath);
       }
     }
@@ -569,7 +796,8 @@ async function main() {
   }
 
   console.error(
-    "Usage: verify-doc-paths.mjs --stdin [--doc-dir <dir>] [--doc-file <path>] [--allow-from <path>]",
+    "Usage: verify-doc-paths.mjs --stdin [--doc-dir <dir>] [--doc-file <path>]" +
+      " [--allow-from <path>] [--hunk-anchor-file <path>]",
   );
   process.exitCode = 1;
 }
