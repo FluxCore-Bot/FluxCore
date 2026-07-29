@@ -37,6 +37,30 @@ export interface ScreenshotPlaceholderProps {
   route: string;
 }
 
+/**
+ * Turn a dashboard router path into something a reader can act on.
+ *
+ * The `route` prop is a TanStack Router pattern whose dynamic segments are
+ * written `$guildId`. That pattern is meaningful to whoever captures the
+ * screenshot, and meaningless — worse, leaked internals — to the server
+ * admin reading a user-audience guide, who has no `$guildId`. The capture
+ * checklist already carries the literal route for the capturer, so the
+ * placeholder names the page instead: the last segment that is not a
+ * parameter, title-cased.
+ *
+ * Falls back to "dashboard" rather than echoing the raw pattern, because
+ * echoing it is the exact failure this function exists to prevent.
+ */
+export function humanizeRoute(route: string): string {
+  const segments = route.split("/").filter((s) => s.length > 0 && !s.startsWith("$"));
+  const last = segments[segments.length - 1];
+  if (!last) return "dashboard";
+  return last
+    .replace(/[-_]/g, " ")
+    .replace(/([a-z\d])([A-Z])/g, "$1 $2")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
 export type ScreenshotRenderDecision =
   | { kind: "image"; src: string; alt: string }
   | { kind: "placeholder"; alt: string; route: string };
@@ -117,7 +141,9 @@ export default function ScreenshotPlaceholder(props: ScreenshotPlaceholderProps)
     >
       <span style={{ fontWeight: 600 }}>{decision.alt}</span>
       <span style={{ color: "var(--fc-text-muted)", fontSize: "0.875rem" }}>
-        Screenshot not yet captured — visit <code>{decision.route}</code> to capture it.
+        Screenshot not yet captured — this shows the{" "}
+        <strong>{humanizeRoute(decision.route)}</strong>{" "}
+        page of your server&rsquo;s dashboard.
       </span>
     </div>
   );

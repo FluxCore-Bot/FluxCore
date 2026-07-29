@@ -34,9 +34,14 @@ edit, and delete from the dashboard.
   **Permissions** page in the sidebar, where the Permission System panel
   reads *Active — admins are restricted to their assigned permissions* —
   then reading cases in the dashboard needs the **View Cases** permission,
-  editing or deleting them needs **Manage Cases**, and changing the two
-  settings at the bottom of the page needs **Manage Settings**. While that
-  panel reads *Inactive*, every admin with Manage Server has full access.
+  editing or deleting them needs **Manage Cases**, and both *reading and*
+  changing the two settings at the bottom of the page need **Manage
+  Settings**. Without Manage Settings the settings panel still appears, but
+  it cannot load your server's values and falls back to showing **DM on
+  Punishment** off and **Mod Log Channel** set to *None* — whatever they are
+  really set to. Treat what that panel shows as meaningless until you hold
+  Manage Settings. While the Permission System panel reads *Inactive*, every
+  admin with Manage Server has full access.
 
 ## Using the moderation commands
 
@@ -51,7 +56,7 @@ and running it early replies with the remaining wait.
 | --- | --- | --- | --- |
 | `/ban` | Bans the member. | Ban Members | 5s |
 | `/tempban` | Bans the member and lifts the ban when the duration runs out. | Ban Members | 5s |
-| `/softban` | Bans and immediately unbans, which deletes the member's messages from the last 7 days and leaves them able to rejoin. | Ban Members | 5s |
+| `/softban` | Bans and immediately unbans, which deletes the member's messages from the last 7 days and leaves no standing ban. | Ban Members | 5s |
 | `/kick` | Removes the member from the server without banning them. | Kick Members | 5s |
 | `/timeout` | Applies a Discord timeout for a duration you give. | Moderate Members | 5s |
 
@@ -153,8 +158,8 @@ Open **Moderation** from the guild sidebar. The page has three parts.
 
 Three cards across the top. **Total Cases** counts every case matching your
 current filters, across all pages. **Active Tempbans** and **Last 24h** count
-only the ten cases on the page you are looking at — tempbans that have not
-yet expired, and cases created in the past day — so both change as you page
+only the cases on the page you are looking at — tempbans that have not yet
+expired, and cases created in the past day — so both change as you page
 through the table.
 
 ### Cases
