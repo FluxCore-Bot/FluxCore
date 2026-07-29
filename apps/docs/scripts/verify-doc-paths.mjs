@@ -15,10 +15,11 @@
  *      is resolved against the directory of the file being edited.
  *   2. A bare path (no `./` prefix) is a REPO-ROOT claim and is resolved
  *      against the repo root — with exactly one exception:
- *   3. Inside a `package.json`, a bare path is resolved against the package
- *      directory first and the repo root second, because npm/pnpm run a
- *      script's arguments with the package directory as CWD. That is the
- *      case, and the only case, that motivates a local-first fallback.
+ *   3. In the workspace manifest apps/docs/package.json, and in no other
+ *      file, a bare path is resolved against the package directory first and
+ *      the repo root second, because npm/pnpm run a script's arguments with
+ *      the package directory as CWD. That is the case, and the only case,
+ *      that motivates a local-first fallback.
  *   4. A `../` chain that resolves outside the repo root is always treated
  *      as missing, whatever exists at that location on the host.
  *
@@ -26,7 +27,8 @@
  * collision into a laundry service: a page could write a repo-root path that
  * does not exist and pass because a same-named file happened to sit beside
  * the page. A guard that can be satisfied by an unrelated local file is not
- * checking the claim the page actually makes.
+ * checking the claim the page actually makes. Narrowing it to "a file called
+ * package.json" was not enough either — see `PACKAGE_CWD_RELATIVE_FILES`.
  *
  * Used two ways:
  *   - As a module: `extractRepoPaths` / `findMissingPaths` / `extractAllowedPaths`
@@ -36,18 +38,18 @@
  *     reads content from stdin and prints one missing path per line (used by
  *     the docs-path-guard.sh PreToolUse hook). `--doc-dir` is the anchor a
  *     file-relative path resolves against; `--doc-file` is the file being
- *     edited, whose name decides which bare-path convention applies. They are
- *     separate flags because they answer separate questions, and either can
- *     be supplied alone (`--doc-dir` is derived from `--doc-file` when only
- *     the latter is given). Exits non-zero — and prints nothing to stdout —
- *     if it cannot run as expected (wrong invocation, an uncaught
+ *     edited, whose identity decides which bare-path convention applies.
+ *     They are separate flags because they answer separate questions, and
+ *     either can be supplied alone (`--doc-dir` is derived from `--doc-file`
+ *     when only the latter is given). Exits non-zero — and prints nothing to
+ *     stdout — if it cannot run as expected (wrong invocation, an uncaught
  *     exception). The caller must treat a non-zero exit as "verification did
  *     not happen," never as "nothing missing": the two are not the same
  *     thing, and conflating them is how a guard fails open silently.
  */
 
 import { existsSync } from "node:fs";
-import { join, resolve, relative, isAbsolute, dirname, basename } from "node:path";
+import { join, resolve, relative, isAbsolute, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 // Matches either:
@@ -85,9 +87,40 @@ const PATH_PATTERN =
 // nothing: see `shallowTemplatePrefix`.
 const TEMPLATE_PLACEHOLDER_LEAD = new Set(["<", "[", "{"]);
 
-// The one file whose bare paths are package-directory-relative rather than
-// repo-root-relative. See rule 3 in the module docblock.
-const PACKAGE_MANIFEST = "package.json";
+// The exhaustive list of files whose bare paths are package-directory-
+// relative rather than repo-root-relative, written as repo-root-relative
+// paths. See rule 3 in the module docblock.
+//
+// This is an IDENTITY check, not a property check: "is this file THE
+// apps/docs manifest", never "does this file look like a manifest". Keying
+// it on the basename let any nested package.json inherit npm semantics it
+// had no claim to — an example manifest sitting in a documentation page's
+// own directory, which documentation about a monorepo will certainly
+// contain — and with a same-named sibling on disk that re-opened the
+// laundering hole one layer up. Every hole this guard has had was a
+// permissive branch reached from a shape nobody anticipated, so the
+// permissive branch now has exactly one key. Widening it is a one-line
+// edit, visible in review, and each entry is covered by a test.
+const PACKAGE_CWD_RELATIVE_FILES = new Set(["apps/docs/package.json"]);
+
+/**
+ * Whether bare paths written inside `docFile` are package-directory-relative
+ * rather than repo-root claims.
+ *
+ * The only way to answer yes is to name a file listed in
+ * `PACKAGE_CWD_RELATIVE_FILES`. An absolute path is made repo-relative
+ * first; anything that does not identify one of those files — a bare
+ * basename, an absent argument, a path outside the repo — answers no, so
+ * the strict repo-root reading is always what happens by default.
+ * @param {string} repoRoot
+ * @param {string} [docFile]
+ * @returns {boolean}
+ */
+function usesPackageCwdSemantics(repoRoot, docFile) {
+  if (docFile === undefined) return false;
+  const rel = isAbsolute(docFile) ? relative(repoRoot, docFile) : docFile;
+  return PACKAGE_CWD_RELATIVE_FILES.has(rel);
+}
 
 /**
  * Extract every path cited in `content` (backticked inline code, markdown
@@ -203,22 +236,21 @@ function isWithinRepo(candidate, repoRoot) {
  * is treated as missing (fail safe, consistent with how this guard treats
  * every other "couldn't verify" state).
  *
- * `docFileName` is the name (or full path — only the basename matters) of
- * the file being edited. It selects the bare-path convention and nothing
- * else: bare paths are repo-root claims everywhere except inside a
- * package.json, whose script entries npm/pnpm run with the package
- * directory as CWD. When `docFileName` is absent there is no evidence that
- * the package.json exception applies, so the strict reading wins — never
- * the permissive one.
+ * `docFile` is the path of the file being edited, absolute or
+ * repo-root-relative. It selects the bare-path convention and nothing else,
+ * via `usesPackageCwdSemantics`: bare paths are repo-root claims everywhere
+ * except in the one manifest whose script entries npm/pnpm run with the
+ * package directory as CWD. Anything that fails to identify that exact file
+ * — including an absent argument — gets the strict reading, never the
+ * permissive one.
  * @param {string[]} paths
  * @param {string} repoRoot
  * @param {string} [docDir]
- * @param {string} [docFileName]
+ * @param {string} [docFile]
  * @returns {string[]}
  */
-export function findMissingPaths(paths, repoRoot, docDir, docFileName) {
-  const bareResolvesLocally =
-    docFileName !== undefined && basename(docFileName) === PACKAGE_MANIFEST;
+export function findMissingPaths(paths, repoRoot, docDir, docFile) {
+  const bareResolvesLocally = usesPackageCwdSemantics(repoRoot, docFile);
   return paths.filter((p) => {
     if (isRelativeSpecifier(p)) {
       if (!docDir) return true;
@@ -297,11 +329,11 @@ async function main() {
       : docFileArg
         ? dirname(resolve(docFileArg))
         : undefined;
-    const docFileName = docFileArg ? basename(docFileArg) : undefined;
+    const docFile = docFileArg ? resolve(docFileArg) : undefined;
     const paths = extractRepoPaths(content);
     const allowed = extractAllowedPaths(content);
     const toCheck = paths.filter((p) => !allowed.has(p));
-    const missing = findMissingPaths(toCheck, repoRoot, docDir, docFileName);
+    const missing = findMissingPaths(toCheck, repoRoot, docDir, docFile);
     for (const path of missing) {
       console.log(path);
     }

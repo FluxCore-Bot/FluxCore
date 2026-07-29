@@ -1,6 +1,8 @@
-import { describe, expect, it } from "vitest";
-import { dirname, resolve } from "node:path";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { dirname, join, resolve } from "node:path";
 import { execFileSync } from "node:child_process";
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import {
   extractRepoPaths,
   findMissingPaths,
@@ -149,6 +151,9 @@ describe("extractRepoPaths", () => {
 });
 
 describe("findMissingPaths", () => {
+  const docsDir = resolve(repoRoot, "apps/docs");
+  const docsManifest = resolve(docsDir, "package.json");
+
   it("returns nothing when every path exists", () => {
     expect(findMissingPaths(["apps/bot/src/index.ts"], repoRoot)).toEqual([]);
   });
@@ -165,8 +170,6 @@ describe("findMissingPaths", () => {
   });
 
   describe("relative paths (resolved against docDir, not repoRoot)", () => {
-    const docsDir = resolve(repoRoot, "apps/docs");
-
     it("flags a fabricated ./-prefixed path", () => {
       expect(
         findMissingPaths(["./scripts/totally-fake-nonexistent-file.mjs"], repoRoot, docsDir),
@@ -202,21 +205,26 @@ describe("findMissingPaths", () => {
     });
 
     it("resolves an explicit ./ against docDir no matter which file is being edited", () => {
-      // The bare-path convention below is file-shaped; the ./ convention is
-      // not. An explicit ./ means "next to me" in a package.json and in a
-      // prose page alike.
+      // The bare-path convention below is file-specific; the ./ convention is
+      // not. An explicit ./ means "next to me" in the workspace manifest and
+      // in a prose page alike.
       expect(
-        findMissingPaths(["./scripts/check-coverage.mjs"], repoRoot, docsDir, "package.json"),
+        findMissingPaths(["./scripts/check-coverage.mjs"], repoRoot, docsDir, docsManifest),
       ).toEqual([]);
       expect(
-        findMissingPaths(["./scripts/check-coverage.mjs"], repoRoot, docsDir, "index.mdx"),
+        findMissingPaths(
+          ["./scripts/check-coverage.mjs"],
+          repoRoot,
+          docsDir,
+          resolve(docsDir, "index.mdx"),
+        ),
       ).toEqual([]);
     });
   });
 
-  // A bare path (no ./ prefix) is a REPO-ROOT claim everywhere except inside
-  // a package.json, where npm/pnpm resolve a script's arguments against the
-  // package directory. The earlier "try docDir first, everywhere" rule was
+  // A bare path (no ./ prefix) is a REPO-ROOT claim everywhere except in the
+  // workspace manifest, whose script entries npm/pnpm run with the package
+  // directory as CWD. The earlier "try docDir first, everywhere" rule was
   // wrong in only one direction, but wrong badly: a page could write
   // `scripts/manifest/build.mjs` — a claim about the repo root, where only
   // migrate-encrypt-session-tokens.ts lives — and have it silently pass
@@ -224,61 +232,47 @@ describe("findMissingPaths", () => {
   // repo-root claim laundering through a name collision with a local file is
   // exactly the fabrication this guard exists to catch.
   describe("bare paths (no ./ prefix)", () => {
-    const docsDir = resolve(repoRoot, "apps/docs");
-
     it("treats a bare path in a prose page as a repo-root claim, even when a same-named file sits beside the page", () => {
       // apps/docs/scripts/manifest/build.mjs exists; <repo-root>/scripts does
       // not contain manifest/build.mjs. The page is making a repo-root claim
       // and the claim is false.
       expect(
-        findMissingPaths(["scripts/manifest/build.mjs"], repoRoot, docsDir, "index.mdx"),
+        findMissingPaths(
+          ["scripts/manifest/build.mjs"],
+          repoRoot,
+          docsDir,
+          resolve(docsDir, "index.mdx"),
+        ),
       ).toEqual(["scripts/manifest/build.mjs"]);
     });
 
-    it("resolves a bare path against docDir first inside a package.json (npm/pnpm script semantics)", () => {
+    it("resolves a bare path against docDir first inside the workspace manifest (npm/pnpm script semantics)", () => {
       // "check-coverage": "node scripts/check-coverage.mjs" runs with the
       // package directory as CWD, so this is an honest local reference.
       expect(
-        findMissingPaths(["scripts/check-coverage.mjs"], repoRoot, docsDir, "package.json"),
+        findMissingPaths(["scripts/check-coverage.mjs"], repoRoot, docsDir, docsManifest),
       ).toEqual([]);
     });
 
-    it("accepts a full path as docFileName, not just a basename", () => {
-      expect(
-        findMissingPaths(
-          ["scripts/check-coverage.mjs"],
-          repoRoot,
-          docsDir,
-          resolve(docsDir, "package.json"),
-        ),
-      ).toEqual([]);
-    });
-
-    it("does not extend package.json semantics to a file merely named like one", () => {
-      expect(
-        findMissingPaths(["scripts/check-coverage.mjs"], repoRoot, docsDir, "my-package.json"),
-      ).toEqual(["scripts/check-coverage.mjs"]);
-    });
-
-    it("still falls back to repoRoot inside a package.json when there is no local match", () => {
-      expect(findMissingPaths(["apps/bot/src/index.ts"], repoRoot, docsDir, "package.json")).toEqual(
+    it("still falls back to repoRoot inside the manifest when there is no local match", () => {
+      expect(findMissingPaths(["apps/bot/src/index.ts"], repoRoot, docsDir, docsManifest)).toEqual(
         [],
       );
     });
 
-    it("flags a fabricated repo-root path cited from a package.json too", () => {
+    it("flags a fabricated repo-root path cited from the manifest too", () => {
       expect(
         findMissingPaths(
           ["apps/bot/src/commands/moderation/ban.ts"],
           repoRoot,
           docsDir,
-          "package.json",
+          docsManifest,
         ),
       ).toEqual(["apps/bot/src/commands/moderation/ban.ts"]);
     });
 
     it("treats a bare path as a repo-root claim when the edited file is unknown", () => {
-      // No docFileName means no evidence that package.json semantics apply,
+      // No docFile means no evidence that the manifest exception applies,
       // and the guard's default must be the strict reading, never the
       // permissive one.
       expect(findMissingPaths(["scripts/check-coverage.mjs"], repoRoot, docsDir)).toEqual([
@@ -296,6 +290,85 @@ describe("findMissingPaths", () => {
       expect(findMissingPaths(["scripts/check-coverage.mjs"], repoRoot)).toEqual([
         "scripts/check-coverage.mjs",
       ]);
+    });
+  });
+
+  // Round 5. The manifest exception used to match on basename alone, so ANY
+  // file called package.json under apps/docs inherited npm semantics it had
+  // no claim to — including an example manifest nested inside doc content,
+  // which is a shape documentation about a monorepo will certainly contain.
+  // With a junk sibling next to it, that re-opened the very laundering hole
+  // the bare-path rule had just closed, one layer up.
+  //
+  // The exception is now keyed on the file's IDENTITY — its repo-relative
+  // path, matched against an explicit set — not on a property it merely
+  // exhibits. These fixtures build a throwaway repo in tmpdir so the nested
+  // manifest and its colliding sibling are real files on disk, which is the
+  // only way the permissive branch can actually be reached.
+  describe("the manifest exception is scoped to the real workspace manifest", () => {
+    let tmpRoot = "";
+    const nestedParts = ["apps", "docs", "content", "fake-nested"];
+    const collidingBarePath = "scripts/manifest/build.mjs";
+    const manifestLocalScript = "scripts/check-coverage.mjs";
+
+    beforeAll(() => {
+      tmpRoot = mkdtempSync(join(tmpdir(), "docs-path-guard-"));
+      // An example manifest nested inside doc content, with a junk sibling
+      // that collides by name with the bare path the page cites.
+      const nested = join(tmpRoot, ...nestedParts);
+      mkdirSync(join(nested, "scripts", "manifest"), { recursive: true });
+      writeFileSync(join(nested, "package.json"), "{}\n");
+      writeFileSync(join(nested, "scripts", "manifest", "build.mjs"), "");
+      // The real workspace manifest, with its real local script beside it.
+      const real = join(tmpRoot, "apps", "docs");
+      mkdirSync(join(real, "scripts"), { recursive: true });
+      writeFileSync(join(real, "package.json"), "{}\n");
+      writeFileSync(join(real, "scripts", "check-coverage.mjs"), "");
+    });
+
+    afterAll(() => {
+      if (tmpRoot) rmSync(tmpRoot, { recursive: true, force: true });
+    });
+
+    it("denies the exception to a nested package.json, even with a colliding local file", () => {
+      const nested = join(tmpRoot, ...nestedParts);
+      expect(
+        findMissingPaths([collidingBarePath], tmpRoot, nested, join(nested, "package.json")),
+      ).toEqual([collidingBarePath]);
+    });
+
+    it("still grants the exception to the workspace manifest itself", () => {
+      const real = join(tmpRoot, "apps", "docs");
+      expect(
+        findMissingPaths([manifestLocalScript], tmpRoot, real, join(real, "package.json")),
+      ).toEqual([]);
+    });
+
+    it("refuses the exception to a bare basename, which identifies no particular file", () => {
+      const real = join(tmpRoot, "apps", "docs");
+      expect(findMissingPaths([manifestLocalScript], tmpRoot, real, "package.json")).toEqual([
+        manifestLocalScript,
+      ]);
+    });
+
+    it("refuses the exception to a manifest outside the repo root entirely", () => {
+      const outside = mkdtempSync(join(tmpdir(), "docs-path-guard-outside-"));
+      try {
+        mkdirSync(join(outside, "scripts"), { recursive: true });
+        writeFileSync(join(outside, "scripts", "check-coverage.mjs"), "");
+        writeFileSync(join(outside, "package.json"), "{}\n");
+        expect(
+          findMissingPaths([manifestLocalScript], tmpRoot, outside, join(outside, "package.json")),
+        ).toEqual([manifestLocalScript]);
+      } finally {
+        rmSync(outside, { recursive: true, force: true });
+      }
+    });
+
+    it("keeps the real repo's own manifest working — the friction that started this", () => {
+      expect(
+        findMissingPaths(["scripts/check-coverage.mjs"], repoRoot, docsDir, docsManifest),
+      ).toEqual([]);
     });
   });
 });
@@ -423,7 +496,7 @@ describe("CLI (--stdin)", () => {
   describe("--doc-file (whose bare-path convention applies, end to end)", () => {
     const docsDir = resolve(repoRoot, "apps/docs");
 
-    it("passes a bare pnpm script path cited from a package.json", () => {
+    it("passes a bare pnpm script path cited from the workspace manifest", () => {
       // Verbatim from the real apps/docs/package.json.
       const result = runCliAsFile(
         '"check-coverage": "node scripts/check-coverage.mjs"',
@@ -441,6 +514,20 @@ describe("CLI (--stdin)", () => {
       const result = runCliAsFile(
         "see `scripts/manifest/build.mjs` at the repo root",
         resolve(docsDir, "some-top-level-page.mdx"),
+      );
+      expect(result.stdout.trim().split("\n")).toEqual(["scripts/manifest/build.mjs"]);
+    });
+
+    it("flags the same claim from a package.json nested in doc content", () => {
+      // Round 5's hole: the exception used to key off the basename, so an
+      // example manifest inside content/ collected npm semantics it had no
+      // claim to. The colliding sibling does not exist in the real repo, so
+      // this asserts the wiring — the CLI hands the file's real identity
+      // through — while the collision itself is proven hermetically against
+      // findMissingPaths above.
+      const result = runCliAsFile(
+        "see `scripts/manifest/build.mjs` at the repo root",
+        resolve(docsDir, "content/fake-nested/package.json"),
       );
       expect(result.stdout.trim().split("\n")).toEqual(["scripts/manifest/build.mjs"]);
     });
