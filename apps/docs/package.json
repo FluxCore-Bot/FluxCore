@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev --port 3001 --hostname 0.0.0.0",
     "docs:dev": "next dev --port 3001 --hostname 0.0.0.0",
-    "docs:build": "next build",
+    "docs:build": "node scripts/check-css-imports.mjs && next build",
     "typecheck": "fumadocs-mdx && next typegen && tsc --noEmit",
     "clean": "rm -rf .next out .source"
   },
