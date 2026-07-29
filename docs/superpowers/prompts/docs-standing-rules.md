@@ -189,18 +189,14 @@ a method?". `@discordjs/builders`' own doc comment on
 member should have in order to run the command" and that you can pass `'0'`
 to disable the command by default; the converse holds when the method is
 never called at all — no permission requirement is set, so the command is
-invocable by any member who can see the channel where it's used. (A server
-admin can still separately restrict it after installation, through the
-server's own Integrations settings — that override exists independent of
-what FluxCore declares in code.) Verified example:
-`apps/bot/src/features/general/commands/ping.ts` builds `/ping` with
-`.setName("ping").setDescription(...)` and never calls
+invocable by any member who can see the channel where it's used. Verified
+example: `apps/bot/src/features/general/commands/ping.ts` builds `/ping`
+with `.setName("ping").setDescription(...)` and never calls
 `.setDefaultMemberPermissions(...)`. Its command page states: "No permission
-gate is set in source — any member who can see the channel can run `/ping`
-(a server admin can still restrict it via the server's Integrations
-settings)." That is the required phrasing, not a shorter paraphrase that
-drops the practical consequence. Read the file for every command page; do
-not extrapolate a category's permission from one example command in the same
+gate is set in source — any member who can see the channel can run `/ping`."
+That is the required phrasing, not a shorter paraphrase that drops the
+practical consequence. Read the file for every command page; do not
+extrapolate a category's permission from one example command in the same
 folder.
 
 ---
