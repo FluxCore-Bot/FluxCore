@@ -1,4 +1,19 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(pnpm --filter @fluxcore/docs manifest)",
+      "Bash(pnpm --filter @fluxcore/docs check-coverage)",
+      "Bash(docker compose --profile bot run --rm bot pnpm --filter @fluxcore/docs test)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git show:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git ls-files:*)",
+      "Bash(ls:*)",
+      "Bash(wc:*)"
+    ]
+  },
   "hooks": {
     "SessionStart": [
       {
