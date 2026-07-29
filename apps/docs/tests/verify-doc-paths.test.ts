@@ -643,4 +643,254 @@ describe("CLI (--stdin)", () => {
       expect(result.stdout.trim()).toBe("./check-coverage.mjs");
     });
   });
+
+  // Whole-branch review, F2. The hook reads only the edit hunk, so an allow
+  // marker sitting elsewhere in the file was invisible and any Edit to such a
+  // file was blocked. `--allow-from` lets the caller name a second source of
+  // markers — the file on disk — whose markers are UNIONED with the hunk's.
+  describe("--allow-from (allow markers that live outside the edit hunk)", () => {
+    let scratchDir = "";
+    let onDiskFile = "";
+
+    beforeAll(() => {
+      scratchDir = mkdtempSync(join(tmpdir(), "docs-allow-from-"));
+      onDiskFile = join(scratchDir, "page.mdx");
+    });
+
+    afterAll(() => {
+      rmSync(scratchDir, { recursive: true, force: true });
+    });
+
+    it("honors a marker that exists only in the on-disk file, not in the hunk", () => {
+      writeFileSync(
+        onDiskFile,
+        '<!-- docs-path-guard: allow apps/docs/on-disk-marker-page.mdx reason: "written elsewhere in the same page" -->\n',
+        "utf-8",
+      );
+      const result = runCliRaw(
+        ["--stdin", "--doc-dir", scratchDir, "--allow-from", onDiskFile],
+        "see `apps/docs/on-disk-marker-page.mdx`",
+      );
+      expect(result.status).toBe(0);
+      expect(result.stdout.trim()).toBe("");
+    });
+
+    it("unions on-disk markers with the hunk's own markers rather than replacing them", () => {
+      writeFileSync(
+        onDiskFile,
+        '<!-- docs-path-guard: allow apps/docs/on-disk-marker-page.mdx reason: "written elsewhere in the same page" -->\n',
+        "utf-8",
+      );
+      const result = runCliRaw(
+        ["--stdin", "--doc-dir", scratchDir, "--allow-from", onDiskFile],
+        "see `apps/docs/on-disk-marker-page.mdx` and `docker/FAKE.sh`\n" +
+          '<!-- docs-path-guard: allow docker/FAKE.sh reason: "introduced by this very hunk" -->',
+      );
+      expect(result.status).toBe(0);
+      expect(result.stdout.trim()).toBe("");
+    });
+
+    it("still requires a non-empty reason on an on-disk marker", () => {
+      writeFileSync(
+        onDiskFile,
+        '<!-- docs-path-guard: allow apps/docs/on-disk-marker-page.mdx reason: "" -->\n',
+        "utf-8",
+      );
+      const result = runCliRaw(
+        ["--stdin", "--doc-dir", scratchDir, "--allow-from", onDiskFile],
+        "see `apps/docs/on-disk-marker-page.mdx`",
+      );
+      expect(result.stdout.trim()).toBe("apps/docs/on-disk-marker-page.mdx");
+    });
+
+    it("treats an absent --allow-from file as contributing no markers, without failing", () => {
+      // A Write of a brand-new page: the hook passes the target path, which
+      // does not exist yet. That must not read as "the verifier could not
+      // run" — it simply means there are no pre-existing markers.
+      const result = runCliRaw(
+        ["--stdin", "--doc-dir", scratchDir, "--allow-from", join(scratchDir, "absent.mdx")],
+        "see `apps/docs/on-disk-marker-page.mdx`",
+      );
+      expect(result.status).toBe(0);
+      expect(result.stdout.trim()).toBe("apps/docs/on-disk-marker-page.mdx");
+    });
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Whole-branch review, F1 — fenced code blocks are not path claims.
+// ---------------------------------------------------------------------------
+// Verified live on the branch: `../lib/foo`, `./helpers` and a bare
+// `packages/database/src/client` written inside a ```ts block were all
+// reported missing, which blocks the write. Those are lines of the EXAMPLE's
+// own source — a relative specifier there resolves against the example's
+// directory, not the doc page's — so checking them against this repo's tree
+// asks a question the text never posed. Every developer page and most
+// self-hosting pages show code, so this fires on nearly all of them.
+//
+// The fix strips fenced blocks before extraction. It deliberately NARROWS the
+// guard: a fabricated path written inside a fence is no longer checked. That
+// is the accepted trade for unblocking every page that shows code. Inline
+// `code` spans — how real citations are written — are untouched.
+//
+// <!-- docs-path-guard: allow ../lib/foo, ./helpers, packages/database/src/client, apps/nonexistent-app, apps/nonexistent-app/FAKE.ts, docker/FAKE.sh, .github/workflows/FAKE.yml, docker-compose.FAKE.yml, turbo.json.bak, .claude/hooks/FAKE.sh, apps/docs/on-disk-marker-page.mdx, ./check-coverage.mjs, scripts/manifest/build.mjs reason: "fixtures for this suite: example-source specifiers quoted inside code fences, and deliberately fabricated top-level paths the new top-level coverage must flag" -->
+describe("fenced code blocks", () => {
+  it("ignores every path inside a ``` fence", () => {
+    const content = [
+      "Prose citing `apps/bot/src/index.ts`.",
+      "",
+      "```ts",
+      'import { foo } from "../lib/foo";',
+      'import { helpers } from "./helpers";',
+      'import { prisma } from "packages/database/src/client";',
+      "```",
+    ].join("\n");
+    expect(extractRepoPaths(content)).toEqual(["apps/bot/src/index.ts"]);
+  });
+
+  it("ignores every path inside a ~~~ fence", () => {
+    const content = ["~~~bash", "node apps/nonexistent-app/FAKE.ts", "~~~"].join("\n");
+    expect(extractRepoPaths(content)).toEqual([]);
+  });
+
+  it("resumes checking prose after the fence closes", () => {
+    const content = [
+      "```ts",
+      'import { foo } from "../lib/foo";',
+      "```",
+      "",
+      "Back in prose: `apps/bot/src/index.ts`.",
+    ].join("\n");
+    expect(extractRepoPaths(content)).toEqual(["apps/bot/src/index.ts"]);
+  });
+
+  it("keeps checking inline code spans, which is how a real citation is written", () => {
+    expect(extractRepoPaths("the file `apps/nonexistent-app/FAKE.ts` is cited inline")).toEqual([
+      "apps/nonexistent-app/FAKE.ts",
+    ]);
+  });
+
+  it("does not let a shorter run of backticks close a longer fence", () => {
+    const content = [
+      "````md",
+      "```ts",
+      'import { foo } from "../lib/foo";',
+      "```",
+      "````",
+    ].join("\n");
+    expect(extractRepoPaths(content)).toEqual([]);
+  });
+
+  it("does not treat a tilde run as closing a backtick fence", () => {
+    const content = ["```ts", "~~~", 'import { foo } from "../lib/foo";', "```"].join("\n");
+    expect(extractRepoPaths(content)).toEqual([]);
+  });
+
+  it("treats an unterminated fence as running to the end of the document", () => {
+    const content = ["```ts", 'import { foo } from "../lib/foo";'].join("\n");
+    expect(extractRepoPaths(content)).toEqual([]);
+  });
+
+  it("does not mistake an inline triple-backtick span for a fence opener", () => {
+    // Not at the start of a line, so it never opens a block.
+    expect(extractRepoPaths("prose ```x``` then `apps/bot/src/index.ts`")).toEqual([
+      "apps/bot/src/index.ts",
+    ]);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Whole-branch review, F5 — the guard could not see most of the repo.
+// ---------------------------------------------------------------------------
+// PATH_PATTERN recognised four top-level prefixes (apps, packages, docs,
+// scripts), so the entire self-hosting surface — docker-compose files, the
+// Dockerfile, .env.example, turbo.json, docker/, .github/workflows/ and the
+// .claude/ hook and agent definitions — was invisible: not merely
+// under-checked, but never checked at all. A page could fabricate any of them
+// and pass.
+describe("repo top-level files and directories", () => {
+  it("extracts a path under docker/", () => {
+    // Extraction only, deliberately. `docker/` is listed in .dockerignore,
+    // so the container this suite runs in has no copy of it and an existence
+    // assertion here would be testing the test environment rather than the
+    // guard. The hook itself runs on the host, where docker/Caddyfile and
+    // docker/backup.sh both exist; what matters for that is that the prefix
+    // is recognised at all, which is what this asserts.
+    expect(extractRepoPaths("see `docker/Caddyfile` and `docker/backup.sh`")).toEqual([
+      "docker/Caddyfile",
+      "docker/backup.sh",
+    ]);
+  });
+
+  it("flags a fabricated path under docker/", () => {
+    const paths = extractRepoPaths("run `docker/FAKE.sh`");
+    expect(paths).toEqual(["docker/FAKE.sh"]);
+    expect(findMissingPaths(paths, repoRoot)).toEqual(["docker/FAKE.sh"]);
+  });
+
+  it("checks a path under .github/", () => {
+    const paths = extractRepoPaths("see `.github/workflows/security.yml`");
+    expect(paths).toEqual([".github/workflows/security.yml"]);
+    expect(findMissingPaths(paths, repoRoot)).toEqual([]);
+  });
+
+  it("flags a fabricated workflow file", () => {
+    const paths = extractRepoPaths("see `.github/workflows/FAKE.yml`");
+    expect(paths).toEqual([".github/workflows/FAKE.yml"]);
+    expect(findMissingPaths(paths, repoRoot)).toEqual([".github/workflows/FAKE.yml"]);
+  });
+
+  it("checks a path under .claude/", () => {
+    const paths = extractRepoPaths("the hook is `.claude/hooks/docs-path-guard.sh`");
+    expect(paths).toEqual([".claude/hooks/docs-path-guard.sh"]);
+    expect(findMissingPaths(paths, repoRoot)).toEqual([]);
+  });
+
+  it("flags a fabricated hook file", () => {
+    const paths = extractRepoPaths("the hook is `.claude/hooks/FAKE.sh`");
+    expect(findMissingPaths(paths, repoRoot)).toEqual([".claude/hooks/FAKE.sh"]);
+  });
+
+  it("checks the real top-level config files a self-hosting page will cite", () => {
+    const paths = extractRepoPaths(
+      "copy `.env.example`, then read `docker-compose.yml`, `docker-compose.prod.yml`, " +
+        "`Dockerfile`, `turbo.json`, `pnpm-workspace.yaml` and `tsconfig.base.json`",
+    );
+    expect(paths).toEqual([
+      ".env.example",
+      "docker-compose.yml",
+      "docker-compose.prod.yml",
+      "Dockerfile",
+      "turbo.json",
+      "pnpm-workspace.yaml",
+      "tsconfig.base.json",
+    ]);
+    expect(findMissingPaths(paths, repoRoot)).toEqual([]);
+  });
+
+  it("flags a fabricated member of the docker-compose family", () => {
+    const paths = extractRepoPaths("run `docker-compose.FAKE.yml`");
+    expect(paths).toEqual(["docker-compose.FAKE.yml"]);
+    expect(findMissingPaths(paths, repoRoot)).toEqual(["docker-compose.FAKE.yml"]);
+  });
+
+  it("checks a fabricated sibling rather than truncating to the real file name", () => {
+    // The truncation-laundering shape the branch fought repeatedly: a match
+    // that stops early is checked AS THE WHOLE CLAIM, so the real prefix
+    // would absorb the fabricated remainder.
+    const paths = extractRepoPaths("see `turbo.json.bak`");
+    expect(paths).toEqual(["turbo.json.bak"]);
+    expect(findMissingPaths(paths, repoRoot)).toEqual(["turbo.json.bak"]);
+  });
+
+  it("does not flag a prose word that merely begins with a top-level file name", () => {
+    // `Dockerfiles` and `Dockerfile-based` are English, not paths. Both
+    // reduce to the real `Dockerfile`, which exists, so neither is reported.
+    const paths = extractRepoPaths("our Dockerfiles are Dockerfile-based");
+    expect(findMissingPaths(paths, repoRoot)).toEqual([]);
+  });
+
+  it("does not treat a bare `docker-compose` command mention as a path", () => {
+    expect(extractRepoPaths("run `docker-compose` from the repo root")).toEqual([]);
+  });
 });

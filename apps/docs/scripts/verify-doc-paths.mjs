@@ -34,41 +34,34 @@
  *   - As a module: `extractRepoPaths` / `findMissingPaths` / `extractAllowedPaths`
  *     are imported directly by tests and by any other script that wants to
  *     verify paths.
- *   - As a CLI: `node verify-doc-paths.mjs --stdin [--doc-dir <dir>] [--doc-file <path>]`
- *     reads content from stdin and prints one missing path per line (used by
- *     the docs-path-guard.sh PreToolUse hook). `--doc-dir` is the anchor a
+ *   - As a CLI: `node verify-doc-paths.mjs --stdin [--doc-dir <dir>]
+ *     [--doc-file <path>] [--allow-from <path>]` reads content from stdin
+ *     and prints one missing path per line (used by the docs-path-guard.sh
+ *     PreToolUse hook). `--doc-dir` is the anchor a
  *     file-relative path resolves against; `--doc-file` is the file being
  *     edited, whose identity decides which bare-path convention applies.
  *     They are separate flags because they answer separate questions, and
  *     either can be supplied alone (`--doc-dir` is derived from `--doc-file`
- *     when only the latter is given). Exits non-zero — and prints nothing to
+ *     when only the latter is given). `--allow-from` names a file whose
+ *     allow markers are unioned with the ones in the piped content, so a
+ *     marker written elsewhere in a page still exempts a path in an edit
+ *     hunk that does not itself contain it. Exits non-zero — and prints nothing to
  *     stdout — if it cannot run as expected (wrong invocation, an uncaught
  *     exception). The caller must treat a non-zero exit as "verification did
  *     not happen," never as "nothing missing": the two are not the same
  *     thing, and conflating them is how a guard fails open silently.
  */
 
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join, resolve, relative, isAbsolute, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-// Matches either:
-//   - a repo-root-relative path starting with one of the known top-level
-//     directories (`apps/...`, `packages/...`, `docs/...`, `scripts/...`), or
-//   - a file-relative path starting with a run of `./` or `../` segments.
-// preceded by start-of-string, whitespace, a backtick, or an opening
-// bracket/paren (the contexts `extractRepoPaths` cares about: inline code
-// and markdown link targets). We deliberately do NOT add `.` to that LEAD
-// character class — that would treat prose periods as path starts and flag
-// every sentence-adjacent word as a fabricated relative path. Instead, the
-// dotted alternative below matches the dot as part of the PATH itself, only
-// once it's already preceded by a legitimate lead character.
+// The set of characters that really occur in this monorepo's paths.
 //
-// The trailing character class must contain every character that really
-// occurs in this monorepo's paths, because a match that stops early is then
-// checked AS THE WHOLE CLAIM — and a deep prefix that happens to exist will
-// silently absorb whatever was fabricated after it. That is why `(`, `)`
-// and `@` are here: Next.js route-group directories and npm scope
+// This class must be as wide as reality, because a match that stops early is
+// then checked AS THE WHOLE CLAIM — and a deep prefix that happens to exist
+// will silently absorb whatever was fabricated after it. That is why `(`,
+// `)` and `@` are here: Next.js route-group directories and npm scope
 // directories are exactly the shapes these pages will cite, and truncating
 // at them left the surviving prefix (`apps/dashboard/src/client/`, say) to
 // pass on its own. Adding a character here is always safer than letting a
@@ -78,13 +71,175 @@ import { fileURLToPath } from "node:url";
 // Still excluded, and deliberately: `<`, `[`, `{` (template placeholder
 // delimiters — see `shallowTemplatePrefix` for how those reduce) and the
 // characters that genuinely close a citation (backtick, whitespace, `,`,
-// `;`, `:`). Both alternatives use `*` rather than `+` on the trailing
-// class so a placeholder sitting directly in the second segment
+// `;`, `:`).
+const PATH_CHARS = String.raw`[\w.$/@()-]`;
+
+// Top-level DIRECTORIES whose contents this guard checks. A path is
+// recognised only if it starts with one of these, so anything omitted here
+// is not merely under-checked — it is invisible, and a page may fabricate it
+// freely.
+//
+// The original four (`apps`, `packages`, `docs`, `scripts`) covered the
+// application code and nothing else. `docker`, `.github` and `.claude` were
+// added because the self-hosting and developer sections are largely ABOUT
+// those trees: the Caddy config and backup script, the CI workflow, and this
+// documentation system's own hooks, agents and settings. Every entry is a
+// real directory at the root of this repository.
+const TOP_LEVEL_DIRS = ["apps", "packages", "docs", "scripts", "docker", ".github", ".claude"];
+
+// Top-level FILES, matched by their exact name. Same reasoning: a
+// self-hosting page that cites the Dockerfile or turbo.json was previously
+// making an unverifiable claim.
+//
+// Deliberately absent: `.env.dev` (gitignored and machine-local, so its
+// existence proves nothing about a reader's checkout) and a bare `.env`
+// (which correctly does not exist — self-hosting pages tell the reader to
+// CREATE it, and flagging that on every page would be noise, not safety).
+const TOP_LEVEL_FILES = [
+  ".dockerignore",
+  ".env.example",
+  ".gitleaks.toml",
+  ".trivyignore",
+  "CLAUDE.md",
+  "Dockerfile",
+  "README.md",
+  "design.md",
+  "package.json",
+  "pnpm-lock.yaml",
+  "pnpm-workspace.yaml",
+  "tsconfig.base.json",
+  "tsconfig.json",
+  "turbo.json",
+];
+
+// Families of top-level files whose real members share a stem, written as
+// patterns rather than literals so that a plausible-but-fabricated member is
+// CHECKED and denied rather than matching nothing and going unchecked. This
+// repo has five compose files and pages will name them constantly; a literal
+// list would recognise exactly the five that exist and stay silent about a
+// sixth that does not. The `\.ya?ml` tail is required, so the bare
+// `docker-compose` command name in prose is not mistaken for a path.
+//
+// <!-- docs-path-guard: allow docker-compose.NOT-REAL.yml reason: "a deliberately fabricated compose file named to show what this family pattern is for" -->
+const TOP_LEVEL_FILE_FAMILIES = [String.raw`docker-compose(?:\.[\w-]+)*\.ya?ml`];
+
+/**
+ * Escape a literal so it can be embedded in a regular expression. The
+ * top-level names are full of `.`, and an unescaped one would match any
+ * character — turning `turbo.json` into a pattern that also accepts
+ * `turboXjson`.
+ * @param {string} literal
+ * @returns {string}
+ */
+function escapeForRegex(literal) {
+  return literal.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+// Matches one of:
+//   - a repo-root-relative path under a known top-level DIRECTORY,
+//   - a known top-level FILE, optionally continued,
+//   - a file-relative path starting with a run of `./` or `../` segments,
+// preceded by start-of-string, whitespace, a backtick, or an opening
+// bracket/paren (the contexts `extractRepoPaths` cares about: inline code
+// and markdown link targets). We deliberately do NOT add `.` to that LEAD
+// character class — that would treat prose periods as path starts and flag
+// every sentence-adjacent word as a fabricated relative path. Instead, the
+// dotted alternatives match the dot as part of the PATH itself, only once
+// it's already preceded by a legitimate lead character.
+//
+// The directory and relative alternatives use `*` rather than `+` on the
+// trailing class so a placeholder sitting directly in the second segment
 // (`packages/<name>/...`, with zero real characters between the slash and
-// the placeholder) still produces a match to reduce, instead of not
-// matching at all and going unchecked.
-const PATH_PATTERN =
-  /(?:^|[\s`("[])((?:apps|packages|docs|scripts)\/[\w.$/@()-]*|(?:\.\.?\/)+[\w.$/@()-]*)/g;
+// the placeholder) still produces a match to reduce, instead of not matching
+// at all and going unchecked.
+//
+// The file alternative's continuation is `(?:[./]PATH_CHARS*)?` — a
+// remainder is accepted only when it is introduced by `.` or `/`. That is
+// what keeps the truncation-laundering shape closed (a fabricated sibling
+// like `turbo.json.bak` is matched IN FULL and denied, instead of stopping
+// at the real `turbo.json` and passing) while leaving ordinary English
+// alone: `Dockerfiles` and `Dockerfile-based` reduce to the real
+// `Dockerfile`, which exists, so neither is reported.
+//
+// <!-- docs-path-guard: allow turbo.json.bak reason: "a deliberately fabricated sibling, named here to explain what the continuation rule catches" -->
+const PATH_PATTERN = new RegExp(
+  "(?:^|[\\s`(\"[])(" +
+    [
+      `(?:${TOP_LEVEL_DIRS.map(escapeForRegex).join("|")})\\/${PATH_CHARS}*`,
+      `(?:${[
+        ...TOP_LEVEL_FILE_FAMILIES,
+        // Longest first, so a name that is a prefix of another cannot claim
+        // the match before the longer one is tried.
+        ...[...TOP_LEVEL_FILES].sort((a, b) => b.length - a.length).map(escapeForRegex),
+      ].join("|")})(?:[./]${PATH_CHARS}*)?`,
+      `(?:\\.\\.?\\/)+${PATH_CHARS}*`,
+    ].join("|") +
+    ")",
+  "g",
+);
+
+// A fenced code block opener: up to three spaces of indentation, then a run
+// of at least three backticks or tildes, then an info string. Per CommonMark,
+// a BACKTICK fence's info string may not itself contain a backtick — that is
+// exactly what stops an inline ``code`` span from being read as a block
+// opener — while a tilde fence's may.
+const FENCE_OPEN_PATTERN = /^ {0,3}(`{3,}|~{3,})(.*)$/;
+
+// A closer is a run of the same character, at least as long as the opener,
+// with nothing after it but whitespace.
+const FENCE_CLOSE_PATTERN = /^ {0,3}(`{3,}|~{3,})[ \t]*$/;
+
+/**
+ * Blank out every fenced code block in `content`, preserving line structure.
+ *
+ * A fence holds the EXAMPLE's source, not a claim about this repository's
+ * layout. A relative import specifier inside a fenced TypeScript block
+ * resolves against the example's own directory, and a bare module path
+ * inside it is a module specifier rather than a repo path; checking either
+ * against this tree answers a question the page never asked. Before this,
+ * every developer page and most self-hosting pages — anything that shows
+ * code — was blocked on content it had every right to write.
+ *
+ * This NARROWS the guard on purpose: a fabricated path written inside a
+ * fence is no longer checked at all. That is the accepted trade. Inline
+ * `code` spans, which is how a real citation is written in these pages, are
+ * untouched and still checked.
+ *
+ * Lines are replaced with empty strings rather than removed so that text on
+ * either side of a fence can never be joined into a single line and made to
+ * match across the gap.
+ * @param {string} content
+ * @returns {string}
+ */
+function stripFencedCodeBlocks(content) {
+  const lines = content.split("\n");
+  /** @type {string[]} */
+  const out = [];
+  /** @type {{ char: string, length: number } | null} */
+  let openFence = null;
+
+  for (const line of lines) {
+    if (openFence === null) {
+      const opener = FENCE_OPEN_PATTERN.exec(line);
+      if (opener && !(opener[1].startsWith("`") && opener[2].includes("`"))) {
+        openFence = { char: opener[1][0], length: opener[1].length };
+        out.push("");
+        continue;
+      }
+      out.push(line);
+      continue;
+    }
+
+    const closer = FENCE_CLOSE_PATTERN.exec(line);
+    if (closer && closer[1][0] === openFence.char && closer[1].length >= openFence.length) {
+      openFence = null;
+    }
+    out.push("");
+  }
+
+  // An unterminated fence runs to the end of the document, per CommonMark.
+  return out.join("\n");
+}
 
 // Characters that open a template placeholder segment (`<feature>`,
 // `[locale]`, `{slug}`). None of them are in PATH_PATTERN's character
@@ -133,9 +288,11 @@ function usesPackageCwdSemantics(repoRoot, docFile) {
 /**
  * Extract every path cited in `content` (backticked inline code, markdown
  * link targets) — both repo-root-relative and file-relative — deduplicated
- * and in first-seen order. URLs are stripped first so a path-shaped URL
- * segment (e.g. `https://example.com/apps/bot/src/x.ts`) is never mistaken
- * for a repo path.
+ * and in first-seen order. Fenced code blocks are removed first (see
+ * `stripFencedCodeBlocks`: their contents belong to the example, not to this
+ * repo), then URLs, so a path-shaped URL segment (e.g.
+ * `https://example.com/apps/bot/src/x.ts`) is never mistaken for a repo
+ * path.
  *
  * A path immediately followed by a template placeholder delimiter (`<`,
  * `[`, `{`) is a templated path, not a concrete one — but a placeholder
@@ -149,7 +306,7 @@ function usesPackageCwdSemantics(repoRoot, docFile) {
  * @returns {string[]}
  */
 export function extractRepoPaths(content) {
-  const withoutUrls = content.replace(/https?:\/\/\S+/g, "");
+  const withoutUrls = stripFencedCodeBlocks(content).replace(/https?:\/\/\S+/g, "");
   const found = new Set();
   for (const match of withoutUrls.matchAll(PATH_PATTERN)) {
     const raw = match[1];
@@ -342,6 +499,28 @@ export function extractAllowedPaths(content) {
   return allowed;
 }
 
+/**
+ * Allow markers already present in the file at `filePath` on disk.
+ *
+ * The PreToolUse hook only ever sees the EDIT HUNK, so a marker written
+ * anywhere else in the same page was invisible and the edit was blocked —
+ * which would have recurred on every page whose marker sits at the top and
+ * whose later sections are edited one at a time. The caller passes the file
+ * being written here, and its markers are unioned with the hunk's.
+ *
+ * A file that does not exist yet — the Write of a brand-new page — simply
+ * contributes no markers. That is "there were none", not "verification could
+ * not run", and it must not be confused with the non-zero exit that means
+ * the latter. A file that exists but cannot be read still throws, and so
+ * still lands on the fail-closed path.
+ * @param {string} filePath
+ * @returns {Set<string>}
+ */
+function readAllowMarkersOnDisk(filePath) {
+  if (!existsSync(filePath)) return new Set();
+  return extractAllowedPaths(readFileSync(filePath, "utf-8"));
+}
+
 async function readStdin() {
   const chunks = [];
   for await (const chunk of process.stdin) {
@@ -373,8 +552,14 @@ async function main() {
         ? dirname(resolve(docFileArg))
         : undefined;
     const docFile = docFileArg ? resolve(docFileArg) : undefined;
+    const allowFromArg = getFlagValue(process.argv, "--allow-from");
     const paths = extractRepoPaths(content);
     const allowed = extractAllowedPaths(content);
+    if (allowFromArg) {
+      for (const allowedPath of readAllowMarkersOnDisk(resolve(allowFromArg))) {
+        allowed.add(allowedPath);
+      }
+    }
     const toCheck = paths.filter((p) => !allowed.has(p));
     const missing = findMissingPaths(toCheck, repoRoot, docDir, docFile);
     for (const path of missing) {
@@ -383,7 +568,9 @@ async function main() {
     return;
   }
 
-  console.error("Usage: verify-doc-paths.mjs --stdin [--doc-dir <dir>] [--doc-file <path>]");
+  console.error(
+    "Usage: verify-doc-paths.mjs --stdin [--doc-dir <dir>] [--doc-file <path>] [--allow-from <path>]",
+  );
   process.exitCode = 1;
 }
 

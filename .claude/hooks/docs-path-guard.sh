@@ -28,6 +28,13 @@ VERIFY_SCRIPT="$REPO_ROOT/apps/docs/scripts/verify-doc-paths.mjs"
 #              directory. The verifier matches that manifest by its exact
 #              repo-relative path, so the full path must be passed here --
 #              a basename would readmit any nested package.json.
+#
+# The same absolute path is also passed as --allow-from. An Edit gives this
+# hook only the new hunk, so an allow marker written anywhere else in the
+# page was invisible and the edit was denied even though the exemption was
+# already there, in the file, with a reason. The verifier unions the markers
+# it finds on disk with the ones in the hunk. A file that does not exist yet
+# (a Write of a new page) contributes nothing and is not an error.
 case "$FILE_PATH" in
   /*) ABS_FILE_PATH="$FILE_PATH" ;;
   *) ABS_FILE_PATH="$REPO_ROOT/$FILE_PATH" ;;
@@ -41,7 +48,7 @@ DOC_DIR=$(dirname "$ABS_FILE_PATH")
 # guard at all, because it looks like protection while providing none.
 STDERR_FILE=$(mktemp)
 set +e
-MISSING=$(echo "$CONTENT" | node "$VERIFY_SCRIPT" --stdin --doc-dir "$DOC_DIR" --doc-file "$ABS_FILE_PATH" 2>"$STDERR_FILE")
+MISSING=$(echo "$CONTENT" | node "$VERIFY_SCRIPT" --stdin --doc-dir "$DOC_DIR" --doc-file "$ABS_FILE_PATH" --allow-from "$ABS_FILE_PATH" 2>"$STDERR_FILE")
 STATUS=$?
 set -e
 VERIFIER_ERROR=$(cat "$STDERR_FILE")
@@ -63,7 +70,7 @@ if [ -n "$MISSING" ]; then
     hookSpecificOutput: {
       hookEventName: "PreToolUse",
       permissionDecision: "deny",
-      permissionDecisionReason: ("BLOCKED: this page references repo paths that do not exist:\n" + $missing + "\n\nHow each cited path was resolved:\n  - a path starting with ./ or ../ resolves against the directory of the file being written\n  - every other path is a REPO-ROOT claim and resolves against the repo root\n  - inside the workspace manifest apps/docs/package.json ONLY -- matched by its exact path, not by being called package.json -- a bare path resolves against the package directory first and the repo root second, because npm/pnpm run script arguments with the package directory as CWD\n  - a ../ chain that leaves the repo is always treated as missing\n  - a templated path (<placeholder>, [placeholder], {placeholder}) is checked by its first two static segments only, e.g. apps/nonexistent-app/<feature>/thing.ts is flagged because apps/nonexistent-app does not exist\n\nSo: if the flagged path is meant to sit next to this file, write it as ./that/path and it will be checked there. If it is meant to be a repo-root path, the claim is simply wrong — verify it against the source tree, not CLAUDE.md. The apps were refactored to a feature-sliced layout: commands live in apps/bot/src/features/<module>/commands/, dashboard API in apps/dashboard/src/server/features/, dashboard UI in apps/dashboard/src/client/features/.\n\nIf a path is deliberately not real (e.g. instructing the reader to create a file), add an explicit exemption directly in the page:\n  <!-- docs-path-guard: allow path/one, path/two reason: \"why these are intentionally not real\" -->\nA marker with no reason exempts nothing.")
+      permissionDecisionReason: ("BLOCKED: this page references repo paths that do not exist:\n" + $missing + "\n\nHow each cited path was resolved:\n  - a path starting with ./ or ../ resolves against the directory of the file being written\n  - every other path is a REPO-ROOT claim and resolves against the repo root\n  - inside the workspace manifest apps/docs/package.json ONLY -- matched by its exact path, not by being called package.json -- a bare path resolves against the package directory first and the repo root second, because npm/pnpm run script arguments with the package directory as CWD\n  - a ../ chain that leaves the repo is always treated as missing\n  - a templated path (<placeholder>, [placeholder], {placeholder}) is checked by its first two static segments only, e.g. apps/nonexistent-app/<feature>/thing.ts is flagged because apps/nonexistent-app does not exist\n  - fenced code blocks are NOT scanned at all -- their contents belong to the example, not to this repo -- so a flagged path came from prose or from an inline backticked span\n\nSo: if the flagged path is meant to sit next to this file, write it as ./that/path and it will be checked there. If it is meant to be a repo-root path, the claim is simply wrong — verify it against the source tree, not CLAUDE.md. The apps were refactored to a feature-sliced layout: commands live in apps/bot/src/features/<module>/commands/, dashboard API in apps/dashboard/src/server/features/, dashboard UI in apps/dashboard/src/client/features/.\n\nIf a path is deliberately not real (e.g. instructing the reader to create a file), add an explicit exemption directly in the page:\n  <!-- docs-path-guard: allow path/one, path/two reason: \"why these are intentionally not real\" -->\nA marker with no reason exempts nothing. A marker anywhere in the file counts, not only inside the hunk you are editing -- so if you already added one, check that its path text matches the flagged path exactly.")
     }
   }'
   exit 0
