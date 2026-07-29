@@ -25,6 +25,13 @@
  *      statements — an unreferenced stylesheet (written but never wired in)
  *      fails the same way a wrongly-wired one does.
  *
+ * `*.module.css` (Next.js CSS Modules) is exempt from both checks. Module
+ * CSS is scoped per-component and consumed entirely through its JS import
+ * (`import styles from './x.module.css'`) — it never enters Tailwind's
+ * global `@theme` merge, so it can't reproduce the collision this guard
+ * exists to catch, and it's never meant to be reachable via `@import`
+ * either (that's a first-class, correct Next.js pattern, not a bug).
+ *
  * Run as part of `docs:build` so a violation fails the build, not just a
  * lint pass that's easy to ignore.
  */
@@ -56,13 +63,19 @@ function walk(dir, predicate) {
   return found;
 }
 
+/** @param {string} path @returns {boolean} */
+function isCssModule(path) {
+  return path.endsWith('.module.css');
+}
+
 const sourceFiles = walk(ROOT, (path) => ['.ts', '.tsx'].includes(extname(path)));
-const cssFiles = walk(ROOT, (path) => extname(path) === '.css');
+const cssFiles = walk(ROOT, (path) => extname(path) === '.css' && !isCssModule(path));
 
 /** @type {string[]} */
 const violations = [];
 
 // --- Check 1: no direct JS/TSX import of a .css file other than global.css ---
+// (*.module.css is exempt — see the file header.)
 
 const JS_CSS_IMPORT = /(?:import|from)\s+['"](\.[^'"]+\.css)['"]/g;
 
@@ -70,6 +83,7 @@ for (const file of sourceFiles) {
   const content = readFileSync(file, 'utf8');
   for (const match of content.matchAll(JS_CSS_IMPORT)) {
     const specifier = match[1];
+    if (isCssModule(specifier)) continue;
     const resolved = resolve(dirname(file), specifier);
     if (resolved !== GLOBAL_CSS) {
       violations.push(
@@ -84,7 +98,8 @@ for (const file of sourceFiles) {
   }
 }
 
-// --- Check 2: every .css file is transitively @import-reachable from global.css ---
+// --- Check 2: every non-module .css file is transitively @import-reachable from global.css ---
+// (*.module.css is exempt — it's reached via JS import, not the CSS cascade; see the file header.)
 
 const CSS_IMPORT = /@import\s+['"](\.[^'"]+)['"]/g;
 
