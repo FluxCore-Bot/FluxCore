@@ -64,19 +64,27 @@ import { fileURLToPath } from "node:url";
 // dotted alternative below matches the dot as part of the PATH itself, only
 // once it's already preceded by a legitimate lead character.
 //
-// Excludes trailing punctuation that closes a markdown construct or ends a
-// sentence (`)`, `]`, `.`, `,`, backtick are not in the character class), so
-// ``` `apps/bot/src/index.ts`. ``` and `[text](apps/bot/src/index.ts)` don't
-// pull in the closer. Neither alternative's character class includes `<`,
-// `[`, or `{` (also markdown/link/template delimiters) — see
-// `shallowTemplatePrefix` below for how a match immediately followed by one
-// of those is handled. Both alternatives use `*` rather than `+` on the
-// trailing class so a placeholder sitting directly in the second segment
+// The trailing character class must contain every character that really
+// occurs in this monorepo's paths, because a match that stops early is then
+// checked AS THE WHOLE CLAIM — and a deep prefix that happens to exist will
+// silently absorb whatever was fabricated after it. That is why `(`, `)`
+// and `@` are here: Next.js route-group directories and npm scope
+// directories are exactly the shapes these pages will cite, and truncating
+// at them left the surviving prefix (`apps/dashboard/src/client/`, say) to
+// pass on its own. Adding a character here is always safer than letting a
+// path be cut at it. Markdown's own closing paren is removed afterwards by
+// paren balance, in `trimTrailingNoise` — not by refusing to match `)`.
+//
+// Still excluded, and deliberately: `<`, `[`, `{` (template placeholder
+// delimiters — see `shallowTemplatePrefix` for how those reduce) and the
+// characters that genuinely close a citation (backtick, whitespace, `,`,
+// `;`, `:`). Both alternatives use `*` rather than `+` on the trailing
+// class so a placeholder sitting directly in the second segment
 // (`packages/<name>/...`, with zero real characters between the slash and
 // the placeholder) still produces a match to reduce, instead of not
 // matching at all and going unchecked.
 const PATH_PATTERN =
-  /(?:^|[\s`("[])((?:apps|packages|docs|scripts)\/[\w.$/-]*|(?:\.\.?\/)+[\w.$/-]*)/g;
+  /(?:^|[\s`("[])((?:apps|packages|docs|scripts)\/[\w.$/@()-]*|(?:\.\.?\/)+[\w.$/@()-]*)/g;
 
 // Characters that open a template placeholder segment (`<feature>`,
 // `[locale]`, `{slug}`). None of them are in PATH_PATTERN's character
@@ -152,7 +160,7 @@ export function extractRepoPaths(content) {
       if (prefix) found.add(prefix);
       continue;
     }
-    found.add(trimTrailingPunctuation(raw));
+    found.add(trimTrailingNoise(raw));
   }
   return [...found];
 }
@@ -185,11 +193,34 @@ function shallowTemplatePrefix(raw) {
 }
 
 /**
- * Strip punctuation that the path regex can pick up as part of the match
- * but that is actually prose/markdown syntax closing around the path, not
- * part of the path itself:
+ * @param {string} haystack
+ * @param {string} character
+ * @returns {number}
+ */
+function countCharacter(haystack, character) {
+  let total = 0;
+  for (const ch of haystack) {
+    if (ch === character) total += 1;
+  }
+  return total;
+}
+
+/**
+ * Strip trailing characters that the path regex picks up as part of the
+ * match but that are really prose or markdown syntax closing around the
+ * path:
  *   - a trailing sentence-ending period (`see apps/bot/src/index.ts.`)
- *   - a trailing comma or semicolon in a list
+ *   - a trailing comma, semicolon or colon in a list
+ *   - an UNBALANCED closing paren, which belongs to the markdown link that
+ *     wraps the path (`[text](packages/database/prisma/schema.prisma)`)
+ *     rather than to the path itself
+ *
+ * Paren balance is what lets `)` be a path character (needed so a route
+ * group is not truncated at `(`) without breaking markdown link targets: a
+ * route group contributes a matched pair and survives, while a link's
+ * closer is unmatched and is removed. The two rules alternate until neither
+ * applies, so `...schema.prisma).` unwinds correctly in either order.
+ *
  * A single trailing slash on an otherwise-valid directory reference (e.g.
  * `packages/systems/src/`) is intentionally preserved — `findMissingPaths`
  * checks it with `existsSync`, which resolves a trailing-slash directory
@@ -197,8 +228,20 @@ function shallowTemplatePrefix(raw) {
  * @param {string} path
  * @returns {string}
  */
-function trimTrailingPunctuation(path) {
-  return path.replace(/[.,;:]+$/, "");
+function trimTrailingNoise(path) {
+  let out = path;
+  for (;;) {
+    const withoutPunctuation = out.replace(/[.,;:]+$/, "");
+    if (withoutPunctuation !== out) {
+      out = withoutPunctuation;
+      continue;
+    }
+    if (out.endsWith(")") && countCharacter(out, ")") > countCharacter(out, "(")) {
+      out = out.slice(0, -1);
+      continue;
+    }
+    return out;
+  }
 }
 
 /**

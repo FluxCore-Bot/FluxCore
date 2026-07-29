@@ -15,7 +15,7 @@ import {
 // only under apps/docs and are the exact laundering case under test. They are
 // exempted explicitly, via the guard's own escape hatch, rather than by
 // contorting the fixtures into something that no longer reproduces the bugs:
-// <!-- docs-path-guard: allow apps/docs/content/guide/features/, apps/nonexistent-app, ./x, ../x, ./-prefixed, ../-prefixed, ./scripts/check-coverage.mjs, ./check-coverage.mjs, ./scripts/totally-fake-nonexistent-file.mjs, ../bot/src/index.ts, apps/bot/src/commands/moderation/ban.ts, scripts/check-coverage.mjs, scripts/manifest/build.mjs reason: "deliberately unreal, or intentionally repo-root-absent, fixture paths for the path guard's own test suite" -->
+// <!-- docs-path-guard: allow apps/docs/content/guide/features/, apps/nonexistent-app, ./x, ../x, ./-prefixed, ../-prefixed, ./scripts/check-coverage.mjs, ./check-coverage.mjs, ./scripts/totally-fake-nonexistent-file.mjs, ../bot/src/index.ts, apps/bot/src/commands/moderation/ban.ts, scripts/check-coverage.mjs, scripts/manifest/build.mjs, apps/dashboard/src/client/(auth), apps/dashboard/src/client/(auth)/FAKE.tsx, apps/dashboard/src/client/(auth)/page.tsx, packages/database/@fluxcore/FAKE.ts, packages/database/@fluxcore/index.ts reason: "deliberately unreal, or intentionally repo-root-absent, fixture paths for the path guard's own test suite" -->
 
 const repoRoot = resolve(__dirname, "../../..");
 const cliScript = resolve(__dirname, "../scripts/verify-doc-paths.mjs");
@@ -146,6 +146,48 @@ describe("extractRepoPaths", () => {
     it("does not false-positive on prose punctuation that merely resembles a relative path", () => {
       expect(extractRepoPaths("Node.js version 1.2.3/release notes")).toEqual([]);
       expect(extractRepoPaths("an ellipsis case .../scripts/foo.ts")).toEqual([]);
+    });
+  });
+
+  // Round 6. PATH_PATTERN truncated at any character outside its class, and
+  // the surviving prefix was then checked AS THE WHOLE CLAIM — so a deep
+  // prefix that happens to exist swallowed the fabricated remainder:
+  // `apps/dashboard/src/client/(auth)/FAKE.tsx` was checked as
+  // `apps/dashboard/src/client/`, which exists, and allowed. Next.js route
+  // groups and npm scope directories are exactly what this monorepo's pages
+  // will cite, so `(`, `)` and `@` are path characters now and the whole
+  // path gets checked. Markdown's own closing paren is stripped by paren
+  // balance, not by treating `)` as a terminator.
+  describe("route groups and scoped package names", () => {
+    it("extracts a route-group path in full instead of truncating at the paren", () => {
+      expect(extractRepoPaths("see `apps/dashboard/src/client/(auth)/FAKE.tsx`")).toEqual([
+        "apps/dashboard/src/client/(auth)/FAKE.tsx",
+      ]);
+    });
+
+    it("extracts a scoped-package path in full instead of truncating at the @", () => {
+      expect(extractRepoPaths("see `packages/database/@fluxcore/FAKE.ts`")).toEqual([
+        "packages/database/@fluxcore/FAKE.ts",
+      ]);
+    });
+
+    it("still strips a markdown link's own closing paren", () => {
+      expect(extractRepoPaths("[the schema](packages/database/prisma/schema.prisma)")).toEqual([
+        "packages/database/prisma/schema.prisma",
+      ]);
+    });
+
+    it("keeps a balanced route group inside a markdown link target", () => {
+      // Two closers, one opener: the unbalanced one belongs to the link.
+      expect(
+        extractRepoPaths("[the page](apps/dashboard/src/client/(auth)/page.tsx)"),
+      ).toEqual(["apps/dashboard/src/client/(auth)/page.tsx"]);
+    });
+
+    it("strips a sentence period after a closing route group", () => {
+      expect(extractRepoPaths("it lives in apps/dashboard/src/client/(auth).")).toEqual([
+        "apps/dashboard/src/client/(auth)",
+      ]);
     });
   });
 });
@@ -369,6 +411,65 @@ describe("findMissingPaths", () => {
       expect(
         findMissingPaths(["scripts/check-coverage.mjs"], repoRoot, docsDir, docsManifest),
       ).toEqual([]);
+    });
+  });
+});
+
+// Round 6, the checking half. A truncated match used to be checked as if it
+// were the whole claim, so a deep prefix that exists absorbed whatever was
+// fabricated after it. No route-group or scoped directory is tracked
+// anywhere in this repo today, so the legitimate shapes are built as real
+// files in a throwaway repo — the closest equivalent available, and the only
+// way to prove the fix does not simply deny both shapes outright.
+describe("truncation must not launder a fabricated remainder", () => {
+  it("flags a fabricated path behind a route group", () => {
+    const paths = extractRepoPaths("see `apps/dashboard/src/client/(auth)/FAKE.tsx`");
+    expect(findMissingPaths(paths, repoRoot)).toEqual([
+      "apps/dashboard/src/client/(auth)/FAKE.tsx",
+    ]);
+  });
+
+  it("flags a fabricated path behind a scoped package directory", () => {
+    const paths = extractRepoPaths("see `packages/database/@fluxcore/FAKE.ts`");
+    expect(findMissingPaths(paths, repoRoot)).toEqual(["packages/database/@fluxcore/FAKE.ts"]);
+  });
+
+  describe("against a throwaway repo where both shapes are real", () => {
+    let tmpRoot = "";
+
+    beforeAll(() => {
+      tmpRoot = mkdtempSync(join(tmpdir(), "docs-path-guard-shapes-"));
+      const routeGroup = join(tmpRoot, "apps", "dashboard", "src", "client", "(auth)");
+      mkdirSync(routeGroup, { recursive: true });
+      writeFileSync(join(routeGroup, "page.tsx"), "");
+      const scoped = join(tmpRoot, "packages", "database", "@fluxcore");
+      mkdirSync(scoped, { recursive: true });
+      writeFileSync(join(scoped, "index.ts"), "");
+    });
+
+    afterAll(() => {
+      if (tmpRoot) rmSync(tmpRoot, { recursive: true, force: true });
+    });
+
+    it("passes a real route-group path", () => {
+      const paths = extractRepoPaths("see `apps/dashboard/src/client/(auth)/page.tsx`");
+      expect(paths).toEqual(["apps/dashboard/src/client/(auth)/page.tsx"]);
+      expect(findMissingPaths(paths, tmpRoot)).toEqual([]);
+    });
+
+    it("passes a real scoped-package path", () => {
+      const paths = extractRepoPaths("see `packages/database/@fluxcore/index.ts`");
+      expect(paths).toEqual(["packages/database/@fluxcore/index.ts"]);
+      expect(findMissingPaths(paths, tmpRoot)).toEqual([]);
+    });
+
+    it("still flags a fabricated file inside a route group that really exists", () => {
+      // The sharpest form: the truncation prefix exists in this very repo,
+      // so the old code allowed it; only checking the whole path catches it.
+      const paths = extractRepoPaths("see `apps/dashboard/src/client/(auth)/FAKE.tsx`");
+      expect(findMissingPaths(paths, tmpRoot)).toEqual([
+        "apps/dashboard/src/client/(auth)/FAKE.tsx",
+      ]);
     });
   });
 });
