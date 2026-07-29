@@ -46,33 +46,98 @@ job in Step 3, not a precondition of starting.
 
 ## Step 3 — determine whether the manifest is stale, without running git
 
+**The governing rule, ahead of every case below: any failure to resolve the
+current commit, for any reason, reports UNDETERMINABLE and treats the
+manifest as stale.** An unreadable `.git/HEAD`, `.git` being neither a
+plain directory nor a well-formed worktree pointer, a ref that turns up in
+neither the loose-file location nor `packed-refs`, an unexpected `HEAD`
+format — any of these stops the resolution procedure immediately and sends
+you to the UNDETERMINABLE verdict in Step 5. Never let an unsuccessful
+lookup fall through to "probably fine" — treat lookup failure and "the
+manifest is confirmed fresh" as two outcomes that must never be reachable
+from the same code path in your reasoning. This rule dominates every
+sub-step below.
+
 You have no `Bash`, so you cannot run `git rev-parse HEAD`. Resolve the
 current commit by reading git's own on-disk files instead — this stays
-entirely inside `Read`/`Grep`:
+entirely inside `Read`/`Grep`.
 
-1. `Read` `.git/HEAD`. If its content is `ref: refs/heads/<branch>`, that
-   names the ref to resolve. If instead it's a bare 40-character hex string,
-   the repository is in detached-HEAD state and that string *is* the
-   current commit — skip to step 4 (the comparison).
-2. Try `Read` on `.git/<ref path from step 1>` (e.g.
-   `.git/refs/heads/docs/documentation-system`). If it exists, its content
-   is the current commit SHA.
-3. If that file doesn't exist (the ref is packed, not loose), `Grep` for
-   the ref path as a whole word in `.git/packed-refs`; the SHA is the first
-   field on the matching line.
-4. Compare the resolved current commit against the manifest's
-   `generatedFromCommit`.
-   - If `generatedFromCommit` is `null` or missing: **report this as a
-     failure condition**, not a minor note. Per `build.mjs`'s own comment,
-     a null stamp means the builder ran somewhere without git (e.g. the
-     bot's Docker test container) and staleness relative to HEAD is
-     unknowable — treat it as "always stale," never as "nothing to compare
-     against."
-   - If it doesn't match the resolved current commit: report the manifest
-     as stale, naming both SHAs, and recommend regeneration (the command
-     above) as a finding — do not attempt it yourself.
-   - If it matches: report that explicitly as a positive finding, not
-     silence.
+### 3a — plain repo or worktree?
+
+Attempt `Read` on the path `.git` itself (not `.git/HEAD` yet). In an
+ordinary checkout, `.git` is a directory, and reading it as a file fails —
+that failure is expected and simply means you're in the plain-repo case
+below. If the `Read` *succeeds* and returns a single line of the form
+`gitdir: <path>`, you're inside a **git worktree** (this repo genuinely has
+five, under `.claude/worktrees/`): `.git` there is a small file, not a
+directory, and the real per-worktree `HEAD` lives at `<path>/HEAD`, not
+`.git/HEAD`. Record that `<path>` as `WT_GITDIR`. If the `Read` succeeds but
+the content doesn't match the `gitdir: <path>` shape, that's an unexpected
+format — go straight to UNDETERMINABLE, don't guess at what it might mean.
+
+### 3b — resolve HEAD to a ref name or a raw SHA
+
+- **Plain repo:** `Read` `.git/HEAD`.
+- **Worktree:** `Read` `<WT_GITDIR>/HEAD`.
+
+Either way, if the content is `ref: refs/heads/<branch>`, that names the
+ref to resolve in 3c. If instead it's a bare 40-character hex string, the
+repository (or worktree) is in detached-HEAD state and that string *is*
+the current commit — skip 3c entirely and go to 3d. Any other content is
+UNDETERMINABLE.
+
+### 3c — resolve a ref name to a SHA (loose, then packed, exact match only)
+
+Where you look depends on whether you're in a worktree, because
+`refs/heads/*` is shared across the main checkout and all of its worktrees
+via a `commondir` pointer, not duplicated per worktree — confirmed in this
+repo: a worktree branch's ref lives only in the *main* repo's `.git`, not
+under the worktree's own `.git/worktrees/<name>/`.
+
+- **Plain repo:** the base directory for refs is `.git`.
+- **Worktree:** `Read` `<WT_GITDIR>/commondir` — its content is a relative
+  path (typically `../..`) from `WT_GITDIR` to the shared git directory.
+  Resolve it to get the base directory for refs (this will be the main
+  checkout's `.git`). If `commondir` is missing or unreadable, that's
+  UNDETERMINABLE — do not assume `.git` at the repo root as a fallback.
+
+With that base directory in hand:
+
+1. Try `Read` on `<base>/refs/heads/<branch>` (e.g.
+   `<base>/refs/heads/docs/documentation-system`). If it exists, its
+   content is the current commit SHA — done.
+2. If that file doesn't exist, the ref may be packed. `Grep` `<base>/packed-refs`
+   for the literal text `refs/heads/<branch>` using a fixed-string (not
+   regex) search — branch names in this repo contain characters like `+`
+   that are regex metacharacters, so a literal search avoids
+   misinterpreting them. Packed-refs lines have the form `<sha> <ref>`.
+   **A candidate line only counts as a match if the ref field, read to the
+   end of the line, is *exactly* `refs/heads/<branch>` — not merely
+   prefixed by it.** Reject any line where the ref field continues past
+   your branch name (e.g. a lookup for `docs/documentation-system` must
+   not accept a line for `refs/heads/docs/documentation-system-v2`); take
+   the SHA from that line only after confirming the exact match.
+3. If the ref appears in neither location: UNDETERMINABLE.
+
+### 3d — compare
+
+Compare the resolved current commit (from 3b's detached case, or from 3c)
+against the manifest's `generatedFromCommit`.
+
+- If resolution in 3a/3b/3c failed at any point (per the governing rule
+  above): report **UNDETERMINABLE**, and treat the manifest as stale for
+  the purposes of your report — never as "nothing to compare against."
+- If `generatedFromCommit` is `null` or missing: also **UNDETERMINABLE**,
+  reported as a failure condition, not a minor note. Per `build.mjs`'s own
+  comment, a null stamp means the builder ran somewhere without git (e.g.
+  the bot's Docker test container) and staleness relative to HEAD is
+  unknowable — treat it as "always stale," never as "nothing to compare
+  against."
+- If resolution succeeded and the SHAs don't match: report the manifest as
+  **stale**, naming both SHAs, and recommend regeneration (the command
+  above) as a finding — do not attempt it yourself.
+- If resolution succeeded and the SHAs match: report **fresh**, explicitly,
+  not as silence.
 
 ## Step 4 — spot-check the manifest's claims against real source
 
@@ -131,10 +196,13 @@ flagging even if each individual entry is internally consistent.
 
 Produce a report with these sections, in order:
 
-1. **Staleness check** — the resolution method used (loose ref / packed
-   ref / detached HEAD), both SHAs compared, and the verdict — fresh, stale
-   (with a regeneration recommendation, not an attempt), or undeterminable
-   (null stamp, treated as stale).
+1. **Staleness check** — whether you were in a plain repo or a worktree
+   (and if a worktree, the `commondir` you resolved), the resolution method
+   used (loose ref / packed ref / detached HEAD), both SHAs compared where
+   resolution succeeded, and the verdict: fresh, stale (with a
+   regeneration recommendation, not an attempt), or UNDETERMINABLE (a null
+   stamp or any resolution failure — both treated as stale, per Step 3's
+   governing rule).
 2. **Spot-check results** — for each of the five-plus entries you checked:
    the feature id, what you recomputed vs. what the manifest says, and every
    path you verified with a pass/fail. State clearly whether each entry
