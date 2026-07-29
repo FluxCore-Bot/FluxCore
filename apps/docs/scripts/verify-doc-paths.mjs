@@ -5,43 +5,57 @@
  * Fabricated paths are the primary failure mode of generated documentation —
  * CLAUDE.md itself still cites a stale pre-refactor command path that has
  * not existed since the move to a feature-sliced layout. This script
- * extracts every repo-relative path a doc page cites (backticked inline
- * code and markdown link targets) and checks each one against the real
- * filesystem, never against another doc file.
+ * extracts every path a doc page cites (backticked inline code and markdown
+ * link targets) — both repo-root-relative (`apps/...`) and file-relative
+ * (`./...`, `../...`) — and checks each one against the real filesystem,
+ * never against another doc file.
  *
  * Used two ways:
  *   - As a module: `extractRepoPaths` / `findMissingPaths` / `extractAllowedPaths`
  *     are imported directly by tests and by any other script that wants to
  *     verify paths.
- *   - As a CLI: `node verify-doc-paths.mjs --stdin` reads content from
- *     stdin and prints one missing path per line (used by the
- *     docs-path-guard.sh PreToolUse hook). Exits non-zero — and prints
- *     nothing to stdout — if it cannot run as expected (wrong invocation,
- *     an uncaught exception). The caller must treat a non-zero exit as
- *     "verification did not happen," never as "nothing missing": the two
- *     are not the same thing, and conflating them is how a guard fails
- *     open silently.
+ *   - As a CLI: `node verify-doc-paths.mjs --stdin [--doc-dir <dir>]` reads
+ *     content from stdin and prints one missing path per line (used by the
+ *     docs-path-guard.sh PreToolUse hook). `--doc-dir` is the directory of
+ *     the file being edited, needed to resolve `./`/`../` paths correctly —
+ *     see `findMissingPaths` for why that anchor matters. Exits non-zero —
+ *     and prints nothing to stdout — if it cannot run as expected (wrong
+ *     invocation, an uncaught exception). The caller must treat a non-zero
+ *     exit as "verification did not happen," never as "nothing missing":
+ *     the two are not the same thing, and conflating them is how a guard
+ *     fails open silently.
  */
 
 import { existsSync } from "node:fs";
-import { join, resolve, dirname } from "node:path";
+import { join, resolve, relative, isAbsolute, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-// Matches a repo-relative path starting with one of the known top-level
-// directories, preceded by start-of-string, whitespace, a backtick, or an
-// opening bracket/paren (the contexts `extractRepoPaths` cares about: inline
-// code and markdown link targets). Excludes trailing punctuation that closes
-// a markdown construct or ends a sentence (`)`, `]`, `.`, `,`, backtick are
-// not in the character class), so ``` `apps/bot/src/index.ts`. ``` and
-// `[text](apps/foo/bar.ts)` don't pull in the closer. It also can't include
-// `<`, `[`, or `{` (also markdown/link/template delimiters) — see
+// Matches either:
+//   - a repo-root-relative path starting with one of the known top-level
+//     directories (`apps/...`, `packages/...`, `docs/...`, `scripts/...`), or
+//   - a file-relative path starting with `./` or `../` (one or more
+//     `../`/`./` segments, e.g. `../../foo/bar.ts`).
+// preceded by start-of-string, whitespace, a backtick, or an opening
+// bracket/paren (the contexts `extractRepoPaths` cares about: inline code
+// and markdown link targets). We deliberately do NOT add `.` to that LEAD
+// character class — that would treat prose periods as path starts and flag
+// every sentence-adjacent word as a fabricated relative path. Instead, the
+// `./`/`../` alternative below matches the dot as part of the PATH itself,
+// only once it's already preceded by a legitimate lead character.
+//
+// Excludes trailing punctuation that closes a markdown construct or ends a
+// sentence (`)`, `]`, `.`, `,`, backtick are not in the character class), so
+// ``` `apps/bot/src/index.ts`. ``` and `[text](apps/foo/bar.ts)` don't pull
+// in the closer. Neither alternative's character class includes `<`, `[`,
+// or `{` (also markdown/link/template delimiters) — see
 // `shallowTemplatePrefix` below for how a match immediately followed by one
-// of those is handled. The trailing class uses `*` rather than `+` so a
-// placeholder sitting directly in the second segment (`packages/<name>/...`,
-// with zero real characters between the slash and the placeholder) still
-// produces a match to reduce, instead of not matching at all and going
-// unchecked.
-const PATH_PATTERN = /(?:^|[\s`("[])((?:apps|packages|docs|scripts)\/[\w.$/-]*)/g;
+// of those is handled. Both alternatives use `*` rather than `+` on the
+// trailing class so a placeholder sitting directly in the second segment
+// (`packages/<name>/...`, with zero real characters between the slash and
+// the placeholder) still produces a match to reduce, instead of not
+// matching at all and going unchecked.
+const PATH_PATTERN =
+  /(?:^|[\s`("[])((?:apps|packages|docs|scripts)\/[\w.$/-]*|(?:\.\.?\/)+[\w.$/-]*)/g;
 
 // Characters that open a template placeholder segment (`<feature>`,
 // `[locale]`, `{slug}`). None of them are in PATH_PATTERN's character
@@ -53,11 +67,11 @@ const PATH_PATTERN = /(?:^|[\s`("[])((?:apps|packages|docs|scripts)\/[\w.$/-]*)/
 const TEMPLATE_PLACEHOLDER_LEAD = new Set(["<", "[", "{"]);
 
 /**
- * Extract every repo-relative path cited in `content` (backticked inline
- * code, markdown link targets), deduplicated and in first-seen order. URLs
- * are stripped first so a path-shaped URL segment (e.g.
- * `https://example.com/apps/bot/src/x.ts`) is never mistaken for a repo
- * path.
+ * Extract every path cited in `content` (backticked inline code, markdown
+ * link targets) — both repo-root-relative and file-relative — deduplicated
+ * and in first-seen order. URLs are stripped first so a path-shaped URL
+ * segment (e.g. `https://example.com/apps/bot/src/x.ts`) is never mistaken
+ * for a repo path.
  *
  * A path immediately followed by a template placeholder delimiter (`<`,
  * `[`, `{`) is a templated path, not a concrete one — but a placeholder
@@ -100,7 +114,10 @@ export function extractRepoPaths(content) {
  * placeholder IS the second segment (`packages/<name>/src/index.ts`, where
  * `raw` is just `packages/`), there's only one real segment to check, and
  * checking `packages` alone is exactly the fallback: still deep enough to
- * confirm `packages` is a real top-level directory.
+ * confirm `packages` is a real top-level directory. The same logic applies
+ * to a file-relative templated path (`./<feature>.mdx` reduces to `.`,
+ * `../<feature>/thing.ts` reduces to `..`) — see `isRelativeSpecifier`,
+ * which recognizes a bare `.`/`..` as relative too.
  * @param {string} raw
  * @returns {string | null}
  */
@@ -128,13 +145,75 @@ function trimTrailingPunctuation(path) {
 }
 
 /**
- * Filter `paths` down to the ones that do not exist under `repoRoot`.
+ * Whether `p` is a file-relative specifier (`.`, `..`, `./...`, `../...`)
+ * rather than a repo-root-relative one.
+ * @param {string} p
+ * @returns {boolean}
+ */
+function isRelativeSpecifier(p) {
+  return p === "." || p === ".." || p.startsWith("./") || p.startsWith("../");
+}
+
+/**
+ * Whether the absolute path `candidate` is inside `repoRoot` (or is
+ * `repoRoot` itself). Used to stop a `../` chain from resolving outside the
+ * repo — see `findMissingPaths`.
+ * @param {string} candidate
+ * @param {string} repoRoot
+ * @returns {boolean}
+ */
+function isWithinRepo(candidate, repoRoot) {
+  const rel = relative(repoRoot, candidate);
+  return rel === "" || (!rel.startsWith("..") && !isAbsolute(rel));
+}
+
+/**
+ * Filter `paths` down to the ones that do not exist.
+ *
+ * Resolution depends on the shape of each path:
+ *   - A file-relative path (`./x`, `../x`, or bare `.`/`..`) is resolved
+ *     against `docDir` — the directory of the file being edited, NOT
+ *     `repoRoot`. `./x` written inside `apps/docs/package.json` means
+ *     `apps/docs/x`, not `<repo-root>/x`. If `docDir` isn't supplied, a
+ *     file-relative path can't be resolved at all and is treated as
+ *     missing (fail safe, consistent with how this guard treats any other
+ *     "couldn't verify" state). A `../` chain that resolves outside
+ *     `repoRoot` entirely is ALSO treated as missing, even if the resolved
+ *     path happens to exist on the host filesystem — this guard verifies
+ *     REPO paths, not arbitrary filesystem paths, and a doc that "passes"
+ *     by pointing at `/etc/passwd` is a worse outcome than a doc that gets
+ *     blocked. A `../` chain that stays inside the repo (e.g. reaching from
+ *     `apps/docs` into `apps/bot`) is legitimate and checked normally.
+ *   - A bare path with no `./`/`../` prefix (including one that happens to
+ *     start with a recognized top-level directory name like `scripts/`) is
+ *     tried against `docDir` first, falling back to `repoRoot`. This is
+ *     what makes `"node scripts/check-coverage.mjs"` inside
+ *     `apps/docs/package.json` resolve honestly to
+ *     `apps/docs/scripts/check-coverage.mjs` (how npm/pnpm actually runs
+ *     that command — relative to the package directory, not the repo
+ *     root) while still matching the existing, established convention that
+ *     documentation prose writes `apps/bot/src/index.ts` to mean the
+ *     repo-root path. If `docDir` isn't supplied, this falls back to the
+ *     original repo-root-only behavior.
  * @param {string[]} paths
  * @param {string} repoRoot
+ * @param {string} [docDir]
  * @returns {string[]}
  */
-export function findMissingPaths(paths, repoRoot) {
-  return paths.filter((p) => !existsSync(join(repoRoot, p)));
+export function findMissingPaths(paths, repoRoot, docDir) {
+  return paths.filter((p) => {
+    if (isRelativeSpecifier(p)) {
+      if (!docDir) return true;
+      const resolved = resolve(docDir, p);
+      if (!isWithinRepo(resolved, repoRoot)) return true;
+      return !existsSync(resolved);
+    }
+    if (docDir) {
+      const local = resolve(docDir, p);
+      if (isWithinRepo(local, repoRoot) && existsSync(local)) return false;
+    }
+    return !existsSync(join(repoRoot, p));
+  });
 }
 
 // Matches `<!-- docs-path-guard: allow <path>[, <path>...] reason: "<why>" -->`.
@@ -178,21 +257,34 @@ async function readStdin() {
   return Buffer.concat(chunks).toString("utf-8");
 }
 
+/**
+ * @param {string[]} argv
+ * @param {string} flag
+ * @returns {string | undefined}
+ */
+function getFlagValue(argv, flag) {
+  const idx = argv.indexOf(flag);
+  if (idx === -1 || idx + 1 >= argv.length) return undefined;
+  return argv[idx + 1];
+}
+
 async function main() {
   if (process.argv.includes("--stdin")) {
     const content = await readStdin();
     const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
+    const docDirArg = getFlagValue(process.argv, "--doc-dir");
+    const docDir = docDirArg ? resolve(docDirArg) : undefined;
     const paths = extractRepoPaths(content);
     const allowed = extractAllowedPaths(content);
     const toCheck = paths.filter((p) => !allowed.has(p));
-    const missing = findMissingPaths(toCheck, repoRoot);
+    const missing = findMissingPaths(toCheck, repoRoot, docDir);
     for (const path of missing) {
       console.log(path);
     }
     return;
   }
 
-  console.error("Usage: verify-doc-paths.mjs --stdin");
+  console.error("Usage: verify-doc-paths.mjs --stdin [--doc-dir <dir>]");
   process.exitCode = 1;
 }
 

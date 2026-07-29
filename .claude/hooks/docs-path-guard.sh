@@ -18,6 +18,15 @@ CONTENT=$(echo "$INPUT" | jq -r '.tool_input.content // .tool_input.new_string /
 REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || echo ".")
 VERIFY_SCRIPT="$REPO_ROOT/apps/docs/scripts/verify-doc-paths.mjs"
 
+# Resolve the edited file's directory as an absolute path — needed so
+# ./x and ../x paths inside its content are checked against the FILE's
+# location, not against the repo root or the hook's own cwd.
+case "$FILE_PATH" in
+  /*) ABS_FILE_PATH="$FILE_PATH" ;;
+  *) ABS_FILE_PATH="$REPO_ROOT/$FILE_PATH" ;;
+esac
+DOC_DIR=$(dirname "$ABS_FILE_PATH")
+
 # Capture the verifier's exit status separately from its output, and do NOT
 # let a failure collapse into "nothing missing". A verifier that cannot run
 # (script deleted/renamed, node missing, a bug in verify-doc-paths.mjs) must
@@ -25,7 +34,7 @@ VERIFY_SCRIPT="$REPO_ROOT/apps/docs/scripts/verify-doc-paths.mjs"
 # guard at all, because it looks like protection while providing none.
 STDERR_FILE=$(mktemp)
 set +e
-MISSING=$(echo "$CONTENT" | node "$VERIFY_SCRIPT" --stdin 2>"$STDERR_FILE")
+MISSING=$(echo "$CONTENT" | node "$VERIFY_SCRIPT" --stdin --doc-dir "$DOC_DIR" 2>"$STDERR_FILE")
 STATUS=$?
 set -e
 VERIFIER_ERROR=$(cat "$STDERR_FILE")
@@ -47,7 +56,7 @@ if [ -n "$MISSING" ]; then
     hookSpecificOutput: {
       hookEventName: "PreToolUse",
       permissionDecision: "deny",
-      permissionDecisionReason: ("BLOCKED: this page references repo paths that do not exist:\n" + $missing + "\n\nThe apps were refactored to a feature-sliced layout. Commands live in apps/bot/src/features/<module>/commands/, dashboard API in apps/dashboard/src/server/features/, dashboard UI in apps/dashboard/src/client/features/. Verify against the source tree, not CLAUDE.md. Note: a templated path (containing <placeholder>, [placeholder], or {placeholder}) is checked by its first two static path segments only, e.g. apps/nonexistent-app/<feature>/thing.ts is flagged because apps/nonexistent-app does not exist.\n\nIf a path is deliberately not real (e.g. instructing the reader to create a file), add an explicit exemption directly in the page:\n  <!-- docs-path-guard: allow path/one, path/two reason: \"why these are intentionally not real\" -->\nA marker with no reason exempts nothing.")
+      permissionDecisionReason: ("BLOCKED: this page references repo paths that do not exist:\n" + $missing + "\n\nThe apps were refactored to a feature-sliced layout. Commands live in apps/bot/src/features/<module>/commands/, dashboard API in apps/dashboard/src/server/features/, dashboard UI in apps/dashboard/src/client/features/. Verify against the source tree, not CLAUDE.md. Note: a templated path (containing <placeholder>, [placeholder], or {placeholder}) is checked by its first two static path segments only, e.g. apps/nonexistent-app/<feature>/thing.ts is flagged because apps/nonexistent-app does not exist. A ./ or ../ path is resolved against THIS file'\''s own directory (not the repo root); a bare path with no ./ prefix is tried against this file'\''s directory first and falls back to the repo root.\n\nIf a path is deliberately not real (e.g. instructing the reader to create a file), add an explicit exemption directly in the page:\n  <!-- docs-path-guard: allow path/one, path/two reason: \"why these are intentionally not real\" -->\nA marker with no reason exempts nothing.")
     }
   }'
   exit 0

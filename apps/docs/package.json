@@ -11,7 +11,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "manifest": "node scripts/manifest/build.mjs",
-    "check-coverage": "node ./scripts/check-coverage.mjs",
+    "check-coverage": "node scripts/check-coverage.mjs",
     "clean": "rm -rf .next out .source"
   },
   "dependencies": {

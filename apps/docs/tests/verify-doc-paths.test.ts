@@ -109,6 +109,37 @@ describe("extractRepoPaths", () => {
       ).toEqual(["apps/bot/src/index.ts", "apps/docs"]);
     });
   });
+
+  // Regression coverage for a blind spot found by a later task's review:
+  // the LEAD character class allows whitespace/backtick/paren/quote/bracket
+  // but not `.`, so a file-relative path (`./x`, `../x`) never matched
+  // PATH_PATTERN at all and was completely invisible to the guard. This
+  // surfaced when a doc author wrote `node ./scripts/check-coverage.mjs` in
+  // apps/docs/package.json to work around the guard blocking the honest
+  // `node scripts/check-coverage.mjs` form (which the guard checked against
+  // the WRONG anchor — repo root instead of apps/docs). Adding `.` to the
+  // lead-char class was explicitly ruled out (it would flag every
+  // legitimate workspace-relative path as missing); instead, `./`/`../` is
+  // matched as part of the path itself, only once a legitimate lead
+  // character already precedes it.
+  describe("relative paths", () => {
+    it("extracts a ./-prefixed path", () => {
+      expect(extractRepoPaths("run `./scripts/check-coverage.mjs`")).toEqual([
+        "./scripts/check-coverage.mjs",
+      ]);
+    });
+
+    it("extracts a ../-prefixed path", () => {
+      expect(extractRepoPaths("see `../bot/src/index.ts` for details")).toEqual([
+        "../bot/src/index.ts",
+      ]);
+    });
+
+    it("does not false-positive on prose punctuation that merely resembles a relative path", () => {
+      expect(extractRepoPaths("Node.js version 1.2.3/release notes")).toEqual([]);
+      expect(extractRepoPaths("an ellipsis case .../scripts/foo.ts")).toEqual([]);
+    });
+  });
 });
 
 describe("findMissingPaths", () => {
@@ -125,6 +156,69 @@ describe("findMissingPaths", () => {
 
   it("accepts directory paths", () => {
     expect(findMissingPaths(["packages/systems/src/"], repoRoot)).toEqual([]);
+  });
+
+  describe("relative paths (resolved against docDir, not repoRoot)", () => {
+    const docsDir = resolve(repoRoot, "apps/docs");
+
+    it("flags a fabricated ./-prefixed path", () => {
+      expect(
+        findMissingPaths(["./scripts/totally-fake-nonexistent-file.mjs"], repoRoot, docsDir),
+      ).toEqual(["./scripts/totally-fake-nonexistent-file.mjs"]);
+    });
+
+    it("passes a real ./-prefixed path resolved against the edited file's directory", () => {
+      // apps/docs/scripts/check-coverage.mjs is real; apps/docs is repoRoot's
+      // idea of "scripts/check-coverage.mjs" is NOT (that's the whole bug).
+      expect(findMissingPaths(["./scripts/check-coverage.mjs"], repoRoot, docsDir)).toEqual([]);
+    });
+
+    it("treats an unresolvable relative path (no docDir given) as missing rather than silently passing", () => {
+      expect(findMissingPaths(["./scripts/check-coverage.mjs"], repoRoot)).toEqual([
+        "./scripts/check-coverage.mjs",
+      ]);
+    });
+
+    it("passes a ../ traversal that stays within the repo", () => {
+      // From apps/docs, ../bot/src/index.ts reaches a real file in a
+      // different package — still inside the repo, so it's legitimate.
+      expect(findMissingPaths(["../bot/src/index.ts"], repoRoot, docsDir)).toEqual([]);
+    });
+
+    it("flags a ../ traversal that resolves outside the repo, even if the target happens to exist on the host", () => {
+      // This guard verifies REPO paths, not arbitrary filesystem paths. A
+      // deep enough ../ chain from apps/docs escapes repoRoot entirely; even
+      // though the resolved absolute path (something like /etc/passwd) may
+      // exist on the machine running the check, it is not a repo path and
+      // must not "pass".
+      const escaping = "../".repeat(20) + "etc/passwd";
+      expect(findMissingPaths([escaping], repoRoot, docsDir)).toEqual([escaping]);
+    });
+  });
+
+  describe("bare relative paths (no ./ prefix)", () => {
+    const docsDir = resolve(repoRoot, "apps/docs");
+
+    it("resolves a bare path against docDir first, honestly matching how pnpm scripts actually run", () => {
+      // "scripts" is also a recognized repo-root top-level directory, so
+      // this path is ambiguous on its face. Package.json "scripts" entries
+      // are always shell-CWD-relative (the package directory), never
+      // repo-root-relative, so checking the local directory first is the
+      // behavior that matches reality.
+      expect(findMissingPaths(["scripts/check-coverage.mjs"], repoRoot, docsDir)).toEqual([]);
+    });
+
+    it("falls back to repoRoot when there is no local match, unchanged from the original behavior", () => {
+      expect(
+        findMissingPaths(["apps/bot/src/commands/moderation/ban.ts"], repoRoot, docsDir),
+      ).toEqual(["apps/bot/src/commands/moderation/ban.ts"]);
+    });
+
+    it("still checks repoRoot only when docDir is omitted (backward compatible)", () => {
+      expect(findMissingPaths(["scripts/check-coverage.mjs"], repoRoot)).toEqual([
+        "scripts/check-coverage.mjs",
+      ]);
+    });
   });
 });
 
@@ -184,6 +278,11 @@ function runCli(content: string): { stdout: string; status: number } {
   return runCliRaw(["--stdin"], content);
 }
 
+/** Run the real CLI with a --doc-dir flag, exactly as the hook invokes it. */
+function runCliWithDocDir(content: string, docDir: string): { stdout: string; status: number } {
+  return runCliRaw(["--stdin", "--doc-dir", docDir], content);
+}
+
 describe("CLI (--stdin)", () => {
   it("prints one missing path per line", () => {
     const result = runCli("see `apps/bot/src/commands/moderation/ban.ts`");
@@ -213,5 +312,34 @@ describe("CLI (--stdin)", () => {
     const result = runCliRaw([], "");
     expect(result.status).not.toBe(0);
     expect(result.stdout.trim()).toBe("");
+  });
+
+  describe("--doc-dir (relative path resolution, end to end)", () => {
+    const docsDir = resolve(repoRoot, "apps/docs");
+
+    it("flags a fabricated ./-prefixed path", () => {
+      const result = runCliWithDocDir(
+        "run `./scripts/totally-fake-nonexistent-file.mjs`",
+        docsDir,
+      );
+      expect(result.stdout.trim().split("\n")).toEqual([
+        "./scripts/totally-fake-nonexistent-file.mjs",
+      ]);
+    });
+
+    it("passes the real workspace-relative path that motivated this fix", () => {
+      // This is the exact content that used to force the ./ workaround:
+      // "scripts/check-coverage.mjs" bare, checked against apps/docs.
+      const result = runCliWithDocDir('"check-coverage": "node scripts/check-coverage.mjs"', docsDir);
+      expect(result.stdout.trim()).toBe("");
+    });
+
+    it("passes the ./ form of the same real path", () => {
+      const result = runCliWithDocDir(
+        '"check-coverage": "node ./scripts/check-coverage.mjs"',
+        docsDir,
+      );
+      expect(result.stdout.trim()).toBe("");
+    });
   });
 });
