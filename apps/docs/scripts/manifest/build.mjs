@@ -3,8 +3,8 @@
  * `apps/docs/_manifest.json`, the single source that drives every
  * documentation page.
  *
- * Run: node scripts/manifest/build.mjs   (from apps/docs)
- *  or: pnpm --filter @fluxcore/docs manifest
+ * Run: pnpm --filter @fluxcore/docs manifest
+ *  or: pnpm manifest   (from the apps/docs package directory)
  */
 
 import { execSync } from "node:child_process";
