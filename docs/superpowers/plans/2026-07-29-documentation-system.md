@@ -245,6 +245,15 @@ git commit -m "feat(docs): apply Obsidian Engine tokens to the docs theme"
 
 The single most important piece of logic in this system. It decides whether a feature is documented as working or buried under a "Planned" banner — and `CLAUDE.md` gets this wrong for ten shipped modules.
 
+> **CORRECTED during Task 4 — this task's rule as written below is WRONG.** `hasSource` must
+> also count `serverFeature` and `clientRoute`:
+> `const hasSource = Boolean(evidence.system || evidence.botFeature || evidence.serverFeature || evidence.clientRoute);`
+> As originally specified it counted only a system or bot-feature directory, so dashboard-only
+> features — `permissions`, `settings`, `overview` — came out `planned` despite being shipped.
+> Features also carry `audience = isReachable ? "user" : "developer"`, and Task 4's Step 6 gate
+> was widened to assert that no feature with a client route or commands is `planned`.
+> See the spec's Status rule section and the SDD ledger for the full ruling.
+
 **Files:**
 - Create: `apps/docs/scripts/manifest/status.mjs`
 - Create: `apps/docs/tests/status.test.ts`

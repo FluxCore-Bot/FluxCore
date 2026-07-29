@@ -156,7 +156,18 @@ export function buildManifest(repoRoot) {
   }
 
   const features = [...registry.entries()]
-    .map(([id, evidence]) => ({ id, status: deriveStatus(evidence), evidence }))
+    .map(([id, evidence]) => {
+      const isReachable = (evidence.commands ?? []).length > 0 || Boolean(evidence.clientRoute);
+      return {
+        id,
+        status: deriveStatus(evidence),
+        // Derived, not hand-maintained: anything with no user-facing surface
+        // (no commands, no dashboard route) is internal/infrastructure and
+        // belongs in the developer section only, never the user guide.
+        audience: isReachable ? "user" : "developer",
+        evidence,
+      };
+    })
     .sort((a, b) => a.id.localeCompare(b.id));
 
   const generatedFromCommit = execSync("git rev-parse HEAD", { cwd: repoRoot })

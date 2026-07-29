@@ -92,4 +92,38 @@ describe("deriveStatus", () => {
       }),
     ).toBe("shipped");
   });
+
+  it("returns partial when only serverFeature exists (dashboard-only, not reachable)", () => {
+    // Regression guard: dashboard-only features (permissions, settings,
+    // overview, auth, guilds, discord) have no packages/systems dir and no
+    // bot feature dir, but a real serverFeature proves source exists.
+    expect(
+      deriveStatus({
+        ...empty,
+        serverFeature: "apps/dashboard/src/server/features/auth",
+      }),
+    ).toBe("partial");
+  });
+
+  it("returns shipped when only clientRoute exists (proves both source and reachability)", () => {
+    expect(
+      deriveStatus({
+        ...empty,
+        clientRoute: "/guild/$guildId/overview",
+      }),
+    ).toBe("shipped");
+  });
+
+  it("returns shipped when serverFeature and clientRoute both exist", () => {
+    // This is the dashboard-permissions case: shipped last week, no
+    // packages/systems/src/permissions dir, but a real server feature and
+    // a real, reachable dashboard route.
+    expect(
+      deriveStatus({
+        ...empty,
+        serverFeature: "apps/dashboard/src/server/features/permissions",
+        clientRoute: "/guild/$guildId/permissions",
+      }),
+    ).toBe("shipped");
+  });
 });

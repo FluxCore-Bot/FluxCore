@@ -152,16 +152,41 @@ A feature entry, using a real example:
 }
 ```
 
-**Status rule**, stated so it cannot be fudged:
+**Status rule**, stated so it cannot be fudged. *Corrected 2026-07-29 during implementation —
+see below.*
 
-- `shipped` — a system **or** bot-feature directory exists **and** there is a reachable user
-  surface (a registered command or an existing dashboard route)
-- `planned` — a spec file exists with **no** matching source
-- `partial` — anything else; the page must state what works and what does not
+- **has source** — any of: a system directory, a bot-feature directory, a dashboard server
+  feature, or a dashboard client route
+- **is reachable** — a registered command, or an existing dashboard route
+- `shipped` — has source **and** is reachable
+- `planned` — no source at all
+- `partial` — has source but is not reachable; the page must state what works and what does not
 
-**Naming traps the manifest resolves.** Route names do not match feature names: the client
-route is `rules.tsx` but the feature is `automation`; `logs.tsx` is `logging`. Left implicit,
-these produce wrong links.
+**Audience** is derived alongside status: `audience = isReachable ? "user" : "developer"`.
+Entries that are real infrastructure with no user-facing surface — `queue`, `auth`, `guilds`,
+`discord` — are documented in the developer section only and never appear in the user guide.
+Deriving this avoids the hand-maintained list the whole system exists to eliminate.
+
+> **Why the rule was corrected.** As first written, *has source* counted only a system or
+> bot-feature directory. Dashboard-only features have neither, so the first generated manifest
+> marked `permissions`, `settings`, and `overview` as `planned` — `permissions` being the
+> delegated dashboard access shipped a week earlier. That is exactly the failure this design
+> exists to prevent, arrived at from the opposite direction. The verification gate missed it
+> because it only checked the ten modules `CLAUDE.md` misreports, all of which happen to have
+> `packages/systems/` directories. The gate now asserts the general form: **no feature with a
+> client route or any commands may be marked `planned`.**
+
+**Naming traps the manifest resolves.** Route names do not match feature names, and the
+mismatches are not derivable from filenames — they must be encoded explicitly. Confirmed during
+implementation: `rules` → `automation`, `logs` → `logging`, `roles` → `rolePanel`,
+`security` → `antiraid`, `commands` → `customCommands`, `actions` → `automation`. Case also
+diverges across sources: the dashboard uses `tempvoice` while `packages/systems` uses
+`tempVoice`, which split into two feature entries — one falsely `planned` — until unified.
+
+**Manifest generation runs on the host, not in Docker.** `build.mjs` uses only Node built-ins,
+so no `pnpm install` is involved and the Docker rule — which exists for `node_modules`
+ownership — does not apply. The `bot` container has no `git` binary and no `.git` mount, so
+`git rev-parse HEAD` cannot work there. Tests still run in Docker.
 
 ### Phase 2 — Generation
 

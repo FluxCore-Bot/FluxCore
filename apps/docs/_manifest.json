@@ -1,10 +1,11 @@
 {
-  "generatedFromCommit": "8dc81f88d080b0a2c43f40d87d0a12dbb3b38619",
-  "generatedAt": "2026-07-29T01:11:15.496Z",
+  "generatedFromCommit": "5f5e2fcd5d9ab787a0d386e3f63cd752b22d95bd",
+  "generatedAt": "2026-07-29T04:44:06.108Z",
   "features": [
     {
       "id": "antiraid",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": "packages/systems/src/antiraid",
         "botFeature": null,
@@ -16,7 +17,8 @@
     },
     {
       "id": "auth",
-      "status": "planned",
+      "status": "partial",
+      "audience": "developer",
       "evidence": {
         "system": null,
         "botFeature": null,
@@ -29,6 +31,7 @@
     {
       "id": "automation",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": "packages/systems/src/actions",
         "botFeature": "apps/bot/src/features/automation",
@@ -43,6 +46,7 @@
     {
       "id": "customCommands",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": "packages/systems/src/customCommands",
         "botFeature": null,
@@ -54,7 +58,8 @@
     },
     {
       "id": "discord",
-      "status": "planned",
+      "status": "partial",
+      "audience": "developer",
       "evidence": {
         "system": null,
         "botFeature": null,
@@ -67,6 +72,7 @@
     {
       "id": "general",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": null,
         "botFeature": "apps/bot/src/features/general",
@@ -85,6 +91,7 @@
     {
       "id": "giveaways",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": "packages/systems/src/giveaways",
         "botFeature": "apps/bot/src/features/giveaways",
@@ -98,7 +105,8 @@
     },
     {
       "id": "guilds",
-      "status": "planned",
+      "status": "partial",
+      "audience": "developer",
       "evidence": {
         "system": null,
         "botFeature": null,
@@ -111,6 +119,7 @@
     {
       "id": "i18n-accessibility",
       "status": "planned",
+      "audience": "developer",
       "evidence": {
         "system": null,
         "botFeature": null,
@@ -123,6 +132,7 @@
     {
       "id": "leveling",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": "packages/systems/src/leveling",
         "botFeature": "apps/bot/src/features/leveling",
@@ -139,6 +149,7 @@
     {
       "id": "logging",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": "packages/systems/src/logging",
         "botFeature": null,
@@ -151,6 +162,7 @@
     {
       "id": "moderation",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": "packages/systems/src/moderation",
         "botFeature": "apps/bot/src/features/moderation",
@@ -175,7 +187,8 @@
     },
     {
       "id": "overview",
-      "status": "planned",
+      "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": null,
         "botFeature": null,
@@ -187,7 +200,8 @@
     },
     {
       "id": "permissions",
-      "status": "planned",
+      "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": null,
         "botFeature": null,
@@ -200,6 +214,7 @@
     {
       "id": "queue",
       "status": "partial",
+      "audience": "developer",
       "evidence": {
         "system": "packages/systems/src/queue",
         "botFeature": null,
@@ -212,6 +227,7 @@
     {
       "id": "rolePanel",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": "packages/systems/src/rolePanel",
         "botFeature": null,
@@ -226,6 +242,7 @@
     {
       "id": "scheduled",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": "packages/systems/src/scheduled-messages",
         "botFeature": null,
@@ -237,7 +254,8 @@
     },
     {
       "id": "settings",
-      "status": "planned",
+      "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": null,
         "botFeature": null,
@@ -250,6 +268,7 @@
     {
       "id": "starboard",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": "packages/systems/src/starboard",
         "botFeature": null,
@@ -262,6 +281,7 @@
     {
       "id": "suggestions",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": "packages/systems/src/suggestions",
         "botFeature": "apps/bot/src/features/suggestions",
@@ -277,6 +297,7 @@
     {
       "id": "tempVoice",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": "packages/systems/src/tempVoice",
         "botFeature": "apps/bot/src/features/tempvoice",
@@ -291,6 +312,7 @@
     {
       "id": "tickets",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": "packages/systems/src/tickets",
         "botFeature": "apps/bot/src/features/tickets",
@@ -309,6 +331,7 @@
     {
       "id": "utility",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": null,
         "botFeature": "apps/bot/src/features/utility",
@@ -325,6 +348,7 @@
     {
       "id": "warnings",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": "packages/systems/src/warnings",
         "botFeature": null,
@@ -341,6 +365,7 @@
     {
       "id": "welcome",
       "status": "shipped",
+      "audience": "user",
       "evidence": {
         "system": "packages/systems/src/welcome",
         "botFeature": null,

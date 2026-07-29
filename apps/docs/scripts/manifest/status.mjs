@@ -20,7 +20,9 @@
  * @returns {"shipped" | "planned" | "partial"}
  */
 export function deriveStatus(evidence) {
-  const hasSource = Boolean(evidence.system || evidence.botFeature);
+  const hasSource = Boolean(
+    evidence.system || evidence.botFeature || evidence.serverFeature || evidence.clientRoute,
+  );
   const isReachable =
     (evidence.commands ?? []).length > 0 || Boolean(evidence.clientRoute);
 
