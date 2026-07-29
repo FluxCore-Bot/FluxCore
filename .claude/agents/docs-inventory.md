@@ -106,11 +106,15 @@ With that base directory in hand:
 1. Try `Read` on `<base>/refs/heads/<branch>` (e.g.
    `<base>/refs/heads/docs/documentation-system`). If it exists, its
    content is the current commit SHA — done.
-2. If that file doesn't exist, the ref may be packed. `Grep` `<base>/packed-refs`
-   for the literal text `refs/heads/<branch>` using a fixed-string (not
-   regex) search — branch names in this repo contain characters like `+`
-   that are regex metacharacters, so a literal search avoids
-   misinterpreting them. Packed-refs lines have the form `<sha> <ref>`.
+2. If that file doesn't exist, the ref may be packed. `Grep`
+   `<base>/packed-refs` for `refs/heads/<branch>`. **`Grep` is
+   ripgrep-regex-only — it has no fixed-string/literal mode — so you must
+   escape every regex metacharacter in the branch name yourself** before
+   building the pattern: put a backslash before each of
+   `. ^ $ * + ? ( ) [ ] { } | \` and `/` needs no escaping. Branch names in
+   this repo really do contain them (e.g. `feat+command-palette`), and an
+   unescaped `+` turns the ref name into a live quantifier that will not
+   match the text you meant. Packed-refs lines have the form `<sha> <ref>`.
    **A candidate line only counts as a match if the ref field, read to the
    end of the line, is *exactly* `refs/heads/<branch>` — not merely
    prefixed by it.** Reject any line where the ref field continues past
