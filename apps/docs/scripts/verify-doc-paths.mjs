@@ -292,11 +292,26 @@ function indentColumns(line) {
  * Advance `state` across one line, mutating it. Returns true when the line
  * belongs to a code region and must therefore not be scanned — neither for
  * cited paths nor for allow markers.
+ *
+ * `conservative` is true only when the caller has NO idea where this line
+ * really sits in the document (see `main`'s double-unlocatable case). A bare
+ * fence marker — a run of backticks/tildes with no info string — is shaped
+ * exactly like BOTH an opener and a closer; `FENCE_CLOSE_PATTERN` matches it
+ * too. With real context that ambiguity never matters, because the scanner
+ * already knows whether a fence is open. Without it, treating the marker as
+ * an opener is a guess, and a wrong guess in that direction hides every line
+ * that follows — the "seventh occurrence" hole this parameter closes. So in
+ * conservative mode a bare marker never opens a fence; it is left as an
+ * ordinary line and still checked. An opener WITH an info string (```ts) is
+ * never ambiguous — `FENCE_CLOSE_PATTERN` requires nothing but whitespace
+ * after the backticks, so it can never also be a closer — and still opens
+ * normally even in conservative mode.
  * @param {ScanState} state
  * @param {string} rawLine
+ * @param {boolean} [conservative]
  * @returns {boolean}
  */
-function stepScanState(state, rawLine) {
+function stepScanState(state, rawLine, conservative) {
   const line = stripBlockquoteMarkers(rawLine);
 
   if (state.fence !== null) {
@@ -326,9 +341,12 @@ function stepScanState(state, rawLine) {
 
   const opener = FENCE_OPEN_PATTERN.exec(line);
   if (opener && !(opener[1].startsWith("`") && opener[2].includes("`"))) {
-    state.fence = { char: opener[1][0], length: opener[1].length };
-    state.prevBlank = false;
-    return true;
+    const isAmbiguousBareMarker = conservative && FENCE_CLOSE_PATTERN.test(line);
+    if (!isAmbiguousBareMarker) {
+      state.fence = { char: opener[1][0], length: opener[1].length };
+      state.prevBlank = false;
+      return true;
+    }
   }
 
   if (state.prevBlank && indentColumns(line) >= INDENTED_CODE_COLUMNS) {
@@ -362,19 +380,26 @@ function stepScanState(state, rawLine) {
  * and non-null only when the caller has established where a partial hunk sits
  * inside the file on disk — see `seedScanStateFor`.
  *
+ * `conservative` is passed straight through to `stepScanState`: see its
+ * docblock. It matters only when `seed` is null but the content is still a
+ * fragment of a larger document whose surrounding context is unknown, not a
+ * whole document in its own right — `main` is the only caller that can tell
+ * the two apart, so it is the only caller that ever passes `true`.
+ *
  * Lines are replaced with empty strings rather than removed so that text on
  * either side of a code region can never be joined into a single line and
  * made to match across the gap.
  * @param {string} content
  * @param {ScanState | null} [seed]
+ * @param {boolean} [conservative]
  * @returns {string}
  */
-function stripCodeRegions(content, seed) {
+function stripCodeRegions(content, seed, conservative) {
   const state = seed ? cloneScanState(seed) : freshScanState();
   // An unterminated fence runs to the end of the document, per CommonMark.
   return content
     .split("\n")
-    .map((line) => (stepScanState(state, line) ? "" : line))
+    .map((line) => (stepScanState(state, line, conservative) ? "" : line))
     .join("\n");
 }
 
@@ -493,12 +518,22 @@ function usesPackageCwdSemantics(repoRoot, docFile) {
  * `seed` is the scan state `content` begins in. It is non-null only when
  * `content` is a partial edit hunk whose position in the file on disk has
  * been established; omitting it reads `content` as a whole document.
+ *
+ * `conservative` — see `stepScanState` — is for the one case that is neither
+ * of those: a hunk whose position could NOT be established, but which is
+ * still known to be a fragment rather than a whole document. Passing it
+ * keeps a bare fence marker from opening a fence it cannot actually place,
+ * which would otherwise hide every line after it.
  * @param {string} content
  * @param {ScanState | null} [seed]
+ * @param {boolean} [conservative]
  * @returns {string[]}
  */
-export function extractRepoPaths(content, seed) {
-  const withoutUrls = stripCodeRegions(content, seed).replace(/https?:\/\/\S+/g, "");
+export function extractRepoPaths(content, seed, conservative) {
+  const withoutUrls = stripCodeRegions(content, seed, conservative).replace(
+    /https?:\/\/\S+/g,
+    "",
+  );
   const found = new Set();
   for (const match of withoutUrls.matchAll(PATH_PATTERN)) {
     const raw = match[1];
@@ -686,14 +721,18 @@ const ALLOW_MARKER_PATTERN =
  *
  * `seed` carries the same meaning as in `extractRepoPaths`, and must be the
  * same value, or a hunk's markers and its paths would be read against
- * different notions of where the code regions are.
+ * different notions of where the code regions are. `conservative` likewise
+ * must match whatever was passed to `extractRepoPaths` for the same content.
  * @param {string} content
  * @param {ScanState | null} [seed]
+ * @param {boolean} [conservative]
  * @returns {Set<string>}
  */
-export function extractAllowedPaths(content, seed) {
+export function extractAllowedPaths(content, seed, conservative) {
   const allowed = new Set();
-  for (const match of stripCodeRegions(content, seed).matchAll(ALLOW_MARKER_PATTERN)) {
+  for (const match of stripCodeRegions(content, seed, conservative).matchAll(
+    ALLOW_MARKER_PATTERN,
+  )) {
     const reason = match[2].trim();
     if (!reason) continue;
     for (const rawPath of match[1].split(",")) {
@@ -767,20 +806,51 @@ async function main() {
     // `old_string` is the better locator and is tried first: Edit requires it
     // to appear in the file, whereas the NEW text usually does not yet. The
     // piped content is the fallback locator, which covers a Write and an Edit
-    // whose new text is already present. If neither can be placed
-    // unambiguously the seed stays null and the hunk is read as a whole
-    // document — the pre-existing behaviour, which over-checks rather than
-    // under-checks, so nothing is ever silently skipped.
+    // whose new text is already present. If neither can be placed the seed
+    // stays null, and there are two different reasons that can happen, which
+    // must NOT be treated the same:
+    //
+    //   - `onDiskContent` is undefined (no file on disk yet — a Write of a
+    //     brand-new page). Then `content` IS the whole document, not a
+    //     fragment of a larger one, and reading it fresh from the top is
+    //     exactly correct — there is no surrounding context to have missed.
+    //
+    //   - `onDiskContent` exists but neither locator could place the hunk in
+    //     it. The hunk is still known to be only a FRAGMENT of that larger
+    //     document, just one whose position is unknown. Scanning it fresh
+    //     here is a guess about context that provably does not exist yet —
+    //     and a bare fence marker at the top of the hunk is exactly as
+    //     likely to be the CLOSER of a fence that opened before the hunk as
+    //     it is to be an opener. Guessing "opener" hides everything after it.
+    //     `conservative` (passed to `extractRepoPaths`/`extractAllowedPaths`)
+    //     is what keeps that guess from ever removing a check: a bare marker
+    //     in this mode never opens a fence, so nothing downstream can be
+    //     hidden by one. See `stepScanState`.
     const onDiskContent = readFileIfPresent(getFlagValue(process.argv, "--allow-from"));
     const anchorContent = readFileIfPresent(getFlagValue(process.argv, "--hunk-anchor-file"));
     /** @type {ScanState | null} */
     let seed = null;
+    let conservative = false;
     if (onDiskContent !== undefined) {
       if (anchorContent !== undefined) seed = seedScanStateFor(onDiskContent, anchorContent);
       if (seed === null) seed = seedScanStateFor(onDiskContent, content);
+      conservative = seed === null;
     }
 
-    const paths = extractRepoPaths(content, seed);
+    const paths = extractRepoPaths(content, seed, conservative);
+    // Markers deliberately do NOT get `conservative`. Paths and markers read
+    // the same fence-stripped text for the same reason everywhere else in
+    // this file, but conservative mode exists to bias path-checking toward
+    // "check more" — and reusing it here would also bias markers toward
+    // "grant more": a marker written inside what really is a bare-delimited
+    // fenced example would stop being hidden the moment the fence around it
+    // stops being recognised, and start exempting a real citation elsewhere
+    // on the page (the exact laundering shape this guard closed once
+    // already). The two directions are not symmetric: under-checking a path
+    // is the danger the whole fallback exists to prevent, but under-granting
+    // a marker is merely an extra denial, never a hole. So markers keep the
+    // plain, unbiased scan — worst case an ambiguous bare marker reads as an
+    // opener and a legitimate marker goes unrecognised, which fails closed.
     const allowed = extractAllowedPaths(content, seed);
     if (onDiskContent !== undefined) {
       for (const allowedPath of extractAllowedPaths(onDiskContent)) {

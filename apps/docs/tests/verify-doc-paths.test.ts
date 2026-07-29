@@ -914,7 +914,7 @@ describe("repo top-level files and directories", () => {
 // assumption — which over-checks rather than under-checks, and is never a
 // silent skip.
 //
-// <!-- docs-path-guard: allow apps/FAKE-inside/x.ts, apps/FAKE-after/y.ts, docker-compose.NOPE.yml, apps/FAKE-quoted/z.ts reason: "fixtures for the hunk-fence-parity repro: one fenced path that must stay exempt and three fabricated prose citations that must be flagged" -->
+// <!-- docs-path-guard: allow apps/FAKE-inside/x.ts, apps/FAKE-after/y.ts, docker-compose.NOPE.yml, apps/FAKE-quoted/z.ts, apps/FAKE-after/RENAMED.ts reason: "fixtures for the hunk-fence-parity repro: one fenced path that must stay exempt, fabricated prose citations that must be flagged, and the mirror case where the hunk opens on the real fence's CLOSER" -->
 describe("fence state seeded from the on-disk file (Edit hunks)", () => {
   let scratchDir = "";
   let pageFile = "";
@@ -1024,6 +1024,38 @@ describe("fence state seeded from the on-disk file (Edit hunks)", () => {
     );
     expect(result.status).toBe(0);
     expect(result.stdout.trim()).toBe("apps/FAKE-quoted/z.ts");
+  });
+
+  it("still checks prose when the hunk opens on the real fence's CLOSER and both locators fail (reviewer repro)", () => {
+    // The mirror case of the first test in this block. There, the hunk BEGAN
+    // inside the fence that opens at onDiskPage's line 2. Here the hunk
+    // begins with that fence's real CLOSER instead — the anchor cannot be
+    // placed (it names text absent from the file) and the hunk's own text
+    // isn't on disk either (it's new), so both locators fail and `seed`
+    // stays null. A fresh, isolated scan of this bare hunk then sees "```"
+    // as its FIRST line and, with no prior context, cannot tell a closer
+    // from an opener. Reading it as an opener silently swallows everything
+    // after it — including the renamed citation — which is exactly the
+    // "zero output" the review reported.
+    const anchorFile = join(scratchDir, "unlocatable-anchor.txt");
+    writeFileSync(anchorFile, "this text does not appear anywhere in page.mdx", "utf-8");
+    const hunk = ["```", "", "Then prose citing `apps/FAKE-after/RENAMED.ts`."].join("\n");
+    const result = runCliRaw(
+      [
+        "--stdin",
+        "--doc-dir",
+        scratchDir,
+        "--doc-file",
+        pageFile,
+        "--allow-from",
+        pageFile,
+        "--hunk-anchor-file",
+        anchorFile,
+      ],
+      hunk,
+    );
+    expect(result.status).toBe(0);
+    expect(result.stdout.trim()).toBe("apps/FAKE-after/RENAMED.ts");
   });
 });
 
