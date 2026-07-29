@@ -48,6 +48,17 @@
         ]
       },
       {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/docs-path-guard.sh",
+            "timeout": 10,
+            "statusMessage": "Verifying documented paths exist..."
+          }
+        ]
+      },
+      {
         "matcher": "Read|Edit|Write",
         "hooks": [
           {

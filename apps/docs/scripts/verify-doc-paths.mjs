@@ -1,0 +1,106 @@
+#!/usr/bin/env node
+/**
+ * Guard: documentation must never cite a repo path that does not exist.
+ *
+ * Fabricated paths are the primary failure mode of generated documentation —
+ * CLAUDE.md itself still cites `apps/bot/src/commands/moderation/ban.ts`,
+ * a path that hasn't existed since the move to a feature-sliced layout.
+ * This script extracts every repo-relative path a doc page cites (backticked
+ * inline code and markdown link targets) and checks each one against the
+ * real filesystem, never against another doc file.
+ *
+ * Used two ways:
+ *   - As a module: `extractRepoPaths` / `findMissingPaths` are imported
+ *     directly by tests and by any other script that wants to verify paths.
+ *   - As a CLI: `node verify-doc-paths.mjs --stdin` reads content from
+ *     stdin and prints one missing path per line (used by the
+ *     docs-path-guard.sh PreToolUse hook).
+ */
+
+import { existsSync } from "node:fs";
+import { join, resolve, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+// Matches a repo-relative path starting with one of the known top-level
+// directories, preceded by start-of-string, whitespace, a backtick, or an
+// opening bracket/paren (the contexts `extractRepoPaths` cares about: inline
+// code and markdown link targets). Excludes trailing punctuation that closes
+// a markdown construct or ends a sentence (`)`, `]`, `.`, `,`, backtick are
+// not in the character class), so ``` `apps/bot/src/index.ts`. ``` and
+// `[text](apps/foo/bar.ts)` don't pull in the closer.
+const PATH_PATTERN = /(?:^|[\s`("[])((?:apps|packages|docs|scripts)\/[\w.$/-]+)/g;
+
+/**
+ * Extract every repo-relative path cited in `content` (backticked inline
+ * code, markdown link targets), deduplicated and in first-seen order. URLs
+ * are stripped first so a path-shaped URL segment (e.g.
+ * `https://example.com/apps/bot/src/x.ts`) is never mistaken for a repo
+ * path.
+ * @param {string} content
+ * @returns {string[]}
+ */
+export function extractRepoPaths(content) {
+  const withoutUrls = content.replace(/https?:\/\/\S+/g, "");
+  const found = new Set();
+  for (const match of withoutUrls.matchAll(PATH_PATTERN)) {
+    found.add(trimTrailingPunctuation(match[1]));
+  }
+  return [...found];
+}
+
+/**
+ * Strip punctuation that the path regex can pick up as part of the match
+ * but that is actually prose/markdown syntax closing around the path, not
+ * part of the path itself:
+ *   - a trailing sentence-ending period (`see apps/bot/src/index.ts.`)
+ *   - a trailing comma or semicolon in a list
+ * A single trailing slash on an otherwise-valid directory reference (e.g.
+ * `packages/systems/src/`) is intentionally preserved — `findMissingPaths`
+ * checks it with `existsSync`, which resolves a trailing-slash directory
+ * path just fine.
+ * @param {string} path
+ * @returns {string}
+ */
+function trimTrailingPunctuation(path) {
+  return path.replace(/[.,;:]+$/, "");
+}
+
+/**
+ * Filter `paths` down to the ones that do not exist under `repoRoot`.
+ * @param {string[]} paths
+ * @param {string} repoRoot
+ * @returns {string[]}
+ */
+export function findMissingPaths(paths, repoRoot) {
+  return paths.filter((p) => !existsSync(join(repoRoot, p)));
+}
+
+async function readStdin() {
+  const chunks = [];
+  for await (const chunk of process.stdin) {
+    chunks.push(chunk);
+  }
+  return Buffer.concat(chunks).toString("utf-8");
+}
+
+async function main() {
+  if (process.argv.includes("--stdin")) {
+    const content = await readStdin();
+    const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
+    const paths = extractRepoPaths(content);
+    const missing = findMissingPaths(paths, repoRoot);
+    for (const path of missing) {
+      console.log(path);
+    }
+    return;
+  }
+
+  console.error("Usage: verify-doc-paths.mjs --stdin");
+  process.exitCode = 1;
+}
+
+// Only run the CLI when this file is executed directly, not when imported
+// by tests.
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main();
+}
