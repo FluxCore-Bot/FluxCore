@@ -35,17 +35,21 @@ import { fileURLToPath } from "node:url";
 // not in the character class), so ``` `apps/bot/src/index.ts`. ``` and
 // `[text](apps/foo/bar.ts)` don't pull in the closer. It also can't include
 // `<`, `[`, or `{` (also markdown/link/template delimiters) — see
-// `isTemplatePlaceholder` below for why a match immediately followed by one
-// of those is discarded rather than truncated and checked.
-const PATH_PATTERN = /(?:^|[\s`("[])((?:apps|packages|docs|scripts)\/[\w.$/-]+)/g;
+// `shallowTemplatePrefix` below for how a match immediately followed by one
+// of those is handled. The trailing class uses `*` rather than `+` so a
+// placeholder sitting directly in the second segment (`packages/<name>/...`,
+// with zero real characters between the slash and the placeholder) still
+// produces a match to reduce, instead of not matching at all and going
+// unchecked.
+const PATH_PATTERN = /(?:^|[\s`("[])((?:apps|packages|docs|scripts)\/[\w.$/-]*)/g;
 
 // Characters that open a template placeholder segment (`<feature>`,
 // `[locale]`, `{slug}`). None of them are in PATH_PATTERN's character
 // class, so a templated path like
 // `apps/docs/content/guide/features/<feature>.mdx` doesn't fail to match —
 // it matches short, truncated at the boundary, producing a directory-shaped
-// fragment (`apps/docs/content/guide/features/`) that looks like a real,
-// checkable path but isn't the thing the author actually wrote.
+// prefix (`apps/docs/content/guide/features/`) that isn't the concrete path
+// the author wrote, but also isn't nothing: see `shallowTemplatePrefix`.
 const TEMPLATE_PLACEHOLDER_LEAD = new Set(["<", "[", "{"]);
 
 /**
@@ -53,10 +57,16 @@ const TEMPLATE_PLACEHOLDER_LEAD = new Set(["<", "[", "{"]);
  * code, markdown link targets), deduplicated and in first-seen order. URLs
  * are stripped first so a path-shaped URL segment (e.g.
  * `https://example.com/apps/bot/src/x.ts`) is never mistaken for a repo
- * path. A path immediately followed by a template placeholder delimiter
- * (`<`, `[`, `{`) is a templated path, not a concrete one, and is skipped
- * entirely rather than checked as the truncated fragment the regex was
- * able to match.
+ * path.
+ *
+ * A path immediately followed by a template placeholder delimiter (`<`,
+ * `[`, `{`) is a templated path, not a concrete one — but a placeholder
+ * appearing deep in a path must not launder a fabricated top-level segment
+ * (`apps/nonexistent-app/<feature>/thing.ts` is exactly the wrong-app-name
+ * mistake this guard exists to catch; the placeholder later in the path
+ * doesn't make the app name any less fabricated). So a templated path is
+ * reduced to its two-segment static prefix — see `shallowTemplatePrefix` —
+ * and that prefix is checked instead of the full path.
  * @param {string} content
  * @returns {string[]}
  */
@@ -68,11 +78,36 @@ export function extractRepoPaths(content) {
     const pathStart = match.index + match[0].length - raw.length;
     const nextChar = withoutUrls[pathStart + raw.length];
     if (nextChar !== undefined && TEMPLATE_PLACEHOLDER_LEAD.has(nextChar)) {
+      const prefix = shallowTemplatePrefix(raw);
+      if (prefix) found.add(prefix);
       continue;
     }
     found.add(trimTrailingPunctuation(raw));
   }
   return [...found];
+}
+
+/**
+ * Reduce a templated path's static prefix (`raw` — the portion matched
+ * before the placeholder) to its first two path segments.
+ *
+ * Two segments is a deliberate depth: deep enough to catch a wrong
+ * app/package name (`apps/nonexistent-app/<feature>/thing.ts` reduces to
+ * `apps/nonexistent-app`, which is checked and found missing), shallow
+ * enough that a real app's not-yet-created content directory still passes
+ * (`apps/docs/content/guide/features/<feature>.mdx` reduces to `apps/docs`,
+ * which exists, even though `content/guide/features` does not). When the
+ * placeholder IS the second segment (`packages/<name>/src/index.ts`, where
+ * `raw` is just `packages/`), there's only one real segment to check, and
+ * checking `packages` alone is exactly the fallback: still deep enough to
+ * confirm `packages` is a real top-level directory.
+ * @param {string} raw
+ * @returns {string | null}
+ */
+function shallowTemplatePrefix(raw) {
+  const segments = raw.split("/").filter(Boolean);
+  if (segments.length === 0) return null;
+  return segments.slice(0, 2).join("/");
 }
 
 /**

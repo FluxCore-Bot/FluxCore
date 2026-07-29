@@ -55,35 +55,58 @@ describe("extractRepoPaths", () => {
   // delimiters), so a template path like
   // `apps/docs/content/guide/features/<feature>.mdx` gets truncated at the
   // placeholder boundary into a directory-looking fragment
-  // (`apps/docs/content/guide/features/`). Checking that fragment for
-  // existence checks the wrong thing: the fragment is real or missing by
-  // coincidence, but the author never wrote a concrete path at all. A
-  // templated path must be skipped entirely, not truncated and checked.
+  // (`apps/docs/content/guide/features/`).
+  //
+  // A first attempt skipped a templated path entirely rather than check the
+  // truncated fragment. That laundered a fabricated top-level path: an
+  // agent-authored path like `apps/nonexistent-app/<feature>/thing.ts` has
+  // the exact wrong-app-name failure this guard exists to catch, and a
+  // placeholder anywhere later in the path made it invisible. The fix
+  // checks the STATIC prefix before the first placeholder, limited to its
+  // first two path segments — deep enough to catch a wrong app/package
+  // name, shallow enough that a not-yet-created content directory still
+  // passes.
   describe("template placeholders", () => {
-    it("skips a path with a <placeholder> segment entirely", () => {
-      expect(
-        extractRepoPaths("see `apps/docs/content/guide/features/<feature>.mdx` for the template"),
-      ).toEqual([]);
+    it("still catches a fabricated top-level path even though a placeholder appears later (the laundering case)", () => {
+      const paths = extractRepoPaths("see `apps/nonexistent-app/<feature>/thing.ts`");
+      expect(paths).toEqual(["apps/nonexistent-app"]);
+      expect(findMissingPaths(paths, repoRoot)).toEqual(["apps/nonexistent-app"]);
     });
 
-    it("skips a path with a [placeholder] segment entirely", () => {
+    it("reduces a deep templated path to its two-segment static prefix and passes when that prefix exists", () => {
+      // The original false positive this feature exists to avoid: apps/docs
+      // exists, even though content/guide/features does not.
+      const paths = extractRepoPaths(
+        "see `apps/docs/content/guide/features/<feature>.mdx` for the template",
+      );
+      expect(paths).toEqual(["apps/docs"]);
+      expect(findMissingPaths(paths, repoRoot)).toEqual([]);
+    });
+
+    it("falls back to checking only the first segment when the placeholder IS the second segment", () => {
+      const paths = extractRepoPaths("see `packages/<name>/src/index.ts` for the template");
+      expect(paths).toEqual(["packages"]);
+      expect(findMissingPaths(paths, repoRoot)).toEqual([]);
+    });
+
+    it("reduces a [placeholder]-delimited path to its static prefix", () => {
       expect(
         extractRepoPaths("see `apps/docs/content/guide/[locale]/index.mdx` for the template"),
-      ).toEqual([]);
+      ).toEqual(["apps/docs"]);
     });
 
-    it("skips a path with a {placeholder} segment entirely", () => {
+    it("reduces a {placeholder}-delimited path to its static prefix", () => {
       expect(extractRepoPaths("see `apps/docs/content/guide/{slug}.mdx` for the template")).toEqual(
-        [],
+        ["apps/docs"],
       );
     });
 
-    it("still extracts a real path elsewhere in the same content", () => {
+    it("still extracts a real path elsewhere in the same content, alongside a templated path's static prefix", () => {
       expect(
         extractRepoPaths(
           "see `apps/bot/src/index.ts` and `apps/docs/content/guide/<feature>.mdx`",
         ),
-      ).toEqual(["apps/bot/src/index.ts"]);
+      ).toEqual(["apps/bot/src/index.ts", "apps/docs"]);
     });
   });
 });
