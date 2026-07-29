@@ -1,6 +1,6 @@
 {
-  "generatedFromCommit": "5f5e2fcd5d9ab787a0d386e3f63cd752b22d95bd",
-  "generatedAt": "2026-07-29T04:44:06.108Z",
+  "generatedFromCommit": "b22878af833d2dbe66a69b18a1ae3a177180ee8e",
+  "generatedAt": "2026-07-29T04:51:26.087Z",
   "features": [
     {
       "id": "antiraid",
@@ -118,10 +118,10 @@
     },
     {
       "id": "i18n-accessibility",
-      "status": "planned",
+      "status": "partial",
       "audience": "developer",
       "evidence": {
-        "system": null,
+        "system": "packages/i18n",
         "botFeature": null,
         "serverFeature": null,
         "clientRoute": null,
@@ -2116,6 +2116,28 @@
     {
       "id": "welcome",
       "dir": "packages/systems/src/welcome"
+    }
+  ],
+  "sharedPackages": [
+    {
+      "id": "config",
+      "dir": "packages/config"
+    },
+    {
+      "id": "database",
+      "dir": "packages/database"
+    },
+    {
+      "id": "i18n",
+      "dir": "packages/i18n"
+    },
+    {
+      "id": "types",
+      "dir": "packages/types"
+    },
+    {
+      "id": "utils",
+      "dir": "packages/utils"
     }
   ],
   "prismaModels": [

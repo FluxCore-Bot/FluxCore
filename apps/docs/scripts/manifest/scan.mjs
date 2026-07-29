@@ -387,6 +387,27 @@ export function scanSystems(repoRoot) {
 }
 
 /**
+ * Scan top-level `packages/*` directories, excluding `packages/systems`
+ * (already scanned per-feature by scanSystems() above). `packages/systems`
+ * is not the only place shared source can live — e.g. `packages/i18n` is a
+ * whole package that backs one feature (internationalization) rather than
+ * a per-feature subdirectory. Most of what this returns (config, database,
+ * types, utils) is cross-cutting infrastructure consumed by every feature,
+ * not evidence for any single one — callers must apply an explicit,
+ * verified alias before treating an entry here as feature evidence; do not
+ * assume every result maps to a feature.
+ * @param {string} repoRoot
+ * @returns {{ id: string, dir: string }[]}
+ */
+export function scanSharedPackages(repoRoot) {
+  const dir = join(repoRoot, "packages");
+  return listDirs(dir)
+    .filter((name) => name !== "systems")
+    .sort()
+    .map((name) => ({ id: name, dir: relative(repoRoot, join(dir, name)) }));
+}
+
+/**
  * Scan Prisma model declarations.
  * @param {string} repoRoot
  * @returns {string[]}

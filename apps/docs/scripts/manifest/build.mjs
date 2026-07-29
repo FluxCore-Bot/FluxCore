@@ -21,6 +21,7 @@ import {
   scanDashboardServerFeatures,
   scanDashboardClientFeatures,
   scanSystems,
+  scanSharedPackages,
   scanPrismaModels,
   scanSpecs,
 } from "./scan.mjs";
@@ -45,6 +46,24 @@ const defaultRepoRoot = resolve(__dirname, "../../../..");
 const SYSTEM_ID_ALIASES = {
   "scheduled-messages": "scheduled",
   actions: "automation",
+};
+
+/**
+ * Top-level packages/<name> (excluding packages/systems, scanned
+ * per-feature above) -> canonical id, for packages that as a WHOLE back
+ * exactly one documented feature. This is deliberately an allowlist, not a
+ * blanket "every package is a feature" mapping — audited against source
+ * 2026-07-29:
+ *  - packages/i18n backs docs/features/i18n-accessibility.md: react-i18next
+ *    setup, 48 locale directories under packages/i18n/src/locales, consumed
+ *    across the dashboard client and server.
+ *  - packages/config, packages/database, packages/types, packages/utils are
+ *    cross-cutting infrastructure consumed by every feature, not evidence
+ *    for any single one, so they are deliberately absent from this table —
+ *    see task-4-report.md for the audit that ruled each one out.
+ */
+const SHARED_PACKAGE_ALIASES = {
+  i18n: "i18n-accessibility",
 };
 
 /**
@@ -113,6 +132,7 @@ export function buildManifest(repoRoot) {
   const serverFeatures = scanDashboardServerFeatures(repoRoot);
   const clientFeatures = scanDashboardClientFeatures(repoRoot);
   const systems = scanSystems(repoRoot);
+  const sharedPackages = scanSharedPackages(repoRoot);
   const prismaModels = scanPrismaModels(repoRoot);
   const specs = scanSpecs(repoRoot);
 
@@ -126,6 +146,12 @@ export function buildManifest(repoRoot) {
   for (const system of systems) {
     const id = SYSTEM_ID_ALIASES[system.id] ?? system.id;
     entryFor(id).system = system.dir;
+  }
+
+  for (const pkg of sharedPackages) {
+    const id = SHARED_PACKAGE_ALIASES[pkg.id];
+    if (!id) continue; // cross-cutting infrastructure, not feature evidence — see SHARED_PACKAGE_ALIASES
+    entryFor(id).system = pkg.dir;
   }
 
   for (const feature of botFeatures) {
@@ -170,9 +196,22 @@ export function buildManifest(repoRoot) {
     })
     .sort((a, b) => a.id.localeCompare(b.id));
 
-  const generatedFromCommit = execSync("git rev-parse HEAD", { cwd: repoRoot })
-    .toString()
-    .trim();
+  // Best-effort: some environments this runs in (e.g. the Docker test
+  // container used by `pnpm --filter @fluxcore/docs test`) have neither a
+  // git binary nor a mounted .git directory. Losing the commit stamp
+  // shouldn't crash the whole manifest build — every other field is still
+  // valid and worth having.
+  let generatedFromCommit = null;
+  try {
+    generatedFromCommit = execSync("git rev-parse HEAD", {
+      cwd: repoRoot,
+      stdio: ["ignore", "pipe", "ignore"],
+    })
+      .toString()
+      .trim();
+  } catch {
+    generatedFromCommit = null;
+  }
 
   return {
     generatedFromCommit,
@@ -186,6 +225,7 @@ export function buildManifest(repoRoot) {
     serverFeatures,
     clientFeatures,
     systems,
+    sharedPackages,
     prismaModels,
     specs,
   };
