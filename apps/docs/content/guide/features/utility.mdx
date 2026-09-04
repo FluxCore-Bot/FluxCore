@@ -1,0 +1,146 @@
+---
+title: Utility
+description: Three small standalone commands — pull up a member's avatar at full size, post a formatted embed into a channel, and set a personal reminder the bot sends you by DM.
+---
+
+Utility is a group of three unrelated commands that each do one job and store
+no server configuration: `/avatar` shows a member's avatar at full size,
+`/embed` posts a titled, coloured embed into a channel, and `/remind` sets a
+personal reminder that arrives as a direct message.
+
+## Prerequisites
+
+- **The bot is in your server.** All three commands are run from the
+  slash-command menu in a channel of your server.
+- **`/avatar` and `/remind` need no permission.** No permission gate is set in
+  source for either — any member who can see the channel can run them.
+- **`/embed` needs Manage Messages, and the bot needs Send Messages and Embed
+  Links.** The command's gate is **Manage Messages** (`ManageMessages`), and it
+  checks that permission again when it runs: a member without it gets a private
+  *Missing Permissions* reply reading *You need the following permissions:
+  ManageMessages*. If the bot lacks **Send Messages** or **Embed Links** at the
+  server level, you get a private *Bot Missing Permissions* reply reading *I
+  need the following permissions: SendMessages, EmbedLinks* (naming whichever
+  of the two is missing), and nothing is posted.
+- **For `/remind`, your direct messages must be open to the bot.** The reminder
+  is delivered as a DM and nowhere else. If the DM cannot be delivered, the
+  reminder is discarded rather than retried or posted in the channel — you get
+  no notice that it failed.
+- **Each command has a per-member cooldown.** Once you run a command, it is
+  unavailable to you — and to you only — for the number of seconds in the table
+  below. Running it early replies privately with *Please wait **Ns** before
+  using `/command` again*, and that refused attempt does not restart the wait.
+  The cooldown begins whenever the command finishes without an internal error,
+  including when it did nothing you asked for: an `/embed` turned away for a
+  missing permission, or a `/remind` rejected for an unreadable duration, still
+  costs you the full wait.
+
+## Using the commands
+
+| Command | What it does | Permission required | Cooldown |
+| --- | --- | --- | --- |
+| `/avatar` | Posts a member's avatar at full size in the channel. | No permission gate is set in source — any member who can see the channel can run `/avatar`. | 5s |
+| `/embed` | Sends a custom embed to a channel you choose. | Manage Messages (`ManageMessages`) | 10s |
+| `/remind` | Saves a reminder and DMs it back to you when it comes due. | No permission gate is set in source — any member who can see the channel can run `/remind`. | 10s |
+
+No dashboard page configures these three commands. There is no Utility entry
+in the left-hand server nav, and none of the three carries a stored setting you
+can switch on, off, or adjust — the only choices you make are the options you
+pass when you run the command. A reminder, once set, cannot be listed,
+edited, or cancelled: no command or dashboard control exists to do any of
+those, so a reminder you regret will still arrive.
+
+## What each command shows and each option does
+
+### `/avatar`
+
+| Option | Effect |
+| --- | --- |
+| **user** (optional) | The member whose avatar to show. Leave it out and it shows yours. |
+
+The reply is an embed titled with the target's display name, showing their
+avatar as the embed image at a requested size of 4096 pixels, and carrying a
+single **Download Avatar** link to that same image. The reply is
+posted openly in the channel, so everyone who can read the channel sees it.
+
+### `/embed`
+
+| Option | Effect |
+| --- | --- |
+| **title** (required) | The bold heading at the top of the embed. |
+| **description** (required) | The body text under the title. |
+| **color** (optional) | The stripe down the left edge of the embed. A fixed list of six choices: Red, Green, Blue, Yellow, Purple, White. Leave it out and the embed is Blue. |
+| **channel** (optional) | Where the embed is posted. Only text channels can be picked. Leave it out and it posts in the channel you ran the command in. |
+
+The posted embed carries your title, your description, your chosen colour, the
+current time, and a footer reading *Created by* followed by your display name —
+so an embed is always attributable to the member who sent it, and there is no
+option to suppress that footer or attribute it to someone else.
+
+Your own confirmation is private: *Embed Sent — Embed posted in #channel.* The
+embed itself is posted by the bot with no indication in the message body that a
+command produced it.
+
+Two things to expect on every `/embed` run — neither of them depends on whether
+you use the **channel** option:
+
+- **The bot is checked twice, at two different levels.** First against its
+  server-wide permissions, which produces the *Bot Missing Permissions* reply
+  described under Prerequisites. Then against the target channel specifically —
+  the channel you named in the **channel** option, or, when you leave that
+  option out, the channel you ran the command in. If the bot can post in general
+  but has been denied **Send Messages** or **Embed Links** in that one channel,
+  you get a private *Missing Permissions* reply reading *I don't have permission
+  to send embeds in #channel*, and nothing is posted anywhere.
+- **Your own access to the target channel is not checked.** The gate is Manage
+  Messages across the server; a member who holds it can post an embed into a
+  channel through this command.
+
+### `/remind`
+
+| Option | Effect |
+| --- | --- |
+| **duration** (required) | How long from now the reminder arrives. A whole number followed by one unit letter: `s`, `m`, `h`, `d`, or `w` — for example `30s`, `10m`, `2h`, `1d`, `1w`. |
+| **message** (required) | The text sent back to you, up to 1024 characters. |
+
+Both replies to the command are private. On success: *Reminder Set — I'll
+remind you in **2h 0m**.* The duration is echoed back in the bot's own
+formatting, which is a useful check that it read your input the way you meant.
+
+Three limits worth knowing before you rely on it:
+
+- **The longest reminder is 7 days.** Anything longer is refused privately with
+  *Error — Reminders cannot be longer than 7 days.* `1w` is exactly at the
+  limit and is accepted.
+- **The duration is one number and one unit, with some slack in how you type
+  it.** A space between the number and the unit is allowed, and the unit letter
+  can be upper- or lower-case, so `10m`, `10 m`, and `10M` are all read as ten
+  minutes. A value outside that shape — a decimal, a spelled-out unit, or two
+  units combined like `1h30m` — is refused privately with *Invalid Duration —
+  Use a format like `10s`, `5m`, `2h`, `1d`.* Zero and negative values are
+  refused the same way.
+- **Delivery is checked on a 15-second cycle.** Only reminders that have already
+  come due are picked up, so one never arrives early; it goes out on one of the
+  checks after its due time. Each check takes up to 50 due reminders and sends
+  them in groups of five, so if more than 50 come due at the same moment, the
+  remainder wait for a later check.
+
+The reminder itself arrives as a direct message from the bot: an embed titled
+*Reminder*, your message as the body, and a footer reading *Reminder set*
+followed by the length you asked for, *ago*. The reminder goes to your direct
+messages and is never posted in the server you set it in; nothing about the
+delivery depends on that server. Whether the DM actually reaches you is down to
+your direct-message settings, and a delivery that fails is not retried — the
+reminder is discarded either way.
+
+## Related pages
+
+- [General](/guide/features/general) — `/user-info` describes a member's
+  account, roles, and join date, and uses their avatar as a small thumbnail;
+  `/avatar` is the command for seeing that avatar at full size.
+- [Moderation](/guide/features/moderation) — the same **Manage Messages**
+  permission that gates `/embed` also gates the message-management commands
+  there, so a member you trust with one already has the other.
+- [Scheduled Messages](/guide/features/scheduled) — `/embed` posts once, right
+  now, from a slash command. Scheduled messages are the dashboard-configured
+  way to have the bot post to a channel on a repeating schedule.

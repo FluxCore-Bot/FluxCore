@@ -1,0 +1,271 @@
+---
+title: Tickets
+description: Members open a private support channel by pressing a button, staff claim and answer it, and closing the ticket deletes the channel -- saving an HTML transcript first only if you have set a transcript channel.
+---
+
+import ScreenshotPlaceholder from "@/components/ScreenshotPlaceholder";
+
+A ticket is a private text channel created for one member. They open it by
+pressing a button on a ticket panel, staff claim it, the conversation
+happens in that channel, and closing it deletes the channel — writing an
+HTML transcript of the last 100 messages to your transcript channel first
+only if you have set one, since no transcript channel is set by default. The
+dashboard lists every
+ticket your server has ever had, stores the panels, and holds the settings
+that decide who can see a ticket and what its channel is called.
+
+**Read this before you plan around panels.** FluxCore never posts a ticket
+panel into Discord. The Panel Builder tab creates and stores a panel, and
+the **Deploy Panel** button reports *Ticket panel deployed*, but no message
+is sent to the channel you picked and the panel's status stays *Default*
+forever. Because the panel message is what carries the button a member
+presses, no member can open a ticket through the dashboard alone today.
+Everything below the point where a ticket exists — claiming, adding people,
+transcripts, closing — is built and works.
+
+## Prerequisites
+
+- **The bot is in your server.** The dashboard refuses every ticket request
+  for a server the bot has not joined.
+- **You can open the dashboard for the server.** Access goes to the server
+  owner and to members whose Discord permissions include **Administrator**
+  or **Manage Server**. Anyone else is turned away with a permission error.
+- **Set your staff roles before anything else.** They are what decides who
+  can see a ticket channel and who is allowed to claim one, and leaving them
+  empty is not a neutral default in either direction. With no staff role
+  set, a new ticket channel is visible only to the member who opened it and
+  to the bot — staff are not added and will not see it — while at the same
+  time *any* member who does get into the channel is treated as staff for
+  the purpose of claiming. Setting at least one staff role fixes both halves
+  at once.
+- **Nothing has to be switched on first.** There is no on/off switch for the
+  ticket system. A server that has never opened the Tickets page behaves as
+  though staff roles are empty, no transcript channel is set, **Max Tickets
+  per User** is 3, the auto-close box is 0, and the channel-name format is
+  `ticket-{number}`.
+- **Decide where transcripts go.** Until you pick a transcript channel, a
+  closed ticket's transcript is not saved anywhere: the channel is deleted a
+  few seconds after closing, and the conversation goes with it.
+- **The bot needs to be able to create and delete channels.** Ticket
+  channels are created at the top level of your server's channel list, not
+  inside a category, and are deleted on close.
+- **If the permission system is switched on** for your server — on the
+  **Permissions** page in the sidebar — then each part of the Tickets page
+  needs its own grant, all four listed under the **Tickets** group there:
+  **View Tickets** to read the Active Tickets tab, **Manage Tickets** to
+  close a ticket from the dashboard, **Manage Panels** for everything on the
+  Panel Builder tab, and **Manage Settings** for the Settings tab. The
+  **Tickets** entry is shown in the guild sidebar only to admins holding
+  View Tickets. A missing grant produces an empty tab rather than a message
+  saying you lack it: the Panel Builder tab reads *No ticket panels created
+  yet.* and the Settings tab shows its heading with no controls under it.
+  Read an empty tab as "not shown to me," never as "nothing is configured."
+
+## Using the ticket system
+
+### How a ticket is opened
+
+A member presses a category button on a ticket panel message. If that
+category has form fields, Discord shows them a form of up to five questions
+first; their answers are attached to the ticket and repeated as fields in
+the ticket channel's opening message.
+
+Before the channel is made, the bot counts how many tickets that member
+already has open — anything not yet closed, across the whole server. If
+that count has reached **Max Tickets per User**, they are told privately
+*You already have N open ticket(s). Maximum is N.* and nothing is created.
+
+Otherwise the bot creates a text channel named from your channel-name
+format, with these permissions: everyone is denied the ability to see the
+channel; the member who opened it can view, send, read history, and attach
+files; each staff role can do all of that plus manage messages; and the bot
+itself can view, send, read history, attach files, manage messages, and
+manage channels. The channel's first message mentions the staff roles, welcomes
+the member, and carries two buttons — a green **Claim** and a red **Close**.
+
+### Claiming, and who is allowed to
+
+Pressing **Claim**, or running `/ticket-claim` in the channel, marks the
+ticket claimed and names the claimer publicly in the channel. Both refuse a
+channel that is not a ticket at all, and both refuse a ticket someone has
+already claimed. They part company on closed tickets: `/ticket-claim`
+refuses one with *This ticket is already closed.*, while the **Claim**
+button does not check the status and will claim a ticket that is already
+closed.
+
+Only staff may claim — and, as noted above, "staff" means *anyone* while no
+staff role is configured. Once at least one staff role exists, a member
+holding none of them is refused with *You do not have permission to claim
+tickets.* Both the button and the command read the server-wide staff-role
+list on the Settings tab, and only that list. A category can carry its own
+staff roles, but they are used for one thing: deciding which roles are given
+access to the channels opened from that category. They are never consulted
+when someone claims, so a member who holds a category staff role and none of
+the server-wide ones is still refused by both `/ticket-claim` and the
+**Claim** button.
+
+### Closing, and what the transcript captures
+
+Pressing **Close**, or running `/ticket-close`, does four things in order:
+it fetches the 100 most recent messages in the channel, builds them into an
+HTML transcript file, posts that file to your transcript channel if one is
+set, and marks the ticket closed. The channel itself is deleted about five
+seconds later.
+
+Two consequences worth planning around. A ticket longer than 100 messages
+keeps only its 100 most recent ones — the earlier part is not in the
+transcript and is gone with the channel. And if no transcript channel is
+set, or the bot cannot post to it, the close still goes ahead: the channel
+is deleted, and no transcript is saved anywhere.
+
+The transcript file records each message's author name, avatar, text,
+timestamp, and links to any attachments, under a header giving the ticket
+number, its category, your server's name, the Discord user ID of whoever
+opened it, the ticket's status, and when it was created.
+
+The header has two more fields — a closed time and a close reason — and
+neither one appears on a transcript produced by closing a ticket. The file
+is built from the ticket as it stands *before* it is marked closed, so a
+transcript saved on close always reads *Status: open* (or *claimed*), shows
+no closed time, and shows no reason line even when you gave a reason. Those
+fields are filled in only on a transcript made with `/ticket-transcript` in a
+ticket that was already closed. A close reason does reach your transcript
+channel, but in the message posted alongside the file rather than in the file
+itself, and only when the ticket was closed with `/ticket-close` and a
+reason — the **Close** button sends no reason with the transcript message and
+stores none with the ticket.
+
+Individual messages are labelled with the author's name rather than an ID.
+Each message also shows that author's avatar, and the avatar is not stored
+inside the file — it is linked to an address on Discord's servers, so
+opening a saved transcript later fetches those images from Discord rather
+than showing them from the file alone.
+
+### The slash commands
+
+Five commands, run inside a ticket channel. Each has a per-member cooldown:
+after someone runs a command, that same command is unavailable to them for
+the number of seconds listed, and running it early replies with the
+remaining wait.
+
+| Command | What it does | Permission required | Cooldown |
+| --- | --- | --- | --- |
+| `/ticket-claim` | Claims the current ticket. | No permission gate is set in source — any member who can see the channel can run `/ticket-claim`. The command applies its own staff-role check on top of that. | 5s |
+| `/ticket-close` | Closes the current ticket, with an optional reason. | No permission gate is set in source — any member who can see the channel can run `/ticket-close`. | 5s |
+| `/ticket-add` | Adds a member to the current ticket. | No permission gate is set in source — any member who can see the channel can run `/ticket-add`. | 5s |
+| `/ticket-remove` | Removes a member from the current ticket. | No permission gate is set in source — any member who can see the channel can run `/ticket-remove`. | 5s |
+| `/ticket-transcript` | Posts an HTML transcript of the current ticket into the channel. | No permission gate is set in source — any member who can see the channel can run `/ticket-transcript`. | 10s |
+
+Note what that means for `/ticket-close`, `/ticket-add`, and
+`/ticket-remove`: unlike claiming, they carry no staff check of their own.
+Anyone who can see a ticket channel — which includes the member who opened
+it, and anyone added to it — can close it, or pull other members in and out.
+
+- `/ticket-close` takes an optional **reason**, which is shown in the closing
+  message in the ticket channel, included in the message posted with the
+  transcript file in your transcript channel, and stored with the ticket. It
+  is not written into the transcript file itself, for the reason given above.
+- `/ticket-add` takes a required **user** and grants them the ability to
+  view, send, and read the history of the ticket channel. It is refused on a
+  closed ticket.
+- `/ticket-remove` takes a required **user** and strips their access to the
+  channel. It refuses to remove the member who opened the ticket, and is
+  refused on a closed ticket.
+- `/ticket-transcript` posts the transcript file as an attachment in the
+  ticket channel itself and tells you how many messages it covers. It does
+  not close anything, and unlike the other four it also works after the
+  ticket has been closed.
+
+### Where the settings live
+
+Open **Tickets** from the guild sidebar. The page is headed *Ticket System*,
+subtitled *Create support ticket panels and manage open tickets from the
+dashboard.*, with four cards across the top — **Total Tickets**, **Open**,
+**Claimed**, and **Panels** — over three tabs: **Active Tickets**, **Panel
+Builder**, and **Settings**.
+
+## What each dashboard control does
+
+<ScreenshotPlaceholder
+  src="/screenshots/tickets.png"
+  alt="The dashboard Tickets page: ticket statistics and the Active Tickets, Panel Builder, and Settings tabs"
+  route="/guild/$guildId/tickets"
+/>
+
+### The four cards
+
+**Total Tickets** counts every ticket matching whatever filter the Active
+Tickets tab currently has applied — with the filter on *All* that is every
+ticket the server has ever had, closed ones included.
+
+**Open** and **Claimed** are narrower than their labels suggest: each counts
+only the rows on the page of the table you are looking at, not the server as
+a whole. On a server with hundreds of tickets, they describe the current
+twenty rows. Turning to the next page changes both numbers.
+
+**Panels** counts the stored ticket panels.
+
+### Active Tickets tab
+
+| Control | Effect |
+| --- | --- |
+| **Filter**: **All**, **Open**, **Claimed**, **Closed** | Limits the table to one status, and returns to page 1. The choice also changes the Total Tickets card, since that counts what the filter matched. |
+| Table columns | #, User, Subject, Status, Assignee, Created. Members are identified by Discord user ID, not by name, in both User and Assignee. Subject shows the category the ticket was opened under, or `--` when it has none. Rows are newest first. |
+| Close (X) button on a row | Shown on any row that is not already closed. Asks *Close* / *This action cannot be undone.* first. Confirming marks the ticket closed with the reason *Force closed from dashboard* — and does nothing else. Nothing is posted in Discord, no transcript is written, and the ticket's channel is left in place, still visible to whoever had access. Use the Close button in Discord, or `/ticket-close`, when you want the transcript and the channel cleanup. |
+| Document icon on a row | Appears only for a ticket whose transcript was saved to your transcript channel. It opens that transcript's message in Discord in a new tab. |
+| **Back** / **Next** | Move through the list twenty rows at a time. They appear only when there is more than one page. |
+
+### Panel Builder tab
+
+| Control | Effect |
+| --- | --- |
+| Table columns | Name, Channel, Ticket Category, Status. Channel is shown as a raw channel ID. Ticket Category lists the panel's buttons as badges. |
+| Status badge | Reads *Default* until the panel has a message in Discord and *Deploy Panel* after. Nothing in FluxCore sets that message, so in practice it always reads *Default*. |
+| **Panel Title** | The panel's name, 1 to 50 characters. |
+| **Channel** | Picks the standard text channel the panel is meant for. Stored with the panel. |
+| **Create Panel** | Stores the panel. Both fields are required — leaving either empty replies *Failed to create ticket panel* without creating anything. The panel is created with exactly one category, labelled **Open Ticket**; the tab offers no way to add a second category, an emoji, a description, per-category staff roles, or form fields. |
+| Send (paper plane) button | Labelled **Deploy Panel**. It reports *Ticket panel deployed* and posts nothing to Discord. |
+| Delete (bin) button | Asks *Confirm deletion* / *This action cannot be undone.*, then removes the panel. Tickets already opened from it are not affected. |
+
+### Settings tab
+
+The two pickers at the top are applied by the **Save** button at the bottom.
+The two number boxes and the name box are different: they save on every
+keystroke, with no Save press needed and no confirmation shown when they
+succeed. All three show the stored value and nothing else — there is no
+separate copy of what you typed — so a keystroke that is not saved is not
+kept in the box.
+
+Three kinds of rejection, with different symptoms. A number above the box's
+maximum, or an empty name box, is sent to the server and refused there: a
+failure message appears and the stored value is left as it was. A number
+below the box's minimum does the same — **Max Tickets per User** accepts 1 to
+25, so typing 0 there is sent, refused, and reported as a failure, with the
+stored value unchanged. A negative number, or a number box you clear
+entirely, is stopped in the page before anything is sent — no failure message
+appears, and nothing is saved.
+
+| Control | Effect |
+| --- | --- |
+| **Role** | Despite the bare label, this is the staff-role list, and the box inside it reads *Staff roles*. The roles you pick are granted access to a new ticket channel — view, send, read history, attach files, manage messages — and are the ones allowed to claim. The channel access applies only when the panel category the ticket was opened under carries no staff roles of its own; a category that does carry its own gets those roles on the channel instead, and this list is not applied to that channel at all. Claiming is decided by this list in every case, never by the category's. Leaving this list empty means a ticket opened under a category with no staff roles of its own is visible to its creator and the bot alone, and claiming is open to anyone in the channel. Changing it affects new tickets only; channels already created keep the permissions they were made with. The grey hint under this picker is about transcripts and does not describe it. |
+| **Transcript Channel** | *Channel where ticket transcripts are saved on close.* Pick a standard text channel, or the none option to store transcripts nowhere. When it is set, closing a ticket posts the HTML transcript there and the ticket's row on the Active Tickets tab gains a link to it. When it is not, the transcript is discarded along with the channel. |
+| **Max Tickets per User** | *Maximum number of open tickets a single user can have.* 1 to 25. A member at the limit is refused when they press a panel button. The count includes claimed tickets, not only unclaimed ones. |
+| **Close Confirmation** | The label and its description, *Require confirmation before closing a ticket.*, do not match what the box does: it is a number box, 0 to 720, that stores an auto-close time in hours. Nothing in FluxCore reads that stored value — no ticket is ever closed automatically, at any setting — and nothing about the confirmation step changes either. Leave it at 0. |
+| **Name** | The channel-name format for new tickets, 1 to 50 characters, `ticket-{number}` unless you change it. `{number}` becomes the server's running ticket count padded to four digits, so the first ticket is `ticket-0001`; `{username}` becomes the opener's Discord username lowercased with everything but letters and digits stripped out. Only the first occurrence of each is replaced. A format with neither variable gives every ticket the same channel name. |
+| **Save** | Applies the **Role** and **Transcript Channel** pickers, and reports *Ticket settings saved*. It has no effect on the three boxes below them, which have already saved themselves. |
+
+## Related features
+
+**Permissions** and **Moderation** each have their own entry in the guild
+sidebar and their own page in the dashboard, and both have a page in this
+guide.
+
+- [Permissions](/guide/features/permissions) — creating dashboard roles and
+  granting View Tickets, Manage Tickets, Manage Panels, and Manage Settings,
+  which is what the Prerequisites section above refers to. These grants
+  govern the dashboard only; who may claim or close a ticket inside Discord
+  is decided by the staff-role list on the Settings tab and by the fact that
+  the ticket commands carry no Discord permission gate.
+- [Moderation](/guide/features/moderation) — the separate record of action
+  taken against a member. Closing a ticket never creates a moderation case,
+  and a case never appears in the ticket list; the two are kept apart.

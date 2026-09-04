@@ -1,0 +1,136 @@
+---
+title: Overview
+description: The first page you land on for a server — four headline figures, two charts, and a feed of the most recent automation activity.
+---
+
+import ScreenshotPlaceholder from "@/components/ScreenshotPlaceholder";
+
+The Overview page is the dashboard's landing page for a server. It reports on
+one thing: how your automation rules have been running. The page is headed
+*Overview* with the subtitle *Monitor your automation performance and activity
+at a glance.*
+
+Nothing on this page changes your server. Every figure, chart and row here is a
+reading of what your automation rules have already done.
+
+## Prerequisites
+
+- **The bot is in your server.** A dashboard request for a server the bot has
+  not joined is refused before it reaches any data.
+- **You can open the dashboard for the server.** Access goes to the server
+  owner and to any member whose Discord roles give them either **Administrator**
+  or **Manage Server** in that server — Manage Server alone is enough. This is
+  checked against the server's current state in Discord rather than against what
+  was true when you signed in, but the answer is reused for up to 60 seconds
+  before being looked up again, so access removed in Discord can still work for
+  a short time afterwards.
+- **You need the Actions permission called View Analytics if the permission
+  system is on.** On the **Permissions** page in the guild sidebar, the
+  **Permission System** switch reads *Active — admins are restricted to their
+  assigned permissions* when it is on. While it is on, the figures on this page
+  are served to anyone whose granted permissions cover **View Analytics** in the
+  **Actions** permission group — either that permission ticked on its own, or a
+  broader grant that already covers it, such as the **Full Admin** preset (which
+  grants everything) or the **Viewer** preset (which grants every view
+  permission in every group), both offered under **Quick Add from Preset**
+  beneath the role list. A grant can reach a member three ways: through a
+  dashboard role assigned to them, through any role marked **Default role**
+  (every default role's permissions are added to every admin, on top of whatever
+  roles they are assigned individually), or through a grant made to that member
+  individually. While the switch is off, every admin has full access and this
+  permission does not apply.
+- **Without a grant covering View Analytics, the page never finishes loading.**
+  The **Overview**
+  sidebar entry is not gated on any permission, so it is listed for everyone
+  who can open the server — but the request behind it is refused, and the page
+  keeps showing its loading placeholders instead of figures or an error
+  message.
+- **There must be automation rules for the page to have anything to report.**
+  On a server with no rules and no execution history, the counts read 0,
+  Success Rate reads 100%, the Top Events chart reads *No event data yet*, and
+  the activity feed reads *No activity recorded yet*.
+
+## Getting to the page
+
+**Overview** is the first entry in the guild sidebar, above Automation.
+Choosing a server from the server list also opens Overview directly, so it is
+where you arrive after picking a server.
+
+## Choosing the time range
+
+Two buttons sit under the four cards: **7d** and **30d**. **7d** is selected
+when the page opens. The choice sets the window used by the Executions figure,
+the Success Rate figure, the Execution Trend chart and the Top Events chart.
+The two rule counts and the activity feed ignore it.
+
+Switching to a range you have not loaded yet replaces the page with loading
+placeholders until the new figures arrive. A small spinner appears beside the
+buttons while figures are being refreshed.
+
+## What each part of the page shows
+
+<ScreenshotPlaceholder
+  src="/screenshots/overview.png"
+  alt="The dashboard Overview page: four stat cards, the execution trend and top events charts, and the recent activity feed"
+  route="/guild/$guildId/overview"
+/>
+
+### The four cards
+
+| Card | What it reports |
+| --- | --- |
+| **Action Rules** | Every automation rule in the server, enabled or not. Not affected by the 7d/30d choice. |
+| **Active Now** | The rules whose switch is on. Not affected by the 7d/30d choice. |
+| **Executions** | How many times an action ran in the selected window, successes and failures together. |
+| **Success Rate** | The share of those executions that succeeded, rounded to a whole percent. It reads 100% when the window contains no executions at all, so 100% here means "nothing failed", not "everything worked hard". The card is shown in green at 90% or above and in red below 90%. |
+
+### The error badge
+
+When at least one execution has failed in the last 24 hours, a red badge
+appears at the end of the range-button row reading *N errors in last 24h*
+(*1 error in last 24h* for a single one). It always counts the last 24 hours,
+whether 7d or 30d is selected, and it is absent entirely when nothing has
+failed in that period.
+
+### Execution Trend
+
+An area chart of the selected window, one point per day that had executions.
+The green band is **Success** and the red band is **Errors**; hovering a day
+shows both counts for that day. Days with no executions produce no point rather
+than a zero.
+
+### Top Events
+
+A bar chart of which trigger events produced the executions in the selected
+window, longest bar first, showing at most the eight busiest events. Event
+names longer than twelve characters are cut short in the axis labels; hovering
+a bar shows the full name and the execution count. With no executions in the
+window the chart area reads *No event data yet*.
+
+### Recent Activity
+
+The ten most recent executions in the server, newest first — this list is not
+limited by the 7d/30d choice, so on a quiet server it can show activity older
+than the selected window.
+
+Each row carries a green tick for a successful execution or a red cross for a
+failed one, the rule's name, the event and action beneath it as *event →
+action*, and how long ago it ran on the right. A row under a minute old is labelled in
+words rather than with a number; from one minute it counts up in minutes
+(*5m ago*), from one hour in hours (*3h ago*), and from one day in days
+(*2d ago*). The row shows that an execution failed but not why.
+
+**View all logs**, at the top right of the feed, opens the **Logs** page for
+the server.
+
+## Related features
+
+- [Automation](/guide/features/automation) — the rules these figures are
+  measuring. The Automation page in the sidebar is where rules are created,
+  enabled, disabled and deleted, and it carries its own set of cards covering
+  the same counts.
+- **Logs**, in the guild sidebar, is where the activity feed's **View all
+  logs** link goes.
+- **Permissions**, in the guild sidebar, is where the **View Analytics**
+  permission named in the Prerequisites is granted to a dashboard role, and
+  where the **Permission System** switch itself lives.

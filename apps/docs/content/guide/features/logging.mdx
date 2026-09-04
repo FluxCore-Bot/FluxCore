@@ -1,0 +1,211 @@
+---
+title: Logging
+description: Record what happens in your server — deleted and edited messages, joins and leaves, voice moves, channel and role changes — to a Discord channel of your choice and to a dashboard table you can narrow by category and by exact user ID.
+---
+
+import ScreenshotPlaceholder from "@/components/ScreenshotPlaceholder";
+
+Logging watches your server for events, posts an embed describing each one
+into a log channel you choose, and stores the same event in a table you can
+filter in the dashboard. You pick a log channel per category — messages,
+members, voice, channels, roles, server, and moderation — and switch each
+category on independently.
+
+## Prerequisites
+
+- **The bot is in your server.** The dashboard refuses every logging request
+  for a server the bot has not joined.
+- **Nothing is logged until you set it up.** A server that has never opened
+  the Logs page has no category configured, and a category with no
+  configuration is off: no embeds are posted and no entries are recorded.
+  This is the opposite of the leveling system, which starts working on its
+  own.
+- **You can open the dashboard for the server.** Access goes to the server
+  owner and to members whose Discord permissions include **Administrator**
+  or **Manage Server**. Anyone else is turned away with a permission error.
+- **The log channel is a standard text channel the bot can post in.** The
+  channel dropdown offers standard text channels only — announcement,
+  forum, voice, and thread channels never appear in it. If the bot cannot
+  post in the channel you chose, or the channel is deleted afterwards, the
+  Discord embed is dropped without any warning to you, while the event is
+  still recorded in the dashboard table. An empty log channel next to a
+  filling **Event Logs** table means a delivery problem, not a
+  configuration problem.
+- **Changes reach the bot when the bot restarts.** The bot reads a server's
+  logging configuration once — the first time an event in that server needs
+  it — and holds it in memory for as long as it runs. Nothing pushes your
+  dashboard changes to it. Once your server's configuration has been read,
+  a new log channel, or a category switched on or off, applies to what the
+  bot does in Discord only after the bot is restarted. The category cards
+  redraw with the new channel and toggle position as soon as the save
+  succeeds, so a card showing what you picked is not proof that Discord
+  logging has changed yet.
+- **If the permission system is switched on** for your server — on the
+  **Permissions** page in the sidebar, where the Permission System panel
+  reads *Active — admins are restricted to their assigned permissions.* —
+  then the Logs page splits along three permissions, one of which is not a
+  logging permission. **View Logs** governs the
+  **Event Logs** table and the **Logs** sidebar entry itself: an admin
+  without it loses the entry from the guild sidebar and from the search box
+  you open with ⌘K or Ctrl+K (⌘P and Ctrl+P open the same box), though
+  reaching the page by its address from a bookmark or a shared link still
+  works. **Manage Config** governs the category cards, to read them as well
+  as to change them: without it the whole grid of cards is absent from the
+  Event Logs tab, with no message saying why, and the event table below it
+  loads as usual. Read a missing card grid as "not shown to me," never as
+  "no categories are configured." The third permission is **View
+  Analytics**, which the Permissions page lists under **Actions**, not under
+  Logging: it governs everything in the **Activity Logs** tab. Neither tab is
+  ever hidden, so an admin who has View Logs but not View Analytics still
+  opens the page on Activity Logs and finds it empty — an *Execution Rate* of
+  *—%*, a *Total Failures* and *Total Entries* of *0*, and a *No logs found*
+  panel reading *Rule execution logs will appear here once automation rules
+  start running.* That is the same thing the tab shows a server whose rules
+  have genuinely never run, with nothing to tell the two apart. **Purge
+  Logs**, the remaining permission listed under Logging, is used by no
+  control on the Logs page, so granting or withholding it changes nothing you
+  can reach from the dashboard. While the Permission System panel reads *Inactive — all
+  admins with MANAGE_GUILD have full access.*, every admin with Manage
+  Server sees both tabs in full.
+
+## Setting up logging
+
+Open **Logs** in the guild sidebar — it sits between **Starboard** and
+**Permissions** — and switch to the **Event Logs** tab. The page opens on
+**Activity Logs**, which is about automation rules rather than server
+events; the logging described on this page lives entirely under **Event
+Logs**.
+
+The Event Logs tab has two halves, both headed *Event Log Browser*: a grid
+of one card per category on top, and the table of recorded events beneath
+it.
+
+To turn a category on:
+
+1. On that category's card, open the dropdown reading **Select log channel**
+   and pick the channel that will receive this category's embeds. Choosing a
+   channel saves at once — there is no save button anywhere on this page.
+2. Switch the toggle in the card's top-right corner on. This also saves at
+   once, because a channel is now selected.
+
+A card with no channel selected yet saves nothing when you move its toggle —
+but the toggle keeps the position you left it in, and the next channel you
+pick on that card is saved together with that position. So the reverse order
+works as well: switching the toggle on first and then picking a channel
+leaves the category on. What does not work is leaving a card with no channel
+at all, since the toggle alone never reaches the server. Do not flip the
+toggle back to correct for a missing channel — that only stores the category
+as off once you pick one.
+
+There are seven cards — **Message Events**, **Member Events**, **Voice
+Events**, **Channel Events**, **Role Events**, **Server Events**, and
+**Moderation Events** — and each is separate. A card you never touch
+stays off, and the seven categories can point at seven different channels or
+all at the same one.
+
+## What each dashboard control does
+
+<ScreenshotPlaceholder
+  src="/screenshots/logging.png"
+  alt="The dashboard Logs page, Event Logs tab: the category cards above the event table"
+  route="/guild/$guildId/logs"
+/>
+
+### A category card
+
+| Control | Effect |
+| --- | --- |
+| Toggle (top-right) | Turns this category's logging on or off. Off stops both the Discord embeds and the dashboard entries for every event in the category; entries already recorded are kept. It saves on the spot only when the card already has a channel selected; with no channel it holds the position you left it in until you pick one. |
+| **Select log channel** | The channel that receives this category's embeds. Standard text channels only. Selecting one saves the card immediately, together with the toggle at its current position — so picking a channel on a card whose toggle is off leaves it off, and picking one on a card whose toggle you already switched on turns it on. |
+| Event-name badges | A read-only list of the event names belonging to the category. At most four names are shown; if the category has more than four, a *+N more* badge follows the fourth and N is the number left unshown. Channel Events, Role Events, and Server Events have four or fewer, so those three cards list every name and carry no *+N more*. The badges describe the category, not a set of switches: there is no per-event control anywhere on the page, and enabling a category enables every event in it that the bot records. |
+| Footer line | Appears once the card has been saved. Reads *Active* or *Disabled* to match the stored toggle, followed by a count of ignored channels when the category has any. The dashboard has no control for setting ignored channels or ignored roles. |
+
+### The event table
+
+| Control | Effect |
+| --- | --- |
+| Category dropdown | Narrows the table to one category. **All Categories** clears it. Changing it returns you to page 1. |
+| **Filter by User ID...** | Matches the Target column exactly, so a partial ID finds nothing. What counts as the target depends on the event: a member's user ID for `messageDelete` and `messageUpdate`, for member events, and for voice events; a channel ID for channel events; a role ID for role events. Two recorded events store no target at all — `messageBulkDelete` under Message Events and `serverUpdate` under Server Events — so their Target column is an em dash and nothing you type in this box will ever match them. Changing it returns you to page 1. |
+| Entries badge | The number of entries matching the current filters, not the number stored. |
+| Table columns | Timestamp, Category, Event, Target, Executor. Category and Event show the internal names (`message`, `messageDelete`) rather than the wording on the cards. Members, channels, and roles appear as raw IDs, never as names. The Executor column is always an em dash — nothing recorded here stores who performed the action. |
+| **Previous** / **Next** | Move through the results 25 rows at a time. |
+
+Entries older than 90 days are deleted. The bot performs that cleanup once
+every 24 hours while it is running.
+
+## What gets logged
+
+Turning a category on covers these events. The names are the ones shown in
+the Event column and on the card badges.
+
+| Category | Recorded | Listed on the card but never recorded |
+| --- | --- | --- |
+| Message Events | `messageDelete`, `messageUpdate`, `messageBulkDelete` | `messagePin`, `messageUnpin` |
+| Member Events | `memberJoin`, `memberLeave`, `memberBan`, `memberUnban`, `memberNicknameChange`, `memberRoleChange` | `memberKick` |
+| Voice Events | `voiceJoin`, `voiceLeave`, `voiceSwitch` | `voiceMute`, `voiceDeafen` |
+| Channel Events | `channelCreate`, `channelDelete`, `channelUpdate` | — |
+| Role Events | `roleCreate`, `roleDelete`, `roleUpdate` | — |
+| Server Events | `serverUpdate` | `emojiUpdate` |
+| Moderation Events | — | `modWarn`, `modKick`, `modBan`, `modTempban`, `modTimeout`, `modSoftban`, `modNote`, `modPurge` |
+
+The Moderation Events card is the one to watch: it saves a channel and
+switches on like the others, and then produces nothing at all, because no
+part of the bot writes moderation entries. A member being banned or unbanned
+does reach your logs, as `memberBan` and `memberUnban` under **Member
+Events**, however the ban was carried out. Kicks, timeouts, bans, tempbans,
+softbans, and notes are recorded as numbered moderation cases instead, and
+warnings are kept in their own warning history — see the Moderation page.
+
+Two exclusions apply without any setting of yours:
+
+- **Bots are skipped** for message deletions and edits, for joins and
+  leaves, for nickname and role changes, and for voice moves. A bot's
+  deleted message never appears in your message log, and adding or removing
+  a bot produces no `memberJoin` or `memberLeave` entry. Bulk deletions,
+  bans, and unbans have no such exclusion.
+- **Edits that changed no text are skipped**, so a message gaining a link
+  preview does not produce a `messageUpdate`.
+
+### What the Discord embed shows
+
+| Event | The embed contains |
+| --- | --- |
+| `messageDelete` | *Message Deleted* — the author with their avatar, the channel, the author as a mention, the message text, links to any attachments, and the message ID in the footer. |
+| `messageUpdate` | *Message Edited* — the channel, the author, a **Jump to Message** link, and **Before** and **After** blocks of the text. |
+| `messageBulkDelete` | *Messages Bulk Deleted* — the channel and how many messages went. Not the messages themselves. |
+| `memberJoin` | *Member Joined* — the member, how many days ago their Discord account was created, and the server's new member count. |
+| `memberLeave` | *Member Left* — the member, the member count, and the roles they held on the way out. |
+| `memberBan` / `memberUnban` | *Member Banned* with the ban reason, or *Member Unbanned*. |
+| `memberNicknameChange` | *Nickname Changed* — **Before** and **After**, each reading *None* where there was no nickname. |
+| `memberRoleChange` | *Member Roles Updated* — the roles **Added** and **Removed**. |
+| `voiceJoin` / `voiceLeave` / `voiceSwitch` | *Voice Channel Joined*, *Left*, or *Switched* — the channel, or **From** and **To** for a switch. |
+| `channelCreate` / `channelDelete` / `channelUpdate` | *Channel Created*, *Deleted*, or *Updated* — the channel, its type, and its ID. A deleted channel is named as plain text, since there is nothing left to link to. |
+| `roleCreate` / `roleDelete` / `roleUpdate` | *Role Created*, *Deleted*, or *Updated* — the role, its colour, and its ID. |
+| `serverUpdate` | *Server Settings Updated* — a line per change among the server name, icon, verification level, and AFK channel. A change to anything else posts *Settings were updated* with no detail. |
+
+## Related features
+
+**Moderation**, **Automation**, and **Permissions** each have their own entry
+in the guild sidebar, and each has a page in this guide —
+[Moderation](/guide/features/moderation),
+[Automation](/guide/features/automation), and
+[Permissions](/guide/features/permissions). Here is where each meets logging.
+
+- **Moderation** — where kicks, timeouts, bans, tempbans, softbans, and
+  moderator notes are recorded, as numbered cases rather than as log
+  entries. Bans are the overlap: a ban creates a moderation case *and*, if
+  Member Events is on, appears in your member log as `memberBan`.
+- **Automation** — owns the **Activity Logs** tab that the Logs page opens
+  on. That tab lists rule executions, not server events: an Execution Rate,
+  Total Failures, and Total Entries figure, a box reading **Search logs...**
+  that matches the Rule Name column exactly — so a partial rule name finds
+  nothing, despite the wording — and a range dropdown offering **Last 1
+  hour**, **Last 24 hours**, and **Last 7 days** (the default). It reads the 30 most recent
+  executions and then applies your range to those, so a wider range never
+  shows more than 30 rows. The table gives Timestamp, Rule Name, Event Type,
+  Action, a Success or Failed status, and the error text for a failure, ten
+  rows at a time.
+- **Permissions** — where View Logs, Manage Config, and Purge Logs are
+  granted to dashboard roles under **Logging**, and where **View Analytics**
+  — the permission the Activity Logs tab depends on — is granted under
+  **Actions**. This is what the Prerequisites section above refers to.

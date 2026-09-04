@@ -1,0 +1,216 @@
+---
+title: Custom Commands
+description: Build your own prefix commands and keyword auto-responders in the dashboard — a trigger, a text or embed reply, optional role changes, cooldowns, and channel or role restrictions.
+---
+
+import ScreenshotPlaceholder from "@/components/ScreenshotPlaceholder";
+
+Custom Commands is the dashboard page where you write your own responders:
+pick what a message has to look like (`!rules`, a keyword anywhere in the
+message, a prefix, or a regular expression), write the text or embed that
+answers it, and add up to five role changes to run alongside the reply.
+
+**Read this before you build anything here.** The commands you create are
+stored and the page shows them back to you, but the bot answers none of them
+in Discord today: nothing in the running bot listens to messages on behalf of
+custom commands, so no message triggers a saved command, no reply is sent, no
+trigger message is deleted, and no role is added or removed. Everything below
+describes the page you configure and the trigger rules your entries store —
+not something members can currently set off in chat.
+
+## Prerequisites
+
+- **The bot is in your server.** Every request from this page for a server the
+  bot has not joined is refused with *Bot is not in this guild*, and the list
+  never loads.
+- **You can open the dashboard for the server.** Access goes to the server
+  owner and to members whose Discord permissions include **Administrator** or
+  **Manage Server**. Your authority is re-checked against Discord itself, so
+  admin access removed in Discord stops working here shortly afterwards.
+  Anyone else is turned away with *No permission for this guild*.
+- **Nothing has to be switched on first.** There is no server-wide on/off
+  switch for custom commands, and no channel or role has to be configured
+  before you create one. A server that has never opened this page has no
+  commands, and the page opens on an empty list.
+- **If the permission system is switched on** for your server — on the
+  **Permissions** page in the sidebar — then two permissions listed there under
+  **Custom Commands** decide what you can do: **View Commands** to read the
+  list, and **Manage Commands** to create, edit, delete, or toggle one. The
+  **Commands** entry is shown only to admins holding View Commands, and it
+  disappears from the guild sidebar and from the search box you open with ⌘K or
+  Ctrl+K (⌘P and Ctrl+P open the same box) at once. Hiding the entry does not
+  close the page: an admin who reaches it by its address anyway, from a
+  bookmark or a shared link, still gets the full page.
+- **An empty list is not proof there are no commands.** Without View
+  Commands, the page loads and reads *No custom commands created yet.* — the
+  same thing a server with no commands shows — and the three cards across the
+  top read 0, 0, and *0 / 50*. Check your permissions before acting on an
+  empty page. The Create Command button is shown to everyone who can reach the
+  page, and pressing through it without Manage Commands fails with an
+  *Insufficient permissions* message.
+- While the permission system is switched off, every admin with Manage Server
+  has full access to the page.
+
+## Where custom commands live
+
+Open **Commands** from the guild sidebar. The page is headed *Custom
+Commands* over the line *Create auto-responders and prefix commands triggered
+by messages.*, with three cards across the top — **Total Commands**,
+**Enabled**, and **Limit** — and two tabs: **Commands** and **Variables**.
+
+The **Commands** tab holds the list and the **Create Command** button. The
+**Variables** tab is a read-only reference table of the placeholders you can
+type into a response; there is nothing to change on it.
+
+There are no slash commands for this feature. Creating, editing, enabling,
+and deleting all happen on this page.
+
+## What each dashboard control does
+
+<ScreenshotPlaceholder
+  src="/screenshots/commands.png"
+  alt="The dashboard Custom Commands page: command statistics, the command list, and the create dialog"
+  route="/guild/$guildId/commands"
+/>
+
+### The three cards
+
+**Total Commands** counts every command saved for this server, enabled or
+not. **Enabled** counts only the ones whose switch is on. **Limit** reads
+*N / 50* — 50 is the hard ceiling per server, and creating a 51st is refused
+with *Maximum of 50 custom commands per guild*. Deleting a command frees a
+slot.
+
+### The command list
+
+| Column | What it shows |
+| --- | --- |
+| **Name** | The trigger, shown as `!name` for a Prefix Command and as the raw text or pattern for the other three trigger types. |
+| **Trigger** | The trigger type: *!command*, *Keyword*, *Starts With*, or *Regex*. |
+| **Response** | *Text* or *Embed*. |
+| **Cooldown** | The cooldown in seconds, or `--` when it is 0. |
+| **Status** | *Active* or *Disabled*. |
+| Switch | Enables or disables the command in place, without opening it. A disabled command stays saved and keeps counting toward the 50 limit. |
+| Edit (pencil) | Opens the same dialog as Create Command, filled in with this command. |
+| Delete (bin) | Asks *Are you sure you want to delete this command? This action cannot be undone.* before removing it. |
+
+Closing the create or edit dialog after changing anything asks you to confirm
+before discarding. Nothing in the dialog is saved until you press **Create**
+or **Update**.
+
+### Trigger
+
+| Control | Effect |
+| --- | --- |
+| **Trigger Type** | Four choices, each matching case-insensitively. **Prefix Command (!name)** matches only when the whole message is exactly `!` followed by the name — `!hello` matches, `!hello there` and `hello` do not. **Keyword (contains)** matches when the text appears anywhere in the message. **Starts With** matches when the message begins with the text. **Regex** matches when the pattern is found anywhere in the message. |
+| **Command Name** / **Trigger Text** / **Regex Pattern** | The same box under all four trigger types; the label changes to match the type you picked. Required — leaving it empty replies *Command name is required*. Up to 100 characters. Under Prefix Command, a line below the box shows the trigger you are building, as *Trigger: !name*. Two commands in one server cannot share a name: a duplicate is refused with *A command with this name already exists*. |
+| **Regex Pattern**, extra rules | A pattern is checked before it is saved, on top of the 100-character limit above. A pattern that is not valid regular-expression syntax is refused with *Invalid regex pattern*, and a pattern that could take runaway time to evaluate is refused with *Unsafe regex pattern (catastrophic backtracking risk)*. |
+
+### Response
+
+| Control | Effect |
+| --- | --- |
+| **Response** (Text / Embed) | Picks which reply the command stores. Switching between them changes which boxes appear below; both sets keep what you typed until you leave the dialog. |
+| **Message** (Text) | The reply text, up to 2000 characters. The variable browser under the box inserts a placeholder at the end of what you have written. |
+| **Embed Title** | Up to 256 characters. |
+| **Embed Description** | Up to 4096 characters. |
+| **Color** | The colour bar down the side of the embed, chosen from a colour picker that starts at `#5865f2`. |
+| **Footer** | Up to 2048 characters. |
+| Preview | The panel at the bottom of the dialog lays your reply out as a Discord message, credited to your own name and avatar. For an embed it shows the title, description, and footer only — the colour bar down its side stays the dashboard's own accent colour and does not change with the **Color** you pick. Placeholders are filled in for the preview: `{user}`, `{username}`, and `{userId}` come from your own account and `{server}` from this server's name, while `{channel}`, `{channelName}`, and `{memberCount}` always show the fixed examples `#general`, `general`, and `1,234` rather than anything from your server. |
+
+An embed built here carries a title, description, colour, and footer. There
+are no boxes for an embed image or thumbnail.
+
+### Template variables
+
+The placeholders below work in the Message box and in an embed's Title,
+Description, and Footer. Every occurrence is replaced, so writing one twice
+replaces both. They are listed on the Variables tab as well.
+
+| Variable | Becomes |
+| --- | --- |
+| `{user}` | A mention of the member whose message triggered the command. |
+| `{username}` | That member's display name. |
+| `{userId}` | Their Discord user ID. |
+| `{server}` | The server name. |
+| `{channel}` | A mention of the channel the message was sent in. |
+| `{channelName}` | That channel's name. |
+| `{memberCount}` | How many members the server has. |
+
+Anything else you type is sent as written. Unlike a level-up announcement,
+a custom command's reply has no mention restrictions applied to it, so an
+`@everyone` or a role mention typed into a response is sent as part of the
+message rather than stripped.
+
+### Actions
+
+| Control | Effect |
+| --- | --- |
+| **Add Action** | Adds a role change that runs alongside the reply. The heading counts them as *Actions (n/5)*, and once five rows exist the button is greyed out — five is the most one command can carry. |
+| **Type** | **Add Role** or **Remove Role**. |
+| **Role** | The role to add or remove, picked from your server's roles. A row left without a role is dropped when you save rather than stored empty. |
+| Remove (bin) | Deletes that action row from the dialog. |
+
+A role change that the bot has no authority to make is skipped without
+anything being said in Discord or in the dashboard, and the rest of the
+command carries on.
+
+### Options
+
+| Control | Effect |
+| --- | --- |
+| **Cooldown (seconds)** | 0 to 3600. The gap a member must wait before setting the same command off again; the cooldown is per member and per command, so one member's wait does not block anyone else, and a wait on one command does not affect another. 0 means no wait. A value outside the range is refused when you save. |
+| **Enabled** | *Whether this command is active* — off leaves the command saved and listed as *Disabled*, and it is skipped when messages are checked. |
+| **Delete Trigger Message** | *Automatically delete the message that triggered this command.* When the message cannot be deleted, the deletion is skipped without a report and the reply still goes out. |
+| **DM Response** | *Send the response as a direct message instead of in the channel.* When the member's direct messages are closed, nothing is sent and nothing is reported to you. Role actions still run either way. |
+
+### Restrictions
+
+| Control | Effect |
+| --- | --- |
+| **Allowed Channels (empty = all)** | A picker over your server's standard text channels. Selecting none leaves the command available in every channel; selecting some limits it to those, and the same message elsewhere sets off nothing. |
+| **Allowed Roles (empty = everyone)** | A picker over your server's roles. Selecting none leaves the command available to everyone; selecting some means only a member holding at least one of them can set it off. |
+
+### The order commands are checked in
+
+Your saved commands define these rules, in this order, for each message:
+
+1. Messages from bots are ignored, and so is anything sent outside a server.
+2. Disabled commands are skipped.
+3. Commands are checked oldest-created first, and **only the first one whose
+   trigger matches runs** — a message that matches three commands produces one
+   reply, from whichever of the three you created first.
+4. A command whose channel or role restrictions exclude the message or the
+   member is skipped, and the checking continues down the list.
+5. A command the member is still on cooldown for is skipped, and the checking
+   continues down the list — so a later command matching the same message can
+   answer instead.
+6. The reply is sent, then the role actions run, then the cooldown starts.
+
+Changes you save here take up to a minute to reach the bot, which keeps its
+own copy of your command list and refreshes it once a minute.
+
+As stated at the top of this page, none of these rules fire in Discord today,
+because the running bot registers no message listener for custom commands.
+
+## Related features
+
+**Automation**, **Permissions**, and **Role Panels** each have their own entry
+in the guild sidebar. Automation has a page in this guide; Permissions and
+Role Panels do not yet. Here is where each meets custom commands.
+
+- [Automation](/guide/features/automation) — the other way FluxCore reacts
+  automatically. Automation rules are driven by server events rather than by
+  the text of a message, and the two systems share nothing: a custom command
+  is not an automation rule and does not appear on the Automation page.
+- **Permissions** — where View Commands and Manage Commands are granted, which
+  is what the Prerequisites section above refers to.
+- **Role Panels** — the other way FluxCore hands out roles. A role panel lets
+  members pick roles for themselves from a posted message; a custom command's
+  Add Role and Remove Role actions change roles as a side effect of a message
+  matching a trigger.
+
+Two guide pages sit closest to this one:
+[General](/guide/features/general) covers the slash commands the bot ships
+with, and [Leveling](/guide/features/leveling) is the other feature that reads
+every message members send.

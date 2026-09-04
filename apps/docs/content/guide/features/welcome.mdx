@@ -1,0 +1,247 @@
+---
+title: Welcome & Farewell
+description: Greet members when they join and mark it when they leave, with a channel message, a generated image card, a private welcome DM, and roles handed out automatically on join.
+---
+
+import ScreenshotPlaceholder from "@/components/ScreenshotPlaceholder";
+
+Welcome & Farewell posts a message in a channel of your choice when someone
+joins your server and when someone leaves, can attach a generated image card
+carrying the member's avatar, can send a new member a private direct
+message, and can give every new member a set of roles the moment they
+arrive.
+
+## Prerequisites
+
+- **The bot is in your server.** Everything here is driven by the bot
+  noticing members joining and leaving, and the dashboard refuses every
+  request for a server the bot has not joined.
+- **Nothing is switched on until you switch it on.** A server that has never
+  opened this page has Welcome Message, Welcome Image, Farewell Message,
+  Farewell Image, and Welcome DM all off, no welcome or farewell channel
+  chosen, both message styles set to Plain message, and no auto-roles. Until
+  you enable something and pick a channel, joins and leaves pass silently.
+- **You can open the dashboard for the server.** Access goes to the server
+  owner and to members whose current Discord permissions in that server
+  include **Administrator** or **Manage Server**. Anyone else is turned away.
+- **The bot can post in the channel you pick.** The welcome and farewell
+  messages are sent by the bot into the channel you select; if the channel
+  no longer exists, is not a text channel, or the bot cannot send there, the
+  join or leave produces nothing and nothing is reported back to you in the
+  dashboard.
+- **The bot's own role sits above every auto-role.** On join, any auto-role
+  that is positioned at or above the bot's highest role is skipped silently,
+  and so is a role that has been deleted. The remaining ones are still
+  applied, so a partly-working auto-role list looks exactly like a working
+  one.
+- **If the permission system is switched on** for your server — configured on
+  the **Permissions** page in the guild sidebar — then the **Welcome** group
+  there carries three permissions: **View Config** (*View welcome/farewell
+  config*), **Manage Config** (*Update welcome/farewell settings*), and
+  **Test Messages** (*Send test welcome/farewell messages*). View Config is
+  what loads the page's settings, generates the server-side image preview,
+  and decides whether the **Welcome** entry appears in the guild sidebar at
+  all; Manage Config is what lets **Save Changes** succeed and what lets you
+  upload or remove a custom background; Test Messages is what lets **Send
+  Test Message** succeed.
+
+## Configuring welcomes and farewells
+
+Open **Welcome** from the guild sidebar. The page is headed *Welcome &
+Farewell* — *Configure welcome and farewell messages, images, and
+auto-roles.* — and has six tabs: **Welcome**, **Welcome Image**,
+**Farewell**, **Farewell Image**, **Welcome DM**, and **Auto-Role**.
+
+Two buttons sit under the tabs and apply to the whole page:
+
+- **Save Changes** writes every tab at once, not only the one you are
+  looking at, and confirms with *Welcome configuration saved*. Nothing on
+  any tab takes effect until you press it — leaving the page first discards
+  your changes.
+- **Send Test Message** is greyed out until the Welcome Message toggle is
+  on. Pressing it checks your saved configuration and shows *Test message
+  will be sent to* followed by your saved welcome channel written as
+  `<#` and the channel's numeric ID `>` — the notification is plain text, so
+  the ID is not turned into the channel's name. It does not post anything in
+  Discord. To put a real test message in the channel, run `/welcome test` in
+  your server instead.
+
+### What members see
+
+When someone joins, three things happen in order. Your auto-roles are
+applied first. Then the bot posts in the channel set on the Welcome tab —
+provided **Welcome Message** is on and a channel is chosen — using the
+message style, text or embed, and image you configured. Last, it sends the
+Welcome DM if that is on. Bots that join are given no auto-roles and no DM,
+but they do get the channel message.
+
+When someone leaves, the bot posts in the channel set on the Farewell tab,
+provided **Farewell Message** is on and a channel is chosen. There is no
+farewell DM and no farewell auto-role — the Welcome DM and Auto-Role tabs
+apply to joins only.
+
+If the image card fails to render, the message is still posted without it.
+
+### The `/welcome` command
+
+| Command | What it does | Permission required | Cooldown |
+| --- | --- | --- | --- |
+| `/welcome test` | Posts a test welcome message into your configured welcome channel. | Manage Server (`ManageGuild`) | 5s |
+
+The reply is visible only to you. `/welcome test` always builds the **embed**
+form of the welcome message from the fields on the Welcome tab's embed
+builder and posts that — it ignores the Message style setting, the plain
+Message text, and the welcome image, so it is a check on the embed and the
+channel rather than a rehearsal of what a real join produces. It uses your
+own account as the stand-in member, so `{user}` and the other variables
+resolve to you.
+
+It refuses before sending in three cases, each with a named reason: *Not
+Configured* (Welcome Message is off, which is also what you get on a server
+that has never saved this page), *No Channel* (no welcome channel is
+chosen), and *Invalid Channel* (the configured channel no longer exists or
+is not a text channel). A fourth reason, *Test Failed* — *Failed to send the
+test welcome message. Please try again later.* — comes back when the
+configuration passed all three checks but the send itself did not go
+through, which is what you see when the bot cannot post in an otherwise
+valid channel.
+
+## What each dashboard control does
+
+<ScreenshotPlaceholder
+  src="/screenshots/welcome.png"
+  alt="The dashboard Welcome & Farewell page: the six configuration tabs with the image editor open"
+  route="/guild/$guildId/welcome"
+/>
+
+### Welcome tab and Farewell tab
+
+These two tabs carry the same controls. The Welcome tab is headed *Welcome
+Message* — *Send a custom embed when a new member joins.* — and the Farewell
+tab *Farewell Message* — *Send a message when a member leaves the server.*
+
+| Control | Effect |
+| --- | --- |
+| The toggle beside the heading | Turns that message on or off. Off means joins (or leaves) produce no channel message at all, whatever else is configured on the tab. |
+| **Welcome Channel ID** / **Farewell Channel ID** | Despite the label, this is a picker, not a text field, and it lists standard text channels only — announcement, forum, stage, and voice channels are not offered. It also offers a "none" choice; with no channel chosen, nothing is posted even while the toggle is on. |
+| **Message style** | **Plain message** — *The image is posted at full width with optional text above it.* — or **Embed** — *The image is shown inside an embed box.* The choice decides which editor appears below and which one the bot uses on a real join. |
+| **Message text** (Plain style only) | Up to 2000 characters, the text posted on its own line. Supports the variables listed below. Whatever you write, the posted message can only ever ping the member who joined or left: an `@everyone`, `@here`, or role mention still appears in the message text, but notifies nobody. Leave it empty and Plain style posts the image alone. |
+
+Choosing **Embed** replaces the text box with the **Embed Builder**:
+
+| Field | Effect |
+| --- | --- |
+| **Title** | Up to 256 characters, shown as the embed's heading. |
+| **Description** | Up to 4096 characters, the embed's body. The variable browser beside the label inserts a variable at the end of what you have typed. |
+| **Color (hex)** | A hex value such as `#a3a6ff`, used for the embed's left-hand stripe. |
+| **Footer** | Up to 2048 characters, shown in small text at the bottom. |
+| **Thumbnail URL** | Up to 2048 characters, an image shown small in the top-right corner. `{user.avatar}` here puts the member's own avatar there. |
+| **Image URL** | A full `https://` address for a large image inside the embed. Unlike Title, Description, Footer, and Thumbnail URL, this is a plain text box with no variable-aware editing — variables you type into it by hand are still substituted when the message is sent. |
+
+A live Discord-style preview under the fields shows how the embed will read.
+The embed always carries a timestamp, whether or not you fill anything in.
+
+**The variables**, usable in the plain message text and in every embed
+field:
+
+| Variable | Becomes |
+| --- | --- |
+| `{user}` | A mention of the member, which pings them. |
+| `{user.tag}` | Their Discord tag. |
+| `{user.name}` | Their username. |
+| `{user.id}` | Their numeric user ID. |
+| `{user.avatar}` | A link to their avatar image. |
+| `{server}` | Your server's name. |
+| `{server.id}` | Your server's numeric ID. |
+| `{server.icon}` | A link to your server's icon, or nothing if the server has none. |
+| `{membercount}` | The member count, with thousands separators. |
+
+Every occurrence of a variable is replaced, not only the first.
+
+### Welcome Image tab and Farewell Image tab
+
+*Generate a custom image card with the member's avatar when they join.* /
+*Generate a custom farewell card when a member leaves.* The toggle beside
+the heading turns the card on; while it is off the tab shows no controls,
+only *Enable the toggle above to configure welcome images.* on the Welcome
+Image tab and *Enable the toggle above to configure farewell images.* on the
+Farewell Image tab.
+
+The card's large text is the member's display name in your server. The
+smaller line under it is whatever you type as the subtitle, with `{user}` and
+`{user.name}` becoming their username, `{user.displayname}` their display
+name, `{server}` your server's name, and `{membercount}` the member count.
+These are the only variables the image understands — the embed's other
+variables are drawn as literal text here.
+
+| Control | Effect |
+| --- | --- |
+| **Live Preview** | Renders the card as you change settings, using your own avatar and name against a placeholder server called *Your Server* with 1,234 members. **Instant** renders it in your browser as you drag a slider; pressing the button switches to **Server**, which builds the same card with the same server-side renderer the bot uses on a real join — slower, but it is the renderer that will actually produce the card in Discord. **Refresh** re-renders the current settings. |
+| **Template** | Six layouts, each card showing its own description: **Starter** (*Classic centered layout. Clean and universal — works for any server.*), **Horizon** (*Landscape split with avatar on left and text on right. Modern and balanced.*), **Neon** (*Cyberpunk-inspired with neon accents and glow effects. Built for gaming servers.*), **Elegant** (*Refined layout with thin borders and subtle dividers. Premium and sophisticated.*), **Minimal** (*Ultra-clean with small avatar and compact text. Lets the background shine.*), and **Aurora** (*Dreamy gradient effects with soft glow. Ethereal and atmospheric.*). The template sets the card's size and where the avatar and text sit. |
+| **Background** → **Solid Color** | A single colour behind everything, chosen with the swatch or by typing a hex value. |
+| **Background** → **Gradient** | Six built-in gradients: midnight, ocean, sunset, forest, nebula, and ember. |
+| **Background** → **Custom Image** | **Upload Image** picks a file from your computer — *JPG, PNG, or WebP. Max 3 MB.* A file over 3 MB is refused before it is sent, and a file whose contents do not match its declared type is refused by the server. Once uploaded the tab shows a *Background set* badge and a **Remove** button that deletes the stored file and drops the card back to the solid colour. |
+| **Overlay Darkening** | On by default at 50%. The **Opacity** slider, in steps of 5%, darkens the background so text stays readable over a busy image. At 0% the overlay does nothing. |
+| **Avatar** → **Shape** | **Circle**, **Rounded Square**, or **Square**. |
+| **Avatar** → **Border Width** | 0 to 12. Zero removes the ring around the avatar. |
+| **Avatar** → **Border Color** | The ring's colour, by swatch or hex value. |
+| **Avatar** → **Glow Effect** | Off by default. Switching it on reveals a colour picker for the glow. |
+| **Title (Username)** → **Font**, **Color**, **Size** | The font list is the eight shipped with FluxCore — Inter, Space Grotesk, JetBrains Mono, Poppins, Playfair Display, Outfit, Orbitron, and Bebas Neue. Size runs 16 to 56 in steps of 2. |
+| **Subtitle (Custom Text)** → **Text** | The line under the name, up to 200 characters. The hint under the box lists `{user.name}`, `{server}`, and `{membercount}`. |
+| **Subtitle (Custom Text)** → **Font**, **Color**, **Size** | Same font list; size runs 12 to 36 in steps of 1. |
+| **Accent Color** | *Used for decorations, borders, and template accents.* — what it changes depends on the template you picked. |
+| **Delivery Mode** | **With embed message** puts the card inside the embed, **Before embed message** posts the card as its own message first and the embed after it, and **Image only (no embed)** posts the card and no embed at all. This setting applies only when Message style is **Embed** — in Plain style the card is always posted at full width alongside your message text. |
+
+Every colour box on these two tabs takes a six-digit hex value such as
+`#1a1a2e`. A shorthand like `#abc` or a colour name is rejected when you
+press Save Changes: a bad value on the Welcome Image tab is refused with
+*Invalid welcome image config*, and one on the Farewell Image tab with
+*Invalid farewell image config*. Because Save Changes writes the whole page
+at once, either refusal blocks the other tabs' changes too.
+
+### Welcome DM tab
+
+*Send a direct message to new members. Will silently fail if DMs are
+disabled.* The toggle turns it on; the tab has only an embed builder, with
+the same fields and variables as above, so the DM is always an embed —
+there is no plain-text or image option for it, and no channel to pick.
+
+Bots that join are never sent one. If a member's direct messages are closed
+to your server, nothing arrives and nothing is reported to you.
+
+### Auto-Role tab
+
+*Automatically assign roles to new members when they join. Bots are
+excluded. The bot must have a role higher than the roles listed here.*
+
+| Control | Effect |
+| --- | --- |
+| **Role IDs (comma-separated)** | Despite the label, this is a picker over your server's roles, and you can select several. Every selected role is given to each human member who joins, as one action, with the reason *Auto-role on join* recorded in your server's audit log. |
+
+This tab has no toggle of its own: an empty list means no roles are given, a
+non-empty one means they are. Roles are given on join only — clearing the
+list does not take a role back from anyone who already has it.
+
+## Related pages
+
+**Permissions**, **Role Panels**, **Logs**, and **Security** each have their
+own entry in the guild sidebar. Here is where each meets Welcome & Farewell.
+
+- [Permissions](/guide/features/permissions) — where the View Config, Manage
+  Config, and Test Messages permissions described in the Prerequisites are
+  granted.
+- [Role Panels](/guide/features/rolePanel) — the other way FluxCore hands out
+  roles. Auto-roles are given automatically on join and are never
+  self-service; role panels are the reverse.
+- [Logging](/guide/features/logging) — a separate record of members joining
+  and leaving, written to its own log channel. It is configured independently
+  of this page: a join can be logged with no welcome message, or welcomed
+  with no log entry.
+- [Anti-Raid](/guide/features/antiraid) — the **Security** sidebar entry. Its
+  checks run *before* the welcome does: a member caught by the account-age
+  filter or a join-rate spike is actioned and gets no welcome message, no
+  welcome DM, and no auto-roles.
+
+[Leveling](/guide/features/leveling) is the other feature that reacts to a
+member's first moments in your server: joining grants no XP by itself, and
+auto-roles are unrelated to level reward roles.
