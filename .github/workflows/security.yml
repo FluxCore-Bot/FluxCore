@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
         with:
-          version: 10.28.0
+          version: 10.34.5
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -60,8 +60,10 @@ jobs:
       - name: Scan bot image
         # Skip the base image's package-manager tooling (npm global + corepack pnpm
         # cache) — not our runtime surface. App deps under /app/node_modules and the
-        # OS layer are still scanned.
-        run: trivy image --severity HIGH,CRITICAL --exit-code 1 --ignore-unfixed --no-progress --skip-dirs /usr/local/lib/node_modules --skip-dirs /root/.cache/node/corepack fluxcore-bot:ci
+        # OS layer are still scanned. The corepack path tracks COREPACK_HOME in the
+        # Dockerfile; if one moves the other must follow, or pnpm's own vendored
+        # dependencies start failing this scan.
+        run: trivy image --severity HIGH,CRITICAL --exit-code 1 --ignore-unfixed --no-progress --skip-dirs /usr/local/lib/node_modules --skip-dirs /usr/local/corepack fluxcore-bot:ci
 
   trivy-dashboard:
     name: trivy (dashboard image)
@@ -75,8 +77,10 @@ jobs:
       - name: Scan dashboard image
         # Skip the base image's package-manager tooling (npm global + corepack pnpm
         # cache) — not our runtime surface. App deps under /app/node_modules and the
-        # OS layer are still scanned.
-        run: trivy image --severity HIGH,CRITICAL --exit-code 1 --ignore-unfixed --no-progress --skip-dirs /usr/local/lib/node_modules --skip-dirs /root/.cache/node/corepack fluxcore-dashboard:ci
+        # OS layer are still scanned. The corepack path tracks COREPACK_HOME in the
+        # Dockerfile; if one moves the other must follow, or pnpm's own vendored
+        # dependencies start failing this scan.
+        run: trivy image --severity HIGH,CRITICAL --exit-code 1 --ignore-unfixed --no-progress --skip-dirs /usr/local/lib/node_modules --skip-dirs /usr/local/corepack fluxcore-dashboard:ci
 
   trivy-fs:
     name: trivy (filesystem & config)
