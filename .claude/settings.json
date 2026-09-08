@@ -1,4 +1,17 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(pnpm --filter @fluxcore/docs manifest)",
+      "Bash(pnpm --filter @fluxcore/docs check-coverage)",
+      "Bash(docker compose --profile bot run --rm bot pnpm --filter @fluxcore/docs test)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git ls-files:*)",
+      "Bash(ls:*)",
+      "Bash(wc:*)"
+    ]
+  },
   "hooks": {
     "SessionStart": [
       {
@@ -48,6 +61,17 @@
         ]
       },
       {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/docs-path-guard.sh",
+            "timeout": 10,
+            "statusMessage": "Verifying documented paths exist..."
+          }
+        ]
+      },
+      {
         "matcher": "Read|Edit|Write",
         "hooks": [
           {
@@ -86,6 +110,12 @@
             "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/test-reminder.sh",
             "timeout": 10,
             "statusMessage": "Checking for missing tests..."
+          },
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/docs-freshness.sh",
+            "timeout": 10,
+            "statusMessage": "Checking documentation freshness..."
           }
         ]
       }

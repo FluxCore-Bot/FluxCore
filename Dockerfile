@@ -1,7 +1,15 @@
 # ---- Base ----
 FROM node:22-alpine AS base
-RUN apk add --no-cache libc6-compat
-RUN corepack enable && corepack prepare pnpm@10.28.0 --activate
+# `apk upgrade` picks up OS security fixes published after the node:22-alpine tag
+# was last rebuilt -- without it the image ships whatever openssl the tag froze.
+RUN apk add --no-cache libc6-compat && apk upgrade --no-cache
+# node:22-alpine ships no /home/node, so the `node` user has no writable HOME and
+# corepack's default cache would land in root's 0700 $HOME — unreadable after
+# USER node, making the pnpm shim re-download on every start. Keep the prepared
+# pnpm somewhere every user can read.
+ENV COREPACK_HOME=/usr/local/corepack
+RUN corepack enable && corepack prepare pnpm@10.34.5 --activate \
+ && chmod -R a+rX "$COREPACK_HOME"
 WORKDIR /app
 
 # ============================================
@@ -18,6 +26,7 @@ COPY packages/systems/package.json ./packages/systems/
 COPY packages/i18n/package.json ./packages/i18n/
 COPY apps/bot/package.json ./apps/bot/
 COPY apps/dashboard/package.json ./apps/dashboard/
+COPY apps/docs/package.json ./apps/docs/
 COPY packages/database/prisma ./packages/database/prisma/
 COPY packages/database/prisma.config.ts ./packages/database/
 RUN pnpm install --frozen-lockfile \

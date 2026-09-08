@@ -1,0 +1,194 @@
+---
+title: Permissions
+description: Split dashboard access into roles, so each admin reaches only the modules you grant them, and review every permission change in an audit log.
+---
+
+The Permissions page turns dashboard access from one blunt setting — anyone
+who can manage the server can do everything — into a set of dashboard roles
+you define, each holding a chosen list of module permissions, plus an audit
+log of the changes made to them.
+
+## Prerequisites
+
+- **The bot is in your server.** Every request the dashboard makes for a
+  server the bot has not joined is refused with a permission error, and this
+  page is no exception.
+- **You can open the dashboard for the server.** Access goes to the server
+  owner and to members whose Discord permissions include **Administrator**
+  or **Manage Server**. The dashboard re-checks that authority against
+  Discord rather than trusting your sign-in, so removing it on Discord ends
+  dashboard access without anyone signing out.
+- **Only the server owner can switch the permission system on or off.** For
+  everyone else the switch on the **Permission System** panel is greyed out
+  and cannot be moved at all — there is nothing to click and no error to
+  read.
+- **While the permission system is off, nothing on this page limits
+  anybody.** Every admin with Administrator or Manage Server holds full
+  access to every module, whatever roles exist here. Roles you build are
+  stored and do nothing until the system is switched on.
+- **View Roles is what makes the page findable.** The **Permissions** entry
+  in the guild sidebar is shown only to admins holding the **View Roles**
+  permission, and the same filter applies to the dashboard's **Search**
+  (the command palette), so an admin without it will not find the page by
+  searching for it either. Opening the page's address directly still shows
+  the page, but the role list is refused and reads *No roles created yet.*
+  whether or not roles exist. Creating, editing and deleting roles
+  additionally need **Manage Roles**; the Audit Log tab needs **View Audit
+  Log**; the Permission System panel reads its state through **Manage
+  Settings**.
+- **You cannot grant a permission you do not hold.** An admin who is not the
+  server owner is stopped with *Cannot grant permissions you don't have* when
+  a role they create or edit contains a permission missing from their own
+  set. The server owner is exempt.
+
+## How to turn the permission system on
+
+1. Open the server in the dashboard and choose **Permissions** in the guild
+   sidebar. The page is headed *Roles & Permissions* — "Control who can
+   access and manage each dashboard module."
+2. Build at least one role first, from the **Roles** tab. The fastest route
+   is the **Quick Add from Preset** list under the role list on the left,
+   which creates a ready-made role in one click; **Create Role**, top right,
+   makes an empty one you fill in yourself.
+3. Select the role in the list and set its permissions in the role editor on
+   the right, then press **Save Changes**.
+4. With the roles you want in place, switch on the **Permission System**
+   toggle at the top of the page. The panel then reads *Active — admins are
+   restricted to their assigned permissions*, a toast confirms *Permission
+   system enabled*, and the banner about the system being disabled
+   disappears.
+
+While the system is off, that banner sits under the panel and reads: *The
+permission system is disabled. All dashboard admins currently have full
+access. Enable it above to enforce granular permissions.*
+
+A role reaches an admin in one of two ways. Marking it **Default role**
+applies its permissions to every dashboard admin in the server — being
+assigned to some other role does not exempt anyone from it. Otherwise the
+role reaches only the members assigned to it, and the Permissions page has no
+control for assigning a member to a role: the role editor shows a member
+count and nothing else about membership. So **Default role** is the only
+switch on this page that decides who a role covers.
+
+Turning the system on never restricts the server owner, who keeps full
+access to every module regardless of the roles that exist.
+
+## What each control does
+
+### Permission System panel
+
+- **Permission System toggle** — on means each admin is held to the
+  permissions their roles grant, and the panel reads *Active — admins are
+  restricted to their assigned permissions*. Off means *Inactive — all
+  admins with MANAGE_GUILD have full access*, and switching it off raises a
+  toast saying *Permission system disabled — all admins have full access*.
+  The toggle is available to the server owner only.
+
+  Reading this panel needs the **Manage Settings** permission. An admin
+  without it is served an error instead of the setting, and the page falls
+  back to showing *Inactive* along with the disabled-system banner — even on
+  a server where the system is switched on. Treat the panel as authoritative
+  only when you are the owner or hold Manage Settings.
+
+### Roles tab
+
+- **Dashboard Roles list** (left column) — every role in the server, each
+  with its colour dot, its name, and a **Default** badge when it is a default
+  role. Selecting one opens it in the editor. With no roles yet it reads *No
+  roles created yet.*
+- **Quick Add from Preset** — creates a role with a fixed name, colour and
+  permission set in one click. **Moderator** holds every Moderation
+  permission plus View Logs, Manage Config for logging, View and Manage
+  Tickets, Manage Suggestions, and View Events for security. **Content
+  Manager** holds everything under Welcome, Leveling, Starboard and
+  Suggestions, plus all Role Panels, Scheduled Messages and Custom Commands
+  permissions. **Full Admin** holds every permission there is. **Viewer**
+  holds every view permission across all modules and no manage permissions.
+  A preset whose permissions exceed your own is refused. A preset role is
+  never created as a default role.
+- **Create Role** (top right) — opens *Create Dashboard Role*, which asks for
+  a **Name** (up to 32 characters) and a **Color**. The role is created with
+  no permissions at all and is selected in the editor for you to fill in. A
+  name already used by another role in the server is rejected. A server is
+  capped at 25 dashboard roles; past that, creation fails with *Role limit
+  reached (max 25)*.
+
+### Role editor
+
+- **Role Name** — up to 32 characters, and unique within the server.
+- **Color** — the dot shown beside the role in the list. Presets come with
+  their own colour, which you can change here.
+- **Default role** — when on, the role's permissions are added to every
+  dashboard admin in the server, including admins who are already assigned
+  to another role. When off, the role reaches only the members assigned to
+  it, and nothing on this page assigns them.
+- **Permissions** — a scrollable list grouped by module: Dashboard,
+  Moderation, Actions, Logging, Welcome, Leveling, Tickets, Giveaways,
+  Starboard, Suggestions, Role Panels, Temp Voice, Security, Scheduled
+  Messages and Custom Commands. Ticking an individual entry — for example
+  *View Cases*, "View moderation case history" — grants that one permission.
+  Ticking the checkbox beside a **module heading** grants the whole module at
+  once: the module gets an **All** badge, the individual boxes below it are
+  ticked and locked, and any individual permissions you had picked for that
+  module are replaced by the module-wide grant. Unticking a heading that
+  carries the **All** badge drops the module-wide grant and unlocks the
+  individual boxes, which come back empty — the individual picks the grant
+  replaced are not restored, so re-tick the ones you want. A heading with no
+  **All** badge is ticked because every box under it happens to be ticked;
+  clicking it in that state does not clear the module, it swaps those
+  individual grants for the module-wide grant and adds the **All** badge.
+  A role holds at most 100 entries.
+- **Save Changes** — writes the name, colour, default flag and permission set
+  together. It stays greyed out until you change something, and the new
+  permissions take effect immediately for everyone the role covers, without a
+  sign-out. A failure — a duplicate name, or a permission beyond your own —
+  is reported as a toast and nothing is saved.
+- **Delete** (the bin icon, top right of the editor) — asks *Delete role
+  "&lt;name&gt;"?* and warns that this removes the role and unassigns all
+  members. It does exactly that: everyone assigned to the role loses it, and
+  each unassignment is recorded in the audit log alongside the deletion.
+  There is no undo.
+
+### Audit Log tab
+
+- **The table** — one row per recorded change, with **User** (who made it),
+  **Action** (the change, written as a key such as `dashboard.roles.create`),
+  **Target** (what it applied to, shown as a type badge and an ID), and
+  **When**. Role creation, role edits, role deletion, assigning and
+  unassigning members, per-member permission changes, and dashboard settings
+  changes are all recorded here.
+- **Previous / Next** — paging through the log 25 rows at a time; the page
+  counter between them reads *Page X of Y*, and the buttons appear only when
+  there is more than one page.
+- **Who sees what** — the server owner sees every entry for the server. Any
+  other admin sees only the entries recording their own actions. An admin
+  without the **View Audit Log** permission sees the empty state, *No audit
+  log entries yet.*, whether or not the log has entries.
+
+## Related pages
+
+Permissions decides who can reach the other dashboard modules; each of those
+has its own sidebar entry and its own page:
+[Overview](/guide/features/overview),
+[Moderation](/guide/features/moderation),
+[Automation](/guide/features/automation),
+[Logging](/guide/features/logging),
+[Leveling](/guide/features/leveling),
+[Role Panels](/guide/features/rolePanel),
+[Scheduled Messages](/guide/features/scheduled),
+[Giveaways](/guide/features/giveaways),
+[Custom Commands](/guide/features/customCommands),
+[Anti-Raid](/guide/features/antiraid), and
+[General Commands](/guide/features/general).
+
+Two things this page does not cover:
+
+- **Discord's own permissions.** Who may open the dashboard at all is decided
+  in Discord — Administrator or Manage Server — and the roles here only
+  subdivide what those admins can do once inside. Slash commands in Discord
+  are gated by Discord permissions as well, not by dashboard roles, so
+  removing a module permission here does not stop that module's commands from
+  being used in chat.
+- **[Role Panels](/guide/features/rolePanel).** Despite the similar name,
+  that page hands Discord roles to your members; the roles on this page exist
+  only inside the dashboard and are never visible in Discord.

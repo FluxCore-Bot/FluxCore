@@ -1,0 +1,225 @@
+---
+title: TempVoice
+description: Members create their own voice channel by joining a hub channel, control it from a button panel inside it, and the channel disappears when the last person leaves.
+---
+
+import ScreenshotPlaceholder from "@/components/ScreenshotPlaceholder";
+
+TempVoice turns one voice channel into a hub: whoever joins it gets a fresh
+voice channel of their own, is moved into it, and receives a panel of buttons
+for renaming it, limiting who can join, kicking or banning people, and handing
+ownership over. When the last member leaves, the channel is deleted.
+
+## Prerequisites
+
+- **The bot is in your server.** Every TempVoice request from the dashboard is
+  refused for a server the bot has not joined, with a message saying the bot is
+  not in the guild.
+- **You can open the dashboard for the server.** Access goes to the server
+  owner and to members whose Discord permissions include **Administrator** or
+  **Manage Server**. That answer is worked out from a picture of your
+  server's members and roles that is itself reused for up to 60 seconds, and
+  the answer is then reused for up to another 60 seconds, so access removed in
+  Discord can take up to about two minutes to stop working here rather than
+  stopping instantly.
+- **The bot can create and move people into channels.** Creating a temp
+  channel needs exactly two things of the bot: that it can create channels, and
+  that it can move members. Sending the control panel into the new channel is a
+  separate step that is allowed to fail — if the bot cannot send messages there,
+  the channel is still created and the member is still moved into it, but no
+  panel appears, so nobody gets the buttons for renaming, locking, or handing
+  the channel over. Before saving a hub, `/tempvoice setup` checks those two
+  plus two more — that the bot can send messages, and that it can connect — and
+  refuses with a permission error if any of the four is missing; creating a hub
+  from the
+  dashboard does not run that check, so a hub added there can be saved and then
+  quietly fail to produce channels. If temp channels are not appearing, the
+  bot's permissions are the first thing to look at.
+- **Nothing is switched on by default.** A server with no hub configured has no
+  TempVoice behaviour at all — the feature starts the moment you add your first
+  hub, and stops when you remove your last one.
+- **If the permission system is switched on** for your server — on the
+  **Permissions** page in the sidebar — then the **Temp Voice** category there
+  decides who can use this page: **View Config** to read the hub list, and
+  **Manage Config** to create, edit, or delete a hub. The **TempVoice** entry
+  is shown in the guild sidebar only to admins holding View Config. Attempting
+  a change without Manage Config fails with an insufficient-permissions
+  message. While the permission system is inactive, full access goes to the
+  server owner and to every member with **Administrator** or **Manage Server**.
+  The server owner has full access whether the permission system is on or off.
+
+## How temporary voice channels work
+
+### Creating and deleting a channel
+
+A member joins the hub voice channel. The bot creates a new voice channel,
+moves them into it, gives them Manage Channels, Move Members, Connect, and View
+Channel on it, and posts the control panel in the new channel's text chat
+mentioning them as the owner. The member who joined the hub is the owner.
+
+The new channel is placed in the category you chose for the hub. If you left
+the category as **Same category as the hub**, it is created in whatever
+category the hub channel itself sits in at that moment.
+
+The channel is deleted as soon as the last member leaves it. The owner can also
+delete it immediately with the **Delete** button.
+
+### The control panel
+
+The panel is posted in the temp channel's own text chat when the channel is
+created. When the bot updates the panel after a change and cannot fetch that
+message, it posts a fresh panel in the channel instead, so a channel can end up
+with more than one panel message. Every button
+except **Claim** works only for the current owner; anyone else clicking gets
+*Only the channel owner can use these controls.* Every reply the panel gives is
+private to the person who clicked.
+
+| Button | What it does |
+| --- | --- |
+| **Rename** | Opens a box for a new channel name, up to 100 characters. An empty name is refused. If the rename fails, the reply is *Failed to rename the channel. You may be rate limited — try again in a few minutes.* |
+| **Limit** | Opens a box for a user limit between 0 and 99. 0 removes the limit. Anything else is refused with *Please enter a number between 0 and 99.* |
+| **Lock** / **Unlock** | Lock stops anyone else from connecting; the button then reads Unlock, which lets anyone connect again. People already in the channel are not removed by locking. |
+| **Hide** / **Unhide** | Hide makes the channel invisible to everyone else; Unhide makes it visible again. |
+| **Close Chat** / **Open Chat** | Close Chat stops everyone else from sending messages in the channel's text chat. Open Chat restores it. |
+| **Kick** | Pick one member from a menu; they are disconnected from the channel. They can rejoin — use Ban to stop that. You cannot kick yourself, and picking someone who is not in the channel is refused. |
+| **Ban** | Pick one member; they are disconnected and blocked from connecting to this channel. Up to 50 people per channel. You cannot ban yourself or the bot. |
+| **Hide From** | Pick one member; they are disconnected and can no longer see the channel at all. Up to 50 people per channel. You cannot hide the channel from yourself or from the bot. |
+| **Unban** | Lists the people currently banned from this channel, up to 25 at a time, so you can let one back in. With nobody banned it says *There are no banned users in this channel.* |
+| **Unhide From** | Lists the people the channel is currently hidden from, up to 25 at a time, so you can make it visible to one of them again. With nobody hidden it says *There are no users hidden from this channel.* |
+| **Invite** | Pick any member of the server; they get a direct message with a one-use invite link to the channel that expires after an hour. If either step fails — the invite cannot be created, or the message cannot be delivered — nothing arrives and the reply is *Could not send the invite. The user may have DMs disabled.*, which names closed DMs as one possible cause rather than the confirmed one. |
+| **Transfer** | Pick a member to hand ownership to. They become the owner immediately, and they drop off this channel's banned and hidden-from lists — but the block itself stays on the channel, so a transferred-to member who was banned still cannot connect, and a member the channel was hidden from still cannot see it. Because they are off those lists, they no longer appear under **Unban** or **Unhide From** either. |
+| **Claim** | The one button that is not limited to the owner: anyone who can press it can claim, with no check that they are in the voice channel. It works only while the owner has left the channel — with the owner still in it you get *The channel owner is still in the channel. You cannot claim it.* The person claiming becomes the owner, and they drop off this channel's banned and hidden-from lists — but, as with **Transfer**, the block itself stays on the channel, so someone who was banned still cannot connect and someone the channel was hidden from still cannot see it. Because they are off those lists, they no longer appear under **Unban** or **Unhide From** either. |
+| **Config** | Shows a private summary: channel name, owner, user limit, lock status, visibility, text chat status, and the full lists of banned and hidden-from members. |
+| **Delete** | Deletes the channel straight away. |
+
+The panel's own display — the owner, the user limit, and a status line carrying
+the lock, visibility, and text-chat states, joined by a count of banned members
+and a count of hidden-from members whenever either list has someone on it — is
+rewritten after each change. After the bot restarts, the panel
+message from before the restart is no longer updated: its buttons still work
+and still apply your changes, but the status it shows stops changing, so trust
+the private confirmation over the panel text.
+
+### Settings that come back next time
+
+Renaming, setting a limit, locking, hiding, closing the chat, banning, and
+hiding from someone all save that state against you for that hub. The next time
+you create a channel from the same hub, it is recreated with the saved name,
+user limit, lock, hidden, and closed-chat state, and with the same people
+banned and hidden. A saved name replaces the hub's name template, so a member
+who renamed their channel once keeps that name on every later channel from that
+hub until they rename it again.
+
+Kicking, inviting, transferring, and claiming do not change anything saved.
+Settings are stored per member per hub, so the same person can have a different
+set-up on each hub in your server.
+
+### After a bot restart
+
+When the bot starts, it looks at each hub that has a category stored, and goes
+through the other voice channels in that category:
+
+- An **empty** channel is deleted, whether or not it was created by TempVoice.
+  A permanent voice channel you keep in a hub's category will be deleted on the
+  next restart if nobody is sitting in it. Keep hub categories for temp
+  channels only.
+- An **occupied** channel is adopted as a temp channel, so its panel buttons
+  work again. The owner is taken to be whoever holds Manage Channels on the
+  channel, and failing that the first member in it — so ownership can land on
+  someone else after a restart.
+
+Hubs left on **Same category as the hub** are skipped entirely by this pass:
+nothing in their category is deleted or adopted, and temp channels that
+survived the restart no longer respond to their panel buttons.
+
+### The slash command
+
+`/tempvoice` has a per-user cooldown of 5 seconds; running it again inside that window replies with the remaining wait.
+The cooldown follows the person, not their membership of one server — using
+`/tempvoice` here also holds them back for 5 seconds in every other server the
+bot is in. Its permission gate is **Manage Channels** (`ManageChannels`), and it
+applies to all three subcommands. Every reply is private to whoever ran it.
+
+| Subcommand | Options | What it does |
+| --- | --- | --- |
+| `/tempvoice setup` | **channel** (required, voice channels only), **name-template** (optional, up to 100 characters) | Makes that channel a hub. The category is set to the category the hub is in at that moment. Without a template it uses `{user}'s Channel`. |
+| `/tempvoice remove` | **channel** (required, voice channels only) | Stops that channel being a hub. Channels already created from it are left alone. |
+| `/tempvoice list` | none | Lists every hub with its template, and adds the category only for hubs that have one stored — a hub left on **Same category as the hub** in the dashboard is listed with no category at all. With none configured it replies *Use `/tempvoice setup` to add a hub channel.* |
+
+`/tempvoice setup` refuses a channel that is already a hub, and refuses
+entirely once the server has 10 hubs. `/tempvoice remove` refuses a channel
+that is not a hub.
+
+## What each dashboard control does
+
+<ScreenshotPlaceholder
+  src="/screenshots/tempvoice.png"
+  alt="The dashboard TempVoice page: the voice hub list with a hub card expanded into its four-step editor"
+  route="/guild/$guildId/tempvoice"
+/>
+
+Open **TempVoice** from the guild sidebar. The page opens with the small
+heading *Management Hub*, then the title *Temporary Voice Channels* over the
+line *Configure hubs that let members create their own voice channels by
+joining.*, and holds a single card, **Voice hubs**, with a counter
+beside the heading reading how many of the 10 allowed hubs you have used.
+
+### The hub list
+
+| Control | Effect |
+| --- | --- |
+| **Add hub** | Opens a new hub editor at the bottom of the list. The voice channel and the category start unchosen — the category showing **Same category as the hub** — but the name box is not blank: it arrives already holding `{user}'s Channel`. It is hidden while another card is open for editing, and hidden once you reach 10 hubs. |
+| **Edit** (per hub) | Opens that hub's editor, filled with its saved values. Only one card is open at a time. |
+| **Delete** (per hub) | Removes the hub at once, with no confirmation step, and shows a *Hub removed* message carrying an **Undo** action. Undo re-creates the hub with the same channel, template, and category. Deleting a hub does not touch temp channels already created from it. |
+
+With no hubs configured, the card instead shows a worked example — a *Join to
+Create* voice channel, the channel it would produce, a *Voice Channels*
+category, and the note that it is deleted once everyone leaves — under a
+**Create your first hub** button.
+
+### The hub editor
+
+The editor is laid out as the four steps a hub actually performs.
+
+| Step | Control | Effect |
+| --- | --- | --- |
+| 1. *When someone joins this voice channel…* | Voice channel picker, placeholder **Choose a voice channel** | The hub. Voice channels already used by another hub are left out of the list. Saving with nothing chosen shows *Choose the voice channel members will join.* and puts you back on the picker. |
+| 2. *…FluxCore makes them a channel named…* | Name template box, up to 100 characters | The name each new channel gets. `{user}` is replaced with the creator's display name; anything else you type is used as written. A chip under the box previews the result live. A **new** hub starts pre-filled with `{user}'s Channel`; editing an existing hub re-fills the box with that hub's saved template each time you re-open the card, discarding anything you typed and abandoned before — so a hub saved with an empty template re-opens with an empty box. Clearing the box yourself on a **new** hub stores `{user}'s Channel` outright; clearing it when editing an existing hub stores an empty template, and the bot then falls back to `{user}'s Channel` when naming channels. Either way the name members get is the same, and it is what the preview shows. |
+| 3. *…placed in…* | Category picker, default **Same category as the hub** | Where new channels are created. Choosing a category pins them there. Leaving it on *Same category as the hub* also opts this hub out of the restart pass described above. |
+| 4. *…and it's deleted automatically once everyone leaves.* | none | A statement of the last step, not a setting — automatic deletion cannot be switched off. |
+| — | **Save hub** | Saves and closes the card, confirming with *Hub created* or *Hub updated*. While saving, the button reads *Saving…* and every control is disabled. |
+| — | **Cancel** | Closes the card and discards your edits. |
+
+A rejected save shows the reason in a red banner across the top of the card.
+Three of them come from the checks described above: *This channel is already a
+temp voice hub* (that voice channel is a hub in this server already), *Config
+limit reached (max 10)*, and *Invalid hub channel*. The last one is shown
+whenever the channel you picked is not among the channels the dashboard reads
+back from Discord for your server: a channel that has been deleted or moved out
+of the server produces it, and so does a channel that is still there when that
+channel lookup fails or comes back empty — the banner reads the same either way,
+so a hub that you can see in Discord being rejected is not proof the channel is
+gone.
+
+Collapsed, each hub is two lines. The top line carries the hub channel on the
+left with the **Edit** and **Delete** buttons on the right. Below it, a summary
+line reads: the name new channels will get, then the category — or *same
+category as hub* — then *deleted when empty*.
+
+Saved changes reach the bot without a restart: adding, editing, or deleting a
+hub takes effect for new joins within about ten seconds of the save.
+
+## Related features
+
+**Leveling**, **Logs**, and **Automation** each have their own entry in the
+guild sidebar. Here is where each of them meets TempVoice.
+
+- [Leveling](/guide/features/leveling) — voice XP is earned in temp channels
+  the same as in any other voice channel, on the same conditions: not muted or
+  deafened, and at least two non-bot members present.
+- [Logging](/guide/features/logging) — joins, leaves, and switches involving
+  temp channels are recorded by the voice log category like any other voice
+  activity.
+- [Automation](/guide/features/automation) — the voice-join and voice-leave
+  triggers fire for temp channels too, including the join to the hub that
+  creates one.

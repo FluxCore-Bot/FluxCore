@@ -1,0 +1,170 @@
+---
+title: Starboard
+description: Members react to a message with a star emoji, and once enough of them have, the bot reposts that message into a channel you pick.
+---
+
+import ScreenshotPlaceholder from "@/components/ScreenshotPlaceholder";
+
+Starboard turns reactions into a highlights channel: when a message collects
+as many star reactions as you require, the bot copies it — author, text, first
+image, and a link back to the original — into the channel you choose, and keeps
+the star count on that copy up to date.
+
+## Prerequisites
+
+- **The bot is in your server.** The dashboard refuses every starboard request
+  for a server the bot has not joined.
+- **You can open the dashboard for the server.** Access goes to the server
+  owner and to members whose Discord permissions include **Administrator** or
+  **Manage Server**. Anyone else is turned away with a permission error.
+- **You have chosen a starboard channel.** A server that has never opened this
+  page starts with the starboard switched on, the star emoji ⭐, a threshold of
+  3, Self-Star off, no ignored channels, and NSFW Allowed set to Disable — but
+  with **no** starboard channel. Until you pick one, nothing is ever posted, no
+  matter how many stars a message collects.
+- **The bot is running and can post in that channel.** The reposting is done by
+  the bot as reactions arrive, not by the dashboard. If the bot is offline, or
+  the starboard channel has been deleted, or the bot is not allowed to post
+  there, nothing appears — and nothing marks the miss, either in Discord or on
+  the Starboard page.
+- **If the permission system is switched on** for your server — on the
+  **Permissions** page in the sidebar, where the Permission System panel reads
+  *Active — admins are restricted to their assigned permissions.* — then the two
+  halves of this page load only for admins holding the matching permission,
+  listed there under **Starboard**: **View Entries** for the list of starred
+  messages, and **Manage Settings** to read *and* to change the configuration.
+  The **Starboard** entry is shown only to admins holding View Entries, and it
+  disappears from two places at once: the guild sidebar, and the search box you
+  open with ⌘K or Ctrl+K (⌘P and Ctrl+P open the same box). Hiding the entry
+  does not close the page — an admin who reaches it by its address anyway, from
+  a bookmark or a shared link, still gets both tabs.
+
+  What a missing permission produces is misleading rather than blunt, so read
+  both tabs with that in mind. Without **View Entries**, the Starred Messages
+  tab reads *No starred messages yet.* — the same thing it says when a server
+  genuinely has none. Without **Manage Settings**, the Settings tab is filled in
+  with the built-in defaults listed above rather than with what your server
+  actually has stored, so it can show *Enabled*, ⭐ and a threshold of 3 for a
+  server configured quite differently; pressing **Save** then fails with an
+  *Insufficient permissions* message. While the Permission System panel reads
+  *Inactive — all admins with MANAGE_GUILD have full access.*, every admin with
+  Administrator or Manage Server has full access to both tabs.
+
+## Using the starboard
+
+FluxCore registers no slash command for the starboard. There is nothing for
+members to run: they star a message with a reaction, and everything else
+happens on its own.
+
+Open **Starboard** from the guild sidebar. The page is headed *Starboard* over
+two tabs: **Settings** and **Starred Messages**.
+
+### What members do
+
+A member reacts to a message with the emoji you configured. The bot recounts
+that message's stars on every reaction added and every reaction removed, and
+acts on the new count:
+
+- **At or above the threshold, with nothing posted yet** — the bot posts the
+  message to your starboard channel.
+- **At or above the threshold, already posted** — the bot edits the existing
+  post so its star count is current. If that post has been deleted, the bot
+  posts a fresh one.
+- **Below the threshold** — the bot tries to delete the starboard post, and
+  drops the message from the Starred Messages tab whether or not that deletion
+  succeeded. If it did not — the starboard channel has been deleted, or the bot
+  is not allowed to reach or delete messages in it — the post stays in the
+  channel with no entry behind it, and removing it is a manual job. Stars are
+  removable, so a message can leave the starboard as readily as it arrived.
+
+Reactions that never count toward the total:
+
+- Any reaction whose emoji is not the one you configured.
+- The author's own reaction, while **Self-Star** is off — it is subtracted from
+  the count rather than blocked, so the author may still add it; it does not
+  bring the message any closer to the threshold.
+
+A reaction from a bot is a different case, and it runs the opposite way from
+the two above: a bot's star *does* count toward the total. What a bot's reaction does not do is
+prompt the recount — when the account that added or removed the reaction is a
+bot, the bot stops there and does nothing further. The moment a member reacts
+and a recount does happen, the total counts everyone who reacted with that
+emoji, bots included.
+
+Messages that are never starred, however many reactions they get: messages sent
+by a bot, messages in a channel listed under **Ignored Channels**, and — while
+**NSFW Allowed** is set to Disable — messages in a channel marked age-restricted.
+
+### What the starboard post looks like
+
+The post has a line of text above an embed. The line reads: your star emoji,
+the current star count in bold, a mention of the channel the message came from,
+and a **Jump to message** link back to the original. The embed underneath is
+gold, carries the author's name and avatar, the message text, and the time the
+original was sent, with the original message's ID in its footer. If the message
+had an image attached, the first one is shown; if not, and the message carried
+an embed with an image, that image is shown instead.
+
+### Two things that do not happen
+
+- **Deleting the original message leaves the starboard post standing.** The bot
+  only revisits a message when someone adds or removes a reaction on it, and a
+  deleted message receives none. Delete the starboard post by hand if you want
+  it gone.
+- **Changing the threshold or the emoji does not re-sort what is already
+  there.** Existing posts stay as they are, and messages that would now qualify
+  are not swept up, until the next reaction lands on that particular message —
+  which is what prompts the bot to recount it.
+
+## What each dashboard control does
+
+<ScreenshotPlaceholder
+  src="/screenshots/starboard.png"
+  alt="The dashboard Starboard page: the settings form and the starred messages table"
+  route="/guild/$guildId/starboard"
+/>
+
+### Settings tab
+
+Nothing on this tab takes effect until you press **Save**, the button below the
+card; leaving the page first discards your changes. The card is headed
+*Starboard Configuration*.
+
+| Control | Effect |
+| --- | --- |
+| The switch beside *Starboard Configuration* | Turns the whole starboard off. Off, no message is posted, edited, or removed, whatever members react with. Posts already in the channel stay where they are. |
+| **Starboard Channel** | Where starred messages are posted. The picker lists your server's standard text channels — announcement, forum, and voice channels are not offered — plus a **None** option. Set to None, the starboard does nothing at all, even while the switch above is on. |
+| **Star Emoji** | *The emoji used to star messages. Defaults to the star emoji.* A typed-in field accepting any text from 1 to 100 characters — nothing checks that what you type is an emoji at all, and whatever you store is what reactions are compared against. A standard emoji matches when it is exactly what members react with. A custom emoji from your server matches either as the `<:name:id>` text Discord inserts when you type it into the box, or as its bare name. Leaving the box empty makes the save fail. |
+| **Star Threshold** | *Minimum number of reactions required to post a message to the starboard.* A whole number from 1 to 100. Raising it makes the starboard more selective — and, as noted above, does not retroactively remove posts that no longer qualify. A number above 100 is refused when you press Save, and nothing is stored. |
+| **Self-Star** | *Allow message authors to star their own messages.* On, the author's own reaction counts toward the threshold like anyone else's. Off, it is subtracted from the count. |
+| **Ignored Channels** | *Messages from these channels will never appear on the starboard.* A multiple-choice picker over your server's standard text channels. Adding a channel here does not remove posts already made from it. |
+| **NSFW Allowed** | *Allow messages from NSFW channels to appear on the starboard.* Two choices, **Disable** and **Enable**. Disable skips reactions on messages in channels marked age-restricted. Enable posts them to the same starboard channel as everything else — there is no separate destination for them. |
+| **Save** | Writes all seven settings at once and confirms with *Starboard settings saved*. A rejected value — an empty emoji, a threshold over 100 — fails the whole save, leaving every field as it was stored. |
+
+### Starred Messages tab
+
+A read-only record of what the starboard holds, ordered by star count, highest
+first, twenty rows to a page.
+
+| Control | Effect |
+| --- | --- |
+| Table columns | Original Message, Channel, Author, Stars, Date. The first three are Discord IDs, not names or links. Stars shows your star emoji with the count recorded at the last recount; Date is when the current entry was created. Because a message that drops below the threshold has its entry deleted, a message that is starred again gets a fresh entry with a new date rather than its original one. |
+| **Back** / **Next** | Move through the list twenty rows at a time, with *Page X of Y* and the total beside them. They appear only when there is more than one page. |
+| *No starred messages yet.* | Shown when the list is empty — including, as the Prerequisites note, when it is empty only because you lack View Entries. |
+
+There is no control here for removing an entry or for forcing a message onto
+the starboard. Entries leave on their own when a message's star count drops
+below the threshold.
+
+## Related pages
+
+- [Permissions](/guide/features/permissions) — creating dashboard roles and
+  granting **View Entries** and **Manage Settings**, which is what the
+  Prerequisites section above refers to.
+- [Role Panels](/guide/features/rolePanel) — the other FluxCore feature driven
+  by reactions on a message. The two do not interfere: a reaction on a role
+  panel is examined by both, and a panel message is not a starboard candidate
+  because it was sent by the bot.
+- [Automation](/guide/features/automation) — rules that react to server events.
+  It is the place to look if you want something to happen on a reaction that
+  the starboard's own settings do not cover.

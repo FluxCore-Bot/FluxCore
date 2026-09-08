@@ -1,0 +1,180 @@
+---
+title: Role Panels
+description: Build a message that lets members give themselves roles by pressing a button, picking from a dropdown, or reacting with an emoji.
+---
+
+import ScreenshotPlaceholder from "@/components/ScreenshotPlaceholder";
+
+A role panel is a message FluxCore posts in one of your channels that hands
+out roles on request: members press a button, choose from a dropdown, or add
+a reaction, and the bot adds or removes the matching role for them. You build
+the panel in the dashboard and post it in Discord with `/rolepanel send`.
+
+## Prerequisites
+
+- **The bot is in your server.** Every role-panel request the dashboard makes
+  is for a server the bot has joined; it has no other way to read your roles
+  and channels.
+- **You can open the dashboard for the server.** Access goes to the server
+  owner and to members whose Discord permissions include **Administrator** or
+  **Manage Server**. Anyone else is turned away.
+- **If the permission system is switched on** for your server on the
+  **Permissions** page, admins need the **View Panels** permission in the
+  **Role Panels** group to see this page at all — without it, the **Role
+  Panels** entry is not shown in the guild sidebar and the panel list will
+  not load. Creating, editing, deleting, and the Deploy button each need
+  **Manage Panels**; holding only View Panels lets you read the list and the
+  preview but every change is refused.
+- **You need Manage Roles in Discord to post a panel.** `/rolepanel send`
+  declares its permission gate as **Manage Roles**, and it checks that same
+  permission again when it runs — a member without it gets an ephemeral
+  *Missing Permissions* reply reading *You need the following permissions:
+  ManageRoles*, and nothing is posted.
+- **The bot has to outrank the roles on the panel.** When the bot cannot add
+  or remove a role, a member pressing a button gets an ephemeral reply reading
+  *Failed to update your roles. The bot may not have permission to manage this
+  role.*; from a dropdown the same reply ends *...manage these roles.* On a
+  reaction panel there is no reply at all — the reaction stays on the message
+  and the role never arrives, which looks identical to nothing having
+  happened.
+- **A panel does nothing until it is posted.** Creating a panel in the
+  dashboard stores it and nothing else. Until you run `/rolepanel send`, the
+  panel's Status stays **Draft** and no member can use it.
+
+## How to build and post a panel
+
+Open **Role Panels** from the guild sidebar. The page is headed *Role Panels*
+with the subtitle *Create self-assignable role panels using buttons,
+dropdowns, or reactions.*, three cards across the top — **Total Panels**,
+**Deployed**, and **Total Roles** — and two tabs: **Panels** and **Preview**.
+
+1. On the **Panels** tab, in the **All Panels** card, click **Create Panel**.
+2. Fill in **Name** and pick a **Channel**. Both are required: submitting
+   without a name reports *Panel name is required*, and without a channel
+   *Channel is required*. Nothing is saved in either case.
+3. Choose the **Type** (Button, Dropdown, or Reaction) and the **Mode**
+   (Toggle, Unique, or Verify). The dialog opens on Button and Toggle.
+4. Under **Roles**, pick a **Role** and write a **Label** for each entry, and
+   add an **Emoji** if you want one. Click **Add Role** for another entry. The
+   heading above the list counts them as *Roles (n/25)*, and **Add Role** is
+   greyed out once the list holds 25 entries.
+5. Click **Create**. The panel appears in the table with Status **Draft**.
+6. In Discord, run `/rolepanel send` and choose your panel from the
+   `panel_name` autocomplete, which lists each panel as its name followed by
+   its type and role count. The bot posts the panel and replies, only to you,
+   *Panel Sent — Role panel **name** has been sent to #channel.* The panel's
+   Status becomes **Deployed** once the dashboard fetches the panel list
+   again. It treats a list it fetched in the last 30 seconds as current, so
+   after that window returning to the browser window, revisiting the page, or
+   reloading it brings the new Status in.
+
+`/rolepanel send` takes an optional `channel` option, restricted to text
+channels, which posts the panel to that channel instead of the one saved on
+the panel. Four things can stop it posting, each an ephemeral reply that
+explains itself: *Panel Not Found* when no panel carries that name,
+*No Roles* when the panel has no role entries, *Channel Not Found* when the
+target channel cannot be reached, and *Send Failed — Failed to send the role
+panel. Please check bot permissions and try again.* when the send itself
+fails, which is what you get when the bot cannot post in the target channel.
+You can run it once every five seconds.
+
+Nothing prevents two panels from sharing a name, and `/rolepanel send`
+matches on the name you give it, so give each panel a name of its own if you
+want to be certain which one you are posting.
+
+## What each control does
+
+<ScreenshotPlaceholder
+  src="/screenshots/rolePanel.png"
+  alt="The dashboard Role Panels page: panel statistics, the panel list, and the create-panel dialog"
+  route="/guild/$guildId/roles"
+/>
+
+### The three cards
+
+**Total Panels** counts every panel saved for this server, draft or posted.
+**Deployed** counts the panels that have been posted with `/rolepanel send`
+at least once. **Total Roles** adds up the role entries across all panels.
+
+### The panel table
+
+| Column or control | What it shows or does |
+| --- | --- |
+| **Name**, **Type**, **Mode**, **Roles** | The panel's name, its type and mode as badges, and how many role entries it holds. |
+| **Status** | **Deployed** once the panel has been posted in Discord, **Draft** until then. |
+| Edit | Reopens the panel in the dialog with its saved values filled in. |
+| **Deploy** | Checks the panel and reports *Panel is ready to send. Use /rolepanel send in Discord.* It does not post anything — posting is always `/rolepanel send`. The button is greyed out for a panel with no role entries. |
+| Delete | Asks *Are you sure you want to delete this role panel? This action cannot be undone.* before removing the panel. Any message already posted for it stays in the channel; its buttons then answer *This role panel no longer exists.*, and its reactions stop doing anything. |
+
+### The create and edit dialog
+
+| Control | Effect |
+| --- | --- |
+| **Name** | Up to 100 characters. Used as the embed title when you leave the embed Title empty, and it is the name `/rolepanel send` matches on. |
+| **Channel** | The channel `/rolepanel send` posts to when you do not override it with the command's `channel` option. The list offers standard text channels only. |
+| **Type** | **Button** gives one button per role, laid out five to a row. **Dropdown** gives a single select menu. **Reaction** posts the embed with no controls and has the bot add each entry's emoji as a reaction. |
+| **Mode** | **Toggle (add/remove)**, **Unique (one at a time)**, or **Verify (add only)** — see the table below for what each does. |
+| **Min Roles** | Dropdown panels only. The fewest options a member must choose before the menu accepts their selection. Left empty, the menu accepts an empty selection. |
+| **Max Roles** | Dropdown panels only. The most options a member may choose at once. Left empty, every role on the panel can be chosen at once. |
+| **Title** (under Embed) | The heading of the posted message. Left empty, the panel's Name is used. |
+| **Description** (under Embed) | The body text. Left empty, the posted message lists the panel's entries — each entry's emoji, if it has one, then its label, one per line. |
+| **Add Role** | Adds another role entry. The heading above the list reads *Roles (n/25)*, and the button is greyed out once the list holds 25 entries. |
+| **Role** (per entry) | The role this entry hands out. |
+| **Label** (per entry) | Up to 80 characters. The text on the button or the dropdown option. |
+| **Emoji** (per entry) | Shown beside the label on a button or dropdown option. On a **Reaction** panel this field is what members click: the bot adds it as a reaction to the posted message, and an entry with no emoji gets no reaction and its role cannot be claimed. |
+| **Description** (per entry) | Dropdown panels only. Up to 100 characters of secondary text under the option. |
+| **Style** (per entry) | Button panels only. **Primary**, **Secondary**, **Success**, or **Danger** — Discord's four button colours. New entries start on Secondary. |
+| Remove (bin, per entry) | Deletes that entry. It is greyed out when only one entry is left. |
+| **Create** / **Update** | Saves the panel. Entries missing a role or a label are dropped without warning, so an entry you half-filled is not saved and does not appear when you reopen the panel. |
+
+An edit does not change a message that is already posted. The posted message
+keeps the embed, buttons, and options it had when it was sent until you run
+`/rolepanel send` again, which posts a fresh message. Buttons and dropdowns
+on the older message go on working, because they carry the panel's identity
+and read its current settings; reactions on the older message stop working,
+because only the most recently posted message is recognised as the panel.
+
+### What each Mode does
+
+| Mode | On a button panel | On a dropdown panel | On a reaction panel |
+| --- | --- | --- | --- |
+| **Toggle** | Pressing a button adds the role if the member does not have it and removes it if they do, with an ephemeral *Added @role* or *Removed @role*. | The roles selected are added and the panel's other roles are removed, so the selection becomes exactly what the member holds from this panel. A selection that changes nothing replies *No changes made.* | Adding the reaction adds the role; removing it removes the role. |
+| **Unique** | Pressing a button for a role the member does not have adds it and removes every other role on the panel they hold. Pressing the button for a role they already have removes that one role and leaves the panel's other roles alone, replying *Removed @role*. | Behaves the same as Toggle — the roles selected are added, the panel's others removed. To hold a member to one role, set **Max Roles** to 1. | Adding a reaction adds the role and removes the member's other roles from that panel. The bot clears their reactions for those other roles only when it actually had roles to take away: if the member held none of the panel's other roles, nothing of theirs is unreacted, so an old reaction of theirs stays on the message. If the bot cannot clear a reaction it stays on the message even though the role is gone. |
+| **Verify** | Roles are only ever added. Pressing a button for a role the member already holds replies *You already have this role.* and there is no way to take a role off through the panel. | Roles are only ever added; the panel never removes anything. Selecting only roles the member already holds replies *You already have the selected roles.* | Adding a reaction adds the role. Removing the reaction does nothing — the role stays. |
+
+Every button and dropdown reply is ephemeral: only the member who used the
+panel sees it. Reaction panels never reply at all, so the role appearing on
+the member is the only signal that it worked.
+
+### Preview tab
+
+**Live Preview** — *Preview how your panels will appear in Discord.* — sketches
+each saved panel: the embed's title and description, then the buttons in their
+chosen colours, or the dropdown's collapsed *Select roles...* menu, or the row
+of reaction emoji. The controls are drawn only for a panel that has at least
+one role entry — a panel whose entries were all dropped for want of a role or a
+label previews as the embed alone, with nothing beneath it. In the reaction
+row, an entry with no emoji is drawn as a literal `?`, which is the sign that
+its role cannot be claimed.
+
+Three things in the preview are not in the posted message, so read it as a
+sketch rather than a copy. When you leave the embed Description empty, the
+preview strings the entries along one line separated by ` | `, while the
+posted message puts each entry on its own line. The preview also puts a badge
+with the panel's type beside its name, on the same line and before it, and
+prints the style name inside each
+button — neither of those reaches Discord. It is also not a view of a message
+already in a channel, and nothing here changes a panel. With no panels saved
+it reads *No panels to preview.*
+
+## Related features
+
+- [Automation](/guide/features/automation) — rules that give and take roles on
+  their own in response to server events, where role panels are always the
+  member's own choice.
+- [Leveling](/guide/features/leveling) — role rewards handed out for reaching
+  a level. Those roles are granted by the bot and never taken away; nothing
+  about them is self-service.
+- **Permissions** has its own entry in the guild sidebar. It is where the
+  **View Panels** and **Manage Panels** permissions in the **Role Panels**
+  group are granted to dashboard roles, as described in Prerequisites above.

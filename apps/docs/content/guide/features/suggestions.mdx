@@ -1,0 +1,198 @@
+---
+title: Suggestions
+description: Members post ideas with a slash command, the bot publishes each one to a suggestions channel with thumbs-up and thumbs-down reactions, and moderators approve, deny, or mark them implemented from Discord or the dashboard.
+---
+
+import ScreenshotPlaceholder from "@/components/ScreenshotPlaceholder";
+
+Suggestions gives every member a way to submit an idea with `/suggest`. The
+bot posts each idea as a numbered card in a channel you choose, adds 👍 and
+👎 reactions for members to vote with, and gives moderators three outcomes —
+Approved, Denied, Implemented — that can be applied from Discord or from the
+dashboard.
+
+## Prerequisites
+
+- **The bot is in your server.** The dashboard refuses every suggestions
+  request for a server the bot has not joined.
+- **You can open the dashboard for the server.** Access goes to the server
+  owner and to members whose Discord permissions include **Administrator**
+  or **Manage Server**. Anyone else is turned away with a permission error.
+- **A suggestions channel is set.** This is the one thing that must be
+  configured before the feature does anything. A server that has never
+  opened the Suggestions page behaves as though the system is enabled, **DM
+  on Status Change** is on, **Auto-Create Thread** is off, **Anonymous
+  Mode** is off, and no channel is set — and with no channel set, `/suggest`
+  answers *No suggestions channel has been set. Ask a server admin to
+  configure it in the dashboard.* and posts nothing.
+- **The channel you pick is a standard text channel.** If the stored channel
+  is missing or is not a standard text channel, `/suggest` answers
+  *Suggestions channel not found or is not a text channel.* — and the
+  suggestion has already been recorded by that point, so it appears in the
+  dashboard with a number, with nothing posted in Discord. `/suggest` never
+  checks the bot's own permissions in that channel beforehand, so if the bot
+  cannot send the message, add the 👍 and 👎 reactions, or start the
+  discussion thread, the command answers *Failed to submit suggestion.
+  Please try again later.* — the same reply it gives for any other failure,
+  with the suggestion already recorded in the dashboard.
+- **If the permission system is switched on** for your server — on the
+  **Permissions** page in the sidebar — then each part of the Suggestions
+  page loads only for admins holding the matching permission: the
+  suggestions list needs **View Suggestions**; approving, denying, marking
+  implemented, and deleting need **Manage Suggestions**; the Settings tab
+  needs **Manage Settings** to read *and* to change anything. The
+  **Suggestions** entry in the guild sidebar is shown only to admins holding
+  View Suggestions. A missing permission produces an empty area rather than
+  a message saying you lack it: without Manage Settings, the Settings tab
+  shows its heading with no controls under it, the **System Status** card
+  reads *Disabled* and the **Channel** card reads *Channel Not Set* whatever
+  your server is really set to. Read those two cards as "not shown to me,"
+  never as "nothing is configured." Acting without the permission fails with
+  an *Insufficient permissions* message. While the permission system is off,
+  every admin with Manage Server has full access to both tabs.
+
+## Using the suggestions system
+
+### The slash commands
+
+Two slash commands, run from a channel in your server. Each has a cooldown
+kept per member and per command: once a member's run of the command
+finishes, that command is unavailable to them for the number of seconds
+listed, and running it early replies with the remaining wait. Two details
+worth knowing about that wait:
+
+- **It is not per server.** The cooldown is tracked against the member and
+  the command name only, with no server in the key, so a member who runs
+  `/suggest` here waits out the same 30 seconds in every other server this
+  bot is in.
+- **It starts only when the run finishes.** A run that fails outright —
+  answering *There was an error executing this command.* — sets no cooldown
+  at all, so the member can try again immediately.
+
+| Command | What it does | Permission required | Cooldown |
+| --- | --- | --- | --- |
+| `/suggest` | Submits a suggestion and posts it to the suggestions channel. | No permission gate is set in source — any member who can see the channel can run `/suggest`. | 30s |
+| `/suggestion` | Approves, denies, or marks a suggestion implemented. | Manage Guild | 3s |
+
+- `/suggest` — **text** (required, up to 2000 characters). Every reply this
+  command gives is visible only to the person who ran it. On success the
+  reply names the suggestion's number and links the channel it went to.
+  The command refuses outside a server, refuses while the system is switched
+  off with *The suggestions system is not enabled on this server.*, and
+  refuses when no channel is set.
+- `/suggestion` has three subcommands. **approve** and **deny** each take
+  **id** (required, 1 or higher) and **reason** (optional); **implement**
+  takes **id** only and accepts no reason. All three replies are visible
+  only to the moderator who ran the command. An id that does not belong to
+  a suggestion in this server answers *Suggestion #N was not found.*
+
+### What the bot posts
+
+Each new suggestion becomes an embed titled **Suggestion #N** carrying the
+text, an orange colour marking it Pending, a footer reading *Status: Pending
+| By* the submitter's display name, and the submitter's name and avatar
+across the top. With **Anonymous Mode** on, the name and avatar header is
+left off and both places read *Anonymous* instead. The bot then adds a 👍
+and a 👎 reaction to the message, and — when **Auto-Create Thread** is on —
+opens a thread on it named *Discussion: Suggestion #N*.
+
+### What a status change does
+
+Running `/suggestion` does four things: it records the new status and the
+moderator who set it, rewrites the embed in the suggestions channel, DMs the
+author when **DM on Status Change** is on, and confirms to the moderator.
+
+The rewritten embed keeps the number, the text, and the original submission
+time, and changes colour to match the status — green for Approved, red for
+Denied, blurple for Implemented. Its footer becomes *Status: Approved*, plus
+*Reason: …* when you gave one, plus *By* the author. Two details differ from
+the original post: the author's name and avatar header is not re-added, so
+the footer carries the author's raw mention text rather than their display
+name, and with Anonymous Mode on it reads *By Anonymous* — Anonymous Mode is
+read at the moment of the rewrite, so switching it on later hides the author
+on every suggestion whose status you change afterwards. When you gave a
+reason, it is also added as a field headed *Approved by* (or *Denied by*,
+*Implemented by*) and your display name.
+
+The DM to the author names the suggestion number, your server, the new
+status, and the reason if there was one. An author whose direct messages are
+closed receives nothing, and you are not told.
+
+The 👍 and 👎 reactions stay on the message after a status change; nothing
+removes them or closes the thread.
+
+### Where the settings live
+
+Open **Suggestions** from the guild sidebar. The page is headed
+*Suggestions* over the line *Let members submit ideas and vote on them.
+Manage status and feedback.*, with three cards across the top — **Total
+Suggestions**, **System Status**, and **Channel** — over two tabs:
+**Suggestions** and **Settings**.
+
+## What each dashboard control does
+
+<ScreenshotPlaceholder
+  src="/screenshots/suggestions.png"
+  alt="The dashboard Suggestions page: suggestion statistics, the suggestions table, and the settings tab"
+  route="/guild/$guildId/suggestions"
+/>
+
+### The three cards
+
+**Total Suggestions** counts the suggestions matching the filter currently
+applied on the Suggestions tab — set the filter to Approved and this number
+becomes the number of approved suggestions, not the number of suggestions
+overall. **System Status** reads *Enabled* or *Disabled* to match the Enable
+switch. **Channel** reads *Channel Configured* or *Channel Not Set*. As
+noted in the Prerequisites, the last two also read *Disabled* and *Channel
+Not Set* whenever the page could not load your settings.
+
+### Suggestions tab
+
+| Control | Effect |
+| --- | --- |
+| **Filter by Status** | *All*, *Pending*, *Approved*, *Rejected*, *Implemented*. *Rejected* is the label this dropdown gives the Denied status — they are the same thing. Changing the filter returns you to page 1. |
+| Table columns | ID, Content (with the author's Discord user ID underneath — members are identified by ID here, not by name), Status, Votes, Date, and a final column of action buttons whose header repeats *Status*. |
+| Votes | Shows the stored counts as *+0 / -0*. The 👍 and 👎 reactions on the Discord message are not counted back into these numbers, so this column stays at zero however members vote. Read the reaction counts in Discord instead. |
+| **Approve** / **Reject** | Shown on Pending rows. Each opens a dialog with an optional **Reason** box; **Confirm** applies it and **Cancel** closes it unchanged. |
+| **Mark Implemented** | Shown on Pending and Approved rows, through the same dialog. |
+| **Delete** | Shown on every row. Asks *Are you sure you want to delete this suggestion? This action cannot be undone.* and then removes the record. The message in the suggestions channel is left where it is, so the suggestion goes on being visible and votable in Discord after it has left the dashboard. |
+| **Previous** / **Next** | Move through the list ten suggestions at a time. They appear only when there is more than one page. |
+
+A status set from the dashboard is recorded, and that is all it does: it
+does not rewrite the embed in the suggestions channel and it does not DM the
+author, both of which `/suggestion` does. A suggestion approved here still
+reads Pending in Discord, and its author is never told. Use `/suggestion` in
+Discord when you want the message updated and the author notified.
+
+Nothing on this page or in Discord returns a suggestion to Pending once its
+status has changed.
+
+### Settings tab
+
+Every control here saves the moment you change it, and a successful save
+gives no confirmation — a failure raises *Failed to save suggestion
+settings*.
+
+| Control | Effect |
+| --- | --- |
+| **Enable** | Off makes `/suggest` refuse with *The suggestions system is not enabled on this server.* Suggestions already recorded are untouched, and `/suggestion` goes on working — switching the system off stops new submissions, it does not freeze the ones you have. The line under this switch reads *The channel where suggestions are posted for voting.*, which describes the channel picker below rather than this switch. |
+| **Suggestions Channel** | A picker over your server's standard text channels, with a *None* option. This is where new suggestions are posted and where `/suggestion` looks for the message it rewrites. Clearing it stops `/suggest` from posting anything. |
+| **Channel (Optional)** | A second channel picker, stored as a moderator review channel. Nothing reads it: choosing a channel here changes nothing the bot or the dashboard does. Its hint repeats the suggestions-channel wording. |
+| **DM on Status Change** | *Notify the author via DM when their suggestion status changes.* On by default. Applies to `/suggestion` only — a status set from the dashboard never DMs anyone whatever this is set to. |
+| **Auto-Create Thread** | *Automatically create a discussion thread on each new suggestion.* Off by default. On, each posted suggestion gets a thread named *Discussion: Suggestion #N*. |
+| **Anonymous Mode** | *Hide the identity of members who submit suggestions.* Off by default. On, posted suggestions read *Anonymous* in place of the submitter's name and carry no avatar header. It hides the name in Discord only — the dashboard table goes on showing every author's Discord user ID. |
+
+## Related pages
+
+- [Permissions](/guide/features/permissions) — creating dashboard roles and
+  granting View Suggestions, Manage Suggestions, and Manage Settings, which
+  is what the Prerequisites section above refers to.
+- [Moderation](/guide/features/moderation) — the other place members'
+  submissions are acted on by staff. Denying or deleting a suggestion is not
+  a moderation action: it creates no case and touches no warnings.
+- [Tickets](/guide/features/tickets) — private one-to-one requests rather
+  than public ideas, with its own entry in the guild sidebar and its own
+  dashboard page.
+- [Starboard](/guide/features/starboard) — messages the room singled out
+  with a star reaction, also with its own sidebar entry and dashboard page.

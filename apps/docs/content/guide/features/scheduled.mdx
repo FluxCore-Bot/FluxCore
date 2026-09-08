@@ -1,0 +1,149 @@
+---
+title: Scheduled Messages
+description: Post a fixed text or embed message into a channel on a repeating schedule you set with a cron expression and a timezone.
+---
+
+import ScreenshotPlaceholder from "@/components/ScreenshotPlaceholder";
+
+Scheduled Messages posts content you write ahead of time into a channel you
+pick, over and over, on a repeating schedule — daily at 9 AM, every six hours,
+weekly on Monday, or any cron expression you type yourself.
+
+## Prerequisites
+
+- **The bot is in your server.** The dashboard refuses every scheduled-message
+  request for a server the bot has not joined.
+- **You can open the dashboard for the server.** Access goes to the server
+  owner and to members whose Discord permissions include **Administrator** or
+  **Manage Server**. Anyone else is turned away with a permission error.
+- **The bot is running.** A scheduled message is posted by the bot, not by the
+  dashboard. While the bot is offline nothing is posted, and when it comes back
+  each overdue message is posted **once** — not once for every occurrence that
+  was missed while it was down.
+- **The bot can post in the channel you choose.** If the send fails — the
+  channel was deleted, or the bot is not allowed to send there — nothing is
+  posted, and the schedule still moves on to its next run. Nothing on the
+  Scheduled page marks the miss: the **Next Run** column advances exactly as it
+  would after a successful post.
+- **If the permission system is switched on** for your server — on the
+  **Permissions** page in the sidebar — then three permissions listed there
+  under **Scheduled Messages** apply: **View Messages** to read the list and the
+  next-run preview, **Manage Messages** to create, edit, delete, or toggle a
+  message, and **Test Messages** for the Test Send button. Only View Messages
+  changes what you see: the **Scheduled** entry is shown only to admins holding
+  it, and it disappears from two places at once — the guild sidebar and the
+  search box you open with ⌘K or Ctrl+K (⌘P and Ctrl+P open the same box). The
+  page itself hides nothing. Anyone who reaches it — through the sidebar or by
+  typing the address — gets the full page: the **New Message** button, the
+  **Status** switch, the Test Send, Edit and Delete buttons, and the whole
+  create/edit dialog all render whichever permissions you hold. Acting without
+  the permission fails with an *Insufficient permissions* message. While the
+  permission system is off,
+  everyone who can open the dashboard for the server — the owner, and members
+  with **Administrator** or **Manage Server** — has full access to every part
+  of this page.
+
+## Using scheduled messages
+
+Everything is configured from the dashboard. FluxCore registers no slash
+command for scheduled messages — there is nothing to run in Discord, and
+members never interact with the feature directly; they only see the posts.
+
+Open **Scheduled** from the guild sidebar. The page is headed *Scheduled
+Messages* over three cards — **Total Messages**, **Active**, **Inactive** — and
+a table of everything you have scheduled, ten rows to a page.
+
+To add one, click **New Message** (or **Create Message** on the empty page).
+The dialog asks for a name, a channel, a schedule, a timezone, and the message
+itself, and saves when you click **New Message** at its foot. A saved message
+starts running immediately if **Enabled** is on: its first post lands at the
+next time the schedule comes round, shown in the **Next Run** column.
+
+A server can hold at most **25** scheduled messages. Trying to create a
+twenty-sixth fails with *Maximum of 25 scheduled messages per guild* and
+nothing is created. Names must be unique within a server; saving a second
+message under a name already in use fails and nothing is created.
+
+### What the bot actually posts
+
+The message is posted exactly as you stored it. `{user}`, `{server}`,
+`{membercount}` and the rest of the tokens offered by the variable browser in
+the editor are **not** replaced when the message is posted — they appear in the
+channel as the literal text you typed. The live preview inside the dialog does
+substitute them, so the preview and the post will differ if you use one. Write
+the finished wording out in full instead.
+
+A text message saved with the content box left empty is accepted, and it posts
+nothing. The schedule still moves on: each time the message comes due the bot
+sends nothing to the channel and then advances **Next Run** to the next time the
+cron expression comes round, exactly as it would after a real post. Nothing on
+the Scheduled page marks the silence — the row keeps cycling and keeps looking
+healthy, indefinitely. Give it content, switch it off, or delete it.
+
+## What each dashboard control does
+
+<ScreenshotPlaceholder
+  src="/screenshots/scheduled.png"
+  alt="The dashboard Scheduled Messages page: the three stat cards and the message table"
+  route="/guild/$guildId/scheduled"
+/>
+
+### The three cards
+
+| Card | What it counts |
+| --- | --- |
+| **Total Messages** | Every scheduled message in the server, across all pages of the table. |
+| **Active** | Enabled messages **on the page you are looking at** — not in the whole server. On a server with more than ten messages, this and Inactive add up to the rows on screen, not to Total Messages. |
+| **Inactive** | Disabled messages on the current page, with the same caveat. |
+
+### The message table
+
+| Column / control | Effect |
+| --- | --- |
+| **Name** | The name you gave the message. Used only to identify it here; it is never posted. |
+| **Channel** | The Discord ID of the target channel, not its name. |
+| **Schedule** | The cron expression the message runs on. |
+| **Next Run** | When the message is next due, in your own browser's local time. It reads *Never* while the message is disabled. |
+| **Status** switch | Turns the message on or off in place. Switching it off stops all future posts and clears Next Run; switching it back on sets Next Run to the next time the cron expression comes round after that moment. Occurrences that passed while it was off are not made up. |
+| **Test Send** (play icon) | Reads the stored message back and reports *Test message sent*. Nothing is posted to the channel and the schedule is not touched — this confirms the message is stored and readable, it does not deliver anything. Needs the Test Messages permission. |
+| **Edit** (pencil icon) | Reopens the message in the dialog. |
+| **Delete** (bin icon) | Asks for confirmation, then removes the message permanently. Posts already made in Discord stay where they are. |
+| **Previous** / **Next** | Move through the table ten rows at a time. They appear only when there is more than one page. |
+
+Every save from this page — including flipping the Status switch, and including
+an edit that changes nothing but the name — recalculates **Next Run** as the
+first time the cron expression comes round after the moment you save. Cron times
+are fixed points on the clock, so for a message whose next post is still ahead
+of it this changes nothing: a message due in ten minutes that you rename is
+still due in ten minutes. It matters when a post is already overdue and has not
+gone out yet — while the bot is offline, for instance — because saving then
+moves Next Run past that overdue post, and it is not sent.
+
+### The create/edit dialog
+
+| Control | Effect |
+| --- | --- |
+| **Name** | Up to 100 characters. Required — saving without it reports *Message name is required*. |
+| **Channel** | A dropdown of your server's text and announcement channels. Required — saving without it reports *Channel is required*. Voice, forum, and category channels are not offered. |
+| **Schedule Preset** | Six ready-made schedules — **Every Hour**, **Every 6 Hours**, **Daily at 9 AM**, **Daily at Midnight**, **Weekly on Monday**, **Monthly on the 1st** — plus **Custom**. Picking one overwrites the Cron Expression box. The dropdown shows **Custom** whenever the expression in that box matches none of the six; selecting **Custom** itself changes nothing. |
+| **Cron Expression** | The schedule in cron syntax, e.g. `0 9 * * *`. New messages start at `0 9 * * *`. Type here freely — anything the preset dropdown cannot name still runs. An expression the server cannot read puts an *Invalid format for Cron Expression* note in red under the box, and no next-run times are shown. |
+| **Timezone** | Which clock the cron expression is read against. A new message defaults to your own browser's timezone; the dropdown lists twelve fixed zones, written out as their full identifiers rather than city names — `UTC`, `America/New_York`, `America/Chicago`, `America/Denver`, `America/Los_Angeles`, `Europe/London`, `Europe/Paris`, `Europe/Berlin`, `Asia/Tokyo`, `Asia/Shanghai`, `Australia/Sydney`, `Pacific/Auckland` — plus your own zone, in the same form, at the top of the list if it is not one of those twelve. Changing it moves every future run. |
+| **Next Runs** panel | Appears under the timezone once the expression is valid, listing the next three times the message will post, in your browser's local time. It updates as you type, so it is the quickest way to check that a hand-written expression means what you intended. |
+| **Text** / **Embed** tabs | Choose which kind of message is posted. Only the selected tab's content is saved — switching to Embed and saving posts an embed, and the text you typed on the other tab is not sent. |
+| **Message Content** (Text tab) | Up to 2000 characters, with a live counter beneath. This is posted as an ordinary Discord message. |
+| **Title**, **Description**, **Color (hex)**, **Footer**, **Thumbnail URL**, **Image URL** (Embed tab) | The parts of the embed. Each one is left out of the embed when you leave it blank. Color starts at `#a3a6ff`. |
+| Discord preview | A mock-up of how the post will look, under the tabs. It fills `{user}`-style tokens in from your own signed-in account and this server: `{user}` becomes your own username with an `@` in front, `{user.name}` your username, and `{server}` the server's real name. `{membercount}` is the exception — it always shows a fixed `1,234`. The real post fills in nothing, as noted above. |
+| **Enabled** | *Whether this scheduled message is active.* On by default for a new message. Off stores the message without scheduling it — nothing is posted and Next Run reads *Never* until you turn it on. |
+| **Cancel** | Closes the dialog without saving. Nothing in the dialog is written until you save. |
+
+## Related features
+
+- [Automation](/guide/features/automation) — the other way FluxCore posts on
+  its own. Automation rules fire in response to something happening in your
+  server; scheduled messages fire on the clock, whether or not anything is
+  going on.
+- [Custom Commands](/guide/features/customCommands) — for content posted in
+  response to a member running a command, rather than on the clock.
+- **Permissions** has its own entry in the guild sidebar. It is where you
+  create dashboard roles and grant View Messages, Manage Messages, and Test
+  Messages, which is what the Prerequisites section above refers to.

@@ -1,0 +1,131 @@
+/*
+ * FluxCore — "The Obsidian Engine"
+ *
+ * Tokens are copied verbatim from /design.md — do not adjust any hex value
+ * here. If a color needs to change, change design.md first and mirror it.
+ *
+ * This file binds those tokens onto Fumadocs' own `--color-fd-*` theme
+ * variables. Variable names below were confirmed against the CSS actually
+ * shipped in the installed `fumadocs-ui@16.13.0` package (see
+ * `css/lib/default-colors.css` and `css/lib/base.css` inside the package),
+ * not fumadocs.dev — Task 1 found the public docs track an unreleased `dev`
+ * branch that disagrees with what's published to npm.
+ */
+
+:root {
+  --fc-background: #0e0e10;
+  --fc-primary: #a3a6ff;
+  --fc-primary-dim: #6063ee;
+  --fc-secondary: #ac8aff;
+  --fc-on-primary: #0f00a4;
+
+  --fc-surface-lowest: #000000;
+  --fc-surface-low: #131315;
+  --fc-surface-container: #19191c;
+  --fc-surface-high: #1f1f22;
+  --fc-surface-hover: #262528;
+  --fc-surface-bright: #2c2c2f;
+
+  --fc-danger: #ff6e84;
+  --fc-success: #57f287;
+  --fc-warning: #fee75c;
+  --fc-info: #60a5fa;
+  --fc-discord: #5865f2;
+  --fc-discord-text: #8b94ff;
+
+  --fc-text: #f9f5f8;
+  --fc-text-muted: #adaaad;
+
+  --fc-border: #1f1f22;
+  --fc-outline: #767577;
+  --fc-outline-variant: #48474a;
+  --fc-ring: #a3a6ff;
+}
+
+/*
+ * Font tokens, matching apps/dashboard/src/client/styles.css so the two
+ * surfaces stay visually consistent.
+ *
+ * `--font-mono` is not a made-up name: it is Tailwind 4's own built-in theme
+ * key that backs the `font-mono` utility class. Fumadocs' code/shiki markup
+ * already uses `font-mono`, so overriding this one key reskins every code
+ * element with no further changes needed. `--font-body` / `--font-label`
+ * are custom keys (Tailwind has no built-in "body" or "label" font slot);
+ * `--font-body` is applied to `body` explicitly below. `--font-label` has
+ * no current Fumadocs hook to attach to automatically — it's defined here
+ * (and available as the `font-label` utility) for later content/components.
+ *
+ * `static`: Tailwind 4 tree-shakes unused `@theme` keys out of the build.
+ * `--font-label` isn't referenced by any utility class yet, so without
+ * `static` it silently disappeared from the compiled output — verified by
+ * inspecting apps/docs/out directly (see task-2-report.md). `static` is the
+ * same keyword fumadocs-ui's own default-colors.css uses to keep its
+ * semantic colors (info/warning/error/success/idea) from being pruned.
+ */
+@theme static {
+  --font-body: 'Inter', sans-serif;
+  --font-label: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Geist Mono', monospace;
+}
+
+/*
+ * Bind Fumadocs' theme variables to the tokens above.
+ *
+ * Declared under `:root` — not `.dark` — because Obsidian Engine has exactly
+ * one palette; there is no light variant to fall back to. Setting these on
+ * `:root` means the site renders correctly regardless of whichever
+ * light/dark class next-themes puts on `<html>`, without needing to force
+ * the theme provider.
+ *
+ * Elevation note: per design.md, elevation is a surface-tier shift, never a
+ * box-shadow. Nothing below (or anywhere in this file) sets `box-shadow`.
+ *
+ * Discord-color note: `--fc-discord` (#5865F2) is fill-only — it measures
+ * 4.19:1 against #0e0e10 and fails WCAG AA as text. It is intentionally not
+ * bound to any `*-foreground` variable below; only `--fc-discord-text`
+ * (#8b94ff, 7.14:1) is eligible for text/icon roles.
+ */
+:root {
+  --color-fd-background: var(--fc-background);
+  --color-fd-foreground: var(--fc-text);
+
+  --color-fd-muted: var(--fc-surface-low);
+  --color-fd-muted-foreground: var(--fc-text-muted);
+
+  --color-fd-popover: var(--fc-surface-hover);
+  --color-fd-popover-foreground: var(--fc-text);
+
+  --color-fd-card: var(--fc-surface-high);
+  --color-fd-card-foreground: var(--fc-text);
+
+  --color-fd-border: var(--fc-border);
+
+  --color-fd-primary: var(--fc-primary);
+  --color-fd-primary-foreground: var(--fc-on-primary);
+
+  --color-fd-secondary: var(--fc-surface-container);
+  --color-fd-secondary-foreground: var(--fc-text);
+
+  --color-fd-accent: var(--fc-surface-hover);
+  --color-fd-accent-foreground: var(--fc-text);
+
+  --color-fd-ring: var(--fc-ring);
+  --color-fd-overlay: rgb(0 0 0 / 60%);
+
+  /* Semantic / callout colors (info, warning, error, success, idea) */
+  --color-fd-info: var(--fc-info);
+  --color-fd-warning: var(--fc-warning);
+  --color-fd-error: var(--fc-danger);
+  --color-fd-success: var(--fc-success);
+  --color-fd-idea: var(--fc-secondary);
+
+  /* Diff blocks inside code samples */
+  --color-fd-diff-remove: rgb(255 110 132 / 15%);
+  --color-fd-diff-remove-symbol: var(--fc-danger);
+  --color-fd-diff-add: rgb(87 242 135 / 12%);
+  --color-fd-diff-add-symbol: var(--fc-success);
+}
+
+body {
+  font-family: var(--font-body);
+}

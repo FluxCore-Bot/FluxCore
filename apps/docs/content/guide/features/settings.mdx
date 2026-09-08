@@ -1,0 +1,112 @@
+---
+title: Settings
+description: The server-wide switches for FluxCore's automation system — a rule ceiling, a log channel, and one switch that pauses every rule at once.
+---
+
+The **Settings** page holds the server-wide controls for the automation
+system: how many rules the server may have, an optional log channel, and a
+single switch that pauses every rule without deleting anything.
+
+## Prerequisites
+
+- **The bot is in your server.** Every request the page makes is refused for
+  a server the bot has not joined.
+- **You can open the dashboard for the server.** That means the server owner,
+  or a member whose Discord permissions include **Administrator** or **Manage
+  Server**. Anyone else is turned away.
+- **Nothing has to be switched on first.** A server that has never saved
+  anything here behaves as though Max Rules Per Guild is 25, Global Enable is
+  on, and no log channel is set.
+- **If the permission system is switched on** for your server — the
+  **Permissions** page in the guild sidebar is where that lives — this page
+  is reached through two different permissions, and they are not the same
+  one:
+  - The **Settings** entry in the sidebar, and in the search box you open
+    with ⌘K or Ctrl+K, is shown only to admins holding **Manage Settings**
+    from the **Dashboard** permission group. Hiding those two entries does
+    not close the page, and it does not hide every way in: the gear button
+    labelled *Settings* in the top bar, which appears on every guild page on
+    wider screens and links straight here, is drawn for every admin without
+    checking any permission at all. So an admin without **Manage Settings**
+    in the Dashboard group still reaches the page in one click — as well as
+    from a bookmark.
+  - Beyond the checks above, reading and saving the card itself needs
+    **Manage Settings** from the **Actions** permission group. Without it
+    the card is still drawn, filled
+    in with the values it starts with — Max Rules 25, Global Enable on, no
+    log channel — rather than the ones saved for your server, and pressing
+    **Save Settings** fails with *Insufficient permissions* in a red bar at
+    the top of the card.
+
+  When the permission system is off, every admin who can open the dashboard
+  passes both of these.
+
+## Where the page lives
+
+Open **Settings** from the guild sidebar — it is the last entry, under
+Permissions. The page is headed *Settings* with the subtitle *Configure
+global action system settings for your server.*
+
+It holds one card, **Action System Settings**, with three controls and a
+**Save Settings** button. Nothing you change takes effect until you press it;
+the button reads *Saving...* while the change is in flight and a *Settings
+saved* notice confirms it. The bot picks the change up on its own, without a
+restart.
+
+The same three values can be read and changed from Discord with `/actions
+settings`, which requires **Manage Guild**. Run it with no options and it
+replies with the current **Enabled**, **Max Rules** and **Log Channel**;
+pass **max-rules**, **enabled** or **log-channel** to change them. One
+difference: `/actions settings` can point the log channel at a channel but
+cannot clear it again — only the dashboard's **No log channel** option does
+that.
+
+## What each setting does
+
+### Max Rules Per Guild
+
+A number from 1 to 100 — the ceiling on how many automation rules this server
+may have. At the ceiling, the rules you already have keep running, but a new
+one is refused: the dashboard reports *Rule limit reached* with the limit in
+brackets, and `/actions create` replies that the server has reached its
+maximum and an existing rule must be deleted first. Lowering the number below
+the number of rules you already have deletes nothing; it only stops you adding
+more. A value outside 1–100 shows *Max rules must be between 1 and 100* under
+the field and disables the Save button.
+
+### Log Channel (optional)
+
+Picks one of the server's standard text channels and stores it against the
+server. Only standard text channels are listed: announcement, forum, stage and
+voice channels, categories, and threads are all absent from the list, so if the
+channel you had in mind is one of those, you will not find it there. Nothing posts to it: rule
+executions are recorded in the execution history you read with `/actions
+logs`, not in this channel, so setting it changes nothing you will see in
+Discord. **No log channel**, the first option in the list, clears it again.
+
+### Global Enable (disable to pause all rules)
+
+Off stops every rule in the server from firing, whatever each rule's own
+switch says — the bot checks this before it looks at any rule. Your rules,
+their configuration and their history are left untouched, and turning it back
+on resumes them exactly as they were.
+
+### A caution about what the card shows
+
+The values the card displays come from the dashboard's own memory of what was
+last saved while it was running, not from a fresh read of your server's stored
+settings. After the dashboard has been restarted, the card shows Max Rules 25,
+Global Enable on and no log channel again, whatever you had saved. Because
+Save Settings sends exactly what the card is showing, saving from a card in
+that state replaces your stored values with those three. To see what the bot
+is actually enforcing, run `/actions settings` with no options in Discord, and
+re-enter your numbers before saving if the card disagrees with it.
+
+## Related pages
+
+- [Automation](/guide/features/automation) — the rules these settings apply
+  to: how to build them in the workflow editor, what triggers and actions
+  exist, and how to read their execution history.
+- [Permissions](/guide/features/permissions) — where **Manage Settings** in
+  the Dashboard group and **Manage Settings** in the Actions group, both named
+  in the Prerequisites above, are granted to dashboard roles.

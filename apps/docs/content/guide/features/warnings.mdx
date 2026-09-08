@@ -1,0 +1,224 @@
+---
+title: Warnings
+description: Issue warnings to members from Discord, review and clear them from the dashboard, and have the bot time out, kick, or ban a member automatically once their warning count reaches a threshold you set.
+---
+
+import ScreenshotPlaceholder from "@/components/ScreenshotPlaceholder";
+
+Warnings give your moderators three slash commands for issuing, reviewing,
+and clearing warnings, a dashboard page listing every warning in the server,
+and a set of thresholds that make the bot time out, kick, or ban a member
+automatically the moment their warning count reaches one.
+
+## Prerequisites
+
+- **The bot is in your server.** The dashboard refuses every warnings
+  request for a server the bot has not joined.
+- **Nothing has to be switched on first.** A server that has never opened
+  the Warnings page behaves as though DM on Warn is on, Require Reason is
+  off, and Max Warnings is 0. `/warn` works as soon as the bot is in the
+  server; there is no enable switch for warnings.
+- **Your moderators hold Manage Messages.** All three commands — `/warn`,
+  `/warnings`, and `/clearwarnings` — are gated on **Manage Messages**, and
+  each also re-checks that permission when it runs. `/warn` additionally
+  needs the *bot* to hold Manage Messages, and refuses to run when it does
+  not.
+- **You can open the dashboard for the server.** Access goes to the server
+  owner and to members whose Discord permissions include **Administrator**
+  or **Manage Server**. Anyone else is turned away with a permission error.
+- **If the permission system is switched on** for your server — on the
+  **Permissions** page in the sidebar — the Warnings page splits across
+  three permissions in the **Moderation** group: **View Warnings** to read
+  the warning list, **Manage Warnings** to delete warnings or clear a
+  member's whole history, and **Manage Punishments** for both the Escalation
+  and the Settings tabs, reading as well as changing. The **Warnings** entry
+  in the guild sidebar is shown only to admins holding View Warnings. The
+  silence is on the reading side only: a tab you are not allowed to read
+  comes up empty, with nothing on screen saying you lack the permission,
+  while an action you go ahead and attempt does report the refusal in a
+  message. Without
+  Manage Punishments, the Settings tab shows its *Warning Settings* heading
+  with no controls under it, so read that empty tab as "not shown to me,"
+  never as "nothing is configured." The Escalation tab behaves differently:
+  it reads *No escalation rules configured.* — again regardless of how many
+  rules the server actually has — and below that it still draws the full
+  **Add Escalation Rule** form. Threshold, Action, the Duration field, and
+  **Add Rule** all appear and accept clicks, but pressing Add Rule is
+  refused by the server and raises *Insufficient permissions*; no rule is
+  created.
+
+## Using the warning commands
+
+### Issuing a warning
+
+`/warn` takes a required **user** option and an optional **reason** of up to
+500 characters. Its permission gate is **Manage Messages**. Leaving the
+reason out records the warning with the text *No reason provided* — unless
+Require Reason is on, in which case the command refuses with *A reason is
+required to warn this member.* and nothing is recorded.
+
+The command refuses three targets outright: yourself (*You cannot warn
+yourself.*), the bot (*You cannot warn the bot.*), and any member whose
+highest role is equal to or above yours (*You cannot warn a member with an
+equal or higher role.*).
+
+On success the bot replies in the channel with the member's name, the
+reason, the member's new total as **Warning #N**, and the warning's ID. If
+DM on Warn is on, the bot then tries to send the member a direct message
+naming your server, the reason, and their total warning count. The attempt
+comes after any escalation punishment has already been carried out, so a
+warning that trips a kick or ban threshold reaches this point with the
+member already removed from your server. A member with DMs closed is warned
+anyway, and either way nothing about a DM that does not go through appears
+in the reply.
+
+### Reviewing warnings
+
+`/warnings` takes a required **user** option and posts that member's warning
+history, ten per page, newest first. Its permission gate is **Manage
+Messages**. Each line carries the warning's ID, the moderator who issued it,
+the reason, and how long ago it was issued; the footer counts the pages and
+the total. When there is more than one page, **Previous** and **Next**
+buttons appear — only the moderator who ran the command can press them, and
+they stop working and disappear from the message two minutes after it was
+posted. Running the command again gives you a fresh set.
+
+### Clearing warnings
+
+`/clearwarnings` takes a required **user** option and an optional **id**.
+Its permission gate is **Manage Messages**.
+
+With an **id**, it removes that single warning and confirms with *Warning
+#N has been removed from* the member's display name. If that ID does not exist in this server, or belongs
+to a different member than the one you named, nothing is deleted and the
+bot replies *Warning #N was not found for this user.*
+
+Without an **id**, it deletes every warning that member has and reports how
+many were cleared. A member with no warnings gets *has no warnings to
+clear.* instead.
+
+Deleting warnings lowers the member's total, so a threshold they had already
+passed can be reached — and fire — a second time as they are warned again.
+
+### What escalation does
+
+Every time `/warn` succeeds, the bot recounts that member's warnings in this
+server and compares the new total against your escalation thresholds. When
+the total is **exactly equal** to a threshold, the bot carries out that
+threshold's action — timeout, kick, or ban — with the reason *Warn
+escalation: N warnings*, and appends a line to the `/warn` reply naming the
+action and the threshold. A total that overshoots a threshold does not
+trigger it, which is why deleting warnings can bring a member back down to a
+threshold that then fires again.
+
+A timeout rule with no duration set times the member out for one hour.
+
+If the action fails — most often because the member outranks the bot, or the
+bot lacks the permission for that action — the warning is still recorded,
+but the escalation line does not appear in the reply and nothing else is
+posted in Discord.
+
+## What each dashboard control does
+
+The **Warnings** page is in the guild sidebar, below Moderation. It opens
+with three counters — **Total Warnings**, **Escalation Rules** (how many
+thresholds you have configured), and **DM on Warn** (Enabled or Disabled) —
+above three tabs.
+
+**Total Warnings** follows the Warning Log tab's user filter rather than
+staying fixed on the server: with the filter box empty it counts every
+warning in the server, and with a user ID in the box it counts only that
+member's warnings.
+
+<ScreenshotPlaceholder
+  src="/screenshots/warnings.png"
+  alt="The dashboard Warnings page: the three counters, the Warning Log table with its user filter, and the Escalation and Settings tabs"
+  route="/guild/$guildId/warnings"
+/>
+
+### Warning Log tab
+
+- **Filter by User ID...** — pasting a Discord user ID here narrows the table
+  to that member's warnings. It matches the ID exactly; a username does not
+  work.
+- **Clear All** — this button exists only while the filter box has something
+  in it; with the box empty there is no button next to it at all. Pressing it
+  deletes every warning belonging to the user ID in the box, then empties the
+  box.
+- **The table** lists each warning's ID, the warned user's ID, the
+  moderator's ID, the reason, and the date, newest first, ten rows to a
+  page, with **Previous** and **Next** below when there is more than one
+  page.
+- **The trash icon** on a row deletes that one warning. It asks *Are you
+  sure you want to delete this item? This action cannot be undone.* first,
+  and there is no undo afterwards.
+
+### Escalation tab
+
+The table under **Punishment Escalation** lists your existing rules by
+**Threshold**, **Action**, and **Duration** — the duration column shows the
+timeout length rounded down to whole minutes, and a dash for kick and ban
+rules, which take no duration. A timeout rule saved with the duration field
+left empty also shows a dash here, even though it times the member out for
+one hour.
+
+The **Add Escalation Rule** form below it creates one:
+
+- **Threshold** — the exact warning count that fires this rule. It must be 1
+  or higher; anything else is rejected with *Threshold must be a positive
+  number*. Each threshold can hold only one rule, so adding a second rule at
+  a number already in the table fails and nothing is added — remove the
+  existing rule first.
+- **Action** — **Timeout**, **Kick**, or **Ban**. This is what the bot does
+  to the member when their warning count hits the threshold.
+- **Duration (seconds)** — shown only when Action is Timeout. This is how
+  long the timeout lasts; leaving it empty makes the timeout one hour.
+- **Add Rule** — saves the rule. It takes effect on the next `/warn`; the
+  bot does not go back and apply a new rule to members who are already past
+  its threshold.
+- **The trash icon** on a rule removes it, after asking *Are you sure you
+  want to remove this escalation rule? This action cannot be undone.*
+  Members already timed out, kicked, or banned by that rule are not
+  affected.
+
+### Settings tab
+
+- **DM on Warn** — on by default. While it is on, the bot tries to send each
+  member you warn a direct message naming your server, the reason, and their
+  total warning count. It is an attempt, not a guarantee: the bot carries out
+  any escalation punishment first and sends the DM second, so a warning that
+  trips a kick or ban threshold has already removed the member from your
+  server by the time the message is attempted, and a member with DMs closed
+  never receives one either. A DM that does not go through is passed over in
+  silence — nothing about it appears in the `/warn` reply. Switching the
+  setting off means warnings are recorded and announced in the channel only,
+  and the member is never messaged.
+- **Require Reason** — off by default. Switching it on makes `/warn` refuse
+  any warning issued without a reason instead of recording it as *No reason
+  provided*.
+- **Max Warnings** — 0 by default, and the field accepts 0 or any positive
+  number. The number you type is saved, and the field shows it again when
+  you reopen the tab — but nothing in the bot acts on it: it does not cap
+  how many warnings a member can receive, and it does not punish anyone on
+  its own. Use an Escalation rule
+  when you want a warning count to have a consequence.
+
+Every control on this tab saves the moment you change it — there is no Save
+button. A change the server refuses shows the message the server sent back:
+a refusal because you lack Manage Punishments reads *Insufficient
+permissions*. The generic *Failed to update setting* is the fallback for
+every other kind of failure — any one where no readable message came back,
+whether because the request never reached the server or because what came
+back was not something the dashboard could read.
+
+## Related features
+
+- **Moderation** — bans, kicks, timeouts, and the numbered case history.
+  Warnings are stored separately from cases: `/warn` records a warning and
+  does not open a moderation case, which is why the Moderation page's case
+  filter has nothing to show under *Warn*.
+- **Permissions** — creating dashboard roles and granting View Warnings,
+  Manage Warnings, and Manage Punishments, which is what the Prerequisites
+  section above refers to.
+- **Logs** — the channels the bot posts server event messages into, if you
+  want a written record of activity beyond the warning list itself.

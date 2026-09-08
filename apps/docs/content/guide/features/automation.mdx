@@ -1,0 +1,358 @@
+---
+title: Automation
+description: Build rules that watch for something happening in your server — a member joining, a message being deleted, a reaction landing — and run actions in response, such as sending a message, adding a role, or calling a webhook.
+---
+
+import ScreenshotPlaceholder from "@/components/ScreenshotPlaceholder";
+
+Automation rules pair a trigger with one or more actions: when the trigger
+event happens in your server, FluxCore runs the actions you attached to it.
+Rules are built on the **Automation** page of the dashboard, where a rule is
+drawn as a workflow — a trigger node, action nodes, and optionally condition
+branches and delays — and simple one-action rules can also be created from
+Discord with `/actions`.
+
+## Prerequisites
+
+- **The bot is in your server.** Every automation request the dashboard makes
+  *about a particular server* — reading its rules, saving one, changing its
+  settings, loading its execution figures — is refused for a server the bot
+  has not joined.
+- **You can open the dashboard for the server.** Access goes to the server
+  owner and to members whose Discord permissions include **Administrator** or
+  **Manage Server**.
+- **Nothing has to be switched on first.** A server that has never touched
+  these settings behaves as though the action system is globally enabled, the
+  rule limit is 25, and no log channel is set.
+- **A rule saved in the dashboard takes a moment to reach the bot.** Saving
+  records the change and signals the bot straight away; if that signal does not
+  get through, the bot re-reads the server's rules on its own schedule, which
+  runs every ten seconds. So a rule can take up to about ten seconds to start
+  firing after you save it, and a rule created or changed with `/actions` is
+  applied to the running bot immediately.
+- **The bot needs the Discord permission each action requires.** Actions do
+  not check permissions ahead of time — an Add Role action on a role the bot
+  cannot manage, or a Send Message action for a channel the bot cannot see,
+  is recorded as a failed execution and pulls down the **Success Rate** shown
+  on the Automation page. Nothing is posted in Discord to tell you.
+- **To run `/actions` in Discord you need Manage Server.** The command is
+  registered with the **Manage Server** (`ManageGuild`) default permission and
+  checks for Manage Server again when it runs.
+- **If the permission system is switched on** for your server — on the
+  **Permissions** page in the sidebar — then the **Actions** permission group
+  decides which automation requests the dashboard will accept from an admin:
+  **View Rules** to read the rule list, **Manage Rules** to create, edit,
+  duplicate or delete one, **Execute Rules** for the bulk
+  enable/disable/delete bar, **View Analytics** for the execution figures and
+  logs, and **Manage Settings** for the action system settings. Only View
+  Rules also removes something from sight: without it the **Automation** entry
+  is not listed in the sidebar. The rest are refused at the moment you use
+  them rather than hidden — the bulk bar still opens when you tick rows, and
+  pressing Enable, Disable or Delete there reports a failure instead of
+  acting. Without View Analytics the two analytics cards do not fail visibly —
+  **Executions (7d)** reads 0 and **Success Rate** reads 100%, exactly as a
+  server with no executions would.
+- **The Action System Settings card is reached through a different
+  permission.** It sits on the **Settings** page, whose sidebar entry is gated
+  on **Manage Settings** in the **Dashboard** permission group — not on the
+  Actions group. The card itself is drawn for anyone who opens that page: an
+  admin without **Manage Settings** from the **Actions** group still sees a
+  filled-in card, showing the values the card starts with — Max Rules 25,
+  Global Enable on, no log channel — rather than the ones saved for the
+  server, and pressing **Save Settings** is refused.
+
+## Using automation
+
+### Where the pages live
+
+Open **Automation** from the guild sidebar (it is the second entry, under
+Overview; the command palette also finds it by the word "rules"). The page is
+headed *Automation Rules* with the subtitle *Configure event-driven triggers
+and automated responses for your guild.*
+
+The server-wide switches for the whole system live elsewhere: **Settings** in
+the guild sidebar, in the **Action System Settings** card.
+
+### Creating a rule
+
+On the Automation page, **Create Rule** opens the workflow editor full-screen
+with an empty trigger and one empty action. A server with no rules yet sees a
+template gallery instead of the rule list — *Get Started with Automation* —
+offering six starting points: **Welcome Message**, **Auto Role**, **Log
+Deleted Messages**, **Boost Thank You**, **Ban Logger**, and **Auto Thread**.
+Picking one opens the editor pre-filled with that trigger and action; you
+still have to fill in the channel or role it needs before it can be saved.
+Once you have at least one rule the gallery is replaced by the list, and
+**Browse templates** in the page header brings it back.
+
+Inside the editor you click the trigger node to choose the event, click an
+action node to choose what it does and fill in its fields, and press **Create
+Rule** (or **Update Rule** when editing). Save is blocked while the rule has
+errors — the button beside it counts the problems, and clicking that count
+lists them, each one a link that selects and centres the node it belongs to.
+
+While you have unsaved work in a new rule, the editor keeps a local draft and
+offers it back the next time you open a new rule (*Draft restored from a
+previous session*, with **Discard draft**). Closing the editor with unsaved
+changes asks first.
+
+### How a rule runs
+
+When a trigger event happens, FluxCore takes every enabled rule in your server
+for that event and runs them one after another, highest **priority** first,
+never in parallel. For each rule, the trigger filters are checked; if they pass,
+the actions run in order, top to bottom.
+
+Trigger filters fail closed. A filter the event cannot answer — an *exclude
+role* filter on Member Banned, for instance, where the person is no longer a
+member and has no roles to inspect — does not get skipped, it stops the rule
+from firing at all. This is why the editor only offers the filters your chosen
+trigger can evaluate, and why it warns you (*This trigger cannot evaluate
+these filters …*) with a **Remove filters that cannot apply** button when an
+existing rule carries one, which happens if you change a rule's trigger after
+setting the filters.
+
+Two ceilings apply while rules run. Actions are capped at 60 executions per
+server per event type in a 60-second window, and that window starts at the
+first of those executions rather than on the clock minute — once the cap is
+reached, the rest of that event's work is dropped until the window runs
+out. And a workflow stops after 20
+steps, which matters only for graphs that loop back on themselves.
+
+## What each control does
+
+<ScreenshotPlaceholder
+  src="/screenshots/automation.png"
+  alt="The dashboard Automation page: rule statistics, filters, and the rule list"
+  route="/guild/$guildId/rules"
+/>
+
+### The four cards
+
+| Card | What it counts |
+| --- | --- |
+| **Total Rules** | Every rule in the server, enabled or not. |
+| **Active** | Rules whose switch is on. |
+| **Executions (7d)** | Everything written to the execution log over the last 7 days, which is one entry per action that ran **and** one per condition step a workflow rule evaluated — so a rule with condition branches counts higher here than the number of actions it actually performed. Delay steps add nothing. Reads 0 when there are none, and also when the figures could not be loaded. |
+| **Success Rate** | The share of those same entries that succeeded — with condition steps always recorded as successes, so condition branches lift this figure whatever the rule's actions did. Reads `--` while the server has no rules at all, and 100% when there are rules but no figures were loaded. |
+
+### Search, filter, sort
+
+| Control | Effect |
+| --- | --- |
+| **Search rules...** | Narrows the list to rules whose name contains what you type. |
+| Event type | *All Events*, or one of the events your existing rules actually use — an event no rule uses is not offered, and deleting the last rule of a type resets this back to All Events. |
+| Status | *All Status*, *Enabled*, or *Disabled*. |
+| Sort by | *Priority* (highest first), *Name* (A–Z), *Last Fired* (most recent first, never-fired rules last), or *Status* (enabled first). |
+| **Clear** | Appears once any of the three is set; resets search, event, and status together. |
+
+When a filter is hiding rules, a line under the bar reads *Showing N of M
+rules*.
+
+### A rule in the list
+
+| Element | Meaning |
+| --- | --- |
+| Rule name | Click it, or anywhere on the row, to open the rule in the editor. |
+| Switch | Enables or disables the rule immediately, without opening it. A disabled rule keeps its configuration and stops firing. |
+| **Disabled** badge | The rule's switch is off. |
+| **Incomplete** badge | *An action is missing a required setting, so this rule cannot run. Open it to finish setting it up.* The editor refuses to save a rule in this state, but `/actions create` can produce one, so older rules can carry it. |
+| **Workflow** badge | The rule was saved as connected steps with a designated start step, rather than as a straight list of actions. A step workflow earns the badge whether or not any of its steps is a condition or a delay. |
+| *Fired …* / *Never fired* | When the rule last produced an execution record. |
+| `P` and a number | The rule's priority, shown only when it is above 0. |
+| Trigger and action chips | The rule's flow at a glance; hovering an action chip shows what it is configured to do. |
+| ⋮ menu | **Edit Rule**, **Duplicate**, **Enable**/**Disable**, **Select**, **Delete**. |
+
+**Duplicate** copies the rule under a new name — *(copy)*, then *(copy 2)* and
+so on if that name is taken too. **Delete** asks for confirmation and then
+offers **Undo** in the toast that follows, which recreates the rule as it was.
+
+Ticking the checkboxes on one or more rows opens the bulk bar: **Enable**,
+**Disable**, **Delete** (with a confirmation), and **Clear** to drop the
+selection. A single bulk operation covers at most 50 rules.
+
+### The workflow editor toolbar
+
+| Control | Effect |
+| --- | --- |
+| **Rules** (back arrow) | Leaves the editor. With unsaved changes it asks to discard first. |
+| Rule name | 1 to 50 characters. Markdown characters, mention syntax, and invisible characters are rejected when you save. Two rules in the same server cannot share a name — saving a duplicate reports *A rule with that name already exists*. |
+| Priority | 0 to 100. Higher runs first when several rules answer the same event. |
+| Enabled switch | Whether the rule starts firing once saved. |
+| **Action** | Adds an action node. At most 5 actions per rule; the button is disabled at the limit. |
+| **Condition** | Adds a branch node. At most 3 conditions, and at most 10 steps in total. |
+| **Delay** | Adds a wait node, subject to the same 10-step total. |
+| Issue count | Lists what is blocking or worth checking. Red entries block saving; amber ones do not. |
+| **Create Rule** / **Update Rule** | Saves. Disabled while any blocking issue remains. |
+
+Keyboard shortcuts are listed along the bottom of the editor: `Esc` to close,
+`Ctrl+S` to save, `Del` to remove the selected node, `A` to add an action, and
+`Ctrl+Shift+F` to fit the canvas to the view. Drag a node handle onto another
+node to connect two steps; select a connection and press `Del` to break it.
+Right-clicking a node, a connection, or empty canvas opens a menu with the
+same verbs plus **Set as start** and **Disconnect**.
+
+### The trigger node
+
+Clicking the trigger opens **Trigger Settings** with three tabs.
+
+**Settings** holds the event type — one of nineteen:
+
+| Event | Fires when |
+| --- | --- |
+| Member Join / Member Leave | A member joins, or leaves, the server. |
+| Member Banned / Member Unbanned | A member is banned, or unbanned. |
+| Member Timeout | A member is timed out. |
+| Nickname Changed | A member's nickname changes. |
+| Boost Start / Boost End | A member starts, or stops, boosting the server. |
+| Role Added / Role Removed | A role is added to, or removed from, a member. |
+| Message Created / Message Deleted | A message is sent, or deleted, in a channel. |
+| Reaction Added / Reaction Removed | A reaction is added to, or removed from, a message. |
+| Channel Created / Channel Deleted | A channel is created, or deleted. |
+| Thread Created | A thread is created. |
+| Voice Join / Voice Leave | A member joins, or leaves, a voice channel. |
+
+**Filters** decides *when* the rule is allowed to fire, splitting into
+*Include (whitelist)* — **Only in these channels**, **Only members with these
+roles**, **Only these members** — and *Exclude (blacklist)* — **Never in these
+channels**, **Never members with these roles**, **Never these members**. An
+include list means the event must match at least one entry; an exclude list
+means it must match none. Only the filters your chosen trigger can evaluate
+are offered: a channel filter, for example, is not offered for Member Join,
+because a join does not happen in a channel. **Clear all conditions** removes
+every filter at once.
+
+**Vars** lists the template variables that particular trigger fills in, and
+copies one to the clipboard when clicked. The list is trigger-specific on
+purpose: `{channel}` is available on Message Created but not on Member Join,
+and a variable the trigger does not fill in would resolve to nothing.
+
+### Action nodes
+
+Every action shares the same shape: pick the type, fill in its fields. Message
+and text fields accept template variables such as `{user}`, `{user.name}`,
+`{channel}`, `{guild}` and `{timestamp}`. Three action types add a
+Discord-style preview under their fields, updating as you type: Send Message
+and Send DM preview the message, and Send Embed previews the embed's title,
+description, footer and colour. The other action types — Set Nickname, Create
+Thread, Send Webhook and the rest — have no preview, so their variables are
+only resolved when the rule actually runs. Changing an action's type keeps any
+field the new type also has, so switching Send Message to Send DM does not lose
+your message.
+
+| Action | Fields | What happens |
+| --- | --- | --- |
+| **Send Message** | Channel, Message (up to 2000 characters) | Posts the resolved message in that channel, sent with its allowed-mention list set to the member the event is about and nobody else. |
+| **Send Embed** | Channel, Embed Title (256), Embed Description (2000), Embed Color, Embed Footer (256) | Posts an embed with a timestamp; the title, description and footer resolve variables. |
+| **Send DM** | Message (2000) | Sends the message privately to the member the event is about. A closed inbox is recorded as a failed execution. |
+| **Add Role** / **Remove Role** | Role | Adds or removes that role on the member the event is about. |
+| **Log to Channel** | Channel | Posts a fixed embed naming the event, the user, the channel, and the role where the event has one. |
+| **Send Webhook** | Webhook URL, HTTP Method (POST or PUT), Headers (JSON), Body Template (2000) | Sends an HTTP request. HTTPS only, and addresses inside a private network are refused. Without a body template the request carries the event, server, user, channel, and timestamp. Headers are limited to a safe set — `Accept`, `Accept-Language`, `Cache-Control`, `User-Agent`, `X-Idempotency-Key`, `X-Request-Id`, and anything starting `X-Fluxcore-`; anything else is dropped. A reply that is not a success status, or a target that takes longer than five seconds, counts as a failed execution. |
+| **Set Nickname** | Nickname (32) | Renames the member the event is about, cutting the result to 32 characters. |
+| **Create Thread** | Channel, Thread Name (100) | Starts a thread in that channel, cutting the name to 100 characters. |
+| **Add Reaction** | Emoji | Reacts to the message that triggered the rule, so it needs a trigger that has one. Takes a single Unicode emoji, or several joined into one with a zero-width joiner the way a family emoji is built — or a custom emoji written as `<:name:id>`, or an animated custom emoji written as `<a:name:id>`. Country flags are not accepted: a flag is two regional-indicator characters with no joiner between them, so it is rejected and the action is recorded as a failed execution. The value must be 64 characters or fewer, and anything outside the accepted forms is a failed execution too. |
+
+The panel also has **Move Up**, **Move Down**, and **Remove Action** for
+ordering and deleting; removing the only action clears it instead, since a
+rule must keep at least one.
+
+### Condition and delay steps
+
+A **Condition** step splits the workflow in two. It takes a **Field** —
+Channel ID, Channel Name, User ID, User Name, Role ID, Role Name, Message
+Content, or Member Count — an **Operator**, and a **Value**, then continues
+down the *Yes* branch when the test passes and the *No* branch when it does
+not. Operators are Equals, Not Equals, Contains, Not Contains, Starts With,
+Ends With, Greater Than, Less Than, Has Role, Not Has Role, In List, and Not
+In List. Text comparisons ignore letter case; In List and Not In List read the
+value as a comma-separated list. Has Role and Not Has Role test the member's
+roles and ignore the Field entirely — give them a role ID as the value.
+
+A **Delay** step waits before continuing: 1 to 300 seconds (five minutes is
+the maximum). If 50 delays are already waiting across the whole bot, the wait
+is skipped and the workflow continues straight away.
+
+Both branches of a condition, and the step after a delay, are set in the
+panel's **Connections** section — **If true, go to**, **If false, go to**, and
+**Next step**, each of which can be set to **End (stop here)**.
+
+### Action System Settings (Settings page)
+
+Open **Settings** from the guild sidebar. The **Action System Settings** card
+holds three controls and a **Save Settings** button; nothing here takes effect
+until you press it.
+
+| Control | Effect |
+| --- | --- |
+| **Max Rules Per Guild** | 1 to 100. The ceiling on how many rules this server may have. At the limit, existing rules keep running but a new one is refused: the workflow editor reports *Rule limit reached* with the limit in brackets after it, and `/actions create` replies *Rule Limit Reached — This server has reached the maximum of **N** rules. Delete an existing rule first.* A value outside the range shows *Max rules must be between 1 and 100* and blocks saving. |
+| **Log Channel (optional)** | Picks a text channel and stores it against the server. Nothing in the bot posts to it: rule executions are recorded in the execution log you read with `/actions logs` and in the Executions and Success Rate figures, not in this channel. Setting it therefore changes nothing you will see in Discord. |
+| **Global Enable (disable to pause all rules)** | Off stops every rule in the server from firing, whatever their individual switches say. Rules, their configuration, and their history are untouched, and turning it back on resumes them. |
+
+## Managing rules from Discord
+
+`/actions` covers the same rules from inside Discord. It requires **Manage
+Server** (`ManageGuild`), has a 3-second cooldown counted per person and not
+per server — one use anywhere holds that person off `/actions` in every server
+the bot is in for three seconds — and all its replies are visible only to you. Rules built here are single-trigger,
+single-action to start with; condition branches and delays exist only in the
+dashboard editor.
+
+| Subcommand | What it does |
+| --- | --- |
+| `/actions create` | Creates a rule from **name**, **event** and **action-type** (all required), plus whichever of **channel**, **role**, **message**, **webhook-url**, **nickname**, **thread-name** and **emoji** that action needs. The rule starts enabled at priority 0 with no filters. |
+| `/actions list` | Lists the server's rules. |
+| `/actions view` | Shows one rule's status, event, priority, actions and filters. |
+| `/actions edit` | Changes a rule's **event**, **message**, **channel**, **role**, or **priority** (0–100). The message, channel and role apply to the rule's first action. |
+| `/actions enable` / `/actions disable` | Turns a rule on or off without deleting it. |
+| `/actions delete` | Deletes a rule. There is no confirmation step and no undo — the dashboard's Delete offers both. |
+| `/actions add-action` / `/actions remove-action` | Adds an action (up to 5), or removes one by its 1-based **index** from `/actions view`. The last remaining action cannot be removed; delete the rule instead. |
+| `/actions add-condition` / `/actions remove-condition` | Adds or removes one trigger filter, by **type** (`channel`, `role`, `user`, `exclude-channel`, `exclude-role`, `exclude-user`) and **value**. |
+| `/actions settings` | With no options, shows Enabled, Max Rules and Log Channel. With **log-channel**, **max-rules** or **enabled**, updates them — the same three settings as the dashboard card above. |
+| `/actions logs` | Shows recent executions, newest first — **limit** between 1 and 25, defaulting to 10, optionally narrowed to one rule by **name**. |
+
+Two differences from the dashboard are worth knowing before you use the
+command:
+
+- **`/actions create` does not check that the action has what it needs.**
+  Creating a Send Message rule without a channel succeeds, and the rule then
+  fails every time it fires. The dashboard flags such a rule with the
+  **Incomplete** badge.
+- **`/actions add-condition` accepts any text as the value.** A value that is
+  not a real channel, role, or user ID cannot match anything, and because
+  filters fail closed the rule stops firing entirely. The dashboard offers
+  pickers instead, and its API rejects anything that is not a 17–20 digit ID.
+
+New names are stricter here than in the dashboard. `/actions create` accepts
+only letters, digits, spaces, underscores and hyphens, 1 to 50 characters, and
+rejects anything else with *Invalid Name*; the dashboard accepts a name in any
+script as long as it avoids Markdown, mention and invisible characters. That
+difference applies to *creating* a name, not to using one: every other
+subcommand looks the rule up by its stored name with no character check, so a
+rule named in another script from the dashboard can still be viewed, edited,
+enabled, disabled and deleted with `/actions`. The name autocomplete keeps the
+rules whose name contains what you have typed so far, ignoring letter case, and
+shows at most 25 of them — with nothing typed yet that is the first 25 rules in
+the server, so on a server with more rules than that, type part of the name to
+bring the one you want into the list.
+
+Execution records are kept for 30 days; a daily cleanup removes older ones, so
+`/actions logs` and the Executions figure only ever cover that window.
+
+## Related features
+
+- [Moderation](/guide/features/moderation) — automation's Member Banned,
+  Member Unbanned, Member Timeout and Message Deleted triggers listen to the
+  server events themselves rather than to FluxCore's moderation commands, so
+  they are not limited to punishments issued through FluxCore. Automation
+  actions never open a moderation case of their own: a rule that fires on a ban
+  can post a message or add a role, but the case list stays as moderation
+  left it.
+- [Leveling](/guide/features/leveling) — the other system that hands out roles
+  automatically. A level reward role is granted when a member reaches the level
+  set for it (and any lower reward levels they had not yet been given);
+  automation's Add Role action grants a role in response to an event instead.
+- **Permissions**, in the guild sidebar, is where the Actions permissions
+  named in the Prerequisites — View Rules, Manage Rules, Execute Rules, View
+  Analytics, Manage Settings — are granted to dashboard roles.
+- **Settings**, in the guild sidebar, holds the Action System Settings card
+  documented above.

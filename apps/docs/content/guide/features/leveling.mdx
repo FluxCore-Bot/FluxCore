@@ -1,0 +1,283 @@
+---
+title: Leveling
+description: Members earn XP for chatting and for time spent in voice, climb levels, collect roles you attach to those levels, and show up on a server leaderboard.
+---
+
+import ScreenshotPlaceholder from "@/components/ScreenshotPlaceholder";
+
+Leveling gives every member an XP total that grows as they talk in your
+server and sit in voice channels, turns that total into a level, announces
+level-ups, hands out roles you attach to particular levels, and ranks
+everyone on a leaderboard readable in Discord and in the dashboard.
+
+## Prerequisites
+
+- **The bot is in your server.** The dashboard refuses every leveling
+  request for a server the bot has not joined.
+- **Nothing has to be switched on first.** A server that has never opened
+  the leveling page behaves as though Enable Leveling, Voice XP, and
+  Level-up Announcements are all on, XP per Message is 15, XP Cooldown is
+  60 seconds, and Voice XP per Minute is 5. Members start accumulating XP
+  as soon as the bot is in the server.
+- **You can open the dashboard for the server.** Access goes to the server
+  owner and to members whose Discord permissions include **Administrator**
+  or **Manage Server**. Anyone else is turned away with a permission error.
+- **The bot can hand out the roles you set as rewards.** When the bot
+  cannot add a reward role to a member, the grant is skipped — nothing is
+  posted in Discord and nothing appears in the dashboard, so a reward that
+  the bot has no authority over looks exactly like a reward nobody has
+  earned yet.
+- **If the permission system is switched on** for your server — on the
+  **Permissions** page in the sidebar, where the Permission System panel
+  reads *Active — admins are restricted to their assigned permissions.* —
+  then each part of the Leveling page loads only for admins holding the
+  matching permission: the Leaderboard tab and the **Ranked Members** card
+  need **View Leaderboard**; the Settings, Exclusions, and Multipliers tabs
+  need **Manage Settings** to read *and* to change anything; the Role
+  Rewards tab and the **Role Rewards** card need **Manage Rewards**. The
+  **Leveling** entry is shown only to admins holding View Leaderboard, and it
+  disappears from two places at once: the guild sidebar, and the search box
+  you open with ⌘K or Ctrl+K (⌘P and Ctrl+P open the same box). Hiding the
+  entry does not close the page, though — an admin who reaches it by its
+  address anyway, from a bookmark or a shared link, still gets the page and
+  its five tabs rather than a refusal. What a
+  missing permission actually produces is an empty tab, not a message
+  saying you lack it: the Leaderboard tab reads *No members have earned XP
+  yet.*, the Role Rewards tab reads *No role rewards configured.*, the
+  Settings tab shows its heading with no controls under it, and the
+  **System Status** card reads *Disabled* whatever your server is really
+  set to. Read an empty tab as "not shown to me," never as "nothing is
+  configured" — and check your permissions before acting on it. Changing
+  something you lack the permission for fails with an *Insufficient
+  permissions* message. While the Permission System panel reads *Inactive —
+  all admins with MANAGE_GUILD have full access.*, every admin with Manage
+  Server has full access to all five tabs.
+
+## Using the leveling system
+
+### How members earn XP from messages
+
+Every message a member sends in your server earns them **XP per Message**
+plus a random bonus of 0 to 9, which is then multiplied by any multipliers
+that apply and rounded down. A message earns nothing when any of these is
+true:
+
+- **Enable Leveling** is off.
+- The message was sent in a channel listed under **No-XP Channels**, or the
+  member holds a role listed under **No-XP Roles**.
+- Less time has passed than **XP Cooldown (seconds)** since the last message
+  that earned that member XP. The cooldown is per member, not per channel.
+- The message came from a bot, or from a direct message rather than a
+  channel in your server.
+- The message came from a channel in your server, but the bot had no
+  membership details for its author attached to it. The message is skipped
+  silently — exactly like an excluded one, with nothing said in Discord to
+  mark the difference.
+
+When a message pushes a member over a level boundary, the bot posts a
+level-up announcement (if **Level-up Announcements** is on) and grants every
+role reward at or below their new level.
+
+### How members earn XP from voice
+
+Counting starts when a member joins a voice channel while neither muted nor
+deafened (by themselves or by the server) and at least two non-bot members
+are in the channel, counting themselves. Those conditions are checked again
+each time that member's own voice state changes: muting or deafening stops
+the count, and unmuting starts a fresh one. Another member leaving does not
+stop the count by itself — it is noticed the next time the counted member's
+own voice state changes.
+
+The XP lands when the count stops — when the member leaves the channel, or
+when one of those conditions breaks — and is **Voice XP per Minute** times
+the number of *whole* minutes counted. A stretch shorter than a minute earns
+nothing. Voice XP ignores **No-XP Channels**, **No-XP Roles**, and every
+multiplier; only **Enable Leveling** and **Voice XP** can switch it off.
+A level-up reached through voice grants role rewards but never posts an
+announcement.
+
+### What a level costs
+
+Reaching level 1 takes 100 XP, level 2 another 155, level 3 another 220,
+and each level after that costs more than the one before it. `/rank` shows
+progress inside the current level rather than the running total, so a member
+with 300 XP altogether reads as level 2 with 45 of the 220 XP needed for
+level 3.
+
+### The slash commands
+
+Three slash commands, run from a channel in your server. Each has a
+per-member cooldown: after someone runs a command, that same command is
+unavailable to them for the number of seconds listed, and running it early
+replies with the remaining wait.
+
+| Command | What it does | Permission required | Cooldown |
+| --- | --- | --- | --- |
+| `/rank` | Shows one member's level, XP, rank, message count, and voice time. | No permission gate is set in source — any member who can see the channel can run `/rank`. | 5s |
+| `/leaderboard` | Shows the server's XP ranking, ten members at a time. | No permission gate is set in source — any member who can see the channel can run `/leaderboard`. | 5s |
+| `/xp` | Sets, adds, or removes a member's XP. | Manage Server (`ManageGuild`) | 3s |
+
+- `/rank` — **user** (optional; defaults to you). The reply shows level, XP
+  earned inside the current level against what the level needs, a progress
+  bar, rank out of the number of members holding a leveling record (the same
+  count the dashboard's **Ranked Members** card shows — see below for what
+  that includes), messages counted, and voice time. Rank **#N/A** means one
+  thing only: this member has no leveling record at all, and they read level 0
+  alongside it. A member who *has* a record but sits at 0 XP — someone taken
+  there by `/xp set 0` or `/xp remove` — reads a numbered rank instead, because
+  the rank counts the members ahead of them and adds one.
+- `/leaderboard` — **page** (optional, 1 or higher; defaults to 1). Members
+  are ordered by total XP, highest first, ten to a page, with medals on the
+  top three and a footer giving the page number and how many members are
+  ranked. Asking for a page past the end replies *No one has earned XP yet.
+  Start chatting!* — the same reply an empty server gives.
+- `/xp` has three subcommands, each taking **user** and **amount**:
+  **set** (amount 0 or higher) writes that exact total; **add** (1 or
+  higher) adds to it; **remove** (1 or higher) subtracts from it and stops
+  at 0 rather than going negative. The reply is visible to everyone in the
+  channel.
+
+`/xp` recalculates the member's level from their new total and grants every
+role reward at or below it. Three things it does not do: it never posts a
+level-up announcement, it never takes a reward role back when the total
+drops, and `/xp add` — unlike set and remove — also counts as a message for
+that member, adding 1 to their message count and restarting their XP
+cooldown, so their next real message earns nothing until the cooldown runs
+out.
+
+`/rank` and `/leaderboard` keep working while **Enable Leveling** is off.
+They read the totals already recorded; switching leveling off stops new XP
+from being earned, it does not hide or erase what members have.
+
+### Where the settings live
+
+Open **Leveling** from the guild sidebar. The page is headed *Leveling
+System* and has three cards across the top — **Ranked Members**, **Role
+Rewards**, and **System Status** — over five tabs: **Leaderboard**,
+**Settings**, **Role Rewards**, **Exclusions**, and **Multipliers**.
+
+## What each dashboard control does
+
+<ScreenshotPlaceholder
+  src="/screenshots/leveling.png"
+  alt="The dashboard Leveling page: ranked-member statistics and the five leveling tabs"
+  route="/guild/$guildId/leveling"
+/>
+
+### The three cards
+
+**Ranked Members** counts the leveling records stored for this server, which
+is not the same as the number of members who currently have XP. A record is
+created the first time a member earns or is given XP, and nothing removes
+it: `/xp set 0`, or `/xp remove` taking someone down to 0, leaves a record
+at 0 XP that is still counted, and a member who leaves the server keeps
+their record and stays counted. So this number only ever grows, and can sit
+above the number of current members with XP to their name.
+**Role Rewards** counts the rewards configured on the Role Rewards tab.
+**System Status** reads *Enabled* or *Disabled* to match the Enable Leveling
+switch — and, as noted in the Prerequisites, also reads *Disabled* whenever
+the page could not load your settings.
+
+### Leaderboard tab
+
+| Control | Effect |
+| --- | --- |
+| Table columns | Rank, User ID, Level, XP, Messages, Voice Time. Members are identified by Discord user ID, not by name. Rows are ordered by total XP, highest first. |
+| **Previous** / **Next** | Move through the ranking ten members at a time. They appear only when there is more than one page. |
+
+The table is read-only: there is no control here for changing a member's XP.
+Use `/xp` in Discord for that, then reload the page.
+
+### Settings tab
+
+Switches and the destination dropdown save the moment you change them. The
+three number boxes save when you click away from them. If a number is
+rejected — blank, negative, or outside the range listed below — nothing is
+saved, and the box goes on showing what you typed. It snaps back to the
+stored value the next time the page re-reads your settings, which happens
+when you reload the page and after any successful save that writes leveling
+settings — not only on this tab, but also **Save Exclusions** on the
+Exclusions tab and adding or removing a multiplier on the Multipliers tab.
+Either way, a number on screen is not proof it was stored.
+
+| Control | Effect |
+| --- | --- |
+| **Enable Leveling** | *Toggle the entire leveling system on or off.* Off stops all XP from messages and from voice. Existing totals, levels, and rewards are untouched, and `/rank` and `/leaderboard` keep answering. |
+| **XP per Message** | 1 to 1000. The base XP a message earns, before the 0–9 random bonus and before multipliers. Raising it speeds leveling for everyone. |
+| **XP Cooldown (seconds)** | 0 to 3600. The minimum gap between two XP-earning messages from the same member; messages sent inside the gap earn nothing. Raising it slows leveling; 0 means every single message earns. |
+| **Voice XP** | *Grant XP for time spent in voice channels.* Off stops voice XP without affecting message XP. Switching it off also hides the Voice XP per Minute box. |
+| **Voice XP per Minute** | 0 to 100, shown only while Voice XP is on. XP earned per whole minute counted in voice. Set to 0 and voice time earns nothing and is not added to the member's voice-time total either — the Voice Time column and `/rank`'s voice figure stop growing. |
+| **Level-up Announcements** | *Announce when a member levels up.* Off stops the announcement; the level, the XP, and the role rewards still happen. Only message-driven level-ups are ever announced — a level reached in voice is silent either way. |
+| **Announcement Destination** | Shown only while announcements are on. Two choices: **Same Channel** posts the announcement in the channel where the member's message landed; **Direct Message** sends it to the member privately, and if their direct messages are closed nothing is sent and nothing is reported to you. The hint under the dropdown mentions typing a channel ID into an input above it; there is no such input, and the dropdown offers only these two destinations. |
+| **Announcement Message** | Shown only while announcements are on. 1 to 500 characters. `{user}` becomes a mention of the member, `{level}` their new level, and `{username}` the display name on their Discord account — the global one, or their username if they have set no display name, and never a nickname they hold in your server — only the first occurrence of each is replaced, so writing `{user}` twice leaves the second one as literal text. The variable browser below the box lists `{user}` and `{level}`. Whatever you write, the announcement can only ever mention the member who levelled up: it cannot ping `@everyone`, `@here`, or any role. The preview underneath shows how the message will read. |
+
+### Role Rewards tab
+
+*Automatically assign roles when members reach certain levels.*
+
+| Control | Effect |
+| --- | --- |
+| Table columns | Level, Role ID, and a remove button per row. |
+| **Level** (in *Add Role Reward*) | 1 to 100. Anything outside that replies *Level must be between 1 and 100* and nothing is added. |
+| **Role ID** (in *Add Role Reward*) | A picker over your server's roles. Leaving it empty replies *Role ID is required*. |
+| **Add Reward** | Saves the pairing. A level and role pairing that already exists is refused with *A reward for this level and role already exists*; two different roles at the same level are allowed. |
+| Remove (bin) | Asks for confirmation, then deletes the reward. Members who already hold the role keep it — deleting a reward stops future grants, it does not strip anyone. |
+
+Rewards are cumulative and catch up: whenever a member's level is
+recalculated, the bot adds every reward role at or below that level they do
+not already have. A member who jumps from level 1 to level 10 through
+`/xp add` receives all the rewards in between. Nothing is ever removed when
+a member's level drops.
+
+### Exclusions tab
+
+*Channels and roles that do not earn XP.*
+
+| Control | Effect |
+| --- | --- |
+| **No-XP Channels (comma-separated IDs)** | Despite the label, this is a picker, not a text field. Messages in the channels you select earn no XP at all. It lists standard text channels only — announcement, forum, and voice channels cannot be selected here. |
+| **No-XP Roles (comma-separated IDs)** | Also a picker. A member holding any of the selected roles earns no message XP anywhere in the server. |
+| **Save Exclusions** | Applies both lists. Unlike the Settings tab, nothing on this tab takes effect until you press this button; leaving the page first discards your changes. |
+
+Neither list affects voice XP. A member excluded by role still earns voice
+XP, and a voice channel cannot be excluded from this tab at all.
+
+### Multipliers tab
+
+*Set XP multipliers per channel or role. A multiplier of 2 doubles the XP
+earned.*
+
+| Control | Effect |
+| --- | --- |
+| **Channel Multipliers** / **Role Multipliers** tables | Every multiplier you have set, listed by Channel ID or Role ID with its value shown as e.g. *2x*, each with a remove button that asks for confirmation before deleting. |
+| **Type** (in *Add Multiplier*) | **Channel** or **Role**, which decides what the ID picker beside it offers. Channel lists standard text channels only. |
+| **ID** (in *Add Multiplier*) | The channel or role the multiplier applies to. |
+| **Multiplier** (in *Add Multiplier*) | Greater than 0 and at most 10. A value outside that range replies *Multiplier must be between 0 and 10* and nothing is added; an empty box replies *ID and multiplier value are required*. The box's arrows move in steps of 0.1, but the step is not a rule — a value between steps, such as 2.05, is accepted, stored, and applied to XP exactly as typed. |
+| **Add Multiplier** | Saves it. Setting a multiplier for a channel or role that already has one replaces the old value. |
+
+Multipliers stack across the two kinds but not within them: message XP is
+multiplied by the channel's multiplier, then by the *highest* multiplier
+among the member's roles that have one, then rounded down. A member with
+three multiplied roles gets the best of the three, not their product.
+Multipliers apply to message XP only — voice XP is never multiplied.
+
+## Related features
+
+**Permissions**, **Role Panels**, and **Moderation** each have their own entry
+in the guild sidebar and their own page in the dashboard. Of the three, only
+Moderation has a page in this guide — [Moderation](/guide/features/moderation).
+Here is where each of them meets leveling.
+
+- **Permissions** — creating dashboard roles and granting View Leaderboard,
+  Manage Settings, and Manage Rewards, which is what the Prerequisites
+  section above refers to. The same page carries a **Manage Users**
+  permission for leveling; no control on the Leveling page uses it today, so
+  granting or withholding it changes nothing you can reach from the
+  dashboard. To change someone's XP, use `/xp` in Discord.
+- **Moderation** — the other place a member's standing in your server is
+  recorded. Moderation cases and XP are kept separately: banning or warning
+  a member does not touch their XP, level, or reward roles, and removing
+  their XP does not create a case.
+- **Role Panels** — the other way FluxCore gives members roles. Reward roles
+  are granted by level and are never taken away; nothing about them is
+  self-service.

@@ -1,0 +1,242 @@
+---
+title: Giveaways
+description: Run prize giveaways that members enter with a button, with a set duration, an optional role requirement, and randomly drawn winners announced when time runs out.
+---
+
+import ScreenshotPlaceholder from "@/components/ScreenshotPlaceholder";
+
+A giveaway is a posted message with an **Enter Giveaway** button: members
+click to enter, the bot draws winners at random when the timer runs out,
+announces them in the channel, and messages each winner privately.
+
+## Prerequisites
+
+- **The bot is in your server.** The dashboard refuses every giveaway
+  request for a server the bot has not joined, answering *Bot is not in
+  this guild*.
+- **Nothing has to be switched on first.** There are no giveaway settings
+  to configure — no enable switch, no default channel, no host role.
+  `/giveaway start` works as soon as the bot is in your server.
+- **To start a giveaway in Discord you need Manage Server**
+  (`ManageGuild`). That is the permission gate on the whole `/giveaway`
+  command, and it is checked a second time when the command runs: a member
+  without it gets a private *Missing Permissions* reply naming the
+  permission they lack. Entering a giveaway needs no permission at all —
+  any member who can see the message can press the button.
+- **To use the dashboard page you need to be able to open the dashboard for
+  the server**, which goes to the server owner and to members whose Discord
+  permissions include **Administrator** or **Manage Server**. Anyone else is
+  turned away with *No permission for this guild*.
+- **If the permission system is switched on** for your server — configured
+  on the **Permissions** page in the sidebar — then admins additionally need
+  **View Giveaways** to load the page's lists and **Manage Giveaways** to
+  create, end, or reroll anything. Acting without Manage Giveaways fails
+  with an *Insufficient permissions* message. Without View Giveaways, the
+  **Giveaways** entry disappears from the guild sidebar and from the search
+  box you open with ⌘K or Ctrl+K, and an admin who reaches the page anyway
+  from a bookmark sees empty tables reading *No giveaways yet. Create one to
+  get started.* with all three counters at 0 — no message says the lists
+  were refused. Read an empty tab as "not shown to me," not as "no giveaways
+  exist." While the permission system is off, every admin with Manage Server
+  has full access to the page.
+- **The bot needs to be able to post in the channel you pick**, since the
+  giveaway message, the winner announcement, and the "no valid entries"
+  notice are all posted there.
+
+## Running a giveaway
+
+There are two places to start one: the `/giveaway` command in Discord, and
+the **Giveaways** page in the dashboard. Both write to the same list, and
+both show the same giveaways.
+
+### The `/giveaway` command
+
+`/giveaway` is gated on **Manage Server** (`ManageGuild`) and has a
+per-member cooldown of 5 seconds: running it again inside that window
+replies *Please wait **Ns** before using `/giveaway` again.* It has four
+subcommands.
+
+| Subcommand | What it does |
+| --- | --- |
+| `/giveaway start` | Posts a new giveaway in the channel you run it in. |
+| `/giveaway end` | Ends a running giveaway immediately and draws the winners. |
+| `/giveaway reroll` | Draws replacement winners for a giveaway that has ended. |
+| `/giveaway list` | Lists the giveaways still running, privately to you. |
+
+**`/giveaway start`** takes four options:
+
+- **prize** (required) — what is being given away, up to 256 characters.
+- **duration** (required) — a whole number followed by `s`, `m`, `h`, `d`,
+  or `w` for seconds, minutes, hours, days, or weeks, such as `30m`, `1h`,
+  `2d`, `1w`. Anything else — a decimal, a bare number, `1 hour` — is
+  refused privately with *Please use a valid duration format: `1h`, `30m`,
+  `2d`, `1w`* and no giveaway is created.
+- **winners** (optional, 1 to 20, defaults to 1) — how many winners are
+  drawn.
+- **required_role** (optional) — a role a member must hold to enter.
+
+The giveaway is posted in the channel where you ran the command; there is no
+channel option on this subcommand. The reply confirms *Giveaway Started*
+with the giveaway's number, how long it runs, and the winner count. Your
+server can hold 25 running giveaways at once; the 26th is refused with
+*Limit Reached — You can only have 25 active giveaways at a time.*
+
+**`/giveaway end`** and **`/giveaway reroll`** each take an **id**: the
+number shown on the giveaway, which appears in the *Giveaway Started*
+reply, in `/giveaway list`, and in the leftmost column of the dashboard
+tables. Ending a giveaway that has already ended replies *Already Ended*;
+rerolling one that is still running replies *Not Ended*. Both replies are
+private to you.
+
+**`/giveaway list`** replies privately with every running giveaway: its
+number, prize, winner count, when it ends, and how many entries it has. It
+never lists finished ones — for those, use the Ended tab in the dashboard.
+
+### How members enter
+
+The posted giveaway is an embed headed *GIVEAWAY* listing the prize, the
+number of winners, who is hosting it, the required role if you set one, when
+it ends, and a running entry count. Under it sits one button, **Enter
+Giveaway**.
+
+- Clicking it enters the member, privately confirming *You have entered the
+  giveaway! Click again to leave.* The entry count on the embed goes up.
+- Clicking it a second time withdraws them: *You have left the giveaway.*
+  The count goes back down.
+- A member missing the required role is told privately which roles let them
+  enter, and is not entered.
+- Once the giveaway has ended, the button answers *This giveaway has already
+  ended.* to anyone who presses it.
+
+### How winners are drawn
+
+The bot checks for finished giveaways every 30 seconds, so a giveaway ends
+within about half a minute of its timer running out. When it does, the bot
+draws winners at random from the entries, replaces the original message with
+a *GIVEAWAY ENDED* embed listing the winners and the entry count, removes
+the Enter Giveaway button, posts a congratulations message mentioning the
+winners in the channel, and sends each winner a direct message naming the
+prize and telling them to contact the host to claim it. A winner with direct
+messages closed receives nothing and you are not told.
+
+Two details worth knowing before you announce prize counts:
+
+- If fewer members entered than there are winner slots, everyone who entered
+  wins — the draw never invents entries. When a giveaway reaches the end of
+  its own timer with no entries at all, the channel gets *Giveaway for
+  **prize** ended with no valid entries.*
+- Winners are drawn only from members who were entered when the giveaway
+  ended. Nobody can enter afterwards.
+
+**`/giveaway reroll`** draws a fresh set of winners from the entrants,
+skipping the winners currently recorded, and replaces the recorded winners
+with the new ones. It edits the ended message, announces the new winners in
+the channel, and replies privately with them. It does not send direct
+messages. With nobody left to draw from it replies *There are no remaining
+eligible entrants to reroll.* and changes nothing. Because each reroll
+replaces the recorded winners, a second reroll skips only the most recent
+set — someone who won an earlier round can be drawn again.
+
+`/giveaway end` draws the winners, replaces the message with the *GIVEAWAY
+ENDED* embed, and removes the button the same way the timer does, and it
+replies privately to you with the winners — or with *No valid entries* when
+nobody entered. It differs from the timer in two ways:
+
+- It never sends winners a direct message. Only a giveaway that runs its
+  full timer messages its winners.
+- When the draw produces no winners, it posts nothing in the channel. The
+  *ended with no valid entries* notice comes only from the timer, so a
+  giveaway you end early with no entries leaves the channel with only the
+  edited *GIVEAWAY ENDED* embed, and your private reply as the sole record
+  of the outcome.
+
+### Where the dashboard page is
+
+Open **Giveaways** from the guild sidebar. The page is headed *Giveaways*,
+with three counters across the top and three tabs: **Active**, **Ended**,
+and **Create**.
+
+## What each dashboard control does
+
+<ScreenshotPlaceholder
+  src="/screenshots/giveaways.png"
+  alt="The dashboard Giveaways page: giveaway counters and the Active, Ended, and Create tabs"
+  route="/guild/$guildId/giveaways"
+/>
+
+### The three counters
+
+| Counter | What it counts |
+| --- | --- |
+| **Active Giveaways** | Every giveaway in this server that has not ended, including one whose timer has run out but which the bot has not finished yet. |
+| **Past Giveaways** | Every giveaway in this server that has ended. |
+| **Total Entries** | The entries of the active giveaways *on the page you are looking at* — up to ten of them. Turning to the next page of the Active tab changes this number; it is not a server-wide total. |
+
+### Active tab
+
+| Control | Effect |
+| --- | --- |
+| Table columns | **Status** (which shows the giveaway's number, not a status word), **Prize**, **Winners**, **Entries**, and **Ends In**. Ends In counts down in days, hours, minutes, or seconds, and reads *Ended* once the timer has passed even though the row is still listed as active until the bot finishes it. |
+| **End** | Asks *This action cannot be undone.* and, on confirmation, ends that giveaway and draws its winners. A toast reads *Giveaway ended*. |
+| **Back** / **Next** | Move through the list ten giveaways at a time, with the page number and total shown beside them. They appear only when there is more than one page. |
+
+### Ended tab
+
+| Control | Effect |
+| --- | --- |
+| Table columns | **Status** (the giveaway's number), **Prize**, **Winners**, **Entries**, and **Ended**. The Winners column shows the first eight characters of each winner's Discord user ID rather than their name, or *None* when a giveaway ended with no winners. The Ended column shows the date the giveaway's timer was set to run out. |
+| **Reroll** | Draws replacement winners immediately — there is no confirmation step on this button. A toast reads *Winners rerolled*. With nobody left to draw from, an error toast appears and the recorded winners are unchanged. |
+| **Back** / **Next** | Move through the finished giveaways ten at a time. |
+
+### Create tab
+
+Filling this in and pressing **Create Giveaway** adds the giveaway to the
+list right away; the message with the Enter Giveaway button appears in the
+chosen channel within about 30 seconds, when the bot next checks. The
+giveaway is hosted by you — the *Hosted by* line on the embed names the
+dashboard account that created it.
+
+| Control | Effect |
+| --- | --- |
+| **Prize** | What is being given away, up to 256 characters. Leaving it blank shows *Failed to create giveaway* and nothing is created. |
+| **Channel** | A picker over your server's text channels; this is where the giveaway message is posted. Leaving it unset shows *Failed to create giveaway*. |
+| **Duration** | A number, paired with the dropdown beside it. |
+| **Type** | Despite the label, this is the unit for Duration: **minutes**, **hours** (the starting choice), **days**, or **weeks**. Duration and unit together must come to at least one minute — a shorter combination, such as half a minute, is refused by the server and an error toast appears. |
+| **Number of Winners** | 1 to 20. Anything outside that shows *Failed to create giveaway* and nothing is created. |
+| **Required Role (Optional)** | A picker over your server's roles, with a *None* choice. Members who do not hold the role you pick are told so privately when they press Enter Giveaway, and are not entered. |
+| **Create Giveaway** | Saves it. A server already holding 25 running giveaways is refused with *Maximum of 25 active giveaways reached*. |
+
+### One difference between ending in Discord and ending in the dashboard
+
+Ending or rerolling from the dashboard records the winners and moves the
+giveaway between the Active and Ended tabs, but it does not touch the
+message in Discord: the original giveaway embed stays up with its Enter
+Giveaway button, no winners are announced in the channel, and no winner is
+messaged. Members who press the button then get *This giveaway has already
+ended.* To have the message updated and the winners announced in Discord,
+end or reroll with `/giveaway end` or `/giveaway reroll`, or let the timer
+run out on its own.
+
+## Related features
+
+**Permissions** and **Role Panels** each have their own entry in the guild
+sidebar and their own page in the dashboard; neither has a page in this
+guide yet. [Leveling](/guide/features/leveling) and
+[Moderation](/guide/features/moderation) do. Here is where each of them
+meets giveaways.
+
+- **Permissions** — where dashboard roles are created and **View Giveaways**
+  and **Manage Giveaways** are granted, which is what the Prerequisites
+  section above refers to. Those permissions govern the dashboard page only;
+  who can run `/giveaway` in Discord is decided by Manage Server, and
+  entering a giveaway is open to every member either way.
+- **Role Panels** — the way to hand members a role themselves, which pairs
+  with a giveaway's optional role requirement: a role members can pick up
+  from a panel can be the same role you require to enter.
+- **Leveling** — a second way to gate entry by role, since level rewards
+  grant roles automatically. Requiring a reward role on a giveaway limits it
+  to members who have reached that level. Entering or winning a giveaway
+  earns no XP by itself.
+- **Moderation** — separate from giveaways in both directions. Banning a
+  member does not withdraw their entry or exclude them from the draw, and
+  winning a giveaway has no effect on their moderation record.

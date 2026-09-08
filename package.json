@@ -21,6 +21,9 @@
     "test:all": "pnpm test && pnpm test:integration",
     "test:watch": "docker compose --profile bot run --rm bot pnpm --filter @fluxcore/bot test:watch",
     "test:coverage": "docker compose --profile bot run --rm bot pnpm --filter @fluxcore/bot test:coverage",
+    "docs:build": "docker compose --profile bot run --rm --no-deps -e NODE_ENV=production bot pnpm turbo run docs:build --filter=@fluxcore/docs",
+    "docs:dev": "docker compose --profile bot run --rm --no-deps -p 3001:3001 bot pnpm --filter @fluxcore/docs dev",
+    "docs:manifest": "node apps/docs/scripts/manifest/build.mjs",
     "deploy:commands": "docker compose --profile bot run --rm --no-deps bot pnpm turbo run deploy:commands --filter=@fluxcore/bot",
     "db:generate": "docker compose --profile bot run --rm --no-deps bot pnpm turbo run db:generate --filter=@fluxcore/database",
     "db:migrate": "docker compose --profile bot run --rm bot pnpm --filter @fluxcore/database db:migrate",
@@ -36,7 +39,7 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@10.28.0",
+  "packageManager": "pnpm@10.34.5",
   "devDependencies": {
     "turbo": "^2.5.0",
     "typescript": "catalog:"
@@ -49,19 +52,27 @@
       "prisma"
     ],
     "overrides": {
-      "undici@<6.24.0": ">=6.24.0",
       "i18next-fs-backend@<2.6.6": ">=2.6.6",
       "hono@<4.12.4": ">=4.12.4",
       "@hono/node-server@<1.19.10": ">=1.19.10",
       "effect@<3.20.0": ">=3.20.0",
       "fastify@<5.8.5": ">=5.8.5",
-      "fast-uri@<4.1.1": ">=4.1.1",
       "ws@<8.21.0": ">=8.21.0",
       "defu@<6.1.5": ">=6.1.5",
       "seroval@<1.5.3": ">=1.5.3",
-      "brace-expansion@<5.0.8": ">=5.0.8",
       "find-my-way@<9.7.0": ">=9.7.0",
-      "@fastify/static@<10.1.1": ">=10.1.1"
+      "@fastify/static@<10.1.1": ">=10.1.1",
+      "undici@<7.29.0": ">=7.29.0 <8",
+      "fast-uri@<4.1.3": ">=4.1.3",
+      "brace-expansion@<5.0.9": ">=5.0.9",
+      "mysql2@<3.22.0": ">=3.22.0",
+      "deepmerge-ts@<8.0.0": ">=8.0.0",
+      "nanoid@<3.3.18": "3.3.18",
+      "picomatch@<4.0.4": ">=4.0.4",
+      "postcss@<8.5.18": ">=8.5.18",
+      "rollup@<4.59.0": ">=4.59.0",
+      "sharp@<0.35.0": ">=0.35.0",
+      "vite@<7.3.5": ">=7.3.5 <8"
     },
     "auditConfig": {
       "ignoreGhsas": [

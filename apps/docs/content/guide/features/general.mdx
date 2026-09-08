@@ -1,0 +1,165 @@
+---
+title: General
+description: The everyday commands every server gets — a command list, a latency check, server and member information, and a one-command lock of every channel.
+---
+
+General is the set of commands FluxCore gives you with nothing to configure:
+`/help` lists what the bot can do, `/ping` reports how fast it is answering,
+`/server-info` and `/user-info` print details about your server and its
+members, and `/lockdown` closes or reopens every channel at once.
+
+## Prerequisites
+
+- **The bot is in your server.** All five commands are run from the
+  slash-command menu in a channel of your server.
+- **`/help`, `/ping`, `/server-info`, and `/user-info` need no permission.**
+  No permission gate is set in source for any of the four — any member who
+  can see the channel can run them.
+- **`/lockdown` needs Manage Server, and the bot needs Manage Channels.**
+  The command's gate is **Manage Server** (`ManageGuild`), and it checks that
+  permission again when it runs: a member without it gets a private
+  *Missing Permissions* reply reading *You need the following permissions:
+  ManageGuild*. If the bot itself lacks **Manage Channels**, you get a private
+  *Bot Missing Permissions* reply reading *I need the following permissions:
+  ManageChannels*, and nothing is locked.
+- **Every one of these commands has a per-member cooldown.** After you run
+  one, that same command is unavailable to you — and to you only — for the
+  number of seconds listed in the table below. Running it early replies
+  privately with *Please wait **Ns** before using `/command` again.* The
+  cooldown starts only after a run that finishes without error, so a command
+  that fails with *There was an error executing this command.* leaves you free
+  to try again immediately.
+
+## Using the commands
+
+| Command | What it does | Permission required | Cooldown |
+| --- | --- | --- | --- |
+| `/help` | Lists every command the bot has loaded, grouped by category. | No permission gate is set in source — any member who can see the channel can run `/help`. | 10s |
+| `/ping` | Reports the bot's roundtrip and websocket latency. | No permission gate is set in source — any member who can see the channel can run `/ping`. | 5s |
+| `/server-info` | Shows owner, member, channel, role, boost, and creation details for the server. | No permission gate is set in source — any member who can see the channel can run `/server-info`. | 10s |
+| `/user-info` | Shows account and membership details for a member. | No permission gate is set in source — any member who can see the channel can run `/user-info`. | 5s |
+| `/lockdown` | Locks every text-based channel against `@everyone`, or lifts that lock. | Manage Server (`ManageGuild`) | 10s |
+
+No dashboard page configures these commands. None of the five carries a
+stored setting you can switch on, off, or adjust — what each one does is
+fixed, and the only choices you make are the options you pass when you run it.
+
+`/lockdown` is the one that leaves a trace in the dashboard. Each `activate`
+and each `lift` is recorded as a security event, along with who ran it, the
+channel count, and — for `activate` only — the reason. Those events are listed
+under **Security** in the left-hand server nav, on the **Events** tab, under
+the heading *Recent Raid Events*. Each event is a single row rather than a
+table column: a *Lockdown* badge, then the reason if one was recorded, then a
+note reading *Action: activate* or *Action: lift*, with the date and time at
+the right-hand end of the row. A lift row shows no reason at all, because none
+is stored for a lift. The list is visible to dashboard accounts that hold the
+permission to view security events; it is a read-only history, so nothing you
+do there locks or unlocks anything.
+
+## What each command shows and each option does
+
+### `/help`
+
+Takes no options. The reply is a single embed titled *Commands*, with one
+field per category — General, Admin, Moderation, and so on. Each command in a
+category is one line: its name, its description, and its cooldown written as
+*(10s cooldown)*. Two things worth knowing about the list:
+
+- It shows every command the bot has loaded, not the ones you personally can
+  run. A member without Manage Server still sees `/lockdown` listed.
+- The reply is posted openly in the channel, so everyone who can read that
+  channel sees it.
+
+### `/ping`
+
+Takes no options. The bot first posts *Pinging... / Measuring latency...*, then
+replaces it with a *Pong!* embed carrying two figures:
+
+| Field | What it means |
+| --- | --- |
+| **Roundtrip** | Milliseconds between your command being sent and the bot's first reply being created. |
+| **Websocket** | Milliseconds of latency on the bot's own gateway connection to Discord. |
+
+### `/server-info`
+
+Takes no options and always describes the server it is run in. The embed is
+titled with the server name, uses the server icon as its thumbnail, and
+carries: **Owner** (the owner's display name), **Members**, **Channels**,
+**Roles**, **Boost Level**, **Boosts** (0 when the server has none), and
+**Created**, shown as a relative time such as *3 years ago*.
+
+### `/user-info`
+
+| Option | Effect |
+| --- | --- |
+| **user** (optional) | The member to describe. Leave it out and the command describes you. |
+
+The embed is titled with the target's display name, uses their avatar as its
+thumbnail, and always carries **ID**, **Bot** (*Yes* or *No*), and **Account
+Created** as a relative time.
+
+Two more fields appear when the target is a member of the server: **Joined
+Server** (a relative time, or *Unknown* if Discord has no join date for them)
+and **Roles (N)**, where N counts their roles excluding `@everyone`. The role
+list itself names at most ten roles, highest first, and reads *None* for a
+member with no roles beyond `@everyone`. A target who has left the server, or
+who was never in it, gets the first three fields only — no membership fields
+and no error explaining their absence.
+
+### `/lockdown activate`
+
+| Option | Effect |
+| --- | --- |
+| **reason** (optional) | Recorded with the lockdown and repeated back in the confirmation. Leave it out and the reason is stored as *Manual lockdown*. |
+
+Activating denies **Send Messages** to `@everyone` in every text-based channel
+in the server. Channels the bot cannot edit are skipped without a warning, so
+read the count in the confirmation — *Locked **N** channels. Members can no
+longer send messages.* — as the number that actually changed, not as the
+number of channels you have. If the server is already locked down, the command
+refuses privately with *Already Locked* and changes nothing.
+
+Members keep reading channels while a lockdown is on; what stops is their
+ability to post. The only change the lockdown makes in each channel is that
+one deny on the `@everyone` role — FluxCore grants no exemption of its own to
+moderators or to any other role. If particular people need to keep posting
+during a lockdown, confirm in the channel afterwards that they still can,
+rather than assuming their roles carry them through.
+
+### `/lockdown lift`
+
+Takes no options. It clears the `@everyone` Send Messages setting in every
+text-based channel it can edit, reports *Unlocked **N** channels. Normal
+messaging has been restored.*, and marks the server unlocked. If the server is
+not currently locked down, it refuses privately with *Not Locked*.
+
+Two consequences to plan for before you use it:
+
+- **Lifting clears the setting, it does not restore what was there before.**
+  A channel where `@everyone` was deliberately denied Send Messages before the
+  lockdown comes back neutral afterwards, which can leave a previously
+  read-only channel open to posting. Check any such channel after lifting.
+- **The record of "this server is locked" is held only while the bot is
+  running.** If the bot restarts during a lockdown, the channels stay locked
+  but the bot no longer counts the server as locked: `/lockdown lift` answers
+  *Not Locked* and does nothing, and `/lockdown activate` is what re-lifts
+  you out of it — activate again, then lift.
+
+The same locked state is set when the anti-raid system locks the server
+automatically, which it does — when its *Auto-Lockdown on Raid* setting is
+on — on a join spike, on mass role deletion, and on mass channel deletion. So
+`/lockdown lift` is also how you reopen the server after one of those, and
+`/lockdown activate` answers *Already Locked* while one is in effect.
+
+## Related pages
+
+- [Moderation](/guide/features/moderation) — `/lock` and `/unlock` do to a
+  single channel what `/lockdown` does to all of them, and are gated on
+  **Manage Channels** rather than Manage Server. Reach for those when one
+  channel is the problem.
+- [Anti-Raid](/guide/features/antiraid) — the settings behind the automatic
+  lockdowns described above, and the Security page whose Events tab lists your
+  `/lockdown` history.
+- [Leveling](/guide/features/leveling) — `/user-info` reports a member's
+  account and role details; `/rank` reports the same member's level and XP
+  progress. Neither reads the other's data.

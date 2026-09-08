@@ -1,0 +1,249 @@
+---
+title: Anti-Raid
+description: Watches how fast members join, how old their accounts are, and how many channels or roles someone deletes at once, then kicks, bans, times out, quarantines, or locks the whole server down in response.
+---
+
+import ScreenshotPlaceholder from "@/components/ScreenshotPlaceholder";
+
+Anti-Raid gives FluxCore three automatic defences — a join-rate detector, a
+minimum account-age filter, and an anti-nuke watch on mass channel and role
+deletions — each with an action it takes on its own, an optional
+server-wide lockdown, and a history of everything it caught.
+
+## Prerequisites
+
+- **The bot is in your server.** The dashboard refuses every Security
+  request for a server the bot has not joined.
+- **You can open the dashboard for the server.** Access goes to the server
+  owner and to members whose Discord permissions include **Administrator**
+  or **Manage Server**. Anyone else is turned away with a permission error.
+- **Everything starts switched off.** A server that has never opened the
+  Security page has anti-raid off, anti-nuke off, auto-lockdown off, no
+  whitelisted roles, and no log channel, with Join Threshold at 10, Time
+  Window at 10 seconds, both actions set to Kick, and Deletion Threshold at
+  3. Nothing is detected and nothing is actioned until you turn the
+  **Anti-Raid Protection** switch on and save.
+- **The bot has to outrank the people it acts on.** A kick, ban, or timeout
+  is attempted only when the bot has the authority to carry it out on that
+  member; when it does not, the member stays and the raid event is still
+  written to the history. Quarantining strips only the roles the bot is able
+  to edit, so a role sitting above the bot's own highest role survives the
+  quarantine. A lockdown quietly skips any channel whose permissions the bot
+  cannot change, and an automatic lockdown never tells you how many it
+  locked — its Events tab row carries no channel count.
+- **Anti-nuke needs the bot to be able to read the server audit log.** That
+  is how it learns who deleted a channel or a role. If the audit log cannot
+  be read, anti-nuke detects nothing for that deletion — no quarantine, no
+  *Nuke Attempt* entry, and no automatic lockdown — while the deletion itself
+  is still recorded by the channel and role deletion logs whenever you have
+  those log categories switched on.
+- **If the permission system is switched on** for your server — on the
+  **Permissions** page in the sidebar — then the Security page needs
+  **View Config** to read the settings, **Manage Config** to save them, and
+  **View Events** to load the Events tab. The **Security** entry in the guild
+  sidebar is shown only to admins holding View Config. An admin without View
+  Config who reaches the page anyway, from a bookmark or a shared link, is
+  not refused: the page renders with every control showing its built-in
+  default — the switches off, Join Threshold 10, Time Window 10, both actions
+  Kick, Minimum Account Age 0, Deletion Threshold 3, no whitelisted roles, no
+  log channel — whatever your server is really set to. Read that as "not
+  shown to me," never as "this is how the server is configured," and press
+  Save Changes on it only if you mean to overwrite your real settings with
+  those values. Saving without Manage Config fails with an *Insufficient
+  permissions* message. While the permission system is inactive, everyone who
+  can open the page at all — the server owner, and every admin holding
+  **Administrator** or **Manage Server** — has full access to all five tabs.
+- **A saved change reaches the bot only while the bot has no copy of your
+  settings in memory.** The bot keeps its own copy of these settings in
+  memory, fills that copy the first time it reads a stored configuration for
+  your server, and never refreshes that copy afterwards. It reads only when
+  one of the three things it watches happens — a member joins, a channel is
+  deleted, or a role is deleted — so the bot's memory of your server is empty
+  until the first of those occurs, and empty again after every bot restart
+  until the next one occurs. An edit saved while that memory is empty is
+  picked up on the next join or deletion, with no restart needed. Once the
+  bot has read your settings, every later edit is stored and shown correctly
+  in the dashboard but ignored by the bot until the bot restarts.
+
+## Turning it on
+
+Open **Security** from the guild sidebar. The page is headed *Security* and
+opens with a card reading *Anti-Raid Protection*, whose switch is the master
+control: with it off, none of the three detectors run, whatever the tabs
+below say. Under that card are five tabs — **Join Rate**, **Account Age**,
+**Anti-Nuke**, **Lockdown**, and **Events** — and at the bottom of the page
+a single **Save Changes** button.
+
+That one button saves every tab at once. Nothing you change on any tab is
+stored until you press it, and leaving the page first discards the lot. A
+successful save shows *Anti-raid configuration saved*.
+
+A value outside the range listed for its box rejects the whole save —
+including the changes you made on other tabs — and shows an error message
+instead. Three of the boxes also treat an empty value, or a `0`, as a
+request for the default: Join Threshold and Time Window each save as 10, and
+Deletion Threshold saves as 3.
+
+## What each detector does
+
+### Join rate
+
+Most joins are counted, but not all of them. Three kinds of join never reach
+the count at all: a bot account joining the server, a member who already holds
+one of the **Whitelisted Role IDs** at the instant they join, and a member the
+account-age filter acted on — that filter runs first and stops there. Every
+other join is counted. When the number of counted joins inside the last
+**Time Window (seconds)** reaches **Join Threshold**, the member who tipped
+it over gets the **Action on Detection** — and so does every further member
+who joins while the count stays at or above the threshold, one at a time, so
+a raid keeps being actioned until the joins slow down.
+
+Each actioned member produces a *Join Spike* entry on the Events tab.
+Actioned members are also skipped by the rest of the join handling: no
+welcome message is sent for them, no auto-role is applied, and their join is
+not written to the member join log.
+
+### Account age
+
+When **Minimum Account Age (days)** is above 0, a member whose Discord
+account was created fewer days ago than that receives the account-age
+**Action** the moment they join, before the join-rate count ever sees them,
+and produces an *Account Age* entry on the Events tab recording their
+account's age in days. At 0 the filter is off and account age is not checked
+at all.
+
+### Anti-nuke
+
+While **Anti-Nuke Protection** is on, the bot reads the audit log after every
+channel deletion and every role deletion to find who did it. Deletions by
+bots are ignored. Channel and role deletions count towards the same tally per
+person: when one person reaches **Deletion Threshold** deletions within 10
+seconds, they are quarantined — every role the bot can edit is removed from
+them — and a *Nuke Attempt* entry is written to the Events tab. Quarantining
+does not kick or ban them, and the deleted channels and roles are not
+restored.
+
+### The three actions
+
+**Action on Detection** and the account-age **Action** each offer the same
+three choices:
+
+| Choice | What happens to the member |
+| --- | --- |
+| **Kick** | Removed from the server. |
+| **Ban** | Banned. None of their messages are deleted by the ban. |
+| **Timeout** | Timed out for 10 minutes. The length is fixed and there is no control for it. |
+
+The reason recorded in Discord's own audit log is prefixed `[Anti-Raid]` for
+kicks, bans, and timeouts on joining members, and `[Anti-Nuke]` for a
+quarantine.
+
+## What each dashboard control does
+
+<ScreenshotPlaceholder
+  src="/screenshots/security.png"
+  alt="The dashboard Security page: the anti-raid master switch and its five tabs"
+  route="/guild/$guildId/security"
+/>
+
+### The master card
+
+| Control | Effect |
+| --- | --- |
+| **Anti-Raid Protection** switch | *Enable automatic detection and response to coordinated raids, suspicious accounts, and destructive actions.* Off stops all three detectors, including anti-nuke, no matter how the tabs are set. Saved settings and recorded events are untouched. |
+
+### Join Rate tab
+
+*Detect mass joins by monitoring the rate of new members joining.*
+
+| Control | Effect |
+| --- | --- |
+| **Join Threshold** | 2 to 100. How many joins inside the time window trigger detection. Lowering it makes the detector fire on smaller bursts, including ordinary ones. |
+| **Time Window (seconds)** | 1 to 120. How far back joins are counted. Raising it makes a slower trickle of joins add up to a raid. |
+| **Action on Detection** | Kick, Ban, or Timeout — what happens to each member caught by a join spike. |
+
+### Account Age tab
+
+*Automatically action accounts that are younger than a minimum age. Set to 0
+to disable.*
+
+| Control | Effect |
+| --- | --- |
+| **Minimum Account Age (days)** | 0 to 365. Accounts younger than this are actioned on join. 0 turns the filter off. |
+| **Action** | Kick, Ban, or Timeout — what happens to a member whose account is too new. This is a separate choice from the join-rate action. |
+
+### Anti-Nuke tab
+
+| Control | Effect |
+| --- | --- |
+| **Anti-Nuke Protection** switch | *Detect mass channel/role deletions and quarantine the responsible user by removing all their roles.* Off leaves channel and role deletions unwatched even while the master switch is on. |
+| **Deletion Threshold** | 1 to 20. How many channel or role deletions by the same person within 10 seconds trigger a quarantine. Setting it to 1 quarantines someone on their first deletion. |
+
+### Lockdown tab
+
+| Control | Effect |
+| --- | --- |
+| **Auto-Lockdown on Raid** switch | *Automatically lock all channels when a raid is detected.* On, a join spike or a quarantined nuke attempt also denies Send Messages to `@everyone` across the server's message-carrying channels, skipping any whose permissions the bot cannot change. Nothing lifts it automatically — see below. |
+| **Whitelisted Role IDs (comma-separated)** | Despite the label, this is a picker over your server's roles, not a text field. A member who already holds one of these roles at the instant they join is exempt from both the account-age filter and the join-rate count. It does not exempt anyone from anti-nuke: a whitelisted role does not stop a quarantine. |
+| **Log Channel ID** | A picker over your server's text channels, with a *None* option. The choice is stored, and nothing is sent to the channel — no anti-raid message is posted anywhere. The Events tab is where raid activity is readable. |
+
+Lifting a lockdown is a Discord command, `/lockdown lift`, which requires
+**Manage Server** (`ManageGuild`). It resets `@everyone`'s Send Messages
+permission to neutral across the same set of channels, skipping any it cannot
+change — and that includes any channel you had deliberately locked before the
+raid, which comes back unlocked. Its reply tells you how many channels it
+unlocked. Two things to know before you rely on it: the command refuses with
+*Not Locked* unless the bot itself is holding a lockdown it started, and that
+memory does not survive a bot restart, so a restart during a lockdown leaves
+the channels locked with the command declining to lift them. The matching
+`/lockdown activate` command, with the same **Manage Server**
+(`ManageGuild`) requirement and an optional **reason**, locks the server by
+hand, replies with the number of channels it locked, and refuses with
+*Already Locked* while a lockdown is running. Both subcommands also need the
+bot itself to hold **Manage Channels**, and both are the only place a lockdown
+channel count is ever shown to you.
+
+### Events tab
+
+*Timeline of detected raids, account age blocks, and lockdown events.*
+
+| Control | Effect |
+| --- | --- |
+| Event rows | Newest first, 20 to a page. Each row carries a type badge — **Join Spike**, **Account Age**, **Nuke Attempt**, or **Lockdown** — the reason where one was recorded, the action taken, a *Users* count, the account age in days for an account-age block, and the date and time. The *Users* count reads **1** on every Join Spike and Account Age row, because each of those rows covers the single member it was raised for; Nuke Attempt and Lockdown rows carry no *Users* count at all. |
+| **Previous** / **Next** | Move through the history 20 at a time. They appear only once more than 20 events exist. |
+
+Empty reads *No raid events recorded yet. Events will appear here when raid
+detection triggers.* — which, as noted in the Prerequisites, is also what an
+admin lacking View Events sees.
+
+Two things the timeline does not tell you. A *Nuke Attempt* row never names
+the person who was quarantined, so pair it with your server's audit log to
+find out who it was. And a row proves the detector fired, not that the
+punishment landed: when the bot lacked the authority to kick, ban, or time
+the member out, the event is recorded exactly the same way.
+
+Lockdown rows come from three places and read slightly differently: an
+automatic lockdown from a join spike says *Automatic raid lockdown triggered
+by join spike*, a hand-run `/lockdown activate` carries the reason its runner
+typed (or *Manual lockdown* when they typed none), and a `/lockdown lift`
+row carries no reason at all — only its action. Lockdown rows from the
+commands are recorded whether or not anti-raid is switched on.
+
+## Related features
+
+**Moderation**, **Logs**, and **Permissions** each have their own entry in
+the guild sidebar and their own page in the dashboard, and each has a page in
+this guide — [Moderation](/guide/features/moderation),
+[Logging](/guide/features/logging), and
+[Permissions](/guide/features/permissions). Here is where each meets
+anti-raid.
+
+- **Moderation** — the place a punishment you hand out yourself is recorded.
+  Anti-raid actions are kept apart from it: a member kicked, banned, or timed
+  out by a raid detector gets a raid event, not a moderation case, and does
+  not appear in that member's case history.
+- **Logs** — the member join log, which never records a join that anti-raid
+  actioned, and the channel and role deletion logs, which do record the
+  deletions behind a nuke attempt.
+- **Permissions** — where the View Config, Manage Config, and View Events
+  permissions above are granted to dashboard roles and to individual admins.
